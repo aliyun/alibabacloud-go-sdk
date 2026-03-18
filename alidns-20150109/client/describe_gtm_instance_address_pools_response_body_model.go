@@ -24,7 +24,6 @@ type iDescribeGtmInstanceAddressPoolsResponseBody interface {
 }
 
 type DescribeGtmInstanceAddressPoolsResponseBody struct {
-	// The returned list of address pools of the GTM instance.
 	AddrPools *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
 	// The number of the page returned.
 	//
@@ -164,86 +163,18 @@ func (s *DescribeGtmInstanceAddressPoolsResponseBodyAddrPools) Validate() error 
 }
 
 type DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 2
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// 1234abc
-	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The time when this address pool was created.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The minimum number of available addresses in the address pool.
-	//
-	// example:
-	//
-	// 2
-	MinAvailableAddrNum *int32 `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
-	// The health check ID of the address pool.
-	//
-	// example:
-	//
-	// 100abc
-	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// Indicates whether health check was enabled for the address pool. Valid values:
-	//
-	// 	- **OPEN**: Enabled
-	//
-	// 	- **CLOSE**: Disabled
-	//
-	// 	- **UNCONFIGURED**: Not configured
-	//
-	// example:
-	//
-	// OPEN
-	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	// The name of the address pool.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The availability status of the address pool. Valid values:
-	//
-	// 	- **AVAILABLE**: Available
-	//
-	// 	- **NOT_AVAILABLE**: Unavailable
-	//
-	// example:
-	//
-	// AVAILABLE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the address pool. Valid values:
-	//
-	// 	- **IP**: IP address
-	//
-	// 	- **DOMAIN**: Domain name
-	//
-	// example:
-	//
-	// IP
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last time when the address pool was updated.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// A timestamp that indicates the last time the address pool was updated.
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	AddrCount           *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	AddrPoolId          *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp     *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	MinAvailableAddrNum *int32  `json:"MinAvailableAddrNum,omitempty" xml:"MinAvailableAddrNum,omitempty"`
+	MonitorConfigId     *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
+	MonitorStatus       *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp     *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool) String() string {

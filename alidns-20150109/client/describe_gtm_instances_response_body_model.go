@@ -24,7 +24,6 @@ type iDescribeGtmInstancesResponseBody interface {
 }
 
 type DescribeGtmInstancesResponseBody struct {
-	// The list of queried instances.
 	GtmInstances *DescribeGtmInstancesResponseBodyGtmInstances `json:"GtmInstances,omitempty" xml:"GtmInstances,omitempty" type:"Struct"`
 	// The returned page number.
 	//
@@ -164,110 +163,22 @@ func (s *DescribeGtmInstancesResponseBodyGtmInstances) Validate() error {
 }
 
 type DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance struct {
-	// The number of access policies.
-	//
-	// example:
-	//
-	// 5
-	AccessStrategyNum *int32 `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
-	// The number of address pools.
-	//
-	// example:
-	//
-	// 5
-	AddressPoolNum *int32 `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
-	// The name of the alert group.
-	//
-	// example:
-	//
-	// [\\\\"R\\&D group\\\\"]
-	AlertGroup *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The CNAME domain name that is used to access the instance.
-	//
-	// example:
-	//
-	// instance1.14.com
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The CNAME domain name used to access the instance. Valid values:
-	//
-	// 	- **SYSTEM_ASSIGN**: A CNAME domain name assigned by the system is used.
-	//
-	// 	- **CUSTOM**: A custom CNAME domain name is used.
-	//
-	// example:
-	//
-	// SYSTEM_ASSIGN
-	CnameMode *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
-	// The time when the instance was created.
-	//
-	// example:
-	//
-	// 2018-06-06T11:34Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The UNIX timestamp that indicates when the instance was created.
-	//
-	// example:
-	//
-	// 1528284856000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The time when the instance expires.
-	//
-	// example:
-	//
-	// 2018-06-06T11:34Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The UNIX timestamp that indicates when the instance expires.
-	//
-	// example:
-	//
-	// 1528284856000
-	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// instance1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The load balancing policy that is used. Valid values:
-	//
-	// 	- **ALL_RR**: Load balancing
-	//
-	// 	- **RATIO**: Weighted round-robin
-	//
-	// example:
-	//
-	// RATIO
-	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	// The ID of the resource group to which the instance belongs.
-	//
-	// example:
-	//
-	// rg-acfm2q2jqpjh***
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The global time to live (TTL).
-	//
-	// example:
-	//
-	// 60
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The domain name of the user.
-	//
-	// example:
-	//
-	// www.example.com
-	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
-	// The version code of the instance.
-	//
-	// example:
-	//
-	// biaozhun
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	AccessStrategyNum *int32  `json:"AccessStrategyNum,omitempty" xml:"AccessStrategyNum,omitempty"`
+	AddressPoolNum    *int32  `json:"AddressPoolNum,omitempty" xml:"AddressPoolNum,omitempty"`
+	AlertGroup        *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	Cname             *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	CnameMode         *string `json:"CnameMode,omitempty" xml:"CnameMode,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp   *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	ExpireTime        *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimestamp   *int64  `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LbaStrategy       *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Ttl               *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	UserDomainName    *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
+	VersionCode       *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s DescribeGtmInstancesResponseBodyGtmInstancesGtmInstance) String() string {

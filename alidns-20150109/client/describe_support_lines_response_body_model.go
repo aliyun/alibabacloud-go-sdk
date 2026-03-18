@@ -16,7 +16,6 @@ type iDescribeSupportLinesResponseBody interface {
 }
 
 type DescribeSupportLinesResponseBody struct {
-	// The Alibaba Cloud DNS lines.
 	RecordLines *DescribeSupportLinesResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
 	// example:
 	//
@@ -94,30 +93,10 @@ func (s *DescribeSupportLinesResponseBodyRecordLines) Validate() error {
 }
 
 type DescribeSupportLinesResponseBodyRecordLinesRecordLine struct {
-	// The code of the parent line. Currently, no data is returned.
-	//
-	// example:
-	//
-	// unicom
-	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The code of the child line.
-	//
-	// example:
-	//
-	// cn_unicom_shanxi
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The display name of the line.
-	//
-	// example:
-	//
-	// China Unicom
+	FatherCode      *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
+	LineCode        *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
 	LineDisplayName *string `json:"LineDisplayName,omitempty" xml:"LineDisplayName,omitempty"`
-	// The name of the child line.
-	//
-	// example:
-	//
-	// China Unicom_Shanxi
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	LineName        *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeSupportLinesResponseBodyRecordLinesRecordLine) String() string {

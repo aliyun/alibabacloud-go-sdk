@@ -41,8 +41,7 @@ type DescribeDnsGtmAccessStrategiesResponseBody struct {
 	// example:
 	//
 	// 0CCC9971-CEC9-4132-824B-4AE611C07623
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The access policies.
+	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Strategies *DescribeDnsGtmAccessStrategiesResponseBodyStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
 	// The total number of entries returned on all pages.
 	//
@@ -164,66 +163,15 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategies) Validate() error 
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy struct {
-	// The time when the access policy was created.
-	//
-	// example:
-	//
-	// 2018-08-09T00:10Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates when the access policy was created.
-	//
-	// example:
-	//
-	// 1533773400000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The type of the active address pool group. Valid values:
-	//
-	// 	- DEFAULT: the primary address pool group
-	//
-	// 	- FAILOVER: the secondary address pool group
-	//
-	// example:
-	//
-	// default
-	EffectiveAddrPoolGroupType *string `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
-	// The type of the active address pools. Valid values:
-	//
-	// 	- IPV4
-	//
-	// 	- IPV6
-	//
-	// 	- DOMAIN
-	//
-	// example:
-	//
-	// ipv4
-	EffectiveAddrPoolType *string `json:"EffectiveAddrPoolType,omitempty" xml:"EffectiveAddrPoolType,omitempty"`
-	// The active address pool groups.
-	EffectiveAddrPools *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPools `json:"EffectiveAddrPools,omitempty" xml:"EffectiveAddrPools,omitempty" type:"Struct"`
-	// The load balancing policy of the active address pool group. Data is returned when StrategyMode is set to GEO. Valid values:
-	//
-	// - ALL_RR: returns all addresses.
-	//
-	// - RATIO: returns addresses by weight.
-	//
-	// example:
-	//
-	// all_rr
-	EffectiveLbaStrategy *string `json:"EffectiveLbaStrategy,omitempty" xml:"EffectiveLbaStrategy,omitempty"`
-	// The source regions. Data is returned when StrategyMode is set to GEO. Valid values:
-	Lines *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The ID of the access policy.
-	//
-	// example:
-	//
-	// strategyid1
-	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The name of the access policy.
-	//
-	// example:
-	//
-	// strategname1
-	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	CreateTime                 *string                                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp            *int64                                                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EffectiveAddrPoolGroupType *string                                                                         `json:"EffectiveAddrPoolGroupType,omitempty" xml:"EffectiveAddrPoolGroupType,omitempty"`
+	EffectiveAddrPoolType      *string                                                                         `json:"EffectiveAddrPoolType,omitempty" xml:"EffectiveAddrPoolType,omitempty"`
+	EffectiveAddrPools         *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPools `json:"EffectiveAddrPools,omitempty" xml:"EffectiveAddrPools,omitempty" type:"Struct"`
+	EffectiveLbaStrategy       *string                                                                         `json:"EffectiveLbaStrategy,omitempty" xml:"EffectiveLbaStrategy,omitempty"`
+	Lines                      *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines              `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	StrategyId                 *string                                                                         `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	StrategyName               *string                                                                         `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategy) String() string {
@@ -364,30 +312,10 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAd
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPoolsEffectiveAddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 3
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool.
-	//
-	// example:
-	//
-	// 1
-	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyEffectiveAddrPoolsEffectiveAddrPool) String() string {
@@ -473,30 +401,10 @@ func (s *DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLines) Vali
 }
 
 type DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine struct {
-	// The code of the source region group.
-	//
-	// example:
-	//
-	// default
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the source region group.
-	//
-	// example:
-	//
-	// global
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The line code of the source region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The line name of the source region.
-	//
-	// example:
-	//
-	// global
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine) String() string {

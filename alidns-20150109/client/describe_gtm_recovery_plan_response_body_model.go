@@ -59,9 +59,8 @@ type DescribeGtmRecoveryPlanResponseBody struct {
 	// example:
 	//
 	// 2
-	FaultAddrPoolNum *int32 `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
-	// The faulty address pools.
-	FaultAddrPools *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools `json:"FaultAddrPools,omitempty" xml:"FaultAddrPools,omitempty" type:"Struct"`
+	FaultAddrPoolNum *int32                                             `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
+	FaultAddrPools   *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools `json:"FaultAddrPools,omitempty" xml:"FaultAddrPools,omitempty" type:"Struct"`
 	// The time when the disaster recovery plan was last executed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
@@ -317,21 +316,10 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPools) Validate() error {
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool struct {
-	// The address pool ID.
-	//
-	// example:
-	//
-	// hra0oq
-	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The address pool name.
+	AddrPoolId   *string                                                              `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
 	AddrPoolName *string                                                              `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
 	Addrs        *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// instance-zwy-38
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId   *string                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPool) String() string {
@@ -422,23 +410,8 @@ func (s *DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrs) Va
 }
 
 type DescribeGtmRecoveryPlanResponseBodyFaultAddrPoolsFaultAddrPoolAddrsAddr struct {
-	// The address ID.
-	//
-	// example:
-	//
-	// 739
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The address mode.
-	//
-	// example:
-	//
-	// OFFLINE
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The address.
-	//
-	// example:
-	//
-	// 1.1.1.1
+	Id    *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Mode  *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

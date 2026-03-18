@@ -16,7 +16,6 @@ type iDescribeGtmMonitorAvailableConfigResponseBody interface {
 }
 
 type DescribeGtmMonitorAvailableConfigResponseBody struct {
-	// The monitored nodes.
 	IspCityNodes *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,62 +95,14 @@ func (s *DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodes) Validate() e
 }
 
 type DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode struct {
-	// The code of the city where the monitored node is deployed.
-	//
-	// example:
-	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city where the monitored node is deployed.
-	//
-	// example:
-	//
-	// Zhangjiakou
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the monitored node is selected for the health check by default.
-	//
-	// example:
-	//
-	// true
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the group to which the monitored node belongs.
-	//
-	// Valid values: Overseas Nodes, BGP Nodes, and ISP Nodes.
-	//
-	// example:
-	//
-	// Overseas Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group to which the monitored node belongs.
-	//
-	// Valid values: BGP, OVERSEAS, and ISP.
-	//
-	// example:
-	//
-	// OVERSEAS
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The code of the Internet service provider (ISP) to which the monitored node belongs.
-	//
-	// 	- If the value of the GroupType parameter is BGP or OVERSEAS, the value of IspCode is 465 by default.
-	//
-	// 	- If the value of the GroupType parameter is not BGP or OVERSEAS, valid values of IspCode are 232, 132, and 5. and is used together with CityCode.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP to which the monitored node belongs.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// Indicates whether the monitored node is deployed in the Chinese mainland.
-	//
-	// example:
-	//
-	// true
-	Mainland *bool `json:"Mainland,omitempty" xml:"Mainland,omitempty"`
+	CityCode        *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType       *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	IspCode         *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName         *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	Mainland        *bool   `json:"Mainland,omitempty" xml:"Mainland,omitempty"`
 }
 
 func (s DescribeGtmMonitorAvailableConfigResponseBodyIspCityNodesIspCityNode) String() string {

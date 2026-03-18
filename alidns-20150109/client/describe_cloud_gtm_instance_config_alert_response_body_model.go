@@ -24,10 +24,8 @@ type iDescribeCloudGtmInstanceConfigAlertResponseBody interface {
 }
 
 type DescribeCloudGtmInstanceConfigAlertResponseBody struct {
-	// The alert configurations.
 	AlertConfig *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	// The alert contact groups.
-	AlertGroup *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
+	AlertGroup  *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup  `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Struct"`
 	// The alert configuration mode of the instance. Valid values:
 	//
 	// 	- global: global alert configuration
@@ -169,52 +167,10 @@ func (s *DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig) Validate() 
 }
 
 type DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig struct {
-	// Indicates whether DingTalk notifications are configured. Valid values:
-	//
-	// 	- true: DingTalk notifications are configured. DingTalk notifications are sent after alerts are triggered.
-	//
-	// 	- false: DingTalk notifications are not configured.
-	//
-	// example:
-	//
-	// true
-	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
-	// Indicates whether email notifications are configured. Valid values:
-	//
-	// 	- true: Email notifications are configured. Emails are sent after alerts are triggered.
-	//
-	// 	- false: Email notifications are not configured.
-	//
-	// example:
-	//
-	// true
-	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
-	// The type of the alert event. Valid values:
-	//
-	// 	- addr_alert: The address is unavailable.
-	//
-	// 	- addr_resume: The address becomes available.
-	//
-	// 	- addr_pool_unavailable: The address pool is unavailable.
-	//
-	// 	- addr_pool_available: The address pool becomes available.
-	//
-	// example:
-	//
-	// addr_alert
-	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	// Indicates whether text message notifications are configured. Valid values:
-	//
-	// 	- true: Text message notifications are configured. Text messages are sent after alerts are triggered.
-	//
-	// 	- false: Text message notifications are not configured.
-	//
-	// Only the China site (aliyun.com) supports text message notifications.
-	//
-	// example:
-	//
-	// true
-	SmsNotice *bool `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	DingtalkNotice *bool   `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	EmailNotice    *bool   `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	NoticeType     *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	SmsNotice      *bool   `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
 }
 
 func (s DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig) String() string {

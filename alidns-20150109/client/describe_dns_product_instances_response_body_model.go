@@ -24,7 +24,6 @@ type iDescribeDnsProductInstancesResponseBody interface {
 }
 
 type DescribeDnsProductInstancesResponseBody struct {
-	// The paid Alibaba Cloud DNS instances.
 	DnsProducts *DescribeDnsProductInstancesResponseBodyDnsProducts `json:"DnsProducts,omitempty" xml:"DnsProducts,omitempty" type:"Struct"`
 	// The type of the domain name. Valid values:
 	//
@@ -168,254 +167,39 @@ func (s *DescribeDnsProductInstancesResponseBodyDnsProducts) Validate() error {
 }
 
 type DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct struct {
-	// Indicates whether auto-renewal was enabled. Valid values:
-	//
-	// 	- true: Auto-renewal was enabled.
-	//
-	// 	- false: Auto-renewal was not enabled.
-	//
-	// example:
-	//
-	// true
-	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The number of times you can change domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
-	//
-	// example:
-	//
-	// 3
-	BindCount *int64 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
-	// The number of domain names that can be bound to the DNS instance.
-	//
-	// example:
-	//
-	// 5
-	BindDomainCount *int64 `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
-	// The number of domain names that have been bound to the DNS instance.
-	//
-	// example:
-	//
-	// 3
-	BindDomainUsedCount *int64 `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
-	// The number of times you have changed domain names that are bound to the DNS instance. It can be specified by the user who uses Alibaba Cloud DNS of the custom version.
-	//
-	// example:
-	//
-	// 1
-	BindUsedCount *int64 `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
-	// The DDoS protection traffic. Unit: GB.
-	//
-	// example:
-	//
-	// 50
-	DDosDefendFlow *int64 `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
-	// The DDoS protection frequency. Unit: 10,000 QPS.
-	//
-	// example:
-	//
-	// 50
-	DDosDefendQuery *int64 `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
-	// The number of IP addresses supported by a domain name or line.
-	//
-	// example:
-	//
-	// 15
-	DnsSLBCount *int64 `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
-	// The level of DNS protection. Valid values:
-	//
-	// 	- no: No DNS protection is provided.
-	//
-	// 	- basic: Basic DNS protection is provided.
-	//
-	// 	- advanced: Advanced DNS protection is provided.
-	//
-	// example:
-	//
-	// no
-	DnsSecurity *string `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
-	// The bound domain name.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The time at which the instance expired.
-	//
-	// example:
-	//
-	// 2015-12-12T00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The UNIX timestamp representing the expiration time of the instance.
-	//
-	// example:
-	//
-	// 1474335170000
-	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// Indicates whether global server load balancing (GSLB) is supported.
-	//
-	// 	- true: GSLB is supported.
-	//
-	// 	- false: GSLB is not supported.
-	//
-	// example:
-	//
-	// true
-	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	// The ISP resolution lines.
-	//
-	// 	- China Telecom
-	//
-	// 	- China Mobile
-	//
-	// 	- China Unicom
-	//
-	// 	- CERNET
-	//
-	// 	- China Broadcasting Network (CBN)
-	//
-	// 	- Dr Peng Telecom & Media Group
-	//
-	// example:
-	//
-	// China Mobile,China Unicom,China Telecom,China Edu
-	ISPLines *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
-	// The regional ISP resolution lines. Valid values:
-	//
-	// 	- China Telecom (province)
-	//
-	// 	- China Mobile (province)
-	//
-	// 	- China Unicom (province)
-	//
-	// 	- China Education and Research Network (CERNET) (province)
-	//
-	// example:
-	//
-	// Telecom (Province), Mobile (Province), Unicom (Province), Education Network (Province)
-	ISPRegionLines *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
-	// Indicates whether the Domain Name System (DNS) servers stopped responding to all requests. Valid values:
-	//
-	// 	- true: The DNS servers stopped responding to all requests.
-	//
-	// 	- false: The DNS servers did not stop responding to all requests.
-	//
-	// example:
-	//
-	// false
-	InBlackHole *bool `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
-	// Indicates whether the request for domain name resolution was being cleared.
-	//
-	// example:
-	//
-	// false
-	InClean *bool `json:"InClean,omitempty" xml:"InClean,omitempty"`
-	// The ID of the Alibaba Cloud DNS instance.
-	//
-	// example:
-	//
-	// i-8fj
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The monitoring frequency. Unit: minutes.
-	//
-	// example:
-	//
-	// 50
-	MonitorFrequency *int64 `json:"MonitorFrequency,omitempty" xml:"MonitorFrequency,omitempty"`
-	// The number of monitored nodes.
-	//
-	// example:
-	//
-	// 5
-	MonitorNodeCount *int64 `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
-	// The number of monitoring tasks.
-	//
-	// example:
-	//
-	// 2
-	MonitorTaskCount *int64 `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
-	// DDoS protection traffic outside China. Unit: GB.
-	//
-	// example:
-	//
-	// 1
-	OverseaDDosDefendFlow *int64 `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
-	// The type of the overseas line.
-	//
-	// example:
-	//
-	// Countries
-	OverseaLine *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
-	// The billing method.
-	//
-	// example:
-	//
-	// Subscription
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Indicates whether the DNS request lines are regional lines.
-	//
-	// 	- true: The DNS request lines are regional lines.
-	//
-	// 	- false: The DNS request lines are not regional lines.
-	//
-	// example:
-	//
-	// true
-	RegionLines *bool `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
-	// The search engine resolution lines. Valid values:
-	//
-	// 	- Google
-	//
-	// 	- Baidu
-	//
-	// 	- Bing
-	//
-	// 	- Youdao
-	//
-	// example:
-	//
-	// Search Engine Robots,Google Robots,Baidu Robots,Bing Robots
-	SearchEngineLines *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
-	// The time when the DNS instance was purchased.
-	//
-	// example:
-	//
-	// 2015-11-12T09:23Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The UNIX timestamp representing when the DNS instance was purchased.
-	//
-	// example:
-	//
-	// 1474335170000
-	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The number of subdomain name levels.
-	//
-	// example:
-	//
-	// 6
-	SubDomainLevel *int64 `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
-	// The minimum TTL. Unit: seconds.
-	//
-	// example:
-	//
-	// 10
-	TTLMinValue *int64 `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
-	// The URL forwarding quantity.
-	//
-	// example:
-	//
-	// 20
-	URLForwardCount *int64 `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
-	// The version code of the Alibaba Cloud DNS instance.
-	//
-	// example:
-	//
-	// version1
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	// The version name of the Alibaba Cloud DNS instance.
-	//
-	// example:
-	//
-	// Alibaba Cloud DNS
-	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	AutoRenewal           *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	BindCount             *int64  `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
+	BindDomainCount       *int64  `json:"BindDomainCount,omitempty" xml:"BindDomainCount,omitempty"`
+	BindDomainUsedCount   *int64  `json:"BindDomainUsedCount,omitempty" xml:"BindDomainUsedCount,omitempty"`
+	BindUsedCount         *int64  `json:"BindUsedCount,omitempty" xml:"BindUsedCount,omitempty"`
+	DDosDefendFlow        *int64  `json:"DDosDefendFlow,omitempty" xml:"DDosDefendFlow,omitempty"`
+	DDosDefendQuery       *int64  `json:"DDosDefendQuery,omitempty" xml:"DDosDefendQuery,omitempty"`
+	DnsSLBCount           *int64  `json:"DnsSLBCount,omitempty" xml:"DnsSLBCount,omitempty"`
+	DnsSecurity           *string `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
+	Domain                *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimestamp          *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	Gslb                  *bool   `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
+	ISPLines              *string `json:"ISPLines,omitempty" xml:"ISPLines,omitempty"`
+	ISPRegionLines        *string `json:"ISPRegionLines,omitempty" xml:"ISPRegionLines,omitempty"`
+	InBlackHole           *bool   `json:"InBlackHole,omitempty" xml:"InBlackHole,omitempty"`
+	InClean               *bool   `json:"InClean,omitempty" xml:"InClean,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MonitorFrequency      *int64  `json:"MonitorFrequency,omitempty" xml:"MonitorFrequency,omitempty"`
+	MonitorNodeCount      *int64  `json:"MonitorNodeCount,omitempty" xml:"MonitorNodeCount,omitempty"`
+	MonitorTaskCount      *int64  `json:"MonitorTaskCount,omitempty" xml:"MonitorTaskCount,omitempty"`
+	OverseaDDosDefendFlow *int64  `json:"OverseaDDosDefendFlow,omitempty" xml:"OverseaDDosDefendFlow,omitempty"`
+	OverseaLine           *string `json:"OverseaLine,omitempty" xml:"OverseaLine,omitempty"`
+	PaymentType           *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	RegionLines           *bool   `json:"RegionLines,omitempty" xml:"RegionLines,omitempty"`
+	SearchEngineLines     *string `json:"SearchEngineLines,omitempty" xml:"SearchEngineLines,omitempty"`
+	StartTime             *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTimestamp        *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	SubDomainLevel        *int64  `json:"SubDomainLevel,omitempty" xml:"SubDomainLevel,omitempty"`
+	TTLMinValue           *int64  `json:"TTLMinValue,omitempty" xml:"TTLMinValue,omitempty"`
+	URLForwardCount       *int64  `json:"URLForwardCount,omitempty" xml:"URLForwardCount,omitempty"`
+	VersionCode           *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VersionName           *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s DescribeDnsProductInstancesResponseBodyDnsProductsDnsProduct) String() string {

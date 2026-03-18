@@ -24,7 +24,6 @@ type iDescribeDnsGtmInstanceAddressPoolsResponseBody interface {
 }
 
 type DescribeDnsGtmInstanceAddressPoolsResponseBody struct {
-	// The returned address pools.
 	AddrPools *DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -164,88 +163,17 @@ func (s *DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPools) Validate() err
 }
 
 type DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 1
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool-1
-	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The time when the address pool was created.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates when the address pool was created.
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The load balancing policy of the address pool. Valid values:
-	//
-	// 	- ALL_RR: returns all addresses.
-	//
-	// 	- RATIO: returns addresses by weight.
-	//
-	// example:
-	//
-	// all_rr
-	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
-	// The ID of the health check task.
-	//
-	// example:
-	//
-	// abc123
+	AddrCount       *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	AddrPoolId      *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	LbaStrategy     *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
 	MonitorConfigId *string `json:"MonitorConfigId,omitempty" xml:"MonitorConfigId,omitempty"`
-	// Indicates whether health checks are configured. Valid values:
-	//
-	// 	- OPEN: enabled
-	//
-	// 	- CLOSE: disabled
-	//
-	// 	- UNCONFIGURED: not configured
-	//
-	// example:
-	//
-	// open
-	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// testpool
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the address pool. Valid values:
-	//
-	// 	- IPV4: IPv4 address
-	//
-	// 	- IPV6: IPv6 address
-	//
-	// 	- DOMAIN: domain name
-	//
-	// example:
-	//
-	// ipv4
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the address pool was updated.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The timestamp that indicates when the address pool was updated.
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	MonitorStatus   *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolsResponseBodyAddrPoolsAddrPool) String() string {

@@ -147,9 +147,8 @@ type DescribeDnsProductInstanceResponseBody struct {
 	// example:
 	//
 	// advanced
-	DnsSecurity *string `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
-	// The DNS servers configured for the domain names.
-	DnsServers *DescribeDnsProductInstanceResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	DnsSecurity *string                                           `json:"DnsSecurity,omitempty" xml:"DnsSecurity,omitempty"`
+	DnsServers  *DescribeDnsProductInstanceResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	// The domain name that is bound to the paid instance.
 	//
 	// If no value is returned for this parameter, no domain name is bound to the paid instance.

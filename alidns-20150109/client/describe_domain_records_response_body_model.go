@@ -22,7 +22,6 @@ type iDescribeDomainRecordsResponseBody interface {
 }
 
 type DescribeDomainRecordsResponseBody struct {
-	// The returned Domain Name System (DNS) records.
 	DomainRecords *DescribeDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,91 +146,21 @@ func (s *DescribeDomainRecordsResponseBodyDomainRecords) Validate() error {
 }
 
 type DescribeDomainRecordsResponseBodyDomainRecordsRecord struct {
-	// The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
-	//
-	// example:
-	//
-	// 1666501957000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	LbaStatus  *bool   `json:"LbaStatus,omitempty" xml:"LbaStatus,omitempty"`
-	// The resolution line.
-	//
-	// example:
-	//
-	// default
-	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// Indicates whether the DNS record is locked.
-	//
-	// example:
-	//
-	// false
-	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The priority of the mail exchanger (MX) record.
-	//
-	// example:
-	//
-	// 5
-	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The hostname.
-	//
-	// example:
-	//
-	// www
-	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The ID of the DNS record.
-	//
-	// example:
-	//
-	// 9999985
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the DNS record.
-	//
-	// example:
-	//
-	// Enable
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time-to-live (TTL) of the cached DNS record. Unit: seconds.
-	//
-	// example:
-	//
-	// 600
-	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	// The type of the DNS record.
-	//
-	// example:
-	//
-	// MX
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
-	//
-	// example:
-	//
-	// 1676872961000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The record value.
-	//
-	// example:
-	//
-	// mail1.hichina.com
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight of the DNS record.
-	//
-	// example:
-	//
-	// 2
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LbaStatus       *bool   `json:"LbaStatus,omitempty" xml:"LbaStatus,omitempty"`
+	Line            *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	Locked          *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	Priority        *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RR              *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	RecordId        *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TTL             *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeDomainRecordsResponseBodyDomainRecordsRecord) String() string {

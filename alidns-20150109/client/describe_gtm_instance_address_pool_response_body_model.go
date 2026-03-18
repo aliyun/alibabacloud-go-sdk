@@ -51,9 +51,8 @@ type DescribeGtmInstanceAddressPoolResponseBody struct {
 	// example:
 	//
 	// 1234abc
-	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The addresses in the address pool.
-	Addrs *DescribeGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
+	AddrPoolId *string                                          `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	Addrs      *DescribeGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
 	// The time when the address pool was created.
 	//
 	// example:
@@ -308,68 +307,15 @@ func (s *DescribeGtmInstanceAddressPoolResponseBodyAddrs) Validate() error {
 }
 
 type DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr struct {
-	// The ID of the address.
-	//
-	// example:
-	//
-	// 123
-	AddrId *int64 `json:"AddrId,omitempty" xml:"AddrId,omitempty"`
-	// Indicates whether health check was enabled for the address. Valid values:
-	//
-	// 	- **OK**: Normal
-	//
-	// 	- **ALERT**: Alert
-	//
-	// example:
-	//
-	// OK
-	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The time when the address pool was created.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The weight of the address.
-	//
-	// example:
-	//
-	// 1
-	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The mode of the address. Valid values:
-	//
-	// 	- **SMART**: Intelligent return
-	//
-	// 	- **ONLINE**: Always online
-	//
-	// 	- **OFFLINE**: Always offline
-	//
-	// example:
-	//
-	// SMART
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The last time when the address was updated.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// A timestamp that indicates the last time when the address was updated.
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The address.
-	//
-	// example:
-	//
-	// 1.1.1.1
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	AddrId          *int64  `json:"AddrId,omitempty" xml:"AddrId,omitempty"`
+	AlertStatus     *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	LbaWeight       *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeGtmInstanceAddressPoolResponseBodyAddrsAddr) String() string {

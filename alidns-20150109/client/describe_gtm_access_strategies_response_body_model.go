@@ -41,8 +41,7 @@ type DescribeGtmAccessStrategiesResponseBody struct {
 	// example:
 	//
 	// 0CCC9971-CEC9-4132-824B-4AE611C07623
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned list of access policies of the GTM instance.
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Strategies *DescribeGtmAccessStrategiesResponseBodyStrategies `json:"Strategies,omitempty" xml:"Strategies,omitempty" type:"Struct"`
 	// The total number of entries returned on all pages.
 	//
@@ -164,110 +163,23 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategies) Validate() error {
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy struct {
-	// The access policy. Valid values:
-	//
-	// 	- **AUTO**: Automatic switch
-	//
-	// 	- **DEFAULT**: Default address pool
-	//
-	// 	- **FAILOVER**: Failover address pool
-	//
-	// example:
-	//
-	// DEFAULT
-	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The access status. Valid values:
-	//
-	// 	- **DEFAULT**: The default address pool is currently accessed.
-	//
-	// 	- **FAILOVER**: The failover address pool is currently accessed.
-	//
-	// example:
-	//
-	// DEFAULT
-	AccessStatus *string `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
-	// The time when the access policy was created.
-	//
-	// example:
-	//
-	// 2018-08-09T00:10Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1533773400000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The ID of the default address pool.
-	//
-	// example:
-	//
-	// hra0i1
-	DefaultAddrPoolId *string `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
-	// Indicates whether health check was enabled for the default address pool. Valid values:
-	//
-	// 	- **OPEN**: Enabled
-	//
-	// 	- **CLOSE**: Disabled
-	//
-	// 	- **UNCONFIGURED**: Not configured
-	//
-	// example:
-	//
-	// OPEN
-	DefaultAddrPoolMonitorStatus *string `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
-	// The name of the default address pool.
-	DefaultAddrPoolName *string `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
-	// The availability status of the default address pool. Valid values:
-	//
-	// 	- **AVAILABLE**: Available
-	//
-	// 	- **NOT_AVAILABLE**: Unavailable
-	//
-	// example:
-	//
-	// AVAILABLE
-	DefaultAddrPoolStatus *string `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
-	// The ID of the failover address pool.
-	//
-	// example:
-	//
-	// hra0i2
-	FailoverAddrPoolId *string `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
-	// Indicates whether health check was enabled for the failover address pool.
-	//
-	// example:
-	//
-	// OPEN
-	FailoverAddrPoolMonitorStatus *string `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
-	// The name of the failover address pool.
-	FailoverAddrPoolName *string `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
-	// The availability status of the failover address pool.
-	//
-	// example:
-	//
-	// AVAILABLE
-	FailoverAddrPoolStatus *string `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
-	// The ID of the GTM instance whose access policies you want to query.
-	//
-	// example:
-	//
-	// instance1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The returned lines of access regions.
-	Lines *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
-	// The ID of the access policy.
-	//
-	// example:
-	//
-	// hra0hs
-	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	// The mode of the access policy. **SELF_DEFINED*	- indicates that the access policy is user-defined.
-	//
-	// example:
-	//
-	// SELF_DEFINED
-	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
-	// The name of the access policy.
-	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	AccessMode                    *string                                                         `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	AccessStatus                  *string                                                         `json:"AccessStatus,omitempty" xml:"AccessStatus,omitempty"`
+	CreateTime                    *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp               *int64                                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DefaultAddrPoolId             *string                                                         `json:"DefaultAddrPoolId,omitempty" xml:"DefaultAddrPoolId,omitempty"`
+	DefaultAddrPoolMonitorStatus  *string                                                         `json:"DefaultAddrPoolMonitorStatus,omitempty" xml:"DefaultAddrPoolMonitorStatus,omitempty"`
+	DefaultAddrPoolName           *string                                                         `json:"DefaultAddrPoolName,omitempty" xml:"DefaultAddrPoolName,omitempty"`
+	DefaultAddrPoolStatus         *string                                                         `json:"DefaultAddrPoolStatus,omitempty" xml:"DefaultAddrPoolStatus,omitempty"`
+	FailoverAddrPoolId            *string                                                         `json:"FailoverAddrPoolId,omitempty" xml:"FailoverAddrPoolId,omitempty"`
+	FailoverAddrPoolMonitorStatus *string                                                         `json:"FailoverAddrPoolMonitorStatus,omitempty" xml:"FailoverAddrPoolMonitorStatus,omitempty"`
+	FailoverAddrPoolName          *string                                                         `json:"FailoverAddrPoolName,omitempty" xml:"FailoverAddrPoolName,omitempty"`
+	FailoverAddrPoolStatus        *string                                                         `json:"FailoverAddrPoolStatus,omitempty" xml:"FailoverAddrPoolStatus,omitempty"`
+	InstanceId                    *string                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lines                         *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	StrategyId                    *string                                                         `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	StrategyMode                  *string                                                         `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	StrategyName                  *string                                                         `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategiesResponseBodyStrategiesStrategy) String() string {
@@ -475,22 +387,10 @@ func (s *DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLines) Validat
 }
 
 type DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine struct {
-	// The code of the access region group.
-	//
-	// example:
-	//
-	// DEFAULT
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the access region group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The code for the line of the access region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The name for the line of the access region.
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategiesResponseBodyStrategiesStrategyLinesLine) String() string {

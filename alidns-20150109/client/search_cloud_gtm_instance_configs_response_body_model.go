@@ -24,7 +24,6 @@ type iSearchCloudGtmInstanceConfigsResponseBody interface {
 }
 
 type SearchCloudGtmInstanceConfigsResponseBody struct {
-	// The instances list.
 	InstanceConfigs *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs `json:"InstanceConfigs,omitempty" xml:"InstanceConfigs,omitempty" type:"Struct"`
 	// Current page number, starting from 1, default is 1.
 	//
@@ -164,176 +163,31 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs) Validate() er
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig struct {
-	// The policy for load balancing between address pools. Valid values:
-	//
-	// 	- round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
-	//
-	// 	- sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
-	//
-	// 	- weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
-	//
-	// 	- source_nearest: Different address pools are returned based on the sources of DNS requests. This way, users can access nearby address pools.
-	//
-	// example:
-	//
-	// round_robin
-	AddressPoolLbStrategy *string `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
-	// The address pools.
-	AddressPools *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
-	// The availability state of the access domain name. Valid values:
-	//
-	// 	- available: If the access domain name is **enabled*	- and the health state is **normal**, the access domain name is deemed **available**.
-	//
-	// 	- unavailable: If the access domain name is **disabled*	- or the health state is **abnormal**, the access domain name is deemed **unavailable**.
-	//
-	// example:
-	//
-	// available
-	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// The commodity code. Valid values:
-	//
-	// 	- dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
-	//
-	// 	- dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
-	//
-	// example:
-	//
-	// dns_gtm_public_cn
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
-	//
-	// example:
-	//
-	// Config-000**11
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	AddressPoolLbStrategy *string                                                                             `json:"AddressPoolLbStrategy,omitempty" xml:"AddressPoolLbStrategy,omitempty"`
+	AddressPools          *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
+	AvailableStatus       *string                                                                             `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	CommodityCode         *string                                                                             `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ConfigId              *string                                                                             `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// example:
 	//
 	// ENABLE
 	ConfigLoggingSwitchStatus *string `json:"ConfigLoggingSwitchStatus,omitempty" xml:"ConfigLoggingSwitchStatus,omitempty"`
-	// Domain instance creation time.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Domain instance creation time (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The enabling state of the access domain name. Valid values:
-	//
-	// 	- enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
-	//
-	// 	- disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
-	//
-	// example:
-	//
-	// enable
-	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The health state of the access domain name. Valid values:
-	//
-	// 	- ok: The health state of the access domain name is normal and all address pools that are referenced by the access domain name are available.
-	//
-	// 	- ok_alert: The health state of the access domain name is warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, only the available address pools are returned for DNS requests.
-	//
-	// 	- exceptional: The health state of the access domain name is abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
-	//
-	// example:
-	//
-	// ok
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The ID of the GTM 3.0 instance.
-	//
-	// example:
-	//
-	// gtm-cn-x0r38e0**03
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Remarks for the domain instance.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
-	//
-	// example:
-	//
-	// www.example.com
-	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
-	// Host record of the domain accessed by GTM.
-	//
-	// example:
-	//
-	// www
-	ScheduleHostname *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
-	// DNS record types for the scheduling domain:
-	//
-	// - A: IPv4 address
-	//
-	// - AAAA: IPv6 address
-	//
-	// - CNAME: Domain name
-	//
-	// example:
-	//
-	// A
-	ScheduleRrType *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
-	// The allocation mode of the access domain name. Valid values:
-	//
-	// 	- custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone that is hosted by the Public Authoritative DNS module within the account to which the GTM instance belongs to generate an access domain name.
-	//
-	// 	- sys_assign: system allocation. This mode is not supported. Do not set ScheduleZoneMode to sys_assign.
-	//
-	// example:
-	//
-	// custom
-	ScheduleZoneMode *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
-	// The zone such as example.com or subzone such as a.example.com of the access domain name. In most cases, the zone or subzone is hosted by the Public Authoritative DNS module of Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs.
-	//
-	// example:
-	//
-	// example.com
-	ScheduleZoneName *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
-	// The mode used if the address pool with the smallest sequence number is recovered. This parameter is returned when AddressPoolLbStrategy is set to sequence. Valid values:
-	//
-	// 	- preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
-	//
-	// 	- non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
-	//
-	// example:
-	//
-	// preemptive
-	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
-	// Global TTL (in seconds), the TTL value for resolving the access domain name to the address pool, which affects the caching time of DNS records in the operator\\"s LocalDNS. Supports custom TTL values.
-	//
-	// example:
-	//
-	// 60
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The last modification time of the domain instance.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The last modification time of the domain instance (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// Global Traffic Management version 3.0 instance types:
-	//
-	// - standard: Standard Edition
-	//
-	// - ultimate: Ultimate Edition
-	//
-	// example:
-	//
-	// ultimate
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	CreateTime                *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp           *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EnableStatus              *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	HealthStatus              *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Remark                    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ScheduleDomainName        *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
+	ScheduleHostname          *string `json:"ScheduleHostname,omitempty" xml:"ScheduleHostname,omitempty"`
+	ScheduleRrType            *string `json:"ScheduleRrType,omitempty" xml:"ScheduleRrType,omitempty"`
+	ScheduleZoneMode          *string `json:"ScheduleZoneMode,omitempty" xml:"ScheduleZoneMode,omitempty"`
+	ScheduleZoneName          *string `json:"ScheduleZoneName,omitempty" xml:"ScheduleZoneName,omitempty"`
+	SequenceLbStrategyMode    *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	Ttl                       *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	UpdateTime                *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp           *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	VersionCode               *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig) String() string {
@@ -586,150 +440,23 @@ func (s *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigA
 }
 
 type SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool struct {
-	// Load balancing policy among addresses in the address pool:
-	//
-	// - round_robin: Round-robin, where for any source of DNS resolution requests, all addresses are returned, with a rotation of the order for every request.
-	//
-	// - sequence: Sequential, where for any source of DNS resolution requests, the address with the lower sequence number (indicating a higher priority, the smaller the number, the higher the priority) is returned. If the address with the lower sequence number is unavailable, the next address with a lower sequence number is returned.
-	//
-	// - weight: Weighted, supporting the setting of different weight values for each address to realize returning addresses according to the ratio of weights in DNS query resolutions.
-	//
-	// - source_nearest: Source-nearest, referring to the intelligent resolution feature, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing the nearest server.
-	//
-	// example:
-	//
-	// round_robin
-	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
-	// Address pool ID, uniquely identifying the address pool.
-	//
-	// example:
-	//
-	// pool-89564504435014**60
-	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// Address pool name.
-	//
-	// example:
-	//
-	// AddressPool-1
-	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
-	// Address pool type:
-	//
-	// - IPv4
-	//
-	// - IPv6
-	//
-	// - domain
-	//
-	// example:
-	//
-	// IPv4
-	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
-	// Address pool availability status:
-	//
-	// - available: Available
-	//
-	// - unavailable: Unavailable
-	//
-	// example:
-	//
-	// available
-	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Address pool creation time.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Address pool creation time (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Address pool status:
-	//
-	// - enable: Enabled status
-	//
-	// - disable: Disabled status
-	//
-	// example:
-	//
-	// enable
-	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The condition for determining the health status of the address pool. Valid values:
-	//
-	// 	- any_ok: At least one address in the address pool is available.
-	//
-	// 	- p30_ok: At least 30% of the addresses in the address pool are available.
-	//
-	// 	- p50_ok: At least 50% of the addresses in the address pool are available.
-	//
-	// 	- p70_ok: At least 70% of the addresses in the address pool are available.
-	//
-	// 	- all_ok: All addresses in the address pool are available.
-	//
-	// example:
-	//
-	// any_ok
-	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	// The health state of the address pool. Valid values:
-	//
-	// 	- ok: The health state of the address pool is normal and all addresses that are referenced by the address pool are available.
-	//
-	// 	- ok_alert: The health state of the address pool is warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this case, only the available addresses are returned for DNS requests.
-	//
-	// 	- exceptional: The health state of the address pool is abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
-	//
-	// example:
-	//
-	// ok
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// Parse the request source list.
-	RequestSource *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
-	// Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios:
-	//
-	// - true: yes
-	//
-	// - false: no
-	//
-	// example:
-	//
-	// false
-	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
-	// The mode used if the address with the smallest sequence number is recovered. This parameter is required only when the policy for load balancing between addresses is sequence. Valid values:
-	//
-	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
-	//
-	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
-	//
-	// example:
-	//
-	// preemptive
-	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
-	// Sequence number. For any parsing request, the address pool with the smaller sequence number (indicating the priority of the address pool returned, with smaller numbers having higher priority) will be returned.
-	//
-	// example:
-	//
-	// 1
-	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// Last modification time of the address pool.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Update time (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address pool, implementing the return of address pools according to weight ratios in resolution queries.
-	//
-	// example:
-	//
-	// 1
-	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+	AddressLbStrategy        *string                                                                                                     `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	AddressPoolId            *string                                                                                                     `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	AddressPoolName          *string                                                                                                     `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	AddressPoolType          *string                                                                                                     `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	AvailableStatus          *string                                                                                                     `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	CreateTime               *string                                                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp          *int64                                                                                                      `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EnableStatus             *string                                                                                                     `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	HealthJudgement          *string                                                                                                     `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthStatus             *string                                                                                                     `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	RequestSource            *SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	SeqNonPreemptiveSchedule *bool                                                                                                       `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	SequenceLbStrategyMode   *string                                                                                                     `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	SerialNumber             *int32                                                                                                      `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	UpdateTime               *string                                                                                                     `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp          *int64                                                                                                      `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	WeightValue              *int32                                                                                                      `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
 }
 
 func (s SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool) String() string {

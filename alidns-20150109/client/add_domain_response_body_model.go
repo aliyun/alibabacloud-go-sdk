@@ -26,7 +26,6 @@ type iAddDomainResponseBody interface {
 }
 
 type AddDomainResponseBody struct {
-	// The Domain Name System (DNS) servers configured for the domain name.
 	DnsServers *AddDomainResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	// The ID of the domain name.
 	//

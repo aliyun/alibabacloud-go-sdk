@@ -183,55 +183,19 @@ func (s *SearchRecursionZonesResponseBodyZones) Validate() error {
 }
 
 type SearchRecursionZonesResponseBodyZonesZone struct {
-	// example:
-	//
-	// 2022-10-17T06:13Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1749694625000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// example:
-	//
-	// ***
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// SUB
-	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	// example:
-	//
-	// USER
+	CreateTime      *string                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64                                                    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator         *string                                                   `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorSubType  *string                                                   `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
 	CreatorType     *string                                                   `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 	EffectiveScopes *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty" type:"Struct"`
-	// example:
-	//
-	// record
-	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	// example:
-	//
-	// 20
-	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// example:
-	//
-	// 107
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// 2024-08-13T01:44Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 1639621006000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// example:
-	//
-	// 169439170000011
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// example:
-	//
-	// ixiqiu.cn
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ProxyPattern    *string                                                   `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	RecordCount     *int32                                                    `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark          *string                                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UpdateTime      *string                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64                                                    `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	ZoneId          *string                                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName        *string                                                   `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s SearchRecursionZonesResponseBodyZonesZone) String() string {
@@ -403,14 +367,8 @@ func (s *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes) Validate() er
 }
 
 type SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope struct {
-	// example:
-	//
-	// account
-	EffectiveType *string `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
-	// example:
-	//
-	// [20003]
-	Scopes *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Struct"`
+	EffectiveType *string                                                                       `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
+	Scopes        *SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Struct"`
 }
 
 func (s SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope) String() string {

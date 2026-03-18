@@ -109,9 +109,8 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	// example:
 	//
 	// ipv4
-	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	// The address pools in the primary address pool group.
-	DefaultAddrPools *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools `json:"DefaultAddrPools,omitempty" xml:"DefaultAddrPools,omitempty" type:"Struct"`
+	DefaultAddrPoolType *string                                                   `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
+	DefaultAddrPools    *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools `json:"DefaultAddrPools,omitempty" xml:"DefaultAddrPools,omitempty" type:"Struct"`
 	// The number of available addresses in the primary address pool.
 	//
 	// example:
@@ -181,9 +180,8 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	// example:
 	//
 	// ipv4
-	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	// The address pools in the secondary address pool group.
-	FailoverAddrPools *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools `json:"FailoverAddrPools,omitempty" xml:"FailoverAddrPools,omitempty" type:"Struct"`
+	FailoverAddrPoolType *string                                                    `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
+	FailoverAddrPools    *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools `json:"FailoverAddrPools,omitempty" xml:"FailoverAddrPools,omitempty" type:"Struct"`
 	// The number of available addresses in the secondary address pool.
 	//
 	// example:
@@ -227,9 +225,8 @@ type DescribeDnsGtmAccessStrategyResponseBody struct {
 	// example:
 	//
 	// instance1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The source regions.
-	Lines *DescribeDnsGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	InstanceId *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lines      *DescribeDnsGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -556,30 +553,10 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPools) Validate() er
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 1
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool.
-	//
-	// example:
-	//
-	// 1
-	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBodyDefaultAddrPoolsDefaultAddrPool) String() string {
@@ -665,30 +642,10 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPools) Validate() e
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 1
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The weight of the address pool.
-	//
-	// example:
-	//
-	// 1
-	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	LbaWeight *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBodyFailoverAddrPoolsFailoverAddrPool) String() string {
@@ -774,30 +731,10 @@ func (s *DescribeDnsGtmAccessStrategyResponseBodyLines) Validate() error {
 }
 
 type DescribeDnsGtmAccessStrategyResponseBodyLinesLine struct {
-	// The code of the source region group.
-	//
-	// example:
-	//
-	// default
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the source region group.
-	//
-	// example:
-	//
-	// global
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The line code of the source region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The line name of the source region.
-	//
-	// example:
-	//
-	// global
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyResponseBodyLinesLine) String() string {

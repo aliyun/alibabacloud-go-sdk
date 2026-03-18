@@ -18,9 +18,7 @@ type iListCloudGtmMonitorNodesResponseBody interface {
 }
 
 type ListCloudGtmMonitorNodesResponseBody struct {
-	// Public IPv4 monitoring node list.
 	Ipv4IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
-	// List of public IPv6 monitoring nodes.
 	Ipv6IspCityNodes *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
 	// Unique request identification code.
 	//
@@ -114,78 +112,21 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes) Validate() error 
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
-	// City code.
-	//
+	CityCode        *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	CountryCode     *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName     *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
 	// example:
 	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// City name.
-	//
-	// example:
-	//
-	// Beijing
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Country code.
-	//
-	// example:
-	//
-	// 629
-	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// Country name.
-	//
-	// example:
-	//
-	// China
-	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// Monitor node default selection:
-	//
-	// - true: Selected by default
-	//
-	// - false: Not selected by default
-	//
-	// example:
-	//
-	// true
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// Monitor probe group name.
-	//
-	// example:
-	//
-	// BGP Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Monitoring node group type, currently supported:
-	//
-	// - BGP: BGP node
-	//
-	// - OVERSEAS: International node
-	//
-	// - ISP: Carrier node
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// List of node IP addresses.
-	Ips *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// Operator code.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// Operator name.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// Unique identifier ID of the probe node.
-	//
-	// example:
-	//
-	// node-ewze1bysndy4gf**j8
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// enable
+	EnableStatus *string                                                                 `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	GroupName    *string                                                                 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType    *string                                                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips          *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	IspCode      *string                                                                 `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName      *string                                                                 `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	NodeId       *string                                                                 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) String() string {
@@ -214,6 +155,10 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) Ge
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) GetDefaultSelected() *bool {
 	return s.DefaultSelected
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) GetEnableStatus() *string {
+	return s.EnableStatus
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) GetGroupName() *string {
@@ -262,6 +207,11 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) Se
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetDefaultSelected(v bool) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
 	s.DefaultSelected = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode) SetEnableStatus(v string) *ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode {
+	s.EnableStatus = &v
 	return s
 }
 
@@ -364,78 +314,21 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes) Validate() error 
 }
 
 type ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
-	// City code.
-	//
+	CityCode        *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	CountryCode     *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	CountryName     *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	DefaultSelected *bool   `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
 	// example:
 	//
-	// 357
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// City name.
-	//
-	// example:
-	//
-	// Shanghai
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Country code.
-	//
-	// example:
-	//
-	// 629
-	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// Country name.
-	//
-	// example:
-	//
-	// China
-	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// Monitor node default selection:
-	//
-	// - true: Selected by default
-	//
-	// - false: Not selected by default
-	//
-	// example:
-	//
-	// true
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// Monitoring probe group name.
-	//
-	// example:
-	//
-	// BGP
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Monitoring node group type, currently supported:
-	//
-	// - BGP: BGP node
-	//
-	// - OVERSEAS: International node
-	//
-	// - ISP: Carrier node
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// List of node IP addresses.
-	Ips *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// Operator code.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// Operator name.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// Unique identifier ID of the probe node.
-	//
-	// example:
-	//
-	// node-ewze1bysndy4gf**j8
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// enable
+	EnableStatus *string                                                                 `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	GroupName    *string                                                                 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType    *string                                                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips          *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	IspCode      *string                                                                 `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName      *string                                                                 `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	NodeId       *string                                                                 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) String() string {
@@ -464,6 +357,10 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) Ge
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) GetDefaultSelected() *bool {
 	return s.DefaultSelected
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) GetEnableStatus() *string {
+	return s.EnableStatus
 }
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) GetGroupName() *string {
@@ -512,6 +409,11 @@ func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) Se
 
 func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetDefaultSelected(v bool) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
 	s.DefaultSelected = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode) SetEnableStatus(v string) *ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode {
+	s.EnableStatus = &v
 	return s
 }
 

@@ -35,11 +35,9 @@ type DescribeDomainNsResponseBody struct {
 	// example:
 	//
 	// DnsCheck.Failed
-	DetectFailedReasonCode *string `json:"DetectFailedReasonCode,omitempty" xml:"DetectFailedReasonCode,omitempty"`
-	// The DNS server names configured for the domain name.
-	DnsServers *DescribeDomainNsResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	// The Domain Name System (DNS) server names assigned by Alibaba Cloud DNS.
-	ExpectDnsServers *DescribeDomainNsResponseBodyExpectDnsServers `json:"ExpectDnsServers,omitempty" xml:"ExpectDnsServers,omitempty" type:"Struct"`
+	DetectFailedReasonCode *string                                       `json:"DetectFailedReasonCode,omitempty" xml:"DetectFailedReasonCode,omitempty"`
+	DnsServers             *DescribeDomainNsResponseBodyDnsServers       `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	ExpectDnsServers       *DescribeDomainNsResponseBodyExpectDnsServers `json:"ExpectDnsServers,omitempty" xml:"ExpectDnsServers,omitempty" type:"Struct"`
 	// Indicates whether the name servers include Alibaba Cloud DNS servers.
 	//
 	// example:

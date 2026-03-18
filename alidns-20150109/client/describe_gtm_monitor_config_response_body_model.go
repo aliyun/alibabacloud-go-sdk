@@ -59,8 +59,7 @@ type DescribeGtmMonitorConfigResponseBody struct {
 	// example:
 	//
 	// 60
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The monitored nodes.
+	Interval     *int32                                            `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspCityNodes *DescribeGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
 	// The ID of the health check configuration.
 	//
@@ -292,42 +291,12 @@ func (s *DescribeGtmMonitorConfigResponseBodyIspCityNodes) Validate() error {
 }
 
 type DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {
-	// The code of the city where the monitored node is deployed.
-	//
-	// example:
-	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city where the monitored node is deployed.
-	//
-	// example:
-	//
-	// Zhangjiakou
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The code of the country where the monitored node is deployed.
-	//
-	// example:
-	//
-	// 001
+	CityCode    *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The display name of the country where the monitored node is deployed.
-	//
-	// example:
-	//
-	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// The code of the Internet service provider (ISP) to which the monitored node belongs.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP to which the monitored node belongs.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	IspCode     *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName     *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeGtmMonitorConfigResponseBodyIspCityNodesIspCityNode) String() string {

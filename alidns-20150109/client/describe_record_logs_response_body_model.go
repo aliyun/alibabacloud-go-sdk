@@ -33,8 +33,7 @@ type DescribeRecordLogsResponseBody struct {
 	// example:
 	//
 	// 2
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The operation logs.
+	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecordLogs *DescribeRecordLogsResponseBodyRecordLogs `json:"RecordLogs,omitempty" xml:"RecordLogs,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -147,28 +146,11 @@ func (s *DescribeRecordLogsResponseBodyRecordLogs) Validate() error {
 }
 
 type DescribeRecordLogsResponseBodyRecordLogsRecordLog struct {
-	// The operation that you performed.
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The time when you performed the operation.
-	//
-	// example:
-	//
-	// 2015-12-12T09:23Z
-	ActionTime *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
-	// The time when you performed the operation. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 134514540000
-	ActionTimestamp *int64 `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
-	// The IP address of the operator.
-	//
-	// example:
-	//
-	// 182.92.253.XX
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The operation message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Action          *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionTime      *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
+	ActionTimestamp *int64  `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
+	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DescribeRecordLogsResponseBodyRecordLogsRecordLog) String() string {

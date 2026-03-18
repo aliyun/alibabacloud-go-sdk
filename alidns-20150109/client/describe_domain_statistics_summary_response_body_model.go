@@ -41,8 +41,7 @@ type DescribeDomainStatisticsSummaryResponseBody struct {
 	// example:
 	//
 	// CC625C21-8832-4683-BF10-C3CFB1A4FA13
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics on the Domain Name System (DNS) requests.
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statistics *DescribeDomainStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	// The total number of data records.
 	//
@@ -164,37 +163,9 @@ func (s *DescribeDomainStatisticsSummaryResponseBodyStatistics) Validate() error
 }
 
 type DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic struct {
-	// The number of DNS requests.
-	//
-	// example:
-	//
-	// 35509014
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// ali-gslb.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The type of the domain name. The parameter value is not case-sensitive. Valid values:
-	//
-	// PUBLIC (default): hosted public domain name
-	//
-	// CACHE: cache-accelerated domain name
-	//
-	// example:
-	//
-	// PUBLIC
-	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
-	//
-	// 	- OPEN
-	//
-	// 	- CLOSE
-	//
-	// example:
-	//
-	// OPEN
+	Count                 *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType            *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	ResolveAnalysisStatus *string `json:"resolveAnalysisStatus,omitempty" xml:"resolveAnalysisStatus,omitempty"`
 }
 

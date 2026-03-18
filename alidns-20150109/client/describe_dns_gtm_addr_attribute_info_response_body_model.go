@@ -16,7 +16,6 @@ type iDescribeDnsGtmAddrAttributeInfoResponseBody interface {
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBody struct {
-	// The address in the address pool.
 	Addr *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,13 +95,7 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddr) Validate() error {
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr struct {
-	// The address in the address pool.
-	//
-	// example:
-	//
-	// 1.1.1.1
-	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The information about the source region of the address.
+	Addr          *string                                                           `json:"Addr,omitempty" xml:"Addr,omitempty"`
 	AttributeInfo *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty" type:"Struct"`
 }
 
@@ -142,36 +135,11 @@ func (s *DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddr) Validate() error {
 }
 
 type DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo struct {
-	// The parent line code of the source region.
-	//
-	// example:
-	//
-	// telecom
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The code of the source region group.
-	//
-	// example:
-	//
-	// DEFAULT
-	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the source region group.
-	//
-	// example:
-	//
-	// Global
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The line code of the source region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The line name of the source region.
-	//
-	// example:
-	//
-	// Global
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAddrAttributeInfoResponseBodyAddrAddrAttributeInfo) String() string {

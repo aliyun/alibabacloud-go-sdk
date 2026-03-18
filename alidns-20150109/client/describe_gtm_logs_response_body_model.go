@@ -24,7 +24,6 @@ type iDescribeGtmLogsResponseBody interface {
 }
 
 type DescribeGtmLogsResponseBody struct {
-	// The list of logs returned.
 	Logs *DescribeGtmLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -164,60 +163,15 @@ func (s *DescribeGtmLogsResponseBodyLogs) Validate() error {
 }
 
 type DescribeGtmLogsResponseBodyLogsLog struct {
-	// The formatted message content.
-	//
-	// example:
-	//
-	// addtest-pool-1
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the object that was operated on.
-	//
-	// example:
-	//
-	// 121212
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The name of the object that was operated on.
-	//
-	// example:
-	//
-	// test-pool-1
-	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The type of the object that was operated on.
-	//
-	// example:
-	//
-	// POOL
-	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The ID of the log record.
-	//
-	// example:
-	//
-	// 6726
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The operation performed.
-	//
-	// example:
-	//
-	// add
-	OperAction *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
-	// The IP address subject to the operation.
-	//
-	// example:
-	//
-	// 106.11.34.X
-	OperIp *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
-	// The time when the operation was performed.
-	//
-	// example:
-	//
-	// 2018-01-24T07:35Z
-	OperTime *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
-	// A timestamp that indicates the time when the operation was performed.
-	//
-	// example:
-	//
-	// 1516779348000
-	OperTimestamp *int64 `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
+	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityName    *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	EntityType    *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OperAction    *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
+	OperIp        *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
+	OperTime      *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
+	OperTimestamp *int64  `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
 }
 
 func (s DescribeGtmLogsResponseBodyLogsLog) String() string {

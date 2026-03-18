@@ -22,14 +22,10 @@ type iDescribeDnsGtmMonitorAvailableConfigResponseBody interface {
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBody struct {
-	// The nodes that perform health checks on domain names that use public IPv4 addresses.
 	DomainIpv4IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes `json:"DomainIpv4IspCityNodes,omitempty" xml:"DomainIpv4IspCityNodes,omitempty" type:"Struct"`
-	// The nodes that perform health checks on domain names that use public IPv6 addresses.
 	DomainIpv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes `json:"DomainIpv6IspCityNodes,omitempty" xml:"DomainIpv6IspCityNodes,omitempty" type:"Struct"`
-	// The nodes that perform health checks on public IPv4 addresses.
-	Ipv4IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
-	// The nodes that perform health checks on public IPv6 addresses.
-	Ipv6IspCityNodes *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
+	Ipv4IspCityNodes       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes       `json:"Ipv4IspCityNodes,omitempty" xml:"Ipv4IspCityNodes,omitempty" type:"Struct"`
+	Ipv6IspCityNodes       *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes       `json:"Ipv6IspCityNodes,omitempty" xml:"Ipv6IspCityNodes,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -150,56 +146,14 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodes)
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode struct {
-	// The city code.
-	//
-	// example:
-	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city.
-	//
-	// example:
-	//
-	// Zhangjiakou
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the health check node is selected by default.
-	//
-	// example:
-	//
-	// true
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the node group.
-	//
-	// example:
-	//
-	// BGP Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the node group. Valid values:
-	//
-	// 	- BGP: BGP node
-	//
-	// 	- OVERSEAS: node outside the Chinese mainland
-	//
-	// 	- ISP: ISP node
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The IP addresses of the health check nodes.
-	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The ISP code.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	CityCode        *string                                                                                         `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string                                                                                         `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	DefaultSelected *bool                                                                                           `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string                                                                                         `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType       *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	IspCode         *string                                                                                         `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName         *string                                                                                         `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv4IspCityNodesDomainIpv4IspCityNode) String() string {
@@ -351,56 +305,14 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodes)
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode struct {
-	// The city code.
-	//
-	// example:
-	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city.
-	//
-	// example:
-	//
-	// Zhangjiakou
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the health check node is selected by default.
-	//
-	// example:
-	//
-	// false
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the node group.
-	//
-	// example:
-	//
-	// BGP Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the node group. Valid values:
-	//
-	// 	- BGP: BGP node
-	//
-	// 	- OVERSEAS: node outside the Chinese mainland
-	//
-	// 	- ISP: ISP node
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// This parameter is not returned.
-	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The ISP code.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	CityCode        *string                                                                                         `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string                                                                                         `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	DefaultSelected *bool                                                                                           `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string                                                                                         `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType       *string                                                                                         `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	IspCode         *string                                                                                         `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName         *string                                                                                         `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyDomainIpv6IspCityNodesDomainIpv6IspCityNode) String() string {
@@ -552,56 +464,14 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodes) Valid
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode struct {
-	// The city code.
-	//
-	// example:
-	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city.
-	//
-	// example:
-	//
-	// Zhangjiakou
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the health check node is selected by default.
-	//
-	// example:
-	//
-	// true
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the node group.
-	//
-	// example:
-	//
-	// BGP Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the node group. Valid values:
-	//
-	// 	- BGP: Border Gateway Protocol (BGP) node
-	//
-	// 	- OVERSEAS: node outside the Chinese mainland
-	//
-	// 	- ISP: ISP node
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The IP addresses of the health check nodes.
-	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The Internet service provider (ISP) code.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	CityCode        *string                                                                             `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string                                                                             `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	DefaultSelected *bool                                                                               `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string                                                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType       *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	IspCode         *string                                                                             `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName         *string                                                                             `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv4IspCityNodesIpv4IspCityNode) String() string {
@@ -753,56 +623,14 @@ func (s *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodes) Valid
 }
 
 type DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode struct {
-	// The city code.
-	//
-	// example:
-	//
-	// 503
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city.
-	//
-	// example:
-	//
-	// Zhangjiakou
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Indicates whether the health check node is selected by default.
-	//
-	// example:
-	//
-	// true
-	DefaultSelected *bool `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
-	// The name of the node group.
-	//
-	// example:
-	//
-	// BGP Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the node group. Valid values:
-	//
-	// 	- BGP: BGP node
-	//
-	// 	- OVERSEAS: node outside the Chinese mainland
-	//
-	// 	- ISP: ISP node
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// This parameter is not returned.
-	Ips *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
-	// The ISP code.
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	CityCode        *string                                                                             `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName        *string                                                                             `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	DefaultSelected *bool                                                                               `json:"DefaultSelected,omitempty" xml:"DefaultSelected,omitempty"`
+	GroupName       *string                                                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType       *string                                                                             `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	Ips             *DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Struct"`
+	IspCode         *string                                                                             `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName         *string                                                                             `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorAvailableConfigResponseBodyIpv6IspCityNodesIpv6IspCityNode) String() string {

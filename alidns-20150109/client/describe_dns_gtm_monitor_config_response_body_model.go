@@ -59,8 +59,7 @@ type DescribeDnsGtmMonitorConfigResponseBody struct {
 	// example:
 	//
 	// 1
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The health check nodes.
+	Interval     *int32                                               `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	IspCityNodes *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
 	// The ID of the health check configuration.
 	//
@@ -324,42 +323,12 @@ func (s *DescribeDnsGtmMonitorConfigResponseBodyIspCityNodes) Validate() error {
 }
 
 type DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode struct {
-	// The city code.
-	//
-	// example:
-	//
-	// 572
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// The display name of the city.
-	//
-	// example:
-	//
-	// Qingdao
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// The code of the country or region.
-	//
-	// example:
-	//
-	// 001
+	CityCode    *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The display name of the country or region.
-	//
-	// example:
-	//
-	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// The Internet service provider (ISP) code.
-	//
-	// example:
-	//
-	// 123
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// The display name of the ISP.
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	IspCode     *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName     *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeDnsGtmMonitorConfigResponseBodyIspCityNodesIspCityNode) String() string {

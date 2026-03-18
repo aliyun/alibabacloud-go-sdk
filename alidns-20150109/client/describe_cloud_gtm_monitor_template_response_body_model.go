@@ -133,8 +133,7 @@ type DescribeCloudGtmMonitorTemplateResponseBody struct {
 	// example:
 	//
 	// IPv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Probe node list, detailed information can be obtained by calling ListCloudGtmMonitorNodes.
+	IpVersion    *string                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	IspCityNodes *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
 	// The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
 	//
@@ -398,60 +397,14 @@ func (s *DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes) Validate() err
 }
 
 type DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode struct {
-	// City code
-	//
-	// example:
-	//
-	// 357
-	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	// City name
-	//
-	// example:
-	//
-	// Shanghai
-	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	// Country Code
-	//
-	// example:
-	//
-	// 629
+	CityCode    *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// Country Name
-	//
-	// example:
-	//
-	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// Probe node group type name
-	//
-	// example:
-	//
-	// BGP Nodes
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Probe node group types:
-	//
-	// - BGP: BGP nodes
-	//
-	// - OVERSEAS: International nodes
-	//
-	// - ISP: Carrier nodes
-	//
-	// example:
-	//
-	// BGP
-	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// Operator Code
-	//
-	// example:
-	//
-	// 465
-	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	// Operator Name
-	//
-	// example:
-	//
-	// Alibaba
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType   *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	IspCode     *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	IspName     *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode) String() string {

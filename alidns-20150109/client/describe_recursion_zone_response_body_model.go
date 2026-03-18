@@ -288,14 +288,8 @@ func (s *DescribeRecursionZoneResponseBodyEffectiveScopes) Validate() error {
 }
 
 type DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope struct {
-	// example:
-	//
-	// account
-	EffectiveType *string `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
-	// example:
-	//
-	// [20003]
-	Scopes *DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScopeScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Struct"`
+	EffectiveType *string                                                               `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
+	Scopes        *DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScopeScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Struct"`
 }
 
 func (s DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope) String() string {

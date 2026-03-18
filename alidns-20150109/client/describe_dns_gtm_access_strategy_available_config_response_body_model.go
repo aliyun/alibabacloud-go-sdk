@@ -30,14 +30,10 @@ type iDescribeDnsGtmAccessStrategyAvailableConfigResponseBody interface {
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBody struct {
-	// The available address pools of the domain name type.
 	DomainAddrPools *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools `json:"DomainAddrPools,omitempty" xml:"DomainAddrPools,omitempty" type:"Struct"`
-	// The available address pools of the IPv4 type.
-	Ipv4AddrPools *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
-	// The available address pools of the IPv6 type.
-	Ipv6AddrPools *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
-	// The source regions.
-	Lines *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	Ipv4AddrPools   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools   `json:"Ipv4AddrPools,omitempty" xml:"Ipv4AddrPools,omitempty" type:"Struct"`
+	Ipv6AddrPools   *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools   `json:"Ipv6AddrPools,omitempty" xml:"Ipv6AddrPools,omitempty" type:"Struct"`
+	Lines           *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines           `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -218,24 +214,9 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPools)
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDomainAddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 1
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// testpool
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyDomainAddrPoolsDomainAddrPool) String() string {
@@ -312,24 +293,9 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPools) V
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4AddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 1
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// testpool
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv4AddrPoolsIpv4AddrPool) String() string {
@@ -406,24 +372,9 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPools) V
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool struct {
-	// The number of addresses in the address pool.
-	//
-	// example:
-	//
-	// 1
-	AddrCount *int32 `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// pool1
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// testpool
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	AddrCount *int32  `json:"AddrCount,omitempty" xml:"AddrCount,omitempty"`
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyIpv6AddrPoolsIpv6AddrPool) String() string {
@@ -500,36 +451,11 @@ func (s *DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLines) Validate(
 }
 
 type DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {
-	// The parent line code of the source region. Leave it blank if no parent line exists.
-	//
-	// example:
-	//
-	// telecom
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The line name of the source region.
-	//
-	// example:
-	//
-	// default
-	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the source region group.
-	//
-	// example:
-	//
-	// global
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The line code of the source region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The code of the source region group.
-	//
-	// example:
-	//
-	// global
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAccessStrategyAvailableConfigResponseBodyLinesLine) String() string {

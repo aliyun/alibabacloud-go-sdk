@@ -67,16 +67,14 @@ type DescribeDomainInfoResponseBody struct {
 	// example:
 	//
 	// true
-	AliDomain *bool `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
-	// The available time to live (TTL) values that can be configured for the domain name. Available TTL values are not returned by default. If you want to query such information, set NeedDetailAttributes to true.
+	AliDomain     *bool                                        `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
 	AvailableTtls *DescribeDomainInfoResponseBodyAvailableTtls `json:"AvailableTtls,omitempty" xml:"AvailableTtls,omitempty" type:"Struct"`
 	// The time when the domain name was created.
 	//
 	// example:
 	//
 	// 2015-12-12T09:23Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The DNS servers that are used to resolve the domain name.
+	CreateTime *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DnsServers *DescribeDomainInfoResponseBodyDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
 	// The ID of the domain name.
 	//
@@ -145,9 +143,8 @@ type DescribeDomainInfoResponseBody struct {
 	// example:
 	//
 	// {"default":{},"unicom":{},"telecom":{},"mobile":{},"edu":{},"oversea":{},"baidu":{},"biying":{},"google":{}}
-	RecordLineTreeJson *string `json:"RecordLineTreeJson,omitempty" xml:"RecordLineTreeJson,omitempty"`
-	// The DNS request lines.
-	RecordLines *DescribeDomainInfoResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
+	RecordLineTreeJson *string                                    `json:"RecordLineTreeJson,omitempty" xml:"RecordLineTreeJson,omitempty"`
+	RecordLines        *DescribeDomainInfoResponseBodyRecordLines `json:"RecordLines,omitempty" xml:"RecordLines,omitempty" type:"Struct"`
 	// Indicates whether the DNS request lines are regional lines.
 	//
 	// example:
@@ -535,22 +532,10 @@ func (s *DescribeDomainInfoResponseBodyRecordLines) Validate() error {
 }
 
 type DescribeDomainInfoResponseBodyRecordLinesRecordLine struct {
-	// The code of the parent line. This parameter is not returned if the line has no parent line.
-	//
-	// example:
-	//
-	// internal
-	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The code of the line.
-	//
-	// example:
-	//
-	// cn_region_xibei
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The name of the parent line.
+	FatherCode      *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
+	LineCode        *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
 	LineDisplayName *string `json:"LineDisplayName,omitempty" xml:"LineDisplayName,omitempty"`
-	// The name of the line.
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	LineName        *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDomainInfoResponseBodyRecordLinesRecordLine) String() string {

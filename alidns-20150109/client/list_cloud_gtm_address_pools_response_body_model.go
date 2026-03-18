@@ -24,7 +24,6 @@ type iListCloudGtmAddressPoolsResponseBody interface {
 }
 
 type ListCloudGtmAddressPoolsResponseBody struct {
-	// The address pools.
 	AddressPools *ListCloudGtmAddressPoolsResponseBodyAddressPools `json:"AddressPools,omitempty" xml:"AddressPools,omitempty" type:"Struct"`
 	// Current page number, starting at **1**, default is **1**.
 	//
@@ -164,134 +163,21 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPools) Validate() error {
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool struct {
-	// Load balancing policy among addresses in the address pool:
-	//
-	// - round_robin: Round-robin, for any source of DNS resolution requests, all addresses are returned. The order of all addresses is rotated each time.
-	//
-	// - sequence: Sequential, for any source of DNS resolution requests, the address with the smaller sequence number (the sequence number indicates the priority of address returns, with smaller numbers having higher priority) is returned. If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
-	//
-	// - weight: Weighted, supports setting different weight values for each address, realizing the return of addresses according to the ratio of weights in resolution queries.
-	//
-	// - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
-	//
-	// example:
-	//
-	// round_robin
-	AddressLbStrategy *string `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
-	// The ID of the address pool. This ID uniquely identifies the address pool.
-	//
-	// example:
-	//
-	// pool-89528023225442**16
-	AddressPoolId *string `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
-	// Address pool name.
-	//
-	// example:
-	//
-	// AddressPool-1
-	AddressPoolName *string `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
-	// Address pool type:
-	//
-	// - IPv4
-	//
-	// - IPv6
-	//
-	// - domain
-	//
-	// example:
-	//
-	// IPv4
-	AddressPoolType *string `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
-	// The addresses.
-	Addresses *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
-	// The availability state of the address pool. Valid values:
-	//
-	// 	- Available: The address pool is available.
-	//
-	// 	- unavailable: The address pool is unavailable.
-	//
-	// example:
-	//
-	// available
-	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Address pool creation time.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Address pool creation time (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The enabling state of the address pool. Valid values:
-	//
-	// 	- enable: The address pool is enabled.
-	//
-	// 	- disable: The address pool is disabled.
-	//
-	// example:
-	//
-	// enable
-	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The condition for determining the health state of the address. Valid values:
-	//
-	// 	- any_ok: The health check results of at least one health check template are normal.
-	//
-	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
-	//
-	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
-	//
-	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
-	//
-	// 	- all_ok: The health check results of all health check templates are normal.
-	//
-	// example:
-	//
-	// any_ok
-	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	// The health state of the address pool. Valid values:
-	//
-	// 	- ok: The health state of the address pool is Normal and all addresses that are referenced by the address pool are available.
-	//
-	// 	- ok_alert: The health state of the address pool is Warning and some of the addresses that are referenced by the address pool are unavailable. However, the address pool is deemed normal. In this state, available address pools are normally used for DNS resolution, but unavailable address pools cannot be used for DNS resolution.
-	//
-	// 	- exceptional: The health state of the address pool is Abnormal and some or all of the addresses that are referenced by the address pool are unavailable. In this case, the address pool is deemed abnormal.
-	//
-	// example:
-	//
-	// ok
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// Remark
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
-	//
-	// 	- preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
-	//
-	// 	- non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
-	//
-	// example:
-	//
-	// preemptive
-	SequenceLbStrategyMode *string `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
-	// Last modification time of the address pool.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Last modification time of the address pool (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	AddressLbStrategy      *string                                                               `json:"AddressLbStrategy,omitempty" xml:"AddressLbStrategy,omitempty"`
+	AddressPoolId          *string                                                               `json:"AddressPoolId,omitempty" xml:"AddressPoolId,omitempty"`
+	AddressPoolName        *string                                                               `json:"AddressPoolName,omitempty" xml:"AddressPoolName,omitempty"`
+	AddressPoolType        *string                                                               `json:"AddressPoolType,omitempty" xml:"AddressPoolType,omitempty"`
+	Addresses              *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
+	AvailableStatus        *string                                                               `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	CreateTime             *string                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp        *int64                                                                `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EnableStatus           *string                                                               `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	HealthJudgement        *string                                                               `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthStatus           *string                                                               `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	Remark                 *string                                                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SequenceLbStrategyMode *string                                                               `json:"SequenceLbStrategyMode,omitempty" xml:"SequenceLbStrategyMode,omitempty"`
+	UpdateTime             *string                                                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp        *int64                                                                `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool) String() string {
@@ -481,168 +367,27 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses) V
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress struct {
-	// IP address or domain name.
-	//
-	// example:
-	//
-	// 223.5.XX.XX
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
-	//
-	// example:
-	//
-	// addr-895182181143688192
-	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// Address ownership information, not supported in the current version.
-	//
-	// example:
-	//
-	// The current version does not support returning this parameter.
-	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The failover mode that is used when address exceptions are identified. Valid values:
-	//
-	// 	- auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-	//
-	// 	- manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-	//
-	// example:
-	//
-	// auto
-	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
-	// The availability state of the address. Valid values:
-	//
-	// 	- available: The address is available.
-	//
-	// 	- unavailable: The address is unavailable.
-	//
-	// example:
-	//
-	// available
-	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Address creation time.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Address creation time (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Address enable status:
-	//
-	// - enable: Enabled status
-	//
-	// - disable: Disabled status
-	//
-	// example:
-	//
-	// enable
-	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The condition for determining the health status of the address. Valid values:
-	//
-	// 	- any_ok: The health check results of at least one health check template are normal.
-	//
-	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
-	//
-	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
-	//
-	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
-	//
-	// 	- all_ok: The health check results of all health check templates are normal.
-	//
-	// example:
-	//
-	// any_ok
-	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	// The health check state of the address. Valid values:
-	//
-	// 	- ok: The address passes all health checks of the referenced health check templates.
-	//
-	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
-	//
-	// 	- ok_no_monitor: The address does not reference any health check template and is normal.
-	//
-	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
-	//
-	// example:
-	//
-	// ok
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The health check tasks.
-	HealthTasks *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
-	// The availability state of the address when AvailableMode is set to manual for the address. Valid values:
-	//
-	// 	- available: The address is available. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-	//
-	// 	- unavailable: The address is unavailable. In this state, the address is not returned for DNS requests even if the address passes health checks.
-	//
-	// example:
-	//
-	// available
-	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
-	// Address name.
-	//
-	// example:
-	//
-	// Address-1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Address remarks.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// List of request sources.
-	RequestSource *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
-	// Indicates whether the mode of the sequence policy for load balancing between address pools is non-preemptive. This parameter is available only for the multicloud integration scenario. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	SeqNonPreemptiveSchedule *bool `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
-	// Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
-	//
-	// example:
-	//
-	// 1
-	SerialNumber *int32 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// Address type:
-	//
-	// - IPv4: IPv4 address
-	//
-	// - IPv6: IPv6 address
-	//
-	// - domain: Domain name
-	//
-	// example:
-	//
-	// IPv4
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last time the address was modified.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The last modification time of the address (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// Weight value (integer between 1 and 100), supports setting different weight values for each address, enabling resolution queries to return addresses according to the weight ratio.
-	//
-	// example:
-	//
-	// 1
-	WeightValue *int32 `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
+	Address                  *string                                                                                   `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressId                *string                                                                                   `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo            *string                                                                                   `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	AvailableMode            *string                                                                                   `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	AvailableStatus          *string                                                                                   `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	CreateTime               *string                                                                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp          *int64                                                                                    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EnableStatus             *string                                                                                   `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	HealthJudgement          *string                                                                                   `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthStatus             *string                                                                                   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks              *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks   `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	ManualAvailableStatus    *string                                                                                   `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	Name                     *string                                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark                   *string                                                                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestSource            *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource `json:"RequestSource,omitempty" xml:"RequestSource,omitempty" type:"Struct"`
+	SeqNonPreemptiveSchedule *bool                                                                                     `json:"SeqNonPreemptiveSchedule,omitempty" xml:"SeqNonPreemptiveSchedule,omitempty"`
+	SerialNumber             *int32                                                                                    `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Type                     *string                                                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime               *string                                                                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp          *int64                                                                                    `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	WeightValue              *int32                                                                                    `json:"WeightValue,omitempty" xml:"WeightValue,omitempty"`
 }
 
 func (s ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress) String() string {
@@ -891,23 +636,8 @@ func (s *ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAdd
 }
 
 type ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask struct {
-	// The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the health check template.
-	//
-	// example:
-	//
-	// mtp-895180524251002880
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// Health check template name.
-	//
-	// example:
-	//
-	// IPv4-Ping
+	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 

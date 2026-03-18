@@ -22,7 +22,6 @@ type iDescribeDomainsResponseBody interface {
 }
 
 type DescribeDomainsResponseBody struct {
-	// The domain names.
 	Domains *DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,125 +146,28 @@ func (s *DescribeDomainsResponseBodyDomains) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomainsDomain struct {
-	// Indicates whether the domain name was registered with Alibaba Cloud.
-	//
-	// example:
-	//
-	// true
-	AliDomain *bool `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
-	// The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-01-30T05:25Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the domain name was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1660546144000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The names of the DNS servers configured for the domain name assigned by Alibaba Cloud DNS.
-	DnsServers *DescribeDomainsResponseBodyDomainsDomainDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
-	// The ID of the domain name.
-	//
-	// example:
-	//
-	// 00efd71a-770e-4255-b54e-6fe5659baffe
-	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
-	//
-	// 	- OPEN
-	//
-	// 	- CLOSE
-	//
-	// example:
-	//
-	// OPEN
-	DomainLoggingSwitchStatus *string `json:"DomainLoggingSwitchStatus,omitempty" xml:"DomainLoggingSwitchStatus,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// abc.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the domain name group.
-	//
-	// example:
-	//
-	// 2223
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the domain name group.
-	//
-	// example:
-	//
-	// mygroup
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the Alibaba Cloud DNS instance expires. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-03-14T16:00Z
-	InstanceEndTime *string `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
-	// Indicates whether the Alibaba Cloud DNS instance expires.
-	//
-	// example:
-	//
-	// false
-	InstanceExpired *bool `json:"InstanceExpired,omitempty" xml:"InstanceExpired,omitempty"`
-	// The ID of the Alibaba Cloud DNS instance.
-	//
-	// example:
-	//
-	// i-7bg
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The Punycode for the domain name. This parameter is returned only for Chinese domain names.
-	//
-	// example:
-	//
-	// abc.com
-	PunyCode *string `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
-	// The number of Domain Name System (DNS) records added for the domain name.
-	//
-	// example:
-	//
-	// 100
-	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The email address of the registrant.
-	//
-	// example:
-	//
-	// test@example.com
-	RegistrantEmail *string `json:"RegistrantEmail,omitempty" xml:"RegistrantEmail,omitempty"`
-	// The description of the domain name.
-	//
-	// example:
-	//
-	// remark
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the resource group to which the domain name belongs.
-	//
-	// example:
-	//
-	// rg-acf
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SlaveDnsStatus  *string `json:"SlaveDnsStatus,omitempty" xml:"SlaveDnsStatus,omitempty"`
-	// Indicates whether the domain name was added to favorites.
-	//
-	// example:
-	//
-	// true
-	Starmark *bool `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
-	// The tags added to the resource.
-	Tags *DescribeDomainsResponseBodyDomainsDomainTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The edition code of Alibaba Cloud DNS.
-	//
-	// example:
-	//
-	// version_enterprise_basic
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
-	// The edition of Alibaba Cloud DNS.
-	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	AliDomain                 *bool                                               `json:"AliDomain,omitempty" xml:"AliDomain,omitempty"`
+	CreateTime                *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp           *int64                                              `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DnsServers                *DescribeDomainsResponseBodyDomainsDomainDnsServers `json:"DnsServers,omitempty" xml:"DnsServers,omitempty" type:"Struct"`
+	DomainId                  *string                                             `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainLoggingSwitchStatus *string                                             `json:"DomainLoggingSwitchStatus,omitempty" xml:"DomainLoggingSwitchStatus,omitempty"`
+	DomainName                *string                                             `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId                   *string                                             `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName                 *string                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceEndTime           *string                                             `json:"InstanceEndTime,omitempty" xml:"InstanceEndTime,omitempty"`
+	InstanceExpired           *bool                                               `json:"InstanceExpired,omitempty" xml:"InstanceExpired,omitempty"`
+	InstanceId                *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PunyCode                  *string                                             `json:"PunyCode,omitempty" xml:"PunyCode,omitempty"`
+	RecordCount               *int64                                              `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	RegistrantEmail           *string                                             `json:"RegistrantEmail,omitempty" xml:"RegistrantEmail,omitempty"`
+	Remark                    *string                                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId           *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SlaveDnsStatus            *string                                             `json:"SlaveDnsStatus,omitempty" xml:"SlaveDnsStatus,omitempty"`
+	Starmark                  *bool                                               `json:"Starmark,omitempty" xml:"Starmark,omitempty"`
+	Tags                      *DescribeDomainsResponseBodyDomainsDomainTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VersionCode               *string                                             `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VersionName               *string                                             `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s DescribeDomainsResponseBodyDomainsDomain) String() string {
@@ -548,9 +450,7 @@ func (s *DescribeDomainsResponseBodyDomainsDomainTags) Validate() error {
 }
 
 type DescribeDomainsResponseBodyDomainsDomainTagsTag struct {
-	// The key of tag N added to the resource.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the resource.
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

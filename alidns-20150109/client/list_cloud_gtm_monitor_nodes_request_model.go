@@ -11,6 +11,8 @@ type iListCloudGtmMonitorNodesRequest interface {
 	GoString() string
 	SetAcceptLanguage(v string) *ListCloudGtmMonitorNodesRequest
 	GetAcceptLanguage() *string
+	SetShowDisabledNodes(v bool) *ListCloudGtmMonitorNodesRequest
+	GetShowDisabledNodes() *bool
 }
 
 type ListCloudGtmMonitorNodesRequest struct {
@@ -23,7 +25,8 @@ type ListCloudGtmMonitorNodesRequest struct {
 	// example:
 	//
 	// en-US
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	ShowDisabledNodes *bool   `json:"ShowDisabledNodes,omitempty" xml:"ShowDisabledNodes,omitempty"`
 }
 
 func (s ListCloudGtmMonitorNodesRequest) String() string {
@@ -38,8 +41,17 @@ func (s *ListCloudGtmMonitorNodesRequest) GetAcceptLanguage() *string {
 	return s.AcceptLanguage
 }
 
+func (s *ListCloudGtmMonitorNodesRequest) GetShowDisabledNodes() *bool {
+	return s.ShowDisabledNodes
+}
+
 func (s *ListCloudGtmMonitorNodesRequest) SetAcceptLanguage(v string) *ListCloudGtmMonitorNodesRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListCloudGtmMonitorNodesRequest) SetShowDisabledNodes(v bool) *ListCloudGtmMonitorNodesRequest {
+	s.ShowDisabledNodes = &v
 	return s
 }
 

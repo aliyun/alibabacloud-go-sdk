@@ -49,9 +49,8 @@ type DescribeDnsGtmInstanceAddressPoolResponseBody struct {
 	// example:
 	//
 	// testpool1
-	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The addresses in the address pool.
-	Addrs *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
+	AddrPoolId *string                                             `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
+	Addrs      *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs `json:"Addrs,omitempty" xml:"Addrs,omitempty" type:"Struct"`
 	// The time when the address pool was created.
 	//
 	// example:
@@ -299,82 +298,16 @@ func (s *DescribeDnsGtmInstanceAddressPoolResponseBodyAddrs) Validate() error {
 }
 
 type DescribeDnsGtmInstanceAddressPoolResponseBodyAddrsAddr struct {
-	// The address.
-	//
-	// example:
-	//
-	// 1.1.1.1
-	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The status of the last health check on the address. Valid values:
-	//
-	// 	- OK: No active alerts are triggered.
-	//
-	// 	- ALERT: Alerts are triggered based on the alert rules.
-	//
-	// example:
-	//
-	// ok
-	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The source region of the address.
-	//
-	// 	- lineCode: the line code of the source region of the address. This parameter is deprecated, and lineCodes prevails.
-	//
-	// 	- lineName: the line name of the source region of the address. This parameter is deprecated.
-	//
-	// 	- lineCodes: the line codes of the source regions of the address.
-	//
-	// example:
-	//
-	// "lineCode":"aliyun_r_cn-zhangjiakou", "lineName": "Alibaba Cloud_China (Zhangjiakou)", "lineCodes": ["aliyun_r_cn-zhangjiakou"]
-	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The time when the address was added into the address pool.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp that indicates the time when the address was added into the address pool.
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The weight of the address.
-	//
-	// example:
-	//
-	// 1
-	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
-	// The mode of the address. Valid values:
-	//
-	// 	- SMART: smart return
-	//
-	// 	- ONLINE: always online
-	//
-	// 	- OFFLINE: always offline
-	//
-	// example:
-	//
-	// online
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The description of the address.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The time when the address was last updated.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The timestamp that indicates the time when the address was last updated.
-	//
-	// example:
-	//
-	// 1527690629357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Addr            *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
+	AlertStatus     *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
+	AttributeInfo   *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	LbaWeight       *int32  `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeDnsGtmInstanceAddressPoolResponseBodyAddrsAddr) String() string {

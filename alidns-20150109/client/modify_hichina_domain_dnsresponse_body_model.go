@@ -18,9 +18,7 @@ type iModifyHichinaDomainDNSResponseBody interface {
 }
 
 type ModifyHichinaDomainDNSResponseBody struct {
-	// The DNS server names after modification.
-	NewDnsServers *ModifyHichinaDomainDNSResponseBodyNewDnsServers `json:"NewDnsServers,omitempty" xml:"NewDnsServers,omitempty" type:"Struct"`
-	// The DNS server names before modification.
+	NewDnsServers      *ModifyHichinaDomainDNSResponseBodyNewDnsServers      `json:"NewDnsServers,omitempty" xml:"NewDnsServers,omitempty" type:"Struct"`
 	OriginalDnsServers *ModifyHichinaDomainDNSResponseBodyOriginalDnsServers `json:"OriginalDnsServers,omitempty" xml:"OriginalDnsServers,omitempty" type:"Struct"`
 	// The request ID.
 	//

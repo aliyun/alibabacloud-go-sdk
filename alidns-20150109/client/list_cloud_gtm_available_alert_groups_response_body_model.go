@@ -16,7 +16,6 @@ type iListCloudGtmAvailableAlertGroupsResponseBody interface {
 }
 
 type ListCloudGtmAvailableAlertGroupsResponseBody struct {
-	// The alert contact groups.
 	AlertGroups *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups `json:"AlertGroups,omitempty" xml:"AlertGroups,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,11 +95,6 @@ func (s *ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups) Validate() err
 }
 
 type ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup struct {
-	// The name of the alert contact group.
-	//
-	// example:
-	//
-	// [\\"Default\\"]
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

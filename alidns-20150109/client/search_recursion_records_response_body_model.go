@@ -183,82 +183,24 @@ func (s *SearchRecursionRecordsResponseBodyRecords) Validate() error {
 }
 
 type SearchRecursionRecordsResponseBodyRecordsRecord struct {
-	// example:
-	//
-	// 2025-06-16T02:18Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1615182315000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// example:
-	//
-	// 1521021611066866
-	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// custom
-	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	// example:
-	//
-	// user
-	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	// example:
-	//
-	// enable
-	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// example:
-	//
-	// 1
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// record ID
-	//
-	// example:
-	//
-	// 1927184083990351872
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// example:
-	//
-	// vxwk
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// default
-	RequestSource *string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty"`
-	// example:
-	//
-	// wap
-	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// example:
-	//
-	// 60
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// example:
-	//
-	// A
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 2022-10-28T13:07Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 1722107570000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// example:
-	//
-	// 14.19.85.71
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// example:
-	//
-	// 4
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// zone ID
-	//
-	// example:
-	//
-	// 169783221000012
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator         *int64  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorSubType  *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	CreatorType     *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	EnableStatus    *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RecordId        *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestSource   *string `json:"RequestSource,omitempty" xml:"RequestSource,omitempty"`
+	Rr              *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight          *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SearchRecursionRecordsResponseBodyRecordsRecord) String() string {

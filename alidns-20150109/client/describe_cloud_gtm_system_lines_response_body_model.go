@@ -23,8 +23,7 @@ type DescribeCloudGtmSystemLinesResponseBody struct {
 	// example:
 	//
 	// 389DFFA3-77A5-4A9E-BF3D-147C6F98A5BA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The system lines.
+	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SystemLines *DescribeCloudGtmSystemLinesResponseBodySystemLines `json:"SystemLines,omitempty" xml:"SystemLines,omitempty" type:"Struct"`
 	// The system lines, which are in a tree structure. Only a system line is listed in this example.
 	//
@@ -113,40 +112,11 @@ func (s *DescribeCloudGtmSystemLinesResponseBodySystemLines) Validate() error {
 }
 
 type DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine struct {
-	// The line code.
-	//
-	// example:
-	//
-	// aliyun_r_ap-south-1
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The display name of the line.
-	//
-	// example:
-	//
-	// Default
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Indicates whether the line can be selected as the source of a Domain Name System (DNS) request. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	// The name of the line.
-	//
-	// example:
-	//
-	// Default
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The code of the parent line.
-	//
-	// example:
-	//
-	// String	aliyun
-	ParentCode *string `json:"ParentCode,omitempty" xml:"ParentCode,omitempty"`
+	IsAvailable *bool   `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentCode  *string `json:"ParentCode,omitempty" xml:"ParentCode,omitempty"`
 }
 
 func (s DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine) String() string {

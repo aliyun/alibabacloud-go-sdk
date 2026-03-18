@@ -24,7 +24,6 @@ type iListCloudGtmAlertLogsResponseBody interface {
 }
 
 type ListCloudGtmAlertLogsResponseBody struct {
-	// The alert logs.
 	Logs *ListCloudGtmAlertLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
 	// Current page number, starting from 1, default is 1.
 	//
@@ -164,42 +163,10 @@ func (s *ListCloudGtmAlertLogsResponseBodyLogs) Validate() error {
 }
 
 type ListCloudGtmAlertLogsResponseBodyLogsLog struct {
-	// Alert type:
-	//
-	// - ALERT
-	//
-	// - RESUME
-	//
-	// example:
-	//
-	// ALERT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The alert content.
-	//
-	// example:
-	//
-	// The alert content.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Alarm object types:
-	//
-	// - GTM_ADDRESS: Address
-	//
-	// - GTM_ADDRESS_POOL: Address Pool
-	//
-	// - GTM_INSTANCE: Instance
-	//
-	// - GTM_MONITOR_TEMPLATE: Health Check Template
-	//
-	// example:
-	//
-	// GTM_ADDRESS
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// Alert log time (timestamp).
-	//
-	// example:
-	//
-	// 1711328826977
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Timestamp  *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s ListCloudGtmAlertLogsResponseBodyLogsLog) String() string {

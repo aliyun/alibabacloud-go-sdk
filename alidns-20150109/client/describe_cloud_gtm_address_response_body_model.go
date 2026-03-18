@@ -137,9 +137,8 @@ type DescribeCloudGtmAddressResponseBody struct {
 	// example:
 	//
 	// ok
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The health check tasks referenced by the address.
-	HealthTasks *DescribeCloudGtmAddressResponseBodyHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	HealthStatus *string                                         `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks  *DescribeCloudGtmAddressResponseBodyHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
 	// The availability state of the address when AvailableMode is set to manual. Valid values:
 	//
 	// 	- available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
@@ -408,36 +407,10 @@ func (s *DescribeCloudGtmAddressResponseBodyHealthTasks) Validate() error {
 }
 
 type DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask struct {
-	// The state of the health check task. Valid values:
-	//
-	// 	- ok: The task is normal.
-	//
-	// 	- alert: An alert is triggered.
-	//
-	// 	- no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
-	//
-	// example:
-	//
-	// ok
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	// The target service port for health checks. When the Ping protocol is selected for health checks, configuration of the service port is not supported.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the health check template associated with the address.
-	//
-	// example:
-	//
-	// mtp-89518052425100**80
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the health check template.
-	//
-	// example:
-	//
-	// Ping-IPv4
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName  *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask) String() string {

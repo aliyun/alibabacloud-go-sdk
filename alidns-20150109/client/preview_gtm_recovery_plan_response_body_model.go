@@ -35,8 +35,7 @@ type PreviewGtmRecoveryPlanResponseBody struct {
 	// example:
 	//
 	// 5
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned preview information of the disaster recovery plan.
+	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Previews *PreviewGtmRecoveryPlanResponseBodyPreviews `json:"Previews,omitempty" xml:"Previews,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,26 +163,10 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviews) Validate() error {
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreview struct {
-	// The ID of the GTM instance to which the previewed disaster recovery plan belongs.
-	//
-	// example:
-	//
-	// instance-example
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the GTM instance to which the previewed disaster recovery plan belongs.
-	//
-	// example:
-	//
-	// name-example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The returned information of the switching policies for address pools.
-	SwitchInfos *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos `json:"SwitchInfos,omitempty" xml:"SwitchInfos,omitempty" type:"Struct"`
-	// The user\\"s domain name or domain name list.
-	//
-	// example:
-	//
-	// 30.yyy.com
-	UserDomainName *string `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
+	InstanceId     *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name           *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	SwitchInfos    *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos `json:"SwitchInfos,omitempty" xml:"SwitchInfos,omitempty" type:"Struct"`
+	UserDomainName *string                                                       `json:"UserDomainName,omitempty" xml:"UserDomainName,omitempty"`
 }
 
 func (s PreviewGtmRecoveryPlanResponseBodyPreviewsPreview) String() string {
@@ -274,13 +257,7 @@ func (s *PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfos) Validate(
 }
 
 type PreviewGtmRecoveryPlanResponseBodyPreviewsPreviewSwitchInfosSwitchInfo struct {
-	// The formatted message content.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The name of the switching policy for address pools.
-	//
-	// example:
-	//
-	// strategy-name-example-1
+	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 

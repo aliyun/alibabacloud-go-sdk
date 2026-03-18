@@ -22,7 +22,6 @@ type iDescribeSubDomainRecordsResponseBody interface {
 }
 
 type DescribeSubDomainRecordsResponseBody struct {
-	// The returned Domain Name System (DNS) records.
 	DomainRecords *DescribeSubDomainRecordsResponseBodyDomainRecords `json:"DomainRecords,omitempty" xml:"DomainRecords,omitempty" type:"Struct"`
 	// The page number. Pages start from page **1**. Default value: **1**.
 	//
@@ -147,78 +146,18 @@ func (s *DescribeSubDomainRecordsResponseBodyDomainRecords) Validate() error {
 }
 
 type DescribeSubDomainRecordsResponseBodyDomainRecordsRecord struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The DNS resolution line.
-	//
-	// example:
-	//
-	// default
-	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The lock status of the DNS record.
-	//
-	// example:
-	//
-	// false
-	Locked *bool `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The priority of the mail exchanger (MX) record.
-	//
-	// example:
-	//
-	// 2
-	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The hostname.
-	//
-	// example:
-	//
-	// www
-	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
-	// The ID of the DNS record.
-	//
-	// example:
-	//
-	// 9999985
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the DNS record.
-	//
-	// example:
-	//
-	// Enable
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time-to-live (TTL) of the DNS record.
-	//
-	// example:
-	//
-	// 600
-	TTL *int64 `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	// The type of the DNS record.
-	//
-	// example:
-	//
-	// CNAME
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The record value.
-	//
-	// example:
-	//
-	// example.net
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight of the DNS record.
-	//
-	// example:
-	//
-	// 10
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Line       *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	Locked     *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
+	Priority   *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RR         *string `json:"RR,omitempty" xml:"RR,omitempty"`
+	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TTL        *int64  `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight     *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeSubDomainRecordsResponseBodyDomainRecordsRecord) String() string {

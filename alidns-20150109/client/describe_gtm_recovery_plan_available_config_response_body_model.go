@@ -16,7 +16,6 @@ type iDescribeGtmRecoveryPlanAvailableConfigResponseBody interface {
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBody struct {
-	// The instances.
 	Instances *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,20 +95,9 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstances) Validate()
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance struct {
-	// The address pools.
-	AddrPools *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// instance-example
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// instance-name-example
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	AddrPools    *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
+	InstanceId   *string                                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string                                                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstance) String() string {
@@ -191,14 +179,8 @@ func (s *DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddr
 }
 
 type DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoolsAddrPool struct {
-	// The address pool ID.
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// hra0i9
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlanAvailableConfigResponseBodyInstancesInstanceAddrPoolsAddrPool) String() string {

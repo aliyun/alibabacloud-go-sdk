@@ -183,55 +183,19 @@ func (s *ListRecursionZonesResponseBodyZones) Validate() error {
 }
 
 type ListRecursionZonesResponseBodyZonesZone struct {
-	// example:
-	//
-	// 2021-03-08T05:45Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1729674680000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// example:
-	//
-	// 218497924149333932
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// SUB
-	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	// example:
-	//
-	// USER
+	CreateTime      *string                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64                                                  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator         *string                                                 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorSubType  *string                                                 `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
 	CreatorType     *string                                                 `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
 	EffectiveScopes *ListRecursionZonesResponseBodyZonesZoneEffectiveScopes `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty" type:"Struct"`
-	// example:
-	//
-	// record
-	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	// example:
-	//
-	// 8
-	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// example:
-	//
-	// 107
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// 2024-11-12T04:30Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// example:
-	//
-	// 1707189878000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// example:
-	//
-	// 173671468000011
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// example:
-	//
-	// dfsdfsd
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ProxyPattern    *string                                                 `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	RecordCount     *int32                                                  `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark          *string                                                 `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UpdateTime      *string                                                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64                                                  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	ZoneId          *string                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName        *string                                                 `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s ListRecursionZonesResponseBodyZonesZone) String() string {
@@ -403,9 +367,6 @@ func (s *ListRecursionZonesResponseBodyZonesZoneEffectiveScopes) Validate() erro
 }
 
 type ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope struct {
-	// example:
-	//
-	// account
 	EffectiveType *string                                                                     `json:"EffectiveType,omitempty" xml:"EffectiveType,omitempty"`
 	Scopes        *ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Struct"`
 }

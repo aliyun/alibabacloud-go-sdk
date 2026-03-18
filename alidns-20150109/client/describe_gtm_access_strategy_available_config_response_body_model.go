@@ -20,10 +20,8 @@ type iDescribeGtmAccessStrategyAvailableConfigResponseBody interface {
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBody struct {
-	// The address pools.
 	AddrPools *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools `json:"AddrPools,omitempty" xml:"AddrPools,omitempty" type:"Struct"`
-	// The Domain Name System (DNS) request sources.
-	Lines *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	Lines     *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines     `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -131,17 +129,7 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPools) Validate
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyAddrPoolsAddrPool struct {
-	// The ID of the address pool.
-	//
-	// example:
-	//
-	// hra0ix
-	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The name of the address pool.
-	//
-	// example:
-	//
-	// test
+	AddrPoolId   *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
 	AddrPoolName *string `json:"AddrPoolName,omitempty" xml:"AddrPoolName,omitempty"`
 }
 
@@ -210,46 +198,12 @@ func (s *DescribeGtmAccessStrategyAvailableConfigResponseBodyLines) Validate() e
 }
 
 type DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine struct {
-	// The code of the parent line. No value is returned if no parent line exists.
-	//
-	// example:
-	//
-	// telecom
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The group number of the DNS request source.
-	//
-	// example:
-	//
-	// ISP
-	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The group name of the DNS request source.
-	//
-	// example:
-	//
-	// Mainland China
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The code of the DNS request source.
-	//
-	// example:
-	//
-	// cn_telecom_hubei
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The name of the DNS request source.
-	//
-	// example:
-	//
-	// South China
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
-	// The state of the line. Valid values:
-	//
-	// 	- **FORBIDDEN**: The line is unavailable.
-	//
-	// 	- **OPTIONAL**: The line is available.
-	//
-	// example:
-	//
-	// FORBIDDEN
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyAvailableConfigResponseBodyLinesLine) String() string {

@@ -22,7 +22,6 @@ type iDescribeTransferDomainsResponseBody interface {
 }
 
 type DescribeTransferDomainsResponseBody struct {
-	// The domain names that were transferred between accounts.
 	DomainTransfers *DescribeTransferDomainsResponseBodyDomainTransfers `json:"DomainTransfers,omitempty" xml:"DomainTransfers,omitempty" type:"Struct"`
 	// The page number. Pages start from page **1**. Default value: **1**.
 	//
@@ -147,42 +146,12 @@ func (s *DescribeTransferDomainsResponseBodyDomainTransfers) Validate() error {
 }
 
 type DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer struct {
-	// The time when the domain name was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-10-30T07:16Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the domain name was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1572419764000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// test.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The user ID from which the domain name was transferred.
-	//
-	// example:
-	//
-	// 2222
-	FromUserId *int64 `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
-	// The ID of the domain name that was transferred.
-	//
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The user ID to which the domain name was transferred.
-	//
-	// example:
-	//
-	// 111111
-	TargetUserId *int64 `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	FromUserId      *int64  `json:"FromUserId,omitempty" xml:"FromUserId,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	TargetUserId    *int64  `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
 }
 
 func (s DescribeTransferDomainsResponseBodyDomainTransfersDomainTransfer) String() string {

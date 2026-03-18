@@ -41,8 +41,7 @@ type DescribeRecordStatisticsSummaryResponseBody struct {
 	// example:
 	//
 	// E49F0023-4A98-486F-8BA3-6003D5664105
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The DNS requests.
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statistics *DescribeRecordStatisticsSummaryResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -164,17 +163,7 @@ func (s *DescribeRecordStatisticsSummaryResponseBodyStatistics) Validate() error
 }
 
 type DescribeRecordStatisticsSummaryResponseBodyStatisticsStatistic struct {
-	// The number of DNS requests.
-	//
-	// example:
-	//
-	// 838711553
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The subdomain.
-	//
-	// example:
-	//
-	// t1.alitest2.com
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 

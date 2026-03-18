@@ -24,7 +24,6 @@ type iListCloudGtmInstancesResponseBody interface {
 }
 
 type ListCloudGtmInstancesResponseBody struct {
-	// The instances.
 	Instances *ListCloudGtmInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// Current page number, starting with **1**, default is **1**.
 	//
@@ -167,111 +166,23 @@ type ListCloudGtmInstancesResponseBodyInstancesInstance struct {
 	// example:
 	//
 	// postpay / prepay
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The commodity code. Valid values:
-	//
-	// 	- dns_gtm_public_cn: commodity code on the China site (aliyun.com)
-	//
-	// 	- dns_gtm_public_intl: commodity code on the international site (alibabacloud.com)
-	//
-	// example:
-	//
-	// dns_gtm_public_cn
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Instance creation time.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Instance creation time (timestamp).
-	//
-	// example:
-	//
-	// 1231298343343
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Instance expiration time.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Instance expiration time (timestamp).
-	//
-	// example:
-	//
-	// 1231298343343
-	ExpireTimestamp *int64 `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
-	// The ID of the GTM instance.
-	//
-	// example:
-	//
-	// gtm-cn-jmp3qnw**03
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Instance name.
-	//
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Monitor probe task quota.
-	//
-	// example:
-	//
-	// 100
-	MonitorTaskQuota *int32 `json:"MonitorTaskQuota,omitempty" xml:"MonitorTaskQuota,omitempty"`
-	// Monthly email sending volume.
-	//
-	// example:
-	//
-	// 50
-	MonthlyEmailUsed *int32 `json:"MonthlyEmailUsed,omitempty" xml:"MonthlyEmailUsed,omitempty"`
-	// SMS quota, only supported on the China site as international sites do not support SMS.
-	//
-	// example:
-	//
-	// 1000
-	MonthlySmsQuota *int32 `json:"MonthlySmsQuota,omitempty" xml:"MonthlySmsQuota,omitempty"`
-	// Monthly SMS sending volume, only supported by the China site as international sites do not support SMS.
-	//
-	// example:
-	//
-	// 100
-	MonthlySmsUsed *int32 `json:"MonthlySmsUsed,omitempty" xml:"MonthlySmsUsed,omitempty"`
-	// Monthly webhook send volume.
-	//
-	// example:
-	//
-	// 80
-	MonthlyWebhookUsed *int32 `json:"MonthlyWebhookUsed,omitempty" xml:"MonthlyWebhookUsed,omitempty"`
-	// The access domain name, which consists of a hostname and a zone or a subzone.
-	//
-	// example:
-	//
-	// www.example.com
+	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CommodityCode      *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp    *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	ExpireTime         *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimestamp    *int64  `json:"ExpireTimestamp,omitempty" xml:"ExpireTimestamp,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MonitorTaskQuota   *int32  `json:"MonitorTaskQuota,omitempty" xml:"MonitorTaskQuota,omitempty"`
+	MonthlyEmailUsed   *int32  `json:"MonthlyEmailUsed,omitempty" xml:"MonthlyEmailUsed,omitempty"`
+	MonthlySmsQuota    *int32  `json:"MonthlySmsQuota,omitempty" xml:"MonthlySmsQuota,omitempty"`
+	MonthlySmsUsed     *int32  `json:"MonthlySmsUsed,omitempty" xml:"MonthlySmsUsed,omitempty"`
+	MonthlyWebhookUsed *int32  `json:"MonthlyWebhookUsed,omitempty" xml:"MonthlyWebhookUsed,omitempty"`
 	ScheduleDomainName *string `json:"ScheduleDomainName,omitempty" xml:"ScheduleDomainName,omitempty"`
-	// The last time the instance was modified.
-	//
-	// example:
-	//
-	// 2024-03-15T01:46Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The last modification time of the instance (timestamp).
-	//
-	// example:
-	//
-	// 1231298343343
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// GTM instance version:
-	//
-	// - standard: Standard Edition
-	//
-	// - ultimate: Ultimate Edition
-	//
-	// example:
-	//
-	// ultimate
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp    *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	VersionCode        *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 }
 
 func (s ListCloudGtmInstancesResponseBodyInstancesInstance) String() string {

@@ -24,7 +24,6 @@ type iListCloudGtmAddressesResponseBody interface {
 }
 
 type ListCloudGtmAddressesResponseBody struct {
-	// The addresses.
 	Addresses *ListCloudGtmAddressesResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Struct"`
 	// Current page number, starting from **1**, default is **1**.
 	//
@@ -164,144 +163,23 @@ func (s *ListCloudGtmAddressesResponseBodyAddresses) Validate() error {
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddress struct {
-	// IP address or domain name.
-	//
-	// example:
-	//
-	// 223.5.XX.XX
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The address ID. This ID uniquely identifies the address.
-	//
-	// example:
-	//
-	// addr-89518218114368**92
-	AddressId *string `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
-	// Address ownership information.
-	//
-	// example:
-	//
-	// Not supported in current version, this parameter should be none.
-	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The failover method that is used if the address fails health checks. Valid values:
-	//
-	// auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-	//
-	// manual: the manual mode. If an address is in the unavailable state, the address is not returned for Domain Name System (DNS) requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-	//
-	// example:
-	//
-	// auto
-	AvailableMode *string `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
-	// The availability state of the address. Valid values:
-	//
-	// 	- available: The address is available.
-	//
-	// 	- unavailable: The address is unavailable.
-	//
-	// example:
-	//
-	// available
-	AvailableStatus *string `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
-	// Address creation time.
-	//
-	// example:
-	//
-	// 2024-03-23T13:09Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creation time (timestamp).
-	//
-	// example:
-	//
-	// 1527690629357
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// Indicates the current availability of the address:
-	//
-	// - enable: Enabled status
-	//
-	// - disable: Disabled status
-	//
-	// example:
-	//
-	// enable
-	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The condition for determining the health status of the address. Valid values:
-	//
-	// 	- any_ok: The health check results of at least one health check template are normal.
-	//
-	// 	- p30_ok: The health check results of at least 30% of health check templates are normal.
-	//
-	// 	- p50_ok: The health check results of at least 50% of health check templates are normal.
-	//
-	// 	- p70_ok: The health check results of at least 70% of health check templates are normal.
-	//
-	// 	- all_ok: The health check results of all health check templates are normal.
-	//
-	// example:
-	//
-	// p50_ok
-	HealthJudgement *string `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
-	// The health check state of the address. Valid values:
-	//
-	// 	- ok: The address passes all health checks of the referenced health check templates.
-	//
-	// 	- ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
-	//
-	// 	- ok_no_monitor: The address does not reference a health check template.
-	//
-	// 	- exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
-	//
-	// example:
-	//
-	// ok
-	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The health check tasks referenced by the address.
-	HealthTasks *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
-	// The availability state of the address when AvailableMode is set to manual. Valid values:
-	//
-	// available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-	//
-	// unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
-	//
-	// example:
-	//
-	// available
-	ManualAvailableStatus *string `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
-	// Address name.
-	//
-	// example:
-	//
-	// Address-1
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Remarks.
-	//
-	// example:
-	//
-	// app
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// Address type:
-	//
-	// - IPv4
-	//
-	// - IPv6
-	//
-	// - domain
-	//
-	// example:
-	//
-	// IPv4
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Address modification time.
-	//
-	// example:
-	//
-	// 2024-03-29T13:20Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Update time (timestamp).
-	//
-	// example:
-	//
-	// 1527690824357
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Address               *string                                                       `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressId             *string                                                       `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
+	AttributeInfo         *string                                                       `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
+	AvailableMode         *string                                                       `json:"AvailableMode,omitempty" xml:"AvailableMode,omitempty"`
+	AvailableStatus       *string                                                       `json:"AvailableStatus,omitempty" xml:"AvailableStatus,omitempty"`
+	CreateTime            *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp       *int64                                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EnableStatus          *string                                                       `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	HealthJudgement       *string                                                       `json:"HealthJudgement,omitempty" xml:"HealthJudgement,omitempty"`
+	HealthStatus          *string                                                       `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	HealthTasks           *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks `json:"HealthTasks,omitempty" xml:"HealthTasks,omitempty" type:"Struct"`
+	ManualAvailableStatus *string                                                       `json:"ManualAvailableStatus,omitempty" xml:"ManualAvailableStatus,omitempty"`
+	Name                  *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark                *string                                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Type                  *string                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime            *string                                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp       *int64                                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s ListCloudGtmAddressesResponseBodyAddressesAddress) String() string {
@@ -509,36 +387,10 @@ func (s *ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks) Validate(
 }
 
 type ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask struct {
-	// The state of the health check task. Valid values:
-	//
-	// 	- ok: The task is normal.
-	//
-	// 	- alert: An alert is triggered.
-	//
-	// 	- no_data: No data is available. In most cases, the health check task is newly created and no data is collected.
-	//
-	// example:
-	//
-	// ok
 	MonitorStatus *string `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	// The target service port for health check probes. When the health check protocol is set to Ping, configuration of the service port is not supported.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the health check template associated with the address.
-	//
-	// example:
-	//
-	// mtp-89518052425100**80
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// Health check template name.
-	//
-	// example:
-	//
-	// Ping-IPv4
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	TemplateId    *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName  *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask) String() string {

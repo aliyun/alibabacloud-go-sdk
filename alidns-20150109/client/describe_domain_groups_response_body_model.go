@@ -22,7 +22,6 @@ type iDescribeDomainGroupsResponseBody interface {
 }
 
 type DescribeDomainGroupsResponseBody struct {
-	// The domain name groups.
 	DomainGroups *DescribeDomainGroupsResponseBodyDomainGroups `json:"DomainGroups,omitempty" xml:"DomainGroups,omitempty" type:"Struct"`
 	// The page number. Pages start from page **1**. Default value: **1**.
 	//
@@ -147,28 +146,9 @@ func (s *DescribeDomainGroupsResponseBodyDomainGroups) Validate() error {
 }
 
 type DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup struct {
-	// The number of domain name groups.
-	//
-	// example:
-	//
-	// 2
-	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The ID of the domain name group. Valid values:
-	//
-	// 	- defaultGroup: the default group
-	//
-	// 	- If an empty string is returned, it indicates the group that contains all domain names.
-	//
-	// example:
-	//
-	// 2223
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the domain name group.
-	//
-	// example:
-	//
-	// MyGroup
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	DomainCount *int64  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s DescribeDomainGroupsResponseBodyDomainGroupsDomainGroup) String() string {

@@ -16,7 +16,6 @@ type iDescribeDnsGtmAddressPoolAvailableConfigResponseBody interface {
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBody struct {
-	// The supported source regions.
 	AttributeInfos *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos `json:"AttributeInfos,omitempty" xml:"AttributeInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,36 +95,11 @@ func (s *DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfos) Val
 }
 
 type DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttributeInfo struct {
-	// The parent line code of the source region.
-	//
-	// example:
-	//
-	// telecom
 	FatherCode *string `json:"FatherCode,omitempty" xml:"FatherCode,omitempty"`
-	// The code of the source region group.
-	//
-	// example:
-	//
-	// default
-	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the request source group.
-	//
-	// example:
-	//
-	// global
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The line code of the source region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The line name of the source region.
-	//
-	// example:
-	//
-	// global
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	GroupCode  *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LineCode   *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName   *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeDnsGtmAddressPoolAvailableConfigResponseBodyAttributeInfosAttributeInfo) String() string {

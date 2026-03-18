@@ -105,9 +105,8 @@ type DescribeGtmAccessStrategyResponseBody struct {
 	// example:
 	//
 	// instance1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The returned lines of access regions.
-	Lines *DescribeGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
+	InstanceId *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lines      *DescribeGtmAccessStrategyResponseBodyLines `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -326,30 +325,10 @@ func (s *DescribeGtmAccessStrategyResponseBodyLines) Validate() error {
 }
 
 type DescribeGtmAccessStrategyResponseBodyLinesLine struct {
-	// The code of the access region group.
-	//
-	// example:
-	//
-	// DEFAULT
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	// The name of the access region group.
-	//
-	// example:
-	//
-	// Global
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The code for the line of the access region.
-	//
-	// example:
-	//
-	// default
-	LineCode *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
-	// The name for the line of the access region.
-	//
-	// example:
-	//
-	// Global
-	LineName *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
+	LineCode  *string `json:"LineCode,omitempty" xml:"LineCode,omitempty"`
+	LineName  *string `json:"LineName,omitempty" xml:"LineName,omitempty"`
 }
 
 func (s DescribeGtmAccessStrategyResponseBodyLinesLine) String() string {

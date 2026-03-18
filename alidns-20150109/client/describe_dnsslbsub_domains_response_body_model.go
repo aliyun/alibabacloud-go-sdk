@@ -39,8 +39,7 @@ type DescribeDNSSLBSubDomainsResponseBody struct {
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The subdomains for which weighted round-robin is enabled.
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SlbSubDomains *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains `json:"SlbSubDomains,omitempty" xml:"SlbSubDomains,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,32 +146,11 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomains) Validate() error {
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain struct {
-	// The lines for which weighted round-robin is enabled.
 	LineAlgorithms *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithms `json:"LineAlgorithms,omitempty" xml:"LineAlgorithms,omitempty" type:"Struct"`
-	// Indicates whether weighted round-robin is enabled for the subdomain.
-	//
-	// example:
-	//
-	// true
-	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
-	// The number of DNS records added for the subdomain.
-	//
-	// example:
-	//
-	// 3
-	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The name of the subdomain.
-	//
-	// example:
-	//
-	// www.example.com
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
-	// The type of the Domain Name System (DNS) record that supports weighted round-robin. Valid values: A, AAAA, and CNAME.
-	//
-	// example:
-	//
-	// A
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Open           *bool                                                                        `json:"Open,omitempty" xml:"Open,omitempty"`
+	RecordCount    *int64                                                                       `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	SubDomain      *string                                                                      `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	Type           *string                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomain) String() string {
@@ -272,22 +250,8 @@ func (s *DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgori
 }
 
 type DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm struct {
-	// The DNS resolution line. The line can be China Telecom, China Mobile, and China Unicom.
-	//
-	// example:
-	//
-	// default
 	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// Indicates whether weighted round-robin is enabled for the line. Valid values:
-	//
-	// 	- **true*	- (default): Weighted round-robin is enabled.
-	//
-	// 	- **false**: Weighted round-robin is disabled.
-	//
-	// example:
-	//
-	// true
-	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
+	Open *bool   `json:"Open,omitempty" xml:"Open,omitempty"`
 }
 
 func (s DescribeDNSSLBSubDomainsResponseBodySlbSubDomainsSlbSubDomainLineAlgorithmsLineAlgorithm) String() string {

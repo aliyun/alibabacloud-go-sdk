@@ -37,9 +37,8 @@ type DescribeInternetDnsLogsResponseBody struct {
 	// example:
 	//
 	// 1
-	CurPage *int32 `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
-	// The queried logs.
-	Logs *DescribeInternetDnsLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
+	CurPage *int32                                   `json:"CurPage,omitempty" xml:"CurPage,omitempty"`
+	Logs    *DescribeInternetDnsLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Struct"`
 	// Page size for query.
 	//
 	// example:
@@ -181,87 +180,21 @@ func (s *DescribeInternetDnsLogsResponseBodyLogs) Validate() error {
 }
 
 type DescribeInternetDnsLogsResponseBodyLogsLog struct {
-	// Parse log ID (can be duplicated).
-	//
-	// example:
-	//
-	// 3583
-	DnsMsgId *string `json:"DnsMsgId,omitempty" xml:"DnsMsgId,omitempty"`
-	Flags    *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
-	// Parse timestamp.
-	//
-	// example:
-	//
-	// 1709196249000
-	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	// The protocol type of the domain name resolution query request:
-	//
-	// - UDP
-	//
-	// - TCP
-	//
-	// - HTTP
-	//
-	// - HTTPS
-	//
-	// - DOH
-	//
-	// example:
-	//
-	// UDP
-	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	QueryFlags *string `json:"QueryFlags,omitempty" xml:"QueryFlags,omitempty"`
-	// The domain name for which you want to query Domain Name System (DNS) records.
-	//
-	// example:
-	//
-	// example.com
-	QueryName *string `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
-	// Record type.
-	//
-	// example:
-	//
-	// A
-	QueryType         *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	ResponseTimestamp *string `json:"ResponseTimestamp,omitempty" xml:"ResponseTimestamp,omitempty"`
-	// Parse response time.
-	//
-	// example:
-	//
-	// 0
-	Rt *int32 `json:"Rt,omitempty" xml:"Rt,omitempty"`
-	// Parse server IP.
-	//
-	// example:
-	//
-	// 140.205.XX.XX
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// Source IP address.
-	//
-	// example:
-	//
-	// 59.82.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Response status.
-	//
-	// example:
-	//
-	// NOERROR
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The value set for the edns-client-subnet option.
-	//
-	// example:
-	//
-	// 170.33.XX.XX
-	SubnetIp *string `json:"SubnetIp,omitempty" xml:"SubnetIp,omitempty"`
-	// Array of parsing results.
-	Value *DescribeInternetDnsLogsResponseBodyLogsLogValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-	// The zone name.
-	//
-	// example:
-	//
-	// example.com
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	DnsMsgId          *string                                          `json:"DnsMsgId,omitempty" xml:"DnsMsgId,omitempty"`
+	Flags             *string                                          `json:"Flags,omitempty" xml:"Flags,omitempty"`
+	LogTime           *int64                                           `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	Protocol          *string                                          `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	QueryFlags        *string                                          `json:"QueryFlags,omitempty" xml:"QueryFlags,omitempty"`
+	QueryName         *string                                          `json:"QueryName,omitempty" xml:"QueryName,omitempty"`
+	QueryType         *string                                          `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ResponseTimestamp *string                                          `json:"ResponseTimestamp,omitempty" xml:"ResponseTimestamp,omitempty"`
+	Rt                *int32                                           `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	ServerIp          *string                                          `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	SourceIp          *string                                          `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Status            *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubnetIp          *string                                          `json:"SubnetIp,omitempty" xml:"SubnetIp,omitempty"`
+	Value             *DescribeInternetDnsLogsResponseBodyLogsLogValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	ZoneName          *string                                          `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeInternetDnsLogsResponseBodyLogsLog) String() string {

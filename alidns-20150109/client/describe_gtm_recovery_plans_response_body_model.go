@@ -35,8 +35,7 @@ type DescribeGtmRecoveryPlansResponseBody struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details about the queried disaster recovery plans.
+	PageSize      *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecoveryPlans *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans `json:"RecoveryPlans,omitempty" xml:"RecoveryPlans,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,90 +163,19 @@ func (s *DescribeGtmRecoveryPlansResponseBodyRecoveryPlans) Validate() error {
 }
 
 type DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan struct {
-	// The time when the disaster recovery plan was created.
-	//
-	// example:
-	//
-	// 2019-08-11T06:45Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The UNIX timestamp that indicates when the disaster recovery plan was created.
-	//
-	// example:
-	//
-	// 1565499867000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The number of faulty address pools.
-	//
-	// example:
-	//
-	// 0
-	FaultAddrPoolNum *int32 `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
-	// The last time when the disaster recovery plan was executed.
-	//
-	// example:
-	//
-	// 2019-08-11T06:44Z
-	LastExecuteTime *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
-	// The UNIX timestamp that indicates the last time when the disaster recovery plan was executed.
-	//
-	// example:
-	//
-	// 1565505898000
-	LastExecuteTimestamp *int64 `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
-	// The last time when the disaster recovery plan was rolled back.
-	//
-	// example:
-	//
-	// 2019-08-11T06:45Z
-	LastRollbackTime *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
-	// The UNIX timestamp that indicates the last time when the disaster recovery plan was rolled back.
-	//
-	// example:
-	//
-	// 1565505919000
-	LastRollbackTimestamp *int64 `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
-	// The name of the disaster recovery plan.
-	//
-	// example:
-	//
-	// name-example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the disaster recovery plan.
-	//
-	// example:
-	//
-	// 55
-	RecoveryPlanId *int64 `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
-	// The remarks about the disaster recovery plan.
-	//
-	// example:
-	//
-	// remark-example
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the disaster recovery plan. Valid values:
-	//
-	// 	- **UNEXECUTED**: The plan is not executed.
-	//
-	// 	- **EXECUTED**: The plan is executed.
-	//
-	// 	- **ROLLED_BACK**: The plan is rolled back.
-	//
-	// example:
-	//
-	// UNEXECUTED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last time when the disaster recovery plan was updated.
-	//
-	// example:
-	//
-	// 2019-08-11T06:45Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The UNIX timestamp that indicates the last time when the disaster recovery plan was updated.
-	//
-	// example:
-	//
-	// 1565505919000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp       *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	FaultAddrPoolNum      *int32  `json:"FaultAddrPoolNum,omitempty" xml:"FaultAddrPoolNum,omitempty"`
+	LastExecuteTime       *string `json:"LastExecuteTime,omitempty" xml:"LastExecuteTime,omitempty"`
+	LastExecuteTimestamp  *int64  `json:"LastExecuteTimestamp,omitempty" xml:"LastExecuteTimestamp,omitempty"`
+	LastRollbackTime      *string `json:"LastRollbackTime,omitempty" xml:"LastRollbackTime,omitempty"`
+	LastRollbackTimestamp *int64  `json:"LastRollbackTimestamp,omitempty" xml:"LastRollbackTimestamp,omitempty"`
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecoveryPlanId        *int64  `json:"RecoveryPlanId,omitempty" xml:"RecoveryPlanId,omitempty"`
+	Remark                *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime            *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp       *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeGtmRecoveryPlansResponseBodyRecoveryPlansRecoveryPlan) String() string {

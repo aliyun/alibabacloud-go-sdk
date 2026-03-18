@@ -21,8 +21,7 @@ type DescribeDomainStatisticsResponseBody struct {
 	// example:
 	//
 	// 6AEC7A64-3CB1-4C49-8B35-0B901F1E26BF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics on the Domain Name System (DNS) requests.
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Statistics *DescribeDomainStatisticsResponseBodyStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 }
 
@@ -96,24 +95,9 @@ func (s *DescribeDomainStatisticsResponseBodyStatistics) Validate() error {
 }
 
 type DescribeDomainStatisticsResponseBodyStatisticsStatistic struct {
-	// The number of DNS requests.
-	//
-	// example:
-	//
-	// 15292887
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
+	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The statistical timestamp. Unit: milliseconds. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1556640000000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Timestamp  *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeDomainStatisticsResponseBodyStatisticsStatistic) String() string {

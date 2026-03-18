@@ -22,7 +22,6 @@ type iDescribeDomainLogsResponseBody interface {
 }
 
 type DescribeDomainLogsResponseBody struct {
-	// The operation logs.
 	DomainLogs *DescribeDomainLogsResponseBodyDomainLogs `json:"DomainLogs,omitempty" xml:"DomainLogs,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,48 +146,13 @@ func (s *DescribeDomainLogsResponseBodyDomainLogs) Validate() error {
 }
 
 type DescribeDomainLogsResponseBodyDomainLogsDomainLog struct {
-	// The operation.
-	//
-	// example:
-	//
-	// Add
-	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The time when the operation is performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-12T09:23Z
-	ActionTime *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
-	// The time when the operation was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 143562300000
-	ActionTimestamp *int64 `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
-	// The IP address of the operator.
-	//
-	// example:
-	//
-	// 182.92.253.20
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// abc.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The message for the operation.
-	//
-	// example:
-	//
-	// To the DNS record list
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the private zone.
-	//
-	// example:
-	//
-	// cxfd345sd234
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	Action          *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	ActionTime      *string `json:"ActionTime,omitempty" xml:"ActionTime,omitempty"`
+	ActionTimestamp *int64  `json:"ActionTimestamp,omitempty" xml:"ActionTimestamp,omitempty"`
+	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDomainLogsResponseBodyDomainLogsDomainLog) String() string {

@@ -22,7 +22,6 @@ type iDescribeBatchResultDetailResponseBody interface {
 }
 
 type DescribeBatchResultDetailResponseBody struct {
-	// The detailed results of the batch operation.
 	BatchResultDetails *DescribeBatchResultDetailResponseBodyBatchResultDetails `json:"BatchResultDetails,omitempty" xml:"BatchResultDetails,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,102 +146,22 @@ func (s *DescribeBatchResultDetailResponseBodyBatchResultDetails) Validate() err
 }
 
 type DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail struct {
-	// The type of the batch operation.
-	//
-	// example:
-	//
-	// DOMAIN_ADD
-	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The line code.
-	//
-	// example:
-	//
-	// default
-	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The new hostname.
-	//
-	// example:
-	//
-	// demo-batch-7
-	NewRr *string `json:"NewRr,omitempty" xml:"NewRr,omitempty"`
-	// The new record value.
-	//
-	// example:
-	//
-	// 192.0.2.254
-	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The time when the operation was performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-08-22 18:02:58
+	BatchType      *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Line           *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	NewRr          *string `json:"NewRr,omitempty" xml:"NewRr,omitempty"`
+	NewValue       *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
 	OperateDateStr *string `json:"OperateDateStr,omitempty" xml:"OperateDateStr,omitempty"`
-	// The priority of the mail exchanger (MX) record.
-	//
-	// example:
-	//
-	// 10
-	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The cause of the execution failure.
-	//
-	// example:
-	//
-	// Task lock fail
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the DNS record.
-	//
-	// example:
-	//
-	// 123456789
-	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record.
-	//
-	// example:
-	//
-	// remark
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The hostname.
-	//
-	// example:
-	//
-	// www
-	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The status of the DNS record.
-	//
-	// example:
-	//
-	// stop
-	RrStatus *string `json:"RrStatus,omitempty" xml:"RrStatus,omitempty"`
-	// The execution result of the batch operation. Valid values: **true**: The operation succeeded. **false**: The operation failed.
-	//
-	// example:
-	//
-	// true
-	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time-to-live (TTL) of the DNS record.
-	//
-	// example:
-	//
-	// 600
-	Ttl *string `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the DNS record.
-	//
-	// example:
-	//
-	// A
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the DNS record.
-	//
-	// example:
-	//
-	// 192.0.2.0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Priority       *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RecordId       *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Rr             *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	RrStatus       *string `json:"RrStatus,omitempty" xml:"RrStatus,omitempty"`
+	Status         *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Ttl            *string `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value          *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeBatchResultDetailResponseBodyBatchResultDetailsBatchResultDetail) String() string {
