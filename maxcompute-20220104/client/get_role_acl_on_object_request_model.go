@@ -16,21 +16,9 @@ type iGetRoleAclOnObjectRequest interface {
 }
 
 type GetRoleAclOnObjectRequest struct {
-	// The name of the object.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// tableA
 	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-	// The type of the object.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// table
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
 }
 

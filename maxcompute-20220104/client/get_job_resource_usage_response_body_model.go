@@ -22,32 +22,11 @@ type iGetJobResourceUsageResponseBody interface {
 }
 
 type GetJobResourceUsageResponseBody struct {
-	// The data returned.
-	Data *GetJobResourceUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
-	//
-	// example:
-	//
-	// success
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message returned if the request failed.
-	//
-	// example:
-	//
-	// 0A3B1E82006A23A918C70905BF08AEC7
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0b57ff7616612271051086500ea3ce
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetJobResourceUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                              `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                               `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetJobResourceUsageResponseBody) String() string {
@@ -113,26 +92,10 @@ func (s *GetJobResourceUsageResponseBody) Validate() error {
 }
 
 type GetJobResourceUsageResponseBodyData struct {
-	// The data list returned.
 	JobResourceUsageList []*GetJobResourceUsageResponseBodyDataJobResourceUsageList `json:"jobResourceUsageList,omitempty" xml:"jobResourceUsageList,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 2
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
-	//
-	// example:
-	//
-	// 64
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	PageNumber           *int64                                                     `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize             *int64                                                     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	TotalCount           *int64                                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s GetJobResourceUsageResponseBodyData) String() string {
@@ -193,35 +156,10 @@ func (s *GetJobResourceUsageResponseBodyData) Validate() error {
 }
 
 type GetJobResourceUsageResponseBodyDataJobResourceUsageList struct {
-	// The total number of used compute units (CUs).
-	//
-	// example:
-	//
-	// 1185100
-	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	// The start date of the query in the format of yyyy-MM-dd.
-	//
-	// example:
-	//
-	// 2023-05-09
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The job executor.
-	//
-	// example:
-	//
-	// ALIYUN$xxx@test.aliyunid.com
-	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The total memory usage.
-	//
-	// example:
-	//
-	// 15169536
-	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
-	// The quota nickname.
-	//
-	// example:
-	//
-	// my_quota
+	CuUsage       *int64  `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	Date          *string `json:"date,omitempty" xml:"date,omitempty"`
+	JobOwner      *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
+	MemoryUsage   *int64  `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
 }
 

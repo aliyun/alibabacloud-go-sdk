@@ -22,34 +22,11 @@ type iGetQuotaScheduleResponseBody interface {
 }
 
 type GetQuotaScheduleResponseBody struct {
-	// The returned data.
-	Data []*GetQuotaScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// 	- If the value of success was false, an error code was returned.
-	//
-	// 	- If the value of success was true, a null value was returned.
-	//
-	// example:
-	//
-	// success
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// errorMsg
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0bc059b716696296266308790e0d3e
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*GetQuotaScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	ErrorCode *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                             `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                              `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetQuotaScheduleResponseBody) String() string {
@@ -119,38 +96,12 @@ func (s *GetQuotaScheduleResponseBody) Validate() error {
 }
 
 type GetQuotaScheduleResponseBodyData struct {
-	// The condition value.
 	Condition *GetQuotaScheduleResponseBodyDataCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
-	// The ID of the quota plan.
-	//
-	// example:
-	//
-	// 63
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the operator.
-	//
-	// example:
-	//
-	// userA
-	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The name of the quota plan.
-	//
-	// example:
-	//
-	// planA
-	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
-	// The time zone.
-	//
-	// example:
-	//
-	// UTC+8
-	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The type of the quota plan.
-	//
-	// example:
-	//
-	// once
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Id        *string                                    `json:"id,omitempty" xml:"id,omitempty"`
+	Operator  *string                                    `json:"operator,omitempty" xml:"operator,omitempty"`
+	Plan      *string                                    `json:"plan,omitempty" xml:"plan,omitempty"`
+	Timezone  *string                                    `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	Type      *string                                    `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetQuotaScheduleResponseBodyData) String() string {
@@ -225,18 +176,8 @@ func (s *GetQuotaScheduleResponseBodyData) Validate() error {
 }
 
 type GetQuotaScheduleResponseBodyDataCondition struct {
-	// The start time when the quota plan takes effect.
-	//
-	// example:
-	//
-	// 2022-04-25T04:23:04Z
 	After *string `json:"after,omitempty" xml:"after,omitempty"`
-	// The time when the quota plan takes effect.
-	//
-	// example:
-	//
-	// 0900
-	At *string `json:"at,omitempty" xml:"at,omitempty"`
+	At    *string `json:"at,omitempty" xml:"at,omitempty"`
 }
 
 func (s GetQuotaScheduleResponseBodyDataCondition) String() string {

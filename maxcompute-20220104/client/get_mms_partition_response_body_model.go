@@ -16,7 +16,10 @@ type iGetMmsPartitionResponseBody interface {
 }
 
 type GetMmsPartitionResponseBody struct {
+	// The partition object.
 	Data *GetMmsPartitionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D9F872FD-5DDE-30A6-8C8A-1B8C6A81059F
@@ -59,69 +62,104 @@ func (s *GetMmsPartitionResponseBody) Validate() error {
 }
 
 type GetMmsPartitionResponseBodyData struct {
+	// The ID of the database that contains the partition. The name for this metadata layer depends on the data source. For example, it is a Dataset in BigQuery, a Database in Hive, or a Schema in Databricks and MaxCompute.
+	//
+	// example:
+	//
+	// 12
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The name of the database. The name for this metadata layer depends on the data source. For example, it is a Dataset in BigQuery, a Database in Hive, or a Schema in Databricks and MaxCompute.
+	//
 	// example:
 	//
 	// d1
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// The name of the destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The name of the destination MaxCompute schema. This parameter is null if the destination MaxCompute project does not use a schema layer.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The name of the destination MaxCompute table.
+	//
 	// example:
 	//
 	// test
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// The value of the destination MaxCompute partition. By default, this value is the same as the source partition value.
+	//
 	// example:
 	//
 	// p1=1/p2=abc
 	DstValue *string `json:"dstValue,omitempty" xml:"dstValue,omitempty"`
+	// The partition ID.
+	//
 	// example:
 	//
 	// 2323
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// lastDdlTime
+	// The time of the last DDL operation.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
+	// The number of rows.
+	//
 	// example:
 	//
 	// 2323
 	NumRows *int64 `json:"numRows,omitempty" xml:"numRows,omitempty"`
+	// The data size in bytes.
+	//
 	// example:
 	//
 	// 12323
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 200018
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The migration status.
+	//
 	// example:
 	//
 	// DONE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The table ID.
+	//
 	// example:
 	//
 	// 23
 	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// t1
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// Indicates whether the metadata is updated.
+	//
 	// example:
 	//
 	// false
 	Updated *bool `json:"updated,omitempty" xml:"updated,omitempty"`
+	// The partition value.
+	//
 	// example:
 	//
 	// p1=1/p2=abc

@@ -22,19 +22,28 @@ type iQueryTunnelMetricDetailResponseBody interface {
 }
 
 type QueryTunnelMetricDetailResponseBody struct {
+	// The returned data.
 	Data *QueryTunnelMetricDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// OBJECT_NOT_EXIST
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// plan \\"***\\" does not exist
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0a06dd4516687375802853481ec9fd
@@ -104,7 +113,10 @@ func (s *QueryTunnelMetricDetailResponseBody) Validate() error {
 }
 
 type QueryTunnelMetricDetailResponseBodyData struct {
+	// The metric values.
 	Metrics []*QueryTunnelMetricDetailResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// The name of the metric.
+	//
 	// example:
 	//
 	// tableA
@@ -151,7 +163,10 @@ func (s *QueryTunnelMetricDetailResponseBodyData) Validate() error {
 }
 
 type QueryTunnelMetricDetailResponseBodyDataMetrics struct {
+	// The metadata of the metric.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// The numeric information of the metric.
+	//
 	// example:
 	//
 	// "avgValue":"11.5"

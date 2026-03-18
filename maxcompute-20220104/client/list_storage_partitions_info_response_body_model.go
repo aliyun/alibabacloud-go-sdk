@@ -22,42 +22,11 @@ type iListStoragePartitionsInfoResponseBody interface {
 }
 
 type ListStoragePartitionsInfoResponseBody struct {
-	// The data returned.
-	Data *ListStoragePartitionsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// OBJECT_NOT_EXIST
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// This object does not exist.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
-	//
-	// 	- 1xx: informational response. The request is received and is being processed.
-	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
-	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
-	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
-	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0be3e0bd16661643917136451ebf55
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListStoragePartitionsInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                    `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                                     `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListStoragePartitionsInfoResponseBody) String() string {
@@ -123,32 +92,11 @@ func (s *ListStoragePartitionsInfoResponseBody) Validate() error {
 }
 
 type ListStoragePartitionsInfoResponseBodyData struct {
-	// The date on which the statistics are collected.
-	//
-	// example:
-	//
-	// 20241205
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The partition storage information.
+	Date                     *string                                                              `json:"date,omitempty" xml:"date,omitempty"`
+	PageNumber               *int64                                                               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize                 *int64                                                               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	StoragePartitionInfoList []*ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList `json:"storagePartitionInfoList,omitempty" xml:"storagePartitionInfoList,omitempty" type:"Repeated"`
-	// The total number of returned entries.
-	//
-	// example:
-	//
-	// 57
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	TotalCount               *int64                                                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListStoragePartitionsInfoResponseBodyData) String() string {
@@ -218,118 +166,21 @@ func (s *ListStoragePartitionsInfoResponseBodyData) Validate() error {
 }
 
 type ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList struct {
-	// The number of files.
-	//
-	// example:
-	//
-	// 2
-	FileCount *int64 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
-	// The storage size.
-	//
-	// example:
-	//
-	// 1
-	FileSize *float64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// The unit of the storage size.
-	//
-	// example:
-	//
-	// GB
-	FileSizeUnit *string `json:"fileSizeUnit,omitempty" xml:"fileSizeUnit,omitempty"`
-	// Indicates whether the table is a partitioned table. This operation returns the partition information. You do not need to take note of this parameter.
-	//
-	// example:
-	//
-	// false
-	IsPartitioned *bool `json:"isPartitioned,omitempty" xml:"isPartitioned,omitempty"`
-	// The time when the partition data was last accessed.
-	//
-	// >  The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the last access time cannot be collected.
-	//
-	// example:
-	//
-	// 1694589365
-	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	// The partition name.
-	//
-	// example:
-	//
-	// ds=20241201
-	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	// The project name.
-	//
-	// example:
-	//
-	// odps_project
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// The change rate of the total storage usage compared with that of the recent {$recentDays} days. No value is returned.
-	//
-	// example:
-	//
-	// 1%
-	Rate *float64 `json:"rate,omitempty" xml:"rate,omitempty"`
-	// The schema name.
-	//
-	// example:
-	//
-	// schema
-	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	// The storage type.
-	//
-	// 	- standard
-	//
-	// 	- lowfrequency
-	//
-	// 	- longterm
-	//
-	// example:
-	//
-	// standard
-	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// bank_data
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	// The access frequency.
-	//
-	// >
-	//
-	// 	- Access behaviors include:
-	//
-	// 	- The table is used as the input table of an SQL task.
-	//
-	// 	- The table is downloaded by Tunnel.
-	//
-	// 	- The table is read by calling the Storage API. The partition granularity of the partitioned table is not available. Each time an access operation is performed, the access frequency is incremented by 1.
-	//
-	// 	- The data collection method is upgraded from July 2023. If the data is not accessed after the upgrade or is accessed by using ALGO jobs or the direct read method of Hologres, the access frequency cannot be collected.
-	//
-	// example:
-	//
-	// 10
-	TotalFrequency *int64 `json:"totalFrequency,omitempty" xml:"totalFrequency,omitempty"`
-	// The total amount of accessed data.
-	//
-	// >  The amount of data that is read by all access behaviors.
-	//
-	// example:
-	//
-	// 1
-	TotalInputAmount *float64 `json:"totalInputAmount,omitempty" xml:"totalInputAmount,omitempty"`
-	// The unit of the total amount of accessed data.
-	//
-	// example:
-	//
-	// GB
-	TotalInputAmountUnit *string `json:"totalInputAmountUnit,omitempty" xml:"totalInputAmountUnit,omitempty"`
-	// The type.
-	//
-	// example:
-	//
-	// PARTITION
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	FileCount            *int64   `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
+	FileSize             *float64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	FileSizeUnit         *string  `json:"fileSizeUnit,omitempty" xml:"fileSizeUnit,omitempty"`
+	IsPartitioned        *bool    `json:"isPartitioned,omitempty" xml:"isPartitioned,omitempty"`
+	LastAccessTime       *int64   `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	Partition            *string  `json:"partition,omitempty" xml:"partition,omitempty"`
+	ProjectName          *string  `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	Rate                 *float64 `json:"rate,omitempty" xml:"rate,omitempty"`
+	SchemaName           *string  `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	StorageType          *string  `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	TableName            *string  `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TotalFrequency       *int64   `json:"totalFrequency,omitempty" xml:"totalFrequency,omitempty"`
+	TotalInputAmount     *float64 `json:"totalInputAmount,omitempty" xml:"totalInputAmount,omitempty"`
+	TotalInputAmountUnit *string  `json:"totalInputAmountUnit,omitempty" xml:"totalInputAmountUnit,omitempty"`
+	Type                 *string  `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListStoragePartitionsInfoResponseBodyDataStoragePartitionInfoList) String() string {

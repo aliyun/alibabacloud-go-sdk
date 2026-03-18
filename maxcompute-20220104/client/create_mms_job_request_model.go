@@ -56,28 +56,105 @@ type iCreateMmsJobRequest interface {
 }
 
 type CreateMmsJobRequest struct {
-	ColumnMapping         map[string]*string     `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
-	DstDbName             *string                `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
-	DstSchemaName         *string                `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
-	EnableDataMigration   *bool                  `json:"enableDataMigration,omitempty" xml:"enableDataMigration,omitempty"`
-	EnableSchemaMigration *bool                  `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
-	EnableVerification    *bool                  `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
-	Eta                   *string                `json:"eta,omitempty" xml:"eta,omitempty"`
-	Increment             *bool                  `json:"increment,omitempty" xml:"increment,omitempty"`
-	Name                  *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Others                map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
-	PartitionFilters      map[string]*string     `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
-	Partitions            []*int64               `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
-	SchemaOnly            *bool                  `json:"schemaOnly,omitempty" xml:"schemaOnly,omitempty"`
-	SourceId              *int64                 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	SourceName            *string                `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
-	SrcDbName             *string                `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
-	SrcSchemaName         *string                `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
-	TableBlackList        []*string              `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
-	TableMapping          map[string]*string     `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
-	TableWhiteList        []*string              `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
-	Tables                []*string              `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
-	// MOCK, HIVE: hive udtf task, HIVE_DATAX: hive datax task, COPY_TASK: odps Copy Task, ODPS_INSERT_OVERWRITE: odps simple insert overwrite task, MC2MC_VERIFY, OSS, HIVE_OSS
+	// {Source column name: Destination column name}
+	ColumnMapping map[string]*string `json:"columnMapping,omitempty" xml:"columnMapping,omitempty"`
+	// The destination MaxCompute project.
+	//
+	// example:
+	//
+	// mms_test
+	DstDbName *string `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	// The destination MaxCompute schema.
+	//
+	// example:
+	//
+	// default
+	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// Specifies whether to migrate table data.
+	//
+	// example:
+	//
+	// true
+	EnableDataMigration *bool `json:"enableDataMigration,omitempty" xml:"enableDataMigration,omitempty"`
+	// Specifies whether to migrate table schemas.
+	//
+	// example:
+	//
+	// true
+	EnableSchemaMigration *bool `json:"enableSchemaMigration,omitempty" xml:"enableSchemaMigration,omitempty"`
+	// Specifies whether to enable data verification. The current verification method is to execute SELECT COUNT(\\*) on the source and destination to compare the number of rows.
+	//
+	// example:
+	//
+	// false
+	EnableVerification *bool `json:"enableVerification,omitempty" xml:"enableVerification,omitempty"`
+	// The expected completion time of the migration. Note: A smaller eta value gives the migration task higher priority.
+	//
+	// example:
+	//
+	// 2025-02-04
+	Eta *string `json:"eta,omitempty" xml:"eta,omitempty"`
+	// Specifies whether to perform an incremental migration. In an incremental migration, only new or changed partitions are migrated. Note that changed partitions are re-migrated.
+	//
+	// example:
+	//
+	// true
+	Increment *bool `json:"increment,omitempty" xml:"increment,omitempty"`
+	// The name of the migration job.
+	//
+	// example:
+	//
+	// migrate_db_1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Other configuration information.
+	Others map[string]interface{} `json:"others,omitempty" xml:"others,omitempty"`
+	// {Table name: Partition filter expression}
+	PartitionFilters map[string]*string `json:"partitionFilters,omitempty" xml:"partitionFilters,omitempty"`
+	// The list of partition IDs.
+	Partitions []*int64 `json:"partitions,omitempty" xml:"partitions,omitempty" type:"Repeated"`
+	// Specifies whether to migrate only metadata.
+	//
+	// example:
+	//
+	// false
+	SchemaOnly *bool `json:"schemaOnly,omitempty" xml:"schemaOnly,omitempty"`
+	// The ID of the data source.
+	//
+	// example:
+	//
+	// 2000014
+	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The name of the data source.
+	//
+	// example:
+	//
+	// demo
+	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The name of the source database.
+	//
+	// example:
+	//
+	// src_db
+	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The name of the source schema. This is the schema in a Layer 3 namespace.
+	//
+	// example:
+	//
+	// default
+	SrcSchemaName *string `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
+	// The blacklist of tables.
+	TableBlackList []*string `json:"tableBlackList,omitempty" xml:"tableBlackList,omitempty" type:"Repeated"`
+	// {Source table: Destination table}
+	TableMapping map[string]*string `json:"tableMapping,omitempty" xml:"tableMapping,omitempty"`
+	// The whitelist of tables. Note: If you configure both a whitelist and a blacklist, only the blacklist takes effect.
+	TableWhiteList []*string `json:"tableWhiteList,omitempty" xml:"tableWhiteList,omitempty" type:"Repeated"`
+	// The list of table names.
+	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	// The type of the migration task.
+	//
+	// example:
+	//
+	// BIGQUERY
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
 }
 

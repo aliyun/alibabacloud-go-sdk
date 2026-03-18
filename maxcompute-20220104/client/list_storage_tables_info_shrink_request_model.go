@@ -34,69 +34,17 @@ type iListStorageTablesInfoShrinkRequest interface {
 }
 
 type ListStorageTablesInfoShrinkRequest struct {
-	// Specifies whether to sort data in ascending order.
-	//
-	// example:
-	//
-	// false
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The date on which the statistics are collected, in days. Set this parameter to a value in the `YYYYMMdd` format.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 20241205
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The sorting column.
-	//
-	// example:
-	//
-	// totalFrequency
+	Date        *string `json:"date,omitempty" xml:"date,omitempty"`
 	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The number of recent days for comparison.
-	//
-	// example:
-	//
-	// 1
-	RecentDays *int32 `json:"recentDays,omitempty" xml:"recentDays,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The name of the schema.
-	//
-	// example:
-	//
-	// schema
-	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The name of the table that you want to use for fuzzy match.
-	//
-	// example:
-	//
-	// bank
+	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RecentDays  *int32  `json:"recentDays,omitempty" xml:"recentDays,omitempty"`
+	Region      *string `json:"region,omitempty" xml:"region,omitempty"`
+	Schema      *string `json:"schema,omitempty" xml:"schema,omitempty"`
 	TablePrefix *string `json:"tablePrefix,omitempty" xml:"tablePrefix,omitempty"`
-	// The ID of the tenant. You can log on to the MaxCompute console, and choose **Tenants*	- > **Tenant Property*	- from the left-side navigation pane to view the tenant ID.
-	//
-	// example:
-	//
-	// 28074710977****
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The storage types.
+	TenantId    *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	TypesShrink *string `json:"types,omitempty" xml:"types,omitempty"`
 }
 

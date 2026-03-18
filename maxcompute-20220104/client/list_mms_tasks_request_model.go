@@ -35,42 +35,62 @@ type iListMmsTasksRequest interface {
 
 type ListMmsTasksRequest struct {
 	Sorter *ListMmsTasksRequestSorter `json:"sorter,omitempty" xml:"sorter,omitempty" type:"Struct"`
+	// The destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
 	DstDbName *string `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	// The destination MaxCompute table.
+	//
 	// example:
 	//
 	// test_table_1
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// The ID of the migration job.
+	//
 	// example:
 	//
 	// 10
 	JobId *int64 `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The name of the job.
+	//
 	// example:
 	//
 	// test1
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The partition value. This parameter is used to filter migration tasks by a specific partition value.
+	//
 	// example:
 	//
 	// p1=1/p2=abc
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The name of the source database.
+	//
 	// example:
 	//
 	// test_db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The name of the source table.
+	//
 	// example:
 	//
 	// test_table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
+	// The status of the migration task.
+	//
 	// example:
 	//
 	// DATA_DOING
@@ -194,10 +214,14 @@ func (s *ListMmsTasksRequest) Validate() error {
 }
 
 type ListMmsTasksRequestSorter struct {
+	// Sorts tasks by start time.
+	//
 	// example:
 	//
 	// desc
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// Sorts tasks by status.
+	//
 	// example:
 	//
 	// asc

@@ -22,22 +22,32 @@ type iListMmsDataSourcesRequest interface {
 }
 
 type ListMmsDataSourcesRequest struct {
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. If you leave this parameter empty, all data sources are returned.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries to return on each page. If you leave this parameter empty, all data sources are returned.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// BIGQUERY

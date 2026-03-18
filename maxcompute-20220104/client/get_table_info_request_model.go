@@ -16,26 +16,8 @@ type iGetTableInfoRequest interface {
 }
 
 type GetTableInfoRequest struct {
-	// The name of the schema to which the table or view belongs.
-	//
-	// example:
-	//
-	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	// The type of the table or view that you want to view. Valid values:
-	//
-	// 	- **internal**: internal table
-	//
-	// 	- **external**: external table
-	//
-	// 	- **view**: view
-	//
-	// 	- **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
-	//
-	// example:
-	//
-	// internal
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTableInfoRequest) String() string {

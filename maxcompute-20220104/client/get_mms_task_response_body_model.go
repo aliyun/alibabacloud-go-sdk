@@ -16,7 +16,10 @@ type iGetMmsTaskResponseBody interface {
 }
 
 type GetMmsTaskResponseBody struct {
+	// The migration task object.
 	Data *GetMmsTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 73207140-0FD5-588A-B11A-3CE093924196
@@ -59,86 +62,128 @@ func (s *GetMmsTaskResponseBody) Validate() error {
 }
 
 type GetMmsTaskResponseBodyData struct {
+	// The creation time of the task.
+	//
 	// example:
 	//
 	// 2024-10-25 04:21:01
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The source database ID.
+	//
 	// example:
 	//
 	// 23
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_target
 	DstDbName *string `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	// The destination MaxCompute schema.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The destination MaxCompute table.
+	//
 	// example:
 	//
 	// table_1
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2024-10-25 07:21:01
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The migration task ID.
+	//
 	// example:
 	//
 	// 7680
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The migration job ID.
+	//
 	// example:
 	//
 	// 87
 	JobId *int64 `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The migration job name.
+	//
 	// example:
 	//
 	// test_odps_spark
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	// The number of times the task has been retried.
+	//
 	// example:
 	//
 	// 1
 	RetriedTimes *int32 `json:"retriedTimes,omitempty" xml:"retriedTimes,omitempty"`
+	// Indicates if the task is running.
+	//
 	// example:
 	//
 	// true
 	Running *bool `json:"running,omitempty" xml:"running,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000015
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The source database name.
+	//
 	// example:
 	//
 	// mms_test
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The name of the source schema. This refers to the schema in a Layer 3 namespace.
+	//
 	// example:
 	//
 	// default
 	SrcSchemaName *string `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
+	// The source table name.
+	//
 	// example:
 	//
 	// table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2024-10-25 06:21:01
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The migration task status.
+	//
 	// example:
 	//
 	// DATA_DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates if the task is stopped.
+	//
 	// example:
 	//
 	// false
 	Stopped *bool `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// The source table ID.
+	//
 	// example:
 	//
 	// 2323
 	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// BIGQUERY

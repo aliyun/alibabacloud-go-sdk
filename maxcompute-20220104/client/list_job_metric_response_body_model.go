@@ -22,42 +22,11 @@ type iListJobMetricResponseBody interface {
 }
 
 type ListJobMetricResponseBody struct {
-	// The data returned.
-	Data *ListJobMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// OBJECT_NOT_EXIST
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// This object does not exist.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// HTTP status code.
-	//
-	// - 1xx: Informational response - Request received, processing continues.
-	//
-	// - 2xx: Success - The request has been successfully received, understood, and accepted by the server.
-	//
-	// - 3xx: Redirection - Further action must be taken to complete the request.
-	//
-	// - 4xx: Client error - The request contains bad syntax or cannot be fulfilled.
-	//
-	// - 5xx: Server error - The server failed to fulfill an apparently valid request.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0be3e0aa16667684362147582e038f
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListJobMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                        `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                         `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListJobMetricResponseBody) String() string {
@@ -123,26 +92,10 @@ func (s *ListJobMetricResponseBody) Validate() error {
 }
 
 type ListJobMetricResponseBodyData struct {
-	// The category of the metrics.
-	//
-	// example:
-	//
-	// job
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Metric details.
-	Metrics []*ListJobMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	// The name of observation metric.
-	//
-	// example:
-	//
-	// num
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The monitoring statistical period.Unit:Second(s).
-	//
-	// example:
-	//
-	// 3600
-	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
+	Category *string                                 `json:"category,omitempty" xml:"category,omitempty"`
+	Metrics  []*ListJobMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	Name     *string                                 `json:"name,omitempty" xml:"name,omitempty"`
+	Period   *int64                                  `json:"period,omitempty" xml:"period,omitempty"`
 }
 
 func (s ListJobMetricResponseBodyData) String() string {
@@ -203,10 +156,8 @@ func (s *ListJobMetricResponseBodyData) Validate() error {
 }
 
 type ListJobMetricResponseBodyDataMetrics struct {
-	// Metric related information.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// Metric values information.
-	Values [][]*float64 `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	Values [][]*float64       `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s ListJobMetricResponseBodyDataMetrics) String() string {

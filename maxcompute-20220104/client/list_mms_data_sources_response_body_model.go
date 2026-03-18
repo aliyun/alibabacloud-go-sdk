@@ -16,7 +16,10 @@ type iListMmsDataSourcesResponseBody interface {
 }
 
 type ListMmsDataSourcesResponseBody struct {
+	// The returned data.
 	Data *ListMmsDataSourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C1F7715F-D316-5AB6-BD02-5241083F4003
@@ -59,15 +62,22 @@ func (s *ListMmsDataSourcesResponseBody) Validate() error {
 }
 
 type ListMmsDataSourcesResponseBodyData struct {
+	// The list of data sources.
 	ObjectList []*ListMmsDataSourcesResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 9
@@ -132,92 +142,138 @@ func (s *ListMmsDataSourcesResponseBodyData) Validate() error {
 }
 
 type ListMmsDataSourcesResponseBodyDataObjectList struct {
+	// Indicates whether the data source instance or its associated agent is started.
+	//
 	// example:
 	//
 	// true
-	AgentIsOnline *bool                                                 `json:"agentIsOnline,omitempty" xml:"agentIsOnline,omitempty"`
-	Config        []*ListMmsDataSourcesResponseBodyDataObjectListConfig `json:"config,omitempty" xml:"config,omitempty" type:"Repeated"`
+	AgentIsOnline *bool `json:"agentIsOnline,omitempty" xml:"agentIsOnline,omitempty"`
+	// The configurations of the data source.
+	Config []*ListMmsDataSourcesResponseBodyDataObjectListConfig `json:"config,omitempty" xml:"config,omitempty" type:"Repeated"`
+	// The time when the data source was created.
+	//
 	// example:
 	//
 	// 2024-12-17 09:29:58
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The number of databases in the data source.
+	//
 	// example:
 	//
 	// 3
 	DbNum *int32 `json:"dbNum,omitempty" xml:"dbNum,omitempty"`
+	// The default destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
-	DstProject  *string   `json:"dstProject,omitempty" xml:"dstProject,omitempty"`
+	DstProject *string `json:"dstProject,omitempty" xml:"dstProject,omitempty"`
+	// The list of destination MaxCompute projects.
 	DstProjects []*string `json:"dstProjects,omitempty" xml:"dstProjects,omitempty" type:"Repeated"`
+	// The reason why the data source instance failed to start or shut down. This parameter is returned only when the value of \\`status\\` is \\`START_FAILED\\` or \\`STOP_FAILED\\`.
+	//
 	// example:
 	//
 	// unexpected exception
 	ErrMsg *string `json:"errMsg,omitempty" xml:"errMsg,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000015
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The last time when the metadata was synchronized.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	LastUpdateTime *string `json:"lastUpdateTime,omitempty" xml:"lastUpdateTime,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The MaxCompute network connectivity ID is the region ID.
+	//
 	// example:
 	//
 	// vpc-2zebqp6uojhdla46677tl:cn-beijing
 	Networklink *string `json:"networklink,omitempty" xml:"networklink,omitempty"`
+	// The number of partitions in the data source.
+	//
 	// example:
 	//
 	// 10000000
 	PartitionNum *int32 `json:"partitionNum,omitempty" xml:"partitionNum,omitempty"`
+	// The number of partitions that are being migrated.
+	//
 	// example:
 	//
 	// 2332
 	PartitionsDoingNum *int32 `json:"partitionsDoingNum,omitempty" xml:"partitionsDoingNum,omitempty"`
+	// The number of partitions that have been migrated.
+	//
 	// example:
 	//
 	// 23
 	PartitionsDoneNum *int32 `json:"partitionsDoneNum,omitempty" xml:"partitionsDoneNum,omitempty"`
+	// The number of partitions that failed to be migrated.
+	//
 	// example:
 	//
 	// 2323
 	PartitionsFailedNum *int32 `json:"partitionsFailedNum,omitempty" xml:"partitionsFailedNum,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the metadata synchronization task.
+	//
 	// example:
 	//
 	// 1000253
 	ScanId *int64 `json:"scanId,omitempty" xml:"scanId,omitempty"`
+	// The status of the data source.
+	//
 	// example:
 	//
 	// STARTED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The number of tables in the data source.
+	//
 	// example:
 	//
 	// 1000
 	TableNum *int32 `json:"tableNum,omitempty" xml:"tableNum,omitempty"`
+	// The number of tables that are being migrated.
+	//
 	// example:
 	//
 	// 18
 	TablesDoingNum *int32 `json:"tablesDoingNum,omitempty" xml:"tablesDoingNum,omitempty"`
+	// The number of tables that have been migrated.
+	//
 	// example:
 	//
 	// 2323
 	TablesDoneNum *int32 `json:"tablesDoneNum,omitempty" xml:"tablesDoneNum,omitempty"`
+	// The number of tables that failed to be migrated.
+	//
 	// example:
 	//
 	// 2
 	TablesFailedNum *int32 `json:"tablesFailedNum,omitempty" xml:"tablesFailedNum,omitempty"`
+	// The number of tables that are partially migrated.
+	//
 	// example:
 	//
 	// 22
 	TablesPartDoneNum *int32 `json:"tablesPartDoneNum,omitempty" xml:"tablesPartDoneNum,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// BIGQUERY
@@ -462,33 +518,58 @@ func (s *ListMmsDataSourcesResponseBodyDataObjectList) Validate() error {
 }
 
 type ListMmsDataSourcesResponseBodyDataObjectListConfig struct {
-	Desc  *string   `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The description of the configuration.
+	//
+	// example:
+	//
+	// 范围分区表迁移方式
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The enumerated values for the configuration.
 	Enums []*string `json:"enums,omitempty" xml:"enums,omitempty" type:"Repeated"`
+	// The configuration group.
+	//
 	// example:
 	//
 	// basic_group
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The English identifier for the configuration.
+	//
 	// example:
 	//
 	// bigquery.range.partition.migrate.type
-	Key  *string `json:"key,omitempty" xml:"key,omitempty"`
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The name of the configuration.
+	//
+	// example:
+	//
+	// 范围分区表迁移方式
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// An example value for the configuration.
+	//
 	// example:
 	//
 	// Cluster or Partition
 	PlaceHolder *string `json:"placeHolder,omitempty" xml:"placeHolder,omitempty"`
+	// Indicates whether the configuration is required.
+	//
 	// example:
 	//
 	// true
 	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
+	// If \\`type\\` is set to \\`file\\`, \\`subType\\` specifies the file type, such as \\`.keytab\\`.
+	//
 	// example:
 	//
 	// .keytab
 	SubType *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	// The type of the configuration. Valid values: \\`boolean\\`, \\`int\\`, \\`map\\`, \\`string\\`, \\`password\\`, and \\`file\\`.
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value of the configuration.
+	//
 	// example:
 	//
 	// Partition

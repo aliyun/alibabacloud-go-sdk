@@ -43,55 +43,86 @@ type iListMmsTablesRequest interface {
 
 type ListMmsTablesRequest struct {
 	Sorter *ListMmsTablesRequestSorter `json:"sorter,omitempty" xml:"sorter,omitempty" type:"Struct"`
+	// The ID of the database.
+	//
 	// example:
 	//
 	// 197
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// mms_test
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// The name of the destination MaxCompute table.
+	//
 	// example:
 	//
 	// test
 	DstName *string `json:"dstName,omitempty" xml:"dstName,omitempty"`
+	// The name of the destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The name of the destination MaxCompute schema. This parameter is null if the destination MaxCompute project does not have a schema layer.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The partitioned table.
+	//
 	// example:
 	//
 	// true
 	HasPartitions *bool `json:"hasPartitions,omitempty" xml:"hasPartitions,omitempty"`
+	// The end of the time range for lastDdlTime.
+	//
 	// example:
 	//
 	// 2024-12-19 15:44:42
 	LastDdlTimeEnd *string `json:"lastDdlTimeEnd,omitempty" xml:"lastDdlTimeEnd,omitempty"`
+	// The start of the time range for lastDdlTime.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTimeStart *string `json:"lastDdlTimeStart,omitempty" xml:"lastDdlTimeStart,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether to return only the names of the tables.
+	//
 	// example:
 	//
 	// false
 	OnlyName *bool `json:"onlyName,omitempty" xml:"onlyName,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Status   []*string `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The migration status.
+	//
+	// example:
+	//
+	// test
+	Status []*string `json:"status,omitempty" xml:"status,omitempty" type:"Repeated"`
+	// The table type.
+	//
 	// example:
 	//
 	// MANAGED_TABLE
@@ -251,14 +282,20 @@ func (s *ListMmsTablesRequest) Validate() error {
 }
 
 type ListMmsTablesRequestSorter struct {
+	// The sort order for lastDdlTime.
+	//
 	// example:
 	//
 	// desc
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
+	// The sort order for the number of rows.
+	//
 	// example:
 	//
 	// desc
 	NumRows *string `json:"numRows,omitempty" xml:"numRows,omitempty"`
+	// The sort order for the data size.
+	//
 	// example:
 	//
 	// asc

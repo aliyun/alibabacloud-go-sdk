@@ -24,23 +24,38 @@ type iSumStorageMetricsByDateRequest interface {
 }
 
 type SumStorageMetricsByDateRequest struct {
+	// The end date. The value is a millisecond-level timestamp. This parameter is required.
+	//
 	// example:
 	//
 	// 1718590596556
-	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The project names.
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The start date. The value is a millisecond-level timestamp. This parameter is required.
+	//
 	// example:
 	//
 	// 1715393576201
 	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	// The type of storage usage statistics. This parameter is required. Valid values:
+	//
+	// - PROJECT
+	//
+	// - STORAGE_TYPE
+	//
 	// example:
 	//
 	// PROJECT
 	StatsType *string `json:"statsType,omitempty" xml:"statsType,omitempty"`
+	// The user UID.
+	//
 	// example:
 	//
 	// 12345

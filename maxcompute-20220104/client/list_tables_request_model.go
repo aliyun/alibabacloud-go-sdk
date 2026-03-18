@@ -22,36 +22,11 @@ type iListTablesRequest interface {
 }
 
 type ListTablesRequest struct {
-	// Specifies the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// Y29tbWlzc2lvbl9leHRlcm5hbF91cmdlXzFfd3Ih
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries to return on each page.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
-	//
-	// example:
-	//
-	// a
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The name of the schema.
-	//
-	// example:
-	//
-	// default
+	Marker     *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem    *int32  `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	// The type of the table.
-	//
-	// example:
-	//
-	// internal
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTablesRequest) String() string {

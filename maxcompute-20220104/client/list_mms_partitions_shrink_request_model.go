@@ -37,43 +37,64 @@ type iListMmsPartitionsShrinkRequest interface {
 
 type ListMmsPartitionsShrinkRequest struct {
 	Sorter *ListMmsPartitionsShrinkRequestSorter `json:"sorter,omitempty" xml:"sorter,omitempty" type:"Struct"`
+	// The database ID.
+	//
 	// example:
 	//
 	// 2
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// d1
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// The maximum lastDdlTime value.
+	//
 	// example:
 	//
 	// 2024-12-17 19:44:42
 	LastDdlTimeEnd *string `json:"lastDdlTimeEnd,omitempty" xml:"lastDdlTimeEnd,omitempty"`
+	// The minimum lastDdlTime value.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTimeStart *string `json:"lastDdlTimeStart,omitempty" xml:"lastDdlTimeStart,omitempty"`
+	// The page number to return.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries to return per page.
+	//
 	// example:
 	//
 	// 100
-	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The migration status.
 	StatusShrink *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the table that contains the partition.
+	//
 	// example:
 	//
 	// 20323
 	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// t1
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// Filters partitions whose metadata has been updated.
+	//
 	// example:
 	//
 	// false
 	Updated *bool `json:"updated,omitempty" xml:"updated,omitempty"`
+	// The partition value.
+	//
 	// example:
 	//
 	// p1=1/p2=abc
@@ -206,14 +227,20 @@ func (s *ListMmsPartitionsShrinkRequest) Validate() error {
 }
 
 type ListMmsPartitionsShrinkRequestSorter struct {
+	// Sorts by lastDdlTime.
+	//
 	// example:
 	//
 	// desc
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
+	// Sorts by number of rows.
+	//
 	// example:
 	//
 	// desc
 	NumRows *string `json:"numRows,omitempty" xml:"numRows,omitempty"`
+	// Sorts by data size.
+	//
 	// example:
 	//
 	// asc

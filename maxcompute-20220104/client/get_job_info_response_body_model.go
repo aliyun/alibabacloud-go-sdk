@@ -22,42 +22,11 @@ type iGetJobInfoResponseBody interface {
 }
 
 type GetJobInfoResponseBody struct {
-	// The returned result.
-	Data *GetJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// OBJECT_NOT_EXIST
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// This object does not exist.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
-	//
-	// 	- 1xx: informational response. The request is received and is being processed.
-	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
-	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
-	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
-	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0be3e0bb16654558425251398e27a9
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetJobInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetJobInfoResponseBody) String() string {
@@ -123,148 +92,31 @@ func (s *GetJobInfoResponseBody) Validate() error {
 }
 
 type GetJobInfoResponseBodyData struct {
-	// The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
-	//
-	// example:
-	//
-	// 10
-	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	// The end time of the job.
-	//
-	// example:
-	//
-	// 1672112913
-	EndAtTime *int64 `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
-	// The ID of the ancestor node.
-	//
-	// example:
-	//
-	// node_4
-	ExtNodeId *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
-	// The Alibaba Cloud account ID of the task owner.
-	//
-	// example:
-	//
-	// duty_2
-	ExtNodeOnDuty *string `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
-	// The upstream platform.
-	//
-	// example:
-	//
-	// platform_3
-	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
-	// The amount of data scanned by the job.
-	//
-	// example:
-	//
-	// 1234
-	InputBytes *float64 `json:"inputBytes,omitempty" xml:"inputBytes,omitempty"`
-	// The job ID.
-	//
-	// example:
-	//
-	// 20230410****60gg
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The owner of the job.
-	//
-	// example:
-	//
-	// ALIYUN$7632***@aliyun.com
-	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The substatuses of the job lifecycle.
+	CuUsage          *int64                                        `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	EndAtTime        *int64                                        `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
+	ExtNodeId        *string                                       `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
+	ExtNodeOnDuty    *string                                       `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
+	ExtPlantFrom     *string                                       `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	InputBytes       *float64                                      `json:"inputBytes,omitempty" xml:"inputBytes,omitempty"`
+	InstanceId       *string                                       `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	JobOwner         *string                                       `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
 	JobSubStatusList []*GetJobInfoResponseBodyDataJobSubStatusList `json:"jobSubStatusList,omitempty" xml:"jobSubStatusList,omitempty" type:"Repeated"`
-	// The type of the job.
-	//
-	// example:
-	//
-	// SQL
-	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
-	//
-	// example:
-	//
-	// 40
-	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
-	// The priority of the job.
-	//
-	// example:
-	//
-	// 1
-	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The project name.
-	//
-	// example:
-	//
-	// dp_cdm_prod
-	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The nickname of the computing quota that is used by the job.
-	//
-	// example:
-	//
-	// os_bigdata
-	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The quota type.
-	//
-	// example:
-	//
-	// subscription
-	QuotaType *string `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The start time, which is the time when the job received the first batch of computing resources. For jobs that run for a short period of time or do not consume computing resources, such as the jobs that involve DDL statements, the job submission time is used instead.
-	//
-	// example:
-	//
-	// 1672112113
-	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	// The execution duration, which is the duration from the start time to the end time of the job.
-	//
-	// example:
-	//
-	// 800
-	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	// The intelligent diagnostics result.
-	SceneResults []*GetJobInfoResponseBodyDataSceneResults `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
-	// The signature of the SQL job. You can use the signature to find the instances on which each time an SQL statement is executed.
-	//
-	// example:
-	//
-	// 20c1efb4a7caca1865f4aa784bb500efae74af04
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// The job status.
-	//
-	// example:
-	//
-	// running
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the job was submitted.
-	//
-	// example:
-	//
-	// 1672112013
-	SubmittedAtTime *int64 `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 4784****5249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The total duration from the time a job is submitted to the time the job is terminated.
-	//
-	// example:
-	//
-	// 900
-	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	// The wait time, which is the duration from the time the job is submitted to the time the job starts to run.
-	//
-	// example:
-	//
-	// 100
-	WaitingTime *int64 `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
+	JobType          *string                                       `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	MemoryUsage      *int64                                        `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	Priority         *int64                                        `json:"priority,omitempty" xml:"priority,omitempty"`
+	Project          *string                                       `json:"project,omitempty" xml:"project,omitempty"`
+	QuotaNickname    *string                                       `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	QuotaType        *string                                       `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
+	Region           *string                                       `json:"region,omitempty" xml:"region,omitempty"`
+	RunningAtTime    *int64                                        `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
+	RunningTime      *int64                                        `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	SceneResults     []*GetJobInfoResponseBodyDataSceneResults     `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
+	Signature        *string                                       `json:"signature,omitempty" xml:"signature,omitempty"`
+	Status           *string                                       `json:"status,omitempty" xml:"status,omitempty"`
+	SubmittedAtTime  *int64                                        `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
+	TenantId         *string                                       `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	TotalTime        *int64                                        `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
+	WaitingTime      *int64                                        `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyData) String() string {
@@ -523,24 +375,9 @@ func (s *GetJobInfoResponseBodyData) Validate() error {
 }
 
 type GetJobInfoResponseBodyDataJobSubStatusList struct {
-	// The encoding of the substatus.
-	//
-	// example:
-	//
-	// 1010
-	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the substatus.
-	//
-	// example:
-	//
-	// Waiting for scheduling
+	Code        *int32  `json:"code,omitempty" xml:"code,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The start time of the substatus.
-	//
-	// example:
-	//
-	// 2025-03-05 00:04:15.717364 +0800
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StartTime   *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataJobSubStatusList) String() string {
@@ -583,38 +420,12 @@ func (s *GetJobInfoResponseBodyDataJobSubStatusList) Validate() error {
 }
 
 type GetJobInfoResponseBodyDataSceneResults struct {
-	// The intelligent diagnostics result description.
-	//
-	// example:
-	//
-	// This job uses annual and monthly computing resources. It may be that the job is waiting for resources due to the large amount of overall job running data, many resources requested, and low job priority. Please go to Resource Consumption to view the specific situation. You can also go to Cost Optimization to see if you need to adjust resource configuration.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
-	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The intelligent diagnostics result scenario.
-	//
-	// example:
-	//
-	// LackResource
-	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The intelligent diagnostics result tag.
-	//
-	// example:
-	//
-	// SubscriptionLackResource
-	SceneTag *string `json:"sceneTag,omitempty" xml:"sceneTag,omitempty"`
-	// The intelligent diagnostics result summary.
-	//
-	// example:
-	//
-	// Insufficient computing resources available for the job. Click to view details.
-	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// The intelligent diagnostics result type.
-	//
-	// example:
-	//
-	// warning
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Description *string            `json:"description,omitempty" xml:"description,omitempty"`
+	Params      map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
+	Scene       *string            `json:"scene,omitempty" xml:"scene,omitempty"`
+	SceneTag    *string            `json:"sceneTag,omitempty" xml:"sceneTag,omitempty"`
+	Summary     *string            `json:"summary,omitempty" xml:"summary,omitempty"`
+	Type        *string            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetJobInfoResponseBodyDataSceneResults) String() string {

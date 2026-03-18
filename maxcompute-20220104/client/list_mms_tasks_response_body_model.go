@@ -16,7 +16,10 @@ type iListMmsTasksResponseBody interface {
 }
 
 type ListMmsTasksResponseBody struct {
+	// The returned data.
 	Data *ListMmsTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 373A5CB2-8570-53BE-A98F-729B11D7A8B0
@@ -59,15 +62,22 @@ func (s *ListMmsTasksResponseBody) Validate() error {
 }
 
 type ListMmsTasksResponseBodyData struct {
+	// The list of migration tasks.
 	ObjectList []*ListMmsTasksResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -132,86 +142,128 @@ func (s *ListMmsTasksResponseBodyData) Validate() error {
 }
 
 type ListMmsTasksResponseBodyDataObjectList struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2024-10-25 04:21:01
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the source database.
+	//
 	// example:
 	//
 	// 196
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The destination MaxCompute project.
+	//
 	// example:
 	//
 	// mms_test
 	DstDbName *string `json:"dstDbName,omitempty" xml:"dstDbName,omitempty"`
+	// The destination MaxCompute schema.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The destination MaxCompute table.
+	//
 	// example:
 	//
 	// table_1
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// The end time of the task.
+	//
 	// example:
 	//
 	// 2024-10-25 07:21:01
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The ID of the migration task.
+	//
 	// example:
 	//
 	// 2323
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The ID of the migration job.
+	//
 	// example:
 	//
 	// 87
 	JobId *int64 `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The name of the migration job.
+	//
 	// example:
 	//
 	// test_odps_spark
 	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	// The number of retries.
+	//
 	// example:
 	//
 	// 1
 	RetriedTimes *int32 `json:"retriedTimes,omitempty" xml:"retriedTimes,omitempty"`
+	// Indicates whether the task is running.
+	//
 	// example:
 	//
 	// true
 	Running *bool `json:"running,omitempty" xml:"running,omitempty"`
+	// The ID of the data source.
+	//
 	// example:
 	//
 	// 2000028
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The name of the source database.
+	//
 	// example:
 	//
 	// db_1
 	SrcDbName *string `json:"srcDbName,omitempty" xml:"srcDbName,omitempty"`
+	// The name of the source schema. This parameter specifies the schema in a Layer 3 namespace.
+	//
 	// example:
 	//
 	// default
 	SrcSchemaName *string `json:"srcSchemaName,omitempty" xml:"srcSchemaName,omitempty"`
+	// The name of the source table.
+	//
 	// example:
 	//
 	// table_1
 	SrcTableName *string `json:"srcTableName,omitempty" xml:"srcTableName,omitempty"`
+	// The start time of the task.
+	//
 	// example:
 	//
 	// 2024-10-25 06:21:01
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The status of the migration task.
+	//
 	// example:
 	//
 	// DATA_DOING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the task is stopped.
+	//
 	// example:
 	//
 	// false
 	Stopped *bool `json:"stopped,omitempty" xml:"stopped,omitempty"`
+	// The ID of the source table.
+	//
 	// example:
 	//
 	// 23
 	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The task type.
+	//
 	// example:
 	//
 	// BIGQUERY

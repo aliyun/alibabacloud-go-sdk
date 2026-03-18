@@ -18,23 +18,8 @@ type iUpdateQuotaScheduleRequest interface {
 }
 
 type UpdateQuotaScheduleRequest struct {
-	// The request body parameters.
-	//
-	// example:
-	//
-	// \\# The quota plan immediately takes effect. [ { "type": "once", "plan": "planA", "operator":"userA" } ] # The quota plan is scheduled on a regular basis. [ { "id": "etl_time", "type": "daily", "condition": { "at": "0800", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planA" }, { "id": "bi", "type": "daily", "condition": { "at": "0900", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planB" }, ]
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-chengdu
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
+	Body     *string `json:"body,omitempty" xml:"body,omitempty"`
+	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

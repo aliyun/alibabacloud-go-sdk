@@ -22,32 +22,11 @@ type iGetPackageResponseBody interface {
 }
 
 type GetPackageResponseBody struct {
-	// The returned data.
-	Data *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
-	//
-	// example:
-	//
-	// 040002
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// error message.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0b57ff8316614119858417939e3e54
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetPackageResponseBody) String() string {
@@ -113,10 +92,8 @@ func (s *GetPackageResponseBody) Validate() error {
 }
 
 type GetPackageResponseBodyData struct {
-	// The projects in which the package is installed.
 	AllowedProjectList []*GetPackageResponseBodyDataAllowedProjectList `json:"allowedProjectList,omitempty" xml:"allowedProjectList,omitempty" type:"Repeated"`
-	// The details of the resources that are included in the package.
-	ResourceList *GetPackageResponseBodyDataResourceList `json:"resourceList,omitempty" xml:"resourceList,omitempty" type:"Struct"`
+	ResourceList       *GetPackageResponseBodyDataResourceList         `json:"resourceList,omitempty" xml:"resourceList,omitempty" type:"Struct"`
 }
 
 func (s GetPackageResponseBodyData) String() string {
@@ -164,17 +141,7 @@ func (s *GetPackageResponseBodyData) Validate() error {
 }
 
 type GetPackageResponseBodyDataAllowedProjectList struct {
-	// The security level for sensitive data.
-	//
-	// example:
-	//
-	// 2
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the MaxCompute project.
-	//
-	// example:
-	//
-	// proejctB
+	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
@@ -209,12 +176,9 @@ func (s *GetPackageResponseBodyDataAllowedProjectList) Validate() error {
 }
 
 type GetPackageResponseBodyDataResourceList struct {
-	// The functions.
 	Function []*GetPackageResponseBodyDataResourceListFunction `json:"function,omitempty" xml:"function,omitempty" type:"Repeated"`
-	// The resources.
 	Resource []*GetPackageResponseBodyDataResourceListResource `json:"resource,omitempty" xml:"resource,omitempty" type:"Repeated"`
-	// The tables.
-	Table []*GetPackageResponseBodyDataResourceListTable `json:"table,omitempty" xml:"table,omitempty" type:"Repeated"`
+	Table    []*GetPackageResponseBodyDataResourceListTable    `json:"table,omitempty" xml:"table,omitempty" type:"Repeated"`
 }
 
 func (s GetPackageResponseBodyDataResourceList) String() string {
@@ -284,20 +248,9 @@ func (s *GetPackageResponseBodyDataResourceList) Validate() error {
 }
 
 type GetPackageResponseBodyDataResourceListFunction struct {
-	// The operations that were performed on the function.
-	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the function.
-	//
-	// example:
-	//
-	// function_1
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of schema.
-	//
-	// example:
-	//
-	// default
-	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetPackageResponseBodyDataResourceListFunction) String() string {
@@ -340,20 +293,9 @@ func (s *GetPackageResponseBodyDataResourceListFunction) Validate() error {
 }
 
 type GetPackageResponseBodyDataResourceListResource struct {
-	// The operations that were performed on the resource.
-	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the resource.
-	//
-	// example:
-	//
-	// res_1
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of schema.
-	//
-	// example:
-	//
-	// default
-	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetPackageResponseBodyDataResourceListResource) String() string {
@@ -396,20 +338,9 @@ func (s *GetPackageResponseBodyDataResourceListResource) Validate() error {
 }
 
 type GetPackageResponseBodyDataResourceListTable struct {
-	// The operations that were performed on the table.
-	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// dim_odps
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of schema.
-	//
-	// example:
-	//
-	// default
-	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetPackageResponseBodyDataResourceListTable) String() string {

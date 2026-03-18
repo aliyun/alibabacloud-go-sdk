@@ -21,34 +21,16 @@ type iGetQuotaRequest interface {
 
 type GetQuotaRequest struct {
 	// Deprecated
-	//
-	// The trusted AccessKey pairs.
-	//
-	// example:
-	//
-	// null
 	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
-	// Specifies whether to include submodules. Valid values: -true: The request includes submodules. -false: The request does not include submodules. This is the default value.
+	// Specifies whether to include submodules. Valid values: -true: includes submodules. -false (default): does not include submodules.
 	//
 	// example:
 	//
 	// false
 	Mock *bool `json:"mock,omitempty" xml:"mock,omitempty"`
 	// Deprecated
-	//
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// Deprecated
-	//
-	// The tenant ID.
-	//
-	// example:
-	//
-	// 520539530998273
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

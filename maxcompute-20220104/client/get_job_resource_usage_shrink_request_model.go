@@ -22,29 +22,11 @@ type iGetJobResourceUsageShrinkRequest interface {
 }
 
 type GetJobResourceUsageShrinkRequest struct {
-	// The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-05-15
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The list of job executors.
-	JobOwnerListShrink *string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The list of nicknames of quotas that are used by jobs.
+	Date                    *string `json:"date,omitempty" xml:"date,omitempty"`
+	JobOwnerListShrink      *string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty"`
+	PageNumber              *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize                *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	QuotaNicknameListShrink *string `json:"quotaNicknameList,omitempty" xml:"quotaNicknameList,omitempty"`
 }
 

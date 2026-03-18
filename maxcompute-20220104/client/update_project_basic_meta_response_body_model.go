@@ -22,7 +22,7 @@ type iUpdateProjectBasicMetaResponseBody interface {
 }
 
 type UpdateProjectBasicMetaResponseBody struct {
-	// The data returned.
+	// The result of the request.
 	//
 	// example:
 	//
@@ -42,11 +42,15 @@ type UpdateProjectBasicMetaResponseBody struct {
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// - 1xx: informational response. The request is received and is being processed.
+	// - 1xx: Informational response - The request has been received and is being processed.
 	//
-	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: Success - The request was successfully received, understood, and accepted.
 	//
-	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: Redirection - The request was redirected. Further action is needed to complete the request.
+	//
+	// - 4xx: Client error - The request contains incorrect request parameters or syntax, or cannot be fulfilled.
+	//
+	// - 5xx: Server error - The server failed to fulfill the request for other reasons.
 	//
 	// example:
 	//

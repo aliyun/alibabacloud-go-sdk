@@ -18,16 +18,20 @@ type iGetProjectRequest interface {
 }
 
 type GetProjectRequest struct {
-	// Specifies whether to use additional information.
+	// Specifies whether to include additional information, such as securityProperties and superAdmins.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"verbose,omitempty" xml:"verbose,omitempty"`
+	// Specifies whether to include additional information, such as productType.
+	//
 	// example:
 	//
 	// true
 	WithQuotaProductType *bool `json:"withQuotaProductType,omitempty" xml:"withQuotaProductType,omitempty"`
+	// Specifies whether to include additional information, such as properties.storageTierInfo.
+	//
 	// example:
 	//
 	// true

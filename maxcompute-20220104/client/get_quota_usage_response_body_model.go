@@ -22,42 +22,11 @@ type iGetQuotaUsageResponseBody interface {
 }
 
 type GetQuotaUsageResponseBody struct {
-	// The data returned.
-	Data *GetQuotaUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// OBJECT_NOT_EXIST
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// This object does not exist.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
-	//
-	// 	- 1xx: informational response. The request is received and is being processed.
-	//
-	// 	- 2xx: success. The request is successfully received, understood, and accepted by the server.
-	//
-	// 	- 3xx: redirection. The request is redirected, and further actions are required to complete the request.
-	//
-	// 	- 4xx: client error. The request contains invalid request parameters and syntaxes, or specific request conditions cannot be met.
-	//
-	// 	- 5xx: server error. The server cannot meet requirements due to other reasons.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0b87b7a416652014358483492eea0b
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetQuotaUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                        `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                         `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetQuotaUsageResponseBody) String() string {
@@ -123,10 +92,8 @@ func (s *GetQuotaUsageResponseBody) Validate() error {
 }
 
 type GetQuotaUsageResponseBodyData struct {
-	// The metric results.
-	Metrics map[string]interface{} `json:"metrics,omitempty" xml:"metrics,omitempty"`
-	// The information about the chart.
-	Plot []*GetQuotaUsageResponseBodyDataPlot `json:"plot,omitempty" xml:"plot,omitempty" type:"Repeated"`
+	Metrics map[string]interface{}               `json:"metrics,omitempty" xml:"metrics,omitempty"`
+	Plot    []*GetQuotaUsageResponseBodyDataPlot `json:"plot,omitempty" xml:"plot,omitempty" type:"Repeated"`
 }
 
 func (s GetQuotaUsageResponseBodyData) String() string {
@@ -169,19 +136,8 @@ func (s *GetQuotaUsageResponseBodyData) Validate() error {
 }
 
 type GetQuotaUsageResponseBodyDataPlot struct {
-	// The title of the chart.
-	//
-	// example:
-	//
-	// request
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The type of the chart.
-	//
-	// example:
-	//
-	// request
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The data metric field.
+	Title *string   `json:"title,omitempty" xml:"title,omitempty"`
+	Type  *string   `json:"type,omitempty" xml:"type,omitempty"`
 	YAxis []*string `json:"yAxis,omitempty" xml:"yAxis,omitempty" type:"Repeated"`
 }
 

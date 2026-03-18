@@ -16,7 +16,10 @@ type iUpdateMmsDataSourceResponseBody interface {
 }
 
 type UpdateMmsDataSourceResponseBody struct {
+	// The result of the request.
 	Data *UpdateMmsDataSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 76CE80C8-7392-5591-BCC8-610AFBF78ADF
@@ -59,8 +62,18 @@ func (s *UpdateMmsDataSourceResponseBody) Validate() error {
 }
 
 type UpdateMmsDataSourceResponseBodyData struct {
+	// The ID of the asynchronous task. When you test the data source configuration, this ID is used to obtain the test result.
+	//
+	// example:
+	//
+	// 100
 	AsyncTaskId *int64 `json:"asyncTaskId,omitempty" xml:"asyncTaskId,omitempty"`
-	SourceId    *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The ID of the data source.
+	//
+	// example:
+	//
+	// 2000017
+	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 }
 
 func (s UpdateMmsDataSourceResponseBodyData) String() string {

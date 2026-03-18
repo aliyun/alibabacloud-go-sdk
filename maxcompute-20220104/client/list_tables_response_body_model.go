@@ -16,14 +16,8 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
-	// The returned data.
-	Data *ListTablesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0a06dd4516687375802853481ec9fd
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListTablesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListTablesResponseBody) String() string {
@@ -62,20 +56,9 @@ func (s *ListTablesResponseBody) Validate() error {
 }
 
 type ListTablesResponseBodyData struct {
-	// Indicates the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// The information about tables.
-	Tables []*ListTablesResponseBodyDataTables `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	Marker  *string                             `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem *int32                              `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	Tables  []*ListTablesResponseBodyDataTables `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
 }
 
 func (s ListTablesResponseBodyData) String() string {
@@ -127,42 +110,12 @@ func (s *ListTablesResponseBodyData) Validate() error {
 }
 
 type ListTablesResponseBodyDataTables struct {
-	// The time when the table was created.
-	//
-	// example:
-	//
-	// 2022-01-17T07:07:47Z
-	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	// The display name of the table.
-	//
-	// example:
-	//
-	// sale_detail
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// dim_odps
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The owner of the table.
-	//
-	// example:
-	//
-	// 1887853961230110
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The schema to which the table belongs.
-	//
-	// example:
-	//
-	// default
-	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The type of the table.
-	//
-	// example:
-	//
-	// internal
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	CreationTime *int64  `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	DisplayName  *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	Owner        *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Schema       *string `json:"schema,omitempty" xml:"schema,omitempty"`
+	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListTablesResponseBodyDataTables) String() string {

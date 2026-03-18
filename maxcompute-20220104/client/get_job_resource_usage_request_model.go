@@ -22,29 +22,11 @@ type iGetJobResourceUsageRequest interface {
 }
 
 type GetJobResourceUsageRequest struct {
-	// The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-05-15
-	Date *string `json:"date,omitempty" xml:"date,omitempty"`
-	// The list of job executors.
-	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 100.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The list of nicknames of quotas that are used by jobs.
+	Date              *string   `json:"date,omitempty" xml:"date,omitempty"`
+	JobOwnerList      []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
+	PageNumber        *int64    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize          *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	QuotaNicknameList []*string `json:"quotaNicknameList,omitempty" xml:"quotaNicknameList,omitempty" type:"Repeated"`
 }
 

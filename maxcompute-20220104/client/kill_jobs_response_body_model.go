@@ -18,23 +18,8 @@ type iKillJobsResponseBody interface {
 }
 
 type KillJobsResponseBody struct {
-	// The returned data.
-	//
-	// example:
-	//
-	// success
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0abb7ede16814560741256732e91b6
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	HttpCode  *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

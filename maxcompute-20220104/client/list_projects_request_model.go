@@ -32,76 +32,16 @@ type iListProjectsRequest interface {
 }
 
 type ListProjectsRequest struct {
-	// Specifies whether to list the built-in **SYSTEM_CATALOG*	- projects that are used to provide data such as project metadata and historical usage data. For more information, see [Tenant-level Information Schema](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/tenant-level-information-schema).
-	//
-	// Valid values:
-	//
-	// 	- true: The built-in SYSTEM_CATALOG projects are listed.
-	//
-	// 	- false: The built-in SYSTEM_CATALOG projects are not listed.
-	//
-	// example:
-	//
-	// true
-	ListSystemCatalog *bool `json:"listSystemCatalog,omitempty" xml:"listSystemCatalog,omitempty"`
-	// The maximum number of entries to return on each page.
-	//
-	// example:
-	//
-	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries per page. Default value: 10.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// Specifies the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// a
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The quota name that is automatically generated. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), choose **Workspace*	- > **Quotas*	- from the left-side navigation pane, and then view the quota name on the **Quotas*	- page.
-	//
-	// example:
-	//
-	// "hsajkdgbkaubh"
-	QuotaName *string `json:"quotaName,omitempty" xml:"quotaName,omitempty"`
-	// The quota nickname. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), choose **Workspace*	- > **Quotas*	- from the left-side navigation pane, and then view the quota nickname on the **Quotas*	- page.
-	//
-	// example:
-	//
-	// quotaA
-	QuotaNickName *string `json:"quotaNickName,omitempty" xml:"quotaNickName,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The instance ID and billing method of the default computing quota.
-	//
-	// example:
-	//
-	// "aaaa-bbbb"
-	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
-	// The tenant ID. You can log on to the [MaxCompute console](https://maxcompute.console.aliyun.com), and choose **Tenants*	- > **Tenant Property*	- from the left-side navigation pane to view the tenant ID.
-	//
-	// example:
-	//
-	// 549532154333697
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The project type. Valid values:
-	//
-	// 	- **managed**: internal project
-	//
-	// 	- **external**: external project
-	//
-	// example:
-	//
-	// "managed"
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	ListSystemCatalog *bool   `json:"listSystemCatalog,omitempty" xml:"listSystemCatalog,omitempty"`
+	Marker            *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem           *int32  `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	Prefix            *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	QuotaName         *string `json:"quotaName,omitempty" xml:"quotaName,omitempty"`
+	QuotaNickName     *string `json:"quotaNickName,omitempty" xml:"quotaNickName,omitempty"`
+	Region            *string `json:"region,omitempty" xml:"region,omitempty"`
+	SaleTags          *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
+	TenantId          *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListProjectsRequest) String() string {

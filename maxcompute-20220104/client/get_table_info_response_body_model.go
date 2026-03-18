@@ -16,14 +16,8 @@ type iGetTableInfoResponseBody interface {
 }
 
 type GetTableInfoResponseBody struct {
-	// The data returned.
-	Data *GetTableInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0a06dd4516687375802853481ec9fd
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetTableInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetTableInfoResponseBody) String() string {
@@ -62,200 +56,39 @@ func (s *GetTableInfoResponseBody) Validate() error {
 }
 
 type GetTableInfoResponseBodyData struct {
-	// Indicates whether the materialized view is automatically refreshed. This response parameter is returned when type is set to materializedView.
-	//
-	// example:
-	//
-	// false
-	AutoRefreshEnabled *bool `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
-	// The clustering attribute. This response parameter is returned when the table is a clustered table.
-	ClusterInfo *GetTableInfoResponseBodyDataClusterInfo `json:"clusterInfo,omitempty" xml:"clusterInfo,omitempty" type:"Struct"`
-	// The comments of the table.
-	//
-	// example:
-	//
-	// sale_detail
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// DDL statement to create a table.
-	//
-	// example:
-	//
-	// create table if not exists sale_detail( shop_name STRING, customer_id STRING, total_price DOUBLE) partitioned by (sale_date STRING, region STRING);
-	CreateTableDDL *string `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2022-01-17T07:07:47Z
-	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	// The display name.
-	//
-	// example:
-	//
-	// project_name.schema_name.table_name
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The number of file of the table.
-	//
-	// example:
-	//
-	// 200
-	FileNum *int64 `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
-	// Indicates whether the table is an external table. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// false
-	IsExternalTable *bool `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
-	// Indicates whether data of the materialized view is invalid due to changes in the data of the source table. This response parameter is returned when type is set to materializedView.
-	//
-	// example:
-	//
-	// false
-	IsOutdated *bool `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
-	// The time when data of the table or view was last accessed.
-	//
-	// example:
-	//
-	// 2023-11-21T02:05:56Z
-	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	// The time when the data definition language (DDL) statement of the table or view was last modified.
-	//
-	// example:
-	//
-	// 2023-11-21T02:05:56Z
-	LastDDLTime *int64 `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
-	// The time when data of the table or view was last modified.
-	//
-	// example:
-	//
-	// 2023-11-21T02:05:56Z
-	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The lifecycle. Unit: days.
-	//
-	// example:
-	//
-	// -1
-	Lifecycle *string `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
-	// The path of the external table. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// oss://oss-cn-hangzhou-internal.aliyuncs.com/oss-mc-test/Demo1/
-	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// Indicates whether the table or view is a [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations).
-	//
-	// example:
-	//
-	// false
-	MaterializedView *bool `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
-	// The name of the table or view.
-	//
-	// example:
-	//
-	// sale_detail
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The field information.
-	NativeColumns []*GetTableInfoResponseBodyDataNativeColumns `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
-	// The Alibaba Cloud Resource Name (ARN) of the role AliyunODPSDefaultRole in Resource Access Management (RAM). This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// acs:ram::xxxxx:role/aliyunodpsdefaultrole
-	OdpsPropertiesRolearn *string `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
-	// Indicates whether the table header is ignored. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// true
-	OdpsSqlTextOptionFlushHeader *bool `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
-	// The first N rows that were ignored in the table header. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// 1
-	OdpsTextOptionHeaderLinesCount *int64 `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
-	// The account information of the table or view owner.
-	//
-	// example:
-	//
-	// 188785396123****
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The information about partition key columns. This response parameter is returned only for partitioned tables.
-	PartitionColumns []*GetTableInfoResponseBodyDataPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
-	// The physical size of the table.
-	//
-	// example:
-	//
-	// 2763
-	PhysicalSize *int64 `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
-	// The name of the project to which the table or view belongs.
-	//
-	// example:
-	//
-	// projectA
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// Indicates whether the query rewrite operation can be performed by using the materialized view. This response parameter is returned when type is set to materializedView.
-	//
-	// example:
-	//
-	// false
-	RewriteEnabled *bool `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
-	// The name of the schema to which the table or the view belongs.
-	//
-	// example:
-	//
-	// default
-	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The data size of the non-partitioned table. If the table is a partitioned table, the system does not calculate the data size of the table. In this case, the value of this parameter is NULL. The PARTITIONS view includes the data size of each partition in a partitioned table. Unit: bytes.
-	//
-	// example:
-	//
-	// 5372
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// The storage handler of the external table. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// com.aliyun.odps.CsvStorageHandler
-	StorageHandler *string `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
-	// The sensitivity-level label of the table. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
-	//
-	// example:
-	//
-	// 0
-	TableLabel *string `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
-	// The name of the Tablestore table to be accessed. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// ots_tpch_orders
-	TablesotreTableName *string `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
-	// The columns of the Tablestore table to be accessed, including the primary key column and attribute column. This response parameter is returned when type is set to external.
-	//
-	// example:
-	//
-	// :o_orderkey,:o_orderdate,o_custkey,o_orderstatus,o_totalprice
-	TablestoreColumnsMapping *string `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
-	// The type of the table or view. Valid values:
-	//
-	// 	- **internal**: internal table
-	//
-	// 	- **external**: external table
-	//
-	// 	- **view**: view
-	//
-	// 	- **materializedView**: [materialize view](https://www.alibabacloud.com/help/maxcompute/user-guide/materialized-view-operations)
-	//
-	// example:
-	//
-	// internal
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The statement that generates the view. This response parameter is returned when type is set to view.
-	//
-	// example:
-	//
-	// select shop_name, sum(total_price) from sale_detail group by shop_name
-	ViewText *string `json:"viewText,omitempty" xml:"viewText,omitempty"`
+	AutoRefreshEnabled             *bool                                           `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
+	ClusterInfo                    *GetTableInfoResponseBodyDataClusterInfo        `json:"clusterInfo,omitempty" xml:"clusterInfo,omitempty" type:"Struct"`
+	Comment                        *string                                         `json:"comment,omitempty" xml:"comment,omitempty"`
+	CreateTableDDL                 *string                                         `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
+	CreationTime                   *int64                                          `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	DisplayName                    *string                                         `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	FileNum                        *int64                                          `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
+	IsExternalTable                *bool                                           `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
+	IsOutdated                     *bool                                           `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
+	LastAccessTime                 *int64                                          `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	LastDDLTime                    *int64                                          `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
+	LastModifiedTime               *int64                                          `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	Lifecycle                      *string                                         `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
+	Location                       *string                                         `json:"location,omitempty" xml:"location,omitempty"`
+	MaterializedView               *bool                                           `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
+	Name                           *string                                         `json:"name,omitempty" xml:"name,omitempty"`
+	NativeColumns                  []*GetTableInfoResponseBodyDataNativeColumns    `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
+	OdpsPropertiesRolearn          *string                                         `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
+	OdpsSqlTextOptionFlushHeader   *bool                                           `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
+	OdpsTextOptionHeaderLinesCount *int64                                          `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
+	Owner                          *string                                         `json:"owner,omitempty" xml:"owner,omitempty"`
+	PartitionColumns               []*GetTableInfoResponseBodyDataPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
+	PhysicalSize                   *int64                                          `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
+	ProjectName                    *string                                         `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	RewriteEnabled                 *bool                                           `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
+	Schema                         *string                                         `json:"schema,omitempty" xml:"schema,omitempty"`
+	Size                           *int64                                          `json:"size,omitempty" xml:"size,omitempty"`
+	StorageHandler                 *string                                         `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
+	TableLabel                     *string                                         `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
+	TablesotreTableName            *string                                         `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
+	TablestoreColumnsMapping       *string                                         `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
+	Type                           *string                                         `json:"type,omitempty" xml:"type,omitempty"`
+	ViewText                       *string                                         `json:"viewText,omitempty" xml:"viewText,omitempty"`
 }
 
 func (s GetTableInfoResponseBodyData) String() string {
@@ -591,24 +424,10 @@ func (s *GetTableInfoResponseBodyData) Validate() error {
 }
 
 type GetTableInfoResponseBodyDataClusterInfo struct {
-	// Optional. The number of buckets in the clustered table. The value 0 indicates that the number of buckets dynamically changes when a job is running.
-	//
-	// example:
-	//
-	// 1024
-	BucketNum *int64 `json:"bucketNum,omitempty" xml:"bucketNum,omitempty"`
-	// The cluster keys.
-	ClusterCols []*string `json:"clusterCols,omitempty" xml:"clusterCols,omitempty" type:"Repeated"`
-	// The clustering type of the table. MaxCompute supports [hash clustering](https://www.alibabacloud.com/help/maxcompute/use-cases/hash-clustering) and
-	//
-	// [range clustering](https://www.alibabacloud.com/help/maxcompute/use-cases/range-clustering).
-	//
-	// example:
-	//
-	// Hash
-	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	// The condition by which the results are sorted.
-	SortCols []*GetTableInfoResponseBodyDataClusterInfoSortCols `json:"sortCols,omitempty" xml:"sortCols,omitempty" type:"Repeated"`
+	BucketNum   *int64                                             `json:"bucketNum,omitempty" xml:"bucketNum,omitempty"`
+	ClusterCols []*string                                          `json:"clusterCols,omitempty" xml:"clusterCols,omitempty" type:"Repeated"`
+	ClusterType *string                                            `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
+	SortCols    []*GetTableInfoResponseBodyDataClusterInfoSortCols `json:"sortCols,omitempty" xml:"sortCols,omitempty" type:"Repeated"`
 }
 
 func (s GetTableInfoResponseBodyDataClusterInfo) String() string {
@@ -669,17 +488,7 @@ func (s *GetTableInfoResponseBodyDataClusterInfo) Validate() error {
 }
 
 type GetTableInfoResponseBodyDataClusterInfoSortCols struct {
-	// The name of the sorting field.
-	//
-	// example:
-	//
-	// col_2
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The sorting order.
-	//
-	// example:
-	//
-	// DESC
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Order *string `json:"order,omitempty" xml:"order,omitempty"`
 }
 
@@ -714,30 +523,10 @@ func (s *GetTableInfoResponseBodyDataClusterInfoSortCols) Validate() error {
 }
 
 type GetTableInfoResponseBodyDataNativeColumns struct {
-	// The column comments.
-	//
-	// example:
-	//
-	// The name of shop.
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The sensitivity-level label of the column. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
-	//
-	// example:
-	//
-	// 0
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The column name.
-	//
-	// example:
-	//
-	// shop_name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The column type.
-	//
-	// example:
-	//
-	// STRING
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTableInfoResponseBodyDataNativeColumns) String() string {
@@ -789,30 +578,10 @@ func (s *GetTableInfoResponseBodyDataNativeColumns) Validate() error {
 }
 
 type GetTableInfoResponseBodyDataPartitionColumns struct {
-	// The comments of the partition key column.
-	//
-	// example:
-	//
-	// Sale date.
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The sensitivity-level label of the column. For more information, see [Label-based access control](https://www.alibabacloud.com/help/maxcompute/user-guide/label-based-access-control).
-	//
-	// example:
-	//
-	// 0
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The partition name.
-	//
-	// example:
-	//
-	// sale_date
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The partition column type.
-	//
-	// example:
-	//
-	// STRING
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTableInfoResponseBodyDataPartitionColumns) String() string {

@@ -16,17 +16,7 @@ type iUpdatePackageResponseBody interface {
 }
 
 type UpdatePackageResponseBody struct {
-	// The returned data.
-	//
-	// example:
-	//
-	// success
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0bc1ec4016697018733156991e0888
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

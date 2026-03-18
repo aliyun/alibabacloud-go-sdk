@@ -56,16 +56,16 @@ type iListJobInfosRequest interface {
 }
 
 type ListJobInfosRequest struct {
-	// Specifies whether to sort query results in ascending or descending order.
+	// Specifies whether to sort the results in ascending or descending order.
 	//
 	// example:
 	//
 	// true
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The ancestor node IDs.
+	// The upstream node ID.
 	ExtNodeIdList   []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
 	ExtNodeNameList []*string `json:"extNodeNameList,omitempty" xml:"extNodeNameList,omitempty" type:"Repeated"`
-	// The start timestamp.
+	// The start UNIX timestamp.
 	//
 	// This parameter is required.
 	//
@@ -73,32 +73,32 @@ type ListJobInfosRequest struct {
 	//
 	// 1672112000
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The job instance IDs.
+	// The job instance ID.
 	InstanceIdList []*string `json:"instanceIdList,omitempty" xml:"instanceIdList,omitempty" type:"Repeated"`
-	// The job owners.
+	// The job owner.
 	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
-	// The job priorities.
+	// The job priority.
 	PriorityList []*int64 `json:"priorityList,omitempty" xml:"priorityList,omitempty" type:"Repeated"`
-	// The project names.
+	// The project name.
 	ProjectList []*string `json:"projectList,omitempty" xml:"projectList,omitempty" type:"Repeated"`
-	// The quota nickname.
+	// The nickname of the quota.
 	//
 	// example:
 	//
 	// quota_nickname
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The intelligent diagnostics tags.
+	// The smart diagnosis tag.
 	SceneTagList []*string `json:"sceneTagList,omitempty" xml:"sceneTagList,omitempty" type:"Repeated"`
-	// The job signatures.
+	// The job signature.
 	SignatureList []*string `json:"signatureList,omitempty" xml:"signatureList,omitempty" type:"Repeated"`
-	// The sorting columns.
+	// The fields for multi-column sorting.
 	SortByList []*string `json:"sortByList,omitempty" xml:"sortByList,omitempty" type:"Repeated"`
-	// The orders for the sorting columns.
+	// The sort orders for multi-column sorting.
 	SortOrderList []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
-	// The job states.
+	// The job status.
 	StatusList   []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
 	TaskNameList []*string `json:"taskNameList,omitempty" xml:"taskNameList,omitempty" type:"Repeated"`
-	// The end timestamp.
+	// The end UNIX timestamp.
 	//
 	// This parameter is required.
 	//
@@ -106,9 +106,9 @@ type ListJobInfosRequest struct {
 	//
 	// 1672112130
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// The job types.
+	// The job type.
 	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
-	// The column based on which you want to sort query results.
+	// The column to use for sorting.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListJobInfosRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

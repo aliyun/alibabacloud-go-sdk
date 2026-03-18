@@ -16,14 +16,8 @@ type iListResourcesResponseBody interface {
 }
 
 type ListResourcesResponseBody struct {
-	// The returned data.
-	Data *ListResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0bc3b4ae16685836687916212e7850
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListResourcesResponseBody) String() string {
@@ -62,19 +56,8 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyData struct {
-	// Indicates the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// ZmN0X21vbnRoX3Rhb2Jhb19pbmRleCE=
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// The list of resources.
+	Marker    *string                                   `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem   *int32                                    `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	Resources []*ListResourcesResponseBodyDataResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
@@ -127,114 +110,17 @@ func (s *ListResourcesResponseBodyData) Validate() error {
 }
 
 type ListResourcesResponseBodyDataResources struct {
-	// The remarks.
-	//
-	// example:
-	//
-	// file
-	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The Base64-encoded 128-bit MD5 hash value of the HTTP request body.
-	//
-	// example:
-	//
-	// MACiECZtnLiNkNS1v5****=1
-	ContentMD5 *string `json:"contentMD5,omitempty" xml:"contentMD5,omitempty"`
-	// The time when the resource was created.
-	//
-	// example:
-	//
-	// 2022-01-29T03:34:09Z
-	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	// The display name.
-	//
-	// example:
-	//
-	// res_1
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The time when the resource was modified.
-	//
-	// example:
-	//
-	// 2023-04-18T06:15:05Z
-	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// The user who updated the resource.
-	//
-	// example:
-	//
-	// ALIYUN$xxx@test.aliyunid.com
-	LastUpdator *string `json:"lastUpdator,omitempty" xml:"lastUpdator,omitempty"`
-	// The name of the resource.
-	//
-	// example:
-	//
-	// res_1
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The owner of the resource.
-	//
-	// example:
-	//
-	// 1265860483008101
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The schema to which the resource belongs.
-	//
-	// example:
-	//
-	// schemaA
-	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
-	// The size of the resource.
-	//
-	// example:
-	//
-	// 10
-	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// The resource type.
-	//
-	// Valid values:
-	//
-	// 	- file
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- py
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- jar
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- volumefile
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- table
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// file
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Comment          *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	ContentMD5       *string `json:"contentMD5,omitempty" xml:"contentMD5,omitempty"`
+	CreationTime     *int64  `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	DisplayName      *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	LastModifiedTime *int64  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	LastUpdator      *string `json:"lastUpdator,omitempty" xml:"lastUpdator,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	Owner            *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Schema           *string `json:"schema,omitempty" xml:"schema,omitempty"`
+	Size             *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListResourcesResponseBodyDataResources) String() string {

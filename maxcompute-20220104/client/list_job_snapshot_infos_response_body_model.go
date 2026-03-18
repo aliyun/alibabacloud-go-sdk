@@ -34,19 +34,19 @@ type ListJobSnapshotInfosResponseBody struct {
 	//
 	// example:
 	//
-	// this quota is not exist.
+	// 异常信息
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
 	//
-	// - 1xx: informational response. The request is received and is being processed.
+	// - 1xx: Informational - The request has been received and the process is continuing.
 	//
-	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
+	// - 2xx: Success - The request was successfully received, understood, and accepted.
 	//
-	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	// - 3xx: Redirection - Further action must be taken to complete the request.
 	//
-	// - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+	// - 4xx: Client Error - The request contains bad syntax or cannot be fulfilled.
 	//
-	// - 5xx: server error. The server cannot meet requirements due to other reasons.
+	// - 5xx: Server Error - The server failed to fulfill an apparently valid request.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ func (s *ListJobSnapshotInfosResponseBody) Validate() error {
 }
 
 type ListJobSnapshotInfosResponseBodyData struct {
-	// The job snapshots.
+	// The list of job snapshots.
 	JobInfoList []*ListJobSnapshotInfosResponseBodyDataJobInfoList `json:"jobInfoList,omitempty" xml:"jobInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -137,7 +137,7 @@ type ListJobSnapshotInfosResponseBodyData struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned results.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -203,25 +203,25 @@ func (s *ListJobSnapshotInfosResponseBodyData) Validate() error {
 }
 
 type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
-	// The CPU request amount of the job at the snapshot time point. Unit: Core.
+	// The amount of CPU cores requested by the job at the snapshot time.
 	//
 	// example:
 	//
 	// 200
 	CpuRequest *int64 `json:"cpuRequest,omitempty" xml:"cpuRequest,omitempty"`
-	// CPU usage of the job at the snapshot time. Unit: Core.
+	// The CPU usage of the job at the snapshot time. Unit: cores.
 	//
 	// example:
 	//
 	// 100
 	CpuUsage *int64 `json:"cpuUsage,omitempty" xml:"cpuUsage,omitempty"`
-	// The CPU satisfaction ratio of the job at the snapshot time point (cpuUsage/cpuRequest).
+	// The CPU fulfillment ratio of the job at the snapshot time. This is calculated by dividing the CPU usage by the CPU request.
 	//
 	// example:
 	//
 	// 0.5
 	CpuUsageToRequestRatio *float64 `json:"cpuUsageToRequestRatio,omitempty" xml:"cpuUsageToRequestRatio,omitempty"`
-	// The ID of the upstream node.
+	// The upstream node ID.
 	//
 	// example:
 	//
@@ -240,85 +240,85 @@ type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
 	// Dataworks
 	ExtPlantFrom  *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
 	ExtPlatformId *string `json:"extPlatformId,omitempty" xml:"extPlatformId,omitempty"`
-	// The instance ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 20241028****jkl
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The account that commits the job.
+	// The job owner.
 	//
 	// example:
 	//
 	// ALIYUN$7632***@aliyun.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The type of the job.
+	// The job type.
 	//
 	// example:
 	//
 	// SQL
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// Not applicable.
+	// This parameter is not used.
 	//
 	// example:
 	//
 	// -1
 	MaxCpuPct *float64 `json:"maxCpuPct,omitempty" xml:"maxCpuPct,omitempty"`
-	// Not applicable.
+	// This parameter is not used.
 	//
 	// example:
 	//
 	// -1
 	MaxMemoryPct *float64 `json:"maxMemoryPct,omitempty" xml:"maxMemoryPct,omitempty"`
-	// The Memory request amount of the job at the snapshot time point. Unit: MB.
+	// The amount of memory requested by the job at the snapshot time, in MB.
 	//
 	// example:
 	//
 	// 409600
 	MemoryRequest *int64 `json:"memoryRequest,omitempty" xml:"memoryRequest,omitempty"`
-	// Memory usage of the job at the snapshot time. Unit: MB.
+	// The memory usage of the job at the snapshot time. Unit: MB.
 	//
 	// example:
 	//
 	// 409600
 	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
-	// The Memory satisfaction ratio of the job at the snapshot time point (memoryUsage/memoryRequest).
+	// The memory fulfillment ratio of the job at the snapshot time. This is calculated by dividing the memory usage by the memory request.
 	//
 	// example:
 	//
 	// 1
 	MemoryUsageToRequestRatio *float64 `json:"memoryUsageToRequestRatio,omitempty" xml:"memoryUsageToRequestRatio,omitempty"`
-	// The CPU usage ratio of the annual or monthly subscription job at the snapshot time (CPU usage / (reserved CPU guarantee + elastic reserved CPU)). This parameter is not available for pay-as-you-go jobs.
+	// The CPU usage percentage of a subscription job at the snapshot time. This value is calculated by dividing the CPU usage by the sum of the reserved CPU guarantee and the elastic reserved CPU. This parameter is not available for pay-as-you-go jobs.
 	//
 	// example:
 	//
 	// 0.6
 	MinCpuPct *float64 `json:"minCpuPct,omitempty" xml:"minCpuPct,omitempty"`
-	// The memory usage ratio of the annual or monthly subscription job at the observation time (memory usage / (reserved memory guarantee + elastic reserved memory)). This parameter is not available for pay-as-you-go jobs.
+	// The memory usage percentage of a subscription job at the observation time. This value is calculated by dividing the memory usage by the sum of the reserved memory guarantee and the elastic reserved memory. This parameter is not available for pay-as-you-go jobs.
 	//
 	// example:
 	//
 	// 0.6
 	MinMemoryPct *float64 `json:"minMemoryPct,omitempty" xml:"minMemoryPct,omitempty"`
-	// The priority of the job.
+	// The job priority.
 	//
 	// example:
 	//
 	// 9
 	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The name of the MaxCompute project.
+	// The project name.
 	//
 	// example:
 	//
 	// projectA
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The nickname of the computing Quota used by the job.
+	// The nickname of the computing quota that the job uses.
 	//
 	// example:
 	//
 	// quota_A
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The type of the quota.
+	// The quota type.
 	//
 	// example:
 	//
@@ -330,15 +330,15 @@ type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The start time of the job.
+	// The time when the job started running.
 	//
-	// > The time when the job received the first batch of computing resources.
+	// > The time when the job acquired its first computing resource.
 	//
 	// example:
 	//
 	// 1736821805
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	// The running duration, which is the duration from the runningAtTime to the snapshotTime of the job.  Unit: seconds (s).
+	// The runtime duration, in seconds. This is the duration from when the job started running to the snapshot time. If the job has not started, this parameter is empty.
 	//
 	// example:
 	//
@@ -356,15 +356,15 @@ type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
 	//
 	// 1736821848
 	SnapshotTime *int64 `json:"snapshotTime,omitempty" xml:"snapshotTime,omitempty"`
-	// The snapshot status of the job.
+	// The job status.
 	//
-	// > The snapshot status is only running.
+	// > The status of a snapshot job can only be \\`running\\`.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the job was committed.
+	// The time when the job was submitted.
 	//
 	// example:
 	//
@@ -376,13 +376,13 @@ type ListJobSnapshotInfosResponseBodyDataJobInfoList struct {
 	//
 	// 213065738244354
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The interval from the time when the job was submitted to the snapshotTime .Unit: seconds (s).
+	// The total duration, in seconds. This is the duration from when the job was submitted to the snapshot time.
 	//
 	// example:
 	//
 	// 63
 	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	// The duration from the time the job is submitted to the time the job starts to run. Unit: seconds (s).
+	// The waiting duration, in seconds. This is the duration from when the job was submitted to when it started running. If the job has not started, this is the duration from the submission time to the snapshot time.
 	//
 	// example:
 	//

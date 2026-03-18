@@ -34,60 +34,17 @@ type iListComputeMetricsByInstanceRequest interface {
 }
 
 type ListComputeMetricsByInstanceRequest struct {
-	// The end time for the period.
-	//
-	// example:
-	//
-	// 1718590596556
-	EndDate *int64 `json:"endDate,omitempty" xml:"endDate,omitempty"`
-	// The job(instance) ID.
-	//
-	// example:
-	//
-	// 20240730****ddlr
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The Alibaba Cloud account that is used to run the MaxCompute job.
-	//
-	// example:
-	//
-	// ALIYUN$7632***@aliyun.com
-	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The name of MaxCompute project.
+	EndDate      *int64    `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	InstanceId   *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	JobOwner     *string   `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
+	PageNumber   *int64    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize     *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	ProjectNames []*string `json:"projectNames,omitempty" xml:"projectNames,omitempty" type:"Repeated"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The signature of the SQL job.
-	//
-	// example:
-	//
-	// ghijkl789012
-	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// Specification types.
-	SpecCodes []*string `json:"specCodes,omitempty" xml:"specCodes,omitempty" type:"Repeated"`
-	// The start time for the period.
-	//
-	// example:
-	//
-	// 1715393576201
-	StartDate *int64 `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// Metering types.
-	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
+	Region       *string   `json:"region,omitempty" xml:"region,omitempty"`
+	Signature    *string   `json:"signature,omitempty" xml:"signature,omitempty"`
+	SpecCodes    []*string `json:"specCodes,omitempty" xml:"specCodes,omitempty" type:"Repeated"`
+	StartDate    *int64    `json:"startDate,omitempty" xml:"startDate,omitempty"`
+	Types        []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
 }
 
 func (s ListComputeMetricsByInstanceRequest) String() string {

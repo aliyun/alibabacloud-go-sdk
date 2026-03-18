@@ -16,14 +16,8 @@ type iGetTrustedProjectsResponseBody interface {
 }
 
 type GetTrustedProjectsResponseBody struct {
-	// The returned data.
-	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0bc0590416675329272834336e4387
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetTrustedProjectsResponseBody) String() string {

@@ -16,10 +16,14 @@ type iStartMmsJobResponseBody interface {
 }
 
 type StartMmsJobResponseBody struct {
+	// The ID of the migration job.
+	//
 	// example:
 	//
 	// 88
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 5CA6292A-E301-5CD8-B4E2-AF060F99147B

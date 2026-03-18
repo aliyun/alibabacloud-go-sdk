@@ -32,35 +32,58 @@ type iQueryTunnelMetricDetailRequest interface {
 }
 
 type QueryTunnelMetricDetailRequest struct {
+	// Specifies whether to sort the results in ascending order.
+	//
 	// example:
 	//
 	// false
-	AscOrder  *bool     `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	// The list of grouping bases.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
+	// The maximum number of entries to return. The default value is 10. The maximum value is 100.
+	//
 	// example:
 	//
 	// 10
-	Limit         *int64    `json:"limit,omitempty" xml:"limit,omitempty"`
+	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The list of operation types.
 	OperationList []*string `json:"operationList,omitempty" xml:"operationList,omitempty" type:"Repeated"`
+	// The column to sort by.
+	//
 	// example:
 	//
 	// maxValue
 	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
+	// The name of the project.
+	//
 	// example:
 	//
 	// project_a
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The nickname of the level-2 quota for the tunnel.
+	//
+	// The nickname of the shared quota is default.
+	//
+	// The nickname of the exclusive quota is in the quotaNickname#subQuotaNickname format.
+	//
 	// example:
 	//
 	// quota_A
-	QuotaNickname *string   `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	TableList     []*string `json:"tableList,omitempty" xml:"tableList,omitempty" type:"Repeated"`
+	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	// The list of table names.
+	//
+	// The tables belong to a project. Therefore, if tableList is not empty, project cannot be empty.
+	TableList []*string `json:"tableList,omitempty" xml:"tableList,omitempty" type:"Repeated"`
+	// The end of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1735536322
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The start of the time range to query.
+	//
 	// This parameter is required.
 	//
 	// example:

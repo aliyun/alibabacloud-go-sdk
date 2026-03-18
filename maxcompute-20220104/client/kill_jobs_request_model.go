@@ -18,41 +18,8 @@ type iKillJobsRequest interface {
 }
 
 type KillJobsRequest struct {
-	// The request body parameters.
-	//
-	// example:
-	//
-	// [
-	//
-	//       {
-	//
-	//             "instanceId": "",
-	//
-	//             "projectName": ""
-	//
-	//       },
-	//
-	//       {
-	//
-	//             "instanceId": "",
-	//
-	//             "projectName": ""
-	//
-	//       }
-	//
-	// ]
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The ID of the region in which the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
+	Body     *string `json:"body,omitempty" xml:"body,omitempty"`
+	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

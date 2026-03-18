@@ -20,10 +20,34 @@ type iUpdateMmsDataSourceRequest interface {
 }
 
 type UpdateMmsDataSourceRequest struct {
-	Action *string                `json:"action,omitempty" xml:"action,omitempty"`
+	// The type of the update operation:
+	//
+	// 1. UPDATE_CONFIG: updates the data source configuration.
+	//
+	// 2. START: starts the data source instance.
+	//
+	// 3. STOP: shuts down the data source instance.
+	//
+	// 4. RENAME: renames the data source.
+	//
+	// example:
+	//
+	// UPDATE_CONFIG
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The data source configuration. The configuration items vary based on the data source.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	Name   *string                `json:"name,omitempty" xml:"name,omitempty"`
-	Test   *bool                  `json:"test,omitempty" xml:"test,omitempty"`
+	// The new name of the data source.
+	//
+	// example:
+	//
+	// dept1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Tests the data source configuration.
+	//
+	// example:
+	//
+	// true
+	Test *bool `json:"test,omitempty" xml:"test,omitempty"`
 }
 
 func (s UpdateMmsDataSourceRequest) String() string {

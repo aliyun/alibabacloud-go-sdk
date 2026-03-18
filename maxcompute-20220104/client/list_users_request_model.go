@@ -16,18 +16,8 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The number of the page to return.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {

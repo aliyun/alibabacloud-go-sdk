@@ -18,9 +18,9 @@ type iListJobInfosResponseBody interface {
 }
 
 type ListJobInfosResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data *ListJobInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	// Indicates whether the business logic was successful. A value other than 200 indicates a failure.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *ListJobInfosResponseBody) Validate() error {
 }
 
 type ListJobInfosResponseBodyData struct {
-	// The information about the jobs.
+	// The list of job information.
 	JobInfoList []*ListJobInfosResponseBodyDataJobInfoList `json:"jobInfoList,omitempty" xml:"jobInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -93,7 +93,7 @@ type ListJobInfosResponseBodyData struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -165,32 +165,32 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// AY20A
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The CU snapshot proportion of the job.
+	// The proportion of CUs in the job snapshot.
 	//
 	// example:
 	//
 	// 0.48
 	CuSnapshot *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
-	// The amount of resources consumed by the job. This parameter is returned only for jobs that are complete.Unit: 100\\*Core\\*s.
+	// The total CUs used.
 	//
 	// example:
 	//
 	// 10
 	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
-	// The time when the job stops running.
+	// The time when the job finished.
 	//
 	// example:
 	//
 	// 0
 	EndAtTime *int64 `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
-	// The node ID of DataWorks.
+	// The ID of the DataWorks node.
 	//
 	// example:
 	//
 	// node_4
 	ExtNodeId   *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
 	ExtNodeName *string `json:"extNodeName,omitempty" xml:"extNodeName,omitempty"`
-	// The account of the node owner.
+	// The person in charge of the execution.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	// platform_3
 	ExtPlantFrom  *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
 	ExtPlatformId *string `json:"extPlatformId,omitempty" xml:"extPlatformId,omitempty"`
-	// The amount of scanned data for the job. Unit: byte.
+	// The amount of data scanned by the job. Unit: bytes.
 	//
 	// example:
 	//
@@ -215,31 +215,31 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// 20230410050036549gfmsdwf60gg
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The account that commits the job.
+	// The account that submitted the job.
 	//
 	// example:
 	//
 	// ALIYUN$xxx@test.aliyunid.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
-	// The type of the job.
+	// The job type.
 	//
 	// example:
 	//
 	// SQL
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// The memory snapshot proportion of the job.
+	// The proportion of memory in the job snapshot.
 	//
 	// example:
 	//
 	// 0.42
 	MemorySnapshot *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
-	// The number of memory consumed by the job. This parameter is returned only for jobs that are complete.Unit: MB\\*s.
+	// The total memory used.
 	//
 	// example:
 	//
 	// 40
 	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
-	// The priority of the job.
+	// The priority.
 	//
 	// example:
 	//
@@ -251,13 +251,13 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// openrec_new
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The nickname of the quota that is used by the job.
+	// The nickname of the quota that the job uses.
 	//
 	// example:
 	//
 	// my_quota
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
-	// The type of the quota.
+	// The quota type.
 	//
 	// example:
 	//
@@ -269,39 +269,39 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The time when the job starts to run.
+	// The time when the job started to run.
 	//
 	// example:
 	//
 	// 1672112113
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
-	// The period for which the job runs.
+	// The runtime.
 	//
 	// example:
 	//
 	// 800
 	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	// The intelligent diagnostics results.
+	// The smart diagnosis results.
 	SceneResults []*ListJobInfosResponseBodyDataJobInfoListSceneResults `json:"sceneResults,omitempty" xml:"sceneResults,omitempty" type:"Repeated"`
-	// The signature of the SQL job.
+	// The SQL signature.
 	//
 	// example:
 	//
 	// i094KijGrN3kOXZ74kbexB77XQY=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	// The status of the job.
+	// The status.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The status of the snapshot.
+	// The status of the job snapshot.
 	//
 	// example:
 	//
 	// running
 	StatusSnapshot *string `json:"statusSnapshot,omitempty" xml:"statusSnapshot,omitempty"`
-	// The time when the job was committed.
+	// The time when the job was submitted.
 	//
 	// example:
 	//
@@ -320,13 +320,13 @@ type ListJobInfosResponseBodyDataJobInfoList struct {
 	//
 	// 213065738244354
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The total period for which the job runs.
+	// The total runtime.
 	//
 	// example:
 	//
 	// 900
 	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
-	// The duration for which the job waits to start.
+	// The waiting time.
 	//
 	// example:
 	//
@@ -644,33 +644,33 @@ func (s *ListJobInfosResponseBodyDataJobInfoList) Validate() error {
 }
 
 type ListJobInfosResponseBodyDataJobInfoListSceneResults struct {
-	// The intelligent diagnostics result description.
+	// The details of the smart diagnosis result.
 	//
 	// example:
 	//
 	// This job uses annual and monthly computing resources. It may be that the job is waiting for resources due to the large amount of overall job running data, many resources requested, and low job priority. Please go to Resource Consumption to view the specific situation. You can also go to Cost Optimization to see if you need to adjust resource configuration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Information about the nodes where data skew or data expansion is detected. This parameter is returned only when the diagnostics scenario is data skew or data expansion.
+	// Information about the nodes that have data skew or data bloat. This parameter is returned only when the diagnosis scenario is data skew or data bloat.
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// The intelligent diagnostics result scenario.
+	// The scenario of the smart diagnosis result.
 	//
 	// example:
 	//
 	// LackResource
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The intelligent diagnostics result tag.
+	// The tag of the smart diagnosis result.
 	//
 	// example:
 	//
 	// SubscriptionLackResource
 	SceneTag *string `json:"sceneTag,omitempty" xml:"sceneTag,omitempty"`
-	// The intelligent diagnostics result summary.
+	// A summary of the smart diagnosis result.
 	//
 	// example:
 	//
 	// Insufficient computing resources available for the job. Click to view details.
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// The intelligent diagnostics result type.
+	// The type of the smart diagnosis result.
 	//
 	// example:
 	//

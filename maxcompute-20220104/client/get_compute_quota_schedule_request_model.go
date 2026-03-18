@@ -14,11 +14,6 @@ type iGetComputeQuotaScheduleRequest interface {
 }
 
 type GetComputeQuotaScheduleRequest struct {
-	// Display time zone.
-	//
-	// example:
-	//
-	// UTC+8
 	DisplayTimezone *string `json:"displayTimezone,omitempty" xml:"displayTimezone,omitempty"`
 }
 

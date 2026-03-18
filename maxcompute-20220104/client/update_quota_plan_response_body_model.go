@@ -16,17 +16,7 @@ type iUpdateQuotaPlanResponseBody interface {
 }
 
 type UpdateQuotaPlanResponseBody struct {
-	// The returned result.
-	//
-	// example:
-	//
-	// success
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0a06dfe516688379832875789e2c65
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

@@ -16,14 +16,8 @@ type iListPackagesResponseBody interface {
 }
 
 type ListPackagesResponseBody struct {
-	// The returned data.
-	Data *ListPackagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0bc3b4aa16677927210252786e4cb6
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListPackagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListPackagesResponseBody) String() string {
@@ -62,9 +56,7 @@ func (s *ListPackagesResponseBody) Validate() error {
 }
 
 type ListPackagesResponseBodyData struct {
-	// The packages that were created.
-	CreatedPackages []*ListPackagesResponseBodyDataCreatedPackages `json:"createdPackages,omitempty" xml:"createdPackages,omitempty" type:"Repeated"`
-	// The packages that were installed.
+	CreatedPackages   []*ListPackagesResponseBodyDataCreatedPackages   `json:"createdPackages,omitempty" xml:"createdPackages,omitempty" type:"Repeated"`
 	InstalledPackages []*ListPackagesResponseBodyDataInstalledPackages `json:"installedPackages,omitempty" xml:"installedPackages,omitempty" type:"Repeated"`
 }
 
@@ -117,18 +109,8 @@ func (s *ListPackagesResponseBodyData) Validate() error {
 }
 
 type ListPackagesResponseBodyDataCreatedPackages struct {
-	// The time when the package was created.
-	//
-	// example:
-	//
-	// 2022-08-02T02:30:34Z
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The name of the package.
-	//
-	// example:
-	//
-	// packageA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	CreateTime *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListPackagesResponseBodyDataCreatedPackages) String() string {
@@ -162,30 +144,10 @@ func (s *ListPackagesResponseBodyDataCreatedPackages) Validate() error {
 }
 
 type ListPackagesResponseBodyDataInstalledPackages struct {
-	// The time when the package was installed.
-	//
-	// example:
-	//
-	// 2022-09-02T02:30:34Z
-	InstallTime *int64 `json:"installTime,omitempty" xml:"installTime,omitempty"`
-	// The name of the package.
-	//
-	// example:
-	//
-	// packageB
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
-	//
-	// example:
-	//
-	// projectB
+	InstallTime   *int64  `json:"installTime,omitempty" xml:"installTime,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
 	SourceProject *string `json:"sourceProject,omitempty" xml:"sourceProject,omitempty"`
-	// The status of the package.
-	//
-	// example:
-	//
-	// OK
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status        *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListPackagesResponseBodyDataInstalledPackages) String() string {

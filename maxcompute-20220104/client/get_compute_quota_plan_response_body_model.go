@@ -22,42 +22,11 @@ type iGetComputeQuotaPlanResponseBody interface {
 }
 
 type GetComputeQuotaPlanResponseBody struct {
-	// The data returned.
-	Data *GetComputeQuotaPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// QUOTA_PLAN_NOT_FOUND
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// plan \\"***\\" does not exist
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
-	//
-	// - 1xx: informational response. The request is received and is being processed.
-	//
-	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
-	//
-	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
-	//
-	// - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
-	//
-	// - 5xx: server error. The server cannot meet requirements due to other reasons.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EA1320AB-7766-5EC7-B0F6-8B20E2298567
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetComputeQuotaPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                              `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                              `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                               `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetComputeQuotaPlanResponseBody) String() string {
@@ -123,30 +92,10 @@ func (s *GetComputeQuotaPlanResponseBody) Validate() error {
 }
 
 type GetComputeQuotaPlanResponseBodyData struct {
-	// The time when the quota plan was created.
-	//
-	// example:
-	//
-	// 1730946421757
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Whether it is currently effective.
-	//
-	// >
-	//
-	// > - A Quota plan that has taken effect cannot be deleted, i.e., isEffective=true
-	//
-	// example:
-	//
-	// true/false
-	IsEffective *bool `json:"isEffective,omitempty" xml:"isEffective,omitempty"`
-	// The name of the quota plan.
-	//
-	// example:
-	//
-	// planA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The details of the quota.
-	Quota *GetComputeQuotaPlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	CreateTime  *string                                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	IsEffective *bool                                     `json:"isEffective,omitempty" xml:"isEffective,omitempty"`
+	Name        *string                                   `json:"name,omitempty" xml:"name,omitempty"`
+	Quota       *GetComputeQuotaPlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s GetComputeQuotaPlanResponseBodyData) String() string {
@@ -203,76 +152,19 @@ func (s *GetComputeQuotaPlanResponseBodyData) Validate() error {
 }
 
 type GetComputeQuotaPlanResponseBodyDataQuota struct {
-	// Cluster ID.
-	//
-	// example:
-	//
-	// AT-120N
-	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// Creation time.
-	//
-	// example:
-	//
-	// 1719886322347
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Creator\\"s cloud account UID.
-	//
-	// example:
-	//
-	// 672863518
-	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-1 quota.
-	//
-	// example:
-	//
-	// 2413
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-1 quota.
-	//
-	// example:
-	//
-	// quota_a
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The nickname of the level-1 quota.
-	//
-	// example:
-	//
-	// quota_nickname
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// CU value parameters for the level-1 quota.
-	Parameter *GetComputeQuotaPlanResponseBodyDataQuotaParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// Region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Resource status.
-	//
-	// example:
-	//
-	// ON
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The list of level-2 quotas.
+	Cluster          *string                                                     `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CreateTime       *int64                                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId        *string                                                     `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Id               *string                                                     `json:"id,omitempty" xml:"id,omitempty"`
+	Name             *string                                                     `json:"name,omitempty" xml:"name,omitempty"`
+	NickName         *string                                                     `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	Parameter        *GetComputeQuotaPlanResponseBodyDataQuotaParameter          `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	RegionId         *string                                                     `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Status           *string                                                     `json:"status,omitempty" xml:"status,omitempty"`
 	SubQuotaInfoList []*GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	// Tenant ID.
-	//
-	// example:
-	//
-	// 478403690625249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// Corresponds to the `resourceSystemType` field of the control cluster.
-	//
-	// example:
-	//
-	// FUXI_ONLINE
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Version number.
-	//
-	// example:
-	//
-	// 1964
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	TenantId         *string                                                     `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type             *string                                                     `json:"type,omitempty" xml:"type,omitempty"`
+	Version          *string                                                     `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetComputeQuotaPlanResponseBodyDataQuota) String() string {
@@ -419,24 +311,9 @@ func (s *GetComputeQuotaPlanResponseBodyDataQuota) Validate() error {
 }
 
 type GetComputeQuotaPlanResponseBodyDataQuotaParameter struct {
-	// The value of elastic Reserved CUs.
-	//
-	// example:
-	//
-	// 50
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
-	// The value of maxCU in Reserved CUs.
-	//
-	// example:
-	//
-	// 50
-	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
-	// The value of minCU in Reserved CUs.
-	//
-	// example:
-	//
-	// 50
-	MinCU *int64 `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	MaxCU             *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	MinCU             *int64 `json:"minCU,omitempty" xml:"minCU,omitempty"`
 }
 
 func (s GetComputeQuotaPlanResponseBodyDataQuotaParameter) String() string {
@@ -479,74 +356,18 @@ func (s *GetComputeQuotaPlanResponseBodyDataQuotaParameter) Validate() error {
 }
 
 type GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoList struct {
-	// Cluster ID.
-	//
-	// example:
-	//
-	// AT-120N
-	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// Creation time.
-	//
-	// example:
-	//
-	// 1718155201628
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Creator cloud account UID.
-	//
-	// example:
-	//
-	// 672863518
-	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-2 quota.
-	//
-	// example:
-	//
-	// 10940
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-2 quota.
-	//
-	// example:
-	//
-	// dp_cn_shanghai_1696659792_p
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The nickname of the level-2 quota.
-	//
-	// example:
-	//
-	// subquotaA
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The parameters of the level-2 quota.
-	Parameter *GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// Region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Resource status.
-	//
-	// example:
-	//
-	// ON
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Tenant ID.
-	//
-	// example:
-	//
-	// 478403690625249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of quota.
-	//
-	// example:
-	//
-	// FUXI_ONLINE
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Version number.
-	//
-	// example:
-	//
-	// 1386
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Cluster    *string                                                            `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CreateTime *int64                                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId  *string                                                            `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Id         *string                                                            `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string                                                            `json:"name,omitempty" xml:"name,omitempty"`
+	NickName   *string                                                            `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	Parameter  *GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	RegionId   *string                                                            `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Status     *string                                                            `json:"status,omitempty" xml:"status,omitempty"`
+	TenantId   *string                                                            `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type       *string                                                            `json:"type,omitempty" xml:"type,omitempty"`
+	Version    *string                                                            `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoList) String() string {
@@ -675,48 +496,13 @@ func (s *GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoList) Validate() er
 }
 
 type GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoListParameter struct {
-	// The value of elastic Reserved CUs.
-	//
-	// example:
-	//
-	// 50
-	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
-	// whether to enable the priority feature.
-	//
-	// example:
-	//
-	// true/false
-	EnablePriority *bool `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
-	// Whether it is exclusive.
-	//
-	// example:
-	//
-	// true/false
-	ForceReservedMin *bool `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
-	// The value of maxCU in Reserved CUs.
-	//
-	// example:
-	//
-	// 50
-	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
-	// The value of minCU in Reserved CUs.
-	//
-	// example:
-	//
-	// 50
-	MinCU *int64 `json:"minCU,omitempty" xml:"minCU,omitempty"`
-	// Scheduling policy.
-	//
-	// example:
-	//
-	// Fifo/Fair
-	SchedulerType *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
-	// The upper limit for CUs that can be concurrently used by a job scheduled to the quota.
-	//
-	// example:
-	//
-	// 50
-	SingleJobCULimit *int64 `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+	ElasticReservedCU *int64  `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
+	EnablePriority    *bool   `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	ForceReservedMin  *bool   `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	MaxCU             *int64  `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	MinCU             *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	SchedulerType     *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	SingleJobCULimit  *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
 }
 
 func (s GetComputeQuotaPlanResponseBodyDataQuotaSubQuotaInfoListParameter) String() string {

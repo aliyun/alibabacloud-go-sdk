@@ -20,29 +20,9 @@ type iListFunctionsRequest interface {
 }
 
 type ListFunctionsRequest struct {
-	// Specifies the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries to return on each page.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
-	//
-	// example:
-	//
-	// a
-	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// the name of schema.
-	//
-	// example:
-	//
-	// default
+	Marker     *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem    *int32  `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 

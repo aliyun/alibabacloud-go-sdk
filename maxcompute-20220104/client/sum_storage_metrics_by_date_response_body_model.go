@@ -22,19 +22,38 @@ type iSumStorageMetricsByDateResponseBody interface {
 }
 
 type SumStorageMetricsByDateResponseBody struct {
+	// The returned data.
 	Data []*SumStorageMetricsByDateResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// this quota is not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
+	// - 1xx: Informational response. The request has been received and is being processed.
+	//
+	// - 2xx: Success. The action was successfully received, understood, and accepted by the server.
+	//
+	// - 3xx: Redirection. The request was redirected, and further action is required to complete the request.
+	//
+	// - 4xx: Client error. The request contains invalid request parameters or syntax, or specific request conditions cannot be met.
+	//
+	// - 5xx: Server error. The server failed to fulfill the request for other reasons.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0abb781a17411408145995819e0dae
@@ -108,19 +127,34 @@ func (s *SumStorageMetricsByDateResponseBody) Validate() error {
 }
 
 type SumStorageMetricsByDateResponseBodyData struct {
+	// The date of the statistics. The format is yyyyMMdd.
+	//
 	// example:
 	//
 	// 20250719
-	DateTime           *string                                                      `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	DateTime *string `json:"dateTime,omitempty" xml:"dateTime,omitempty"`
+	// A list of storage usage for the specified type.
 	ItemStorageMetrics []*SumStorageMetricsByDateResponseBodyDataItemStorageMetrics `json:"itemStorageMetrics,omitempty" xml:"itemStorageMetrics,omitempty" type:"Repeated"`
+	// The storage class. Valid values:
+	//
+	// - Storage. Standard storage.
+	//
+	// - LowFreqStorage. IA storage class.
+	//
+	// - ColdStorage. Archive storage.
+	//
 	// example:
 	//
 	// Storage
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
+	// The unit of the total storage usage.
+	//
 	// example:
 	//
 	// GB
 	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The total storage usage.
+	//
 	// example:
 	//
 	// 329.503338
@@ -194,14 +228,20 @@ func (s *SumStorageMetricsByDateResponseBodyData) Validate() error {
 }
 
 type SumStorageMetricsByDateResponseBodyDataItemStorageMetrics struct {
+	// If the specified type is PROJECT, this parameter indicates the project name. If the specified type is STORAGE_TYPE, this parameter indicates the storage class.
+	//
 	// example:
 	//
 	// prj
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
+	// The percentage of the storage usage.
+	//
 	// example:
 	//
 	// 91.22
 	Percentage *float64 `json:"percentage,omitempty" xml:"percentage,omitempty"`
+	// The storage usage.
+	//
 	// example:
 	//
 	// 300.560392

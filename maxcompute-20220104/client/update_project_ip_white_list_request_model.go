@@ -14,11 +14,6 @@ type iUpdateProjectIpWhiteListRequest interface {
 }
 
 type UpdateProjectIpWhiteListRequest struct {
-	// The request body parameters.
-	//
-	// example:
-	//
-	// json {"ipWhiteList":{"ipList": "", // The IP address whitelists are of the STRING data type. Separate multiple IP address whitelists with commas (,). "vpcIpList": "", //} }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

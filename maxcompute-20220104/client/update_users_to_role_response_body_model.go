@@ -16,7 +16,7 @@ type iUpdateUsersToRoleResponseBody interface {
 }
 
 type UpdateUsersToRoleResponseBody struct {
-	// The data returned.
+	// The returned result.
 	//
 	// example:
 	//

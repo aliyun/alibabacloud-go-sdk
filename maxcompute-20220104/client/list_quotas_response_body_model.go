@@ -24,21 +24,21 @@ type iListQuotasResponseBody interface {
 }
 
 type ListQuotasResponseBody struct {
-	// A pagination token. Only continuous page turning is supported. If NextToken is not empty, the next page exists. The value of NextToken can be used in the next request to retrieve a new page of results.
+	// The token for the next page of results. This operation supports only consecutive paging. If the returned value is not empty, more data is available. To get the next page, use the returned value in your next request.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2w6Olxc+cMPjUtUMo/CvPe4IK7f7kIQFrIZjyc
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *ListQuotasResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Indicates the marker after which the returned list begins.
+	// The token that specifies the position from which to start returning results. The results are sorted in alphabetical order.
 	//
 	// example:
 	//
 	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ func (s *ListQuotasResponseBody) Validate() error {
 }
 
 type ListQuotasResponseBodyData struct {
-	// A pagination token. Only continuous page turning is supported. If NextToken is not empty, the next page exists. The value of NextToken can be used in the next request to retrieve a new page of results.
+	// The token for the next page of results. If this parameter has a value, more results are available. To get the next page, include this value in the \\`NextToken\\` parameter of the next request.
 	//
 	// example:
 	//
 	// "abcde"
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Indicates the marker after which the returned list begins.
+	// The results are returned in alphabetical order, starting from the entry after the marker.
 	//
 	// example:
 	//
@@ -217,27 +217,27 @@ func (s *ListQuotasResponseBodyData) Validate() error {
 type ListQuotasResponseBodyDataQuotaInfoList struct {
 	// The tags.
 	Tags []*ListQuotasResponseBodyDataQuotaInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The information of the order.
+	// The billing information.
 	BillingPolicy *ListQuotasResponseBodyDataQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the resource was created.
+	// The time when the quota was created.
 	//
 	// example:
 	//
 	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
+	// The ID of the account that created the quota. This ID is an Alibaba Cloud account UID.
 	//
 	// example:
 	//
 	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The quota ID.
+	// The ID of the quota.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type ListQuotasResponseBodyDataQuotaInfoList struct {
 	//
 	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the quota.
+	// The quota description.
 	//
 	// example:
 	//
@@ -275,37 +275,37 @@ type ListQuotasResponseBodyDataQuotaInfoList struct {
 	//
 	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	// The sales tag of the quota. This tag is the same as the billing identifier and is used for cost allocation.
 	SaleTag *ListQuotasResponseBodyDataQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	// The information of the scheduling plan.
+	// The time-based scheduling information.
 	ScheduleInfo *ListQuotasResponseBodyDataQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	// The status of the endpoint group.
+	// The status of the quota.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The information of the level-2 quota.
+	// The information about the sub-quotas.
 	SubQuotaInfoList []*ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	// The tag of the resource for the quota.
+	// The tag of the quota.
 	//
 	// example:
 	//
 	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the control cluster.
 	//
 	// example:
 	//
@@ -536,13 +536,13 @@ func (s *ListQuotasResponseBodyDataQuotaInfoList) Validate() error {
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// Department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -581,11 +581,11 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListTags) Validate() error {
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListBillingPolicy struct {
-	// The billing method of the quota. Valid values:
+	// The billing method.
 	//
-	// 	- subscription: a subscription quota.
+	// - subscription: The subscription billing method.
 	//
-	// 	- payasyougo: a pay-as-you-go quota.
+	// - payasyougo: The pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -597,7 +597,7 @@ type ListQuotasResponseBodyDataQuotaInfoListBillingPolicy struct {
 	//
 	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
@@ -645,9 +645,9 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListBillingPolicy) Validate() error 
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSaleTag struct {
-	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	// The IDs of the resources. This ID is also used in the billing system. You can use this ID to associate the costs of a quota with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	// The type of the object. Valid values: quota and project.
+	// The type of the resource. Valid values: quota and project.
 	//
 	// example:
 	//
@@ -686,37 +686,37 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSaleTag) Validate() error {
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListScheduleInfo struct {
-	// The quota plan that takes effect based on the scheduling plan.
+	// The quota plan that is currently in effect.
 	//
 	// example:
 	//
 	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	// The time when the current quota plan is scheduled.
+	// The time when the current plan took effect.
 	//
 	// example:
 	//
 	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	// The next quota plan that will take effect based on the scheduling plan.
+	// The next quota plan that is scheduled to take effect.
 	//
 	// example:
 	//
 	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	// The time when the next quota plan is scheduled.
+	// The time when the next plan is scheduled to take effect.
 	//
 	// example:
 	//
 	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	// The quota plan that takes effect immediately. This parameter is returned only when a user triggers an immediate plan that is different from the current plan.
 	//
 	// example:
 	//
 	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	// The time when the quota plan immediately takes effect.
+	// The time when the immediate plan was triggered.
 	//
 	// example:
 	//
@@ -728,7 +728,7 @@ type ListQuotasResponseBodyDataQuotaInfoListScheduleInfo struct {
 	//
 	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	// The time zone of the project.
+	// The time zone.
 	//
 	// example:
 	//
@@ -821,9 +821,9 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListScheduleInfo) Validate() error {
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList struct {
-	// The information of the order.
+	// The billing information.
 	BillingPolicy *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
@@ -835,25 +835,25 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList struct {
 	//
 	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
+	// The creator of the resource. This is the UID of an Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-2 quota.
+	// The ID of the sub-quota.
 	//
 	// example:
 	//
 	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-2 quota.
+	// The name of the sub-quota.
 	//
 	// example:
 	//
 	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The nickname of the level-2 quota.
+	// The alias of the sub-quota.
 	//
 	// example:
 	//
@@ -879,41 +879,41 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList struct {
 	//
 	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	// The identifier of the MaxCompute quota object. This identifier is the same as the one in the Alibaba Cloud bill and is used in tagging scenarios.
 	SaleTag *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	// The information of the scheduling plan.
+	// The time-based scheduling information.
 	ScheduleInfo *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	// The status of the endpoint group.
+	// The status of the quota.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the resource for the quota.
+	// The resource tag of the quota.
 	//
 	// example:
 	//
 	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the control cluster.
 	//
 	// example:
 	//
 	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version of the algorithm image.
+	// The version number.
 	//
 	// example:
 	//
@@ -1107,11 +1107,11 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) Validate() err
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy struct {
-	// The billing method of the quota. Valid values:
+	// The billing method.
 	//
-	// 	- subscription: a subscription quota.
+	// - subscription: The subscription billing method.
 	//
-	// 	- payasyougo: a pay-as-you-go quota.
+	// - payasyougo: The pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -1123,7 +1123,7 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy struct
 	//
 	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
@@ -1173,18 +1173,55 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy) V
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter struct {
 	AdhocSlot         *int64 `json:"adhocSlot,omitempty" xml:"adhocSlot,omitempty"`
 	AutoScaleCPULimit *int64 `json:"autoScaleCPULimit,omitempty" xml:"autoScaleCPULimit,omitempty"`
+	// The value of elastically reserved CUs.
+	//
+	// example:
+	//
+	// 50
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
-	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
-	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// Specifies whether to enable priority-based scheduling.
+	//
+	// example:
+	//
+	// true
+	EnablePriority *bool `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	// Specifies whether the resource is exclusive.
+	//
+	// example:
+	//
+	// true
+	ForceReservedMin *bool `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// The upper limit of reserved CUs.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
 	MaxGu *int64 `json:"maxGu,omitempty" xml:"maxGu,omitempty"`
+	// The minimum number of guaranteed reserved CUs.
+	//
 	// This parameter is required.
-	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
-	MinGu            *int64  `json:"minGu,omitempty" xml:"minGu,omitempty"`
-	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
-	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
-	SlotNum          *int64  `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
+	//
+	// example:
+	//
+	// 50
+	MinCU *int64 `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	MinGu *int64 `json:"minGu,omitempty" xml:"minGu,omitempty"`
+	// The scheduling policy.
+	//
+	// example:
+	//
+	// Fifo/Fair
+	SchedulerType *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	// The upper limit of CUs for a single job.
+	//
+	// example:
+	//
+	// 10
+	SingleJobCULimit *int64 `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+	SlotNum          *int64 `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
 }
 
 func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) String() string {
@@ -1308,9 +1345,9 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) Valid
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag struct {
-	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	// The identifier of the MaxCompute quota object. This identifier also exists in the Alibaba Cloud sales subsystem. It associates the costs of the quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	// The type of the object. Valid values: quota and project.
+	// The type of the object. Only \\`quota\\` and \\`project\\` are supported.
 	//
 	// example:
 	//
@@ -1349,37 +1386,37 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag) Validat
 }
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo struct {
-	// The quota plan that takes effect based on the scheduling plan.
+	// The quota plan that is currently in effect.
 	//
 	// example:
 	//
 	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	// The time when the current quota plan is scheduled.
+	// The time when the current plan took effect.
 	//
 	// example:
 	//
 	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	// The next quota plan that will take effect based on the scheduling plan.
+	// The next quota plan that is scheduled to take effect.
 	//
 	// example:
 	//
 	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	// The time when the next quota plan is scheduled.
+	// The time when the next plan is scheduled to take effect.
 	//
 	// example:
 	//
 	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	// The quota plan that takes effect immediately. This parameter is returned only if a user triggers an immediate plan that is different from `currPlan`.
 	//
 	// example:
 	//
 	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	// The time when the quota plan immediately takes effect.
+	// The time when the immediate-effect plan was triggered.
 	//
 	// example:
 	//
@@ -1391,7 +1428,7 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo struct 
 	//
 	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	// The time zone of the project.
+	// The time zone.
 	//
 	// example:
 	//
@@ -1486,27 +1523,27 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo) Va
 type ListQuotasResponseBodyQuotaInfoList struct {
 	// The tags.
 	Tags []*ListQuotasResponseBodyQuotaInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The information of the order.
+	// The billing information.
 	BillingPolicy *ListQuotasResponseBodyQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the resource was created.
+	// The time when the quota was created.
 	//
 	// example:
 	//
 	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
+	// The ID of the account that created the quota. This ID is an Alibaba Cloud account UID.
 	//
 	// example:
 	//
 	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The quota ID.
+	// The ID of the quota.
 	//
 	// example:
 	//
@@ -1524,7 +1561,7 @@ type ListQuotasResponseBodyQuotaInfoList struct {
 	//
 	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the quota.
+	// The parameters of the quota.
 	//
 	// example:
 	//
@@ -1544,43 +1581,43 @@ type ListQuotasResponseBodyQuotaInfoList struct {
 	//
 	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	// The sales tag of the quota. This tag is the same as the billing identifier and is used for cost allocation.
 	SaleTag *ListQuotasResponseBodyQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	// The information of the scheduling plan.
+	// The time-based scheduling information.
 	ScheduleInfo *ListQuotasResponseBodyQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	// The status of the endpoint group.
+	// The status of the quota.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The information of the level-2 quota.
+	// The information about the sub-quotas.
 	SubQuotaInfoList []*ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	// The tag of the resource for the quota.
+	// The tag of the quota.
 	//
 	// example:
 	//
 	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the control cluster.
 	//
 	// example:
 	//
 	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version.
+	// The version number.
 	//
 	// example:
 	//
@@ -1850,11 +1887,11 @@ func (s *ListQuotasResponseBodyQuotaInfoListTags) Validate() error {
 }
 
 type ListQuotasResponseBodyQuotaInfoListBillingPolicy struct {
-	// The billing method of the quota. Valid values:
+	// The billing method.
 	//
-	// 	- subscription: a subscription quota.
+	// - subscription: The subscription billing method.
 	//
-	// 	- payasyougo: a pay-as-you-go quota.
+	// - payasyougo: The pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -1866,7 +1903,7 @@ type ListQuotasResponseBodyQuotaInfoListBillingPolicy struct {
 	//
 	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
@@ -1914,9 +1951,9 @@ func (s *ListQuotasResponseBodyQuotaInfoListBillingPolicy) Validate() error {
 }
 
 type ListQuotasResponseBodyQuotaInfoListSaleTag struct {
-	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	// The IDs of the resources. This ID is also used in the billing system. You can use this ID to associate the costs of a quota with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	// The type of the object. Valid values: quota and project.
+	// The type of the resource. Valid values: quota and project.
 	//
 	// example:
 	//
@@ -1955,37 +1992,37 @@ func (s *ListQuotasResponseBodyQuotaInfoListSaleTag) Validate() error {
 }
 
 type ListQuotasResponseBodyQuotaInfoListScheduleInfo struct {
-	// The quota plan that takes effect based on the scheduling plan.
+	// The quota plan that is currently in effect.
 	//
 	// example:
 	//
 	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	// The time when the current quota plan is scheduled.
+	// The time when the current plan took effect.
 	//
 	// example:
 	//
 	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	// The next quota plan that will take effect based on the scheduling plan.
+	// The next quota plan that is scheduled to take effect.
 	//
 	// example:
 	//
 	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	// The time when the next quota plan is scheduled.
+	// The time when the next plan is scheduled to take effect.
 	//
 	// example:
 	//
 	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	// The quota plan that takes effect immediately. This parameter is returned only when a user triggers an immediate plan that is different from the current plan.
 	//
 	// example:
 	//
 	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	// The time when the quota plan immediately takes effect.
+	// The time when the immediate plan was triggered.
 	//
 	// example:
 	//
@@ -1997,7 +2034,7 @@ type ListQuotasResponseBodyQuotaInfoListScheduleInfo struct {
 	//
 	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	// The time zone of the project.
+	// The time zone.
 	//
 	// example:
 	//
@@ -2090,45 +2127,45 @@ func (s *ListQuotasResponseBodyQuotaInfoListScheduleInfo) Validate() error {
 }
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList struct {
-	// The information of the order.
+	// The billing information.
 	BillingPolicy *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the resource was created.
+	// The time when the quota was created.
 	//
 	// example:
 	//
 	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
+	// The ID of the account that created the quota. This ID is an Alibaba Cloud account UID.
 	//
 	// example:
 	//
 	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-2 quota.
+	// The ID of the sub-quota.
 	//
 	// example:
 	//
 	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-2 quota.
+	// The name of the sub-quota.
 	//
 	// example:
 	//
 	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The alias of the level-2 quota.
+	// The alias of the sub-quota.
 	//
 	// example:
 	//
 	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the quota.
+	// The quota description.
 	//
 	// example:
 	//
@@ -2148,35 +2185,35 @@ type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList struct {
 	//
 	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	// The sales tag of the quota. This tag is the same as the billing identifier and is used for cost allocation.
 	SaleTag *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
-	// The information of the scheduling plan.
+	// The time-based scheduling information.
 	ScheduleInfo *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	// The status of the endpoint group.
+	// The status of the quota.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the resource for the quota.
+	// The tag of the quota.
 	//
 	// example:
 	//
 	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the control cluster.
 	//
 	// example:
 	//
@@ -2376,11 +2413,11 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) Validate() error {
 }
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy struct {
-	// The billing method of the quota. Valid values:
+	// The billing method.
 	//
-	// 	- subscription: a subscription quota.
+	// - subscription: The subscription billing method.
 	//
-	// 	- payasyougo: a pay-as-you-go quota.
+	// - payasyougo: The pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -2392,7 +2429,7 @@ type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy struct {
 	//
 	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
@@ -2442,18 +2479,55 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy) Valid
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter struct {
 	AdhocSlot         *int64 `json:"adhocSlot,omitempty" xml:"adhocSlot,omitempty"`
 	AutoScaleCPULimit *int64 `json:"autoScaleCPULimit,omitempty" xml:"autoScaleCPULimit,omitempty"`
+	// The elastically reserved CUs.
+	//
+	// example:
+	//
+	// 50
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
-	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
-	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// Indicates whether to enable priority-based scheduling.
+	//
+	// example:
+	//
+	// true
+	EnablePriority *bool `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	// Indicates whether the resource is exclusive.
+	//
+	// example:
+	//
+	// true
+	ForceReservedMin *bool `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// The maximum reserved computing units (CUs).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
 	MaxGu *int64 `json:"maxGu,omitempty" xml:"maxGu,omitempty"`
+	// The minimum reserved CUs.
+	//
 	// This parameter is required.
-	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
-	MinGu            *int64  `json:"minGu,omitempty" xml:"minGu,omitempty"`
-	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
-	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
-	SlotNum          *int64  `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
+	//
+	// example:
+	//
+	// 50
+	MinCU *int64 `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	MinGu *int64 `json:"minGu,omitempty" xml:"minGu,omitempty"`
+	// The scheduling policy.
+	//
+	// example:
+	//
+	// Fifo/Fair
+	SchedulerType *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	// The maximum CUs for a single job.
+	//
+	// example:
+	//
+	// 10
+	SingleJobCULimit *int64 `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+	SlotNum          *int64 `json:"slotNum,omitempty" xml:"slotNum,omitempty"`
 }
 
 func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) String() string {
@@ -2577,9 +2651,9 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) Validate(
 }
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag struct {
-	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
+	// The IDs of the resources. This ID is also used in the billing system. You can use this ID to associate the costs of a quota with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
-	// The type of the object. Valid values: quota and project.
+	// The type of the resource. Valid values: quota and project.
 	//
 	// example:
 	//
@@ -2618,37 +2692,37 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag) Validate() 
 }
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo struct {
-	// The quota plan that takes effect based on the scheduling plan.
+	// The quota plan that is currently in effect.
 	//
 	// example:
 	//
 	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	// The time when the current quota plan is scheduled.
+	// The time when the current plan took effect.
 	//
 	// example:
 	//
 	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	// The next quota plan that will take effect based on the scheduling plan.
+	// The next quota plan that is scheduled to take effect.
 	//
 	// example:
 	//
 	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	// The time when the next quota plan is scheduled.
+	// The time when the next plan is scheduled to take effect.
 	//
 	// example:
 	//
 	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	// The quota plan that takes effect immediately. This parameter is returned only when a user triggers an immediate plan that is different from the current plan.
 	//
 	// example:
 	//
 	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	// The time when the quota plan immediately takes effect.
+	// The time when the immediate plan was triggered.
 	//
 	// example:
 	//
@@ -2660,7 +2734,7 @@ type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo struct {
 	//
 	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
-	// The time zone of the project.
+	// The time zone.
 	//
 	// example:
 	//

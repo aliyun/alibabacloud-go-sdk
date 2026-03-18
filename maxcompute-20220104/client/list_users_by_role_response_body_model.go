@@ -16,14 +16,8 @@ type iListUsersByRoleResponseBody interface {
 }
 
 type ListUsersByRoleResponseBody struct {
-	// The returned data.
-	Data *ListUsersByRoleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0be3e0bb16654558425251398e27a9
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListUsersByRoleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListUsersByRoleResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *ListUsersByRoleResponseBody) Validate() error {
 }
 
 type ListUsersByRoleResponseBodyData struct {
-	// The users.
 	Users []*ListUsersByRoleResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
@@ -97,11 +90,6 @@ func (s *ListUsersByRoleResponseBodyData) Validate() error {
 }
 
 type ListUsersByRoleResponseBodyDataUsers struct {
-	// The name of the user.
-	//
-	// example:
-	//
-	// ALIYUN${account_name}
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

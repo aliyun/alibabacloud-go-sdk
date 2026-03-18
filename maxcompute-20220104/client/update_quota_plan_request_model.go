@@ -18,23 +18,8 @@ type iUpdateQuotaPlanRequest interface {
 }
 
 type UpdateQuotaPlanRequest struct {
-	// The request body parameters.
-	//
-	// example:
-	//
-	// { "name": "planA", // The quota is a level-1 quota. You can select only the fields that are related to the quota plan. "quota": { "name": "a", "nickName": "aaa_nick", "tenantId": "10001", "regionId": "cn-hangzhou", "parentId": "0", "cluster": "AT-ODPS-TEST3", "parameter": { "minCU": 40, "maxCU": 40, "adhocCU": 0, "elasticMinCU": 40, "elasticMaxCU": 40, "enablePreemptiveScheduling": false, "forceReservedMin":true, "enablePriority":false, "singleJobCULimit":100, "adhocQuotaBeginTimeInSec": 1345, "adhocQuotaEndTimeInSec": 1234, "ignoreAdhocQuota":false }, "subQuotaInfoList": [ { "nickName": "WlmFuxiSecondaryOnlineQuotaTest", "name": "WlmFuxiSecondaryOnlineQuotaTest", "type": "FUXI_ONLINE", "tenantId": "10001", "regionId": "cn-hangzhou", "cluster": "AT-ODPS-TEST3", "parameter": { "minCU": 40, "maxCU": 40, "adhocCU": 0, "elasticMinCU": 40, "elasticMaxCU": 40, "enablePreemptiveScheduling": false, "forceReservedMin":true, "enablePriority":false, "singleJobCULimit":100, "adhocQuotaBeginTimeInSec": 1345, "adhocQuotaEndTimeInSec": 1234, "ignoreAdhocQuota":false } } ] } }
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
+	Body     *string `json:"body,omitempty" xml:"body,omitempty"`
+	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

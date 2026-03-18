@@ -16,17 +16,7 @@ type iDeleteQuotaPlanResponseBody interface {
 }
 
 type DeleteQuotaPlanResponseBody struct {
-	// The returned result.
-	//
-	// example:
-	//
-	// success
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0b57ff7616612271051086500ea3ce
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

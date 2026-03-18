@@ -16,14 +16,8 @@ type iListRolesResponseBody interface {
 }
 
 type ListRolesResponseBody struct {
-	// The returned data.
-	Data *ListRolesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0a06dfe716686526652451361e80ae
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListRolesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -62,7 +56,6 @@ func (s *ListRolesResponseBody) Validate() error {
 }
 
 type ListRolesResponseBodyData struct {
-	// The MaxCompute project-level roles.
 	Roles []*ListRolesResponseBodyDataRoles `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
 }
 
@@ -97,52 +90,10 @@ func (s *ListRolesResponseBodyData) Validate() error {
 }
 
 type ListRolesResponseBodyDataRoles struct {
-	// The ACL-based permissions that are granted to the role.
-	Acl *ListRolesResponseBodyDataRolesAcl `json:"acl,omitempty" xml:"acl,omitempty" type:"Struct"`
-	// The name of the role.
-	//
-	// example:
-	//
-	// roleA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The policy that is attached to the role.
-	//
-	// example:
-	//
-	// {
-	//
-	//       "Statement": [
-	//
-	//             {
-	//
-	//                   "Action": [
-	//
-	//                         "odps:*"
-	//
-	//                   ],
-	//
-	//                   "Effect": "Allow",
-	//
-	//                   "Resource": [
-	//
-	//                         "acs:odps:*:projects/{projectname}/authorization/packages"
-	//
-	//                   ]
-	//
-	//             }
-	//
-	//       ],
-	//
-	//       "Version": "1"
-	//
-	// }
-	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
-	// The type of the role.
-	//
-	// example:
-	//
-	// admin
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Acl    *ListRolesResponseBodyDataRolesAcl `json:"acl,omitempty" xml:"acl,omitempty" type:"Struct"`
+	Name   *string                            `json:"name,omitempty" xml:"name,omitempty"`
+	Policy *string                            `json:"policy,omitempty" xml:"policy,omitempty"`
+	Type   *string                            `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRoles) String() string {
@@ -199,18 +150,12 @@ func (s *ListRolesResponseBodyDataRoles) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAcl struct {
-	// The function.
 	Function []*ListRolesResponseBodyDataRolesAclFunction `json:"function,omitempty" xml:"function,omitempty" type:"Repeated"`
-	// The instance.
 	Instance []*ListRolesResponseBodyDataRolesAclInstance `json:"instance,omitempty" xml:"instance,omitempty" type:"Repeated"`
-	// The package.
-	Package []*ListRolesResponseBodyDataRolesAclPackage `json:"package,omitempty" xml:"package,omitempty" type:"Repeated"`
-	// The project.
-	Project []*ListRolesResponseBodyDataRolesAclProject `json:"project,omitempty" xml:"project,omitempty" type:"Repeated"`
-	// The resource.
+	Package  []*ListRolesResponseBodyDataRolesAclPackage  `json:"package,omitempty" xml:"package,omitempty" type:"Repeated"`
+	Project  []*ListRolesResponseBodyDataRolesAclProject  `json:"project,omitempty" xml:"project,omitempty" type:"Repeated"`
 	Resource []*ListRolesResponseBodyDataRolesAclResource `json:"resource,omitempty" xml:"resource,omitempty" type:"Repeated"`
-	// The table.
-	Table []*ListRolesResponseBodyDataRolesAclTable `json:"table,omitempty" xml:"table,omitempty" type:"Repeated"`
+	Table    []*ListRolesResponseBodyDataRolesAclTable    `json:"table,omitempty" xml:"table,omitempty" type:"Repeated"`
 }
 
 func (s ListRolesResponseBodyDataRolesAcl) String() string {
@@ -334,14 +279,8 @@ func (s *ListRolesResponseBodyDataRolesAcl) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAclFunction struct {
-	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the function.
-	//
-	// example:
-	//
-	// functionA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRolesAclFunction) String() string {
@@ -375,14 +314,8 @@ func (s *ListRolesResponseBodyDataRolesAclFunction) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAclInstance struct {
-	// The operations that were performed on the instance.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// instanceA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRolesAclInstance) String() string {
@@ -416,14 +349,8 @@ func (s *ListRolesResponseBodyDataRolesAclInstance) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAclPackage struct {
-	// The operations that were performed on the package.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the package.
-	//
-	// example:
-	//
-	// packageA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRolesAclPackage) String() string {
@@ -457,14 +384,8 @@ func (s *ListRolesResponseBodyDataRolesAclPackage) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAclProject struct {
-	// The operations that were performed on the project.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the MaxCompute project.
-	//
-	// example:
-	//
-	// projectA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRolesAclProject) String() string {
@@ -498,14 +419,8 @@ func (s *ListRolesResponseBodyDataRolesAclProject) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAclResource struct {
-	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the resource.
-	//
-	// example:
-	//
-	// resourceA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRolesAclResource) String() string {
@@ -539,14 +454,8 @@ func (s *ListRolesResponseBodyDataRolesAclResource) Validate() error {
 }
 
 type ListRolesResponseBodyDataRolesAclTable struct {
-	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// tableA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name    *string   `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListRolesResponseBodyDataRolesAclTable) String() string {

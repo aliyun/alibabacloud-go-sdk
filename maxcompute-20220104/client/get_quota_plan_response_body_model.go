@@ -16,14 +16,8 @@ type iGetQuotaPlanResponseBody interface {
 }
 
 type GetQuotaPlanResponseBody struct {
-	// The returned data.
-	Data *GetQuotaPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0be3e0aa16667684362147582e038f
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetQuotaPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetQuotaPlanResponseBody) String() string {
@@ -62,20 +56,9 @@ func (s *GetQuotaPlanResponseBody) Validate() error {
 }
 
 type GetQuotaPlanResponseBodyData struct {
-	// The time when the quota plan was created.
-	//
-	// example:
-	//
-	// 2022-05-16T06:07:45Z
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The name of the quota plan.
-	//
-	// example:
-	//
-	// planA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The details of the quota.
-	Quota *GetQuotaPlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	CreateTime *string                            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Name       *string                            `json:"name,omitempty" xml:"name,omitempty"`
+	Quota      *GetQuotaPlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s GetQuotaPlanResponseBodyData) String() string {
@@ -123,92 +106,23 @@ func (s *GetQuotaPlanResponseBodyData) Validate() error {
 }
 
 type GetQuotaPlanResponseBodyDataQuota struct {
-	// The information of the order.
-	BillingPolicy *GetQuotaPlanResponseBodyDataQuotaBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// AT-120N
-	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the quota plan was created.
-	//
-	// example:
-	//
-	// 2022-09-06T02:14:44Z
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
-	//
-	// example:
-	//
-	// 672863518
-	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the quota.
-	//
-	// example:
-	//
-	// 0
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the quota.
-	//
-	// example:
-	//
-	// quota_a
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The alias of the quota.
-	//
-	// example:
-	//
-	// quota_nickname
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the quota.
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	// The ID of the parent resource.
-	//
-	// example:
-	//
-	// null
-	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The information of the scheduling plan.
-	ScheduleInfo *GetQuotaPlanResponseBodyDataQuotaScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	// The status of the resource.
-	//
-	// example:
-	//
-	// ON
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The information of the level-2 quota.
+	BillingPolicy    *GetQuotaPlanResponseBodyDataQuotaBillingPolicy      `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
+	Cluster          *string                                              `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CreateTime       *int64                                               `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId        *string                                              `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Id               *string                                              `json:"id,omitempty" xml:"id,omitempty"`
+	Name             *string                                              `json:"name,omitempty" xml:"name,omitempty"`
+	NickName         *string                                              `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	Parameter        map[string]interface{}                               `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	ParentId         *string                                              `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	RegionId         *string                                              `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ScheduleInfo     *GetQuotaPlanResponseBodyDataQuotaScheduleInfo       `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	Status           *string                                              `json:"status,omitempty" xml:"status,omitempty"`
 	SubQuotaInfoList []*GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	// The tag of the resource for the quota.
-	//
-	// example:
-	//
-	// abc
-	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
-	//
-	// example:
-	//
-	// FUXI_ONLINE
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version number.
-	//
-	// example:
-	//
-	// 1
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Tag              *string                                              `json:"tag,omitempty" xml:"tag,omitempty"`
+	TenantId         *string                                              `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type             *string                                              `json:"type,omitempty" xml:"type,omitempty"`
+	Version          *string                                              `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetQuotaPlanResponseBodyDataQuota) String() string {
@@ -396,28 +310,9 @@ func (s *GetQuotaPlanResponseBodyDataQuota) Validate() error {
 }
 
 type GetQuotaPlanResponseBodyDataQuotaBillingPolicy struct {
-	// The billing method of the quota. Valid values:
-	//
-	// 	- subscription: a subscription quota.
-	//
-	// 	- payasyougo: a pay-as-you-go quota.
-	//
-	// example:
-	//
-	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
-	// The specifications of the order.
-	//
-	// example:
-	//
-	// OdpsStandard
-	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	// The ID of the order.
-	//
-	// example:
-	//
-	// 45245678
-	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	OdpsSpecCode  *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	OrderId       *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s GetQuotaPlanResponseBodyDataQuotaBillingPolicy) String() string {
@@ -460,47 +355,12 @@ func (s *GetQuotaPlanResponseBodyDataQuotaBillingPolicy) Validate() error {
 }
 
 type GetQuotaPlanResponseBodyDataQuotaScheduleInfo struct {
-	// The quota plan that takes effect based on the scheduling plan.
-	//
-	// example:
-	//
-	// planA
-	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	// The time when the current quota plan is scheduled.
-	//
-	// example:
-	//
-	// 0800
-	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	// The next quota plan that will take effect based on the scheduling plan.
-	//
-	// example:
-	//
-	// planB
-	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	// The time when the next quota plan is scheduled.
-	//
-	// example:
-	//
-	// 1700
-	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	// If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
-	//
-	// example:
-	//
-	// planC
-	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	// The time when the quota plan immediately takes effect.
-	//
-	// example:
-	//
-	// 1500
-	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
-	// The name of the operator.
-	//
-	// example:
-	//
-	// userA
+	CurrPlan     *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	CurrTime     *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	NextPlan     *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	NextTime     *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	OncePlan     *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	OnceTime     *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 }
 
@@ -580,90 +440,22 @@ func (s *GetQuotaPlanResponseBodyDataQuotaScheduleInfo) Validate() error {
 }
 
 type GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList struct {
-	// The information of the order.
 	BillingPolicy *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// AT-120N
-	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the resource was created.
-	//
-	// example:
-	//
-	// 2022-09-06T02:14:44Z
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the user who created the quota plan.
-	//
-	// example:
-	//
-	// 672863518
-	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-2 quota.
-	//
-	// example:
-	//
-	// 1000048
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-2 quota.
-	//
-	// example:
-	//
-	// subquotaA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The alias of the level-2 quota.
-	//
-	// example:
-	//
-	// subquotaA
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the quota.
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	// The ID of the parent resource.
-	//
-	// example:
-	//
-	// 0
-	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The information of the scheduling plan.
-	ScheduleInfo *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
-	// The status of the resource.
-	//
-	// example:
-	//
-	// ON
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the resource for the quota.
-	//
-	// example:
-	//
-	// abc
-	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
-	//
-	// example:
-	//
-	// FUXI_ONLINE
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version number.
-	//
-	// example:
-	//
-	// 1
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Cluster       *string                                                         `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CreateTime    *int64                                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId     *string                                                         `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Id            *string                                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Name          *string                                                         `json:"name,omitempty" xml:"name,omitempty"`
+	NickName      *string                                                         `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	Parameter     map[string]interface{}                                          `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	ParentId      *string                                                         `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	RegionId      *string                                                         `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	ScheduleInfo  *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListScheduleInfo  `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	Status        *string                                                         `json:"status,omitempty" xml:"status,omitempty"`
+	Tag           *string                                                         `json:"tag,omitempty" xml:"tag,omitempty"`
+	TenantId      *string                                                         `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type          *string                                                         `json:"type,omitempty" xml:"type,omitempty"`
+	Version       *string                                                         `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList) String() string {
@@ -833,28 +625,9 @@ func (s *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList) Validate() error {
 }
 
 type GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy struct {
-	// The billing method of the quota. Valid values:
-	//
-	// 	- subscription: a subscription quota.
-	//
-	// 	- payasyougo: a pay-as-you-go quota.
-	//
-	// example:
-	//
-	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
-	// The specifications of the order.
-	//
-	// example:
-	//
-	// OdpsStandard
-	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
-	// The ID of the order.
-	//
-	// example:
-	//
-	// 45245678
-	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	OdpsSpecCode  *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	OrderId       *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
 func (s GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy) String() string {
@@ -897,47 +670,12 @@ func (s *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy) Validat
 }
 
 type GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListScheduleInfo struct {
-	// The quota plan that takes effect based on the scheduling plan.
-	//
-	// example:
-	//
-	// planA
-	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
-	// The time when the current quota plan is scheduled.
-	//
-	// example:
-	//
-	// 0800
-	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
-	// The next quota plan that will take effect based on the scheduling plan.
-	//
-	// example:
-	//
-	// planB
-	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
-	// The time when the next quota plan is scheduled.
-	//
-	// example:
-	//
-	// 1700
-	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
-	// If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
-	//
-	// example:
-	//
-	// planC
-	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
-	// The time when the quota plan immediately takes effect.
-	//
-	// example:
-	//
-	// 1500
-	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
-	// The name of the operator.
-	//
-	// example:
-	//
-	// userA
+	CurrPlan     *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	CurrTime     *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	NextPlan     *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	NextTime     *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	OncePlan     *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	OnceTime     *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 }
 

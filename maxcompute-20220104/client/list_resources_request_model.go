@@ -20,29 +20,9 @@ type iListResourcesRequest interface {
 }
 
 type ListResourcesRequest struct {
-	// Specifies the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries to return on each page.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
-	// The name of the resource.
-	//
-	// example:
-	//
-	// res
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the schema.
-	//
-	// example:
-	//
-	// default
+	Marker     *string `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem    *int32  `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 

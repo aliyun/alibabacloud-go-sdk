@@ -14,7 +14,6 @@ type iCreateProjectRequest interface {
 }
 
 type CreateProjectRequest struct {
-	// The request body parameters.
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

@@ -16,7 +16,10 @@ type iGetMmsAsyncTaskResponseBody interface {
 }
 
 type GetMmsAsyncTaskResponseBody struct {
+	// The asynchronous task object.
 	Data *GetMmsAsyncTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 688003E1-D1B4-5468-957E-2FFB3AC8D79B
@@ -59,50 +62,74 @@ func (s *GetMmsAsyncTaskResponseBody) Validate() error {
 }
 
 type GetMmsAsyncTaskResponseBodyData struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the task stopped running.
+	//
 	// example:
 	//
 	// 2024-12-17 17:44:17
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// null
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The asynchronous task ID.
+	//
 	// example:
 	//
 	// 2523
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The ID of the object associated with the asynchronous task.
+	//
 	// example:
 	//
 	// 232
 	ObjectId *int64 `json:"objectId,omitempty" xml:"objectId,omitempty"`
+	// The progress of the task.
+	//
 	// example:
 	//
 	// 0
 	Progress *int32 `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The result of the task.
+	//
 	// example:
 	//
 	// null
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// Indicates whether the task is running.
+	//
 	// example:
 	//
 	// false
 	Running *bool `json:"running,omitempty" xml:"running,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 2000017
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The time when the task started to run.
+	//
 	// example:
 	//
 	// 2024-12-17 15:44:17
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The status of the asynchronous task.
+	//
 	// example:
 	//
 	// DONE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The type of the asynchronous task.
+	//
 	// example:
 	//
 	// TASK_CREATE

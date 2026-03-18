@@ -50,31 +50,31 @@ type iListJobSnapshotInfosRequest interface {
 }
 
 type ListJobSnapshotInfosRequest struct {
-	// Specifies whether to sort data in ascending order.
+	// Specifies whether to sort the results in ascending order.
 	//
 	// example:
 	//
 	// true
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
-	// The ID of the upstream node.
+	// The upstream node ID.
 	ExtNodeIdList []*string `json:"extNodeIdList,omitempty" xml:"extNodeIdList,omitempty" type:"Repeated"`
-	// Start timestamp.
+	// The start UNIX timestamp.
 	//
-	// > This parameter is invalid. The end timestamp should be the time point for the snapshot you want to view.
+	// > This parameter is invalid. The end timestamp is the point in time for the snapshot that you want to view.
 	//
 	// example:
 	//
 	// 1706840714
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The instance ID.
+	// The job instance ID.
 	InstanceIdList []*string `json:"instanceIdList,omitempty" xml:"instanceIdList,omitempty" type:"Repeated"`
-	// The account that commits the job.
+	// The job owner.
 	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
-	// The priority of the job.
+	// The job priority.
 	PriorityList []*int64 `json:"priorityList,omitempty" xml:"priorityList,omitempty" type:"Repeated"`
-	// The name of project.
+	// The project name.
 	ProjectList []*string `json:"projectList,omitempty" xml:"projectList,omitempty" type:"Repeated"`
-	// The nickname of the compute Quota used by the job.
+	// The nickname of the computing quota that the job uses.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type ListJobSnapshotInfosRequest struct {
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
 	// The signature of the SQL job.
 	SignatureList []*string `json:"signatureList,omitempty" xml:"signatureList,omitempty" type:"Repeated"`
-	// The sorting columns.
+	// The fields for multi-column sorting.
 	SortByList []*string `json:"sortByList,omitempty" xml:"sortByList,omitempty" type:"Repeated"`
-	// The orders for the sorting columns.
+	// The sort orders for multi-column sorting.
 	SortOrderList []*string `json:"sortOrderList,omitempty" xml:"sortOrderList,omitempty" type:"Repeated"`
-	// The status of jobs.
+	// The job status.
 	StatusList []*string `json:"statusList,omitempty" xml:"statusList,omitempty" type:"Repeated"`
-	// End timestamp.
+	// The end UNIX timestamp.
 	//
 	// This parameter is required.
 	//
@@ -96,9 +96,39 @@ type ListJobSnapshotInfosRequest struct {
 	//
 	// 1706840714
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// The type of the job.
+	// The job type.
 	TypeList []*string `json:"typeList,omitempty" xml:"typeList,omitempty" type:"Repeated"`
-	// The sorting column.
+	// The column to sort by. Valid values:
+	//
+	// - submittedAtTime
+	//
+	// - waitingTime
+	//
+	// - runningAtTime
+	//
+	// - runningTime
+	//
+	// - snapshotTime
+	//
+	// - totalTime
+	//
+	// - cpuUsage
+	//
+	// - memoryUsage
+	//
+	// - minCpuPct
+	//
+	// - minMemoryPct
+	//
+	// - priority
+	//
+	// - cpuRequest
+	//
+	// - memoryRequest
+	//
+	// - cpuUsageToRequestRatio
+	//
+	// - memoryUsageToRequestRatio
 	//
 	// example:
 	//
@@ -122,7 +152,7 @@ type ListJobSnapshotInfosRequest struct {
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The ID of the tenant. You can log on to the MaxCompute console, and choose Tenants > Tenant Property from the left-side navigation pane to view the tenant ID.
+	// The tenant ID. To view the tenant ID, log on to the MaxCompute console. In the navigation pane on the left, choose Tenant Management > Tenant Properties.
 	//
 	// example:
 	//

@@ -22,42 +22,11 @@ type iGetComputeEffectivePlanResponseBody interface {
 }
 
 type GetComputeEffectivePlanResponseBody struct {
-	// The data returned.
-	Data *GetComputeEffectivePlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
-	// example:
-	//
-	// success
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// plan \\"***\\" does not exist
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
-	//
-	// - 1xx: informational response. The request is received and is being processed.
-	//
-	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
-	//
-	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
-	//
-	// - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
-	//
-	// - 5xx: server error. The server cannot meet requirements due to other reasons.
-	//
-	// example:
-	//
-	// 200
-	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 688003E1-D1B4-5468-957E-2FFB3AC8D79B
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *GetComputeEffectivePlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                                  `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                                   `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetComputeEffectivePlanResponseBody) String() string {
@@ -123,28 +92,10 @@ func (s *GetComputeEffectivePlanResponseBody) Validate() error {
 }
 
 type GetComputeEffectivePlanResponseBodyData struct {
-	// The time when the quota plan was created.
-	//
-	// example:
-	//
-	// 1714356241163
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Whether it is currently effective.
-	//
-	// > A Quota plan that has taken effect cannot be deleted, i.e., isEffective=true
-	//
-	// example:
-	//
-	// true/false
-	IsEffective *bool `json:"isEffective,omitempty" xml:"isEffective,omitempty"`
-	// The name of the quota plan.
-	//
-	// example:
-	//
-	// planA
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The details of the quota.
-	Quota *GetComputeEffectivePlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	CreateTime  *string                                       `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	IsEffective *bool                                         `json:"isEffective,omitempty" xml:"isEffective,omitempty"`
+	Name        *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+	Quota       *GetComputeEffectivePlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
 func (s GetComputeEffectivePlanResponseBodyData) String() string {
@@ -201,96 +152,19 @@ func (s *GetComputeEffectivePlanResponseBodyData) Validate() error {
 }
 
 type GetComputeEffectivePlanResponseBodyDataQuota struct {
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// AT-120N
-	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the level-1 quota was created.
-	//
-	// example:
-	//
-	// 1719886322347
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
-	//
-	// example:
-	//
-	// 672863518
-	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-1 quota.
-	//
-	// example:
-	//
-	// 2413
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-1 quota.
-	//
-	// example:
-	//
-	// dp_cn_shanghai_1699533470_p
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The nickname of the level-1 quota.
-	//
-	// example:
-	//
-	// os_MyQuota_p
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the level-2 quota.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "enablePriority": false,
-	//
-	//   "minCU": 25,
-	//
-	//   "adhocCU": 0,
-	//
-	//   "elasticReservedCU": 0,
-	//
-	//   "forceReservedMin": false,
-	//
-	//   "maxCU": 50,
-	//
-	//   "schedulerType": "Fifo"
-	//
-	// }
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The status of the resource.
-	//
-	// example:
-	//
-	// ON
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The list of subquotas.
+	Cluster          *string                                                         `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CreateTime       *int64                                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId        *string                                                         `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Id               *string                                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Name             *string                                                         `json:"name,omitempty" xml:"name,omitempty"`
+	NickName         *string                                                         `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	Parameter        map[string]interface{}                                          `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	RegionId         *string                                                         `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Status           *string                                                         `json:"status,omitempty" xml:"status,omitempty"`
 	SubQuotaInfoList []*GetComputeEffectivePlanResponseBodyDataQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of quota.
-	//
-	// example:
-	//
-	// FUXI_ONLINE
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version number.
-	//
-	// example:
-	//
-	// 1964
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	TenantId         *string                                                         `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type             *string                                                         `json:"type,omitempty" xml:"type,omitempty"`
+	Version          *string                                                         `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetComputeEffectivePlanResponseBodyDataQuota) String() string {
@@ -432,94 +306,18 @@ func (s *GetComputeEffectivePlanResponseBodyDataQuota) Validate() error {
 }
 
 type GetComputeEffectivePlanResponseBodyDataQuotaSubQuotaInfoList struct {
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// AT-120N
-	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the resource was created.
-	//
-	// example:
-	//
-	// 1718155201628
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the Alibaba Cloud account that is used to create the resource.
-	//
-	// example:
-	//
-	// 672863518
-	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The ID of the level-2 quota.
-	//
-	// example:
-	//
-	// 10940
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the level-2 quota.
-	//
-	// example:
-	//
-	// dp_cn_shanghai_1696659792_p
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The nickname of the level-2 quota.
-	//
-	// example:
-	//
-	// os_MyQuota
-	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The description of the level-2 quota.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "enablePriority": false,
-	//
-	//   "minCU": 25,
-	//
-	//   "adhocCU": 0,
-	//
-	//   "elasticReservedCU": 0,
-	//
-	//   "forceReservedMin": false,
-	//
-	//   "maxCU": 50,
-	//
-	//   "schedulerType": "Fifo"
-	//
-	// }
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Resource status.
-	//
-	// example:
-	//
-	// ON
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the tenant.
-	//
-	// example:
-	//
-	// 478403690625249
-	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The type of quota.
-	//
-	// example:
-	//
-	// FUXI_ONLINE
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version number.
-	//
-	// example:
-	//
-	// 1386
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Cluster    *string                `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CreateTime *int64                 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreatorId  *string                `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	Id         *string                `json:"id,omitempty" xml:"id,omitempty"`
+	Name       *string                `json:"name,omitempty" xml:"name,omitempty"`
+	NickName   *string                `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	Parameter  map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	RegionId   *string                `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Status     *string                `json:"status,omitempty" xml:"status,omitempty"`
+	TenantId   *string                `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	Type       *string                `json:"type,omitempty" xml:"type,omitempty"`
+	Version    *string                `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetComputeEffectivePlanResponseBodyDataQuotaSubQuotaInfoList) String() string {

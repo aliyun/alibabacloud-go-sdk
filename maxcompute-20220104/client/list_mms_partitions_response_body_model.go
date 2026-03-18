@@ -16,7 +16,10 @@ type iListMmsPartitionsResponseBody interface {
 }
 
 type ListMmsPartitionsResponseBody struct {
+	// The returned data.
 	Data *ListMmsPartitionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D9F872FD-5DDE-30A6-8C8A-1B8C6A81059F
@@ -59,15 +62,22 @@ func (s *ListMmsPartitionsResponseBody) Validate() error {
 }
 
 type ListMmsPartitionsResponseBodyData struct {
+	// The list of partitions.
 	ObjectList []*ListMmsPartitionsResponseBodyDataObjectList `json:"objectList,omitempty" xml:"objectList,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of partitions.
+	//
 	// example:
 	//
 	// 1000
@@ -132,69 +142,104 @@ func (s *ListMmsPartitionsResponseBodyData) Validate() error {
 }
 
 type ListMmsPartitionsResponseBodyDataObjectList struct {
+	// The ID of the database that contains the partition. The term "database" refers to different metadata layers across data sources. For example, it maps to Dataset in BigQuery, Database in Hive, Schema in Databricks, and Schema in MaxCompute.
+	//
+	// example:
+	//
+	// 196
 	DbId *int64 `json:"dbId,omitempty" xml:"dbId,omitempty"`
+	// The database name. The term "database" refers to different metadata layers across data sources. For example, it maps to Dataset in BigQuery, Database in Hive, Schema in Databricks, and Schema in MaxCompute.
+	//
 	// example:
 	//
 	// d1
 	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
+	// The destination MaxCompute project name.
+	//
 	// example:
 	//
 	// mms_test
 	DstProjectName *string `json:"dstProjectName,omitempty" xml:"dstProjectName,omitempty"`
+	// The destination MaxCompute schema name. This field is empty for MaxCompute projects that do not use schemas.
+	//
 	// example:
 	//
 	// default
 	DstSchemaName *string `json:"dstSchemaName,omitempty" xml:"dstSchemaName,omitempty"`
+	// The destination MaxCompute table name.
+	//
 	// example:
 	//
 	// default
 	DstTableName *string `json:"dstTableName,omitempty" xml:"dstTableName,omitempty"`
+	// The destination MaxCompute partition value. By default, this matches the source partition value.
+	//
 	// example:
 	//
 	// p1=1/p2=abc
 	DstValue *string `json:"dstValue,omitempty" xml:"dstValue,omitempty"`
+	// The partition ID.
+	//
 	// example:
 	//
 	// 2323
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// lastDdlTime
+	// The time when the DDL was last changed.
 	//
 	// example:
 	//
 	// 2024-12-17 15:44:42
 	LastDdlTime *string `json:"lastDdlTime,omitempty" xml:"lastDdlTime,omitempty"`
+	// The number of rows.
+	//
 	// example:
 	//
 	// 2323
 	NumRows *int64 `json:"numRows,omitempty" xml:"numRows,omitempty"`
+	// The data size in bytes.
+	//
 	// example:
 	//
 	// 23223
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 200018
 	SourceId *int64 `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// demo
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
+	// The migration status.
+	//
 	// example:
 	//
 	// DONE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The table ID.
+	//
 	// example:
 	//
 	// 23
 	TableId *int64 `json:"tableId,omitempty" xml:"tableId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// t1
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// Indicates whether the metadata has been updated.
+	//
 	// example:
 	//
 	// false
 	Updated *bool `json:"updated,omitempty" xml:"updated,omitempty"`
+	// The partition value.
+	//
 	// example:
 	//
 	// p1=1/p2=abc

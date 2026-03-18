@@ -22,23 +22,32 @@ type iGetStorageSummaryComparedRequest interface {
 }
 
 type GetStorageSummaryComparedRequest struct {
+	// The start date.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20250601
 	BeginDate *string `json:"beginDate,omitempty" xml:"beginDate,omitempty"`
+	// The end date.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20250604
-	EndDate  *string   `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	EndDate *string `json:"endDate,omitempty" xml:"endDate,omitempty"`
+	// The list of projects.
 	Projects []*string `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID. You can log on to the MaxCompute console and choose **Tenant Property*	- in the navigation pane on the left to view the tenant ID.
+	//
 	// example:
 	//
 	// 483212237127906

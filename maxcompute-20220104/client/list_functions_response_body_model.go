@@ -16,14 +16,8 @@ type iListFunctionsResponseBody interface {
 }
 
 type ListFunctionsResponseBody struct {
-	// The returned data.
-	Data *ListFunctionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 0be3e0b716671885050924814e3623
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *ListFunctionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListFunctionsResponseBody) String() string {
@@ -62,20 +56,9 @@ func (s *ListFunctionsResponseBody) Validate() error {
 }
 
 type ListFunctionsResponseBodyData struct {
-	// The information about each function.
 	Functions []*ListFunctionsResponseBodyDataFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
-	// Indicates the marker after which the returned list begins.
-	//
-	// example:
-	//
-	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
-	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The maximum number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	Marker    *string                                   `json:"marker,omitempty" xml:"marker,omitempty"`
+	MaxItem   *int32                                    `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 }
 
 func (s ListFunctionsResponseBodyData) String() string {
@@ -127,48 +110,13 @@ func (s *ListFunctionsResponseBodyData) Validate() error {
 }
 
 type ListFunctionsResponseBodyDataFunctions struct {
-	// The class in which the function was defined.
-	//
-	// example:
-	//
-	// abc
-	Class *string `json:"class,omitempty" xml:"class,omitempty"`
-	// The time when the function was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1664505167000
-	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	// The display name of the function.
-	//
-	// example:
-	//
-	// getdate
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the function.
-	//
-	// example:
-	//
-	// getdate
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The owner of the function.
-	//
-	// example:
-	//
-	// odpsowner
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The name of the resource that was associated with the function.
-	//
-	// example:
-	//
-	// abc
-	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
-	// The schema of the function.
-	//
-	// example:
-	//
-	// abc
-	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
+	Class        *string `json:"class,omitempty" xml:"class,omitempty"`
+	CreationTime *int64  `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	DisplayName  *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	Owner        *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Resources    *string `json:"resources,omitempty" xml:"resources,omitempty"`
+	Schema       *string `json:"schema,omitempty" xml:"schema,omitempty"`
 }
 
 func (s ListFunctionsResponseBodyDataFunctions) String() string {

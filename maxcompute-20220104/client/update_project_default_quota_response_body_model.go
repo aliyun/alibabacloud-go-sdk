@@ -16,17 +16,7 @@ type iUpdateProjectDefaultQuotaResponseBody interface {
 }
 
 type UpdateProjectDefaultQuotaResponseBody struct {
-	// The data returned.
-	//
-	// example:
-	//
-	// success
-	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 0a06dfe716674588654372173ec0da
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

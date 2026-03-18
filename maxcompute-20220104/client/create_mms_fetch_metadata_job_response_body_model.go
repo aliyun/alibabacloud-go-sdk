@@ -16,7 +16,10 @@ type iCreateMmsFetchMetadataJobResponseBody interface {
 }
 
 type CreateMmsFetchMetadataJobResponseBody struct {
+	// The returned result.
 	Data *CreateMmsFetchMetadataJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CC4D05E8-0613-5A8E-9339-A0EBD097A69E
@@ -59,6 +62,8 @@ func (s *CreateMmsFetchMetadataJobResponseBody) Validate() error {
 }
 
 type CreateMmsFetchMetadataJobResponseBodyData struct {
+	// The ID of the asynchronous task that syncs metadata.
+	//
 	// example:
 	//
 	// 1000002

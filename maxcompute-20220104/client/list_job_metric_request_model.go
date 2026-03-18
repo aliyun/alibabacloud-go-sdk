@@ -28,59 +28,15 @@ type iListJobMetricRequest interface {
 }
 
 type ListJobMetricRequest struct {
-	// Grouping basis.
-	//
-	// > Available values: project, quota, type, status. Meanings:
-	//
-	// >- project: Group and aggregate by project;
-	//
-	// >- quota: Group and aggregate by quota;
-	//
-	// >- type: Group and aggregate by job type;
-	//
-	// >- status: Group and aggregate by job status.
-	//
-	// example:
-	//
-	// project
-	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The name of observation metric.
-	//
-	// example:
-	//
-	// num
-	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// The monitoring statistical period.Unit:Second(s).
-	//
-	// example:
-	//
-	// 3600
-	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// The name of MaxCompute projects (for filtering).
+	Group   *string   `json:"group,omitempty" xml:"group,omitempty"`
+	Metric  *string   `json:"metric,omitempty" xml:"metric,omitempty"`
+	Period  *int64    `json:"period,omitempty" xml:"period,omitempty"`
 	Project []*string `json:"project,omitempty" xml:"project,omitempty" type:"Repeated"`
-	// The nickname of computing Quota nickname used by the job (for filtering).
-	Quota []*string `json:"quota,omitempty" xml:"quota,omitempty" type:"Repeated"`
-	// The type of observation metric.
-	//
-	// example:
-	//
-	// total
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The end time for the observation interval.
-	//
+	Quota   []*string `json:"quota,omitempty" xml:"quota,omitempty" type:"Repeated"`
+	Type    *string   `json:"type,omitempty" xml:"type,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1735536322
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time for the observation interval.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1735534322
 	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
