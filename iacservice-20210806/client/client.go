@@ -3051,6 +3051,56 @@ func (client *Client) GetResourceType(resourceType *string, request *GetResource
 
 // Summary:
 //
+// 获取资源栈部署结果
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStackExecutionResultResponse
+func (client *Client) GetStackExecutionResultWithOptions(triggerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStackExecutionResultResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStackExecutionResult"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/stacks/trigger/" + dara.PercentEncode(dara.StringValue(triggerId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStackExecutionResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取资源栈部署结果
+//
+// @return GetStackExecutionResultResponse
+func (client *Client) GetStackExecutionResult(triggerId *string) (_result *GetStackExecutionResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetStackExecutionResultResponse{}
+	_body, _err := client.GetStackExecutionResultWithOptions(triggerId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询任务详情
 //
 // @param headers - map
@@ -5100,6 +5150,88 @@ func (client *Client) RemoveSharedAccounts(request *RemoveSharedAccountsRequest)
 	headers := make(map[string]*string)
 	_result = &RemoveSharedAccountsResponse{}
 	_body, _err := client.RemoveSharedAccountsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 触发资源栈部署
+//
+// @param request - TriggerStackExecutionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerStackExecutionResponse
+func (client *Client) TriggerStackExecutionWithOptions(request *TriggerStackExecutionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *TriggerStackExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Action) {
+		body["action"] = request.Action
+	}
+
+	if !dara.IsNil(request.ChangedFolders) {
+		body["changedFolders"] = request.ChangedFolders
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CodePackagePath) {
+		body["codePackagePath"] = request.CodePackagePath
+	}
+
+	if !dara.IsNil(request.CodeVersionId) {
+		body["codeVersionId"] = request.CodeVersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TriggerStackExecution"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/stacks/trigger"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TriggerStackExecutionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 触发资源栈部署
+//
+// @param request - TriggerStackExecutionRequest
+//
+// @return TriggerStackExecutionResponse
+func (client *Client) TriggerStackExecution(request *TriggerStackExecutionRequest) (_result *TriggerStackExecutionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TriggerStackExecutionResponse{}
+	_body, _err := client.TriggerStackExecutionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
