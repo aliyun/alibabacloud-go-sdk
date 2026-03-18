@@ -515,7 +515,12 @@ func (s *CreateAppRequestPrivateNetworkWhiteIpGroup) Validate() error {
 type CreateAppRequestQuotaInfo struct {
 	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
 	Cu      *int32  `json:"cu,omitempty" xml:"cu,omitempty"`
-	Storage *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
+	Elastic *bool   `json:"elastic,omitempty" xml:"elastic,omitempty"`
+	// example:
+	//
+	// 2
+	MinCu   *int32 `json:"minCu,omitempty" xml:"minCu,omitempty"`
+	Storage *int32 `json:"storage,omitempty" xml:"storage,omitempty"`
 }
 
 func (s CreateAppRequestQuotaInfo) String() string {
@@ -534,6 +539,14 @@ func (s *CreateAppRequestQuotaInfo) GetCu() *int32 {
 	return s.Cu
 }
 
+func (s *CreateAppRequestQuotaInfo) GetElastic() *bool {
+	return s.Elastic
+}
+
+func (s *CreateAppRequestQuotaInfo) GetMinCu() *int32 {
+	return s.MinCu
+}
+
 func (s *CreateAppRequestQuotaInfo) GetStorage() *int32 {
 	return s.Storage
 }
@@ -545,6 +558,16 @@ func (s *CreateAppRequestQuotaInfo) SetAppType(v string) *CreateAppRequestQuotaI
 
 func (s *CreateAppRequestQuotaInfo) SetCu(v int32) *CreateAppRequestQuotaInfo {
 	s.Cu = &v
+	return s
+}
+
+func (s *CreateAppRequestQuotaInfo) SetElastic(v bool) *CreateAppRequestQuotaInfo {
+	s.Elastic = &v
+	return s
+}
+
+func (s *CreateAppRequestQuotaInfo) SetMinCu(v int32) *CreateAppRequestQuotaInfo {
+	s.MinCu = &v
 	return s
 }
 
