@@ -2,81 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-qingdao":            dara.String("ddosbgp.aliyuncs.com"),
-		"cn-beijing":            dara.String("ddosbgp.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("ddosbgp.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("ddosbgp.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shanghai":           dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("ddosbgp.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-south-1":            dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"cn-chengdu":            dara.String("ddosbgp.aliyuncs.com"),
-		"eu-central-1":          dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"me-east-1":             dara.String("ddosbgp.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("ddosbgp.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("ddosbgp.aliyuncs.com"),
-		"cn-north-2-gov-1":      dara.String("ddosbgp.aliyuncs.com"),
-	}
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("ddosbgp"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -87,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddIpResponse
-func (client *Client) AddIpWithOptions(request *AddIpRequest, runtime *dara.RuntimeOptions) (_result *AddIpResponse, _err error) {
+func (client *Client) AddIpWithContext(ctx context.Context, request *AddIpRequest, runtime *dara.RuntimeOptions) (_result *AddIpResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -126,29 +55,11 @@ func (client *Client) AddIpWithOptions(request *AddIpRequest, runtime *dara.Runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds IP addresses to an Anti-DDoS Origin instance.
-//
-// @param request - AddIpRequest
-//
-// @return AddIpResponse
-func (client *Client) AddIp(request *AddIpRequest) (_result *AddIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddIpResponse{}
-	_body, _err := client.AddIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -165,7 +76,7 @@ func (client *Client) AddIp(request *AddIpRequest) (_result *AddIpResponse, _err
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddRdMemberListResponse
-func (client *Client) AddRdMemberListWithOptions(tmpReq *AddRdMemberListRequest, runtime *dara.RuntimeOptions) (_result *AddRdMemberListResponse, _err error) {
+func (client *Client) AddRdMemberListWithContext(ctx context.Context, tmpReq *AddRdMemberListRequest, runtime *dara.RuntimeOptions) (_result *AddRdMemberListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -198,33 +109,11 @@ func (client *Client) AddRdMemberListWithOptions(tmpReq *AddRdMemberListRequest,
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddRdMemberListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds members to a resource directory.
-//
-// Description:
-//
-// Only a delegated administrator account or the management account of a resource directory can be used to add members to the resource directory.
-//
-// @param request - AddRdMemberListRequest
-//
-// @return AddRdMemberListResponse
-func (client *Client) AddRdMemberList(request *AddRdMemberListRequest) (_result *AddRdMemberListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddRdMemberListResponse{}
-	_body, _err := client.AddRdMemberListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -237,7 +126,7 @@ func (client *Client) AddRdMemberList(request *AddRdMemberListRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachAssetGroupToInstanceResponse
-func (client *Client) AttachAssetGroupToInstanceWithOptions(tmpReq *AttachAssetGroupToInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachAssetGroupToInstanceResponse, _err error) {
+func (client *Client) AttachAssetGroupToInstanceWithContext(ctx context.Context, tmpReq *AttachAssetGroupToInstanceRequest, runtime *dara.RuntimeOptions) (_result *AttachAssetGroupToInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -278,29 +167,11 @@ func (client *Client) AttachAssetGroupToInstanceWithOptions(tmpReq *AttachAssetG
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachAssetGroupToInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates an asset with an Anti-DDoS Origin instance of a paid edition.
-//
-// @param request - AttachAssetGroupToInstanceRequest
-//
-// @return AttachAssetGroupToInstanceResponse
-func (client *Client) AttachAssetGroupToInstance(request *AttachAssetGroupToInstanceRequest) (_result *AttachAssetGroupToInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachAssetGroupToInstanceResponse{}
-	_body, _err := client.AttachAssetGroupToInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -313,7 +184,7 @@ func (client *Client) AttachAssetGroupToInstance(request *AttachAssetGroupToInst
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AttachToPolicyResponse
-func (client *Client) AttachToPolicyWithOptions(tmpReq *AttachToPolicyRequest, runtime *dara.RuntimeOptions) (_result *AttachToPolicyResponse, _err error) {
+func (client *Client) AttachToPolicyWithContext(ctx context.Context, tmpReq *AttachToPolicyRequest, runtime *dara.RuntimeOptions) (_result *AttachToPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -354,29 +225,11 @@ func (client *Client) AttachToPolicyWithOptions(tmpReq *AttachToPolicyRequest, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &AttachToPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Associates a mitigation policy to a protected object.
-//
-// @param request - AttachToPolicyRequest
-//
-// @return AttachToPolicyResponse
-func (client *Client) AttachToPolicy(request *AttachToPolicyRequest) (_result *AttachToPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AttachToPolicyResponse{}
-	_body, _err := client.AttachToPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -389,7 +242,7 @@ func (client *Client) AttachToPolicy(request *AttachToPolicyRequest) (_result *A
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckAccessLogAuthResponse
-func (client *Client) CheckAccessLogAuthWithOptions(request *CheckAccessLogAuthRequest, runtime *dara.RuntimeOptions) (_result *CheckAccessLogAuthResponse, _err error) {
+func (client *Client) CheckAccessLogAuthWithContext(ctx context.Context, request *CheckAccessLogAuthRequest, runtime *dara.RuntimeOptions) (_result *CheckAccessLogAuthResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -420,29 +273,11 @@ func (client *Client) CheckAccessLogAuthWithOptions(request *CheckAccessLogAuthR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckAccessLogAuthResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether Anti-DDoS Origin is authorized to access Simple Log Service.
-//
-// @param request - CheckAccessLogAuthRequest
-//
-// @return CheckAccessLogAuthResponse
-func (client *Client) CheckAccessLogAuth(request *CheckAccessLogAuthRequest) (_result *CheckAccessLogAuthResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckAccessLogAuthResponse{}
-	_body, _err := client.CheckAccessLogAuthWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -463,7 +298,7 @@ func (client *Client) CheckAccessLogAuth(request *CheckAccessLogAuthRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CheckGrantResponse
-func (client *Client) CheckGrantWithOptions(request *CheckGrantRequest, runtime *dara.RuntimeOptions) (_result *CheckGrantResponse, _err error) {
+func (client *Client) CheckGrantWithContext(ctx context.Context, request *CheckGrantRequest, runtime *dara.RuntimeOptions) (_result *CheckGrantResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -486,37 +321,11 @@ func (client *Client) CheckGrantWithOptions(request *CheckGrantRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckGrantResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
-//
-// Description:
-//
-// You can call the CheckGrant operation to query whether Anti-DDoS Origin is authorized to obtain information about the assets within the current Alibaba Cloud account.
-//
-// ### Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - CheckGrantRequest
-//
-// @return CheckGrantResponse
-func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGrantResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CheckGrantResponse{}
-	_body, _err := client.CheckGrantWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -529,7 +338,7 @@ func (client *Client) CheckGrant(request *CheckGrantRequest) (_result *CheckGran
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePolicyResponse
-func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+func (client *Client) CreatePolicyWithContext(ctx context.Context, request *CreatePolicyRequest, runtime *dara.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -564,29 +373,11 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a mitigation policy.
-//
-// @param request - CreatePolicyRequest
-//
-// @return CreatePolicyResponse
-func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreatePolicyResponse{}
-	_body, _err := client.CreatePolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -609,7 +400,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBlackholeResponse
-func (client *Client) DeleteBlackholeWithOptions(request *DeleteBlackholeRequest, runtime *dara.RuntimeOptions) (_result *DeleteBlackholeResponse, _err error) {
+func (client *Client) DeleteBlackholeWithContext(ctx context.Context, request *DeleteBlackholeRequest, runtime *dara.RuntimeOptions) (_result *DeleteBlackholeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -648,39 +439,11 @@ func (client *Client) DeleteBlackholeWithOptions(request *DeleteBlackholeRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBlackholeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deactivates blackhole filtering for a protected IP address.
-//
-// Description:
-//
-// You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
-//
-// Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
-//
-// ### [](#qps-)Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DeleteBlackholeRequest
-//
-// @return DeleteBlackholeResponse
-func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result *DeleteBlackholeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteBlackholeResponse{}
-	_body, _err := client.DeleteBlackholeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -697,7 +460,7 @@ func (client *Client) DeleteBlackhole(request *DeleteBlackholeRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteIpResponse
-func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpResponse, _err error) {
+func (client *Client) DeleteIpWithContext(ctx context.Context, request *DeleteIpRequest, runtime *dara.RuntimeOptions) (_result *DeleteIpResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -736,33 +499,11 @@ func (client *Client) DeleteIpWithOptions(request *DeleteIpRequest, runtime *dar
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIpResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes specific IP addresses from an Anti-DDoS Origin instance.
-//
-// Description:
-//
-// The Anti-DDoS Origin Enterprise instance no longer protects the IP addresses that are removed.
-//
-// @param request - DeleteIpRequest
-//
-// @return DeleteIpResponse
-func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteIpResponse{}
-	_body, _err := client.DeleteIpWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -779,7 +520,7 @@ func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpRespo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePolicyResponse
-func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+func (client *Client) DeletePolicyWithContext(ctx context.Context, request *DeletePolicyRequest, runtime *dara.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -806,33 +547,11 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeletePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a mitigation policy.
-//
-// Description:
-//
-// You cannot delete a mitigation policy to which a protected object is added.
-//
-// @param request - DeletePolicyRequest
-//
-// @return DeletePolicyResponse
-func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeletePolicyResponse{}
-	_body, _err := client.DeletePolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -849,7 +568,7 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRdMemberListResponse
-func (client *Client) DeleteRdMemberListWithOptions(tmpReq *DeleteRdMemberListRequest, runtime *dara.RuntimeOptions) (_result *DeleteRdMemberListResponse, _err error) {
+func (client *Client) DeleteRdMemberListWithContext(ctx context.Context, tmpReq *DeleteRdMemberListRequest, runtime *dara.RuntimeOptions) (_result *DeleteRdMemberListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -882,33 +601,11 @@ func (client *Client) DeleteRdMemberListWithOptions(tmpReq *DeleteRdMemberListRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteRdMemberListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes members.
-//
-// Description:
-//
-// Only a delegated administrator account or the management account of a resource directory can be used to delete members.
-//
-// @param request - DeleteRdMemberListRequest
-//
-// @return DeleteRdMemberListResponse
-func (client *Client) DeleteRdMemberList(request *DeleteRdMemberListRequest) (_result *DeleteRdMemberListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteRdMemberListResponse{}
-	_body, _err := client.DeleteRdMemberListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -921,7 +618,7 @@ func (client *Client) DeleteRdMemberList(request *DeleteRdMemberListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAssetGroupResponse
-func (client *Client) DescribeAssetGroupWithOptions(request *DescribeAssetGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetGroupResponse, _err error) {
+func (client *Client) DescribeAssetGroupWithContext(ctx context.Context, request *DescribeAssetGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -960,29 +657,11 @@ func (client *Client) DescribeAssetGroupWithOptions(request *DescribeAssetGroupR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAssetGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the association between an asset and an Anti-DDoS Origin instance of a paid edition.
-//
-// @param request - DescribeAssetGroupRequest
-//
-// @return DescribeAssetGroupResponse
-func (client *Client) DescribeAssetGroup(request *DescribeAssetGroupRequest) (_result *DescribeAssetGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAssetGroupResponse{}
-	_body, _err := client.DescribeAssetGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -995,7 +674,7 @@ func (client *Client) DescribeAssetGroup(request *DescribeAssetGroupRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAssetGroupToInstanceResponse
-func (client *Client) DescribeAssetGroupToInstanceWithOptions(request *DescribeAssetGroupToInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetGroupToInstanceResponse, _err error) {
+func (client *Client) DescribeAssetGroupToInstanceWithContext(ctx context.Context, request *DescribeAssetGroupToInstanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeAssetGroupToInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1042,29 +721,11 @@ func (client *Client) DescribeAssetGroupToInstanceWithOptions(request *DescribeA
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAssetGroupToInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the association between an asset and an Anti-DDoS Origin instance of a paid edition.
-//
-// @param request - DescribeAssetGroupToInstanceRequest
-//
-// @return DescribeAssetGroupToInstanceResponse
-func (client *Client) DescribeAssetGroupToInstance(request *DescribeAssetGroupToInstanceRequest) (_result *DescribeAssetGroupToInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAssetGroupToInstanceResponse{}
-	_body, _err := client.DescribeAssetGroupToInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1085,7 +746,7 @@ func (client *Client) DescribeAssetGroupToInstance(request *DescribeAssetGroupTo
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDdosEventResponse
-func (client *Client) DescribeDdosEventWithOptions(request *DescribeDdosEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosEventResponse, _err error) {
+func (client *Client) DescribeDdosEventWithContext(ctx context.Context, request *DescribeDdosEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosEventResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1140,37 +801,11 @@ func (client *Client) DescribeDdosEventWithOptions(request *DescribeDdosEventReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDdosEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance.
-//
-// Description:
-//
-// You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
-//
-// ### [](#qps-)Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeDdosEventRequest
-//
-// @return DescribeDdosEventResponse
-func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_result *DescribeDdosEventResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDdosEventResponse{}
-	_body, _err := client.DescribeDdosEventWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1183,7 +818,7 @@ func (client *Client) DescribeDdosEvent(request *DescribeDdosEventRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDdosOriginInstanceBillResponse
-func (client *Client) DescribeDdosOriginInstanceBillWithOptions(request *DescribeDdosOriginInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
+func (client *Client) DescribeDdosOriginInstanceBillWithContext(ctx context.Context, request *DescribeDdosOriginInstanceBillRequest, runtime *dara.RuntimeOptions) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1222,29 +857,11 @@ func (client *Client) DescribeDdosOriginInstanceBillWithOptions(request *Describ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDdosOriginInstanceBillResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
-//
-// @param request - DescribeDdosOriginInstanceBillRequest
-//
-// @return DescribeDdosOriginInstanceBillResponse
-func (client *Client) DescribeDdosOriginInstanceBill(request *DescribeDdosOriginInstanceBillRequest) (_result *DescribeDdosOriginInstanceBillResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeDdosOriginInstanceBillResponse{}
-	_body, _err := client.DescribeDdosOriginInstanceBillWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1263,7 +880,7 @@ func (client *Client) DescribeDdosOriginInstanceBill(request *DescribeDdosOrigin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExcpetionCountResponse
-func (client *Client) DescribeExcpetionCountWithOptions(request *DescribeExcpetionCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeExcpetionCountResponse, _err error) {
+func (client *Client) DescribeExcpetionCountWithContext(ctx context.Context, request *DescribeExcpetionCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeExcpetionCountResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1294,35 +911,11 @@ func (client *Client) DescribeExcpetionCountWithOptions(request *DescribeExcpeti
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeExcpetionCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
-//
-// Description:
-//
-// ## Usage notes
-//
-// You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
-//
-// @param request - DescribeExcpetionCountRequest
-//
-// @return DescribeExcpetionCountResponse
-func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequest) (_result *DescribeExcpetionCountResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeExcpetionCountResponse{}
-	_body, _err := client.DescribeExcpetionCountWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1339,7 +932,7 @@ func (client *Client) DescribeExcpetionCount(request *DescribeExcpetionCountRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceListResponse
-func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceListResponse, _err error) {
+func (client *Client) DescribeInstanceListWithContext(ctx context.Context, request *DescribeInstanceListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1414,33 +1007,11 @@ func (client *Client) DescribeInstanceListWithOptions(request *DescribeInstanceL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of all Anti-DDoS Origin instances.
-//
-// Description:
-//
-// Queries the details of all Anti-DDoS Origin instances.
-//
-// @param request - DescribeInstanceListRequest
-//
-// @return DescribeInstanceListResponse
-func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest) (_result *DescribeInstanceListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceListResponse{}
-	_body, _err := client.DescribeInstanceListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1453,7 +1024,7 @@ func (client *Client) DescribeInstanceList(request *DescribeInstanceListRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceSpecsResponse
-func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstanceSpecsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceSpecsResponse, _err error) {
+func (client *Client) DescribeInstanceSpecsWithContext(ctx context.Context, request *DescribeInstanceSpecsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceSpecsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1488,29 +1059,11 @@ func (client *Client) DescribeInstanceSpecsWithOptions(request *DescribeInstance
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceSpecsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the specifications of a specific Anti-DDoS Origin instance.
-//
-// @param request - DescribeInstanceSpecsRequest
-//
-// @return DescribeInstanceSpecsResponse
-func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (_result *DescribeInstanceSpecsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeInstanceSpecsResponse{}
-	_body, _err := client.DescribeInstanceSpecsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1531,7 +1084,7 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOpEntitiesResponse
-func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
+func (client *Client) DescribeOpEntitiesWithContext(ctx context.Context, request *DescribeOpEntitiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1594,37 +1147,11 @@ func (client *Client) DescribeOpEntitiesWithOptions(request *DescribeOpEntitiesR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOpEntitiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the operation logs of an Anti-DDoS Origin instance.
-//
-// Description:
-//
-// You can call the DescribeOpEntities operation to query the operation logs of an instance by page.
-//
-// ### Limit
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeOpEntitiesRequest
-//
-// @return DescribeOpEntitiesResponse
-func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_result *DescribeOpEntitiesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeOpEntitiesResponse{}
-	_body, _err := client.DescribeOpEntitiesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1645,7 +1172,7 @@ func (client *Client) DescribeOpEntities(request *DescribeOpEntitiesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePackIpListResponse
-func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListRequest, runtime *dara.RuntimeOptions) (_result *DescribePackIpListResponse, _err error) {
+func (client *Client) DescribePackIpListWithContext(ctx context.Context, request *DescribePackIpListRequest, runtime *dara.RuntimeOptions) (_result *DescribePackIpListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1700,37 +1227,11 @@ func (client *Client) DescribePackIpListWithOptions(request *DescribePackIpListR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribePackIpListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the IP addresses that are protected by a specific Anti-DDoS Origin instance.
-//
-// Description:
-//
-// You can call the DescribePackIpList operation to query the details about each IP address that is protected by a specific Anti-DDoS Origin instance by page. The details include the IP address and the type of the cloud asset to which the IP address belongs. The details also include the status of the IP address, such as whether blackhole filtering is triggered for the IP address.
-//
-// ## Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribePackIpListRequest
-//
-// @return DescribePackIpListResponse
-func (client *Client) DescribePackIpList(request *DescribePackIpListRequest) (_result *DescribePackIpListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribePackIpListResponse{}
-	_body, _err := client.DescribePackIpListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1743,7 +1244,7 @@ func (client *Client) DescribePackIpList(request *DescribePackIpListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRdMemberListResponse
-func (client *Client) DescribeRdMemberListWithOptions(request *DescribeRdMemberListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRdMemberListResponse, _err error) {
+func (client *Client) DescribeRdMemberListWithContext(ctx context.Context, request *DescribeRdMemberListRequest, runtime *dara.RuntimeOptions) (_result *DescribeRdMemberListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1778,76 +1279,11 @@ func (client *Client) DescribeRdMemberListWithOptions(request *DescribeRdMemberL
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRdMemberListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries members in a resource directory.
-//
-// @param request - DescribeRdMemberListRequest
-//
-// @return DescribeRdMemberListResponse
-func (client *Client) DescribeRdMemberList(request *DescribeRdMemberListRequest) (_result *DescribeRdMemberListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRdMemberListResponse{}
-	_body, _err := client.DescribeRdMemberListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of the multi-account management feature.
-//
-// @param request - DescribeRdStatusRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DescribeRdStatusResponse
-func (client *Client) DescribeRdStatusWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeRdStatusResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{}
-	params := &openapiutil.Params{
-		Action:      dara.String("DescribeRdStatus"),
-		Version:     dara.String("2018-07-20"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &DescribeRdStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of the multi-account management feature.
-//
-// @return DescribeRdStatusResponse
-func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRdStatusResponse{}
-	_body, _err := client.DescribeRdStatusWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1860,7 +1296,7 @@ func (client *Client) DescribeRdStatus() (_result *DescribeRdStatusResponse, _er
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1891,29 +1327,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the regions of assets that can be protected by Anti-DDoS Origin Enterprise in a specific region.
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1936,7 +1354,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeTrafficResponse
-func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrafficResponse, _err error) {
+func (client *Client) DescribeTrafficWithContext(ctx context.Context, request *DescribeTrafficRequest, runtime *dara.RuntimeOptions) (_result *DescribeTrafficResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1995,39 +1413,11 @@ func (client *Client) DescribeTrafficWithOptions(request *DescribeTrafficRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeTrafficResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries traffic statistics of an Anti-DDoS Origin instance within a specific time period.
-//
-// Description:
-//
-// You can call the DescribeTraffic operation to query traffic statistics of an Anti-DDoS Origin instance within a specific time period.
-//
-// >  When you call this operation, you must configure the **InstanceId*	- parameter to specify the Anti-DDoS Origin instance whose traffic statistics you want to query.
-//
-// ## Limits
-//
-// You can call this operation once per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - DescribeTrafficRequest
-//
-// @return DescribeTrafficResponse
-func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result *DescribeTrafficResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeTrafficResponse{}
-	_body, _err := client.DescribeTrafficWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2040,7 +1430,7 @@ func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DetachFromPolicyResponse
-func (client *Client) DetachFromPolicyWithOptions(tmpReq *DetachFromPolicyRequest, runtime *dara.RuntimeOptions) (_result *DetachFromPolicyResponse, _err error) {
+func (client *Client) DetachFromPolicyWithContext(ctx context.Context, tmpReq *DetachFromPolicyRequest, runtime *dara.RuntimeOptions) (_result *DetachFromPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2081,29 +1471,11 @@ func (client *Client) DetachFromPolicyWithOptions(tmpReq *DetachFromPolicyReques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachFromPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes protected objects from a mitigation policy.
-//
-// @param request - DetachFromPolicyRequest
-//
-// @return DetachFromPolicyResponse
-func (client *Client) DetachFromPolicy(request *DetachFromPolicyRequest) (_result *DetachFromPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DetachFromPolicyResponse{}
-	_body, _err := client.DetachFromPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2116,7 +1488,7 @@ func (client *Client) DetachFromPolicy(request *DetachFromPolicyRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DettachAssetGroupToInstanceResponse
-func (client *Client) DettachAssetGroupToInstanceWithOptions(tmpReq *DettachAssetGroupToInstanceRequest, runtime *dara.RuntimeOptions) (_result *DettachAssetGroupToInstanceResponse, _err error) {
+func (client *Client) DettachAssetGroupToInstanceWithContext(ctx context.Context, tmpReq *DettachAssetGroupToInstanceRequest, runtime *dara.RuntimeOptions) (_result *DettachAssetGroupToInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2157,29 +1529,11 @@ func (client *Client) DettachAssetGroupToInstanceWithOptions(tmpReq *DettachAsse
 		BodyType:    dara.String("json"),
 	}
 	_result = &DettachAssetGroupToInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Dissociates an asset from an Anti-DDoS Origin instance of a paid edition.
-//
-// @param request - DettachAssetGroupToInstanceRequest
-//
-// @return DettachAssetGroupToInstanceResponse
-func (client *Client) DettachAssetGroupToInstance(request *DettachAssetGroupToInstanceRequest) (_result *DettachAssetGroupToInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DettachAssetGroupToInstanceResponse{}
-	_body, _err := client.DettachAssetGroupToInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2192,7 +1546,7 @@ func (client *Client) DettachAssetGroupToInstance(request *DettachAssetGroupToIn
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetSlsOpenStatusResponse
-func (client *Client) GetSlsOpenStatusWithOptions(request *GetSlsOpenStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSlsOpenStatusResponse, _err error) {
+func (client *Client) GetSlsOpenStatusWithContext(ctx context.Context, request *GetSlsOpenStatusRequest, runtime *dara.RuntimeOptions) (_result *GetSlsOpenStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2223,29 +1577,11 @@ func (client *Client) GetSlsOpenStatusWithOptions(request *GetSlsOpenStatusReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSlsOpenStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries whether Simple Log Service is activated.
-//
-// @param request - GetSlsOpenStatusRequest
-//
-// @return GetSlsOpenStatusResponse
-func (client *Client) GetSlsOpenStatus(request *GetSlsOpenStatusRequest) (_result *GetSlsOpenStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetSlsOpenStatusResponse{}
-	_body, _err := client.GetSlsOpenStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2258,7 +1594,7 @@ func (client *Client) GetSlsOpenStatus(request *GetSlsOpenStatusRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOpenedAccessLogInstancesResponse
-func (client *Client) ListOpenedAccessLogInstancesWithOptions(request *ListOpenedAccessLogInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListOpenedAccessLogInstancesResponse, _err error) {
+func (client *Client) ListOpenedAccessLogInstancesWithContext(ctx context.Context, request *ListOpenedAccessLogInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListOpenedAccessLogInstancesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2293,29 +1629,11 @@ func (client *Client) ListOpenedAccessLogInstancesWithOptions(request *ListOpene
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOpenedAccessLogInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the Anti-DDoS Origin instances for which log analysis is enabled.
-//
-// @param request - ListOpenedAccessLogInstancesRequest
-//
-// @return ListOpenedAccessLogInstancesResponse
-func (client *Client) ListOpenedAccessLogInstances(request *ListOpenedAccessLogInstancesRequest) (_result *ListOpenedAccessLogInstancesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListOpenedAccessLogInstancesResponse{}
-	_body, _err := client.ListOpenedAccessLogInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2328,7 +1646,7 @@ func (client *Client) ListOpenedAccessLogInstances(request *ListOpenedAccessLogI
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPolicyResponse
-func (client *Client) ListPolicyWithOptions(request *ListPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyResponse, _err error) {
+func (client *Client) ListPolicyWithContext(ctx context.Context, request *ListPolicyRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2371,29 +1689,11 @@ func (client *Client) ListPolicyWithOptions(request *ListPolicyRequest, runtime 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries mitigation policies.
-//
-// @param request - ListPolicyRequest
-//
-// @return ListPolicyResponse
-func (client *Client) ListPolicy(request *ListPolicyRequest) (_result *ListPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPolicyResponse{}
-	_body, _err := client.ListPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2406,7 +1706,7 @@ func (client *Client) ListPolicy(request *ListPolicyRequest) (_result *ListPolic
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPolicyAttachmentResponse
-func (client *Client) ListPolicyAttachmentWithOptions(tmpReq *ListPolicyAttachmentRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyAttachmentResponse, _err error) {
+func (client *Client) ListPolicyAttachmentWithContext(ctx context.Context, tmpReq *ListPolicyAttachmentRequest, runtime *dara.RuntimeOptions) (_result *ListPolicyAttachmentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2459,29 +1759,11 @@ func (client *Client) ListPolicyAttachmentWithOptions(tmpReq *ListPolicyAttachme
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPolicyAttachmentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries attachments to mitigation policies.
-//
-// @param request - ListPolicyAttachmentRequest
-//
-// @return ListPolicyAttachmentResponse
-func (client *Client) ListPolicyAttachment(request *ListPolicyAttachmentRequest) (_result *ListPolicyAttachmentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListPolicyAttachmentResponse{}
-	_body, _err := client.ListPolicyAttachmentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2494,7 +1776,7 @@ func (client *Client) ListPolicyAttachment(request *ListPolicyAttachmentRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagKeysResponse
-func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
+func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2537,29 +1819,11 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries all tags.
-//
-// @param request - ListTagKeysRequest
-//
-// @return ListTagKeysResponse
-func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.ListTagKeysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2580,7 +1844,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2627,37 +1891,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the relationship between Anti-DDoS Origin instances and tags.
-//
-// Description:
-//
-// You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
-//
-// ### [](#qps-)Limits
-//
-// You can call this API operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2674,7 +1912,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPolicyResponse
-func (client *Client) ModifyPolicyWithOptions(tmpReq *ModifyPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyResponse, _err error) {
+func (client *Client) ModifyPolicyWithContext(ctx context.Context, tmpReq *ModifyPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2723,33 +1961,11 @@ func (client *Client) ModifyPolicyWithOptions(tmpReq *ModifyPolicyRequest, runti
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a mitigation policy.
-//
-// Description:
-//
-// Modifies a mitigation policy.
-//
-// @param request - ModifyPolicyRequest
-//
-// @return ModifyPolicyResponse
-func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *ModifyPolicyResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPolicyResponse{}
-	_body, _err := client.ModifyPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2766,7 +1982,7 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyPolicyContentResponse
-func (client *Client) ModifyPolicyContentWithOptions(tmpReq *ModifyPolicyContentRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyContentResponse, _err error) {
+func (client *Client) ModifyPolicyContentWithContext(ctx context.Context, tmpReq *ModifyPolicyContentRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolicyContentResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -2811,33 +2027,11 @@ func (client *Client) ModifyPolicyContentWithOptions(tmpReq *ModifyPolicyContent
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyPolicyContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies the content of the mitigation policy.
-//
-// Description:
-//
-// Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
-//
-// @param request - ModifyPolicyContentRequest
-//
-// @return ModifyPolicyContentResponse
-func (client *Client) ModifyPolicyContent(request *ModifyPolicyContentRequest) (_result *ModifyPolicyContentResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyPolicyContentResponse{}
-	_body, _err := client.ModifyPolicyContentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2858,7 +2052,7 @@ func (client *Client) ModifyPolicyContent(request *ModifyPolicyContentRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyRemarkResponse
-func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runtime *dara.RuntimeOptions) (_result *ModifyRemarkResponse, _err error) {
+func (client *Client) ModifyRemarkWithContext(ctx context.Context, request *ModifyRemarkRequest, runtime *dara.RuntimeOptions) (_result *ModifyRemarkResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2897,37 +2091,11 @@ func (client *Client) ModifyRemarkWithOptions(request *ModifyRemarkRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyRemarkResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds remarks for a single Anti-DDoS Origin instance.
-//
-// Description:
-//
-// You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
-//
-// ### [](#qps-)Limits
-//
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - ModifyRemarkRequest
-//
-// @return ModifyRemarkResponse
-func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *ModifyRemarkResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ModifyRemarkResponse{}
-	_body, _err := client.ModifyRemarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2940,7 +2108,7 @@ func (client *Client) ModifyRemark(request *ModifyRemarkRequest) (_result *Modif
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2979,29 +2147,11 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group to which a cloud resource belongs.
-//
-// @param request - MoveResourceGroupRequest
-//
-// @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3014,7 +2164,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseDdosOriginInstanceResponse
-func (client *Client) ReleaseDdosOriginInstanceWithOptions(request *ReleaseDdosOriginInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
+func (client *Client) ReleaseDdosOriginInstanceWithContext(ctx context.Context, request *ReleaseDdosOriginInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3041,29 +2191,11 @@ func (client *Client) ReleaseDdosOriginInstanceWithOptions(request *ReleaseDdosO
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseDdosOriginInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Releases a pay-as-you-go Anti-DDoS Origin instance.
-//
-// @param request - ReleaseDdosOriginInstanceRequest
-//
-// @return ReleaseDdosOriginInstanceResponse
-func (client *Client) ReleaseDdosOriginInstance(request *ReleaseDdosOriginInstanceRequest) (_result *ReleaseDdosOriginInstanceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReleaseDdosOriginInstanceResponse{}
-	_body, _err := client.ReleaseDdosOriginInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3084,7 +2216,7 @@ func (client *Client) ReleaseDdosOriginInstance(request *ReleaseDdosOriginInstan
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3127,37 +2259,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Add tags to Anti-DDoS Origin instances.
-//
-// Description:
-//
-// You can call the TagResources operation to add tags to instances.
-//
-// ### Limit
-//
-// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -3170,7 +2276,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -3217,28 +2323,10 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from Anti-DDoS Origin instances.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
