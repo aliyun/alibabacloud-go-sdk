@@ -9,6 +9,8 @@ type iDeletePptArtifactRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExternalUserId(v string) *DeletePptArtifactRequest
+	GetExternalUserId() *string
 	SetPptArtifactId(v string) *DeletePptArtifactRequest
 	GetPptArtifactId() *string
 	SetWorkspaceId(v string) *DeletePptArtifactRequest
@@ -16,7 +18,8 @@ type iDeletePptArtifactRequest interface {
 }
 
 type DeletePptArtifactRequest struct {
-	PptArtifactId *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	PptArtifactId  *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
 	// example:
 	//
 	// llm-xx
@@ -31,12 +34,21 @@ func (s DeletePptArtifactRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeletePptArtifactRequest) GetExternalUserId() *string {
+	return s.ExternalUserId
+}
+
 func (s *DeletePptArtifactRequest) GetPptArtifactId() *string {
 	return s.PptArtifactId
 }
 
 func (s *DeletePptArtifactRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *DeletePptArtifactRequest) SetExternalUserId(v string) *DeletePptArtifactRequest {
+	s.ExternalUserId = &v
+	return s
 }
 
 func (s *DeletePptArtifactRequest) SetPptArtifactId(v string) *DeletePptArtifactRequest {

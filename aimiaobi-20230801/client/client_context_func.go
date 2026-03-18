@@ -661,6 +661,10 @@ func (client *Client) BindPptArtifactWithContext(ctx context.Context, request *B
 		body["ArtifactId"] = request.ArtifactId
 	}
 
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		body["TaskId"] = request.TaskId
 	}
@@ -1881,6 +1885,10 @@ func (client *Client) DeletePptArtifactWithContext(ctx context.Context, request 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.PptArtifactId) {
 		body["PptArtifactId"] = request.PptArtifactId
 	}
@@ -4717,6 +4725,10 @@ func (client *Client) GetPptArtifactWithContext(ctx context.Context, request *Ge
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.PptArtifactId) {
 		body["PptArtifactId"] = request.PptArtifactId
 	}
@@ -4765,6 +4777,10 @@ func (client *Client) GetPptConfigWithContext(ctx context.Context, request *GetP
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -5215,6 +5231,10 @@ func (client *Client) InitiatePptCreationWithContext(ctx context.Context, reques
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.Outline) {
 		body["Outline"] = request.Outline
 	}
@@ -7408,6 +7428,10 @@ func (client *Client) ListPptArtifactsWithContext(ctx context.Context, request *
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.NextToken) {
 		body["NextToken"] = request.NextToken
 	}
@@ -10032,6 +10056,10 @@ func (client *Client) RunPptOutlineGenerationWithContext(ctx context.Context, re
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
 	}
@@ -15106,6 +15134,10 @@ func (client *Client) runPptOutlineGenerationWithSSECtx_opYieldFunc(_yield chan 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
 	}

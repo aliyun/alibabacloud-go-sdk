@@ -9,6 +9,8 @@ type iInitiatePptCreationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExternalUserId(v string) *InitiatePptCreationRequest
+	GetExternalUserId() *string
 	SetOutline(v string) *InitiatePptCreationRequest
 	GetOutline() *string
 	SetTaskId(v string) *InitiatePptCreationRequest
@@ -18,7 +20,8 @@ type iInitiatePptCreationRequest interface {
 }
 
 type InitiatePptCreationRequest struct {
-	Outline *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	Outline        *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -39,6 +42,10 @@ func (s InitiatePptCreationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *InitiatePptCreationRequest) GetExternalUserId() *string {
+	return s.ExternalUserId
+}
+
 func (s *InitiatePptCreationRequest) GetOutline() *string {
 	return s.Outline
 }
@@ -49,6 +56,11 @@ func (s *InitiatePptCreationRequest) GetTaskId() *string {
 
 func (s *InitiatePptCreationRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *InitiatePptCreationRequest) SetExternalUserId(v string) *InitiatePptCreationRequest {
+	s.ExternalUserId = &v
+	return s
 }
 
 func (s *InitiatePptCreationRequest) SetOutline(v string) *InitiatePptCreationRequest {

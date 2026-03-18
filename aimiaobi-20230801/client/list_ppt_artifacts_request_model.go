@@ -9,6 +9,8 @@ type iListPptArtifactsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExternalUserId(v string) *ListPptArtifactsRequest
+	GetExternalUserId() *string
 	SetMaxResults(v int32) *ListPptArtifactsRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListPptArtifactsRequest
@@ -20,6 +22,7 @@ type iListPptArtifactsRequest interface {
 }
 
 type ListPptArtifactsRequest struct {
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// example:
 	//
 	// 0
@@ -43,6 +46,10 @@ func (s ListPptArtifactsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListPptArtifactsRequest) GetExternalUserId() *string {
+	return s.ExternalUserId
+}
+
 func (s *ListPptArtifactsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -57,6 +64,11 @@ func (s *ListPptArtifactsRequest) GetQuery() *string {
 
 func (s *ListPptArtifactsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListPptArtifactsRequest) SetExternalUserId(v string) *ListPptArtifactsRequest {
+	s.ExternalUserId = &v
+	return s
 }
 
 func (s *ListPptArtifactsRequest) SetMaxResults(v int32) *ListPptArtifactsRequest {

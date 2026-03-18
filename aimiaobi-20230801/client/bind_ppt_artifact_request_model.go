@@ -11,6 +11,8 @@ type iBindPptArtifactRequest interface {
 	GoString() string
 	SetArtifactId(v int32) *BindPptArtifactRequest
 	GetArtifactId() *int32
+	SetExternalUserId(v string) *BindPptArtifactRequest
+	GetExternalUserId() *string
 	SetTaskId(v string) *BindPptArtifactRequest
 	GetTaskId() *string
 	SetWorkspaceId(v string) *BindPptArtifactRequest
@@ -23,7 +25,8 @@ type BindPptArtifactRequest struct {
 	// example:
 	//
 	// 12342
-	ArtifactId *int32 `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactId     *int32  `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// This parameter is required.
 	//
 	// if can be null:
@@ -51,6 +54,10 @@ func (s *BindPptArtifactRequest) GetArtifactId() *int32 {
 	return s.ArtifactId
 }
 
+func (s *BindPptArtifactRequest) GetExternalUserId() *string {
+	return s.ExternalUserId
+}
+
 func (s *BindPptArtifactRequest) GetTaskId() *string {
 	return s.TaskId
 }
@@ -61,6 +68,11 @@ func (s *BindPptArtifactRequest) GetWorkspaceId() *string {
 
 func (s *BindPptArtifactRequest) SetArtifactId(v int32) *BindPptArtifactRequest {
 	s.ArtifactId = &v
+	return s
+}
+
+func (s *BindPptArtifactRequest) SetExternalUserId(v string) *BindPptArtifactRequest {
+	s.ExternalUserId = &v
 	return s
 }
 
