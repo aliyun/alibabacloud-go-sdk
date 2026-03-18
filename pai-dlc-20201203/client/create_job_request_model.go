@@ -630,6 +630,7 @@ func (s *CreateJobRequestCustomEnvs) Validate() error {
 }
 
 type CreateJobRequestDataSources struct {
+	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
 	// The data source ID.
 	//
 	// example:
@@ -658,7 +659,8 @@ type CreateJobRequestDataSources struct {
 	//   "fs.jindo.args": "-oattr_timeout=3 -oentry_timeout=0 -onegative_timeout=0 -oauto_cache -ono_symlink"
 	//
 	// }
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Options   *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	RoleChain *string `json:"RoleChain,omitempty" xml:"RoleChain,omitempty"`
 	// The data source path.
 	//
 	// example:
@@ -673,6 +675,10 @@ func (s CreateJobRequestDataSources) String() string {
 
 func (s CreateJobRequestDataSources) GoString() string {
 	return s.String()
+}
+
+func (s *CreateJobRequestDataSources) GetAccessPointId() *string {
+	return s.AccessPointId
 }
 
 func (s *CreateJobRequestDataSources) GetDataSourceId() *string {
@@ -699,8 +705,17 @@ func (s *CreateJobRequestDataSources) GetOptions() *string {
 	return s.Options
 }
 
+func (s *CreateJobRequestDataSources) GetRoleChain() *string {
+	return s.RoleChain
+}
+
 func (s *CreateJobRequestDataSources) GetUri() *string {
 	return s.Uri
+}
+
+func (s *CreateJobRequestDataSources) SetAccessPointId(v string) *CreateJobRequestDataSources {
+	s.AccessPointId = &v
+	return s
 }
 
 func (s *CreateJobRequestDataSources) SetDataSourceId(v string) *CreateJobRequestDataSources {
@@ -730,6 +745,11 @@ func (s *CreateJobRequestDataSources) SetMountPath(v string) *CreateJobRequestDa
 
 func (s *CreateJobRequestDataSources) SetOptions(v string) *CreateJobRequestDataSources {
 	s.Options = &v
+	return s
+}
+
+func (s *CreateJobRequestDataSources) SetRoleChain(v string) *CreateJobRequestDataSources {
+	s.RoleChain = &v
 	return s
 }
 

@@ -29,6 +29,8 @@ type iJobSpec interface {
 	GetLocalMountSpecs() []*LocalMountSpec
 	SetPodCount(v int64) *JobSpec
 	GetPodCount() *int64
+	SetQuotaId(v string) *JobSpec
+	GetQuotaId() *string
 	SetResourceConfig(v *ResourceConfig) *JobSpec
 	GetResourceConfig() *ResourceConfig
 	SetRestartPolicy(v string) *JobSpec
@@ -83,7 +85,8 @@ type JobSpec struct {
 	// example:
 	//
 	// 1
-	PodCount *int64 `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	PodCount *int64  `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	QuotaId  *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	// The resource configurations.
 	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
 	// The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
@@ -174,6 +177,10 @@ func (s *JobSpec) GetPodCount() *int64 {
 	return s.PodCount
 }
 
+func (s *JobSpec) GetQuotaId() *string {
+	return s.QuotaId
+}
+
 func (s *JobSpec) GetResourceConfig() *ResourceConfig {
 	return s.ResourceConfig
 }
@@ -253,6 +260,11 @@ func (s *JobSpec) SetLocalMountSpecs(v []*LocalMountSpec) *JobSpec {
 
 func (s *JobSpec) SetPodCount(v int64) *JobSpec {
 	s.PodCount = &v
+	return s
+}
+
+func (s *JobSpec) SetQuotaId(v string) *JobSpec {
+	s.QuotaId = &v
 	return s
 }
 
