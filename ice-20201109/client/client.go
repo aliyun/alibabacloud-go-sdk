@@ -19751,6 +19751,72 @@ func (client *Client) OpenMediaConnectFlowFailover(request *OpenMediaConnectFlow
 
 // Summary:
 //
+// 检查应用参数是否合法
+//
+// @param request - PrecheckYikeAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PrecheckYikeAIAppJobResponse
+func (client *Client) PrecheckYikeAIAppJobWithOptions(request *PrecheckYikeAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *PrecheckYikeAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppParams) {
+		query["AppParams"] = request.AppParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PrecheckYikeAIAppJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PrecheckYikeAIAppJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查应用参数是否合法
+//
+// @param request - PrecheckYikeAIAppJobRequest
+//
+// @return PrecheckYikeAIAppJobResponse
+func (client *Client) PrecheckYikeAIAppJob(request *PrecheckYikeAIAppJobRequest) (_result *PrecheckYikeAIAppJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PrecheckYikeAIAppJobResponse{}
+	_body, _err := client.PrecheckYikeAIAppJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a job for extracting a copyright watermark.
 //
 // @param request - QueryCopyrightExtractJobRequest
