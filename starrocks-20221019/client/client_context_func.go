@@ -9,6 +9,77 @@ import (
 
 // Summary:
 //
+// 新增备份策略
+//
+// @param request - AddBackupPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddBackupPolicyResponse
+func (client *Client) AddBackupPolicyWithContext(ctx context.Context, request *AddBackupPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireDays) {
+		body["ExpireDays"] = request.ExpireDays
+	}
+
+	if !dara.IsNil(request.Hour) {
+		body["Hour"] = request.Hour
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Minute) {
+		body["Minute"] = request.Minute
+	}
+
+	if !dara.IsNil(request.RecurrenceType) {
+		body["RecurrenceType"] = request.RecurrenceType
+	}
+
+	if !dara.IsNil(request.RecurrenceValues) {
+		body["RecurrenceValues"] = request.RecurrenceValues
+	}
+
+	if !dara.IsNil(request.TimeoutSeconds) {
+		body["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddBackupPolicy"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backupRestore/policy/add"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddBackupPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新建网关
 //
 // @param request - AddGatewayRequest
@@ -113,6 +184,132 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验ABM的资源库存
+//
+// @param request - CheckInventoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInventoryResponse
+func (client *Client) CheckInventoryWithContext(ctx context.Context, request *CheckInventoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CheckInventoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterInfo) {
+		query["ClusterInfo"] = request.ClusterInfo
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckInventory"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/check/inventory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckInventoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Agent资源组
+//
+// @param request - CreateAgentResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentResourceResponse
+func (client *Client) CreateAgentResourceWithContext(ctx context.Context, request *CreateAgentResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAgentResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.Cu) {
+		query["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.SpecType) {
+		query["SpecType"] = request.SpecType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentResource"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/lifecycle/createAgentNodeGroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentResourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -290,6 +487,61 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 新建一条弹性规则
+//
+// @param request - CreateScalingRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScalingRuleResponse
+func (client *Client) CreateScalingRuleWithContext(ctx context.Context, request *CreateScalingRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateScalingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateScalingRule"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/scalingRule/createScalingRule"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateScalingRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // This interface is used to create the AliyunServiceRoleForEMRStarRocks role for users.
 //
 // @param headers - map
@@ -313,6 +565,112 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServiceLinkedRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据备份
+//
+// @param request - DeleteBackupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupResponse
+func (client *Client) DeleteBackupWithContext(ctx context.Context, request *DeleteBackupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupTaskId) {
+		query["BackupTaskId"] = request.BackupTaskId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBackup"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backup/manage/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBackupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除备份策略
+//
+// @param request - DeleteBackupPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupPolicyResponse
+func (client *Client) DeleteBackupPolicyWithContext(ctx context.Context, request *DeleteBackupPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBackupPolicy"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backupRestore/policy/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBackupPolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -364,6 +722,285 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, request *Del
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除白名单分组
+//
+// @param request - DeleteInnerIpWhitelistGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInnerIpWhitelistGroupResponse
+func (client *Client) DeleteInnerIpWhitelistGroupWithContext(ctx context.Context, request *DeleteInnerIpWhitelistGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInnerIpWhitelistGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InnerIpWhitelistGroupId) {
+		body["InnerIpWhitelistGroupId"] = request.InnerIpWhitelistGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInnerIpWhitelistGroup"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/securityGroup/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInnerIpWhitelistGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一条弹性规则
+//
+// @param request - DeleteScalingRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScalingRuleResponse
+func (client *Client) DeleteScalingRuleWithContext(ctx context.Context, request *DeleteScalingRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteScalingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.ScalingRuleId) {
+		query["ScalingRuleId"] = request.ScalingRuleId
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteScalingRule"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/scalingRule/deleteScalingRule"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteScalingRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeAvailableZonesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAvailableZonesResponse
+func (client *Client) DescribeAvailableZonesWithContext(ctx context.Context, request *DescribeAvailableZonesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeAvailableZonesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAvailableZones"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/zone/describeZones"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAvailableZonesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份策略详情
+//
+// @param request - DescribeBackupPoliciesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPoliciesResponse
+func (client *Client) DescribeBackupPoliciesWithContext(ctx context.Context, request *DescribeBackupPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeBackupPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBackupPolicies"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backupRestore/policy/describe"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBackupPoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取备份详情
+//
+// @param request - DescribeBackupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupsResponse
+func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *DescribeBackupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupTaskId) {
+		query["BackupTaskId"] = request.BackupTaskId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Statuses) {
+		query["Statuses"] = request.Statuses
+	}
+
+	if !dara.IsNil(request.TimePeriodEndTime) {
+		query["TimePeriodEndTime"] = request.TimePeriodEndTime
+	}
+
+	if !dara.IsNil(request.TimePeriodStartTime) {
+		query["TimePeriodStartTime"] = request.TimePeriodStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBackups"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backup/manage/describe"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBackupsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -445,6 +1082,100 @@ func (client *Client) DescribeConfigHistoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 获取集群事件名称
+//
+// @param request - DescribeEventNamesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventNamesResponse
+func (client *Client) DescribeEventNamesWithContext(ctx context.Context, request *DescribeEventNamesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeEventNamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEventNames"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/event/describeEventNames"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEventNamesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询白名单分组
+//
+// @param request - DescribeInnerIpWhitelistGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInnerIpWhitelistGroupsResponse
+func (client *Client) DescribeInnerIpWhitelistGroupsWithContext(ctx context.Context, request *DescribeInnerIpWhitelistGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInnerIpWhitelistGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInnerIpWhitelistGroups"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/securityGroup/list"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInnerIpWhitelistGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询实例配置
 //
 // @param request - DescribeInstanceConfigsRequest
@@ -514,6 +1245,120 @@ func (client *Client) DescribeInstanceConfigsWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeInstanceConfigsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例的健康诊断结果
+//
+// @param request - DescribeInstanceDiagnosisResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDiagnosisResultResponse
+func (client *Client) DescribeInstanceDiagnosisResultWithContext(ctx context.Context, request *DescribeInstanceDiagnosisResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceDiagnosisResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Dimension) {
+		query["Dimension"] = request.Dimension
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ReportDate) {
+		query["ReportDate"] = request.ReportDate
+	}
+
+	if !dara.IsNil(request.Statuses) {
+		query["Statuses"] = request.Statuses
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceDiagnosisResult"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/diagnosis/describe"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceDiagnosisResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 StarRocks 实例的 Meta Token。
+//
+// @param request - DescribeInstanceMetaTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceMetaTokenResponse
+func (client *Client) DescribeInstanceMetaTokenWithContext(ctx context.Context, request *DescribeInstanceMetaTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeInstanceMetaTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceMetaToken"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/migration/getMetaToken"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceMetaTokenResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -684,6 +1529,184 @@ func (client *Client) DescribeNodeGroupsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/region/list"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述Starrocks的资源配置约束
+//
+// @param request - DescribeResourceConstraintsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceConstraintsResponse
+func (client *Client) DescribeResourceConstraintsWithContext(ctx context.Context, request *DescribeResourceConstraintsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceConstraintsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Architecture) {
+		query["Architecture"] = request.Architecture
+	}
+
+	if !dara.IsNil(request.PackageType) {
+		query["PackageType"] = request.PackageType
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		query["RunMode"] = request.RunMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeResourceConstraints"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/starrocks/describeResourceConstraints"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeResourceConstraintsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 starrocks 实例的系统时区
+//
+// @param request - DescribeSystemTimezoneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSystemTimezoneResponse
+func (client *Client) DescribeSystemTimezoneWithContext(ctx context.Context, request *DescribeSystemTimezoneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeSystemTimezoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSystemTimezone"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/timezone/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSystemTimezoneResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取时间触发规则信息
+//
+// @param request - DescribeTimeTriggerScalingRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTimeTriggerScalingRulesResponse
+func (client *Client) DescribeTimeTriggerScalingRulesWithContext(ctx context.Context, request *DescribeTimeTriggerScalingRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeTimeTriggerScalingRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeTimeTriggerScalingRules"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/scalingRule/describeTimeTriggerScalingRules"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeTimeTriggerScalingRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // # StarRocks关闭SSL
@@ -723,6 +1746,108 @@ func (client *Client) DisableSSLConnectionWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableSSLConnectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 默认网关开启内网SLB
+//
+// @param request - EnableInternalSlbRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInternalSlbResponse
+func (client *Client) EnableInternalSlbWithContext(ctx context.Context, request *EnableInternalSlbRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableInternalSlbResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableInternalSlb"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/gateway/enableInternalSlb"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableInternalSlbResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启Multi AZ
+//
+// @param request - EnableMultiAzRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableMultiAzResponse
+func (client *Client) EnableMultiAzWithContext(ctx context.Context, request *EnableMultiAzRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableMultiAzResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Observers) {
+		body["observers"] = request.Observers
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		body["promotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableMultiAz"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/lifecycle/enableMultiAz"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableMultiAzResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -847,6 +1972,57 @@ func (client *Client) GetInstanceFeatureGateWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 获取StarRocks 计算组实例的特性开关
+//
+// @param request - GetNodeGroupFeatureGateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodeGroupFeatureGateResponse
+func (client *Client) GetNodeGroupFeatureGateWithContext(ctx context.Context, request *GetNodeGroupFeatureGateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNodeGroupFeatureGateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNodeGroupFeatureGate"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/features/nodeGroupFeatureGate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNodeGroupFeatureGateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 默认网关开启内网SLB
 //
 // @param request - IsolateLeaderRequest
@@ -935,6 +2111,132 @@ func (client *Client) ListGatewayWithContext(ctx context.Context, request *ListG
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取操作的详细信息
+//
+// @param request - ListOperationActivityRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperationActivityResponse
+func (client *Client) ListOperationActivityWithContext(ctx context.Context, request *ListOperationActivityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOperationActivityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OperationId) {
+		query["OperationId"] = request.OperationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOperationActivity"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/operation/listOperationActivity"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOperationActivityResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取集群的操作历史
+//
+// @param request - ListOperationHistoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperationHistoryResponse
+func (client *Client) ListOperationHistoryWithContext(ctx context.Context, request *ListOperationHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOperationHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OperationId) {
+		query["OperationId"] = request.OperationId
+	}
+
+	if !dara.IsNil(request.OperationStatus) {
+		query["OperationStatus"] = request.OperationStatus
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOperationHistory"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/operation/listOperationHistory"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOperationHistoryResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1450,6 +2752,59 @@ func (client *Client) ModifyDiskTypeWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
+// 修改/etc/hosts
+//
+// @param request - ModifyHostAliasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHostAliasResponse
+func (client *Client) ModifyHostAliasWithContext(ctx context.Context, request *ModifyHostAliasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyHostAliasResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HostAliases) {
+		body["hostAliases"] = request.HostAliases
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyHostAlias"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/network/modifyHostAlias"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyHostAliasResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改实例配置
 //
 // @param request - ModifyInstanceConfigRequest
@@ -1586,6 +2941,57 @@ func (client *Client) ModifyInstanceConfigPreCheckWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyInstanceConfigPreCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Starrocks实例的可维护时间
+//
+// @param request - ModifyMaintainableTimeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMaintainableTimeResponse
+func (client *Client) ModifyMaintainableTimeWithContext(ctx context.Context, request *ModifyMaintainableTimeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyMaintainableTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaintainableTimePeriod) {
+		query["MaintainableTimePeriod"] = request.MaintainableTimePeriod
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyMaintainableTime"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/starrocks/modifyMaintainableTime"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyMaintainableTimeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1734,6 +3140,1084 @@ func (client *Client) ModifyNodeNumberPreCheckWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 修改弹性伸缩规则
+//
+// @param request - ModifyScalingRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyScalingRuleResponse
+func (client *Client) ModifyScalingRuleWithContext(ctx context.Context, request *ModifyScalingRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyScalingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NewTriggerType) {
+		query["NewTriggerType"] = request.NewTriggerType
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.OldTriggerType) {
+		query["OldTriggerType"] = request.OldTriggerType
+	}
+
+	if !dara.IsNil(request.Rule) {
+		query["Rule"] = request.Rule
+	}
+
+	if !dara.IsNil(request.ScalingRuleId) {
+		query["ScalingRuleId"] = request.ScalingRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyScalingRule"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/scalingRule/modifyScalingRule"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyScalingRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计算组的节点规格类型
+//
+// @param request - ModifySpecTypeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySpecTypeResponse
+func (client *Client) ModifySpecTypeWithContext(ctx context.Context, request *ModifySpecTypeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifySpecTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FastMode) {
+		query["FastMode"] = request.FastMode
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.TargetSpecType) {
+		query["TargetSpecType"] = request.TargetSpecType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySpecType"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/resourceChange/modifySpecType"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySpecTypeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计算组中节点规格类型预检查
+//
+// @param request - ModifySpecTypePreCheckRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySpecTypePreCheckResponse
+func (client *Client) ModifySpecTypePreCheckWithContext(ctx context.Context, request *ModifySpecTypePreCheckRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifySpecTypePreCheckResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.TargetSpecType) {
+		query["TargetSpecType"] = request.TargetSpecType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySpecTypePreCheck"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/resourceChange/modifySpecTypePreCheck"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySpecTypePreCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改 starrocks 用户的密码
+//
+// @param request - ModifyUserPasswordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserPasswordResponse
+func (client *Client) ModifyUserPasswordWithContext(ctx context.Context, request *ModifyUserPasswordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyUserPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserPassword"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/password/modify"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserPasswordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询开启Multi AZ的价格
+//
+// @param request - QueryEnableMultiAzPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEnableMultiAzPriceResponse
+func (client *Client) QueryEnableMultiAzPriceWithContext(ctx context.Context, request *QueryEnableMultiAzPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryEnableMultiAzPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Observers) {
+		body["observers"] = request.Observers
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		body["promotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryEnableMultiAzPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/enableMultiAz"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryEnableMultiAzPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询小版本号
+//
+// @param request - QueryMinorVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMinorVersionResponse
+func (client *Client) QueryMinorVersionWithContext(ctx context.Context, request *QueryMinorVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryMinorVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMinorVersion"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/starrocks/queryAppDefineVersion"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMinorVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # StarRocks新购询价接口
+//
+// @param request - QueryModifyChargeTypePriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyChargeTypePriceResponse
+func (client *Client) QueryModifyChargeTypePriceWithContext(ctx context.Context, request *QueryModifyChargeTypePriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyChargeTypePriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BillingInstanceIds) {
+		query["BillingInstanceIds"] = request.BillingInstanceIds
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyChargeTypePrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/buy/query_modify_charge_type_price"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyChargeTypePriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改节点组节点Cu询价
+//
+// @param request - QueryModifyCuPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyCuPriceResponse
+func (client *Client) QueryModifyCuPriceWithContext(ctx context.Context, request *QueryModifyCuPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyCuPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["Target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyCuPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifyCu"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyCuPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计算组节点磁盘数量询价
+//
+// @param request - QueryModifyDiskNumberPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyDiskNumberPriceResponse
+func (client *Client) QueryModifyDiskNumberPriceWithContext(ctx context.Context, request *QueryModifyDiskNumberPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyDiskNumberPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["Target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyDiskNumberPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifyDiskNumber"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyDiskNumberPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计算组节点磁盘性能级别询价
+//
+// @param request - QueryModifyDiskPerformanceLevelPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyDiskPerformanceLevelPriceResponse
+func (client *Client) QueryModifyDiskPerformanceLevelPriceWithContext(ctx context.Context, request *QueryModifyDiskPerformanceLevelPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyDiskPerformanceLevelPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["Target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyDiskPerformanceLevelPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifyDiskPerformanceLevel"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyDiskPerformanceLevelPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计算组节点单盘存储大小询价
+//
+// @param request - QueryModifyDiskSizePriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyDiskSizePriceResponse
+func (client *Client) QueryModifyDiskSizePriceWithContext(ctx context.Context, request *QueryModifyDiskSizePriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyDiskSizePriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["Target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyDiskSizePrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifyDiskSize"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyDiskSizePriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计算组节点磁盘类型询价
+//
+// @param request - QueryModifyDiskTypePriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyDiskTypePriceResponse
+func (client *Client) QueryModifyDiskTypePriceWithContext(ctx context.Context, request *QueryModifyDiskTypePriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyDiskTypePriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.TargetDiskType) {
+		query["TargetDiskType"] = request.TargetDiskType
+	}
+
+	if !dara.IsNil(request.TargetPerformanceLevel) {
+		query["TargetPerformanceLevel"] = request.TargetPerformanceLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyDiskTypePrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifyDiskType"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyDiskTypePriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改节点组节点数量询价
+//
+// @param request - QueryModifyNodeNumberPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyNodeNumberPriceResponse
+func (client *Client) QueryModifyNodeNumberPriceWithContext(ctx context.Context, request *QueryModifyNodeNumberPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifyNodeNumberPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["Target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifyNodeNumberPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifyNodeNumber"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifyNodeNumberPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改节点组规格类型询价
+//
+// @param request - QueryModifySpecTypePriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifySpecTypePriceResponse
+func (client *Client) QueryModifySpecTypePriceWithContext(ctx context.Context, request *QueryModifySpecTypePriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryModifySpecTypePriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.TargetSpecType) {
+		query["TargetSpecType"] = request.TargetSpecType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryModifySpecTypePrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/priceInquiry/modifySpecType"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryModifySpecTypePriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # StarRocks新购询价接口
+//
+// @param request - QueryPriceV1Request
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPriceV1Response
+func (client *Client) QueryPriceV1WithContext(ctx context.Context, request *QueryPriceV1Request, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryPriceV1Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentNodeGroup) {
+		body["AgentNodeGroup"] = request.AgentNodeGroup
+	}
+
+	if !dara.IsNil(request.BackendNodeGroups) {
+		body["BackendNodeGroups"] = request.BackendNodeGroups
+	}
+
+	if !dara.IsNil(request.Duration) {
+		body["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.FrontendNodeGroups) {
+		body["FrontendNodeGroups"] = request.FrontendNodeGroups
+	}
+
+	if !dara.IsNil(request.ObserverNodeGroups) {
+		body["ObserverNodeGroups"] = request.ObserverNodeGroups
+	}
+
+	if !dara.IsNil(request.PackageType) {
+		body["PackageType"] = request.PackageType
+	}
+
+	if !dara.IsNil(request.PayType) {
+		body["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		body["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		body["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		body["RunMode"] = request.RunMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryPriceV1"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/price/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryPriceV1Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # StarRocks退订包年包月计费实例询价
+//
+// @param request - QueryRefundPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRefundPriceResponse
+func (client *Client) QueryRefundPriceWithContext(ctx context.Context, request *QueryRefundPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryRefundPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillingInstanceIds) {
+		query["billingInstanceIds"] = request.BillingInstanceIds
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRefundPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/buy/queryRefundPrice"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRefundPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 StarRocks 计费实例的续费价格
+//
+// @param request - QueryRenewPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRenewPriceResponse
+func (client *Client) QueryRenewPriceWithContext(ctx context.Context, request *QueryRenewPriceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryRenewPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillingInstanceIds) {
+		query["BillingInstanceIds"] = request.BillingInstanceIds
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRenewPrice"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/price/renew"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRenewPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询计算组/集群的未支付订单
+//
+// @param request - QueryUnpaidOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUnpaidOrderResponse
+func (client *Client) QueryUnpaidOrderWithContext(ctx context.Context, request *QueryUnpaidOrderRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryUnpaidOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillingInstanceId) {
+		query["BillingInstanceId"] = request.BillingInstanceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUnpaidOrder"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/order/queryUnpaidOrder"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUnpaidOrderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the versions of an E-MapReduce (EMR) Serverless StarRocks instance that the versions that you can upgrade to. The versions of a StarRocks instance include the major version and minor version. You can view the major version and minor version of a StarRocks instance in the Version Information section of the Instance Details tab in the EMR console. You can call this operation to query the minor versions or major versions that the versions that you can upgrade to.
 //
 // @param request - QueryUpgradableVersionsRequest
@@ -1775,6 +4259,61 @@ func (client *Client) QueryUpgradableVersionsWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryUpgradableVersionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 处理集群事件
+//
+// @param request - RebootECSRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebootECSResponse
+func (client *Client) RebootECSWithContext(ctx context.Context, request *RebootECSRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RebootECSResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RebootTime) {
+		query["RebootTime"] = request.RebootTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RebootECS"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/event/rebootEcs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RebootECSResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1828,6 +4367,69 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReleaseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 续费实例
+//
+// @param request - RenewInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewInstanceResponse
+func (client *Client) RenewInstanceWithContext(ctx context.Context, request *RenewInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillingInstanceIds) {
+		query["BillingInstanceIds"] = request.BillingInstanceIds
+	}
+
+	if !dara.IsNil(request.Duration) {
+		query["Duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PricingCycle) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !dara.IsNil(request.PromotionOptionNo) {
+		query["PromotionOptionNo"] = request.PromotionOptionNo
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RenewInstance"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/order/renew_instance"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RenewInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2194,6 +4796,57 @@ func (client *Client) RollbackConfigModificationWithContext(ctx context.Context,
 
 // Summary:
 //
+// 切换主备可用区
+//
+// @param request - SwitchActiveStandbyZonesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchActiveStandbyZonesResponse
+func (client *Client) SwitchActiveStandbyZonesWithContext(ctx context.Context, request *SwitchActiveStandbyZonesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SwitchActiveStandbyZonesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TargetZoneId) {
+		query["TargetZoneId"] = request.TargetZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SwitchActiveStandbyZones"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/recovery/switchZones"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SwitchActiveStandbyZonesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a tag to a resource.
 //
 // @param request - TagResourcesRequest
@@ -2243,6 +4896,57 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启/关闭StarRocks实例的小版本自动更新
+//
+// @param request - ToggleAutoMinorVersionUpgradeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ToggleAutoMinorVersionUpgradeResponse
+func (client *Client) ToggleAutoMinorVersionUpgradeWithContext(ctx context.Context, request *ToggleAutoMinorVersionUpgradeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ToggleAutoMinorVersionUpgradeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUpgrade) {
+		query["AutoUpgrade"] = request.AutoUpgrade
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ToggleAutoMinorVersionUpgrade"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/starrocks/toggleAutoMinorVersionUpgrade"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ToggleAutoMinorVersionUpgradeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2381,6 +5085,134 @@ func (client *Client) UnTagResourcesWithContext(ctx context.Context, tmpReq *UnT
 
 // Summary:
 //
+// 更新备份任务描述
+//
+// @param request - UpdateBackupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBackupResponse
+func (client *Client) UpdateBackupWithContext(ctx context.Context, request *UpdateBackupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateBackupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BackupTaskId) {
+		body["backupTaskId"] = request.BackupTaskId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBackup"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backup/manage/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBackupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新备份策略
+//
+// @param request - UpdateBackupPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBackupPolicyResponse
+func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request *UpdateBackupPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExpireDays) {
+		body["ExpireDays"] = request.ExpireDays
+	}
+
+	if !dara.IsNil(request.Hour) {
+		body["Hour"] = request.Hour
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Minute) {
+		body["Minute"] = request.Minute
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.RecurrenceValues) {
+		body["RecurrenceValues"] = request.RecurrenceValues
+	}
+
+	if !dara.IsNil(request.TimeoutSeconds) {
+		body["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBackupPolicy"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/backupRestore/policy/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBackupPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新网关
 //
 // @param request - UpdateGatewayRequest
@@ -2440,6 +5272,61 @@ func (client *Client) UpdateGatewayWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
+// 更新白名单分组中的CIDR
+//
+// @param request - UpdateInnerIpWhitelistGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInnerIpWhitelistGroupResponse
+func (client *Client) UpdateInnerIpWhitelistGroupWithContext(ctx context.Context, request *UpdateInnerIpWhitelistGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateInnerIpWhitelistGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CidrIpList) {
+		body["CidrIpList"] = request.CidrIpList
+	}
+
+	if !dara.IsNil(request.InnerIpWhitelistGroupId) {
+		body["InnerIpWhitelistGroupId"] = request.InnerIpWhitelistGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInnerIpWhitelistGroup"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/securityGroup/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInnerIpWhitelistGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the name of an E-MapReduce (EMR) Serverless StarRocks instance.
 //
 // @param request - UpdateInstanceNameRequest
@@ -2481,6 +5368,120 @@ func (client *Client) UpdateInstanceNameWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceNameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新节点组描述信息
+//
+// @param request - UpdateNodeGroupDescriptionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodeGroupDescriptionResponse
+func (client *Client) UpdateNodeGroupDescriptionWithContext(ctx context.Context, request *UpdateNodeGroupDescriptionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNodeGroupDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.XAcsRamAuthContext) {
+		query["X-Acs-Ram-Auth-Context"] = request.XAcsRamAuthContext
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNodeGroupDescription"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/nodegroup/updateDescription"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNodeGroupDescriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 该接口用于开通/关闭 FE/BE的公网SLB。
+//
+// @param request - UpdatePublicNetworkStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePublicNetworkStatusResponse
+func (client *Client) UpdatePublicNetworkStatusWithContext(ctx context.Context, request *UpdatePublicNetworkStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdatePublicNetworkStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComponentType) {
+		query["ComponentType"] = request.ComponentType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeGroupId) {
+		query["NodeGroupId"] = request.NodeGroupId
+	}
+
+	if !dara.IsNil(request.PublicNetworkEnabled) {
+		query["PublicNetworkEnabled"] = request.PublicNetworkEnabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePublicNetworkStatus"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/network/updatePublicNetworkStatus"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePublicNetworkStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
