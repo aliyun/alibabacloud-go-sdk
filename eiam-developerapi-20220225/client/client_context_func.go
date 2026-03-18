@@ -563,6 +563,66 @@ func (client *Client) EnableUserWithContext(ctx context.Context, instanceId *str
 
 // Summary:
 //
+// 拉取一个有效的OAuth认证令牌。
+//
+// @param request - FetchOAuthAuthenticationTokenRequest
+//
+// @param headers - FetchOAuthAuthenticationTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchOAuthAuthenticationTokenResponse
+func (client *Client) FetchOAuthAuthenticationTokenWithContext(ctx context.Context, instanceId *string, request *FetchOAuthAuthenticationTokenRequest, headers *FetchOAuthAuthenticationTokenHeaders, runtime *dara.RuntimeOptions) (_result *FetchOAuthAuthenticationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialProviderIdentifier) {
+		body["credentialProviderIdentifier"] = request.CredentialProviderIdentifier
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["scope"] = request.Scope
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FetchOAuthAuthenticationToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/fetchOAuthAccessToken"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FetchOAuthAuthenticationTokenResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Generates a device code.
 //
 // @param request - GenerateDeviceCodeRequest
@@ -600,6 +660,86 @@ func (client *Client) GenerateDeviceCodeWithContext(ctx context.Context, instanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateDeviceCodeResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成一个有效的JWT认证令牌。
+//
+// @param request - GenerateJwtAuthenticationTokenRequest
+//
+// @param headers - GenerateJwtAuthenticationTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateJwtAuthenticationTokenResponse
+func (client *Client) GenerateJwtAuthenticationTokenWithContext(ctx context.Context, instanceId *string, request *GenerateJwtAuthenticationTokenRequest, headers *GenerateJwtAuthenticationTokenHeaders, runtime *dara.RuntimeOptions) (_result *GenerateJwtAuthenticationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Audiences) {
+		body["audiences"] = request.Audiences
+	}
+
+	if !dara.IsNil(request.CredentialProviderIdentifier) {
+		body["credentialProviderIdentifier"] = request.CredentialProviderIdentifier
+	}
+
+	if !dara.IsNil(request.CustomClaims) {
+		body["customClaims"] = request.CustomClaims
+	}
+
+	if !dara.IsNil(request.Expiration) {
+		body["expiration"] = request.Expiration
+	}
+
+	if !dara.IsNil(request.IncludeDerivedShortToken) {
+		body["includeDerivedShortToken"] = request.IncludeDerivedShortToken
+	}
+
+	if !dara.IsNil(request.Issuer) {
+		body["issuer"] = request.Issuer
+	}
+
+	if !dara.IsNil(request.Subject) {
+		body["subject"] = request.Subject
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateJwtAuthenticationToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/generateJwt"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateJwtAuthenticationTokenResponse{}
 	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1324,6 +1464,82 @@ func (client *Client) GetUserInfoWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
+// 列举认证令牌。
+//
+// @param request - ListAuthenticationTokensRequest
+//
+// @param headers - ListAuthenticationTokensHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthenticationTokensResponse
+func (client *Client) ListAuthenticationTokensWithContext(ctx context.Context, instanceId *string, request *ListAuthenticationTokensRequest, headers *ListAuthenticationTokensHeaders, runtime *dara.RuntimeOptions) (_result *ListAuthenticationTokensResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerId) {
+		query["consumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.CredentialProviderIdentifier) {
+		query["credentialProviderIdentifier"] = request.CredentialProviderIdentifier
+	}
+
+	if !dara.IsNil(request.Expired) {
+		query["expired"] = request.Expired
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Revoked) {
+		query["revoked"] = request.Revoked
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAuthenticationTokens"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAuthenticationTokensResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about Employee Identity and Access Management (EIAM) groups by page.
 //
 // @param request - ListGroupsRequest
@@ -1790,6 +2006,53 @@ func (client *Client) ObtainCredentialWithContext(ctx context.Context, instanceI
 
 // Summary:
 //
+// 使用派生短令牌查询对应的JWT认证令牌详情。
+//
+// @param request - ObtainJwtAuthenticationTokenByDerivedShortTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainJwtAuthenticationTokenByDerivedShortTokenResponse
+func (client *Client) ObtainJwtAuthenticationTokenByDerivedShortTokenWithContext(ctx context.Context, instanceId *string, request *ObtainJwtAuthenticationTokenByDerivedShortTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ObtainJwtAuthenticationTokenByDerivedShortTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DerivedShortToken) {
+		body["derivedShortToken"] = request.DerivedShortToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ObtainJwtAuthenticationTokenByDerivedShortToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/obtainJwtByDerivedShortToken"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ObtainJwtAuthenticationTokenByDerivedShortTokenResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies information about an Employee Identity and Access Management (EIAM) group.
 //
 // @param request - PatchGroupRequest
@@ -1998,6 +2261,126 @@ func (client *Client) PatchUserWithContext(ctx context.Context, instanceId *stri
 
 // Summary:
 //
+// 恢复一个认证令牌。
+//
+// @param request - ReinstateAuthenticationTokenRequest
+//
+// @param headers - ReinstateAuthenticationTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReinstateAuthenticationTokenResponse
+func (client *Client) ReinstateAuthenticationTokenWithContext(ctx context.Context, instanceId *string, request *ReinstateAuthenticationTokenRequest, headers *ReinstateAuthenticationTokenHeaders, runtime *dara.RuntimeOptions) (_result *ReinstateAuthenticationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Token) {
+		body["token"] = request.Token
+	}
+
+	if !dara.IsNil(request.TokenTypeHint) {
+		body["token_type_hint"] = request.TokenTypeHint
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReinstateAuthenticationToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/reinstate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &ReinstateAuthenticationTokenResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于使用者吊销认证令牌。
+//
+// @param request - ReinstateAuthenticationTokenByConsumerRequest
+//
+// @param headers - ReinstateAuthenticationTokenByConsumerHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReinstateAuthenticationTokenByConsumerResponse
+func (client *Client) ReinstateAuthenticationTokenByConsumerWithContext(ctx context.Context, instanceId *string, request *ReinstateAuthenticationTokenByConsumerRequest, headers *ReinstateAuthenticationTokenByConsumerHeaders, runtime *dara.RuntimeOptions) (_result *ReinstateAuthenticationTokenByConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerId) {
+		body["consumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.CredentialProviderIdentifier) {
+		body["credentialProviderIdentifier"] = request.CredentialProviderIdentifier
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReinstateAuthenticationTokenByConsumer"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/reinstateByConsumer"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &ReinstateAuthenticationTokenByConsumerResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 将账户从多个组织移除【不支持移除主组织】
 //
 // @param request - RemoveUserFromOrganizationalUnitsRequest
@@ -2100,6 +2483,126 @@ func (client *Client) RemoveUsersFromGroupWithContext(ctx context.Context, insta
 		BodyType:    dara.String("none"),
 	}
 	_result = &RemoveUsersFromGroupResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销一个认证令牌。
+//
+// @param request - RevokeAuthenticationTokenRequest
+//
+// @param headers - RevokeAuthenticationTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAuthenticationTokenResponse
+func (client *Client) RevokeAuthenticationTokenWithContext(ctx context.Context, instanceId *string, request *RevokeAuthenticationTokenRequest, headers *RevokeAuthenticationTokenHeaders, runtime *dara.RuntimeOptions) (_result *RevokeAuthenticationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Token) {
+		body["token"] = request.Token
+	}
+
+	if !dara.IsNil(request.TokenTypeHint) {
+		body["token_type_hint"] = request.TokenTypeHint
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeAuthenticationToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/revoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &RevokeAuthenticationTokenResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 基于使用者吊销认证令牌。
+//
+// @param request - RevokeAuthenticationTokenByConsumerRequest
+//
+// @param headers - RevokeAuthenticationTokenByConsumerHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAuthenticationTokenByConsumerResponse
+func (client *Client) RevokeAuthenticationTokenByConsumerWithContext(ctx context.Context, instanceId *string, request *RevokeAuthenticationTokenByConsumerRequest, headers *RevokeAuthenticationTokenByConsumerHeaders, runtime *dara.RuntimeOptions) (_result *RevokeAuthenticationTokenByConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerId) {
+		body["consumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.CredentialProviderIdentifier) {
+		body["credentialProviderIdentifier"] = request.CredentialProviderIdentifier
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeAuthenticationTokenByConsumer"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/revokeByConsumer"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("none"),
+	}
+	_result = &RevokeAuthenticationTokenByConsumerResponse{}
 	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2271,6 +2774,57 @@ func (client *Client) UpdateUserPasswordWithContext(ctx context.Context, instanc
 		BodyType:    dara.String("none"),
 	}
 	_result = &UpdateUserPasswordResponse{}
+	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验认证令牌是否有效。
+//
+// @param request - ValidateAuthenticationTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateAuthenticationTokenResponse
+func (client *Client) ValidateAuthenticationTokenWithContext(ctx context.Context, instanceId *string, request *ValidateAuthenticationTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ValidateAuthenticationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Token) {
+		body["token"] = request.Token
+	}
+
+	if !dara.IsNil(request.TokenTypeHint) {
+		body["token_type_hint"] = request.TokenTypeHint
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateAuthenticationToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/validate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateAuthenticationTokenResponse{}
 	_body, _err := client.DoROARequestWithCtx(ctx, params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
 	if _err != nil {
 		return _result, _err
