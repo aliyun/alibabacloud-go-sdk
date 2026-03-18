@@ -26,23 +26,23 @@ type iGenerateCLICommandRequest interface {
 }
 
 type GenerateCLICommandRequest struct {
-	// Specifies whether to enable aggregation. If you enable this feature, the CLI automatically reads full data by page and aggregates the results.
+	// Enable aggregation. If enabled, the CLI automatically reads full data using pagination and aggregates the results.
 	//
 	// 	Warning:
 	//
-	// Only List operations that support paging can use this switch.
+	// You can use this option only with List operations that support pagination.
 	//
 	//
 	//
-	// - true: enables aggregation.
+	// - true: Enable
 	//
-	// - false: disables aggregation.
+	// - false: Disable
 	//
 	// example:
 	//
 	// true
 	AggregatePagination *bool `json:"aggregatePagination,omitempty" xml:"aggregatePagination,omitempty"`
-	// The name of the API.
+	// API name.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type GenerateCLICommandRequest struct {
 	Api *string `json:"api,omitempty" xml:"api,omitempty"`
 	// Deprecated
 	//
-	// The request parameters.
+	// Request parameters.
 	ApiParams map[string]interface{} `json:"apiParams,omitempty" xml:"apiParams,omitempty"`
-	// The version of the API.
+	// API version.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type GenerateCLICommandRequest struct {
 	//
 	// 2014-05-26
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The request parameters for the API in JSON format. This parameter has a lower priority than \\`apiParams\\`. If \\`apiParams\\` is set, this parameter is ignored.
+	// API input parameters in JSON format. This parameter has lower priority than apiParams. If you set apiParams, this parameter is ignored.
 	//
 	// example:
 	//
@@ -76,13 +76,11 @@ type GenerateCLICommandRequest struct {
 	//
 	// }
 	JsonApiParams *string `json:"jsonApiParams,omitempty" xml:"jsonApiParams,omitempty"`
-	// The product code.
+	// Product code.
 	//
-	// - Call the GetRequestLog operation to obtain the product code from the response.
+	// - Call the GetRequestLog operation and get the product code from the response.
 	//
-	// - Find the product code in the URL of the product in OpenAPI Portal. For example, <props="china">the OpenAPI Portal URL for Short Message Service is https\\://api.aliyun.com/product/Dysmsapi. The product code for Short Message Service is Dysmsapi.
-	//
-	//   <props="intl">the OpenAPI Portal URL for Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code for Short Message Service is Dysmsapi.
+	// - Find the product code in the OpenAPI portal URL. For example, the OpenAPI portal URL for Short Message Service is https\\://api.aliyun.com/product/Dysmsapi. The product code for Short Message Service is Dysmsapi. In international regions, the URL is https\\://api.alibabacloud.com/product/Dysmsapi. The product code remains Dysmsapi.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +88,7 @@ type GenerateCLICommandRequest struct {
 	//
 	// Ecs
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// The ID of the region.
+	// Region ID.
 	//
 	// example:
 	//

@@ -13,21 +13,24 @@ type iGenerateCLICommandResponseBody interface {
 	GetCli() *string
 	SetRequestId(v string) *GenerateCLICommandResponseBody
 	GetRequestId() *string
+	SetUnifiedCli(v string) *GenerateCLICommandResponseBody
+	GetUnifiedCli() *string
 }
 
 type GenerateCLICommandResponseBody struct {
-	// The CLI instruction.
+	// CLI command.
 	//
 	// example:
 	//
 	// aliyun ecs DescribeRegions --ResourceType instance
 	Cli *string `json:"cli,omitempty" xml:"cli,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// A707AFA8-1A4C-5B2A-A165-8436C1EA38DB
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	UnifiedCli *string `json:"unifiedCli,omitempty" xml:"unifiedCli,omitempty"`
 }
 
 func (s GenerateCLICommandResponseBody) String() string {
@@ -46,6 +49,10 @@ func (s *GenerateCLICommandResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GenerateCLICommandResponseBody) GetUnifiedCli() *string {
+	return s.UnifiedCli
+}
+
 func (s *GenerateCLICommandResponseBody) SetCli(v string) *GenerateCLICommandResponseBody {
 	s.Cli = &v
 	return s
@@ -53,6 +60,11 @@ func (s *GenerateCLICommandResponseBody) SetCli(v string) *GenerateCLICommandRes
 
 func (s *GenerateCLICommandResponseBody) SetRequestId(v string) *GenerateCLICommandResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateCLICommandResponseBody) SetUnifiedCli(v string) *GenerateCLICommandResponseBody {
+	s.UnifiedCli = &v
 	return s
 }
 

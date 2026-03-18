@@ -328,7 +328,7 @@ func (client *Client) DeleteApiMcpServer(request *DeleteApiMcpServerRequest) (_r
 
 // Summary:
 //
-// Generates commands for the Alibaba Cloud command-line interface (CLI).
+// Generates an Alibaba Cloud CLI command dynamically.
 //
 // @param tmpReq - GenerateCLICommandRequest
 //
@@ -405,7 +405,7 @@ func (client *Client) GenerateCLICommandWithOptions(tmpReq *GenerateCLICommandRe
 
 // Summary:
 //
-// Generates commands for the Alibaba Cloud command-line interface (CLI).
+// Generates an Alibaba Cloud CLI command dynamically.
 //
 // @param request - GenerateCLICommandRequest
 //

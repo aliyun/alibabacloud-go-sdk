@@ -218,7 +218,7 @@ func (client *Client) DeleteApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Generates commands for the Alibaba Cloud command-line interface (CLI).
+// Generates an Alibaba Cloud CLI command dynamically.
 //
 // @param tmpReq - GenerateCLICommandRequest
 //
