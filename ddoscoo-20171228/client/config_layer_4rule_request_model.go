@@ -64,7 +64,12 @@ func (s *ConfigLayer4RuleRequest) SetUsTimeout(v *ConfigLayer4RuleRequestUsTimeo
 }
 
 func (s *ConfigLayer4RuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UsTimeout != nil {
+		if err := s.UsTimeout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ConfigLayer4RuleRequestUsTimeout struct {

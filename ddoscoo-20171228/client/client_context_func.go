@@ -7,15 +7,21 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// 增加CC规则
+//
 // @param request - AddLayer7CCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddLayer7CCRuleResponse
 func (client *Client) AddLayer7CCRuleWithContext(ctx context.Context, request *AddLayer7CCRuleRequest, runtime *dara.RuntimeOptions) (_result *AddLayer7CCRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Act) {
@@ -77,15 +83,21 @@ func (client *Client) AddLayer7CCRuleWithContext(ctx context.Context, request *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭日志分发
+//
 // @param request - CloseDomainSlsConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CloseDomainSlsConfigResponse
 func (client *Client) CloseDomainSlsConfigWithContext(ctx context.Context, request *CloseDomainSlsConfigRequest, runtime *dara.RuntimeOptions) (_result *CloseDomainSlsConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -127,15 +139,21 @@ func (client *Client) CloseDomainSlsConfigWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改健康检查
+//
 // @param request - ConfigHealthCheckRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigHealthCheckResponse
 func (client *Client) ConfigHealthCheckWithContext(ctx context.Context, request *ConfigHealthCheckRequest, runtime *dara.RuntimeOptions) (_result *ConfigHealthCheckResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ForwardProtocol) {
@@ -177,15 +195,21 @@ func (client *Client) ConfigHealthCheckWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改端口规则
+//
 // @param tmpReq - ConfigLayer4RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer4RuleResponse
 func (client *Client) ConfigLayer4RuleWithContext(ctx context.Context, tmpReq *ConfigLayer4RuleRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer4RuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ConfigLayer4RuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -229,15 +253,21 @@ func (client *Client) ConfigLayer4RuleWithContext(ctx context.Context, tmpReq *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改端口规则属性
+//
 // @param request - ConfigLayer4RuleAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer4RuleAttributeResponse
 func (client *Client) ConfigLayer4RuleAttributeWithContext(ctx context.Context, request *ConfigLayer4RuleAttributeRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer4RuleAttributeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Config) {
@@ -283,15 +313,21 @@ func (client *Client) ConfigLayer4RuleAttributeWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改黑白名单
+//
 // @param request - ConfigLayer7BlackWhiteListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer7BlackWhiteListResponse
 func (client *Client) ConfigLayer7BlackWhiteListWithContext(ctx context.Context, request *ConfigLayer7BlackWhiteListRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer7BlackWhiteListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BlackList) {
@@ -333,15 +369,21 @@ func (client *Client) ConfigLayer7BlackWhiteListWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改CC规则
+//
 // @param request - ConfigLayer7CCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer7CCRuleResponse
 func (client *Client) ConfigLayer7CCRuleWithContext(ctx context.Context, request *ConfigLayer7CCRuleRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer7CCRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Act) {
@@ -403,15 +445,21 @@ func (client *Client) ConfigLayer7CCRuleWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改CC模板
+//
 // @param request - ConfigLayer7CCTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer7CCTemplateResponse
 func (client *Client) ConfigLayer7CCTemplateWithContext(ctx context.Context, request *ConfigLayer7CCTemplateRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer7CCTemplateResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -449,15 +497,21 @@ func (client *Client) ConfigLayer7CCTemplateWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改证书
+//
 // @param request - ConfigLayer7CertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer7CertResponse
 func (client *Client) ConfigLayer7CertWithContext(ctx context.Context, request *ConfigLayer7CertRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer7CertResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cert) {
@@ -515,15 +569,21 @@ func (client *Client) ConfigLayer7CertWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改域名接入规则
+//
 // @param request - ConfigLayer7RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer7RuleResponse
 func (client *Client) ConfigLayer7RuleWithContext(ctx context.Context, request *ConfigLayer7RuleRequest, runtime *dara.RuntimeOptions) (_result *ConfigLayer7RuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -577,15 +637,21 @@ func (client *Client) ConfigLayer7RuleWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建异步任务
+//
 // @param request - CreateAsyncTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateAsyncTaskResponse
 func (client *Client) CreateAsyncTaskWithContext(ctx context.Context, request *CreateAsyncTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateAsyncTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -623,15 +689,21 @@ func (client *Client) CreateAsyncTaskWithContext(ctx context.Context, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建端口接入
+//
 // @param tmpReq - CreateLayer4RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLayer4RuleResponse
 func (client *Client) CreateLayer4RuleWithContext(ctx context.Context, tmpReq *CreateLayer4RuleRequest, runtime *dara.RuntimeOptions) (_result *CreateLayer4RuleResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateLayer4RuleShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -675,15 +747,21 @@ func (client *Client) CreateLayer4RuleWithContext(ctx context.Context, tmpReq *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建域名接入规则
+//
 // @param request - CreateLayer7RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLayer7RuleResponse
 func (client *Client) CreateLayer7RuleWithContext(ctx context.Context, request *CreateLayer7RuleRequest, runtime *dara.RuntimeOptions) (_result *CreateLayer7RuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -729,15 +807,21 @@ func (client *Client) CreateLayer7RuleWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除异步任务
+//
 // @param request - DeleteAsyncTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAsyncTaskResponse
 func (client *Client) DeleteAsyncTaskWithContext(ctx context.Context, request *DeleteAsyncTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteAsyncTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -771,15 +855,21 @@ func (client *Client) DeleteAsyncTaskWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除端口接入规则
+//
 // @param request - DeleteLayer4RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLayer4RuleResponse
 func (client *Client) DeleteLayer4RuleWithContext(ctx context.Context, request *DeleteLayer4RuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLayer4RuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Listeners) {
@@ -809,15 +899,21 @@ func (client *Client) DeleteLayer4RuleWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除CC规则
+//
 // @param request - DeleteLayer7CCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLayer7CCRuleResponse
 func (client *Client) DeleteLayer7CCRuleWithContext(ctx context.Context, request *DeleteLayer7CCRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLayer7CCRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -855,15 +951,21 @@ func (client *Client) DeleteLayer7CCRuleWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除域名接入规则
+//
 // @param request - DeleteLayer7RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLayer7RuleResponse
 func (client *Client) DeleteLayer7RuleWithContext(ctx context.Context, request *DeleteLayer7RuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteLayer7RuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -897,15 +999,21 @@ func (client *Client) DeleteLayer7RuleWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询回源网段
+//
 // @param request - DescribeBackSourceCidrRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackSourceCidrResponse
 func (client *Client) DescribeBackSourceCidrWithContext(ctx context.Context, request *DescribeBackSourceCidrRequest, runtime *dara.RuntimeOptions) (_result *DescribeBackSourceCidrResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.IpVersion) {
@@ -957,9 +1065,11 @@ func (client *Client) DescribeBackSourceCidrWithContext(ctx context.Context, req
 //
 // @return DescribeBatchSlsDispatchStatusResponse
 func (client *Client) DescribeBatchSlsDispatchStatusWithContext(ctx context.Context, request *DescribeBatchSlsDispatchStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeBatchSlsDispatchStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -1005,15 +1115,21 @@ func (client *Client) DescribeBatchSlsDispatchStatusWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询事件
+//
 // @param request - DescribeDDoSEventsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDDoSEventsResponse
 func (client *Client) DescribeDDoSEventsWithContext(ctx context.Context, request *DescribeDDoSEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDDoSEventsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Eip) {
@@ -1067,15 +1183,21 @@ func (client *Client) DescribeDDoSEventsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流量
+//
 // @param request - DescribeDDoSTrafficRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDDoSTrafficResponse
 func (client *Client) DescribeDDoSTrafficWithContext(ctx context.Context, request *DescribeDDoSTrafficRequest, runtime *dara.RuntimeOptions) (_result *DescribeDDoSTrafficResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Eip) {
@@ -1125,15 +1247,21 @@ func (client *Client) DescribeDDoSTrafficWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询防护次数
+//
 // @param request - DescribeDefenseCountStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDefenseCountStatisticsResponse
 func (client *Client) DescribeDefenseCountStatisticsWithContext(ctx context.Context, request *DescribeDefenseCountStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDefenseCountStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -1167,15 +1295,21 @@ func (client *Client) DescribeDefenseCountStatisticsWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名接入模式
+//
 // @param request - DescribeDomainAccessModeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainAccessModeResponse
 func (client *Client) DescribeDomainAccessModeWithContext(ctx context.Context, request *DescribeDomainAccessModeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainAccessModeResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainList) {
@@ -1209,15 +1343,21 @@ func (client *Client) DescribeDomainAccessModeWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名攻击事件
+//
 // @param request - DescribeDomainAttackEventListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainAttackEventListResponse
 func (client *Client) DescribeDomainAttackEventListWithContext(ctx context.Context, request *DescribeDomainAttackEventListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainAttackEventListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1267,15 +1407,21 @@ func (client *Client) DescribeDomainAttackEventListWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名攻击最大QPS
+//
 // @param request - DescribeDomainAttackMaxQpsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainAttackMaxQpsResponse
 func (client *Client) DescribeDomainAttackMaxQpsWithContext(ctx context.Context, request *DescribeDomainAttackMaxQpsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainAttackMaxQpsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1317,15 +1463,21 @@ func (client *Client) DescribeDomainAttackMaxQpsWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 域名概览
+//
 // @param request - DescribeDomainOverviewRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainOverviewResponse
 func (client *Client) DescribeDomainOverviewWithContext(ctx context.Context, request *DescribeDomainOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainOverviewResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1367,15 +1519,21 @@ func (client *Client) DescribeDomainOverviewWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名QPS
+//
 // @param request - DescribeDomainQpsListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainQpsListResponse
 func (client *Client) DescribeDomainQpsListWithContext(ctx context.Context, request *DescribeDomainQpsListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainQpsListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1421,15 +1579,21 @@ func (client *Client) DescribeDomainQpsListWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询qps
+//
 // @param request - DescribeDomainQpsWithCacheRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainQpsWithCacheResponse
 func (client *Client) DescribeDomainQpsWithCacheWithContext(ctx context.Context, request *DescribeDomainQpsWithCacheRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainQpsWithCacheResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1475,15 +1639,21 @@ func (client *Client) DescribeDomainQpsWithCacheWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日志分发状态
+//
 // @param request - DescribeDomainSlsStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainSlsStatusResponse
 func (client *Client) DescribeDomainSlsStatusWithContext(ctx context.Context, request *DescribeDomainSlsStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainSlsStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1535,9 +1705,11 @@ func (client *Client) DescribeDomainSlsStatusWithContext(ctx context.Context, re
 //
 // @return DescribeDomainStatusCodeListResponse
 func (client *Client) DescribeDomainStatusCodeListWithContext(ctx context.Context, request *DescribeDomainStatusCodeListRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainStatusCodeListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1587,15 +1759,21 @@ func (client *Client) DescribeDomainStatusCodeListWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名
+//
 // @param request - DescribeDomainsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDomainsResponse
 func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *DescribeDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -1649,15 +1827,21 @@ func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询弹性带宽规格
+//
 // @param request - DescribeElasticBandwidthSpecRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeElasticBandwidthSpecResponse
 func (client *Client) DescribeElasticBandwidthSpecWithContext(ctx context.Context, request *DescribeElasticBandwidthSpecRequest, runtime *dara.RuntimeOptions) (_result *DescribeElasticBandwidthSpecResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -1691,15 +1875,21 @@ func (client *Client) DescribeElasticBandwidthSpecWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询健康检查列表
+//
 // @param request - DescribeHealthCheckListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHealthCheckListResponse
 func (client *Client) DescribeHealthCheckListWithContext(ctx context.Context, request *DescribeHealthCheckListRequest, runtime *dara.RuntimeOptions) (_result *DescribeHealthCheckListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Listeners) {
@@ -1733,15 +1923,21 @@ func (client *Client) DescribeHealthCheckListWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询监控检查状态
+//
 // @param request - DescribeHealthCheckStatusListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeHealthCheckStatusListResponse
 func (client *Client) DescribeHealthCheckStatusListWithContext(ctx context.Context, request *DescribeHealthCheckStatusListRequest, runtime *dara.RuntimeOptions) (_result *DescribeHealthCheckStatusListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Listeners) {
@@ -1775,15 +1971,21 @@ func (client *Client) DescribeHealthCheckStatusListWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例详情
+//
 // @param request - DescribeInstanceDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceDetailsResponse
 func (client *Client) DescribeInstanceDetailsWithContext(ctx context.Context, request *DescribeInstanceDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceDetailsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -1817,15 +2019,21 @@ func (client *Client) DescribeInstanceDetailsWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例规格
+//
 // @param request - DescribeInstanceSpecsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceSpecsResponse
 func (client *Client) DescribeInstanceSpecsWithContext(ctx context.Context, request *DescribeInstanceSpecsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceSpecsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -1859,15 +2067,21 @@ func (client *Client) DescribeInstanceSpecsWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例统计
+//
 // @param request - DescribeInstanceStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceStatisticsResponse
 func (client *Client) DescribeInstanceStatisticsWithContext(ctx context.Context, request *DescribeInstanceStatisticsRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceStatisticsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -1901,15 +2115,21 @@ func (client *Client) DescribeInstanceStatisticsWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例
+//
 // @param request - DescribeInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Edition) {
@@ -1987,15 +2207,21 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询流量
+//
 // @param request - DescribeIpTrafficRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeIpTrafficResponse
 func (client *Client) DescribeIpTrafficWithContext(ctx context.Context, request *DescribeIpTrafficRequest, runtime *dara.RuntimeOptions) (_result *DescribeIpTrafficResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Eip) {
@@ -2053,15 +2279,21 @@ func (client *Client) DescribeIpTrafficWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询端口规则属性
+//
 // @param request - DescribeLayer4RuleAttributesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLayer4RuleAttributesResponse
 func (client *Client) DescribeLayer4RuleAttributesWithContext(ctx context.Context, request *DescribeLayer4RuleAttributesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLayer4RuleAttributesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Listeners) {
@@ -2105,9 +2337,11 @@ func (client *Client) DescribeLayer4RuleAttributesWithContext(ctx context.Contex
 //
 // @return DescribeLayer4RulesResponse
 func (client *Client) DescribeLayer4RulesWithContext(ctx context.Context, request *DescribeLayer4RulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLayer4RulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ForwardProtocol) {
@@ -2157,15 +2391,21 @@ func (client *Client) DescribeLayer4RulesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询CC规则
+//
 // @param request - DescribeLayer7CCRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLayer7CCRulesResponse
 func (client *Client) DescribeLayer7CCRulesWithContext(ctx context.Context, request *DescribeLayer7CCRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeLayer7CCRulesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -2211,15 +2451,21 @@ func (client *Client) DescribeLayer7CCRulesWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日志库存在状态
+//
 // @param request - DescribeLogStoreExistStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLogStoreExistStatusResponse
 func (client *Client) DescribeLogStoreExistStatusWithContext(ctx context.Context, request *DescribeLogStoreExistStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeLogStoreExistStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2257,15 +2503,21 @@ func (client *Client) DescribeLogStoreExistStatusWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询操作日志
+//
 // @param request - DescribeOpEntitiesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOpEntitiesResponse
 func (client *Client) DescribeOpEntitiesWithContext(ctx context.Context, request *DescribeOpEntitiesRequest, runtime *dara.RuntimeOptions) (_result *DescribeOpEntitiesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTime) {
@@ -2327,15 +2579,21 @@ func (client *Client) DescribeOpEntitiesWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名
+//
 // @param request - DescribeSimpleDomainsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSimpleDomainsResponse
 func (client *Client) DescribeSimpleDomainsWithContext(ctx context.Context, request *DescribeSimpleDomainsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSimpleDomainsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceIds) {
@@ -2377,15 +2635,21 @@ func (client *Client) DescribeSimpleDomainsWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询sls授权状态
+//
 // @param request - DescribeSlsAuthStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatusWithContext(ctx context.Context, request *DescribeSlsAuthStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlsAuthStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2423,15 +2687,21 @@ func (client *Client) DescribeSlsAuthStatusWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询清空次数
+//
 // @param request - DescribeSlsEmptyCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlsEmptyCountResponse
 func (client *Client) DescribeSlsEmptyCountWithContext(ctx context.Context, request *DescribeSlsEmptyCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlsEmptyCountResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2469,15 +2739,21 @@ func (client *Client) DescribeSlsEmptyCountWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询全量日志信息
+//
 // @param request - DescribeSlsLogstoreInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlsLogstoreInfoResponse
 func (client *Client) DescribeSlsLogstoreInfoWithContext(ctx context.Context, request *DescribeSlsLogstoreInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlsLogstoreInfoResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2515,15 +2791,21 @@ func (client *Client) DescribeSlsLogstoreInfoWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询sls开通状态
+//
 // @param request - DescribeSlsOpenStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSlsOpenStatusResponse
 func (client *Client) DescribeSlsOpenStatusWithContext(ctx context.Context, request *DescribeSlsOpenStatusRequest, runtime *dara.RuntimeOptions) (_result *DescribeSlsOpenStatusResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2561,19 +2843,29 @@ func (client *Client) DescribeSlsOpenStatusWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询证书列表
+//
 // @param request - DescribleCertListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribleCertListResponse
 func (client *Client) DescribleCertListWithContext(ctx context.Context, request *DescribleCertListRequest, runtime *dara.RuntimeOptions) (_result *DescribleCertListResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
 		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.DomainList) {
+		query["DomainList"] = request.DomainList
 	}
 
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -2607,15 +2899,21 @@ func (client *Client) DescribleCertListWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名实例关系
+//
 // @param request - DescribleLayer7InstanceRelationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribleLayer7InstanceRelationsResponse
 func (client *Client) DescribleLayer7InstanceRelationsWithContext(ctx context.Context, request *DescribleLayer7InstanceRelationsRequest, runtime *dara.RuntimeOptions) (_result *DescribleLayer7InstanceRelationsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainList) {
@@ -2653,15 +2951,21 @@ func (client *Client) DescribleLayer7InstanceRelationsWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭CC
+//
 // @param request - DisableLayer7CCRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableLayer7CCResponse
 func (client *Client) DisableLayer7CCWithContext(ctx context.Context, request *DisableLayer7CCRequest, runtime *dara.RuntimeOptions) (_result *DisableLayer7CCResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -2699,15 +3003,21 @@ func (client *Client) DisableLayer7CCWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭CC规则
+//
 // @param request - DisableLayer7CCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableLayer7CCRuleResponse
 func (client *Client) DisableLayer7CCRuleWithContext(ctx context.Context, request *DisableLayer7CCRuleRequest, runtime *dara.RuntimeOptions) (_result *DisableLayer7CCRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -2745,15 +3055,21 @@ func (client *Client) DisableLayer7CCRuleWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 清除SLS日志库
+//
 // @param request - EmptySlsLogstoreRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EmptySlsLogstoreResponse
 func (client *Client) EmptySlsLogstoreWithContext(ctx context.Context, request *EmptySlsLogstoreRequest, runtime *dara.RuntimeOptions) (_result *EmptySlsLogstoreResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2791,15 +3107,21 @@ func (client *Client) EmptySlsLogstoreWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启CC
+//
 // @param request - EnableLayer7CCRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableLayer7CCResponse
 func (client *Client) EnableLayer7CCWithContext(ctx context.Context, request *EnableLayer7CCRequest, runtime *dara.RuntimeOptions) (_result *EnableLayer7CCResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -2837,15 +3159,21 @@ func (client *Client) EnableLayer7CCWithContext(ctx context.Context, request *En
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启CC规则
+//
 // @param request - EnableLayer7CCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableLayer7CCRuleResponse
 func (client *Client) EnableLayer7CCRuleWithContext(ctx context.Context, request *EnableLayer7CCRuleRequest, runtime *dara.RuntimeOptions) (_result *EnableLayer7CCRuleResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -2883,15 +3211,21 @@ func (client *Client) EnableLayer7CCRuleWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询异步任务
+//
 // @param request - ListAsyncTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAsyncTaskResponse
 func (client *Client) ListAsyncTaskWithContext(ctx context.Context, request *ListAsyncTaskRequest, runtime *dara.RuntimeOptions) (_result *ListAsyncTaskResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2937,15 +3271,21 @@ func (client *Client) ListAsyncTaskWithContext(ctx context.Context, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询域名接入端口
+//
 // @param request - ListLayer7CustomPortsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLayer7CustomPortsResponse
 func (client *Client) ListLayer7CustomPortsWithContext(ctx context.Context, request *ListLayer7CustomPortsRequest, runtime *dara.RuntimeOptions) (_result *ListLayer7CustomPortsResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -2983,15 +3323,21 @@ func (client *Client) ListLayer7CustomPortsWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出tag
+//
 // @param request - ListTagKeysRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
@@ -3037,15 +3383,21 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询资源
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NextToken) {
@@ -3095,15 +3447,21 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询日志实例
+//
 // @param request - ListValueAddedRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListValueAddedResponse
 func (client *Client) ListValueAddedWithContext(ctx context.Context, request *ListValueAddedRequest, runtime *dara.RuntimeOptions) (_result *ListValueAddedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ResourceGroupId) {
@@ -3137,15 +3495,21 @@ func (client *Client) ListValueAddedWithContext(ctx context.Context, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改弹性业务带宽
+//
 // @param request - ModifyElasticBandWidthRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyElasticBandWidthResponse
 func (client *Client) ModifyElasticBandWidthWithContext(ctx context.Context, request *ModifyElasticBandWidthRequest, runtime *dara.RuntimeOptions) (_result *ModifyElasticBandWidthResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ElasticBandwidth) {
@@ -3183,15 +3547,21 @@ func (client *Client) ModifyElasticBandWidthWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改日志存储时长
+//
 // @param request - ModifyFullLogTtlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFullLogTtlResponse
 func (client *Client) ModifyFullLogTtlWithContext(ctx context.Context, request *ModifyFullLogTtlRequest, runtime *dara.RuntimeOptions) (_result *ModifyFullLogTtlResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
@@ -3233,15 +3603,21 @@ func (client *Client) ModifyFullLogTtlWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例备注
+//
 // @param request - ModifyInstanceRemarkRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyInstanceRemarkResponse
 func (client *Client) ModifyInstanceRemarkWithContext(ctx context.Context, request *ModifyInstanceRemarkRequest, runtime *dara.RuntimeOptions) (_result *ModifyInstanceRemarkResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3279,15 +3655,21 @@ func (client *Client) ModifyInstanceRemarkWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启日志分发
+//
 // @param request - OpenDomainSlsConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return OpenDomainSlsConfigResponse
 func (client *Client) OpenDomainSlsConfigWithContext(ctx context.Context, request *OpenDomainSlsConfigRequest, runtime *dara.RuntimeOptions) (_result *OpenDomainSlsConfigResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Domain) {
@@ -3329,15 +3711,21 @@ func (client *Client) OpenDomainSlsConfigWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放实例
+//
 // @param request - ReleaseInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *ReleaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3371,15 +3759,21 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放日志实例
+//
 // @param request - ReleaseValueAddedRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReleaseValueAddedResponse
 func (client *Client) ReleaseValueAddedWithContext(ctx context.Context, request *ReleaseValueAddedRequest, runtime *dara.RuntimeOptions) (_result *ReleaseValueAddedResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.InstanceId) {
@@ -3413,15 +3807,21 @@ func (client *Client) ReleaseValueAddedWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 标签资源
+//
 // @param request - TagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
 func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.RegionId) {
@@ -3467,15 +3867,21 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 	return _result, _err
 }
 
+// Summary:
+//
+// 解除资源标签
+//
 // @param request - UntagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {

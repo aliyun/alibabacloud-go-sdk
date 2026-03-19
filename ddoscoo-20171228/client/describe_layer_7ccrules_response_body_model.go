@@ -65,7 +65,16 @@ func (s *DescribeLayer7CCRulesResponseBody) SetTotal(v int64) *DescribeLayer7CCR
 }
 
 func (s *DescribeLayer7CCRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Layer7CCRules != nil {
+		for _, item := range s.Layer7CCRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLayer7CCRulesResponseBodyLayer7CCRules struct {

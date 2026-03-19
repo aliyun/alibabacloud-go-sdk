@@ -65,7 +65,16 @@ func (s *DescribeBatchSlsDispatchStatusResponseBody) SetTotalCount(v int32) *Des
 }
 
 func (s *DescribeBatchSlsDispatchStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.SlsConfigStatusList != nil {
+		for _, item := range s.SlsConfigStatusList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeBatchSlsDispatchStatusResponseBodySlsConfigStatusList struct {

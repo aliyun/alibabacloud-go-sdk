@@ -110,7 +110,16 @@ func (s *DescribeIpTrafficResponseBody) SetRequestId(v string) *DescribeIpTraffi
 }
 
 func (s *DescribeIpTrafficResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.IpTrafficPoints != nil {
+		for _, item := range s.IpTrafficPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeIpTrafficResponseBodyIpTrafficPoints struct {

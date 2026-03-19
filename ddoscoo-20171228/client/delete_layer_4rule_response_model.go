@@ -59,5 +59,10 @@ func (s *DeleteLayer4RuleResponse) SetBody(v *DeleteLayer4RuleResponseBody) *Del
 }
 
 func (s *DeleteLayer4RuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

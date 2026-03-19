@@ -50,7 +50,16 @@ func (s *ListLayer7CustomPortsResponseBody) SetRequestId(v string) *ListLayer7Cu
 }
 
 func (s *ListLayer7CustomPortsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Layer7CustomPorts != nil {
+		for _, item := range s.Layer7CustomPorts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLayer7CustomPortsResponseBodyLayer7CustomPorts struct {

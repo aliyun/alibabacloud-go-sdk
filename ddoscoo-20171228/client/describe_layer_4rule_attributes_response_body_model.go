@@ -50,7 +50,16 @@ func (s *DescribeLayer4RuleAttributesResponseBody) SetRequestId(v string) *Descr
 }
 
 func (s *DescribeLayer4RuleAttributesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Listeners != nil {
+		for _, item := range s.Listeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListeners struct {
@@ -114,7 +123,12 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListeners) SetProtocol(v string
 }
 
 func (s *DescribeLayer4RuleAttributesResponseBodyListeners) Validate() error {
-	return dara.Validate(s)
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfig struct {
@@ -208,7 +222,27 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfig) SetSynproxy(v 
 }
 
 func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfig) Validate() error {
-	return dara.Validate(s)
+	if s.Cc != nil {
+		if err := s.Cc.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PayloadLen != nil {
+		if err := s.PayloadLen.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Sla != nil {
+		if err := s.Sla.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Slimit != nil {
+		if err := s.Slimit.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfigCc struct {
@@ -233,7 +267,16 @@ func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigCc) SetSblack(v 
 }
 
 func (s *DescribeLayer4RuleAttributesResponseBodyListenersConfigCc) Validate() error {
-	return dara.Validate(s)
+	if s.Sblack != nil {
+		for _, item := range s.Sblack {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RuleAttributesResponseBodyListenersConfigCcSblack struct {

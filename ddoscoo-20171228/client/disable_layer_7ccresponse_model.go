@@ -59,5 +59,10 @@ func (s *DisableLayer7CCResponse) SetBody(v *DisableLayer7CCResponseBody) *Disab
 }
 
 func (s *DisableLayer7CCResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

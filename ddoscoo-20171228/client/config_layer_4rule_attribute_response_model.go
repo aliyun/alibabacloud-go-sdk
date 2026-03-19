@@ -59,5 +59,10 @@ func (s *ConfigLayer4RuleAttributeResponse) SetBody(v *ConfigLayer4RuleAttribute
 }
 
 func (s *ConfigLayer4RuleAttributeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

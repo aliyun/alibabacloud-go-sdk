@@ -50,7 +50,16 @@ func (s *DescribleLayer7InstanceRelationsResponseBody) SetRequestId(v string) *D
 }
 
 func (s *DescribleLayer7InstanceRelationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Layer7InstanceRelations != nil {
+		for _, item := range s.Layer7InstanceRelations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelations struct {
@@ -88,7 +97,16 @@ func (s *DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelations) Se
 }
 
 func (s *DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelations) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDetails != nil {
+		for _, item := range s.InstanceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribleLayer7InstanceRelationsResponseBodyLayer7InstanceRelationsInstanceDetails struct {

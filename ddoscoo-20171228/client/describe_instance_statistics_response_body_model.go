@@ -50,7 +50,16 @@ func (s *DescribeInstanceStatisticsResponseBody) SetRequestId(v string) *Describ
 }
 
 func (s *DescribeInstanceStatisticsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatistics != nil {
+		for _, item := range s.InstanceStatistics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceStatisticsResponseBodyInstanceStatistics struct {

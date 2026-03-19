@@ -50,7 +50,16 @@ func (s *DescribleCertListResponseBody) SetRequestId(v string) *DescribleCertLis
 }
 
 func (s *DescribleCertListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.CertList != nil {
+		for _, item := range s.CertList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribleCertListResponseBodyCertList struct {

@@ -50,7 +50,16 @@ func (s *ListValueAddedResponseBody) SetValueAddedList(v []*ListValueAddedRespon
 }
 
 func (s *ListValueAddedResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ValueAddedList != nil {
+		for _, item := range s.ValueAddedList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListValueAddedResponseBodyValueAddedList struct {

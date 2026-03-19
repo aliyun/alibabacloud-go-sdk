@@ -65,7 +65,16 @@ func (s *DescribeDomainAttackEventListResponseBody) SetTotal(v int64) *DescribeD
 }
 
 func (s *DescribeDomainAttackEventListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DataList != nil {
+		for _, item := range s.DataList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainAttackEventListResponseBodyDataList struct {

@@ -59,5 +59,10 @@ func (s *DescribleLayer7InstanceRelationsResponse) SetBody(v *DescribleLayer7Ins
 }
 
 func (s *DescribleLayer7InstanceRelationsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

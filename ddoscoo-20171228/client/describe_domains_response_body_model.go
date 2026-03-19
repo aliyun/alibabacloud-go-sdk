@@ -65,7 +65,16 @@ func (s *DescribeDomainsResponseBody) SetTotal(v int64) *DescribeDomainsResponse
 }
 
 func (s *DescribeDomainsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Domains != nil {
+		for _, item := range s.Domains {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomains struct {
@@ -247,7 +256,25 @@ func (s *DescribeDomainsResponseBodyDomains) SetWhiteList(v []*string) *Describe
 }
 
 func (s *DescribeDomainsResponseBodyDomains) Validate() error {
-	return dara.Validate(s)
+	if s.ProxyTypeList != nil {
+		for _, item := range s.ProxyTypeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RealServers != nil {
+		for _, item := range s.RealServers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainsResponseBodyDomainsProxyTypeList struct {

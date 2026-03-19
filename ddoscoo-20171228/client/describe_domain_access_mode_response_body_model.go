@@ -50,7 +50,16 @@ func (s *DescribeDomainAccessModeResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDomainAccessModeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DomainModeList != nil {
+		for _, item := range s.DomainModeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDomainAccessModeResponseBodyDomainModeList struct {

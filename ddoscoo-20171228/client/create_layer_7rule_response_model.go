@@ -59,5 +59,10 @@ func (s *CreateLayer7RuleResponse) SetBody(v *CreateLayer7RuleResponseBody) *Cre
 }
 
 func (s *CreateLayer7RuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

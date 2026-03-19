@@ -59,5 +59,10 @@ func (s *DescribeIpTrafficResponse) SetBody(v *DescribeIpTrafficResponseBody) *D
 }
 
 func (s *DescribeIpTrafficResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

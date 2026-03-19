@@ -50,7 +50,16 @@ func (s *DescribeInstanceDetailsResponseBody) SetRequestId(v string) *DescribeIn
 }
 
 func (s *DescribeInstanceDetailsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceDetails != nil {
+		for _, item := range s.InstanceDetails {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDetailsResponseBodyInstanceDetails struct {
@@ -101,7 +110,16 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetails) SetLine(v string) *
 }
 
 func (s *DescribeInstanceDetailsResponseBodyInstanceDetails) Validate() error {
-	return dara.Validate(s)
+	if s.EipInfoList != nil {
+		for _, item := range s.EipInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfoList struct {

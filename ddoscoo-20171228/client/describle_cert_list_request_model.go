@@ -11,6 +11,8 @@ type iDescribleCertListRequest interface {
 	GoString() string
 	SetDomain(v string) *DescribleCertListRequest
 	GetDomain() *string
+	SetDomainList(v string) *DescribleCertListRequest
+	GetDomainList() *string
 	SetResourceGroupId(v string) *DescribleCertListRequest
 	GetResourceGroupId() *string
 	SetSourceIp(v string) *DescribleCertListRequest
@@ -21,7 +23,8 @@ type DescribleCertListRequest struct {
 	// example:
 	//
 	// www.aliyun.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
 	// example:
 	//
 	// test
@@ -44,6 +47,10 @@ func (s *DescribleCertListRequest) GetDomain() *string {
 	return s.Domain
 }
 
+func (s *DescribleCertListRequest) GetDomainList() *string {
+	return s.DomainList
+}
+
 func (s *DescribleCertListRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
@@ -54,6 +61,11 @@ func (s *DescribleCertListRequest) GetSourceIp() *string {
 
 func (s *DescribleCertListRequest) SetDomain(v string) *DescribleCertListRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *DescribleCertListRequest) SetDomainList(v string) *DescribleCertListRequest {
+	s.DomainList = &v
 	return s
 }
 

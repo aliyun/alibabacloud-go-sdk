@@ -80,7 +80,16 @@ func (s *DescribeDDoSTrafficResponseBody) SetSourceInBytes(v int64) *DescribeDDo
 }
 
 func (s *DescribeDDoSTrafficResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DDoSTrafficPoints != nil {
+		for _, item := range s.DDoSTrafficPoints {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeDDoSTrafficResponseBodyDDoSTrafficPoints struct {

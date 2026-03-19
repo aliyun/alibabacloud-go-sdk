@@ -64,7 +64,12 @@ func (s *CreateLayer4RuleRequest) SetUsTimeout(v *CreateLayer4RuleRequestUsTimeo
 }
 
 func (s *CreateLayer4RuleRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UsTimeout != nil {
+		if err := s.UsTimeout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateLayer4RuleRequestUsTimeout struct {

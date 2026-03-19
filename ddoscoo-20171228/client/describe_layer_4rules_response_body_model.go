@@ -70,7 +70,16 @@ func (s *DescribeLayer4RulesResponseBody) SetTotal(v int64) *DescribeLayer4Rules
 }
 
 func (s *DescribeLayer4RulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Listeners != nil {
+		for _, item := range s.Listeners {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RulesResponseBodyListeners struct {
@@ -310,7 +319,12 @@ func (s *DescribeLayer4RulesResponseBodyListeners) SetUsTimeout(v *DescribeLayer
 }
 
 func (s *DescribeLayer4RulesResponseBodyListeners) Validate() error {
-	return dara.Validate(s)
+	if s.UsTimeout != nil {
+		if err := s.UsTimeout.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DescribeLayer4RulesResponseBodyListenersUsTimeout struct {

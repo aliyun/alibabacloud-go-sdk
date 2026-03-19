@@ -59,5 +59,10 @@ func (s *ConfigLayer7CCTemplateResponse) SetBody(v *ConfigLayer7CCTemplateRespon
 }
 
 func (s *ConfigLayer7CCTemplateResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
