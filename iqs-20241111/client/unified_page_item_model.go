@@ -35,6 +35,8 @@ type iUnifiedPageItem interface {
 	GetSnippet() *string
 	SetSummary(v string) *UnifiedPageItem
 	GetSummary() *string
+	SetTags(v map[string]interface{}) *UnifiedPageItem
+	GetTags() map[string]interface{}
 	SetTitle(v string) *UnifiedPageItem
 	GetTitle() *string
 	SetWebsiteAuthorityScore(v int32) *UnifiedPageItem
@@ -63,12 +65,13 @@ type UnifiedPageItem struct {
 	// example:
 	//
 	// 0.7786493301391602
-	RerankScore           *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
-	RichMainBody          *string  `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
-	Snippet               *string  `json:"snippet,omitempty" xml:"snippet,omitempty"`
-	Summary               *string  `json:"summary,omitempty" xml:"summary,omitempty"`
-	Title                 *string  `json:"title,omitempty" xml:"title,omitempty"`
-	WebsiteAuthorityScore *int32   `json:"websiteAuthorityScore,omitempty" xml:"websiteAuthorityScore,omitempty"`
+	RerankScore           *float64               `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	RichMainBody          *string                `json:"richMainBody,omitempty" xml:"richMainBody,omitempty"`
+	Snippet               *string                `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Summary               *string                `json:"summary,omitempty" xml:"summary,omitempty"`
+	Tags                  map[string]interface{} `json:"tags,omitempty" xml:"tags,omitempty"`
+	Title                 *string                `json:"title,omitempty" xml:"title,omitempty"`
+	WebsiteAuthorityScore *int32                 `json:"websiteAuthorityScore,omitempty" xml:"websiteAuthorityScore,omitempty"`
 }
 
 func (s UnifiedPageItem) String() string {
@@ -129,6 +132,10 @@ func (s *UnifiedPageItem) GetSnippet() *string {
 
 func (s *UnifiedPageItem) GetSummary() *string {
 	return s.Summary
+}
+
+func (s *UnifiedPageItem) GetTags() map[string]interface{} {
+	return s.Tags
 }
 
 func (s *UnifiedPageItem) GetTitle() *string {
@@ -201,6 +208,11 @@ func (s *UnifiedPageItem) SetSnippet(v string) *UnifiedPageItem {
 
 func (s *UnifiedPageItem) SetSummary(v string) *UnifiedPageItem {
 	s.Summary = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetTags(v map[string]interface{}) *UnifiedPageItem {
+	s.Tags = v
 	return s
 }
 
