@@ -33,8 +33,7 @@ type DescribeHanaInstancesResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the SAP HANA instances.
+	Code  *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	Hanas *DescribeHanaInstancesResponseBodyHanas `json:"Hanas,omitempty" xml:"Hanas,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
 	//
@@ -202,114 +201,22 @@ func (s *DescribeHanaInstancesResponseBodyHanas) Validate() error {
 }
 
 type DescribeHanaInstancesResponseBodyHanasHana struct {
-	// The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
-	//
-	// example:
-	//
-	// INHERITED
-	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
-	// The ID of the SAP HANA instance.
-	//
-	// example:
-	//
-	// cl-0004cf6g6******0yd7y
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// hbrcrossrole
-	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-	//
-	// 	- **SELF_ACCOUNT**: Data is backed up within the same Alibaba Cloud account.
-	//
-	// 	- **CROSS_ACCOUNT**: Data is backed up across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// CROSS_ACCOUNT
-	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// 158975xxxxx4625
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The name of the SAP HANA instance.
-	//
-	// example:
-	//
-	// HANA-DEV
-	HanaName *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
-	// The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
-	//
-	// example:
-	//
-	// 47.100.XX.XX
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The instance number of the SAP HANA system.
-	//
-	// example:
-	//
-	// 00
-	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmvnf22m7itha
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the SAP HANA instance. Valid values:
-	//
-	// 	- INITIALIZING: The instance is being initialized.
-	//
-	// 	- INITIALIZED: The instance is registered.
-	//
-	// 	- INVALID_HANA_NODE: The instance is invalid.
-	//
-	// 	- INITIALIZE_FAILED: The client fails to be installed on the instance.
-	//
-	// example:
-	//
-	// INITIALIZED
-	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status information.
-	//
-	// example:
-	//
-	// INSTALL_CLIENT_FAILED
-	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
-	// The tags of the SAP HANA instance.
-	Tags *DescribeHanaInstancesResponseBodyHanasHanaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL). Valid values:
-	//
-	// 	- true: The SAP HANA instance is connected over SSL.
-	//
-	// 	- false: The SAP HANA instance is not connected over SSL.
-	//
-	// example:
-	//
-	// true
-	UseSsl *bool `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
-	// The username of the SYSTEMDB database.
-	//
-	// example:
-	//
-	// admin
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// Indicates whether the SSL certificate of the SAP HANA instance is verified.
-	//
-	// example:
-	//
-	// false
-	ValidateCertificate *bool `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
-	// The ID of the backup vault.
-	//
-	// example:
-	//
-	// v-0000s974******1hl
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	AlertSetting         *string                                         `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	ClusterId            *string                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CrossAccountRoleName *string                                         `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                         `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                          `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	HanaName             *string                                         `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
+	Host                 *string                                         `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceNumber       *int32                                          `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	ResourceGroupId      *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status               *int64                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage        *string                                         `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	Tags                 *DescribeHanaInstancesResponseBodyHanasHanaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseSsl               *bool                                           `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	UserName             *string                                         `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ValidateCertificate  *bool                                           `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
+	VaultId              *string                                         `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeHanaInstancesResponseBodyHanasHana) String() string {
@@ -508,17 +415,7 @@ func (s *DescribeHanaInstancesResponseBodyHanasHanaTags) Validate() error {
 }
 
 type DescribeHanaInstancesResponseBodyHanasHanaTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// ace:rm:rgld
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// rg-acfmwutpyat2kwy
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

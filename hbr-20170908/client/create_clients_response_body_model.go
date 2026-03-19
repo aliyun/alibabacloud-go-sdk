@@ -29,8 +29,7 @@ type CreateClientsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status of the ECS instance. If you specify more than one instance IDs in the request and the status of an ECS instance does not meet the requirements to install an HBR client, an error message is returned based on the value of this parameter.
+	Code             *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceStatuses *CreateClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Struct"`
 	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
 	//
@@ -168,22 +167,8 @@ func (s *CreateClientsResponseBodyInstanceStatuses) Validate() error {
 }
 
 type CreateClientsResponseBodyInstanceStatusesInstanceStatus struct {
-	// The ID of the ECS instance.
-	//
-	// example:
-	//
-	// i-2zegp3cdu******uj9i
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether an HBR client can be installed on the ECS instance. Valid values:
-	//
-	// 	- true: An HBR client can be installed on the ECS instance.
-	//
-	// 	- false: An HBR client cannot be installed on the ECS instance.
-	//
-	// example:
-	//
-	// true
-	ValidInstance *bool `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ValidInstance *bool   `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
 }
 
 func (s CreateClientsResponseBodyInstanceStatusesInstanceStatus) String() string {

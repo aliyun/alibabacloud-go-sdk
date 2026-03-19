@@ -71,13 +71,8 @@ type DescribeVaultsResponseBody struct {
 	// example:
 	//
 	// 8
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The backup vaults.
-	//
-	// example:
-	//
-	// {\\"Vault\\": []}
-	Vaults *DescribeVaultsResponseBodyVaults `json:"Vaults,omitempty" xml:"Vaults,omitempty" type:"Struct"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vaults     *DescribeVaultsResponseBodyVaults `json:"Vaults,omitempty" xml:"Vaults,omitempty" type:"Struct"`
 }
 
 func (s DescribeVaultsResponseBody) String() string {
@@ -204,280 +199,53 @@ func (s *DescribeVaultsResponseBodyVaults) Validate() error {
 }
 
 type DescribeVaultsResponseBodyVaultsVault struct {
-	// Archival tier backup data volume. Unit: bytes.
-	//
-	// example:
-	//
-	// 1024000
-	ArchiveBytesDone *int64 `json:"ArchiveBytesDone,omitempty" xml:"ArchiveBytesDone,omitempty"`
-	// The billable storage usage of the Archive tier. Unit: bytes.
-	//
-	// example:
-	//
-	// 1024000
-	ArchiveStorageSize *int64 `json:"ArchiveStorageSize,omitempty" xml:"ArchiveStorageSize,omitempty"`
-	// The statistics of backup plans that use the backup vault.
-	BackupPlanStatistics *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics `json:"BackupPlanStatistics,omitempty" xml:"BackupPlanStatistics,omitempty" type:"Struct"`
-	// The name of the OSS bucket used by the backup vault.
-	//
-	// example:
-	//
-	// hbr-0005i51******t58
-	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The amount of data that is backed up. Unit: bytes.
-	//
-	// example:
-	//
-	// 20
-	BytesDone *int64 `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	// The billing method of the backup vault.
-	//
-	// example:
-	//
-	// FREE
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The billable storage usage of the archive vault. Unit: bytes.
-	//
-	// example:
-	//
-	// 1024000
-	ChargedStorageSize *int64 `json:"ChargedStorageSize,omitempty" xml:"ChargedStorageSize,omitempty"`
-	// The encryption algorithm used to compress the backup vault. Valid values:
-	//
-	// 	- DISABLED: The backup vault is not compressed.
-	//
-	// 	- SNAPPY: The backup vault is compressed by using the SNAPPY encryption algorithm.
-	//
-	// 	- ZSTD: The backup vault is compressed by using Zstandard, a fast lossless compression algorithm.
-	//
-	// example:
-	//
-	// ZSTD
-	CompressionAlgorithm *string `json:"CompressionAlgorithm,omitempty" xml:"CompressionAlgorithm,omitempty"`
-	// The time when the backup vault was created. The value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Indicates whether the deduplication feature is enabled.
-	//
-	// example:
-	//
-	// true
-	Dedup *bool `json:"Dedup,omitempty" xml:"Dedup,omitempty"`
-	// The description of the backup vault.
-	//
-	// example:
-	//
-	// vault description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The encryption type of the backup vault. Valid values:
-	//
-	// 	- NONE: The backup vault is not encrypted.
-	//
-	// 	- HBR_PRIVATE (default): The backup vault is encrypted by using a key provided by Cloud Backup.
-	//
-	// 	- KMS: The backup vault is encrypted by using a custom master key (CMK) created in Key Management Service (KMS).
-	//
-	// example:
-	//
-	// HBR_PRIVATE
-	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// Indicates whether indexes are available. Indexes are available when they are not being updated.
-	//
-	// example:
-	//
-	// true
-	IndexAvailable *bool `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
-	// The index level.
-	//
-	// 	- OFF: No indexes are created.
-	//
-	// 	- META: Metadata indexes are created.
-	//
-	// 	- ALL: Full-text indexes are created.
-	//
-	// example:
-	//
-	// OFF
-	IndexLevel *string `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
-	// The time when the index was updated.
-	//
-	// example:
-	//
-	// 1639645628
-	IndexUpdateTime *int64 `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
-	// The ID or alias of the CMK created in KMS. This parameter is returned only when EncryptType is set to KMS.
-	//
-	// example:
-	//
-	// alias/acs/acm
-	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The time when the last remote backup was synchronized. The value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	LatestReplicationTime *int64 `json:"LatestReplicationTime,omitempty" xml:"LatestReplicationTime,omitempty"`
-	// The data redundancy type of the backup vault. Valid values:
-	//
-	// 	- LRS: Locally redundant storage (LRS) is enabled for the backup vault. Cloud Backup stores the copies of each object on multiple devices of different facilities in the same zone. This way, Cloud Backup ensures data durability and availability even if hardware failures occur.
-	//
-	// 	- ZRS: Zone-redundant storage (ZRS) is enabled for the backup vault. Cloud Backup uses the multi-zone mechanism to distribute data across three zones within the same region. If a zone fails, the data that is stored in the other two zones is still accessible.
-	//
-	// example:
-	//
-	// LRS
-	RedundancyType *string `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
-	// Indicates whether the backup vault is a remote backup vault. Valid values:
-	//
-	// 	- true: The backup vault is a remote backup vault.
-	//
-	// 	- false: The backup vault is a local backup vault.
-	//
-	// example:
-	//
-	// false
-	Replication *bool `json:"Replication,omitempty" xml:"Replication,omitempty"`
-	// The progress of data synchronization from the backup vault to the mirror vault.
-	ReplicationProgress      *DescribeVaultsResponseBodyVaultsVaultReplicationProgress `json:"ReplicationProgress,omitempty" xml:"ReplicationProgress,omitempty" type:"Struct"`
-	ReplicationSourceOwnerId *int64                                                    `json:"ReplicationSourceOwnerId,omitempty" xml:"ReplicationSourceOwnerId,omitempty"`
-	// The ID of the region in which the source vault resides. This parameter is valid only for remote backup vaults.
-	//
-	// example:
-	//
-	// v-*********************
-	ReplicationSourceRegionId *string `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
-	// Indicate whether the backup vault is the source vault that corresponds to the remote backup vault. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	ReplicationSourceVault *bool `json:"ReplicationSourceVault,omitempty" xml:"ReplicationSourceVault,omitempty"`
-	// The ID of the source vault that corresponds to the remote backup vault.
-	//
-	// example:
-	//
-	// v-*********************
-	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
-	ReplicationStatus        *string `json:"ReplicationStatus,omitempty" xml:"ReplicationStatus,omitempty"`
-	ReplicationTargetOwnerId *int64  `json:"ReplicationTargetOwnerId,omitempty" xml:"ReplicationTargetOwnerId,omitempty"`
-	// Target region for remote backup repository.
-	//
-	// example:
-	//
-	// cn-shanghai
-	ReplicationTargetRegionId *string `json:"ReplicationTargetRegionId,omitempty" xml:"ReplicationTargetRegionId,omitempty"`
-	ReplicationTargetVaultId  *string `json:"ReplicationTargetVaultId,omitempty" xml:"ReplicationTargetVaultId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-*********************
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The retention period of the backup vault. Unit: days.
-	//
-	// example:
-	//
-	// 2
-	Retention          *int64                                                   `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	RsTargetAccountIds *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds `json:"RsTargetAccountIds,omitempty" xml:"RsTargetAccountIds,omitempty" type:"Struct"`
-	// Indicates whether the backup search feature is enabled.
-	//
-	// example:
-	//
-	// true
-	SearchEnabled *bool `json:"SearchEnabled,omitempty" xml:"SearchEnabled,omitempty"`
-	// The number of snapshots in the backup vault.
-	//
-	// example:
-	//
-	// 0
-	SnapshotCount *int64 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	// The data source types of the backup vault.
-	SourceTypes *DescribeVaultsResponseBodyVaultsVaultSourceTypes `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty" type:"Struct"`
-	// The status of the backup vault. Valid values:
-	//
-	// 	- **UNKNOWN**: The backup vault is in an unknown state.
-	//
-	// 	- **INITIALIZING**: The backup vault is being initialized.
-	//
-	// 	- **CREATED**: The backup vault is created.
-	//
-	// 	- **ERROR**: An error occurs on the backup vault.
-	//
-	// example:
-	//
-	// CREATED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The usage of the backup vault. Unit: bytes.
-	//
-	// example:
-	//
-	// 10
-	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The tags of the backup vault.
-	Tags *DescribeVaultsResponseBodyVaultsVaultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The free trial information.
-	TrialInfo *DescribeVaultsResponseBodyVaultsVaultTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
-	// The time when the backup vault was updated. The value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The ID of the backup vault.
-	//
-	// example:
-	//
-	// v-*********************
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-	// The name of the backup vault.
-	//
-	// example:
-	//
-	// vaultname
-	VaultName    *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
-	VaultOwnerId *int64  `json:"VaultOwnerId,omitempty" xml:"VaultOwnerId,omitempty"`
-	// The ID of the region in which the backup vault resides.
-	//
-	// example:
-	//
-	// cn-shanghai
-	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// The status message that is returned when the backup vault is in the ERROR state. This parameter is valid only for remote backup vaults. Valid values:
-	//
-	// 	- **UNKNOWN_ERROR**: An unknown error occurs.
-	//
-	// 	- **SOURCE_VAULT_ALREADY_HAS_REPLICATION**: A mirror vault is configured for the source vault.
-	//
-	// example:
-	//
-	// SOURCE_VAULT_ALREADY_HAS_REPLICATION
-	VaultStatusMessage *string `json:"VaultStatusMessage,omitempty" xml:"VaultStatusMessage,omitempty"`
-	// The storage class of the backup vault. Valid value: **STANDARD**, which indicates standard storage.
-	//
-	// example:
-	//
-	// STANDARD
-	VaultStorageClass *string `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
-	// The type of the backup vault. Valid value: **STANDARD**, which indicates a standard backup vault.
-	//
-	// example:
-	//
-	// STANDARD
-	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
-	// Indicates whether the immutable backup feature is enabled.
-	//
-	// example:
-	//
-	// true
-	WormEnabled *bool `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
+	ArchiveBytesDone          *int64                                                     `json:"ArchiveBytesDone,omitempty" xml:"ArchiveBytesDone,omitempty"`
+	ArchiveStorageSize        *int64                                                     `json:"ArchiveStorageSize,omitempty" xml:"ArchiveStorageSize,omitempty"`
+	BackupPlanStatistics      *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics `json:"BackupPlanStatistics,omitempty" xml:"BackupPlanStatistics,omitempty" type:"Struct"`
+	BucketName                *string                                                    `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	BytesDone                 *int64                                                     `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	ChargeType                *string                                                    `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargedStorageSize        *int64                                                     `json:"ChargedStorageSize,omitempty" xml:"ChargedStorageSize,omitempty"`
+	CompressionAlgorithm      *string                                                    `json:"CompressionAlgorithm,omitempty" xml:"CompressionAlgorithm,omitempty"`
+	CreatedTime               *int64                                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Dedup                     *bool                                                      `json:"Dedup,omitempty" xml:"Dedup,omitempty"`
+	Description               *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncryptType               *string                                                    `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	IndexAvailable            *bool                                                      `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
+	IndexLevel                *string                                                    `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
+	IndexUpdateTime           *int64                                                     `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
+	KmsKeyId                  *string                                                    `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	LatestReplicationTime     *int64                                                     `json:"LatestReplicationTime,omitempty" xml:"LatestReplicationTime,omitempty"`
+	RedundancyType            *string                                                    `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
+	Replication               *bool                                                      `json:"Replication,omitempty" xml:"Replication,omitempty"`
+	ReplicationProgress       *DescribeVaultsResponseBodyVaultsVaultReplicationProgress  `json:"ReplicationProgress,omitempty" xml:"ReplicationProgress,omitempty" type:"Struct"`
+	ReplicationSourceOwnerId  *int64                                                     `json:"ReplicationSourceOwnerId,omitempty" xml:"ReplicationSourceOwnerId,omitempty"`
+	ReplicationSourceRegionId *string                                                    `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
+	ReplicationSourceVault    *bool                                                      `json:"ReplicationSourceVault,omitempty" xml:"ReplicationSourceVault,omitempty"`
+	ReplicationSourceVaultId  *string                                                    `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
+	ReplicationStatus         *string                                                    `json:"ReplicationStatus,omitempty" xml:"ReplicationStatus,omitempty"`
+	ReplicationTargetOwnerId  *int64                                                     `json:"ReplicationTargetOwnerId,omitempty" xml:"ReplicationTargetOwnerId,omitempty"`
+	ReplicationTargetRegionId *string                                                    `json:"ReplicationTargetRegionId,omitempty" xml:"ReplicationTargetRegionId,omitempty"`
+	ReplicationTargetVaultId  *string                                                    `json:"ReplicationTargetVaultId,omitempty" xml:"ReplicationTargetVaultId,omitempty"`
+	ResourceGroupId           *string                                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Retention                 *int64                                                     `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RsTargetAccountIds        *DescribeVaultsResponseBodyVaultsVaultRsTargetAccountIds   `json:"RsTargetAccountIds,omitempty" xml:"RsTargetAccountIds,omitempty" type:"Struct"`
+	SearchEnabled             *bool                                                      `json:"SearchEnabled,omitempty" xml:"SearchEnabled,omitempty"`
+	SnapshotCount             *int64                                                     `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	SourceTypes               *DescribeVaultsResponseBodyVaultsVaultSourceTypes          `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty" type:"Struct"`
+	Status                    *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageSize               *int64                                                     `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	Tags                      *DescribeVaultsResponseBodyVaultsVaultTags                 `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TrialInfo                 *DescribeVaultsResponseBodyVaultsVaultTrialInfo            `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
+	UpdatedTime               *int64                                                     `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId                   *string                                                    `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VaultName                 *string                                                    `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	VaultOwnerId              *int64                                                     `json:"VaultOwnerId,omitempty" xml:"VaultOwnerId,omitempty"`
+	VaultRegionId             *string                                                    `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
+	VaultStatusMessage        *string                                                    `json:"VaultStatusMessage,omitempty" xml:"VaultStatusMessage,omitempty"`
+	VaultStorageClass         *string                                                    `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
+	VaultType                 *string                                                    `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
+	WormEnabled               *bool                                                      `json:"WormEnabled,omitempty" xml:"WormEnabled,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVault) String() string {
@@ -946,96 +714,21 @@ func (s *DescribeVaultsResponseBodyVaultsVault) Validate() error {
 }
 
 type DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics struct {
-	// The number of archive plans.
-	//
-	// example:
-	//
-	// 1
-	Archive *int32 `json:"Archive,omitempty" xml:"Archive,omitempty"`
-	// The number of Cloud Parallel File Storage (CPFS) backup plans.
-	//
-	// example:
-	//
-	// 1
+	Archive          *int32 `json:"Archive,omitempty" xml:"Archive,omitempty"`
 	CommonFileSystem *int32 `json:"CommonFileSystem,omitempty" xml:"CommonFileSystem,omitempty"`
-	// The number of backup plans for General-purpose NAS file systems.
-	//
-	// example:
-	//
-	// 1
-	CommonNas *int32 `json:"CommonNas,omitempty" xml:"CommonNas,omitempty"`
-	// The number of backup plans for Cloud Storage Gateway (CSG) gateways.
-	//
-	// example:
-	//
-	// 1
-	Csg *int32 `json:"Csg,omitempty" xml:"Csg,omitempty"`
-	// The number of backup plans for ECS files.
-	//
-	// example:
-	//
-	// 1
-	EcsFile *int32 `json:"EcsFile,omitempty" xml:"EcsFile,omitempty"`
-	// The number of backup plans for SAP HANA instances.
-	//
-	// example:
-	//
-	// 1
-	EcsHana *int32 `json:"EcsHana,omitempty" xml:"EcsHana,omitempty"`
-	// The number of backup plans for Isilon storage systems.
-	//
-	// example:
-	//
-	// 1
-	Isilon *int32 `json:"Isilon,omitempty" xml:"Isilon,omitempty"`
-	// The number of backup plans for on-premises servers.
-	//
-	// example:
-	//
-	// 1
-	LocalFile *int32 `json:"LocalFile,omitempty" xml:"LocalFile,omitempty"`
-	// The number of backup plans for on-premises virtual machines (VMs).
-	//
-	// example:
-	//
-	// 1
-	LocalVm *int32 `json:"LocalVm,omitempty" xml:"LocalVm,omitempty"`
-	// The number of backup plans for MySQL databases.
-	//
-	// example:
-	//
-	// 1
-	MySql *int32 `json:"MySql,omitempty" xml:"MySql,omitempty"`
-	// The number of backup plans for NAS file systems.
-	//
-	// example:
-	//
-	// 1
-	Nas *int32 `json:"Nas,omitempty" xml:"Nas,omitempty"`
-	// The number of backup plans for Oracle databases.
-	//
-	// example:
-	//
-	// 1
-	Oracle *int32 `json:"Oracle,omitempty" xml:"Oracle,omitempty"`
-	// The number of backup plans for OSS buckets.
-	//
-	// example:
-	//
-	// 1
-	Oss *int32 `json:"Oss,omitempty" xml:"Oss,omitempty"`
-	// The number of backup plans for Tablestore instances.
-	//
-	// example:
-	//
-	// 1
-	Ots *int32 `json:"Ots,omitempty" xml:"Ots,omitempty"`
-	// The number of backup plans for SQL Server databases.
-	//
-	// example:
-	//
-	// 1
-	SqlServer *int32 `json:"SqlServer,omitempty" xml:"SqlServer,omitempty"`
+	CommonNas        *int32 `json:"CommonNas,omitempty" xml:"CommonNas,omitempty"`
+	Csg              *int32 `json:"Csg,omitempty" xml:"Csg,omitempty"`
+	EcsFile          *int32 `json:"EcsFile,omitempty" xml:"EcsFile,omitempty"`
+	EcsHana          *int32 `json:"EcsHana,omitempty" xml:"EcsHana,omitempty"`
+	Isilon           *int32 `json:"Isilon,omitempty" xml:"Isilon,omitempty"`
+	LocalFile        *int32 `json:"LocalFile,omitempty" xml:"LocalFile,omitempty"`
+	LocalVm          *int32 `json:"LocalVm,omitempty" xml:"LocalVm,omitempty"`
+	MySql            *int32 `json:"MySql,omitempty" xml:"MySql,omitempty"`
+	Nas              *int32 `json:"Nas,omitempty" xml:"Nas,omitempty"`
+	Oracle           *int32 `json:"Oracle,omitempty" xml:"Oracle,omitempty"`
+	Oss              *int32 `json:"Oss,omitempty" xml:"Oss,omitempty"`
+	Ots              *int32 `json:"Ots,omitempty" xml:"Ots,omitempty"`
+	SqlServer        *int32 `json:"SqlServer,omitempty" xml:"SqlServer,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) String() string {
@@ -1186,18 +879,8 @@ func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) Validate() e
 }
 
 type DescribeVaultsResponseBodyVaultsVaultReplicationProgress struct {
-	// The progress of historical data synchronization from the backup vault to the mirror vault. Valid values: 0 to 100.
-	//
-	// example:
-	//
-	// 100
 	HistoricalReplicationProgress *int32 `json:"HistoricalReplicationProgress,omitempty" xml:"HistoricalReplicationProgress,omitempty"`
-	// The latest synchronization time of incremental data in the mirror vault.
-	//
-	// example:
-	//
-	// 1579413159
-	NewReplicationProgress *int64 `json:"NewReplicationProgress,omitempty" xml:"NewReplicationProgress,omitempty"`
+	NewReplicationProgress        *int64 `json:"NewReplicationProgress,omitempty" xml:"NewReplicationProgress,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVaultReplicationProgress) String() string {
@@ -1315,29 +998,7 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTags) Validate() error {
 }
 
 type DescribeVaultsResponseBodyVaultsVaultTagsTag struct {
-	// The tag key of the backup vault. Valid values of N: 1 to 20.
-	//
-	// 	- The tag key cannot start with `aliyun` or `acs:`.
-	//
-	// 	- The tag key cannot contain `http://` or `https://`.
-	//
-	// 	- The tag key cannot be an empty string.
-	//
-	// example:
-	//
-	// aaa
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the backup vault. Valid values of N: 1 to 20.
-	//
-	// 	- The tag value cannot start with `aliyun` or `acs:`.
-	//
-	// 	- The tag value cannot contain `http://` or `https://`.
-	//
-	// 	- The tag value cannot be an empty string.
-	//
-	// example:
-	//
-	// a1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1372,30 +1033,10 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTagsTag) Validate() error {
 }
 
 type DescribeVaultsResponseBodyVaultsVaultTrialInfo struct {
-	// Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
-	//
-	// example:
-	//
-	// true
-	KeepAfterTrialExpiration *bool `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
-	// The expiration time of the free trial.
-	//
-	// example:
-	//
-	// 1584597600
-	TrialExpireTime *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
-	// The start time of the free trial.
-	//
-	// example:
-	//
-	// 1579413159
-	TrialStartTime *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
-	// The time when the free-trial backup vault is released.
-	//
-	// example:
-	//
-	// 1594965600
-	TrialVaultReleaseTime *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
+	KeepAfterTrialExpiration *bool  `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
+	TrialExpireTime          *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
+	TrialStartTime           *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
+	TrialVaultReleaseTime    *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
 }
 
 func (s DescribeVaultsResponseBodyVaultsVaultTrialInfo) String() string {

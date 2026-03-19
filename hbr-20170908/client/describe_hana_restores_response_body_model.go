@@ -33,8 +33,7 @@ type DescribeHanaRestoresResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about restore jobs.
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	HanaRestore *DescribeHanaRestoresResponseBodyHanaRestore `json:"HanaRestore,omitempty" xml:"HanaRestore,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
 	//
@@ -202,208 +201,35 @@ func (s *DescribeHanaRestoresResponseBodyHanaRestore) Validate() error {
 }
 
 type DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores struct {
-	// The backup ID.
-	//
-	// example:
-	//
-	// 1635315505
-	BackupID *int64 `json:"BackupID,omitempty" xml:"BackupID,omitempty"`
-	// The backup prefix.
-	//
-	// example:
-	//
-	// INC_DATA_BACKUP
-	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
-	// Indicates whether the differential backup and log backup are validated. Valid values:
-	//
-	// 	- true: Cloud Backup checks whether the required differential backup and log backup are available before the restore job starts. If the differential backup or log backup is unavailable, Cloud Backup does not start the restore job.
-	//
-	// 	- false: Cloud Backup does not check whether the required differential backup and log backup are available before the restore job starts.
-	//
-	// example:
-	//
-	// true
-	CheckAccess *bool `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
-	// Indicates whether all log entries are deleted from the log area after the log entries are restored. Valid values: true and false. If the return value is false, all log entries are deleted from the log area after the log entries are restored.
-	//
-	// example:
-	//
-	// true
-	ClearLog *bool `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
-	// The ID of the SAP HANA instance that is restored.
-	//
-	// example:
-	//
-	// cl-000923yu******p00j4
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The current recovery phase. This value is obtained from SAP HANA.
-	//
-	// example:
-	//
-	// 2
-	CurrentPhase *int32 `json:"CurrentPhase,omitempty" xml:"CurrentPhase,omitempty"`
-	// The current progress. This value is obtained from SAP HANA.
-	//
-	// example:
-	//
-	// 1
-	CurrentProgress *int64 `json:"CurrentProgress,omitempty" xml:"CurrentProgress,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// BWD
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The ID of the database recovery.
-	//
-	// example:
-	//
-	// 1644038961030
-	DatabaseRestoreId *int64 `json:"DatabaseRestoreId,omitempty" xml:"DatabaseRestoreId,omitempty"`
-	// The time when the restore job ends. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1634356382
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The log position to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
-	//
-	// example:
-	//
-	// 0
-	LogPosition *int64 `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
-	// The maximum recovery phase. This value is obtained from SAP HANA.
-	//
-	// example:
-	//
-	// 4
-	MaxPhase *int32 `json:"MaxPhase,omitempty" xml:"MaxPhase,omitempty"`
-	// The maximum progress. This value is obtained from SAP HANA.
-	//
-	// example:
-	//
-	// 1
-	MaxProgress *int64 `json:"MaxProgress,omitempty" xml:"MaxProgress,omitempty"`
-	// The details of the recovery phase.
-	//
-	// example:
-	//
-	// SQL Error 448 - recovery could not be completed:
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The recovery mode. Valid values:
-	//
-	// 	- **RECOVERY_TO_MOST_RECENT**: The database is restored to the recently available state to which the database has been backed up.
-	//
-	// 	- **RECOVERY_TO_POINT_IN_TIME**: The database is restored to a specified point in time.
-	//
-	// 	- **RECOVERY_TO_SPECIFIC_BACKUP**: The database is restored to a specified backup.
-	//
-	// 	- **RECOVERY_TO_LOG_POSITION**: The database is restored to a specified log position.
-	//
-	// example:
-	//
-	// RECOVERY_TO_SPECIFIC_BACKUP
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The recovery phase.
-	//
-	// example:
-	//
-	// restart
-	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The point in time at which the database is restored.
-	//
-	// example:
-	//
-	// 1635315505
-	ReachedTime *int64 `json:"ReachedTime,omitempty" xml:"ReachedTime,omitempty"`
-	// The point in time to which the database is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_POINT_IN_TIME**. Cloud Backup restores the database to a state closest to the specified point in time.
-	//
-	// example:
-	//
-	// 1649851200
-	RecoveryPointInTime *int64 `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
-	// The ID of the restore job.
-	//
-	// example:
-	//
-	// r-000c1en183ayn9sesgqh
-	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	// The name of the source system. This parameter indicates the name of the source database that is restored. Format: `<Source database name>@SID`.
-	//
-	// example:
-	//
-	// PRD@H4P
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the source SAP HANA instance.
-	//
-	// example:
-	//
-	// cl-0000g3mvy******5cj
-	SourceClusterId *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
-	// The time when the restore job starts. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1636970413
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The recovery status. This value is obtained from SAP HANA.
-	//
-	// example:
-	//
-	// successful
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the restore job. Valid values:
-	//
-	// 	- **RUNNING**: The job is running.
-	//
-	// 	- **COMPLETE**: The job is completed.
-	//
-	// 	- **PARTIAL_COMPLETE**: The job is partially completed.
-	//
-	// 	- **FAILED**: The job failed.
-	//
-	// 	- **CANCELED**: The job is canceled.
-	//
-	// 	- **EXPIRED**: The job timed out.
-	//
-	// example:
-	//
-	// COMPLETE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the database is restored to a different instance. Valid values:
-	//
-	// 	- true: The database is restored to a different instance.
-	//
-	// 	- false: The database is restored within the same instance.
-	//
-	// example:
-	//
-	// true
-	SystemCopy *bool `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
-	// Indicates whether a catalog backup is used to restore the database. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_SPECIFIC_BACKUP**. If the return value is false, Cloud Backup finds the backup file based on the specified prefix and then restores the backup file.
-	//
-	// example:
-	//
-	// false
-	UseCatalog *bool `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
-	// Indicates whether a differential backup or an incremental backup is used to restore the database. Valid values: true and false. If the return value is true, Cloud Backup uses a differential backup or an incremental backup to restore the database. If the return value is false, Cloud Backup uses a log backup to restore the database.
-	//
-	// example:
-	//
-	// true
-	UseDelta *bool `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
-	// The ID of the backup vault.
-	//
-	// example:
-	//
-	// v-000g9acf******gta
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
-	// The ID of the volume that is restored. This parameter is returned only if the value of the Mode parameter is **RECOVERY_TO_LOG_POSITION**.
-	//
-	// example:
-	//
-	// 0
-	VolumeId *int32 `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+	BackupID            *int64  `json:"BackupID,omitempty" xml:"BackupID,omitempty"`
+	BackupPrefix        *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
+	CheckAccess         *bool   `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
+	ClearLog            *bool   `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentPhase        *int32  `json:"CurrentPhase,omitempty" xml:"CurrentPhase,omitempty"`
+	CurrentProgress     *int64  `json:"CurrentProgress,omitempty" xml:"CurrentProgress,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabaseRestoreId   *int64  `json:"DatabaseRestoreId,omitempty" xml:"DatabaseRestoreId,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogPosition         *int64  `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
+	MaxPhase            *int32  `json:"MaxPhase,omitempty" xml:"MaxPhase,omitempty"`
+	MaxProgress         *int64  `json:"MaxProgress,omitempty" xml:"MaxProgress,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Mode                *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Phase               *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	ReachedTime         *int64  `json:"ReachedTime,omitempty" xml:"ReachedTime,omitempty"`
+	RecoveryPointInTime *int64  `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	RestoreId           *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceClusterId     *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State               *string `json:"State,omitempty" xml:"State,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemCopy          *bool   `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
+	UseCatalog          *bool   `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
+	UseDelta            *bool   `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
+	VaultId             *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VolumeId            *int32  `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
 }
 
 func (s DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) String() string {

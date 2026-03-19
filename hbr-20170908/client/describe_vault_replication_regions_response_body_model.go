@@ -33,8 +33,7 @@ type DescribeVaultReplicationRegionsResponseBody struct {
 	// example:
 	//
 	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The regions that support cross-region replication.
+	Message *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	Regions *DescribeVaultReplicationRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

@@ -20,18 +20,26 @@ type iReport interface {
 }
 
 type Report struct {
+	// The report path of failed files.
+	//
 	// example:
 	//
 	// temp/report/r-0000dnz7p4pk31u6madf_failed.csv
 	FailedFiles *string `json:"FailedFiles,omitempty" xml:"FailedFiles,omitempty"`
+	// The report path of skipped files.
+	//
 	// example:
 	//
 	// temp/report/r-0000dnz7p4pk31u6madf_skipped.csv
 	SkippedFiles *string `json:"SkippedFiles,omitempty" xml:"SkippedFiles,omitempty"`
+	// The report path of success files.
+	//
 	// example:
 	//
 	// temp/report/r-0000dnz7p4pk31u6madf_success.csv
 	SuccessFiles *string `json:"SuccessFiles,omitempty" xml:"SuccessFiles,omitempty"`
+	// The report path of total files.
+	//
 	// example:
 	//
 	// temp/report/r-0000dnz7p4pk31u6madf_total.csv

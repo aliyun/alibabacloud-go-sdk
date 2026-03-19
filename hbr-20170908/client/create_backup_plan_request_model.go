@@ -37,6 +37,8 @@ type iCreateBackupPlanRequest interface {
 	GetDetail() map[string]interface{}
 	SetDisabled(v bool) *CreateBackupPlanRequest
 	GetDisabled() *bool
+	SetEdition(v string) *CreateBackupPlanRequest
+	GetEdition() *string
 	SetExclude(v string) *CreateBackupPlanRequest
 	GetExclude() *string
 	SetFileSystemId(v string) *CreateBackupPlanRequest
@@ -171,7 +173,8 @@ type CreateBackupPlanRequest struct {
 	// example:
 	//
 	// true
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Disabled *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Edition  *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
 	//
 	// example:
@@ -368,6 +371,10 @@ func (s *CreateBackupPlanRequest) GetDisabled() *bool {
 	return s.Disabled
 }
 
+func (s *CreateBackupPlanRequest) GetEdition() *string {
+	return s.Edition
+}
+
 func (s *CreateBackupPlanRequest) GetExclude() *string {
 	return s.Exclude
 }
@@ -507,6 +514,11 @@ func (s *CreateBackupPlanRequest) SetDetail(v map[string]interface{}) *CreateBac
 
 func (s *CreateBackupPlanRequest) SetDisabled(v bool) *CreateBackupPlanRequest {
 	s.Disabled = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetEdition(v string) *CreateBackupPlanRequest {
+	s.Edition = &v
 	return s
 }
 

@@ -33,8 +33,7 @@ type DescribeRegionsResponseBody struct {
 	// example:
 	//
 	// successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The regions returned.
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -151,18 +150,8 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The region name.
-	//
-	// example:
-	//
-	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {

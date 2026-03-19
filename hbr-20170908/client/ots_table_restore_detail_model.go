@@ -26,13 +26,48 @@ type iOtsTableRestoreDetail interface {
 }
 
 type OtsTableRestoreDetail struct {
-	BatchChannelCount         *int32  `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
-	IndexNameSuffix           *string `json:"IndexNameSuffix,omitempty" xml:"IndexNameSuffix,omitempty"`
-	OverwriteExisting         *bool   `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
-	ReGenerateAutoIncrementPK *bool   `json:"ReGenerateAutoIncrementPK,omitempty" xml:"ReGenerateAutoIncrementPK,omitempty"`
-	RestoreIndex              *bool   `json:"RestoreIndex,omitempty" xml:"RestoreIndex,omitempty"`
-	RestoreSearchIndex        *bool   `json:"RestoreSearchIndex,omitempty" xml:"RestoreSearchIndex,omitempty"`
-	SearchIndexNameSuffix     *string `json:"SearchIndexNameSuffix,omitempty" xml:"SearchIndexNameSuffix,omitempty"`
+	// The number of concurrent processes for each restore job.
+	//
+	// example:
+	//
+	// 0
+	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
+	// The name prefixes of the indexes that you want to restore.
+	//
+	// example:
+	//
+	// 2022xxxx143933
+	IndexNameSuffix *string `json:"IndexNameSuffix,omitempty" xml:"IndexNameSuffix,omitempty"`
+	// Specifies whether to overwrite existing tables.
+	//
+	// example:
+	//
+	// true
+	OverwriteExisting *bool `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
+	// Specifies whether to regenerate auto-increment primary keys.
+	//
+	// example:
+	//
+	// true
+	ReGenerateAutoIncrementPK *bool `json:"ReGenerateAutoIncrementPK,omitempty" xml:"ReGenerateAutoIncrementPK,omitempty"`
+	// Specifies whether to restore indexes.
+	//
+	// example:
+	//
+	// true
+	RestoreIndex *bool `json:"RestoreIndex,omitempty" xml:"RestoreIndex,omitempty"`
+	// Specifies whether to restore search indexes.
+	//
+	// example:
+	//
+	// true
+	RestoreSearchIndex *bool `json:"RestoreSearchIndex,omitempty" xml:"RestoreSearchIndex,omitempty"`
+	// The name prefixes of the search indexes that you want to restore.
+	//
+	// example:
+	//
+	// 2022xxxx143933
+	SearchIndexNameSuffix *string `json:"SearchIndexNameSuffix,omitempty" xml:"SearchIndexNameSuffix,omitempty"`
 }
 
 func (s OtsTableRestoreDetail) String() string {

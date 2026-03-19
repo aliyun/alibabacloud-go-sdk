@@ -33,8 +33,7 @@ type DescribeCrossAccountsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the accounts used in cross-account backup.
+	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	CrossAccounts *DescribeCrossAccountsResponseBodyCrossAccounts `json:"CrossAccounts,omitempty" xml:"CrossAccounts,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
 	//
@@ -202,52 +201,17 @@ func (s *DescribeCrossAccountsResponseBodyCrossAccounts) Validate() error {
 }
 
 type DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount struct {
-	// The account alias. The value can be up to 32 bits in length.
-	//
-	// example:
-	//
-	// content
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The time when the account was created. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1654570439
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// BackupRole
+	Alias                *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CreatedTime          *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// example:
 	//
 	// CROSS_ACCOUNT
-	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// 15897534xxxxx625
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the backup type.
-	//
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the current account.
-	//
-	// example:
-	//
-	// 184164xxxxx49795
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The time when the account information was updated. The value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1640157098
-	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	CrossAccountType   *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	UpdatedTime        *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 }
 
 func (s DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) String() string {

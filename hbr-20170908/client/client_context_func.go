@@ -125,6 +125,102 @@ func (client *Client) AddCrossAccountWithContext(ctx context.Context, request *A
 
 // Summary:
 //
+// 浏览备份文件
+//
+// @param request - BrowseFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BrowseFilesResponse
+func (client *Client) BrowseFilesWithContext(ctx context.Context, request *BrowseFilesRequest, runtime *dara.RuntimeOptions) (_result *BrowseFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AbsolutePath) {
+		query["AbsolutePath"] = request.AbsolutePath
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.RestoreId) {
+		query["RestoreId"] = request.RestoreId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.SnapshotHash) {
+		query["SnapshotHash"] = request.SnapshotHash
+	}
+
+	if !dara.IsNil(request.StorageClass) {
+		query["StorageClass"] = request.StorageClass
+	}
+
+	if !dara.IsNil(request.Token) {
+		query["Token"] = request.Token
+	}
+
+	if !dara.IsNil(request.VaultId) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BrowseFiles"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BrowseFilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels a backup job.
 //
 // @param request - CancelBackupJobRequest
@@ -548,6 +644,10 @@ func (client *Client) CreateBackupPlanWithContext(ctx context.Context, tmpReq *C
 
 	if !dara.IsNil(request.Disabled) {
 		query["Disabled"] = request.Disabled
+	}
+
+	if !dara.IsNil(request.Edition) {
+		query["Edition"] = request.Edition
 	}
 
 	if !dara.IsNil(request.FileSystemId) {
@@ -1889,6 +1989,50 @@ func (client *Client) DeleteClientWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// @param request - DeleteContainerClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteContainerClusterResponse
+func (client *Client) DeleteContainerClusterWithContext(ctx context.Context, request *DeleteContainerClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteContainerClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Force) {
+		query["Force"] = request.Force
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteContainerCluster"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteContainerClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 删除跨账号信息
@@ -2779,6 +2923,62 @@ func (client *Client) DescribeContainerClusterWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeContainerClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeContainerResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeContainerResourceResponse
+func (client *Client) DescribeContainerResourceWithContext(ctx context.Context, request *DescribeContainerResourceRequest, runtime *dara.RuntimeOptions) (_result *DescribeContainerResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeContainerResource"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeContainerResourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4386,6 +4586,50 @@ func (client *Client) GenerateRamPolicyWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateRamPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains basic backup statistics.
+//
+// @param request - GetBasicStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBasicStatisticsResponse
+func (client *Client) GetBasicStatisticsWithContext(ctx context.Context, request *GetBasicStatisticsRequest, runtime *dara.RuntimeOptions) (_result *GetBasicStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBasicStatistics"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBasicStatisticsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

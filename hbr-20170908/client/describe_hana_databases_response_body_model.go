@@ -33,8 +33,7 @@ type DescribeHanaDatabasesResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about SAP HANA databases.
+	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	HanaDatabases *DescribeHanaDatabasesResponseBodyHanaDatabases `json:"HanaDatabases,omitempty" xml:"HanaDatabases,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
 	//
@@ -202,46 +201,12 @@ func (s *DescribeHanaDatabasesResponseBodyHanaDatabases) Validate() error {
 }
 
 type DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase struct {
-	// Indicates whether the database is started. Valid values:
-	//
-	// 	- **YES**: The database is started.
-	//
-	// 	- **NO**: The database is not started.
-	//
-	// example:
-	//
-	// YES
 	ActiveStatus *string `json:"ActiveStatus,omitempty" xml:"ActiveStatus,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The detailed information.
-	//
-	// example:
-	//
-	// master
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The hostname.
-	//
-	// example:
-	//
-	// izbp1jbf3zy******antqmz
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The service name.
-	//
-	// example:
-	//
-	// indexserver
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The port number.
-	//
-	// example:
-	//
-	// 30013
-	SqlPort *int32 `json:"SqlPort,omitempty" xml:"SqlPort,omitempty"`
+	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SqlPort      *int32  `json:"SqlPort,omitempty" xml:"SqlPort,omitempty"`
 }
 
 func (s DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) String() string {

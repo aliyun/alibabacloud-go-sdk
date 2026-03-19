@@ -28,7 +28,6 @@ type iDescribeClientsResponseBody interface {
 }
 
 type DescribeClientsResponseBody struct {
-	// The Cloud Backup clients.
 	Clients *DescribeClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Struct"`
 	// The response code. The status code 200 indicates that the request was successful.
 	//
@@ -202,140 +201,23 @@ func (s *DescribeClientsResponseBodyClients) Validate() error {
 }
 
 type DescribeClientsResponseBodyClientsClient struct {
-	// The alert settings. Valid value: INHERITED, which indicates that the Cloud Backup client sends alert notifications by using the same method configured for the backup vault.
-	//
-	// example:
-	//
-	// INHERITED
-	AlertSetting *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
-	// The ID of the Cloud Backup client.
-	//
-	// example:
-	//
-	// c-00062uu******2fgj
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The client name.
-	//
-	// example:
-	//
-	// client-20211224-101226
-	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
-	// The type of the Cloud Backup client. Valid value: **ECS_AGENT**, which indicates an SAP HANA backup client.
-	//
-	// example:
-	//
-	// ECS_AGENT
-	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The version number of the Cloud Backup client.
-	//
-	// example:
-	//
-	// 1.11.16
+	AlertSetting  *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName    *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	ClientType    *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The ID of the SAP HANA instance.
-	//
-	// example:
-	//
-	// cl-0008c48frr******ncpk
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The time when the Cloud Backup client was created.
-	//
-	// example:
-	//
-	// 1554347313
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The latest heartbeat time of the Cloud Backup client. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	HeartBeatTime *int64 `json:"HeartBeatTime,omitempty" xml:"HeartBeatTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// i-wz9b6wya******n8yo
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the ECS instance.
-	//
-	// example:
-	//
-	// swh-hbr
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum version number of the Cloud Backup client.
-	//
-	// example:
-	//
-	// 1.11.23
-	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The network type. Valid values:
-	//
-	// 	- **CLASSIC**: the classic network
-	//
-	// 	- **VPC**: the virtual private cloud (VPC)
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The status of the Cloud Backup client. Valid values:
-	//
-	// 	- **REGISTERED**: The backup client is registered.
-	//
-	// 	- **ACTIVATED**: The backup client is activated.
-	//
-	// 	- **DEACTIVATED**: The backup client fails to be activated.
-	//
-	// 	- **INSTALLING**: The backup client is being installed.
-	//
-	// 	- **INSTALL_FAILED**: The backup client fails to be installed.
-	//
-	// 	- **NOT_INSTALLED**: The backup client is not installed.
-	//
-	// 	- **UPGRADING**: The backup client is being upgraded.
-	//
-	// 	- **UPGRADE_FAILED**: The backup client fails to be upgraded.
-	//
-	// 	- **UNINSTALLING**: The backup client is being uninstalled.
-	//
-	// 	- **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
-	//
-	// 	- **STOPPED**: The backup client is out of service.
-	//
-	// 	- **UNKNOWN**: The backup client is disconnected.
-	//
-	// example:
-	//
-	// ACTIVATED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status information.
-	//
-	// example:
-	//
-	// HANA_NOT_SUPPORT
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreatedTime   *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	HeartBeatTime *int64  `json:"HeartBeatTime,omitempty" xml:"HeartBeatTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MaxVersion    *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	NetworkType   *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
-	// The time when the Cloud Backup client was updated. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// Indicates whether data is transmitted over HTTPS. Valid values:
-	//
-	// 	- true: Data is transmitted over HTTPS.
-	//
-	// 	- false: Data is transmitted over HTTP.
-	//
-	// example:
-	//
-	// false
-	UseHttps *bool `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
-	// The ID of the backup vault.
-	//
-	// example:
-	//
-	// v-00029mx6o******n85lg
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	UpdatedTime   *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UseHttps      *bool   `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
+	VaultId       *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeClientsResponseBodyClientsClient) String() string {

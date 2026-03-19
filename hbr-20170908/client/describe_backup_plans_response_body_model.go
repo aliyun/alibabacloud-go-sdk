@@ -28,7 +28,6 @@ type iDescribeBackupPlansResponseBody interface {
 }
 
 type DescribeBackupPlansResponseBody struct {
-	// The queried backup plans.
 	BackupPlans *DescribeBackupPlansResponseBodyBackupPlans `json:"BackupPlans,omitempty" xml:"BackupPlans,omitempty" type:"Struct"`
 	// The HTTP status code. The status code 200 indicates that the call is successful.
 	//
@@ -202,273 +201,53 @@ func (s *DescribeBackupPlansResponseBodyBackupPlans) Validate() error {
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
-	// The ID of the data source group.
-	//
-	// example:
-	//
-	// System-Database
-	BackupSourceGroupId *string `json:"BackupSourceGroupId,omitempty" xml:"BackupSourceGroupId,omitempty"`
-	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
-	//
-	// example:
-	//
-	// COMPLETE
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **OSS**. This parameter indicates the name of the OSS bucket.
-	//
-	// example:
-	//
-	// hbr-backup-oss
-	Bucket         *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
-	//
-	// example:
-	//
-	// {"dataSourceId": "ds-123456789", "path": "/changelist"}
-	ChangeListPath *string `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
-	// The ID of the backup client.
-	//
-	// example:
-	//
-	// c-000ge4w*****1qb
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The ID of the client group.
-	//
-	// example:
-	//
-	// cl-000ht6o9******h
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **NAS**. This parameter indicates the time when the file system was created. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether a backup plan is automatically created based on tags.
-	//
-	// example:
-	//
-	// false
-	CreatedByTag *bool `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
-	// The time when the backup plan was created. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the Resource Access Management (RAM) role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// BackupRole
-	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Indicates whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
-	//
-	// 	- SELF_ACCOUNT
-	//
-	// 	- CROSS_ACCOUNT
-	//
-	// example:
-	//
-	// CROSS_ACCOUNT
-	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// 1841642xxxxx9795
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the data source.
-	//
-	// example:
-	//
-	// ds-000ht6o9*****w61
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source details at the destination. This parameter is returned only for data synchronization.
-	//
-	// example:
-	//
-	// {\\"prefix\\":\\"/\\"}
-	DestDataSourceDetail *string `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
-	// The data source ID at the destination. This parameter is returned only for data synchronization.
-	//
-	// example:
-	//
-	// ds-*********************
-	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
-	// The data source type at the destination. This parameter is returned only for data synchronization.
-	//
-	// example:
-	//
-	// OSS
-	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
-	// The details about ECS instance backup.
-	//
-	// example:
-	//
-	// {\\"doCopy\\":true,\\"doBackup\\":false,\\"instanceName\\":\\"instance example\\",\\"appConsistent\\":false,\\"destinationRegionId\\":\\"cn-shanghai\\",\\"enableFsFreeze\\":true,\\"osNameEn\\":\\"Windows Server  2019 Data Center Edition 64bit Chinese Edition\\",\\"osName\\":\\"Windows Server  2019 Data Center Edition 64bit Chinese Edition\\",\\"diskIdList\\":[],\\"backupVaultId\\":\\"\\",\\"snapshotGroup\\":true,\\"destinationRetention\\":35,\\"platform\\":\\"Windows Server 2012\\",\\"timeoutInSeconds\\":60,\\"backupRetention\\":1,\\"osType\\":\\"windows\\",\\"preScriptPath\\":\\"\\",\\"postScriptPath\\":\\"\\",\\"enableWriters\\":true,\\"ecsDeleted\\":false}
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Indicates whether the backup plan is disabled. Valid values:
-	//
-	// 	- true: The backup plan is disabled.
-	//
-	// 	- false: The backup plan is enabled.
-	//
-	// example:
-	//
-	// false
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the paths to the files that are excluded from the backup job.
-	//
-	// example:
-	//
-	// ["/var", "/proc"]
-	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **NAS**. This parameter indicates the ID of the NAS file system.
-	//
-	// example:
-	//
-	// 00594
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The matched tag rules.
-	HitTags *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Struct"`
-	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the paths to the files that are backed up.
-	//
-	// example:
-	//
-	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
-	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// The ID of the instance group.
-	//
-	// example:
-	//
-	// i-**
-	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the ID of the ECS instance.
-	//
-	// example:
-	//
-	// i-*********************
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Tablestore instance.
-	//
-	// example:
-	//
-	// instancename
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the feature of keeping at least one backup version is enabled. Valid values:
-	//
-	// 	- 0: The feature is disabled.
-	//
-	// 	- 1: The feature is enabled.
-	//
-	// example:
-	//
-	// 0
-	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// The latest execution job id of plan.
-	//
-	// example:
-	//
-	// job-12345678
-	LatestExecuteJobId *string `json:"LatestExecuteJobId,omitempty" xml:"LatestExecuteJobId,omitempty"`
+	BackupSourceGroupId  *string                                                      `json:"BackupSourceGroupId,omitempty" xml:"BackupSourceGroupId,omitempty"`
+	BackupType           *string                                                      `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket               *string                                                      `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	BusinessStatus       *string                                                      `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ChangeListPath       *string                                                      `json:"ChangeListPath,omitempty" xml:"ChangeListPath,omitempty"`
+	ClientId             *string                                                      `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClusterId            *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateTime           *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedByTag         *bool                                                        `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
+	CreatedTime          *int64                                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountRoleName *string                                                      `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string                                                      `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64                                                       `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	DataSourceId         *string                                                      `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DestDataSourceDetail *string                                                      `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
+	DestDataSourceId     *string                                                      `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
+	DestSourceType       *string                                                      `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
+	Detail               *string                                                      `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Disabled             *bool                                                        `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Exclude              *string                                                      `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId         *string                                                      `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	HitTags              *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Struct"`
+	Include              *string                                                      `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceGroupId      *string                                                      `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceId           *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	KeepLatestSnapshots  *int64                                                       `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
+	LatestExecuteJobId   *string                                                      `json:"LatestExecuteJobId,omitempty" xml:"LatestExecuteJobId,omitempty"`
 	// example:
 	//
 	// job-00**************9khz
-	LatestFinishJobId *string `json:"LatestFinishJobId,omitempty" xml:"LatestFinishJobId,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
-	//
-	// example:
-	//
-	// {"UseVSS":false}
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details about the Tablestore instance.
-	OtsDetail *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	// The source paths. This parameter is valid only when **SourceType*	- is set to **ECS_FILE**.
-	Paths *DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
-	// The ID of the backup plan.
-	//
-	// example:
-	//
-	// plan-*********************
-	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// The name of the backup plan.
-	//
-	// example:
-	//
-	// planname
-	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **OSS**. This parameter indicates the prefix of the objects that are backed up.
-	//
-	// example:
-	//
-	// oss-prefix
-	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The backup resources. This parameter is valid only for disk backup.
-	Resources *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// The retention period of the backup data. Unit: days.
-	//
-	// example:
-	//
-	// 7
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The backup policies. This parameter is valid only for disk backup.
-	Rules *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
-	//
-	// 	- **startTime**: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-	//
-	// 	- **interval**: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
-	//
-	// example:
-	//
-	// I|1602673264|P1D
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// The type of the data source. Valid values:
-	//
-	// 	- **ECS_FILE**: ECS files
-	//
-	// 	- **OSS**: OSS buckets
-	//
-	// 	- **NAS**: NAS file systems
-	//
-	// 	- **OTS**: Tablestore instances
-	//
-	// 	- **UDM_ECS**: ECS instances
-	//
-	// 	- **SYNC**: data synchronization
-	//
-	// example:
-	//
-	// ECS_FILE
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**. This parameter indicates the throttling rules. Format: `{start}|{end}|{bandwidth}`. Multiple throttling rules are separated with vertical bars (`|`). A time range cannot overlap with another one.
-	//
-	// 	- start: the start hour.
-	//
-	// 	- end: the end hour.
-	//
-	// 	- bandwidth: the bandwidth. Unit: KB.
-	//
-	// example:
-	//
-	// 0:24:5120
-	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// The free trial information.
-	TrialInfo *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
-	// The time when the backup plan was updated. This value is a UNIX timestamp. Unit: seconds.
-	//
-	// example:
-	//
-	// 1554347313
-	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The ID of the backup vault.
-	//
-	// example:
-	//
-	// v-*********************
-	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	LatestFinishJobId *string                                                        `json:"LatestFinishJobId,omitempty" xml:"LatestFinishJobId,omitempty"`
+	Options           *string                                                        `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail         *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
+	Paths             *DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths     `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
+	PlanId            *string                                                        `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName          *string                                                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix            *string                                                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Resources         *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	Retention         *int64                                                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rules             *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Schedule          *string                                                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType        *string                                                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit        *string                                                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	TrialInfo         *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo `json:"TrialInfo,omitempty" xml:"TrialInfo,omitempty" type:"Struct"`
+	UpdatedTime       *int64                                                         `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId           *string                                                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlan) String() string {
@@ -944,28 +723,9 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTags) Validate()
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// type
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag-based matching rule. Valid values:
-	//
-	// 	- **EQUAL**: Both the tag key and tag value are matched.
-	//
-	// 	- **NOT**: The tag key is matched and the tag value is not matched.
-	//
-	// example:
-	//
-	// EQUAL
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) String() string {
@@ -1008,7 +768,6 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanHitTagsHitTag) Vali
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail struct {
-	// The names of the tables in the Tablestore instance.
 	TableNames *DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetailTableNames `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Struct"`
 }
 
@@ -1123,23 +882,8 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanResources) Validate
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanResourcesResource struct {
-	// Additional information about the data source.
-	//
-	// example:
-	//
-	// {\\"doBackup\\":false,\\"diskName\\":\\"data_disk\\",\\"size\\":100,\\"type\\":\\"data\\",\\"category\\":\\"cloud_essd\\",\\"imageId\\":\\"\\",\\"device\\":\\"/dev/xvdb\\",\\"encrypted\\":false}
-	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The ID of the data source.
-	//
-	// example:
-	//
-	// d-j6cgioir6m******lu4
+	Extra      *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the data source. Valid value: **UDM_DISK**.
-	//
-	// example:
-	//
-	// UDMDISK
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -1217,64 +961,15 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRules) Validate() e
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule struct {
-	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
-	//
-	// example:
-	//
-	// COMPLETE
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The ID of the region in which the remote backup vault resides.
-	//
-	// example:
-	//
-	// cn-shanghai
-	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// The retention period of the backup data in remote backup mode. Unit: days.
-	//
-	// example:
-	//
-	// 90
-	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
-	// Indicates whether the policy is disabled.
-	//
-	// example:
-	//
-	// true
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// Indicates whether the snapshot data is backed up to the backup vault.
-	//
-	// example:
-	//
-	// false
-	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// The retention period of the backup data. Unit: days.
-	//
-	// example:
-	//
-	// 90
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The policy ID.
-	//
-	// example:
-	//
-	// rule-0008i52rf0ulpni6kn6m
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The policy name.
-	//
-	// example:
-	//
-	// Disk Golden Rule
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified by `{startTime}` and the subsequent backup jobs at an interval that is specified by `{interval}`. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
-	//
-	// 	- `startTime`: the time at which the system starts to run a backup job. The time follows the UNIX time format. Unit: seconds.
-	//
-	// 	- `interval`: the interval at which the system runs a backup job. The interval follows the ISO 8601 standard. For example, PT1H indicates an interval of 1 hour. P1D indicates an interval of one day.
-	//
-	// example:
-	//
-	// I|1631685600|P1D
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	DestinationRetention *int64  `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	Disabled             *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DoCopy               *bool   `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RuleId               *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Schedule             *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
 func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule) String() string {
@@ -1371,30 +1066,10 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanRulesRule) Validate
 }
 
 type DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo struct {
-	// Indicates whether you are billed based on the pay-as-you-go method after the free trial ends.
-	//
-	// example:
-	//
-	// true
-	KeepAfterTrialExpiration *bool `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
-	// The expiration time of the free trial.
-	//
-	// example:
-	//
-	// 1584597600
-	TrialExpireTime *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
-	// The start time of the free trial.
-	//
-	// example:
-	//
-	// 1579413159
-	TrialStartTime *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
-	// The time when the free-trial backup vault is released.
-	//
-	// example:
-	//
-	// 1594965600
-	TrialVaultReleaseTime *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
+	KeepAfterTrialExpiration *bool  `json:"KeepAfterTrialExpiration,omitempty" xml:"KeepAfterTrialExpiration,omitempty"`
+	TrialExpireTime          *int64 `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
+	TrialStartTime           *int64 `json:"TrialStartTime,omitempty" xml:"TrialStartTime,omitempty"`
+	TrialVaultReleaseTime    *int64 `json:"TrialVaultReleaseTime,omitempty" xml:"TrialVaultReleaseTime,omitempty"`
 }
 
 func (s DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo) String() string {

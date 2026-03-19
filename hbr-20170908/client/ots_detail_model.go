@@ -14,6 +14,7 @@ type iOtsDetail interface {
 }
 
 type OtsDetail struct {
+	// public
 	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
