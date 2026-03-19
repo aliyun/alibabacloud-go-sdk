@@ -408,6 +408,10 @@ func (client *Client) CreateResourceGroupWithContext(ctx context.Context, reques
 		query["BusinessChannel"] = request.BusinessChannel
 	}
 
+	if !dara.IsNil(request.EnableAliyunResourceGroup) {
+		query["EnableAliyunResourceGroup"] = request.EnableAliyunResourceGroup
+	}
+
 	if !dara.IsNil(request.IsResourceGroupWithOfficeSite) {
 		query["IsResourceGroupWithOfficeSite"] = request.IsResourceGroupWithOfficeSite
 	}
@@ -1693,7 +1697,7 @@ func (client *Client) ModifyOrgWithContext(ctx context.Context, request *ModifyO
 
 // Summary:
 //
-// Updates the contact information of a convenience account.
+// Modifies user information.
 //
 // @param request - ModifyUserRequest
 //

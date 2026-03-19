@@ -591,6 +591,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 		query["BusinessChannel"] = request.BusinessChannel
 	}
 
+	if !dara.IsNil(request.EnableAliyunResourceGroup) {
+		query["EnableAliyunResourceGroup"] = request.EnableAliyunResourceGroup
+	}
+
 	if !dara.IsNil(request.IsResourceGroupWithOfficeSite) {
 		query["IsResourceGroupWithOfficeSite"] = request.IsResourceGroupWithOfficeSite
 	}
@@ -2252,7 +2256,7 @@ func (client *Client) ModifyOrg(request *ModifyOrgRequest) (_result *ModifyOrgRe
 
 // Summary:
 //
-// Updates the contact information of a convenience account.
+// Modifies user information.
 //
 // @param request - ModifyUserRequest
 //
@@ -2308,7 +2312,7 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 
 // Summary:
 //
-// Updates the contact information of a convenience account.
+// Modifies user information.
 //
 // @param request - ModifyUserRequest
 //

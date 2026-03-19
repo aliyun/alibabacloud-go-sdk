@@ -11,6 +11,8 @@ type iCreateResourceGroupRequest interface {
 	GoString() string
 	SetBusinessChannel(v string) *CreateResourceGroupRequest
 	GetBusinessChannel() *string
+	SetEnableAliyunResourceGroup(v bool) *CreateResourceGroupRequest
+	GetEnableAliyunResourceGroup() *bool
 	SetIsResourceGroupWithOfficeSite(v int64) *CreateResourceGroupRequest
 	GetIsResourceGroupWithOfficeSite() *int64
 	SetPlatform(v string) *CreateResourceGroupRequest
@@ -23,7 +25,8 @@ type CreateResourceGroupRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	BusinessChannel           *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	EnableAliyunResourceGroup *bool   `json:"EnableAliyunResourceGroup,omitempty" xml:"EnableAliyunResourceGroup,omitempty"`
 	// >  This parameter is not publicly available.
 	//
 	// example:
@@ -54,6 +57,10 @@ func (s *CreateResourceGroupRequest) GetBusinessChannel() *string {
 	return s.BusinessChannel
 }
 
+func (s *CreateResourceGroupRequest) GetEnableAliyunResourceGroup() *bool {
+	return s.EnableAliyunResourceGroup
+}
+
 func (s *CreateResourceGroupRequest) GetIsResourceGroupWithOfficeSite() *int64 {
 	return s.IsResourceGroupWithOfficeSite
 }
@@ -68,6 +75,11 @@ func (s *CreateResourceGroupRequest) GetResourceGroupName() *string {
 
 func (s *CreateResourceGroupRequest) SetBusinessChannel(v string) *CreateResourceGroupRequest {
 	s.BusinessChannel = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetEnableAliyunResourceGroup(v bool) *CreateResourceGroupRequest {
+	s.EnableAliyunResourceGroup = &v
 	return s
 }
 
