@@ -6527,6 +6527,92 @@ func (client *Client) ListEcsInstances(request *ListEcsInstancesRequest) (_resul
 
 // Summary:
 //
+// 获取事件列表
+//
+// @param request - ListEventRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEventRecordsResponse
+func (client *Client) ListEventRecordsWithOptions(eventType *string, request *ListEventRecordsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListEventRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		query["beginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	if !dara.IsNil(request.TermContent) {
+		query["termContent"] = request.TermContent
+	}
+
+	if !dara.IsNil(request.TermType) {
+		query["termType"] = request.TermType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEventRecords"),
+		Version:     dara.String("2017-06-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/" + dara.PercentEncode(dara.StringValue(eventType)) + "/listEventRecords"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEventRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取事件列表
+//
+// @param request - ListEventRecordsRequest
+//
+// @return ListEventRecordsResponse
+func (client *Client) ListEventRecords(eventType *string, request *ListEventRecordsRequest) (_result *ListEventRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEventRecordsResponse{}
+	_body, _err := client.ListEventRecordsWithOptions(eventType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the extended file configuration of a Logstash instance.
 //
 // @param headers - map
@@ -7905,6 +7991,80 @@ func (client *Client) ListSnapshotReposByInstanceId(InstanceId *string) (_result
 
 // Summary:
 //
+// 统计事件记录
+//
+// @param request - ListStatsEventRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStatsEventRecordsResponse
+func (client *Client) ListStatsEventRecordsWithOptions(request *ListStatsEventRecordsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListStatsEventRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventType) {
+		query["eventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.Level) {
+		query["level"] = request.Level
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStatsEventRecords"),
+		Version:     dara.String("2017-06-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/event/statsEventRecords"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStatsEventRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 统计事件记录
+//
+// @param request - ListStatsEventRecordsRequest
+//
+// @return ListStatsEventRecordsResponse
+func (client *Client) ListStatsEventRecords(request *ListStatsEventRecordsRequest) (_result *ListStatsEventRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListStatsEventRecordsResponse{}
+	_body, _err := client.ListStatsEventRecordsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the tags that are added to one or more resources.
 //
 // @param request - ListTagResourcesRequest
@@ -8408,6 +8568,76 @@ func (client *Client) ModifyInstanceMaintainTime(InstanceId *string, request *Mo
 	headers := make(map[string]*string)
 	_result = &ModifyInstanceMaintainTimeResponse{}
 	_body, _err := client.ModifyInstanceMaintainTimeWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计划执行时间
+//
+// @param request - ModifyScheduleExecuteTimeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyScheduleExecuteTimeResponse
+func (client *Client) ModifyScheduleExecuteTimeWithOptions(instanceId *string, request *ModifyScheduleExecuteTimeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModifyScheduleExecuteTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["eventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.ScheduleExecuteTime) {
+		query["scheduleExecuteTime"] = request.ScheduleExecuteTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyScheduleExecuteTime"),
+		Version:     dara.String("2017-06-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/event/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/actions/modify-execute-time"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyScheduleExecuteTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改计划执行时间
+//
+// @param request - ModifyScheduleExecuteTimeRequest
+//
+// @return ModifyScheduleExecuteTimeResponse
+func (client *Client) ModifyScheduleExecuteTime(instanceId *string, request *ModifyScheduleExecuteTimeRequest) (_result *ModifyScheduleExecuteTimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModifyScheduleExecuteTimeResponse{}
+	_body, _err := client.ModifyScheduleExecuteTimeWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
