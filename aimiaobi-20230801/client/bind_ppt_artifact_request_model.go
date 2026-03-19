@@ -25,7 +25,10 @@ type BindPptArtifactRequest struct {
 	// example:
 	//
 	// 12342
-	ArtifactId     *int32  `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactId *int32 `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// This parameter is required.
 	//

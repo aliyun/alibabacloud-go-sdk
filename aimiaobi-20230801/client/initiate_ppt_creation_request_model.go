@@ -20,6 +20,9 @@ type iInitiatePptCreationRequest interface {
 }
 
 type InitiatePptCreationRequest struct {
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	Outline        *string `json:"Outline,omitempty" xml:"Outline,omitempty"`
 	// This parameter is required.

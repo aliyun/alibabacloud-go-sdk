@@ -16,6 +16,9 @@ type iGetPptConfigRequest interface {
 }
 
 type GetPptConfigRequest struct {
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// example:
 	//

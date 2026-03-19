@@ -22,6 +22,9 @@ type iListPptArtifactsRequest interface {
 }
 
 type ListPptArtifactsRequest struct {
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// example:
 	//

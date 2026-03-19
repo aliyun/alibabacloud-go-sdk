@@ -18,6 +18,9 @@ type iDeletePptArtifactRequest interface {
 }
 
 type DeletePptArtifactRequest struct {
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	PptArtifactId  *string `json:"PptArtifactId,omitempty" xml:"PptArtifactId,omitempty"`
 	// example:

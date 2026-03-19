@@ -18,6 +18,9 @@ type iRunPptOutlineGenerationRequest interface {
 }
 
 type RunPptOutlineGenerationRequest struct {
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// This parameter is required.
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`

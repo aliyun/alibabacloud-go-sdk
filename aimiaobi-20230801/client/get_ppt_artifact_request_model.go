@@ -18,6 +18,9 @@ type iGetPptArtifactRequest interface {
 }
 
 type GetPptArtifactRequest struct {
+	// example:
+	//
+	// abc
 	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 	// example:
 	//
