@@ -41,20 +41,19 @@ type DescribeRestoreRangeInfoResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The information about the time ranges to which you can restore data.
-	Items *DescribeRestoreRangeInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the request.
+	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribeRestoreRangeInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
 	//
 	// example:
 	//
 	// E2BD9DFC-6760-5F49-97C5-DA739E29****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// - **true**: The request succeeded.
 	//
-	// 	- **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -168,42 +167,28 @@ func (s *DescribeRestoreRangeInfoResponseBodyItems) Validate() error {
 }
 
 type DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange struct {
-	// The beginning of the time range to which you can restore data.
-	//
 	// example:
 	//
-	// 1646760282000
-	BeginTimestampForRestore *int64 `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
-	// The end of the time range to which you can restore data.
-	//
+	// 127.0.0.1
+	BackupSourceHost *string `json:"BackupSourceHost,omitempty" xml:"BackupSourceHost,omitempty"`
 	// example:
 	//
-	// 1646760308000
-	EndTimestampForRestore *int64 `json:"EndTimestampForRestore,omitempty" xml:"EndTimestampForRestore,omitempty"`
-	// If the value of the RangeType parameter is point, this parameter is returned. The value of this parameter describes information about all backup points in the time range.
-	FullBackupList *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRangeFullBackupList `json:"FullBackupList,omitempty" xml:"FullBackupList,omitempty" type:"Struct"`
-	// The type of the time range to which you can restore data.
-	//
-	// 	- **point**: The time range contains discrete points in time at which full backups were performed.
-	//
-	// 	- **range**: The time range is a period of time for which continuous backup is performed. You can specify a random point in time in the time range to restore data.
-	//
-	// example:
-	//
-	// point
-	RangeType *string `json:"RangeType,omitempty" xml:"RangeType,omitempty"`
-	// The ID of the database instance.
-	//
-	// example:
-	//
-	// rm-bp106x9tk2c91****
-	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The location of the database.
-	//
+	// rm-testxx
+	BackupSourceInstanceId *string `json:"BackupSourceInstanceId,omitempty" xml:"BackupSourceInstanceId,omitempty"`
 	// example:
 	//
 	// rds
-	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
+	BackupSourceInstanceType *string `json:"BackupSourceInstanceType,omitempty" xml:"BackupSourceInstanceType,omitempty"`
+	// example:
+	//
+	// 3306
+	BackupSourcePort           *string                                                                 `json:"BackupSourcePort,omitempty" xml:"BackupSourcePort,omitempty"`
+	BeginTimestampForRestore   *int64                                                                  `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
+	EndTimestampForRestore     *int64                                                                  `json:"EndTimestampForRestore,omitempty" xml:"EndTimestampForRestore,omitempty"`
+	FullBackupList             *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRangeFullBackupList `json:"FullBackupList,omitempty" xml:"FullBackupList,omitempty" type:"Struct"`
+	RangeType                  *string                                                                 `json:"RangeType,omitempty" xml:"RangeType,omitempty"`
+	SourceEndpointInstanceID   *string                                                                 `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
+	SourceEndpointInstanceType *string                                                                 `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
 }
 
 func (s DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) String() string {
@@ -212,6 +197,22 @@ func (s DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) String() strin
 
 func (s DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetBackupSourceHost() *string {
+	return s.BackupSourceHost
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetBackupSourceInstanceId() *string {
+	return s.BackupSourceInstanceId
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetBackupSourceInstanceType() *string {
+	return s.BackupSourceInstanceType
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetBackupSourcePort() *string {
+	return s.BackupSourcePort
 }
 
 func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetBeginTimestampForRestore() *int64 {
@@ -236,6 +237,26 @@ func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetSourceEndp
 
 func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) GetSourceEndpointInstanceType() *string {
 	return s.SourceEndpointInstanceType
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) SetBackupSourceHost(v string) *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange {
+	s.BackupSourceHost = &v
+	return s
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) SetBackupSourceInstanceId(v string) *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange {
+	s.BackupSourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) SetBackupSourceInstanceType(v string) *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange {
+	s.BackupSourceInstanceType = &v
+	return s
+}
+
+func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) SetBackupSourcePort(v string) *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange {
+	s.BackupSourcePort = &v
+	return s
 }
 
 func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange) SetBeginTimestampForRestore(v int64) *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRange {
@@ -312,24 +333,9 @@ func (s *DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRangeFullBackupList)
 }
 
 type DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRangeFullBackupListFullBackupDetail struct {
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// qecnsxkd****
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The end time of the full backup task. Example: 1646760308000.
-	//
-	// example:
-	//
-	// 1646760308000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the full backup task. Example: 1646760282000.
-	//
-	// example:
-	//
-	// 1646760282000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeRestoreRangeInfoResponseBodyItemsDBSRecoverRangeFullBackupListFullBackupDetail) String() string {

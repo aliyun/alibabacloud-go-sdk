@@ -26,7 +26,7 @@ type iCreateBackupPlanResponseBody interface {
 }
 
 type CreateBackupPlanResponseBody struct {
-	// The ID of the backup schedule.
+	// The backup plan ID.
 	//
 	// example:
 	//
@@ -50,23 +50,23 @@ type CreateBackupPlanResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 21437345592****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7BCF6D62-885F-5A4A-91A1-679760E7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

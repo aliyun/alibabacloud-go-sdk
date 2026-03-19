@@ -28,7 +28,7 @@ type iDescribeIncrementBackupListRequest interface {
 }
 
 type DescribeIncrementBackupListRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+	// The backup plan ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) interface to get this parameter\\"s value.
 	//
 	// This parameter is required.
 	//
@@ -36,46 +36,46 @@ type DescribeIncrementBackupListRequest struct {
 	//
 	// dbsqdss5tmh****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A unique string that ensures the idempotence of the request and prevents duplicate requests.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The end of the time range to query.
+	// The end backup UNIX timestamp.
 	//
 	// example:
 	//
 	// 1570701361600
 	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be a positive integer. Default value: 0.
+	// The page number. The value must be greater than or equal to 0 and less than or equal to the maximum integer value. The default value is 0.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Valid values: 30, 50, and 100.
+	// The number of entries per page. Valid values are 30, 50, and 100.
 	//
-	// > Default value: 30.
+	// > The default number of entries per page is 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to return the storage class. Valid values:
+	// Indicates whether to display the storage class. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
-	// > Default value: true.
+	// > The default value is true.
 	//
 	// example:
 	//
 	// true
 	ShowStorageType *bool `json:"ShowStorageType,omitempty" xml:"ShowStorageType,omitempty"`
-	// The beginning of the time range to query.
+	// The start backup UNIX timestamp.
 	//
 	// example:
 	//

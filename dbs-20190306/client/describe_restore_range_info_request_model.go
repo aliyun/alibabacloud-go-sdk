@@ -24,7 +24,7 @@ type iDescribeRestoreRangeInfoRequest interface {
 }
 
 type DescribeRestoreRangeInfoRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+	// The ID of the backup plan. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeRestoreRangeInfoRequest struct {
 	//
 	// dbssl67c7mx****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The earliest point in time to which you can restore data. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of the parameter for each backup schedule.
+	// The start timestamp of the restorable time range. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type DescribeRestoreRangeInfoRequest struct {
 	//
 	// 1646674092000
 	BeginTimestampForRestore *int64 `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token that ensures the idempotence of requests and prevents duplicate submissions.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The latest point in time to which you can restore data. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of the parameter for each backup schedule.
+	// The end timestamp of the restorable time range. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type DescribeRestoreRangeInfoRequest struct {
 	// 1646846814000
 	EndTimestampForRestore *int64  `json:"EndTimestampForRestore,omitempty" xml:"EndTimestampForRestore,omitempty"`
 	OwnerId                *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to query the most recent point in time to which you can restore data.
+	// Whether to enable recent restore.
 	//
 	// example:
 	//

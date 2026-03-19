@@ -30,7 +30,7 @@ type UpgradeBackupPlanResponseBody struct {
 	//
 	// example:
 	//
-	// dbstooi01****
+	// dbstooi01XXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The error code.
 	//

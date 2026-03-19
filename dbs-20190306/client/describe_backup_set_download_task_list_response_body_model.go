@@ -49,44 +49,43 @@ type DescribeBackupSetDownloadTaskListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backup schedules.
-	Items *DescribeBackupSetDownloadTaskListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	HttpStatusCode *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribeBackupSetDownloadTaskListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
 	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6DC3D286-E0E6-5988-A558-2184984B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of backup set download tasks.
+	// The total number of download records for backup sets.
 	//
 	// example:
 	//
 	// 1
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -236,160 +235,25 @@ func (s *DescribeBackupSetDownloadTaskListResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupSetDownloadTaskListResponseBodyItemsBackupSetDownloadTaskDetail struct {
-	// The backup gateway that is used to download the backup set. This parameter is available only if the value of the BackupSetDownloadWay parameter is auto.
-	//
-	// example:
-	//
-	// N/A
-	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The ID of the backup schedule.
-	//
-	// example:
-	//
-	// qhnuhyw3****
-	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The code of the backup set.
-	//
-	// example:
-	//
-	// mysql-bin.00XXXX
-	BackupSetCode *string `json:"BackupSetCode,omitempty" xml:"BackupSetCode,omitempty"`
-	// The format in which the backup set is downloaded. Valid values:
-	//
-	// 	- **Native**
-	//
-	// 	- **SQL**
-	//
-	// 	- **CSV**
-	//
-	// 	- **JSON**
-	//
-	// example:
-	//
-	// Native
-	BackupSetDataFormat *string `json:"BackupSetDataFormat,omitempty" xml:"BackupSetDataFormat,omitempty"`
-	// The size of the data in the backup set.
-	//
-	// example:
-	//
-	// 237837
-	BackupSetDataSize *int64 `json:"BackupSetDataSize,omitempty" xml:"BackupSetDataSize,omitempty"`
-	// The type of the database.
-	//
-	// example:
-	//
-	// MySQL
-	BackupSetDbType *string `json:"BackupSetDbType,omitempty" xml:"BackupSetDbType,omitempty"`
-	// The timestamp that indicates when the backup set download task was created.
-	//
-	// example:
-	//
-	// 1642044001000
-	BackupSetDownloadCreateTime *int64 `json:"BackupSetDownloadCreateTime,omitempty" xml:"BackupSetDownloadCreateTime,omitempty"`
-	// The server directory to which the backup set is downloaded.
-	//
-	// > This parameter is available only if the value of the BackupSetDownloadWay parameter is auto.
-	//
-	// example:
-	//
-	// N/A
-	BackupSetDownloadDir *string `json:"BackupSetDownloadDir,omitempty" xml:"BackupSetDownloadDir,omitempty"`
-	// The timestamp that indicates when the backup set download task is complete.
-	//
-	// example:
-	//
-	// 1642044013000
-	BackupSetDownloadFinishTime *int64 `json:"BackupSetDownloadFinishTime,omitempty" xml:"BackupSetDownloadFinishTime,omitempty"`
-	// The public download URL of the backup set.
-	//
-	// > This parameter is available only if the value of the BackupSetDownloadWay parameter is manual and the conversion is complete.
-	//
-	// example:
-	//
-	// "//dbs-137XXXX-cn-hangzhou-1hr5cpbtmXXXX.oss-cn-hangzhou.example"
+	BackupGatewayId              *int64  `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
+	BackupPlanId                 *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
+	BackupSetCode                *string `json:"BackupSetCode,omitempty" xml:"BackupSetCode,omitempty"`
+	BackupSetDataFormat          *string `json:"BackupSetDataFormat,omitempty" xml:"BackupSetDataFormat,omitempty"`
+	BackupSetDataSize            *int64  `json:"BackupSetDataSize,omitempty" xml:"BackupSetDataSize,omitempty"`
+	BackupSetDbType              *string `json:"BackupSetDbType,omitempty" xml:"BackupSetDbType,omitempty"`
+	BackupSetDownloadCreateTime  *int64  `json:"BackupSetDownloadCreateTime,omitempty" xml:"BackupSetDownloadCreateTime,omitempty"`
+	BackupSetDownloadDir         *string `json:"BackupSetDownloadDir,omitempty" xml:"BackupSetDownloadDir,omitempty"`
+	BackupSetDownloadFinishTime  *int64  `json:"BackupSetDownloadFinishTime,omitempty" xml:"BackupSetDownloadFinishTime,omitempty"`
 	BackupSetDownloadInternetUrl *string `json:"BackupSetDownloadInternetUrl,omitempty" xml:"BackupSetDownloadInternetUrl,omitempty"`
-	// The internal download URL of the backup set.
-	//
-	// > This parameter is available only if the value of the BackupSetDownloadWay parameter is manual and the conversion is complete.
-	//
-	// example:
-	//
-	// "//dbs-13XXXX-cn-hangzhou-1hr5cpbtmXXXX.oss-cn-hangzhou-internal.example"
 	BackupSetDownloadIntranetUrl *string `json:"BackupSetDownloadIntranetUrl,omitempty" xml:"BackupSetDownloadIntranetUrl,omitempty"`
-	// The status of the backup set download task. Valid values:
-	//
-	// 	- **checking**: The backup set download task is being prechecked.
-	//
-	// 	- **init**: The backup set download task is not started and fails to pass the precheck.
-	//
-	// 	- **check_pass**: The backup set download task passes the precheck.
-	//
-	// 	- **pause**: The backup set download task is paused.
-	//
-	// 	- **schedule**: The backup set download task is waiting to be scheduled
-	//
-	// 	- **running**: The backup set download task is running.
-	//
-	// 	- **stop**: The backup set download task fails.
-	//
-	// 	- **finish**: The backup set download task is complete.
-	//
-	// example:
-	//
-	// finish
-	BackupSetDownloadStatus *string `json:"BackupSetDownloadStatus,omitempty" xml:"BackupSetDownloadStatus,omitempty"`
-	// The type of the destination server to which the backup set is downloaded.
-	//
-	// > This parameter is available only if the value of the BackupSetDownloadWay parameter is auto. A value of agent indicates a server on which a backup gateway is installed.
-	//
-	// example:
-	//
-	// N/A
-	BackupSetDownloadTargetType *string `json:"BackupSetDownloadTargetType,omitempty" xml:"BackupSetDownloadTargetType,omitempty"`
-	// The ID of the backup set download task.
-	//
-	// example:
-	//
-	// urxgrxt7****
-	BackupSetDownloadTaskId *string `json:"BackupSetDownloadTaskId,omitempty" xml:"BackupSetDownloadTaskId,omitempty"`
-	// The name of the backup set download task.
-	//
-	// example:
-	//
-	// 1h7za2yws****-ManualCont
-	BackupSetDownloadTaskName *string `json:"BackupSetDownloadTaskName,omitempty" xml:"BackupSetDownloadTaskName,omitempty"`
-	// The method in which the backup set is downloaded. Valid values:
-	//
-	// 	- **manual**: The backup set is manually downloaded.
-	//
-	// 	- **auto**: The backup set is automatically downloaded.
-	//
-	// example:
-	//
-	// manual
-	BackupSetDownloadWay *string `json:"BackupSetDownloadWay,omitempty" xml:"BackupSetDownloadWay,omitempty"`
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 1h7za2yws****
-	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The type of the backup set task. Valid values:
-	//
-	// 	- **cbs_backup_sub_full**: logical full backup set download task
-	//
-	// 	- **cbs_backup_sub_cont**: logical incremental backup set download task
-	//
-	// example:
-	//
-	// cbs_backup_sub_cont
-	BackupSetJobType *string `json:"BackupSetJobType,omitempty" xml:"BackupSetJobType,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// java.lang.IndexOutOfBoundsException.
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	BackupSetDownloadStatus      *string `json:"BackupSetDownloadStatus,omitempty" xml:"BackupSetDownloadStatus,omitempty"`
+	BackupSetDownloadTargetType  *string `json:"BackupSetDownloadTargetType,omitempty" xml:"BackupSetDownloadTargetType,omitempty"`
+	BackupSetDownloadTaskId      *string `json:"BackupSetDownloadTaskId,omitempty" xml:"BackupSetDownloadTaskId,omitempty"`
+	BackupSetDownloadTaskName    *string `json:"BackupSetDownloadTaskName,omitempty" xml:"BackupSetDownloadTaskName,omitempty"`
+	BackupSetDownloadWay         *string `json:"BackupSetDownloadWay,omitempty" xml:"BackupSetDownloadWay,omitempty"`
+	BackupSetId                  *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	BackupSetJobType             *string `json:"BackupSetJobType,omitempty" xml:"BackupSetJobType,omitempty"`
+	ErrMessage                   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 }
 
 func (s DescribeBackupSetDownloadTaskListResponseBodyItemsBackupSetDownloadTaskDetail) String() string {

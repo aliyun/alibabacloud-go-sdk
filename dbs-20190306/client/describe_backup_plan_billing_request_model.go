@@ -20,22 +20,22 @@ type iDescribeBackupPlanBillingRequest interface {
 }
 
 type DescribeBackupPlanBillingRequest struct {
-	// The ID of the backup gateway.
+	// The ID of the backup plan. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 160813
+	// dbstooi01ex****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// A client token to ensure the idempotence of the request. The client generates this value. It must be unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Indicates whether the storage type is displayed.
+	// Specifies whether to display the storage class.
 	//
 	// example:
 	//

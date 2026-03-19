@@ -30,7 +30,7 @@ type RenewBackupPlanResponseBody struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// dbstooi01exxx
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The error code.
 	//
@@ -54,7 +54,7 @@ type RenewBackupPlanResponseBody struct {
 	//
 	// example:
 	//
-	// 20202****
+	// 202020202020
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
 	//

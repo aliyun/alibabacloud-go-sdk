@@ -13,26 +13,32 @@ type iDisableBackupLogRequest interface {
 	GetBackupPlanId() *string
 	SetClientToken(v string) *DisableBackupLogRequest
 	GetClientToken() *string
+	SetDisableMysqlPhysicalBackupBinlogOnly(v string) *DisableBackupLogRequest
+	GetDisableMysqlPhysicalBackupBinlogOnly() *string
 	SetOwnerId(v string) *DisableBackupLogRequest
 	GetOwnerId() *string
 }
 
 type DisableBackupLogRequest struct {
-	// The backup schedule ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID of the backup schedule.
+	// The ID of the backup plan. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to query it.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dbstooi01xxxx
+	// dbstooi01****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// Ensures idempotence and prevents duplicate requests.
 	//
 	// example:
 	//
-	// dbs
+	// ETnLKlblzczshOTUbOCziJZNwH****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// false
+	DisableMysqlPhysicalBackupBinlogOnly *string `json:"DisableMysqlPhysicalBackupBinlogOnly,omitempty" xml:"DisableMysqlPhysicalBackupBinlogOnly,omitempty"`
+	OwnerId                              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DisableBackupLogRequest) String() string {
@@ -51,6 +57,10 @@ func (s *DisableBackupLogRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *DisableBackupLogRequest) GetDisableMysqlPhysicalBackupBinlogOnly() *string {
+	return s.DisableMysqlPhysicalBackupBinlogOnly
+}
+
 func (s *DisableBackupLogRequest) GetOwnerId() *string {
 	return s.OwnerId
 }
@@ -62,6 +72,11 @@ func (s *DisableBackupLogRequest) SetBackupPlanId(v string) *DisableBackupLogReq
 
 func (s *DisableBackupLogRequest) SetClientToken(v string) *DisableBackupLogRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DisableBackupLogRequest) SetDisableMysqlPhysicalBackupBinlogOnly(v string) *DisableBackupLogRequest {
+	s.DisableMysqlPhysicalBackupBinlogOnly = &v
 	return s
 }
 

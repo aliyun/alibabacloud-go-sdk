@@ -45,38 +45,37 @@ type DescribePreCheckProgressListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of check items.
-	Items *DescribePreCheckProgressListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The precheck progress. Valid values: 0 to 100.
+	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribePreCheckProgressListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The precheck progress. The value ranges from 0 to 100.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C4A45FE1-A903-470D-B113-F12A4DF942AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the precheck. Valid values:
+	// The precheck status. Valid values:
 	//
-	// 	- **running**: The precheck is in progress.
+	// - **running**: The precheck is in progress.
 	//
-	// 	- **failed**: The precheck failed.
+	// - **failed**: The precheck failed.
 	//
-	// 	- **finish**: The precheck is complete.
+	// - **finish**: The precheck is complete.
 	//
 	// example:
 	//
-	// failed
+	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -208,66 +207,14 @@ func (s *DescribePreCheckProgressListResponseBodyItems) Validate() error {
 }
 
 type DescribePreCheckProgressListResponseBodyItemsPreCheckProgressDetail struct {
-	// The time when the check for the item started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1583734969000
-	BootTime *int64 `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// java.lang.RuntimeException: Could not find any schema ......
-	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
-	// The time when the check for the item was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1583734969000
-	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The name of the check item.
-	//
-	// example:
-	//
-	// CHECK_OTHER
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The ID of the job for the check item.
-	//
-	// example:
-	//
-	// uvk8f6fxnq5s
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the group to which the check item belongs.
-	//
-	// example:
-	//
-	// CHECK_OTHER
-	Names *string `json:"Names,omitempty" xml:"Names,omitempty"`
-	// The sequence number of the check item.
-	//
-	// example:
-	//
-	// 10
-	OrderNum *string `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	// The state of the check for the item. Valid values:
-	//
-	// 	- **init**: The check for the item is being initialized.
-	//
-	// 	- **warning**: A warning is reported.
-	//
-	// 	- **catched**: An exception occurs.
-	//
-	// 	- **running**: The check for the item is in progress.
-	//
-	// 	- **failed**: The check for the item fails.
-	//
-	// 	- **finish**: The check for the item is completed.
-	//
-	// example:
-	//
-	// warning
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	BootTime   *int64  `json:"BootTime,omitempty" xml:"BootTime,omitempty"`
+	ErrMsg     *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	FinishTime *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Item       *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Names      *string `json:"Names,omitempty" xml:"Names,omitempty"`
+	OrderNum   *string `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
+	State      *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribePreCheckProgressListResponseBodyItemsPreCheckProgressDetail) String() string {

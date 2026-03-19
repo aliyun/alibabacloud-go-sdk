@@ -9,6 +9,8 @@ type iDescribeBackupPlanListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBackupMethod(v string) *DescribeBackupPlanListRequest
+	GetBackupMethod() *string
 	SetBackupPlanId(v string) *DescribeBackupPlanListRequest
 	GetBackupPlanId() *string
 	SetBackupPlanName(v string) *DescribeBackupPlanListRequest
@@ -27,10 +29,20 @@ type iDescribeBackupPlanListRequest interface {
 	GetRegion() *string
 	SetResourceGroupId(v string) *DescribeBackupPlanListRequest
 	GetResourceGroupId() *string
+	SetShowBackupStrategyInfo(v bool) *DescribeBackupPlanListRequest
+	GetShowBackupStrategyInfo() *bool
+	SetShowRecoverTimeRange(v bool) *DescribeBackupPlanListRequest
+	GetShowRecoverTimeRange() *bool
+	SetShowStorageStrategyInfo(v bool) *DescribeBackupPlanListRequest
+	GetShowStorageStrategyInfo() *bool
 }
 
 type DescribeBackupPlanListRequest struct {
-	// The ID of the backup schedule. You can query multiple backup schedule IDs. Separate multiple IDs with commas (,).
+	// example:
+	//
+	// logical
+	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// Backup plan ID. To list multiple backup plans, separate IDs with commas.
 	//
 	// example:
 	//
@@ -42,48 +54,48 @@ type DescribeBackupPlanListRequest struct {
 	//
 	// test123
 	BackupPlanName *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
-	// Backup plan status, the values are as follows:
+	// Backup plan status. Valid values:
 	//
-	// 	- **wait**: Not configured
+	// - **wait**: Not configured.
 	//
-	// 	- **init**: Not started (pre-check failed)
+	// - **init**: Not started (precheck failed).
 	//
-	// 	- **running**: Running
+	// - **running**: Running.
 	//
-	// 	- **stop**: Failed
+	// - **stop**: Failed.
 	//
-	// 	- **pause**: Paused
+	// - **pause**: Paused.
 	//
-	// 	- **locked**: Locked
+	// - **locked**: Locked.
 	//
-	// 	- **check_pass**: Pre-check passed
+	// - **check_pass**: Precheck passed.
 	//
 	// example:
 	//
 	// wait
 	BackupPlanStatus *string `json:"BackupPlanStatus,omitempty" xml:"BackupPlanStatus,omitempty"`
-	// Used to ensure the idempotence of the request, preventing duplicate submissions.
+	// A client token used to ensure idempotence and prevent duplicate requests.
 	//
 	// example:
 	//
 	// ASDASDASDSADASFCZXVZ
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Page number, must be greater than or equal to 0 and not exceed the maximum value of Integer. The default value is 0.
+	// Page number. Valid values: integers greater than or equal to 0 and less than or equal to the maximum integer value. Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of records per page, the value should be between 1 and 100.
+	// Number of records per page. Valid values: 1 to 100.
 	//
-	// > The default is **30**.
+	// > Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// DBS region, you can view the supported DBS regions by calling the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) interface.
+	// DBS region. Call [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) to view supported regions.
 	//
 	// example:
 	//
@@ -94,7 +106,10 @@ type DescribeBackupPlanListRequest struct {
 	// example:
 	//
 	// rg-aekzecovzti****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId         *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShowBackupStrategyInfo  *bool   `json:"ShowBackupStrategyInfo,omitempty" xml:"ShowBackupStrategyInfo,omitempty"`
+	ShowRecoverTimeRange    *bool   `json:"ShowRecoverTimeRange,omitempty" xml:"ShowRecoverTimeRange,omitempty"`
+	ShowStorageStrategyInfo *bool   `json:"ShowStorageStrategyInfo,omitempty" xml:"ShowStorageStrategyInfo,omitempty"`
 }
 
 func (s DescribeBackupPlanListRequest) String() string {
@@ -103,6 +118,10 @@ func (s DescribeBackupPlanListRequest) String() string {
 
 func (s DescribeBackupPlanListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackupPlanListRequest) GetBackupMethod() *string {
+	return s.BackupMethod
 }
 
 func (s *DescribeBackupPlanListRequest) GetBackupPlanId() *string {
@@ -139,6 +158,23 @@ func (s *DescribeBackupPlanListRequest) GetRegion() *string {
 
 func (s *DescribeBackupPlanListRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
+}
+
+func (s *DescribeBackupPlanListRequest) GetShowBackupStrategyInfo() *bool {
+	return s.ShowBackupStrategyInfo
+}
+
+func (s *DescribeBackupPlanListRequest) GetShowRecoverTimeRange() *bool {
+	return s.ShowRecoverTimeRange
+}
+
+func (s *DescribeBackupPlanListRequest) GetShowStorageStrategyInfo() *bool {
+	return s.ShowStorageStrategyInfo
+}
+
+func (s *DescribeBackupPlanListRequest) SetBackupMethod(v string) *DescribeBackupPlanListRequest {
+	s.BackupMethod = &v
+	return s
 }
 
 func (s *DescribeBackupPlanListRequest) SetBackupPlanId(v string) *DescribeBackupPlanListRequest {
@@ -183,6 +219,21 @@ func (s *DescribeBackupPlanListRequest) SetRegion(v string) *DescribeBackupPlanL
 
 func (s *DescribeBackupPlanListRequest) SetResourceGroupId(v string) *DescribeBackupPlanListRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListRequest) SetShowBackupStrategyInfo(v bool) *DescribeBackupPlanListRequest {
+	s.ShowBackupStrategyInfo = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListRequest) SetShowRecoverTimeRange(v bool) *DescribeBackupPlanListRequest {
+	s.ShowRecoverTimeRange = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListRequest) SetShowStorageStrategyInfo(v bool) *DescribeBackupPlanListRequest {
+	s.ShowStorageStrategyInfo = &v
 	return s
 }
 

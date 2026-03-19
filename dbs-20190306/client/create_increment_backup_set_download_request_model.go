@@ -24,13 +24,13 @@ type iCreateIncrementBackupSetDownloadRequest interface {
 type CreateIncrementBackupSetDownloadRequest struct {
 	// The format in which the incremental backup set is downloaded. Valid values:
 	//
-	// 	- **Native**
+	// - **Native**
 	//
-	// 	- **SQL**
+	// - **SQL**
 	//
-	// 	- **CSV**
+	// - **CSV**
 	//
-	// 	- **JSON**
+	// - **JSON**
 	//
 	// > Default value: Native.
 	//
@@ -44,7 +44,7 @@ type CreateIncrementBackupSetDownloadRequest struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// t4yh0g0g****
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The ID of the incremental backup set. To obtain the backup set ID, you can call the [DescribeIncrementBackupList](https://help.aliyun.com/document_detail/2869833.html) operation and view the value of the **BackupSetId*	- parameter in the response.
 	//
@@ -52,13 +52,13 @@ type CreateIncrementBackupSetDownloadRequest struct {
 	//
 	// example:
 	//
-	// test
+	// mysql-bin.000054
 	BackupSetName *string `json:"BackupSetName,omitempty" xml:"BackupSetName,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCz********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }

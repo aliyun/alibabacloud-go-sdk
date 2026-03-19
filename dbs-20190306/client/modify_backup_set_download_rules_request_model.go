@@ -36,7 +36,7 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// example:
 	//
-	// 2331****
+	// 23312323
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
 	// The ID of the backup schedule.
 	//
@@ -44,7 +44,7 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// example:
 	//
-	// dbstooi01****
+	// dbstooi01xxxx
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The server directory to which the backup set is downloaded.
 	//
@@ -62,13 +62,13 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	BackupSetDownloadTargetType *string `json:"BackupSetDownloadTargetType,omitempty" xml:"BackupSetDownloadTargetType,omitempty"`
 	// The type of the destination directory to which the backup set is downloaded. This parameter is required if the automatic download feature is enabled. Valid values:
 	//
-	// 	- local
+	// - local
 	//
-	// 	- nas
+	// - nas
 	//
-	// 	- ftp
+	// - ftp
 	//
-	// 	- minio
+	// - minio
 	//
 	// > Default value: local.
 	//
@@ -80,17 +80,17 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCzx****
+	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The format in which the full backup set is downloaded. Valid values:
 	//
-	// 	- Native
+	// - Native
 	//
-	// 	- SQL
+	// - SQL
 	//
-	// 	- CSV
+	// - CSV
 	//
-	// 	- JSON
+	// - JSON
 	//
 	// > Default value: CSV.
 	//
@@ -100,13 +100,13 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	FullDataFormat *string `json:"FullDataFormat,omitempty" xml:"FullDataFormat,omitempty"`
 	// The format in which the incremental backup set is downloaded. Valid values:
 	//
-	// 	- Native
+	// - Native
 	//
-	// 	- SQL
+	// - SQL
 	//
-	// 	- CSV
+	// - CSV
 	//
-	// 	- JSON
+	// - JSON
 	//
 	// > Default value: Native.
 	//

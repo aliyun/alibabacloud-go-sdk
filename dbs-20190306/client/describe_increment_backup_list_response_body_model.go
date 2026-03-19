@@ -49,32 +49,31 @@ type DescribeIncrementBackupListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of incremental backup tasks.
-	Items *DescribeIncrementBackupListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribeIncrementBackupListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
 	//
 	// example:
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A5D52069-E8AA-5056-8C5C-654C3610****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -86,7 +85,7 @@ type DescribeIncrementBackupListResponseBody struct {
 	//
 	// 1
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -236,76 +235,35 @@ func (s *DescribeIncrementBackupListResponseBodyItems) Validate() error {
 }
 
 type DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile struct {
-	// The point in time when the backup set expires.
-	//
+	BackupSetExpiredTime *int64  `json:"BackupSetExpiredTime,omitempty" xml:"BackupSetExpiredTime,omitempty"`
+	BackupSetId          *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	BackupSetJobId       *string `json:"BackupSetJobId,omitempty" xml:"BackupSetJobId,omitempty"`
+	BackupSize           *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStatus         *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// example:
 	//
-	// 1711506719000
-	BackupSetExpiredTime *int64 `json:"BackupSetExpiredTime,omitempty" xml:"BackupSetExpiredTime,omitempty"`
-	// The ID of the backup set.
-	//
+	// 127.0.0.1
+	SourceEndpointHost *string `json:"SourceEndpointHost,omitempty" xml:"SourceEndpointHost,omitempty"`
 	// example:
 	//
-	// mysql-bin.00****
-	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The ID of the incremental backup task.
-	//
+	// rm-testxx
+	SourceEndpointInstanceId *string `json:"SourceEndpointInstanceId,omitempty" xml:"SourceEndpointInstanceId,omitempty"`
 	// example:
 	//
-	// 1hv5g9wk4****
-	BackupSetJobId *string `json:"BackupSetJobId,omitempty" xml:"BackupSetJobId,omitempty"`
-	// The size of the backup set.
-	//
+	// rds
+	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
+	SourceEndpointIpPort       *string `json:"SourceEndpointIpPort,omitempty" xml:"SourceEndpointIpPort,omitempty"`
 	// example:
 	//
-	// 18535
-	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The status of the incremental backup task. Valid values:
-	//
-	// 	- **INIT**: The incremental backup task is not started.
-	//
-	// 	- **FILLING**: The incremental backup task is in progress.
-	//
-	// 	- **COMPLETED**: The incremental backup task is complete.
-	//
-	// 	- **UNCOMPLETED**: The incremental backup task is not complete.
-	//
+	// 3306
+	SourceEndpointPort *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
 	// example:
 	//
-	// FILLING
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The end time of the incremental backup task.
-	//
-	// example:
-	//
-	// 1648434713000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The endpoint that is used to connect to the database.
-	//
-	// example:
-	//
-	// 172.1XX.103.1:4XXX
-	SourceEndpointIpPort *string `json:"SourceEndpointIpPort,omitempty" xml:"SourceEndpointIpPort,omitempty"`
-	// The start time of the incremental backup task.
-	//
-	// example:
-	//
-	// 1648433764000
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The storage class of the backup data. Valid values:
-	//
-	// 	- **Standard**: The storage class is Standard.
-	//
-	// 	- **IA**: The storage class is Infrequent Access (IA).
-	//
-	// 	- **Archive**: The storage class is Archive.
-	//
-	// 	- **UNKNOWN**: The storage class is unknown. This value is returned because the task is not complete.
-	//
-	// example:
-	//
-	// Standard
-	StorageMethod *string `json:"StorageMethod,omitempty" xml:"StorageMethod,omitempty"`
+	// cn-beijing
+	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	StartTime            *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StorageMethod        *string `json:"StorageMethod,omitempty" xml:"StorageMethod,omitempty"`
 }
 
 func (s DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) String() string {
@@ -340,8 +298,28 @@ func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetEnd
 	return s.EndTime
 }
 
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetSourceEndpointHost() *string {
+	return s.SourceEndpointHost
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetSourceEndpointInstanceId() *string {
+	return s.SourceEndpointInstanceId
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetSourceEndpointInstanceType() *string {
+	return s.SourceEndpointInstanceType
+}
+
 func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetSourceEndpointIpPort() *string {
 	return s.SourceEndpointIpPort
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetSourceEndpointPort() *string {
+	return s.SourceEndpointPort
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetSourceEndpointRegion() *string {
+	return s.SourceEndpointRegion
 }
 
 func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) GetStartTime() *int64 {
@@ -382,8 +360,33 @@ func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetEnd
 	return s
 }
 
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetSourceEndpointHost(v string) *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile {
+	s.SourceEndpointHost = &v
+	return s
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetSourceEndpointInstanceId(v string) *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile {
+	s.SourceEndpointInstanceId = &v
+	return s
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetSourceEndpointInstanceType(v string) *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile {
+	s.SourceEndpointInstanceType = &v
+	return s
+}
+
 func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetSourceEndpointIpPort(v string) *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile {
 	s.SourceEndpointIpPort = &v
+	return s
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetSourceEndpointPort(v string) *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile {
+	s.SourceEndpointPort = &v
+	return s
+}
+
+func (s *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile) SetSourceEndpointRegion(v string) *DescribeIncrementBackupListResponseBodyItemsIncrementBackupFile {
+	s.SourceEndpointRegion = &v
 	return s
 }
 

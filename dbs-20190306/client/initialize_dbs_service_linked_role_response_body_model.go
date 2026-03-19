@@ -22,19 +22,19 @@ type iInitializeDbsServiceLinkedRoleResponseBody interface {
 }
 
 type InitializeDbsServiceLinkedRoleResponseBody struct {
-	// The value is null.
+	// An empty value.
 	//
 	// example:
 	//
 	// null
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// EntityAlreadyExists.Role : The role already exists:AliyunServiceRoleForDBS\\r\\nRequestId : 73******-3B4D-501A-9505-FA8B9******
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type InitializeDbsServiceLinkedRoleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

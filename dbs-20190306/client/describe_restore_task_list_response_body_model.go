@@ -49,40 +49,39 @@ type DescribeRestoreTaskListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backup schedule.
-	Items *DescribeRestoreTaskListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	HttpStatusCode *int32                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribeRestoreTaskListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9C397502-B4F2-4E22-AD97-C81F0049F3F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of restore tasks.
+	// The total number of restore jobs.
 	//
 	// example:
 	//
 	// 1
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -232,178 +231,60 @@ func (s *DescribeRestoreTaskListResponseBodyItems) Validate() error {
 }
 
 type DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail struct {
-	// The ID of the backup gateway.
-	//
-	// example:
-	//
-	// 324234332
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The ID of the backup schedule.
-	//
 	// example:
 	//
-	// dbs1hvb0wXXXX
-	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the full backup set that is used in the restore task.
-	//
+	// TESTGATEWAY
+	BackupGatewayIdentifier *string `json:"BackupGatewayIdentifier,omitempty" xml:"BackupGatewayIdentifier,omitempty"`
+	BackupPlanId            *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
+	BackupSetId             *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// example:
 	//
-	// 1ibh2f5uXXX
-	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The restore progress of the incremental log files.
-	//
-	// example:
-	//
-	// 100
-	ContinuousRestoreProgress *int32 `json:"ContinuousRestoreProgress,omitempty" xml:"ContinuousRestoreProgress,omitempty"`
-	// The unique ID (UID) of the Alibaba Cloud account to which the backup schedule belongs.
-	//
-	// example:
-	//
-	// 2xxx7778xxxxxxxxxx
-	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// The name of the RAM role that can be used to perform backups across Alibaba Cloud accounts.
-	//
-	// example:
-	//
-	// test123
-	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test
+	// cn-beijing
+	BackupSourceOssRegion           *string `json:"BackupSourceOssRegion,omitempty" xml:"BackupSourceOssRegion,omitempty"`
+	ContinuousRestoreProgress       *int32  `json:"ContinuousRestoreProgress,omitempty" xml:"ContinuousRestoreProgress,omitempty"`
+	CrossAliyunId                   *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
+	CrossRoleName                   *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
 	DestinationEndpointDatabaseName *string `json:"DestinationEndpointDatabaseName,omitempty" xml:"DestinationEndpointDatabaseName,omitempty"`
-	// The ID of the database instance.
-	//
 	// example:
 	//
-	// rm-bp1p8c2947XXX
-	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
-	// The location of the database. Valid values:
-	//
-	// 	- RDS
-	//
-	// 	- ECS
-	//
-	// 	- Express: The database is connected to DBS by using Express Connect, VPN Gateway, or Smart Access Gateway.
-	//
-	// 	- Agent: The database is connected to DBS over a DBS backup gateway.
-	//
-	// 	- DDS: The database is an ApsaraDB for MongoDB database.
-	//
-	// 	- Other: The database is connected to DBS by using the IP address and port of the database.
-	//
+	// true
+	DestinationEndpointEnableSsl *string `json:"DestinationEndpointEnableSsl,omitempty" xml:"DestinationEndpointEnableSsl,omitempty"`
 	// example:
 	//
-	// RDS
+	// 127.0.0.1
+	DestinationEndpointHost         *string `json:"DestinationEndpointHost,omitempty" xml:"DestinationEndpointHost,omitempty"`
+	DestinationEndpointInstanceID   *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
 	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
-	// The endpoint that is used to connect to the database.
-	//
+	DestinationEndpointIpPort       *string `json:"DestinationEndpointIpPort,omitempty" xml:"DestinationEndpointIpPort,omitempty"`
+	DestinationEndpointOracleSID    *string `json:"DestinationEndpointOracleSID,omitempty" xml:"DestinationEndpointOracleSID,omitempty"`
 	// example:
 	//
-	// 100.X.X.10:33204
-	DestinationEndpointIpPort *string `json:"DestinationEndpointIpPort,omitempty" xml:"DestinationEndpointIpPort,omitempty"`
-	// The SID of the Oracle database.
-	//
+	// 3306
+	DestinationEndpointPort                       *string `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
+	DestinationEndpointRegion                     *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
+	DestinationEndpointUserName                   *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
+	ErrMessage                                    *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	FullDataRestoreProgress                       *int32  `json:"FullDataRestoreProgress,omitempty" xml:"FullDataRestoreProgress,omitempty"`
+	FullStruAfterRestoreProgress                  *int32  `json:"FullStruAfterRestoreProgress,omitempty" xml:"FullStruAfterRestoreProgress,omitempty"`
+	FullStruforeRestoreProgress                   *int32  `json:"FullStruforeRestoreProgress,omitempty" xml:"FullStruforeRestoreProgress,omitempty"`
+	PhysicalBackupRecoverProgress                 *int32  `json:"PhysicalBackupRecoverProgress,omitempty" xml:"PhysicalBackupRecoverProgress,omitempty"`
+	PhysicalDatabaseOnlineProgress                *int32  `json:"PhysicalDatabaseOnlineProgress,omitempty" xml:"PhysicalDatabaseOnlineProgress,omitempty"`
+	PhysicalFullAndIncrementBackupRecoverProgress *int32  `json:"PhysicalFullAndIncrementBackupRecoverProgress,omitempty" xml:"PhysicalFullAndIncrementBackupRecoverProgress,omitempty"`
+	PhysicalFullBackupRecoverProgress             *int32  `json:"PhysicalFullBackupRecoverProgress,omitempty" xml:"PhysicalFullBackupRecoverProgress,omitempty"`
+	PhysicalIncrementBackupRecoverProgress        *int32  `json:"PhysicalIncrementBackupRecoverProgress,omitempty" xml:"PhysicalIncrementBackupRecoverProgress,omitempty"`
 	// example:
 	//
-	// test
-	DestinationEndpointOracleSID *string `json:"DestinationEndpointOracleSID,omitempty" xml:"DestinationEndpointOracleSID,omitempty"`
-	// The region in which the database is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
-	// The username of the account that is used to connect to the database.
-	//
-	// example:
-	//
-	// test
-	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// NULL
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The restore progress of the full backup data.
-	//
-	// example:
-	//
-	// 100
-	FullDataRestoreProgress *int32 `json:"FullDataRestoreProgress,omitempty" xml:"FullDataRestoreProgress,omitempty"`
-	// The progress of schema restore after full data restore.
-	//
-	// example:
-	//
-	// 100
-	FullStruAfterRestoreProgress *int32 `json:"FullStruAfterRestoreProgress,omitempty" xml:"FullStruAfterRestoreProgress,omitempty"`
-	// The progress of schema restore before full data restore.
-	//
-	// example:
-	//
-	// 0
-	FullStruforeRestoreProgress *int32 `json:"FullStruforeRestoreProgress,omitempty" xml:"FullStruforeRestoreProgress,omitempty"`
-	// The directory of the destination database to which the objects were restored.
-	//
-	// example:
-	//
-	// 100.X.X.10:33204
-	RestoreDir *string `json:"RestoreDir,omitempty" xml:"RestoreDir,omitempty"`
-	// The objects to be restored.
-	//
-	// example:
-	//
-	// [     {         \\"DBName\\":\\"test\\"       } ]
-	RestoreObjects *string `json:"RestoreObjects,omitempty" xml:"RestoreObjects,omitempty"`
-	// The status of the restore task. Valid values:
-	//
-	// 	- init: The restore task is not started or does not pass the precheck.
-	//
-	// 	- running: The restore task is running.
-	//
-	// 	- stop: The restore task failed.
-	//
-	// 	- pause: The restore task is stopped.
-	//
-	// 	- check_pass: The restore task passed the precheck.
-	//
-	// example:
-	//
-	// running
-	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The time when the restore task was created, such as 1554560477000.
-	//
-	// example:
-	//
-	// 1554560477000
-	RestoreTaskCreateTime *int64 `json:"RestoreTaskCreateTime,omitempty" xml:"RestoreTaskCreateTime,omitempty"`
-	// The time when the restore task was complete, such as 1554560477000.
-	//
-	// example:
-	//
-	// 1554560477000
-	RestoreTaskFinishTime *int64 `json:"RestoreTaskFinishTime,omitempty" xml:"RestoreTaskFinishTime,omitempty"`
-	// The ID of the restore task.
-	//
-	// example:
-	//
-	// s1XXXXXX
-	RestoreTaskId *string `json:"RestoreTaskId,omitempty" xml:"RestoreTaskId,omitempty"`
-	// The name of the restore task.
-	//
-	// example:
-	//
-	// test
-	RestoreTaskName *string `json:"RestoreTaskName,omitempty" xml:"RestoreTaskName,omitempty"`
-	// The time to run the restore task, such as 1554560477000.
-	//
-	// example:
-	//
-	// 1554560477000
-	RestoreTime *int64 `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	// EXIST_INSTANCE
+	RestoreDestinationMode *string `json:"RestoreDestinationMode,omitempty" xml:"RestoreDestinationMode,omitempty"`
+	RestoreDir             *string `json:"RestoreDir,omitempty" xml:"RestoreDir,omitempty"`
+	RestoreObjects         *string `json:"RestoreObjects,omitempty" xml:"RestoreObjects,omitempty"`
+	RestoreStatus          *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
+	RestoreTaskCreateTime  *int64  `json:"RestoreTaskCreateTime,omitempty" xml:"RestoreTaskCreateTime,omitempty"`
+	RestoreTaskFinishTime  *int64  `json:"RestoreTaskFinishTime,omitempty" xml:"RestoreTaskFinishTime,omitempty"`
+	RestoreTaskId          *string `json:"RestoreTaskId,omitempty" xml:"RestoreTaskId,omitempty"`
+	RestoreTaskName        *string `json:"RestoreTaskName,omitempty" xml:"RestoreTaskName,omitempty"`
+	RestoreTime            *int64  `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 }
 
 func (s DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) String() string {
@@ -418,12 +299,20 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetBackupGat
 	return s.BackupGatewayId
 }
 
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetBackupGatewayIdentifier() *string {
+	return s.BackupGatewayIdentifier
+}
+
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetBackupPlanId() *string {
 	return s.BackupPlanId
 }
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetBackupSetId() *string {
 	return s.BackupSetId
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetBackupSourceOssRegion() *string {
+	return s.BackupSourceOssRegion
 }
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetContinuousRestoreProgress() *int32 {
@@ -442,6 +331,14 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinati
 	return s.DestinationEndpointDatabaseName
 }
 
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinationEndpointEnableSsl() *string {
+	return s.DestinationEndpointEnableSsl
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinationEndpointHost() *string {
+	return s.DestinationEndpointHost
+}
+
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinationEndpointInstanceID() *string {
 	return s.DestinationEndpointInstanceID
 }
@@ -456,6 +353,10 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinati
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinationEndpointOracleSID() *string {
 	return s.DestinationEndpointOracleSID
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinationEndpointPort() *string {
+	return s.DestinationEndpointPort
 }
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetDestinationEndpointRegion() *string {
@@ -480,6 +381,30 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetFullStruA
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetFullStruforeRestoreProgress() *int32 {
 	return s.FullStruforeRestoreProgress
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetPhysicalBackupRecoverProgress() *int32 {
+	return s.PhysicalBackupRecoverProgress
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetPhysicalDatabaseOnlineProgress() *int32 {
+	return s.PhysicalDatabaseOnlineProgress
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetPhysicalFullAndIncrementBackupRecoverProgress() *int32 {
+	return s.PhysicalFullAndIncrementBackupRecoverProgress
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetPhysicalFullBackupRecoverProgress() *int32 {
+	return s.PhysicalFullBackupRecoverProgress
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetPhysicalIncrementBackupRecoverProgress() *int32 {
+	return s.PhysicalIncrementBackupRecoverProgress
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetRestoreDestinationMode() *string {
+	return s.RestoreDestinationMode
 }
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) GetRestoreDir() *string {
@@ -519,6 +444,11 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetBackupGat
 	return s
 }
 
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetBackupGatewayIdentifier(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.BackupGatewayIdentifier = &v
+	return s
+}
+
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetBackupPlanId(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
 	s.BackupPlanId = &v
 	return s
@@ -526,6 +456,11 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetBackupPla
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetBackupSetId(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
 	s.BackupSetId = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetBackupSourceOssRegion(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.BackupSourceOssRegion = &v
 	return s
 }
 
@@ -549,6 +484,16 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinati
 	return s
 }
 
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinationEndpointEnableSsl(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.DestinationEndpointEnableSsl = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinationEndpointHost(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.DestinationEndpointHost = &v
+	return s
+}
+
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinationEndpointInstanceID(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
 	s.DestinationEndpointInstanceID = &v
 	return s
@@ -566,6 +511,11 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinati
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinationEndpointOracleSID(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
 	s.DestinationEndpointOracleSID = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetDestinationEndpointPort(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.DestinationEndpointPort = &v
 	return s
 }
 
@@ -596,6 +546,36 @@ func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetFullStruA
 
 func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetFullStruforeRestoreProgress(v int32) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
 	s.FullStruforeRestoreProgress = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetPhysicalBackupRecoverProgress(v int32) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.PhysicalBackupRecoverProgress = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetPhysicalDatabaseOnlineProgress(v int32) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.PhysicalDatabaseOnlineProgress = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetPhysicalFullAndIncrementBackupRecoverProgress(v int32) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.PhysicalFullAndIncrementBackupRecoverProgress = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetPhysicalFullBackupRecoverProgress(v int32) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.PhysicalFullBackupRecoverProgress = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetPhysicalIncrementBackupRecoverProgress(v int32) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.PhysicalIncrementBackupRecoverProgress = &v
+	return s
+}
+
+func (s *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail) SetRestoreDestinationMode(v string) *DescribeRestoreTaskListResponseBodyItemsRestoreTaskDetail {
+	s.RestoreDestinationMode = &v
 	return s
 }
 

@@ -20,7 +20,7 @@ type iModifyBackupPlanNameRequest interface {
 }
 
 type ModifyBackupPlanNameRequest struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ModifyBackupPlanNameRequest struct {
 	//
 	// dbstooi0XXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The name of the backup schedule.
+	// The name of the backup plan.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyBackupPlanNameRequest struct {
 	//
 	// dbstooi0XXXX
 	BackupPlanName *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request. This prevents the same request from being submitted multiple times.
 	//
 	// example:
 	//

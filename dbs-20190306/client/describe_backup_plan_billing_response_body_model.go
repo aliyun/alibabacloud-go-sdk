@@ -42,13 +42,13 @@ type DescribeBackupPlanBillingResponseBody struct {
 	//
 	// 400
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The billing information of the backup schedule.
+	// The billing information of the backup plan.
 	Item *DescribeBackupPlanBillingResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// EB4DFD5E-3618-498D-BE35-4DBEA0072122
+	// DD7BC7F5-4E3A-5DF3-BFF9-831503C4D9E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
@@ -130,11 +130,11 @@ func (s *DescribeBackupPlanBillingResponseBody) Validate() error {
 }
 
 type DescribeBackupPlanBillingResponseBodyItem struct {
-	// The billing method. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- PREPAY
+	// - **PREPAY**: subscription
 	//
-	// 	- POSTPAY
+	// - **POSTPAY**: pay-as-you-go
 	//
 	// example:
 	//
@@ -144,85 +144,85 @@ type DescribeBackupPlanBillingResponseBodyItem struct {
 	//
 	// example:
 	//
-	// 1554560477000
+	// 1658372830000
 	BuyCreateTimestamp *int64 `json:"BuyCreateTimestamp,omitempty" xml:"BuyCreateTimestamp,omitempty"`
 	// The timestamp that indicates when the instance expires.
 	//
-	// > This parameter is available only if the value of the BuyChargeType parameter is PREPAY.
+	// > This parameter is returned only when BuyChargeType is set to PREPAY.
 	//
 	// example:
 	//
-	// 1554560477000
+	// 1661097600000
 	BuyExpiredTimestamp *int64 `json:"BuyExpiredTimestamp,omitempty" xml:"BuyExpiredTimestamp,omitempty"`
-	// The specifications of the instance.
+	// The instance type.
 	//
 	// example:
 	//
 	// micro
 	BuySpec *string `json:"BuySpec,omitempty" xml:"BuySpec,omitempty"`
-	// The size of the built-in storage for storing incremental backup data.
+	// The storage space used by incremental backup data. Unit: bytes.
 	//
 	// example:
 	//
-	// 12134
+	// 10437039
 	ContStorageSize *int64 `json:"ContStorageSize,omitempty" xml:"ContStorageSize,omitempty"`
-	// The size of the built-in storage for storing full backup data.
+	// The storage space used by full backup data. Unit: bytes.
 	//
 	// example:
 	//
-	// 13123
+	// 151
 	FullStorageSize *int64 `json:"FullStorageSize,omitempty" xml:"FullStorageSize,omitempty"`
-	// Indicates whether the instance expired.
+	// Indicates whether the instance has expired.
 	//
-	// > This parameter is available only if the value of the BuyChargeType parameter is PREPAY.
+	// > This parameter is returned only when BuyChargeType is set to PREPAY.
 	//
 	// example:
 	//
 	// true
 	IsExpired *bool `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	// Indicates whether the instance has no backup traffic limit.
+	// Indicates whether the instance provides unlimited free backup traffic.
 	//
 	// example:
 	//
 	// true
 	IsFreeBytesUnlimited *bool `json:"IsFreeBytesUnlimited,omitempty" xml:"IsFreeBytesUnlimited,omitempty"`
-	// The total paid backup traffic in the current month.
+	// The total paid backup traffic in the current month. Unit: bytes.
 	//
 	// example:
 	//
-	// 213213
+	// 0
 	PaiedBytes *int64 `json:"PaiedBytes,omitempty" xml:"PaiedBytes,omitempty"`
-	// The timestamp that indicates when the billing cycle of free backup traffic ends.
+	// The timestamp that indicates the end of the billing cycle for the free backup traffic.
 	//
 	// example:
 	//
-	// 1554560477000
+	// 1659283200000
 	QuotaEndTimestamp *int64 `json:"QuotaEndTimestamp,omitempty" xml:"QuotaEndTimestamp,omitempty"`
-	// The timestamp that indicates when the billing cycle of free backup traffic starts.
+	// The timestamp that indicates the start of the billing cycle for the free backup traffic.
 	//
 	// example:
 	//
-	// 1554560477000
+	// 1656604800000
 	QuotaStartTimestamp *int64 `json:"QuotaStartTimestamp,omitempty" xml:"QuotaStartTimestamp,omitempty"`
-	// The total free backup traffic in the current month.
+	// The total free backup traffic in the current month. Unit: bytes.
 	//
-	// > This parameter is available only if the value of the BuyChargeType parameter is PREPAY and the value of the IsFreeBytesUnlimited parameter is false.
+	// > This parameter is returned only when BuyChargeType is set to PREPAY and IsFreeBytesUnlimited is false.
 	//
 	// example:
 	//
-	// 13123
+	// 858993459200
 	TotalFreeBytes *int64 `json:"TotalFreeBytes,omitempty" xml:"TotalFreeBytes,omitempty"`
-	// The paid full backup traffic in the current month.
+	// The paid traffic for full backups in the current month. Unit: bytes.
 	//
 	// example:
 	//
-	// 1312313
+	// 0
 	UsedFullBytes *int64 `json:"UsedFullBytes,omitempty" xml:"UsedFullBytes,omitempty"`
-	// The paid incremental backup traffic in the current month.
+	// The paid traffic for incremental backups in the current month. Unit: bytes.
 	//
 	// example:
 	//
-	// 131231
+	// 9406734
 	UsedIncrementBytes *int64 `json:"UsedIncrementBytes,omitempty" xml:"UsedIncrementBytes,omitempty"`
 }
 

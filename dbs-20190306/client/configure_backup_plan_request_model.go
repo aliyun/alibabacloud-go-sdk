@@ -31,6 +31,8 @@ type iConfigureBackupPlanRequest interface {
 	GetBackupSpeedLimit() *int64
 	SetBackupStartTime(v string) *ConfigureBackupPlanRequest
 	GetBackupStartTime() *string
+	SetBackupStorageEncryptMethod(v string) *ConfigureBackupPlanRequest
+	GetBackupStorageEncryptMethod() *string
 	SetBackupStorageType(v string) *ConfigureBackupPlanRequest
 	GetBackupStorageType() *string
 	SetBackupStrategyType(v string) *ConfigureBackupPlanRequest
@@ -47,6 +49,10 @@ type iConfigureBackupPlanRequest interface {
 	GetDuplicationInfrequentAccessPeriod() *int32
 	SetEnableBackupLog(v bool) *ConfigureBackupPlanRequest
 	GetEnableBackupLog() *bool
+	SetEnableMysqlPhysicalBackupBinlog(v string) *ConfigureBackupPlanRequest
+	GetEnableMysqlPhysicalBackupBinlog() *string
+	SetEnableSourceEndpointSsl(v string) *ConfigureBackupPlanRequest
+	GetEnableSourceEndpointSsl() *string
 	SetOSSBucketName(v string) *ConfigureBackupPlanRequest
 	GetOSSBucketName() *string
 	SetOwnerId(v string) *ConfigureBackupPlanRequest
@@ -61,6 +67,8 @@ type iConfigureBackupPlanRequest interface {
 	GetSourceEndpointInstanceID() *string
 	SetSourceEndpointInstanceType(v string) *ConfigureBackupPlanRequest
 	GetSourceEndpointInstanceType() *string
+	SetSourceEndpointOracleHome(v string) *ConfigureBackupPlanRequest
+	GetSourceEndpointOracleHome() *string
 	SetSourceEndpointOracleSID(v string) *ConfigureBackupPlanRequest
 	GetSourceEndpointOracleSID() *string
 	SetSourceEndpointPassword(v string) *ConfigureBackupPlanRequest
@@ -71,62 +79,64 @@ type iConfigureBackupPlanRequest interface {
 	GetSourceEndpointRegion() *string
 	SetSourceEndpointUserName(v string) *ConfigureBackupPlanRequest
 	GetSourceEndpointUserName() *string
+	SetSslCaPem(v string) *ConfigureBackupPlanRequest
+	GetSslCaPem() *string
 }
 
 type ConfigureBackupPlanRequest struct {
-	// Specifies whether to enable the automatic backup feature.
+	// Enable automatic backup. Valid values:
 	//
-	// 	- **true**: enables the automatic backup feature.
+	// - **true**: Enable
 	//
-	// 	- **false**: disables the automatic backup feature.
+	// - **false**: Disable
 	//
 	// example:
 	//
 	// false
 	AutoStartBackup *bool `json:"AutoStartBackup,omitempty" xml:"AutoStartBackup,omitempty"`
-	// The backup gateway ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+	// The backup gateway ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
-	// >  If you set **SourceEndpointInstanceType*	- to **Agent**, this parameter is required.
+	// > This parameter is required when **SourceEndpointInstanceType*	- is **agent**.
 	//
 	// example:
 	//
 	// 23313123312
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The interval at which you want to perform incremental log backups. Unit: seconds.
+	// The incremental interval in seconds (s).
 	//
-	// >  Only physical backup supports this parameter.
+	// > Only physical backup is supported.
 	//
 	// example:
 	//
 	// 1000
 	BackupLogIntervalSeconds *int32 `json:"BackupLogIntervalSeconds,omitempty" xml:"BackupLogIntervalSeconds,omitempty"`
-	// The objects to be backed up. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the objects.
+	// The backup objects. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
 	// example:
 	//
-	// [ { "DBName":"Name of the database to be backed up", "SchemaName":"Name of the schema to be backed up", "TableIncludes":[{ "TableName":"Name of the table to be backed up" }], "TableExcludes":[{ "TableName":"Name of the table to be excluded during the backup" }] } ]
+	// [     {         "DBName":"待备份库名",         "SchemaName":"待备份 Schema 名",         "TableIncludes":[{             "TableName":"待备份表表名"         }],         "TableExcludes":[{             "TableName":"待备份库名不需要备份表的表名"         }]     } ]
 	BackupObjects *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
-	// The day of each week when the full backup task runs. Valid values:
+	// The full backup period. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**: Monday
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**: Tuesday
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**: Wednesday
 	//
-	// 	- **Thursday**
+	// - **Thursday**: Thursday
 	//
-	// 	- **Friday**
+	// - **Friday**: Friday
 	//
-	// 	- **Saturday**
+	// - **Saturday**: Saturday
 	//
-	// 	- **Sunday**
+	// - **Sunday**: Sunday
 	//
 	// example:
 	//
 	// Monday
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+	// The backup plan ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
 	// This parameter is required.
 	//
@@ -134,7 +144,7 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// dbstooi0*******
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The name of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the name.
+	// The custom backup plan name. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
 	// This parameter is required.
 	//
@@ -142,49 +152,53 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// dbstooi0*******
 	BackupPlanName *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
-	// The network bandwidth throttling. Unit: KB/s. DBS allows a maximum bandwidth of 10 GB/s.
+	// The network bandwidth throttling in KB/s. The maximum value is 10 GB.
 	//
-	// > This parameter takes effect only when physical backups for MySQL databases are performed.
+	// > This parameter is valid only for MySQL physical backup.
 	//
 	// example:
 	//
 	// 262144
 	BackupRateLimit *int64 `json:"BackupRateLimit,omitempty" xml:"BackupRateLimit,omitempty"`
-	// The number of days for which the backup data is retained. Valid values: 0 to 1825. Default value: 730.
+	// The retention period for backup data. Valid values: 0 to 1825. Default value: 730 days.
 	//
 	// example:
 	//
 	// 730
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The disk I/O limit. Unit: KB/s.
+	// The disk I/O limit in KB/s.
 	//
-	// >  This parameter takes effect only during the physical backup of a MySQL database.
+	// > This parameter is valid only for MySQL physical backup.
 	//
 	// example:
 	//
 	// 262144
 	BackupSpeedLimit *int64 `json:"BackupSpeedLimit,omitempty" xml:"BackupSpeedLimit,omitempty"`
-	// The start time of the full backup. Specify the time in the *HH:mm*Z format. The time must be in UTC. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the start time of full backup tasks.
+	// The full backup start time in *HH:mm*Z (UTC) format. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
 	// example:
 	//
 	// 14:22
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The storage type. Valid values:
+	// example:
 	//
-	// 	- Empty: If you do not specify this parameter, the system stores backup data in your OSS bucket.
+	// encrypted
+	BackupStorageEncryptMethod *string `json:"BackupStorageEncryptMethod,omitempty" xml:"BackupStorageEncryptMethod,omitempty"`
+	// The built-in storage type:
 	//
-	// 	- system: The system stores backup data in the built-in OSS bucket of DBS.
+	// - Empty (default): Backup data is stored on your OSS.
+	//
+	// - system: Backup data is stored on the built-in OSS of DBS.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	BackupStorageType *string `json:"BackupStorageType,omitempty" xml:"BackupStorageType,omitempty"`
-	// The backup method that you want to use for full backups. Valid values:
+	// The full backup period. Valid values:
 	//
-	// 	- **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+	// - **simple**: Periodic backup. Use this value with BackupPeriod and BackupStartTime.
 	//
-	// 	- **Manual**: manual backup.
+	// - **manual**: Manual backup.
 	//
 	// > Default value: **simple**.
 	//
@@ -192,49 +206,57 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// simple
 	BackupStrategyType *string `json:"BackupStrategyType,omitempty" xml:"BackupStrategyType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Ensure the idempotence of the request to prevent duplicate submissions. The client generates this parameter value. Ensure its uniqueness across different requests. The maximum length is 64 ASCII characters, and the value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The unique ID (UID) of the Alibaba Cloud account to which the backup schedule belongs. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to obtain the UID.
+	// The UID for cross-Alibaba Cloud account backup. Call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) API to get this parameter\\"s value.
 	//
 	// example:
 	//
 	// 2xxx7778xxxxxxxxxx
 	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// The name of the RAM role that is used to perform backup across Alibaba Cloud accounts. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to obtain the RAM role.
+	// The RAM role name for cross-Alibaba Cloud account backup. Call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) API to get this parameter\\"s value.
 	//
 	// example:
 	//
 	// test123
 	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
-	// The number of days after which the storage class of the backup data is changed to Archive. Default value: 365.
+	// The period after which data is converted to archive cold storage. Default value: 365 days.
 	//
 	// example:
 	//
 	// 365
 	DuplicationArchivePeriod *int32 `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
-	// The number of days after which the storage class of the backup data is changed to Infrequent Access (IA). Default value: 180.
+	// The period after which data is converted to Infrequent Access storage. Default value: 180 days.
 	//
 	// example:
 	//
 	// 180
 	DuplicationInfrequentAccessPeriod *int32 `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
-	// Specifies whether to enable the incremental log backup feature. Valid values:
+	// Enable incremental log backup. Valid values:
 	//
-	// 	- **true**: enables the incremental log backup feature.
+	// - **true**: Enable
 	//
-	// 	- **false**: disables the incremental log backup feature.
+	// - **false**: Disable
 	//
 	// example:
 	//
 	// true
 	EnableBackupLog *bool `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The name of the OSS bucket.
+	// example:
 	//
-	// >  By default, the system automatically generates an OSS bucket name.
+	// true
+	EnableMysqlPhysicalBackupBinlog *string `json:"EnableMysqlPhysicalBackupBinlog,omitempty" xml:"EnableMysqlPhysicalBackupBinlog,omitempty"`
+	// example:
+	//
+	// true
+	EnableSourceEndpointSsl *string `json:"EnableSourceEndpointSsl,omitempty" xml:"EnableSourceEndpointSsl,omitempty"`
+	// The OSS bucket name.
+	//
+	// > The system automatically generates a new name by default.
 	//
 	// example:
 	//
@@ -247,43 +269,43 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// rg-aekzecovzti****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The source database name. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+	// The database name. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
-	// >  If the source database runs the **PostgreSQL*	- database engine or **MongoDB*	- database engine, this parameter is required.
+	// > This parameter is required when the database type is **PostgreSQL*	- or **MongoDB**.
 	//
 	// example:
 	//
 	// testRDS
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
-	// The source database endpoint. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+	// The database endpoint. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
-	// >  If you set **SourceEndpointInstanceType*	- to **Express**, **Agent**, or **Other**, this parameter is required.
+	// > This parameter is required when **SourceEndpointInstanceType*	- is **express**, **agent**, or **other**.
 	//
 	// example:
 	//
 	// rm-uf6wjk5*******.mysql.rds.aliyuncs.com
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The database instance ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+	// The database instance ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
-	// >  If you set **SourceEndpoint****InstanceType*	- to **RDS**, **ECS**, **DDS**, or **Express**, this parameter is required.
+	// > This parameter is required when **SourceEndpoint**.**InstanceType*	- is **RDS**, **ECS**, **DDS**, or **Express**.
 	//
 	// example:
 	//
 	// rm-uf6wjk5*********
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The location of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the location. Valid values:
+	// The location of the database. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value. Valid values:
 	//
-	// 	- **RDS**
+	// - **RDS**
 	//
-	// 	- **ECS**
+	// - **ECS**
 	//
-	// 	- **Express**: The database is connected to Database Backup (DBS) via Express Connect, VPN Gateway, or Smart Access Gateway.
+	// - **Express**: A database connected through a leased line, VPN Gateway, or Smart Gateway.
 	//
-	// 	- **Agent**: The database is connected over a DBS backup gateway.
+	// - **Agent**: A database connected through a backup gateway.
 	//
-	// 	- **DDS**: The database is an ApsaraDB for MongoDB database.
+	// - **DDS**: Cloud MongoDB.
 	//
-	// 	- **Other**: The database is connected to DBS by using the IP address and port of the database.
+	// - **Other**: A database directly connected through IP:Port.
 	//
 	// This parameter is required.
 	//
@@ -291,46 +313,54 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// RDS
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
-	// The system ID (SID) of the Oracle database.
+	// example:
 	//
-	// > This parameter is required if the database is an Oracle database.
+	// /home/test
+	SourceEndpointOracleHome *string `json:"SourceEndpointOracleHome,omitempty" xml:"SourceEndpointOracleHome,omitempty"`
+	// The Oracle SID name.
+	//
+	// > This parameter is required when the database type is Oracle.
 	//
 	// example:
 	//
 	// test
 	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// The password of the account that is used to connect to the database.
+	// The password.
 	//
-	// > This parameter is required except that the database is an **SQL Server*	- database that is connected to DBS over a DBS backup gateway or a **Redis*	- database.
+	// > This parameter is optional when the database type is **Redis**, or when the database location is **agent*	- and the database type is **SQL Server**. It is required in other scenarios.
 	//
 	// example:
 	//
 	// testPassword
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
-	// The port that is used to connect to the source database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the port.
+	// The database port. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
-	// >  If you set **SourceEndpoint****InstanceType*	- to **Express**, **Agent**, **Other**, or **ECS**, this parameter is required.
+	// > This parameter is required when **SourceEndpoint**.**InstanceType*	- is **express**, **agent**, **other**, or **ECS**.
 	//
 	// example:
 	//
 	// 3306
 	SourceEndpointPort *int32 `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The region in which the source database resides. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the region.
+	// The region of the database. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
 	//
-	// >  If you set **SourceEndpointInstanceType*	- to RDS, ECS, DDS, Express, or Agent, this parameter is required.
+	// > This parameter is required when **SourceEndpointInstanceType*	- is RDS, ECS, DDS, Express, or Agent.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The username of the account that is used to connect to the database.
+	// The database account.
 	//
-	// > This parameter is required except that the database is an **SQL Server*	- database that is connected to DBS over a DBS backup gateway or a **Redis*	- database.
+	// > This parameter is optional when the database type is **Redis**, or when the database location is **agent*	- and the database type is **SQL Server**. It is required in other scenarios.
 	//
 	// example:
 	//
 	// testRDS
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----
+	SslCaPem *string `json:"SslCaPem,omitempty" xml:"SslCaPem,omitempty"`
 }
 
 func (s ConfigureBackupPlanRequest) String() string {
@@ -385,6 +415,10 @@ func (s *ConfigureBackupPlanRequest) GetBackupStartTime() *string {
 	return s.BackupStartTime
 }
 
+func (s *ConfigureBackupPlanRequest) GetBackupStorageEncryptMethod() *string {
+	return s.BackupStorageEncryptMethod
+}
+
 func (s *ConfigureBackupPlanRequest) GetBackupStorageType() *string {
 	return s.BackupStorageType
 }
@@ -417,6 +451,14 @@ func (s *ConfigureBackupPlanRequest) GetEnableBackupLog() *bool {
 	return s.EnableBackupLog
 }
 
+func (s *ConfigureBackupPlanRequest) GetEnableMysqlPhysicalBackupBinlog() *string {
+	return s.EnableMysqlPhysicalBackupBinlog
+}
+
+func (s *ConfigureBackupPlanRequest) GetEnableSourceEndpointSsl() *string {
+	return s.EnableSourceEndpointSsl
+}
+
 func (s *ConfigureBackupPlanRequest) GetOSSBucketName() *string {
 	return s.OSSBucketName
 }
@@ -445,6 +487,10 @@ func (s *ConfigureBackupPlanRequest) GetSourceEndpointInstanceType() *string {
 	return s.SourceEndpointInstanceType
 }
 
+func (s *ConfigureBackupPlanRequest) GetSourceEndpointOracleHome() *string {
+	return s.SourceEndpointOracleHome
+}
+
 func (s *ConfigureBackupPlanRequest) GetSourceEndpointOracleSID() *string {
 	return s.SourceEndpointOracleSID
 }
@@ -463,6 +509,10 @@ func (s *ConfigureBackupPlanRequest) GetSourceEndpointRegion() *string {
 
 func (s *ConfigureBackupPlanRequest) GetSourceEndpointUserName() *string {
 	return s.SourceEndpointUserName
+}
+
+func (s *ConfigureBackupPlanRequest) GetSslCaPem() *string {
+	return s.SslCaPem
 }
 
 func (s *ConfigureBackupPlanRequest) SetAutoStartBackup(v bool) *ConfigureBackupPlanRequest {
@@ -520,6 +570,11 @@ func (s *ConfigureBackupPlanRequest) SetBackupStartTime(v string) *ConfigureBack
 	return s
 }
 
+func (s *ConfigureBackupPlanRequest) SetBackupStorageEncryptMethod(v string) *ConfigureBackupPlanRequest {
+	s.BackupStorageEncryptMethod = &v
+	return s
+}
+
 func (s *ConfigureBackupPlanRequest) SetBackupStorageType(v string) *ConfigureBackupPlanRequest {
 	s.BackupStorageType = &v
 	return s
@@ -560,6 +615,16 @@ func (s *ConfigureBackupPlanRequest) SetEnableBackupLog(v bool) *ConfigureBackup
 	return s
 }
 
+func (s *ConfigureBackupPlanRequest) SetEnableMysqlPhysicalBackupBinlog(v string) *ConfigureBackupPlanRequest {
+	s.EnableMysqlPhysicalBackupBinlog = &v
+	return s
+}
+
+func (s *ConfigureBackupPlanRequest) SetEnableSourceEndpointSsl(v string) *ConfigureBackupPlanRequest {
+	s.EnableSourceEndpointSsl = &v
+	return s
+}
+
 func (s *ConfigureBackupPlanRequest) SetOSSBucketName(v string) *ConfigureBackupPlanRequest {
 	s.OSSBucketName = &v
 	return s
@@ -595,6 +660,11 @@ func (s *ConfigureBackupPlanRequest) SetSourceEndpointInstanceType(v string) *Co
 	return s
 }
 
+func (s *ConfigureBackupPlanRequest) SetSourceEndpointOracleHome(v string) *ConfigureBackupPlanRequest {
+	s.SourceEndpointOracleHome = &v
+	return s
+}
+
 func (s *ConfigureBackupPlanRequest) SetSourceEndpointOracleSID(v string) *ConfigureBackupPlanRequest {
 	s.SourceEndpointOracleSID = &v
 	return s
@@ -617,6 +687,11 @@ func (s *ConfigureBackupPlanRequest) SetSourceEndpointRegion(v string) *Configur
 
 func (s *ConfigureBackupPlanRequest) SetSourceEndpointUserName(v string) *ConfigureBackupPlanRequest {
 	s.SourceEndpointUserName = &v
+	return s
+}
+
+func (s *ConfigureBackupPlanRequest) SetSslCaPem(v string) *ConfigureBackupPlanRequest {
+	s.SslCaPem = &v
 	return s
 }
 

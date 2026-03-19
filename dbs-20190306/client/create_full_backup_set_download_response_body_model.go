@@ -28,7 +28,7 @@ type CreateFullBackupSetDownloadResponseBody struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// dbstooi01exxxxx
 	BackupSetDownloadTaskId *string `json:"BackupSetDownloadTaskId,omitempty" xml:"BackupSetDownloadTaskId,omitempty"`
 	// The error code.
 	//
@@ -48,13 +48,13 @@ type CreateFullBackupSetDownloadResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

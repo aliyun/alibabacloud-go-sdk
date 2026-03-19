@@ -48,13 +48,13 @@ type StartRestoreTaskResponseBody struct {
 	//
 	// 60AF7C5D-EF4D-4D48-8FD5-C0823FDF28AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the restore task.
+	// The ID of the restore job.
 	//
 	// example:
 	//
 	// s102h7rfXXXX
 	RestoreTaskId *string `json:"RestoreTaskId,omitempty" xml:"RestoreTaskId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -43,11 +43,9 @@ type DescribeNodeCidrListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The public CIDR blocks.
-	InternetIPs *DescribeNodeCidrListResponseBodyInternetIPs `json:"InternetIPs,omitempty" xml:"InternetIPs,omitempty" type:"Struct"`
-	// The internal CIDR blocks.
-	IntranetIPs *DescribeNodeCidrListResponseBodyIntranetIPs `json:"IntranetIPs,omitempty" xml:"IntranetIPs,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	InternetIPs    *DescribeNodeCidrListResponseBodyInternetIPs `json:"InternetIPs,omitempty" xml:"InternetIPs,omitempty" type:"Struct"`
+	IntranetIPs    *DescribeNodeCidrListResponseBodyIntranetIPs `json:"IntranetIPs,omitempty" xml:"IntranetIPs,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:

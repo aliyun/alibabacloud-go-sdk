@@ -24,9 +24,9 @@ type iDescribeBackupSetDownloadTaskListRequest interface {
 }
 
 type DescribeBackupSetDownloadTaskListRequest struct {
-	// The backup schedule ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID.
+	// The ID of the backup plan. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
-	// >  You must configure the **BackupPlanId*	- or **BackupSetDownloadTaskId*	- parameter.
+	// > You must specify either **BackupPlanId*	- or **BackupSetDownloadTaskId**.
 	//
 	// example:
 	//
@@ -34,22 +34,22 @@ type DescribeBackupSetDownloadTaskListRequest struct {
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The ID of the backup set download task.
 	//
-	// 	- Full backup set download task: You can call the [CreateFullBackupSetDownload](https://help.aliyun.com/document_detail/2869842.html) operation to create a full backup set download task and obtain the task ID.
+	// - For a full backup, call the [CreateFullBackupSetDownload](https://help.aliyun.com/document_detail/2869842.html) operation to obtain the value of this parameter.
 	//
-	// 	- Incremental backup set download task: You can call the [CreateIncrementBackupSetDownload](https://help.aliyun.com/document_detail/2869843.html) operation to create an incremental backup set download task and obtain the task ID.
+	// - For an incremental backup, call the [CreateIncrementBackupSetDownload](https://help.aliyun.com/document_detail/2869843.html) operation to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// urxgrxt7****
 	BackupSetDownloadTaskId *string `json:"BackupSetDownloadTaskId,omitempty" xml:"BackupSetDownloadTaskId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token that is used to ensure the idempotence of the request. This prevents duplicate requests.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzXXXXXX
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be a positive integer. Default value: 0.
+	// The page number. The value must be a non-negative integer that does not exceed the maximum value of the integer type. The default value is 0.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type DescribeBackupSetDownloadTaskListRequest struct {
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Valid values: 30, 50, and 100.
 	//
-	// > Default value: 30.
+	// > The default value is 30.
 	//
 	// example:
 	//

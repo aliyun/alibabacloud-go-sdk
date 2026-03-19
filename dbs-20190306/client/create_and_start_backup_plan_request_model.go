@@ -96,35 +96,35 @@ type iCreateAndStartBackupPlanRequest interface {
 }
 
 type CreateAndStartBackupPlanRequest struct {
-	// The backup gateway ID.
+	// The ID of the backup gateway.
+	//
+	// > - This parameter is required if **SourceEndpoint**.**InstanceType*	- is set to **agent**.
 	//
 	// >
 	//
-	// 	- If **SourceEndpointInstanceType*	- is set to **Agent**, this parameter is required.****
+	// > - For more information about how to create a backup gateway, see [Add a backup gateway](https://help.aliyun.com/document_detail/93250.html).
 	//
-	// 	- For more information about how to install a backup gateway, see [Install a backup gateway](https://help.aliyun.com/document_detail/93250.html).
+	// >
 	//
-	// 	- You can query a list of existing backup gateways by calling the [DescribeBackupGatewayList](https://help.aliyun.com/document_detail/2869840.html) operation.
+	// > - You can call the [DescribeBackupGatewayList](https://help.aliyun.com/document_detail/2869840.html) operation to view the list of existing backup gateways.
 	//
 	// example:
 	//
 	// 23313123312
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The interval at which you want to perform incremental log backups. Unit: seconds.
+	// The interval for incremental backups, in seconds.
 	//
-	// >  This parameter is required only if you set BackupMethod to **physical**.
+	// > This parameter is required only for **physical backups**.
 	//
 	// example:
 	//
 	// 1000
 	BackupLogIntervalSeconds *int32 `json:"BackupLogIntervalSeconds,omitempty" xml:"BackupLogIntervalSeconds,omitempty"`
-	// The method that is used to generate the backup file. Valid values:
+	// The backup method. Valid values:
 	//
-	// 	- **logical**: logical backup
+	// - **logical**: logical backup
 	//
-	// 	- **physical**: physical backup
-	//
-	// 	- **duplication**: dump backup
+	// - **physical**: physical backup
 	//
 	// This parameter is required.
 	//
@@ -132,41 +132,41 @@ type CreateAndStartBackupPlanRequest struct {
 	//
 	// logical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The object to be backed up.
+	// The backup objects.
 	//
 	// example:
 	//
-	// [ { "DBName":"Name of the database to be backed up", "SchemaName":"Name of the schema to be backed up", "TableIncludes":[{ "TableName":"Name of the table to be backed up" }], "TableExcludes":[{ "TableName":"Name of the table that you do not want to back up" }] } ]
+	// [     {         "DBName":"待备份库名",         "SchemaName":"待备份 Schema 名",         "TableIncludes":[{             "TableName":"待备份表表名"         }],         "TableExcludes":[{             "TableName":"待备份库名不需要备份表的表名"         }]     } ]
 	BackupObjects *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
-	// The day of the week on which you want to perform full backup. Valid values:
+	// The full backup cycle. Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**
 	//
-	// 	- **Thursday**
+	// - **Thursday**
 	//
-	// 	- **Friday**
+	// - **Friday**
 	//
-	// 	- **Saturday**
+	// - **Saturday**
 	//
-	// 	- **Sunday**
+	// - **Sunday**
 	//
-	// >  You can specify multiple values. Separate multiple values with commas (,).
+	// > You can select multiple values. Separate them with commas (,).
 	//
 	// example:
 	//
 	// Monday
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
 	// dbstooi0*******
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The name of the backup schedule.
+	// The custom name of the backup plan.
 	//
 	// This parameter is required.
 	//
@@ -174,99 +174,97 @@ type CreateAndStartBackupPlanRequest struct {
 	//
 	// dbstooi0*******
 	BackupPlanName *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
-	// The network bandwidth throttling. Unit: KB/s. DBS allows a maximum bandwidth of 10 GB/s.
+	// The network bandwidth throttling limit, in KB/s. The maximum allowed value is 10 GB.
 	//
-	// >  This parameter takes effect only when physical backups for MySQL databases are performed.
+	// > This parameter is valid only for MySQL physical backups.
 	//
 	// example:
 	//
 	// 262144
 	BackupRateLimit *int64 `json:"BackupRateLimit,omitempty" xml:"BackupRateLimit,omitempty"`
-	// The number of days for which the backup data is retained. Valid values: 0 to 1825. Default value: 730.
+	// The retention period for backup data, in days. Valid values: 0 to 1825. Default value: 730.
 	//
 	// example:
 	//
 	// 730
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The I/O limit for the disk. Unit: KB/s.
+	// The disk I/O limit, in KB/s.
 	//
-	// >  This parameter takes effect only when physical backups for MySQL databases are performed.
+	// > This parameter is valid only for MySQL physical backups.
 	//
 	// example:
 	//
 	// 262144
 	BackupSpeedLimit *int64 `json:"BackupSpeedLimit,omitempty" xml:"BackupSpeedLimit,omitempty"`
-	// The start time of full backup tasks. Specify the value in the *HH:mm	- format. The time must be in UTC.
+	// The start time for the full backup. The time is in the *HH:mm	- format and is in UTC.
 	//
 	// example:
 	//
 	// 14:22
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The storage type. Valid values:
+	// The built-in storage type:
 	//
-	// 	- Empty: If you do not specify this parameter, the system stores backup data in your OSS bucket.
+	// - Empty (default): Backup data is stored in your OSS bucket.
 	//
-	// 	- system : The system stores backup data in the built-in OSS bucket of DBS.
+	// - system: Backup data is stored in the built-in OSS bucket of DBS.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	BackupStorageType *string `json:"BackupStorageType,omitempty" xml:"BackupStorageType,omitempty"`
-	// The backup method that you want to use for full backups. Valid values:
+	// The full backup strategy. Valid values:
 	//
-	// 	- **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+	// - **simple**: periodic backup. Use this value with BackupPeriod and BackupStartTime.
 	//
-	// 	- **Manual**: manual backup.
+	// - **manual**: manual backup.
 	//
-	// > Default value: **simple**.
+	// > The default value is **simple**.
 	//
 	// example:
 	//
 	// simple
 	BackupStrategyType *string `json:"BackupStrategyType,omitempty" xml:"BackupStrategyType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token used to ensure the idempotence of the request. This prevents duplicate requests.
 	//
 	// example:
 	//
-	// DBS
+	// ASDASDASDSADASFCZXVZ
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The unique ID (UID) of the Alibaba Cloud account to which the source database belongs.
+	// The UID of the Alibaba Cloud account for cross-account backup.
 	//
 	// example:
 	//
-	// 2xxx7778xxxxxxxxxx
+	// 1648821913******
 	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// The name of the RAM role that is used to perform backups across Alibaba Cloud accounts.
+	// The name of the RAM role for cross-account backup.
 	//
 	// example:
 	//
 	// test123
 	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
-	// The region in which the database that you want to back up resides.
-	//
-	// > This parameter is required if the **PayType*	- parameter is set to **postpay**.
+	// The region where the database is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DatabaseRegion *string `json:"DatabaseRegion,omitempty" xml:"DatabaseRegion,omitempty"`
-	// The type of the source database. Valid values:
+	// The database type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **MSSQL**
+	// - **MSSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **DRDS**
+	// - **DRDS**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
 	// This parameter is required.
 	//
@@ -274,47 +272,47 @@ type CreateAndStartBackupPlanRequest struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The number of days after which the storage class of the backup data is changed to Archive. Default value: 365.
+	// The time after which backup data is converted to archive storage, in days. Default value: 365.
 	//
 	// example:
 	//
 	// 365
 	DuplicationArchivePeriod *int32 `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
-	// The number of days after which the storage class of the backup data is changed to Infrequent Access (IA). Default value: 180.
+	// The time after which backup data is converted to Infrequent Access (IA) storage, in days. Default value: 180.
 	//
 	// example:
 	//
 	// 180
 	DuplicationInfrequentAccessPeriod *int32 `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
-	// Specifies whether to enable the incremental log backup feature. Valid values:
+	// Specifies whether to enable incremental log backup. Valid values:
 	//
-	// 	- **true**: enables the incremental log backup feature.
+	// - **true**
 	//
-	// 	- **false**: disables the incremental log backup feature.
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	EnableBackupLog *bool `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The request source. Default value: OpenApi. You do not need to set this parameter.
+	// The source of the request. The default value is OpenApi. You do not need to set this parameter.
 	//
 	// example:
 	//
 	// OpenApi
 	FromApp *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
-	// The type of the backup schedule. Valid values:
+	// The specification of the backup plan. Valid values:
 	//
-	// 	- **micro**
+	// - **micro**
 	//
-	// 	- **small**
+	// - **small**
 	//
-	// 	- **medium**
+	// - **medium**
 	//
-	// 	- **large**
+	// - **large**
 	//
-	// 	- **xlarge**
+	// - **xlarge**
 	//
-	// >  A backup schedule type with higher specifications offers higher backup and restoration performance. For more information, see [Select a backup schedule type](https://help.aliyun.com/document_detail/84372.html).
+	// > Higher specifications provide better backup and recovery performance. For more information, see [Specifications](https://help.aliyun.com/document_detail/84372.html).
 	//
 	// This parameter is required.
 	//
@@ -322,56 +320,52 @@ type CreateAndStartBackupPlanRequest struct {
 	//
 	// micro
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The type of the source database instance. Valid values:
+	// The database instance type. Valid values:
 	//
-	// 	- **RDS**: ApsaraDB RDS.
+	// - **RDS**
 	//
-	// 	- **PolarDB**: PolarDB.
+	// - **PolarDB**
 	//
-	// 	- **DDS**: ApsaraDB for MongoDB.
+	// - **DDS**: Alibaba Cloud MongoDB
 	//
-	// 	- **Kvstore**: ApsaraDB for Redis.
+	// - **Kvstore**: Alibaba Cloud Redis
 	//
-	// 	- **Other**: Database connected by using an IP address and a port number.
+	// - **Other**: A database connected over an IP address and port.
 	//
-	// 	- **dg**: Self-managed database that has no public IP address or port number and is connected over Database Gateway.
-	//
-	// >  If **PayType*	- is set to **postpay**, this parameter is required.
+	// - **dg**: A self-managed database without a public IP address or port, connected through Database Gateway (DG).
 	//
 	// example:
 	//
 	// RDS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket used to store backup files. By default, the system automatically generates a name for the OSS bucket.
+	// The name of the Object Storage Service (OSS) bucket.
+	//
+	// Default: The system automatically generates a new name.
 	//
 	// example:
 	//
 	// TestOssBucket
 	OSSBucketName *string `json:"OSSBucketName,omitempty" xml:"OSSBucketName,omitempty"`
 	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The billing method. Valid values:
+	// The payment method. Valid value:
 	//
-	// 	- **postpay**: pay-as-you-go.
-	//
-	// 	- **prepay**: subscription.
-	//
-	// >  The default value is **prepay**. You can set this parameter to **postpay*	- only if you set **BackupMethod*	- to **duplication**.
+	// **prepay**: subscription
 	//
 	// example:
 	//
-	// Postpaid
+	// prepay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Specifies whether to use yearly subscription or monthly subscription for the instance. Valid values:
+	// The billing cycle of the subscription instance. Valid values:
 	//
-	// 	- **Year**: yearly subscription
+	// - **Year**
 	//
-	// 	- **Month**: monthly subscription
+	// - **Month**
 	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region in which you want to store the backup data. You can query the supported regions of DBS by calling the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) operation.
+	// The region where DBS is available. To view the available regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) operation.
 	//
 	// example:
 	//
@@ -383,17 +377,17 @@ type CreateAndStartBackupPlanRequest struct {
 	//
 	// rg-aekzecovzti****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
-	// > This parameter is required if the DatabaseType parameter is set to **PostgreSQL*	- or **MongoDB**.
+	// > This parameter is required if the database type is **PostgreSQL*	- or **MongoDB**.
 	//
 	// example:
 	//
 	// testRDS
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
-	// The endpoint of the database.
+	// The database endpoint.
 	//
-	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to **Express**, **Agent**, or **Other**.
+	// > This parameter is required if **SourceEndpoint**.**InstanceType*	- is set to **express**, **agent**, or **other**.
 	//
 	// example:
 	//
@@ -401,27 +395,27 @@ type CreateAndStartBackupPlanRequest struct {
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
 	// The ID of the database instance.
 	//
-	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to **RDS**, **ECS**, **DDS**, or **Express**.
+	// > This parameter is required if **SourceEndpoint**.**InstanceType*	- is set to **RDS**, **ECS**, **DDS**, or **Express**.
 	//
 	// example:
 	//
 	// rm-uf6wjk5xxxxxxxxxx
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The location of the source database. Valid values:
+	// The location of the database. Valid values:
 	//
-	// 	- **RDS**: The database is on an ApsaraDB RDS instance.
+	// - **RDS**
 	//
-	// 	- **ECS**: The database is on an Elastic Compute Service (ECS) instance.
+	// - **ECS**
 	//
-	// 	- **Express**: The database is connected to DBS by using Express Connect, VPN Gateway, or Smart Access Gateway.
+	// - **Express**: A database connected through a leased line, VPN Gateway, or Smart Access Gateway.
 	//
-	// 	- **Agent**: The database is connected to DBS over a DBS backup gateway.
+	// - **Agent**: A database connected through a backup gateway.
 	//
-	// 	- **DDS**: The database is on an ApsaraDB for MongoDB instance.
+	// - **DDS**: Alibaba Cloud MongoDB
 	//
-	// 	- **Other**: The database is connected to DBS by using an IP address and a port number.
+	// - **Other**: A database connected directly over an IP address and port.
 	//
-	// 	- **dg**: The database is a self-managed database that has no public IP address or port number and is connected to DBS over Database Gateway.
+	// - **dg**: A self-managed database without a public IP address or port, connected through Database Gateway (DG).
 	//
 	// This parameter is required.
 	//
@@ -429,63 +423,61 @@ type CreateAndStartBackupPlanRequest struct {
 	//
 	// RDS
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
-	// The system ID (SID) of the Oracle database. This parameter is required if the source database is an Oracle database.
+	// The Oracle system ID (SID). This parameter is required if the database type is Oracle.
 	//
 	// example:
 	//
 	// test
 	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// The password of the account that is used to connect to the database.
+	// The password for the database account.
 	//
-	// > This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
+	// > This parameter is optional if the database type is **Redis**, or if the database location is **agent*	- and the database type is **MSSQL**. In all other cases, this parameter is required.
 	//
 	// example:
 	//
 	// testPassword
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
-	// The port of the database.
+	// The database port.
 	//
-	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to **Express**, **Agent**, **Other**, or **ECS**.
+	// > This parameter is required if **SourceEndpoint**.**InstanceType*	- is set to **express**, **agent**, **other**, or **ECS**.
 	//
 	// example:
 	//
 	// 3306
 	SourceEndpointPort *int32 `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The region in which the database that you want to back up resides.
+	// The region where the database is located.
 	//
-	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to **RDS**, **ECS**, **DDS**, **Express**, or **Agent**.
+	// > This parameter is required if **SourceEndpoint**.**InstanceType*	- is set to **RDS**, **ECS**, **DDS**, **Express**, or **Agent**.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The username of the account that is used to connect to the database.
+	// The database account.
 	//
-	// > This parameter is required except that the database is an SQL Server database that is connected to DBS over a DBS backup gateway or a Redis database.
+	// > This parameter is optional if the database type is **Redis**, or if the database location is **agent*	- and the database type is **MSSQL**. In all other cases, this parameter is required.
 	//
 	// example:
 	//
 	// testRDS
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
-	// The region in which you want to store the backup data.
-	//
-	// > This parameter is required if the **PayType*	- parameter is set to **postpay**.
+	// The storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	StorageRegion *string `json:"StorageRegion,omitempty" xml:"StorageRegion,omitempty"`
-	// This parameter is unavailable.
+	// This parameter is not yet available.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The subscription duration. Valid values:
 	//
-	// 	- If **Period*	- is set to **Year**, the valid values of **UsedTime*	- range from 1 to 5.
+	// - If **Period*	- is set to **Year**, the value of **UsedTime*	- can be 1 to 5.
 	//
-	// 	- If **Period*	- is set to **Month**, the valid values of **UsedTime*	- range from 1 to 11.
+	// - If **Period*	- is set to **Month**, the value of **UsedTime*	- can be 1 to 11.
 	//
 	// example:
 	//

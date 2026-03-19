@@ -20,26 +20,26 @@ type iStopBackupPlanRequest interface {
 }
 
 type StopBackupPlanRequest struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dbstooi01****
+	// dbstooi01XXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token to ensure the idempotence of the request. This prevents the same request from being sent repeatedly.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The method that is used to stop the backup schedule. Valid values:
+	// The method used to pause the backup plan. Valid values:
 	//
-	// 	- ALL: stops the backup schedule, full data backup tasks, incremental log backup tasks, and restore tasks
+	// - ALL: Pauses the backup schedule, full data backup jobs, incremental log backup jobs, and restore jobs.
 	//
-	// 	- PLAN: stops only the backup schedule.
+	// - PLAN: Pauses only the backup schedule.
 	//
 	// This parameter is required.
 	//

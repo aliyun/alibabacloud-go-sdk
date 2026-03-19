@@ -49,9 +49,8 @@ type DescribeBackupPlanListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Details of the backup plans.
-	Items *DescribeBackupPlanListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribeBackupPlanListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// Page number.
 	//
 	// example:
@@ -70,7 +69,7 @@ type DescribeBackupPlanListResponseBody struct {
 	//
 	// 4F1888AC-1138-4995-B9FE-D2734F61C058
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation was successful.
+	// Indicates whether the request succeeded.
 	//
 	// example:
 	//
@@ -232,302 +231,100 @@ func (s *DescribeBackupPlanListResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupPlanListResponseBodyItemsBackupPlanDetail struct {
-	// Backup gateway ID.
-	//
-	// example:
-	//
-	// 827362187368736
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// Backup method. The return values are as follows:
-	//
-	// - **logical**: Logical backup
-	//
-	// - **physical**: Physical backup
-	//
-	// - **duplication**: Replication backup
-	//
 	// example:
 	//
-	// logical
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// Backup objects.
-	BackupObjects *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
-	// Full backup cycle. The return values are as follows:
-	//
-	// - **Monday**: Monday
-	//
-	// - **Tuesday**: Tuesday
-	//
-	// - **Wednesday**: Wednesday
-	//
-	// - **Thursday**: Thursday
-	//
-	// - **Friday**: Friday
-	//
-	// - **Saturday**: Saturday
-	//
-	// - **Sunday**: Sunday
-	//
+	// TESTGATEWAY
+	BackupGatewayIdentifier *string `json:"BackupGatewayIdentifier,omitempty" xml:"BackupGatewayIdentifier,omitempty"`
+	BackupMethod            *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupObjects           *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
+	BackupPeriod            *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
+	BackupPlanCreateTime    *int64  `json:"BackupPlanCreateTime,omitempty" xml:"BackupPlanCreateTime,omitempty"`
+	BackupPlanId            *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
+	BackupPlanName          *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
 	// example:
 	//
-	// Monday
-	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	// Timestamp of the backup plan creation.
-	//
-	// example:
-	//
-	// 1582527713000
-	BackupPlanCreateTime *int64 `json:"BackupPlanCreateTime,omitempty" xml:"BackupPlanCreateTime,omitempty"`
-	// Backup plan ID.
-	//
-	// example:
-	//
-	// dbstooi01eXXXX
-	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// Backup plan name.
-	//
-	// example:
-	//
-	// dbstooi01e****
-	BackupPlanName *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
-	// Backup plan status. The return values are as follows:
-	//
-	// - **wait**: Not configured
-	//
-	// - **init**: Not started (pre-check failed)
-	//
-	// - **running**: Running
-	//
-	// - **stop**: Failed
-	//
-	// - **pause**: Paused
-	//
-	// - **locked**: Locked
-	//
-	// - **check_pass**: Pre-check passed
-	//
-	// example:
-	//
-	// init
-	BackupPlanStatus *string `json:"BackupPlanStatus,omitempty" xml:"BackupPlanStatus,omitempty"`
-	// Backup data retention period, with a value range of 0 to 1825 days.
-	//
-	// example:
-	//
-	// 365
-	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Download server directory of the backup set
-	BackupSetDownloadDir *string `json:"BackupSetDownloadDir,omitempty" xml:"BackupSetDownloadDir,omitempty"`
-	// Full data format for backup set download:
-	//
-	// 	- **Native**
-	//
-	// 	- **SQL**
-	//
-	// 	- **CSV**
-	//
-	// 	- **JSON**
-	//
-	// example:
-	//
-	// SQL
-	BackupSetDownloadFullDataFormat *string `json:"BackupSetDownloadFullDataFormat,omitempty" xml:"BackupSetDownloadFullDataFormat,omitempty"`
-	// Backup set download backup gateway ID.
-	//
-	// example:
-	//
-	// 123123
-	BackupSetDownloadGatewayId *int64 `json:"BackupSetDownloadGatewayId,omitempty" xml:"BackupSetDownloadGatewayId,omitempty"`
-	// Backup set download full data format:
-	//
-	// 	- **Native**
-	//
-	// 	- **SQL**
-	//
-	// 	- **CSV**
-	//
-	// 	- **JSON**
-	//
-	// example:
-	//
-	// SQL
+	// cn-beijing
+	BackupPlanRegion                     *string `json:"BackupPlanRegion,omitempty" xml:"BackupPlanRegion,omitempty"`
+	BackupPlanStatus                     *string `json:"BackupPlanStatus,omitempty" xml:"BackupPlanStatus,omitempty"`
+	BackupRetentionPeriod                *int32  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	BackupSetDownloadDir                 *string `json:"BackupSetDownloadDir,omitempty" xml:"BackupSetDownloadDir,omitempty"`
+	BackupSetDownloadFullDataFormat      *string `json:"BackupSetDownloadFullDataFormat,omitempty" xml:"BackupSetDownloadFullDataFormat,omitempty"`
+	BackupSetDownloadGatewayId           *int64  `json:"BackupSetDownloadGatewayId,omitempty" xml:"BackupSetDownloadGatewayId,omitempty"`
 	BackupSetDownloadIncrementDataFormat *string `json:"BackupSetDownloadIncrementDataFormat,omitempty" xml:"BackupSetDownloadIncrementDataFormat,omitempty"`
-	// Backup set download target type.
-	//
-	// > The only value is: agent, indicating that the backup gateway is installed.
-	//
-	// example:
-	//
-	// agent
-	BackupSetDownloadTargetType *string `json:"BackupSetDownloadTargetType,omitempty" xml:"BackupSetDownloadTargetType,omitempty"`
-	// Full backup start time, in the format HH:mm.
-	//
-	// example:
-	//
-	// 14:22
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// Built-in storage type. The return values are as follows:
-	//
-	// - Empty (default): Backup data is stored on the user\\"s OSS.
-	//
-	// - system: Backup data is stored on the built-in OSS of DBS.
-	//
-	// example:
-	//
-	// system
-	BackupStorageType *string `json:"BackupStorageType,omitempty" xml:"BackupStorageType,omitempty"`
-	// Start time for the database restore period, with a return value of 1554560477000.
-	//
-	// example:
-	//
-	// 1554560477000
-	BeginTimestampForRestore *int64 `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
-	// UID for cross-Aliyun account backup.
-	//
-	// example:
-	//
-	// 2xxx7778xxxxxxxxxx
-	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// RAM role name for cross-Aliyun account backup.
-	//
-	// example:
-	//
-	// test123
-	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
-	// Database type.
-	//
-	// example:
-	//
-	// MySQL
-	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// Time (in days) to convert to archive cold backup storage.
-	//
+	BackupSetDownloadTargetType          *string `json:"BackupSetDownloadTargetType,omitempty" xml:"BackupSetDownloadTargetType,omitempty"`
+	BackupStartTime                      *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStorageType                    *string `json:"BackupStorageType,omitempty" xml:"BackupStorageType,omitempty"`
+	BeginTimestampForRestore             *int64  `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
+	CrossAliyunId                        *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
+	CrossRoleName                        *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
+	DatabaseType                         *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	DuplicationArchivePeriod             *int32  `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
+	DuplicationInfrequentAccessPeriod    *int32  `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
+	EnableBackupLog                      *bool   `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	EnableMysqlPhysicalBackupBinLog      *bool   `json:"EnableMysqlPhysicalBackupBinLog,omitempty" xml:"EnableMysqlPhysicalBackupBinLog,omitempty"`
+	EndTimestampForRestore               *int64  `json:"EndTimestampForRestore,omitempty" xml:"EndTimestampForRestore,omitempty"`
+	ErrMessage                           *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// example:
 	//
 	// 365
-	DuplicationArchivePeriod *int32 `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
-	// Time (in days) to convert to infrequent access storage.
-	//
+	IncrementBackupRetentionPeriod *string `json:"IncrementBackupRetentionPeriod,omitempty" xml:"IncrementBackupRetentionPeriod,omitempty"`
 	// example:
 	//
-	// 180
-	DuplicationInfrequentAccessPeriod *int32 `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
-	// Indicates whether incremental log backup is enabled, with return values as follows:
-	//
-	// - **true**: Enabled
-	//
-	// - **false**: Disabled
-	//
+	// 365
+	IncrementDuplicationArchivePeriod *string `json:"IncrementDuplicationArchivePeriod,omitempty" xml:"IncrementDuplicationArchivePeriod,omitempty"`
 	// example:
 	//
-	// true
-	EnableBackupLog *bool `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// End time of the database restorable period, in timestamp format.
-	//
+	// 365
+	IncrementDuplicationInfrequentAccessPeriod *string `json:"IncrementDuplicationInfrequentAccessPeriod,omitempty" xml:"IncrementDuplicationInfrequentAccessPeriod,omitempty"`
 	// example:
 	//
-	// 1554560477000
-	EndTimestampForRestore *int64 `json:"EndTimestampForRestore,omitempty" xml:"EndTimestampForRestore,omitempty"`
-	// Pre-check task error message.
-	//
+	// PREPAY
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceClass      *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// example:
 	//
-	// can not connect to oracle instance orcl with user dbs
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Instance class, with return values as follows:
-	//
-	// - **micro**: Entry-level
-	//
-	// - **small**: Low-spec
-	//
-	// - **medium**: Medium-spec
-	//
-	// - **large**: High-spec
-	//
-	// - **xlarge**: High-spec (no traffic limit)
-	//
+	// 1764051253000
+	InstanceExpiredTimestamp *int64 `json:"InstanceExpiredTimestamp,omitempty" xml:"InstanceExpiredTimestamp,omitempty"`
 	// example:
 	//
-	// micro
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// OSS Bucket name.
-	//
+	// 365
+	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// example:
 	//
-	// dbs-backup-1857XXXXX489
-	OSSBucketName *string `json:"OSSBucketName,omitempty" xml:"OSSBucketName,omitempty"`
-	// OSS Bucket region.
-	//
+	// 365
+	LogDuplicationArchivePeriod *string `json:"LogDuplicationArchivePeriod,omitempty" xml:"LogDuplicationArchivePeriod,omitempty"`
 	// example:
 	//
-	// cn-hangzhou
-	OSSBucketRegion *string `json:"OSSBucketRegion,omitempty" xml:"OSSBucketRegion,omitempty"`
-	// Indicates whether the automatic backup set download feature is enabled.
-	//
+	// 365
+	LogDuplicationInfrequentAccessPeriod *string `json:"LogDuplicationInfrequentAccessPeriod,omitempty" xml:"LogDuplicationInfrequentAccessPeriod,omitempty"`
+	OSSBucketName                        *string `json:"OSSBucketName,omitempty" xml:"OSSBucketName,omitempty"`
+	OSSBucketRegion                      *string `json:"OSSBucketRegion,omitempty" xml:"OSSBucketRegion,omitempty"`
+	OpenBackupSetAutoDownload            *bool   `json:"OpenBackupSetAutoDownload,omitempty" xml:"OpenBackupSetAutoDownload,omitempty"`
+	ResourceGroupId                      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SourceEndpointDatabaseName           *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
 	// example:
 	//
 	// true
-	OpenBackupSetAutoDownload *bool `json:"OpenBackupSetAutoDownload,omitempty" xml:"OpenBackupSetAutoDownload,omitempty"`
-	// Resource group ID.
-	//
+	SourceEndpointEnableSsl *string `json:"SourceEndpointEnableSsl,omitempty" xml:"SourceEndpointEnableSsl,omitempty"`
 	// example:
 	//
-	// rg-aekzecovzti****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Database name.
-	//
-	// example:
-	//
-	// test
-	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
-	// Database instance ID.
-	//
-	// example:
-	//
-	// test
-	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// Location of the database, the return values are as follows:
-	//
-	// - **rds**
-	//
-	// - **ecs**
-	//
-	// - **express**: Database connected via dedicated line/VPN gateway/smart gateway
-	//
-	// - **agent**: Database connected via backup gateway
-	//
-	// - **dds**: Cloud MongoDB
-	//
-	// - **other**: Database connected directly via IP:Port
-	//
-	// example:
-	//
-	// rds
+	// 127.0.0.1
+	SourceEndpointHost         *string `json:"SourceEndpointHost,omitempty" xml:"SourceEndpointHost,omitempty"`
+	SourceEndpointInstanceID   *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
-	// Database connection address.
-	//
+	SourceEndpointIpPort       *string `json:"SourceEndpointIpPort,omitempty" xml:"SourceEndpointIpPort,omitempty"`
+	SourceEndpointOracleSID    *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
 	// example:
 	//
-	// 100.*.*.10:33204
-	SourceEndpointIpPort *string `json:"SourceEndpointIpPort,omitempty" xml:"SourceEndpointIpPort,omitempty"`
-	// Oracle SID name.
-	//
-	// example:
-	//
-	// test
-	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// Database region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// Database username.
-	//
-	// example:
-	//
-	// test
+	// 3306
+	SourceEndpointPort     *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
+	SourceEndpointRegion   *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	// example:
+	//
+	// encrypted
+	StorageEncryptMethod *string `json:"StorageEncryptMethod,omitempty" xml:"StorageEncryptMethod,omitempty"`
 }
 
 func (s DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) String() string {
@@ -540,6 +337,10 @@ func (s DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GoString() stri
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupGatewayId() *int64 {
 	return s.BackupGatewayId
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupGatewayIdentifier() *string {
+	return s.BackupGatewayIdentifier
 }
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupMethod() *string {
@@ -564,6 +365,10 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupPlanI
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupPlanName() *string {
 	return s.BackupPlanName
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupPlanRegion() *string {
+	return s.BackupPlanRegion
 }
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetBackupPlanStatus() *string {
@@ -630,6 +435,10 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetEnableBacku
 	return s.EnableBackupLog
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetEnableMysqlPhysicalBackupBinLog() *bool {
+	return s.EnableMysqlPhysicalBackupBinLog
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetEndTimestampForRestore() *int64 {
 	return s.EndTimestampForRestore
 }
@@ -638,8 +447,40 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetErrMessage(
 	return s.ErrMessage
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetIncrementBackupRetentionPeriod() *string {
+	return s.IncrementBackupRetentionPeriod
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetIncrementDuplicationArchivePeriod() *string {
+	return s.IncrementDuplicationArchivePeriod
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetIncrementDuplicationInfrequentAccessPeriod() *string {
+	return s.IncrementDuplicationInfrequentAccessPeriod
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetInstanceChargeType() *string {
+	return s.InstanceChargeType
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetInstanceClass() *string {
 	return s.InstanceClass
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetInstanceExpiredTimestamp() *int64 {
+	return s.InstanceExpiredTimestamp
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetLogBackupRetentionPeriod() *string {
+	return s.LogBackupRetentionPeriod
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetLogDuplicationArchivePeriod() *string {
+	return s.LogDuplicationArchivePeriod
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetLogDuplicationInfrequentAccessPeriod() *string {
+	return s.LogDuplicationInfrequentAccessPeriod
 }
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetOSSBucketName() *string {
@@ -662,6 +503,14 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpo
 	return s.SourceEndpointDatabaseName
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpointEnableSsl() *string {
+	return s.SourceEndpointEnableSsl
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpointHost() *string {
+	return s.SourceEndpointHost
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpointInstanceID() *string {
 	return s.SourceEndpointInstanceID
 }
@@ -678,6 +527,10 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpo
 	return s.SourceEndpointOracleSID
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpointPort() *string {
+	return s.SourceEndpointPort
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpointRegion() *string {
 	return s.SourceEndpointRegion
 }
@@ -686,8 +539,17 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetSourceEndpo
 	return s.SourceEndpointUserName
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) GetStorageEncryptMethod() *string {
+	return s.StorageEncryptMethod
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetBackupGatewayId(v int64) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.BackupGatewayId = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetBackupGatewayIdentifier(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.BackupGatewayIdentifier = &v
 	return s
 }
 
@@ -718,6 +580,11 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetBackupPlanI
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetBackupPlanName(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.BackupPlanName = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetBackupPlanRegion(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.BackupPlanRegion = &v
 	return s
 }
 
@@ -801,6 +668,11 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetEnableBacku
 	return s
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetEnableMysqlPhysicalBackupBinLog(v bool) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.EnableMysqlPhysicalBackupBinLog = &v
+	return s
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetEndTimestampForRestore(v int64) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.EndTimestampForRestore = &v
 	return s
@@ -811,8 +683,48 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetErrMessage(
 	return s
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetIncrementBackupRetentionPeriod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.IncrementBackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetIncrementDuplicationArchivePeriod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.IncrementDuplicationArchivePeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetIncrementDuplicationInfrequentAccessPeriod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.IncrementDuplicationInfrequentAccessPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetInstanceChargeType(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.InstanceChargeType = &v
+	return s
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetInstanceClass(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetInstanceExpiredTimestamp(v int64) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.InstanceExpiredTimestamp = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetLogBackupRetentionPeriod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.LogBackupRetentionPeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetLogDuplicationArchivePeriod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.LogDuplicationArchivePeriod = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetLogDuplicationInfrequentAccessPeriod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.LogDuplicationInfrequentAccessPeriod = &v
 	return s
 }
 
@@ -841,6 +753,16 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpo
 	return s
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpointEnableSsl(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.SourceEndpointEnableSsl = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpointHost(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.SourceEndpointHost = &v
+	return s
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpointInstanceID(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.SourceEndpointInstanceID = &v
 	return s
@@ -861,6 +783,11 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpo
 	return s
 }
 
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpointPort(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.SourceEndpointPort = &v
+	return s
+}
+
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpointRegion(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.SourceEndpointRegion = &v
 	return s
@@ -868,6 +795,11 @@ func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpo
 
 func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetSourceEndpointUserName(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
 	s.SourceEndpointUserName = &v
+	return s
+}
+
+func (s *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail) SetStorageEncryptMethod(v string) *DescribeBackupPlanListResponseBodyItemsBackupPlanDetail {
+	s.StorageEncryptMethod = &v
 	return s
 }
 

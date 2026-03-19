@@ -49,28 +49,27 @@ type DescribeBackupGatewayListResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of backup gateways.
-	Items *DescribeBackupGatewayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Items          *DescribeBackupGatewayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned on each page.
+	// The number of records on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 46361705-8531-492F-807E-A97E482DD4A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -82,7 +81,7 @@ type DescribeBackupGatewayListResponseBody struct {
 	//
 	// 0
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//
@@ -232,73 +231,15 @@ func (s *DescribeBackupGatewayListResponseBodyItems) Validate() error {
 }
 
 type DescribeBackupGatewayListResponseBodyItemsBackupGateway struct {
-	// The time when the backup gateway was created, such as 1554560477000.
-	//
-	// example:
-	//
-	// 1554560477000
-	BackupGatewayCreateTime *int64 `json:"BackupGatewayCreateTime,omitempty" xml:"BackupGatewayCreateTime,omitempty"`
-	// The ID of the backup gateway.
-	//
-	// example:
-	//
-	// 2321313123
-	BackupGatewayId *string `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The status of the backup gateway. Valid values:
-	//
-	// 	- ONLINE: The backup gateway is online.
-	//
-	// 	- OFFLINE: The backup gateway is offline.
-	//
-	// 	- STOPPED: The backup gateway is stopped.
-	//
-	// 	- UPGRADING: The backup gateway is being upgraded.
-	//
-	// example:
-	//
-	// ONLINE
-	BackupGatewayStatus *string `json:"BackupGatewayStatus,omitempty" xml:"BackupGatewayStatus,omitempty"`
-	// The display name of the backup gateway.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The unique identifier of the backup gateway.
-	//
-	// example:
-	//
-	// sgdsajhdgu
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The last time when a heartbeat message was sent, such as 1554560477000.
-	//
-	// example:
-	//
-	// 1554560477000
-	LastHeartbeatTime *int64 `json:"LastHeartbeatTime,omitempty" xml:"LastHeartbeatTime,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the host on which the backup gateway is installed.
-	//
-	// example:
-	//
-	// test
-	SourceEndpointHostname *string `json:"SourceEndpointHostname,omitempty" xml:"SourceEndpointHostname,omitempty"`
-	// The public IP address of the host on which the backup gateway is installed.
-	//
-	// example:
-	//
-	// XX.XX.XX.XX
+	BackupGatewayCreateTime  *int64  `json:"BackupGatewayCreateTime,omitempty" xml:"BackupGatewayCreateTime,omitempty"`
+	BackupGatewayId          *string `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
+	BackupGatewayStatus      *string `json:"BackupGatewayStatus,omitempty" xml:"BackupGatewayStatus,omitempty"`
+	DisplayName              *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Identifier               *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	LastHeartbeatTime        *int64  `json:"LastHeartbeatTime,omitempty" xml:"LastHeartbeatTime,omitempty"`
+	Region                   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SourceEndpointHostname   *string `json:"SourceEndpointHostname,omitempty" xml:"SourceEndpointHostname,omitempty"`
 	SourceEndpointInternetIP *string `json:"SourceEndpointInternetIP,omitempty" xml:"SourceEndpointInternetIP,omitempty"`
-	// The private IP address of the host on which the backup gateway is installed.
-	//
-	// example:
-	//
-	// XX.XX.XX.XX
 	SourceEndpointIntranetIP *string `json:"SourceEndpointIntranetIP,omitempty" xml:"SourceEndpointIntranetIP,omitempty"`
 }
 

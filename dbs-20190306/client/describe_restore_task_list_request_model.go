@@ -28,38 +28,34 @@ type iDescribeRestoreTaskListRequest interface {
 }
 
 type DescribeRestoreTaskListRequest struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
+	//
+	// > Specify either BackupPlanId or RestoreTaskId.
 	//
 	// example:
 	//
 	// dbs1hvb0wwwXXXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token that is used to ensure the idempotence of the request. This prevents duplicate requests.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The end of the time range to query.
+	// The end time of the backup.
 	//
 	// example:
 	//
 	// 1570701361528
 	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be a positive integer. Default value: 0.
+	// The page number. The value must be greater than or equal to 0 and not exceed the maximum value of the integer data type. Default value: 0.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Valid values:
-	//
-	// 	- 30
-	//
-	// 	- 50
-	//
-	// 	- 100
+	// The number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// > Default value: 30.
 	//
@@ -67,15 +63,15 @@ type DescribeRestoreTaskListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The restoration task ID. Separate multiple IDs with commas (,). You can call the [CreateRestoreTask](https://help.aliyun.com/document_detail/2869836.html) operation to obtain the ID.
+	// The ID of the restore job. You can specify multiple IDs. Separate them with commas (,). Call the [CreateRestoreTask](https://help.aliyun.com/document_detail/2869836.html) operation to obtain this parameter.
 	//
-	// >  Configure the BackupPlanId or RestoreTaskId parameter. If you configure the two parameters, an error is returned.
+	// > Specify either RestoreTaskId or BackupPlanId. An error occurs if you specify both parameters.
 	//
 	// example:
 	//
 	// s102h7rf5anq
 	RestoreTaskId *string `json:"RestoreTaskId,omitempty" xml:"RestoreTaskId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the backup.
 	//
 	// example:
 	//

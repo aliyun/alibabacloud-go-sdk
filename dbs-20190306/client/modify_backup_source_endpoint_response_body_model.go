@@ -26,7 +26,7 @@ type iModifyBackupSourceEndpointResponseBody interface {
 }
 
 type ModifyBackupSourceEndpointResponseBody struct {
-	// The ID of the backup schedule.
+	// The backup plan ID.
 	//
 	// example:
 	//
@@ -50,23 +50,23 @@ type ModifyBackupSourceEndpointResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether a precheck is triggered. If the value of this parameter is true, you must start the backup schedule by calling the StartBackupPlan operation.
+	// Indicates whether this change triggers a precheck. If this value is true, call StartBackupPlan to restart the backup plan.
 	//
 	// example:
 	//
 	// false
 	NeedPrecheck *bool `json:"NeedPrecheck,omitempty" xml:"NeedPrecheck,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- **true**: The request is successful.
+	// - **true**: The request succeeded.
 	//
-	// 	- **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

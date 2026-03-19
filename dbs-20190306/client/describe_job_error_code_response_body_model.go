@@ -42,7 +42,7 @@ type DescribeJobErrorCodeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error information.
+	// The details of the error code.
 	Item *DescribeJobErrorCodeResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -50,7 +50,7 @@ type DescribeJobErrorCodeResponseBody struct {
 	//
 	// 1FC2F86D-AFF4-4ED9-BB25-ADDE196CB2B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -136,25 +136,25 @@ type DescribeJobErrorCodeResponseBodyItem struct {
 	//
 	// failed
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The standard error message.
+	// The standardized error message.
 	//
 	// example:
 	//
 	// Describe preCheck progress failed.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the full backup or restore task.
+	// The ID of the full backup or restore job.
 	//
 	// example:
 	//
-	// tooi0****
+	// r1iv62ud****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The status of the task.
+	// The state of the job.
 	//
 	// example:
 	//
 	// init
 	JobState *string `json:"JobState,omitempty" xml:"JobState,omitempty"`
-	// The internal ID of the DBS task type.
+	// The internal job type ID in DBS.
 	//
 	// example:
 	//

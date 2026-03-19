@@ -26,11 +26,11 @@ type iDisableBackupLogResponseBody interface {
 }
 
 type DisableBackupLogResponseBody struct {
-	// The backup schedule ID.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
-	// dbstooi01xxxx
+	// dbstooi01****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The error code.
 	//
@@ -50,11 +50,11 @@ type DisableBackupLogResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether a precheck is triggered. Valid values:
+	// Indicates whether this change triggers a precheck. Valid values:
 	//
-	// 	- true: A precheck is triggered. You must call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup schedule.
+	// - true: A precheck is triggered. You must manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup plan.
 	//
-	// 	- false: No precheck is triggered.
+	// - false: No precheck is triggered.
 	//
 	// example:
 	//
@@ -66,7 +66,11 @@ type DisableBackupLogResponseBody struct {
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation succeeded. Valid values:
+	//
+	// - true: The operation succeeded.
+	//
+	// - false: The operation failed.
 	//
 	// example:
 	//

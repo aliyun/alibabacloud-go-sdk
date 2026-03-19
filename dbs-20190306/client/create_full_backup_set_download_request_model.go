@@ -20,15 +20,17 @@ type iCreateFullBackupSetDownloadRequest interface {
 }
 
 type CreateFullBackupSetDownloadRequest struct {
-	// The format in which the full backup set is downloaded. Valid values:
+	// The format of the downloaded full backup set. Valid values:
 	//
-	// 	- **Native**
+	// - **Native**
 	//
-	// 	- **SQL**
+	// - **SQL**
 	//
-	// 	- **CSV**(Default value)
+	// - **CSV**
 	//
-	// 	- **JSON**
+	// - **JSON**
+	//
+	// > The default value is CSV.
 	//
 	// example:
 	//
@@ -40,13 +42,13 @@ type CreateFullBackupSetDownloadRequest struct {
 	//
 	// example:
 	//
-	// dbs1hv****
+	// dbs1hvXXXXX
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token used to ensure the idempotence of the request. This prevents the same request from being sent multiple times.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }

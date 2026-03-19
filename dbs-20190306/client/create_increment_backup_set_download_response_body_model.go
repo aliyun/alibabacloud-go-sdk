@@ -28,7 +28,7 @@ type CreateIncrementBackupSetDownloadResponseBody struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// 1jydacm******
 	BackupSetDownloadTaskId *string `json:"BackupSetDownloadTaskId,omitempty" xml:"BackupSetDownloadTaskId,omitempty"`
 	// The error code.
 	//

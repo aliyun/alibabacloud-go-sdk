@@ -26,25 +26,25 @@ type UpgradeBackupPlanRequest struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// dbstooi01eXXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The specifications of the instance. Valid values:
 	//
-	// 	- micro
+	// - micro
 	//
-	// 	- small
+	// - small
 	//
-	// 	- medium
+	// - medium
 	//
-	// 	- large
+	// - large
 	//
-	// 	- xlarge
+	// - xlarge
 	//
 	// This parameter is required.
 	//

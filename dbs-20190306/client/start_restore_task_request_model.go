@@ -18,14 +18,14 @@ type iStartRestoreTaskRequest interface {
 }
 
 type StartRestoreTaskRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token. It ensures the idempotence of the request and prevents the same request from being submitted multiple times.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the restore task.
+	// The ID of the restore job.
 	//
 	// This parameter is required.
 	//

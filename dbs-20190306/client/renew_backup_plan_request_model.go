@@ -28,20 +28,20 @@ type RenewBackupPlanRequest struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// dbstooi01exxx
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
-	// HKAJHFIUEQWBFIJSNFO****
+	// HKAJHFIUEQWBFIJSNFOIWHN
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to use yearly subscription or monthly subscription for the instance. Valid values:
 	//
-	// 	- Year
+	// - Year
 	//
-	// 	- Month
+	// - Month
 	//
 	// This parameter is required.
 	//
@@ -51,9 +51,9 @@ type RenewBackupPlanRequest struct {
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The subscription duration of the instance. Valid values:
 	//
-	// 	- If the Period parameter is set to Year, the value of the UsedTime parameter ranges from 1 to 9.
+	// - If the Period parameter is set to Year, the value of the UsedTime parameter ranges from 1 to 9.
 	//
-	// 	- If the Period parameter is set to Month, the value of the UsedTime parameter ranges from 1 to 11.
+	// - If the Period parameter is set to Month, the value of the UsedTime parameter ranges from 1 to 11.
 	//
 	// This parameter is required.
 	//

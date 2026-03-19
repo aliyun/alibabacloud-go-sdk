@@ -24,60 +24,60 @@ type iDescribeBackupGatewayListRequest interface {
 }
 
 type DescribeBackupGatewayListRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token used to ensure the idempotence of the request. This prevents duplicate requests.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The unique identifier of the backup gateway. You can query multiple backup gateways. Separate multiple identifiers with commas (,).
+	// The unique identifier of the backup gateway. You can query multiple gateways by separating the identifiers with commas (,).
 	//
 	// example:
 	//
 	// 7213527653217
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be a positive integer. Default value: 0.
+	// The page number. The value must be greater than or equal to 0 and cannot exceed the maximum value of an integer. The default value is 0.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of records on each page. Valid values:
 	//
-	// 	- **30**
+	// - **30**
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
-	// > Default value: 30.
+	// > The default value is 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which Database Backup (DBS) is activated. Valid values:
+	// The region of the DBS instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou)
+	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// 	- **cn-shanghai**: China (Shanghai)
+	// - **cn-shanghai**: China (Shanghai)
 	//
-	// 	- **cn-qingdao**: China (Qingdao)
+	// - **cn-qingdao**: China (Qingdao)
 	//
-	// 	- **cn-beijing**: China (Beijing)
+	// - **cn-beijing**: China (Beijing)
 	//
-	// 	- **cn-shenzhen**: China (Shenzhen)
+	// - **cn-shenzhen**: China (Shenzhen)
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: China (Hong Kong)
 	//
-	// 	- **ap-southeast-1**: Singapore (Singapore)
+	// - **ap-southeast-1**: Singapore
 	//
-	// 	- **cn-hangzhou-finance**: China East 1 Finance
+	// - **cn-hangzhou-finance**: Hangzhou Finance Cloud
 	//
-	// 	- **cn-shanghai-finance**: China East 2 Finance
+	// - **cn-shanghai-finance**: Shanghai Finance Cloud
 	//
-	// 	- **cn-shenzhen-finance**: China South 1 Finance
+	// - **cn-shenzhen-finance**: Shenzhen Finance Cloud
 	//
 	// This parameter is required.
 	//

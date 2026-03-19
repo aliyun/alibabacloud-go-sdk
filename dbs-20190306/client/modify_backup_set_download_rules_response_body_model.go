@@ -28,7 +28,7 @@ type ModifyBackupSetDownloadRulesResponseBody struct {
 	//
 	// example:
 	//
-	// dbstooi01e****
+	// dbstooi01exxxx
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The error code.
 	//

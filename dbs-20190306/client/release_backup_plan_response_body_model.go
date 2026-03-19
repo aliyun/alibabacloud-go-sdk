@@ -24,25 +24,25 @@ type iReleaseBackupPlanResponseBody interface {
 }
 
 type ReleaseBackupPlanResponseBody struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
-	// dbstooi01****
+	// dbstooi01xxxx
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// Param.NotFound
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// findValidDBSJob error
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ReleaseBackupPlanResponseBody struct {
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// - true: The request is successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

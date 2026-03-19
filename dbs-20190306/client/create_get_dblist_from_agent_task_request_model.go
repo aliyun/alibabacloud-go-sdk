@@ -28,7 +28,7 @@ type iCreateGetDBListFromAgentTaskRequest interface {
 type CreateGetDBListFromAgentTaskRequest struct {
 	// The ID of the backup gateway. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
 	//
-	// >  This parameter is required.
+	// > This parameter is required.
 	//
 	// example:
 	//
@@ -42,21 +42,21 @@ type CreateGetDBListFromAgentTaskRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The type of the database. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **MSSQL**
+	// - **MSSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **DRDS**
+	// - **DRDS**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
 	// example:
 	//
@@ -67,7 +67,7 @@ type CreateGetDBListFromAgentTaskRequest struct {
 	//
 	// example:
 	//
-	// 123.0.0.1
+	// 123.0.XX.XX
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
 	// The port that is used to connect to the database.
 	//

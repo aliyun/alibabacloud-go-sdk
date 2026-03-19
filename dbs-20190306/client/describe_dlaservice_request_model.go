@@ -24,7 +24,7 @@ type DescribeDLAServiceRequest struct {
 	//
 	// example:
 	//
-	// dbstooi01ex****
+	// dbstooi01exXXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//

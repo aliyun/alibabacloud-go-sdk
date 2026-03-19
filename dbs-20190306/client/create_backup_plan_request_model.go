@@ -42,13 +42,11 @@ type iCreateBackupPlanRequest interface {
 }
 
 type CreateBackupPlanRequest struct {
-	// The backup method of the backup schedule. Valid values:
+	// The backup method. Valid values:
 	//
-	// 	- **logical**: logical backup
+	// - **logical**: logical backup
 	//
-	// 	- **physical**: physical backup
-	//
-	// 	- **duplication**: dump backup
+	// - **physical**: physical backup
 	//
 	// This parameter is required.
 	//
@@ -56,37 +54,35 @@ type CreateBackupPlanRequest struct {
 	//
 	// logical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// KJSAHKJFHKJSHFKASHFKJADFHKDXXXX
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region in which the database you want to back up resides.
-	//
-	// > This parameter is required if the **PayType*	- parameter is set to **postpay**.
+	// The region of the database.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DatabaseRegion *string `json:"DatabaseRegion,omitempty" xml:"DatabaseRegion,omitempty"`
-	// The type of the source database. Valid values:
+	// The database type. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **MSSQL**
+	// - **MSSQL**
 	//
-	// 	- **Oracle**
+	// - **Oracle**
 	//
-	// 	- **MariaDB**
+	// - **MariaDB**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **DRDS**
+	// - **DRDS**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
 	// This parameter is required.
 	//
@@ -94,25 +90,25 @@ type CreateBackupPlanRequest struct {
 	//
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// The source of the request. The default value is OpenAPI and cannot be changed.
+	// The source of the request. The default value is OpenAPI. You do not need to set this parameter.
 	//
 	// example:
 	//
 	// OpenAPI
 	FromApp *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
-	// The type of the backup schedule. Valid values:
+	// The instance class. Valid values:
 	//
-	// 	- **micro**
+	// - **micro**: Entry
 	//
-	// 	- **small**
+	// - **small**: Basic
 	//
-	// 	- **medium**
+	// - **medium**: Standard
 	//
-	// 	- **large**
+	// - **large**: Enhanced
 	//
-	// 	- **xlarge**
+	// - **xlarge**: Enhanced (no traffic limit)
 	//
-	// >  A backup schedule type with higher specifications offers higher backup and restoration performance. For more information, see [Select a backup schedule type](https://help.aliyun.com/document_detail/84372.html).
+	// > The higher the instance class, the better the performance of backup and recovery. For more information, see [Specifications](https://help.aliyun.com/document_detail/84372.html).
 	//
 	// This parameter is required.
 	//
@@ -120,52 +116,46 @@ type CreateBackupPlanRequest struct {
 	//
 	// micro
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The type of the source database instance. Valid values:
+	// The database instance type. Valid values:
 	//
-	// 	- **RDS**: ApsaraDB RDS.
+	// - **RDS**
 	//
-	// 	- **PolarDB**: PolarDB.
+	// - **PolarDB**
 	//
-	// 	- **DDS**: ApsaraDB for MongoDB.
+	// - **DDS**: Alibaba Cloud MongoDB
 	//
-	// 	- **Kvstore**: ApsaraDB for Redis.
+	// - **Kvstore**: Alibaba Cloud Redis
 	//
-	// 	- **Other**: Database connected by using an IP address and a port number.
+	// - **Other**: A database that is connected over the Internet.
 	//
-	// 	- **dg**: Self-managed database that has no public IP address or port number and is connected over Database Gateway.
-	//
-	// >  If **PayType*	- is set to **postpay**, this parameter is required.
+	// - **dg**: A self-managed database without a public IP address and port that is connected through Database Gateway (DG).
 	//
 	// example:
 	//
 	// RDS
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The billing method of the backup schedule. Valid values:
+	// The payment method. Valid value:
 	//
-	// 	- **postpay**: pay-as-you-go
-	//
-	// 	- **prepay**: subscription
-	//
-	// > The default value is **prepay**. If the **BackupMethod*	- parameter is set to **duplication**, **postpay*	- is supported.
+	// **prepay**: subscription
 	//
 	// example:
 	//
 	// prepay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription period. Valid values:
+	// The billing cycle of the subscription instance. Valid values:
 	//
-	// 	- **Year**: yearly subscription
+	// - **Year**
 	//
-	// 	- **Month**: monthly subscription
+	// - **Month**
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region in which you can activate Data Disaster Recovery. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) operation to query the regions supported by Data Disaster Recovery.
+	// The region ID of the DBS instance. This parameter is required. Call the [DescribeRegions](https://help.aliyun.com/document_detail/2869853.html) operation to view the regions that DBS supports.
 	//
-	// >  For more information, see [Endpoints](https://help.aliyun.com/document_detail/2869810.html).
+	// > For more information, see [Endpoints](https://help.aliyun.com/document_detail/2869810.html).
 	//
 	// example:
 	//
@@ -177,25 +167,23 @@ type CreateBackupPlanRequest struct {
 	//
 	// rg-aekzecovzti****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The region in which you want to store the backup data.
-	//
-	// > This parameter is required if the **PayType*	- parameter is set to **postpay**.
+	// The storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	StorageRegion *string `json:"StorageRegion,omitempty" xml:"StorageRegion,omitempty"`
-	// This parameter is unavailable.
+	// This parameter is not used.
 	//
 	// example:
 	//
-	// N/A
+	// 无
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The subscription period. Valid values:
+	// The subscription duration. Valid values:
 	//
-	// 	- If **Period*	- is set to **Year**, the valid values of **UsedTime*	- range from 1 to 5.
+	// - If you set the **Period*	- parameter to **Year**, the value of **UsedTime*	- can be 1 to 5.
 	//
-	// 	- If **Period*	- is set to **Month**, the valid values of **UsedTime*	- range from 1 to 11.
+	// - If you set the **Period*	- parameter to **Month**, the value of **UsedTime*	- can be 1 to 11.
 	//
 	// example:
 	//

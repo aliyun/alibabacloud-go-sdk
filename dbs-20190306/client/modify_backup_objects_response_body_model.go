@@ -26,17 +26,17 @@ type iModifyBackupObjectsResponseBody interface {
 }
 
 type ModifyBackupObjectsResponseBody struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
 	// dbs1h****usfa
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
-	// Param.NotFound
+	// InvalidParameter
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
 	// The error message.
 	//
@@ -50,13 +50,13 @@ type ModifyBackupObjectsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether a precheck is triggered. If true is returned, you must call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup schedule.
+	// Indicates whether the modification triggers a precheck. If this parameter is set to true, call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869816.html) operation to start the backup plan.
 	//
 	// example:
 	//
 	// true
 	NeedPrecheck *bool `json:"NeedPrecheck,omitempty" xml:"NeedPrecheck,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type ModifyBackupObjectsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

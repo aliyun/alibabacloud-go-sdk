@@ -32,39 +32,61 @@ type iDescribeFullBackupListResponseBody interface {
 }
 
 type DescribeFullBackupListResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Param.NotFound
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The specified parameter %s value is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Items          *DescribeFullBackupListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 636BC118-6080-4119-A6B5-C199CEC1037D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded. Valid values:
+	//
+	// - **true**: The operation succeeded.
+	//
+	// - **false**: The operation failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of full backup jobs.
+	//
 	// example:
 	//
 	// 1
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -215,28 +237,68 @@ func (s *DescribeFullBackupListResponseBodyItems) Validate() error {
 type DescribeFullBackupListResponseBodyItemsFullBackupFile struct {
 	// example:
 	//
-	// [{\\"DBName\\":\\"test\\"}]
-	BackupObjects        *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
-	BackupSetExpiredTime *int64  `json:"BackupSetExpiredTime,omitempty" xml:"BackupSetExpiredTime,omitempty"`
-	BackupSetId          *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	BackupSize           *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// TESTGATEWAY
+	BackupGatewayIdentifier *string `json:"BackupGatewayIdentifier,omitempty" xml:"BackupGatewayIdentifier,omitempty"`
+	BackupObjects           *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
+	BackupSetExpiredTime    *int64  `json:"BackupSetExpiredTime,omitempty" xml:"BackupSetExpiredTime,omitempty"`
+	BackupSetId             *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	BackupSize              *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStatus            *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	CreateTime              *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
 	//
-	// finish
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	CreateTime   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 2xxx7778xxxxxxxxxx
+	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
 	// example:
 	//
-	// NULL
-	ErrMessage           *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	FinishTime           *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	SourceEndpointIpPort *string `json:"SourceEndpointIpPort,omitempty" xml:"SourceEndpointIpPort,omitempty"`
-	StartTime            *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// ram-for-dbs
+	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrMessage    *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	FinishTime    *int64  `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// example:
 	//
-	// Standard
-	StorageMethod *string `json:"StorageMethod,omitempty" xml:"StorageMethod,omitempty"`
+	// 100
+	LogicalFullBackupProgress *int32 `json:"LogicalFullBackupProgress,omitempty" xml:"LogicalFullBackupProgress,omitempty"`
+	// example:
+	//
+	// 100
+	LogicalStructureBackupProgress *int32 `json:"LogicalStructureBackupProgress,omitempty" xml:"LogicalStructureBackupProgress,omitempty"`
+	// example:
+	//
+	// true
+	SourceEndpointEnableSsl *string `json:"SourceEndpointEnableSsl,omitempty" xml:"SourceEndpointEnableSsl,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	SourceEndpointHost *string `json:"SourceEndpointHost,omitempty" xml:"SourceEndpointHost,omitempty"`
+	// example:
+	//
+	// rm-testxx
+	SourceEndpointInstanceId *string `json:"SourceEndpointInstanceId,omitempty" xml:"SourceEndpointInstanceId,omitempty"`
+	// example:
+	//
+	// rds
+	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
+	SourceEndpointIpPort       *string `json:"SourceEndpointIpPort,omitempty" xml:"SourceEndpointIpPort,omitempty"`
+	// example:
+	//
+	// 3306
+	SourceEndpointPort *string `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	// example:
+	//
+	// dbs_backup
+	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	StartTime              *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// encrypted
+	StorageEncryptMethod *string `json:"StorageEncryptMethod,omitempty" xml:"StorageEncryptMethod,omitempty"`
+	StorageMethod        *string `json:"StorageMethod,omitempty" xml:"StorageMethod,omitempty"`
 }
 
 func (s DescribeFullBackupListResponseBodyItemsFullBackupFile) String() string {
@@ -245,6 +307,10 @@ func (s DescribeFullBackupListResponseBodyItemsFullBackupFile) String() string {
 
 func (s DescribeFullBackupListResponseBodyItemsFullBackupFile) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetBackupGatewayIdentifier() *string {
+	return s.BackupGatewayIdentifier
 }
 
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetBackupObjects() *string {
@@ -271,6 +337,14 @@ func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetCreateTime() 
 	return s.CreateTime
 }
 
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetCrossAliyunId() *string {
+	return s.CrossAliyunId
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetCrossRoleName() *string {
+	return s.CrossRoleName
+}
+
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -283,16 +357,61 @@ func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetFinishTime() 
 	return s.FinishTime
 }
 
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetLogicalFullBackupProgress() *int32 {
+	return s.LogicalFullBackupProgress
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetLogicalStructureBackupProgress() *int32 {
+	return s.LogicalStructureBackupProgress
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointEnableSsl() *string {
+	return s.SourceEndpointEnableSsl
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointHost() *string {
+	return s.SourceEndpointHost
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointInstanceId() *string {
+	return s.SourceEndpointInstanceId
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointInstanceType() *string {
+	return s.SourceEndpointInstanceType
+}
+
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointIpPort() *string {
 	return s.SourceEndpointIpPort
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointPort() *string {
+	return s.SourceEndpointPort
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointRegion() *string {
+	return s.SourceEndpointRegion
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetSourceEndpointUserName() *string {
+	return s.SourceEndpointUserName
 }
 
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetStartTime() *int64 {
 	return s.StartTime
 }
 
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetStorageEncryptMethod() *string {
+	return s.StorageEncryptMethod
+}
+
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) GetStorageMethod() *string {
 	return s.StorageMethod
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetBackupGatewayIdentifier(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.BackupGatewayIdentifier = &v
+	return s
 }
 
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetBackupObjects(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
@@ -325,6 +444,16 @@ func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetCreateTime(v 
 	return s
 }
 
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetCrossAliyunId(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.CrossAliyunId = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetCrossRoleName(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.CrossRoleName = &v
+	return s
+}
+
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetEndTime(v int64) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
 	s.EndTime = &v
 	return s
@@ -340,13 +469,63 @@ func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetFinishTime(v 
 	return s
 }
 
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetLogicalFullBackupProgress(v int32) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.LogicalFullBackupProgress = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetLogicalStructureBackupProgress(v int32) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.LogicalStructureBackupProgress = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointEnableSsl(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointEnableSsl = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointHost(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointHost = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointInstanceId(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointInstanceId = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointInstanceType(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointInstanceType = &v
+	return s
+}
+
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointIpPort(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
 	s.SourceEndpointIpPort = &v
 	return s
 }
 
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointPort(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointPort = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointRegion(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointRegion = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetSourceEndpointUserName(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.SourceEndpointUserName = &v
+	return s
+}
+
 func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetStartTime(v int64) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeFullBackupListResponseBodyItemsFullBackupFile) SetStorageEncryptMethod(v string) *DescribeFullBackupListResponseBodyItemsFullBackupFile {
+	s.StorageEncryptMethod = &v
 	return s
 }
 

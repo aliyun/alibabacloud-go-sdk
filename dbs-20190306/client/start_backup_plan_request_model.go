@@ -18,7 +18,7 @@ type iStartBackupPlanRequest interface {
 }
 
 type StartBackupPlanRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain it.
+	// The ID of the backup plan. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type StartBackupPlanRequest struct {
 	//
 	// dbsqdss5tmh****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//

@@ -36,25 +36,25 @@ type ModifyBackupStrategyRequest struct {
 	BackupLogIntervalSeconds *int32 `json:"BackupLogIntervalSeconds,omitempty" xml:"BackupLogIntervalSeconds,omitempty"`
 	// The day of each week when the full backup task runs. Valid values:
 	//
-	// 	- Monday
+	// - Monday
 	//
-	// 	- Tuesday
+	// - Tuesday
 	//
-	// 	- Wednesday
+	// - Wednesday
 	//
-	// 	- Thursday
+	// - Thursday
 	//
-	// 	- Friday
+	// - Friday
 	//
-	// 	- Saturday
+	// - Saturday
 	//
-	// 	- Sunday
+	// - Sunday
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Monday
+	// Monday,Tuesday,Wednesday
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
 	// The ID of the backup schedule.
 	//
@@ -72,9 +72,9 @@ type ModifyBackupStrategyRequest struct {
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The backup method that you want to use for full backups. Valid values:
 	//
-	// 	- **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+	// - **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
 	//
-	// 	- **Manual**: manual backup.
+	// - **Manual**: manual backup.
 	//
 	// > Default value: **simple**.
 	//

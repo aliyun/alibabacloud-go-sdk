@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Configures a DBS backup schedule.
+// This API is used to configure a DBS backup plan.
 //
 // @param request - ConfigureBackupPlanRequest
 //
@@ -68,6 +68,10 @@ func (client *Client) ConfigureBackupPlanWithContext(ctx context.Context, reques
 		query["BackupStartTime"] = request.BackupStartTime
 	}
 
+	if !dara.IsNil(request.BackupStorageEncryptMethod) {
+		query["BackupStorageEncryptMethod"] = request.BackupStorageEncryptMethod
+	}
+
 	if !dara.IsNil(request.BackupStorageType) {
 		query["BackupStorageType"] = request.BackupStorageType
 	}
@@ -100,6 +104,14 @@ func (client *Client) ConfigureBackupPlanWithContext(ctx context.Context, reques
 		query["EnableBackupLog"] = request.EnableBackupLog
 	}
 
+	if !dara.IsNil(request.EnableMysqlPhysicalBackupBinlog) {
+		query["EnableMysqlPhysicalBackupBinlog"] = request.EnableMysqlPhysicalBackupBinlog
+	}
+
+	if !dara.IsNil(request.EnableSourceEndpointSsl) {
+		query["EnableSourceEndpointSsl"] = request.EnableSourceEndpointSsl
+	}
+
 	if !dara.IsNil(request.OSSBucketName) {
 		query["OSSBucketName"] = request.OSSBucketName
 	}
@@ -128,6 +140,10 @@ func (client *Client) ConfigureBackupPlanWithContext(ctx context.Context, reques
 		query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
 	}
 
+	if !dara.IsNil(request.SourceEndpointOracleHome) {
+		query["SourceEndpointOracleHome"] = request.SourceEndpointOracleHome
+	}
+
 	if !dara.IsNil(request.SourceEndpointOracleSID) {
 		query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
 	}
@@ -146,6 +162,10 @@ func (client *Client) ConfigureBackupPlanWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.SourceEndpointUserName) {
 		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !dara.IsNil(request.SslCaPem) {
+		query["SslCaPem"] = request.SslCaPem
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -173,11 +193,11 @@ func (client *Client) ConfigureBackupPlanWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates, configures, and starts a backup schedule.
+// Creates, configures, and starts a backup plan.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/70005.html) of Database Backup (DBS).
+// Before you call this operation, ensure that you understand the [billing methods and pricing](https://help.aliyun.com/document_detail/70005.html) of Database Backup (DBS).
 //
 // @param request - CreateAndStartBackupPlanRequest
 //
@@ -385,11 +405,11 @@ func (client *Client) CreateAndStartBackupPlanWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a backup schedule.
+// Creates a Database Backup Service (DBS) backup plan.
 //
 // Description:
 //
-// For more information about how to create a backup schedule in the Database Backup (DBS) console, see [Purchase a backup schedule](https://help.aliyun.com/document_detail/65909.html).
+// To perform this operation in the console, see [Purchase a backup plan](https://help.aliyun.com/document_detail/65909.html).
 //
 // @param request - CreateBackupPlanRequest
 //
@@ -489,7 +509,7 @@ func (client *Client) CreateBackupPlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates and starts a full backup set download task.
+// This operation creates a task to download a full backup set.
 //
 // @param request - CreateFullBackupSetDownloadRequest
 //
@@ -677,7 +697,15 @@ func (client *Client) CreateIncrementBackupSetDownloadWithContext(ctx context.Co
 
 // Summary:
 //
-// Creates a restoration task.
+// This interface creates DBS restore jobs.
+//
+// Description:
+//
+// ### Related operations
+//
+// - [Recover databases](https://help.aliyun.com/document_detail/85543.html)
+//
+// - [Tutorials for various database restore configurations](https://help.aliyun.com/document_detail/197144.html)
 //
 // @param request - CreateRestoreTaskRequest
 //
@@ -692,6 +720,14 @@ func (client *Client) CreateRestoreTaskWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoOpenDatabase) {
+		query["AutoOpenDatabase"] = request.AutoOpenDatabase
+	}
+
+	if !dara.IsNil(request.AutoShutdownDatabase) {
+		query["AutoShutdownDatabase"] = request.AutoShutdownDatabase
+	}
+
 	if !dara.IsNil(request.BackupGatewayId) {
 		query["BackupGatewayId"] = request.BackupGatewayId
 	}
@@ -714,6 +750,34 @@ func (client *Client) CreateRestoreTaskWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.CrossRoleName) {
 		query["CrossRoleName"] = request.CrossRoleName
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceClass) {
+		query["DestDatabaseInstanceClass"] = request.DestDatabaseInstanceClass
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceDatabaseVersion) {
+		query["DestDatabaseInstanceDatabaseVersion"] = request.DestDatabaseInstanceDatabaseVersion
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceRegion) {
+		query["DestDatabaseInstanceRegion"] = request.DestDatabaseInstanceRegion
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceStorageSize) {
+		query["DestDatabaseInstanceStorageSize"] = request.DestDatabaseInstanceStorageSize
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceType) {
+		query["DestDatabaseInstanceType"] = request.DestDatabaseInstanceType
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceVSwitch) {
+		query["DestDatabaseInstanceVSwitch"] = request.DestDatabaseInstanceVSwitch
+	}
+
+	if !dara.IsNil(request.DestDatabaseInstanceVpc) {
+		query["DestDatabaseInstanceVpc"] = request.DestDatabaseInstanceVpc
 	}
 
 	if !dara.IsNil(request.DestinationEndpointDatabaseName) {
@@ -756,8 +820,16 @@ func (client *Client) CreateRestoreTaskWithContext(ctx context.Context, request 
 		query["DuplicateConflict"] = request.DuplicateConflict
 	}
 
+	if !dara.IsNil(request.EnableDestinationEndpointSsl) {
+		query["EnableDestinationEndpointSsl"] = request.EnableDestinationEndpointSsl
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RestoreDestinationMode) {
+		query["RestoreDestinationMode"] = request.RestoreDestinationMode
 	}
 
 	if !dara.IsNil(request.RestoreDir) {
@@ -778,6 +850,10 @@ func (client *Client) CreateRestoreTaskWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.RestoreTime) {
 		query["RestoreTime"] = request.RestoreTime
+	}
+
+	if !dara.IsNil(request.SslCaPem) {
+		query["SslCaPem"] = request.SslCaPem
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -805,7 +881,7 @@ func (client *Client) CreateRestoreTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries backup gateways.
+// Queries a list of backup gateways in Database Backup Service (DBS).
 //
 // @param request - DescribeBackupGatewayListRequest
 //
@@ -869,7 +945,7 @@ func (client *Client) DescribeBackupGatewayListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the billing information of a backup schedule.
+// This operation queries the billing information of a backup plan.
 //
 // @param request - DescribeBackupPlanBillingRequest
 //
@@ -925,11 +1001,11 @@ func (client *Client) DescribeBackupPlanBillingWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # Query the list of backup plans
+// This operation lets you view a DBS backup plan.
 //
 // Description:
 //
-// Before using this interface, please activate the OSS service in advance. For more information, see [Object Storage Service (OSS)](https://help.aliyun.com/document_detail/31817.html).
+// Before you use this operation, ensure that Object Storage Service (OSS) is enabled. For more information, see [Object Storage Service](https://help.aliyun.com/document_detail/31817.html).
 //
 // @param request - DescribeBackupPlanListRequest
 //
@@ -944,6 +1020,10 @@ func (client *Client) DescribeBackupPlanListWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackupMethod) {
+		query["BackupMethod"] = request.BackupMethod
+	}
+
 	if !dara.IsNil(request.BackupPlanId) {
 		query["BackupPlanId"] = request.BackupPlanId
 	}
@@ -980,6 +1060,18 @@ func (client *Client) DescribeBackupPlanListWithContext(ctx context.Context, req
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !dara.IsNil(request.ShowBackupStrategyInfo) {
+		query["ShowBackupStrategyInfo"] = request.ShowBackupStrategyInfo
+	}
+
+	if !dara.IsNil(request.ShowRecoverTimeRange) {
+		query["ShowRecoverTimeRange"] = request.ShowRecoverTimeRange
+	}
+
+	if !dara.IsNil(request.ShowStorageStrategyInfo) {
+		query["ShowStorageStrategyInfo"] = request.ShowStorageStrategyInfo
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1005,7 +1097,7 @@ func (client *Client) DescribeBackupPlanListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries backup set download tasks.
+// Queries the list of download tasks for backup sets in Database Backup Service (DBS).
 //
 // @param request - DescribeBackupSetDownloadTaskListRequest
 //
@@ -1121,7 +1213,7 @@ func (client *Client) DescribeDLAServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// cn-hangzhou
+// You can call this operation to list full backup jobs in Database Backup Service (DBS).
 //
 // @param request - DescribeFullBackupListRequest
 //
@@ -1144,6 +1236,10 @@ func (client *Client) DescribeFullBackupListWithContext(ctx context.Context, req
 		query["BackupSetId"] = request.BackupSetId
 	}
 
+	if !dara.IsNil(request.BackupSetStatus) {
+		query["BackupSetStatus"] = request.BackupSetStatus
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -1162,6 +1258,10 @@ func (client *Client) DescribeFullBackupListWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ShowProgress) {
+		query["ShowProgress"] = request.ShowProgress
 	}
 
 	if !dara.IsNil(request.ShowStorageType) {
@@ -1197,7 +1297,7 @@ func (client *Client) DescribeFullBackupListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries incremental backup tasks.
+// This operation queries the list of incremental backup tasks for DBS.
 //
 // @param request - DescribeIncrementBackupListRequest
 //
@@ -1269,7 +1369,7 @@ func (client *Client) DescribeIncrementBackupListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the error information of a Database Backup (DBS) task.
+// Queries the error code of a Database Backup Service (DBS) job.
 //
 // @param request - DescribeJobErrorCodeRequest
 //
@@ -1377,7 +1477,7 @@ func (client *Client) DescribeNodeCidrListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the precheck progress of a backup schedule or a restore task.
+// This operation queries the precheck progress for a backup plan or a restore job.
 //
 // @param request - DescribePreCheckProgressListRequest
 //
@@ -1433,7 +1533,7 @@ func (client *Client) DescribePreCheckProgressListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the regions that Database Backup (DBS) supports.
+// Queries the regions where DBS is available.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1481,7 +1581,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the range of time to which you can restore data in a backup schedule.
+// This operation returns the time ranges available for restoring data from a backup plan.
 //
 // @param request - DescribeRestoreRangeInfoRequest
 //
@@ -1545,7 +1645,7 @@ func (client *Client) DescribeRestoreRangeInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries restore tasks.
+// Queries restore jobs in Database Backup Service (DBS).
 //
 // @param request - DescribeRestoreTaskListRequest
 //
@@ -1617,13 +1717,13 @@ func (client *Client) DescribeRestoreTaskListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Disables incremental backup for a backup schedule.
+// Disable incremental backup for a backup plan.
 //
 // Description:
 //
-// ### Impact
+// ## Impact
 //
-// After you disable the incremental log backup feature, your backup schedule no longer performs incremental log backups.
+// After you disable incremental backup, the backup plan no longer performs incremental backups.
 //
 // @param request - DisableBackupLogRequest
 //
@@ -1644,6 +1744,10 @@ func (client *Client) DisableBackupLogWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DisableMysqlPhysicalBackupBinlogOnly) {
+		query["DisableMysqlPhysicalBackupBinlogOnly"] = request.DisableMysqlPhysicalBackupBinlogOnly
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -1675,13 +1779,13 @@ func (client *Client) DisableBackupLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Enables incremental backup for a backup schedule.
+// This operation enables incremental backup for a backup plan.
 //
 // Description:
 //
 // ## Impact
 //
-// It is free to enable the incremental log backup feature. However, the backup traffic and storage capacity generated by the feature are billed in the same way as the full backup feature, and can be offset by the free quota of backup schedules or storage plans.
+// Enabling incremental backup incurs no additional charge. However, this operation generates backup traffic and consumes storage space. The fees for the traffic and storage are the same as those for a full backup. You can use the free quota from a backup plan or a storage plan to cover these costs.
 //
 // @param request - EnableBackupLogRequest
 //
@@ -1702,6 +1806,10 @@ func (client *Client) EnableBackupLogWithContext(ctx context.Context, request *E
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EnableMysqlPhysicalBackupBinlog) {
+		query["EnableMysqlPhysicalBackupBinlog"] = request.EnableMysqlPhysicalBackupBinlog
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -1734,6 +1842,10 @@ func (client *Client) EnableBackupLogWithContext(ctx context.Context, request *E
 // Summary:
 //
 // Queries the result of a task that is used to query a database list by using a backup gateway based on the ID of the task.
+//
+// Description:
+//
+// 您需要调用 [CreateGetDBListFromAgentTask](https://help.aliyun.com/document_detail/2869847.html) 接口创建一个异步任务获取 TaskId（异步任务 ID）。将 TaskId 传入 GetDBListFromAgent 接口后，即可获取物理备份库表数据。
 //
 // @param request - GetDBListFromAgentRequest
 //
@@ -1793,7 +1905,7 @@ func (client *Client) GetDBListFromAgentWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies backup objects of a backup schedule in Database Backup (DBS).
+// Modifies the objects included in a Database Backup Service (DBS) backup plan.
 //
 // @param request - ModifyBackupObjectsRequest
 //
@@ -1849,7 +1961,7 @@ func (client *Client) ModifyBackupObjectsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the name of a backup schedule.
+// Modifies the name of a backup plan.
 //
 // @param request - ModifyBackupPlanNameRequest
 //
@@ -1906,6 +2018,10 @@ func (client *Client) ModifyBackupPlanNameWithContext(ctx context.Context, reque
 // Summary:
 //
 // Enables, configures, or disables the automatic download feature.
+//
+// Description:
+//
+// 使用本接口前请先确认备份数据是否存储在 DBS 的内置 OSS 上，您可通过调用 [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) 接口查看 BackupStorageType 取值情况。
 //
 // @param request - ModifyBackupSetDownloadRulesRequest
 //
@@ -1985,7 +2101,7 @@ func (client *Client) ModifyBackupSetDownloadRulesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the data source of a backup schedule.
+// This operation modifies a Database Backup source endpoint.
 //
 // @param request - ModifyBackupSourceEndpointRequest
 //
@@ -2024,6 +2140,10 @@ func (client *Client) ModifyBackupSourceEndpointWithContext(ctx context.Context,
 		query["CrossRoleName"] = request.CrossRoleName
 	}
 
+	if !dara.IsNil(request.EnableSourceEndpointSsl) {
+		query["EnableSourceEndpointSsl"] = request.EnableSourceEndpointSsl
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -2044,6 +2164,10 @@ func (client *Client) ModifyBackupSourceEndpointWithContext(ctx context.Context,
 		query["SourceEndpointInstanceType"] = request.SourceEndpointInstanceType
 	}
 
+	if !dara.IsNil(request.SourceEndpointOracleHome) {
+		query["SourceEndpointOracleHome"] = request.SourceEndpointOracleHome
+	}
+
 	if !dara.IsNil(request.SourceEndpointOracleSID) {
 		query["SourceEndpointOracleSID"] = request.SourceEndpointOracleSID
 	}
@@ -2062,6 +2186,10 @@ func (client *Client) ModifyBackupSourceEndpointWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.SourceEndpointUserName) {
 		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !dara.IsNil(request.SslCaPem) {
+		query["SslCaPem"] = request.SslCaPem
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2157,7 +2285,7 @@ func (client *Client) ModifyBackupStrategyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies the lifecycle of data that is backed up based on a backup schedule.
+// Modify the lifecycle of stored data in a backup plan.
 //
 // @param request - ModifyStorageStrategyRequest
 //
@@ -2180,6 +2308,10 @@ func (client *Client) ModifyStorageStrategyWithContext(ctx context.Context, requ
 		query["BackupRetentionPeriod"] = request.BackupRetentionPeriod
 	}
 
+	if !dara.IsNil(request.BackupStorageEncryptMethod) {
+		query["BackupStorageEncryptMethod"] = request.BackupStorageEncryptMethod
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -2190,6 +2322,30 @@ func (client *Client) ModifyStorageStrategyWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.DuplicationInfrequentAccessPeriod) {
 		query["DuplicationInfrequentAccessPeriod"] = request.DuplicationInfrequentAccessPeriod
+	}
+
+	if !dara.IsNil(request.IncrementBackupRetentionPeriod) {
+		query["IncrementBackupRetentionPeriod"] = request.IncrementBackupRetentionPeriod
+	}
+
+	if !dara.IsNil(request.IncrementDuplicationArchivePeriod) {
+		query["IncrementDuplicationArchivePeriod"] = request.IncrementDuplicationArchivePeriod
+	}
+
+	if !dara.IsNil(request.IncrementDuplicationInfrequentAccessPeriod) {
+		query["IncrementDuplicationInfrequentAccessPeriod"] = request.IncrementDuplicationInfrequentAccessPeriod
+	}
+
+	if !dara.IsNil(request.LogBackupRetentionPeriod) {
+		query["LogBackupRetentionPeriod"] = request.LogBackupRetentionPeriod
+	}
+
+	if !dara.IsNil(request.LogDuplicationArchivePeriod) {
+		query["LogDuplicationArchivePeriod"] = request.LogDuplicationArchivePeriod
+	}
+
+	if !dara.IsNil(request.LogDuplicationInfrequentAccessPeriod) {
+		query["LogDuplicationInfrequentAccessPeriod"] = request.LogDuplicationInfrequentAccessPeriod
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -2221,13 +2377,13 @@ func (client *Client) ModifyStorageStrategyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Releases a pay-as-you-go backup schedule.
+// This operation releases a pay-as-you-go backup plan.
 //
 // Description:
 //
-// ## Impacts
+// ## Impact
 //
-// After a pay-as-you-go backup schedule is released, it stops providing services. Database Backup (DBS) no longer charges you fees for this backup schedule.
+// After you release a backup plan, the service for the backup instance is stopped and you are no longer charged for the instance.
 //
 // @param request - ReleaseBackupPlanRequest
 //
@@ -2339,7 +2495,7 @@ func (client *Client) RenewBackupPlanWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// Starts a backup schedule.
+// This operation starts a DBS backup plan.
 //
 // @param request - StartBackupPlanRequest
 //
@@ -2391,7 +2547,7 @@ func (client *Client) StartBackupPlanWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Starts a restore task.
+// Starts a DBS restore job.
 //
 // @param request - StartRestoreTaskRequest
 //
@@ -2443,7 +2599,7 @@ func (client *Client) StartRestoreTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Stops a backup schedule.
+// This operation pauses a DBS backup plan.
 //
 // @param request - StopBackupPlanRequest
 //

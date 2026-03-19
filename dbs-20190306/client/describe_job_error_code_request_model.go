@@ -20,7 +20,7 @@ type iDescribeJobErrorCodeRequest interface {
 }
 
 type DescribeJobErrorCodeRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token. It is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
@@ -28,22 +28,22 @@ type DescribeJobErrorCodeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language of the error message. Valid values:
 	//
-	// 	- **en*	- (default): English
+	// - **en**: English (Default)
 	//
-	// 	- **cn**: Chinese
+	// - **cn**: Chinese
 	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	OwnerId  *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the full backup or restore task.
+	// The ID of the full backup or restore job.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// dbstooi0****
+	// r1iv62ud****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
