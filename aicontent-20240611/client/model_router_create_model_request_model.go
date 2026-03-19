@@ -15,6 +15,10 @@ type iModelRouterCreateModelRequest interface {
 	GetBaseUrl() *string
 	SetDescription(v string) *ModelRouterCreateModelRequest
 	GetDescription() *string
+	SetMaxInputLength(v string) *ModelRouterCreateModelRequest
+	GetMaxInputLength() *string
+	SetMaxOutputLength(v string) *ModelRouterCreateModelRequest
+	GetMaxOutputLength() *string
 	SetModelId(v string) *ModelRouterCreateModelRequest
 	GetModelId() *string
 	SetModelType(v string) *ModelRouterCreateModelRequest
@@ -44,6 +48,14 @@ type ModelRouterCreateModelRequest struct {
 	//
 	// 通义千问大模型
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 32K
+	MaxInputLength *string `json:"maxInputLength,omitempty" xml:"maxInputLength,omitempty"`
+	// example:
+	//
+	// 8K
+	MaxOutputLength *string `json:"maxOutputLength,omitempty" xml:"maxOutputLength,omitempty"`
 	// example:
 	//
 	// qwen-turbo
@@ -86,6 +98,14 @@ func (s *ModelRouterCreateModelRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ModelRouterCreateModelRequest) GetMaxInputLength() *string {
+	return s.MaxInputLength
+}
+
+func (s *ModelRouterCreateModelRequest) GetMaxOutputLength() *string {
+	return s.MaxOutputLength
+}
+
 func (s *ModelRouterCreateModelRequest) GetModelId() *string {
 	return s.ModelId
 }
@@ -118,6 +138,16 @@ func (s *ModelRouterCreateModelRequest) SetBaseUrl(v string) *ModelRouterCreateM
 
 func (s *ModelRouterCreateModelRequest) SetDescription(v string) *ModelRouterCreateModelRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModelRouterCreateModelRequest) SetMaxInputLength(v string) *ModelRouterCreateModelRequest {
+	s.MaxInputLength = &v
+	return s
+}
+
+func (s *ModelRouterCreateModelRequest) SetMaxOutputLength(v string) *ModelRouterCreateModelRequest {
+	s.MaxOutputLength = &v
 	return s
 }
 

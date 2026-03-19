@@ -2476,7 +2476,7 @@ func (client *Client) ModelRouterCreateClientWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 对话管理/创建对话
+// 对话管理/新建对话
 //
 // @param request - ModelRouterCreateConversationRequest
 //
@@ -2558,6 +2558,14 @@ func (client *Client) ModelRouterCreateModelWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MaxInputLength) {
+		body["maxInputLength"] = request.MaxInputLength
+	}
+
+	if !dara.IsNil(request.MaxOutputLength) {
+		body["maxOutputLength"] = request.MaxOutputLength
 	}
 
 	if !dara.IsNil(request.ModelId) {
@@ -3163,39 +3171,6 @@ func (client *Client) ModelRouterQueryModelListWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModelRouterQueryModelListResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 模型管理/获取模型及API密钥详情
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ModelRouterQueryModelWithApiKeyResponse
-func (client *Client) ModelRouterQueryModelWithApiKeyWithContext(ctx context.Context, id *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryModelWithApiKeyResponse, _err error) {
-	req := &openapiutil.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("ModelRouterQueryModelWithApiKey"),
-		Version:     dara.String("20240611"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/api/v1/modelRouter/open/models/" + dara.PercentEncode(dara.StringValue(id)) + "/with-api-key"),
-		Method:      dara.String("GET"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("ROA"),
-		ReqBodyType: dara.String("json"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &ModelRouterQueryModelWithApiKeyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

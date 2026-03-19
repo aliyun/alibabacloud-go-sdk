@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/aicontent-20240611/v5
+module github.com/alibabacloud-go/aicontent-20240611/v6
 
 go 1.14
 
