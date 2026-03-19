@@ -22,6 +22,14 @@
 - Update API CreateBackupPlan: add request parameters Edition.
 
 
+2026-03-19 Version: v4.5.0
+- Support API BrowseFiles.
+- Support API DeleteContainerCluster.
+- Support API DescribeContainerResource.
+- Support API GetBasicStatistics.
+- Update API CreateBackupPlan: add request parameters Edition.
+
+
 2026-01-29 Version: v4.4.0
 - Support API AddCrossAccount.
 - Support API DeleteCrossAccount.
