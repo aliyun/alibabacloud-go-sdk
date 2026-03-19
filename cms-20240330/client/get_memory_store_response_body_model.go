@@ -23,6 +23,8 @@ type iGetMemoryStoreResponseBody interface {
 	GetRegionId() *string
 	SetRequestId(v string) *GetMemoryStoreResponseBody
 	GetRequestId() *string
+	SetShortTermStorage(v *GetMemoryStoreResponseBodyShortTermStorage) *GetMemoryStoreResponseBody
+	GetShortTermStorage() *GetMemoryStoreResponseBodyShortTermStorage
 	SetShortTermTtl(v int32) *GetMemoryStoreResponseBody
 	GetShortTermTtl() *int32
 	SetUpdateTime(v string) *GetMemoryStoreResponseBody
@@ -55,7 +57,8 @@ type GetMemoryStoreResponseBody struct {
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId        *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ShortTermStorage *GetMemoryStoreResponseBodyShortTermStorage `json:"shortTermStorage,omitempty" xml:"shortTermStorage,omitempty" type:"Struct"`
 	// example:
 	//
 	// 10
@@ -108,6 +111,10 @@ func (s *GetMemoryStoreResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetMemoryStoreResponseBody) GetShortTermStorage() *GetMemoryStoreResponseBodyShortTermStorage {
+	return s.ShortTermStorage
+}
+
 func (s *GetMemoryStoreResponseBody) GetShortTermTtl() *int32 {
 	return s.ShortTermTtl
 }
@@ -155,6 +162,11 @@ func (s *GetMemoryStoreResponseBody) SetRequestId(v string) *GetMemoryStoreRespo
 	return s
 }
 
+func (s *GetMemoryStoreResponseBody) SetShortTermStorage(v *GetMemoryStoreResponseBodyShortTermStorage) *GetMemoryStoreResponseBody {
+	s.ShortTermStorage = v
+	return s
+}
+
 func (s *GetMemoryStoreResponseBody) SetShortTermTtl(v int32) *GetMemoryStoreResponseBody {
 	s.ShortTermTtl = &v
 	return s
@@ -180,5 +192,45 @@ func (s *GetMemoryStoreResponseBody) Validate() error {
 			}
 		}
 	}
+	if s.ShortTermStorage != nil {
+		if err := s.ShortTermStorage.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
+}
+
+type GetMemoryStoreResponseBodyShortTermStorage struct {
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s GetMemoryStoreResponseBodyShortTermStorage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetMemoryStoreResponseBodyShortTermStorage) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemoryStoreResponseBodyShortTermStorage) GetLogstore() *string {
+	return s.Logstore
+}
+
+func (s *GetMemoryStoreResponseBodyShortTermStorage) GetProject() *string {
+	return s.Project
+}
+
+func (s *GetMemoryStoreResponseBodyShortTermStorage) SetLogstore(v string) *GetMemoryStoreResponseBodyShortTermStorage {
+	s.Logstore = &v
+	return s
+}
+
+func (s *GetMemoryStoreResponseBodyShortTermStorage) SetProject(v string) *GetMemoryStoreResponseBodyShortTermStorage {
+	s.Project = &v
+	return s
+}
+
+func (s *GetMemoryStoreResponseBodyShortTermStorage) Validate() error {
+	return dara.Validate(s)
 }

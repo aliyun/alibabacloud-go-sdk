@@ -17,6 +17,8 @@ type iListMemoryStoresResponseBody interface {
 	GetNextToken() *string
 	SetRequestId(v string) *ListMemoryStoresResponseBody
 	GetRequestId() *string
+	SetTotal(v int32) *ListMemoryStoresResponseBody
+	GetTotal() *int32
 }
 
 type ListMemoryStoresResponseBody struct {
@@ -33,6 +35,7 @@ type ListMemoryStoresResponseBody struct {
 	//
 	// 16C0A6D6-C3E7-511D-A60B-A87FD85F5BA7
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Total     *int32  `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMemoryStoresResponseBody) String() string {
@@ -59,6 +62,10 @@ func (s *ListMemoryStoresResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ListMemoryStoresResponseBody) GetTotal() *int32 {
+	return s.Total
+}
+
 func (s *ListMemoryStoresResponseBody) SetMaxResults(v int32) *ListMemoryStoresResponseBody {
 	s.MaxResults = &v
 	return s
@@ -76,6 +83,11 @@ func (s *ListMemoryStoresResponseBody) SetNextToken(v string) *ListMemoryStoresR
 
 func (s *ListMemoryStoresResponseBody) SetRequestId(v string) *ListMemoryStoresResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListMemoryStoresResponseBody) SetTotal(v int32) *ListMemoryStoresResponseBody {
+	s.Total = &v
 	return s
 }
 
