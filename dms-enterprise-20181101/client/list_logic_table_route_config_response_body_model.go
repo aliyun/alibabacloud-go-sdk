@@ -33,8 +33,7 @@ type ListLogicTableRouteConfigResponseBody struct {
 	// example:
 	//
 	// TableId is mandatory for this action.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The routing algorithms.
+	ErrorMessage              *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LogicTableRouteConfigList *ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList `json:"LogicTableRouteConfigList,omitempty" xml:"LogicTableRouteConfigList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -151,24 +150,9 @@ func (s *ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigList) Validat
 }
 
 type ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRouteConfig struct {
-	// The routing algorithm expression.
-	//
-	// example:
-	//
-	// #id#%16\\t
 	RouteExpr *string `json:"RouteExpr,omitempty" xml:"RouteExpr,omitempty"`
-	// The unique key of the routing algorithm.
-	//
-	// example:
-	//
-	// 1
-	RouteKey *string `json:"RouteKey,omitempty" xml:"RouteKey,omitempty"`
-	// The ID of the logical table.
-	//
-	// example:
-	//
-	// 4****
-	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	RouteKey  *string `json:"RouteKey,omitempty" xml:"RouteKey,omitempty"`
+	TableId   *int64  `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 
 func (s ListLogicTableRouteConfigResponseBodyLogicTableRouteConfigListLogicTableRouteConfig) String() string {

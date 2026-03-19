@@ -30,15 +30,40 @@ type iMetaCategory interface {
 }
 
 type MetaCategory struct {
-	CategoryId       *int64    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CreateTime       *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Depth            *int32    `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerIds         []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	OwnerNickNames   []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
-	ParentCategoryId *int64    `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
-	Remark           *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The category ID.
+	//
+	// example:
+	//
+	// 30000181325
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2024-08-13 10:02:02
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The level of the category. This parameter is set to 1 for a root category.
+	//
+	// example:
+	//
+	// 1
+	Depth       *int32  `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the category.
+	//
+	// example:
+	//
+	// default
+	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerIds       []*int64  `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
+	OwnerNickNames []*string `json:"OwnerNickNames,omitempty" xml:"OwnerNickNames,omitempty" type:"Repeated"`
+	// The ID of the parent category. This parameter is left empty for a root category.
+	//
+	// example:
+	//
+	// 30000322682
+	ParentCategoryId *int64  `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s MetaCategory) String() string {

@@ -212,10 +212,8 @@ type GetUserResponseBodyUser struct {
 	// example:
 	//
 	// 140692647406****
-	ParentUid *int64 `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// The list of role IDs.
-	RoleIdList *GetUserResponseBodyUserRoleIdList `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Struct"`
-	// The list of role names.
+	ParentUid    *int64                               `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	RoleIdList   *GetUserResponseBodyUserRoleIdList   `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Struct"`
 	RoleNameList *GetUserResponseBodyUserRoleNameList `json:"RoleNameList,omitempty" xml:"RoleNameList,omitempty" type:"Struct"`
 	// The signature method that is used to secure connections when a webhook URL is used. Valid values:
 	//

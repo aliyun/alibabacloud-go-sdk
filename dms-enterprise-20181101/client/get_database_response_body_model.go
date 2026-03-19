@@ -192,10 +192,8 @@ type GetDatabaseResponseBodyDatabase struct {
 	// example:
 	//
 	// 149****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the owners of the database.
-	OwnerIdList *GetDatabaseResponseBodyDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The names of the owners of the database.
+	InstanceId    *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerIdList   *GetDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *GetDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
 	// The port that is used to connect to the database.
 	//

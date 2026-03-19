@@ -22,7 +22,6 @@ type iListColumnsResponseBody interface {
 }
 
 type ListColumnsResponseBody struct {
-	// The details about columns.
 	ColumnList *ListColumnsResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
 	// The error code returned.
 	//
@@ -151,112 +150,19 @@ func (s *ListColumnsResponseBodyColumnList) Validate() error {
 }
 
 type ListColumnsResponseBodyColumnListColumn struct {
-	// Indicates whether the column is an auto-increment column. Valid values:
-	//
-	// 	- true: The column is an auto-increment column.
-	//
-	// 	- false: The column is not an auto-increment column.
-	//
-	// example:
-	//
-	// false
-	AutoIncrement *bool `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
-	// The ID of the column.
-	//
-	// example:
-	//
-	// 62589****
-	ColumnId *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
-	// The name of the column.
-	//
-	// example:
-	//
-	// name
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the column.
-	//
-	// example:
-	//
-	// varchar
-	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The length of the field.
-	//
-	// example:
-	//
-	// 4
-	DataLength *int64 `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
-	// The number of valid digits for the field.
-	//
-	// example:
-	//
-	// 0
-	DataPrecision *int32 `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
-	// The number of decimal places for the field.
-	//
-	// example:
-	//
-	// 0
-	DataScale *int32 `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
-	// The default value of the column.
-	//
-	// example:
-	//
-	// def_value
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The description of the column.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the masking algorithm that is used for the field. Valid values:
-	//
-	// 	- null: No masking algorithm is used.
-	//
-	// 	- DEFAULT: A full masking algorithm is used.
-	//
-	// 	- FIX_POS: The fixed position is masked.
-	//
-	// 	- FIX_CHAR: The fixed characters are replaced.
-	//
-	// example:
-	//
-	// DEFAULT
-	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	// Indicates whether the column can be empty. Valid values:
-	//
-	// 	- **true**: The column can be empty.
-	//
-	// 	- **false**: The column cannot be empty.
-	//
-	// example:
-	//
-	// false
-	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	// The security level of the column. Valid values:
-	//
-	// 	- INNER: The column is an internal column but not sensitive.
-	//
-	// 	- SENSITIVE: The column is a sensitive column.
-	//
-	// 	- CONFIDENTIAL: The column is a confidential column.
-	//
-	// > For more information, see [Sensitivity levels of fields](https://help.aliyun.com/document_detail/66091.html).
-	//
-	// example:
-	//
-	// INNER
+	AutoIncrement *bool   `json:"AutoIncrement,omitempty" xml:"AutoIncrement,omitempty"`
+	ColumnId      *string `json:"ColumnId,omitempty" xml:"ColumnId,omitempty"`
+	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType    *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	DataLength    *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale     *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	DefaultValue  *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FunctionType  *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	Nullable      *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// Indicates whether the column is a sensitive column. Valid values:
-	//
-	// 	- **true**: The column is a sensitive column.
-	//
-	// 	- **false**: The column is not a sensitive column.
-	//
-	// example:
-	//
-	// false
-	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	Sensitive     *bool   `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
 }
 
 func (s ListColumnsResponseBodyColumnListColumn) String() string {

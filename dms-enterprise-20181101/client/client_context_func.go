@@ -491,7 +491,7 @@ func (client *Client) AddTableToCategoryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Adds directed edges for an existing task node.
+// Creates directed edges for the existing task nodes of a task flow.
 //
 // Description:
 //
@@ -753,7 +753,7 @@ func (client *Client) ApproveOrderWithContext(ctx context.Context, request *Appr
 
 // Summary:
 //
-// Backfills data for task orchestration.
+// Backfills data for a task flow.
 //
 // Description:
 //
@@ -1139,7 +1139,7 @@ func (client *Client) BuyPayAsYouGoOrderWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Adjusts the sensitivity level of one or more fields.
+// Adjusts the sensitivity level of fields.
 //
 // @param request - ChangeColumnSecLevelRequest
 //
@@ -1275,7 +1275,7 @@ func (client *Client) ChangeColumnSecurityLevelWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 移交数仓开发任务流
+// Transfers the ownership of a task flow in a workspace of Data Management (DMS).
 //
 // Description:
 //
@@ -2923,6 +2923,10 @@ func (client *Client) CreateDifyInstanceWithContext(ctx context.Context, request
 		query["DbStorageType"] = request.DbStorageType
 	}
 
+	if !dara.IsNil(request.DifyInstanceName) {
+		query["DifyInstanceName"] = request.DifyInstanceName
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -3035,6 +3039,10 @@ func (client *Client) CreateDifyInstanceWithContext(ctx context.Context, request
 		query["StorageType"] = request.StorageType
 	}
 
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
 	if !dara.IsNil(request.VSwitchId) {
 		query["VSwitchId"] = request.VSwitchId
 	}
@@ -3128,7 +3136,7 @@ func (client *Client) CreateDifyInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建无锁变更工单
+// Creates a lock-free change ticket.
 //
 // Description:
 //
@@ -3286,7 +3294,7 @@ func (client *Client) CreateLakeHouseSpaceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a logical database in Database Management (DMS).
+// Creates a logical database in Data Management (DMS).
 //
 // @param tmpReq - CreateLogicDatabaseRequest
 //
@@ -3414,7 +3422,7 @@ func (client *Client) CreateMetaCategoryWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Creates a ticket in Data Management (DMS).
+// Creates a ticket.
 //
 // Description:
 //
@@ -3640,7 +3648,7 @@ func (client *Client) CreateProxyWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+// Grants a user the permissions to access a database instance by using the secure access proxy feature.
 //
 // Description:
 //
@@ -4148,7 +4156,7 @@ func (client *Client) CreateTaskFlowWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建上传附件任务
+// Creates a task to upload an attachment file.
 //
 // @param request - CreateUploadFileJobRequest
 //
@@ -4858,7 +4866,7 @@ func (client *Client) DeleteLakeHouseSpaceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除数仓空间成员
+// Removes a workspace member or a task flow developer in Data Management (DMS).
 //
 // Description:
 //
@@ -4926,7 +4934,7 @@ func (client *Client) DeleteLhMembersWithContext(ctx context.Context, tmpReq *De
 
 // Summary:
 //
-// Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+// Deletes a logical database from Data Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
 //
 // @param request - DeleteLogicDatabaseRequest
 //
@@ -4974,7 +4982,7 @@ func (client *Client) DeleteLogicDatabaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes the routing algorithm of a logical table.
+// Deletes a routing algorithm from a logical table.
 //
 // @param request - DeleteLogicTableRouteConfigRequest
 //
@@ -5126,7 +5134,7 @@ func (client *Client) DeleteProxyWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+// Revokes the permissions to access a database instance by using the secure access proxy feature from a user.
 //
 // @param request - DeleteProxyAccessRequest
 //
@@ -5536,7 +5544,7 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 用于创建DIFY实例及相关资源，支持自定义配置。
+// Queries the information about the Dify instance and related resources, including the Dify instance status, associated VPC, and computing resource specifications.
 //
 // Description:
 //
@@ -5812,7 +5820,7 @@ func (client *Client) DescribeDifyRegionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+// Disables a user that is temporarily not used in Data Management (DMS).
 //
 // Description:
 //
@@ -5960,7 +5968,7 @@ func (client *Client) DownloadDataTrackResultWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Modifies the information about a logical database.
+// Edits the information about a logical database.
 //
 // @param tmpReq - EditLogicDatabaseRequest
 //
@@ -6086,7 +6094,7 @@ func (client *Client) EditMetaKnowledgeAssetWithContext(ctx context.Context, req
 
 // Summary:
 //
-// You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+// Enables a user that is disabled.
 //
 // Description:
 //
@@ -6490,7 +6498,7 @@ func (client *Client) GenMetaKnowledgeAssetWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 根据用户提供的自然语言描述和数据库信息生成对应的SQL语句。
+// Automatically retrieves relevant database and business information and generates the executable SQL statement based on the natural language description provided.
 //
 // Description:
 //
@@ -6568,6 +6576,69 @@ func (client *Client) GenerateSqlFromNLWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateSqlFromNLResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取大模型工单审批建议
+//
+// @param request - GetAIOrderApprovalCommentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIOrderApprovalCommentSSEResponse
+func (client *Client) GetAIOrderApprovalCommentSSEWithSSECtx(ctx context.Context, request *GetAIOrderApprovalCommentSSERequest, runtime *dara.RuntimeOptions, _yield chan *GetAIOrderApprovalCommentSSEResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getAIOrderApprovalCommentSSEWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 获取大模型工单审批建议
+//
+// @param request - GetAIOrderApprovalCommentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIOrderApprovalCommentSSEResponse
+func (client *Client) GetAIOrderApprovalCommentSSEWithContext(ctx context.Context, request *GetAIOrderApprovalCommentSSERequest, runtime *dara.RuntimeOptions) (_result *GetAIOrderApprovalCommentSSEResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIOrderApprovalCommentSSE"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIOrderApprovalCommentSSEResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7030,7 +7101,7 @@ func (client *Client) GetDataArchiveOrderDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+// Obtains the download URL of the backup file for the specified ticket.
 //
 // @param tmpReq - GetDataCorrectBackupFilesRequest
 //
@@ -9846,7 +9917,7 @@ func (client *Client) GetTaskFlowNotificationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about the nodes in an execution record of a task flow.
+// Queries the task nodes of a task flow instance.
 //
 // @param request - GetTaskInstanceRelationRequest
 //
@@ -11090,7 +11161,7 @@ func (client *Client) ListDataCorrectPreCheckDBWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the precheck information about an SQL statement that is specified in a data change ticket.
+// Queries the information about SQL statements that are involved in the precheck of a data change ticket.
 //
 // Description:
 //
@@ -12176,7 +12247,7 @@ func (client *Client) ListDefaultSLARulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries masking rules.
+// Queries a list of masking rules.
 //
 // @param request - ListDesensitizationRuleRequest
 //
@@ -12482,7 +12553,7 @@ func (client *Client) ListInstanceLoginAuditLogWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the permissions of a user on a specific instance.
+// Queries the permissions of a user on an instance.
 //
 // @param request - ListInstanceUserPermissionsRequest
 //
@@ -12626,7 +12697,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+// Queries the information about task flows in the business scenarios of a workspace in Data Management (DMS).
 //
 // Description:
 //
@@ -12684,7 +12755,7 @@ func (client *Client) ListLhTaskFlowAndScenarioWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of logical databases.
+// Queries the detailed information about logical databases.
 //
 // @param request - ListLogicDatabasesRequest
 //
@@ -12904,7 +12975,7 @@ func (client *Client) ListMetaCategoryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries tickets in Data Management (DMS).
+// Queries tickets.
 //
 // @param request - ListOrdersRequest
 //
@@ -13076,7 +13147,7 @@ func (client *Client) ListProxyAccessesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 操作审计-数据安全代理SQL执行列表
+// Queries the audit logs generated by the secure access proxy feature.
 //
 // @param request - ListProxySQLExecAuditLogRequest
 //
@@ -13152,7 +13223,7 @@ func (client *Client) ListProxySQLExecAuditLogWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the custom service level agreement (SLA) rules.
+// Queries the custom service level agreement (SLA) rules of a task flow.
 //
 // @param request - ListSLARulesRequest
 //
@@ -13200,7 +13271,7 @@ func (client *Client) ListSLARulesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries SQL statements that were written on the SQLConsole tab.
+// Queries the audit logs of SQL statements that are executed in Data Management (DMS).
 //
 // @param request - ListSQLExecAuditLogRequest
 //
@@ -13938,7 +14009,7 @@ func (client *Client) ListTablesInCategoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 任务编排获取任务流列表
+// Queries a list of task flows.
 //
 // @param request - ListTaskFlowRequest
 //
@@ -14030,7 +14101,7 @@ func (client *Client) ListTaskFlowConstantsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the users that are involved in a specified task flow.
+// Queries a list of users that are involved in a task flow.
 //
 // @param request - ListTaskFlowCooperatorsRequest
 //
@@ -14078,7 +14149,7 @@ func (client *Client) ListTaskFlowCooperatorsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+// Queries the edges of the directed acyclic graph (DAG) for a task flow based on multiple conditions.
 //
 // Description:
 //
@@ -14266,7 +14337,7 @@ func (client *Client) ListTaskFlowTimeVariablesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries task flows by page.
+// Queries the details of task flows by page.
 //
 // @param tmpReq - ListTaskFlowsByPageRequest
 //
@@ -14460,7 +14531,7 @@ func (client *Client) ListUserOwnedResourcesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the permissions of a specific user on a database or a table.
+// Queries the permissions of a user on databases and tables.
 //
 // @param request - ListUserPermissionsRequest
 //
@@ -14540,7 +14611,7 @@ func (client *Client) ListUserPermissionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取用户租户列表
+// Queries tenants.
 //
 // @param request - ListUserTenantsRequest
 //
@@ -15216,7 +15287,7 @@ func (client *Client) MoveTaskFlowToScenarioWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Unpublishes a published task flow.
+// Unpublishes a published task flow in Data Management (DMS).
 //
 // @param request - OfflineTaskFlowRequest
 //
@@ -15588,7 +15659,7 @@ func (client *Client) QueryDataTrackResultDownloadStatusWithContext(ctx context.
 
 // Summary:
 //
-// 部署任务流的历史版本
+// Redeploys the published versions of a task flow.
 //
 // @param request - ReDeployLhDagVersionRequest
 //
@@ -15974,7 +16045,7 @@ func (client *Client) RegisterInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Registers a user for your enterprise.
+// Adds a user of your enterprise.
 //
 // Description:
 //
@@ -16262,7 +16333,7 @@ func (client *Client) RestartDataExportJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Resumes a suspended task flow.
+// Resumes a suspended task flow instance.
 //
 // Description:
 //
@@ -16880,7 +16951,7 @@ func (client *Client) SetWorkflowExtraInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 添加实例
+// This operation is suitable for special scenarios and is not recommended. To register an instance with DMS, we recommend that you call the AddInstance operation first.
 //
 // @param request - SimplyAddInstanceRequest
 //
@@ -18062,7 +18133,7 @@ func (client *Client) UpdateMetaCategoryWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Updates the service level agreement (SLA) timeout reminder for a task flow.
+// Updates the timeout reminder for the service level agreement (SLA) rules of a task flow.
 //
 // Description:
 //
@@ -18460,7 +18531,7 @@ func (client *Client) UpdateTaskFlowConstantsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Updates the IDs of the users who are involved in the task flow.
+// Updates the IDs of the users that are involved in a task flow.
 //
 // @param tmpReq - UpdateTaskFlowCooperatorsRequest
 //
@@ -18644,7 +18715,7 @@ func (client *Client) UpdateTaskFlowNameAndDescWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates the notification settings for task flows.
+// Updates the notification settings for a task flow.
 //
 // @param request - UpdateTaskFlowNotificationRequest
 //
@@ -19012,7 +19083,7 @@ func (client *Client) UpdateTaskNameWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Updates the output variables for a specified task node.
+// Updates the output variables for a task node.
 //
 // Description:
 //
@@ -19410,18 +19481,72 @@ func (client *Client) chatWithDesensitizeSSEWithSSECtx_opYieldFunc(_yield chan *
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) getAIOrderApprovalCommentSSEWithSSECtx_opYieldFunc(_yield chan *GetAIOrderApprovalCommentSSEResponse, _yieldErr chan error, ctx context.Context, request *GetAIOrderApprovalCommentSSERequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIOrderApprovalCommentSSE"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
 	}
 }

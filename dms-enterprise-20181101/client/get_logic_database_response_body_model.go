@@ -128,8 +128,7 @@ type GetLogicDatabaseResponseBodyLogicDatabase struct {
 	// example:
 	//
 	// 1***
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The IDs of database shards of the logical database.
+	DatabaseId  *string                                               `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	DatabaseIds *GetLogicDatabaseResponseBodyLogicDatabaseDatabaseIds `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Struct"`
 	// The database engine. For more information about the valid values of the DbType parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
 	//
@@ -164,10 +163,8 @@ type GetLogicDatabaseResponseBodyLogicDatabase struct {
 	// example:
 	//
 	// true
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The IDs of the owners of the logical database.
-	OwnerIdList *GetLogicDatabaseResponseBodyLogicDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The names of the owners of the logical database.
+	Logic         *bool                                                   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OwnerIdList   *GetLogicDatabaseResponseBodyLogicDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *GetLogicDatabaseResponseBodyLogicDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
 	// The name of the logical database.
 	//

@@ -50,25 +50,116 @@ type iDLTable interface {
 }
 
 type DLTable struct {
-	CatalogName       *string                `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	CreateTime        *int32                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatorId         *int64                 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DbId              *int64                 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	DbName            *string                `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastAccessTime    *int32                 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	Location          *string                `json:"Location,omitempty" xml:"Location,omitempty"`
-	ModifierId        *int64                 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	Name              *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner             *string                `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	OwnerType         *string                `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	Parameters        map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	PartitionKeys     []*DLColumn            `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
-	Retention         *int32                 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	StorageDescriptor *DLStorageDescriptor   `json:"StorageDescriptor,omitempty" xml:"StorageDescriptor,omitempty"`
-	TableType         *string                `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	ViewExpandedText  *string                `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
-	ViewOriginalText  *string                `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
+	// The name of the catalog to which the table belongs.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The time when the data table was created.
+	//
+	// example:
+	//
+	// 1731586286
+	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the table.
+	//
+	// example:
+	//
+	// 88653
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The ID of the database in which the table is stored.
+	//
+	// example:
+	//
+	// 19
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The name of the database in which the table is stored.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The description of the application table.
+	//
+	// example:
+	//
+	// 1410769
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the table was last accessed.
+	//
+	// example:
+	//
+	// 1608707407
+	LastAccessTime *int32 `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The storage path of the table.
+	//
+	// example:
+	//
+	// oss://xxx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The ID of the user who last modified the table.
+	//
+	// example:
+	//
+	// 1410769
+	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// 100g_customer
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the table owner.
+	//
+	// example:
+	//
+	// zhangsan
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The type of the table owner. Valid values: USER, ROLE, and GROUP.
+	//
+	// example:
+	//
+	// USER
+	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The key-value pair.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "EXTERNAL": "TRUE",
+	//
+	//       "delta.minReaderVersion": "1"}
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The column attributes of the table.
+	PartitionKeys []*DLColumn `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// The retention period of the table.
+	//
+	// example:
+	//
+	// 300
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The description of data storage, including the storage characteristics and format of the table.
+	StorageDescriptor *DLStorageDescriptor `json:"StorageDescriptor,omitempty" xml:"StorageDescriptor,omitempty"`
+	// The type of the table. Valid values: MANAGED_TABLE, EXTERNAL_TABLE, VIRTUAL_VIEW, INDEX_TABLE, and MATERIALIZED_VIEW.
+	//
+	// example:
+	//
+	// EXTERNAL_TABLE
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The expanded text of the view if the table type is view.
+	//
+	// example:
+	//
+	// ""
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	// The original text of the view if the table type is view.
+	//
+	// example:
+	//
+	// ""
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
 }
 
 func (s DLTable) String() string {

@@ -663,7 +663,7 @@ func (client *Client) AddTableToCategory(request *AddTableToCategoryRequest) (_r
 
 // Summary:
 //
-// Adds directed edges for an existing task node.
+// Creates directed edges for the existing task nodes of a task flow.
 //
 // Description:
 //
@@ -729,7 +729,7 @@ func (client *Client) AddTaskFlowEdgesWithOptions(tmpReq *AddTaskFlowEdgesReques
 
 // Summary:
 //
-// Adds directed edges for an existing task node.
+// Creates directed edges for the existing task nodes of a task flow.
 //
 // Description:
 //
@@ -1017,7 +1017,7 @@ func (client *Client) ApproveOrder(request *ApproveOrderRequest) (_result *Appro
 
 // Summary:
 //
-// Backfills data for task orchestration.
+// Backfills data for a task flow.
 //
 // Description:
 //
@@ -1115,7 +1115,7 @@ func (client *Client) BackFillWithOptions(tmpReq *BackFillRequest, runtime *dara
 
 // Summary:
 //
-// Backfills data for task orchestration.
+// Backfills data for a task flow.
 //
 // Description:
 //
@@ -1497,7 +1497,7 @@ func (client *Client) BuyPayAsYouGoOrder(request *BuyPayAsYouGoOrderRequest) (_r
 
 // Summary:
 //
-// Adjusts the sensitivity level of one or more fields.
+// Adjusts the sensitivity level of fields.
 //
 // @param request - ChangeColumnSecLevelRequest
 //
@@ -1565,7 +1565,7 @@ func (client *Client) ChangeColumnSecLevelWithOptions(request *ChangeColumnSecLe
 
 // Summary:
 //
-// Adjusts the sensitivity level of one or more fields.
+// Adjusts the sensitivity level of fields.
 //
 // @param request - ChangeColumnSecLevelRequest
 //
@@ -1669,7 +1669,7 @@ func (client *Client) ChangeColumnSecurityLevel(request *ChangeColumnSecurityLev
 
 // Summary:
 //
-// 移交数仓开发任务流
+// Transfers the ownership of a task flow in a workspace of Data Management (DMS).
 //
 // Description:
 //
@@ -1729,7 +1729,7 @@ func (client *Client) ChangeLhDagOwnerWithOptions(request *ChangeLhDagOwnerReque
 
 // Summary:
 //
-// 移交数仓开发任务流
+// Transfers the ownership of a task flow in a workspace of Data Management (DMS).
 //
 // Description:
 //
@@ -3709,6 +3709,10 @@ func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceR
 		query["DbStorageType"] = request.DbStorageType
 	}
 
+	if !dara.IsNil(request.DifyInstanceName) {
+		query["DifyInstanceName"] = request.DifyInstanceName
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -3819,6 +3823,10 @@ func (client *Client) CreateDifyInstanceWithOptions(request *CreateDifyInstanceR
 
 	if !dara.IsNil(request.StorageType) {
 		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
 	}
 
 	if !dara.IsNil(request.VSwitchId) {
@@ -3950,7 +3958,7 @@ func (client *Client) CreateDifyInstance(request *CreateDifyInstanceRequest) (_r
 
 // Summary:
 //
-// 创建无锁变更工单
+// Creates a lock-free change ticket.
 //
 // Description:
 //
@@ -4030,7 +4038,7 @@ func (client *Client) CreateFreeLockCorrectOrderWithOptions(tmpReq *CreateFreeLo
 
 // Summary:
 //
-// 创建无锁变更工单
+// Creates a lock-free change ticket.
 //
 // Description:
 //
@@ -4156,7 +4164,7 @@ func (client *Client) CreateLakeHouseSpace(request *CreateLakeHouseSpaceRequest)
 
 // Summary:
 //
-// Creates a logical database in Database Management (DMS).
+// Creates a logical database in Data Management (DMS).
 //
 // @param tmpReq - CreateLogicDatabaseRequest
 //
@@ -4214,7 +4222,7 @@ func (client *Client) CreateLogicDatabaseWithOptions(tmpReq *CreateLogicDatabase
 
 // Summary:
 //
-// Creates a logical database in Database Management (DMS).
+// Creates a logical database in Data Management (DMS).
 //
 // @param request - CreateLogicDatabaseRequest
 //
@@ -4320,7 +4328,7 @@ func (client *Client) CreateMetaCategory(request *CreateMetaCategoryRequest) (_r
 
 // Summary:
 //
-// Creates a ticket in Data Management (DMS).
+// Creates a ticket.
 //
 // Description:
 //
@@ -4408,7 +4416,7 @@ func (client *Client) CreateOrderWithOptions(tmpReq *CreateOrderRequest, runtime
 
 // Summary:
 //
-// Creates a ticket in Data Management (DMS).
+// Creates a ticket.
 //
 // Description:
 //
@@ -4624,7 +4632,7 @@ func (client *Client) CreateProxy(request *CreateProxyRequest) (_result *CreateP
 
 // Summary:
 //
-// You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+// Grants a user the permissions to access a database instance by using the secure access proxy feature.
 //
 // Description:
 //
@@ -4690,7 +4698,7 @@ func (client *Client) CreateProxyAccessWithOptions(request *CreateProxyAccessReq
 
 // Summary:
 //
-// You can call the CreateProxyAccess to authorize users to access the DB instance through the Data Security Protection agent.
+// Grants a user the permissions to access a database instance by using the secure access proxy feature.
 //
 // Description:
 //
@@ -5288,7 +5296,7 @@ func (client *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (_result *C
 
 // Summary:
 //
-// 创建上传附件任务
+// Creates a task to upload an attachment file.
 //
 // @param request - CreateUploadFileJobRequest
 //
@@ -5344,7 +5352,7 @@ func (client *Client) CreateUploadFileJobWithOptions(request *CreateUploadFileJo
 
 // Summary:
 //
-// 创建上传附件任务
+// Creates a task to upload an attachment file.
 //
 // @param request - CreateUploadFileJobRequest
 //
@@ -6226,7 +6234,7 @@ func (client *Client) DeleteLakeHouseSpace(request *DeleteLakeHouseSpaceRequest)
 
 // Summary:
 //
-// 删除数仓空间成员
+// Removes a workspace member or a task flow developer in Data Management (DMS).
 //
 // Description:
 //
@@ -6294,7 +6302,7 @@ func (client *Client) DeleteLhMembersWithOptions(tmpReq *DeleteLhMembersRequest,
 
 // Summary:
 //
-// 删除数仓空间成员
+// Removes a workspace member or a task flow developer in Data Management (DMS).
 //
 // Description:
 //
@@ -6318,7 +6326,7 @@ func (client *Client) DeleteLhMembers(request *DeleteLhMembersRequest) (_result 
 
 // Summary:
 //
-// Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+// Deletes a logical database from Data Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
 //
 // @param request - DeleteLogicDatabaseRequest
 //
@@ -6366,7 +6374,7 @@ func (client *Client) DeleteLogicDatabaseWithOptions(request *DeleteLogicDatabas
 
 // Summary:
 //
-// Deletes a logical database in Database Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
+// Deletes a logical database from Data Management (DMS). This operation only deletes the specified logical database but does not delete physical databases.
 //
 // @param request - DeleteLogicDatabaseRequest
 //
@@ -6384,7 +6392,7 @@ func (client *Client) DeleteLogicDatabase(request *DeleteLogicDatabaseRequest) (
 
 // Summary:
 //
-// Deletes the routing algorithm of a logical table.
+// Deletes a routing algorithm from a logical table.
 //
 // @param request - DeleteLogicTableRouteConfigRequest
 //
@@ -6436,7 +6444,7 @@ func (client *Client) DeleteLogicTableRouteConfigWithOptions(request *DeleteLogi
 
 // Summary:
 //
-// Deletes the routing algorithm of a logical table.
+// Deletes a routing algorithm from a logical table.
 //
 // @param request - DeleteLogicTableRouteConfigRequest
 //
@@ -6594,7 +6602,7 @@ func (client *Client) DeleteProxy(request *DeleteProxyRequest) (_result *DeleteP
 
 // Summary:
 //
-// You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+// Revokes the permissions to access a database instance by using the secure access proxy feature from a user.
 //
 // @param request - DeleteProxyAccessRequest
 //
@@ -6642,7 +6650,7 @@ func (client *Client) DeleteProxyAccessWithOptions(request *DeleteProxyAccessReq
 
 // Summary:
 //
-// You can call this operation to DeleteProxyAccess reclaim the data security protection authorization of the target user.
+// Revokes the permissions to access a database instance by using the secure access proxy feature from a user.
 //
 // @param request - DeleteProxyAccessRequest
 //
@@ -7166,7 +7174,7 @@ func (client *Client) DeleteWorkspace(request *DeleteWorkspaceRequest) (_result 
 
 // Summary:
 //
-// 用于创建DIFY实例及相关资源，支持自定义配置。
+// Queries the information about the Dify instance and related resources, including the Dify instance status, associated VPC, and computing resource specifications.
 //
 // Description:
 //
@@ -7240,7 +7248,7 @@ func (client *Client) DescribeDifyAttributeWithOptions(request *DescribeDifyAttr
 
 // Summary:
 //
-// 用于创建DIFY实例及相关资源，支持自定义配置。
+// Queries the information about the Dify instance and related resources, including the Dify instance status, associated VPC, and computing resource specifications.
 //
 // Description:
 //
@@ -7586,7 +7594,7 @@ func (client *Client) DescribeDifyRegions(request *DescribeDifyRegionsRequest) (
 
 // Summary:
 //
-// You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+// Disables a user that is temporarily not used in Data Management (DMS).
 //
 // Description:
 //
@@ -7640,7 +7648,7 @@ func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtim
 
 // Summary:
 //
-// You can call this operation to disable a user that is temporarily not used in Data Management (DMS) Enterprise.
+// Disables a user that is temporarily not used in Data Management (DMS).
 //
 // Description:
 //
@@ -7776,7 +7784,7 @@ func (client *Client) DownloadDataTrackResult(request *DownloadDataTrackResultRe
 
 // Summary:
 //
-// Modifies the information about a logical database.
+// Edits the information about a logical database.
 //
 // @param tmpReq - EditLogicDatabaseRequest
 //
@@ -7838,7 +7846,7 @@ func (client *Client) EditLogicDatabaseWithOptions(tmpReq *EditLogicDatabaseRequ
 
 // Summary:
 //
-// Modifies the information about a logical database.
+// Edits the information about a logical database.
 //
 // @param request - EditLogicDatabaseRequest
 //
@@ -7942,7 +7950,7 @@ func (client *Client) EditMetaKnowledgeAsset(request *EditMetaKnowledgeAssetRequ
 
 // Summary:
 //
-// You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+// Enables a user that is disabled.
 //
 // Description:
 //
@@ -7996,7 +8004,7 @@ func (client *Client) EnableUserWithOptions(request *EnableUserRequest, runtime 
 
 // Summary:
 //
-// You can call this operation to enable a user that has been disabled in Data Management (DMS) Enterprise.
+// Enables a user that is disabled.
 //
 // Description:
 //
@@ -8492,7 +8500,7 @@ func (client *Client) GenMetaKnowledgeAsset(request *GenMetaKnowledgeAssetReques
 
 // Summary:
 //
-// 根据用户提供的自然语言描述和数据库信息生成对应的SQL语句。
+// Automatically retrieves relevant database and business information and generates the executable SQL statement based on the natural language description provided.
 //
 // Description:
 //
@@ -8580,7 +8588,7 @@ func (client *Client) GenerateSqlFromNLWithOptions(request *GenerateSqlFromNLReq
 
 // Summary:
 //
-// 根据用户提供的自然语言描述和数据库信息生成对应的SQL语句。
+// Automatically retrieves relevant database and business information and generates the executable SQL statement based on the natural language description provided.
 //
 // Description:
 //
@@ -8605,6 +8613,87 @@ func (client *Client) GenerateSqlFromNL(request *GenerateSqlFromNLRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &GenerateSqlFromNLResponse{}
 	_body, _err := client.GenerateSqlFromNLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取大模型工单审批建议
+//
+// @param request - GetAIOrderApprovalCommentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIOrderApprovalCommentSSEResponse
+func (client *Client) GetAIOrderApprovalCommentSSEWithSSE(request *GetAIOrderApprovalCommentSSERequest, runtime *dara.RuntimeOptions, _yield chan *GetAIOrderApprovalCommentSSEResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getAIOrderApprovalCommentSSEWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 获取大模型工单审批建议
+//
+// @param request - GetAIOrderApprovalCommentSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIOrderApprovalCommentSSEResponse
+func (client *Client) GetAIOrderApprovalCommentSSEWithOptions(request *GetAIOrderApprovalCommentSSERequest, runtime *dara.RuntimeOptions) (_result *GetAIOrderApprovalCommentSSEResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIOrderApprovalCommentSSE"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIOrderApprovalCommentSSEResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取大模型工单审批建议
+//
+// @param request - GetAIOrderApprovalCommentSSERequest
+//
+// @return GetAIOrderApprovalCommentSSEResponse
+func (client *Client) GetAIOrderApprovalCommentSSE(request *GetAIOrderApprovalCommentSSERequest) (_result *GetAIOrderApprovalCommentSSEResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAIOrderApprovalCommentSSEResponse{}
+	_body, _err := client.GetAIOrderApprovalCommentSSEWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9236,7 +9325,7 @@ func (client *Client) GetDataArchiveOrderDetail(request *GetDataArchiveOrderDeta
 
 // Summary:
 //
-// Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+// Obtains the download URL of the backup file for the specified ticket.
 //
 // @param tmpReq - GetDataCorrectBackupFilesRequest
 //
@@ -9294,7 +9383,7 @@ func (client *Client) GetDataCorrectBackupFilesWithOptions(tmpReq *GetDataCorrec
 
 // Summary:
 //
-// Queries the download URL of the backup file for a data change ticket in Data Management (DMS).
+// Obtains the download URL of the backup file for the specified ticket.
 //
 // @param request - GetDataCorrectBackupFilesRequest
 //
@@ -13068,7 +13157,7 @@ func (client *Client) GetTaskFlowNotification(request *GetTaskFlowNotificationRe
 
 // Summary:
 //
-// Queries the information about the nodes in an execution record of a task flow.
+// Queries the task nodes of a task flow instance.
 //
 // @param request - GetTaskInstanceRelationRequest
 //
@@ -13120,7 +13209,7 @@ func (client *Client) GetTaskInstanceRelationWithOptions(request *GetTaskInstanc
 
 // Summary:
 //
-// Queries the information about the nodes in an execution record of a task flow.
+// Queries the task nodes of a task flow instance.
 //
 // @param request - GetTaskInstanceRelationRequest
 //
@@ -14720,7 +14809,7 @@ func (client *Client) ListDataCorrectPreCheckDB(request *ListDataCorrectPreCheck
 
 // Summary:
 //
-// Queries the precheck information about an SQL statement that is specified in a data change ticket.
+// Queries the information about SQL statements that are involved in the precheck of a data change ticket.
 //
 // Description:
 //
@@ -14784,7 +14873,7 @@ func (client *Client) ListDataCorrectPreCheckSQLWithOptions(request *ListDataCor
 
 // Summary:
 //
-// Queries the precheck information about an SQL statement that is specified in a data change ticket.
+// Queries the information about SQL statements that are involved in the precheck of a data change ticket.
 //
 // Description:
 //
@@ -16106,7 +16195,7 @@ func (client *Client) ListDefaultSLARules(request *ListDefaultSLARulesRequest) (
 
 // Summary:
 //
-// Queries masking rules.
+// Queries a list of masking rules.
 //
 // @param request - ListDesensitizationRuleRequest
 //
@@ -16174,7 +16263,7 @@ func (client *Client) ListDesensitizationRuleWithOptions(request *ListDesensitiz
 
 // Summary:
 //
-// Queries masking rules.
+// Queries a list of masking rules.
 //
 // @param request - ListDesensitizationRuleRequest
 //
@@ -16520,7 +16609,7 @@ func (client *Client) ListInstanceLoginAuditLog(request *ListInstanceLoginAuditL
 
 // Summary:
 //
-// Queries the permissions of a user on a specific instance.
+// Queries the permissions of a user on an instance.
 //
 // @param request - ListInstanceUserPermissionsRequest
 //
@@ -16580,7 +16669,7 @@ func (client *Client) ListInstanceUserPermissionsWithOptions(request *ListInstan
 
 // Summary:
 //
-// Queries the permissions of a user on a specific instance.
+// Queries the permissions of a user on an instance.
 //
 // @param request - ListInstanceUserPermissionsRequest
 //
@@ -16700,7 +16789,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+// Queries the information about task flows in the business scenarios of a workspace in Data Management (DMS).
 //
 // Description:
 //
@@ -16758,7 +16847,7 @@ func (client *Client) ListLhTaskFlowAndScenarioWithOptions(request *ListLhTaskFl
 
 // Summary:
 //
-// Queries the task flows corresponding to a specific business scenario in a workspace in Data Management (DMS).
+// Queries the information about task flows in the business scenarios of a workspace in Data Management (DMS).
 //
 // Description:
 //
@@ -16782,7 +16871,7 @@ func (client *Client) ListLhTaskFlowAndScenario(request *ListLhTaskFlowAndScenar
 
 // Summary:
 //
-// Queries the details of logical databases.
+// Queries the detailed information about logical databases.
 //
 // @param request - ListLogicDatabasesRequest
 //
@@ -16834,7 +16923,7 @@ func (client *Client) ListLogicDatabasesWithOptions(request *ListLogicDatabasesR
 
 // Summary:
 //
-// Queries the details of logical databases.
+// Queries the detailed information about logical databases.
 //
 // @param request - ListLogicDatabasesRequest
 //
@@ -17074,7 +17163,7 @@ func (client *Client) ListMetaCategory(request *ListMetaCategoryRequest) (_resul
 
 // Summary:
 //
-// Queries tickets in Data Management (DMS).
+// Queries tickets.
 //
 // @param request - ListOrdersRequest
 //
@@ -17154,7 +17243,7 @@ func (client *Client) ListOrdersWithOptions(request *ListOrdersRequest, runtime 
 
 // Summary:
 //
-// Queries tickets in Data Management (DMS).
+// Queries tickets.
 //
 // @param request - ListOrdersRequest
 //
@@ -17300,7 +17389,7 @@ func (client *Client) ListProxyAccesses(request *ListProxyAccessesRequest) (_res
 
 // Summary:
 //
-// 操作审计-数据安全代理SQL执行列表
+// Queries the audit logs generated by the secure access proxy feature.
 //
 // @param request - ListProxySQLExecAuditLogRequest
 //
@@ -17376,7 +17465,7 @@ func (client *Client) ListProxySQLExecAuditLogWithOptions(request *ListProxySQLE
 
 // Summary:
 //
-// 操作审计-数据安全代理SQL执行列表
+// Queries the audit logs generated by the secure access proxy feature.
 //
 // @param request - ListProxySQLExecAuditLogRequest
 //
@@ -17394,7 +17483,7 @@ func (client *Client) ListProxySQLExecAuditLog(request *ListProxySQLExecAuditLog
 
 // Summary:
 //
-// Queries the custom service level agreement (SLA) rules.
+// Queries the custom service level agreement (SLA) rules of a task flow.
 //
 // @param request - ListSLARulesRequest
 //
@@ -17442,7 +17531,7 @@ func (client *Client) ListSLARulesWithOptions(request *ListSLARulesRequest, runt
 
 // Summary:
 //
-// Queries the custom service level agreement (SLA) rules.
+// Queries the custom service level agreement (SLA) rules of a task flow.
 //
 // @param request - ListSLARulesRequest
 //
@@ -17460,7 +17549,7 @@ func (client *Client) ListSLARules(request *ListSLARulesRequest) (_result *ListS
 
 // Summary:
 //
-// Queries SQL statements that were written on the SQLConsole tab.
+// Queries the audit logs of SQL statements that are executed in Data Management (DMS).
 //
 // @param request - ListSQLExecAuditLogRequest
 //
@@ -17536,7 +17625,7 @@ func (client *Client) ListSQLExecAuditLogWithOptions(request *ListSQLExecAuditLo
 
 // Summary:
 //
-// Queries SQL statements that were written on the SQLConsole tab.
+// Queries the audit logs of SQL statements that are executed in Data Management (DMS).
 //
 // @param request - ListSQLExecAuditLogRequest
 //
@@ -18422,7 +18511,7 @@ func (client *Client) ListTablesInCategory(request *ListTablesInCategoryRequest)
 
 // Summary:
 //
-// 任务编排获取任务流列表
+// Queries a list of task flows.
 //
 // @param request - ListTaskFlowRequest
 //
@@ -18466,7 +18555,7 @@ func (client *Client) ListTaskFlowWithOptions(request *ListTaskFlowRequest, runt
 
 // Summary:
 //
-// 任务编排获取任务流列表
+// Queries a list of task flows.
 //
 // @param request - ListTaskFlowRequest
 //
@@ -18550,7 +18639,7 @@ func (client *Client) ListTaskFlowConstants(request *ListTaskFlowConstantsReques
 
 // Summary:
 //
-// Queries the users that are involved in a specified task flow.
+// Queries a list of users that are involved in a task flow.
 //
 // @param request - ListTaskFlowCooperatorsRequest
 //
@@ -18598,7 +18687,7 @@ func (client *Client) ListTaskFlowCooperatorsWithOptions(request *ListTaskFlowCo
 
 // Summary:
 //
-// Queries the users that are involved in a specified task flow.
+// Queries a list of users that are involved in a task flow.
 //
 // @param request - ListTaskFlowCooperatorsRequest
 //
@@ -18616,7 +18705,7 @@ func (client *Client) ListTaskFlowCooperators(request *ListTaskFlowCooperatorsRe
 
 // Summary:
 //
-// Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+// Queries the edges of the directed acyclic graph (DAG) for a task flow based on multiple conditions.
 //
 // Description:
 //
@@ -18680,7 +18769,7 @@ func (client *Client) ListTaskFlowEdgesByConditionWithOptions(request *ListTaskF
 
 // Summary:
 //
-// Queries the edges of the directed acyclic graph (DAG) for a specified task flow based on multiple conditions.
+// Queries the edges of the directed acyclic graph (DAG) for a task flow based on multiple conditions.
 //
 // Description:
 //
@@ -18862,7 +18951,7 @@ func (client *Client) ListTaskFlowTimeVariables(request *ListTaskFlowTimeVariabl
 
 // Summary:
 //
-// Queries task flows by page.
+// Queries the details of task flows by page.
 //
 // @param tmpReq - ListTaskFlowsByPageRequest
 //
@@ -18932,7 +19021,7 @@ func (client *Client) ListTaskFlowsByPageWithOptions(tmpReq *ListTaskFlowsByPage
 
 // Summary:
 //
-// Queries task flows by page.
+// Queries the details of task flows by page.
 //
 // @param request - ListTaskFlowsByPageRequest
 //
@@ -19110,7 +19199,7 @@ func (client *Client) ListUserOwnedResources(request *ListUserOwnedResourcesRequ
 
 // Summary:
 //
-// Queries the permissions of a specific user on a database or a table.
+// Queries the permissions of a user on databases and tables.
 //
 // @param request - ListUserPermissionsRequest
 //
@@ -19190,7 +19279,7 @@ func (client *Client) ListUserPermissionsWithOptions(request *ListUserPermission
 
 // Summary:
 //
-// Queries the permissions of a specific user on a database or a table.
+// Queries the permissions of a user on databases and tables.
 //
 // @param request - ListUserPermissionsRequest
 //
@@ -19208,7 +19297,7 @@ func (client *Client) ListUserPermissions(request *ListUserPermissionsRequest) (
 
 // Summary:
 //
-// 获取用户租户列表
+// Queries tenants.
 //
 // @param request - ListUserTenantsRequest
 //
@@ -19252,7 +19341,7 @@ func (client *Client) ListUserTenantsWithOptions(request *ListUserTenantsRequest
 
 // Summary:
 //
-// 获取用户租户列表
+// Queries tenants.
 //
 // @param request - ListUserTenantsRequest
 //
@@ -20064,7 +20153,7 @@ func (client *Client) MoveTaskFlowToScenario(request *MoveTaskFlowToScenarioRequ
 
 // Summary:
 //
-// Unpublishes a published task flow.
+// Unpublishes a published task flow in Data Management (DMS).
 //
 // @param request - OfflineTaskFlowRequest
 //
@@ -20112,7 +20201,7 @@ func (client *Client) OfflineTaskFlowWithOptions(request *OfflineTaskFlowRequest
 
 // Summary:
 //
-// Unpublishes a published task flow.
+// Unpublishes a published task flow in Data Management (DMS).
 //
 // @param request - OfflineTaskFlowRequest
 //
@@ -20570,7 +20659,7 @@ func (client *Client) QueryDataTrackResultDownloadStatus(request *QueryDataTrack
 
 // Summary:
 //
-// 部署任务流的历史版本
+// Redeploys the published versions of a task flow.
 //
 // @param request - ReDeployLhDagVersionRequest
 //
@@ -20622,7 +20711,7 @@ func (client *Client) ReDeployLhDagVersionWithOptions(request *ReDeployLhDagVers
 
 // Summary:
 //
-// 部署任务流的历史版本
+// Redeploys the published versions of a task flow.
 //
 // @param request - ReDeployLhDagVersionRequest
 //
@@ -21068,7 +21157,7 @@ func (client *Client) RegisterInstance(request *RegisterInstanceRequest) (_resul
 
 // Summary:
 //
-// Registers a user for your enterprise.
+// Adds a user of your enterprise.
 //
 // Description:
 //
@@ -21132,7 +21221,7 @@ func (client *Client) RegisterUserWithOptions(request *RegisterUserRequest, runt
 
 // Summary:
 //
-// Registers a user for your enterprise.
+// Adds a user of your enterprise.
 //
 // Description:
 //
@@ -21450,7 +21539,7 @@ func (client *Client) RestartDataExportJob(request *RestartDataExportJobRequest)
 
 // Summary:
 //
-// Resumes a suspended task flow.
+// Resumes a suspended task flow instance.
 //
 // Description:
 //
@@ -21510,7 +21599,7 @@ func (client *Client) ResumeTaskFlowInstanceWithOptions(request *ResumeTaskFlowI
 
 // Summary:
 //
-// Resumes a suspended task flow.
+// Resumes a suspended task flow instance.
 //
 // Description:
 //
@@ -22242,7 +22331,7 @@ func (client *Client) SetWorkflowExtraInfo(request *SetWorkflowExtraInfoRequest)
 
 // Summary:
 //
-// 添加实例
+// This operation is suitable for special scenarios and is not recommended. To register an instance with DMS, we recommend that you call the AddInstance operation first.
 //
 // @param request - SimplyAddInstanceRequest
 //
@@ -22310,7 +22399,7 @@ func (client *Client) SimplyAddInstanceWithOptions(request *SimplyAddInstanceReq
 
 // Summary:
 //
-// 添加实例
+// This operation is suitable for special scenarios and is not recommended. To register an instance with DMS, we recommend that you call the AddInstance operation first.
 //
 // @param request - SimplyAddInstanceRequest
 //
@@ -23770,7 +23859,7 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 
 // Summary:
 //
-// Updates the service level agreement (SLA) timeout reminder for a task flow.
+// Updates the timeout reminder for the service level agreement (SLA) rules of a task flow.
 //
 // Description:
 //
@@ -23832,7 +23921,7 @@ func (client *Client) UpdateSLARulesWithOptions(tmpReq *UpdateSLARulesRequest, r
 
 // Summary:
 //
-// Updates the service level agreement (SLA) timeout reminder for a task flow.
+// Updates the timeout reminder for the service level agreement (SLA) rules of a task flow.
 //
 // Description:
 //
@@ -24310,7 +24399,7 @@ func (client *Client) UpdateTaskFlowConstants(request *UpdateTaskFlowConstantsRe
 
 // Summary:
 //
-// Updates the IDs of the users who are involved in the task flow.
+// Updates the IDs of the users that are involved in a task flow.
 //
 // @param tmpReq - UpdateTaskFlowCooperatorsRequest
 //
@@ -24368,7 +24457,7 @@ func (client *Client) UpdateTaskFlowCooperatorsWithOptions(tmpReq *UpdateTaskFlo
 
 // Summary:
 //
-// Updates the IDs of the users who are involved in the task flow.
+// Updates the IDs of the users that are involved in a task flow.
 //
 // @param request - UpdateTaskFlowCooperatorsRequest
 //
@@ -24560,7 +24649,7 @@ func (client *Client) UpdateTaskFlowNameAndDesc(request *UpdateTaskFlowNameAndDe
 
 // Summary:
 //
-// Updates the notification settings for task flows.
+// Updates the notification settings for a task flow.
 //
 // @param request - UpdateTaskFlowNotificationRequest
 //
@@ -24620,7 +24709,7 @@ func (client *Client) UpdateTaskFlowNotificationWithOptions(request *UpdateTaskF
 
 // Summary:
 //
-// Updates the notification settings for task flows.
+// Updates the notification settings for a task flow.
 //
 // @param request - UpdateTaskFlowNotificationRequest
 //
@@ -25050,7 +25139,7 @@ func (client *Client) UpdateTaskName(request *UpdateTaskNameRequest) (_result *U
 
 // Summary:
 //
-// Updates the output variables for a specified task node.
+// Updates the output variables for a task node.
 //
 // Description:
 //
@@ -25106,7 +25195,7 @@ func (client *Client) UpdateTaskOutputWithOptions(request *UpdateTaskOutputReque
 
 // Summary:
 //
-// Updates the output variables for a specified task node.
+// Updates the output variables for a task node.
 //
 // Description:
 //
@@ -25524,18 +25613,72 @@ func (client *Client) chatWithDesensitizeSSEWithSSE_opYieldFunc(_yield chan *Cha
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) getAIOrderApprovalCommentSSEWithSSE_opYieldFunc(_yield chan *GetAIOrderApprovalCommentSSEResponse, _yieldErr chan error, request *GetAIOrderApprovalCommentSSERequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderId) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIOrderApprovalCommentSSE"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
 	}
 }

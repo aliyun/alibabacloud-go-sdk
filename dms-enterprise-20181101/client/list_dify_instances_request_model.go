@@ -20,10 +20,22 @@ type iListDifyInstancesRequest interface {
 }
 
 type ListDifyInstancesRequest struct {
+	// example:
+	//
+	// abc
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DataRegion  *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// token-xxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListDifyInstancesRequest) String() string {

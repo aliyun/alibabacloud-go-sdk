@@ -35,9 +35,8 @@ type ListOrdersResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details about the tickets.
-	Orders *ListOrdersResponseBodyOrders `json:"Orders,omitempty" xml:"Orders,omitempty" type:"Struct"`
+	ErrorMessage *string                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Orders       *ListOrdersResponseBodyOrders `json:"Orders,omitempty" xml:"Orders,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -168,76 +167,15 @@ func (s *ListOrdersResponseBodyOrders) Validate() error {
 }
 
 type ListOrdersResponseBodyOrdersOrder struct {
-	// The remarks of the ticket.
-	//
-	// example:
-	//
-	// test
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The user who submitted the ticket.
-	//
-	// example:
-	//
-	// test
-	Committer *string `json:"Committer,omitempty" xml:"Committer,omitempty"`
-	// The ID of the user who submitted the ticket.
-	//
-	// example:
-	//
-	// 51****
-	CommitterId *int64 `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
-	// The time when the ticket was created.
-	//
-	// example:
-	//
-	// 2022-04-08 11:15:46
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the ticket was last modified.
-	//
-	// example:
-	//
-	// 2022-04-08 11:27:45
+	Comment        *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Committer      *string `json:"Committer,omitempty" xml:"Committer,omitempty"`
+	CommitterId    *int64  `json:"CommitterId,omitempty" xml:"CommitterId,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	// The ID of the ticket.
-	//
-	// example:
-	//
-	// 51****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The type of the ticket.
-	//
-	// example:
-	//
-	// DC_COMMON
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// The status code of the ticket. Valid values:
-	//
-	// 	- **fail**: The ticket fails to be executed.
-	//
-	// 	- **toaudit**: The ticket is waiting for approval.
-	//
-	// 	- **cancel**: The ticket is cancelled.
-	//
-	// 	- **processing**: The ticket is being executed.
-	//
-	// 	- **approved**: The ticket is approved.
-	//
-	// 	- **reject**: The ticket is rejected.
-	//
-	// 	- **success**: The ticket is executed.
-	//
-	// 	- **closed**: The ticket is closed.
-	//
-	// example:
-	//
-	// success
-	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The status description of the ticket.
-	//
-	// example:
-	//
-	// changed successfully
-	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	OrderId        *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PluginType     *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	StatusCode     *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	StatusDesc     *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 }
 
 func (s ListOrdersResponseBodyOrdersOrder) String() string {

@@ -24,7 +24,6 @@ type iListTaskFlowInstanceResponseBody interface {
 }
 
 type ListTaskFlowInstanceResponseBody struct {
-	// The information about the execution records returned.
 	DAGInstanceList *ListTaskFlowInstanceResponseBodyDAGInstanceList `json:"DAGInstanceList,omitempty" xml:"DAGInstanceList,omitempty" type:"Struct"`
 	// The error code returned if the request fails.
 	//
@@ -168,94 +167,18 @@ func (s *ListTaskFlowInstanceResponseBodyDAGInstanceList) Validate() error {
 }
 
 type ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance struct {
-	// The business time of the task flow. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
-	//
-	// example:
-	//
-	// 2021-11-10 14:37:26
 	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 7***
-	DagId *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The name of the task flow.
-	//
-	// example:
-	//
-	// Spark_SQL_test
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
-	// The version of the task flow.
-	//
-	// example:
-	//
-	// []
-	DagVersion *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
-	// The time when the execution of the task flow was complete. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
-	//
-	// example:
-	//
-	// 2021-11-11 14:38:57
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the previously published version of the task flow.
-	//
-	// example:
-	//
-	// 2****
-	HistoryDagId *int64 `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
-	// The ID of the execution record.
-	//
-	// example:
-	//
-	// 9234
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The description of the task.
-	//
-	// example:
-	//
-	// test
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the task flow owner.
-	//
-	// example:
-	//
-	// test_name
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The status of the task flow. Valid values:
-	//
-	// 	- **0**: The task flow is waiting to be scheduled.
-	//
-	// 	- **1**: The task flow is being executed.
-	//
-	// 	- **2**: The task flow is paused.
-	//
-	// 	- **3**: The task flow failed.
-	//
-	// 	- **4**: The task flow is executed.
-	//
-	// 	- **5**: The task flow is complete.
-	//
-	// example:
-	//
-	// 4
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The mode in which the task flow is triggered. Valid values:
-	//
-	// 	- **0**: The task flow is automatically triggered based on periodic scheduling.
-	//
-	// 	- **1**: The task flow is manually triggered.
-	//
-	// example:
-	//
-	// 1
-	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The time when the execution of the task flow was start. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
-	//
-	// example:
-	//
-	// 2021-11-11 14:35:57
-	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	DagId        *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagName      *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagVersion   *string `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HistoryDagId *int64  `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OwnerName    *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TriggerType  *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	StartTime    *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) String() string {

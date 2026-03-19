@@ -24,12 +24,42 @@ type iDLDatabase interface {
 }
 
 type DLDatabase struct {
-	CatalogName *string                `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	DbId        *int64                 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Location    *string                `json:"Location,omitempty" xml:"Location,omitempty"`
-	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters  map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The name of the catalog.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The database ID.
+	//
+	// example:
+	//
+	// 19
+	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The description of the database.
+	//
+	// example:
+	//
+	// Default database for catalog hive
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The storage path of the database.
+	//
+	// example:
+	//
+	// oss://xxx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// default
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters related to the database.
+	//
+	// example:
+	//
+	// key/value
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 }
 
 func (s DLDatabase) String() string {

@@ -128,8 +128,7 @@ type GetApprovalDetailResponseBodyApprovalDetail struct {
 	// example:
 	//
 	// 2021-10-29 14:17:25
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The information about the approver.
+	CreateTime      *string                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CurrentHandlers *GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers `json:"CurrentHandlers,omitempty" xml:"CurrentHandlers,omitempty" type:"Struct"`
 	// The description of the approval process.
 	//
@@ -164,8 +163,7 @@ type GetApprovalDetailResponseBodyApprovalDetail struct {
 	// example:
 	//
 	// PERM_APPLY
-	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The reasons for the approval.
+	OrderType  *string                                                `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	ReasonList *GetApprovalDetailResponseBodyApprovalDetailReasonList `json:"ReasonList,omitempty" xml:"ReasonList,omitempty" type:"Struct"`
 	// The ID of the workflow template.
 	//
@@ -206,9 +204,8 @@ type GetApprovalDetailResponseBodyApprovalDetail struct {
 	// example:
 	//
 	// APPROVED
-	WorkflowInsCode *string `json:"WorkflowInsCode,omitempty" xml:"WorkflowInsCode,omitempty"`
-	// The details of approval nodes.
-	WorkflowNodes *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
+	WorkflowInsCode *string                                                   `json:"WorkflowInsCode,omitempty" xml:"WorkflowInsCode,omitempty"`
+	WorkflowNodes   *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
 }
 
 func (s GetApprovalDetailResponseBodyApprovalDetail) String() string {
@@ -390,17 +387,7 @@ func (s *GetApprovalDetailResponseBodyApprovalDetailCurrentHandlers) Validate() 
 }
 
 type GetApprovalDetailResponseBodyApprovalDetailCurrentHandlersCurrentHandler struct {
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// nickName
+	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 }
 
@@ -494,50 +481,12 @@ func (s *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodes) Validate() er
 }
 
 type GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode struct {
-	// The IDs of the approvers.
 	AuditUserIdList *GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNodeAuditUserIdList `json:"AuditUserIdList,omitempty" xml:"AuditUserIdList,omitempty" type:"Struct"`
-	// The name of the approval node.
-	//
-	// example:
-	//
-	// DBA
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The remarks of the approval.
-	//
-	// example:
-	//
-	// Reason: Approved
-	OperateComment *string `json:"OperateComment,omitempty" xml:"OperateComment,omitempty"`
-	// The time when the ticket was submitted.
-	//
-	// example:
-	//
-	// 2019-10-15 13:47:54
-	OperateTime *string `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
-	// The ID of the user who submitted the ticket.
-	//
-	// example:
-	//
-	// 1****
-	OperatorId *int64 `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// The approval status of the ticket. Valid values:
-	//
-	// 	- **START**: The ticket was submitted.
-	//
-	// 	- **ERROR**: An error occurred.
-	//
-	// 	- **AUDITING**: The ticket is being reviewed.
-	//
-	// 	- **REJECT**: The ticket was rejected.
-	//
-	// 	- **CANCEL**: The ticket was revoked.
-	//
-	// 	- **APPROVED**: The ticket was approved.
-	//
-	// example:
-	//
-	// APPROVED
-	WorkflowInsCode *string `json:"WorkflowInsCode,omitempty" xml:"WorkflowInsCode,omitempty"`
+	NodeName        *string                                                                              `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	OperateComment  *string                                                                              `json:"OperateComment,omitempty" xml:"OperateComment,omitempty"`
+	OperateTime     *string                                                                              `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	OperatorId      *int64                                                                               `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	WorkflowInsCode *string                                                                              `json:"WorkflowInsCode,omitempty" xml:"WorkflowInsCode,omitempty"`
 }
 
 func (s GetApprovalDetailResponseBodyApprovalDetailWorkflowNodesWorkflowNode) String() string {

@@ -34,16 +34,73 @@ type iDLFunction interface {
 }
 
 type DLFunction struct {
-	CatalogName  *string          `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	ClassName    *string          `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	CreateTime   *int32           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatorId    *int64           `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DbName       *string          `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	FunctionName *string          `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	FunctionType *string          `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	ModifierId   *int64           `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	OwnerName    *string          `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerType    *string          `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The name of the data catalog.
+	//
+	// example:
+	//
+	// hive
+	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	// The JAVA class that contains the function code.
+	//
+	// example:
+	//
+	// com.example.hive.MyCustomUDF
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// The time when the function was created.
+	//
+	// example:
+	//
+	// 1731586286
+	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the function.
+	//
+	// example:
+	//
+	// 12****
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The name of the queried database.
+	//
+	// example:
+	//
+	// default
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the function.
+	//
+	// example:
+	//
+	// my_funciton
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// The type of the function.
+	//
+	// example:
+	//
+	// JAVA
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	// The ID of the user who modified the function.
+	//
+	// example:
+	//
+	// 26****
+	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	// The owner of the function.
+	//
+	// example:
+	//
+	// zhangsan
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The type of the owner. Valid values:
+	//
+	// 	- ROLE
+	//
+	// 	- GROUP
+	//
+	// 	- USER
+	//
+	// example:
+	//
+	// USER
+	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// The resource URIs of the function. You cannot modify the resource URIs after the function is created.
 	ResourceUris []*DLResourceUri `json:"ResourceUris,omitempty" xml:"ResourceUris,omitempty" type:"Repeated"`
 }
 

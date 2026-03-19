@@ -41,8 +41,7 @@ type SearchDatabaseResponseBody struct {
 	// example:
 	//
 	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the databases.
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SearchDatabaseList *SearchDatabaseResponseBodySearchDatabaseList `json:"SearchDatabaseList,omitempty" xml:"SearchDatabaseList,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
@@ -168,100 +167,22 @@ func (s *SearchDatabaseResponseBodySearchDatabaseList) Validate() error {
 }
 
 type SearchDatabaseResponseBodySearchDatabaseListSearchDatabase struct {
-	// The alias of the database.
-	//
-	// example:
-	//
-	// test_rds
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The name of the catalog to which the database belongs.
-	//
-	// > If the type of the database engine is PostgreSQL, the name of the database is displayed.
-	//
-	// example:
-	//
-	// dmstest
-	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The ID of the database.
-	//
-	// example:
-	//
-	// 2528****
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The name of the data link for cross-database queries.
-	//
-	// example:
-	//
-	// datalink_name
-	DatalinkName *string `json:"DatalinkName,omitempty" xml:"DatalinkName,omitempty"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The ID of the user who assumes the database administrator (DBA) role.
-	//
-	// example:
-	//
-	// 10****
-	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	// The encoding method of the database.
-	//
-	// example:
-	//
-	// utf8
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The environment type of the database. For more information, see [Change the environment type of an instance](https://help.aliyun.com/document_detail/163309.html).
-	//
-	// example:
-	//
-	// test
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The endpoint of the instance in which the database resides.
-	//
-	// example:
-	//
-	// rm-xxxx.mysql.rds.aliyuncs.com
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Indicates whether the database is a logical database. Valid values:
-	//
-	// 	- **true**: The database is a logical database.
-	//
-	// 	- **false**: The database is not a logical database.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The IDs of the owners of the databases.
-	OwnerIdList *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the database owners.
+	Alias         *string                                                                  `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CatalogName   *string                                                                  `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DatabaseId    *string                                                                  `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatalinkName  *string                                                                  `json:"DatalinkName,omitempty" xml:"DatalinkName,omitempty"`
+	DbType        *string                                                                  `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbaId         *string                                                                  `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	Encoding      *string                                                                  `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	EnvType       *string                                                                  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Host          *string                                                                  `json:"Host,omitempty" xml:"Host,omitempty"`
+	Logic         *bool                                                                    `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OwnerIdList   *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *SearchDatabaseResponseBodySearchDatabaseListSearchDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The port of the instance in which the database resides.
-	//
-	// example:
-	//
-	// 3306
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used to search for the database.
-	//
-	// example:
-	//
-	// test@xxx.xxx.xxx.xxx:3306
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The system ID (SID) of the instance in which the database resides.
-	//
-	// example:
-	//
-	// testSid
-	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	Port          *int32                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
+	SchemaName    *string                                                                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName    *string                                                                  `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Sid           *string                                                                  `json:"Sid,omitempty" xml:"Sid,omitempty"`
 }
 
 func (s SearchDatabaseResponseBodySearchDatabaseListSearchDatabase) String() string {

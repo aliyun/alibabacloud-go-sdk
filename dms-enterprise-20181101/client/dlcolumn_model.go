@@ -18,9 +18,24 @@ type iDLColumn interface {
 }
 
 type DLColumn struct {
+	// The comment of the column.
+	//
+	// example:
+	//
+	// from deserializer
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// col
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the column, including array, bigint, binary, boolean, char, date, decimal, double, float, int, interval, map, set, smallint, string, struct, timestamp, tinyint, union, varchar.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DLColumn) String() string {

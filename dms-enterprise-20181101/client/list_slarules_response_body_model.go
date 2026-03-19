@@ -39,8 +39,7 @@ type ListSLARulesResponseBody struct {
 	// example:
 	//
 	// 3D1A59F4-EB2B-5D24-80A5-90C446A00DE2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of SLA rules.
+	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SLARuleList *ListSLARulesResponseBodySLARuleList `json:"SLARuleList,omitempty" xml:"SLARuleList,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -151,40 +150,11 @@ func (s *ListSLARulesResponseBodySLARuleList) Validate() error {
 }
 
 type ListSLARulesResponseBodySLARuleListSLARule struct {
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 11****
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The ID of the SLA rule.
-	//
-	// example:
-	//
-	// 2
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The timeout period. Unit: minutes.
-	//
-	// example:
-	//
-	// 1080
+	DagId           *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id              *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	IntervalMinutes *int32 `json:"IntervalMinutes,omitempty" xml:"IntervalMinutes,omitempty"`
-	// The ID of the task node.
-	//
-	// example:
-	//
-	// 1
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the rule. Valid values:
-	//
-	// 	- **0**: an SLA rule for a task flow
-	//
-	// 	- **1**: an SLA rule for a task node
-	//
-	// example:
-	//
-	// 0
-	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	NodeId          *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	RuleType        *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
 func (s ListSLARulesResponseBodySLARuleListSLARule) String() string {

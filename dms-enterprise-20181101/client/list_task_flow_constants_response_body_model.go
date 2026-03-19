@@ -22,7 +22,6 @@ type iListTaskFlowConstantsResponseBody interface {
 }
 
 type ListTaskFlowConstantsResponseBody struct {
-	// A list of constant key-value pairs for the task flow.
 	DagConstants *ListTaskFlowConstantsResponseBodyDagConstants `json:"DagConstants,omitempty" xml:"DagConstants,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//
@@ -151,17 +150,7 @@ func (s *ListTaskFlowConstantsResponseBodyDagConstants) Validate() error {
 }
 
 type ListTaskFlowConstantsResponseBodyDagConstantsDagConstant struct {
-	// The constant key.
-	//
-	// example:
-	//
-	// example
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The constant value.
-	//
-	// example:
-	//
-	// 0
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

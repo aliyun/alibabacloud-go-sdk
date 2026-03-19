@@ -22,7 +22,6 @@ type iListTaskFlowEdgesByConditionResponseBody interface {
 }
 
 type ListTaskFlowEdgesByConditionResponseBody struct {
-	// The list of task flow edges.
 	Edges *ListTaskFlowEdgesByConditionResponseBodyEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//
@@ -151,23 +150,8 @@ func (s *ListTaskFlowEdgesByConditionResponseBodyEdges) Validate() error {
 }
 
 type ListTaskFlowEdgesByConditionResponseBodyEdgesEdge struct {
-	// The ID of the task flow edge.
-	//
-	// example:
-	//
-	// 24***
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the end node on the edge.
-	//
-	// example:
-	//
-	// 44***
-	NodeEnd *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
-	// The ID of the start node on the edge.
-	//
-	// example:
-	//
-	// 44***
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
 	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
 }
 

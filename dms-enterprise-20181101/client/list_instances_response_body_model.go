@@ -35,8 +35,7 @@ type ListInstancesResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The information about the database instances that are returned.
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	InstanceList *ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -168,175 +167,33 @@ func (s *ListInstancesResponseBodyInstanceList) Validate() error {
 }
 
 type ListInstancesResponseBodyInstanceListInstance struct {
-	// The name of the database link for the database instance.
-	//
-	// example:
-	//
-	// dblink_test
-	DataLinkName *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
-	// The password that is used to log on to the database instance.
-	//
-	// example:
-	//
-	// ******
-	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
-	// The account that is used to log on to the database.
-	//
-	// example:
-	//
-	// dbUser
-	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
-	// The ID of the database administrator (DBA) of the database instance.
-	//
-	// example:
-	//
-	// 31****
-	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	// The nickname of the DBA of the instance.
-	//
-	// example:
-	//
-	// dbaName
-	DbaNickName *string `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
-	// Indicates whether the lock-free schema change feature is enabled for the database instance.
-	//
-	// example:
-	//
-	// 1
-	DdlOnline *int32 `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
-	// The ID of the ECS instance on which the database instance is deployed.
-	//
-	// example:
-	//
-	// 150****
-	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
-	// The ID of the region in which the database instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	EcsRegion *string `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
-	// The type of the environment to which the database instance belongs. Valid values:
-	//
-	// 	- **product:*	- production environment
-	//
-	// 	- **dev**: development environment
-	//
-	// 	- **pre**: pre-release environment
-	//
-	// 	- **test**: test environment
-	//
-	// 	- **sit**: SIT environment
-	//
-	// 	- **uat**: UAT environment
-	//
-	// 	- **pet**: stress testing environment
-	//
-	// 	- **stag:*	- staging environment
-	//
-	// example:
-	//
-	// product
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The timeout period for exporting data from the database instance.
-	//
-	// example:
-	//
-	// 86400
-	ExportTimeout *int32 `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
-	// The host address that is used to connect to the database instance.
-	//
-	// example:
-	//
-	// ****.mysql.rds.aliyuncs.com
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The alias of the database instance.
-	//
-	// example:
-	//
-	// test
-	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 150***
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The source of the database instance.
-	//
-	// example:
-	//
-	// RDS
-	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	// The type of the database instance.
-	//
-	// example:
-	//
-	// mysql
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The IDs of the owners of the database instance.
-	OwnerIdList *ListInstancesResponseBodyInstanceListInstanceOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the owners of the database instance.
-	OwnerNameList *ListInstancesResponseBodyInstanceListInstanceOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The port number that is used to connect to the database instance.
-	//
-	// example:
-	//
-	// 3306
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The timeout period for querying data in the database instance.
-	//
-	// example:
-	//
-	// 60
-	QueryTimeout *int32 `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
-	// The ID of the security rule set of the database instance.
-	//
-	// example:
-	//
-	// 1
-	SafeRuleId *string `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
-	// Indicates whether the sensitive data protection feature is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	SellSitd  *bool   `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
-	SellTrust *string `json:"SellTrust,omitempty" xml:"SellTrust,omitempty"`
-	// The system ID (SID) of the database instance.
-	//
-	// example:
-	//
-	// test
-	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// The control mode of the database instance.
-	StandardGroup *ListInstancesResponseBodyInstanceListInstanceStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
-	// The status of the database instance.
-	//
-	// example:
-	//
-	// NORMAL
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Indicates whether the cross-database query feature is enabled for the database instance. Valid values:
-	//
-	// 	- **0**: disabled
-	//
-	// 	- **1:**: enabled
-	//
-	// example:
-	//
-	// 1
-	UseDsql *int32 `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
-	// The ID of the VPC to which the database instance belongs.
-	//
-	// example:
-	//
-	// vpc-o6wrloqsdqc9io3mg****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DataLinkName     *string                                                     `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
+	DatabasePassword *string                                                     `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	DatabaseUser     *string                                                     `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	DbaId            *string                                                     `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	DbaNickName      *string                                                     `json:"DbaNickName,omitempty" xml:"DbaNickName,omitempty"`
+	DdlOnline        *int32                                                      `json:"DdlOnline,omitempty" xml:"DdlOnline,omitempty"`
+	EcsInstanceId    *string                                                     `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	EcsRegion        *string                                                     `json:"EcsRegion,omitempty" xml:"EcsRegion,omitempty"`
+	EnvType          *string                                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	ExportTimeout    *int32                                                      `json:"ExportTimeout,omitempty" xml:"ExportTimeout,omitempty"`
+	Host             *string                                                     `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceAlias    *string                                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId       *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSource   *string                                                     `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
+	InstanceType     *string                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OwnerIdList      *ListInstancesResponseBodyInstanceListInstanceOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	OwnerNameList    *ListInstancesResponseBodyInstanceListInstanceOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	Port             *int32                                                      `json:"Port,omitempty" xml:"Port,omitempty"`
+	QueryTimeout     *int32                                                      `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	SafeRuleId       *string                                                     `json:"SafeRuleId,omitempty" xml:"SafeRuleId,omitempty"`
+	SellSitd         *bool                                                       `json:"SellSitd,omitempty" xml:"SellSitd,omitempty"`
+	SellTrust        *string                                                     `json:"SellTrust,omitempty" xml:"SellTrust,omitempty"`
+	Sid              *string                                                     `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	StandardGroup    *ListInstancesResponseBodyInstanceListInstanceStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
+	State            *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
+	UseDsql          *int32                                                      `json:"UseDsql,omitempty" xml:"UseDsql,omitempty"`
+	VpcId            *string                                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstanceListInstance) String() string {
@@ -660,23 +517,7 @@ func (s *ListInstancesResponseBodyInstanceListInstanceOwnerNameList) Validate() 
 }
 
 type ListInstancesResponseBodyInstanceListInstanceStandardGroup struct {
-	// The type of the control mode. Valid values:
-	//
-	// 	- **COMMON**: Security Collaboration
-	//
-	// 	- **NONE_CONTROL**: Flexible Management
-	//
-	// 	- **STABLE**: Stable Change
-	//
-	// example:
-	//
-	// COMMON
 	GroupMode *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
-	// The name of the security rule corresponding to the control mode.
-	//
-	// example:
-	//
-	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

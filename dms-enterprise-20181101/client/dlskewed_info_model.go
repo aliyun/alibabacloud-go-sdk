@@ -18,9 +18,16 @@ type iDLSkewedInfo interface {
 }
 
 type DLSkewedInfo struct {
-	SkewedColNames             []*string              `json:"SkewedColNames,omitempty" xml:"SkewedColNames,omitempty" type:"Repeated"`
+	// The list of skewed column names.
+	SkewedColNames []*string `json:"SkewedColNames,omitempty" xml:"SkewedColNames,omitempty" type:"Repeated"`
+	// The mappings between skewed values and columns.
+	//
+	// example:
+	//
+	// {“col1”:"val1"}
 	SkewedColValueLocationMaps map[string]interface{} `json:"SkewedColValueLocationMaps,omitempty" xml:"SkewedColValueLocationMaps,omitempty"`
-	SkewedColValues            [][]*string            `json:"SkewedColValues,omitempty" xml:"SkewedColValues,omitempty" type:"Repeated"`
+	// The lists of skewed column values. Each list provides a set of associated values.
+	SkewedColValues [][]*string `json:"SkewedColValues,omitempty" xml:"SkewedColValues,omitempty" type:"Repeated"`
 }
 
 func (s DLSkewedInfo) String() string {

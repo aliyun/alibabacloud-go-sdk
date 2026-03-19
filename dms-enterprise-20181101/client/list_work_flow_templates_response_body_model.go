@@ -45,8 +45,7 @@ type ListWorkFlowTemplatesResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The approval templates.
+	Success           *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	WorkFlowTemplates *ListWorkFlowTemplatesResponseBodyWorkFlowTemplates `json:"WorkFlowTemplates,omitempty" xml:"WorkFlowTemplates,omitempty" type:"Struct"`
 }
 
@@ -147,51 +146,12 @@ func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplates) Validate() error {
 }
 
 type ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplate struct {
-	// The description of the approval template.
-	//
-	// example:
-	//
-	// test
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the creator.
-	//
-	// example:
-	//
-	// 1234
-	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// Indicates whether the approval template is enabled. Valid values:
-	//
-	// 	- Y: The approval template is enabled.
-	//
-	// 	- N: The approval template is disabled.
-	//
-	// example:
-	//
-	// Y
-	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Indicates whether the approval template is predefined by the system. Valid values:
-	//
-	// 	- 1: The approval template is predefined by the system.
-	//
-	// 	- 0: The approval template is not predefined by the system.
-	//
-	// example:
-	//
-	// 1
-	IsSystem *int32 `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
-	// The ID of the approval template.
-	//
-	// example:
-	//
-	// 12345
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the approval template.
-	//
-	// example:
-	//
-	// Admin
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The details of approval nodes.
+	Comment       *string                                                                          `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateUserId  *int64                                                                           `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	Enabled       *string                                                                          `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	IsSystem      *int32                                                                           `json:"IsSystem,omitempty" xml:"IsSystem,omitempty"`
+	TemplateId    *int64                                                                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName  *string                                                                          `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	WorkflowNodes *ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
 }
 
@@ -310,52 +270,13 @@ func (s *ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkf
 }
 
 type ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodesWorkflowNode struct {
-	// The description of the approval node.
-	//
-	// example:
-	//
-	// test
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the creator.
-	//
-	// example:
-	//
-	// 1234
-	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The ID of the approval node.
-	//
-	// example:
-	//
-	// 123
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the approval node.
-	//
-	// example:
-	//
-	// test
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The type of the approval node. Valid values:
-	//
-	// 	- SYS: The approval node is predefined by the system.
-	//
-	// 	- USER_LIST: The approval node is created by a user.
-	//
-	// example:
-	//
-	// SYS
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The position of the approval node.
-	//
-	// example:
-	//
-	// 1
-	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The ID of the template.
-	//
-	// example:
-	//
-	// 12345
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Comment      *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateUserId *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Position     *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListWorkFlowTemplatesResponseBodyWorkFlowTemplatesWorkFlowTemplateWorkflowNodesWorkflowNode) String() string {

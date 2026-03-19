@@ -222,10 +222,8 @@ type GetInstanceResponseBodyInstance struct {
 	// example:
 	//
 	// postgresql
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The IDs of the owners for the database instance.
-	OwnerIdList *GetInstanceResponseBodyInstanceOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the owners for the database instance.
+	InstanceType  *string                                       `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	OwnerIdList   *GetInstanceResponseBodyInstanceOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *GetInstanceResponseBodyInstanceOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
 	// The port number that is used to connect to the database instance.
 	//

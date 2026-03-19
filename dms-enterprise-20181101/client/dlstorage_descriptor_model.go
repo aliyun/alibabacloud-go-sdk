@@ -36,18 +36,54 @@ type iDLStorageDescriptor interface {
 }
 
 type DLStorageDescriptor struct {
-	BucketCols      []*string              `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
-	Columns         []*DLColumn            `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	InputFormat     *string                `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
-	IsCompressed    *bool                  `json:"IsCompressed,omitempty" xml:"IsCompressed,omitempty"`
-	Location        *string                `json:"Location,omitempty" xml:"Location,omitempty"`
-	NumBuckets      *int32                 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
-	OriginalColumns []*DLColumn            `json:"OriginalColumns,omitempty" xml:"OriginalColumns,omitempty" type:"Repeated"`
-	OutputFormat    *string                `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	SerdeInfo       *DLSerdeInfo           `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
-	SkewedInfo      *DLSkewedInfo          `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
-	SortCols        []*DLOrder             `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
+	// The list of bucket column names, which determines the distribution of stored data based on hashes.
+	BucketCols []*string `json:"BucketCols,omitempty" xml:"BucketCols,omitempty" type:"Repeated"`
+	// The description of the data columns.
+	Columns []*DLColumn `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The name of the input format class that is used to read data.
+	//
+	// example:
+	//
+	// org.apache.hadoop.mapred.SequenceFileInputFormat
+	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// Specifies whether the stored data is compressed.
+	//
+	// example:
+	//
+	// false
+	IsCompressed *bool `json:"IsCompressed,omitempty" xml:"IsCompressed,omitempty"`
+	// The location where the data is stored.
+	//
+	// example:
+	//
+	// oss://xxx
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The number of buckets.
+	//
+	// example:
+	//
+	// -1
+	NumBuckets *int32 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
+	// The description of the original column.
+	OriginalColumns []*DLColumn `json:"OriginalColumns,omitempty" xml:"OriginalColumns,omitempty" type:"Repeated"`
+	// The name of the output format class that is used to write data.
+	//
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat
+	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// Other parameter mappings of data storage.
+	//
+	// example:
+	//
+	// key/value
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The information about how to perform data serialization and deserialization.
+	SerdeInfo *DLSerdeInfo `json:"SerdeInfo,omitempty" xml:"SerdeInfo,omitempty"`
+	// The information about the skewed column.
+	SkewedInfo *DLSkewedInfo `json:"SkewedInfo,omitempty" xml:"SkewedInfo,omitempty"`
+	// The description of the column based on which you want to sort query results.
+	SortCols []*DLOrder `json:"SortCols,omitempty" xml:"SortCols,omitempty" type:"Repeated"`
 }
 
 func (s DLStorageDescriptor) String() string {

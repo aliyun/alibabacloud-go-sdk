@@ -35,8 +35,7 @@ type ListProxySQLExecAuditLogResponseBody struct {
 	// example:
 	//
 	// Specified parameter StartTime is not valid.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The audit information about the database instance that is provided by the secure access proxy feature.
+	ErrorMessage             *string                                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ProxySQLExecAuditLogList *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList `json:"ProxySQLExecAuditLogList,omitempty" xml:"ProxySQLExecAuditLogList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -168,94 +167,18 @@ func (s *ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogList) Validate(
 }
 
 type ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog struct {
-	// Indicates the total number of rows returned after the SQL statement was executed. If an SELECT SQL statement is executed, the return value of this parameter indicates the total number of the queried data rows.
-	//
-	// example:
-	//
-	// 1
-	AffectRows *int64 `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
-	// The amount of time that is consumed to execute the SQL statement. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1324
-	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The execution status of the SQL statement. Valid values:
-	//
-	// 	- **FAIL**: The execution of the SQL statement fails.
-	//
-	// 	- **CANCEL**: The execution of the SQL statement is canceled.
-	//
-	// 	- **SUCCESS**: The SQL statement is executed.
-	//
-	// example:
-	//
-	// SUCCESS
-	ExecState *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
-	// The ID of the database instance.
-	//
-	// example:
-	//
-	// 4***
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the database instance.
-	//
-	// example:
-	//
-	// pc-uf662nrg017c6****.mysql.polardb.rds.aliyuncs.com:3306【test】
+	AffectRows   *int64  `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	ElapsedTime  *int64  `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	ExecState    *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The time at which the user executes the SQL statement on the database instance. The value of this parameter must be a timestamp that follows the UNIX time format.
-	//
-	// example:
-	//
-	// 1636876446000
-	OpTime *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// success
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The SQL statement that was executed.
-	//
-	// example:
-	//
-	// select 1;
-	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The type of the SQL statement. Valid values:
-	//
-	// 	- **SELECT**
-	//
-	// 	- **INSERT**
-	//
-	// 	- **DELETE**
-	//
-	// 	- **CREATE_TABLE**
-	//
-	// >  You can choose Operation Audit > Secure Access Proxy in the top navigation bar of the DMS console to view more types of SQL statements.
-	//
-	// example:
-	//
-	// SELECT
-	SQLType *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test_db
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 4****
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// testNickName
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	OpTime       *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SQL          *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	SQLType      *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
+	SchemaName   *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListProxySQLExecAuditLogResponseBodyProxySQLExecAuditLogListProxySQLExecAuditLog) String() string {

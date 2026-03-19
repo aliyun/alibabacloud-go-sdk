@@ -126,8 +126,7 @@ type GetDataExportPreCheckDetailResponseBodyPreCheckResult struct {
 	// example:
 	//
 	// true
-	IgnoreAffectRows *bool `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
-	// The list of pre-check details.
+	IgnoreAffectRows   *bool                                                                    `json:"IgnoreAffectRows,omitempty" xml:"IgnoreAffectRows,omitempty"`
 	PreCheckDetailList *GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailList `json:"PreCheckDetailList,omitempty" xml:"PreCheckDetailList,omitempty" type:"Struct"`
 }
 
@@ -201,18 +200,8 @@ func (s *GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailList
 }
 
 type GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailListPreCheckDetailList struct {
-	// The estimated number of data rows to be affected.
-	//
-	// example:
-	//
-	// 1
-	AffectRows *int64 `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
-	// The SQL statement.
-	//
-	// example:
-	//
-	// SELECT 	- FROM tmp_table LIMIT 1
-	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	AffectRows *int64  `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	SQL        *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
 }
 
 func (s GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailListPreCheckDetailList) String() string {

@@ -24,7 +24,6 @@ type iListDAGVersionsResponseBody interface {
 }
 
 type ListDAGVersionsResponseBody struct {
-	// The information about the published versions.
 	DagVersionList *ListDAGVersionsResponseBodyDagVersionList `json:"DagVersionList,omitempty" xml:"DagVersionList,omitempty" type:"Struct"`
 	// The error code returned if the request fails.
 	//
@@ -168,42 +167,12 @@ func (s *ListDAGVersionsResponseBodyDagVersionList) Validate() error {
 }
 
 type ListDAGVersionsResponseBodyDagVersionListDagVersion struct {
-	// The name of the task flow.
-	//
-	// example:
-	//
-	// Spark SQL
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
-	// The ID of the task flow owner.
-	//
-	// example:
-	//
-	// 51****
-	DagOwnerId *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
-	// The name of the task flow owner.
-	//
-	// example:
-	//
-	// name
+	DagName          *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId       *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
 	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
-	// The ID of the previously published version.
-	//
-	// example:
-	//
-	// 2****
-	LastVersionId *int64 `json:"LastVersionId,omitempty" xml:"LastVersionId,omitempty"`
-	// The description of the version.
-	//
-	// example:
-	//
-	// test_OSS
-	VersionComments *string `json:"VersionComments,omitempty" xml:"VersionComments,omitempty"`
-	// The ID of the version.
-	//
-	// example:
-	//
-	// 2****
-	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	LastVersionId    *int64  `json:"LastVersionId,omitempty" xml:"LastVersionId,omitempty"`
+	VersionComments  *string `json:"VersionComments,omitempty" xml:"VersionComments,omitempty"`
+	VersionId        *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListDAGVersionsResponseBodyDagVersionListDagVersion) String() string {

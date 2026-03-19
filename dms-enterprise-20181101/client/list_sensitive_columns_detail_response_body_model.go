@@ -39,8 +39,7 @@ type ListSensitiveColumnsDetailResponseBody struct {
 	// example:
 	//
 	// 7629888F-C9FB-4D16-A7D3-B443FE06FBD4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the sensitive field.
+	RequestId                  *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SensitiveColumnsDetailList *ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailList `json:"SensitiveColumnsDetailList,omitempty" xml:"SensitiveColumnsDetailList,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -151,70 +150,16 @@ func (s *ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailList) Valid
 }
 
 type ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailListSensitiveColumnsDetail struct {
-	// The description of the field.
-	//
-	// example:
-	//
-	// test
 	ColumnDescription *string `json:"ColumnDescription,omitempty" xml:"ColumnDescription,omitempty"`
-	// The name of the field.
-	//
-	// example:
-	//
-	// ColumnName_test
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The data type of the field.
-	//
-	// example:
-	//
-	// varchar(32)
-	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	// The ID of the database.
-	//
-	// example:
-	//
-	// 1860****
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The type of the database.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the database belongs.
-	//
-	// example:
-	//
-	// product
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// Indicates whether the database is a logical database. Valid values:
-	//
-	// 	- **true**: The database is a logical database.
-	//
-	// 	- **false**: The database is not a logical database.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// SchemaName_test
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used to search for the database.
-	//
-	// example:
-	//
-	// test@xxx:3306
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ColumnName        *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	ColumnType        *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	DbId              *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbType            *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType           *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic             *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	SchemaName        *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName        *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListSensitiveColumnsDetailResponseBodySensitiveColumnsDetailListSensitiveColumnsDetail) String() string {

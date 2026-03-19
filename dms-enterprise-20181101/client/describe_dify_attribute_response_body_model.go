@@ -23,6 +23,8 @@ type iDescribeDifyAttributeResponseBody interface {
 	GetRoot() *DescribeDifyAttributeResponseBodyRoot
 	SetSuccess(v bool) *DescribeDifyAttributeResponseBody
 	GetSuccess() *bool
+	SetTags(v []*DescribeDifyAttributeResponseBodyTags) *DescribeDifyAttributeResponseBody
+	GetTags() []*DescribeDifyAttributeResponseBodyTags
 }
 
 type DescribeDifyAttributeResponseBody struct {
@@ -50,7 +52,8 @@ type DescribeDifyAttributeResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tags    []*DescribeDifyAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDifyAttributeResponseBody) String() string {
@@ -89,6 +92,10 @@ func (s *DescribeDifyAttributeResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
+func (s *DescribeDifyAttributeResponseBody) GetTags() []*DescribeDifyAttributeResponseBodyTags {
+	return s.Tags
+}
+
 func (s *DescribeDifyAttributeResponseBody) SetCode(v string) *DescribeDifyAttributeResponseBody {
 	s.Code = &v
 	return s
@@ -124,10 +131,24 @@ func (s *DescribeDifyAttributeResponseBody) SetSuccess(v bool) *DescribeDifyAttr
 	return s
 }
 
+func (s *DescribeDifyAttributeResponseBody) SetTags(v []*DescribeDifyAttributeResponseBodyTags) *DescribeDifyAttributeResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeDifyAttributeResponseBody) Validate() error {
 	if s.Root != nil {
 		if err := s.Root.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -136,11 +157,36 @@ func (s *DescribeDifyAttributeResponseBody) Validate() error {
 type DescribeDifyAttributeResponseBodyRoot struct {
 	// example:
 	//
+	// DIFY
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
 	// 92748163-af62-4ca4-ad85-1****
-	AppUuid           *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	AppUuid *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// ABCD
 	BillingInstanceId *string `json:"BillingInstanceId,omitempty" xml:"BillingInstanceId,omitempty"`
-	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// abc1-def2-ghi3-jkl4
+	DifyInstanceId *string `json:"DifyInstanceId,omitempty" xml:"DifyInstanceId,omitempty"`
+	// example:
+	//
+	// This is dify instance
+	DifyInstanceName *string `json:"DifyInstanceName,omitempty" xml:"DifyInstanceName,omitempty"`
+	// example:
+	//
+	// 20251201
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// cn-chengdu
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// 1
@@ -156,7 +202,10 @@ type DescribeDifyAttributeResponseBodyRoot struct {
 	// example:
 	//
 	// DEPLOYED
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ESSD
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// example:
 	//
@@ -184,6 +233,10 @@ func (s DescribeDifyAttributeResponseBodyRoot) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDifyAttributeResponseBodyRoot) GetAppType() *string {
+	return s.AppType
+}
+
 func (s *DescribeDifyAttributeResponseBodyRoot) GetAppUuid() *string {
 	return s.AppUuid
 }
@@ -196,8 +249,20 @@ func (s *DescribeDifyAttributeResponseBodyRoot) GetChargeType() *string {
 	return s.ChargeType
 }
 
+func (s *DescribeDifyAttributeResponseBodyRoot) GetDifyInstanceId() *string {
+	return s.DifyInstanceId
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) GetDifyInstanceName() *string {
+	return s.DifyInstanceName
+}
+
 func (s *DescribeDifyAttributeResponseBodyRoot) GetExpireTime() *int64 {
 	return s.ExpireTime
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *DescribeDifyAttributeResponseBodyRoot) GetReplicas() *string {
@@ -236,6 +301,11 @@ func (s *DescribeDifyAttributeResponseBodyRoot) GetZoneId() *string {
 	return s.ZoneId
 }
 
+func (s *DescribeDifyAttributeResponseBodyRoot) SetAppType(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.AppType = &v
+	return s
+}
+
 func (s *DescribeDifyAttributeResponseBodyRoot) SetAppUuid(v string) *DescribeDifyAttributeResponseBodyRoot {
 	s.AppUuid = &v
 	return s
@@ -251,8 +321,23 @@ func (s *DescribeDifyAttributeResponseBodyRoot) SetChargeType(v string) *Describ
 	return s
 }
 
+func (s *DescribeDifyAttributeResponseBodyRoot) SetDifyInstanceId(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.DifyInstanceId = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) SetDifyInstanceName(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.DifyInstanceName = &v
+	return s
+}
+
 func (s *DescribeDifyAttributeResponseBodyRoot) SetExpireTime(v int64) *DescribeDifyAttributeResponseBodyRoot {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyRoot) SetRegionId(v string) *DescribeDifyAttributeResponseBodyRoot {
+	s.RegionId = &v
 	return s
 }
 
@@ -302,5 +387,46 @@ func (s *DescribeDifyAttributeResponseBodyRoot) SetZoneId(v string) *DescribeDif
 }
 
 func (s *DescribeDifyAttributeResponseBodyRoot) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDifyAttributeResponseBodyTags struct {
+	// example:
+	//
+	// Key
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// Value
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeDifyAttributeResponseBodyTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDifyAttributeResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDifyAttributeResponseBodyTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *DescribeDifyAttributeResponseBodyTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *DescribeDifyAttributeResponseBodyTags) SetTagKey(v string) *DescribeDifyAttributeResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyTags) SetTagValue(v string) *DescribeDifyAttributeResponseBodyTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *DescribeDifyAttributeResponseBodyTags) Validate() error {
 	return dara.Validate(s)
 }

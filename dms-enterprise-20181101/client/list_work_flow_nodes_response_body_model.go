@@ -45,8 +45,7 @@ type ListWorkFlowNodesResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of approval nodes.
+	Success       *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 	WorkflowNodes *ListWorkFlowNodesResponseBodyWorkflowNodes `json:"WorkflowNodes,omitempty" xml:"WorkflowNodes,omitempty" type:"Struct"`
 }
 
@@ -147,48 +146,13 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodes) Validate() error {
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode struct {
-	// The details about approvers.
-	AuditUsers *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers `json:"AuditUsers,omitempty" xml:"AuditUsers,omitempty" type:"Struct"`
-	// The description of the approval template.
-	//
-	// example:
-	//
-	// test
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the creator. This ID is different from the ID of the Alibaba Cloud account of the creator.
-	//
-	// example:
-	//
-	// 123
-	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// The name of the user who creates the approval node.
-	//
-	// example:
-	//
-	// test
-	CreateUserNickName *string `json:"CreateUserNickName,omitempty" xml:"CreateUserNickName,omitempty"`
-	// The ID of the approval node.
-	//
-	// example:
-	//
-	// 123
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the approval node.
-	//
-	// example:
-	//
-	// test
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The type of the approval node. Valid values:
-	//
-	// 	- SYS: The approval node is predefined by the system.
-	//
-	// 	- USER_LIST: The approval node is created by a user.
-	//
-	// example:
-	//
-	// SYS
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	AuditUsers         *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers `json:"AuditUsers,omitempty" xml:"AuditUsers,omitempty" type:"Struct"`
+	Comment            *string                                                           `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateUserId       *int64                                                            `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserNickName *string                                                           `json:"CreateUserNickName,omitempty" xml:"CreateUserNickName,omitempty"`
+	NodeId             *int64                                                            `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName           *string                                                           `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType           *string                                                           `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNode) String() string {
@@ -306,24 +270,9 @@ func (s *ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsers) Valid
 }
 
 type ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser struct {
-	// The nickname of the approver.
-	//
-	// example:
-	//
-	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The real name of the approver.
-	//
-	// example:
-	//
-	// test
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	// The ID of the approver. The ID is different from the ID of the Alibaba Cloud account of the approver.
-	//
-	// example:
-	//
-	// 123
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListWorkFlowNodesResponseBodyWorkflowNodesWorkflowNodeAuditUsersAuditUser) String() string {

@@ -22,7 +22,6 @@ type iGetDataCorrectBackupFilesResponseBody interface {
 }
 
 type GetDataCorrectBackupFilesResponseBody struct {
-	// The download URL of the backup file for the ticket.
 	DataCorrectBackupFiles *GetDataCorrectBackupFilesResponseBodyDataCorrectBackupFiles `json:"DataCorrectBackupFiles,omitempty" xml:"DataCorrectBackupFiles,omitempty" type:"Struct"`
 	// The error code.
 	//

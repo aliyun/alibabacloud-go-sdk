@@ -120,8 +120,7 @@ type PreviewWorkflowResponseBodyWorkflowDetail struct {
 	// The remarks of the approval template.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The name of the approval template.
-	WfCateName *string `json:"WfCateName,omitempty" xml:"WfCateName,omitempty"`
-	// The approval nodes.
+	WfCateName       *string                                                    `json:"WfCateName,omitempty" xml:"WfCateName,omitempty"`
 	WorkflowNodeList *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList `json:"WorkflowNodeList,omitempty" xml:"WorkflowNodeList,omitempty" type:"Struct"`
 }
 
@@ -204,30 +203,10 @@ func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeList) Validate() e
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode struct {
-	// The approvers.
 	AuditUserList *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserList `json:"AuditUserList,omitempty" xml:"AuditUserList,omitempty" type:"Struct"`
-	// The remarks of the approval node.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The name of the approval node.
-	//
-	// example:
-	//
-	// Owner
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The type of the approval node.
-	//
-	// Valid values:
-	//
-	// 	- USER_LIST: The approval node is created by a user.
-	//
-	// 	- UNKNOWN: The source of the approval node is unknown.
-	//
-	// 	- SYS: The approval node is predefined by the system.
-	//
-	// example:
-	//
-	// SYS
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Comment       *string                                                                             `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	NodeName      *string                                                                             `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType      *string                                                                             `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNode) String() string {
@@ -318,24 +297,9 @@ func (s *PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAu
 }
 
 type PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser struct {
-	// The nickname of the approver.
-	//
-	// example:
-	//
-	// Owner
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The name of the approver.
-	//
-	// example:
-	//
-	// db_test
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	// The ID of the approver.
-	//
-	// example:
-	//
-	// 16***
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s PreviewWorkflowResponseBodyWorkflowDetailWorkflowNodeListWorkflowNodeAuditUserListAuditUser) String() string {

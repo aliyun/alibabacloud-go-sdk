@@ -51,8 +51,7 @@ type ListTablesResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the tables.
+	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableList *ListTablesResponseBodyTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Struct"`
 	// The total number of tables that meet the query conditions.
 	//
@@ -168,76 +167,19 @@ func (s *ListTablesResponseBodyTableList) Validate() error {
 }
 
 type ListTablesResponseBodyTableListTable struct {
-	// The ID of the physical database.
-	//
-	// example:
-	//
-	// 1860****
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The description of the table.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The encoding format of the table.
-	//
-	// example:
-	//
-	// utf8
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The engine of the table.
-	//
-	// example:
-	//
-	// InnoDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The number of rows in the table. This is a statistical value and does not indicate the actual number of rows.
-	//
-	// example:
-	//
-	// 10085
-	NumRows *int64 `json:"NumRows,omitempty" xml:"NumRows,omitempty"`
-	// The ID list of the table owners.
-	OwnerIdList *ListTablesResponseBodyTableListTableOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nickname list of the table owners.
-	OwnerNameList *ListTablesResponseBodyTableListTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The storage space that is occupied by the table. This is a statistical value and does not indicate the accurate storage space. Unit: MB.
-	//
-	// example:
-	//
-	// 1024
-	StoreCapacity *int64 `json:"StoreCapacity,omitempty" xml:"StoreCapacity,omitempty"`
-	// The GUID of the table in DMS.
-	//
-	// example:
-	//
-	// IDB_44743****.qntest.consumption_records
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The ID of the table.
-	//
-	// example:
-	//
-	// 44743****
-	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// consumption_records
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The database in which the table resides.
-	//
-	// example:
-	//
-	// qntest
-	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
-	// The type of the table. Default value: NORMAL.
-	//
-	// example:
-	//
-	// NORMAL
-	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	DatabaseId      *string                                            `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Description     *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Encoding        *string                                            `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	Engine          *string                                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	NumRows         *int64                                             `json:"NumRows,omitempty" xml:"NumRows,omitempty"`
+	OwnerIdList     *ListTablesResponseBodyTableListTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	OwnerNameList   *ListTablesResponseBodyTableListTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	StoreCapacity   *int64                                             `json:"StoreCapacity,omitempty" xml:"StoreCapacity,omitempty"`
+	TableGuid       *string                                            `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableId         *string                                            `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName       *string                                            `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSchemaName *string                                            `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+	TableType       *string                                            `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
 func (s ListTablesResponseBodyTableListTable) String() string {

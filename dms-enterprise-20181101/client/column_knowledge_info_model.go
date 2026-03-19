@@ -24,12 +24,18 @@ type iColumnKnowledgeInfo interface {
 }
 
 type ColumnKnowledgeInfo struct {
+	// User-edited business knowledge content, which can be modified via the EditMetaKnowledgeAsset API.
 	AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+	// The last modified time of the field.
 	AssetModifiedGmt *string `json:"AssetModifiedGmt,omitempty" xml:"AssetModifiedGmt,omitempty"`
-	ColumnName       *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	ColumnType       *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Position         *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The name of the field.
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The data type of the field.
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// Field description in the CREATE TABLE statement.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The field order in the CREATE TABLE statement.
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
 }
 
 func (s ColumnKnowledgeInfo) String() string {

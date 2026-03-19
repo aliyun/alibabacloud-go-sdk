@@ -35,8 +35,7 @@ type GetOpLogResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details of the operation log.
+	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	OpLogDetails *GetOpLogResponseBodyOpLogDetails `json:"OpLogDetails,omitempty" xml:"OpLogDetails,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -168,62 +167,14 @@ func (s *GetOpLogResponseBodyOpLogDetails) Validate() error {
 }
 
 type GetOpLogResponseBodyOpLogDetailsOpLogDetail struct {
-	// The endpoint of the database instance.
-	//
-	// >
-	//
-	// 	- This parameter is valid only for database instances of the LocalInstance type.
-	//
-	// 	- This parameter is valid only for operations on the functional modules related to tasks.
-	//
-	// example:
-	//
-	// dmstest_prod_database@dmstest.rds... [Test instance]
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The functional module for which the operation log is queried.
-	//
-	// example:
-	//
-	// SECURITY_RULE
-	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// The details of the operation.
-	//
-	// example:
-	//
-	// SELECT 	- FROM `orders` \\n LIMIT 20
+	Database  *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Module    *string `json:"Module,omitempty" xml:"Module,omitempty"`
 	OpContent *string `json:"OpContent,omitempty" xml:"OpContent,omitempty"`
-	// The time when the operation was performed.
-	//
-	// example:
-	//
-	// 2022-03-28 16:45:19
-	OpTime *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
-	// The ID of the user who performed the operation.
-	//
-	// example:
-	//
-	// 51****
-	OpUserId *int64 `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The ID of the ticket or task.
-	//
-	// >  This parameter is valid only for operations on the functional modules related to tasks and the task management module in system management.
-	//
-	// example:
-	//
-	// 509****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 22275482072787****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The display name of the user.
-	//
-	// example:
-	//
-	// test_name
-	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+	OpTime    *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	OpUserId  *int64  `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick  *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
 func (s GetOpLogResponseBodyOpLogDetailsOpLogDetail) String() string {

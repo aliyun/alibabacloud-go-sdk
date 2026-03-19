@@ -49,9 +49,8 @@ type ListTasksInTaskFlowResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The tasks in the task flow.
-	Tasks *ListTasksInTaskFlowResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	Success *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tasks   *ListTasksInTaskFlowResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 }
 
 func (s ListTasksInTaskFlowResponseBody) String() string {
@@ -151,53 +150,13 @@ func (s *ListTasksInTaskFlowResponseBodyTasks) Validate() error {
 }
 
 type ListTasksInTaskFlowResponseBodyTasksTask struct {
-	// The position of the node on the Directed Acyclic Graph (DAG).
-	//
-	// example:
-	//
-	// {\\"x\\":435,\\"y\\":192,\\"layoutType\\":\\"Horizontal\\"}
-	GraphParam *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
-	// The advanced configuration for the node.
-	//
-	// example:
-	//
-	// {     "rerun":{    "rerunEnable":true,      "rerunCount":1,   "rerunInterval":10 //  }}
-	NodeConfig *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
-	// The configuration for the node.
-	//
-	// example:
-	//
-	// {     "dbId":123***,  "sql":"",    "dbType":"polardb" }
-	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// 92***
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// Cross-Database Spark SQL-1
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The output variables for the task.
-	//
-	// example:
-	//
-	// {  "outputs":[{ { "row":0, "column":-1,                  "combiner":"," }            "extractMethod":"{\\"row\\":0,\\"column\\":-1,\\"combiner\\":\\",\\"}",         "variableName":"var",    "description":"For demo"} ] }
-	NodeOutput *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
-	// The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
-	//
-	// example:
-	//
-	// SPARK_SQL
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The time variables configured for the node.
-	//
-	// example:
-	//
-	// {\\"variables\\":[{\\"name\\":\\"test1\\",\\"pattern\\":\\"yyyy-MM-dd
+	GraphParam    *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
+	NodeConfig    *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
+	NodeContent   *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeOutput    *string `json:"NodeOutput,omitempty" xml:"NodeOutput,omitempty"`
+	NodeType      *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
 }
 

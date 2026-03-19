@@ -53,8 +53,7 @@ type ListDatabaseUserPermssionsResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of user permissions.
+	TotalCount      *int64                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	UserPermissions *ListDatabaseUserPermssionsResponseBodyUserPermissions `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty" type:"Struct"`
 }
 
@@ -164,92 +163,21 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissions) Validate() error
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission struct {
-	// The alias of the database instance.
-	//
-	// example:
-	//
-	// instance_alias
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The name of a column.
-	//
-	// example:
-	//
-	// column_name
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The ID of the database.
-	//
-	// example:
-	//
-	// 1234
-	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of resources on which the user has permissions.
-	//
-	// example:
-	//
-	// DATABASE
-	DsType *string `json:"DsType,omitempty" xml:"DsType,omitempty"`
-	// The type of the environment to which the database belongs.
-	//
-	// example:
-	//
-	// product
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 1443
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the database is a logical database.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The details of user permissions.
-	PermDetails *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// xxx@xxxx:3306
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used to search for the database.
-	//
-	// example:
-	//
-	// xxx
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The ID of the table.
-	//
-	// example:
-	//
-	// 42345
-	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// table_name
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 14324
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// user_nick_name
-	UserNickName *string `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+	Alias        *string                                                                         `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	ColumnName   *string                                                                         `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbId         *string                                                                         `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbType       *string                                                                         `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DsType       *string                                                                         `json:"DsType,omitempty" xml:"DsType,omitempty"`
+	EnvType      *string                                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	InstanceId   *string                                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Logic        *bool                                                                           `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	PermDetails  *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
+	SchemaName   *string                                                                         `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName   *string                                                                         `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	TableId      *string                                                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName    *string                                                                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	UserId       *string                                                                         `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNickName *string                                                                         `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
 }
 
 func (s ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermission) String() string {
@@ -439,47 +367,11 @@ func (s *ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPerm
 }
 
 type ListDatabaseUserPermssionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {
-	// The time when the permission was created.
-	//
-	// example:
-	//
-	// 2019-12-12 00:00:00
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the permissions expire.
-	//
-	// example:
-	//
-	// 2020-12-12 00:00:00
-	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The extra information. This parameter is reserved.
-	//
-	// example:
-	//
-	// DEFAULT
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// The description of the entity that authorizes the permission.
-	//
-	// example:
-	//
-	// xxx grant
-	OriginFrom *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
-	// The type of the permission. Valid values:
-	//
-	// 	- QUERY: the query permissions
-	//
-	// 	- EXPORT: the export permissions
-	//
-	// 	- CORRECT: the change permissions
-	//
-	// example:
-	//
-	// QUERY
-	PermType *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	// The ID of the authorization record.
-	//
-	// example:
-	//
-	// 13434
+	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	OriginFrom   *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
+	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
 	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
 }
 

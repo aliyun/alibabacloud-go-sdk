@@ -28,7 +28,6 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The dataset.
 	Data *ListWorkspacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -202,120 +201,25 @@ func (s *ListWorkspacesResponseBodyData) Validate() error {
 }
 
 type ListWorkspacesResponseBodyDataBaseWorkspaces struct {
-	// Whether the current user has joined the workspace.
-	//
-	// example:
-	//
-	// true
-	AlreadyJoined *bool `json:"AlreadyJoined,omitempty" xml:"AlreadyJoined,omitempty"`
-	// The ID of the creator.
-	//
-	// example:
-	//
-	// 123
-	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The nickname of the creator.
-	//
-	// example:
-	//
-	// work*****
-	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	// The Alibaba Cloud account UID of the creator.
-	//
-	// example:
-	//
-	// 1344****
-	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
-	// The description of the workspace.
-	//
-	// example:
-	//
-	// Test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2025-01-01 00:00:00
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 2025-01-01 00:00:00
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The name of the workspace.
-	//
-	// example:
-	//
-	// workspace-xxxx
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner ID.
-	//
-	// example:
-	//
-	// 123****
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The nickname of the owner.
-	//
-	// example:
-	//
-	// hel****
-	OwnerNickName *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
-	// The Alibaba Cloud UID of the owner.
-	//
-	// example:
-	//
-	// 15608564799****
-	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the service account.
-	//
-	// example:
-	//
-	// 12345
-	ServiceAccountId *int64 `json:"ServiceAccountId,omitempty" xml:"ServiceAccountId,omitempty"`
-	// The nickname of the service account.
-	//
-	// example:
-	//
-	// testname
+	AlreadyJoined          *bool   `json:"AlreadyJoined,omitempty" xml:"AlreadyJoined,omitempty"`
+	CreatorId              *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName        *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	CreatorUid             *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate              *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerNickName          *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
+	OwnerUid               *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServiceAccountId       *int64  `json:"ServiceAccountId,omitempty" xml:"ServiceAccountId,omitempty"`
 	ServiceAccountNickName *string `json:"ServiceAccountNickName,omitempty" xml:"ServiceAccountNickName,omitempty"`
-	// The Alibaba Cloud account UID of the service account.
-	//
-	// example:
-	//
-	// 1422****
-	ServiceAccountUid *string `json:"ServiceAccountUid,omitempty" xml:"ServiceAccountUid,omitempty"`
-	// The ID of the tenant to which the workspace belongs.
-	//
-	// example:
-	//
-	// 23456
-	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The VPC ID.
-	//
-	// example:
-	//
-	// vpc-25fl3qjqb****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The workspace ID.
-	//
-	// example:
-	//
-	// 8652340494****
-	WorkspaceId *int64 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The name of the workspace.
-	//
-	// example:
-	//
-	// test-workspace
-	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	ServiceAccountUid      *string `json:"ServiceAccountUid,omitempty" xml:"ServiceAccountUid,omitempty"`
+	TenantId               *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	VpcId                  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WorkspaceId            *int64  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName          *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s ListWorkspacesResponseBodyDataBaseWorkspaces) String() string {

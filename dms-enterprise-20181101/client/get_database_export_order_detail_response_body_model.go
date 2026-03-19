@@ -363,12 +363,9 @@ type GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoCon
 	// example:
 	//
 	// DATA
-	ExportContent *string `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
-	// The type of schema that was exported.
-	ExportTypes *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Struct"`
-	// The extension options of the SQL script.
-	SQLExtOption *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Struct"`
-	// The tables that were exported from the database.
+	ExportContent  *string                                                                                       `json:"ExportContent,omitempty" xml:"ExportContent,omitempty"`
+	ExportTypes    *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigExportTypes    `json:"ExportTypes,omitempty" xml:"ExportTypes,omitempty" type:"Struct"`
+	SQLExtOption   *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSQLExtOption   `json:"SQLExtOption,omitempty" xml:"SQLExtOption,omitempty" type:"Struct"`
 	SelectedTables *GetDatabaseExportOrderDetailResponseBodyDatabaseExportOrderDetailKeyInfoConfigSelectedTables `json:"SelectedTables,omitempty" xml:"SelectedTables,omitempty" type:"Struct"`
 	// The format in which the database was exported. Valid values:
 	//

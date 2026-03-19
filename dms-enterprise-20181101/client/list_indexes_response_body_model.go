@@ -33,9 +33,8 @@ type ListIndexesResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details of indexes.
-	IndexList *ListIndexesResponseBodyIndexList `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Struct"`
+	ErrorMessage *string                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	IndexList    *ListIndexesResponseBodyIndexList `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -147,46 +146,11 @@ func (s *ListIndexesResponseBodyIndexList) Validate() error {
 }
 
 type ListIndexesResponseBodyIndexListIndex struct {
-	// The description of the index.
-	//
-	// example:
-	//
-	// test
 	IndexComment *string `json:"IndexComment,omitempty" xml:"IndexComment,omitempty"`
-	// The ID of the index.
-	//
-	// example:
-	//
-	// 1
-	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	// The name of the index.
-	//
-	// example:
-	//
-	// idx_test
-	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
-	// The type of the index. Valid values:
-	//
-	// 	- Primary
-	//
-	// 	- Unique
-	//
-	// 	- Normal
-	//
-	// 	- FullText
-	//
-	// 	- Spatial
-	//
-	// example:
-	//
-	// Primary
-	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
-	// The ID of the table.
-	//
-	// example:
-	//
-	// 1
-	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	IndexId      *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	IndexName    *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	IndexType    *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	TableId      *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
 }
 
 func (s ListIndexesResponseBodyIndexListIndex) String() string {

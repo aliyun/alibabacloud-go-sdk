@@ -26,7 +26,6 @@ type iListAuthorityTemplateResponseBody interface {
 }
 
 type ListAuthorityTemplateResponseBody struct {
-	// The permission templates.
 	AuthorityTemplateViewList *ListAuthorityTemplateResponseBodyAuthorityTemplateViewList `json:"AuthorityTemplateViewList,omitempty" xml:"AuthorityTemplateViewList,omitempty" type:"Struct"`
 	// The error code that is returned if the request failed.
 	//
@@ -185,28 +184,11 @@ func (s *ListAuthorityTemplateResponseBodyAuthorityTemplateViewList) Validate() 
 }
 
 type ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplateView struct {
-	// The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
-	//
-	// example:
-	//
-	// 2023-10-26 11:37:47
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the permission template.
-	//
-	// example:
-	//
-	// 522****
-	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The description of the permission template.
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatorId   *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the permission template.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the permission template.
-	//
-	// example:
-	//
-	// 2592
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TemplateId  *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplateView) String() string {

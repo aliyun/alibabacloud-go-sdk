@@ -16,8 +16,18 @@ type iDLOrder interface {
 }
 
 type DLOrder struct {
-	Col   *string `json:"Col,omitempty" xml:"Col,omitempty"`
-	Order *int32  `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// col1
+	Col *string `json:"Col,omitempty" xml:"Col,omitempty"`
+	// The position of the column in the sort.
+	//
+	// example:
+	//
+	// 1
+	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
 func (s DLOrder) String() string {

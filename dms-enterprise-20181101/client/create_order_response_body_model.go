@@ -22,7 +22,6 @@ type iCreateOrderResponseBody interface {
 }
 
 type CreateOrderResponseBody struct {
-	// The ID of the ticket.
 	CreateOrderResult *CreateOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
 	// The error code.
 	//

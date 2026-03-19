@@ -41,8 +41,7 @@ type SearchTableResponseBody struct {
 	// example:
 	//
 	// 1489257F-1B5D-4B5B-89EF-923C12CEEBD1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the tables.
+	RequestId       *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SearchTableList *SearchTableResponseBodySearchTableList `json:"SearchTableList,omitempty" xml:"SearchTableList,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	//
@@ -164,108 +163,21 @@ func (s *SearchTableResponseBodySearchTableList) Validate() error {
 }
 
 type SearchTableResponseBodySearchTableListSearchTable struct {
-	// The name that is used to search for the database to which the table belongs.
-	//
-	// example:
-	//
-	// test
-	DBSearchName *string `json:"DBSearchName,omitempty" xml:"DBSearchName,omitempty"`
-	// The ID of the database to which the table belongs.
-	//
-	// example:
-	//
-	// 1
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The type of the database. Valid values:
-	//
-	// 	- **MySQL**
-	//
-	// 	- **SQLServer**
-	//
-	// 	- **PostgreSQL**
-	//
-	// 	- **Oracle**
-	//
-	// 	- **DRDS**
-	//
-	// 	- **OceanBase**
-	//
-	// 	- **Mongo**
-	//
-	// 	- **Redis**
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The description of the table.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The encoding format of the table.
-	//
-	// example:
-	//
-	// utf8
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The engine of the table.
-	//
-	// example:
-	//
-	// innodb
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The type of the environment to which the database belongs.
-	//
-	// example:
-	//
-	// test
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// Indicates whether the table is a logical table. Valid values:
-	//
-	// 	- **true**: The table is a logical table.
-	//
-	// 	- **false**: The table is not a logical table.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The IDs of the table owners.
-	OwnerIdList *SearchTableResponseBodySearchTableListSearchTableOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the table owners.
-	OwnerNameList *SearchTableResponseBodySearchTableListSearchTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The GUID of the table.
-	//
-	// example:
-	//
-	// IDB_L_9032.db-test.yuyang_test
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The ID of the table.
-	//
-	// example:
-	//
-	// 1
-	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test_table
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The name of the database to which the table belongs.
-	//
-	// example:
-	//
-	// test@xxx.xxx.xxx.xxx:3306
-	TableSchemaName *string `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
+	DBSearchName    *string                                                         `json:"DBSearchName,omitempty" xml:"DBSearchName,omitempty"`
+	DatabaseId      *string                                                         `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DbName          *string                                                         `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DbType          *string                                                         `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description     *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Encoding        *string                                                         `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	Engine          *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EnvType         *string                                                         `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic           *bool                                                           `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OwnerIdList     *SearchTableResponseBodySearchTableListSearchTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
+	OwnerNameList   *SearchTableResponseBodySearchTableListSearchTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
+	TableGuid       *string                                                         `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableId         *string                                                         `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName       *string                                                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSchemaName *string                                                         `json:"TableSchemaName,omitempty" xml:"TableSchemaName,omitempty"`
 }
 
 func (s SearchTableResponseBodySearchTableListSearchTable) String() string {

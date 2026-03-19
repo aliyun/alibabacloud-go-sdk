@@ -24,7 +24,6 @@ type iListUserOwnedResourcesResponseBody interface {
 }
 
 type ListUserOwnedResourcesResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
 	Data *ListUserOwnedResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//
@@ -164,88 +163,19 @@ func (s *ListUserOwnedResourcesResponseBodyData) Validate() error {
 }
 
 type ListUserOwnedResourcesResponseBodyDataResourceList struct {
-	// The alias of the instance.
-	//
-	// example:
-	//
-	// DMS_GYX_TESTupdata
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The ID of the database in DMS.
-	//
-	// example:
-	//
-	// 29697059
-	DbId *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The ID of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// 876XXX
+	Alias        *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DbId         *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The database engine type. For more information about the valid values of the DbType parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
-	//
-	// example:
-	//
-	// MySQL
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the database instance belongs.
-	//
-	// example:
-	//
-	// product
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The endpoint of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// rm-wz98bw60x1i1303c5.mysql.rds.aliyuncs.com
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 291594
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the database is a logical database. Valid values:
-	//
-	// 	- **true**: The database is a logical database
-	//
-	// 	- **false**: The database is a physical database.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The connection port of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// 6379
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// as_task_engine
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The query name of the database.
-	//
-	// example:
-	//
-	// dtstest [dtstest_dms]
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The table ID.
-	//
-	// example:
-	//
-	// 1760934555
-	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// addepmap
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType      *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	Port         *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	SchemaName   *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName   *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	TableId      *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListUserOwnedResourcesResponseBodyDataResourceList) String() string {

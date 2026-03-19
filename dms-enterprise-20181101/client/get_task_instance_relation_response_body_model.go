@@ -33,9 +33,8 @@ type GetTaskInstanceRelationResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The information about the nodes in the execution record of the task flow.
-	NodeList *GetTaskInstanceRelationResponseBodyNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Struct"`
+	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NodeList     *GetTaskInstanceRelationResponseBodyNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -151,72 +150,15 @@ func (s *GetTaskInstanceRelationResponseBodyNodeList) Validate() error {
 }
 
 type GetTaskInstanceRelationResponseBodyNodeListNode struct {
-	// The business time of the node.
-	//
-	// example:
-	//
-	// 2021-11-09 14:37:26
 	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
-	// The time when the execution of the task flow was complete. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
-	//
-	// example:
-	//
-	// 2021-11-11 14:38:57
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The amount of time consumed for running the node. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 170655
-	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The ID of the execution record of the task flow.
-	//
-	// example:
-	//
-	// 14059
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The description of the task.
-	//
-	// example:
-	//
-	// test
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// 14059
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// Spark SQL-1
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
-	//
-	// example:
-	//
-	// 36
-	NodeType *int32 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The status of the node. Valid values:
-	//
-	// 	- **0**: The node is waiting to be scheduled.
-	//
-	// 	- **1**: The node is running.
-	//
-	// 	- **2**: The node is suspended.
-	//
-	// 	- **3**: The node failed to run.
-	//
-	// 	- **4**: The node is run.
-	//
-	// 	- **5**: The node is complete.
-	//
-	// example:
-	//
-	// 4
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime  *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType     *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTaskInstanceRelationResponseBodyNodeListNode) String() string {

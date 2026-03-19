@@ -35,16 +35,14 @@ type ListLhTaskFlowAndScenarioResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The task flows in the default business scenario.
-	RawDAGList *ListLhTaskFlowAndScenarioResponseBodyRawDAGList `json:"RawDAGList,omitempty" xml:"RawDAGList,omitempty" type:"Struct"`
+	ErrorMessage *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RawDAGList   *ListLhTaskFlowAndScenarioResponseBodyRawDAGList `json:"RawDAGList,omitempty" xml:"RawDAGList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 48602B78-0DDF-414C-8688-70CAB6070115
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task flows in other business scenarios.
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScenarioDAGList *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList `json:"ScenarioDAGList,omitempty" xml:"ScenarioDAGList,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
@@ -169,122 +167,22 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGList) Validate() error {
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag struct {
-	// Indicates whether the task flow can be modified. Valid values:
-	//
-	// 	- **true**: The task flow can be modified.
-	//
-	// 	- **false**: The task flow cannot be modified.
-	//
-	// example:
-	//
-	// true
-	CanEdit *bool `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
-	// The ID of the user who creates the task flow.
-	//
-	// example:
-	//
-	// 51****
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the user who creates the workspace.
-	//
-	// example:
-	//
-	// Creator_Name
-	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	// The name of the task flow.
-	//
-	// example:
-	//
-	// Dag_Name
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
-	// The user ID of the task flow owner.
-	//
-	// example:
-	//
-	// 51****
-	DagOwnerId *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
-	// The name of the task flow owner.
-	//
-	// example:
-	//
-	// Owner_Name
-	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
-	// The extended field. No meaning is specified for this field.
-	//
-	// example:
-	//
-	// -
-	DataFlowId *int64 `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
-	// The extended field. No meaning is specified for this field.
-	//
-	// example:
-	//
-	// -
-	DemoId *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
-	// The ID of the latest deployment record.
-	//
-	// example:
-	//
-	// 12**
-	DeployId *int64 `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 134137****
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the task flow is deleted. Valid values:
-	//
-	// 	- **true**: deleted
-	//
-	// 	- **false**: not deleted
-	//
-	// example:
-	//
-	// false
-	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The status of the latest execution. Valid values:
-	//
-	// 	- **0**: invalid
-	//
-	// 	- **1**: scheduling disabled
-	//
-	// 	- **2**: waiting to be scheduled
-	//
-	// example:
-	//
-	// 0
-	LatestInstanceStatus *int32 `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
-	// The time when the latest execution record was generated.
-	//
-	// example:
-	//
-	// 2022-04-14
-	LatestInstanceTime *int32 `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
-	// The ID of the business scenario.
-	//
-	// example:
-	//
-	// 2**
-	ScenarioId *int64 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// The ID of the workspace.
-	//
-	// example:
-	//
-	// 1
-	SpaceId *int64 `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// The status of the task flow. Valid values:
-	//
-	// 	- **0**: invalid
-	//
-	// 	- **1**: scheduling disabled
-	//
-	// 	- **2**: waiting to be scheduled
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagName              *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId           *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DataFlowId           *int64  `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	DemoId               *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDeleted            *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *int32  `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	ScenarioId           *int64  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	SpaceId              *int64  `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) String() string {
@@ -478,9 +376,7 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) Validate() error 
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG struct {
-	// The list of task flows.
-	DagList *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList `json:"DagList,omitempty" xml:"DagList,omitempty" type:"Struct"`
-	// The information about the business scenario.
+	DagList  *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList  `json:"DagList,omitempty" xml:"DagList,omitempty" type:"Struct"`
 	Scenario *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
 }
 
@@ -559,122 +455,22 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList)
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag struct {
-	// Indicates whether the task flow can be modified. Valid values:
-	//
-	// - **true**: The task flow can be modified.
-	//
-	// - **false**: The task flow cannot be modified.
-	//
-	// example:
-	//
-	// true
-	CanEdit *bool `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
-	// The ID of the user who creates the task flow.
-	//
-	// example:
-	//
-	// 51****
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the user who creates the workspace.
-	//
-	// example:
-	//
-	// Creator_Name
-	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	// The name of the task flow.
-	//
-	// example:
-	//
-	// Dag_Name
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
-	// The user ID of the task flow owner.
-	//
-	// example:
-	//
-	// 51****
-	DagOwnerId *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
-	// The name of the task flow owner.
-	//
-	// example:
-	//
-	// Owner_Name
-	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
-	// The extended field. No meaning is specified for this field.
-	//
-	// example:
-	//
-	// -
-	DataFlowId *int64 `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
-	// The extended field. No meaning is specified for this field.
-	//
-	// example:
-	//
-	// -
-	DemoId *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
-	// The ID of the latest deployment record.
-	//
-	// example:
-	//
-	// 12**
-	DeployId *int64 `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 9***
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the task flow is deleted. Valid values:
-	//
-	// - **true**: deleted
-	//
-	// - **false**: not deleted
-	//
-	// example:
-	//
-	// false
-	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The status of the latest execution. Valid values:
-	//
-	// - 0: invalid
-	//
-	// - 1: scheduling disabled
-	//
-	// - 2: waiting to be scheduled
-	//
-	// example:
-	//
-	// 1
-	LatestInstanceStatus *int32 `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
-	// The time when the latest execution record was generated.
-	//
-	// example:
-	//
-	// 2022-04-14
-	LatestInstanceTime *int32 `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
-	// The ID of the business scenario.
-	//
-	// example:
-	//
-	// 2**
-	ScenarioId *int64 `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// The ID of the workspace.
-	//
-	// example:
-	//
-	// 1
-	SpaceId *int64 `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	// The status of the task flow. Valid values:
-	//
-	// - **0**: invalid
-	//
-	// - **1**: scheduling disabled
-	//
-	// - **2**: waiting to be scheduled
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagName              *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId           *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DataFlowId           *int64  `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	DemoId               *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDeleted            *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *int32  `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	ScenarioId           *int64  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	SpaceId              *int64  `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) String() string {
@@ -834,23 +630,8 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListD
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario struct {
-	// The ID of the user who creates the business scenario.
-	//
-	// example:
-	//
-	// 51****
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The description of the business scenario.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the business scenario.
-	//
-	// example:
-	//
-	// Scenario_2
+	CreatorId    *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
 }
 

@@ -24,7 +24,6 @@ type iListTablesInCategoryResponseBody interface {
 }
 
 type ListTablesInCategoryResponseBody struct {
-	// List of table information associated with the asset category.
 	EntityList *ListTablesInCategoryResponseBodyEntityList `json:"EntityList,omitempty" xml:"EntityList,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//

@@ -174,10 +174,8 @@ type GetPhysicalDatabaseResponseBodyDatabase struct {
 	// example:
 	//
 	// 43215325
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The user IDs of the database owners.
-	OwnerIdList *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the database owners.
+	InstanceId    *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerIdList   *GetPhysicalDatabaseResponseBodyDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *GetPhysicalDatabaseResponseBodyDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
 	// The port that is used to connect to the database.
 	//

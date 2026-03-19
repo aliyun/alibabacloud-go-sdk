@@ -132,11 +132,9 @@ type GetTaskFlowGraphResponseBodyTaskFlowGraph struct {
 	// example:
 	//
 	// test
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
-	// The list of task flow edges.
-	Edges *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Struct"`
-	// The node list of the task flow.
-	Nodes *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Struct"`
+	DagName *string                                         `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	Edges   *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges `json:"Edges,omitempty" xml:"Edges,omitempty" type:"Struct"`
+	Nodes   *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Struct"`
 	// The status of the task flow. Valid values:
 	//
 	// - **0**: invalid
@@ -253,29 +251,9 @@ func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphEdges) Validate() error {
 }
 
 type GetTaskFlowGraphResponseBodyTaskFlowGraphEdgesEdge struct {
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 15***
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The ID of the task flow edge.
-	//
-	// example:
-	//
-	// 24***
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the end node on the edge.
-	//
-	// example:
-	//
-	// 44***
-	NodeEnd *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
-	// The ID of the start node on the edge.
-	//
-	// example:
-	//
-	// 44***
+	DagId    *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Id       *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	NodeEnd  *int64 `json:"NodeEnd,omitempty" xml:"NodeEnd,omitempty"`
 	NodeFrom *int64 `json:"NodeFrom,omitempty" xml:"NodeFrom,omitempty"`
 }
 
@@ -362,49 +340,13 @@ func (s *GetTaskFlowGraphResponseBodyTaskFlowGraphNodes) Validate() error {
 }
 
 type GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode struct {
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 15***
-	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The position of the node in the DAG.
-	//
-	// example:
-	//
-	// {\\"x\\":541,\\"y\\":322,\\"layoutType\\":\\"Horizontal\\"}
-	GraphParam *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
-	// The advanced configuration of the node.
-	NodeConfig *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
-	// The configuration of the node.
-	//
-	// example:
-	//
-	// {ODI3OTNRVC****UHVFT29"}
-	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// 44***
-	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// test
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The type of the node. For more information about the valid values for this parameter, see [NodeType parameter](https://help.aliyun.com/document_detail/424705.html).
-	//
-	// example:
-	//
-	// 36
-	NodeType *int64 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The time variables for the node.
-	//
-	// example:
-	//
-	// {\\"variables\\":[{\\"name\\":\\"Today\\",\\"pattern\\":\\"yyyy-MM-dd|+1d\\"}]}
+	DagId         *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	GraphParam    *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
+	NodeConfig    *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
+	NodeContent   *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	NodeId        *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName      *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType      *int64  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	TimeVariables *string `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty"`
 }
 

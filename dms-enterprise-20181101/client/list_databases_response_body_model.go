@@ -24,7 +24,6 @@ type iListDatabasesResponseBody interface {
 }
 
 type ListDatabasesResponseBody struct {
-	// The details of the databases.
 	DatabaseList *ListDatabasesResponseBodyDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//
@@ -164,102 +163,22 @@ func (s *ListDatabasesResponseBodyDatabaseList) Validate() error {
 }
 
 type ListDatabasesResponseBodyDatabaseListDatabase struct {
-	// The name of the catalog to which the database belongs.
-	//
-	// example:
-	//
-	// 1
-	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The ID of the database.
-	//
-	// example:
-	//
-	// 1
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The ID of the DBA.
-	//
-	// example:
-	//
-	// 1
-	DbaId *string `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
-	// The nickname of the Database administrator (DBA) to which the database belongs.
-	//
-	// example:
-	//
-	// dba_user
-	DbaName *string `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
-	// The encoding format of the database.
-	//
-	// example:
-	//
-	// utf-8
-	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The type of the environment to which the database belongs.
-	//
-	// example:
-	//
-	// dev
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The endpoint of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// xxx.xxx.xxx.xxx
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// 1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IDs of the owners of the database.
-	OwnerIdList *ListDatabasesResponseBodyDatabaseListDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the database owners.
+	CatalogName   *string                                                     `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
+	DatabaseId    *string                                                     `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DbType        *string                                                     `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbaId         *string                                                     `json:"DbaId,omitempty" xml:"DbaId,omitempty"`
+	DbaName       *string                                                     `json:"DbaName,omitempty" xml:"DbaName,omitempty"`
+	Encoding      *string                                                     `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	EnvType       *string                                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Host          *string                                                     `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceId    *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerIdList   *ListDatabasesResponseBodyDatabaseListDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *ListDatabasesResponseBodyDatabaseListDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The connection port of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// 3306
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used for searching the database.
-	//
-	// example:
-	//
-	// test@xxx.xxx.xxx.xxx:3306
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
-	// The system ID (SID) of the instance to which the database belongs.
-	//
-	// example:
-	//
-	// test
-	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	// The state of the database. Valid values:
-	//
-	// 	- NORMAL: The database is normal.
-	//
-	// 	- DISABLE: The database is disabled.
-	//
-	// 	- OFFLINE: The database is unpublished.
-	//
-	// 	- NOT_EXIST: The database does not exist.
-	//
-	// example:
-	//
-	// NORMAL
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	Port          *int32                                                      `json:"Port,omitempty" xml:"Port,omitempty"`
+	SchemaName    *string                                                     `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName    *string                                                     `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Sid           *string                                                     `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	State         *string                                                     `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListDatabasesResponseBodyDatabaseListDatabase) String() string {

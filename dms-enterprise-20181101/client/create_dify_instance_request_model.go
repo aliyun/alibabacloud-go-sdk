@@ -39,6 +39,8 @@ type iCreateDifyInstanceRequest interface {
 	GetDbStorageSize() *string
 	SetDbStorageType(v string) *CreateDifyInstanceRequest
 	GetDbStorageType() *string
+	SetDifyInstanceName(v string) *CreateDifyInstanceRequest
+	GetDifyInstanceName() *string
 	SetDryRun(v bool) *CreateDifyInstanceRequest
 	GetDryRun() *bool
 	SetEdition(v string) *CreateDifyInstanceRequest
@@ -95,6 +97,8 @@ type iCreateDifyInstanceRequest interface {
 	GetSegNodeNum() *int32
 	SetStorageType(v string) *CreateDifyInstanceRequest
 	GetStorageType() *string
+	SetTag(v []*CreateDifyInstanceRequestTag) *CreateDifyInstanceRequest
+	GetTag() []*CreateDifyInstanceRequestTag
 	SetVSwitchId(v string) *CreateDifyInstanceRequest
 	GetVSwitchId() *string
 	SetVectordbAccount(v string) *CreateDifyInstanceRequest
@@ -132,77 +136,260 @@ type iCreateDifyInstanceRequest interface {
 }
 
 type CreateDifyInstanceRequest struct {
+	// example:
+	//
+	// null
 	AdbpgInstanceMode *string `json:"AdbpgInstanceMode,omitempty" xml:"AdbpgInstanceMode,omitempty"`
 	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BackupVSwitchId   *string `json:"BackupVSwitchId,omitempty" xml:"BackupVSwitchId,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// vsw-j6cq3nmsk8qcamo2rc6yc
+	BackupVSwitchId *string `json:"BackupVSwitchId,omitempty" xml:"BackupVSwitchId,omitempty"`
+	// example:
+	//
+	// abc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
-	DataRegion         *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
-	DatabaseOption     *string `json:"DatabaseOption,omitempty" xml:"DatabaseOption,omitempty"`
-	DbEngineType       *string `json:"DbEngineType,omitempty" xml:"DbEngineType,omitempty"`
-	DbEngineVersion    *string `json:"DbEngineVersion,omitempty" xml:"DbEngineVersion,omitempty"`
-	DbInstanceAccount  *string `json:"DbInstanceAccount,omitempty" xml:"DbInstanceAccount,omitempty"`
+	//
+	// example:
+	//
+	// cn-shenzhen
+	DataRegion *string `json:"DataRegion,omitempty" xml:"DataRegion,omitempty"`
+	// example:
+	//
+	// CreateNewInstance
+	DatabaseOption *string `json:"DatabaseOption,omitempty" xml:"DatabaseOption,omitempty"`
+	// example:
+	//
+	// PostgreSQL
+	DbEngineType *string `json:"DbEngineType,omitempty" xml:"DbEngineType,omitempty"`
+	// example:
+	//
+	// 14.0
+	DbEngineVersion *string `json:"DbEngineVersion,omitempty" xml:"DbEngineVersion,omitempty"`
+	// example:
+	//
+	// dify_user
+	DbInstanceAccount *string `json:"DbInstanceAccount,omitempty" xml:"DbInstanceAccount,omitempty"`
+	// example:
+	//
+	// 1c4g
 	DbInstanceCategory *string `json:"DbInstanceCategory,omitempty" xml:"DbInstanceCategory,omitempty"`
-	DbInstanceClass    *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
+	// example:
+	//
+	// pg.n2.2c.1m
+	DbInstanceClass *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
+	// example:
+	//
+	// password
 	DbInstancePassword *string `json:"DbInstancePassword,omitempty" xml:"DbInstancePassword,omitempty"`
-	DbResourceId       *int32  `json:"DbResourceId,omitempty" xml:"DbResourceId,omitempty"`
-	DbStorageSize      *string `json:"DbStorageSize,omitempty" xml:"DbStorageSize,omitempty"`
-	DbStorageType      *string `json:"DbStorageType,omitempty" xml:"DbStorageType,omitempty"`
-	DryRun             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// 2764278
+	DbResourceId *int32 `json:"DbResourceId,omitempty" xml:"DbResourceId,omitempty"`
+	// example:
+	//
+	// 60
+	DbStorageSize *string `json:"DbStorageSize,omitempty" xml:"DbStorageSize,omitempty"`
+	// example:
+	//
+	// general_essd
+	DbStorageType *string `json:"DbStorageType,omitempty" xml:"DbStorageType,omitempty"`
+	// example:
+	//
+	// Dify Instance
+	DifyInstanceName *string `json:"DifyInstanceName,omitempty" xml:"DifyInstanceName,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// example:
 	//
 	// Community
-	Edition              *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	EnableExtraEndpoint  *bool   `json:"EnableExtraEndpoint,omitempty" xml:"EnableExtraEndpoint,omitempty"`
-	GpuNodeSpec          *string `json:"GpuNodeSpec,omitempty" xml:"GpuNodeSpec,omitempty"`
-	KvStoreAccount       *string `json:"KvStoreAccount,omitempty" xml:"KvStoreAccount,omitempty"`
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// true
+	EnableExtraEndpoint *bool `json:"EnableExtraEndpoint,omitempty" xml:"EnableExtraEndpoint,omitempty"`
+	// example:
+	//
+	// 16C62G.1T4
+	GpuNodeSpec *string `json:"GpuNodeSpec,omitempty" xml:"GpuNodeSpec,omitempty"`
+	// example:
+	//
+	// dify_user
+	KvStoreAccount *string `json:"KvStoreAccount,omitempty" xml:"KvStoreAccount,omitempty"`
+	// example:
+	//
+	// 6.0
 	KvStoreEngineVersion *string `json:"KvStoreEngineVersion,omitempty" xml:"KvStoreEngineVersion,omitempty"`
+	// example:
+	//
+	// redis.master.stand.default
 	KvStoreInstanceClass *string `json:"KvStoreInstanceClass,omitempty" xml:"KvStoreInstanceClass,omitempty"`
-	KvStoreNodeType      *string `json:"KvStoreNodeType,omitempty" xml:"KvStoreNodeType,omitempty"`
-	KvStoreOption        *string `json:"KvStoreOption,omitempty" xml:"KvStoreOption,omitempty"`
-	KvStorePassword      *string `json:"KvStorePassword,omitempty" xml:"KvStorePassword,omitempty"`
-	KvStoreResourceId    *int32  `json:"KvStoreResourceId,omitempty" xml:"KvStoreResourceId,omitempty"`
-	KvStoreType          *string `json:"KvStoreType,omitempty" xml:"KvStoreType,omitempty"`
-	MajorVersion         *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	ModelId              *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// MASTER_SLAVE
+	KvStoreNodeType *string `json:"KvStoreNodeType,omitempty" xml:"KvStoreNodeType,omitempty"`
+	// example:
+	//
+	// CreateNewInstance
+	KvStoreOption *string `json:"KvStoreOption,omitempty" xml:"KvStoreOption,omitempty"`
+	// example:
+	//
+	// password
+	KvStorePassword *string `json:"KvStorePassword,omitempty" xml:"KvStorePassword,omitempty"`
+	// example:
+	//
+	// 2829493
+	KvStoreResourceId *int32 `json:"KvStoreResourceId,omitempty" xml:"KvStoreResourceId,omitempty"`
+	// example:
+	//
+	// REDIS
+	KvStoreType *string `json:"KvStoreType,omitempty" xml:"KvStoreType,omitempty"`
+	// example:
+	//
+	// 1.6.x
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// Qwen3-4B
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// example:
 	//
 	// Disable
-	ModelOption      *string `json:"ModelOption,omitempty" xml:"ModelOption,omitempty"`
+	ModelOption *string `json:"ModelOption,omitempty" xml:"ModelOption,omitempty"`
+	// example:
+	//
+	// Enable
 	NatGatewayOption *string `json:"NatGatewayOption,omitempty" xml:"NatGatewayOption,omitempty"`
-	OnlyIntranet     *bool   `json:"OnlyIntranet,omitempty" xml:"OnlyIntranet,omitempty"`
-	OssPath          *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	OssResourceId    *int32  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	PayPeriod        *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
-	PayPeriodType    *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
-	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Replicas         *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// false
+	OnlyIntranet *bool `json:"OnlyIntranet,omitempty" xml:"OnlyIntranet,omitempty"`
+	// example:
+	//
+	// /
+	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
+	// example:
+	//
+	// 2764233
+	OssResourceId *int32 `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// example:
+	//
+	// 1
+	PayPeriod *int32 `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
+	// example:
+	//
+	// Year
+	PayPeriodType *string `json:"PayPeriodType,omitempty" xml:"PayPeriodType,omitempty"`
+	// example:
+	//
+	// PostPaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 1
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 4CU
 	ResourceQuota *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
 	// This parameter is required.
-	SecurityGroupId         *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	//
+	// example:
+	//
+	// sg-2ze6dig8uby0a3zt4a0h
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// pl0
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
-	SegNodeNum              *int32  `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
-	StorageType             *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// example:
+	//
+	// 2
+	SegNodeNum *int32 `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// example:
+	//
+	// [{key:,value:}]
+	Tag []*CreateDifyInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter is required.
-	VSwitchId             *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VectordbAccount       *string `json:"VectordbAccount,omitempty" xml:"VectordbAccount,omitempty"`
-	VectordbCategory      *string `json:"VectordbCategory,omitempty" xml:"VectordbCategory,omitempty"`
+	//
+	// example:
+	//
+	// vsw-bp1i05wremlxcy8z5e2im
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// dify_user
+	VectordbAccount *string `json:"VectordbAccount,omitempty" xml:"VectordbAccount,omitempty"`
+	// example:
+	//
+	// adbpg
+	VectordbCategory *string `json:"VectordbCategory,omitempty" xml:"VectordbCategory,omitempty"`
+	// example:
+	//
+	// 6.0
 	VectordbEngineVersion *string `json:"VectordbEngineVersion,omitempty" xml:"VectordbEngineVersion,omitempty"`
-	VectordbInstanceSpec  *string `json:"VectordbInstanceSpec,omitempty" xml:"VectordbInstanceSpec,omitempty"`
-	VectordbOption        *string `json:"VectordbOption,omitempty" xml:"VectordbOption,omitempty"`
-	VectordbPassword      *string `json:"VectordbPassword,omitempty" xml:"VectordbPassword,omitempty"`
-	VectordbResourceId    *int32  `json:"VectordbResourceId,omitempty" xml:"VectordbResourceId,omitempty"`
-	VectordbStorageSize   *string `json:"VectordbStorageSize,omitempty" xml:"VectordbStorageSize,omitempty"`
-	VectordbStorageType   *string `json:"VectordbStorageType,omitempty" xml:"VectordbStorageType,omitempty"`
-	VectordbType          *string `json:"VectordbType,omitempty" xml:"VectordbType,omitempty"`
+	// example:
+	//
+	// 4C16G
+	VectordbInstanceSpec *string `json:"VectordbInstanceSpec,omitempty" xml:"VectordbInstanceSpec,omitempty"`
+	// example:
+	//
+	// CreateNewInstance
+	VectordbOption *string `json:"VectordbOption,omitempty" xml:"VectordbOption,omitempty"`
+	// example:
+	//
+	// password
+	VectordbPassword *string `json:"VectordbPassword,omitempty" xml:"VectordbPassword,omitempty"`
+	// example:
+	//
+	// 2798885
+	VectordbResourceId *int32 `json:"VectordbResourceId,omitempty" xml:"VectordbResourceId,omitempty"`
+	// example:
+	//
+	// 60
+	VectordbStorageSize *string `json:"VectordbStorageSize,omitempty" xml:"VectordbStorageSize,omitempty"`
+	// example:
+	//
+	// cloud_essd
+	VectordbStorageType *string `json:"VectordbStorageType,omitempty" xml:"VectordbStorageType,omitempty"`
+	// example:
+	//
+	// createnew
+	VectordbType *string `json:"VectordbType,omitempty" xml:"VectordbType,omitempty"`
 	// This parameter is required.
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-k1a8ha7m1atealnysybeu
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// this is my workspace
 	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
-	WorkspaceId          *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName        *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
-	WorkspaceOption      *string `json:"WorkspaceOption,omitempty" xml:"WorkspaceOption,omitempty"`
-	// This parameter is required.
+	// example:
+	//
+	// 8640136033018977
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// dify_default
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// UseExistingInstance
+	WorkspaceOption *string `json:"WorkspaceOption,omitempty" xml:"WorkspaceOption,omitempty"`
+	// example:
+	//
+	// cn-beijing-f
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -272,6 +459,10 @@ func (s *CreateDifyInstanceRequest) GetDbStorageSize() *string {
 
 func (s *CreateDifyInstanceRequest) GetDbStorageType() *string {
 	return s.DbStorageType
+}
+
+func (s *CreateDifyInstanceRequest) GetDifyInstanceName() *string {
+	return s.DifyInstanceName
 }
 
 func (s *CreateDifyInstanceRequest) GetDryRun() *bool {
@@ -384,6 +575,10 @@ func (s *CreateDifyInstanceRequest) GetSegNodeNum() *int32 {
 
 func (s *CreateDifyInstanceRequest) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *CreateDifyInstanceRequest) GetTag() []*CreateDifyInstanceRequestTag {
+	return s.Tag
 }
 
 func (s *CreateDifyInstanceRequest) GetVSwitchId() *string {
@@ -529,6 +724,11 @@ func (s *CreateDifyInstanceRequest) SetDbStorageType(v string) *CreateDifyInstan
 	return s
 }
 
+func (s *CreateDifyInstanceRequest) SetDifyInstanceName(v string) *CreateDifyInstanceRequest {
+	s.DifyInstanceName = &v
+	return s
+}
+
 func (s *CreateDifyInstanceRequest) SetDryRun(v bool) *CreateDifyInstanceRequest {
 	s.DryRun = &v
 	return s
@@ -669,6 +869,11 @@ func (s *CreateDifyInstanceRequest) SetStorageType(v string) *CreateDifyInstance
 	return s
 }
 
+func (s *CreateDifyInstanceRequest) SetTag(v []*CreateDifyInstanceRequestTag) *CreateDifyInstanceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateDifyInstanceRequest) SetVSwitchId(v string) *CreateDifyInstanceRequest {
 	s.VSwitchId = &v
 	return s
@@ -755,5 +960,55 @@ func (s *CreateDifyInstanceRequest) SetZoneId(v string) *CreateDifyInstanceReque
 }
 
 func (s *CreateDifyInstanceRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateDifyInstanceRequestTag struct {
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateDifyInstanceRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDifyInstanceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDifyInstanceRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateDifyInstanceRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateDifyInstanceRequestTag) SetKey(v string) *CreateDifyInstanceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequestTag) SetValue(v string) *CreateDifyInstanceRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateDifyInstanceRequestTag) Validate() error {
 	return dara.Validate(s)
 }

@@ -41,8 +41,7 @@ type ListSensitiveColumnInfoResponseBody struct {
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the sensitive field.
+	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SensitiveColumnList *ListSensitiveColumnInfoResponseBodySensitiveColumnList `json:"SensitiveColumnList,omitempty" xml:"SensitiveColumnList,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -168,58 +167,17 @@ func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnList) Validate() erro
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn struct {
-	// The name of the category.
-	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The name of the sensitive field.
-	//
-	// example:
-	//
-	// test_column
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The information about the default masking algorithm.
-	DefaultDesensitizationRule *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule `json:"DefaultDesensitizationRule,omitempty" xml:"DefaultDesensitizationRule,omitempty" type:"Struct"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 183****
-	InstanceId *int32 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the sensitive field is displayed in plaintext.
-	//
-	// example:
-	//
-	// False
-	IsPlain *bool `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
-	// The sample data.
-	SampleData *string `json:"SampleData,omitempty" xml:"SampleData,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test_schema
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The sensitivity level of the field. Valid values:
-	//
-	// 	- Low
-	//
-	// 	- Medium
-	//
-	// 	- High
-	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// The list of partial masking algorithms.
+	CategoryName                *string                                                                                           `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	ColumnName                  *string                                                                                           `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DefaultDesensitizationRule  *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule  `json:"DefaultDesensitizationRule,omitempty" xml:"DefaultDesensitizationRule,omitempty" type:"Struct"`
+	InstanceId                  *int32                                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsPlain                     *bool                                                                                             `json:"IsPlain,omitempty" xml:"IsPlain,omitempty"`
+	SampleData                  *string                                                                                           `json:"SampleData,omitempty" xml:"SampleData,omitempty"`
+	SchemaName                  *string                                                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SecurityLevel               *string                                                                                           `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
 	SemiDesensitizationRuleList *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleList `json:"SemiDesensitizationRuleList,omitempty" xml:"SemiDesensitizationRuleList,omitempty" type:"Struct"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test_table
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The user-defined sensitivity level.
-	//
-	// example:
-	//
-	// S1
-	UserSensitivityLevel *string `json:"UserSensitivityLevel,omitempty" xml:"UserSensitivityLevel,omitempty"`
+	TableName                   *string                                                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	UserSensitivityLevel        *string                                                                                           `json:"UserSensitivityLevel,omitempty" xml:"UserSensitivityLevel,omitempty"`
 }
 
 func (s ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) String() string {
@@ -344,17 +302,7 @@ func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumn) 
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnDefaultDesensitizationRule struct {
-	// The masking algorithm ID.
-	//
-	// example:
-	//
-	// 101**
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The masking algorithm name.
-	//
-	// example:
-	//
-	// test
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -423,17 +371,7 @@ func (s *ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSe
 }
 
 type ListSensitiveColumnInfoResponseBodySensitiveColumnListSensitiveColumnSemiDesensitizationRuleListSemiDesensitizationRule struct {
-	// The ID of the partial masking algorithm.
-	//
-	// example:
-	//
-	// 10***
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The partial masking algorithm name.
-	//
-	// example:
-	//
-	// test01
+	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

@@ -57,8 +57,7 @@ type ListInstanceUserPermissionsResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The permissions of the user on the instance.
+	TotalCount      *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	UserPermissions *ListInstanceUserPermissionsResponseBodyUserPermissions `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty" type:"Struct"`
 }
 
@@ -168,26 +167,10 @@ func (s *ListInstanceUserPermissionsResponseBodyUserPermissions) Validate() erro
 }
 
 type ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 174****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The details of permissions.
-	PermDetails *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 51****
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
-	//
-	// example:
-	//
-	// test_nick_name
-	UserNickName *string `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
+	InstanceId   *string                                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PermDetails  *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetails `json:"PermDetails,omitempty" xml:"PermDetails,omitempty" type:"Struct"`
+	UserId       *string                                                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNickName *string                                                                          `json:"UserNickName,omitempty" xml:"UserNickName,omitempty"`
 }
 
 func (s ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermission) String() string {
@@ -278,45 +261,11 @@ func (s *ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPer
 }
 
 type ListInstanceUserPermissionsResponseBodyUserPermissionsUserPermissionPermDetailsPermDetail struct {
-	// The time when the permissions were granted.
-	//
-	// example:
-	//
-	// 2019-12-12 00:00:00
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The time when the permissions expire.
-	//
-	// example:
-	//
-	// 2020-12-12 00:00:00
-	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// This parameter is reserved.
-	//
-	// example:
-	//
-	// XXX
-	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	// The user who grants the permissions.
-	//
-	// example:
-	//
-	// xxx authorization
-	OriginFrom *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
-	// The type of the permissions. Valid values:
-	//
-	// 	- LOGIN: the logon permissions
-	//
-	// 	- PERF: the query permissions on the instance
-	//
-	// example:
-	//
-	// LOGIN
-	PermType *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
-	// The ID of the authorization record.
-	//
-	// example:
-	//
-	// 773****
+	CreateDate   *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	ExtraData    *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	OriginFrom   *string `json:"OriginFrom,omitempty" xml:"OriginFrom,omitempty"`
+	PermType     *string `json:"PermType,omitempty" xml:"PermType,omitempty"`
 	UserAccessId *string `json:"UserAccessId,omitempty" xml:"UserAccessId,omitempty"`
 }
 

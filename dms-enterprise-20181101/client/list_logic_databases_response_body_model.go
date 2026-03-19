@@ -35,8 +35,7 @@ type ListLogicDatabasesResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details of logical databases.
+	ErrorMessage      *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LogicDatabaseList *ListLogicDatabasesResponseBodyLogicDatabaseList `json:"LogicDatabaseList,omitempty" xml:"LogicDatabaseList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -168,72 +167,16 @@ func (s *ListLogicDatabasesResponseBodyLogicDatabaseList) Validate() error {
 }
 
 type ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase struct {
-	// The alias of the logical database.
-	//
-	// example:
-	//
-	// logic_db_alias
-	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The ID of the logical database.
-	//
-	// example:
-	//
-	// 1***
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// Logical database sub-ID list.
-	DatabaseIds *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Struct"`
-	// The type of the logical database. For more information about the valid values of this parameter, see [DbType parameter](https://www.alibabacloud.com/help/en/data-management-service/latest/dbtype-parameter).
-	//
-	// example:
-	//
-	// polardb
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the logical database belongs. Valid values:
-	//
-	// - **product**: production environment
-	//
-	// - **dev**: development environment
-	//
-	// - **pre**: staging environment
-	//
-	// - **test**: test environment
-	//
-	// - **sit**: system integration testing (SIT) environment
-	//
-	// - **uat**: user acceptance testing (UAT) environment
-	//
-	// - **pet**: stress testing environment
-	//
-	// - **stag**: STAG environment
-	//
-	// example:
-	//
-	// test
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// Indicates whether the database is a logical database. The return value is true.
-	//
-	// example:
-	//
-	// true
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The IDs of the owners of the logical database.
-	OwnerIdList *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The names of the owners of the logical database.
+	Alias         *string                                                                    `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DatabaseId    *string                                                                    `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseIds   *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseDatabaseIds   `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Struct"`
+	DbType        *string                                                                    `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType       *string                                                                    `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic         *bool                                                                      `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OwnerIdList   *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabaseOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The name of the logical database.
-	//
-	// example:
-	//
-	// logic_db
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name that is used to search for the logical database.
-	//
-	// > We recommend that you do not use this parameter for business development. The format of the parameter value may be modified in later versions.
-	//
-	// example:
-	//
-	// logic_db[logic_db_alias]
-	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	SchemaName    *string                                                                    `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SearchName    *string                                                                    `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s ListLogicDatabasesResponseBodyLogicDatabaseListLogicDatabase) String() string {

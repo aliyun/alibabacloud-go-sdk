@@ -119,7 +119,6 @@ func (s *GetDataCorrectOrderDetailResponseBody) Validate() error {
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
 	// The configurations of the ticket. This parameter is used to store the configuration information specific to a data change ticket type.
 	ConfigDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailConfigDetail `json:"ConfigDetail,omitempty" xml:"ConfigDetail,omitempty" type:"Struct"`
-	// The information about the database in which data is changed.
 	DatabaseList *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList `json:"DatabaseList,omitempty" xml:"DatabaseList,omitempty" type:"Struct"`
 	// The execution mode of the ticket after the ticket is approved. Valid values:
 	//
@@ -134,8 +133,7 @@ type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetail struct {
 	// COMMITOR
 	ExecMode *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
 	// The details of the ticket.
-	OrderDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
-	// The precheck details of the ticket.
+	OrderDetail    *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailOrderDetail    `json:"OrderDetail,omitempty" xml:"OrderDetail,omitempty" type:"Struct"`
 	PreCheckDetail *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetail `json:"PreCheckDetail,omitempty" xml:"PreCheckDetail,omitempty" type:"Struct"`
 	// The specific state of the data change ticket. Valid values:
 	//
@@ -693,55 +691,10 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseList
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailDatabaseListDatabase struct {
-	// The database ID.
-	//
-	// example:
-	//
-	// 1860****
-	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The engine of the database.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The type of the environment to which the database belongs. Valid values:
-	//
-	// 	- product: production environment.
-	//
-	// 	- dev: development environment.
-	//
-	// 	- pre: pre-release environment.
-	//
-	// 	- test: test environment.
-	//
-	// 	- sit: system integration testing (SIT) environment
-	//
-	// 	- uat: user acceptance testing (UAT) environment.
-	//
-	// 	- pet: stress testing environment.
-	//
-	// 	- stag: staging environment.
-	//
-	// example:
-	//
-	// product
-	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// Indicates whether the database is a logical database. Valid values:
-	//
-	// 	- **true.**: The database is a logical database.
-	//
-	// 	- **false**: The database is a physical database.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The name that is used to search for the database.
-	//
-	// example:
-	//
-	// xxx@xxx:3306
+	DbId       *int32  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Logic      *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -1029,40 +982,9 @@ func (s *GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDeta
 }
 
 type GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailTaskCheckDO struct {
-	// The state of the precheck. Valid values:
-	//
-	// 	- **WAITING**: The ticket is pending precheck.
-	//
-	// 	- **RUNNING**: The ticket is being prechecked.
-	//
-	// 	- **SUCCESS**: The ticket passes the precheck.
-	//
-	// 	- **FAIL**: The ticket fails the precheck.
-	//
-	// example:
-	//
-	// SUCCESS
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The check step of the precheck. Valid values:
-	//
-	// 	- **SQL_PARSE**: The system checks the syntax of the SQL statement.
-	//
-	// 	- **SQL_TYPE_CHECK**: The system checks the type of the SQL statement.
-	//
-	// 	- **PERMISSION_CHECK**: The system checks the permissions required for the data change.
-	//
-	// 	- **ROW_CHECK**: The system checks the number of affected rows.
-	//
-	// example:
-	//
-	// PERMISSION_CHECK
-	CheckStep *string `json:"CheckStep,omitempty" xml:"CheckStep,omitempty"`
-	// The message that appears when a check step is executed.
-	//
-	// example:
-	//
-	// tip messsage
-	UserTip *string `json:"UserTip,omitempty" xml:"UserTip,omitempty"`
+	CheckStep   *string `json:"CheckStep,omitempty" xml:"CheckStep,omitempty"`
+	UserTip     *string `json:"UserTip,omitempty" xml:"UserTip,omitempty"`
 }
 
 func (s GetDataCorrectOrderDetailResponseBodyDataCorrectOrderDetailPreCheckDetailTaskCheckDO) String() string {

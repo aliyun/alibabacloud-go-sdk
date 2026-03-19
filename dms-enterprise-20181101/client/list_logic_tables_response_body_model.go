@@ -35,8 +35,7 @@ type ListLogicTablesResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details of the logical tables.
+	ErrorMessage   *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LogicTableList *ListLogicTablesResponseBodyLogicTableList `json:"LogicTableList,omitempty" xml:"LogicTableList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,58 +163,16 @@ func (s *ListLogicTablesResponseBodyLogicTableList) Validate() error {
 }
 
 type ListLogicTablesResponseBodyLogicTableListLogicTable struct {
-	// The ID of the logical database.
-	//
-	// example:
-	//
-	// 1
-	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
-	// Indicates whether the table is a logical table. The value is fixed to true.
-	//
-	// example:
-	//
-	// true
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The IDs of the owners of the logical tables.
-	OwnerIdList *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
-	// The nicknames of the owners of the logical tables.
+	DatabaseId    *string                                                           `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	Logic         *bool                                                             `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OwnerIdList   *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerIdList   `json:"OwnerIdList,omitempty" xml:"OwnerIdList,omitempty" type:"Struct"`
 	OwnerNameList *ListLogicTablesResponseBodyLogicTableListLogicTableOwnerNameList `json:"OwnerNameList,omitempty" xml:"OwnerNameList,omitempty" type:"Struct"`
-	// The logical database to which the logical table belongs.
-	//
-	// example:
-	//
-	// yuyang_test
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The number of logical tables.
-	//
-	// example:
-	//
-	// 4
-	TableCount *string `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	// The expression of the logical table.
-	//
-	// example:
-	//
-	// test[1-4]
-	TableExpr *string `json:"TableExpr,omitempty" xml:"TableExpr,omitempty"`
-	// The GUID of the logical table.
-	//
-	// example:
-	//
-	// IDB_L_308302.yuyang_test.test_ch
-	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// The ID of the logical table.
-	//
-	// example:
-	//
-	// 1
-	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	// The name of the logical table.
-	//
-	// example:
-	//
-	// test
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	SchemaName    *string                                                           `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableCount    *string                                                           `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	TableExpr     *string                                                           `json:"TableExpr,omitempty" xml:"TableExpr,omitempty"`
+	TableGuid     *string                                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	TableId       *string                                                           `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName     *string                                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListLogicTablesResponseBodyLogicTableListLogicTable) String() string {

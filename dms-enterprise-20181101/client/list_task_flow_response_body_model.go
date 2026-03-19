@@ -49,8 +49,7 @@ type ListTaskFlowResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about the task flows returned.
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskFlowList *ListTaskFlowResponseBodyTaskFlowList `json:"TaskFlowList,omitempty" xml:"TaskFlowList,omitempty" type:"Struct"`
 }
 
@@ -151,66 +150,14 @@ func (s *ListTaskFlowResponseBodyTaskFlowList) Validate() error {
 }
 
 type ListTaskFlowResponseBodyTaskFlowListTaskFlow struct {
-	// The ID of the user who creates the task flow.
-	//
-	// example:
-	//
-	// 51****
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the user who creates the task flow.
-	//
-	// example:
-	//
-	// Creator_NickName
-	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	// The name of the task flow owner.
-	//
-	// example:
-	//
-	// Owner_NickName
-	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
-	// The ID of the latest deployment record.
-	//
-	// example:
-	//
-	// 12**
-	DeployId *int64 `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 134137****
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the latest execution. Valid values:
-	//
-	// 	- **0**: invalid.
-	//
-	// 	- **1**: scheduling disabled.
-	//
-	// 	- **2**: waiting to be scheduled.
-	//
-	// example:
-	//
-	// 0
-	LatestInstanceStatus *int32 `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
-	// The time when the latest execution record was generated.
-	//
-	// example:
-	//
-	// 2022-04-13
-	LatestInstanceTime *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
-	// The status of the task flow. Valid values:
-	//
-	// 	- **0**: The task flow is invalid.
-	//
-	// 	- **1**: Scheduling is disabled for the task flow.
-	//
-	// 	- **2**: The task flow is waiting to be scheduled.
-	//
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListTaskFlowResponseBodyTaskFlowListTaskFlow) String() string {

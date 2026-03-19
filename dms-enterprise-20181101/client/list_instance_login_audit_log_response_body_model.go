@@ -35,8 +35,7 @@ type ListInstanceLoginAuditLogResponseBody struct {
 	// example:
 	//
 	// Specified parameter PageSize is not valid.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The logon records of the instance.
+	ErrorMessage              *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	InstanceLoginAuditLogList *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList `json:"InstanceLoginAuditLogList,omitempty" xml:"InstanceLoginAuditLogList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -168,48 +167,13 @@ func (s *ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogList) Validat
 }
 
 type ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog struct {
-	// The database account that is used to log on to the instance.
-	//
-	// example:
-	//
-	// test_User
-	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 177****
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// rm-bp144d5ky4l4rli0417****.mysql.rds.aliyuncs.com:3306[rm-bp144d5ky4l4r****]
+	DbUser       *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The time when the user performed an operation on the instance.
-	//
-	// example:
-	//
-	// 2021-11-18 11:13:26
-	OpTime *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
-	// The source IP address of the request.
-	//
-	// example:
-	//
-	// 117.36.XX.XX,100.104.XX.XX
-	RequestIp *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
-	// The ID of the user.
-	//
-	// example:
-	//
-	// 12****
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The alias of the user.
-	//
-	// example:
-	//
-	// test_UserName
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	OpTime       *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	RequestIp    *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListInstanceLoginAuditLogResponseBodyInstanceLoginAuditLogListInstanceLoginAuditLog) String() string {

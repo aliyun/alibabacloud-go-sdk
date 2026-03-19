@@ -166,10 +166,8 @@ type GetOrderBaseInfoResponseBodyOrderBaseInfo struct {
 	// example:
 	//
 	// DC_COMMON
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// The IDs of the operators that are related to the ticket.
-	RelatedUserList *GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Struct"`
-	// The nicknames of the operators that are related to the ticket.
+	PluginType          *string                                                       `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RelatedUserList     *GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList     `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Struct"`
 	RelatedUserNickList *GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserNickList `json:"RelatedUserNickList,omitempty" xml:"RelatedUserNickList,omitempty" type:"Struct"`
 	// The status code of the ticket. Valid values:
 	//

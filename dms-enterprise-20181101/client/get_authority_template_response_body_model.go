@@ -134,7 +134,6 @@ func (s *GetAuthorityTemplateResponseBody) Validate() error {
 }
 
 type GetAuthorityTemplateResponseBodyAuthorityTemplateView struct {
-	// The resource information in the permission template.
 	AuthorityTemplateItemList *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemList `json:"AuthorityTemplateItemList,omitempty" xml:"AuthorityTemplateItemList,omitempty" type:"Struct"`
 	// The time when the permission template was created. The time is in the yyyy-MM-DD HH:mm:ss format.
 	//
@@ -274,68 +273,14 @@ func (s *GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateI
 }
 
 type GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem struct {
-	// Other information. For example, you can add the logon permission on an instance to the permission template.
-	//
-	// example:
-	//
-	// "permissionTypes": [
-	//
-	//             "LOGIN"
-	//
-	//           ]
-	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The ID of the database.
-	//
-	// example:
-	//
-	// 43***
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 188****
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the resource.
-	//
-	// example:
-	//
-	// 12***
-	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The ID of the user who modified the resource.
-	//
-	// example:
-	//
-	// 51***
-	ModifierId *int64 `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
-	// The type of the resource. Valid values:
-	//
-	// 	- **INSTANCE**: instance
-	//
-	// 	- **LOGIC_DB**: logical database
-	//
-	// 	- **META_DB**: physical database
-	//
-	// 	- **LOGIC_TABLE**: logical table
-	//
-	// 	- **SINGLE_TABLE**: physical table
-	//
-	// example:
-	//
-	// INSTANCE
+	Attribute    *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId       *int64  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ModifierId   *int64  `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// ExampleTable
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the permission template.
-	//
-	// example:
-	//
-	// 1563
-	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TemplateId   *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s GetAuthorityTemplateResponseBodyAuthorityTemplateViewAuthorityTemplateItemListAuthorityTemplateItem) String() string {

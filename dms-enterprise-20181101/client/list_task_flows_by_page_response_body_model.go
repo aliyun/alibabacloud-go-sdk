@@ -51,8 +51,7 @@ type ListTaskFlowsByPageResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the returned task flows.
+	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
 	TaskFlowList *ListTaskFlowsByPageResponseBodyTaskFlowList `json:"TaskFlowList,omitempty" xml:"TaskFlowList,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -168,150 +167,26 @@ func (s *ListTaskFlowsByPageResponseBodyTaskFlowList) Validate() error {
 }
 
 type ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow struct {
-	// The ID of the user who created the task flow.
-	//
-	// example:
-	//
-	// 51****
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The username of the user who created the task flow.
-	//
-	// example:
-	//
-	// Creator_NickName
-	CreatorNickName *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
-	// The start time of scheduled scheduling. The task flow is not scheduled before this point in time.
-	//
-	// example:
-	//
-	// 1970-01-01
-	CronBeginDate *string `json:"CronBeginDate,omitempty" xml:"CronBeginDate,omitempty"`
-	// The end time of scheduled scheduling. The task flow is not scheduled after this point in time.
-	//
-	// example:
-	//
-	// 2023-01-01
-	CronEndDate *string `json:"CronEndDate,omitempty" xml:"CronEndDate,omitempty"`
-	// Scheduled Cron.
-	//
-	// example:
-	//
-	// 0 0 1 	- 	- ? *
-	CronStr *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
-	// Whether to enable scheduled scheduling.
-	//
-	// example:
-	//
-	// false
-	CronSwitch *bool `json:"CronSwitch,omitempty" xml:"CronSwitch,omitempty"`
-	// Scheduling cycle type. Valid values:
-	//
-	// - **2**: Hourly scheduling
-	//
-	// - **3**: Daily scheduling
-	//
-	// - **4**: Weekly scheduling
-	//
-	// - **5**: Monthly scheduling
-	//
-	// example:
-	//
-	// 2
-	CronType *int32 `json:"CronType,omitempty" xml:"CronType,omitempty"`
-	// The name of the task flow.
-	//
-	// example:
-	//
-	// poc_task_test
-	DagName *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
-	// The user ID of the task flow owner.
-	//
-	// example:
-	//
-	// 12***89
-	DagOwnerId *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
-	// The username of the owner of the task flow.
-	//
-	// example:
-	//
-	// Owner_NickName
-	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
-	// The ID of the last deployment record of the task flow.
-	//
-	// example:
-	//
-	// 65***
-	DeployId *int64 `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
-	// The description of the task flow.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the task flow.
-	//
-	// example:
-	//
-	// 7***
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The status of the last execution of the task flow. Valid values:
-	//
-	// 	- **0**: invalid
-	//
-	// 	- **1**: scheduling disabled
-	//
-	// 	- **2**: waiting to be scheduled
-	//
-	// example:
-	//
-	// 0
-	LatestInstanceStatus *int32 `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
-	// The time when the last execution record was created.
-	//
-	// example:
-	//
-	// 2022-04-13
-	LatestInstanceTime *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
-	// The ID of the application scenario.
-	//
-	// example:
-	//
-	// 1245
-	ScenarioId *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
-	// Event scheduling configuration, JSON string format.
-	//
-	// example:
-	//
-	// {\\"triggerType\\":\\"1\\",\\"specificTime\\":\\"2022-11-15 11:59\\"}
-	ScheduleParam *string `json:"ScheduleParam,omitempty" xml:"ScheduleParam,omitempty"`
-	// The status of the task flow. Valid values:
-	//
-	// 	- **0**: invalid
-	//
-	// 	- **1**: scheduling disabled
-	//
-	// 	- **2**: waiting to be scheduled
-	//
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Time zone setting. Default value: East 8(Asia/Shanghai).
-	//
-	// example:
-	//
-	// Asia/Shanghai
-	TimeZoneId *string `json:"TimeZoneId,omitempty" xml:"TimeZoneId,omitempty"`
-	// The trigger type. Valid values:
-	//
-	// - **0**: Periodic scheduling
-	//
-	// - **1**: Run manually
-	//
-	// example:
-	//
-	// 0
-	TriggerType *int32 `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	CronBeginDate        *string `json:"CronBeginDate,omitempty" xml:"CronBeginDate,omitempty"`
+	CronEndDate          *string `json:"CronEndDate,omitempty" xml:"CronEndDate,omitempty"`
+	CronStr              *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	CronSwitch           *bool   `json:"CronSwitch,omitempty" xml:"CronSwitch,omitempty"`
+	CronType             *int32  `json:"CronType,omitempty" xml:"CronType,omitempty"`
+	DagName              *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId           *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	ScenarioId           *string `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	ScheduleParam        *string `json:"ScheduleParam,omitempty" xml:"ScheduleParam,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeZoneId           *string `json:"TimeZoneId,omitempty" xml:"TimeZoneId,omitempty"`
+	TriggerType          *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
 func (s ListTaskFlowsByPageResponseBodyTaskFlowListTaskFlow) String() string {

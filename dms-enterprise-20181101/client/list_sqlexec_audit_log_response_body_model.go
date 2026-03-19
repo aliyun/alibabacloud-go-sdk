@@ -41,8 +41,7 @@ type ListSQLExecAuditLogResponseBody struct {
 	// example:
 	//
 	// 39BC9C86-95AE-58F2-9862-A7C3D896****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The entries returned.
+	RequestId           *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SQLExecAuditLogList *ListSQLExecAuditLogResponseBodySQLExecAuditLogList `json:"SQLExecAuditLogList,omitempty" xml:"SQLExecAuditLogList,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
@@ -168,116 +167,20 @@ func (s *ListSQLExecAuditLogResponseBodySQLExecAuditLogList) Validate() error {
 }
 
 type ListSQLExecAuditLogResponseBodySQLExecAuditLogListSQLExecAuditLog struct {
-	// The number of rows affected by the SQL statement. For example, if you execute an SQL statement to query data, the number of retrieved rows is returned.
-	//
-	// example:
-	//
-	// 2
-	AffectRows *int64 `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
-	// The ID of the database.
-	//
-	// example:
-	//
-	// 2157****
-	DbId *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	// The amount of time consumed by the execution of the SQL statement. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 18
-	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The execution status of the SQL statement. Valid values:
-	//
-	// 	- **FAIL**: The SQL statement fails to be executed.
-	//
-	// 	- **NOEXE**: The SQL statement has not been executed.
-	//
-	// 	- **RUNNING**: The SQL statement is being executed.
-	//
-	// 	- **CANCEL**: The execution of the SQL statement is canceled.
-	//
-	// 	- **SUCCESS**: The SQL statement is executed.
-	//
-	// example:
-	//
-	// SUCCESS
-	ExecState *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// 185***
-	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the database.
-	//
-	// >  If the SQL statement takes effect on an instance, the name of the instance is returned.
-	//
-	// example:
-	//
-	// polar123@pc-bp1h9tgq4st9g****.mysql.polardb.rds.aliyuncs.com:3306[polar_qw_test]
+	AffectRows   *int64  `json:"AffectRows,omitempty" xml:"AffectRows,omitempty"`
+	DbId         *int64  `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	ElapsedTime  *int64  `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	ExecState    *string `json:"ExecState,omitempty" xml:"ExecState,omitempty"`
+	InstanceId   *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the database is a logical database. Valid values:
-	//
-	// 	- **true**: The database is a logical database.
-	//
-	// 	- **false**: The database is a physical database.
-	//
-	// example:
-	//
-	// false
-	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	// The time when the operation specified by the SQL statement was performed on the instance or database.
-	//
-	// example:
-	//
-	// 2021-11-08 11:04:27
-	OpTime *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
-	// The comment on the SQL statement.
-	//
-	// example:
-	//
-	// success
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The SQL statement that was written.
-	//
-	// example:
-	//
-	// SELECT 	- FROM `polar123`.`p_qw` ORDER BY `id` DESC
-	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	// The type of the SQL statement. Valid values:
-	//
-	// 	- **SELECT**: the SQL statement that is used to query data.
-	//
-	// 	- **INSERT**: the SQL statement that is used to insert data.
-	//
-	// 	- **DELETE**: the SQL statement that is used to delete data.
-	//
-	// 	- **CREATE_TABLE**: the SQL statement that is used to create tables.
-	//
-	// >  To view more types of SQL statements, log on to the DMS console and click Security and Specifications. In the left-side navigation pane, click **Operation Audit**. Then, you can view all supported types of SQL statements from the **SQL type*	- drop-down list.
-	//
-	// example:
-	//
-	// SELECT
-	SQLType *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// polar123
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The ID of the user who wrote the SQL statement.
-	//
-	// example:
-	//
-	// 12****
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user who wrote the SQL statement.
-	//
-	// example:
-	//
-	// test_UserName
-	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Logic        *bool   `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	OpTime       *string `json:"OpTime,omitempty" xml:"OpTime,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SQL          *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	SQLType      *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
+	SchemaName   *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListSQLExecAuditLogResponseBodySQLExecAuditLogListSQLExecAuditLog) String() string {

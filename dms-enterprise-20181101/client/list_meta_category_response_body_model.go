@@ -24,7 +24,6 @@ type iListMetaCategoryResponseBody interface {
 }
 
 type ListMetaCategoryResponseBody struct {
-	// The list of categories.
 	CategoryList *ListMetaCategoryResponseBodyCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Struct"`
 	// The error code returned if the request fails.
 	//

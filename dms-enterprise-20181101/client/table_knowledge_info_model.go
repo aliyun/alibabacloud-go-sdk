@@ -24,12 +24,18 @@ type iTableKnowledgeInfo interface {
 }
 
 type TableKnowledgeInfo struct {
-	AssetDescription *string                `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
-	AssetModifiedGmt *string                `json:"AssetModifiedGmt,omitempty" xml:"AssetModifiedGmt,omitempty"`
-	ColumnList       []*ColumnKnowledgeInfo `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
-	Description      *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Summary          *string                `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	TableName        *string                `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// Table usage instructions, which are not editable in OpenAPI.
+	AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
+	// Last modified time.
+	AssetModifiedGmt *string `json:"AssetModifiedGmt,omitempty" xml:"AssetModifiedGmt,omitempty"`
+	// The columns of the table.
+	ColumnList []*ColumnKnowledgeInfo `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+	// Table description in the CREAT TABLE statement.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Table business description, which can be edited via EditMetaKnowledgeAsset.
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The table name.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s TableKnowledgeInfo) String() string {

@@ -22,7 +22,6 @@ type iCreateDataExportOrderResponseBody interface {
 }
 
 type CreateDataExportOrderResponseBody struct {
-	// The content of the ticket.
 	CreateOrderResult *CreateDataExportOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
 	// The error code.
 	//

@@ -22,7 +22,6 @@ type iListTaskFlowCooperatorsResponseBody interface {
 }
 
 type ListTaskFlowCooperatorsResponseBody struct {
-	// The users that are involved in the task flow.
 	CooperatorList *ListTaskFlowCooperatorsResponseBodyCooperatorList `json:"CooperatorList,omitempty" xml:"CooperatorList,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//
@@ -151,30 +150,10 @@ func (s *ListTaskFlowCooperatorsResponseBodyCooperatorList) Validate() error {
 }
 
 type ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator struct {
-	// The email address of the user.
-	//
-	// example:
-	//
-	// test@XX.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username.
-	//
-	// example:
-	//
-	// name
+	Email     *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	// The alias of the user.
-	//
-	// example:
-	//
-	// name
-	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// userId.
-	//
-	// example:
-	//
-	// 123
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	NickName  *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListTaskFlowCooperatorsResponseBodyCooperatorListCooperator) String() string {

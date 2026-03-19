@@ -49,8 +49,7 @@ type ListTaskFlowTimeVariablesResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time variables for the task flow.
+	Success       *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
 	TimeVariables *ListTaskFlowTimeVariablesResponseBodyTimeVariables `json:"TimeVariables,omitempty" xml:"TimeVariables,omitempty" type:"Struct"`
 }
 
@@ -151,17 +150,7 @@ func (s *ListTaskFlowTimeVariablesResponseBodyTimeVariables) Validate() error {
 }
 
 type ListTaskFlowTimeVariablesResponseBodyTimeVariablesTimeVariable struct {
-	// The name of the time variable.
-	//
-	// example:
-	//
-	// time_test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The format of the time variable.
-	//
-	// example:
-	//
-	// 2018-09-26|+7h
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
 }
 

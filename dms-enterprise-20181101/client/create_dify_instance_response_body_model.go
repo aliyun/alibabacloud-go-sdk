@@ -26,13 +26,31 @@ type iCreateDifyInstanceResponseBody interface {
 }
 
 type CreateDifyInstanceResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *CreateDifyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode      *string                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateDifyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABCF54A2-4D74-5DE1-9F0F-5221DDEDD9AD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDifyInstanceResponseBody) String() string {
@@ -116,17 +134,58 @@ func (s *CreateDifyInstanceResponseBody) Validate() error {
 }
 
 type CreateDifyInstanceResponseBodyData struct {
-	AppUuid         *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	ResourceQuota   *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	// example:
+	//
+	// abc
+	AppUuid *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// abc1-def2-ghi3-jkl4
+	DifyInstanceId *string `json:"DifyInstanceId,omitempty" xml:"DifyInstanceId,omitempty"`
+	// example:
+	//
+	// Dify Instance
+	DifyInstanceName *string `json:"DifyInstanceName,omitempty" xml:"DifyInstanceName,omitempty"`
+	// example:
+	//
+	// 291XXX
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// trScore
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 1
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// 4CU
+	ResourceQuota *string `json:"ResourceQuota,omitempty" xml:"ResourceQuota,omitempty"`
+	// example:
+	//
+	// sg-uf6hs6f3m6j5gm6jj0we
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vsw-bp1m5bwgv41nfoi5el6y1
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 863020290155****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// cn-beijing-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDifyInstanceResponseBodyData) String() string {
@@ -139,6 +198,14 @@ func (s CreateDifyInstanceResponseBodyData) GoString() string {
 
 func (s *CreateDifyInstanceResponseBodyData) GetAppUuid() *string {
 	return s.AppUuid
+}
+
+func (s *CreateDifyInstanceResponseBodyData) GetDifyInstanceId() *string {
+	return s.DifyInstanceId
+}
+
+func (s *CreateDifyInstanceResponseBodyData) GetDifyInstanceName() *string {
+	return s.DifyInstanceName
 }
 
 func (s *CreateDifyInstanceResponseBodyData) GetInstanceId() *string {
@@ -183,6 +250,16 @@ func (s *CreateDifyInstanceResponseBodyData) GetZoneId() *string {
 
 func (s *CreateDifyInstanceResponseBodyData) SetAppUuid(v string) *CreateDifyInstanceResponseBodyData {
 	s.AppUuid = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetDifyInstanceId(v string) *CreateDifyInstanceResponseBodyData {
+	s.DifyInstanceId = &v
+	return s
+}
+
+func (s *CreateDifyInstanceResponseBodyData) SetDifyInstanceName(v string) *CreateDifyInstanceResponseBodyData {
+	s.DifyInstanceName = &v
 	return s
 }
 

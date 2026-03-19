@@ -27,18 +27,45 @@ type iListDifyInstancesResponseBody interface {
 	GetRoot() *ListDifyInstancesResponseBodyRoot
 	SetSuccess(v bool) *ListDifyInstancesResponseBody
 	GetSuccess() *bool
+	SetTags(v []*ListDifyInstancesResponseBodyTags) *ListDifyInstancesResponseBody
+	GetTags() []*ListDifyInstancesResponseBodyTags
 }
 
 type ListDifyInstancesResponseBody struct {
-	Code           *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorCode      *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults     *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message        *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken      *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Root           *ListDifyInstancesResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// UnknownError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// NesLoKLEdIZrKhDT7I2gS****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Root      *ListDifyInstancesResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tags    []*ListDifyInstancesResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListDifyInstancesResponseBody) String() string {
@@ -83,6 +110,10 @@ func (s *ListDifyInstancesResponseBody) GetRoot() *ListDifyInstancesResponseBody
 
 func (s *ListDifyInstancesResponseBody) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *ListDifyInstancesResponseBody) GetTags() []*ListDifyInstancesResponseBodyTags {
+	return s.Tags
 }
 
 func (s *ListDifyInstancesResponseBody) SetCode(v string) *ListDifyInstancesResponseBody {
@@ -130,10 +161,24 @@ func (s *ListDifyInstancesResponseBody) SetSuccess(v bool) *ListDifyInstancesRes
 	return s
 }
 
+func (s *ListDifyInstancesResponseBody) SetTags(v []*ListDifyInstancesResponseBodyTags) *ListDifyInstancesResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *ListDifyInstancesResponseBody) Validate() error {
 	if s.Root != nil {
 		if err := s.Root.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -174,33 +219,90 @@ func (s *ListDifyInstancesResponseBodyRoot) Validate() error {
 }
 
 type ListDifyInstancesResponseBodyRootData struct {
-	AppUuid     *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// abc
+	AppUuid *string `json:"AppUuid,omitempty" xml:"AppUuid,omitempty"`
+	// example:
+	//
+	// 2025-04-20T00:14:38Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// example:
 	//
 	// 实例描述
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Edition               *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// abc
+	DifyInstanceId *string `json:"DifyInstanceId,omitempty" xml:"DifyInstanceId,omitempty"`
+	// example:
+	//
+	// this is a dify instance
+	DifyInstanceName *string `json:"DifyInstanceName,omitempty" xml:"DifyInstanceName,omitempty"`
+	// example:
+	//
+	// Community
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// example:
+	//
+	// 0.0.0.0
 	EnterpriseInternetUrl *string `json:"EnterpriseInternetUrl,omitempty" xml:"EnterpriseInternetUrl,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	EnterpriseIntranetUrl *string `json:"EnterpriseIntranetUrl,omitempty" xml:"EnterpriseIntranetUrl,omitempty"`
-	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetUrl           *string `json:"InternetUrl,omitempty" xml:"InternetUrl,omitempty"`
-	IntranetUrl           *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
-	MajorVersion          *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// 2818729
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// public_lts_zb_10
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 0.0.0.0
+	InternetUrl *string `json:"InternetUrl,omitempty" xml:"InternetUrl,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	IntranetUrl *string `json:"IntranetUrl,omitempty" xml:"IntranetUrl,omitempty"`
+	// example:
+	//
+	// 1.4.x
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	// example:
 	//
 	// 地域信息
-	RegionCode      *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// sg-2ze2aigcxhjohtldnyml
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// example:
 	//
 	// running
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vsw-bp1ig49b0bbbx33aiqbgu
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-2ze5ar1uh249xpqrfgfbj
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 8609287469406252
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-beijing-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListDifyInstancesResponseBodyRootData) String() string {
@@ -221,6 +323,14 @@ func (s *ListDifyInstancesResponseBodyRootData) GetCreatedTime() *string {
 
 func (s *ListDifyInstancesResponseBodyRootData) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) GetDifyInstanceId() *string {
+	return s.DifyInstanceId
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) GetDifyInstanceName() *string {
+	return s.DifyInstanceName
 }
 
 func (s *ListDifyInstancesResponseBodyRootData) GetEdition() *string {
@@ -259,6 +369,10 @@ func (s *ListDifyInstancesResponseBodyRootData) GetRegionCode() *string {
 	return s.RegionCode
 }
 
+func (s *ListDifyInstancesResponseBodyRootData) GetRegionId() *string {
+	return s.RegionId
+}
+
 func (s *ListDifyInstancesResponseBodyRootData) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
 }
@@ -295,6 +409,16 @@ func (s *ListDifyInstancesResponseBodyRootData) SetCreatedTime(v string) *ListDi
 
 func (s *ListDifyInstancesResponseBodyRootData) SetDescription(v string) *ListDifyInstancesResponseBodyRootData {
 	s.Description = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) SetDifyInstanceId(v string) *ListDifyInstancesResponseBodyRootData {
+	s.DifyInstanceId = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyRootData) SetDifyInstanceName(v string) *ListDifyInstancesResponseBodyRootData {
+	s.DifyInstanceName = &v
 	return s
 }
 
@@ -343,6 +467,11 @@ func (s *ListDifyInstancesResponseBodyRootData) SetRegionCode(v string) *ListDif
 	return s
 }
 
+func (s *ListDifyInstancesResponseBodyRootData) SetRegionId(v string) *ListDifyInstancesResponseBodyRootData {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListDifyInstancesResponseBodyRootData) SetSecurityGroupId(v string) *ListDifyInstancesResponseBodyRootData {
 	s.SecurityGroupId = &v
 	return s
@@ -374,5 +503,46 @@ func (s *ListDifyInstancesResponseBodyRootData) SetZoneId(v string) *ListDifyIns
 }
 
 func (s *ListDifyInstancesResponseBodyRootData) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListDifyInstancesResponseBodyTags struct {
+	// example:
+	//
+	// opt_measure_group
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// 15
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListDifyInstancesResponseBodyTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListDifyInstancesResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListDifyInstancesResponseBodyTags) GetTagKey() *string {
+	return s.TagKey
+}
+
+func (s *ListDifyInstancesResponseBodyTags) GetTagValue() *string {
+	return s.TagValue
+}
+
+func (s *ListDifyInstancesResponseBodyTags) SetTagKey(v string) *ListDifyInstancesResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyTags) SetTagValue(v string) *ListDifyInstancesResponseBodyTags {
+	s.TagValue = &v
+	return s
+}
+
+func (s *ListDifyInstancesResponseBodyTags) Validate() error {
 	return dara.Validate(s)
 }

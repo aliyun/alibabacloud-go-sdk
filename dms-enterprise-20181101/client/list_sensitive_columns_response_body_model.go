@@ -41,8 +41,7 @@ type ListSensitiveColumnsResponseBody struct {
 	// example:
 	//
 	// 09D82FD7-F87F-59EF-AA82-AEF71B09E306
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sensitive fields.
+	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SensitiveColumnList *ListSensitiveColumnsResponseBodySensitiveColumnList `json:"SensitiveColumnList,omitempty" xml:"SensitiveColumnList,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
@@ -168,52 +167,12 @@ func (s *ListSensitiveColumnsResponseBodySensitiveColumnList) Validate() error {
 }
 
 type ListSensitiveColumnsResponseBodySensitiveColumnListSensitiveColumn struct {
-	// The number of sensitive fields.
-	//
-	// example:
-	//
-	// 1
-	ColumnCount *int64 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
-	// The name of the field.
-	//
-	// example:
-	//
-	// test_column
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The type of the de-identification algorithm. Valid values:
-	//
-	// 	- DEFAULT: All characters are masked. This is the default value.
-	//
-	// 	- FIX_POS: The characters at specific positions are masked.
-	//
-	// 	- FIX_CHAR: Specific characters are masked.
-	//
-	// example:
-	//
-	// DEFAULT
-	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test_schema
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The sensitivity level of the field. Valid values:
-	//
-	// 	- SENSITIVE
-	//
-	// 	- CONFIDENTIAL
-	//
-	// example:
-	//
-	// SENSITIVE
+	ColumnCount   *int64  `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	ColumnName    *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	FunctionType  *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	SchemaName    *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
-	// The name of the table.
-	//
-	// example:
-	//
-	// test_table
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListSensitiveColumnsResponseBodySensitiveColumnListSensitiveColumn) String() string {

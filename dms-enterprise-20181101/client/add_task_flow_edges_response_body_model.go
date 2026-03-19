@@ -22,7 +22,6 @@ type iAddTaskFlowEdgesResponseBody interface {
 }
 
 type AddTaskFlowEdgesResponseBody struct {
-	// The list of task flow edge IDs.
 	EdgeIds *AddTaskFlowEdgesResponseBodyEdgeIds `json:"EdgeIds,omitempty" xml:"EdgeIds,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//

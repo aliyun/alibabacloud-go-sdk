@@ -22,7 +22,6 @@ type iCreateDatabaseExportOrderResponseBody interface {
 }
 
 type CreateDatabaseExportOrderResponseBody struct {
-	// The information about the ticket.
 	CreateOrderResult *CreateDatabaseExportOrderResponseBodyCreateOrderResult `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Struct"`
 	// The error code returned.
 	//
