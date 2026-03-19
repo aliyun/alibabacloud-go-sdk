@@ -15,6 +15,8 @@ type iGetAIOrderApprovalCommentSSEResponseBody interface {
 	GetErrorCode() *string
 	SetErrorMessage(v string) *GetAIOrderApprovalCommentSSEResponseBody
 	GetErrorMessage() *string
+	SetOutput(v *GetAIOrderApprovalCommentSSEResponseBodyOutput) *GetAIOrderApprovalCommentSSEResponseBody
+	GetOutput() *GetAIOrderApprovalCommentSSEResponseBodyOutput
 	SetRequestId(v string) *GetAIOrderApprovalCommentSSEResponseBody
 	GetRequestId() *string
 	SetSuccess(v bool) *GetAIOrderApprovalCommentSSEResponseBody
@@ -33,7 +35,8 @@ type GetAIOrderApprovalCommentSSEResponseBody struct {
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ErrorMessage *string                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Output       *GetAIOrderApprovalCommentSSEResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	// example:
 	//
 	// 0C1CB646-1DE4-4AD0-B4A4-7D47DD52E931
@@ -64,6 +67,10 @@ func (s *GetAIOrderApprovalCommentSSEResponseBody) GetErrorMessage() *string {
 	return s.ErrorMessage
 }
 
+func (s *GetAIOrderApprovalCommentSSEResponseBody) GetOutput() *GetAIOrderApprovalCommentSSEResponseBodyOutput {
+	return s.Output
+}
+
 func (s *GetAIOrderApprovalCommentSSEResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -87,6 +94,11 @@ func (s *GetAIOrderApprovalCommentSSEResponseBody) SetErrorMessage(v string) *Ge
 	return s
 }
 
+func (s *GetAIOrderApprovalCommentSSEResponseBody) SetOutput(v *GetAIOrderApprovalCommentSSEResponseBodyOutput) *GetAIOrderApprovalCommentSSEResponseBody {
+	s.Output = v
+	return s
+}
+
 func (s *GetAIOrderApprovalCommentSSEResponseBody) SetRequestId(v string) *GetAIOrderApprovalCommentSSEResponseBody {
 	s.RequestId = &v
 	return s
@@ -98,5 +110,38 @@ func (s *GetAIOrderApprovalCommentSSEResponseBody) SetSuccess(v bool) *GetAIOrde
 }
 
 func (s *GetAIOrderApprovalCommentSSEResponseBody) Validate() error {
+	if s.Output != nil {
+		if err := s.Output.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetAIOrderApprovalCommentSSEResponseBodyOutput struct {
+	// example:
+	//
+	// {"approvalStatus":"建议拒绝","approvalSuggestion":"xxx","sessionId":"xxx"}
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s GetAIOrderApprovalCommentSSEResponseBodyOutput) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAIOrderApprovalCommentSSEResponseBodyOutput) GoString() string {
+	return s.String()
+}
+
+func (s *GetAIOrderApprovalCommentSSEResponseBodyOutput) GetContent() *string {
+	return s.Content
+}
+
+func (s *GetAIOrderApprovalCommentSSEResponseBodyOutput) SetContent(v string) *GetAIOrderApprovalCommentSSEResponseBodyOutput {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAIOrderApprovalCommentSSEResponseBodyOutput) Validate() error {
 	return dara.Validate(s)
 }
