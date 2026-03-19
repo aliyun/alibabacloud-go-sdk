@@ -1734,9 +1734,13 @@ func (s *QueryJobListResponseBodyJobListJobOutputOutputFile) Validate() error {
 }
 
 type QueryJobListResponseBodyJobListJobOutputProperties struct {
-	Bitrate     *string                                                        `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	Duration    *string                                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileFormat  *string                                                        `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	Bitrate    *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	Duration   *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	// example:
+	//
+	// ad195fd1317a761d4425232867759d1e
+	FileMd5     *string                                                        `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
 	FileSize    *string                                                        `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
 	Format      *QueryJobListResponseBodyJobListJobOutputPropertiesFormat      `json:"Format,omitempty" xml:"Format,omitempty" type:"Struct"`
 	Fps         *string                                                        `json:"Fps,omitempty" xml:"Fps,omitempty"`
@@ -1764,6 +1768,10 @@ func (s *QueryJobListResponseBodyJobListJobOutputProperties) GetDuration() *stri
 
 func (s *QueryJobListResponseBodyJobListJobOutputProperties) GetFileFormat() *string {
 	return s.FileFormat
+}
+
+func (s *QueryJobListResponseBodyJobListJobOutputProperties) GetFileMd5() *string {
+	return s.FileMd5
 }
 
 func (s *QueryJobListResponseBodyJobListJobOutputProperties) GetFileSize() *string {
@@ -1806,6 +1814,11 @@ func (s *QueryJobListResponseBodyJobListJobOutputProperties) SetDuration(v strin
 
 func (s *QueryJobListResponseBodyJobListJobOutputProperties) SetFileFormat(v string) *QueryJobListResponseBodyJobListJobOutputProperties {
 	s.FileFormat = &v
+	return s
+}
+
+func (s *QueryJobListResponseBodyJobListJobOutputProperties) SetFileMd5(v string) *QueryJobListResponseBodyJobListJobOutputProperties {
+	s.FileMd5 = &v
 	return s
 }
 
