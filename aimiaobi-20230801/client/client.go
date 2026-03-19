@@ -3430,6 +3430,84 @@ func (client *Client) ExportIntervenes(request *ExportIntervenesRequest) (_resul
 
 // Summary:
 //
+// 导出PPT作品
+//
+// @param request - ExportPptArtifactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportPptArtifactResponse
+func (client *Client) ExportPptArtifactWithOptions(request *ExportPptArtifactRequest, runtime *dara.RuntimeOptions) (_result *ExportPptArtifactResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Edit) {
+		body["Edit"] = request.Edit
+	}
+
+	if !dara.IsNil(request.ExportFileType) {
+		body["ExportFileType"] = request.ExportFileType
+	}
+
+	if !dara.IsNil(request.PptArtifactId) {
+		body["PptArtifactId"] = request.PptArtifactId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.Zip) {
+		body["Zip"] = request.Zip
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportPptArtifact"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportPptArtifactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出PPT作品
+//
+// @param request - ExportPptArtifactRequest
+//
+// @return ExportPptArtifactResponse
+func (client *Client) ExportPptArtifact(request *ExportPptArtifactRequest) (_result *ExportPptArtifactResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExportPptArtifactResponse{}
+	_body, _err := client.ExportPptArtifactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 反馈某次生成的结果
 //
 // @param tmpReq - FeedbackDialogueRequest
@@ -6340,6 +6418,72 @@ func (client *Client) GetPptArtifact(request *GetPptArtifactRequest) (_result *G
 
 // Summary:
 //
+// 查询PPT导出任务的结果
+//
+// @param request - GetPptArtifactExportResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPptArtifactExportResultResponse
+func (client *Client) GetPptArtifactExportResultWithOptions(request *GetPptArtifactExportResultRequest, runtime *dara.RuntimeOptions) (_result *GetPptArtifactExportResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExportTaskId) {
+		body["ExportTaskId"] = request.ExportTaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPptArtifactExportResult"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPptArtifactExportResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PPT导出任务的结果
+//
+// @param request - GetPptArtifactExportResultRequest
+//
+// @return GetPptArtifactExportResultResponse
+func (client *Client) GetPptArtifactExportResult(request *GetPptArtifactExportResultRequest) (_result *GetPptArtifactExportResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPptArtifactExportResultResponse{}
+	_body, _err := client.GetPptArtifactExportResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取PPT组件的配置
 //
 // @param request - GetPptConfigRequest
@@ -6397,6 +6541,68 @@ func (client *Client) GetPptConfig(request *GetPptConfigRequest) (_result *GetPp
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetPptConfigResponse{}
 	_body, _err := client.GetPptConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PPT模板筛选器
+//
+// @param request - GetPptTemplateSelectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPptTemplateSelectorResponse
+func (client *Client) GetPptTemplateSelectorWithOptions(request *GetPptTemplateSelectorRequest, runtime *dara.RuntimeOptions) (_result *GetPptTemplateSelectorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPptTemplateSelector"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPptTemplateSelectorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PPT模板筛选器
+//
+// @param request - GetPptTemplateSelectorRequest
+//
+// @return GetPptTemplateSelectorResponse
+func (client *Client) GetPptTemplateSelector(request *GetPptTemplateSelectorRequest) (_result *GetPptTemplateSelectorResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPptTemplateSelectorResponse{}
+	_body, _err := client.GetPptTemplateSelectorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9759,6 +9965,94 @@ func (client *Client) ListPptArtifacts(request *ListPptArtifactsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListPptArtifactsResponse{}
 	_body, _err := client.ListPptArtifactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PPT模板列表
+//
+// @param request - ListPptTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPptTemplatesResponse
+func (client *Client) ListPptTemplatesWithOptions(request *ListPptTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListPptTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CareerId) {
+		body["CareerId"] = request.CareerId
+	}
+
+	if !dara.IsNil(request.ColourId) {
+		body["ColourId"] = request.ColourId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SceneId) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !dara.IsNil(request.StyleId) {
+		body["StyleId"] = request.StyleId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPptTemplates"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPptTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PPT模板列表
+//
+// @param request - ListPptTemplatesRequest
+//
+// @return ListPptTemplatesResponse
+func (client *Client) ListPptTemplates(request *ListPptTemplatesRequest) (_result *ListPptTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPptTemplatesResponse{}
+	_body, _err := client.ListPptTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
