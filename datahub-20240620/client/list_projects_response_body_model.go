@@ -153,23 +153,11 @@ func (s *ListProjectsResponseBodyList) Validate() error {
 }
 
 type ListProjectsResponseBodyListProject struct {
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// example:
-	//
-	// 1708171905000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1048133943212399
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// poc_test
+	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// 1708171905000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListProjectsResponseBodyListProject) String() string {

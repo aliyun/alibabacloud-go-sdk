@@ -153,46 +153,16 @@ func (s *ListSubscriptionsResponseBodyList) Validate() error {
 }
 
 type ListSubscriptionsResponseBodyListSubscription struct {
-	// example:
-	//
-	// test_application_name
-	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
-	// example:
-	//
-	// test_comment
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// example:
-	//
-	// 1708171905000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1048133943212399
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// test_project
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// 1
-	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// 1745824636429WZ2EE
+	Application    *string `json:"Application,omitempty" xml:"Application,omitempty"`
+	Comment        *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator        *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	State          *int32  `json:"State,omitempty" xml:"State,omitempty"`
 	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
-	// example:
-	//
-	// test_topic
-	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// example:
-	//
-	// USER
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 1708171905000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	TopicName      *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime     *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListSubscriptionsResponseBodyListSubscription) String() string {

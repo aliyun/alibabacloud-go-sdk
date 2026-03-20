@@ -153,55 +153,19 @@ func (s *ListTopicsResponseBodyList) Validate() error {
 }
 
 type ListTopicsResponseBodyListTopic struct {
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// example:
-	//
-	// 1753346106000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 276887103073464052
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// false
+	Comment              *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator              *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	EnableSchemaRegistry *string `json:"EnableSchemaRegistry,omitempty" xml:"EnableSchemaRegistry,omitempty"`
-	// example:
-	//
-	// true
-	ExpandMode *string `json:"ExpandMode,omitempty" xml:"ExpandMode,omitempty"`
-	// example:
-	//
-	// 3
-	Lifecycle *int32 `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	// example:
-	//
-	// poc_test
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// [{\\"Type\\":\\"STRING\\",\\"AllowNull\\":true,\\"Name\\":\\"str\\"},{\\"Type\\":\\"STRING\\",\\"AllowNull\\":true,\\"Name\\":\\"dt\\"}]
-	RecordSchema *string `json:"RecordSchema,omitempty" xml:"RecordSchema,omitempty"`
-	// example:
-	//
-	// TUPLE
-	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// example:
-	//
-	// 1
-	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// example:
-	//
-	// 10000
-	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// example:
-	//
-	// ods_bio_safety_env_disinfection
-	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// example:
-	//
-	// 1753346106000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ExpandMode           *string `json:"ExpandMode,omitempty" xml:"ExpandMode,omitempty"`
+	Lifecycle            *int32  `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RecordSchema         *string `json:"RecordSchema,omitempty" xml:"RecordSchema,omitempty"`
+	RecordType           *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	Storage              *int64  `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	TopicName            *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	UpdateTime           *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTopicsResponseBodyListTopic) String() string {

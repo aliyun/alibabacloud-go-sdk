@@ -153,54 +153,18 @@ func (s *ListConnectorsResponseBodyList) Validate() error {
 }
 
 type ListConnectorsResponseBodyListConnector struct {
-	// example:
-	//
-	// [\\"field1\\",\\"field2\\"]
-	ColumnFields *string `json:"ColumnFields,omitempty" xml:"ColumnFields,omitempty"`
-	// example:
-	//
-	// {\\"Table\\":\\"r3\\",\\"Endpoint\\":\\"https://Device-data.cn-beijing.ots-internal.aliyuncs.com\\",\\"Instance\\":\\"Device-data\\",\\"WriteMode\\":\\"PUT\\",\\"AuthMode\\":\\"STS\\"}
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// example:
-	//
-	// fa44384c-0ac5-4d3e-8acd-76e18636ab10
-	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// example:
-	//
-	// 1724041098000
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 1696648921408952
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// example:
-	//
-	// 2025-12-04 16:45:00
-	DoneTime *string `json:"DoneTime,omitempty" xml:"DoneTime,omitempty"`
-	// example:
-	//
-	// test_project
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// example:
-	//
-	// RUNNING
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// example:
-	//
-	// 1745824636429WZ2EE
+	ColumnFields   *string `json:"ColumnFields,omitempty" xml:"ColumnFields,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	ConnectorId    *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Creator        *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DoneTime       *string `json:"DoneTime,omitempty" xml:"DoneTime,omitempty"`
+	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	State          *string `json:"State,omitempty" xml:"State,omitempty"`
 	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
-	// example:
-	//
-	// test_topic
-	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
-	// example:
-	//
-	// SINK_ODPS
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 1708171905000
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	TopicName      *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListConnectorsResponseBodyListConnector) String() string {
