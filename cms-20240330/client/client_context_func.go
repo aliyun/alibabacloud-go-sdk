@@ -59,6 +59,10 @@ func (client *Client) AddMemoriesWithContext(ctx context.Context, workspace *str
 		body["runId"] = request.RunId
 	}
 
+	if !dara.IsNil(request.Timestamp) {
+		body["timestamp"] = request.Timestamp
+	}
+
 	if !dara.IsNil(request.UserId) {
 		body["userId"] = request.UserId
 	}

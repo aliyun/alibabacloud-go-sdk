@@ -9,6 +9,10 @@ type iGetMemoryResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentId(v string) *GetMemoryResponseBody
+	GetAgentId() *string
+	SetAppId(v string) *GetMemoryResponseBody
+	GetAppId() *string
 	SetCreatedAt(v string) *GetMemoryResponseBody
 	GetCreatedAt() *string
 	SetExpirationDate(v string) *GetMemoryResponseBody
@@ -27,11 +31,23 @@ type iGetMemoryResponseBody interface {
 	GetOwner() *string
 	SetRequestId(v string) *GetMemoryResponseBody
 	GetRequestId() *string
+	SetRunId(v string) *GetMemoryResponseBody
+	GetRunId() *string
 	SetUpdatedAt(v string) *GetMemoryResponseBody
 	GetUpdatedAt() *string
+	SetUserId(v string) *GetMemoryResponseBody
+	GetUserId() *string
 }
 
 type GetMemoryResponseBody struct {
+	// example:
+	//
+	// test_user_001
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// example:
+	//
+	// test_user_001
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
 	// example:
 	//
 	// 1751595283143
@@ -70,8 +86,16 @@ type GetMemoryResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// example:
 	//
+	// test_user_001
+	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
 	// 1744428159434
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// example:
+	//
+	// test_user_001
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s GetMemoryResponseBody) String() string {
@@ -80,6 +104,14 @@ func (s GetMemoryResponseBody) String() string {
 
 func (s GetMemoryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetMemoryResponseBody) GetAgentId() *string {
+	return s.AgentId
+}
+
+func (s *GetMemoryResponseBody) GetAppId() *string {
+	return s.AppId
 }
 
 func (s *GetMemoryResponseBody) GetCreatedAt() *string {
@@ -118,8 +150,26 @@ func (s *GetMemoryResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetMemoryResponseBody) GetRunId() *string {
+	return s.RunId
+}
+
 func (s *GetMemoryResponseBody) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *GetMemoryResponseBody) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *GetMemoryResponseBody) SetAgentId(v string) *GetMemoryResponseBody {
+	s.AgentId = &v
+	return s
+}
+
+func (s *GetMemoryResponseBody) SetAppId(v string) *GetMemoryResponseBody {
+	s.AppId = &v
+	return s
 }
 
 func (s *GetMemoryResponseBody) SetCreatedAt(v string) *GetMemoryResponseBody {
@@ -167,8 +217,18 @@ func (s *GetMemoryResponseBody) SetRequestId(v string) *GetMemoryResponseBody {
 	return s
 }
 
+func (s *GetMemoryResponseBody) SetRunId(v string) *GetMemoryResponseBody {
+	s.RunId = &v
+	return s
+}
+
 func (s *GetMemoryResponseBody) SetUpdatedAt(v string) *GetMemoryResponseBody {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *GetMemoryResponseBody) SetUserId(v string) *GetMemoryResponseBody {
+	s.UserId = &v
 	return s
 }
 

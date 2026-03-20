@@ -25,6 +25,8 @@ type iAddMemoriesRequest interface {
 	GetMetadata() map[string]interface{}
 	SetRunId(v string) *AddMemoriesRequest
 	GetRunId() *string
+	SetTimestamp(v int64) *AddMemoriesRequest
+	GetTimestamp() *int64
 	SetUserId(v string) *AddMemoriesRequest
 	GetUserId() *string
 }
@@ -59,6 +61,10 @@ type AddMemoriesRequest struct {
 	//
 	// jr-80ded1d6953c64ea
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// 12312314214
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 	// example:
 	//
 	// test_user_001
@@ -105,6 +111,10 @@ func (s *AddMemoriesRequest) GetRunId() *string {
 	return s.RunId
 }
 
+func (s *AddMemoriesRequest) GetTimestamp() *int64 {
+	return s.Timestamp
+}
+
 func (s *AddMemoriesRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -146,6 +156,11 @@ func (s *AddMemoriesRequest) SetMetadata(v map[string]interface{}) *AddMemoriesR
 
 func (s *AddMemoriesRequest) SetRunId(v string) *AddMemoriesRequest {
 	s.RunId = &v
+	return s
+}
+
+func (s *AddMemoriesRequest) SetTimestamp(v int64) *AddMemoriesRequest {
+	s.Timestamp = &v
 	return s
 }
 

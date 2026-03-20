@@ -148,6 +148,10 @@ type GetMemoriesResponseBodyResults struct {
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// example:
 	//
+	// test_user_001
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// example:
+	//
 	// 1747623093939
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// example:
@@ -204,6 +208,10 @@ func (s *GetMemoriesResponseBodyResults) GetAgentId() *string {
 	return s.AgentId
 }
 
+func (s *GetMemoriesResponseBodyResults) GetAppId() *string {
+	return s.AppId
+}
+
 func (s *GetMemoriesResponseBodyResults) GetCreatedAt() *string {
 	return s.CreatedAt
 }
@@ -251,6 +259,11 @@ func (s *GetMemoriesResponseBodyResults) SetActorId(v string) *GetMemoriesRespon
 
 func (s *GetMemoriesResponseBodyResults) SetAgentId(v string) *GetMemoriesResponseBodyResults {
 	s.AgentId = &v
+	return s
+}
+
+func (s *GetMemoriesResponseBodyResults) SetAppId(v string) *GetMemoriesResponseBodyResults {
+	s.AppId = &v
 	return s
 }
 

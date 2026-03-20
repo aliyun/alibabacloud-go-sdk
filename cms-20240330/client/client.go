@@ -107,6 +107,10 @@ func (client *Client) AddMemoriesWithOptions(workspace *string, memoryStoreName 
 		body["runId"] = request.RunId
 	}
 
+	if !dara.IsNil(request.Timestamp) {
+		body["timestamp"] = request.Timestamp
+	}
+
 	if !dara.IsNil(request.UserId) {
 		body["userId"] = request.UserId
 	}
