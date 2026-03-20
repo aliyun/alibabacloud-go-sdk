@@ -30,15 +30,66 @@ type iGroup interface {
 }
 
 type Group struct {
-	AccessToken      *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The token that is used to access the service group.
+	//
+	// example:
+	//
+	// MzJiMDI5MDliODc0MTlkYmI0ZDhlYmExYjczYTIyZTE3Zm********
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The region where the service group resides.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The time when the service group was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-05-19T14:19:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The public endpoint of the service group.
+	//
+	// example:
+	//
+	// http://1110*****.cn-hangzhou.pai-eas.aliyuncs.com/api/predict/test_group
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	// The internal endpoint of the service group.
+	//
+	// example:
+	//
+	// http://1110*****.vpc.cn-hangzhou.pai-eas.aliyuncs.com/api/predict/test_group
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	QueueService     *string `json:"QueueService,omitempty" xml:"QueueService,omitempty"`
-	TrafficMode      *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The name of the service group.
+	//
+	// example:
+	//
+	// foo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The queue service that is included in the service group.
+	//
+	// example:
+	//
+	// qservice
+	QueueService *string `json:"QueueService,omitempty" xml:"QueueService,omitempty"`
+	// The traffic mode.
+	//
+	// Valid values:
+	//
+	// 	- auto: The traffic is automatically allocated based on the number of instances.
+	//
+	// 	- customized: The traffic is allocated based on the custom weight.
+	//
+	// example:
+	//
+	// auto
+	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+	// The time when the service group was updated. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-01-29T11:13:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Group) String() string {

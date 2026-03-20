@@ -962,6 +962,57 @@ func (client *Client) CreateServiceCronScalerWithContext(ctx context.Context, Cl
 
 // Summary:
 //
+// 创建连接服务的token
+//
+// @param request - CreateServiceInstanceTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceInstanceTokenResponse
+func (client *Client) CreateServiceInstanceTokenWithContext(ctx context.Context, ClusterId *string, ServiceName *string, InstanceName *string, request *CreateServiceInstanceTokenRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceInstanceTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionType) {
+		query["ActionType"] = request.ActionType
+	}
+
+	if !dara.IsNil(request.WorkerName) {
+		query["WorkerName"] = request.WorkerName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceInstanceToken"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/instances/" + dara.PercentEncode(dara.StringValue(InstanceName)) + "/token"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceInstanceTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
 //
 // @param request - CreateServiceMirrorRequest
@@ -1224,7 +1275,7 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, ClusterId *s
 
 // Summary:
 //
-// 删除网关内网访问端点
+// Deletes an internal endpoint of a private gateway.
 //
 // @param request - DeleteGatewayIntranetLinkedVpcRequest
 //

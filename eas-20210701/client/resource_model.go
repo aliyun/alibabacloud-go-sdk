@@ -58,29 +58,114 @@ type iResource interface {
 }
 
 type Resource struct {
-	ClusterId                    *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CpuCount                     *int32                 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	CpuUsed                      *int32                 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	CreateTime                   *string                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExtraData                    map[string]interface{} `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
-	Features                     []*string              `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	GpuCount                     *int32                 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	GpuUsed                      *float32               `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
-	InstanceCount                *int32                 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceMaxAllocatableCPU    *int32                 `json:"InstanceMaxAllocatableCPU,omitempty" xml:"InstanceMaxAllocatableCPU,omitempty"`
-	InstanceMaxAllocatableGPU    *float32               `json:"InstanceMaxAllocatableGPU,omitempty" xml:"InstanceMaxAllocatableGPU,omitempty"`
-	InstanceMaxAllocatableMemory *int32                 `json:"InstanceMaxAllocatableMemory,omitempty" xml:"InstanceMaxAllocatableMemory,omitempty"`
-	Memory                       *int32                 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MemoryUsed                   *int32                 `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	Message                      *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	PostPaidInstanceCount        *int32                 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
-	PrePaidInstanceCount         *int32                 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
-	ResourceId                   *string                `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName                 *string                `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType                 *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status                       *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime                   *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Vendor                       *string                `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The information about the clusters.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The total number of CPU cores.
+	//
+	// example:
+	//
+	// 64
+	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	CpuUsed  *int32 `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2019-02-26T17:52:49Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The additional information.
+	//
+	// example:
+	//
+	// {}
+	ExtraData map[string]interface{} `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
+	Features  []*string              `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// The total number of GPUs.
+	//
+	// example:
+	//
+	// 1
+	GpuCount *int32   `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuUsed  *float32 `json:"GpuUsed,omitempty" xml:"GpuUsed,omitempty"`
+	// The total number of instances. It is equal to the number of subscription instances plus the number of pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 4
+	InstanceCount                *int32   `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceMaxAllocatableCPU    *int32   `json:"InstanceMaxAllocatableCPU,omitempty" xml:"InstanceMaxAllocatableCPU,omitempty"`
+	InstanceMaxAllocatableGPU    *float32 `json:"InstanceMaxAllocatableGPU,omitempty" xml:"InstanceMaxAllocatableGPU,omitempty"`
+	InstanceMaxAllocatableMemory *int32   `json:"InstanceMaxAllocatableMemory,omitempty" xml:"InstanceMaxAllocatableMemory,omitempty"`
+	Memory                       *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	MemoryUsed                   *int32   `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	// The latest message about the resource group.
+	//
+	// example:
+	//
+	// Resource is ready
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 2
+	PostPaidInstanceCount *int32 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
+	// The number of subscription instances.
+	//
+	// example:
+	//
+	// 2
+	PrePaidInstanceCount *int32 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// eas-r-asdasdasd
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// iot
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// 	- Dedicated: the dedicated resource group.
+	//
+	// 	- SelfManaged: the self-managed resource group.
+	//
+	// example:
+	//
+	// Dedicated
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The status of the resource group.
+	//
+	// example:
+	//
+	// ResouceReady
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the instance was last updated.
+	//
+	// example:
+	//
+	// 2019-02-26T19:52:49Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The vendor of the resource group instances.
+	//
+	// Valid values:
+	//
+	// 	- ECS
+	//
+	// 	- BareMetal
+	//
+	// example:
+	//
+	// ECS
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s Resource) String() string {

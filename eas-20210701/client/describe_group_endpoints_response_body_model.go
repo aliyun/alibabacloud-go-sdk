@@ -100,12 +100,52 @@ func (s *DescribeGroupEndpointsResponseBody) Validate() error {
 }
 
 type DescribeGroupEndpointsResponseBodyEndpoints struct {
-	BackendId         *string   `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The backend access ID, which varies based on the value of the EndpointType parameter.
+	//
+	// 	- If you set EndpointType to DefaultGateway, the value of this parameter is default.
+	//
+	// 	- If you set EndpointType to PrivateGateway, the value of this parameter is the ID of the dedicated gateway.
+	//
+	// 	- If you set EndpointType to Nlb, the value of this parameter is the ID of the NLB instance.
+	//
+	// 	- If you set EndpointType to Nacos, the value of this parameter is the ID of the Nacos instance.
+	//
+	// example:
+	//
+	// gw-26340kjxjx8l3r****
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The service endpoint type. Valid values:
+	//
+	// 	- DefaultGateway: the shared gateway.
+	//
+	// 	- PrivateGateway: the dedicated gateway.
+	//
+	// 	- Nlb: Associate the service with the Network Load Balancer (NLB) instance.
+	//
+	// 	- Nacos: Associate the service with the Nacos instance.
+	//
+	// example:
+	//
+	// PrivateGateway
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The full endpoint.
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
+	// The full endpoint.
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
-	PathType          *string   `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	Port              *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The path type. Valid values:
+	//
+	// 	- Group: the path of the service group.
+	//
+	// example:
+	//
+	// Group
+	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// The port number. This parameter takes effect only when you associate the service with an NLB or Nacos instance.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeGroupEndpointsResponseBodyEndpoints) String() string {

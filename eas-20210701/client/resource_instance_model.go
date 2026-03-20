@@ -66,33 +66,157 @@ type iResourceInstance interface {
 }
 
 type ResourceInstance struct {
-	Arch                   *string                   `json:"Arch,omitempty" xml:"Arch,omitempty"`
-	AutoRenewal            *bool                     `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType             *string                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CreateTime             *string                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime            *string                   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceCpuCount       *int32                    `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
-	InstanceGpuCount       *int32                    `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
-	InstanceGpuMemory      *string                   `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
-	InstanceId             *string                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIp             *string                   `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstanceMemory         *string                   `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
-	InstanceName           *string                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstancePhase          *string                   `json:"InstancePhase,omitempty" xml:"InstancePhase,omitempty"`
-	InstanceStatus         *string                   `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceSystemDiskSize *int32                    `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
-	InstanceTenantIp       *string                   `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
-	InstanceType           *string                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceUsedCpu        *float32                  `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
-	InstanceUsedGpu        *float32                  `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
-	InstanceUsedGpuMemory  *string                   `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
-	InstanceUsedMemory     *string                   `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
-	Labels                 []*ResourceInstanceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LastCordonOperator     *string                   `json:"LastCordonOperator,omitempty" xml:"LastCordonOperator,omitempty"`
-	LastCordonReason       *string                   `json:"LastCordonReason,omitempty" xml:"LastCordonReason,omitempty"`
-	Region                 *string                   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceId             *string                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Zone                   *string                   `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// The system architecture of the instance.
+	//
+	// example:
+	//
+	// arm64
+	Arch *string `json:"Arch,omitempty" xml:"Arch,omitempty"`
+	// Indicates whether auto-renewal is enabled for the instance.
+	//
+	// example:
+	//
+	// false
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The billing method of the instance.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the instance was created.
+	//
+	// example:
+	//
+	// 2020-07-05T22:51:32Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the instance expires.
+	//
+	// example:
+	//
+	// 2020-08-05T22:51:32Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The number of CPU cores for the instance.
+	//
+	// example:
+	//
+	// 4
+	InstanceCpuCount *int32 `json:"InstanceCpuCount,omitempty" xml:"InstanceCpuCount,omitempty"`
+	// The number of GPUs for the instance.
+	//
+	// example:
+	//
+	// 0
+	InstanceGpuCount *int32 `json:"InstanceGpuCount,omitempty" xml:"InstanceGpuCount,omitempty"`
+	// The GPU memory size of the instance.
+	//
+	// example:
+	//
+	// 0G
+	InstanceGpuMemory *string `json:"InstanceGpuMemory,omitempty" xml:"InstanceGpuMemory,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// eas-i-1800z74n30kao****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 11.227.XX.XX
+	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	// The memory size of the instance.
+	//
+	// example:
+	//
+	// 8192M
+	InstanceMemory *string `json:"InstanceMemory,omitempty" xml:"InstanceMemory,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// eas01122713204*****
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstancePhase *string `json:"InstancePhase,omitempty" xml:"InstancePhase,omitempty"`
+	// The instance status.
+	//
+	// Valid values:
+	//
+	// 	- Ready-SchedulingDisabled
+	//
+	// 	- Ready
+	//
+	// 	- NotReady
+	//
+	// example:
+	//
+	// Ready
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The system disk size of the instance.
+	//
+	// example:
+	//
+	// 200
+	InstanceSystemDiskSize *int32 `json:"InstanceSystemDiskSize,omitempty" xml:"InstanceSystemDiskSize,omitempty"`
+	// The IP address of the instance in the VPC.
+	//
+	// example:
+	//
+	// 192.168.xx.xx
+	InstanceTenantIp *string `json:"InstanceTenantIp,omitempty" xml:"InstanceTenantIp,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ecs.s6-c1m2.xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The number of CPU cores used by the instance.
+	//
+	// example:
+	//
+	// 2.4
+	InstanceUsedCpu *float32 `json:"InstanceUsedCpu,omitempty" xml:"InstanceUsedCpu,omitempty"`
+	// The number of GPUs used by the instance.
+	//
+	// example:
+	//
+	// 0
+	InstanceUsedGpu *float32 `json:"InstanceUsedGpu,omitempty" xml:"InstanceUsedGpu,omitempty"`
+	// The size of the GPU memory used by the instance.
+	//
+	// example:
+	//
+	// 470M
+	InstanceUsedGpuMemory *string `json:"InstanceUsedGpuMemory,omitempty" xml:"InstanceUsedGpuMemory,omitempty"`
+	// The size of the memory used by the instance.
+	//
+	// example:
+	//
+	// 1000M
+	InstanceUsedMemory *string `json:"InstanceUsedMemory,omitempty" xml:"InstanceUsedMemory,omitempty"`
+	// The instance tags.
+	Labels             []*ResourceInstanceLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LastCordonOperator *string                   `json:"LastCordonOperator,omitempty" xml:"LastCordonOperator,omitempty"`
+	LastCordonReason   *string                   `json:"LastCordonReason,omitempty" xml:"LastCordonReason,omitempty"`
+	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// eas-r-xxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the zone to which the instance belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s ResourceInstance) String() string {
@@ -360,7 +484,17 @@ func (s *ResourceInstance) Validate() error {
 }
 
 type ResourceInstanceLabels struct {
-	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// The tag key of the instance.
+	//
+	// example:
+	//
+	// key
+	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// The tag value of the instance.
+	//
+	// example:
+	//
+	// value
 	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
 }
 

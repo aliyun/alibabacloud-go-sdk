@@ -100,12 +100,24 @@ func (s *DescribeServiceEndpointsResponseBody) Validate() error {
 }
 
 type DescribeServiceEndpointsResponseBodyEndpoints struct {
-	BackendId         *string   `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// example:
+	//
+	// nlb-5q4sp7u6oorkha****
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// example:
+	//
+	// Nlb
 	EndpointType      *string   `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	InternetEndpoints []*string `json:"InternetEndpoints,omitempty" xml:"InternetEndpoints,omitempty" type:"Repeated"`
 	IntranetEndpoints []*string `json:"IntranetEndpoints,omitempty" xml:"IntranetEndpoints,omitempty" type:"Repeated"`
-	PathType          *string   `json:"PathType,omitempty" xml:"PathType,omitempty"`
-	Port              *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// Service
+	PathType *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	// example:
+	//
+	// 9090
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeServiceEndpointsResponseBodyEndpoints) String() string {

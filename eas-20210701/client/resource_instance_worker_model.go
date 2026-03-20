@@ -36,18 +36,128 @@ type iResourceInstanceWorker interface {
 }
 
 type ResourceInstanceWorker struct {
-	CpuLimit     *int32  `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	CpuRequest   *int32  `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
-	GpuLimit     *int32  `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
-	GpuRequest   *int32  `json:"GpuRequest,omitempty" xml:"GpuRequest,omitempty"`
-	MemoryLimit  *int32  `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRquest *int32  `json:"MemoryRquest,omitempty" xml:"MemoryRquest,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ready        *bool   `json:"Ready,omitempty" xml:"Ready,omitempty"`
-	RestartCount *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The maximum number of CPU cores.
+	//
+	// example:
+	//
+	// 2
+	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
+	// The number of CPU cores that you applied for.
+	//
+	// example:
+	//
+	// 1
+	CpuRequest *int32 `json:"CpuRequest,omitempty" xml:"CpuRequest,omitempty"`
+	// The maximum number of GPUs.
+	//
+	// example:
+	//
+	// 0
+	GpuLimit *int32 `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
+	// The number of GPUs that you applied for.
+	//
+	// example:
+	//
+	// 0
+	GpuRequest *int32 `json:"GpuRequest,omitempty" xml:"GpuRequest,omitempty"`
+	// The maximum memory size.
+	//
+	// example:
+	//
+	// 400
+	MemoryLimit *int32 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// The memory size that you applied for.
+	//
+	// example:
+	//
+	// 200
+	MemoryRquest *int32 `json:"MemoryRquest,omitempty" xml:"MemoryRquest,omitempty"`
+	// The name of the service instance.
+	//
+	// example:
+	//
+	// test-india-5bbbfdbc98-****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the instance worker is ready.
+	//
+	// example:
+	//
+	// true
+	Ready *bool `json:"Ready,omitempty" xml:"Ready,omitempty"`
+	// The number of times the instance worker restarted.
+	//
+	// example:
+	//
+	// 3
+	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// test-in****
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The time when the instance worker started.
+	//
+	// example:
+	//
+	// 2021-05-09T09:56:19Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The instance state.
+	//
+	// Valid values:
+	//
+	// 	- Terminating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Succeeded
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Unknown
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Failed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Running
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Pending
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ResourceInstanceWorker) String() string {
