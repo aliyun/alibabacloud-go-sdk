@@ -44,24 +44,70 @@ type iDescribeRCAvailableResourceRequest interface {
 }
 
 type DescribeRCAvailableResourceRequest struct {
-	Cores            *int32  `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 2
+	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// cloud_ssd
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	DedicatedHostId  *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// example:
+	//
+	// dh-bp165p6xk2tlw61e****
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// This parameter is required.
-	DestinationResource *string  `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
-	InstanceChargeType  *string  `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceType        *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IoOptimized         *string  `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	Memory              *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NetworkCategory     *string  `json:"NetworkCategory,omitempty" xml:"NetworkCategory,omitempty"`
+	//
+	// example:
+	//
+	// InstanceType
+	DestinationResource *string `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
+	// example:
+	//
+	// PrePaid
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// example:
+	//
+	// mysql.x4.4xlarge.7cm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// optimized
+	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	// example:
+	//
+	// 8.0
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// vpc
+	NetworkCategory *string `json:"NetworkCategory,omitempty" xml:"NetworkCategory,omitempty"`
 	// This parameter is required.
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Scope              *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	SpotDuration       *int32  `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	SpotStrategy       *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Region
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// 1
+	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
+	// example:
+	//
+	// NoSpot
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// example:
+	//
+	// cloud_ssd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCAvailableResourceRequest) String() string {

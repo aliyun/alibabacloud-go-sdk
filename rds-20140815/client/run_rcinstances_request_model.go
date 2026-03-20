@@ -55,6 +55,8 @@ type iRunRCInstancesRequest interface {
 	GetIoOptimized() *string
 	SetKeyPairName(v string) *RunRCInstancesRequest
 	GetKeyPairName() *string
+	SetNetworkOptions(v *RunRCInstancesRequestNetworkOptions) *RunRCInstancesRequest
+	GetNetworkOptions() *RunRCInstancesRequestNetworkOptions
 	SetPassword(v string) *RunRCInstancesRequest
 	GetPassword() *string
 	SetPasswordInherit(v bool) *RunRCInstancesRequest
@@ -217,7 +219,8 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// dell5502
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	KeyPairName    *string                              `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NetworkOptions *RunRCInstancesRequestNetworkOptions `json:"NetworkOptions,omitempty" xml:"NetworkOptions,omitempty" type:"Struct"`
 	// The password of the account that is used to log on to the instance.
 	//
 	// example:
@@ -399,6 +402,10 @@ func (s *RunRCInstancesRequest) GetIoOptimized() *string {
 
 func (s *RunRCInstancesRequest) GetKeyPairName() *string {
 	return s.KeyPairName
+}
+
+func (s *RunRCInstancesRequest) GetNetworkOptions() *RunRCInstancesRequestNetworkOptions {
+	return s.NetworkOptions
 }
 
 func (s *RunRCInstancesRequest) GetPassword() *string {
@@ -596,6 +603,11 @@ func (s *RunRCInstancesRequest) SetKeyPairName(v string) *RunRCInstancesRequest 
 	return s
 }
 
+func (s *RunRCInstancesRequest) SetNetworkOptions(v *RunRCInstancesRequestNetworkOptions) *RunRCInstancesRequest {
+	s.NetworkOptions = v
+	return s
+}
+
 func (s *RunRCInstancesRequest) SetPassword(v string) *RunRCInstancesRequest {
 	s.Password = &v
 	return s
@@ -709,6 +721,11 @@ func (s *RunRCInstancesRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.NetworkOptions != nil {
+		if err := s.NetworkOptions.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.SystemDisk != nil {
@@ -874,6 +891,31 @@ func (s *RunRCInstancesRequestDataDisk) SetSnapshotId(v string) *RunRCInstancesR
 }
 
 func (s *RunRCInstancesRequestDataDisk) Validate() error {
+	return dara.Validate(s)
+}
+
+type RunRCInstancesRequestNetworkOptions struct {
+	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
+}
+
+func (s RunRCInstancesRequestNetworkOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunRCInstancesRequestNetworkOptions) GoString() string {
+	return s.String()
+}
+
+func (s *RunRCInstancesRequestNetworkOptions) GetEnableJumboFrame() *bool {
+	return s.EnableJumboFrame
+}
+
+func (s *RunRCInstancesRequestNetworkOptions) SetEnableJumboFrame(v bool) *RunRCInstancesRequestNetworkOptions {
+	s.EnableJumboFrame = &v
+	return s
+}
+
+func (s *RunRCInstancesRequestNetworkOptions) Validate() error {
 	return dara.Validate(s)
 }
 

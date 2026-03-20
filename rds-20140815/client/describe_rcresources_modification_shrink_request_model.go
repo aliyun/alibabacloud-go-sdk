@@ -31,7 +31,10 @@ type iDescribeRCResourcesModificationShrinkRequest interface {
 
 type DescribeRCResourcesModificationShrinkRequest struct {
 	ConditionssShrink *string `json:"Conditionss,omitempty" xml:"Conditionss,omitempty"`
-	Cores             *int32  `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// example:
+	//
+	// 2
+	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -39,16 +42,33 @@ type DescribeRCResourcesModificationShrinkRequest struct {
 	// InstanceType
 	DestinationResource *string `json:"DestinationResource,omitempty" xml:"DestinationResource,omitempty"`
 	// This parameter is required.
-	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Memory       *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	//
+	// example:
+	//
+	// rc-pd5c*******89u25ai
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// mysql.x4.4xlarge.7cm
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 8.0
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// example:
 	//
 	// Upgrade
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCResourcesModificationShrinkRequest) String() string {

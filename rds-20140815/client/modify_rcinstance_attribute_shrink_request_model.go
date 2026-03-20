@@ -11,6 +11,8 @@ type iModifyRCInstanceAttributeShrinkRequest interface {
 	GoString() string
 	SetDeletionProtection(v bool) *ModifyRCInstanceAttributeShrinkRequest
 	GetDeletionProtection() *bool
+	SetEnableJumboFrame(v bool) *ModifyRCInstanceAttributeShrinkRequest
+	GetEnableJumboFrame() *bool
 	SetHostName(v string) *ModifyRCInstanceAttributeShrinkRequest
 	GetHostName() *string
 	SetInstanceId(v string) *ModifyRCInstanceAttributeShrinkRequest
@@ -42,6 +44,7 @@ type ModifyRCInstanceAttributeShrinkRequest struct {
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	EnableJumboFrame   *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
 	// The hostname of the instance.
 	//
 	// example:
@@ -106,6 +109,10 @@ func (s *ModifyRCInstanceAttributeShrinkRequest) GetDeletionProtection() *bool {
 	return s.DeletionProtection
 }
 
+func (s *ModifyRCInstanceAttributeShrinkRequest) GetEnableJumboFrame() *bool {
+	return s.EnableJumboFrame
+}
+
 func (s *ModifyRCInstanceAttributeShrinkRequest) GetHostName() *string {
 	return s.HostName
 }
@@ -144,6 +151,11 @@ func (s *ModifyRCInstanceAttributeShrinkRequest) GetSecurityGroupIdsShrink() *st
 
 func (s *ModifyRCInstanceAttributeShrinkRequest) SetDeletionProtection(v bool) *ModifyRCInstanceAttributeShrinkRequest {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *ModifyRCInstanceAttributeShrinkRequest) SetEnableJumboFrame(v bool) *ModifyRCInstanceAttributeShrinkRequest {
+	s.EnableJumboFrame = &v
 	return s
 }
 

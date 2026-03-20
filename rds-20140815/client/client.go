@@ -1093,6 +1093,72 @@ func (client *Client) AttachWhitelistTemplateToInstance(request *AttachWhitelist
 
 // Summary:
 //
+// 检查备份加密信息
+//
+// @param request - AuthorizeBackupEncryptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeBackupEncryptionResponse
+func (client *Client) AuthorizeBackupEncryptionWithOptions(request *AuthorizeBackupEncryptionRequest, runtime *dara.RuntimeOptions) (_result *AuthorizeBackupEncryptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AuthorizeBackupEncryption"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AuthorizeBackupEncryptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查备份加密信息
+//
+// @param request - AuthorizeBackupEncryptionRequest
+//
+// @return AuthorizeBackupEncryptionResponse
+func (client *Client) AuthorizeBackupEncryption(request *AuthorizeBackupEncryptionRequest) (_result *AuthorizeBackupEncryptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AuthorizeBackupEncryptionResponse{}
+	_body, _err := client.AuthorizeBackupEncryptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds rules to the specified security group.
 //
 // @param tmpReq - AuthorizeRCSecurityGroupPermissionRequest
@@ -1538,6 +1604,72 @@ func (client *Client) CheckAccountNameAvailable(request *CheckAccountNameAvailab
 	runtime := &dara.RuntimeOptions{}
 	_result = &CheckAccountNameAvailableResponse{}
 	_body, _err := client.CheckAccountNameAvailableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查备份加密授权
+//
+// @param request - CheckBackupEncryptionAuthorizedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckBackupEncryptionAuthorizedResponse
+func (client *Client) CheckBackupEncryptionAuthorizedWithOptions(request *CheckBackupEncryptionAuthorizedRequest, runtime *dara.RuntimeOptions) (_result *CheckBackupEncryptionAuthorizedResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckBackupEncryptionAuthorized"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckBackupEncryptionAuthorizedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查备份加密授权
+//
+// @param request - CheckBackupEncryptionAuthorizedRequest
+//
+// @return CheckBackupEncryptionAuthorizedResponse
+func (client *Client) CheckBackupEncryptionAuthorized(request *CheckBackupEncryptionAuthorizedRequest) (_result *CheckBackupEncryptionAuthorizedResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckBackupEncryptionAuthorizedResponse{}
+	_body, _err := client.CheckBackupEncryptionAuthorizedWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2068,6 +2200,76 @@ func (client *Client) CheckRdsCustomInit(request *CheckRdsCustomInitRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &CheckRdsCustomInitResponse{}
 	_body, _err := client.CheckRdsCustomInitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查地域是否支持备份加密
+//
+// @param request - CheckRegionSupportBackupEncryptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckRegionSupportBackupEncryptionResponse
+func (client *Client) CheckRegionSupportBackupEncryptionWithOptions(request *CheckRegionSupportBackupEncryptionRequest, runtime *dara.RuntimeOptions) (_result *CheckRegionSupportBackupEncryptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceID) {
+		query["DBInstanceID"] = request.DBInstanceID
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckRegionSupportBackupEncryption"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckRegionSupportBackupEncryptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查地域是否支持备份加密
+//
+// @param request - CheckRegionSupportBackupEncryptionRequest
+//
+// @return CheckRegionSupportBackupEncryptionResponse
+func (client *Client) CheckRegionSupportBackupEncryption(request *CheckRegionSupportBackupEncryptionRequest) (_result *CheckRegionSupportBackupEncryptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckRegionSupportBackupEncryptionResponse{}
+	_body, _err := client.CheckRegionSupportBackupEncryptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26859,6 +27061,112 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 
 // Summary:
 //
+// 查询VPC列表
+//
+// @param request - DescribeVpcsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVpcsResponse
+func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVpcsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Product) {
+		query["Product"] = request.Product
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVpcs"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVpcsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC列表
+//
+// @param request - DescribeVpcsRequest
+//
+// @return DescribeVpcsResponse
+func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *DescribeVpcsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeVpcsResponse{}
+	_body, _err := client.DescribeVpcsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about the specified IP whitelist.
 //
 // Description:
@@ -27408,6 +27716,76 @@ func (client *Client) DetachWhitelistTemplateToInstance(request *DetachWhitelist
 	runtime := &dara.RuntimeOptions{}
 	_result = &DetachWhitelistTemplateToInstanceResponse{}
 	_body, _err := client.DetachWhitelistTemplateToInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启备份加密
+//
+// @param request - EnableBackupEncryptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableBackupEncryptionResponse
+func (client *Client) EnableBackupEncryptionWithOptions(request *EnableBackupEncryptionRequest, runtime *dara.RuntimeOptions) (_result *EnableBackupEncryptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.EncryptionKey) {
+		query["EncryptionKey"] = request.EncryptionKey
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableBackupEncryption"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableBackupEncryptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启备份加密
+//
+// @param request - EnableBackupEncryptionRequest
+//
+// @return EnableBackupEncryptionResponse
+func (client *Client) EnableBackupEncryption(request *EnableBackupEncryptionRequest) (_result *EnableBackupEncryptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableBackupEncryptionResponse{}
+	_body, _err := client.EnableBackupEncryptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33226,6 +33604,10 @@ func (client *Client) ModifyDBInstanceSpecWithOptions(tmpReq *ModifyDBInstanceSp
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllocateStrategy) {
+		query["AllocateStrategy"] = request.AllocateStrategy
+	}
+
 	if !dara.IsNil(request.AllowMajorVersionUpgrade) {
 		query["AllowMajorVersionUpgrade"] = request.AllowMajorVersionUpgrade
 	}
@@ -36127,6 +36509,80 @@ func (client *Client) ModifyParameterTimedScheduleTask(request *ModifyParameterT
 
 // Summary:
 //
+// 修改部署集的名称和描述信息
+//
+// @param request - ModifyRCDeploymentSetAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRCDeploymentSetAttributeResponse
+func (client *Client) ModifyRCDeploymentSetAttributeWithOptions(request *ModifyRCDeploymentSetAttributeRequest, runtime *dara.RuntimeOptions) (_result *ModifyRCDeploymentSetAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentSetId) {
+		query["DeploymentSetId"] = request.DeploymentSetId
+	}
+
+	if !dara.IsNil(request.DeploymentSetName) {
+		query["DeploymentSetName"] = request.DeploymentSetName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyRCDeploymentSetAttribute"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyRCDeploymentSetAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改部署集的名称和描述信息
+//
+// @param request - ModifyRCDeploymentSetAttributeRequest
+//
+// @return ModifyRCDeploymentSetAttributeResponse
+func (client *Client) ModifyRCDeploymentSetAttribute(request *ModifyRCDeploymentSetAttributeRequest) (_result *ModifyRCDeploymentSetAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyRCDeploymentSetAttributeResponse{}
+	_body, _err := client.ModifyRCDeploymentSetAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改块存储属性
 //
 // @param request - ModifyRCDiskAttributeRequest
@@ -36660,6 +37116,10 @@ func (client *Client) ModifyRCInstanceAttributeWithOptions(tmpReq *ModifyRCInsta
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeletionProtection) {
 		query["DeletionProtection"] = request.DeletionProtection
+	}
+
+	if !dara.IsNil(request.EnableJumboFrame) {
+		query["EnableJumboFrame"] = request.EnableJumboFrame
 	}
 
 	if !dara.IsNil(request.HostName) {
@@ -41891,6 +42351,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 		request.DataDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisk, dara.String("DataDisk"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.NetworkOptions) {
+		request.NetworkOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetworkOptions, dara.String("NetworkOptions"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SecurityGroupIds) {
 		request.SecurityGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityGroupIds, dara.String("SecurityGroupIds"), dara.String("json"))
 	}
@@ -41990,6 +42454,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !dara.IsNil(request.KeyPairName) {
 		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !dara.IsNil(request.NetworkOptionsShrink) {
+		query["NetworkOptions"] = request.NetworkOptionsShrink
 	}
 
 	if !dara.IsNil(request.Password) {

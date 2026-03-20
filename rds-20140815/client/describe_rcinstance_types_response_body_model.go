@@ -118,7 +118,8 @@ type DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType struct {
 	// example:
 	//
 	// rds.gna8.2xlarge.8cm
-	InstanceTypeId *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	InstanceTypeId    *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	JumboFrameSupport *bool   `json:"JumboFrameSupport,omitempty" xml:"JumboFrameSupport,omitempty"`
 	// The memory size of the instance type. Unit: GiB.
 	//
 	// example:
@@ -151,6 +152,10 @@ func (s *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) GetInstan
 	return s.InstanceTypeId
 }
 
+func (s *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) GetJumboFrameSupport() *bool {
+	return s.JumboFrameSupport
+}
+
 func (s *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) GetMemorySize() *int32 {
 	return s.MemorySize
 }
@@ -172,6 +177,11 @@ func (s *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstan
 
 func (s *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) SetInstanceTypeId(v string) *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType {
 	s.InstanceTypeId = &v
+	return s
+}
+
+func (s *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) SetJumboFrameSupport(v bool) *DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType {
+	s.JumboFrameSupport = &v
 	return s
 }
 

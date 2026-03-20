@@ -9,6 +9,8 @@ type iModifyDBInstanceSpecRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllocateStrategy(v string) *ModifyDBInstanceSpecRequest
+	GetAllocateStrategy() *string
 	SetAllowMajorVersionUpgrade(v bool) *ModifyDBInstanceSpecRequest
 	GetAllowMajorVersionUpgrade() *bool
 	SetAutoUseCoupon(v bool) *ModifyDBInstanceSpecRequest
@@ -76,6 +78,7 @@ type iModifyDBInstanceSpecRequest interface {
 }
 
 type ModifyDBInstanceSpecRequest struct {
+	AllocateStrategy *string `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
 	// Specifies whether to upgrade the major engine version of an ApsaraDB RDS for SQL Server instance. For more information, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/127458.html). Valid values:
 	//
 	// 	- **true**
@@ -388,6 +391,10 @@ func (s ModifyDBInstanceSpecRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBInstanceSpecRequest) GetAllocateStrategy() *string {
+	return s.AllocateStrategy
+}
+
 func (s *ModifyDBInstanceSpecRequest) GetAllowMajorVersionUpgrade() *bool {
 	return s.AllowMajorVersionUpgrade
 }
@@ -514,6 +521,11 @@ func (s *ModifyDBInstanceSpecRequest) GetZoneId() *string {
 
 func (s *ModifyDBInstanceSpecRequest) GetZoneIdSlave1() *string {
 	return s.ZoneIdSlave1
+}
+
+func (s *ModifyDBInstanceSpecRequest) SetAllocateStrategy(v string) *ModifyDBInstanceSpecRequest {
+	s.AllocateStrategy = &v
+	return s
 }
 
 func (s *ModifyDBInstanceSpecRequest) SetAllowMajorVersionUpgrade(v bool) *ModifyDBInstanceSpecRequest {

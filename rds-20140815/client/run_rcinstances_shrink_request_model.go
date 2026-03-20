@@ -55,6 +55,8 @@ type iRunRCInstancesShrinkRequest interface {
 	GetIoOptimized() *string
 	SetKeyPairName(v string) *RunRCInstancesShrinkRequest
 	GetKeyPairName() *string
+	SetNetworkOptionsShrink(v string) *RunRCInstancesShrinkRequest
+	GetNetworkOptionsShrink() *string
 	SetPassword(v string) *RunRCInstancesShrinkRequest
 	GetPassword() *string
 	SetPasswordInherit(v bool) *RunRCInstancesShrinkRequest
@@ -217,7 +219,8 @@ type RunRCInstancesShrinkRequest struct {
 	// example:
 	//
 	// dell5502
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	KeyPairName          *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NetworkOptionsShrink *string `json:"NetworkOptions,omitempty" xml:"NetworkOptions,omitempty"`
 	// The password of the account that is used to log on to the instance.
 	//
 	// example:
@@ -399,6 +402,10 @@ func (s *RunRCInstancesShrinkRequest) GetIoOptimized() *string {
 
 func (s *RunRCInstancesShrinkRequest) GetKeyPairName() *string {
 	return s.KeyPairName
+}
+
+func (s *RunRCInstancesShrinkRequest) GetNetworkOptionsShrink() *string {
+	return s.NetworkOptionsShrink
 }
 
 func (s *RunRCInstancesShrinkRequest) GetPassword() *string {
@@ -593,6 +600,11 @@ func (s *RunRCInstancesShrinkRequest) SetIoOptimized(v string) *RunRCInstancesSh
 
 func (s *RunRCInstancesShrinkRequest) SetKeyPairName(v string) *RunRCInstancesShrinkRequest {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *RunRCInstancesShrinkRequest) SetNetworkOptionsShrink(v string) *RunRCInstancesShrinkRequest {
+	s.NetworkOptionsShrink = &v
 	return s
 }
 
