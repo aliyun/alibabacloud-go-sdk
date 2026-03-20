@@ -180,7 +180,7 @@ func (client *Client) BatchDeleteJobs(request *BatchDeleteJobsRequest) (_result 
 
 // Summary:
 //
-// The additional information that is returned.
+// Deletes multiple routing policies at a time.
 //
 // @param request - BatchDeleteRouteStrategyRequest
 //
@@ -238,7 +238,7 @@ func (client *Client) BatchDeleteRouteStrategyWithOptions(request *BatchDeleteRo
 
 // Summary:
 //
-// The additional information that is returned.
+// Deletes multiple routing policies at a time.
 //
 // @param request - BatchDeleteRouteStrategyRequest
 //
@@ -1164,7 +1164,7 @@ func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *C
 
 // Summary:
 //
-// The additional information that is returned.
+// Deletes an application group.
 //
 // @param request - DeleteAppGroupRequest
 //
@@ -1220,7 +1220,7 @@ func (client *Client) DeleteAppGroupWithOptions(request *DeleteAppGroupRequest, 
 
 // Summary:
 //
-// The additional information that is returned.
+// Deletes an application group.
 //
 // @param request - DeleteAppGroupRequest
 //
@@ -1750,7 +1750,7 @@ func (client *Client) DesignateWorkers(request *DesignateWorkersRequest) (_resul
 
 // Summary:
 //
-// Disables a job.
+// Disables a specified task.
 //
 // @param request - DisableJobRequest
 //
@@ -1790,7 +1790,7 @@ func (client *Client) DisableJobWithOptions(request *DisableJobRequest, runtime 
 
 // Summary:
 //
-// Disables a job.
+// Disables a specified task.
 //
 // @param request - DisableJobRequest
 //
@@ -2106,7 +2106,7 @@ func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result 
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\*\\\\*the additional information about response parameters below this table\\\\*\\\\*.
+// The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*\\\\\\\\*the additional information about response parameters below this table\\\\\\\\*\\\\\\\\*.
 //
 // @param request - GetAppGroupRequest
 //
@@ -2158,7 +2158,7 @@ func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtim
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\*\\\\*the additional information about response parameters below this table\\\\*\\\\*.
+// The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*\\\\\\\\*the additional information about response parameters below this table\\\\\\\\*\\\\\\\\*.
 //
 // @param request - GetAppGroupRequest
 //

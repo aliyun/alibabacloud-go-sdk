@@ -89,7 +89,7 @@ func (client *Client) BatchDeleteJobsWithContext(ctx context.Context, request *B
 
 // Summary:
 //
-// The additional information that is returned.
+// Deletes multiple routing policies at a time.
 //
 // @param request - BatchDeleteRouteStrategyRequest
 //
@@ -857,7 +857,7 @@ func (client *Client) CreateWorkflowWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// The additional information that is returned.
+// Deletes an application group.
 //
 // @param request - DeleteAppGroupRequest
 //
@@ -1281,7 +1281,7 @@ func (client *Client) DesignateWorkersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Disables a job.
+// Disables a specified task.
 //
 // @param request - DisableJobRequest
 //
@@ -1525,7 +1525,7 @@ func (client *Client) ExecuteWorkflowWithContext(ctx context.Context, request *E
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see \\\\*\\\\*the additional information about response parameters below this table\\\\*\\\\*.
+// The configuration of the alert. The value is a JSON string. For more information, see \\\\\\\\*\\\\\\\\*the additional information about response parameters below this table\\\\\\\\*\\\\\\\\*.
 //
 // @param request - GetAppGroupRequest
 //

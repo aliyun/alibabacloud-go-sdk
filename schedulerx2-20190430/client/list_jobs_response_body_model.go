@@ -118,7 +118,10 @@ func (s *ListJobsResponseBody) Validate() error {
 
 type ListJobsResponseBodyData struct {
 	// The jobs and their details.
-	Jobs []*ListJobsResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	Jobs       []*ListJobsResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int32                          `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListJobsResponseBodyData) String() string {
@@ -133,8 +136,35 @@ func (s *ListJobsResponseBodyData) GetJobs() []*ListJobsResponseBodyDataJobs {
 	return s.Jobs
 }
 
+func (s *ListJobsResponseBodyData) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *ListJobsResponseBodyData) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ListJobsResponseBodyData) GetTotal() *int32 {
+	return s.Total
+}
+
 func (s *ListJobsResponseBodyData) SetJobs(v []*ListJobsResponseBodyDataJobs) *ListJobsResponseBodyData {
 	s.Jobs = v
+	return s
+}
+
+func (s *ListJobsResponseBodyData) SetPageNumber(v int32) *ListJobsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyData) SetPageSize(v int32) *ListJobsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsResponseBodyData) SetTotal(v int32) *ListJobsResponseBodyData {
+	s.Total = &v
 	return s
 }
 

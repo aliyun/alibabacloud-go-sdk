@@ -17,6 +17,10 @@ type iListJobsRequest interface {
 	GetNamespace() *string
 	SetNamespaceSource(v string) *ListJobsRequest
 	GetNamespaceSource() *string
+	SetPageNum(v int32) *ListJobsRequest
+	GetPageNum() *int32
+	SetPageSize(v int32) *ListJobsRequest
+	GetPageSize() *int32
 	SetRegionId(v string) *ListJobsRequest
 	GetRegionId() *string
 	SetStatus(v string) *ListJobsRequest
@@ -52,6 +56,8 @@ type ListJobsRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	//
 	// This parameter is required.
@@ -96,6 +102,14 @@ func (s *ListJobsRequest) GetNamespaceSource() *string {
 	return s.NamespaceSource
 }
 
+func (s *ListJobsRequest) GetPageNum() *int32 {
+	return s.PageNum
+}
+
+func (s *ListJobsRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *ListJobsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -121,6 +135,16 @@ func (s *ListJobsRequest) SetNamespace(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetNamespaceSource(v string) *ListJobsRequest {
 	s.NamespaceSource = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetPageNum(v int32) *ListJobsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetPageSize(v int32) *ListJobsRequest {
+	s.PageSize = &v
 	return s
 }
 
