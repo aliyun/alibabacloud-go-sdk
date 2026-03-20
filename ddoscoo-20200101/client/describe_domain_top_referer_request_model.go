@@ -15,6 +15,8 @@ type iDescribeDomainTopRefererRequest interface {
 	GetEndTime() *int64
 	SetLimit(v int64) *DescribeDomainTopRefererRequest
 	GetLimit() *int64
+	SetQueryType(v string) *DescribeDomainTopRefererRequest
+	GetQueryType() *string
 	SetRegion(v string) *DescribeDomainTopRefererRequest
 	GetRegion() *string
 	SetStartTime(v int64) *DescribeDomainTopRefererRequest
@@ -47,7 +49,8 @@ type DescribeDomainTopRefererRequest struct {
 	// example:
 	//
 	// 10
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region in which your service is deployed. Valid values:
 	//
 	// 	- **cn**: a region in the Chinese mainland.
@@ -92,6 +95,10 @@ func (s *DescribeDomainTopRefererRequest) GetLimit() *int64 {
 	return s.Limit
 }
 
+func (s *DescribeDomainTopRefererRequest) GetQueryType() *string {
+	return s.QueryType
+}
+
 func (s *DescribeDomainTopRefererRequest) GetRegion() *string {
 	return s.Region
 }
@@ -112,6 +119,11 @@ func (s *DescribeDomainTopRefererRequest) SetEndTime(v int64) *DescribeDomainTop
 
 func (s *DescribeDomainTopRefererRequest) SetLimit(v int64) *DescribeDomainTopRefererRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopRefererRequest) SetQueryType(v string) *DescribeDomainTopRefererRequest {
+	s.QueryType = &v
 	return s
 }
 

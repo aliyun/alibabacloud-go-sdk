@@ -107,7 +107,8 @@ type DescribeElasticQpsResponseBodyElasticQps struct {
 	// example:
 	//
 	// 34
-	Status4 *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
+	Status4     *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
+	Status410Pv *int64 `json:"Status410Pv,omitempty" xml:"Status410Pv,omitempty"`
 	// The total number of HTTP 5xx status codes during the step size period.
 	//
 	// example:
@@ -158,6 +159,10 @@ func (s *DescribeElasticQpsResponseBodyElasticQps) GetStatus4() *int64 {
 	return s.Status4
 }
 
+func (s *DescribeElasticQpsResponseBodyElasticQps) GetStatus410Pv() *int64 {
+	return s.Status410Pv
+}
+
 func (s *DescribeElasticQpsResponseBodyElasticQps) GetStatus5() *int64 {
 	return s.Status5
 }
@@ -198,6 +203,11 @@ func (s *DescribeElasticQpsResponseBodyElasticQps) SetStatus3(v int64) *Describe
 
 func (s *DescribeElasticQpsResponseBodyElasticQps) SetStatus4(v int64) *DescribeElasticQpsResponseBodyElasticQps {
 	s.Status4 = &v
+	return s
+}
+
+func (s *DescribeElasticQpsResponseBodyElasticQps) SetStatus410Pv(v int64) *DescribeElasticQpsResponseBodyElasticQps {
+	s.Status410Pv = &v
 	return s
 }
 

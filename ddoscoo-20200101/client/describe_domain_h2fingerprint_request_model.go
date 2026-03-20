@@ -15,6 +15,8 @@ type iDescribeDomainH2FingerprintRequest interface {
 	GetEndTime() *int64
 	SetLimit(v int64) *DescribeDomainH2FingerprintRequest
 	GetLimit() *int64
+	SetQueryType(v string) *DescribeDomainH2FingerprintRequest
+	GetQueryType() *string
 	SetStartTime(v int64) *DescribeDomainH2FingerprintRequest
 	GetStartTime() *int64
 }
@@ -43,7 +45,8 @@ type DescribeDomainH2FingerprintRequest struct {
 	// example:
 	//
 	// 20
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
@@ -76,6 +79,10 @@ func (s *DescribeDomainH2FingerprintRequest) GetLimit() *int64 {
 	return s.Limit
 }
 
+func (s *DescribeDomainH2FingerprintRequest) GetQueryType() *string {
+	return s.QueryType
+}
+
 func (s *DescribeDomainH2FingerprintRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
@@ -92,6 +99,11 @@ func (s *DescribeDomainH2FingerprintRequest) SetEndTime(v int64) *DescribeDomain
 
 func (s *DescribeDomainH2FingerprintRequest) SetLimit(v int64) *DescribeDomainH2FingerprintRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainH2FingerprintRequest) SetQueryType(v string) *DescribeDomainH2FingerprintRequest {
+	s.QueryType = &v
 	return s
 }
 

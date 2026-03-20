@@ -7,6 +7,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Adds IP addresses to the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // @param request - AddAutoCcBlacklistRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -291,7 +295,7 @@ func (client *Client) ConfigDomainSecurityProfileWithContext(ctx context.Context
 
 // Summary:
 //
-// 配置全局模板规则
+// Configures an Anti-DDoS global mitigation policy.
 //
 // @param request - ConfigL7GlobalRuleRequest
 //
@@ -787,7 +791,7 @@ func (client *Client) ConfigUdpReflectWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 配置新版基于匹配条件的cc规则
+// Creates or modifies the custom frequency control rule of a website.
 //
 // @param request - ConfigWebCCRuleV2Request
 //
@@ -2773,6 +2777,10 @@ func (client *Client) DescribeCertsWithContext(ctx context.Context, request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the CNAME reuse information about websites.
+//
 // @param request - DescribeCnameReusesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3620,6 +3628,10 @@ func (client *Client) DescribeDomainH2FingerprintWithContext(ctx context.Context
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
@@ -4086,6 +4098,10 @@ func (client *Client) DescribeDomainTopFingerprintWithContext(ctx context.Contex
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
 	if !dara.IsNil(request.Region) {
 		query["Region"] = request.Region
 	}
@@ -4144,6 +4160,10 @@ func (client *Client) DescribeDomainTopHttpMethodWithContext(ctx context.Context
 
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
 	}
 
 	if !dara.IsNil(request.Region) {
@@ -4206,6 +4226,10 @@ func (client *Client) DescribeDomainTopRefererWithContext(ctx context.Context, r
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
 	if !dara.IsNil(request.Region) {
 		query["Region"] = request.Region
 	}
@@ -4264,6 +4288,10 @@ func (client *Client) DescribeDomainTopUserAgentWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
 	}
 
 	if !dara.IsNil(request.Region) {
@@ -5271,7 +5299,7 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 展示全局模板规则
+// Queries an Anti-DDoS global mitigation policy.
 //
 // @param request - DescribeL7GlobalRuleRequest
 //
@@ -6077,7 +6105,7 @@ func (client *Client) DescribePortConnsListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the traffic data of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the traffic data of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortFlowListRequest
 //
@@ -6487,6 +6515,10 @@ func (client *Client) DescribeSceneDefensePoliciesWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scheduling rules of Sec-Traffic Manager.
+//
 // @param request - DescribeSchedulerRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10567,9 +10599,7 @@ func (client *Client) ModifyWebRuleWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// The ID of the instance that you want to release.
-//
-// > You can release only expired instances. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) operation to query the IDs and expiration status of all instances.
+// Releases an expired Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //

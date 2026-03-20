@@ -56,6 +56,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds IP addresses to the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // @param request - AddAutoCcBlacklistRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -104,6 +108,10 @@ func (client *Client) AddAutoCcBlacklistWithOptions(request *AddAutoCcBlacklistR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds IP addresses to the IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // @param request - AddAutoCcBlacklistRequest
 //
 // @return AddAutoCcBlacklistResponse
@@ -436,7 +444,7 @@ func (client *Client) ConfigDomainSecurityProfile(request *ConfigDomainSecurityP
 
 // Summary:
 //
-// 配置全局模板规则
+// Configures an Anti-DDoS global mitigation policy.
 //
 // @param request - ConfigL7GlobalRuleRequest
 //
@@ -484,7 +492,7 @@ func (client *Client) ConfigL7GlobalRuleWithOptions(request *ConfigL7GlobalRuleR
 
 // Summary:
 //
-// 配置全局模板规则
+// Configures an Anti-DDoS global mitigation policy.
 //
 // @param request - ConfigL7GlobalRuleRequest
 //
@@ -1124,7 +1132,7 @@ func (client *Client) ConfigUdpReflect(request *ConfigUdpReflectRequest) (_resul
 
 // Summary:
 //
-// 配置新版基于匹配条件的cc规则
+// Creates or modifies the custom frequency control rule of a website.
 //
 // @param request - ConfigWebCCRuleV2Request
 //
@@ -1176,7 +1184,7 @@ func (client *Client) ConfigWebCCRuleV2WithOptions(request *ConfigWebCCRuleV2Req
 
 // Summary:
 //
-// 配置新版基于匹配条件的cc规则
+// Creates or modifies the custom frequency control rule of a website.
 //
 // @param request - ConfigWebCCRuleV2Request
 //
@@ -3820,6 +3828,10 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the CNAME reuse information about websites.
+//
 // @param request - DescribeCnameReusesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3864,6 +3876,10 @@ func (client *Client) DescribeCnameReusesWithOptions(request *DescribeCnameReuse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the CNAME reuse information about websites.
+//
 // @param request - DescribeCnameReusesRequest
 //
 // @return DescribeCnameReusesResponse
@@ -4949,6 +4965,10 @@ func (client *Client) DescribeDomainH2FingerprintWithOptions(request *DescribeDo
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
@@ -5569,6 +5589,10 @@ func (client *Client) DescribeDomainTopFingerprintWithOptions(request *DescribeD
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
 	if !dara.IsNil(request.Region) {
 		query["Region"] = request.Region
 	}
@@ -5645,6 +5669,10 @@ func (client *Client) DescribeDomainTopHttpMethodWithOptions(request *DescribeDo
 
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
 	}
 
 	if !dara.IsNil(request.Region) {
@@ -5725,6 +5753,10 @@ func (client *Client) DescribeDomainTopRefererWithOptions(request *DescribeDomai
 		query["Limit"] = request.Limit
 	}
 
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
+	}
+
 	if !dara.IsNil(request.Region) {
 		query["Region"] = request.Region
 	}
@@ -5801,6 +5833,10 @@ func (client *Client) DescribeDomainTopUserAgentWithOptions(request *DescribeDom
 
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.QueryType) {
+		query["QueryType"] = request.QueryType
 	}
 
 	if !dara.IsNil(request.Region) {
@@ -7174,7 +7210,7 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 
 // Summary:
 //
-// 展示全局模板规则
+// Queries an Anti-DDoS global mitigation policy.
 //
 // @param request - DescribeL7GlobalRuleRequest
 //
@@ -7222,7 +7258,7 @@ func (client *Client) DescribeL7GlobalRuleWithOptions(request *DescribeL7GlobalR
 
 // Summary:
 //
-// 展示全局模板规则
+// Queries an Anti-DDoS global mitigation policy.
 //
 // @param request - DescribeL7GlobalRuleRequest
 //
@@ -8268,7 +8304,7 @@ func (client *Client) DescribePortConnsList(request *DescribePortConnsListReques
 
 // Summary:
 //
-// Queries the traffic data of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the traffic data of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortFlowListRequest
 //
@@ -8328,7 +8364,7 @@ func (client *Client) DescribePortFlowListWithOptions(request *DescribePortFlowL
 
 // Summary:
 //
-// Queries the traffic data of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the traffic data of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortFlowListRequest
 //
@@ -8832,6 +8868,10 @@ func (client *Client) DescribeSceneDefensePolicies(request *DescribeSceneDefense
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scheduling rules of Sec-Traffic Manager.
+//
 // @param request - DescribeSchedulerRulesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8884,6 +8924,10 @@ func (client *Client) DescribeSchedulerRulesWithOptions(request *DescribeSchedul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the scheduling rules of Sec-Traffic Manager.
+//
 // @param request - DescribeSchedulerRulesRequest
 //
 // @return DescribeSchedulerRulesResponse
@@ -14390,9 +14434,7 @@ func (client *Client) ModifyWebRule(request *ModifyWebRuleRequest) (_result *Mod
 
 // Summary:
 //
-// The ID of the instance that you want to release.
-//
-// > You can release only expired instances. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) operation to query the IDs and expiration status of all instances.
+// Releases an expired Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //
@@ -14440,9 +14482,7 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 
 // Summary:
 //
-// The ID of the instance that you want to release.
-//
-// > You can release only expired instances. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/91478.html) operation to query the IDs and expiration status of all instances.
+// Releases an expired Anti-DDoS Pro or Anti-DDoS Premium instance.
 //
 // Description:
 //

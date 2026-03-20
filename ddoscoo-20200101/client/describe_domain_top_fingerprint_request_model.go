@@ -17,6 +17,8 @@ type iDescribeDomainTopFingerprintRequest interface {
 	GetInterval() *int64
 	SetLimit(v int64) *DescribeDomainTopFingerprintRequest
 	GetLimit() *int64
+	SetQueryType(v string) *DescribeDomainTopFingerprintRequest
+	GetQueryType() *string
 	SetRegion(v string) *DescribeDomainTopFingerprintRequest
 	GetRegion() *string
 	SetStartTime(v int64) *DescribeDomainTopFingerprintRequest
@@ -57,7 +59,8 @@ type DescribeDomainTopFingerprintRequest struct {
 	// example:
 	//
 	// 10
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region in which your service is deployed. Valid values:
 	//
 	// 	- **cn**: a region in the Chinese mainland.
@@ -106,6 +109,10 @@ func (s *DescribeDomainTopFingerprintRequest) GetLimit() *int64 {
 	return s.Limit
 }
 
+func (s *DescribeDomainTopFingerprintRequest) GetQueryType() *string {
+	return s.QueryType
+}
+
 func (s *DescribeDomainTopFingerprintRequest) GetRegion() *string {
 	return s.Region
 }
@@ -131,6 +138,11 @@ func (s *DescribeDomainTopFingerprintRequest) SetInterval(v int64) *DescribeDoma
 
 func (s *DescribeDomainTopFingerprintRequest) SetLimit(v int64) *DescribeDomainTopFingerprintRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopFingerprintRequest) SetQueryType(v string) *DescribeDomainTopFingerprintRequest {
+	s.QueryType = &v
 	return s
 }
 

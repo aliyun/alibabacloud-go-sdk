@@ -15,6 +15,8 @@ type iDescribeDomainTopHttpMethodRequest interface {
 	GetEndTime() *int64
 	SetLimit(v int64) *DescribeDomainTopHttpMethodRequest
 	GetLimit() *int64
+	SetQueryType(v string) *DescribeDomainTopHttpMethodRequest
+	GetQueryType() *string
 	SetRegion(v string) *DescribeDomainTopHttpMethodRequest
 	GetRegion() *string
 	SetStartTime(v int64) *DescribeDomainTopHttpMethodRequest
@@ -47,7 +49,8 @@ type DescribeDomainTopHttpMethodRequest struct {
 	// example:
 	//
 	// 20
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region in which your service is deployed. Valid values:
 	//
 	// 	- **cn**: a region in the Chinese mainland.
@@ -92,6 +95,10 @@ func (s *DescribeDomainTopHttpMethodRequest) GetLimit() *int64 {
 	return s.Limit
 }
 
+func (s *DescribeDomainTopHttpMethodRequest) GetQueryType() *string {
+	return s.QueryType
+}
+
 func (s *DescribeDomainTopHttpMethodRequest) GetRegion() *string {
 	return s.Region
 }
@@ -112,6 +119,11 @@ func (s *DescribeDomainTopHttpMethodRequest) SetEndTime(v int64) *DescribeDomain
 
 func (s *DescribeDomainTopHttpMethodRequest) SetLimit(v int64) *DescribeDomainTopHttpMethodRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopHttpMethodRequest) SetQueryType(v string) *DescribeDomainTopHttpMethodRequest {
+	s.QueryType = &v
 	return s
 }
 

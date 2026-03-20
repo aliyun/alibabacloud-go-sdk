@@ -15,6 +15,8 @@ type iDescribeDomainTopUserAgentRequest interface {
 	GetEndTime() *int64
 	SetLimit(v int64) *DescribeDomainTopUserAgentRequest
 	GetLimit() *int64
+	SetQueryType(v string) *DescribeDomainTopUserAgentRequest
+	GetQueryType() *string
 	SetRegion(v string) *DescribeDomainTopUserAgentRequest
 	GetRegion() *string
 	SetStartTime(v int64) *DescribeDomainTopUserAgentRequest
@@ -47,7 +49,8 @@ type DescribeDomainTopUserAgentRequest struct {
 	// example:
 	//
 	// 20
-	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region in which your service is deployed. Valid values:
 	//
 	// 	- **cn**: a region in the Chinese mainland.
@@ -92,6 +95,10 @@ func (s *DescribeDomainTopUserAgentRequest) GetLimit() *int64 {
 	return s.Limit
 }
 
+func (s *DescribeDomainTopUserAgentRequest) GetQueryType() *string {
+	return s.QueryType
+}
+
 func (s *DescribeDomainTopUserAgentRequest) GetRegion() *string {
 	return s.Region
 }
@@ -112,6 +119,11 @@ func (s *DescribeDomainTopUserAgentRequest) SetEndTime(v int64) *DescribeDomainT
 
 func (s *DescribeDomainTopUserAgentRequest) SetLimit(v int64) *DescribeDomainTopUserAgentRequest {
 	s.Limit = &v
+	return s
+}
+
+func (s *DescribeDomainTopUserAgentRequest) SetQueryType(v string) *DescribeDomainTopUserAgentRequest {
+	s.QueryType = &v
 	return s
 }
 

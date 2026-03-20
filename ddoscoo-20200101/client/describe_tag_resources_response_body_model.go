@@ -29,8 +29,7 @@ type DescribeTagResourcesResponseBody struct {
 	// example:
 	//
 	// 36E698F7-48A4-48D0-9554-0BB4BAAB99B3
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are added to the Anti-DDoS Proxy (Chinese Mainland) instance.
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *DescribeTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -113,30 +112,10 @@ func (s *DescribeTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type DescribeTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the Anti-DDoS Proxy (Chinese Mainland) instance.
-	//
-	// example:
-	//
-	// ddoscoo-cn-zz121ogz****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The value is fixed as **INSTANCE**, which indicates an Anti-DDoS Proxy instance.
-	//
-	// example:
-	//
-	// INSTANCE
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that is added to the Anti-DDoS Proxy (Chinese Mainland) instance.
-	//
-	// example:
-	//
-	// testvalue
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag that is added to the Anti-DDoS Proxy (Chinese Mainland) instance.
-	//
-	// example:
-	//
-	// testkey
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeTagResourcesResponseBodyTagResourcesTagResource) String() string {
