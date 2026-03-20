@@ -834,8 +834,9 @@ type AIAgentOutboundCallConfigInterruptConfig struct {
 	// true
 	EnableVoiceInterrupt *bool `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
 	// Words or phrases that will trigger an interruption.
-	InterruptWords  []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
-	NoInterruptMode *string   `json:"NoInterruptMode,omitempty" xml:"NoInterruptMode,omitempty"`
+	InterruptWords           []*string `json:"InterruptWords,omitempty" xml:"InterruptWords,omitempty" type:"Repeated"`
+	KeepInterruptWordsForLLM *bool     `json:"KeepInterruptWordsForLLM,omitempty" xml:"KeepInterruptWordsForLLM,omitempty"`
+	NoInterruptMode          *string   `json:"NoInterruptMode,omitempty" xml:"NoInterruptMode,omitempty"`
 }
 
 func (s AIAgentOutboundCallConfigInterruptConfig) String() string {
@@ -858,6 +859,10 @@ func (s *AIAgentOutboundCallConfigInterruptConfig) GetInterruptWords() []*string
 	return s.InterruptWords
 }
 
+func (s *AIAgentOutboundCallConfigInterruptConfig) GetKeepInterruptWordsForLLM() *bool {
+	return s.KeepInterruptWordsForLLM
+}
+
 func (s *AIAgentOutboundCallConfigInterruptConfig) GetNoInterruptMode() *string {
 	return s.NoInterruptMode
 }
@@ -874,6 +879,11 @@ func (s *AIAgentOutboundCallConfigInterruptConfig) SetEnableVoiceInterrupt(v boo
 
 func (s *AIAgentOutboundCallConfigInterruptConfig) SetInterruptWords(v []*string) *AIAgentOutboundCallConfigInterruptConfig {
 	s.InterruptWords = v
+	return s
+}
+
+func (s *AIAgentOutboundCallConfigInterruptConfig) SetKeepInterruptWordsForLLM(v bool) *AIAgentOutboundCallConfigInterruptConfig {
+	s.KeepInterruptWordsForLLM = &v
 	return s
 }
 
