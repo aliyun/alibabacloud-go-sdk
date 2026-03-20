@@ -39,6 +39,8 @@ type iNode interface {
 	GetGPUType() *string
 	SetGmtCreateTime(v string) *Node
 	GetGmtCreateTime() *string
+	SetGmtCreatedTime(v string) *Node
+	GetGmtCreatedTime() *string
 	SetGmtExpiredTime(v string) *Node
 	GetGmtExpiredTime() *string
 	SetGmtModifiedTime(v string) *Node
@@ -125,10 +127,13 @@ type Node struct {
 	//
 	// ""
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtCreateTime  *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
 	// example:
 	//
 	// 2025-06-22T00:00:00Z
@@ -287,6 +292,10 @@ func (s *Node) GetGPUType() *string {
 
 func (s *Node) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
+}
+
+func (s *Node) GetGmtCreatedTime() *string {
+	return s.GmtCreatedTime
 }
 
 func (s *Node) GetGmtExpiredTime() *string {
@@ -469,6 +478,11 @@ func (s *Node) SetGPUType(v string) *Node {
 
 func (s *Node) SetGmtCreateTime(v string) *Node {
 	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *Node) SetGmtCreatedTime(v string) *Node {
+	s.GmtCreatedTime = &v
 	return s
 }
 
