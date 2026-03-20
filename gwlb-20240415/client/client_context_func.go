@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("regional")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("gwlb"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -81,7 +32,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddServersToServerGroupResponse
-func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToServerGroupRequest, runtime *dara.RuntimeOptions) (_result *AddServersToServerGroupResponse, _err error) {
+func (client *Client) AddServersToServerGroupWithContext(ctx context.Context, request *AddServersToServerGroupRequest, runtime *dara.RuntimeOptions) (_result *AddServersToServerGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -123,45 +74,11 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddServersToServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds backend servers to the server group of a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *AddServersToServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-//
-// 1.  You can call the ListServerGroups operation to query the status of the server group.
-//
-//   - If the server group is in the **Configuring*	- state, the server group is being modified.
-//
-//   - If the server group is in the **Available*	- state, the server group is running.
-//
-// 2.  You can call the ListServerGroupServers operation to query the status of the backend server.
-//
-//   - If the backend server is in the **Adding*	- state, the backend server is being added to the server group.
-//
-//   - If the backend server is in the **Available*	- state, the server is running.
-//
-// @param request - AddServersToServerGroupRequest
-//
-// @return AddServersToServerGroupResponse
-func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRequest) (_result *AddServersToServerGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &AddServersToServerGroupResponse{}
-	_body, _err := client.AddServersToServerGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -182,7 +99,7 @@ func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateListenerResponse
-func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, runtime *dara.RuntimeOptions) (_result *CreateListenerResponse, _err error) {
+func (client *Client) CreateListenerWithContext(ctx context.Context, request *CreateListenerRequest, runtime *dara.RuntimeOptions) (_result *CreateListenerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -236,37 +153,11 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a listener for a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *CreateListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of the task.
-//
-//   - If the listener is in the **Provisioning*	- state, the listener is being created.
-//
-//   - If the listener is in the **Running*	- state, the listener is running.
-//
-// @param request - CreateListenerRequest
-//
-// @return CreateListenerResponse
-func (client *Client) CreateListener(request *CreateListenerRequest) (_result *CreateListenerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateListenerResponse{}
-	_body, _err := client.CreateListenerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -291,7 +182,7 @@ func (client *Client) CreateListener(request *CreateListenerRequest) (_result *C
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLoadBalancerResponse
-func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadBalancerResponse, _err error) {
+func (client *Client) CreateLoadBalancerWithContext(ctx context.Context, request *CreateLoadBalancerRequest, runtime *dara.RuntimeOptions) (_result *CreateLoadBalancerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -349,41 +240,11 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**
-//
-//   - When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
-//
-//   - **CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of a GWLB instance.
-//
-//   - If the GWLB instance is in the **Provisioning*	- state, the GWLB instance is being created.
-//
-//   - If the GWLB instance is in the **Active*	- state, the GWLB instance is created.
-//
-// @param request - CreateLoadBalancerRequest
-//
-// @return CreateLoadBalancerResponse
-func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_result *CreateLoadBalancerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateLoadBalancerResponse{}
-	_body, _err := client.CreateLoadBalancerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -404,7 +265,7 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServerGroupResponse
-func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateServerGroupResponse, _err error) {
+func (client *Client) CreateServerGroupWithContext(ctx context.Context, request *CreateServerGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateServerGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -478,37 +339,11 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates a server group for a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListServerGroups operation to query the status of the task.
-//
-//   - If the server group is in the **Creating*	- state, it indicates that the server group is being created.
-//
-//   - If the server group is in the **Available*	- state, it indicates that the server group is created.
-//
-// @param request - CreateServerGroupRequest
-//
-// @return CreateServerGroupResponse
-func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_result *CreateServerGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &CreateServerGroupResponse{}
-	_body, _err := client.CreateServerGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -529,7 +364,7 @@ func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteListenerResponse
-func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, runtime *dara.RuntimeOptions) (_result *DeleteListenerResponse, _err error) {
+func (client *Client) DeleteListenerWithContext(ctx context.Context, request *DeleteListenerRequest, runtime *dara.RuntimeOptions) (_result *DeleteListenerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -564,37 +399,11 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteListenerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a listener from a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of the task.
-//
-//   - If the listener is in the **Deleting*	- state, the listener is being deleted.
-//
-//   - If the listener cannot be found, the listener is deleted.
-//
-// @param request - DeleteListenerRequest
-//
-// @return DeleteListenerResponse
-func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *DeleteListenerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteListenerResponse{}
-	_body, _err := client.DeleteListenerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -607,7 +416,7 @@ func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLoadBalancerResponse
-func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerRequest, runtime *dara.RuntimeOptions) (_result *DeleteLoadBalancerResponse, _err error) {
+func (client *Client) DeleteLoadBalancerWithContext(ctx context.Context, request *DeleteLoadBalancerRequest, runtime *dara.RuntimeOptions) (_result *DeleteLoadBalancerResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -642,29 +451,11 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteLoadBalancerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a Gateway Load Balancer (GWLB) instance.
-//
-// @param request - DeleteLoadBalancerRequest
-//
-// @return DeleteLoadBalancerResponse
-func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_result *DeleteLoadBalancerResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteLoadBalancerResponse{}
-	_body, _err := client.DeleteLoadBalancerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -681,7 +472,7 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServerGroupResponse
-func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteServerGroupResponse, _err error) {
+func (client *Client) DeleteServerGroupWithContext(ctx context.Context, request *DeleteServerGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteServerGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -716,33 +507,11 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a server group from a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// You can delete server groups that are not associated with listeners.
-//
-// @param request - DeleteServerGroupRequest
-//
-// @return DeleteServerGroupResponse
-func (client *Client) DeleteServerGroup(request *DeleteServerGroupRequest) (_result *DeleteServerGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DeleteServerGroupResponse{}
-	_body, _err := client.DeleteServerGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -755,7 +524,7 @@ func (client *Client) DeleteServerGroup(request *DeleteServerGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -782,29 +551,11 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent region list of Gateway Load Balancer (GWLB).
-//
-// @param request - DescribeRegionsRequest
-//
-// @return DescribeRegionsResponse
-func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -817,7 +568,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeZonesResponse
-func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
+func (client *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest, runtime *dara.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -844,29 +595,11 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the most recent zone list of Gateway Load Balancer (GWLB).
-//
-// @param request - DescribeZonesRequest
-//
-// @return DescribeZonesResponse
-func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeZonesResponse{}
-	_body, _err := client.DescribeZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -879,7 +612,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetListenerAttributeResponse
-func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetListenerAttributeResponse, _err error) {
+func (client *Client) GetListenerAttributeWithContext(ctx context.Context, request *GetListenerAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetListenerAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -906,29 +639,11 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Gateway Load Balancer (GWLB) listener.
-//
-// @param request - GetListenerAttributeRequest
-//
-// @return GetListenerAttributeResponse
-func (client *Client) GetListenerAttribute(request *GetListenerAttributeRequest) (_result *GetListenerAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetListenerAttributeResponse{}
-	_body, _err := client.GetListenerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -941,7 +656,7 @@ func (client *Client) GetListenerAttribute(request *GetListenerAttributeRequest)
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetListenerHealthStatusResponse
-func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHealthStatusRequest, runtime *dara.RuntimeOptions) (_result *GetListenerHealthStatusResponse, _err error) {
+func (client *Client) GetListenerHealthStatusWithContext(ctx context.Context, request *GetListenerHealthStatusRequest, runtime *dara.RuntimeOptions) (_result *GetListenerHealthStatusResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -987,29 +702,11 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetListenerHealthStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the health check status of a Gateway Load Balancer (GWLB) listener.
-//
-// @param request - GetListenerHealthStatusRequest
-//
-// @return GetListenerHealthStatusResponse
-func (client *Client) GetListenerHealthStatus(request *GetListenerHealthStatusRequest) (_result *GetListenerHealthStatusResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetListenerHealthStatusResponse{}
-	_body, _err := client.GetListenerHealthStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1022,7 +719,7 @@ func (client *Client) GetListenerHealthStatus(request *GetListenerHealthStatusRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLoadBalancerAttributeResponse
-func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalancerAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetLoadBalancerAttributeResponse, _err error) {
+func (client *Client) GetLoadBalancerAttributeWithContext(ctx context.Context, request *GetLoadBalancerAttributeRequest, runtime *dara.RuntimeOptions) (_result *GetLoadBalancerAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1049,29 +746,11 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLoadBalancerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the details of a Gateway Load Balancer (GWLB) instance.
-//
-// @param request - GetLoadBalancerAttributeRequest
-//
-// @return GetLoadBalancerAttributeResponse
-func (client *Client) GetLoadBalancerAttribute(request *GetLoadBalancerAttributeRequest) (_result *GetLoadBalancerAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetLoadBalancerAttributeResponse{}
-	_body, _err := client.GetLoadBalancerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1084,7 +763,7 @@ func (client *Client) GetLoadBalancerAttribute(request *GetLoadBalancerAttribute
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListListenersResponse
-func (client *Client) ListListenersWithOptions(request *ListListenersRequest, runtime *dara.RuntimeOptions) (_result *ListListenersResponse, _err error) {
+func (client *Client) ListListenersWithContext(ctx context.Context, request *ListListenersRequest, runtime *dara.RuntimeOptions) (_result *ListListenersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1134,29 +813,11 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListListenersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Gateway Load Balancer (GWLB) listeners.
-//
-// @param request - ListListenersRequest
-//
-// @return ListListenersResponse
-func (client *Client) ListListeners(request *ListListenersRequest) (_result *ListListenersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListListenersResponse{}
-	_body, _err := client.ListListenersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1169,7 +830,7 @@ func (client *Client) ListListeners(request *ListListenersRequest) (_result *Lis
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLoadBalancersResponse
-func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersRequest, runtime *dara.RuntimeOptions) (_result *ListLoadBalancersResponse, _err error) {
+func (client *Client) ListLoadBalancersWithContext(ctx context.Context, request *ListLoadBalancersRequest, runtime *dara.RuntimeOptions) (_result *ListLoadBalancersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1247,29 +908,11 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListLoadBalancersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries Gateway Load Balancer (GWLB) instances.
-//
-// @param request - ListLoadBalancersRequest
-//
-// @return ListLoadBalancersResponse
-func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_result *ListLoadBalancersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListLoadBalancersResponse{}
-	_body, _err := client.ListLoadBalancersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1282,7 +925,7 @@ func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServerGroupServersResponse
-func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroupServersRequest, runtime *dara.RuntimeOptions) (_result *ListServerGroupServersResponse, _err error) {
+func (client *Client) ListServerGroupServersWithContext(ctx context.Context, request *ListServerGroupServersRequest, runtime *dara.RuntimeOptions) (_result *ListServerGroupServersResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1332,29 +975,11 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServerGroupServersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the server groups of a Gateway Load Balancer (GWLB) instance.
-//
-// @param request - ListServerGroupServersRequest
-//
-// @return ListServerGroupServersResponse
-func (client *Client) ListServerGroupServers(request *ListServerGroupServersRequest) (_result *ListServerGroupServersResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListServerGroupServersResponse{}
-	_body, _err := client.ListServerGroupServersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1367,7 +992,7 @@ func (client *Client) ListServerGroupServers(request *ListServerGroupServersRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServerGroupsResponse
-func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListServerGroupsResponse, _err error) {
+func (client *Client) ListServerGroupsWithContext(ctx context.Context, request *ListServerGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListServerGroupsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1429,29 +1054,11 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListServerGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the server groups of a Gateway Load Balancer (GWLB) instance.
-//
-// @param request - ListServerGroupsRequest
-//
-// @return ListServerGroupsResponse
-func (client *Client) ListServerGroups(request *ListServerGroupsRequest) (_result *ListServerGroupsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListServerGroupsResponse{}
-	_body, _err := client.ListServerGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1464,7 +1071,7 @@ func (client *Client) ListServerGroups(request *ListServerGroupsRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTagResourcesResponse
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1510,29 +1117,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the tags of resources.
-//
-// @param request - ListTagResourcesRequest
-//
-// @return ListTagResourcesResponse
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1545,7 +1134,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request *MoveResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1588,29 +1177,11 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Changes the resource group to which a specified cloud resource belongs.
-//
-// @param request - MoveResourceGroupRequest
-//
-// @return MoveResourceGroupResponse
-func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1645,7 +1216,7 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveServersFromServerGroupResponse
-func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveServersFromServerGroupRequest, runtime *dara.RuntimeOptions) (_result *RemoveServersFromServerGroupResponse, _err error) {
+func (client *Client) RemoveServersFromServerGroupWithContext(ctx context.Context, request *RemoveServersFromServerGroupRequest, runtime *dara.RuntimeOptions) (_result *RemoveServersFromServerGroupResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1687,51 +1258,11 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveServersFromServerGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes backend servers from the server group of a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
-//
-// 1.  You can call the ListServerGroups operation to query the status of a server group.
-//
-//   - If the server group is in the **Configuring*	- state, the server group is being modified.
-//
-//   - If the server group is in the **Available*	- state, the server group is running.
-//
-// 2.  You can call the ListServerGroupServers operation to query the status of a backend server.
-//
-//   - If the backend server is in the **Removing*	- state, the backend server is being removed from the server group.
-//
-//   - If the backend server cannot be found, the backend server is no longer in the server group.
-//
-// >
-//
-//   - If connection draining id enabled (**ConnectionDrainEnabled*	- set to true) for the server group of the backend server, the backend server that you remove enters the **Removing*	- state before entering the **Draining*	- state. When the connection draining timeout period (**ConnectionDrainTimeout**) ends, the backend server is removed from the server group.
-//
-//   - You can add the backend server to the server group again before the connection draining timeout period ends. In this case, the status of the backend server changes from **Draining*	- to **Adding**. After the backend server is added to the server group, the backend server enters the **Available*	- state.
-//
-// @param request - RemoveServersFromServerGroupRequest
-//
-// @return RemoveServersFromServerGroupResponse
-func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromServerGroupRequest) (_result *RemoveServersFromServerGroupResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RemoveServersFromServerGroupResponse{}
-	_body, _err := client.RemoveServersFromServerGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1744,7 +1275,7 @@ func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromSer
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return TagResourcesResponse
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1790,29 +1321,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		BodyType:    dara.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Creates and adds tags to resources.
-//
-// @param request - TagResourcesRequest
-//
-// @return TagResourcesResponse
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1825,7 +1338,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UntagResourcesResponse
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+func (client *Client) UntagResourcesWithContext(ctx context.Context, request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1875,29 +1388,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Removes tags from resources.
-//
-// @param request - UntagResourcesRequest
-//
-// @return UntagResourcesResponse
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1918,7 +1413,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateListenerAttributeResponse
-func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListenerAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateListenerAttributeResponse, _err error) {
+func (client *Client) UpdateListenerAttributeWithContext(ctx context.Context, request *UpdateListenerAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateListenerAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1965,37 +1460,11 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateListenerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the configurations of a Gateway Load Balancer (GWLB) listener.
-//
-// Description:
-//
-// *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of a listener.
-//
-//   - If the listener is in the **Configuring*	- state, the listener is being modified.
-//
-//   - If the listener is in the **Running*	- state, the listener is modified.
-//
-// @param request - UpdateListenerAttributeRequest
-//
-// @return UpdateListenerAttributeResponse
-func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRequest) (_result *UpdateListenerAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateListenerAttributeResponse{}
-	_body, _err := client.UpdateListenerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2016,7 +1485,7 @@ func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLoadBalancerAttributeResponse
-func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoadBalancerAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateLoadBalancerAttributeResponse, _err error) {
+func (client *Client) UpdateLoadBalancerAttributeWithContext(ctx context.Context, request *UpdateLoadBalancerAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateLoadBalancerAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2059,37 +1528,11 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLoadBalancerAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the attributes of a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-//	UpdateLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
-//
-//	  	- If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
-//
-//	  	- If the GWLB instance is in the Active state, the GWLB instance is modified.
-//
-// @param request - UpdateLoadBalancerAttributeRequest
-//
-// @return UpdateLoadBalancerAttributeResponse
-func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAttributeRequest) (_result *UpdateLoadBalancerAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLoadBalancerAttributeResponse{}
-	_body, _err := client.UpdateLoadBalancerAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2114,7 +1557,7 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateLoadBalancerZonesResponse
-func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBalancerZonesRequest, runtime *dara.RuntimeOptions) (_result *UpdateLoadBalancerZonesResponse, _err error) {
+func (client *Client) UpdateLoadBalancerZonesWithContext(ctx context.Context, request *UpdateLoadBalancerZonesRequest, runtime *dara.RuntimeOptions) (_result *UpdateLoadBalancerZonesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2156,41 +1599,11 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateLoadBalancerZonesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the zones of a Gateway Load Balancer (GWLB) instance.
-//
-// Description:
-//
-// *Ensure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation.**
-//
-// **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/2853555.html) operation to query the status of the GWLB instance.
-//
-//   - If the GWLB instance is in the **Configuring*	- state, the GWLB instance is being modified.
-//
-//   - If the GWLB instance is in the **Active*	- state, the GWLB instance is modified.
-//
-// >  Before you initiate a call, ensure that all zones, including the current zones and the zones that you want to add, are specified. The zones that you do not specify are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of your GWLB instance.
-//
-// @param request - UpdateLoadBalancerZonesRequest
-//
-// @return UpdateLoadBalancerZonesResponse
-func (client *Client) UpdateLoadBalancerZones(request *UpdateLoadBalancerZonesRequest) (_result *UpdateLoadBalancerZonesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateLoadBalancerZonesResponse{}
-	_body, _err := client.UpdateLoadBalancerZonesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -2211,7 +1624,7 @@ func (client *Client) UpdateLoadBalancerZones(request *UpdateLoadBalancerZonesRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateServerGroupAttributeResponse
-func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServerGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateServerGroupAttributeResponse, _err error) {
+func (client *Client) UpdateServerGroupAttributeWithContext(ctx context.Context, request *UpdateServerGroupAttributeRequest, runtime *dara.RuntimeOptions) (_result *UpdateServerGroupAttributeResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -2269,36 +1682,10 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateServerGroupAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Updates the attributes of a server group.
-//
-// Description:
-//
-// *UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListServerGroups operation to query the status of the task.
-//
-//   - If the server group is in the **Configuring*	- state, the configuration of the server group is being modified.
-//
-//   - If the server group is in the **Available*	- state, the configuration of the server group is modified.
-//
-// @param request - UpdateServerGroupAttributeRequest
-//
-// @return UpdateServerGroupAttributeResponse
-func (client *Client) UpdateServerGroupAttribute(request *UpdateServerGroupAttributeRequest) (_result *UpdateServerGroupAttributeResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &UpdateServerGroupAttributeResponse{}
-	_body, _err := client.UpdateServerGroupAttributeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
