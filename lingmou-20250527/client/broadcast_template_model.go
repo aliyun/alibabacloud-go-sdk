@@ -22,8 +22,17 @@ type iBroadcastTemplate interface {
 }
 
 type BroadcastTemplate struct {
-	CreateTime   *string             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Id           *string             `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 2025-11-28T10:11:28
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// BS1b2WNnRMu4ouRzT4clY9Jhg
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 2025-11-28T11:11:28
 	ModifiedTime *string             `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
 	Name         *string             `json:"name,omitempty" xml:"name,omitempty"`
 	Variables    []*TemplateVariable `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`

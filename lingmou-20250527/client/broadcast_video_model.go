@@ -30,15 +30,39 @@ type iBroadcastVideo interface {
 }
 
 type BroadcastVideo struct {
+	// example:
+	//
+	// https://online-avatar-property.oss-cn-beijing.aliyuncs.com/aigc_material/OUTPUT_BROADCAST_SHORT_VIDEO/Mt.CQEYXYQW4MQU2/alignment.json
 	AlignmentFileURL *string `json:"alignmentFileURL,omitempty" xml:"alignmentFileURL,omitempty"`
-	CaptionURL       *string `json:"captionURL,omitempty" xml:"captionURL,omitempty"`
-	CoverURL         *string `json:"coverURL,omitempty" xml:"coverURL,omitempty"`
-	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Id               *string `json:"id,omitempty" xml:"id,omitempty"`
-	ModifiedTime     *string `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
-	VideoURL         *string `json:"videoURL,omitempty" xml:"videoURL,omitempty"`
+	// example:
+	//
+	// https://online-avatar-property.oss-cn-beijing.aliyuncs.com/aigc_material/OUTPUT_BROADCAST_SHORT_VIDEO/Mt.CQEYXYQW4MQU2/result.srt
+	CaptionURL *string `json:"captionURL,omitempty" xml:"captionURL,omitempty"`
+	// example:
+	//
+	// https://online-avatar-property.oss-cn-beijing.aliyuncs.com/aigc_material/OUTPUT_BROADCAST_SHORT_VIDEO/Mt.CQEYXYQW4MQU2/cover.jpg
+	CoverURL *string `json:"coverURL,omitempty" xml:"coverURL,omitempty"`
+	// example:
+	//
+	// 2025-11-28T13:40:33
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// M1k3So6n9IlrDV69sr3jDa3g
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 2025-11-28T13:41:31
+	ModifiedTime *string `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// https://online-avatar-property.oss-cn-beijing.aliyuncs.com/aigc_material/OUTPUT_BROADCAST_SHORT_VIDEO/Mt.CQEYXYQW4MQU2/result.mp4
+	VideoURL *string `json:"videoURL,omitempty" xml:"videoURL,omitempty"`
 }
 
 func (s BroadcastVideo) String() string {

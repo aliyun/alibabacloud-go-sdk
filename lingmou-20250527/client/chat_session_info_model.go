@@ -18,9 +18,18 @@ type iChatSessionInfo interface {
 }
 
 type ChatSessionInfo struct {
-	CreatedAt     *int64  `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	MainAccountId *int64  `json:"mainAccountId,omitempty" xml:"mainAccountId,omitempty"`
-	SessionId     *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// 1755680969
+	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// example:
+	//
+	// 1234567
+	MainAccountId *int64 `json:"mainAccountId,omitempty" xml:"mainAccountId,omitempty"`
+	// example:
+	//
+	// 7239F9E5-A4DB-55BA-B701-0CE47DBDB0A8
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
 }
 
 func (s ChatSessionInfo) String() string {

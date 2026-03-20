@@ -24,12 +24,27 @@ type iBroadcastAudio interface {
 }
 
 type BroadcastAudio struct {
-	AudioLength  *int32  `json:"audioLength,omitempty" xml:"audioLength,omitempty"`
-	CreateTime   *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Id           *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 10
+	AudioLength *int32 `json:"audioLength,omitempty" xml:"audioLength,omitempty"`
+	// example:
+	//
+	// 2026-01-22T01:59:03
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// M1Ju6XhHog_e-lSeb80Slp9g
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 2026-01-22T01:59:03
 	ModifiedTime *string `json:"modifiedTime,omitempty" xml:"modifiedTime,omitempty"`
 	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
-	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s BroadcastAudio) String() string {

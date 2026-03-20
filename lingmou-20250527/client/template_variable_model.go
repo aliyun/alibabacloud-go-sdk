@@ -18,9 +18,15 @@ type iTemplateVariable interface {
 }
 
 type TemplateVariable struct {
+	// example:
+	//
+	// test
 	Name       *string     `json:"name,omitempty" xml:"name,omitempty"`
 	Properties interface{} `json:"properties,omitempty" xml:"properties,omitempty"`
-	Type       *string     `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TemplateVariable) String() string {

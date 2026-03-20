@@ -95,7 +95,8 @@ type CreateBroadcastVideoFromTemplateRequestVideoOptions struct {
 	// example:
 	//
 	// 30
-	Fps *int32 `json:"fps,omitempty" xml:"fps,omitempty"`
+	Fps           *int32    `json:"fps,omitempty" xml:"fps,omitempty"`
+	LanguageHints []*string `json:"languageHints,omitempty" xml:"languageHints,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 720p
@@ -118,6 +119,10 @@ func (s *CreateBroadcastVideoFromTemplateRequestVideoOptions) GetFps() *int32 {
 	return s.Fps
 }
 
+func (s *CreateBroadcastVideoFromTemplateRequestVideoOptions) GetLanguageHints() []*string {
+	return s.LanguageHints
+}
+
 func (s *CreateBroadcastVideoFromTemplateRequestVideoOptions) GetResolution() *string {
 	return s.Resolution
 }
@@ -128,6 +133,11 @@ func (s *CreateBroadcastVideoFromTemplateRequestVideoOptions) GetWatermark() *bo
 
 func (s *CreateBroadcastVideoFromTemplateRequestVideoOptions) SetFps(v int32) *CreateBroadcastVideoFromTemplateRequestVideoOptions {
 	s.Fps = &v
+	return s
+}
+
+func (s *CreateBroadcastVideoFromTemplateRequestVideoOptions) SetLanguageHints(v []*string) *CreateBroadcastVideoFromTemplateRequestVideoOptions {
+	s.LanguageHints = v
 	return s
 }
 
