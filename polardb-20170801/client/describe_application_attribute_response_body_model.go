@@ -29,6 +29,10 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetExpireTime() *string
 	SetExpired(v bool) *DescribeApplicationAttributeResponseBody
 	GetExpired() *bool
+	SetIsLatestVersion(v bool) *DescribeApplicationAttributeResponseBody
+	GetIsLatestVersion() *bool
+	SetLatestVersion(v string) *DescribeApplicationAttributeResponseBody
+	GetLatestVersion() *string
 	SetLockMode(v string) *DescribeApplicationAttributeResponseBody
 	GetLockMode() *string
 	SetMaintainEndTime(v string) *DescribeApplicationAttributeResponseBody
@@ -37,6 +41,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetMaintainStartTime() *string
 	SetMemApplicationAttribute(v *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) *DescribeApplicationAttributeResponseBody
 	GetMemApplicationAttribute() *DescribeApplicationAttributeResponseBodyMemApplicationAttribute
+	SetMinorVersion(v string) *DescribeApplicationAttributeResponseBody
+	GetMinorVersion() *string
 	SetPayType(v string) *DescribeApplicationAttributeResponseBody
 	GetPayType() *string
 	SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody
@@ -99,7 +105,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	// example:
 	//
 	// false
-	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Expired         *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	IsLatestVersion *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	LatestVersion   *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// example:
 	//
 	// Unlock
@@ -113,6 +121,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	// 18:00Z
 	MaintainStartTime       *string                                                          `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	MemApplicationAttribute *DescribeApplicationAttributeResponseBodyMemApplicationAttribute `json:"MemApplicationAttribute,omitempty" xml:"MemApplicationAttribute,omitempty" type:"Struct"`
+	MinorVersion            *string                                                          `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -210,6 +219,14 @@ func (s *DescribeApplicationAttributeResponseBody) GetExpired() *bool {
 	return s.Expired
 }
 
+func (s *DescribeApplicationAttributeResponseBody) GetIsLatestVersion() *bool {
+	return s.IsLatestVersion
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetLatestVersion() *string {
+	return s.LatestVersion
+}
+
 func (s *DescribeApplicationAttributeResponseBody) GetLockMode() *string {
 	return s.LockMode
 }
@@ -224,6 +241,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetMaintainStartTime() *strin
 
 func (s *DescribeApplicationAttributeResponseBody) GetMemApplicationAttribute() *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
 	return s.MemApplicationAttribute
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetMinorVersion() *string {
+	return s.MinorVersion
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetPayType() *string {
@@ -328,6 +349,16 @@ func (s *DescribeApplicationAttributeResponseBody) SetExpired(v bool) *DescribeA
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetIsLatestVersion(v bool) *DescribeApplicationAttributeResponseBody {
+	s.IsLatestVersion = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetLatestVersion(v string) *DescribeApplicationAttributeResponseBody {
+	s.LatestVersion = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetLockMode(v string) *DescribeApplicationAttributeResponseBody {
 	s.LockMode = &v
 	return s
@@ -345,6 +376,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetMaintainStartTime(v string
 
 func (s *DescribeApplicationAttributeResponseBody) SetMemApplicationAttribute(v *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) *DescribeApplicationAttributeResponseBody {
 	s.MemApplicationAttribute = v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetMinorVersion(v string) *DescribeApplicationAttributeResponseBody {
+	s.MinorVersion = &v
 	return s
 }
 
