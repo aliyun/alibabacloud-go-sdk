@@ -23,6 +23,8 @@ type iDescribePackageDeductionsResponseBody interface {
 	GetTotalUsedCoreTime() *float32
 	SetTotalUsedTime(v int64) *DescribePackageDeductionsResponseBody
 	GetTotalUsedTime() *int64
+	SetTotalUsedTimeDecimal(v string) *DescribePackageDeductionsResponseBody
+	GetTotalUsedTimeDecimal() *string
 }
 
 type DescribePackageDeductionsResponseBody struct {
@@ -42,9 +44,10 @@ type DescribePackageDeductionsResponseBody struct {
 	// example:
 	//
 	// 100
-	TotalCount        *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalUsedCoreTime *float32 `json:"TotalUsedCoreTime,omitempty" xml:"TotalUsedCoreTime,omitempty"`
-	TotalUsedTime     *int64   `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
+	TotalCount           *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalUsedCoreTime    *float32 `json:"TotalUsedCoreTime,omitempty" xml:"TotalUsedCoreTime,omitempty"`
+	TotalUsedTime        *int64   `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
+	TotalUsedTimeDecimal *string  `json:"TotalUsedTimeDecimal,omitempty" xml:"TotalUsedTimeDecimal,omitempty"`
 }
 
 func (s DescribePackageDeductionsResponseBody) String() string {
@@ -83,6 +86,10 @@ func (s *DescribePackageDeductionsResponseBody) GetTotalUsedTime() *int64 {
 	return s.TotalUsedTime
 }
 
+func (s *DescribePackageDeductionsResponseBody) GetTotalUsedTimeDecimal() *string {
+	return s.TotalUsedTimeDecimal
+}
+
 func (s *DescribePackageDeductionsResponseBody) SetDeductions(v []*DescribePackageDeductionsResponseBodyDeductions) *DescribePackageDeductionsResponseBody {
 	s.Deductions = v
 	return s
@@ -115,6 +122,11 @@ func (s *DescribePackageDeductionsResponseBody) SetTotalUsedCoreTime(v float32) 
 
 func (s *DescribePackageDeductionsResponseBody) SetTotalUsedTime(v int64) *DescribePackageDeductionsResponseBody {
 	s.TotalUsedTime = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBody) SetTotalUsedTimeDecimal(v string) *DescribePackageDeductionsResponseBody {
+	s.TotalUsedTimeDecimal = &v
 	return s
 }
 
@@ -184,8 +196,9 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	// example:
 	//
 	// 3600
-	UsedTime          *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	UsedTimeWithScale *int64 `json:"UsedTimeWithScale,omitempty" xml:"UsedTimeWithScale,omitempty"`
+	UsedTime          *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	UsedTimeDecimal   *string `json:"UsedTimeDecimal,omitempty" xml:"UsedTimeDecimal,omitempty"`
+	UsedTimeWithScale *int64  `json:"UsedTimeWithScale,omitempty" xml:"UsedTimeWithScale,omitempty"`
 }
 
 func (s DescribePackageDeductionsResponseBodyDeductions) String() string {
@@ -262,6 +275,10 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) GetUsedCoreTime() *flo
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetUsedTime() *int64 {
 	return s.UsedTime
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetUsedTimeDecimal() *string {
+	return s.UsedTimeDecimal
 }
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetUsedTimeWithScale() *int64 {
@@ -350,6 +367,11 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) SetUsedCoreTime(v floa
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetUsedTime(v int64) *DescribePackageDeductionsResponseBodyDeductions {
 	s.UsedTime = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetUsedTimeDecimal(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.UsedTimeDecimal = &v
 	return s
 }
 
