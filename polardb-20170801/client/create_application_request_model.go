@@ -15,6 +15,8 @@ type iCreateApplicationRequest interface {
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationRequest
 	GetArchitecture() *string
+	SetAutoAllocatePublicEip(v bool) *CreateApplicationRequest
+	GetAutoAllocatePublicEip() *bool
 	SetAutoCreatePolarFs(v bool) *CreateApplicationRequest
 	GetAutoCreatePolarFs() *bool
 	SetAutoRenew(v bool) *CreateApplicationRequest
@@ -83,8 +85,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// x86
-	Architecture      *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	AutoCreatePolarFs *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
+	Architecture          *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	AutoAllocatePublicEip *bool   `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
+	AutoCreatePolarFs     *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
 	// example:
 	//
 	// true
@@ -183,6 +186,10 @@ func (s *CreateApplicationRequest) GetApplicationType() *string {
 
 func (s *CreateApplicationRequest) GetArchitecture() *string {
 	return s.Architecture
+}
+
+func (s *CreateApplicationRequest) GetAutoAllocatePublicEip() *bool {
+	return s.AutoAllocatePublicEip
 }
 
 func (s *CreateApplicationRequest) GetAutoCreatePolarFs() *bool {
@@ -297,6 +304,11 @@ func (s *CreateApplicationRequest) SetApplicationType(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetArchitecture(v string) *CreateApplicationRequest {
 	s.Architecture = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAutoAllocatePublicEip(v bool) *CreateApplicationRequest {
+	s.AutoAllocatePublicEip = &v
 	return s
 }
 

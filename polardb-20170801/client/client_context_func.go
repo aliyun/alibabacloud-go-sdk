@@ -1711,6 +1711,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 		query["Architecture"] = request.Architecture
 	}
 
+	if !dara.IsNil(request.AutoAllocatePublicEip) {
+		query["AutoAllocatePublicEip"] = request.AutoAllocatePublicEip
+	}
+
 	if !dara.IsNil(request.AutoCreatePolarFs) {
 		query["AutoCreatePolarFs"] = request.AutoCreatePolarFs
 	}

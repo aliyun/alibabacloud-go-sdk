@@ -2250,6 +2250,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["Architecture"] = request.Architecture
 	}
 
+	if !dara.IsNil(request.AutoAllocatePublicEip) {
+		query["AutoAllocatePublicEip"] = request.AutoAllocatePublicEip
+	}
+
 	if !dara.IsNil(request.AutoCreatePolarFs) {
 		query["AutoCreatePolarFs"] = request.AutoCreatePolarFs
 	}
