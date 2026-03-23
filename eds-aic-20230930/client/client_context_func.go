@@ -5073,6 +5073,62 @@ func (client *Client) RunCommandWithContext(ctx context.Context, request *RunCom
 
 // Summary:
 //
+// 通过eds agent通道下发命令
+//
+// @param request - RunSyncCommandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSyncCommandResponse
+func (client *Client) RunSyncCommandWithContext(ctx context.Context, request *RunSyncCommandRequest, runtime *dara.RuntimeOptions) (_result *RunSyncCommandResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CommandContent) {
+		query["CommandContent"] = request.CommandContent
+	}
+
+	if !dara.IsNil(request.ContentEncoding) {
+		query["ContentEncoding"] = request.ContentEncoding
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.WaitTime) {
+		query["WaitTime"] = request.WaitTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunSyncCommand"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunSyncCommandResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Pushes files from Object Storage Service (OSS) buckets to cloud phone instances.
 //
 // Description:
