@@ -18511,6 +18511,92 @@ func (client *Client) ListTablesInCategory(request *ListTablesInCategoryRequest)
 
 // Summary:
 //
+// 查询绑定特定标签的资产列表
+//
+// @param request - ListTagMetaAssetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagMetaAssetResponse
+func (client *Client) ListTagMetaAssetWithOptions(request *ListTagMetaAssetRequest, runtime *dara.RuntimeOptions) (_result *ListTagMetaAssetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MetaParentId) {
+		query["MetaParentId"] = request.MetaParentId
+	}
+
+	if !dara.IsNil(request.MetaType) {
+		query["MetaType"] = request.MetaType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.TagName) {
+		query["TagName"] = request.TagName
+	}
+
+	if !dara.IsNil(request.Tid) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagMetaAsset"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagMetaAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询绑定特定标签的资产列表
+//
+// @param request - ListTagMetaAssetRequest
+//
+// @return ListTagMetaAssetResponse
+func (client *Client) ListTagMetaAsset(request *ListTagMetaAssetRequest) (_result *ListTagMetaAssetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTagMetaAssetResponse{}
+	_body, _err := client.ListTagMetaAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of task flows.
 //
 // @param request - ListTaskFlowRequest
