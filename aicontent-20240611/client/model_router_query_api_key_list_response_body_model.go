@@ -9,8 +9,8 @@ type iModelRouterQueryApiKeyListResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetData(v []*ApiKeyDTO) *ModelRouterQueryApiKeyListResponseBody
-	GetData() []*ApiKeyDTO
+	SetData(v *ModelRouterQueryApiKeyListResponseBodyData) *ModelRouterQueryApiKeyListResponseBody
+	GetData() *ModelRouterQueryApiKeyListResponseBodyData
 	SetErrCode(v string) *ModelRouterQueryApiKeyListResponseBody
 	GetErrCode() *string
 	SetErrMessage(v string) *ModelRouterQueryApiKeyListResponseBody
@@ -19,27 +19,17 @@ type iModelRouterQueryApiKeyListResponseBody interface {
 	GetHttpStatusCode() *int32
 	SetMaxResults(v int32) *ModelRouterQueryApiKeyListResponseBody
 	GetMaxResults() *int32
-	SetNextToken(v string) *ModelRouterQueryApiKeyListResponseBody
-	GetNextToken() *string
-	SetPageIndex(v int32) *ModelRouterQueryApiKeyListResponseBody
-	GetPageIndex() *int32
-	SetPageSize(v int32) *ModelRouterQueryApiKeyListResponseBody
-	GetPageSize() *int32
 	SetRequestId(v string) *ModelRouterQueryApiKeyListResponseBody
 	GetRequestId() *string
-	SetSkip(v int32) *ModelRouterQueryApiKeyListResponseBody
-	GetSkip() *int32
 	SetSuccess(v bool) *ModelRouterQueryApiKeyListResponseBody
 	GetSuccess() *bool
-	SetTotalCount(v int32) *ModelRouterQueryApiKeyListResponseBody
-	GetTotalCount() *int32
 }
 
 type ModelRouterQueryApiKeyListResponseBody struct {
 	// example:
 	//
 	// []
-	Data []*ApiKeyDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Data *ModelRouterQueryApiKeyListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// UNKNOWN_ERROR
@@ -58,38 +48,14 @@ type ModelRouterQueryApiKeyListResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
-	//
-	// example:
-	//
-	// xxxx-xxx-xxxxx
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// example:
-	//
-	// 1
-	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// skip
-	//
-	// example:
-	//
-	// 10
-	Skip *int32 `json:"skip,omitempty" xml:"skip,omitempty"`
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ModelRouterQueryApiKeyListResponseBody) String() string {
@@ -100,7 +66,7 @@ func (s ModelRouterQueryApiKeyListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModelRouterQueryApiKeyListResponseBody) GetData() []*ApiKeyDTO {
+func (s *ModelRouterQueryApiKeyListResponseBody) GetData() *ModelRouterQueryApiKeyListResponseBodyData {
 	return s.Data
 }
 
@@ -120,35 +86,15 @@ func (s *ModelRouterQueryApiKeyListResponseBody) GetMaxResults() *int32 {
 	return s.MaxResults
 }
 
-func (s *ModelRouterQueryApiKeyListResponseBody) GetNextToken() *string {
-	return s.NextToken
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) GetPageIndex() *int32 {
-	return s.PageIndex
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) GetPageSize() *int32 {
-	return s.PageSize
-}
-
 func (s *ModelRouterQueryApiKeyListResponseBody) GetRequestId() *string {
 	return s.RequestId
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) GetSkip() *int32 {
-	return s.Skip
 }
 
 func (s *ModelRouterQueryApiKeyListResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
-func (s *ModelRouterQueryApiKeyListResponseBody) GetTotalCount() *int32 {
-	return s.TotalCount
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) SetData(v []*ApiKeyDTO) *ModelRouterQueryApiKeyListResponseBody {
+func (s *ModelRouterQueryApiKeyListResponseBody) SetData(v *ModelRouterQueryApiKeyListResponseBodyData) *ModelRouterQueryApiKeyListResponseBody {
 	s.Data = v
 	return s
 }
@@ -173,28 +119,8 @@ func (s *ModelRouterQueryApiKeyListResponseBody) SetMaxResults(v int32) *ModelRo
 	return s
 }
 
-func (s *ModelRouterQueryApiKeyListResponseBody) SetNextToken(v string) *ModelRouterQueryApiKeyListResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) SetPageIndex(v int32) *ModelRouterQueryApiKeyListResponseBody {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) SetPageSize(v int32) *ModelRouterQueryApiKeyListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ModelRouterQueryApiKeyListResponseBody) SetRequestId(v string) *ModelRouterQueryApiKeyListResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModelRouterQueryApiKeyListResponseBody) SetSkip(v int32) *ModelRouterQueryApiKeyListResponseBody {
-	s.Skip = &v
 	return s
 }
 
@@ -203,14 +129,101 @@ func (s *ModelRouterQueryApiKeyListResponseBody) SetSuccess(v bool) *ModelRouter
 	return s
 }
 
-func (s *ModelRouterQueryApiKeyListResponseBody) SetTotalCount(v int32) *ModelRouterQueryApiKeyListResponseBody {
-	s.TotalCount = &v
+func (s *ModelRouterQueryApiKeyListResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModelRouterQueryApiKeyListResponseBodyData struct {
+	List      []*ApiKeyDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	MaxResult *string      `json:"maxResult,omitempty" xml:"maxResult,omitempty"`
+	// example:
+	//
+	// None
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 0
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ModelRouterQueryApiKeyListResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModelRouterQueryApiKeyListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) GetList() []*ApiKeyDTO {
+	return s.List
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) GetMaxResult() *string {
+	return s.MaxResult
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) GetPage() *int32 {
+	return s.Page
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) GetTotal() *int32 {
+	return s.Total
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) SetList(v []*ApiKeyDTO) *ModelRouterQueryApiKeyListResponseBodyData {
+	s.List = v
 	return s
 }
 
-func (s *ModelRouterQueryApiKeyListResponseBody) Validate() error {
-	if s.Data != nil {
-		for _, item := range s.Data {
+func (s *ModelRouterQueryApiKeyListResponseBodyData) SetMaxResult(v string) *ModelRouterQueryApiKeyListResponseBodyData {
+	s.MaxResult = &v
+	return s
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) SetNextToken(v string) *ModelRouterQueryApiKeyListResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) SetPage(v int32) *ModelRouterQueryApiKeyListResponseBodyData {
+	s.Page = &v
+	return s
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) SetPageSize(v int32) *ModelRouterQueryApiKeyListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) SetTotal(v int32) *ModelRouterQueryApiKeyListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ModelRouterQueryApiKeyListResponseBodyData) Validate() error {
+	if s.List != nil {
+		for _, item := range s.List {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

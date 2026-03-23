@@ -44,6 +44,8 @@ type ConversationDTO struct {
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// ID
+	//
 	// example:
 	//
 	// 1
@@ -56,10 +58,7 @@ type ConversationDTO struct {
 	//
 	// [1,2,3]
 	ModelIds *string `json:"modelIds,omitempty" xml:"modelIds,omitempty"`
-	// example:
-	//
-	// 我的对话
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s ConversationDTO) String() string {

@@ -13,12 +13,16 @@ type iApiKeyDTO interface {
 	GetClient() *ClientDTO
 	SetClientId(v int64) *ApiKeyDTO
 	GetClientId() *int64
+	SetDeleteTag(v int32) *ApiKeyDTO
+	GetDeleteTag() *int32
 	SetGmtCreate(v string) *ApiKeyDTO
 	GetGmtCreate() *string
 	SetGmtModified(v string) *ApiKeyDTO
 	GetGmtModified() *string
 	SetId(v int64) *ApiKeyDTO
 	GetId() *int64
+	SetKey(v string) *ApiKeyDTO
+	GetKey() *string
 	SetKeyPreview(v string) *ApiKeyDTO
 	GetKeyPreview() *string
 	SetName(v string) *ApiKeyDTO
@@ -33,6 +37,10 @@ type ApiKeyDTO struct {
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
 	// example:
 	//
+	// 0
+	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// example:
+	//
 	// 2024-01-01T00:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// example:
@@ -43,6 +51,10 @@ type ApiKeyDTO struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// example:
 	//
 	// sk-xxx****xxx
@@ -69,6 +81,10 @@ func (s *ApiKeyDTO) GetClientId() *int64 {
 	return s.ClientId
 }
 
+func (s *ApiKeyDTO) GetDeleteTag() *int32 {
+	return s.DeleteTag
+}
+
 func (s *ApiKeyDTO) GetGmtCreate() *string {
 	return s.GmtCreate
 }
@@ -79,6 +95,10 @@ func (s *ApiKeyDTO) GetGmtModified() *string {
 
 func (s *ApiKeyDTO) GetId() *int64 {
 	return s.Id
+}
+
+func (s *ApiKeyDTO) GetKey() *string {
+	return s.Key
 }
 
 func (s *ApiKeyDTO) GetKeyPreview() *string {
@@ -99,6 +119,11 @@ func (s *ApiKeyDTO) SetClientId(v int64) *ApiKeyDTO {
 	return s
 }
 
+func (s *ApiKeyDTO) SetDeleteTag(v int32) *ApiKeyDTO {
+	s.DeleteTag = &v
+	return s
+}
+
 func (s *ApiKeyDTO) SetGmtCreate(v string) *ApiKeyDTO {
 	s.GmtCreate = &v
 	return s
@@ -111,6 +136,11 @@ func (s *ApiKeyDTO) SetGmtModified(v string) *ApiKeyDTO {
 
 func (s *ApiKeyDTO) SetId(v int64) *ApiKeyDTO {
 	s.Id = &v
+	return s
+}
+
+func (s *ApiKeyDTO) SetKey(v string) *ApiKeyDTO {
+	s.Key = &v
 	return s
 }
 

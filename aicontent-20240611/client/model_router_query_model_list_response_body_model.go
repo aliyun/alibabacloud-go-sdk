@@ -9,37 +9,25 @@ type iModelRouterQueryModelListResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetData(v []*ModelDTO) *ModelRouterQueryModelListResponseBody
-	GetData() []*ModelDTO
+	SetData(v *ModelRouterQueryModelListResponseBodyData) *ModelRouterQueryModelListResponseBody
+	GetData() *ModelRouterQueryModelListResponseBodyData
 	SetErrCode(v string) *ModelRouterQueryModelListResponseBody
 	GetErrCode() *string
 	SetErrMessage(v string) *ModelRouterQueryModelListResponseBody
 	GetErrMessage() *string
 	SetHttpStatusCode(v int32) *ModelRouterQueryModelListResponseBody
 	GetHttpStatusCode() *int32
-	SetMaxResults(v int32) *ModelRouterQueryModelListResponseBody
-	GetMaxResults() *int32
-	SetNextToken(v string) *ModelRouterQueryModelListResponseBody
-	GetNextToken() *string
-	SetPageIndex(v int32) *ModelRouterQueryModelListResponseBody
-	GetPageIndex() *int32
-	SetPageSize(v int32) *ModelRouterQueryModelListResponseBody
-	GetPageSize() *int32
 	SetRequestId(v string) *ModelRouterQueryModelListResponseBody
 	GetRequestId() *string
-	SetSkip(v int32) *ModelRouterQueryModelListResponseBody
-	GetSkip() *int32
 	SetSuccess(v bool) *ModelRouterQueryModelListResponseBody
 	GetSuccess() *bool
-	SetTotalCount(v int32) *ModelRouterQueryModelListResponseBody
-	GetTotalCount() *int32
 }
 
 type ModelRouterQueryModelListResponseBody struct {
 	// example:
 	//
 	// []
-	Data []*ModelDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Data *ModelRouterQueryModelListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// UNKNOWN_ERROR
@@ -52,44 +40,14 @@ type ModelRouterQueryModelListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// maxResults
-	//
-	// example:
-	//
-	// 10
-	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// nextToken
-	//
-	// example:
-	//
-	// xxxx-xxx-xxxxx
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// example:
-	//
-	// 1
-	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// skip
-	//
-	// example:
-	//
-	// 10
-	Skip *int32 `json:"skip,omitempty" xml:"skip,omitempty"`
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ModelRouterQueryModelListResponseBody) String() string {
@@ -100,7 +58,7 @@ func (s ModelRouterQueryModelListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModelRouterQueryModelListResponseBody) GetData() []*ModelDTO {
+func (s *ModelRouterQueryModelListResponseBody) GetData() *ModelRouterQueryModelListResponseBodyData {
 	return s.Data
 }
 
@@ -116,39 +74,15 @@ func (s *ModelRouterQueryModelListResponseBody) GetHttpStatusCode() *int32 {
 	return s.HttpStatusCode
 }
 
-func (s *ModelRouterQueryModelListResponseBody) GetMaxResults() *int32 {
-	return s.MaxResults
-}
-
-func (s *ModelRouterQueryModelListResponseBody) GetNextToken() *string {
-	return s.NextToken
-}
-
-func (s *ModelRouterQueryModelListResponseBody) GetPageIndex() *int32 {
-	return s.PageIndex
-}
-
-func (s *ModelRouterQueryModelListResponseBody) GetPageSize() *int32 {
-	return s.PageSize
-}
-
 func (s *ModelRouterQueryModelListResponseBody) GetRequestId() *string {
 	return s.RequestId
-}
-
-func (s *ModelRouterQueryModelListResponseBody) GetSkip() *int32 {
-	return s.Skip
 }
 
 func (s *ModelRouterQueryModelListResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
-func (s *ModelRouterQueryModelListResponseBody) GetTotalCount() *int32 {
-	return s.TotalCount
-}
-
-func (s *ModelRouterQueryModelListResponseBody) SetData(v []*ModelDTO) *ModelRouterQueryModelListResponseBody {
+func (s *ModelRouterQueryModelListResponseBody) SetData(v *ModelRouterQueryModelListResponseBodyData) *ModelRouterQueryModelListResponseBody {
 	s.Data = v
 	return s
 }
@@ -168,33 +102,8 @@ func (s *ModelRouterQueryModelListResponseBody) SetHttpStatusCode(v int32) *Mode
 	return s
 }
 
-func (s *ModelRouterQueryModelListResponseBody) SetMaxResults(v int32) *ModelRouterQueryModelListResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ModelRouterQueryModelListResponseBody) SetNextToken(v string) *ModelRouterQueryModelListResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ModelRouterQueryModelListResponseBody) SetPageIndex(v int32) *ModelRouterQueryModelListResponseBody {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ModelRouterQueryModelListResponseBody) SetPageSize(v int32) *ModelRouterQueryModelListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ModelRouterQueryModelListResponseBody) SetRequestId(v string) *ModelRouterQueryModelListResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModelRouterQueryModelListResponseBody) SetSkip(v int32) *ModelRouterQueryModelListResponseBody {
-	s.Skip = &v
 	return s
 }
 
@@ -203,14 +112,104 @@ func (s *ModelRouterQueryModelListResponseBody) SetSuccess(v bool) *ModelRouterQ
 	return s
 }
 
-func (s *ModelRouterQueryModelListResponseBody) SetTotalCount(v int32) *ModelRouterQueryModelListResponseBody {
-	s.TotalCount = &v
+func (s *ModelRouterQueryModelListResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModelRouterQueryModelListResponseBodyData struct {
+	List []*ModelDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// None
+	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// None
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 5
+	Total *string `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ModelRouterQueryModelListResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModelRouterQueryModelListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) GetList() []*ModelDTO {
+	return s.List
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) GetMaxResults() *string {
+	return s.MaxResults
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) GetNextToken() *string {
+	return s.NextToken
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) GetPage() *int32 {
+	return s.Page
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) GetTotal() *string {
+	return s.Total
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) SetList(v []*ModelDTO) *ModelRouterQueryModelListResponseBodyData {
+	s.List = v
 	return s
 }
 
-func (s *ModelRouterQueryModelListResponseBody) Validate() error {
-	if s.Data != nil {
-		for _, item := range s.Data {
+func (s *ModelRouterQueryModelListResponseBodyData) SetMaxResults(v string) *ModelRouterQueryModelListResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) SetNextToken(v string) *ModelRouterQueryModelListResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) SetPage(v int32) *ModelRouterQueryModelListResponseBodyData {
+	s.Page = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) SetPageSize(v int32) *ModelRouterQueryModelListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) SetTotal(v string) *ModelRouterQueryModelListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListResponseBodyData) Validate() error {
+	if s.List != nil {
+		for _, item := range s.List {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

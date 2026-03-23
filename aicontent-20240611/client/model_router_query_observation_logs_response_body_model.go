@@ -9,8 +9,8 @@ type iModelRouterQueryObservationLogsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetData(v []*RequestLogDTO) *ModelRouterQueryObservationLogsResponseBody
-	GetData() []*RequestLogDTO
+	SetData(v *ModelRouterQueryObservationLogsResponseBodyData) *ModelRouterQueryObservationLogsResponseBody
+	GetData() *ModelRouterQueryObservationLogsResponseBodyData
 	SetErrCode(v string) *ModelRouterQueryObservationLogsResponseBody
 	GetErrCode() *string
 	SetErrMessage(v string) *ModelRouterQueryObservationLogsResponseBody
@@ -21,25 +21,17 @@ type iModelRouterQueryObservationLogsResponseBody interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ModelRouterQueryObservationLogsResponseBody
 	GetNextToken() *string
-	SetPageIndex(v int32) *ModelRouterQueryObservationLogsResponseBody
-	GetPageIndex() *int32
-	SetPageSize(v int32) *ModelRouterQueryObservationLogsResponseBody
-	GetPageSize() *int32
 	SetRequestId(v string) *ModelRouterQueryObservationLogsResponseBody
 	GetRequestId() *string
-	SetSkip(v int32) *ModelRouterQueryObservationLogsResponseBody
-	GetSkip() *int32
 	SetSuccess(v bool) *ModelRouterQueryObservationLogsResponseBody
 	GetSuccess() *bool
-	SetTotalCount(v int32) *ModelRouterQueryObservationLogsResponseBody
-	GetTotalCount() *int32
 }
 
 type ModelRouterQueryObservationLogsResponseBody struct {
 	// example:
 	//
 	// []
-	Data []*RequestLogDTO `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Data *ModelRouterQueryObservationLogsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// UNKNOWN_ERROR
@@ -66,30 +58,12 @@ type ModelRouterQueryObservationLogsResponseBody struct {
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// example:
 	//
-	// 1
-	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// skip
-	//
-	// example:
-	//
-	// 10
-	Skip *int32 `json:"skip,omitempty" xml:"skip,omitempty"`
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 100
-	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ModelRouterQueryObservationLogsResponseBody) String() string {
@@ -100,7 +74,7 @@ func (s ModelRouterQueryObservationLogsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModelRouterQueryObservationLogsResponseBody) GetData() []*RequestLogDTO {
+func (s *ModelRouterQueryObservationLogsResponseBody) GetData() *ModelRouterQueryObservationLogsResponseBodyData {
 	return s.Data
 }
 
@@ -124,31 +98,15 @@ func (s *ModelRouterQueryObservationLogsResponseBody) GetNextToken() *string {
 	return s.NextToken
 }
 
-func (s *ModelRouterQueryObservationLogsResponseBody) GetPageIndex() *int32 {
-	return s.PageIndex
-}
-
-func (s *ModelRouterQueryObservationLogsResponseBody) GetPageSize() *int32 {
-	return s.PageSize
-}
-
 func (s *ModelRouterQueryObservationLogsResponseBody) GetRequestId() *string {
 	return s.RequestId
-}
-
-func (s *ModelRouterQueryObservationLogsResponseBody) GetSkip() *int32 {
-	return s.Skip
 }
 
 func (s *ModelRouterQueryObservationLogsResponseBody) GetSuccess() *bool {
 	return s.Success
 }
 
-func (s *ModelRouterQueryObservationLogsResponseBody) GetTotalCount() *int32 {
-	return s.TotalCount
-}
-
-func (s *ModelRouterQueryObservationLogsResponseBody) SetData(v []*RequestLogDTO) *ModelRouterQueryObservationLogsResponseBody {
+func (s *ModelRouterQueryObservationLogsResponseBody) SetData(v *ModelRouterQueryObservationLogsResponseBodyData) *ModelRouterQueryObservationLogsResponseBody {
 	s.Data = v
 	return s
 }
@@ -178,23 +136,8 @@ func (s *ModelRouterQueryObservationLogsResponseBody) SetNextToken(v string) *Mo
 	return s
 }
 
-func (s *ModelRouterQueryObservationLogsResponseBody) SetPageIndex(v int32) *ModelRouterQueryObservationLogsResponseBody {
-	s.PageIndex = &v
-	return s
-}
-
-func (s *ModelRouterQueryObservationLogsResponseBody) SetPageSize(v int32) *ModelRouterQueryObservationLogsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ModelRouterQueryObservationLogsResponseBody) SetRequestId(v string) *ModelRouterQueryObservationLogsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModelRouterQueryObservationLogsResponseBody) SetSkip(v int32) *ModelRouterQueryObservationLogsResponseBody {
-	s.Skip = &v
 	return s
 }
 
@@ -203,14 +146,104 @@ func (s *ModelRouterQueryObservationLogsResponseBody) SetSuccess(v bool) *ModelR
 	return s
 }
 
-func (s *ModelRouterQueryObservationLogsResponseBody) SetTotalCount(v int32) *ModelRouterQueryObservationLogsResponseBody {
-	s.TotalCount = &v
+func (s *ModelRouterQueryObservationLogsResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModelRouterQueryObservationLogsResponseBodyData struct {
+	List []*RequestLogDTO `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 0
+	NextToken *int32 `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// None
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ModelRouterQueryObservationLogsResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModelRouterQueryObservationLogsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) GetList() []*RequestLogDTO {
+	return s.List
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) GetNextToken() *int32 {
+	return s.NextToken
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) GetPage() *int32 {
+	return s.Page
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) GetPageSize() *int32 {
+	return s.PageSize
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) GetTotal() *int32 {
+	return s.Total
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) SetList(v []*RequestLogDTO) *ModelRouterQueryObservationLogsResponseBodyData {
+	s.List = v
 	return s
 }
 
-func (s *ModelRouterQueryObservationLogsResponseBody) Validate() error {
-	if s.Data != nil {
-		for _, item := range s.Data {
+func (s *ModelRouterQueryObservationLogsResponseBodyData) SetMaxResults(v int32) *ModelRouterQueryObservationLogsResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) SetNextToken(v int32) *ModelRouterQueryObservationLogsResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) SetPage(v int32) *ModelRouterQueryObservationLogsResponseBodyData {
+	s.Page = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) SetPageSize(v int32) *ModelRouterQueryObservationLogsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) SetTotal(v int32) *ModelRouterQueryObservationLogsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *ModelRouterQueryObservationLogsResponseBodyData) Validate() error {
+	if s.List != nil {
+		for _, item := range s.List {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

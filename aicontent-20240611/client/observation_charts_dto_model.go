@@ -17,19 +17,19 @@ type iObservationChartsDTO interface {
 	GetQpm() []*TimeSeriesPointDTO
 	SetResponseTime(v []*TimeSeriesPointDTO) *ObservationChartsDTO
 	GetResponseTime() []*TimeSeriesPointDTO
-	SetSuccessRate(v []*TimeSeriesPointDTO) *ObservationChartsDTO
-	GetSuccessRate() []*TimeSeriesPointDTO
+	SetSuccessRate(v []*ObservationChartsDTOSuccessRate) *ObservationChartsDTO
+	GetSuccessRate() []*ObservationChartsDTOSuccessRate
 	SetTpm(v []*TimeSeriesPointDTO) *ObservationChartsDTO
 	GetTpm() []*TimeSeriesPointDTO
 }
 
 type ObservationChartsDTO struct {
-	CallVolume   []*TimeSeriesPointDTO `json:"callVolume,omitempty" xml:"callVolume,omitempty" type:"Repeated"`
-	Concurrency  []*TimeSeriesPointDTO `json:"concurrency,omitempty" xml:"concurrency,omitempty" type:"Repeated"`
-	Qpm          []*TimeSeriesPointDTO `json:"qpm,omitempty" xml:"qpm,omitempty" type:"Repeated"`
-	ResponseTime []*TimeSeriesPointDTO `json:"responseTime,omitempty" xml:"responseTime,omitempty" type:"Repeated"`
-	SuccessRate  []*TimeSeriesPointDTO `json:"successRate,omitempty" xml:"successRate,omitempty" type:"Repeated"`
-	Tpm          []*TimeSeriesPointDTO `json:"tpm,omitempty" xml:"tpm,omitempty" type:"Repeated"`
+	CallVolume   []*TimeSeriesPointDTO              `json:"callVolume,omitempty" xml:"callVolume,omitempty" type:"Repeated"`
+	Concurrency  []*TimeSeriesPointDTO              `json:"concurrency,omitempty" xml:"concurrency,omitempty" type:"Repeated"`
+	Qpm          []*TimeSeriesPointDTO              `json:"qpm,omitempty" xml:"qpm,omitempty" type:"Repeated"`
+	ResponseTime []*TimeSeriesPointDTO              `json:"responseTime,omitempty" xml:"responseTime,omitempty" type:"Repeated"`
+	SuccessRate  []*ObservationChartsDTOSuccessRate `json:"successRate,omitempty" xml:"successRate,omitempty" type:"Repeated"`
+	Tpm          []*TimeSeriesPointDTO              `json:"tpm,omitempty" xml:"tpm,omitempty" type:"Repeated"`
 }
 
 func (s ObservationChartsDTO) String() string {
@@ -56,7 +56,7 @@ func (s *ObservationChartsDTO) GetResponseTime() []*TimeSeriesPointDTO {
 	return s.ResponseTime
 }
 
-func (s *ObservationChartsDTO) GetSuccessRate() []*TimeSeriesPointDTO {
+func (s *ObservationChartsDTO) GetSuccessRate() []*ObservationChartsDTOSuccessRate {
 	return s.SuccessRate
 }
 
@@ -84,7 +84,7 @@ func (s *ObservationChartsDTO) SetResponseTime(v []*TimeSeriesPointDTO) *Observa
 	return s
 }
 
-func (s *ObservationChartsDTO) SetSuccessRate(v []*TimeSeriesPointDTO) *ObservationChartsDTO {
+func (s *ObservationChartsDTO) SetSuccessRate(v []*ObservationChartsDTOSuccessRate) *ObservationChartsDTO {
 	s.SuccessRate = v
 	return s
 }
@@ -150,4 +150,55 @@ func (s *ObservationChartsDTO) Validate() error {
 		}
 	}
 	return nil
+}
+
+type ObservationChartsDTOSuccessRate struct {
+	// example:
+	//
+	// series1
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// 2024-01-01T00:00:00Z
+	Timestamp *string     `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Value     interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ObservationChartsDTOSuccessRate) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ObservationChartsDTOSuccessRate) GoString() string {
+	return s.String()
+}
+
+func (s *ObservationChartsDTOSuccessRate) GetLabel() *string {
+	return s.Label
+}
+
+func (s *ObservationChartsDTOSuccessRate) GetTimestamp() *string {
+	return s.Timestamp
+}
+
+func (s *ObservationChartsDTOSuccessRate) GetValue() interface{} {
+	return s.Value
+}
+
+func (s *ObservationChartsDTOSuccessRate) SetLabel(v string) *ObservationChartsDTOSuccessRate {
+	s.Label = &v
+	return s
+}
+
+func (s *ObservationChartsDTOSuccessRate) SetTimestamp(v string) *ObservationChartsDTOSuccessRate {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ObservationChartsDTOSuccessRate) SetValue(v interface{}) *ObservationChartsDTOSuccessRate {
+	s.Value = v
+	return s
+}
+
+func (s *ObservationChartsDTOSuccessRate) Validate() error {
+	return dara.Validate(s)
 }

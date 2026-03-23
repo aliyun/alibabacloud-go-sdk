@@ -41,6 +41,8 @@ type iModelDTO interface {
 	GetTagNames() *string
 	SetTags(v string) *ModelDTO
 	GetTags() *string
+	SetVersion(v int32) *ModelDTO
+	GetVersion() *int32
 }
 
 type ModelDTO struct {
@@ -48,6 +50,8 @@ type ModelDTO struct {
 	//
 	// sk-xxx****xxx
 	ApiKeyPreview *string `json:"apiKeyPreview,omitempty" xml:"apiKeyPreview,omitempty"`
+	// Base URL
+	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com
@@ -55,10 +59,7 @@ type ModelDTO struct {
 	// example:
 	//
 	// 0
-	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
-	// example:
-	//
-	// 通义千问大模型
+	DeleteTag   *int32  `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
@@ -68,6 +69,8 @@ type ModelDTO struct {
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// ID
+	//
 	// example:
 	//
 	// 1
@@ -92,22 +95,20 @@ type ModelDTO struct {
 	//
 	// Chat
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// example:
-	//
-	// 通义千问
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// alibaba
-	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
-	// example:
-	//
-	// 对话,自然语言处理
+	Symbol   *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
 	TagNames *string `json:"tagNames,omitempty" xml:"tagNames,omitempty"`
 	// example:
 	//
 	// chat,NLP
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// example:
+	//
+	// 0
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ModelDTO) String() string {
@@ -180,6 +181,10 @@ func (s *ModelDTO) GetTagNames() *string {
 
 func (s *ModelDTO) GetTags() *string {
 	return s.Tags
+}
+
+func (s *ModelDTO) GetVersion() *int32 {
+	return s.Version
 }
 
 func (s *ModelDTO) SetApiKeyPreview(v string) *ModelDTO {
@@ -259,6 +264,11 @@ func (s *ModelDTO) SetTagNames(v string) *ModelDTO {
 
 func (s *ModelDTO) SetTags(v string) *ModelDTO {
 	s.Tags = &v
+	return s
+}
+
+func (s *ModelDTO) SetVersion(v int32) *ModelDTO {
+	s.Version = &v
 	return s
 }
 

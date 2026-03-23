@@ -13,6 +13,8 @@ type iRequestLogDTO interface {
 	GetApiKeyId() *int64
 	SetClientId(v int64) *RequestLogDTO
 	GetClientId() *int64
+	SetClientUuid(v string) *RequestLogDTO
+	GetClientUuid() *string
 	SetCompletionTokens(v int32) *RequestLogDTO
 	GetCompletionTokens() *int32
 	SetDeleteTag(v int32) *RequestLogDTO
@@ -23,6 +25,8 @@ type iRequestLogDTO interface {
 	GetGmtModified() *string
 	SetId(v int64) *RequestLogDTO
 	GetId() *int64
+	SetModelCode(v string) *RequestLogDTO
+	GetModelCode() *string
 	SetModelId(v int64) *RequestLogDTO
 	GetModelId() *int64
 	SetModelName(v string) *RequestLogDTO
@@ -39,8 +43,12 @@ type iRequestLogDTO interface {
 	GetResponseBody() *string
 	SetResponseTimeMs(v int32) *RequestLogDTO
 	GetResponseTimeMs() *int32
+	SetStatus(v string) *RequestLogDTO
+	GetStatus() *string
 	SetStatusCode(v int32) *RequestLogDTO
 	GetStatusCode() *int32
+	SetSymbol(v string) *RequestLogDTO
+	GetSymbol() *string
 	SetTotalTokens(v int32) *RequestLogDTO
 	GetTotalTokens() *int32
 }
@@ -54,6 +62,10 @@ type RequestLogDTO struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// example:
+	//
+	// mt_xxxxxMYTX9
+	ClientUuid *string `json:"clientUuid,omitempty" xml:"clientUuid,omitempty"`
 	// example:
 	//
 	// 50
@@ -74,6 +86,10 @@ type RequestLogDTO struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// qwen3-max
+	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
 	// example:
 	//
 	// 1
@@ -108,8 +124,16 @@ type RequestLogDTO struct {
 	ResponseTimeMs *int32 `json:"responseTimeMs,omitempty" xml:"responseTimeMs,omitempty"`
 	// example:
 	//
+	// success
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
 	// 200
 	StatusCode *int32 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	// example:
+	//
+	// qwen
+	Symbol *string `json:"symbol,omitempty" xml:"symbol,omitempty"`
 	// example:
 	//
 	// 150
@@ -132,6 +156,10 @@ func (s *RequestLogDTO) GetClientId() *int64 {
 	return s.ClientId
 }
 
+func (s *RequestLogDTO) GetClientUuid() *string {
+	return s.ClientUuid
+}
+
 func (s *RequestLogDTO) GetCompletionTokens() *int32 {
 	return s.CompletionTokens
 }
@@ -150,6 +178,10 @@ func (s *RequestLogDTO) GetGmtModified() *string {
 
 func (s *RequestLogDTO) GetId() *int64 {
 	return s.Id
+}
+
+func (s *RequestLogDTO) GetModelCode() *string {
+	return s.ModelCode
 }
 
 func (s *RequestLogDTO) GetModelId() *int64 {
@@ -184,8 +216,16 @@ func (s *RequestLogDTO) GetResponseTimeMs() *int32 {
 	return s.ResponseTimeMs
 }
 
+func (s *RequestLogDTO) GetStatus() *string {
+	return s.Status
+}
+
 func (s *RequestLogDTO) GetStatusCode() *int32 {
 	return s.StatusCode
+}
+
+func (s *RequestLogDTO) GetSymbol() *string {
+	return s.Symbol
 }
 
 func (s *RequestLogDTO) GetTotalTokens() *int32 {
@@ -199,6 +239,11 @@ func (s *RequestLogDTO) SetApiKeyId(v int64) *RequestLogDTO {
 
 func (s *RequestLogDTO) SetClientId(v int64) *RequestLogDTO {
 	s.ClientId = &v
+	return s
+}
+
+func (s *RequestLogDTO) SetClientUuid(v string) *RequestLogDTO {
+	s.ClientUuid = &v
 	return s
 }
 
@@ -224,6 +269,11 @@ func (s *RequestLogDTO) SetGmtModified(v string) *RequestLogDTO {
 
 func (s *RequestLogDTO) SetId(v int64) *RequestLogDTO {
 	s.Id = &v
+	return s
+}
+
+func (s *RequestLogDTO) SetModelCode(v string) *RequestLogDTO {
+	s.ModelCode = &v
 	return s
 }
 
@@ -267,8 +317,18 @@ func (s *RequestLogDTO) SetResponseTimeMs(v int32) *RequestLogDTO {
 	return s
 }
 
+func (s *RequestLogDTO) SetStatus(v string) *RequestLogDTO {
+	s.Status = &v
+	return s
+}
+
 func (s *RequestLogDTO) SetStatusCode(v int32) *RequestLogDTO {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RequestLogDTO) SetSymbol(v string) *RequestLogDTO {
+	s.Symbol = &v
 	return s
 }
 
