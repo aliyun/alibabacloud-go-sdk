@@ -26,23 +26,34 @@ type iCreateEdgeFunctionRequest interface {
 }
 
 type CreateEdgeFunctionRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken  *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Code         *CreateEdgeFunctionRequestCode `json:"Code,omitempty" xml:"Code,omitempty" type:"Struct"`
-	CustomConfig map[string]*int32              `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The code parameters.
+	Code *CreateEdgeFunctionRequestCode `json:"Code,omitempty" xml:"Code,omitempty" type:"Struct"`
+	// The configuration parameters of the edge function.
+	CustomConfig map[string]*int32 `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
+	// The name of the function.
+	//
 	// example:
 	//
 	// ef-*****
-	EdgeFunctionName *string            `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
-	Envs             map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The environment variables.
+	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -130,14 +141,21 @@ func (s *CreateEdgeFunctionRequest) Validate() error {
 }
 
 type CreateEdgeFunctionRequestCode struct {
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// code
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The OSS path of a code file.
+	//
 	// example:
 	//
 	// example.zip
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// The storage class of the OSS bucket.
+	//
 	// example:
 	//
 	// supabase
@@ -152,6 +170,10 @@ func (s CreateEdgeFunctionRequestCode) GoString() string {
 	return s.String()
 }
 
+func (s *CreateEdgeFunctionRequestCode) GetDownloadUrl() *string {
+	return s.DownloadUrl
+}
+
 func (s *CreateEdgeFunctionRequestCode) GetOssBucketName() *string {
 	return s.OssBucketName
 }
@@ -162,6 +184,11 @@ func (s *CreateEdgeFunctionRequestCode) GetOssObjectName() *string {
 
 func (s *CreateEdgeFunctionRequestCode) GetOssType() *string {
 	return s.OssType
+}
+
+func (s *CreateEdgeFunctionRequestCode) SetDownloadUrl(v string) *CreateEdgeFunctionRequestCode {
+	s.DownloadUrl = &v
+	return s
 }
 
 func (s *CreateEdgeFunctionRequestCode) SetOssBucketName(v string) *CreateEdgeFunctionRequestCode {

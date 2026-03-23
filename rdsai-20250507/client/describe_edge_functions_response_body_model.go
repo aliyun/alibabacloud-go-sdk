@@ -18,7 +18,10 @@ type iDescribeEdgeFunctionsResponseBody interface {
 }
 
 type DescribeEdgeFunctionsResponseBody struct {
+	// The list of edge functions.
 	EdgeFunctions []*DescribeEdgeFunctionsResponseBodyEdgeFunctions `json:"EdgeFunctions,omitempty" xml:"EdgeFunctions,omitempty" type:"Repeated"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
@@ -80,42 +83,62 @@ func (s *DescribeEdgeFunctionsResponseBody) Validate() error {
 }
 
 type DescribeEdgeFunctionsResponseBodyEdgeFunctions struct {
+	// The number of vCPUs used by the cluster.
+	//
 	// example:
 	//
 	// 1
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the function was created.
+	//
 	// example:
 	//
 	// 2021-11-12T21:35:03
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The edge function name.
+	//
 	// example:
 	//
 	// ef-****
 	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The URL for accessing the function.
+	//
 	// example:
 	//
 	// https://fcnext.console.aliyun.com/cn-beijing/functions/fc****
 	FunctionUrl *string `json:"FunctionUrl,omitempty" xml:"FunctionUrl,omitempty"`
+	// The memory size. Unit: MiB.
+	//
 	// example:
 	//
 	// 512
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The time when the function was last created. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2025-05-25 10:22:54 +0800
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The runtime environment for the function, which includes the Linux environment and the Deno version.
+	//
 	// example:
 	//
 	// custom.debian12-deno-2.5.6
 	Runtime *string `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
+	// The instance status. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The public URL for accessing the application.
+	//
 	// example:
 	//
 	// https://fc-bfvmoi****.cn-beijing.fcapp.run
 	UrlInternet *string `json:"UrlInternet,omitempty" xml:"UrlInternet,omitempty"`
+	// The internal URL for accessing the application.
+	//
 	// example:
 	//
 	// https://fc-bfvmoi****.cn-beijing-vpc.fcapp.run

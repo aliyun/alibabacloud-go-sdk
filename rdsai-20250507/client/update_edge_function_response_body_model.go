@@ -18,17 +18,19 @@ type iUpdateEdgeFunctionResponseBody interface {
 }
 
 type UpdateEdgeFunctionResponseBody struct {
-	// fc-xxxx。
+	// fc-xxxx
 	//
 	// example:
 	//
 	// ef-****
 	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Id of the request。
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,10 +18,14 @@ type iCreateEdgeFunctionResponseBody interface {
 }
 
 type CreateEdgeFunctionResponseBody struct {
+	// The name of the edge function.
+	//
 	// example:
 	//
 	// ef-****
 	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****

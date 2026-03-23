@@ -20,20 +20,28 @@ type iDeleteEdgeFunctionRequest interface {
 }
 
 type DeleteEdgeFunctionRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the edge function.
+	//
 	// example:
 	//
 	// ef-****
 	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

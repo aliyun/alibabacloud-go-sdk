@@ -24,6 +24,8 @@ type DeleteEdgeFunctionResponseBody struct {
 	//
 	// ef-****
 	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba***

@@ -26,23 +26,34 @@ type iCreateEdgeFunctionShrinkRequest interface {
 }
 
 type CreateEdgeFunctionShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CodeShrink         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The code parameters.
+	CodeShrink *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The configuration parameters of the edge function.
 	CustomConfigShrink *string `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
+	// The name of the function.
+	//
 	// example:
 	//
 	// ef-*****
 	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
-	EnvsShrink       *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The environment variables.
+	EnvsShrink *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing

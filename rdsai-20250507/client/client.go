@@ -455,7 +455,11 @@ func (client *Client) CreateCustomAgent(request *CreateCustomAgentRequest) (_res
 
 // Summary:
 //
-// 创建边缘函数
+// Creates an edge function.
+//
+// Description:
+//
+// Creates an edge function, compresses the code into a zip file, and uploads it to Supabase Storage.
 //
 // @param tmpReq - CreateEdgeFunctionRequest
 //
@@ -537,7 +541,11 @@ func (client *Client) CreateEdgeFunctionWithOptions(tmpReq *CreateEdgeFunctionRe
 
 // Summary:
 //
-// 创建边缘函数
+// Creates an edge function.
+//
+// Description:
+//
+// Creates an edge function, compresses the code into a zip file, and uploads it to Supabase Storage.
 //
 // @param request - CreateEdgeFunctionRequest
 //
@@ -979,7 +987,11 @@ func (client *Client) DeleteCustomAgent(request *DeleteCustomAgentRequest) (_res
 
 // Summary:
 //
-// 删除边缘函数
+// Deletes an edge function.
+//
+// Description:
+//
+// Deletes an edge function.
 //
 // @param request - DeleteEdgeFunctionRequest
 //
@@ -1035,7 +1047,11 @@ func (client *Client) DeleteEdgeFunctionWithOptions(request *DeleteEdgeFunctionR
 
 // Summary:
 //
-// 删除边缘函数
+// Deletes an edge function.
+//
+// Description:
+//
+// Deletes an edge function.
 //
 // @param request - DeleteEdgeFunctionRequest
 //
@@ -1361,7 +1377,11 @@ func (client *Client) DescribeAppInstances(request *DescribeAppInstancesRequest)
 
 // Summary:
 //
-// 查询边缘函数列表
+// Query the list of edge functions or a specified edge function.
+//
+// Description:
+//
+// Query the list of edge functions or a specified edge function.
 //
 // @param request - DescribeEdgeFunctionsRequest
 //
@@ -1417,7 +1437,11 @@ func (client *Client) DescribeEdgeFunctionsWithOptions(request *DescribeEdgeFunc
 
 // Summary:
 //
-// 查询边缘函数列表
+// Query the list of edge functions or a specified edge function.
+//
+// Description:
+//
+// Query the list of edge functions or a specified edge function.
 //
 // @param request - DescribeEdgeFunctionsRequest
 //
@@ -4128,7 +4152,11 @@ func (client *Client) UpdateCustomAgent(request *UpdateCustomAgentRequest) (_res
 
 // Summary:
 //
-// 更新边缘函数
+// # Updates an edge function
+//
+// Description:
+//
+// Updates an edge function, including updating code versions, adding environment variables, and modifying configurations.
 //
 // @param tmpReq - UpdateEdgeFunctionRequest
 //
@@ -4210,7 +4238,11 @@ func (client *Client) UpdateEdgeFunctionWithOptions(tmpReq *UpdateEdgeFunctionRe
 
 // Summary:
 //
-// 更新边缘函数
+// # Updates an edge function
+//
+// Description:
+//
+// Updates an edge function, including updating code versions, adding environment variables, and modifying configurations.
 //
 // @param request - UpdateEdgeFunctionRequest
 //

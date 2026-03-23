@@ -13,8 +13,8 @@ type iUpdateEdgeFunctionRequest interface {
 	GetClientToken() *string
 	SetCode(v *UpdateEdgeFunctionRequestCode) *UpdateEdgeFunctionRequest
 	GetCode() *UpdateEdgeFunctionRequestCode
-	SetCustomConfig(v map[string]interface{}) *UpdateEdgeFunctionRequest
-	GetCustomConfig() map[string]interface{}
+	SetCustomConfig(v map[string]*string) *UpdateEdgeFunctionRequest
+	GetCustomConfig() map[string]*string
 	SetEdgeFunctionName(v string) *UpdateEdgeFunctionRequest
 	GetEdgeFunctionName() *string
 	SetEnvs(v map[string]*string) *UpdateEdgeFunctionRequest
@@ -26,28 +26,38 @@ type iUpdateEdgeFunctionRequest interface {
 }
 
 type UpdateEdgeFunctionRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Code        *UpdateEdgeFunctionRequestCode `json:"Code,omitempty" xml:"Code,omitempty" type:"Struct"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The error code that is returned if the request failed. For more information, see the "Error codes" section of the topic.
+	Code *UpdateEdgeFunctionRequestCode `json:"Code,omitempty" xml:"Code,omitempty" type:"Struct"`
+	// The configuration parameters of the edge function.
+	//
 	// example:
 	//
 	// {}
-	CustomConfig map[string]interface{} `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
-	// fc-xxxx。
+	CustomConfig map[string]*string `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
+	// fc-xxxx
 	//
 	// example:
 	//
 	// ef-****
-	EdgeFunctionName *string            `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
-	Envs             map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	EdgeFunctionName *string `json:"EdgeFunctionName,omitempty" xml:"EdgeFunctionName,omitempty"`
+	// The environment variables of the edge function.
+	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The ID of the RDS Supabase instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -70,7 +80,7 @@ func (s *UpdateEdgeFunctionRequest) GetCode() *UpdateEdgeFunctionRequestCode {
 	return s.Code
 }
 
-func (s *UpdateEdgeFunctionRequest) GetCustomConfig() map[string]interface{} {
+func (s *UpdateEdgeFunctionRequest) GetCustomConfig() map[string]*string {
 	return s.CustomConfig
 }
 
@@ -100,7 +110,7 @@ func (s *UpdateEdgeFunctionRequest) SetCode(v *UpdateEdgeFunctionRequestCode) *U
 	return s
 }
 
-func (s *UpdateEdgeFunctionRequest) SetCustomConfig(v map[string]interface{}) *UpdateEdgeFunctionRequest {
+func (s *UpdateEdgeFunctionRequest) SetCustomConfig(v map[string]*string) *UpdateEdgeFunctionRequest {
 	s.CustomConfig = v
 	return s
 }
@@ -135,14 +145,21 @@ func (s *UpdateEdgeFunctionRequest) Validate() error {
 }
 
 type UpdateEdgeFunctionRequestCode struct {
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// code
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	// The path of the code file.
+	//
 	// example:
 	//
 	// example2.zip
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
+	// The storage class of the OSS bucket.
+	//
 	// example:
 	//
 	// supabase
@@ -157,6 +174,10 @@ func (s UpdateEdgeFunctionRequestCode) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateEdgeFunctionRequestCode) GetDownloadUrl() *string {
+	return s.DownloadUrl
+}
+
 func (s *UpdateEdgeFunctionRequestCode) GetOssBucketName() *string {
 	return s.OssBucketName
 }
@@ -167,6 +188,11 @@ func (s *UpdateEdgeFunctionRequestCode) GetOssObjectName() *string {
 
 func (s *UpdateEdgeFunctionRequestCode) GetOssType() *string {
 	return s.OssType
+}
+
+func (s *UpdateEdgeFunctionRequestCode) SetDownloadUrl(v string) *UpdateEdgeFunctionRequestCode {
+	s.DownloadUrl = &v
+	return s
 }
 
 func (s *UpdateEdgeFunctionRequestCode) SetOssBucketName(v string) *UpdateEdgeFunctionRequestCode {

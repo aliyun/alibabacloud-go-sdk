@@ -323,7 +323,11 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 创建边缘函数
+// Creates an edge function.
+//
+// Description:
+//
+// Creates an edge function, compresses the code into a zip file, and uploads it to Supabase Storage.
 //
 // @param tmpReq - CreateEdgeFunctionRequest
 //
@@ -725,7 +729,11 @@ func (client *Client) DeleteCustomAgentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除边缘函数
+// Deletes an edge function.
+//
+// Description:
+//
+// Deletes an edge function.
 //
 // @param request - DeleteEdgeFunctionRequest
 //
@@ -997,7 +1005,11 @@ func (client *Client) DescribeAppInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询边缘函数列表
+// Query the list of edge functions or a specified edge function.
+//
+// Description:
+//
+// Query the list of edge functions or a specified edge function.
 //
 // @param request - DescribeEdgeFunctionsRequest
 //
@@ -2977,7 +2989,11 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 更新边缘函数
+// # Updates an edge function
+//
+// Description:
+//
+// Updates an edge function, including updating code versions, adding environment variables, and modifying configurations.
 //
 // @param tmpReq - UpdateEdgeFunctionRequest
 //
