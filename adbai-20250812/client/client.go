@@ -222,6 +222,76 @@ func (client *Client) CreateEmbodiedAIPlatform(request *CreateEmbodiedAIPlatform
 
 // Summary:
 //
+// 删除指标平台
+//
+// @param request - DeleteAgentPlatformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentPlatformResponse
+func (client *Client) DeleteAgentPlatformWithOptions(request *DeleteAgentPlatformRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentPlatformResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentPlatform"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentPlatformResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指标平台
+//
+// @param request - DeleteAgentPlatformRequest
+//
+// @return DeleteAgentPlatformResponse
+func (client *Client) DeleteAgentPlatform(request *DeleteAgentPlatformRequest) (_result *DeleteAgentPlatformResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgentPlatformResponse{}
+	_body, _err := client.DeleteAgentPlatformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除具身智能平台
 //
 // @param request - DeleteEmbodiedAIPlatformRequest
