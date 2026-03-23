@@ -11,6 +11,8 @@ type iEditWorkspaceQueueRequest interface {
   GoString() string
   SetEnvironments(v []*string) *EditWorkspaceQueueRequest
   GetEnvironments() []*string 
+  SetGpuSpec(v []*string) *EditWorkspaceQueueRequest
+  GetGpuSpec() []*string 
   SetResourceSpec(v *EditWorkspaceQueueRequestResourceSpec) *EditWorkspaceQueueRequest
   GetResourceSpec() *EditWorkspaceQueueRequestResourceSpec 
   SetWorkspaceId(v string) *EditWorkspaceQueueRequest
@@ -23,6 +25,7 @@ type iEditWorkspaceQueueRequest interface {
 
 type EditWorkspaceQueueRequest struct {
   Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+  GpuSpec []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
   ResourceSpec *EditWorkspaceQueueRequestResourceSpec `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty" type:"Struct"`
   // example:
   // 
@@ -50,6 +53,10 @@ func (s *EditWorkspaceQueueRequest) GetEnvironments() []*string  {
   return s.Environments
 }
 
+func (s *EditWorkspaceQueueRequest) GetGpuSpec() []*string  {
+  return s.GpuSpec
+}
+
 func (s *EditWorkspaceQueueRequest) GetResourceSpec() *EditWorkspaceQueueRequestResourceSpec  {
   return s.ResourceSpec
 }
@@ -68,6 +75,11 @@ func (s *EditWorkspaceQueueRequest) GetRegionId() *string  {
 
 func (s *EditWorkspaceQueueRequest) SetEnvironments(v []*string) *EditWorkspaceQueueRequest {
   s.Environments = v
+  return s
+}
+
+func (s *EditWorkspaceQueueRequest) SetGpuSpec(v []*string) *EditWorkspaceQueueRequest {
+  s.GpuSpec = v
   return s
 }
 
@@ -107,6 +119,10 @@ type EditWorkspaceQueueRequestResourceSpec struct {
   Cu *int64 `json:"cu,omitempty" xml:"cu,omitempty"`
   // example:
   // 
+  // 100
+  Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+  // example:
+  // 
   // 0.5
   MaxCu *int64 `json:"maxCu,omitempty" xml:"maxCu,omitempty"`
 }
@@ -123,12 +139,21 @@ func (s *EditWorkspaceQueueRequestResourceSpec) GetCu() *int64  {
   return s.Cu
 }
 
+func (s *EditWorkspaceQueueRequestResourceSpec) GetGpu() *int32  {
+  return s.Gpu
+}
+
 func (s *EditWorkspaceQueueRequestResourceSpec) GetMaxCu() *int64  {
   return s.MaxCu
 }
 
 func (s *EditWorkspaceQueueRequestResourceSpec) SetCu(v int64) *EditWorkspaceQueueRequestResourceSpec {
   s.Cu = &v
+  return s
+}
+
+func (s *EditWorkspaceQueueRequestResourceSpec) SetGpu(v int32) *EditWorkspaceQueueRequestResourceSpec {
+  s.Gpu = &v
   return s
 }
 

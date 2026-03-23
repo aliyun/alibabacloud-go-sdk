@@ -13,6 +13,10 @@ type iListKyuubiSparkApplicationsShrinkRequest interface {
 	GetApplicationId() *string
 	SetApplicationName(v string) *ListKyuubiSparkApplicationsShrinkRequest
 	GetApplicationName() *string
+	SetEndTimeShrink(v string) *ListKyuubiSparkApplicationsShrinkRequest
+	GetEndTimeShrink() *string
+	SetLatestSqlStatementStatuses(v string) *ListKyuubiSparkApplicationsShrinkRequest
+	GetLatestSqlStatementStatuses() *string
 	SetMaxResults(v int32) *ListKyuubiSparkApplicationsShrinkRequest
 	GetMaxResults() *int32
 	SetMinDuration(v int64) *ListKyuubiSparkApplicationsShrinkRequest
@@ -27,6 +31,8 @@ type iListKyuubiSparkApplicationsShrinkRequest interface {
 	GetSort() *string
 	SetStartTimeShrink(v string) *ListKyuubiSparkApplicationsShrinkRequest
 	GetStartTimeShrink() *string
+	SetStates(v string) *ListKyuubiSparkApplicationsShrinkRequest
+	GetStates() *string
 }
 
 type ListKyuubiSparkApplicationsShrinkRequest struct {
@@ -42,24 +48,42 @@ type ListKyuubiSparkApplicationsShrinkRequest struct {
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
 	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	EndTimeShrink   *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// ["SUCCESS"]
+	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
 	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
-	MaxResults  *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
-	NextToken       *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	OrderByShrink   *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	NextToken     *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	OrderByShrink *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// example:
+	//
+	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	Sort            *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	// example:
+	//
+	// asc
+	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
 	// The range of start time.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// ["ERROR"]
+	States *string `json:"states,omitempty" xml:"states,omitempty"`
 }
 
 func (s ListKyuubiSparkApplicationsShrinkRequest) String() string {
@@ -76,6 +100,14 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) GetApplicationId() *string {
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) GetApplicationName() *string {
 	return s.ApplicationName
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) GetEndTimeShrink() *string {
+	return s.EndTimeShrink
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) GetLatestSqlStatementStatuses() *string {
+	return s.LatestSqlStatementStatuses
 }
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) GetMaxResults() *int32 {
@@ -106,6 +138,10 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) GetStartTimeShrink() *string 
 	return s.StartTimeShrink
 }
 
+func (s *ListKyuubiSparkApplicationsShrinkRequest) GetStates() *string {
+	return s.States
+}
+
 func (s *ListKyuubiSparkApplicationsShrinkRequest) SetApplicationId(v string) *ListKyuubiSparkApplicationsShrinkRequest {
 	s.ApplicationId = &v
 	return s
@@ -113,6 +149,16 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) SetApplicationId(v string) *L
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) SetApplicationName(v string) *ListKyuubiSparkApplicationsShrinkRequest {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetEndTimeShrink(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.EndTimeShrink = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetLatestSqlStatementStatuses(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.LatestSqlStatementStatuses = &v
 	return s
 }
 
@@ -148,6 +194,11 @@ func (s *ListKyuubiSparkApplicationsShrinkRequest) SetSort(v string) *ListKyuubi
 
 func (s *ListKyuubiSparkApplicationsShrinkRequest) SetStartTimeShrink(v string) *ListKyuubiSparkApplicationsShrinkRequest {
 	s.StartTimeShrink = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsShrinkRequest) SetStates(v string) *ListKyuubiSparkApplicationsShrinkRequest {
+	s.States = &v
 	return s
 }
 

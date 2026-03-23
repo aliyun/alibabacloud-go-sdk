@@ -159,6 +159,10 @@ type ListKyuubiSparkApplicationsResponseBodyApplications struct {
 	//
 	// 3513900
 	MbSeconds *int64 `json:"mbSeconds,omitempty" xml:"mbSeconds,omitempty"`
+	// example:
+	//
+	// 5
+	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
 	// The name of the resource queue on which the Spark jobs run.
 	//
 	// example:
@@ -235,6 +239,10 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetMbSeconds() *in
 	return s.MbSeconds
 }
 
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetPriority() *string {
+	return s.Priority
+}
+
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) GetResourceQueueId() *string {
 	return s.ResourceQueueId
 }
@@ -300,6 +308,11 @@ func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetLatestSqlStatem
 
 func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetMbSeconds(v int64) *ListKyuubiSparkApplicationsResponseBodyApplications {
 	s.MbSeconds = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsResponseBodyApplications) SetPriority(v string) *ListKyuubiSparkApplicationsResponseBodyApplications {
+	s.Priority = &v
 	return s
 }
 

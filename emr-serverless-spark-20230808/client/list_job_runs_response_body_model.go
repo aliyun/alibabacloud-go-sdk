@@ -189,6 +189,10 @@ type ListJobRunsResponseBodyJobRuns struct {
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 5
+	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
 	// The version of Spark on which the jobs run.
 	//
 	// example:
@@ -295,6 +299,10 @@ func (s *ListJobRunsResponseBodyJobRuns) GetName() *string {
 	return s.Name
 }
 
+func (s *ListJobRunsResponseBodyJobRuns) GetPriority() *string {
+	return s.Priority
+}
+
 func (s *ListJobRunsResponseBodyJobRuns) GetReleaseVersion() *string {
 	return s.ReleaseVersion
 }
@@ -393,6 +401,11 @@ func (s *ListJobRunsResponseBodyJobRuns) SetMbSeconds(v int64) *ListJobRunsRespo
 
 func (s *ListJobRunsResponseBodyJobRuns) SetName(v string) *ListJobRunsResponseBodyJobRuns {
 	s.Name = &v
+	return s
+}
+
+func (s *ListJobRunsResponseBodyJobRuns) SetPriority(v string) *ListJobRunsResponseBodyJobRuns {
+	s.Priority = &v
 	return s
 }
 

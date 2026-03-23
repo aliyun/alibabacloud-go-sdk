@@ -170,7 +170,8 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	// example:
 	//
 	// out of stock
-	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
+	FailReason *string   `json:"failReason,omitempty" xml:"failReason,omitempty"`
+	GpuSpec    []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
 	// The unit of the subscription duration.
 	//
 	// example:
@@ -290,6 +291,10 @@ func (s *ListWorkspacesResponseBodyWorkspaces) GetFailReason() *string {
 	return s.FailReason
 }
 
+func (s *ListWorkspacesResponseBodyWorkspaces) GetGpuSpec() []*string {
+	return s.GpuSpec
+}
+
 func (s *ListWorkspacesResponseBodyWorkspaces) GetPaymentDurationUnit() *string {
 	return s.PaymentDurationUnit
 }
@@ -388,6 +393,11 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetEndTime(v int64) *ListWorkspac
 
 func (s *ListWorkspacesResponseBodyWorkspaces) SetFailReason(v string) *ListWorkspacesResponseBodyWorkspaces {
 	s.FailReason = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspaces) SetGpuSpec(v []*string) *ListWorkspacesResponseBodyWorkspaces {
+	s.GpuSpec = v
 	return s
 }
 

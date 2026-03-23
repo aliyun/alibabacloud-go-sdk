@@ -35,6 +35,8 @@ type iGetRayClusterResponseBody interface {
 	GetInstances() []*GetRayClusterResponseBodyInstances
 	SetJobUrl(v string) *GetRayClusterResponseBody
 	GetJobUrl() *string
+	SetJobUrlInner(v string) *GetRayClusterResponseBody
+	GetJobUrlInner() *string
 	SetMessage(v string) *GetRayClusterResponseBody
 	GetMessage() *string
 	SetModified(v bool) *GetRayClusterResponseBody
@@ -59,6 +61,8 @@ type iGetRayClusterResponseBody interface {
 	GetSubmitToken() *string
 	SetUserId(v string) *GetRayClusterResponseBody
 	GetUserId() *string
+	SetVolumeIds(v []*string) *GetRayClusterResponseBody
+	GetVolumeIds() []*string
 	SetWorkerSpec(v []*GetRayClusterResponseBodyWorkerSpec) *GetRayClusterResponseBody
 	GetWorkerSpec() []*GetRayClusterResponseBodyWorkerSpec
 }
@@ -112,6 +116,10 @@ type GetRayClusterResponseBody struct {
 	JobUrl *string `json:"jobUrl,omitempty" xml:"jobUrl,omitempty"`
 	// example:
 	//
+	// http://emr-spark-ray-gateway-cn-hangzhou-internal.emr.aliyuncs.com
+	JobUrlInner *string `json:"jobUrlInner,omitempty" xml:"jobUrlInner,omitempty"`
+	// example:
+	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// example:
@@ -158,6 +166,7 @@ type GetRayClusterResponseBody struct {
 	//
 	// 123456789012
 	UserId     *string                                `json:"userId,omitempty" xml:"userId,omitempty"`
+	VolumeIds  []*string                              `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
 	WorkerSpec []*GetRayClusterResponseBodyWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -221,6 +230,10 @@ func (s *GetRayClusterResponseBody) GetJobUrl() *string {
 	return s.JobUrl
 }
 
+func (s *GetRayClusterResponseBody) GetJobUrlInner() *string {
+	return s.JobUrlInner
+}
+
 func (s *GetRayClusterResponseBody) GetMessage() *string {
 	return s.Message
 }
@@ -267,6 +280,10 @@ func (s *GetRayClusterResponseBody) GetSubmitToken() *string {
 
 func (s *GetRayClusterResponseBody) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *GetRayClusterResponseBody) GetVolumeIds() []*string {
+	return s.VolumeIds
 }
 
 func (s *GetRayClusterResponseBody) GetWorkerSpec() []*GetRayClusterResponseBodyWorkerSpec {
@@ -338,6 +355,11 @@ func (s *GetRayClusterResponseBody) SetJobUrl(v string) *GetRayClusterResponseBo
 	return s
 }
 
+func (s *GetRayClusterResponseBody) SetJobUrlInner(v string) *GetRayClusterResponseBody {
+	s.JobUrlInner = &v
+	return s
+}
+
 func (s *GetRayClusterResponseBody) SetMessage(v string) *GetRayClusterResponseBody {
 	s.Message = &v
 	return s
@@ -398,6 +420,11 @@ func (s *GetRayClusterResponseBody) SetUserId(v string) *GetRayClusterResponseBo
 	return s
 }
 
+func (s *GetRayClusterResponseBody) SetVolumeIds(v []*string) *GetRayClusterResponseBody {
+	s.VolumeIds = v
+	return s
+}
+
 func (s *GetRayClusterResponseBody) SetWorkerSpec(v []*GetRayClusterResponseBodyWorkerSpec) *GetRayClusterResponseBody {
 	s.WorkerSpec = v
 	return s
@@ -441,6 +468,10 @@ type GetRayClusterResponseBodyHeadSpec struct {
 	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
 	// example:
 	//
+	// ecs.gn6i-c4g1.xlarge
+	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// example:
+	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
 	// example:
@@ -473,6 +504,10 @@ func (s *GetRayClusterResponseBodyHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
 }
 
+func (s *GetRayClusterResponseBodyHeadSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *GetRayClusterResponseBodyHeadSpec) GetIdleTimeoutSeconds() *int32 {
 	return s.IdleTimeoutSeconds
 }
@@ -496,6 +531,11 @@ func (s *GetRayClusterResponseBodyHeadSpec) SetCpu(v string) *GetRayClusterRespo
 
 func (s *GetRayClusterResponseBodyHeadSpec) SetEnableAutoScaling(v bool) *GetRayClusterResponseBodyHeadSpec {
 	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyHeadSpec) SetGpuSpec(v string) *GetRayClusterResponseBodyHeadSpec {
+	s.GpuSpec = &v
 	return s
 }
 
@@ -688,6 +728,10 @@ type GetRayClusterResponseBodyWorkerSpec struct {
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	// example:
 	//
+	// ecs.gn6i-c4g1.xlarge
+	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// example:
+	//
 	// WorkerGroup1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// example:
@@ -728,6 +772,10 @@ func (s *GetRayClusterResponseBodyWorkerSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *GetRayClusterResponseBodyWorkerSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *GetRayClusterResponseBodyWorkerSpec) GetGroupName() *string {
 	return s.GroupName
 }
@@ -758,6 +806,11 @@ func (s *GetRayClusterResponseBodyWorkerSpec) GetWorkerType() *string {
 
 func (s *GetRayClusterResponseBodyWorkerSpec) SetCpu(v string) *GetRayClusterResponseBodyWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *GetRayClusterResponseBodyWorkerSpec) SetGpuSpec(v string) *GetRayClusterResponseBodyWorkerSpec {
+	s.GpuSpec = &v
 	return s
 }
 

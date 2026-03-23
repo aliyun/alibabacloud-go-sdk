@@ -126,6 +126,10 @@ type GetJobRunResponseBodyJobRun struct {
 	//
 	// http://workflow-ide-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/spark-notebook-output/w-xxxxxxxxx/xxxxxxx
 	NotebookAccessUrl *string `json:"notebookAccessUrl,omitempty" xml:"notebookAccessUrl,omitempty"`
+	// example:
+	//
+	// 5
+	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
 	// The version of the Spark engine on which the job runs.
 	//
 	// example:
@@ -230,6 +234,10 @@ func (s *GetJobRunResponseBodyJobRun) GetNotebookAccessUrl() *string {
 	return s.NotebookAccessUrl
 }
 
+func (s *GetJobRunResponseBodyJobRun) GetPriority() *string {
+	return s.Priority
+}
+
 func (s *GetJobRunResponseBodyJobRun) GetReleaseVersion() *string {
 	return s.ReleaseVersion
 }
@@ -323,6 +331,11 @@ func (s *GetJobRunResponseBodyJobRun) SetName(v string) *GetJobRunResponseBodyJo
 
 func (s *GetJobRunResponseBodyJobRun) SetNotebookAccessUrl(v string) *GetJobRunResponseBodyJobRun {
 	s.NotebookAccessUrl = &v
+	return s
+}
+
+func (s *GetJobRunResponseBodyJobRun) SetPriority(v string) *GetJobRunResponseBodyJobRun {
+	s.Priority = &v
 	return s
 }
 

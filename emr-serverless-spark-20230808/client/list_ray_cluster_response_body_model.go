@@ -369,6 +369,10 @@ type ListRayClusterResponseBodyRayClustersHeadSpec struct {
 	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
 	// example:
 	//
+	// ecs.gn6i-c4g1.xlarge
+	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// example:
+	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
 	// example:
@@ -401,6 +405,10 @@ func (s *ListRayClusterResponseBodyRayClustersHeadSpec) GetEnableAutoScaling() *
 	return s.EnableAutoScaling
 }
 
+func (s *ListRayClusterResponseBodyRayClustersHeadSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *ListRayClusterResponseBodyRayClustersHeadSpec) GetIdleTimeoutSeconds() *int32 {
 	return s.IdleTimeoutSeconds
 }
@@ -424,6 +432,11 @@ func (s *ListRayClusterResponseBodyRayClustersHeadSpec) SetCpu(v string) *ListRa
 
 func (s *ListRayClusterResponseBodyRayClustersHeadSpec) SetEnableAutoScaling(v bool) *ListRayClusterResponseBodyRayClustersHeadSpec {
 	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *ListRayClusterResponseBodyRayClustersHeadSpec) SetGpuSpec(v string) *ListRayClusterResponseBodyRayClustersHeadSpec {
+	s.GpuSpec = &v
 	return s
 }
 
@@ -456,6 +469,10 @@ type ListRayClusterResponseBodyRayClustersWorkerSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// ecs.gn6i-c4g1.xlarge
+	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
 	// example:
 	//
 	// Group1
@@ -498,6 +515,10 @@ func (s *ListRayClusterResponseBodyRayClustersWorkerSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *ListRayClusterResponseBodyRayClustersWorkerSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *ListRayClusterResponseBodyRayClustersWorkerSpec) GetGroupName() *string {
 	return s.GroupName
 }
@@ -528,6 +549,11 @@ func (s *ListRayClusterResponseBodyRayClustersWorkerSpec) GetWorkerType() *strin
 
 func (s *ListRayClusterResponseBodyRayClustersWorkerSpec) SetCpu(v string) *ListRayClusterResponseBodyRayClustersWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *ListRayClusterResponseBodyRayClustersWorkerSpec) SetGpuSpec(v string) *ListRayClusterResponseBodyRayClustersWorkerSpec {
+	s.GpuSpec = &v
 	return s
 }
 

@@ -13,6 +13,10 @@ type iListKyuubiSparkApplicationsRequest interface {
 	GetApplicationId() *string
 	SetApplicationName(v string) *ListKyuubiSparkApplicationsRequest
 	GetApplicationName() *string
+	SetEndTime(v *ListKyuubiSparkApplicationsRequestEndTime) *ListKyuubiSparkApplicationsRequest
+	GetEndTime() *ListKyuubiSparkApplicationsRequestEndTime
+	SetLatestSqlStatementStatuses(v string) *ListKyuubiSparkApplicationsRequest
+	GetLatestSqlStatementStatuses() *string
 	SetMaxResults(v int32) *ListKyuubiSparkApplicationsRequest
 	GetMaxResults() *int32
 	SetMinDuration(v int64) *ListKyuubiSparkApplicationsRequest
@@ -27,6 +31,8 @@ type iListKyuubiSparkApplicationsRequest interface {
 	GetSort() *string
 	SetStartTime(v *ListKyuubiSparkApplicationsRequestStartTime) *ListKyuubiSparkApplicationsRequest
 	GetStartTime() *ListKyuubiSparkApplicationsRequestStartTime
+	SetStates(v string) *ListKyuubiSparkApplicationsRequest
+	GetStates() *string
 }
 
 type ListKyuubiSparkApplicationsRequest struct {
@@ -41,25 +47,43 @@ type ListKyuubiSparkApplicationsRequest struct {
 	// example:
 	//
 	// kyuubi-connection-spark-sql-anonymous-fa9a5e73-b4b1-474a-b****
-	ApplicationName *string `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	ApplicationName *string                                    `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
+	EndTime         *ListKyuubiSparkApplicationsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
+	// example:
+	//
+	// ["SUCCESS"]
+	LatestSqlStatementStatuses *string `json:"latestSqlStatementStatuses,omitempty" xml:"latestSqlStatementStatuses,omitempty"`
 	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
-	MaxResults  *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// 60000
 	MinDuration *int64 `json:"minDuration,omitempty" xml:"minDuration,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
-	NextToken       *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	OrderBy         []*string `json:"orderBy,omitempty" xml:"orderBy,omitempty" type:"Repeated"`
-	ResourceQueueId *string   `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	Sort            *string   `json:"sort,omitempty" xml:"sort,omitempty"`
+	NextToken *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	OrderBy   []*string `json:"orderBy,omitempty" xml:"orderBy,omitempty" type:"Repeated"`
+	// example:
+	//
+	// root_queue
+	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	// example:
+	//
+	// asc
+	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
 	// The range of start time.
 	StartTime *ListKyuubiSparkApplicationsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
+	// example:
+	//
+	// ["ERROR"]
+	States *string `json:"states,omitempty" xml:"states,omitempty"`
 }
 
 func (s ListKyuubiSparkApplicationsRequest) String() string {
@@ -76,6 +100,14 @@ func (s *ListKyuubiSparkApplicationsRequest) GetApplicationId() *string {
 
 func (s *ListKyuubiSparkApplicationsRequest) GetApplicationName() *string {
 	return s.ApplicationName
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) GetEndTime() *ListKyuubiSparkApplicationsRequestEndTime {
+	return s.EndTime
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) GetLatestSqlStatementStatuses() *string {
+	return s.LatestSqlStatementStatuses
 }
 
 func (s *ListKyuubiSparkApplicationsRequest) GetMaxResults() *int32 {
@@ -106,6 +138,10 @@ func (s *ListKyuubiSparkApplicationsRequest) GetStartTime() *ListKyuubiSparkAppl
 	return s.StartTime
 }
 
+func (s *ListKyuubiSparkApplicationsRequest) GetStates() *string {
+	return s.States
+}
+
 func (s *ListKyuubiSparkApplicationsRequest) SetApplicationId(v string) *ListKyuubiSparkApplicationsRequest {
 	s.ApplicationId = &v
 	return s
@@ -113,6 +149,16 @@ func (s *ListKyuubiSparkApplicationsRequest) SetApplicationId(v string) *ListKyu
 
 func (s *ListKyuubiSparkApplicationsRequest) SetApplicationName(v string) *ListKyuubiSparkApplicationsRequest {
 	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) SetEndTime(v *ListKyuubiSparkApplicationsRequestEndTime) *ListKyuubiSparkApplicationsRequest {
+	s.EndTime = v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequest) SetLatestSqlStatementStatuses(v string) *ListKyuubiSparkApplicationsRequest {
+	s.LatestSqlStatementStatuses = &v
 	return s
 }
 
@@ -151,13 +197,64 @@ func (s *ListKyuubiSparkApplicationsRequest) SetStartTime(v *ListKyuubiSparkAppl
 	return s
 }
 
+func (s *ListKyuubiSparkApplicationsRequest) SetStates(v string) *ListKyuubiSparkApplicationsRequest {
+	s.States = &v
+	return s
+}
+
 func (s *ListKyuubiSparkApplicationsRequest) Validate() error {
+	if s.EndTime != nil {
+		if err := s.EndTime.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.StartTime != nil {
 		if err := s.StartTime.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type ListKyuubiSparkApplicationsRequestEndTime struct {
+	// example:
+	//
+	// 1774209636
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1774209636
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s ListKyuubiSparkApplicationsRequestEndTime) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListKyuubiSparkApplicationsRequestEndTime) GoString() string {
+	return s.String()
+}
+
+func (s *ListKyuubiSparkApplicationsRequestEndTime) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *ListKyuubiSparkApplicationsRequestEndTime) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *ListKyuubiSparkApplicationsRequestEndTime) SetEndTime(v int64) *ListKyuubiSparkApplicationsRequestEndTime {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequestEndTime) SetStartTime(v int64) *ListKyuubiSparkApplicationsRequestEndTime {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListKyuubiSparkApplicationsRequestEndTime) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListKyuubiSparkApplicationsRequestStartTime struct {

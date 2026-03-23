@@ -25,6 +25,8 @@ type iCreateWorkspaceRequest interface {
 	GetDlfType() *string
 	SetDuration(v string) *CreateWorkspaceRequest
 	GetDuration() *string
+	SetGpuSpec(v []*string) *CreateWorkspaceRequest
+	GetGpuSpec() []*string
 	SetOssBucket(v string) *CreateWorkspaceRequest
 	GetOssBucket() *string
 	SetPaymentDurationUnit(v string) *CreateWorkspaceRequest
@@ -95,7 +97,8 @@ type CreateWorkspaceRequest struct {
 	// example:
 	//
 	// 12452
-	Duration *string `json:"duration,omitempty" xml:"duration,omitempty"`
+	Duration *string   `json:"duration,omitempty" xml:"duration,omitempty"`
+	GpuSpec  []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
 	// The name of the Object Storage Service (OSS) bucket.
 	//
 	// example:
@@ -193,6 +196,10 @@ func (s *CreateWorkspaceRequest) GetDuration() *string {
 	return s.Duration
 }
 
+func (s *CreateWorkspaceRequest) GetGpuSpec() []*string {
+	return s.GpuSpec
+}
+
 func (s *CreateWorkspaceRequest) GetOssBucket() *string {
 	return s.OssBucket
 }
@@ -273,6 +280,11 @@ func (s *CreateWorkspaceRequest) SetDuration(v string) *CreateWorkspaceRequest {
 	return s
 }
 
+func (s *CreateWorkspaceRequest) SetGpuSpec(v []*string) *CreateWorkspaceRequest {
+	s.GpuSpec = v
+	return s
+}
+
 func (s *CreateWorkspaceRequest) SetOssBucket(v string) *CreateWorkspaceRequest {
 	s.OssBucket = &v
 	return s
@@ -348,6 +360,10 @@ type CreateWorkspaceRequestResourceSpec struct {
 	//
 	// 1000
 	Cu *string `json:"cu,omitempty" xml:"cu,omitempty"`
+	// example:
+	//
+	// 100
+	Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
 }
 
 func (s CreateWorkspaceRequestResourceSpec) String() string {
@@ -362,8 +378,17 @@ func (s *CreateWorkspaceRequestResourceSpec) GetCu() *string {
 	return s.Cu
 }
 
+func (s *CreateWorkspaceRequestResourceSpec) GetGpu() *int32 {
+	return s.Gpu
+}
+
 func (s *CreateWorkspaceRequestResourceSpec) SetCu(v string) *CreateWorkspaceRequestResourceSpec {
 	s.Cu = &v
+	return s
+}
+
+func (s *CreateWorkspaceRequestResourceSpec) SetGpu(v int32) *CreateWorkspaceRequestResourceSpec {
+	s.Gpu = &v
 	return s
 }
 

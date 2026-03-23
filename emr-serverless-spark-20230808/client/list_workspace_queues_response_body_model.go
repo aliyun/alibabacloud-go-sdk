@@ -133,6 +133,7 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The environment types of the queue.
 	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	GpuSpec      []*string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty" type:"Repeated"`
 	// The maximum capacity of resources that can be used in the queue.
 	//
 	// example:
@@ -162,6 +163,10 @@ type ListWorkspaceQueuesResponseBodyQueues struct {
 	//
 	// dev_queue
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
+	// example:
+	//
+	// CPU
+	QueueCategory *string `json:"queueCategory,omitempty" xml:"queueCategory,omitempty"`
 	// The name of the queue.
 	//
 	// example:
@@ -234,6 +239,10 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) GetEnvironments() []*string {
 	return s.Environments
 }
 
+func (s *ListWorkspaceQueuesResponseBodyQueues) GetGpuSpec() []*string {
+	return s.GpuSpec
+}
+
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetMaxResource() *string {
 	return s.MaxResource
 }
@@ -252,6 +261,10 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) GetPreheat() *bool {
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetProperties() *string {
 	return s.Properties
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) GetQueueCategory() *string {
+	return s.QueueCategory
 }
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) GetQueueName() *string {
@@ -302,6 +315,11 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetEnvironments(v []*string) *Li
 	return s
 }
 
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetGpuSpec(v []*string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.GpuSpec = v
+	return s
+}
+
 func (s *ListWorkspaceQueuesResponseBodyQueues) SetMaxResource(v string) *ListWorkspaceQueuesResponseBodyQueues {
 	s.MaxResource = &v
 	return s
@@ -324,6 +342,11 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetPreheat(v bool) *ListWorkspac
 
 func (s *ListWorkspaceQueuesResponseBodyQueues) SetProperties(v string) *ListWorkspaceQueuesResponseBodyQueues {
 	s.Properties = &v
+	return s
+}
+
+func (s *ListWorkspaceQueuesResponseBodyQueues) SetQueueCategory(v string) *ListWorkspaceQueuesResponseBodyQueues {
+	s.QueueCategory = &v
 	return s
 }
 

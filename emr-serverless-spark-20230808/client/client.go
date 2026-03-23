@@ -849,6 +849,10 @@ func (client *Client) CreateRayClusterWithOptions(workspaceId *string, request *
 		body["networkServiceName"] = request.NetworkServiceName
 	}
 
+	if !dara.IsNil(request.VolumeIds) {
+		body["volumeIds"] = request.VolumeIds
+	}
+
 	if !dara.IsNil(request.WorkerSpec) {
 		body["workerSpec"] = request.WorkerSpec
 	}
@@ -1158,6 +1162,10 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 
 	if !dara.IsNil(request.Duration) {
 		body["duration"] = request.Duration
+	}
+
+	if !dara.IsNil(request.GpuSpec) {
+		body["gpuSpec"] = request.GpuSpec
 	}
 
 	if !dara.IsNil(request.OssBucket) {
@@ -1564,6 +1572,10 @@ func (client *Client) EditWorkspaceQueueWithOptions(request *EditWorkspaceQueueR
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Environments) {
 		body["environments"] = request.Environments
+	}
+
+	if !dara.IsNil(request.GpuSpec) {
+		body["gpuSpec"] = request.GpuSpec
 	}
 
 	if !dara.IsNil(request.ResourceSpec) {
@@ -2918,6 +2930,10 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 	}
 	request := &ListKyuubiSparkApplicationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EndTime) {
+		request.EndTimeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EndTime, dara.String("endTime"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.OrderBy) {
 		request.OrderByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderBy, dara.String("orderBy"), dara.String("json"))
 	}
@@ -2933,6 +2949,14 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 
 	if !dara.IsNil(request.ApplicationName) {
 		query["applicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.EndTimeShrink) {
+		query["endTime"] = request.EndTimeShrink
+	}
+
+	if !dara.IsNil(request.LatestSqlStatementStatuses) {
+		query["latestSqlStatementStatuses"] = request.LatestSqlStatementStatuses
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -2961,6 +2985,10 @@ func (client *Client) ListKyuubiSparkApplicationsWithOptions(workspaceId *string
 
 	if !dara.IsNil(request.StartTimeShrink) {
 		query["startTime"] = request.StartTimeShrink
+	}
+
+	if !dara.IsNil(request.States) {
+		query["states"] = request.States
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5377,6 +5405,10 @@ func (client *Client) UpdateRayClusterWithOptions(workspaceId *string, clusterId
 
 	if !dara.IsNil(request.NetworkServiceName) {
 		body["networkServiceName"] = request.NetworkServiceName
+	}
+
+	if !dara.IsNil(request.VolumeIds) {
+		body["volumeIds"] = request.VolumeIds
 	}
 
 	if !dara.IsNil(request.WorkerSpec) {

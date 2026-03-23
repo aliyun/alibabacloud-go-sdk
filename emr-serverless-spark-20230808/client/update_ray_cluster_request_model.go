@@ -21,6 +21,8 @@ type iUpdateRayClusterRequest interface {
 	GetName() *string
 	SetNetworkServiceName(v string) *UpdateRayClusterRequest
 	GetNetworkServiceName() *string
+	SetVolumeIds(v []*string) *UpdateRayClusterRequest
+	GetVolumeIds() []*string
 	SetWorkerSpec(v []*UpdateRayClusterRequestWorkerSpec) *UpdateRayClusterRequest
 	GetWorkerSpec() []*UpdateRayClusterRequestWorkerSpec
 }
@@ -47,6 +49,7 @@ type UpdateRayClusterRequest struct {
 	//
 	// vpc
 	NetworkServiceName *string                              `json:"networkServiceName,omitempty" xml:"networkServiceName,omitempty"`
+	VolumeIds          []*string                            `json:"volumeIds,omitempty" xml:"volumeIds,omitempty" type:"Repeated"`
 	WorkerSpec         []*UpdateRayClusterRequestWorkerSpec `json:"workerSpec,omitempty" xml:"workerSpec,omitempty" type:"Repeated"`
 }
 
@@ -82,6 +85,10 @@ func (s *UpdateRayClusterRequest) GetNetworkServiceName() *string {
 	return s.NetworkServiceName
 }
 
+func (s *UpdateRayClusterRequest) GetVolumeIds() []*string {
+	return s.VolumeIds
+}
+
 func (s *UpdateRayClusterRequest) GetWorkerSpec() []*UpdateRayClusterRequestWorkerSpec {
 	return s.WorkerSpec
 }
@@ -113,6 +120,11 @@ func (s *UpdateRayClusterRequest) SetName(v string) *UpdateRayClusterRequest {
 
 func (s *UpdateRayClusterRequest) SetNetworkServiceName(v string) *UpdateRayClusterRequest {
 	s.NetworkServiceName = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequest) SetVolumeIds(v []*string) *UpdateRayClusterRequest {
+	s.VolumeIds = v
 	return s
 }
 
@@ -150,6 +162,10 @@ type UpdateRayClusterRequestHeadSpec struct {
 	EnableAutoScaling *bool `json:"enableAutoScaling,omitempty" xml:"enableAutoScaling,omitempty"`
 	// example:
 	//
+	// ecs.gn6i-c4g1.xlarge
+	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
+	// example:
+	//
 	// 60
 	IdleTimeoutSeconds *int32 `json:"idleTimeoutSeconds,omitempty" xml:"idleTimeoutSeconds,omitempty"`
 	// example:
@@ -178,6 +194,10 @@ func (s *UpdateRayClusterRequestHeadSpec) GetEnableAutoScaling() *bool {
 	return s.EnableAutoScaling
 }
 
+func (s *UpdateRayClusterRequestHeadSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *UpdateRayClusterRequestHeadSpec) GetIdleTimeoutSeconds() *int32 {
 	return s.IdleTimeoutSeconds
 }
@@ -197,6 +217,11 @@ func (s *UpdateRayClusterRequestHeadSpec) SetCpu(v string) *UpdateRayClusterRequ
 
 func (s *UpdateRayClusterRequestHeadSpec) SetEnableAutoScaling(v bool) *UpdateRayClusterRequestHeadSpec {
 	s.EnableAutoScaling = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequestHeadSpec) SetGpuSpec(v string) *UpdateRayClusterRequestHeadSpec {
+	s.GpuSpec = &v
 	return s
 }
 
@@ -224,6 +249,10 @@ type UpdateRayClusterRequestWorkerSpec struct {
 	//
 	// 2
 	Cpu *string `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// ecs.gn6i-c4g1.xlarge
+	GpuSpec *string `json:"gpuSpec,omitempty" xml:"gpuSpec,omitempty"`
 	// example:
 	//
 	// WorkerGroup1
@@ -266,6 +295,10 @@ func (s *UpdateRayClusterRequestWorkerSpec) GetCpu() *string {
 	return s.Cpu
 }
 
+func (s *UpdateRayClusterRequestWorkerSpec) GetGpuSpec() *string {
+	return s.GpuSpec
+}
+
 func (s *UpdateRayClusterRequestWorkerSpec) GetGroupName() *string {
 	return s.GroupName
 }
@@ -296,6 +329,11 @@ func (s *UpdateRayClusterRequestWorkerSpec) GetWorkerType() *string {
 
 func (s *UpdateRayClusterRequestWorkerSpec) SetCpu(v string) *UpdateRayClusterRequestWorkerSpec {
 	s.Cpu = &v
+	return s
+}
+
+func (s *UpdateRayClusterRequestWorkerSpec) SetGpuSpec(v string) *UpdateRayClusterRequestWorkerSpec {
+	s.GpuSpec = &v
 	return s
 }
 
