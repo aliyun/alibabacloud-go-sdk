@@ -40,91 +40,26 @@ type iDescribeHistoryTasksStatRequest interface {
 }
 
 type DescribeHistoryTasksStatRequest struct {
-	// The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
-	//
-	// example:
-	//
-	// 0
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-05-08T07:04:17Z
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-2ze704f*****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// 	- **Scheduled**
-	//
-	// 	- **Running**
-	//
-	// 	- **Succeed**
-	//
-	// 	- **Failed**
-	//
-	// 	- **Cancelling**
-	//
-	// 	- **Canceled**
-	//
-	// 	- **Waiting**
-	//
-	// Separate multiple statuses with commas (,). By default, this parameter is left empty. This indicates that tasks in all statuses are queried.
-	//
-	// example:
-	//
-	// Scheduled
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 12221
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type.
-	//
-	// example:
-	//
-	// all
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
-	//
-	// example:
-	//
-	// 0
-	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
-	// The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
-	//
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	ToExecTime           *int32  `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2023-02-24T10:01:37Z
 	ToStartTime *string `json:"ToStartTime,omitempty" xml:"ToStartTime,omitempty"`
 }
 

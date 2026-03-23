@@ -44,119 +44,22 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// The filter condition that is used to return tasks based on the settings of task cancellation. Default value: -1. Valid values:
-	//
-	// 	- **-1**: returns all tasks.
-	//
-	// 	- **0**: returns only tasks that cannot be canceled.
-	//
-	// 	- **1**: returns only tasks that can be canceled.
-	//
-	// example:
-	//
-	// -1
-	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// The filter condition that is used to return tasks based on the settings of the switching time. Default value: -1. Valid values:
-	//
-	// 	- **-1**: returns all tasks.
-	//
-	// 	- **0**: returns only tasks for which the switching time cannot be changed.
-	//
-	// 	- **1**: returns only tasks for which the switching time can be changed.
-	//
-	// example:
-	//
-	// -1
-	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The filter condition that is used to return tasks based on the task level. Default value: all. Valid values:
-	//
-	// 	- **all**: all types
-	//
-	// 	- **S0**: returns the tasks of the exception fixing level.
-	//
-	// 	- **S1**: returns the tasks of the system O\\&M level.
-	//
-	// example:
-	//
-	// all
-	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	// The type of the database. Default value: all. Valid values: mysql, pgsql, and mssql.
-	//
-	// example:
-	//
-	// all
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The name of the instance. You can leave this parameter empty. If you configure this parameter, you can specify the name only of one instance.
-	//
-	// example:
-	//
-	// rm-bp191w771kd3****
-	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 25. Maximum value: 100.
-	//
-	// example:
-	//
-	// 25
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For RDS instances, set the value to RDS.
-	//
-	// example:
-	//
-	// RDS
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID of the pending event. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// >  The value **all*	- indicates all regions.
-	//
-	// example:
-	//
-	// cn-beijing
+	AllowCancel          *int32  `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	AllowChange          *int32  `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	ChangeLevel          *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	DbType               *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductId            *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The status of the task, which is used as a filter condition to return tasks.
-	//
-	// 	- **-1**: all tasks
-	//
-	// 	- **3**: pending
-	//
-	// 	- **4**: being processed
-	//
-	// 	- **5**: completed
-	//
-	// 	- **6**: failed
-	//
-	// 	- **7**: canceled
-	//
-	// example:
-	//
-	// -1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the task. Valid values:
-	//
-	// 	- **rds_apsaradb_ha**: primary/secondary switchover
-	//
-	// 	- **rds_apsaradb_transfer**: instance migration
-	//
-	// 	- **rds_apsaradb_upgrade**: update of the minor engine version
-	//
-	// 	- **rds_apsaradb_maxscale**: update of the minor version of the proxy
-	//
-	// 	- **all**: all types
-	//
-	// example:
-	//
-	// rds_apsaradb_upgrade
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksRequest) String() string {

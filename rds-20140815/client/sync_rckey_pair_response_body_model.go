@@ -16,14 +16,8 @@ type iSyncRCKeyPairResponseBody interface {
 }
 
 type SyncRCKeyPairResponseBody struct {
-	// The details of the result.
-	Data *SyncRCKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 60478CCB-95EA-5D06-8A51-CAC83A316E9A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *SyncRCKeyPairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SyncRCKeyPairResponseBody) String() string {
@@ -62,15 +56,6 @@ func (s *SyncRCKeyPairResponseBody) Validate() error {
 }
 
 type SyncRCKeyPairResponseBodyData struct {
-	// Indicates whether the synchronization succeeded. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
 	IsSyncInfo *bool `json:"IsSyncInfo,omitempty" xml:"IsSyncInfo,omitempty"`
 }
 

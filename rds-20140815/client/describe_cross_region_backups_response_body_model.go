@@ -28,51 +28,14 @@ type iDescribeCrossRegionBackupsResponseBody interface {
 }
 
 type DescribeCrossRegionBackupsResponseBody struct {
-	// The end of the time range to query.
-	//
-	// example:
-	//
-	// 2019-06-15T12:10:00Z
-	EndTime *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Items   *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number. Pages start from page 1.
-	//
-	// Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of cross-region data backup files on the current page.
-	//
-	// example:
-	//
-	// 30
-	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 60912B41-7579-4B5D-B289-8856030F0A6A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query.
-	//
-	// example:
-	//
-	// 2019-05-30T12:10:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries that are returned.
-	//
-	// example:
-	//
-	// 100
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	EndTime          *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Items            *DescribeCrossRegionBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RegionId         *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime        *string                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeCrossRegionBackupsResponseBody) String() string {

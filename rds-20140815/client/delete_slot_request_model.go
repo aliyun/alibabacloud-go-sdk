@@ -30,51 +30,17 @@ type iDeleteSlotRequest interface {
 }
 
 type DeleteSlotRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
-	//
-	// example:
-	//
-	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// pgm-bp102g323jd4****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group. You can leave this parameter empty.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the replication slot. You can call the DescribeSlots operation to query the name of the replication slot.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// slot_test01
 	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
-	// The status of the replication slot. You can call the DescribeSlots operation to query the status of the replication slot. Valid values:
-	//
-	// 	- **ACTIVE**
-	//
-	// 	- **INACTIVE**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// INACTIVE
 	SlotStatus *string `json:"SlotStatus,omitempty" xml:"SlotStatus,omitempty"`
 }
 

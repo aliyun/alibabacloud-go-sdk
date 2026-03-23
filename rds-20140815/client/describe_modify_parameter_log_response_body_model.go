@@ -28,49 +28,14 @@ type iDescribeModifyParameterLogResponseBody interface {
 }
 
 type DescribeModifyParameterLogResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
-	//
-	// example:
-	//
-	// 5.6
-	EngineVersion *string                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Items         *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 1
-	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// C8E88DED-533F-4B3C-9207-731FBF394CCA
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 1
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	DBInstanceId     *string                                      `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Engine           *string                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion    *string                                      `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	Items            *DescribeModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                       `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeModifyParameterLogResponseBody) String() string {

@@ -20,30 +20,10 @@ type iCreateDBNodesResponseBody interface {
 }
 
 type CreateDBNodesResponseBody struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-2ze450g4ctg6t****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the created node. The value is a string. Multiple values are separated by commas (`,`).
-	//
-	// example:
-	//
-	// rn-abcd2*****
-	NodeIds *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
-	// The ID of the order.
-	//
-	// example:
-	//
-	// 2133400000*****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 7A41C147-C8D0-4DAE-A1A2-17EBCD60DFA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NodeIds      *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBNodesResponseBody) String() string {

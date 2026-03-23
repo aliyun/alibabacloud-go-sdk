@@ -18,28 +18,9 @@ type iDescribeRCInstanceVncUrlRequest interface {
 }
 
 type DescribeRCInstanceVncUrlRequest struct {
-	// The database engine. Valid values:
-	//
-	// 	- **mssql**: SQL Server
-	//
-	// 	- **mysql**: MySQL
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rc-e6e3757b8px27oa5****
+	DbType     *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-chengdu
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRCInstanceVncUrlRequest) String() string {

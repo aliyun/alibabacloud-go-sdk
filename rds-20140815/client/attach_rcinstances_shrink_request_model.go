@@ -22,36 +22,12 @@ type iAttachRCInstancesShrinkRequest interface {
 }
 
 type AttachRCInstancesShrinkRequest struct {
-	// The node IDs.
-	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The key pair of the node.
-	//
-	// example:
-	//
-	// Custom_test
-	KeyPair *string `json:"KeyPair,omitempty" xml:"KeyPair,omitempty"`
-	// The logon password of the node.
-	//
-	// example:
-	//
-	// testPassword
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// > This is a reserved parameter.
-	//
-	// example:
-	//
-	// None
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	KeyPair           *string `json:"KeyPair,omitempty" xml:"KeyPair,omitempty"`
+	Password          *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s AttachRCInstancesShrinkRequest) String() string {

@@ -22,32 +22,11 @@ type iDescribeHistoryTasksResponseBody interface {
 }
 
 type DescribeHistoryTasksResponseBody struct {
-	// The tasks.
-	Items []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
-	//
-	// example:
-	//
-	// 5CD61041-35F7-10F7-BE94-33A48B22****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of tasks that meet these constraints without taking pagination into account.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*DescribeHistoryTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHistoryTasksResponseBody) String() string {
@@ -117,176 +96,26 @@ func (s *DescribeHistoryTasksResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksResponseBodyItems struct {
-	// A set of allowed actions that can be taken on the task. The system matches the current step name and status of the task to the available actions specified by ActionInfo. If no matching action is found, the current status of the task does not support any action. Example:
-	//
-	//       "steps": [
-	//
-	//         {
-	//
-	//           "step_name": "exec_task", // The name of the step, which matches CurrentStepName.      "action_info": {    // The actions supported for this step.        "Waiting": [      // The status, which matches Status.          "modifySwitchTime" // The action. Multiple actions are supported.        ]
-	//
-	//           }
-	//
-	//         },
-	//
-	//         {
-	//
-	//           "step_name": "init_task", // The name of the step.      "action_info": {    // The actions supported for this step.        "Running": [      // The status.          "cancel",       // The action.          "pause"
-	//
-	//             ]
-	//
-	//           }
-	//
-	//         }
-	//
-	//       ]
-	//
-	//     }
-	//
-	// The system may support the following actions:
-	//
-	// 	- **retry**: retries the action.
-	//
-	// 	- **cancel**: cancels the action.
-	//
-	// 	- **modifySwitchTime**: changes the switching time or restoration time.
-	//
-	// example:
-	//
-	// {\\"steps\\":[{\\"action_info\\":{\\"Waiting\\":[\\"modifySwitchTime\\"]},\\"step_name\\":\\"exec_task\\"}]}
-	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
-	// The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
-	//
-	// example:
-	//
-	// 141345906006****
-	CallerSource *string `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
-	// The source of the request. Valid values:
-	//
-	// 	- **System**
-	//
-	// 	- **User**
-	//
-	// example:
-	//
-	// User
-	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// The name of the current step. If this parameter is left empty, the task is not started.
-	//
-	// example:
-	//
-	// exec_task
-	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
-	// The database type.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The end time of the task.
-	//
-	// example:
-	//
-	// 2022-02-03T12:06:17Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf62br2491p5l****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance category.
-	//
-	// example:
-	//
-	// Instance
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The service name.
-	//
-	// example:
-	//
-	// rds
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// Indicates the task progress.
-	//
-	// example:
-	//
-	// 79.0
-	Progress *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The reason why the current task was initiated.
-	//
-	// example:
-	//
-	// ****
-	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The estimated amount of time remaining to complete the task. Unit: seconds.
-	//
-	// example:
-	//
-	// 1000
-	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	// The start time of the task.
-	//
-	// example:
-	//
-	// 2022-02-03T11:31:03Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
-	//
-	// 	- Scheduled
-	//
-	// 	- Running
-	//
-	// 	- Succeed
-	//
-	// 	- Failed
-	//
-	// 	- Cancelling
-	//
-	// 	- Canceled
-	//
-	// 	- Waiting
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task details.
-	//
-	// example:
-	//
-	// {\\"callerUid\\":\\"test\\"}
-	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// t-83br18hloy3faf****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type.
-	//
-	// example:
-	//
-	// autotest_dispatch_cases
-	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The ID of the user to which the resources belong.
-	//
-	// example:
-	//
-	// 141345906006****
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	ActionInfo      *string  `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
+	CallerSource    *string  `json:"CallerSource,omitempty" xml:"CallerSource,omitempty"`
+	CallerUid       *string  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	CurrentStepName *string  `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
+	DbType          *string  `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EndTime         *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId      *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName    *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType    *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Product         *string  `json:"Product,omitempty" xml:"Product,omitempty"`
+	Progress        *float32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ReasonCode      *string  `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemainTime      *int32   `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	StartTime       *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskDetail      *string  `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
+	TaskId          *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType        *string  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	Uid             *string  `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeHistoryTasksResponseBodyItems) String() string {

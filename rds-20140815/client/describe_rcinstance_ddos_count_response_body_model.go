@@ -16,14 +16,8 @@ type iDescribeRCInstanceDdosCountResponseBody interface {
 }
 
 type DescribeRCInstanceDdosCountResponseBody struct {
-	// The number of instances that are under DDoS attacks.
 	DdosCount *DescribeRCInstanceDdosCountResponseBodyDdosCount `json:"DdosCount,omitempty" xml:"DdosCount,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F77F3176-AAEA-5836-B2B4-A854E3ED****_Zv**
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCInstanceDdosCountResponseBody) String() string {
@@ -62,24 +56,9 @@ func (s *DescribeRCInstanceDdosCountResponseBody) Validate() error {
 }
 
 type DescribeRCInstanceDdosCountResponseBodyDdosCount struct {
-	// The number of instances for which blackhole filtering is triggered.
-	//
-	// example:
-	//
-	// 0
 	BlackholeCount *string `json:"BlackholeCount,omitempty" xml:"BlackholeCount,omitempty"`
-	// The number of instances for which traffic scrubbing is triggered.
-	//
-	// example:
-	//
-	// 0
-	DefenseCount *string `json:"DefenseCount,omitempty" xml:"DefenseCount,omitempty"`
-	// The total number of instances.
-	//
-	// example:
-	//
-	// 6
-	InstacenCount *string `json:"InstacenCount,omitempty" xml:"InstacenCount,omitempty"`
+	DefenseCount   *string `json:"DefenseCount,omitempty" xml:"DefenseCount,omitempty"`
+	InstacenCount  *string `json:"InstacenCount,omitempty" xml:"InstacenCount,omitempty"`
 }
 
 func (s DescribeRCInstanceDdosCountResponseBodyDdosCount) String() string {

@@ -18,25 +18,9 @@ type iDeleteReplicationLinkRequest interface {
 }
 
 type DeleteReplicationLinkRequest struct {
-	// The ID of the DR instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to delete the data synchronization link between the DR instance and the primary instance and promote the DR instance to the primary instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// true
 	PromoteToMaster *bool  `json:"PromoteToMaster,omitempty" xml:"PromoteToMaster,omitempty"`
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

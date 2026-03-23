@@ -22,33 +22,11 @@ type iDescribeDBInstancesByExpireTimeResponseBody interface {
 }
 
 type DescribeDBInstancesByExpireTimeResponseBody struct {
-	Items *DescribeDBInstancesByExpireTimeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page. Valid values: any **non-zero*	- positive integer.
-	//
-	// Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of instances returned on the current page.
-	//
-	// example:
-	//
-	// 2
-	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
-	//
-	// example:
-	//
-	// 200
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items            *DescribeDBInstancesByExpireTimeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                            `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount *int32                                            `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDBInstancesByExpireTimeResponseBody) String() string {

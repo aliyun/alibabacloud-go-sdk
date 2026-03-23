@@ -16,21 +16,7 @@ type iDescribeHADiagnoseConfigResponseBody interface {
 }
 
 type DescribeHADiagnoseConfigResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 06B220E2-EAC5-4DBE-A1FC-1B62DB6A****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The availability check method of the instance. Valid values:
-	//
-	// 	- **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-	//
-	// 	- **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
-	//
-	// example:
-	//
-	// LONG
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TcpConnectionType *string `json:"TcpConnectionType,omitempty" xml:"TcpConnectionType,omitempty"`
 }
 

@@ -30,43 +30,15 @@ type iModifyAccountCheckPolicyRequest interface {
 }
 
 type ModifyAccountCheckPolicyRequest struct {
-	// The account username.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// DatabaseTest
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Specifies whether to apply the password policy
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// true
-	CheckPolicy *bool `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
-	//
-	// example:
-	//
-	// ETnLKlblzczshOTUbOC****
+	CheckPolicy *bool   `json:"CheckPolicy,omitempty" xml:"CheckPolicy,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. For more information about resource groups, see related documentation.
-	//
-	// example:
-	//
-	// rg-acfmy****
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

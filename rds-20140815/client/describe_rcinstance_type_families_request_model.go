@@ -14,11 +14,6 @@ type iDescribeRCInstanceTypeFamiliesRequest interface {
 }
 
 type DescribeRCInstanceTypeFamiliesRequest struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

@@ -14,9 +14,6 @@ type iModifyRCVClusterResponseBody interface {
 }
 
 type ModifyRCVClusterResponseBody struct {
-	// example:
-	//
-	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

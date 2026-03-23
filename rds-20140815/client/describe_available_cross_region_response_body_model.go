@@ -16,13 +16,8 @@ type iDescribeAvailableCrossRegionResponseBody interface {
 }
 
 type DescribeAvailableCrossRegionResponseBody struct {
-	Regions *DescribeAvailableCrossRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 39265F46-EC77-4036-8AC4-F035F32F6BE2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   *DescribeAvailableCrossRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableCrossRegionResponseBody) String() string {

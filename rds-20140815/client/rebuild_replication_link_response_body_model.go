@@ -20,30 +20,10 @@ type iRebuildReplicationLinkResponseBody interface {
 }
 
 type RebuildReplicationLinkResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 65BDA532-28AF-4122-AA39-B382721EEE64
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 3472****
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
-	//
-	// example:
-	//
-	// test01
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s RebuildReplicationLinkResponseBody) String() string {

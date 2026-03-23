@@ -22,25 +22,9 @@ type iDescribeInstanceLinkedWhitelistTemplateRequest interface {
 }
 
 type DescribeInstanceLinkedWhitelistTemplateRequest struct {
-	// The instance name.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-bp191w771kd3****
-	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can leave this parameter empty.
-	//
-	// example:
-	//
-	// rg-aek3dbzqbh6****
+	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

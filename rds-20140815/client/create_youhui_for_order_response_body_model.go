@@ -34,7 +34,7 @@ type CreateYouhuiForOrderResponseBody struct {
 	//
 	// example:
 	//
-	// 221201******
+	// 22120151****
 	YouhuiId *string `json:"YouhuiId,omitempty" xml:"YouhuiId,omitempty"`
 }
 

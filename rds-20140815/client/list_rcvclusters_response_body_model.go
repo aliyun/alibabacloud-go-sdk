@@ -16,9 +16,6 @@ type iListRCVClustersResponseBody interface {
 }
 
 type ListRCVClustersResponseBody struct {
-	// example:
-	//
-	// 07F6177E-6DE4-408A-BB4F-0723301340F3
 	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VClusters []*ListRCVClustersResponseBodyVClusters `json:"VClusters,omitempty" xml:"VClusters,omitempty" type:"Repeated"`
 }
@@ -63,23 +60,11 @@ func (s *ListRCVClustersResponseBody) Validate() error {
 }
 
 type ListRCVClustersResponseBodyVClusters struct {
-	// example:
-	//
-	// cd21387ea640145bab79a78276c1a****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// example:
-	//
-	// 1
-	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
+	ClusterId                   *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	InstanceCount               *int64    `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	RegionId                    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportDiskPerformanceLevel []*string `json:"SupportDiskPerformanceLevel,omitempty" xml:"SupportDiskPerformanceLevel,omitempty" type:"Repeated"`
-	// example:
-	//
-	// vpc-2zeqj40j2ce0s5yhg****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId                       *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListRCVClustersResponseBodyVClusters) String() string {

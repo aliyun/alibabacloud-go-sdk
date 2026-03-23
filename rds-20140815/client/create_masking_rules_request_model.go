@@ -32,20 +32,28 @@ type iCreateMaskingRulesRequest interface {
 }
 
 type CreateMaskingRulesRequest struct {
+	// instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o3*****d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// Database name
+	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// Name of the default encryption or masking algorithm
+	//
 	// example:
 	//
 	// aes-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
+	// Rule algorithm. Multiple algorithms can be selected. Masking Algorithm can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, number of encrypted characters}}
+	//
 	// example:
 	//
 	// [{"name": "aes-128-gcm"},
@@ -53,13 +61,18 @@ type CreateMaskingRulesRequest struct {
 	//         {"name":"sm4-128-gcm"}]
 	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// ap-southeast-1
-	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RuleConfig           *CreateMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Rule configuration, in JSON string format, containing matching rules for databases, tables, and columns
+	RuleConfig *CreateMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
+	// Rule Name (only one rule name is supported per request)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -176,9 +189,12 @@ func (s *CreateMaskingRulesRequest) Validate() error {
 }
 
 type CreateMaskingRulesRequestRuleConfig struct {
-	Columns   []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// List of columns
+	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// List of databases
 	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// List of tables
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
 func (s CreateMaskingRulesRequestRuleConfig) String() string {

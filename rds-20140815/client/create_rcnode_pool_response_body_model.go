@@ -20,26 +20,10 @@ type iCreateRCNodePoolResponseBody interface {
 }
 
 type CreateRCNodePoolResponseBody struct {
-	// The instance IDs.
 	InstanceIdSets []*string `json:"InstanceIdSets,omitempty" xml:"InstanceIdSets,omitempty" type:"Repeated"`
-	// The node pool ID.
-	//
-	// example:
-	//
-	// np31da1b38983f4511b490fc62108a****
-	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// The order ID.
-	//
-	// example:
-	//
-	// 50357661918****
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	NodePoolId     *string   `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	OrderId        *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRCNodePoolResponseBody) String() string {

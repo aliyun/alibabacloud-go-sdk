@@ -24,21 +24,9 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
-	// The name of the account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

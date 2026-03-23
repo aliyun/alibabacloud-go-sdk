@@ -18,24 +18,9 @@ type iDescribeRCNodePoolRequest interface {
 }
 
 type DescribeRCNodePoolRequest struct {
-	// The ID of the ACK Edge cluster in which the RDS Custom instance resides.
-	//
-	// example:
-	//
-	// c463aaa89e2b84cacacfbf23c4867****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The node pool ID.
-	//
-	// example:
-	//
-	// np31da1b38983f4511b490fc62108a****
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRCNodePoolRequest) String() string {

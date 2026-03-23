@@ -16,18 +16,8 @@ type iDeleteParameterGroupResponseBody interface {
 }
 
 type DeleteParameterGroupResponseBody struct {
-	// The ID of the parameter template.
-	//
-	// example:
-	//
-	// rpg-gfs****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 8AF26036-B254-4212-B8E4-EFBE818B7FD6
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteParameterGroupResponseBody) String() string {

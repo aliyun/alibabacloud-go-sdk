@@ -28,7 +28,7 @@ type DescribeCustinsResourceInfoRequest struct {
 	//
 	// example:
 	//
-	// rm-wz9s06u4drmqj4aqv
+	// rm-wz9s06u4drm******
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The resource group ID.

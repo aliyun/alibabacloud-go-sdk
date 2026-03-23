@@ -20,30 +20,10 @@ type iDescribeLocalAvailableRecoveryTimeResponseBody interface {
 }
 
 type DescribeLocalAvailableRecoveryTimeResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The start of the time range to which the instance can be restored.
-	//
-	// example:
-	//
-	// 2020-03-16T07:59:18Z
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
-	// The end of the time range to which the instance can be restored.
-	//
-	// example:
-	//
-	// 2020-03-20T08:41:29Z
-	RecoveryEndTime *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 14E986AC-0F27-4FFB-8EED-9A8A3A2A0309
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RecoveryEndTime   *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLocalAvailableRecoveryTimeResponseBody) String() string {

@@ -24,46 +24,12 @@ type iCreateMigrateTaskResponseBody interface {
 }
 
 type CreateMigrateTaskResponseBody struct {
-	// The type of the migration task. Valid values:
-	//
-	// 	- **FULL**: The migration task migrates full backup files.
-	//
-	// 	- **UPDF**: The migration task migrates incremental or log backup files.
-	//
-	// example:
-	//
-	// FULL
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk******
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test02
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The ID of the migration task.
-	//
-	// example:
-	//
-	// 564******
+	BackupMode    *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBName        *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 866F5EB8-4650-4061-87F0-379F6F968BCE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 545****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateMigrateTaskResponseBody) String() string {

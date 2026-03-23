@@ -24,38 +24,12 @@ type iDescribeDBMiniEngineVersionsResponseBody interface {
 }
 
 type DescribeDBMiniEngineVersionsResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The details of the minor engine version.
+	DBInstanceId      *string                                                      `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	MaxRecordsPerPage *int32                                                       `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
 	MinorVersionItems []*DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems `json:"MinorVersionItems,omitempty" xml:"MinorVersionItems,omitempty" type:"Repeated"`
-	// The page number returned.
-	//
-	// example:
-	//
-	// 1
-	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EFB6083A-7699-489B-8278-C0CB4793A96E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumbers       *int32                                                       `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount        *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDBMiniEngineVersionsResponseBody) String() string {
@@ -134,108 +108,21 @@ func (s *DescribeDBMiniEngineVersionsResponseBody) Validate() error {
 }
 
 type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
-	// The PostgreSQL version to which the minor engine version corresponds. For more information, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
-	//
-	// >  This parameter is available only for instances that run **PostgreSQL**.
-	//
-	// example:
-	//
-	// 13.6
 	CommunityMinorVersion *string `json:"CommunityMinorVersion,omitempty" xml:"CommunityMinorVersion,omitempty"`
-	// The database engine that corresponds to the minor engine version.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version that corresponds to the minor engine version.
-	//
-	// example:
-	//
-	// 5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the minor engine version.
-	//
-	// example:
-	//
-	// 20231213
-	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The expiration status of the minor engine version. Valid values:
-	//
-	// 	- **vaild**
-	//
-	// 	- **expired**
-	//
-	// >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
-	//
+	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireDate            *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// example:
 	//
 	// vaild
-	ExpireStatus *string `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
-	// An internal parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// True
-	IsHotfixVersion *bool `json:"IsHotfixVersion,omitempty" xml:"IsHotfixVersion,omitempty"`
-	// The minor engine version.
-	//
-	// example:
-	//
-	// rds_20220731
-	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The RDS edition of the instance that runs the minor engine version. Valid values:
-	//
-	// 	- **Basic**: RDS Basic Edition
-	//
-	// 	- **HighAvailability**: RDS High-availability Edition
-	//
-	// 	- **Finance**: RDS Enterprise Edition
-	//
-	// example:
-	//
-	// HighAvailability
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The URL of the release notes for the minor engine version.
-	//
-	// example:
-	//
-	// https://example.com
-	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The release type. Valid values:
-	//
-	// 	- **LTS**: a long-term version
-	//
-	// 	- **BETA**: a preview version
-	//
-	// example:
-	//
-	// BETA
-	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
-	// The status of the minor engine version. Valid values:
-	//
-	// 	- **Offline**: discontinued
-	//
-	// 	- **Online**: available
-	//
-	// >  If the minor engine version is in the Offline state, the minor engine version is discontinued. In this case, ignore the expiration status. If the minor engine version is in the Online state and the expiration state is expired, the minor engine version expires. If the expiration state is vaild, the minor engine version is still in its lifecycle.
-	//
-	// example:
-	//
-	// Online
-	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// The tag that corresponds to the minor engine version. Valid values:
-	//
-	// 	- **pgsql_docker_image**: tag of common instances
-	//
-	// 	- **pgsql_babelfish_image**: tag of instances for which Babelfish is enabled
-	//
-	// >  This parameter is available only for instances that run **PostgreSQL**.
-	//
-	// example:
-	//
-	// pgsql_babelfish_image
-	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	ExpireStatus    *string `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
+	IsHotfixVersion *bool   `json:"IsHotfixVersion,omitempty" xml:"IsHotfixVersion,omitempty"`
+	MinorVersion    *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	ReleaseNote     *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseType     *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	StatusDesc      *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	Tag             *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) String() string {

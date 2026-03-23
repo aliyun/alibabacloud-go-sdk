@@ -155,7 +155,8 @@ type DescribeRCImageListResponseBodyImages struct {
 	// example:
 	//
 	// test
-	Description        *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The mapping between disks and snapshots in the image.
 	DiskDeviceMappings []*DescribeRCImageListResponseBodyImagesDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -184,9 +185,22 @@ type DescribeRCImageListResponseBodyImages struct {
 	// example:
 	//
 	// false
-	IsPublic           *bool `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	IsPublic *bool `json:"IsPublic,omitempty" xml:"IsPublic,omitempty"`
+	// Indicates whether RDS Custom instances are supported. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// example:
+	//
+	// true
 	IsSupportRdsCustom *bool `json:"IsSupportRdsCustom,omitempty" xml:"IsSupportRdsCustom,omitempty"`
 	// The display name of the operating system in Chinese.
+	//
+	// example:
+	//
+	// Alibaba Cloud Linux  2.1903 LTS 64位 快速启动版
 	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
 	// The display name of the operating system in English.
 	//
@@ -203,7 +217,12 @@ type DescribeRCImageListResponseBodyImages struct {
 	// example:
 	//
 	// linux
-	OSType   *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// Operating system platform.
+	//
+	// example:
+	//
+	// Aliyun
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The image size. Unit: GiB.
 	//
@@ -403,9 +422,28 @@ func (s *DescribeRCImageListResponseBodyImages) Validate() error {
 }
 
 type DescribeRCImageListResponseBodyImagesDiskDeviceMappings struct {
+	// The device information of the disk, such as `/dev/xvdb`.
+	//
+	// example:
+	//
+	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	Size   *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The size of the disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 40
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The property of the disk.
+	//
+	// - **system**: system disk.
+	//
+	// - **data**: data disk.
+	//
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRCImageListResponseBodyImagesDiskDeviceMappings) String() string {

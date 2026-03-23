@@ -16,18 +16,8 @@ type iReceiveDBInstanceResponseBody interface {
 }
 
 type ReceiveDBInstanceResponseBody struct {
-	// The ID of the disaster recovery instance after the switchover.
-	//
-	// example:
-	//
-	// rm-tr2whku*****
 	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// EFB6083A-7699-489B-8278-C0CB4793A96E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReceiveDBInstanceResponseBody) String() string {

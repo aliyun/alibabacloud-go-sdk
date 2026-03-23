@@ -24,27 +24,12 @@ type iDescribeRCSecurityGroupPermissionResponseBody interface {
 }
 
 type DescribeRCSecurityGroupPermissionResponseBody struct {
-	// example:
-	//
-	// Accept
-	InnerAccessPolicy *string `json:"InnerAccessPolicy,omitempty" xml:"InnerAccessPolicy,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// 847BA085-B377-4BFA-8267-F82345ECE1D2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// sg-2ze27hs990o2hn94****
+	InnerAccessPolicy        *string                                                                  `json:"InnerAccessPolicy,omitempty" xml:"InnerAccessPolicy,omitempty"`
+	RegionId                 *string                                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId                *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroupId          *string                                                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SecurityGroupPermissions []*DescribeRCSecurityGroupPermissionResponseBodySecurityGroupPermissions `json:"SecurityGroupPermissions,omitempty" xml:"SecurityGroupPermissions,omitempty" type:"Repeated"`
-	// example:
-	//
-	// vpc-bp1opxu1zkhn****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId                    *string                                                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCSecurityGroupPermissionResponseBody) String() string {
@@ -123,46 +108,16 @@ func (s *DescribeRCSecurityGroupPermissionResponseBody) Validate() error {
 }
 
 type DescribeRCSecurityGroupPermissionResponseBodySecurityGroupPermissions struct {
-	// example:
-	//
-	// 2025-05-31T03:12:29Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// 192.168.0.0/0
-	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// example:
-	//
-	// ingress
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// example:
-	//
-	// TCP
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// example:
-	//
-	// Accept
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// 80/80
-	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// example:
-	//
-	// 1
-	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// example:
-	//
-	// sgr-uf6ffg4du0e9jis2****
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DestCidrIp          *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	Direction           *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	IpProtocol          *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority            *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	SecurityGroupRuleId *string `json:"SecurityGroupRuleId,omitempty" xml:"SecurityGroupRuleId,omitempty"`
-	// example:
-	//
-	// 192.168.0.0/0
-	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// example:
-	//
-	// 80/80
-	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	SourceCidrIp        *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange     *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 
 func (s DescribeRCSecurityGroupPermissionResponseBodySecurityGroupPermissions) String() string {

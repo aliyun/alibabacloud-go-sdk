@@ -32,6 +32,11 @@ type iSwitchOverMajorVersionUpgradeRequest interface {
 }
 
 type SwitchOverMajorVersionUpgradeRequest struct {
+	// Used to ensure the idempotence of the request and prevent duplicate submissions. The client generates this parameter value, which must be unique across different requests. It can contain a maximum of 64 ASCII characters and must not include non-ASCII characters.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance name.
 	//
@@ -46,7 +51,12 @@ type SwitchOverMajorVersionUpgradeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             []byte  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId []byte `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

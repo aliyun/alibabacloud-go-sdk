@@ -30,55 +30,15 @@ type iDescribeSlowLogsResponseBody interface {
 }
 
 type DescribeSlowLogsResponseBody struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end date of the query.
-	//
-	// example:
-	//
-	// 2011-05-30Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	Items  *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The number of the page returned.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of SQL statements that are returned on the current page.
-	//
-	// example:
-	//
-	// 10
-	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start date of the query.
-	//
-	// example:
-	//
-	// 2011-05-30Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries that are returned.
-	//
-	// example:
-	//
-	// 5
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	DBInstanceId     *string                            `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime          *string                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Engine           *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Items            *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                             `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime        *string                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalRecordCount *int32                             `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeSlowLogsResponseBody) String() string {

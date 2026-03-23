@@ -16,14 +16,8 @@ type iDeleteDBInstanceEndpointAddressResponseBody interface {
 }
 
 type DeleteDBInstanceEndpointAddressResponseBody struct {
-	// The returned data.
-	Data *DeleteDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// F2911788-25E8-42E5-A3A3-1B38D263F01E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DeleteDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDBInstanceEndpointAddressResponseBody) String() string {
@@ -62,18 +56,8 @@ func (s *DeleteDBInstanceEndpointAddressResponseBody) Validate() error {
 }
 
 type DeleteDBInstanceEndpointAddressResponseBodyData struct {
-	// The endpoint ID of the instance.
-	//
-	// example:
-	//
-	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-****
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s DeleteDBInstanceEndpointAddressResponseBodyData) String() string {

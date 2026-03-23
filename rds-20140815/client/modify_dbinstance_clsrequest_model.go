@@ -36,30 +36,78 @@ type iModifyDBInstanceCLSRequest interface {
 }
 
 type ModifyDBInstanceCLSRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Encryption algorithm to use. Valid values:
+	//
+	// - AES_128_CBC
+	//
+	// - AES_128_GCM
+	//
+	// - AES_128_CTR
+	//
+	// - AES_128_ECB
+	//
+	// - AES_256_CBC
+	//
+	// - AES_256_GCM
+	//
+	// - AES_256_CTR
+	//
+	// - AES_256_ECB
+	//
+	// - SM4_128_CBC
+	//
+	// - SM4_128_GCM
+	//
+	// - SM4_128_CTR
+	//
+	// - SM4_128_ECB
+	//
 	// example:
 	//
 	// AES_256_GCM
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
+	// Encryption key ID. This parameter is required when using a KMS key.
+	//
 	// example:
 	//
-	// acs:kms:cn-hangzhou:123456789:key/xxxxx
+	// 749c1df7-****-****-****-****
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// Column encryption key mode. Valid values:
+	//
+	// - client_key (configure a randomly generated user key on the client side)
+	//
+	// - kms_key (use a custom key configured via Alibaba Cloud KMS)
+	//
+	// Note:
+	//
+	// Once an instance is configured to use a KMS key, it can no longer use the client-side random key configuration method.
+	//
 	// example:
 	//
-	// KMS
+	// kms_key
 	EncryptionKeyMode *string `json:"EncryptionKeyMode,omitempty" xml:"EncryptionKeyMode,omitempty"`
+	// Column encryption status. Valid values:
+	//
+	// - 1 (Enabled)
+	//
+	// - 0 (Disabled)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Enabled
+	// 1
 	EncryptionStatus *string `json:"EncryptionStatus,omitempty" xml:"EncryptionStatus,omitempty"`
+	// Whether to rotate the key
+	//
 	// example:
 	//
 	// true
@@ -68,10 +116,18 @@ type ModifyDBInstanceCLSRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Global Resource Descriptor (GRD) of the role used to specify the exact role. For more information, see RAM Role Overview.
+	//
+	// Note:
+	//
+	// This parameter takes effect only when the column encryption key mode is set to kms_key. If not provided, the system uses an internal default value.
+	//
 	// example:
 	//
-	// acs:123456789:role/aliyunrdsinstanceencryptiondefaultrole
+	// acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// Whether to enable whitelist mode. true indicates that only columns in the whitelist are encrypted; false indicates that all columns are encrypted.
+	//
 	// example:
 	//
 	// true

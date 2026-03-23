@@ -24,29 +24,10 @@ type iDeleteDBInstanceRequest interface {
 }
 
 type DeleteDBInstanceRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The policy that is used to retain archived backup files if the instance is released. Default value: None. Valid values:
-	//
-	// 	- **None**: No archived backup files are retained.
-	//
-	// 	- **Lastest**: Only the last archived backup file is retained.
-	//
-	// 	- **All**: All archived backup files are retained.
-	//
-	// > This parameter is supported only for ApsaraDB RDS for MySQL instance with local disks.
-	//
-	// example:
-	//
-	// Lastest
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ReleasedKeepPolicy   *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

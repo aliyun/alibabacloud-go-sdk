@@ -18,24 +18,9 @@ type iAllocateInstancePublicConnectionResponseBody interface {
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
-	// The endpoint that is used to connect to the database instance.
-	//
-	// example:
-	//
-	// test*****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-bp1*****
-	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 65BDA532-28AF-4122-AA39-B382721EEE64
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DbInstanceName   *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AllocateInstancePublicConnectionResponseBody) String() string {

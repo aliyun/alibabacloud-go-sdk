@@ -17,12 +17,7 @@ type iDescribeDatabasesResponseBody interface {
 
 type DescribeDatabasesResponseBody struct {
 	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 2603CA96-B17D-4903-BC04-61A2C829CD94
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDatabasesResponseBody) String() string {

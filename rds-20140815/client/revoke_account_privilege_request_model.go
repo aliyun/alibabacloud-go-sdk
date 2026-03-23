@@ -26,29 +26,11 @@ type iRevokeAccountPrivilegeRequest interface {
 }
 
 type RevokeAccountPrivilegeRequest struct {
-	// The name of the account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database. You can revoke all permissions of the account on this database. Separate multiple databases with commas (,).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// testDB
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -18,28 +18,9 @@ type iCheckCloudResourceAuthorizedResponseBody interface {
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
-	// The authorization status. Valid values:
-	//
-	// 	- **1**: authorized
-	//
-	// 	- **0**: not authorized
-	//
-	// example:
-	//
-	// 1
-	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
-	//
-	// example:
-	//
-	// acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	AuthorizationState *int32  `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RoleArn            *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedResponseBody) String() string {

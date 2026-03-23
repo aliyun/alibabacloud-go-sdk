@@ -58,8 +58,9 @@ type DescribeRCSnapshotsRequest struct {
 	// example:
 	//
 	// ["rcds-bp67acfmxazb4p****", "rcds-bp67acfmxazb5p****", … "rcds-bp67acfmxazb6p****"]
-	SnapshotIds *string                          `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
-	Tag         []*DescribeRCSnapshotsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SnapshotIds *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	// Tag Details.
+	Tag []*DescribeRCSnapshotsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRCSnapshotsRequest) String() string {
@@ -147,7 +148,17 @@ func (s *DescribeRCSnapshotsRequest) Validate() error {
 }
 
 type DescribeRCSnapshotsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// testRC
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test01
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

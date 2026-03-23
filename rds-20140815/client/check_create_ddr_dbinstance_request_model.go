@@ -40,113 +40,26 @@ type iCheckCreateDdrDBInstanceRequest interface {
 }
 
 type CheckCreateDdrDBInstanceRequest struct {
-	// The ID of the backup set that is used for the restoration. You can call the DescribeCrossRegionBackups operation to query the backup set ID.
-	//
-	// >  This parameter must be specified when the **RestoreType*	- parameter is set to **0**.
-	//
-	// example:
-	//
-	// 14358
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rds.mysql.s1.small
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 20
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The database engine of the destination instance. Valid values:
-	//
-	// 	- **MySQL**
-	//
-	// 	- **SQLServer**
-	//
-	// 	- **PostgreSQL**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
-	//
-	// 	- Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**
-	//
-	// 	- Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**
-	//
-	// 	- PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5.6
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy****
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// > If you set **RestoreType*	- to **1**, you must also specify this parameter.
-	//
-	// example:
-	//
-	// 2019-05-30T03:29:10Z
-	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The method that is used to restore data. Valid values:
-	//
-	// 	- **0**: restores data from a backup set. If you set this parameter to 0, you must also specify the **BackupSetId*	- parameter.
-	//
-	// 	- **1**: restores data to a point in time. If you set this parameter to 1, you must also specify the **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName*	- parameters.
-	//
-	// Default value: **0**.
-	//
+	RestoreTime          *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
-	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The ID of the source instance if you want to restore data to a point in time.
-	//
-	// >  This parameter must be specified when the **RestoreType*	- parameter is set to **1**.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
+	RestoreType          *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	SourceDBInstanceName *string `json:"SourceDBInstanceName,omitempty" xml:"SourceDBInstanceName,omitempty"`
-	// The region ID of the source instance if you want to restore data to a point in time.
-	//
-	// > If you set **RestoreType*	- to **1**, you must also specify this parameter.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	SourceRegion         *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
 }
 
 func (s CheckCreateDdrDBInstanceRequest) String() string {

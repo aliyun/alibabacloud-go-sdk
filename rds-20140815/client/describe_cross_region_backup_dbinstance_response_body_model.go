@@ -26,45 +26,13 @@ type iDescribeCrossRegionBackupDBInstanceResponseBody interface {
 }
 
 type DescribeCrossRegionBackupDBInstanceResponseBody struct {
-	Items *DescribeCrossRegionBackupDBInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The total number of items returned for cross-region backup settings.
-	//
-	// example:
-	//
-	// 1
-	ItemsNumbers *int32 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	// The page number. Pages start from page 1.
-	//
-	// Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30.
-	//
-	// example:
-	//
-	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 33517002-182D-40BE-93EC-610BD3381045
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 100
-	TotalRecords *int32 `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+	Items        *DescribeCrossRegionBackupDBInstanceResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	ItemsNumbers *int32                                                `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
+	PageNumber   *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId    *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecords *int32                                                `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
 }
 
 func (s DescribeCrossRegionBackupDBInstanceResponseBody) String() string {

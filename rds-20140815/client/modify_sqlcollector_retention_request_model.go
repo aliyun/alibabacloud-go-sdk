@@ -28,39 +28,12 @@ type iModifySQLCollectorRetentionRequest interface {
 }
 
 type ModifySQLCollectorRetentionRequest struct {
-	// The log retention period that is allowed by the SQL Explorer feature on the instance. Valid values:
-	//
-	// 	- 30: 30 days
-	//
-	// 	- 180: 180 days
-	//
-	// 	- 365: one year
-	//
-	// 	- 1095: three years
-	//
-	// 	- 1825: five years
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 365
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmyxxxx
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

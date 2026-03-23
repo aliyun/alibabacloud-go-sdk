@@ -19,16 +19,8 @@ type iModifyRCVClusterRequest interface {
 
 type ModifyRCVClusterRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cd21387ea640145bab79a78276c1a****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId                    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportDiskPerformanceLevel []*string `json:"SupportDiskPerformanceLevel,omitempty" xml:"SupportDiskPerformanceLevel,omitempty" type:"Repeated"`
 }

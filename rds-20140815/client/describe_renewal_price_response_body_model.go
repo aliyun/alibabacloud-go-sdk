@@ -18,15 +18,9 @@ type iDescribeRenewalPriceResponseBody interface {
 }
 
 type DescribeRenewalPriceResponseBody struct {
-	// Details of price information.
 	PriceInfo *DescribeRenewalPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// DC9F4EF6-D038-4405-B497-1F48E722C9F2
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     *DescribeRenewalPriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     *DescribeRenewalPriceResponseBodyRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeRenewalPriceResponseBody) String() string {
@@ -79,34 +73,13 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
-	// The information about the promotion.
-	ActivityInfo *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
-	Coupons      *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	// The currency unit.
-	//
-	// example:
-	//
-	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount.
-	//
-	// example:
-	//
-	// 27
-	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The original price.
-	//
-	// example:
-	//
-	// 138
-	OriginalPrice *float32                                          `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// The transaction price, which is equal to the original price minus the discount.
-	//
-	// example:
-	//
-	// 111
-	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	ActivityInfo  *DescribeRenewalPriceResponseBodyPriceInfoActivityInfo `json:"ActivityInfo,omitempty" xml:"ActivityInfo,omitempty" type:"Struct"`
+	Coupons       *DescribeRenewalPriceResponseBodyPriceInfoCoupons      `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	Currency      *string                                                `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DiscountPrice *float32                                               `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	OriginalPrice *float32                                               `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	RuleIds       *DescribeRenewalPriceResponseBodyPriceInfoRuleIds      `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
+	TradePrice    *float32                                               `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s DescribeRenewalPriceResponseBodyPriceInfo) String() string {
@@ -200,24 +173,9 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoActivityInfo struct {
-	// The returned message.
-	//
-	// example:
-	//
-	// Error description
 	CheckErrMsg *string `json:"CheckErrMsg,omitempty" xml:"CheckErrMsg,omitempty"`
-	// The error code that is returned.
-	//
-	// example:
-	//
-	// 123456
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful.
-	//
-	// example:
-	//
-	// Success
-	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	ErrorCode   *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Success     *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRenewalPriceResponseBodyPriceInfoActivityInfo) String() string {

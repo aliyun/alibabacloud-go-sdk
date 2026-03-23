@@ -30,77 +30,16 @@ type iDescribeDBMiniEngineVersionsRequest interface {
 }
 
 type DescribeDBMiniEngineVersionsRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*******
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
-	//
-	// example:
-	//
-	// dhg-4n*****
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The database engine of the instance. Valid values: **MySQL*	- and **PostgreSQL**.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values:
-	//
-	// 	- Valid values when you set the Engine parameter to MySQL: **8.0**, **5.7**, **5.6**, and **5.5**
-	//
-	// 	- Valid values when you set the Engine parameter to PostgreSQL: **15.0**, **14.0**, **13.0**, **12.0**, **11.0**, and **10.0**
-	//
-	// example:
-	//
-	// 5.7
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The minor engine version of the instance. You can specify this parameter to query the minor engine version of the instance.
-	//
-	// example:
-	//
-	// rds_20220731
-	MinorVersionTag *string `json:"MinorVersionTag,omitempty" xml:"MinorVersionTag,omitempty"`
-	// The instance edition. Valid values:
-	//
-	// 	- **Basic**: RDS Basic Edition
-	//
-	// 	- **HighAvailability**: RDS High-availability Edition
-	//
-	// 	- **Finance**: RDS Enterprise Edition
-	//
-	// example:
-	//
-	// HighAvailability
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	MinorVersionTag      *string `json:"MinorVersionTag,omitempty" xml:"MinorVersionTag,omitempty"`
+	NodeType             *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The storage type of the instance. Valid values:
-	//
-	// 	- **local_ssd**: local SSD
-	//
-	// 	- **cloud_ssd**: standard SSD
-	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1)
-	//
-	// 	- **cloud_essd2**: ESSD of PL2
-	//
-	// 	- **cloud_essd3**: ESSD of PL3
-	//
-	// example:
-	//
-	// local_ssd
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageType     *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeDBMiniEngineVersionsRequest) String() string {

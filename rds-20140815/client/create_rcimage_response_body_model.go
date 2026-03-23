@@ -14,11 +14,6 @@ type iCreateRCImageResponseBody interface {
 }
 
 type CreateRCImageResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// F8D78AED-5050-113C-A46E-7B346*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

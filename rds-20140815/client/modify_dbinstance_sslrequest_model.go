@@ -52,150 +52,28 @@ type iModifyDBInstanceSSLRequest interface {
 }
 
 type ModifyDBInstanceSSLRequest struct {
-	// The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
-	//
-	// 	- **cert**
-	//
-	// 	- **prefer**
-	//
-	// 	- **verify-ca**
-	//
-	// 	- **verify-full*	- (supported only when the instance runs PostgreSQL 12 or later)
-	//
-	// example:
-	//
-	// cert
-	ACL *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
-	// The type of the server certificate. This parameter is supported only when the instance runs MySQL or PostgreSQL with cloud disks. If you set SSLEnabled to **1**, the default value of this parameter is **aliyun**. Valid values:
-	//
-	// 	- **aliyun**: a cloud certificate
-	//
-	// 	- **custom**: a custom certificate
-	//
-	// example:
-	//
-	// aliyun
-	CAType *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
-	// The custom certificate. The custom certificate is in the `PFX` format.
-	//
-	// 	- Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
-	//
-	// 	- Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file (The file name contains the extension.)>`
-	//
-	// example:
-	//
-	// oss-cn-beijing-internal.aliyuncs.com:zhttest:test.pfx
-	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCAEbabled is set to **1**.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----MIID*****viXk=-----END CERTIFICATE-----
-	ClientCACert *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
-	// Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
-	//
-	// 	- **1**: enables the public key.
-	//
-	// 	- **0**: disables the public key.
-	//
-	// example:
-	//
-	// 1
-	ClientCAEnabled *int32 `json:"ClientCAEnabled,omitempty" xml:"ClientCAEnabled,omitempty"`
-	// The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when ClientCrlEnabled is set to **1**.
-	//
-	// example:
-	//
-	// -----BEGIN X509 CRL-----MIIB****19mg==-----END X509 CRL-----
+	ACL                      *string `json:"ACL,omitempty" xml:"ACL,omitempty"`
+	CAType                   *string `json:"CAType,omitempty" xml:"CAType,omitempty"`
+	Certificate              *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	ClientCACert             *string `json:"ClientCACert,omitempty" xml:"ClientCACert,omitempty"`
+	ClientCAEnabled          *int32  `json:"ClientCAEnabled,omitempty" xml:"ClientCAEnabled,omitempty"`
 	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
-	// Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
-	//
-	// 	- **1**: enables the CRL.
-	//
-	// 	- **0**: disables the CRL.
-	//
-	// example:
-	//
-	// 1
-	ClientCrlEnabled *int32 `json:"ClientCrlEnabled,omitempty" xml:"ClientCrlEnabled,omitempty"`
-	// The internal or public endpoint for which the server certificate needs to be created or updated.
-	//
+	ClientCrlEnabled         *int32  `json:"ClientCrlEnabled,omitempty" xml:"ClientCrlEnabled,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxx.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html). Valid values:
-	//
-	// 	- **1**: enables the feature.
-	//
-	// 	- **0**: disables the feature.
-	//
-	// example:
-	//
-	// 1
-	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
-	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password of the certificate.
-	//
-	// example:
-	//
-	// zht123456
-	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
-	//
-	// 	- **cert**
-	//
-	// 	- **prefer**
-	//
-	// 	- **verify-ca**
-	//
-	// 	- **verify-full*	- (supported only when the instance runs PostgreSQL 12 or later)
-	//
-	// example:
-	//
-	// cert
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ForceEncryption      *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PassWord             *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
 	ReplicationACL       *string `json:"ReplicationACL,omitempty" xml:"ReplicationACL,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to enable or disable the SSL encryption feature. Valid values:
-	//
-	// 	- **1**: enables the feature.
-	//
-	// 	- **0**: disables the feature.
-	//
-	// example:
-	//
-	// 1
-	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----MIID*****QqEP-----END CERTIFICATE-----
-	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
-	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
-	//
-	// example:
-	//
-	// -----BEGIN PRIVATE KEY-----MIIE****ihfg==-----END PRIVATE KEY-----
-	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
-	// The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html).
-	//
-	// example:
-	//
-	// 1.1
-	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
+	SSLEnabled           *int32  `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	ServerCert           *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
+	ServerKey            *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	TlsVersion           *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
 func (s ModifyDBInstanceSSLRequest) String() string {

@@ -35,9 +35,20 @@ type UpgradeDBInstanceMajorVersionPrecheckRequest struct {
 	//
 	// example:
 	//
-	// 12.0
+	// 17.0
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	UpgradeMode        *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	// Upgrade mode. Valid values:
+	//
+	// - **zeroDownTimeUpgrade**: Zero downtime.
+	//
+	// - **inPlaceUpgrade**: In-place upgrade.
+	//
+	// - **greenBlueDeployment**: Blue-green deployment.
+	//
+	// example:
+	//
+	// zeroDownTimeUpgrade
+	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
 }
 
 func (s UpgradeDBInstanceMajorVersionPrecheckRequest) String() string {

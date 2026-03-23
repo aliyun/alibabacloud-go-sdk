@@ -18,19 +18,9 @@ type iModifySecurityGroupConfigurationResponseBody interface {
 }
 
 type ModifySecurityGroupConfigurationResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxx
 	DBInstanceName *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	Items          *ModifySecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 8585861B-8F0D-4D17-9460-C42255EB10C0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifySecurityGroupConfigurationResponseBody) String() string {

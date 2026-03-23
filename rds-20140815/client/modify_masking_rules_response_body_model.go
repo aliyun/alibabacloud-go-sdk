@@ -20,15 +20,22 @@ type iModifyMaskingRulesResponseBody interface {
 }
 
 type ModifyMaskingRulesResponseBody struct {
+	// Returned data
 	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Return message
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8B1434A1-08A7-3E8C-A237-076A********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded
+	//
 	// example:
 	//
 	// true

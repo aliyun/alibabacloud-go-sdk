@@ -34,50 +34,17 @@ type iModifyRCSecurityGroupPermissionRequest interface {
 }
 
 type ModifyRCSecurityGroupPermissionRequest struct {
-	// example:
-	//
-	// 172.16.0.0/24
-	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// example:
-	//
-	// ingress
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// example:
-	//
-	// TCP
-	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// example:
-	//
-	// Accept
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// 80/80
-	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// example:
-	//
-	// 1
-	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// sg-2ze27hs990o2hn9****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// example:
-	//
-	// sgr-uf6ffg4du0e9jis2****
+	DestCidrIp          *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	Direction           *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	IpProtocol          *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority            *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId     *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SecurityGroupRuleId *string `json:"SecurityGroupRuleId,omitempty" xml:"SecurityGroupRuleId,omitempty"`
-	// example:
-	//
-	// 192.168.0.0/0
-	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// example:
-	//
-	// 80/80
-	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	SourceCidrIp        *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange     *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 
 func (s ModifyRCSecurityGroupPermissionRequest) String() string {

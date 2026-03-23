@@ -16,18 +16,8 @@ type iDeleteRCClusterNodesResponseBody interface {
 }
 
 type DeleteRCClusterNodesResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 7E0970A1-0434-5C83-B560-613EBA11B525
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 238028563
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteRCClusterNodesResponseBody) String() string {

@@ -24,23 +24,9 @@ type iDeleteBackupRequest interface {
 }
 
 type DeleteBackupRequest struct {
-	// The backup set ID. You can call the DescribeBackups operation to query the backup set ID. Separate multiple values with commas (,). You can specify a maximum of 100 values in a single request.
-	//
-	// >  You can delete only backup sets whose **StoreStatus*	- is **Enabled*	- in the response to the DescribeBackups operation call.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 324******
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -14,11 +14,6 @@ type iModifyAccountCheckPolicyResponseBody interface {
 }
 
 type ModifyAccountCheckPolicyResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 866F5EB8-4650-4061-87F0-379F6F968BCE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

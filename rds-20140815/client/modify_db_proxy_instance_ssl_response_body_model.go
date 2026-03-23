@@ -14,11 +14,6 @@ type iModifyDbProxyInstanceSslResponseBody interface {
 }
 
 type ModifyDbProxyInstanceSslResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// BF46A62B-3717-4397-9338-36BB95C898B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

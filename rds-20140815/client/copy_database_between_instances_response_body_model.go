@@ -14,11 +14,6 @@ type iCopyDatabaseBetweenInstancesResponseBody interface {
 }
 
 type CopyDatabaseBetweenInstancesResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 803D11AF-C370-465B-AB46-CB3A642DC303
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

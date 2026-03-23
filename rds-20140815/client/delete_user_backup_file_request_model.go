@@ -24,28 +24,11 @@ type iDeleteUserBackupFileRequest interface {
 }
 
 type DeleteUserBackupFileRequest struct {
-	// The ID of the full backup file. You can call the ListUserBackupFiles operation to query the information about all full backup files in a region.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// b-w1haya7e4i25********
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

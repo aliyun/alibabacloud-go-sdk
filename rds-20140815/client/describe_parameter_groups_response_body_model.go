@@ -18,25 +18,9 @@ type iDescribeParameterGroupsResponseBody interface {
 }
 
 type DescribeParameterGroupsResponseBody struct {
-	ParameterGroups *DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// D4A23265-C5B6-42E1-98A0-EFA1EB42E723
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether parameter templates exist in the specified region. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// 	Notice: This parameter is deprecated.
-	//
-	// example:
-	//
-	// false
-	SignalForOptimizeParams *bool `json:"SignalForOptimizeParams,omitempty" xml:"SignalForOptimizeParams,omitempty"`
+	ParameterGroups         *DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Struct"`
+	RequestId               *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignalForOptimizeParams *bool                                               `json:"SignalForOptimizeParams,omitempty" xml:"SignalForOptimizeParams,omitempty"`
 }
 
 func (s DescribeParameterGroupsResponseBody) String() string {

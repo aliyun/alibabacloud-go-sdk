@@ -22,32 +22,11 @@ type iDescribeCloudMigrationPrecheckResultResponseBody interface {
 }
 
 type DescribeCloudMigrationPrecheckResultResponseBody struct {
-	// The details about the assessment report.
-	Items []*DescribeCloudMigrationPrecheckResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 7E4A6E1B-789B-5F16-9736-39AA57FC7374
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 1
-	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	Items      []*DescribeCloudMigrationPrecheckResultResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int64                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalSize  *int32                                                   `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s DescribeCloudMigrationPrecheckResultResponseBody) String() string {
@@ -117,82 +96,18 @@ func (s *DescribeCloudMigrationPrecheckResultResponseBody) Validate() error {
 }
 
 type DescribeCloudMigrationPrecheckResultResponseBodyItems struct {
-	// The content of the assessment report.
-	//
-	// example:
-	//
-	// [Check rds empty]\\nCheck rds databases: success\\n[Check source connectivity]\\nCheck ip connectable: success\\nCheck port connectable: success\\nCheck database connectable: success\\nCheck account replication privilege: success\\nCheck account createrole privilege: success\\nCheck account monitor privilege: success\\n[Check source version]\\nCheck major version consistent: success\\n[Check source glibc version]\\nCheck source glibc version compatible: warning(warning:source glibc version is not compatible with rds pg)\\n[Check disk size]\\nCheck disk size enough: success\\n[Check wal keep size]\\nCheck wal keep size large enough: success\\n[Check spec params]\\nCheck if spec params too large: success\\n [Check triggers]\\nCheck triggers compatible: success\\n[Check user functions]\\nCheck user functions compatible: success\\n*Migrate check success*
-	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The time when the task was created.
-	//
-	// example:
-	//
-	// 2022-02-25T06:57:41Z
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the task was modified.
-	//
-	// example:
-	//
-	// 2022-02-25T06:58:00Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The username.
-	//
-	// example:
-	//
-	// migratetest
-	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The environment in which the self-managed PostgreSQL instance runs.
-	//
-	// 	- **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
-	//
-	// 	- **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
-	//
-	// example:
-	//
-	// ecsonvpc
-	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The private IP address that is used to connect to the self-managed PostgreSQL instance.
-	//
-	// example:
-	//
-	// 172.2.XX.XX
-	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
-	// The password.
-	//
-	// example:
-	//
-	// 123456
-	SourcePassword *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
-	// The port number that is used to connect to the self-managed PostgreSQL instance.
-	//
-	// example:
-	//
-	// 5432
-	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// A reserved parameter. The return value of this parameter is empty.
-	//
-	// example:
-	//
-	// null
-	TargetEip *string `json:"TargetEip,omitempty" xml:"TargetEip,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// pgm-bp102g323jd4****
+	Detail             *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	GmtCreated         *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	SourceAccount      *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
+	SourceCategory     *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	SourceIpAddress    *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
+	SourcePassword     *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
+	SourcePort         *int64  `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	TargetEip          *string `json:"TargetEip,omitempty" xml:"TargetEip,omitempty"`
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 440420798
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
-	//
-	// example:
-	//
-	// lxbv6rtxno8
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskId             *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeCloudMigrationPrecheckResultResponseBodyItems) String() string {

@@ -38,81 +38,22 @@ type iDescibeImportsFromDatabaseRequest interface {
 }
 
 type DescibeImportsFromDatabaseRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// example:
-	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the IDs of instances.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-bpxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2011-06-11T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The database engine of the instance. Set the value to **MySQL**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// MySQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the migration task.
-	//
-	// example:
-	//
-	// 123
-	ImportId     *int32  `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer.
-	//
-	// Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
-	//
-	// 	- **30**
-	//
-	// 	- **50**
-	//
-	// 	- **100**
-	//
-	// Default value: **30**.
-	//
-	// example:
-	//
-	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ImportId             *int32  `json:"ImportId,omitempty" xml:"ImportId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2011-06-11T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

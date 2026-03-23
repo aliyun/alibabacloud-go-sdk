@@ -32,90 +32,20 @@ type iCreateDBProxyEndpointAddressRequest interface {
 }
 
 type CreateDBProxyEndpointAddressRequest struct {
-	// The prefix of the proxy endpoint Enter a custom prefix.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test1234
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-t4n3axxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the proxy endpoint. Valid values:
-	//
-	// 	- **Public**: Internet
-	//
-	// 	- **VPC**: Virtual Private Cloud (VPC)
-	//
-	// 	- **Classic**: classic network
-	//
-	// Default value: **Classic**
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Public
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The proxy endpoint ID. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ta9um4xxxxx
-	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// normal
-	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The port number that is associated with the proxy endpoint.
-	//
-	// 	- If the instance runs MySQL, the default value is **3306**.
-	//
-	// 	- If the instance runs PostgreSQL, the default value is **5432**.
-	//
-	// example:
-	//
-	// 3306
+	DBProxyEndpointId           *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
+	DBProxyEngineType           *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
 	DBProxyNewConnectStringPort *string `json:"DBProxyNewConnectStringPort,omitempty" xml:"DBProxyNewConnectStringPort,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the VPC to which the proxy endpoint belongs. You can call the DescribeDBInstanceAttribute operation to query the information.
-	//
-	// >  This parameter must be specified when **DBProxyConnectStringNetType*	- is set to **VPC**.
-	//
-	// example:
-	//
-	// vpc-bpxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch that is associated with the specified VPC. You can call the DescribeDBInstanceAttribute operation to query the vSwitch ID.
-	//
-	// >  This parameter must be specified when **DBProxyConnectStringNetType*	- is set to **VPC**.
-	//
-	// example:
-	//
-	// vsw-bpxxxxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId             *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VPCId                       *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId                   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateDBProxyEndpointAddressRequest) String() string {

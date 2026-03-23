@@ -16,18 +16,8 @@ type iRestoreDdrTableResponseBody interface {
 }
 
 type RestoreDdrTableResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 75BBF1EF-1E90-4950-BFFB-252D26E8259B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RestoreDdrTableResponseBody) String() string {

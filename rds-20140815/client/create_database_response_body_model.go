@@ -14,11 +14,6 @@ type iCreateDatabaseResponseBody interface {
 }
 
 type CreateDatabaseResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 5A77D650-27A1-4E08-AD9E-59008EDB6927
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

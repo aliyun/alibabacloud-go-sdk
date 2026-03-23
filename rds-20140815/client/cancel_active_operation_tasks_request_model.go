@@ -24,13 +24,7 @@ type iCancelActiveOperationTasksRequest interface {
 }
 
 type CancelActiveOperationTasksRequest struct {
-	// The IDs of tasks that you want to cancel at a time. Separate multiple IDs with commas (,). We recommend that you configure up to 25 IDs at a time.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 188****,188****,188****
 	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -18,21 +18,9 @@ type iDeleteDatabaseRequest interface {
 }
 
 type DeleteDatabaseRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// testdb01
 	DBName          *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

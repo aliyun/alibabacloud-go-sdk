@@ -22,13 +22,7 @@ type iDescribeDBInstanceSecurityGroupRuleRequest interface {
 }
 
 type DescribeDBInstanceSecurityGroupRuleRequest struct {
-	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-2ze202******
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

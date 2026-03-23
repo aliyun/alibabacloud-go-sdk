@@ -28,46 +28,16 @@ type iDescribeHostWebShellRequest interface {
 }
 
 type DescribeHostWebShellRequest struct {
-	// The username of the account that is used to log on to the host of the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// testOsAccount1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the host account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ***
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance hostname. You can call the DescribeDBInstanceIpHostname operation to query the hostname.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// testHost1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionID             *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

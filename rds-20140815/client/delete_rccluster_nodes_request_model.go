@@ -20,24 +20,10 @@ type iDeleteRCClusterNodesRequest interface {
 }
 
 type DeleteRCClusterNodesRequest struct {
-	// The instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The node information.
-	Nodes []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// >  This is a reserved parameter.
-	//
-	// example:
-	//
-	// None
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Nodes       []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId       *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DeleteRCClusterNodesRequest) String() string {

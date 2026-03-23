@@ -22,36 +22,11 @@ type iDescribeDBInstanceDetailResponseBody interface {
 }
 
 type DescribeDBInstanceDetailResponseBody struct {
-	// Indicates whether the instance is in the active state.
-	//
-	// example:
-	//
-	// Invalid
 	ActivationState *string `json:"ActivationState,omitempty" xml:"ActivationState,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-bp6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The type of the license.
-	//
-	// example:
-	//
-	// Normal
-	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 06B220E2-EAC5-4DBE-A1FC-1B62DB6A****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	LicenseType     *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceDetailResponseBody) String() string {

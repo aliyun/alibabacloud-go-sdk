@@ -22,31 +22,11 @@ type iDescribeDBInstanceByTagsResponseBody interface {
 }
 
 type DescribeDBInstanceByTagsResponseBody struct {
-	Items *DescribeDBInstanceByTagsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 30
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items            *DescribeDBInstanceByTagsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                     `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount *int32                                     `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDBInstanceByTagsResponseBody) String() string {

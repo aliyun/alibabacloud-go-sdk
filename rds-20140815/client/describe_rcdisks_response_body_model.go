@@ -117,6 +117,8 @@ func (s *DescribeRCDisksResponseBody) Validate() error {
 }
 
 type DescribeRCDisksResponseBodyDisks struct {
+	// The mount time.
+	//
 	// example:
 	//
 	// 2017-12-05T2340:00Z
@@ -134,7 +136,7 @@ type DescribeRCDisksResponseBodyDisks struct {
 	//
 	// example:
 	//
-	// cloud_ssd
+	// cloud_auto
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The creation time.
 	//

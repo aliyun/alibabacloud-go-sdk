@@ -114,6 +114,15 @@ type iDescribeRCInstanceAttributeResponseBody interface {
 }
 
 type DescribeRCInstanceAttributeResponseBody struct {
+	// Indicates whether auto-renewal is enabled for the instance. Valid values:
+	//
+	// 	- **true**: Yes
+	//
+	// 	- **false**: No
+	//
+	// example:
+	//
+	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the cluster to which the instance belongs.
 	//
@@ -128,7 +137,16 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// 4
-	Cpu        *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// Indicates whether the instance is added to an ACK cluster. Valid values:
+	//
+	// - **1**: Yes
+	//
+	// - **0**: No
+	//
+	// example:
+	//
+	// 0
 	CreateMode *int32 `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
 	//
@@ -143,13 +161,31 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// None
 	CreditSpecification *string                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	DataDisks           *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	DbType              *string                                           `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The database type. Valid values:
+	//
+	// - **mssql**: SQL Server
+	//
+	// - **mysql**: MySQL
+	//
+	// example:
+	//
+	// mysql
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The attributes of the dedicated hosts.
 	//
 	// if can be null:
 	// true
 	DedicatedHostAttribute *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
-	DeletionProtection     *bool                                                          `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// Whether deletion protection is enabled. Valid values:
+	//
+	// 	- **true**: Enabled
+	//
+	// 	- **false**: Disabled
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The ID of the deployment set.
 	//
 	// example:
@@ -192,8 +228,18 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// 2024-08-10T00:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	Gpu         *int32  `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuTypes    *string `json:"GpuTypes,omitempty" xml:"GpuTypes,omitempty"`
+	// Number of GPUs.
+	//
+	// example:
+	//
+	// 2
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// The GPU type.
+	//
+	// example:
+	//
+	// NVIDIA V100
+	GpuTypes *string `json:"GpuTypes,omitempty" xml:"GpuTypes,omitempty"`
 	// The instance hostname.
 	//
 	// example:
@@ -215,9 +261,18 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// m-2oqiu973jwcxe****
-	ImageId            *string                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InnerIpAddress     *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
-	InstanceChargeType *string                                                `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	ImageId        *string                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InnerIpAddress *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	// Billing method. Valid values:
+	//
+	// 	- **PrePaid**: subscription
+	//
+	// 	- **PostPaid**: pay-as-you-go
+	//
+	// example:
+	//
+	// PostPaid
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -291,7 +346,12 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// 8192
-	Memory          *int32                                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The File Type. When the value is **rds_vnode**, it indicates that the node is a container node.
+	//
+	// example:
+	//
+	// rds_vnode
 	NodeType        *string                                                 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OperationLocks  *DescribeRCInstanceAttributeResponseBodyOperationLocks  `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
 	PublicIpAddress *DescribeRCInstanceAttributeResponseBodyPublicIpAddress `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
@@ -306,7 +366,12 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
-	RequestId        *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aeky6z354ks****
 	ResourceGroupId  *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *DescribeRCInstanceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
 	// The serial number of the instance.
@@ -315,6 +380,15 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// b076f6ff-46d1-4234-a608-4e951ed6****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The spot strategy for pay-as-you-go instances. Valid values:
+	//
+	// - **NoSpot**: Normal pay-as-you-go instance.
+	//
+	// - **SpotAsPriceGo**: The system automatically bids based on the current marketplace price.
+	//
+	// example:
+	//
+	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The instance status. Valid values:
 	//
@@ -343,10 +417,18 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// Not-applicable
-	StoppedMode *string                                            `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	SystemDisk  *DescribeRCInstanceAttributeResponseBodySystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	Tags        *DescribeRCInstanceAttributeResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	UserData    *string                                            `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
+	// System disk specifications.
+	SystemDisk *DescribeRCInstanceAttributeResponseBodySystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tags       *DescribeRCInstanceAttributeResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The custom data of the instance, formatted as a base64-encoded string.
+	//
+	// > If the instance does not have custom data, an empty string is returned.
+	//
+	// example:
+	//
+	// IyEvYmluL3NoCmVjaG8gXCJIZWxsbyBXb3JsZC4gVGhlIHRpbWUgaXMgbm93ICQoZGF0ZSAtUikhXCIgfCB0ZWUgL3Jvb3QvdXNlcmRhdGFfdGVzdDA2MjB0d28udHh0
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The virtual LAN (VLAN) ID of the instance.
 	//
 	// >  This parameter will be deprecated. We recommend that you use other parameters to ensure compatibility.
@@ -1275,11 +1357,56 @@ func (s *DescribeRCInstanceAttributeResponseBodySecurityGroupIds) Validate() err
 }
 
 type DescribeRCInstanceAttributeResponseBodySystemDisk struct {
-	DeleteWithInstance         *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Encrypted                  *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	SystemDiskCategory         *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// A backup parameter.
+	//
+	// example:
+	//
+	// None
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// Specifies whether to encrypt the disk. Valid values:
+	//
+	// - **true**: Yes
+	//
+	// - **false**: No
+	//
+	// example:
+	//
+	// false
+	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The system disk category. Valid values:
+	//
+	// - **cloud_efficiency**: ultra disk.
+	//
+	// - **cloud_ssd**: standard SSD.
+	//
+	// - **cloud_essd**: enterprise SSD (ESSD).
+	//
+	// - **cloud_auto**: premium performance disk.
+	//
+	// example:
+	//
+	// cloud_essd
+	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	// Performance level of the system disk when it is an enterprise SSD (ESSD). Valid values:
+	//
+	// - **PL0**
+	//
+	// - **PL1**
+	//
+	// - **PL2**
+	//
+	// - **PL3**
+	//
+	// example:
+	//
+	// PL1
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	SystemDiskSize             *int64  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// System disk size, in GiB.
+	//
+	// example:
+	//
+	// 40
+	SystemDiskSize *int64 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s DescribeRCInstanceAttributeResponseBodySystemDisk) String() string {

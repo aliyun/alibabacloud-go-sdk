@@ -20,30 +20,10 @@ type iUpgradeDBInstanceKernelVersionResponseBody interface {
 }
 
 type UpgradeDBInstanceKernelVersionResponseBody struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-bpxxxxx
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// DA2ECBA0-4745-4491-9166-799FF8984AC9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The new minor engine version of the instance.
-	//
-	// example:
-	//
-	// xcluster80_20210305
+	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// 226917****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionResponseBody) String() string {

@@ -30,42 +30,16 @@ type iDescribeModifyPGHbaConfigLogRequest interface {
 }
 
 type DescribeModifyPGHbaConfigLogRequest struct {
-	// A reserved parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// 1
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// pgm-bp1lymyn1v3i****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2021-11-25T06:00:40Z
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in Coordinated Universal Time (UTC).
-	//
-	// example:
-	//
-	// 2021-11-25T05:00:40Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeModifyPGHbaConfigLogRequest) String() string {

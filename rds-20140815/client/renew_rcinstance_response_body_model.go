@@ -26,7 +26,12 @@ type RenewRCInstanceResponseBody struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 23202700556****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The order ID.
 	//
 	// example:

@@ -28,46 +28,13 @@ type iRebuildDBInstanceRequest interface {
 }
 
 type RebuildDBInstanceRequest struct {
-	// The instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dhg-4nxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The ID of the host on which the system rebuilds the secondary instance.
-	//
-	// >  If you do not specify this parameter, the system preferentially rebuilds the secondary instance on the original host on which the secondary instance resides. If the remaining storage of the original host is insufficient, the system rebuilds the secondary instance on a host on which the primary instance does not reside. If no suitable hosts are found, the system reports an error that indicates insufficient storage.
-	//
-	// example:
-	//
-	// i-bpxxxxxxx
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The role of the secondary instance that you want to rebuild. Valid values:
-	//
-	// 	- **FOLLOWER**: secondary instance
-	//
-	// 	- **LOG**: logger instance
-	//
-	// example:
-	//
-	// FOLLOWER
-	RebuildNodeType *string `json:"RebuildNodeType,omitempty" xml:"RebuildNodeType,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RebuildNodeType      *string `json:"RebuildNodeType,omitempty" xml:"RebuildNodeType,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

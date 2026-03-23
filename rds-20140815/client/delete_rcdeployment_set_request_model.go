@@ -16,21 +16,9 @@ type iDeleteRCDeploymentSetRequest interface {
 }
 
 type DeleteRCDeploymentSetRequest struct {
-	// The deployment set ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The region ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

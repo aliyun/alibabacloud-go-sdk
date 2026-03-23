@@ -36,102 +36,18 @@ type iDescribeClassDetailsResponseBody interface {
 }
 
 type DescribeClassDetailsResponseBody struct {
-	// The RDS edition of the instance. Valid values:
-	//
-	// 	- **Basic**: RDS Basic Edition
-	//
-	// 	- **HighAvailability**: RDS High-availability Edition
-	//
-	// 	- **AlwaysOn**: RDS Cluster Edition
-	//
-	// 	- **Finance**: RDS Enterprise Edition
-	//
-	// example:
-	//
-	// Basic
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The code of the instance type.
-	//
-	// example:
-	//
-	// mysql.n2.medium.1
-	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The instance family of the instance.
-	//
-	// example:
-	//
-	// x
-	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
-	// The number of CPU cores that are supported by the instance type. Unit: cores.
-	//
-	// example:
-	//
-	// 4
-	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The storage type of the instance. Valid values:
-	//
-	// 	- **local_ssd**: local SSDs
-	//
-	// 	- **cloud_ssd**: standard SSDs
-	//
-	// 	- **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
-	//
-	// 	- **cloud_essd2**: ESSDs of PL2
-	//
-	// 	- **cloud_essd3**: ESSD of PL3
-	//
-	// example:
-	//
-	// local_ssd
+	Category              *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClassCode             *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	ClassGroup            *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
+	Cpu                   *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The architecture of the instance.
-	//
-	// example:
-	//
-	// x86
-	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
-	// The maximum number of connections.
-	//
-	// example:
-	//
-	// 4000
-	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 1024
-	MaxIOMBPS *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
-	// The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
-	//
-	// example:
-	//
-	// N/A
-	MaxIOPS *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The memory size. Unit: GB.
-	//
-	// example:
-	//
-	// 2GB
-	MemoryClass *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
-	// The price.
-	//
-	// Unit: cents (US dollars).
-	//
-	// > 	- If you set the CommodityCode parameter to a value that indicates the pay-as-you-go billing method, the ReferencePrice parameter specifies the hourly fee that you must pay.
-	//
-	// > 	- If you set the CommodityCode parameter to a value that indicates the subscription billing method, the ReferencePrice parameter specifies the monthly fee that you must pay.
-	//
-	// example:
-	//
-	// 13400
-	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	InstructionSetArch    *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
+	MaxConnections        *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOMBPS             *string `json:"MaxIOMBPS,omitempty" xml:"MaxIOMBPS,omitempty"`
+	MaxIOPS               *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MemoryClass           *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
+	ReferencePrice        *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeClassDetailsResponseBody) String() string {

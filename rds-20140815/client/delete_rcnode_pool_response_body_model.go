@@ -14,11 +14,6 @@ type iDeleteRCNodePoolResponseBody interface {
 }
 
 type DeleteRCNodePoolResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 7A41C147-C8D0-4DAE-A1A2-17EBCD60DFA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

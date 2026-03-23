@@ -98,7 +98,7 @@ type DescribeCurrentModifyOrderResponseBodyModifyOrder struct {
 	//
 	// example:
 	//
-	// eyJ2IjoibWV0YS5rOHMuaW8vdjEiLCJydiI6MTg2MjEwOTkwLCJzdGFydCI6InNob3BpZnktdXNlci1jb3JlXHUwMDAwIn0
+	// 无
 	Mark *string `json:"Mark,omitempty" xml:"Mark,omitempty"`
 	// The memory capacity that is supported by the instance type. Unit: GB.
 	//

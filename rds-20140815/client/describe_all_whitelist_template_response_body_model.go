@@ -24,58 +24,12 @@ type iDescribeAllWhitelistTemplateResponseBody interface {
 }
 
 type DescribeAllWhitelistTemplateResponseBody struct {
-	// The response code returned. Valid values:
-	//
-	// 	- **200**: success
-	//
-	// 	- **400**: client error
-	//
-	// 	- **401**: identity authentication failed
-	//
-	// 	- **404**: request page not found
-	//
-	// 	- **500**: server error
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *DescribeAllWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned. Valid values:
-	//
-	// 	- **200**: success
-	//
-	// 	- **400**: client error
-	//
-	// 	- **500**: server error
-	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response parameters.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 16C62438-491B-5C02-9B49-BA924A1372A2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *DescribeAllWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAllWhitelistTemplateResponseBody) String() string {
@@ -150,52 +104,13 @@ func (s *DescribeAllWhitelistTemplateResponseBody) Validate() error {
 }
 
 type DescribeAllWhitelistTemplateResponseBodyData struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	CurrPageNumbers *int32 `json:"CurrPageNumbers,omitempty" xml:"CurrPageNumbers,omitempty"`
-	// Indicates whether the data that meets the conditions is displayed on the next page. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// Indicates whether the data that meets the conditions is displayed on the previous page. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	HasPrev *bool `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// example:
-	//
-	// 10
-	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The information about whitelist templates that are returned by page.
-	Templates []*DescribeAllWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	// The total number of pages returned.
-	//
-	// example:
-	//
-	// 3
-	TotalPageNumbers *int32 `json:"TotalPageNumbers,omitempty" xml:"TotalPageNumbers,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 402
-	TotalRecords *int32 `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+	CurrPageNumbers   *int32                                                   `json:"CurrPageNumbers,omitempty" xml:"CurrPageNumbers,omitempty"`
+	HasNext           *bool                                                    `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	HasPrev           *bool                                                    `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
+	MaxRecordsPerPage *int32                                                   `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	Templates         []*DescribeAllWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	TotalPageNumbers  *int32                                                   `json:"TotalPageNumbers,omitempty" xml:"TotalPageNumbers,omitempty"`
+	TotalRecords      *int32                                                   `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
 }
 
 func (s DescribeAllWhitelistTemplateResponseBodyData) String() string {
@@ -283,36 +198,11 @@ func (s *DescribeAllWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type DescribeAllWhitelistTemplateResponseBodyDataTemplates struct {
-	// The primary key of the data table.
-	//
-	// example:
-	//
-	// 123
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP addresses.
-	//
-	// example:
-	//
-	// 12.2.X.X,10.0.X.X
-	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The ID of the whitelist template.
-	//
-	// example:
-	//
-	// 412
-	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the whitelist template.
-	//
-	// example:
-	//
-	// template_123
+	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ips          *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	TemplateId   *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The user ID.
-	//
-	// example:
-	//
-	// 168****
-	UserId *int32 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId       *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeAllWhitelistTemplateResponseBodyDataTemplates) String() string {

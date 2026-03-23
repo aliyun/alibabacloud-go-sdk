@@ -22,36 +22,11 @@ type iModifyCollationTimeZoneResponseBody interface {
 }
 
 type ModifyCollationTimeZoneResponseBody struct {
-	// The character set collation of the instance.
-	//
-	// example:
-	//
-	// Latin1_General_CI_AS
-	Collation *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
+	Collation    *string `json:"Collation,omitempty" xml:"Collation,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 8EA054AF-DFA7-497D-9F57-790FFC974C0B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 114413215
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The time zone.
-	//
-	// example:
-	//
-	// China Standard Time
-	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Timezone     *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 }
 
 func (s ModifyCollationTimeZoneResponseBody) String() string {

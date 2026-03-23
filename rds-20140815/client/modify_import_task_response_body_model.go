@@ -20,18 +20,26 @@ type iModifyImportTaskResponseBody interface {
 }
 
 type ModifyImportTaskResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 069EB9B1-DE12-54B9-8C20-822****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Data import job status
+	//
 	// example:
 	//
 	// IMPORTING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// 41698****
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task Name.
+	//
 	// example:
 	//
 	// task_1234

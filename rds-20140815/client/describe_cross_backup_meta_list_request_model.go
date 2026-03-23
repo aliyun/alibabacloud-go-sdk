@@ -32,56 +32,14 @@ type iDescribeCrossBackupMetaListRequest interface {
 }
 
 type DescribeCrossBackupMetaListRequest struct {
-	// The ID of the cross-region backup file that you want to use. You can call the [DescribeCrossRegionBackups](https://help.aliyun.com/document_detail/121733.html) operation to query the ID of the cross-region backup file.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123456
-	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The name of the database that you want to query. The system implements exact match based on the value of this parameter and returns the name of the matched database and the names of the tables in the matched database.
-	//
-	// example:
-	//
-	// testdb1
-	GetDbName *string `json:"GetDbName,omitempty" xml:"GetDbName,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer.
-	//
-	// > This parameter only takes effect when you specify the **PageSize*	- parameter.
-	//
-	// example:
-	//
-	// 1
-	PageIndex *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries to return per page. Default value: **1**.
-	//
-	// > This parameter only takes effect when you specify the **PageIndex*	- parameter.
-	//
-	// example:
-	//
-	// 30
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the database that you want to query. The system implements fuzzy match based on the value of this parameter and returns only the name of the matched database.
-	//
-	// > You can implement fuzzy match and then exact match. For example, you can set the Pattern parameter to test to query the testdb1 and testdb2 databases. Then, you can specify the **GetDbName*	- parameter to query only the matched database and the tables in the matched database.
-	//
-	// example:
-	//
-	// test
-	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	BackupSetId          *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	GetDbName            *string `json:"GetDbName,omitempty" xml:"GetDbName,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageIndex            *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Pattern              *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -60,67 +60,29 @@ type iRunRCCommandRequest interface {
 }
 
 type RunRCCommandRequest struct {
-	// example:
-	//
-	// ETnLKlblzczshOTUbOCziJZNwH****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// example:
-	//
-	// ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
-	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// example:
-	//
-	// test-container
-	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	ContainerId    *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	ContainerName  *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// example:
 	//
 	// PlainText
-	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// example:
-	//
-	// testDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// false
-	EnableParameter *bool     `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
-	Frequency       *string   `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	KeepCommand *bool `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
-	// example:
-	//
-	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
-	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
-	// example:
-	//
-	// testName
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// {"name":"Jack", "accessKey":"LTAI*************"}
-	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ContentEncoding *string                `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableParameter *bool                  `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
+	Frequency       *string                `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InstanceIds     []*string              `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	KeepCommand     *bool                  `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
+	Launcher        *string                `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	Name            *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters      map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// Once
-	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	// example:
-	//
-	// rg-acfmy*****
+	RepeatMode      *string                            `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
 	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceTags    []*RunRCCommandRequestResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Repeated"`
 	Tags            []*RunRCCommandRequestTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -128,28 +90,16 @@ type RunRCCommandRequest struct {
 	//
 	// ProcessTree
 	TerminationMode *string `json:"TerminationMode,omitempty" xml:"TerminationMode,omitempty"`
-	// example:
-	//
-	// 60
-	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RunShellScript
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// test
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// example:
-	//
-	// None
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Username            *string `json:"Username,omitempty" xml:"Username,omitempty"`
 	WindowsPasswordName *string `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	// example:
-	//
-	// /home/user
-	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	WorkingDir          *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s RunRCCommandRequest) String() string {
@@ -399,13 +349,7 @@ func (s *RunRCCommandRequest) Validate() error {
 }
 
 type RunRCCommandRequestResourceTags struct {
-	// example:
-	//
-	// TestKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// TestValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -440,13 +384,7 @@ func (s *RunRCCommandRequestResourceTags) Validate() error {
 }
 
 type RunRCCommandRequestTags struct {
-	// example:
-	//
-	// TestKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// TestValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

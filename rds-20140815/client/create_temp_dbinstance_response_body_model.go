@@ -16,17 +16,7 @@ type iCreateTempDBInstanceResponseBody interface {
 }
 
 type CreateTempDBInstanceResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 248DE93F-8647-4B9D-8287-4A4A0FE56AD5
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The temporary instance ID.
-	//
-	// example:
-	//
-	// sub138****_rm-******
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
 }
 

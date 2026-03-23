@@ -14,6 +14,8 @@ type iModifyDBInstanceCLSResponseBody interface {
 }
 
 type ModifyDBInstanceCLSResponseBody struct {
+	// Request ID
+	//
 	// example:
 	//
 	// 2144F5CC-10C5-3B72-8C74-E5***********

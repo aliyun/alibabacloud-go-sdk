@@ -18,20 +18,9 @@ type iAttachRCInstancesResponseBody interface {
 }
 
 type AttachRCInstancesResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 847BA085-B377-4BFA-8267-F82345ECE1D2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The response parameters.
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Responses []*AttachRCInstancesResponseBodyResponses `json:"Responses,omitempty" xml:"Responses,omitempty" type:"Repeated"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 178968983
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId    *string                                   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s AttachRCInstancesResponseBody) String() string {
@@ -83,26 +72,9 @@ func (s *AttachRCInstancesResponseBody) Validate() error {
 }
 
 type AttachRCInstancesResponseBodyResponses struct {
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The node ID.
-	//
-	// example:
-	//
-	// rc-e2g521l55k038cr8****
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The message returned.
-	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
-	//
-	// example:
-	//
-	// Successful
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s AttachRCInstancesResponseBodyResponses) String() string {

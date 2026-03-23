@@ -39,15 +39,31 @@ type iDescribeRCInstancesRequest interface {
 
 type DescribeRCInstancesRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HostIp      *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Query by instance host IP address.
+	//
+	// example:
+	//
+	// 172.16.XX.XX
+	HostIp  *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
-	// rm-2ze704f*****
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// rc-i2p26bde8bckf141****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Instance ID.
+	//
+	// This parameter is used to query multiple instances simultaneously. Separate instance IDs with English commas (,), and up to 100 IDs are supported. The input format is: `["instance ID 1","instance ID 2"]`.
+	//
+	// > When both **InstanceIds*	- and **instanceId*	- are provided, the value of **InstanceIds*	- takes precedence.
+	//
+	// example:
+	//
+	// ["rc-i2p26bde8bckf141****","rc-l1753m982otq2s2m****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// Instance Name
+	//
 	// example:
 	//
 	// k8s-node
@@ -71,7 +87,12 @@ type DescribeRCInstancesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query by instance public IP address.
+	//
+	// example:
+	//
+	// 121.89.XX.XX
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The region ID.
 	//
@@ -79,8 +100,28 @@ type DescribeRCInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Instance status. Valid values:
+	//
+	// - **Pending**: Creation in progress.
+	//
+	// - **Running**: Running.
+	//
+	// - **Starting**: Starting.
+	//
+	// - **Stopping**: Pausing.
+	//
+	// - **Stopped**: Paused.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Query by specified tag. The input format is: `{"TagKey":"TagValue"}`.
+	//
+	// example:
+	//
+	// {"testRC":"test01"}
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	//
 	// example:

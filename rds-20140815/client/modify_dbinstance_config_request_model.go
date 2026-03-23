@@ -34,72 +34,28 @@ type iModifyDBInstanceConfigRequest interface {
 }
 
 type ModifyDBInstanceConfigRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// example:
-	//
-	// 6000170000591aed949d0f****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the configuration item that you want to modify. Valid values:
-	//
-	// 	- **pgbouncer**. This configuration item is supported for ApsaraDB RDS for PostgreSQL instances.
-	//
-	// 	- **clear_errorlog**. This configuration item is supported for ApsaraDB RDS for SQL Server instances.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pgbouncer
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// The value of the configuration item that you want to modify. Valid values:
-	//
-	// 	- If you set ConfigName to pgbouncer, the valid values are **true*	- and **false**.
-	//
-	// 	- If you set ConfigName to clear_errorlog, set the value to **1**. The value 1 indicates that error logs are cleaned up.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute to obtain the resource group ID.
-	//
-	// example:
-	//
-	// rg-bp67acfmxazb4p****
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The update time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	//
-	// example:
-	//
-	// 2022-05-06T09:24:00Z
-	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The time at which the modification takes effect. Valid values:
-	//
-	// - **Immediate**: immediately modifies the parameter. This is the default value.
-	//
-	// - **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
-	//
-	// - **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
-	//
-	// example:
-	//
-	// Immediate
-	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
+	SwitchTime           *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	SwitchTimeMode       *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
 func (s ModifyDBInstanceConfigRequest) String() string {

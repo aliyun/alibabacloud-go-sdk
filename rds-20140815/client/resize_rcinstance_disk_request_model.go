@@ -37,8 +37,13 @@ type ResizeRCInstanceDiskRequest struct {
 	// example:
 	//
 	// false
-	AutoPay *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	DiskId  *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The disk ID.
+	//
+	// example:
+	//
+	// rcd-x4462840nwinu6rr61m5o
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.

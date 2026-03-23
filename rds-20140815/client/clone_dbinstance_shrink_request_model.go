@@ -114,7 +114,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// false
+	// 0
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
 	// An invalid parameter. You do not need to specify this parameter.
 	//
@@ -177,7 +177,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The storage capacity of the new instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
@@ -205,7 +205,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// cloud_essd
+	// general_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The name of the database. If you specify more than one database, the value is in the following format: `Original database name 1,Original database name 2`.
 	//
@@ -217,7 +217,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// dhg-7a9xxxxxxxx
+	// dhg-7a9****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the new instance. Valid values:
 	//
@@ -245,7 +245,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// None
+	// 0
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
@@ -277,7 +277,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// 172.XX.XXX.69
+	// 172.XX.XX.69
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
@@ -328,7 +328,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// vpc-uf6f7l4fg90xxxxxxxxxx
+	// vpc-uf6f7l4fg90****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The ID of the vSwitch. The vSwitch must belong to the zone that is specified by **ZoneId**.
 	//
@@ -338,7 +338,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// vsw-uf6adz52c2pxxxxxxxxxx
+	// vsw-uf6adz52c2p****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the primary instance. You can call the DescribeRegions operation to query the zone ID.
 	//

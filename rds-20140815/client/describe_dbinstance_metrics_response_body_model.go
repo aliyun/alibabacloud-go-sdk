@@ -20,26 +20,10 @@ type iDescribeDBInstanceMetricsResponseBody interface {
 }
 
 type DescribeDBInstanceMetricsResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-bp1*****
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// An array consisting of the Enhanced Monitoring metrics that are enabled for the instance.
-	Items []*DescribeDBInstanceMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 318C3754-F6D0-54BB-A55C-23EAA04708B7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of enhanced monitoring metrics that are enabled for the instance.
-	//
-	// example:
-	//
-	// 1
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	DBInstanceName   *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Items            []*DescribeDBInstanceMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalRecordCount *int32                                        `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeDBInstanceMetricsResponseBody) String() string {
@@ -100,70 +84,15 @@ func (s *DescribeDBInstanceMetricsResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceMetricsResponseBodyItems struct {
-	// The description of the enhanced monitoring metric.
-	//
-	// example:
-	//
-	// OS CPU utilization, equal to the number of OS-consumed CPUs divided by the total number of CPUs
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The category of the enhanced monitoring metric. Valid values:
-	//
-	// 	- **os**: OS metric
-	//
-	// 	- **db**: database metric
-	//
-	// example:
-	//
-	// os
-	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The key of the group to which the enhanced monitoring metric belongs.
-	//
-	// example:
-	//
-	// os.cpu_usage
-	GroupKey *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
-	// The name of the group to which the enhanced monitoring metric belongs.
-	//
-	// example:
-	//
-	// CPU Utilization Rate
-	GroupKeyType *string `json:"GroupKeyType,omitempty" xml:"GroupKeyType,omitempty"`
-	// The method that is used to aggregate the monitoring data of the enhanced monitoring metric. Valid values:
-	//
-	// 	- **avg**: The system calculates the average value of the enhanced monitoring metric.
-	//
-	// 	- **min**: The system calculates the minimum value of the enhanced monitoring metric.
-	//
-	// 	- **max**: The system calculates the maximum value of the enhanced monitoring metric.
-	//
-	// example:
-	//
-	// avg
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The key of the enhanced monitoring metric.
-	//
-	// example:
-	//
-	// os.cpu_usage.sys.avg
-	MetricsKey *string `json:"MetricsKey,omitempty" xml:"MetricsKey,omitempty"`
-	// The alias of the enhanced monitoring metric.
-	//
-	// example:
-	//
-	// os.cpu_usage.sys
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Dimension       *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	GroupKey        *string `json:"GroupKey,omitempty" xml:"GroupKey,omitempty"`
+	GroupKeyType    *string `json:"GroupKeyType,omitempty" xml:"GroupKeyType,omitempty"`
+	Method          *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	MetricsKey      *string `json:"MetricsKey,omitempty" xml:"MetricsKey,omitempty"`
 	MetricsKeyAlias *string `json:"MetricsKeyAlias,omitempty" xml:"MetricsKeyAlias,omitempty"`
-	// The serial number of the enhanced monitoring metric.
-	//
-	// example:
-	//
-	// 1
-	SortRule *int32 `json:"SortRule,omitempty" xml:"SortRule,omitempty"`
-	// The unit of the enhanced monitoring metric.
-	//
-	// example:
-	//
-	// %
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	SortRule        *int32  `json:"SortRule,omitempty" xml:"SortRule,omitempty"`
+	Unit            *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeDBInstanceMetricsResponseBodyItems) String() string {

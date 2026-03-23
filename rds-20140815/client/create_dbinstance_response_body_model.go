@@ -36,7 +36,7 @@ type CreateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****.mysql.rds.aliyuncs.com
+	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID. If the value of the **Amount*	- parameter is greater than **1**, more than one instance ID is returned. The number of instance IDs that are returned is the same as the value of the Amount parameter. The returned instance IDs are separated by commas (,).
 	//
@@ -44,7 +44,7 @@ type CreateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5*****
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Indicates that the system performed a dry run.
 	//
@@ -82,7 +82,7 @@ type CreateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 1007893702*****
+	// 1007893702****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The internal IP address and port number that are used to connect to the instance.
 	//
@@ -116,7 +116,7 @@ type CreateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// s2365879-a9d0-55af-fgae-f2*****
+	// s2365879-a9d0-55af-fgae-f2****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

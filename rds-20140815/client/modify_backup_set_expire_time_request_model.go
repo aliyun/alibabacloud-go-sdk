@@ -36,7 +36,7 @@ type ModifyBackupSetExpireTimeRequest struct {
 	//
 	// example:
 	//
-	// b-n8tpg24c6i0v****
+	// 262186****
 	BackupId *int64 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
@@ -44,7 +44,7 @@ type ModifyBackupSetExpireTimeRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-7xv8f2zcia0e4****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The point in time to which you want to extend the expiration time of the backup set. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
@@ -54,7 +54,7 @@ type ModifyBackupSetExpireTimeRequest struct {
 	//
 	// example:
 	//
-	// 2025-06-17T12:10:23Z
+	// 2025-07-15T12:10:23Z
 	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

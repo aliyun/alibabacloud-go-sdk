@@ -22,6 +22,8 @@ type iDescribeDBInstanceCLSRequest interface {
 }
 
 type DescribeDBInstanceCLSRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

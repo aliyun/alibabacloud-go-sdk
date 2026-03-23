@@ -18,23 +18,9 @@ type iDescribeDBInstanceNetInfoForChannelResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoForChannelResponseBody struct {
-	DBInstanceNetInfos *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **VPC**: a virtual private cloud (VPC)
-	//
-	// 	- **Classic**: classic network
-	//
-	// example:
-	//
-	// VPC
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 61DF1F28-F409-50C0-B90A-CCE82D44****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DBInstanceNetInfos  *DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
+	InstanceNetworkType *string                                                            `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	RequestId           *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoForChannelResponseBody) String() string {

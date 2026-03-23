@@ -18,24 +18,9 @@ type iDescribeKmsAssociateResourcesResponseBody interface {
 }
 
 type DescribeKmsAssociateResourcesResponseBody struct {
-	// The information about the associated ApsaraDB RDS instances.
 	AssociateDBInstances []*DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances `json:"AssociateDBInstances,omitempty" xml:"AssociateDBInstances,omitempty" type:"Repeated"`
-	// Indicates whether an associated RDS instance exists.
-	//
-	// - **true**: Yes
-	//
-	// - **false**: No
-	//
-	// example:
-	//
-	// true
-	AssociateStatus *bool `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AssociateStatus      *bool                                                            `json:"AssociateStatus,omitempty" xml:"AssociateStatus,omitempty"`
+	RequestId            *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeKmsAssociateResourcesResponseBody) String() string {
@@ -87,56 +72,10 @@ func (s *DescribeKmsAssociateResourcesResponseBody) Validate() error {
 }
 
 type DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// pgm-bp16p6f68130****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database engine. Valid values:
-	//
-	// 	- **MySQL**
-	//
-	// 	- **SQLServer**
-	//
-	// 	- **PostgreSQL**
-	//
-	// example:
-	//
-	// PostgreSQL
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The purpose of the key. Valid values:
-	//
-	// 	- **DiskEncryption**: cloud disk encryption
-	//
-	// 	- **TDE**: transparent data encryption
-	//
-	// example:
-	//
-	// DiskEncryption
-	KeyUsedBy *string `json:"KeyUsedBy,omitempty" xml:"KeyUsedBy,omitempty"`
-	// The state of the instance. Valid values:
-	//
-	// 	- **CREATING**: The instance is being created.
-	//
-	// 	- **ACTIVATION**: The instance is running.
-	//
-	// 	- **DELETING**: The instance is being deleted.
-	//
-	// 	- **RESTARTING**: The instance is being restarted.
-	//
-	// 	- **INS_MAINTAINING**: The configuration of the instance is being changed.
-	//
-	// 	- **INS_MAINTAINING**: The instance is being maintained.
-	//
-	// 	- **BACKUP_RECOVERING**: The instance is being restored.
-	//
-	// 	- **NET_MODIFYING**: The network type of the instance is being changed.
-	//
-	// example:
-	//
-	// ACTIVATION
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Engine         *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	KeyUsedBy      *string `json:"KeyUsedBy,omitempty" xml:"KeyUsedBy,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances) String() string {

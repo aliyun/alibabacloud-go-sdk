@@ -20,34 +20,10 @@ type iCreateSecretResponseBody interface {
 }
 
 type CreateSecretResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// DF4961DD-16F5-5B24-BD4C-0C7788F7ADAF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account.
-	//
-	// example:
-	//
-	// acs:rds:cn-hangzhou:1335786***:dbInstance/rm-bp1m7l3j63****
-	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the credential.
-	//
-	// example:
-	//
-	// Foo
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretArn  *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **true**: The request was successful.
-	//
-	// 	- **false**: The request failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSecretResponseBody) String() string {

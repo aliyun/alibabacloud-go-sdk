@@ -14,11 +14,6 @@ type iDeleteRCInstancesResponseBody interface {
 }
 
 type DeleteRCInstancesResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// E9DD55F4-1A5F-48CA-BA57-DFB3CA8C4C34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

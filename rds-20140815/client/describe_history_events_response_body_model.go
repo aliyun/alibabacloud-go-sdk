@@ -22,32 +22,11 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
-	// The events.
-	Items []*DescribeHistoryEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number. Valid values: any non-zero positive integer. Default value: **1**.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30.
-	//
-	// example:
-	//
-	// 30
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 7A41C147-C8D0-4DAE-A1A2-17EBCD60DFA1
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
-	//
-	// example:
-	//
-	// 10
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Items      []*DescribeHistoryEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHistoryEventsResponseBody) String() string {
@@ -117,50 +96,14 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItems struct {
-	// The details of the data.
-	Data *DescribeHistoryEventsResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The task ID
-	//
-	// example:
-	//
-	// 4309
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The event source.
-	//
-	// example:
-	//
-	// loanBill
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The database engine version.
-	//
-	// example:
-	//
-	// 8.0
-	Specversion *string `json:"Specversion,omitempty" xml:"Specversion,omitempty"`
-	// The name of the pending event.
-	//
-	// example:
-	//
-	// QiTian
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The amount of time that has elapsed from the start time of the query. Unit: seconds.
-	//
-	// example:
-	//
-	// 1675232573125
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The event type. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
-	//
-	// example:
-	//
-	// host
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Data        *DescribeHistoryEventsResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Id          *string                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Region      *string                                     `json:"Region,omitempty" xml:"Region,omitempty"`
+	Source      *string                                     `json:"Source,omitempty" xml:"Source,omitempty"`
+	Specversion *string                                     `json:"Specversion,omitempty" xml:"Specversion,omitempty"`
+	Subject     *string                                     `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	Time        *string                                     `json:"Time,omitempty" xml:"Time,omitempty"`
+	Type        *string                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeHistoryEventsResponseBodyItems) String() string {
@@ -253,182 +196,33 @@ func (s *DescribeHistoryEventsResponseBodyItems) Validate() error {
 }
 
 type DescribeHistoryEventsResponseBodyItemsData struct {
-	// The cloud service type of the application group. Valid values: **web*	- and native. The value web indicates a web application. The value **native*	- indicates a local application.
-	//
-	// example:
-	//
-	// web
-	CmsProduct *string `json:"CmsProduct,omitempty" xml:"CmsProduct,omitempty"`
-	// The database engine.
-	//
-	// example:
-	//
-	// mysql
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The pagination parameter.
-	//
-	// example:
-	//
-	// 1
-	DetailImpact *string `json:"DetailImpact,omitempty" xml:"DetailImpact,omitempty"`
-	// The details of the instance operation.
-	//
-	// example:
-	//
-	// xxxx
-	DetailReason *string `json:"DetailReason,omitempty" xml:"DetailReason,omitempty"`
-	// The time when the alert was closed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-03-06T11:46:01Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
-	//
-	// example:
-	//
-	// Exception
+	CmsProduct    *string `json:"CmsProduct,omitempty" xml:"CmsProduct,omitempty"`
+	DbType        *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DetailImpact  *string `json:"DetailImpact,omitempty" xml:"DetailImpact,omitempty"`
+	DetailReason  *string `json:"DetailReason,omitempty" xml:"DetailReason,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The event code.
-	//
-	// example:
-	//
-	// ENT000014
-	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
-	// The event details.
-	//
-	// example:
-	//
-	// xxxxx
-	EventDetail *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
-	// The event ID.
-	//
-	// example:
-	//
-	// 669036
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event impact.
-	//
-	// example:
-	//
-	// xxxxx
-	EventImpact *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
-	// The event level. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
-	//
-	// example:
-	//
-	// high
-	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event source.
-	//
-	// example:
-	//
-	// xxxxx
-	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The status of the alert event. Valid values:
-	//
-	// 	- **1**: pending
-	//
-	// 	- **2**: ignored
-	//
-	// 	- **4**: confirmed
-	//
-	// 	- **8**: marked as false positive
-	//
-	// 	- **16**: handling
-	//
-	// 	- **32**: handled
-	//
-	// 	- **64**: expired
-	//
-	// example:
-	//
-	// 1
-	EventStatus *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The event type. Valid values:
-	//
-	// example:
-	//
-	// StatusNotification
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-03-17T16:05:40Z
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The update time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-12-14T09:44:39.000+0000
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The handling status.
-	//
-	// example:
-	//
-	// done
-	HandleStatus *string `json:"HandleStatus,omitempty" xml:"HandleStatus,omitempty"`
-	// Indicates whether the event has a lifecycle.
-	//
-	// example:
-	//
-	// false
-	HasLifeCycle *int32 `json:"HasLifeCycle,omitempty" xml:"HasLifeCycle,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// dhimgsearch
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the alert is closed. Valid values: **0**: closed. **1**: not closed.
-	//
-	// example:
-	//
-	// 0
-	IsClosed *int32 `json:"IsClosed,omitempty" xml:"IsClosed,omitempty"`
-	// The service name.
-	//
-	// example:
-	//
-	// rds
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-guangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type. The value is fixed as **INSTANCE**.
-	//
-	// example:
-	//
-	// INSTANCE
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The type of the source data.
-	//
-	// example:
-	//
-	// MSE
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-11-29T07:23Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the resource owner.
-	//
-	// example:
-	//
-	// 16986832xxxxx
-	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	EventCode     *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	EventDetail   *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
+	EventId       *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventImpact   *string `json:"EventImpact,omitempty" xml:"EventImpact,omitempty"`
+	EventLevel    *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	EventReason   *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	EventStatus   *string `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	EventType     *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	GmtCreated    *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HandleStatus  *string `json:"HandleStatus,omitempty" xml:"HandleStatus,omitempty"`
+	HasLifeCycle  *int32  `json:"HasLifeCycle,omitempty" xml:"HasLifeCycle,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsClosed      *int32  `json:"IsClosed,omitempty" xml:"IsClosed,omitempty"`
+	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Uid           *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeHistoryEventsResponseBodyItemsData) String() string {

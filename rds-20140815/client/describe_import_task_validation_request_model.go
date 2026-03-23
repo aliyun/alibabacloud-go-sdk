@@ -18,6 +18,8 @@ type iDescribeImportTaskValidationRequest interface {
 }
 
 type DescribeImportTaskValidationRequest struct {
+	// Instance ID. You can obtain it by calling DescribeDBInstances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DescribeImportTaskValidationRequest struct {
 	// rm-xjkljj****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Job ID. This is the job ID returned when you invoke the **ValidateImportTask*	- API to create a precheck for an import job.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -26,33 +26,11 @@ type iReleaseInstanceConnectionRequest interface {
 }
 
 type ReleaseInstanceConnectionRequest struct {
-	// The public endpoint of the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxx.mysql.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **0**: virtual private cloud (VPC)
-	//
-	// 	- **1**: classic network
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
 	InstanceNetworkType  *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

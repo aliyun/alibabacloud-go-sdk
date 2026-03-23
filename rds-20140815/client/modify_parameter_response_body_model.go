@@ -14,11 +14,6 @@ type iModifyParameterResponseBody interface {
 }
 
 type ModifyParameterResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 542BB8D6-4268-45CC-A557-B03EFD7AB30A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -20,30 +20,10 @@ type iModifyReadonlyInstanceDelayReplicationTimeResponseBody interface {
 }
 
 type ModifyReadonlyInstanceDelayReplicationTimeResponseBody struct {
-	// The ID of the read-only instance.
-	//
-	// example:
-	//
-	// rr-bpxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The latency at which to replicate data from the primary instance to the read-only instance. Unit: seconds.
-	//
-	// example:
-	//
-	// 100
+	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	ReadSQLReplicationTime *string `json:"ReadSQLReplicationTime,omitempty" xml:"ReadSQLReplicationTime,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// BBB11B5A-7B37-493A-87E6-490BCB7BDF98
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 241535739
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyReadonlyInstanceDelayReplicationTimeResponseBody) String() string {

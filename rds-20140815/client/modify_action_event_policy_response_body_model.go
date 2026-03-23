@@ -18,24 +18,9 @@ type iModifyActionEventPolicyResponseBody interface {
 }
 
 type ModifyActionEventPolicyResponseBody struct {
-	// Indicates whether the event history feature is enabled.
-	//
-	// example:
-	//
-	// True
 	EnableEventLog *string `json:"EnableEventLog,omitempty" xml:"EnableEventLog,omitempty"`
-	// The ID of the region for which the event history feature is enabled or disabled.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// BAC0952C-0EB3-4DE7-A567-B83269BFE43F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyActionEventPolicyResponseBody) String() string {

@@ -18,24 +18,9 @@ type iSwitchDBInstanceNetTypeResponseBody interface {
 }
 
 type SwitchDBInstanceNetTypeResponseBody struct {
-	// The endpoint that is used to connect to the instance after the switch of endpoints.
-	//
-	// example:
-	//
-	// new**********.mysql.rds.aliyuncs.com
 	NewConnectionString *string `json:"NewConnectionString,omitempty" xml:"NewConnectionString,omitempty"`
-	// The endpoint that is used to connect to the instance before the switch of endpoints.
-	//
-	// example:
-	//
-	// rm-bp1**************.mysql.rds.aliyuncs.com
 	OldConnectionString *string `json:"OldConnectionString,omitempty" xml:"OldConnectionString,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 65BDA532-28AF-4122-AA39-B382721EEE64
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SwitchDBInstanceNetTypeResponseBody) String() string {

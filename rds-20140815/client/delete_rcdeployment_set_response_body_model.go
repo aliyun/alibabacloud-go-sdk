@@ -14,11 +14,6 @@ type iDeleteRCDeploymentSetResponseBody interface {
 }
 
 type DeleteRCDeploymentSetResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -17,10 +17,7 @@ type iDescribeRCResourcesModificationResponseBody interface {
 
 type DescribeRCResourcesModificationResponseBody struct {
 	AvailableZones []*DescribeRCResourcesModificationResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCResourcesModificationResponseBody) String() string {
@@ -64,22 +61,10 @@ func (s *DescribeRCResourcesModificationResponseBody) Validate() error {
 
 type DescribeRCResourcesModificationResponseBodyAvailableZones struct {
 	AvailableResources []*DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// WithStock
-	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	RegionId           *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusCategory     *string                                                                        `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
+	ZoneId             *string                                                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCResourcesModificationResponseBodyAvailableZones) String() string {
@@ -150,10 +135,7 @@ func (s *DescribeRCResourcesModificationResponseBodyAvailableZones) Validate() e
 
 type DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResources struct {
 	SupportedResources []*DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResourcesSupportedResources `json:"SupportedResources,omitempty" xml:"SupportedResources,omitempty" type:"Repeated"`
-	// example:
-	//
-	// InstanceType
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                                                          `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResources) String() string {
@@ -196,18 +178,9 @@ func (s *DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResou
 }
 
 type DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResourcesSupportedResources struct {
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// WithStock
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	// example:
-	//
-	// mysql.x4.4xlarge.7cm
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value          *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeRCResourcesModificationResponseBodyAvailableZonesAvailableResourcesSupportedResources) String() string {

@@ -14,11 +14,6 @@ type iDeleteDBProxyEndpointAddressResponseBody interface {
 }
 
 type DeleteDBProxyEndpointAddressResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 343356C6-64B2-4245-ADEB-C9BD165EDD11
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

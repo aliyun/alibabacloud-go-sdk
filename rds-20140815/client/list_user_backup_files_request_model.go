@@ -32,65 +32,17 @@ type iListUserBackupFilesRequest interface {
 }
 
 type ListUserBackupFilesRequest struct {
-	// The ID of the full backup file.
-	//
-	// example:
-	//
-	// b-kwwvr7v8t7of********
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The description of the full backup file.
-	//
-	// > The system implements a fuzzy match based on the value of this parameter.
-	//
-	// example:
-	//
-	// BackupTest
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The URL from which you can download the full backup file that is stored as an object in an Object Storage Service (OSS) bucket. For more information about how to obtain the URL, see [Obtain the access URL after you upload objects](https://help.aliyun.com/document_detail/39607.html).
-	//
-	// example:
-	//
-	// https://******.oss-ap-********.aliyuncs.com/backup_qp.xb
-	OssUrl  *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
+	Comment  *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	OssUrl   *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy*****
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the full backup file. Valid values:
-	//
-	// 	- **Importing**: The full backup file is being imported.
-	//
-	// 	- **Failed**: The full backup file fails to be imported.
-	//
-	// 	- **CheckSucccess**: The full backup file passes the check.
-	//
-	// 	- **BackupSuccess**: The full backup file is imported.
-	//
-	// 	- **Deleted**: The full backup file is deleted.
-	//
-	// example:
-	//
-	// CheckSuccess
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag that is added to the full backup file.
-	//
-	// example:
-	//
-	// key1:value1
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s ListUserBackupFilesRequest) String() string {

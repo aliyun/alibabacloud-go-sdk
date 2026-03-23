@@ -28,36 +28,16 @@ type iCreateDBNodesRequest interface {
 }
 
 type CreateDBNodesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// example:
-	//
-	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-2ze450g4ctg6t****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The details of the node.
-	//
 	// This parameter is required.
-	DBNode       []*CreateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
-	OwnerAccount *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy*****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	DBNode               []*CreateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
+	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CreateDBNodesRequest) String() string {
@@ -154,27 +134,10 @@ func (s *CreateDBNodesRequest) Validate() error {
 }
 
 type CreateDBNodesRequestDBNode struct {
-	// The specification information of the node.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mysql.n2.medium.xc
 	ClassCode *string `json:"classCode,omitempty" xml:"classCode,omitempty"`
-	// The vSwitch ID of the node.
-	//
-	// example:
-	//
-	// vsw-bp1sxxsodv28ey5dl****
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
-	// The ID of the zone in which the node is deployed.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-zhangjiakou-a
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 

@@ -62,7 +62,7 @@ type GrantAccountPrivilegeRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxxxxxx
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database on which you want to grant permissions. Separate multiple database names with commas (,).
 	//

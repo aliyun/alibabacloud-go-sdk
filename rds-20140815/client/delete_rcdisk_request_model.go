@@ -16,19 +16,8 @@ type iDeleteRCDiskRequest interface {
 }
 
 type DeleteRCDiskRequest struct {
-	// The ID of the cloud disk that you want to release.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rcd-wz9c8isqly8637zw****
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	DiskId   *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

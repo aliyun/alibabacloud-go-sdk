@@ -34,79 +34,17 @@ type iDescribeDedicatedHostsRequest interface {
 }
 
 type DescribeDedicatedHostsRequest struct {
-	// Specifies whether instances can be deployed on the host. Valid values:
-	//
-	// 	- **0**: Instances cannot be deployed on the host.
-	//
-	// 	- **1**: Instances can be deployed on the host.
-	//
-	// example:
-	//
-	// 1
-	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
-	//
-	// example:
-	//
-	// dhg-7a9xxxxxxxx
+	AllocationStatus     *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The ID of the host in the dedicated cluster.
-	//
-	// example:
-	//
-	// ch-t4nn100ddxxxxxxxx
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The status of the host. Valid values:
-	//
-	// 	- **0**: creating
-	//
-	// 	- **1**: running
-	//
-	// 	- **2**: faulty
-	//
-	// 	- **3**: being replaced
-	//
-	// 	- **4**: deprecated
-	//
-	// 	- **5**: deleting
-	//
-	// 	- **6**: restarting
-	//
-	// example:
-	//
-	// 1
-	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
-	// The storage type of the host. Valid values:
-	//
-	// 	- **dhg_cloud_ssd**: enhanced SSD (ESSD)
-	//
-	// 	- **dhg_local_ssd**: local SSD
-	//
-	// example:
-	//
-	// dhg_cloud_ssd
-	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// The order ID.
-	//
-	// example:
-	//
-	// 102565235
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	HostStatus           *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
+	HostType             *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	OrderId              *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostsRequest) String() string {

@@ -20,29 +20,9 @@ type iModifyTaskInfoResponseBody interface {
 }
 
 type ModifyTaskInfoResponseBody struct {
-	// The error code.
-	//
-	// example:
-	//
-	// mst.errorcode.success.errormessage
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the failed task. This parameter is returned when a task fails.
-	//
-	// example:
-	//
-	// t-83br18hlw11ue610yo
-	ErrorTaskId *string `json:"ErrorTaskId,omitempty" xml:"ErrorTaskId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 18B3000C-2B06-5D4F-AA5B-456D5FBCA55B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of completed tasks.
-	//
-	// example:
-	//
-	// 5
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorTaskId  *string `json:"ErrorTaskId,omitempty" xml:"ErrorTaskId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SuccessCount *string `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
 }
 

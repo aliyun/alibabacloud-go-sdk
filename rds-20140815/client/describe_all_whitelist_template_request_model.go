@@ -28,52 +28,16 @@ type iDescribeAllWhitelistTemplateRequest interface {
 }
 
 type DescribeAllWhitelistTemplateRequest struct {
-	// Specifies whether to enable fuzzy search. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
 	FuzzySearch *bool `json:"FuzzySearch,omitempty" xml:"FuzzySearch,omitempty"`
-	// The number of entries to return on each page. Enumerated valid values: 10, 30, and 50.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
-	// The page number.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. For more information about resource groups, see related documentation.
-	//
-	// example:
-	//
-	// rg-acfmyhigxskzysy
+	PageNumbers          *int32  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the IP whitelist template. If you specify this parameter when you perform a fuzzy search, you can call the DescribeWhitelistTemplate operation to query the name of the whitelist template during the fuzzy search.
-	//
-	// example:
-	//
-	// template
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DescribeAllWhitelistTemplateRequest) String() string {

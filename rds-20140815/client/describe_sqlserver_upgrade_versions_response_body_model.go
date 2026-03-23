@@ -17,6 +17,8 @@ type iDescribeSQLServerUpgradeVersionsResponseBody interface {
 
 type DescribeSQLServerUpgradeVersionsResponseBody struct {
 	Items *DescribeSQLServerUpgradeVersionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 866F5EB8-4650-4061-87F0-379F6F******
@@ -93,7 +95,13 @@ func (s *DescribeSQLServerUpgradeVersionsResponseBodyItems) Validate() error {
 }
 
 type DescribeSQLServerUpgradeVersionsResponseBodyItemsItem struct {
-	CurrentVersion           *string                                                                        `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// 当前的版本。若传DBInstanceId，则返回实例版本。若未传DBInstanceId，但传了EngineVersion，则返回EngineVersion。
+	//
+	// example:
+	//
+	// 2016_web
+	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// 一个列表，显示是否支持升级到目标版本
 	SQLServerUpgradeVersions *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersions `json:"SQLServerUpgradeVersions,omitempty" xml:"SQLServerUpgradeVersions,omitempty" type:"Struct"`
 }
 
@@ -167,9 +175,20 @@ func (s *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVe
 }
 
 type DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersion struct {
+	// 一个列表，描述了每个版本是否可以成为升级目标
 	DBInstanceClassItems *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersionDBInstanceClassItems `json:"DBInstanceClassItems,omitempty" xml:"DBInstanceClassItems,omitempty" type:"Struct"`
-	EnableUpgrade        *string                                                                                                                   `json:"EnableUpgrade,omitempty" xml:"EnableUpgrade,omitempty"`
-	Version              *string                                                                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// 是否支持升级到该版本
+	//
+	// example:
+	//
+	// NO/YES
+	EnableUpgrade *string `json:"EnableUpgrade,omitempty" xml:"EnableUpgrade,omitempty"`
+	// 版本值
+	//
+	// example:
+	//
+	// 2016_std
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersion) String() string {
@@ -251,11 +270,36 @@ func (s *DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVe
 }
 
 type DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersionDBInstanceClassItemsDBInstanceClassItem struct {
-	CPU                 *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	DBInstanceClass     *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// 可升级的版本规格的CPU大小
+	//
+	// example:
+	//
+	// 2
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// 可升级的版本规格
+	//
+	// example:
+	//
+	// mssql.x4.medium.s2
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// 可升级的版本规格的类型
+	//
+	// example:
+	//
+	// 独享型
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	Group               *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Memory              *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// 组类型
+	//
+	// example:
+	//
+	// 2
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// 可升级的版本规格的内存大小
+	//
+	// example:
+	//
+	// 8GB
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s DescribeSQLServerUpgradeVersionsResponseBodyItemsItemSQLServerUpgradeVersionsSQLServerUpgradeVersionDBInstanceClassItemsDBInstanceClassItem) String() string {

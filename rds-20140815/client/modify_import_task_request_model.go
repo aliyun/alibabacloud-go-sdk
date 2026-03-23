@@ -22,12 +22,21 @@ type iModifyImportTaskRequest interface {
 }
 
 type ModifyImportTaskRequest struct {
+	// Instance ID. You can obtain it by invoking DescribeDBInstances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2ze63v2p3o3k****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Valid values:
+	//
+	//
+	// - RETRY_IMPORT: retry import
+	//
+	// - CANCEL: cancel job
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35,12 +44,16 @@ type ModifyImportTaskRequest struct {
 	// CANCEL
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Destination region ID. You can view region IDs by invoking the DescribeRegions API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Job ID.
+	//
 	// This parameter is required.
 	//
 	// example:

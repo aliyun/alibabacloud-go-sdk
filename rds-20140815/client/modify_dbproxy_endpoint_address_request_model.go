@@ -30,55 +30,13 @@ type iModifyDBProxyEndpointAddressRequest interface {
 }
 
 type ModifyDBProxyEndpointAddressRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-t4n3a****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The network type of the database proxy endpoint. Valid values:
-	//
-	// 	- **Public**
-	//
-	// 	- **VPC*	- (default)
-	//
-	// >  If the RDS instance runs MySQL, this parameter is required.
-	//
-	// example:
-	//
-	// Public
+	DBInstanceId                *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the database proxy endpoint.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ta9um4****
-	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// A deprecated parameter. You do not need to specify this parameter.
-	//
-	// example:
-	//
-	// normal
-	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The prefix of the new database proxy endpoint. A custom value is supported.
-	//
-	// >  You must specify at least one of the **DBProxyNewConnectString*	- and **DBProxyNewConnectStringPort*	- parameters.
-	//
-	// example:
-	//
-	// test123456
-	DBProxyNewConnectString *string `json:"DBProxyNewConnectString,omitempty" xml:"DBProxyNewConnectString,omitempty"`
-	// The port number that is associated with the database proxy endpoint. A custom value is supported.
-	//
-	// >  You must specify at least one of the **DBProxyNewConnectString*	- and **DBProxyNewConnectStringPort*	- parameters.
-	//
-	// example:
-	//
-	// 3307
+	DBProxyEndpointId           *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
+	DBProxyEngineType           *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
+	DBProxyNewConnectString     *string `json:"DBProxyNewConnectString,omitempty" xml:"DBProxyNewConnectString,omitempty"`
 	DBProxyNewConnectStringPort *string `json:"DBProxyNewConnectStringPort,omitempty" xml:"DBProxyNewConnectStringPort,omitempty"`
 	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount        *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

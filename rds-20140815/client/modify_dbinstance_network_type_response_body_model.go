@@ -18,24 +18,9 @@ type iModifyDBInstanceNetworkTypeResponseBody interface {
 }
 
 type ModifyDBInstanceNetworkTypeResponseBody struct {
-	// The endpoint that is used to connect to the instance.
-	//
-	// example:
-	//
-	// rm-bp1*****************.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// 1025486523574
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDBInstanceNetworkTypeResponseBody) String() string {

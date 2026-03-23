@@ -36,92 +36,24 @@ type iCreateDBInstanceEndpointShrinkRequest interface {
 }
 
 type CreateDBInstanceEndpointShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
-	//
-	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// example:
-	//
-	// 6000170000591aed949d0f****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The prefix of the internal endpoint.
-	//
-	// When you create any type of endpoint, an internal endpoint is automatically created for the endpoint. This parameter specifies the prefix of the internal endpoint.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-****-ro
-	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The user-defined description of the endpoint.
-	//
-	// example:
-	//
-	// for readonly business
+	ConnectionStringPrefix        *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	DBInstanceEndpointDescription *string `json:"DBInstanceEndpointDescription,omitempty" xml:"DBInstanceEndpointDescription,omitempty"`
-	// The endpoint type. Valid values:
-	//
-	// 	- Primary: read/write endpoint of the instance
-	//
-	// 	- Readonly: read-only endpoint of the instance
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Readonly
 	DBInstanceEndpointType *string `json:"DBInstanceEndpointType,omitempty" xml:"DBInstanceEndpointType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The information about the endpoint.
-	//
 	// This parameter is required.
 	NodeItemsShrink *string `json:"NodeItems,omitempty" xml:"NodeItems,omitempty"`
-	// The port number of the internal endpoint. You can specify the port number for the internal endpoint.
-	//
-	// Valid values: 3000 to 5999.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The IP address of the internal endpoint.
-	//
-	// example:
-	//
-	// 172.16.XX.XX
+	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The vSwitch ID of the internal endpoint.
-	//
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// vsw-bp1kqp****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID of the internal endpoint.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// vpc-xxxmmxjqqi****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

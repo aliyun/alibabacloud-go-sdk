@@ -22,46 +22,12 @@ type iDeleteRCInstancesRequest interface {
 }
 
 type DeleteRCInstancesRequest struct {
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and insufficient inventory errors.
-	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
-	//
-	// example:
-	//
-	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to forcefully release a running instance. Valid values:
-	//
-	// 	- **Yes**
-	//
-	// 	- **No*	- (default)
-	//
-	// example:
-	//
-	// Yes
-	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The details of the instance.
-	//
+	Force  *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// This parameter is required.
-	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to release an expired subscription instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
-	//
-	// example:
-	//
-	// true
-	TerminateSubscription *bool `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
+	InstanceId            []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TerminateSubscription *bool     `json:"TerminateSubscription,omitempty" xml:"TerminateSubscription,omitempty"`
 }
 
 func (s DeleteRCInstancesRequest) String() string {

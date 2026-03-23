@@ -16,17 +16,6 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language that is used for the return value of the **LocalName*	- parameter. Valid values:
-	//
-	// 	- **zh-CN**: Chinese
-	//
-	// 	- **en-US**: English
-	//
-	// Default value: **en-US**.
-	//
-	// example:
-	//
-	// en-US
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

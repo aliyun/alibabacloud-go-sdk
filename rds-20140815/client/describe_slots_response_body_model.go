@@ -16,14 +16,8 @@ type iDescribeSlotsResponseBody interface {
 }
 
 type DescribeSlotsResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 76AF0609-4195-5DFC-BC78-3AD76FF872BB
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the replication slot.
-	Slots []*DescribeSlotsResponseBodySlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Slots     []*DescribeSlotsResponseBodySlots `json:"Slots,omitempty" xml:"Slots,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSlotsResponseBody) String() string {
@@ -66,66 +60,14 @@ func (s *DescribeSlotsResponseBody) Validate() error {
 }
 
 type DescribeSlotsResponseBodySlots struct {
-	// The name of the database in which the replication slot resides.
-	//
-	// example:
-	//
-	// db_test01
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The extension used by the replication slot.
-	//
-	// example:
-	//
-	// test_decoding
-	Plugin *string `json:"Plugin,omitempty" xml:"Plugin,omitempty"`
-	// The replication slot name.
-	//
-	// example:
-	//
-	// slot_test01
-	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
-	// The replication slot status. Valid values:
-	//
-	// 	- ACTIVE
-	//
-	// 	- INACTIVE
-	//
-	// example:
-	//
-	// INACTIVE
-	SlotStatus *string `json:"SlotStatus,omitempty" xml:"SlotStatus,omitempty"`
-	// The replication slot type. Valid values:
-	//
-	// 	- physical
-	//
-	// 	- logical
-	//
-	// example:
-	//
-	// logical
-	SlotType *string `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
-	// The latency of the logical subscription on the subscriber node that corresponds to the current replication slot. Unit: seconds.
-	//
-	// example:
-	//
-	// 0
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Plugin       *string `json:"Plugin,omitempty" xml:"Plugin,omitempty"`
+	SlotName     *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
+	SlotStatus   *string `json:"SlotStatus,omitempty" xml:"SlotStatus,omitempty"`
+	SlotType     *string `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
 	SubReplayLag *string `json:"SubReplayLag,omitempty" xml:"SubReplayLag,omitempty"`
-	// Indicates whether the replication slot is a temporary replication slot. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	Temporary *string `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	// The number of logs accumulated in the replication slot.
-	//
-	// example:
-	//
-	// 16 MB
-	WalDelay *string `json:"WalDelay,omitempty" xml:"WalDelay,omitempty"`
+	Temporary    *string `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
+	WalDelay     *string `json:"WalDelay,omitempty" xml:"WalDelay,omitempty"`
 }
 
 func (s DescribeSlotsResponseBodySlots) String() string {

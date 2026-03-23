@@ -26,31 +26,11 @@ type iModifyAccountDescriptionRequest interface {
 }
 
 type ModifyAccountDescriptionRequest struct {
-	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
-	//
-	// >  The description cannot start with http:// or https://.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Test Account A
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The username of the account. You can call the DescribeAccounts operation to obtain the username of the account.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

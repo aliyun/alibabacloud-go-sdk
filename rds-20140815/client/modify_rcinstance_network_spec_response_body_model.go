@@ -14,11 +14,6 @@ type iModifyRCInstanceNetworkSpecResponseBody interface {
 }
 
 type ModifyRCInstanceNetworkSpecResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 8F347CA3-D6AB-5045-9026-24578801F781
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

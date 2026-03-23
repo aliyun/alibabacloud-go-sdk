@@ -232,12 +232,49 @@ type DescribeUpgradeMajorVersionTasksResponseBodyItems struct {
 	// example:
 	//
 	// switch
-	UpgradeMode                  *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
-	CutOver                      *bool   `json:"cutOver,omitempty" xml:"cutOver,omitempty"`
-	TotalLogicRepDelayTime       *int32  `json:"totalLogicRepDelayTime,omitempty" xml:"totalLogicRepDelayTime,omitempty"`
-	TotalLogicRepLatencyMB       *int32  `json:"totalLogicRepLatencyMB,omitempty" xml:"totalLogicRepLatencyMB,omitempty"`
+	UpgradeMode *string `json:"UpgradeMode,omitempty" xml:"UpgradeMode,omitempty"`
+	// Indicates whether a switch is performed.
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// example:
+	//
+	// true
+	CutOver *bool `json:"cutOver,omitempty" xml:"cutOver,omitempty"`
+	// Estimated synchronization time for logical replication delay, in seconds.
+	//
+	// > This is used only for **zero-downtime*	- major version upgrades.
+	//
+	// example:
+	//
+	// 10
+	TotalLogicRepDelayTime *int32 `json:"totalLogicRepDelayTime,omitempty" xml:"totalLogicRepDelayTime,omitempty"`
+	// Logical replication delay size, in MB.
+	//
+	// > Applies only to **zero-downtime*	- major version upgrades.
+	//
+	// example:
+	//
+	// 1
+	TotalLogicRepLatencyMB *int32 `json:"totalLogicRepLatencyMB,omitempty" xml:"totalLogicRepLatencyMB,omitempty"`
+	// Temporary internal endpoint for zero-downtime major version upgrade, in the format `****.pg.rds.aliyuncs.com`.
+	//
+	// > Applies only to **zero-downtime*	- major version upgrades.
+	//
+	// example:
+	//
+	// ****.pg.rds.aliyuncs.com
 	ZeroDownTimeConnectionString *string `json:"zeroDownTimeConnectionString,omitempty" xml:"zeroDownTimeConnectionString,omitempty"`
-	ZeroDownTimePort             *int32  `json:"zeroDownTimePort,omitempty" xml:"zeroDownTimePort,omitempty"`
+	// Port of the higher-version instance, which is the same as the source instance port.
+	//
+	// > Applies only to **zero-downtime*	- major version upgrades.
+	//
+	// example:
+	//
+	// 5432
+	ZeroDownTimePort *int32 `json:"zeroDownTimePort,omitempty" xml:"zeroDownTimePort,omitempty"`
 }
 
 func (s DescribeUpgradeMajorVersionTasksResponseBodyItems) String() string {

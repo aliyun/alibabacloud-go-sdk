@@ -32,15 +32,7 @@ type ModifyBackupSetExpireTimeResponseBody struct {
 	//
 	// example:
 	//
-	// {
-	//
-	//       "SupportOnlineResizeDisk": true,
-	//
-	//       "DBInstanceName": "rm-bp****",
-	//
-	//       "maxSupportDiskSizeGB": 6144
-	//
-	// }
+	// {expectExpireTime=1752581423000, dbClusterId=rm-7xv8f2zcia0e4****, backupId=262186****}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The information about the status code.
 	//

@@ -24,37 +24,12 @@ type iDescribeLogBackupFilesResponseBody interface {
 }
 
 type DescribeLogBackupFilesResponseBody struct {
-	Items *DescribeLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the page returned.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of log files on the current page.
-	//
-	// example:
-	//
-	// 100
-	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// F8EC669C-FC85-43D7-AF06-C3641626B37E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total size of log files. Unit: bytes.
-	//
-	// example:
-	//
-	// 2300
-	TotalFileSize *int64 `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
-	// The total number of log files.
-	//
-	// example:
-	//
-	// 17
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items            *DescribeLogBackupFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	PageNumber       *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageRecordCount  *int32                                   `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalFileSize    *int64                                   `json:"TotalFileSize,omitempty" xml:"TotalFileSize,omitempty"`
+	TotalRecordCount *int32                                   `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeLogBackupFilesResponseBody) String() string {

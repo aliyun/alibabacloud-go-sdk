@@ -16,21 +16,7 @@ type iCheckCreateDdrDBInstanceResponseBody interface {
 }
 
 type CheckCreateDdrDBInstanceResponseBody struct {
-	// Indicates whether the data of the source instance can be restored across regions. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsValid *string `json:"IsValid,omitempty" xml:"IsValid,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
+	IsValid   *string `json:"IsValid,omitempty" xml:"IsValid,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

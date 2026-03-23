@@ -20,7 +20,7 @@ type CreateBackupResponseBody struct {
 	//
 	// example:
 	//
-	// 5073731
+	// 507****
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The ID of the request.
 	//

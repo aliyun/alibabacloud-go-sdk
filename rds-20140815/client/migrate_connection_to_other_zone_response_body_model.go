@@ -18,23 +18,8 @@ type iMigrateConnectionToOtherZoneResponseBody interface {
 }
 
 type MigrateConnectionToOtherZoneResponseBody struct {
-	// The error code.
-	//
-	// example:
-	//
-	// InvalidParam
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// Invalid Parameter.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 65BDA532-28AF-4122-AA39-B382721EEE64
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

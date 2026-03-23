@@ -32,84 +32,16 @@ type iDescribeMigrateTaskByIdResponseBody interface {
 }
 
 type DescribeMigrateTaskByIdResponseBody struct {
-	// The type of the migration task. Valid values:
-	//
-	// 	- **FULL**: The migration task migrates full backup files that can be used to restore the full data of the instance.
-	//
-	// 	- **UPDF**: The migration task migrates incremental or log backup files that can be used to restore the incremental data of the instance.
-	//
-	// example:
-	//
-	// FULL
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The time when the migration task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-05-30T12:11:04Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
+	BackupMode     *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// mytestdb
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The description of the migration task.
-	//
-	// example:
-	//
-	// Success to DBCC checkdb asynchronously
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the migration task was completed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-05-30T15:15:05Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the imported data overwrites the existing data. Valid values:
-	//
-	// 	- **False**: The imported data does not overwrite the existing data.
-	//
-	// 	- **True**: The imported data overwrites the existing data.
-	//
-	// example:
-	//
-	// False
-	IsDBReplaced *string `json:"IsDBReplaced,omitempty" xml:"IsDBReplaced,omitempty"`
-	// The ID of the migration task.
-	//
-	// example:
-	//
-	// 235943
-	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 6ED3635A-01F9-47BD-B9C8-CB3FD70A336E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the migration task. Valid values:
-	//
-	// 	- **NoStart**: The task has not started.
-	//
-	// 	- **Running**:The task is in progress.
-	//
-	// 	- **Success**: The task is successful.
-	//
-	// 	- **Failed**: The task failed.
-	//
-	// 	- **Waiting**: The task is waiting for an incremental backup file to be imported.
-	//
-	// example:
-	//
-	// Success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsDBReplaced   *string `json:"IsDBReplaced,omitempty" xml:"IsDBReplaced,omitempty"`
+	MigrateTaskId  *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMigrateTaskByIdResponseBody) String() string {

@@ -28,7 +28,7 @@ type DescribeDBProxyPerformanceResponseBody struct {
 	//
 	// example:
 	//
-	// lsmexxxxxxx
+	// lsme****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// An internal parameter. You do not need to specify this parameter.
 	//

@@ -18,15 +18,8 @@ type iCheckRegionSupportBackupEncryptionRequest interface {
 }
 
 type CheckRegionSupportBackupEncryptionRequest struct {
-	// example:
-	//
-	// rm-wz91q53f9*******
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

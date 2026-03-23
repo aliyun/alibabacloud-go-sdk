@@ -14,11 +14,6 @@ type iSwitchDBInstanceHAResponseBody interface {
 }
 
 type SwitchDBInstanceHAResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

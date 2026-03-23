@@ -14,11 +14,6 @@ type iModifyDBProxyEndpointAddressResponseBody interface {
 }
 
 type ModifyDBProxyEndpointAddressResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 50F6C32B-DD73-4DA1-ADA2-0EAF2B0FCD8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

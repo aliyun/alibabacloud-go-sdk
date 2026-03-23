@@ -36,75 +36,20 @@ type iMigrateDBInstanceRequest interface {
 }
 
 type MigrateDBInstanceRequest struct {
-	// The ID of the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// dhg-4n******
-	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The time when you want the system to start the migration. Valid values:
-	//
-	// 	- **Immediately**: The system immediately starts the migration. This is the default value.
-	//
-	// 	- **MaintainTime**: The system starts the migration during the specified maintenance window.
-	//
-	// 	- **Specified**: The system starts the migration at the specified point in time.
-	//
-	// example:
-	//
-	// MaintainTime
-	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The point in time when you want the system to start the migration. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	//
-	// > This parameter must be specified when you set **EffectiveTime*	- to **Specified**.
-	//
-	// example:
-	//
-	// 2019-10-21T10:00:00Z
-	SpecifiedTime *string `json:"SpecifiedTime,omitempty" xml:"SpecifiedTime,omitempty"`
-	// The ID of the host to which you want to migrate the primary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
-	//
-	// example:
-	//
-	// i-bp******
+	DedicatedHostGroupId           *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	EffectiveTime                  *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	OwnerId                        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SpecifiedTime                  *string `json:"SpecifiedTime,omitempty" xml:"SpecifiedTime,omitempty"`
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
-	// The ID of the host to which you want to migrate the secondary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
-	//
-	// example:
-	//
-	// i-bp******
-	TargetDedicatedHostIdForSlave *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
-	// The zone ID of the secondary node.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneIdForFollower *string `json:"ZoneIdForFollower,omitempty" xml:"ZoneIdForFollower,omitempty"`
-	// The zone ID of the logger instance.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	ZoneIdForLog *string `json:"ZoneIdForLog,omitempty" xml:"ZoneIdForLog,omitempty"`
+	TargetDedicatedHostIdForSlave  *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
+	ZoneIdForFollower              *string `json:"ZoneIdForFollower,omitempty" xml:"ZoneIdForFollower,omitempty"`
+	ZoneIdForLog                   *string `json:"ZoneIdForLog,omitempty" xml:"ZoneIdForLog,omitempty"`
 }
 
 func (s MigrateDBInstanceRequest) String() string {

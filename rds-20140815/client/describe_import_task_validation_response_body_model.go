@@ -20,20 +20,30 @@ type iDescribeImportTaskValidationResponseBody interface {
 }
 
 type DescribeImportTaskValidationResponseBody struct {
+	// Job details.
+	//
 	// example:
 	//
 	// {"ValidateAction": "Detail"}
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Job status. The parameter is invalid.
+	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request succeeded. The values have the following meanings:
+	//
+	// - **true**: Succeeded
+	//
+	// - **false**: Failed
+	//
 	// example:
 	//
 	// true

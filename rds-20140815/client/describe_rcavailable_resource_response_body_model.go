@@ -17,10 +17,7 @@ type iDescribeRCAvailableResourceResponseBody interface {
 
 type DescribeRCAvailableResourceResponseBody struct {
 	AvailableZones []*DescribeRCAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0041D94C-FB92-4C49-B115-259DA1C*****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCAvailableResourceResponseBody) String() string {
@@ -64,22 +61,10 @@ func (s *DescribeRCAvailableResourceResponseBody) Validate() error {
 
 type DescribeRCAvailableResourceResponseBodyAvailableZones struct {
 	AvailableResources []*DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 0041D94C-FB92-4C49-B115-259DA1C*****
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// WithStock
-	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	// example:
-	//
-	// cn-hangzhou-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	RegionId           *string                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusCategory     *string                                                                    `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
+	ZoneId             *string                                                                    `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCAvailableResourceResponseBodyAvailableZones) String() string {
@@ -150,10 +135,7 @@ func (s *DescribeRCAvailableResourceResponseBodyAvailableZones) Validate() error
 
 type DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResources struct {
 	SupportedResources []*DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResourcesSupportedResources `json:"SupportedResources,omitempty" xml:"SupportedResources,omitempty" type:"Repeated"`
-	// example:
-	//
-	// InstanceType
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type               *string                                                                                      `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResources) String() string {
@@ -196,34 +178,13 @@ func (s *DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResources
 }
 
 type DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResourcesSupportedResources struct {
-	// example:
-	//
-	// 2048
-	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// example:
-	//
-	// 20
-	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
-	// example:
-	//
-	// Available
-	QuotaStatus *string `json:"QuotaStatus,omitempty" xml:"QuotaStatus,omitempty"`
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// WithStock
+	Max            *int32  `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min            *int32  `json:"Min,omitempty" xml:"Min,omitempty"`
+	QuotaStatus    *string `json:"QuotaStatus,omitempty" xml:"QuotaStatus,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusCategory *string `json:"StatusCategory,omitempty" xml:"StatusCategory,omitempty"`
-	// example:
-	//
-	// GiB
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// example:
-	//
-	// mysql.x4.4xlarge.7cm
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Unit           *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value          *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeRCAvailableResourceResponseBodyAvailableZonesAvailableResourcesSupportedResources) String() string {

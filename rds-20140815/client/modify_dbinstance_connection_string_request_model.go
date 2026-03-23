@@ -100,8 +100,26 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	Port                 *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RetainVip            *bool   `json:"RetainVip,omitempty" xml:"RetainVip,omitempty"`
-	TargetDBInstanceId   *string `json:"TargetDBInstanceId,omitempty" xml:"TargetDBInstanceId,omitempty"`
+	// Specifies whether to retain the virtual IP address (VIP) when swapping connection addresses.
+	//
+	// - **true**: Retains the VIP.
+	//
+	// - **false*	- (default): Does not retain the VIP.
+	//
+	// > This parameter is supported only for RDS PostgreSQL instances.
+	//
+	// example:
+	//
+	// false
+	RetainVip *bool `json:"RetainVip,omitempty" xml:"RetainVip,omitempty"`
+	// The ID of the target RDS PostgreSQL instance whose connection address you want to swap with the current instance.
+	//
+	// > This parameter is supported only for RDS PostgreSQL instances.
+	//
+	// example:
+	//
+	// pgm-bp1206s14p3o****
+	TargetDBInstanceId *string `json:"TargetDBInstanceId,omitempty" xml:"TargetDBInstanceId,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringRequest) String() string {

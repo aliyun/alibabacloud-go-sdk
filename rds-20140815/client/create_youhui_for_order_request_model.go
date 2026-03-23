@@ -30,7 +30,7 @@ type CreateYouhuiForOrderRequest struct {
 	//
 	// example:
 	//
-	// 1711510887******
+	// 171151088708****
 	ActivityId *int64  `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The promotion ID. You can call the GetResourcePrice operation to query the promotion ID.
@@ -39,7 +39,7 @@ type CreateYouhuiForOrderRequest struct {
 	//
 	// example:
 	//
-	// 2000001******
+	// 200000199****
 	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//

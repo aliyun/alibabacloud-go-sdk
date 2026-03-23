@@ -16,14 +16,8 @@ type iQueryNotifyResponseBody interface {
 }
 
 type QueryNotifyResponseBody struct {
-	// The response parameters.
-	Data *QueryNotifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 94CB8D93-017A-5AE7-A118-6E0F89D93C0A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *QueryNotifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryNotifyResponseBody) String() string {
@@ -62,26 +56,10 @@ func (s *QueryNotifyResponseBody) Validate() error {
 }
 
 type QueryNotifyResponseBodyData struct {
-	// The details of notifications.
-	NotifyItemList []*QueryNotifyResponseBodyDataNotifyItemList `json:"NotifyItemList,omitempty" xml:"NotifyItemList,omitempty" type:"Repeated"`
-	// The page number of the page returned.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
-	//
-	// example:
-	//
-	// 25
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 1
-	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	NotifyItemList   []*QueryNotifyResponseBodyDataNotifyItemList `json:"NotifyItemList,omitempty" xml:"NotifyItemList,omitempty" type:"Repeated"`
+	PageNumber       *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalRecordCount *int32                                       `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s QueryNotifyResponseBodyData) String() string {
@@ -142,118 +120,18 @@ func (s *QueryNotifyResponseBodyData) Validate() error {
 }
 
 type QueryNotifyResponseBodyDataNotifyItemList struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 22973492**********
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// Indicates whether the notification has been confirmed. You can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	ConfirmFlag *bool `json:"ConfirmFlag,omitempty" xml:"ConfirmFlag,omitempty"`
-	// The UID of the contact who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. The contact belongs to the current Alibaba Cloud account.
-	//
-	// The value **0*	- indicates that the notification is automatically confirmed by the system.
-	//
-	// example:
-	//
-	// 0
-	Confirmor *int64 `json:"Confirmor,omitempty" xml:"Confirmor,omitempty"`
-	// The time when the notification was created.
-	//
-	// example:
-	//
-	// 2022-04-21T02:04:04Z
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the notification was modified.
-	//
-	// example:
-	//
-	// 2022-04-21T02:10:47Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the notification.
-	//
-	// example:
-	//
-	// 103499
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of times that repeatedly sent notifications are blocked.
-	//
-	// example:
-	//
-	// 0
+	AliUid          *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ConfirmFlag     *bool   `json:"ConfirmFlag,omitempty" xml:"ConfirmFlag,omitempty"`
+	Confirmor       *int64  `json:"Confirmor,omitempty" xml:"Confirmor,omitempty"`
+	GmtCreated      *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified     *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IdempotentCount *string `json:"IdempotentCount,omitempty" xml:"IdempotentCount,omitempty"`
-	// This parameter ensures the idempotence of the notification and prevents the notification from being repeatedly sent.
-	//
-	// example:
-	//
-	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
-	IdempotentId *string `json:"IdempotentId,omitempty" xml:"IdempotentId,omitempty"`
-	// The level of the notification. Valid values:
-	//
-	// 	- **help**
-	//
-	// 	- **success**
-	//
-	// 	- **warning**
-	//
-	// 	- **error**
-	//
-	// 	- **loading**
-	//
-	// 	- **notice**
-	//
-	// example:
-	//
-	// error
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The element in the notification template. This parameter is a JSON string. Fields in the JSON string vary based on the value of the **TemplateName*	- parameter.
-	//
-	// 	- If the **TemplateName*	- parameter is **RenewalRecommend**, the JSON string contains the following fields:
-	//
-	//     	- **instanceName**: the ID of the instance that is about to expire
-	//
-	//     	- **reservedTime**: the remaining validity period of the instance in days
-	//
-	// 	- If the **TemplateName*	- parameter is **InstanceCreateFailed**, the JSON string contains the following fields:
-	//
-	//     	- **orderId**: the ID of the order to purchase the instance
-	//
-	//     	- **reason**: the cause of the instance creation failure
-	//
-	// example:
-	//
-	// {\\"orderId\\":21466**********}
-	NotifyElement *string `json:"NotifyElement,omitempty" xml:"NotifyElement,omitempty"`
-	// The template of the notification. Valid values:
-	//
-	// 	- **RenewalRecommend**: The template that is used to notify of renewal suggestions.
-	//
-	// 	- **InstanceCreateFailed**: The template that is used to notify that an instance fails to be created and is refunded.
-	//
-	// example:
-	//
-	// InstanceCreateFailed
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the notification. Valid values:
-	//
-	// 	- **Sell**: sales notification
-	//
-	// 	- **Operation**: O\\&M notification
-	//
-	// 	- **Promotion**: promotion notification
-	//
-	// example:
-	//
-	// Sell
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	IdempotentId    *string `json:"IdempotentId,omitempty" xml:"IdempotentId,omitempty"`
+	Level           *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NotifyElement   *string `json:"NotifyElement,omitempty" xml:"NotifyElement,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryNotifyResponseBodyDataNotifyItemList) String() string {

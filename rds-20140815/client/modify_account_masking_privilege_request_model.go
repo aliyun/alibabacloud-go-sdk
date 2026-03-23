@@ -30,33 +30,45 @@ type iModifyAccountMaskingPrivilegeRequest interface {
 }
 
 type ModifyAccountMaskingPrivilegeRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// Database name
+	//
 	// example:
 	//
 	// myDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// Permission expiration time in UTC format. (Required only for fullAccess permission.)
+	//
 	// example:
 	//
 	// 2026-01-22T02:01:20Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Permission type (noneAccess, restrictedAccess, fullAccess)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// restrictedAccess
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	// Region ID
+	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// Account name. Multiple accounts are supported and must be separated by commas.
+	//
 	// This parameter is required.
 	//
 	// example:

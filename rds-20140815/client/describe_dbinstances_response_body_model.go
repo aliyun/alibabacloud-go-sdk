@@ -29,7 +29,7 @@ type DescribeDBInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// o7PORW5o2TJg**********
+	// o7PORW5o2TJg****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The page number of the returned page.
 	//

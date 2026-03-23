@@ -18,11 +18,20 @@ type iDescribeActiveOperationMaintainConfResponseBody interface {
 }
 
 type DescribeActiveOperationMaintainConfResponseBody struct {
+	// Configuration Information
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// Whether a configuration has been set; for the first access, hasConfig is 0
+	//
+	// 	- 1: Yes
+	//
+	// 	- 0: No
+	//
 	// example:
 	//
 	// 1
 	HasConfig *int32 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 4438AC3E-ABE3-5943-9436-***********
@@ -74,30 +83,56 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
+	// Creation Time, formatted as YYYY-MM-DDTHH:mm:ssZ
+	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Cycle time, with multiple values concatenated by English commas
+	//
+	// 	- When cycleType is Week, values 1–7 represent Monday–Sunday
+	//
+	// 	- When cycleType is Month, values 1–28 are allowed
+	//
 	// example:
 	//
 	// 1
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// Cycle type, either Month or Week
+	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// End time of the O&M time window, in UTC
+	//
+	// Default: 20:00:00Z
+	//
 	// example:
 	//
 	// 20:00:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// Start time of the O&M time window, in UTC
+	//
+	// Default: 18:00:00Z
+	//
 	// example:
 	//
 	// 18:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// Updated At, formatted as YYYY-MM-DDTHH:mm:ssZ, for example, 2018-05-30T14:30:00Z
+	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// Whether it is effective
+	//
+	// 	- 1: Valid
+	//
+	// 	- 2: Invalid
+	//
 	// example:
 	//
 	// 1

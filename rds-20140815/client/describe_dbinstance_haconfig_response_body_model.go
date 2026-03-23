@@ -22,45 +22,11 @@ type iDescribeDBInstanceHAConfigResponseBody interface {
 }
 
 type DescribeDBInstanceHAConfigResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The high availability mode of the instance. Valid values:
-	//
-	// 	- **RPO**: Data consistency is preferred. The instance ensures data reliability to minimize data losses. If you have high requirements on data consistency, select this mode.
-	//
-	// 	- **RTO**: Service availability is preferred. The instance restores the database service at the earliest opportunity to ensure service availability. If you have high requirements on instance availability, select this mode.
-	//
-	// > This parameter is returned only for instances that run MySQL.
-	//
-	// example:
-	//
-	// RPO
+	DBInstanceId      *string                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	HAMode            *string                                                  `json:"HAMode,omitempty" xml:"HAMode,omitempty"`
 	HostInstanceInfos *DescribeDBInstanceHAConfigResponseBodyHostInstanceInfos `json:"HostInstanceInfos,omitempty" xml:"HostInstanceInfos,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data replication mode of the instance. Valid values:
-	//
-	// 	- **Sync**: the synchronous mode
-	//
-	// 	- **Semi-sync**: the semi-synchronous replication mode
-	//
-	// 	- **Async**: the asynchronous mode
-	//
-	// > This parameter is returned only for instances that run MySQL.
-	//
-	// example:
-	//
-	// Sync
-	SyncMode *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SyncMode          *string                                                  `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
 }
 
 func (s DescribeDBInstanceHAConfigResponseBody) String() string {

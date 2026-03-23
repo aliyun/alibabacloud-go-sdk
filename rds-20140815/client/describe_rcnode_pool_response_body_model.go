@@ -16,14 +16,8 @@ type iDescribeRCNodePoolResponseBody interface {
 }
 
 type DescribeRCNodePoolResponseBody struct {
-	// The node pool information.
 	NodePoolList []*DescribeRCNodePoolResponseBodyNodePoolList `json:"NodePoolList,omitempty" xml:"NodePoolList,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// C816A4BF-A6EC-4722-95F9-2055859CCFD2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCNodePoolResponseBody) String() string {
@@ -66,190 +60,36 @@ func (s *DescribeRCNodePoolResponseBody) Validate() error {
 }
 
 type DescribeRCNodePoolResponseBodyNodePoolList struct {
-	// Indicates whether to enable automatic payment. Valid values:
-	//
-	// 	- **true*	- (default): enables the feature. You must make sure that your account balance is sufficient.
-	//
-	// 	- **false**: disables the feature. An unpaid order is generated.
-	//
-	// example:
-	//
-	// true
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Indicates whether to enable auto-renewal for the instance. Valid values:
-	//
-	// 	- **true*	- (default)
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the container cluster in which the RDS Custom instance resides.
-	//
-	// example:
-	//
-	// c463aaa89e2b84cacacfbf23c4867****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Indicates whether to add the instance to the ACK cluster.
-	//
-	// example:
-	//
-	// 1
-	CreateMode *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
-	// The data disks.
-	DataDisk []*DescribeRCNodePoolResponseBodyNodePoolListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// The ID of the deployment set.
-	//
-	// example:
-	//
-	// ds-bp18ukv66rlyuffv****
-	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The instance description.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance hostname.
-	//
-	// example:
-	//
-	// testHost1
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the image used by the instance.
-	//
-	// example:
-	//
-	// image-dsvjzw2ii8n4fvr****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The billing method. Valid value:
-	//
-	// 	- **Prepaid**: subscription
-	//
-	// 	- **Postpaid**: pay-as-you-go
-	//
-	// example:
-	//
-	// Prepaid
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance type.
-	//
-	// example:
-	//
-	// mysql.i8.large.2cm
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The key pair name.
-	//
-	// example:
-	//
-	// dell5502
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The node pool ID.
-	//
-	// example:
-	//
-	// np31da1b38983f4511b490fc62108a****
-	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	// The name of the node pool.
-	//
-	// example:
-	//
-	// np31da1b38983f4511b490fc62108a****
-	NodePoolName *string `json:"NodePoolName,omitempty" xml:"NodePoolName,omitempty"`
-	// The password of the root user of the instance.
-	//
-	// example:
-	//
-	// testPassword
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The subscription duration.
-	//
-	// example:
-	//
-	// 1
-	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription period. Valid values:
-	//
-	// 	- **Year**
-	//
-	// 	- **Month*	- (default)
-	//
-	// example:
-	//
-	// Year
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The security group ID.
-	//
-	// example:
-	//
-	// sg-uf6av412xaxixuez****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The specification of the system disk.
-	SystemDisk *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The tags.
-	Tag []*DescribeRCNodePoolResponseBodyNodePoolListTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-zm0qvgv3sm3sjzbkr****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-beijing-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AutoPay                     *bool                                                 `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew                   *bool                                                 `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClusterId                   *string                                               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateMode                  *string                                               `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	DataDisk                    []*DescribeRCNodePoolResponseBodyNodePoolListDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	DeploymentSetId             *string                                               `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
+	Description                 *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	HostName                    *string                                               `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                     *string                                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceChargeType          *string                                               `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceName                *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType                *string                                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType          *string                                               `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut     *int32                                                `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IoOptimized                 *string                                               `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
+	KeyPairName                 *string                                               `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	NodePoolId                  *string                                               `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	NodePoolName                *string                                               `json:"NodePoolName,omitempty" xml:"NodePoolName,omitempty"`
+	Password                    *string                                               `json:"Password,omitempty" xml:"Password,omitempty"`
+	Period                      *int32                                                `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit                  *string                                               `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId                    *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId             *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityEnhancementStrategy *string                                               `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
+	SecurityGroupId             *string                                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SpotStrategy                *string                                               `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SystemDisk                  *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tag                         []*DescribeRCNodePoolResponseBodyNodePoolListTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchId                   *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                      *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRCNodePoolResponseBodyNodePoolList) String() string {
@@ -558,48 +398,11 @@ func (s *DescribeRCNodePoolResponseBodyNodePoolList) Validate() error {
 }
 
 type DescribeRCNodePoolResponseBodyNodePoolListDataDisk struct {
-	// The type of the data disk. Set the value to **cloud_essd**, which indicates Enterprise SSDs (ESSDs).
-	//
-	// example:
-	//
-	// cloud_essd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The reserved parameter. This parameter is not supported.
-	//
-	// example:
-	//
-	// None
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// Indicates whether to encrypt the cloud disk. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default)
-	//
-	// example:
-	//
-	// false
-	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The performance level of the ESSD. Valid values:
-	//
-	// 	- **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
-	//
-	// 	- **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
-	//
-	// 	- **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
-	//
-	// 	- **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-	//
-	// example:
-	//
-	// PL0
-	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The data disk size. Unit: GiB.
-	//
-	// example:
-	//
-	// 20
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Encrypted          *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	PerformanceLevel   *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size               *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeRCNodePoolResponseBodyNodePoolListDataDisk) String() string {
@@ -660,32 +463,9 @@ func (s *DescribeRCNodePoolResponseBodyNodePoolListDataDisk) Validate() error {
 }
 
 type DescribeRCNodePoolResponseBodyNodePoolListSystemDisk struct {
-	// The type of the system disk. Set the value to **cloud_essd**, which indicates ESSDs.
-	//
-	// example:
-	//
-	// cloud_essd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of the ESSD. Valid values:
-	//
-	// 	- **PL0**: A single ESSD delivers up to 10,000 random read/write IOPS.
-	//
-	// 	- **PL1**: A single ESSD delivers up to 50,000 random read/write IOPS.
-	//
-	// 	- **PL2**: A single ESSD delivers up to 100,000 random read/write IOPS.
-	//
-	// 	- **PL3**: A single ESSD delivers up to 1,000,000 random read/write IOPS.
-	//
-	// example:
-	//
-	// PL1
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 40
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) String() string {
@@ -728,17 +508,7 @@ func (s *DescribeRCNodePoolResponseBodyNodePoolListSystemDisk) Validate() error 
 }
 
 type DescribeRCNodePoolResponseBodyNodePoolListTag struct {
-	// The tag keys.
-	//
-	// example:
-	//
-	// Testkey1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// Testvalue1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

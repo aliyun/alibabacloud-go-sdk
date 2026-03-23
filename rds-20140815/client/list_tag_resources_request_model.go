@@ -28,41 +28,16 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token required to obtain more results. This parameter is not required in the first query. If a query does not return all results, you can specify the token returned from the previous query for the next query to obtain more results.
-	//
-	// example:
-	//
-	// 212db86sca4384811e0b5e8707ec21345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance ID. You can specify a maximum of **50*	- instance IDs.****
-	//
-	// >  You must specify at least one of the **ResourceId*	- and **Key*	- parameters.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Set the value to **INSTANCE**.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// INSTANCE
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag list.
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -159,19 +134,7 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag key. You can query N tag keys at a time. Valid values of N: **1*	- to **20**. The value cannot be an empty string.
-	//
-	// >  You must specify at least one of the **ResourceId*	- and **Key*	- parameters.
-	//
-	// example:
-	//
-	// testkey1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value that is associated with the specified tag key. You can specify N tag values at a time. Valid values of N: **1*	- to **20**. The value can be an empty string.
-	//
-	// example:
-	//
-	// testvalue1
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

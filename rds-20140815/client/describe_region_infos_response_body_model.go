@@ -16,13 +16,8 @@ type iDescribeRegionInfosResponseBody interface {
 }
 
 type DescribeRegionInfosResponseBody struct {
-	Regions *DescribeRegionInfosResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 5414A4E5-4C36-4461-95FC-************
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions   *DescribeRegionInfosResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionInfosResponseBody) String() string {

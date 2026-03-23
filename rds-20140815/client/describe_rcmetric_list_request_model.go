@@ -32,6 +32,13 @@ type iDescribeRCMetricListRequest interface {
 }
 
 type DescribeRCMetricListRequest struct {
+	// Custom for SQL Server to batch query monitoring data for specified resources.
+	//
+	// Format: a collection of key:value pairs.
+	//
+	// example:
+	//
+	// [{"instanceId":"rc-l9hv3rv74ql7oa******"},{"instanceId":"rc-b532l1uj8n6sex******"}]
 	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Example: `2024-08-06 10:15:00`.
 	//
@@ -73,7 +80,7 @@ type DescribeRCMetricListRequest struct {
 	//
 	// example:
 	//
-	// 6178f1825f9fb76ce0b5e8707e68181f
+	// 6178f1825f9fb76ce0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The statistical period of the monitoring data.
 	//

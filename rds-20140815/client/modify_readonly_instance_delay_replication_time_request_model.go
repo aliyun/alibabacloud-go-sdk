@@ -24,31 +24,14 @@ type iModifyReadonlyInstanceDelayReplicationTimeRequest interface {
 }
 
 type ModifyReadonlyInstanceDelayReplicationTimeRequest struct {
-	// The ID of the read-only instance. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rr-bpxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The replication latency of the data replication. Unit: seconds.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 100
 	ReadSQLReplicationTime *string `json:"ReadSQLReplicationTime,omitempty" xml:"ReadSQLReplicationTime,omitempty"`
-	// The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
-	//
-	// example:
-	//
-	// rg-acfmy****
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyReadonlyInstanceDelayReplicationTimeRequest) String() string {

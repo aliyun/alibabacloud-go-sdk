@@ -18,28 +18,9 @@ type iDescribeSQLCollectorPolicyResponseBody interface {
 }
 
 type DescribeSQLCollectorPolicyResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the SQL Explorer (SQL Audit) feature. Valid values:
-	//
-	// 	- **Enable**
-	//
-	// 	- **Disabled**
-	//
-	// example:
-	//
-	// Enable
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
-	// A reserved parameter.
-	//
-	// example:
-	//
-	// 0
-	StoragePeriod *int32 `json:"StoragePeriod,omitempty" xml:"StoragePeriod,omitempty"`
+	StoragePeriod      *int32  `json:"StoragePeriod,omitempty" xml:"StoragePeriod,omitempty"`
 }
 
 func (s DescribeSQLCollectorPolicyResponseBody) String() string {

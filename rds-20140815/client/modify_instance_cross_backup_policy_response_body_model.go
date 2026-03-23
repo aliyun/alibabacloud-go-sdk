@@ -30,68 +30,15 @@ type iModifyInstanceCrossBackupPolicyResponseBody interface {
 }
 
 type ModifyInstanceCrossBackupPolicyResponseBody struct {
-	// The status of the cross-region backup feature on the instance. Valid values:
-	//
-	// 	- **Disable**
-	//
-	// 	- **Enable**
-	//
-	// example:
-	//
-	// Enable
-	BackupEnabled *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
-	// The ID of the region in which the cross-region backup files of the instance are stored.
-	//
-	// example:
-	//
-	// cn-shanghai
+	BackupEnabled     *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
 	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	// The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
-	//
-	// example:
-	//
-	// 1
-	CrossBackupType *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the cross-region log backup feature on the instance. Valid values:
-	//
-	// 	- **Disable**
-	//
-	// 	- **Enable**
-	//
-	// example:
-	//
-	// Enable
-	LogBackupEnabled *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
-	// The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 50A6059D-6DBB-46C6-A851-1EE93C9013CF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The policy that is used to retain the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that the cross-region backup files of the instance are retained based on the specified retention period.
-	//
-	// example:
-	//
-	// 1
-	RetentType *int32 `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
-	// The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
-	//
-	// example:
-	//
-	// 15
-	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	CrossBackupType   *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	LogBackupEnabled  *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetentType        *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
+	Retention         *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
 }
 
 func (s ModifyInstanceCrossBackupPolicyResponseBody) String() string {

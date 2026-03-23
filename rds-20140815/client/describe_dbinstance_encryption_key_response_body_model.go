@@ -32,66 +32,16 @@ type iDescribeDBInstanceEncryptionKeyResponseBody interface {
 }
 
 type DescribeDBInstanceEncryptionKeyResponseBody struct {
-	// The user who created the key.
-	//
-	// example:
-	//
-	// 1443*****9604
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled time at which the key is deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-05-08T08:14:16Z
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The description of the key.
-	//
-	// example:
-	//
-	// Description of the key
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the key.
-	//
-	// example:
-	//
-	// 5306d1b6-7fd3-42d9-9511-xxxxxxx
-	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The details about the key.
-	EncryptionKeyList []*DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList `json:"EncryptionKeyList,omitempty" xml:"EncryptionKeyList,omitempty" type:"Repeated"`
-	// The status of the key. Valid values:
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Disabled**
-	//
-	// example:
-	//
-	// Enabled
-	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The purpose of the key.
-	//
-	// example:
-	//
-	// ENCRYPT/DECRYPT
-	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The time at which the key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-10-18T08:14:16Z
-	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The source of the key.
-	//
-	// example:
-	//
-	// Aliyun_KMS
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 3BC2768E-DEDA-40FC-BBE9-6B884F3626AF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Creator             *string                                                         `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DeleteDate          *string                                                         `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	Description         *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncryptionKey       *string                                                         `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionKeyList   []*DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList `json:"EncryptionKeyList,omitempty" xml:"EncryptionKeyList,omitempty" type:"Repeated"`
+	EncryptionKeyStatus *string                                                         `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
+	KeyUsage            *string                                                         `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	MaterialExpireTime  *string                                                         `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	Origin              *string                                                         `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	RequestId           *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceEncryptionKeyResponseBody) String() string {
@@ -206,84 +156,17 @@ func (s *DescribeDBInstanceEncryptionKeyResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList struct {
-	// The alias of the key.
-	//
-	// example:
-	//
-	// alias/xxx
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The user who created the key.
-	//
-	// example:
-	//
-	// 1443*****9604
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The scheduled time at which the key is deleted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-05-08T08:14:16Z
-	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	// The description of the key.
-	//
-	// example:
-	//
-	// Description of the key
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the key.
-	//
-	// example:
-	//
-	// 5306d1b6-7fd3-42d9-9511-xxxxxxx
-	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The status of the key. Valid values:
-	//
-	// 	- **Enabled**
-	//
-	// 	- **Disabled**
-	//
-	// example:
-	//
-	// Enabled
+	AliasName           *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Creator             *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DeleteDate          *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EncryptionKey       *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	EncryptionKeyStatus *string `json:"EncryptionKeyStatus,omitempty" xml:"EncryptionKeyStatus,omitempty"`
-	// The type of the key. Valid values:
-	//
-	// 	- **CMK**
-	//
-	// 	- **ServiceKey**
-	//
-	// example:
-	//
-	// ServiceKey
-	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// The purpose of the key.
-	//
-	// example:
-	//
-	// ENCRYPT/DECRYPT
-	KeyUsage *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	// The time at which the key expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-10-18T08:14:16Z
-	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The source of the key.
-	//
-	// example:
-	//
-	// Aliyun_KMS
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The role of the instance. Valid values:
-	//
-	// 	- **Master**: primary instance
-	//
-	// 	- **slave**: read-only instance
-	//
-	// example:
-	//
-	// Master
-	UsedBy *string `json:"UsedBy,omitempty" xml:"UsedBy,omitempty"`
+	KeyType             *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	KeyUsage            *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	MaterialExpireTime  *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	Origin              *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	UsedBy              *string `json:"UsedBy,omitempty" xml:"UsedBy,omitempty"`
 }
 
 func (s DescribeDBInstanceEncryptionKeyResponseBodyEncryptionKeyList) String() string {

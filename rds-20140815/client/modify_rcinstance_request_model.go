@@ -43,7 +43,18 @@ type ModifyRCInstanceRequest struct {
 	// example:
 	//
 	// true
-	AutoPay       *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to automatically use a coupon. Valid values:
+	//
+	// 	- **true*	- (default): Yes.
+	//
+	// 	- **false**: No.
+	//
+	// > If you use a coupon and later decrease the quota, the amount offset by the coupon will not be refunded.
+	//
+	// example:
+	//
+	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The type of the change that you want to perform on the instance. Valid values:
 	//
@@ -78,10 +89,35 @@ type ModifyRCInstanceRequest struct {
 	// example:
 	//
 	// mysql.i8.large.2cm
-	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	PromotionCode      *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	RebootTime         *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
-	RebootWhenFinished *bool   `json:"RebootWhenFinished,omitempty" xml:"RebootWhenFinished,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 72329885****
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The restart time of the instance.
+	//
+	// - If **RebootWhenFinished*	- is set to **false**, you **must*	- specify a restart time within 48 hours.
+	//
+	// - The time must follow the ISO 8601 standard in UTC+0. Format: `yyyy-MM-ddTHH:mmZ`.
+	//
+	// example:
+	//
+	// 2025-04-03T12:05Z
+	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
+	// Whether to restart the instance immediately after the upgrade/downgrade operation ends. Valid values:
+	//
+	// - **true*	- (default): Yes.
+	//
+	// - **false**: No.
+	//
+	// > If the instance is in the **paused*	- status, it remains in that status even if you set `RebootWhenFinished=true`, and the restart operation will not be executed.
+	//
+	// example:
+	//
+	// true
+	RebootWhenFinished *bool `json:"RebootWhenFinished,omitempty" xml:"RebootWhenFinished,omitempty"`
 	// The region ID of the instance.
 	//
 	// example:

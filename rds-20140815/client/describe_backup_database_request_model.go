@@ -22,19 +22,8 @@ type iDescribeBackupDatabaseRequest interface {
 }
 
 type DescribeBackupDatabaseRequest struct {
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 90262212
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The ID of the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

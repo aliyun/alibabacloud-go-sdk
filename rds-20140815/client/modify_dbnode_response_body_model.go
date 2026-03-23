@@ -20,34 +20,10 @@ type iModifyDBNodeResponseBody interface {
 }
 
 type ModifyDBNodeResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the order.
-	//
-	// example:
-	//
-	// 20793850608****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 5CD61041-35F7-10F7-BE94-33A48B221218
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **true**: The request was successful.
-	//
-	// 	- **false**: The request failed.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDBNodeResponseBody) String() string {

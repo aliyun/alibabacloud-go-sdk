@@ -36,16 +36,22 @@ type iValidateImportTaskRequest interface {
 }
 
 type ValidateImportTaskRequest struct {
+	// Instance ID. You can obtain the value of this parameter by invoking the DescribeDBInstances API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-sdfljk123****
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// Estimated instance size (GB)
+	//
 	// example:
 	//
 	// 100
 	EstimatedSize *int32 `json:"EstimatedSize,omitempty" xml:"EstimatedSize,omitempty"`
+	// Source MySQL host address
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53,44 +59,62 @@ type ValidateImportTaskRequest struct {
 	// 192.168.10.1
 	Host    *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Password for the source MySQL user (Base64 encrypted)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UGFzc3dvcmQxMjMK
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Source MySQL port number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// Region ID. You can obtain this by invoking the DescribeRegions API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Source cloud instance ID
+	//
 	// example:
 	//
 	// i-wz9ff3acy500io5wdf5s
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
+	// Source platform type
+	//
+	// - ECS
+	//
 	// example:
 	//
 	// ECS
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	// Backup transfer port number
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9999
 	StreamPort *int32 `json:"StreamPort,omitempty" xml:"StreamPort,omitempty"`
+	// Source MySQL user
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
+	// Path to the Xtrabackup tool on the source
+	//
 	// example:
 	//
 	// /usr/local/bin/xtrabackup

@@ -14,7 +14,7 @@ type iUpdateDBInstanceReplicationResponseBody interface {
 }
 
 type UpdateDBInstanceReplicationResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//

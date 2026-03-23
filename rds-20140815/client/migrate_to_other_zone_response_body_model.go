@@ -18,24 +18,9 @@ type iMigrateToOtherZoneResponseBody interface {
 }
 
 type MigrateToOtherZoneResponseBody struct {
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the order. This parameter is returned only when the instance runs MySQL.
-	//
-	// example:
-	//
-	// 213341575990728
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 65BDA532-28AF-4122-AA39-B382721EEE64
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MigrateToOtherZoneResponseBody) String() string {

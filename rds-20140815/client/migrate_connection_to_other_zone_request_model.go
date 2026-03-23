@@ -22,31 +22,13 @@ type iMigrateConnectionToOtherZoneRequest interface {
 }
 
 type MigrateConnectionToOtherZoneRequest struct {
-	// The endpoint of the instance. The endpoint is specified when you create the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-bp1oypo6ky19y****
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-bp1oypo6ky19y****
 	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the zone.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

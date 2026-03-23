@@ -28,68 +28,14 @@ type iModifyBackupPolicyResponseBody interface {
 }
 
 type ModifyBackupPolicyResponseBody struct {
-	// The method that is used to compress backups. Valid values:
-	//
-	// 	- **0:*	- Backups are not compressed.
-	//
-	// 	- **1**: Backups are compressed by using the zlib tool.
-	//
-	// 	- **2**: Backups are compressed in parallel by using the zlib tool.
-	//
-	// 	- **4**: Backups are compressed by using the QuickLZ tool and can be used to restore individual databases and tables.
-	//
-	// 	- **8**: Backups are compressed by using the QuickLZ tool but cannot be used to restore individual databases or tables. This value is supported only for instances that run MySQL 8.0.
-	//
-	// example:
-	//
-	// 4
-	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	// Indicates whether the log backup feature is enabled. Valid values:
-	//
-	// 	- **1**: The feature is enabled.
-	//
-	// 	- **0**: The feature is disabled.
-	//
-	// example:
-	//
-	// 1
-	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Specifies whether to forcefully delete log backup files from the instance when the storage usage of the instance exceeds 80% or the amount of remaining storage on the instance is less than 5 GB.
-	//
-	// example:
-	//
-	// Disable
-	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The number of hours for which log backup files are retained on the instance.
-	//
-	// example:
-	//
-	// 18
-	LocalLogRetentionHours *int32 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum storage usage that is allowed for log backup files on the instance.
-	//
-	// example:
-	//
-	// 30
-	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	// The number of binary log files on the instance.
-	//
-	// example:
-	//
-	// 60
-	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// DA147739-AEAD-4417-9089-65E9B1D8240D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CompressType                  *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
+	DBInstanceID                  *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	EnableBackupLog               *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	HighSpaceUsageProtection      *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
+	LocalLogRetentionHours        *int32  `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
+	LocalLogRetentionSpace        *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
+	LogBackupLocalRetentionNumber *int32  `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
+	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyBackupPolicyResponseBody) String() string {

@@ -22,39 +22,11 @@ type iModifyEventInfoRequest interface {
 }
 
 type ModifyEventInfoRequest struct {
-	// The action-related parameters. You can add action-related parameters based on your business requirements. The parameter value varies with the value of the TaskAction parameter.
-	//
-	// example:
-	//
-	// {\\"recoverTime\\":\\"2023-04-17T14:02:35Z\\",\\"recoverMode\\":\\"timePoint\\"}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// The event handling action. Valid values:
-	//
-	// 	- **archive**
-	//
-	// 	- **undo**
-	//
-	// >  This parameter is required.
-	//
-	// example:
-	//
-	// archive
-	EventAction *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
-	// The event ID. You can call the DescribeEvents operation to obtain the IDs of the events. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
-	//
+	EventAction  *string `json:"EventAction,omitempty" xml:"EventAction,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 5422964
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }

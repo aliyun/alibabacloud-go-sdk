@@ -14,11 +14,6 @@ type iModifyDBInstanceAutoUpgradeMinorVersionResponseBody interface {
 }
 
 type ModifyDBInstanceAutoUpgradeMinorVersionResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// A31818D5-0550-4A81-8D13-B45948D7193F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

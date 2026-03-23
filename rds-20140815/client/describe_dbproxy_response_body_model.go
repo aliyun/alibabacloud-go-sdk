@@ -159,7 +159,7 @@ type DescribeDBProxyResponseBody struct {
 	//
 	// example:
 	//
-	// rg-acfmy*****
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

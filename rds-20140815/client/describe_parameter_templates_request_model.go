@@ -32,69 +32,15 @@ type iDescribeParameterTemplatesRequest interface {
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The RDS edition of the instance. Valid values:
-	//
-	// 	- **Basic**: RDS Basic Edition
-	//
-	// 	- **HighAvailability**: RDS High-availability Edition
-	//
-	// 	- **Finance**: RDS Enterprise Edition
-	//
-	// example:
-	//
-	// Basic
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-	//
-	// example:
-	//
-	// ETnLKlblzczshOTUbOCzxxxxxxx
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-bp1imnm**********
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database engine of the instance. Valid values:
-	//
-	// 	- **mysql**: MySQL
-	//
-	// 	- **mssql**: SQL Server
-	//
-	// 	- **PostgreSQL**: PostgreSQL
-	//
-	// 	- **MariaDB**: MariaDB
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The version of the database engine. Valid values:
-	//
-	// 	- Valid values when you set the Engine parameter to mysql: **5.5, 5.6, 5.7, and 8.0**.
-	//
-	// 	- Valid values when you set the Engine parameter to mssql: **2008r2**.
-	//
-	// 	- Valid values when you set the Engine parameter to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**.
-	//
-	// 	- Valid values when you set the Engine parameter to MariaDB: **10.3**.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 8.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -14,11 +14,6 @@ type iModifyDBInstancePayTypeResponseBody interface {
 }
 
 type ModifyDBInstancePayTypeResponseBody struct {
-	// The order ID.
-	//
-	// example:
-	//
-	// 100789370230206
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 

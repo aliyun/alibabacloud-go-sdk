@@ -28,53 +28,12 @@ type iDescribeBackupPolicyRequest interface {
 }
 
 type DescribeBackupPolicyRequest struct {
-	// The backup type. Valid values:
-	//
-	// 	- **DataBackupPolicy**: data backup
-	//
-	// 	- **LogBackupPolicy**: log backup
-	//
-	// example:
-	//
-	// DataBackupPolicy
 	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
-	// The method that is used to compress backup data. Valid values:
-	//
-	// 	- **0**: Backup data is not compressed.
-	//
-	// 	- **1**: Backup data is compressed by using zlib.
-	//
-	// 	- **2**: Backup data is compressed by using zlib that invokes more than one thread in parallel for each backup.
-	//
-	// 	- **4**: Backup data is compressed by using QuickLZ and can be used to restore individual databases or tables.
-	//
-	// 	- **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
-	//
-	// example:
-	//
-	// 1
-	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
+	CompressType     *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5xxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The policy that is used to retain archived backup files if the instance is released. Valid values:
-	//
-	// 	- **None**: No archived backup files are retained.
-	//
-	// 	- **Lastest**: Only the last archived backup file is retained.
-	//
-	// 	- **All**: All archived backup files are retained.
-	//
-	// example:
-	//
-	// Lastest
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ReleasedKeepPolicy   *string `json:"ReleasedKeepPolicy,omitempty" xml:"ReleasedKeepPolicy,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

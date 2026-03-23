@@ -24,30 +24,10 @@ type iDescribeParameterGroupsRequest interface {
 }
 
 type DescribeParameterGroupsRequest struct {
-	// Specifies whether to return the parameter overview.
-	//
-	// 	- **false*	- (default): The parameter overview is returned.
-	//
-	// 	- **true**: The parameter overview is not returned.
-	//
-	// example:
-	//
-	// false
 	EnableDetail *bool  `json:"EnableDetail,omitempty" xml:"EnableDetail,omitempty"`
 	OwnerId      *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-acfmy****
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

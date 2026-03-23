@@ -26,7 +26,7 @@ type DescribeSecurityGroupConfigurationRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5xxxxxx
+	// rm-uf6wjk****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

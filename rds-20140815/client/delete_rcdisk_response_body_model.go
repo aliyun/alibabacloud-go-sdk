@@ -14,11 +14,6 @@ type iDeleteRCDiskResponseBody interface {
 }
 
 type DeleteRCDiskResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 8BE834C8-3C25-5AF8-BE3E-C8A690602A7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

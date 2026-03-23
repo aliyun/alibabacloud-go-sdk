@@ -20,30 +20,10 @@ type iDeleteReplicationLinkResponseBody interface {
 }
 
 type DeleteReplicationLinkResponseBody struct {
-	// The ID of the DR instance.
-	//
-	// example:
-	//
-	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 847BA085-B377-4BFA-8267-F82345ECE1D2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task ID.
-	//
-	// example:
-	//
-	// 3472****
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
-	//
-	// example:
-	//
-	// test01
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DeleteReplicationLinkResponseBody) String() string {

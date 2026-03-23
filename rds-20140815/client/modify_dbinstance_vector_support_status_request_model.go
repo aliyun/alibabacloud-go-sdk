@@ -16,12 +16,20 @@ type iModifyDBInstanceVectorSupportStatusRequest interface {
 }
 
 type ModifyDBInstanceVectorSupportStatusRequest struct {
+	// Instance ID. You can obtain it by invoking DescribeDBInstances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2vc2bn5c5b7g6****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The status of the vector storage toggle. Valid values:
+	//
+	// - **ON**: Enabled.
+	//
+	// - **OFF**: Disabled.
+	//
 	// This parameter is required.
 	//
 	// example:

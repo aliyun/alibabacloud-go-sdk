@@ -100,6 +100,8 @@ type iRunRCInstancesRequest interface {
 }
 
 type RunRCInstancesRequest struct {
+	// ACU type
+	//
 	// example:
 	//
 	// gn8is
@@ -122,7 +124,7 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// false
+	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
@@ -132,26 +134,61 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// false
-	AutoRenew     *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to automatically use a coupon. Valid values:
+	//
+	// 	- **true*	- (default): Yes.
+	//
+	// 	- **false**: No.
+	//
+	// > If you use a coupon and later decrease the quota, the amount offset by the coupon will not be refunded.
+	//
+	// example:
+	//
+	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken        *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Information about the ACK Edge cluster.
 	CreateAckEdgeParam *RunRCInstancesRequestCreateAckEdgeParam `json:"CreateAckEdgeParam,omitempty" xml:"CreateAckEdgeParam,omitempty" type:"Struct"`
-	CreateExtraParam   *string                                  `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
-	CreateMode         *string                                  `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	// Reserved parameter. Not supported currently.
+	//
+	// example:
+	//
+	// None
+	CreateExtraParam *string `json:"CreateExtraParam,omitempty" xml:"CreateExtraParam,omitempty"`
+	// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to **1**, the created instance can be added to an ACK cluster by invoking the **AttachRCInstances*	- API operation, enabling efficient management of container applications.
+	//
+	// - **1**: Yes.
+	//
+	// - **0*	- (default): No.
+	//
+	// example:
+	//
+	// 0
+	CreateMode *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The information about the data disks.
-	DataDisk           []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	DeletionProtection *bool                            `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DataDisk []*RunRCInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// Specifies whether to enable release protection. Valid values:
+	//
+	// 	- **true**: Enabled
+	//
+	// 	- **false*	- (default): Disabled
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The deployment set ID.
 	//
 	// example:
 	//
-	// ds-uf6670sipmph5j5b6ke4
+	// ds-uf6670sipmph********
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The instance description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
@@ -168,13 +205,22 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// false
-	DryRun   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Hostname of the instance (2–64 characters).
+	//
+	// - Multiple segments separated by periods (.) are supported. Each segment can contain uppercase and lowercase English letters, digits, and hyphens (-).
+	//
+	// - A period (.) or hyphen (-) cannot appear at the beginning or end of a segment, nor can two periods or hyphens appear consecutively.
+	//
+	// example:
+	//
+	// testHost1
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The ID of the image used by the instance.
 	//
 	// example:
 	//
-	// image-dsvjzw2ii8n4fvr6de
+	// image-dsvjzw2ii8n4******
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The billing method of the instance. Set the value to **Prepaid**, which indicates the subscription billing method.
 	//
@@ -186,7 +232,7 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// ceshi
+	// rc-node-[99,1]-rchost
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The instance type. For more information about the instance types that are supported by RDS Custom instances, see [Instance types for RDS Custom instances](https://help.aliyun.com/document_detail/2844823.html).
 	//
@@ -206,7 +252,7 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// null
+	// 0
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	// The reserved parameter. This parameter is not supported.
 	//
@@ -225,9 +271,10 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// 2F9e9@a69c!e18b569c8
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordInherit *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	// TestRDS123!
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether to use the password preset in the image. When this parameter is used, the Password parameter must be empty, and you must ensure that the selected image has a password already configured. Default value: false.
+	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
 	// The subscription duration of the instance. Default value: **1**.
 	//
 	// example:
@@ -242,13 +289,18 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// Year
+	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// example:
 	//
-	// ``10.1.**.**``
+	// `10.1.**.**`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PromotionCode    *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 72329885****
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -256,8 +308,15 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Scheduled elasticity rule
+	//
 	// example:
 	//
 	// {"rule":[{"beginTime":"09:00","endTime":"17:00","acu":4}]}
@@ -274,16 +333,63 @@ type RunRCInstancesRequest struct {
 	//
 	// example:
 	//
-	// sg-uf6av412xaxixuezol6w
+	// sg-uf6av412xaxixu******
 	SecurityGroupId  *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	SpotStrategy     *string   `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	SupportCase      *string   `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
+	// The spot strategy for pay-as-you-go instances. This parameter takes effect only when the **InstanceChargeType*	- parameter is set to **PostPaid**. Valid values:
+	//
+	// - **NoSpot**: Normal pay-as-you-go instance.
+	//
+	// - **SpotAsPriceGo**: The system automatically bids based on the current market price.
+	//
+	// Default value: **NoSpot**.
+	//
+	// example:
+	//
+	// NoSpot
+	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	// The deployment type of RDS Custom. Valid values:
+	//
+	// - **eni**: Dual network interface cards.
+	//
+	// - **edge**: Point of presence (POP) node pool.
+	//
+	// - **share**: VPC.
+	//
+	// example:
+	//
+	// share
+	SupportCase *string `json:"SupportCase,omitempty" xml:"SupportCase,omitempty"`
 	// The specification of the system disk.
-	SystemDisk       *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	Tag              []*RunRCInstancesRequestTag      `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UserData         *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	UserDataInBase64 *bool                            `json:"UserDataInBase64,omitempty" xml:"UserDataInBase64,omitempty"`
+	SystemDisk *RunRCInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// The list of tags.
+	Tag []*RunRCInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The instance user data. The raw data can be up to 32 KB in size.
+	//
+	// Do not pass sensitive information, such as passwords and private keys, in plaintext. If you must pass such information, encrypt it first, encode it in Base64, and then transmit it. Decrypt and use it inside the instance. The following is an example of converting a script into a Base64-encoded string:
+	//
+	// ```
+	//
+	// echo -n \\"#!/bin/sh
+	//
+	// echo "Hello World"\\" | base64 -w 0
+	//
+	// ```
+	//
+	// example:
+	//
+	// IyEvYmluL3NoCmVjaG8gIkhlbGxvIFdvcmxkLiBUaGUgdGltZSBpcyBub3cgJChkYXRlIC1SKSIhIHwgdGVlIC9yb290L3VzZXJkYXRhX3Rlc3QudHh0
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// Specifies whether custom data is Base64-encoded.
+	//
+	// - **true**: Yes.
+	//
+	// - **false*	- (default): No.
+	//
+	// example:
+	//
+	// true
+	UserDataInBase64 *bool `json:"UserDataInBase64,omitempty" xml:"UserDataInBase64,omitempty"`
 	// The vSwitch ID of the instance. You must specify this parameter when you create an instance of the virtual private cloud (VPC) type. The specified vSwitch and security group must belong to the same VPC.
 	//
 	// >  If you specify the VSwitchId parameter, the zone specified by the ZoneId parameter must be the same as the zone in which the specified vSwitch resides. You can leave the ZoneId parameter empty. In this case, the system uses the zone in which the specified vSwitch resides.
@@ -746,7 +852,17 @@ func (s *RunRCInstancesRequest) Validate() error {
 }
 
 type RunRCInstancesRequestCreateAckEdgeParam struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the target ACK Edge cluster.
+	//
+	// example:
+	//
+	// c463aaa89e2b84cacacfbf23c4867****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the target edge node pool in the ACK Edge cluster.
+	//
+	// example:
+	//
+	// np47e018268fb34e2289ff4c4d22b5****
 	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
 }
 
@@ -785,15 +901,22 @@ type RunRCInstancesRequestDataDisk struct {
 	//
 	// example:
 	//
-	// local_ssd
+	// cloud_essd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The reserved parameter. This parameter is not supported.
 	//
 	// example:
 	//
 	// null
-	DeleteWithInstance *bool   `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	Device             *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// The mount target of the data disk.
+	//
+	// > This parameter is used only in the full image (entire machine image) scenario. You can set this parameter to the mount target of the data disk in the full image and modify the corresponding **DataDisk.Size*	- and **DataDisk.Category*	- parameters to change the disk category and size of the data disk in the full image.
+	//
+	// example:
+	//
+	// /dev/xvdb
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
 	// Specifies whether to encrypt the cloud disk. Valid values:
 	//
 	// 	- **true**
@@ -808,14 +931,25 @@ type RunRCInstancesRequestDataDisk struct {
 	//
 	// example:
 	//
-	// null
+	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The size of the data disk. Unit: GiB.
 	//
 	// example:
 	//
-	// 10
-	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 20
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The snapshot used to create the data disk.
+	//
+	// - If the snapshot size corresponding to **DataDisk.SnapshotId*	- is greater than the value of **DataDisk.Size**, the created disk size matches the snapshot size. If the snapshot size is smaller than the value of **DataDisk.Size**, the created disk size equals the value of **DataDisk.Size**.
+	//
+	// - Creating an elastic ephemeral disk from a snapshot is not supported.
+	//
+	// - Snapshots created on or before July 15, 2013 cannot be used to create disks.
+	//
+	// example:
+	//
+	// s-bp17441ohwka0yuh****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -925,7 +1059,20 @@ type RunRCInstancesRequestSystemDisk struct {
 	// example:
 	//
 	// cloud_essd
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Performance level when the system disk is an enterprise SSD (ESSD). For details about performance differences among ESSD types, see [enterprise SSD (ESSD)](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+	//
+	// - **PL0*	-
+	//
+	// - **PL1*	- (default)
+	//
+	// - **PL2*	-
+	//
+	// - **PL3**
+	//
+	// example:
+	//
+	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The size of the system disk. Unit: GiB. Only performance level 1 (PL1) ESSDs are supported. Valid values: 20 to 2048.
 	//
@@ -975,7 +1122,17 @@ func (s *RunRCInstancesRequestSystemDisk) Validate() error {
 }
 
 type RunRCInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. You can create up to N tag keys at the same time, where N ranges from **1 to 20**. Empty strings are not allowed.
+	//
+	// example:
+	//
+	// Testkey1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value corresponding to the tag key. You can create up to N tag values at the same time, where N ranges from **1 to 20**. Empty strings are allowed.
+	//
+	// example:
+	//
+	// Testvalue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

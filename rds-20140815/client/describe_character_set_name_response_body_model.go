@@ -19,18 +19,8 @@ type iDescribeCharacterSetNameResponseBody interface {
 
 type DescribeCharacterSetNameResponseBody struct {
 	CharacterSetNameItems *DescribeCharacterSetNameResponseBodyCharacterSetNameItems `json:"CharacterSetNameItems,omitempty" xml:"CharacterSetNameItems,omitempty" type:"Struct"`
-	// The type of the database engine.
-	//
-	// example:
-	//
-	// mysql
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Engine                *string                                                    `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCharacterSetNameResponseBody) String() string {

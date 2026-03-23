@@ -17,10 +17,6 @@ type iAuthorizeBackupEncryptionRequest interface {
 
 type AuthorizeBackupEncryptionRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

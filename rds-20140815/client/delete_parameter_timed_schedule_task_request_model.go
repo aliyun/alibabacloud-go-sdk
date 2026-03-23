@@ -16,10 +16,14 @@ type iDeleteParameterTimedScheduleTaskRequest interface {
 }
 
 type DeleteParameterTimedScheduleTaskRequest struct {
+	// The instance Name.
+	//
 	// example:
 	//
 	// rm-uf6wjk5****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the scheduled task for parameter modification.
+	//
 	// example:
 	//
 	// 41698

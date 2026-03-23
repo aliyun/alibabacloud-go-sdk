@@ -20,26 +20,10 @@ type iDescribeSecretsResponseBody interface {
 }
 
 type DescribeSecretsResponseBody struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// DF4961DD-16F5-5B24-BD4C-0C7788F7ADAF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the credential.
-	Secrets []*DescribeSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+	PageNumber *int64                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Secrets    []*DescribeSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSecretsResponseBody) String() string {
@@ -100,42 +84,12 @@ func (s *DescribeSecretsResponseBody) Validate() error {
 }
 
 type DescribeSecretsResponseBodySecrets struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 1266348003******
-	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The description of the credential.
-	//
-	// example:
-	//
-	// test
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account.
-	//
-	// example:
-	//
-	// acs:rds:cn-hangzhou:1335786***:dbInstance/rm-bp1m7l3j63****
-	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the credential.
-	//
-	// example:
-	//
-	// Foo
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The username that is used to access the database.
-	//
-	// example:
-	//
-	// user_jack
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecretArn   *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeSecretsResponseBodySecrets) String() string {

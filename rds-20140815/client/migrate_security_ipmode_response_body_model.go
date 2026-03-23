@@ -18,37 +18,8 @@ type iMigrateSecurityIPModeResponseBody interface {
 }
 
 type MigrateSecurityIPModeResponseBody struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-uf6wjk5****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// EF1E53AB-5625-49C7-ADF1-FBD0B6640D19
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The whitelist mode after the change, which is the enhanced whitelist mode.
-	//
-	// Valid values:
-	//
-	// 	- safety
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     enhanced whitelist mode
-	//
-	//     <!-- -->
-	//
-	// example:
-	//
-	// safety
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityIPMode *string `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
 }
 

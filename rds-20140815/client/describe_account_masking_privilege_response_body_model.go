@@ -16,7 +16,10 @@ type iDescribeAccountMaskingPrivilegeResponseBody interface {
 }
 
 type DescribeAccountMaskingPrivilegeResponseBody struct {
+	// Returned data
 	Data *DescribeAccountMaskingPrivilegeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// D0073A98-52F1-3075-8256-394**********
@@ -59,6 +62,7 @@ func (s *DescribeAccountMaskingPrivilegeResponseBody) Validate() error {
 }
 
 type DescribeAccountMaskingPrivilegeResponseBodyData struct {
+	// List of user encryption or data masking permissions
 	UserPrivilege []*DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege `json:"UserPrivilege,omitempty" xml:"UserPrivilege,omitempty" type:"Repeated"`
 }
 
@@ -93,14 +97,20 @@ func (s *DescribeAccountMaskingPrivilegeResponseBodyData) Validate() error {
 }
 
 type DescribeAccountMaskingPrivilegeResponseBodyDataUserPrivilege struct {
+	// Permission expiration time in UTC format
+	//
 	// example:
 	//
 	// 2026-01-22T02:01:20Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Permission type. restrictedAccess indicates restricted access (data masking required)
+	//
 	// example:
 	//
 	// restrictedAccess
 	Privilege *string `json:"Privilege,omitempty" xml:"Privilege,omitempty"`
+	// Account name
+	//
 	// example:
 	//
 	// rds

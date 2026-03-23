@@ -22,42 +22,13 @@ type iSwitchDBInstanceVpcRequest interface {
 }
 
 type SwitchDBInstanceVpcRequest struct {
-	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// rm-uf6wjk5*****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The private IP address of the instance. The private IP address must be within the CIDR block of the vSwitch that is specified by the **VSwitchId*	- parameter.
-	//
-	// >  You can call the DescribeVSwitches operation to query the CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 10.23.XX.XX
+	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The VPC ID.
-	//
-	// > The VPC must reside in the same region as the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// vpc-uf6f7l4fg90*****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the instance.
-	//
-	// > The vSwitch must belong to the same zone as the instance.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// vsw-uf6adz52c2p*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 

@@ -20,26 +20,10 @@ type iGetDBInstanceTopologyResponseBody interface {
 }
 
 type GetDBInstanceTopologyResponseBody struct {
-	// An internal parameter. You can ignore this parameter.
-	//
-	// example:
-	//
-	// None
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details about the topology.
-	Data *GetDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// An internal parameter. You can ignore this parameter.
-	//
-	// example:
-	//
-	// None
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 7430AB1A-6D49-5B6D-B9E5-920250076074
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDBInstanceTopologyResponseBody) String() string {
@@ -96,16 +80,9 @@ func (s *GetDBInstanceTopologyResponseBody) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyData struct {
-	// The network connection information of the instance.
-	Connections []*GetDBInstanceTopologyResponseBodyDataConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-m5ezban**********
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The queried nodes.
-	Nodes []*GetDBInstanceTopologyResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Connections    []*GetDBInstanceTopologyResponseBodyDataConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
+	DBInstanceName *string                                             `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Nodes          []*GetDBInstanceTopologyResponseBodyDataNodes       `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
 func (s GetDBInstanceTopologyResponseBodyData) String() string {
@@ -166,34 +143,10 @@ func (s *GetDBInstanceTopologyResponseBodyData) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyDataConnections struct {
-	// The endpoint that is used to connect to the database instance.
-	//
-	// example:
-	//
-	// rm-m5ezban**********.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// rm-m5ezban**********
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The network type of the endpoint. Valid values:
-	//
-	// 	- **vpc**
-	//
-	// 	- **public**
-	//
-	// example:
-	//
-	// vpc
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The zone ID of the instance.
-	//
-	// example:
-	//
-	// cn-qingdao-c
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetDBInstanceTopologyResponseBodyDataConnections) String() string {
@@ -245,52 +198,12 @@ func (s *GetDBInstanceTopologyResponseBodyDataConnections) Validate() error {
 }
 
 type GetDBInstanceTopologyResponseBodyDataNodes struct {
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// rm-m5ezban**********
-	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the dedicated cluster.
-	//
-	// > : If the instance does not reside in the specified dedicated cluster, no value is returned.
-	//
-	// example:
-	//
-	// dhg-4n*****
+	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The host ID of the instance in the dedicated cluster.
-	//
-	// > : If the instance does not reside in the specified dedicated cluster, no value is returned.
-	//
-	// example:
-	//
-	// i-bpxxxxxxx
-	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The ID of the instance.
-	//
-	// > : The value \\*\\*-1\\*\\	- is returned for an instance that does not reside in a dedicated cluster.
-	//
-	// example:
-	//
-	// 349054
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the node. The following result is returned:
-	//
-	// 	- **Master**: a primary node
-	//
-	// 	- **Slave**: a secondary node
-	//
-	// example:
-	//
-	// master
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The zone ID of the instance.
-	//
-	// example:
-	//
-	// cn-qingdao-c
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Role                 *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetDBInstanceTopologyResponseBodyDataNodes) String() string {
