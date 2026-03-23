@@ -2980,6 +2980,14 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 		query["provider"] = request.Provider
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3138,6 +3146,14 @@ func (client *Client) ListKnowledgeBasesWithOptions(request *ListKnowledgeBasesR
 
 	if !dara.IsNil(request.Provider) {
 		query["provider"] = request.Provider
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3666,6 +3682,10 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 	if !dara.IsNil(request.WorkspaceId) {
 		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -17,6 +17,8 @@ type iUpdateCredentialInput interface {
 	GetDescription() *string
 	SetEnabled(v bool) *UpdateCredentialInput
 	GetEnabled() *bool
+	SetWorkspaceId(v string) *UpdateCredentialInput
+	GetWorkspaceId() *string
 }
 
 type UpdateCredentialInput struct {
@@ -24,6 +26,7 @@ type UpdateCredentialInput struct {
 	CredentialSecret       *string                 `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
 	Description            *string                 `json:"description,omitempty" xml:"description,omitempty"`
 	Enabled                *bool                   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	WorkspaceId            *string                 `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateCredentialInput) String() string {
@@ -50,6 +53,10 @@ func (s *UpdateCredentialInput) GetEnabled() *bool {
 	return s.Enabled
 }
 
+func (s *UpdateCredentialInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *UpdateCredentialInput) SetCredentialPublicConfig(v *CredentialPublicConfig) *UpdateCredentialInput {
 	s.CredentialPublicConfig = v
 	return s
@@ -67,6 +74,11 @@ func (s *UpdateCredentialInput) SetDescription(v string) *UpdateCredentialInput 
 
 func (s *UpdateCredentialInput) SetEnabled(v bool) *UpdateCredentialInput {
 	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateCredentialInput) SetWorkspaceId(v string) *UpdateCredentialInput {
+	s.WorkspaceId = &v
 	return s
 }
 

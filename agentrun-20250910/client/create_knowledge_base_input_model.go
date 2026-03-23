@@ -21,6 +21,8 @@ type iCreateKnowledgeBaseInput interface {
 	GetProviderSettings() map[string]interface{}
 	SetRetrieveSettings(v map[string]interface{}) *CreateKnowledgeBaseInput
 	GetRetrieveSettings() map[string]interface{}
+	SetWorkspaceId(v string) *CreateKnowledgeBaseInput
+	GetWorkspaceId() *string
 }
 
 type CreateKnowledgeBaseInput struct {
@@ -33,6 +35,7 @@ type CreateKnowledgeBaseInput struct {
 	// This parameter is required.
 	ProviderSettings map[string]interface{} `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
 	RetrieveSettings map[string]interface{} `json:"retrieveSettings,omitempty" xml:"retrieveSettings,omitempty"`
+	WorkspaceId      *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateKnowledgeBaseInput) String() string {
@@ -67,6 +70,10 @@ func (s *CreateKnowledgeBaseInput) GetRetrieveSettings() map[string]interface{} 
 	return s.RetrieveSettings
 }
 
+func (s *CreateKnowledgeBaseInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CreateKnowledgeBaseInput) SetCredentialName(v string) *CreateKnowledgeBaseInput {
 	s.CredentialName = &v
 	return s
@@ -94,6 +101,11 @@ func (s *CreateKnowledgeBaseInput) SetProviderSettings(v map[string]interface{})
 
 func (s *CreateKnowledgeBaseInput) SetRetrieveSettings(v map[string]interface{}) *CreateKnowledgeBaseInput {
 	s.RetrieveSettings = v
+	return s
+}
+
+func (s *CreateKnowledgeBaseInput) SetWorkspaceId(v string) *CreateKnowledgeBaseInput {
+	s.WorkspaceId = &v
 	return s
 }
 

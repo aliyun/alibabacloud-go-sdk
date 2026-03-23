@@ -27,6 +27,8 @@ type iKnowledgeBase interface {
 	GetProviderSettings() map[string]interface{}
 	SetRetrieveSettings(v map[string]interface{}) *KnowledgeBase
 	GetRetrieveSettings() map[string]interface{}
+	SetWorkspaceId(v string) *KnowledgeBase
+	GetWorkspaceId() *string
 }
 
 type KnowledgeBase struct {
@@ -39,6 +41,7 @@ type KnowledgeBase struct {
 	Provider          *string                `json:"provider,omitempty" xml:"provider,omitempty"`
 	ProviderSettings  map[string]interface{} `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
 	RetrieveSettings  map[string]interface{} `json:"retrieveSettings,omitempty" xml:"retrieveSettings,omitempty"`
+	WorkspaceId       *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s KnowledgeBase) String() string {
@@ -85,6 +88,10 @@ func (s *KnowledgeBase) GetRetrieveSettings() map[string]interface{} {
 	return s.RetrieveSettings
 }
 
+func (s *KnowledgeBase) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *KnowledgeBase) SetCreatedAt(v string) *KnowledgeBase {
 	s.CreatedAt = &v
 	return s
@@ -127,6 +134,11 @@ func (s *KnowledgeBase) SetProviderSettings(v map[string]interface{}) *Knowledge
 
 func (s *KnowledgeBase) SetRetrieveSettings(v map[string]interface{}) *KnowledgeBase {
 	s.RetrieveSettings = v
+	return s
+}
+
+func (s *KnowledgeBase) SetWorkspaceId(v string) *KnowledgeBase {
+	s.WorkspaceId = &v
 	return s
 }
 

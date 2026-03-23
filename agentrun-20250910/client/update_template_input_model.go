@@ -52,33 +52,65 @@ type iUpdateTemplateInput interface {
 type UpdateTemplateInput struct {
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// true
 	AllowAnonymousManage *bool              `json:"allowAnonymousManage,omitempty" xml:"allowAnonymousManage,omitempty"`
 	ArmsConfiguration    *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// 容器配置（内置的不可改）
 	ContainerConfiguration *ContainerConfiguration `json:"containerConfiguration,omitempty" xml:"containerConfiguration,omitempty"`
 	// CPU资源配置（单位：核心）
+	//
+	// example:
+	//
+	// 2
 	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
 	CredentialConfiguration *CredentialConfiguration `json:"credentialConfiguration,omitempty" xml:"credentialConfiguration,omitempty"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	EnableAgent             *bool                    `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	LogConfiguration        *LogConfiguration        `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
+	// example:
+	//
+	// demo description
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// true
+	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	// example:
+	//
+	// arn:acs:agentrun:cn-hangzhou:123456789:xxx/test
+	ExecutionRoleArn *string           `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
+	LogConfiguration *LogConfiguration `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
 	// 内存资源配置（单位：MB）
+	//
+	// example:
+	//
+	// 4
 	Memory               *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
 	NasConfig            *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
 	// 沙箱空闲超时时间（秒）
+	//
+	// example:
+	//
+	// 21600
 	SandboxIdleTimeoutInSeconds *int32 `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
 	// Deprecated
 	//
 	// 沙箱存活时间（秒）
+	//
+	// example:
+	//
+	// 86400
 	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
 	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
 	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
-	WorkspaceId           *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// example:
+	//
+	// ws-1234567890abcdef
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateTemplateInput) String() string {

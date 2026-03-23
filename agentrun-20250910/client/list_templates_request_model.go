@@ -21,6 +21,8 @@ type iListTemplatesRequest interface {
 	GetTemplateType() *string
 	SetWorkspaceId(v string) *ListTemplatesRequest
 	GetWorkspaceId() *string
+	SetWorkspaceIds(v string) *ListTemplatesRequest
+	GetWorkspaceIds() *string
 }
 
 type ListTemplatesRequest struct {
@@ -53,7 +55,8 @@ type ListTemplatesRequest struct {
 	// example:
 	//
 	// aaa
-	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 
 func (s ListTemplatesRequest) String() string {
@@ -88,6 +91,10 @@ func (s *ListTemplatesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *ListTemplatesRequest) GetWorkspaceIds() *string {
+	return s.WorkspaceIds
+}
+
 func (s *ListTemplatesRequest) SetPageNumber(v int32) *ListTemplatesRequest {
 	s.PageNumber = &v
 	return s
@@ -115,6 +122,11 @@ func (s *ListTemplatesRequest) SetTemplateType(v string) *ListTemplatesRequest {
 
 func (s *ListTemplatesRequest) SetWorkspaceId(v string) *ListTemplatesRequest {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListTemplatesRequest) SetWorkspaceIds(v string) *ListTemplatesRequest {
+	s.WorkspaceIds = &v
 	return s
 }
 

@@ -23,6 +23,8 @@ type iCreateCredentialInput interface {
 	GetDescription() *string
 	SetEnabled(v bool) *CreateCredentialInput
 	GetEnabled() *bool
+	SetWorkspaceId(v string) *CreateCredentialInput
+	GetWorkspaceId() *string
 }
 
 type CreateCredentialInput struct {
@@ -36,6 +38,7 @@ type CreateCredentialInput struct {
 	CredentialSourceType *string `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
 	Description          *string `json:"description,omitempty" xml:"description,omitempty"`
 	Enabled              *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	WorkspaceId          *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CreateCredentialInput) String() string {
@@ -74,6 +77,10 @@ func (s *CreateCredentialInput) GetEnabled() *bool {
 	return s.Enabled
 }
 
+func (s *CreateCredentialInput) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CreateCredentialInput) SetCredentialAuthType(v string) *CreateCredentialInput {
 	s.CredentialAuthType = &v
 	return s
@@ -106,6 +113,11 @@ func (s *CreateCredentialInput) SetDescription(v string) *CreateCredentialInput 
 
 func (s *CreateCredentialInput) SetEnabled(v bool) *CreateCredentialInput {
 	s.Enabled = &v
+	return s
+}
+
+func (s *CreateCredentialInput) SetWorkspaceId(v string) *CreateCredentialInput {
+	s.WorkspaceId = &v
 	return s
 }
 

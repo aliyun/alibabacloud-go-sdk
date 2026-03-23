@@ -23,6 +23,10 @@ type iListCredentialsRequest interface {
 	GetPageSize() *int32
 	SetProvider(v string) *ListCredentialsRequest
 	GetProvider() *string
+	SetWorkspaceId(v string) *ListCredentialsRequest
+	GetWorkspaceId() *string
+	SetWorkspaceIds(v string) *ListCredentialsRequest
+	GetWorkspaceIds() *string
 }
 
 type ListCredentialsRequest struct {
@@ -59,7 +63,9 @@ type ListCredentialsRequest struct {
 	// example:
 	//
 	// Aliyun
-	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	Provider     *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	WorkspaceId  *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	WorkspaceIds *string `json:"workspaceIds,omitempty" xml:"workspaceIds,omitempty"`
 }
 
 func (s ListCredentialsRequest) String() string {
@@ -98,6 +104,14 @@ func (s *ListCredentialsRequest) GetProvider() *string {
 	return s.Provider
 }
 
+func (s *ListCredentialsRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
+func (s *ListCredentialsRequest) GetWorkspaceIds() *string {
+	return s.WorkspaceIds
+}
+
 func (s *ListCredentialsRequest) SetCredentialAuthType(v string) *ListCredentialsRequest {
 	s.CredentialAuthType = &v
 	return s
@@ -130,6 +144,16 @@ func (s *ListCredentialsRequest) SetPageSize(v int32) *ListCredentialsRequest {
 
 func (s *ListCredentialsRequest) SetProvider(v string) *ListCredentialsRequest {
 	s.Provider = &v
+	return s
+}
+
+func (s *ListCredentialsRequest) SetWorkspaceId(v string) *ListCredentialsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListCredentialsRequest) SetWorkspaceIds(v string) *ListCredentialsRequest {
+	s.WorkspaceIds = &v
 	return s
 }
 

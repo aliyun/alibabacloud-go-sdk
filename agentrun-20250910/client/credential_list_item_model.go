@@ -27,6 +27,8 @@ type iCredentialListItem interface {
 	GetRelatedResourceCount() *int32
 	SetUpdatedAt(v string) *CredentialListItem
 	GetUpdatedAt() *string
+	SetWorkspaceId(v string) *CredentialListItem
+	GetWorkspaceId() *string
 }
 
 type CredentialListItem struct {
@@ -39,6 +41,7 @@ type CredentialListItem struct {
 	Enabled              *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	RelatedResourceCount *int32  `json:"relatedResourceCount,omitempty" xml:"relatedResourceCount,omitempty"`
 	UpdatedAt            *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	WorkspaceId          *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s CredentialListItem) String() string {
@@ -85,6 +88,10 @@ func (s *CredentialListItem) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
 
+func (s *CredentialListItem) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CredentialListItem) SetCreatedAt(v string) *CredentialListItem {
 	s.CreatedAt = &v
 	return s
@@ -127,6 +134,11 @@ func (s *CredentialListItem) SetRelatedResourceCount(v int32) *CredentialListIte
 
 func (s *CredentialListItem) SetUpdatedAt(v string) *CredentialListItem {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *CredentialListItem) SetWorkspaceId(v string) *CredentialListItem {
+	s.WorkspaceId = &v
 	return s
 }
 

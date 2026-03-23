@@ -31,6 +31,8 @@ type iCredential interface {
 	GetRelatedResources() []*RelatedResource
 	SetUpdatedAt(v string) *Credential
 	GetUpdatedAt() *string
+	SetWorkspaceId(v string) *Credential
+	GetWorkspaceId() *string
 }
 
 type Credential struct {
@@ -45,6 +47,7 @@ type Credential struct {
 	Enabled                *bool                   `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	RelatedResources       []*RelatedResource      `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
 	UpdatedAt              *string                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	WorkspaceId            *string                 `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s Credential) String() string {
@@ -99,6 +102,10 @@ func (s *Credential) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
 
+func (s *Credential) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *Credential) SetCreatedAt(v string) *Credential {
 	s.CreatedAt = &v
 	return s
@@ -151,6 +158,11 @@ func (s *Credential) SetRelatedResources(v []*RelatedResource) *Credential {
 
 func (s *Credential) SetUpdatedAt(v string) *Credential {
 	s.UpdatedAt = &v
+	return s
+}
+
+func (s *Credential) SetWorkspaceId(v string) *Credential {
+	s.WorkspaceId = &v
 	return s
 }
 

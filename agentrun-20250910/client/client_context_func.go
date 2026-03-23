@@ -2002,6 +2002,14 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 		query["provider"] = request.Provider
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2122,6 +2130,14 @@ func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.Provider) {
 		query["provider"] = request.Provider
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2532,6 +2548,10 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, request *Lis
 
 	if !dara.IsNil(request.WorkspaceId) {
 		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapiutil.OpenApiRequest{
