@@ -509,6 +509,86 @@ func (client *Client) AddSQLRateLimitingRules(request *AddSQLRateLimitingRulesRe
 
 // Summary:
 //
+// 应用提示词策略到实例
+//
+// @param tmpReq - ApplyApplicationPromptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyApplicationPromptsResponse
+func (client *Client) ApplyApplicationPromptsWithOptions(tmpReq *ApplyApplicationPromptsRequest, runtime *dara.RuntimeOptions) (_result *ApplyApplicationPromptsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ApplyApplicationPromptsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DisabledPromptIds) {
+		request.DisabledPromptIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DisabledPromptIds, dara.String("DisabledPromptIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EnabledPromptIds) {
+		request.EnabledPromptIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EnabledPromptIds, dara.String("EnabledPromptIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.DisabledPromptIdsShrink) {
+		query["DisabledPromptIds"] = request.DisabledPromptIdsShrink
+	}
+
+	if !dara.IsNil(request.EnabledPromptIdsShrink) {
+		query["EnabledPromptIds"] = request.EnabledPromptIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyApplicationPrompts"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyApplicationPromptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用提示词策略到实例
+//
+// @param request - ApplyApplicationPromptsRequest
+//
+// @return ApplyApplicationPromptsResponse
+func (client *Client) ApplyApplicationPrompts(request *ApplyApplicationPromptsRequest) (_result *ApplyApplicationPromptsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ApplyApplicationPromptsResponse{}
+	_body, _err := client.ApplyApplicationPromptsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 挂载PolarFS到PolarDB应用
 //
 // @param request - AttachApplicationPolarFSRequest
@@ -2458,6 +2538,80 @@ func (client *Client) CreateApplicationEndpointAddress(request *CreateApplicatio
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateApplicationEndpointAddressResponse{}
 	_body, _err := client.CreateApplicationEndpointAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用提示词策略
+//
+// @param request - CreateApplicationPromptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationPromptResponse
+func (client *Client) CreateApplicationPromptWithOptions(request *CreateApplicationPromptRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationPromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PromptName) {
+		query["PromptName"] = request.PromptName
+	}
+
+	if !dara.IsNil(request.PromptType) {
+		query["PromptType"] = request.PromptType
+	}
+
+	if !dara.IsNil(request.PromptValue) {
+		query["PromptValue"] = request.PromptValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationPrompt"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationPromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用提示词策略
+//
+// @param request - CreateApplicationPromptRequest
+//
+// @return CreateApplicationPromptResponse
+func (client *Client) CreateApplicationPrompt(request *CreateApplicationPromptRequest) (_result *CreateApplicationPromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationPromptResponse{}
+	_body, _err := client.CreateApplicationPromptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5274,6 +5428,72 @@ func (client *Client) DeleteApplicationEndpointAddress(request *DeleteApplicatio
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteApplicationEndpointAddressResponse{}
 	_body, _err := client.DeleteApplicationEndpointAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用提示词策略
+//
+// @param request - DeleteApplicationPromptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationPromptResponse
+func (client *Client) DeleteApplicationPromptWithOptions(request *DeleteApplicationPromptRequest, runtime *dara.RuntimeOptions) (_result *DeleteApplicationPromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PromptId) {
+		query["PromptId"] = request.PromptId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApplicationPrompt"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteApplicationPromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用提示词策略
+//
+// @param request - DeleteApplicationPromptRequest
+//
+// @return DeleteApplicationPromptResponse
+func (client *Client) DeleteApplicationPrompt(request *DeleteApplicationPromptRequest) (_result *DeleteApplicationPromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteApplicationPromptResponse{}
+	_body, _err := client.DeleteApplicationPromptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8232,6 +8452,76 @@ func (client *Client) DescribeApplicationParameters(request *DescribeApplication
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeApplicationParametersResponse{}
 	_body, _err := client.DescribeApplicationParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前应用下所有的应用提示词策略列表
+//
+// @param request - DescribeApplicationPromptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationPromptsResponse
+func (client *Client) DescribeApplicationPromptsWithOptions(request *DescribeApplicationPromptsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationPromptsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationPrompts"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationPromptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前应用下所有的应用提示词策略列表
+//
+// @param request - DescribeApplicationPromptsRequest
+//
+// @return DescribeApplicationPromptsResponse
+func (client *Client) DescribeApplicationPrompts(request *DescribeApplicationPromptsRequest) (_result *DescribeApplicationPromptsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationPromptsResponse{}
+	_body, _err := client.DescribeApplicationPromptsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19702,6 +19992,80 @@ func (client *Client) ModifyApplicationParameter(request *ModifyApplicationParam
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyApplicationParameterResponse{}
 	_body, _err := client.ModifyApplicationParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用提示词策略
+//
+// @param request - ModifyApplicationPromptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationPromptResponse
+func (client *Client) ModifyApplicationPromptWithOptions(request *ModifyApplicationPromptRequest, runtime *dara.RuntimeOptions) (_result *ModifyApplicationPromptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PromptId) {
+		query["PromptId"] = request.PromptId
+	}
+
+	if !dara.IsNil(request.PromptName) {
+		query["PromptName"] = request.PromptName
+	}
+
+	if !dara.IsNil(request.PromptValue) {
+		query["PromptValue"] = request.PromptValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApplicationPrompt"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyApplicationPromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用提示词策略
+//
+// @param request - ModifyApplicationPromptRequest
+//
+// @return ModifyApplicationPromptResponse
+func (client *Client) ModifyApplicationPrompt(request *ModifyApplicationPromptRequest) (_result *ModifyApplicationPromptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyApplicationPromptResponse{}
+	_body, _err := client.ModifyApplicationPromptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
