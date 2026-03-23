@@ -24,24 +24,26 @@ type iSaveReceiverDetailRequest interface {
 }
 
 type SaveReceiverDetailRequest struct {
+	// The recipient\\"s email address and template parameters, in an array format.
+	//
 	// example:
 	//
-	// [     {         "Email": "example@alimail.com",         "CustomData": {"name":"Tom","age":"30"}"     } ]
+	// [{ "Email": "example@alimail.com","CustomData": {"name":"Tom","age":"30"}}]
 	CustomDetail *string `json:"CustomDetail,omitempty" xml:"CustomDetail,omitempty"`
-	// Content, supports uploading multiple recipients at once, with a limit of 500 records per upload. Each record is separated by {} and commas, example:
+	// The recipient details. You can upload up to 500 recipients in a single request. The value is a string in a JSON array format. Each object in the array represents a recipient. For example: \\`[{ },{ },{ }...]\\`. The format for each recipient object is \\`[{"b":"birthday","e":"xxx\\@example.net","g":"gender","m":"mobile","n":"nickname","u":"name"}]\\`. If you add a duplicate recipient address, the system returns \\`"ErrorCount": 1\\`.
 	//
-	// [{ },{ },{ }...], the format within {} is as follows:
+	// The format is \\`[{ },{ },{ }...]\\`. The format of the content within each \\`{}\\` is as follows:
 	//
-	// [{"b":"birthday","e":"xxx@example.net","g":"gender","m":"mobile","n":"nickname","u":"name"}], when passing values, pass it as a string, not a list.
+	// [{"b":"birthday","e":"xxx\\@example.net","g":"gender","m":"mobile","n":"nickname","u":"name"}]. Pass the value as a string, not a list.
 	//
-	// If a duplicate recipient address is inserted, it will return "ErrorCount": 1
+	// Inserting a duplicate recipient address returns "ErrorCount": 1.
 	//
 	// example:
 	//
 	// [{"b":"birthday","e":"xxx@alibaba-inc.com","g":"gender","m":"mobile","n":"nickname","u":"name"}]
 	Detail  *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Recipient list ID
+	// The ID of the recipient list.
 	//
 	// This parameter is required.
 	//

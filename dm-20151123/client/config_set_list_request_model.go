@@ -20,18 +20,26 @@ type iConfigSetListRequest interface {
 }
 
 type ConfigSetListRequest struct {
+	// Specifies whether to query all configuration sets. This parameter is optional.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The keyword to search by name.
+	//
 	// example:
 	//
 	// xxx
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page index. The value starts from 1. This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page. This parameter is required.
+	//
 	// example:
 	//
 	// 10

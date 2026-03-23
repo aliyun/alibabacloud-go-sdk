@@ -22,32 +22,31 @@ type iQueryMailAddressByParamResponseBody interface {
 }
 
 type QueryMailAddressByParamResponseBody struct {
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 95A7D497-F8DD-4834-B81E-C1783236E55F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// List of sending addresses
-	Data *QueryMailAddressByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryMailAddressByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryMailAddressByParamResponseBody) String() string {
@@ -147,84 +146,20 @@ func (s *QueryMailAddressByParamResponseBodyData) Validate() error {
 }
 
 type QueryMailAddressByParamResponseBodyDataMailAddress struct {
-	// Sending address
-	//
-	// example:
-	//
-	// sender@example.com
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Account status, frozen: 1, normal: 0.
-	//
-	// example:
-	//
-	// 0
+	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	ConfigSetId   *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
 	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
-	// Creation time
-	//
-	// example:
-	//
-	// 2019-09-29T13:28Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Daily quota limit
-	//
-	// example:
-	//
-	// 10000
-	DailyCount *string `json:"DailyCount,omitempty" xml:"DailyCount,omitempty"`
-	// Daily quota
-	//
-	// example:
-	//
-	// 100
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DailyCount    *string `json:"DailyCount,omitempty" xml:"DailyCount,omitempty"`
 	DailyReqCount *string `json:"DailyReqCount,omitempty" xml:"DailyReqCount,omitempty"`
-	// Domain status, 0 indicates normal, 1 indicates abnormal.
-	//
-	// example:
-	//
-	// 0
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// Sending address ID
-	//
-	// example:
-	//
-	// 12122
+	DomainStatus  *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
 	MailAddressId *string `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
-	// Monthly quota limit
-	//
-	// example:
-	//
-	// 300000
-	MonthCount *string `json:"MonthCount,omitempty" xml:"MonthCount,omitempty"`
-	// Monthly quota
-	//
-	// example:
-	//
-	// 20000
+	MonthCount    *string `json:"MonthCount,omitempty" xml:"MonthCount,omitempty"`
 	MonthReqCount *string `json:"MonthReqCount,omitempty" xml:"MonthReqCount,omitempty"`
-	// Reply address
-	//
-	// example:
-	//
-	// test@example.com
-	ReplyAddress *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	// Reply address status
-	//
-	// example:
-	//
-	// 0
-	ReplyStatus *string `json:"ReplyStatus,omitempty" xml:"ReplyStatus,omitempty"`
-	// Sending address type. Values:
-	//
-	// - batch: bulk email
-	//
-	// - trigger: triggered email
-	//
-	// example:
-	//
-	// batch
-	Sendtype *string `json:"Sendtype,omitempty" xml:"Sendtype,omitempty"`
+	ReplyAddress  *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyStatus   *string `json:"ReplyStatus,omitempty" xml:"ReplyStatus,omitempty"`
+	Sendtype      *string `json:"Sendtype,omitempty" xml:"Sendtype,omitempty"`
 }
 
 func (s QueryMailAddressByParamResponseBodyDataMailAddress) String() string {

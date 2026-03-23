@@ -36,50 +36,50 @@ type iSendTestByTemplateRequest interface {
 }
 
 type SendTestByTemplateRequest struct {
-	// Sender address, with a maximum length of 60 characters
+	// The sender address. The length cannot exceed 60 characters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test@example.com
+	// 账号+@+域名
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Birthday, with a maximum length of 30 characters
+	// The birthday. The length cannot exceed 30 characters.
 	//
 	// example:
 	//
 	// 2000/01/01
 	Birthday *string `json:"Birthday,omitempty" xml:"Birthday,omitempty"`
-	// Recipient address, with a maximum length of 60 characters
+	// The recipient email address. The length cannot exceed 60 characters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test1@example.com
+	// 账号+@+域名
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Gender, with a maximum length of 30 characters
+	// The gender. The length cannot exceed 30 characters.
 	//
 	// example:
 	//
-	// doctor
+	// 先生
 	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	// Mobile, with a maximum length of 30 characters
+	// The mobile number. The length cannot exceed 30 characters.
 	//
 	// example:
 	//
 	// 1380000****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// NickName, with a maximum length of 30 characters
+	// The nickname. The length cannot exceed 30 characters.
 	//
 	// example:
 	//
-	// LC
+	// 昵称
 	NickName             *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Template ID
+	// The template ID.
 	//
 	// This parameter is required.
 	//
@@ -91,11 +91,11 @@ type SendTestByTemplateRequest struct {
 	//
 	// {"age":"20","nickName":"tom"}
 	TemplateParams *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
-	// UserName, with a maximum length of 30 characters
+	// The user name. The length cannot exceed 30 characters.
 	//
 	// example:
 	//
-	// Lucy
+	// 姓名
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

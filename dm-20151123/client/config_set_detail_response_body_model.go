@@ -16,7 +16,10 @@ type iConfigSetDetailResponseBody interface {
 }
 
 type ConfigSetDetailResponseBody struct {
+	// The details of the configuration set.
 	Detail *ConfigSetDetailResponseBodyDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx
@@ -59,15 +62,22 @@ func (s *ConfigSetDetailResponseBody) Validate() error {
 }
 
 type ConfigSetDetailResponseBodyDetail struct {
+	// The description.
+	//
 	// example:
 	//
 	// xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the configuration set.
+	//
 	// example:
 	//
 	// xxx
-	Id     *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The associated IP pool.
 	IpPool *ConfigSetDetailResponseBodyDetailIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
+	// The name of the configuration set.
+	//
 	// example:
 	//
 	// xxx
@@ -128,10 +138,14 @@ func (s *ConfigSetDetailResponseBodyDetail) Validate() error {
 }
 
 type ConfigSetDetailResponseBodyDetailIpPool struct {
+	// The ID of the associated IP pool.
+	//
 	// example:
 	//
 	// xxx
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	// The name of the associated IP pool.
+	//
 	// example:
 	//
 	// xxx

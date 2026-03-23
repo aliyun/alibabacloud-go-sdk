@@ -28,7 +28,7 @@ type iGetTrackListByMailFromAndTagNameResponseBody interface {
 }
 
 type GetTrackListByMailFromAndTagNameResponseBody struct {
-	// Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
+	// Used for paging. Do not set this parameter for the first query. For subsequent queries, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated)
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type GetTrackListByMailFromAndTagNameResponseBody struct {
 	//
 	// （本字段已废弃）
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -63,10 +63,14 @@ type GetTrackListByMailFromAndTagNameResponseBody struct {
 	// example:
 	//
 	// 4
-	Total      *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPages *string `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	// Tracking data records
-	TrackList *GetTrackListByMailFromAndTagNameResponseBodyTrackList `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 2
+	TotalPages *string                                                `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	TrackList  *GetTrackListByMailFromAndTagNameResponseBodyTrackList `json:"TrackList,omitempty" xml:"TrackList,omitempty" type:"Struct"`
 }
 
 func (s GetTrackListByMailFromAndTagNameResponseBody) String() string {
@@ -193,66 +197,16 @@ func (s *GetTrackListByMailFromAndTagNameResponseBodyTrackList) Validate() error
 }
 
 type GetTrackListByMailFromAndTagNameResponseBodyTrackListStat struct {
-	// Creation time
-	//
-	// example:
-	//
-	// 2025-01-11T10:11Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Click count
-	//
-	// example:
-	//
-	// 0
-	RcptClickCount *string `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
-	// Click rate
-	//
-	// example:
-	//
-	// 0
-	RcptClickRate *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
-	// Number of opens
-	//
-	// example:
-	//
-	// 0
-	RcptOpenCount *string `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
-	// Open rate
-	//
-	// example:
-	//
-	// 0
-	RcptOpenRate *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
-	// Unique click count
-	//
-	// example:
-	//
-	// 0
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	RcptClickCount       *string `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
+	RcptClickRate        *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
+	RcptOpenCount        *string `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
+	RcptOpenRate         *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
 	RcptUniqueClickCount *string `json:"RcptUniqueClickCount,omitempty" xml:"RcptUniqueClickCount,omitempty"`
-	// Unique click rate
-	//
-	// example:
-	//
-	// 0
-	RcptUniqueClickRate *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
-	// Unique open count
-	//
-	// example:
-	//
-	// 0
-	RcptUniqueOpenCount *string `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
-	// Unique open rate
-	//
-	// example:
-	//
-	// 0
-	RcptUniqueOpenRate *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
-	// Total number
-	//
-	// example:
-	//
-	// 0
-	TotalNumber *string `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	RcptUniqueClickRate  *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
+	RcptUniqueOpenCount  *string `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
+	RcptUniqueOpenRate   *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
+	TotalNumber          *string `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s GetTrackListByMailFromAndTagNameResponseBodyTrackListStat) String() string {

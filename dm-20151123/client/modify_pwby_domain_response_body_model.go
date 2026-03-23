@@ -30,7 +30,7 @@ type ModifyPWByDomainResponseBody struct {
 	//
 	// example:
 	//
-	// test
+	// 请求成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID
 	//

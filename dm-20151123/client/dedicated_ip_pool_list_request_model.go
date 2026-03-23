@@ -17,28 +17,39 @@ type iDedicatedIpPoolListRequest interface {
 	GetPageIndex() *int32
 	SetPageSize(v int32) *DedicatedIpPoolListRequest
 	GetPageSize() *int32
+	SetPoolId(v string) *DedicatedIpPoolListRequest
+	GetPoolId() *string
 }
 
 type DedicatedIpPoolListRequest struct {
+	// Specifies whether to return all entries.
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// Search keyword for the name
+	// The keyword to search for IP pools by name.
 	//
 	// example:
 	//
 	// xxx
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Page index, starting from 1
+	// The page number to return, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// Number of items per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 44fb3ec8-1f87-42e4-866d-e23dad9e7c9a
+	PoolId *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
 }
 
 func (s DedicatedIpPoolListRequest) String() string {
@@ -65,6 +76,10 @@ func (s *DedicatedIpPoolListRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DedicatedIpPoolListRequest) GetPoolId() *string {
+	return s.PoolId
+}
+
 func (s *DedicatedIpPoolListRequest) SetAll(v bool) *DedicatedIpPoolListRequest {
 	s.All = &v
 	return s
@@ -82,6 +97,11 @@ func (s *DedicatedIpPoolListRequest) SetPageIndex(v int32) *DedicatedIpPoolListR
 
 func (s *DedicatedIpPoolListRequest) SetPageSize(v int32) *DedicatedIpPoolListRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DedicatedIpPoolListRequest) SetPoolId(v string) *DedicatedIpPoolListRequest {
+	s.PoolId = &v
 	return s
 }
 

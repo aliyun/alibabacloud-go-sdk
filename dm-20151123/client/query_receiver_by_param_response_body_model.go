@@ -22,32 +22,31 @@ type iQueryReceiverByParamResponseBody interface {
 }
 
 type QueryReceiverByParamResponseBody struct {
-	// Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
+	// Used for paging. If more results are available, set this value as the NextStart parameter in your next request.
 	//
 	// example:
 	//
 	// 6aec200853#102#1638894326#test@example.com
 	NextStart *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
-	// Number of items displayed per page.
+	// Number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// Request ID.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count
+	// Total number of entries.
 	//
 	// example:
 	//
 	// 15
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Detailed information of the recipient list
-	Data *QueryReceiverByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryReceiverByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryReceiverByParamResponseBody) String() string {
@@ -147,58 +146,14 @@ func (s *QueryReceiverByParamResponseBodyData) Validate() error {
 }
 
 type QueryReceiverByParamResponseBodyDataReceiver struct {
-	// Total number of recipient addresses
-	//
-	// example:
-	//
-	// 3
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Creation time
-	//
-	// example:
-	//
-	// 2019-09-29T13:28Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Description
-	//
-	// example:
-	//
-	// Description
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Recipient list ID
-	//
-	// example:
-	//
-	// 0c910a7143044b1e116719eb678907b3
-	ReceiverId *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
-	// Recipient list alias
-	//
-	// example:
-	//
-	// 10***@example.com
-	ReceiversAlias *string `json:"ReceiversAlias,omitempty" xml:"ReceiversAlias,omitempty"`
-	// Recipient list name
-	//
-	// example:
-	//
-	// TKP000442-333
-	ReceiversName *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
-	// List status. Values:
-	//
-	// - 0: Uploading
-	//
-	// - 1: Upload completed
-	//
-	// example:
-	//
-	// 0
+	Count           *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Desc            *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	ReceiverId      *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
+	ReceiversAlias  *string `json:"ReceiversAlias,omitempty" xml:"ReceiversAlias,omitempty"`
+	ReceiversName   *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
 	ReceiversStatus *string `json:"ReceiversStatus,omitempty" xml:"ReceiversStatus,omitempty"`
-	// UTC formatted creation time
-	//
-	// example:
-	//
-	// 1569734892
-	UtcCreateTime *int64 `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
+	UtcCreateTime   *int64  `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
 }
 
 func (s QueryReceiverByParamResponseBodyDataReceiver) String() string {

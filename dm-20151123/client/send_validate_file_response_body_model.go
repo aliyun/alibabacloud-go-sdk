@@ -16,10 +16,14 @@ type iSendValidateFileResponseBody interface {
 }
 
 type SendValidateFileResponseBody struct {
+	// The ID of the file. Use this ID to query the results.
+	//
 	// example:
 	//
 	// yyyy-yyyy-yyyy-yyyy
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxx

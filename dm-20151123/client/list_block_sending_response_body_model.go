@@ -20,15 +20,22 @@ type iListBlockSendingResponseBody interface {
 }
 
 type ListBlockSendingResponseBody struct {
+	// A list of data about unsubscribes or spam reports.
 	Data []*ListBlockSendingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The maximum number of entries returned.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token to retrieve the next page of results. An empty string indicates that no more data is available.
+	//
 	// example:
 	//
 	// xxxxyyyy
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -93,22 +100,40 @@ func (s *ListBlockSendingResponseBody) Validate() error {
 }
 
 type ListBlockSendingResponseBodyData struct {
+	// The recipient email address.
+	//
 	// example:
 	//
 	// xxxx@rcpt.com
 	BlockEmail *string `json:"BlockEmail,omitempty" xml:"BlockEmail,omitempty"`
+	// The time the block was initiated.
+	//
 	// example:
 	//
 	// 1723259364
 	BlockTime *int32 `json:"BlockTime,omitempty" xml:"BlockTime,omitempty"`
+	// The reason for the block. The value is a bitset. The meaning of each bit is as follows:
+	//
+	// - 0: The reason is not specified.
+	//
+	// - 1: The recipient is not interested in the content.
+	//
+	// - 2: The content is repetitive.
+	//
+	// - 3: The content is sent too frequently.
+	//
 	// example:
 	//
 	// 1
 	Reason *int32 `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The time the email was sent.
+	//
 	// example:
 	//
 	// 1723249364
 	SendTime *int32 `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
+	// The sender email address.
+	//
 	// example:
 	//
 	// xxxx@sender.com

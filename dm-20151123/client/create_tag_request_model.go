@@ -25,13 +25,13 @@ type CreateTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Tag description
+	// The description of the tag.
 	//
 	// example:
 	//
 	// test description
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	// Tag name. Limitations: 1-50 characters, allowing English letters, numbers, and underscores.
+	// The tag name. The name must be 1 to 128 characters long and can contain letters, digits, and underscores (_).
 	//
 	// This parameter is required.
 	//

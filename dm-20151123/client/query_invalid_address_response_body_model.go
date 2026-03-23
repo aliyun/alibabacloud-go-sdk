@@ -37,9 +37,8 @@ type QueryInvalidAddressResponseBody struct {
 	// example:
 	//
 	// 3
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Records.
-	Data *QueryInvalidAddressResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryInvalidAddressResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryInvalidAddressResponseBody) String() string {
@@ -130,24 +129,9 @@ func (s *QueryInvalidAddressResponseBodyData) Validate() error {
 }
 
 type QueryInvalidAddressResponseBodyDataMailDetail struct {
-	// Update time.
-	//
-	// example:
-	//
-	// 2021-04-28T17:11Z
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// Recipient address.
-	//
-	// example:
-	//
-	// toaddress@example.com
-	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-	// Update time (in timestamp format).
-	//
-	// example:
-	//
-	// 1619601108
-	UtcLastUpdateTime *int64 `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
+	LastUpdateTime    *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	ToAddress         *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	UtcLastUpdateTime *int64  `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
 }
 
 func (s QueryInvalidAddressResponseBodyDataMailDetail) String() string {

@@ -44,7 +44,7 @@ type iBatchSendMailRequest interface {
 }
 
 type BatchSendMailRequest struct {
-	// The sending address configured in the management console.
+	// The sender address configured in the console.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type BatchSendMailRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// - 0: Random account
 	//
-	// - 1: Sending address
+	// - 1: Sender address
 	//
 	// This parameter is required.
 	//
@@ -62,37 +62,92 @@ type BatchSendMailRequest struct {
 	//
 	// 1
 	AddressType *int32 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// - 1: Enable data tracking function
+	// - 1: Enables the data tracking feature.
 	//
-	// - 0 (default): Disable data tracking function
+	// - 0 (default): Disables the data tracking feature.
 	//
 	// example:
 	//
 	// 0
 	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	DomainAuth *bool   `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
-	// Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields must start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
+	// Enables domain-level authentication.
+	//
+	// - true
+	//
+	// - false
+	//
+	// Use this parameter only for domain-level authentication. Ignore it for sender address-level authentication.
+	//
+	// 1\\. The console creates the address \\`domain-auth-created-by-system\\@example.com\\`. Do not change the prefix before the at sign (@). Replace the domain suffix with your own domain.
+	//
+	// 2\\.
+	//
+	// **API scenario**
+	//
+	// Set \\`AccountName\\` to your domain. Recipients see \\`domain-auth-created-by-system\\@example.com\\` as the sender.
+	//
+	// **SMTP scenario**
+	//
+	// a. Use the \\`ModifyPWByDomain\\` API to set a password for your domain.
+	//
+	// b. Authenticate using your domain and the password. Set the actual sender address (\\`mailfrom\\`) to a custom address, such as \\`user\\@example.com\\`. Recipients see \\`user\\@example.com\\` as the sender.
+	//
+	// example:
+	//
+	// true
+	DomainAuth *bool `json:"DomainAuth,omitempty" xml:"DomainAuth,omitempty"`
+	// Message header settings.
+	//
+	// All fields, standard or non-standard, must follow standard header syntax. For API calls, the \\`headers\\` field supports up to 10 headers. Any headers beyond this limit are ignored. SMTP does not have a header limit.
+	//
+	// 1\\. Standard fields
+	//
+	// \\`Message-ID\\`, \\`List-Unsubscribe\\`, \\`List-Unsubscribe-Post\\`
+	//
+	// Standard fields overwrite existing values in the message header.
+	//
+	// 2\\. Non-standard fields
+	//
+	// Case-insensitive
+	//
+	// a. Start with \\`X-User-\\`. These fields are not pushed to EventBridge or Message Service. They are required only for API calls. SMTP supports any custom header.
+	//
+	// b. Start with \\`X-User-Notify-\\`. These fields are pushed to EventBridge and Message Service. They are supported by both API and SMTP.
+	//
+	// When pushed to EventBridge or Message Service, these fields appear under the \\`headers\\` object.
 	//
 	// example:
 	//
 	// {
 	//
-	//   "Message-ID": "<msg0001@example.com>",
+	//       "Message-ID": "<d52ce63e-a0d5-4f95-b6a9-e1256a44f5fb@example.net>",
 	//
-	//   "X-User-UID1": "UID-1-000001",
+	//       "X-User-UID1": "UID-1-000001",
 	//
-	//   "X-User-UID2": "UID-2-000001"
+	//       "X-User-UID2": "UID-2-000001",
+	//
+	//       "X-User-Notify-UID1": "UID-3-000001",
+	//
+	//       "X-User-Notify-UID2": "UID-4-000001"
+	//
+	//
 	//
 	// }
 	Headers *string `json:"Headers,omitempty" xml:"Headers,omitempty"`
-	// dedicated IP pool ID. Users who have purchased an dedicated IP can use this parameter to specify the outgoing IP for this send operation.
+	// The ID of the dedicated IP address pool. If you purchased dedicated IP addresses, use this parameter to specify the egress IP address for sending the email.
 	//
 	// example:
 	//
-	// xxx
+	// e4xxxxxe-4xx0-4xx3-8xxa-74cxxxxx1cef
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the recipient list that has been created and uploaded with recipients. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
+	// The name of a pre-created recipient list to which recipients have been uploaded.
+	//
+	// Note:
+	//
+	// The number of recipients in the list must not exceed your remaining daily quota. Otherwise, email sending fails.
+	//
+	// Do not delete the recipient list for at least 10 minutes after triggering the task. Otherwise, email sending may fail.
 	//
 	// This parameter is required.
 	//
@@ -100,27 +155,27 @@ type BatchSendMailRequest struct {
 	//
 	// test2
 	ReceiversName *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
-	// Reply address
+	// The reply-to address.
 	//
 	// example:
 	//
 	// test2***@example.net
 	ReplyAddress *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	// Alias for the reply address
+	// The alias for the reply-to address.
 	//
 	// example:
 	//
-	// Lucy
+	// 小红
 	ReplyAddressAlias    *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Email tag name.
+	// The name of the email tag.
 	//
 	// example:
 	//
 	// test3
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// The name of the template that has been created and approved in advance.
+	// The name of a pre-created and approved template.
 	//
 	// This parameter is required.
 	//
@@ -128,35 +183,29 @@ type BatchSendMailRequest struct {
 	//
 	// test1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+	// The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
 	//
-	// - disabled: No filtering
+	// - disabled: No filtering.
 	//
-	// - default: Use the default strategy, bulk addresses use sender address-level filtering
+	// - default: Uses the default policy. Batch emails are filtered at the sender address level.
 	//
-	// - mailfrom: Sender address-level filtering
+	// - mailfrom: Filters at the sender address level.
 	//
-	// - mailfrom_domain: Sender domain-level filtering
+	// - mailfrom_domain: Filters at the email domain level.
 	//
-	// - edm_id: Account-level filtering
+	// - edm_id: Filters at the account level.
 	//
 	// example:
 	//
 	// mailfrom_domain
 	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
-	// The type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
+	// The type of unsubscribe link to generate. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
 	//
-	// - disabled: Do not generate
+	// - disabled: Does not generate a link.
 	//
-	// - default: Use the default strategy: Generate an unsubscribe link when a bulk-type sending address sends to specific domains, such as those containing keywords like "gmail", "yahoo",
+	// - default: Uses the default policy. An unsubscribe link is generated when batch emails are sent from a sender address to specific domains, such as those containing the keywords "gmail", "yahoo", "google", "aol.com", "hotmail", "outlook", or "ymail.com".
 	//
-	// "google", "aol.com", "hotmail",
-	//
-	// "outlook", "ymail.com", etc.
-	//
-	// - zh-cn: Generate, for future content preparation
-	//
-	// - en-us: Generate, for future content preparation
+	// The language of the unsubscribe link matches the recipient\\"s browser language setting.
 	//
 	// example:
 	//

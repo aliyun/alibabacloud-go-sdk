@@ -18,20 +18,19 @@ type iSenderStatisticsDetailByParamResponseBody interface {
 }
 
 type SenderStatisticsDetailByParamResponseBody struct {
-	// Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
+	// Used for paging. If more results are available, set the \\`NextStart\\` parameter in your next request to this return value.
 	//
 	// example:
 	//
 	// 90f0243616#203#a***@example.net-1658817689#a***@example.net.247141122178
 	NextStart *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// B5AB8EBB-EE64-4BB2-B085-B92CC5DEDC41
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Detailed records
-	Data *SenderStatisticsDetailByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *SenderStatisticsDetailByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s SenderStatisticsDetailByParamResponseBody) String() string {
@@ -113,67 +112,25 @@ func (s *SenderStatisticsDetailByParamResponseBodyData) Validate() error {
 }
 
 type SenderStatisticsDetailByParamResponseBodyDataMailDetail struct {
-	// Sending address
-	//
-	// example:
-	//
-	// s***@example.net
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// if can be null:
 	// true
 	ConfigSetId *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
 	// if can be null:
 	// true
-	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
-	// Detailed classification of error reasons: - SendOk - SmtpNxBox
-	//
-	// etc.
-	//
-	// example:
-	//
-	// SendOk
+	ConfigSetName       *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
 	ErrorClassification *string `json:"ErrorClassification,omitempty" xml:"ErrorClassification,omitempty"`
 	// if can be null:
 	// true
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
 	// if can be null:
 	// true
-	IpPoolName *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
-	// Update time
-	//
-	// example:
-	//
-	// 2021-04-28T17:11Z
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// Delivery detail information
-	//
-	// example:
-	//
-	// 250 Send Mail OK
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Delivery status: 0 Success, 2 Invalid Address, 3 Spam, 4 Other Failures
-	//
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Email subject
-	//
-	// example:
-	//
-	// test subject
-	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// Recipient address
-	//
-	// example:
-	//
-	// b***@example.net
-	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
-	// UTC formatted update time
-	//
-	// example:
-	//
-	// 1619601108
+	IpPoolName        *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
+	LastUpdateTime    *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subject           *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	ToAddress         *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 	UtcLastUpdateTime *string `json:"UtcLastUpdateTime,omitempty" xml:"UtcLastUpdateTime,omitempty"`
 }
 

@@ -45,7 +45,7 @@ type CreateDomainRequest struct {
 	//
 	// 4. It cannot end with a hyphen (-).
 	//
-	// 5. It cannot contain any of the following characters: _ :;/!*~.@#$%^&()+=[{]}|?<>,\\""
+	// 5. It cannot contain any of the following characters: _ :;/!\\*\\~.@#$%^&()+=[{]}|?<>,\\""
 	//
 	// example:
 	//

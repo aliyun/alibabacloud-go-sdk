@@ -20,21 +20,20 @@ type iSaveReceiverDetailResponseBody interface {
 }
 
 type SaveReceiverDetailResponseBody struct {
-	// List of recipient addresses that failed to upload.
 	Data *SaveReceiverDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Number of errors.
+	// The number of errors.
 	//
 	// example:
 	//
 	// 638
 	ErrorCount *int32 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Number of successes.
+	// The number of successful records.
 	//
 	// example:
 	//
@@ -130,11 +129,6 @@ func (s *SaveReceiverDetailResponseBodyData) Validate() error {
 }
 
 type SaveReceiverDetailResponseBodyDataDetail struct {
-	// Recipient address.
-	//
-	// example:
-	//
-	// test@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// example:
 	//

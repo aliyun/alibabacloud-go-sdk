@@ -26,20 +26,20 @@ type iQueryReceiverByParamRequest interface {
 }
 
 type QueryReceiverByParamRequest struct {
-	// Keyword, defaults to all information if not specified
+	// Search keyword. Default value: all information.
 	//
 	// example:
 	//
 	// mesh-notification
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Current page number
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of items per page, default: 10
+	// Number of entries per page. Default value: 10.
 	//
 	// example:
 	//
@@ -47,15 +47,11 @@ type QueryReceiverByParamRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Delivery result. If not filled, it represents all statuses. Values:
+	// List status. Valid values:
 	//
-	// - 0: Success
+	// - 0: uploading
 	//
-	// - 2: Invalid address
-	//
-	// - 3: Spam
-	//
-	// - 4: Failure
+	// - 1: upload complete
 	//
 	// example:
 	//

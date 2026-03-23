@@ -14,6 +14,8 @@ type iDedicatedIpPoolDeleteResponseBody interface {
 }
 
 type DedicatedIpPoolDeleteResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx

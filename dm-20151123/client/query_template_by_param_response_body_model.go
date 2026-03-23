@@ -22,18 +22,26 @@ type iQueryTemplateByParamResponseBody interface {
 }
 
 type QueryTemplateByParamResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 10Axxxxxxxxxxxx37
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 21
@@ -138,31 +146,16 @@ func (s *QueryTemplateByParamResponseBodyData) Validate() error {
 }
 
 type QueryTemplateByParamResponseBodyDataTemplate struct {
-	// example:
-	//
-	// 2019-09-29T13:28Z
 	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SmsStatus       *int32  `json:"SmsStatus,omitempty" xml:"SmsStatus,omitempty"`
 	SmsTemplateCode *int32  `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
 	Smsrejectinfo   *int32  `json:"Smsrejectinfo,omitempty" xml:"Smsrejectinfo,omitempty"`
 	TemplateComment *string `json:"TemplateComment,omitempty" xml:"TemplateComment,omitempty"`
-	// example:
-	//
-	// 3xxxx8
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// example:
-	//
-	// test
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// example:
-	//
-	// 2
-	TemplateStatus *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	TemplateType   *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// example:
-	//
-	// 1661830382
-	UtcCreatetime *int64 `json:"UtcCreatetime,omitempty" xml:"UtcCreatetime,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateStatus  *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	TemplateType    *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	UtcCreatetime   *int64  `json:"UtcCreatetime,omitempty" xml:"UtcCreatetime,omitempty"`
 }
 
 func (s QueryTemplateByParamResponseBodyDataTemplate) String() string {

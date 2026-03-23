@@ -45,9 +45,8 @@ type QueryDomainByParamResponseBody struct {
 	// example:
 	//
 	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// List of domains
-	Data *QueryDomainByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryDomainByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryDomainByParamResponseBody) String() string {
@@ -147,80 +146,17 @@ func (s *QueryDomainByParamResponseBodyData) Validate() error {
 }
 
 type QueryDomainByParamResponseBodyDataDomain struct {
-	// Track verification
-	//
-	// example:
-	//
-	// 0
 	CnameAuthStatus *string `json:"CnameAuthStatus,omitempty" xml:"CnameAuthStatus,omitempty"`
-	// CName verification status, success: 0; failure: 1
-	//
-	// example:
-	//
-	// 0
-	ConfirmStatus *string `json:"ConfirmStatus,omitempty" xml:"ConfirmStatus,omitempty"`
-	// Creation time
-	//
-	// example:
-	//
-	// 2019-09-29T13:28Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Domain ID
-	//
-	// example:
-	//
-	// 158923
-	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// Domain name
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Domain record
-	//
-	// example:
-	//
-	// 6bd86901b9fe4618a046
-	DomainRecord *string `json:"DomainRecord,omitempty" xml:"DomainRecord,omitempty"`
-	// Domain status.
-	//
-	// - 0: Available, verified
-	//
-	// - 1: Unavailable, verification failed
-	//
-	// example:
-	//
-	// 0
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// ICP filing status.
-	//
-	// - 1 indicates filed
-	//
-	// - 0 indicates not filed
-	//
-	// example:
-	//
-	// 1
-	IcpStatus *string `json:"IcpStatus,omitempty" xml:"IcpStatus,omitempty"`
-	// MX authentication status, success: 0, failure: 1.
-	//
-	// example:
-	//
-	// 0
-	MxAuthStatus *string `json:"MxAuthStatus,omitempty" xml:"MxAuthStatus,omitempty"`
-	// SPF authentication status, success: 0, failure: 1.
-	//
-	// example:
-	//
-	// 0
-	SpfAuthStatus *string `json:"SpfAuthStatus,omitempty" xml:"SpfAuthStatus,omitempty"`
-	// Creation time in UTC format.
-	//
-	// example:
-	//
-	// 1569734892
-	UtcCreateTime *int64 `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
+	ConfirmStatus   *string `json:"ConfirmStatus,omitempty" xml:"ConfirmStatus,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainId        *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainRecord    *string `json:"DomainRecord,omitempty" xml:"DomainRecord,omitempty"`
+	DomainStatus    *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	IcpStatus       *string `json:"IcpStatus,omitempty" xml:"IcpStatus,omitempty"`
+	MxAuthStatus    *string `json:"MxAuthStatus,omitempty" xml:"MxAuthStatus,omitempty"`
+	SpfAuthStatus   *string `json:"SpfAuthStatus,omitempty" xml:"SpfAuthStatus,omitempty"`
+	UtcCreateTime   *int64  `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
 }
 
 func (s QueryDomainByParamResponseBodyDataDomain) String() string {

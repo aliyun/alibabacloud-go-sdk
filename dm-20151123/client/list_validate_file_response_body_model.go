@@ -26,27 +26,40 @@ type iListValidateFileResponseBody interface {
 }
 
 type ListValidateFileResponseBody struct {
+	// The list of files.
 	Files []*ListValidateFileResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// Indicates whether a next page of data exists.
+	//
 	// example:
 	//
 	// true
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 10
 	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -138,58 +151,86 @@ func (s *ListValidateFileResponseBody) Validate() error {
 }
 
 type ListValidateFileResponseBodyFiles struct {
+	// The number of addresses with the validation result \\"CatchAll\\".
+	//
 	// example:
 	//
 	// 1
 	CatchAllNum *string `json:"CatchAllNum,omitempty" xml:"CatchAllNum,omitempty"`
+	// The time when the task was completed.
+	//
 	// example:
 	//
 	// 2000-01-01T00:00:00Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The number of addresses with the validation result \\"DoNotMail\\".
+	//
 	// example:
 	//
 	// 0
 	DoNotMailNum *string `json:"DoNotMailNum,omitempty" xml:"DoNotMailNum,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// xxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
 	// test.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The number of addresses with the validation result \\"Invalid\\".
+	//
 	// example:
 	//
 	// 4
 	InvalidNum *string `json:"InvalidNum,omitempty" xml:"InvalidNum,omitempty"`
+	// Indicates whether the result can be downloaded.
+	//
 	// example:
 	//
 	// true
 	IsDownloadable *bool `json:"IsDownloadable,omitempty" xml:"IsDownloadable,omitempty"`
+	// The task execution progress.
+	//
 	// example:
 	//
 	// 100%
 	Percentage *string `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The number of addresses that have been validated.
+	//
 	// example:
 	//
 	// 10
 	ProcessedNum *string `json:"ProcessedNum,omitempty" xml:"ProcessedNum,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of addresses to validate in the task.
+	//
 	// example:
 	//
 	// 10
 	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The number of addresses with the validation result \\"Unknown\\".
+	//
 	// example:
 	//
 	// 0
 	UnknownNum *string `json:"UnknownNum,omitempty" xml:"UnknownNum,omitempty"`
+	// The time when the file was submitted.
+	//
 	// example:
 	//
 	// 2000-01-01T00:00:00Z
 	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	// The number of addresses with the validation result \\"Valid\\".
+	//
 	// example:
 	//
 	// 5

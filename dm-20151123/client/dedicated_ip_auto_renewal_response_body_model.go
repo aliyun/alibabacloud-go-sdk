@@ -14,7 +14,7 @@ type iDedicatedIpAutoRenewalResponseBody interface {
 }
 
 type DedicatedIpAutoRenewalResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -30,14 +30,14 @@ type CreateMailAddressRequest struct {
 	//
 	// example:
 	//
-	// test1@example.com
+	// 账号+@+域名
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Reply-to address
 	//
 	// example:
 	//
-	// test2@example.com
+	// test1***@example.net
 	ReplyAddress         *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

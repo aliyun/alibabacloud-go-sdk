@@ -22,7 +22,7 @@ type iDescDomainRequest interface {
 }
 
 type DescDomainRequest struct {
-	// Domain ID. Can be obtained through QueryDomainByParam.
+	// The domain name ID. Obtain this ID by calling the QueryDomainByParam operation.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DescDomainRequest struct {
 	// 13464
 	DomainId *int32 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Determines whether to perform real-time DNS resolution
+	// Specifies whether to perform real-time DNS parsing.
 	//
 	// example:
 	//

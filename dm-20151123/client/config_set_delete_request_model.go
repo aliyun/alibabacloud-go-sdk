@@ -16,10 +16,14 @@ type iConfigSetDeleteRequest interface {
 }
 
 type ConfigSetDeleteRequest struct {
+	// The IDs of the configuration sets. Separate multiple IDs with commas. This parameter is required.
+	//
 	// example:
 	//
 	// xxx
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether to force delete the associations with sender addresses.
+	//
 	// example:
 	//
 	// true

@@ -16,13 +16,13 @@ type iCreateTagResponseBody interface {
 }
 
 type CreateTagResponseBody struct {
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Tag ID
+	// The tag ID.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type CreateUserSuppressionRequest struct {
 	//
 	// example:
 	//
-	// test@example.net
+	// test@example.net或example.net
 	Address              *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

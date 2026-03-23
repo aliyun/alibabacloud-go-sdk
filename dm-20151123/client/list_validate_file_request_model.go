@@ -22,24 +22,34 @@ type iListValidateFileRequest interface {
 }
 
 type ListValidateFileRequest struct {
+	// The end time. The time is in UTC and follows the RFC 3339 format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2025-12-19T20:30:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A keyword in the file name.
+	//
 	// example:
 	//
 	// keyword
 	FileKeyword *string `json:"FileKeyword,omitempty" xml:"FileKeyword,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time. The time is in UTC and follows the RFC 3339 format.
+	//
 	// This parameter is required.
 	//
 	// example:

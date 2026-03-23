@@ -22,32 +22,31 @@ type iQueryTaskByParamResponseBody interface {
 }
 
 type QueryTaskByParamResponseBody struct {
-	// Current page number
+	// The page number.
 	//
 	// example:
 	//
 	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Page size
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 15
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Returned results
-	Data *QueryTaskByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryTaskByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryTaskByParamResponseBody) String() string {
@@ -147,74 +146,19 @@ func (s *QueryTaskByParamResponseBodyData) Validate() error {
 }
 
 type QueryTaskByParamResponseBodyDataTask struct {
-	// Address type, sending address: 1; random address: 0;
-	//
-	// example:
-	//
-	// 0
 	AddressType   *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	ConfigSetId   *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
 	ConfigSetName *string `json:"ConfigSetName,omitempty" xml:"ConfigSetName,omitempty"`
-	// Creation time
-	//
-	// example:
-	//
-	// 2022-04-18T10:36Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// dedicated IP pool ID.
-	//
-	// example:
-	//
-	// xxx
-	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
-	// dedicated IP pool name.
-	//
-	// example:
-	//
-	// test
-	IpPoolName *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
-	// Receiver\\"s name
-	//
-	// example:
-	//
-	// TKP000442-333
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	IpPoolId      *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	IpPoolName    *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
 	ReceiversName *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
-	// Request count
-	//
-	// example:
-	//
-	// 1
-	RequestCount *string `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	// Tag
-	//
-	// example:
-	//
-	// 202201
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// Task ID
-	//
-	// example:
-	//
-	// 1054296
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task status, sent successfully: 1
-	//
-	// example:
-	//
-	// 1
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// Template name
-	//
-	// example:
-	//
-	// Short Simple
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// Creation time in UTC format
-	//
-	// example:
-	//
-	// 1569734892
-	UtcCreateTime *int64 `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
+	RequestCount  *string `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	TagName       *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus    *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TemplateName  *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	UtcCreateTime *int64  `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
 }
 
 func (s QueryTaskByParamResponseBodyDataTask) String() string {

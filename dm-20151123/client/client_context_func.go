@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// # Add IP Protection Information
+// 添加IP防护信息
 //
 // @param request - AddIpfilterRequest
 //
@@ -121,7 +121,7 @@ func (client *Client) ApproveReplyMailAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Batch Send Emails
+// Sends a batch of emails.
 //
 // @param request - BatchSendMailRequest
 //
@@ -449,7 +449,7 @@ func (client *Client) CheckReplyToMailAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 配置集取消关联发信地址
+// Disassociates a sender address from a configuration set.
 //
 // @param request - ConfigSetCancelRelationFromAddressRequest
 //
@@ -497,7 +497,7 @@ func (client *Client) ConfigSetCancelRelationFromAddressWithContext(ctx context.
 
 // Summary:
 //
-// 配置集创建
+// Creates a configuration set. You can create up to 100 configuration sets.
 //
 // @param request - ConfigSetCreateRequest
 //
@@ -549,7 +549,7 @@ func (client *Client) ConfigSetCreateWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 删除配置集
+// Deletes configuration sets.
 //
 // @param request - ConfigSetDeleteRequest
 //
@@ -597,7 +597,7 @@ func (client *Client) ConfigSetDeleteWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 配置集详情
+// Retrieves the details of a configuration set.
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -641,7 +641,7 @@ func (client *Client) ConfigSetDetailWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 配置集列表
+// Lists configuration sets.
 //
 // @param request - ConfigSetListRequest
 //
@@ -697,7 +697,7 @@ func (client *Client) ConfigSetListWithContext(ctx context.Context, request *Con
 
 // Summary:
 //
-// 配置集关联发信地址
+// Associates a configuration set with a sender address.
 //
 // @param request - ConfigSetRelationFromAddressRequest
 //
@@ -745,7 +745,7 @@ func (client *Client) ConfigSetRelationFromAddressWithContext(ctx context.Contex
 
 // Summary:
 //
-// 配置集更新
+// Updates a configuration set.
 //
 // @param request - ConfigSetUpdateRequest
 //
@@ -989,7 +989,7 @@ func (client *Client) CreateReceiverWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// # Create Tag
+// Creates a tag.
 //
 // @param request - CreateTagRequest
 //
@@ -1105,7 +1105,7 @@ func (client *Client) CreateUserSuppressionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Set Dedicated IP Auto Renewal
+// Sets auto-renewal for a dedicated IP address.
 //
 // @param request - DedicatedIpAutoRenewalRequest
 //
@@ -1153,7 +1153,7 @@ func (client *Client) DedicatedIpAutoRenewalWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Change the warmup method for a dedicated IP
+// Updates the prefetch method for a dedicated IP address.
 //
 // @param request - DedicatedIpChangeWarmupTypeRequest
 //
@@ -1201,7 +1201,7 @@ func (client *Client) DedicatedIpChangeWarmupTypeWithContext(ctx context.Context
 
 // Summary:
 //
-// # Dedicated IP User IP List
+// Queries the IP addresses that you have purchased.
 //
 // @param request - DedicatedIpListRequest
 //
@@ -1253,7 +1253,7 @@ func (client *Client) DedicatedIpListWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// # Creation of Independent IP Pool
+// Creates a dedicated IP pool.
 //
 // @param request - DedicatedIpPoolCreateRequest
 //
@@ -1301,7 +1301,7 @@ func (client *Client) DedicatedIpPoolCreateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 独立IP池删除
+// Deletes a dedicated IP pool.
 //
 // @param request - DedicatedIpPoolDeleteRequest
 //
@@ -1345,7 +1345,7 @@ func (client *Client) DedicatedIpPoolDeleteWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Dedicated IP Pool List
+// Lists IP pools.
 //
 // @param request - DedicatedIpPoolListRequest
 //
@@ -1376,6 +1376,10 @@ func (client *Client) DedicatedIpPoolListWithContext(ctx context.Context, reques
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.PoolId) {
+		query["PoolId"] = request.PoolId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1401,7 +1405,7 @@ func (client *Client) DedicatedIpPoolListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Update of dedicated IP Pool
+// Updates an IP pool.
 //
 // @param request - DedicatedIpPoolUpdateRequest
 //
@@ -1853,7 +1857,7 @@ func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteT
 
 // Summary:
 //
-// 删除批量校验任务的结果文件
+// Deletes the verification file after the verification process is complete.
 //
 // @param request - DeleteValidateFileRequest
 //
@@ -1897,7 +1901,7 @@ func (client *Client) DeleteValidateFileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieve account information.
+// Retrieves account information.
 //
 // @param request - DescAccountSummaryRequest
 //
@@ -1949,7 +1953,7 @@ func (client *Client) DescAccountSummaryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Get Domain Details
+// You can configure domain names.
 //
 // @param request - DescDomainRequest
 //
@@ -2009,7 +2013,11 @@ func (client *Client) DescDomainWithContext(ctx context.Context, request *DescDo
 
 // Summary:
 //
-// 查看模板信息
+// Views the information about a template.
+//
+// Description:
+//
+// You can call this operation to view the information about a template.
 //
 // @param request - DescTemplateRequest
 //
@@ -2169,7 +2177,7 @@ func (client *Client) GetDedicatedIpWarmUpInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get IP Protection Information
+// 获取IP保护信息
 //
 // @param request - GetIpProtectionRequest
 //
@@ -2325,7 +2333,7 @@ func (client *Client) GetSuppressionListLevelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Get tracking information
+// Email Tracking retrieves data on sent emails.
 //
 // @param request - GetTrackListRequest
 //
@@ -2354,6 +2362,10 @@ func (client *Client) GetTrackListWithContext(ctx context.Context, request *GetT
 
 	if !dara.IsNil(request.DedicatedIpPoolId) {
 		query["DedicatedIpPoolId"] = request.DedicatedIpPoolId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -2433,7 +2445,7 @@ func (client *Client) GetTrackListWithContext(ctx context.Context, request *GetT
 
 // Summary:
 //
-// # Get tracking information based on the sender address and tag name
+// Retrieves email tracking data that meets specified conditions.
 //
 // @param request - GetTrackListByMailFromAndTagNameRequest
 //
@@ -2541,7 +2553,7 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取批量校验任务的结果文件
+// Retrieves the results file of a batch validation task.
 //
 // @param request - GetValidateFileRequest
 //
@@ -2585,7 +2597,7 @@ func (client *Client) GetValidateFileWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取批量校验任务的状态
+// Retrieves the status of a validation file.
 //
 // @param request - GetValidateFileStatusRequest
 //
@@ -2629,7 +2641,11 @@ func (client *Client) GetValidateFileStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取发信的黑名单列表
+// Queries the email sending blacklist.
+//
+// Description:
+//
+// Queries data about unsubscribes or spam reports.
 //
 // @param request - ListBlockSendingRequest
 //
@@ -2777,7 +2793,7 @@ func (client *Client) ListUserSuppressionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取上传的校验文件的列表
+// Retrieves a list of uploaded validation files.
 //
 // @param request - ListValidateFileRequest
 //
@@ -3169,7 +3185,7 @@ func (client *Client) QueryInvalidAddressWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Query the list of sending addresses.
+// Queries a list of sender addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -3237,7 +3253,7 @@ func (client *Client) QueryMailAddressByParamWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # Query the details of the recipient list
+// Query the recipient list.
 //
 // @param request - QueryReceiverByParamRequest
 //
@@ -3437,7 +3453,7 @@ func (client *Client) QueryTagByParamWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// # Query task list
+// Queries tasks based on specified parameters.
 //
 // @param request - QueryTaskByParamRequest
 //
@@ -3505,7 +3521,11 @@ func (client *Client) QueryTaskByParamWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询模板信息
+// Performs a paged query to retrieve a list of templates.
+//
+// Description:
+//
+// Performs a paged query to retrieve a list of templates.
 //
 // @param request - QueryTemplateByParamRequest
 //
@@ -3577,7 +3597,7 @@ func (client *Client) QueryTemplateByParamWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除用户无效地址
+// Deletes system-identified and manually added addresses from the user-level suppression list.
 //
 // @param request - RemoveUserSuppressionRequest
 //
@@ -3633,7 +3653,7 @@ func (client *Client) RemoveUserSuppressionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Create a Single Recipient
+// Create a single recipient.
 //
 // @param request - SaveReceiverDetailRequest
 //
@@ -3697,7 +3717,7 @@ func (client *Client) SaveReceiverDetailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Send Template Test Email
+// You can send a test email.
 //
 // @param request - SendTestByTemplateRequest
 //
@@ -3785,7 +3805,7 @@ func (client *Client) SendTestByTemplateWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 提交批量校验任务
+// You can upload the list of addresses to be verified.
 //
 // @param request - SendValidateFileRequest
 //
@@ -3845,7 +3865,7 @@ func (client *Client) SendValidateFileWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Retrieve Sending Data under Specified Conditions
+// Retrieves sending statistics that match specified criteria.
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -3870,6 +3890,10 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithContext(ctx context
 
 	if !dara.IsNil(request.DedicatedIpPoolId) {
 		query["DedicatedIpPoolId"] = request.DedicatedIpPoolId
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
 	}
 
 	if !dara.IsNil(request.EndTime) {
@@ -3925,7 +3949,7 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithContext(ctx context
 
 // Summary:
 //
-// # Query Delivery Result Details
+// Queries sending details.
 //
 // @param request - SenderStatisticsDetailByParamRequest
 //
@@ -4073,7 +4097,7 @@ func (client *Client) SetSuppressionListLevelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # API for Sending Emails
+// Sends a single email.
 //
 // @param tmpReq - SingleSendMailRequest
 //
@@ -4213,7 +4237,7 @@ func (client *Client) SingleSendMailWithContext(ctx context.Context, tmpReq *Sin
 
 // Summary:
 //
-// Lift sending restrictions due to unsubscription, reporting, etc.
+// Removes sending restrictions caused by unsubscribes or complaints.
 //
 // @param request - UnblockSendingRequest
 //
@@ -4321,7 +4345,7 @@ func (client *Client) UpdateIpProtectionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Update account information
+// 更新帐号信息
 //
 // @param tmpReq - UpdateUserRequest
 //
@@ -4371,7 +4395,7 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, tmpReq *UpdateU
 
 // Summary:
 //
-// 校验电子邮件地址
+// Validates an email address.
 //
 // @param request - ValidateEmailRequest
 //

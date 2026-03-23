@@ -20,17 +20,7 @@ type iAddIpfilterRequest interface {
 }
 
 type AddIpfilterRequest struct {
-	// IP Address/IP Range/IP Segment
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// xxx.xxx.xxx.xxx
-	//
-	// xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx
-	//
-	// xxx.xxx.xxx.xxx/xxx
 	IpAddress            *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

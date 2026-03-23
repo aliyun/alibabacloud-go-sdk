@@ -40,55 +40,81 @@ type iGetValidateFileStatusResponseBody interface {
 }
 
 type GetValidateFileStatusResponseBody struct {
+	// The number of email addresses with the validation result \\`CatchAll\\`.
+	//
 	// example:
 	//
 	// 2
 	CatchAllNum *string `json:"CatchAllNum,omitempty" xml:"CatchAllNum,omitempty"`
+	// The time when the task was completed.
+	//
 	// example:
 	//
 	// 2000-01-01T00:00:00Z
 	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The number of email addresses with the validation result \\`DoNotMail\\`.
+	//
 	// example:
 	//
 	// 1
 	DoNotMailNum *string `json:"DoNotMailNum,omitempty" xml:"DoNotMailNum,omitempty"`
 	FileId       *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The name of the file that was uploaded when the task was submitted.
+	//
 	// example:
 	//
 	// file.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The number of email addresses with the validation result \\`Invalid\\`.
+	//
 	// example:
 	//
 	// 2
 	InvalidNum *string `json:"InvalidNum,omitempty" xml:"InvalidNum,omitempty"`
+	// The progress of the task execution.
+	//
 	// example:
 	//
 	// 100%
 	Percentage *string `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The number of email addresses that have been validated.
+	//
 	// example:
 	//
 	// 10
 	ProcessedNum *string `json:"ProcessedNum,omitempty" xml:"ProcessedNum,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// yyyy-yyyy-yyyy-yyyy
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// completed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of email addresses to validate.
+	//
 	// example:
 	//
 	// 10
 	TotalNum *string `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The number of email addresses with the validation result \\`Unknown\\`.
+	//
 	// example:
 	//
 	// 1
 	UnknownNum *string `json:"UnknownNum,omitempty" xml:"UnknownNum,omitempty"`
+	// The time when the file was submitted.
+	//
 	// example:
 	//
 	// 2000-01-01T00:00:00Z
 	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	// The number of email addresses with the validation result \\`Valid\\`.
+	//
 	// example:
 	//
 	// 4

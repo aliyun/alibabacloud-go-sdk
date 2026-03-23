@@ -72,182 +72,182 @@ type iDescDomainResponseBody interface {
 }
 
 type DescDomainResponseBody struct {
-	// CNAME verification flag, 0 for success, 1 for failure.
+	// The CNAME authentication flag. 0: Succeeded. 1: Failed.
 	//
 	// example:
 	//
 	// 1
 	CnameAuthStatus *string `json:"CnameAuthStatus,omitempty" xml:"CnameAuthStatus,omitempty"`
-	// Indicates whether the CNAME host record has been modified, 1 for modified (reverting to the original value also counts as modification), 0 for not modified.
+	// Indicates whether the CNAME host record was modified. A value of 1 means the record was modified. Reverting to the original value is also considered a modification. A value of 0 means the record was not modified.
 	//
 	// example:
 	//
 	// 0
 	CnameConfirmStatus *string `json:"CnameConfirmStatus,omitempty" xml:"CnameConfirmStatus,omitempty"`
-	// Custom part of the CNAME host record
+	// The custom part of the CNAME host record.
 	//
 	// example:
 	//
 	// dmtrace
 	CnameRecord *string `json:"CnameRecord,omitempty" xml:"CnameRecord,omitempty"`
-	// Creation time
+	// The time when the domain name was created.
 	//
 	// example:
 	//
 	// 2025-03-19T12:49Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Whether it is the default domain,
+	// Indicates whether the domain name is the default domain name.
 	//
-	// Value: 0 No (this field is deprecated)
+	// Value: 0 (No). This field is deprecated.
 	//
 	// example:
 	//
 	// 0
 	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
-	// DKIM verification flag, indicating whether the DKIM record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
+	// The DKIM authentication flag. Indicates if the DKIM record in your DNS settings passed verification. 0: Passed. 1: Not passed.
 	//
 	// example:
 	//
 	// 0
 	DkimAuthStatus *string `json:"DkimAuthStatus,omitempty" xml:"DkimAuthStatus,omitempty"`
-	// DKIM public key value, the value that users need to set for the DKIM record in DNS
+	// The DKIM public key. This is the value of the DKIM record to configure in your DNS settings.
 	//
 	// example:
 	//
 	// v=DKIM1; k=rsa; p=MIGfMA0GCSqGSI...
 	DkimPublicKey *string `json:"DkimPublicKey,omitempty" xml:"DkimPublicKey,omitempty"`
-	// DKIM host record, the key that the user needs to set in the DNS for the DKIM record
+	// The DKIM host record. This is the key of the DKIM record to configure in your DNS settings.
 	//
 	// example:
 	//
 	// aliyun-cn-hangzhou._domainkey.hangzhou26
 	DkimRR        *string `json:"DkimRR,omitempty" xml:"DkimRR,omitempty"`
 	DkimRsaLength *int32  `json:"DkimRsaLength,omitempty" xml:"DkimRsaLength,omitempty"`
-	// DMARC verification flag, indicating whether the DMARC record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
+	// The DMARC authentication flag. Indicates if the DMARC record in your DNS settings passed verification. 0: Passed. 1: Not passed.
 	//
 	// example:
 	//
 	// 1
 	DmarcAuthStatus *int32 `json:"DmarcAuthStatus,omitempty" xml:"DmarcAuthStatus,omitempty"`
-	// DMARC host record value
+	// The DMARC host record value.
 	//
 	// example:
 	//
 	// _dmarc.xxx
 	DmarcHostRecord *string `json:"DmarcHostRecord,omitempty" xml:"DmarcHostRecord,omitempty"`
-	// DMARC record value
+	// The DMARC record value.
 	//
 	// example:
 	//
 	// v=DMARC1;p=none;rua=mailto:dmarc_report@service.aliyun.com
 	DmarcRecord *string `json:"DmarcRecord,omitempty" xml:"DmarcRecord,omitempty"`
-	// DMARC record value resolved through the public domain name
+	// The DMARC record value parsed from the public domain name.
 	//
 	// example:
 	//
 	// v=DMARC1;p=none;rua=mailto:dmarc_report@service.aliyun.com
 	DnsDmarc *string `json:"DnsDmarc,omitempty" xml:"DnsDmarc,omitempty"`
-	// MX record value resolved from the public network domain
+	// The MX record value parsed from the public domain name.
 	//
 	// example:
 	//
 	// mx01.dm.aliyun.com
 	DnsMx *string `json:"DnsMx,omitempty" xml:"DnsMx,omitempty"`
-	// SPF record value resolved from the public network domain
+	// The SPF record value parsed from the public domain name.
 	//
 	// example:
 	//
 	// v=xxxx
 	DnsSpf *string `json:"DnsSpf,omitempty" xml:"DnsSpf,omitempty"`
-	// Ownership record value resolved from the public network domain
+	// The ownership record value parsed from the public domain name.
 	//
 	// example:
 	//
 	// 0c40d5f125af4e42892a
 	DnsTxt *string `json:"DnsTxt,omitempty" xml:"DnsTxt,omitempty"`
-	// Domain ID
+	// The domain name ID.
 	//
 	// example:
 	//
 	// 158910
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// Domain name
+	// The domain name.
 	//
 	// example:
 	//
 	// test.example.net
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Domain status. Indicates whether the verification was successful, with values:
+	// The domain status. This indicates whether the domain name passed authentication. Valid values:
 	//
-	// - **0**: Available, verified successfully
+	// - **0**: Active. The domain name passed authentication.
 	//
-	// - **1**: Unavailable, verification failed
+	// - **1**: Inactive. The domain name failed authentication.
 	//
 	// example:
 	//
 	// 1
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// Ownership record provided by the email push console
+	// The ownership record provided by the Direct Mail console.
 	//
 	// example:
 	//
 	// 0c40d5f125af4e42892a
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// Host record
+	// The host record.
 	//
 	// example:
 	//
 	// xxx
 	HostRecord *string `json:"HostRecord,omitempty" xml:"HostRecord,omitempty"`
-	// Filing status. **1*	- indicates filed, **0*	- indicates not filed.
+	// The ICP filing status. **1*	- indicates that the domain name has an ICP filing. **0*	- indicates that the domain name does not have an ICP filing.
 	//
 	// example:
 	//
 	// 1
 	IcpStatus *string `json:"IcpStatus,omitempty" xml:"IcpStatus,omitempty"`
-	// MX verification flag, 0 for success, 1 for failure.
+	// The MX authentication flag. 0: Succeeded. 1: Failed.
 	//
 	// example:
 	//
 	// 1
 	MxAuthStatus *string `json:"MxAuthStatus,omitempty" xml:"MxAuthStatus,omitempty"`
-	// MX record value provided by the email push console
+	// The MX record value provided by the Direct Mail console.
 	//
 	// example:
 	//
 	// mx01.dm.aliyun.com
 	MxRecord *string `json:"MxRecord,omitempty" xml:"MxRecord,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 51B74264-46B4-43C8-A9A0-6B8E8BC04F34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// SPF verification flag, 0 for success, 1 for failure.
+	// The SPF authentication flag. 0: Succeeded. 1: Failed.
 	//
 	// example:
 	//
 	// 1
 	SpfAuthStatus *string `json:"SpfAuthStatus,omitempty" xml:"SpfAuthStatus,omitempty"`
-	// SPF record value provided by the email push console
+	// The SPF record value provided by the Direct Mail console.
 	//
 	// example:
 	//
 	// include:spf1.dm.aliyun.com
 	SpfRecord *string `json:"SpfRecord,omitempty" xml:"SpfRecord,omitempty"`
-	// SPF record. Previously, the SPF display content needed to be calculated by the calling end based on the spfRecord in the response. The new field spfRecordV2 replaces spfRecord, and the calling end can directly display this field after obtaining it;
+	// The SPF record. This field replaces the \\`spfRecord\\` field. You can directly display the value of this field without needing to calculate it from the response.
 	//
 	// example:
 	//
 	// v=spf1 include:spf1.dm.aliyun.com -all
 	SpfRecordV2 *string `json:"SpfRecordV2,omitempty" xml:"SpfRecordV2,omitempty"`
-	// Primary domain
+	// The primary domain name.
 	//
 	// example:
 	//
 	// example.com
 	TlDomainName *string `json:"TlDomainName,omitempty" xml:"TlDomainName,omitempty"`
-	// CNAME record value provided by the email push console
+	// The CNAME record value provided by the Direct Mail console.
 	//
 	// example:
 	//

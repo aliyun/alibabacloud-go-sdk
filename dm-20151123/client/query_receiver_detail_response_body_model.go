@@ -45,9 +45,8 @@ type QueryReceiverDetailResponseBody struct {
 	// example:
 	//
 	// 361
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Detailed information
-	Data *QueryReceiverDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryReceiverDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryReceiverDetailResponseBody) String() string {
@@ -147,30 +146,10 @@ func (s *QueryReceiverDetailResponseBodyData) Validate() error {
 }
 
 type QueryReceiverDetailResponseBodyDataDetail struct {
-	// Creation Time
-	//
-	// example:
-	//
-	// 2019-09-29T13:28Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Content
-	//
-	// example:
-	//
-	// {\\"Domains\\": [\\"a.example.net\\", \\"b.example.net\\", \\"c.example.net\\", \\"d.example.net\\"]}
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Recipient address
-	//
-	// example:
-	//
-	// a***@example.net
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Creation time in UTC format
-	//
-	// example:
-	//
-	// 1569734892
-	UtcCreateTime *int64 `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	UtcCreateTime *int64  `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
 }
 
 func (s QueryReceiverDetailResponseBodyDataDetail) String() string {

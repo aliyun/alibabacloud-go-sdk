@@ -45,9 +45,8 @@ type GetIpfilterListResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Data records
-	Data *GetIpfilterListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *GetIpfilterListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s GetIpfilterListResponseBody) String() string {
@@ -147,28 +146,9 @@ func (s *GetIpfilterListResponseBodyData) Validate() error {
 }
 
 type GetIpfilterListResponseBodyDataIpfilters struct {
-	// timestamp
-	//
-	// example:
-	//
-	// 1653547140
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Record ID
-	//
-	// example:
-	//
-	// 10083
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// IP address/IP range/IP segment
-	//
-	// example:
-	//
-	// xxx.xxx.xxx.xxx
-	//
-	// xxx.xxx.xxx.xxx-xxx.xxx.xxx.xxx
-	//
-	// xxx.xxx.xxx.xxx/xxx
-	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IpAddress  *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 }
 
 func (s GetIpfilterListResponseBodyDataIpfilters) String() string {

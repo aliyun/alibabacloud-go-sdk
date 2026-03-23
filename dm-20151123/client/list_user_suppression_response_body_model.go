@@ -22,7 +22,6 @@ type iListUserSuppressionResponseBody interface {
 }
 
 type ListUserSuppressionResponseBody struct {
-	// Returned results.
 	Data *ListUserSuppressionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Page number
 	//
@@ -147,40 +146,11 @@ func (s *ListUserSuppressionResponseBodyData) Validate() error {
 }
 
 type ListUserSuppressionResponseBodyDataUserSuppressions struct {
-	// Email address or domain name
-	//
-	// example:
-	//
-	// test@example.net
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Creation time, timestamp, accurate to the second.
-	//
-	// example:
-	//
-	// 1715667435
-	CreateTime *int32 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Last bounce hit time, timestamp, accurate to the second.
-	//
-	// example:
-	//
-	// 1715667451
-	LastBounceTime *int32 `json:"LastBounceTime,omitempty" xml:"LastBounceTime,omitempty"`
-	// Invalid address ID
-	//
-	// example:
-	//
-	// 59511
-	SuppressionId *int32 `json:"SuppressionId,omitempty" xml:"SuppressionId,omitempty"`
-	// Source of entry, invalid address type
-	//
-	// - system
-	//
-	// - user
-	//
-	// example:
-	//
-	// user
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Address        *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	CreateTime     *int32  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LastBounceTime *int32  `json:"LastBounceTime,omitempty" xml:"LastBounceTime,omitempty"`
+	SuppressionId  *int32  `json:"SuppressionId,omitempty" xml:"SuppressionId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListUserSuppressionResponseBodyDataUserSuppressions) String() string {

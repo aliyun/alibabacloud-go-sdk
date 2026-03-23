@@ -16,14 +16,8 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	// Returned Content
-	Data *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID
-	//
-	// example:
-	//
-	// 10A1AD70-E48E-476D-98D9-39BD92193837
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -62,11 +56,6 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyData struct {
-	// Whether EventBridge is enabled
-	//
-	// example:
-	//
-	// true
 	EnableEventbridge *bool `json:"EnableEventbridge,omitempty" xml:"EnableEventbridge,omitempty"`
 }
 

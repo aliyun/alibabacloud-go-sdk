@@ -26,20 +26,20 @@ type iQueryTaskByParamRequest interface {
 }
 
 type QueryTaskByParamRequest struct {
-	// Keyword, defaults to all information
+	// The keyword for the query. If you leave this blank, all tasks are returned.
 	//
 	// example:
 	//
 	// mesh-notification-788717
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Current page number, default is 1
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Page size, default is 10
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type QueryTaskByParamRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Status, defaults to all statuses
+	// The task status. If you leave this blank, tasks in all states are returned.
 	//
 	// example:
 	//

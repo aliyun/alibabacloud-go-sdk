@@ -18,14 +18,20 @@ type iConfigSetCreateRequest interface {
 }
 
 type ConfigSetCreateRequest struct {
+	// The description of the configuration set. The description can be up to 50 characters long.
+	//
 	// example:
 	//
 	// XXX
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the associated IP pool. This parameter is optional.
+	//
 	// example:
 	//
 	// XXX
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	// The name of the configuration set. This parameter is required. The name must be unique and can be up to 50 characters long.
+	//
 	// example:
 	//
 	// XXX

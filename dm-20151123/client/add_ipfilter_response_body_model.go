@@ -16,18 +16,8 @@ type iAddIpfilterResponseBody interface {
 }
 
 type AddIpfilterResponseBody struct {
-	// ID corresponding to the IP
-	//
-	// example:
-	//
-	// 10795
 	IpFilterId *string `json:"IpFilterId,omitempty" xml:"IpFilterId,omitempty"`
-	// Request ID
-	//
-	// example:
-	//
-	// 0E9282E8-DC08-5445-8FB0-B9F0CA28B249
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddIpfilterResponseBody) String() string {

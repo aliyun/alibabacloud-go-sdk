@@ -16,18 +16,8 @@ type iGetIpProtectionResponseBody interface {
 }
 
 type GetIpProtectionResponseBody struct {
-	// IP protection switch, On: 1 Off: 0
-	//
-	// example:
-	//
-	// 0
 	IpProtection *string `json:"IpProtection,omitempty" xml:"IpProtection,omitempty"`
-	// Request ID
-	//
-	// example:
-	//
-	// B30E5A62-2E64-577D-A70E-8C6781D6C975
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetIpProtectionResponseBody) String() string {

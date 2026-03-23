@@ -18,19 +18,19 @@ type iSenderStatisticsByTagNameAndBatchIDResponseBody interface {
 }
 
 type SenderStatisticsByTagNameAndBatchIDResponseBody struct {
-	// Request ID
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count
+	// The total count of data records.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Data records
+	// Contains the statistical data.
 	Data *SenderStatisticsByTagNameAndBatchIDResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
@@ -113,47 +113,12 @@ func (s *SenderStatisticsByTagNameAndBatchIDResponseBodyData) Validate() error {
 }
 
 type SenderStatisticsByTagNameAndBatchIDResponseBodyDataStat struct {
-	// Creation time
-	//
-	// example:
-	//
-	// 2021-07-02
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Failure count
-	//
-	// example:
-	//
-	// 0
-	FaildCount *string `json:"faildCount,omitempty" xml:"faildCount,omitempty"`
-	// Request count
-	//
-	// example:
-	//
-	// 4
-	RequestCount *string `json:"requestCount,omitempty" xml:"requestCount,omitempty"`
-	// Success rate
-	//
-	// example:
-	//
-	// 100.00%
-	SucceededPercent *string `json:"succeededPercent,omitempty" xml:"succeededPercent,omitempty"`
-	// Success count
-	//
-	// example:
-	//
-	// 4
-	SuccessCount *string `json:"successCount,omitempty" xml:"successCount,omitempty"`
-	// Invalid count
-	//
-	// example:
-	//
-	// 0
-	UnavailableCount *string `json:"unavailableCount,omitempty" xml:"unavailableCount,omitempty"`
-	// Unavailability rate
-	//
-	// example:
-	//
-	// 0%
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FaildCount         *string `json:"faildCount,omitempty" xml:"faildCount,omitempty"`
+	RequestCount       *string `json:"requestCount,omitempty" xml:"requestCount,omitempty"`
+	SucceededPercent   *string `json:"succeededPercent,omitempty" xml:"succeededPercent,omitempty"`
+	SuccessCount       *string `json:"successCount,omitempty" xml:"successCount,omitempty"`
+	UnavailableCount   *string `json:"unavailableCount,omitempty" xml:"unavailableCount,omitempty"`
 	UnavailablePercent *string `json:"unavailablePercent,omitempty" xml:"unavailablePercent,omitempty"`
 }
 

@@ -28,45 +28,49 @@ type iGetTrackListResponseBody interface {
 }
 
 type GetTrackListResponseBody struct {
-	// Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
+	// Used for pagination. Do not set this parameter for the first request. For subsequent requests, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated.)
 	//
 	// example:
 	//
-	// (This field is deprecated)
+	// （本字段已废弃）
 	OffsetCreateTime *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
-	// (This field is deprecated)
+	// (This field is deprecated.)
 	//
 	// example:
 	//
-	// (This field is deprecated)
+	// （本字段已废弃）
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of items per page
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The unique identifier for the request.
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of items
+	// The total number of matching records.
 	//
 	// example:
 	//
 	// 100
-	Total      *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	// Tracking data records
-	Data *GetTrackListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 2
+	TotalPages *int32                        `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Data       *GetTrackListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s GetTrackListResponseBody) String() string {
@@ -193,66 +197,16 @@ func (s *GetTrackListResponseBodyData) Validate() error {
 }
 
 type GetTrackListResponseBodyDataStat struct {
-	// Creation time
-	//
-	// example:
-	//
-	// 2019-09-29T13:28Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Click count
-	//
-	// example:
-	//
-	// 0
-	RcptClickCount *string `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
-	// Click rate
-	//
-	// example:
-	//
-	// 0
-	RcptClickRate *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
-	// Number of Opens
-	//
-	// example:
-	//
-	// 0
-	RcptOpenCount *string `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
-	// Open rate
-	//
-	// example:
-	//
-	// 0
-	RcptOpenRate *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
-	// Unique click count
-	//
-	// example:
-	//
-	// 0
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	RcptClickCount       *string `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
+	RcptClickRate        *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
+	RcptOpenCount        *string `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
+	RcptOpenRate         *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
 	RcptUniqueClickCount *string `json:"RcptUniqueClickCount,omitempty" xml:"RcptUniqueClickCount,omitempty"`
-	// Unique click rate
-	//
-	// example:
-	//
-	// 0
-	RcptUniqueClickRate *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
-	// Unique open count
-	//
-	// example:
-	//
-	// 0
-	RcptUniqueOpenCount *string `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
-	// Unique open rate
-	//
-	// example:
-	//
-	// 0
-	RcptUniqueOpenRate *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
-	// Total number
-	//
-	// example:
-	//
-	// 0
-	TotalNumber *string `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	RcptUniqueClickRate  *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
+	RcptUniqueOpenCount  *string `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
+	RcptUniqueOpenRate   *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
+	TotalNumber          *string `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s GetTrackListResponseBodyDataStat) String() string {

@@ -14,11 +14,6 @@ type iUpdateUserResponseBody interface {
 }
 
 type UpdateUserResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 7BC346F6-1092-5852-B6E2-CCE2E5AAE51F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

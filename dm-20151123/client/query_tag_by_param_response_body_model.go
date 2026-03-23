@@ -45,9 +45,8 @@ type QueryTagByParamResponseBody struct {
 	// example:
 	//
 	// 2
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Data records
-	Data *QueryTagByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data       *QueryTagByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s QueryTagByParamResponseBody) String() string {
@@ -147,24 +146,9 @@ func (s *QueryTagByParamResponseBodyData) Validate() error {
 }
 
 type QueryTagByParamResponseBodyDataTag struct {
-	// Tag description
-	//
-	// example:
-	//
-	// test description
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	// Tag ID
-	//
-	// example:
-	//
-	// 52366
-	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// Tag name
-	//
-	// example:
-	//
-	// hellopal
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagId          *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryTagByParamResponseBodyDataTag) String() string {

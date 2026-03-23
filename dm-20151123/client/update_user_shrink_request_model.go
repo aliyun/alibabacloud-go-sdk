@@ -14,7 +14,6 @@ type iUpdateUserShrinkRequest interface {
 }
 
 type UpdateUserShrinkRequest struct {
-	// User Information
 	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 

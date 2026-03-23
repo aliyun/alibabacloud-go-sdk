@@ -28,23 +28,39 @@ type iQueryTemplateByParamRequest interface {
 }
 
 type QueryTemplateByParamRequest struct {
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
 	FromType *int32 `json:"FromType,omitempty" xml:"FromType,omitempty"`
+	// The keyword of the template name. By default, a paged query is performed for all templates.
+	//
 	// example:
 	//
 	// test
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. The default value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. The default value is 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is deprecated. It is retained for historical compatibility.
+	//
+	// example:
+	//
+	// Abandoned, historical reasons for compatibility
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryTemplateByParamRequest) String() string {
