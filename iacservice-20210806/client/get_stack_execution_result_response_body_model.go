@@ -15,6 +15,8 @@ type iGetStackExecutionResultResponseBody interface {
 	GetStackResults() []*GetStackExecutionResultResponseBodyStackResults
 	SetTriggerId(v string) *GetStackExecutionResultResponseBody
 	GetTriggerId() *string
+	SetTriggeredStatus(v string) *GetStackExecutionResultResponseBody
+	GetTriggeredStatus() *string
 }
 
 type GetStackExecutionResultResponseBody struct {
@@ -28,7 +30,8 @@ type GetStackExecutionResultResponseBody struct {
 	// example:
 	//
 	// event-xxx
-	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerId       *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggeredStatus *string `json:"triggeredStatus,omitempty" xml:"triggeredStatus,omitempty"`
 }
 
 func (s GetStackExecutionResultResponseBody) String() string {
@@ -51,6 +54,10 @@ func (s *GetStackExecutionResultResponseBody) GetTriggerId() *string {
 	return s.TriggerId
 }
 
+func (s *GetStackExecutionResultResponseBody) GetTriggeredStatus() *string {
+	return s.TriggeredStatus
+}
+
 func (s *GetStackExecutionResultResponseBody) SetRequestId(v string) *GetStackExecutionResultResponseBody {
 	s.RequestId = &v
 	return s
@@ -63,6 +70,11 @@ func (s *GetStackExecutionResultResponseBody) SetStackResults(v []*GetStackExecu
 
 func (s *GetStackExecutionResultResponseBody) SetTriggerId(v string) *GetStackExecutionResultResponseBody {
 	s.TriggerId = &v
+	return s
+}
+
+func (s *GetStackExecutionResultResponseBody) SetTriggeredStatus(v string) *GetStackExecutionResultResponseBody {
+	s.TriggeredStatus = &v
 	return s
 }
 
