@@ -174,6 +174,11 @@ func (s *GetAssetsPropertyDetailResponseBodyPageInfo) Validate() error {
 }
 
 type GetAssetsPropertyDetailResponseBodyPropertys struct {
+	// Agent
+	//
+	// example:
+	//
+	// Mozilla/5.0 (Windows NT 10.0%3B Win64%3B x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0
 	Agent *string `json:"Agent,omitempty" xml:"Agent,omitempty"`
 	// Container name.
 	//
@@ -186,8 +191,13 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// 1649149566000
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// Asset description.
+	//
+	// example:
+	//
+	// {\\"Type\\": \\"text\\", \\"Value\\": u\\"\\u786e\\u4fdd\\u7f51\\u5173\\u5b89\\u5168\\u9632\\u62a4\\u3002\\u8981\\u6c42\\uff1a\\u5f00\\u542fWAF\\u9632\\u706b\\u5899\\u9632\\u62a4\\u529f\\u80fd\\u3002\\"}
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Web site domain.
 	//
 	// > Only returned when **Biz*	- is **web_server**.
@@ -216,6 +226,8 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	//
 	// /lib/modules/4****
 	Filepath *string `json:"Filepath,omitempty" xml:"Filepath,omitempty"`
+	// 镜像Digest
+	//
 	// example:
 	//
 	// ImageDigest
@@ -270,7 +282,12 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	//
 	// tcp
 	ListenProtocol *string `json:"ListenProtocol,omitempty" xml:"ListenProtocol,omitempty"`
-	McpName        *string `json:"McpName,omitempty" xml:"McpName,omitempty"`
+	// MCP name.
+	//
+	// example:
+	//
+	// @modelcontextprotocol/server-github
+	McpName *string `json:"McpName,omitempty" xml:"McpName,omitempty"`
 	// AI tool name
 	//
 	// example:
@@ -345,10 +362,14 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 镜像的RepoName
+	//
 	// example:
 	//
 	// ACR-Example
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// 镜像Repo命名空间
+	//
 	// example:
 	//
 	// Default
@@ -368,12 +389,24 @@ type GetAssetsPropertyDetailResponseBodyPropertys struct {
 	// example:
 	//
 	// 10
-	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Skill name
+	//
+	// example:
+	//
+	// Analytics and Data Analysis
 	SkillsName *string `json:"SkillsName,omitempty" xml:"SkillsName,omitempty"`
+	// 标签
+	//
 	// example:
 	//
 	// AI
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Transmission name.
+	//
+	// example:
+	//
+	// test
 	TransportName *string `json:"TransportName,omitempty" xml:"TransportName,omitempty"`
 	// Number of dependencies for the kernel module.
 	//

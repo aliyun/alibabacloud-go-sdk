@@ -179,7 +179,8 @@ type DescribePropertyScaDetailRequest struct {
 	// example:
 	//
 	// 1.0.2k
-	ScaVersion         *string                                               `json:"ScaVersion,omitempty" xml:"ScaVersion,omitempty"`
+	ScaVersion *string `json:"ScaVersion,omitempty" xml:"ScaVersion,omitempty"`
+	// 搜索条件列表
 	SearchCriteriaList []*DescribePropertyScaDetailRequestSearchCriteriaList `json:"SearchCriteriaList,omitempty" xml:"SearchCriteriaList,omitempty" type:"Repeated"`
 	// The search keyword. You must specify this parameter based on the value of the **SearchItem*	- parameter.
 	//
@@ -502,10 +503,14 @@ func (s *DescribePropertyScaDetailRequest) Validate() error {
 }
 
 type DescribePropertyScaDetailRequestSearchCriteriaList struct {
+	// 搜索条件名称
+	//
 	// example:
 	//
 	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 搜索条件过滤值
+	//
 	// example:
 	//
 	// test

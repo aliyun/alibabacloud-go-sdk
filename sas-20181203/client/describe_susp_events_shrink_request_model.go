@@ -153,7 +153,12 @@ type DescribeSuspEventsShrinkRequest struct {
 	// example:
 	//
 	// N
-	Dealed       *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	Dealed *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	// Source of discovery (invalid field)
+	//
+	// example:
+	//
+	// linux
 	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
 	// The subtype of the alert event. Separate multiple subtypes with commas (,).
 	//

@@ -118,6 +118,8 @@ func (s *GetCheckCountStatisticResponseBodyCheckCountStatisticDTO) Validate() er
 }
 
 type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems struct {
+	// 检查项展示名称
+	//
 	// example:
 	//
 	// 开启公网访问
@@ -306,6 +308,8 @@ type GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatistic
 	//
 	// ALIYUN
 	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// 厂商名称
+	//
 	// example:
 	//
 	// 阿里云

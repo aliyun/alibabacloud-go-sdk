@@ -9,10 +9,16 @@ type iModifyImageRegistryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDomainName(v string) *ModifyImageRegistryRequest
+	GetDomainName() *string
 	SetId(v int64) *ModifyImageRegistryRequest
 	GetId() *int64
 	SetPassword(v string) *ModifyImageRegistryRequest
 	GetPassword() *string
+	SetPort(v int32) *ModifyImageRegistryRequest
+	GetPort() *int32
+	SetRegistryHostIp(v string) *ModifyImageRegistryRequest
+	GetRegistryHostIp() *string
 	SetTransPerHour(v int32) *ModifyImageRegistryRequest
 	GetTransPerHour() *int32
 	SetUserName(v string) *ModifyImageRegistryRequest
@@ -20,6 +26,7 @@ type iModifyImageRegistryRequest interface {
 }
 
 type ModifyImageRegistryRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The ID of the image repository. You can call the listImageRegistry operation to query the ID of the image repository.
 	//
 	// example:
@@ -31,7 +38,9 @@ type ModifyImageRegistryRequest struct {
 	// example:
 	//
 	// ********************
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegistryHostIp *string `json:"RegistryHostIp,omitempty" xml:"RegistryHostIp,omitempty"`
 	// The number of images that are scanned per hour.
 	//
 	// example:
@@ -54,12 +63,24 @@ func (s ModifyImageRegistryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyImageRegistryRequest) GetDomainName() *string {
+	return s.DomainName
+}
+
 func (s *ModifyImageRegistryRequest) GetId() *int64 {
 	return s.Id
 }
 
 func (s *ModifyImageRegistryRequest) GetPassword() *string {
 	return s.Password
+}
+
+func (s *ModifyImageRegistryRequest) GetPort() *int32 {
+	return s.Port
+}
+
+func (s *ModifyImageRegistryRequest) GetRegistryHostIp() *string {
+	return s.RegistryHostIp
 }
 
 func (s *ModifyImageRegistryRequest) GetTransPerHour() *int32 {
@@ -70,6 +91,11 @@ func (s *ModifyImageRegistryRequest) GetUserName() *string {
 	return s.UserName
 }
 
+func (s *ModifyImageRegistryRequest) SetDomainName(v string) *ModifyImageRegistryRequest {
+	s.DomainName = &v
+	return s
+}
+
 func (s *ModifyImageRegistryRequest) SetId(v int64) *ModifyImageRegistryRequest {
 	s.Id = &v
 	return s
@@ -77,6 +103,16 @@ func (s *ModifyImageRegistryRequest) SetId(v int64) *ModifyImageRegistryRequest 
 
 func (s *ModifyImageRegistryRequest) SetPassword(v string) *ModifyImageRegistryRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *ModifyImageRegistryRequest) SetPort(v int32) *ModifyImageRegistryRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *ModifyImageRegistryRequest) SetRegistryHostIp(v string) *ModifyImageRegistryRequest {
+	s.RegistryHostIp = &v
 	return s
 }
 

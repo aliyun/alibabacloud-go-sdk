@@ -11,6 +11,8 @@ type iSaveImageBaselineStrategyRequest interface {
 	GoString() string
 	SetBaselineItemList(v string) *SaveImageBaselineStrategyRequest
 	GetBaselineItemList() *string
+	SetImageVulClean(v int32) *SaveImageBaselineStrategyRequest
+	GetImageVulClean() *int32
 	SetLang(v string) *SaveImageBaselineStrategyRequest
 	GetLang() *string
 	SetSource(v string) *SaveImageBaselineStrategyRequest
@@ -32,6 +34,7 @@ type SaveImageBaselineStrategyRequest struct {
 	//
 	// ak_leak
 	BaselineItemList *string `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty"`
+	ImageVulClean    *int32  `json:"ImageVulClean,omitempty" xml:"ImageVulClean,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// 	- **zh**: Chinese
@@ -80,6 +83,10 @@ func (s *SaveImageBaselineStrategyRequest) GetBaselineItemList() *string {
 	return s.BaselineItemList
 }
 
+func (s *SaveImageBaselineStrategyRequest) GetImageVulClean() *int32 {
+	return s.ImageVulClean
+}
+
 func (s *SaveImageBaselineStrategyRequest) GetLang() *string {
 	return s.Lang
 }
@@ -98,6 +105,11 @@ func (s *SaveImageBaselineStrategyRequest) GetStrategyName() *string {
 
 func (s *SaveImageBaselineStrategyRequest) SetBaselineItemList(v string) *SaveImageBaselineStrategyRequest {
 	s.BaselineItemList = &v
+	return s
+}
+
+func (s *SaveImageBaselineStrategyRequest) SetImageVulClean(v int32) *SaveImageBaselineStrategyRequest {
+	s.ImageVulClean = &v
 	return s
 }
 

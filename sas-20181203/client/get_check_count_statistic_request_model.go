@@ -20,6 +20,8 @@ type iGetCheckCountStatisticRequest interface {
 }
 
 type GetCheckCountStatisticRequest struct {
+	// 语言参数
+	//
 	// example:
 	//
 	// zh
@@ -39,6 +41,10 @@ type GetCheckCountStatisticRequest struct {
 	// instance
 	StatisticType *string `json:"StatisticType,omitempty" xml:"StatisticType,omitempty"`
 	// Task source.
+	//
+	// example:
+	//
+	// zh
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 	// The cloud service providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`

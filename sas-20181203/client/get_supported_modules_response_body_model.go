@@ -137,8 +137,17 @@ type GetSupportedModulesResponseBodySupportedModuleResponseSupportedModules stru
 	// example:
 	//
 	// HOST
-	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	ModuleAuth *bool   `json:"ModuleAuth,omitempty" xml:"ModuleAuth,omitempty"`
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// Module authorization switch indicator. Values:
+	//
+	// - **true**: Enabled
+	//
+	//  - **false**: Not enabled
+	//
+	// example:
+	//
+	// true
+	ModuleAuth *bool `json:"ModuleAuth,omitempty" xml:"ModuleAuth,omitempty"`
 	// The display name of the module.
 	//
 	// example:

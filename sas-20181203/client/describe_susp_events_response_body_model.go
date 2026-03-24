@@ -243,8 +243,13 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	// webshell
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The details of the alert event.
-	Details      []*DescribeSuspEventsResponseBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	DetectSource *string                                            `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
+	Details []*DescribeSuspEventsResponseBodySuspEventsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	// Source of discovery (invalid field)
+	//
+	// example:
+	//
+	// linux
+	DetectSource *string `json:"DetectSource,omitempty" xml:"DetectSource,omitempty"`
 	// Indicates whether the alert event can be detected by cloud sandbox. Valid values:
 	//
 	// 	- **true**

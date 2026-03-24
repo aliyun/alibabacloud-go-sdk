@@ -169,6 +169,8 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	//
 	// 1
 	Agentless *int32 `json:"Agentless,omitempty" xml:"Agentless,omitempty"`
+	// AI Digitization
+	//
 	// example:
 	//
 	// 1

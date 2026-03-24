@@ -70,6 +70,7 @@ type DescribeImageBaselineStrategyResponseBodyStrategy struct {
 	BaselineItem *string `json:"BaselineItem,omitempty" xml:"BaselineItem,omitempty"`
 	// An array that contains the baselines.
 	BaselineItemList []*DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList `json:"BaselineItemList,omitempty" xml:"BaselineItemList,omitempty" type:"Repeated"`
+	ImageVulClean    *int32                                                               `json:"ImageVulClean,omitempty" xml:"ImageVulClean,omitempty"`
 	// The number of selected baseline check items.
 	//
 	// example:
@@ -124,6 +125,10 @@ func (s *DescribeImageBaselineStrategyResponseBodyStrategy) GetBaselineItemList(
 	return s.BaselineItemList
 }
 
+func (s *DescribeImageBaselineStrategyResponseBodyStrategy) GetImageVulClean() *int32 {
+	return s.ImageVulClean
+}
+
 func (s *DescribeImageBaselineStrategyResponseBodyStrategy) GetSelectedItemCount() *int32 {
 	return s.SelectedItemCount
 }
@@ -151,6 +156,11 @@ func (s *DescribeImageBaselineStrategyResponseBodyStrategy) SetBaselineItem(v st
 
 func (s *DescribeImageBaselineStrategyResponseBodyStrategy) SetBaselineItemList(v []*DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList) *DescribeImageBaselineStrategyResponseBodyStrategy {
 	s.BaselineItemList = v
+	return s
+}
+
+func (s *DescribeImageBaselineStrategyResponseBodyStrategy) SetImageVulClean(v int32) *DescribeImageBaselineStrategyResponseBodyStrategy {
+	s.ImageVulClean = &v
 	return s
 }
 

@@ -202,6 +202,7 @@ type ExportVulRequest struct {
   // 
   // ins-133****,ins-5414****
   VpcInstanceIds *string `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
+  // 漏洞组件信息列表
   VulEntityList []*ExportVulRequestVulEntityList `json:"VulEntityList,omitempty" xml:"VulEntityList,omitempty" type:"Repeated"`
 }
 
@@ -389,10 +390,14 @@ func (s *ExportVulRequest) Validate() error {
 }
 
 type ExportVulRequestVulEntityList struct {
+  // 组件名称
+  // 
   // example:
   // 
   // Ollama
   EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+  // 组件版本
+  // 
   // example:
   // 
   // 1.0.0

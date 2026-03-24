@@ -112,6 +112,7 @@ type ListPrivateRegistryListResponseBodyImageRegistryInfos struct {
 	//
 	// 90
 	PersistenceDay *int64 `json:"PersistenceDay,omitempty" xml:"PersistenceDay,omitempty"`
+	Port           *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The type of the protocol. Valid values:
 	//
 	// 	- **1**: HTTP
@@ -232,6 +233,10 @@ func (s *ListPrivateRegistryListResponseBodyImageRegistryInfos) GetPersistenceDa
 	return s.PersistenceDay
 }
 
+func (s *ListPrivateRegistryListResponseBodyImageRegistryInfos) GetPort() *int32 {
+	return s.Port
+}
+
 func (s *ListPrivateRegistryListResponseBodyImageRegistryInfos) GetProtocolType() *int64 {
 	return s.ProtocolType
 }
@@ -308,6 +313,11 @@ func (s *ListPrivateRegistryListResponseBodyImageRegistryInfos) SetPassword(v st
 
 func (s *ListPrivateRegistryListResponseBodyImageRegistryInfos) SetPersistenceDay(v int64) *ListPrivateRegistryListResponseBodyImageRegistryInfos {
 	s.PersistenceDay = &v
+	return s
+}
+
+func (s *ListPrivateRegistryListResponseBodyImageRegistryInfos) SetPort(v int32) *ListPrivateRegistryListResponseBodyImageRegistryInfos {
+	s.Port = &v
 	return s
 }
 

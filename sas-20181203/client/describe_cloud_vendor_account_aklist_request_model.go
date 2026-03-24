@@ -72,7 +72,16 @@ type DescribeCloudVendorAccountAKListRequest struct {
 	//
 	// AlibabaCloud_***
 	SubAccountName *string `json:"SubAccountName,omitempty" xml:"SubAccountName,omitempty"`
-	Vendor         *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// Cloud asset vendor. Values:
+	//
+	//  - **Tencent**: Tencent Cloud
+	//
+	// - **AWS**: Amazon Web Services
+	//
+	// example:
+	//
+	// VOLCENGINE
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 	// The name of the AccessKey pair.
 	//
 	// example:

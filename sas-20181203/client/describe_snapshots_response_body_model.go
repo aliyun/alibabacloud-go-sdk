@@ -224,6 +224,12 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// s-0008ndhgrflh55i5****.csv
 	ErrorFile *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	// Snapshot expiration timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1799132915000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The ID of the ECS instance.
 	//
 	// example:
@@ -376,6 +382,10 @@ func (s *DescribeSnapshotsResponseBodySnapshots) GetErrorFile() *string {
 	return s.ErrorFile
 }
 
+func (s *DescribeSnapshotsResponseBodySnapshots) GetExpireTime() *int64 {
+	return s.ExpireTime
+}
+
 func (s *DescribeSnapshotsResponseBodySnapshots) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -477,6 +487,11 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetCreatedTime(v int64) *Descri
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetErrorFile(v string) *DescribeSnapshotsResponseBodySnapshots {
 	s.ErrorFile = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetExpireTime(v int64) *DescribeSnapshotsResponseBodySnapshots {
+	s.ExpireTime = &v
 	return s
 }
 
