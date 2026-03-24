@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 申请流式网关AccessToken
+// # Apply for Streaming Gateway AccessToken
 //
 // @param request - ApplyForStreamAccessTokenRequest
 //
@@ -102,7 +102,7 @@ func (client *Client) ApplyForStreamAccessTokenWithOptions(request *ApplyForStre
 
 // Summary:
 //
-// 申请流式网关AccessToken
+// # Apply for Streaming Gateway AccessToken
 //
 // @param request - ApplyForStreamAccessTokenRequest
 //
@@ -234,6 +234,10 @@ func (client *Client) BeginSessionWithOptions(request *BeginSessionRequest, runt
 
 	if !dara.IsNil(request.SandBox) {
 		body["SandBox"] = request.SandBox
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
 	}
 
 	if !dara.IsNil(request.VendorParam) {
@@ -436,7 +440,7 @@ func (client *Client) CancelInstancePublishTask(request *CancelInstancePublishTa
 
 // Summary:
 //
-// 取消发布任务
+// # Cancel Publishing Task
 //
 // @param request - CancelPublishTaskRequest
 //
@@ -484,7 +488,7 @@ func (client *Client) CancelPublishTaskWithOptions(request *CancelPublishTaskReq
 
 // Summary:
 //
-// 取消发布任务
+// # Cancel Publishing Task
 //
 // @param request - CancelPublishTaskRequest
 //
@@ -680,7 +684,7 @@ func (client *Client) ContinueInstancePublishTask(request *ContinueInstancePubli
 
 // Summary:
 //
-// 新增类目
+// # Create Category
 //
 // @param request - CreateCategoryRequest
 //
@@ -742,7 +746,7 @@ func (client *Client) CreateCategoryWithOptions(request *CreateCategoryRequest, 
 
 // Summary:
 //
-// 新增类目
+// # Create Category
 //
 // @param request - CreateCategoryRequest
 //
@@ -760,7 +764,7 @@ func (client *Client) CreateCategory(request *CreateCategoryRequest) (_result *C
 
 // Summary:
 //
-// 新建FAQ关联问
+// # Create FAQ Connection Question
 //
 // @param request - CreateConnQuestionRequest
 //
@@ -814,7 +818,7 @@ func (client *Client) CreateConnQuestionWithOptions(request *CreateConnQuestionR
 
 // Summary:
 //
-// 新建FAQ关联问
+// # Create FAQ Connection Question
 //
 // @param request - CreateConnQuestionRequest
 //
@@ -992,7 +996,7 @@ func (client *Client) CreateDSEntityValue(request *CreateDSEntityValueRequest) (
 
 // Summary:
 //
-// 创建文档
+// # Create Document
 //
 // @param tmpReq - CreateDocRequest
 //
@@ -1086,7 +1090,7 @@ func (client *Client) CreateDocWithOptions(tmpReq *CreateDocRequest, runtime *da
 
 // Summary:
 //
-// 创建文档
+// # Create Document
 //
 // @param request - CreateDocRequest
 //
@@ -1104,7 +1108,7 @@ func (client *Client) CreateDoc(request *CreateDocRequest) (_result *CreateDocRe
 
 // Summary:
 //
-// 新建FAQ
+// # New FAQ
 //
 // @param tmpReq - CreateFaqRequest
 //
@@ -1184,7 +1188,7 @@ func (client *Client) CreateFaqWithOptions(tmpReq *CreateFaqRequest, runtime *da
 
 // Summary:
 //
-// 新建FAQ
+// # New FAQ
 //
 // @param request - CreateFaqRequest
 //
@@ -1568,7 +1572,7 @@ func (client *Client) CreatePerspective(request *CreatePerspectiveRequest) (_res
 
 // Summary:
 //
-// 创建发布任务
+// # Create Publishing Task
 //
 // @param tmpReq - CreatePublishTaskRequest
 //
@@ -1626,7 +1630,7 @@ func (client *Client) CreatePublishTaskWithOptions(tmpReq *CreatePublishTaskRequ
 
 // Summary:
 //
-// 创建发布任务
+// # Create Publishing Task
 //
 // @param request - CreatePublishTaskRequest
 //
@@ -1644,7 +1648,7 @@ func (client *Client) CreatePublishTask(request *CreatePublishTaskRequest) (_res
 
 // Summary:
 //
-// 新建FAQ相似问
+// # Create FAQ Similar Question
 //
 // @param request - CreateSimQuestionRequest
 //
@@ -1698,7 +1702,7 @@ func (client *Client) CreateSimQuestionWithOptions(request *CreateSimQuestionReq
 
 // Summary:
 //
-// 新建FAQ相似问
+// # Create FAQ Similar Question
 //
 // @param request - CreateSimQuestionRequest
 //
@@ -1716,7 +1720,7 @@ func (client *Client) CreateSimQuestion(request *CreateSimQuestionRequest) (_res
 
 // Summary:
 //
-// 新建FAQ答案
+// # Create New FAQ Answer
 //
 // @param tmpReq - CreateSolutionRequest
 //
@@ -1788,7 +1792,7 @@ func (client *Client) CreateSolutionWithOptions(tmpReq *CreateSolutionRequest, r
 
 // Summary:
 //
-// 新建FAQ答案
+// # Create New FAQ Answer
 //
 // @param request - CreateSolutionRequest
 //
@@ -2030,7 +2034,7 @@ func (client *Client) CreateUserSay(request *CreateUserSayRequest) (_result *Cre
 
 // Summary:
 //
-// 删除类目
+// # Delete Category
 //
 // @param request - DeleteCategoryRequest
 //
@@ -2080,7 +2084,7 @@ func (client *Client) DeleteCategoryWithOptions(request *DeleteCategoryRequest, 
 
 // Summary:
 //
-// 删除类目
+// # Delete Category
 //
 // @param request - DeleteCategoryRequest
 //
@@ -2098,7 +2102,7 @@ func (client *Client) DeleteCategory(request *DeleteCategoryRequest) (_result *D
 
 // Summary:
 //
-// 删除FAQ关联问
+// # Delete FAQ Connection Question
 //
 // @param request - DeleteConnQuestionRequest
 //
@@ -2148,7 +2152,7 @@ func (client *Client) DeleteConnQuestionWithOptions(request *DeleteConnQuestionR
 
 // Summary:
 //
-// 删除FAQ关联问
+// # Delete FAQ Connection Question
 //
 // @param request - DeleteConnQuestionRequest
 //
@@ -2310,7 +2314,7 @@ func (client *Client) DeleteDSEntityValue(request *DeleteDSEntityValueRequest) (
 
 // Summary:
 //
-// 文档删除
+// # Document Deletion
 //
 // @param request - DeleteDocRequest
 //
@@ -2358,7 +2362,7 @@ func (client *Client) DeleteDocWithOptions(request *DeleteDocRequest, runtime *d
 
 // Summary:
 //
-// 文档删除
+// # Document Deletion
 //
 // @param request - DeleteDocRequest
 //
@@ -2376,7 +2380,7 @@ func (client *Client) DeleteDoc(request *DeleteDocRequest) (_result *DeleteDocRe
 
 // Summary:
 //
-// 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+// Delete FAQ. If it is published knowledge, after deletion, it becomes deleted but not published, and requires publishing to be truly deleted.
 //
 // @param request - DeleteFaqRequest
 //
@@ -2426,7 +2430,7 @@ func (client *Client) DeleteFaqWithOptions(request *DeleteFaqRequest, runtime *d
 
 // Summary:
 //
-// 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+// Delete FAQ. If it is published knowledge, after deletion, it becomes deleted but not published, and requires publishing to be truly deleted.
 //
 // @param request - DeleteFaqRequest
 //
@@ -2720,7 +2724,7 @@ func (client *Client) DeletePerspective(request *DeletePerspectiveRequest) (_res
 
 // Summary:
 //
-// 删除FAQ相似问
+// # Delete FAQ Similar Question
 //
 // @param request - DeleteSimQuestionRequest
 //
@@ -2770,7 +2774,7 @@ func (client *Client) DeleteSimQuestionWithOptions(request *DeleteSimQuestionReq
 
 // Summary:
 //
-// 删除FAQ相似问
+// # Delete FAQ Similar Question
 //
 // @param request - DeleteSimQuestionRequest
 //
@@ -2788,7 +2792,7 @@ func (client *Client) DeleteSimQuestion(request *DeleteSimQuestionRequest) (_res
 
 // Summary:
 //
-// 删除FAQ答案
+// # Delete FAQ Solution
 //
 // @param request - DeleteSolutionRequest
 //
@@ -2838,7 +2842,7 @@ func (client *Client) DeleteSolutionWithOptions(request *DeleteSolutionRequest, 
 
 // Summary:
 //
-// 删除FAQ答案
+// # Delete FAQ Solution
 //
 // @param request - DeleteSolutionRequest
 //
@@ -3078,7 +3082,7 @@ func (client *Client) DeleteUserSay(request *DeleteUserSayRequest) (_result *Del
 
 // Summary:
 //
-// 查看单个类目信息
+// # View Single Category Information
 //
 // @param request - DescribeCategoryRequest
 //
@@ -3128,7 +3132,7 @@ func (client *Client) DescribeCategoryWithOptions(request *DescribeCategoryReque
 
 // Summary:
 //
-// 查看单个类目信息
+// # View Single Category Information
 //
 // @param request - DescribeCategoryRequest
 //
@@ -3216,7 +3220,7 @@ func (client *Client) DescribeDSEntity(request *DescribeDSEntityRequest) (_resul
 
 // Summary:
 //
-// 文档详情
+// # Document Details
 //
 // @param request - DescribeDocRequest
 //
@@ -3268,7 +3272,7 @@ func (client *Client) DescribeDocWithOptions(request *DescribeDocRequest, runtim
 
 // Summary:
 //
-// 文档详情
+// # Document Details
 //
 // @param request - DescribeDocRequest
 //
@@ -3286,7 +3290,7 @@ func (client *Client) DescribeDoc(request *DescribeDocRequest) (_result *Describ
 
 // Summary:
 //
-// 知识详情
+// # Knowledge Details
 //
 // @param request - DescribeFaqRequest
 //
@@ -3336,7 +3340,7 @@ func (client *Client) DescribeFaqWithOptions(request *DescribeFaqRequest, runtim
 
 // Summary:
 //
-// 知识详情
+// # Knowledge Details
 //
 // @param request - DescribeFaqRequest
 //
@@ -4148,7 +4152,7 @@ func (client *Client) GetInstancePublishTaskState(request *GetInstancePublishTas
 
 // Summary:
 //
-// 查询发布进度
+// # Query Publishing Progress
 //
 // @param request - GetPublishTaskStateRequest
 //
@@ -4196,7 +4200,7 @@ func (client *Client) GetPublishTaskStateWithOptions(request *GetPublishTaskStat
 
 // Summary:
 //
-// 查询发布进度
+// # Query Publishing Progress
 //
 // @param request - GetPublishTaskStateRequest
 //
@@ -4436,7 +4440,7 @@ func (client *Client) ListAgent(request *ListAgentRequest) (_result *ListAgentRe
 
 // Summary:
 //
-// 类目列表
+// # Category List
 //
 // @param request - ListCategoryRequest
 //
@@ -4490,7 +4494,7 @@ func (client *Client) ListCategoryWithOptions(request *ListCategoryRequest, runt
 
 // Summary:
 //
-// 类目列表
+// # Category List
 //
 // @param request - ListCategoryRequest
 //
@@ -4508,7 +4512,7 @@ func (client *Client) ListCategory(request *ListCategoryRequest) (_result *ListC
 
 // Summary:
 //
-// 查询FAQ关联问列表
+// # Query FAQ Connection Questions List
 //
 // @param request - ListConnQuestionRequest
 //
@@ -4558,7 +4562,7 @@ func (client *Client) ListConnQuestionWithOptions(request *ListConnQuestionReque
 
 // Summary:
 //
-// 查询FAQ关联问列表
+// # Query FAQ Connection Questions List
 //
 // @param request - ListConnQuestionRequest
 //
@@ -4779,6 +4783,10 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 
 	if !dara.IsNil(request.RobotType) {
 		query["RobotType"] = request.RobotType
+	}
+
+	if !dara.IsNil(request.Sandbox) {
+		query["Sandbox"] = request.Sandbox
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5116,7 +5124,7 @@ func (client *Client) ListSaasPermissionGroupInfos(request *ListSaasPermissionGr
 
 // Summary:
 //
-// # FAQ相似问列表
+// # FAQ Similar Questions List
 //
 // @param request - ListSimQuestionRequest
 //
@@ -5166,7 +5174,7 @@ func (client *Client) ListSimQuestionWithOptions(request *ListSimQuestionRequest
 
 // Summary:
 //
-// # FAQ相似问列表
+// # FAQ Similar Questions List
 //
 // @param request - ListSimQuestionRequest
 //
@@ -5184,7 +5192,7 @@ func (client *Client) ListSimQuestion(request *ListSimQuestionRequest) (_result 
 
 // Summary:
 //
-// # FAQ答案列表
+// # FAQ Solution List
 //
 // @param request - ListSolutionRequest
 //
@@ -5234,7 +5242,7 @@ func (client *Client) ListSolutionWithOptions(request *ListSolutionRequest, runt
 
 // Summary:
 //
-// # FAQ答案列表
+// # FAQ Solution List
 //
 // @param request - ListSolutionRequest
 //
@@ -5778,7 +5786,7 @@ func (client *Client) QueryPerspectives(request *QueryPerspectivesRequest) (_res
 
 // Summary:
 //
-// 文档重试
+// # Document Retry
 //
 // @param request - RetryDocRequest
 //
@@ -5826,7 +5834,7 @@ func (client *Client) RetryDocWithOptions(request *RetryDocRequest, runtime *dar
 
 // Summary:
 //
-// 文档重试
+// # Document Retry
 //
 // @param request - RetryDocRequest
 //
@@ -5844,7 +5852,7 @@ func (client *Client) RetryDoc(request *RetryDocRequest) (_result *RetryDocRespo
 
 // Summary:
 //
-// 文档搜索
+// # Document Search
 //
 // @param tmpReq - SearchDocRequest
 //
@@ -5970,7 +5978,7 @@ func (client *Client) SearchDocWithOptions(tmpReq *SearchDocRequest, runtime *da
 
 // Summary:
 //
-// 文档搜索
+// # Document Search
 //
 // @param request - SearchDocRequest
 //
@@ -5988,7 +5996,7 @@ func (client *Client) SearchDoc(request *SearchDocRequest) (_result *SearchDocRe
 
 // Summary:
 //
-// 知识搜索
+// # Knowledge Search
 //
 // @param tmpReq - SearchFaqRequest
 //
@@ -6104,7 +6112,7 @@ func (client *Client) SearchFaqWithOptions(tmpReq *SearchFaqRequest, runtime *da
 
 // Summary:
 //
-// 知识搜索
+// # Knowledge Search
 //
 // @param request - SearchFaqRequest
 //
@@ -6192,7 +6200,7 @@ func (client *Client) TongyiChatDebugInfo(request *TongyiChatDebugInfoRequest) (
 
 // Summary:
 //
-// 编辑类目
+// # Edit Category
 //
 // @param request - UpdateCategoryRequest
 //
@@ -6250,7 +6258,7 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 
 // Summary:
 //
-// 编辑类目
+// # Edit Category
 //
 // @param request - UpdateCategoryRequest
 //
@@ -6268,7 +6276,7 @@ func (client *Client) UpdateCategory(request *UpdateCategoryRequest) (_result *U
 
 // Summary:
 //
-// 更新FAQ关联问
+// # Update FAQ Connection Question
 //
 // @param request - UpdateConnQuestionRequest
 //
@@ -6322,7 +6330,7 @@ func (client *Client) UpdateConnQuestionWithOptions(request *UpdateConnQuestionR
 
 // Summary:
 //
-// 更新FAQ关联问
+// # Update FAQ Connection Question
 //
 // @param request - UpdateConnQuestionRequest
 //
@@ -6508,7 +6516,7 @@ func (client *Client) UpdateDSEntityValue(request *UpdateDSEntityValueRequest) (
 
 // Summary:
 //
-// 文档变更
+// # Document Update
 //
 // @param tmpReq - UpdateDocRequest
 //
@@ -6606,7 +6614,7 @@ func (client *Client) UpdateDocWithOptions(tmpReq *UpdateDocRequest, runtime *da
 
 // Summary:
 //
-// 文档变更
+// # Document Update
 //
 // @param request - UpdateDocRequest
 //
@@ -6624,7 +6632,7 @@ func (client *Client) UpdateDoc(request *UpdateDocRequest) (_result *UpdateDocRe
 
 // Summary:
 //
-// 更新FAQ
+// # Update FAQ
 //
 // @param tmpReq - UpdateFaqRequest
 //
@@ -6700,7 +6708,7 @@ func (client *Client) UpdateFaqWithOptions(tmpReq *UpdateFaqRequest, runtime *da
 
 // Summary:
 //
-// 更新FAQ
+// # Update FAQ
 //
 // @param request - UpdateFaqRequest
 //
@@ -7022,7 +7030,7 @@ func (client *Client) UpdatePerspective(request *UpdatePerspectiveRequest) (_res
 
 // Summary:
 //
-// 更新FAQ相似问
+// # Update FAQ Similar Questions
 //
 // @param request - UpdateSimQuestionRequest
 //
@@ -7076,7 +7084,7 @@ func (client *Client) UpdateSimQuestionWithOptions(request *UpdateSimQuestionReq
 
 // Summary:
 //
-// 更新FAQ相似问
+// # Update FAQ Similar Questions
 //
 // @param request - UpdateSimQuestionRequest
 //
@@ -7094,7 +7102,7 @@ func (client *Client) UpdateSimQuestion(request *UpdateSimQuestionRequest) (_res
 
 // Summary:
 //
-// 更新FAQ答案
+// # Update FAQ Answer
 //
 // @param tmpReq - UpdateSolutionRequest
 //
@@ -7166,7 +7174,7 @@ func (client *Client) UpdateSolutionWithOptions(tmpReq *UpdateSolutionRequest, r
 
 // Summary:
 //
-// 更新FAQ答案
+// # Update FAQ Answer
 //
 // @param request - UpdateSolutionRequest
 //

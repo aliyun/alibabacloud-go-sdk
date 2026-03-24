@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 申请流式网关AccessToken
+// # Apply for Streaming Gateway AccessToken
 //
 // @param request - ApplyForStreamAccessTokenRequest
 //
@@ -149,6 +149,10 @@ func (client *Client) BeginSessionWithContext(ctx context.Context, request *Begi
 
 	if !dara.IsNil(request.SandBox) {
 		body["SandBox"] = request.SandBox
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["SessionId"] = request.SessionId
 	}
 
 	if !dara.IsNil(request.VendorParam) {
@@ -297,7 +301,7 @@ func (client *Client) CancelInstancePublishTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 取消发布任务
+// # Cancel Publishing Task
 //
 // @param request - CancelPublishTaskRequest
 //
@@ -487,7 +491,7 @@ func (client *Client) ContinueInstancePublishTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// 新增类目
+// # Create Category
 //
 // @param request - CreateCategoryRequest
 //
@@ -549,7 +553,7 @@ func (client *Client) CreateCategoryWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 新建FAQ关联问
+// # Create FAQ Connection Question
 //
 // @param request - CreateConnQuestionRequest
 //
@@ -727,7 +731,7 @@ func (client *Client) CreateDSEntityValueWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 创建文档
+// # Create Document
 //
 // @param tmpReq - CreateDocRequest
 //
@@ -821,7 +825,7 @@ func (client *Client) CreateDocWithContext(ctx context.Context, tmpReq *CreateDo
 
 // Summary:
 //
-// 新建FAQ
+// # New FAQ
 //
 // @param tmpReq - CreateFaqRequest
 //
@@ -1177,7 +1181,7 @@ func (client *Client) CreatePerspectiveWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建发布任务
+// # Create Publishing Task
 //
 // @param tmpReq - CreatePublishTaskRequest
 //
@@ -1235,7 +1239,7 @@ func (client *Client) CreatePublishTaskWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 新建FAQ相似问
+// # Create FAQ Similar Question
 //
 // @param request - CreateSimQuestionRequest
 //
@@ -1289,7 +1293,7 @@ func (client *Client) CreateSimQuestionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 新建FAQ答案
+// # Create New FAQ Answer
 //
 // @param tmpReq - CreateSolutionRequest
 //
@@ -1531,7 +1535,7 @@ func (client *Client) CreateUserSayWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// 删除类目
+// # Delete Category
 //
 // @param request - DeleteCategoryRequest
 //
@@ -1581,7 +1585,7 @@ func (client *Client) DeleteCategoryWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除FAQ关联问
+// # Delete FAQ Connection Question
 //
 // @param request - DeleteConnQuestionRequest
 //
@@ -1739,7 +1743,7 @@ func (client *Client) DeleteDSEntityValueWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 文档删除
+// # Document Deletion
 //
 // @param request - DeleteDocRequest
 //
@@ -1787,7 +1791,7 @@ func (client *Client) DeleteDocWithContext(ctx context.Context, request *DeleteD
 
 // Summary:
 //
-// 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+// Delete FAQ. If it is published knowledge, after deletion, it becomes deleted but not published, and requires publishing to be truly deleted.
 //
 // @param request - DeleteFaqRequest
 //
@@ -2041,7 +2045,7 @@ func (client *Client) DeletePerspectiveWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除FAQ相似问
+// # Delete FAQ Similar Question
 //
 // @param request - DeleteSimQuestionRequest
 //
@@ -2091,7 +2095,7 @@ func (client *Client) DeleteSimQuestionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除FAQ答案
+// # Delete FAQ Solution
 //
 // @param request - DeleteSolutionRequest
 //
@@ -2309,7 +2313,7 @@ func (client *Client) DeleteUserSayWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 查看单个类目信息
+// # View Single Category Information
 //
 // @param request - DescribeCategoryRequest
 //
@@ -2411,7 +2415,7 @@ func (client *Client) DescribeDSEntityWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 文档详情
+// # Document Details
 //
 // @param request - DescribeDocRequest
 //
@@ -2463,7 +2467,7 @@ func (client *Client) DescribeDocWithContext(ctx context.Context, request *Descr
 
 // Summary:
 //
-// 知识详情
+// # Knowledge Details
 //
 // @param request - DescribeFaqRequest
 //
@@ -3109,7 +3113,7 @@ func (client *Client) GetInstancePublishTaskStateWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询发布进度
+// # Query Publishing Progress
 //
 // @param request - GetPublishTaskStateRequest
 //
@@ -3325,7 +3329,7 @@ func (client *Client) ListAgentWithContext(ctx context.Context, request *ListAge
 
 // Summary:
 //
-// 类目列表
+// # Category List
 //
 // @param request - ListCategoryRequest
 //
@@ -3379,7 +3383,7 @@ func (client *Client) ListCategoryWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询FAQ关联问列表
+// # Query FAQ Connection Questions List
 //
 // @param request - ListConnQuestionRequest
 //
@@ -3596,6 +3600,10 @@ func (client *Client) ListInstanceWithContext(ctx context.Context, request *List
 
 	if !dara.IsNil(request.RobotType) {
 		query["RobotType"] = request.RobotType
+	}
+
+	if !dara.IsNil(request.Sandbox) {
+		query["Sandbox"] = request.Sandbox
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3843,7 +3851,7 @@ func (client *Client) ListSaasPermissionGroupInfosWithContext(ctx context.Contex
 
 // Summary:
 //
-// # FAQ相似问列表
+// # FAQ Similar Questions List
 //
 // @param request - ListSimQuestionRequest
 //
@@ -3893,7 +3901,7 @@ func (client *Client) ListSimQuestionWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// # FAQ答案列表
+// # FAQ Solution List
 //
 // @param request - ListSolutionRequest
 //
@@ -4343,7 +4351,7 @@ func (client *Client) QueryPerspectivesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 文档重试
+// # Document Retry
 //
 // @param request - RetryDocRequest
 //
@@ -4391,7 +4399,7 @@ func (client *Client) RetryDocWithContext(ctx context.Context, request *RetryDoc
 
 // Summary:
 //
-// 文档搜索
+// # Document Search
 //
 // @param tmpReq - SearchDocRequest
 //
@@ -4517,7 +4525,7 @@ func (client *Client) SearchDocWithContext(ctx context.Context, tmpReq *SearchDo
 
 // Summary:
 //
-// 知识搜索
+// # Knowledge Search
 //
 // @param tmpReq - SearchFaqRequest
 //
@@ -4685,7 +4693,7 @@ func (client *Client) TongyiChatDebugInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 编辑类目
+// # Edit Category
 //
 // @param request - UpdateCategoryRequest
 //
@@ -4743,7 +4751,7 @@ func (client *Client) UpdateCategoryWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新FAQ关联问
+// # Update FAQ Connection Question
 //
 // @param request - UpdateConnQuestionRequest
 //
@@ -4929,7 +4937,7 @@ func (client *Client) UpdateDSEntityValueWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 文档变更
+// # Document Update
 //
 // @param tmpReq - UpdateDocRequest
 //
@@ -5027,7 +5035,7 @@ func (client *Client) UpdateDocWithContext(ctx context.Context, tmpReq *UpdateDo
 
 // Summary:
 //
-// 更新FAQ
+// # Update FAQ
 //
 // @param tmpReq - UpdateFaqRequest
 //
@@ -5335,7 +5343,7 @@ func (client *Client) UpdatePerspectiveWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新FAQ相似问
+// # Update FAQ Similar Questions
 //
 // @param request - UpdateSimQuestionRequest
 //
@@ -5389,7 +5397,7 @@ func (client *Client) UpdateSimQuestionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新FAQ答案
+// # Update FAQ Answer
 //
 // @param tmpReq - UpdateSolutionRequest
 //

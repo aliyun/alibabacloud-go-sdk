@@ -15,6 +15,8 @@ type iBeginSessionRequest interface {
 	GetInstanceId() *string
 	SetSandBox(v bool) *BeginSessionRequest
 	GetSandBox() *bool
+	SetSessionId(v string) *BeginSessionRequest
+	GetSessionId() *string
 	SetVendorParam(v string) *BeginSessionRequest
 	GetVendorParam() *string
 }
@@ -23,9 +25,13 @@ type BeginSessionRequest struct {
 	// example:
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// chatbot-cn-mp90s2lrk00050
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SandBox     *bool   `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
+	SessionId   *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	VendorParam *string `json:"VendorParam,omitempty" xml:"VendorParam,omitempty"`
 }
 
@@ -49,6 +55,10 @@ func (s *BeginSessionRequest) GetSandBox() *bool {
 	return s.SandBox
 }
 
+func (s *BeginSessionRequest) GetSessionId() *string {
+	return s.SessionId
+}
+
 func (s *BeginSessionRequest) GetVendorParam() *string {
 	return s.VendorParam
 }
@@ -65,6 +75,11 @@ func (s *BeginSessionRequest) SetInstanceId(v string) *BeginSessionRequest {
 
 func (s *BeginSessionRequest) SetSandBox(v bool) *BeginSessionRequest {
 	s.SandBox = &v
+	return s
+}
+
+func (s *BeginSessionRequest) SetSessionId(v string) *BeginSessionRequest {
+	s.SessionId = &v
 	return s
 }
 

@@ -30,7 +30,10 @@ type GenerateUserAccessTokenRequest struct {
 	//
 	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	Email    *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// a***bcx@gmail.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// example:
 	//
 	// 1000
@@ -84,7 +87,10 @@ type GenerateUserAccessTokenRequest struct {
 	// example:
 	//
 	// 张三
-	Nick      *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	Nick *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	// example:
+	//
+	// 1381111****
 	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
 }
 

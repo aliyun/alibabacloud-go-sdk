@@ -19,6 +19,8 @@ type iListInstanceRequest interface {
 	GetPageSize() *int64
 	SetRobotType(v string) *ListInstanceRequest
 	GetRobotType() *string
+	SetSandbox(v bool) *ListInstanceRequest
+	GetSandbox() *bool
 }
 
 type ListInstanceRequest struct {
@@ -42,6 +44,7 @@ type ListInstanceRequest struct {
 	//
 	// scenario_im
 	RobotType *string `json:"RobotType,omitempty" xml:"RobotType,omitempty"`
+	Sandbox   *bool   `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -72,6 +75,10 @@ func (s *ListInstanceRequest) GetRobotType() *string {
 	return s.RobotType
 }
 
+func (s *ListInstanceRequest) GetSandbox() *bool {
+	return s.Sandbox
+}
+
 func (s *ListInstanceRequest) SetAgentKey(v string) *ListInstanceRequest {
 	s.AgentKey = &v
 	return s
@@ -94,6 +101,11 @@ func (s *ListInstanceRequest) SetPageSize(v int64) *ListInstanceRequest {
 
 func (s *ListInstanceRequest) SetRobotType(v string) *ListInstanceRequest {
 	s.RobotType = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetSandbox(v bool) *ListInstanceRequest {
+	s.Sandbox = &v
 	return s
 }
 
