@@ -876,7 +876,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// 修改备份策略
+// Deletes the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -924,7 +924,7 @@ func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyR
 
 // Summary:
 //
-// 修改备份策略
+// Deletes the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -1012,7 +1012,7 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 
 // Summary:
 //
-// Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Releases an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1060,7 +1060,7 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Releases an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1374,7 +1374,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// 创建备份策略
+// View the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -1422,7 +1422,7 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 
 // Summary:
 //
-// 创建备份策略
+// View the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -1440,7 +1440,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// 查询备份集
+// Queries the backup sets of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -1508,7 +1508,7 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 
 // Summary:
 //
-// 查询备份集
+// Queries the backup sets of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -2031,6 +2031,53 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeProcessListResponse{}
 	_body, _err := client.DescribeProcessListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云数据库ClickHouse所有地域和可用区的信息
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRegions"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云数据库ClickHouse所有地域和可用区的信息
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2852,7 +2899,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// 修改备份策略
+// Modifies the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -2912,7 +2959,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 // Summary:
 //
-// 修改备份策略
+// Modifies the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - ModifyBackupPolicyRequest
 //

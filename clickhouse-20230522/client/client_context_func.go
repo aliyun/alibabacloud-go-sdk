@@ -619,7 +619,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 修改备份策略
+// Deletes the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -719,7 +719,7 @@ func (client *Client) DeleteDBWithContext(ctx context.Context, request *DeleteDB
 
 // Summary:
 //
-// Releases an ApsaraDB for ClickHouse Enterprise Edition cluster.
+// Releases an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -991,7 +991,7 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 创建备份策略
+// View the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -1039,7 +1039,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询备份集
+// Queries the backup sets of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -2109,7 +2109,7 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 修改备份策略
+// Modifies the backup policy of an ApsaraDB for ClickHouse cluster that runs Enterprise Edition.
 //
 // @param request - ModifyBackupPolicyRequest
 //
