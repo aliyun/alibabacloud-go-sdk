@@ -14,7 +14,7 @@ type iDeleteEntityStoreResponseBody interface {
 }
 
 type DeleteEntityStoreResponseBody struct {
-	// request ID
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -18,11 +18,16 @@ type iCreateChatResponseBody interface {
 }
 
 type CreateChatResponseBody struct {
+	// Messages list
 	Messages []*CreateChatResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// Unique identifier for the request
+	//
 	// example:
 	//
 	// 0CEC5375-XXXX-XXXX-XXXX-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Global identifier for the request trace
+	//
 	// example:
 	//
 	// 21504600000008405622576e3b48
@@ -78,39 +83,63 @@ func (s *CreateChatResponseBody) Validate() error {
 }
 
 type CreateChatResponseBodyMessages struct {
-	Agents    []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// Agents list
+	Agents []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// Artifacts information
 	Artifacts []map[string]interface{} `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
+	// Call ID of the current node
+	//
 	// example:
 	//
 	// call_search_001
-	CallId   *string                  `json:"callId,omitempty" xml:"callId,omitempty"`
+	CallId *string `json:"callId,omitempty" xml:"callId,omitempty"`
+	// Messages contents array
 	Contents []map[string]interface{} `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
+	// Detailed information, such as tool progress description
+	//
 	// example:
 	//
 	// test
-	Detail *string                  `json:"detail,omitempty" xml:"detail,omitempty"`
+	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	// Events list
 	Events []map[string]interface{} `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// Call ID of the parent node
+	//
 	// example:
 	//
 	// sess_abc123
 	ParentCallId *string `json:"parentCallId,omitempty" xml:"parentCallId,omitempty"`
+	// Message role
+	//
 	// example:
 	//
 	// tool
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Event sequence number. This number increments to preserve event order.
+	//
 	// example:
 	//
 	// 1
 	Seq *int32 `json:"seq,omitempty" xml:"seq,omitempty"`
+	// UNIX timestamp (seconds)
+	//
 	// example:
 	//
 	// 1765000005
-	Timestamp *string                  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Tools     []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// Tools calls array
+	Tools []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	// Special event type, such as done, error, or heartbeat
+	//
 	// example:
 	//
 	// done
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Message version number
+	//
+	// example:
+	//
+	// v0.1.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 

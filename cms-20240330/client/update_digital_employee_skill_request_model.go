@@ -22,22 +22,32 @@ type iUpdateDigitalEmployeeSkillRequest interface {
 }
 
 type UpdateDigitalEmployeeSkillRequest struct {
+	// Description
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Display name
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Is enabled
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// List of skill files
+	//
 	// This parameter is required.
 	Files []*UpdateDigitalEmployeeSkillRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// Remark
+	//
 	// example:
 	//
 	// remark
@@ -111,6 +121,8 @@ func (s *UpdateDigitalEmployeeSkillRequest) Validate() error {
 }
 
 type UpdateDigitalEmployeeSkillRequestFiles struct {
+	// File content
+	//
 	// example:
 	//
 	// ---
@@ -125,6 +137,8 @@ type UpdateDigitalEmployeeSkillRequestFiles struct {
 	//
 	// skill test
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// File name
+	//
 	// example:
 	//
 	// SKILL.md

@@ -24,29 +24,29 @@ type iTransformerForModify interface {
 }
 
 type TransformerForModify struct {
-	// Transformation operation.
+	// 转换操作
 	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// Description.
+	// 描述
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Filter Setting.
+	// 筛选条件
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Exit after matching processing.
+	// 匹配处理后退出
 	//
 	// example:
 	//
 	// true
 	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	// Sort order.
+	// 排序数
 	//
 	// example:
 	//
 	// 1
 	SortId *int32 `json:"sortId,omitempty" xml:"sortId,omitempty"`
-	// Name.
+	// 名称
 	//
 	// This parameter is required.
 	//

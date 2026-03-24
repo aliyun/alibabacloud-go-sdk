@@ -18,8 +18,12 @@ type iGetCloudResourceDataResponseBody interface {
 }
 
 type GetCloudResourceDataResponseBody struct {
-	Data   [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	Header []*string   `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
+	// The returned data.
+	Data [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The list of column headers.
+	Header []*string `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC

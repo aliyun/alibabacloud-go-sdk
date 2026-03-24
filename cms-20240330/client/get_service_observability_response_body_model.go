@@ -30,43 +30,43 @@ type iGetServiceObservabilityResponseBody interface {
 }
 
 type GetServiceObservabilityResponseBody struct {
-	// Endpoint and Authentication Information
+	// The endpoint and authentication information.
 	EntryPointInfo *GetServiceObservabilityResponseBodyEntryPointInfo `json:"entryPointInfo,omitempty" xml:"entryPointInfo,omitempty" type:"Struct"`
-	// Billing Type
+	// The billing type.
 	//
 	// example:
 	//
 	// arms=serverless;xtrace=serverless
 	FeeType *string `json:"feeType,omitempty" xml:"feeType,omitempty"`
-	// Quota Configuration
+	// The quota configuration.
 	Quotas map[string]*string `json:"quotas,omitempty" xml:"quotas,omitempty"`
-	// Region
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 4852B9B5-345C-5CBC-A15F-786D83ECCBBA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// System Configuration
+	// The system configuration.
 	Settings map[string]*string `json:"settings,omitempty" xml:"settings,omitempty"`
-	// Resource Initialization Status
+	// The resource initialization status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Application Observability Type
+	// The type of application observability.
 	//
 	// example:
 	//
 	// apm
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Workspace Name
+	// The workspace name.
 	//
 	// example:
 	//
@@ -173,25 +173,25 @@ func (s *GetServiceObservabilityResponseBody) Validate() error {
 }
 
 type GetServiceObservabilityResponseBodyEntryPointInfo struct {
-	// Authentication Token for Data Reporting
+	// The authentication token for reporting data.
 	//
 	// example:
 	//
 	// gaddp****@de20f2***1ce***
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
-	// Private Network Access Address
+	// The internal endpoint.
 	//
 	// example:
 	//
 	// project-xtrace-xxxx-cn-hangzhou.cn-hangzhou-intranet.log.aliyuncs.com
 	PrivateDomain *string `json:"privateDomain,omitempty" xml:"privateDomain,omitempty"`
-	// SLS Project
+	// The Simple Log Service project.
 	//
 	// example:
 	//
 	// proj-xtrace-xxxxx
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// Public Network Access Address
+	// The public endpoint.
 	//
 	// example:
 	//

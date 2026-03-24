@@ -14,7 +14,7 @@ type iDeleteAddonReleaseResponseBody interface {
 }
 
 type DeleteAddonReleaseResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

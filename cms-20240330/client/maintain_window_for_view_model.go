@@ -38,39 +38,39 @@ type iMaintainWindowForView interface {
 }
 
 type MaintainWindowForView struct {
-	// Creation time.
+	// 创建时间
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Description.
+	// 描述
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Effective time range.
+	// 生效时间范围
 	EffectTimeRange *MaintainWindowForViewEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Crontab expression.
+	// Crontab 表达式
 	//
 	// example:
 	//
 	// 	- 	- 14-18 ? 	- *
 	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
-	// Whether enabled.
+	// 是否启用
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Effective end time.
+	// 生效结束时间
 	//
 	// example:
 	//
 	// 2024-11-26 12:02:01
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Filtering conditions.
+	// 筛选条件
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
 	// UUID
 	//
@@ -78,27 +78,27 @@ type MaintainWindowForView struct {
 	//
 	// 123-12-312-31-23123
 	MaintainWindowId *string `json:"maintainWindowId,omitempty" xml:"maintainWindowId,omitempty"`
-	// Name.
+	// 名称
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test policy.
+	// 测试策略
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	// Effective start time.
+	// 生效开始时间
 	//
 	// example:
 	//
 	// 2024-11-26 10:02:01
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// Update time.
+	// 更新时间
 	//
 	// example:
 	//
 	// 2025-05-07T02:19:05Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// User ID.
+	// 用户id
 	//
 	// example:
 	//
@@ -252,21 +252,21 @@ func (s *MaintainWindowForView) Validate() error {
 }
 
 type MaintainWindowForViewEffectTimeRange struct {
-	// Effective days (Monday to Sunday).
+	// 生效天(周一到周日)
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// End time (in minutes).
+	// 结束时间(分钟数)
 	//
 	// example:
 	//
 	// 360
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// Start time (in minutes).
+	// 开始时间(分钟数)
 	//
 	// example:
 	//
 	// 60
 	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// Time Zone.
+	// 时区
 	//
 	// example:
 	//

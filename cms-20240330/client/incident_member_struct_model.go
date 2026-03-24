@@ -30,39 +30,39 @@ type iIncidentMemberStruct interface {
 }
 
 type IncidentMemberStruct struct {
-	// Acknowledgement Information Structure.
+	// 确认信息结构体。
 	Acknowledge *IncidentMemberStructAcknowledge `json:"acknowledge,omitempty" xml:"acknowledge,omitempty" type:"Struct"`
-	// Contact ID.
+	// 联系人ID。
 	//
 	// example:
 	//
 	// user-12345
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// Contact list.
+	// 联系人列表。
 	Contacts []*IncidentMemberStructContacts `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// Escalation phase information.
+	// 升级阶段信息。
 	Escalation *IncidentMemberStructEscalation `json:"escalation,omitempty" xml:"escalation,omitempty" type:"Struct"`
-	// Incident ID.
+	// 事件ID。
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// Event Member ID.
+	// 事件成员ID。
 	//
 	// example:
 	//
 	// member-001
 	IncidentMemberId *string `json:"incidentMemberId,omitempty" xml:"incidentMemberId,omitempty"`
-	// Schedule group.
+	// 调度组。
 	ScheduleGroup *IncidentMemberStructScheduleGroup `json:"scheduleGroup,omitempty" xml:"scheduleGroup,omitempty" type:"Struct"`
-	// Time.
+	// 时间。
 	//
 	// example:
 	//
 	// 2025-10-08 10:18:58
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
-	// User ID.
+	// 用户ID。
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ func (s *IncidentMemberStruct) Validate() error {
 }
 
 type IncidentMemberStructAcknowledge struct {
-	// Acknowledgement level.
+	// 确认级别。
 	//
 	// example:
 	//
 	// 2
 	BreakLevel *string `json:"breakLevel,omitempty" xml:"breakLevel,omitempty"`
-	// Verification time.
+	// 验证时间。
 	//
 	// example:
 	//
@@ -233,13 +233,13 @@ func (s *IncidentMemberStructAcknowledge) Validate() error {
 }
 
 type IncidentMemberStructContacts struct {
-	// Channel.
+	// 通道。
 	//
 	// example:
 	//
 	// dingtalk
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Contact ID (masked).
+	// 联系人 ID（脱敏）
 	//
 	// example:
 	//
@@ -278,35 +278,35 @@ func (s *IncidentMemberStructContacts) Validate() error {
 }
 
 type IncidentMemberStructEscalation struct {
-	// Description.
+	// 描述。
 	//
 	// example:
 	//
-	// Notify the operations team.
+	// 通知运维团队
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Event Escalation ID.
+	// 事件升级ID。
 	//
 	// example:
 	//
 	// escalation-001
 	IncidentEscalationId *string `json:"incidentEscalationId,omitempty" xml:"incidentEscalationId,omitempty"`
-	// Name.
+	// 名称。
 	//
 	// example:
 	//
-	// Phase one.
+	// 第一阶段
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Escalation phase index.
+	// 升级阶段索引。
 	//
 	// example:
 	//
 	// 1
 	StageIndex *string `json:"stageIndex,omitempty" xml:"stageIndex,omitempty"`
-	// Title.
+	// 标题。
 	//
 	// example:
 	//
-	// Alert escalated to the operations team.
+	// 告警升级至运维团队
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 
@@ -368,17 +368,17 @@ func (s *IncidentMemberStructEscalation) Validate() error {
 }
 
 type IncidentMemberStructScheduleGroup struct {
-	// Contact ID.
+	// 联系人ID。
 	//
 	// example:
 	//
 	// group-001
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// Name.
+	// 名称。
 	//
 	// example:
 	//
-	// Night shift duty team.
+	// 夜间值班组
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

@@ -30,32 +30,48 @@ type iTransformAction interface {
 }
 
 type TransformAction struct {
+	// 筛选配置
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// 标签名
+	//
 	// example:
 	//
 	// labelkey1
-	LabelKey *string            `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
-	Mapping  map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	LabelKey *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	// Mapping配置。
+	Mapping map[string]*string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	// 正则表达式
+	//
 	// example:
 	//
 	// (.*):(.*)
 	RegExp *string `json:"regExp,omitempty" xml:"regExp,omitempty"`
+	// 引用路径
+	//
 	// example:
 	//
 	// data.subject
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// 目标位置
+	//
 	// example:
 	//
 	// SUBJECT
 	Target *string `json:"target,omitempty" xml:"target,omitempty"`
+	// 转换类型
+	//
 	// example:
 	//
 	// SET_FIELD
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 设置的值
+	//
 	// example:
 	//
 	// value1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 变量名
+	//
 	// example:
 	//
 	// var1

@@ -16,9 +16,6 @@ type iContactForIncidentView interface {
 }
 
 type ContactForIncidentView struct {
-	// example:
-	//
-	// "contact-123456"
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
 	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 }

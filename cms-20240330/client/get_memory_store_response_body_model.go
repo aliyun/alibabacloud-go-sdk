@@ -34,41 +34,60 @@ type iGetMemoryStoreResponseBody interface {
 }
 
 type GetMemoryStoreResponseBody struct {
+	// Creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1764556182850
-	CreateTime                 *string                     `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
+	// Description.
+	//
 	// example:
 	//
 	// test
-	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Supported values: Episodic, Summary, and Fact.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
+	// Memory store name.
+	//
 	// example:
 	//
 	// test-memory-store
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
+	// Region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
-	RequestId        *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Short-term memory storage.
 	ShortTermStorage *GetMemoryStoreResponseBodyShortTermStorage `json:"shortTermStorage,omitempty" xml:"shortTermStorage,omitempty" type:"Struct"`
+	// Short-term memory retention time, in seconds.
+	//
 	// example:
 	//
 	// 10
 	ShortTermTtl *int32 `json:"shortTermTtl,omitempty" xml:"shortTermTtl,omitempty"`
+	// Update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 1764556182850
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Workspace name.
+	//
 	// example:
 	//
 	// default-cms-xxxxxx-cn-beijing
@@ -201,8 +220,18 @@ func (s *GetMemoryStoreResponseBody) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyShortTermStorage struct {
+	// Simple Log Service Logstore name.
+	//
+	// example:
+	//
+	// memory-store
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+	// Simple Log Service Project name.
+	//
+	// example:
+	//
+	// wk_cms_data_warehouse
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s GetMemoryStoreResponseBodyShortTermStorage) String() string {

@@ -17,22 +17,32 @@ type iListAlertWebhooksRequest interface {
 	GetPageSize() *int64
 	SetWebhookIds(v []*string) *ListAlertWebhooksRequest
 	GetWebhookIds() []*string
+	SetWorkspace(v string) *ListAlertWebhooksRequest
+	GetWorkspace() *string
 }
 
 type ListAlertWebhooksRequest struct {
+	// The name of the webhook.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize   *int64    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The unique ID of the webhook.
 	WebhookIds []*string `json:"webhookIds,omitempty" xml:"webhookIds,omitempty" type:"Repeated"`
+	Workspace  *string   `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s ListAlertWebhooksRequest) String() string {
@@ -59,6 +69,10 @@ func (s *ListAlertWebhooksRequest) GetWebhookIds() []*string {
 	return s.WebhookIds
 }
 
+func (s *ListAlertWebhooksRequest) GetWorkspace() *string {
+	return s.Workspace
+}
+
 func (s *ListAlertWebhooksRequest) SetName(v string) *ListAlertWebhooksRequest {
 	s.Name = &v
 	return s
@@ -76,6 +90,11 @@ func (s *ListAlertWebhooksRequest) SetPageSize(v int64) *ListAlertWebhooksReques
 
 func (s *ListAlertWebhooksRequest) SetWebhookIds(v []*string) *ListAlertWebhooksRequest {
 	s.WebhookIds = v
+	return s
+}
+
+func (s *ListAlertWebhooksRequest) SetWorkspace(v string) *ListAlertWebhooksRequest {
+	s.Workspace = &v
 	return s
 }
 

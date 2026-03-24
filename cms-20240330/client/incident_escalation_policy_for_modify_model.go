@@ -20,20 +20,10 @@ type iIncidentEscalationPolicyForModify interface {
 }
 
 type IncidentEscalationPolicyForModify struct {
-	// example:
-	//
-	// workspace api monitor create test
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// example:
-	//
-	// false
+	Description         *string                           `json:"description,omitempty" xml:"description,omitempty"`
 	Enable              *bool                             `json:"enable,omitempty" xml:"enable,omitempty"`
 	EscalationStageList []*IncidentEscalationStageForView `json:"escalationStageList,omitempty" xml:"escalationStageList,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// "Critical-Alert-Escalation"
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

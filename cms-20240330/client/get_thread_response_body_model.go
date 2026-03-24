@@ -32,38 +32,54 @@ type iGetThreadResponseBody interface {
 }
 
 type GetThreadResponseBody struct {
+	// The attributes.
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The time when the session was created.
+	//
 	// example:
 	//
 	// 2025-12-19T15:19:55.040403272+08:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session status.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
-	// thread-t71rrw-1s7r7z9gu0v2s
+	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The session title.
+	//
 	// example:
 	//
 	// testLive
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The time when the thread was last updated.
+	//
 	// example:
 	//
 	// 2025-12-19T15:19:55.040403272+08:00
-	UpdateTime *string                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Variables  *GetThreadResponseBodyVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The session properties.
+	Variables *GetThreadResponseBodyVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
+	// The version.
+	//
 	// example:
 	//
 	// 1231
@@ -178,13 +194,17 @@ func (s *GetThreadResponseBody) Validate() error {
 }
 
 type GetThreadResponseBodyVariables struct {
+	// The name of the SLS project.
+	//
 	// example:
 	//
-	// kubenest
+	// test
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
-	// hd1
+	// test
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

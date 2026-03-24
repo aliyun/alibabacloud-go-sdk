@@ -17,9 +17,6 @@ type iEventResourceForEventView interface {
 
 type EventResourceForEventView struct {
   Entity *EventResourceForEventViewEntity `json:"entity,omitempty" xml:"entity,omitempty" type:"Struct"`
-  // example:
-  // 
-  // { "env": "prod", "project": "payment-gateway" }
   Tags map[string]interface{} `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -59,21 +56,9 @@ func (s *EventResourceForEventView) Validate() error {
 }
 
 type EventResourceForEventViewEntity struct {
-  // example:
-  // 
-  // "ECS"
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-  // example:
-  // 
-  // "i-bp123456"
   EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-  // example:
-  // 
-  // "Instance"
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-  // example:
-  // 
-  // { "name": "web-server-01", "ip": "10.0.0.1" }
   Prop map[string]interface{} `json:"prop,omitempty" xml:"prop,omitempty"`
 }
 

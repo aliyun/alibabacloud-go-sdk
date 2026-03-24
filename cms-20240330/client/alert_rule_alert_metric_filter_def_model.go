@@ -28,49 +28,49 @@ type iAlertRuleAlertMetricFilterDef interface {
 }
 
 type AlertRuleAlertMetricFilterDef struct {
-	// Dimension in APM metrics.
+	// APM指标中为维度
 	//
 	// example:
 	//
 	// status
 	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	// When true, the filter item will not appear in the GROUP BY clause of the PromQL.
+	// 为true是，过滤项不出现在promQL的group by中
 	//
 	// example:
 	//
 	// true
 	DimDisabled *bool `json:"dimDisabled,omitempty" xml:"dimDisabled,omitempty"`
-	// Display Name (Chinese).
+	// 显示名称中文
 	//
 	// example:
 	//
-	// Application Status
+	// 应用状态
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
-	// Display Name (English).
+	// 显示名称英文
 	//
 	// example:
 	//
 	// Application Status
 	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	// Whether to hide. If hidden, it will not be displayed in the frontend UI, but its value can still be included when rendering the PromQL. A typical example is the "pid" filter condition in APM scenarios, which is generally not exposed through configurable UI elements but instead presented as a separate application search list in the frontend.
+	// 是否隐藏。 如果隐藏则在前端交互中不显示，但在渲染promQL时可将该过滤条件的值上传上来。  典型的例子是APM场景中的pid这个过滤条件，一般不会通过配置化的方式进行显示，而是前端显为独立的应用搜索列表。
 	//
 	// example:
 	//
 	// true
 	Hidden *bool `json:"hidden,omitempty" xml:"hidden,omitempty"`
-	// When true, the filter item will not appear in the label filter of the PromQL.
+	// 为true时，过滤项不出现在promQL的label filter中
 	//
 	// example:
 	//
 	// true
 	LabelDisabled *bool `json:"labelDisabled,omitempty" xml:"labelDisabled,omitempty"`
-	// Filter Condition Operator.
+	// 过滤条件操作符
 	//
 	// example:
 	//
 	// =
 	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
-	// List of supported options.
+	// 支持的选项的列表
 	SupportedOpts []*AlertRuleAlertMetricFilterDefSupportedOpts `json:"supportedOpts,omitempty" xml:"supportedOpts,omitempty" type:"Repeated"`
 }
 
@@ -168,19 +168,19 @@ func (s *AlertRuleAlertMetricFilterDef) Validate() error {
 }
 
 type AlertRuleAlertMetricFilterDefSupportedOpts struct {
-	// Display Name (Chinese).
+	// 显示名称中文
 	//
 	// example:
 	//
-	// Online
+	// 在线
 	DisplayNameCn *string `json:"displayNameCn,omitempty" xml:"displayNameCn,omitempty"`
-	// Display Name (English).
+	// 显示名称英文
 	//
 	// example:
 	//
 	// Online
 	DisplayNameEn *string `json:"displayNameEn,omitempty" xml:"displayNameEn,omitempty"`
-	// Matching value.
+	// 匹配值。
 	//
 	// example:
 	//

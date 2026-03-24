@@ -28,34 +28,50 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
+	// Agent ID
+	//
 	// example:
 	//
 	// 972772996913709056
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// App key assigned by the merchant
+	//
 	// example:
 	//
 	// mm_480d961a1b5e4efe84603f4cbc0f
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// Resource metadata
+	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// Query text
+	//
 	// example:
 	//
 	// What I like
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Rerank the search results.
+	//
 	// example:
 	//
 	// true
 	Rerank *bool `json:"rerank,omitempty" xml:"rerank,omitempty"`
+	// Run ID
+	//
 	// example:
 	//
 	// test_session_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// Number of top results to return
+	//
 	// example:
 	//
 	// 1
 	TopK *int32 `json:"topK,omitempty" xml:"topK,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// test_session_001

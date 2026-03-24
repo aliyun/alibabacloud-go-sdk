@@ -48,38 +48,56 @@ type GetMemoryResponseBody struct {
 	//
 	// test_user_001
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The time when the memory was created.
+	//
 	// example:
 	//
 	// 1751595283143
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1751595283143
 	ExpirationDate *string `json:"expirationDate,omitempty" xml:"expirationDate,omitempty"`
+	// The memory ID.
+	//
 	// example:
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// This property is mutable.
+	//
 	// example:
 	//
 	// test
 	Immutable *string `json:"immutable,omitempty" xml:"immutable,omitempty"`
+	// The memory content.
+	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The metadata.
+	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The organization.
+	//
 	// example:
 	//
 	// test
 	Organization *string `json:"organization,omitempty" xml:"organization,omitempty"`
+	// The owner of the memory.
+	//
 	// example:
 	//
 	// test
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
@@ -88,6 +106,8 @@ type GetMemoryResponseBody struct {
 	//
 	// test_user_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The time when the memory was last updated.
+	//
 	// example:
 	//
 	// 1744428159434

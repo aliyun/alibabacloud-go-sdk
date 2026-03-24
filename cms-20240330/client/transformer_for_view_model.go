@@ -36,35 +36,35 @@ type iTransformerForView interface {
 }
 
 type TransformerForView struct {
-	// Transformation operation.
+	// 转换操作
 	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// Create Time.
+	// 创建时间
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Description.
+	// 描述
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Whether enabled.
+	// 是否启用
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Filter Setting.
+	// 筛选设置
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Exit after matching processing.
+	// 匹配处理后退出
 	//
 	// example:
 	//
 	// false
 	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	// Sort order.
+	// 排序数
 	//
 	// example:
 	//
@@ -76,21 +76,21 @@ type TransformerForView struct {
 	//
 	// 1123123123123
 	TransformerId *string `json:"transformerId,omitempty" xml:"transformerId,omitempty"`
-	// Name.
+	// 名称
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test processing flow.
+	// 测试处理流
 	TransformerName *string `json:"transformerName,omitempty" xml:"transformerName,omitempty"`
-	// Update Time.
+	// 更新时间
 	//
 	// example:
 	//
 	// 2025-01-16T02:27:01Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// User ID.
+	// 用户id
 	//
 	// example:
 	//

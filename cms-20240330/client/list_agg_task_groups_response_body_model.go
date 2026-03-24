@@ -22,27 +22,27 @@ type iListAggTaskGroupsResponseBody interface {
 }
 
 type ListAggTaskGroupsResponseBody struct {
-	// List of aggregation task groups.
+	// A list of aggregation task groups.
 	AggTaskGroups []*ListAggTaskGroupsResponseBodyAggTaskGroups `json:"aggTaskGroups,omitempty" xml:"aggTaskGroups,omitempty" type:"Repeated"`
-	// The maximum number of records returned.
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Token for the next query.
+	// The token to use to retrieve the next page of results. This value is empty when there are no more results to return.
 	//
 	// example:
 	//
 	// aa9d0e569b880xxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7BF1F4D6-B9A8-5F0B-8C1D-4347FFCB798E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of instances.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,109 +117,109 @@ func (s *ListAggTaskGroupsResponseBody) Validate() error {
 }
 
 type ListAggTaskGroupsResponseBodyAggTaskGroups struct {
-	// Hash of the aggregation task group configuration.
+	// The summary of the aggregation task group configuration.
 	//
 	// example:
 	//
 	// a54136014xxx
 	AggTaskGroupConfigHash *string `json:"aggTaskGroupConfigHash,omitempty" xml:"aggTaskGroupConfigHash,omitempty"`
-	// ID of the aggregation task group.
+	// The ID of the aggregation task group.
 	//
 	// example:
 	//
 	// aggTaskGroup-xxxx
 	AggTaskGroupId *string `json:"aggTaskGroupId,omitempty" xml:"aggTaskGroupId,omitempty"`
-	// Name of the aggregation task group.
+	// The name of the aggregation task group.
 	//
 	// example:
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
-	// Cron expression for the aggregation task group when the scheduling mode is set to \\"Cron\\".
+	// The scheduling expression for the aggregation task group when the scheduling mode is \\`Cron\\`.
 	//
 	// example:
 	//
 	// 0 10 8 1 	- ? *
 	CronExpr *string `json:"cronExpr,omitempty" xml:"cronExpr,omitempty"`
-	// Fixed delay time (in seconds) for scheduling.
+	// The fixed delay for scheduling, in seconds.
 	//
 	// example:
 	//
 	// 30
 	Delay *int32 `json:"delay,omitempty" xml:"delay,omitempty"`
-	// Description of the aggregation task group.
+	// The description of the aggregation task group.
 	//
 	// example:
 	//
 	// workspace api monitor update test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Start time of the schedule in seconds since epoch.
+	// The UNIX timestamp that indicates the scheduling start time.
 	//
 	// example:
 	//
 	// 1757409499000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// Scheduling interval.
+	// The scheduling interval.
 	//
 	// example:
 	//
 	// 2025-04-24 00:00:00,2025-04-24 00:00:00
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	// Maximum number of retries for the aggregation task.
+	// The maximum number of retries for an aggregation task.
 	//
 	// example:
 	//
 	// 2
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
-	// Maximum retry time (in seconds) for the aggregation task.
+	// The maximum retry duration for an aggregation task, in seconds.
 	//
 	// example:
 	//
 	// 200
 	MaxRunTimeInSeconds *int32 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Scheduling mode.
+	// The scheduling mode.
 	//
 	// example:
 	//
 	// FixedRate
 	ScheduleMode *string `json:"scheduleMode,omitempty" xml:"scheduleMode,omitempty"`
-	// Scheduling time expression.
+	// The scheduling time expression.
 	//
 	// example:
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
-	// The source Prometheus instance ID of the aggregation task group.
+	// The ID of the source Prometheus instance for the aggregation task group.
 	//
 	// example:
 	//
 	// rw-xxx
 	SourcePrometheusId *string `json:"sourcePrometheusId,omitempty" xml:"sourcePrometheusId,omitempty"`
-	// Status of the aggregation task group.
+	// The status of the aggregation task group.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The target Prometheus instance ID of the aggregation task group.
+	// The ID of the target Prometheus instance for the aggregation task group.
 	//
 	// example:
 	//
 	// rw-xxx
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
-	// The second-level timestamp corresponding to the end time of scheduling.
+	// The UNIX timestamp that indicates the scheduling end time.
 	//
 	// example:
 	//
 	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
-	// Update time of the aggregation task group.
+	// The time when the aggregation task group was updated.
 	//
 	// example:
 	//

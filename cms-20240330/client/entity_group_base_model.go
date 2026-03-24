@@ -28,22 +28,42 @@ type iEntityGroupBase interface {
 }
 
 type EntityGroupBase struct {
+  // 实体描述。
+  // 
+  // example:
+  // 
+  // ECS 实例
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 实体ID。
+  // 
   // example:
   // 
   // eg-1234567890
   EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
+  // 实体名称。
+  // 
+  // example:
+  // 
+  // ECS 全部实体
   EntityGroupName *string `json:"entityGroupName,omitempty" xml:"entityGroupName,omitempty"`
+  // 实体查询规则集合。
   EntityQueries []*EntityGroupBaseEntityQueries `json:"entityQueries,omitempty" xml:"entityQueries,omitempty" type:"Repeated"`
+  // 用于实体发现的规则。
   EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
+  // 地域ID。
+  // 
   // example:
   // 
   // cn-heyuan
   RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+  // 用户ID。
+  // 
   // example:
   // 
   // 1654218***343050
   UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+  // 工作空间。
+  // 
   // example:
   // 
   // default-cms-1654218***343050-cn-hangzhou
@@ -149,10 +169,14 @@ func (s *EntityGroupBase) Validate() error {
 }
 
 type EntityGroupBaseEntityQueries struct {
+  // 实体类型。
+  // 
   // example:
   // 
   // acs.ecs.instance
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+  // SPL查询语句。
+  // 
   // example:
   // 
   // .entity with(type=\\"acs.ecs.instance\\") | where region_id in (\\"cn-beijing\\")

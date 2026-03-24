@@ -24,28 +24,37 @@ type iGetThreadDataResponseBody interface {
 }
 
 type GetThreadDataResponseBody struct {
+	// The message data.
 	Data []*GetThreadDataResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The maximum number of results.
+	//
 	// example:
 	//
-	// 2
+	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// xxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
-	// aliding_thread_448d05c048a3481f8c19bc1a6038f8f6
+	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
 }
 
@@ -125,9 +134,20 @@ func (s *GetThreadDataResponseBody) Validate() error {
 }
 
 type GetThreadDataResponseBodyData struct {
-	Messages  []*GetThreadDataResponseBodyDataMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TraceId   *string                                  `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// A list of messages in the session.
+	Messages []*GetThreadDataResponseBodyDataMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+	// The ID of the current message request. This is the first request ID in the root data.
+	//
+	// example:
+	//
+	// 8FDE2569-626B-5176-9844-28877A*****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the current message request. This is the first trace ID in the root data.
+	//
+	// example:
+	//
+	// 3b5287b717636040171772050d0095
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
 }
 
 func (s GetThreadDataResponseBodyData) String() string {
@@ -179,19 +199,64 @@ func (s *GetThreadDataResponseBodyData) Validate() error {
 }
 
 type GetThreadDataResponseBodyDataMessages struct {
-	Agents       []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	Artifacts    []map[string]interface{} `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
-	CallId       *string                  `json:"callId,omitempty" xml:"callId,omitempty"`
-	Contents     []map[string]interface{} `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
-	Detail       *string                  `json:"detail,omitempty" xml:"detail,omitempty"`
-	Events       []map[string]interface{} `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	ParentCallId *string                  `json:"parentCallId,omitempty" xml:"parentCallId,omitempty"`
-	Role         *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Seq          *int32                   `json:"seq,omitempty" xml:"seq,omitempty"`
-	Timestamp    *string                  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Tools        []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
-	Type         *string                  `json:"type,omitempty" xml:"type,omitempty"`
-	Version      *string                  `json:"version,omitempty" xml:"version,omitempty"`
+	// A list of invoked agents.
+	Agents []map[string]interface{} `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
+	// Information about the generated artifacts.
+	Artifacts []map[string]interface{} `json:"artifacts,omitempty" xml:"artifacts,omitempty" type:"Repeated"`
+	// The execution ID.
+	//
+	// example:
+	//
+	// 3b5287b7176360
+	CallId *string `json:"callId,omitempty" xml:"callId,omitempty"`
+	// The message content.
+	Contents []map[string]interface{} `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
+	// The details of the message.
+	//
+	// example:
+	//
+	// context of model exceed
+	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	// A list of events.
+	Events []map[string]interface{} `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// The execution ID of the parent level.
+	//
+	// example:
+	//
+	// 3b5287b7176360
+	ParentCallId *string `json:"parentCallId,omitempty" xml:"parentCallId,omitempty"`
+	// The role that sent the message.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The sequence number of the message.
+	//
+	// example:
+	//
+	// 0
+	Seq *int32 `json:"seq,omitempty" xml:"seq,omitempty"`
+	// The timestamp in nanoseconds.
+	//
+	// example:
+	//
+	// 1768702985000000000
+	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// A list of tools that were used.
+	Tools []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	// The type of the message.
+	//
+	// example:
+	//
+	// task_finished
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version of the message data.
+	//
+	// example:
+	//
+	// v0.1.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetThreadDataResponseBodyDataMessages) String() string {

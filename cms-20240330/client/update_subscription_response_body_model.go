@@ -16,12 +16,14 @@ type iUpdateSubscriptionResponseBody interface {
 }
 
 type UpdateSubscriptionResponseBody struct {
-	// Id of the request
+	// The unique ID of the request.
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-******
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The subscription ID.
+	//
 	// example:
 	//
 	// 123123123123

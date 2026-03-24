@@ -20,21 +20,21 @@ type iUpdateAddonReleaseRequest interface {
 }
 
 type UpdateAddonReleaseRequest struct {
-	// Addon version information.
+	// The version of the add-on.
 	//
 	// example:
 	//
 	// 0.0.2
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// Whether to pre-check this request.
+	// Specifies whether to perform a dry run for the request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Entity discovery rules.
+	// The entity discovery rules.
 	EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// Metadata information.
+	// The metadata.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iIncidentContactStruct interface {
 }
 
 type IncidentContactStruct struct {
-	// Channel list.
+	// 通道列表
 	Channel []*string `json:"channel,omitempty" xml:"channel,omitempty" type:"Repeated"`
-	// Contact ID.
+	// 联系人id
 	//
 	// example:
 	//
 	// 627415
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// Contact type.
+	// 联系类型。
 	//
 	// example:
 	//

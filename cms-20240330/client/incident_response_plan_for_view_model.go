@@ -42,54 +42,21 @@ type iIncidentResponsePlanForView interface {
 }
 
 type IncidentResponsePlanForView struct {
-	// example:
-	//
-	// 300
-	AutoRecoverSeconds *int64 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	// example:
-	//
-	// "2025-04-05T10:30:00Z"
-	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// example:
-	//
-	// true
-	Enabled      *bool     `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "Manual"
-	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// example:
-	//
-	// "P1-Critical-Response-Plan"
+	AutoRecoverSeconds  *int64               `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
+	CreateTime          *string              `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description         *string              `json:"description,omitempty" xml:"description,omitempty"`
+	Enabled             *bool                `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	EscalationId        []*string            `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
+	Mode                *string              `json:"mode,omitempty" xml:"mode,omitempty"`
 	Name                *string              `json:"name,omitempty" xml:"name,omitempty"`
 	PushingSetting      *PushingSetting      `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty"`
 	RepeatNotifySetting *RepeatNotifySetting `json:"repeatNotifySetting,omitempty" xml:"repeatNotifySetting,omitempty"`
-	// example:
-	//
-	// "MANUAL"
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// example:
-	//
-	// "ARMS"
-	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	// example:
-	//
-	// "Standard"
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// example:
-	//
-	// "2025-04-06T09:15:00Z"
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// example:
-	//
-	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// example:
-	//
-	// "ws-xyz789"
-	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	Source              *string              `json:"source,omitempty" xml:"source,omitempty"`
+	SyncFromType        *string              `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
+	Type                *string              `json:"type,omitempty" xml:"type,omitempty"`
+	UpdateTime          *string              `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Uuid                *string              `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	Workspace           *string              `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s IncidentResponsePlanForView) String() string {

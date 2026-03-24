@@ -30,17 +30,27 @@ type iEntityDiscoverRule interface {
 }
 
 type EntityDiscoverRule struct {
+  // 注解匹配集合。
   Annotations []*EntityDiscoverRuleAnnotations `json:"annotations,omitempty" xml:"annotations,omitempty" type:"Repeated"`
+  // 实体类型集合。
   EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
+  // 属性匹配规则。
   FieldRules []*EntityDiscoverRuleFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
+  // 实例ID集合。
   InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+  // IP匹配规则集合。
   IpMatchRule []*EntityDiscoverRuleIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Repeated"`
+  // 标签匹配集合。
   Labels []*EntityDiscoverRuleLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
+  // 地域ID集合。
   RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
+  // 资源组ID。
+  // 
   // example:
   // 
   // rg-acfm2m7atreujs1
   ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+  // 通过Tag进行服务发现。
   Tags []*EntityDiscoverRuleTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -183,14 +193,19 @@ func (s *EntityDiscoverRule) Validate() error {
 }
 
 type EntityDiscoverRuleAnnotations struct {
+  // 操作。
+  // 
   // example:
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
+  // 注解的Key。
+  // 
   // example:
   // 
   // instanceId
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // 注解的值集合。
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -234,11 +249,16 @@ func (s *EntityDiscoverRuleAnnotations) Validate() error {
 }
 
 type EntityDiscoverRuleFieldRules struct {
+  // 属性的Key。
+  // 
   // example:
   // 
   // instanceId
   FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
+  // 属性的值集合。
   FieldValues []*string `json:"fieldValues,omitempty" xml:"fieldValues,omitempty" type:"Repeated"`
+  // 操作。
+  // 
   // example:
   // 
   // in
@@ -285,10 +305,14 @@ func (s *EntityDiscoverRuleFieldRules) Validate() error {
 }
 
 type EntityDiscoverRuleIpMatchRule struct {
+  // IP的CIDR。
+  // 
   // example:
   // 
   // 192.168.0.1/10
   IpCIDR *string `json:"ipCIDR,omitempty" xml:"ipCIDR,omitempty"`
+  // IP字段的Key。
+  // 
   // example:
   // 
   // hostIp
@@ -326,14 +350,19 @@ func (s *EntityDiscoverRuleIpMatchRule) Validate() error {
 }
 
 type EntityDiscoverRuleLabels struct {
+  // 操作。
+  // 
   // example:
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
+  // 标签的Key。
+  // 
   // example:
   // 
   // project
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // 标签的值集合。
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 
@@ -377,14 +406,19 @@ func (s *EntityDiscoverRuleLabels) Validate() error {
 }
 
 type EntityDiscoverRuleTags struct {
+  // 操作。
+  // 
   // example:
   // 
   // in
   Op *string `json:"op,omitempty" xml:"op,omitempty"`
+  // Tag的Key。
+  // 
   // example:
   // 
   // project
   TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // Tag的值集合。
   TagValues []*string `json:"tagValues,omitempty" xml:"tagValues,omitempty" type:"Repeated"`
 }
 

@@ -22,7 +22,7 @@ type iListPrometheusInstancesResponseBody interface {
 }
 
 type ListPrometheusInstancesResponseBody struct {
-	// Maximum number of records to return.
+	// The maximum number of records returned.
 	//
 	// if can be null:
 	// true
@@ -31,21 +31,21 @@ type ListPrometheusInstancesResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Token for the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// List of Prometheus instances.
+	// The list of Prometheus instances.
 	PrometheusInstances []*ListPrometheusInstancesResponseBodyPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// ID of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of instances
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -120,31 +120,29 @@ func (s *ListPrometheusInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
-	// Access type:
-	//
-	// readWrite, readOnly, httpReadOnly
+	// The permission type. Valid values: readWrite, readOnly, and httpReadOnly.
 	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
+	// The time when the instance was created. The time is in UTC and the format is yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
 	// 2025-08-10T02:07:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Instance type.
+	// The instance type.
 	//
 	// example:
 	//
 	// remote-write
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// POSTPAY: Postpaid by metric.
+	// POSTPAY: Pay-as-you-go, billed by metrics.
 	//
-	// POSTPAY_GB: Postpaid by write volume.
+	// POSTPAY_GB: Pay-as-you-go, billed by data written.
 	//
-	// PREPAY: Prepaid.
+	// PREPAY: Subscription.
 	//
 	// FREE: Free.
 	//
@@ -152,57 +150,57 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// POSTPAY_GB
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// Product to which the prom instance belongs
+	// The product to which the Prometheus instance belongs.
 	//
 	// example:
 	//
 	// arms
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rw-63549e054ff596a4149927961dff
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// Instance name.
+	// The instance name.
 	//
 	// example:
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-nanjing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// Backend data storage status
+	// The status of the backend data storage.
 	//
 	// example:
 	//
 	// Pending2Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Supported authentication types.
+	// The supported authentication types.
 	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
-	// User ID.
+	// The user ID.
 	//
 	// example:
 	//
 	// 17073812345
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Version
+	// The version.
 	//
 	// example:
 	//
 	// *
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// Workspace to which the Prometheus instance belongs
+	// The workspace to which the Prometheus instance belongs.
 	//
 	// example:
 	//

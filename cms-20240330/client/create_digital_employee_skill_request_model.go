@@ -24,24 +24,36 @@ type iCreateDigitalEmployeeSkillRequest interface {
 }
 
 type CreateDigitalEmployeeSkillRequest struct {
+	// The description of the skill.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the skill.
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Specifies whether to enable the skill.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The list of skill files.
+	//
 	// This parameter is required.
 	Files []*CreateDigitalEmployeeSkillRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// The remarks.
+	//
 	// example:
 	//
 	// remark
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
+	// The name of the skill.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -126,6 +138,8 @@ func (s *CreateDigitalEmployeeSkillRequest) Validate() error {
 }
 
 type CreateDigitalEmployeeSkillRequestFiles struct {
+	// The content of the file.
+	//
 	// example:
 	//
 	// ---
@@ -140,6 +154,8 @@ type CreateDigitalEmployeeSkillRequestFiles struct {
 	//
 	// skill test
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the file.
+	//
 	// example:
 	//
 	// SKILL.md

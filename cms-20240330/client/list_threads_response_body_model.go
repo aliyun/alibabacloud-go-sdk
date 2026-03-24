@@ -24,25 +24,34 @@ type iListThreadsResponseBody interface {
 }
 
 type ListThreadsResponseBody struct {
+	// The maximum number of results returned. The maximum value is 200.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The paging token.
+	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
-	// CD8BA7D6-995D-578D-9941-78B0FECD14B5
+	// CD8BA7D6-995D-578D-9941-xxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
-	// thread_id01
-	ThreadId *string                           `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	Threads  []*ListThreadsResponseBodyThreads `json:"threads,omitempty" xml:"threads,omitempty" type:"Repeated"`
+	// thread-123123
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The sessions.
+	Threads []*ListThreadsResponseBodyThreads `json:"threads,omitempty" xml:"threads,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -126,34 +135,49 @@ func (s *ListThreadsResponseBody) Validate() error {
 
 type ListThreadsResponseBodyThreads struct {
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The time when the session was created.
+	//
 	// example:
 	//
-	// 2025-04-22T12:46:34Z
+	// 2025-12-19T15:19:55.040403272+08:00
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	// The session status.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
-	// thread-t71rrw-1s7r7z9gu0v2s
+	// thread-123123
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The session title.
+	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The time when the session was last updated.
+	//
 	// example:
 	//
-	// 2025-06-24 10:05:21
-	UpdateTime *string                                  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Variables  *ListThreadsResponseBodyThreadsVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
+	// 2025-12-19T15:19:55.040403272+08:00
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The session properties.
+	Variables *ListThreadsResponseBodyThreadsVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
+	// The version number.
+	//
 	// example:
 	//
-	// *
+	// 123123
 	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -256,15 +280,17 @@ func (s *ListThreadsResponseBodyThreads) Validate() error {
 }
 
 type ListThreadsResponseBodyThreadsVariables struct {
-	// SLS project。
+	// The Simple Log Service (SLS) project.
 	//
 	// example:
 	//
-	// ciec_rl_ads
+	// project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The workspace.
+	//
 	// example:
 	//
-	// hd1-np
+	// workspace
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

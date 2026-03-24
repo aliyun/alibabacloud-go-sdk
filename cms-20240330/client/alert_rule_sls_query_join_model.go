@@ -16,29 +16,31 @@ type iAlertRuleSlsQueryJoin interface {
 }
 
 type AlertRuleSlsQueryJoin struct {
-	// List of connection conditions.
+	// 连接条件列表
 	Conditions []*AlertRuleSlsQueryJoinConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// Set operation type.
+	// 集合操作类型。
 	//
-	// CrossJoin: Cartesian product
+	// - CrossJoin： 笛卡尔积
 	//
-	// FullJoin: Full outer join
+	// - FullJoin：全联
 	//
-	// InnerJoin: Inner join
+	// - InnerJoin：内联
 	//
-	// LeftExclude: Left anti join
+	// - LeftExclude： 左斥
 	//
-	// RightExclude: Right anti join
+	// - RightExclude：右斥
 	//
-	// LeftJoin: Left outer join
+	// - LeftJoin：左联
 	//
-	// RightJoin: Right outer join
+	// - RightJoin：右联
 	//
-	// NoJoin: No merge
+	// - NoJoin：不合并
 	//
-	// Concat: Concatenation
+	// - Concat： 拼接
 	//
-	// See also: https://help.aliyun.com/zh/sls/user-guide/set-query-statistics-statement
+	// 参见：
+	//
+	//   https://help.aliyun.com/zh/sls/user-guide/set-query-statistics-statement
 	//
 	// This parameter is required.
 	//
@@ -88,19 +90,19 @@ func (s *AlertRuleSlsQueryJoin) Validate() error {
 }
 
 type AlertRuleSlsQueryJoinConditions struct {
-	// Left-hand operand of the condition, formatted as $<query_idx>.<result_set_field_name>.
+	// 条件的左操作参数，格式为$<query_idx>.<结果集字段名>
 	//
 	// example:
 	//
 	// $0.__topic__
 	FirstField *string `json:"firstField,omitempty" xml:"firstField,omitempty"`
-	// Comparison operator; valid values: <, >, ==, !=, <=, >=.
+	// 比较操作符，取值范围：<, >, ==, !=, <=, >=
 	//
 	// example:
 	//
 	// ==
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// Right-hand operand of the condition, formatted as $<query_idx>.<result_set_field_name>.
+	// 条件的右操作参数，格式为$<query_idx>.<结果集字段名>
 	//
 	// example:
 	//

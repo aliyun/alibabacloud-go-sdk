@@ -18,16 +18,22 @@ type iListIntegrationPolicyCollectorsRequest interface {
 }
 
 type ListIntegrationPolicyCollectorsRequest struct {
+	// The name of the add-on release.
+	//
 	// example:
 	//
 	// release-1234567
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
+	// The collector type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Exporter
 	CollectorType *string `json:"collectorType,omitempty" xml:"collectorType,omitempty"`
+	// The language.
+	//
 	// example:
 	//
 	// zh

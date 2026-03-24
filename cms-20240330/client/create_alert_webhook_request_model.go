@@ -23,39 +23,69 @@ type iCreateAlertWebhookRequest interface {
 	GetUrl() *string
 	SetWebhookId(v string) *CreateAlertWebhookRequest
 	GetWebhookId() *string
+	SetWorkspace(v string) *CreateAlertWebhookRequest
+	GetWorkspace() *string
 }
 
 type CreateAlertWebhookRequest struct {
+	// The content type. Valid values:
+	//
+	// - JSON (default)
+	//
+	// - FORM
+	//
 	// example:
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// headers
+	// The headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	// The language. Valid values:
+	//
+	// - zh_CN
+	//
+	// - en_US
+	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The request method. Valid values:
+	//
+	// - GET
+	//
+	// - POST
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// The name of the webhook.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The URL for the alert callback.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/test
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// The unique ID of the webhook.
+	//
 	// example:
 	//
 	// test
 	WebhookId *string `json:"webhookId,omitempty" xml:"webhookId,omitempty"`
+	// example:
+	//
+	// my-workspace
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s CreateAlertWebhookRequest) String() string {
@@ -94,6 +124,10 @@ func (s *CreateAlertWebhookRequest) GetWebhookId() *string {
 	return s.WebhookId
 }
 
+func (s *CreateAlertWebhookRequest) GetWorkspace() *string {
+	return s.Workspace
+}
+
 func (s *CreateAlertWebhookRequest) SetContentType(v string) *CreateAlertWebhookRequest {
 	s.ContentType = &v
 	return s
@@ -126,6 +160,11 @@ func (s *CreateAlertWebhookRequest) SetUrl(v string) *CreateAlertWebhookRequest 
 
 func (s *CreateAlertWebhookRequest) SetWebhookId(v string) *CreateAlertWebhookRequest {
 	s.WebhookId = &v
+	return s
+}
+
+func (s *CreateAlertWebhookRequest) SetWorkspace(v string) *CreateAlertWebhookRequest {
+	s.Workspace = &v
 	return s
 }
 

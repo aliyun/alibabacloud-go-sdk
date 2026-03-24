@@ -24,29 +24,11 @@ type iSubscriptionForModify interface {
 }
 
 type SubscriptionForModify struct {
-	// Description.
-	//
-	// example:
-	//
-	// workspace test
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Filtering settings.
-	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Notification policy UUID.
-	//
-	// example:
-	//
-	// 123123
-	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// Push settings.
-	PushingSetting *SubscriptionForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
-	// Name.
-	//
+	Description      *string                              `json:"description,omitempty" xml:"description,omitempty"`
+	FilterSetting    *FilterSetting                       `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	NotifyStrategyId *string                              `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	PushingSetting   *SubscriptionForModifyPushingSetting `json:"pushingSetting,omitempty" xml:"pushingSetting,omitempty" type:"Struct"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// Test subscription.
 	SubscriptionName       *string                 `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	WorkspaceFilterSetting *WorkspaceFilterSetting `json:"workspaceFilterSetting,omitempty" xml:"workspaceFilterSetting,omitempty"`
 }
@@ -133,22 +115,10 @@ func (s *SubscriptionForModify) Validate() error {
 }
 
 type SubscriptionForModifyPushingSetting struct {
-	// Alert push action plan ID list.
-	AlertActionIds []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
-	// Action plan ID.
-	//
-	// example:
-	//
-	// 123123123
-	ResponsePlanId *string `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
-	// Action integration plan ID list.
+	AlertActionIds   []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
+	ResponsePlanId   *string   `json:"responsePlanId,omitempty" xml:"responsePlanId,omitempty"`
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// Template UUID.
-	//
-	// example:
-	//
-	// 123123123
-	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
+	TemplateUuid     *string   `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
 func (s SubscriptionForModifyPushingSetting) String() string {

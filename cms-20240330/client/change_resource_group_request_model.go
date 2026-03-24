@@ -18,14 +18,20 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// test
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Service

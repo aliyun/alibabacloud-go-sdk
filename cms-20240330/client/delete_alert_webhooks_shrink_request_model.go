@@ -14,6 +14,8 @@ type iDeleteAlertWebhooksShrinkRequest interface {
 }
 
 type DeleteAlertWebhooksShrinkRequest struct {
+	// Unique webhook identifiers.
+	//
 	// This parameter is required.
 	WebhookIdsShrink *string `json:"webhookIds,omitempty" xml:"webhookIds,omitempty"`
 }

@@ -26,30 +26,14 @@ type iIncidentEscalationStageForView interface {
 }
 
 type IncidentEscalationStageForView struct {
-	// example:
-	//
-	// 3
-	CycleNotifyCount *int32 `json:"cycleNotifyCount,omitempty" xml:"cycleNotifyCount,omitempty"`
-	// example:
-	//
-	// 5
+	CycleNotifyCount    *int32           `json:"cycleNotifyCount,omitempty" xml:"cycleNotifyCount,omitempty"`
 	CycleNotifyInterval *int32           `json:"cycleNotifyInterval,omitempty" xml:"cycleNotifyInterval,omitempty"`
 	EffectTimeRange     *EffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	Index          *int32           `json:"index,omitempty" xml:"index,omitempty"`
-	NotifyChannels []*NotifyChannel `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "Open"
-	TargetIncidentState *string `json:"targetIncidentState,omitempty" xml:"targetIncidentState,omitempty"`
-	// example:
-	//
-	// 30
-	TriggerDelay *int32 `json:"triggerDelay,omitempty" xml:"triggerDelay,omitempty"`
+	Index               *int32           `json:"index,omitempty" xml:"index,omitempty"`
+	NotifyChannels      []*NotifyChannel `json:"notifyChannels,omitempty" xml:"notifyChannels,omitempty" type:"Repeated"`
+	TargetIncidentState *string          `json:"targetIncidentState,omitempty" xml:"targetIncidentState,omitempty"`
+	TriggerDelay        *int32           `json:"triggerDelay,omitempty" xml:"triggerDelay,omitempty"`
 }
 
 func (s IncidentEscalationStageForView) String() string {

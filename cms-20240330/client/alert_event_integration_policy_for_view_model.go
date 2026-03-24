@@ -44,38 +44,62 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// 123123123
 	AlertEventIntegrationPolicyId *string `json:"alertEventIntegrationPolicyId,omitempty" xml:"alertEventIntegrationPolicyId,omitempty"`
+	// 名称
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 集成名
 	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
+	// 创建时间
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// 描述
+	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 是否启用
+	//
 	// example:
 	//
 	// true
-	Enable        *bool          `json:"enable,omitempty" xml:"enable,omitempty"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// 过滤配置
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
+	// 订阅设置
+	//
 	// example:
 	//
 	// {"region":"cn-hangzhou"}
 	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
+	// 集成的上报入口key
+	//
 	// example:
 	//
 	// 10-16818f1445e10a1d012922b285bfb334
-	Token              *string            `json:"token,omitempty" xml:"token,omitempty"`
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// 转换设置
 	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
+	// 类型
+	//
 	// example:
 	//
 	// ALERT_CUSTOM
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 更新时间
+	//
 	// example:
 	//
 	// 2024-12-16T02:00:23Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// 用户id
+	//
 	// example:
 	//
 	// 123123

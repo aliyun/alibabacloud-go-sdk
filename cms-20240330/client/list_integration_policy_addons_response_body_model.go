@@ -18,13 +18,16 @@ type iListIntegrationPolicyAddonsResponseBody interface {
 }
 
 type ListIntegrationPolicyAddonsResponseBody struct {
+	// A list of add-ons.
 	Addons []*ListIntegrationPolicyAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7E00EF90-CEF9-57C9-9AE9-5AA937D37C03
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
@@ -80,46 +83,70 @@ func (s *ListIntegrationPolicyAddonsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddons struct {
+	// The display name.
+	//
 	// example:
 	//
 	// MySQL
-	Alias      *string                                                    `json:"alias,omitempty" xml:"alias,omitempty"`
-	Categories []*string                                                  `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The categories.
+	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	// A list of dashboards.
 	Dashboards []*ListIntegrationPolicyAddonsResponseBodyAddonsDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// Observability integration.
-	Description  *string                                                      `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// A list of supported environments.
 	Environments []*ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	// The icon of the add-on.
+	//
 	// example:
 	//
 	// asert/mysql.svg
-	Icon     *string   `json:"icon,omitempty" xml:"icon,omitempty"`
+	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The keywords.
 	Keywords []*string `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
+	// The language.
+	//
 	// example:
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The time when the latest version was created.
+	//
 	// example:
 	//
 	// 2025-09-03T03:15:56Z
 	LatestReleaseCreateTime *string `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
+	// The name of the add-on.
+	//
 	// example:
 	//
 	// mysql
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Indicates whether the add-on can be installed only once.
+	//
 	// example:
 	//
 	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
+	// The scenario of the add-on.
+	//
 	// example:
 	//
 	// container
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
+	// The version of the add-on.
+	//
 	// example:
 	//
 	// 0.1.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The weight.
+	//
 	// example:
 	//
 	// 99
@@ -283,11 +310,20 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddons) Validate() error {
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsDashboards struct {
+	// The description.
+	//
+	// example:
+	//
+	// 用于mysql的监控大盘
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// MySQL Overview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The URL of the dashboard.
+	//
 	// example:
 	//
 	// http://xxxxxxx
@@ -334,23 +370,33 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsDashboards) Validate() err
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments struct {
+	// The dependencies.
 	Dependencies *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
+	// The description.
+	//
 	// example:
 	//
 	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Indicates whether the feature is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The display name of the environment.
+	//
 	// example:
 	//
 	// Cloud
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The name of the environment.
+	//
 	// example:
 	//
 	// Cloud
-	Name     *string                                                            `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The policy.
 	Policies *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
 }
 
@@ -431,9 +477,12 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments) Validate() e
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies struct {
-	ClusterTypes []*string        `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
-	Features     map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
-	Services     []*string        `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	// The dependencies on cluster types.
+	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
+	// The dependencies on probes.
+	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
+	// The dependencies on product codes.
+	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies) String() string {
@@ -476,24 +525,36 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies) 
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies struct {
+	// The default status of the alert rule policy.
+	//
 	// example:
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
+	// Indicates whether the add-on is installed by default.
+	//
 	// example:
 	//
 	// true
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
+	// Indicates whether to assign a Service Account for communication with the console API.
+	//
 	// example:
 	//
 	// true
-	EnableServiceAccount *bool                                                                             `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
-	MetricCheckRule      *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
+	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
+	// The metric check rule.
+	MetricCheckRule *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
+	// Indicates whether a pod restart is required after the add-on is installed.
+	//
 	// example:
 	//
 	// true
-	NeedRestartAfterIntegration *bool                                                                         `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	Protocols                   []*ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
+	// The protocols.
+	Protocols []*ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	// The name of the target add-on.
+	//
 	// example:
 	//
 	// mysql
@@ -590,6 +651,7 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies) Vali
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule struct {
+	// The PromQL search statements.
 	PromQl []*string `json:"promQl,omitempty" xml:"promQl,omitempty" type:"Repeated"`
 }
 
@@ -615,18 +677,26 @@ func (s *ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesMetric
 }
 
 type ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols struct {
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The icon.
+	//
 	// example:
 	//
 	// https://img.alixxxx
 	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// Golang
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// The protocol name.
+	//
 	// example:
 	//
 	// golang

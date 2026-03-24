@@ -14,7 +14,7 @@ type iCreateTicketResponseBody interface {
 }
 
 type CreateTicketResponseBody struct {
-	// 免登录票据。
+	// The password-free ticket.
 	//
 	// example:
 	//

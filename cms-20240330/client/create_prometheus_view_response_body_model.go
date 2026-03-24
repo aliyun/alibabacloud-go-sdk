@@ -16,13 +16,13 @@ type iCreatePrometheusViewResponseBody interface {
 }
 
 type CreatePrometheusViewResponseBody struct {
-	// Prometheus view ID.
+	// The ID of the Prometheus view.
 	//
 	// example:
 	//
 	// cd5237f7dbd574cf9bbd648ff9efb16cd
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
-	// ID of the request
+	// The ID of the request.
 	//
 	// example:
 	//

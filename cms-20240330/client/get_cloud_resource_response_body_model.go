@@ -16,10 +16,14 @@ type iGetCloudResourceResponseBody interface {
 }
 
 type GetCloudResourceResponseBody struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC

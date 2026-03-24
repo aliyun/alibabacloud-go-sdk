@@ -21,17 +21,8 @@ type iEffectTimeRange interface {
 
 type EffectTimeRange struct {
   DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-  // example:
-  // 
-  // 1080
   EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-  // example:
-  // 
-  // 360
   StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-  // example:
-  // 
-  // "Asia/Shanghai"
   TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 }
 

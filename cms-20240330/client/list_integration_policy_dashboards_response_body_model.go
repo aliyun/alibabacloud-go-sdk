@@ -18,15 +18,15 @@ type iListIntegrationPolicyDashboardsResponseBody interface {
 }
 
 type ListIntegrationPolicyDashboardsResponseBody struct {
-	// List of dashboards.
+	// The list of dashboards.
 	Dashboards []*ListIntegrationPolicyDashboardsResponseBodyDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//
 	// CD8BA7D6-995D-578D-9941-78B0FECD14B5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Number of components.
+	// The number of components.
 	//
 	// example:
 	//
@@ -83,49 +83,49 @@ func (s *ListIntegrationPolicyDashboardsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyDashboardsResponseBodyDashboards struct {
-	// Dashboard engine:
+	// The dashboard engine. Valid values:
 	//
-	// grafana: shared grafana.
+	// grafana: shared Grafana.
 	//
-	// cms: cms self-developed dashboard engine.
+	// cms: the self-developed dashboard engine of CloudMonitor.
 	//
 	// example:
 	//
 	// grafana
 	Engine *string `json:"engine,omitempty" xml:"engine,omitempty"`
-	// UID of the dashboard folder.
+	// The UID of the dashboard folder.
 	//
 	// example:
 	//
 	// Env-AAA
 	FolderUid *string `json:"folderUid,omitempty" xml:"folderUid,omitempty"`
-	// Dashboard name
+	// The dashboard name.
 	//
 	// example:
 	//
 	// k8s-pod
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Region
+	// The region.
 	//
 	// example:
 	//
 	// cn-hongkong
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// List of tags.
+	// The list of tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// Title of the UI module (not name)
+	// The title of the UI module. This is different from the name parameter.
 	//
 	// example:
 	//
 	// test
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// ID of the current Alibaba Cloud primary account, read-only
+	// The ID of the current Alibaba Cloud account. This parameter is read-only.
 	//
 	// example:
 	//
 	// 1258199346721590
 	Uid *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	// pagerDuty integration webhook. Supports V1 and V2 versions
+	// The webhook URL for PagerDuty integration. V1 and V2 are supported.
 	//
 	// example:
 	//

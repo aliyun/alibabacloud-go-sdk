@@ -22,18 +22,26 @@ type iCreateMemoryStoreRequest interface {
 }
 
 type CreateMemoryStoreRequest struct {
+	// A list of custom extraction strategies.
 	CustomExtractionStrategies []*CustomExtractionStrategy `json:"customExtractionStrategies,omitempty" xml:"customExtractionStrategies,omitempty" type:"Repeated"`
+	// The description of the Memory Store.
+	//
 	// example:
 	//
 	// Test memory store for demonstration.
-	Description          *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The extraction strategies to use. Valid values: `Episodic`, `Summary`, and `Fact`.
 	ExtractionStrategies []*string `json:"extractionStrategies,omitempty" xml:"extractionStrategies,omitempty" type:"Repeated"`
+	// The name of the Memory Store.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-memory-store
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
+	// The time-to-live (TTL) for short-term memory.
+	//
 	// This parameter is required.
 	//
 	// example:

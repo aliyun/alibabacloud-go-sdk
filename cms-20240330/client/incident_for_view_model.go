@@ -56,61 +56,28 @@ type iIncidentForView interface {
 }
 
 type IncidentForView struct {
-	Content     *string                            `json:"content,omitempty" xml:"content,omitempty"`
-	Escalations []*IncidentEscalationPolicyForView `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "group-123456"
-	GroupUuid    *string            `json:"groupUuid,omitempty" xml:"groupUuid,omitempty"`
-	GroupingKeys map[string]*string `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty"`
-	// example:
-	//
-	// "incident-abc123"
-	IncidentId         *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
-	// example:
-	//
-	// "notify-strategy-789"
-	NotifyStrategyUuid *string                         `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	Operator           *ContactForIncidentView         `json:"operator,omitempty" xml:"operator,omitempty"`
-	Owners             []*ContactForIncidentView       `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
-	Participants       []*ContactForIncidentView       `json:"participants,omitempty" xml:"participants,omitempty" type:"Repeated"`
-	Plan               *IncidentResponsePlanForView    `json:"plan,omitempty" xml:"plan,omitempty"`
-	RelatedResources   []*EventResourceForIncidentView `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "Network"
-	RootCauseCategory *string `json:"rootCauseCategory,omitempty" xml:"rootCauseCategory,omitempty"`
-	// example:
-	//
-	// "Critical"
-	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	Solution *string `json:"solution,omitempty" xml:"solution,omitempty"`
-	// example:
-	//
-	// "Open"
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// example:
-	//
-	// "P1-Alert-Notification"
-	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
-	// example:
-	//
-	// "subscription-abc"
-	SubscriptionUuid *string `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
-	// example:
-	//
-	// 1743876000000
-	Time  *int64  `json:"time,omitempty" xml:"time,omitempty"`
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// "user-abc123"
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// example:
-	//
-	// "ws-xyz789"
-	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	Content            *string                            `json:"content,omitempty" xml:"content,omitempty"`
+	Escalations        []*IncidentEscalationPolicyForView `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
+	GroupUuid          *string                            `json:"groupUuid,omitempty" xml:"groupUuid,omitempty"`
+	GroupingKeys       map[string]*string                 `json:"groupingKeys,omitempty" xml:"groupingKeys,omitempty"`
+	IncidentId         *string                            `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
+	NotifyStrategyName *string                            `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
+	NotifyStrategyUuid *string                            `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
+	Operator           *ContactForIncidentView            `json:"operator,omitempty" xml:"operator,omitempty"`
+	Owners             []*ContactForIncidentView          `json:"owners,omitempty" xml:"owners,omitempty" type:"Repeated"`
+	Participants       []*ContactForIncidentView          `json:"participants,omitempty" xml:"participants,omitempty" type:"Repeated"`
+	Plan               *IncidentResponsePlanForView       `json:"plan,omitempty" xml:"plan,omitempty"`
+	RelatedResources   []*EventResourceForIncidentView    `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	RootCauseCategory  *string                            `json:"rootCauseCategory,omitempty" xml:"rootCauseCategory,omitempty"`
+	Severity           *string                            `json:"severity,omitempty" xml:"severity,omitempty"`
+	Solution           *string                            `json:"solution,omitempty" xml:"solution,omitempty"`
+	State              *string                            `json:"state,omitempty" xml:"state,omitempty"`
+	SubscriptionName   *string                            `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
+	SubscriptionUuid   *string                            `json:"subscriptionUuid,omitempty" xml:"subscriptionUuid,omitempty"`
+	Time               *int64                             `json:"time,omitempty" xml:"time,omitempty"`
+	Title              *string                            `json:"title,omitempty" xml:"title,omitempty"`
+	UserId             *string                            `json:"userId,omitempty" xml:"userId,omitempty"`
+	Workspace          *string                            `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s IncidentForView) String() string {

@@ -18,14 +18,20 @@ type iListIntegrationPolicyServiceMonitorsRequest interface {
 }
 
 type ListIntegrationPolicyServiceMonitorsRequest struct {
+	// The name of the add-on release.
+	//
 	// example:
 	//
 	// release-12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
+	// Specifies whether to encrypt the YAML file.
+	//
 	// example:
 	//
 	// true
 	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// arms-prom

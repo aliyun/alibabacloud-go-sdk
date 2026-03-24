@@ -16,11 +16,14 @@ type iAddMemoriesResponseBody interface {
 }
 
 type AddMemoriesResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*AddMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Request results.
+	Results []*AddMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s AddMemoriesResponseBody) String() string {
@@ -63,14 +66,20 @@ func (s *AddMemoriesResponseBody) Validate() error {
 }
 
 type AddMemoriesResponseBodyResults struct {
+	// Event ID.
+	//
 	// example:
 	//
 	// 897294a7-67a4-4f60-976c-e136edc5f97e
 	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// Details.
+	//
 	// example:
 	//
 	// Memory processing has been queued for background execution
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Processing status.
+	//
 	// example:
 	//
 	// Pending

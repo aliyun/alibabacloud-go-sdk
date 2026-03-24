@@ -52,71 +52,26 @@ type iIncidentEventForView interface {
 }
 
 type IncidentEventForView struct {
-	// example:
-	//
-	// 1743876600000
-	AutoRecoverTime *int64           `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
-	Content         *CmsEventForView `json:"content,omitempty" xml:"content,omitempty"`
-	// example:
-	//
-	// 3
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// example:
-	//
-	// { "env": "prod", "module": "payment" }
-	Dimension     map[string]interface{}        `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	EventResource *EventResourceForIncidentView `json:"eventResource,omitempty" xml:"eventResource,omitempty"`
-	// example:
-	//
-	// { "resourceId": "i-bp123456", "severity": "Critical" }
-	GroupBy map[string]interface{} `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	// example:
-	//
-	// "x1y2z3a4-b5c6-d7e8-f9g0-h1i2j3k4l5m6"
-	IncidentEventUuid *string `json:"incidentEventUuid,omitempty" xml:"incidentEventUuid,omitempty"`
-	// example:
-	//
-	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
-	IncidentUuid *string `json:"incidentUuid,omitempty" xml:"incidentUuid,omitempty"`
-	// example:
-	//
-	// { "project": "payment-gateway", "owner": "ops-team" }
-	Labels map[string]interface{} `json:"labels,omitempty" xml:"labels,omitempty"`
-	// example:
-	//
-	// 1743876000000
-	LastTime *int64 `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
-	// example:
-	//
-	// 1743876600000
-	RecoverTime *int64    `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
-	SearchIndex []*string `json:"searchIndex,omitempty" xml:"searchIndex,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "Critical"
-	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
-	// example:
-	//
-	// { "Critical": 2, "High": 1 }
-	SeverityCountMap map[string]interface{} `json:"severityCountMap,omitempty" xml:"severityCountMap,omitempty"`
-	// example:
-	//
-	// 1
-	State     *int32  `json:"state,omitempty" xml:"state,omitempty"`
-	TextIndex *string `json:"textIndex,omitempty" xml:"textIndex,omitempty"`
-	// example:
-	//
-	// 1743876000000
-	Time  *int64  `json:"time,omitempty" xml:"time,omitempty"`
-	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// example:
-	//
-	// "user-abc123"
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// example:
-	//
-	// "ws-xyz789"
-	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	AutoRecoverTime   *int64                        `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
+	Content           *CmsEventForView              `json:"content,omitempty" xml:"content,omitempty"`
+	Count             *int32                        `json:"count,omitempty" xml:"count,omitempty"`
+	Dimension         map[string]interface{}        `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	EventResource     *EventResourceForIncidentView `json:"eventResource,omitempty" xml:"eventResource,omitempty"`
+	GroupBy           map[string]interface{}        `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	IncidentEventUuid *string                       `json:"incidentEventUuid,omitempty" xml:"incidentEventUuid,omitempty"`
+	IncidentUuid      *string                       `json:"incidentUuid,omitempty" xml:"incidentUuid,omitempty"`
+	Labels            map[string]interface{}        `json:"labels,omitempty" xml:"labels,omitempty"`
+	LastTime          *int64                        `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
+	RecoverTime       *int64                        `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
+	SearchIndex       []*string                     `json:"searchIndex,omitempty" xml:"searchIndex,omitempty" type:"Repeated"`
+	Severity          *string                       `json:"severity,omitempty" xml:"severity,omitempty"`
+	SeverityCountMap  map[string]interface{}        `json:"severityCountMap,omitempty" xml:"severityCountMap,omitempty"`
+	State             *int32                        `json:"state,omitempty" xml:"state,omitempty"`
+	TextIndex         *string                       `json:"textIndex,omitempty" xml:"textIndex,omitempty"`
+	Time              *int64                        `json:"time,omitempty" xml:"time,omitempty"`
+	Title             *string                       `json:"title,omitempty" xml:"title,omitempty"`
+	UserId            *string                       `json:"userId,omitempty" xml:"userId,omitempty"`
+	Workspace         *string                       `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s IncidentEventForView) String() string {

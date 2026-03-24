@@ -14,7 +14,7 @@ type iUpdateAddonReleaseResponseBody interface {
 }
 
 type UpdateAddonReleaseResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

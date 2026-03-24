@@ -22,19 +22,28 @@ type iListDigitalEmployeesResponseBody interface {
 }
 
 type ListDigitalEmployeesResponseBody struct {
+	// List of digital employees.
 	DigitalEmployees []*ListDigitalEmployeesResponseBodyDigitalEmployees `json:"digitalEmployees,omitempty" xml:"digitalEmployees,omitempty" type:"Repeated"`
+	// Maximum number of results returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Token for the next page of results.
+	//
 	// example:
 	//
 	// xxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 56
@@ -108,39 +117,62 @@ func (s *ListDigitalEmployeesResponseBody) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployees struct {
+	// Creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-11-04T08:08:57Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Default rule.
+	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
+	// Description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Digital employee display name.
+	//
 	// example:
 	//
 	// test
-	DisplayName  *string                                                     `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	EmployeeType *string                                                     `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	Knowledges   *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Digital employee type.
+	//
+	// example:
+	//
+	// custom
+	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	// List of knowledge bases.
+	Knowledges *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	// Digital employee name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Resource group ID.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// Role ARN.
+	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Update time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -275,8 +307,10 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployees) Validate() error {
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges struct {
+	// Bailian knowledge base list.
 	Bailian []*ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	Sop     []map[string]interface{}                                             `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	// SOP knowledge base list.
+	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) String() string {
@@ -319,18 +353,26 @@ func (s *ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges) Validate() 
 }
 
 type ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian struct {
+	// Knowledge base attributes.
+	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// Bailian index ID.
+	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
+	// Region of the Bailian knowledge base.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Bailian workspace ID.
+	//
 	// example:
 	//
 	// llm-xxxx

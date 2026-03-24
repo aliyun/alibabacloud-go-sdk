@@ -14,6 +14,7 @@ type iAlertRuleAction interface {
 }
 
 type AlertRuleAction struct {
+	// 行动集成ID列表
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 }
 

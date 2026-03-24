@@ -16,12 +16,16 @@ type iUpsertUmodelCommonSchemaRefRequest interface {
 }
 
 type UpsertUmodelCommonSchemaRefRequest struct {
+	// The group of the common Umodel schema.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// card-service-daily01
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The version number.
+	//
 	// This parameter is required.
 	//
 	// example:

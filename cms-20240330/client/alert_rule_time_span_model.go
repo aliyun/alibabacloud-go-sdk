@@ -20,21 +20,21 @@ type iAlertRuleTimeSpan interface {
 }
 
 type AlertRuleTimeSpan struct {
-	// Day of the week.
+	// 每周的星期几
 	DayOfWeek []*int32 `json:"dayOfWeek,omitempty" xml:"dayOfWeek,omitempty" type:"Repeated"`
-	// End time, in HH:mm format.
+	// 结束时间，格式HH:mm
 	//
 	// example:
 	//
 	// 23:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Default time zone is Beijing Time: +0800.
+	// 默认北京时间： +0800
 	//
 	// example:
 	//
 	// +0800
 	GmtOffset *string `json:"gmtOffset,omitempty" xml:"gmtOffset,omitempty"`
-	// Start time, in HH:mm format.
+	// 开始时间，格式HH:mm
 	//
 	// example:
 	//

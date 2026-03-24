@@ -18,12 +18,16 @@ type iSearchMemoriesResponseBody interface {
 }
 
 type SearchMemoriesResponseBody struct {
+	// Relations
 	Relations []*SearchMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Return values
+	Results []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s SearchMemoriesResponseBody) String() string {
@@ -84,14 +88,20 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 }
 
 type SearchMemoriesResponseBodyRelations struct {
+	// Destination
+	//
 	// example:
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	// Relationship
+	//
 	// example:
 	//
 	// test
 	Relationship *string `json:"relationship,omitempty" xml:"relationship,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// todo_open_dingoj06pvqfeayy3lkr
@@ -138,50 +148,74 @@ func (s *SearchMemoriesResponseBodyRelations) Validate() error {
 }
 
 type SearchMemoriesResponseBodyResults struct {
+	// Actor ID
+	//
 	// example:
 	//
 	// test_session_001
 	ActorId *string `json:"actorId,omitempty" xml:"actorId,omitempty"`
+	// Application agent ID
+	//
 	// example:
 	//
 	// 972772996913709056
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1762773128968
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Memory hash value
+	//
 	// example:
 	//
 	// d791bf27236c5532056a13279baad3517042bb8d5b1bdb02e7871fa632debffe
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
+	// Memory ID
+	//
 	// example:
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Memory content
+	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// Metadata
+	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// Message sender role
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Run ID
+	//
 	// example:
 	//
 	// test_session_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// Similarity score
+	//
 	// example:
 	//
 	// 13.21
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// Last update time
+	//
 	// example:
 	//
 	// 1764902557784
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// test_session_001

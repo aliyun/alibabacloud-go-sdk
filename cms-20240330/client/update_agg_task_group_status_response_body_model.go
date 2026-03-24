@@ -24,37 +24,37 @@ type iUpdateAggTaskGroupStatusResponseBody interface {
 }
 
 type UpdateAggTaskGroupStatusResponseBody struct {
-	// Summary of the aggregation task group configuration.
+	// The summary of the aggregation task group configuration.
 	//
 	// example:
 	//
 	// a54136014dc386a92c83a6ef1e97ff22
 	AggTaskGroupConfigHash *string `json:"aggTaskGroupConfigHash,omitempty" xml:"aggTaskGroupConfigHash,omitempty"`
-	// Aggregation task group ID.
+	// The ID of the aggregation task group.
 	//
 	// example:
 	//
 	// aggTaskGroup-xxx
 	AggTaskGroupId *string `json:"aggTaskGroupId,omitempty" xml:"aggTaskGroupId,omitempty"`
-	// Aggregation task group name.
+	// The name of the aggregation task group.
 	//
 	// example:
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Source Prometheus instance ID of the aggregation task group.
+	// The ID of the source Prometheus instance for the aggregation task group.
 	//
 	// example:
 	//
 	// rw-xxx
 	SourcePrometheusId *string `json:"sourcePrometheusId,omitempty" xml:"sourcePrometheusId,omitempty"`
-	// The current status of the aggregated task group.
+	// The current status of the aggregation task group.
 	//
 	// example:
 	//

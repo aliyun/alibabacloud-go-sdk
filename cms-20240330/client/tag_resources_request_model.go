@@ -18,15 +18,22 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
+	// A list of resource IDs.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Tag          []*Tag  `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	// The tags.
+	//
+	// You can attach a maximum of 20 tags.
+	Tag []*Tag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {

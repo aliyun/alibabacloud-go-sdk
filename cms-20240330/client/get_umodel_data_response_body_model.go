@@ -24,25 +24,25 @@ type iGetUmodelDataResponseBody interface {
 }
 
 type GetUmodelDataResponseBody struct {
-	// Error information
+	// The error messages.
 	Errors []*GetUmodelDataResponseBodyErrors `json:"errors,omitempty" xml:"errors,omitempty" type:"Repeated"`
-	// List of node link relationships
+	// The list of links between nodes.
 	Links []interface{} `json:"links,omitempty" xml:"links,omitempty" type:"Repeated"`
-	// List of nodes
+	// The list of nodes.
 	Nodes []interface{} `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 123-123-234-345-123
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Total number of node links
+	// The total number of links between nodes.
 	//
 	// example:
 	//
 	// 0
 	TotalLinksCount *int32 `json:"totalLinksCount,omitempty" xml:"totalLinksCount,omitempty"`
-	// Total number of nodes
+	// The total number of nodes.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ func (s *GetUmodelDataResponseBody) Validate() error {
 }
 
 type GetUmodelDataResponseBodyErrors struct {
-	// Details.
+	// The detailed information.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Error type
+	// The type of the error.
 	//
 	// example:
 	//

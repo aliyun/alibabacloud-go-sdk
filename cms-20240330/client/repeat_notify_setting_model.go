@@ -16,14 +16,8 @@ type iRepeatNotifySetting interface {
 }
 
 type RepeatNotifySetting struct {
-	// example:
-	//
-	// "Resolved"
 	EndIncidentState *string `json:"endIncidentState,omitempty" xml:"endIncidentState,omitempty"`
-	// example:
-	//
-	// 5
-	RepeatInterval *string `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
+	RepeatInterval   *string `json:"repeatInterval,omitempty" xml:"repeatInterval,omitempty"`
 }
 
 func (s RepeatNotifySetting) String() string {

@@ -38,57 +38,20 @@ type iIncidentEscalationPolicyForView interface {
 }
 
 type IncidentEscalationPolicyForView struct {
-	// example:
-	//
-	// 2025-03-11T08:21:58Z
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// example:
-	//
-	// workspace api monitor update test
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// example:
-	//
-	// true
+	CreateTime          *string                           `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description         *string                           `json:"description,omitempty" xml:"description,omitempty"`
 	Enable              *bool                             `json:"enable,omitempty" xml:"enable,omitempty"`
 	EscalationStageList []*IncidentEscalationStageForView `json:"escalationStageList,omitempty" xml:"escalationStageList,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// "Critical-Alert-Escalation"
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// example:
-	//
-	// "USER"
-	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// example:
-	//
-	// "cn-hangzhou"
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// example:
-	//
-	// "MANUAL"
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// example:
-	//
-	// "ARMS"
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	OwnerType    *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
+	RegionId     *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Source       *string `json:"source,omitempty" xml:"source,omitempty"`
 	SyncFromType *string `json:"syncFromType,omitempty" xml:"syncFromType,omitempty"`
-	// example:
-	//
-	// 2025-04-15T02:02:50Z
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// example:
-	//
-	// "user-abc123"
-	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// example:
-	//
-	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
-	// example:
-	//
-	// "ws-xyz789"
-	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	UpdateTime   *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserId       *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	Uuid         *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	Workspace    *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s IncidentEscalationPolicyForView) String() string {

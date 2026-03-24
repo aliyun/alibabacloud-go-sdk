@@ -16,6 +16,8 @@ type iGetCmsServiceRequest interface {
 }
 
 type GetCmsServiceRequest struct {
+	// prometheus: Checks the activation status of the Prometheus service. The service is billed by reported data volume or written data volume.
+	//
 	// if can be null:
 	// true
 	//
@@ -23,6 +25,8 @@ type GetCmsServiceRequest struct {
 	//
 	// prometheus
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
+	// prometheus: Checks whether the Prometheus product that is billed by reported data volume is activated.prometheusgb: Checks whether the Prometheus product that is billed by written data volume is activated.
+	//
 	// if can be null:
 	// true
 	//

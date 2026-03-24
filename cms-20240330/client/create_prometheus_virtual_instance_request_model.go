@@ -14,7 +14,7 @@ type iCreatePrometheusVirtualInstanceRequest interface {
 }
 
 type CreatePrometheusVirtualInstanceRequest struct {
-	// Each cloud product can only create one virtual instance in each region.
+	// Each cloud product supports only one virtual instance per region.
 	//
 	// This parameter is required.
 	//

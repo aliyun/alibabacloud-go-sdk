@@ -32,45 +32,62 @@ type iGetDigitalEmployeeSkillResponseBody interface {
 }
 
 type GetDigitalEmployeeSkillResponseBody struct {
+	// Creation time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-02-06T14:09:11Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Skill description
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Skill display name
+	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// Whether the skill is enabled
+	//
 	// example:
 	//
 	// true
-	Enable *bool                                       `json:"enable,omitempty" xml:"enable,omitempty"`
-	Files  []*GetDigitalEmployeeSkillResponseBodyFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Skill file list
+	Files []*GetDigitalEmployeeSkillResponseBodyFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// Remarks
+	//
 	// example:
 	//
 	// remark
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Skill name
+	//
 	// example:
 	//
 	// test
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
+	// Update time
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-02-06T14:09:11Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Version number
+	//
 	// example:
 	//
 	// 1770386951147366810
@@ -189,6 +206,8 @@ func (s *GetDigitalEmployeeSkillResponseBody) Validate() error {
 }
 
 type GetDigitalEmployeeSkillResponseBodyFiles struct {
+	// File content
+	//
 	// example:
 	//
 	// ---
@@ -203,6 +222,8 @@ type GetDigitalEmployeeSkillResponseBodyFiles struct {
 	//
 	// skill test
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// File name
+	//
 	// example:
 	//
 	// SKILL.md

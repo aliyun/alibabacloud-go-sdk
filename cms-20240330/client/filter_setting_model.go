@@ -18,11 +18,16 @@ type iFilterSetting interface {
 }
 
 type FilterSetting struct {
+	// 订阅条件
 	Conditions []*FilterSettingConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	// 表达式
+	//
 	// example:
 	//
 	// 1 and 2 or 3
 	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// 条件间关系
+	//
 	// example:
 	//
 	// AND
@@ -78,14 +83,20 @@ func (s *FilterSetting) Validate() error {
 }
 
 type FilterSettingConditions struct {
+	// 字段
+	//
 	// example:
 	//
 	// severity
 	Field *string `json:"field,omitempty" xml:"field,omitempty"`
+	// 比较符
+	//
 	// example:
 	//
 	// EQ
 	Op *string `json:"op,omitempty" xml:"op,omitempty"`
+	// 值
+	//
 	// example:
 	//
 	// CRITICAL

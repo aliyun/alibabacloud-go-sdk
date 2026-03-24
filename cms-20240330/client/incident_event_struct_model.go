@@ -40,73 +40,73 @@ type iIncidentEventStruct interface {
 }
 
 type IncidentEventStruct struct {
-	// Automatic recovery time.
+	// 自动恢复时间。
 	//
 	// example:
 	//
 	// 1741234567890
 	AutoRecoverTime *int64 `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
-	// Content.
+	// 内容。
 	//
 	// example:
 	//
-	// Detected that the CPU usage of the user-service instance i-abc123 has reached 95%, triggering an alert.
+	// 检测到 user-service 实例 i-abc123 的 CPU 使用率达到 95%，已触发告警。
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Count.
+	// 统计数量。
 	//
 	// example:
 	//
 	// 6
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// Dimension.
+	// 维度。
 	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	// Used for grouping dimensions.
+	// 用于分组维度。
 	GroupBy map[string]*string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	// Incident Event Id.
+	// 事件事件ID。
 	//
 	// example:
 	//
 	// event-001
 	IncidentEventId *string `json:"incidentEventId,omitempty" xml:"incidentEventId,omitempty"`
-	// Incident Id.
+	// 事件ID。
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// Last time.
+	// 最后时间。
 	//
 	// example:
 	//
 	// 1741234567890
 	LastTime *int64 `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
-	// Manual recovery time.
+	// 手动恢复时间。
 	//
 	// example:
 	//
 	// 1741234567890
 	RecoverTime *int64 `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
-	// Describes the resource information associated with the event.
+	// 描述事件关联的资源信息。
 	Resource map[string]*string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// Status.
+	// 状态。
 	//
 	// example:
 	//
 	// Running
 	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
-	// Time.
+	// 时间。
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// Title.
+	// 标题。
 	//
 	// example:
 	//
-	// User service CPU usage is too high.
+	// 用户服务 CPU 使用率过高
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// User ID.
+	// 用户ID。
 	//
 	// example:
 	//

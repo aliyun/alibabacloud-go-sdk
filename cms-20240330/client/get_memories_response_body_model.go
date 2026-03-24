@@ -18,12 +18,16 @@ type iGetMemoriesResponseBody interface {
 }
 
 type GetMemoriesResponseBody struct {
+	// Relations
 	Relations []*GetMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*GetMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Return value
+	Results []*GetMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s GetMemoriesResponseBody) String() string {
@@ -84,14 +88,20 @@ func (s *GetMemoriesResponseBody) Validate() error {
 }
 
 type GetMemoriesResponseBodyRelations struct {
+	// Destination
+	//
 	// example:
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
+	// Relation
+	//
 	// example:
 	//
 	// test
 	Relationship *string `json:"relationship,omitempty" xml:"relationship,omitempty"`
+	// Source
+	//
 	// example:
 	//
 	// test_namespace/RegistryModule-test2153b9f3-0be6-455e-9efd-05fd31f62885/alicloud
@@ -138,10 +148,14 @@ func (s *GetMemoriesResponseBodyRelations) Validate() error {
 }
 
 type GetMemoriesResponseBodyResults struct {
+	// Actor ID
+	//
 	// example:
 	//
 	// test_session_001
 	ActorId *string `json:"actorId,omitempty" xml:"actorId,omitempty"`
+	// Agent ID of the application
+	//
 	// example:
 	//
 	// 980565235819266048
@@ -150,42 +164,62 @@ type GetMemoriesResponseBodyResults struct {
 	//
 	// test_user_001
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// Creation time
+	//
 	// example:
 	//
 	// 1747623093939
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// Memory hash value
+	//
 	// example:
 	//
 	// 73ad89f2d56c2f8615e5dd0cef7b4c41c074277c91fa0e31fc5b41802c0481f2
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
+	// Memory ID
+	//
 	// example:
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// Memory
+	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// Metadata
+	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// Message initiator role
+	//
 	// example:
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// Run ID
+	//
 	// example:
 	//
 	// jr-965a0b00cb42a43b
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// Similarity score
+	//
 	// example:
 	//
 	// 30.12
 	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 1752825865045
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// test_session_001

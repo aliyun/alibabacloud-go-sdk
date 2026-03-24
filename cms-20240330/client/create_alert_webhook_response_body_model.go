@@ -16,10 +16,14 @@ type iCreateAlertWebhookResponseBody interface {
 }
 
 type CreateAlertWebhookResponseBody struct {
+	// The unique ID of the webhook.
+	//
 	// example:
 	//
 	// test
 	AlertWebhookId *string `json:"alertWebhookId,omitempty" xml:"alertWebhookId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC

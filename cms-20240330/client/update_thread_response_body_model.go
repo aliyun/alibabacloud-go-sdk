@@ -24,13 +24,17 @@ type UpdateThreadResponseBody struct {
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
-	// thread_id01
+	// thread-12313
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
-	// 0.1.0
+	// 123123
 	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
 }
 

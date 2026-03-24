@@ -20,10 +20,7 @@ type iPushingSetting interface {
 type PushingSetting struct {
 	AlertActionIds   []*string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty" type:"Repeated"`
 	RestoreActionIds []*string `json:"restoreActionIds,omitempty" xml:"restoreActionIds,omitempty" type:"Repeated"`
-	// example:
-	//
-	// "template-abc123"
-	TemplateUuid *string `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
+	TemplateUuid     *string   `json:"templateUuid,omitempty" xml:"templateUuid,omitempty"`
 }
 
 func (s PushingSetting) String() string {

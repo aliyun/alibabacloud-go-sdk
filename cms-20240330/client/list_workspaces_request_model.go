@@ -22,27 +22,19 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// Page size
-	//
-	// Default value:
-	//
-	// 	50
-	//
-	// Maximum value:
-	//
-	// 	50
+	// The number of entries to return on each page. Default value: 50. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Pagination Token
+	// The token for the next page of results.
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Region
+	// The region.
 	//
 	// if can be null:
 	// true
@@ -51,13 +43,13 @@ type ListWorkspacesRequest struct {
 	//
 	// cn-heyuan
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Workspace name, fuzzy search
+	// The name of the workspace. This parameter supports fuzzy search.
 	//
 	// example:
 	//
 	// workspace-test-001
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// Workspace name, exact match
+	// The names of the workspaces. This parameter supports exact search.
 	//
 	// if can be null:
 	// true

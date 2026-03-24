@@ -40,69 +40,69 @@ type iIncidentPlanStruct interface {
 }
 
 type IncidentPlanStruct struct {
-	// Automatic recovery wait time.
+	// 自动恢复等待时间。
 	//
 	// example:
 	//
 	// 3600
 	AutoRecoverSeconds *int32 `json:"autoRecoverSeconds,omitempty" xml:"autoRecoverSeconds,omitempty"`
-	// Event closure timeout.
+	// 事件关闭超时时间。
 	//
 	// example:
 	//
 	// 86400000
 	CloseExpire *int64 `json:"closeExpire,omitempty" xml:"closeExpire,omitempty"`
-	// List of teams or roles involved in collaboration.
+	// 参与协作的团队或角色列表。
 	Corporation []*IncidentPlanCorporationStruct `json:"corporation,omitempty" xml:"corporation,omitempty" type:"Repeated"`
-	// Contingency plan description.
+	// 预案描述。
 	//
 	// example:
 	//
-	// Emergency response plan for excessively high database connection count.
+	// 针对数据库连接数过高的应急处理方案
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// List of escalation policy IDs.
+	// 升级策略 ID的列表。
 	EscalationId []*string `json:"escalationId,omitempty" xml:"escalationId,omitempty" type:"Repeated"`
-	// Creation time.
+	// 创建时间。
 	//
 	// example:
 	//
 	// 1741234567890
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// Last modification time.
+	// 最后修改时间
 	//
 	// example:
 	//
 	// 1741234567890
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Grouping field path.
+	// 分组字段路径
 	GroupBy []*IncidentPlanFieldPath `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
-	// Event contingency plan ID.
+	// 事件预案 ID。
 	//
 	// example:
 	//
 	// plan-001
 	IncidentPlanId *string `json:"incidentPlanId,omitempty" xml:"incidentPlanId,omitempty"`
-	// Contingency plan name.
+	// 预案名称。
 	//
 	// example:
 	//
-	// Database connection count alert contingency plan.
+	// 数据库连接数告警预案
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// List of resource field mapping paths.
+	// 资源字段映射路径的列表。
 	ResourceFiled []*IncidentPlanFieldPath `json:"resourceFiled,omitempty" xml:"resourceFiled,omitempty" type:"Repeated"`
-	// Status.
+	// 状态。
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// User ID.
+	// 用户 ID。
 	//
 	// example:
 	//
 	// uesr-12345
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// Workspace name.
+	// 工作空间名称
 	//
 	// example:
 	//

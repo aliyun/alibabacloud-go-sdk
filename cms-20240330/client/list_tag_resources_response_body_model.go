@@ -20,18 +20,25 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
+	// The maximum number of results to return. The maximum value is 200.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The token that is used to start the next query.
+	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-***
-	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// A list of tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
 }
 
@@ -93,18 +100,26 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// test
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// env
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// test

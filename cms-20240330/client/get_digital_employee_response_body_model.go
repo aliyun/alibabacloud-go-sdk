@@ -38,47 +38,74 @@ type iGetDigitalEmployeeResponseBody interface {
 }
 
 type GetDigitalEmployeeResponseBody struct {
+	// The time when the digital employee was created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The default rule.
+	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
+	// The description of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the digital employee.
+	//
 	// example:
 	//
 	// test
-	DisplayName  *string                                   `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	EmployeeType *string                                   `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	Knowledges   *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The type of the digital employee.
+	//
+	// example:
+	//
+	// custom
+	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
+	// A list of knowledge bases.
+	Knowledges *GetDigitalEmployeeResponseBodyKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	// The name of the digital employee.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role.
+	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The time when the digital employee was last updated.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
@@ -231,8 +258,10 @@ func (s *GetDigitalEmployeeResponseBody) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyKnowledges struct {
+	// A list of Bailian knowledge bases.
 	Bailian []*GetDigitalEmployeeResponseBodyKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	Sop     []map[string]interface{}                           `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	// A list of Standard Operating Procedure (SOP) knowledge bases.
+	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s GetDigitalEmployeeResponseBodyKnowledges) String() string {
@@ -275,18 +304,26 @@ func (s *GetDigitalEmployeeResponseBodyKnowledges) Validate() error {
 }
 
 type GetDigitalEmployeeResponseBodyKnowledgesBailian struct {
+	// The properties of the knowledge base.
+	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The ID of the Bailian index.
+	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
+	// The region of the Bailian knowledge base.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the Bailian workspace.
+	//
 	// example:
 	//
 	// llm-xxxxx

@@ -19,10 +19,13 @@ type iCreateThreadRequest interface {
 
 type CreateThreadRequest struct {
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The title of the session.
+	//
 	// example:
 	//
 	// test
-	Title     *string                       `json:"title,omitempty" xml:"title,omitempty"`
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The properties of the session.
 	Variables *CreateThreadRequestVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Struct"`
 }
 
@@ -71,13 +74,17 @@ func (s *CreateThreadRequest) Validate() error {
 }
 
 type CreateThreadRequestVariables struct {
+	// The name of the Simple Log Service project.
+	//
 	// example:
 	//
-	// az_alipay
+	// project
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
-	// rum-monitor-test-aysls-pub-cn-heyuan-monitor
+	// workspace
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

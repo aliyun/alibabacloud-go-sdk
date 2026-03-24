@@ -16,13 +16,13 @@ type iCreatePrometheusInstanceResponseBody interface {
 }
 
 type CreatePrometheusInstanceResponseBody struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rw-abc123
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// ID of the request.
+	// The ID of the request.
 	//
 	// example:
 	//

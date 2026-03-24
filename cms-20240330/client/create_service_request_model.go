@@ -30,35 +30,37 @@ type iCreateServiceRequest interface {
 }
 
 type CreateServiceRequest struct {
-	// Extended attributes.
+	// The extended properties.
 	//
 	// example:
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// Service description, only valid when `serviceType=RUM`.
+	// The service description. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// mag测试应用
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Display name, only valid when `serviceType=RUM`.
+	// The display name. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// mag测试应用
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Application ID, generally not required to be specified.
+	// The application ID. You do not typically need to specify this parameter.
 	//
 	// example:
 	//
 	// bx3udsi5ie@ed2ba6beebdb6de
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
-	// rg-xxekxxzuad5zzzz
+	// rg-xxxxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Service name
+	// The service name.
 	//
 	// This parameter is required.
 	//
@@ -66,21 +68,22 @@ type CreateServiceRequest struct {
 	//
 	// mag_test
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// Service status, not required for service creation.
+	// The service status. Do not specify this parameter when you create a service.
 	//
 	// example:
 	//
 	// Created
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	// Service type
+	// The service type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TRACE
-	ServiceType *string                     `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	Tags        []*CreateServiceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// An array of tags.
+	Tags []*CreateServiceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -186,10 +189,14 @@ func (s *CreateServiceRequest) Validate() error {
 }
 
 type CreateServiceRequestTags struct {
+	// The `key` of the tag.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The `value` of the tag.
+	//
 	// example:
 	//
 	// prod

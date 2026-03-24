@@ -18,11 +18,11 @@ type iTag interface {
 type Tag struct {
 	// example:
 	//
-	// env
+	// test-key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// example:
 	//
-	// test
+	// test-value
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

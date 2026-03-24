@@ -28,36 +28,50 @@ type iCreateDigitalEmployeeRequest interface {
 }
 
 type CreateDigitalEmployeeRequest struct {
+	// The default rule.
+	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
+	// The description of the digital employee.
+	//
 	// example:
 	//
 	// aaa
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name of the digital employee.
+	//
 	// example:
 	//
 	// digial-employee-test
-	DisplayName *string                                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Knowledges  *CreateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The list of knowledge bases.
+	Knowledges *CreateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
+	// The name of the digital employee.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Tags    []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The tags.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateDigitalEmployeeRequest) String() string {
@@ -159,8 +173,10 @@ func (s *CreateDigitalEmployeeRequest) Validate() error {
 }
 
 type CreateDigitalEmployeeRequestKnowledges struct {
+	// The list of Bailian knowledge bases.
 	Bailian []*CreateDigitalEmployeeRequestKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	Sop     []map[string]interface{}                         `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	// The list of Standard Operating Procedure (SOP) knowledge bases.
+	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s CreateDigitalEmployeeRequestKnowledges) String() string {
@@ -203,18 +219,26 @@ func (s *CreateDigitalEmployeeRequestKnowledges) Validate() error {
 }
 
 type CreateDigitalEmployeeRequestKnowledgesBailian struct {
+	// The properties of the knowledge base.
+	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// The ID of the Bailian index.
+	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
+	// The region of the Bailian knowledge base.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the Bailian workspace.
+	//
 	// example:
 	//
 	// llm-xxxxx

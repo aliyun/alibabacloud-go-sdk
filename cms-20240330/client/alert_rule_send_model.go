@@ -22,18 +22,11 @@ type iAlertRuleSend interface {
 }
 
 type AlertRuleSend struct {
-	// Alert Action Integration Configuration.
-	Action *AlertRuleAction `json:"action,omitempty" xml:"action,omitempty"`
-	// Alert Notification Configuration.
+	Action           *AlertRuleAction       `json:"action,omitempty" xml:"action,omitempty"`
 	Notification     *AlertRuleNotification `json:"notification,omitempty" xml:"notification,omitempty"`
 	NotifyStrategies []*string              `json:"notifyStrategies,omitempty" xml:"notifyStrategies,omitempty" type:"Repeated"`
 	RcaConfig        *AlertRuleRcaConfig    `json:"rcaConfig,omitempty" xml:"rcaConfig,omitempty"`
-	// Whether to deliver alert events to ARMS Alert Management.
-	//
-	// example:
-	//
-	// true
-	SendToArms *bool `json:"sendToArms,omitempty" xml:"sendToArms,omitempty"`
+	SendToArms       *bool                  `json:"sendToArms,omitempty" xml:"sendToArms,omitempty"`
 }
 
 func (s AlertRuleSend) String() string {

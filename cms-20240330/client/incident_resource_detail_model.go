@@ -18,19 +18,19 @@ type iIncidentResourceDetail interface {
 }
 
 type IncidentResourceDetail struct {
-	// Additional resource identifier.
+	// 额外的资源标识符
 	//
 	// example:
 	//
 	// app-prod-web-01
 	ExtraId *string `json:"extraId,omitempty" xml:"extraId,omitempty"`
-	// Resource ID object.
+	// 资源 ID 对象。
 	//
 	// example:
 	//
 	// { "type": "ecs", "id": "i-bp1234567890abcdef" }
 	ResourceId map[string]interface{} `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// Resource type, indicating which cloud product the resource belongs to.
+	// 资源类型，表示该资源属于哪种云产品。
 	//
 	// example:
 	//

@@ -36,44 +36,74 @@ type iMergeContact interface {
 }
 
 type MergeContact struct {
+	// 邮箱地址。
+	//
 	// example:
 	//
 	// zhangsan@company.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// 邮箱是否已验证。
+	//
 	// example:
 	//
 	// true
-	EmailVerify *bool                  `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	Extend      map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
+	// 扩展字段，用于存储额外信息。
+	//
+	// example:
+	//
+	// { "department": "运维部", "role": "工程师" }
+	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	// 创建时间。
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 最后修改时间。
+	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 联系人唯一标识符。
+	//
 	// example:
 	//
 	// user-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 语言偏好。
+	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// 联系人姓名。
+	//
+	// example:
+	//
+	// 张三
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 手机号码。
+	//
 	// example:
 	//
 	// 13800138000
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// 手机号码国家区号。
+	//
 	// example:
 	//
 	// 86
 	PhoneCode *string `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
+	// 手机号码是否已验证。
+	//
 	// example:
 	//
 	// true
 	PhoneVerify *bool `json:"phoneVerify,omitempty" xml:"phoneVerify,omitempty"`
+	// 联系人来源系统。
+	//
 	// example:
 	//
 	// dingtalk
