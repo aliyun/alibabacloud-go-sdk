@@ -2395,7 +2395,7 @@ func (client *Client) Mobile3MetaVerifyIntlWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改人脸库
+// # Modify Face Group
 //
 // @param request - ModifyFaceGroupRequest
 //
@@ -2447,7 +2447,7 @@ func (client *Client) ModifyFaceGroupWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// 新增人脸
+// # Add New Face
 //
 // @param request - ModifyFaceRecordRequest
 //
@@ -2495,7 +2495,7 @@ func (client *Client) ModifyFaceRecordWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询人脸库
+// # Query Face Group
 //
 // @param request - QueryFaceGroupRequest
 //

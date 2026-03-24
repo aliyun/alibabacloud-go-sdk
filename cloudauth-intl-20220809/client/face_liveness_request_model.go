@@ -37,7 +37,12 @@ type FaceLivenessRequest struct {
 	// example:
 	//
 	// T
-	Crop              *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	// The Base64-encoded image. If you use this parameter to pass the facial image, check the image size. Do not pass an oversized image.
+	//
+	// example:
+	//
+	// dsjisaj***oekwodsm
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
 	//

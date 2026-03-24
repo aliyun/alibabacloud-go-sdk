@@ -3512,7 +3512,7 @@ func (client *Client) Mobile3MetaVerifyIntl(request *Mobile3MetaVerifyIntlReques
 
 // Summary:
 //
-// 修改人脸库
+// # Modify Face Group
 //
 // @param request - ModifyFaceGroupRequest
 //
@@ -3564,7 +3564,7 @@ func (client *Client) ModifyFaceGroupWithOptions(request *ModifyFaceGroupRequest
 
 // Summary:
 //
-// 修改人脸库
+// # Modify Face Group
 //
 // @param request - ModifyFaceGroupRequest
 //
@@ -3582,7 +3582,7 @@ func (client *Client) ModifyFaceGroup(request *ModifyFaceGroupRequest) (_result 
 
 // Summary:
 //
-// 新增人脸
+// # Add New Face
 //
 // @param request - ModifyFaceRecordRequest
 //
@@ -3630,7 +3630,7 @@ func (client *Client) ModifyFaceRecordWithOptions(request *ModifyFaceRecordReque
 
 // Summary:
 //
-// 新增人脸
+// # Add New Face
 //
 // @param request - ModifyFaceRecordRequest
 //
@@ -3648,7 +3648,7 @@ func (client *Client) ModifyFaceRecord(request *ModifyFaceRecordRequest) (_resul
 
 // Summary:
 //
-// 查询人脸库
+// # Query Face Group
 //
 // @param request - QueryFaceGroupRequest
 //
@@ -3712,7 +3712,7 @@ func (client *Client) QueryFaceGroupWithOptions(request *QueryFaceGroupRequest, 
 
 // Summary:
 //
-// 查询人脸库
+// # Query Face Group
 //
 // @param request - QueryFaceGroupRequest
 //

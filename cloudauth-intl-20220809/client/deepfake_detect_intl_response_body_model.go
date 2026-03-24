@@ -127,7 +127,8 @@ type DeepfakeDetectIntlResponseBodyResultObject struct {
 	// example:
 	//
 	// SuspectDeepForgery,SuspectWarterMark
-	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	RiskTag       *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
 }
 
 func (s DeepfakeDetectIntlResponseBodyResultObject) String() string {
@@ -150,6 +151,10 @@ func (s *DeepfakeDetectIntlResponseBodyResultObject) GetRiskTag() *string {
 	return s.RiskTag
 }
 
+func (s *DeepfakeDetectIntlResponseBodyResultObject) GetTransactionId() *string {
+	return s.TransactionId
+}
+
 func (s *DeepfakeDetectIntlResponseBodyResultObject) SetResult(v string) *DeepfakeDetectIntlResponseBodyResultObject {
 	s.Result = &v
 	return s
@@ -162,6 +167,11 @@ func (s *DeepfakeDetectIntlResponseBodyResultObject) SetRiskScore(v map[string]*
 
 func (s *DeepfakeDetectIntlResponseBodyResultObject) SetRiskTag(v string) *DeepfakeDetectIntlResponseBodyResultObject {
 	s.RiskTag = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponseBodyResultObject) SetTransactionId(v string) *DeepfakeDetectIntlResponseBodyResultObject {
+	s.TransactionId = &v
 	return s
 }
 

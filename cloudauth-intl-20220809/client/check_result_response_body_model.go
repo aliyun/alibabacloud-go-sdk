@@ -120,7 +120,7 @@ type CheckResultResponseBodyResult struct {
 	//
 	// **
 	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-	// Extended information
+	// Extended information, in JSON string format.
 	//
 	// example:
 	//
@@ -131,7 +131,34 @@ type CheckResultResponseBodyResult struct {
 	// example:
 	//
 	// **
-	ExtRiskInfo   *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+	ExtRiskInfo *string `json:"ExtRiskInfo,omitempty" xml:"ExtRiskInfo,omitempty"`
+	// Detailed verification results from the data source (example using Indonesian data sources):
+	//
+	// - **govId, fullName, dob**: A comparison score of 1.0 indicates complete consistency with the official data source; less than 1.0 indicates inconsistency.
+	//
+	// - **selfiePhoto**: A comparison score greater than 0.8 indicates consistency with the official data source; less than or equal to 0.8 indicates inconsistency.
+	//
+	// - **liveness**: A score higher than 0.95 indicates a risk of liveness detection.
+	//
+	// - **imgManipulationScore**: A score higher than 0.95 indicates a risk of image manipulation.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "govId": 1.0,
+	//
+	//   "fullName": 1.0,
+	//
+	//   "dob": 0.9,
+	//
+	//   "selfiePhoto": 0.8777,
+	//
+	//   "liveness": 0.1152,
+	//
+	//   "imgManipulationScore": 0.2253
+	//
+	// }
 	ExtSourceInfo *string `json:"ExtSourceInfo,omitempty" xml:"ExtSourceInfo,omitempty"`
 	// Whether the authentication is passed.
 	//

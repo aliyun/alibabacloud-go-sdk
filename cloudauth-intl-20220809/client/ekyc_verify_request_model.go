@@ -91,6 +91,13 @@ type EkycVerifyRequest struct {
   // 
   // 00000001
   DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+  // The Base64 encoding of the portrait image.
+  // 
+  // > If you use this method to pass the certificate image, check the image size. Do not pass an oversized image.
+  // 
+  // example:
+  // 
+  // dsjisaj***oekwodsm
   FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
   // The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
   // 
@@ -98,6 +105,13 @@ type EkycVerifyRequest struct {
   // 
   // https://digital-face-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
   FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+  // The Base64 encoding of the certificate image.
+  // 
+  // > If you use this method to pass the certificate image, check the image size. Do not pass an oversized image.
+  // 
+  // example:
+  // 
+  // dsjisaj***oekwodsm
   IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
   // The URL of the certificate image. The URL must be an HTTP or HTTPS link accessible over the Internet.
   // 

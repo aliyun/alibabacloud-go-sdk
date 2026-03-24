@@ -35,7 +35,14 @@ type FaceCompareRequest struct {
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
-	MerchantBizId     *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// The Base64 encoding of the portrait photo.
+	//
+	// > If you use this method to pass the image, check the image size. Do not pass an oversized image.
+	//
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	SourceFacePicture *string `json:"SourceFacePicture,omitempty" xml:"SourceFacePicture,omitempty"`
 	// The URL of the portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
 	//
@@ -45,7 +52,14 @@ type FaceCompareRequest struct {
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	TargetFacePicture    *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
+	// The Base64 encoding of the base photo.
+	//
+	// > If you use this method to pass the image, check the image size. Do not pass an oversized image.
+	//
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
 	// The URL of the base portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
 	//
 	//
