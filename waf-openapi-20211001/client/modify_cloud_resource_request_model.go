@@ -24,10 +24,17 @@ type iModifyCloudResourceRequest interface {
 }
 
 type ModifyCloudResourceRequest struct {
+	// The ID of the cloud resource that is added to WAF.
+	//
+	// > Call [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) to add a cloud resource. The resource ID is included in the response.
+	//
+	// example:
+	//
+	// lb-***-80-clb7
 	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -35,17 +42,17 @@ type ModifyCloudResourceRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listener configurations.
+	// The listener configuration.
 	//
 	// This parameter is required.
 	Listen *ModifyCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	// The forwarding configurations.
+	// The forwarding configuration.
 	Redirect *ModifyCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +60,7 @@ type ModifyCloudResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -138,27 +145,27 @@ func (s *ModifyCloudResourceRequest) Validate() error {
 }
 
 type ModifyCloudResourceRequestListen struct {
-	// The certificates.
+	// The certificate information.
 	Certificates []*ModifyCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The type of the cipher suites that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	// The type of the cipher suite to add. This parameter applies only when you use the HTTPS protocol. Valid values:
 	//
-	// 	- **1**: all cipher suites.
+	// - **1**: adds all cipher suites.
 	//
-	// 	- **2**: strong cipher suites. This value is available only if you set **TLSVersion*	- to **tlsv1.2**.
+	// - **2**: adds strong cipher suites. This value is available only when **TLSVersion*	- is set to **tlsv1.2**.
 	//
-	// 	- **99**: custom cipher suites.
+	// - **99**: adds custom cipher suites.
 	//
 	// example:
 	//
 	// 1
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites that you want to add.
+	// The custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	// Indicates whether TLS 1.3 is supported. This parameter applies only when you use the HTTPS protocol. Valid values:
 	//
-	// 	- **true**
+	// - **true**: TLS 1.3 is supported.
 	//
-	// 	- **false**
+	// - **false**: TLS 1.3 is not supported.
 	//
 	// if can be null:
 	// true
@@ -167,11 +174,11 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	// Indicates whether HTTP/2 is enabled. This parameter applies only when you use the HTTPS protocol. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables HTTP/2.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): disables HTTP/2.
 	//
 	// example:
 	//
@@ -179,7 +186,7 @@ type ModifyCloudResourceRequestListen struct {
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// Deprecated
 	//
-	// The port of the cloud service instance that is added to WAF.
+	// The listening port of the cloud service instance that is added to WAF.
 	//
 	// example:
 	//
@@ -187,9 +194,9 @@ type ModifyCloudResourceRequestListen struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// 	- **http**
+	// - **http**: HTTP.
 	//
-	// 	- **https**
+	// - **https**: HTTPS.
 	//
 	// This parameter is required.
 	//
@@ -199,7 +206,7 @@ type ModifyCloudResourceRequestListen struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// Deprecated
 	//
-	// The ID of the cloud service instance that is added to WAF.
+	// The ID of the cloud service instance.
 	//
 	// example:
 	//
@@ -209,25 +216,25 @@ type ModifyCloudResourceRequestListen struct {
 	//
 	// The type of the cloud service. Valid values:
 	//
-	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
+	// - **clb4**: Layer 4 Classic Load Balancer (CLB).
 	//
-	// 	- **clb7**: Layer 7 CLB.
+	// - **clb7**: Layer 7 CLB.
 	//
-	// 	- **ecs**: Elastic Compute Service (ECS).
+	// - **ecs**: Elastic Compute Service (ECS).
 	//
-	// 	- **nlb**: Network Load Balancer (NLB).
+	// - **nlb**: Network Load Balancer (NLB).
 	//
 	// example:
 	//
 	// clb7
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
-	// The Transport Layer Security (TLS) version that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	// The Transport Layer Security (TLS) version. This parameter applies only when you use the HTTPS protocol. Valid values:
 	//
-	// 	- **tlsv1**
+	// - **tlsv1**
 	//
-	// 	- **tlsv1.1**
+	// - **tlsv1.1**
 	//
-	// 	- **tlsv1.2**
+	// - **tlsv1.2**
 	//
 	// example:
 	//
@@ -347,11 +354,11 @@ func (s *ModifyCloudResourceRequestListen) Validate() error {
 }
 
 type ModifyCloudResourceRequestListenCertificates struct {
-	// The type of the certificate. Valid values:
+	// The type of the certificate for the HTTPS protocol. Valid values:
 	//
-	// 	- **default**: default certificate.
+	// - **default**: a default certificate.
 	//
-	// 	- **extension**: additional certificate.
+	// - **extension**: an extension certificate.
 	//
 	// example:
 	//
@@ -396,71 +403,69 @@ func (s *ModifyCloudResourceRequestListenCertificates) Validate() error {
 }
 
 type ModifyCloudResourceRequestRedirect struct {
-	// Specifies whether to enable the persistent connection feature. Valid values:
+	// Indicates whether persistent connections are enabled. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true*	- (default): enables persistent connections.
 	//
-	// 	- **false**
+	// - **false**: disables persistent connections.
 	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The number of reused persistent connections. Valid values: 60 to 1000.
-	//
-	// >  This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
+	// The maximum number of requests that can be served through one persistent connection. Valid values: 60 to 1000.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period of idle persistent connections. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
-	//
-	// >  This parameter specifies the period of time after which an idle persistent connection is closed.
+	// The timeout period for an idle persistent connection. Valid values: 10 to 3600. Default value: 3600. Unit: seconds.
 	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// The maximum size of a request body. Valid values: 2 to 10. Default value: 2. Unit: GB.
+	//
 	// example:
 	//
-	// 5
+	// 2
 	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
-	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
+	// The read timeout period. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 1
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The custom header fields, which are key-value pairs. The fields are used to mark requests that pass through WAF.
+	// The custom header fields used to mark traffic that is processed by WAF.
 	RequestHeaders []*ModifyCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
+	// The write timeout period. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 1
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// The method that is used to obtain the originating IP address of a client. Valid values:
+	// The method that WAF uses to obtain the real IP address of a client. Valid values:
 	//
-	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
+	// - **0**: WAF obtains the real IP address of the client from the request. Use this value when no Layer 7 proxy resides before WAF.
 	//
-	// 	- **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the originating IP address of the client.
+	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header as the client IP address.
 	//
-	// 	- **2**: WAF reads the value of a custom header field as the originating IP address of the client.
+	// - **2**: WAF reads the value of a custom header field as the client IP address.
 	//
 	// example:
 	//
 	// 0
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the ["header1","header2",...] format.
+	// The custom header fields that are used to obtain the client IP address.
 	//
-	// >  This parameter is required only if you set **XffHeaderMode*	- to 2.
+	// > This parameter is required only when **XffHeaderMode*	- is set to **2**.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
-	// Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
+	// Indicates whether the X-Forwarded-Proto header is used to pass the protocol used by WAF. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true*	- (default): passes the protocol.
 	//
-	// 	- **false**
+	// - **false**: does not pass the protocol.
 	//
 	// example:
 	//
@@ -580,13 +585,13 @@ func (s *ModifyCloudResourceRequestRedirect) Validate() error {
 }
 
 type ModifyCloudResourceRequestRedirectRequestHeaders struct {
-	// The key of the custom header field.
+	// The custom request header field.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the custom header field.
+	// The value of the custom request header field.
 	//
 	// example:
 	//

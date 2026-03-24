@@ -14,11 +14,11 @@ type iModifyDefenseRuleCacheResponseBody interface {
 }
 
 type ModifyDefenseRuleCacheResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// A0F2B994-8645-5270-A05D-9DAD8C****B6
+	// A0F2B994-8645-5270-A05D-9DAD8C35****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

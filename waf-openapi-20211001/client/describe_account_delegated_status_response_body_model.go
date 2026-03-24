@@ -26,27 +26,27 @@ type DescribeAccountDelegatedStatusResponseBody struct {
 	//
 	// 10***********34
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the Alibaba Cloud account. This parameter is returned only if the account is the delegated administrator account.
+	// The name of the Alibaba Cloud account. This parameter is returned only if the account is a delegated administrator.
 	//
 	// example:
 	//
 	// account_test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the Alibaba Cloud account is the delegated administrator account of the WAF instance.
+	// Indicates whether the account is a delegated administrator for WAF.
 	//
-	// 	- **true**
+	// - **true**: The account is a delegated administrator.
 	//
-	// 	- **false**
+	// - **false**: The account is not a delegated administrator.
 	//
 	// example:
 	//
 	// true
 	DelegatedStatus *bool `json:"DelegatedStatus,omitempty" xml:"DelegatedStatus,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 8161375D-5958-5627-BFDE-DF14****3E87
+	// 8161375D-5958-5627-BFDE-DF1458A73E87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

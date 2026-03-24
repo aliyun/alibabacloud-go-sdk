@@ -16,10 +16,18 @@ type iDescribeRoleAuthStatusResponseBody interface {
 }
 
 type DescribeRoleAuthStatusResponseBody struct {
+	// Indicates whether the service-linked role for WAF is authorized.
+	//
+	// - **true**: The service-linked role is authorized.
+	//
+	// - **false**: The service-linked role is not authorized.
+	//
 	// example:
 	//
 	// true
 	AuthStatus *bool `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 79ECBB08-079C-57C5-A676-***

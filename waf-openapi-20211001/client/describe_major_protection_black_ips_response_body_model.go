@@ -18,7 +18,7 @@ type iDescribeMajorProtectionBlackIpsResponseBody interface {
 }
 
 type DescribeMajorProtectionBlackIpsResponseBody struct {
-	// An array of IP addresses in the IP address blacklist.
+	// The list of IP addresses in the blacklist.
 	IpList []*DescribeMajorProtectionBlackIpsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -83,39 +83,39 @@ func (s *DescribeMajorProtectionBlackIpsResponseBody) Validate() error {
 }
 
 type DescribeMajorProtectionBlackIpsResponseBodyIpList struct {
-	// The description of the IP address in the blacklist.
+	// The description of the template.
 	//
 	// example:
 	//
 	// test0003asdffas
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
+	// The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
-	// >  If the value of this parameter is **0**, the blacklist is permanently valid.
+	// > If the value is **0**, the IP address blacklist is permanently valid.
 	//
 	// example:
 	//
 	// 1662603328
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The most recent time when the IP address blacklist was modified.
+	// The time when the IP address in the blacklist was modified.
 	//
 	// example:
 	//
 	// 1665456202000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The IP address in the IP address blacklist.
+	// The IP address.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the IP address blacklist rule for major event protection.
+	// The ID of the IP address blacklist rule for critical event protection.
 	//
 	// example:
 	//
 	// 8508970
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the rule template for major event protection.
+	// The ID of the critical event protection template.
 	//
 	// example:
 	//

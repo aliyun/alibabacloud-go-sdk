@@ -16,11 +16,11 @@ type iDescribePauseProtectionStatusResponseBody interface {
 }
 
 type DescribePauseProtectionStatusResponseBody struct {
-	// Indicates whether WAF protection is paused.
+	// Indicates whether WAF protection is paused for the instance. Valid values:
 	//
-	// 	- **0**: indicates that WAF protection is not paused. This is the default value.
+	// - **0*	- (default): Protection is not paused.
 	//
-	// 	- **1**: indicates that WAF protection is paused.
+	// - **1**: Protection is paused.
 	//
 	// example:
 	//

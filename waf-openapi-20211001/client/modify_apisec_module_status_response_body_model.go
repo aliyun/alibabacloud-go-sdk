@@ -14,7 +14,7 @@ type iModifyApisecModuleStatusResponseBody interface {
 }
 
 type ModifyApisecModuleStatusResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

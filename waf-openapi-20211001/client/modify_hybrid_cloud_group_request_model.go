@@ -34,7 +34,7 @@ type ModifyHybridCloudGroupRequest struct {
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the node group.
+	// The ID of the hybrid cloud group.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type ModifyHybridCloudGroupRequest struct {
 	//
 	// 1
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the node group.
+	// The name of the hybrid cloud group.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// demo
+	// test-group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -60,11 +60,11 @@ type ModifyHybridCloudGroupRequest struct {
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid value:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ModifyHybridCloudGroupRequest struct {
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//

@@ -22,19 +22,30 @@ type iDescribeRelatedDefenseRulesResponseBody interface {
 }
 
 type DescribeRelatedDefenseRulesResponseBody struct {
+	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to query the next page of results. If more results are available, this parameter is returned.
+	//
+	// > If this parameter is returned, more results are available. Use the returned NextToken value as a request parameter to retrieve the next page of data. Repeat this process until the **NextToken*	- parameter is not returned. This indicates that all data has been retrieved.
+	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F35F45B0-5D6B-4238-BE02-A62D****E840
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeRelatedDefenseRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of associated rules.
+	Rules []*DescribeRelatedDefenseRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -108,22 +119,38 @@ func (s *DescribeRelatedDefenseRulesResponseBody) Validate() error {
 }
 
 type DescribeRelatedDefenseRulesResponseBodyRules struct {
+	// The protection scenario of the rule. For more information, see the description of the **DefenseScene*	- parameter in [DescribeDefenseRules](https://help.aliyun.com/document_detail/461426.html).
+	//
 	// example:
 	//
 	// custom_acl
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	// The type of the protection rule. Valid values:
+	//
+	// - **template*	- (default): a template rule.
+	//
+	// - **resource**: a rule for a protected object.
+	//
+	// - **global**: a global rule.
+	//
 	// example:
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// The ID of the protection rule.
+	//
 	// example:
 	//
 	// 2456789
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the protection rule.
+	//
 	// example:
 	//
 	// ruleTest
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The ID of the protection template.
+	//
 	// example:
 	//
 	// 81501

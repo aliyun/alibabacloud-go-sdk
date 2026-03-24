@@ -24,25 +24,50 @@ type iDescribeCommonLogFieldsShrinkRequest interface {
 }
 
 type DescribeCommonLogFieldsShrinkRequest struct {
+	// The ID of the WAF instance.
+	//
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-l*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to query for default log fields.
+	//
+	// - **true**: Queries for default log fields.
+	//
+	// - **false**: Queries for non-default log fields.
+	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Specifies whether to query for required log fields.
+	//
+	// - **true**: Queries for required log fields.
+	//
+	// - **false**: Queries for non-required log fields.
+	//
 	// example:
 	//
 	// false
-	IsRequired       *bool   `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
+	IsRequired *bool `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
+	// The list of log fields to query.
 	LogKeyListShrink *string `json:"LogKeyList,omitempty" xml:"LogKeyList,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-aek2sxgs*****

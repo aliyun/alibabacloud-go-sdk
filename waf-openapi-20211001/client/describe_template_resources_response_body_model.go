@@ -24,18 +24,40 @@ type iDescribeTemplateResourcesResponseBody interface {
 }
 
 type DescribeTemplateResourcesResponseBody struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The number of entries returned on each page. Valid values: 1 to 500. Default value: 500.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results. This parameter is returned if a next page exists.
+	//
+	// > If a value is returned for this parameter, a next page exists. You can use the returned **NextToken*	- value as a request parameter to retrieve the data on the next page. When no value is returned, all data has been retrieved.
+	//
+	// example:
+	//
+	// AAAAABLQv******37sHZaHk4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// C7BC9373-3960-53B0-8968-2B13454AE18F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of protected objects or protected object groups that are associated to the protection rule template.
-	Resources  []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	TemplateId *int64    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A list of the names of the attached protected objects or protected object groups, or the IDs of the protected assets.
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The ID of the protection template.
+	//
+	// example:
+	//
+	// 168465
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 25
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTemplateResourcesResponseBody) String() string {

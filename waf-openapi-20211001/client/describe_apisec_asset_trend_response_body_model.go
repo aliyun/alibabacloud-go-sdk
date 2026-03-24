@@ -16,9 +16,9 @@ type iDescribeApisecAssetTrendResponseBody interface {
 }
 
 type DescribeApisecAssetTrendResponseBody struct {
-	// The data returned.
+	// The API asset trend data.
 	Data []*DescribeApisecAssetTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ func (s *DescribeApisecAssetTrendResponseBody) Validate() error {
 }
 
 type DescribeApisecAssetTrendResponseBodyData struct {
-	// The number of active assets.
+	// The number of active APIs.
 	//
 	// example:
 	//
 	// 60
 	AssetActive *int64 `json:"AssetActive,omitempty" xml:"AssetActive,omitempty"`
-	// The total number of assets.
+	// The total number of API assets.
 	//
 	// example:
 	//
 	// 80
 	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
-	// The number of deactivated assets.
+	// The number of inactive APIs.
 	//
 	// example:
 	//
 	// 20
 	AssetOffline *int64 `json:"AssetOffline,omitempty" xml:"AssetOffline,omitempty"`
-	// The time for statistics. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The timestamp of the data point. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

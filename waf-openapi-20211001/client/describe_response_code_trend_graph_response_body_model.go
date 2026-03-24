@@ -16,13 +16,13 @@ type iDescribeResponseCodeTrendGraphResponseBody interface {
 }
 
 type DescribeResponseCodeTrendGraphResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 7D46493E-84DD-58CE-80A7-8643****9ECC
+	// 7D46493E-84DD-58CE-80A7-8643F2B09ECC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the statistics of the error codes.
+	// The statistics of response codes.
 	ResponseCodes []*DescribeResponseCodeTrendGraphResponseBodyResponseCodes `json:"ResponseCodes,omitempty" xml:"ResponseCodes,omitempty" type:"Repeated"`
 }
 
@@ -66,37 +66,37 @@ func (s *DescribeResponseCodeTrendGraphResponseBody) Validate() error {
 }
 
 type DescribeResponseCodeTrendGraphResponseBodyResponseCodes struct {
-	// The number of 302 error codes that are returned.
+	// The number of 302 response codes.
 	//
 	// example:
 	//
 	// 0
 	Code302Pv *int64 `json:"302Pv,omitempty" xml:"302Pv,omitempty"`
-	// The number of 405 error codes that are returned.
+	// The number of 405 response codes.
 	//
 	// example:
 	//
 	// 121645464
 	Code405Pv *int64 `json:"405Pv,omitempty" xml:"405Pv,omitempty"`
-	// The number of 444 error codes that are returned.
+	// The number of 444 response codes.
 	//
 	// example:
 	//
 	// 0
 	Code444Pv *int64 `json:"444Pv,omitempty" xml:"444Pv,omitempty"`
-	// The number of 499 error codes that are returned.
+	// The number of 499 response codes.
 	//
 	// example:
 	//
 	// 0
 	Code499Pv *int64 `json:"499Pv,omitempty" xml:"499Pv,omitempty"`
-	// The number of 5xx error codes that are returned.
+	// The number of 5xx response codes.
 	//
 	// example:
 	//
 	// 2932
 	Code5xxPv *int64 `json:"5xxPv,omitempty" xml:"5xxPv,omitempty"`
-	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	// The serial number of the time interval, sorted in chronological order.
 	//
 	// example:
 	//

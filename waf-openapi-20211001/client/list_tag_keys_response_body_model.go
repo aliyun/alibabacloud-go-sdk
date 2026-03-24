@@ -20,13 +20,13 @@ type iListTagKeysResponseBody interface {
 type ListTagKeysResponseBody struct {
 	// The keys and types of the tags.
 	Keys []*ListTagKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token. If NextToken is empty, there are no more results to return.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -85,15 +85,15 @@ func (s *ListTagKeysResponseBody) Validate() error {
 type ListTagKeysResponseBodyKeys struct {
 	// The type of the tag. Valid values:
 	//
-	// 	- custom
+	// - custom: The custom tag.
 	//
-	// 	- system
+	// - system: The system tag.
 	//
 	// example:
 	//
 	// custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//

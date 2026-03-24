@@ -24,21 +24,23 @@ type iDescribeApisecAssetTrendRequest interface {
 }
 
 type DescribeApisecAssetTrendRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The ID of the hybrid cloud WAF cluster.
+	//
+	// > This parameter is applicable only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the ID of the hybrid cloud WAF cluster.
 	//
 	// example:
 	//
 	// 590
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1683183599
+	// 1668496310000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,27 +48,27 @@ type DescribeApisecAssetTrendRequest struct {
 	//
 	// waf_v2_public_cn-ww**b06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aek**7uq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 1668496310
+	// 1668496310000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

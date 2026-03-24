@@ -24,9 +24,9 @@ type ModifyResourceLogStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The feature is enabled.
 	//
-	// 	- **false**
+	// - **false**: The feature is disabled.
 	//
 	// example:
 	//

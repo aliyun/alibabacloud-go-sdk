@@ -16,9 +16,9 @@ type iDescribeUserAbnormalTypeResponseBody interface {
 }
 
 type DescribeUserAbnormalTypeResponseBody struct {
-	// The types and statistics of risks.
+	// The risk types detected by API security and the number of risks for each type.
 	Abnormal []*DescribeUserAbnormalTypeResponseBodyAbnormal `json:"Abnormal,omitempty" xml:"Abnormal,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,31 +66,31 @@ func (s *DescribeUserAbnormalTypeResponseBody) Validate() error {
 }
 
 type DescribeUserAbnormalTypeResponseBodyAbnormal struct {
-	// The code of the risk.
+	// The code that identifies the specific risk, such as `Risk_InternalWeakPasswd`.
 	//
 	// example:
 	//
 	// Risk_InternalWeakPasswd
 	AbnormalCode *string `json:"AbnormalCode,omitempty" xml:"AbnormalCode,omitempty"`
-	// The number of risks.
+	// The total number of risks detected for this risk type.
 	//
 	// example:
 	//
 	// 10
 	AbnormalCount *int64 `json:"AbnormalCount,omitempty" xml:"AbnormalCount,omitempty"`
-	// The parent type of the risk.
+	// The parent category of the risk, such as `RiskType_Account`.
 	//
 	// example:
 	//
 	// RiskType_Account
 	AbnormalParentType *string `json:"AbnormalParentType,omitempty" xml:"AbnormalParentType,omitempty"`
-	// The type of the risk.
+	// The type of the risk detected by API security.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
+	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported risk types.
 	//
 	// example:
 	//
-	// LackOfSpeedLimit
+	// Risk_InternalWeakPasswd
 	AbnormalType *string `json:"AbnormalType,omitempty" xml:"AbnormalType,omitempty"`
 }
 

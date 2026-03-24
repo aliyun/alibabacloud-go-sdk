@@ -20,9 +20,9 @@ type CreateDefenseRuleResponseBody struct {
 	//
 	// example:
 	//
-	// 26E46541-7AAB-5565-801D-F14DBDC5F186
+	// 26E46541-7AAB-5565-801D-F14DBDC5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the protection rules. Multiple IDs are separated by commas (,).
+	// The IDs of the created protection rules, separated by commas (,).
 	//
 	// example:
 	//

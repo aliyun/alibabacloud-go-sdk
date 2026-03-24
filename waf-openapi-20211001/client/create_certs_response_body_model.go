@@ -16,13 +16,13 @@ type iCreateCertsResponseBody interface {
 }
 
 type CreateCertsResponseBody struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 123456-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

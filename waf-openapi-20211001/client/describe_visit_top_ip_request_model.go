@@ -24,7 +24,7 @@ type iDescribeVisitTopIpRequest interface {
 }
 
 type DescribeVisitTopIpRequest struct {
-	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the end time is the current time.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DescribeVisitTopIpRequest struct {
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type DescribeVisitTopIpRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeVisitTopIpRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Unit: seconds.
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iDeleteApisecAbnormalsResponseBody interface {
 }
 
 type DeleteApisecAbnormalsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

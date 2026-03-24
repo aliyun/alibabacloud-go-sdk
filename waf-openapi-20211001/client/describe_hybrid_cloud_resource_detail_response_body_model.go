@@ -59,8 +59,6 @@ func (s *DescribeHybridCloudResourceDetailResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudResourceDetailResponseBodyDomain struct {
-	// CNAME
-	//
 	// example:
 	//
 	// kdmqyi3ck7xogegxpiyfpb0fj21mgkxn.****.com
@@ -69,8 +67,6 @@ type DescribeHybridCloudResourceDetailResponseBodyDomain struct {
 	//
 	// www.*****.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// id
-	//
 	// example:
 	//
 	// 31323

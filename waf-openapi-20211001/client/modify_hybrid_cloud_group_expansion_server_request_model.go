@@ -32,7 +32,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the node group.
+	// The ID of the node group in the hybrid cloud cluster.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node.
+	// The ID of the node that you want to add to the node group.
 	//
 	// This parameter is required.
 	//
@@ -58,17 +58,17 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// 612929b133e7ff**0d0
 	Mids *string `json:"Mids,omitempty" xml:"Mids,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the Resource Manager resource group.
 	//
 	// example:
 	//

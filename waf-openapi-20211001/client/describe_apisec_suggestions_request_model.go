@@ -30,9 +30,9 @@ type DescribeApisecSuggestionsRequest struct {
 	//
 	// a60fd7e3021fe371c06dc1dcb883def0
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The ID of the Hybrid Cloud WAF cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter is available only in hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to query the IDs of Hybrid Cloud WAF clusters.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeApisecSuggestionsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,11 @@ type DescribeApisecSuggestionsRequest struct {
 	//
 	// waf_v2_public_cn-pe336n43m04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

@@ -24,17 +24,17 @@ type iDescribeApisecUserOperationsRequest interface {
 }
 
 type DescribeApisecUserOperationsRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The ID of the Hybrid Cloud WAF cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter is required only when WAF is deployed in hybrid cloud mode. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of Hybrid Cloud WAF clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeApisecUserOperationsRequest struct {
 	//
 	// waf_v2_public_cn-wwo36ksck1e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The object ID of the operation record.
+	// The ID of the threat detection or security event for which you want to query operation records.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,17 @@ type DescribeApisecUserOperationsRequest struct {
 	//
 	// fe8723e92e2037245014ab62161bbec8
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type DescribeApisecUserOperationsRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the operation record. Valid values:
 	//
-	// 	- **abnormal**: risk detection
+	// - **abnormal**: threat detection.
 	//
-	// 	- **event**: security event
+	// - **event**: security event.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribePunishedDomainsResponseBody interface {
 }
 
 type DescribePunishedDomainsResponseBody struct {
-	// The domain names that are penalized for failing to obtain an ICP filing.
+	// The list of domain names penalized for not having an ICP filing.
 	PunishedDomains []*string `json:"PunishedDomains,omitempty" xml:"PunishedDomains,omitempty" type:"Repeated"`
 	// The request ID.
 	//

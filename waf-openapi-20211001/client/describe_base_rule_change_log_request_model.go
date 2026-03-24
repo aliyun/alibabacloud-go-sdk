@@ -24,28 +24,50 @@ type iDescribeBaseRuleChangeLogRequest interface {
 }
 
 type DescribeBaseRuleChangeLogRequest struct {
+	// The ID of the WAF instance.
+	//
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-mp9153****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Set the language property for rule names. Valid values:
+	//
+	// - **zh**: Chinese rule names.
+	//
+	// - **en**: English rule names.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// When performing a paged query, specify the page number to return. The default value is **1**, which means the first page of data is returned.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// When performing a paged query, specify the number of results per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region to which the WAF instance belongs. Valid values:
+	//
+	// - **cn-hangzhou**: The Chinese mainland.
+	//
+	// - **ap-southeast-1**: Outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm***q

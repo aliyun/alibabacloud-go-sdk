@@ -30,15 +30,15 @@ type iDescribeApisecAbnormalDomainStatisticRequest interface {
 }
 
 type DescribeApisecAbnormalDomainStatisticRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The ID of the Hybrid Cloud WAF cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter is required only in hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of Hybrid Cloud WAF clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeApisecAbnormalDomainStatisticRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,33 +54,33 @@ type DescribeApisecAbnormalDomainStatisticRequest struct {
 	//
 	// waf-cn-45919n***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order of the results. Valid values:
 	//
-	// - **asc**: ascending order.
+	// - **asc**: sorts the results in ascending order.
 	//
-	// - **desc**: descending order.
+	// - **desc**: sorts the results in descending order.
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number. Pages start from page **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **5**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
-	// 5
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeApisecAbnormalDomainStatisticRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//

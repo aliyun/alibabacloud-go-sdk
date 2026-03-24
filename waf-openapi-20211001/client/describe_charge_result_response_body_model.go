@@ -18,11 +18,16 @@ type iDescribeChargeResultResponseBody interface {
 }
 
 type DescribeChargeResultResponseBody struct {
+	// The billing calculation results for each module.
 	ModuleDetails []*DescribeChargeResultResponseBodyModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of calculated Security Capacity Units (SeCUs).
+	//
 	// example:
 	//
 	// 1080
@@ -78,10 +83,14 @@ func (s *DescribeChargeResultResponseBody) Validate() error {
 }
 
 type DescribeChargeResultResponseBodyModuleDetails struct {
+	// The ID of the billing module.
+	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	// The number of SeCUs for the billing module.
+	//
 	// example:
 	//
 	// 1080

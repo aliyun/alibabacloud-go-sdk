@@ -14,6 +14,8 @@ type iDeleteDefenseResourceResponseBody interface {
 }
 
 type DeleteDefenseResourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 745F051D-95FD-57EC-9DC1-79BB4883C6A4

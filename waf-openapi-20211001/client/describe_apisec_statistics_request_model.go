@@ -28,23 +28,23 @@ type iDescribeApisecStatisticsRequest interface {
 }
 
 type DescribeApisecStatisticsRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The ID of the Hybrid Cloud WAF cluster.
 	//
-	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
+	// > This parameter is available only in hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query Hybrid Cloud WAF clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
-	// 4809859200000
+	// 1726113600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
-	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// waf_v2_public_cn-uax***b09
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -68,20 +68,23 @@ type DescribeApisecStatisticsRequest struct {
 	//
 	// rg-aek2***uwbs5q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
-	// 1668496310000
+	// 1668496310
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the statistics. Valid values:
+	// The type of detection statistics. Valid values:
 	//
-	// 	- **risk**: risk-related statistics.
+	// - **risk**: statistics on security risks.
 	//
-	// 	- **event**: event-related statistics.
+	// - **event**: statistics on attacks.
 	//
 	// example:
 	//
-	// asset_num
-	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// risk
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The list of statuses used to filter the detection statistics.
 	UserStatusList []*string `json:"UserStatusList,omitempty" xml:"UserStatusList,omitempty" type:"Repeated"`
 }
 

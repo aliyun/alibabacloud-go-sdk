@@ -18,11 +18,16 @@ type iDescribeHybridCloudClusterRulesResponseBody interface {
 }
 
 type DescribeHybridCloudClusterRulesResponseBody struct {
+	// The response data.
 	Data []*DescribeHybridCloudClusterRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of cloud native mode entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -78,26 +83,62 @@ func (s *DescribeHybridCloudClusterRulesResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudClusterRulesResponseBodyData struct {
+	// The ID of the hybrid cloud cluster.
+	//
 	// example:
 	//
 	// 1099
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The resource ID of the cluster rule.
+	//
 	// example:
 	//
 	// hdbc-clusterrule-*****khzre0ym0w
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
+	// The configuration of the traffic redirection rule:
+	//
+	// - **check_mode**
+	//
+	//   : the mode. Valid values:
+	//
+	//   - **all**: redirects all traffic.
+	//
+	//   - **part**: redirects a portion of traffic.
+	//
+	// - **type**
+	//
+	//   : the match type of the rule. Valid values:
+	//
+	//   - **exact**: exact match.
+	//
+	//   - **regex**: regular expression match.
+	//
+	// - **substance**: the value of the rule.
+	//
 	// example:
 	//
 	// {\\"check_mode\\": \\"all\\", \\"type\\": \\"exact\\", \\"substance\\": \\"122\\"}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The type of the rule. Valid value:
+	//
+	// - **pullin**: traffic redirection
+	//
 	// example:
 	//
 	// pullin
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// - **1**: enabled.
+	//
+	// - **0**: disabled.
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1

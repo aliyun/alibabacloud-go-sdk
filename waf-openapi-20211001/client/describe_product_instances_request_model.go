@@ -40,9 +40,9 @@ type iDescribeProductInstancesRequest interface {
 }
 
 type DescribeProductInstancesRequest struct {
-	// The ID of the WAF instance.
+	// The Web Application Firewall (WAF) instance ID.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type DescribeProductInstancesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-zxu****9d02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The ID of the Alibaba Cloud account to which the instance belongs.
 	//
 	// example:
 	//
 	// 1704********9107
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the returned page. Default value: **1**.
 	//
 	// example:
 	//
@@ -68,30 +68,43 @@ type DescribeProductInstancesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protection status of WAF. Valid values:
+	//
+	// - **all**: All protected.
+	//
+	// - **any**: Protected.
+	//
+	// - **part**: Partially protected.
+	//
+	// - **non**: Not protected.
+	//
+	// example:
+	//
+	// all
 	ResourceInstanceAccessStatus *string `json:"ResourceInstanceAccessStatus,omitempty" xml:"ResourceInstanceAccessStatus,omitempty"`
-	// The ID of the instance.
+	// The instance ID of the cloud service.
 	//
 	// example:
 	//
 	// lb-2zeugkfj81jvo****4tqm
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The IP address of the instance that is added to WAF.
+	// The IP address of the instance added to WAF.
 	//
 	// example:
 	//
 	// 1.X.X.1
 	ResourceInstanceIp *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
-	// The name of the instance that is added to WAF.
+	// The name of the instance added to WAF.
 	//
 	// example:
 	//
@@ -119,13 +132,15 @@ type DescribeProductInstancesRequest struct {
 	//
 	// exampleResourceName
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The cloud service to which the instance belongs. Valid values:
+	// The type of the cloud service. Valid values:
 	//
-	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
+	// - **clb4**: Layer 4 CLB.
 	//
-	// 	- **clb7**: Layer 7 CLB.
+	// - **clb7**: Layer 7 CLB.
 	//
-	// 	- **ecs**: Elastic Compute Service (ECS).
+	// - **ecs**: Elastic Compute Service (ECS).
+	//
+	// - **nlb**: Network Load Balancer (NLB).
 	//
 	// example:
 	//
@@ -133,25 +148,25 @@ type DescribeProductInstancesRequest struct {
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// 	- **cn-chengdu**: China (Chengdu).
+	// - **cn-chengdu**: China (Chengdu).
 	//
-	// 	- **cn-beijing**: China (Beijing).
+	// - **cn-beijing**: China (Beijing).
 	//
-	// 	- **cn-zhangjiakou**: China (Zhangjiakou).
+	// - **cn-zhangjiakou**: China (Zhangjiakou).
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou).
+	// - **cn-hangzhou**: China (Hangzhou).
 	//
-	// 	- **cn-shanghai**: China (Shanghai).
+	// - **cn-shanghai**: China (Shanghai).
 	//
-	// 	- **cn-shenzhen**: China (Shenzhen).
+	// - **cn-shenzhen**: China (Shenzhen).
 	//
-	// 	- **cn-qingdao**: China (Qingdao).
+	// - **cn-qingdao**: China (Qingdao).
 	//
-	// 	- **cn-hongkong**: China (Hong Kong).
+	// - **cn-hongkong**: China (Hong Kong).
 	//
-	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	// - **ap-southeast-3**: Malaysia (Kuala Lumpur).
 	//
-	// 	- **ap-southeast-5**: Indonesia (Jakarta).
+	// - **ap-southeast-5**: Indonesia (Jakarta).
 	//
 	// example:
 	//

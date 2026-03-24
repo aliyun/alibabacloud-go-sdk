@@ -26,10 +26,21 @@ type iDeleteDefenseRuleRequest interface {
 }
 
 type DeleteDefenseRuleRequest struct {
-	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The type of the protection rule. Valid values:
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// - **template*	- (default): a protection rule template.
+	//
+	// - **resource**: a rule for a protected object.
+	//
+	// - **global**: a global rule.
+	//
+	// example:
+	//
+	// template
+	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -37,16 +48,23 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object of the rule that you want to delete.
+	//
+	// > This parameter is required only when you set **DefenseType*	- to **resource**.
+	//
+	// example:
+	//
+	// rencs***-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
 	//
@@ -54,7 +72,7 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The IDs of the protection rules that you want to delete. Separate the IDs with commas (,).
+	// The IDs of the protection rules that you want to delete. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -62,7 +80,9 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// 2223455,23354,465565
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// The ID of the protection rule template to which the protection rule that you want to delete belongs.
+	// The ID of the protection rule template that you want to delete.
+	//
+	// > This parameter is required only when you set **DefenseType*	- to **template**.
 	//
 	// example:
 	//

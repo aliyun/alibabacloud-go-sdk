@@ -22,7 +22,7 @@ type iDescribeResourceSupportRegionsRequest interface {
 type DescribeResourceSupportRegionsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,29 +30,43 @@ type DescribeResourceSupportRegionsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region to which the WAF instance belongs. Valid values:
 	//
-	// 	- **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: indicates the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: indicates regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzpks****kdjq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The cloud service. Valid values:
+	// The cloud product to which the resource belongs. By default, instances of ALB, MSE, FC, and SAE products are returned. Valid values:
 	//
-	// 	- **clb4**: Layer 4 CLB.
+	// - **alb**: indicates the ALB product.
 	//
-	// 	- **clb7**: Layer 7 CLB.
+	// - **mse**: indicates the MSE product.
 	//
-	// 	- **ecs**: ECS.
+	// - **fc**: indicates the FC product.
+	//
+	// - **sae**: indicates the SAE product.
+	//
+	// - **ecs**: indicates the ECS product.
+	//
+	// - **clb4**: indicates the CLB(TCP) product.
+	//
+	// - **clb7**: indicates the CLB(HTTP/HTTPS) product.
+	//
+	// - **apig**: indicates the APIG product.
+	//
+	// - **nlb**: indicates the NLB product.
+	//
+	// > Each product supports different regions. When the product filter field has a value, you need to refer to the regions supported by the product. Otherwise, the filtering may fail.
 	//
 	// example:
 	//

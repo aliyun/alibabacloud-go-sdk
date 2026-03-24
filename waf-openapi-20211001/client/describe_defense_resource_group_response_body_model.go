@@ -18,7 +18,7 @@ type iDescribeDefenseResourceGroupResponseBody interface {
 type DescribeDefenseResourceGroupResponseBody struct {
 	// The information about the protected object group.
 	Group *DescribeDefenseResourceGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,25 +68,25 @@ type DescribeDefenseResourceGroupResponseBodyGroup struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the protected object group was created.
+	// The timestamp when the protected object group was created.
 	//
 	// example:
 	//
 	// 23242312312
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The most recent time when the protected object group was modified.
+	// The timestamp when the protected object group was modified.
 	//
 	// example:
 	//
 	// 23242312312
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The name of the protected object group.
+	// The name of the protected object group that you want to query.
 	//
 	// example:
 	//
 	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The protected objects in the protected object group. The protected objects are separated with commas (,).
+	// All the protected objects that are added to the protected object group. Separate the protected objects with commas (,).
 	//
 	// example:
 	//

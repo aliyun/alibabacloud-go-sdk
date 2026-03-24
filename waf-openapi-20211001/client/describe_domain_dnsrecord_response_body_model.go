@@ -16,25 +16,25 @@ type iDescribeDomainDNSRecordResponseBody interface {
 }
 
 type DescribeDomainDNSRecordResponseBody struct {
-	// The status of the DNS settings. Valid values:
+	// The DNS status. Valid values:
 	//
-	// 	- **cnameMatched**: The DNS settings are properly configured.
+	// - **cnameMatched**: The DNS record is normal.
 	//
-	// 	- **vipMatched**: An A record maps the domain name to the WAF virtual IP address (VIP).
+	// - **vipMatched**: The domain name is mapped to an A record.
 	//
-	// 	- **wafVip**: An A record maps the domain name to another WAF VIP.
+	// - **wafVip**: The domain name is mapped to the virtual IP address (VIP) of another WAF instance.
 	//
-	// 	- **unRecord**: The domain name does not have a DNS record.
+	// - **unRecord**: No DNS record is configured.
 	//
-	// 	- **unUsed**: The domain name is not pointed to WAF.
+	// - **unUsed**: Traffic is not forwarded to WAF.
 	//
-	// 	- **checkTimeout**: The check times out.
+	// - **checkTimeout**: The check timed out.
 	//
 	// example:
 	//
 	// cnameMatched
 	DNSStatus *string `json:"DNSStatus,omitempty" xml:"DNSStatus,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

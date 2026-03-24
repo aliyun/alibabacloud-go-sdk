@@ -20,7 +20,7 @@ type DescribeDefenseResourceTemplatesResponseBody struct {
 	//
 	// example:
 	//
-	// 2305CEB0-BA5A-5543-A1D3-3F1D0891****
+	// 2305CEB0-BA5A-5543-A1D3-3F1D08911B1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The protection templates.
 	Templates []*DescribeDefenseResourceTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
@@ -66,51 +66,31 @@ func (s *DescribeDefenseResourceTemplatesResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
-	// The scenario in which the protection template is used.
-	//
-	// 	- **waf_group**: basic protection.
-	//
-	// 	- **antiscan**: scan protection.
-	//
-	// 	- **ip_blacklist**: IP address blacklist.
-	//
-	// 	- **custom_acl**: custom rule.
-	//
-	// 	- **whitelist**: whitelist.
-	//
-	// 	- **region_block**: region blacklist.
-	//
-	// 	- **custom_response**: custom response.
-	//
-	// 	- **cc**: HTTP flood protection.
-	//
-	// 	- **tamperproof**: website tamper-proofing.
-	//
-	// 	- **dlp**: data leakage prevention.
+	// The protection scenario. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
 	// whitelist
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The sub-scenario in which the template is used. Valid values:
+	// The sub-scenario of the template. Valid values:
 	//
-	// 	- **web**: bot management for website protection.
+	// - **web**: The bot management template for web protection.
 	//
-	// 	- **app**: bot management for app protection.
+	// - **app**: The bot management template for app protection.
 	//
-	// 	- **basic**: bot management for basic protection.
+	// - **basic**: The basic bot management template.
 	//
 	// example:
 	//
 	// basic
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
-	// The description of the protection template.
+	// The description of the template.
 	//
 	// example:
 	//
-	// test
+	// testTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the protection template was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the protection template was created, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -120,15 +100,15 @@ type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
 	//
 	// example:
 	//
-	// 12345
+	// 34328
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the protection template.
 	//
 	// example:
 	//
-	// TestTemplateName
+	// antiscanTemplate
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The origin of the protection template. The value custom indicates that the template is a custom template created by the user.
+	// The origin of the protection template. The value custom indicates a user-created template.
 	//
 	// example:
 	//
@@ -136,19 +116,19 @@ type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection template. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The type of the protection template. Valid values:
+	// The type of the template. Valid values:
 	//
-	// 	- **user_default**: default template.
+	// - **user_default**: The default template for the user.
 	//
-	// 	- **user_custom**: custom template.
+	// - **user_custom**: A custom template created by the user.
 	//
 	// example:
 	//

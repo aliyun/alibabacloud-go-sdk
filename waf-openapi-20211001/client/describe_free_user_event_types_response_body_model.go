@@ -16,7 +16,7 @@ type iDescribeFreeUserEventTypesResponseBody interface {
 }
 
 type DescribeFreeUserEventTypesResponseBody struct {
-	// The types of security events on which basic detection is performed.
+	// The list of security event types detected by the basic detection feature.
 	Data []*DescribeFreeUserEventTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeFreeUserEventTypesResponseBodyData struct {
 	//
 	// 4
 	EventNum *string `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
-	// The type of the security event.
+	// The security event type.
 	//
 	// example:
 	//

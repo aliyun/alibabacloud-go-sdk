@@ -20,7 +20,7 @@ type iModifyDomainPunishStatusRequest interface {
 }
 
 type ModifyDomainPunishStatusRequest struct {
-	// The domain name that is penalized for failing to obtain an ICP filing.
+	// The domain name in a penalized state for not having an ICP filing.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ModifyDomainPunishStatusRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type ModifyDomainPunishStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

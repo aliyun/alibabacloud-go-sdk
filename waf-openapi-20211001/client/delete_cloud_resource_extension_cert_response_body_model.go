@@ -14,7 +14,7 @@ type iDeleteCloudResourceExtensionCertResponseBody interface {
 }
 
 type DeleteCloudResourceExtensionCertResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

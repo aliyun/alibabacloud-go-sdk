@@ -22,9 +22,9 @@ type iModifyResourceLogStatusRequest interface {
 }
 
 type ModifyResourceLogStatusRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,11 @@ type ModifyResourceLogStatusRequest struct {
 	//
 	// waf-cn-zz11zcl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyResourceLogStatusRequest struct {
 	//
 	// alb-wewbb23dfsetetcic1242-0****
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type ModifyResourceLogStatusRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Specifies whether to enable the log collection feature for the protected object. Valid values:
 	//
-	// 	- **true:*	- enables the log collection feature.
+	// - **true**: Enables the feature.
 	//
-	// 	- **false:*	- disables the log collection feature.
+	// - **false**: Disables the feature.
 	//
 	// This parameter is required.
 	//

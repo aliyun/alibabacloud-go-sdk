@@ -18,7 +18,7 @@ type iDescribeApisecProtectionResourcesResponseBody interface {
 }
 
 type DescribeApisecProtectionResourcesResponseBody struct {
-	// The protected objects.
+	// The list of protected objects.
 	Data []*DescribeApisecProtectionResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,25 +83,37 @@ func (s *DescribeApisecProtectionResourcesResponseBody) Validate() error {
 }
 
 type DescribeApisecProtectionResourcesResponseBodyData struct {
-	// The switch of the API security module.
+	// Indicates whether the API security feature is enabled for the protected object. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	ApisecStatus *int64 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
-	// The switch of the compliance check feature.
+	// Indicates whether the compliance check feature is enabled. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The protected object.
+	// The name of the protected object.
 	//
 	// example:
 	//
 	// cwaf-***-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The switch of the tracing and auditing feature.
+	// Indicates whether the source tracing feature is enabled. Valid values:
+	//
+	// - **0**: disabled.
+	//
+	// - **1**: enabled.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DescribeUserEventTrendResponseBody struct {
 	//
 	// F51E6DD6-B2D2-57C9-90F1-FAFD0A19DE00
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The trends of attacks.
+	// The list of attack trends.
 	Trend []*DescribeUserEventTrendResponseBodyTrend `json:"Trend,omitempty" xml:"Trend,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeUserEventTrendResponseBody) Validate() error {
 }
 
 type DescribeUserEventTrendResponseBodyTrend struct {
-	// The number of high-risk events.
+	// The number of important events.
 	//
 	// example:
 	//
@@ -86,15 +86,13 @@ type DescribeUserEventTrendResponseBodyTrend struct {
 	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
 	// Deprecated
 	//
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
-	//
-	// 	Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
+	// The time of the statistics. This is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1723435200
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time of the statistics. This is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//

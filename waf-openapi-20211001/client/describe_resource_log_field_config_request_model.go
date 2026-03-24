@@ -22,28 +22,50 @@ type iDescribeResourceLogFieldConfigRequest interface {
 }
 
 type DescribeResourceLogFieldConfigRequest struct {
+	// The log delivery type. Valid values:
+	//
+	// - **sls**: Simple Log Service.
+	//
+	// - **kafka**: Kafka.
+	//
+	// - **syslog**: Syslog.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-zpr3*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The protected object whose log field configuration you want to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.waf.com-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The ID of the resource group to which the WAF instance belongs.
+	//
 	// example:
 	//
 	// rg-acfm***q

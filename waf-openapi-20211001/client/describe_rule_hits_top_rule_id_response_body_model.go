@@ -22,7 +22,7 @@ type DescribeRuleHitsTopRuleIdResponseBody struct {
 	//
 	// F6334274-8870-5D2F-A1AD-D6EF885AC1ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the IDs of the top 10 rules that are matched by requests.
+	// The IDs of the top 10 rules that were hit most frequently.
 	RuleHitsTopRuleId []*DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId `json:"RuleHitsTopRuleId,omitempty" xml:"RuleHitsTopRuleId,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeRuleHitsTopRuleIdResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId struct {
-	// The number of requests that match the rule.
+	// The number of times the rule was hit.
 	//
 	// example:
 	//
 	// 181174784
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The protected object.
+	// The protected object. This parameter is returned only if IsGroupResource is set to false.
 	//
 	// example:
 	//

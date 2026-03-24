@@ -22,17 +22,17 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// A pagination token for the next query
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region where the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: indicates the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: indicates regions outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListTagResourcesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	// The resource type. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// This parameter is required.
 	//
@@ -121,13 +121,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N that is added to the resource. Valid values of N: 1 to 20.
+	// The tag key.
 	//
 	// example:
 	//
 	// Tagkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the resource. Valid values of N: 1 to 20.
+	// The tag value.
 	//
 	// example:
 	//

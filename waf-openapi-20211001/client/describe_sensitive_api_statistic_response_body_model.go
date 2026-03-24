@@ -18,7 +18,7 @@ type iDescribeSensitiveApiStatisticResponseBody interface {
 }
 
 type DescribeSensitiveApiStatisticResponseBody struct {
-	// The statistics.
+	// The list of statistics.
 	Data []*DescribeSensitiveApiStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeSensitiveApiStatisticResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -83,13 +83,15 @@ func (s *DescribeSensitiveApiStatisticResponseBody) Validate() error {
 }
 
 type DescribeSensitiveApiStatisticResponseBodyData struct {
-	// The number of personal information records involved in cross-border data transfer by domain name.
+	// The number of outbound personal information entries by domain name.
 	//
 	// example:
 	//
 	// 213
 	InfoOutboundCount *int64 `json:"InfoOutboundCount,omitempty" xml:"InfoOutboundCount,omitempty"`
-	// The domain name-related APIs.
+	// The list of statistics about APIs for the domain name.
+	//
+	// > The statistics by API are returned only when you set the **Type*	- parameter to **apiFormat**.
 	List []*DescribeSensitiveApiStatisticResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The domain name or IP address.
 	//
@@ -97,7 +99,7 @@ type DescribeSensitiveApiStatisticResponseBodyData struct {
 	//
 	// www.***.top
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The number of sensitive personal information records involved in cross-border data transfer by domain name.
+	// The number of outbound personal sensitive data entries by domain name.
 	//
 	// example:
 	//
@@ -175,15 +177,15 @@ type DescribeSensitiveApiStatisticResponseBodyDataList struct {
 	//
 	// d288137009c119a873d4c395****
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The number of personal information records involved in cross-border data transfer by API.
+	// The number of outbound personal information entries by API.
 	//
 	// example:
 	//
 	// 78
 	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
-	// The types of sensitive data.
+	// The list of sensitive data types.
 	SensitiveCode []*string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty" type:"Repeated"`
-	// The number of sensitive personal information records involved in cross-border data transfer by API.
+	// The number of outbound personal sensitive data entries by API.
 	//
 	// example:
 	//

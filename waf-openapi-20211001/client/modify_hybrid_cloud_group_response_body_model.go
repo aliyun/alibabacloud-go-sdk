@@ -14,7 +14,7 @@ type iModifyHybridCloudGroupResponseBody interface {
 }
 
 type ModifyHybridCloudGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

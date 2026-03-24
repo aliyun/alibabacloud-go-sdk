@@ -22,19 +22,28 @@ type iDescribeIpAbroadCountryInfosResponseBody interface {
 }
 
 type DescribeIpAbroadCountryInfosResponseBody struct {
+	// The list of country information outside China.
 	AbroadInfos []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfos `json:"AbroadInfos,omitempty" xml:"AbroadInfos,omitempty" type:"Repeated"`
+	// The number of entries per page in a paged query. Valid values: 1 to 500. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next page.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID
+	//
 	// example:
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -108,19 +117,26 @@ func (s *DescribeIpAbroadCountryInfosResponseBody) Validate() error {
 }
 
 type DescribeIpAbroadCountryInfosResponseBodyAbroadInfos struct {
+	// The continent to which the country belongs.
+	//
 	// example:
 	//
-	// 北美洲
+	// North America
 	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
+	// The ID of the country.
+	//
 	// example:
 	//
 	// US
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The name of the country.
+	//
 	// example:
 	//
-	// 美国
-	CountryName *string                                                       `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	Regions     []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// United States
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// The list of region information outside China.
+	Regions []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) String() string {
@@ -181,13 +197,17 @@ func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) Validate() error {
 }
 
 type DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions struct {
+	// The ID of the region.
+	//
 	// example:
 	//
 	// US-CA
 	AbroadRegionId *string `json:"AbroadRegionId,omitempty" xml:"AbroadRegionId,omitempty"`
+	// The name of the region.
+	//
 	// example:
 	//
-	// 加利福尼亚州
+	// California
 	AbroadRegionName *string `json:"AbroadRegionName,omitempty" xml:"AbroadRegionName,omitempty"`
 }
 

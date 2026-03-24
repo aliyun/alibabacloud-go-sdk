@@ -22,19 +22,30 @@ type iDescribeCloudResourceListResponseBody interface {
 }
 
 type DescribeCloudResourceListResponseBody struct {
+	// The list of resources that are added to WAF.
 	CloudResourceList []*DescribeCloudResourceListResponseBodyCloudResourceList `json:"CloudResourceList,omitempty" xml:"CloudResourceList,omitempty" type:"Repeated"`
+	// The number of entries returned on the current page.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is used to retrieve the next page of results.
+	//
+	// > If a value is returned for this parameter, it indicates that a next page is available. To retrieve the next page of data, include the returned **NextToken*	- in your next request. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F35F45B0-5D6B-4238-BE02-A62D****E840
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 118
@@ -108,30 +119,64 @@ func (s *DescribeCloudResourceListResponseBody) Validate() error {
 }
 
 type DescribeCloudResourceListResponseBodyCloudResourceList struct {
+	// The ID of the protected resource. WAF automatically generates this ID when you add the resource to WAF.
+	//
 	// example:
 	//
 	// i-8vbdlsd********81e22-80-ecs
 	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
+	// The port of the cloud service that is added to WAF.
+	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// - **http**: HTTP
+	//
+	// - **https**: HTTPS
+	//
 	// example:
 	//
 	// http
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the resource instance that is added to WAF.
+	//
 	// example:
 	//
 	// i-8vbdlsd********81e22
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-aek2uo2****lbka
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The cloud service to which the resource belongs. Valid values:
+	//
+	// - **alb**: ALB.
+	//
+	// - **mse**: MSE.
+	//
+	// - **fc**: FC.
+	//
+	// - **sae**: SAE.
+	//
+	// - **ecs**: ECS.
+	//
+	// - **clb4**: CLB that uses the TCP protocol.
+	//
+	// - **clb7**: CLB that uses the HTTP or HTTPS protocol.
+	//
+	// - **nlb**: NLB.
+	//
 	// example:
 	//
 	// ecs
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// The ID of the region where the resource resides. For more information, see the "Regions and supported products" section in this topic.
+	//
 	// example:
 	//
 	// cn-hangzhou

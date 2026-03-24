@@ -50,39 +50,39 @@ type iDescribeApisecAbnormalsRequest interface {
 }
 
 type DescribeApisecAbnormalsRequest struct {
-	// The ID of the risk.
+	// The ID of the security risk.
 	//
 	// example:
 	//
 	// 29c6401****99a2bad3943e26d8
 	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
-	// The level of the risk. Valid values:
+	// The severity level of the security risk. Valid values:
 	//
-	// 	- **high**
+	// - **high**: High.
 	//
-	// 	- **medium**
+	// - **medium**: Medium.
 	//
-	// 	- **low**
+	// - **low**: Low.
 	//
 	// example:
 	//
 	// medium
 	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
-	// The type of the risk.
+	// The type of the security risk.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
+	// > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported risk types.
 	//
 	// example:
 	//
 	// LackOfSpeedLimit
 	AbnormalTag *string `json:"AbnormalTag,omitempty" xml:"AbnormalTag,omitempty"`
-	// The risk-related API.
+	// The path of the API that is associated with the security risk.
 	//
 	// example:
 	//
 	// /api/users/login
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The ID of the risk-related API.
+	// The ID of the API that is associated with the security risk.
 	//
 	// example:
 	//
@@ -90,21 +90,21 @@ type DescribeApisecAbnormalsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
+	// > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported business purposes.
 	//
 	// example:
 	//
 	// RegisterAPI
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The ID of the hybrid cloud WAF cluster.
 	//
-	// >  This parameter is available only in hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud clusters.
+	// > This parameter is required only for hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to query the IDs of hybrid cloud WAF clusters.
 	//
 	// example:
 	//
 	// 546
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeApisecAbnormalsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -120,89 +120,95 @@ type DescribeApisecAbnormalsRequest struct {
 	//
 	// waf_v2_public_cn-z***9g301
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The domain name or IP address of the API.
+	// The domain name or IP address that the API resides on.
 	//
 	// example:
 	//
 	// a.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The name of the sorting field. Valid values:
+	// The field by which the query results are sorted. Valid values:
 	//
-	// 	- **discoverTime*	- (default): indicates the time when a risk was first detected.
+	// - **discoverTime*	- (default): The time when the risk was first detected.
 	//
-	// 	- **abnormalLevel**: indicates the level of a risk.
+	// - **abnormalLevel**: The risk level.
 	//
-	// 	- **latestDiscoverTime**: indicates the time when a risk was last detected.
+	// - **latestDiscoverTime**: The most recent time when the risk was detected.
 	//
 	// example:
 	//
-	// allCnt
+	// firstTime
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
-	// The sorting method. Valid values:
+	// The sorting order. Valid values:
 	//
-	// 	- **desc (default)**: in descending order
+	// - **desc*	- (default): Descending order.
 	//
-	// 	- **asc**: in ascending order
+	// - **asc**: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The source of the risk type. Valid values:
+	// The source of the risk detection rule. Valid values:
 	//
-	// 	- **custom**
+	// - **custom**: Custom rule.
 	//
-	// 	- **default**
+	// - **default**: Built-in rule.
 	//
 	// example:
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the returned page. Default value: **1**.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **10**.
+	// The number of entries per page. Default value: **10**. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region in which the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
-	// cn-qingdao
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the risk. Valid values:
+	// The handling status of the security risk. Valid values:
 	//
-	// 	- **toBeConfirmed**
+	// - **toBeConfirmed**: To be confirmed.
 	//
-	// 	- **confirmed**
+	// - **confirmed**: Confirmed.
 	//
-	// 	- **toBeFixed**
+	// - **toBeFixed**: To be fixed.
 	//
-	// 	- **fixed**
+	// - **fixed**: Fixed (manually verified).
 	//
-	// 	- **ignored**
+	// - **ignored**: Ignored.
+	//
+	// - **toBeVerified**: To be verified by the system.
+	//
+	// - **notFixed**: Verification failed.
+	//
+	// - **systemFixed**: Fixed (verified by the system).
 	//
 	// example:
 	//

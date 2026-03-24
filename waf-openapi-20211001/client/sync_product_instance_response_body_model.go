@@ -14,7 +14,7 @@ type iSyncProductInstanceResponseBody interface {
 }
 
 type SyncProductInstanceResponseBody struct {
-	// The request ID.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//

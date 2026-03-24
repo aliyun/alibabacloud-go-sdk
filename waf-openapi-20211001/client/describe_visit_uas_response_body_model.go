@@ -16,13 +16,13 @@ type iDescribeVisitUasResponseBody interface {
 }
 
 type DescribeVisitUasResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2847CE98-AFAE-5A64-B80E-60461717F9DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the top 10 user agents that are used to initiate requests.
+	// The top 10 User-Agents.
 	Uas []*DescribeVisitUasResponseBodyUas `json:"Uas,omitempty" xml:"Uas,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeVisitUasResponseBody) Validate() error {
 }
 
 type DescribeVisitUasResponseBodyUas struct {
-	// The number of requests that use the user agent.
+	// The total number of requests from the User-Agent.
 	//
 	// example:
 	//
 	// 698455
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The user agent.
+	// The User-Agent.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iDescribeHybridCloudGroupsResponseBody interface {
 }
 
 type DescribeHybridCloudGroupsResponseBody struct {
-	// The node groups.
+	// The list of hybrid cloud node groups.
 	Groups []*DescribeHybridCloudGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 045660E7-C4C6-5CD7-8182-7B337D95****
+	// 045660E7-C4C6-5CD7-8182-7B337D95ADF4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of hybrid cloud node groups returned.
 	//
 	// example:
 	//
@@ -83,49 +83,49 @@ func (s *DescribeHybridCloudGroupsResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudGroupsResponseBodyGroups struct {
-	// The back-to-origin mark of the protected cluster. The value is in the {ISP name}-{Continent name}-{City name}-{Back-to-origin identifier} format. The back-to-origin identifier is optional.
+	// The back-to-origin mark of the protection cluster. The value is in the **{CarrierTag}-{ContinentTag}-{CityTag}-{Identifier}*	- format. The identifier is optional.
 	//
-	// >  For more information about ISP names, continent names, city names, and back-to-origin identifiers, see the following sections.
+	// > For a list of valid values, see Additional information about response parameters.
 	//
 	// example:
 	//
-	// aliyun-asiapacific-beijing-12345678
+	// aliyun-asiapacific-beijing-56477821
 	BackSourceMark *string `json:"BackSourceMark,omitempty" xml:"BackSourceMark,omitempty"`
-	// The continent code of the protected cluster.
+	// The continent code of the protection cluster.
 	//
-	// >  For more information about continent codes, see Continent codes in this topic.
+	// > For a list of valid codes, see Additional information about response parameters.
 	//
 	// example:
 	//
 	// 410
 	ContinentsValue *int32 `json:"ContinentsValue,omitempty" xml:"ContinentsValue,omitempty"`
-	// The ID of the node group.
+	// The ID of the hybrid cloud node group.
 	//
 	// example:
 	//
 	// 123
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the node group.
+	// The name of the hybrid cloud node group.
 	//
 	// example:
 	//
 	// StorageGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the node group. Valid values:
+	// The type of the hybrid cloud node group. Valid values:
 	//
-	// 	- **protect**
+	// - **protect**: protection node group.
 	//
-	// 	- **control**
+	// - **control**: control node group.
 	//
-	// 	- **storage**
+	// - **storage**: storage node group.
 	//
-	// 	- **controlStorage**
+	// - **controlStorage**: control and storage node group.
 	//
 	// example:
 	//
 	// protect
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The IP address of the server used for load balancing.
+	// The IP address of the load balancer that is associated with the hybrid cloud node group.
 	//
 	// example:
 	//
@@ -137,29 +137,29 @@ type DescribeHybridCloudGroupsResponseBodyGroups struct {
 	//
 	// 1312
 	LocationId *int64 `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	// The ISP code of the protected cluster.
+	// The carrier code of the protection cluster.
 	//
-	// >  For more information about ISP codes, see ISP codes in this topic.
+	// > For a list of valid codes, see Additional information about response parameters.
 	//
 	// example:
 	//
 	// 0
 	OperatorValue *int32 `json:"OperatorValue,omitempty" xml:"OperatorValue,omitempty"`
-	// The port that is used by the hybrid cloud cluster. The value of this parameter is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	// The ports that are used by the hybrid cloud cluster. Multiple ports are separated by commas (,).
 	//
 	// example:
 	//
 	// 80,9200,20018
 	Ports *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
-	// The city code of the protected cluster.
+	// The city code of the protection cluster.
 	//
-	// >  For more information about city codes, see City codes in this topic.
+	// > For a list of valid codes, see Additional information about response parameters.
 	//
 	// example:
 	//
 	// 0
 	RegionCodeValue *int32 `json:"RegionCodeValue,omitempty" xml:"RegionCodeValue,omitempty"`
-	// The description of the node group.
+	// The description of the hybrid cloud node group.
 	//
 	// example:
 	//

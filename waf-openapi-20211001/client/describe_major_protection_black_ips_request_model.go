@@ -32,7 +32,7 @@ type iDescribeMajorProtectionBlackIpsRequest interface {
 type DescribeMajorProtectionBlackIpsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -40,61 +40,61 @@ type DescribeMajorProtectionBlackIpsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address that you want to query. You can specify this parameter to query an IP address in the IP address blacklist for major event protection by using fuzzy matching.
+	// The IP address to query. You can set this parameter to perform a fuzzy query on the added IP address blacklist.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	IpLike *string `json:"IpLike,omitempty" xml:"IpLike,omitempty"`
-	// The method that you want to use to sort the IP addresses **in descending order**. Valid values:
+	// The property by which to sort the results in **descending order**. Valid values:
 	//
-	// 	- **gmtModified:*	- sorts the IP addresses by most recent modification time.
+	// - **gmtModified**: sorts by modification time.
 	//
-	// 	- **ip:*	- sorts the IP addresses by IP address.
+	// - **ip**: sorts by IP address.
 	//
-	// 	- **templateId:*	- sorts the IP addresses by template ID.
+	// - **templateId**: sorts by template ID.
 	//
-	// 	- **id:*	- sorts the IP addresses by primary key.
+	// - **id**: sorts by primary key.
 	//
 	// example:
 	//
 	// gmtModified
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the IP address blacklist rule for major event protection.
+	// The ID of the IP address blacklist rule for critical event protection.
 	//
 	// example:
 	//
 	// 20013199
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the rule template for major event protection.
+	// The ID of the critical event protection template.
 	//
 	// example:
 	//

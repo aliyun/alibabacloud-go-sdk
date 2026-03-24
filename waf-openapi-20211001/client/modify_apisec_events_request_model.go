@@ -30,23 +30,29 @@ type iModifyApisecEventsRequest interface {
 type ModifyApisecEventsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+	// > This parameter is available only for hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain information about hybrid cloud clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The IDs of the security events.
+	// A list of API security event IDs.
 	//
 	// This parameter is required.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
+	// The dimension of the security event. Valid values:
+	//
+	// - **ip*	- (default): IP security event.
+	//
+	// - **account**: account security event.
+	//
 	// example:
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,23 +60,23 @@ type ModifyApisecEventsRequest struct {
 	//
 	// waf_v3prepaid_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The description.
+	// The remarks.
 	//
 	// example:
 	//
 	// already confirmed.
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 阿里云资源组ID。
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -78,11 +84,11 @@ type ModifyApisecEventsRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of the event. Valid values:
 	//
-	// 	- **toBeConfirmed**
+	// - **toBeConfirmed**: The event is pending confirmation.
 	//
-	// 	- **confirmed**
+	// - **confirmed**: The event is confirmed.
 	//
-	// 	- **ignored**
+	// - **ignored**: The event is ignored.
 	//
 	// This parameter is required.
 	//

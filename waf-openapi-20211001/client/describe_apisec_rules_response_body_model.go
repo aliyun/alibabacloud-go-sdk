@@ -18,9 +18,9 @@ type iDescribeApisecRulesResponseBody interface {
 }
 
 type DescribeApisecRulesResponseBody struct {
-	// The policies.
+	// The list of rules.
 	Data []*DescribeApisecRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeApisecRulesResponseBody) Validate() error {
 }
 
 type DescribeApisecRulesResponseBodyData struct {
-	// The ID of the policy.
+	// The ID of the rule.
 	//
 	// example:
 	//
 	// 34933
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The details of the policy. The value is a string that consists of multiple parameters in the JSON format.
+	// The details of the rule. The value is a string that is converted from a JSON object.
 	//
 	// example:
 	//
@@ -109,41 +109,41 @@ type DescribeApisecRulesResponseBodyData struct {
 	//
 	// }
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The status of the policy. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: enabled
 	//
-	// 	- **0**: disabled
+	// - **0**: disabled
 	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the policy. Valid values:
+	// The type of the rule. Valid values:
 	//
-	// 	- **risk**: risk detection
+	// - **risk**: threat detection
 	//
-	// 	- **event**: security event
+	// - **event**: security event
 	//
-	// 	- **sensitive_word**: sensitive data
+	// - **sensitive_word**: sensitive data
 	//
-	// 	- **auth_flag**: authentication credential
+	// - **auth_flag**: authentication credential
 	//
-	// 	- **api_tag**: business purpose
+	// - **api_tag**: business purpose
 	//
-	// 	- **desensitization**: data masking
+	// - **desensitization**: data masking
 	//
-	// 	- **whitelist**: whitelist
+	// - **whitelist**: whitelist
 	//
-	// 	- **recognition**: API recognition
+	// - **recognition**: API.
 	//
-	// 	- **offline_api**: lifecycle management
+	// - **offline_api**: lifecycle management
 	//
 	// example:
 	//
 	// risk
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the policy was updated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time when the rule was updated. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//

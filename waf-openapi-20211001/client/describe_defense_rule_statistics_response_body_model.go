@@ -16,10 +16,13 @@ type iDescribeDefenseRuleStatisticsResponseBody interface {
 }
 
 type DescribeDefenseRuleStatisticsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
-	RequestId       *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule statistics that are grouped by the specified conditions.
 	StatisticsInfos []*DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos `json:"StatisticsInfos,omitempty" xml:"StatisticsInfos,omitempty" type:"Repeated"`
 }
 
@@ -63,22 +66,32 @@ func (s *DescribeDefenseRuleStatisticsResponseBody) Validate() error {
 }
 
 type DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos struct {
+	// The number of rules that match the specified grouping conditions.
+	//
 	// example:
 	//
 	// 27
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The value of the quaternary grouping condition.
+	//
 	// example:
 	//
 	// action
 	FourthValue *string `json:"FourthValue,omitempty" xml:"FourthValue,omitempty"`
+	// The value of the primary grouping condition.
+	//
 	// example:
 	//
 	// sytem
 	PrimaryValue *string `json:"PrimaryValue,omitempty" xml:"PrimaryValue,omitempty"`
+	// The value of the secondary grouping condition.
+	//
 	// example:
 	//
 	// block
 	SecondaryValue *string `json:"SecondaryValue,omitempty" xml:"SecondaryValue,omitempty"`
+	// The value of the tertiary grouping condition.
+	//
 	// example:
 	//
 	// 1

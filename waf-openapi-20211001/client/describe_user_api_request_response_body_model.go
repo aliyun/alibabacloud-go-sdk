@@ -22,7 +22,7 @@ type DescribeUserApiRequestResponseBody struct {
 	//
 	// D13E4540-4432-5AD7-B216-6369512514F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics.
+	// The list of statistics.
 	Requests []*DescribeUserApiRequestResponseBodyRequests `json:"Requests,omitempty" xml:"Requests,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,21 @@ func (s *DescribeUserApiRequestResponseBody) Validate() error {
 }
 
 type DescribeUserApiRequestResponseBodyRequests struct {
-	// The number of entries returned.
+	// The number of statistics.
 	//
 	// example:
 	//
 	// 76
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The type of the statistics. Valid values:
+	// The statistics information. This includes:
 	//
-	// 	- **client_list**: client
+	// - **client_list**: the client tool.
 	//
-	// 	- **ip**: IP address
+	// - **ip**: the IP address information.
 	//
-	// 	- **region_id*	- region
+	// - **region_id**: the region.
 	//
-	// 	- **country_id**: country
+	// - **country_id**: the country.
 	//
 	// example:
 	//

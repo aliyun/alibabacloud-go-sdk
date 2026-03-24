@@ -16,7 +16,7 @@ type iDescribeDefaultHttpsResponseBody interface {
 }
 
 type DescribeDefaultHttpsResponseBody struct {
-	// The default SSL and TLS settings.
+	// The default SSL/TLS settings.
 	DefaultHttps *DescribeDefaultHttpsResponseBodyDefaultHttps `json:"DefaultHttps,omitempty" xml:"DefaultHttps,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,25 @@ func (s *DescribeDefaultHttpsResponseBody) Validate() error {
 }
 
 type DescribeDefaultHttpsResponseBodyDefaultHttps struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of the cipher suites. Valid values:
+	// The type of the cipher suite. Valid values:
 	//
-	// 	- **1**: all cipher suites.
+	// - **1**: all cipher suites.
 	//
-	// 	- **2**: strong cipher suites.
+	// - **2**: strong cipher suites.
 	//
-	// 	- **99**: custom cipher suites.
+	// - **99**: custom cipher suites.
 	//
 	// example:
 	//
 	// 1
 	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suite.
+	// The custom cipher suites. This parameter is returned only when CipherSuite is set to 99.
 	//
 	// example:
 	//
@@ -88,21 +88,21 @@ type DescribeDefaultHttpsResponseBodyDefaultHttps struct {
 	CustomCiphers *string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty"`
 	// Indicates whether TLS 1.3 is supported. Valid values:
 	//
-	// 	- **true**
+	// - **true**: TLS 1.3 is supported.
 	//
-	// 	- **false**
+	// - **false**: TLS 1.3 is not supported.
 	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// The version of the TLS protocol. Valid values:
+	// The minimum TLS version. Valid values:
 	//
-	// 	- **tlsv1**
+	// - **tlsv1**
 	//
-	// 	- **tlsv1.1**
+	// - **tlsv1.1**
 	//
-	// 	- **tlsv1.2**
+	// - **tlsv1.2**
 	//
 	// example:
 	//

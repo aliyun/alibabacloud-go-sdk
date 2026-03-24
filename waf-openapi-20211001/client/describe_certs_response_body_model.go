@@ -18,9 +18,9 @@ type iDescribeCertsResponseBody interface {
 }
 
 type DescribeCertsResponseBody struct {
-	// The certificates.
+	// The list of certificates.
 	Certs []*DescribeCertsResponseBodyCerts `json:"Certs,omitempty" xml:"Certs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,23 +83,23 @@ func (s *DescribeCertsResponseBody) Validate() error {
 }
 
 type DescribeCertsResponseBodyCerts struct {
-	// The expiration time.
+	// The time when the certificate expires.
 	//
 	// example:
 	//
 	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The effective time.
+	// The time when the certificate takes effect.
 	//
 	// example:
 	//
 	// 1976256836582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-ap-southeast-1" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-ap-southeast-1.
+	// The globally unique ID of the certificate. The value follows a "\\<Certificate ID>-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
 	//
 	// example:
 	//
-	// 123-ap-southeast-1
+	// 12345-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
 	//
@@ -113,7 +113,7 @@ type DescribeCertsResponseBodyCerts struct {
 	//
 	// *.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The domain that is supported by the certificate.
+	// The domain name for which the certificate is issued.
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ type DescribeCertsResponseBodyCerts struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether the certificate chain is complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The certificate chain is complete.
 	//
-	// 	- **false**
+	// - **false**: The certificate chain is incomplete.
 	//
 	// example:
 	//

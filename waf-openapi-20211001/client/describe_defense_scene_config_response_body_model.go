@@ -16,10 +16,14 @@ type iDescribeDefenseSceneConfigResponseBody interface {
 }
 
 type DescribeDefenseSceneConfigResponseBody struct {
+	// The value of the configuration item. For more information, see the **ConfigValue*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
+	//
 	// example:
 	//
 	// true
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0

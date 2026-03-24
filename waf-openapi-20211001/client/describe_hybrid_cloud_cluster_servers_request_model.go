@@ -32,46 +32,80 @@ type iDescribeHybridCloudClusterServersRequest interface {
 }
 
 type DescribeHybridCloudClusterServersRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the node group.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the hybrid cloud node group. Valid values:
+	//
+	// - **protect**: protection.
+	//
+	// - **control**: control.
+	//
+	// - **storage**: storage.
+	//
+	// - **controlStorage**: control and storage.
+	//
 	// example:
 	//
 	// protect
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The hostname of the server that you want to query.
+	//
 	// example:
 	//
 	// online-***wwq
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-******nd07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the server that you want to query.
+	//
 	// example:
 	//
 	// 1.X.X.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q

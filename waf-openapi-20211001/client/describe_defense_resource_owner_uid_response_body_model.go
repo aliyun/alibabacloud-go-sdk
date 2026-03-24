@@ -16,7 +16,10 @@ type iDescribeDefenseResourceOwnerUidResponseBody interface {
 }
 
 type DescribeDefenseResourceOwnerUidResponseBody struct {
+	// The owner account information of the protected objects.
 	OwnerInfos []*DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos `json:"OwnerInfos,omitempty" xml:"OwnerInfos,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7326952B-B83B-5B7C-84FA-77F3E17310A2
@@ -63,10 +66,14 @@ func (s *DescribeDefenseResourceOwnerUidResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos struct {
+	// The owner account ID of the protected object.
+	//
 	// example:
 	//
 	// 125************21
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// The name of the protected object.
+	//
 	// example:
 	//
 	// a.com-waf

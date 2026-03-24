@@ -16,7 +16,7 @@ type iCreateSM2CertResponseBody interface {
 }
 
 type CreateSM2CertResponseBody struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//

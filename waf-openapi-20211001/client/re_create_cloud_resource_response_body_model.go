@@ -14,7 +14,7 @@ type iReCreateCloudResourceResponseBody interface {
 }
 
 type ReCreateCloudResourceResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

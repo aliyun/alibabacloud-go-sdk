@@ -28,37 +28,37 @@ type iDescribeDefenseResourcesRequest interface {
 type DescribeDefenseResourcesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// example:
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the paginated results Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of results per page. Default value: **10**.
+	// The number of entries to return on each page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query conditions. Specify the value of this parameter as a string in the JSON format.
+	// The query conditions. This parameter is a JSON string.
 	//
-	// >  The results vary based on the query condition. For more information, see the "**Query parameters**" section in this topic.
+	// > The query results vary based on the query conditions. For more information, see **Query parameter details**.
 	//
 	// example:
 	//
 	// {\\"product\\":\\"waf\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeDefenseResourcesRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The tag of the resource. You can specify up to 20 tags.
+	// A list of resource tags. You can specify up to 20 tags.
 	Tag []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

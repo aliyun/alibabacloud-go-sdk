@@ -32,14 +32,15 @@ type iModifyTemplateResourcesRequest interface {
 }
 
 type ModifyTemplateResourcesRequest struct {
+	// The IDs of the protected assets to attach. The value is in the [**"XX1","XX2",...**] format.
 	BindAssets []*string `json:"BindAssets,omitempty" xml:"BindAssets,omitempty" type:"Repeated"`
-	// The protected object groups that you want to associate with the template. Specify the value in the [**"group1","group2",...**] format.
+	// The protected object groups to attach. The value is in the [**"group1","group2",...**] format.
 	BindResourceGroups []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects that you want to associate with the template. Specify the value in the [**"XX1","XX2",...**] format.
+	// The protected objects to attach. The value is in the [**"XX1","XX2",...**] format.
 	BindResources []*string `json:"BindResources,omitempty" xml:"BindResources,omitempty" type:"Repeated"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -47,11 +48,11 @@ type ModifyTemplateResourcesRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -63,18 +64,19 @@ type ModifyTemplateResourcesRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the protection rule template.
+	// The ID of the protection template.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2291
-	TemplateId   *int64    `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The IDs of the protected assets to detach. The value is in the [**"XX1","XX2",...**] format.
 	UnbindAssets []*string `json:"UnbindAssets,omitempty" xml:"UnbindAssets,omitempty" type:"Repeated"`
-	// The protected object groups that you want to disassociate from the template. Specify the value in the [**"group1","group2",...**] format.
+	// The protected object groups to detach. The value is in the [**"group1","group2",...**] format.
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects that you want to disassociate from the template. Specify the value in the [**"XX1","XX2",...**] format.
+	// The protected objects to detach. The value is in the [**"XX1","XX2",...**] format.
 	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 

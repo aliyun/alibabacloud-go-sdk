@@ -18,11 +18,16 @@ type iDescribeThreatEventResponseBody interface {
 }
 
 type DescribeThreatEventResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 98106632-6865-5600-A834-3D909***
-	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of notable security events.
 	ThreatEvents []*DescribeThreatEventResponseBodyThreatEvents `json:"ThreatEvents,omitempty" xml:"ThreatEvents,omitempty" type:"Repeated"`
+	// The total number of security events that match the query conditions.
+	//
 	// example:
 	//
 	// 10
@@ -78,30 +83,78 @@ func (s *DescribeThreatEventResponseBody) Validate() error {
 }
 
 type DescribeThreatEventResponseBodyThreatEvents struct {
+	// The percentage of attack requests that were blocked by WAF.
+	//
 	// example:
 	//
 	// 100%
 	BlockRate *string `json:"BlockRate,omitempty" xml:"BlockRate,omitempty"`
+	// The time when the last attack occurred. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1768406400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the security event.
+	//
 	// example:
 	//
 	// f439994c8ab39f84eced33490f0c4388
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The severity level of the security event. Valid values:
+	//
+	// - **critical**
+	//
+	// - **high**
+	//
+	// - **medium**
+	//
+	// - **low**
+	//
 	// example:
 	//
 	// high
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
+	// The source IP address of the attack.
+	//
+	// > A security event may have multiple source IP addresses. This operation returns only one of them.
+	//
 	// example:
 	//
 	// 3.3.3.3
 	EventSrc *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
+	// The type of the security event. Valid values:
+	//
+	// - **MultipleDomainDirscan**: a directory and file scan against multiple domain names.
+	//
+	// - **SingleDomainDirscan**: a directory and file scan against a single domain name.
+	//
+	// - **MultipleDomainWebscan**: a web vulnerability scan against multiple domain names.
+	//
+	// - **SingleDomainWebscan**: a web vulnerability scan against a single domain name.
+	//
+	// - **MultipleDomainWebattack**: a web vulnerability attack against multiple domain names.
+	//
+	// - **SingleDomainWebattack**: a web vulnerability attack against a single domain name.
+	//
+	// - **SingleURLWebattack**: a web vulnerability attack against a specific URL.
+	//
+	// - **SingleURLSqlattack**: an SQL injection attack against a specific URL.
+	//
+	// - **SingleURLXssattack**: an XSS attack against a specific URL.
+	//
+	// - **WebshellUpload**: an attack that attempts to upload backdoor trojans.
+	//
+	// - **RandomVulnTest**: a random web vulnerability probe.
+	//
 	// example:
 	//
 	// Event_InternalLoginWeakPasswd
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
+	// The protected object that is the target of the attack.
+	//
+	// > A security event may have multiple protected objects as targets. This operation returns only one of them.
+	//
 	// example:
 	//
 	// test.aliyundemo.com-waf

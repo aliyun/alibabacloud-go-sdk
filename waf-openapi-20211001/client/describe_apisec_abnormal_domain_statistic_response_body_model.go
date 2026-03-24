@@ -18,15 +18,15 @@ type iDescribeApisecAbnormalDomainStatisticResponseBody interface {
 }
 
 type DescribeApisecAbnormalDomainStatisticResponseBody struct {
-	// The response parameters.
+	// The statistics of domain names with API security risks.
 	Data []*DescribeApisecAbnormalDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id of the request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014***B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of domain names that have API security risks.
 	//
 	// example:
 	//
@@ -83,31 +83,31 @@ func (s *DescribeApisecAbnormalDomainStatisticResponseBody) Validate() error {
 }
 
 type DescribeApisecAbnormalDomainStatisticResponseBodyData struct {
-	// The number of APIs.
+	// The total number of APIs that are associated with the domain name.
 	//
 	// example:
 	//
 	// 10
 	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
-	// The domain name.
+	// The domain name that is protected by WAF.
 	//
 	// example:
 	//
 	// ba.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of high-level risks.
+	// The number of high-severity threats.
 	//
 	// example:
 	//
 	// 12
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
-	// The number of low-level risks.
+	// The number of low-severity threats.
 	//
 	// example:
 	//
 	// 4
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
-	// The number of medium-level risks.
+	// The number of medium-severity threats.
 	//
 	// example:
 	//

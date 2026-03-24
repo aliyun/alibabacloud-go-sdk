@@ -16,7 +16,7 @@ type iDescribeHybridCloudServerRegionsResponseBody interface {
 }
 
 type DescribeHybridCloudServerRegionsResponseBody struct {
-	// The information about the regions.
+	// The regions.
 	Regions []*DescribeHybridCloudServerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

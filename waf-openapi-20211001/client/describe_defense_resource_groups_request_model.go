@@ -26,7 +26,7 @@ type iDescribeDefenseResourceGroupsRequest interface {
 }
 
 type DescribeDefenseResourceGroupsRequest struct {
-	// The name of the protected object group that you want to query. Fuzzy queries are supported.
+	// The name of the protected object group that you want to query. Fuzzy query is supported.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeDefenseResourceGroupsRequest struct {
 	GroupNames *string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type DescribeDefenseResourceGroupsRequest struct {
 	//
 	// waf_v2_public_cn-wwo36****0i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **20**.
+	// The number of entries per page. Default value: **20**, which indicates 20 entries per page.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DescribeDefenseResourceGroupsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

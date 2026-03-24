@@ -16,9 +16,9 @@ type iDescribeHybridCloudClustersResponseBody interface {
 }
 
 type DescribeHybridCloudClustersResponseBody struct {
-	// The information about the clusters.
+	// The list of clusters.
 	ClusterInfos []*DescribeHybridCloudClustersResponseBodyClusterInfos `json:"ClusterInfos,omitempty" xml:"ClusterInfos,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,21 +68,21 @@ func (s *DescribeHybridCloudClustersResponseBody) Validate() error {
 type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
 	// The network access mode. Valid values:
 	//
-	// 	- **internet**: Internet access.
+	// - **internet**: Internet access.
 	//
-	// 	- **vpc**: internal network access by using Express Connect circuits.
+	// - **vpc**: leased line-based private network access.
 	//
 	// example:
 	//
 	// internet
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The region where the virtual private cloud (VPC) resides. Valid values:
+	// The region where the leased line is connected. Valid values:
 	//
-	// 	- **cn-hangzhou**: China (Hangzhou).
+	// - **cn-hangzhou**: Hangzhou
 	//
-	// 	- **cn-beiijng**: China (Beijing).
+	// - **cn-beijing**: Beijing
 	//
-	// 	- **cn-shanghai**: China (Shanghai).
+	// - **cn-shanghai**: Shanghai
 	//
 	// example:
 	//
@@ -92,43 +92,43 @@ type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
 	//
 	// example:
 	//
-	// test
+	// testcluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The ID of the hybrid cloud cluster resource.
+	// The resource ID of the hybrid cloud cluster.
 	//
 	// example:
 	//
 	// hdbc-cluster-t1****a
 	ClusterResourceId *string `json:"ClusterResourceId,omitempty" xml:"ClusterResourceId,omitempty"`
-	// The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	// The ports that use the HTTP protocol. The value is a string. If multiple ports are returned, they are separated by commas in the **port1,port2,port3*	- format.
 	//
 	// example:
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	// The ports that use the HTTPS protocol. The value is a string. If multiple ports are returned, they are separated by commas in the **port1,port2,port3*	- format.
 	//
 	// example:
 	//
 	// 443,8443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 524**8
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of protection nodes that can be added to the cluster.
+	// The number of protection nodes that you can add to the cluster.
 	//
 	// example:
 	//
 	// 1
 	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
-	// The status of the proxy gateway. Valid values:
+	// The status of the proxy. Valid values:
 	//
-	// 	- **on**: enabled.
+	// - **on**: enabled
 	//
-	// 	- **off**: disabled.
+	// - **off**: disabled
 	//
 	// example:
 	//
@@ -136,39 +136,39 @@ type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
 	// The type of the cluster. Valid values:
 	//
-	// 	- **cname**: reverse proxy cluster.
+	// - **cname**: reverse proxy cluster
 	//
-	// 	- **service**: SDK-based traffic mirroring cluster.
+	// - **service**: service cluster
 	//
 	// example:
 	//
 	// cname
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The remarks about the cluster.
+	// The remarks.
 	//
 	// example:
 	//
-	// demo
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The configurations of the rule.
+	// The rule configuration.
 	//
 	// example:
 	//
 	// {"enable":true,"param":{"breaker":{"duration":1,"failed":1,"recent_failed":1},"disable_protect":false,"max_request_body_len":1,"timeout":1}}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// The status of manual bypass. Valid values:
+	// The status of the manual bypass setting. Valid values:
 	//
-	// 	- **on**: enabled.
+	// - **on**: enabled.
 	//
-	// 	- **off**: disabled.
+	// - **off**: disabled.
 	//
 	// example:
 	//
 	// off
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The type of the rule. Valid value:
+	// The type of the rule. Valid values:
 	//
-	// 	- **bypass**: Requests are allowed without security checks.
+	// - **bypass**: WAF does not perform security checks and allows traffic to pass through.
 	//
 	// example:
 	//

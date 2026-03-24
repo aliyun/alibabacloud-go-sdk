@@ -18,7 +18,7 @@ type iDescribeSensitiveRequestLogResponseBody interface {
 }
 
 type DescribeSensitiveRequestLogResponseBody struct {
-	// The access logs.
+	// The list of access logs.
 	Data []*DescribeSensitiveRequestLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,11 +83,13 @@ func (s *DescribeSensitiveRequestLogResponseBody) Validate() error {
 }
 
 type DescribeSensitiveRequestLogResponseBodyData struct {
+	// The account that initiated the request.
+	//
 	// example:
 	//
 	// admin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The API.
+	// The API path.
 	//
 	// example:
 	//
@@ -99,13 +101,13 @@ type DescribeSensitiveRequestLogResponseBodyData struct {
 	//
 	// 197b52abcd81d6a8bd4***e477
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The IP address.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 103.118.55.**
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The number of sensitive data records involved in cross-border data transfer.
+	// The number of outbound sensitive data entries.
 	//
 	// example:
 	//
@@ -117,21 +119,21 @@ type DescribeSensitiveRequestLogResponseBodyData struct {
 	//
 	// a.****.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// IP region, formatted as a region code.
+	// The code of the region to which the client IP address belongs.
 	//
 	// example:
 	//
 	// CN
 	RemoteCountryId *string `json:"RemoteCountryId,omitempty" xml:"RemoteCountryId,omitempty"`
-	// The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+	// The time of the request. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1723392000
 	RequestTime *int64 `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	// The details of sensitive data. The value is a string that consists of a JSON struct. The JSON struct contains key-value pairs. In a key-value pair, a key indicates the identifier of a sensitive data type, including built-in and custom types, and a value indicates specific sensitive data.
+	// The sensitive data. The key indicates the sensitive data type identifier, which can be a built-in or custom type, and the value indicates the list of sensitive data.
 	//
-	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
@@ -153,7 +155,7 @@ type DescribeSensitiveRequestLogResponseBodyData struct {
 	//
 	// }
 	SensitiveList *string `json:"SensitiveList,omitempty" xml:"SensitiveList,omitempty"`
-	// The trace ID.
+	// The ID of the access log.
 	//
 	// example:
 	//

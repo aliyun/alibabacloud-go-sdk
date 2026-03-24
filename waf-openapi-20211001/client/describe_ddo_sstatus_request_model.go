@@ -18,9 +18,9 @@ type iDescribeDDoSStatusRequest interface {
 }
 
 type DescribeDDoSStatusRequest struct {
-	// The ID of the WAF instance that you want to query.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// > Call [](t2223479.xdita#)to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +28,17 @@ type DescribeDDoSStatusRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region ID of WAF instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//

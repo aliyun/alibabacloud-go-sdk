@@ -26,7 +26,7 @@ type iDescribeRuleHitsTopClientIpRequest interface {
 }
 
 type DescribeRuleHitsTopClientIpRequest struct {
-	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you do not set this parameter, the current time is used as the end time.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeRuleHitsTopClientIpRequest struct {
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,9 @@ type DescribeRuleHitsTopClientIpRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -64,23 +64,23 @@ type DescribeRuleHitsTopClientIpRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
+	// The type of rule that the protected object hits. If you do not set this parameter, data for all rule types is returned.
 	//
-	// 	- **blacklist:*	- IP address blacklist rules.
+	// - **blacklist**: The IP address blacklist is hit.
 	//
-	// 	- **custom:*	- custom rules.
+	// - **custom**: A custom rule is hit.
 	//
-	// 	- **antiscan:*	- scan protection rules.
+	// - **antiscan**: A scan protection rule is hit.
 	//
-	// 	- **cc_system:*	- HTTP flood protection rules.
+	// - **cc_system**: An HTTP flood protection rule is hit.
 	//
-	// 	- **region_block:*	- region blacklist rules.
+	// - **region_block**: The Location Blacklist is hit.
 	//
 	// example:
 	//
 	// blacklist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The beginning of the time range to query. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//

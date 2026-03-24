@@ -18,15 +18,15 @@ type iDescribePrepayDailyBillsResponseBody interface {
 }
 
 type DescribePrepayDailyBillsResponseBody struct {
-	// The bills of the burstable QPS (pay-as-you-go) feature.
+	// List of WAF burstable billing records.
 	Bills []*DescribePrepayDailyBillsResponseBodyBills `json:"Bills,omitempty" xml:"Bills,omitempty" type:"Repeated"`
-	// The request ID.
+	// ID of the request.
 	//
 	// example:
 	//
 	// EC10C9EA-A367-52D5-***-***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// Total number of entries returned.
 	//
 	// example:
 	//
@@ -83,83 +83,83 @@ func (s *DescribePrepayDailyBillsResponseBody) Validate() error {
 }
 
 type DescribePrepayDailyBillsResponseBodyBills struct {
-	// The burstable QPS of the WAF instance.
+	// Elastic QPS specification for the WAF instance.
 	//
 	// example:
 	//
 	// 100
 	ElasticQpsSetValue *int64 `json:"ElasticQpsSetValue,omitempty" xml:"ElasticQpsSetValue,omitempty"`
-	// The billing end time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// End time of the billing period, in Unix timestamp format (UTC), measured in seconds.
 	//
 	// example:
 	//
 	// 1687591200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The status of QPS usage within the current period of time. Valid values:
+	// Overuse status for the current period. Valid values:
 	//
-	// 	- **0**: normal.
+	// - **0**: Normal.
 	//
-	// 	- **1**: excess.
+	// - **1**: Overused.
 	//
-	// 	- **2**: sandbox.
+	// - **2**: Sandbox.
 	//
 	// example:
 	//
 	// 0
 	ExceedStatus *int32 `json:"ExceedStatus,omitempty" xml:"ExceedStatus,omitempty"`
-	// The peak QPS within the current period of time.
+	// Maximum QPS for the current period.
 	//
 	// example:
 	//
 	// 600
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	// The unit price in the bill. The price is measured in CNY for bills at the China site (aliyun.com) and in USD for bills at the international site (alibabacloud.com).
+	// Unit price for burstable charges. Unit: CNY for the Alibaba Cloud China Website (www\\.aliyun.com) and USD for the Alibaba Cloud International Website (www\\.alibabacloud.com).
 	//
 	// example:
 	//
 	// 0.25
 	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// The extended QPS of the WAF instance.
+	// QPS extension specification for the WAF instance.
 	//
 	// example:
 	//
 	// 10
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The default QPS of the WAF instance.
+	// QPS specification within the version of the WAF instance.
 	//
 	// example:
 	//
 	// 10
 	QpsVersion *int64 `json:"QpsVersion,omitempty" xml:"QpsVersion,omitempty"`
-	// Indicates whether risk identification is enabled. Valid values:
+	// Whether Fraud Detection is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Fraud Detection is enabled.
 	//
-	// 	- **false**
+	// - **false**: Fraud Detection is disabled.
 	//
 	// example:
 	//
 	// true
 	RiskControl *bool `json:"RiskControl,omitempty" xml:"RiskControl,omitempty"`
-	// The number of times that risk identification is performed.
+	// Number of Fraud Detection requests processed.
 	//
 	// example:
 	//
 	// 100
 	RiskTraffic *int64 `json:"RiskTraffic,omitempty" xml:"RiskTraffic,omitempty"`
-	// The billing start time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// Start time of the billing period, in Unix timestamp format (UTC), measured in seconds.
 	//
 	// example:
 	//
 	// 1687822980
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The actual QPS in total.
+	// Total QPS subject to burstable billing.
 	//
 	// example:
 	//
 	// 0
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The billing types.
+	// The billing type.
 	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
 

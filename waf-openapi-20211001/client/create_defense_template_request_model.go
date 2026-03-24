@@ -11,6 +11,8 @@ type iCreateDefenseTemplateRequest interface {
 	GoString() string
 	SetDefenseScene(v string) *CreateDefenseTemplateRequest
 	GetDefenseScene() *string
+	SetDefenseSubScene(v string) *CreateDefenseTemplateRequest
+	GetDefenseSubScene() *string
 	SetDescription(v string) *CreateDefenseTemplateRequest
 	GetDescription() *string
 	SetInstanceId(v string) *CreateDefenseTemplateRequest
@@ -34,7 +36,7 @@ type iCreateDefenseTemplateRequest interface {
 }
 
 type CreateDefenseTemplateRequest struct {
-	// The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The protection scenario. For more information, see the **DefenseScene*	- parameter of the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +44,21 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The description of the protection rule template.
+	// example:
+	//
+	// bot_custom_acl
+	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
+	// The description of the protection template.
+	//
+	// - **bot_custom_acl**: Represents the protection template for advanced custom rules in bot management.
 	//
 	// example:
 	//
-	// Test
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to get the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,23 +66,25 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// 	- **cn-hangzhou:*	- the Chinese mainland.
-	//
-	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	// The region where the WAF instance is deployed. Valid values:
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
+	//
+	// - **cn-hangzhou**: Represents the Chinese mainland.
+	//
+	// - **ap-southeast-1**: Represents regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The name of the protection rule template.
+	// The name of the protection template. The name must be 1 to 255 characters long and can contain letters, digits, Chinese characters, underscores (_), periods (.), and hyphens (-).
+	//
+	// > The names of templates for the same protection scenario (**DefenseScene**) must be unique.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +92,7 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// test221
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
+	// The origin of the protection template. The value must be **custom**.
 	//
 	// This parameter is required.
 	//
@@ -90,11 +100,11 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
-	// The status of the protection rule template. Valid values:
+	// Indicates whether the protection template is enabled. Valid values:
 	//
-	// 	- **0:*	- disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1:*	- enabled.
+	// - **1**: Enabled.
 	//
 	// This parameter is required.
 	//
@@ -102,20 +112,24 @@ type CreateDefenseTemplateRequest struct {
 	//
 	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	// The type of the protection rule template. Valid values:
+	// The type of the protection template. Valid values:
 	//
-	// 	- **user_default:*	- default template.
+	// - **user_default**: The user\\"s default template.
 	//
-	// 	- **user_custom:*	- custom template.
+	// - **user_custom**: A user-defined template.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_default
-	TemplateType         *string   `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The protected objects to unbind when you create a default template. Use the [**"XX1","XX2",...**] format.
+	//
+	// > This parameter takes effect only when you create a **default template*	- (**TemplateType*	- is set to **user_default**).
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	UnbindResources      []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
+	// The ID of the Alibaba Cloud resource group.
+	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
 func (s CreateDefenseTemplateRequest) String() string {
@@ -128,6 +142,10 @@ func (s CreateDefenseTemplateRequest) GoString() string {
 
 func (s *CreateDefenseTemplateRequest) GetDefenseScene() *string {
 	return s.DefenseScene
+}
+
+func (s *CreateDefenseTemplateRequest) GetDefenseSubScene() *string {
+	return s.DefenseSubScene
 }
 
 func (s *CreateDefenseTemplateRequest) GetDescription() *string {
@@ -172,6 +190,11 @@ func (s *CreateDefenseTemplateRequest) GetUnbindResources() []*string {
 
 func (s *CreateDefenseTemplateRequest) SetDefenseScene(v string) *CreateDefenseTemplateRequest {
 	s.DefenseScene = &v
+	return s
+}
+
+func (s *CreateDefenseTemplateRequest) SetDefenseSubScene(v string) *CreateDefenseTemplateRequest {
+	s.DefenseSubScene = &v
 	return s
 }
 

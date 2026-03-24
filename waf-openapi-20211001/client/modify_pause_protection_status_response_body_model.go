@@ -14,7 +14,7 @@ type iModifyPauseProtectionStatusResponseBody interface {
 }
 
 type ModifyPauseProtectionStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

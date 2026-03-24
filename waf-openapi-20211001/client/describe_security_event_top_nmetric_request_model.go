@@ -24,13 +24,13 @@ type iDescribeSecurityEventTopNMetricRequest interface {
 }
 
 type DescribeSecurityEventTopNMetricRequest struct {
-	// The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
+	// The filter conditions for the query. A logical AND operator is used between multiple filter conditions.
 	//
 	// This parameter is required.
 	Filter *DescribeSecurityEventTopNMetricRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeSecurityEventTopNMetricRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of data entries that can be returned. Data entries are sorted in descending order before they are returned. Maximum value: 10.
+	// The maximum number of entries to return. The entries are sorted in descending order. Maximum value: 10.
 	//
 	// This parameter is required.
 	//
@@ -46,39 +46,39 @@ type DescribeSecurityEventTopNMetricRequest struct {
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The metric whose top N data entries you want to return. The following metrics are supported:
+	// Specifies the content of the returned data. Different metrics correspond to different data content. This operation supports the following metrics:
 	//
-	// >  For more information about attack requests, see the "Operation description" section of this topic.
+	// > For the definition of an attack request, see the Description section of this topic. The following descriptions use this definition.
 	//
-	// 	- real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	// - real_client_ip: Aggregates the source IP addresses of attack requests, sorts them in descending order, and returns the top N results.
 	//
-	// 	- http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	// - http_user_agent: Aggregates the User-Agent headers of attack requests, sorts them in descending order, and returns the top N results.
 	//
-	// 	- matched_host: The system aggregates the protected objects that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	// - matched_host: Aggregates the protected objects that are hit by attack requests, sorts them in descending order, and returns the top N results.
 	//
-	// 	- remote_region_id: The system aggregates the countries to which the source IP addresses of attack requests belong to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	// - remote_region_id: Aggregates the countries of origin for the source IP addresses of attack requests, sorts them in descending order, and returns the top N results.
 	//
-	// 	- request_path: The system aggregates the URLs of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The URLs exclude query strings.
+	// - request_path: Aggregates the URLs of attack requests, excluding query strings, sorts them in descending order, and returns the top N results.
 	//
-	// 	- block_defense_scene: The system aggregates the protection modules that block attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The requests match protection rules whose actions are not set to Monitor.
+	// - block_defense_scene: Aggregates the final protection modules that handled blocked requests, sorts them in descending order, and returns the top N results. Blocked requests are requests whose action is not Monitor.
 	//
-	// 	- defense_scene: The system aggregates the protection modules that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
+	// - defense_scene: Aggregates all protection modules that are hit by attack requests, sorts them in descending order, and returns the top N results.
 	//
-	// 	- defense_scene_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. Only protection rules whose actions are not set to Monitor are counted. The system returns the value in the following format:\\
+	// - defense_scene_rule_id: Queries the top rule IDs of hit rules that are not in Monitor mode and their corresponding protection modules. This query returns statistics only for rules that are not in Monitor mode. The data is returned in the following format:<br>
 	//
-	//     `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
+	//   `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`<br>
 	//
-	// 	- defense_scene_with_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. The IDs and protection modules are connected by using hyphens (-). Protection rules whose actions are set to Monitor and Block are counted. The system returns the value in the following format:\\
+	// - defense_scene_with_rule_id: Returns the top N rule IDs based on the number of hits and their corresponding protection modules. The rule ID and module are connected by a hyphen (-). This query includes rules in both Monitor and Block modes. The data is returned in the following format:<br>
 	//
-	//     `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`
+	//   `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`<br>
 	//
-	// 	- defense_scene_top_rule_id: The system returns top N matched protection rules of a specific protection module. You can specify Conditions in Filter to configure filter conditions. For example, you can use the following condition to query top N matched protection rules of the custom rule module:\\
+	// - defense_scene_top_rule_id: Queries the top rules that are hit in a specific protection module. Specify a filter condition in the Conditions field of the Filter parameter. For example, to query the top rules that are hit in the custom access control list (ACL) module, set the Conditions field as follows:<br>
 	//
-	//     `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
+	//   `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`<br>
 	//
-	// 	- defense_scene_rule_type: The system returns top N matched protection rules of the core web protection module. This metric is supported only by the core web protection module because only this module supports subtypes of protection rules. You must specify Conditions in Filter to configure filter conditions. Example:\\
+	// - defense_scene_rule_type: Queries the top rule types that are hit in the core web protection module. Only the core web protection module supports this query because it is the only module that has rule subtypes. Specify a filter condition in the Conditions field of the Filter parameter as follows:<br>
 	//
-	//     `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
+	//   `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`<br>
 	//
 	// This parameter is required.
 	//
@@ -86,17 +86,17 @@ type DescribeSecurityEventTopNMetricRequest struct {
 	//
 	// real_client_ip
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// 	- **cn-hangzhou**: The Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// 	- **ap-southeast-1**: Outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
-	// ap-southeast-1
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ func (s *DescribeSecurityEventTopNMetricRequest) Validate() error {
 }
 
 type DescribeSecurityEventTopNMetricRequestFilter struct {
-	// The filter conditions. Each object describes a filter condition.
+	// A list of filter conditions. Each object in the array represents a filter condition.
 	Conditions []*DescribeSecurityEventTopNMetricRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The time range for the query.
+	// The time range to query.
 	//
 	// This parameter is required.
 	DateRange *DescribeSecurityEventTopNMetricRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
@@ -229,19 +229,19 @@ func (s *DescribeSecurityEventTopNMetricRequestFilter) Validate() error {
 }
 
 type DescribeSecurityEventTopNMetricRequestFilterConditions struct {
-	// The field name. This operation supports all fields. For more information, see the **Supported field names*	- section below.
+	// The field to filter by. This operation supports all fields.
 	//
 	// example:
 	//
 	// matched_host
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The operator. For more information, see the **Supported operators*	- section below.
+	// The operator.
 	//
 	// example:
 	//
 	// eq
 	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
-	// The field content.
+	// The filter value.
 	//
 	// example:
 	//
@@ -289,7 +289,7 @@ func (s *DescribeSecurityEventTopNMetricRequestFilterConditions) Validate() erro
 }
 
 type DescribeSecurityEventTopNMetricRequestFilterDateRange struct {
-	// The end of the time range to query. The value is a Unix timestamp. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -297,7 +297,9 @@ type DescribeSecurityEventTopNMetricRequestFilterDateRange struct {
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds.
+	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds. You can query data within the last 30 days.
+	//
+	// > ## The start time must be within the last 30 days.
 	//
 	// This parameter is required.
 	//
