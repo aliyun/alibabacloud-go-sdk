@@ -291,6 +291,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	DocsExamined *string `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
+	Fail         *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// example:
 	//
 	// 10
@@ -334,6 +335,7 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OpType     *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	OriginTime *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
+	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// example:
 	//
 	// 1
@@ -358,6 +360,8 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	//
 	// 100
 	QueryTimeSeconds *float64 `json:"QueryTimeSeconds,omitempty" xml:"QueryTimeSeconds,omitempty"`
+	Reason           *string  `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReqId            *string  `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	RequestSize      *int64   `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
 	ResponseSize     *int64   `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
 	// example:
@@ -484,6 +488,10 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetDocsExamined() *string {
 	return s.DocsExamined
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetFail() *string {
+	return s.Fail
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetFrows() *int64 {
 	return s.Frows
 }
@@ -536,6 +544,10 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetOriginTime() *string {
 	return s.OriginTime
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetParams() *string {
+	return s.Params
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetPhysicalIOReads() *int64 {
 	return s.PhysicalIOReads
 }
@@ -558,6 +570,14 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetQueryTime() *int64 {
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetQueryTimeSeconds() *float64 {
 	return s.QueryTimeSeconds
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetReason() *string {
+	return s.Reason
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetReqId() *string {
+	return s.ReqId
 }
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) GetRequestSize() *int64 {
@@ -699,6 +719,11 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetDocsExamined(v string) *
 	return s
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetFail(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.Fail = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetFrows(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.Frows = &v
 	return s
@@ -764,6 +789,11 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetOriginTime(v string) *De
 	return s
 }
 
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetParams(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.Params = &v
+	return s
+}
+
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetPhysicalIOReads(v int64) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.PhysicalIOReads = &v
 	return s
@@ -791,6 +821,16 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetQueryTime(v int64) *Desc
 
 func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetQueryTimeSeconds(v float64) *DescribeSlowLogRecordsResponseBodyDataLogs {
 	s.QueryTimeSeconds = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetReason(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsResponseBodyDataLogs) SetReqId(v string) *DescribeSlowLogRecordsResponseBodyDataLogs {
+	s.ReqId = &v
 	return s
 }
 
