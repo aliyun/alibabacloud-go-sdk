@@ -2418,6 +2418,14 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	if !dara.IsNil(request.TargetVersion) {
+		query["TargetVersion"] = request.TargetVersion
+	}
+
 	if !dara.IsNil(request.UsedTime) {
 		query["UsedTime"] = request.UsedTime
 	}
@@ -7086,6 +7094,102 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
 	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarFs文件
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `PolarFsInstanceId` 是必须提供的参数，用来指定要操作的PolarFS实例。
+//
+// - `DBClusterId` 参数是可选的，如果提供，则表示与特定PolarDB集群关联的操作。
+//
+// - `Objects` 参数是一个字符串数组，列出了所有需要被删除的对象路径，并且是必需的。
+//
+// @param tmpReq - DeletePolarFsObjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarFsObjectsResponse
+func (client *Client) DeletePolarFsObjectsWithOptions(tmpReq *DeletePolarFsObjectsRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarFsObjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeletePolarFsObjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ObjectsToDelete) {
+		request.ObjectsToDeleteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectsToDelete, dara.String("ObjectsToDelete"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ObjectsToDeleteShrink) {
+		query["ObjectsToDelete"] = request.ObjectsToDeleteShrink
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarFsObjects"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarFsObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarFs文件
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `PolarFsInstanceId` 是必须提供的参数，用来指定要操作的PolarFS实例。
+//
+// - `DBClusterId` 参数是可选的，如果提供，则表示与特定PolarDB集群关联的操作。
+//
+// - `Objects` 参数是一个字符串数组，列出了所有需要被删除的对象路径，并且是必需的。
+//
+// @param request - DeletePolarFsObjectsRequest
+//
+// @return DeletePolarFsObjectsResponse
+func (client *Client) DeletePolarFsObjects(request *DeletePolarFsObjectsRequest) (_result *DeletePolarFsObjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarFsObjectsResponse{}
+	_body, _err := client.DeletePolarFsObjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -59,6 +59,10 @@ type iCreateApplicationShrinkRequest interface {
 	GetResourceGroupId() *string
 	SetSecurityGroupId(v string) *CreateApplicationShrinkRequest
 	GetSecurityGroupId() *string
+	SetTag(v []*CreateApplicationShrinkRequestTag) *CreateApplicationShrinkRequest
+	GetTag() []*CreateApplicationShrinkRequestTag
+	SetTargetVersion(v string) *CreateApplicationShrinkRequest
+	GetTargetVersion() *string
 	SetUsedTime(v string) *CreateApplicationShrinkRequest
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateApplicationShrinkRequest
@@ -151,8 +155,13 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// rg-********************
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId *string                              `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateApplicationShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// latest
+	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
 	// example:
 	//
 	// 1
@@ -274,6 +283,14 @@ func (s *CreateApplicationShrinkRequest) GetResourceGroupId() *string {
 
 func (s *CreateApplicationShrinkRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *CreateApplicationShrinkRequest) GetTag() []*CreateApplicationShrinkRequestTag {
+	return s.Tag
+}
+
+func (s *CreateApplicationShrinkRequest) GetTargetVersion() *string {
+	return s.TargetVersion
 }
 
 func (s *CreateApplicationShrinkRequest) GetUsedTime() *string {
@@ -417,6 +434,16 @@ func (s *CreateApplicationShrinkRequest) SetSecurityGroupId(v string) *CreateApp
 	return s
 }
 
+func (s *CreateApplicationShrinkRequest) SetTag(v []*CreateApplicationShrinkRequestTag) *CreateApplicationShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetTargetVersion(v string) *CreateApplicationShrinkRequest {
+	s.TargetVersion = &v
+	return s
+}
+
 func (s *CreateApplicationShrinkRequest) SetUsedTime(v string) *CreateApplicationShrinkRequest {
 	s.UsedTime = &v
 	return s
@@ -438,5 +465,55 @@ func (s *CreateApplicationShrinkRequest) SetZoneId(v string) *CreateApplicationS
 }
 
 func (s *CreateApplicationShrinkRequest) Validate() error {
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateApplicationShrinkRequestTag struct {
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateApplicationShrinkRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationShrinkRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateApplicationShrinkRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateApplicationShrinkRequestTag) SetKey(v string) *CreateApplicationShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequestTag) SetValue(v string) *CreateApplicationShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequestTag) Validate() error {
 	return dara.Validate(s)
 }

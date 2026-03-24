@@ -59,6 +59,10 @@ type iCreateApplicationRequest interface {
 	GetResourceGroupId() *string
 	SetSecurityGroupId(v string) *CreateApplicationRequest
 	GetSecurityGroupId() *string
+	SetTag(v []*CreateApplicationRequestTag) *CreateApplicationRequest
+	GetTag() []*CreateApplicationRequestTag
+	SetTargetVersion(v string) *CreateApplicationRequest
+	GetTargetVersion() *string
 	SetUsedTime(v string) *CreateApplicationRequest
 	GetUsedTime() *string
 	SetVSwitchId(v string) *CreateApplicationRequest
@@ -151,8 +155,13 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// rg-********************
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId *string                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// latest
+	TargetVersion *string `json:"TargetVersion,omitempty" xml:"TargetVersion,omitempty"`
 	// example:
 	//
 	// 1
@@ -274,6 +283,14 @@ func (s *CreateApplicationRequest) GetResourceGroupId() *string {
 
 func (s *CreateApplicationRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *CreateApplicationRequest) GetTag() []*CreateApplicationRequestTag {
+	return s.Tag
+}
+
+func (s *CreateApplicationRequest) GetTargetVersion() *string {
+	return s.TargetVersion
 }
 
 func (s *CreateApplicationRequest) GetUsedTime() *string {
@@ -417,6 +434,16 @@ func (s *CreateApplicationRequest) SetSecurityGroupId(v string) *CreateApplicati
 	return s
 }
 
+func (s *CreateApplicationRequest) SetTag(v []*CreateApplicationRequestTag) *CreateApplicationRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetTargetVersion(v string) *CreateApplicationRequest {
+	s.TargetVersion = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetUsedTime(v string) *CreateApplicationRequest {
 	s.UsedTime = &v
 	return s
@@ -459,6 +486,15 @@ func (s *CreateApplicationRequest) Validate() error {
 	if s.MemApplicationSpec != nil {
 		if err := s.MemApplicationSpec.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -756,5 +792,46 @@ func (s *CreateApplicationRequestMemApplicationSpec) SetShard(v int32) *CreateAp
 }
 
 func (s *CreateApplicationRequestMemApplicationSpec) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationRequestTag struct {
+	// example:
+	//
+	// testKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// testValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateApplicationRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateApplicationRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateApplicationRequestTag) SetKey(v string) *CreateApplicationRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateApplicationRequestTag) SetValue(v string) *CreateApplicationRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateApplicationRequestTag) Validate() error {
 	return dara.Validate(s)
 }
