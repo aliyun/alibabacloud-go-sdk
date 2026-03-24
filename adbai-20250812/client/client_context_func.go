@@ -433,6 +433,134 @@ func (client *Client) LockEmbodiedAIPlatformWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 修改变配指标平台
+//
+// @param tmpReq - ModifyAgentPlatformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAgentPlatformResponse
+func (client *Client) ModifyAgentPlatformWithContext(ctx context.Context, tmpReq *ModifyAgentPlatformRequest, runtime *dara.RuntimeOptions) (_result *ModifyAgentPlatformResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyAgentPlatformShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AiPlatformConfig) {
+		request.AiPlatformConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AiPlatformConfig, dara.String("AiPlatformConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AiPlatformConfigShrink) {
+		query["AiPlatformConfig"] = request.AiPlatformConfigShrink
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAgentPlatform"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAgentPlatformResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 变配具身智能平台
+//
+// @param tmpReq - ModifyEmbodiedAIPlatformRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyEmbodiedAIPlatformResponse
+func (client *Client) ModifyEmbodiedAIPlatformWithContext(ctx context.Context, tmpReq *ModifyEmbodiedAIPlatformRequest, runtime *dara.RuntimeOptions) (_result *ModifyEmbodiedAIPlatformResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyEmbodiedAIPlatformShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RayConfig) {
+		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, dara.String("RayConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PlatformName) {
+		query["PlatformName"] = request.PlatformName
+	}
+
+	if !dara.IsNil(request.RayConfigShrink) {
+		query["RayConfig"] = request.RayConfigShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.WebserverSpecName) {
+		query["WebserverSpecName"] = request.WebserverSpecName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyEmbodiedAIPlatform"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyEmbodiedAIPlatformResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 重置具身智能平台密码
 //
 // @param request - ResetEmbodiedAIPlatformPasswordRequest
