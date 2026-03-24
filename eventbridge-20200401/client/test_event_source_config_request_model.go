@@ -94,6 +94,7 @@ type TestEventSourceConfigRequestSourceMySQLParameters struct {
 	//
 	// sg-xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SnapshotMode    *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
 	// The table name. The name must be prefixed with the database name. ${DatabaseName}.${TableName}
 	//
 	// example:
@@ -160,6 +161,10 @@ func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetSecurityGroupId()
 	return s.SecurityGroupId
 }
 
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetSnapshotMode() *string {
+	return s.SnapshotMode
+}
+
 func (s *TestEventSourceConfigRequestSourceMySQLParameters) GetTableNames() *string {
 	return s.TableNames
 }
@@ -213,6 +218,11 @@ func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetRegionId(v string
 
 func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetSecurityGroupId(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *TestEventSourceConfigRequestSourceMySQLParameters) SetSnapshotMode(v string) *TestEventSourceConfigRequestSourceMySQLParameters {
+	s.SnapshotMode = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iConversation interface {
 	GetCreatedAt() *int64
 	SetId(v string) *Conversation
 	GetId() *string
+	SetStatus(v string) *Conversation
+	GetStatus() *string
 	SetTitle(v string) *Conversation
 	GetTitle() *string
 	SetUpdatedAt(v int64) *Conversation
@@ -22,6 +24,7 @@ type iConversation interface {
 type Conversation struct {
 	CreatedAt *int64  `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	UpdatedAt *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
@@ -42,6 +45,10 @@ func (s *Conversation) GetId() *string {
 	return s.Id
 }
 
+func (s *Conversation) GetStatus() *string {
+	return s.Status
+}
+
 func (s *Conversation) GetTitle() *string {
 	return s.Title
 }
@@ -57,6 +64,11 @@ func (s *Conversation) SetCreatedAt(v int64) *Conversation {
 
 func (s *Conversation) SetId(v string) *Conversation {
 	s.Id = &v
+	return s
+}
+
+func (s *Conversation) SetStatus(v string) *Conversation {
+	s.Status = &v
 	return s
 }
 
