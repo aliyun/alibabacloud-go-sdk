@@ -9,6 +9,8 @@ type iListServicesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessibility(v string) *ListServicesShrinkRequest
+	GetAccessibility() *string
 	SetAutoscalerEnabled(v bool) *ListServicesShrinkRequest
 	GetAutoscalerEnabled() *bool
 	SetCallerUid(v string) *ListServicesShrinkRequest
@@ -64,7 +66,11 @@ type iListServicesShrinkRequest interface {
 }
 
 type ListServicesShrinkRequest struct {
-	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility     *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AutoscalerEnabled *bool   `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
 	// example:
 	//
 	// 19989224166xxxxxxx
@@ -398,6 +404,10 @@ func (s ListServicesShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListServicesShrinkRequest) GetAccessibility() *string {
+	return s.Accessibility
+}
+
 func (s *ListServicesShrinkRequest) GetAutoscalerEnabled() *bool {
 	return s.AutoscalerEnabled
 }
@@ -500,6 +510,11 @@ func (s *ListServicesShrinkRequest) GetTrafficState() *string {
 
 func (s *ListServicesShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListServicesShrinkRequest) SetAccessibility(v string) *ListServicesShrinkRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListServicesShrinkRequest) SetAutoscalerEnabled(v bool) *ListServicesShrinkRequest {

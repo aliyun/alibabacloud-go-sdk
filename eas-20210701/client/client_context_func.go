@@ -3927,6 +3927,10 @@ func (client *Client) ListServicesWithContext(ctx context.Context, tmpReq *ListS
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !dara.IsNil(request.AutoscalerEnabled) {
 		query["AutoscalerEnabled"] = request.AutoscalerEnabled
 	}
@@ -4319,6 +4323,57 @@ func (client *Client) RestartServiceWithContext(ctx context.Context, ClusterId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartServiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 伸缩服务
+//
+// @param request - ScaleServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleServiceResponse
+func (client *Client) ScaleServiceWithContext(ctx context.Context, ClusterId *string, ServiceName *string, request *ScaleServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScaleServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Instance) {
+		body["Instance"] = request.Instance
+	}
+
+	if !dara.IsNil(request.InstancesToDelete) {
+		body["InstancesToDelete"] = request.InstancesToDelete
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScaleService"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/scale"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScaleServiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

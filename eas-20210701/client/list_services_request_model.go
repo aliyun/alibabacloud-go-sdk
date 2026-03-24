@@ -9,6 +9,8 @@ type iListServicesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessibility(v string) *ListServicesRequest
+	GetAccessibility() *string
 	SetAutoscalerEnabled(v bool) *ListServicesRequest
 	GetAutoscalerEnabled() *bool
 	SetCallerUid(v string) *ListServicesRequest
@@ -64,7 +66,11 @@ type iListServicesRequest interface {
 }
 
 type ListServicesRequest struct {
-	AutoscalerEnabled *bool `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility     *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AutoscalerEnabled *bool   `json:"AutoscalerEnabled,omitempty" xml:"AutoscalerEnabled,omitempty"`
 	// example:
 	//
 	// 19989224166xxxxxxx
@@ -398,6 +404,10 @@ func (s ListServicesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListServicesRequest) GetAccessibility() *string {
+	return s.Accessibility
+}
+
 func (s *ListServicesRequest) GetAutoscalerEnabled() *bool {
 	return s.AutoscalerEnabled
 }
@@ -500,6 +510,11 @@ func (s *ListServicesRequest) GetTrafficState() *string {
 
 func (s *ListServicesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListServicesRequest) SetAccessibility(v string) *ListServicesRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListServicesRequest) SetAutoscalerEnabled(v bool) *ListServicesRequest {

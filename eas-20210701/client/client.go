@@ -5420,6 +5420,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !dara.IsNil(request.AutoscalerEnabled) {
 		query["AutoscalerEnabled"] = request.AutoscalerEnabled
 	}
@@ -5940,6 +5944,76 @@ func (client *Client) RestartService(ClusterId *string, ServiceName *string) (_r
 	headers := make(map[string]*string)
 	_result = &RestartServiceResponse{}
 	_body, _err := client.RestartServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 伸缩服务
+//
+// @param request - ScaleServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScaleServiceResponse
+func (client *Client) ScaleServiceWithOptions(ClusterId *string, ServiceName *string, request *ScaleServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ScaleServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Instance) {
+		body["Instance"] = request.Instance
+	}
+
+	if !dara.IsNil(request.InstancesToDelete) {
+		body["InstancesToDelete"] = request.InstancesToDelete
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ScaleService"),
+		Version:     dara.String("2021-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v2/services/" + dara.PercentEncode(dara.StringValue(ClusterId)) + "/" + dara.PercentEncode(dara.StringValue(ServiceName)) + "/scale"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ScaleServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 伸缩服务
+//
+// @param request - ScaleServiceRequest
+//
+// @return ScaleServiceResponse
+func (client *Client) ScaleService(ClusterId *string, ServiceName *string, request *ScaleServiceRequest) (_result *ScaleServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScaleServiceResponse{}
+	_body, _err := client.ScaleServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
