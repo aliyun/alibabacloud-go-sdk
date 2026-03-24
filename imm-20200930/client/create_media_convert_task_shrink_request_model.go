@@ -21,6 +21,8 @@ type iCreateMediaConvertTaskShrinkRequest interface {
 	GetSourcesShrink() *string
 	SetTagsShrink(v string) *CreateMediaConvertTaskShrinkRequest
 	GetTagsShrink() *string
+	SetTargetGroupsShrink(v string) *CreateMediaConvertTaskShrinkRequest
+	GetTargetGroupsShrink() *string
 	SetTargetsShrink(v string) *CreateMediaConvertTaskShrinkRequest
 	GetTargetsShrink() *string
 	SetUserData(v string) *CreateMediaConvertTaskShrinkRequest
@@ -57,10 +59,9 @@ type CreateMediaConvertTaskShrinkRequest struct {
 	// example:
 	//
 	// {"test":"val1"}
-	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetGroupsShrink *string `json:"TargetGroups,omitempty" xml:"TargetGroups,omitempty"`
 	// List of media processing tasks, supporting multiple task configurations.
-	//
-	// This parameter is required.
 	TargetsShrink *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
 	// User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
 	//
@@ -102,6 +103,10 @@ func (s *CreateMediaConvertTaskShrinkRequest) GetTagsShrink() *string {
 	return s.TagsShrink
 }
 
+func (s *CreateMediaConvertTaskShrinkRequest) GetTargetGroupsShrink() *string {
+	return s.TargetGroupsShrink
+}
+
 func (s *CreateMediaConvertTaskShrinkRequest) GetTargetsShrink() *string {
 	return s.TargetsShrink
 }
@@ -137,6 +142,11 @@ func (s *CreateMediaConvertTaskShrinkRequest) SetSourcesShrink(v string) *Create
 
 func (s *CreateMediaConvertTaskShrinkRequest) SetTagsShrink(v string) *CreateMediaConvertTaskShrinkRequest {
 	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskShrinkRequest) SetTargetGroupsShrink(v string) *CreateMediaConvertTaskShrinkRequest {
+	s.TargetGroupsShrink = &v
 	return s
 }
 

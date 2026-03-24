@@ -3468,6 +3468,10 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.TargetGroups) {
+		request.TargetGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetGroups, dara.String("TargetGroups"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Targets) {
 		request.TargetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Targets, dara.String("Targets"), dara.String("json"))
 	}
@@ -3495,6 +3499,10 @@ func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConve
 
 	if !dara.IsNil(request.TagsShrink) {
 		query["Tags"] = request.TagsShrink
+	}
+
+	if !dara.IsNil(request.TargetGroupsShrink) {
+		query["TargetGroups"] = request.TargetGroupsShrink
 	}
 
 	if !dara.IsNil(request.TargetsShrink) {

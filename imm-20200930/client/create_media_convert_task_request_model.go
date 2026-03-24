@@ -21,6 +21,8 @@ type iCreateMediaConvertTaskRequest interface {
 	GetSources() []*CreateMediaConvertTaskRequestSources
 	SetTags(v map[string]interface{}) *CreateMediaConvertTaskRequest
 	GetTags() map[string]interface{}
+	SetTargetGroups(v []*CreateMediaConvertTaskRequestTargetGroups) *CreateMediaConvertTaskRequest
+	GetTargetGroups() []*CreateMediaConvertTaskRequestTargetGroups
 	SetTargets(v []*CreateMediaConvertTaskRequestTargets) *CreateMediaConvertTaskRequest
 	GetTargets() []*CreateMediaConvertTaskRequestTargets
 	SetUserData(v string) *CreateMediaConvertTaskRequest
@@ -57,10 +59,9 @@ type CreateMediaConvertTaskRequest struct {
 	// example:
 	//
 	// {"test":"val1"}
-	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Tags         map[string]interface{}                       `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetGroups []*CreateMediaConvertTaskRequestTargetGroups `json:"TargetGroups,omitempty" xml:"TargetGroups,omitempty" type:"Repeated"`
 	// List of media processing tasks, supporting multiple task configurations.
-	//
-	// This parameter is required.
 	Targets []*CreateMediaConvertTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 	// User-defined information that will be returned in asynchronous message notifications, used for convenient association and processing within your system. The maximum length is 2048 bytes.
 	//
@@ -102,6 +103,10 @@ func (s *CreateMediaConvertTaskRequest) GetTags() map[string]interface{} {
 	return s.Tags
 }
 
+func (s *CreateMediaConvertTaskRequest) GetTargetGroups() []*CreateMediaConvertTaskRequestTargetGroups {
+	return s.TargetGroups
+}
+
 func (s *CreateMediaConvertTaskRequest) GetTargets() []*CreateMediaConvertTaskRequestTargets {
 	return s.Targets
 }
@@ -140,6 +145,11 @@ func (s *CreateMediaConvertTaskRequest) SetTags(v map[string]interface{}) *Creat
 	return s
 }
 
+func (s *CreateMediaConvertTaskRequest) SetTargetGroups(v []*CreateMediaConvertTaskRequestTargetGroups) *CreateMediaConvertTaskRequest {
+	s.TargetGroups = v
+	return s
+}
+
 func (s *CreateMediaConvertTaskRequest) SetTargets(v []*CreateMediaConvertTaskRequestTargets) *CreateMediaConvertTaskRequest {
 	s.Targets = v
 	return s
@@ -163,6 +173,15 @@ func (s *CreateMediaConvertTaskRequest) Validate() error {
 	}
 	if s.Sources != nil {
 		for _, item := range s.Sources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TargetGroups != nil {
+		for _, item := range s.TargetGroups {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -406,7 +425,212 @@ func (s *CreateMediaConvertTaskRequestSourcesSubtitles) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateMediaConvertTaskRequestTargetGroups struct {
+	Targets []*CreateMediaConvertTaskRequestTargetGroupsTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	URI     *string                                             `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateMediaConvertTaskRequestTargetGroups) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMediaConvertTaskRequestTargetGroups) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroups) GetTargets() []*CreateMediaConvertTaskRequestTargetGroupsTargets {
+	return s.Targets
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroups) GetURI() *string {
+	return s.URI
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroups) SetTargets(v []*CreateMediaConvertTaskRequestTargetGroupsTargets) *CreateMediaConvertTaskRequestTargetGroups {
+	s.Targets = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroups) SetURI(v string) *CreateMediaConvertTaskRequestTargetGroups {
+	s.URI = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroups) Validate() error {
+	if s.Targets != nil {
+		for _, item := range s.Targets {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateMediaConvertTaskRequestTargetGroupsTargets struct {
+	Audio         *TargetAudio                                             `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	Container     *string                                                  `json:"Container,omitempty" xml:"Container,omitempty"`
+	Segment       *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment `json:"Segment,omitempty" xml:"Segment,omitempty" type:"Struct"`
+	Speed         *float32                                                 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StripMetadata *bool                                                    `json:"StripMetadata,omitempty" xml:"StripMetadata,omitempty"`
+	Subtitle      *TargetSubtitle                                          `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	URI           *string                                                  `json:"URI,omitempty" xml:"URI,omitempty"`
+	Video         *TargetVideo                                             `json:"Video,omitempty" xml:"Video,omitempty"`
+}
+
+func (s CreateMediaConvertTaskRequestTargetGroupsTargets) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMediaConvertTaskRequestTargetGroupsTargets) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetAudio() *TargetAudio {
+	return s.Audio
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetContainer() *string {
+	return s.Container
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetSegment() *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment {
+	return s.Segment
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetSpeed() *float32 {
+	return s.Speed
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetStripMetadata() *bool {
+	return s.StripMetadata
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetSubtitle() *TargetSubtitle {
+	return s.Subtitle
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetURI() *string {
+	return s.URI
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) GetVideo() *TargetVideo {
+	return s.Video
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetAudio(v *TargetAudio) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.Audio = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetContainer(v string) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.Container = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetSegment(v *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.Segment = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetSpeed(v float32) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.Speed = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetStripMetadata(v bool) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.StripMetadata = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetSubtitle(v *TargetSubtitle) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.Subtitle = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetURI(v string) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.URI = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) SetVideo(v *TargetVideo) *CreateMediaConvertTaskRequestTargetGroupsTargets {
+	s.Video = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargets) Validate() error {
+	if s.Audio != nil {
+		if err := s.Audio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Segment != nil {
+		if err := s.Segment.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Subtitle != nil {
+		if err := s.Subtitle.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Video != nil {
+		if err := s.Video.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateMediaConvertTaskRequestTargetGroupsTargetsSegment struct {
+	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
+	StartNumber *int32   `json:"StartNumber,omitempty" xml:"StartNumber,omitempty"`
+}
+
+func (s CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) GetDuration() *float64 {
+	return s.Duration
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) GetFormat() *string {
+	return s.Format
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) GetStartNumber() *int32 {
+	return s.StartNumber
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) SetDuration(v float64) *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) SetFormat(v string) *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment {
+	s.Format = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) SetStartNumber(v int32) *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment {
+	s.StartNumber = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetGroupsTargetsSegment) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateMediaConvertTaskRequestTargets struct {
+	AttachedPicture *CreateMediaConvertTaskRequestTargetsAttachedPicture `json:"AttachedPicture,omitempty" xml:"AttachedPicture,omitempty" type:"Struct"`
 	// Audio processing parameter configuration.
 	//
 	// 	Notice: If Audio is null, the first audio stream (if present) will be directly copied to the output file.</notice>
@@ -422,7 +646,8 @@ type CreateMediaConvertTaskRequestTargets struct {
 	// example:
 	//
 	// mp4
-	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	Container *string                                   `json:"Container,omitempty" xml:"Container,omitempty"`
+	Data      *CreateMediaConvertTaskRequestTargetsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Configuration for frame capture, sprite image capture, and media to animated image conversion.
 	Image *TargetImage `json:"Image,omitempty" xml:"Image,omitempty"`
 	// Media segment settings, no segmentation by default.
@@ -471,12 +696,20 @@ func (s CreateMediaConvertTaskRequestTargets) GoString() string {
 	return s.String()
 }
 
+func (s *CreateMediaConvertTaskRequestTargets) GetAttachedPicture() *CreateMediaConvertTaskRequestTargetsAttachedPicture {
+	return s.AttachedPicture
+}
+
 func (s *CreateMediaConvertTaskRequestTargets) GetAudio() *TargetAudio {
 	return s.Audio
 }
 
 func (s *CreateMediaConvertTaskRequestTargets) GetContainer() *string {
 	return s.Container
+}
+
+func (s *CreateMediaConvertTaskRequestTargets) GetData() *CreateMediaConvertTaskRequestTargetsData {
+	return s.Data
 }
 
 func (s *CreateMediaConvertTaskRequestTargets) GetImage() *TargetImage {
@@ -507,6 +740,11 @@ func (s *CreateMediaConvertTaskRequestTargets) GetVideo() *TargetVideo {
 	return s.Video
 }
 
+func (s *CreateMediaConvertTaskRequestTargets) SetAttachedPicture(v *CreateMediaConvertTaskRequestTargetsAttachedPicture) *CreateMediaConvertTaskRequestTargets {
+	s.AttachedPicture = v
+	return s
+}
+
 func (s *CreateMediaConvertTaskRequestTargets) SetAudio(v *TargetAudio) *CreateMediaConvertTaskRequestTargets {
 	s.Audio = v
 	return s
@@ -514,6 +752,11 @@ func (s *CreateMediaConvertTaskRequestTargets) SetAudio(v *TargetAudio) *CreateM
 
 func (s *CreateMediaConvertTaskRequestTargets) SetContainer(v string) *CreateMediaConvertTaskRequestTargets {
 	s.Container = &v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargets) SetData(v *CreateMediaConvertTaskRequestTargetsData) *CreateMediaConvertTaskRequestTargets {
+	s.Data = v
 	return s
 }
 
@@ -553,8 +796,18 @@ func (s *CreateMediaConvertTaskRequestTargets) SetVideo(v *TargetVideo) *CreateM
 }
 
 func (s *CreateMediaConvertTaskRequestTargets) Validate() error {
+	if s.AttachedPicture != nil {
+		if err := s.AttachedPicture.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Audio != nil {
 		if err := s.Audio.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
 			return err
 		}
 	}
@@ -579,6 +832,56 @@ func (s *CreateMediaConvertTaskRequestTargets) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateMediaConvertTaskRequestTargetsAttachedPicture struct {
+	Stream []*int32 `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
+}
+
+func (s CreateMediaConvertTaskRequestTargetsAttachedPicture) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMediaConvertTaskRequestTargetsAttachedPicture) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaConvertTaskRequestTargetsAttachedPicture) GetStream() []*int32 {
+	return s.Stream
+}
+
+func (s *CreateMediaConvertTaskRequestTargetsAttachedPicture) SetStream(v []*int32) *CreateMediaConvertTaskRequestTargetsAttachedPicture {
+	s.Stream = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetsAttachedPicture) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateMediaConvertTaskRequestTargetsData struct {
+	Stream []*int32 `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Repeated"`
+}
+
+func (s CreateMediaConvertTaskRequestTargetsData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateMediaConvertTaskRequestTargetsData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMediaConvertTaskRequestTargetsData) GetStream() []*int32 {
+	return s.Stream
+}
+
+func (s *CreateMediaConvertTaskRequestTargetsData) SetStream(v []*int32) *CreateMediaConvertTaskRequestTargetsData {
+	s.Stream = v
+	return s
+}
+
+func (s *CreateMediaConvertTaskRequestTargetsData) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateMediaConvertTaskRequestTargetsSegment struct {
