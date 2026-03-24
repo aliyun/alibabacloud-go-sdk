@@ -246,6 +246,7 @@ type DescribeBackupJobs2ResponseBodyBackupJobsBackupJob struct {
 	StartTime            *int64                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status               *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 	TableName            *string                                                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TriggerMode          *string                                                      `json:"TriggerMode,omitempty" xml:"TriggerMode,omitempty"`
 	UpdatedTime          *int64                                                       `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 	VaultId              *string                                                      `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
@@ -436,6 +437,10 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) GetStatus() *string
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) GetTriggerMode() *string {
+	return s.TriggerMode
 }
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) GetUpdatedTime() *int64 {
@@ -668,6 +673,11 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetStatus(v string)
 
 func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetTableName(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
 	s.TableName = &v
+	return s
+}
+
+func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob) SetTriggerMode(v string) *DescribeBackupJobs2ResponseBodyBackupJobsBackupJob {
+	s.TriggerMode = &v
 	return s
 }
 
