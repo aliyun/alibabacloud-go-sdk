@@ -41,8 +41,7 @@ type DescribeDomainPvDataResponseBody struct {
 	// example:
 	//
 	// 2015-11-28T04:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of PVs at each interval.
+	EndTime        *string                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PvDataInterval *DescribeDomainPvDataResponseBodyPvDataInterval `json:"PvDataInterval,omitempty" xml:"PvDataInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,18 +163,8 @@ func (s *DescribeDomainPvDataResponseBodyPvDataInterval) Validate() error {
 }
 
 type DescribeDomainPvDataResponseBodyPvDataIntervalUsageData struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-11-28T03:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The number of PVs.
-	//
-	// example:
-	//
-	// 9292
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainPvDataResponseBodyPvDataIntervalUsageData) String() string {

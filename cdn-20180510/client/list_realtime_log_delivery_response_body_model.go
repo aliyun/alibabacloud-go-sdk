@@ -16,7 +16,6 @@ type iListRealtimeLogDeliveryResponseBody interface {
 }
 
 type ListRealtimeLogDeliveryResponseBody struct {
-	// The logging information.
 	Content *ListRealtimeLogDeliveryResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,42 +95,12 @@ func (s *ListRealtimeLogDeliveryResponseBodyContent) Validate() error {
 }
 
 type ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo struct {
-	// The domain ID.
-	//
-	// example:
-	//
-	// 1001010
-	DmId *int32 `json:"DmId,omitempty" xml:"DmId,omitempty"`
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The name of the Logstore where log entries are stored.
-	//
-	// example:
-	//
-	// test
+	DmId     *int32  `json:"DmId,omitempty" xml:"DmId,omitempty"`
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery.
-	//
-	// example:
-	//
-	// test
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou-corp
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The status of real-time log delivery.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo) String() string {

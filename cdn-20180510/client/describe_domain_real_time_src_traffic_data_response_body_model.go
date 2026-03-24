@@ -43,8 +43,7 @@ type DescribeDomainRealTimeSrcTrafficDataResponseBody struct {
 	// example:
 	//
 	// 2019-12-10T20:01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The amount of back-to-origin traffic returned at each interval.
+	EndTime                           *string                                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeSrcTrafficDataPerInterval *DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataPerInterval `json:"RealTimeSrcTrafficDataPerInterval,omitempty" xml:"RealTimeSrcTrafficDataPerInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -166,18 +165,8 @@ func (s *DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataP
 }
 
 type DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataPerIntervalDataModule struct {
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2019-12-10T20:01:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The amount of traffic.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainRealTimeSrcTrafficDataResponseBodyRealTimeSrcTrafficDataPerIntervalDataModule) String() string {

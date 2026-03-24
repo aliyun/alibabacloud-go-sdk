@@ -16,7 +16,6 @@ type iDescribeCdnUserBillHistoryResponseBody interface {
 }
 
 type DescribeCdnUserBillHistoryResponseBody struct {
-	// The billing history returned.
 	BillHistoryData *DescribeCdnUserBillHistoryResponseBodyBillHistoryData `json:"BillHistoryData,omitempty" xml:"BillHistoryData,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,26 +95,10 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryData) Validate() error
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItem struct {
-	// The beginning of the time range that was queried.
-	//
-	// example:
-	//
-	// 2018-09-30T16:00:00Z
-	BillTime *string `json:"BillTime,omitempty" xml:"BillTime,omitempty"`
-	// The metering method.
-	//
-	// example:
-	//
-	// month_4th_day_bandwidth
-	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The billable items.
+	BillTime    *string                                                                              `json:"BillTime,omitempty" xml:"BillTime,omitempty"`
+	BillType    *string                                                                              `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	BillingData *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingData `json:"BillingData,omitempty" xml:"BillingData,omitempty" type:"Struct"`
-	// The dimension.
-	//
-	// example:
-	//
-	// flow
-	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	Dimension   *string                                                                              `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 }
 
 func (s DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItem) String() string {
@@ -206,60 +189,11 @@ func (s *DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataIte
 }
 
 type DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem struct {
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 4041
-	Bandwidth *float32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billable region. Valid values:
-	//
-	// 	- **CN**: Chinese mainland
-	//
-	// 	- **OverSeas**: outside the Chinese mainland
-	//
-	// 	- **AP1**: Asia Pacific 1
-	//
-	// 	- **AP2**: Asia Pacific 2
-	//
-	// 	- **AP3**: Asia Pacific 3
-	//
-	// 	- **NA**: North America
-	//
-	// 	- **SA**: South America
-	//
-	// 	- **EU**: Europe
-	//
-	// 	- **MEAA**: Middle East and Africa
-	//
-	// example:
-	//
-	// AP1
-	CdnRegion *string `json:"CdnRegion,omitempty" xml:"CdnRegion,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- **StaticHttp**: static HTTP requests
-	//
-	// 	- **DynamicHttp**: dynamic HTTP requests
-	//
-	// 	- **DynamicHttps**: dynamic HTTPS requests
-	//
-	// example:
-	//
-	// DynamicHttp
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The number of requests.
-	//
-	// example:
-	//
-	// 203601
-	Count *float32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 24567
-	Flow *float32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	Bandwidth  *float32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	CdnRegion  *string  `json:"CdnRegion,omitempty" xml:"CdnRegion,omitempty"`
+	ChargeType *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Count      *float32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	Flow       *float32 `json:"Flow,omitempty" xml:"Flow,omitempty"`
 }
 
 func (s DescribeCdnUserBillHistoryResponseBodyBillHistoryDataBillHistoryDataItemBillingDataBillingDataItem) String() string {

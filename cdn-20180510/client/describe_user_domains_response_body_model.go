@@ -22,7 +22,6 @@ type iDescribeUserDomainsResponseBody interface {
 }
 
 type DescribeUserDomainsResponseBody struct {
-	// The list of the accelerated domain names returned.
 	Domains *DescribeUserDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,112 +146,19 @@ func (s *DescribeUserDomainsResponseBodyDomains) Validate() error {
 }
 
 type DescribeUserDomainsResponseBodyDomainsPageData struct {
-	// The type of the workload accelerated by Alibaba Cloud CDN. Valid values:
-	//
-	// 	- **web**: images and small files
-	//
-	// 	- **download**: large files
-	//
-	// 	- **video**: on-demand video and audio streaming
-	//
-	// example:
-	//
-	// download
-	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
-	// The CNAME assigned to the accelerated domain name.
-	//
-	// example:
-	//
-	// example.com.w.alikunlun.net
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The acceleration region. Valid values:
-	//
-	// 	- **domestic**: Chinese mainland
-	//
-	// 	- **global**: global
-	//
-	// 	- **overseas**: outside the Chinese mainland
-	//
-	// example:
-	//
-	// domestic
-	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The information about Internet Content Provider (ICP) filing.
-	//
-	// example:
-	//
-	// filing description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the accelerated domain name.
-	//
-	// example:
-	//
-	// 11223344
-	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The accelerated domain.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of the accelerated domain name. Valid values:
-	//
-	// 	- **online**
-	//
-	// 	- **offline**
-	//
-	// 	- **configuring**
-	//
-	// 	- **configure_failed**
-	//
-	// 	- **checking**
-	//
-	// 	- **check_failed**
-	//
-	// 	- **stopping**
-	//
-	// 	- **deleting**
-	//
-	// example:
-	//
-	// configure_failed
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the accelerated domain name was added.
-	//
-	// example:
-	//
-	// 2015-10-28T09:32:51Z
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the accelerated domain name was modified.
-	//
-	// example:
-	//
-	// 2015-10-28T11:05:52Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// abcd1234abcd1234
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the accelerated domain name is in a sandbox.
-	//
-	// example:
-	//
-	// true
-	Sandbox *string `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
-	// The information about the origin server.
-	Sources *DescribeUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
-	// Indicates whether HTTPS is enabled. Valid values:
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// example:
-	//
-	// on
-	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
+	CdnType         *string                                                `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
+	Cname           *string                                                `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Coverage        *string                                                `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
+	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainId        *int64                                                 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainName      *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus    *string                                                `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	GmtCreated      *string                                                `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified     *string                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ResourceGroupId *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sandbox         *string                                                `json:"Sandbox,omitempty" xml:"Sandbox,omitempty"`
+	Sources         *DescribeUserDomainsResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
+	SslProtocol     *string                                                `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
 }
 
 func (s DescribeUserDomainsResponseBodyDomainsPageData) String() string {
@@ -424,36 +330,11 @@ func (s *DescribeUserDomainsResponseBodyDomainsPageDataSources) Validate() error
 }
 
 type DescribeUserDomainsResponseBodyDomainsPageDataSourcesSource struct {
-	// The address of the origin server.
-	//
-	// example:
-	//
-	// ***.oss-cn-hangzhou.aliyuncs.com
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The port of the origin server.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority.
-	//
-	// example:
-	//
-	// 20
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the origin server.
-	//
-	// example:
-	//
-	// oss
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin server if multiple origin servers have been specified.
-	//
-	// example:
-	//
-	// 15
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeUserDomainsResponseBodyDomainsPageDataSourcesSource) String() string {

@@ -16,7 +16,6 @@ type iDescribeCdnTypesResponseBody interface {
 }
 
 type DescribeCdnTypesResponseBody struct {
-	// The types of the domain names.
 	CdnTypes *DescribeCdnTypesResponseBodyCdnTypes `json:"CdnTypes,omitempty" xml:"CdnTypes,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeCdnTypesResponseBodyCdnTypes) Validate() error {
 }
 
 type DescribeCdnTypesResponseBodyCdnTypesCdnType struct {
-	// The description of the domain name type.
-	//
-	// example:
-	//
-	// Download Acceleration
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The type of the domain name.
-	//
-	// example:
-	//
-	// download
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

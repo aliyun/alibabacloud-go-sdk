@@ -18,7 +18,6 @@ type iDescribeDomainsBySourceResponseBody interface {
 }
 
 type DescribeDomainsBySourceResponseBody struct {
-	// The domain names corresponding to each origin server.
 	DomainsList *DescribeDomainsBySourceResponseBodyDomainsList `json:"DomainsList,omitempty" xml:"DomainsList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -113,16 +112,9 @@ func (s *DescribeDomainsBySourceResponseBodyDomainsList) Validate() error {
 }
 
 type DescribeDomainsBySourceResponseBodyDomainsListDomainsData struct {
-	// Information about the domain name.
 	DomainInfos *DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfos `json:"DomainInfos,omitempty" xml:"DomainInfos,omitempty" type:"Struct"`
-	// The domain names that correspond to each origin server.
-	Domains *DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
-	// The origin server.
-	//
-	// example:
-	//
-	// example.com
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Domains     *DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomains     `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	Source      *string                                                               `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s DescribeDomainsBySourceResponseBodyDomainsListDomainsData) String() string {
@@ -209,60 +201,12 @@ func (s *DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfos) V
 }
 
 type DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfosDomainInfo struct {
-	// The workload type of the accelerated domain name. Valid values:
-	//
-	// 	- **web**: images and small files
-	//
-	// 	- **download**: large files
-	//
-	// 	- **video**: on-demand video and audio streaming
-	//
-	// example:
-	//
-	// web
-	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 2016-07-12T11:53:19+08:00
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The CNAME record assigned to the domain name.
-	//
-	// example:
-	//
-	// ***.alikunlun.com
+	CdnType     *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DomainCname *string `json:"DomainCname,omitempty" xml:"DomainCname,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.org
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of the domain name. Valid values:
-	//
-	// 	- **applying**: The domain name is under review.
-	//
-	// 	- **configuring**: The domain name is being configured.
-	//
-	// 	- **online**: The domain name is working as expected.
-	//
-	// 	- **stopping**: The domain name is being stopped.
-	//
-	// 	- **offline**: The domain name is disabled.
-	//
-	// 	- **disabling**: The domain name is being removed.
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 2017-03-31T04:49:00+08:00
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeDomainsBySourceResponseBodyDomainsListDomainsDataDomainInfosDomainInfo) String() string {

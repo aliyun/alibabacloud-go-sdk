@@ -41,8 +41,7 @@ type DescribeDomainRealTimeSrcHttpCodeDataResponseBody struct {
 	// example:
 	//
 	// 2019-11-30T05:40:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The proportions of HTTP status codes at each time interval.
+	EndTime                 *string                                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeSrcHttpCodeData *DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeData `json:"RealTimeSrcHttpCodeData,omitempty" xml:"RealTimeSrcHttpCodeData,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,14 +163,8 @@ func (s *DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDat
 }
 
 type DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDataUsageData struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-11-30T05:40:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The proportions of the HTTP status codes.
-	Value *DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	TimeStamp *string                                                                                 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value     *DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDataUsageData) String() string {
@@ -244,23 +237,8 @@ func (s *DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDat
 }
 
 type DescribeDomainRealTimeSrcHttpCodeDataResponseBodyRealTimeSrcHttpCodeDataUsageDataValueRealTimeSrcCodeProportionData struct {
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The count of each HTTP status code.
-	//
-	// example:
-	//
-	// 100
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The proportion of the HTTP status code.
-	//
-	// example:
-	//
-	// 0.62015503875969
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
 }
 

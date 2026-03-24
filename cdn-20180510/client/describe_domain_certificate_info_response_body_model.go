@@ -16,7 +16,6 @@ type iDescribeDomainCertificateInfoResponseBody interface {
 }
 
 type DescribeDomainCertificateInfoResponseBody struct {
-	// The information about the certificate.
 	CertInfos *DescribeDomainCertificateInfoResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,140 +95,21 @@ func (s *DescribeDomainCertificateInfoResponseBodyCertInfos) Validate() error {
 }
 
 type DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo struct {
-	// The domain name that matches the certificate.
-	//
-	// example:
-	//
-	// example.com
-	CertDomainName *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
-	// The time at which the certificate expires.
-	//
-	// example:
-	//
-	// 2018-06-03T22:03:39Z
-	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// 9002448
-	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The unit of the validity period of the certificate. Valid values:
-	//
-	// 	- **months**
-	//
-	// 	- **years**
-	//
-	// example:
-	//
-	// months
-	CertLife *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// example.com
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The name of the certificate authority (CA) that issued the certificate.
-	//
-	// example:
-	//
-	// Let\\"s Encrypt
-	CertOrg *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
-	// The region where the certificate is used.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	CertRegion *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
-	// The time when the certificate became effective.
-	//
-	// example:
-	//
-	// 2018-06-03T22:03:39Z
-	CertStartTime *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	// The type of the certificate.
-	//
-	// 	- **free**: a free certificate
-	//
-	// 	- **cas**: a certificate that is purchased by using Certificate Management Service
-	//
-	// 	- **upload**: a custom certificate that you upload
-	//
-	// example:
-	//
-	// free
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The time at which the certificate was updated.
-	//
-	// example:
-	//
-	// 2018-06-03T22:03:39Z
-	CertUpdateTime *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
-	// The CNAME status of the domain name.
-	//
-	// 	- **ok**: The domain name points to the CNAME assigned by Alibaba Cloud CDN.
-	//
-	// 	- **cname_error**: An error occurred and the domain name cannot point to the CNAME.
-	//
-	// 	- **op_domain_cname_error*	- : An error occurred to the CNAME of the top-level domain. The domain name cannot point to the CNAME.
-	//
-	// 	- **unsupport_wildcard**: The wildcard domain name is not supported.
-	//
-	// example:
-	//
-	// ok
-	DomainCnameStatus *string `json:"DomainCnameStatus,omitempty" xml:"DomainCnameStatus,omitempty"`
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The public key of the certificate.
-	//
-	// example:
-	//
-	// asdadaxxxx
-	ServerCertificate *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
-	// The status of HTTPS.
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// example:
-	//
-	// on
+	CertDomainName          *string `json:"CertDomainName,omitempty" xml:"CertDomainName,omitempty"`
+	CertExpireTime          *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
+	CertId                  *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertLife                *string `json:"CertLife,omitempty" xml:"CertLife,omitempty"`
+	CertName                *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertOrg                 *string `json:"CertOrg,omitempty" xml:"CertOrg,omitempty"`
+	CertRegion              *string `json:"CertRegion,omitempty" xml:"CertRegion,omitempty"`
+	CertStartTime           *string `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
+	CertType                *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CertUpdateTime          *string `json:"CertUpdateTime,omitempty" xml:"CertUpdateTime,omitempty"`
+	DomainCnameStatus       *string `json:"DomainCnameStatus,omitempty" xml:"DomainCnameStatus,omitempty"`
+	DomainName              *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ServerCertificate       *string `json:"ServerCertificate,omitempty" xml:"ServerCertificate,omitempty"`
 	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
-	// The status of the certificate. Valid values:
-	//
-	// 	- **success**: The certificate has taken effect.
-	//
-	// 	- **checking**: The system is checking whether the domain name is using Alibaba Cloud CDN.
-	//
-	// 	- **cname_error**: No valid CNAME record has been added for the domain name.
-	//
-	// 	- **top_domain_cname_error**: No valid CNAME record has been added for the top-level domain.
-	//
-	// 	- **domain_invalid**: The domain name contains invalid characters.
-	//
-	// 	- **unsupport_wildcard**: The domain name is a wildcard domain name. Wildcard domain names are not supported.
-	//
-	// 	- **applying**: The certificate application is in progress.
-	//
-	// 	- **get_token_timeout**: The certificate application request has timed out.
-	//
-	// 	- **check_token_timeout**: The verification has timed out.
-	//
-	// 	- **get_cert_timeout**: The request to obtain the certificate has timed out.
-	//
-	// 	- **failed**: The certificate application request failed.
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDomainCertificateInfoResponseBodyCertInfosCertInfo) String() string {

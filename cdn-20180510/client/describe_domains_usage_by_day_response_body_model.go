@@ -55,8 +55,7 @@ type DescribeDomainsUsageByDayResponseBody struct {
 	// example:
 	//
 	// 2019-12-22T08:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The monitoring data collected at each time interval.
+	StartTime   *string                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	UsageByDays *DescribeDomainsUsageByDayResponseBodyUsageByDays `json:"UsageByDays,omitempty" xml:"UsageByDays,omitempty" type:"Struct"`
 	// The summarized monitoring data.
 	UsageTotal *DescribeDomainsUsageByDayResponseBodyUsageTotal `json:"UsageTotal,omitempty" xml:"UsageTotal,omitempty" type:"Struct"`
@@ -182,66 +181,16 @@ func (s *DescribeDomainsUsageByDayResponseBodyUsageByDays) Validate() error {
 }
 
 type DescribeDomainsUsageByDayResponseBodyUsageByDaysUsageByDay struct {
-	// The byte hit ratio. The byte hit ratio is measured in percentage.
-	//
-	// example:
-	//
-	// 97.46250599529726
-	BytesHitRate *string `json:"BytesHitRate,omitempty" xml:"BytesHitRate,omitempty"`
-	// The peak bandwidth value. Unit: bit/s.
-	//
-	// example:
-	//
-	// 306747.76
-	MaxBps *string `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The time when the bandwidth reached the peak value.
-	//
-	// example:
-	//
-	// 2019-12-23 10:55:00
-	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// The peak bandwidth value during back-to-origin routing. Unit: bit/s.
-	//
-	// example:
-	//
-	// 72584.072
-	MaxSrcBps *string `json:"MaxSrcBps,omitempty" xml:"MaxSrcBps,omitempty"`
-	// The time when the bandwidth during back-to-origin routing reached the peak value.
-	//
-	// example:
-	//
-	// 2019-12-23 11:45:00
-	MaxSrcBpsTime *string `json:"MaxSrcBpsTime,omitempty" xml:"MaxSrcBpsTime,omitempty"`
-	// The number of queries per second (QPS).
-	//
-	// example:
-	//
-	// 7.466354166666667
-	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The cache hit ratio that is calculated based on requests. The cache hit ratio is measured in percentage.
-	//
-	// example:
-	//
-	// 70.24770071912111
+	BytesHitRate   *string `json:"BytesHitRate,omitempty" xml:"BytesHitRate,omitempty"`
+	MaxBps         *string `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxBpsTime     *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	MaxSrcBps      *string `json:"MaxSrcBps,omitempty" xml:"MaxSrcBps,omitempty"`
+	MaxSrcBpsTime  *string `json:"MaxSrcBpsTime,omitempty" xml:"MaxSrcBpsTime,omitempty"`
+	Qps            *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
 	RequestHitRate *string `json:"RequestHitRate,omitempty" xml:"RequestHitRate,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2019-12-22
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total amount of requests.
-	//
-	// example:
-	//
-	// 645093
-	TotalAccess *string `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 564300099309
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	TimeStamp      *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalAccess    *string `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TotalTraffic   *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 }
 
 func (s DescribeDomainsUsageByDayResponseBodyUsageByDaysUsageByDay) String() string {

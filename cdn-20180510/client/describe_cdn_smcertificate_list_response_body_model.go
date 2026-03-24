@@ -62,7 +62,6 @@ func (s *DescribeCdnSMCertificateListResponseBody) Validate() error {
 }
 
 type DescribeCdnSMCertificateListResponseBodyCertificateListModel struct {
-	// The list of certificates.
 	CertList *DescribeCdnSMCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
 	// The number of certificates that are returned.
 	//
@@ -142,30 +141,10 @@ func (s *DescribeCdnSMCertificateListResponseBodyCertificateListModelCertList) V
 }
 
 type DescribeCdnSMCertificateListResponseBodyCertificateListModelCertListCert struct {
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// yourCertldentifier
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// yourCertName
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The common name of the certificate.
-	//
-	// example:
-	//
-	// yourCertCommon
-	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
-	//
-	// example:
-	//
-	// yourCertIssuer
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	Common         *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	Issuer         *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 }
 
 func (s DescribeCdnSMCertificateListResponseBodyCertificateListModelCertListCert) String() string {

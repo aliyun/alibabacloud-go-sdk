@@ -16,7 +16,6 @@ type iDescribeDomainRealTimeReqHitRateDataResponseBody interface {
 }
 
 type DescribeDomainRealTimeReqHitRateDataResponseBody struct {
-	// The data returned.
 	Data *DescribeDomainRealTimeReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeDomainRealTimeReqHitRateDataResponseBodyData) Validate() error 
 }
 
 type DescribeDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel struct {
-	// The request hit ratio.
-	//
-	// example:
-	//
-	// 0.8956940476262277
 	ReqHitRate *float32 `json:"ReqHitRate,omitempty" xml:"ReqHitRate,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-01-02T11:26:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp  *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) String() string {

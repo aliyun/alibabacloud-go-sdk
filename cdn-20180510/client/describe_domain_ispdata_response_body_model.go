@@ -53,9 +53,8 @@ type DescribeDomainISPDataResponseBody struct {
 	// example:
 	//
 	// 2019-11-29T05:33:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The access statistics by ISP.
-	Value *DescribeDomainISPDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	StartTime *string                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Value     *DescribeDomainISPDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainISPDataResponseBody) String() string {
@@ -164,78 +163,18 @@ func (s *DescribeDomainISPDataResponseBodyValue) Validate() error {
 }
 
 type DescribeDomainISPDataResponseBodyValueISPProportionData struct {
-	// The average response size. Unit: bytes.
-	//
-	// example:
-	//
-	// 7081884.7
-	AvgObjectSize *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
-	// The average response speed. Unit: byte/ms.
-	//
-	// example:
-	//
-	// 88.92594866772144
+	AvgObjectSize   *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
 	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
-	// The average response time. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 79638.0
 	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
-	// The bandwidth.
-	//
-	// example:
-	//
-	// 1311.4601296296296
-	Bps *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The proportion of network traffic.
-	//
-	// example:
-	//
-	// 0.012220518530445479
+	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
-	// The information about the ISP.
-	//
-	// example:
-	//
-	// Alibaba
-	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The name of the ISP.
-	//
-	// example:
-	//
-	// alibaba
-	IspEname *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
-	// The proportion of the HTTP status code.
-	//
-	// example:
-	//
-	// 0.004509176173513099
-	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	// The QPS.
-	//
-	// example:
-	//
-	// 2.3148148148148147E-5
-	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The request error rate.
-	//
-	// example:
-	//
-	// 0.0
-	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
-	// The total volume of traffic.
-	//
-	// example:
-	//
-	// 7081884
-	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The total number of requests.
-	//
-	// example:
-	//
-	// 1
-	TotalQuery *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
+	ISP             *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	IspEname        *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
+	Proportion      *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+	Qps             *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	ReqErrRate      *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
+	TotalBytes      *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalQuery      *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
 }
 
 func (s DescribeDomainISPDataResponseBodyValueISPProportionData) String() string {

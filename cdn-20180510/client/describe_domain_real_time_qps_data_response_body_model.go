@@ -16,7 +16,6 @@ type iDescribeDomainRealTimeQpsDataResponseBody interface {
 }
 
 type DescribeDomainRealTimeQpsDataResponseBody struct {
-	// The data entries returned.
 	Data *DescribeDomainRealTimeQpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeDomainRealTimeQpsDataResponseBodyData) Validate() error {
 }
 
 type DescribeDomainRealTimeQpsDataResponseBodyDataQpsModel struct {
-	// The number of queries per second.
-	//
-	// example:
-	//
-	// 1851.25
-	Qps *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The timestamp of the data returned. The time follows the yyyy-MM-ddTHH:mm:ssZ format in the ISO 8601 standard and is in UTC.
-	//
-	// example:
-	//
-	// 2019-12-02T11:25:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Qps       *float32 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainRealTimeQpsDataResponseBodyDataQpsModel) String() string {

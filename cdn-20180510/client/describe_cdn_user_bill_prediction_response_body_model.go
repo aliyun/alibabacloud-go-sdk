@@ -22,7 +22,6 @@ type iDescribeCdnUserBillPredictionResponseBody interface {
 }
 
 type DescribeCdnUserBillPredictionResponseBody struct {
-	// The estimated bill data.
 	BillPredictionData *DescribeCdnUserBillPredictionResponseBodyBillPredictionData `json:"BillPredictionData,omitempty" xml:"BillPredictionData,omitempty" type:"Struct"`
 	// The metering method.
 	//
@@ -169,24 +168,9 @@ func (s *DescribeCdnUserBillPredictionResponseBodyBillPredictionData) Validate()
 }
 
 type DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem struct {
-	// The billable region.
-	//
-	// example:
-	//
-	// CN
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time when the value used as the estimated value is generated. This parameter is returned only if the metering method is pay by 95th percentile, pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00, or pay by 4th peak bandwidth per month.
-	//
-	// example:
-	//
-	// 2018-10-15T16:00:00Z
-	TimeStp *string `json:"TimeStp,omitempty" xml:"TimeStp,omitempty"`
-	// The estimated value.
-	//
-	// example:
-	//
-	// 10000
-	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Area    *string  `json:"Area,omitempty" xml:"Area,omitempty"`
+	TimeStp *string  `json:"TimeStp,omitempty" xml:"TimeStp,omitempty"`
+	Value   *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeCdnUserBillPredictionResponseBodyBillPredictionDataBillPredictionDataItem) String() string {

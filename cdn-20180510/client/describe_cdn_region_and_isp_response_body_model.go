@@ -18,9 +18,7 @@ type iDescribeCdnRegionAndIspResponseBody interface {
 }
 
 type DescribeCdnRegionAndIspResponseBody struct {
-	// The list of ISPs.
-	Isps *DescribeCdnRegionAndIspResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Struct"`
-	// The list of regions.
+	Isps    *DescribeCdnRegionAndIspResponseBodyIsps    `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Struct"`
 	Regions *DescribeCdnRegionAndIspResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -114,13 +112,7 @@ func (s *DescribeCdnRegionAndIspResponseBodyIsps) Validate() error {
 }
 
 type DescribeCdnRegionAndIspResponseBodyIspsIsp struct {
-	// The English name of the ISP.
-	//
-	// example:
-	//
-	// unicom
 	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
-	// The Chinese name of the ISP.
 	NameZh *string `json:"NameZh,omitempty" xml:"NameZh,omitempty"`
 }
 
@@ -189,13 +181,7 @@ func (s *DescribeCdnRegionAndIspResponseBodyRegions) Validate() error {
 }
 
 type DescribeCdnRegionAndIspResponseBodyRegionsRegion struct {
-	// The English name of the region.
-	//
-	// example:
-	//
-	// liaoning
 	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
-	// The Chinese name of the region.
 	NameZh *string `json:"NameZh,omitempty" xml:"NameZh,omitempty"`
 }
 

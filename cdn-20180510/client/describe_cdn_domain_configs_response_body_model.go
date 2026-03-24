@@ -16,7 +16,6 @@ type iDescribeCdnDomainConfigsResponseBody interface {
 }
 
 type DescribeCdnDomainConfigsResponseBody struct {
-	// The configurations of the domain name.
 	DomainConfigs *DescribeCdnDomainConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,44 +95,11 @@ func (s *DescribeCdnDomainConfigsResponseBodyDomainConfigs) Validate() error {
 }
 
 type DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
-	// The ID of the configuration.
-	//
-	// example:
-	//
-	// 6295
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration of each feature.
+	ConfigId     *string                                                                    `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
-	// The name of the feature.
-	//
-	// example:
-	//
-	// aliauth
-	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The ID of the rule condition. This parameter is optional.
-	//
-	// To create a rule condition, you can configure the **condition*	- feature that is described in the [Parameters for configuring features for domain names](https://help.aliyun.com/document_detail/388460.html) topic. A rule condition can identify parameters that are included in requests and filter requests based on the identified parameters. Each rule condition has a [ConfigId](https://help.aliyun.com/document_detail/388994.html). You can use ConfigId as ParentId that is referenced by other features. This way, you can combine rule conditions and features for flexible configurations.
-	//
-	// For more information, see [BatchSetCdnDomainConfig](https://help.aliyun.com/document_detail/90915.html) or ParentId configuration example in this topic.
-	//
-	// example:
-	//
-	// 222728944812032
-	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The status of the configuration. Valid values:
-	//
-	// 	- **success**
-	//
-	// 	- **testing**
-	//
-	// 	- **failed**
-	//
-	// 	- **configuring**
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FunctionName *string                                                                    `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ParentId     *string                                                                    `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Status       *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfig) String() string {
@@ -233,17 +199,7 @@ func (s *DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionAr
 }
 
 type DescribeCdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgsFunctionArg struct {
-	// The parameter name, which is the configuration item of **functionName**. You can configure multiple configuration items.
-	//
-	// example:
-	//
-	// auth_type
-	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	// The parameter value, which is the value of the configuration item of **functionName**.
-	//
-	// example:
-	//
-	// req_auth
+	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
 	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
 }
 

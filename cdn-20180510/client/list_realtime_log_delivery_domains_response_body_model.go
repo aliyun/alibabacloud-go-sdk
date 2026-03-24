@@ -16,7 +16,6 @@ type iListRealtimeLogDeliveryDomainsResponseBody interface {
 }
 
 type ListRealtimeLogDeliveryDomainsResponseBody struct {
-	// The information about the accelerated domain names.
 	Content *ListRealtimeLogDeliveryDomainsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,22 +95,8 @@ func (s *ListRealtimeLogDeliveryDomainsResponseBodyContent) Validate() error {
 }
 
 type ListRealtimeLogDeliveryDomainsResponseBodyContentDomains struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status. Valid values:
-	//
-	// 	- **online**: enabled
-	//
-	// 	- **offline**: disabled
-	//
-	// example:
-	//
-	// online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListRealtimeLogDeliveryDomainsResponseBodyContentDomains) String() string {

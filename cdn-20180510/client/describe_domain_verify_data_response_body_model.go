@@ -9,8 +9,8 @@ type iDescribeDomainVerifyDataResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetContent(v string) *DescribeDomainVerifyDataResponseBody
-	GetContent() *string
+	SetContent(v *DescribeDomainVerifyDataResponseBodyContent) *DescribeDomainVerifyDataResponseBody
+	GetContent() *DescribeDomainVerifyDataResponseBodyContent
 	SetRequestId(v string) *DescribeDomainVerifyDataResponseBody
 	GetRequestId() *string
 }
@@ -27,7 +27,7 @@ type DescribeDomainVerifyDataResponseBody struct {
 	//     "verifyKey": "_acme-challenge"
 	//
 	//   }
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *DescribeDomainVerifyDataResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -44,7 +44,7 @@ func (s DescribeDomainVerifyDataResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDomainVerifyDataResponseBody) GetContent() *string {
+func (s *DescribeDomainVerifyDataResponseBody) GetContent() *DescribeDomainVerifyDataResponseBodyContent {
 	return s.Content
 }
 
@@ -52,8 +52,8 @@ func (s *DescribeDomainVerifyDataResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
-func (s *DescribeDomainVerifyDataResponseBody) SetContent(v string) *DescribeDomainVerifyDataResponseBody {
-	s.Content = &v
+func (s *DescribeDomainVerifyDataResponseBody) SetContent(v *DescribeDomainVerifyDataResponseBodyContent) *DescribeDomainVerifyDataResponseBody {
+	s.Content = v
 	return s
 }
 
@@ -63,5 +63,55 @@ func (s *DescribeDomainVerifyDataResponseBody) SetRequestId(v string) *DescribeD
 }
 
 func (s *DescribeDomainVerifyDataResponseBody) Validate() error {
+	if s.Content != nil {
+		if err := s.Content.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeDomainVerifyDataResponseBodyContent struct {
+	RootDomain *string `json:"RootDomain,omitempty" xml:"RootDomain,omitempty"`
+	VerifyCode *string `json:"verifyCode,omitempty" xml:"verifyCode,omitempty"`
+	VerifyKey  *string `json:"verifyKey,omitempty" xml:"verifyKey,omitempty"`
+}
+
+func (s DescribeDomainVerifyDataResponseBodyContent) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDomainVerifyDataResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) GetRootDomain() *string {
+	return s.RootDomain
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) GetVerifyCode() *string {
+	return s.VerifyCode
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) GetVerifyKey() *string {
+	return s.VerifyKey
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) SetRootDomain(v string) *DescribeDomainVerifyDataResponseBodyContent {
+	s.RootDomain = &v
+	return s
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) SetVerifyCode(v string) *DescribeDomainVerifyDataResponseBodyContent {
+	s.VerifyCode = &v
+	return s
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) SetVerifyKey(v string) *DescribeDomainVerifyDataResponseBodyContent {
+	s.VerifyKey = &v
+	return s
+}
+
+func (s *DescribeDomainVerifyDataResponseBodyContent) Validate() error {
 	return dara.Validate(s)
 }

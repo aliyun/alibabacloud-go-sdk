@@ -41,8 +41,7 @@ type DescribeDomainSrcHttpCodeDataResponseBody struct {
 	// example:
 	//
 	// 2015-11-30T05:40:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The proportions of HTTP status codes at each time interval.
+	EndTime      *string                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HttpCodeData *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData `json:"HttpCodeData,omitempty" xml:"HttpCodeData,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,14 +163,8 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeData) Validate() error
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-11-30T05:30:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The proportions of the HTTP status codes.
-	Value *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	TimeStamp *string                                                              `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value     *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageData) String() string {
@@ -244,23 +237,8 @@ func (s *DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValue) Va
 }
 
 type DescribeDomainSrcHttpCodeDataResponseBodyHttpCodeDataUsageDataValueCodeProportionData struct {
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of entries.
-	//
-	// example:
-	//
-	// 2300
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The proportion of the HTTP status code.
-	//
-	// example:
-	//
-	// 67.1458998935037
+	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count      *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
 }
 

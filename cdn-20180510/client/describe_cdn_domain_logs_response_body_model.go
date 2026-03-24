@@ -16,7 +16,6 @@ type iDescribeCdnDomainLogsResponseBody interface {
 }
 
 type DescribeCdnDomainLogsResponseBody struct {
-	// A set of DomainLogDetail data.
 	DomainLogDetails *DescribeCdnDomainLogsResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,22 +95,10 @@ func (s *DescribeCdnDomainLogsResponseBodyDomainLogDetails) Validate() error {
 }
 
 type DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetail struct {
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The total number of entries returned on the current page.
-	//
-	// example:
-	//
-	// 10
-	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// A set of LogInfoDetail data.
-	LogInfos *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	// A set of PageInfoDetail data.
-	PageInfos *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	DomainName *string                                                                    `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LogCount   *int64                                                                     `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos   *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	PageInfos  *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetail) String() string {
@@ -207,35 +194,10 @@ func (s *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfo
 }
 
 type DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
-	// The end of the time range during which data was queried.
-	//
-	// example:
-	//
-	// 2015-05-23T14:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the log file.
-	//
-	// example:
-	//
-	// demo.aliyundoc.com_2015_05_23_2100_2200.gz
-	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The path of the log file.
-	//
-	// example:
-	//
-	// guide.aliyundoc.com-hangzhou.xxx
-	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	// The size of the log file.
-	//
-	// example:
-	//
-	// 258
-	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The start of the time range during which data was queried.
-	//
-	// example:
-	//
-	// 2015-05-23T13:00:00Z
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -297,24 +259,9 @@ func (s *DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailLogInfo
 }
 
 type DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
-	// The page number of the returned page.
-	//
-	// example:
-	//
-	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries returned per page.
-	//
-	// example:
-	//
-	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 20
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageSize  *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeCdnDomainLogsResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {

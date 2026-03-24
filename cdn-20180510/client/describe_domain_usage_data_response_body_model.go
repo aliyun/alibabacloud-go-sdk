@@ -69,8 +69,7 @@ type DescribeDomainUsageDataResponseBody struct {
 	// example:
 	//
 	// static
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The resource usage that was collected at each interval.
+	Type                 *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 	UsageDataPerInterval *DescribeDomainUsageDataResponseBodyUsageDataPerInterval `json:"UsageDataPerInterval,omitempty" xml:"UsageDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -198,34 +197,10 @@ func (s *DescribeDomainUsageDataResponseBodyUsageDataPerInterval) Validate() err
 }
 
 type DescribeDomainUsageDataResponseBodyUsageDataPerIntervalDataModule struct {
-	// The time of the peak bandwidth value if the **Field*	- parameter in the request is set to **bps**. Otherwise, this parameter returns the same value as the **TimeStamp*	- parameter.
-	//
-	// example:
-	//
-	// 2015-12-10T21:30:00Z
-	PeakTime *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
-	// The resource usage in a specific scenario.
-	//
-	// > SpecialValue indicates the data usage in a specific scenario. If no special billable item is specified, ignore this parameter.
-	//
-	// example:
-	//
-	// 423304182
+	PeakTime     *string `json:"PeakTime,omitempty" xml:"PeakTime,omitempty"`
 	SpecialValue *string `json:"SpecialValue,omitempty" xml:"SpecialValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// > **TimeStamp*	- indicates the timestamp of the data returned at each interval.
-	//
-	// example:
-	//
-	// 2015-12-10T21:30:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The amount of resource usage.
-	//
-	// example:
-	//
-	// 423304182
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainUsageDataResponseBodyUsageDataPerIntervalDataModule) String() string {

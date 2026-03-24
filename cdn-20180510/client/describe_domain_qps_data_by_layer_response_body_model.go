@@ -49,8 +49,7 @@ type DescribeDomainQpsDataByLayerResponseBody struct {
 	// example:
 	//
 	// all
-	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The number of queries per second at each interval.
+	Layer           *string                                                  `json:"Layer,omitempty" xml:"Layer,omitempty"`
 	QpsDataInterval *DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval `json:"QpsDataInterval,omitempty" xml:"QpsDataInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -181,48 +180,13 @@ func (s *DescribeDomainQpsDataByLayerResponseBodyQpsDataInterval) Validate() err
 }
 
 type DescribeDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule struct {
-	// The number of requests in the Chinese mainland.
-	//
-	// example:
-	//
-	// 12
 	AccDomesticValue *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
-	// The number of requests outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 44
 	AccOverseasValue *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
-	// The total number of requests.
-	//
-	// example:
-	//
-	// 56
-	AccValue *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
-	// The number of queries per second in the Chinese mainland.
-	//
-	// example:
-	//
-	// 0.12
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The number of queries per second outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 0.44
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-12-10T21:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total number of queries per second.
-	//
-	// example:
-	//
-	// 0.56
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	AccValue         *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
+	DomesticValue    *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
+	OverseasValue    *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value            *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) String() string {

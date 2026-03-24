@@ -23,8 +23,7 @@ type DescribeDomainHttpCodeDataByLayerResponseBody struct {
 	// example:
 	//
 	// 300
-	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The statistics of HTTP status codes returned at each time interval.
+	DataInterval         *string                                                            `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
 	HttpCodeDataInterval *DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval `json:"HttpCodeDataInterval,omitempty" xml:"HttpCodeDataInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -113,24 +112,9 @@ func (s *DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) Vali
 }
 
 type DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule struct {
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2015-12-10T20:35:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total number of times that HTTP status codes were returned.
-	//
-	// example:
-	//
-	// 110
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TotalValue *string `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
-	// The number of times that the HTTP status code was returned.
-	//
-	// example:
-	//
-	// { "200": 10, "206": 100}
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) String() string {

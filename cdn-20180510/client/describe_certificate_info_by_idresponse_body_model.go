@@ -16,7 +16,6 @@ type iDescribeCertificateInfoByIDResponseBody interface {
 }
 
 type DescribeCertificateInfoByIDResponseBody struct {
-	// The information about the certificate.
 	CertInfos *DescribeCertificateInfoByIDResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,54 +95,13 @@ func (s *DescribeCertificateInfoByIDResponseBodyCertInfos) Validate() error {
 }
 
 type DescribeCertificateInfoByIDResponseBodyCertInfosCertInfo struct {
-	// The time at which the certificate expires.
-	//
-	// example:
-	//
-	// 2098-02-08 08:02:07 +0000 UTC
 	CertExpireTime *string `json:"CertExpireTime,omitempty" xml:"CertExpireTime,omitempty"`
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// 1644xx
-	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// example_cert
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The type of the certificate.
-	//
-	// 	- free: a free certificate
-	//
-	// 	- cas: a certificate purchased by using Certificate Management Service
-	//
-	// 	- upload: a user-uploaded certificate
-	//
-	// example:
-	//
-	// cas
-	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The time when the certificate became effective.
-	//
-	// example:
-	//
-	// 2015-12-21 08:02:07 +0000 UTC
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain names that use the certificate.
-	//
-	// example:
-	//
-	// ["example.com"]
-	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
-	// The content of the certificate.
-	//
-	// example:
-	//
-	// -----BEGIN CERTIFICATE-----\\nxxx-----END CERTIFICATE-----\\n
-	HttpsCrt *string `json:"HttpsCrt,omitempty" xml:"HttpsCrt,omitempty"`
+	CertId         *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName       *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertType       *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainList     *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
+	HttpsCrt       *string `json:"HttpsCrt,omitempty" xml:"HttpsCrt,omitempty"`
 }
 
 func (s DescribeCertificateInfoByIDResponseBodyCertInfosCertInfo) String() string {

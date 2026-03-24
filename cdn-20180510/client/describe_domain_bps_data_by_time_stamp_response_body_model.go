@@ -20,7 +20,6 @@ type iDescribeDomainBpsDataByTimeStampResponseBody interface {
 }
 
 type DescribeDomainBpsDataByTimeStampResponseBody struct {
-	// A list of bandwidth values by ISP and region.
 	BpsDataList *DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList `json:"BpsDataList,omitempty" xml:"BpsDataList,omitempty" type:"Struct"`
 	// The accelerated domain name.
 	//
@@ -130,30 +129,10 @@ func (s *DescribeDomainBpsDataByTimeStampResponseBodyBpsDataList) Validate() err
 }
 
 type DescribeDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel struct {
-	// The bandwidth value.
-	//
-	// example:
-	//
-	// 52119553
-	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The name of the ISP.
-	//
-	// example:
-	//
-	// unicom
-	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// Liaoning
+	Bps          *int64  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	IspName      *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2019-11-30T05:40:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByTimeStampResponseBodyBpsDataListBpsDataModel) String() string {

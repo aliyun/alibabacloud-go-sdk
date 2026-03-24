@@ -41,8 +41,7 @@ type DescribeDomainReqHitRateDataResponseBody struct {
 	// example:
 	//
 	// 2017-12-22T08:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The request hit ratio data at each time interval. The hit ratio is measured in percentage.
+	EndTime            *string                                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ReqHitRateInterval *DescribeDomainReqHitRateDataResponseBodyReqHitRateInterval `json:"ReqHitRateInterval,omitempty" xml:"ReqHitRateInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeDomainReqHitRateDataResponseBodyReqHitRateInterval) Validate() 
 }
 
 type DescribeDomainReqHitRateDataResponseBodyReqHitRateIntervalDataModule struct {
-	// The hit ratio of HTTPS requests.
-	//
-	// example:
-	//
-	// 50.0
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2017-12-22T08:00:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The request hit ratio.
-	//
-	// example:
-	//
-	// 100.0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainReqHitRateDataResponseBodyReqHitRateIntervalDataModule) String() string {

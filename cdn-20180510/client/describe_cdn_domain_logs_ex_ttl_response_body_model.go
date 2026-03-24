@@ -93,16 +93,10 @@ func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetails) Validate() erro
 }
 
 type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail struct {
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// 10
-	LogCount  *int64                                                                          `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	LogInfos  *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	PageInfos *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	DomainName *string                                                                         `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LogCount   *int64                                                                          `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos   *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	PageInfos  *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetail) String() string {
@@ -198,25 +192,10 @@ func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLo
 }
 
 type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
-	// example:
-	//
-	// 2023-09-23T14:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// example:
-	//
-	// demo.aliyundoc.com_2015_05_23_2100_2200.gz
-	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// example:
-	//
-	// guide.aliyundoc.com-hangzhou.xxx
-	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	// example:
-	//
-	// 258
-	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// example:
-	//
-	// 2023-09-23T13:00:00Z
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -278,18 +257,9 @@ func (s *DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailLo
 }
 
 type DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
-	// example:
-	//
-	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// example:
-	//
-	// 20
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 20
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageSize  *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeCdnDomainLogsExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {

@@ -41,8 +41,7 @@ type DescribeDomainHitRateDataResponseBody struct {
 	// example:
 	//
 	// 2019-12-30T08:10:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The byte hit ratio at each time interval. The byte hit ratio is measured in percentage.
+	EndTime         *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HitRateInterval *DescribeDomainHitRateDataResponseBodyHitRateInterval `json:"HitRateInterval,omitempty" xml:"HitRateInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeDomainHitRateDataResponseBodyHitRateInterval) Validate() error 
 }
 
 type DescribeDomainHitRateDataResponseBodyHitRateIntervalDataModule struct {
-	// The byte hit ratio of HTTPS requests.
-	//
-	// example:
-	//
-	// 50.0
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2019-12-30T08:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The byte hit ratio.
-	//
-	// example:
-	//
-	// 100.0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainHitRateDataResponseBodyHitRateIntervalDataModule) String() string {

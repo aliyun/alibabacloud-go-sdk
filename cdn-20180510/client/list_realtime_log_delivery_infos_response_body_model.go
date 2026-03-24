@@ -16,7 +16,6 @@ type iListRealtimeLogDeliveryInfosResponseBody interface {
 }
 
 type ListRealtimeLogDeliveryInfosResponseBody struct {
-	// The information about real-time log delivery.
 	Content *ListRealtimeLogDeliveryInfosResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,24 +95,9 @@ func (s *ListRealtimeLogDeliveryInfosResponseBodyContent) Validate() error {
 }
 
 type ListRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos struct {
-	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time.
-	//
-	// example:
-	//
-	// LogstoreName
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery.
-	//
-	// example:
-	//
-	// ProjectName
-	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://help.aliyun.com/document_detail/144883.html).
-	//
-	// example:
-	//
-	// ch-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s ListRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) String() string {

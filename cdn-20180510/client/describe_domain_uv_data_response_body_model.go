@@ -53,8 +53,7 @@ type DescribeDomainUvDataResponseBody struct {
 	// example:
 	//
 	// 2019-11-29T00:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of UVs at each interval.
+	StartTime      *string                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	UvDataInterval *DescribeDomainUvDataResponseBodyUvDataInterval `json:"UvDataInterval,omitempty" xml:"UvDataInterval,omitempty" type:"Struct"`
 }
 
@@ -164,18 +163,8 @@ func (s *DescribeDomainUvDataResponseBodyUvDataInterval) Validate() error {
 }
 
 type DescribeDomainUvDataResponseBodyUvDataIntervalUsageData struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2019-11-29T00:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The number of UVs.
-	//
-	// example:
-	//
-	// 318
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainUvDataResponseBodyUvDataIntervalUsageData) String() string {

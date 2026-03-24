@@ -29,9 +29,8 @@ type DescribeUserVipsByDomainResponseBody struct {
 	// example:
 	//
 	// 820E7900-5CA9-4AEF-B0DD-20ED5F64BE55
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of VIPs.
-	Vips *DescribeUserVipsByDomainResponseBodyVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Vips      *DescribeUserVipsByDomainResponseBodyVips `json:"Vips,omitempty" xml:"Vips,omitempty" type:"Struct"`
 }
 
 func (s DescribeUserVipsByDomainResponseBody) String() string {

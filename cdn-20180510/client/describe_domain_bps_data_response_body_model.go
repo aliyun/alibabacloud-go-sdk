@@ -28,7 +28,6 @@ type iDescribeDomainBpsDataResponseBody interface {
 }
 
 type DescribeDomainBpsDataResponseBody struct {
-	// The list of bandwidth data entries returned at each interval.
 	BpsDataPerInterval *DescribeDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
 	// The time interval between the data entries returned. Unit: seconds.
 	//
@@ -198,48 +197,13 @@ func (s *DescribeDomainBpsDataResponseBodyBpsDataPerInterval) Validate() error {
 }
 
 type DescribeDomainBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	// The bandwidth value in the Chinese mainland. When the bandwidth data is queried by ISP, this parameter is empty.
-	//
-	// example:
-	//
-	// 11286111
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The bandwidth data for HTTPS requests in the Chinese mainland. When the bandwidth data is queried by ISP, this parameter is empty.
-	//
-	// example:
-	//
-	// 11286111
+	DomesticValue      *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The bandwidth data for HTTPS requests in regions outside the Chinese mainland. When the bandwidth data is queried by ISP, this parameter is empty.
-	//
-	// example:
-	//
-	// 2000
 	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The bandwidth value for HTTPS requests. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The bandwidth data in regions outside the Chinese mainland. When the bandwidth data is queried by ISP, this parameter is empty.
-	//
-	// example:
-	//
-	// 2000
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsValue         *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue      *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainBpsDataResponseBodyBpsDataPerIntervalDataModule) String() string {

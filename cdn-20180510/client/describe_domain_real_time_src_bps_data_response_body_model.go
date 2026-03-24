@@ -43,8 +43,7 @@ type DescribeDomainRealTimeSrcBpsDataResponseBody struct {
 	// example:
 	//
 	// 2019-12-10T20:01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The origin bandwidth data at each interval.
+	EndTime                       *string                                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeSrcBpsDataPerInterval *DescribeDomainRealTimeSrcBpsDataResponseBodyRealTimeSrcBpsDataPerInterval `json:"RealTimeSrcBpsDataPerInterval,omitempty" xml:"RealTimeSrcBpsDataPerInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -166,18 +165,8 @@ func (s *DescribeDomainRealTimeSrcBpsDataResponseBodyRealTimeSrcBpsDataPerInterv
 }
 
 type DescribeDomainRealTimeSrcBpsDataResponseBodyRealTimeSrcBpsDataPerIntervalDataModule struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2019-12-10T20:01:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth during back-to-origin routing. Unit: bit/s.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainRealTimeSrcBpsDataResponseBodyRealTimeSrcBpsDataPerIntervalDataModule) String() string {

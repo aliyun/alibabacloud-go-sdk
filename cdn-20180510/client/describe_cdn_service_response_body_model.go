@@ -69,8 +69,7 @@ type DescribeCdnServiceResponseBody struct {
 	// example:
 	//
 	// 2019-02-28T13:11:49Z
-	OpeningTime *string `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
-	// The lock status.
+	OpeningTime    *string                                       `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
 	OperationLocks *DescribeCdnServiceResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -213,11 +212,6 @@ func (s *DescribeCdnServiceResponseBodyOperationLocks) Validate() error {
 }
 
 type DescribeCdnServiceResponseBodyOperationLocksLockReason struct {
-	// The reason why the service is locked. A value of financial indicates that the service is locked due to overdue payments.
-	//
-	// example:
-	//
-	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 }
 

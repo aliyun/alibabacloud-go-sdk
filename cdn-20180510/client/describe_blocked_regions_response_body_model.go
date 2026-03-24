@@ -16,7 +16,6 @@ type iDescribeBlockedRegionsResponseBody interface {
 }
 
 type DescribeBlockedRegionsResponseBody struct {
-	// The information returned.
 	InfoList *DescribeBlockedRegionsResponseBodyInfoList `json:"InfoList,omitempty" xml:"InfoList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,23 +95,8 @@ func (s *DescribeBlockedRegionsResponseBodyInfoList) Validate() error {
 }
 
 type DescribeBlockedRegionsResponseBodyInfoListInfoItem struct {
-	// The district to which the country or region belongs.
-	//
-	// example:
-	//
-	// Asia
-	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
-	// The abbreviation of the name of the country or region.
-	//
-	// example:
-	//
-	// AF
-	CountriesAndRegions *string `json:"CountriesAndRegions,omitempty" xml:"CountriesAndRegions,omitempty"`
-	// The name of the country or region.
-	//
-	// example:
-	//
-	// Afghanistan
+	Continent               *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
+	CountriesAndRegions     *string `json:"CountriesAndRegions,omitempty" xml:"CountriesAndRegions,omitempty"`
 	CountriesAndRegionsName *string `json:"CountriesAndRegionsName,omitempty" xml:"CountriesAndRegionsName,omitempty"`
 }
 

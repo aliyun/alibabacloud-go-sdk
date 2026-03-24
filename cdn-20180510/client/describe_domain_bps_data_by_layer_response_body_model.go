@@ -18,7 +18,6 @@ type iDescribeDomainBpsDataByLayerResponseBody interface {
 }
 
 type DescribeDomainBpsDataByLayerResponseBody struct {
-	// The data returned at each time interval.
 	BpsDataInterval *DescribeDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
 	// The time interval between the data entries. Unit: seconds.
 	//
@@ -113,24 +112,9 @@ func (s *DescribeDomainBpsDataByLayerResponseBodyBpsDataInterval) Validate() err
 }
 
 type DescribeDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2020-05-06T07:10:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 2838
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
-	// The peak bandwidth value. Unit: bit/s.
-	//
-	// example:
-	//
-	// 75.68
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) String() string {

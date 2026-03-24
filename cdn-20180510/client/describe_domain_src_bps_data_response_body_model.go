@@ -47,8 +47,7 @@ type DescribeDomainSrcBpsDataResponseBody struct {
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The origin bandwidth data at each time interval. Unit: bit/s.
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcBpsDataPerInterval *DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
 	// The start of the time range during which data was queried.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) Validate() e
 }
 
 type DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
-	// The bandwidth values of origin HTTPS requests.
-	//
-	// example:
-	//
-	// 10
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2019-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic value at each time interval.
-	//
-	// example:
-	//
-	// 500
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {

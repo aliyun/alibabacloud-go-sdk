@@ -28,7 +28,6 @@ type iDescribeDomainTopUrlVisitResponseBody interface {
 }
 
 type DescribeDomainTopUrlVisitResponseBody struct {
-	// A list of frequently requested URLs.
 	AllUrlList *DescribeDomainTopUrlVisitResponseBodyAllUrlList `json:"AllUrlList,omitempty" xml:"AllUrlList,omitempty" type:"Struct"`
 	// The accelerated domain name.
 	//
@@ -47,14 +46,10 @@ type DescribeDomainTopUrlVisitResponseBody struct {
 	// example:
 	//
 	// 2019-10-03T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// A list of URLs for which 2xx status codes were returned.
+	StartTime  *string                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Url200List *DescribeDomainTopUrlVisitResponseBodyUrl200List `json:"Url200List,omitempty" xml:"Url200List,omitempty" type:"Struct"`
-	// A list of URLs for which 3xx status codes were returned.
 	Url300List *DescribeDomainTopUrlVisitResponseBodyUrl300List `json:"Url300List,omitempty" xml:"Url300List,omitempty" type:"Struct"`
-	// A list of URLs for which 4xx status codes were returned.
 	Url400List *DescribeDomainTopUrlVisitResponseBodyUrl400List `json:"Url400List,omitempty" xml:"Url400List,omitempty" type:"Struct"`
-	// A list of URLs for which 5xx status codes were returned.
 	Url500List *DescribeDomainTopUrlVisitResponseBodyUrl500List `json:"Url500List,omitempty" xml:"Url500List,omitempty" type:"Struct"`
 }
 
@@ -202,35 +197,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyAllUrlList) Validate() error {
 }
 
 type DescribeDomainTopUrlVisitResponseBodyAllUrlListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 460486880
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	//
-	// example:
-	//
-	// 0.35
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	//
-	// example:
-	//
-	// http://example.com/nn_live/nn_x64/a0.m3u8
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 161673
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
-	//
-	// example:
-	//
-	// 0.35
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -326,35 +296,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl200List) Validate() error {
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl200ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 460486880
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	//
-	// example:
-	//
-	// 0.35
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	//
-	// example:
-	//
-	// http://example.com/nn_live/nn_x64/aWQ9SE5KU0bGxfcGNfbGl2ZQ,,/HNJSMPP360.m3u8
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 161673
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
-	//
-	// example:
-	//
-	// 0.35
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -450,35 +395,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl300List) Validate() error {
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl300ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 460486880
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	//
-	// example:
-	//
-	// 0.35
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	//
-	// example:
-	//
-	// http://example.com/nn_live/nn_x64/a0.m3u8
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 161673
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
-	//
-	// example:
-	//
-	// 0.35
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -574,35 +494,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl400List) Validate() error {
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl400ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 460486880
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	//
-	// example:
-	//
-	// 0.35
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	//
-	// example:
-	//
-	// http://example.com/nn_live/nn_x64/aWQ9SE5KU01QUhbGxfcGNfbGl2ZQ,,/HNJSMPP360.m3u8
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 1884
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
-	//
-	// example:
-	//
-	// 0.35
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 
@@ -698,35 +593,10 @@ func (s *DescribeDomainTopUrlVisitResponseBodyUrl500List) Validate() error {
 }
 
 type DescribeDomainTopUrlVisitResponseBodyUrl500ListUrlList struct {
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 460486880
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	//
-	// example:
-	//
-	// 0.35
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The complete URL.
-	//
-	// example:
-	//
-	// http://example.com/nn_live/nn_x64/aWQ9SE5KU0GNfbGl2ZQ,,/HNJSMPP360.m3u8
-	UrlDetail *string `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 161673
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
-	//
-	// example:
-	//
-	// 0.35
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	UrlDetail       *string  `json:"UrlDetail,omitempty" xml:"UrlDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 

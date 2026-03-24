@@ -53,8 +53,7 @@ type DescribeTopDomainsByFlowResponseBody struct {
 	// example:
 	//
 	// 2019-12-22T08:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The top N domain names ranked by network traffic.
+	StartTime  *string                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TopDomains *DescribeTopDomainsByFlowResponseBodyTopDomains `json:"TopDomains,omitempty" xml:"TopDomains,omitempty" type:"Struct"`
 }
 
@@ -164,48 +163,13 @@ func (s *DescribeTopDomainsByFlowResponseBodyTopDomains) Validate() error {
 }
 
 type DescribeTopDomainsByFlowResponseBodyTopDomainsTopDomain struct {
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The peak bandwidth value.
-	//
-	// example:
-	//
-	// 22139626
-	MaxBps *float32 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
-	// The time when the bandwidth reached the peak value.
-	//
-	// example:
-	//
-	// 1457111400
-	MaxBpsTime *string `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
-	// The ranking of the accelerated domain name.
-	//
-	// example:
-	//
-	// 1
-	Rank *int64 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The number of visits to the domain name.
-	//
-	// example:
-	//
-	// 107784230
-	TotalAccess *int64 `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
-	// The total volume of traffic.
-	//
-	// example:
-	//
-	// 2043859876683.9001
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
-	// The proportion of network traffic consumed to access the domain name.
-	//
-	// example:
-	//
-	// 30.64191989360235
-	TrafficPercent *string `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
+	DomainName     *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	MaxBps         *float32 `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxBpsTime     *string  `json:"MaxBpsTime,omitempty" xml:"MaxBpsTime,omitempty"`
+	Rank           *int64   `json:"Rank,omitempty" xml:"Rank,omitempty"`
+	TotalAccess    *int64   `json:"TotalAccess,omitempty" xml:"TotalAccess,omitempty"`
+	TotalTraffic   *string  `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
+	TrafficPercent *string  `json:"TrafficPercent,omitempty" xml:"TrafficPercent,omitempty"`
 }
 
 func (s DescribeTopDomainsByFlowResponseBodyTopDomainsTopDomain) String() string {

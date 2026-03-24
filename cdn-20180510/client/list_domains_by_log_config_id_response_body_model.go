@@ -16,7 +16,6 @@ type iListDomainsByLogConfigIdResponseBody interface {
 }
 
 type ListDomainsByLogConfigIdResponseBody struct {
-	// The domain names.
 	Domains *ListDomainsByLogConfigIdResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

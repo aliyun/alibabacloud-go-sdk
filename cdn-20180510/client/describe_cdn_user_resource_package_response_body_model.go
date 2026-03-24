@@ -21,8 +21,7 @@ type DescribeCdnUserResourcePackageResponseBody struct {
 	// example:
 	//
 	// 84839536-2B7E-457D-9D8C-82E6C7D4E1A3
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The detailed information about resource plans. The returned information is displayed in an array of ResourcePackageInfo nodes.
+	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourcePackageInfos *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfos `json:"ResourcePackageInfos,omitempty" xml:"ResourcePackageInfos,omitempty" type:"Struct"`
 }
 
@@ -96,79 +95,22 @@ func (s *DescribeCdnUserResourcePackageResponseBodyResourcePackageInfos) Validat
 }
 
 type DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo struct {
-	// The ID of the resource plan.
-	//
-	// example:
-	//
-	// cdnflowbag
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The remaining quota of the resource plan.
-	//
-	// 	- For a data transfer plan, the quota is measured in bytes.
-	//
-	// 	- For a request resource plan, the quota is measured in the number of requests.
-	//
-	// example:
-	//
-	// 10995089554629
+	CommodityCode         *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	CurrCapacity          *string `json:"CurrCapacity,omitempty" xml:"CurrCapacity,omitempty"`
 	CurrCapacityBaseUnit  *string `json:"CurrCapacityBaseUnit,omitempty" xml:"CurrCapacityBaseUnit,omitempty"`
 	CurrCapacityShowUnit  *string `json:"CurrCapacityShowUnit,omitempty" xml:"CurrCapacityShowUnit,omitempty"`
 	CurrCapacityShowValue *string `json:"CurrCapacityShowValue,omitempty" xml:"CurrCapacityShowValue,omitempty"`
-	// The name of the resource plan.
-	//
-	// example:
-	//
-	// CDN data transfer plan (Chinese mainland)
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The expiration time.
-	//
-	// example:
-	//
-	// 2018-07-01T08:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The total quota of the resource plan.
-	//
-	// 	- For a data transfer plan, the quota is measured in bytes.
-	//
-	// 	- For a request resource plan, the quota is measured in the number of requests.
-	//
-	// example:
-	//
-	// 536870912000
+	DisplayName           *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InitCapacity          *string `json:"InitCapacity,omitempty" xml:"InitCapacity,omitempty"`
 	InitCapacityBaseUnit  *string `json:"InitCapacityBaseUnit,omitempty" xml:"InitCapacityBaseUnit,omitempty"`
 	InitCapacityShowUnit  *string `json:"InitCapacityShowUnit,omitempty" xml:"InitCapacityShowUnit,omitempty"`
 	InitCapacityShowValue *string `json:"InitCapacityShowValue,omitempty" xml:"InitCapacityShowValue,omitempty"`
-	// The ID of the instance
-	//
-	// example:
-	//
-	// FP-ilttxc23a
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The effective time.
-	//
-	// example:
-	//
-	// 2017-12-05T19:10:58Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the resource plan. Valid values:
-	//
-	// 	- **valid**: valid
-	//
-	// 	- **closed**: expired
-	//
-	// example:
-	//
-	// valid
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the template.
-	//
-	// example:
-	//
-	// CDN data transfer plan
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Region                *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	StartTime             *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TemplateName          *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s DescribeCdnUserResourcePackageResponseBodyResourcePackageInfosResourcePackageInfo) String() string {

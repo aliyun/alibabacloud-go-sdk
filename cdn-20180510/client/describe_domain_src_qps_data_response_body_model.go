@@ -47,8 +47,7 @@ type DescribeDomainSrcQpsDataResponseBody struct {
 	// example:
 	//
 	// 7CBCD6AD-B016-42E5-AE0B-B3731DE8F755
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The back-to-origin bandwidth information at each interval.
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcQpsDataPerInterval *DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerInterval `json:"SrcQpsDataPerInterval,omitempty" xml:"SrcQpsDataPerInterval,omitempty" type:"Struct"`
 	// The start of the time range during which data was queried.
 	//
@@ -164,18 +163,8 @@ func (s *DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerInterval) Validate() e
 }
 
 type DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerIntervalDataModule struct {
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2015-12-10T21:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The QPS value.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainSrcQpsDataResponseBodySrcQpsDataPerIntervalDataModule) String() string {

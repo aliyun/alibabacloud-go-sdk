@@ -62,7 +62,6 @@ func (s *DescribeCdnCertificateListResponseBody) Validate() error {
 }
 
 type DescribeCdnCertificateListResponseBodyCertificateListModel struct {
-	// The list of certificates.
 	CertList *DescribeCdnCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
 	// The number of certificates that are returned.
 	//
@@ -142,42 +141,12 @@ func (s *DescribeCdnCertificateListResponseBodyCertificateListModelCertList) Val
 }
 
 type DescribeCdnCertificateListResponseBodyCertificateListModelCertListCert struct {
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// 1
-	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// Certificate1
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The Common Name (CN) attribute of the certificate. In most cases, the CN is a domain name.
-	//
-	// example:
-	//
-	// example.com
-	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	// The fingerprint of the certificate.
-	//
-	// example:
-	//
-	// 2ED68FD33786C5B42950D40A6C50353575BB****
+	CertId      *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	Common      *string `json:"Common,omitempty" xml:"Common,omitempty"`
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
-	//
-	// example:
-	//
-	// CO****
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The timestamp.
-	//
-	// example:
-	//
-	// 1512388610
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	LastTime    *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 }
 
 func (s DescribeCdnCertificateListResponseBodyCertificateListModelCertListCert) String() string {

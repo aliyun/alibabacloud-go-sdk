@@ -22,7 +22,6 @@ type iDescribeCdnDeletedDomainsResponseBody interface {
 }
 
 type DescribeCdnDeletedDomainsResponseBody struct {
-	// The list of accelerated domain names and the time each domain name was last modified.
 	Domains *DescribeCdnDeletedDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page, which is the same as the **PageNumber*	- parameter in request parameters.
 	//
@@ -147,17 +146,7 @@ func (s *DescribeCdnDeletedDomainsResponseBodyDomains) Validate() error {
 }
 
 type DescribeCdnDeletedDomainsResponseBodyDomainsPageData struct {
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time when the accelerated domain name was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-10-28T11:05:52Z
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 }
 

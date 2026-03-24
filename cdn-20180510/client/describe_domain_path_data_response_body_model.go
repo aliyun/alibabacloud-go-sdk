@@ -59,8 +59,7 @@ type DescribeDomainPathDataResponseBody struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of bandwidth values collected at each time interval.
+	PageSize            *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PathDataPerInterval *DescribeDomainPathDataResponseBodyPathDataPerInterval `json:"PathDataPerInterval,omitempty" xml:"PathDataPerInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -215,30 +214,10 @@ func (s *DescribeDomainPathDataResponseBodyPathDataPerInterval) Validate() error
 }
 
 type DescribeDomainPathDataResponseBodyPathDataPerIntervalUsageData struct {
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 10
-	Acc *int32 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The path.
-	//
-	// example:
-	//
-	// /path/
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The point in time.
-	//
-	// example:
-	//
-	// 2017-09-30T16:00:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 346
-	Traffic *int32 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	Acc     *int32  `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Traffic *int32  `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
 }
 
 func (s DescribeDomainPathDataResponseBodyPathDataPerIntervalUsageData) String() string {

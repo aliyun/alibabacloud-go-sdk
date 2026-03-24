@@ -16,7 +16,6 @@ type iListUserCustomLogConfigResponseBody interface {
 }
 
 type ListUserCustomLogConfigResponseBody struct {
-	// The list of log configuration IDs.
 	ConfigIds *ListUserCustomLogConfigResponseBodyConfigIds `json:"ConfigIds,omitempty" xml:"ConfigIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

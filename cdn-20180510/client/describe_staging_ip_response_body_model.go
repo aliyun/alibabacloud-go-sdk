@@ -16,7 +16,6 @@ type iDescribeStagingIpResponseBody interface {
 }
 
 type DescribeStagingIpResponseBody struct {
-	// IPv4 addresses.
 	IPV4s *DescribeStagingIpResponseBodyIPV4s `json:"IPV4s,omitempty" xml:"IPV4s,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

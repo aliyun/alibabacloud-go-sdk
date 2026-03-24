@@ -33,16 +33,14 @@ type DescribeDomainMultiUsageDataResponseBody struct {
 	// example:
 	//
 	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about requests collected every 5 minutes.
+	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RequestPerInterval *DescribeDomainMultiUsageDataResponseBodyRequestPerInterval `json:"RequestPerInterval,omitempty" xml:"RequestPerInterval,omitempty" type:"Struct"`
 	// The start of the time range that was queried.
 	//
 	// example:
 	//
 	// 2017-12-10T20:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The statistics of network traffic collected every 5 minutes.
+	StartTime          *string                                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TrafficPerInterval *DescribeDomainMultiUsageDataResponseBodyTrafficPerInterval `json:"TrafficPerInterval,omitempty" xml:"TrafficPerInterval,omitempty" type:"Struct"`
 }
 
@@ -148,32 +146,10 @@ func (s *DescribeDomainMultiUsageDataResponseBodyRequestPerInterval) Validate() 
 }
 
 type DescribeDomainMultiUsageDataResponseBodyRequestPerIntervalRequestDataModule struct {
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of requests.
-	//
-	// example:
-	//
-	// 11288111
-	Request *int64 `json:"Request,omitempty" xml:"Request,omitempty"`
-	// The timestamp of the returned number of requests.
-	//
-	// example:
-	//
-	// 2017-12-10T20:00:00Z
+	Domain    *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Request   *int64  `json:"Request,omitempty" xml:"Request,omitempty"`
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The type.
-	//
-	// >  The value is Simple for Alibaba Cloud CDN.
-	//
-	// example:
-	//
-	// Simple
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDomainMultiUsageDataResponseBodyRequestPerIntervalRequestDataModule) String() string {
@@ -259,46 +235,11 @@ func (s *DescribeDomainMultiUsageDataResponseBodyTrafficPerInterval) Validate() 
 }
 
 type DescribeDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule struct {
-	// The name of the region.
-	//
-	// example:
-	//
-	// CN
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111.1
-	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The startstamp of the returned usage data.
-	//
-	// example:
-	//
-	// 2017-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The type of requests. Valid values:
-	//
-	// 	- **StaticHttps**: static HTTPS requests
-	//
-	// 	- **DynamicHttps**: dynamic HTTPS requests
-	//
-	// 	- **DynamicHttp**: dynamic HTTP requests
-	//
-	// 	- **StaticQuic**: static QUIC requests
-	//
-	// 	- **DynamicQuic**: dynamic QUIC requests
-	//
-	// example:
-	//
-	// DynamicHttp
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Area      *string  `json:"Area,omitempty" xml:"Area,omitempty"`
+	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	Domain    *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Type      *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDomainMultiUsageDataResponseBodyTrafficPerIntervalTrafficDataModule) String() string {

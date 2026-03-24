@@ -37,8 +37,7 @@ type DescribeDomainTopReferVisitResponseBody struct {
 	// example:
 	//
 	// 2019-12-21T12:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The most frequently requested web pages.
+	StartTime    *string                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TopReferList *DescribeDomainTopReferVisitResponseBodyTopReferList `json:"TopReferList,omitempty" xml:"TopReferList,omitempty" type:"Struct"`
 }
 
@@ -130,35 +129,10 @@ func (s *DescribeDomainTopReferVisitResponseBodyTopReferList) Validate() error {
 }
 
 type DescribeDomainTopReferVisitResponseBodyTopReferListReferList struct {
-	// The amount of network traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 200
-	Flow *string `json:"Flow,omitempty" xml:"Flow,omitempty"`
-	// The proportion of network traffic consumed to access the URL.
-	//
-	// example:
-	//
-	// 0.5
-	FlowProportion *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
-	// The URLs to the most frequently requested web pages.
-	//
-	// example:
-	//
-	// learn.aliyundoc.com
-	ReferDetail *string `json:"ReferDetail,omitempty" xml:"ReferDetail,omitempty"`
-	// The number of visits to the URL.
-	//
-	// example:
-	//
-	// 3
-	VisitData *string `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
-	// The proportion of visits to the URL.
-	//
-	// example:
-	//
-	// 0.5
+	Flow            *string  `json:"Flow,omitempty" xml:"Flow,omitempty"`
+	FlowProportion  *float32 `json:"FlowProportion,omitempty" xml:"FlowProportion,omitempty"`
+	ReferDetail     *string  `json:"ReferDetail,omitempty" xml:"ReferDetail,omitempty"`
+	VisitData       *string  `json:"VisitData,omitempty" xml:"VisitData,omitempty"`
 	VisitProportion *float32 `json:"VisitProportion,omitempty" xml:"VisitProportion,omitempty"`
 }
 

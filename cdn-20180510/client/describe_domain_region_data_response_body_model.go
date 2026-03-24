@@ -53,9 +53,8 @@ type DescribeDomainRegionDataResponseBody struct {
 	// example:
 	//
 	// 2015-12-05T12:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The proportions of requests initiated from each region.
-	Value *DescribeDomainRegionDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	StartTime *string                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Value     *DescribeDomainRegionDataResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
 func (s DescribeDomainRegionDataResponseBody) String() string {
@@ -164,78 +163,18 @@ func (s *DescribeDomainRegionDataResponseBodyValue) Validate() error {
 }
 
 type DescribeDomainRegionDataResponseBodyValueRegionProportionData struct {
-	// The average response size. Unit: bytes.
-	//
-	// example:
-	//
-	// 800019.0
-	AvgObjectSize *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
-	// The average response speed. Unit: bit/s.
-	//
-	// example:
-	//
-	// 154.3345765545624
+	AvgObjectSize   *string `json:"AvgObjectSize,omitempty" xml:"AvgObjectSize,omitempty"`
 	AvgResponseRate *string `json:"AvgResponseRate,omitempty" xml:"AvgResponseRate,omitempty"`
-	// The average response time. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 5183.666666666667
 	AvgResponseTime *string `json:"AvgResponseTime,omitempty" xml:"AvgResponseTime,omitempty"`
-	// The bandwidth.
-	//
-	// example:
-	//
-	// 380.9614285714286
-	Bps *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The proportion of traffic from the region. For example, a value of 90 indicates that 90% of the traffic is from the region.
-	//
-	// example:
-	//
-	// 0.003544181046236794
+	Bps             *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
 	BytesProportion *string `json:"BytesProportion,omitempty" xml:"BytesProportion,omitempty"`
-	// The proportion of visits from the region. For example, a value of 90 indicates that 90% of the visits are from the region.
-	//
-	// example:
-	//
-	// 0.01155980271270037
-	Proportion *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
-	// The number of queries per second.
-	//
-	// example:
-	//
-	// 5.9523809523809524E-5
-	Qps *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The information about the region.
-	//
-	// example:
-	//
-	// Japan
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// japan
-	RegionEname *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
-	// The request error rate. A value of 90 indicates that 90% of the requests encountered errors.
-	//
-	// example:
-	//
-	// 0.0
-	ReqErrRate *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
-	// The total traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 2400057
-	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The total number of requests.
-	//
-	// example:
-	//
-	// 3
-	TotalQuery *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
+	Proportion      *string `json:"Proportion,omitempty" xml:"Proportion,omitempty"`
+	Qps             *string `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionEname     *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
+	ReqErrRate      *string `json:"ReqErrRate,omitempty" xml:"ReqErrRate,omitempty"`
+	TotalBytes      *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	TotalQuery      *string `json:"TotalQuery,omitempty" xml:"TotalQuery,omitempty"`
 }
 
 func (s DescribeDomainRegionDataResponseBodyValueRegionProportionData) String() string {

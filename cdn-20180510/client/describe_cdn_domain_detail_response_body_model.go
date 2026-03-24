@@ -153,9 +153,8 @@ type DescribeCdnDomainDetailResponseBodyGetDomainDetailModel struct {
 	// example:
 	//
 	// on
-	ServerCertificateStatus *string `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
-	// The information about the origin server.
-	SourceModels *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels `json:"SourceModels,omitempty" xml:"SourceModels,omitempty" type:"Struct"`
+	ServerCertificateStatus *string                                                              `json:"ServerCertificateStatus,omitempty" xml:"ServerCertificateStatus,omitempty"`
+	SourceModels            *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels `json:"SourceModels,omitempty" xml:"SourceModels,omitempty" type:"Struct"`
 }
 
 func (s DescribeCdnDomainDetailResponseBodyGetDomainDetailModel) String() string {
@@ -318,50 +317,12 @@ func (s *DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModels) Va
 }
 
 type DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModelsSourceModel struct {
-	// The address of the origin server.
-	//
-	// example:
-	//
-	// example.com
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The status.
-	//
-	// example:
-	//
-	// online
-	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The port over which requests are redirected to the origin server. Ports 443 and 80 are supported.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority.
-	//
-	// example:
-	//
-	// 20
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Enabled  *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the origin server. Valid values:
-	//
-	// 	- **ipaddr**: an origin IP address
-	//
-	// 	- **domain**: an origin domain name
-	//
-	// 	- **oss**: the domain name of an Object Storage Service (OSS) bucket
-	//
-	// 	- **fc_domain:*	- a Function Compute domain name
-	//
-	// example:
-	//
-	// domain
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin server if multiple origin servers have been specified.
-	//
-	// example:
-	//
-	// 10
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeCdnDomainDetailResponseBodyGetDomainDetailModelSourceModelsSourceModel) String() string {

@@ -62,7 +62,6 @@ func (s *DescribeUserUsageDataExportTaskResponseBody) Validate() error {
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPage struct {
-	// The information about the tasks.
 	Data *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -172,50 +171,13 @@ func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageData) Valida
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItem struct {
-	// The time when the task was created.
-	//
-	// example:
-	//
-	// 2019-12-31T08:43:21Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The download URL.
-	//
-	// example:
-	//
-	// https://cdn-polaris.xxxx
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The state of the task.
-	//
-	// 	- created: The task is being created.
-	//
-	// 	- success: The task is successful.
-	//
-	// 	- failed: The task failed.
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The configurations of the task.
-	TaskConfig *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItemTaskConfig `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty" type:"Struct"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// A91BE91F-0B34-4CBF-8E0F-A2977
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task.
-	//
-	// example:
-	//
-	// Refresh
-	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The time when the task was last modified.
-	//
-	// example:
-	//
-	// 2019-12-31T08:45:02Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime  *string                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DownloadUrl *string                                                                            `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	Status      *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskConfig  *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItemTaskConfig `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty" type:"Struct"`
+	TaskId      *string                                                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName    *string                                                                            `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	UpdateTime  *string                                                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItem) String() string {
@@ -299,17 +261,7 @@ func (s *DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItem
 }
 
 type DescribeUserUsageDataExportTaskResponseBodyUsageDataPerPageDataDataItemTaskConfig struct {
-	// The end of the time range that was queried.
-	//
-	// example:
-	//
-	// 2019-12-30T15:59:59Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start of the time range during which data was queried.
-	//
-	// example:
-	//
-	// 2019-12-29T16:00:00Z
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

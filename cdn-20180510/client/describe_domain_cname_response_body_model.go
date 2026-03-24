@@ -16,7 +16,6 @@ type iDescribeDomainCnameResponseBody interface {
 }
 
 type DescribeDomainCnameResponseBody struct {
-	// Details about the CNAME detection results.
 	CnameDatas *DescribeDomainCnameResponseBodyCnameDatas `json:"CnameDatas,omitempty" xml:"CnameDatas,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,30 +95,11 @@ func (s *DescribeDomainCnameResponseBodyCnameDatas) Validate() error {
 }
 
 type DescribeDomainCnameResponseBodyCnameDatasData struct {
-	// The CNAME assigned to the domain name by Alibaba Cloud CDN.
-	//
-	// example:
-	//
-	// a.com.w.alikunlun.net
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// a.com
+	Cname  *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The CNAME detection result. Valid values:
-	//
-	// 	- 0: The DNS can detect the CNAME assigned to the domain name.
-	//
-	// 	- Value other than 0: The DNS cannot detect the CNAME assigned to the domain name.
-	//
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDomainCnameResponseBodyCnameDatasData) String() string {

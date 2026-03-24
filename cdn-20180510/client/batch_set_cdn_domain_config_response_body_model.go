@@ -16,7 +16,6 @@ type iBatchSetCdnDomainConfigResponseBody interface {
 }
 
 type BatchSetCdnDomainConfigResponseBody struct {
-	// The list of domain configurations.
 	DomainConfigList *BatchSetCdnDomainConfigResponseBodyDomainConfigList `json:"DomainConfigList,omitempty" xml:"DomainConfigList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,23 +95,8 @@ func (s *BatchSetCdnDomainConfigResponseBodyDomainConfigList) Validate() error {
 }
 
 type BatchSetCdnDomainConfigResponseBodyDomainConfigListDomainConfigModel struct {
-	// The ID of the configuration.
-	//
-	// example:
-	//
-	// 1234567
-	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// www.example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the feature.
-	//
-	// example:
-	//
-	// set_resp_header
+	ConfigId     *int64  `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 

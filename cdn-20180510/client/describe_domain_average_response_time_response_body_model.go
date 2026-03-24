@@ -24,7 +24,6 @@ type iDescribeDomainAverageResponseTimeResponseBody interface {
 }
 
 type DescribeDomainAverageResponseTimeResponseBody struct {
-	// The average response time data for time intervals.
 	AvgRTPerInterval *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval `json:"AvgRTPerInterval,omitempty" xml:"AvgRTPerInterval,omitempty" type:"Struct"`
 	// The time interval between the data entries returned.
 	//
@@ -164,18 +163,8 @@ func (s *DescribeDomainAverageResponseTimeResponseBodyAvgRTPerInterval) Validate
 }
 
 type DescribeDomainAverageResponseTimeResponseBodyAvgRTPerIntervalDataModule struct {
-	// The timestamp of the data returned.
-	//
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The average response time.
-	//
-	// example:
-	//
-	// 3
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainAverageResponseTimeResponseBodyAvgRTPerIntervalDataModule) String() string {

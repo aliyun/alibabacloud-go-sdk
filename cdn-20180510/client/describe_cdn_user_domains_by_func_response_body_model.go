@@ -22,7 +22,6 @@ type iDescribeCdnUserDomainsByFuncResponseBody interface {
 }
 
 type DescribeCdnUserDomainsByFuncResponseBody struct {
-	// The configurations of the accelerated domain name.
 	Domains *DescribeCdnUserDomainsByFuncResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,90 +146,16 @@ func (s *DescribeCdnUserDomainsByFuncResponseBodyDomains) Validate() error {
 }
 
 type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData struct {
-	// The type of workload accelerated by Alibaba Cloud CDN. Valid values:
-	//
-	// 	- **web**: image and small file distribution
-	//
-	// 	- **download**: large file distribution
-	//
-	// 	- **video**: on-demand video and audio streaming
-	//
-	// 	- **liveStream**: live streaming
-	//
-	// example:
-	//
-	// web
-	CdnType *string `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
-	// The CNAME assigned to the accelerated domain name.
-	//
-	// example:
-	//
-	// example.com.w.alikunlun.com
-	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The description of the status.
-	//
-	// example:
-	//
-	// audit failed
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The accelerated domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of the accelerated domain name. Valid values:
-	//
-	// 	- **online**: The domain name is enabled.
-	//
-	// 	- **offline**: The domain is disabled.
-	//
-	// 	- **configuring**: The endpoint group is being configured.
-	//
-	// 	- **configure_failed**: The domain failed to be configured.
-	//
-	// 	- **checking**: The domain name is under review.
-	//
-	// 	- **check_failed**: The domain name failed the review.
-	//
-	// 	- **stopping**: The domain name is be disabled.
-	//
-	// 	- **deleting**: being deleted
-	//
-	// example:
-	//
-	// configure_failed
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the accelerated domain name was added to Alibaba Cloud CDN.
-	//
-	// example:
-	//
-	// 2015-10-28T11:05:52Z
-	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last time when the accelerated domain was modified.
-	//
-	// example:
-	//
-	// 2015-10-29T10:15:31Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-xxxxx
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the origin server.
-	Sources *DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
-	// Indicates whether HTTPS is enabled. Valid values:
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// example:
-	//
-	// on
-	SslProtocol *string `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
+	CdnType         *string                                                         `json:"CdnType,omitempty" xml:"CdnType,omitempty"`
+	Cname           *string                                                         `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	Description     *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	DomainName      *string                                                         `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus    *string                                                         `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	GmtCreated      *string                                                         `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified     *string                                                         `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	ResourceGroupId *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sources         *DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
+	SslProtocol     *string                                                         `json:"SslProtocol,omitempty" xml:"SslProtocol,omitempty"`
 }
 
 func (s DescribeCdnUserDomainsByFuncResponseBodyDomainsPageData) String() string {
@@ -375,36 +300,11 @@ func (s *DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSources) Validat
 }
 
 type DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource struct {
-	// The address of the origin server.
-	//
-	// example:
-	//
-	// 1.1.1.1
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The port of the origin server.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the configuration item.
-	//
-	// example:
-	//
-	// 20
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the origin server.
-	//
-	// example:
-	//
-	// ipaddr
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin server if multiple origin servers have been specified.
-	//
-	// example:
-	//
-	// 10
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeCdnUserDomainsByFuncResponseBodyDomainsPageDataSourcesSource) String() string {

@@ -16,7 +16,6 @@ type iDescribeDomainRealTimeByteHitRateDataResponseBody interface {
 }
 
 type DescribeDomainRealTimeByteHitRateDataResponseBody struct {
-	// The data returned.
 	Data *DescribeDomainRealTimeByteHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeDomainRealTimeByteHitRateDataResponseBodyData) Validate() error
 }
 
 type DescribeDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel struct {
-	// The byte hit ratio. The byte hit ratio is measured in percentage.
-	//
-	// example:
-	//
-	// 0.8956940476262277
 	ByteHitRate *float32 `json:"ByteHitRate,omitempty" xml:"ByteHitRate,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-30T05:40:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp   *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) String() string {

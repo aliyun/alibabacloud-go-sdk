@@ -2343,7 +2343,7 @@ func (client *Client) DescribeCdnDomainLogsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询离线日志下载地址
+// Queries the address where you can download offline logs of a specific domain name.
 //
 // @param request - DescribeCdnDomainLogsExTtlRequest
 //
@@ -6761,7 +6761,7 @@ func (client *Client) DescribeDomainUvDataWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the verification content of a domain name, including the host record and record value.
+// Queries the verification content of an accelerated domain name based on whether the global resource plan is enabled.
 //
 // Description:
 //
@@ -8213,7 +8213,7 @@ func (client *Client) EnableRealtimeLogDeliveryWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 按域名、functionName查询灰度配置信息，返回的信息中包含当前的灰度状态、灰度进度
+// Queries the canary release configurations, such as canary release status and progress, by domain name and function name.
 //
 // @param request - GetGrayDomainFunctionRequest
 //
@@ -8851,7 +8851,7 @@ func (client *Client) OpenCdnServiceWithContext(ctx context.Context, request *Op
 
 // Summary:
 //
-// 发布灰度配置到线上，支持多种模式，如全网发布、指定方式(灰度发布)，回滚
+// Publishes the canary release configurations. Multiple publish modes are supported, such as publish to the production environment, custom (such as canary release), and rollback.
 //
 // @param request - PublishGrayDomainConfigRequest
 //
@@ -9107,7 +9107,7 @@ func (client *Client) RefreshObjectCacheByCacheTagWithContext(ctx context.Contex
 
 // Summary:
 //
-// Refreshes files on Alibaba Cloud CDN points of presence (POPs). After files are refreshed, the original file content immediately becomes invalid. If clients request the original file content, Alibaba Cloud CDN forwards the requests to the origin server. Then, Alibaba Cloud CDN caches the latest content to the POPs and returns the content to the clients. Alibaba Cloud CDN allows you to refresh content from multiple URLs at the same time.
+// Purges files on POPs. After files are purged, the original file content immediately becomes invalid. If clients request the original file content, Alibaba Cloud CDN redirects the requests to the origin server where the content is stored. Then, Alibaba Cloud CDN caches the latest content to the POPs and returns it to the clients. Alibaba Cloud CDN allows you to purge content from multiple URLs at a time.
 //
 // Description:
 //
@@ -9499,7 +9499,7 @@ func (client *Client) SetCdnDomainStagingConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Blocks or unblocks IP addresses from accessing domain names.
+// Blocks or unblocks IP addresses. This setting applies to all domain names in your account.
 //
 // Description:
 //

@@ -53,8 +53,7 @@ type DescribeDomainTrafficDataResponseBody struct {
 	// example:
 	//
 	// 2015-12-10T20:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The amount of network traffic at each time interval. Unit: bytes.
+	StartTime              *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TrafficDataPerInterval *DescribeDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -164,48 +163,13 @@ func (s *DescribeDomainTrafficDataResponseBodyTrafficDataPerInterval) Validate()
 }
 
 type DescribeDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	// The amount of network traffic in the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The amount of HTTPS traffic on points of presence (POPs) in the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
+	DomesticValue      *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The amount of HTTPS traffic on POPs outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
 	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The total amount of HTTPS traffic on POPs.
-	//
-	// example:
-	//
-	// 423304182
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The amount of network traffic outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2015-12-10T20:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total volume of traffic.
-	//
-	// example:
-	//
-	// 423304182
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsValue         *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue      *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule) String() string {
