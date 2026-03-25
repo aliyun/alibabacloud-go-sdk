@@ -3578,6 +3578,10 @@ func (client *Client) ListSandboxesWithOptions(request *ListSandboxesRequest, he
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.SandboxId) {
+		query["sandboxId"] = request.SandboxId
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["status"] = request.Status
 	}

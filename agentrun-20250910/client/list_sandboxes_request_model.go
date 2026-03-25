@@ -13,6 +13,8 @@ type iListSandboxesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListSandboxesRequest
 	GetNextToken() *string
+	SetSandboxId(v string) *ListSandboxesRequest
+	GetSandboxId() *string
 	SetStatus(v string) *ListSandboxesRequest
 	GetStatus() *string
 	SetTemplateName(v string) *ListSandboxesRequest
@@ -32,6 +34,10 @@ type ListSandboxesRequest struct {
 	//
 	// dnLkmeaJc9vHgbzREh2l0J4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 01KMB33KCB3YRYE9C2AJCW5DQK
+	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
 	// example:
 	//
 	// CREATING
@@ -64,6 +70,10 @@ func (s *ListSandboxesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListSandboxesRequest) GetSandboxId() *string {
+	return s.SandboxId
+}
+
 func (s *ListSandboxesRequest) GetStatus() *string {
 	return s.Status
 }
@@ -83,6 +93,11 @@ func (s *ListSandboxesRequest) SetMaxResults(v int32) *ListSandboxesRequest {
 
 func (s *ListSandboxesRequest) SetNextToken(v string) *ListSandboxesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListSandboxesRequest) SetSandboxId(v string) *ListSandboxesRequest {
+	s.SandboxId = &v
 	return s
 }
 

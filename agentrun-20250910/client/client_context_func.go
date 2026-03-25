@@ -2467,6 +2467,10 @@ func (client *Client) ListSandboxesWithContext(ctx context.Context, request *Lis
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.SandboxId) {
+		query["sandboxId"] = request.SandboxId
+	}
+
 	if !dara.IsNil(request.Status) {
 		query["status"] = request.Status
 	}
