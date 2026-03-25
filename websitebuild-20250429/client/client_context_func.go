@@ -863,6 +863,66 @@ func (client *Client) DispatchConsoleAPIForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
+// 编辑插件配置
+//
+// @param request - EditPluginConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditPluginConfigResponse
+func (client *Client) EditPluginConfigWithContext(ctx context.Context, request *EditPluginConfigRequest, runtime *dara.RuntimeOptions) (_result *EditPluginConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PluginConfig) {
+		query["PluginConfig"] = request.PluginConfig
+	}
+
+	if !dara.IsNil(request.PluginDesc) {
+		query["PluginDesc"] = request.PluginDesc
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.PluginName) {
+		query["PluginName"] = request.PluginName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EditPluginConfig"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EditPluginConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 导出素材文件
 //
 // @param tmpReq - ExportMaterialFileRequest
