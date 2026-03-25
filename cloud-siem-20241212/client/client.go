@@ -3172,6 +3172,10 @@ func (client *Client) ListDataIngestionsWithOptions(tmpReq *ListDataIngestionsRe
 		request.DataIngestionTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataIngestionTemplateIds, dara.String("DataIngestionTemplateIds"), dara.String("simple"))
 	}
 
+	if !dara.IsNil(tmpReq.NormalizationSchemaIds) {
+		request.NormalizationSchemaIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NormalizationSchemaIds, dara.String("NormalizationSchemaIds"), dara.String("simple"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DataIngestionIdsShrink) {
 		body["DataIngestionIds"] = request.DataIngestionIdsShrink
@@ -3187,6 +3191,10 @@ func (client *Client) ListDataIngestionsWithOptions(tmpReq *ListDataIngestionsRe
 
 	if !dara.IsNil(request.Lang) {
 		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.NormalizationSchemaIdsShrink) {
+		body["NormalizationSchemaIds"] = request.NormalizationSchemaIdsShrink
 	}
 
 	if !dara.IsNil(request.ProductId) {

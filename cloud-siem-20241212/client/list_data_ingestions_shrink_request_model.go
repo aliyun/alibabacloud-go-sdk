@@ -17,6 +17,8 @@ type iListDataIngestionsShrinkRequest interface {
 	GetDataIngestionTemplateIdsShrink() *string
 	SetLang(v string) *ListDataIngestionsShrinkRequest
 	GetLang() *string
+	SetNormalizationSchemaIdsShrink(v string) *ListDataIngestionsShrinkRequest
+	GetNormalizationSchemaIdsShrink() *string
 	SetProductId(v string) *ListDataIngestionsShrinkRequest
 	GetProductId() *string
 	SetRegionId(v string) *ListDataIngestionsShrinkRequest
@@ -35,7 +37,8 @@ type ListDataIngestionsShrinkRequest struct {
 	// example:
 	//
 	// zh。
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NormalizationSchemaIdsShrink *string `json:"NormalizationSchemaIds,omitempty" xml:"NormalizationSchemaIds,omitempty"`
 	// example:
 	//
 	// alibaba_cloud_sas。
@@ -74,6 +77,10 @@ func (s *ListDataIngestionsShrinkRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ListDataIngestionsShrinkRequest) GetNormalizationSchemaIdsShrink() *string {
+	return s.NormalizationSchemaIdsShrink
+}
+
 func (s *ListDataIngestionsShrinkRequest) GetProductId() *string {
 	return s.ProductId
 }
@@ -103,6 +110,11 @@ func (s *ListDataIngestionsShrinkRequest) SetDataIngestionTemplateIdsShrink(v st
 
 func (s *ListDataIngestionsShrinkRequest) SetLang(v string) *ListDataIngestionsShrinkRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListDataIngestionsShrinkRequest) SetNormalizationSchemaIdsShrink(v string) *ListDataIngestionsShrinkRequest {
+	s.NormalizationSchemaIdsShrink = &v
 	return s
 }
 

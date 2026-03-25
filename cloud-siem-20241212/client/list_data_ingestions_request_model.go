@@ -17,6 +17,8 @@ type iListDataIngestionsRequest interface {
 	GetDataIngestionTemplateIds() []*string
 	SetLang(v string) *ListDataIngestionsRequest
 	GetLang() *string
+	SetNormalizationSchemaIds(v []*string) *ListDataIngestionsRequest
+	GetNormalizationSchemaIds() []*string
 	SetProductId(v string) *ListDataIngestionsRequest
 	GetProductId() *string
 	SetRegionId(v string) *ListDataIngestionsRequest
@@ -35,7 +37,8 @@ type ListDataIngestionsRequest struct {
 	// example:
 	//
 	// zh。
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                   *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NormalizationSchemaIds []*string `json:"NormalizationSchemaIds,omitempty" xml:"NormalizationSchemaIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// alibaba_cloud_sas。
@@ -74,6 +77,10 @@ func (s *ListDataIngestionsRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ListDataIngestionsRequest) GetNormalizationSchemaIds() []*string {
+	return s.NormalizationSchemaIds
+}
+
 func (s *ListDataIngestionsRequest) GetProductId() *string {
 	return s.ProductId
 }
@@ -103,6 +110,11 @@ func (s *ListDataIngestionsRequest) SetDataIngestionTemplateIds(v []*string) *Li
 
 func (s *ListDataIngestionsRequest) SetLang(v string) *ListDataIngestionsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListDataIngestionsRequest) SetNormalizationSchemaIds(v []*string) *ListDataIngestionsRequest {
+	s.NormalizationSchemaIds = v
 	return s
 }
 
