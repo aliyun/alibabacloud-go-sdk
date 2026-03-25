@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// If an O\\&M engineer attempts to run a command specified in the Command Approval field on the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
+// If an O\\\\\\&M engineer attempts to run a command specified in the Command Approval field on the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
 //
 // Description:
 //
@@ -67,7 +67,7 @@ func (client *Client) AcceptApproveCommandWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Approves an O\\\\\\\\\\\\&M application.
+// Approves an O\\\\\\\\\\\\\\\\\\\\&M application.
 //
 // Description:
 //
@@ -547,7 +547,7 @@ func (client *Client) AttachHostAccountsToHostShareKeyWithContext(ctx context.Co
 
 // Summary:
 //
-// Authorizes a user to manage the hosts and host accounts.
+// After you add a user to your bastion host, you must authorize the user to manage assets. Only authorized users can log on to the bastion host to perform O\\\\\\&M operations on the assets.
 //
 // @param request - AttachHostAccountsToUserRequest
 //
@@ -997,7 +997,7 @@ func (client *Client) CreateDatabaseWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// After a database is created, you can create a database account for the database. After the account is created, O\\&M engineers can use the account to log on to and perform O\\&M operations on the database.
+// After a database is created, you can create a database account for the database. After the account is created, O\\\\\\&M engineers can use the account to log on to and perform O\\\\\\&M operations on the database.
 //
 // @param request - CreateDatabaseAccountRequest
 //
@@ -1065,7 +1065,7 @@ func (client *Client) CreateDatabaseAccountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建导出配置的任务
+// Creates a configuration backup export task. You can run only one configuration backup export task on a bastion host at a time.
 //
 // @param request - CreateExportConfigJobRequest
 //
@@ -1113,7 +1113,7 @@ func (client *Client) CreateExportConfigJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Bastionhost allows you to perform O\\&M operations on hosts from different sources, such as Alibaba Cloud Elastic Compute Service (ECS) instances, servers in on-premises data centers, and servers on other cloud platforms. Before you perform O\\&M operations on hosts by using a bastion host, you must import the hosts to the bastion host. You can call this operation to import a host to a bastion host.
+// Bastionhost allows you to perform O\\\\\\&M operations on hosts from different sources, such as Alibaba Cloud Elastic Compute Service (ECS) instances, servers in on-premises data centers, and servers on other cloud platforms. Before you perform O\\\\\\&M operations on hosts by using a bastion host, you must import the hosts to the bastion host. You can call this operation to import a host to a bastion host.
 //
 // @param request - CreateHostRequest
 //
@@ -1205,7 +1205,7 @@ func (client *Client) CreateHostWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// After you import a host to a bastion host, you must add an account of the host to the bastion host. This way, O\\&M engineers can use the account to log on to and perform O\\&M operations on the host by using the bastion host.
+// After you import a host to a bastion host, you must add an account of the host to the bastion host. This way, O\\\\\\&M engineers can use the account to log on to and perform O\\\\\\&M operations on the host by using the bastion host.
 //
 // @param request - CreateHostAccountRequest
 //
@@ -1405,7 +1405,7 @@ func (client *Client) CreateHostShareKeyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a network domain.
+// If you want to perform O\\\\\\&M operations on assets that reside in different networks or assets that cannot communicate with the virtual private cloud (VPC) of your bastion host in a centralized manner, we recommend that you use the network domain feature of Bastionhost. You can configure a proxy server for these assets, create a network domain for a bastion host, and then connect the network domain to the proxy server. This way, you can perform O\\\\\\&M operations on the assets by using the bastion host.
 //
 // @param request - CreateNetworkDomainRequest
 //
@@ -1469,7 +1469,7 @@ func (client *Client) CreateNetworkDomainWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建运维审批工单
+// If a Bastionhost administrator turns on O\\\\\\&M Approval on the Create Control Policy page, O\\\\\\&M engineers can log on to assets to perform O\\\\\\&M operations only after the administrator approves their O\\\\\\&M applications.
 //
 // @param request - CreateOperationTicketRequest
 //
@@ -1545,7 +1545,7 @@ func (client *Client) CreateOperationTicketWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Configures a command control, command approval, protocol control, or access control policy to manage O\\&M operations. This effectively prevents users from performing high-risk operations or accidental operations to ensure O\\&M security.
+// Configures a command control, command approval, protocol control, or access control policy to manage O\\\\\\&M operations. This effectively prevents users from performing high-risk operations or accidental operations to ensure O\\\\\\&M security.
 //
 // @param request - CreatePolicyRequest
 //
@@ -1807,7 +1807,7 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Creates a user group for the specified bastion host.
+// Creates a user group for a bastion host.
 //
 // Description:
 //
@@ -1869,7 +1869,7 @@ func (client *Client) CreateUserGroupWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a public key for a bastion host user and hosts the public key in the bastion host. This way, O\\&M engineers can use the private key that corresponds to the public key to log on to the bastion host from an O\\&M client.
+// Creates a public key for a bastion host user and hosts the public key in the bastion host. This way, O\\\\\\&M engineers can use the private key that corresponds to the public key to log on to the bastion host from an O\\\\\\&M client.
 //
 // Description:
 //
@@ -2041,7 +2041,7 @@ func (client *Client) DeleteDatabaseAccountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes the specified host.
+// Deletes a host.
 //
 // @param request - DeleteHostRequest
 //
@@ -2477,7 +2477,7 @@ func (client *Client) DeleteUserWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// Deletes a specified user group from a specified bastion host.
+// Deletes a user group from a bastion host.
 //
 // @param request - DeleteUserGroupRequest
 //
@@ -2637,7 +2637,7 @@ func (client *Client) DescribeInstanceAttributeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 堡垒机实例列表
+// Queries bastion hosts.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -3153,7 +3153,7 @@ func (client *Client) DetachHostGroupAccountsFromUserGroupWithContext(ctx contex
 
 // Summary:
 //
-// Disables Internet access for a bastion host.
+// Disables Internet access to a bastion host.
 //
 // @param request - DisableInstancePublicAccessRequest
 //
@@ -3253,7 +3253,7 @@ func (client *Client) DisableRuleWithContext(ctx context.Context, request *Disab
 
 // Summary:
 //
-// Enables Internet access for a bastion host.
+// Enables Internet access to a bastion host.
 //
 // @param request - EnableInstancePublicAccessRequest
 //
@@ -3353,7 +3353,7 @@ func (client *Client) EnableRuleWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// Applies for an O\\&M token.
+// Applies for an O\\\\\\&M token.
 //
 // @param request - GenerateAssetOperationTokenRequest
 //
@@ -3549,7 +3549,7 @@ func (client *Client) GetDatabaseAccountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取导出配置任务进度
+// null
 //
 // @param request - GetExportConfigJobRequest
 //
@@ -3915,7 +3915,7 @@ func (client *Client) GetInstanceLDAPAuthServerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取堡垒机实例存储信息
+// Queries the storage usage of a bastion host.
 //
 // @param request - GetInstanceStoreInfoRequest
 //
@@ -4377,6 +4377,68 @@ func (client *Client) GetUserGroupWithContext(ctx context.Context, request *GetU
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为当前主机导入 KMS 凭据
+//
+// @param tmpReq - ImportKMSSecretsForHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportKMSSecretsForHostResponse
+func (client *Client) ImportKMSSecretsForHostWithContext(ctx context.Context, tmpReq *ImportKMSSecretsForHostRequest, runtime *dara.RuntimeOptions) (_result *ImportKMSSecretsForHostResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ImportKMSSecretsForHostShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Secrets) {
+		request.SecretsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Secrets, dara.String("Secrets"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostId) {
+		query["HostId"] = request.HostId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecretsShrink) {
+		query["Secrets"] = request.SecretsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportKMSSecretsForHost"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportKMSSecretsForHostResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4873,7 +4935,7 @@ func (client *Client) ListDatabasesForUserGroupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries accounts of a specified host.
+// Queries a list of host accounts.
 //
 // @param request - ListHostAccountsRequest
 //
@@ -5005,7 +5067,7 @@ func (client *Client) ListHostAccountsForHostShareKeyWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the host accounts that the specified user is authorized to manage on the specified host.
+// Queries the host accounts of a host and whether a user is authorized to manage each host account.
 //
 // @param request - ListHostAccountsForUserRequest
 //
@@ -5073,7 +5135,7 @@ func (client *Client) ListHostAccountsForUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the host accounts of the specified host that the specified user group is authorized to manage.
+// Queries the host accounts of a host and whether a user group is authorized to manage each host account.
 //
 // @param request - ListHostAccountsForUserGroupRequest
 //
@@ -5731,6 +5793,70 @@ func (client *Client) ListHostsForUserGroupWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListHostsForUserGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出指定主机所有可导入的 KMS 凭据
+//
+// @param request - ListImportableKMSSecretsForHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImportableKMSSecretsForHostResponse
+func (client *Client) ListImportableKMSSecretsForHostWithContext(ctx context.Context, request *ListImportableKMSSecretsForHostRequest, runtime *dara.RuntimeOptions) (_result *ListImportableKMSSecretsForHostResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HostId) {
+		query["HostId"] = request.HostId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImportableKMSSecretsForHost"),
+		Version:     dara.String("2019-12-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImportableKMSSecretsForHostResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6399,7 +6525,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// Queries the tags bound to one or more Bastionhost instances.
+// Queries the tags that are added for one or more bastion hosts.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7167,7 +7293,7 @@ func (client *Client) ModifyHostShareKeyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Changes the portal type of one or more hosts for O\\&M.
+// Changes the endpoint type of one or more hosts for O\\\\\\&M. Public and private IP addresses are supported.
 //
 // @param request - ModifyHostsActiveAddressTypeRequest
 //
@@ -7923,7 +8049,7 @@ func (client *Client) ModifyUserWithContext(ctx context.Context, request *Modify
 
 // Summary:
 //
-// Modifies the information about the specified user group.
+// Modifies the information about a user group.
 //
 // @param request - ModifyUserGroupRequest
 //
@@ -8215,7 +8341,7 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// If an O\\&M engineer attempts to run a command specified in the Command Approval section of the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
+// If an O\\\\\\&M engineer attempts to run a command specified in the Command Approval section of the Create Control Policy page, the administrator is notified to review the command in the Bastionhost console. The command can be run only after it is approved by the administrator.
 //
 // Description:
 //
@@ -8571,7 +8697,7 @@ func (client *Client) RemoveUsersFromGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Renews an O\\&M token for one hour.
+// Renews an O\\\\\\&M token for one hour.
 //
 // @param request - RenewAssetOperationTokenRequest
 //
@@ -8741,7 +8867,7 @@ func (client *Client) SetPolicyAccessTimeRangeConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Configures the O&M approval setting in a control policy.
+// Configures the O\\&M approval setting in a control policy.
 //
 // @param tmpReq - SetPolicyApprovalConfigRequest
 //
@@ -8933,7 +9059,7 @@ func (client *Client) SetPolicyCommandConfigWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Configures access control settings in a control policy.
+// Specifies whether a source IP address can access the assets to which a control policy applies.
 //
 // @param tmpReq - SetPolicyIPAclConfigRequest
 //
@@ -8995,7 +9121,7 @@ func (client *Client) SetPolicyIPAclConfigWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Modify the protocol control settings in a control policy.
+// Configures the Remote Desktop Protocol (RDP) options, SSH options, and SSH Fine Transfer Protocol (SFTP) options for a control policy.
 //
 // @param tmpReq - SetPolicyProtocolConfigRequest
 //
@@ -9121,7 +9247,7 @@ func (client *Client) SetPolicyUserScopeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Enables the specified bastion host.
+// Starts a bastion host.
 //
 // @param request - StartInstanceRequest
 //
@@ -9365,7 +9491,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// 验证实例AD服务配置
+// 验证实例AD服务配置。
 //
 // @param request - VerifyInstanceADAuthServerRequest
 //
@@ -9449,7 +9575,7 @@ func (client *Client) VerifyInstanceADAuthServerWithContext(ctx context.Context,
 
 // Summary:
 //
-// 验证实例LDAP服务配置
+// 验证实例LDAP服务配置。
 //
 // @param request - VerifyInstanceLDAPAuthServerRequest
 //
