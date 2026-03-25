@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Approves an O\\&M operation.
+// Approves an O\\\\\\&M operation.
 //
 // @param request - ApproveOperationRequest
 //
@@ -855,7 +855,7 @@ func (client *Client) DeleteNodeWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// 删除节点分组
+// # Delete Node Group
 //
 // @param request - DeleteNodeGroupRequest
 //
@@ -1089,7 +1089,7 @@ func (client *Client) DescribeHyperNodeWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the execution list and status of O\\&M Assistant commands.
+// Queries the execution list and status of O\\\\\\&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -1277,7 +1277,7 @@ func (client *Client) DescribeNodeGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 创建Web Terminal会话
+// 查询节点规格详情
 //
 // @param request - DescribeNodeTypeRequest
 //
@@ -1365,7 +1365,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the files that are sent by an O\\&M assistant and the status of the files.
+// Queries the files that are sent by an O\\\\\\&M assistant and the status of the files.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -3025,7 +3025,7 @@ func (client *Client) ShrinkClusterWithContext(ctx context.Context, tmpReq *Shri
 
 // Summary:
 //
-// Stops the O\\&M assistant command execution.
+// Stops the O\\\\\\&M assistant command execution.
 //
 // @param tmpReq - StopInvocationRequest
 //

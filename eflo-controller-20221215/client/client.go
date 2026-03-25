@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Approves an O\\&M operation.
+// Approves an O\\\\\\&M operation.
 //
 // @param request - ApproveOperationRequest
 //
@@ -106,7 +106,7 @@ func (client *Client) ApproveOperationWithOptions(request *ApproveOperationReque
 
 // Summary:
 //
-// Approves an O\\&M operation.
+// Approves an O\\\\\\&M operation.
 //
 // @param request - ApproveOperationRequest
 //
@@ -1164,7 +1164,7 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 
 // Summary:
 //
-// 删除节点分组
+// # Delete Node Group
 //
 // @param request - DeleteNodeGroupRequest
 //
@@ -1212,7 +1212,7 @@ func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest
 
 // Summary:
 //
-// 删除节点分组
+// # Delete Node Group
 //
 // @param request - DeleteNodeGroupRequest
 //
@@ -1492,7 +1492,7 @@ func (client *Client) DescribeHyperNode(request *DescribeHyperNodeRequest) (_res
 
 // Summary:
 //
-// Queries the execution list and status of O\\&M Assistant commands.
+// Queries the execution list and status of O\\\\\\&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -1548,7 +1548,7 @@ func (client *Client) DescribeInvocationsWithOptions(request *DescribeInvocation
 
 // Summary:
 //
-// Queries the execution list and status of O\\&M Assistant commands.
+// Queries the execution list and status of O\\\\\\&M Assistant commands.
 //
 // @param request - DescribeInvocationsRequest
 //
@@ -1752,7 +1752,7 @@ func (client *Client) DescribeNodeGroup(request *DescribeNodeGroupRequest) (_res
 
 // Summary:
 //
-// 创建Web Terminal会话
+// 查询节点规格详情
 //
 // @param request - DescribeNodeTypeRequest
 //
@@ -1796,7 +1796,7 @@ func (client *Client) DescribeNodeTypeWithOptions(request *DescribeNodeTypeReque
 
 // Summary:
 //
-// 创建Web Terminal会话
+// 查询节点规格详情
 //
 // @param request - DescribeNodeTypeRequest
 //
@@ -1876,7 +1876,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries the files that are sent by an O\\&M assistant and the status of the files.
+// Queries the files that are sent by an O\\\\\\&M assistant and the status of the files.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -1924,7 +1924,7 @@ func (client *Client) DescribeSendFileResultsWithOptions(request *DescribeSendFi
 
 // Summary:
 //
-// Queries the files that are sent by an O\\&M assistant and the status of the files.
+// Queries the files that are sent by an O\\\\\\&M assistant and the status of the files.
 //
 // @param request - DescribeSendFileResultsRequest
 //
@@ -4055,7 +4055,7 @@ func (client *Client) ShrinkCluster(request *ShrinkClusterRequest) (_result *Shr
 
 // Summary:
 //
-// Stops the O\\&M assistant command execution.
+// Stops the O\\\\\\&M assistant command execution.
 //
 // @param tmpReq - StopInvocationRequest
 //
@@ -4109,7 +4109,7 @@ func (client *Client) StopInvocationWithOptions(tmpReq *StopInvocationRequest, r
 
 // Summary:
 //
-// Stops the O\\&M assistant command execution.
+// Stops the O\\\\\\&M assistant command execution.
 //
 // @param request - StopInvocationRequest
 //
