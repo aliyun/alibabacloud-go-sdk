@@ -577,7 +577,7 @@ func (client *Client) CreateInvoiceWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// 创建账单订阅
+// Create a bill report subscription.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -917,7 +917,63 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
 	}
 
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CouponId) {
+		query["CouponId"] = request.CouponId
+	}
+
+	if !dara.IsNil(request.CouponNo) {
+		query["CouponNo"] = request.CouponNo
+	}
+
+	if !dara.IsNil(request.CouponType) {
+		query["CouponType"] = request.CouponType
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.EffectiveEndTime) {
+		query["EffectiveEndTime"] = request.EffectiveEndTime
+	}
+
+	if !dara.IsNil(request.EffectiveStartTime) {
+		query["EffectiveStartTime"] = request.EffectiveStartTime
+	}
+
+	if !dara.IsNil(request.ExpireEndDate) {
+		query["ExpireEndDate"] = request.ExpireEndDate
+	}
+
+	if !dara.IsNil(request.ExpireStartDate) {
+		query["ExpireStartDate"] = request.ExpireStartDate
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -926,7 +982,7 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 		Version:     dara.String("2023-09-30"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -963,7 +1019,31 @@ func (client *Client) DescribeCouponItemListWithContext(ctx context.Context, tmp
 		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
 	}
 
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CouponId) {
+		query["CouponId"] = request.CouponId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EcIdAccountIdsShrink) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Nbid) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -972,7 +1052,7 @@ func (client *Client) DescribeCouponItemListWithContext(ctx context.Context, tmp
 		Version:     dara.String("2023-09-30"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),

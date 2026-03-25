@@ -27,8 +27,12 @@ type iDescribeCouponRequest interface {
 	GetExpireEndDate() *int64
 	SetExpireStartDate(v int64) *DescribeCouponRequest
 	GetExpireStartDate() *int64
+	SetMaxResults(v int32) *DescribeCouponRequest
+	GetMaxResults() *int32
 	SetNbid(v string) *DescribeCouponRequest
 	GetNbid() *string
+	SetNextToken(v string) *DescribeCouponRequest
+	GetNextToken() *string
 	SetPageSize(v int32) *DescribeCouponRequest
 	GetPageSize() *int32
 	SetStatus(v string) *DescribeCouponRequest
@@ -71,10 +75,12 @@ type DescribeCouponRequest struct {
 	//
 	// 1684750028000
 	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
+	MaxResults      *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// example:
 	//
 	// 2684201000001
-	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Nbid      *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -131,8 +137,16 @@ func (s *DescribeCouponRequest) GetExpireStartDate() *int64 {
 	return s.ExpireStartDate
 }
 
+func (s *DescribeCouponRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
 func (s *DescribeCouponRequest) GetNbid() *string {
 	return s.Nbid
+}
+
+func (s *DescribeCouponRequest) GetNextToken() *string {
+	return s.NextToken
 }
 
 func (s *DescribeCouponRequest) GetPageSize() *int32 {
@@ -188,8 +202,18 @@ func (s *DescribeCouponRequest) SetExpireStartDate(v int64) *DescribeCouponReque
 	return s
 }
 
+func (s *DescribeCouponRequest) SetMaxResults(v int32) *DescribeCouponRequest {
+	s.MaxResults = &v
+	return s
+}
+
 func (s *DescribeCouponRequest) SetNbid(v string) *DescribeCouponRequest {
 	s.Nbid = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetNextToken(v string) *DescribeCouponRequest {
+	s.NextToken = &v
 	return s
 }
 
