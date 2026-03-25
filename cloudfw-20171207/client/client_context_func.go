@@ -4126,6 +4126,10 @@ func (client *Client) DescribeAddressBookWithContext(ctx context.Context, reques
 		query["GroupType"] = request.GroupType
 	}
 
+	if !dara.IsNil(request.GroupUuid) {
+		query["GroupUuid"] = request.GroupUuid
+	}
+
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
 	}

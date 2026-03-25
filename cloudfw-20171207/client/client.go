@@ -5564,6 +5564,10 @@ func (client *Client) DescribeAddressBookWithOptions(request *DescribeAddressBoo
 		query["GroupType"] = request.GroupType
 	}
 
+	if !dara.IsNil(request.GroupUuid) {
+		query["GroupUuid"] = request.GroupUuid
+	}
+
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
 	}

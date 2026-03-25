@@ -15,6 +15,8 @@ type iDescribeAddressBookRequest interface {
 	GetCurrentPage() *string
 	SetGroupType(v string) *DescribeAddressBookRequest
 	GetGroupType() *string
+	SetGroupUuid(v string) *DescribeAddressBookRequest
+	GetGroupUuid() *string
 	SetLang(v string) *DescribeAddressBookRequest
 	GetLang() *string
 	SetPageSize(v string) *DescribeAddressBookRequest
@@ -60,6 +62,7 @@ type DescribeAddressBookRequest struct {
 	//
 	// ip
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	GroupUuid *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
 	// The language of the content within the request. Valid values:
 	//
 	// 	- **zh*	- (default): Chinese
@@ -106,6 +109,10 @@ func (s *DescribeAddressBookRequest) GetGroupType() *string {
 	return s.GroupType
 }
 
+func (s *DescribeAddressBookRequest) GetGroupUuid() *string {
+	return s.GroupUuid
+}
+
 func (s *DescribeAddressBookRequest) GetLang() *string {
 	return s.Lang
 }
@@ -130,6 +137,11 @@ func (s *DescribeAddressBookRequest) SetCurrentPage(v string) *DescribeAddressBo
 
 func (s *DescribeAddressBookRequest) SetGroupType(v string) *DescribeAddressBookRequest {
 	s.GroupType = &v
+	return s
+}
+
+func (s *DescribeAddressBookRequest) SetGroupUuid(v string) *DescribeAddressBookRequest {
+	s.GroupUuid = &v
 	return s
 }
 
