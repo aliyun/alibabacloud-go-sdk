@@ -18,14 +18,20 @@ type iListConsumerAuthorizationRulesRequest interface {
 }
 
 type ListConsumerAuthorizationRulesRequest struct {
+	// API name for fuzzy search.
+	//
 	// example:
 	//
 	// qwen3
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned on each page. If you do not specify this parameter, the default value is 10.
+	//
 	// example:
 	//
 	// 10

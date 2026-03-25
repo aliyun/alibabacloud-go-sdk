@@ -16,8 +16,18 @@ type iListSecretReferencesRequest interface {
 }
 
 type ListSecretReferencesRequest struct {
+	// The page number. The value starts from 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
 func (s ListSecretReferencesRequest) String() string {

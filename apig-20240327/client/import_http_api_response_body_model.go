@@ -164,7 +164,8 @@ type ImportHttpApiResponseBodyDataDryRunInfo struct {
 	// The data structs that fail the dry run.
 	FailureComponents []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
 	// The operations that fail the dry run.
-	FailureOperations []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
+	FailureOperations  []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
+	McpToolsDefinition *string                                                     `json:"mcpToolsDefinition,omitempty" xml:"mcpToolsDefinition,omitempty"`
 	// The data structs that pass the dry run.
 	SuccessComponents []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
 	// The operations that pass the dry run.
@@ -197,6 +198,10 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetFailureOperations() []*Impo
 	return s.FailureOperations
 }
 
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetMcpToolsDefinition() *string {
+	return s.McpToolsDefinition
+}
+
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) GetSuccessComponents() []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents {
 	return s.SuccessComponents
 }
@@ -226,6 +231,11 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetFailureComponents(v []*Impo
 
 func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetFailureOperations(v []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations) *ImportHttpApiResponseBodyDataDryRunInfo {
 	s.FailureOperations = v
+	return s
+}
+
+func (s *ImportHttpApiResponseBodyDataDryRunInfo) SetMcpToolsDefinition(v string) *ImportHttpApiResponseBodyDataDryRunInfo {
+	s.McpToolsDefinition = &v
 	return s
 }
 

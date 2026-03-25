@@ -1593,7 +1593,7 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 
 // Summary:
 //
-// 创建密钥
+// Generates a key.
 //
 // @param request - CreateSecretRequest
 //
@@ -1660,7 +1660,7 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, head
 
 // Summary:
 //
-// 创建密钥
+// Generates a key.
 //
 // @param request - CreateSecretRequest
 //
@@ -2594,7 +2594,7 @@ func (client *Client) DeletePolicyAttachment(policyAttachmentId *string) (_resul
 
 // Summary:
 //
-// 删除密钥
+// Deletes a key value.
 //
 // @param headers - map
 //
@@ -2627,7 +2627,7 @@ func (client *Client) DeleteSecretWithOptions(secretId *string, headers map[stri
 
 // Summary:
 //
-// 删除密钥
+// Deletes a key value.
 //
 // @return DeleteSecretResponse
 func (client *Client) DeleteSecret(secretId *string) (_result *DeleteSecretResponse, _err error) {
@@ -3787,7 +3787,11 @@ func (client *Client) GetResourceOverview(request *GetResourceOverviewRequest) (
 
 // Summary:
 //
-// 查询密钥
+// Obtains the key.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param headers - map
 //
@@ -3820,7 +3824,11 @@ func (client *Client) GetSecretWithOptions(secretId *string, headers map[string]
 
 // Summary:
 //
-// 查询密钥
+// Obtains the key.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @return GetSecretResponse
 func (client *Client) GetSecret(secretId *string) (_result *GetSecretResponse, _err error) {
@@ -3837,7 +3845,7 @@ func (client *Client) GetSecret(secretId *string) (_result *GetSecretResponse, _
 
 // Summary:
 //
-// 查询密钥值
+// Gets the key value.
 //
 // @param headers - map
 //
@@ -3870,7 +3878,7 @@ func (client *Client) GetSecretValueWithOptions(name *string, headers map[string
 
 // Summary:
 //
-// 查询密钥值
+// Gets the key value.
 //
 // @return GetSecretValueResponse
 func (client *Client) GetSecretValue(name *string) (_result *GetSecretValueResponse, _err error) {
@@ -4237,7 +4245,7 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 
 // Summary:
 //
-// 查询消费者授权规则列表
+// Obtains a list of consumer authentication rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -4292,7 +4300,7 @@ func (client *Client) ListConsumerAuthorizationRulesWithOptions(consumerId *stri
 
 // Summary:
 //
-// 查询消费者授权规则列表
+// Obtains a list of consumer authentication rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -5282,7 +5290,11 @@ func (client *Client) ListPluginAttachments(request *ListPluginAttachmentsReques
 
 // Summary:
 //
-// # ListPluginClasses
+// Obtains a plugin.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListPluginClassesRequest
 //
@@ -5369,7 +5381,11 @@ func (client *Client) ListPluginClassesWithOptions(request *ListPluginClassesReq
 
 // Summary:
 //
-// # ListPluginClasses
+// Obtains a plugin.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListPluginClassesRequest
 //
@@ -5666,7 +5682,11 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 
 // Summary:
 //
-// 查询密钥的引用详情
+// Lists key references.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListSecretReferencesRequest
 //
@@ -5717,7 +5737,11 @@ func (client *Client) ListSecretReferencesWithOptions(secretId *string, request 
 
 // Summary:
 //
-// 查询密钥的引用详情
+// Lists key references.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListSecretReferencesRequest
 //
@@ -7605,7 +7629,11 @@ func (client *Client) UpdatePolicy(policyId *string, request *UpdatePolicyReques
 
 // Summary:
 //
-// 更新消费者
+// Updates the key.
+//
+// Description:
+//
+// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
 //
 // @param request - UpdateSecretRequest
 //
@@ -7652,7 +7680,11 @@ func (client *Client) UpdateSecretWithOptions(secretId *string, request *UpdateS
 
 // Summary:
 //
-// 更新消费者
+// Updates the key.
+//
+// Description:
+//
+// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
 //
 // @param request - UpdateSecretRequest
 //

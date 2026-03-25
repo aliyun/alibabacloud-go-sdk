@@ -24,12 +24,38 @@ type iCreateSecretRequest interface {
 }
 
 type CreateSecretRequest struct {
-	Description  *string    `json:"description,omitempty" xml:"description,omitempty"`
-	GatewayType  *string    `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	KmsConfig    *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
-	Name         *string    `json:"name,omitempty" xml:"name,omitempty"`
-	SecretData   *string    `json:"secretData,omitempty" xml:"secretData,omitempty"`
-	SecretSource *string    `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
+	// The description of the key.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The type of the gateway.
+	//
+	// example:
+	//
+	// API
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The key configuration information of KMS.
+	KmsConfig *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
+	// The key name. It can be up to 64 characters in length and can contain letters, digits, and underscores (_).
+	//
+	// example:
+	//
+	// my_secret
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the KMS credential.
+	//
+	// example:
+	//
+	// apikey-123456xxxxxxxx
+	SecretData *string `json:"secretData,omitempty" xml:"secretData,omitempty"`
+	// The source of the key.
+	//
+	// example:
+	//
+	// KMS
+	SecretSource *string `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
 }
 
 func (s CreateSecretRequest) String() string {

@@ -18,9 +18,23 @@ type iDeleteSecretResponseBody interface {
 }
 
 type DeleteSecretResponseBody struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// DD4F1D33-7267-5596-8F5D-C593xxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

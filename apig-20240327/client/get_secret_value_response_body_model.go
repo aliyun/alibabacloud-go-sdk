@@ -20,10 +20,25 @@ type iGetSecretValueResponseBody interface {
 }
 
 type GetSecretValueResponseBody struct {
-	Code    *string                         `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *GetSecretValueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                         `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response payload.
+	Data *GetSecretValueResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 479AE38F-A574-52F7-87EA-E91199999F9E
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,6 +96,11 @@ func (s *GetSecretValueResponseBody) Validate() error {
 }
 
 type GetSecretValueResponseBodyData struct {
+	// The key value.
+	//
+	// example:
+	//
+	// apikey-xxxxxxxx
 	SecretData *string `json:"secretData,omitempty" xml:"secretData,omitempty"`
 }
 

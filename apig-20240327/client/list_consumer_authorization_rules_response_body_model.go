@@ -20,11 +20,16 @@ type iListConsumerAuthorizationRulesResponseBody interface {
 }
 
 type ListConsumerAuthorizationRulesResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Ok
-	Code *string                                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *ListConsumerAuthorizationRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
@@ -91,15 +96,22 @@ func (s *ListConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type ListConsumerAuthorizationRulesResponseBodyData struct {
+	// The list of consumer authorization information.
 	Items []*ListConsumerAuthorizationRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number.
+	//
 	// example:
 	//
 	// 9
@@ -164,45 +176,68 @@ func (s *ListConsumerAuthorizationRulesResponseBodyData) Validate() error {
 }
 
 type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
+	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
+	// The ID of the consumer authorization rule.
+	//
 	// example:
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	// The consumer ID.
+	//
 	// example:
 	//
 	// cs-csheiftlhtgmp0j0hp4g
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The deployment status of the API in the current environment.
+	//
 	// example:
 	//
 	// {}
-	DeployStatus    *string          `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
+	// The environment information.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
+	// The expiry mode. Valid values: LongTerm and ShortTerm.
+	//
 	// example:
 	//
 	// ShortTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
+	// The rule status.
+	//
 	// example:
 	//
 	// InEffect
 	ExpireStatus *string `json:"expireStatus,omitempty" xml:"expireStatus,omitempty"`
+	// The time when the rule expires.
+	//
 	// example:
 	//
 	// 172086834548
-	ExpireTimestamp *int64       `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	GatewayInfo     *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
+	// The gateway information.
+	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The update timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1721116090326

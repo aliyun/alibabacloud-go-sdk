@@ -1214,7 +1214,7 @@ func (client *Client) CreatePolicyAttachmentWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建密钥
+// Generates a key.
 //
 // @param request - CreateSecretRequest
 //
@@ -1909,7 +1909,7 @@ func (client *Client) DeletePolicyAttachmentWithContext(ctx context.Context, pol
 
 // Summary:
 //
-// 删除密钥
+// Deletes a key value.
 //
 // @param headers - map
 //
@@ -2728,7 +2728,11 @@ func (client *Client) GetResourceOverviewWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询密钥
+// Obtains the key.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param headers - map
 //
@@ -2761,7 +2765,7 @@ func (client *Client) GetSecretWithContext(ctx context.Context, secretId *string
 
 // Summary:
 //
-// 查询密钥值
+// Gets the key value.
 //
 // @param headers - map
 //
@@ -3053,7 +3057,7 @@ func (client *Client) InstallPluginWithContext(ctx context.Context, request *Ins
 
 // Summary:
 //
-// 查询消费者授权规则列表
+// Obtains a list of consumer authentication rules.
 //
 // @param request - ListConsumerAuthorizationRulesRequest
 //
@@ -3884,7 +3888,11 @@ func (client *Client) ListPluginAttachmentsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # ListPluginClasses
+// Obtains a plugin.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListPluginClassesRequest
 //
@@ -4192,7 +4200,11 @@ func (client *Client) ListPolicyClassesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询密钥的引用详情
+// Lists key references.
+//
+// Description:
+//
+// You can call this operation to create multiple services at a time.
 //
 // @param request - ListSecretReferencesRequest
 //
@@ -5655,7 +5667,11 @@ func (client *Client) UpdatePolicyWithContext(ctx context.Context, policyId *str
 
 // Summary:
 //
-// 更新消费者
+// Updates the key.
+//
+// Description:
+//
+// You can only update the listening Ingress configuration for sources of the **ACK*	- type.
 //
 // @param request - UpdateSecretRequest
 //

@@ -20,10 +20,25 @@ type iListSecretReferencesResponseBody interface {
 }
 
 type ListSecretReferencesResponseBody struct {
-	Code    *string                               `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *ListSecretReferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	Data *ListSecretReferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The response message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// CE857A85-251D-5018-8103-A38957D71***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,10 +96,26 @@ func (s *ListSecretReferencesResponseBody) Validate() error {
 }
 
 type ListSecretReferencesResponseBodyData struct {
-	Items      []*ListSecretReferencesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	PageNumber *int32                                       `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                                       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalSize  *int32                                       `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+	// The list of reference details.
+	Items []*ListSecretReferencesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 25
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
 }
 
 func (s ListSecretReferencesResponseBodyData) String() string {
@@ -145,12 +176,26 @@ func (s *ListSecretReferencesResponseBodyData) Validate() error {
 }
 
 type ListSecretReferencesResponseBodyDataItems struct {
-	PluginConfig    *ListSecretReferencesResponseBodyDataItemsPluginConfig    `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty" type:"Struct"`
-	ServiceConfig   *ListSecretReferencesResponseBodyDataItemsServiceConfig   `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
-	ConsumerConfig  *ListSecretReferencesResponseBodyDataItemsConsumerConfig  `json:"consumerConfig,omitempty" xml:"consumerConfig,omitempty" type:"Struct"`
-	GatewayId       *string                                                   `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The information about the plug-in that references the current key.
+	PluginConfig *ListSecretReferencesResponseBodyDataItemsPluginConfig `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty" type:"Struct"`
+	// The service information that references the current key.
+	ServiceConfig *ListSecretReferencesResponseBodyDataItemsServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
+	// The consumer information that references the current key.
+	ConsumerConfig *ListSecretReferencesResponseBodyDataItemsConsumerConfig `json:"consumerConfig,omitempty" xml:"consumerConfig,omitempty" type:"Struct"`
+	// The gateway instance ID.
+	//
+	// example:
+	//
+	// gw-xxxx
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// MCP service information that references the current key.
 	McpServerConfig *ListSecretReferencesResponseBodyDataItemsMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
-	ResourceType    *string                                                   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The type of resource.
+	//
+	// example:
+	//
+	// Plugin
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
 func (s ListSecretReferencesResponseBodyDataItems) String() string {
@@ -240,9 +285,24 @@ func (s *ListSecretReferencesResponseBodyDataItems) Validate() error {
 }
 
 type ListSecretReferencesResponseBodyDataItemsPluginConfig struct {
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plug-in name.
+	//
+	// example:
+	//
+	// oauth
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The plug-in type ID.
+	//
+	// example:
+	//
+	// pls-xxxxxxxx
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	PluginId      *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// The plug-in ID.
+	//
+	// example:
+	//
+	// pl-d4ijk56m1hkhxxxxxxxx
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
 }
 
 func (s ListSecretReferencesResponseBodyDataItemsPluginConfig) String() string {
@@ -285,7 +345,17 @@ func (s *ListSecretReferencesResponseBodyDataItemsPluginConfig) Validate() error
 }
 
 type ListSecretReferencesResponseBodyDataItemsServiceConfig struct {
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// myService
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// svc-cvgbtcmm1hkmxxxxxxxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
@@ -320,8 +390,18 @@ func (s *ListSecretReferencesResponseBodyDataItemsServiceConfig) Validate() erro
 }
 
 type ListSecretReferencesResponseBodyDataItemsConsumerConfig struct {
+	// The consumer ID.
+	//
+	// example:
+	//
+	// cs-d0iltnem1hkhxxxxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The consumer name.
+	//
+	// example:
+	//
+	// myconsumer
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListSecretReferencesResponseBodyDataItemsConsumerConfig) String() string {
@@ -355,9 +435,24 @@ func (s *ListSecretReferencesResponseBodyDataItemsConsumerConfig) Validate() err
 }
 
 type ListSecretReferencesResponseBodyDataItemsMcpServerConfig struct {
+	// The HTTP API ID.
+	//
+	// example:
+	//
+	// api-d2vv43em201hxxxxxxxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	RouteId   *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	// The route name.
+	//
+	// example:
+	//
+	// mcp
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// hr-cv0i5oum1hkhxxxxxxxx
+	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 }
 
 func (s ListSecretReferencesResponseBodyDataItemsMcpServerConfig) String() string {

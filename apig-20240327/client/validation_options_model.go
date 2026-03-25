@@ -14,6 +14,9 @@ type iValidationOptions interface {
 }
 
 type ValidationOptions struct {
+	// example:
+	//
+	// true
 	SkipVerifyAIChatCompletion *bool `json:"skipVerifyAIChatCompletion,omitempty" xml:"skipVerifyAIChatCompletion,omitempty"`
 }
 

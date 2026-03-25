@@ -20,10 +20,25 @@ type iGetSecretResponseBody interface {
 }
 
 type GetSecretResponseBody struct {
-	Code    *string                    `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *GetSecretResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                    `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The key information.
+	Data *GetSecretResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// ID of the request.
+	//
+	// example:
+	//
+	// CE857A85-251D-5018-8103-A38957D71E20
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,15 +96,66 @@ func (s *GetSecretResponseBody) Validate() error {
 }
 
 type GetSecretResponseBodyData struct {
-	CreateTimestamp *int64     `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	GatewayType     *string    `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	KmsConfig       *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
-	Name            *string    `json:"name,omitempty" xml:"name,omitempty"`
-	ReferenceCount  *int32     `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
-	SecretId        *string    `json:"secretId,omitempty" xml:"secretId,omitempty"`
-	SecretSource    *string    `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
-	Status          *string    `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTimestamp *int64     `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	// The creation timestamp.
+	//
+	// example:
+	//
+	// 1719386834548
+	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// The type of the gateway. Valid values:
+	//
+	// 	- API
+	//
+	// 	- AI
+	//
+	// example:
+	//
+	// API
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// The KMS configuration information.
+	KmsConfig *KMSConfig `json:"kmsConfig,omitempty" xml:"kmsConfig,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// mysecret
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of resources that reference the current key.
+	//
+	// example:
+	//
+	// 1
+	ReferenceCount *int32 `json:"referenceCount,omitempty" xml:"referenceCount,omitempty"`
+	// The ID of the key.
+	//
+	// example:
+	//
+	// sec-d5e6shmm1hkoxxxxxxxx
+	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
+	// The source of the key.
+	//
+	// example:
+	//
+	// KMS
+	SecretSource *string `json:"secretSource,omitempty" xml:"secretSource,omitempty"`
+	// The state of the key. Valid values:
+	//
+	// 	- ENALBE
+	//
+	// 	- DISABLE
+	//
+	// 	- DELETED
+	//
+	// example:
+	//
+	// ENALBE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The update timestamp.
+	//
+	// example:
+	//
+	// 1725868548440
+	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
 }
 
 func (s GetSecretResponseBodyData) String() string {

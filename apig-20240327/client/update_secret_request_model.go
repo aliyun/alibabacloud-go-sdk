@@ -14,6 +14,11 @@ type iUpdateSecretRequest interface {
 }
 
 type UpdateSecretRequest struct {
+	// The key value.
+	//
+	// example:
+	//
+	// apikey-xxxxxxxx
 	SecretData *string `json:"secretData,omitempty" xml:"secretData,omitempty"`
 }
 

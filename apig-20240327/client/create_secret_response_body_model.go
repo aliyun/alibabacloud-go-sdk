@@ -20,10 +20,25 @@ type iCreateSecretResponseBody interface {
 }
 
 type CreateSecretResponseBody struct {
-	Code    *string                       `json:"code,omitempty" xml:"code,omitempty"`
-	Data    *CreateSecretResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	Message *string                       `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	Data *CreateSecretResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
+	// example:
+	//
+	// Failed to upload data. Please try again
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// ID of the request.
+	//
+	// example:
+	//
+	// CFF809D7-045D-502F-BF6C-947Exxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -81,6 +96,11 @@ func (s *CreateSecretResponseBody) Validate() error {
 }
 
 type CreateSecretResponseBodyData struct {
+	// The ID of the key.
+	//
+	// example:
+	//
+	// sec-d5e6shmm1hkoxxxxxxxx
 	SecretId *string `json:"secretId,omitempty" xml:"secretId,omitempty"`
 }
 

@@ -34,43 +34,76 @@ type iListPluginClassesRequest interface {
 }
 
 type ListPluginClassesRequest struct {
+	// The alias keyword for a fuzzy search.
 	AliasLike *string `json:"aliasLike,omitempty" xml:"aliasLike,omitempty"`
+	// The traffic direction. Valid values:
+	//
+	// 	- OutBound
+	//
+	// 	- InBound
+	//
+	// 	- Both
+	//
 	// example:
 	//
 	// InBound
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// Specifies whether to exclude built-in plugins.
+	//
 	// example:
 	//
 	// true
 	ExcludeBuiltinAiProxy *bool `json:"excludeBuiltinAiProxy,omitempty" xml:"excludeBuiltinAiProxy,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// gw-d1j8tjum1hkhxxxxxxxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// The instance type. Valid values: **AI*	- and **API**.
+	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// Indicates whether the plugin is installed.
+	//
 	// example:
 	//
 	// false
 	Installed *bool `json:"installed,omitempty" xml:"installed,omitempty"`
+	// The plugin name for a fuzzy search.
+	//
 	// example:
 	//
 	// oauth
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The plugin source. Valid values:
+	//
+	// 	- HigressOfficial
+	//
+	// 	- HigressCommunity
+	//
+	// 	- Custom
+	//
 	// example:
 	//
 	// HigressOfficial
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The type of the plugin.
+	//
 	// example:
 	//
 	// Auth

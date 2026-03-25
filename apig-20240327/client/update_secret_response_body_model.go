@@ -18,9 +18,23 @@ type iUpdateSecretResponseBody interface {
 }
 
 type UpdateSecretResponseBody struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// ID of the request.
+	//
+	// example:
+	//
+	// B01CABA5-9AA1-51A2-A5A7-8BD83BA062F7
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
