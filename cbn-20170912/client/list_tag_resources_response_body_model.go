@@ -33,8 +33,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// 165B5C86-2033-5954-A89D-4CD83BA06C85
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of resources and tags.
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -117,50 +116,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the CEN instance.
-	//
-	// example:
-	//
-	// cen-8z69wtwqel33lq****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Valid values:
-	//
-	// **Cen**: CEN instance
-	//
-	// **BandwidthPackage**: bandwidth plan
-	//
-	// **TransitRouter**: transit router
-	//
-	// **TransitRouterVpcAttachment**: virtual private cloud (VPC) connection
-	//
-	// **TransitRouterVbrAttachment**: virtual border router (VBR) connection
-	//
-	// **TransitRouterPeerAttachment**: inter-region connection
-	//
-	// **TransitRouterVpnAttachment**: VPN connection
-	//
-	// **TransitRouterRouteTable**: route table
-	//
-	// **Flowlog**: flow log
-	//
-	// **TransitRouterMulticastDomain**: multicast domain
-	//
-	// example:
-	//
-	// CEN
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// Bp
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

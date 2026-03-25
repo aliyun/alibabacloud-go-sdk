@@ -22,7 +22,6 @@ type iDescribeCenChildInstanceRouteEntriesResponseBody interface {
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBody struct {
-	// The information about the route.
 	CenRouteEntries *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,134 +146,19 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntries) Valida
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
-	// The AS paths of the routes.
-	AsPaths *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
-	// The routing policy that the routes match.
-	CenRouteMapRecords *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
-	// The community attributes of the route entries.
-	Communities *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
-	// A list of overlapping routes.
-	Conflicts *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
-	// The destination CIDR block of the route.
-	//
-	// example:
-	//
-	// 10.0.0.0/24
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the instance specified as the next hop in the route.
-	//
-	// example:
-	//
-	// vbr-bp13gtbhdp0pfqg6s****
-	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	// The region ID of the instance specified as the next hop in the route.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	NextHopRegionId *string `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
-	// The type of the instance specified as the next hop in the route. Valid values:
-	//
-	// 	- **Instance**: an ECS instance
-	//
-	// 	- **HaVip**: an HAVIP
-	//
-	// 	- **RouterInterface**: a router interface
-	//
-	// 	- **NetworkInterface**: an ENI
-	//
-	// 	- **VpnGateway**: a VPN gateway
-	//
-	// 	- **IPv6Gateway**: an IPv6 gateway
-	//
-	// 	- **Ipv4Gateway**: an IPv4 gateway
-	//
-	// 	- **NatGateway**: a NAT gateway
-	//
-	// 	- **Attachment**: a network instance connection
-	//
-	// 	- **service**: a cloud service
-	//
-	// 	- **VBR**: a VBR
-	//
-	// 	- **CCN**: a CCN instance
-	//
-	// 	- **VPC**: a VPC
-	//
-	// 	- **local**: a system route (no next hop is specified)
-	//
-	// 	- **TR**: a transit router
-	//
-	// 	- **BlackHole**: a blackhole route (no next hop is specified)
-	//
-	// 	- **EcRouterInterface**: a router interface for Express Connect
-	//
-	// 	- **HealthCheck**: a health check
-	//
-	// 	- **AS**: an access gateway for CCN
-	//
-	// 	- **classic**: a classic network-type instance
-	//
-	// 	- **GatewayEndpoint**: a gateway endpoint
-	//
-	// 	- **CPE**: a data center connected to a VBR
-	//
-	// example:
-	//
-	// VBR
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// Indicates whether the route is allowed to be advertised to or withdrawn from the CEN instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	OperationalMode *bool `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
-	// Indicates whether the route is advertised to the CEN instance. Valid values:
-	//
-	// 	- **Published**
-	//
-	// 	- **NonPublished**
-	//
-	// example:
-	//
-	// Published
-	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// The route table ID.
-	//
-	// example:
-	//
-	// vtb-bp1r9pvl4xen8s9ju****
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The route status. Valid values:
-	//
-	// 	- **Active**: available routes
-	//
-	// 	- **Candidate**: standby routes
-	//
-	// 	- **Rejected**: rejected routes
-	//
-	// 	- **Prohibited**: prohibited routes
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The route type. Valid values:
-	//
-	// 	- **CEN**: route that is advertised through CEN
-	//
-	// 	- **System**: system route
-	//
-	// 	- **Custom**: custom route
-	//
-	// example:
-	//
-	// CEN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AsPaths              *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths            `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
+	CenRouteMapRecords   *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
+	Communities          *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities        `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
+	Conflicts            *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflicts          `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
+	DestinationCidrBlock *string                                                                                         `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	NextHopInstanceId    *string                                                                                         `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
+	NextHopRegionId      *string                                                                                         `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
+	NextHopType          *string                                                                                         `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	OperationalMode      *bool                                                                                           `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
+	PublishStatus        *string                                                                                         `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	RouteTableId         *string                                                                                         `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	Status               *string                                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                 *string                                                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) String() string {
@@ -486,17 +370,7 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRoute
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {
-	// The region ID of the routing policy.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The routing policy ID.
-	//
-	// example:
-	//
-	// cenrmap-w4yf7toozfol3q****
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 
@@ -590,48 +464,11 @@ func (s *DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRoute
 }
 
 type DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict struct {
-	// The destination CIDR block of the overlapping route.
-	//
-	// example:
-	//
-	// 192.168.1.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the peer network instance on which the overlapping routes are found.
-	//
-	// example:
-	//
-	// ccn-0q3b7oviikmm9h****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the peer network instance on which the overlapping routes are found. Valid values:
-	//
-	// 	- **VPC**: VPC
-	//
-	// 	- **VBR**: VBR
-	//
-	// 	- **CCN**: CCN instance
-	//
-	// 	- **ECR**: ECR
-	//
-	// example:
-	//
-	// CCN
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The region ID of the peer network instance on which the overlapping routes are found.
-	//
-	// example:
-	//
-	// ccn-cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cause of the route error. Valid values:
-	//
-	// 	- **conflict**: The routes have the same destination CIDR block.
-	//
-	// 	- **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
-	//
-	// example:
-	//
-	// conflict
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenChildInstanceRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryConflictsConflict) String() string {

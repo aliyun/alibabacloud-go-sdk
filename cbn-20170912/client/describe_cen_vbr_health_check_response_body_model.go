@@ -45,8 +45,7 @@ type DescribeCenVbrHealthCheckResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The health check configuration of the VBR.
+	TotalCount      *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VbrHealthChecks *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks `json:"VbrHealthChecks,omitempty" xml:"VbrHealthChecks,omitempty" type:"Struct"`
 }
 
@@ -147,67 +146,14 @@ func (s *DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks) Validate() error 
 }
 
 type DescribeCenVbrHealthCheckResponseBodyVbrHealthChecksVbrHealthCheck struct {
-	// The ID of the CEN instance.
-	//
-	// example:
-	//
-	// cen-6hpdgj7ni6pz1k****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// healthcheck_description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time interval at which probe packets are sent during the health check. Unit: seconds.
-	//
-	// example:
-	//
-	// 2
-	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// Indicates whether probing is enabled. Valid values:
-	//
-	// 	- **true**: Probing is enabled.
-	//
-	//         If you enable probing, the system does not switch to another route if the detected route is not reachable.
-	//
-	// 	- **false**: Probing is disabled.
-	//
-	//           If probing is disabled and a redundant route is specified, the system switches to the redundant route when the detected route is not reachable.
-	//
-	// example:
-	//
-	// false
-	HealthCheckOnly *bool `json:"HealthCheckOnly,omitempty" xml:"HealthCheckOnly,omitempty"`
-	// The source IP address of the health check.
-	//
-	// example:
-	//
-	// 172.XX.XX.1
+	CenId               *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	HealthCheckInterval *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	HealthCheckOnly     *bool   `json:"HealthCheckOnly,omitempty" xml:"HealthCheckOnly,omitempty"`
 	HealthCheckSourceIp *string `json:"HealthCheckSourceIp,omitempty" xml:"HealthCheckSourceIp,omitempty"`
-	// The destination IP address of the health check.
-	//
-	// example:
-	//
-	// 192.XX.XX.1
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	// The number of probe packets that are sent during the health check.
-	//
-	// example:
-	//
-	// 8
-	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The VBR ID.
-	//
-	// example:
-	//
-	// vbr-bp1kznorjeembsuhl****
-	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the region where the VBR is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	HealthyThreshold    *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	VbrInstanceId       *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
 	VbrInstanceRegionId *string `json:"VbrInstanceRegionId,omitempty" xml:"VbrInstanceRegionId,omitempty"`
 }
 

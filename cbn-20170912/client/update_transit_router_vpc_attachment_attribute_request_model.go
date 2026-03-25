@@ -15,6 +15,8 @@ type iUpdateTransitRouterVpcAttachmentAttributeRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentAttributeRequest
 	GetDryRun() *bool
+	SetOrderType(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest
+	GetOrderType() *string
 	SetOwnerAccount(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *UpdateTransitRouterVpcAttachmentAttributeRequest
@@ -63,7 +65,11 @@ type UpdateTransitRouterVpcAttachmentAttributeRequest struct {
 	// example:
 	//
 	// false
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// PayByCenOwner
+	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -116,6 +122,10 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) GetOrderType() *string {
+	return s.OrderType
+}
+
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -160,6 +170,11 @@ func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetClientToken(v stri
 
 func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetDryRun(v bool) *UpdateTransitRouterVpcAttachmentAttributeRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterVpcAttachmentAttributeRequest) SetOrderType(v string) *UpdateTransitRouterVpcAttachmentAttributeRequest {
+	s.OrderType = &v
 	return s
 }
 

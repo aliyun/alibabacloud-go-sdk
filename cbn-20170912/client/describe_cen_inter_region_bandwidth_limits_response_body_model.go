@@ -22,7 +22,6 @@ type iDescribeCenInterRegionBandwidthLimitsResponseBody interface {
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBody struct {
-	// A list of inter-region connections.
 	CenInterRegionBandwidthLimits *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimits `json:"CenInterRegionBandwidthLimits,omitempty" xml:"CenInterRegionBandwidthLimits,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,64 +146,14 @@ func (s *DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidt
 }
 
 type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit struct {
-	// The maximum bandwidth of the inter-region connection. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 1
-	BandwidthLimit *int64 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	// The ID of the bandwidth plan.
-	//
-	// example:
-	//
-	// cenbwp-uenczwb592fnvv****
+	BandwidthLimit     *int64  `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The bandwidth allocation method. Valid values:
-	//
-	// 	- **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
-	//
-	// 	- **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
-	//
-	// example:
-	//
-	// BandwidthPackage
-	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
-	// The CEN instance ID.
-	//
-	// example:
-	//
-	// cen-pfa6ugf3xl0qsd****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The IDs of the local and peer regions.
-	//
-	// example:
-	//
-	// china_china
-	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	// The ID of the local region.
-	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
-	//
-	// example:
-	//
-	// ccn-cn-shanghai
-	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	// The ID of the peer region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
-	// The bandwidth status of the inter-region connection. Valid values:
-	//
-	// 	- **Active**
-	//
-	// 	- **Modifying**
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BandwidthType      *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	CenId              *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	GeographicSpanId   *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	LocalRegionId      *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+	OppositeRegionId   *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLimitsCenInterRegionBandwidthLimit) String() string {

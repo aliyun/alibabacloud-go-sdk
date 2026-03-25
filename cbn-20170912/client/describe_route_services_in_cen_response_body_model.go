@@ -39,8 +39,7 @@ type DescribeRouteServicesInCenResponseBody struct {
 	// example:
 	//
 	// 196C99CA-6997-5951-9721-AE89720DF856
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the cloud services.
+	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteServiceEntries *DescribeRouteServicesInCenResponseBodyRouteServiceEntries `json:"RouteServiceEntries,omitempty" xml:"RouteServiceEntries,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,56 +146,14 @@ func (s *DescribeRouteServicesInCenResponseBodyRouteServiceEntries) Validate() e
 }
 
 type DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry struct {
-	// The ID of the region where the cloud service is accessed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the CEN instance.
-	//
-	// example:
-	//
-	// cen-pfa6ugf3xl0qsd****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The service addresses of the cloud service.
-	Cidrs *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Struct"`
-	// The description of the cloud service.
-	//
-	// example:
-	//
-	// descname
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The service address of the cloud service.
-	//
-	// example:
-	//
-	// 100.118.28.0/24
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The region ID of the cloud service.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the VPC associated with the cloud service.
-	//
-	// example:
-	//
-	// vpc-bp1h8vbrbcgohcju5****
-	HostVpcId *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
-	// The status of the cloud service. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Active**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AccessRegionId *string                                                                          `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
+	CenId          *string                                                                          `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	Cidrs          *DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntryCidrs `json:"Cidrs,omitempty" xml:"Cidrs,omitempty" type:"Struct"`
+	Description    *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Host           *string                                                                          `json:"Host,omitempty" xml:"Host,omitempty"`
+	HostRegionId   *string                                                                          `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
+	HostVpcId      *string                                                                          `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
+	Status         *string                                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRouteServicesInCenResponseBodyRouteServiceEntriesRouteServiceEntry) String() string {

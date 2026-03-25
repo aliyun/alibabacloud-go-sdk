@@ -33,8 +33,7 @@ type DescribePublishedRouteEntriesResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A list of routes.
+	PageSize              *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PublishedRouteEntries *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries `json:"PublishedRouteEntries,omitempty" xml:"PublishedRouteEntries,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -147,106 +146,14 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntries) Validat
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry struct {
-	// The ID of the route table configured on the network instance.
-	//
-	// example:
-	//
-	// vtb-il7qut3mjgtlcbpk2****
-	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	// A list of conflicting routes.
-	Conflicts *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
-	// The destination CIDR block of the route.
-	//
-	// example:
-	//
-	// 172.16.0.0/16
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the instance specified as the next hop in the route.
-	//
-	// example:
-	//
-	// ecs-bp18sth14qii3pn****
-	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of the instance specified as the next hop in the route.
-	//
-	// 	- **Instance**: ECS instance
-	//
-	// 	- **HaVip**: high-availability virtual IP address (HAVIP).
-	//
-	// 	- **RouterInterface**: router interface.
-	//
-	// 	- **NetworkInterface**: elastic network interface (ENI).
-	//
-	// 	- **VpnGateway**: VPN gateway.
-	//
-	// 	- **IPv6Gateway**: IPv6 gateway.
-	//
-	// 	- **NatGateway**: NAT gateway.
-	//
-	// 	- **Attachment**: network instance connection
-	//
-	// 	- **service**: cloud service
-	//
-	// 	- **VBR**: VBR
-	//
-	// 	- **CCN**: CCN instance
-	//
-	// 	- **VPC**: VPC
-	//
-	// 	- **local**: system route. No next hop is specified.
-	//
-	// 	- **TR**: transit router
-	//
-	// 	- **BlackHole**: blackhole route. No next hop is specified.
-	//
-	// 	- **EcRouterInterface**: router interface for Express Connect
-	//
-	// 	- **HealthCheck**: health check
-	//
-	// 	- **AS**: access gateway for CCN
-	//
-	// 	- **classicLink**: classic network-type instance
-	//
-	// 	- **GatewayEndpoint**: gateway endpoint
-	//
-	// 	- **CPE**: data center connected to the VBR
-	//
-	// example:
-	//
-	// Instance
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// Indicates whether the route is allowed to be advertised to or withdrawn from the CEN instance. Valid values:
-	//
-	// 	- **true**: The route is allowed to be advertised to or withdrawn from the CEN instance.
-	//
-	// 	- **false**: The route is not allowed to be advertised to or withdrawn from the CEN instance.
-	//
-	// example:
-	//
-	// true
-	OperationalMode *bool `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
-	// Indicates whether the route is advertised to the CEN instance. Valid values:
-	//
-	// 	- **Published**: The route is advertised to the CEN instance.
-	//
-	// 	- **NonPublished**: The route is not advertised to the CEN instance.
-	//
-	// example:
-	//
-	// Published
-	PublishStatus *string `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// The type of the route. Valid values:
-	//
-	// 	- **CEN**: route that is advertised through CEN
-	//
-	// 	- **System**: system route
-	//
-	// 	- **Custom**: custom route
-	//
-	// example:
-	//
-	// System
-	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+	ChildInstanceRouteTableId *string                                                                                     `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
+	Conflicts                 *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflicts `json:"Conflicts,omitempty" xml:"Conflicts,omitempty" type:"Struct"`
+	DestinationCidrBlock      *string                                                                                     `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	NextHopId                 *string                                                                                     `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType               *string                                                                                     `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	OperationalMode           *bool                                                                                       `json:"OperationalMode,omitempty" xml:"OperationalMode,omitempty"`
+	PublishStatus             *string                                                                                     `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
+	RouteType                 *string                                                                                     `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
 }
 
 func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntry) String() string {
@@ -373,46 +280,11 @@ func (s *DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublished
 }
 
 type DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict struct {
-	// The destination CIDR block of the conflicting route.
-	//
-	// example:
-	//
-	// 192.168.20.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the peer network instance on which conflicting routes are found.
-	//
-	// example:
-	//
-	// ccn-0q3b7oviikmm9h****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the peer network instance on which the conflicting routes are found. Valid values:
-	//
-	// 	- **VPC**: VPC
-	//
-	// 	- **VBR**: VBR
-	//
-	// 	- **CCN**: CCN instance
-	//
-	// example:
-	//
-	// CCN
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The ID of the region where the peer network instance on which the conflicting routes are found is deployed.
-	//
-	// example:
-	//
-	// ccn-cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cause of the route confliction. Valid values:
-	//
-	// 	- **conflict**: The routes have the same destination CIDR block.
-	//
-	// 	- **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
-	//
-	// example:
-	//
-	// conflict
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePublishedRouteEntriesResponseBodyPublishedRouteEntriesPublishedRouteEntryConflictsConflict) String() string {

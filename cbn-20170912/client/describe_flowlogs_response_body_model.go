@@ -24,7 +24,6 @@ type iDescribeFlowlogsResponseBody interface {
 }
 
 type DescribeFlowlogsResponseBody struct {
-	// The information about the flow log.
 	FlowLogs *DescribeFlowlogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -168,102 +167,21 @@ func (s *DescribeFlowlogsResponseBodyFlowLogs) Validate() error {
 }
 
 type DescribeFlowlogsResponseBodyFlowLogsFlowLog struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
-	//
-	// example:
-	//
-	// cen-7qthudw0ll6jmc****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the flow log was created.
-	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-07-24T13:00:52Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the flow log.
-	//
-	// example:
-	//
-	// myFlowlog
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the flow log.
-	//
-	// example:
-	//
-	// flowlog-m5evbtbpt****
-	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
-	// The name of the flow log.
-	//
-	// example:
-	//
-	// myFlowlog
-	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The flow log version.
-	//
-	// Flow logs are automatically created in the latest version, which is **3**.
-	//
-	// example:
-	//
-	// 3
-	FlowLogVersion *string `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
-	// The time window for collecting log data. Unit: seconds. Valid values: **60*	- or **600*	- Default value: **600**.
-	//
-	// example:
-	//
-	// 60
-	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The string that defines the format of the flow log. Format:
-	//
-	// `${Field 1}${Field 2}${Field 3}`
-	//
-	// example:
-	//
-	// ${srcaddr}${dstaddr}${bytes}
-	LogFormatString *string `json:"LogFormatString,omitempty" xml:"LogFormatString,omitempty"`
-	// The Logstore that stores the captured traffic data.
-	//
-	// example:
-	//
-	// FlowLogStore
-	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The name of the project that stores the captured traffic data.
-	//
-	// example:
-	//
-	// FlowLogProject
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region ID of the flow log.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the flow log. Valid values:
-	//
-	// 	- **Active**: The flow log is enabled.
-	//
-	// 	- **Inactive**: The flow log is disabled.
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
-	Tags *DescribeFlowlogsResponseBodyFlowLogsFlowLogTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the network instance connection
-	//
-	// example:
-	//
-	// tr-attach-5x4o4ynzuqbv6g****
-	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
-	//
-	// example:
-	//
-	// tr-bp1g9313sx675zr1lajmj
-	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	CenId                     *string                                          `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreationTime              *string                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description               *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	FlowLogId                 *string                                          `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
+	FlowLogName               *string                                          `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
+	FlowLogVersion            *string                                          `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
+	Interval                  *int64                                           `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	LogFormatString           *string                                          `json:"LogFormatString,omitempty" xml:"LogFormatString,omitempty"`
+	LogStoreName              *string                                          `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	ProjectName               *string                                          `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RegionId                  *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                    *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                      *DescribeFlowlogsResponseBodyFlowLogsFlowLogTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TransitRouterAttachmentId *string                                          `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterId           *string                                          `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 }
 
 func (s DescribeFlowlogsResponseBodyFlowLogsFlowLog) String() string {
@@ -453,17 +371,7 @@ func (s *DescribeFlowlogsResponseBodyFlowLogsFlowLogTags) Validate() error {
 }
 
 type DescribeFlowlogsResponseBodyFlowLogsFlowLogTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TagKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// TagValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

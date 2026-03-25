@@ -13,6 +13,8 @@ type iUpdateTransitRouterEcrAttachmentAttributeRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *UpdateTransitRouterEcrAttachmentAttributeRequest
 	GetDryRun() *bool
+	SetOrderType(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest
+	GetOrderType() *string
 	SetOwnerAccount(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *UpdateTransitRouterEcrAttachmentAttributeRequest
@@ -49,7 +51,11 @@ type UpdateTransitRouterEcrAttachmentAttributeRequest struct {
 	// example:
 	//
 	// false
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// PayByCenOwner
+	OrderType            *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -96,6 +102,10 @@ func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) GetOrderType() *string {
+	return s.OrderType
+}
+
 func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -131,6 +141,11 @@ func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetClientToken(v stri
 
 func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetDryRun(v bool) *UpdateTransitRouterEcrAttachmentAttributeRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateTransitRouterEcrAttachmentAttributeRequest) SetOrderType(v string) *UpdateTransitRouterEcrAttachmentAttributeRequest {
+	s.OrderType = &v
 	return s
 }
 

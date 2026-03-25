@@ -33,8 +33,7 @@ type DescribeGeographicRegionMembershipResponseBody struct {
 	// example:
 	//
 	// 2
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of regions.
+	PageSize  *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionIds *DescribeGeographicRegionMembershipResponseBodyRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -147,13 +146,6 @@ func (s *DescribeGeographicRegionMembershipResponseBodyRegionIds) Validate() err
 }
 
 type DescribeGeographicRegionMembershipResponseBodyRegionIdsRegionId struct {
-	// The ID of the region.
-	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
-	//
-	// example:
-	//
-	// us-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

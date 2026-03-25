@@ -22,7 +22,6 @@ type iDescribeGrantRulesToCenResponseBody interface {
 }
 
 type DescribeGrantRulesToCenResponseBody struct {
-	// The permissions that are granted to the CEN instance.
 	GrantRules *DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Struct"`
 	// 	- If no value is specified for **MaxResults**, query results are returned in one batch. The value of **MaxResults*	- indicates the total number of entries.
 	//
@@ -153,64 +152,17 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRules) Validate() error {
 }
 
 type DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule struct {
-	// The ID of the CEN instance.
-	//
-	// example:
-	//
-	// cen-nye53d7p3hzyu4****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the CEN instance belongs.
-	//
-	// example:
-	//
-	// 1210123456123456
-	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The ID of the network instance.
-	//
-	// example:
-	//
-	// vpc-bp1rgeww9mdstuuar****
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
-	//
-	// example:
-	//
-	// 1250123456123456
-	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The region ID of the network instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
+	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenOwnerId            *int64  `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
+	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// 	- **VPC**: VPC
-	//
-	// 	- **VBR**: VBR
-	//
-	// 	- **CCN**: CCN instance
-	//
-	// 	- **VPN**: IPsec-VPN connection
-	//
+	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
 	//
-	// VPC
-	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The time when the permissions were granted to the CEN instance.
-	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-01-24T16:27Z
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values:
-	//
-	// 	- **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
-	//
-	// 	- **PayByResourceOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the network instance belongs.
-	//
+	// PayByCenOwner
+	EffectiveOrderType *string `json:"EffectiveOrderType,omitempty" xml:"EffectiveOrderType,omitempty"`
 	// example:
 	//
 	// PayByCenOwner
@@ -253,6 +205,10 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) GetCreateTime()
 	return s.CreateTime
 }
 
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) GetEffectiveOrderType() *string {
+	return s.EffectiveOrderType
+}
+
 func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) GetOrderType() *string {
 	return s.OrderType
 }
@@ -289,6 +245,11 @@ func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetChildInstanc
 
 func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetCreateTime(v int64) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule) SetEffectiveOrderType(v string) *DescribeGrantRulesToCenResponseBodyGrantRulesGrantRule {
+	s.EffectiveOrderType = &v
 	return s
 }
 

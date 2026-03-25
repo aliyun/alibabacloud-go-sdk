@@ -235,10 +235,8 @@ type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttribute
 	// example:
 	//
 	// 2408:XXXX:0:a600::/56
-	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The IPv6 CIDR blocks of the VPC.
-	Ipv6CidrBlocks *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
-	// The information about the VPC secondary CIDR block.
+	Ipv6CidrBlock       *string                                                                                          `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	Ipv6CidrBlocks      *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocks      `json:"Ipv6CidrBlocks,omitempty" xml:"Ipv6CidrBlocks,omitempty" type:"Struct"`
 	SecondaryCidrBlocks *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
 }
 
@@ -335,28 +333,8 @@ func (s *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttri
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock struct {
-	// The IPv6 CIDR block of the VPC.
-	//
-	// example:
-	//
-	// 2408:XXXX:0:6a::/56
 	Ipv6CidrBlock *string `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
-	// The type of the IPv6 CIDR block of the VPC. Valid values:
-	//
-	// 	- BGP (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
-	//
-	// 	- ChinaMobile: China Mobile (single line)
-	//
-	// 	- ChinaUnicom: China Unicom (single line)
-	//
-	// 	- ChinaTelecom: China Telecom (single line)
-	//
-	// >  If you are on the whitelist of single-line bandwidth, you can set this parameter to ChinaTelecom, ChinaUnicom, or ChinaMobile.
-	//
-	// example:
-	//
-	// BGP
-	Ipv6Isp *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
+	Ipv6Isp       *string `json:"Ipv6Isp,omitempty" xml:"Ipv6Isp,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributesIpv6CidrBlocksIpv6CidrBlock) String() string {

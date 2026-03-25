@@ -2635,7 +2635,7 @@ func (client *Client) CreateTransitRouterRouteTableWithContext(ctx context.Conte
 
 // Summary:
 //
-// Connects the virtual border routers (VBRs) among which you want to establish network communication to the transit router in the region. Then, the transit router can exchange data between the VBR and CEN instance over private connections.
+// Connects a virtual border router (VBR) to an Enterprise Edition transit router.
 //
 // Description:
 //
@@ -3187,6 +3187,10 @@ func (client *Client) DeleteCenWithContext(ctx context.Context, request *DeleteC
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a bandwidth plan.
+//
 // @param request - DeleteCenBandwidthPackageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6553,7 +6557,7 @@ func (client *Client) DescribePublishedRouteEntriesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries overlapping routes.
+// Queries conflicting routes on a network instance.
 //
 // @param request - DescribeRouteConflictRequest
 //
@@ -6637,7 +6641,7 @@ func (client *Client) DescribeRouteConflictWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the configurations of cloud services, such as the cloud service status and the ID of the associated VPC.
+// Queries the cloud services that are configured on a Cloud Enterprise Network (CEN) instance.
 //
 // @param request - DescribeRouteServicesInCenRequest
 //
@@ -8669,6 +8673,10 @@ func (client *Client) ListTransitRouterMulticastDomainAssociationsWithContext(ct
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about vSwitches that are associated with a multicast domain after the virtual private cloud (VPC) of the vSwitches is connected to an Enterprise Edition transit router.
+//
 // @param request - ListTransitRouterMulticastDomainVSwitchesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12023,7 +12031,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// 进行云企业网预付费带宽包临时升配
+// Temporarily upgrades a subscription bandwidth plan of Cloud Enterprise Network (CEN).
 //
 // @param request - TempUpgradeCenBandwidthPackageSpecRequest
 //
@@ -12159,7 +12167,7 @@ func (client *Client) UnassociateCenBandwidthPackageWithContext(ctx context.Cont
 
 // Summary:
 //
-// 删除PrivateZone
+// Disables access to PrivateZone.
 //
 // @param request - UnroutePrivateZoneInCenToVpcRequest
 //
@@ -12223,7 +12231,7 @@ func (client *Client) UnroutePrivateZoneInCenToVpcWithContext(ctx context.Contex
 
 // Summary:
 //
-// The ID of the request.
+// Remove tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -12664,6 +12672,10 @@ func (client *Client) UpdateTransitRouterEcrAttachmentAttributeWithContext(ctx c
 		query["DryRun"] = request.DryRun
 	}
 
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -13012,6 +13024,10 @@ func (client *Client) UpdateTransitRouterVbrAttachmentAttributeWithContext(ctx c
 		query["DryRun"] = request.DryRun
 	}
 
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -13104,6 +13120,10 @@ func (client *Client) UpdateTransitRouterVpcAttachmentAttributeWithContext(ctx c
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {
@@ -13274,6 +13294,10 @@ func (client *Client) UpdateTransitRouterVpnAttachmentAttributeWithContext(ctx c
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
 	}
 
 	if !dara.IsNil(request.OwnerAccount) {

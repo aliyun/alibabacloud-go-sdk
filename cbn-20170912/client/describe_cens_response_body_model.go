@@ -22,7 +22,6 @@ type iDescribeCensResponseBody interface {
 }
 
 type DescribeCensResponseBody struct {
-	// The information about the CEN instance.
 	Cens *DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Struct"`
 	// The number of the page returned.
 	//
@@ -147,72 +146,16 @@ func (s *DescribeCensResponseBodyCens) Validate() error {
 }
 
 type DescribeCensResponseBodyCensCen struct {
-	// The IDs of the bandwidth plans that are associated with the CEN instance.
 	CenBandwidthPackageIds *DescribeCensResponseBodyCensCenCenBandwidthPackageIds `json:"CenBandwidthPackageIds,omitempty" xml:"CenBandwidthPackageIds,omitempty" type:"Struct"`
-	// The CEN instance ID.
-	//
-	// example:
-	//
-	// cen-0xyeagctz5sfg9****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the CEN instance was created.
-	//
-	// The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-10-22T07:44Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the CEN instance.
-	//
-	// example:
-	//
-	// desctest
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether IPv6 is enabled for the CEN instance.
-	//
-	// 	- **ENABLE**
-	//
-	// 	- **DISABLED**
-	//
-	// example:
-	//
-	// DISABLED
-	Ipv6Level *string `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
-	// The CEN instance name.
-	//
-	// example:
-	//
-	// nametest
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The level of CIDR block overlapping.
-	//
-	// **REDUCED**: Overlapped CIDR blocks are allowed. This value specifies that CIDR blocks can overlap but CIDR blocks cannot be duplicates.
-	//
-	// example:
-	//
-	// REDUCED
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	// The ID of the resource group to which the CEN instance belongs.
-	//
-	// example:
-	//
-	// rg-acfm3unpnuw****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the CEN instance.
-	//
-	// 	- **Creating**
-	//
-	// 	- **Active**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The IDs of the tags that are added to the CEN instance.
-	Tags *DescribeCensResponseBodyCensCenTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CenId                  *string                                                `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CreationTime           *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description            *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ipv6Level              *string                                                `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
+	Name                   *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProtectionLevel        *string                                                `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	ResourceGroupId        *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                 *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *DescribeCensResponseBodyCensCenTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCensResponseBodyCensCen) String() string {
@@ -387,17 +330,7 @@ func (s *DescribeCensResponseBodyCensCenTags) Validate() error {
 }
 
 type DescribeCensResponseBodyCensCenTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// tagtest
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// tagtest
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

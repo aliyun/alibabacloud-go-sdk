@@ -39,8 +39,7 @@ type DescribeRouteConflictResponseBody struct {
 	// example:
 	//
 	// EE3A2CC7-41F1-58DB-8306-CFC99D9C747B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of overlapping routes.
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteConflicts *DescribeRouteConflictResponseBodyRouteConflicts `json:"RouteConflicts,omitempty" xml:"RouteConflicts,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,46 +146,11 @@ func (s *DescribeRouteConflictResponseBodyRouteConflicts) Validate() error {
 }
 
 type DescribeRouteConflictResponseBodyRouteConflictsRouteConflict struct {
-	// The destination CIDR block of the overlapping route.
-	//
-	// example:
-	//
-	// 172.16.0.0/16
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the peer network instance on which the overlapping routes are found.
-	//
-	// example:
-	//
-	// ccn-0q3b7oviikmm9h****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the peer network instance on which the overlapping routes are found.
-	//
-	// 	- **VPC**: VPC
-	//
-	// 	- **VBR**: VBR
-	//
-	// 	- **CCN**: CCN instance
-	//
-	// example:
-	//
-	// CCN
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The region ID of the peer network instance on which the overlapping routes are found is deployed.
-	//
-	// example:
-	//
-	// ccn-cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cause of the route error. Valid values:
-	//
-	// 	- **conflict**: The routes have the same destination CIDR block.
-	//
-	// 	- **overflow**: The number of routes in the route table configured on another network instance has reached the upper limit.
-	//
-	// example:
-	//
-	// conflict
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRouteConflictResponseBodyRouteConflictsRouteConflict) String() string {

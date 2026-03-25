@@ -49,9 +49,8 @@ type DescribeCenPrivateZoneRoutesResponseBody struct {
 	// example:
 	//
 	// 100.100.XX.XX/32,100.100.XX.XX/32
-	PrivateZoneDnsServers *string `json:"PrivateZoneDnsServers,omitempty" xml:"PrivateZoneDnsServers,omitempty"`
-	// The detailed configuration of PrivateZone.
-	PrivateZoneInfos *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos `json:"PrivateZoneInfos,omitempty" xml:"PrivateZoneInfos,omitempty" type:"Struct"`
+	PrivateZoneDnsServers *string                                                   `json:"PrivateZoneDnsServers,omitempty" xml:"PrivateZoneDnsServers,omitempty"`
+	PrivateZoneInfos      *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos `json:"PrivateZoneInfos,omitempty" xml:"PrivateZoneInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -181,36 +180,10 @@ func (s *DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfos) Validate() er
 }
 
 type DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo struct {
-	// The ID of the region where PrivateZone is accessed.
-	//
-	// example:
-	//
-	// cn-hangzhou
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the region where PrivateZone is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The ID of the VPC that is associated with PrivateZone.
-	//
-	// example:
-	//
-	// vpc-bp18sth14qii3pnvo****
-	HostVpcId *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
-	// The status of PrivateZone. Valid values:
-	//
-	// 	- **Creating**: being created
-	//
-	// 	- **Active**: available
-	//
-	// 	- **Deleting**: being deleted
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	HostRegionId   *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
+	HostVpcId      *string `json:"HostVpcId,omitempty" xml:"HostVpcId,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenPrivateZoneRoutesResponseBodyPrivateZoneInfosPrivateZoneInfo) String() string {

@@ -39,8 +39,7 @@ type DescribeCenRouteMapsResponseBody struct {
 	// example:
 	//
 	// 24CE1987-D1D1-5324-9BAD-2750B60E6ABB
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the routing policy.
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteMaps *DescribeCenRouteMapsResponseBodyRouteMaps `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,224 +146,38 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMaps) Validate() error {
 }
 
 type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
-	// The match method that is used to match routes based on the AS path.
-	//
-	// 	- **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path specified in the match condition.
-	//
-	// 	- **Complete**: exact match. A route is a match only if the AS path of the route is the same as an AS path specified in the match condition.
-	//
-	// example:
-	//
-	// Include
-	AsPathMatchMode *string `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
-	// The CEN instance ID.
-	//
-	// example:
-	//
-	// cen-wx12mmlt17ld82****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The region ID of the routing policy.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	CenRegionId *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	// The match method that is used to evaluate routes based on the prefix. Valid values:
-	//
-	// 	- **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
-	//
-	// For example, if you set the match condition to 10.10.0.0/16 and fuzzy match is applied, the route whose prefix is 10.10.1.0/24 meets the match condition.
-	//
-	// 	- **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
-	//
-	// For example, if you set the match condition to 10.10.0.0/16 and exact match is enabled, a route is a match only if the prefix is 10.10.0.0/16.
-	//
-	// example:
-	//
-	// Include
-	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
-	// The match method that is used to match routes against the community.
-	//
-	// 	- **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community specified in the match condition.
-	//
-	// 	- **Complete**: exact match. A route meets the match condition only if the community of the route is the same as the community specified in the match condition.
-	//
-	// example:
-	//
-	// Include
-	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
-	// The action that is performed on the community of the route.
-	//
-	// 	- **Additive**: adds the community to the route.
-	//
-	// 	- **Replace**: replaces the original community of the route.
-	//
-	// This parameter specifies the action to be performed when a route meets the match condition.
-	//
-	// example:
-	//
-	// Additive
-	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
-	// The description of the routing policy.
-	//
-	// example:
-	//
-	// desctest
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The types of destination network instances to which the routes belong.
-	//
-	// 	- **VPC**
-	//
-	// 	- **VBR**
-	//
-	// 	- **CCN**
-	//
-	// 	- **VPN**
-	//
-	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the type of the destination route tables is the same as that of the network instance in the current region.
-	DestinationChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Struct"`
-	// The prefix list against which routes are matched.
-	//
-	// IPv4 and IPv6 addresses are supported.
-	DestinationCidrBlocks *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Struct"`
-	// The IDs of the destination network instances to which the routes point.
-	//
-	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the ID the destination instance is the same as that of the network instance in the current region.
-	DestinationInstanceIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Struct"`
-	// Indicates whether the destination network instance IDs are excluded.
-	//
-	// 	- **false*	- (default): A route is a match if its destination network instance ID is in the list specified by **DestinationInstanceIds.N**.
-	//
-	// 	- **true**: A route is a match if its destination network instance ID is not in the list specified by **DestinationInstanceIds.N**.
-	//
-	// example:
-	//
-	// false
-	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	// The IDs of the destination regions for the routing policy.
-	DestinationRegionIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Struct"`
-	// The IDs of the destination route tables to which the routes belong. You can enter at most 32 route table IDs.
-	//
-	// >  The destination route tables take effect only if the routing policy is applied to the egress gateway direction, and the destination route table IDs are in the current region.
-	DestinationRouteTableIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Struct"`
-	// The action performed on a route that meets the match conditions.
-	//
-	// 	- **Permit**: the route is permitted.
-	//
-	// 	- **Deny**: the route is denied.
-	//
-	// example:
-	//
-	// Deny
-	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
-	// The type of IP address to be matched against the match condition. Valid values:
-	//
-	// 	- **IPv4**: IPv4 addresses
-	//
-	// 	- **IPv6**: IPv6 addresses
-	//
-	// 	- If no value is returned, both IPv4 and IPv6 addresses are matched against the match condition.
-	//
-	// example:
-	//
-	// IPv4
-	MatchAddressType *string `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
-	// The AS paths against which routes are matched.
-	MatchAsns *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Struct"`
-	// The community set against which routes are matched.
-	MatchCommunitySet *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Struct"`
-	// The priority of the routing policy that you want to associate with the current one.
-	//
-	// example:
-	//
-	// 33
-	NextPriority *int32 `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
-	// The community set on which actions are performed.
-	OperateCommunitySet *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Struct"`
-	// The new priority of the route.
-	//
-	// A smaller value indicates a higher priority.
-	//
-	// This parameter indicates the action to be performed when a route meets the match condition.
-	//
-	// example:
-	//
-	// 20
-	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	// The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes.
-	//
-	// This parameter indicates the action to be performed when a route meets the match condition.
-	PrependAsPath *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Struct"`
-	// The priority of the routing policy. A smaller value indicates a higher priority.
-	//
-	// example:
-	//
-	// 5000
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The routing policy ID.
-	//
-	// example:
-	//
-	// cenrmap-y40mxdvf7joc12****
-	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	// The type of route that is compared. Valid values:
-	//
-	// 	- **System**: system routes that are automatically generated by the system.
-	//
-	// 	- **Custom**: custom routes that are manually added.
-	//
-	// 	- **BGP**: routes that are advertised over BGP.
-	RouteTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Struct"`
-	// The types of source network instances to which the routes belong.
-	//
-	// 	- **VPC**
-	//
-	// 	- **VBR**
-	//
-	// 	- **CCN**
-	//
-	// 	- **VPN**
-	SourceChildInstanceTypes *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Struct"`
-	// The IDs of the source network instances to which the routes belong.
-	SourceInstanceIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Struct"`
-	// Indicates whether the source network instance IDs are excluded.
-	//
-	// 	- **false*	- (default): A route is a match if its source network instance ID is in the list specified by **SourceInstanceIds.N**.
-	//
-	// 	- **true**: A route is match if its source network instance ID is not in the list specified by **SourceInstanceIds.N**.
-	//
-	// example:
-	//
-	// false
-	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
-	// The IDs of the source regions to which the routes belong.
-	SourceRegionIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Struct"`
-	// The IDs of the source route tables to which the routes belong.
-	SourceRouteTableIds *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Struct"`
-	// The status of the routing policy. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Active**
-	//
-	// 	- **Deleting**
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The route table ID of the transit router with which the routing policy is associated.
-	//
-	// example:
-	//
-	// vtb-gw8nx3515m1mbd1z1****
-	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
-	// The direction in which the routing policy is applied.
-	//
-	// example:
-	//
-	// RegionOut
-	TransmitDirection *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
+	AsPathMatchMode                    *string                                                                         `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
+	CenId                              *string                                                                         `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenRegionId                        *string                                                                         `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
+	CidrMatchMode                      *string                                                                         `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
+	CommunityMatchMode                 *string                                                                         `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
+	CommunityOperateMode               *string                                                                         `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
+	Description                        *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationChildInstanceTypes      *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationChildInstanceTypes `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Struct"`
+	DestinationCidrBlocks              *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationCidrBlocks         `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Struct"`
+	DestinationInstanceIds             *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationInstanceIds        `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Struct"`
+	DestinationInstanceIdsReverseMatch *bool                                                                           `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
+	DestinationRegionIds               *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRegionIds          `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Struct"`
+	DestinationRouteTableIds           *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapDestinationRouteTableIds      `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Struct"`
+	MapResult                          *string                                                                         `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
+	MatchAddressType                   *string                                                                         `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
+	MatchAsns                          *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchAsns                     `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Struct"`
+	MatchCommunitySet                  *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapMatchCommunitySet             `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Struct"`
+	NextPriority                       *int32                                                                          `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
+	OperateCommunitySet                *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapOperateCommunitySet           `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Struct"`
+	Preference                         *int32                                                                          `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	PrependAsPath                      *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapPrependAsPath                 `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Struct"`
+	Priority                           *int32                                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RouteMapId                         *string                                                                         `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	RouteTypes                         *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapRouteTypes                    `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Struct"`
+	SourceChildInstanceTypes           *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceChildInstanceTypes      `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Struct"`
+	SourceInstanceIds                  *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceInstanceIds             `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Struct"`
+	SourceInstanceIdsReverseMatch      *bool                                                                           `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
+	SourceRegionIds                    *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds               `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Struct"`
+	SourceRouteTableIds                *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds           `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Struct"`
+	Status                             *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterRouteTableId          *string                                                                         `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
+	TransmitDirection                  *string                                                                         `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
 func (s DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) String() string {

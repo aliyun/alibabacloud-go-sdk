@@ -22,7 +22,6 @@ type iDescribeCenAttachedChildInstancesResponseBody interface {
 }
 
 type DescribeCenAttachedChildInstancesResponseBody struct {
-	// The information about the network instances.
 	ChildInstances *DescribeCenAttachedChildInstancesResponseBodyChildInstances `json:"ChildInstances,omitempty" xml:"ChildInstances,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,63 +146,14 @@ func (s *DescribeCenAttachedChildInstancesResponseBodyChildInstances) Validate()
 }
 
 type DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance struct {
-	// The ID of the CEN instance.
-	//
-	// example:
-	//
-	// cen-j3jzhw1zpau2km****
-	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the network instance was attached to the CEN instance.
-	//
-	// The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-08-10T06:27Z
+	CenId                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
-	// The ID of the network instance.
-	//
-	// example:
-	//
-	// vpc-8vb1lu55yt9rlwgxl****
-	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
-	//
-	// example:
-	//
-	// 1688000000000000
-	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
-	//
-	// example:
-	//
-	// cn-zhangjiakou
-	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
-	//
-	// 	- **VPC**: VPC
-	//
-	// 	- **VBR**: VBR
-	//
-	// 	- **CCN**: CCN instance
-	//
-	// example:
-	//
-	// VPC
-	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	ManagedService    *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
-	// The status of the network instance. Valid values:
-	//
-	// 	- **Attaching**: The network instance is being created on the transit router.
-	//
-	// 	- **Attached**: The network instance has been created on the transit router.
-	//
-	// 	- **Detaching**: The network instance is being deleted from the transit router.
-	//
-	// example:
-	//
-	// Attached
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ChildInstanceId         *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceOwnerId    *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	ChildInstanceRegionId   *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
+	ChildInstanceType       *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	ManagedService          *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCenAttachedChildInstancesResponseBodyChildInstancesChildInstance) String() string {

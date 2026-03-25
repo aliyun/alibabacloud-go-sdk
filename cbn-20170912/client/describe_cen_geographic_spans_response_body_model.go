@@ -22,7 +22,6 @@ type iDescribeCenGeographicSpansResponseBody interface {
 }
 
 type DescribeCenGeographicSpansResponseBody struct {
-	// A list of areas.
 	GeographicSpanModels *DescribeCenGeographicSpansResponseBodyGeographicSpanModels `json:"GeographicSpanModels,omitempty" xml:"GeographicSpanModels,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,23 +146,8 @@ func (s *DescribeCenGeographicSpansResponseBodyGeographicSpanModels) Validate() 
 }
 
 type DescribeCenGeographicSpansResponseBodyGeographicSpanModelsGeographicSpanModel struct {
-	// The ID of the pair of connected areas.
-	//
-	// example:
-	//
-	// china_asia-pacific
-	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	// The ID of the local area.
-	//
-	// example:
-	//
-	// asia-pacific
-	LocalGeoRegionId *string `json:"LocalGeoRegionId,omitempty" xml:"LocalGeoRegionId,omitempty"`
-	// The ID of the peer area.
-	//
-	// example:
-	//
-	// china
+	GeographicSpanId    *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	LocalGeoRegionId    *string `json:"LocalGeoRegionId,omitempty" xml:"LocalGeoRegionId,omitempty"`
 	OppositeGeoRegionId *string `json:"OppositeGeoRegionId,omitempty" xml:"OppositeGeoRegionId,omitempty"`
 }
 

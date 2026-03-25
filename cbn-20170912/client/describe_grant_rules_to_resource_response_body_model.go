@@ -141,6 +141,10 @@ type DescribeGrantRulesToResourceResponseBodyGrantRules struct {
 	//
 	// 2024-01-24T16:46Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// PayByCenOwner
+	EffectiveOrderType *string `json:"EffectiveOrderType,omitempty" xml:"EffectiveOrderType,omitempty"`
 	// The entity that pays the fees of the network instance. Valid values: Valid values:
 	//
 	// 	- **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
@@ -173,6 +177,10 @@ func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) GetCreateTime() *st
 	return s.CreateTime
 }
 
+func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) GetEffectiveOrderType() *string {
+	return s.EffectiveOrderType
+}
+
 func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) GetOrderType() *string {
 	return s.OrderType
 }
@@ -189,6 +197,11 @@ func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetCenOwnerId(v int
 
 func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetCreateTime(v string) *DescribeGrantRulesToResourceResponseBodyGrantRules {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGrantRulesToResourceResponseBodyGrantRules) SetEffectiveOrderType(v string) *DescribeGrantRulesToResourceResponseBodyGrantRules {
+	s.EffectiveOrderType = &v
 	return s
 }
 

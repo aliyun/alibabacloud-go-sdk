@@ -22,7 +22,6 @@ type iDescribeCenRegionDomainRouteEntriesResponseBody interface {
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBody struct {
-	// A list of route entries.
 	CenRouteEntries *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries `json:"CenRouteEntries,omitempty" xml:"CenRouteEntries,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,90 +146,18 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntries) Validat
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry struct {
-	// The AS paths of the route.
-	AsPaths *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
-	// The routing policy that the routes match in the outbound direction.
+	AsPaths               *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryAsPaths               `json:"AsPaths,omitempty" xml:"AsPaths,omitempty" type:"Struct"`
 	CenOutRouteMapRecords *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecords `json:"CenOutRouteMapRecords,omitempty" xml:"CenOutRouteMapRecords,omitempty" type:"Struct"`
-	// The routing policy that the routes match in the inbound direction.
-	CenRouteMapRecords *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
-	// The communities of the route.
-	Communities *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
-	// The destination CIDR block of the route.
-	//
-	// example:
-	//
-	// 192.168.1.0/24
-	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ID of the instance specified as the next hop in the route.
-	//
-	// example:
-	//
-	// vpc-bp1j8728mm6pweeod****
-	NextHopInstanceId *string `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
-	// The ID of the region to which the network instance specified as the next hop in the route belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	NextHopRegionId *string `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
-	// The type of the instance specified as the next hop in the route. Valid values:
-	//
-	// 	- **VPC**: virtual private cloud (VPC)
-	//
-	// 	- **VBR**: virtual border router (VBR)
-	//
-	// 	- **CCN**: Cloud Connect Network (CCN) instance
-	//
-	// 	- **local_service**: system route. No next hop is specified.
-	//
-	// example:
-	//
-	// VPC
-	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The route priority.
-	//
-	// A smaller value indicates a higher priority.
-	//
-	// example:
-	//
-	// 50
-	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	// The route status. Valid values:
-	//
-	// 	- **Active**: available
-	//
-	// 	- **Candidate**: standby
-	//
-	// 	- **Rejected**: rejected
-	//
-	// 	- **Prohibited**: prohibited
-	//
-	// example:
-	//
-	// Active
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the route can be advertised to other regions. Valid values:
-	//
-	// 	- **Active**: The route can be advertised to other regions.
-	//
-	// 	- **Prohibited**: The route cannot be advertised to other regions.
-	//
-	// example:
-	//
-	// Active
-	ToOtherRegionStatus *string `json:"ToOtherRegionStatus,omitempty" xml:"ToOtherRegionStatus,omitempty"`
-	// The route type. Valid values:
-	//
-	// 	- **CEN**: route that is advertised through CEN
-	//
-	// 	- **Custom**: custom route
-	//
-	// 	- **System**: system route
-	//
-	// example:
-	//
-	// CEN
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	CenRouteMapRecords    *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecords    `json:"CenRouteMapRecords,omitempty" xml:"CenRouteMapRecords,omitempty" type:"Struct"`
+	Communities           *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCommunities           `json:"Communities,omitempty" xml:"Communities,omitempty" type:"Struct"`
+	DestinationCidrBlock  *string                                                                                           `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	NextHopInstanceId     *string                                                                                           `json:"NextHopInstanceId,omitempty" xml:"NextHopInstanceId,omitempty"`
+	NextHopRegionId       *string                                                                                           `json:"NextHopRegionId,omitempty" xml:"NextHopRegionId,omitempty"`
+	NextHopType           *string                                                                                           `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	Preference            *int32                                                                                            `json:"Preference,omitempty" xml:"Preference,omitempty"`
+	Status                *string                                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToOtherRegionStatus   *string                                                                                           `json:"ToOtherRegionStatus,omitempty" xml:"ToOtherRegionStatus,omitempty"`
+	Type                  *string                                                                                           `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntry) String() string {
@@ -433,17 +360,7 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenOutRouteMapRecordsCenOutRouteMapRecord struct {
-	// The ID of the region where the routing policy is applied.
-	//
-	// example:
-	//
-	// ccn-cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the routing policy.
-	//
-	// example:
-	//
-	// cenrmap-dbarzidzp7ek4k****
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 
@@ -512,17 +429,7 @@ func (s *DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteE
 }
 
 type DescribeCenRegionDomainRouteEntriesResponseBodyCenRouteEntriesCenRouteEntryCenRouteMapRecordsCenRouteMapRecord struct {
-	// The ID of the region where the routing policy is applied.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the routing policy.
-	//
-	// example:
-	//
-	// cenrmap-cz5axczdxb7yfu****
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 }
 

@@ -22,7 +22,6 @@ type iDescribeCenBandwidthPackagesResponseBody interface {
 }
 
 type DescribeCenBandwidthPackagesResponseBody struct {
-	// The details about the bandwidth plan.
 	CenBandwidthPackages *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages `json:"CenBandwidthPackages,omitempty" xml:"CenBandwidthPackages,omitempty" type:"Struct"`
 	// The number of the returned page.
 	//
@@ -147,166 +146,28 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages) Validate(
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage struct {
-	// The maximum bandwidth of the bandwidth plan.
-	//
-	// example:
-	//
-	// 2
-	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billing method of the bandwidth plan.
-	//
-	// example:
-	//
-	// PREPAY
-	BandwidthPackageChargeType *string `json:"BandwidthPackageChargeType,omitempty" xml:"BandwidthPackageChargeType,omitempty"`
-	// The status of the bandwidth plan. Valid values:
-	//
-	// 	- **Normal**: running as expected.
-	//
-	// 	- **FinancialLocked**: locked due to overdue payments.
-	//
-	// 	- **SecurityLocked**: locked due to security reasons
-	//
-	// example:
-	//
-	// Normal
-	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The ID of the bandwidth plan.
-	//
-	// example:
-	//
-	// cenbwp-4c2zaavbvh5x****
-	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// A list of CEN instances that are associated with the bandwidth plan.
-	CenIds *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds `json:"CenIds,omitempty" xml:"CenIds,omitempty" type:"Struct"`
-	// The time when the bandwidth plan was created. The time is displayed in the ISO8601 standard in the YYYY-MM-DDThh:mmZ format.
-	//
-	// example:
-	//
-	// 2021-02-01T11:14Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the bandwidth plan.
-	//
-	// example:
-	//
-	// cen
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the bandwidth plan expires.
-	//
-	// example:
-	//
-	// 2021-09-08T16:00Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The ID of the area that you want to query. Valid values:
-	//
-	// 	- **china**: Chinese mainland.
-	//
-	// 	- **asia-pacific**: Asia Pacific
-	//
-	// 	- **europe**: Europe
-	//
-	// 	- **north-america**: North America
-	//
-	// example:
-	//
-	// china
-	GeographicRegionAId *string `json:"GeographicRegionAId,omitempty" xml:"GeographicRegionAId,omitempty"`
-	// The ID of the other area connected by the bandwidth plan. Valid values:
-	//
-	// 	- **china**: Chinese mainland.
-	//
-	// 	- **asia-pacific**: Asia Pacific
-	//
-	// 	- **europe**: Europe
-	//
-	// 	- **north-america**: North America
-	//
-	// example:
-	//
-	// north-america
-	GeographicRegionBId *string `json:"GeographicRegionBId,omitempty" xml:"GeographicRegionBId,omitempty"`
-	// The ID of the connected area.
-	//
-	// example:
-	//
-	// north-america_china
-	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	// Indicates whether renewal data is included.
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// >  This parameter returns **true*	- only when the **IncludeReservationData*	- parameter is set to **true*	- and a pending order exists.
-	//
-	// example:
-	//
-	// false
-	HasReservationData *string `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	// Indicates whether the bandwidth plan supports cross-border communication.
-	//
-	// 	- **false**
-	//
-	// 	- **true**
-	//
-	// example:
-	//
-	// false
-	IsCrossBorder *bool `json:"IsCrossBorder,omitempty" xml:"IsCrossBorder,omitempty"`
-	// The name of the bandwidth plan.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The details about the connected regions.
+	Bandwidth                       *int64                                                                                                          `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackageChargeType      *string                                                                                                         `json:"BandwidthPackageChargeType,omitempty" xml:"BandwidthPackageChargeType,omitempty"`
+	BusinessStatus                  *string                                                                                                         `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	CenBandwidthPackageId           *string                                                                                                         `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
+	CenIds                          *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageCenIds                          `json:"CenIds,omitempty" xml:"CenIds,omitempty" type:"Struct"`
+	CreationTime                    *string                                                                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                     *string                                                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpiredTime                     *string                                                                                                         `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GeographicRegionAId             *string                                                                                                         `json:"GeographicRegionAId,omitempty" xml:"GeographicRegionAId,omitempty"`
+	GeographicRegionBId             *string                                                                                                         `json:"GeographicRegionBId,omitempty" xml:"GeographicRegionBId,omitempty"`
+	GeographicSpanId                *string                                                                                                         `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
+	HasReservationData              *string                                                                                                         `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	IsCrossBorder                   *bool                                                                                                           `json:"IsCrossBorder,omitempty" xml:"IsCrossBorder,omitempty"`
+	Name                            *string                                                                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
 	OrginInterRegionBandwidthLimits *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimits `json:"OrginInterRegionBandwidthLimits,omitempty" xml:"OrginInterRegionBandwidthLimits,omitempty" type:"Struct"`
-	// The expiration time of the temporary upgrade.
-	//
-	// example:
-	//
-	// 2021-08-30T16:00Z
-	ReservationActiveTime *string `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	// The bandwidth value to which the bandwidth plan is restored when the temporary upgrade ends.
-	//
-	// example:
-	//
-	// 10
-	ReservationBandwidth *string `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
-	// The new billing method.
-	//
-	// example:
-	//
-	// PREPAY
-	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The renewal method.
-	//
-	// 	- **TEMP_UPGRADE**: temporary upgrade
-	//
-	// 	- **UPGRADE**: upgrade
-	//
-	// example:
-	//
-	// UPGRADE
-	ReservationOrderType *string `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	// The ID of the resource group to which the ACL belongs.
-	//
-	// example:
-	//
-	// rg-aekzoyr5k36****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the bandwidth plan is associated with a CEN instance.
-	//
-	// 	- **Idle**
-	//
-	// 	- **InUse**
-	//
-	// example:
-	//
-	// InUse
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the bandwidth plan.
-	Tags *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	ReservationActiveTime           *string                                                                                                         `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationBandwidth            *string                                                                                                         `json:"ReservationBandwidth,omitempty" xml:"ReservationBandwidth,omitempty"`
+	ReservationInternetChargeType   *string                                                                                                         `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType            *string                                                                                                         `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId                 *string                                                                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                          *string                                                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                            *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageTags                            `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackage) String() string {
@@ -594,29 +455,9 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageOrginInterRegionBandwidthLimitsOrginInterRegionBandwidthLimit struct {
-	// The maximum bandwidth value for the inter-region connection.
-	//
-	// example:
-	//
-	// 1
-	BandwidthLimit *string `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	// The connected regions.
-	//
-	// example:
-	//
-	// north-america_china
+	BandwidthLimit   *string `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
 	GeographicSpanId *string `json:"GeographicSpanId,omitempty" xml:"GeographicSpanId,omitempty"`
-	// The ID of the local region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
-	// The ID of the peer region.
-	//
-	// example:
-	//
-	// us-west-1
+	LocalRegionId    *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
 	OppositeRegionId *string `json:"OppositeRegionId,omitempty" xml:"OppositeRegionId,omitempty"`
 }
 
@@ -703,17 +544,7 @@ func (s *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidt
 }
 
 type DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackagesCenBandwidthPackageTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TagKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// TagValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
