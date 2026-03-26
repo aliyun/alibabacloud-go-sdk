@@ -11,6 +11,8 @@ type iSubmitYikeStoryboardJobRequest interface {
 	GoString() string
 	SetAspectRatio(v string) *SubmitYikeStoryboardJobRequest
 	GetAspectRatio() *string
+	SetExecMode(v string) *SubmitYikeStoryboardJobRequest
+	GetExecMode() *string
 	SetFileURL(v string) *SubmitYikeStoryboardJobRequest
 	GetFileURL() *string
 	SetModelParams(v string) *SubmitYikeStoryboardJobRequest
@@ -23,6 +25,8 @@ type iSubmitYikeStoryboardJobRequest interface {
 	GetShotPromptMode() *string
 	SetShotSplitMode(v string) *SubmitYikeStoryboardJobRequest
 	GetShotSplitMode() *string
+	SetSkipFailureShot(v bool) *SubmitYikeStoryboardJobRequest
+	GetSkipFailureShot() *bool
 	SetSourceType(v string) *SubmitYikeStoryboardJobRequest
 	GetSourceType() *string
 	SetStyleId(v string) *SubmitYikeStoryboardJobRequest
@@ -40,6 +44,7 @@ type SubmitYikeStoryboardJobRequest struct {
 	//
 	// 4:3
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
+	ExecMode    *string `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
 	// example:
 	//
 	// http://test.oss-cn-shanghai.aliyuncs.com/test.mp4
@@ -67,7 +72,8 @@ type SubmitYikeStoryboardJobRequest struct {
 	// example:
 	//
 	// firstPersonNarration
-	ShotSplitMode *string `json:"ShotSplitMode,omitempty" xml:"ShotSplitMode,omitempty"`
+	ShotSplitMode   *string `json:"ShotSplitMode,omitempty" xml:"ShotSplitMode,omitempty"`
+	SkipFailureShot *bool   `json:"SkipFailureShot,omitempty" xml:"SkipFailureShot,omitempty"`
 	// example:
 	//
 	// Novel
@@ -106,6 +112,10 @@ func (s *SubmitYikeStoryboardJobRequest) GetAspectRatio() *string {
 	return s.AspectRatio
 }
 
+func (s *SubmitYikeStoryboardJobRequest) GetExecMode() *string {
+	return s.ExecMode
+}
+
 func (s *SubmitYikeStoryboardJobRequest) GetFileURL() *string {
 	return s.FileURL
 }
@@ -130,6 +140,10 @@ func (s *SubmitYikeStoryboardJobRequest) GetShotSplitMode() *string {
 	return s.ShotSplitMode
 }
 
+func (s *SubmitYikeStoryboardJobRequest) GetSkipFailureShot() *bool {
+	return s.SkipFailureShot
+}
+
 func (s *SubmitYikeStoryboardJobRequest) GetSourceType() *string {
 	return s.SourceType
 }
@@ -152,6 +166,11 @@ func (s *SubmitYikeStoryboardJobRequest) GetVideoModel() *string {
 
 func (s *SubmitYikeStoryboardJobRequest) SetAspectRatio(v string) *SubmitYikeStoryboardJobRequest {
 	s.AspectRatio = &v
+	return s
+}
+
+func (s *SubmitYikeStoryboardJobRequest) SetExecMode(v string) *SubmitYikeStoryboardJobRequest {
+	s.ExecMode = &v
 	return s
 }
 
@@ -182,6 +201,11 @@ func (s *SubmitYikeStoryboardJobRequest) SetShotPromptMode(v string) *SubmitYike
 
 func (s *SubmitYikeStoryboardJobRequest) SetShotSplitMode(v string) *SubmitYikeStoryboardJobRequest {
 	s.ShotSplitMode = &v
+	return s
+}
+
+func (s *SubmitYikeStoryboardJobRequest) SetSkipFailureShot(v bool) *SubmitYikeStoryboardJobRequest {
+	s.SkipFailureShot = &v
 	return s
 }
 

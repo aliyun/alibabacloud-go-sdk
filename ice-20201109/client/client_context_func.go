@@ -8815,7 +8815,11 @@ func (client *Client) GetMediaProducingJobWithContext(ctx context.Context, reque
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8824,7 +8828,7 @@ func (client *Client) GetMediaProducingJobWithContext(ctx context.Context, reque
 		Version:     dara.String("2020-11-09"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -15485,6 +15489,50 @@ func (client *Client) ResumeMediaConnectFlowOutputWithContext(ctx context.Contex
 
 // Summary:
 //
+// 故事板任务恢复继续执行任务
+//
+// @param request - ResumeYikeStoryboardJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeYikeStoryboardJobResponse
+func (client *Client) ResumeYikeStoryboardJobWithContext(ctx context.Context, request *ResumeYikeStoryboardJobRequest, runtime *dara.RuntimeOptions) (_result *ResumeYikeStoryboardJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeYikeStoryboardJob"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeYikeStoryboardJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries online editing projects by creation time and status.
 //
 // @param request - SearchEditingProjectRequest
@@ -20688,6 +20736,10 @@ func (client *Client) SubmitYikeStoryboardJobWithContext(ctx context.Context, re
 		query["AspectRatio"] = request.AspectRatio
 	}
 
+	if !dara.IsNil(request.ExecMode) {
+		query["ExecMode"] = request.ExecMode
+	}
+
 	if !dara.IsNil(request.ModelParams) {
 		query["ModelParams"] = request.ModelParams
 	}
@@ -20702,6 +20754,10 @@ func (client *Client) SubmitYikeStoryboardJobWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.ShotPromptMode) {
 		query["ShotPromptMode"] = request.ShotPromptMode
+	}
+
+	if !dara.IsNil(request.SkipFailureShot) {
+		query["SkipFailureShot"] = request.SkipFailureShot
 	}
 
 	if !dara.IsNil(request.Title) {
