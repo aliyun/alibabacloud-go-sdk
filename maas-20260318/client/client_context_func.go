@@ -42,7 +42,7 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 		Action:      dara.String("CreateApiKey"),
 		Version:     dara.String("2026-03-18"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/bailianControl/apiKey/createApiKey"),
+		Pathname:    dara.String("/maas/apikeys"),
 		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
@@ -62,34 +62,20 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 //
 // 删除apiKey
 //
-// @param request - DeleteApiKeyRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteApiKeyResponse
-func (client *Client) DeleteApiKeyWithContext(ctx context.Context, request *DeleteApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteApiKeyResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiKeyId) {
-		query["apiKeyId"] = request.ApiKeyId
-	}
-
+func (client *Client) DeleteApiKeyWithContext(ctx context.Context, apiKeyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteApiKeyResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteApiKey"),
 		Version:     dara.String("2026-03-18"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/bailianControl/apiKey/deleteApiKey"),
+		Pathname:    dara.String("/maas/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId))),
 		Method:      dara.String("DELETE"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
@@ -109,34 +95,20 @@ func (client *Client) DeleteApiKeyWithContext(ctx context.Context, request *Dele
 //
 // 查询ApiKey详情
 //
-// @param request - GetApiKeyRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetApiKeyResponse
-func (client *Client) GetApiKeyWithContext(ctx context.Context, request *GetApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiKeyResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiKeyId) {
-		query["apiKeyId"] = request.ApiKeyId
-	}
-
+func (client *Client) GetApiKeyWithContext(ctx context.Context, apiKeyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetApiKeyResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetApiKey"),
 		Version:     dara.String("2026-03-18"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/bailianControl/apiKey/getApiKey"),
+		Pathname:    dara.String("/maas/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId))),
 		Method:      dara.String("GET"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
@@ -199,7 +171,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 		Action:      dara.String("ListApiKeys"),
 		Version:     dara.String("2026-03-18"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/bailianControl/apiKeys"),
+		Pathname:    dara.String("/maas/apikeys"),
 		Method:      dara.String("GET"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
@@ -254,7 +226,7 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 		Action:      dara.String("ListWorkspaces"),
 		Version:     dara.String("2026-03-18"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/bailianControl/workspaces"),
+		Pathname:    dara.String("/maas/workspaces"),
 		Method:      dara.String("GET"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),
@@ -281,7 +253,7 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, request *Li
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateApiKeyResponse
-func (client *Client) UpdateApiKeyWithContext(ctx context.Context, request *UpdateApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApiKeyResponse, _err error) {
+func (client *Client) UpdateApiKeyWithContext(ctx context.Context, apiKeyId *string, request *UpdateApiKeyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateApiKeyResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -289,10 +261,6 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, request *Upda
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.ApiKeyId) {
-		query["apiKeyId"] = request.ApiKeyId
-	}
-
 	if !dara.IsNil(request.Description) {
 		query["description"] = request.Description
 	}
@@ -305,7 +273,7 @@ func (client *Client) UpdateApiKeyWithContext(ctx context.Context, request *Upda
 		Action:      dara.String("UpdateApiKey"),
 		Version:     dara.String("2026-03-18"),
 		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/bailianControl/apiKey/updateApiKey"),
+		Pathname:    dara.String("/maas/apikeys/" + dara.PercentEncode(dara.StringValue(apiKeyId))),
 		Method:      dara.String("PUT"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("ROA"),

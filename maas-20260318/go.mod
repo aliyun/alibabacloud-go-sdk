@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/maas-20260318
+module github.com/alibabacloud-go/maas-20260318/v2
 
 go 1.14
 

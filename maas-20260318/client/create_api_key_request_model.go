@@ -20,8 +20,6 @@ type CreateApiKeyRequest struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// llm-y3kv9qctnlytgmga
