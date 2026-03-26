@@ -121,6 +121,7 @@ func (s *TextTranslateResponseBody) Validate() error {
 }
 
 type TextTranslateResponseBodyData struct {
+	DetectedLang *string `json:"detectedLang,omitempty" xml:"detectedLang,omitempty"`
 	// example:
 	//
 	// How does Mogujie solve the data annotation challenge by building a platform?
@@ -136,12 +137,21 @@ func (s TextTranslateResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *TextTranslateResponseBodyData) GetDetectedLang() *string {
+	return s.DetectedLang
+}
+
 func (s *TextTranslateResponseBodyData) GetTranslation() *string {
 	return s.Translation
 }
 
 func (s *TextTranslateResponseBodyData) GetUsage() *TextTranslateResponseBodyDataUsage {
 	return s.Usage
+}
+
+func (s *TextTranslateResponseBodyData) SetDetectedLang(v string) *TextTranslateResponseBodyData {
+	s.DetectedLang = &v
+	return s
 }
 
 func (s *TextTranslateResponseBodyData) SetTranslation(v string) *TextTranslateResponseBodyData {

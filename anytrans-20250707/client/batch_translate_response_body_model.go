@@ -156,7 +156,8 @@ type BatchTranslateResponseBodyDataTranslationList struct {
 	// example:
 	//
 	// 200
-	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	Code         *int64  `json:"code,omitempty" xml:"code,omitempty"`
+	DetectedLang *string `json:"detectedLang,omitempty" xml:"detectedLang,omitempty"`
 	// example:
 	//
 	// 0
@@ -184,6 +185,10 @@ func (s *BatchTranslateResponseBodyDataTranslationList) GetCode() *int64 {
 	return s.Code
 }
 
+func (s *BatchTranslateResponseBodyDataTranslationList) GetDetectedLang() *string {
+	return s.DetectedLang
+}
+
 func (s *BatchTranslateResponseBodyDataTranslationList) GetIndex() *string {
 	return s.Index
 }
@@ -202,6 +207,11 @@ func (s *BatchTranslateResponseBodyDataTranslationList) GetUsage() *BatchTransla
 
 func (s *BatchTranslateResponseBodyDataTranslationList) SetCode(v int64) *BatchTranslateResponseBodyDataTranslationList {
 	s.Code = &v
+	return s
+}
+
+func (s *BatchTranslateResponseBodyDataTranslationList) SetDetectedLang(v string) *BatchTranslateResponseBodyDataTranslationList {
+	s.DetectedLang = &v
 	return s
 }
 
