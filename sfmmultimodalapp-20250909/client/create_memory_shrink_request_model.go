@@ -11,14 +11,20 @@ type iCreateMemoryShrinkRequest interface {
 	GoString() string
 	SetAppId(v string) *CreateMemoryShrinkRequest
 	GetAppId() *string
+	SetAutoUpdate(v bool) *CreateMemoryShrinkRequest
+	GetAutoUpdate() *bool
 	SetContent(v string) *CreateMemoryShrinkRequest
 	GetContent() *string
+	SetExpirationTime(v int32) *CreateMemoryShrinkRequest
+	GetExpirationTime() *int32
 	SetMessagesJson(v string) *CreateMemoryShrinkRequest
 	GetMessagesJson() *string
 	SetMetaDataShrink(v string) *CreateMemoryShrinkRequest
 	GetMetaDataShrink() *string
 	SetProjectId(v string) *CreateMemoryShrinkRequest
 	GetProjectId() *string
+	SetPrompt(v string) *CreateMemoryShrinkRequest
+	GetPrompt() *string
 	SetUserDefinedId(v string) *CreateMemoryShrinkRequest
 	GetUserDefinedId() *string
 	SetWorkspaceId(v string) *CreateMemoryShrinkRequest
@@ -32,13 +38,16 @@ type CreateMemoryShrinkRequest struct {
 	//
 	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AutoUpdate     *bool   `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
 	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ExpirationTime *int32  `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	MessagesJson   *string `json:"MessagesJson,omitempty" xml:"MessagesJson,omitempty"`
 	MetaDataShrink *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// example:
 	//
 	// profile_project
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Prompt    *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -65,8 +74,16 @@ func (s *CreateMemoryShrinkRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *CreateMemoryShrinkRequest) GetAutoUpdate() *bool {
+	return s.AutoUpdate
+}
+
 func (s *CreateMemoryShrinkRequest) GetContent() *string {
 	return s.Content
+}
+
+func (s *CreateMemoryShrinkRequest) GetExpirationTime() *int32 {
+	return s.ExpirationTime
 }
 
 func (s *CreateMemoryShrinkRequest) GetMessagesJson() *string {
@@ -79,6 +96,10 @@ func (s *CreateMemoryShrinkRequest) GetMetaDataShrink() *string {
 
 func (s *CreateMemoryShrinkRequest) GetProjectId() *string {
 	return s.ProjectId
+}
+
+func (s *CreateMemoryShrinkRequest) GetPrompt() *string {
+	return s.Prompt
 }
 
 func (s *CreateMemoryShrinkRequest) GetUserDefinedId() *string {
@@ -94,8 +115,18 @@ func (s *CreateMemoryShrinkRequest) SetAppId(v string) *CreateMemoryShrinkReques
 	return s
 }
 
+func (s *CreateMemoryShrinkRequest) SetAutoUpdate(v bool) *CreateMemoryShrinkRequest {
+	s.AutoUpdate = &v
+	return s
+}
+
 func (s *CreateMemoryShrinkRequest) SetContent(v string) *CreateMemoryShrinkRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *CreateMemoryShrinkRequest) SetExpirationTime(v int32) *CreateMemoryShrinkRequest {
+	s.ExpirationTime = &v
 	return s
 }
 
@@ -111,6 +142,11 @@ func (s *CreateMemoryShrinkRequest) SetMetaDataShrink(v string) *CreateMemoryShr
 
 func (s *CreateMemoryShrinkRequest) SetProjectId(v string) *CreateMemoryShrinkRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateMemoryShrinkRequest) SetPrompt(v string) *CreateMemoryShrinkRequest {
+	s.Prompt = &v
 	return s
 }
 

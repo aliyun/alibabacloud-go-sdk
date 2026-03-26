@@ -11,14 +11,20 @@ type iCreateMemoryRequest interface {
 	GoString() string
 	SetAppId(v string) *CreateMemoryRequest
 	GetAppId() *string
+	SetAutoUpdate(v bool) *CreateMemoryRequest
+	GetAutoUpdate() *bool
 	SetContent(v string) *CreateMemoryRequest
 	GetContent() *string
+	SetExpirationTime(v int32) *CreateMemoryRequest
+	GetExpirationTime() *int32
 	SetMessagesJson(v string) *CreateMemoryRequest
 	GetMessagesJson() *string
 	SetMetaData(v map[string]*string) *CreateMemoryRequest
 	GetMetaData() map[string]*string
 	SetProjectId(v string) *CreateMemoryRequest
 	GetProjectId() *string
+	SetPrompt(v string) *CreateMemoryRequest
+	GetPrompt() *string
 	SetUserDefinedId(v string) *CreateMemoryRequest
 	GetUserDefinedId() *string
 	SetWorkspaceId(v string) *CreateMemoryRequest
@@ -31,14 +37,17 @@ type CreateMemoryRequest struct {
 	// example:
 	//
 	// mm_bfaf7e110b6d4359977d1686a3f8
-	AppId        *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Content      *string            `json:"Content,omitempty" xml:"Content,omitempty"`
-	MessagesJson *string            `json:"MessagesJson,omitempty" xml:"MessagesJson,omitempty"`
-	MetaData     map[string]*string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
+	AppId          *string            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AutoUpdate     *bool              `json:"AutoUpdate,omitempty" xml:"AutoUpdate,omitempty"`
+	Content        *string            `json:"Content,omitempty" xml:"Content,omitempty"`
+	ExpirationTime *int32             `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	MessagesJson   *string            `json:"MessagesJson,omitempty" xml:"MessagesJson,omitempty"`
+	MetaData       map[string]*string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// example:
 	//
 	// profile_project
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Prompt    *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -65,8 +74,16 @@ func (s *CreateMemoryRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *CreateMemoryRequest) GetAutoUpdate() *bool {
+	return s.AutoUpdate
+}
+
 func (s *CreateMemoryRequest) GetContent() *string {
 	return s.Content
+}
+
+func (s *CreateMemoryRequest) GetExpirationTime() *int32 {
+	return s.ExpirationTime
 }
 
 func (s *CreateMemoryRequest) GetMessagesJson() *string {
@@ -79,6 +96,10 @@ func (s *CreateMemoryRequest) GetMetaData() map[string]*string {
 
 func (s *CreateMemoryRequest) GetProjectId() *string {
 	return s.ProjectId
+}
+
+func (s *CreateMemoryRequest) GetPrompt() *string {
+	return s.Prompt
 }
 
 func (s *CreateMemoryRequest) GetUserDefinedId() *string {
@@ -94,8 +115,18 @@ func (s *CreateMemoryRequest) SetAppId(v string) *CreateMemoryRequest {
 	return s
 }
 
+func (s *CreateMemoryRequest) SetAutoUpdate(v bool) *CreateMemoryRequest {
+	s.AutoUpdate = &v
+	return s
+}
+
 func (s *CreateMemoryRequest) SetContent(v string) *CreateMemoryRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *CreateMemoryRequest) SetExpirationTime(v int32) *CreateMemoryRequest {
+	s.ExpirationTime = &v
 	return s
 }
 
@@ -111,6 +142,11 @@ func (s *CreateMemoryRequest) SetMetaData(v map[string]*string) *CreateMemoryReq
 
 func (s *CreateMemoryRequest) SetProjectId(v string) *CreateMemoryRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateMemoryRequest) SetPrompt(v string) *CreateMemoryRequest {
+	s.Prompt = &v
 	return s
 }
 

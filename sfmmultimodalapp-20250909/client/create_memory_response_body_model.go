@@ -162,6 +162,7 @@ type CreateMemoryResponseBodyDataMemoryNodes struct {
 	//
 	// 384dc4786b9d4f5a8cab0d83112cd5a8
 	MemoryNodeId *string `json:"MemoryNodeId,omitempty" xml:"MemoryNodeId,omitempty"`
+	OldContent   *string `json:"OldContent,omitempty" xml:"OldContent,omitempty"`
 }
 
 func (s CreateMemoryResponseBodyDataMemoryNodes) String() string {
@@ -184,6 +185,10 @@ func (s *CreateMemoryResponseBodyDataMemoryNodes) GetMemoryNodeId() *string {
 	return s.MemoryNodeId
 }
 
+func (s *CreateMemoryResponseBodyDataMemoryNodes) GetOldContent() *string {
+	return s.OldContent
+}
+
 func (s *CreateMemoryResponseBodyDataMemoryNodes) SetContent(v string) *CreateMemoryResponseBodyDataMemoryNodes {
 	s.Content = &v
 	return s
@@ -196,6 +201,11 @@ func (s *CreateMemoryResponseBodyDataMemoryNodes) SetEvent(v string) *CreateMemo
 
 func (s *CreateMemoryResponseBodyDataMemoryNodes) SetMemoryNodeId(v string) *CreateMemoryResponseBodyDataMemoryNodes {
 	s.MemoryNodeId = &v
+	return s
+}
+
+func (s *CreateMemoryResponseBodyDataMemoryNodes) SetOldContent(v string) *CreateMemoryResponseBodyDataMemoryNodes {
+	s.OldContent = &v
 	return s
 }
 

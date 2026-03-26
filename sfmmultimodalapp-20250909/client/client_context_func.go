@@ -116,8 +116,16 @@ func (client *Client) CreateMemoryWithContext(ctx context.Context, tmpReq *Creat
 		query["AppId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.AutoUpdate) {
+		query["AutoUpdate"] = request.AutoUpdate
+	}
+
 	if !dara.IsNil(request.Content) {
 		query["Content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ExpirationTime) {
+		query["ExpirationTime"] = request.ExpirationTime
 	}
 
 	if !dara.IsNil(request.MessagesJson) {
@@ -130,6 +138,10 @@ func (client *Client) CreateMemoryWithContext(ctx context.Context, tmpReq *Creat
 
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		query["Prompt"] = request.Prompt
 	}
 
 	if !dara.IsNil(request.UserDefinedId) {
