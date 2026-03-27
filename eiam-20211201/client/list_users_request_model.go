@@ -15,6 +15,10 @@ type iListUsersRequest interface {
 	GetEmail() *string
 	SetInstanceId(v string) *ListUsersRequest
 	GetInstanceId() *string
+	SetMaxResults(v int32) *ListUsersRequest
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListUsersRequest
+	GetNextToken() *string
 	SetOrganizationalUnitId(v string) *ListUsersRequest
 	GetOrganizationalUnitId() *string
 	SetPageNumber(v int64) *ListUsersRequest
@@ -60,6 +64,8 @@ type ListUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the organizational unit.
 	//
 	// example:
@@ -160,6 +166,14 @@ func (s *ListUsersRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListUsersRequest) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListUsersRequest) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListUsersRequest) GetOrganizationalUnitId() *string {
 	return s.OrganizationalUnitId
 }
@@ -216,6 +230,16 @@ func (s *ListUsersRequest) SetEmail(v string) *ListUsersRequest {
 
 func (s *ListUsersRequest) SetInstanceId(v string) *ListUsersRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetMaxResults(v int32) *ListUsersRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUsersRequest) SetNextToken(v string) *ListUsersRequest {
+	s.NextToken = &v
 	return s
 }
 

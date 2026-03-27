@@ -17944,6 +17944,14 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
 	if !dara.IsNil(request.OrganizationalUnitId) {
 		query["OrganizationalUnitId"] = request.OrganizationalUnitId
 	}

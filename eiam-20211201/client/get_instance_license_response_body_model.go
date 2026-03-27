@@ -73,7 +73,8 @@ type GetInstanceLicenseResponseBodyLicense struct {
 	// example:
 	//
 	// 1723996800000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime               *int64                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceLicenseDetail *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail `json:"InstanceLicenseDetail,omitempty" xml:"InstanceLicenseDetail,omitempty" type:"Struct"`
 	// Payment type of the License
 	//
 	// example:
@@ -146,6 +147,10 @@ func (s *GetInstanceLicenseResponseBodyLicense) GetEndTime() *int64 {
 	return s.EndTime
 }
 
+func (s *GetInstanceLicenseResponseBodyLicense) GetInstanceLicenseDetail() *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	return s.InstanceLicenseDetail
+}
+
 func (s *GetInstanceLicenseResponseBodyLicense) GetLicenseChargeType() *string {
 	return s.LicenseChargeType
 }
@@ -189,6 +194,11 @@ func (s *GetInstanceLicenseResponseBodyLicense) SetEdition(v string) *GetInstanc
 
 func (s *GetInstanceLicenseResponseBodyLicense) SetEndTime(v int64) *GetInstanceLicenseResponseBodyLicense {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicense) SetInstanceLicenseDetail(v *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) *GetInstanceLicenseResponseBodyLicense {
+	s.InstanceLicenseDetail = v
 	return s
 }
 
@@ -238,5 +248,75 @@ func (s *GetInstanceLicenseResponseBodyLicense) SetUserQuota(v int64) *GetInstan
 }
 
 func (s *GetInstanceLicenseResponseBodyLicense) Validate() error {
+	if s.InstanceLicenseDetail != nil {
+		if err := s.InstanceLicenseDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail struct {
+	ConditionalAccessPolicyLicenseStatus *string `json:"ConditionalAccessPolicyLicenseStatus,omitempty" xml:"ConditionalAccessPolicyLicenseStatus,omitempty"`
+	M2mApplicationLicenseStatus          *string `json:"M2mApplicationLicenseStatus,omitempty" xml:"M2mApplicationLicenseStatus,omitempty"`
+	M2mApplicationQuota                  *int64  `json:"M2mApplicationQuota,omitempty" xml:"M2mApplicationQuota,omitempty"`
+	NetworkAccessEndpointQuota           *int64  `json:"NetworkAccessEndpointQuota,omitempty" xml:"NetworkAccessEndpointQuota,omitempty"`
+	UserQuota                            *int64  `json:"UserQuota,omitempty" xml:"UserQuota,omitempty"`
+}
+
+func (s GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetConditionalAccessPolicyLicenseStatus() *string {
+	return s.ConditionalAccessPolicyLicenseStatus
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetM2mApplicationLicenseStatus() *string {
+	return s.M2mApplicationLicenseStatus
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetM2mApplicationQuota() *int64 {
+	return s.M2mApplicationQuota
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetNetworkAccessEndpointQuota() *int64 {
+	return s.NetworkAccessEndpointQuota
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) GetUserQuota() *int64 {
+	return s.UserQuota
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetConditionalAccessPolicyLicenseStatus(v string) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.ConditionalAccessPolicyLicenseStatus = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetM2mApplicationLicenseStatus(v string) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.M2mApplicationLicenseStatus = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetM2mApplicationQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.M2mApplicationQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetNetworkAccessEndpointQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.NetworkAccessEndpointQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) SetUserQuota(v int64) *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail {
+	s.UserQuota = &v
+	return s
+}
+
+func (s *GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail) Validate() error {
 	return dara.Validate(s)
 }

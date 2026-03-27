@@ -9,6 +9,10 @@ type iListUsersResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetMaxResults(v int32) *ListUsersResponseBody
+	GetMaxResults() *int32
+	SetNextToken(v string) *ListUsersResponseBody
+	GetNextToken() *string
 	SetRequestId(v string) *ListUsersResponseBody
 	GetRequestId() *string
 	SetTotalCount(v int64) *ListUsersResponseBody
@@ -18,6 +22,8 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -42,6 +48,14 @@ func (s ListUsersResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ListUsersResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
+func (s *ListUsersResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListUsersResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -52,6 +66,16 @@ func (s *ListUsersResponseBody) GetTotalCount() *int64 {
 
 func (s *ListUsersResponseBody) GetUsers() []*ListUsersResponseBodyUsers {
 	return s.Users
+}
+
+func (s *ListUsersResponseBody) SetMaxResults(v int32) *ListUsersResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUsersResponseBody) SetNextToken(v string) *ListUsersResponseBody {
+	s.NextToken = &v
+	return s
 }
 
 func (s *ListUsersResponseBody) SetRequestId(v string) *ListUsersResponseBody {
