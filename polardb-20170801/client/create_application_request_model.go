@@ -59,6 +59,12 @@ type iCreateApplicationRequest interface {
 	GetResourceGroupId() *string
 	SetSecurityGroupId(v string) *CreateApplicationRequest
 	GetSecurityGroupId() *string
+	SetSecurityIPArrayName(v string) *CreateApplicationRequest
+	GetSecurityIPArrayName() *string
+	SetSecurityIPList(v string) *CreateApplicationRequest
+	GetSecurityIPList() *string
+	SetSecurityIPType(v string) *CreateApplicationRequest
+	GetSecurityIPType() *string
 	SetTag(v []*CreateApplicationRequestTag) *CreateApplicationRequest
 	GetTag() []*CreateApplicationRequestTag
 	SetTargetVersion(v string) *CreateApplicationRequest
@@ -155,9 +161,12 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// rg-********************
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Tag             []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId     *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId     *string                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityIPArrayName *string                        `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
+	SecurityIPList      *string                        `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SecurityIPType      *string                        `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	Tag                 []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// latest
@@ -283,6 +292,18 @@ func (s *CreateApplicationRequest) GetResourceGroupId() *string {
 
 func (s *CreateApplicationRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *CreateApplicationRequest) GetSecurityIPArrayName() *string {
+	return s.SecurityIPArrayName
+}
+
+func (s *CreateApplicationRequest) GetSecurityIPList() *string {
+	return s.SecurityIPList
+}
+
+func (s *CreateApplicationRequest) GetSecurityIPType() *string {
+	return s.SecurityIPType
 }
 
 func (s *CreateApplicationRequest) GetTag() []*CreateApplicationRequestTag {
@@ -431,6 +452,21 @@ func (s *CreateApplicationRequest) SetResourceGroupId(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetSecurityGroupId(v string) *CreateApplicationRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSecurityIPArrayName(v string) *CreateApplicationRequest {
+	s.SecurityIPArrayName = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSecurityIPList(v string) *CreateApplicationRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSecurityIPType(v string) *CreateApplicationRequest {
+	s.SecurityIPType = &v
 	return s
 }
 

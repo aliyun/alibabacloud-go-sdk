@@ -59,6 +59,12 @@ type iCreateApplicationShrinkRequest interface {
 	GetResourceGroupId() *string
 	SetSecurityGroupId(v string) *CreateApplicationShrinkRequest
 	GetSecurityGroupId() *string
+	SetSecurityIPArrayName(v string) *CreateApplicationShrinkRequest
+	GetSecurityIPArrayName() *string
+	SetSecurityIPList(v string) *CreateApplicationShrinkRequest
+	GetSecurityIPList() *string
+	SetSecurityIPType(v string) *CreateApplicationShrinkRequest
+	GetSecurityIPType() *string
 	SetTag(v []*CreateApplicationShrinkRequestTag) *CreateApplicationShrinkRequest
 	GetTag() []*CreateApplicationShrinkRequestTag
 	SetTargetVersion(v string) *CreateApplicationShrinkRequest
@@ -155,9 +161,12 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// rg-********************
-	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupId *string                              `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Tag             []*CreateApplicationShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId     *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId     *string                              `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityIPArrayName *string                              `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
+	SecurityIPList      *string                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	SecurityIPType      *string                              `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	Tag                 []*CreateApplicationShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// latest
@@ -283,6 +292,18 @@ func (s *CreateApplicationShrinkRequest) GetResourceGroupId() *string {
 
 func (s *CreateApplicationShrinkRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
+}
+
+func (s *CreateApplicationShrinkRequest) GetSecurityIPArrayName() *string {
+	return s.SecurityIPArrayName
+}
+
+func (s *CreateApplicationShrinkRequest) GetSecurityIPList() *string {
+	return s.SecurityIPList
+}
+
+func (s *CreateApplicationShrinkRequest) GetSecurityIPType() *string {
+	return s.SecurityIPType
 }
 
 func (s *CreateApplicationShrinkRequest) GetTag() []*CreateApplicationShrinkRequestTag {
@@ -431,6 +452,21 @@ func (s *CreateApplicationShrinkRequest) SetResourceGroupId(v string) *CreateApp
 
 func (s *CreateApplicationShrinkRequest) SetSecurityGroupId(v string) *CreateApplicationShrinkRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSecurityIPArrayName(v string) *CreateApplicationShrinkRequest {
+	s.SecurityIPArrayName = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSecurityIPList(v string) *CreateApplicationShrinkRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSecurityIPType(v string) *CreateApplicationShrinkRequest {
+	s.SecurityIPType = &v
 	return s
 }
 

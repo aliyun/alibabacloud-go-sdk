@@ -59,6 +59,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetServerlessType() *string
 	SetStatus(v string) *DescribeApplicationAttributeResponseBody
 	GetStatus() *string
+	SetStorages(v []*DescribeApplicationAttributeResponseBodyStorages) *DescribeApplicationAttributeResponseBody
+	GetStorages() []*DescribeApplicationAttributeResponseBodyStorages
 	SetUpgradeAvailable(v string) *DescribeApplicationAttributeResponseBody
 	GetUpgradeAvailable() *string
 	SetVPCId(v string) *DescribeApplicationAttributeResponseBody
@@ -144,7 +146,8 @@ type DescribeApplicationAttributeResponseBody struct {
 	// example:
 	//
 	// Activated
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status   *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// false
@@ -277,6 +280,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetServerlessType() *string {
 
 func (s *DescribeApplicationAttributeResponseBody) GetStatus() *string {
 	return s.Status
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetStorages() []*DescribeApplicationAttributeResponseBodyStorages {
+	return s.Storages
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetUpgradeAvailable() *string {
@@ -424,6 +431,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetStatus(v string) *Describe
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetStorages(v []*DescribeApplicationAttributeResponseBodyStorages) *DescribeApplicationAttributeResponseBody {
+	s.Storages = v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetUpgradeAvailable(v string) *DescribeApplicationAttributeResponseBody {
 	s.UpgradeAvailable = &v
 	return s
@@ -484,6 +496,15 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 	}
 	if s.SecurityIPArrays != nil {
 		for _, item := range s.SecurityIPArrays {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Storages != nil {
+		for _, item := range s.Storages {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1170,5 +1191,60 @@ func (s *DescribeApplicationAttributeResponseBodySecurityIPArrays) SetSecurityIP
 }
 
 func (s *DescribeApplicationAttributeResponseBodySecurityIPArrays) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationAttributeResponseBodyStorages struct {
+	StorageCapacity         *string `json:"StorageCapacity,omitempty" xml:"StorageCapacity,omitempty"`
+	StorageInstanceId       *string `json:"StorageInstanceId,omitempty" xml:"StorageInstanceId,omitempty"`
+	StoragePerformanceLevel *string `json:"StoragePerformanceLevel,omitempty" xml:"StoragePerformanceLevel,omitempty"`
+	StorageType             *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyStorages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyStorages) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) GetStorageCapacity() *string {
+	return s.StorageCapacity
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) GetStorageInstanceId() *string {
+	return s.StorageInstanceId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) GetStoragePerformanceLevel() *string {
+	return s.StoragePerformanceLevel
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) GetStorageType() *string {
+	return s.StorageType
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) SetStorageCapacity(v string) *DescribeApplicationAttributeResponseBodyStorages {
+	s.StorageCapacity = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) SetStorageInstanceId(v string) *DescribeApplicationAttributeResponseBodyStorages {
+	s.StorageInstanceId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) SetStoragePerformanceLevel(v string) *DescribeApplicationAttributeResponseBodyStorages {
+	s.StoragePerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) SetStorageType(v string) *DescribeApplicationAttributeResponseBodyStorages {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) Validate() error {
 	return dara.Validate(s)
 }

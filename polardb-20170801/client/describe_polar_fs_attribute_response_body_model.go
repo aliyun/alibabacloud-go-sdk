@@ -9,6 +9,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccelerateType(v string) *DescribePolarFsAttributeResponseBody
+	GetAccelerateType() *string
 	SetAcceleratedStorageSpace(v float64) *DescribePolarFsAttributeResponseBody
 	GetAcceleratedStorageSpace() *float64
 	SetAcceleratingEnable(v string) *DescribePolarFsAttributeResponseBody
@@ -27,6 +29,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetCreateTime() *string
 	SetCustomBucketPath(v string) *DescribePolarFsAttributeResponseBody
 	GetCustomBucketPath() *string
+	SetCustomBucketPathList(v []*DescribePolarFsAttributeResponseBodyCustomBucketPathList) *DescribePolarFsAttributeResponseBody
+	GetCustomBucketPathList() []*DescribePolarFsAttributeResponseBodyCustomBucketPathList
 	SetDBType(v string) *DescribePolarFsAttributeResponseBody
 	GetDBType() *string
 	SetExpireTime(v string) *DescribePolarFsAttributeResponseBody
@@ -82,6 +86,10 @@ type iDescribePolarFsAttributeResponseBody interface {
 type DescribePolarFsAttributeResponseBody struct {
 	// example:
 	//
+	// alluxio
+	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
+	// example:
+	//
 	// 1000
 	AcceleratedStorageSpace *float64 `json:"AcceleratedStorageSpace,omitempty" xml:"AcceleratedStorageSpace,omitempty"`
 	// example:
@@ -109,7 +117,8 @@ type DescribePolarFsAttributeResponseBody struct {
 	// example:
 	//
 	// xxxxxx-%d.oss-cn-beijing-internal.aliyuncs.com
-	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
+	CustomBucketPath     *string                                                     `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
+	CustomBucketPathList []*DescribePolarFsAttributeResponseBodyCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// MySQL
@@ -207,6 +216,10 @@ func (s DescribePolarFsAttributeResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePolarFsAttributeResponseBody) GetAccelerateType() *string {
+	return s.AccelerateType
+}
+
 func (s *DescribePolarFsAttributeResponseBody) GetAcceleratedStorageSpace() *float64 {
 	return s.AcceleratedStorageSpace
 }
@@ -241,6 +254,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetCreateTime() *string {
 
 func (s *DescribePolarFsAttributeResponseBody) GetCustomBucketPath() *string {
 	return s.CustomBucketPath
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetCustomBucketPathList() []*DescribePolarFsAttributeResponseBodyCustomBucketPathList {
+	return s.CustomBucketPathList
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetDBType() *string {
@@ -343,6 +360,11 @@ func (s *DescribePolarFsAttributeResponseBody) GetZoneId() *string {
 	return s.ZoneId
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetAccelerateType(v string) *DescribePolarFsAttributeResponseBody {
+	s.AccelerateType = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetAcceleratedStorageSpace(v float64) *DescribePolarFsAttributeResponseBody {
 	s.AcceleratedStorageSpace = &v
 	return s
@@ -385,6 +407,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetCreateTime(v string) *Describe
 
 func (s *DescribePolarFsAttributeResponseBody) SetCustomBucketPath(v string) *DescribePolarFsAttributeResponseBody {
 	s.CustomBucketPath = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBody) SetCustomBucketPathList(v []*DescribePolarFsAttributeResponseBodyCustomBucketPathList) *DescribePolarFsAttributeResponseBody {
+	s.CustomBucketPathList = v
 	return s
 }
 
@@ -514,12 +541,62 @@ func (s *DescribePolarFsAttributeResponseBody) SetZoneId(v string) *DescribePola
 }
 
 func (s *DescribePolarFsAttributeResponseBody) Validate() error {
+	if s.CustomBucketPathList != nil {
+		for _, item := range s.CustomBucketPathList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.MountInfo != nil {
 		if err := s.MountInfo.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type DescribePolarFsAttributeResponseBodyCustomBucketPathList struct {
+	// example:
+	//
+	// pfs-xxx.oss-[regionId]-internal.aliyuncs.com
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// /data
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s DescribePolarFsAttributeResponseBodyCustomBucketPathList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolarFsAttributeResponseBodyCustomBucketPathList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) GetBucket() *string {
+	return s.Bucket
+}
+
+func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) GetPath() *string {
+	return s.Path
+}
+
+func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) SetBucket(v string) *DescribePolarFsAttributeResponseBodyCustomBucketPathList {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) SetPath(v string) *DescribePolarFsAttributeResponseBodyCustomBucketPathList {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribePolarFsAttributeResponseBodyMountInfo struct {

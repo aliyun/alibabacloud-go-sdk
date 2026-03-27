@@ -2418,6 +2418,18 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
+	if !dara.IsNil(request.SecurityIPArrayName) {
+		query["SecurityIPArrayName"] = request.SecurityIPArrayName
+	}
+
+	if !dara.IsNil(request.SecurityIPList) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !dara.IsNil(request.SecurityIPType) {
+		query["SecurityIPType"] = request.SecurityIPType
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}
@@ -27358,6 +27370,80 @@ func (client *Client) UpgradeDBClusterVersionZonal(request *UpgradeDBClusterVers
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradeDBClusterVersionZonalResponse{}
 	_body, _err := client.UpgradeDBClusterVersionZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行自定义命令
+//
+// @param request - UpgradePolarClawSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradePolarClawSkillsResponse
+func (client *Client) UpgradePolarClawSkillsWithOptions(request *UpgradePolarClawSkillsRequest, runtime *dara.RuntimeOptions) (_result *UpgradePolarClawSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UpgradeMethod) {
+		query["UpgradeMethod"] = request.UpgradeMethod
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradePolarClawSkills"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradePolarClawSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行自定义命令
+//
+// @param request - UpgradePolarClawSkillsRequest
+//
+// @return UpgradePolarClawSkillsResponse
+func (client *Client) UpgradePolarClawSkills(request *UpgradePolarClawSkillsRequest) (_result *UpgradePolarClawSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpgradePolarClawSkillsResponse{}
+	_body, _err := client.UpgradePolarClawSkillsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
