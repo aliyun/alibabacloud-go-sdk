@@ -11,6 +11,8 @@ type iGetAppRecommendedCommoditiesRequest interface {
 	GoString() string
 	SetBizId(v string) *GetAppRecommendedCommoditiesRequest
 	GetBizId() *string
+	SetExtend(v string) *GetAppRecommendedCommoditiesRequest
+	GetExtend() *string
 	SetResourceConditions(v string) *GetAppRecommendedCommoditiesRequest
 	GetResourceConditions() *string
 	SetScene(v string) *GetAppRecommendedCommoditiesRequest
@@ -22,6 +24,7 @@ type GetAppRecommendedCommoditiesRequest struct {
 	//
 	// WD20250703155602000001
 	BizId              *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Extend             *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	ResourceConditions *string `json:"ResourceConditions,omitempty" xml:"ResourceConditions,omitempty"`
 	// example:
 	//
@@ -41,6 +44,10 @@ func (s *GetAppRecommendedCommoditiesRequest) GetBizId() *string {
 	return s.BizId
 }
 
+func (s *GetAppRecommendedCommoditiesRequest) GetExtend() *string {
+	return s.Extend
+}
+
 func (s *GetAppRecommendedCommoditiesRequest) GetResourceConditions() *string {
 	return s.ResourceConditions
 }
@@ -51,6 +58,11 @@ func (s *GetAppRecommendedCommoditiesRequest) GetScene() *string {
 
 func (s *GetAppRecommendedCommoditiesRequest) SetBizId(v string) *GetAppRecommendedCommoditiesRequest {
 	s.BizId = &v
+	return s
+}
+
+func (s *GetAppRecommendedCommoditiesRequest) SetExtend(v string) *GetAppRecommendedCommoditiesRequest {
+	s.Extend = &v
 	return s
 }
 

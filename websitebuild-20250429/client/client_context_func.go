@@ -1180,6 +1180,10 @@ func (client *Client) GetAppRecommendedCommoditiesWithContext(ctx context.Contex
 		query["BizId"] = request.BizId
 	}
 
+	if !dara.IsNil(request.Extend) {
+		query["Extend"] = request.Extend
+	}
+
 	if !dara.IsNil(request.ResourceConditions) {
 		query["ResourceConditions"] = request.ResourceConditions
 	}
