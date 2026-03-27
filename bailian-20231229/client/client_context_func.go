@@ -552,10 +552,6 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 		request.ColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Columns, dara.String("Columns"), dara.String("json"))
 	}
 
-	if !dara.IsNil(tmpReq.DataSource) {
-		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, dara.String("DataSource"), dara.String("json"))
-	}
-
 	if !dara.IsNil(tmpReq.DocumentIds) {
 		request.DocumentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentIds, dara.String("DocumentIds"), dara.String("json"))
 	}
@@ -583,10 +579,6 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 
 	if !dara.IsNil(request.CreateIndexType) {
 		query["CreateIndexType"] = request.CreateIndexType
-	}
-
-	if !dara.IsNil(request.DataSourceShrink) {
-		query["DataSource"] = request.DataSourceShrink
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -675,6 +667,10 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 
 	if !dara.IsNil(request.KnowledgeScene) {
 		query["knowledgeScene"] = request.KnowledgeScene
+	}
+
+	if !dara.IsNil(request.KnowledgeType) {
+		query["knowledgeType"] = request.KnowledgeType
 	}
 
 	if !dara.IsNil(request.MetaExtractColumnsShrink) {

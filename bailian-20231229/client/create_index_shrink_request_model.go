@@ -17,8 +17,6 @@ type iCreateIndexShrinkRequest interface {
 	GetColumnsShrink() *string
 	SetCreateIndexType(v string) *CreateIndexShrinkRequest
 	GetCreateIndexType() *string
-	SetDataSourceShrink(v string) *CreateIndexShrinkRequest
-	GetDataSourceShrink() *string
 	SetDescription(v string) *CreateIndexShrinkRequest
 	GetDescription() *string
 	SetDocumentIdsShrink(v string) *CreateIndexShrinkRequest
@@ -63,6 +61,8 @@ type iCreateIndexShrinkRequest interface {
 	GetEnableHeaders() *bool
 	SetKnowledgeScene(v string) *CreateIndexShrinkRequest
 	GetKnowledgeScene() *string
+	SetKnowledgeType(v string) *CreateIndexShrinkRequest
+	GetKnowledgeType() *string
 	SetMetaExtractColumnsShrink(v string) *CreateIndexShrinkRequest
 	GetMetaExtractColumnsShrink() *string
 	SetPipelineCommercialCu(v int32) *CreateIndexShrinkRequest
@@ -92,8 +92,6 @@ type CreateIndexShrinkRequest struct {
 	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
 	// > This parameter is not available. Do not specify this parameter.
 	CreateIndexType *string `json:"CreateIndexType,omitempty" xml:"CreateIndexType,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The files to imported to the knowledge base. Specify the file IDs to import (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
@@ -254,6 +252,7 @@ type CreateIndexShrinkRequest struct {
 	// false
 	EnableHeaders  *bool   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	KnowledgeScene *string `json:"knowledgeScene,omitempty" xml:"knowledgeScene,omitempty"`
+	KnowledgeType  *string `json:"knowledgeType,omitempty" xml:"knowledgeType,omitempty"`
 	// The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
 	MetaExtractColumnsShrink *string `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty"`
 	// example:
@@ -293,10 +292,6 @@ func (s *CreateIndexShrinkRequest) GetColumnsShrink() *string {
 
 func (s *CreateIndexShrinkRequest) GetCreateIndexType() *string {
 	return s.CreateIndexType
-}
-
-func (s *CreateIndexShrinkRequest) GetDataSourceShrink() *string {
-	return s.DataSourceShrink
 }
 
 func (s *CreateIndexShrinkRequest) GetDescription() *string {
@@ -387,6 +382,10 @@ func (s *CreateIndexShrinkRequest) GetKnowledgeScene() *string {
 	return s.KnowledgeScene
 }
 
+func (s *CreateIndexShrinkRequest) GetKnowledgeType() *string {
+	return s.KnowledgeType
+}
+
 func (s *CreateIndexShrinkRequest) GetMetaExtractColumnsShrink() *string {
 	return s.MetaExtractColumnsShrink
 }
@@ -424,11 +423,6 @@ func (s *CreateIndexShrinkRequest) SetColumnsShrink(v string) *CreateIndexShrink
 
 func (s *CreateIndexShrinkRequest) SetCreateIndexType(v string) *CreateIndexShrinkRequest {
 	s.CreateIndexType = &v
-	return s
-}
-
-func (s *CreateIndexShrinkRequest) SetDataSourceShrink(v string) *CreateIndexShrinkRequest {
-	s.DataSourceShrink = &v
 	return s
 }
 
@@ -539,6 +533,11 @@ func (s *CreateIndexShrinkRequest) SetEnableHeaders(v bool) *CreateIndexShrinkRe
 
 func (s *CreateIndexShrinkRequest) SetKnowledgeScene(v string) *CreateIndexShrinkRequest {
 	s.KnowledgeScene = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetKnowledgeType(v string) *CreateIndexShrinkRequest {
+	s.KnowledgeType = &v
 	return s
 }
 

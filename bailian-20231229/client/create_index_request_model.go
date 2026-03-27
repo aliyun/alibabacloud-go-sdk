@@ -17,8 +17,6 @@ type iCreateIndexRequest interface {
 	GetColumns() []*CreateIndexRequestColumns
 	SetCreateIndexType(v string) *CreateIndexRequest
 	GetCreateIndexType() *string
-	SetDataSource(v *CreateIndexRequestDataSource) *CreateIndexRequest
-	GetDataSource() *CreateIndexRequestDataSource
 	SetDescription(v string) *CreateIndexRequest
 	GetDescription() *string
 	SetDocumentIds(v []*string) *CreateIndexRequest
@@ -63,6 +61,8 @@ type iCreateIndexRequest interface {
 	GetEnableHeaders() *bool
 	SetKnowledgeScene(v string) *CreateIndexRequest
 	GetKnowledgeScene() *string
+	SetKnowledgeType(v string) *CreateIndexRequest
+	GetKnowledgeType() *string
 	SetMetaExtractColumns(v []*CreateIndexRequestMetaExtractColumns) *CreateIndexRequest
 	GetMetaExtractColumns() []*CreateIndexRequestMetaExtractColumns
 	SetPipelineCommercialCu(v int32) *CreateIndexRequest
@@ -92,8 +92,6 @@ type CreateIndexRequest struct {
 	Columns []*CreateIndexRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// > This parameter is not available. Do not specify this parameter.
 	CreateIndexType *string `json:"CreateIndexType,omitempty" xml:"CreateIndexType,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	DataSource *CreateIndexRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description of the knowledge base. The description must be 0 to 1,000 characters in length. This parameter is empty by default.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The files to imported to the knowledge base. Specify the file IDs to import (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
@@ -254,6 +252,7 @@ type CreateIndexRequest struct {
 	// false
 	EnableHeaders  *bool   `json:"enableHeaders,omitempty" xml:"enableHeaders,omitempty"`
 	KnowledgeScene *string `json:"knowledgeScene,omitempty" xml:"knowledgeScene,omitempty"`
+	KnowledgeType  *string `json:"knowledgeType,omitempty" xml:"knowledgeType,omitempty"`
 	// The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
 	MetaExtractColumns []*CreateIndexRequestMetaExtractColumns `json:"metaExtractColumns,omitempty" xml:"metaExtractColumns,omitempty" type:"Repeated"`
 	// example:
@@ -293,10 +292,6 @@ func (s *CreateIndexRequest) GetColumns() []*CreateIndexRequestColumns {
 
 func (s *CreateIndexRequest) GetCreateIndexType() *string {
 	return s.CreateIndexType
-}
-
-func (s *CreateIndexRequest) GetDataSource() *CreateIndexRequestDataSource {
-	return s.DataSource
 }
 
 func (s *CreateIndexRequest) GetDescription() *string {
@@ -387,6 +382,10 @@ func (s *CreateIndexRequest) GetKnowledgeScene() *string {
 	return s.KnowledgeScene
 }
 
+func (s *CreateIndexRequest) GetKnowledgeType() *string {
+	return s.KnowledgeType
+}
+
 func (s *CreateIndexRequest) GetMetaExtractColumns() []*CreateIndexRequestMetaExtractColumns {
 	return s.MetaExtractColumns
 }
@@ -424,11 +423,6 @@ func (s *CreateIndexRequest) SetColumns(v []*CreateIndexRequestColumns) *CreateI
 
 func (s *CreateIndexRequest) SetCreateIndexType(v string) *CreateIndexRequest {
 	s.CreateIndexType = &v
-	return s
-}
-
-func (s *CreateIndexRequest) SetDataSource(v *CreateIndexRequestDataSource) *CreateIndexRequest {
-	s.DataSource = v
 	return s
 }
 
@@ -542,6 +536,11 @@ func (s *CreateIndexRequest) SetKnowledgeScene(v string) *CreateIndexRequest {
 	return s
 }
 
+func (s *CreateIndexRequest) SetKnowledgeType(v string) *CreateIndexRequest {
+	s.KnowledgeType = &v
+	return s
+}
+
 func (s *CreateIndexRequest) SetMetaExtractColumns(v []*CreateIndexRequestMetaExtractColumns) *CreateIndexRequest {
 	s.MetaExtractColumns = v
 	return s
@@ -575,11 +574,6 @@ func (s *CreateIndexRequest) Validate() error {
 					return err
 				}
 			}
-		}
-	}
-	if s.DataSource != nil {
-		if err := s.DataSource.Validate(); err != nil {
-			return err
 		}
 	}
 	if s.MetaExtractColumns != nil {
@@ -681,131 +675,6 @@ func (s *CreateIndexRequestColumns) SetType(v string) *CreateIndexRequestColumns
 }
 
 func (s *CreateIndexRequestColumns) Validate() error {
-	return dara.Validate(s)
-}
-
-type CreateIndexRequestDataSource struct {
-	// >  This parameter is not available. Do not specify this parameter.
-	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	CredentialKey *string `json:"CredentialKey,omitempty" xml:"CredentialKey,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	IsPrivateLink *bool `json:"IsPrivateLink,omitempty" xml:"IsPrivateLink,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	SubPath *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// >  This parameter is not available. Do not specify this parameter.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s CreateIndexRequestDataSource) String() string {
-	return dara.Prettify(s)
-}
-
-func (s CreateIndexRequestDataSource) GoString() string {
-	return s.String()
-}
-
-func (s *CreateIndexRequestDataSource) GetCredentialId() *string {
-	return s.CredentialId
-}
-
-func (s *CreateIndexRequestDataSource) GetCredentialKey() *string {
-	return s.CredentialKey
-}
-
-func (s *CreateIndexRequestDataSource) GetDatabase() *string {
-	return s.Database
-}
-
-func (s *CreateIndexRequestDataSource) GetEndpoint() *string {
-	return s.Endpoint
-}
-
-func (s *CreateIndexRequestDataSource) GetIsPrivateLink() *bool {
-	return s.IsPrivateLink
-}
-
-func (s *CreateIndexRequestDataSource) GetRegion() *string {
-	return s.Region
-}
-
-func (s *CreateIndexRequestDataSource) GetSubPath() *string {
-	return s.SubPath
-}
-
-func (s *CreateIndexRequestDataSource) GetSubType() *string {
-	return s.SubType
-}
-
-func (s *CreateIndexRequestDataSource) GetTable() *string {
-	return s.Table
-}
-
-func (s *CreateIndexRequestDataSource) GetType() *string {
-	return s.Type
-}
-
-func (s *CreateIndexRequestDataSource) SetCredentialId(v string) *CreateIndexRequestDataSource {
-	s.CredentialId = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetCredentialKey(v string) *CreateIndexRequestDataSource {
-	s.CredentialKey = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetDatabase(v string) *CreateIndexRequestDataSource {
-	s.Database = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetEndpoint(v string) *CreateIndexRequestDataSource {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetIsPrivateLink(v bool) *CreateIndexRequestDataSource {
-	s.IsPrivateLink = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetRegion(v string) *CreateIndexRequestDataSource {
-	s.Region = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetSubPath(v string) *CreateIndexRequestDataSource {
-	s.SubPath = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetSubType(v string) *CreateIndexRequestDataSource {
-	s.SubType = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetTable(v string) *CreateIndexRequestDataSource {
-	s.Table = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) SetType(v string) *CreateIndexRequestDataSource {
-	s.Type = &v
-	return s
-}
-
-func (s *CreateIndexRequestDataSource) Validate() error {
 	return dara.Validate(s)
 }
 
