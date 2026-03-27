@@ -18,19 +18,19 @@ type iGetEntityStoreResponseBody interface {
 }
 
 type GetEntityStoreResponseBody struct {
-	// The region ID.
+	// Region ID
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The name of the workspace.
+	// Workspace name
 	//
 	// example:
 	//

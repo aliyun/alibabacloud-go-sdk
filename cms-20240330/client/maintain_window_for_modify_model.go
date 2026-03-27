@@ -26,29 +26,29 @@ type iMaintainWindowForModify interface {
 }
 
 type MaintainWindowForModify struct {
-	// 描述
+	// Description.
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 生效时间范围
+	// Effective time range.
 	EffectTimeRange *MaintainWindowForModifyEffectTimeRange `json:"effectTimeRange,omitempty" xml:"effectTimeRange,omitempty" type:"Struct"`
-	// Crontab 表达式
+	// Crontab expression.
 	//
 	// example:
 	//
 	// 	- 	- 14-18 ? 	- *
 	Effective *string `json:"effective,omitempty" xml:"effective,omitempty"`
-	// 生效结束时间
+	// Effective end time.
 	//
 	// example:
 	//
 	// 2024-09-05 09:30:40
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 筛选条件
+	// Filtering conditions.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// 名称
+	// Name.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type MaintainWindowForModify struct {
 	//
 	// test strategy
 	MaintainWindowName *string `json:"maintainWindowName,omitempty" xml:"maintainWindowName,omitempty"`
-	// 生效开始时间
+	// Effective start time.
 	//
 	// example:
 	//
@@ -150,21 +150,21 @@ func (s *MaintainWindowForModify) Validate() error {
 }
 
 type MaintainWindowForModifyEffectTimeRange struct {
-	// 生效天(周一到周日)
+	// Effective days (Monday to Sunday).
 	DayInWeek []*int32 `json:"dayInWeek,omitempty" xml:"dayInWeek,omitempty" type:"Repeated"`
-	// 结束时间(分钟数)
+	// End time (in minutes).
 	//
 	// example:
 	//
 	// 60
 	EndTimeInMinute *int32 `json:"endTimeInMinute,omitempty" xml:"endTimeInMinute,omitempty"`
-	// 开始时间(分钟数)
+	// Start time (in minutes).
 	//
 	// example:
 	//
 	// 60
 	StartTimeInMinute *int32 `json:"startTimeInMinute,omitempty" xml:"startTimeInMinute,omitempty"`
-	// 时区
+	// Time zone.
 	//
 	// example:
 	//

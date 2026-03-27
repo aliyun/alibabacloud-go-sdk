@@ -18,19 +18,19 @@ type iListIntegrationPolicyStorageRequirementsRequest interface {
 }
 
 type ListIntegrationPolicyStorageRequirementsRequest struct {
-	// The name of the add-on release.
+	// Addon Release Name
 	//
 	// example:
 	//
 	// release-1234357
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the AddonRelease.
+	// Name of AddonRelease.
 	//
 	// example:
 	//
 	// kafka-17201012937917
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The storage type. Valid values: LogStore, Prometheus, TraceStore, EventStore, and EntityStore.
+	// Storage Type, LogStore/Prometheus/TraceStore/EventStore/EntityStore.
 	//
 	// example:
 	//

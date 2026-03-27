@@ -20,26 +20,18 @@ type iUpdateBizTraceRequest interface {
 }
 
 type UpdateBizTraceRequest struct {
-	// The advanced configuration.
-	//
 	// example:
 	//
 	// {"sample":{"strategy":"BY_APP"}}
 	AdvancedConfig *string `json:"advancedConfig,omitempty" xml:"advancedConfig,omitempty"`
-	// The name of the business trace.
-	//
 	// example:
 	//
 	// just test
 	BizTraceName *string `json:"bizTraceName,omitempty" xml:"bizTraceName,omitempty"`
-	// The list of configuration rules.
-	//
 	// example:
 	//
 	// [{"entrancePid":"xxx@d9w3jd9j3","rpcMatcher":{"matchType":"EQUALS","pattern":"/"},"characteristics":{"operation":"OR","rules":[{"target":"CUSTOM_EXTRACT","id":"oi0b3bb7","key":"biz.test","matcher":{"matchType":"CONTAINS","pattern":["1"]}}]}}]
 	RuleConfig *string `json:"ruleConfig,omitempty" xml:"ruleConfig,omitempty"`
-	// The workspace.
-	//
 	// example:
 	//
 	// default-cms-xxxxxxx-cn-hangzhou

@@ -16,7 +16,6 @@ type iListAddonsResponseBody interface {
 }
 
 type ListAddonsResponseBody struct {
-	// A list of available add-ons.
 	Addons []*ListAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -66,70 +65,46 @@ func (s *ListAddonsResponseBody) Validate() error {
 }
 
 type ListAddonsResponseBodyAddons struct {
-	// The alias of the add-on.
-	//
 	// example:
 	//
 	// resume_vector_alias
-	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// A list of tags for the add-on.
-	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// A list of dashboards.
+	Alias      *string                                   `json:"alias,omitempty" xml:"alias,omitempty"`
+	Categories []*string                                 `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
 	Dashboards []*ListAddonsResponseBodyAddonsDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
-	// Description
-	//
 	// example:
 	//
 	// workspace api monitor test
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// A list of supported integration policy types.
+	Description  *string                                     `json:"description,omitempty" xml:"description,omitempty"`
 	Environments []*ListAddonsResponseBodyAddonsEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// The URL of the icon.
-	//
 	// example:
 	//
 	// http://xxxxxxx
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// A list of keywords.
+	Icon     *string   `json:"icon,omitempty" xml:"icon,omitempty"`
 	Keywords []*string `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
-	// Language.
-	//
 	// example:
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The time when the latest version was created.
-	//
 	// example:
 	//
 	// 2025-09-03T03:15:56Z
 	LatestReleaseCreateTime *string `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
-	// The name of the add-on.
-	//
 	// example:
 	//
 	// rum_api_dashboard_explorer_link_metric_set
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the add-on can be installed only once.
-	//
 	// example:
 	//
 	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
-	// The scenario of the component.
-	//
 	// example:
 	//
 	// middleware
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The version of the component.
-	//
 	// example:
 	//
 	// *
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The display weight of the add-on.
-	//
 	// example:
 	//
 	// 99
@@ -293,20 +268,14 @@ func (s *ListAddonsResponseBodyAddons) Validate() error {
 }
 
 type ListAddonsResponseBodyAddonsDashboards struct {
-	// Dashboard description.
-	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Dashboard name.
-	//
 	// example:
 	//
 	// rum_view_link_rum_api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL of the dashboard\\"s preview image.
-	//
 	// example:
 	//
 	// http://xxxxxxx
@@ -353,38 +322,22 @@ func (s *ListAddonsResponseBodyAddonsDashboards) Validate() error {
 }
 
 type ListAddonsResponseBodyAddonsEnvironments struct {
-	// A list of associated Common Schemas.
 	CommonSchemaRefs []*ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
-	// A list of dependencies for the add-on.
-	Dependencies *ListAddonsResponseBodyAddonsEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
-	// The description of the integration policy type.
-	//
+	Dependencies     *ListAddonsResponseBodyAddonsEnvironmentsDependencies       `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
 	// example:
 	//
 	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the add-on is enabled.
-	//
 	// example:
 	//
 	// false
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The label of the integration policy type.
-	//
-	// example:
-	//
-	// 容器环境
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the integration policy type.
-	//
+	Enable *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Label  *string `json:"label,omitempty" xml:"label,omitempty"`
 	// example:
 	//
 	// CS
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Integration policy configuration.
+	Name     *string                                           `json:"name,omitempty" xml:"name,omitempty"`
 	Policies *ListAddonsResponseBodyAddonsEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
-	// Integration Center policy type.
-	//
 	// example:
 	//
 	// CS
@@ -495,14 +448,10 @@ func (s *ListAddonsResponseBodyAddonsEnvironments) Validate() error {
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs struct {
-	// The group name of the Common Schema.
-	//
 	// example:
 	//
 	// acs-ecs
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The version of the Common Schema.
-	//
 	// example:
 	//
 	// 0.1.4
@@ -540,12 +489,9 @@ func (s *ListAddonsResponseBodyAddonsEnvironmentsCommonSchemaRefs) Validate() er
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsDependencies struct {
-	// Supported cluster types.
-	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
-	// The probes on which the integration depends.
-	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
-	// A list of dependent services.
-	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	ClusterTypes []*string        `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
+	Features     map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
+	Services     []*string        `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s ListAddonsResponseBodyAddonsEnvironmentsDependencies) String() string {
@@ -588,36 +534,24 @@ func (s *ListAddonsResponseBodyAddonsEnvironmentsDependencies) Validate() error 
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsPolicies struct {
-	// The default status of the alert rule policy.
-	//
 	// example:
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Indicates whether the add-on is installed by default.
-	//
 	// example:
 	//
 	// true
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
-	// Indicates whether to assign a Service Account to communicate with the Console API.
-	//
 	// example:
 	//
 	// true
-	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
-	// Metric check rule.
-	MetricCheckRule *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Indicates whether to guide the user to restart pods after the add-on is installed.
-	//
+	EnableServiceAccount *bool                                                            `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
+	MetricCheckRule      *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
-	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	// The supported protocol types.
-	Protocols []*ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// The name of the target add-on.
-	//
+	NeedRestartAfterIntegration *bool                                                        `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
+	Protocols                   []*ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cloud-acs-ecs
@@ -714,7 +648,6 @@ func (s *ListAddonsResponseBodyAddonsEnvironmentsPolicies) Validate() error {
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule struct {
-	// A list of Prometheus Query Language (PromQL) statements.
 	PromQL []*string `json:"promQL,omitempty" xml:"promQL,omitempty" type:"Repeated"`
 }
 
@@ -740,26 +673,18 @@ func (s *ListAddonsResponseBodyAddonsEnvironmentsPoliciesMetricCheckRule) Valida
 }
 
 type ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols struct {
-	// Protocol description.
-	//
 	// example:
 	//
 	// Support OpenTelemetry Protocal
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Icon URL.
-	//
 	// example:
 	//
 	// http://xxxxxxx
 	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// Protocol display name.
-	//
 	// example:
 	//
 	// OpenTelemetry
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// Protocol name.
-	//
 	// example:
 	//
 	// openTelemetry

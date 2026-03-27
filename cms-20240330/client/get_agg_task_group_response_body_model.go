@@ -18,15 +18,15 @@ type iGetAggTaskGroupResponseBody interface {
 }
 
 type GetAggTaskGroupResponseBody struct {
-	// The aggregation task group.
+	// Aggregation task group.
 	AggTaskGroup *GetAggTaskGroupResponseBodyAggTaskGroup `json:"aggTaskGroup,omitempty" xml:"aggTaskGroup,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 68DAF543-35DF-5762-BE90-F5C00B5DC036
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Whether the request was successful
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *GetAggTaskGroupResponseBody) Validate() error {
 }
 
 type GetAggTaskGroupResponseBodyAggTaskGroup struct {
-	// The configuration of the aggregation task group.
+	// Aggregation task group configuration.
 	//
 	// example:
 	//
@@ -97,117 +97,117 @@ type GetAggTaskGroupResponseBodyAggTaskGroup struct {
 	//
 	//       }, \\"pod\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (node, namespace, pod, cluster)"
 	AggTaskGroupConfig *string `json:"aggTaskGroupConfig,omitempty" xml:"aggTaskGroupConfig,omitempty"`
-	// The summary of the aggregation task group configuration.
+	// Summary of the aggregation task group configuration.
 	//
 	// example:
 	//
 	// a54136xxx
 	AggTaskGroupConfigHash *string `json:"aggTaskGroupConfigHash,omitempty" xml:"aggTaskGroupConfigHash,omitempty"`
-	// The ID of the aggregation task group.
+	// ID of the aggregation task group.
 	//
 	// example:
 	//
 	// aggTaskGroup-xx
 	AggTaskGroupId *string `json:"aggTaskGroupId,omitempty" xml:"aggTaskGroupId,omitempty"`
-	// The name of the aggregation task group.
+	// Name of the aggregation task group.
 	//
 	// example:
 	//
 	// pipeline-aggtask-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
-	// The scheduling expression of the aggregation task group when the scheduling mode is set to Cron.
+	// Scheduling expression for the aggregation task group when the scheduling mode is \\"Cron\\".
 	//
 	// example:
 	//
 	// 0 1 3 	- 	- ? *
 	CronExpr *string `json:"cronExpr,omitempty" xml:"cronExpr,omitempty"`
-	// The fixed delay time for scheduling, in seconds.
+	// Fixed delay time (in seconds) for scheduling.
 	//
 	// example:
 	//
 	// 2
 	Delay *int32 `json:"delay,omitempty" xml:"delay,omitempty"`
-	// The description of the aggregation task group.
+	// Description of the aggregation task group.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The UNIX timestamp in seconds that corresponds to the start time of the scheduling. This parameter is not yet in effect.
+	// Second-level timestamp corresponding to the start time of scheduling (not yet effective).
 	//
 	// example:
 	//
 	// 1757409495
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The maximum number of retries to execute the aggregation task.
+	// Maximum number of retries for executing the aggregation task.
 	//
 	// example:
 	//
 	// 2
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
-	// The maximum runtime of the aggregation task, in seconds.
+	// Maximum retry time for executing the aggregation task.
 	//
 	// example:
 	//
 	// 50
 	MaxRunTimeInSeconds *int32 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
-	// The dry run configuration.
+	// Pre-check configuration.
 	//
 	// example:
 	//
 	// {"policy":"skip","prometheusId":"rw-xx","query":"noPrecheck","threshold":0.5,"timeout":15,"type":"none"}
 	PrecheckString *string `json:"precheckString,omitempty" xml:"precheckString,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The scheduling mode.
+	// Scheduling mode.
 	//
 	// example:
 	//
 	// FixedRate
 	ScheduleMode *string `json:"scheduleMode,omitempty" xml:"scheduleMode,omitempty"`
-	// The scheduling time expression.
+	// Scheduling time expression.
 	//
 	// example:
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
-	// The ID of the source Prometheus instance for the aggregation task group.
+	// ID of the source Prometheus instance for the aggregation task group.
 	//
 	// example:
 	//
 	// rw-xxx
 	SourcePrometheusId *string `json:"sourcePrometheusId,omitempty" xml:"sourcePrometheusId,omitempty"`
-	// The status of the aggregation task group.
+	// Status of the aggregation task group.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the resource group.
+	// Resource group tags
 	Tags []*GetAggTaskGroupResponseBodyAggTaskGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the target Prometheus instance for the aggregation task group.
+	// The target Prometheus instance ID of the aggregation task group.
 	//
 	// example:
 	//
 	// rw-xxx
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
-	// The UNIX timestamp in seconds that corresponds to the end time of the scheduling.
+	// The second-level timestamp corresponding to the end time of the scheduling.
 	//
 	// example:
 	//
 	// 1757409495
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
-	// The time when the aggregation task group was updated. This is a timestamp.
+	// The update time (timestamp) of the aggregation task group.
 	//
 	// example:
 	//
 	// 1757409499000
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The user to which the aggregation task group belongs.
+	// The user to whom the aggregation task group belongs.
 	//
 	// example:
 	//
@@ -426,7 +426,7 @@ func (s *GetAggTaskGroupResponseBodyAggTaskGroup) Validate() error {
 }
 
 type GetAggTaskGroupResponseBodyAggTaskGroupTags struct {
-	// The key of the resource group tag.
+	// Key of the resource group tag.
 	//
 	// example:
 	//

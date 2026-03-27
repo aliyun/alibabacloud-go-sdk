@@ -16,14 +16,12 @@ type iCreateThreadResponseBody interface {
 }
 
 type CreateThreadResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The session ID.
-	//
 	// example:
 	//
 	// thread_id01

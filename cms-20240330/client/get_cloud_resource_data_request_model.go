@@ -18,28 +18,18 @@ type iGetCloudResourceDataRequest interface {
 }
 
 type GetCloudResourceDataRequest struct {
-	// The start of the time range to query.
-	//
-	// This is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1721767203
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// The search statement.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// .entity with(domain=\\"acs\\", type=\\"acs.k8s.node\\") | limit 0, 10
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The end of the time range to query.
-	//
-	// This is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
-	//
 	// This parameter is required.
 	//
 	// example:

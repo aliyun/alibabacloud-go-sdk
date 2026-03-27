@@ -16,9 +16,8 @@ type iGetPrometheusUserSettingResponseBody interface {
 }
 
 type GetPrometheusUserSettingResponseBody struct {
-	// The details of the user settings for Prometheus.
 	PrometheusUserSetting map[string]*string `json:"prometheusUserSetting,omitempty" xml:"prometheusUserSetting,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

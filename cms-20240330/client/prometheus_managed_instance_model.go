@@ -26,44 +26,30 @@ type iPrometheusManagedInstance interface {
 }
 
 type PrometheusManagedInstance struct {
-	// 创建时间
-	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 实例类型
-	//
 	// example:
 	//
 	// test
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// RUM关联的Prometheus实例ID
-	//
 	// example:
 	//
 	// rum-xxx
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// RUM关联的Prometheus实例名称
-	//
 	// example:
 	//
 	// rum-xxx
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// 阿里云RegionId
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 实例状态
-	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 云监控2.0 workspace
-	//
 	// example:
 	//
 	// workspace-test

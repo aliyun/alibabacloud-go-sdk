@@ -18,15 +18,15 @@ type iCreateIntegrationPolicyResponseBody interface {
 }
 
 type CreateIntegrationPolicyResponseBody struct {
-	// Indicates whether the policy was created.
+	// Whether it is created.
 	//
 	// example:
 	//
 	// true
 	Created *bool `json:"created,omitempty" xml:"created,omitempty"`
-	// The upload policy.
+	// Uploaded policy.
 	Policy *CreateIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
@@ -79,43 +79,43 @@ func (s *CreateIntegrationPolicyResponseBody) Validate() error {
 }
 
 type CreateIntegrationPolicyResponseBodyPolicy struct {
-	// The entity group ID.
+	// Entity group ID.
 	//
 	// example:
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
-	// The policy ID.
+	// Policy ID.
 	//
 	// example:
 	//
 	// policy-14c8e9a29b0a46da843f8781471062ff
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The policy name.
+	// Policy name.
 	//
 	// example:
 	//
 	// metrics-inner-manage
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The policy type.
+	// Policy type.
 	//
 	// example:
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
-	// The region.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The user ID.
+	// User ID.
 	//
 	// example:
 	//
 	// u1234567
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace where the policy resides.
+	// The workspace where the Policy resides.
 	//
 	// example:
 	//

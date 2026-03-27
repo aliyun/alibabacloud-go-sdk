@@ -28,7 +28,7 @@ type iGetWorkspaceResponseBody interface {
 }
 
 type GetWorkspaceResponseBody struct {
-	// The time when the workspace was created.
+	// Creation Time
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -36,19 +36,19 @@ type GetWorkspaceResponseBody struct {
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the workspace.
+	// Workspace Description
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the workspace.
+	// Workspace Display Name
 	//
 	// example:
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The time when the workspace was last modified.
+	// Last Modified Time
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -56,25 +56,25 @@ type GetWorkspaceResponseBody struct {
 	//
 	// 2025-03-11T08:21:58Z
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The region ID.
+	// Region ID
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The name of the Simple Log Service project.
+	// Log Service Project Name
 	//
 	// example:
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The name of the workspace.
+	// Workspace Name
 	//
 	// This parameter is required.
 	//

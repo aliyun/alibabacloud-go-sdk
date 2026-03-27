@@ -14,7 +14,7 @@ type iUpdateUmodelRequest interface {
 }
 
 type UpdateUmodelRequest struct {
-	// The description.
+	// Description.
 	//
 	// example:
 	//

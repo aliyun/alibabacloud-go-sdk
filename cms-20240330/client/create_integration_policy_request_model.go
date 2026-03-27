@@ -24,15 +24,15 @@ type iCreateIntegrationPolicyRequest interface {
 }
 
 type CreateIntegrationPolicyRequest struct {
-	// The entity group used to create the policy. You can quickly create a policy using an entity group. The clusterId and vpcId parameters are independent of each other.
+	// Entity group for creating the policy. Policies can be quickly created using the entity group, and `clusterId` and `vpcId` are independent of each other.
 	EntityGroup *CreateIntegrationPolicyRequestEntityGroup `json:"entityGroup,omitempty" xml:"entityGroup,omitempty" type:"Struct"`
-	// The policy name.
+	// Policy name
 	//
 	// example:
 	//
 	// prod-database
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The policy type. Valid values: CS, ECS, and Cloud.
+	// Policy type: CS/ECS/Cloud
 	//
 	// This parameter is required.
 	//
@@ -40,15 +40,15 @@ type CreateIntegrationPolicyRequest struct {
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
-	// The resource group ID.
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-aekz2km4kmhtbii
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The resource tags.
+	// Resource tags.
 	Tags []*CreateIntegrationPolicyRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace.
+	// Workspace.
 	//
 	// example:
 	//
@@ -137,38 +137,38 @@ func (s *CreateIntegrationPolicyRequest) Validate() error {
 }
 
 type CreateIntegrationPolicyRequestEntityGroup struct {
-	// The cluster entity type. Examples: acs.ack.cluster, acs.one.cluster, and acs.asi.cluster.
+	// Cluster entity type, such as acs.ack.cluster/acs.one.cluster/acs.asi.cluster or others.
 	//
 	// example:
 	//
 	// acs.ack.cluster
 	ClusterEntityType *string `json:"clusterEntityType,omitempty" xml:"clusterEntityType,omitempty"`
-	// The cluster ID.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// na61prod3-na61cloudhdfsssd
 	ClusterId        *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
 	ClusterNamespace *string `json:"clusterNamespace,omitempty" xml:"clusterNamespace,omitempty"`
-	// Specifies whether to disable unique policy binding. If this parameter is set to true, you can create multiple policies for a container cluster.
+	// Whether to disable the unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
 	//
 	// example:
 	//
 	// ture
 	DisablePolicyShare *bool `json:"disablePolicyShare,omitempty" xml:"disablePolicyShare,omitempty"`
-	// The entity group ID.
+	// Entity group ID.
 	//
 	// example:
 	//
 	// eg-b79f65d11fb94e779867cf937c3a3002
 	EntityGroupId *string `json:"entityGroupId,omitempty" xml:"entityGroupId,omitempty"`
-	// The ID of the user who owns the cluster.
+	// User ID to which the cluster belongs.
 	//
 	// example:
 	//
 	// 12xxxx
 	EntityUserId *string `json:"entityUserId,omitempty" xml:"entityUserId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// VPC ID.
 	//
 	// example:
 	//
@@ -252,13 +252,13 @@ func (s *CreateIntegrationPolicyRequestEntityGroup) Validate() error {
 }
 
 type CreateIntegrationPolicyRequestTags struct {
-	// The key of the tag.
+	// Tag `key` value.
 	//
 	// example:
 	//
 	// use
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// Tag `value` value.
 	//
 	// example:
 	//

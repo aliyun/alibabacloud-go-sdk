@@ -40,74 +40,43 @@ type iAddonMeta interface {
 }
 
 type AddonMeta struct {
-	// 组件别名，显示名称
-	//
-	// example:
-	//
-	// ECS 监控
-	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// 组件分类信息
-	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// 组件示意图列表
+	Alias      *string                `json:"alias,omitempty" xml:"alias,omitempty"`
+	Categories []*string              `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
 	Dashboards []*AddonMetaDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
-	// 描述信息。
-	//
 	// example:
 	//
 	// The out-of-the-box and comprehensive ECS observe dashboards and alarm rules. Based on AliYun CloudMonitor agentless metrics, exporter agent metrics, host audit logs, host events and other data.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 支持的环境类型列表
+	Description  *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	Environments []*AddonMetaEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// 组件图标。
-	//
 	// example:
 	//
 	// assets/logos/ecs.svg
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// 关键词列表
+	Icon     *string   `json:"icon,omitempty" xml:"icon,omitempty"`
 	Keywords []*string `json:"keywords,omitempty" xml:"keywords,omitempty" type:"Repeated"`
-	// 语言，取值：
-	//
-	// - zh：中文（默认值）
-	//
-	// - en：英文
-	//
 	// example:
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// 该组件上一次接入时间
-	//
 	// example:
 	//
 	// 2025-10-25 09:12:12
 	LatestReleaseCreateTime *string `json:"latestReleaseCreateTime,omitempty" xml:"latestReleaseCreateTime,omitempty"`
-	// 组件名称
-	//
 	// example:
 	//
 	// cloud-acs-ecs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Policy 下是否只能安装一次
-	//
 	// example:
 	//
 	// true/false
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
-	// 场景
-	//
 	// example:
 	//
 	// feature
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// 版本号
-	//
 	// example:
 	//
 	// 0.0.1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// 组件排序权重
-	//
 	// example:
 	//
 	// 1000
@@ -271,20 +240,8 @@ func (s *AddonMeta) Validate() error {
 }
 
 type AddonMetaDashboards struct {
-	// 描述信息
-	//
-	// example:
-	//
-	// 描述信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 示意图名称
-	//
-	// example:
-	//
-	// ECS 监控概览大盘
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 示意图 URL
-	//
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// assets/dashboards/ecs.png
@@ -331,38 +288,19 @@ func (s *AddonMetaDashboards) Validate() error {
 }
 
 type AddonMetaEnvironments struct {
-	// 绑定的CommonSchema 列表
 	CommonSchemaRefs []*AddonMetaEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
-	// 依赖描述信息
-	Dependencies *AddonMetaEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
-	// 环境类型的描述
-	//
-	// example:
-	//
-	// 支持容器集群的工作覆盖监控
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 是否启用
-	//
+	Dependencies     *AddonMetaEnvironmentsDependencies       `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
+	Description      *string                                  `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
 	// true/false
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// 环境类型显示名称
-	//
-	// example:
-	//
-	// 容器环境
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// 环境类型名称
-	//
+	Enable *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
+	Label  *string `json:"label,omitempty" xml:"label,omitempty"`
 	// example:
 	//
 	// CS/ECS/Cloud/Client
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 组件的控制策略组合信息
+	Name     *string                        `json:"name,omitempty" xml:"name,omitempty"`
 	Policies *AddonMetaEnvironmentsPolicies `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
-	// 策略类型
-	//
 	// example:
 	//
 	// ECS
@@ -473,14 +411,10 @@ func (s *AddonMetaEnvironments) Validate() error {
 }
 
 type AddonMetaEnvironmentsCommonSchemaRefs struct {
-	// CommonSchema 的分组名称
-	//
 	// example:
 	//
 	// acs-ecs
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// CommonSchema 的分组版本
-	//
 	// example:
 	//
 	// 0.1.0
@@ -518,12 +452,9 @@ func (s *AddonMetaEnvironmentsCommonSchemaRefs) Validate() error {
 }
 
 type AddonMetaEnvironmentsDependencies struct {
-	// 支持的集群类型
-	ClusterTypes []*string `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
-	// 探针依赖描述，组件名称。新版已由 collectors 字段替换
-	Features map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
-	// 依赖的服务列表
-	Services []*string `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	ClusterTypes []*string        `json:"clusterTypes,omitempty" xml:"clusterTypes,omitempty" type:"Repeated"`
+	Features     map[string]*bool `json:"features,omitempty" xml:"features,omitempty"`
+	Services     []*string        `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
 }
 
 func (s AddonMetaEnvironmentsDependencies) String() string {
@@ -566,44 +497,29 @@ func (s *AddonMetaEnvironmentsDependencies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPolicies struct {
-	// 告警规则默认安装后是否启用
-	//
 	// example:
 	//
 	// RUNNING
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// 默认模式，即无需绑定实体的接入模式。
-	//
 	// example:
 	//
 	// true/false
-	BindDefaultPolicy *bool `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
-	// 绑定的目标实体信息
-	BindEntity *AddonMetaEnvironmentsPoliciesBindEntity `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
-	// 是否默认安装
-	//
+	BindDefaultPolicy *bool                                    `json:"bindDefaultPolicy,omitempty" xml:"bindDefaultPolicy,omitempty"`
+	BindEntity        *AddonMetaEnvironmentsPoliciesBindEntity `json:"bindEntity,omitempty" xml:"bindEntity,omitempty" type:"Struct"`
 	// example:
 	//
 	// true/false
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
-	// 是否启用内部授权Token分配
-	//
 	// example:
 	//
 	// true/false
-	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
-	// 组件接入后的数据检查规则
-	MetricCheckRule *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// 是否需要在接入后提示重启工作负载
-	//
+	EnableServiceAccount *bool                                         `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
+	MetricCheckRule      *AddonMetaEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
 	// example:
 	//
 	// true/false
-	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
-	// 支持的客户端协议信息列表
-	Protocols []*AddonMetaEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// 跳转的目标组件名称
-	//
+	NeedRestartAfterIntegration *bool                                     `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
+	Protocols                   []*AddonMetaEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cloud-acs-ecs
@@ -723,26 +639,18 @@ func (s *AddonMetaEnvironmentsPolicies) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesBindEntity struct {
-	// 是否是组模式
-	//
 	// example:
 	//
 	// true/false
 	EntityGroupMode *bool `json:"entityGroupMode,omitempty" xml:"entityGroupMode,omitempty"`
-	// 实体类型
-	//
 	// example:
 	//
 	// acs.ecs.instance
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	// 是否是单实体模式
-	//
 	// example:
 	//
 	// true/false
 	SingleEntityMode *bool `json:"singleEntityMode,omitempty" xml:"singleEntityMode,omitempty"`
-	// 实体中提取VPC ID 信息的字段
-	//
 	// example:
 	//
 	// vpcId
@@ -798,7 +706,6 @@ func (s *AddonMetaEnvironmentsPoliciesBindEntity) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesMetricCheckRule struct {
-	// 检测规则 PromQL
 	PromQL []*string `json:"promQL,omitempty" xml:"promQL,omitempty" type:"Repeated"`
 }
 
@@ -824,26 +731,12 @@ func (s *AddonMetaEnvironmentsPoliciesMetricCheckRule) Validate() error {
 }
 
 type AddonMetaEnvironmentsPoliciesProtocols struct {
-	// 协议描述
-	//
-	// example:
-	//
-	// 使用 Prometheus 协议写入指标数据
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 协议显示icon
-	//
 	// example:
 	//
 	// assets/logos/ecs.svg
-	Icon *string `json:"icon,omitempty" xml:"icon,omitempty"`
-	// 协议显示名称
-	//
-	// example:
-	//
-	// Prometheus 协议
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// 协议名称
-	//
 	// example:
 	//
 	// Prometheus

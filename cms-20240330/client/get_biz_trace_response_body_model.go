@@ -16,10 +16,7 @@ type iGetBizTraceResponseBody interface {
 }
 
 type GetBizTraceResponseBody struct {
-	// The business trace.
 	Item *BizTraceConfig `json:"item,omitempty" xml:"item,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****

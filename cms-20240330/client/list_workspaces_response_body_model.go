@@ -22,31 +22,39 @@ type iListWorkspacesResponseBody interface {
 }
 
 type ListWorkspacesResponseBody struct {
-	// The number of entries returned per page. Default value: 50. Maximum value: 50.
+	// Page size
+	//
+	// Default value:
+	//
+	// 	50
+	//
+	// Maximum value:
+	//
+	// 	50
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
+	// Pagination Token
 	//
 	// example:
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the request.
+	// Request ID
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// Total count
 	//
 	// example:
 	//
 	// 1
 	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
-	// The list of workspaces.
+	// List of workspaces
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +125,7 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// The time when the workspace was created.
+	// Creation time
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -125,19 +133,19 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the workspace.
+	// Workspace description
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the workspace.
+	// Workspace display name
 	//
 	// example:
 	//
 	// workspace-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The time when the workspace was last modified.
+	// Last modified time
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -145,19 +153,19 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	//
 	// 2025-03-11T08:21:58Z
 	LastModifyTime *string `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The ID of the region.
+	// Region ID
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The name of the Simple Log Service project.
+	// Log Service project name
 	//
 	// example:
 	//
 	// sls-project-test-001
 	SlsProject *string `json:"slsProject,omitempty" xml:"slsProject,omitempty"`
-	// The name of the workspace.
+	// Workspace name
 	//
 	// This parameter is required.
 	//

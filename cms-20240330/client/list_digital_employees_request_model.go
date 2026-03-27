@@ -26,44 +26,25 @@ type iListDigitalEmployeesRequest interface {
 }
 
 type ListDigitalEmployeesRequest struct {
-	// Digital employee display name.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Digital employee type.
-	//
-	// example:
-	//
-	// custom
+	DisplayName  *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	EmployeeType *string `json:"employeeType,omitempty" xml:"employeeType,omitempty"`
-	// The number of entries to return on each page. The default value is 20. The maximum value is 100.
-	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Digital employee name.
-	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Token for the next page of results.
-	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Resource group ID.
-	//
 	// example:
 	//
 	// rg-ae******ey
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Tags.
-	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	Tags            []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListDigitalEmployeesRequest) String() string {

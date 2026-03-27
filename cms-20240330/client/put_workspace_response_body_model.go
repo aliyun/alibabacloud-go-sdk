@@ -16,13 +16,13 @@ type iPutWorkspaceResponseBody interface {
 }
 
 type PutWorkspaceResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The name of the workspace.
+	// Name of the workspace.
 	//
 	// example:
 	//

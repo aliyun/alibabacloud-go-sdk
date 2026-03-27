@@ -14,8 +14,6 @@ type iCreateMemoryStoreResponseBody interface {
 }
 
 type CreateMemoryStoreResponseBody struct {
-	// The Request ID.
-	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****

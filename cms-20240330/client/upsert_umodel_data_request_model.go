@@ -16,9 +16,9 @@ type iUpsertUmodelDataRequest interface {
 }
 
 type UpsertUmodelDataRequest struct {
-	// The content of the element.
+	// Element content
 	Elements []interface{} `json:"elements,omitempty" xml:"elements,omitempty" type:"Repeated"`
-	// The method.
+	// Method
 	//
 	// example:
 	//

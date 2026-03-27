@@ -36,11 +36,11 @@ type iCreatePrometheusInstanceRequest interface {
 }
 
 type CreatePrometheusInstanceRequest struct {
-	// The number of days that data is automatically archived after the storage duration expires. A value of 0 indicates that data is not archived. Valid values:
+	// The number of days to automatically archive and save after the storage expires, 0 means no archiving. The range of archiving days is as follows:
 	//
-	// - V1 instances: 60 to 365.
+	// 	- V1: 60~365 days.
 	//
-	// - V2 instances: 60 to 3650. A value of 3650 indicates that the data is permanently stored.
+	// 	- V2: 60~3650 days (3650 indicates permanent storage).
 	//
 	// if can be null:
 	// true
@@ -49,7 +49,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// 60
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The policy for password-free read access. IP address ranges and VPC IDs are supported.
+	// Password-free read policy (supports IP segments and VpcId).
 	//
 	// example:
 	//
@@ -73,7 +73,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// The policy for password-free write access.
+	// Password-free write policy.
 	//
 	// example:
 	//
@@ -97,35 +97,37 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// Specifies whether to enable password-free read access. This feature is supported only for V2 instances.
+	// Whether to enable password-free read (only supported in V2 version).
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable password-free write access. This feature is supported only for V2 instances.
+	// Whether to enable password-free write (only supported in V2 version).
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
-	// Specifies whether to enable an authorization token. This feature is supported only for V1 instances.
+	// Whether to enable authorization Token (only supported in V1 version).
 	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The billing method.
+	// Billing method:
 	//
-	// - POSTPAY: pay-as-you-go based on the volume of reported metrics.
+	// 	- POSTPAY: Postpaid by metric reporting volume.
 	//
-	// - Note: If you leave this parameter empty, the default billing method is used. If a default billing method is not configured, POSTPAY is used.
+	// 	- POSTPAY_GB: Postpaid by metric write volume.
+	//
+	// Note, if left blank, the user\\"s default billing method configuration will be used. If the user has not configured a default, the system defaults to billing by metric reporting volume.
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The name of the instance.
+	// Instance name.
 	//
 	// This parameter is required.
 	//
@@ -133,25 +135,25 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// name1
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// The instance status.
+	// Instance status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The storage duration of the instance in days. The valid values depend on the billing method:
+	// Storage duration (days):
 	//
-	// - For instances billed based on data written: 90 and 180.
+	// 	- By write volume: 90, 180.
 	//
-	// - For instances billed based on reported metrics: 15, 30, 60, 90, and 180.
+	// 	- By metric reporting volume: 15, 30, 60, 90, 180.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
-	// The tags.
+	// Tag values.
 	Tags []*CreatePrometheusInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The workspace to which the instance belongs. The default value is default-cms-{userId}-{regionId}.
+	// Belonging workspace, default value: default-cms-{userId}-{regionId}.
 	//
 	// example:
 	//
@@ -289,13 +291,13 @@ func (s *CreatePrometheusInstanceRequest) Validate() error {
 }
 
 type CreatePrometheusInstanceRequestTags struct {
-	// The tag key.
+	// Tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
+	// Tag value.
 	//
 	// example:
 	//

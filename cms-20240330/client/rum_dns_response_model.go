@@ -18,20 +18,14 @@ type iRumDnsResponse interface {
 }
 
 type RumDnsResponse struct {
-	// RUM上报域名
-	//
 	// example:
 	//
 	// rum
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// 初始化message（失败场景）
-	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 域名DNS初始化状态
-	//
 	// example:
 	//
 	// true

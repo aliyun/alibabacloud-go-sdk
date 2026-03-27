@@ -18,7 +18,7 @@ type iAlertRuleAlertMetricInputFilterValue interface {
 }
 
 type AlertRuleAlertMetricInputFilterValue struct {
-	// 过滤条件的维度
+	// Dimension of the filter condition.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type AlertRuleAlertMetricInputFilterValue struct {
 	//
 	// rootIp
 	Dim *string `json:"dim,omitempty" xml:"dim,omitempty"`
-	// 过滤条件操作符
+	// Filter Condition Operator.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type AlertRuleAlertMetricInputFilterValue struct {
 	//
 	// ALL
 	Opt *string `json:"opt,omitempty" xml:"opt,omitempty"`
-	// 过滤条件值
+	// Filter Condition Value.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iGetUmodelResponseBody interface {
 }
 
 type GetUmodelResponseBody struct {
-	// This parameter is reserved.
+	// This field does not need to be filled currently
 	CommonSchemaRef []*GetUmodelResponseBodyCommonSchemaRef `json:"commonSchemaRef,omitempty" xml:"commonSchemaRef,omitempty" type:"Repeated"`
-	// The Umodel description.
+	// Umodel description
 	//
 	// example:
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The region of the resource.
+	// Region
 	//
 	// example:
 	//
 	// cn-heyuan
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 123-123123-sdf-435-3123
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The workspace name.
+	// Workspace name
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *GetUmodelResponseBody) Validate() error {
 }
 
 type GetUmodelResponseBodyCommonSchemaRef struct {
-	// The public Umodel schema group.
+	// Common Umodel Schema group
 	//
 	// example:
 	//
 	// test-job-123123
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The version.
+	// Version
 	//
 	// example:
 	//

@@ -28,45 +28,45 @@ type iIncidentEscalationStruct interface {
 }
 
 type IncidentEscalationStruct struct {
-	// 创建时间
+	// Creation time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 描述。
+	// Description.
 	//
 	// example:
 	//
-	// 当告警未响应时，依次通知运维团队、值班经理、CTO
+	// When an alert is not acknowledged, notify the operations team, on-duty manager, and CTO sequentially.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 事件升级ID
+	// Event Escalation ID.
 	//
 	// example:
 	//
 	// 52631388567
 	IncidentEscalationId *string `json:"incidentEscalationId,omitempty" xml:"incidentEscalationId,omitempty"`
-	// 修改时间
+	// Modification time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	ModifyTime *int64 `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
-	// 名称。
+	// Name.
 	//
 	// example:
 	//
-	// 生产环境告警升级策略
+	// Production Environment Alert Escalation Policy.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 地域 ID
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 阶段。
+	// Phase.
 	Stage []*IncidentEscalationStageStruct `json:"stage,omitempty" xml:"stage,omitempty" type:"Repeated"`
-	// 工作空间
+	// Workspace.
 	//
 	// example:
 	//

@@ -26,39 +26,39 @@ type iIncidentResourceStruct interface {
 }
 
 type IncidentResourceStruct struct {
-	// 描述信息。
+	// Description information.
 	//
 	// example:
 	//
-	// 生产环境 Web 服务器
+	// Production environment web server.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 事件ID。
+	// Incident ID.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 事件中该资源的唯一 ID。
+	// The unique ID of this resource in the event.
 	//
 	// example:
 	//
 	// res-001
 	IncidentResourceId *string `json:"incidentResourceId,omitempty" xml:"incidentResourceId,omitempty"`
-	// 事件资源详情对象。
+	// Event resource details object.
 	Resource *IncidentResourceDetail `json:"resource,omitempty" xml:"resource,omitempty"`
-	// 来源。
+	// Source.
 	//
 	// example:
 	//
 	// cloudmonitor
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 时间戳
+	// Time.
 	//
 	// example:
 	//
 	// 1741234567890
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
-	// 用户 ID。
+	// User ID.
 	//
 	// example:
 	//

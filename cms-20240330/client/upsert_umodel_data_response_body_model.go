@@ -14,7 +14,7 @@ type iUpsertUmodelDataResponseBody interface {
 }
 
 type UpsertUmodelDataResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

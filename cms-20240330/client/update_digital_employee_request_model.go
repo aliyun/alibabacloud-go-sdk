@@ -22,28 +22,19 @@ type iUpdateDigitalEmployeeRequest interface {
 }
 
 type UpdateDigitalEmployeeRequest struct {
-	// Default rule
-	//
 	// example:
 	//
 	// test
 	DefaultRule *string `json:"defaultRule,omitempty" xml:"defaultRule,omitempty"`
-	// Description
-	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Digital employee display name
-	//
 	// example:
 	//
 	// test
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// List of knowledge bases
-	Knowledges *UpdateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
-	// Role ARN
-	//
+	DisplayName *string                                 `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Knowledges  *UpdateDigitalEmployeeRequestKnowledges `json:"knowledges,omitempty" xml:"knowledges,omitempty" type:"Struct"`
 	// example:
 	//
 	// acs:ram::12345678912:role/testrole
@@ -113,10 +104,8 @@ func (s *UpdateDigitalEmployeeRequest) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledges struct {
-	// Bailian knowledge base list
 	Bailian []*UpdateDigitalEmployeeRequestKnowledgesBailian `json:"bailian,omitempty" xml:"bailian,omitempty" type:"Repeated"`
-	// SOP knowledge base list
-	Sop []map[string]interface{} `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
+	Sop     []map[string]interface{}                         `json:"sop,omitempty" xml:"sop,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDigitalEmployeeRequestKnowledges) String() string {
@@ -159,26 +148,18 @@ func (s *UpdateDigitalEmployeeRequestKnowledges) Validate() error {
 }
 
 type UpdateDigitalEmployeeRequestKnowledgesBailian struct {
-	// Knowledge base attributes
-	//
 	// example:
 	//
 	// test
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// Bailian index ID
-	//
 	// example:
 	//
 	// index-xxxx
 	IndexId *string `json:"indexId,omitempty" xml:"indexId,omitempty"`
-	// Region of the Bailian knowledge base
-	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// Bailian workspace ID
-	//
 	// example:
 	//
 	// llm-xxxx

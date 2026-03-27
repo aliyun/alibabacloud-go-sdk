@@ -14,8 +14,6 @@ type iDeleteDigitalEmployeeResponseBody interface {
 }
 
 type DeleteDigitalEmployeeResponseBody struct {
-	// ID of the request
-	//
 	// example:
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****

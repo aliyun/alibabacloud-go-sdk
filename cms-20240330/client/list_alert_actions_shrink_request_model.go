@@ -22,27 +22,27 @@ type iListAlertActionsShrinkRequest interface {
 }
 
 type ListAlertActionsShrinkRequest struct {
-	// The unique IDs of the alert action integrations.
+	// Unique identifier for the action integration.
 	AlertActionIdsShrink *string `json:"alertActionIds,omitempty" xml:"alertActionIds,omitempty"`
-	// The name of the alert action integration.
+	// Name of the action integration.
 	//
 	// example:
 	//
 	// testName
 	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	// The page number. Default value: 1.
+	// Page number. Default is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// Page size. Default is 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The type of the alert action integration.
+	// Type of the action integration.
 	//
 	// example:
 	//

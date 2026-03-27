@@ -22,31 +22,22 @@ type iListThreadsShrinkRequest interface {
 }
 
 type ListThreadsShrinkRequest struct {
-	// The filter conditions for the query. If you do not specify this parameter, all threads in the instance are queried.
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The maximum number of results to return. The maximum value is 200.
-	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The paging token.
-	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The session status.
-	//
 	// example:
 	//
-	// active
+	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The session ID.
-	//
 	// example:
 	//
-	// thread-123123
+	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
 }
 

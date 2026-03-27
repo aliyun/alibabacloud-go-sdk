@@ -14,14 +14,6 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language of the response. Valid values:
-	//
-	// - zh: Chinese. This is the default value.
-	//
-	// - en: English.
-	//
-	// - ja: Japanese.
-	//
 	// example:
 	//
 	// zh

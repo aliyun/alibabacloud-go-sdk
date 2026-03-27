@@ -32,13 +32,13 @@ type iListPrometheusViewsShrinkRequest interface {
 }
 
 type ListPrometheusViewsShrinkRequest struct {
-	// The region IDs by which to filter the results.
+	// Filter by RegionID.
 	//
 	// example:
 	//
 	// cn-zhangjiakou,cn-beijing
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// The maximum number of records to return.
+	// Maximum number of records to return.
 	//
 	// if can be null:
 	// true
@@ -47,7 +47,7 @@ type ListPrometheusViewsShrinkRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The query token.
+	// Query token.
 	//
 	// if can be null:
 	// true
@@ -56,39 +56,39 @@ type ListPrometheusViewsShrinkRequest struct {
 	//
 	// 44ANBjKZmQeKnaB1fXRq06w7sFYK3MUcCALMD9qQbmEiE
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The IDs of the Prometheus view instances.
+	// List of Prometheus view instance IDs.
 	//
 	// example:
 	//
 	// view-xxx
 	PrometheusViewIds *string `json:"prometheusViewIds,omitempty" xml:"prometheusViewIds,omitempty"`
-	// The name of the Prometheus view.
+	// Prometheus view name.
 	//
 	// example:
 	//
 	// view1
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// The resource group ID.
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The resource type.
+	// Resource type.
 	//
 	// example:
 	//
 	// PROMETHEUSVIEW
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The list of tags.
+	// List of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The instance version. Valid values: V1 and V2.
+	// Instance version: V1 or V2
 	//
 	// example:
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The name of the workspace.
+	// Workspace name
 	//
 	// example:
 	//

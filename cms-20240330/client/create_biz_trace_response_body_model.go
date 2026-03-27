@@ -16,14 +16,10 @@ type iCreateBizTraceResponseBody interface {
 }
 
 type CreateBizTraceResponseBody struct {
-	// The ID of the business trace.
-	//
 	// example:
 	//
 	// e339260ed64c95d
 	BizTraceId *string `json:"bizTraceId,omitempty" xml:"bizTraceId,omitempty"`
-	// The ID of the request.
-	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC

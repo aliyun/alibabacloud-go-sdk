@@ -18,20 +18,11 @@ type iGetAddonSchemaRequest interface {
 }
 
 type GetAddonSchemaRequest struct {
-	// The language of the response. Valid values: \\`zh\\` and \\`en\\`. The default value is \\`zh\\`.
-	//
 	// example:
 	//
 	// zh
-	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The environment type. Valid values: \\`CS\\` (container) and \\`ECS\\`.
-	//
-	// example:
-	//
-	// CS
+	AliyunLang      *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
 	EnvironmentType *string `json:"environmentType,omitempty" xml:"environmentType,omitempty"`
-	// The version of the component.
-	//
 	// example:
 	//
 	// 0.1.1

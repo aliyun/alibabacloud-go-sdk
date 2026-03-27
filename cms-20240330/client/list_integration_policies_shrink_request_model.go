@@ -40,81 +40,81 @@ type iListIntegrationPoliciesShrinkRequest interface {
 }
 
 type ListIntegrationPoliciesShrinkRequest struct {
-	// The add-on name.
+	// Addon name.
 	//
 	// example:
 	//
 	// cs-default
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The ID of the attached resource.
+	// Bound resource ID
 	//
 	// example:
 	//
 	// 622d27c2e87d49debceeebc7c642610e
 	BindResourceId *string `json:"bindResourceId,omitempty" xml:"bindResourceId,omitempty"`
-	// The IDs of the entity groups to filter by. Separate multiple IDs with commas.
+	// Filter for entity IDs, separated by commas
 	//
 	// example:
 	//
 	// eg-1,eg-2,eg-3
 	EntityGroupIds *string `json:"entityGroupIds,omitempty" xml:"entityGroupIds,omitempty"`
-	// The IDs of the regions to query. Separate multiple region IDs with commas.
+	// Used for Region query, separated by commas
 	//
 	// example:
 	//
 	// cn-beijing,cn-hangzhou
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// The maximum number of entries to return on each page. The default value is 30. The maximum value is 100.
+	// Maximum number of results to return. Default is 30, with a maximum of 100.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. You can obtain the token from the response to the previous request.
+	// Used to return more results. This parameter is not required for the first query. For subsequent queries, use the Token obtained from the response.
 	//
 	// example:
 	//
 	// mvnX6zqg3P
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The policy ID.
+	// Policy ID.
 	//
 	// example:
 	//
 	// policy-93817a401f78435596d745a97d2e85a1
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The policy name.
+	// Rule name.
 	//
 	// example:
 	//
 	// prod-database
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The policy type.
+	// Policy type
 	//
 	// example:
 	//
 	// CS
 	PolicyType *string `json:"policyType,omitempty" xml:"policyType,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// cmee-622d27c2e87d49debceeebc7c642610e
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// A general-purpose query string.
+	// Used for general queries
 	//
 	// example:
 	//
 	// test
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The resource group ID.
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The list of tags.
+	// Tag list.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The workspace.
+	// Workspace.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iUpdateServiceRequest interface {
 }
 
 type UpdateServiceRequest struct {
-	// The extended properties.
+	// Extended attributes.
 	//
 	// example:
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The description of the service. This parameter is valid only when serviceType is set to RUM.
+	// Service description, only valid when serviceType=RUM.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name. This parameter is valid only when serviceType is set to RUM.
+	// Display name, only valid when serviceType=RUM.
 	//
 	// example:
 	//
 	// api-monitor-test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The status of the service. This parameter is valid only when serviceType is set to RUM.
+	// Service status, only valid when serviceType=RUM.
 	//
 	// example:
 	//

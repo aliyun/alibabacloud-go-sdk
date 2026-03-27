@@ -16,10 +16,7 @@ type iListIntegrationPolicyCollectorsResponseBody interface {
 }
 
 type ListIntegrationPolicyCollectorsResponseBody struct {
-	// The list of collectors.
 	Collectors []*ListIntegrationPolicyCollectorsResponseBodyCollectors `json:"collectors,omitempty" xml:"collectors,omitempty" type:"Repeated"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
@@ -66,47 +63,29 @@ func (s *ListIntegrationPolicyCollectorsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectors struct {
-	// The add-on details.
 	AddonMeta *AddonMeta `json:"addonMeta,omitempty" xml:"addonMeta,omitempty"`
-	// The collector name.
-	//
 	// example:
 	//
 	// collector-kkxx
 	CollectorName *string `json:"collectorName,omitempty" xml:"collectorName,omitempty"`
-	// The collector type.
-	//
 	// example:
 	//
 	// Exporter
-	CollectorType *string `json:"collectorType,omitempty" xml:"collectorType,omitempty"`
-	// The phase status.
-	Conditions []*ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// Indicates whether the component is a managed component.
-	//
+	CollectorType *string                                                            `json:"collectorType,omitempty" xml:"collectorType,omitempty"`
+	Conditions    []*ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// example:
 	//
 	// false
-	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The name of the add-on release.
-	//
-	// example:
-	//
-	// ecs-loong-collector-i-f8z1176fg57rlwmc1rfi
+	Managed     *bool   `json:"managed,omitempty" xml:"managed,omitempty"`
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The collector status.
-	//
 	// example:
 	//
 	// xx
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The component version.
-	//
 	// example:
 	//
 	// 2.6.2
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The list of workloads.
+	Version   *string                                                           `json:"version,omitempty" xml:"version,omitempty"`
 	Workloads []*ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads `json:"workloads,omitempty" xml:"workloads,omitempty" type:"Repeated"`
 }
 
@@ -227,38 +206,26 @@ func (s *ListIntegrationPolicyCollectorsResponseBodyCollectors) Validate() error
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions struct {
-	// The time of the first transition.
-	//
 	// example:
 	//
 	// 2024-08-27T13:59:23+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The time of the last transition.
-	//
 	// example:
 	//
 	// 2024-08-27T13:59:23+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// The details.
-	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The reason for the failure.
-	//
 	// example:
 	//
 	// Probe
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// The phase status.
-	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The phase type.
-	//
 	// example:
 	//
 	// Ready
@@ -332,70 +299,47 @@ func (s *ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions) Valida
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads struct {
-	// The host IP address.
-	//
 	// example:
 	//
 	// 10.10.10.10
 	HostIp *string `json:"hostIp,omitempty" xml:"hostIp,omitempty"`
-	// The IP address of the workload.
-	//
 	// example:
 	//
 	// 11.193.82.198
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// Indicates whether the component is a managed component.
-	//
 	// example:
 	//
 	// false
-	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The policy management information.
+	Managed     *bool                                                                      `json:"managed,omitempty" xml:"managed,omitempty"`
 	ManagedInfo *ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo `json:"managedInfo,omitempty" xml:"managedInfo,omitempty" type:"Struct"`
-	// The details.
-	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The workload name.
-	//
 	// example:
 	//
 	// exporter-xxx
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The workload namespace.
-	//
 	// example:
 	//
 	// prod-db
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The kind of the parent reference.
-	//
 	// example:
 	//
 	// Deployment
 	OwnerReferenceKind *string `json:"ownerReferenceKind,omitempty" xml:"ownerReferenceKind,omitempty"`
-	// The name of the parent reference.
-	//
 	// example:
 	//
 	// exporter
 	OwnerReferenceName *string `json:"ownerReferenceName,omitempty" xml:"ownerReferenceName,omitempty"`
-	// The start time.
-	//
 	// example:
 	//
 	// 2024-08-27T13:59:23+08:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The status.
-	//
 	// example:
 	//
 	// {}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The workload version.
-	//
 	// example:
 	//
 	// v2.4.4
@@ -528,14 +472,10 @@ func (s *ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads) Validat
 }
 
 type ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo struct {
-	// The security group ID.
-	//
 	// example:
 	//
 	// sg-xxxxx
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The vSwitch ID.
-	//
 	// example:
 	//
 	// vsw-xxxxxx

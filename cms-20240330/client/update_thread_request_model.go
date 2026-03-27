@@ -19,17 +19,13 @@ type iUpdateThreadRequest interface {
 
 type UpdateThreadRequest struct {
 	Attributes map[string]*string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The status of the session.
-	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The title of the session.
-	//
 	// example:
 	//
-	// title
+	// MY ANTOM Tech Team Annual Dinner Performance Lucky Draw
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

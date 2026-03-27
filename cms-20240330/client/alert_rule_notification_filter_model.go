@@ -26,20 +26,13 @@ type iAlertRuleNotificationFilter interface {
 }
 
 type AlertRuleNotificationFilter struct {
-	// 联系人ID过滤
-	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// 自定义webhook ID过滤
+	Contacts       []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
 	CustomWebhooks []*string `json:"customWebhooks,omitempty" xml:"customWebhooks,omitempty" type:"Repeated"`
-	// 钉钉webhook ID过滤
-	DingWebhooks []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
-	// 飞书webhook ID过滤
-	FsWebhooks []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
-	// 联系人组过滤配置
-	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
-	// slack webhook ID过滤列表
-	SlackWebhooks []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
-	// 微信webhook ID过滤
-	WxWebhooks []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
+	DingWebhooks   []*string `json:"dingWebhooks,omitempty" xml:"dingWebhooks,omitempty" type:"Repeated"`
+	FsWebhooks     []*string `json:"fsWebhooks,omitempty" xml:"fsWebhooks,omitempty" type:"Repeated"`
+	Groups         []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
+	SlackWebhooks  []*string `json:"slackWebhooks,omitempty" xml:"slackWebhooks,omitempty" type:"Repeated"`
+	WxWebhooks     []*string `json:"wxWebhooks,omitempty" xml:"wxWebhooks,omitempty" type:"Repeated"`
 }
 
 func (s AlertRuleNotificationFilter) String() string {

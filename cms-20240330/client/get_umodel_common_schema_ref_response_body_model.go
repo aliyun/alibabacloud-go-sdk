@@ -14,7 +14,6 @@ type iGetUmodelCommonSchemaRefResponseBody interface {
 }
 
 type GetUmodelCommonSchemaRefResponseBody struct {
-	// The referenced common Umodel Schema.
 	CommonSchemaRef []*GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef `json:"commonSchemaRef,omitempty" xml:"commonSchemaRef,omitempty" type:"Repeated"`
 }
 
@@ -49,14 +48,10 @@ func (s *GetUmodelCommonSchemaRefResponseBody) Validate() error {
 }
 
 type GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef struct {
-	// The common Umodel Schema group.
-	//
 	// example:
 	//
 	// apm-common
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The version.
-	//
 	// example:
 	//
 	// 0.1.0

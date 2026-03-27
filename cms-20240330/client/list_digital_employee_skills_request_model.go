@@ -18,20 +18,14 @@ type iListDigitalEmployeeSkillsRequest interface {
 }
 
 type ListDigitalEmployeeSkillsRequest struct {
-	// The maximum number of entries to return for this request.
-	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page. A null value indicates that there are no more pages.
-	//
 	// example:
 	//
 	// sjC5rekx93Ew7K7VcmI3wkBZBYQ-GphB2ilQu3zJCGxoZuicwyJznfo2riTjr-lq
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The name of the skill.
-	//
 	// example:
 	//
 	// test

@@ -14,8 +14,6 @@ type iDeleteMemoryResponseBody interface {
 }
 
 type DeleteMemoryResponseBody struct {
-	// The ID of the request.
-	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-************

@@ -32,16 +32,40 @@ type iIncidentTimelineForView interface {
 }
 
 type IncidentTimelineForView struct {
-	ChangeType   *string                 `json:"changeType,omitempty" xml:"changeType,omitempty"`
-	Content      interface{}             `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// "Open -> In Progress"
+	ChangeType *string `json:"changeType,omitempty" xml:"changeType,omitempty"`
+	// example:
+	//
+	// "{"action":"restart","resourceId":"i-bp123456"}"
+	Content interface{} `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// "a1b2c3d4-e5f6-7890-1234-567890abcdef"
 	IncidentUuid *string                 `json:"incidentUuid,omitempty" xml:"incidentUuid,omitempty"`
 	Operator     *ContactForIncidentView `json:"operator,omitempty" xml:"operator,omitempty"`
-	Time         *int64                  `json:"time,omitempty" xml:"time,omitempty"`
-	TimelineUuid *string                 `json:"timelineUuid,omitempty" xml:"timelineUuid,omitempty"`
-	Title        *string                 `json:"title,omitempty" xml:"title,omitempty"`
-	Type         *string                 `json:"type,omitempty" xml:"type,omitempty"`
-	UserId       *string                 `json:"userId,omitempty" xml:"userId,omitempty"`
-	Workspace    *string                 `json:"workspace,omitempty" xml:"workspace,omitempty"`
+	// example:
+	//
+	// 1743876000000
+	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// "x1y2z3a4-b5c6-d7e8-f9g0-h1i2j3k4l5m6"
+	TimelineUuid *string `json:"timelineUuid,omitempty" xml:"timelineUuid,omitempty"`
+	Title        *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// "Comment"
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// "user-abc123"
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// "ws-xyz789"
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
 func (s IncidentTimelineForView) String() string {

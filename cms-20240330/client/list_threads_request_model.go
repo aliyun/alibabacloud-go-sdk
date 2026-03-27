@@ -22,31 +22,22 @@ type iListThreadsRequest interface {
 }
 
 type ListThreadsRequest struct {
-	// The filter conditions for the query. If you do not specify this parameter, all threads in the instance are queried.
 	Filter []*ListThreadsRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Repeated"`
-	// The maximum number of results to return. The maximum value is 200.
-	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The paging token.
-	//
 	// example:
 	//
 	// xxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The session status.
-	//
 	// example:
 	//
-	// active
+	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The session ID.
-	//
 	// example:
 	//
-	// thread-123123
+	// thread_id01
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
 }
 
@@ -117,21 +108,17 @@ func (s *ListThreadsRequest) Validate() error {
 }
 
 type ListThreadsRequestFilter struct {
-	// The filter key. Supported values are title, workspace, and project.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// title
+	// dukang-oxs-pre-obeqi
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The set value.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// test
+	// [{\\"Type\\": \\"primaryDoc\\", \\"Id\\": \\"01ZM8y7\\", \\"Name\\": \\"key\\"}, {\\"Type\\": \\"text\\", \\"Id\\": \\"mHe1U1b\\", \\"Name\\": \\"value\\"}, {\\"Type\\": \\"text\\", \\"Id\\": \\"rRIhpBs\\", \\"Name\\": u\\"\\u4f5c\\u7528\\"}]
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

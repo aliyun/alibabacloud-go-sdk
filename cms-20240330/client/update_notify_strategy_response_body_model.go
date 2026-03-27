@@ -16,13 +16,11 @@ type iUpdateNotifyStrategyResponseBody interface {
 }
 
 type UpdateNotifyStrategyResponseBody struct {
-	// The UUID of the notification policy.
-	//
 	// example:
 	//
 	// 12312-31-23-123-1-23123
 	NotifyStrategyId *string `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
-	// The ID of the request. This is a unique identifier for troubleshooting.
+	// Id of the request
 	//
 	// example:
 	//

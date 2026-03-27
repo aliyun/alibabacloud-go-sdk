@@ -30,52 +30,32 @@ type iMergeRobot interface {
 }
 
 type MergeRobot struct {
-	// 创建时间。
-	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// 扩展字段。
-	Extend *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
-	// 最后修改时间。
-	//
+	CreateTime *string           `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Extend     *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 机器人唯一标识符。
-	//
 	// example:
 	//
 	// robot-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 语言偏好。
-	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// 机器人名称。
-	//
-	// example:
-	//
-	// 运维告警机器人
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 机器人来源系统。
-	//
 	// example:
 	//
 	// dingtalk
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// 机器人类型。
-	//
 	// example:
 	//
 	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Webhook 地址。
-	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=abc123
@@ -181,38 +161,26 @@ func (s *MergeRobot) Validate() error {
 }
 
 type MergeRobotExtend struct {
-	// 卡片模板。
-	//
 	// example:
 	//
 	// incident-card-template
 	CardTemplate *string `json:"cardTemplate,omitempty" xml:"cardTemplate,omitempty"`
-	// 是否启用每日值班报告。
-	//
 	// example:
 	//
 	// true
 	DailyNoc *bool `json:"dailyNoc,omitempty" xml:"dailyNoc,omitempty"`
-	// 每日值班报告时间。
-	//
 	// example:
 	//
 	// 09:00
 	DailyNocTime *string `json:"dailyNocTime,omitempty" xml:"dailyNocTime,omitempty"`
-	// 钉钉签名密钥。
-	//
 	// example:
 	//
 	// abc123
 	DingSignKey *string `json:"dingSignKey,omitempty" xml:"dingSignKey,omitempty"`
-	// 是否启用出站请求。
-	//
 	// example:
 	//
 	// false
 	EnableOutgoing *bool `json:"enableOutgoing,omitempty" xml:"enableOutgoing,omitempty"`
-	// 认证令牌。
-	//
 	// example:
 	//
 	// token-abc123

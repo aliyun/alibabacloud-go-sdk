@@ -28,53 +28,31 @@ type iAlertRuleAlertMetricParamDef interface {
 }
 
 type AlertRuleAlertMetricParamDef struct {
-	// 输入框的最大宽度，仅对SELECT_PARAM、INPUT_PARAM生效
-	//
 	// example:
 	//
 	// 200
 	MaxWidth *int32 `json:"maxWidth,omitempty" xml:"maxWidth,omitempty"`
-	// 输入框的最小宽度，仅对SELECT_PARAM、INPUT_PARAM生效
-	//
 	// example:
 	//
 	// 100
 	MinWidth *int32 `json:"minWidth,omitempty" xml:"minWidth,omitempty"`
-	// 名称
-	//
 	// example:
 	//
 	// env
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 仅对INPUT_PARAM有效。用于前端展示的中文展位符
-	//
-	// example:
-	//
-	// 请输入值
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
 	PlaceholderCn *string `json:"placeholderCn,omitempty" xml:"placeholderCn,omitempty"`
-	// 仅对INPUT_PARAM有效。用于前端展示的英文展位符
-	//
 	// example:
 	//
 	// Enter value
 	PlaceholderEn *string `json:"placeholderEn,omitempty" xml:"placeholderEn,omitempty"`
-	// ● TEXT_PARAM: 只读文本参数，由后台定义，前端不显示用户输入控件
-	//
-	// ● INPUT_PARAM：输入框参数
-	//
-	// ● SELECT_PARAM：选择框参数
-	//
 	// example:
 	//
 	// TEXT_PARAM
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 值
-	//
 	// example:
 	//
 	// staging
-	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// 仅对SELECT_PARAM有效。  下拉列表的可选值列表。
+	Value  *string                               `json:"value,omitempty" xml:"value,omitempty"`
 	Values []*AlertRuleAlertMetricParamDefValues `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -172,20 +150,11 @@ func (s *AlertRuleAlertMetricParamDef) Validate() error {
 }
 
 type AlertRuleAlertMetricParamDefValues struct {
-	// 选项的中文显示名称
-	//
-	// example:
-	//
-	// 测试环境
 	LabelCn *string `json:"labelCn,omitempty" xml:"labelCn,omitempty"`
-	// 选项的英文显示名称
-	//
 	// example:
 	//
 	// Staging
 	LabelEn *string `json:"labelEn,omitempty" xml:"labelEn,omitempty"`
-	// 值
-	//
 	// example:
 	//
 	// staging

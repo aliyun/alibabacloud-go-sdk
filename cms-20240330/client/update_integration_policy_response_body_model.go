@@ -14,7 +14,7 @@ type iUpdateIntegrationPolicyResponseBody interface {
 }
 
 type UpdateIntegrationPolicyResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//

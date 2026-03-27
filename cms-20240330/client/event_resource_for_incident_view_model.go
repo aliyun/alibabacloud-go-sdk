@@ -22,9 +22,21 @@ type iEventResourceForIncidentView interface {
 }
 
 type EventResourceForIncidentView struct {
+  // example:
+  // 
+  // rum
   Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+  // example:
+  // 
+  // default
   EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+  // example:
+  // 
+  // "Instance"
   EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+  // example:
+  // 
+  // "{"name":"web-server-01","ip":"10.0.0.1"}"
   Probs *string `json:"probs,omitempty" xml:"probs,omitempty"`
   Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }

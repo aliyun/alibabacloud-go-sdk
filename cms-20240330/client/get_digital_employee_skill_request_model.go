@@ -14,8 +14,6 @@ type iGetDigitalEmployeeSkillRequest interface {
 }
 
 type GetDigitalEmployeeSkillRequest struct {
-	// Historical version number
-	//
 	// example:
 	//
 	// 1770386951147366810

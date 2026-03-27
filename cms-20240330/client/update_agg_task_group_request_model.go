@@ -44,7 +44,7 @@ type iUpdateAggTaskGroupRequest interface {
 }
 
 type UpdateAggTaskGroupRequest struct {
-	// The configuration of the aggregation task group. Currently, only the RecordingRuleYaml format is supported. The configuration must comply with the RecordingRule format of open source Prometheus.
+	// Aggregation task group configuration. Currently, only the “RecordingRuleYaml” format is supported, and it must comply with the format requirements of open-source Prometheus RecordingRules.
 	//
 	// This parameter is required.
 	//
@@ -64,81 +64,81 @@ type UpdateAggTaskGroupRequest struct {
 	//
 	//       }, \\"pod\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (node, namespace, pod, cluster)"
 	AggTaskGroupConfig *string `json:"aggTaskGroupConfig,omitempty" xml:"aggTaskGroupConfig,omitempty"`
-	// The type of the aggregation task group configuration. The default value is RecordingRuleYaml, which is the RecordingRule format of open source Prometheus.
+	// Aggregation task group configuration type, default is “RecordingRuleYaml” (open-source Prometheus RecordingRule format).
 	//
 	// example:
 	//
 	// RecordingRuleYaml
 	AggTaskGroupConfigType *string `json:"aggTaskGroupConfigType,omitempty" xml:"aggTaskGroupConfigType,omitempty"`
-	// The name of the aggregation task group.
+	// Aggregation task group name.
 	//
 	// example:
 	//
 	// test-group
 	AggTaskGroupName *string `json:"aggTaskGroupName,omitempty" xml:"aggTaskGroupName,omitempty"`
-	// The cron expression for scheduling when the scheduling mode is set to Cron. For example, \\`0/1 \\	- \\	- \\	- \\*\\` indicates that the task is scheduled every 1 minute, starting from the 0th minute.
+	// When the scheduling mode is set to “Cron”, this is the specific scheduling expression. For example, “0/1 	- 	- 	- *” means starting from 0 minutes, schedule every 1 minute.
 	//
 	// example:
 	//
 	// 0/1 	- 	- 	- *
 	CronExpr *string `json:"cronExpr,omitempty" xml:"cronExpr,omitempty"`
-	// The fixed delay for scheduling. Unit: seconds. The default value is 30.
+	// Fixed delay time for scheduling, in seconds, default is 30.
 	//
 	// example:
 	//
 	// 30
 	Delay *int32 `json:"delay,omitempty" xml:"delay,omitempty"`
-	// The description of the aggregation task group.
+	// Description of the aggregation task group.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The UNIX timestamp in seconds that indicates the start time of the scheduling.
+	// The second-level timestamp corresponding to the start time of the scheduling.
 	//
 	// example:
 	//
 	// 1724996015
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The maximum number of retries to execute the aggregation task. The default value is 20.
+	// Maximum number of retries for executing the aggregation task, default is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
-	// The maximum retry time to execute the aggregation task. Unit: seconds. The default value is 600.
+	// Maximum retry time for executing the aggregation task, in seconds, default is 600.
 	//
 	// example:
 	//
 	// 600
 	MaxRunTimeInSeconds *int32 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
-	// The dry run configuration. This parameter is not configured by default. The input string must be a valid JSON string.
+	// Pre-check configuration, no configuration by default. The input string needs to be correctly parsed as JSON.
 	//
 	// example:
 	//
 	// {"policy":"skip","prometheusId":"xxx","query":"scalar(sum(count_over_time(up{job=\\"_arms/kubelet/cadvisor\\"}[15s])) / 21)","threshold":0.5,"timeout":15,"type":"promql"}
 	PrecheckString *string `json:"precheckString,omitempty" xml:"precheckString,omitempty"`
-	// The scheduling mode. Valid values: Cron and FixedRate. The default value is FixedRate.
+	// Scheduling mode, either “Cron” or “FixedRate”, default is “FixedRate”.
 	//
 	// example:
 	//
 	// FixedRate
 	ScheduleMode *string `json:"scheduleMode,omitempty" xml:"scheduleMode,omitempty"`
-	// The scheduling time expression. Recommended values are \\`@s\\` and \\`@m\\`. This expression indicates the granularity at which the scheduling time window is snapped. The default value is \\`@m\\`.
+	// Scheduling time expression, recommended values are “@s” or “@m”, indicating the granularity of the scheduling time window alignment, default is “@m”.
 	//
 	// example:
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
-	// The status of the aggregation task group. Valid values: Running and Stopped. The default value is Running.
+	// Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the resource group.
+	// Resource group tags.
 	Tags []*UpdateAggTaskGroupRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the target Prometheus instance for the aggregation task group.
+	// Target Prometheus instance ID of the aggregation task group.
 	//
 	// This parameter is required.
 	//
@@ -146,7 +146,7 @@ type UpdateAggTaskGroupRequest struct {
 	//
 	// rw-pq4apob9jm
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
-	// The UNIX timestamp in seconds that indicates the end time of the scheduling. A value of 0 indicates that the scheduling does not stop.
+	// The second-level timestamp corresponding to the end time of the scheduling, 0 indicates that the scheduling does not stop.
 	//
 	// example:
 	//
@@ -320,13 +320,13 @@ func (s *UpdateAggTaskGroupRequest) Validate() error {
 }
 
 type UpdateAggTaskGroupRequestTags struct {
-	// The key of the resource group tag.
+	// Key of the resource group tag.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the resource group tag.
+	// Value of the resource group tag.
 	//
 	// example:
 	//

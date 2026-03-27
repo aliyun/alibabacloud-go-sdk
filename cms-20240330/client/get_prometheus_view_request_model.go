@@ -16,13 +16,13 @@ type iGetPrometheusViewRequest interface {
 }
 
 type GetPrometheusViewRequest struct {
-	// The language. Valid values: zh (Chinese) and en (English). Default: zh.
+	// Language environment, default is Chinese zh | en
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The ID of the resource group.
+	// Resource group ID.
 	//
 	// example:
 	//

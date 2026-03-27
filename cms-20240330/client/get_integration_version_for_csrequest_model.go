@@ -16,16 +16,12 @@ type iGetIntegrationVersionForCSRequest interface {
 }
 
 type GetIntegrationVersionForCSRequest struct {
-	// The ID of the cluster.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c502646fd0d1249baaf792b3a1b589e1b
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The type of the cluster. Valid values: acs.ack.cluster and acs.asi.cluster.
-	//
 	// This parameter is required.
 	//
 	// example:

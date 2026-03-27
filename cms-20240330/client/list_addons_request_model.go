@@ -20,22 +20,15 @@ type iListAddonsRequest interface {
 }
 
 type ListAddonsRequest struct {
-	// The language. Valid values: zh and en. The default value is zh.
-	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// Tag filtering.
-	//
 	// example:
 	//
 	// database
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Specifies whether to use regular expressions for the search. The default value is false.
-	Regexp *bool `json:"regexp,omitempty" xml:"regexp,omitempty"`
-	// The search keyword. You can search for add-ons by name, description, or keyword.
-	//
+	Regexp   *bool   `json:"regexp,omitempty" xml:"regexp,omitempty"`
 	// example:
 	//
 	// 105095

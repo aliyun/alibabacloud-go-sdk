@@ -40,121 +40,115 @@ type iAlertRuleCondition interface {
 }
 
 type AlertRuleCondition struct {
-	// 适用条件类型：SLS_CONDITION
+	// Applicable condition type: SLS_CONDITION.
 	//
-	// 满足条件几次后告警，默认为1
+	// Number of times the condition must be met before triggering an alert, default is 1.
 	//
 	// example:
 	//
 	// 1
 	AlertCount *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
-	// 适用条件类型： SLS_CONDITION。
+	// Applicable condition type: SLS_CONDITION.
 	//
-	// SLS告警条件列表
+	// SLS alert condition list.
 	CaseList []*AlertRuleConditionCaseList `json:"caseList,omitempty" xml:"caseList,omitempty" type:"Repeated"`
-	// 适用条件类型：APM_CONDITION。
+	// Applicable condition type: APM_CONDITION.
 	//
-	// APM告警比较条件列表
+	// APM alert comparison condition list.
 	CompareList []*AlertRuleConditionCompareList `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
-	// 适用条件类型：CMS_BASIC_CONDITION
+	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
-	// escalationType=composite时有效，组合指标告警条件
+	// Valid only when escalationType=composite; composite metric alert condition.
 	CompositeEscalation *AlertRuleConditionCompositeEscalation `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty" type:"Struct"`
-	// 适用条件类型：CMS_BASIC_CONDITION
+	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
+	// Valid values:
 	//
-	// 取值范围:
+	// - simple: Simple metric condition,
 	//
-	// - simple: 简单指标条件
+	// - composite: Composite metric condition,
 	//
-	// - composite: 组合指标条件
-	//
-	// - express: 表达式条件
+	// - express: Expression condition.
 	//
 	// example:
 	//
 	// simple
 	EscalationType *string `json:"escalationType,omitempty" xml:"escalationType,omitempty"`
-	// 适用条件类型：CMS_BASIC_CONDITION。
+	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
-	// escalationType=composite时有效，多指标组合告警条件。
+	// Valid only when escalationType=composite; multi-metric composite alert condition.
 	ExpressEscalation *AlertRuleConditionExpressEscalation `json:"expressEscalation,omitempty" xml:"expressEscalation,omitempty" type:"Struct"`
-	// 适用条件类型：APM_CONDITION。
+	// Applicable condition type: APM_CONDITION.
 	//
-	// 无数据时的告警级别，不指定则不对无数据报警
+	// Alert severity level when no data is available; if not specified, no alert will be triggered for missing data.
 	//
 	// example:
 	//
 	// INFO
 	NoDataAlertLevel *string `json:"noDataAlertLevel,omitempty" xml:"noDataAlertLevel,omitempty"`
-	// 适用条件类型：APM_CONDITION。
+	// Applicable condition type: APM_CONDITION.
 	//
-	// 无数据时补偿的值。
+	// Fallback value when no data is available.
 	//
 	// example:
 	//
 	// 1
 	NoDataAppendValue *string `json:"noDataAppendValue,omitempty" xml:"noDataAppendValue,omitempty"`
-	// 适用条件类型：CMS_BASIC_CONDITION。
+	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
+	// Handling method when no monitoring data is available. Valid values:
 	//
-	// 无监控数据时报警的处理方式。取值：
+	// - KEEP_LAST_STATE (default): No action is taken.
 	//
-	// - KEEP_LAST_STATE（默认值）：不做任何处理。
+	// - INSUFFICIENT_DATA: Alert with "insufficient data" message.
 	//
-	// - INSUFFICIENT_DATA：报警内容为无数据。
-	//
-	// - OK：正常。
+	// - OK: Treat as normal.
 	//
 	// example:
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"noDataPolicy,omitempty" xml:"noDataPolicy,omitempty"`
-	// 比较操作，判断是否是同比、环比
+	// Comparison operations to determine whether it is year-over-year (YoY) or month-over-month (MoM):
 	//
-	// - 大于 GT
+	// - Greater than (GT),
 	//
-	// - 大于等于 GTE
+	// - Greater than or equal to (GTE),
 	//
-	// - 小于 LT
+	// - Less than (LT),
 	//
-	// - 小于等于 LTE
+	// - Less than or equal to (LTE),
 	//
-	// - 等于 EQ
+	// - Equal to (EQ),
 	//
-	// - 不等于 NE
+	// - Not equal to (NE),
 	//
-	// - 同比增加 YOY_UP
+	// - Year-over-year increase (YOY_UP),
 	//
-	// - 同比减少 YOY_DOWN
+	// - Year-over-year decrease (YOY_DOWN).
 	//
 	// example:
 	//
 	// LT
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// 适用条件类型：APM_CONDITION。
+	// Applicable condition type: APM_CONDITION.
 	//
-	// 多个条件之间的逻辑关系。 取值：
-	//
-	// - and
-	//
-	// - or
+	// Logical relationship between multiple conditions. Valid values: and, or.
 	//
 	// example:
 	//
 	// and
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
-	// 适用条件类型：CMS_BASIC_CONDITION。
+	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
-	// 仅当escalationType=simple时有效，针对单一指标设置的告警条件
+	// Only valid when escalationType=simple; specifies the alert condition for a single metric.
 	SimpleEscalation *AlertRuleConditionSimpleEscalation `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty" type:"Struct"`
-	// 规则条件类型，取值范围：
+	// Rule condition type, valid values:
 	//
-	// - SLS_CONDITION(SLS告警条件)
+	// SLS_CONDITION (SLS alert condition),
 	//
-	// - APM_CONDITION(APM告警条件)
+	// APM_CONDITION (APM alert condition),
 	//
-	// - CMS_BASIC_CONDITION(基础云监控告警条件)
+	// CMS_BASIC_CONDITION (Basic Cloud Monitoring alert condition).
 	//
 	// This parameter is required.
 	//
@@ -162,7 +156,7 @@ type AlertRuleCondition struct {
 	//
 	// SLS_CONDITION
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 告警触发的阈值。
+	// Alert triggering threshold.
 	//
 	// example:
 	//
@@ -342,39 +336,35 @@ func (s *AlertRuleCondition) Validate() error {
 }
 
 type AlertRuleConditionCaseList struct {
-	// 匹配表达式，示例：  logLevel: error
+	// Matching expression, example: logLevel: error.
 	//
 	// example:
 	//
 	// logLevel: error
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// 数量匹配表达式，示例：
-	//
-	// 区间组合： __count__ >= 3 && __count__ <= 10
-	//
-	// 单区间： __count__ >= 3
+	// Count matching expression, examples: range combination: count >= 3 && count <= 10; single range: count >= 3.
 	//
 	// example:
 	//
 	// count >= 3
 	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
-	// 满足条件后的告警级别
+	// Alert severity level after condition is met.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 匹配类型： 有数据/有特定条数据/有数据匹配/有特定条数匹配。
+	// Matching type: Has data / Has a specific number of data entries / Has matching data / Has a specific number of matching entries.
 	//
-	// 取值范围：
+	// Valid values:
 	//
-	// - HasData: 有数据
+	// - HasData: Has data.
 	//
-	// - HasDataCount:  有特定条数据
+	// - HasDataCount: Has a specific number of data entries.
 	//
-	// - HasDataMatch：有数据匹配
+	// - HasDataMatch: Has matching data.
 	//
-	// - HasDataMatchCount：有特定条数匹配
+	// - HasDataMatchCount: Has a specific number of matching entries.
 	//
 	// example:
 	//
@@ -431,79 +421,77 @@ func (s *AlertRuleConditionCaseList) Validate() error {
 }
 
 type AlertRuleConditionCompareList struct {
-	// 时间序列后聚合函数
+	// Time series post-aggregation functions:
 	//
 	// - count
 	//
-	// - sum
+	// -  sum
 	//
-	// - avg
+	// -  avg
 	//
-	// - min
+	// -  min
 	//
-	// - max
+	// -  max
 	//
-	// - p90
+	// -  p90
 	//
-	// - p95
+	// -  p95
 	//
-	// - p99
+	// -  p99
 	//
 	// example:
 	//
 	// count
 	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	// 数据单位
+	// Data unit.
 	//
 	// example:
 	//
 	// %
 	BaseUnit *string `json:"baseUnit,omitempty" xml:"baseUnit,omitempty"`
-	// 展示单位
+	// Display unit.
 	//
 	// example:
 	//
 	// %
 	DisplayUnit *string `json:"displayUnit,omitempty" xml:"displayUnit,omitempty"`
-	// 比较操作，判断是否是同比、环比
+	// Comparison operations to determine whether it is year-over-year (YoY) or month-over-month (MoM):
 	//
-	// - 大于 GT
+	// - Greater than (GT),
 	//
-	// - 大于等于 GTE
+	// - Greater than or equal to (GTE),
 	//
-	// - 小于 LT
+	// - Less than (LT),
 	//
-	// - 小于等于 LTE
+	// - Less than or equal to (LTE),
 	//
-	// - 等于 EQ
+	// - Equal to (EQ),
 	//
-	// - 不等于 NE
+	// - Not equal to (NE),
 	//
-	// - 同比增加 YOY_UP
+	// - Year-over-year increase (YOY_UP),
 	//
-	// - 同比减少 YOY_DOWN
+	// - Year-over-year decrease (YOY_DOWN).
 	//
 	// example:
 	//
 	// GT
 	Oper *string `json:"oper,omitempty" xml:"oper,omitempty"`
-	// 对比的阈值
+	// Comparison threshold.
 	//
 	// example:
 	//
 	// 50
 	Value *float64 `json:"value,omitempty" xml:"value,omitempty"`
-	// 不同值的报警级别的列表。
+	// List of alert severity levels for different values.
 	ValueLevelList []*AlertRuleConditionCompareListValueLevelList `json:"valueLevelList,omitempty" xml:"valueLevelList,omitempty" type:"Repeated"`
-	// 同比时间单位（仅对oper=YOY_UP/YOY_DOWN生效）
-	//
-	//  minute、hour、day、week、month
+	// Year-over-year time unit (only applicable when oper=YOY_UP/YOY_DOWN): minute, hour, day, week, month.
 	//
 	// example:
 	//
 	// month
 	YoyTimeUnit *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
-	// 同比时间的值，与yoyTimeUnit配合使用
+	// Year-over-year time value, used in conjunction with yoyTimeUnit.
 	//
 	// example:
 	//
@@ -605,13 +593,13 @@ func (s *AlertRuleConditionCompareList) Validate() error {
 }
 
 type AlertRuleConditionCompareListValueLevelList struct {
-	// 阈值对应的级别
+	// Severity level corresponding to the threshold.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 对比的阈值
+	// Comparison threshold.
 	//
 	// example:
 	//
@@ -650,21 +638,21 @@ func (s *AlertRuleConditionCompareListValueLevelList) Validate() error {
 }
 
 type AlertRuleConditionCompositeEscalation struct {
-	// 多指标的组合条件列表
+	// List of multi-metric composite conditions.
 	Escalations []*AlertRuleConditionCompositeEscalationEscalations `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// 满足条件时触发的告警级别(多指标组合告警仅支持一个级别)
+	// Alert severity level triggered when the condition is met (multi-metric composite alerts support only one level).
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 多个指标条件之间的关系，取值为and或or
+	// Relationship between multiple metric conditions; valid values are "and" or "or".
 	//
 	// example:
 	//
 	// and
 	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
-	// 触发告警需满足条件的次数
+	// Number of times the condition must be met to trigger an alert.
 	//
 	// example:
 	//
@@ -730,65 +718,65 @@ func (s *AlertRuleConditionCompositeEscalation) Validate() error {
 }
 
 type AlertRuleConditionCompositeEscalationEscalations struct {
-	// 阈值比较符，取值范围：
+	// Threshold comparison operator, valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to.
 	//
-	// - EqualToThreshold：等于。
+	// - EqualToThreshold: equal to.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: increased compared to the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: decreased compared to the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: increased compared to the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: decreased compared to the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: increased compared to the previous period (MoM).
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: decreased compared to the previous period (MoM).
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	// 指标名称
+	// Metric name.
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// 指标的时间窗口
+	// Metric time window.
 	//
 	// example:
 	//
 	// 60
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
-	// 统计方法，该参数的取值由指定云产品的MetricName对应的Statistics列决定。  监控项的统计方法。取值示例：
+	// Statistical method; the value of this parameter is determined by the Statistics column corresponding to the specified cloud product\\"s MetricName. This represents the statistical method for the monitoring metric. Example values:
 	//
-	// - $Maximum：最大值。
+	// - $Maximum: maximum value.
 	//
-	// - $Minimum：最小值。
+	// - $Minimum: minimum value.
 	//
-	// - $Average：平均值。
+	// - $Average: average value.
 	//
-	// - $Availability：可用率（通常用于站点监控）
+	// - $Availability: availability (typically used for site monitoring).
 	//
-	// 说明 $为监控项的统一前缀符号。
+	// Note: "$" is a unified prefix symbol for monitoring metrics.
 	//
 	// example:
 	//
 	// $Maximum
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	// 告警阈值
+	// Alert threshold.
 	//
 	// example:
 	//
@@ -854,7 +842,7 @@ func (s *AlertRuleConditionCompositeEscalationEscalations) Validate() error {
 }
 
 type AlertRuleConditionExpressEscalation struct {
-	// 满足条件时触发的告警级别(表达式告警仅支持一个级别)
+	// Alert severity level triggered when the condition is met (expression-based alerts support only one level):
 	//
 	// - CRITICAL
 	//
@@ -866,13 +854,13 @@ type AlertRuleConditionExpressEscalation struct {
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 告警条件表达式
+	// Alert condition expression.
 	//
 	// example:
 	//
 	// @cpu_total[60].$Average > 60
 	RawExpression *string `json:"rawExpression,omitempty" xml:"rawExpression,omitempty"`
-	// 触发告警需满足条件的次数
+	// Number of times the condition must be met to trigger an alert.
 	//
 	// example:
 	//
@@ -920,17 +908,17 @@ func (s *AlertRuleConditionExpressEscalation) Validate() error {
 }
 
 type AlertRuleConditionSimpleEscalation struct {
-	// 条件列表，同一个告警规则对应多个级别的，每一个级别会有一个条件对象。
+	// List of conditions; for an alert rule with multiple severity levels, each level corresponds to one condition object.
 	Escalations []*AlertRuleConditionSimpleEscalationEscalations `json:"escalations,omitempty" xml:"escalations,omitempty" type:"Repeated"`
-	// 适用条件类型：CMS_BASIC_CONDITION。
+	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
-	// 告警条件关联的指标
+	// Metric associated with the alert condition.
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	// 指标的时间窗口，单位秒
+	// Metric time window, in seconds.
 	//
 	// example:
 	//
@@ -987,37 +975,37 @@ func (s *AlertRuleConditionSimpleEscalation) Validate() error {
 }
 
 type AlertRuleConditionSimpleEscalationEscalations struct {
-	// 阈值比较符，取值范围：
+	// Threshold comparison operator, valid values:
 	//
-	// - GreaterThanOrEqualToThreshold：大于等于。
+	// - GreaterThanOrEqualToThreshold: greater than or equal to.
 	//
-	// - GreaterThanThreshold：大于。
+	// - GreaterThanThreshold: greater than.
 	//
-	// - LessThanOrEqualToThreshold：小于等于。
+	// - LessThanOrEqualToThreshold: less than or equal to.
 	//
-	// - LessThanThreshold：小于。
+	// - LessThanThreshold: less than.
 	//
-	// - NotEqualToThreshold：不等于。
+	// - NotEqualToThreshold: not equal to.
 	//
-	// - EqualToThreshold：等于。
+	// - EqualToThreshold: equal to.
 	//
-	// - GreaterThanYesterday：同比昨天时间上涨。
+	// - GreaterThanYesterday: increased compared to the same time yesterday.
 	//
-	// - LessThanYesterday：同比昨天时间下降。
+	// - LessThanYesterday: decreased compared to the same time yesterday.
 	//
-	// - GreaterThanLastWeek：同比上周同一时间上涨。
+	// - GreaterThanLastWeek: increased compared to the same time last week.
 	//
-	// - LessThanLastWeek：同比上周同一时间下降。
+	// - LessThanLastWeek: decreased compared to the same time last week.
 	//
-	// - GreaterThanLastPeriod：环比上周期上涨。
+	// - GreaterThanLastPeriod: increased compared to the previous period (MoM).
 	//
-	// - LessThanLastPeriod：环比上周期下降。
+	// - LessThanLastPeriod: decreased compared to the previous period (MoM).
 	//
 	// example:
 	//
 	// GreaterThanOrEqualToThreshold
 	ComparisonOperator *string `json:"comparisonOperator,omitempty" xml:"comparisonOperator,omitempty"`
-	// 满足条件时触发的告警级别(表达式告警仅支持一个级别)
+	// Alert severity level triggered when the condition is met (expression-based alerts support only one level):
 	//
 	// - CRITICAL
 	//
@@ -1029,19 +1017,19 @@ type AlertRuleConditionSimpleEscalationEscalations struct {
 	//
 	// INFO
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// 统计方法，该参数的取值由指定云产品的MetricName对应的Statistics列决定，例如：Maximum、Minimum 和 Average
+	// Statistical method; the value of this parameter is determined by the Statistics column corresponding to the specified cloud product\\"s MetricName, for example: Maximum, Minimum, and Average.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"statistics,omitempty" xml:"statistics,omitempty"`
-	// 告警阈值
+	// Alert threshold.
 	//
 	// example:
 	//
 	// 100
 	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// 触发告警需满足条件的次数
+	// Number of times the condition must be met to trigger an alert.
 	//
 	// example:
 	//

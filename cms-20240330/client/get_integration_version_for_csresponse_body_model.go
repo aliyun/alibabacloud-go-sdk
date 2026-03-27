@@ -16,13 +16,11 @@ type iGetIntegrationVersionForCSResponseBody interface {
 }
 
 type GetIntegrationVersionForCSResponseBody struct {
-	// The version of the Integration Center.
-	//
 	// example:
 	//
 	// V1
 	IntegrationVersion *string `json:"integrationVersion,omitempty" xml:"integrationVersion,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

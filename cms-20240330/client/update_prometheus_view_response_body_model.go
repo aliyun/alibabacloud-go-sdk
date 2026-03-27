@@ -16,13 +16,13 @@ type iUpdatePrometheusViewResponseBody interface {
 }
 
 type UpdatePrometheusViewResponseBody struct {
-	// The ID of the Prometheus view instance.
+	// Prometheus view instance ID.
 	//
 	// example:
 	//
 	// rw-xxxxxx
 	PrometheusViewId *string `json:"prometheusViewId,omitempty" xml:"prometheusViewId,omitempty"`
-	// The ID of the request.
+	// ID of the request.
 	//
 	// example:
 	//

@@ -24,38 +24,26 @@ type iGetMemoriesRequest interface {
 }
 
 type GetMemoriesRequest struct {
-	// Agent ID of the application
-	//
 	// example:
 	//
 	// 952730652285943809
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// Application ID
-	//
 	// example:
 	//
 	// 150130323
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// Page number
-	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// Page size
-	//
 	// example:
 	//
 	// 1000
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Run ID
-	//
 	// example:
 	//
 	// jr-80ded1d6953c64ea
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// User ID
-	//
 	// example:
 	//
 	// test_user_001

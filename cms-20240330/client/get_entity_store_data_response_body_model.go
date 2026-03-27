@@ -20,17 +20,17 @@ type iGetEntityStoreDataResponseBody interface {
 }
 
 type GetEntityStoreDataResponseBody struct {
-	// The list of returned data.
+	// Total list of returned data
 	Data [][]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The list of request headers.
+	// List of request headers
 	Header []*string `json:"header,omitempty" xml:"header,omitempty" type:"Repeated"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result status.
+	// Result status
 	ResponseStatus *GetEntityStoreDataResponseBodyResponseStatus `json:"responseStatus,omitempty" xml:"responseStatus,omitempty" type:"Struct"`
 }
 
@@ -88,31 +88,31 @@ func (s *GetEntityStoreDataResponseBody) Validate() error {
 }
 
 type GetEntityStoreDataResponseBodyResponseStatus struct {
-	// Information about the execution procedure.
+	// Information during the execution process
 	//
 	// example:
 	//
 	// {}
 	ExecutionStates *string `json:"executionStates,omitempty" xml:"executionStates,omitempty"`
-	// The status level.
+	// Status level
 	//
 	// example:
 	//
 	// Info,Warn,Error
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The execution result.
+	// Execution result
 	//
 	// example:
 	//
 	// Success,PartialSuccess,Error
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The retry policy.
+	// Retry policy
 	//
 	// example:
 	//
 	// None,Once,Continuous
 	RetryPolicy *string `json:"retryPolicy,omitempty" xml:"retryPolicy,omitempty"`
-	// A list of detailed status information.
+	// Detailed status information list
 	StatusItem []*GetEntityStoreDataResponseBodyResponseStatusStatusItem `json:"statusItem,omitempty" xml:"statusItem,omitempty" type:"Repeated"`
 }
 
@@ -183,25 +183,25 @@ func (s *GetEntityStoreDataResponseBodyResponseStatus) Validate() error {
 }
 
 type GetEntityStoreDataResponseBodyResponseStatusStatusItem struct {
-	// The status code.
+	// Status code
 	//
 	// example:
 	//
 	// Success,ExecuteTimeout,UModelNotExist
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The status level.
+	// Status level
 	//
 	// example:
 	//
 	// Info,Warn,Error
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The execution information.
+	// Calculation execution information
 	//
 	// example:
 	//
 	// Query execution timeout after 30 seconds
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The suggestion provided when an execution fault occurs.
+	// Suggestions when an error occurs during execution
 	//
 	// example:
 	//

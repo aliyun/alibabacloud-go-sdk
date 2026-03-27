@@ -14,8 +14,6 @@ type iDeleteAlertWebhooksResponseBody interface {
 }
 
 type DeleteAlertWebhooksResponseBody struct {
-	// Request ID.
-	//
 	// example:
 	//
 	// E5B1D3D4-BB28-5996-8AD2-***********

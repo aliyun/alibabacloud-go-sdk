@@ -22,31 +22,23 @@ type iListAlertWebhooksResponseBody interface {
 }
 
 type ListAlertWebhooksResponseBody struct {
-	// The page number. The default value is 1.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 8A33DBEA-*****-*****-*****-*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
-	//
 	// example:
 	//
 	// 8
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
-	// The webhooks.
+	// webhooks
 	Webhooks []*ListAlertWebhooksResponseBodyWebhooks `json:"webhooks,omitempty" xml:"webhooks,omitempty" type:"Repeated"`
 }
 
@@ -117,56 +109,32 @@ func (s *ListAlertWebhooksResponseBody) Validate() error {
 }
 
 type ListAlertWebhooksResponseBodyWebhooks struct {
-	// The content type of the data. Valid values:
-	//
-	// - JSON
-	//
-	// - FORM
-	//
 	// example:
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The headers.
+	// headers
 	//
 	// example:
 	//
 	// key
 	Headers map[string]interface{} `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The language. Valid values:
-	//
-	// - zh_CN
-	//
-	// - en_US
-	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The request method. Valid values:
-	//
-	// - GET
-	//
-	// - POST
-	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The name of the webhook.
-	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL of the alert callback.
-	//
 	// example:
 	//
 	// http://aliyun.com/test
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-	// The unique ID of the webhook.
-	//
 	// example:
 	//
 	// test

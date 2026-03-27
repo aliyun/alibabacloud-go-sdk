@@ -18,19 +18,19 @@ type iDeleteUmodelDataRequest interface {
 }
 
 type DeleteUmodelDataRequest struct {
-	// The name of the Umodel data to delete. Omit this parameter to delete all Umodel data.
+	// Can specify the name of a specific Umodel data, leaving it blank means all
 	//
 	// example:
 	//
 	// apm
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The kind of the Umodel data. If unspecified, data of all kinds is deleted.
+	// Can specify the kind of a specific Umodel data, leaving it blank means all
 	//
 	// example:
 	//
 	// metric_set
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
-	// The name of the Umodel data. If unspecified, data with any name is deleted.
+	// Can specify the name of a specific Umodel data, leaving it blank means all
 	//
 	// example:
 	//

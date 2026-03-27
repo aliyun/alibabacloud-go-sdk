@@ -18,20 +18,14 @@ type iListBizTracesRequest interface {
 }
 
 type ListBizTracesRequest struct {
-	// The maximum number of results to return. The maximum value is 100.
-	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page of results.
-	//
 	// example:
 	//
 	// aa9d0e569b88098a0e3155c29b473201a
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The name of the workspace.
-	//
 	// example:
 	//
 	// default-cms-xxxxxx-cn-beijing

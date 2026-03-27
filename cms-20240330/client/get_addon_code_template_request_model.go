@@ -18,20 +18,14 @@ type iGetAddonCodeTemplateRequest interface {
 }
 
 type GetAddonCodeTemplateRequest struct {
-	// The language. Valid values: zh (Chinese) and en (English). Default value: zh.
-	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The type of environment. Valid values: CS (Container Service) and ECS.
-	//
 	// example:
 	//
 	// Client
 	EnvironmentType *string `json:"environmentType,omitempty" xml:"environmentType,omitempty"`
-	// The version of the component.
-	//
 	// example:
 	//
 	// 0.1.0

@@ -32,7 +32,7 @@ type iCreatePrometheusViewRequest interface {
 }
 
 type CreatePrometheusViewRequest struct {
-	// This parameter is not in use.
+	// Not enabled yet
 	//
 	// example:
 	//
@@ -56,23 +56,23 @@ type CreatePrometheusViewRequest struct {
 	//
 	// }
 	AuthFreeReadPolicy *string `json:"authFreeReadPolicy,omitempty" xml:"authFreeReadPolicy,omitempty"`
-	// Specifies whether to enable password-free read access.
+	// Whether to support password-free read
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable an authentication token.
+	// Whether to support authToken
 	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The list of Prometheus instances.
+	// List of Prometheus instances.
 	//
 	// This parameter is required.
 	PrometheusInstances []*CreatePrometheusViewRequestPrometheusInstances `json:"prometheusInstances,omitempty" xml:"prometheusInstances,omitempty" type:"Repeated"`
-	// The name of the Prometheus view.
+	// Prometheus view name.
 	//
 	// This parameter is required.
 	//
@@ -80,23 +80,23 @@ type CreatePrometheusViewRequest struct {
 	//
 	// test-prom-view-name
 	PrometheusViewName *string `json:"prometheusViewName,omitempty" xml:"prometheusViewName,omitempty"`
-	// The resource group ID.
+	// Resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// This parameter is not in use.
+	// Not enabled yet.
 	//
 	// example:
 	//
 	// null
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies the operation to execute.
+	// The operation to be performed.
 	Tags []*CreatePrometheusViewRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// - V1: The old version.
+	// - V1: Old version
 	//
-	// - V2: The new version.
+	// - V2: New version
 	//
 	// This parameter is required.
 	//
@@ -104,7 +104,7 @@ type CreatePrometheusViewRequest struct {
 	//
 	// V2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The default value is default-cms-{userId}-{regionId}.
+	// Default value: default-cms-{userId}-{regionId}
 	//
 	// example:
 	//
@@ -233,19 +233,19 @@ func (s *CreatePrometheusViewRequest) Validate() error {
 }
 
 type CreatePrometheusViewRequestPrometheusInstances struct {
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// arms-1d581fac20a462dcde743d9628
 	PrometheusInstanceId *string `json:"prometheusInstanceId,omitempty" xml:"prometheusInstanceId,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-wulanchabu
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The user ID.
+	// User ID.
 	//
 	// example:
 	//
@@ -293,13 +293,13 @@ func (s *CreatePrometheusViewRequestPrometheusInstances) Validate() error {
 }
 
 type CreatePrometheusViewRequestTags struct {
-	// The key of the tag.
+	// Tag key.
 	//
 	// example:
 	//
 	// test-key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// Tag value.
 	//
 	// example:
 	//

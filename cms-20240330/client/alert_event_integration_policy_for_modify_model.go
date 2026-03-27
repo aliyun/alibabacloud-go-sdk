@@ -24,32 +24,22 @@ type iAlertEventIntegrationPolicyForModify interface {
 }
 
 type AlertEventIntegrationPolicyForModify struct {
-	// 名称
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test integration
 	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
-	// 描述
-	//
 	// example:
 	//
 	// test
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 过滤设置
+	Description   *string        `json:"description,omitempty" xml:"description,omitempty"`
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// 订阅设置
-	//
 	// example:
 	//
 	// {"region":"cn-hangzhou"}
-	IntegrationSetting *string `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
-	// 转换设置
+	IntegrationSetting *string            `json:"integrationSetting,omitempty" xml:"integrationSetting,omitempty"`
 	TransformerSetting []*TransformAction `json:"transformerSetting,omitempty" xml:"transformerSetting,omitempty" type:"Repeated"`
-	// 类型
-	//
 	// example:
 	//
 	// ALERT_CUSTOM

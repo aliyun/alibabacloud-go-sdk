@@ -16,14 +16,11 @@ type iGetMemoryHistoryResponseBody interface {
 }
 
 type GetMemoryHistoryResponseBody struct {
-	// Request ID.
-	//
 	// example:
 	//
 	// 3B311FD9-A60B-55E0-A896-A0C73*********
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Return value.
-	Results []*GetMemoryHistoryResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Results   []*GetMemoryHistoryResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s GetMemoryHistoryResponseBody) String() string {
@@ -66,58 +63,39 @@ func (s *GetMemoryHistoryResponseBody) Validate() error {
 }
 
 type GetMemoryHistoryResponseBodyResults struct {
-	// Creation time.
-	//
 	// example:
 	//
 	// 1764556182850
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Event type.
-	//
 	// example:
 	//
 	// ADD
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
-	// Memory ID.
-	//
 	// example:
 	//
 	// b25d6ad7-306f-4040-9890-4dddd2505a2e
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Original message.
+	Id    *string                                     `json:"id,omitempty" xml:"id,omitempty"`
 	Input []*GetMemoryHistoryResponseBodyResultsInput `json:"input,omitempty" xml:"input,omitempty" type:"Repeated"`
-	// Memory ID.
-	//
 	// example:
 	//
 	// 019cacf6-7b39-7f61-8314-548f07ca449a
 	MemoryId *string `json:"memoryId,omitempty" xml:"memoryId,omitempty"`
-	// Metadata.
-	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// New memory.
-	//
 	// example:
 	//
 	// I really like Python.
 	NewMemory *string `json:"newMemory,omitempty" xml:"newMemory,omitempty"`
-	// Old memory.
-	//
 	// example:
 	//
 	// I really don\\"t like Python at all.
 	OldMemory *string `json:"oldMemory,omitempty" xml:"oldMemory,omitempty"`
-	// Update time.
-	//
 	// example:
 	//
 	// 1771036123785
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// User ID.
-	//
 	// example:
 	//
 	// test_session_001
@@ -236,14 +214,10 @@ func (s *GetMemoryHistoryResponseBodyResults) Validate() error {
 }
 
 type GetMemoryHistoryResponseBodyResultsInput struct {
-	// Message content.
-	//
 	// example:
 	//
 	// My name is Zhang San and I live in Hangzhou.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Message sender role.
-	//
 	// example:
 	//
 	// user

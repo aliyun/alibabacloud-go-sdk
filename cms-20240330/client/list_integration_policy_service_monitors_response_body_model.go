@@ -20,25 +20,18 @@ type iListIntegrationPolicyServiceMonitorsResponseBody interface {
 }
 
 type ListIntegrationPolicyServiceMonitorsResponseBody struct {
-	// The cluster ID.
-	//
 	// example:
 	//
 	// ea119prod-ea119blinkcptssd1
 	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
-	// The policy ID.
-	//
 	// example:
 	//
 	// policy-ac38a7cb02d14ff48bc9f97d0a75063e
 	PolicyId *string `json:"policyId,omitempty" xml:"policyId,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// CD8BA7D6-995D-578D-9941-78B0FECD14B5
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of ServiceMonitors.
+	RequestId       *string                                                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	ServiceMonitors []*ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors `json:"serviceMonitors,omitempty" xml:"serviceMonitors,omitempty" type:"Repeated"`
 }
 
@@ -100,58 +93,39 @@ func (s *ListIntegrationPolicyServiceMonitorsResponseBody) Validate() error {
 }
 
 type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors struct {
-	// The add-on name.
-	//
 	// example:
 	//
 	// cloud-acs-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the add-on release.
-	//
 	// example:
 	//
 	// release-1234567
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The add-on version.
-	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The configuration YAML file.
-	//
 	// example:
 	//
 	// apiVersion: xxxxx
 	ConfigYaml *string `json:"configYaml,omitempty" xml:"configYaml,omitempty"`
-	// The status.
-	//
 	// example:
 	//
 	// run
 	EnableStatus *string `json:"enableStatus,omitempty" xml:"enableStatus,omitempty"`
-	// Indicates whether the YAML file is encrypted.
-	//
 	// example:
 	//
 	// YXBpVmVyc2lvbjogeHh4eHgK
-	EncryptYaml *bool `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
-	// The list of Endpoints.
-	Endpoints []*ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	// The number of matched services.
-	//
+	EncryptYaml *bool                                                                       `json:"encryptYaml,omitempty" xml:"encryptYaml,omitempty"`
+	Endpoints   []*ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 50
 	MatchedServiceCount *int64 `json:"matchedServiceCount,omitempty" xml:"matchedServiceCount,omitempty"`
-	// The name of the ServiceMonitor.
-	//
 	// example:
 	//
 	// 62a526c5-f6ca-4cfb-b5a4-b76974cffe51
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace.
-	//
 	// example:
 	//
 	// arms-prom
@@ -270,32 +244,22 @@ func (s *ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors) Valida
 }
 
 type ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints struct {
-	// The collection interval.
-	//
 	// example:
 	//
 	// 30s
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
-	// The number of matched targets.
-	//
 	// example:
 	//
 	// 65
 	MatchedTargetCount *int64 `json:"matchedTargetCount,omitempty" xml:"matchedTargetCount,omitempty"`
-	// The collection path.
-	//
 	// example:
 	//
 	// /metrics
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The collection port.
-	//
 	// example:
 	//
 	// 9100
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The target port.
-	//
 	// example:
 	//
 	// http

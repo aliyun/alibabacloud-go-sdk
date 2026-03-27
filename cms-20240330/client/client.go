@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Add new facts, messages, or metadata to a user’s memory store. The AddMemories endpoint accepts raw text or conversation turns and commits them asynchronously, preparing the memories for subsequent search, retrieval, and graph queries.
+// 添加记忆
 //
 // @param request - AddMemoriesRequest
 //
@@ -141,7 +141,7 @@ func (client *Client) AddMemoriesWithOptions(workspace *string, memoryStoreName 
 
 // Summary:
 //
-// Add new facts, messages, or metadata to a user’s memory store. The AddMemories endpoint accepts raw text or conversation turns and commits them asynchronously, preparing the memories for subsequent search, retrieval, and graph queries.
+// 添加记忆
 //
 // @param request - AddMemoriesRequest
 //
@@ -160,7 +160,7 @@ func (client *Client) AddMemories(workspace *string, memoryStoreName *string, re
 
 // Summary:
 //
-// Changes the resource group of a resource.
+// 修改资源所属资源组
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -215,7 +215,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group of a resource.
+// 修改资源所属资源组
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -234,11 +234,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Installs an add-on.
+// # Install the access component, representing a single access attempt
 //
 // Description:
 //
-// Creates a release for an add-on.
+// # Used to create a site monitoring task
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -321,11 +321,11 @@ func (client *Client) CreateAddonReleaseWithOptions(policyId *string, request *C
 
 // Summary:
 //
-// Installs an add-on.
+// # Install the access component, representing a single access attempt
 //
 // Description:
 //
-// Creates a release for an add-on.
+// # Used to create a site monitoring task
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -344,7 +344,7 @@ func (client *Client) CreateAddonRelease(policyId *string, request *CreateAddonR
 
 // Summary:
 //
-// Creates an aggregation task group.
+// # Create Aggregation Task Group
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -457,7 +457,7 @@ func (client *Client) CreateAggTaskGroupWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// Creates an aggregation task group.
+// # Create Aggregation Task Group
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -476,11 +476,7 @@ func (client *Client) CreateAggTaskGroup(instanceId *string, request *CreateAggT
 
 // Summary:
 //
-// # Create a webhook
-//
-// Description:
-//
-// Creates an alert webhook to use as a notification recipient.
+// 创建Webhook
 //
 // @param request - CreateAlertWebhookRequest
 //
@@ -555,11 +551,7 @@ func (client *Client) CreateAlertWebhookWithOptions(request *CreateAlertWebhookR
 
 // Summary:
 //
-// # Create a webhook
-//
-// Description:
-//
-// Creates an alert webhook to use as a notification recipient.
+// 创建Webhook
 //
 // @param request - CreateAlertWebhookRequest
 //
@@ -578,7 +570,7 @@ func (client *Client) CreateAlertWebhook(request *CreateAlertWebhookRequest) (_r
 
 // Summary:
 //
-// Creates a business trace.
+// 创建业务链路
 //
 // @param request - CreateBizTraceRequest
 //
@@ -641,7 +633,7 @@ func (client *Client) CreateBizTraceWithOptions(request *CreateBizTraceRequest, 
 
 // Summary:
 //
-// Creates a business trace.
+// 创建业务链路
 //
 // @param request - CreateBizTraceRequest
 //
@@ -660,11 +652,7 @@ func (client *Client) CreateBizTrace(request *CreateBizTraceRequest) (_result *C
 
 // Summary:
 //
-// Create a chat session.
-//
-// Description:
-//
-// Start a session.
+// 创建对话
 //
 // @param request - CreateChatRequest
 //
@@ -681,11 +669,7 @@ func (client *Client) CreateChatWithSSE(request *CreateChatRequest, headers map[
 
 // Summary:
 //
-// Create a chat session.
-//
-// Description:
-//
-// Start a session.
+// 创建对话
 //
 // @param request - CreateChatRequest
 //
@@ -748,11 +732,7 @@ func (client *Client) CreateChatWithOptions(request *CreateChatRequest, headers 
 
 // Summary:
 //
-// Create a chat session.
-//
-// Description:
-//
-// Start a session.
+// 创建对话
 //
 // @param request - CreateChatRequest
 //
@@ -771,7 +751,7 @@ func (client *Client) CreateChat(request *CreateChatRequest) (_result *CreateCha
 
 // Summary:
 //
-// Creates a cloud resource.
+// 创建云资源中心
 //
 // @param headers - map
 //
@@ -804,7 +784,7 @@ func (client *Client) CreateCloudResourceWithOptions(headers map[string]*string,
 
 // Summary:
 //
-// Creates a cloud resource.
+// 创建云资源中心
 //
 // @return CreateCloudResourceResponse
 func (client *Client) CreateCloudResource() (_result *CreateCloudResourceResponse, _err error) {
@@ -821,11 +801,105 @@ func (client *Client) CreateCloudResource() (_result *CreateCloudResourceRespons
 
 // Summary:
 //
-// Creates a digital employee.
+// 创建数据投递任务
 //
-// Description:
+// @param request - CreateDeliveryTaskRequest
 //
-// Creates a digital employee.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeliveryTaskResponse
+func (client *Client) CreateDeliveryTaskWithOptions(request *CreateDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		body["dataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.ExternalLabels) {
+		body["externalLabels"] = request.ExternalLabels
+	}
+
+	if !dara.IsNil(request.LabelFilters) {
+		body["labelFilters"] = request.LabelFilters
+	}
+
+	if !dara.IsNil(request.LabelFiltersType) {
+		body["labelFiltersType"] = request.LabelFiltersType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SinkList) {
+		body["sinkList"] = request.SinkList
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-tasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDeliveryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据投递任务
+//
+// @param request - CreateDeliveryTaskRequest
+//
+// @return CreateDeliveryTaskResponse
+func (client *Client) CreateDeliveryTask(request *CreateDeliveryTaskRequest) (_result *CreateDeliveryTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDeliveryTaskResponse{}
+	_body, _err := client.CreateDeliveryTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建DigitalEmployee
 //
 // @param request - CreateDigitalEmployeeRequest
 //
@@ -900,11 +974,7 @@ func (client *Client) CreateDigitalEmployeeWithOptions(request *CreateDigitalEmp
 
 // Summary:
 //
-// Creates a digital employee.
-//
-// Description:
-//
-// Creates a digital employee.
+// 创建DigitalEmployee
 //
 // @param request - CreateDigitalEmployeeRequest
 //
@@ -923,11 +993,7 @@ func (client *Client) CreateDigitalEmployee(request *CreateDigitalEmployeeReques
 
 // Summary:
 //
-// Creates a skill.
-//
-// Description:
-//
-// Creates a skill.
+// 创建技能
 //
 // @param request - CreateDigitalEmployeeSkillRequest
 //
@@ -994,11 +1060,7 @@ func (client *Client) CreateDigitalEmployeeSkillWithOptions(name *string, reques
 
 // Summary:
 //
-// Creates a skill.
-//
-// Description:
-//
-// Creates a skill.
+// 创建技能
 //
 // @param request - CreateDigitalEmployeeSkillRequest
 //
@@ -1017,7 +1079,7 @@ func (client *Client) CreateDigitalEmployeeSkill(name *string, request *CreateDi
 
 // Summary:
 //
-// Creates storage for an EntityStore.
+// # Create storage related to EntityStore
 //
 // @param headers - map
 //
@@ -1050,7 +1112,7 @@ func (client *Client) CreateEntityStoreWithOptions(workspaceName *string, header
 
 // Summary:
 //
-// Creates storage for an EntityStore.
+// # Create storage related to EntityStore
 //
 // @return CreateEntityStoreResponse
 func (client *Client) CreateEntityStore(workspaceName *string) (_result *CreateEntityStoreResponse, _err error) {
@@ -1067,11 +1129,11 @@ func (client *Client) CreateEntityStore(workspaceName *string) (_result *CreateE
 
 // Summary:
 //
-// Creates an Integration Center policy.
+// # Create Access Center Policy
 //
 // Description:
 //
-// This operation creates an event integration.
+// This interface is used to support users in creating event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -1138,11 +1200,11 @@ func (client *Client) CreateIntegrationPolicyWithOptions(request *CreateIntegrat
 
 // Summary:
 //
-// Creates an Integration Center policy.
+// # Create Access Center Policy
 //
 // Description:
 //
-// This operation creates an event integration.
+// This interface is used to support users in creating event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -1161,7 +1223,7 @@ func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRe
 
 // Summary:
 //
-// Creates a Memory Store.
+// 创建记忆库
 //
 // @param request - CreateMemoryStoreRequest
 //
@@ -1198,6 +1260,14 @@ func (client *Client) CreateMemoryStoreWithOptions(workspace *string, request *C
 		body["shortTermTtl"] = request.ShortTermTtl
 	}
 
+	if !dara.IsNil(request.SourceType) {
+		body["sourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.TraceSourceConfig) {
+		body["traceSourceConfig"] = request.TraceSourceConfig
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -1224,7 +1294,7 @@ func (client *Client) CreateMemoryStoreWithOptions(workspace *string, request *C
 
 // Summary:
 //
-// Creates a Memory Store.
+// 创建记忆库
 //
 // @param request - CreateMemoryStoreRequest
 //
@@ -1243,7 +1313,7 @@ func (client *Client) CreateMemoryStore(workspace *string, request *CreateMemory
 
 // Summary:
 //
-// Creates a Prometheus instance for monitoring.
+// # Create a Prometheus monitoring instance
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -1334,7 +1404,7 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 // Summary:
 //
-// Creates a Prometheus instance for monitoring.
+// # Create a Prometheus monitoring instance
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -1353,11 +1423,11 @@ func (client *Client) CreatePrometheusInstance(request *CreatePrometheusInstance
 
 // Summary:
 //
-// Creates a Prometheus view.
+// # Create Prometheus View
 //
 // Description:
 //
-// 用于创建一个站点监控任务
+// # Used to create a site monitoring task
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -1440,11 +1510,11 @@ func (client *Client) CreatePrometheusViewWithOptions(request *CreatePrometheusV
 
 // Summary:
 //
-// Creates a Prometheus view.
+// # Create Prometheus View
 //
 // Description:
 //
-// 用于创建一个站点监控任务
+// # Used to create a site monitoring task
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -1463,11 +1533,11 @@ func (client *Client) CreatePrometheusView(request *CreatePrometheusViewRequest)
 
 // Summary:
 //
-// Creates a virtual instance for Prometheus monitoring.
+// # Create Prometheus Monitoring Instance
 //
 // Description:
 //
-// Creates a virtual instance for Prometheus monitoring.
+// Create a Prometheus monitoring virtual instance.
 //
 // @param request - CreatePrometheusVirtualInstanceRequest
 //
@@ -1514,11 +1584,11 @@ func (client *Client) CreatePrometheusVirtualInstanceWithOptions(request *Create
 
 // Summary:
 //
-// Creates a virtual instance for Prometheus monitoring.
+// # Create Prometheus Monitoring Instance
 //
 // Description:
 //
-// Creates a virtual instance for Prometheus monitoring.
+// Create a Prometheus monitoring virtual instance.
 //
 // @param request - CreatePrometheusVirtualInstanceRequest
 //
@@ -1537,7 +1607,7 @@ func (client *Client) CreatePrometheusVirtualInstance(request *CreatePrometheusV
 
 // Summary:
 //
-// Creates a service for application observability.
+// # Create Service
 //
 // @param request - CreateServiceRequest
 //
@@ -1616,7 +1686,7 @@ func (client *Client) CreateServiceWithOptions(workspace *string, request *Creat
 
 // Summary:
 //
-// Creates a service for application observability.
+// # Create Service
 //
 // @param request - CreateServiceRequest
 //
@@ -1635,7 +1705,7 @@ func (client *Client) CreateService(workspace *string, request *CreateServiceReq
 
 // Summary:
 //
-// Sets up application observability and prepares the required resources for integration.
+// 创建应用可观测实例
 //
 // @param headers - map
 //
@@ -1668,7 +1738,7 @@ func (client *Client) CreateServiceObservabilityWithOptions(workspace *string, _
 
 // Summary:
 //
-// Sets up application observability and prepares the required resources for integration.
+// 创建应用可观测实例
 //
 // @return CreateServiceObservabilityResponse
 func (client *Client) CreateServiceObservability(workspace *string, _type *string) (_result *CreateServiceObservabilityResponse, _err error) {
@@ -1685,11 +1755,7 @@ func (client *Client) CreateServiceObservability(workspace *string, _type *strin
 
 // Summary:
 //
-// Creates a session.
-//
-// Description:
-//
-// Creates a session.
+// 创建会话
 //
 // @param request - CreateThreadRequest
 //
@@ -1744,11 +1810,7 @@ func (client *Client) CreateThreadWithOptions(name *string, request *CreateThrea
 
 // Summary:
 //
-// Creates a session.
-//
-// Description:
-//
-// Creates a session.
+// 创建会话
 //
 // @param request - CreateThreadRequest
 //
@@ -1767,7 +1829,7 @@ func (client *Client) CreateThread(name *string, request *CreateThreadRequest) (
 
 // Summary:
 //
-// To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
+// # Create Ticket
 //
 // @param request - CreateTicketRequest
 //
@@ -1818,7 +1880,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, head
 
 // Summary:
 //
-// To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
+// # Create Ticket
 //
 // @param request - CreateTicketRequest
 //
@@ -1837,11 +1899,11 @@ func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a Umodel configuration.
+// # Create Umodel configuration
 //
 // Description:
 //
-// Creates a Umodel configuration in a specified workspace.
+// # Create Umodel configuration in the specified workspace
 //
 // @param request - CreateUmodelRequest
 //
@@ -1888,11 +1950,11 @@ func (client *Client) CreateUmodelWithOptions(workspace *string, request *Create
 
 // Summary:
 //
-// Creates a Umodel configuration.
+// # Create Umodel configuration
 //
 // Description:
 //
-// Creates a Umodel configuration in a specified workspace.
+// # Create Umodel configuration in the specified workspace
 //
 // @param request - CreateUmodelRequest
 //
@@ -1911,7 +1973,7 @@ func (client *Client) CreateUmodel(workspace *string, request *CreateUmodelReque
 
 // Summary:
 //
-// Deletes add-on release information.
+// # Delete addon release information
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -1966,7 +2028,7 @@ func (client *Client) DeleteAddonReleaseWithOptions(policyId *string, request *D
 
 // Summary:
 //
-// Deletes add-on release information.
+// # Delete addon release information
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -1985,7 +2047,7 @@ func (client *Client) DeleteAddonRelease(policyId *string, request *DeleteAddonR
 
 // Summary:
 //
-// Deletes an aggregation task group.
+// # Delete Aggregation Task Group
 //
 // @param headers - map
 //
@@ -2018,7 +2080,7 @@ func (client *Client) DeleteAggTaskGroupWithOptions(instanceId *string, groupId 
 
 // Summary:
 //
-// Deletes an aggregation task group.
+// # Delete Aggregation Task Group
 //
 // @return DeleteAggTaskGroupResponse
 func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_result *DeleteAggTaskGroupResponse, _err error) {
@@ -2035,7 +2097,7 @@ func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_
 
 // Summary:
 //
-// Deletes one or more alert webhooks.
+// 删除Webhook
 //
 // @param tmpReq - DeleteAlertWebhooksRequest
 //
@@ -2088,7 +2150,7 @@ func (client *Client) DeleteAlertWebhooksWithOptions(tmpReq *DeleteAlertWebhooks
 
 // Summary:
 //
-// Deletes one or more alert webhooks.
+// 删除Webhook
 //
 // @param request - DeleteAlertWebhooksRequest
 //
@@ -2107,7 +2169,7 @@ func (client *Client) DeleteAlertWebhooks(request *DeleteAlertWebhooksRequest) (
 
 // Summary:
 //
-// Deletes a business trace.
+// 删除业务链路
 //
 // @param headers - map
 //
@@ -2140,7 +2202,7 @@ func (client *Client) DeleteBizTraceWithOptions(bizTraceId *string, headers map[
 
 // Summary:
 //
-// Deletes a business trace.
+// 删除业务链路
 //
 // @return DeleteBizTraceResponse
 func (client *Client) DeleteBizTrace(bizTraceId *string) (_result *DeleteBizTraceResponse, _err error) {
@@ -2157,7 +2219,7 @@ func (client *Client) DeleteBizTrace(bizTraceId *string) (_result *DeleteBizTrac
 
 // Summary:
 //
-// Deletes a cloud resource.
+// 删除云资源中心
 //
 // @param headers - map
 //
@@ -2190,7 +2252,7 @@ func (client *Client) DeleteCloudResourceWithOptions(headers map[string]*string,
 
 // Summary:
 //
-// Deletes a cloud resource.
+// 删除云资源中心
 //
 // @return DeleteCloudResourceResponse
 func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceResponse, _err error) {
@@ -2207,11 +2269,57 @@ func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceRespons
 
 // Summary:
 //
-// Deletes a digital employee.
+// 删除数据投递任务
 //
-// Description:
+// @param headers - map
 //
-// Deletes a digital employee.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeliveryTaskResponse
+func (client *Client) DeleteDeliveryTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryTaskResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDeliveryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据投递任务
+//
+// @return DeleteDeliveryTaskResponse
+func (client *Client) DeleteDeliveryTask(taskId *string) (_result *DeleteDeliveryTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDeliveryTaskResponse{}
+	_body, _err := client.DeleteDeliveryTaskWithOptions(taskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除DigitalEmployee
 //
 // @param headers - map
 //
@@ -2244,11 +2352,7 @@ func (client *Client) DeleteDigitalEmployeeWithOptions(name *string, headers map
 
 // Summary:
 //
-// Deletes a digital employee.
-//
-// Description:
-//
-// Deletes a digital employee.
+// 删除DigitalEmployee
 //
 // @return DeleteDigitalEmployeeResponse
 func (client *Client) DeleteDigitalEmployee(name *string) (_result *DeleteDigitalEmployeeResponse, _err error) {
@@ -2265,11 +2369,7 @@ func (client *Client) DeleteDigitalEmployee(name *string) (_result *DeleteDigita
 
 // Summary:
 //
-// Delete a skill.
-//
-// Description:
-//
-// Delete a skill.
+// 删除技能
 //
 // @param headers - map
 //
@@ -2302,11 +2402,7 @@ func (client *Client) DeleteDigitalEmployeeSkillWithOptions(name *string, skillN
 
 // Summary:
 //
-// Delete a skill.
-//
-// Description:
-//
-// Delete a skill.
+// 删除技能
 //
 // @return DeleteDigitalEmployeeSkillResponse
 func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
@@ -2323,7 +2419,7 @@ func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string
 
 // Summary:
 //
-// Deletes an EntityStore.
+// # Delete EntityStore related storage
 //
 // @param headers - map
 //
@@ -2356,7 +2452,7 @@ func (client *Client) DeleteEntityStoreWithOptions(workspaceName *string, header
 
 // Summary:
 //
-// Deletes an EntityStore.
+// # Delete EntityStore related storage
 //
 // @return DeleteEntityStoreResponse
 func (client *Client) DeleteEntityStore(workspaceName *string) (_result *DeleteEntityStoreResponse, _err error) {
@@ -2373,7 +2469,7 @@ func (client *Client) DeleteEntityStore(workspaceName *string) (_result *DeleteE
 
 // Summary:
 //
-// Deletes an Integration Center policy.
+// # Delete Access Center Policy
 //
 // @param request - DeleteIntegrationPolicyRequest
 //
@@ -2420,7 +2516,7 @@ func (client *Client) DeleteIntegrationPolicyWithOptions(policyId *string, reque
 
 // Summary:
 //
-// Deletes an Integration Center policy.
+// # Delete Access Center Policy
 //
 // @param request - DeleteIntegrationPolicyRequest
 //
@@ -2439,7 +2535,7 @@ func (client *Client) DeleteIntegrationPolicy(policyId *string, request *DeleteI
 
 // Summary:
 //
-// Deletes memories based on filter properties. You must set at least one filter property. If no filter properties are set, a validation error is returned.
+// 批量删除记忆
 //
 // @param request - DeleteMemoriesRequest
 //
@@ -2498,7 +2594,7 @@ func (client *Client) DeleteMemoriesWithOptions(workspace *string, memoryStoreNa
 
 // Summary:
 //
-// Deletes memories based on filter properties. You must set at least one filter property. If no filter properties are set, a validation error is returned.
+// 批量删除记忆
 //
 // @param request - DeleteMemoriesRequest
 //
@@ -2517,7 +2613,7 @@ func (client *Client) DeleteMemories(workspace *string, memoryStoreName *string,
 
 // Summary:
 //
-// Deletes a memory.
+// 删除记忆
 //
 // @param headers - map
 //
@@ -2550,7 +2646,7 @@ func (client *Client) DeleteMemoryWithOptions(workspace *string, memoryStoreName
 
 // Summary:
 //
-// Deletes a memory.
+// 删除记忆
 //
 // @return DeleteMemoryResponse
 func (client *Client) DeleteMemory(workspace *string, memoryStoreName *string, memoryId *string) (_result *DeleteMemoryResponse, _err error) {
@@ -2567,7 +2663,7 @@ func (client *Client) DeleteMemory(workspace *string, memoryStoreName *string, m
 
 // Summary:
 //
-// Deletes a Memory Store.
+// 删除记忆库
 //
 // @param headers - map
 //
@@ -2600,7 +2696,7 @@ func (client *Client) DeleteMemoryStoreWithOptions(workspace *string, memoryStor
 
 // Summary:
 //
-// Deletes a Memory Store.
+// 删除记忆库
 //
 // @return DeleteMemoryStoreResponse
 func (client *Client) DeleteMemoryStore(workspace *string, memoryStoreName *string) (_result *DeleteMemoryStoreResponse, _err error) {
@@ -2617,11 +2713,11 @@ func (client *Client) DeleteMemoryStore(workspace *string, memoryStoreName *stri
 
 // Summary:
 //
-// Deletes a Prometheus instance.
+// # Delete prom instance
 //
 // Description:
 //
-// Deletes a Prometheus instance.
+// Delete a Prometheus instance.
 //
 // @param headers - map
 //
@@ -2654,11 +2750,11 @@ func (client *Client) DeletePrometheusInstanceWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// Deletes a Prometheus instance.
+// # Delete prom instance
 //
 // Description:
 //
-// Deletes a Prometheus instance.
+// Delete a Prometheus instance.
 //
 // @return DeletePrometheusInstanceResponse
 func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_result *DeletePrometheusInstanceResponse, _err error) {
@@ -2675,11 +2771,11 @@ func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_r
 
 // Summary:
 //
-// Deletes a Prometheus view instance.
+// # Delete prometheus view instance
 //
 // Description:
 //
-// Deletes a Prometheus view instance.
+// Delete prometheus view instance.
 //
 // @param headers - map
 //
@@ -2712,11 +2808,11 @@ func (client *Client) DeletePrometheusViewWithOptions(prometheusViewId *string, 
 
 // Summary:
 //
-// Deletes a Prometheus view instance.
+// # Delete prometheus view instance
 //
 // Description:
 //
-// Deletes a Prometheus view instance.
+// Delete prometheus view instance.
 //
 // @return DeletePrometheusViewResponse
 func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *DeletePrometheusViewResponse, _err error) {
@@ -2733,7 +2829,7 @@ func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *D
 
 // Summary:
 //
-// Deletes an Application Monitoring service.
+// # Delete Service
 //
 // @param headers - map
 //
@@ -2766,7 +2862,7 @@ func (client *Client) DeleteServiceWithOptions(workspace *string, serviceId *str
 
 // Summary:
 //
-// Deletes an Application Monitoring service.
+// # Delete Service
 //
 // @return DeleteServiceResponse
 func (client *Client) DeleteService(workspace *string, serviceId *string) (_result *DeleteServiceResponse, _err error) {
@@ -2783,11 +2879,7 @@ func (client *Client) DeleteService(workspace *string, serviceId *string) (_resu
 
 // Summary:
 //
-// Deletes a session.
-//
-// Description:
-//
-// Deletes a session.
+// 删除会话
 //
 // @param headers - map
 //
@@ -2820,11 +2912,7 @@ func (client *Client) DeleteThreadWithOptions(name *string, threadId *string, he
 
 // Summary:
 //
-// Deletes a session.
-//
-// Description:
-//
-// Deletes a session.
+// 删除会话
 //
 // @return DeleteThreadResponse
 func (client *Client) DeleteThread(name *string, threadId *string) (_result *DeleteThreadResponse, _err error) {
@@ -2841,11 +2929,11 @@ func (client *Client) DeleteThread(name *string, threadId *string) (_result *Del
 
 // Summary:
 //
-// Deletes a Umodel configuration.
+// # Delete Umodel configuration information
 //
 // Description:
 //
-// Deletes a Umodel from a specified workspace.
+// # Delete the Umodel under the specified workspace
 //
 // @param headers - map
 //
@@ -2878,11 +2966,11 @@ func (client *Client) DeleteUmodelWithOptions(workspace *string, headers map[str
 
 // Summary:
 //
-// Deletes a Umodel configuration.
+// # Delete Umodel configuration information
 //
 // Description:
 //
-// Deletes a Umodel from a specified workspace.
+// # Delete the Umodel under the specified workspace
 //
 // @return DeleteUmodelResponse
 func (client *Client) DeleteUmodel(workspace *string) (_result *DeleteUmodelResponse, _err error) {
@@ -2899,7 +2987,7 @@ func (client *Client) DeleteUmodel(workspace *string) (_result *DeleteUmodelResp
 
 // Summary:
 //
-// Deletes a public Umodel schema reference.
+// 删除Umodel配置信息
 //
 // @param request - DeleteUmodelCommonSchemaRefRequest
 //
@@ -2946,7 +3034,7 @@ func (client *Client) DeleteUmodelCommonSchemaRefWithOptions(workspace *string, 
 
 // Summary:
 //
-// Deletes a public Umodel schema reference.
+// 删除Umodel配置信息
 //
 // @param request - DeleteUmodelCommonSchemaRefRequest
 //
@@ -2965,11 +3053,11 @@ func (client *Client) DeleteUmodelCommonSchemaRef(workspace *string, request *De
 
 // Summary:
 //
-// Deletes Umodel elements.
+// # Delete Umodel Elements
 //
 // Description:
 //
-// Deletes Umodel data from a specified workspace.
+// # Delete the Umodel Data under a specified workspace
 //
 // @param request - DeleteUmodelDataRequest
 //
@@ -3024,11 +3112,11 @@ func (client *Client) DeleteUmodelDataWithOptions(workspace *string, request *De
 
 // Summary:
 //
-// Deletes Umodel elements.
+// # Delete Umodel Elements
 //
 // Description:
 //
-// Deletes Umodel data from a specified workspace.
+// # Delete the Umodel Data under a specified workspace
 //
 // @param request - DeleteUmodelDataRequest
 //
@@ -3047,7 +3135,7 @@ func (client *Client) DeleteUmodelData(workspace *string, request *DeleteUmodelD
 
 // Summary:
 //
-// Deletes a workspace.
+// # Delete Workspace
 //
 // @param headers - map
 //
@@ -3080,7 +3168,7 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceName *string, headers 
 
 // Summary:
 //
-// Deletes a workspace.
+// # Delete Workspace
 //
 // @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWorkspaceResponse, _err error) {
@@ -3097,7 +3185,7 @@ func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWor
 
 // Summary:
 //
-// Retrieves a list of regions.
+// 查询地域信息列表
 //
 // @param request - DescribeRegionsRequest
 //
@@ -3144,7 +3232,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Retrieves a list of regions.
+// 查询地域信息列表
 //
 // @param request - DescribeRegionsRequest
 //
@@ -3163,11 +3251,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Retrieves the details of an add-on.
-//
-// Description:
-//
-// Retrieves the details of an add-on.
+// 插件详情(Addon)
 //
 // @param request - GetAddonRequest
 //
@@ -3218,11 +3302,7 @@ func (client *Client) GetAddonWithOptions(addonName *string, request *GetAddonRe
 
 // Summary:
 //
-// Retrieves the details of an add-on.
-//
-// Description:
-//
-// Retrieves the details of an add-on.
+// 插件详情(Addon)
 //
 // @param request - GetAddonRequest
 //
@@ -3241,11 +3321,7 @@ func (client *Client) GetAddon(addonName *string, request *GetAddonRequest) (_re
 
 // Summary:
 //
-// Details of an add-on schema.
-//
-// Description:
-//
-// This topic provides an example of how to modify version `1` of alert template `123456`. In this example, the alert level is set to `Critical`, the statistical method is set to `Average`, the comparison operator for the alert threshold is set to `GreaterThanOrEqualToThreshold`, the alert threshold is set to `90`, and the number of retries is set to `3`. The response indicates that the alert template was successfully modified.
+// 插件schema详情(Addon)
 //
 // @param request - GetAddonCodeTemplateRequest
 //
@@ -3300,11 +3376,7 @@ func (client *Client) GetAddonCodeTemplateWithOptions(addonName *string, request
 
 // Summary:
 //
-// Details of an add-on schema.
-//
-// Description:
-//
-// This topic provides an example of how to modify version `1` of alert template `123456`. In this example, the alert level is set to `Critical`, the statistical method is set to `Average`, the comparison operator for the alert threshold is set to `GreaterThanOrEqualToThreshold`, the alert threshold is set to `90`, and the number of retries is set to `3`. The response indicates that the alert template was successfully modified.
+// 插件schema详情(Addon)
 //
 // @param request - GetAddonCodeTemplateRequest
 //
@@ -3323,7 +3395,7 @@ func (client *Client) GetAddonCodeTemplate(addonName *string, request *GetAddonC
 
 // Summary:
 //
-// Queries the details and accessed state of an add-on release.
+// Check addon release (view connection status)
 //
 // @param headers - map
 //
@@ -3356,7 +3428,7 @@ func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *
 
 // Summary:
 //
-// Queries the details and accessed state of an add-on release.
+// Check addon release (view connection status)
 //
 // @return GetAddonReleaseResponse
 func (client *Client) GetAddonRelease(releaseName *string, policyId *string) (_result *GetAddonReleaseResponse, _err error) {
@@ -3373,11 +3445,7 @@ func (client *Client) GetAddonRelease(releaseName *string, policyId *string) (_r
 
 // Summary:
 //
-// The details of an add-on schema.
-//
-// Description:
-//
-// Retrieves the schema of an add-on.
+// 插件schema详情(Addon)
 //
 // @param request - GetAddonSchemaRequest
 //
@@ -3432,11 +3500,7 @@ func (client *Client) GetAddonSchemaWithOptions(addonName *string, request *GetA
 
 // Summary:
 //
-// The details of an add-on schema.
-//
-// Description:
-//
-// Retrieves the schema of an add-on.
+// 插件schema详情(Addon)
 //
 // @param request - GetAddonSchemaRequest
 //
@@ -3455,7 +3519,7 @@ func (client *Client) GetAddonSchema(addonName *string, request *GetAddonSchemaR
 
 // Summary:
 //
-// Queries the details of an aggregation task group.
+// # Describes the aggregation task group
 //
 // @param headers - map
 //
@@ -3488,7 +3552,7 @@ func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *st
 
 // Summary:
 //
-// Queries the details of an aggregation task group.
+// # Describes the aggregation task group
 //
 // @return GetAggTaskGroupResponse
 func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_result *GetAggTaskGroupResponse, _err error) {
@@ -3505,7 +3569,7 @@ func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_res
 
 // Summary:
 //
-// Queries a business trace.
+// 查询业务链路
 //
 // @param headers - map
 //
@@ -3538,7 +3602,7 @@ func (client *Client) GetBizTraceWithOptions(bizTraceId *string, headers map[str
 
 // Summary:
 //
-// Queries a business trace.
+// 查询业务链路
 //
 // @return GetBizTraceResponse
 func (client *Client) GetBizTrace(bizTraceId *string) (_result *GetBizTraceResponse, _err error) {
@@ -3555,7 +3619,7 @@ func (client *Client) GetBizTrace(bizTraceId *string) (_result *GetBizTraceRespo
 
 // Summary:
 //
-// Retrieves information about cloud resources.
+// 查询云资源中心
 //
 // @param headers - map
 //
@@ -3588,7 +3652,7 @@ func (client *Client) GetCloudResourceWithOptions(headers map[string]*string, ru
 
 // Summary:
 //
-// Retrieves information about cloud resources.
+// 查询云资源中心
 //
 // @return GetCloudResourceResponse
 func (client *Client) GetCloudResource() (_result *GetCloudResourceResponse, _err error) {
@@ -3605,7 +3669,7 @@ func (client *Client) GetCloudResource() (_result *GetCloudResourceResponse, _er
 
 // Summary:
 //
-// Queries data from the Cloud Resource Center.
+// 查询云资源中心数据
 //
 // @param request - GetCloudResourceDataRequest
 //
@@ -3660,7 +3724,7 @@ func (client *Client) GetCloudResourceDataWithOptions(request *GetCloudResourceD
 
 // Summary:
 //
-// Queries data from the Cloud Resource Center.
+// 查询云资源中心数据
 //
 // @param request - GetCloudResourceDataRequest
 //
@@ -3679,11 +3743,7 @@ func (client *Client) GetCloudResourceData(request *GetCloudResourceDataRequest)
 
 // Summary:
 //
-// Checks whether a Prometheus service or product is activated.
-//
-// Description:
-//
-// The product and service request parameters cannot be specified in the same request.
+// 获取云监控开通状态
 //
 // @param request - GetCmsServiceRequest
 //
@@ -3734,11 +3794,7 @@ func (client *Client) GetCmsServiceWithOptions(request *GetCmsServiceRequest, he
 
 // Summary:
 //
-// Checks whether a Prometheus service or product is activated.
-//
-// Description:
-//
-// The product and service request parameters cannot be specified in the same request.
+// 获取云监控开通状态
 //
 // @param request - GetCmsServiceRequest
 //
@@ -3757,11 +3813,57 @@ func (client *Client) GetCmsService(request *GetCmsServiceRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves information about a digital employee.
+// 获取数据投递任务详情
 //
-// Description:
+// @param headers - map
 //
-// Retrieves information about a digital employee.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeliveryTaskResponse
+func (client *Client) GetDeliveryTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeliveryTaskResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeliveryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据投递任务详情
+//
+// @return GetDeliveryTaskResponse
+func (client *Client) GetDeliveryTask(taskId *string) (_result *GetDeliveryTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDeliveryTaskResponse{}
+	_body, _err := client.GetDeliveryTaskWithOptions(taskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 DigitalEmployee
 //
 // @param headers - map
 //
@@ -3794,11 +3896,7 @@ func (client *Client) GetDigitalEmployeeWithOptions(name *string, headers map[st
 
 // Summary:
 //
-// Retrieves information about a digital employee.
-//
-// Description:
-//
-// Retrieves information about a digital employee.
+// 查询 DigitalEmployee
 //
 // @return GetDigitalEmployeeResponse
 func (client *Client) GetDigitalEmployee(name *string) (_result *GetDigitalEmployeeResponse, _err error) {
@@ -3815,11 +3913,7 @@ func (client *Client) GetDigitalEmployee(name *string) (_result *GetDigitalEmplo
 
 // Summary:
 //
-// # Retrieves skill details
-//
-// Description:
-//
-// # Retrieves a skill
+// 获取技能详情
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -3866,11 +3960,7 @@ func (client *Client) GetDigitalEmployeeSkillWithOptions(name *string, skillName
 
 // Summary:
 //
-// # Retrieves skill details
-//
-// Description:
-//
-// # Retrieves a skill
+// 获取技能详情
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -3889,7 +3979,7 @@ func (client *Client) GetDigitalEmployeeSkill(name *string, skillName *string, r
 
 // Summary:
 //
-// Retrieves the storage information of an EntityStore.
+// # Get EntityStore related storage information
 //
 // @param headers - map
 //
@@ -3922,7 +4012,7 @@ func (client *Client) GetEntityStoreWithOptions(workspaceName *string, headers m
 
 // Summary:
 //
-// Retrieves the storage information of an EntityStore.
+// # Get EntityStore related storage information
 //
 // @return GetEntityStoreResponse
 func (client *Client) GetEntityStore(workspaceName *string) (_result *GetEntityStoreResponse, _err error) {
@@ -3939,7 +4029,7 @@ func (client *Client) GetEntityStore(workspaceName *string) (_result *GetEntityS
 
 // Summary:
 //
-// Queries the entity and relational data in a specified workspace to retrieve entity data for a specific time range.
+// Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -4003,7 +4093,7 @@ func (client *Client) GetEntityStoreDataWithOptions(workspace *string, request *
 
 // Summary:
 //
-// Queries the entity and relational data in a specified workspace to retrieve entity data for a specific time range.
+// Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -4022,7 +4112,7 @@ func (client *Client) GetEntityStoreData(workspace *string, request *GetEntitySt
 
 // Summary:
 //
-// Retrieves the details of an Integration Center policy.
+// # Query the list of access center policies
 //
 // @param headers - map
 //
@@ -4055,7 +4145,7 @@ func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, headers 
 
 // Summary:
 //
-// Retrieves the details of an Integration Center policy.
+// # Query the list of access center policies
 //
 // @return GetIntegrationPolicyResponse
 func (client *Client) GetIntegrationPolicy(policyId *string) (_result *GetIntegrationPolicyResponse, _err error) {
@@ -4072,11 +4162,7 @@ func (client *Client) GetIntegrationPolicy(policyId *string) (_result *GetIntegr
 
 // Summary:
 //
-// Queries the Integration Center version for a container cluster.
-//
-// Description:
-//
-// This operation is not available in the API Explorer.
+// 查询接入中心在CS的版本
 //
 // @param request - GetIntegrationVersionForCSRequest
 //
@@ -4127,11 +4213,7 @@ func (client *Client) GetIntegrationVersionForCSWithOptions(request *GetIntegrat
 
 // Summary:
 //
-// Queries the Integration Center version for a container cluster.
-//
-// Description:
-//
-// This operation is not available in the API Explorer.
+// 查询接入中心在CS的版本
 //
 // @param request - GetIntegrationVersionForCSRequest
 //
@@ -4150,7 +4232,7 @@ func (client *Client) GetIntegrationVersionForCS(request *GetIntegrationVersionF
 
 // Summary:
 //
-// Retrieves all memories.
+// 查询全部记忆
 //
 // @param request - GetMemoriesRequest
 //
@@ -4217,7 +4299,7 @@ func (client *Client) GetMemoriesWithOptions(workspace *string, memoryStoreName 
 
 // Summary:
 //
-// Retrieves all memories.
+// 查询全部记忆
 //
 // @param request - GetMemoriesRequest
 //
@@ -4236,7 +4318,7 @@ func (client *Client) GetMemories(workspace *string, memoryStoreName *string, re
 
 // Summary:
 //
-// Retrieves a single memory.
+// 查询记忆
 //
 // @param headers - map
 //
@@ -4269,7 +4351,7 @@ func (client *Client) GetMemoryWithOptions(workspace *string, memoryStoreName *s
 
 // Summary:
 //
-// Retrieves a single memory.
+// 查询记忆
 //
 // @return GetMemoryResponse
 func (client *Client) GetMemory(workspace *string, memoryStoreName *string, memoryId *string) (_result *GetMemoryResponse, _err error) {
@@ -4286,7 +4368,7 @@ func (client *Client) GetMemory(workspace *string, memoryStoreName *string, memo
 
 // Summary:
 //
-// Retrieve memory history.
+// 查询记忆历史记录
 //
 // @param headers - map
 //
@@ -4319,7 +4401,7 @@ func (client *Client) GetMemoryHistoryWithOptions(workspace *string, memoryStore
 
 // Summary:
 //
-// Retrieve memory history.
+// 查询记忆历史记录
 //
 // @return GetMemoryHistoryResponse
 func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *string, memoryId *string) (_result *GetMemoryHistoryResponse, _err error) {
@@ -4336,7 +4418,7 @@ func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *strin
 
 // Summary:
 //
-// Query a memory store.
+// 查询记忆库
 //
 // @param headers - map
 //
@@ -4369,7 +4451,7 @@ func (client *Client) GetMemoryStoreWithOptions(workspace *string, memoryStoreNa
 
 // Summary:
 //
-// Query a memory store.
+// 查询记忆库
 //
 // @return GetMemoryStoreResponse
 func (client *Client) GetMemoryStore(workspace *string, memoryStoreName *string) (_result *GetMemoryStoreResponse, _err error) {
@@ -4386,11 +4468,11 @@ func (client *Client) GetMemoryStore(workspace *string, memoryStoreName *string)
 
 // Summary:
 //
-// Queries the details of a specified Prometheus instance.
+// # Query the instance in a specified environment
 //
 // Description:
 //
-// Retrieves the details of a Prometheus instance.
+// Retrieve details of a Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -4441,11 +4523,11 @@ func (client *Client) GetPrometheusInstanceWithOptions(prometheusInstanceId *str
 
 // Summary:
 //
-// Queries the details of a specified Prometheus instance.
+// # Query the instance in a specified environment
 //
 // Description:
 //
-// Retrieves the details of a Prometheus instance.
+// Retrieve details of a Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -4464,7 +4546,7 @@ func (client *Client) GetPrometheusInstance(prometheusInstanceId *string, reques
 
 // Summary:
 //
-// Retrieves the user settings for Prometheus.
+// 查询指定环境实例
 //
 // @param request - GetPrometheusUserSettingRequest
 //
@@ -4511,7 +4593,7 @@ func (client *Client) GetPrometheusUserSettingWithOptions(request *GetPrometheus
 
 // Summary:
 //
-// Retrieves the user settings for Prometheus.
+// 查询指定环境实例
 //
 // @param request - GetPrometheusUserSettingRequest
 //
@@ -4530,11 +4612,11 @@ func (client *Client) GetPrometheusUserSetting(request *GetPrometheusUserSetting
 
 // Summary:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// # Query a specified Prometheus view instance
 //
 // Description:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Query a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -4585,11 +4667,11 @@ func (client *Client) GetPrometheusViewWithOptions(prometheusViewId *string, req
 
 // Summary:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// # Query a specified Prometheus view instance
 //
 // Description:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Query a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -4608,7 +4690,7 @@ func (client *Client) GetPrometheusView(prometheusViewId *string, request *GetPr
 
 // Summary:
 //
-// Retrieves the details of an Application Monitoring service.
+// # Query Service
 //
 // @param headers - map
 //
@@ -4641,7 +4723,7 @@ func (client *Client) GetServiceWithOptions(workspace *string, serviceId *string
 
 // Summary:
 //
-// Retrieves the details of an Application Monitoring service.
+// # Query Service
 //
 // @return GetServiceResponse
 func (client *Client) GetService(workspace *string, serviceId *string) (_result *GetServiceResponse, _err error) {
@@ -4658,7 +4740,7 @@ func (client *Client) GetService(workspace *string, serviceId *string) (_result 
 
 // Summary:
 //
-// Retrieves an application observability instance.
+// # Get Application Observability Instance
 //
 // @param headers - map
 //
@@ -4691,7 +4773,7 @@ func (client *Client) GetServiceObservabilityWithOptions(workspace *string, _typ
 
 // Summary:
 //
-// Retrieves an application observability instance.
+// # Get Application Observability Instance
 //
 // @return GetServiceObservabilityResponse
 func (client *Client) GetServiceObservability(workspace *string, _type *string) (_result *GetServiceObservabilityResponse, _err error) {
@@ -4708,11 +4790,7 @@ func (client *Client) GetServiceObservability(workspace *string, _type *string) 
 
 // Summary:
 //
-// Retrieves a session.
-//
-// Description:
-//
-// Retrieves a session.
+// 获取会话
 //
 // @param headers - map
 //
@@ -4745,11 +4823,7 @@ func (client *Client) GetThreadWithOptions(name *string, threadId *string, heade
 
 // Summary:
 //
-// Retrieves a session.
-//
-// Description:
-//
-// Retrieves a session.
+// 获取会话
 //
 // @return GetThreadResponse
 func (client *Client) GetThread(name *string, threadId *string) (_result *GetThreadResponse, _err error) {
@@ -4766,11 +4840,7 @@ func (client *Client) GetThread(name *string, threadId *string) (_result *GetThr
 
 // Summary:
 //
-// Retrieves session data.
-//
-// Description:
-//
-// Retrieves session data.
+// 获取会话数据
 //
 // @param request - GetThreadDataRequest
 //
@@ -4821,11 +4891,7 @@ func (client *Client) GetThreadDataWithOptions(name *string, threadId *string, r
 
 // Summary:
 //
-// Retrieves session data.
-//
-// Description:
-//
-// Retrieves session data.
+// 获取会话数据
 //
 // @param request - GetThreadDataRequest
 //
@@ -4844,11 +4910,11 @@ func (client *Client) GetThreadData(name *string, threadId *string, request *Get
 
 // Summary:
 //
-// Retrieves the configuration of a Umodel.
+// # Get Umodel configuration information
 //
 // Description:
 //
-// Retrieves the configuration of a Umodel.
+// # Get Umodel configuration information
 //
 // @param headers - map
 //
@@ -4881,11 +4947,11 @@ func (client *Client) GetUmodelWithOptions(workspace *string, headers map[string
 
 // Summary:
 //
-// Retrieves the configuration of a Umodel.
+// # Get Umodel configuration information
 //
 // Description:
 //
-// Retrieves the configuration of a Umodel.
+// # Get Umodel configuration information
 //
 // @return GetUmodelResponse
 func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, _err error) {
@@ -4902,7 +4968,7 @@ func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, 
 
 // Summary:
 //
-// Retrieves the referenced common Umodel schema.
+// 获取Umodel配置信息
 //
 // @param headers - map
 //
@@ -4935,7 +5001,7 @@ func (client *Client) GetUmodelCommonSchemaRefWithOptions(workspace *string, hea
 
 // Summary:
 //
-// Retrieves the referenced common Umodel schema.
+// 获取Umodel配置信息
 //
 // @return GetUmodelCommonSchemaRefResponse
 func (client *Client) GetUmodelCommonSchemaRef(workspace *string) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
@@ -4952,11 +5018,11 @@ func (client *Client) GetUmodelCommonSchemaRef(workspace *string) (_result *GetU
 
 // Summary:
 //
-// Retrieves graph data associated with a Umodel.
+// # Retrieve associated Umodel graph data
 //
 // Description:
 //
-// This operation retrieves the graph data associated with a Umodel.
+// # Find Umodel
 //
 // @param request - GetUmodelDataRequest
 //
@@ -5009,11 +5075,11 @@ func (client *Client) GetUmodelDataWithOptions(workspace *string, request *GetUm
 
 // Summary:
 //
-// Retrieves graph data associated with a Umodel.
+// # Retrieve associated Umodel graph data
 //
 // Description:
 //
-// This operation retrieves the graph data associated with a Umodel.
+// # Find Umodel
 //
 // @param request - GetUmodelDataRequest
 //
@@ -5032,7 +5098,7 @@ func (client *Client) GetUmodelData(workspace *string, request *GetUmodelDataReq
 
 // Summary:
 //
-// Retrieves a workspace.
+// # Get Workspace
 //
 // @param headers - map
 //
@@ -5065,7 +5131,7 @@ func (client *Client) GetWorkspaceWithOptions(workspaceName *string, headers map
 
 // Summary:
 //
-// Retrieves a workspace.
+// # Get Workspace
 //
 // @return GetWorkspaceResponse
 func (client *Client) GetWorkspace(workspaceName *string) (_result *GetWorkspaceResponse, _err error) {
@@ -5082,11 +5148,11 @@ func (client *Client) GetWorkspace(workspaceName *string) (_result *GetWorkspace
 
 // Summary:
 //
-// Retrieves the releases for an add-on.
+// # List of addon releases
 //
 // Description:
 //
-// This operation retrieves a list of releases for an add-on.
+// # Query the list of access configurations
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -5137,11 +5203,11 @@ func (client *Client) ListAddonReleasesWithOptions(policyId *string, request *Li
 
 // Summary:
 //
-// Retrieves the releases for an add-on.
+// # List of addon releases
 //
 // Description:
 //
-// This operation retrieves a list of releases for an add-on.
+// # Query the list of access configurations
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -5160,11 +5226,7 @@ func (client *Client) ListAddonReleases(policyId *string, request *ListAddonRele
 
 // Summary:
 //
-// Lists the products in the new Integration Center by group.
-//
-// Description:
-//
-// Creates a site monitoring job.
+// 新版接入中心产品列表(分组)
 //
 // @param request - ListAddonsRequest
 //
@@ -5223,11 +5285,7 @@ func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, headers 
 
 // Summary:
 //
-// Lists the products in the new Integration Center by group.
-//
-// Description:
-//
-// Creates a site monitoring job.
+// 新版接入中心产品列表(分组)
 //
 // @param request - ListAddonsRequest
 //
@@ -5246,7 +5304,7 @@ func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddon
 
 // Summary:
 //
-// Queries a list of aggregation task groups.
+// # List Aggregation Task Groups
 //
 // @param tmpReq - ListAggTaskGroupsRequest
 //
@@ -5327,7 +5385,7 @@ func (client *Client) ListAggTaskGroupsWithOptions(instanceId *string, tmpReq *L
 
 // Summary:
 //
-// Queries a list of aggregation task groups.
+// # List Aggregation Task Groups
 //
 // @param request - ListAggTaskGroupsRequest
 //
@@ -5346,7 +5404,7 @@ func (client *Client) ListAggTaskGroups(instanceId *string, request *ListAggTask
 
 // Summary:
 //
-// Queries alert action integrations.
+// # Query Alert Actions
 //
 // @param tmpReq - ListAlertActionsRequest
 //
@@ -5415,7 +5473,7 @@ func (client *Client) ListAlertActionsWithOptions(tmpReq *ListAlertActionsReques
 
 // Summary:
 //
-// Queries alert action integrations.
+// # Query Alert Actions
 //
 // @param request - ListAlertActionsRequest
 //
@@ -5434,7 +5492,7 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
-// # Query webhooks
+// 查询Webhook
 //
 // @param tmpReq - ListAlertWebhooksRequest
 //
@@ -5503,7 +5561,7 @@ func (client *Client) ListAlertWebhooksWithOptions(tmpReq *ListAlertWebhooksRequ
 
 // Summary:
 //
-// # Query webhooks
+// 查询Webhook
 //
 // @param request - ListAlertWebhooksRequest
 //
@@ -5522,7 +5580,7 @@ func (client *Client) ListAlertWebhooks(request *ListAlertWebhooksRequest) (_res
 
 // Summary:
 //
-// Lists business traces.
+// 业务链路列表
 //
 // @param request - ListBizTracesRequest
 //
@@ -5577,7 +5635,7 @@ func (client *Client) ListBizTracesWithOptions(request *ListBizTracesRequest, he
 
 // Summary:
 //
-// Lists business traces.
+// 业务链路列表
 //
 // @param request - ListBizTracesRequest
 //
@@ -5596,11 +5654,95 @@ func (client *Client) ListBizTraces(request *ListBizTracesRequest) (_result *Lis
 
 // Summary:
 //
-// Lists skill versions.
+// 获取数据投递任务列表
 //
-// Description:
+// @param tmpReq - ListDeliveryTasksRequest
 //
-// Lists historical versions of a skill.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeliveryTasksResponse
+func (client *Client) ListDeliveryTasksWithOptions(tmpReq *ListDeliveryTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDeliveryTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDeliveryTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyWords) {
+		query["keyWords"] = request.KeyWords
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["tag"] = request.TagShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDeliveryTasks"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDeliveryTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据投递任务列表
+//
+// @param request - ListDeliveryTasksRequest
+//
+// @return ListDeliveryTasksResponse
+func (client *Client) ListDeliveryTasks(request *ListDeliveryTasksRequest) (_result *ListDeliveryTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDeliveryTasksResponse{}
+	_body, _err := client.ListDeliveryTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出技能版本
 //
 // @param headers - map
 //
@@ -5633,11 +5775,7 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithOptions(name *string, 
 
 // Summary:
 //
-// Lists skill versions.
-//
-// Description:
-//
-// Lists historical versions of a skill.
+// 列出技能版本
 //
 // @return ListDigitalEmployeeSkillVersionsResponse
 func (client *Client) ListDigitalEmployeeSkillVersions(name *string, skillName *string) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
@@ -5654,11 +5792,7 @@ func (client *Client) ListDigitalEmployeeSkillVersions(name *string, skillName *
 
 // Summary:
 //
-// List the skills.
-//
-// Description:
-//
-// Lists digital employee skills.
+// 列出技能
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -5713,11 +5847,7 @@ func (client *Client) ListDigitalEmployeeSkillsWithOptions(name *string, request
 
 // Summary:
 //
-// List the skills.
-//
-// Description:
-//
-// Lists digital employee skills.
+// 列出技能
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -5736,11 +5866,7 @@ func (client *Client) ListDigitalEmployeeSkills(name *string, request *ListDigit
 
 // Summary:
 //
-// Lists digital employees.
-//
-// Description:
-//
-// Lists digital employees.
+// 列出资源DigitalEmployee
 //
 // @param tmpReq - ListDigitalEmployeesRequest
 //
@@ -5817,11 +5943,7 @@ func (client *Client) ListDigitalEmployeesWithOptions(tmpReq *ListDigitalEmploye
 
 // Summary:
 //
-// Lists digital employees.
-//
-// Description:
-//
-// Lists digital employees.
+// 列出资源DigitalEmployee
 //
 // @param request - ListDigitalEmployeesRequest
 //
@@ -5840,11 +5962,11 @@ func (client *Client) ListDigitalEmployees(request *ListDigitalEmployeesRequest)
 
 // Summary:
 //
-// Queries a list of policies in the Integration Center.
+// # Query Access Center Policy List Information
 //
 // Description:
 //
-// Queries a list of integrations.
+// # Query integration list
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -5949,11 +6071,11 @@ func (client *Client) ListIntegrationPoliciesWithOptions(tmpReq *ListIntegration
 
 // Summary:
 //
-// Queries a list of policies in the Integration Center.
+// # Query Access Center Policy List Information
 //
 // Description:
 //
-// Queries a list of integrations.
+// # Query integration list
 //
 // @param request - ListIntegrationPoliciesRequest
 //
@@ -5972,11 +6094,7 @@ func (client *Client) ListIntegrationPolicies(request *ListIntegrationPoliciesRe
 
 // Summary:
 //
-// Lists the add-ons that are installed for a specified policy.
-//
-// Description:
-//
-// Lists the add-ons that are installed for a specified policy.
+// 策略addon列表
 //
 // @param headers - map
 //
@@ -6009,11 +6127,7 @@ func (client *Client) ListIntegrationPolicyAddonsWithOptions(policyId *string, h
 
 // Summary:
 //
-// Lists the add-ons that are installed for a specified policy.
-//
-// Description:
-//
-// Lists the add-ons that are installed for a specified policy.
+// 策略addon列表
 //
 // @return ListIntegrationPolicyAddonsResponse
 func (client *Client) ListIntegrationPolicyAddons(policyId *string) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
@@ -6030,7 +6144,7 @@ func (client *Client) ListIntegrationPolicyAddons(policyId *string) (_result *Li
 
 // Summary:
 //
-// Queries information about collectors for an Integration Center policy.
+// 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyCollectorsRequest
 //
@@ -6085,7 +6199,7 @@ func (client *Client) ListIntegrationPolicyCollectorsWithOptions(policyId *strin
 
 // Summary:
 //
-// Queries information about collectors for an Integration Center policy.
+// 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyCollectorsRequest
 //
@@ -6104,7 +6218,7 @@ func (client *Client) ListIntegrationPolicyCollectors(policyId *string, request 
 
 // Summary:
 //
-// Lists the custom service discovery rules for an Integration Center policy.
+// # Get storage requirement information for the access center policy
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -6159,7 +6273,7 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithOptions(polic
 
 // Summary:
 //
-// Lists the custom service discovery rules for an Integration Center policy.
+// # Get storage requirement information for the access center policy
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -6178,11 +6292,11 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRules(policyId *string
 
 // Summary:
 //
-// Queries a list of integration policy dashboards.
+// # Policy Dashboard List
 //
 // Description:
 //
-// This topic provides an example of how to query a list of integration policy dashboards.
+// This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -6237,11 +6351,11 @@ func (client *Client) ListIntegrationPolicyDashboardsWithOptions(policyId *strin
 
 // Summary:
 //
-// Queries a list of integration policy dashboards.
+// # Policy Dashboard List
 //
 // Description:
 //
-// This topic provides an example of how to query a list of integration policy dashboards.
+// This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -6260,11 +6374,11 @@ func (client *Client) ListIntegrationPolicyDashboards(policyId *string, request 
 
 // Summary:
 //
-// Lists the PodMonitor resources for an Integration Center policy.
+// # Get PodMonitor Resources of Access Center Policy
 //
 // Description:
 //
-// This topic provides an example of how to list the PodMonitor resources for an Integration Center policy.
+// This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -6319,11 +6433,11 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithOptions(policyId *stri
 
 // Summary:
 //
-// Lists the PodMonitor resources for an Integration Center policy.
+// # Get PodMonitor Resources of Access Center Policy
 //
 // Description:
 //
-// This topic provides an example of how to list the PodMonitor resources for an Integration Center policy.
+// This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -6342,7 +6456,7 @@ func (client *Client) ListIntegrationPolicyPodMonitors(policyId *string, request
 
 // Summary:
 //
-// Retrieves the ServiceMonitor information for an Integration Center policy.
+// 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyServiceMonitorsRequest
 //
@@ -6397,7 +6511,7 @@ func (client *Client) ListIntegrationPolicyServiceMonitorsWithOptions(policyId *
 
 // Summary:
 //
-// Retrieves the ServiceMonitor information for an Integration Center policy.
+// 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyServiceMonitorsRequest
 //
@@ -6416,13 +6530,13 @@ func (client *Client) ListIntegrationPolicyServiceMonitors(policyId *string, req
 
 // Summary:
 //
-// Lists the storage requirements for an Integration Center policy.
+// # Get Storage Requirements Information for Access Center Policy
 //
 // Description:
 //
-// When a policy is active, alert notifications are not sent for alerts that occur in the application group.
+// During the effective period of the policy, all alarms within the application group will no longer send notifications.
 //
-// This topic provides an example of creating a policy named `PauseNotify`. This policy pauses alert notifications for application group `7301****` from `1622949300000` to `1623208500000` (from `2021-06-06 11:15:00` to `2021-06-09 11:15:00` UTC+8).
+// This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301****`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -6477,13 +6591,13 @@ func (client *Client) ListIntegrationPolicyStorageRequirementsWithOptions(policy
 
 // Summary:
 //
-// Lists the storage requirements for an Integration Center policy.
+// # Get Storage Requirements Information for Access Center Policy
 //
 // Description:
 //
-// When a policy is active, alert notifications are not sent for alerts that occur in the application group.
+// During the effective period of the policy, all alarms within the application group will no longer send notifications.
 //
-// This topic provides an example of creating a policy named `PauseNotify`. This policy pauses alert notifications for application group `7301****` from `1622949300000` to `1623208500000` (from `2021-06-06 11:15:00` to `2021-06-09 11:15:00` UTC+8).
+// This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301****`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -6502,7 +6616,7 @@ func (client *Client) ListIntegrationPolicyStorageRequirements(policyId *string,
 
 // Summary:
 //
-// Retrieves a list of memory stores.
+// 查询记忆库列表
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -6557,7 +6671,7 @@ func (client *Client) ListMemoryStoresWithOptions(workspace *string, request *Li
 
 // Summary:
 //
-// Retrieves a list of memory stores.
+// 查询记忆库列表
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -6576,11 +6690,11 @@ func (client *Client) ListMemoryStores(workspace *string, request *ListMemorySto
 
 // Summary:
 //
-// Retrieves a list of dashboards for a Prometheus instance.
+// # Get Prometheus Instance Dashboard List
 //
 // Description:
 //
-// Retrieves a list of dashboards for a Prometheus instance.
+// Get the list of Prometheus instance dashboards.
 //
 // @param request - ListPrometheusDashboardsRequest
 //
@@ -6631,11 +6745,11 @@ func (client *Client) ListPrometheusDashboardsWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// Retrieves a list of dashboards for a Prometheus instance.
+// # Get Prometheus Instance Dashboard List
 //
 // Description:
 //
-// Retrieves a list of dashboards for a Prometheus instance.
+// Get the list of Prometheus instance dashboards.
 //
 // @param request - ListPrometheusDashboardsRequest
 //
@@ -6654,11 +6768,11 @@ func (client *Client) ListPrometheusDashboards(prometheusInstanceId *string, req
 
 // Summary:
 //
-// Lists Prometheus instances.
+// # Get the list of Prometheus instance information
 //
 // Description:
 //
-// Lists Prometheus instances.
+// Get the list of Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -6747,11 +6861,11 @@ func (client *Client) ListPrometheusInstancesWithOptions(tmpReq *ListPrometheusI
 
 // Summary:
 //
-// Lists Prometheus instances.
+// # Get the list of Prometheus instance information
 //
 // Description:
 //
-// Lists Prometheus instances.
+// Get the list of Prometheus instances.
 //
 // @param request - ListPrometheusInstancesRequest
 //
@@ -6770,11 +6884,11 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 
 // Summary:
 //
-// Lists the Prometheus view instances.
+// # Retrieve a list of Prometheus view instance information
 //
 // Description:
 //
-// Lists the Prometheus view instances.
+// Retrieve a list of Prometheus view instance information.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -6863,11 +6977,11 @@ func (client *Client) ListPrometheusViewsWithOptions(tmpReq *ListPrometheusViews
 
 // Summary:
 //
-// Lists the Prometheus view instances.
+// # Retrieve a list of Prometheus view instance information
 //
 // Description:
 //
-// Lists the Prometheus view instances.
+// Retrieve a list of Prometheus view instance information.
 //
 // @param request - ListPrometheusViewsRequest
 //
@@ -6960,7 +7074,7 @@ func (client *Client) ListPrometheusVirtualInstances(request *ListPrometheusVirt
 
 // Summary:
 //
-// Queries a list of application observability services.
+// # List Resource Services
 //
 // @param tmpReq - ListServicesRequest
 //
@@ -7033,7 +7147,7 @@ func (client *Client) ListServicesWithOptions(workspace *string, tmpReq *ListSer
 
 // Summary:
 //
-// Queries a list of application observability services.
+// # List Resource Services
 //
 // @param request - ListServicesRequest
 //
@@ -7052,7 +7166,7 @@ func (client *Client) ListServices(workspace *string, request *ListServicesReque
 
 // Summary:
 //
-// Queries the tags attached to resources.
+// 查标签接口
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -7125,7 +7239,7 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 
 // Summary:
 //
-// Queries the tags attached to resources.
+// 查标签接口
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7144,11 +7258,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Lists sessions.
-//
-// Description:
-//
-// This operation lists sessions.
+// 列出会话
 //
 // @param tmpReq - ListThreadsRequest
 //
@@ -7217,11 +7327,7 @@ func (client *Client) ListThreadsWithOptions(name *string, tmpReq *ListThreadsRe
 
 // Summary:
 //
-// Lists sessions.
-//
-// Description:
-//
-// This operation lists sessions.
+// 列出会话
 //
 // @param request - ListThreadsRequest
 //
@@ -7240,7 +7346,7 @@ func (client *Client) ListThreads(name *string, request *ListThreadsRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of workspaces.
+// # Get Workspace List
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -7309,7 +7415,7 @@ func (client *Client) ListWorkspacesWithOptions(tmpReq *ListWorkspacesRequest, h
 
 // Summary:
 //
-// Retrieves a list of workspaces.
+// # Get Workspace List
 //
 // @param request - ListWorkspacesRequest
 //
@@ -7328,7 +7434,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// Creates a workspace.
+// # Create Workspace
 //
 // @param request - PutWorkspaceRequest
 //
@@ -7383,7 +7489,7 @@ func (client *Client) PutWorkspaceWithOptions(workspaceName *string, request *Pu
 
 // Summary:
 //
-// Creates a workspace.
+// # Create Workspace
 //
 // @param request - PutWorkspaceRequest
 //
@@ -7402,7 +7508,7 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 
 // Summary:
 //
-// Search memories using query conditions and filters.
+// 搜索记忆
 //
 // @param request - SearchMemoriesRequest
 //
@@ -7477,7 +7583,7 @@ func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreNa
 
 // Summary:
 //
-// Search memories using query conditions and filters.
+// 搜索记忆
 //
 // @param request - SearchMemoriesRequest
 //
@@ -7496,7 +7602,7 @@ func (client *Client) SearchMemories(workspace *string, memoryStoreName *string,
 
 // Summary:
 //
-// Adds tags to one or more resources.
+// 打标签接口
 //
 // @param request - TagResourcesRequest
 //
@@ -7551,7 +7657,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Adds tags to one or more resources.
+// 打标签接口
 //
 // @param request - TagResourcesRequest
 //
@@ -7570,7 +7676,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// # Deletes a tag
+// 删标签接口
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -7639,7 +7745,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 
 // Summary:
 //
-// # Deletes a tag
+// 删标签接口
 //
 // @param request - UntagResourcesRequest
 //
@@ -7658,7 +7764,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Upgrades an add-on component.
+// # Upgrade Access Component
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -7717,7 +7823,7 @@ func (client *Client) UpdateAddonReleaseWithOptions(releaseName *string, policyI
 
 // Summary:
 //
-// Upgrades an add-on component.
+// # Upgrade Access Component
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -7736,7 +7842,7 @@ func (client *Client) UpdateAddonRelease(releaseName *string, policyId *string, 
 
 // Summary:
 //
-// Updates an aggregation task group.
+// # Apply Aggregation Task Group
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -7843,7 +7949,7 @@ func (client *Client) UpdateAggTaskGroupWithOptions(instanceId *string, groupId 
 
 // Summary:
 //
-// Updates an aggregation task group.
+// # Apply Aggregation Task Group
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -7862,7 +7968,7 @@ func (client *Client) UpdateAggTaskGroup(instanceId *string, groupId *string, re
 
 // Summary:
 //
-// Updates the status of an aggregation task group.
+// # Update Aggregation Task Group Status
 //
 // @param request - UpdateAggTaskGroupStatusRequest
 //
@@ -7909,7 +8015,7 @@ func (client *Client) UpdateAggTaskGroupStatusWithOptions(instanceId *string, gr
 
 // Summary:
 //
-// Updates the status of an aggregation task group.
+// # Update Aggregation Task Group Status
 //
 // @param request - UpdateAggTaskGroupStatusRequest
 //
@@ -7928,7 +8034,7 @@ func (client *Client) UpdateAggTaskGroupStatus(instanceId *string, groupId *stri
 
 // Summary:
 //
-// Updates a webhook.
+// 修改已存在的告警 Webhook 通知配置。
 //
 // @param request - UpdateAlertWebhookRequest
 //
@@ -7995,7 +8101,7 @@ func (client *Client) UpdateAlertWebhookWithOptions(webhookId *string, request *
 
 // Summary:
 //
-// Updates a webhook.
+// 修改已存在的告警 Webhook 通知配置。
 //
 // @param request - UpdateAlertWebhookRequest
 //
@@ -8014,7 +8120,7 @@ func (client *Client) UpdateAlertWebhook(webhookId *string, request *UpdateAlert
 
 // Summary:
 //
-// Modifies a business trace.
+// 修改业务链路
 //
 // @param request - UpdateBizTraceRequest
 //
@@ -8073,7 +8179,7 @@ func (client *Client) UpdateBizTraceWithOptions(bizTraceId *string, request *Upd
 
 // Summary:
 //
-// Modifies a business trace.
+// 修改业务链路
 //
 // @param request - UpdateBizTraceRequest
 //
@@ -8092,11 +8198,105 @@ func (client *Client) UpdateBizTrace(bizTraceId *string, request *UpdateBizTrace
 
 // Summary:
 //
-// Updates a digital employee.
+// 更新数据投递任务
 //
-// Description:
+// @param request - UpdateDeliveryTaskRequest
 //
-// Updates a digital employee.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeliveryTaskResponse
+func (client *Client) UpdateDeliveryTaskWithOptions(taskId *string, request *UpdateDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		body["dataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.ExternalLabels) {
+		body["externalLabels"] = request.ExternalLabels
+	}
+
+	if !dara.IsNil(request.LabelFilters) {
+		body["labelFilters"] = request.LabelFilters
+	}
+
+	if !dara.IsNil(request.LabelFiltersType) {
+		body["labelFiltersType"] = request.LabelFiltersType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SinkList) {
+		body["sinkList"] = request.SinkList
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDeliveryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据投递任务
+//
+// @param request - UpdateDeliveryTaskRequest
+//
+// @return UpdateDeliveryTaskResponse
+func (client *Client) UpdateDeliveryTask(taskId *string, request *UpdateDeliveryTaskRequest) (_result *UpdateDeliveryTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDeliveryTaskResponse{}
+	_body, _err := client.UpdateDeliveryTaskWithOptions(taskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新UpdateDigitalEmployee
 //
 // @param request - UpdateDigitalEmployeeRequest
 //
@@ -8159,11 +8359,7 @@ func (client *Client) UpdateDigitalEmployeeWithOptions(name *string, request *Up
 
 // Summary:
 //
-// Updates a digital employee.
-//
-// Description:
-//
-// Updates a digital employee.
+// 更新UpdateDigitalEmployee
 //
 // @param request - UpdateDigitalEmployeeRequest
 //
@@ -8182,11 +8378,7 @@ func (client *Client) UpdateDigitalEmployee(name *string, request *UpdateDigital
 
 // Summary:
 //
-// Updates a skill.
-//
-// Description:
-//
-// Updates a skill.
+// 更新技能
 //
 // @param request - UpdateDigitalEmployeeSkillRequest
 //
@@ -8249,11 +8441,7 @@ func (client *Client) UpdateDigitalEmployeeSkillWithOptions(name *string, skillN
 
 // Summary:
 //
-// Updates a skill.
-//
-// Description:
-//
-// Updates a skill.
+// 更新技能
 //
 // @param request - UpdateDigitalEmployeeSkillRequest
 //
@@ -8272,7 +8460,7 @@ func (client *Client) UpdateDigitalEmployeeSkill(name *string, skillName *string
 
 // Summary:
 //
-// Updates the specified policy.
+// # Update the specified policy
 //
 // @param request - UpdateIntegrationPolicyRequest
 //
@@ -8331,7 +8519,7 @@ func (client *Client) UpdateIntegrationPolicyWithOptions(integrationPolicyId *st
 
 // Summary:
 //
-// Updates the specified policy.
+// # Update the specified policy
 //
 // @param request - UpdateIntegrationPolicyRequest
 //
@@ -8350,7 +8538,7 @@ func (client *Client) UpdateIntegrationPolicy(integrationPolicyId *string, reque
 
 // Summary:
 //
-// Updates a specific Memory.
+// 修改记忆
 //
 // @param request - UpdateMemoryRequest
 //
@@ -8401,7 +8589,7 @@ func (client *Client) UpdateMemoryWithOptions(workspace *string, memoryStoreName
 
 // Summary:
 //
-// Updates a specific Memory.
+// 修改记忆
 //
 // @param request - UpdateMemoryRequest
 //
@@ -8420,7 +8608,7 @@ func (client *Client) UpdateMemory(workspace *string, memoryStoreName *string, m
 
 // Summary:
 //
-// Modify a memory store.
+// 修改记忆库配置
 //
 // @param request - UpdateMemoryStoreRequest
 //
@@ -8479,7 +8667,7 @@ func (client *Client) UpdateMemoryStoreWithOptions(workspace *string, memoryStor
 
 // Summary:
 //
-// Modify a memory store.
+// 修改记忆库配置
 //
 // @param request - UpdateMemoryStoreRequest
 //
@@ -8498,7 +8686,7 @@ func (client *Client) UpdateMemoryStore(workspace *string, memoryStoreName *stri
 
 // Summary:
 //
-// Updates a notification policy.
+// 修改已存在的告警通知策略
 //
 // @param request - UpdateNotifyStrategyRequest
 //
@@ -8546,7 +8734,7 @@ func (client *Client) UpdateNotifyStrategyWithOptions(notifyStrategyId *string, 
 
 // Summary:
 //
-// Updates a notification policy.
+// 修改已存在的告警通知策略
 //
 // @param request - UpdateNotifyStrategyRequest
 //
@@ -8565,11 +8753,11 @@ func (client *Client) UpdateNotifyStrategy(notifyStrategyId *string, request *Up
 
 // Summary:
 //
-// Updates the information of a Prometheus instance.
+// # Update Prometheus instance information
 //
 // Description:
 //
-// This topic describes how to update a Prometheus instance.
+// Update Prometheus instance information.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -8656,11 +8844,11 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(prometheusInstanceId *
 
 // Summary:
 //
-// Updates the information of a Prometheus instance.
+// # Update Prometheus instance information
 //
 // Description:
 //
-// This topic describes how to update a Prometheus instance.
+// Update Prometheus instance information.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -8679,7 +8867,7 @@ func (client *Client) UpdatePrometheusInstance(prometheusInstanceId *string, req
 
 // Summary:
 //
-// Updates the user settings for Prometheus. Note: If you set `settingKey` to `financeUsageRegion`, Prometheus usage data is sent to Simple Log Service (SLS) in the specified region. Historical usage data will no longer be available in the Prometheus console.
+// 更新Prom实例信息
 //
 // @param request - UpdatePrometheusUserSettingRequest
 //
@@ -8726,7 +8914,7 @@ func (client *Client) UpdatePrometheusUserSettingWithOptions(settingKey *string,
 
 // Summary:
 //
-// Updates the user settings for Prometheus. Note: If you set `settingKey` to `financeUsageRegion`, Prometheus usage data is sent to Simple Log Service (SLS) in the specified region. Historical usage data will no longer be available in the Prometheus console.
+// 更新Prom实例信息
 //
 // @param request - UpdatePrometheusUserSettingRequest
 //
@@ -8745,11 +8933,11 @@ func (client *Client) UpdatePrometheusUserSetting(settingKey *string, request *U
 
 // Summary:
 //
-// Updates the information about a Prometheus view instance.
+// # Update Prometheus view instance information
 //
 // Description:
 //
-// Updates the information about a Prometheus view instance.
+// Update Prometheus view instance information.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -8820,11 +9008,11 @@ func (client *Client) UpdatePrometheusViewWithOptions(prometheusViewId *string, 
 
 // Summary:
 //
-// Updates the information about a Prometheus view instance.
+// # Update Prometheus view instance information
 //
 // Description:
 //
-// Updates the information about a Prometheus view instance.
+// Update Prometheus view instance information.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -8843,7 +9031,7 @@ func (client *Client) UpdatePrometheusView(prometheusViewId *string, request *Up
 
 // Summary:
 //
-// Updates an application observability service.
+// # Update Service
 //
 // @param request - UpdateServiceRequest
 //
@@ -8902,7 +9090,7 @@ func (client *Client) UpdateServiceWithOptions(workspace *string, serviceId *str
 
 // Summary:
 //
-// Updates an application observability service.
+// # Update Service
 //
 // @param request - UpdateServiceRequest
 //
@@ -8921,7 +9109,7 @@ func (client *Client) UpdateService(workspace *string, serviceId *string, reques
 
 // Summary:
 //
-// Updates a subscription.
+// 更新一个已存在的订阅配置
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -8969,7 +9157,7 @@ func (client *Client) UpdateSubscriptionWithOptions(subscriptionId *string, requ
 
 // Summary:
 //
-// Updates a subscription.
+// 更新一个已存在的订阅配置
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -8988,11 +9176,7 @@ func (client *Client) UpdateSubscription(subscriptionId *string, request *Update
 
 // Summary:
 //
-// Updates a session.
-//
-// Description:
-//
-// Updates a session.
+// 更新会话
 //
 // @param request - UpdateThreadRequest
 //
@@ -9047,11 +9231,7 @@ func (client *Client) UpdateThreadWithOptions(name *string, threadId *string, re
 
 // Summary:
 //
-// Updates a session.
-//
-// Description:
-//
-// Updates a session.
+// 更新会话
 //
 // @param request - UpdateThreadRequest
 //
@@ -9070,11 +9250,11 @@ func (client *Client) UpdateThread(name *string, threadId *string, request *Upda
 
 // Summary:
 //
-// Updates the configuration of a Umodel.
+// # Update Umodel configuration information
 //
 // Description:
 //
-// Updates the configuration of a Umodel.
+// # Update Umodel configuration information
 //
 // @param request - UpdateUmodelRequest
 //
@@ -9121,11 +9301,11 @@ func (client *Client) UpdateUmodelWithOptions(workspace *string, request *Update
 
 // Summary:
 //
-// Updates the configuration of a Umodel.
+// # Update Umodel configuration information
 //
 // Description:
 //
-// Updates the configuration of a Umodel.
+// # Update Umodel configuration information
 //
 // @param request - UpdateUmodelRequest
 //
@@ -9144,7 +9324,7 @@ func (client *Client) UpdateUmodel(workspace *string, request *UpdateUmodelReque
 
 // Summary:
 //
-// Upserts a common Umodel schema reference.
+// 更新Umodel配置信息
 //
 // @param request - UpsertUmodelCommonSchemaRefRequest
 //
@@ -9195,7 +9375,7 @@ func (client *Client) UpsertUmodelCommonSchemaRefWithOptions(workspace *string, 
 
 // Summary:
 //
-// Upserts a common Umodel schema reference.
+// 更新Umodel配置信息
 //
 // @param request - UpsertUmodelCommonSchemaRefRequest
 //
@@ -9214,7 +9394,7 @@ func (client *Client) UpsertUmodelCommonSchemaRef(workspace *string, request *Up
 
 // Summary:
 //
-// Inserts or updates Umodel elements.
+// # Write Umodel Elements
 //
 // @param request - UpsertUmodelDataRequest
 //
@@ -9267,7 +9447,7 @@ func (client *Client) UpsertUmodelDataWithOptions(workspace *string, request *Up
 
 // Summary:
 //
-// Inserts or updates Umodel elements.
+// # Write Umodel Elements
 //
 // @param request - UpsertUmodelDataRequest
 //

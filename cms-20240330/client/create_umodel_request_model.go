@@ -14,7 +14,7 @@ type iCreateUmodelRequest interface {
 }
 
 type CreateUmodelRequest struct {
-	// The description of the Umodel.
+	// Umodel description
 	//
 	// example:
 	//

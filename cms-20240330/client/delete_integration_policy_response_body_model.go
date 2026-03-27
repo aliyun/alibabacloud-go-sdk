@@ -14,7 +14,7 @@ type iDeleteIntegrationPolicyResponseBody interface {
 }
 
 type DeleteIntegrationPolicyResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

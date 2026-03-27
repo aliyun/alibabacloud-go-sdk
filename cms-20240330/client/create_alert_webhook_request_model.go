@@ -28,56 +28,32 @@ type iCreateAlertWebhookRequest interface {
 }
 
 type CreateAlertWebhookRequest struct {
-	// The content type. Valid values:
-	//
-	// - JSON (default)
-	//
-	// - FORM
-	//
 	// example:
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The headers.
+	// headers
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The language. Valid values:
-	//
-	// - zh_CN
-	//
-	// - en_US
-	//
 	// example:
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The request method. Valid values:
-	//
-	// - GET
-	//
-	// - POST
-	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The name of the webhook.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The URL for the alert callback.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/test
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
-	// The unique ID of the webhook.
-	//
 	// example:
 	//
 	// test

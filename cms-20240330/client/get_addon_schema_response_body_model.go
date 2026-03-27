@@ -18,19 +18,14 @@ type iGetAddonSchemaResponseBody interface {
 }
 
 type GetAddonSchemaResponseBody struct {
-	// A list of data table fields.
 	Fields []*GetAddonSchemaResponseBodyFields `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// The ID of the request.
-	//
 	// example:
 	//
 	// E5B1D3D4-BB28-5996-8AD2-***********
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The type of the schema.
-	//
 	// example:
 	//
-	// common
+	// response_time
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -83,65 +78,26 @@ func (s *GetAddonSchemaResponseBody) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFields struct {
-	// A list of display conditions.
-	Conditions []*GetAddonSchemaResponseBodyFieldsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The default value.
-	//
+	Conditions   []*GetAddonSchemaResponseBodyFieldsConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	DefaultValue interface{}                                   `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
 	// example:
 	//
-	// mysql.default
-	DefaultValue interface{} `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// MySQL datasource
+	// o11y-demo-cn-heyuan
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether the field is hidden. Valid values: \\`true\\` (hidden) and \\`false\\` (displayed).
-	//
+	Disabled    *bool   `json:"disabled,omitempty" xml:"disabled,omitempty"`
+	Element     *string `json:"element,omitempty" xml:"element,omitempty"`
+	FieldPath   *string `json:"fieldPath,omitempty" xml:"fieldPath,omitempty"`
+	Label       *string `json:"label,omitempty" xml:"label,omitempty"`
 	// example:
 	//
-	// false
-	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// The type of the element.
-	//
+	// rum_api_dashboard_explorer_link_metric_set
+	Name        *string                                `json:"name,omitempty" xml:"name,omitempty"`
+	Placeholder *string                                `json:"placeholder,omitempty" xml:"placeholder,omitempty"`
+	Props       *GetAddonSchemaResponseBodyFieldsProps `json:"props,omitempty" xml:"props,omitempty" type:"Struct"`
 	// example:
 	//
-	// input
-	Element *string `json:"element,omitempty" xml:"element,omitempty"`
-	// The path of the field.
-	//
-	// example:
-	//
-	// mysql.host
-	FieldPath *string `json:"fieldPath,omitempty" xml:"fieldPath,omitempty"`
-	// The display name of the field.
-	//
-	// example:
-	//
-	// mysql
-	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The name of the field.
-	//
-	// example:
-	//
-	// host
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The placeholder text.
-	//
-	// example:
-	//
-	// Please enter the metrics collection interval
-	Placeholder *string `json:"placeholder,omitempty" xml:"placeholder,omitempty"`
-	// Other properties of the component.
-	Props *GetAddonSchemaResponseBodyFieldsProps `json:"props,omitempty" xml:"props,omitempty" type:"Struct"`
-	// The type of the field.
-	//
-	// example:
-	//
-	// string
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The validation rule for the field.
+	// xtrace
+	Type       *string                                     `json:"type,omitempty" xml:"type,omitempty"`
 	Validation *GetAddonSchemaResponseBodyFieldsValidation `json:"validation,omitempty" xml:"validation,omitempty" type:"Struct"`
 }
 
@@ -285,29 +241,15 @@ func (s *GetAddonSchemaResponseBodyFields) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsConditions struct {
-	// The control mode of the field.
-	//
 	// example:
 	//
-	// show
+	// redeploy
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The name of the field.
-	//
+	Field  *string `json:"field,omitempty" xml:"field,omitempty"`
+	Op     *string `json:"op,omitempty" xml:"op,omitempty"`
 	// example:
 	//
-	// store.storageTarget
-	Field *string `json:"field,omitempty" xml:"field,omitempty"`
-	// The operator for the condition.
-	//
-	// example:
-	//
-	// ==
-	Op *string `json:"op,omitempty" xml:"op,omitempty"`
-	// The target value for the condition.
-	//
-	// example:
-	//
-	// Custom
+	// [{\\"count\\": \\"1\\", \\"max\\": \\"358.106\\", \\"sum\\": \\"358.106\\", \\"ts\\": \\"1755049815000000\\", \\"min\\": \\"358.106\\"}, {\\"count\\": \\"1\\", \\"max\\": \\"326.311\\", \\"sum\\": \\"326.311\\", \\"ts\\": \\"1755049830000000\\", \\"min\\": \\"326.311\\"}]
 	Value interface{} `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -360,16 +302,10 @@ func (s *GetAddonSchemaResponseBodyFieldsConditions) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsProps struct {
-	// The information about the data source.
+	// AK
 	DataSource []*GetAddonSchemaResponseBodyFieldsPropsDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Repeated"`
-	// A collection of related data.
-	Related []*string `json:"related,omitempty" xml:"related,omitempty" type:"Repeated"`
-	// The mode.
-	//
-	// example:
-	//
-	// single
-	SelectMode *string `json:"selectMode,omitempty" xml:"selectMode,omitempty"`
+	Related    []*string                                          `json:"related,omitempty" xml:"related,omitempty" type:"Repeated"`
+	SelectMode *string                                            `json:"selectMode,omitempty" xml:"selectMode,omitempty"`
 }
 
 func (s GetAddonSchemaResponseBodyFieldsProps) String() string {
@@ -421,17 +357,10 @@ func (s *GetAddonSchemaResponseBodyFieldsProps) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsPropsDataSource struct {
-	// The label.
-	//
-	// example:
-	//
-	// tagKey
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// The value of the label.
-	//
 	// example:
 	//
-	// tagValue
+	// []
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -466,48 +395,16 @@ func (s *GetAddonSchemaResponseBodyFieldsPropsDataSource) Validate() error {
 }
 
 type GetAddonSchemaResponseBodyFieldsValidation struct {
-	// The maximum value. The value is inclusive.
-	//
-	// example:
-	//
-	// 2000
-	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
-	// The maximum length that is supported by the text control.
-	//
-	// example:
-	//
-	// 100
+	Max       *int32 `json:"max,omitempty" xml:"max,omitempty"`
 	MaxLength *int32 `json:"maxLength,omitempty" xml:"maxLength,omitempty"`
-	// The details.
-	//
 	// example:
 	//
-	// length limit
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The minimum value.
-	//
-	// example:
-	//
-	// 0
-	Min *int32 `json:"min,omitempty" xml:"min,omitempty"`
-	// The minimum length.
-	//
-	// example:
-	//
-	// 16
-	MinLength *int32 `json:"minLength,omitempty" xml:"minLength,omitempty"`
-	// The regular expression.
-	//
-	// example:
-	//
-	// ^(http|https)://
-	Regular *string `json:"regular,omitempty" xml:"regular,omitempty"`
-	// Specifies whether the parameter is required.
-	//
-	// example:
-	//
-	// false
-	Required *bool `json:"required,omitempty" xml:"required,omitempty"`
+	// ok
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	Min       *int32  `json:"min,omitempty" xml:"min,omitempty"`
+	MinLength *int32  `json:"minLength,omitempty" xml:"minLength,omitempty"`
+	Regular   *string `json:"regular,omitempty" xml:"regular,omitempty"`
+	Required  *bool   `json:"required,omitempty" xml:"required,omitempty"`
 }
 
 func (s GetAddonSchemaResponseBodyFieldsValidation) String() string {

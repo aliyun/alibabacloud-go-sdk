@@ -18,9 +18,9 @@ type iGetEntityStoreDataRequest interface {
 }
 
 type GetEntityStoreDataRequest struct {
-	// The start point in time for the query.
+	// Start time of the query.
 	//
-	// This is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	// Unix timestamp format, representing the number of seconds since 1970-1-1 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetEntityStoreDataRequest struct {
 	//
 	// 1721767203
 	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// The search statement.
+	// Query statement
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type GetEntityStoreDataRequest struct {
 	//
 	// .entity with(domain=\\"acs\\", type=\\"acs.k8s.node\\") | limit 0, 10
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The end point in time for the query.
+	// End time of the query.
 	//
-	// This is a UNIX timestamp. It represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	// Unix timestamp format, representing the number of seconds since 1970-1-1 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//

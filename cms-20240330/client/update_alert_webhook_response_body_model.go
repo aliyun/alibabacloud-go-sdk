@@ -14,8 +14,6 @@ type iUpdateAlertWebhookResponseBody interface {
 }
 
 type UpdateAlertWebhookResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 8A33DBEA-*****-*****-*****-*****

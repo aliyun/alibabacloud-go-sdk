@@ -14,8 +14,6 @@ type iDeleteUmodelCommonSchemaRefRequest interface {
 }
 
 type DeleteUmodelCommonSchemaRefRequest struct {
-	// The public Umodel schema group.
-	//
 	// This parameter is required.
 	//
 	// example:

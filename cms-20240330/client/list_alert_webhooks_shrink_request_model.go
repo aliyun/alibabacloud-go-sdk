@@ -22,25 +22,18 @@ type iListAlertWebhooksShrinkRequest interface {
 }
 
 type ListAlertWebhooksShrinkRequest struct {
-	// The name of the webhook.
-	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number. Default value: 1.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
-	//
 	// example:
 	//
 	// 10
-	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The unique ID of the webhook.
+	PageSize         *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	WebhookIdsShrink *string `json:"webhookIds,omitempty" xml:"webhookIds,omitempty"`
 	Workspace        *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }

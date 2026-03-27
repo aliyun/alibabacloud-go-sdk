@@ -36,74 +36,47 @@ type iMergeWebhook interface {
 }
 
 type MergeWebhook struct {
-	// 内容类型。
-	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 扩展字段，用于存储额外配置。
-	//
 	// example:
 	//
 	// {"timeout": 3000}
 	Extend *string `json:"extend,omitempty" xml:"extend,omitempty"`
-	// 创建时间。
-	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 最后修改时间。
-	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified map[string]interface{} `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 请求头信息。
-	//
 	// example:
 	//
 	// {"Authorization": "Bearer abc123"}
 	Headers *string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// Webhook 唯一标识符。
-	//
 	// example:
 	//
 	// webhook-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 语言偏好。
-	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// HTTP 请求方法。
-	//
 	// example:
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// Webhook 名称。
-	//
-	// example:
-	//
-	// 运维告警通知
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Webhook 来源系统。
-	//
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// dingtalk
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// Webhook 类型，表示其目标平台。
-	//
 	// example:
 	//
 	// dingtalk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Webhook 地址，用于发送请求。
-	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=abc123

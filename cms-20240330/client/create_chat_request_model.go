@@ -22,51 +22,19 @@ type iCreateChatRequest interface {
 }
 
 type CreateChatRequest struct {
-	// Action type: create (default), reconnect, or stop
-	//
 	// example:
 	//
 	// create
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// Digital employee name
-	//
 	// example:
 	//
 	// test
-	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// Messages list
-	Messages []*CreateChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	// Session thread ID
-	//
+	DigitalEmployeeName *string                      `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
+	Messages            []*CreateChatRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// example:
 	//
 	// thread_id01
-	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
-	// Variables list
-	//
-	// example:
-	//
-	// {
-	//
-	//   "workspace": "test",
-	//
-	//   "region": "cn-beijing",
-	//
-	//   "project": "test",
-	//
-	//   "language": "zh",
-	//
-	//   "timeZone": "Asia/Shanghai",
-	//
-	//   "timeStamp": "1768893948",
-	//
-	//   "startTime": 1768887171,
-	//
-	//   "endTime": 1768890771,
-	//
-	//   "skill": "trace"
-	//
-	// }
+	ThreadId  *string                `json:"threadId,omitempty" xml:"threadId,omitempty"`
 	Variables map[string]interface{} `json:"variables,omitempty" xml:"variables,omitempty"`
 }
 
@@ -137,21 +105,15 @@ func (s *CreateChatRequest) Validate() error {
 }
 
 type CreateChatRequestMessages struct {
-	// Text or multimodal array
 	Contents []*CreateChatRequestMessagesContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
-	// Unique identifier for the message
-	//
 	// example:
 	//
 	// message_id02
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// Role of the message
-	//
 	// example:
 	//
 	// system
-	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// Tools calls list
+	Role  *string                  `json:"role,omitempty" xml:"role,omitempty"`
 	Tools []map[string]interface{} `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -213,14 +175,10 @@ func (s *CreateChatRequestMessages) Validate() error {
 }
 
 type CreateChatRequestMessagesContents struct {
-	// Content type
-	//
 	// example:
 	//
 	// text
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Value of the content
-	//
 	// example:
 	//
 	// test

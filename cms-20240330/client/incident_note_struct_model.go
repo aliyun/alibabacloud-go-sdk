@@ -26,39 +26,39 @@ type iIncidentNoteStruct interface {
 }
 
 type IncidentNoteStruct struct {
-	// 内容。
+	// Content.
 	//
 	// example:
 	//
-	// 已联系运维团队，正在排查问题。
+	// The operations team has been contacted and is currently investigating the issue.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 内容格式。
+	// Content format.
 	//
 	// example:
 	//
 	// markdown
 	Format *string `json:"format,omitempty" xml:"format,omitempty"`
-	// 事件ID。
+	// Incident ID.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 记录ID。
+	// Note ID.
 	//
 	// example:
 	//
 	// note-001
 	NoteId *string `json:"noteId,omitempty" xml:"noteId,omitempty"`
-	// 操作符。
+	// Operator.
 	Operator *IncidentNoteStructOperator `json:"operator,omitempty" xml:"operator,omitempty" type:"Struct"`
-	// 时间。
+	// Time.
 	//
 	// example:
 	//
 	// 1741234567890
 	Time *int64 `json:"time,omitempty" xml:"time,omitempty"`
-	// 类型。
+	// Type.
 	//
 	// example:
 	//
@@ -147,25 +147,25 @@ func (s *IncidentNoteStruct) Validate() error {
 }
 
 type IncidentNoteStructOperator struct {
-	// 联系人。
+	// Contact.
 	//
 	// example:
 	//
 	// {\\"mobile_phone_num\\":\\"153xxxx8040\\",\\"mobile_country_code\\":\\"86\\",\\"email\\":\\"flightxxg@dida.com\\"}
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
-	// 联系人id。
+	// Contact ID.
 	//
 	// example:
 	//
 	// user-12345
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// 名称。
+	// Name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 用户ID。
+	// User ID.
 	//
 	// example:
 	//

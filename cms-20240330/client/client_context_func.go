@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// Add new facts, messages, or metadata to a user’s memory store. The AddMemories endpoint accepts raw text or conversation turns and commits them asynchronously, preparing the memories for subsequent search, retrieval, and graph queries.
+// 添加记忆
 //
 // @param request - AddMemoriesRequest
 //
@@ -93,7 +93,7 @@ func (client *Client) AddMemoriesWithContext(ctx context.Context, workspace *str
 
 // Summary:
 //
-// Changes the resource group of a resource.
+// 修改资源所属资源组
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -148,11 +148,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Installs an add-on.
+// # Install the access component, representing a single access attempt
 //
 // Description:
 //
-// Creates a release for an add-on.
+// # Used to create a site monitoring task
 //
 // @param request - CreateAddonReleaseRequest
 //
@@ -235,7 +235,7 @@ func (client *Client) CreateAddonReleaseWithContext(ctx context.Context, policyI
 
 // Summary:
 //
-// Creates an aggregation task group.
+// # Create Aggregation Task Group
 //
 // @param request - CreateAggTaskGroupRequest
 //
@@ -348,11 +348,7 @@ func (client *Client) CreateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// # Create a webhook
-//
-// Description:
-//
-// Creates an alert webhook to use as a notification recipient.
+// 创建Webhook
 //
 // @param request - CreateAlertWebhookRequest
 //
@@ -427,7 +423,7 @@ func (client *Client) CreateAlertWebhookWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a business trace.
+// 创建业务链路
 //
 // @param request - CreateBizTraceRequest
 //
@@ -490,11 +486,7 @@ func (client *Client) CreateBizTraceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Create a chat session.
-//
-// Description:
-//
-// Start a session.
+// 创建对话
 //
 // @param request - CreateChatRequest
 //
@@ -511,11 +503,7 @@ func (client *Client) CreateChatWithSSECtx(ctx context.Context, request *CreateC
 
 // Summary:
 //
-// Create a chat session.
-//
-// Description:
-//
-// Start a session.
+// 创建对话
 //
 // @param request - CreateChatRequest
 //
@@ -578,7 +566,7 @@ func (client *Client) CreateChatWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Creates a cloud resource.
+// 创建云资源中心
 //
 // @param headers - map
 //
@@ -611,11 +599,86 @@ func (client *Client) CreateCloudResourceWithContext(ctx context.Context, header
 
 // Summary:
 //
-// Creates a digital employee.
+// 创建数据投递任务
 //
-// Description:
+// @param request - CreateDeliveryTaskRequest
 //
-// Creates a digital employee.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeliveryTaskResponse
+func (client *Client) CreateDeliveryTaskWithContext(ctx context.Context, request *CreateDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		body["dataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.ExternalLabels) {
+		body["externalLabels"] = request.ExternalLabels
+	}
+
+	if !dara.IsNil(request.LabelFilters) {
+		body["labelFilters"] = request.LabelFilters
+	}
+
+	if !dara.IsNil(request.LabelFiltersType) {
+		body["labelFiltersType"] = request.LabelFiltersType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SinkList) {
+		body["sinkList"] = request.SinkList
+	}
+
+	if !dara.IsNil(request.Tags) {
+		body["tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-tasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDeliveryTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建DigitalEmployee
 //
 // @param request - CreateDigitalEmployeeRequest
 //
@@ -690,11 +753,7 @@ func (client *Client) CreateDigitalEmployeeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a skill.
-//
-// Description:
-//
-// Creates a skill.
+// 创建技能
 //
 // @param request - CreateDigitalEmployeeSkillRequest
 //
@@ -761,7 +820,7 @@ func (client *Client) CreateDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates storage for an EntityStore.
+// # Create storage related to EntityStore
 //
 // @param headers - map
 //
@@ -794,11 +853,11 @@ func (client *Client) CreateEntityStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Creates an Integration Center policy.
+// # Create Access Center Policy
 //
 // Description:
 //
-// This operation creates an event integration.
+// This interface is used to support users in creating event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -865,7 +924,7 @@ func (client *Client) CreateIntegrationPolicyWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a Memory Store.
+// 创建记忆库
 //
 // @param request - CreateMemoryStoreRequest
 //
@@ -902,6 +961,14 @@ func (client *Client) CreateMemoryStoreWithContext(ctx context.Context, workspac
 		body["shortTermTtl"] = request.ShortTermTtl
 	}
 
+	if !dara.IsNil(request.SourceType) {
+		body["sourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.TraceSourceConfig) {
+		body["traceSourceConfig"] = request.TraceSourceConfig
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -928,7 +995,7 @@ func (client *Client) CreateMemoryStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Creates a Prometheus instance for monitoring.
+// # Create a Prometheus monitoring instance
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -1019,11 +1086,11 @@ func (client *Client) CreatePrometheusInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a Prometheus view.
+// # Create Prometheus View
 //
 // Description:
 //
-// 用于创建一个站点监控任务
+// # Used to create a site monitoring task
 //
 // @param request - CreatePrometheusViewRequest
 //
@@ -1106,11 +1173,11 @@ func (client *Client) CreatePrometheusViewWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a virtual instance for Prometheus monitoring.
+// # Create Prometheus Monitoring Instance
 //
 // Description:
 //
-// Creates a virtual instance for Prometheus monitoring.
+// Create a Prometheus monitoring virtual instance.
 //
 // @param request - CreatePrometheusVirtualInstanceRequest
 //
@@ -1157,7 +1224,7 @@ func (client *Client) CreatePrometheusVirtualInstanceWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a service for application observability.
+// # Create Service
 //
 // @param request - CreateServiceRequest
 //
@@ -1236,7 +1303,7 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Sets up application observability and prepares the required resources for integration.
+// 创建应用可观测实例
 //
 // @param headers - map
 //
@@ -1269,11 +1336,7 @@ func (client *Client) CreateServiceObservabilityWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a session.
-//
-// Description:
-//
-// Creates a session.
+// 创建会话
 //
 // @param request - CreateThreadRequest
 //
@@ -1328,7 +1391,7 @@ func (client *Client) CreateThreadWithContext(ctx context.Context, name *string,
 
 // Summary:
 //
-// To share a console page or embed it into a third-party system without requiring a password, you can call the CreateTicket operation to generate a ticket. You can then use the ticket to create a password-free link.
+// # Create Ticket
 //
 // @param request - CreateTicketRequest
 //
@@ -1379,11 +1442,11 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a Umodel configuration.
+// # Create Umodel configuration
 //
 // Description:
 //
-// Creates a Umodel configuration in a specified workspace.
+// # Create Umodel configuration in the specified workspace
 //
 // @param request - CreateUmodelRequest
 //
@@ -1430,7 +1493,7 @@ func (client *Client) CreateUmodelWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Deletes add-on release information.
+// # Delete addon release information
 //
 // @param request - DeleteAddonReleaseRequest
 //
@@ -1485,7 +1548,7 @@ func (client *Client) DeleteAddonReleaseWithContext(ctx context.Context, policyI
 
 // Summary:
 //
-// Deletes an aggregation task group.
+// # Delete Aggregation Task Group
 //
 // @param headers - map
 //
@@ -1518,7 +1581,7 @@ func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// Deletes one or more alert webhooks.
+// 删除Webhook
 //
 // @param tmpReq - DeleteAlertWebhooksRequest
 //
@@ -1571,7 +1634,7 @@ func (client *Client) DeleteAlertWebhooksWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Deletes a business trace.
+// 删除业务链路
 //
 // @param headers - map
 //
@@ -1604,7 +1667,7 @@ func (client *Client) DeleteBizTraceWithContext(ctx context.Context, bizTraceId 
 
 // Summary:
 //
-// Deletes a cloud resource.
+// 删除云资源中心
 //
 // @param headers - map
 //
@@ -1637,11 +1700,40 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, header
 
 // Summary:
 //
-// Deletes a digital employee.
+// 删除数据投递任务
 //
-// Description:
+// @param headers - map
 //
-// Deletes a digital employee.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDeliveryTaskResponse
+func (client *Client) DeleteDeliveryTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryTaskResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDeliveryTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除DigitalEmployee
 //
 // @param headers - map
 //
@@ -1674,11 +1766,7 @@ func (client *Client) DeleteDigitalEmployeeWithContext(ctx context.Context, name
 
 // Summary:
 //
-// Delete a skill.
-//
-// Description:
-//
-// Delete a skill.
+// 删除技能
 //
 // @param headers - map
 //
@@ -1711,7 +1799,7 @@ func (client *Client) DeleteDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes an EntityStore.
+// # Delete EntityStore related storage
 //
 // @param headers - map
 //
@@ -1744,7 +1832,7 @@ func (client *Client) DeleteEntityStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Deletes an Integration Center policy.
+// # Delete Access Center Policy
 //
 // @param request - DeleteIntegrationPolicyRequest
 //
@@ -1791,7 +1879,7 @@ func (client *Client) DeleteIntegrationPolicyWithContext(ctx context.Context, po
 
 // Summary:
 //
-// Deletes memories based on filter properties. You must set at least one filter property. If no filter properties are set, a validation error is returned.
+// 批量删除记忆
 //
 // @param request - DeleteMemoriesRequest
 //
@@ -1850,7 +1938,7 @@ func (client *Client) DeleteMemoriesWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
-// Deletes a memory.
+// 删除记忆
 //
 // @param headers - map
 //
@@ -1883,7 +1971,7 @@ func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Deletes a Memory Store.
+// 删除记忆库
 //
 // @param headers - map
 //
@@ -1916,11 +2004,11 @@ func (client *Client) DeleteMemoryStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Deletes a Prometheus instance.
+// # Delete prom instance
 //
 // Description:
 //
-// Deletes a Prometheus instance.
+// Delete a Prometheus instance.
 //
 // @param headers - map
 //
@@ -1953,11 +2041,11 @@ func (client *Client) DeletePrometheusInstanceWithContext(ctx context.Context, p
 
 // Summary:
 //
-// Deletes a Prometheus view instance.
+// # Delete prometheus view instance
 //
 // Description:
 //
-// Deletes a Prometheus view instance.
+// Delete prometheus view instance.
 //
 // @param headers - map
 //
@@ -1990,7 +2078,7 @@ func (client *Client) DeletePrometheusViewWithContext(ctx context.Context, prome
 
 // Summary:
 //
-// Deletes an Application Monitoring service.
+// # Delete Service
 //
 // @param headers - map
 //
@@ -2023,11 +2111,7 @@ func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Deletes a session.
-//
-// Description:
-//
-// Deletes a session.
+// 删除会话
 //
 // @param headers - map
 //
@@ -2060,11 +2144,11 @@ func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string,
 
 // Summary:
 //
-// Deletes a Umodel configuration.
+// # Delete Umodel configuration information
 //
 // Description:
 //
-// Deletes a Umodel from a specified workspace.
+// # Delete the Umodel under the specified workspace
 //
 // @param headers - map
 //
@@ -2097,7 +2181,7 @@ func (client *Client) DeleteUmodelWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Deletes a public Umodel schema reference.
+// 删除Umodel配置信息
 //
 // @param request - DeleteUmodelCommonSchemaRefRequest
 //
@@ -2144,11 +2228,11 @@ func (client *Client) DeleteUmodelCommonSchemaRefWithContext(ctx context.Context
 
 // Summary:
 //
-// Deletes Umodel elements.
+// # Delete Umodel Elements
 //
 // Description:
 //
-// Deletes Umodel data from a specified workspace.
+// # Delete the Umodel Data under a specified workspace
 //
 // @param request - DeleteUmodelDataRequest
 //
@@ -2203,7 +2287,7 @@ func (client *Client) DeleteUmodelDataWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Deletes a workspace.
+// # Delete Workspace
 //
 // @param headers - map
 //
@@ -2236,7 +2320,7 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceN
 
 // Summary:
 //
-// Retrieves a list of regions.
+// 查询地域信息列表
 //
 // @param request - DescribeRegionsRequest
 //
@@ -2283,11 +2367,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Retrieves the details of an add-on.
-//
-// Description:
-//
-// Retrieves the details of an add-on.
+// 插件详情(Addon)
 //
 // @param request - GetAddonRequest
 //
@@ -2338,11 +2418,7 @@ func (client *Client) GetAddonWithContext(ctx context.Context, addonName *string
 
 // Summary:
 //
-// Details of an add-on schema.
-//
-// Description:
-//
-// This topic provides an example of how to modify version `1` of alert template `123456`. In this example, the alert level is set to `Critical`, the statistical method is set to `Average`, the comparison operator for the alert threshold is set to `GreaterThanOrEqualToThreshold`, the alert threshold is set to `90`, and the number of retries is set to `3`. The response indicates that the alert template was successfully modified.
+// 插件schema详情(Addon)
 //
 // @param request - GetAddonCodeTemplateRequest
 //
@@ -2397,7 +2473,7 @@ func (client *Client) GetAddonCodeTemplateWithContext(ctx context.Context, addon
 
 // Summary:
 //
-// Queries the details and accessed state of an add-on release.
+// Check addon release (view connection status)
 //
 // @param headers - map
 //
@@ -2430,11 +2506,7 @@ func (client *Client) GetAddonReleaseWithContext(ctx context.Context, releaseNam
 
 // Summary:
 //
-// The details of an add-on schema.
-//
-// Description:
-//
-// Retrieves the schema of an add-on.
+// 插件schema详情(Addon)
 //
 // @param request - GetAddonSchemaRequest
 //
@@ -2489,7 +2561,7 @@ func (client *Client) GetAddonSchemaWithContext(ctx context.Context, addonName *
 
 // Summary:
 //
-// Queries the details of an aggregation task group.
+// # Describes the aggregation task group
 //
 // @param headers - map
 //
@@ -2522,7 +2594,7 @@ func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId
 
 // Summary:
 //
-// Queries a business trace.
+// 查询业务链路
 //
 // @param headers - map
 //
@@ -2555,7 +2627,7 @@ func (client *Client) GetBizTraceWithContext(ctx context.Context, bizTraceId *st
 
 // Summary:
 //
-// Retrieves information about cloud resources.
+// 查询云资源中心
 //
 // @param headers - map
 //
@@ -2588,7 +2660,7 @@ func (client *Client) GetCloudResourceWithContext(ctx context.Context, headers m
 
 // Summary:
 //
-// Queries data from the Cloud Resource Center.
+// 查询云资源中心数据
 //
 // @param request - GetCloudResourceDataRequest
 //
@@ -2643,11 +2715,7 @@ func (client *Client) GetCloudResourceDataWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Checks whether a Prometheus service or product is activated.
-//
-// Description:
-//
-// The product and service request parameters cannot be specified in the same request.
+// 获取云监控开通状态
 //
 // @param request - GetCmsServiceRequest
 //
@@ -2698,11 +2766,40 @@ func (client *Client) GetCmsServiceWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Retrieves information about a digital employee.
+// 获取数据投递任务详情
 //
-// Description:
+// @param headers - map
 //
-// Retrieves information about a digital employee.
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeliveryTaskResponse
+func (client *Client) GetDeliveryTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeliveryTaskResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDeliveryTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 DigitalEmployee
 //
 // @param headers - map
 //
@@ -2735,11 +2832,7 @@ func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *s
 
 // Summary:
 //
-// # Retrieves skill details
-//
-// Description:
-//
-// # Retrieves a skill
+// 获取技能详情
 //
 // @param request - GetDigitalEmployeeSkillRequest
 //
@@ -2786,7 +2879,7 @@ func (client *Client) GetDigitalEmployeeSkillWithContext(ctx context.Context, na
 
 // Summary:
 //
-// Retrieves the storage information of an EntityStore.
+// # Get EntityStore related storage information
 //
 // @param headers - map
 //
@@ -2819,7 +2912,7 @@ func (client *Client) GetEntityStoreWithContext(ctx context.Context, workspaceNa
 
 // Summary:
 //
-// Queries the entity and relational data in a specified workspace to retrieve entity data for a specific time range.
+// Query the entity and relationship data under a specified Workspace, returning the entity data within a certain time range (the returned result is transmitted after compression).
 //
 // @param request - GetEntityStoreDataRequest
 //
@@ -2883,7 +2976,7 @@ func (client *Client) GetEntityStoreDataWithContext(ctx context.Context, workspa
 
 // Summary:
 //
-// Retrieves the details of an Integration Center policy.
+// # Query the list of access center policies
 //
 // @param headers - map
 //
@@ -2916,11 +3009,7 @@ func (client *Client) GetIntegrationPolicyWithContext(ctx context.Context, polic
 
 // Summary:
 //
-// Queries the Integration Center version for a container cluster.
-//
-// Description:
-//
-// This operation is not available in the API Explorer.
+// 查询接入中心在CS的版本
 //
 // @param request - GetIntegrationVersionForCSRequest
 //
@@ -2971,7 +3060,7 @@ func (client *Client) GetIntegrationVersionForCSWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves all memories.
+// 查询全部记忆
 //
 // @param request - GetMemoriesRequest
 //
@@ -3038,7 +3127,7 @@ func (client *Client) GetMemoriesWithContext(ctx context.Context, workspace *str
 
 // Summary:
 //
-// Retrieves a single memory.
+// 查询记忆
 //
 // @param headers - map
 //
@@ -3071,7 +3160,7 @@ func (client *Client) GetMemoryWithContext(ctx context.Context, workspace *strin
 
 // Summary:
 //
-// Retrieve memory history.
+// 查询记忆历史记录
 //
 // @param headers - map
 //
@@ -3104,7 +3193,7 @@ func (client *Client) GetMemoryHistoryWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Query a memory store.
+// 查询记忆库
 //
 // @param headers - map
 //
@@ -3137,11 +3226,11 @@ func (client *Client) GetMemoryStoreWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
-// Queries the details of a specified Prometheus instance.
+// # Query the instance in a specified environment
 //
 // Description:
 //
-// Retrieves the details of a Prometheus instance.
+// Retrieve details of a Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -3192,7 +3281,7 @@ func (client *Client) GetPrometheusInstanceWithContext(ctx context.Context, prom
 
 // Summary:
 //
-// Retrieves the user settings for Prometheus.
+// 查询指定环境实例
 //
 // @param request - GetPrometheusUserSettingRequest
 //
@@ -3239,11 +3328,11 @@ func (client *Client) GetPrometheusUserSettingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// # Query a specified Prometheus view instance
 //
 // Description:
 //
-// Retrieves the details of a specified Prometheus view instance.
+// Query a specified Prometheus view instance.
 //
 // @param request - GetPrometheusViewRequest
 //
@@ -3294,7 +3383,7 @@ func (client *Client) GetPrometheusViewWithContext(ctx context.Context, promethe
 
 // Summary:
 //
-// Retrieves the details of an Application Monitoring service.
+// # Query Service
 //
 // @param headers - map
 //
@@ -3327,7 +3416,7 @@ func (client *Client) GetServiceWithContext(ctx context.Context, workspace *stri
 
 // Summary:
 //
-// Retrieves an application observability instance.
+// # Get Application Observability Instance
 //
 // @param headers - map
 //
@@ -3360,11 +3449,7 @@ func (client *Client) GetServiceObservabilityWithContext(ctx context.Context, wo
 
 // Summary:
 //
-// Retrieves a session.
-//
-// Description:
-//
-// Retrieves a session.
+// 获取会话
 //
 // @param headers - map
 //
@@ -3397,11 +3482,7 @@ func (client *Client) GetThreadWithContext(ctx context.Context, name *string, th
 
 // Summary:
 //
-// Retrieves session data.
-//
-// Description:
-//
-// Retrieves session data.
+// 获取会话数据
 //
 // @param request - GetThreadDataRequest
 //
@@ -3452,11 +3533,11 @@ func (client *Client) GetThreadDataWithContext(ctx context.Context, name *string
 
 // Summary:
 //
-// Retrieves the configuration of a Umodel.
+// # Get Umodel configuration information
 //
 // Description:
 //
-// Retrieves the configuration of a Umodel.
+// # Get Umodel configuration information
 //
 // @param headers - map
 //
@@ -3489,7 +3570,7 @@ func (client *Client) GetUmodelWithContext(ctx context.Context, workspace *strin
 
 // Summary:
 //
-// Retrieves the referenced common Umodel schema.
+// 获取Umodel配置信息
 //
 // @param headers - map
 //
@@ -3522,11 +3603,11 @@ func (client *Client) GetUmodelCommonSchemaRefWithContext(ctx context.Context, w
 
 // Summary:
 //
-// Retrieves graph data associated with a Umodel.
+// # Retrieve associated Umodel graph data
 //
 // Description:
 //
-// This operation retrieves the graph data associated with a Umodel.
+// # Find Umodel
 //
 // @param request - GetUmodelDataRequest
 //
@@ -3579,7 +3660,7 @@ func (client *Client) GetUmodelDataWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Retrieves a workspace.
+// # Get Workspace
 //
 // @param headers - map
 //
@@ -3612,11 +3693,11 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, workspaceName
 
 // Summary:
 //
-// Retrieves the releases for an add-on.
+// # List of addon releases
 //
 // Description:
 //
-// This operation retrieves a list of releases for an add-on.
+// # Query the list of access configurations
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -3667,11 +3748,7 @@ func (client *Client) ListAddonReleasesWithContext(ctx context.Context, policyId
 
 // Summary:
 //
-// Lists the products in the new Integration Center by group.
-//
-// Description:
-//
-// Creates a site monitoring job.
+// 新版接入中心产品列表(分组)
 //
 // @param request - ListAddonsRequest
 //
@@ -3730,7 +3807,7 @@ func (client *Client) ListAddonsWithContext(ctx context.Context, request *ListAd
 
 // Summary:
 //
-// Queries a list of aggregation task groups.
+// # List Aggregation Task Groups
 //
 // @param tmpReq - ListAggTaskGroupsRequest
 //
@@ -3811,7 +3888,7 @@ func (client *Client) ListAggTaskGroupsWithContext(ctx context.Context, instance
 
 // Summary:
 //
-// Queries alert action integrations.
+// # Query Alert Actions
 //
 // @param tmpReq - ListAlertActionsRequest
 //
@@ -3880,7 +3957,7 @@ func (client *Client) ListAlertActionsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// # Query webhooks
+// 查询Webhook
 //
 // @param tmpReq - ListAlertWebhooksRequest
 //
@@ -3949,7 +4026,7 @@ func (client *Client) ListAlertWebhooksWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Lists business traces.
+// 业务链路列表
 //
 // @param request - ListBizTracesRequest
 //
@@ -4004,11 +4081,76 @@ func (client *Client) ListBizTracesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Lists skill versions.
+// 获取数据投递任务列表
 //
-// Description:
+// @param tmpReq - ListDeliveryTasksRequest
 //
-// Lists historical versions of a skill.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeliveryTasksResponse
+func (client *Client) ListDeliveryTasksWithContext(ctx context.Context, tmpReq *ListDeliveryTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDeliveryTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDeliveryTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Tag) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, dara.String("tag"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyWords) {
+		query["keyWords"] = request.KeyWords
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.TagShrink) {
+		query["tag"] = request.TagShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDeliveryTasks"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDeliveryTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出技能版本
 //
 // @param headers - map
 //
@@ -4041,11 +4183,7 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithContext(ctx context.Co
 
 // Summary:
 //
-// List the skills.
-//
-// Description:
-//
-// Lists digital employee skills.
+// 列出技能
 //
 // @param request - ListDigitalEmployeeSkillsRequest
 //
@@ -4100,11 +4238,7 @@ func (client *Client) ListDigitalEmployeeSkillsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Lists digital employees.
-//
-// Description:
-//
-// Lists digital employees.
+// 列出资源DigitalEmployee
 //
 // @param tmpReq - ListDigitalEmployeesRequest
 //
@@ -4181,11 +4315,11 @@ func (client *Client) ListDigitalEmployeesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Queries a list of policies in the Integration Center.
+// # Query Access Center Policy List Information
 //
 // Description:
 //
-// Queries a list of integrations.
+// # Query integration list
 //
 // @param tmpReq - ListIntegrationPoliciesRequest
 //
@@ -4290,11 +4424,7 @@ func (client *Client) ListIntegrationPoliciesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Lists the add-ons that are installed for a specified policy.
-//
-// Description:
-//
-// Lists the add-ons that are installed for a specified policy.
+// 策略addon列表
 //
 // @param headers - map
 //
@@ -4327,7 +4457,7 @@ func (client *Client) ListIntegrationPolicyAddonsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries information about collectors for an Integration Center policy.
+// 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyCollectorsRequest
 //
@@ -4382,7 +4512,7 @@ func (client *Client) ListIntegrationPolicyCollectorsWithContext(ctx context.Con
 
 // Summary:
 //
-// Lists the custom service discovery rules for an Integration Center policy.
+// # Get storage requirement information for the access center policy
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -4437,11 +4567,11 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithContext(ctx c
 
 // Summary:
 //
-// Queries a list of integration policy dashboards.
+// # Policy Dashboard List
 //
 // Description:
 //
-// This topic provides an example of how to query a list of integration policy dashboards.
+// This article provides an example of querying the alarm template list. The result shows that there are 2 alarm templates in the list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyDashboardsRequest
 //
@@ -4496,11 +4626,11 @@ func (client *Client) ListIntegrationPolicyDashboardsWithContext(ctx context.Con
 
 // Summary:
 //
-// Lists the PodMonitor resources for an Integration Center policy.
+// # Get PodMonitor Resources of Access Center Policy
 //
 // Description:
 //
-// This topic provides an example of how to list the PodMonitor resources for an Integration Center policy.
+// This article provides an example to query the alarm template list. The result shows that there are 2 alarm templates in the alarm template list, which are `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - ListIntegrationPolicyPodMonitorsRequest
 //
@@ -4555,7 +4685,7 @@ func (client *Client) ListIntegrationPolicyPodMonitorsWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves the ServiceMonitor information for an Integration Center policy.
+// 获取接入中心策略的存储要求信息
 //
 // @param request - ListIntegrationPolicyServiceMonitorsRequest
 //
@@ -4610,13 +4740,13 @@ func (client *Client) ListIntegrationPolicyServiceMonitorsWithContext(ctx contex
 
 // Summary:
 //
-// Lists the storage requirements for an Integration Center policy.
+// # Get Storage Requirements Information for Access Center Policy
 //
 // Description:
 //
-// When a policy is active, alert notifications are not sent for alerts that occur in the application group.
+// During the effective period of the policy, all alarms within the application group will no longer send notifications.
 //
-// This topic provides an example of creating a policy named `PauseNotify`. This policy pauses alert notifications for application group `7301****` from `1622949300000` to `1623208500000` (from `2021-06-06 11:15:00` to `2021-06-09 11:15:00` UTC+8).
+// This article provides an example of creating a pause alarm notification policy `PauseNotify` for the application group `7301****`. This application group will pause alarms from `1622949300000` to `1623208500000` (Beijing Time `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -4671,7 +4801,7 @@ func (client *Client) ListIntegrationPolicyStorageRequirementsWithContext(ctx co
 
 // Summary:
 //
-// Retrieves a list of memory stores.
+// 查询记忆库列表
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -4726,11 +4856,11 @@ func (client *Client) ListMemoryStoresWithContext(ctx context.Context, workspace
 
 // Summary:
 //
-// Retrieves a list of dashboards for a Prometheus instance.
+// # Get Prometheus Instance Dashboard List
 //
 // Description:
 //
-// Retrieves a list of dashboards for a Prometheus instance.
+// Get the list of Prometheus instance dashboards.
 //
 // @param request - ListPrometheusDashboardsRequest
 //
@@ -4781,11 +4911,11 @@ func (client *Client) ListPrometheusDashboardsWithContext(ctx context.Context, p
 
 // Summary:
 //
-// Lists Prometheus instances.
+// # Get the list of Prometheus instance information
 //
 // Description:
 //
-// Lists Prometheus instances.
+// Get the list of Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -4874,11 +5004,11 @@ func (client *Client) ListPrometheusInstancesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Lists the Prometheus view instances.
+// # Retrieve a list of Prometheus view instance information
 //
 // Description:
 //
-// Lists the Prometheus view instances.
+// Retrieve a list of Prometheus view instance information.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -5018,7 +5148,7 @@ func (client *Client) ListPrometheusVirtualInstancesWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries a list of application observability services.
+// # List Resource Services
 //
 // @param tmpReq - ListServicesRequest
 //
@@ -5091,7 +5221,7 @@ func (client *Client) ListServicesWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Queries the tags attached to resources.
+// 查标签接口
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -5164,11 +5294,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Lists sessions.
-//
-// Description:
-//
-// This operation lists sessions.
+// 列出会话
 //
 // @param tmpReq - ListThreadsRequest
 //
@@ -5237,7 +5363,7 @@ func (client *Client) ListThreadsWithContext(ctx context.Context, name *string, 
 
 // Summary:
 //
-// Retrieves a list of workspaces.
+// # Get Workspace List
 //
 // @param tmpReq - ListWorkspacesRequest
 //
@@ -5306,7 +5432,7 @@ func (client *Client) ListWorkspacesWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// Creates a workspace.
+// # Create Workspace
 //
 // @param request - PutWorkspaceRequest
 //
@@ -5361,7 +5487,7 @@ func (client *Client) PutWorkspaceWithContext(ctx context.Context, workspaceName
 
 // Summary:
 //
-// Search memories using query conditions and filters.
+// 搜索记忆
 //
 // @param request - SearchMemoriesRequest
 //
@@ -5436,7 +5562,7 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspace *
 
 // Summary:
 //
-// Adds tags to one or more resources.
+// 打标签接口
 //
 // @param request - TagResourcesRequest
 //
@@ -5491,7 +5617,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// # Deletes a tag
+// 删标签接口
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -5560,7 +5686,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// Upgrades an add-on component.
+// # Upgrade Access Component
 //
 // @param request - UpdateAddonReleaseRequest
 //
@@ -5619,7 +5745,7 @@ func (client *Client) UpdateAddonReleaseWithContext(ctx context.Context, release
 
 // Summary:
 //
-// Updates an aggregation task group.
+// # Apply Aggregation Task Group
 //
 // @param request - UpdateAggTaskGroupRequest
 //
@@ -5726,7 +5852,7 @@ func (client *Client) UpdateAggTaskGroupWithContext(ctx context.Context, instanc
 
 // Summary:
 //
-// Updates the status of an aggregation task group.
+// # Update Aggregation Task Group Status
 //
 // @param request - UpdateAggTaskGroupStatusRequest
 //
@@ -5773,7 +5899,7 @@ func (client *Client) UpdateAggTaskGroupStatusWithContext(ctx context.Context, i
 
 // Summary:
 //
-// Updates a webhook.
+// 修改已存在的告警 Webhook 通知配置。
 //
 // @param request - UpdateAlertWebhookRequest
 //
@@ -5840,7 +5966,7 @@ func (client *Client) UpdateAlertWebhookWithContext(ctx context.Context, webhook
 
 // Summary:
 //
-// Modifies a business trace.
+// 修改业务链路
 //
 // @param request - UpdateBizTraceRequest
 //
@@ -5899,11 +6025,86 @@ func (client *Client) UpdateBizTraceWithContext(ctx context.Context, bizTraceId 
 
 // Summary:
 //
-// Updates a digital employee.
+// 更新数据投递任务
 //
-// Description:
+// @param request - UpdateDeliveryTaskRequest
 //
-// Updates a digital employee.
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDeliveryTaskResponse
+func (client *Client) UpdateDeliveryTaskWithContext(ctx context.Context, taskId *string, request *UpdateDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		body["dataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.ExternalLabels) {
+		body["externalLabels"] = request.ExternalLabels
+	}
+
+	if !dara.IsNil(request.LabelFilters) {
+		body["labelFilters"] = request.LabelFilters
+	}
+
+	if !dara.IsNil(request.LabelFiltersType) {
+		body["labelFiltersType"] = request.LabelFiltersType
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SinkList) {
+		body["sinkList"] = request.SinkList
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDeliveryTask"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/delivery-task/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDeliveryTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新UpdateDigitalEmployee
 //
 // @param request - UpdateDigitalEmployeeRequest
 //
@@ -5966,11 +6167,7 @@ func (client *Client) UpdateDigitalEmployeeWithContext(ctx context.Context, name
 
 // Summary:
 //
-// Updates a skill.
-//
-// Description:
-//
-// Updates a skill.
+// 更新技能
 //
 // @param request - UpdateDigitalEmployeeSkillRequest
 //
@@ -6033,7 +6230,7 @@ func (client *Client) UpdateDigitalEmployeeSkillWithContext(ctx context.Context,
 
 // Summary:
 //
-// Updates the specified policy.
+// # Update the specified policy
 //
 // @param request - UpdateIntegrationPolicyRequest
 //
@@ -6092,7 +6289,7 @@ func (client *Client) UpdateIntegrationPolicyWithContext(ctx context.Context, in
 
 // Summary:
 //
-// Updates a specific Memory.
+// 修改记忆
 //
 // @param request - UpdateMemoryRequest
 //
@@ -6143,7 +6340,7 @@ func (client *Client) UpdateMemoryWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Modify a memory store.
+// 修改记忆库配置
 //
 // @param request - UpdateMemoryStoreRequest
 //
@@ -6202,7 +6399,7 @@ func (client *Client) UpdateMemoryStoreWithContext(ctx context.Context, workspac
 
 // Summary:
 //
-// Updates a notification policy.
+// 修改已存在的告警通知策略
 //
 // @param request - UpdateNotifyStrategyRequest
 //
@@ -6250,11 +6447,11 @@ func (client *Client) UpdateNotifyStrategyWithContext(ctx context.Context, notif
 
 // Summary:
 //
-// Updates the information of a Prometheus instance.
+// # Update Prometheus instance information
 //
 // Description:
 //
-// This topic describes how to update a Prometheus instance.
+// Update Prometheus instance information.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -6341,7 +6538,7 @@ func (client *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, p
 
 // Summary:
 //
-// Updates the user settings for Prometheus. Note: If you set `settingKey` to `financeUsageRegion`, Prometheus usage data is sent to Simple Log Service (SLS) in the specified region. Historical usage data will no longer be available in the Prometheus console.
+// 更新Prom实例信息
 //
 // @param request - UpdatePrometheusUserSettingRequest
 //
@@ -6388,11 +6585,11 @@ func (client *Client) UpdatePrometheusUserSettingWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates the information about a Prometheus view instance.
+// # Update Prometheus view instance information
 //
 // Description:
 //
-// Updates the information about a Prometheus view instance.
+// Update Prometheus view instance information.
 //
 // @param request - UpdatePrometheusViewRequest
 //
@@ -6463,7 +6660,7 @@ func (client *Client) UpdatePrometheusViewWithContext(ctx context.Context, prome
 
 // Summary:
 //
-// Updates an application observability service.
+// # Update Service
 //
 // @param request - UpdateServiceRequest
 //
@@ -6522,7 +6719,7 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, workspace *s
 
 // Summary:
 //
-// Updates a subscription.
+// 更新一个已存在的订阅配置
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -6570,11 +6767,7 @@ func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, subscri
 
 // Summary:
 //
-// Updates a session.
-//
-// Description:
-//
-// Updates a session.
+// 更新会话
 //
 // @param request - UpdateThreadRequest
 //
@@ -6629,11 +6822,11 @@ func (client *Client) UpdateThreadWithContext(ctx context.Context, name *string,
 
 // Summary:
 //
-// Updates the configuration of a Umodel.
+// # Update Umodel configuration information
 //
 // Description:
 //
-// Updates the configuration of a Umodel.
+// # Update Umodel configuration information
 //
 // @param request - UpdateUmodelRequest
 //
@@ -6680,7 +6873,7 @@ func (client *Client) UpdateUmodelWithContext(ctx context.Context, workspace *st
 
 // Summary:
 //
-// Upserts a common Umodel schema reference.
+// 更新Umodel配置信息
 //
 // @param request - UpsertUmodelCommonSchemaRefRequest
 //
@@ -6731,7 +6924,7 @@ func (client *Client) UpsertUmodelCommonSchemaRefWithContext(ctx context.Context
 
 // Summary:
 //
-// Inserts or updates Umodel elements.
+// # Write Umodel Elements
 //
 // @param request - UpsertUmodelDataRequest
 //

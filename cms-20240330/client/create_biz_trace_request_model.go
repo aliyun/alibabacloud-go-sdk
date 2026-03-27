@@ -22,32 +22,22 @@ type iCreateBizTraceRequest interface {
 }
 
 type CreateBizTraceRequest struct {
-	// The advanced configuration.
-	//
 	// example:
 	//
 	// {"sample":{"strategy":"BY_APP"}}
 	AdvancedConfig *string `json:"advancedConfig,omitempty" xml:"advancedConfig,omitempty"`
-	// The identifier for the business trace. It can contain only letters, digits, and underscores (_). The first character must be a lowercase letter.
-	//
 	// example:
 	//
 	// label_env
 	BizTraceCode *string `json:"bizTraceCode,omitempty" xml:"bizTraceCode,omitempty"`
-	// The name of the business trace.
-	//
 	// example:
 	//
 	// just test
 	BizTraceName *string `json:"bizTraceName,omitempty" xml:"bizTraceName,omitempty"`
-	// The configuration rules.
-	//
 	// example:
 	//
 	// [{"entrancePid":"xxx@d9w3jd9j3","rpcMatcher":{"matchType":"EQUALS","pattern":"/"},"characteristics":{"operation":"OR","rules":[{"target":"CUSTOM_EXTRACT","id":"oi0b3bb7","key":"biz.test","matcher":{"matchType":"CONTAINS","pattern":["1"]}}]}}]
 	RuleConfig *string `json:"ruleConfig,omitempty" xml:"ruleConfig,omitempty"`
-	// The workspace.
-	//
 	// example:
 	//
 	// default-cms-xxxxxxx-cn-hangzhou

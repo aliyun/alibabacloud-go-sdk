@@ -14,7 +14,7 @@ type iDeleteUmodelResponseBody interface {
 }
 
 type DeleteUmodelResponseBody struct {
-	// The ID of the request.
+	// request ID
 	//
 	// example:
 	//

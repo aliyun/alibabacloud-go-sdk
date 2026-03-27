@@ -30,51 +30,51 @@ type iIncidentEscalationStageStruct interface {
 }
 
 type IncidentEscalationStageStruct struct {
-	// 联系人列表
+	// Contact list.
 	Contact []*IncidentContactStruct `json:"contact,omitempty" xml:"contact,omitempty" type:"Repeated"`
-	// 周期通知统计次数
+	// Number of recurring notification attempts.
 	//
 	// example:
 	//
 	// 3
 	CycleNotifyCount *int32 `json:"cycleNotifyCount,omitempty" xml:"cycleNotifyCount,omitempty"`
-	// 周期通知时间
+	// Recurring notification interval.
 	//
 	// example:
 	//
 	// 300
 	CycleNotifyTime *int32 `json:"cycleNotifyTime,omitempty" xml:"cycleNotifyTime,omitempty"`
-	// 描述
+	// Description.
 	//
 	// example:
 	//
-	// 负责处理生产环境告警的主负责人
+	// Primary owner responsible for handling production environment alerts.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 有效时间
+	// Effective time period.
 	//
 	// example:
 	//
 	// 2025-04-05T00:00:00Z
 	EffectTime *string `json:"effectTime,omitempty" xml:"effectTime,omitempty"`
-	// 名称
+	// Name.
 	//
 	// example:
 	//
-	// 运维团队
+	// Operations team.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 阶段指数
+	// Phase index.
 	//
 	// example:
 	//
 	// 1
 	StageIndex *int32 `json:"stageIndex,omitempty" xml:"stageIndex,omitempty"`
-	// 时区
+	// Time zone.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-	// 等待进入下一阶段的时间
+	// Time to wait before proceeding to the next phase.
 	//
 	// example:
 	//

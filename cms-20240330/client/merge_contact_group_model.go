@@ -26,40 +26,21 @@ type iMergeContactGroup interface {
 }
 
 type MergeContactGroup struct {
-	// 组内成员的唯一标识符列表。
-	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
-	// 扩展字段，用于存储额外信息。
-	//
-	// example:
-	//
-	// { "department": "运维部", "role": "工程师" }
-	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
-	// 创建时间。
-	//
+	Contacts []*string              `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
+	Extend   map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 最后修改时间。
-	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 联系人组唯一标识符。
-	//
 	// example:
 	//
 	// group-12345
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// 联系人组名称。
-	//
-	// example:
-	//
-	// 运维团队
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 联系人组来源系统。
-	//
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// dingtalk

@@ -22,27 +22,27 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
-	// The maximum number of results returned. The maximum value is 200.
+	// Maximum number of results to return, with a maximum value of 200
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The paging token.
+	// Pagination token
 	//
 	// example:
 	//
 	// 2-ba4d-4b9f-aa24-dcb067a30f1c
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A list of service information.
+	// List of service information.
 	Services []*ListServicesResponseBodyServices `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
-	// The total number of records.
+	// Total count
 	//
 	// example:
 	//
@@ -117,67 +117,65 @@ func (s *ListServicesResponseBody) Validate() error {
 }
 
 type ListServicesResponseBodyServices struct {
-	// Additional information.
+	// Extended information.
 	//
 	// example:
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The creation time.
+	// Creation time
 	//
 	// example:
 	//
 	// 2025-07-01T02:23:59Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The service description. This parameter is valid only when serviceType is RUM.
+	// Service description, valid only when serviceType=RUM.
 	//
 	// example:
 	//
 	// workspace api monitor test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name. This parameter is valid only when serviceType is RUM.
+	// Display name, valid only when serviceType=RUM.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ID of the ARMS application for backward compatibility.
+	// Historical compatible ARMS application ID
 	//
 	// example:
 	//
 	// kgcsf@192197e828d51aa
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
-	// The resource group ID.
-	//
 	// example:
 	//
 	// rg-aekxxzuad5zzzz
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The service ID.
+	// Service ID
 	//
 	// example:
 	//
 	// jm2pl0yoqf@d4905cb11a4f218dfb0a8
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service name.
+	// Service name
 	//
 	// example:
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The service status. This parameter is valid only when serviceType is RUM.
+	// Service status, valid only when serviceType=RUM.
 	//
 	// example:
 	//
 	// Running
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	// The service type.
+	// Service type
 	//
 	// example:
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// The workspace.
+	// Workspace.
 	//
 	// example:
 	//

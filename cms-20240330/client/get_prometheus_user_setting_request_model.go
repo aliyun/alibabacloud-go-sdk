@@ -14,8 +14,6 @@ type iGetPrometheusUserSettingRequest interface {
 }
 
 type GetPrometheusUserSettingRequest struct {
-	// The language of the response. Valid values: zh and en. Default value: zh.
-	//
 	// example:
 	//
 	// zh

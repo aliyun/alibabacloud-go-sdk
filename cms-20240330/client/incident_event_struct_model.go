@@ -40,73 +40,73 @@ type iIncidentEventStruct interface {
 }
 
 type IncidentEventStruct struct {
-	// 自动恢复时间。
+	// Automatic recovery time.
 	//
 	// example:
 	//
 	// 1741234567890
 	AutoRecoverTime *int64 `json:"autoRecoverTime,omitempty" xml:"autoRecoverTime,omitempty"`
-	// 内容。
+	// Content.
 	//
 	// example:
 	//
-	// 检测到 user-service 实例 i-abc123 的 CPU 使用率达到 95%，已触发告警。
+	// Detected that the CPU usage of the user-service instance i-abc123 has reached 95%, triggering an alert.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 统计数量。
+	// Count.
 	//
 	// example:
 	//
 	// 6
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// 维度。
+	// Dimension.
 	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	// 用于分组维度。
+	// Used for grouping dimensions.
 	GroupBy map[string]*string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
-	// 事件事件ID。
+	// Incident Event Id.
 	//
 	// example:
 	//
 	// event-001
 	IncidentEventId *string `json:"incidentEventId,omitempty" xml:"incidentEventId,omitempty"`
-	// 事件ID。
+	// Incident Id.
 	//
 	// example:
 	//
 	// incident-001
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// 最后时间。
+	// Last time.
 	//
 	// example:
 	//
 	// 1741234567890
 	LastTime *int64 `json:"lastTime,omitempty" xml:"lastTime,omitempty"`
-	// 手动恢复时间。
+	// Manual recovery time.
 	//
 	// example:
 	//
 	// 1741234567890
 	RecoverTime *int64 `json:"recoverTime,omitempty" xml:"recoverTime,omitempty"`
-	// 描述事件关联的资源信息。
+	// Describes the resource information associated with the event.
 	Resource map[string]*string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// 状态。
+	// Status.
 	//
 	// example:
 	//
 	// Running
 	Status *int64 `json:"status,omitempty" xml:"status,omitempty"`
-	// 时间。
+	// Time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58Z
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// 标题。
+	// Title.
 	//
 	// example:
 	//
-	// 用户服务 CPU 使用率过高
+	// User service CPU usage is too high.
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 用户ID。
+	// User ID.
 	//
 	// example:
 	//
