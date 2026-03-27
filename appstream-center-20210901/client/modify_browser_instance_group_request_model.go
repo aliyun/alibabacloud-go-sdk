@@ -644,7 +644,9 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	// example:
 	//
 	// off
-	RichTextClipboard *string `json:"RichTextClipboard,omitempty" xml:"RichTextClipboard,omitempty"`
+	RichTextClipboard         *string `json:"RichTextClipboard,omitempty" xml:"RichTextClipboard,omitempty"`
+	RichTextClipboardLimit    *int32  `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
+	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
 	// The text clipboard policy.
 	//
 	// Valid values:
@@ -699,6 +701,14 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClip
 	return s.RichTextClipboard
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardLimit() *int32 {
+	return s.RichTextClipboardLimit
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardSizeUnit() *string {
+	return s.RichTextClipboardSizeUnit
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetTextClipboard() *string {
 	return s.TextClipboard
 }
@@ -735,6 +745,16 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetFileClipboar
 
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboard(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
 	s.RichTextClipboard = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardLimit(v int32) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.RichTextClipboardLimit = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.RichTextClipboardSizeUnit = &v
 	return s
 }
 
