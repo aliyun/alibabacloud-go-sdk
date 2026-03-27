@@ -22,7 +22,6 @@ type iDescribeAutoProvisioningGroupHistoryResponseBody interface {
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBody struct {
-	// An array consisting of AutoProvisioningGroupHistory data.
 	AutoProvisioningGroupHistories *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistories `json:"AutoProvisioningGroupHistories,omitempty" xml:"AutoProvisioningGroupHistories,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,38 +146,11 @@ func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHi
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistory struct {
-	// An array consisting of ActivityDetail data.
 	ActivityDetails *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetails `json:"ActivityDetails,omitempty" xml:"ActivityDetails,omitempty" type:"Struct"`
-	// The execution time of the last instance creation performed by the single scheduling task.
-	//
-	// example:
-	//
-	// 2019-04-01T15:10:20Z
-	LastEventTime *string `json:"LastEventTime,omitempty" xml:"LastEventTime,omitempty"`
-	// The start time of executing the single scheduling task.
-	//
-	// example:
-	//
-	// 2019-04-01T15:10:20Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The execution status of the single scheduling task. Valid values:
-	//
-	// 	- prepare: The scheduling task is being executed.
-	//
-	// 	- success: The scheduling task is executed.
-	//
-	// 	- failed: The scheduling task failed to be executed.
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the scheduling task.
-	//
-	// example:
-	//
-	// apg-task-bp67acfmxazb4p****
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	LastEventTime   *string                                                                                                                    `json:"LastEventTime,omitempty" xml:"LastEventTime,omitempty"`
+	StartTime       *string                                                                                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string                                                                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId          *string                                                                                                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistory) String() string {
@@ -278,25 +250,7 @@ func (s *DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHi
 }
 
 type DescribeAutoProvisioningGroupHistoryResponseBodyAutoProvisioningGroupHistoriesAutoProvisioningGroupHistoryActivityDetailsActivityDetail struct {
-	// The execution details of instance creation performed by the single scheduling task.
-	//
-	// example:
-	//
-	// New ECS instances "i-bp67acfmxazb4p****, i-bp67acfmxazb5p****" created.
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The execution status of instance creation performed by the single scheduling task. Valid values:
-	//
-	// 	- Successful: Instances are created.
-	//
-	// 	- Failed: Instances failed to be created.
-	//
-	// 	- InProgress: Instances are being created.
-	//
-	// 	- Warning: Some instances are created.
-	//
-	// example:
-	//
-	// Successful
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

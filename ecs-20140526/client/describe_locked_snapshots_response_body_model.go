@@ -119,6 +119,10 @@ type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
 	//
 	// 2025-10-16T10:00:00Z
 	LockExpiredTime *string `json:"LockExpiredTime,omitempty" xml:"LockExpiredTime,omitempty"`
+	// example:
+	//
+	// compliance
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The lock status. Valid values:
 	//
 	// 	- compliance-cooloff: The snapshot is locked in compliance mode but is still in a cooling-off period. Snapshots cannot be deleted. However, users with the corresponding RAM permissions can unlock snapshots, extend or shorten the cooling-off period, and extend or shorten the lock duration.
@@ -171,6 +175,10 @@ func (s *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo) GetLockExpiredT
 	return s.LockExpiredTime
 }
 
+func (s *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo) GetLockMode() *string {
+	return s.LockMode
+}
+
 func (s *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo) GetLockStatus() *string {
 	return s.LockStatus
 }
@@ -206,6 +214,11 @@ func (s *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo) SetLockDuration
 
 func (s *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo) SetLockExpiredTime(v string) *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo {
 	s.LockExpiredTime = &v
+	return s
+}
+
+func (s *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo) SetLockMode(v string) *DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo {
+	s.LockMode = &v
 	return s
 }
 

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// dubbo
+// Accepts the default operation for a system event in the Inquiring state and authorizes the system to perform the operation.
 //
 // @param request - AcceptInquiredSystemEventRequest
 //
@@ -537,7 +537,7 @@ func (client *Client) AllocateEipAddressWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Assigns a static public IP address (also called system-assigned public IP address or auto-assigned public IP address) to an Elastic Compute Service (ECS) instance.
+// Assigns a static public IP address to an Elastic Compute Service (ECS) instance. We recommend using ModifyInstanceNetworkSpec to assign public IP addresses.
 //
 // Description:
 //
@@ -1987,7 +1987,7 @@ func (client *Client) AuthorizeSecurityGroupEgressWithContext(ctx context.Contex
 
 // Summary:
 //
-// Disables automatic snapshot policies for one or more disks.
+// Disables an automatic snapshot policy for one or more cloud disks.
 //
 // @param request - CancelAutoSnapshotPolicyRequest
 //
@@ -3632,6 +3632,10 @@ func (client *Client) CreateDeploymentSetWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Strategy) {
 		query["Strategy"] = request.Strategy
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9257,7 +9261,7 @@ func (client *Client) DeleteNatGatewayWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes an elastic network interface (ENI) in a region. DeleteNetworkInterface is an asynchronous operation.
+// Deletes an ENI.
 //
 // Description:
 //
@@ -9495,7 +9499,7 @@ func (client *Client) DeletePhysicalConnectionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除运维窗口
+// Delete O\\\\\\&M window
 //
 // @param request - DeletePlanMaintenanceWindowRequest
 //
@@ -11047,7 +11051,7 @@ func (client *Client) DescribeAutoSnapshotPolicyExWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询可用资源
+// Query the inventory status of resources in a specified zone. This API is primarily used to confirm whether the target resources (such as instance types or system disk types) have sufficient inventory in a specific zone before creating an instance (RunInstances) or modifying an instance specification (ModifyInstanceSpec).
 //
 // @param request - DescribeAvailableResourceRequest
 //
@@ -11245,8 +11249,6 @@ func (client *Client) DescribeBandwidthLimitationWithContext(ctx context.Context
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribeBandwidthPackages is deprecated, please use Vpc::2016-04-28::DescribeBandwidthPackages instead.
-//
 // Summary:
 //
 // # DescribeBandwidthPackages
@@ -12424,6 +12426,10 @@ func (client *Client) DescribeDeploymentSetsWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.Strategy) {
 		query["Strategy"] = request.Strategy
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13863,7 +13869,7 @@ func (client *Client) DescribeHaVipsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\*\\*token\\*\\	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence]\\(~~25693~~).
+// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The \\\\*\\\\*token\\\\*\\\\	- can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see \\[How to ensure idempotence]\\\\(~~25693~~).
 //
 // @param request - DescribeHpcClustersRequest
 //
@@ -16225,33 +16231,33 @@ func (client *Client) DescribeInstancesFullStatusWithContext(ctx context.Context
 //
 // The execution status of the command. Valid values:
 //
-//   - Running:
+// \\	- Running:
 //
-//   - Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
+//	\\	- Scheduled task: Before you stop the scheduled execution of the command, the execution state is always Running.
 //
-//   - One-time task: If the command is being run on instances, the execution state is Running.
+//	\\	- One-time task: If the command is being run on instances, the execution state is Running.
 //
-//   - Finished:
+// \\	- Finished:
 //
-//   - Scheduled task: The execution state can never be Finished.
+//	\\	- Scheduled task: The execution state can never be Finished.
 //
-//   - One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
+//	\\	- One-time task: The execution was complete on all instances, or the execution was stopped on some instances and was complete on the other instances.
 //
-//   - Failed:
+// \\	- Failed:
 //
-//   - Scheduled task: The execution state can never be Failed.
+//	\\	- Scheduled task: The execution state can never be Failed.
 //
-//   - One-time task: The execution failed on all instances.
+//	\\	- One-time task: The execution failed on all instances.
 //
-//   - PartialFailed:
+// \\	- PartialFailed:
 //
-//   - Scheduled task: The execution state can never be PartialFailed.
+//	\\	- Scheduled task: The execution state can never be PartialFailed.
 //
-//   - One-time task: The execution failed on some instances.
+//	\\	- One-time task: The execution failed on some instances.
 //
-//   - Stopped: The task was stopped.
+// \\	- Stopped: The task was stopped.
 //
-//   - Stopping: The task is being stopped.
+// \\	- Stopping: The task is being stopped.
 //
 // Description:
 //
@@ -16367,7 +16373,7 @@ func (client *Client) DescribeInvocationResultsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// The command type.
+// Invoke the DescribeInvocations API to query the execution list and status of Cloud Assistant commands.
 //
 // Description:
 //
@@ -22007,7 +22013,7 @@ func (client *Client) DetachKeyPairWithContext(ctx context.Context, request *Det
 
 // Summary:
 //
-// Detach an elastic network interface (ENI) from an Elastic Compute Service (ECS) instance.
+// Detaches an ENI from an ECS instance.
 //
 // Description:
 //
@@ -22395,7 +22401,7 @@ func (client *Client) EnableDiskEncryptionByDefaultWithContext(ctx context.Conte
 
 // Summary:
 //
-// 启用或修改弹性网卡QoS限速设置
+// # Enable or modify Elastic Network Interface (ENI) QoS rate limit settings
 //
 // @param request - EnableNetworkInterfaceQoSRequest
 //
@@ -23301,7 +23307,7 @@ func (client *Client) ImportImageWithContext(ctx context.Context, request *Impor
 
 // Summary:
 //
-// Imports the public key of a Rivest-Shamir-Adleman (RSA) key pair that is generated by a third-party tool. After the key pair is imported, Alibaba Cloud stores the public key. You must securely lock away the private key.
+// Imports the public key of a Rivest-Shamir-Adleman (RSA) key pair that is generated by a third-party tool. After the key pair is imported, Alibaba Cloud stores the public key. You must securely store the private key.
 //
 // Description:
 //
@@ -23405,7 +23411,7 @@ func (client *Client) ImportKeyPairWithContext(ctx context.Context, request *Imp
 
 // Summary:
 //
-// Installs Cloud Assistant Agent on Elastic Compute Service (ECS) instances. After you install Cloud Assistant Agent on ECS instances, restart the instances for the installation to take effect.
+// Installs Cloud Assistant Agent on Elastic Compute Service (ECS) instances. After installing Cloud Assistant Agent on ECS instances, restart the instances for the installation to take effect.
 //
 // Description:
 //
@@ -24593,6 +24599,10 @@ func (client *Client) ModifyCloudAssistantSettingsWithContext(ctx context.Contex
 		request.OssDeliveryConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OssDeliveryConfig, dara.String("OssDeliveryConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.ResourceUsageConfig) {
+		request.ResourceUsageConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceUsageConfig, dara.String("ResourceUsageConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SessionManagerConfig) {
 		request.SessionManagerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionManagerConfig, dara.String("SessionManagerConfig"), dara.String("json"))
 	}
@@ -24628,6 +24638,10 @@ func (client *Client) ModifyCloudAssistantSettingsWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ResourceUsageConfigShrink) {
+		query["ResourceUsageConfig"] = request.ResourceUsageConfigShrink
 	}
 
 	if !dara.IsNil(request.SessionManagerConfigShrink) {
@@ -34745,9 +34759,9 @@ func (client *Client) StopInstancesWithContext(ctx context.Context, request *Sto
 
 // Summary:
 //
-// \\	- If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
+// \\\\	- If you stop the process of a command that runs only once, the executions that have started are not interrupted. The executions that have not started are canceled.
 //
-// \\	- If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
+// \\\\	- If you stop the process of a scheduled invocation command, the executions that have started are not interrupted. However, the execution does not start in the next period.
 //
 // Description:
 //
@@ -35139,7 +35153,7 @@ func (client *Client) UnassignIpv6AddressesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Unassigns secondary private IP addresses from an elastic network interface (ENI).
+// Unassigns one or more secondary private IP addresses from an ENI.
 //
 // Description:
 //
