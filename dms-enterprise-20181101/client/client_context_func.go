@@ -16887,6 +16887,62 @@ func (client *Client) SearchTableWithContext(ctx context.Context, request *Searc
 
 // Summary:
 //
+// 根据用户提供的问题，智能搜索获取表知识
+//
+// Description:
+//
+// 根据用户提供的问题，智能搜索获取表知识
+//
+// @param request - SearchTableKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchTableKnowledgeResponse
+func (client *Client) SearchTableKnowledgeWithContext(ctx context.Context, request *SearchTableKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *SearchTableKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchTableKnowledge"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchTableKnowledgeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the owner of an instance, a database, or a table.
 //
 // @param request - SetOwnersRequest
