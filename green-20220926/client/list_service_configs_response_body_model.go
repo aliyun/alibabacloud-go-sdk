@@ -149,6 +149,7 @@ type ListServiceConfigsResponseBodyData struct {
 	//
 	// text
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SceneType    *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 	// Service code.
 	//
 	// example:
@@ -219,6 +220,10 @@ func (s *ListServiceConfigsResponseBodyData) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *ListServiceConfigsResponseBodyData) GetSceneType() *string {
+	return s.SceneType
+}
+
 func (s *ListServiceConfigsResponseBodyData) GetServiceCode() *string {
 	return s.ServiceCode
 }
@@ -270,6 +275,11 @@ func (s *ListServiceConfigsResponseBodyData) SetOption(v map[string]interface{})
 
 func (s *ListServiceConfigsResponseBodyData) SetResourceType(v string) *ListServiceConfigsResponseBodyData {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *ListServiceConfigsResponseBodyData) SetSceneType(v string) *ListServiceConfigsResponseBodyData {
+	s.SceneType = &v
 	return s
 }
 
