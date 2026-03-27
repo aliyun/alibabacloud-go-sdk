@@ -16,7 +16,17 @@ type iDatasetLabel interface {
 }
 
 type DatasetLabel struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Dataset label keys
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Dataset label values
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

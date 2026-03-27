@@ -20,10 +20,30 @@ type iIdentifyCredential interface {
 }
 
 type IdentifyCredential struct {
+	// The data source.
 	DataSource *IdentifyCredentialDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	ProjectId  *string                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	UserId     *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserType   *string                       `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	// The workspace ID (optional).
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The user ID. If it is a role, the ROLE_ prefix must be added.
+	//
+	// example:
+	//
+	// ROLE_300888674340307309
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 	- Alibaba Cloud account
+	//
+	// 	- RAM user
+	//
+	// 	- Role
+	//
+	// example:
+	//
+	// primaryAccount
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
 func (s IdentifyCredential) String() string {
@@ -80,12 +100,58 @@ func (s *IdentifyCredential) Validate() error {
 }
 
 type IdentifyCredentialDataSource struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID of the data source.
+	//
+	// example:
+	//
+	// 710007423244
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name of the data source.
+	//
+	// example:
+	//
+	// rm-2zez82ho69yex7s7g
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The password for the data source.
+	//
+	// example:
+	//
+	// ***
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The user type of the data source.
+	//
+	// 	- Admin
+	//
+	// 	- RegularUser
+	//
+	// Valid values:
+	//
+	// 	- RegularUser: Normal user.
+	//
+	// 	- Admin: Administrator.
+	//
+	// example:
+	//
+	// admin
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The type of the data source. Supported types:
+	//
+	// 	- hive
+	//
+	// 	- lindorm_for_engine
+	//
+	// 	- starrocks
+	//
+	// example:
+	//
+	// hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username for the data source.
+	//
+	// example:
+	//
+	// tom
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s IdentifyCredentialDataSource) String() string {

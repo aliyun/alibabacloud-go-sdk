@@ -36,18 +36,84 @@ type iDatasetVersion interface {
 }
 
 type DatasetVersion struct {
-	Comment       *string            `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime    *int64             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatorId     *string            `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DatasetId     *string            `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	Id            *string            `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImportInfo    map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	Labels        []*DatasetLabel    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ModifyTime    *int64             `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	MountPath     *string            `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	StorageType   *string            `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Url           *string            `json:"Url,omitempty" xml:"Url,omitempty"`
-	VersionNumber *int32             `json:"VersionNumber,omitempty" xml:"VersionNumber,omitempty"`
+	// The dataset version description.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Creation time (milliseconds)
+	//
+	// example:
+	//
+	// 1736756055000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator ID.
+	//
+	// example:
+	//
+	// 17815XXX61016173
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The corresponding dataset ID.
+	//
+	// example:
+	//
+	// dataworks-datasetVersion:0gfxxxjx155usz3hrv
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version ID.
+	//
+	// example:
+	//
+	// dataworks-datasetVersion:0gfxxxjx155usz3hrv:1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The storage import configuration for the dataset; required configuration varies by storage type.
+	//
+	// **NAS**
+	//
+	// Refer to the return values from the file storage API DescribeFileSystems.
+	//
+	// ```JSON
+	//
+	// {
+	//
+	// "fileSystemId": "3b6XXX89c9", // The file system ID.
+	//
+	// "fileSystemStorageType":  "Performance" // The file system storage type.
+	//
+	// "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+	//
+	// }
+	//
+	// ```
+	ImportInfo map[string]*string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// The PAI dataset label.
+	Labels []*DatasetLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Modification time (milliseconds)
+	//
+	// example:
+	//
+	// 1736756055000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The mount path. Defaults to /mnt/data.
+	//
+	// example:
+	//
+	// /mnt/data
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// Storage type (read-only); consistent with the corresponding property of the parent dataset.
+	//
+	// example:
+	//
+	// OSS
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// URL
+	//
+	// example:
+	//
+	// oss://test-oss-bucket/test_dir/
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The dataset version number.
+	//
+	// example:
+	//
+	// 1
+	VersionNumber *int32 `json:"VersionNumber,omitempty" xml:"VersionNumber,omitempty"`
 }
 
 func (s DatasetVersion) String() string {

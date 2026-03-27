@@ -62,7 +62,13 @@ type UpdateDataQualityRuleShrinkRequest struct {
 	//
 	// The table cannot be empty.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`

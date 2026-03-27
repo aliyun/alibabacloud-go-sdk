@@ -34,38 +34,52 @@ type iDataQualityEvaluationTask interface {
 }
 
 type DataQualityEvaluationTask struct {
+	// The ID of the data source that is used for task running.
+	//
 	// example:
 	//
 	// 201
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The description of the task. The description can be up to 65,535 characters in length.
+	//
 	// example:
 	//
 	// This is a daily run data quality evaluation plan.
-	Description *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Hooks       []*DataQualityEvaluationTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The callback configurations of the task during the instance lifecycle. Blocking an auto triggered node is a type of callback event. Only this type is supported.
+	Hooks []*DataQualityEvaluationTaskHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
+	// The ID of the data quality monitoring task.
+	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 质量校验任务
-	Name          *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The configurations for alert notifications.
 	Notifications []*DataQualityEvaluationTaskNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field can be set to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks.
+	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
-	RuntimeConf *string                          `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	Target      *DataQualityEvaluationTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
+	// The monitored object of the task.
+	Target *DataQualityEvaluationTaskTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
+	// The DataWorks tenant ID.
+	//
 	// example:
 	//
 	// 10
-	TenantId *int64                            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Trigger  *DataQualityEvaluationTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The trigger configuration of the task.
+	Trigger *DataQualityEvaluationTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
 func (s DataQualityEvaluationTask) String() string {
@@ -208,10 +222,16 @@ func (s *DataQualityEvaluationTask) Validate() error {
 }
 
 type DataQualityEvaluationTaskHooks struct {
+	// The trigger configuration of the callback event.
+	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The type of the callback event. Valid values:
+	//
+	// 	- BlockTaskInstance. The value indicates that an auto triggered node is blocked.
+	//
 	// example:
 	//
 	// BlockTaskInstance
@@ -249,10 +269,13 @@ func (s *DataQualityEvaluationTaskHooks) Validate() error {
 }
 
 type DataQualityEvaluationTaskNotifications struct {
+	// The trigger condition of the alert notification.
+	//
 	// example:
 	//
 	// ${blockType} == "Strong"
-	Condition     *string                                                `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The configurations for alert notifications.
 	Notifications []*DataQualityEvaluationTaskNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -296,7 +319,9 @@ func (s *DataQualityEvaluationTaskNotifications) Validate() error {
 }
 
 type DataQualityEvaluationTaskNotificationsNotifications struct {
-	NotificationChannels  []*DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels  `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The alert notification methods.
+	NotificationChannels []*DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
+	// The alert recipients.
 	NotificationReceivers []*DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -349,6 +374,11 @@ func (s *DataQualityEvaluationTaskNotificationsNotifications) Validate() error {
 }
 
 type DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels struct {
+	// The alert notification method.
+	//
+	// example:
+	//
+	// Mail
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -374,14 +404,19 @@ func (s *DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels
 }
 
 type DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers struct {
+	// The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
+	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of the alert recipient.
+	//
 	// example:
 	//
 	// AliUid
-	ReceiverType   *string   `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// The alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -425,18 +460,42 @@ func (s *DataQualityEvaluationTaskNotificationsNotificationsNotificationReceiver
 }
 
 type DataQualityEvaluationTaskTarget struct {
+	// The type of the database to which the table belongs. Valid values:
+	//
+	// 	- maxcompute
+	//
+	// 	- emr
+	//
+	// 	- cdh
+	//
+	// 	- hologres
+	//
+	// 	- analyticdb_for_postgresql
+	//
+	// 	- analyticdb_for_mysql
+	//
+	// 	- starrocks
+	//
 	// example:
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
+	// The configuration of the partitioned table.
+	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
+	// The ID of the table in Data Map.
+	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The type of the monitored object. Valid values:
+	//
+	// 	- Table
+	//
 	// example:
 	//
 	// Table
@@ -492,7 +551,12 @@ func (s *DataQualityEvaluationTaskTarget) Validate() error {
 }
 
 type DataQualityEvaluationTaskTrigger struct {
+	// The IDs of the auto triggered nodes of which the instances are successfully run. This parameter takes effect only if the Type parameter is set to ByScheduledTaskInstance.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The trigger condition of the task. Valid values:
+	//
+	// 	- ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
+	//
 	// example:
 	//
 	// ByScheduledTaskInstance

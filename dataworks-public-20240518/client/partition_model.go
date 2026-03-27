@@ -24,26 +24,38 @@ type iPartition interface {
 }
 
 type Partition struct {
+	// The creation time. This value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1700192563000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The storage size of the partition. Unit: bytes.
+	//
 	// example:
 	//
 	// 4096
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The modification time. This value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1700192563000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The partition name.
+	//
 	// example:
 	//
 	// ds=20250101
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of records in the partition.
+	//
 	// example:
 	//
 	// 1000000
 	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The ID of the table to which the partition belongs. You can configure this parameter by referring to the `Table` topic.
+	//
 	// example:
 	//
 	// maxcompute-table:accountId::project::table

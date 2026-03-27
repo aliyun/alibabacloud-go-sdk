@@ -18,11 +18,44 @@ type iCrawlerType interface {
 }
 
 type CrawlerType struct {
+	// The display name of the metadata crawler.
+	//
 	// example:
 	//
 	// Data Lake Formation
-	DisplayName          *string                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The supported entity types. The entity types are sorted based on the declaration order.
 	SupportedEntityTypes []*CrawlerTypeSupportedEntityTypes `json:"SupportedEntityTypes,omitempty" xml:"SupportedEntityTypes,omitempty" type:"Repeated"`
+	// The identifier of the metadata crawler type. Valid values:
+	//
+	// 	- `maxcompute`
+	//
+	// 	- `dlf`
+	//
+	// 	- `hms`: This type of crawler can be used to collect metadata from E-MapReduce (EMR) and CDH Hive clusters.
+	//
+	// 	- `holo`
+	//
+	// 	- `mysql`
+	//
+	// 	- `oracle`
+	//
+	// 	- `postgresql`
+	//
+	// 	- `sqlserver`
+	//
+	// 	- `analyticdb_for_mysql`
+	//
+	// 	- `ads`
+	//
+	// 	- `hybriddb_for_postgresql`
+	//
+	// 	- `ots`
+	//
+	// 	- `clickhouse`
+	//
+	// 	- `starrocks`: This type of crawler can be used to query metadata entities only in internal catalogs.
+	//
 	// example:
 	//
 	// dlf
@@ -78,18 +111,28 @@ func (s *CrawlerType) Validate() error {
 }
 
 type CrawlerTypeSupportedEntityTypes struct {
+	// Specifies whether the entity type is optional.
+	//
+	// For example, whether the schema level of the MaxCompute crawler type is optional depends on whether the three-layer model is enabled for a MaxCompute project.
+	//
 	// example:
 	//
-	// 如对于maxcompute-schema类型，schema层级是否存在可选（是否开启三层模型）
+	// true
 	Optional *bool `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The subtype of the parent entity. If the subtype does not exist, null is returned.
+	//
 	// example:
 	//
 	// database
 	ParentSubType *string `json:"ParentSubType,omitempty" xml:"ParentSubType,omitempty"`
+	// The identifier of the entity subtype. Valid values: `catalog, database, schema, table, and column`.
+	//
 	// example:
 	//
 	// table
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The identifier of the entity type. The value of this parameter varies based on the type of the metadata crawler. Configure this parameter in the `${Crawler type}-${Subtype}` format.
+	//
 	// example:
 	//
 	// dlf-table

@@ -270,7 +270,7 @@ func (client *Client) AbolishPipelineRun(request *AbolishPipelineRunRequest) (_r
 
 // Summary:
 //
-// 从集合中移除实体对象
+// Adds an entity to a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to add an entity to a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - AddEntityIntoMetaCollectionRequest
 //
@@ -322,7 +322,7 @@ func (client *Client) AddEntityIntoMetaCollectionWithOptions(request *AddEntityI
 
 // Summary:
 //
-// 从集合中移除实体对象
+// Adds an entity to a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to add an entity to a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - AddEntityIntoMetaCollectionRequest
 //
@@ -420,6 +420,8 @@ func (client *Client) AssociateProjectToResourceGroup(request *AssociateProjectT
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AttachDataQualityRulesToEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Associates monitoring rules with a data quality monitoring task.
@@ -478,6 +480,8 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AttachDataQualityRulesToEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Associates monitoring rules with a data quality monitoring task.
@@ -485,6 +489,7 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *
 // @param request - AttachDataQualityRulesToEvaluationTaskRequest
 //
 // @return AttachDataQualityRulesToEvaluationTaskResponse
+// Deprecated
 func (client *Client) AttachDataQualityRulesToEvaluationTask(request *AttachDataQualityRulesToEvaluationTaskRequest) (_result *AttachDataQualityRulesToEvaluationTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &AttachDataQualityRulesToEvaluationTaskResponse{}
@@ -746,6 +751,10 @@ func (client *Client) CreateAlertRule(request *CreateAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a workflow in DataStudio.
+//
 // @param request - CreateBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -806,6 +815,10 @@ func (client *Client) CreateBusinessWithOptions(request *CreateBusinessRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a workflow in DataStudio.
+//
 // @param request - CreateBusinessRequest
 //
 // @return CreateBusinessResponse
@@ -892,7 +905,7 @@ func (client *Client) CreateComponent(request *CreateComponentRequest) (_result 
 
 // Summary:
 //
-// 验证用
+// Creates a computing resource in the specified workspace. The resource can be for a development environment or a production environment.
 //
 // @param request - CreateComputeResourceRequest
 //
@@ -956,7 +969,7 @@ func (client *Client) CreateComputeResourceWithOptions(request *CreateComputeRes
 
 // Summary:
 //
-// 验证用
+// Creates a computing resource in the specified workspace. The resource can be for a development environment or a production environment.
 //
 // @param request - CreateComputeResourceRequest
 //
@@ -1109,6 +1122,10 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -1124,6 +1141,10 @@ func (client *Client) CreateDIJobWithOptions(tmpReq *CreateDIJobRequest, runtime
 
 	if !dara.IsNil(request.DestinationDataSourceSettingsShrink) {
 		body["DestinationDataSourceSettings"] = request.DestinationDataSourceSettingsShrink
+	}
+
+	if !dara.IsNil(request.FileSpec) {
+		body["FileSpec"] = request.FileSpec
 	}
 
 	if !dara.IsNil(request.JobSettingsShrink) {
@@ -1382,6 +1403,8 @@ func (client *Client) CreateDataQualityAlertRule(request *CreateDataQualityAlert
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Creates a monitor in DataWorks Data Quality.
@@ -1488,6 +1511,8 @@ func (client *Client) CreateDataQualityEvaluationTaskWithOptions(tmpReq *CreateD
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Creates a monitor in DataWorks Data Quality.
@@ -1499,6 +1524,7 @@ func (client *Client) CreateDataQualityEvaluationTaskWithOptions(tmpReq *CreateD
 // @param request - CreateDataQualityEvaluationTaskRequest
 //
 // @return CreateDataQualityEvaluationTaskResponse
+// Deprecated
 func (client *Client) CreateDataQualityEvaluationTask(request *CreateDataQualityEvaluationTaskRequest) (_result *CreateDataQualityEvaluationTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDataQualityEvaluationTaskResponse{}
@@ -1510,6 +1536,8 @@ func (client *Client) CreateDataQualityEvaluationTask(request *CreateDataQuality
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityEvaluationTaskInstance is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScanRun instead.
+//
 // Summary:
 //
 // Creates a monitor instance.
@@ -1572,6 +1600,8 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityEvaluationTaskInstance is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScanRun instead.
+//
 // Summary:
 //
 // Creates a monitor instance.
@@ -1579,6 +1609,7 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithOptions(tmpReq 
 // @param request - CreateDataQualityEvaluationTaskInstanceRequest
 //
 // @return CreateDataQualityEvaluationTaskInstanceResponse
+// Deprecated
 func (client *Client) CreateDataQualityEvaluationTaskInstance(request *CreateDataQualityEvaluationTaskInstanceRequest) (_result *CreateDataQualityEvaluationTaskInstanceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDataQualityEvaluationTaskInstanceResponse{}
@@ -1590,6 +1621,8 @@ func (client *Client) CreateDataQualityEvaluationTaskInstance(request *CreateDat
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityRule is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Creates a data quality monitoring rule.
@@ -1688,6 +1721,8 @@ func (client *Client) CreateDataQualityRuleWithOptions(tmpReq *CreateDataQuality
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityRule is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Creates a data quality monitoring rule.
@@ -1695,6 +1730,7 @@ func (client *Client) CreateDataQualityRuleWithOptions(tmpReq *CreateDataQuality
 // @param request - CreateDataQualityRuleRequest
 //
 // @return CreateDataQualityRuleResponse
+// Deprecated
 func (client *Client) CreateDataQualityRule(request *CreateDataQualityRuleRequest) (_result *CreateDataQualityRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDataQualityRuleResponse{}
@@ -1706,6 +1742,8 @@ func (client *Client) CreateDataQualityRule(request *CreateDataQualityRuleReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityTemplate instead.
+//
 // Summary:
 //
 // Creates a data quality monitoring rule template.
@@ -1780,6 +1818,8 @@ func (client *Client) CreateDataQualityRuleTemplateWithOptions(tmpReq *CreateDat
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityTemplate instead.
+//
 // Summary:
 //
 // Creates a data quality monitoring rule template.
@@ -1787,6 +1827,7 @@ func (client *Client) CreateDataQualityRuleTemplateWithOptions(tmpReq *CreateDat
 // @param request - CreateDataQualityRuleTemplateRequest
 //
 // @return CreateDataQualityRuleTemplateResponse
+// Deprecated
 func (client *Client) CreateDataQualityRuleTemplate(request *CreateDataQualityRuleTemplateRequest) (_result *CreateDataQualityRuleTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateDataQualityRuleTemplateResponse{}
@@ -2464,6 +2505,10 @@ func (client *Client) CreateDatasetVersion(request *CreateDatasetVersionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file in DataStudio. You cannot call this operation to create Data Integration nodes.
+//
 // @param request - CreateFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2636,6 +2681,10 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file in DataStudio. You cannot call this operation to create Data Integration nodes.
+//
 // @param request - CreateFileRequest
 //
 // @return CreateFileResponse
@@ -2650,6 +2699,10 @@ func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a folder.
+//
 // @param request - CreateFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2698,6 +2751,10 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a folder.
+//
 // @param request - CreateFolderRequest
 //
 // @return CreateFolderResponse
@@ -2864,7 +2921,7 @@ func (client *Client) CreateIdentifyCredential(request *CreateIdentifyCredential
 
 // Summary:
 //
-// Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
+// Registers lineage relationships in Data Map. At least one end of the relationship must be a custom object. This interface allows you to connect custom objects (such as external reports or third-party system tables) with metadata entities managed by DataWorks.
 //
 // @param tmpReq - CreateLineageRelationshipRequest
 //
@@ -2930,7 +2987,7 @@ func (client *Client) CreateLineageRelationshipWithOptions(tmpReq *CreateLineage
 
 // Summary:
 //
-// Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
+// Registers lineage relationships in Data Map. At least one end of the relationship must be a custom object. This interface allows you to connect custom objects (such as external reports or third-party system tables) with metadata entities managed by DataWorks.
 //
 // @param request - CreateLineageRelationshipRequest
 //
@@ -3458,7 +3515,7 @@ func (client *Client) CreateProjectMember(request *CreateProjectMemberRequest) (
 
 // Summary:
 //
-// >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+// \\>  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
 //
 // Description:
 //
@@ -3514,7 +3571,7 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 
 // Summary:
 //
-// >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+// \\>  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
 //
 // Description:
 //
@@ -4056,6 +4113,10 @@ func (client *Client) CreateRoute(request *CreateRouteRequest) (_result *CreateR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file for a function in DataStudio.
+//
 // @param request - CreateUdfFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4144,6 +4205,10 @@ func (client *Client) CreateUdfFileWithOptions(request *CreateUdfFileRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file for a function in DataStudio.
+//
 // @param request - CreateUdfFileRequest
 //
 // @return CreateUdfFileResponse
@@ -4418,6 +4483,10 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a workflow.
+//
 // @param request - DeleteBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4466,6 +4535,10 @@ func (client *Client) DeleteBusinessWithOptions(request *DeleteBusinessRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a workflow.
+//
 // @param request - DeleteBusinessRequest
 //
 // @return DeleteBusinessResponse
@@ -4634,7 +4707,7 @@ func (client *Client) DeleteComponent(request *DeleteComponentRequest) (_result 
 
 // Summary:
 //
-// 验证用
+// Deletes the specified computing resource based on the computing resource ID.
 //
 // Description:
 //
@@ -4690,7 +4763,7 @@ func (client *Client) DeleteComputeResourceWithOptions(request *DeleteComputeRes
 
 // Summary:
 //
-// 验证用
+// Deletes the specified computing resource based on the computing resource ID.
 //
 // Description:
 //
@@ -4988,6 +5061,8 @@ func (client *Client) DeleteDataQualityAlertRule(request *DeleteDataQualityAlert
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::DeleteDataQualityScan instead.
+//
 // Summary:
 //
 // Deletes a data quality monitoring task.
@@ -5036,6 +5111,8 @@ func (client *Client) DeleteDataQualityEvaluationTaskWithOptions(request *Delete
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::DeleteDataQualityScan instead.
+//
 // Summary:
 //
 // Deletes a data quality monitoring task.
@@ -5043,6 +5120,7 @@ func (client *Client) DeleteDataQualityEvaluationTaskWithOptions(request *Delete
 // @param request - DeleteDataQualityEvaluationTaskRequest
 //
 // @return DeleteDataQualityEvaluationTaskResponse
+// Deprecated
 func (client *Client) DeleteDataQualityEvaluationTask(request *DeleteDataQualityEvaluationTaskRequest) (_result *DeleteDataQualityEvaluationTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDataQualityEvaluationTaskResponse{}
@@ -5120,6 +5198,8 @@ func (client *Client) DeleteDataQualityRule(request *DeleteDataQualityRuleReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::DeleteDataQualityTemplate instead.
+//
 // Summary:
 //
 // Deletes a data quality monitoring rule template.
@@ -5168,6 +5248,8 @@ func (client *Client) DeleteDataQualityRuleTemplateWithOptions(request *DeleteDa
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::DeleteDataQualityTemplate instead.
+//
 // Summary:
 //
 // Deletes a data quality monitoring rule template.
@@ -5175,6 +5257,7 @@ func (client *Client) DeleteDataQualityRuleTemplateWithOptions(request *DeleteDa
 // @param request - DeleteDataQualityRuleTemplateRequest
 //
 // @return DeleteDataQualityRuleTemplateResponse
+// Deprecated
 func (client *Client) DeleteDataQualityRuleTemplate(request *DeleteDataQualityRuleTemplateRequest) (_result *DeleteDataQualityRuleTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDataQualityRuleTemplateResponse{}
@@ -5618,6 +5701,10 @@ func (client *Client) DeleteDatasetVersion(request *DeleteDatasetVersionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
+//
 // @param request - DeleteFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5666,6 +5753,10 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
+//
 // @param request - DeleteFileRequest
 //
 // @return DeleteFileResponse
@@ -5818,7 +5909,7 @@ func (client *Client) DeleteFunction(request *DeleteFunctionRequest) (_result *D
 
 // Summary:
 //
-// 删除血缘关系
+// Deletes a lineage in Data Map.
 //
 // @param request - DeleteLineageRelationshipRequest
 //
@@ -5862,7 +5953,7 @@ func (client *Client) DeleteLineageRelationshipWithOptions(request *DeleteLineag
 
 // Summary:
 //
-// 删除血缘关系
+// Deletes a lineage in Data Map.
 //
 // @param request - DeleteLineageRelationshipRequest
 //
@@ -5880,7 +5971,7 @@ func (client *Client) DeleteLineageRelationship(request *DeleteLineageRelationsh
 
 // Summary:
 //
-// 删除集合
+// Deletes a collection in Data Map. Collections include categories and data albums. If you want to delete a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - DeleteMetaCollectionRequest
 //
@@ -5924,7 +6015,7 @@ func (client *Client) DeleteMetaCollectionWithOptions(request *DeleteMetaCollect
 
 // Summary:
 //
-// 删除集合
+// Deletes a collection in Data Map. Collections include categories and data albums. If you want to delete a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - DeleteMetaCollectionRequest
 //
@@ -6744,6 +6835,8 @@ func (client *Client) DeployFile(request *DeployFileRequest) (_result *DeployFil
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DetachDataQualityRulesFromEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Disassociates monitoring rules from a data quality monitoring task.
@@ -6802,6 +6895,8 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithOptions(tmpReq
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DetachDataQualityRulesFromEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Disassociates monitoring rules from a data quality monitoring task.
@@ -6809,6 +6904,7 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithOptions(tmpReq
 // @param request - DetachDataQualityRulesFromEvaluationTaskRequest
 //
 // @return DetachDataQualityRulesFromEvaluationTaskResponse
+// Deprecated
 func (client *Client) DetachDataQualityRulesFromEvaluationTask(request *DetachDataQualityRulesFromEvaluationTaskRequest) (_result *DetachDataQualityRulesFromEvaluationTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
@@ -6902,6 +6998,10 @@ func (client *Client) DissociateProjectFromResourceGroup(request *DissociateProj
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports a table to a workflow. The call to this API operation is equivalent to performing the following operations: Go to the DataStudio page, find the desired workflow, and then click the workflow name. Right-click Table under the desired folder and select Import Table.
+//
 // @param request - EstablishRelationTableToBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6958,6 +7058,10 @@ func (client *Client) EstablishRelationTableToBusinessWithOptions(request *Estab
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports a table to a workflow. The call to this API operation is equivalent to performing the following operations: Go to the DataStudio page, find the desired workflow, and then click the workflow name. Right-click Table under the desired folder and select Import Table.
+//
 // @param request - EstablishRelationTableToBusinessRequest
 //
 // @return EstablishRelationTableToBusinessResponse
@@ -7210,6 +7314,10 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a workflow.
+//
 // @param request - GetBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7258,6 +7366,10 @@ func (client *Client) GetBusinessWithOptions(request *GetBusinessRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a workflow.
+//
 // @param request - GetBusinessRequest
 //
 // @return GetBusinessResponse
@@ -7274,7 +7386,7 @@ func (client *Client) GetBusiness(request *GetBusinessRequest) (_result *GetBusi
 
 // Summary:
 //
-// 获取数据目录详情
+// Queries the information about a catalog in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawlers are supported.
 //
 // @param request - GetCatalogRequest
 //
@@ -7314,7 +7426,7 @@ func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, runtime 
 
 // Summary:
 //
-// 获取数据目录详情
+// Queries the information about a catalog in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawlers are supported.
 //
 // @param request - GetCatalogRequest
 //
@@ -7332,7 +7444,7 @@ func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalo
 
 // Summary:
 //
-// Queries a certificate file.
+// View certificate details.
 //
 // Description:
 //
@@ -7378,7 +7490,7 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 
 // Summary:
 //
-// Queries a certificate file.
+// View certificate details.
 //
 // Description:
 //
@@ -7402,7 +7514,7 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 
 // Summary:
 //
-// 获取字段详情
+// Queries the information about a specific field of a table in Data Map.
 //
 // @param request - GetColumnRequest
 //
@@ -7442,7 +7554,7 @@ func (client *Client) GetColumnWithOptions(request *GetColumnRequest, runtime *d
 
 // Summary:
 //
-// 获取字段详情
+// Queries the information about a specific field of a table in Data Map.
 //
 // @param request - GetColumnRequest
 //
@@ -7534,7 +7646,7 @@ func (client *Client) GetComponent(request *GetComponentRequest) (_result *GetCo
 
 // Summary:
 //
-// 验证用
+// Queries the specified computing resource based on the computing resource ID.
 //
 // @param request - GetComputeResourceRequest
 //
@@ -7582,7 +7694,7 @@ func (client *Client) GetComputeResourceWithOptions(request *GetComputeResourceR
 
 // Summary:
 //
-// 验证用
+// Queries the specified computing resource based on the computing resource ID.
 //
 // @param request - GetComputeResourceRequest
 //
@@ -7866,6 +7978,8 @@ func (client *Client) GetDataQualityAlertRule(request *GetDataQualityAlertRuleRe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Queries the details of a monitor.
@@ -7906,6 +8020,8 @@ func (client *Client) GetDataQualityEvaluationTaskWithOptions(request *GetDataQu
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Queries the details of a monitor.
@@ -7913,6 +8029,7 @@ func (client *Client) GetDataQualityEvaluationTaskWithOptions(request *GetDataQu
 // @param request - GetDataQualityEvaluationTaskRequest
 //
 // @return GetDataQualityEvaluationTaskResponse
+// Deprecated
 func (client *Client) GetDataQualityEvaluationTask(request *GetDataQualityEvaluationTaskRequest) (_result *GetDataQualityEvaluationTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDataQualityEvaluationTaskResponse{}
@@ -7924,6 +8041,8 @@ func (client *Client) GetDataQualityEvaluationTask(request *GetDataQualityEvalua
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityEvaluationTaskInstance is deprecated, please use dataworks-public::2024-05-18::GetDataQualityScanRun instead.
+//
 // Summary:
 //
 // Queries the details of a monitor instance.
@@ -7964,6 +8083,8 @@ func (client *Client) GetDataQualityEvaluationTaskInstanceWithOptions(request *G
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityEvaluationTaskInstance is deprecated, please use dataworks-public::2024-05-18::GetDataQualityScanRun instead.
+//
 // Summary:
 //
 // Queries the details of a monitor instance.
@@ -7971,6 +8092,7 @@ func (client *Client) GetDataQualityEvaluationTaskInstanceWithOptions(request *G
 // @param request - GetDataQualityEvaluationTaskInstanceRequest
 //
 // @return GetDataQualityEvaluationTaskInstanceResponse
+// Deprecated
 func (client *Client) GetDataQualityEvaluationTaskInstance(request *GetDataQualityEvaluationTaskInstanceRequest) (_result *GetDataQualityEvaluationTaskInstanceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDataQualityEvaluationTaskInstanceResponse{}
@@ -7982,6 +8104,8 @@ func (client *Client) GetDataQualityEvaluationTaskInstance(request *GetDataQuali
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityRule is deprecated, please use dataworks-public::2024-05-18::GetDataQualityScan instead.
+//
 // Summary:
 //
 // Queries the information about a data quality monitoring rule.
@@ -8026,6 +8150,8 @@ func (client *Client) GetDataQualityRuleWithOptions(request *GetDataQualityRuleR
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityRule is deprecated, please use dataworks-public::2024-05-18::GetDataQualityScan instead.
+//
 // Summary:
 //
 // Queries the information about a data quality monitoring rule.
@@ -8037,6 +8163,7 @@ func (client *Client) GetDataQualityRuleWithOptions(request *GetDataQualityRuleR
 // @param request - GetDataQualityRuleRequest
 //
 // @return GetDataQualityRuleResponse
+// Deprecated
 func (client *Client) GetDataQualityRule(request *GetDataQualityRuleRequest) (_result *GetDataQualityRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDataQualityRuleResponse{}
@@ -8048,6 +8175,8 @@ func (client *Client) GetDataQualityRule(request *GetDataQualityRuleRequest) (_r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::GetDataQualityTemplate instead.
+//
 // Summary:
 //
 // Queries the information about a data quality monitoring rule template.
@@ -8092,6 +8221,8 @@ func (client *Client) GetDataQualityRuleTemplateWithOptions(request *GetDataQual
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::GetDataQualityTemplate instead.
+//
 // Summary:
 //
 // Queries the information about a data quality monitoring rule template.
@@ -8103,6 +8234,7 @@ func (client *Client) GetDataQualityRuleTemplateWithOptions(request *GetDataQual
 // @param request - GetDataQualityRuleTemplateRequest
 //
 // @return GetDataQualityRuleTemplateResponse
+// Deprecated
 func (client *Client) GetDataQualityRuleTemplate(request *GetDataQualityRuleTemplateRequest) (_result *GetDataQualityRuleTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDataQualityRuleTemplateResponse{}
@@ -8474,7 +8606,7 @@ func (client *Client) GetDataSource(request *GetDataSourceRequest) (_result *Get
 
 // Summary:
 //
-// 获取数据库详情
+// Queries the information about a specific database in Data Map.
 //
 // @param request - GetDatabaseRequest
 //
@@ -8514,7 +8646,7 @@ func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtim
 
 // Summary:
 //
-// 获取数据库详情
+// Queries the information about a specific database in Data Map.
 //
 // @param request - GetDatabaseRequest
 //
@@ -8532,7 +8664,7 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 
 // Summary:
 //
-// 获取数据集详情
+// Gets the details of a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -8576,7 +8708,7 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 
 // Summary:
 //
-// 获取数据集详情
+// Gets the details of a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -8654,6 +8786,10 @@ func (client *Client) GetDatasetVersion(request *GetDatasetVersionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a deployment package.
+//
 // @param request - GetDeploymentPackageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8702,6 +8838,10 @@ func (client *Client) GetDeploymentPackageWithOptions(request *GetDeploymentPack
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a deployment package.
+//
 // @param request - GetDeploymentPackageRequest
 //
 // @return GetDeploymentPackageResponse
@@ -8864,6 +9004,10 @@ func (client *Client) GetFileVersion(request *GetFileVersionRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a folder.
+//
 // @param request - GetFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8916,6 +9060,10 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a folder.
+//
 // @param request - GetFolderRequest
 //
 // @return GetFolderResponse
@@ -9114,7 +9262,7 @@ func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJo
 
 // Summary:
 //
-// 获取血缘关系详情
+// Queries the information about a lineage in Data Map.
 //
 // @param request - GetLineageRelationshipRequest
 //
@@ -9154,7 +9302,7 @@ func (client *Client) GetLineageRelationshipWithOptions(request *GetLineageRelat
 
 // Summary:
 //
-// 获取血缘关系详情
+// Queries the information about a lineage in Data Map.
 //
 // @param request - GetLineageRelationshipRequest
 //
@@ -10018,7 +10166,7 @@ func (client *Client) GetSchema(request *GetSchemaRequest) (_result *GetSchemaRe
 
 // Summary:
 //
-// 获取表详情
+// Queries the information about a specific table in Data Map.
 //
 // @param request - GetTableRequest
 //
@@ -10058,7 +10206,7 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 
 // Summary:
 //
-// 获取表详情
+// Queries the information about a specific table in Data Map.
 //
 // @param request - GetTableRequest
 //
@@ -10897,6 +11045,10 @@ func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of workflows.
+//
 // @param request - ListBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10953,6 +11105,10 @@ func (client *Client) ListBusinessWithOptions(request *ListBusinessRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of workflows.
+//
 // @param request - ListBusinessRequest
 //
 // @return ListBusinessResponse
@@ -10969,7 +11125,7 @@ func (client *Client) ListBusiness(request *ListBusinessRequest) (_result *ListB
 
 // Summary:
 //
-// 查询数据目录列表
+// Queries a list of catalogs in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawler types are supported. For the DLF metadata crawler type, all supported data catalogs are returned. For the StarRocks metadata crawler type, data catalogs in a specific instance are returned.
 //
 // @param tmpReq - ListCatalogsRequest
 //
@@ -11015,7 +11171,7 @@ func (client *Client) ListCatalogsWithOptions(tmpReq *ListCatalogsRequest, runti
 
 // Summary:
 //
-// 查询数据目录列表
+// Queries a list of catalogs in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawler types are supported. For the DLF metadata crawler type, all supported data catalogs are returned. For the StarRocks metadata crawler type, data catalogs in a specific instance are returned.
 //
 // @param request - ListCatalogsRequest
 //
@@ -11103,7 +11259,7 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
-// 查询字段列表
+// Queries a list of fields in a data table in Data Map.
 //
 // @param request - ListColumnsRequest
 //
@@ -11143,7 +11299,7 @@ func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtim
 
 // Summary:
 //
-// 查询字段列表
+// Queries a list of fields in a data table in Data Map.
 //
 // @param request - ListColumnsRequest
 //
@@ -11243,7 +11399,7 @@ func (client *Client) ListComponents(request *ListComponentsRequest) (_result *L
 
 // Summary:
 //
-// 验证用
+// Queries the list of computing resources that meet the specified business information.
 //
 // @param tmpReq - ListComputeResourcesRequest
 //
@@ -11321,7 +11477,7 @@ func (client *Client) ListComputeResourcesWithOptions(tmpReq *ListComputeResourc
 
 // Summary:
 //
-// 验证用
+// Queries the list of computing resources that meet the specified business information.
 //
 // @param request - ListComputeResourcesRequest
 //
@@ -11339,7 +11495,7 @@ func (client *Client) ListComputeResources(request *ListComputeResourcesRequest)
 
 // Summary:
 //
-// 查询元数据采集器类型列表
+// Queries a list of metadata crawler types supported in Data Map. The subtypes of the types and the hierarchical relationship between the subtypes are also returned.
 //
 // @param request - ListCrawlerTypesRequest
 //
@@ -11370,7 +11526,7 @@ func (client *Client) ListCrawlerTypesWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// 查询元数据采集器类型列表
+// Queries a list of metadata crawler types supported in Data Map. The subtypes of the types and the hierarchical relationship between the subtypes are also returned.
 //
 // @return ListCrawlerTypesResponse
 func (client *Client) ListCrawlerTypes() (_result *ListCrawlerTypesResponse, _err error) {
@@ -11940,6 +12096,8 @@ func (client *Client) ListDataQualityAlertRules(request *ListDataQualityAlertRul
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityEvaluationTaskInstances is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScanRuns instead.
+//
 // Summary:
 //
 // Queries a list of instances generated by a data quality monitoring task by page.
@@ -11984,6 +12142,8 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithOptions(request 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityEvaluationTaskInstances is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScanRuns instead.
+//
 // Summary:
 //
 // Queries a list of instances generated by a data quality monitoring task by page.
@@ -11995,6 +12155,7 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithOptions(request 
 // @param request - ListDataQualityEvaluationTaskInstancesRequest
 //
 // @return ListDataQualityEvaluationTaskInstancesResponse
+// Deprecated
 func (client *Client) ListDataQualityEvaluationTaskInstances(request *ListDataQualityEvaluationTaskInstancesRequest) (_result *ListDataQualityEvaluationTaskInstancesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataQualityEvaluationTaskInstancesResponse{}
@@ -12006,6 +12167,8 @@ func (client *Client) ListDataQualityEvaluationTaskInstances(request *ListDataQu
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityEvaluationTasks is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScans instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring tasks by page.
@@ -12050,6 +12213,8 @@ func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDat
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityEvaluationTasks is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScans instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring tasks by page.
@@ -12061,6 +12226,7 @@ func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDat
 // @param request - ListDataQualityEvaluationTasksRequest
 //
 // @return ListDataQualityEvaluationTasksResponse
+// Deprecated
 func (client *Client) ListDataQualityEvaluationTasks(request *ListDataQualityEvaluationTasksRequest) (_result *ListDataQualityEvaluationTasksResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataQualityEvaluationTasksResponse{}
@@ -12072,6 +12238,12 @@ func (client *Client) ListDataQualityEvaluationTasks(request *ListDataQualityEva
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityResults is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScanRuns instead.
+//
+// Summary:
+//
+// 查询数据质量规则校验结果列表
+//
 // Description:
 //
 // This API operation is available for all DataWorks editions.
@@ -12112,6 +12284,12 @@ func (client *Client) ListDataQualityResultsWithOptions(request *ListDataQuality
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityResults is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScanRuns instead.
+//
+// Summary:
+//
+// 查询数据质量规则校验结果列表
+//
 // Description:
 //
 // This API operation is available for all DataWorks editions.
@@ -12119,6 +12297,7 @@ func (client *Client) ListDataQualityResultsWithOptions(request *ListDataQuality
 // @param request - ListDataQualityResultsRequest
 //
 // @return ListDataQualityResultsResponse
+// Deprecated
 func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequest) (_result *ListDataQualityResultsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataQualityResultsResponse{}
@@ -12130,6 +12309,8 @@ func (client *Client) ListDataQualityResults(request *ListDataQualityResultsRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityRuleTemplates is deprecated, please use dataworks-public::2024-05-18::ListDataQualityTemplates instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring rule templates.
@@ -12170,6 +12351,8 @@ func (client *Client) ListDataQualityRuleTemplatesWithOptions(request *ListDataQ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityRuleTemplates is deprecated, please use dataworks-public::2024-05-18::ListDataQualityTemplates instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring rule templates.
@@ -12177,6 +12360,7 @@ func (client *Client) ListDataQualityRuleTemplatesWithOptions(request *ListDataQ
 // @param request - ListDataQualityRuleTemplatesRequest
 //
 // @return ListDataQualityRuleTemplatesResponse
+// Deprecated
 func (client *Client) ListDataQualityRuleTemplates(request *ListDataQualityRuleTemplatesRequest) (_result *ListDataQualityRuleTemplatesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataQualityRuleTemplatesResponse{}
@@ -12188,6 +12372,8 @@ func (client *Client) ListDataQualityRuleTemplates(request *ListDataQualityRuleT
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityRules is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScans instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring rules by page.
@@ -12232,6 +12418,8 @@ func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRu
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityRules is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScans instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring rules by page.
@@ -12243,6 +12431,7 @@ func (client *Client) ListDataQualityRulesWithOptions(request *ListDataQualityRu
 // @param request - ListDataQualityRulesRequest
 //
 // @return ListDataQualityRulesResponse
+// Deprecated
 func (client *Client) ListDataQualityRules(request *ListDataQualityRulesRequest) (_result *ListDataQualityRulesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDataQualityRulesResponse{}
@@ -12694,7 +12883,7 @@ func (client *Client) ListDataSources(request *ListDataSourcesRequest) (_result 
 
 // Summary:
 //
-// 查询数据库列表
+// Queries a list of databases in an instance, cluster, or data catalog in Data Map. For DLF or StarRocks data sources, you can call this API operation to query databases in a data catalog. For StarRocks data sources, you can call this API operation to query databases in internal catalogs. For other types of data sources, you can call this API operation to query databases in an instance or cluster.
 //
 // @param request - ListDatabasesRequest
 //
@@ -12734,7 +12923,7 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 
 // Summary:
 //
-// 查询数据库列表
+// Queries a list of databases in an instance, cluster, or data catalog in Data Map. For DLF or StarRocks data sources, you can call this API operation to query databases in a data catalog. For StarRocks data sources, you can call this API operation to query databases in internal catalogs. For other types of data sources, you can call this API operation to query databases in an instance or cluster.
 //
 // @param request - ListDatabasesRequest
 //
@@ -13332,6 +13521,10 @@ func (client *Client) ListEntitiesInMetaCollection(request *ListEntitiesInMetaCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of file versions.
+//
 // @param request - ListFileVersionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13388,6 +13581,10 @@ func (client *Client) ListFileVersionsWithOptions(request *ListFileVersionsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of file versions.
+//
 // @param request - ListFileVersionsRequest
 //
 // @return ListFileVersionsResponse
@@ -13402,6 +13599,10 @@ func (client *Client) ListFileVersions(request *ListFileVersionsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files.
+//
 // @param request - ListFilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13502,6 +13703,10 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files.
+//
 // @param request - ListFilesRequest
 //
 // @return ListFilesResponse
@@ -13516,6 +13721,10 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of folders.
+//
 // @param request - ListFoldersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13572,6 +13781,10 @@ func (client *Client) ListFoldersWithOptions(request *ListFoldersRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of folders.
+//
 // @param request - ListFoldersRequest
 //
 // @return ListFoldersResponse
@@ -13646,7 +13859,7 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 
 // Summary:
 //
-// 查询血缘关系
+// Queries the lineage between two entities, such as tables, fields, and Object Storage Service (OSS) files, in Data Map.
 //
 // @param request - ListLineageRelationshipsRequest
 //
@@ -13686,7 +13899,7 @@ func (client *Client) ListLineageRelationshipsWithOptions(request *ListLineageRe
 
 // Summary:
 //
-// 查询血缘关系
+// Queries the lineage between two entities, such as tables, fields, and Object Storage Service (OSS) files, in Data Map.
 //
 // @param request - ListLineageRelationshipsRequest
 //
@@ -13704,7 +13917,7 @@ func (client *Client) ListLineageRelationships(request *ListLineageRelationships
 
 // Summary:
 //
-// 查询实体血缘
+// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -13744,7 +13957,7 @@ func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runt
 
 // Summary:
 //
-// 查询实体血缘
+// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -14002,7 +14215,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// 查询数据表的分区列表
+// Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
 //
 // @param request - ListPartitionsRequest
 //
@@ -14042,7 +14255,7 @@ func (client *Client) ListPartitionsWithOptions(request *ListPartitionsRequest, 
 
 // Summary:
 //
-// 查询数据表的分区列表
+// Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
 //
 // @param request - ListPartitionsRequest
 //
@@ -14484,7 +14697,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// # Query the list of workspaces with which a resource group is associated
+// Gets the list of workspaces bound to a resource group.
 //
 // Description:
 //
@@ -14534,7 +14747,7 @@ func (client *Client) ListResourceGroupAssociateProjectsWithOptions(request *Lis
 
 // Summary:
 //
-// # Query the list of workspaces with which a resource group is associated
+// Gets the list of workspaces bound to a resource group.
 //
 // Description:
 //
@@ -14558,7 +14771,7 @@ func (client *Client) ListResourceGroupAssociateProjects(request *ListResourceGr
 
 // Summary:
 //
-// 获取指定资源组的监控指标数据
+// Queries the metric data of a resource group.
 //
 // @param request - ListResourceGroupMetricDataRequest
 //
@@ -14626,7 +14839,7 @@ func (client *Client) ListResourceGroupMetricDataWithOptions(request *ListResour
 
 // Summary:
 //
-// 获取指定资源组的监控指标数据
+// Queries the metric data of a resource group.
 //
 // @param request - ListResourceGroupMetricDataRequest
 //
@@ -16156,7 +16369,7 @@ func (client *Client) PreviewDatasetVersion(request *PreviewDatasetVersionReques
 
 // Summary:
 //
-// 从集合中移除实体对象
+// Removes an entity from a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to remove an entity from a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - RemoveEntityFromMetaCollectionRequest
 //
@@ -16204,7 +16417,7 @@ func (client *Client) RemoveEntityFromMetaCollectionWithOptions(request *RemoveE
 
 // Summary:
 //
-// 从集合中移除实体对象
+// Removes an entity from a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to remove an entity from a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - RemoveEntityFromMetaCollectionRequest
 //
@@ -17400,6 +17613,10 @@ func (client *Client) StopWorkflowInstances(request *StopWorkflowInstancesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Commits a file to the development environment of the scheduling system to generate a task.
+//
 // @param request - SubmitFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17456,6 +17673,10 @@ func (client *Client) SubmitFileWithOptions(request *SubmitFileRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Commits a file to the development environment of the scheduling system to generate a task.
+//
 // @param request - SubmitFileRequest
 //
 // @return SubmitFileResponse
@@ -18084,7 +18305,7 @@ func (client *Client) UpdateBusiness(request *UpdateBusinessRequest) (_result *U
 
 // Summary:
 //
-// 更新字段业务元数据
+// Updates the business metadata of a column in a table in Data Map. Only the business description of a column can be updated.
 //
 // @param request - UpdateColumnBusinessMetadataRequest
 //
@@ -18132,7 +18353,7 @@ func (client *Client) UpdateColumnBusinessMetadataWithOptions(request *UpdateCol
 
 // Summary:
 //
-// 更新字段业务元数据
+// Updates the business metadata of a column in a table in Data Map. Only the business description of a column can be updated.
 //
 // @param request - UpdateColumnBusinessMetadataRequest
 //
@@ -18230,7 +18451,7 @@ func (client *Client) UpdateComponent(request *UpdateComponentRequest) (_result 
 
 // Summary:
 //
-// 验证用
+// Modifies the specified computing resource based on the computing resource ID.
 //
 // @param request - UpdateComputeResourceRequest
 //
@@ -18290,7 +18511,7 @@ func (client *Client) UpdateComputeResourceWithOptions(request *UpdateComputeRes
 
 // Summary:
 //
-// 验证用
+// Modifies the specified computing resource based on the computing resource ID.
 //
 // @param request - UpdateComputeResourceRequest
 //
@@ -18421,6 +18642,10 @@ func (client *Client) UpdateDIJobWithOptions(tmpReq *UpdateDIJobRequest, runtime
 		query["Id"] = request.Id
 	}
 
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -18428,6 +18653,10 @@ func (client *Client) UpdateDIJobWithOptions(tmpReq *UpdateDIJobRequest, runtime
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FileSpec) {
+		body["FileSpec"] = request.FileSpec
 	}
 
 	if !dara.IsNil(request.JobSettingsShrink) {
@@ -18680,6 +18909,8 @@ func (client *Client) UpdateDataQualityAlertRule(request *UpdateDataQualityAlert
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Updates a monitor.
@@ -18790,6 +19021,8 @@ func (client *Client) UpdateDataQualityEvaluationTaskWithOptions(tmpReq *UpdateD
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Updates a monitor.
@@ -18801,6 +19034,7 @@ func (client *Client) UpdateDataQualityEvaluationTaskWithOptions(tmpReq *UpdateD
 // @param request - UpdateDataQualityEvaluationTaskRequest
 //
 // @return UpdateDataQualityEvaluationTaskResponse
+// Deprecated
 func (client *Client) UpdateDataQualityEvaluationTask(request *UpdateDataQualityEvaluationTaskRequest) (_result *UpdateDataQualityEvaluationTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataQualityEvaluationTaskResponse{}
@@ -18812,6 +19046,8 @@ func (client *Client) UpdateDataQualityEvaluationTask(request *UpdateDataQuality
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityRule is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Updates a data quality monitoring rule.
@@ -18908,6 +19144,8 @@ func (client *Client) UpdateDataQualityRuleWithOptions(tmpReq *UpdateDataQuality
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityRule is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Updates a data quality monitoring rule.
@@ -18915,6 +19153,7 @@ func (client *Client) UpdateDataQualityRuleWithOptions(tmpReq *UpdateDataQuality
 // @param request - UpdateDataQualityRuleRequest
 //
 // @return UpdateDataQualityRuleResponse
+// Deprecated
 func (client *Client) UpdateDataQualityRule(request *UpdateDataQualityRuleRequest) (_result *UpdateDataQualityRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataQualityRuleResponse{}
@@ -18926,6 +19165,8 @@ func (client *Client) UpdateDataQualityRule(request *UpdateDataQualityRuleReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityTemplate instead.
+//
 // Summary:
 //
 // Updates a data quality monitoring rule template.
@@ -19002,6 +19243,8 @@ func (client *Client) UpdateDataQualityRuleTemplateWithOptions(tmpReq *UpdateDat
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityTemplate instead.
+//
 // Summary:
 //
 // Updates a data quality monitoring rule template.
@@ -19009,6 +19252,7 @@ func (client *Client) UpdateDataQualityRuleTemplateWithOptions(tmpReq *UpdateDat
 // @param request - UpdateDataQualityRuleTemplateRequest
 //
 // @return UpdateDataQualityRuleTemplateResponse
+// Deprecated
 func (client *Client) UpdateDataQualityRuleTemplate(request *UpdateDataQualityRuleTemplateRequest) (_result *UpdateDataQualityRuleTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateDataQualityRuleTemplateResponse{}
@@ -19470,6 +19714,10 @@ func (client *Client) UpdateDatasetVersion(request *UpdateDatasetVersionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a file.
+//
 // @param request - UpdateFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -19638,6 +19886,10 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a file.
+//
 // @param request - UpdateFileRequest
 //
 // @return UpdateFileResponse
@@ -19790,7 +20042,7 @@ func (client *Client) UpdateFunction(request *UpdateFunctionRequest) (_result *U
 
 // Summary:
 //
-// 回调扩展点消息的检查结果
+// Recalls the check result of the message of an extension point event.
 //
 // @param request - UpdateIDEEventResultRequest
 //
@@ -19846,7 +20098,7 @@ func (client *Client) UpdateIDEEventResultWithOptions(request *UpdateIDEEventRes
 
 // Summary:
 //
-// 回调扩展点消息的检查结果
+// Recalls the check result of the message of an extension point event.
 //
 // @param request - UpdateIDEEventResultRequest
 //
@@ -20749,6 +21001,10 @@ func (client *Client) UpdateTaskInstances(request *UpdateTaskInstancesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the file information about a function.
+//
 // @param request - UpdateUdfFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -20833,6 +21089,10 @@ func (client *Client) UpdateUdfFileWithOptions(request *UpdateUdfFileRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the file information about a function.
+//
 // @param request - UpdateUdfFileRequest
 //
 // @return UpdateUdfFileResponse

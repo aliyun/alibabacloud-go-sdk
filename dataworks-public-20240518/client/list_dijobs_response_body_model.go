@@ -202,6 +202,7 @@ type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The ID of the DataWorks workspace to which the synchronization task belongs.
 	//
 	// example:
@@ -248,6 +249,10 @@ func (s *ListDIJobsResponseBodyPagingInfoDIJobs) GetMigrationType() *string {
 	return s.MigrationType
 }
 
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) GetOwner() *string {
+	return s.Owner
+}
+
 func (s *ListDIJobsResponseBodyPagingInfoDIJobs) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -283,6 +288,11 @@ func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetJobStatus(v string) *ListDIJ
 
 func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetMigrationType(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
 	s.MigrationType = &v
+	return s
+}
+
+func (s *ListDIJobsResponseBodyPagingInfoDIJobs) SetOwner(v string) *ListDIJobsResponseBodyPagingInfoDIJobs {
+	s.Owner = &v
 	return s
 }
 

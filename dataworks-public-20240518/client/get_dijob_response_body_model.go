@@ -132,6 +132,7 @@ type GetDIJobResponseBodyPagingInfo struct {
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
 	// This parameter indicates the DataWorks workspace to which the API operation is applied.
@@ -208,6 +209,10 @@ func (s *GetDIJobResponseBodyPagingInfo) GetMigrationType() *string {
 	return s.MigrationType
 }
 
+func (s *GetDIJobResponseBodyPagingInfo) GetOwner() *string {
+	return s.Owner
+}
+
 func (s *GetDIJobResponseBodyPagingInfo) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -279,6 +284,11 @@ func (s *GetDIJobResponseBodyPagingInfo) SetJobType(v string) *GetDIJobResponseB
 
 func (s *GetDIJobResponseBodyPagingInfo) SetMigrationType(v string) *GetDIJobResponseBodyPagingInfo {
 	s.MigrationType = &v
+	return s
+}
+
+func (s *GetDIJobResponseBodyPagingInfo) SetOwner(v string) *GetDIJobResponseBodyPagingInfo {
+	s.Owner = &v
 	return s
 }
 

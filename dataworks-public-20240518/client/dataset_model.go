@@ -38,19 +38,104 @@ type iDataset interface {
 }
 
 type Dataset struct {
-	Comment       *string         `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime    *int64          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatorId     *string         `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DataType      *string         `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Id            *string         `json:"Id,omitempty" xml:"Id,omitempty"`
-	Labels        []*DatasetLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The description of the dataset. The length cannot exceed 1024 characters.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time. This value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1736756055000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the creator.
+	//
+	// example:
+	//
+	// 210484359
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The data type. Valid values:
+	//
+	// 	- COMMON
+	//
+	// 	- PIC
+	//
+	// 	- TEXT
+	//
+	// 	- TABLE
+	//
+	// 	- VIDEO
+	//
+	// 	- AUDIO
+	//
+	// 	- INDEX
+	//
+	// example:
+	//
+	// COMMON
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The dataset ID.
+	//
+	// example:
+	//
+	// dataworks-dataset:1gxxxqjx155usz3hrv
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Dataset tags. Supported only for PAI datasets.
+	Labels []*DatasetLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The latest dataset version object.
 	LatestVersion *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModifyTime    *int64          `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name          *string         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Origin        *string         `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	ProjectId     *int64          `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Readme        *string         `json:"Readme,omitempty" xml:"Readme,omitempty"`
-	StorageType   *string         `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The modification time. This value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1736756055000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The dataset name. It must be a non-empty string and cannot exceed 128 characters.
+	//
+	// example:
+	//
+	// test_dataset
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The source of the dataset. Currently supported sources:
+	//
+	// 	- DataWorks
+	//
+	// 	- PAI
+	//
+	// example:
+	//
+	// DataWorks
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The DataWorks workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// Instructions for using the dataset. Markdown rich text is supported.
+	//
+	// example:
+	//
+	// ## introduction
+	Readme *string `json:"Readme,omitempty" xml:"Readme,omitempty"`
+	// The storage type. Valid values:
+	//
+	// 	- OSS: Object Storage Service
+	//
+	// 	- NAS: General-purpose NAS file systems
+	//
+	// 	- EXTREM_NAS: Extreme NAS file systems
+	//
+	// 	- DLF_LANCE: Data Lake Formation
+	//
+	// 	- CPFS: Cloud Paralleled File System
+	//
+	// 	- BMCPFS: CPFS for Lingjun
+	//
+	// 	- MAXCOMPUTE: MaxCompute table
+	//
+	// example:
+	//
+	// OSS
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s Dataset) String() string {

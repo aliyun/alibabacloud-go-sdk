@@ -22,17 +22,24 @@ type iLineageRelationship interface {
 }
 
 type LineageRelationship struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1743040581000
-	CreateTime *int64         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DstEntity  *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The destination entity.
+	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	// The ID.
+	//
 	// example:
 	//
 	// maxcompute-table.p.table:custom-table.xxx:custom-sql.123
-	Id        *string        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source entity.
 	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
-	Task      *LineageTask   `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The task.
+	Task *LineageTask `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s LineageRelationship) String() string {

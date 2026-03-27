@@ -32,36 +32,133 @@ type iTable interface {
 }
 
 type Table struct {
+	// The information about the business metadata that is related to DataWorks, including the usage notes, tags, categories, ancestor tasks, and extended information.
 	BusinessMetadata *TableBusinessMetadata `json:"BusinessMetadata,omitempty" xml:"BusinessMetadata,omitempty" type:"Struct"`
-	// example:
-	//
-	// 测试表
+	// The comments.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time. This value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1736852168000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The table ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}`. If a level does not exist, specify an empty string as a placeholder.
+	//
+	// >  For MaxCompute and DLF tables, specify an empty string at the Instance ID level as a placeholder. For MaxCompute tables, specify a MaxCompute project name at the Database name level. If the three-layer model is enabled for your MaxCompute project, you must specify a schema name at the Schema name level. Otherwise, you can specify an empty string at the Schema name level as a placeholder.
+	//
+	// >  For StarRocks tables, specify a catalog name at the Catalog identifier level. For DLF tables, specify a catalog ID at the Catalog identifier level. Other types of tables do not support the Catalog identifier level, and you can specify an empty string as a placeholder.
+	//
+	// You can configure this parameter in one of the following formats based on your table type:
+	//
+	// `maxcompute-table:::project_name:[schema_name]:table_name`
+	//
+	// `dlf-table::catalog_id:database_name::table_name`
+	//
+	// `hms-table:instance_id::database_name::table_name`
+	//
+	// `holo-table:instance_id::database_name:schema_name:table_name`
+	//
+	// `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+	//
+	// `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
+	//
+	// `catalog_id`: the ID of a DLF catalog.\\
+	//
+	// `project_name`: the name of a MaxCompute project.\\
+	//
+	// `database_name`: the name of a database.\\
+	//
+	// `schema_name`: the name of a schema. For a MaxCompute table, this parameter is required only if the three-layer model is enabled for the MaxCompute project to which the table belongs. If the schema feature is not enabled for the MaxCompute project, specify an empty string for this parameter as a placeholder.\\
+	//
+	// `table_name`: the name of a table.
+	//
 	// example:
 	//
-	// maxcompute-table:123456::test_project::test_tbl
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time. This value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1736852168000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// test_tbl
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of a parent metadata entity. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// 	- For data source types that support schemas, such as `MaxCompute, Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle`, the `ParentMetaEntityId` parameter specifies the schema of the database to which the table belongs. In this case, the common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}`. If a level does not exist, leave the level empty. For a MaxCompute data table, you must make sure that the three-layer model is enabled for the MaxCompute project to which the table belongs.
+	//
+	// 	- For other data source types that do not support schemas, the `ParentMetaEntityId` parameter specifies the database to which the table belongs. In this case, the common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}`. If a level does not exist, leave the level empty.
+	//
+	// >  For MaxCompute and DLF tables, specify an empty string at the Instance ID level as a placeholder. For MaxCompute tables, specify a MaxCompute project name at the Database name level.
+	//
+	// >  For StarRocks tables, specify a catalog name at the Catalog identifier level. For DLF tables, specify a catalog ID at the Catalog identifier level. Other types of tables do not support the Catalog identifier level, and you can specify an empty string as a placeholder.
+	//
+	// You can configure this parameter in one of the following formats based on your table type:
+	//
+	// `maxcompute-project:::project_name`
+	//
+	// `maxcompute-schema:::project_name:schema_name` (Three-layer model enabled for the MaxCompute project)
+	//
+	// `dlf-database::catalog_id:database_name`
+	//
+	// `hms-database:instance_id::database_name`
+	//
+	// `holo-schema:instance_id::database_name:schema_name`
+	//
+	// `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+	//
+	// > \\
+	//
+	// `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
+	//
+	// `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
+	//
+	// `catalog_id`: the ID of a DLF catalog.\\
+	//
+	// `project_name`: the name of a MaxCompute project.\\
+	//
+	// `database_name`: the name of a database.\\
+	//
+	// `schema_name`: the name of a schema.
+	//
 	// example:
 	//
-	// maxcompute-project:123456::test_project
-	ParentMetaEntityId *string   `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
-	PartitionKeys      []*string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// maxcompute-schema:123456XXX::test_project_with_schema:default
+	//
+	// maxcompute-project:123456XXX::test_project_without_schema
+	//
+	// dlf-database:123456XXX:test_catalog:test_db
+	//
+	// hms-database:c-abc123xxx::test_db
+	//
+	// holo-schema:h-abc123xxx::test_db:test_schema
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// The partition keys. If the table is a non-partitioned table, leave this parameter empty.
+	PartitionKeys []*string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// The table type. The value of this parameter is related to the type of metadata crawler.
+	//
 	// example:
 	//
 	// TABLE
-	TableType         *string                 `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// The technical metadata.
 	TechnicalMetadata *TableTechnicalMetadata `json:"TechnicalMetadata,omitempty" xml:"TechnicalMetadata,omitempty" type:"Struct"`
 }
 
@@ -178,13 +275,15 @@ func (s *Table) Validate() error {
 }
 
 type TableBusinessMetadata struct {
+	// The categories.
 	Categories [][]*TableBusinessMetadataCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	Extension  *TableBusinessMetadataExtension      `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
-	// example:
-	//
-	// ## 使用说明
-	Readme        *string                               `json:"Readme,omitempty" xml:"Readme,omitempty"`
-	Tags          []*TableBusinessMetadataTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The extended information. Only MaxCompute tables supports this parameter.
+	Extension *TableBusinessMetadataExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	// The usage notes.
+	Readme *string `json:"Readme,omitempty" xml:"Readme,omitempty"`
+	// The tags.
+	Tags []*TableBusinessMetadataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ancestor tasks.
 	UpstreamTasks []*TableBusinessMetadataUpstreamTasks `json:"UpstreamTasks,omitempty" xml:"UpstreamTasks,omitempty" type:"Repeated"`
 }
 
@@ -269,14 +368,16 @@ func (s *TableBusinessMetadata) Validate() error {
 }
 
 type TableBusinessMetadataCategories struct {
+	// The category ID.
+	//
 	// example:
 	//
 	// CATEGORY.456
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// 测试类目
+	// The category name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent category ID. You can leave this parameter empty.
+	//
 	// example:
 	//
 	// CATEGORY.123
@@ -323,22 +424,36 @@ func (s *TableBusinessMetadataCategories) Validate() error {
 }
 
 type TableBusinessMetadataExtension struct {
+	// The type of the environment. Valid values:
+	//
+	// 	- Prod
+	//
+	// 	- Dev
+	//
 	// example:
 	//
 	// Dev
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The number of times the table is added to favorites.
+	//
 	// example:
 	//
 	// 0
 	FavorCount *int64 `json:"FavorCount,omitempty" xml:"FavorCount,omitempty"`
+	// The DataWorks workspace ID.
+	//
 	// example:
 	//
 	// 234
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The number of times the table is read.
+	//
 	// example:
 	//
 	// 0
 	ReadCount *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	// The number of times the table is viewed.
+	//
 	// example:
 	//
 	// 0
@@ -403,10 +518,14 @@ func (s *TableBusinessMetadataExtension) Validate() error {
 }
 
 type TableBusinessMetadataTags struct {
+	// The tag key. You cannot leave this parameter empty.
+	//
 	// example:
 	//
 	// tag_key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can leave this parameter empty.
+	//
 	// if can be null:
 	// true
 	//
@@ -447,10 +566,14 @@ func (s *TableBusinessMetadataTags) Validate() error {
 }
 
 type TableBusinessMetadataUpstreamTasks struct {
+	// The ancestor task ID.
+	//
 	// example:
 	//
 	// 123456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ancestor task name.
+	//
 	// example:
 	//
 	// test_task
@@ -488,27 +611,40 @@ func (s *TableBusinessMetadataUpstreamTasks) Validate() error {
 }
 
 type TableTechnicalMetadata struct {
+	// Specifies whether the table is a compressed table. Valid values: true and false.
+	//
 	// example:
 	//
 	// false
 	Compressed *bool `json:"Compressed,omitempty" xml:"Compressed,omitempty"`
+	// The input format.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
 	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// The storage location of the table.
+	//
 	// example:
 	//
 	// oss://test-bucket/test_tbl
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The output format.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// The table owner.
+	//
 	// example:
 	//
-	// 123456789
-	Owner      *string            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// test_user
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The information about parameters.
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The implementation class of SerDe.
+	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe

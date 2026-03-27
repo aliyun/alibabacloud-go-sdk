@@ -32,39 +32,90 @@ type iColumn interface {
 }
 
 type Column struct {
+	// Business metadata.
 	BusinessMetadata *ColumnBusinessMetadata `json:"BusinessMetadata,omitempty" xml:"BusinessMetadata,omitempty" type:"Struct"`
-	// example:
-	//
-	// 字段1
+	// The comment.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Specifies whether the column is a foreign key (only supported by MaxCompute).
+	//
 	// example:
 	//
 	// false
 	ForeignKey *bool `json:"ForeignKey,omitempty" xml:"ForeignKey,omitempty"`
+	// The ID. For more information, see [Description of concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+	//
+	// The format is: `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database name}:${Schema name}:${Table Name}:${Column name}`. Use empty strings as placeholders for non-existent hierarchy levels.
+	//
+	// >  For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
+	//
+	// >  For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
+	//
+	// Examples of ID formats for common types are as follows:
+	//
+	// `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
+	//
+	// `dlf-column::catalog_id:database_name::table_name:column_name`
+	//
+	// `hms-column:instance_id::database_name::table_name:column_name`
+	//
+	// `holo-column:instance_id::database_name:schema_name:table_name:column_name`
+	//
+	// `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
+	//
+	// > \\
+	//
+	// `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
+	//
+	// `catalog_id`: The DLF catalog ID.\\
+	//
+	// `project_name`: The MaxCompute project name.\\
+	//
+	// `database_name`: The database name.\\
+	//
+	// `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema; otherwise, use an empty string as a placeholder.\\
+	//
+	// `table_name`: The table name.\\
+	//
+	// `column_name`: The field name.
+	//
 	// example:
 	//
 	// maxcompute-column:123456::test_project:default:test_tbl:col1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// col1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the column is a partition key.
+	//
 	// example:
 	//
 	// false
 	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
+	// The position of the field.
+	//
 	// example:
 	//
 	// 1
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Specifies whether the column is a primary key (only supported by MaxCompute).
+	//
 	// example:
 	//
 	// false
 	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// The table ID. You can refer to the `Table` object.
+	//
 	// example:
 	//
 	// maxcompute-table:123456::test_project:default:test_tbl
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The type.
+	//
 	// example:
 	//
 	// bigint
@@ -179,9 +230,7 @@ func (s *Column) Validate() error {
 }
 
 type ColumnBusinessMetadata struct {
-	// example:
-	//
-	// 字段1的业务描述
+	// A business-level description of the field (supported only by MaxCompute, HMS (EMR clusters) and DLF.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 

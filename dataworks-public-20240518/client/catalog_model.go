@@ -26,13 +26,76 @@ type iCatalog interface {
 }
 
 type Catalog struct {
-	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	ModifyTime         *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The comment.
+	//
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1722073854000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The catalog ID. Currently, only the DLF and StarRocks types are supported. For details, see [description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+	//
+	// 	- For the DLF type, the format is `dlf-catalog::catalog_id`.
+	//
+	// 	- For the starrocks type, the format is `starrocks-catalog:(instance_id|encoded_jdbc_url):catalog_name`.
+	//
+	// > \\
+	//
+	// `catalog_id`: The the DLF catalog ID.\\
+	//
+	// `instance_id`: The instance ID, required if the data source is registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The URL-encoded JDBC connection string, required if the data source is registered using a connection string.\\
+	//
+	// `catalog_name`: The StarRocks catalog name.
+	//
+	// example:
+	//
+	// dlf-catalog:123456XXX:test_catalog
+	//
+	// starrocks-catalog:c-abc123xxx:default_catalog
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1722073854000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The catalog name.
+	//
+	// example:
+	//
+	// default_catalog
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parent entity ID.
+	//
+	// 	- For the DLF type, the format of `ParentMetaEntityId` is `dlf`.
+	//
+	// 	- For the StarRocks type, the format of `ParentMetaEntityId` is `starrocks:(instance_id|encoded_jdbc_url)`.
+	//
+	// > \\
+	//
+	// `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
+	//
+	// `encoded_jdbc_url`: The URL-encoded JDBC connection string, required if the data source is registered via a connection string.
+	//
+	// example:
+	//
+	// dlf
+	//
+	// starrocks:c-abc123xxx
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The catalog type. The value of this parameter varies based on the type of the metadata crawler.
+	//
+	// example:
+	//
+	// Internal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s Catalog) String() string {

@@ -61,7 +61,7 @@ func (client *Client) AbolishPipelineRunWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 从集合中移除实体对象
+// Adds an entity to a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to add an entity to a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - AddEntityIntoMetaCollectionRequest
 //
@@ -167,6 +167,8 @@ func (client *Client) AssociateProjectToResourceGroupWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Deprecated: OpenAPI AttachDataQualityRulesToEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Associates monitoring rules with a data quality monitoring task.
@@ -409,6 +411,10 @@ func (client *Client) CreateAlertRuleWithContext(ctx context.Context, tmpReq *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a workflow in DataStudio.
+//
 // @param request - CreateBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -523,7 +529,7 @@ func (client *Client) CreateComponentWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 验证用
+// Creates a computing resource in the specified workspace. The resource can be for a development environment or a production environment.
 //
 // @param request - CreateComputeResourceRequest
 //
@@ -704,6 +710,10 @@ func (client *Client) CreateDIJobWithContext(ctx context.Context, tmpReq *Create
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -719,6 +729,10 @@ func (client *Client) CreateDIJobWithContext(ctx context.Context, tmpReq *Create
 
 	if !dara.IsNil(request.DestinationDataSourceSettingsShrink) {
 		body["DestinationDataSourceSettings"] = request.DestinationDataSourceSettingsShrink
+	}
+
+	if !dara.IsNil(request.FileSpec) {
+		body["FileSpec"] = request.FileSpec
 	}
 
 	if !dara.IsNil(request.JobSettingsShrink) {
@@ -909,6 +923,8 @@ func (client *Client) CreateDataQualityAlertRuleWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Creates a monitor in DataWorks Data Quality.
@@ -1015,6 +1031,8 @@ func (client *Client) CreateDataQualityEvaluationTaskWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityEvaluationTaskInstance is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScanRun instead.
+//
 // Summary:
 //
 // Creates a monitor instance.
@@ -1077,6 +1095,8 @@ func (client *Client) CreateDataQualityEvaluationTaskInstanceWithContext(ctx con
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityRule is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Creates a data quality monitoring rule.
@@ -1175,6 +1195,8 @@ func (client *Client) CreateDataQualityRuleWithContext(ctx context.Context, tmpR
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityTemplate instead.
+//
 // Summary:
 //
 // Creates a data quality monitoring rule template.
@@ -1761,6 +1783,10 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, tmpRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file in DataStudio. You cannot call this operation to create Data Integration nodes.
+//
 // @param request - CreateFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1933,6 +1959,10 @@ func (client *Client) CreateFileWithContext(ctx context.Context, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a folder.
+//
 // @param request - CreateFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2089,7 +2119,7 @@ func (client *Client) CreateIdentifyCredentialWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Creates a lineage between a source entity and a destination entity. Either the source or destination entity must be a custom entity.
+// Registers lineage relationships in Data Map. At least one end of the relationship must be a custom object. This interface allows you to connect custom objects (such as external reports or third-party system tables) with metadata entities managed by DataWorks.
 //
 // @param tmpReq - CreateLineageRelationshipRequest
 //
@@ -2539,7 +2569,7 @@ func (client *Client) CreateProjectMemberWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// >  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
+// \\>  You cannot use this API operation to create multiple file resources at a time. If you specify multiple file resources by using FlowSpec, the system creates only the first specified resource.
 //
 // Description:
 //
@@ -2837,6 +2867,10 @@ func (client *Client) CreateRouteWithContext(ctx context.Context, request *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file for a function in DataStudio.
+//
 // @param request - CreateUdfFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3127,6 +3161,10 @@ func (client *Client) DeleteAlertRuleWithContext(ctx context.Context, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a workflow.
+//
 // @param request - DeleteBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3283,7 +3321,7 @@ func (client *Client) DeleteComponentWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 验证用
+// Deletes the specified computing resource based on the computing resource ID.
 //
 // Description:
 //
@@ -3527,6 +3565,8 @@ func (client *Client) DeleteDataQualityAlertRuleWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::DeleteDataQualityScan instead.
+//
 // Summary:
 //
 // Deletes a data quality monitoring task.
@@ -3623,6 +3663,8 @@ func (client *Client) DeleteDataQualityRuleWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::DeleteDataQualityTemplate instead.
+//
 // Summary:
 //
 // Deletes a data quality monitoring rule template.
@@ -3965,6 +4007,10 @@ func (client *Client) DeleteDatasetVersionWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a file from DataStudio. If the file has been committed, an asynchronous process is triggered to delete the file in the scheduling system. The value of the DeploymentId parameter returned is used to call the GetDeployment operation to poll the status of the asynchronous process.
+//
 // @param request - DeleteFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4115,7 +4161,7 @@ func (client *Client) DeleteFunctionWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 删除血缘关系
+// Deletes a lineage in Data Map.
 //
 // @param request - DeleteLineageRelationshipRequest
 //
@@ -4159,7 +4205,7 @@ func (client *Client) DeleteLineageRelationshipWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除集合
+// Deletes a collection in Data Map. Collections include categories and data albums. If you want to delete a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - DeleteMetaCollectionRequest
 //
@@ -4769,6 +4815,8 @@ func (client *Client) DeployFileWithContext(ctx context.Context, request *Deploy
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DetachDataQualityRulesFromEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Disassociates monitoring rules from a data quality monitoring task.
@@ -4883,6 +4931,10 @@ func (client *Client) DissociateProjectFromResourceGroupWithContext(ctx context.
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports a table to a workflow. The call to this API operation is equivalent to performing the following operations: Go to the DataStudio page, find the desired workflow, and then click the workflow name. Right-click Table under the desired folder and select Import Table.
+//
 // @param request - EstablishRelationTableToBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5113,6 +5165,10 @@ func (client *Client) GetAlertRuleWithContext(ctx context.Context, request *GetA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a workflow.
+//
 // @param request - GetBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5163,7 +5219,7 @@ func (client *Client) GetBusinessWithContext(ctx context.Context, request *GetBu
 
 // Summary:
 //
-// 获取数据目录详情
+// Queries the information about a catalog in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawlers are supported.
 //
 // @param request - GetCatalogRequest
 //
@@ -5203,7 +5259,7 @@ func (client *Client) GetCatalogWithContext(ctx context.Context, request *GetCat
 
 // Summary:
 //
-// Queries a certificate file.
+// View certificate details.
 //
 // Description:
 //
@@ -5249,7 +5305,7 @@ func (client *Client) GetCertificateWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取字段详情
+// Queries the information about a specific field of a table in Data Map.
 //
 // @param request - GetColumnRequest
 //
@@ -5341,7 +5397,7 @@ func (client *Client) GetComponentWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
-// 验证用
+// Queries the specified computing resource based on the computing resource ID.
 //
 // @param request - GetComputeResourceRequest
 //
@@ -5567,6 +5623,8 @@ func (client *Client) GetDataQualityAlertRuleWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::CreateDataQualityScan instead.
+//
 // Summary:
 //
 // Queries the details of a monitor.
@@ -5607,6 +5665,8 @@ func (client *Client) GetDataQualityEvaluationTaskWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityEvaluationTaskInstance is deprecated, please use dataworks-public::2024-05-18::GetDataQualityScanRun instead.
+//
 // Summary:
 //
 // Queries the details of a monitor instance.
@@ -5647,6 +5707,8 @@ func (client *Client) GetDataQualityEvaluationTaskInstanceWithContext(ctx contex
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityRule is deprecated, please use dataworks-public::2024-05-18::GetDataQualityScan instead.
+//
 // Summary:
 //
 // Queries the information about a data quality monitoring rule.
@@ -5691,6 +5753,8 @@ func (client *Client) GetDataQualityRuleWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::GetDataQualityTemplate instead.
+//
 // Summary:
 //
 // Queries the information about a data quality monitoring rule template.
@@ -5981,7 +6045,7 @@ func (client *Client) GetDataSourceWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取数据库详情
+// Queries the information about a specific database in Data Map.
 //
 // @param request - GetDatabaseRequest
 //
@@ -6021,7 +6085,7 @@ func (client *Client) GetDatabaseWithContext(ctx context.Context, request *GetDa
 
 // Summary:
 //
-// 获取数据集详情
+// Gets the details of a dataset.
 //
 // @param request - GetDatasetRequest
 //
@@ -6107,6 +6171,10 @@ func (client *Client) GetDatasetVersionWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a deployment package.
+//
 // @param request - GetDeploymentPackageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6267,6 +6335,10 @@ func (client *Client) GetFileVersionWithContext(ctx context.Context, request *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a folder.
+//
 // @param request - GetFolderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6449,7 +6521,7 @@ func (client *Client) GetJobStatusWithContext(ctx context.Context, request *GetJ
 
 // Summary:
 //
-// 获取血缘关系详情
+// Queries the information about a lineage in Data Map.
 //
 // @param request - GetLineageRelationshipRequest
 //
@@ -7065,7 +7137,7 @@ func (client *Client) GetSchemaWithContext(ctx context.Context, request *GetSche
 
 // Summary:
 //
-// 获取表详情
+// Queries the information about a specific table in Data Map.
 //
 // @param request - GetTableRequest
 //
@@ -7611,6 +7683,10 @@ func (client *Client) ListAlertRulesWithContext(ctx context.Context, tmpReq *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of workflows.
+//
 // @param request - ListBusinessRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7669,7 +7745,7 @@ func (client *Client) ListBusinessWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 查询数据目录列表
+// Queries a list of catalogs in Data Map. Only catalogs of the Data Lake Formation (DLF) and StarRocks metadata crawler types are supported. For the DLF metadata crawler type, all supported data catalogs are returned. For the StarRocks metadata crawler type, data catalogs in a specific instance are returned.
 //
 // @param tmpReq - ListCatalogsRequest
 //
@@ -7761,7 +7837,7 @@ func (client *Client) ListCertificatesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询字段列表
+// Queries a list of fields in a data table in Data Map.
 //
 // @param request - ListColumnsRequest
 //
@@ -7861,7 +7937,7 @@ func (client *Client) ListComponentsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 验证用
+// Queries the list of computing resources that meet the specified business information.
 //
 // @param tmpReq - ListComputeResourcesRequest
 //
@@ -8321,6 +8397,8 @@ func (client *Client) ListDataQualityAlertRulesWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityEvaluationTaskInstances is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScanRuns instead.
+//
 // Summary:
 //
 // Queries a list of instances generated by a data quality monitoring task by page.
@@ -8365,6 +8443,8 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithContext(ctx cont
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityEvaluationTasks is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScans instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring tasks by page.
@@ -8409,6 +8489,12 @@ func (client *Client) ListDataQualityEvaluationTasksWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityResults is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScanRuns instead.
+//
+// Summary:
+//
+// 查询数据质量规则校验结果列表
+//
 // Description:
 //
 // This API operation is available for all DataWorks editions.
@@ -8449,6 +8535,8 @@ func (client *Client) ListDataQualityResultsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityRuleTemplates is deprecated, please use dataworks-public::2024-05-18::ListDataQualityTemplates instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring rule templates.
@@ -8489,6 +8577,8 @@ func (client *Client) ListDataQualityRuleTemplatesWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListDataQualityRules is deprecated, please use dataworks-public::2024-05-18::ListDataQualityScans instead.
+//
 // Summary:
 //
 // Queries a list of data quality monitoring rules by page.
@@ -8855,7 +8945,7 @@ func (client *Client) ListDataSourcesWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// 查询数据库列表
+// Queries a list of databases in an instance, cluster, or data catalog in Data Map. For DLF or StarRocks data sources, you can call this API operation to query databases in a data catalog. For StarRocks data sources, you can call this API operation to query databases in internal catalogs. For other types of data sources, you can call this API operation to query databases in an instance or cluster.
 //
 // @param request - ListDatabasesRequest
 //
@@ -9345,6 +9435,10 @@ func (client *Client) ListEntitiesInMetaCollectionWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of file versions.
+//
 // @param request - ListFileVersionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9401,6 +9495,10 @@ func (client *Client) ListFileVersionsWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files.
+//
 // @param request - ListFilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9501,6 +9599,10 @@ func (client *Client) ListFilesWithContext(ctx context.Context, request *ListFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of folders.
+//
 // @param request - ListFoldersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9599,7 +9701,7 @@ func (client *Client) ListFunctionsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询血缘关系
+// Queries the lineage between two entities, such as tables, fields, and Object Storage Service (OSS) files, in Data Map.
 //
 // @param request - ListLineageRelationshipsRequest
 //
@@ -9639,7 +9741,7 @@ func (client *Client) ListLineageRelationshipsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询实体血缘
+// Queries a list of ancestor and descendant entities of an entity in Data Map. You can specify whether to return the lineage between the entities.
 //
 // @param request - ListLineagesRequest
 //
@@ -9843,7 +9945,7 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 
 // Summary:
 //
-// 查询数据表的分区列表
+// Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
 //
 // @param request - ListPartitionsRequest
 //
@@ -10209,7 +10311,7 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, tmpReq *ListP
 
 // Summary:
 //
-// # Query the list of workspaces with which a resource group is associated
+// Gets the list of workspaces bound to a resource group.
 //
 // Description:
 //
@@ -10259,7 +10361,7 @@ func (client *Client) ListResourceGroupAssociateProjectsWithContext(ctx context.
 
 // Summary:
 //
-// 获取指定资源组的监控指标数据
+// Queries the metric data of a resource group.
 //
 // @param request - ListResourceGroupMetricDataRequest
 //
@@ -11465,7 +11567,7 @@ func (client *Client) PreviewDatasetVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 从集合中移除实体对象
+// Removes an entity from a collection in Data Map. Collections include categories and data albums. Entities can be only tables. If you want to remove an entity from a data album, the account that you use must be attached the AliyunDataWorksFullAccess policy, or you are the data album creator or administrator.
 //
 // @param request - RemoveEntityFromMetaCollectionRequest
 //
@@ -12381,6 +12483,10 @@ func (client *Client) StopWorkflowInstancesWithContext(ctx context.Context, tmpR
 	return _result, _err
 }
 
+// Summary:
+//
+// Commits a file to the development environment of the scheduling system to generate a task.
+//
 // @param request - SubmitFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12903,7 +13009,7 @@ func (client *Client) UpdateBusinessWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新字段业务元数据
+// Updates the business metadata of a column in a table in Data Map. Only the business description of a column can be updated.
 //
 // @param request - UpdateColumnBusinessMetadataRequest
 //
@@ -13009,7 +13115,7 @@ func (client *Client) UpdateComponentWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 验证用
+// Modifies the specified computing resource based on the computing resource ID.
 //
 // @param request - UpdateComputeResourceRequest
 //
@@ -13164,6 +13270,10 @@ func (client *Client) UpdateDIJobWithContext(ctx context.Context, tmpReq *Update
 		query["Id"] = request.Id
 	}
 
+	if !dara.IsNil(request.Owner) {
+		query["Owner"] = request.Owner
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -13171,6 +13281,10 @@ func (client *Client) UpdateDIJobWithContext(ctx context.Context, tmpReq *Update
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FileSpec) {
+		body["FileSpec"] = request.FileSpec
 	}
 
 	if !dara.IsNil(request.JobSettingsShrink) {
@@ -13357,6 +13471,8 @@ func (client *Client) UpdateDataQualityAlertRuleWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityEvaluationTask is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Updates a monitor.
@@ -13467,6 +13583,8 @@ func (client *Client) UpdateDataQualityEvaluationTaskWithContext(ctx context.Con
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityRule is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityScan instead.
+//
 // Summary:
 //
 // Updates a data quality monitoring rule.
@@ -13563,6 +13681,8 @@ func (client *Client) UpdateDataQualityRuleWithContext(ctx context.Context, tmpR
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateDataQualityRuleTemplate is deprecated, please use dataworks-public::2024-05-18::UpdateDataQualityTemplate instead.
+//
 // Summary:
 //
 // Updates a data quality monitoring rule template.
@@ -13983,6 +14103,10 @@ func (client *Client) UpdateDatasetVersionWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a file.
+//
 // @param request - UpdateFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14257,7 +14381,7 @@ func (client *Client) UpdateFunctionWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 回调扩展点消息的检查结果
+// Recalls the check result of the message of an extension point event.
 //
 // @param request - UpdateIDEEventResultRequest
 //
@@ -14917,6 +15041,10 @@ func (client *Client) UpdateTaskInstancesWithContext(ctx context.Context, tmpReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the file information about a function.
+//
 // @param request - UpdateUdfFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

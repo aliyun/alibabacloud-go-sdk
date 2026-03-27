@@ -18,14 +18,30 @@ type iLineageEntity interface {
 }
 
 type LineageEntity struct {
+	// The additional properties.
+	//
 	// example:
 	//
 	// {"key1":"value1"}
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The entity ID.
+	//
 	// example:
 	//
-	// maxcompute-table:123456::test_project::test_tbl
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	//
+	// custom-api:api123
+	//
+	// custom-table:table456
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// test_tbl

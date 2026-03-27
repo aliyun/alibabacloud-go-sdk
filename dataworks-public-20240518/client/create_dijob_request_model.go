@@ -15,6 +15,8 @@ type iCreateDIJobRequest interface {
 	GetDestinationDataSourceSettings() []*CreateDIJobRequestDestinationDataSourceSettings
 	SetDestinationDataSourceType(v string) *CreateDIJobRequest
 	GetDestinationDataSourceType() *string
+	SetFileSpec(v string) *CreateDIJobRequest
+	GetFileSpec() *string
 	SetJobName(v string) *CreateDIJobRequest
 	GetJobName() *string
 	SetJobSettings(v *CreateDIJobRequestJobSettings) *CreateDIJobRequest
@@ -25,6 +27,8 @@ type iCreateDIJobRequest interface {
 	GetMigrationType() *string
 	SetName(v string) *CreateDIJobRequest
 	GetName() *string
+	SetOwner(v string) *CreateDIJobRequest
+	GetOwner() *string
 	SetProjectId(v int64) *CreateDIJobRequest
 	GetProjectId() *int64
 	SetResourceSettings(v *CreateDIJobRequestResourceSettings) *CreateDIJobRequest
@@ -40,17 +44,21 @@ type iCreateDIJobRequest interface {
 }
 
 type CreateDIJobRequest struct {
+	// The task description.
+	//
+	// example:
+	//
+	// The description of the synchronization task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// This parameter is required.
+	// The list of destination data source settings.
 	DestinationDataSourceSettings []*CreateDIJobRequestDestinationDataSourceSettings `json:"DestinationDataSourceSettings,omitempty" xml:"DestinationDataSourceSettings,omitempty" type:"Repeated"`
 	// The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB for MySQL, Kafka, and Hive.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
+	FileSpec                  *string `json:"FileSpec,omitempty" xml:"FileSpec,omitempty"`
 	// Deprecated
 	//
 	// This parameter is deprecated and is replaced by the Name parameter.
@@ -58,7 +66,8 @@ type CreateDIJobRequest struct {
 	// example:
 	//
 	// mysql_to_holo_sync_8772
-	JobName     *string                        `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The task-level settings, including DDL handling policies, column data type mapping between source and destination, and runtime parameters.
 	JobSettings *CreateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
 	// The type of the synchronization task. Valid values:
 	//
@@ -84,8 +93,6 @@ type CreateDIJobRequest struct {
 	//
 	// 	- FullAndOfflineIncremental
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
@@ -96,6 +103,12 @@ type CreateDIJobRequest struct {
 	//
 	// mysql_to_holo_sync_8772
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The task owner.
+	//
+	// example:
+	//
+	// 3726346
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to obtain the ID.
 	//
 	// You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
@@ -104,20 +117,23 @@ type CreateDIJobRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// This parameter is required.
+	// The resource settings.
 	ResourceSettings *CreateDIJobRequestResourceSettings `json:"ResourceSettings,omitempty" xml:"ResourceSettings,omitempty" type:"Struct"`
-	// This parameter is required.
+	// The list of source data source settings.
 	SourceDataSourceSettings []*CreateDIJobRequestSourceDataSourceSettings `json:"SourceDataSourceSettings,omitempty" xml:"SourceDataSourceSettings,omitempty" type:"Repeated"`
 	// The source type. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, Redshift, Hive, SQL Server, Doris, and ClickHouse.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
-	// This parameter is required.
-	TableMappings       []*CreateDIJobRequestTableMappings       `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	// The list of synchronization object transformation mappings. Each element describes a set of source object selection rules and the transformation rules applied to those objects.
+	//
+	// >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
+	TableMappings []*CreateDIJobRequestTableMappings `json:"TableMappings,omitempty" xml:"TableMappings,omitempty" type:"Repeated"`
+	// The list of synchronization object transformation rule definitions.
+	//
+	// >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
 	TransformationRules []*CreateDIJobRequestTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
@@ -141,6 +157,10 @@ func (s *CreateDIJobRequest) GetDestinationDataSourceType() *string {
 	return s.DestinationDataSourceType
 }
 
+func (s *CreateDIJobRequest) GetFileSpec() *string {
+	return s.FileSpec
+}
+
 func (s *CreateDIJobRequest) GetJobName() *string {
 	return s.JobName
 }
@@ -159,6 +179,10 @@ func (s *CreateDIJobRequest) GetMigrationType() *string {
 
 func (s *CreateDIJobRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateDIJobRequest) GetOwner() *string {
+	return s.Owner
 }
 
 func (s *CreateDIJobRequest) GetProjectId() *int64 {
@@ -200,6 +224,11 @@ func (s *CreateDIJobRequest) SetDestinationDataSourceType(v string) *CreateDIJob
 	return s
 }
 
+func (s *CreateDIJobRequest) SetFileSpec(v string) *CreateDIJobRequest {
+	s.FileSpec = &v
+	return s
+}
+
 func (s *CreateDIJobRequest) SetJobName(v string) *CreateDIJobRequest {
 	s.JobName = &v
 	return s
@@ -222,6 +251,11 @@ func (s *CreateDIJobRequest) SetMigrationType(v string) *CreateDIJobRequest {
 
 func (s *CreateDIJobRequest) SetName(v string) *CreateDIJobRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateDIJobRequest) SetOwner(v string) *CreateDIJobRequest {
+	s.Owner = &v
 	return s
 }
 
@@ -306,6 +340,11 @@ func (s *CreateDIJobRequest) Validate() error {
 }
 
 type CreateDIJobRequestDestinationDataSourceSettings struct {
+	// The data source name.
+	//
+	// example:
+	//
+	// holo_datasource_1
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 }
 
@@ -331,11 +370,42 @@ func (s *CreateDIJobRequestDestinationDataSourceSettings) Validate() error {
 }
 
 type CreateDIJobRequestJobSettings struct {
-	ChannelSettings        *string                                                `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	// The channel-specific settings. You can configure special settings for specific channels. Currently supported: Holo2Holo (Hologres to Hologres) and Holo2Kafka (Hologres to Kafka).
+	//
+	// 1.  Holo2Kafka
+	//
+	// 	- Example: {"destinationChannelSettings":{"kafkaClientProperties":[{"key":"linger.ms","value":"100"}],"keyColumns":["col3"],"writeMode":"canal"}} kafkaClientProperties: Kafka producer parameters used when writing to Kafka.
+	//
+	// 	- keyColumns: The columns to write to Kafka.
+	//
+	// 	- writeMode: The Kafka write format. Valid values: json and canal.
+	//
+	// 2.  Holo2Holo
+	//
+	// 	- Example: {"destinationChannelSettings":{"conflictMode":"replace","dynamicColumnAction":"replay","writeMode":"replay"}}
+	//
+	// 	- conflictMode: The conflict handling policy when writing to Hologres. Valid values: replace (overwrite) and ignore.
+	//
+	// 	- writeMode: The write mode for Hologres. Valid values: replay and insert.
+	//
+	// 	- dynamicColumnAction: The dynamic column handling mode when writing to Hologres. Valid values: replay, insert, and ignore.
+	//
+	// example:
+	//
+	// {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
+	ChannelSettings *string `json:"ChannelSettings,omitempty" xml:"ChannelSettings,omitempty"`
+	// The array of column type mappings.
+	//
+	// >  ["ColumnDataTypeSettings":[ { "SourceDataType":"Bigint", "DestinationDataType":"Text" } ]
 	ColumnDataTypeSettings []*CreateDIJobRequestJobSettingsColumnDataTypeSettings `json:"ColumnDataTypeSettings,omitempty" xml:"ColumnDataTypeSettings,omitempty" type:"Repeated"`
-	CycleScheduleSettings  *CreateDIJobRequestJobSettingsCycleScheduleSettings    `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
-	DdlHandlingSettings    []*CreateDIJobRequestJobSettingsDdlHandlingSettings    `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
-	RuntimeSettings        []*CreateDIJobRequestJobSettingsRuntimeSettings        `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
+	// The scheduled task settings.
+	CycleScheduleSettings *CreateDIJobRequestJobSettingsCycleScheduleSettings `json:"CycleScheduleSettings,omitempty" xml:"CycleScheduleSettings,omitempty" type:"Struct"`
+	// The array of DDL handling settings.
+	//
+	// >  ["DDLHandlingSettings":[ { "Type":"Insert", "Action":"Normal" } ]
+	DdlHandlingSettings []*CreateDIJobRequestJobSettingsDdlHandlingSettings `json:"DdlHandlingSettings,omitempty" xml:"DdlHandlingSettings,omitempty" type:"Repeated"`
+	// The runtime settings.
+	RuntimeSettings []*CreateDIJobRequestJobSettingsRuntimeSettings `json:"RuntimeSettings,omitempty" xml:"RuntimeSettings,omitempty" type:"Repeated"`
 }
 
 func (s CreateDIJobRequestJobSettings) String() string {
@@ -428,8 +498,18 @@ func (s *CreateDIJobRequestJobSettings) Validate() error {
 }
 
 type CreateDIJobRequestJobSettingsColumnDataTypeSettings struct {
+	// The destination type, such as bigint, boolean, string, text, datetime, timestamp, decimal, or binary. Different data sources may have different types.
+	//
+	// example:
+	//
+	// text
 	DestinationDataType *string `json:"DestinationDataType,omitempty" xml:"DestinationDataType,omitempty"`
-	SourceDataType      *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
+	// The source type, such as bigint, boolean, string, text, datetime, timestamp, decimal, or binary. Different data sources may have different types.
+	//
+	// example:
+	//
+	// bigint
+	SourceDataType *string `json:"SourceDataType,omitempty" xml:"SourceDataType,omitempty"`
 }
 
 func (s CreateDIJobRequestJobSettingsColumnDataTypeSettings) String() string {
@@ -463,7 +543,21 @@ func (s *CreateDIJobRequestJobSettingsColumnDataTypeSettings) Validate() error {
 }
 
 type CreateDIJobRequestJobSettingsCycleScheduleSettings struct {
+	// The synchronization type that requires scheduling. Valid values:
+	//
+	// 	- Full: Full synchronization
+	//
+	// 	- OfflineIncremental: Batch incremental synchronization
+	//
+	// example:
+	//
+	// Full
 	CycleMigrationType *string `json:"CycleMigrationType,omitempty" xml:"CycleMigrationType,omitempty"`
+	// The scheduling parameters.
+	//
+	// example:
+	//
+	// bizdate=$bizdate
 	ScheduleParameters *string `json:"ScheduleParameters,omitempty" xml:"ScheduleParameters,omitempty"`
 }
 
@@ -498,8 +592,38 @@ func (s *CreateDIJobRequestJobSettingsCycleScheduleSettings) Validate() error {
 }
 
 type CreateDIJobRequestJobSettingsDdlHandlingSettings struct {
+	// Valid values:
+	//
+	// 	- Ignore
+	//
+	// 	- Critical: Fail the task
+	//
+	// 	- Normal
+	//
+	// example:
+	//
+	// Critical
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The DDL type. Valid values:
+	//
+	// 	- RenameColumn
+	//
+	// 	- ModifyColumn
+	//
+	// 	- CreateTable
+	//
+	// 	- TruncateTable
+	//
+	// 	- DropTable
+	//
+	// 	- DropColumn
+	//
+	// 	- AddColumn
+	//
+	// example:
+	//
+	// AddColumn
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateDIJobRequestJobSettingsDdlHandlingSettings) String() string {
@@ -533,7 +657,33 @@ func (s *CreateDIJobRequestJobSettingsDdlHandlingSettings) Validate() error {
 }
 
 type CreateDIJobRequestJobSettingsRuntimeSettings struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The setting name. Valid values:
+	//
+	// 	- src.offline.datasource.max.connection: Specifies the maximum number of connections that are allowed for reading data from the source of a batch synchronization task.
+	//
+	// 	- dst.offline.truncate: Specifies whether to clear the destination table before data writing.
+	//
+	// 	- runtime.offline.speed.limit.enable: Specifies whether throttling is enabled for a batch synchronization task.
+	//
+	// 	- runtime.offline.concurrent: Specifies the maximum number of parallel threads that are allowed for a batch synchronization task.
+	//
+	// 	- runtime.enable.auto.create.schema: Specifies whether schemas are automatically created in the destination of a synchronization task.
+	//
+	// 	- runtime.realtime.concurrent: Specifies the maximum number of parallel threads that are allowed for a real-time synchronization task.
+	//
+	// 	- runtime.realtime.failover.minute.dataxcdc: Specifies the maximum waiting duration before a synchronization task retries the next restart if the previous restart fails after failover occurs. Unit: minutes.
+	//
+	// 	- runtime.realtime.failover.times.dataxcdc: Specifies the maximum number of failures that are allowed for restarting a synchronization task after failovers occur.
+	//
+	// example:
+	//
+	// runtime.offline.concurrent
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The setting value.
+	//
+	// example:
+	//
+	// 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -568,8 +718,11 @@ func (s *CreateDIJobRequestJobSettingsRuntimeSettings) Validate() error {
 }
 
 type CreateDIJobRequestResourceSettings struct {
-	OfflineResourceSettings  *CreateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The batch synchronization resources.
+	OfflineResourceSettings *CreateDIJobRequestResourceSettingsOfflineResourceSettings `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
+	// The real-time synchronization resources.
 	RealtimeResourceSettings *CreateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	// The scheduling resources.
 	ScheduleResourceSettings *CreateDIJobRequestResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
 }
 
@@ -628,8 +781,18 @@ func (s *CreateDIJobRequestResourceSettings) Validate() error {
 }
 
 type CreateDIJobRequestResourceSettingsOfflineResourceSettings struct {
-	RequestedCu             *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	ResourceGroupIdentifier *string  `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// The CU of the Data Integration resource group used for batch synchronization.
+	//
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The name of the Data Integration resource group used for batch synchronization.
+	//
+	// example:
+	//
+	// S_res_group_111_222
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
 }
 
 func (s CreateDIJobRequestResourceSettingsOfflineResourceSettings) String() string {
@@ -663,8 +826,18 @@ func (s *CreateDIJobRequestResourceSettingsOfflineResourceSettings) Validate() e
 }
 
 type CreateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
-	RequestedCu             *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	ResourceGroupIdentifier *string  `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// The CU of the Data Integration resource group used for real-time synchronization.
+	//
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The name of the Data Integration resource group used for real-time synchronization.
+	//
+	// example:
+	//
+	// S_res_group_111_222
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
 }
 
 func (s CreateDIJobRequestResourceSettingsRealtimeResourceSettings) String() string {
@@ -698,8 +871,18 @@ func (s *CreateDIJobRequestResourceSettingsRealtimeResourceSettings) Validate() 
 }
 
 type CreateDIJobRequestResourceSettingsScheduleResourceSettings struct {
-	RequestedCu             *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	ResourceGroupIdentifier *string  `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// The CU of the scheduling resource group for batch synchronization tasks.
+	//
+	// example:
+	//
+	// 2.0
+	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
+	// The name of the scheduling resource group for batch synchronization tasks.
+	//
+	// example:
+	//
+	// S_res_group_235454102432001_1579085295030
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
 }
 
 func (s CreateDIJobRequestResourceSettingsScheduleResourceSettings) String() string {
@@ -733,7 +916,13 @@ func (s *CreateDIJobRequestResourceSettingsScheduleResourceSettings) Validate() 
 }
 
 type CreateDIJobRequestSourceDataSourceSettings struct {
-	DataSourceName       *string                                                         `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The data source name.
+	//
+	// example:
+	//
+	// mysql_datasource_1
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The data source properties.
 	DataSourceProperties *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties `json:"DataSourceProperties,omitempty" xml:"DataSourceProperties,omitempty" type:"Struct"`
 }
 
@@ -773,7 +962,17 @@ func (s *CreateDIJobRequestSourceDataSourceSettings) Validate() error {
 }
 
 type CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties struct {
+	// The database encoding.
+	//
+	// example:
+	//
+	// UTF-8
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	// The time zone.
+	//
+	// example:
+	//
+	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 }
 
@@ -808,8 +1007,10 @@ func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) Validat
 }
 
 type CreateDIJobRequestTableMappings struct {
+	// Each rule can select a set of source objects to synchronize. Multiple rules together select a table.
 	SourceObjectSelectionRules []*CreateDIJobRequestTableMappingsSourceObjectSelectionRules `json:"SourceObjectSelectionRules,omitempty" xml:"SourceObjectSelectionRules,omitempty" type:"Repeated"`
-	TransformationRules        []*CreateDIJobRequestTableMappingsTransformationRules        `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
+	// The list of synchronization object transformation rule definitions. Each element represents a single transformation rule definition.
+	TransformationRules []*CreateDIJobRequestTableMappingsTransformationRules `json:"TransformationRules,omitempty" xml:"TransformationRules,omitempty" type:"Repeated"`
 }
 
 func (s CreateDIJobRequestTableMappings) String() string {
@@ -861,10 +1062,36 @@ func (s *CreateDIJobRequestTableMappings) Validate() error {
 }
 
 type CreateDIJobRequestTableMappingsSourceObjectSelectionRules struct {
-	Action         *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Expression     *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The selection action. Valid values: Include and Exclude.
+	//
+	// example:
+	//
+	// Include
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The expression.
+	//
+	// example:
+	//
+	// mysql_table_1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The expression type. Valid values: Exact and Regex.
+	//
+	// example:
+	//
+	// Exact
 	ExpressionType *string `json:"ExpressionType,omitempty" xml:"ExpressionType,omitempty"`
-	ObjectType     *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The object type. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
+	// 	- Database
+	//
+	// example:
+	//
+	// Table
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 }
 
 func (s CreateDIJobRequestTableMappingsSourceObjectSelectionRules) String() string {
@@ -916,8 +1143,43 @@ func (s *CreateDIJobRequestTableMappingsSourceObjectSelectionRules) Validate() e
 }
 
 type CreateDIJobRequestTableMappingsTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
+	// 	- DefineIncrementalCondition
+	//
+	// 	- DefineCycleScheduleSettings
+	//
+	// 	- DefinePartitionKey
+	//
+	// example:
+	//
+	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
-	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule name. The rule name must be unique for a given combination of action type and target type. The name cannot exceed 50 characters.
+	//
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The target type for the action. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
+	// 	- Database
+	//
+	// example:
+	//
+	// Table
 	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
 }
 
@@ -961,9 +1223,107 @@ func (s *CreateDIJobRequestTableMappingsTransformationRules) Validate() error {
 }
 
 type CreateDIJobRequestTransformationRules struct {
+	// The action type. Valid values:
+	//
+	// 	- DefinePrimaryKey
+	//
+	// 	- Rename
+	//
+	// 	- AddColumn
+	//
+	// 	- HandleDml
+	//
+	// 	- DefineIncrementalCondition
+	//
+	// 	- DefineCycleScheduleSettings
+	//
+	// 	- DefinePartitionKey
+	//
+	// example:
+	//
+	// Rename
 	RuleActionType *string `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	// The rule expression in JSON string format.
+	//
+	// 1.  Rename rule
+	//
+	// 	- Example: {"expression":"${srcDatasourceName}_${srcDatabaseName}_0922" }
+	//
+	// 	- expression: The rename transformation expression. Supported variables include: ${srcDatasourceName} (source data source name), ${srcDatabaseName} (source database name), and ${srcTableName} (source table name).
+	//
+	// 2.  AddColumn rule
+	//
+	// 	- Example: {"columns":[{"columnName":"my_add_column","columnValueType":"Constant","columnValue":"123"}]}
+	//
+	// 	- If not specified, the default behavior is to not add columns.
+	//
+	// 	- columnName: The name of the column to add.
+	//
+	// 	- columnValueType: The value type of the column to add. Valid values: Constant and Variable.
+	//
+	// 	- columnValue: The value of the column to add. When columnValueType is set to Constant, the value is a custom constant of the string type. When columnValueType is set to Variable, the value is a built-in variable. Built-in variables include: EXECUTE_TIME (execution time, long type), DB_NAME_SRC (source database name, string type), DATASOURCE_NAME_SRC (source data source name, string type), TABLE_NAME_SRC (source table name, string type), DB_NAME_DEST (destination database name, string type), DATASOURCE_NAME_DEST (destination data source name, string type), TABLE_NAME_DEST (destination table name, string type), and DB_NAME_SRC_TRANSED (transformed source database name, string type).
+	//
+	// 3.  DefinePrimaryKey
+	//
+	// 	- Example: {"columns":["ukcolumn1","ukcolumn2"]}
+	//
+	// 	- If not specified, the source primary key columns are used by default.
+	//
+	// 	- When the destination table already exists: Data Integration does not modify the destination table structure. If the specified primary key columns are not in the destination table, the task fails to start.
+	//
+	// 	- When the destination table is auto-created: Data Integration automatically creates the destination table structure with the defined primary key columns. If the specified primary key columns are not in the destination table, the task fails to start.
+	//
+	// 4.  HandleDml rule
+	//
+	// 	- Example of a rule used to process DML messages: {"dmlPolicies":[{"dmlType":"Delete","dmlAction":"Filter","filterCondition":"id > 1"}]}.
+	//
+	// 	- If not specified, the default rule is Normal for Insert, Update, and Delete.
+	//
+	// 	- dmlType: The DML operation type. Valid values: Insert, Update, and Delete.
+	//
+	// 	- dmlAction: The DML handling policy. Valid values: Normal, Ignore, Filter (conditional processing, used when dmlType is Update or Delete), and LogicalDelete.
+	//
+	// 	- filterCondition: The DML filter condition. This parameter is used when dmlAction is set to Filter.
+	//
+	// 5.  DefineIncrementalCondition
+	//
+	// 	- Example: {"where":"id > 0"}
+	//
+	// 	- Specifies the incremental filter condition.
+	//
+	// 6.  DefineCycleScheduleSettings
+	//
+	// 	- Example: {"cronExpress":" \\	- \\	- \\	- \\	- \\	- \\*", "cycleType":"1"}
+	//
+	// 	- Specifies the scheduled task parameters.
+	//
+	// 7.  DefinePartitionKey
+	//
+	// 	- Example: {"columns":["id"]}
+	//
+	// 	- Specifies the partition key.
+	//
+	// example:
+	//
+	// {"expression":"${srcDatasoureName}_${srcDatabaseName}"}
 	RuleExpression *string `json:"RuleExpression,omitempty" xml:"RuleExpression,omitempty"`
-	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule name. When the action type and target type are the same, the rule name must be unique. The name cannot exceed 50 characters.
+	//
+	// example:
+	//
+	// rename_rule_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The target type for the action. Valid values:
+	//
+	// 	- Table
+	//
+	// 	- Schema
+	//
+	// 	- Database
+	//
+	// example:
+	//
+	// Table
 	RuleTargetType *string `json:"RuleTargetType,omitempty" xml:"RuleTargetType,omitempty"`
 }
 
