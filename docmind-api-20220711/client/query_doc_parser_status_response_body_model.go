@@ -89,14 +89,15 @@ func (s *QueryDocParserStatusResponseBody) Validate() error {
 }
 
 type QueryDocParserStatusResponseBodyData struct {
-	ImageCount                *int32   `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
-	NumberOfSuccessfulParsing *int32   `json:"NumberOfSuccessfulParsing,omitempty" xml:"NumberOfSuccessfulParsing,omitempty"`
-	PageCountEstimate         *int32   `json:"PageCountEstimate,omitempty" xml:"PageCountEstimate,omitempty"`
-	ParagraphCount            *int32   `json:"ParagraphCount,omitempty" xml:"ParagraphCount,omitempty"`
-	Processing                *float32 `json:"Processing,omitempty" xml:"Processing,omitempty"`
-	Status                    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TableCount                *int32   `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	Tokens                    *int64   `json:"Tokens,omitempty" xml:"Tokens,omitempty"`
+	ImageCount                *int32                                                    `json:"ImageCount,omitempty" xml:"ImageCount,omitempty"`
+	NumberOfSuccessfulParsing *int32                                                    `json:"NumberOfSuccessfulParsing,omitempty" xml:"NumberOfSuccessfulParsing,omitempty"`
+	OutputFormatResult        []*QueryDocParserStatusResponseBodyDataOutputFormatResult `json:"OutputFormatResult,omitempty" xml:"OutputFormatResult,omitempty" type:"Repeated"`
+	PageCountEstimate         *int32                                                    `json:"PageCountEstimate,omitempty" xml:"PageCountEstimate,omitempty"`
+	ParagraphCount            *int32                                                    `json:"ParagraphCount,omitempty" xml:"ParagraphCount,omitempty"`
+	Processing                *float32                                                  `json:"Processing,omitempty" xml:"Processing,omitempty"`
+	Status                    *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableCount                *int32                                                    `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	Tokens                    *int64                                                    `json:"Tokens,omitempty" xml:"Tokens,omitempty"`
 }
 
 func (s QueryDocParserStatusResponseBodyData) String() string {
@@ -113,6 +114,10 @@ func (s *QueryDocParserStatusResponseBodyData) GetImageCount() *int32 {
 
 func (s *QueryDocParserStatusResponseBodyData) GetNumberOfSuccessfulParsing() *int32 {
 	return s.NumberOfSuccessfulParsing
+}
+
+func (s *QueryDocParserStatusResponseBodyData) GetOutputFormatResult() []*QueryDocParserStatusResponseBodyDataOutputFormatResult {
+	return s.OutputFormatResult
 }
 
 func (s *QueryDocParserStatusResponseBodyData) GetPageCountEstimate() *int32 {
@@ -149,6 +154,11 @@ func (s *QueryDocParserStatusResponseBodyData) SetNumberOfSuccessfulParsing(v in
 	return s
 }
 
+func (s *QueryDocParserStatusResponseBodyData) SetOutputFormatResult(v []*QueryDocParserStatusResponseBodyDataOutputFormatResult) *QueryDocParserStatusResponseBodyData {
+	s.OutputFormatResult = v
+	return s
+}
+
 func (s *QueryDocParserStatusResponseBodyData) SetPageCountEstimate(v int32) *QueryDocParserStatusResponseBodyData {
 	s.PageCountEstimate = &v
 	return s
@@ -180,5 +190,133 @@ func (s *QueryDocParserStatusResponseBodyData) SetTokens(v int64) *QueryDocParse
 }
 
 func (s *QueryDocParserStatusResponseBodyData) Validate() error {
+	if s.OutputFormatResult != nil {
+		for _, item := range s.OutputFormatResult {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type QueryDocParserStatusResponseBodyDataOutputFormatResult struct {
+	OutputFileUrl *string                                                        `json:"OutputFileUrl,omitempty" xml:"OutputFileUrl,omitempty"`
+	OutputType    *string                                                        `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	Pages         []*QueryDocParserStatusResponseBodyDataOutputFormatResultPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
+}
+
+func (s QueryDocParserStatusResponseBodyDataOutputFormatResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryDocParserStatusResponseBodyDataOutputFormatResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) GetOutputFileUrl() *string {
+	return s.OutputFileUrl
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) GetOutputType() *string {
+	return s.OutputType
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) GetPages() []*QueryDocParserStatusResponseBodyDataOutputFormatResultPages {
+	return s.Pages
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) SetOutputFileUrl(v string) *QueryDocParserStatusResponseBodyDataOutputFormatResult {
+	s.OutputFileUrl = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) SetOutputType(v string) *QueryDocParserStatusResponseBodyDataOutputFormatResult {
+	s.OutputType = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) SetPages(v []*QueryDocParserStatusResponseBodyDataOutputFormatResultPages) *QueryDocParserStatusResponseBodyDataOutputFormatResult {
+	s.Pages = v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResult) Validate() error {
+	if s.Pages != nil {
+		for _, item := range s.Pages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type QueryDocParserStatusResponseBodyDataOutputFormatResultPages struct {
+	ImageHeight   *int32  `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
+	ImageUrl      *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageWidth    *int32  `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
+	PageIdAllDocs *int32  `json:"PageIdAllDocs,omitempty" xml:"PageIdAllDocs,omitempty"`
+	PageIdCurDoc  *int32  `json:"PageIdCurDoc,omitempty" xml:"PageIdCurDoc,omitempty"`
+}
+
+func (s QueryDocParserStatusResponseBodyDataOutputFormatResultPages) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryDocParserStatusResponseBodyDataOutputFormatResultPages) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) GetImageHeight() *int32 {
+	return s.ImageHeight
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) GetImageUrl() *string {
+	return s.ImageUrl
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) GetImageWidth() *int32 {
+	return s.ImageWidth
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) GetPageIdAllDocs() *int32 {
+	return s.PageIdAllDocs
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) GetPageIdCurDoc() *int32 {
+	return s.PageIdCurDoc
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) SetImageHeight(v int32) *QueryDocParserStatusResponseBodyDataOutputFormatResultPages {
+	s.ImageHeight = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) SetImageUrl(v string) *QueryDocParserStatusResponseBodyDataOutputFormatResultPages {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) SetImageWidth(v int32) *QueryDocParserStatusResponseBodyDataOutputFormatResultPages {
+	s.ImageWidth = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) SetPageIdAllDocs(v int32) *QueryDocParserStatusResponseBodyDataOutputFormatResultPages {
+	s.PageIdAllDocs = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) SetPageIdCurDoc(v int32) *QueryDocParserStatusResponseBodyDataOutputFormatResultPages {
+	s.PageIdCurDoc = &v
+	return s
+}
+
+func (s *QueryDocParserStatusResponseBodyDataOutputFormatResultPages) Validate() error {
 	return dara.Validate(s)
 }

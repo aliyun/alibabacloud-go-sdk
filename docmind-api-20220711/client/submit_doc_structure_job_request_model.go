@@ -25,6 +25,8 @@ type iSubmitDocStructureJobRequest interface {
 	GetOssBucket() *string
 	SetOssEndpoint(v string) *SubmitDocStructureJobRequest
 	GetOssEndpoint() *string
+	SetOutputFormat(v []*string) *SubmitDocStructureJobRequest
+	GetOutputFormat() []*string
 	SetPageIndex(v string) *SubmitDocStructureJobRequest
 	GetPageIndex() *string
 	SetStructureType(v string) *SubmitDocStructureJobRequest
@@ -45,12 +47,13 @@ type SubmitDocStructureJobRequest struct {
 	// example:
 	//
 	// https://gw.alipayobjects.com/os/basement_prod/598b9edf-5287-4065-9e36-464305c60698.pdf
-	FileUrl            *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	FormulaEnhancement *bool   `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
-	OssBucket          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	PageIndex          *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	StructureType      *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+	FileUrl            *string   `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
+	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OutputFormat       []*string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty" type:"Repeated"`
+	PageIndex          *string   `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	StructureType      *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
 
 func (s SubmitDocStructureJobRequest) String() string {
@@ -91,6 +94,10 @@ func (s *SubmitDocStructureJobRequest) GetOssBucket() *string {
 
 func (s *SubmitDocStructureJobRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitDocStructureJobRequest) GetOutputFormat() []*string {
+	return s.OutputFormat
 }
 
 func (s *SubmitDocStructureJobRequest) GetPageIndex() *string {
@@ -138,6 +145,11 @@ func (s *SubmitDocStructureJobRequest) SetOssBucket(v string) *SubmitDocStructur
 
 func (s *SubmitDocStructureJobRequest) SetOssEndpoint(v string) *SubmitDocStructureJobRequest {
 	s.OssEndpoint = &v
+	return s
+}
+
+func (s *SubmitDocStructureJobRequest) SetOutputFormat(v []*string) *SubmitDocStructureJobRequest {
+	s.OutputFormat = v
 	return s
 }
 

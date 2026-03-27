@@ -37,6 +37,8 @@ type iSubmitDocParserJobShrinkRequest interface {
 	GetOssBucket() *string
 	SetOssEndpoint(v string) *SubmitDocParserJobShrinkRequest
 	GetOssEndpoint() *string
+	SetOutputFormatShrink(v string) *SubmitDocParserJobShrinkRequest
+	GetOutputFormatShrink() *string
 	SetOutputHtmlTable(v bool) *SubmitDocParserJobShrinkRequest
 	GetOutputHtmlTable() *bool
 	SetPageIndex(v string) *SubmitDocParserJobShrinkRequest
@@ -67,6 +69,7 @@ type SubmitDocParserJobShrinkRequest struct {
 	Option                     *string `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket                  *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint                *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OutputFormatShrink         *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
 	OutputHtmlTable            *bool   `json:"OutputHtmlTable,omitempty" xml:"OutputHtmlTable,omitempty"`
 	PageIndex                  *string `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 }
@@ -133,6 +136,10 @@ func (s *SubmitDocParserJobShrinkRequest) GetOssBucket() *string {
 
 func (s *SubmitDocParserJobShrinkRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitDocParserJobShrinkRequest) GetOutputFormatShrink() *string {
+	return s.OutputFormatShrink
 }
 
 func (s *SubmitDocParserJobShrinkRequest) GetOutputHtmlTable() *bool {
@@ -210,6 +217,11 @@ func (s *SubmitDocParserJobShrinkRequest) SetOssBucket(v string) *SubmitDocParse
 
 func (s *SubmitDocParserJobShrinkRequest) SetOssEndpoint(v string) *SubmitDocParserJobShrinkRequest {
 	s.OssEndpoint = &v
+	return s
+}
+
+func (s *SubmitDocParserJobShrinkRequest) SetOutputFormatShrink(v string) *SubmitDocParserJobShrinkRequest {
+	s.OutputFormatShrink = &v
 	return s
 }
 

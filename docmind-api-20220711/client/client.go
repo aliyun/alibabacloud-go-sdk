@@ -2154,6 +2154,10 @@ func (client *Client) SubmitDocParserJobWithOptions(tmpReq *SubmitDocParserJobRe
 		request.MultimediaParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultimediaParameters, dara.String("MultimediaParameters"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.OutputFormat) {
+		request.OutputFormatShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputFormat, dara.String("OutputFormat"), dara.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CustomOssConfigShrink) {
 		query["CustomOssConfig"] = request.CustomOssConfigShrink
@@ -2209,6 +2213,10 @@ func (client *Client) SubmitDocParserJobWithOptions(tmpReq *SubmitDocParserJobRe
 
 	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !dara.IsNil(request.OutputFormatShrink) {
+		query["OutputFormat"] = request.OutputFormatShrink
 	}
 
 	if !dara.IsNil(request.OutputHtmlTable) {
@@ -2371,18 +2379,24 @@ func (client *Client) SubmitDocParserJobAdvance(request *SubmitDocParserJobAdvan
 //
 // 文档智能解析
 //
-// @param request - SubmitDocStructureJobRequest
+// @param tmpReq - SubmitDocStructureJobRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitDocStructureJobResponse
-func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructureJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
+func (client *Client) SubmitDocStructureJobWithOptions(tmpReq *SubmitDocStructureJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &SubmitDocStructureJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.OutputFormat) {
+		request.OutputFormatShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutputFormat, dara.String("OutputFormat"), dara.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowPptFormat) {
 		query["AllowPptFormat"] = request.AllowPptFormat
@@ -2414,6 +2428,10 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 
 	if !dara.IsNil(request.OssEndpoint) {
 		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !dara.IsNil(request.OutputFormatShrink) {
+		query["OutputFormat"] = request.OutputFormatShrink
 	}
 
 	if !dara.IsNil(request.PageIndex) {

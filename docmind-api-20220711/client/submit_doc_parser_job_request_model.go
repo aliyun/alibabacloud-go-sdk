@@ -37,6 +37,8 @@ type iSubmitDocParserJobRequest interface {
 	GetOssBucket() *string
 	SetOssEndpoint(v string) *SubmitDocParserJobRequest
 	GetOssEndpoint() *string
+	SetOutputFormat(v []*string) *SubmitDocParserJobRequest
+	GetOutputFormat() []*string
 	SetOutputHtmlTable(v bool) *SubmitDocParserJobRequest
 	GetOutputHtmlTable() *bool
 	SetPageIndex(v string) *SubmitDocParserJobRequest
@@ -67,6 +69,7 @@ type SubmitDocParserJobRequest struct {
 	Option               *string                                        `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket            *string                                        `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint          *string                                        `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OutputFormat         []*string                                      `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty" type:"Repeated"`
 	OutputHtmlTable      *bool                                          `json:"OutputHtmlTable,omitempty" xml:"OutputHtmlTable,omitempty"`
 	PageIndex            *string                                        `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 }
@@ -133,6 +136,10 @@ func (s *SubmitDocParserJobRequest) GetOssBucket() *string {
 
 func (s *SubmitDocParserJobRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitDocParserJobRequest) GetOutputFormat() []*string {
+	return s.OutputFormat
 }
 
 func (s *SubmitDocParserJobRequest) GetOutputHtmlTable() *bool {
@@ -210,6 +217,11 @@ func (s *SubmitDocParserJobRequest) SetOssBucket(v string) *SubmitDocParserJobRe
 
 func (s *SubmitDocParserJobRequest) SetOssEndpoint(v string) *SubmitDocParserJobRequest {
 	s.OssEndpoint = &v
+	return s
+}
+
+func (s *SubmitDocParserJobRequest) SetOutputFormat(v []*string) *SubmitDocParserJobRequest {
+	s.OutputFormat = v
 	return s
 }
 

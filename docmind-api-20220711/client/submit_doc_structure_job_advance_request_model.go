@@ -26,6 +26,8 @@ type iSubmitDocStructureJobAdvanceRequest interface {
 	GetOssBucket() *string
 	SetOssEndpoint(v string) *SubmitDocStructureJobAdvanceRequest
 	GetOssEndpoint() *string
+	SetOutputFormat(v []*string) *SubmitDocStructureJobAdvanceRequest
+	GetOutputFormat() []*string
 	SetPageIndex(v string) *SubmitDocStructureJobAdvanceRequest
 	GetPageIndex() *string
 	SetStructureType(v string) *SubmitDocStructureJobAdvanceRequest
@@ -50,6 +52,7 @@ type SubmitDocStructureJobAdvanceRequest struct {
 	FormulaEnhancement *bool     `json:"FormulaEnhancement,omitempty" xml:"FormulaEnhancement,omitempty"`
 	OssBucket          *string   `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint        *string   `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OutputFormat       []*string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty" type:"Repeated"`
 	PageIndex          *string   `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 	StructureType      *string   `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
 }
@@ -92,6 +95,10 @@ func (s *SubmitDocStructureJobAdvanceRequest) GetOssBucket() *string {
 
 func (s *SubmitDocStructureJobAdvanceRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitDocStructureJobAdvanceRequest) GetOutputFormat() []*string {
+	return s.OutputFormat
 }
 
 func (s *SubmitDocStructureJobAdvanceRequest) GetPageIndex() *string {
@@ -139,6 +146,11 @@ func (s *SubmitDocStructureJobAdvanceRequest) SetOssBucket(v string) *SubmitDocS
 
 func (s *SubmitDocStructureJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocStructureJobAdvanceRequest {
 	s.OssEndpoint = &v
+	return s
+}
+
+func (s *SubmitDocStructureJobAdvanceRequest) SetOutputFormat(v []*string) *SubmitDocStructureJobAdvanceRequest {
+	s.OutputFormat = v
 	return s
 }
 

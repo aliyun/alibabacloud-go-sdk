@@ -38,6 +38,8 @@ type iSubmitDocParserJobAdvanceRequest interface {
 	GetOssBucket() *string
 	SetOssEndpoint(v string) *SubmitDocParserJobAdvanceRequest
 	GetOssEndpoint() *string
+	SetOutputFormat(v []*string) *SubmitDocParserJobAdvanceRequest
+	GetOutputFormat() []*string
 	SetOutputHtmlTable(v bool) *SubmitDocParserJobAdvanceRequest
 	GetOutputHtmlTable() *bool
 	SetPageIndex(v string) *SubmitDocParserJobAdvanceRequest
@@ -68,6 +70,7 @@ type SubmitDocParserJobAdvanceRequest struct {
 	Option               *string                                               `json:"Option,omitempty" xml:"Option,omitempty"`
 	OssBucket            *string                                               `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	OssEndpoint          *string                                               `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OutputFormat         []*string                                             `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty" type:"Repeated"`
 	OutputHtmlTable      *bool                                                 `json:"OutputHtmlTable,omitempty" xml:"OutputHtmlTable,omitempty"`
 	PageIndex            *string                                               `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 }
@@ -134,6 +137,10 @@ func (s *SubmitDocParserJobAdvanceRequest) GetOssBucket() *string {
 
 func (s *SubmitDocParserJobAdvanceRequest) GetOssEndpoint() *string {
 	return s.OssEndpoint
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) GetOutputFormat() []*string {
+	return s.OutputFormat
 }
 
 func (s *SubmitDocParserJobAdvanceRequest) GetOutputHtmlTable() *bool {
@@ -211,6 +218,11 @@ func (s *SubmitDocParserJobAdvanceRequest) SetOssBucket(v string) *SubmitDocPars
 
 func (s *SubmitDocParserJobAdvanceRequest) SetOssEndpoint(v string) *SubmitDocParserJobAdvanceRequest {
 	s.OssEndpoint = &v
+	return s
+}
+
+func (s *SubmitDocParserJobAdvanceRequest) SetOutputFormat(v []*string) *SubmitDocParserJobAdvanceRequest {
+	s.OutputFormat = v
 	return s
 }
 
