@@ -265,6 +265,10 @@ func (client *Client) AddFeedbackWithContext(ctx context.Context, request *AddFe
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加号码
+//
 // @param request - AddNumbersToSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -317,6 +321,10 @@ func (client *Client) AddNumbersToSkillGroupWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加个人号码
+//
 // @param request - AddPersonalNumbersToUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -365,6 +373,10 @@ func (client *Client) AddPersonalNumbersToUserWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加号码
+//
 // @param request - AddPhoneNumberToSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -413,6 +425,10 @@ func (client *Client) AddPhoneNumberToSkillGroupsWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加号码
+//
 // @param request - AddPhoneNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -527,6 +543,10 @@ func (client *Client) AddSchemaPropertyWithContext(ctx context.Context, tmpReq *
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加用户
+//
 // @param request - AddSkillGroupsToUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -635,6 +655,10 @@ func (client *Client) AddTicketTaskWithContext(ctx context.Context, request *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加用户
+//
 // @param request - AddUsersToSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -683,6 +707,10 @@ func (client *Client) AddUsersToSkillGroupWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 分析对话
+//
 // @param request - AnalyzeConversationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -735,6 +763,10 @@ func (client *Client) AnalyzeConversationWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 接电话
+//
 // @param request - AnswerCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -849,6 +881,10 @@ func (client *Client) AppendCasesWithContext(ctx context.Context, tmpReq *Append
 
 // Deprecated: OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
 //
+// Summary:
+//
+// 导入坐席
+//
 // @param request - AssignUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -905,6 +941,10 @@ func (client *Client) AssignUsersWithContext(ctx context.Context, request *Assig
 	return _result, _err
 }
 
+// Summary:
+//
+// # BargeInCall
+//
 // @param request - BargeInCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -965,6 +1005,10 @@ func (client *Client) BargeInCallWithContext(ctx context.Context, request *Barge
 	return _result, _err
 }
 
+// Summary:
+//
+// 盲转
+//
 // @param request - BlindTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1069,6 +1113,10 @@ func (client *Client) BlindTransferWithContext(ctx context.Context, request *Bli
 	return _result, _err
 }
 
+// Summary:
+//
+// # BridgeRtcCall
+//
 // @param request - BridgeRtcCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1141,6 +1189,10 @@ func (client *Client) BridgeRtcCallWithContext(ctx context.Context, request *Bri
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-取消
+//
 // @param request - CancelAttendedTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1193,6 +1245,10 @@ func (client *Client) CancelAttendedTransferWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改隐身状态(等同于仅外呼场景)
+//
 // @param request - ChangeVisibilityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1241,6 +1297,10 @@ func (client *Client) ChangeVisibilityWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席工作模式
+//
 // @param request - ChangeWorkModeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1301,6 +1361,70 @@ func (client *Client) ChangeWorkModeWithContext(ctx context.Context, request *Ch
 	return _result, _err
 }
 
+// Summary:
+//
+// 认领电话
+//
+// @param request - ClaimCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClaimCallResponse
+func (client *Client) ClaimCallWithContext(ctx context.Context, request *ClaimCallRequest, runtime *dara.RuntimeOptions) (_result *ClaimCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CandidateUserListJson) {
+		query["CandidateUserListJson"] = request.CandidateUserListJson
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.SkillGroupId) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClaimCall"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClaimCallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ClaimChatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1349,6 +1473,10 @@ func (client *Client) ClaimChatWithContext(ctx context.Context, request *ClaimCh
 	return _result, _err
 }
 
+// Summary:
+//
+// 辅导
+//
 // @param request - CoachCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1409,6 +1537,10 @@ func (client *Client) CoachCallWithContext(ctx context.Context, request *CoachCa
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交ivr流程
+//
 // @param request - CommitContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1465,6 +1597,10 @@ func (client *Client) CommitContactFlowWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-完成
+//
 // @param request - CompleteAttendedTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1517,6 +1653,10 @@ func (client *Client) CompleteAttendedTransferWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建媒体文件
+//
 // @param request - CreateAudioFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1573,6 +1713,10 @@ func (client *Client) CreateAudioFileWithContext(ctx context.Context, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会话小结
+//
 // @param request - CreateCallSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1847,6 +1991,10 @@ func (client *Client) CreateChatMediaUrlWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建ivr流程
+//
 // @param request - CreateContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2075,6 +2223,10 @@ func (client *Client) CreateSchemaWithContext(ctx context.Context, tmpReq *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建技能组
+//
 // @param request - CreateSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2287,6 +2439,10 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除语音文件
+//
 // @param request - DeleteAudioFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2381,7 +2537,7 @@ func (client *Client) DeleteCallTagWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// -
+// 删除ivr流程
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -2729,6 +2885,10 @@ func (client *Client) DeleteSchemaPropertyWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除技能组
+//
 // @param request - DeleteSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2961,6 +3121,10 @@ func (client *Client) DisableTicketTemplateWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 废弃当前IVR流程
+//
 // @param request - DiscardEditingContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3105,6 +3269,10 @@ func (client *Client) EnableTicketTemplateWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 结束会议
+//
 // @param request - EndConferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3353,7 +3521,7 @@ func (client *Client) FinishTicketTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # GetAccessChannelOfStaging
+// 获取指定Chat渠道配置
 //
 // @param request - GetAccessChannelOfStagingRequest
 //
@@ -3439,6 +3607,10 @@ func (client *Client) GetAudioFileWithContext(ctx context.Context, request *GetA
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音文件下载链接
+//
 // @param request - GetAudioFileDownloadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3483,6 +3655,10 @@ func (client *Client) GetAudioFileDownloadUrlWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音文件上传参数
+//
 // @param request - GetAudioFileUploadParametersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3623,6 +3799,10 @@ func (client *Client) GetCampaignWithContext(ctx context.Context, request *GetCa
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取预测试外呼号码配置文件上传链接
+//
 // @param request - GetCaseFileUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3755,6 +3935,10 @@ func (client *Client) GetChatRoutingProfileWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ivr流程信息
+//
 // @param request - GetContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3855,6 +4039,10 @@ func (client *Client) GetConversationDetailWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取DataChannel通道的Token信息
+//
 // @param request - GetDataChannelCredentialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4043,6 +4231,10 @@ func (client *Client) GetEarlyMediaRecordingWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计呼入号码信息
+//
 // @param request - GetHistoricalCallerReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4135,6 +4327,10 @@ func (client *Client) GetHistoricalCampaignReportWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计实例呼叫数据
+//
 // @param request - GetHistoricalInstanceReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4231,6 +4427,10 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计实例呼叫信息
+//
 // @param request - GetInstanceTrendingReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4331,6 +4531,10 @@ func (client *Client) GetIvrTrackingSummaryWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取登录信息
+//
 // @param request - GetLoginDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4379,6 +4583,10 @@ func (client *Client) GetLoginDetailsWithContext(ctx context.Context, request *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话对应的录音, 用于播放和下载
+//
 // @param request - GetMonoRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4427,6 +4635,10 @@ func (client *Client) GetMonoRecordingWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话对应的录音, 用于分轨或者质检
+//
 // @param request - GetMultiChannelRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4471,6 +4683,10 @@ func (client *Client) GetMultiChannelRecordingWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询号码归属地
+//
 // @param request - GetNumberLocationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4555,6 +4771,10 @@ func (client *Client) GetRealtimeCampaignStatsWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 实时查询实例状态信息
+//
 // @param request - GetRealtimeInstanceStatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4863,6 +5083,10 @@ func (client *Client) GetTicketSummaryReportWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工单模版
+//
 // @param request - GetTicketTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4911,6 +5135,10 @@ func (client *Client) GetTicketTemplateWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取TURN服务的临时用户名和密码
+//
 // @param request - GetTurnCredentialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4955,6 +5183,10 @@ func (client *Client) GetTurnCredentialsWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取可用的TURN服务器列表
+//
 // @param request - GetTurnServerListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5035,6 +5267,10 @@ func (client *Client) GetUploadAudioDataParamsWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询坐席
+//
 // @param request - GetUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5175,6 +5411,10 @@ func (client *Client) GetVisitorLoginDetailsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取语音邮箱录音, 用于播放和下载
+//
 // @param request - GetVoicemailRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5219,6 +5459,10 @@ func (client *Client) GetVoicemailRecordingWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 保持通话
+//
 // @param request - HoldCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5593,6 +5837,10 @@ func (client *Client) ImportDocumentsWithContext(ctx context.Context, request *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入ram用户
+//
 // @param request - ImportRamUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5649,6 +5897,10 @@ func (client *Client) ImportRamUsersWithContext(ctx context.Context, request *Im
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-发起
+//
 // @param request - InitiateAttendedTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5745,6 +5997,10 @@ func (client *Client) InitiateAttendedTransferWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 打断通话
+//
 // @param request - InterceptCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5805,6 +6061,10 @@ func (client *Client) InterceptCallWithContext(ctx context.Context, request *Int
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起IVR认证流程
+//
 // @param request - LaunchAuthenticationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5865,6 +6125,10 @@ func (client *Client) LaunchAuthenticationWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起话后满意度调查IVR流程
+//
 // @param request - LaunchSurveyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5941,6 +6205,10 @@ func (client *Client) LaunchSurveyWithContext(ctx context.Context, request *Laun
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取坐席状态记录列表
+//
 // @param request - ListAgentStateLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6253,6 +6521,10 @@ func (client *Client) ListBlacklistCallTaggingsWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席工作台坐席调用转接使用
+//
 // @param request - ListBriefSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6309,6 +6581,10 @@ func (client *Client) ListBriefSkillGroupsWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话详情
+//
 // @param request - ListCallDetailRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6951,6 +7227,10 @@ func (client *Client) ListCommonTicketFieldsWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询系统配置
+//
 // @param request - ListConfigItemsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7001,7 +7281,7 @@ func (client *Client) ListConfigItemsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// -
+// 列表查询ivr流程
 //
 // @param request - ListContactFlowsRequest
 //
@@ -7129,6 +7409,10 @@ func (client *Client) ListCustomCallTaggingWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询可用设备
+//
 // @param request - ListDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7581,6 +7865,10 @@ func (client *Client) ListGroupChatMessagesWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询历史作息报告
+//
 // @param request - ListHistoricalAgentReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7795,6 +8083,10 @@ func (client *Client) ListHistoricalSkillGroupReportWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7839,6 +8131,10 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - ListInstancesOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7883,6 +8179,10 @@ func (client *Client) ListInstancesOfUserWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询坐席报表
+//
 // @param request - ListIntervalAgentReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7983,6 +8283,10 @@ func (client *Client) ListIntervalAgentSkillGroupReportWithContext(ctx context.C
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例报表
+//
 // @param request - ListIntervalInstanceReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8035,6 +8339,10 @@ func (client *Client) ListIntervalInstanceReportWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组报表
+//
 // @param request - ListIntervalSkillGroupReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8095,6 +8403,10 @@ func (client *Client) ListIntervalSkillGroupReportWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询ivr轨迹
+//
 // @param request - ListIvrTrackingDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8623,6 +8935,10 @@ func (client *Client) ListOutboundNumbersOfUserWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取个人外呼号码列表
+//
 // @param request - ListPersonalNumbersOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8747,6 +9063,10 @@ func (client *Client) ListPhoneNumbersWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组绑定的号码
+//
 // @param request - ListPhoneNumbersOfSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8811,6 +9131,10 @@ func (client *Client) ListPhoneNumbersOfSkillGroupWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户权限
+//
 // @param request - ListPrivilegesOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8851,6 +9175,10 @@ func (client *Client) ListPrivilegesOfUserWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询ram用户
+//
 // @param request - ListRamUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8903,6 +9231,10 @@ func (client *Client) ListRamUsersWithContext(ctx context.Context, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询坐席状态
+//
 // @param request - ListRealtimeAgentStatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8989,6 +9321,10 @@ func (client *Client) ListRealtimeAgentStatesWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询技能组状态报表
+//
 // @param request - ListRealtimeSkillGroupStatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9047,6 +9383,10 @@ func (client *Client) ListRealtimeSkillGroupStatesWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询历史通话记录
+//
 // @param request - ListRecentCallDetailRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9109,6 +9449,10 @@ func (client *Client) ListRecentCallDetailRecordsWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询角色
+//
 // @param request - ListRolesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9233,6 +9577,10 @@ func (client *Client) ListSkillGroupSummaryReportsSinceMidnightWithContext(ctx c
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组列表
+//
 // @param request - ListSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9289,6 +9637,10 @@ func (client *Client) ListSkillGroupsWithContext(ctx context.Context, request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户技能组级别
+//
 // @param request - ListSkillLevelsOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9657,6 +10009,10 @@ func (client *Client) ListUnassignedNumbersWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组级别列表
+//
 // @param request - ListUserLevelsOfSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9717,6 +10073,10 @@ func (client *Client) ListUserLevelsOfSkillGroupWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户列表
+//
 // @param request - ListUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10041,6 +10401,10 @@ func (client *Client) MakeCallWithContext(ctx context.Context, request *MakeCall
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改媒体文件
+//
 // @param request - ModifyAudioFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10263,6 +10627,10 @@ func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改电话号码
+//
 // @param request - ModifyPhoneNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10315,6 +10683,10 @@ func (client *Client) ModifyPhoneNumberWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改技能组
+//
 // @param request - ModifySkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10367,6 +10739,10 @@ func (client *Client) ModifySkillGroupWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席技能组
+//
 // @param request - ModifySkillLevelsOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10415,6 +10791,10 @@ func (client *Client) ModifySkillLevelsOfUserWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席
+//
 // @param request - ModifyUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10491,6 +10871,10 @@ func (client *Client) ModifyUserWithContext(ctx context.Context, request *Modify
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席技能组级别
+//
 // @param request - ModifyUserLevelsOfSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10539,6 +10923,10 @@ func (client *Client) ModifyUserLevelsOfSkillGroupWithContext(ctx context.Contex
 	return _result, _err
 }
 
+// Summary:
+//
+// 通话监听
+//
 // @param request - MonitorCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10595,6 +10983,10 @@ func (client *Client) MonitorCallWithContext(ctx context.Context, request *Monit
 	return _result, _err
 }
 
+// Summary:
+//
+// 静音
+//
 // @param request - MuteCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10699,6 +11091,10 @@ func (client *Client) PauseCampaignWithContext(ctx context.Context, request *Pau
 	return _result, _err
 }
 
+// Summary:
+//
+// 选择外呼号码
+//
 // @param request - PickOutboundNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10751,6 +11147,10 @@ func (client *Client) PickOutboundNumbersWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 轮询座席状态
+//
 // @param request - PollUserStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10915,6 +11315,10 @@ func (client *Client) ProcessCustomIMCallbackWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布ivr流程
+//
 // @param request - PublishContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10963,6 +11367,10 @@ func (client *Client) PublishContactFlowWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 就绪/示闲
+//
 // @param request - ReadyForServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11015,6 +11423,10 @@ func (client *Client) ReadyForServiceWithContext(ctx context.Context, request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 重拨
+//
 // @param request - RedialCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11083,6 +11495,10 @@ func (client *Client) RedialCallWithContext(ctx context.Context, request *Redial
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
 // @param request - RegisterDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11135,6 +11551,10 @@ func (client *Client) RegisterDeviceWithContext(ctx context.Context, request *Re
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
 // @param request - RegisterDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11279,6 +11699,10 @@ func (client *Client) RejectTicketWithContext(ctx context.Context, request *Reje
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放对话
+//
 // @param request - ReleaseCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11491,6 +11915,10 @@ func (client *Client) RemoveDoNotCallNumbersWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除个人号码
+//
 // @param request - RemovePersonalNumbersFromUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11539,6 +11967,10 @@ func (client *Client) RemovePersonalNumbersFromUserWithContext(ctx context.Conte
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除技能组下的电话号码
+//
 // @param request - RemovePhoneNumberFromSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11587,6 +12019,10 @@ func (client *Client) RemovePhoneNumberFromSkillGroupsWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除电话号码
+//
 // @param request - RemovePhoneNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11635,6 +12071,10 @@ func (client *Client) RemovePhoneNumbersWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除技能组下的电话号码
+//
 // @param request - RemovePhoneNumbersFromSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11683,6 +12123,10 @@ func (client *Client) RemovePhoneNumbersFromSkillGroupWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除多个技能组下的坐席
+//
 // @param request - RemoveSkillGroupsFromUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11731,6 +12175,10 @@ func (client *Client) RemoveSkillGroupsFromUserWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除坐席
+//
 // @param request - RemoveUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11787,6 +12235,10 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除坐席下的技能组
+//
 // @param request - RemoveUsersFromSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11835,6 +12287,10 @@ func (client *Client) RemoveUsersFromSkillGroupWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置坐席状态
+//
 // @param request - ResetAgentStateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11883,6 +12339,10 @@ func (client *Client) ResetAgentStateWithContext(ctx context.Context, request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置坐席密码
+//
 // @param request - ResetUserPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12075,6 +12535,10 @@ func (client *Client) ResumeCampaignWithContext(ctx context.Context, request *Re
 	return _result, _err
 }
 
+// Summary:
+//
+// 取回
+//
 // @param request - RetrieveCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12187,6 +12651,10 @@ func (client *Client) SaveDocumentWithContext(ctx context.Context, request *Save
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveRTCStatsV2Request
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12247,6 +12715,10 @@ func (client *Client) SaveRTCStatsV2WithContext(ctx context.Context, request *Sa
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存终端埋点日志
+//
 // @param request - SaveTerminalLogRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12319,6 +12791,10 @@ func (client *Client) SaveTerminalLogWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveWebRTCStatsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12379,6 +12855,10 @@ func (client *Client) SaveWebRTCStatsWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveWebRtcInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12435,6 +12915,10 @@ func (client *Client) SaveWebRtcInfoWithContext(ctx context.Context, request *Sa
 	return _result, _err
 }
 
+// Summary:
+//
+// 在接通的电话上发送DTMF信号
+//
 // @param request - SendDtmfSignalingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12555,6 +13039,10 @@ func (client *Client) SendNotificationWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线
+//
 // @param request - SignInGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12615,6 +13103,10 @@ func (client *Client) SignInGroupWithContext(ctx context.Context, request *SignI
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线
+//
 // @param request - SignOutGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12663,6 +13155,10 @@ func (client *Client) SignOutGroupWithContext(ctx context.Context, request *Sign
 	return _result, _err
 }
 
+// Summary:
+//
+// 双呼
+//
 // @param request - StartBack2BackCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12785,6 +13281,10 @@ func (client *Client) StartChatWithContext(ctx context.Context, tmpReq *StartCha
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始会议
+//
 // @param request - StartConferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12841,6 +13341,10 @@ func (client *Client) StartConferenceWithContext(ctx context.Context, request *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑ivr流程
+//
 // @param request - StartEditContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12885,6 +13389,10 @@ func (client *Client) StartEditContactFlowWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始预测试外呼
+//
 // @param request - StartPredictiveCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13061,6 +13569,10 @@ func (client *Client) SubmitCampaignWithContext(ctx context.Context, request *Su
 	return _result, _err
 }
 
+// Summary:
+//
+// 切换关注/咨询转到会议
+//
 // @param request - SwitchToConferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13113,6 +13625,10 @@ func (client *Client) SwitchToConferenceWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 小休
+//
 // @param request - TakeBreakRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13269,6 +13785,10 @@ func (client *Client) TransferTicketTaskWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消静音
+//
 // @param request - UnmuteCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13373,6 +13893,10 @@ func (client *Client) UnregisterDeviceWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会话小结
+//
 // @param request - UpdateCallSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13423,7 +13947,7 @@ func (client *Client) UpdateCallSummaryWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # Update campaign
+// 更新预测试外呼活动
 //
 // @param request - UpdateCampaignRequest
 //
@@ -13537,6 +14061,10 @@ func (client *Client) UpdateChatRoutingProfileWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新系统配置
+//
 // @param request - UpdateConfigItemsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

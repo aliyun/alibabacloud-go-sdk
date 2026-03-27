@@ -420,6 +420,10 @@ func (client *Client) AddFeedback(request *AddFeedbackRequest) (_result *AddFeed
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加号码
+//
 // @param request - AddNumbersToSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -472,6 +476,10 @@ func (client *Client) AddNumbersToSkillGroupWithOptions(request *AddNumbersToSki
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加号码
+//
 // @param request - AddNumbersToSkillGroupRequest
 //
 // @return AddNumbersToSkillGroupResponse
@@ -486,6 +494,10 @@ func (client *Client) AddNumbersToSkillGroup(request *AddNumbersToSkillGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加个人号码
+//
 // @param request - AddPersonalNumbersToUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -534,6 +546,10 @@ func (client *Client) AddPersonalNumbersToUserWithOptions(request *AddPersonalNu
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加个人号码
+//
 // @param request - AddPersonalNumbersToUserRequest
 //
 // @return AddPersonalNumbersToUserResponse
@@ -548,6 +564,10 @@ func (client *Client) AddPersonalNumbersToUser(request *AddPersonalNumbersToUser
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加号码
+//
 // @param request - AddPhoneNumberToSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -596,6 +616,10 @@ func (client *Client) AddPhoneNumberToSkillGroupsWithOptions(request *AddPhoneNu
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加号码
+//
 // @param request - AddPhoneNumberToSkillGroupsRequest
 //
 // @return AddPhoneNumberToSkillGroupsResponse
@@ -610,6 +634,10 @@ func (client *Client) AddPhoneNumberToSkillGroups(request *AddPhoneNumberToSkill
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加号码
+//
 // @param request - AddPhoneNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -666,6 +694,10 @@ func (client *Client) AddPhoneNumbersWithOptions(request *AddPhoneNumbersRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加号码
+//
 // @param request - AddPhoneNumbersRequest
 //
 // @return AddPhoneNumbersResponse
@@ -752,6 +784,10 @@ func (client *Client) AddSchemaProperty(request *AddSchemaPropertyRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加用户
+//
 // @param request - AddSkillGroupsToUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -800,6 +836,10 @@ func (client *Client) AddSkillGroupsToUserWithOptions(request *AddSkillGroupsToU
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加用户
+//
 // @param request - AddSkillGroupsToUserRequest
 //
 // @return AddSkillGroupsToUserResponse
@@ -888,6 +928,10 @@ func (client *Client) AddTicketTask(request *AddTicketTaskRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加用户
+//
 // @param request - AddUsersToSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -936,6 +980,10 @@ func (client *Client) AddUsersToSkillGroupWithOptions(request *AddUsersToSkillGr
 	return _result, _err
 }
 
+// Summary:
+//
+// 技能组添加用户
+//
 // @param request - AddUsersToSkillGroupRequest
 //
 // @return AddUsersToSkillGroupResponse
@@ -950,6 +998,10 @@ func (client *Client) AddUsersToSkillGroup(request *AddUsersToSkillGroupRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 分析对话
+//
 // @param request - AnalyzeConversationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1002,6 +1054,10 @@ func (client *Client) AnalyzeConversationWithOptions(request *AnalyzeConversatio
 	return _result, _err
 }
 
+// Summary:
+//
+// 分析对话
+//
 // @param request - AnalyzeConversationRequest
 //
 // @return AnalyzeConversationResponse
@@ -1016,6 +1072,10 @@ func (client *Client) AnalyzeConversation(request *AnalyzeConversationRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 接电话
+//
 // @param request - AnswerCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1068,6 +1128,10 @@ func (client *Client) AnswerCallWithOptions(request *AnswerCallRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 接电话
+//
 // @param request - AnswerCallRequest
 //
 // @return AnswerCallResponse
@@ -1162,6 +1226,10 @@ func (client *Client) AppendCases(request *AppendCasesRequest) (_result *AppendC
 
 // Deprecated: OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
 //
+// Summary:
+//
+// 导入坐席
+//
 // @param request - AssignUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1220,6 +1288,10 @@ func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtim
 
 // Deprecated: OpenAPI AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
 //
+// Summary:
+//
+// 导入坐席
+//
 // @param request - AssignUsersRequest
 //
 // @return AssignUsersResponse
@@ -1235,6 +1307,10 @@ func (client *Client) AssignUsers(request *AssignUsersRequest) (_result *AssignU
 	return _result, _err
 }
 
+// Summary:
+//
+// # BargeInCall
+//
 // @param request - BargeInCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1295,6 +1371,10 @@ func (client *Client) BargeInCallWithOptions(request *BargeInCallRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// # BargeInCall
+//
 // @param request - BargeInCallRequest
 //
 // @return BargeInCallResponse
@@ -1309,6 +1389,10 @@ func (client *Client) BargeInCall(request *BargeInCallRequest) (_result *BargeIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 盲转
+//
 // @param request - BlindTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1413,6 +1497,10 @@ func (client *Client) BlindTransferWithOptions(request *BlindTransferRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 盲转
+//
 // @param request - BlindTransferRequest
 //
 // @return BlindTransferResponse
@@ -1427,6 +1515,10 @@ func (client *Client) BlindTransfer(request *BlindTransferRequest) (_result *Bli
 	return _result, _err
 }
 
+// Summary:
+//
+// # BridgeRtcCall
+//
 // @param request - BridgeRtcCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1499,6 +1591,10 @@ func (client *Client) BridgeRtcCallWithOptions(request *BridgeRtcCallRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// # BridgeRtcCall
+//
 // @param request - BridgeRtcCallRequest
 //
 // @return BridgeRtcCallResponse
@@ -1513,6 +1609,10 @@ func (client *Client) BridgeRtcCall(request *BridgeRtcCallRequest) (_result *Bri
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-取消
+//
 // @param request - CancelAttendedTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1565,6 +1665,10 @@ func (client *Client) CancelAttendedTransferWithOptions(request *CancelAttendedT
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-取消
+//
 // @param request - CancelAttendedTransferRequest
 //
 // @return CancelAttendedTransferResponse
@@ -1579,6 +1683,10 @@ func (client *Client) CancelAttendedTransfer(request *CancelAttendedTransferRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改隐身状态(等同于仅外呼场景)
+//
 // @param request - ChangeVisibilityRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1627,6 +1735,10 @@ func (client *Client) ChangeVisibilityWithOptions(request *ChangeVisibilityReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改隐身状态(等同于仅外呼场景)
+//
 // @param request - ChangeVisibilityRequest
 //
 // @return ChangeVisibilityResponse
@@ -1641,6 +1753,10 @@ func (client *Client) ChangeVisibility(request *ChangeVisibilityRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席工作模式
+//
 // @param request - ChangeWorkModeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1701,6 +1817,10 @@ func (client *Client) ChangeWorkModeWithOptions(request *ChangeWorkModeRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席工作模式
+//
 // @param request - ChangeWorkModeRequest
 //
 // @return ChangeWorkModeResponse
@@ -1708,6 +1828,88 @@ func (client *Client) ChangeWorkMode(request *ChangeWorkModeRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &ChangeWorkModeResponse{}
 	_body, _err := client.ChangeWorkModeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 认领电话
+//
+// @param request - ClaimCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClaimCallResponse
+func (client *Client) ClaimCallWithOptions(request *ClaimCallRequest, runtime *dara.RuntimeOptions) (_result *ClaimCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CandidateUserListJson) {
+		query["CandidateUserListJson"] = request.CandidateUserListJson
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.SkillGroupId) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClaimCall"),
+		Version:     dara.String("2020-07-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClaimCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 认领电话
+//
+// @param request - ClaimCallRequest
+//
+// @return ClaimCallResponse
+func (client *Client) ClaimCall(request *ClaimCallRequest) (_result *ClaimCallResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ClaimCallResponse{}
+	_body, _err := client.ClaimCallWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1777,6 +1979,10 @@ func (client *Client) ClaimChat(request *ClaimChatRequest) (_result *ClaimChatRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 辅导
+//
 // @param request - CoachCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1837,6 +2043,10 @@ func (client *Client) CoachCallWithOptions(request *CoachCallRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// 辅导
+//
 // @param request - CoachCallRequest
 //
 // @return CoachCallResponse
@@ -1851,6 +2061,10 @@ func (client *Client) CoachCall(request *CoachCallRequest) (_result *CoachCallRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交ivr流程
+//
 // @param request - CommitContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1907,6 +2121,10 @@ func (client *Client) CommitContactFlowWithOptions(request *CommitContactFlowReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交ivr流程
+//
 // @param request - CommitContactFlowRequest
 //
 // @return CommitContactFlowResponse
@@ -1921,6 +2139,10 @@ func (client *Client) CommitContactFlow(request *CommitContactFlowRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-完成
+//
 // @param request - CompleteAttendedTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1973,6 +2195,10 @@ func (client *Client) CompleteAttendedTransferWithOptions(request *CompleteAtten
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-完成
+//
 // @param request - CompleteAttendedTransferRequest
 //
 // @return CompleteAttendedTransferResponse
@@ -1987,6 +2213,10 @@ func (client *Client) CompleteAttendedTransfer(request *CompleteAttendedTransfer
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建媒体文件
+//
 // @param request - CreateAudioFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2043,6 +2273,10 @@ func (client *Client) CreateAudioFileWithOptions(request *CreateAudioFileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建媒体文件
+//
 // @param request - CreateAudioFileRequest
 //
 // @return CreateAudioFileResponse
@@ -2057,6 +2291,10 @@ func (client *Client) CreateAudioFile(request *CreateAudioFileRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会话小结
+//
 // @param request - CreateCallSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2109,6 +2347,10 @@ func (client *Client) CreateCallSummaryWithOptions(request *CreateCallSummaryReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建会话小结
+//
 // @param request - CreateCallSummaryRequest
 //
 // @return CreateCallSummaryResponse
@@ -2395,6 +2637,10 @@ func (client *Client) CreateChatMediaUrl(request *CreateChatMediaUrlRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建ivr流程
+//
 // @param request - CreateContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2451,6 +2697,10 @@ func (client *Client) CreateContactFlowWithOptions(request *CreateContactFlowReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建ivr流程
+//
 // @param request - CreateContactFlowRequest
 //
 // @return CreateContactFlowResponse
@@ -2690,6 +2940,10 @@ func (client *Client) CreateSchema(request *CreateSchemaRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建技能组
+//
 // @param request - CreateSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2746,6 +3000,10 @@ func (client *Client) CreateSkillGroupWithOptions(request *CreateSkillGroupReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建技能组
+//
 // @param request - CreateSkillGroupRequest
 //
 // @return CreateSkillGroupResponse
@@ -2948,6 +3206,10 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除语音文件
+//
 // @param request - DeleteAudioFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2992,6 +3254,10 @@ func (client *Client) DeleteAudioFileWithOptions(request *DeleteAudioFileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除语音文件
+//
 // @param request - DeleteAudioFileRequest
 //
 // @return DeleteAudioFileResponse
@@ -3074,7 +3340,7 @@ func (client *Client) DeleteCallTag(request *DeleteCallTagRequest) (_result *Del
 
 // Summary:
 //
-// -
+// 删除ivr流程
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -3126,7 +3392,7 @@ func (client *Client) DeleteContactFlowWithOptions(request *DeleteContactFlowReq
 
 // Summary:
 //
-// -
+// 删除ivr流程
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -3528,6 +3794,10 @@ func (client *Client) DeleteSchemaProperty(request *DeleteSchemaPropertyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除技能组
+//
 // @param request - DeleteSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3576,6 +3846,10 @@ func (client *Client) DeleteSkillGroupWithOptions(request *DeleteSkillGroupReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除技能组
+//
 // @param request - DeleteSkillGroupRequest
 //
 // @return DeleteSkillGroupResponse
@@ -3830,6 +4104,10 @@ func (client *Client) DisableTicketTemplate(request *DisableTicketTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 废弃当前IVR流程
+//
 // @param request - DiscardEditingContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3878,6 +4156,10 @@ func (client *Client) DiscardEditingContactFlowWithOptions(request *DiscardEditi
 	return _result, _err
 }
 
+// Summary:
+//
+// 废弃当前IVR流程
+//
 // @param request - DiscardEditingContactFlowRequest
 //
 // @return DiscardEditingContactFlowResponse
@@ -4016,6 +4298,10 @@ func (client *Client) EnableTicketTemplate(request *EnableTicketTemplateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 结束会议
+//
 // @param request - EndConferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4064,6 +4350,10 @@ func (client *Client) EndConferenceWithOptions(request *EndConferenceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 结束会议
+//
 // @param request - EndConferenceRequest
 //
 // @return EndConferenceResponse
@@ -4345,7 +4635,7 @@ func (client *Client) FinishTicketTask(request *FinishTicketTaskRequest) (_resul
 
 // Summary:
 //
-// # GetAccessChannelOfStaging
+// 获取指定Chat渠道配置
 //
 // @param request - GetAccessChannelOfStagingRequest
 //
@@ -4385,7 +4675,7 @@ func (client *Client) GetAccessChannelOfStagingWithOptions(request *GetAccessCha
 
 // Summary:
 //
-// # GetAccessChannelOfStaging
+// 获取指定Chat渠道配置
 //
 // @param request - GetAccessChannelOfStagingRequest
 //
@@ -4467,6 +4757,10 @@ func (client *Client) GetAudioFile(request *GetAudioFileRequest) (_result *GetAu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音文件下载链接
+//
 // @param request - GetAudioFileDownloadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4511,6 +4805,10 @@ func (client *Client) GetAudioFileDownloadUrlWithOptions(request *GetAudioFileDo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音文件下载链接
+//
 // @param request - GetAudioFileDownloadUrlRequest
 //
 // @return GetAudioFileDownloadUrlResponse
@@ -4525,6 +4823,10 @@ func (client *Client) GetAudioFileDownloadUrl(request *GetAudioFileDownloadUrlRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音文件上传参数
+//
 // @param request - GetAudioFileUploadParametersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4569,6 +4871,10 @@ func (client *Client) GetAudioFileUploadParametersWithOptions(request *GetAudioF
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取录音文件上传参数
+//
 // @param request - GetAudioFileUploadParametersRequest
 //
 // @return GetAudioFileUploadParametersResponse
@@ -4715,6 +5021,10 @@ func (client *Client) GetCampaign(request *GetCampaignRequest) (_result *GetCamp
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取预测试外呼号码配置文件上传链接
+//
 // @param request - GetCaseFileUploadUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4759,6 +5069,10 @@ func (client *Client) GetCaseFileUploadUrlWithOptions(request *GetCaseFileUpload
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取预测试外呼号码配置文件上传链接
+//
 // @param request - GetCaseFileUploadUrlRequest
 //
 // @return GetCaseFileUploadUrlResponse
@@ -4889,6 +5203,10 @@ func (client *Client) GetChatRoutingProfile(request *GetChatRoutingProfileReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ivr流程信息
+//
 // @param request - GetContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4937,6 +5255,10 @@ func (client *Client) GetContactFlowWithOptions(request *GetContactFlowRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ivr流程信息
+//
 // @param request - GetContactFlowRequest
 //
 // @return GetContactFlowResponse
@@ -5021,6 +5343,10 @@ func (client *Client) GetConversationDetail(request *GetConversationDetailReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取DataChannel通道的Token信息
+//
 // @param request - GetDataChannelCredentialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5065,6 +5391,10 @@ func (client *Client) GetDataChannelCredentialsWithOptions(request *GetDataChann
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取DataChannel通道的Token信息
+//
 // @param request - GetDataChannelCredentialsRequest
 //
 // @return GetDataChannelCredentialsResponse
@@ -5273,6 +5603,10 @@ func (client *Client) GetEarlyMediaRecording(request *GetEarlyMediaRecordingRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计呼入号码信息
+//
 // @param request - GetHistoricalCallerReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5325,6 +5659,10 @@ func (client *Client) GetHistoricalCallerReportWithOptions(request *GetHistorica
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计呼入号码信息
+//
 // @param request - GetHistoricalCallerReportRequest
 //
 // @return GetHistoricalCallerReportResponse
@@ -5397,6 +5735,10 @@ func (client *Client) GetHistoricalCampaignReport(request *GetHistoricalCampaign
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计实例呼叫数据
+//
 // @param request - GetHistoricalInstanceReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5449,6 +5791,10 @@ func (client *Client) GetHistoricalInstanceReportWithOptions(request *GetHistori
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计实例呼叫数据
+//
 // @param request - GetHistoricalInstanceReportRequest
 //
 // @return GetHistoricalInstanceReportResponse
@@ -5525,6 +5871,10 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计实例呼叫信息
+//
 // @param request - GetInstanceTrendingReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5577,6 +5927,10 @@ func (client *Client) GetInstanceTrendingReportWithOptions(request *GetInstanceT
 	return _result, _err
 }
 
+// Summary:
+//
+// 统计实例呼叫信息
+//
 // @param request - GetInstanceTrendingReportRequest
 //
 // @return GetInstanceTrendingReportResponse
@@ -5657,6 +6011,10 @@ func (client *Client) GetIvrTrackingSummary(request *GetIvrTrackingSummaryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取登录信息
+//
 // @param request - GetLoginDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5705,6 +6063,10 @@ func (client *Client) GetLoginDetailsWithOptions(request *GetLoginDetailsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取登录信息
+//
 // @param request - GetLoginDetailsRequest
 //
 // @return GetLoginDetailsResponse
@@ -5719,6 +6081,10 @@ func (client *Client) GetLoginDetails(request *GetLoginDetailsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话对应的录音, 用于播放和下载
+//
 // @param request - GetMonoRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5767,6 +6133,10 @@ func (client *Client) GetMonoRecordingWithOptions(request *GetMonoRecordingReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话对应的录音, 用于播放和下载
+//
 // @param request - GetMonoRecordingRequest
 //
 // @return GetMonoRecordingResponse
@@ -5781,6 +6151,10 @@ func (client *Client) GetMonoRecording(request *GetMonoRecordingRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话对应的录音, 用于分轨或者质检
+//
 // @param request - GetMultiChannelRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5825,6 +6199,10 @@ func (client *Client) GetMultiChannelRecordingWithOptions(request *GetMultiChann
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话对应的录音, 用于分轨或者质检
+//
 // @param request - GetMultiChannelRecordingRequest
 //
 // @return GetMultiChannelRecordingResponse
@@ -5839,6 +6217,10 @@ func (client *Client) GetMultiChannelRecording(request *GetMultiChannelRecording
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询号码归属地
+//
 // @param request - GetNumberLocationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5883,6 +6265,10 @@ func (client *Client) GetNumberLocationWithOptions(request *GetNumberLocationReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询号码归属地
+//
 // @param request - GetNumberLocationRequest
 //
 // @return GetNumberLocationResponse
@@ -5955,6 +6341,10 @@ func (client *Client) GetRealtimeCampaignStats(request *GetRealtimeCampaignStats
 	return _result, _err
 }
 
+// Summary:
+//
+// 实时查询实例状态信息
+//
 // @param request - GetRealtimeInstanceStatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5999,6 +6389,10 @@ func (client *Client) GetRealtimeInstanceStatesWithOptions(request *GetRealtimeI
 	return _result, _err
 }
 
+// Summary:
+//
+// 实时查询实例状态信息
+//
 // @param request - GetRealtimeInstanceStatesRequest
 //
 // @return GetRealtimeInstanceStatesResponse
@@ -6351,6 +6745,10 @@ func (client *Client) GetTicketSummaryReport(request *GetTicketSummaryReportRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工单模版
+//
 // @param request - GetTicketTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6399,6 +6797,10 @@ func (client *Client) GetTicketTemplateWithOptions(request *GetTicketTemplateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工单模版
+//
 // @param request - GetTicketTemplateRequest
 //
 // @return GetTicketTemplateResponse
@@ -6413,6 +6815,10 @@ func (client *Client) GetTicketTemplate(request *GetTicketTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取TURN服务的临时用户名和密码
+//
 // @param request - GetTurnCredentialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6457,6 +6863,10 @@ func (client *Client) GetTurnCredentialsWithOptions(request *GetTurnCredentialsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取TURN服务的临时用户名和密码
+//
 // @param request - GetTurnCredentialsRequest
 //
 // @return GetTurnCredentialsResponse
@@ -6471,6 +6881,10 @@ func (client *Client) GetTurnCredentials(request *GetTurnCredentialsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取可用的TURN服务器列表
+//
 // @param request - GetTurnServerListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6511,6 +6925,10 @@ func (client *Client) GetTurnServerListWithOptions(request *GetTurnServerListReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取可用的TURN服务器列表
+//
 // @param request - GetTurnServerListRequest
 //
 // @return GetTurnServerListResponse
@@ -6583,6 +7001,10 @@ func (client *Client) GetUploadAudioDataParams(request *GetUploadAudioDataParams
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询坐席
+//
 // @param request - GetUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6631,6 +7053,10 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询坐席
+//
 // @param request - GetUserRequest
 //
 // @return GetUserResponse
@@ -6769,6 +7195,10 @@ func (client *Client) GetVisitorLoginDetails(request *GetVisitorLoginDetailsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取语音邮箱录音, 用于播放和下载
+//
 // @param request - GetVoicemailRecordingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6813,6 +7243,10 @@ func (client *Client) GetVoicemailRecordingWithOptions(request *GetVoicemailReco
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取语音邮箱录音, 用于播放和下载
+//
 // @param request - GetVoicemailRecordingRequest
 //
 // @return GetVoicemailRecordingResponse
@@ -6827,6 +7261,10 @@ func (client *Client) GetVoicemailRecording(request *GetVoicemailRecordingReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 保持通话
+//
 // @param request - HoldCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6887,6 +7325,10 @@ func (client *Client) HoldCallWithOptions(request *HoldCallRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// 保持通话
+//
 // @param request - HoldCallRequest
 //
 // @return HoldCallResponse
@@ -7314,6 +7756,10 @@ func (client *Client) ImportDocuments(request *ImportDocumentsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入ram用户
+//
 // @param request - ImportRamUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7370,6 +7816,10 @@ func (client *Client) ImportRamUsersWithOptions(request *ImportRamUsersRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入ram用户
+//
 // @param request - ImportRamUsersRequest
 //
 // @return ImportRamUsersResponse
@@ -7384,6 +7834,10 @@ func (client *Client) ImportRamUsers(request *ImportRamUsersRequest) (_result *I
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-发起
+//
 // @param request - InitiateAttendedTransferRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7480,6 +7934,10 @@ func (client *Client) InitiateAttendedTransferWithOptions(request *InitiateAtten
 	return _result, _err
 }
 
+// Summary:
+//
+// 关注转-发起
+//
 // @param request - InitiateAttendedTransferRequest
 //
 // @return InitiateAttendedTransferResponse
@@ -7494,6 +7952,10 @@ func (client *Client) InitiateAttendedTransfer(request *InitiateAttendedTransfer
 	return _result, _err
 }
 
+// Summary:
+//
+// 打断通话
+//
 // @param request - InterceptCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7554,6 +8016,10 @@ func (client *Client) InterceptCallWithOptions(request *InterceptCallRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 打断通话
+//
 // @param request - InterceptCallRequest
 //
 // @return InterceptCallResponse
@@ -7568,6 +8034,10 @@ func (client *Client) InterceptCall(request *InterceptCallRequest) (_result *Int
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起IVR认证流程
+//
 // @param request - LaunchAuthenticationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7628,6 +8098,10 @@ func (client *Client) LaunchAuthenticationWithOptions(request *LaunchAuthenticat
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起IVR认证流程
+//
 // @param request - LaunchAuthenticationRequest
 //
 // @return LaunchAuthenticationResponse
@@ -7642,6 +8116,10 @@ func (client *Client) LaunchAuthentication(request *LaunchAuthenticationRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起话后满意度调查IVR流程
+//
 // @param request - LaunchSurveyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7718,6 +8196,10 @@ func (client *Client) LaunchSurveyWithOptions(request *LaunchSurveyRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起话后满意度调查IVR流程
+//
 // @param request - LaunchSurveyRequest
 //
 // @return LaunchSurveyResponse
@@ -7732,6 +8214,10 @@ func (client *Client) LaunchSurvey(request *LaunchSurveyRequest) (_result *Launc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取坐席状态记录列表
+//
 // @param request - ListAgentStateLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7784,6 +8270,10 @@ func (client *Client) ListAgentStateLogsWithOptions(request *ListAgentStateLogsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取坐席状态记录列表
+//
 // @param request - ListAgentStateLogsRequest
 //
 // @return ListAgentStateLogsResponse
@@ -8154,6 +8644,10 @@ func (client *Client) ListBlacklistCallTaggings(request *ListBlacklistCallTaggin
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席工作台坐席调用转接使用
+//
 // @param request - ListBriefSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8210,6 +8704,10 @@ func (client *Client) ListBriefSkillGroupsWithOptions(request *ListBriefSkillGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席工作台坐席调用转接使用
+//
 // @param request - ListBriefSkillGroupsRequest
 //
 // @return ListBriefSkillGroupsResponse
@@ -8224,6 +8722,10 @@ func (client *Client) ListBriefSkillGroups(request *ListBriefSkillGroupsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话详情
+//
 // @param request - ListCallDetailRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8344,6 +8846,10 @@ func (client *Client) ListCallDetailRecordsWithOptions(request *ListCallDetailRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取通话详情
+//
 // @param request - ListCallDetailRecordsRequest
 //
 // @return ListCallDetailRecordsResponse
@@ -9012,6 +9518,10 @@ func (client *Client) ListCommonTicketFields(request *ListCommonTicketFieldsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询系统配置
+//
 // @param request - ListConfigItemsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9060,6 +9570,10 @@ func (client *Client) ListConfigItemsWithOptions(request *ListConfigItemsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询系统配置
+//
 // @param request - ListConfigItemsRequest
 //
 // @return ListConfigItemsResponse
@@ -9076,7 +9590,7 @@ func (client *Client) ListConfigItems(request *ListConfigItemsRequest) (_result 
 
 // Summary:
 //
-// -
+// 列表查询ivr流程
 //
 // @param request - ListContactFlowsRequest
 //
@@ -9144,7 +9658,7 @@ func (client *Client) ListContactFlowsWithOptions(request *ListContactFlowsReque
 
 // Summary:
 //
-// -
+// 列表查询ivr流程
 //
 // @param request - ListContactFlowsRequest
 //
@@ -9243,6 +9757,10 @@ func (client *Client) ListCustomCallTagging(request *ListCustomCallTaggingReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询可用设备
+//
 // @param request - ListDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9287,6 +9805,10 @@ func (client *Client) ListDevicesWithOptions(request *ListDevicesRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询可用设备
+//
 // @param request - ListDevicesRequest
 //
 // @return ListDevicesResponse
@@ -9823,6 +10345,10 @@ func (client *Client) ListGroupChatMessages(request *ListGroupChatMessagesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询历史作息报告
+//
 // @param request - ListHistoricalAgentReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9893,6 +10419,10 @@ func (client *Client) ListHistoricalAgentReportWithOptions(request *ListHistoric
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询历史作息报告
+//
 // @param request - ListHistoricalAgentReportRequest
 //
 // @return ListHistoricalAgentReportResponse
@@ -10087,6 +10617,10 @@ func (client *Client) ListHistoricalSkillGroupReport(request *ListHistoricalSkil
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10131,6 +10665,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - ListInstancesRequest
 //
 // @return ListInstancesResponse
@@ -10145,6 +10683,10 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - ListInstancesOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10189,6 +10731,10 @@ func (client *Client) ListInstancesOfUserWithOptions(request *ListInstancesOfUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // @param request - ListInstancesOfUserRequest
 //
 // @return ListInstancesOfUserResponse
@@ -10203,6 +10749,10 @@ func (client *Client) ListInstancesOfUser(request *ListInstancesOfUserRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询坐席报表
+//
 // @param request - ListIntervalAgentReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10263,6 +10813,10 @@ func (client *Client) ListIntervalAgentReportWithOptions(request *ListIntervalAg
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询坐席报表
+//
 // @param request - ListIntervalAgentReportRequest
 //
 // @return ListIntervalAgentReportResponse
@@ -10335,6 +10889,10 @@ func (client *Client) ListIntervalAgentSkillGroupReport(request *ListIntervalAge
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例报表
+//
 // @param request - ListIntervalInstanceReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10387,6 +10945,10 @@ func (client *Client) ListIntervalInstanceReportWithOptions(request *ListInterva
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例报表
+//
 // @param request - ListIntervalInstanceReportRequest
 //
 // @return ListIntervalInstanceReportResponse
@@ -10401,6 +10963,10 @@ func (client *Client) ListIntervalInstanceReport(request *ListIntervalInstanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组报表
+//
 // @param request - ListIntervalSkillGroupReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10461,6 +11027,10 @@ func (client *Client) ListIntervalSkillGroupReportWithOptions(request *ListInter
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组报表
+//
 // @param request - ListIntervalSkillGroupReportRequest
 //
 // @return ListIntervalSkillGroupReportResponse
@@ -10475,6 +11045,10 @@ func (client *Client) ListIntervalSkillGroupReport(request *ListIntervalSkillGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询ivr轨迹
+//
 // @param request - ListIvrTrackingDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10527,6 +11101,10 @@ func (client *Client) ListIvrTrackingDetailsWithOptions(request *ListIvrTracking
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询ivr轨迹
+//
 // @param request - ListIvrTrackingDetailsRequest
 //
 // @return ListIvrTrackingDetailsResponse
@@ -11167,6 +11745,10 @@ func (client *Client) ListOutboundNumbersOfUser(request *ListOutboundNumbersOfUs
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取个人外呼号码列表
+//
 // @param request - ListPersonalNumbersOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11227,6 +11809,10 @@ func (client *Client) ListPersonalNumbersOfUserWithOptions(request *ListPersonal
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取个人外呼号码列表
+//
 // @param request - ListPersonalNumbersOfUserRequest
 //
 // @return ListPersonalNumbersOfUserResponse
@@ -11323,6 +11909,10 @@ func (client *Client) ListPhoneNumbers(request *ListPhoneNumbersRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组绑定的号码
+//
 // @param request - ListPhoneNumbersOfSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11387,6 +11977,10 @@ func (client *Client) ListPhoneNumbersOfSkillGroupWithOptions(request *ListPhone
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组绑定的号码
+//
 // @param request - ListPhoneNumbersOfSkillGroupRequest
 //
 // @return ListPhoneNumbersOfSkillGroupResponse
@@ -11401,6 +11995,10 @@ func (client *Client) ListPhoneNumbersOfSkillGroup(request *ListPhoneNumbersOfSk
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户权限
+//
 // @param request - ListPrivilegesOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11441,6 +12039,10 @@ func (client *Client) ListPrivilegesOfUserWithOptions(request *ListPrivilegesOfU
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户权限
+//
 // @param request - ListPrivilegesOfUserRequest
 //
 // @return ListPrivilegesOfUserResponse
@@ -11455,6 +12057,10 @@ func (client *Client) ListPrivilegesOfUser(request *ListPrivilegesOfUserRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询ram用户
+//
 // @param request - ListRamUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11507,6 +12113,10 @@ func (client *Client) ListRamUsersWithOptions(request *ListRamUsersRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询ram用户
+//
 // @param request - ListRamUsersRequest
 //
 // @return ListRamUsersResponse
@@ -11521,6 +12131,10 @@ func (client *Client) ListRamUsers(request *ListRamUsersRequest) (_result *ListR
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询坐席状态
+//
 // @param request - ListRealtimeAgentStatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11607,6 +12221,10 @@ func (client *Client) ListRealtimeAgentStatesWithOptions(request *ListRealtimeAg
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询坐席状态
+//
 // @param request - ListRealtimeAgentStatesRequest
 //
 // @return ListRealtimeAgentStatesResponse
@@ -11621,6 +12239,10 @@ func (client *Client) ListRealtimeAgentStates(request *ListRealtimeAgentStatesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询技能组状态报表
+//
 // @param request - ListRealtimeSkillGroupStatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11679,6 +12301,10 @@ func (client *Client) ListRealtimeSkillGroupStatesWithOptions(request *ListRealt
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询技能组状态报表
+//
 // @param request - ListRealtimeSkillGroupStatesRequest
 //
 // @return ListRealtimeSkillGroupStatesResponse
@@ -11693,6 +12319,10 @@ func (client *Client) ListRealtimeSkillGroupStates(request *ListRealtimeSkillGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询历史通话记录
+//
 // @param request - ListRecentCallDetailRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11755,6 +12385,10 @@ func (client *Client) ListRecentCallDetailRecordsWithOptions(request *ListRecent
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询历史通话记录
+//
 // @param request - ListRecentCallDetailRecordsRequest
 //
 // @return ListRecentCallDetailRecordsResponse
@@ -11769,6 +12403,10 @@ func (client *Client) ListRecentCallDetailRecords(request *ListRecentCallDetailR
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询角色
+//
 // @param request - ListRolesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11809,6 +12447,10 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询角色
+//
 // @param request - ListRolesRequest
 //
 // @return ListRolesResponse
@@ -11949,6 +12591,10 @@ func (client *Client) ListSkillGroupSummaryReportsSinceMidnight(request *ListSki
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组列表
+//
 // @param request - ListSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12005,6 +12651,10 @@ func (client *Client) ListSkillGroupsWithOptions(request *ListSkillGroupsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组列表
+//
 // @param request - ListSkillGroupsRequest
 //
 // @return ListSkillGroupsResponse
@@ -12019,6 +12669,10 @@ func (client *Client) ListSkillGroups(request *ListSkillGroupsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户技能组级别
+//
 // @param request - ListSkillLevelsOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12079,6 +12733,10 @@ func (client *Client) ListSkillLevelsOfUserWithOptions(request *ListSkillLevelsO
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户技能组级别
+//
 // @param request - ListSkillLevelsOfUserRequest
 //
 // @return ListSkillLevelsOfUserResponse
@@ -12479,6 +13137,10 @@ func (client *Client) ListUnassignedNumbers(request *ListUnassignedNumbersReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组级别列表
+//
 // @param request - ListUserLevelsOfSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12539,6 +13201,10 @@ func (client *Client) ListUserLevelsOfSkillGroupWithOptions(request *ListUserLev
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询技能组级别列表
+//
 // @param request - ListUserLevelsOfSkillGroupRequest
 //
 // @return ListUserLevelsOfSkillGroupResponse
@@ -12553,6 +13219,10 @@ func (client *Client) ListUserLevelsOfSkillGroup(request *ListUserLevelsOfSkillG
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户列表
+//
 // @param request - ListUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12609,6 +13279,10 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户列表
+//
 // @param request - ListUsersRequest
 //
 // @return ListUsersResponse
@@ -12955,6 +13629,10 @@ func (client *Client) MakeCall(request *MakeCallRequest) (_result *MakeCallRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改媒体文件
+//
 // @param request - ModifyAudioFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13015,6 +13693,10 @@ func (client *Client) ModifyAudioFileWithOptions(request *ModifyAudioFileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改媒体文件
+//
 // @param request - ModifyAudioFileRequest
 //
 // @return ModifyAudioFileResponse
@@ -13241,6 +13923,10 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改电话号码
+//
 // @param request - ModifyPhoneNumberRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13293,6 +13979,10 @@ func (client *Client) ModifyPhoneNumberWithOptions(request *ModifyPhoneNumberReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改电话号码
+//
 // @param request - ModifyPhoneNumberRequest
 //
 // @return ModifyPhoneNumberResponse
@@ -13307,6 +13997,10 @@ func (client *Client) ModifyPhoneNumber(request *ModifyPhoneNumberRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改技能组
+//
 // @param request - ModifySkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13359,6 +14053,10 @@ func (client *Client) ModifySkillGroupWithOptions(request *ModifySkillGroupReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改技能组
+//
 // @param request - ModifySkillGroupRequest
 //
 // @return ModifySkillGroupResponse
@@ -13373,6 +14071,10 @@ func (client *Client) ModifySkillGroup(request *ModifySkillGroupRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席技能组
+//
 // @param request - ModifySkillLevelsOfUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13421,6 +14123,10 @@ func (client *Client) ModifySkillLevelsOfUserWithOptions(request *ModifySkillLev
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席技能组
+//
 // @param request - ModifySkillLevelsOfUserRequest
 //
 // @return ModifySkillLevelsOfUserResponse
@@ -13435,6 +14141,10 @@ func (client *Client) ModifySkillLevelsOfUser(request *ModifySkillLevelsOfUserRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席
+//
 // @param request - ModifyUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13511,6 +14221,10 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席
+//
 // @param request - ModifyUserRequest
 //
 // @return ModifyUserResponse
@@ -13525,6 +14239,10 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席技能组级别
+//
 // @param request - ModifyUserLevelsOfSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13573,6 +14291,10 @@ func (client *Client) ModifyUserLevelsOfSkillGroupWithOptions(request *ModifyUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席技能组级别
+//
 // @param request - ModifyUserLevelsOfSkillGroupRequest
 //
 // @return ModifyUserLevelsOfSkillGroupResponse
@@ -13587,6 +14309,10 @@ func (client *Client) ModifyUserLevelsOfSkillGroup(request *ModifyUserLevelsOfSk
 	return _result, _err
 }
 
+// Summary:
+//
+// 通话监听
+//
 // @param request - MonitorCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13643,6 +14369,10 @@ func (client *Client) MonitorCallWithOptions(request *MonitorCallRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 通话监听
+//
 // @param request - MonitorCallRequest
 //
 // @return MonitorCallResponse
@@ -13657,6 +14387,10 @@ func (client *Client) MonitorCall(request *MonitorCallRequest) (_result *Monitor
 	return _result, _err
 }
 
+// Summary:
+//
+// 静音
+//
 // @param request - MuteCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13713,6 +14447,10 @@ func (client *Client) MuteCallWithOptions(request *MuteCallRequest, runtime *dar
 	return _result, _err
 }
 
+// Summary:
+//
+// 静音
+//
 // @param request - MuteCallRequest
 //
 // @return MuteCallResponse
@@ -13793,6 +14531,10 @@ func (client *Client) PauseCampaign(request *PauseCampaignRequest) (_result *Pau
 	return _result, _err
 }
 
+// Summary:
+//
+// 选择外呼号码
+//
 // @param request - PickOutboundNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13845,6 +14587,10 @@ func (client *Client) PickOutboundNumbersWithOptions(request *PickOutboundNumber
 	return _result, _err
 }
 
+// Summary:
+//
+// 选择外呼号码
+//
 // @param request - PickOutboundNumbersRequest
 //
 // @return PickOutboundNumbersResponse
@@ -13859,6 +14605,10 @@ func (client *Client) PickOutboundNumbers(request *PickOutboundNumbersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 轮询座席状态
+//
 // @param request - PollUserStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13907,6 +14657,10 @@ func (client *Client) PollUserStatusWithOptions(request *PollUserStatusRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 轮询座席状态
+//
 // @param request - PollUserStatusRequest
 //
 // @return PollUserStatusResponse
@@ -14069,6 +14823,10 @@ func (client *Client) ProcessCustomIMCallback(request *ProcessCustomIMCallbackRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布ivr流程
+//
 // @param request - PublishContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14117,6 +14875,10 @@ func (client *Client) PublishContactFlowWithOptions(request *PublishContactFlowR
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布ivr流程
+//
 // @param request - PublishContactFlowRequest
 //
 // @return PublishContactFlowResponse
@@ -14131,6 +14893,10 @@ func (client *Client) PublishContactFlow(request *PublishContactFlowRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 就绪/示闲
+//
 // @param request - ReadyForServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14183,6 +14949,10 @@ func (client *Client) ReadyForServiceWithOptions(request *ReadyForServiceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 就绪/示闲
+//
 // @param request - ReadyForServiceRequest
 //
 // @return ReadyForServiceResponse
@@ -14197,6 +14967,10 @@ func (client *Client) ReadyForService(request *ReadyForServiceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 重拨
+//
 // @param request - RedialCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14265,6 +15039,10 @@ func (client *Client) RedialCallWithOptions(request *RedialCallRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 重拨
+//
 // @param request - RedialCallRequest
 //
 // @return RedialCallResponse
@@ -14279,6 +15057,10 @@ func (client *Client) RedialCall(request *RedialCallRequest) (_result *RedialCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
 // @param request - RegisterDeviceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14331,6 +15113,10 @@ func (client *Client) RegisterDeviceWithOptions(request *RegisterDeviceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
 // @param request - RegisterDeviceRequest
 //
 // @return RegisterDeviceResponse
@@ -14345,6 +15131,10 @@ func (client *Client) RegisterDevice(request *RegisterDeviceRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
 // @param request - RegisterDevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14397,6 +15187,10 @@ func (client *Client) RegisterDevicesWithOptions(request *RegisterDevicesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册设备
+//
 // @param request - RegisterDevicesRequest
 //
 // @return RegisterDevicesResponse
@@ -14531,6 +15325,10 @@ func (client *Client) RejectTicket(request *RejectTicketRequest) (_result *Rejec
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放对话
+//
 // @param request - ReleaseCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14587,6 +15385,10 @@ func (client *Client) ReleaseCallWithOptions(request *ReleaseCallRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放对话
+//
 // @param request - ReleaseCallRequest
 //
 // @return ReleaseCallResponse
@@ -14807,6 +15609,10 @@ func (client *Client) RemoveDoNotCallNumbers(request *RemoveDoNotCallNumbersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除个人号码
+//
 // @param request - RemovePersonalNumbersFromUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14855,6 +15661,10 @@ func (client *Client) RemovePersonalNumbersFromUserWithOptions(request *RemovePe
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除个人号码
+//
 // @param request - RemovePersonalNumbersFromUserRequest
 //
 // @return RemovePersonalNumbersFromUserResponse
@@ -14869,6 +15679,10 @@ func (client *Client) RemovePersonalNumbersFromUser(request *RemovePersonalNumbe
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除技能组下的电话号码
+//
 // @param request - RemovePhoneNumberFromSkillGroupsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14917,6 +15731,10 @@ func (client *Client) RemovePhoneNumberFromSkillGroupsWithOptions(request *Remov
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除技能组下的电话号码
+//
 // @param request - RemovePhoneNumberFromSkillGroupsRequest
 //
 // @return RemovePhoneNumberFromSkillGroupsResponse
@@ -14931,6 +15749,10 @@ func (client *Client) RemovePhoneNumberFromSkillGroups(request *RemovePhoneNumbe
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除电话号码
+//
 // @param request - RemovePhoneNumbersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14979,6 +15801,10 @@ func (client *Client) RemovePhoneNumbersWithOptions(request *RemovePhoneNumbersR
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除电话号码
+//
 // @param request - RemovePhoneNumbersRequest
 //
 // @return RemovePhoneNumbersResponse
@@ -14993,6 +15819,10 @@ func (client *Client) RemovePhoneNumbers(request *RemovePhoneNumbersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除技能组下的电话号码
+//
 // @param request - RemovePhoneNumbersFromSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15041,6 +15871,10 @@ func (client *Client) RemovePhoneNumbersFromSkillGroupWithOptions(request *Remov
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除技能组下的电话号码
+//
 // @param request - RemovePhoneNumbersFromSkillGroupRequest
 //
 // @return RemovePhoneNumbersFromSkillGroupResponse
@@ -15055,6 +15889,10 @@ func (client *Client) RemovePhoneNumbersFromSkillGroup(request *RemovePhoneNumbe
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除多个技能组下的坐席
+//
 // @param request - RemoveSkillGroupsFromUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15103,6 +15941,10 @@ func (client *Client) RemoveSkillGroupsFromUserWithOptions(request *RemoveSkillG
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除多个技能组下的坐席
+//
 // @param request - RemoveSkillGroupsFromUserRequest
 //
 // @return RemoveSkillGroupsFromUserResponse
@@ -15117,6 +15959,10 @@ func (client *Client) RemoveSkillGroupsFromUser(request *RemoveSkillGroupsFromUs
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除坐席
+//
 // @param request - RemoveUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15173,6 +16019,10 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除坐席
+//
 // @param request - RemoveUsersRequest
 //
 // @return RemoveUsersResponse
@@ -15187,6 +16037,10 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除坐席下的技能组
+//
 // @param request - RemoveUsersFromSkillGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15235,6 +16089,10 @@ func (client *Client) RemoveUsersFromSkillGroupWithOptions(request *RemoveUsersF
 	return _result, _err
 }
 
+// Summary:
+//
+// 移除坐席下的技能组
+//
 // @param request - RemoveUsersFromSkillGroupRequest
 //
 // @return RemoveUsersFromSkillGroupResponse
@@ -15249,6 +16107,10 @@ func (client *Client) RemoveUsersFromSkillGroup(request *RemoveUsersFromSkillGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置坐席状态
+//
 // @param request - ResetAgentStateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15297,6 +16159,10 @@ func (client *Client) ResetAgentStateWithOptions(request *ResetAgentStateRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置坐席状态
+//
 // @param request - ResetAgentStateRequest
 //
 // @return ResetAgentStateResponse
@@ -15311,6 +16177,10 @@ func (client *Client) ResetAgentState(request *ResetAgentStateRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置坐席密码
+//
 // @param request - ResetUserPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15359,6 +16229,10 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 重置坐席密码
+//
 // @param request - ResetUserPasswordRequest
 //
 // @return ResetUserPasswordResponse
@@ -15567,6 +16441,10 @@ func (client *Client) ResumeCampaign(request *ResumeCampaignRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 取回
+//
 // @param request - RetrieveCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15623,6 +16501,10 @@ func (client *Client) RetrieveCallWithOptions(request *RetrieveCallRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 取回
+//
 // @param request - RetrieveCallRequest
 //
 // @return RetrieveCallResponse
@@ -15707,6 +16589,10 @@ func (client *Client) SaveDocument(request *SaveDocumentRequest) (_result *SaveD
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveRTCStatsV2Request
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15767,6 +16653,10 @@ func (client *Client) SaveRTCStatsV2WithOptions(request *SaveRTCStatsV2Request, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveRTCStatsV2Request
 //
 // @return SaveRTCStatsV2Response
@@ -15781,6 +16671,10 @@ func (client *Client) SaveRTCStatsV2(request *SaveRTCStatsV2Request) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存终端埋点日志
+//
 // @param request - SaveTerminalLogRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15853,6 +16747,10 @@ func (client *Client) SaveTerminalLogWithOptions(request *SaveTerminalLogRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 保存终端埋点日志
+//
 // @param request - SaveTerminalLogRequest
 //
 // @return SaveTerminalLogResponse
@@ -15867,6 +16765,10 @@ func (client *Client) SaveTerminalLog(request *SaveTerminalLogRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveWebRTCStatsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15927,6 +16829,10 @@ func (client *Client) SaveWebRTCStatsWithOptions(request *SaveWebRTCStatsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveWebRTCStatsRequest
 //
 // @return SaveWebRTCStatsResponse
@@ -15941,6 +16847,10 @@ func (client *Client) SaveWebRTCStats(request *SaveWebRTCStatsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveWebRtcInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15997,6 +16907,10 @@ func (client *Client) SaveWebRtcInfoWithOptions(request *SaveWebRtcInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 客服侧数据收集
+//
 // @param request - SaveWebRtcInfoRequest
 //
 // @return SaveWebRtcInfoResponse
@@ -16011,6 +16925,10 @@ func (client *Client) SaveWebRtcInfo(request *SaveWebRtcInfoRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 在接通的电话上发送DTMF信号
+//
 // @param request - SendDtmfSignalingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16071,6 +16989,10 @@ func (client *Client) SendDtmfSignalingWithOptions(request *SendDtmfSignalingReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 在接通的电话上发送DTMF信号
+//
 // @param request - SendDtmfSignalingRequest
 //
 // @return SendDtmfSignalingResponse
@@ -16163,6 +17085,10 @@ func (client *Client) SendNotification(request *SendNotificationRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线
+//
 // @param request - SignInGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16223,6 +17149,10 @@ func (client *Client) SignInGroupWithOptions(request *SignInGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线
+//
 // @param request - SignInGroupRequest
 //
 // @return SignInGroupResponse
@@ -16237,6 +17167,10 @@ func (client *Client) SignInGroup(request *SignInGroupRequest) (_result *SignInG
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线
+//
 // @param request - SignOutGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16285,6 +17219,10 @@ func (client *Client) SignOutGroupWithOptions(request *SignOutGroupRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线
+//
 // @param request - SignOutGroupRequest
 //
 // @return SignOutGroupResponse
@@ -16299,6 +17237,10 @@ func (client *Client) SignOutGroup(request *SignOutGroupRequest) (_result *SignO
 	return _result, _err
 }
 
+// Summary:
+//
+// 双呼
+//
 // @param request - StartBack2BackCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16363,6 +17305,10 @@ func (client *Client) StartBack2BackCallWithOptions(request *StartBack2BackCallR
 	return _result, _err
 }
 
+// Summary:
+//
+// 双呼
+//
 // @param request - StartBack2BackCallRequest
 //
 // @return StartBack2BackCallResponse
@@ -16449,6 +17395,10 @@ func (client *Client) StartChat(request *StartChatRequest) (_result *StartChatRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始会议
+//
 // @param request - StartConferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16505,6 +17455,10 @@ func (client *Client) StartConferenceWithOptions(request *StartConferenceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始会议
+//
 // @param request - StartConferenceRequest
 //
 // @return StartConferenceResponse
@@ -16519,6 +17473,10 @@ func (client *Client) StartConference(request *StartConferenceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑ivr流程
+//
 // @param request - StartEditContactFlowRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16563,6 +17521,10 @@ func (client *Client) StartEditContactFlowWithOptions(request *StartEditContactF
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑ivr流程
+//
 // @param request - StartEditContactFlowRequest
 //
 // @return StartEditContactFlowResponse
@@ -16577,6 +17539,10 @@ func (client *Client) StartEditContactFlow(request *StartEditContactFlowRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始预测试外呼
+//
 // @param request - StartPredictiveCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16649,6 +17615,10 @@ func (client *Client) StartPredictiveCallWithOptions(request *StartPredictiveCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始预测试外呼
+//
 // @param request - StartPredictiveCallRequest
 //
 // @return StartPredictiveCallResponse
@@ -16803,6 +17773,10 @@ func (client *Client) SubmitCampaign(request *SubmitCampaignRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 切换关注/咨询转到会议
+//
 // @param request - SwitchToConferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16855,6 +17829,10 @@ func (client *Client) SwitchToConferenceWithOptions(request *SwitchToConferenceR
 	return _result, _err
 }
 
+// Summary:
+//
+// 切换关注/咨询转到会议
+//
 // @param request - SwitchToConferenceRequest
 //
 // @return SwitchToConferenceResponse
@@ -16869,6 +17847,10 @@ func (client *Client) SwitchToConference(request *SwitchToConferenceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 小休
+//
 // @param request - TakeBreakRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16921,6 +17903,10 @@ func (client *Client) TakeBreakWithOptions(request *TakeBreakRequest, runtime *d
 	return _result, _err
 }
 
+// Summary:
+//
+// 小休
+//
 // @param request - TakeBreakRequest
 //
 // @return TakeBreakResponse
@@ -17067,6 +18053,10 @@ func (client *Client) TransferTicketTask(request *TransferTicketTaskRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消静音
+//
 // @param request - UnmuteCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17123,6 +18113,10 @@ func (client *Client) UnmuteCallWithOptions(request *UnmuteCallRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消静音
+//
 // @param request - UnmuteCallRequest
 //
 // @return UnmuteCallResponse
@@ -17203,6 +18197,10 @@ func (client *Client) UnregisterDevice(request *UnregisterDeviceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会话小结
+//
 // @param request - UpdateCallSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17251,6 +18249,10 @@ func (client *Client) UpdateCallSummaryWithOptions(request *UpdateCallSummaryReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新会话小结
+//
 // @param request - UpdateCallSummaryRequest
 //
 // @return UpdateCallSummaryResponse
@@ -17267,7 +18269,7 @@ func (client *Client) UpdateCallSummary(request *UpdateCallSummaryRequest) (_res
 
 // Summary:
 //
-// # Update campaign
+// 更新预测试外呼活动
 //
 // @param request - UpdateCampaignRequest
 //
@@ -17339,7 +18341,7 @@ func (client *Client) UpdateCampaignWithOptions(request *UpdateCampaignRequest, 
 
 // Summary:
 //
-// # Update campaign
+// 更新预测试外呼活动
 //
 // @param request - UpdateCampaignRequest
 //
@@ -17413,6 +18415,10 @@ func (client *Client) UpdateChatRoutingProfile(request *UpdateChatRoutingProfile
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新系统配置
+//
 // @param request - UpdateConfigItemsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -17465,6 +18471,10 @@ func (client *Client) UpdateConfigItemsWithOptions(request *UpdateConfigItemsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新系统配置
+//
 // @param request - UpdateConfigItemsRequest
 //
 // @return UpdateConfigItemsResponse
