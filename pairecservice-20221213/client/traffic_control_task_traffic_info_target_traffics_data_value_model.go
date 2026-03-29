@@ -11,16 +11,19 @@ type iTrafficControlTaskTrafficInfoTargetTrafficsDataValue interface {
 	GoString() string
 	SetTraffic(v float64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue
 	GetTraffic() *float64
-	SetRecorfTime(v int64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue
-	GetRecorfTime() *int64
+	SetRecordTime(v int64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue
+	GetRecordTime() *int64
 }
 
 type TrafficControlTaskTrafficInfoTargetTrafficsDataValue struct {
 	// example:
 	//
 	// 80
-	Traffic    *float64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
-	RecorfTime *int64   `json:"RecorfTime,omitempty" xml:"RecorfTime,omitempty"`
+	Traffic *float64 `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	// example:
+	//
+	// 1760319273
+	RecordTime *int64 `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
 }
 
 func (s TrafficControlTaskTrafficInfoTargetTrafficsDataValue) String() string {
@@ -35,8 +38,8 @@ func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) GetTraffic() *flo
 	return s.Traffic
 }
 
-func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) GetRecorfTime() *int64 {
-	return s.RecorfTime
+func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) GetRecordTime() *int64 {
+	return s.RecordTime
 }
 
 func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) SetTraffic(v float64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue {
@@ -44,8 +47,8 @@ func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) SetTraffic(v floa
 	return s
 }
 
-func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) SetRecorfTime(v int64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue {
-	s.RecorfTime = &v
+func (s *TrafficControlTaskTrafficInfoTargetTrafficsDataValue) SetRecordTime(v int64) *TrafficControlTaskTrafficInfoTargetTrafficsDataValue {
+	s.RecordTime = &v
 	return s
 }
 

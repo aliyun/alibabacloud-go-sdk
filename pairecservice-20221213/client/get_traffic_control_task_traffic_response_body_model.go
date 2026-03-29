@@ -103,8 +103,11 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) 
 }
 
 type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics struct {
-	Data                   map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue `json:"Data,omitempty" xml:"Data,omitempty"`
-	TrafficControlTargetId *string                                                          `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	Data map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2
+	TrafficContorlTargetId *string `json:"TrafficContorlTargetId,omitempty" xml:"TrafficContorlTargetId,omitempty"`
 }
 
 func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) String() string {
@@ -119,8 +122,8 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTa
 	return s.Data
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) GetTrafficControlTargetId() *string {
-	return s.TrafficControlTargetId
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) GetTrafficContorlTargetId() *string {
+	return s.TrafficContorlTargetId
 }
 
 func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetData(v map[string]*TrafficControlTaskTrafficInfoTargetTrafficsDataValue) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
@@ -128,8 +131,8 @@ func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTa
 	return s
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetTrafficControlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
-	s.TrafficControlTargetId = &v
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetTrafficContorlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
+	s.TrafficContorlTargetId = &v
 	return s
 }
 

@@ -9,8 +9,6 @@ type iUploadRecommendationDataRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetRegionId(v string) *UploadRecommendationDataRequest
-	GetRegionId() *string
 	SetContent(v []*UploadRecommendationDataRequestContent) *UploadRecommendationDataRequest
 	GetContent() []*UploadRecommendationDataRequestContent
 	SetDataType(v string) *UploadRecommendationDataRequest
@@ -18,7 +16,6 @@ type iUploadRecommendationDataRequest interface {
 }
 
 type UploadRecommendationDataRequest struct {
-	RegionId *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Content  []*UploadRecommendationDataRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	DataType *string                                   `json:"DataType,omitempty" xml:"DataType,omitempty"`
 }
@@ -31,21 +28,12 @@ func (s UploadRecommendationDataRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UploadRecommendationDataRequest) GetRegionId() *string {
-	return s.RegionId
-}
-
 func (s *UploadRecommendationDataRequest) GetContent() []*UploadRecommendationDataRequestContent {
 	return s.Content
 }
 
 func (s *UploadRecommendationDataRequest) GetDataType() *string {
 	return s.DataType
-}
-
-func (s *UploadRecommendationDataRequest) SetRegionId(v string) *UploadRecommendationDataRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *UploadRecommendationDataRequest) SetContent(v []*UploadRecommendationDataRequestContent) *UploadRecommendationDataRequest {

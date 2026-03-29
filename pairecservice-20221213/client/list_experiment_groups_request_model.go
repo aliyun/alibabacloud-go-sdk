@@ -13,8 +13,6 @@ type iListExperimentGroupsRequest interface {
 	GetInstanceId() *string
 	SetLayerId(v string) *ListExperimentGroupsRequest
 	GetLayerId() *string
-	SetRegionId(v string) *ListExperimentGroupsRequest
-	GetRegionId() *string
 	SetStatus(v string) *ListExperimentGroupsRequest
 	GetStatus() *string
 	SetTimeRangeEnd(v string) *ListExperimentGroupsRequest
@@ -33,8 +31,7 @@ type ListExperimentGroupsRequest struct {
 	// example:
 	//
 	// 3
-	LayerId  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 	// example:
 	//
 	// Online
@@ -59,10 +56,6 @@ func (s *ListExperimentGroupsRequest) GetLayerId() *string {
 	return s.LayerId
 }
 
-func (s *ListExperimentGroupsRequest) GetRegionId() *string {
-	return s.RegionId
-}
-
 func (s *ListExperimentGroupsRequest) GetStatus() *string {
 	return s.Status
 }
@@ -82,11 +75,6 @@ func (s *ListExperimentGroupsRequest) SetInstanceId(v string) *ListExperimentGro
 
 func (s *ListExperimentGroupsRequest) SetLayerId(v string) *ListExperimentGroupsRequest {
 	s.LayerId = &v
-	return s
-}
-
-func (s *ListExperimentGroupsRequest) SetRegionId(v string) *ListExperimentGroupsRequest {
-	s.RegionId = &v
 	return s
 }
 

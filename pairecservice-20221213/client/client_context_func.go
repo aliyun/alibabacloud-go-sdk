@@ -949,6 +949,156 @@ func (client *Client) CreateCrowdWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
+// 创建数据诊断。
+//
+// @param request - CreateDataDiagnosisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataDiagnosisResponse
+func (client *Client) CreateDataDiagnosisWithContext(ctx context.Context, request *CreateDataDiagnosisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDataDiagnosisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.CycleTime) {
+		body["CycleTime"] = request.CycleTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LeftTableMetaId) {
+		body["LeftTableMetaId"] = request.LeftTableMetaId
+	}
+
+	if !dara.IsNil(request.LeftTablePartitionField) {
+		body["LeftTablePartitionField"] = request.LeftTablePartitionField
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PartitionField) {
+		body["PartitionField"] = request.PartitionField
+	}
+
+	if !dara.IsNil(request.RightTableMetaId) {
+		body["RightTableMetaId"] = request.RightTableMetaId
+	}
+
+	if !dara.IsNil(request.RightTablePartitionField) {
+		body["RightTablePartitionField"] = request.RightTablePartitionField
+	}
+
+	if !dara.IsNil(request.TableMetaId) {
+		body["TableMetaId"] = request.TableMetaId
+	}
+
+	if !dara.IsNil(request.TopNQuantity) {
+		body["TopNQuantity"] = request.TopNQuantity
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataDiagnosis"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataDiagnosisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据诊断（重跑）任务。
+//
+// @param request - CreateDataDiagnosisJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataDiagnosisJobsResponse
+func (client *Client) CreateDataDiagnosisJobsWithContext(ctx context.Context, request *CreateDataDiagnosisJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDataDiagnosisJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataDiagnosisId) {
+		body["DataDiagnosisId"] = request.DataDiagnosisId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataDiagnosisJobs"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/batch/datadiagnosisjobs/create"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataDiagnosisJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建引擎配置
 //
 // @param request - CreateEngineConfigRequest
@@ -2973,6 +3123,53 @@ func (client *Client) DeleteCrowdWithContext(ctx context.Context, CrowdId *strin
 
 // Summary:
 //
+// 删除指定数据诊断。
+//
+// @param request - DeleteDataDiagnosisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataDiagnosisResponse
+func (client *Client) DeleteDataDiagnosisWithContext(ctx context.Context, DataDiagnosisId *string, request *DeleteDataDiagnosisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDataDiagnosisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataDiagnosis"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses/" + dara.PercentEncode(dara.StringValue(DataDiagnosisId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataDiagnosisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除指定推荐引擎配置。
 //
 // @param request - DeleteEngineConfigRequest
@@ -4136,6 +4333,53 @@ func (client *Client) GetCalculationJobWithContext(ctx context.Context, Calculat
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCalculationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据诊断详细信息。
+//
+// @param request - GetDataDiagnosisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataDiagnosisResponse
+func (client *Client) GetDataDiagnosisWithContext(ctx context.Context, DataDiagnosisId *string, request *GetDataDiagnosisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDataDiagnosisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataDiagnosis"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses/" + dara.PercentEncode(dara.StringValue(DataDiagnosisId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataDiagnosisResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5602,6 +5846,207 @@ func (client *Client) ListCrowdsWithContext(ctx context.Context, request *ListCr
 
 // Summary:
 //
+// 获取数据诊断列表。
+//
+// @param tmpReq - ListDataDiagnosesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataDiagnosesResponse
+func (client *Client) ListDataDiagnosesWithContext(ctx context.Context, tmpReq *ListDataDiagnosesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataDiagnosesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDataDiagnosesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Types) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, dara.String("Types"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TypesShrink) {
+		query["Types"] = request.TypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataDiagnoses"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataDiagnosesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据诊断任务列表。
+//
+// @param tmpReq - ListDataDiagnosisJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataDiagnosisJobsResponse
+func (client *Client) ListDataDiagnosisJobsWithContext(ctx context.Context, tmpReq *ListDataDiagnosisJobsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataDiagnosisJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListDataDiagnosisJobsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Types) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, dara.String("Types"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TypesShrink) {
+		query["Types"] = request.TypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataDiagnosisJobs"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnosisjobs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataDiagnosisJobsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据诊断报告。
+//
+// @param request - ListDataDiagnosisReportsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataDiagnosisReportsResponse
+func (client *Client) ListDataDiagnosisReportsWithContext(ctx context.Context, DataDiagnosisId *string, request *ListDataDiagnosisReportsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDataDiagnosisReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.FeatureName) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RemainRateType) {
+		query["RemainRateType"] = request.RemainRateType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.TopN) {
+		query["TopN"] = request.TopN
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataDiagnosisReports"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses/" + dara.PercentEncode(dara.StringValue(DataDiagnosisId)) + "/reports"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataDiagnosisReportsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取引擎配置列表。
 //
 // @param request - ListEngineConfigsRequest
@@ -5696,10 +6141,6 @@ func (client *Client) ListExperimentGroupsWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.LayerId) {
 		query["LayerId"] = request.LayerId
-	}
-
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -7813,6 +8254,65 @@ func (client *Client) PushResourceRuleWithContext(ctx context.Context, ResourceR
 
 // Summary:
 //
+// # QueryDataDiagnosisStatistics
+//
+// @param request - QueryDataDiagnosisStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDataDiagnosisStatisticsResponse
+func (client *Client) QueryDataDiagnosisStatisticsWithContext(ctx context.Context, DataDiagnosisId *string, request *QueryDataDiagnosisStatisticsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryDataDiagnosisStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RemainRateType) {
+		query["RemainRateType"] = request.RemainRateType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryDataDiagnosisStatistics"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses/" + dara.PercentEncode(dara.StringValue(DataDiagnosisId)) + "/statistics/action/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryDataDiagnosisStatisticsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看样本一致性任务差异的详情
 //
 // @param request - QuerySampleConsistencyJobDifferenceRequest
@@ -8753,6 +9253,97 @@ func (client *Client) UpdateCrowdWithContext(ctx context.Context, CrowdId *strin
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCrowdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据诊断。
+//
+// @param request - UpdateDataDiagnosisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataDiagnosisResponse
+func (client *Client) UpdateDataDiagnosisWithContext(ctx context.Context, DataDiagnosisId *string, request *UpdateDataDiagnosisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDataDiagnosisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.CycleTime) {
+		body["CycleTime"] = request.CycleTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.LeftTableMetaId) {
+		body["LeftTableMetaId"] = request.LeftTableMetaId
+	}
+
+	if !dara.IsNil(request.LeftTablePartitionField) {
+		body["LeftTablePartitionField"] = request.LeftTablePartitionField
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PartitionField) {
+		body["PartitionField"] = request.PartitionField
+	}
+
+	if !dara.IsNil(request.RightTableMetaId) {
+		body["RightTableMetaId"] = request.RightTableMetaId
+	}
+
+	if !dara.IsNil(request.RightTablePartitionField) {
+		body["RightTablePartitionField"] = request.RightTablePartitionField
+	}
+
+	if !dara.IsNil(request.TableMetaId) {
+		body["TableMetaId"] = request.TableMetaId
+	}
+
+	if !dara.IsNil(request.TopNQuantity) {
+		body["TopNQuantity"] = request.TopNQuantity
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataDiagnosis"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/datadiagnoses/" + dara.PercentEncode(dara.StringValue(DataDiagnosisId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataDiagnosisResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10330,11 +10921,6 @@ func (client *Client) UploadRecommendationDataWithContext(ctx context.Context, r
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
 		body["Content"] = request.Content
@@ -10346,7 +10932,6 @@ func (client *Client) UploadRecommendationDataWithContext(ctx context.Context, r
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
