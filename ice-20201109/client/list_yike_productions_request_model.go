@@ -17,6 +17,8 @@ type iListYikeProductionsRequest interface {
 	GetPageNo() *int32
 	SetPageSize(v int32) *ListYikeProductionsRequest
 	GetPageSize() *int32
+	SetWorkspaceId(v string) *ListYikeProductionsRequest
+	GetWorkspaceId() *string
 }
 
 type ListYikeProductionsRequest struct {
@@ -35,7 +37,8 @@ type ListYikeProductionsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListYikeProductionsRequest) String() string {
@@ -62,6 +65,10 @@ func (s *ListYikeProductionsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListYikeProductionsRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListYikeProductionsRequest) SetMaxResults(v int32) *ListYikeProductionsRequest {
 	s.MaxResults = &v
 	return s
@@ -79,6 +86,11 @@ func (s *ListYikeProductionsRequest) SetPageNo(v int32) *ListYikeProductionsRequ
 
 func (s *ListYikeProductionsRequest) SetPageSize(v int32) *ListYikeProductionsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListYikeProductionsRequest) SetWorkspaceId(v string) *ListYikeProductionsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

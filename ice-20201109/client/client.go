@@ -19638,6 +19638,10 @@ func (client *Client) ListYikeProductionsWithOptions(request *ListYikeProduction
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

@@ -14182,6 +14182,10 @@ func (client *Client) ListYikeProductionsWithContext(ctx context.Context, reques
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
