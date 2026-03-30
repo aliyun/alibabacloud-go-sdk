@@ -23,6 +23,8 @@ type iDatabase interface {
 	GetOptions() map[string]*string
 	SetOwner(v string) *Database
 	GetOwner() *string
+	SetTableCount(v int64) *Database
+	GetTableCount() *int64
 	SetUpdatedAt(v int64) *Database
 	GetUpdatedAt() *int64
 	SetUpdatedBy(v string) *Database
@@ -54,7 +56,8 @@ type Database struct {
 	// example:
 	//
 	// acs:ram::[accountId]:root
-	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	Owner      *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	TableCount *int64  `json:"tableCount,omitempty" xml:"tableCount,omitempty"`
 	// example:
 	//
 	// 1744970111419
@@ -101,6 +104,10 @@ func (s *Database) GetOwner() *string {
 	return s.Owner
 }
 
+func (s *Database) GetTableCount() *int64 {
+	return s.TableCount
+}
+
 func (s *Database) GetUpdatedAt() *int64 {
 	return s.UpdatedAt
 }
@@ -141,6 +148,11 @@ func (s *Database) SetOptions(v map[string]*string) *Database {
 
 func (s *Database) SetOwner(v string) *Database {
 	s.Owner = &v
+	return s
+}
+
+func (s *Database) SetTableCount(v int64) *Database {
+	s.TableCount = &v
 	return s
 }
 

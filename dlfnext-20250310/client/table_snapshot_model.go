@@ -15,6 +15,8 @@ type iTableSnapshot interface {
 	GetFileSizeInBytes() *int64
 	SetLastFileCreationTime(v int64) *TableSnapshot
 	GetLastFileCreationTime() *int64
+	SetPartitionCount(v int64) *TableSnapshot
+	GetPartitionCount() *int64
 	SetRecordCount(v int64) *TableSnapshot
 	GetRecordCount() *int64
 	SetSnapshot(v *Snapshot) *TableSnapshot
@@ -27,6 +29,7 @@ type TableSnapshot struct {
 	FileCount            *int64    `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
 	FileSizeInBytes      *int64    `json:"fileSizeInBytes,omitempty" xml:"fileSizeInBytes,omitempty"`
 	LastFileCreationTime *int64    `json:"lastFileCreationTime,omitempty" xml:"lastFileCreationTime,omitempty"`
+	PartitionCount       *int64    `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
 	RecordCount          *int64    `json:"recordCount,omitempty" xml:"recordCount,omitempty"`
 	Snapshot             *Snapshot `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
 	TotalBuckets         *int32    `json:"totalBuckets,omitempty" xml:"totalBuckets,omitempty"`
@@ -50,6 +53,10 @@ func (s *TableSnapshot) GetFileSizeInBytes() *int64 {
 
 func (s *TableSnapshot) GetLastFileCreationTime() *int64 {
 	return s.LastFileCreationTime
+}
+
+func (s *TableSnapshot) GetPartitionCount() *int64 {
+	return s.PartitionCount
 }
 
 func (s *TableSnapshot) GetRecordCount() *int64 {
@@ -76,6 +83,11 @@ func (s *TableSnapshot) SetFileSizeInBytes(v int64) *TableSnapshot {
 
 func (s *TableSnapshot) SetLastFileCreationTime(v int64) *TableSnapshot {
 	s.LastFileCreationTime = &v
+	return s
+}
+
+func (s *TableSnapshot) SetPartitionCount(v int64) *TableSnapshot {
+	s.PartitionCount = &v
 	return s
 }
 
