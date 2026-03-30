@@ -336,7 +336,9 @@ type RetrieveRequestRerank struct {
 	// example:
 	//
 	// gte-rerank-hybrid
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	RerankInstruct *string `json:"RerankInstruct,omitempty" xml:"RerankInstruct,omitempty"`
+	RerankMode     *string `json:"RerankMode,omitempty" xml:"RerankMode,omitempty"`
 }
 
 func (s RetrieveRequestRerank) String() string {
@@ -351,8 +353,26 @@ func (s *RetrieveRequestRerank) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *RetrieveRequestRerank) GetRerankInstruct() *string {
+	return s.RerankInstruct
+}
+
+func (s *RetrieveRequestRerank) GetRerankMode() *string {
+	return s.RerankMode
+}
+
 func (s *RetrieveRequestRerank) SetModelName(v string) *RetrieveRequestRerank {
 	s.ModelName = &v
+	return s
+}
+
+func (s *RetrieveRequestRerank) SetRerankInstruct(v string) *RetrieveRequestRerank {
+	s.RerankInstruct = &v
+	return s
+}
+
+func (s *RetrieveRequestRerank) SetRerankMode(v string) *RetrieveRequestRerank {
+	s.RerankMode = &v
 	return s
 }
 

@@ -29,8 +29,12 @@ type iCreateIndexShrinkRequest interface {
 	GetName() *string
 	SetOverlapSize(v int32) *CreateIndexShrinkRequest
 	GetOverlapSize() *int32
+	SetRerankInstruct(v string) *CreateIndexShrinkRequest
+	GetRerankInstruct() *string
 	SetRerankMinScore(v float64) *CreateIndexShrinkRequest
 	GetRerankMinScore() *float64
+	SetRerankMode(v string) *CreateIndexShrinkRequest
+	GetRerankMode() *string
 	SetRerankModelName(v string) *CreateIndexShrinkRequest
 	GetRerankModelName() *string
 	SetSeparator(v string) *CreateIndexShrinkRequest
@@ -131,7 +135,8 @@ type CreateIndexShrinkRequest struct {
 	// example:
 	//
 	// 16
-	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	OverlapSize    *int32  `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	RerankInstruct *string `json:"RerankInstruct,omitempty" xml:"RerankInstruct,omitempty"`
 	// The similarity threshold. Only chunks with a similarity score higher than this value can be recalled. This parameter is used to filter chunks returned by the re-rank model. Valid values: 0.01 to 1.00.
 	//
 	// Default value: 0.01.
@@ -140,6 +145,7 @@ type CreateIndexShrinkRequest struct {
 	//
 	// 0.20
 	RerankMinScore *float64 `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	RerankMode     *string  `json:"RerankMode,omitempty" xml:"RerankMode,omitempty"`
 	// The re-ranking model used in the knowledge base. The re-rank model is a scoring system outside the knowledge base. It calculates the similarity score of the query and text chunks in the knowledge base and ranks them in descending order. Then, the model returns the top K chunks with the highest scores. Valid values:
 	//
 	// 	- gte-rerank-hybrid
@@ -318,8 +324,16 @@ func (s *CreateIndexShrinkRequest) GetOverlapSize() *int32 {
 	return s.OverlapSize
 }
 
+func (s *CreateIndexShrinkRequest) GetRerankInstruct() *string {
+	return s.RerankInstruct
+}
+
 func (s *CreateIndexShrinkRequest) GetRerankMinScore() *float64 {
 	return s.RerankMinScore
+}
+
+func (s *CreateIndexShrinkRequest) GetRerankMode() *string {
+	return s.RerankMode
 }
 
 func (s *CreateIndexShrinkRequest) GetRerankModelName() *string {
@@ -456,8 +470,18 @@ func (s *CreateIndexShrinkRequest) SetOverlapSize(v int32) *CreateIndexShrinkReq
 	return s
 }
 
+func (s *CreateIndexShrinkRequest) SetRerankInstruct(v string) *CreateIndexShrinkRequest {
+	s.RerankInstruct = &v
+	return s
+}
+
 func (s *CreateIndexShrinkRequest) SetRerankMinScore(v float64) *CreateIndexShrinkRequest {
 	s.RerankMinScore = &v
+	return s
+}
+
+func (s *CreateIndexShrinkRequest) SetRerankMode(v string) *CreateIndexShrinkRequest {
+	s.RerankMode = &v
 	return s
 }
 

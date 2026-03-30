@@ -605,8 +605,16 @@ func (client *Client) CreateIndexWithContext(ctx context.Context, WorkspaceId *s
 		query["OverlapSize"] = request.OverlapSize
 	}
 
+	if !dara.IsNil(request.RerankInstruct) {
+		query["RerankInstruct"] = request.RerankInstruct
+	}
+
 	if !dara.IsNil(request.RerankMinScore) {
 		query["RerankMinScore"] = request.RerankMinScore
+	}
+
+	if !dara.IsNil(request.RerankMode) {
+		query["RerankMode"] = request.RerankMode
 	}
 
 	if !dara.IsNil(request.RerankModelName) {
