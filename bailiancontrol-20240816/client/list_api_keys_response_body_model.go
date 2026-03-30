@@ -146,18 +146,19 @@ func (s *ListApiKeysResponseBody) Validate() error {
 }
 
 type ListApiKeysResponseBodyApiKeys struct {
-	ApiKeyValue *string `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
-	ApikeyId    *string `json:"apikeyId,omitempty" xml:"apikeyId,omitempty"`
-	Blocked     *int32  `json:"blocked,omitempty" xml:"blocked,omitempty"`
-	CreateTime  *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Creator     *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	ExpireTime  *int64  `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	ExtData     *string `json:"extData,omitempty" xml:"extData,omitempty"`
-	ParentUid   *string `json:"parentUid,omitempty" xml:"parentUid,omitempty"`
-	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
-	Uid         *string `json:"uid,omitempty" xml:"uid,omitempty"`
-	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	ApiKeyValue  *string                                     `json:"apiKeyValue,omitempty" xml:"apiKeyValue,omitempty"`
+	ApikeyId     *string                                     `json:"apikeyId,omitempty" xml:"apikeyId,omitempty"`
+	AuthSetModel *ListApiKeysResponseBodyApiKeysAuthSetModel `json:"authSetModel,omitempty" xml:"authSetModel,omitempty" type:"Struct"`
+	Blocked      *int32                                      `json:"blocked,omitempty" xml:"blocked,omitempty"`
+	CreateTime   *int64                                      `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Creator      *string                                     `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description  *string                                     `json:"description,omitempty" xml:"description,omitempty"`
+	ExpireTime   *int64                                      `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	ExtData      *string                                     `json:"extData,omitempty" xml:"extData,omitempty"`
+	ParentUid    *string                                     `json:"parentUid,omitempty" xml:"parentUid,omitempty"`
+	Type         *int32                                      `json:"type,omitempty" xml:"type,omitempty"`
+	Uid          *string                                     `json:"uid,omitempty" xml:"uid,omitempty"`
+	WorkspaceId  *string                                     `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s ListApiKeysResponseBodyApiKeys) String() string {
@@ -174,6 +175,10 @@ func (s *ListApiKeysResponseBodyApiKeys) GetApiKeyValue() *string {
 
 func (s *ListApiKeysResponseBodyApiKeys) GetApikeyId() *string {
 	return s.ApikeyId
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) GetAuthSetModel() *ListApiKeysResponseBodyApiKeysAuthSetModel {
+	return s.AuthSetModel
 }
 
 func (s *ListApiKeysResponseBodyApiKeys) GetBlocked() *int32 {
@@ -223,6 +228,11 @@ func (s *ListApiKeysResponseBodyApiKeys) SetApiKeyValue(v string) *ListApiKeysRe
 
 func (s *ListApiKeysResponseBodyApiKeys) SetApikeyId(v string) *ListApiKeysResponseBodyApiKeys {
 	s.ApikeyId = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetAuthSetModel(v *ListApiKeysResponseBodyApiKeysAuthSetModel) *ListApiKeysResponseBodyApiKeys {
+	s.AuthSetModel = v
 	return s
 }
 
@@ -277,5 +287,35 @@ func (s *ListApiKeysResponseBodyApiKeys) SetWorkspaceId(v string) *ListApiKeysRe
 }
 
 func (s *ListApiKeysResponseBodyApiKeys) Validate() error {
+	if s.AuthSetModel != nil {
+		if err := s.AuthSetModel.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListApiKeysResponseBodyApiKeysAuthSetModel struct {
+	AuthSetMode *string `json:"authSetMode,omitempty" xml:"authSetMode,omitempty"`
+}
+
+func (s ListApiKeysResponseBodyApiKeysAuthSetModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListApiKeysResponseBodyApiKeysAuthSetModel) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthSetModel) GetAuthSetMode() *string {
+	return s.AuthSetMode
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthSetModel) SetAuthSetMode(v string) *ListApiKeysResponseBodyApiKeysAuthSetModel {
+	s.AuthSetMode = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeysAuthSetModel) Validate() error {
 	return dara.Validate(s)
 }
