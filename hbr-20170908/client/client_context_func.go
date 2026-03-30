@@ -123,6 +123,90 @@ func (client *Client) AddCrossAccountWithContext(ctx context.Context, request *A
 	return _result, _err
 }
 
+// @param request - AddDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDataSourceResponse
+func (client *Client) AddDataSourceWithContext(ctx context.Context, request *AddDataSourceRequest, runtime *dara.RuntimeOptions) (_result *AddDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectionInfo) {
+		query["ConnectionInfo"] = request.ConnectionInfo
+	}
+
+	if !dara.IsNil(request.Credential) {
+		query["Credential"] = request.Credential
+	}
+
+	if !dara.IsNil(request.DataSourceName) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !dara.IsNil(request.DataSourceType) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !dara.IsNil(request.Exclude) {
+		query["Exclude"] = request.Exclude
+	}
+
+	if !dara.IsNil(request.Include) {
+		query["Include"] = request.Include
+	}
+
+	if !dara.IsNil(request.IndexLevel) {
+		query["IndexLevel"] = request.IndexLevel
+	}
+
+	if !dara.IsNil(request.Options) {
+		query["Options"] = request.Options
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.Schedule) {
+		query["Schedule"] = request.Schedule
+	}
+
+	if !dara.IsNil(request.SpeedLimit) {
+		query["SpeedLimit"] = request.SpeedLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDataSource"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDataSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // 浏览备份文件
