@@ -124,6 +124,7 @@ type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCre
 	// 1767196800
 	AccessCredentialExpiresAt *int64                                                                                                  `json:"accessCredentialExpiresAt,omitempty" xml:"accessCredentialExpiresAt,omitempty"`
 	AlibabaCloudStsToken      *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken `json:"alibabaCloudStsToken,omitempty" xml:"alibabaCloudStsToken,omitempty" type:"Struct"`
+	AwsStsToken               *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken          `json:"awsStsToken,omitempty" xml:"awsStsToken,omitempty" type:"Struct"`
 }
 
 func (s ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential) String() string {
@@ -142,6 +143,10 @@ func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAcces
 	return s.AlibabaCloudStsToken
 }
 
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential) GetAwsStsToken() *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken {
+	return s.AwsStsToken
+}
+
 func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential) SetAccessCredentialExpiresAt(v int64) *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential {
 	s.AccessCredentialExpiresAt = &v
 	return s
@@ -152,9 +157,19 @@ func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAcces
 	return s
 }
 
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential) SetAwsStsToken(v *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential {
+	s.AwsStsToken = v
+	return s
+}
+
 func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential) Validate() error {
 	if s.AlibabaCloudStsToken != nil {
 		if err := s.AlibabaCloudStsToken.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.AwsStsToken != nil {
+		if err := s.AwsStsToken.Validate(); err != nil {
 			return err
 		}
 	}
@@ -225,5 +240,60 @@ func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAcces
 }
 
 func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken) Validate() error {
+	return dara.Validate(s)
+}
+
+type ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken struct {
+	AccessKeyId     *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
+	Expiration      *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	SecretAccessKey *string `json:"secretAccessKey,omitempty" xml:"secretAccessKey,omitempty"`
+	SessionToken    *string `json:"sessionToken,omitempty" xml:"sessionToken,omitempty"`
+}
+
+func (s ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) GoString() string {
+	return s.String()
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) GetAccessKeyId() *string {
+	return s.AccessKeyId
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) GetExpiration() *string {
+	return s.Expiration
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) GetSecretAccessKey() *string {
+	return s.SecretAccessKey
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) GetSessionToken() *string {
+	return s.SessionToken
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) SetAccessKeyId(v string) *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) SetExpiration(v string) *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken {
+	s.Expiration = &v
+	return s
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) SetSecretAccessKey(v string) *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken {
+	s.SecretAccessKey = &v
+	return s
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) SetSessionToken(v string) *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken {
+	s.SessionToken = &v
+	return s
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAwsStsToken) Validate() error {
 	return dara.Validate(s)
 }

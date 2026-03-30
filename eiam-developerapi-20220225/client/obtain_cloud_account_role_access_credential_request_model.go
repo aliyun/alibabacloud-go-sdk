@@ -11,6 +11,8 @@ type iObtainCloudAccountRoleAccessCredentialRequest interface {
 	GoString() string
 	SetCloudAccountRoleExternalId(v string) *ObtainCloudAccountRoleAccessCredentialRequest
 	GetCloudAccountRoleExternalId() *string
+	SetDurationSeconds(v int32) *ObtainCloudAccountRoleAccessCredentialRequest
+	GetDurationSeconds() *int32
 }
 
 type ObtainCloudAccountRoleAccessCredentialRequest struct {
@@ -20,6 +22,7 @@ type ObtainCloudAccountRoleAccessCredentialRequest struct {
 	//
 	// acs:ram::xxx:role/role-test
 	CloudAccountRoleExternalId *string `json:"cloudAccountRoleExternalId,omitempty" xml:"cloudAccountRoleExternalId,omitempty"`
+	DurationSeconds            *int32  `json:"durationSeconds,omitempty" xml:"durationSeconds,omitempty"`
 }
 
 func (s ObtainCloudAccountRoleAccessCredentialRequest) String() string {
@@ -34,8 +37,17 @@ func (s *ObtainCloudAccountRoleAccessCredentialRequest) GetCloudAccountRoleExter
 	return s.CloudAccountRoleExternalId
 }
 
+func (s *ObtainCloudAccountRoleAccessCredentialRequest) GetDurationSeconds() *int32 {
+	return s.DurationSeconds
+}
+
 func (s *ObtainCloudAccountRoleAccessCredentialRequest) SetCloudAccountRoleExternalId(v string) *ObtainCloudAccountRoleAccessCredentialRequest {
 	s.CloudAccountRoleExternalId = &v
+	return s
+}
+
+func (s *ObtainCloudAccountRoleAccessCredentialRequest) SetDurationSeconds(v int32) *ObtainCloudAccountRoleAccessCredentialRequest {
+	s.DurationSeconds = &v
 	return s
 }
 

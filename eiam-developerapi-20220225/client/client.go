@@ -2560,6 +2560,10 @@ func (client *Client) ObtainCloudAccountRoleAccessCredentialWithOptions(instance
 		query["cloudAccountRoleExternalId"] = request.CloudAccountRoleExternalId
 	}
 
+	if !dara.IsNil(request.DurationSeconds) {
+		query["durationSeconds"] = request.DurationSeconds
+	}
+
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -2680,6 +2684,85 @@ func (client *Client) ObtainCredential(instanceId *string, request *ObtainCreden
 	headers := &ObtainCredentialHeaders{}
 	_result = &ObtainCredentialResponse{}
 	_body, _err := client.ObtainCredentialWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取JWT认证令牌明文。
+//
+// @param request - ObtainJwtAuthenticationTokenRequest
+//
+// @param headers - ObtainJwtAuthenticationTokenHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ObtainJwtAuthenticationTokenResponse
+func (client *Client) ObtainJwtAuthenticationTokenWithOptions(instanceId *string, request *ObtainJwtAuthenticationTokenRequest, headers *ObtainJwtAuthenticationTokenHeaders, runtime *dara.RuntimeOptions) (_result *ObtainJwtAuthenticationTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthenticationTokenId) {
+		body["authenticationTokenId"] = request.AuthenticationTokenId
+	}
+
+	if !dara.IsNil(request.ConsumerId) {
+		body["consumerId"] = request.ConsumerId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ObtainJwtAuthenticationToken"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/authenticationTokens/_/actions/obtainJwt"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ObtainJwtAuthenticationTokenResponse{}
+	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取JWT认证令牌明文。
+//
+// @param request - ObtainJwtAuthenticationTokenRequest
+//
+// @return ObtainJwtAuthenticationTokenResponse
+func (client *Client) ObtainJwtAuthenticationToken(instanceId *string, request *ObtainJwtAuthenticationTokenRequest) (_result *ObtainJwtAuthenticationTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ObtainJwtAuthenticationTokenHeaders{}
+	_result = &ObtainJwtAuthenticationTokenResponse{}
+	_body, _err := client.ObtainJwtAuthenticationTokenWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
