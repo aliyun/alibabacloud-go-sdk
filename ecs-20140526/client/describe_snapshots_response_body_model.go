@@ -165,11 +165,15 @@ func (s *DescribeSnapshotsResponseBodySnapshots) Validate() error {
 }
 
 type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
-	Available                  *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
-	Category                   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime               *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description                *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Encrypted                  *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Available    *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Encrypted    *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// example:
+	//
+	// 65535
+	FullSnapshotSizeInBytes    *int64  `json:"FullSnapshotSizeInBytes,omitempty" xml:"FullSnapshotSizeInBytes,omitempty"`
 	InstantAccess              *bool   `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
 	InstantAccessRetentionDays *int32  `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
 	KMSKeyId                   *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
@@ -228,6 +232,10 @@ func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) GetDescription() *strin
 
 func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) GetEncrypted() *bool {
 	return s.Encrypted
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) GetFullSnapshotSizeInBytes() *int64 {
+	return s.FullSnapshotSizeInBytes
 }
 
 func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) GetInstantAccess() *bool {
@@ -348,6 +356,11 @@ func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetDescription(v string
 
 func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetEncrypted(v bool) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
 	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshotsSnapshot) SetFullSnapshotSizeInBytes(v int64) *DescribeSnapshotsResponseBodySnapshotsSnapshot {
+	s.FullSnapshotSizeInBytes = &v
 	return s
 }
 

@@ -2399,6 +2399,118 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, request *Cancel
 	return _result, _err
 }
 
+// Summary:
+//
+// 使用一块已有的磁盘克隆出新磁盘
+//
+// @param request - CloneDisksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneDisksResponse
+func (client *Client) CloneDisksWithContext(ctx context.Context, request *CloneDisksRequest, runtime *dara.RuntimeOptions) (_result *CloneDisksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Arn) {
+		query["Arn"] = request.Arn
+	}
+
+	if !dara.IsNil(request.BurstingEnabled) {
+		query["BurstingEnabled"] = request.BurstingEnabled
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DiskCategory) {
+		query["DiskCategory"] = request.DiskCategory
+	}
+
+	if !dara.IsNil(request.DiskName) {
+		query["DiskName"] = request.DiskName
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.Encrypted) {
+		query["Encrypted"] = request.Encrypted
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		query["KmsKeyId"] = request.KmsKeyId
+	}
+
+	if !dara.IsNil(request.MultiAttach) {
+		query["MultiAttach"] = request.MultiAttach
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PerformanceLevel) {
+		query["PerformanceLevel"] = request.PerformanceLevel
+	}
+
+	if !dara.IsNil(request.ProvisionedIops) {
+		query["ProvisionedIops"] = request.ProvisionedIops
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SourceDiskId) {
+		query["SourceDiskId"] = request.SourceDiskId
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloneDisks"),
+		Version:     dara.String("2014-05-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloneDisksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Deprecated: OpenAPI ConnectRouterInterface is deprecated, please use Vpc::2016-04-28::ConnectRouterInterface instead.
 //
 // Summary:
@@ -17581,7 +17693,7 @@ func (client *Client) DescribePhysicalConnectionsWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询运维窗口
+// Query O\\\\\\&M window
 //
 // @param tmpReq - DescribePlanMaintenanceWindowsRequest
 //
