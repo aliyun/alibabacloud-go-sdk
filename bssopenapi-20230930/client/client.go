@@ -1274,6 +1274,10 @@ func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, r
 	}
 	request := &DescribeCouponShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CouponTemplateIdList) {
+		request.CouponTemplateIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CouponTemplateIdList, dara.String("CouponTemplateIdList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.EcIdAccountIds) {
 		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, dara.String("EcIdAccountIds"), dara.String("json"))
 	}
@@ -1285,6 +1289,10 @@ func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, r
 
 	if !dara.IsNil(request.CouponNo) {
 		query["CouponNo"] = request.CouponNo
+	}
+
+	if !dara.IsNil(request.CouponTemplateIdListShrink) {
+		query["CouponTemplateIdList"] = request.CouponTemplateIdListShrink
 	}
 
 	if !dara.IsNil(request.CouponType) {

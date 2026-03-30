@@ -13,6 +13,8 @@ type iDescribeCouponRequest interface {
 	GetCouponId() *int64
 	SetCouponNo(v string) *DescribeCouponRequest
 	GetCouponNo() *string
+	SetCouponTemplateIdList(v []*int64) *DescribeCouponRequest
+	GetCouponTemplateIdList() []*int64
 	SetCouponType(v string) *DescribeCouponRequest
 	GetCouponType() *string
 	SetCurrentPage(v int32) *DescribeCouponRequest
@@ -47,7 +49,8 @@ type DescribeCouponRequest struct {
 	// example:
 	//
 	// 554863270150
-	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	CouponNo             *string  `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	CouponTemplateIdList []*int64 `json:"CouponTemplateIdList,omitempty" xml:"CouponTemplateIdList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// CERTAIN
@@ -109,6 +112,10 @@ func (s *DescribeCouponRequest) GetCouponNo() *string {
 	return s.CouponNo
 }
 
+func (s *DescribeCouponRequest) GetCouponTemplateIdList() []*int64 {
+	return s.CouponTemplateIdList
+}
+
 func (s *DescribeCouponRequest) GetCouponType() *string {
 	return s.CouponType
 }
@@ -164,6 +171,11 @@ func (s *DescribeCouponRequest) SetCouponId(v int64) *DescribeCouponRequest {
 
 func (s *DescribeCouponRequest) SetCouponNo(v string) *DescribeCouponRequest {
 	s.CouponNo = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetCouponTemplateIdList(v []*int64) *DescribeCouponRequest {
+	s.CouponTemplateIdList = v
 	return s
 }
 
