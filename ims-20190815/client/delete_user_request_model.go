@@ -16,7 +16,21 @@ type iDeleteUserRequest interface {
 }
 
 type DeleteUserRequest struct {
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserPrincipalName` and `UserId`.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

@@ -16,8 +16,14 @@ type iCreateGroupResponseBody interface {
 }
 
 type CreateGroupResponseBody struct {
-	Group     *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user group.
+	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3C38192B-7BF8-45DA-8F0A-E670EA51426C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateGroupResponseBody) String() string {
@@ -56,12 +62,42 @@ func (s *CreateGroupResponseBody) Validate() error {
 }
 
 type CreateGroupResponseBodyGroup struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2020-10-19T16:15:17Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user group.
+	//
+	// example:
+	//
+	// 740317625433843****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2020-10-19T16:15:17Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateGroupResponseBodyGroup) String() string {

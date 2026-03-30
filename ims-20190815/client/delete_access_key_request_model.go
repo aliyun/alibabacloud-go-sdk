@@ -16,8 +16,21 @@ type iDeleteAccessKeyRequest interface {
 }
 
 type DeleteAccessKeyRequest struct {
+	// The ID of the AccessKey pair that you want to delete.
+	//
 	// This parameter is required.
-	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	//
+	// example:
+	//
+	// LTAI*******************
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, the AccessKey pair of the current user is deleted.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

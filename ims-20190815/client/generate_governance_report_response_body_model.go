@@ -16,8 +16,24 @@ type iGenerateGovernanceReportResponseBody interface {
 }
 
 type GenerateGovernanceReportResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 492E130C-76D3-55D5-BE5C-C023E431369A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The report generation status. Valid values:
+	//
+	// 	- Started: The system starts to generate a governance report.
+	//
+	// 	- Progressing: The system is generating a governance report.
+	//
+	// 	- Completed: A governance report is generated.
+	//
+	// example:
+	//
+	// Started
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GenerateGovernanceReportResponseBody) String() string {

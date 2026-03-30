@@ -22,7 +22,7 @@ type UpdateSAMLProviderResponseBody struct {
 	//
 	// E5EDDFD2-3654-4F9F-9780-4AE7D81823EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the identity provider.
+	// The information about the IdP.
 	SAMLProvider *UpdateSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -62,41 +62,32 @@ func (s *UpdateSAMLProviderResponseBody) Validate() error {
 }
 
 type UpdateSAMLProviderResponseBodySAMLProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the identity provider.
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
 	//
 	// example:
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The signature algorithm supported by the Alibaba Cloud SP. Valid values:
-	//
-	// - rsa-sha256
-	//
-	// - rsa-sha1
-	//
-	// example:
-	//
-	// rsa-sha1
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The time when the identity provider was created. The time is in UTC.
+	// The point in time at which the IdP was created. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-22T02:37:05Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description.
+	// The description of the IdP.
 	//
 	// example:
 	//
 	// This is a new provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the identity provider.
+	// The name of the IdP.
 	//
 	// example:
 	//
 	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The time when the identity provider was last updated. The time is in Coordinated Universal Time (UTC).
+	// The point in time at which the information about the IdP was modified. The time is displayed in UTC.
 	//
 	// example:
 	//

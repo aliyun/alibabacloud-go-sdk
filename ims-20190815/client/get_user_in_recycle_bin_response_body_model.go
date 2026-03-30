@@ -16,8 +16,14 @@ type iGetUserInRecycleBinResponseBody interface {
 }
 
 type GetUserInRecycleBinResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *GetUserInRecycleBinResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *GetUserInRecycleBinResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserInRecycleBinResponseBody) String() string {
@@ -56,11 +62,41 @@ func (s *GetUserInRecycleBinResponseBody) Validate() error {
 }
 
 type GetUserInRecycleBinResponseBodyUser struct {
-	CreateDate        *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DeleteDate        *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	RecycleDate       *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
-	UserId            *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The time when the RAM user was created.
+	//
+	// example:
+	//
+	// 2020-10-11T09:12:00Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the RAM user will be permanently deleted from the recycle bin.
+	//
+	// example:
+	//
+	// 2020-11-12T09:12:00Z
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the RAM user was deleted and moved to the recycle bin.
+	//
+	// example:
+	//
+	// 2020-10-12T09:12:00Z
+	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

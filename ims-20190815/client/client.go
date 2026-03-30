@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 为OIDC身份提供商添加指定客户端ID
+// Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
 //
 // @param request - AddClientIdToOIDCProviderRequest
 //
@@ -106,7 +106,7 @@ func (client *Client) AddClientIdToOIDCProviderWithOptions(request *AddClientIdT
 
 // Summary:
 //
-// 为OIDC身份提供商添加指定客户端ID
+// Adds a client ID to an OpenID Connect (OIDC) identity provider (IdP).
 //
 // @param request - AddClientIdToOIDCProviderRequest
 //
@@ -124,7 +124,13 @@ func (client *Client) AddClientIdToOIDCProvider(request *AddClientIdToOIDCProvid
 
 // Summary:
 //
-// 为OIDC身份提供商添加验证指纹
+// Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - AddFingerprintToOIDCProviderRequest
 //
@@ -172,7 +178,13 @@ func (client *Client) AddFingerprintToOIDCProviderWithOptions(request *AddFinger
 
 // Summary:
 //
-// 为OIDC身份提供商添加验证指纹
+// Adds a fingerprint to an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to add the fingerprint `902ef2deeb3c5b13ea4c3d5193629309e231****` to the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - AddFingerprintToOIDCProviderRequest
 //
@@ -190,7 +202,7 @@ func (client *Client) AddFingerprintToOIDCProvider(request *AddFingerprintToOIDC
 
 // Summary:
 //
-// 将RAM用户添加到指定的用户组
+// Adds a Resource Access Management (RAM) user to a RAM user group.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -238,7 +250,7 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 
 // Summary:
 //
-// 将RAM用户添加到指定的用户组
+// Adds a Resource Access Management (RAM) user to a RAM user group.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -256,7 +268,7 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 
 // Summary:
 //
-// 为RAM用户绑定多因素认证设备
+// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
 //
 // @param request - BindMFADeviceRequest
 //
@@ -312,7 +324,7 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 
 // Summary:
 //
-// 为RAM用户绑定多因素认证设备
+// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
 //
 // @param request - BindMFADeviceRequest
 //
@@ -330,7 +342,11 @@ func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *Bin
 
 // Summary:
 //
-// 修改RAM用户的登录密码
+// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -378,7 +394,11 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 
 // Summary:
 //
-// 修改RAM用户的登录密码
+// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
 //
 // @param request - ChangePasswordRequest
 //
@@ -396,7 +416,7 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 
 // Summary:
 //
-// 创建主账号或RAM用户访问密钥
+// Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -440,7 +460,7 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 
 // Summary:
 //
-// 创建主账号或RAM用户访问密钥
+// Creates an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -458,7 +478,7 @@ func (client *Client) CreateAccessKey(request *CreateAccessKeyRequest) (_result 
 
 // Summary:
 //
-// 为指定的应用创建应用密钥
+// Creates an application secret for an application.
 //
 // @param request - CreateAppSecretRequest
 //
@@ -502,7 +522,7 @@ func (client *Client) CreateAppSecretWithOptions(request *CreateAppSecretRequest
 
 // Summary:
 //
-// 为指定的应用创建应用密钥
+// Creates an application secret for an application.
 //
 // @param request - CreateAppSecretRequest
 //
@@ -622,7 +642,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// 创建用户组
+// Creates a Resource Access Management (RAM) user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -674,7 +694,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 // Summary:
 //
-// 创建用户组
+// Creates a Resource Access Management (RAM) user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -692,7 +712,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Creates a logon configuration for a Resource Access Management (RAM) user.
+// Enables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -752,7 +772,7 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 
 // Summary:
 //
-// Creates a logon configuration for a Resource Access Management (RAM) user.
+// Enables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -770,7 +790,25 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 
 // Summary:
 //
-// 创建OIDC身份供应商
+// Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificate authority (CA) certificates, and the client IDs are obtained from an external IdP, such as Google Workspace or Okta.
+//
+// ### [](#)Limits
+//
+//   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+//
+//   - You can add a maximum of 50 client IDs to an OIDC IdP.
+//
+//   - You can add a maximum of five fingerprints to an OIDC IdP.
+//
+// ### [](#)Operation description
+//
+// This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
 //
 // @param request - CreateOIDCProviderRequest
 //
@@ -834,7 +872,25 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 
 // Summary:
 //
-// 创建OIDC身份供应商
+// Creates an OpenID Connect (OIDC) identity provider (IdP) to configure a trust relationship between Alibaba Cloud and an external IdP. This topic provides an example on how to create an IdP named TestOIDCProvider to configure a trust relationship between the external IdP Okta and Alibaba Cloud.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificate authority (CA) certificates, and the client IDs are obtained from an external IdP, such as Google Workspace or Okta.
+//
+// ### [](#)Limits
+//
+//   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+//
+//   - You can add a maximum of 50 client IDs to an OIDC IdP.
+//
+//   - You can add a maximum of five fingerprints to an OIDC IdP.
+//
+// ### [](#)Operation description
+//
+// This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
 //
 // @param request - CreateOIDCProviderRequest
 //
@@ -926,7 +982,11 @@ func (client *Client) CreateSAMLProvider(request *CreateSAMLProviderRequest) (_r
 
 // Summary:
 //
-// 创建RAM用户
+// Creates a RAM user.
+//
+// Description:
+//
+// This topic provides an example on how to create a RAM user named `test`.
 //
 // @param request - CreateUserRequest
 //
@@ -990,7 +1050,11 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 // Summary:
 //
-// 创建RAM用户
+// Creates a RAM user.
+//
+// Description:
+//
+// This topic provides an example on how to create a RAM user named `test`.
 //
 // @param request - CreateUserRequest
 //
@@ -1008,7 +1072,7 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 
 // Summary:
 //
-// 创建多因素认证设备
+// Creates a virtual multi-factor authentication (MFA) device.
 //
 // @param request - CreateVirtualMFADeviceRequest
 //
@@ -1052,7 +1116,7 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 
 // Summary:
 //
-// 创建多因素认证设备
+// Creates a virtual multi-factor authentication (MFA) device.
 //
 // @param request - CreateVirtualMFADeviceRequest
 //
@@ -1070,7 +1134,7 @@ func (client *Client) CreateVirtualMFADevice(request *CreateVirtualMFADeviceRequ
 
 // Summary:
 //
-// 删除用户的访问密钥
+// Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - DeleteAccessKeyRequest
 //
@@ -1118,7 +1182,7 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 
 // Summary:
 //
-// 删除用户的访问密钥
+// Deletes an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - DeleteAccessKeyRequest
 //
@@ -1136,7 +1200,7 @@ func (client *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (_result 
 
 // Summary:
 //
-// 删除回收站中的访问密钥
+// Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - DeleteAccessKeyInRecycleBinRequest
 //
@@ -1184,7 +1248,7 @@ func (client *Client) DeleteAccessKeyInRecycleBinWithOptions(request *DeleteAcce
 
 // Summary:
 //
-// 删除回收站中的访问密钥
+// Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - DeleteAccessKeyInRecycleBinRequest
 //
@@ -1202,7 +1266,7 @@ func (client *Client) DeleteAccessKeyInRecycleBin(request *DeleteAccessKeyInRecy
 
 // Summary:
 //
-// 删除指定应用的应用密钥
+// Deletes the application secret of an application.
 //
 // @param request - DeleteAppSecretRequest
 //
@@ -1250,7 +1314,7 @@ func (client *Client) DeleteAppSecretWithOptions(request *DeleteAppSecretRequest
 
 // Summary:
 //
-// 删除指定应用的应用密钥
+// Deletes the application secret of an application.
 //
 // @param request - DeleteAppSecretRequest
 //
@@ -1268,7 +1332,7 @@ func (client *Client) DeleteAppSecret(request *DeleteAppSecretRequest) (_result 
 
 // Summary:
 //
-// 删除指定的应用
+// Deletes an application.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -1312,7 +1376,7 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 
 // Summary:
 //
-// 删除指定的应用
+// Deletes an application.
 //
 // @param request - DeleteApplicationRequest
 //
@@ -1330,7 +1394,11 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// 删除指定的用户组
+// Deletes a Resource Access Management (RAM) user group.
+//
+// Description:
+//
+// Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
 //
 // @param request - DeleteGroupRequest
 //
@@ -1374,7 +1442,11 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 
 // Summary:
 //
-// 删除指定的用户组
+// Deletes a Resource Access Management (RAM) user group.
+//
+// Description:
+//
+// Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
 //
 // @param request - DeleteGroupRequest
 //
@@ -1392,7 +1464,7 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 
 // Summary:
 //
-// 关闭指定RAM用户的控制台登录
+// Disables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - DeleteLoginProfileRequest
 //
@@ -1436,7 +1508,7 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 
 // Summary:
 //
-// 关闭指定RAM用户的控制台登录
+// Disables logon to the console for a Resource Access Management (RAM) user.
 //
 // @param request - DeleteLoginProfileRequest
 //
@@ -1454,7 +1526,13 @@ func (client *Client) DeleteLoginProfile(request *DeleteLoginProfileRequest) (_r
 
 // Summary:
 //
-// 删除指定的角色SSO身份提供商
+// Deletes an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - DeleteOIDCProviderRequest
 //
@@ -1498,7 +1576,13 @@ func (client *Client) DeleteOIDCProviderWithOptions(request *DeleteOIDCProviderR
 
 // Summary:
 //
-// 删除指定的角色SSO身份提供商
+// Deletes an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to remove the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - DeleteOIDCProviderRequest
 //
@@ -1516,7 +1600,7 @@ func (client *Client) DeleteOIDCProvider(request *DeleteOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 删除Passkey
+// Deletes a passkey for a Resource Access Management (RAM) user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -1564,7 +1648,7 @@ func (client *Client) DeletePasskeyWithOptions(request *DeletePasskeyRequest, ru
 
 // Summary:
 //
-// 删除Passkey
+// Deletes a passkey for a Resource Access Management (RAM) user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -1582,7 +1666,7 @@ func (client *Client) DeletePasskey(request *DeletePasskeyRequest) (_result *Del
 
 // Summary:
 //
-// 删除指定的角色SSO身份提供商
+// Deletes an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - DeleteSAMLProviderRequest
 //
@@ -1626,7 +1710,7 @@ func (client *Client) DeleteSAMLProviderWithOptions(request *DeleteSAMLProviderR
 
 // Summary:
 //
-// 删除指定的角色SSO身份提供商
+// Deletes an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - DeleteSAMLProviderRequest
 //
@@ -1644,7 +1728,7 @@ func (client *Client) DeleteSAMLProvider(request *DeleteSAMLProviderRequest) (_r
 
 // Summary:
 //
-// 删除RAM用户
+// Deletes a Resource Access Management (RAM) user.
 //
 // @param request - DeleteUserRequest
 //
@@ -1692,7 +1776,7 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 
 // Summary:
 //
-// 删除RAM用户
+// Deletes a Resource Access Management (RAM) user.
 //
 // @param request - DeleteUserRequest
 //
@@ -1710,7 +1794,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// 删除回收站中的用户
+// Deletes a specific Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - DeleteUserInRecycleBinRequest
 //
@@ -1754,7 +1838,7 @@ func (client *Client) DeleteUserInRecycleBinWithOptions(request *DeleteUserInRec
 
 // Summary:
 //
-// 删除回收站中的用户
+// Deletes a specific Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - DeleteUserInRecycleBinRequest
 //
@@ -1772,7 +1856,7 @@ func (client *Client) DeleteUserInRecycleBin(request *DeleteUserInRecycleBinRequ
 
 // Summary:
 //
-// 删除多因素认证设备
+// Deletes a multi-factor authentication (MFA) device.
 //
 // @param request - DeleteVirtualMFADeviceRequest
 //
@@ -1816,7 +1900,7 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 
 // Summary:
 //
-// 删除多因素认证设备
+// Deletes a multi-factor authentication (MFA) device.
 //
 // @param request - DeleteVirtualMFADeviceRequest
 //
@@ -1834,7 +1918,13 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 
 // Summary:
 //
-// 解除安装应用
+// Uninstalls an external application or an internal application of the ServerApp type.
+//
+// Description:
+//
+// If you want to call this operation to uninstall an internal application, the type of the internal application must be **ServerApp**. Otherwise, an error occurs when you call this operation.
+//
+// >  For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
 //
 // @param request - DeprovisionApplicationRequest
 //
@@ -1878,7 +1968,13 @@ func (client *Client) DeprovisionApplicationWithOptions(request *DeprovisionAppl
 
 // Summary:
 //
-// 解除安装应用
+// Uninstalls an external application or an internal application of the ServerApp type.
+//
+// Description:
+//
+// If you want to call this operation to uninstall an internal application, the type of the internal application must be **ServerApp**. Otherwise, an error occurs when you call this operation.
+//
+// >  For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
 //
 // @param request - DeprovisionApplicationRequest
 //
@@ -1896,7 +1992,7 @@ func (client *Client) DeprovisionApplication(request *DeprovisionApplicationRequ
 
 // Summary:
 //
-// 解除安装外部应用
+// Deletes an installed external application.
 //
 // @param request - DeprovisionExternalApplicationRequest
 //
@@ -1940,7 +2036,7 @@ func (client *Client) DeprovisionExternalApplicationWithOptions(request *Deprovi
 
 // Summary:
 //
-// 解除安装外部应用
+// Deletes an installed external application.
 //
 // @param request - DeprovisionExternalApplicationRequest
 //
@@ -1958,7 +2054,7 @@ func (client *Client) DeprovisionExternalApplication(request *DeprovisionExterna
 
 // Summary:
 //
-// 解绑并删除多因素认证设备
+// Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - DisableVirtualMFARequest
 //
@@ -2002,7 +2098,7 @@ func (client *Client) DisableVirtualMFAWithOptions(request *DisableVirtualMFAReq
 
 // Summary:
 //
-// 解绑并删除多因素认证设备
+// Unbinds and deletes a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - DisableVirtualMFARequest
 //
@@ -2020,7 +2116,7 @@ func (client *Client) DisableVirtualMFA(request *DisableVirtualMFARequest) (_res
 
 // Summary:
 //
-// 生成用户凭证报告
+// Generates the user credential report of an Alibaba Cloud account.
 //
 // @param request - GenerateCredentialReportRequest
 //
@@ -2051,7 +2147,7 @@ func (client *Client) GenerateCredentialReportWithOptions(runtime *dara.RuntimeO
 
 // Summary:
 //
-// 生成用户凭证报告
+// Generates the user credential report of an Alibaba Cloud account.
 //
 // @return GenerateCredentialReportResponse
 func (client *Client) GenerateCredentialReport() (_result *GenerateCredentialReportResponse, _err error) {
@@ -2067,7 +2163,7 @@ func (client *Client) GenerateCredentialReport() (_result *GenerateCredentialRep
 
 // Summary:
 //
-// 生成身份权限治理报告
+// Generates a check report for Cloud Governance.
 //
 // @param request - GenerateGovernanceReportRequest
 //
@@ -2098,7 +2194,7 @@ func (client *Client) GenerateGovernanceReportWithOptions(runtime *dara.RuntimeO
 
 // Summary:
 //
-// 生成身份权限治理报告
+// Generates a check report for Cloud Governance.
 //
 // @return GenerateGovernanceReportResponse
 func (client *Client) GenerateGovernanceReport() (_result *GenerateGovernanceReportResponse, _err error) {
@@ -2114,7 +2210,7 @@ func (client *Client) GenerateGovernanceReport() (_result *GenerateGovernanceRep
 
 // Summary:
 //
-// 查询回收站中的访问密钥信息
+// Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
 //
 // @param request - GetAccessKeyInfoInRecycleBinRequest
 //
@@ -2158,7 +2254,7 @@ func (client *Client) GetAccessKeyInfoInRecycleBinWithOptions(request *GetAccess
 
 // Summary:
 //
-// 查询回收站中的访问密钥信息
+// Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
 //
 // @param request - GetAccessKeyInfoInRecycleBinRequest
 //
@@ -2176,7 +2272,7 @@ func (client *Client) GetAccessKeyInfoInRecycleBin(request *GetAccessKeyInfoInRe
 
 // Summary:
 //
-// 查询指定访问密钥的最后使用时间
+// Queries the time when an AccessKey pair was used for the last time.
 //
 // @param request - GetAccessKeyLastUsedRequest
 //
@@ -2224,7 +2320,7 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 
 // Summary:
 //
-// 查询指定访问密钥的最后使用时间
+// Queries the time when an AccessKey pair was used for the last time.
 //
 // @param request - GetAccessKeyLastUsedRequest
 //
@@ -2242,7 +2338,7 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 
 // Summary:
 //
-// 查询主账号多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
 //
 // @param request - GetAccountMFAInfoRequest
 //
@@ -2273,7 +2369,7 @@ func (client *Client) GetAccountMFAInfoWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// 查询主账号多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) devices of an Alibaba Cloud account.
 //
 // @return GetAccountMFAInfoResponse
 func (client *Client) GetAccountMFAInfo() (_result *GetAccountMFAInfoResponse, _err error) {
@@ -2289,7 +2385,7 @@ func (client *Client) GetAccountMFAInfo() (_result *GetAccountMFAInfoResponse, _
 
 // Summary:
 //
-// 查询阿里云账号的安全报告
+// Queries the security report of an Alibaba Cloud account.
 //
 // @param request - GetAccountSecurityPracticeReportRequest
 //
@@ -2320,7 +2416,7 @@ func (client *Client) GetAccountSecurityPracticeReportWithOptions(runtime *dara.
 
 // Summary:
 //
-// 查询阿里云账号的安全报告
+// Queries the security report of an Alibaba Cloud account.
 //
 // @return GetAccountSecurityPracticeReportResponse
 func (client *Client) GetAccountSecurityPracticeReport() (_result *GetAccountSecurityPracticeReportResponse, _err error) {
@@ -2336,7 +2432,7 @@ func (client *Client) GetAccountSecurityPracticeReport() (_result *GetAccountSec
 
 // Summary:
 //
-// Retrieves a summary of an Alibaba Cloud account.
+// Queries the overview information about an Alibaba Cloud account.
 //
 // @param request - GetAccountSummaryRequest
 //
@@ -2367,7 +2463,7 @@ func (client *Client) GetAccountSummaryWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// Retrieves a summary of an Alibaba Cloud account.
+// Queries the overview information about an Alibaba Cloud account.
 //
 // @return GetAccountSummaryResponse
 func (client *Client) GetAccountSummary() (_result *GetAccountSummaryResponse, _err error) {
@@ -2383,7 +2479,7 @@ func (client *Client) GetAccountSummary() (_result *GetAccountSummaryResponse, _
 
 // Summary:
 //
-// 查询指定应用密钥信息
+// Queries the details of an application secret.
 //
 // @param request - GetAppSecretRequest
 //
@@ -2431,7 +2527,7 @@ func (client *Client) GetAppSecretWithOptions(request *GetAppSecretRequest, runt
 
 // Summary:
 //
-// 查询指定应用密钥信息
+// Queries the details of an application secret.
 //
 // @param request - GetAppSecretRequest
 //
@@ -2449,11 +2545,11 @@ func (client *Client) GetAppSecret(request *GetAppSecretRequest) (_result *GetAp
 
 // Summary:
 //
-// Queries the configuration information of a specified application.
+// Queries the configuration information about an application.
 //
 // Description:
 //
-// This topic provides an example of how to query the configuration information of the application `472457090344041****`.
+// This topic provides an example on how to query the configurations of an application named `472457090344041****`.
 //
 // @param request - GetApplicationRequest
 //
@@ -2497,11 +2593,11 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 
 // Summary:
 //
-// Queries the configuration information of a specified application.
+// Queries the configuration information about an application.
 //
 // Description:
 //
-// This topic provides an example of how to query the configuration information of the application `472457090344041****`.
+// This topic provides an example on how to query the configurations of an application named `472457090344041****`.
 //
 // @param request - GetApplicationRequest
 //
@@ -2519,7 +2615,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// 查询应用安装信息
+// Queries installation information about a specified installed application.
 //
 // @param request - GetApplicationProvisionInfoRequest
 //
@@ -2563,7 +2659,7 @@ func (client *Client) GetApplicationProvisionInfoWithOptions(request *GetApplica
 
 // Summary:
 //
-// 查询应用安装信息
+// Queries installation information about a specified installed application.
 //
 // @param request - GetApplicationProvisionInfoRequest
 //
@@ -2581,7 +2677,7 @@ func (client *Client) GetApplicationProvisionInfo(request *GetApplicationProvisi
 
 // Summary:
 //
-// 查询用户凭证报告内容
+// Queries the user credential reports of an Alibaba Cloud account.
 //
 // @param request - GetCredentialReportRequest
 //
@@ -2629,7 +2725,7 @@ func (client *Client) GetCredentialReportWithOptions(request *GetCredentialRepor
 
 // Summary:
 //
-// 查询用户凭证报告内容
+// Queries the user credential reports of an Alibaba Cloud account.
 //
 // @param request - GetCredentialReportRequest
 //
@@ -2647,7 +2743,7 @@ func (client *Client) GetCredentialReport(request *GetCredentialReportRequest) (
 
 // Summary:
 //
-// 查询默认域名
+// Queries the default domain name of an Alibaba Cloud account.
 //
 // @param request - GetDefaultDomainRequest
 //
@@ -2678,7 +2774,7 @@ func (client *Client) GetDefaultDomainWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// 查询默认域名
+// Queries the default domain name of an Alibaba Cloud account.
 //
 // @return GetDefaultDomainResponse
 func (client *Client) GetDefaultDomain() (_result *GetDefaultDomainResponse, _err error) {
@@ -2694,7 +2790,7 @@ func (client *Client) GetDefaultDomain() (_result *GetDefaultDomainResponse, _er
 
 // Summary:
 //
-// 查询外部应用
+// Queries information about an installed external application.
 //
 // @param request - GetExternalApplicationRequest
 //
@@ -2738,7 +2834,7 @@ func (client *Client) GetExternalApplicationWithOptions(request *GetExternalAppl
 
 // Summary:
 //
-// 查询外部应用
+// Queries information about an installed external application.
 //
 // @param request - GetExternalApplicationRequest
 //
@@ -2756,7 +2852,7 @@ func (client *Client) GetExternalApplication(request *GetExternalApplicationRequ
 
 // Summary:
 //
-// Queries the details of a specific check item in an identity and access governance report.
+// 查询用户的单项ram治理报告
 //
 // @param request - GetGovernanceItemReportRequest
 //
@@ -2808,7 +2904,7 @@ func (client *Client) GetGovernanceItemReportWithOptions(request *GetGovernanceI
 
 // Summary:
 //
-// Queries the details of a specific check item in an identity and access governance report.
+// 查询用户的单项ram治理报告
 //
 // @param request - GetGovernanceItemReportRequest
 //
@@ -2826,7 +2922,7 @@ func (client *Client) GetGovernanceItemReport(request *GetGovernanceItemReportRe
 
 // Summary:
 //
-// Queries the status of an identity and access governance report.
+// 查询成熟度报告状态
 //
 // @param request - GetGovernanceReportStatusRequest
 //
@@ -2857,7 +2953,7 @@ func (client *Client) GetGovernanceReportStatusWithOptions(runtime *dara.Runtime
 
 // Summary:
 //
-// Queries the status of an identity and access governance report.
+// 查询成熟度报告状态
 //
 // @return GetGovernanceReportStatusResponse
 func (client *Client) GetGovernanceReportStatus() (_result *GetGovernanceReportStatusResponse, _err error) {
@@ -2873,7 +2969,7 @@ func (client *Client) GetGovernanceReportStatus() (_result *GetGovernanceReportS
 
 // Summary:
 //
-// 查询指定用户组信息
+// Queries the information about a Resource Access Management (RAM) user group.
 //
 // @param request - GetGroupRequest
 //
@@ -2917,7 +3013,7 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *dar
 
 // Summary:
 //
-// 查询指定用户组信息
+// Queries the information about a Resource Access Management (RAM) user group.
 //
 // @param request - GetGroupRequest
 //
@@ -2935,7 +3031,7 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 
 // Summary:
 //
-// Retrieves the logon information for a specified Resource Access Management (RAM) user.
+// Queries the logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -2979,7 +3075,7 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 
 // Summary:
 //
-// Retrieves the logon information for a specified Resource Access Management (RAM) user.
+// Queries the logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -2997,7 +3093,13 @@ func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result 
 
 // Summary:
 //
-// 查询OIDC身份提供商信息
+// Queries the information about an OIDC IdP.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
 //
 // @param request - GetOIDCProviderRequest
 //
@@ -3041,7 +3143,13 @@ func (client *Client) GetOIDCProviderWithOptions(request *GetOIDCProviderRequest
 
 // Summary:
 //
-// 查询OIDC身份提供商信息
+// Queries the information about an OIDC IdP.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to query the information about an OpenID Connect (OIDC) identity provider (IdP) named `TestOIDCProvider`.
 //
 // @param request - GetOIDCProviderRequest
 //
@@ -3059,7 +3167,7 @@ func (client *Client) GetOIDCProvider(request *GetOIDCProviderRequest) (_result 
 
 // Summary:
 //
-// Retrieves the password strength policy for Resource Access Management (RAM) users.
+// Queries the details of the password policy for RAM users.
 //
 // @param request - GetPasswordPolicyRequest
 //
@@ -3090,7 +3198,7 @@ func (client *Client) GetPasswordPolicyWithOptions(runtime *dara.RuntimeOptions)
 
 // Summary:
 //
-// Retrieves the password strength policy for Resource Access Management (RAM) users.
+// Queries the details of the password policy for RAM users.
 //
 // @return GetPasswordPolicyResponse
 func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _err error) {
@@ -3106,7 +3214,7 @@ func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _
 
 // Summary:
 //
-// Retrieves information about a specified SAML provider for role-based SSO.
+// Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - GetSAMLProviderRequest
 //
@@ -3150,7 +3258,7 @@ func (client *Client) GetSAMLProviderWithOptions(request *GetSAMLProviderRequest
 
 // Summary:
 //
-// Retrieves information about a specified SAML provider for role-based SSO.
+// Queries the information about an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // @param request - GetSAMLProviderRequest
 //
@@ -3168,7 +3276,7 @@ func (client *Client) GetSAMLProvider(request *GetSAMLProviderRequest) (_result 
 
 // Summary:
 //
-// Queries the global security preferences for Resource Access Management (RAM) users.
+// Queries the security preferences for RAM users.
 //
 // @param request - GetSecurityPreferenceRequest
 //
@@ -3199,7 +3307,7 @@ func (client *Client) GetSecurityPreferenceWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// Queries the global security preferences for Resource Access Management (RAM) users.
+// Queries the security preferences for RAM users.
 //
 // @return GetSecurityPreferenceResponse
 func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceResponse, _err error) {
@@ -3215,7 +3323,7 @@ func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceRes
 
 // Summary:
 //
-// 查询RAM用户的详细信息
+// Queries the information about a RAM user.
 //
 // @param request - GetUserRequest
 //
@@ -3267,7 +3375,7 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.
 
 // Summary:
 //
-// 查询RAM用户的详细信息
+// Queries the information about a RAM user.
 //
 // @param request - GetUserRequest
 //
@@ -3285,7 +3393,7 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
-// 获取回收站中的用户
+// Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
 //
 // @param request - GetUserInRecycleBinRequest
 //
@@ -3333,7 +3441,7 @@ func (client *Client) GetUserInRecycleBinWithOptions(request *GetUserInRecycleBi
 
 // Summary:
 //
-// 获取回收站中的用户
+// Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
 //
 // @param request - GetUserInRecycleBinRequest
 //
@@ -3351,7 +3459,7 @@ func (client *Client) GetUserInRecycleBin(request *GetUserInRecycleBinRequest) (
 
 // Summary:
 //
-// 查询RAM用户多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetUserMFAInfoRequest
 //
@@ -3395,7 +3503,7 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 
 // Summary:
 //
-// 查询RAM用户多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetUserMFAInfoRequest
 //
@@ -3413,7 +3521,7 @@ func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *G
 
 // Summary:
 //
-// Queries the identity provider settings for user-based SSO.
+// Queries the configurations of user-based single sign-on (SSO).
 //
 // @param request - GetUserSsoSettingsRequest
 //
@@ -3444,7 +3552,7 @@ func (client *Client) GetUserSsoSettingsWithOptions(runtime *dara.RuntimeOptions
 
 // Summary:
 //
-// Queries the identity provider settings for user-based SSO.
+// Queries the configurations of user-based single sign-on (SSO).
 //
 // @return GetUserSsoSettingsResponse
 func (client *Client) GetUserSsoSettings() (_result *GetUserSsoSettingsResponse, _err error) {
@@ -3460,7 +3568,7 @@ func (client *Client) GetUserSsoSettings() (_result *GetUserSsoSettingsResponse,
 
 // Summary:
 //
-// 获取用户安全认证的信息
+// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -3504,7 +3612,7 @@ func (client *Client) GetVerificationInfoWithOptions(request *GetVerificationInf
 
 // Summary:
 //
-// 获取用户安全认证的信息
+// Queries the status of the mobile phone or email that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetVerificationInfoRequest
 //
@@ -3522,7 +3630,7 @@ func (client *Client) GetVerificationInfo(request *GetVerificationInfoRequest) (
 
 // Summary:
 //
-// 查询主账号或RAM用户访问密钥列表
+// Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -3566,7 +3674,7 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 
 // Summary:
 //
-// 查询主账号或RAM用户访问密钥列表
+// Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -3584,7 +3692,7 @@ func (client *Client) ListAccessKeys(request *ListAccessKeysRequest) (_result *L
 
 // Summary:
 //
-// 列出回收站中访问密钥列表
+// Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
 //
 // @param request - ListAccessKeysInRecycleBinRequest
 //
@@ -3628,7 +3736,7 @@ func (client *Client) ListAccessKeysInRecycleBinWithOptions(request *ListAccessK
 
 // Summary:
 //
-// 列出回收站中访问密钥列表
+// Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
 //
 // @param request - ListAccessKeysInRecycleBinRequest
 //
@@ -3646,7 +3754,7 @@ func (client *Client) ListAccessKeysInRecycleBin(request *ListAccessKeysInRecycl
 
 // Summary:
 //
-// 查询指定应用的应用密钥ID列表
+// Queries the secret IDs of an application.
 //
 // @param request - ListAppSecretIdsRequest
 //
@@ -3690,7 +3798,7 @@ func (client *Client) ListAppSecretIdsWithOptions(request *ListAppSecretIdsReque
 
 // Summary:
 //
-// 查询指定应用的应用密钥ID列表
+// Queries the secret IDs of an application.
 //
 // @param request - ListAppSecretIdsRequest
 //
@@ -3770,11 +3878,11 @@ func (client *Client) ListApplicationProvisionInfos(request *ListApplicationProv
 
 // Summary:
 //
-// Lists the applications that you have created.
+// Lists the created applications.
 //
 // Description:
 //
-// This topic provides an example of how to query the applications in your Alibaba Cloud account. The response shows that only one application, named `myapp`, exists in the account.
+// This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
 //
 // @param request - ListApplicationsRequest
 //
@@ -3805,11 +3913,11 @@ func (client *Client) ListApplicationsWithOptions(runtime *dara.RuntimeOptions) 
 
 // Summary:
 //
-// Lists the applications that you have created.
+// Lists the created applications.
 //
 // Description:
 //
-// This topic provides an example of how to query the applications in your Alibaba Cloud account. The response shows that only one application, named `myapp`, exists in the account.
+// This topic provides an example on how to query the applications within the current account. The returned result shows that only one application named `myapp` belongs to the current account.
 //
 // @return ListApplicationsResponse
 func (client *Client) ListApplications() (_result *ListApplicationsResponse, _err error) {
@@ -3938,7 +4046,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// 查询RAM用户加入的用户组列表
+// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -3982,7 +4090,7 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 
 // Summary:
 //
-// 查询RAM用户加入的用户组列表
+// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -4000,7 +4108,13 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 
 // Summary:
 //
-// 查询OIDC身份提供商列表
+// Queries OIDC IdPs.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - ListOIDCProvidersRequest
 //
@@ -4048,7 +4162,13 @@ func (client *Client) ListOIDCProvidersWithOptions(request *ListOIDCProvidersReq
 
 // Summary:
 //
-// 查询OIDC身份提供商列表
+// Queries OIDC IdPs.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to query all OpenID Connect (OIDC) identity providers (IdPs) within your Alibaba Cloud account. The response shows that your Alibaba Cloud account has only one OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - ListOIDCProvidersRequest
 //
@@ -4066,7 +4186,7 @@ func (client *Client) ListOIDCProviders(request *ListOIDCProvidersRequest) (_res
 
 // Summary:
 //
-// 查询Passkey
+// Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
 //
 // @param request - ListPasskeysRequest
 //
@@ -4110,7 +4230,7 @@ func (client *Client) ListPasskeysWithOptions(request *ListPasskeysRequest, runt
 
 // Summary:
 //
-// 查询Passkey
+// Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
 //
 // @param request - ListPasskeysRequest
 //
@@ -4237,7 +4357,7 @@ func (client *Client) ListRecentGovernanceMetrics() (_result *ListRecentGovernan
 
 // Summary:
 //
-// 查询角色SSO身份提供商列表
+// Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
 //
 // @param request - ListSAMLProvidersRequest
 //
@@ -4285,7 +4405,7 @@ func (client *Client) ListSAMLProvidersWithOptions(request *ListSAMLProvidersReq
 
 // Summary:
 //
-// 查询角色SSO身份提供商列表
+// Queries information about identity providers (IdPs) for role-based single sign-on (SSO).
 //
 // @param request - ListSAMLProvidersRequest
 //
@@ -4303,7 +4423,19 @@ func (client *Client) ListSAMLProviders(request *ListSAMLProvidersRequest) (_res
 
 // Summary:
 //
-// 查询资源与标签的关系
+// Queries the tags that are added resources.
+//
+// Description:
+//
+// ###
+//
+// You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
+//
+//   - `ResourceId.N`
+//
+//   - `Tag.N.Key`
+//
+//   - `Tag.N.Key` and `Tag.N.Value`
 //
 // @param request - ListTagResourcesRequest
 //
@@ -4367,7 +4499,19 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查询资源与标签的关系
+// Queries the tags that are added resources.
+//
+// Description:
+//
+// ###
+//
+// You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
+//
+//   - `ResourceId.N`
+//
+//   - `Tag.N.Key`
+//
+//   - `Tag.N.Key` and `Tag.N.Value`
 //
 // @param request - ListTagResourcesRequest
 //
@@ -4391,9 +4535,9 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // You can call the following API operations to query information about all RAM users:
 //
-// - ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUserBasicInfosRequest
 //
@@ -4455,9 +4599,9 @@ func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosR
 //
 // You can call the following API operations to query information about all RAM users:
 //
-// - ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUserBasicInfosRequest
 //
@@ -4483,9 +4627,9 @@ func (client *Client) ListUserBasicInfos(request *ListUserBasicInfosRequest) (_r
 //
 // You can call the following API operations to query the details of all RAM users:
 //
-// - ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUsersRequest
 //
@@ -4549,9 +4693,9 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 //
 // You can call the following API operations to query the details of all RAM users:
 //
-// - ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUsersRequest
 //
@@ -4569,7 +4713,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// 查询用户组中用户列表
+// Queries Resource Access Management (RAM) users in a RAM user group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -4621,7 +4765,7 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 
 // Summary:
 //
-// 查询用户组中用户列表
+// Queries Resource Access Management (RAM) users in a RAM user group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -4639,7 +4783,7 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 
 // Summary:
 //
-// 查询回收站中用户列表
+// Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
 //
 // @param request - ListUsersInRecycleBinRequest
 //
@@ -4691,7 +4835,7 @@ func (client *Client) ListUsersInRecycleBinWithOptions(request *ListUsersInRecyc
 
 // Summary:
 //
-// 查询回收站中用户列表
+// Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
 //
 // @param request - ListUsersInRecycleBinRequest
 //
@@ -4775,7 +4919,7 @@ func (client *Client) ListVirtualMFADevices(request *ListVirtualMFADevicesReques
 
 // Summary:
 //
-// 安装应用
+// Installs an application.
 //
 // @param request - ProvisionApplicationRequest
 //
@@ -4823,7 +4967,7 @@ func (client *Client) ProvisionApplicationWithOptions(request *ProvisionApplicat
 
 // Summary:
 //
-// 安装应用
+// Installs an application.
 //
 // @param request - ProvisionApplicationRequest
 //
@@ -4841,7 +4985,7 @@ func (client *Client) ProvisionApplication(request *ProvisionApplicationRequest)
 
 // Summary:
 //
-// 安装外部应用
+// Installs an external application.
 //
 // @param request - ProvisionExternalApplicationRequest
 //
@@ -4889,7 +5033,7 @@ func (client *Client) ProvisionExternalApplicationWithOptions(request *Provision
 
 // Summary:
 //
-// 安装外部应用
+// Installs an external application.
 //
 // @param request - ProvisionExternalApplicationRequest
 //
@@ -4907,7 +5051,13 @@ func (client *Client) ProvisionExternalApplication(request *ProvisionExternalApp
 
 // Summary:
 //
-// 移除OIDC身份提供商中的指定客户端ID
+// Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveClientIdFromOIDCProviderRequest
 //
@@ -4955,7 +5105,13 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveC
 
 // Summary:
 //
-// 移除OIDC身份提供商中的指定客户端ID
+// Removes a client ID from an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to remove the client ID `498469743454717****` from the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveClientIdFromOIDCProviderRequest
 //
@@ -4973,7 +5129,13 @@ func (client *Client) RemoveClientIdFromOIDCProvider(request *RemoveClientIdFrom
 
 // Summary:
 //
-// 移除OIDC身份提供商中指定的验证指纹
+// Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveFingerprintFromOIDCProviderRequest
 //
@@ -5021,7 +5183,13 @@ func (client *Client) RemoveFingerprintFromOIDCProviderWithOptions(request *Remo
 
 // Summary:
 //
-// 移除OIDC身份提供商中指定的验证指纹
+// Removes a fingerprint from an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to remove the fingerprint `6938fd4d98bab03faadb97b34396831e3780****` from the OIDC IdP named `TestOIDCProvider`.
 //
 // @param request - RemoveFingerprintFromOIDCProviderRequest
 //
@@ -5039,7 +5207,7 @@ func (client *Client) RemoveFingerprintFromOIDCProvider(request *RemoveFingerpri
 
 // Summary:
 //
-// 将RAM用户从用户组中移除
+// Removes a Resource Access Management (RAM) user from a RAM user group.
 //
 // @param request - RemoveUserFromGroupRequest
 //
@@ -5087,7 +5255,7 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 
 // Summary:
 //
-// 将RAM用户从用户组中移除
+// Removes a Resource Access Management (RAM) user from a RAM user group.
 //
 // @param request - RemoveUserFromGroupRequest
 //
@@ -5105,7 +5273,7 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 
 // Summary:
 //
-// 清空回收站中的访问密钥
+// Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - RestoreAccessKeyFromRecycleBinRequest
 //
@@ -5153,7 +5321,7 @@ func (client *Client) RestoreAccessKeyFromRecycleBinWithOptions(request *Restore
 
 // Summary:
 //
-// 清空回收站中的访问密钥
+// Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - RestoreAccessKeyFromRecycleBinRequest
 //
@@ -5171,7 +5339,7 @@ func (client *Client) RestoreAccessKeyFromRecycleBin(request *RestoreAccessKeyFr
 
 // Summary:
 //
-// 清空回收站中的用户
+// Restores a specific Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - RestoreUserFromRecycleBinRequest
 //
@@ -5215,7 +5383,7 @@ func (client *Client) RestoreUserFromRecycleBinWithOptions(request *RestoreUserF
 
 // Summary:
 //
-// 清空回收站中的用户
+// Restores a specific Resource Access Management (RAM) user from the recycle bin.
 //
 // @param request - RestoreUserFromRecycleBinRequest
 //
@@ -5233,7 +5401,7 @@ func (client *Client) RestoreUserFromRecycleBin(request *RestoreUserFromRecycleB
 
 // Summary:
 //
-// 设置默认域名
+// Configures the default domain name for an Alibaba Cloud account.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -5277,7 +5445,7 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 
 // Summary:
 //
-// 设置默认域名
+// Configures the default domain name for an Alibaba Cloud account.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -5295,7 +5463,7 @@ func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_resul
 
 // Summary:
 //
-// Sets the password strength policy for RAM users.
+// Configures the password policy for Resource Access Management (RAM) users.
 //
 // @param request - SetPasswordPolicyRequest
 //
@@ -5387,7 +5555,7 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 
 // Summary:
 //
-// Sets the password strength policy for RAM users.
+// Configures the password policy for Resource Access Management (RAM) users.
 //
 // @param request - SetPasswordPolicyRequest
 //
@@ -5405,7 +5573,13 @@ func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_res
 
 // Summary:
 //
-// Configures the global security preferences for a Resource Access Management (RAM) user.
+// Configures security preferences for a RAM user.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
 //
 // @param tmpReq - SetSecurityPreferenceRequest
 //
@@ -5503,7 +5677,13 @@ func (client *Client) SetSecurityPreferenceWithOptions(tmpReq *SetSecurityPrefer
 
 // Summary:
 //
-// Configures the global security preferences for a Resource Access Management (RAM) user.
+// Configures security preferences for a RAM user.
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to enable multi-factor authentication (MFA) only for RAM users who initiated unusual logons.
 //
 // @param request - SetSecurityPreferenceRequest
 //
@@ -5521,7 +5701,7 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 
 // Summary:
 //
-// Sets the identity provider (IdP) settings for user-based single sign-on (SSO).
+// Configures information about user-based single sign-on (SSO).
 //
 // @param request - SetUserSsoSettingsRequest
 //
@@ -5581,7 +5761,7 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 
 // Summary:
 //
-// Sets the identity provider (IdP) settings for user-based single sign-on (SSO).
+// Configures information about user-based single sign-on (SSO).
 //
 // @param request - SetUserSsoSettingsRequest
 //
@@ -5599,7 +5779,7 @@ func (client *Client) SetUserSsoSettings(request *SetUserSsoSettingsRequest) (_r
 
 // Summary:
 //
-// 新增录入/修改安全手机号码、安全邮箱的API
+// Binds a mobile phone or email to a Resource Access Management (RAM) user.
 //
 // @param request - SetVerificationInfoRequest
 //
@@ -5655,7 +5835,7 @@ func (client *Client) SetVerificationInfoWithOptions(request *SetVerificationInf
 
 // Summary:
 //
-// 新增录入/修改安全手机号码、安全邮箱的API
+// Binds a mobile phone or email to a Resource Access Management (RAM) user.
 //
 // @param request - SetVerificationInfoRequest
 //
@@ -5673,7 +5853,7 @@ func (client *Client) SetVerificationInfo(request *SetVerificationInfoRequest) (
 
 // Summary:
 //
-// 资源打上标签
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -5729,7 +5909,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 资源打上标签
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -5747,7 +5927,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 为RAM用户解绑多因素认证设备
+// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -5791,7 +5971,7 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 
 // Summary:
 //
-// 为RAM用户解绑多因素认证设备
+// Unbinds a multi-factor authentication (MFA) device from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindMFADeviceRequest
 //
@@ -5809,7 +5989,7 @@ func (client *Client) UnbindMFADevice(request *UnbindMFADeviceRequest) (_result 
 
 // Summary:
 //
-// 删除用户的安全认证
+// Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindVerificationRequest
 //
@@ -5865,7 +6045,7 @@ func (client *Client) UnbindVerificationWithOptions(request *UnbindVerificationR
 
 // Summary:
 //
-// 删除用户的安全认证
+// Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
 //
 // @param request - UnbindVerificationRequest
 //
@@ -5883,7 +6063,7 @@ func (client *Client) UnbindVerification(request *UnbindVerificationRequest) (_r
 
 // Summary:
 //
-// 解绑资源的标签
+// Removes tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -5943,7 +6123,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 解绑资源的标签
+// Removes tags from a resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -5961,7 +6141,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 修改访问密钥状态
+// Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - UpdateAccessKeyRequest
 //
@@ -6013,7 +6193,7 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 
 // Summary:
 //
-// 修改访问密钥状态
+// Modifies the status of an AccessKey pair for an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - UpdateAccessKeyRequest
 //
@@ -6031,7 +6211,7 @@ func (client *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (_result 
 
 // Summary:
 //
-// Updates the configuration of a specified application.
+// Modifies the information about a specified application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -6107,7 +6287,7 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 
 // Summary:
 //
-// Updates the configuration of a specified application.
+// Modifies the information about a specified application.
 //
 // @param request - UpdateApplicationRequest
 //
@@ -6125,7 +6305,7 @@ func (client *Client) UpdateApplication(request *UpdateApplicationRequest) (_res
 
 // Summary:
 //
-// 修改指定用户组的信息
+// Modifies information about a Resource Access Management (RAM) user group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -6181,7 +6361,7 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 
 // Summary:
 //
-// 修改指定用户组的信息
+// Modifies information about a Resource Access Management (RAM) user group.
 //
 // @param request - UpdateGroupRequest
 //
@@ -6199,7 +6379,7 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 
 // Summary:
 //
-// Modifies the console logon information for a specified Resource Access Management (RAM) user.
+// Modifies the console logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - UpdateLoginProfileRequest
 //
@@ -6259,7 +6439,7 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 
 // Summary:
 //
-// Modifies the console logon information for a specified Resource Access Management (RAM) user.
+// Modifies the console logon configurations of a Resource Access Management (RAM) user.
 //
 // @param request - UpdateLoginProfileRequest
 //
@@ -6277,7 +6457,13 @@ func (client *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (_r
 
 // Summary:
 //
-// 修改OIDC身份提供商的描述和客户端ID
+// Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
 //
 // @param request - UpdateOIDCProviderRequest
 //
@@ -6333,7 +6519,13 @@ func (client *Client) UpdateOIDCProviderWithOptions(request *UpdateOIDCProviderR
 
 // Summary:
 //
-// 修改OIDC身份提供商的描述和客户端ID
+// Modifies the description and client IDs of an OpenID Connect (OIDC) identity provider (IdP).
+//
+// Description:
+//
+// ###
+//
+// This topic provides an example on how to change the description of the OIDC IdP named `TestOIDCProvider` to `This is a new OIDC Provider.`
 //
 // @param request - UpdateOIDCProviderRequest
 //
@@ -6351,7 +6543,7 @@ func (client *Client) UpdateOIDCProvider(request *UpdateOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 更新Passkey
+// Updates the name of a passkey.
 //
 // @param request - UpdatePasskeyRequest
 //
@@ -6403,7 +6595,7 @@ func (client *Client) UpdatePasskeyWithOptions(request *UpdatePasskeyRequest, ru
 
 // Summary:
 //
-// 更新Passkey
+// Updates the name of a passkey.
 //
 // @param request - UpdatePasskeyRequest
 //
@@ -6421,11 +6613,11 @@ func (client *Client) UpdatePasskey(request *UpdatePasskeyRequest) (_result *Upd
 
 // Summary:
 //
-// Updates the information about a specified identity provider for role-based single sign-on (SSO).
+// Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // Description:
 //
-// This example shows how to change the description of the identity provider `test-provider` to `This is a new provider.`.
+// This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
 //
 // @param request - UpdateSAMLProviderRequest
 //
@@ -6481,11 +6673,11 @@ func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderR
 
 // Summary:
 //
-// Updates the information about a specified identity provider for role-based single sign-on (SSO).
+// Modifies information about an identity provider (IdP) for role-based single sign-on (SSO).
 //
 // Description:
 //
-// This example shows how to change the description of the identity provider `test-provider` to `This is a new provider.`.
+// This topic provides an example on how to change the description of an IdP named `test-provider` to `This is a new provider.`
 //
 // @param request - UpdateSAMLProviderRequest
 //
@@ -6503,7 +6695,11 @@ func (client *Client) UpdateSAMLProvider(request *UpdateSAMLProviderRequest) (_r
 
 // Summary:
 //
-// 修改RAM用户信息
+// Modifies the information about a RAM user.
+//
+// Description:
+//
+// This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
 //
 // @param request - UpdateUserRequest
 //
@@ -6571,7 +6767,11 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 // Summary:
 //
-// 修改RAM用户信息
+// Modifies the information about a RAM user.
+//
+// Description:
+//
+// This topic provides an example to show how to modify the name of a RAM user from `test@example.onaliyun.com` to `new@example.onaliyun.com`.
 //
 // @param request - UpdateUserRequest
 //

@@ -18,9 +18,30 @@ type iCreateGroupRequest interface {
 }
 
 type CreateGroupRequest struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description.
+	//
+	// The description can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The display name of the RAM user group.
+	//
+	// The name can be up to 24 characters in length.
+	//
+	// example:
+	//
+	// Dev-Team
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the RAM user group. You must specify this parameter.
+	//
+	// The name can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// Dev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s CreateGroupRequest) String() string {

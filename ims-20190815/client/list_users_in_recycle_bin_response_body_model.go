@@ -20,10 +20,29 @@ type iListUsersInRecycleBinResponseBody interface {
 }
 
 type ListUsersInRecycleBinResponseBody struct {
-	IsTruncated *bool                                   `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                                 `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users       *ListUsersInRecycleBinResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3687BD52-49FD-585B-AB14-CD05B7C76963
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     *ListUsersInRecycleBinResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersInRecycleBinResponseBody) String() string {

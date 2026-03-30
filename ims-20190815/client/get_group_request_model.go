@@ -14,6 +14,11 @@ type iGetGroupRequest interface {
 }
 
 type GetGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

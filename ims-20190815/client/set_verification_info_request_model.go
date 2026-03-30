@@ -20,10 +20,38 @@ type iSetVerificationInfoRequest interface {
 }
 
 type SetVerificationInfoRequest struct {
-	Email             *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	MobilePhone       *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The email address.
+	//
+	// >  If you set `VerifyType` to `email`, you must specify this parameter.
+	//
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number.
+	//
+	// >  If you set `VerifyType` to `sms`, you must specify this parameter.
+	//
+	// example:
+	//
+	// 86-13900001234
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
-	VerifyType        *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+	// The multi-factor authentication (MFA) method. Valid values:
+	//
+	// 	- sms: mobile phone.
+	//
+	// 	- email: email.
+	//
+	// example:
+	//
+	// sms
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
 }
 
 func (s SetVerificationInfoRequest) String() string {

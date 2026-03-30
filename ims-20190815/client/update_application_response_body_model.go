@@ -16,7 +16,7 @@ type iUpdateApplicationResponseBody interface {
 }
 
 type UpdateApplicationResponseBody struct {
-	// The application information.
+	// The information about the application.
 	Application *UpdateApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// 177242285274****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// WebApp
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The time when the application was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2020-10-23T08:06:57Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The information about the permission scopes of the application.
+	// The information about the permissions that are granted on the application.
 	DelegatedScope *UpdateApplicationResponseBodyApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
 	// The display name of the application.
 	//
@@ -106,21 +106,12 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// NewApp
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Indicates whether the application can be installed by other Alibaba Cloud accounts.
+	// Indicates whether the application can be installed by using other Alibaba Cloud accounts.
 	//
 	// example:
 	//
 	// true
-	IsMultiTenant *bool `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
-	// The OAuth protocol version of the application. Valid values:
-	//
-	// - `2.0`: OAuth 2.0.
-	//
-	// - `2.1`: OAuth 2.1.
-	//
-	// example:
-	//
-	// 2.0
+	IsMultiTenant   *bool                                                 `json:"IsMultiTenant,omitempty" xml:"IsMultiTenant,omitempty"`
 	ProtocolVersion *string                                               `json:"ProtocolVersion,omitempty" xml:"ProtocolVersion,omitempty"`
 	RedirectUris    *UpdateApplicationResponseBodyApplicationRedirectUris `json:"RedirectUris,omitempty" xml:"RedirectUris,omitempty" type:"Struct"`
 	// The validity period of the refresh token. Unit: seconds.
@@ -129,13 +120,13 @@ type UpdateApplicationResponseBodyApplication struct {
 	//
 	// 7776000
 	RefreshTokenValidity *int32 `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
-	// Indicates whether an application key is required.
+	// Indicates whether a secret is required.
 	//
 	// example:
 	//
 	// true
 	SecretRequired *bool `json:"SecretRequired,omitempty" xml:"SecretRequired,omitempty"`
-	// The time when the application was updated.
+	// The update time.
 	//
 	// example:
 	//

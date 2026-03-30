@@ -18,10 +18,33 @@ type iUpdateAccessKeyRequest interface {
 }
 
 type UpdateAccessKeyRequest struct {
+	// The status of the AccessKey pair. Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Inactive
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The AccessKey ID of the AccessKey pair for which you want to modify the status.
+	//
 	// This parameter is required.
-	UserAccessKeyId   *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	//
+	// example:
+	//
+	// LTAI*******************
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// If this parameter is empty, the status of the AccessKey pair for the current user is modified.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

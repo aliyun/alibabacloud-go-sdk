@@ -16,8 +16,14 @@ type iGetAccessKeyLastUsedResponseBody interface {
 }
 
 type GetAccessKeyLastUsedResponseBody struct {
+	// The details of the time when the AccessKey pair was used for the last time.
 	AccessKeyLastUsed *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed `json:"AccessKeyLastUsed,omitempty" xml:"AccessKeyLastUsed,omitempty" type:"Struct"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B29C79F6-354B-4297-A994-1338CC22A2EC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedResponseBody) String() string {
@@ -56,8 +62,18 @@ func (s *GetAccessKeyLastUsedResponseBody) Validate() error {
 }
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
+	// The time when the AccessKey pair was used for the last time.
+	//
+	// example:
+	//
+	// 2020-10-16T01:37:37Z
 	LastUsedDate *string `json:"LastUsedDate,omitempty" xml:"LastUsedDate,omitempty"`
-	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The Alibaba Cloud service that was last accessed by using the AccessKey pair.
+	//
+	// example:
+	//
+	// Ram
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) String() string {

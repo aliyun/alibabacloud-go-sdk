@@ -16,7 +16,17 @@ type iRemoveFingerprintFromOIDCProviderRequest interface {
 }
 
 type RemoveFingerprintFromOIDCProviderRequest struct {
-	Fingerprint      *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The fingerprint that you want to remove.
+	//
+	// example:
+	//
+	// 6938fd4d98bab03faadb97b34396831e3780****
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The name of the OIDC IdP.
+	//
+	// example:
+	//
+	// TestOIDCProvider
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 

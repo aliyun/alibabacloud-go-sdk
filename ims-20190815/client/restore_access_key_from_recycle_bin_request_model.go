@@ -16,8 +16,18 @@ type iRestoreAccessKeyFromRecycleBinRequest interface {
 }
 
 type RestoreAccessKeyFromRecycleBinRequest struct {
+	// The AccessKey ID of the RAM user.
+	//
+	// example:
+	//
+	// LTAI*******************
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the Resource Access Management (RAM) user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RestoreAccessKeyFromRecycleBinRequest) String() string {

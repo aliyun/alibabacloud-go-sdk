@@ -17,7 +17,12 @@ type iListAppSecretIdsResponseBody interface {
 
 type ListAppSecretIdsResponseBody struct {
 	AppSecrets *ListAppSecretIdsResponseBodyAppSecrets `json:"AppSecrets,omitempty" xml:"AppSecrets,omitempty" type:"Struct"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 5F2FD500-7173-47D6-BD2F-EB60879B4F16
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAppSecretIdsResponseBody) String() string {

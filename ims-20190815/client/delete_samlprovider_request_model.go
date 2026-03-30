@@ -14,7 +14,13 @@ type iDeleteSAMLProviderRequest interface {
 }
 
 type DeleteSAMLProviderRequest struct {
+	// The name of the IdP that you want to delete.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 }
 

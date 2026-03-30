@@ -16,9 +16,23 @@ type iChangePasswordRequest interface {
 }
 
 type ChangePasswordRequest struct {
+	// The new password that is used to log on to the console.
+	//
+	// The password must meet the complexity requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/186691.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// newpassword
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// The old password that is used to log on to the console.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// mypassword
 	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
 }
 

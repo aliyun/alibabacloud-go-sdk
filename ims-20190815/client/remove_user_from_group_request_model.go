@@ -16,8 +16,19 @@ type iRemoveUserFromGroupRequest interface {
 }
 
 type RemoveUserFromGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Test-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The logon name of the RAM user.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alice@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

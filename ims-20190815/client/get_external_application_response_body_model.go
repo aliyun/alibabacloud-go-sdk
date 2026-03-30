@@ -16,8 +16,14 @@ type iGetExternalApplicationResponseBody interface {
 }
 
 type GetExternalApplicationResponseBody struct {
+	// The information about the external application.
 	ExternalApplication *GetExternalApplicationResponseBodyExternalApplication `json:"ExternalApplication,omitempty" xml:"ExternalApplication,omitempty" type:"Struct"`
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E4C4D1BD-2558-5BD1-8C36-A5D7FB174A55
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetExternalApplicationResponseBody) String() string {
@@ -56,13 +62,44 @@ func (s *GetExternalApplicationResponseBody) Validate() error {
 }
 
 type GetExternalApplicationResponseBodyExternalApplication struct {
-	AppPrincipalName *string                                                              `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
-	CreateDate       *string                                                              `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DelegatedScope   *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
-	DisplayName      *string                                                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	ForeignAppId     *string                                                              `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
-	TenantId         *string                                                              `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UpdateDate       *string                                                              `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+	//
+	// example:
+	//
+	// GiteePrd@app.153082740420****.onaliyun.com
+	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1737534146000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the permissions that are granted on the application.
+	DelegatedScope *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 407426893752729****
+	ForeignAppId *string `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
+	// The ID of the Alibaba Cloud account for which the application is installed.
+	//
+	// example:
+	//
+	// 173082740420****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time of the application. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1737534146000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetExternalApplicationResponseBodyExternalApplication) String() string {

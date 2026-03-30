@@ -16,7 +16,17 @@ type iDeletePasskeyRequest interface {
 }
 
 type DeletePasskeyRequest struct {
-	PasskeyId         *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// The ID of the passkey.
+	//
+	// example:
+	//
+	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
+	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

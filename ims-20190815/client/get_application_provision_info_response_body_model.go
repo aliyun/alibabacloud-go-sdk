@@ -16,8 +16,14 @@ type iGetApplicationProvisionInfoResponseBody interface {
 }
 
 type GetApplicationProvisionInfoResponseBody struct {
+	// The installation information about the application.
 	ApplicationProvisionInfo *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo `json:"ApplicationProvisionInfo,omitempty" xml:"ApplicationProvisionInfo,omitempty" type:"Struct"`
-	RequestId                *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 936E1D9C-157D-45BD-8A3B-81C0716EB078
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetApplicationProvisionInfoResponseBody) String() string {
@@ -56,13 +62,44 @@ func (s *GetApplicationProvisionInfoResponseBody) Validate() error {
 }
 
 type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
-	AccountId      *string                                                                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AppId          *string                                                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName        *string                                                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	CreateDate     *string                                                                        `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 177242285274****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 452392483381546****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// GiteePrd
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the scopes of permissions that are granted to the application.
 	DelegatedScope *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
-	DisplayName    *string                                                                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UpdateDate     *string                                                                        `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The update time. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) String() string {

@@ -17,8 +17,12 @@ type iGetSAMLProviderResponseBody interface {
 
 type GetSAMLProviderResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// BAADB995-0C7A-476D-B293-7E94568EEDFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the SAML provider.
+	// The information about the IdP.
 	SAMLProvider *GetSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
 }
 
@@ -58,23 +62,42 @@ func (s *GetSAMLProviderResponseBody) Validate() error {
 }
 
 type GetSAMLProviderResponseBodySAMLProvider struct {
-	// The Alibaba Cloud Resource Name (ARN) of the SAML provider.
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The signature algorithm supported by the Alibaba Cloud service provider (SP). Valid values:
+	// The Alibaba Cloud Resource Name (ARN) of the IdP.
 	//
-	// - rsa-sha256
+	// example:
 	//
-	// - rsa-sha1
+	// acs:ram::177242285274****:saml-provider/test-provider
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The time when the SAML provider was created.
+	// The creation time.
+	//
+	// example:
+	//
+	// 2020-10-22T02:37:05Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The Base64-encoded metadata file.
+	// The metadata file, which is Base64 encoded.
+	//
+	// example:
+	//
+	// PD94bWwgdmVy****
 	EncodedSAMLMetadataDocument *string `json:"EncodedSAMLMetadataDocument,omitempty" xml:"EncodedSAMLMetadataDocument,omitempty"`
-	// The name of the SAML provider.
+	// The name of the IdP.
+	//
+	// example:
+	//
+	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The time when the SAML provider was last updated.
+	// The update time.
+	//
+	// example:
+	//
+	// 2020-10-22T02:51:20Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 

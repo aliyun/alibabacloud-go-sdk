@@ -14,7 +14,13 @@ type iListAppSecretIdsRequest interface {
 }
 
 type ListAppSecretIdsRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 472457090344041****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

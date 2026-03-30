@@ -16,8 +16,14 @@ type iGetAccountSecurityPracticeReportResponseBody interface {
 }
 
 type GetAccountSecurityPracticeReportResponseBody struct {
+	// The information about the security report for the Alibaba Cloud account.
 	AccountSecurityPracticeInfo *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo `json:"AccountSecurityPracticeInfo,omitempty" xml:"AccountSecurityPracticeInfo,omitempty" type:"Struct"`
-	RequestId                   *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ABA822EE-85C2-4418-9577-A1831FC8466D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountSecurityPracticeReportResponseBody) String() string {
@@ -56,8 +62,14 @@ func (s *GetAccountSecurityPracticeReportResponseBody) Validate() error {
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo struct {
+	// The information about the security report for the Alibaba Cloud account.
 	AccountSecurityPracticeUserInfo *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo `json:"AccountSecurityPracticeUserInfo,omitempty" xml:"AccountSecurityPracticeUserInfo,omitempty" type:"Struct"`
-	Score                           *int32                                                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The security score of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 63
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 }
 
 func (s GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo) String() string {
@@ -96,15 +108,70 @@ func (s *GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfo
 }
 
 type GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo struct {
-	BindMfa                    *bool   `json:"BindMfa,omitempty" xml:"BindMfa,omitempty"`
-	OldAkNum                   *int32  `json:"OldAkNum,omitempty" xml:"OldAkNum,omitempty"`
-	RootWithAccessKey          *int32  `json:"RootWithAccessKey,omitempty" xml:"RootWithAccessKey,omitempty"`
-	SubUser                    *int32  `json:"SubUser,omitempty" xml:"SubUser,omitempty"`
-	SubUserBindMfa             *int32  `json:"SubUserBindMfa,omitempty" xml:"SubUserBindMfa,omitempty"`
-	SubUserPwdLevel            *string `json:"SubUserPwdLevel,omitempty" xml:"SubUserPwdLevel,omitempty"`
-	SubUserWithOldAccessKey    *int32  `json:"SubUserWithOldAccessKey,omitempty" xml:"SubUserWithOldAccessKey,omitempty"`
-	SubUserWithUnusedAccessKey *int32  `json:"SubUserWithUnusedAccessKey,omitempty" xml:"SubUserWithUnusedAccessKey,omitempty"`
-	UnusedAkNum                *int32  `json:"UnusedAkNum,omitempty" xml:"UnusedAkNum,omitempty"`
+	// Indicates whether multi-factor authentication (MFA) is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	BindMfa *bool `json:"BindMfa,omitempty" xml:"BindMfa,omitempty"`
+	// The number of old AccessKey pairs for the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 0
+	OldAkNum *int32 `json:"OldAkNum,omitempty" xml:"OldAkNum,omitempty"`
+	// The number of AccessKey pairs for the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1
+	RootWithAccessKey *int32 `json:"RootWithAccessKey,omitempty" xml:"RootWithAccessKey,omitempty"`
+	// The number of RAM users within the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 9
+	SubUser *int32 `json:"SubUser,omitempty" xml:"SubUser,omitempty"`
+	// The number of RAM users that have MFA devices bound.
+	//
+	// example:
+	//
+	// 0
+	SubUserBindMfa *int32 `json:"SubUserBindMfa,omitempty" xml:"SubUserBindMfa,omitempty"`
+	// The complexity level of the password for the RAM user. Valid values:
+	//
+	// 	- low
+	//
+	// 	- mid
+	//
+	// 	- high
+	//
+	// example:
+	//
+	// low
+	SubUserPwdLevel *string `json:"SubUserPwdLevel,omitempty" xml:"SubUserPwdLevel,omitempty"`
+	// The number of RAM users that use the old AccessKey pairs.
+	//
+	// example:
+	//
+	// 0
+	SubUserWithOldAccessKey *int32 `json:"SubUserWithOldAccessKey,omitempty" xml:"SubUserWithOldAccessKey,omitempty"`
+	// The number of Resource Access Management (RAM) users that have unused AccessKey pairs.
+	//
+	// example:
+	//
+	// 0
+	SubUserWithUnusedAccessKey *int32 `json:"SubUserWithUnusedAccessKey,omitempty" xml:"SubUserWithUnusedAccessKey,omitempty"`
+	// The number of AccessKey pairs that are not used for the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 0
+	UnusedAkNum *int32 `json:"UnusedAkNum,omitempty" xml:"UnusedAkNum,omitempty"`
 }
 
 func (s GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAccountSecurityPracticeUserInfo) String() string {

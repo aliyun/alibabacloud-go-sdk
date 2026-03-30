@@ -22,11 +22,46 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	All                   *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId            []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from the resource. Valid values:
+	//
+	// 	- true: remove all tags from the resources.
+	//
+	// 	- false (default): does not remove all tags from the resources.
+	//
+	// > This parameter takes effect only when TagKey.N is not set in the request.
+	//
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The IDs of resources.
+	//
+	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource ID is the ID of the RAM user.
+	//
+	// > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
+	//
+	// example:
+	//
+	// UntagResources
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The names of resources.
+	//
+	// Valid values of N: 1 to 50. If the ResourceType parameter is set to user, the resource name is the name of the RAM user.
+	//
+	// > You must specify only one of the following parameters: ResourceId and ResourcePrincipalName.
 	ResourcePrincipalName []*string `json:"ResourcePrincipalName,omitempty" xml:"ResourcePrincipalName,omitempty" type:"Repeated"`
-	ResourceType          *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey                []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The type of the resource. Valid value:
+	//
+	// 	- user: a RAM user
+	//
+	// example:
+	//
+	// user
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys of resources.
+	//
+	// Valid values of N: 1 to 20. N must be consecutive.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {

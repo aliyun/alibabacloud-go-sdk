@@ -17,7 +17,12 @@ type iListAccessKeysResponseBody interface {
 
 type ListAccessKeysResponseBody struct {
 	AccessKeys *ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccessKeysResponseBody) String() string {

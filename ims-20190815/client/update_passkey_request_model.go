@@ -18,8 +18,23 @@ type iUpdatePasskeyRequest interface {
 }
 
 type UpdatePasskeyRequest struct {
-	PasskeyId         *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
-	PasskeyName       *string `json:"PasskeyName,omitempty" xml:"PasskeyName,omitempty"`
+	// The ID of the passkey.
+	//
+	// example:
+	//
+	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
+	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// The name of the passkey.
+	//
+	// example:
+	//
+	// device1
+	PasskeyName *string `json:"PasskeyName,omitempty" xml:"PasskeyName,omitempty"`
+	// The logon name of the Resource Access Management (RAM) user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

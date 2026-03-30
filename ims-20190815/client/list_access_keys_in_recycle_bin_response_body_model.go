@@ -17,7 +17,12 @@ type iListAccessKeysInRecycleBinResponseBody interface {
 
 type ListAccessKeysInRecycleBinResponseBody struct {
 	AccessKeys *ListAccessKeysInRecycleBinResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccessKeysInRecycleBinResponseBody) String() string {

@@ -20,10 +20,29 @@ type iListOIDCProvidersResponseBody interface {
 }
 
 type ListOIDCProvidersResponseBody struct {
-	IsTruncated   *bool                                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
+	//
+	// example:
+	//
+	// EXAMPLE
 	Marker        *string                                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	OIDCProviders *ListOIDCProvidersResponseBodyOIDCProviders `json:"OIDCProviders,omitempty" xml:"OIDCProviders,omitempty" type:"Struct"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D2148337-B86A-57F0-8B31-EB7BE0125226
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOIDCProvidersResponseBody) String() string {

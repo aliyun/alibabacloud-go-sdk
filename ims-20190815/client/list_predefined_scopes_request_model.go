@@ -16,11 +16,11 @@ type iListPredefinedScopesRequest interface {
 type ListPredefinedScopesRequest struct {
 	// The type of the application. Valid values:
 	//
-	// - WebApp
+	// 	- WebApp
 	//
-	// - NativeApp
+	// 	- NativeApp
 	//
-	// - ServerApp
+	// 	- ServerApp
 	//
 	// If this parameter is empty, the permissions on all types of applications are queried.
 	//

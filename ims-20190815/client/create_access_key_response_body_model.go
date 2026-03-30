@@ -16,8 +16,14 @@ type iCreateAccessKeyResponseBody interface {
 }
 
 type CreateAccessKeyResponseBody struct {
+	// The information about the AccessKey pair.
 	AccessKey *CreateAccessKeyResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 19DDD9F7-AFCC-4D72-8CBA-CCE5A142E7AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBody) String() string {
@@ -56,10 +62,34 @@ func (s *CreateAccessKeyResponseBody) Validate() error {
 }
 
 type CreateAccessKeyResponseBodyAccessKey struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey ID.
+	//
+	// example:
+	//
+	// yourAccessKeyID
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret.
+	//
+	// example:
+	//
+	// yourAccessKeySecret
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the AccessKey pair was created.
+	//
+	// example:
+	//
+	// 2020-10-15T08:08:54Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The status of the AccessKey pair. Valid values:
+	//
+	// 	- Active
+	//
+	// 	- Inactive
+	//
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBodyAccessKey) String() string {

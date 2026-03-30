@@ -14,7 +14,13 @@ type iGetApplicationProvisionInfoRequest interface {
 }
 
 type GetApplicationProvisionInfoRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 452392483381546****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 }
 

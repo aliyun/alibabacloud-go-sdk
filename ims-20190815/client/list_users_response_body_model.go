@@ -22,9 +22,9 @@ type iListUsersResponseBody interface {
 type ListUsersResponseBody struct {
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// - true
+	// 	- true
 	//
-	// - false
+	// 	- false
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type CreateSAMLProviderResponseBody struct {
 	//
 	// example:
 	//
-	// E5EDDFD2-3654-4F9F-9780-4AE7D81823EF
+	// A95A763D-F6B7-5242-83EB-AB45CE67F358
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the IdP.
 	SAMLProvider *CreateSAMLProviderResponseBodySAMLProvider `json:"SAMLProvider,omitempty" xml:"SAMLProvider,omitempty" type:"Struct"`
@@ -67,36 +67,27 @@ type CreateSAMLProviderResponseBodySAMLProvider struct {
 	// example:
 	//
 	// acs:ram::177242285274****:saml-provider/test-provider
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The supported signature algorithm. Valid values:
-	//
-	// - rsa-sha256
-	//
-	// - rsa-sha1 (default)
-	//
-	// example:
-	//
-	// rsa-sha1
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
-	// The time when the information was created. It is displayed in UTC.
+	// The creation time. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-22T02:37:05Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The IdP description.
+	// The description.
 	//
 	// example:
 	//
 	// This is a provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IdP name.
+	// The name of the IdP.
 	//
 	// example:
 	//
 	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The time when the information was last updated. It is displayed in UTC.
+	// The update time. The time is displayed in UTC.
 	//
 	// example:
 	//

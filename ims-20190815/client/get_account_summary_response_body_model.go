@@ -22,7 +22,7 @@ type GetAccountSummaryResponseBody struct {
 	//
 	// 81313F5E-3C85-478F-BCC9-E1B70E4556DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The summary information of the Alibaba Cloud account.
+	// The overview information about the Alibaba Cloud account.
 	SummaryMap *GetAccountSummaryResponseBodySummaryMap `json:"SummaryMap,omitempty" xml:"SummaryMap,omitempty" type:"Struct"`
 }
 
@@ -62,79 +62,75 @@ func (s *GetAccountSummaryResponseBody) Validate() error {
 }
 
 type GetAccountSummaryResponseBodySummaryMap struct {
-	// The maximum number of AccessKey pairs that a RAM user can have.
+	// The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
 	//
 	// example:
 	//
 	// 2
-	AccessKeysPerUserQuota *int32 `json:"AccessKeysPerUserQuota,omitempty" xml:"AccessKeysPerUserQuota,omitempty"`
-	// The maximum number of AccessKeys for an Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 2
+	AccessKeysPerUserQuota           *int32 `json:"AccessKeysPerUserQuota,omitempty" xml:"AccessKeysPerUserQuota,omitempty"`
 	AccountAccessKeysPerAccountQuota *int32 `json:"AccountAccessKeysPerAccountQuota,omitempty" xml:"AccountAccessKeysPerAccountQuota,omitempty"`
-	// The maximum number of custom policies that can be attached to a user group.
+	// The maximum number of custom policies that can be added to a RAM user group.
 	//
 	// example:
 	//
 	// 5
 	AttachedPoliciesPerGroupQuota *int32 `json:"AttachedPoliciesPerGroupQuota,omitempty" xml:"AttachedPoliciesPerGroupQuota,omitempty"`
-	// The maximum number of custom policies that can be attached to a RAM role.
+	// The maximum number of custom policies that can be added to a RAM role.
 	//
 	// example:
 	//
 	// 5
 	AttachedPoliciesPerRoleQuota *int32 `json:"AttachedPoliciesPerRoleQuota,omitempty" xml:"AttachedPoliciesPerRoleQuota,omitempty"`
-	// The maximum number of custom policies that can be attached to a RAM user.
+	// The maximum number of custom policies that can be added to a RAM user.
 	//
 	// example:
 	//
 	// 10
 	AttachedPoliciesPerUserQuota *int32 `json:"AttachedPoliciesPerUserQuota,omitempty" xml:"AttachedPoliciesPerUserQuota,omitempty"`
-	// The maximum number of system policies that can be attached to a user group.
+	// The maximum number of system policies that can be added to a RAM user group.
 	//
 	// example:
 	//
 	// 20
 	AttachedSystemPoliciesPerGroupQuota *int32 `json:"AttachedSystemPoliciesPerGroupQuota,omitempty" xml:"AttachedSystemPoliciesPerGroupQuota,omitempty"`
-	// The maximum number of system policies that can be attached to a RAM role.
+	// The maximum number of system policies that can be added to a RAM role.
 	//
 	// example:
 	//
 	// 20
 	AttachedSystemPoliciesPerRoleQuota *int32 `json:"AttachedSystemPoliciesPerRoleQuota,omitempty" xml:"AttachedSystemPoliciesPerRoleQuota,omitempty"`
-	// The maximum number of system policies that can be attached to a RAM user.
+	// The maximum number of system policies that can be added to a RAM user.
 	//
 	// example:
 	//
 	// 20
 	AttachedSystemPoliciesPerUserQuota *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
-	// The maximum number of conditions that can be set in an account-level or AccessKey-level network access control policy.
+	AuthorizedClientPerUserQuota       *int32 `json:"AuthorizedClientPerUserQuota,omitempty" xml:"AuthorizedClientPerUserQuota,omitempty"`
+	// The maximum number of network access control policies that can be configured for an Alibaba Cloud account or AccessKey pair.
 	//
 	// example:
 	//
 	// 8
 	ConditionsPerAKPolicyQuota *int32 `json:"ConditionsPerAKPolicyQuota,omitempty" xml:"ConditionsPerAKPolicyQuota,omitempty"`
-	// The number of user groups.
+	// The number of RAM user groups.
 	//
 	// example:
 	//
 	// 7
 	Groups *int32 `json:"Groups,omitempty" xml:"Groups,omitempty"`
-	// The maximum number of user groups that a RAM user can join.
+	// The maximum number of RAM user groups to which a RAM user can be added.
 	//
 	// example:
 	//
 	// 5
 	GroupsPerUserQuota *int32 `json:"GroupsPerUserQuota,omitempty" xml:"GroupsPerUserQuota,omitempty"`
-	// The maximum number of user groups that can be created.
+	// The maximum number of RAM user groups that can be created.
 	//
 	// example:
 	//
 	// 50
 	GroupsQuota *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
-	// The maximum number of IP addresses that can be set in an account-level or AccessKey-level network access control policy.
+	// The maximum number of IP addresses that can be specified in an account-level AccessKey pair-based or AccessKey pair-level policy for network access control.
 	//
 	// example:
 	//
@@ -146,7 +142,7 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 13
 	MFADevices *int32 `json:"MFADevices,omitempty" xml:"MFADevices,omitempty"`
-	// The number of virtual MFA devices that are in use.
+	// The number of virtual MFA devices in use.
 	//
 	// example:
 	//
@@ -164,7 +160,7 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 1500
 	PoliciesQuota *int32 `json:"PoliciesQuota,omitempty" xml:"PoliciesQuota,omitempty"`
-	// The maximum length of a policy document.
+	// The maximum length of the policy content.
 	//
 	// example:
 	//
@@ -246,6 +242,10 @@ func (s *GetAccountSummaryResponseBodySummaryMap) GetAttachedSystemPoliciesPerRo
 
 func (s *GetAccountSummaryResponseBodySummaryMap) GetAttachedSystemPoliciesPerUserQuota() *int32 {
 	return s.AttachedSystemPoliciesPerUserQuota
+}
+
+func (s *GetAccountSummaryResponseBodySummaryMap) GetAuthorizedClientPerUserQuota() *int32 {
+	return s.AuthorizedClientPerUserQuota
 }
 
 func (s *GetAccountSummaryResponseBodySummaryMap) GetConditionsPerAKPolicyQuota() *int32 {
@@ -349,6 +349,11 @@ func (s *GetAccountSummaryResponseBodySummaryMap) SetAttachedSystemPoliciesPerRo
 
 func (s *GetAccountSummaryResponseBodySummaryMap) SetAttachedSystemPoliciesPerUserQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
 	s.AttachedSystemPoliciesPerUserQuota = &v
+	return s
+}
+
+func (s *GetAccountSummaryResponseBodySummaryMap) SetAuthorizedClientPerUserQuota(v int32) *GetAccountSummaryResponseBodySummaryMap {
+	s.AuthorizedClientPerUserQuota = &v
 	return s
 }
 

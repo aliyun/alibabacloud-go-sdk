@@ -16,8 +16,13 @@ type iListGroupsForUserResponseBody interface {
 }
 
 type ListGroupsForUserResponseBody struct {
-	Groups    *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7158A935-FB5E-49A7-8E52-FDA5B2B67247
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBody) String() string {

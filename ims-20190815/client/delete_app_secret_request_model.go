@@ -16,9 +16,21 @@ type iDeleteAppSecretRequest interface {
 }
 
 type DeleteAppSecretRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 472457090344041****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application secret.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2efd5004-005c-4f05-83c6-5b1dd176****
 	AppSecretId *string `json:"AppSecretId,omitempty" xml:"AppSecretId,omitempty"`
 }
 

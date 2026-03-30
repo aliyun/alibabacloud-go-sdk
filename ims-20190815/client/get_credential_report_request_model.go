@@ -16,7 +16,19 @@ type iGetCredentialReportRequest interface {
 }
 
 type GetCredentialReportRequest struct {
-	MaxItems  *string `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+	//
+	// Valid values: 1 to 3501. Default value: 3501.
+	//
+	// example:
+	//
+	// 1000
+	MaxItems *string `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.``
+	//
+	// example:
+	//
+	// EXAMPLE
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 

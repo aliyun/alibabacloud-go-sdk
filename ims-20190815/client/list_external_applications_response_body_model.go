@@ -23,9 +23,9 @@ type ListExternalApplicationsResponseBody struct {
 	ExternalApplications *ListExternalApplicationsResponseBodyExternalApplications `json:"ExternalApplications,omitempty" xml:"ExternalApplications,omitempty" type:"Struct"`
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// - true
+	// 	- true
 	//
-	// - false
+	// 	- false
 	//
 	// example:
 	//
@@ -33,7 +33,7 @@ type ListExternalApplicationsResponseBody struct {
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// > This parameter is returned only when `IsTruncated` is `true`.
+	// >  This parameter is returned only when `IsTruncated` is `true`.
 	//
 	// example:
 	//

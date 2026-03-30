@@ -16,7 +16,7 @@ type iSetPasswordPolicyResponseBody interface {
 }
 
 type SetPasswordPolicyResponseBody struct {
-	// The password strength policy.
+	// The details of the password policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,20 +62,15 @@ func (s *SetPasswordPolicyResponseBody) Validate() error {
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	// Indicates whether logon is prevented after the password expires.
+	// Indicates whether to disable logon after the password expires.
 	//
 	// example:
 	//
 	// false
-	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
-	// The validity period of the initial password.
-	//
-	// example:
-	//
-	// 14
+	HardExpire                 *bool  `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
 	InitialPasswordAge         *int32 `json:"InitialPasswordAge,omitempty" xml:"InitialPasswordAge,omitempty"`
 	InterceptRiskPasswordOnApi *bool  `json:"InterceptRiskPasswordOnApi,omitempty" xml:"InterceptRiskPasswordOnApi,omitempty"`
-	// The maximum number of consecutive logon failures that are allowed.
+	// The maximum number of password retries.
 	//
 	// example:
 	//
@@ -93,19 +88,19 @@ type SetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// 0
 	MinimumPasswordDifferentCharacter *int32 `json:"MinimumPasswordDifferentCharacter,omitempty" xml:"MinimumPasswordDifferentCharacter,omitempty"`
-	// The minimum length of the password.
+	// The minimum number of characters in the password.
 	//
 	// example:
 	//
 	// 8
 	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	// Prevents passwords from containing the username.
+	// Indicates whether to exclude the username from the password.
 	//
 	// example:
 	//
 	// false
 	PasswordNotContainUserName *bool `json:"PasswordNotContainUserName,omitempty" xml:"PasswordNotContainUserName,omitempty"`
-	// The number of previous passwords that cannot be reused.
+	// The policy for password history check.
 	//
 	// example:
 	//
@@ -123,7 +118,7 @@ type SetPasswordPolicyResponseBodyPasswordPolicy struct {
 	//
 	// false
 	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	// Indicates whether the password must contain symbols.
+	// Indicates whether the password must contain special characters.
 	//
 	// example:
 	//

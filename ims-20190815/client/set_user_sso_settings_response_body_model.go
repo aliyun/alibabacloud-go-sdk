@@ -17,8 +17,12 @@ type iSetUserSsoSettingsResponseBody interface {
 
 type SetUserSsoSettingsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 87F2E3F6-28A0-43F3-A77F-F7760E62F61E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user-based SSO settings.
+	// The configurations of user-based SSO.
 	UserSsoSettings *SetUserSsoSettingsResponseBodyUserSsoSettings `json:"UserSsoSettings,omitempty" xml:"UserSsoSettings,omitempty" type:"Struct"`
 }
 
@@ -58,25 +62,36 @@ func (s *SetUserSsoSettingsResponseBody) Validate() error {
 }
 
 type SetUserSsoSettingsResponseBodyUserSsoSettings struct {
-	// The signature algorithm that is supported by the Alibaba Cloud SP. Valid values:
-	//
-	// - rsa-sha256
-	//
-	// - rsa-sha1 (default)
 	AuthnSignAlgo *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	// The auxiliary domain name.
+	//
+	// example:
+	//
+	// example.com
 	AuxiliaryDomain *string `json:"AuxiliaryDomain,omitempty" xml:"AuxiliaryDomain,omitempty"`
-	// The metadata file. The file is Base64-encoded.
+	// The metadata file, which is Base64-encoded.
+	//
+	// example:
+	//
+	// PD94bWwgdmVy****
 	MetadataDocument *string `json:"MetadataDocument,omitempty" xml:"MetadataDocument,omitempty"`
 	// Indicates whether user-based SSO is enabled.
+	//
+	// example:
+	//
+	// true
 	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
-	// Indicates whether the `<saml:NameID>` element in a SAML response must contain a domain name when a user logs on using SAML-based SSO. This applies if the username that is specified on the IdP for logon matching contains a domain name suffix.
+	// Indicates whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
 	//
-	// - If this parameter is set to `true`, the value of the `<saml:NameID>` element **must*	- be in the `username@domain` format, which includes a domain name suffix. The `domain` can be the default domain name or a domain alias if one is configured.
+	// 	- If the value of the parameter is `true`, the `<saml:NameID>` element **must*	- be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
 	//
-	// - If this parameter is set to `false`, the value of the `<saml:NameID>` element **must*	- be the `username` only. The value **must not*	- contain the `domain` part.
+	// 	- If the value of the parameter is `false`, the `<saml:NameID>` element **must*	- be in the `username` format and **cannot*	- contain the `domain` suffix.
 	//
 	// The default value is `true`.
+	//
+	// example:
+	//
+	// true
 	SsoLoginWithDomain *bool `json:"SsoLoginWithDomain,omitempty" xml:"SsoLoginWithDomain,omitempty"`
 }
 

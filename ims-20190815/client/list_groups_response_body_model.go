@@ -23,9 +23,9 @@ type ListGroupsResponseBody struct {
 	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
 	// Indicates whether the response is truncated. Valid values:
 	//
-	// - true
+	// 	- true
 	//
-	// - false
+	// 	- false
 	//
 	// example:
 	//

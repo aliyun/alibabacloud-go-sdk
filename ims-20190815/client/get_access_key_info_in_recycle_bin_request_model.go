@@ -14,7 +14,13 @@ type iGetAccessKeyInfoInRecycleBinRequest interface {
 }
 
 type GetAccessKeyInfoInRecycleBinRequest struct {
+	// The AccessKey ID of the Resource Access Management (RAM) user.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// LTAI*******************
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 }
 

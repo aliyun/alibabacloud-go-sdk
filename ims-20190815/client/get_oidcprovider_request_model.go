@@ -14,6 +14,11 @@ type iGetOIDCProviderRequest interface {
 }
 
 type GetOIDCProviderRequest struct {
+	// The name of the OIDC IdP.
+	//
+	// example:
+	//
+	// TestOIDCProvider
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
 }
 

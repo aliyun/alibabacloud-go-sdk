@@ -16,8 +16,21 @@ type iProvisionExternalApplicationRequest interface {
 }
 
 type ProvisionExternalApplicationRequest struct {
+	// The ID of the application.
+	//
 	// This parameter is required.
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	//
+	// example:
+	//
+	// 403550611646604****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
+	//
+	// >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/document_detail/93693.html).
+	//
+	// example:
+	//
+	// openid;aliuid
 	Scopes *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
 }
 

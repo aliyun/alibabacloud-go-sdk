@@ -14,9 +14,13 @@ type iGetSAMLProviderRequest interface {
 }
 
 type GetSAMLProviderRequest struct {
-	// The name of the SAML provider.
+	// The name of the IdP.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// test-provider
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 }
 

@@ -20,10 +20,31 @@ type iListUsersForGroupResponseBody interface {
 }
 
 type ListUsersForGroupResponseBody struct {
-	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users       *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// >  This parameter is returned only when `IsTruncated` is `true`.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 789FF581-B3C8-43A8-9115-54304B46D05C
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Users     *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersForGroupResponseBody) String() string {

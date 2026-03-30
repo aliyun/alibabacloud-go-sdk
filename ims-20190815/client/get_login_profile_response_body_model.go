@@ -16,9 +16,9 @@ type iGetLoginProfileResponseBody interface {
 }
 
 type GetLoginProfileResponseBody struct {
-	// The logon information for the console.
+	// The console logon configurations.
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,63 +62,50 @@ func (s *GetLoginProfileResponseBody) Validate() error {
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
-	// Indicates whether console logon is automatically disabled if the user is inactive. This feature is enabled by default and cannot be disabled.
+	// Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
 	//
 	// example:
 	//
 	// true
 	AutoDisableLoginStatus *string `json:"AutoDisableLoginStatus,omitempty" xml:"AutoDisableLoginStatus,omitempty"`
-	// The time when the RAM user last logged on to the console. The time is in UTC.
+	// The time of the most recent logon. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-10-14T07:25:25Z
 	LastLoginTime *string `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
-	// Indicates whether multi-factor authentication (MFA) is required for the user. Valid values:
+	// Indicates whether multi-factor authentication (MFA) must be enabled. Valid values:
 	//
-	// - false: MFA is not required.
+	// 	- false
 	//
-	// - true: MFA is required.
+	// 	- true
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user must reset the password at the next logon. Valid values:
+	// Indicates whether the RAM user is required to reset the password upon the next logon. Valid values:
 	//
-	// - false: The RAM user is not required to reset the password.
+	// 	- false
 	//
-	// - true: The RAM user is required to reset the password.
+	// 	- true
 	//
 	// example:
 	//
 	// false
-	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The status of the initial password. An initial password is the password that is configured when you create a logon profile or re-enable console logon.
+	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	PasswordStatus        *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
+	// Indicates whether console logon is enabled. Valid values:
 	//
-	// Valid values
+	// 	- Active: enabled.
 	//
-	// - "NotInitial": The password is not an initial password.
-	//
-	// - "InitialValid": The initial password is valid.
-	//
-	// - "InitialExpired": The initial password has expired.
-	//
-	// example:
-	//
-	// NotInitial
-	PasswordStatus *string `json:"PasswordStatus,omitempty" xml:"PasswordStatus,omitempty"`
-	// The status of console logon. Valid values:
-	//
-	// - Active: Console logon is enabled.
-	//
-	// - Inactive: Console logon is disabled.
+	// 	- Inactive: disabled.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the logon profile was last updated. The time is in Coordinated Universal Time (UTC).
+	// The modification time. The time is displayed in UTC.
 	//
 	// example:
 	//

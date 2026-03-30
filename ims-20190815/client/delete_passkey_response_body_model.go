@@ -14,6 +14,11 @@ type iDeletePasskeyResponseBody interface {
 }
 
 type DeletePasskeyResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 8A1673AA-5DB3-5AFB-8758-AF9EC2889259
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
