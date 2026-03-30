@@ -15,6 +15,10 @@ type iCreateApplicationRequest interface {
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationRequest
 	GetArchitecture() *string
+	SetAuthProvider(v string) *CreateApplicationRequest
+	GetAuthProvider() *string
+	SetAuthProviderConfig(v string) *CreateApplicationRequest
+	GetAuthProviderConfig() *string
 	SetAutoAllocatePublicEip(v bool) *CreateApplicationRequest
 	GetAutoAllocatePublicEip() *bool
 	SetAutoCreatePolarFs(v bool) *CreateApplicationRequest
@@ -95,7 +99,15 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// x86
-	Architecture          *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// example:
+	//
+	// feishu
+	AuthProvider *string `json:"AuthProvider,omitempty" xml:"AuthProvider,omitempty"`
+	// example:
+	//
+	// xxx
+	AuthProviderConfig    *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
 	AutoAllocatePublicEip *bool   `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
 	AutoCreatePolarFs     *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
 	// example:
@@ -204,6 +216,14 @@ func (s *CreateApplicationRequest) GetApplicationType() *string {
 
 func (s *CreateApplicationRequest) GetArchitecture() *string {
 	return s.Architecture
+}
+
+func (s *CreateApplicationRequest) GetAuthProvider() *string {
+	return s.AuthProvider
+}
+
+func (s *CreateApplicationRequest) GetAuthProviderConfig() *string {
+	return s.AuthProviderConfig
 }
 
 func (s *CreateApplicationRequest) GetAutoAllocatePublicEip() *bool {
@@ -342,6 +362,16 @@ func (s *CreateApplicationRequest) SetApplicationType(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetArchitecture(v string) *CreateApplicationRequest {
 	s.Architecture = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAuthProvider(v string) *CreateApplicationRequest {
+	s.AuthProvider = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetAuthProviderConfig(v string) *CreateApplicationRequest {
+	s.AuthProviderConfig = &v
 	return s
 }
 

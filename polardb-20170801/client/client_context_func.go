@@ -1773,6 +1773,14 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 		query["Architecture"] = request.Architecture
 	}
 
+	if !dara.IsNil(request.AuthProvider) {
+		query["AuthProvider"] = request.AuthProvider
+	}
+
+	if !dara.IsNil(request.AuthProviderConfig) {
+		query["AuthProviderConfig"] = request.AuthProviderConfig
+	}
+
 	if !dara.IsNil(request.AutoAllocatePublicEip) {
 		query["AutoAllocatePublicEip"] = request.AutoAllocatePublicEip
 	}

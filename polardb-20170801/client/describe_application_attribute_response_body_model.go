@@ -45,6 +45,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetMinorVersion() *string
 	SetPayType(v string) *DescribeApplicationAttributeResponseBody
 	GetPayType() *string
+	SetPolarClawSaaSApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) *DescribeApplicationAttributeResponseBody
+	GetPolarClawSaaSApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute
 	SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody
 	GetPolarFSInstanceId() *string
 	SetRegionId(v string) *DescribeApplicationAttributeResponseBody
@@ -127,7 +129,8 @@ type DescribeApplicationAttributeResponseBody struct {
 	// example:
 	//
 	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType                           *string                                                                    `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
 	// example:
 	//
 	// pfs-**************
@@ -252,6 +255,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetMinorVersion() *string {
 
 func (s *DescribeApplicationAttributeResponseBody) GetPayType() *string {
 	return s.PayType
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetPolarClawSaaSApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute {
+	return s.PolarClawSaaSApplicationAttribute
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetPolarFSInstanceId() *string {
@@ -396,6 +403,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetPayType(v string) *Describ
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetPolarClawSaaSApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) *DescribeApplicationAttributeResponseBody {
+	s.PolarClawSaaSApplicationAttribute = v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody {
 	s.PolarFSInstanceId = &v
 	return s
@@ -482,6 +494,11 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 	}
 	if s.MemApplicationAttribute != nil {
 		if err := s.MemApplicationAttribute.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PolarClawSaaSApplicationAttribute != nil {
+		if err := s.PolarClawSaaSApplicationAttribute.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1044,6 +1061,31 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetUse
 }
 
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute struct {
+	AuthCallbackURL *string `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) GetAuthCallbackURL() *string {
+	return s.AuthCallbackURL
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) SetAuthCallbackURL(v string) *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute {
+	s.AuthCallbackURL = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) Validate() error {
 	return dara.Validate(s)
 }
 

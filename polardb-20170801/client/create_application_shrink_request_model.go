@@ -15,6 +15,10 @@ type iCreateApplicationShrinkRequest interface {
 	GetApplicationType() *string
 	SetArchitecture(v string) *CreateApplicationShrinkRequest
 	GetArchitecture() *string
+	SetAuthProvider(v string) *CreateApplicationShrinkRequest
+	GetAuthProvider() *string
+	SetAuthProviderConfig(v string) *CreateApplicationShrinkRequest
+	GetAuthProviderConfig() *string
 	SetAutoAllocatePublicEip(v bool) *CreateApplicationShrinkRequest
 	GetAutoAllocatePublicEip() *bool
 	SetAutoCreatePolarFs(v bool) *CreateApplicationShrinkRequest
@@ -95,7 +99,15 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// x86
-	Architecture          *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// example:
+	//
+	// feishu
+	AuthProvider *string `json:"AuthProvider,omitempty" xml:"AuthProvider,omitempty"`
+	// example:
+	//
+	// xxx
+	AuthProviderConfig    *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
 	AutoAllocatePublicEip *bool   `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
 	AutoCreatePolarFs     *bool   `json:"AutoCreatePolarFs,omitempty" xml:"AutoCreatePolarFs,omitempty"`
 	// example:
@@ -204,6 +216,14 @@ func (s *CreateApplicationShrinkRequest) GetApplicationType() *string {
 
 func (s *CreateApplicationShrinkRequest) GetArchitecture() *string {
 	return s.Architecture
+}
+
+func (s *CreateApplicationShrinkRequest) GetAuthProvider() *string {
+	return s.AuthProvider
+}
+
+func (s *CreateApplicationShrinkRequest) GetAuthProviderConfig() *string {
+	return s.AuthProviderConfig
 }
 
 func (s *CreateApplicationShrinkRequest) GetAutoAllocatePublicEip() *bool {
@@ -342,6 +362,16 @@ func (s *CreateApplicationShrinkRequest) SetApplicationType(v string) *CreateApp
 
 func (s *CreateApplicationShrinkRequest) SetArchitecture(v string) *CreateApplicationShrinkRequest {
 	s.Architecture = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetAuthProvider(v string) *CreateApplicationShrinkRequest {
+	s.AuthProvider = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetAuthProviderConfig(v string) *CreateApplicationShrinkRequest {
+	s.AuthProviderConfig = &v
 	return s
 }
 
