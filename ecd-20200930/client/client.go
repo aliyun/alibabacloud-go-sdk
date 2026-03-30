@@ -5051,6 +5051,10 @@ func (client *Client) CreateEcdReportTaskWithOptions(request *CreateEcdReportTas
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.FilterList) {
 		query["FilterList"] = request.FilterList
 	}
@@ -10486,6 +10490,10 @@ func (client *Client) DescribeDesktopInfoWithOptions(request *DescribeDesktopInf
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.DesktopId) {
 		query["DesktopId"] = request.DesktopId
 	}
@@ -11034,6 +11042,10 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 		query["AppliedScope"] = request.AppliedScope
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.CpuCount) {
 		query["CpuCount"] = request.CpuCount
 	}
@@ -11172,6 +11184,10 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -11730,6 +11746,10 @@ func (client *Client) DescribeEcdReportTasksWithOptions(request *DescribeEcdRepo
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PageNum) {
 		query["PageNum"] = request.PageNum
 	}
@@ -21763,7 +21783,7 @@ func (client *Client) ModifyNetworkPackageEnabled(request *ModifyNetworkPackageE
 
 // Summary:
 //
-// 修改全球加速配置
+// Modifies Global Accelerator (GA) configuration.
 //
 // @param request - ModifyOfficeSiteAcceleratorRequest
 //
@@ -21815,7 +21835,7 @@ func (client *Client) ModifyOfficeSiteAcceleratorWithOptions(request *ModifyOffi
 
 // Summary:
 //
-// 修改全球加速配置
+// Modifies Global Accelerator (GA) configuration.
 //
 // @param request - ModifyOfficeSiteAcceleratorRequest
 //
@@ -24508,7 +24528,7 @@ func (client *Client) RevokeCoordinatePrivilege(request *RevokeCoordinatePrivile
 
 // Summary:
 //
-// Runs a PowerShell or batch (.bat) command on one or more Windows cloud computers.
+// Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
 //
 // Description:
 //
@@ -24584,7 +24604,7 @@ func (client *Client) RunCommandWithOptions(request *RunCommandRequest, runtime 
 
 // Summary:
 //
-// Runs a PowerShell or batch (.bat) command on one or more Windows cloud computers.
+// Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
 //
 // Description:
 //

@@ -4058,6 +4058,10 @@ func (client *Client) CreateEcdReportTaskWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.FilterList) {
 		query["FilterList"] = request.FilterList
 	}
@@ -8267,6 +8271,10 @@ func (client *Client) DescribeDesktopInfoWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.DesktopId) {
 		query["DesktopId"] = request.DesktopId
 	}
@@ -8703,6 +8711,10 @@ func (client *Client) DescribeDesktopTypesWithContext(ctx context.Context, reque
 		query["AppliedScope"] = request.AppliedScope
 	}
 
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.CpuCount) {
 		query["CpuCount"] = request.CpuCount
 	}
@@ -8819,6 +8831,10 @@ func (client *Client) DescribeDesktopsWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.ChargeType) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -9287,6 +9303,10 @@ func (client *Client) DescribeEcdReportTasksWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
 	if !dara.IsNil(request.PageNum) {
 		query["PageNum"] = request.PageNum
 	}
@@ -17148,7 +17168,7 @@ func (client *Client) ModifyNetworkPackageEnabledWithContext(ctx context.Context
 
 // Summary:
 //
-// 修改全球加速配置
+// Modifies Global Accelerator (GA) configuration.
 //
 // @param request - ModifyOfficeSiteAcceleratorRequest
 //
@@ -19303,7 +19323,7 @@ func (client *Client) RevokeCoordinatePrivilegeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Runs a PowerShell or batch (.bat) command on one or more Windows cloud computers.
+// Runs a PowerShell or batch (.bat) script on Windows cloud desktops.
 //
 // Description:
 //

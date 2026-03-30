@@ -9,6 +9,8 @@ type iDescribeDesktopInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribeDesktopInfoRequest
+	GetBusinessChannel() *string
 	SetDesktopId(v []*string) *DescribeDesktopInfoRequest
 	GetDesktopId() []*string
 	SetNeedExtraInfo(v bool) *DescribeDesktopInfoRequest
@@ -18,6 +20,7 @@ type iDescribeDesktopInfoRequest interface {
 }
 
 type DescribeDesktopInfoRequest struct {
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The IDs of the cloud computers. You can specify 1 to 100 IDs.
 	DesktopId     []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	NeedExtraInfo *bool     `json:"NeedExtraInfo,omitempty" xml:"NeedExtraInfo,omitempty"`
@@ -39,6 +42,10 @@ func (s DescribeDesktopInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopInfoRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeDesktopInfoRequest) GetDesktopId() []*string {
 	return s.DesktopId
 }
@@ -49,6 +56,11 @@ func (s *DescribeDesktopInfoRequest) GetNeedExtraInfo() *bool {
 
 func (s *DescribeDesktopInfoRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribeDesktopInfoRequest) SetBusinessChannel(v string) *DescribeDesktopInfoRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeDesktopInfoRequest) SetDesktopId(v []*string) *DescribeDesktopInfoRequest {

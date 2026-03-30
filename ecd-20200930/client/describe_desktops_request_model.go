@@ -9,6 +9,8 @@ type iDescribeDesktopsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribeDesktopsRequest
+	GetBusinessChannel() *string
 	SetChargeType(v string) *DescribeDesktopsRequest
 	GetChargeType() *string
 	SetDesktopGroupId(v string) *DescribeDesktopsRequest
@@ -86,6 +88,7 @@ type iDescribeDesktopsRequest interface {
 }
 
 type DescribeDesktopsRequest struct {
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The billing method of the cloud computer.
 	//
 	// Valid values:
@@ -363,6 +366,10 @@ func (s DescribeDesktopsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDesktopsRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeDesktopsRequest) GetChargeType() *string {
 	return s.ChargeType
 }
@@ -509,6 +516,11 @@ func (s *DescribeDesktopsRequest) GetTag() []*DescribeDesktopsRequestTag {
 
 func (s *DescribeDesktopsRequest) GetUserName() *string {
 	return s.UserName
+}
+
+func (s *DescribeDesktopsRequest) SetBusinessChannel(v string) *DescribeDesktopsRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeDesktopsRequest) SetChargeType(v string) *DescribeDesktopsRequest {

@@ -11,6 +11,8 @@ type iDescribeDesktopTypesRequest interface {
 	GoString() string
 	SetAppliedScope(v string) *DescribeDesktopTypesRequest
 	GetAppliedScope() *string
+	SetBusinessChannel(v string) *DescribeDesktopTypesRequest
+	GetBusinessChannel() *string
 	SetCpuCount(v int32) *DescribeDesktopTypesRequest
 	GetCpuCount() *int32
 	SetDesktopGroupIdForModify(v string) *DescribeDesktopTypesRequest
@@ -57,7 +59,8 @@ type DescribeDesktopTypesRequest struct {
 	// example:
 	//
 	// Public
-	AppliedScope *string `json:"AppliedScope,omitempty" xml:"AppliedScope,omitempty"`
+	AppliedScope    *string `json:"AppliedScope,omitempty" xml:"AppliedScope,omitempty"`
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The number of vCPUs.
 	//
 	// example:
@@ -272,6 +275,10 @@ func (s *DescribeDesktopTypesRequest) GetAppliedScope() *string {
 	return s.AppliedScope
 }
 
+func (s *DescribeDesktopTypesRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeDesktopTypesRequest) GetCpuCount() *int32 {
 	return s.CpuCount
 }
@@ -350,6 +357,11 @@ func (s *DescribeDesktopTypesRequest) GetZoneId() *string {
 
 func (s *DescribeDesktopTypesRequest) SetAppliedScope(v string) *DescribeDesktopTypesRequest {
 	s.AppliedScope = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetBusinessChannel(v string) *DescribeDesktopTypesRequest {
+	s.BusinessChannel = &v
 	return s
 }
 

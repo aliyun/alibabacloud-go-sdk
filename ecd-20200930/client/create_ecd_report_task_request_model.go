@@ -9,6 +9,8 @@ type iCreateEcdReportTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *CreateEcdReportTaskRequest
+	GetBusinessChannel() *string
 	SetFilterList(v []*CreateEcdReportTaskRequestFilterList) *CreateEcdReportTaskRequest
 	GetFilterList() []*CreateEcdReportTaskRequestFilterList
 	SetLangType(v string) *CreateEcdReportTaskRequest
@@ -22,6 +24,7 @@ type iCreateEcdReportTaskRequest interface {
 }
 
 type CreateEcdReportTaskRequest struct {
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The filter conditions for filtering query results. The logical relationship between each filter condition is "and" (&). Each filter condition contains FilterKey and FilterValues, which indicate the key and value for the filter condition.
 	FilterList []*CreateEcdReportTaskRequestFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
 	// The language of the report. An enumerated type.
@@ -72,6 +75,10 @@ func (s CreateEcdReportTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateEcdReportTaskRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *CreateEcdReportTaskRequest) GetFilterList() []*CreateEcdReportTaskRequestFilterList {
 	return s.FilterList
 }
@@ -90,6 +97,11 @@ func (s *CreateEcdReportTaskRequest) GetSubType() *string {
 
 func (s *CreateEcdReportTaskRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *CreateEcdReportTaskRequest) SetBusinessChannel(v string) *CreateEcdReportTaskRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *CreateEcdReportTaskRequest) SetFilterList(v []*CreateEcdReportTaskRequestFilterList) *CreateEcdReportTaskRequest {

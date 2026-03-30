@@ -9,6 +9,8 @@ type iDescribeEcdReportTasksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessChannel(v string) *DescribeEcdReportTasksRequest
+	GetBusinessChannel() *string
 	SetPageNum(v int32) *DescribeEcdReportTasksRequest
 	GetPageNum() *int32
 	SetPageSize(v int32) *DescribeEcdReportTasksRequest
@@ -24,6 +26,7 @@ type iDescribeEcdReportTasksRequest interface {
 }
 
 type DescribeEcdReportTasksRequest struct {
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	//
 	// example:
@@ -86,6 +89,10 @@ func (s DescribeEcdReportTasksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeEcdReportTasksRequest) GetBusinessChannel() *string {
+	return s.BusinessChannel
+}
+
 func (s *DescribeEcdReportTasksRequest) GetPageNum() *int32 {
 	return s.PageNum
 }
@@ -108,6 +115,11 @@ func (s *DescribeEcdReportTasksRequest) GetTaskId() *string {
 
 func (s *DescribeEcdReportTasksRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *DescribeEcdReportTasksRequest) SetBusinessChannel(v string) *DescribeEcdReportTasksRequest {
+	s.BusinessChannel = &v
+	return s
 }
 
 func (s *DescribeEcdReportTasksRequest) SetPageNum(v int32) *DescribeEcdReportTasksRequest {
