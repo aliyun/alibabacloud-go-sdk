@@ -1666,6 +1666,10 @@ func (client *Client) CreateCloudAccountWithContext(ctx context.Context, request
 		query["CloudAccountProviderName"] = request.CloudAccountProviderName
 	}
 
+	if !dara.IsNil(request.CloudAccountSite) {
+		query["CloudAccountSite"] = request.CloudAccountSite
+	}
+
 	if !dara.IsNil(request.CloudAccountVendorType) {
 		query["CloudAccountVendorType"] = request.CloudAccountVendorType
 	}

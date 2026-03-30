@@ -17,6 +17,8 @@ type iCreateCloudAccountRequest interface {
 	GetCloudAccountName() *string
 	SetCloudAccountProviderName(v string) *CreateCloudAccountRequest
 	GetCloudAccountProviderName() *string
+	SetCloudAccountSite(v string) *CreateCloudAccountRequest
+	GetCloudAccountSite() *string
 	SetCloudAccountVendorType(v string) *CreateCloudAccountRequest
 	GetCloudAccountVendorType() *string
 	SetDescription(v string) *CreateCloudAccountRequest
@@ -52,6 +54,7 @@ type CreateCloudAccountRequest struct {
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
+	CloudAccountSite         *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
 	// 云账号类型
 	//
 	// This parameter is required.
@@ -96,6 +99,10 @@ func (s *CreateCloudAccountRequest) GetCloudAccountProviderName() *string {
 	return s.CloudAccountProviderName
 }
 
+func (s *CreateCloudAccountRequest) GetCloudAccountSite() *string {
+	return s.CloudAccountSite
+}
+
 func (s *CreateCloudAccountRequest) GetCloudAccountVendorType() *string {
 	return s.CloudAccountVendorType
 }
@@ -125,6 +132,11 @@ func (s *CreateCloudAccountRequest) SetCloudAccountName(v string) *CreateCloudAc
 
 func (s *CreateCloudAccountRequest) SetCloudAccountProviderName(v string) *CreateCloudAccountRequest {
 	s.CloudAccountProviderName = &v
+	return s
+}
+
+func (s *CreateCloudAccountRequest) SetCloudAccountSite(v string) *CreateCloudAccountRequest {
+	s.CloudAccountSite = &v
 	return s
 }
 

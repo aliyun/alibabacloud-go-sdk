@@ -2223,6 +2223,10 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 		query["CloudAccountProviderName"] = request.CloudAccountProviderName
 	}
 
+	if !dara.IsNil(request.CloudAccountSite) {
+		query["CloudAccountSite"] = request.CloudAccountSite
+	}
+
 	if !dara.IsNil(request.CloudAccountVendorType) {
 		query["CloudAccountVendorType"] = request.CloudAccountVendorType
 	}
