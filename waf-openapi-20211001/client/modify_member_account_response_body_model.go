@@ -18,7 +18,7 @@ type ModifyMemberAccountResponseBody struct {
 	//
 	// example:
 	//
-	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

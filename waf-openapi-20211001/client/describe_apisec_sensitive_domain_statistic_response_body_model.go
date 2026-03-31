@@ -83,13 +83,13 @@ func (s *DescribeApisecSensitiveDomainStatisticResponseBody) Validate() error {
 }
 
 type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
-	// The number of APIs involved.
+	// The number of APIs that are involved.
 	//
 	// example:
 	//
 	// 10
 	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
-	// The number of sites involved.
+	// The number of sites that are involved.
 	//
 	// example:
 	//
@@ -97,29 +97,29 @@ type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
 	// The code of the sensitive data.
 	//
-	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
 	// 10
 	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
-	// The sensitivity level of the API. Valid values:
+	// The sensitivity level of the sensitive data.Valid values:
 	//
-	// - **S1**: Low sensitivity.
+	// 	- **S1**: low sensitivity.
 	//
-	// - **S2**: Medium sensitivity.
+	// 	- **S2**: moderate sensitivity.
 	//
-	// - **S3**: High sensitivity.
+	// 	- **S3**: high sensitivity.
 	//
 	// example:
 	//
-	// S3
+	// L3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The data name of the sensitive data.
+	// The name of the sensitive data.
 	//
 	// example:
 	//
-	// 自定义敏感类型。
+	// 1002
 	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
 }
 

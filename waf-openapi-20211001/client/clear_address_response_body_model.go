@@ -14,8 +14,6 @@ type iClearAddressResponseBody interface {
 }
 
 type ClearAddressResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 276D7566-31C9-4192-9DD1-51B10D*****

@@ -24,7 +24,7 @@ type iDeleteMemberAccountRequest interface {
 type DeleteMemberAccountRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DeleteMemberAccountRequest struct {
 	//
 	// waf_esasdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the member account that you want to delete from WAF.
+	// The Alibaba Cloud account ID of the managed member.
 	//
 	// This parameter is required.
 	//
@@ -40,23 +40,23 @@ type DeleteMemberAccountRequest struct {
 	//
 	// 131***********39
 	MemberAccountId *string `json:"MemberAccountId,omitempty" xml:"MemberAccountId,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the WAF instance belongs.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
+	// The source IP address of the request. The system automatically obtains the value of this parameter.
 	//
 	// example:
 	//

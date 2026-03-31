@@ -22,34 +22,17 @@ type iDescribeLogDeliveryConfigsResponseBody interface {
 }
 
 type DescribeLogDeliveryConfigsResponseBody struct {
-	// The log delivery configurations.
+	// The information about the log delivery configuration.
 	DeliveryConfigs []*DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs `json:"DeliveryConfigs,omitempty" xml:"DeliveryConfigs,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
-	//
-	// example:
-	//
-	// 20
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
-	//
-	// > If this parameter is not empty, more results are available. Use the value of **NextToken*	- in the next request to retrieve the next page of results. If the value is empty, all results have been returned.
-	//
-	// example:
-	//
-	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	MaxResults      *int32                                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of log delivery configurations returned.
-	//
-	// example:
-	//
-	// 5
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLogDeliveryConfigsResponseBody) String() string {
@@ -119,31 +102,9 @@ func (s *DescribeLogDeliveryConfigsResponseBody) Validate() error {
 }
 
 type DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs struct {
-	// The details of the log delivery configuration, returned as a JSON string.
+	// The content of the log delivery configuration. The value is a JSON string that contains multiple parameters.
 	//
-	// > The structure of this parameter is the same as the **DeliveryDetail*	- request parameter of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "rfcVersion": "rfc3164",
-	//
-	//   "protocol": "tcp",
-	//
-	//   "servers": [
-	//
-	//     {
-	//
-	//       "address": "1.1.1.1",
-	//
-	//       "port": 20
-	//
-	//     }
-	//
-	//   ]
-	//
-	// }
+	// >  This parameter is the same as the **DeliveryDetail*	- parameter of the **CreateLogDeliveryConfig*	- operation. For more information, see **Parameter description for log delivery configuration*	- of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
 	DeliveryDetail *string `json:"DeliveryDetail,omitempty" xml:"DeliveryDetail,omitempty"`
 	// The name of the log delivery configuration.
 	//
@@ -153,13 +114,13 @@ type DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs struct {
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
 	// The type of the log delivery configuration. Valid values:
 	//
-	// - **syslog**: Log delivery to a syslog server.
+	// 	- **syslog**: Logs are delivered to a syslog service.
 	//
-	// - **kafka**: Log delivery to a Kafka cluster.
+	// 	- **kafka**: Logs are delivered to a Kafka service.
 	//
 	// example:
 	//
-	// syslog
+	// kafka
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 }
 

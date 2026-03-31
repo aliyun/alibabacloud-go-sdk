@@ -18,9 +18,9 @@ type iCreatePostpaidInstanceRequest interface {
 type CreatePostpaidInstanceRequest struct {
 	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

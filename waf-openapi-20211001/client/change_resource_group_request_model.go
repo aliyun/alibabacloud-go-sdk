@@ -22,7 +22,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the destination resource group.
+	// The ID of the new resource group. You can view the available resource groups in the Resource Management console.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-aek2mcq***
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the protected object.
+	// The ID of the protected object that you want to manage.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ChangeResourceGroupRequest struct {
 	//
 	// demo.aliyun.com-waf
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the resource group to which the WAF instance belongs.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the resource. Set the value to **defenseresource**.
+	// The resource type. Set the value to defenseresource.
 	//
 	// This parameter is required.
 	//

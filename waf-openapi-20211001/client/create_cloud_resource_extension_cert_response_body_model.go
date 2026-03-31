@@ -14,7 +14,7 @@ type iCreateCloudResourceExtensionCertResponseBody interface {
 }
 
 type CreateCloudResourceExtensionCertResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

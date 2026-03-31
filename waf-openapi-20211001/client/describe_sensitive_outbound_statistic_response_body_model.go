@@ -18,15 +18,15 @@ type iDescribeSensitiveOutboundStatisticResponseBody interface {
 }
 
 type DescribeSensitiveOutboundStatisticResponseBody struct {
-	// The list of statistics on outbound transfers of personal information.
+	// The data types of personal information involved in cross-border data transfer.
 	Data []*DescribeSensitiveOutboundStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned for outbound transfer statistics.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,31 +83,31 @@ func (s *DescribeSensitiveOutboundStatisticResponseBody) Validate() error {
 }
 
 type DescribeSensitiveOutboundStatisticResponseBodyData struct {
-	// The assessment result. Valid values:
+	// The evaluation result. Valid values:
 	//
-	// - **report**: a data outbound transfer threat exists.
+	// 	- **report**: Risks exist in cross-border data transfer.
 	//
-	// - **none**: no data outbound transfer threat exists.
+	// 	- **none**: No risks exist in cross-border data transfer.
 	//
 	// example:
 	//
 	// report
 	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
-	// The total number of personal information data entries detected.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 546
 	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
-	// The number of outbound transfer data entries for the sensitive data type.
+	// The number of data entries that are transferred across borders.
 	//
 	// example:
 	//
 	// 300
 	OutboundCount *int64 `json:"OutboundCount,omitempty" xml:"OutboundCount,omitempty"`
-	// The code that represents the type of sensitive data.
+	// The type of the sensitive data.
 	//
-	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported sensitive data types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
 	//
 	// example:
 	//
@@ -115,21 +115,21 @@ type DescribeSensitiveOutboundStatisticResponseBodyData struct {
 	SensitiveCode *int64 `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
 	// The sensitivity level. Valid values:
 	//
-	// - **high**: high.
+	// 	- **high**
 	//
-	// - **medium**: medium.
+	// 	- **medium**
 	//
-	// - **low**: low.
+	// 	- **low**
 	//
 	// example:
 	//
 	// high
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The type of information. Valid values:
+	// The type of the information. Valid values:
 	//
-	// - **info**: all personal information.
+	// 	- **info**: full personal information
 	//
-	// - **sensitive**: only sensitive personal information.
+	// 	- **sensitive**: sensitive personal information
 	//
 	// example:
 	//

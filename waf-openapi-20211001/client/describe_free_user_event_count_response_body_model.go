@@ -16,7 +16,7 @@ type iDescribeFreeUserEventCountResponseBody interface {
 }
 
 type DescribeFreeUserEventCountResponseBody struct {
-	// The information about security events detected by basic API security checks.
+	// The information about the security events that are detected by using the basic detection feature.
 	Event *DescribeFreeUserEventCountResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,7 +80,7 @@ type DescribeFreeUserEventCountResponseBodyEvent struct {
 	//
 	// 3
 	EventMedium *int64 `json:"EventMedium,omitempty" xml:"EventMedium,omitempty"`
-	// The total number of API security events.
+	// The total number of security events.
 	//
 	// example:
 	//

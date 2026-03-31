@@ -16,9 +16,9 @@ type iDescribePeakTrendResponseBody interface {
 }
 
 type DescribePeakTrendResponseBody struct {
-	// The QPS statistics of WAF.
+	// An array of the QPS statistics of the WAF instance.
 	FlowChart []*DescribePeakTrendResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribePeakTrendResponseBody) Validate() error {
 }
 
 type DescribePeakTrendResponseBodyFlowChart struct {
-	// The number of requests protected by the ACL module. This includes requests that are monitored and blocked.
+	// The number of requests that are monitored or blocked by the custom rule (access control) module.
 	//
 	// example:
 	//
 	// 0
 	AclSum *int64 `json:"AclSum,omitempty" xml:"AclSum,omitempty"`
-	// The number of requests protected by the scan protection module. This includes requests that are monitored and blocked.
+	// The number of requests that are monitored or blocked by the scan protection module.
 	//
 	// example:
 	//
 	// 0
 	AntiScanSum *int64 `json:"AntiScanSum,omitempty" xml:"AntiScanSum,omitempty"`
-	// The number of requests protected by the CC protection module. This includes requests that are monitored and blocked.
+	// The number of requests that are monitored or blocked by the HTTP flood protection module.
 	//
 	// example:
 	//
@@ -90,13 +90,13 @@ type DescribePeakTrendResponseBodyFlowChart struct {
 	//
 	// 2622
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ordinal number for the time point, sorted in chronological order.
+	// The serial number of the time interval. The serial numbers are arranged in chronological order.
 	//
 	// example:
 	//
 	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The number of requests protected by the web attack protection module. This includes requests that are monitored and blocked.
+	// The number of requests that are monitored or blocked by the regular expression protection engine.
 	//
 	// example:
 	//

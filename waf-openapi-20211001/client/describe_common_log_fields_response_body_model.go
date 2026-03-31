@@ -18,16 +18,11 @@ type iDescribeCommonLogFieldsResponseBody interface {
 }
 
 type DescribeCommonLogFieldsResponseBody struct {
-	// The list of log fields returned.
 	LogFieldList []*DescribeCommonLogFieldsResponseBodyLogFieldList `json:"LogFieldList,omitempty" xml:"LogFieldList,omitempty" type:"Repeated"`
-	// The request ID.
-	//
 	// example:
 	//
 	// AB0775EB-2594-598A-97E1-51B1*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of log fields returned.
-	//
 	// example:
 	//
 	// 6
@@ -83,44 +78,18 @@ func (s *DescribeCommonLogFieldsResponseBody) Validate() error {
 }
 
 type DescribeCommonLogFieldsResponseBodyLogFieldList struct {
-	// Indicates whether the log field is a default field.
-	//
-	// - **true**: The log field is a default field.
-	//
-	// - **false**: The log field is not a default field.
-	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the log field is required.
-	//
-	// - **true**: The log field is required.
-	//
-	// - **false**: The log field is not required.
-	//
 	// example:
 	//
 	// true
 	IsRequired *bool `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
-	// The name of the log field.
-	//
-	// > For more information about the log fields, see [**Log field descriptions**](https://help.aliyun.com/zh/waf/web-application-firewall-3-0/user-guide/fields-in-logs?spm=openapi-amp.newDocPublishment.0.0.ccef281fNAb0XR).
-	//
 	// example:
 	//
 	// final_action
 	LogKey *string `json:"LogKey,omitempty" xml:"LogKey,omitempty"`
-	// The status of the log field. Valid values:
-	//
-	// - **0**: offline.
-	//
-	// - **1**: online or in use.
-	//
-	// - **2**: about to be unpublished.
-	//
-	// - **3**: about to be published.
-	//
 	// example:
 	//
 	// 1

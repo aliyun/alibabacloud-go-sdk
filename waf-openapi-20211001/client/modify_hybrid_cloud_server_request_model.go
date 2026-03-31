@@ -28,7 +28,7 @@ type iModifyHybridCloudServerRequest interface {
 }
 
 type ModifyHybridCloudServerRequest struct {
-	// The continent where the hybrid cloud node resides.
+	// The continent.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// asiapacific
 	Continents *string `json:"Continents,omitempty" xml:"Continents,omitempty"`
-	// The custom name of the hybrid cloud node.
+	// The name of the node.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 节点名称
+	// demo
 	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the hybrid cloud node.
+	// The ID of the node.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// b1bf3f544f30c1de0b72d91290**ccb
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The cloud service provider of the hybrid cloud node. Example: aliyun.
+	// The cloud service provider.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// aliyun
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The region code of the city where the hybrid cloud node resides.
+	// The city.
 	//
 	// This parameter is required.
 	//
@@ -78,11 +78,11 @@ type ModifyHybridCloudServerRequest struct {
 	//
 	// beijing
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//

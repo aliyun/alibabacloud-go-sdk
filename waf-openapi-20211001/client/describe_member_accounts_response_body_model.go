@@ -16,13 +16,13 @@ type iDescribeMemberAccountsResponseBody interface {
 }
 
 type DescribeMemberAccountsResponseBody struct {
-	// The information about the member accounts.
+	// The information about the member.
 	AccountInfos []*DescribeMemberAccountsResponseBodyAccountInfos `json:"AccountInfos,omitempty" xml:"AccountInfos,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 50C4A80D-D46C-57E0-9A7D-03C078474852
+	// 50C4A80D-D46C-57E0-9A7D-03C0****4852
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -66,37 +66,37 @@ func (s *DescribeMemberAccountsResponseBody) Validate() error {
 }
 
 type DescribeMemberAccountsResponseBodyAccountInfos struct {
-	// The ID of the member account.
+	// The ID of the member.
 	//
 	// example:
 	//
 	// 169************21
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account.
+	// The name of the member.
 	//
 	// example:
 	//
 	// ipflgmqqnbjg
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The status of the member account. Valid values:
+	// The status of the member.
 	//
-	// - **enabled**: The member account is being managed.
+	// 	- **enabled**: managed.
 	//
-	// - **disabled**: The member account is not being managed.
+	// 	- **disabled**: not managed.
 	//
-	// - **disabling**: The member account is being removed from management.
+	// 	- **disabling**: being deleted.
 	//
 	// example:
 	//
 	// enabled
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The description of the member account.
+	// The description of the member.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the member account was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the member was added.
 	//
 	// example:
 	//

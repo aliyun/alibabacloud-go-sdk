@@ -24,9 +24,9 @@ type DescribeSecurityEventTimeSeriesMetricResponseBody struct {
 	//
 	// D827FCFE-90A7-4330-9326-*****4C7726
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned time series data. The operation can return time series data for multiple values.
+	// The time series data returned. This operation can return time series for multiple metrics.
 	SecurityEventTimeSeries []*DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries `json:"SecurityEventTimeSeries,omitempty" xml:"SecurityEventTimeSeries,omitempty" type:"Repeated"`
-	// The metadata of the returned data.
+	// The metadata of the time series data returned.
 	TimeSeriesMetaData *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData `json:"TimeSeriesMetaData,omitempty" xml:"TimeSeriesMetaData,omitempty" type:"Struct"`
 }
 
@@ -84,15 +84,15 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) Validate() error {
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries struct {
-	// The content of the returned data. This is consistent with the \\`Metric\\` request parameter.
+	// The metric. This value is the same as the value of Metric in the request parameters.
 	//
 	// example:
 	//
 	// monitored_requests
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The time series. Each point represents the start time of a time range.
+	// The time points. Each point represents a time range.
 	Timestamps []*string `json:"Timestamps,omitempty" xml:"Timestamps,omitempty" type:"Repeated"`
-	// The data series. Each point represents the statistical count within a specific time range.
+	// The data points. Each point represents a count for a time range.
 	Values []*int64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -136,15 +136,15 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSerie
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData struct {
-	// The time granularity of each data point in the returned time series data. For example, "15m" indicates that each returned data point represents statistics for a 15-minute interval. For more information about the time granularity of the returned data, see the Time granularity of time series data points section.
+	// The time granularity of data points in the time series data returned. For example, a value of 15m indicates that data points are collected at 15-minute intervals. For more information about time granularities, see the **Time granularities of data points in time series*	- section below.
 	//
 	// example:
 	//
 	// 1m
 	AggregateInterval *string `json:"AggregateInterval,omitempty" xml:"AggregateInterval,omitempty"`
-	// The time range used for the query.
+	// The time range that is used for the query.
 	DateRange *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
-	// The unit of the returned statistical data.
+	// The unit of the statistics returned. It is fixed as requests.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) Va
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {
-	// The end time of the query. This is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
+	// The end of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start time of the query. This is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
+	// The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iModifyLogDeliveryConfigResponseBody interface {
 }
 
 type ModifyLogDeliveryConfigResponseBody struct {
-	// The name of the log delivery configuration that was modified.
+	// The name of the log delivery configuration.
 	//
 	// example:
 	//

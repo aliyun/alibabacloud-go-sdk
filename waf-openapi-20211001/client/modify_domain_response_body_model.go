@@ -16,13 +16,13 @@ type iModifyDomainResponseBody interface {
 }
 
 type ModifyDomainResponseBody struct {
-	// The information about the modified domain name.
+	// The information about the domain name.
 	DomainInfo *ModifyDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// D7861F61-5B61-46CE-A47C-6B19160D****
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -68,7 +68,7 @@ type ModifyDomainResponseBodyDomainInfo struct {
 	//
 	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The domain name whose configurations are modified.
+	// The domain name whose access configurations you modified.
 	//
 	// example:
 	//

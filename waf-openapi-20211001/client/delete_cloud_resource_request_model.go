@@ -26,17 +26,10 @@ type iDeleteCloudResourceRequest interface {
 }
 
 type DeleteCloudResourceRequest struct {
-	// The ID of the protected resource. WAF automatically generates this ID when you add the cloud service to WAF.
-	//
-	// > Call [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) to add a resource and then view the resource ID in the response.
-	//
-	// example:
-	//
-	// lb-****py9kcm2n6nuesiu2a-80-clb4
 	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of your WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +39,17 @@ type DeleteCloudResourceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Deprecated
 	//
-	// The port of the cloud service that is added to WAF.
+	// The port of the resource that is added to WAF.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +59,7 @@ type DeleteCloudResourceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Deprecated
 	//
-	// The ID of the cloud service instance.
+	// The ID of the instance.
 	//
 	// example:
 	//
@@ -80,15 +73,13 @@ type DeleteCloudResourceRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The type of the cloud service. Valid values:
+	// The cloud service. Valid values:
 	//
-	// - **clb4**: Layer 4 CLB.
+	// 	- **clb4**: Layer 4 CLB.
 	//
-	// - **clb7**: Layer 7 CLB.
+	// 	- **clb7**: Layer 7 CLB.
 	//
-	// - **ecs**: ECS.
-	//
-	// - **nlb**: Network Load Balancer (NLB).
+	// 	- **ecs**: ECS.
 	//
 	// example:
 	//

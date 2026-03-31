@@ -16,13 +16,13 @@ type iDescribeResourceSupportRegionsResponseBody interface {
 }
 
 type DescribeResourceSupportRegionsResponseBody struct {
-	// Indicates the request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 58FDF266-3D56-5DE8-91E0-96A26BAB****
+	// 58FD****-3D56-5DE8-91E0-96A26BABFFDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of region IDs supported by transparent proxy mode.
+	// An array of region IDs of the CLB and ECS instances that are added to WAF in cloud native mode.
 	SupportRegions []*string `json:"SupportRegions,omitempty" xml:"SupportRegions,omitempty" type:"Repeated"`
 }
 

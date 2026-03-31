@@ -22,7 +22,7 @@ type iDescribeCloudResourceAccessedPortsRequest interface {
 type DescribeCloudResourceAccessedPortsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type DescribeCloudResourceAccessedPortsRequest struct {
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

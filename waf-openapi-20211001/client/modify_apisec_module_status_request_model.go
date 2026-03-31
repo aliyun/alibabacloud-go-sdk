@@ -28,7 +28,7 @@ type iModifyApisecModuleStatusRequest interface {
 type ModifyApisecModuleStatusRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,27 +36,27 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm**
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether to enable the compliance review feature. Valid values:
+	// The status of the compliance check feature. Valid values:
 	//
-	// - **1**: enabled.
+	// 	- **1**: enabled
 	//
-	// - **0**: disabled.
+	// 	- **0**: disabled
 	//
 	// example:
 	//
 	// 1
 	ReportStatus *int64 `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The name of the protected object group for which you want to modify the API security module status.
+	// The name of the protected object group to which the protected object belongs.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type ModifyApisecModuleStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The name of the protected object for which you want to modify the API security module status.
+	// The name of the protected object.
 	//
 	// example:
 	//
 	// cwaf-***-waf
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// Indicates whether to enable the traceability audit feature. Valid values:
+	// The status of the tracing and auditing feature. Valid values:
 	//
-	// - **1**: enabled.
+	// 	- **1**: enabled
 	//
-	// - **0**: disabled.
+	// 	- **0**: disabled
 	//
 	// example:
 	//

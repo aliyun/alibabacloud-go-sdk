@@ -28,60 +28,38 @@ type iDescribeThreatEventRequest interface {
 }
 
 type DescribeThreatEventRequest struct {
-	// The domain name that is protected by WAF. If you do not specify this parameter, security events for all domain names are queried.
-	//
 	// example:
 	//
 	// www.abc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp in milliseconds.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1749916800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
-	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-2bl4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the page to return. Default value: 1.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **5**. Valid values: 1 to 200.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: a region outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-aeky65ka*****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp in milliseconds.
-	//
 	// This parameter is required.
 	//
 	// example:

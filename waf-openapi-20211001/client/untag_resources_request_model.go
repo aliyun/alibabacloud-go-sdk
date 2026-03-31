@@ -24,9 +24,9 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified resource groups or members. Valid values:
 	//
-	// - false (default)
+	// 	- false (default)
 	//
-	// - true
+	// 	- true
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//

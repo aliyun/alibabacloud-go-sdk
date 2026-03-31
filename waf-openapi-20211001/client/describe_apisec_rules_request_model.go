@@ -34,9 +34,9 @@ type iDescribeApisecRulesRequest interface {
 }
 
 type DescribeApisecRulesRequest struct {
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,113 +44,104 @@ type DescribeApisecRulesRequest struct {
 	//
 	// waf_elasticity-cn-0x***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response. Valid values:
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The level of the policy.
 	//
-	// - **zh*	- (default): Chinese
+	// If Type is set to risk or event, you can set this parameter to one of the following values:
 	//
-	// - **en**: English
+	// 	- **high**
 	//
-	// example:
+	// 	- **medium**
 	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The level of the rule.
+	// 	- **low**
 	//
-	// For threat detection (risk) and security events (event), valid values are:
+	// If Type is set to sensitive_word, you can set this parameter to one of the following values:
 	//
-	// - **high**: important
+	// 	- **S1**
 	//
-	// - **medium**: medium
+	// 	- **S2**
 	//
-	// - **low**: low
+	// 	- **S3**
 	//
-	// For sensitive data (sensitive_word), valid values are:
-	//
-	// - **S1**: S1
-	//
-	// - **S2**: S2
-	//
-	// - **S3**: S3
-	//
-	// - **S4**: S4
+	// 	- **S4**
 	//
 	// example:
 	//
 	// high
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the rule.
+	// The name of the policy.
 	//
 	// example:
 	//
-	// information leakage
+	// Information Leak
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The source of the rule. Valid values:
+	// The source of the policy. Valid values:
 	//
-	// - **custom**: custom
+	// 	- **custom**
 	//
-	// - **default**: built-in
+	// 	- **default**
 	//
 	// example:
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland
+	// 	- **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The enabling status of the rule. Valid values:
+	// The status of the policy. Valid values:
 	//
-	// - **1**: enabled
+	// 	- **1**: enabled
 	//
-	// - **0**: disabled
+	// 	- **0**: disabled
 	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the rule. Valid values:
+	// The type of the policy. Valid values:
 	//
-	// - **risk**: threat detection
+	// 	- **risk**: risk detection
 	//
-	// - **event**: security event
+	// 	- **event**: security event
 	//
-	// - **sensitive_word**: sensitive data
+	// 	- **sensitive_word**: sensitive data
 	//
-	// - **auth_flag**: authentication credential
+	// 	- **auth_flag**: authentication credential
 	//
-	// - **api_tag**: business purpose
+	// 	- **api_tag**: business purpose
 	//
-	// - **desensitization**: data masking
+	// 	- **desensitization**: masking
 	//
-	// - **whitelist**: whitelist
+	// 	- **whitelist**: whitelist
 	//
-	// - **recognition**: API
+	// 	- **recognition**: API recognition
 	//
-	// - **offline_api**: lifecycle management
+	// 	- **offline_api**: lifecycle management
 	//
 	// This parameter is required.
 	//

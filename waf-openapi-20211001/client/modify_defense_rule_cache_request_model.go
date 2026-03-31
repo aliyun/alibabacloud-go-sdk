@@ -24,7 +24,7 @@ type iModifyDefenseRuleCacheRequest interface {
 type ModifyDefenseRuleCacheRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,17 +32,17 @@ type ModifyDefenseRuleCacheRequest struct {
 	//
 	// waf_v3prepaid_public_cn-zvp****xm2r
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifyDefenseRuleCacheRequest struct {
 	//
 	// example:
 	//
-	// 123
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 

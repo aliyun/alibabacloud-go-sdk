@@ -26,7 +26,7 @@ type iModifyApisecApiResourceRequest interface {
 }
 
 type ModifyApisecApiResourceRequest struct {
-	// The ID of the API asset that you want to modify.
+	// The ID of the API.
 	//
 	// This parameter is required.
 	//
@@ -36,25 +36,25 @@ type ModifyApisecApiResourceRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter is required only for hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the ID of the hybrid cloud cluster.
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Indicates whether to follow the API asset. Valid values:
+	// Specifies whether to follow the API. Valid values:
 	//
-	// - **1**: follows the API asset.
+	// 	- **1**: yes
 	//
-	// - **0*	- (default): does not follow the API asset.
+	// 	- **0*	- (default): no
 	//
 	// example:
 	//
 	// 0
 	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -62,23 +62,23 @@ type ModifyApisecApiResourceRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The remarks of the API asset. You can use this parameter to add a custom annotation to the API asset for easier identification.
+	// The remarks.
 	//
 	// example:
 	//
 	// know
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

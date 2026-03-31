@@ -22,23 +22,23 @@ type iDeleteDomainRequest interface {
 }
 
 type DeleteDomainRequest struct {
-	// The access type of the WAF instance. Valid values:
+	// The mode in which the domain name is added to WAF. Valid values:
 	//
-	// - **share*	- (default): CNAME access.
+	// 	- **share:*	- CNAME record mode. This is the default value.
 	//
-	// - **hybrid_cloud_cname**: Hybrid cloud reverse proxy access.
+	// 	- **hybrid_cloud_cname:*	- hybrid cloud reverse proxy mode.
 	//
 	// example:
 	//
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The domain name that is added to WAF.
+	// The domain name that you want to delete.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The domain ID.
+	// The ID of the domain name.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteDomainRequest struct {
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type DeleteDomainRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//

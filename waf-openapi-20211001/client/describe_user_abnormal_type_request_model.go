@@ -28,21 +28,21 @@ type iDescribeUserAbnormalTypeRequest interface {
 type DescribeUserAbnormalTypeRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the IDs of hybrid cloud clusters.
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
 	//
 	// example:
 	//
 	// 993
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify the time as a UNIX timestamp in seconds. The time is in UTC.
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1726113600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type DescribeUserAbnormalTypeRequest struct {
 	//
 	// waf_v2_public_cn-g4***201
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
@@ -66,15 +66,12 @@ type DescribeUserAbnormalTypeRequest struct {
 	//
 	// rg-ac***lani
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify the time as a UNIX timestamp in seconds. The time is in UTC.
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1723435200
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The list of risk states for which to collect statistics.
-	//
-	// > By default, statistics are collected for risks in the **toBeConfirmed**, **toBeFixed**, **toBeVerified**, and **notFixed*	- states.
+	StartTime      *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	UserStatusList []*string `json:"UserStatusList,omitempty" xml:"UserStatusList,omitempty" type:"Repeated"`
 }
 

@@ -36,7 +36,7 @@ type CreateMajorProtectionBlackIpRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
-	// > If you set this parameter to **0**, the IP address blacklist is permanently valid.
+	// >  If you set the parameter to **0**, the IP address blacklist is always valid.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// waf_v3prepaid_public_cn-2r42s6y****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address blacklist to add. You can specify custom IP addresses or CIDR blocks. Both IPv4 and IPv6 addresses are supported. Separate multiple IP addresses with commas (,). For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
+	// The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
 	//
 	// This parameter is required.
 	//
@@ -60,23 +60,23 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// 192.0.XX.XX,192.0.XX.XX/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: regions outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the IP address blacklist rule for critical event protection.
+	// The ID of the IP address blacklist rule for major event protection.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateMajorProtectionBlackIpRequest struct {
 	//
 	// 232324
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the protection template for critical event protection.
+	// The ID of the IP address blacklist rule template for major event protection.
 	//
 	// This parameter is required.
 	//

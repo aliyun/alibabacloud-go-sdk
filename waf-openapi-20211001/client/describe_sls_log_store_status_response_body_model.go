@@ -18,15 +18,15 @@ type iDescribeSlsLogStoreStatusResponseBody interface {
 type DescribeSlsLogStoreStatusResponseBody struct {
 	// Indicates whether a Logstore is created for WAF. Valid values:
 	//
-	// - **true**: A Logstore is created.
+	// 	- **true**
 	//
-	// - **false**: No Logstore is created.
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	ExistStatus *bool `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
-	// The request ID
+	// The request ID.
 	//
 	// example:
 	//

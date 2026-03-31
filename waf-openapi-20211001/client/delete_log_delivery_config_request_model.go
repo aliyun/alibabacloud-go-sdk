@@ -20,36 +20,22 @@ type iDeleteLogDeliveryConfigRequest interface {
 }
 
 type DeleteLogDeliveryConfigRequest struct {
-	// The name of the log delivery configuration.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test1
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
-	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-n6w***x52m
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q

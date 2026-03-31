@@ -14,7 +14,7 @@ type iDeleteCloudResourceResponseBody interface {
 }
 
 type DeleteCloudResourceResponseBody struct {
-	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,13 +16,10 @@ type iDescribeDomainUsedPortsResponseBody interface {
 }
 
 type DescribeDomainUsedPortsResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// D7861F61-5B61-*-A47C-*
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The used ports.
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UsedPorts []*int32 `json:"UsedPorts,omitempty" xml:"UsedPorts,omitempty" type:"Repeated"`
 }
 

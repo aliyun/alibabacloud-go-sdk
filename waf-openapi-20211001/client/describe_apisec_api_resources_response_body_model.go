@@ -18,7 +18,7 @@ type iDescribeApisecApiResourcesResponseBody interface {
 }
 
 type DescribeApisecApiResourcesResponseBody struct {
-	// The list of API assets.
+	// The API assets.
 	Data []*DescribeApisecApiResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeApisecApiResourcesResponseBody struct {
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,25 +83,23 @@ func (s *DescribeApisecApiResourcesResponseBody) Validate() error {
 }
 
 type DescribeApisecApiResourcesResponseBodyData struct {
-	// The number of threats associated with the API.
+	// The number of API-related risks.
 	//
 	// example:
 	//
 	// 2
 	AbnormalNum *int64 `json:"AbnormalNum,omitempty" xml:"AbnormalNum,omitempty"`
-	// The number of account security events associated with the API.
-	//
 	// example:
 	//
 	// 1
 	AccountEventNum *int64 `json:"AccountEventNum,omitempty" xml:"AccountEventNum,omitempty"`
-	// The total number of requests in the last 30 days.
+	// The total number of calls to this API in the previous 30 days.
 	//
 	// example:
 	//
-	// 1683388800
+	// 10
 	AllCnt *int64 `json:"AllCnt,omitempty" xml:"AllCnt,omitempty"`
-	// The API endpoint path.
+	// The API.
 	//
 	// example:
 	//
@@ -111,43 +109,57 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 197b52abcd81d6a8bd4***e477
+	// 867ade***24ee6e205b8da82b8f84
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The detailed information about the API. The value is a JSON string that contains the following fields:
+	// The API-related information. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
 	//
-	// - **param_num**: the number of API parameters.
+	// 	- **param_num**: the number of API parameters
 	//
-	// - **request_method**: the request method.
+	// 	- **request_method**: the request method
 	//
-	// - **protocol**: the request protocol.
+	// 	- **protocol**: the request protocol
 	//
-	// - **api_url**: the request URL.
+	// 	- **api_url**: the request URL
 	//
-	// - **poc_payload**: the request.
+	// 	- **poc_payload**: the request
 	//
-	// - **request**: the request sample.
+	// 	- **request**: the sample request
 	//
-	// - **response**: the response sample.
+	// 	- **response**: the sample response
 	//
-	// - **param**: the request parameters.
-	//
-	// > This parameter is returned only when you specify the **ApiId*	- request parameter.
+	// 	- **param**: the request parameters
 	ApiInfo *string `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty"`
-	// The HTTP request method of the API. Valid values: **GET**, **POST**, **HEAD**, **PUT**, **DELETE**, **CONNECT**, **PATCH**, and **OPTIONS**.
+	// The request method of the API. Valid values:
+	//
+	// 	- **GET**
+	//
+	// 	- **POST**
+	//
+	// 	- **HEAD**
+	//
+	// 	- **PUT**
+	//
+	// 	- **DELETE**
+	//
+	// 	- **CONNECT**
+	//
+	// 	- **PATCH**
+	//
+	// 	- **OPTIONS**
 	//
 	// example:
 	//
 	// POST
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// The sensitive data classification of the API. The value is a JSON string that contains the following fields:
+	// The API-related sensitive information. The value of this parameter is a JSON string that contains multiple parameters. The value includes the following parameters:
 	//
-	// - **request_sensitive_list**: the list of sensitive data types in the request.
+	// 	- **request_sensitive_list**: the sensitive data type in the request
 	//
-	// - **response_sensitive_list**: the list of sensitive data types in the response.
+	// 	- **response_sensitive_list**: the sensitive data type in the response
 	//
-	// - **sensitive_list**: the list of sensitive data types.
+	// 	- **sensitive_list**: sensitive data types
 	//
-	// - **sensitive_level**: the sensitivity level.
+	// 	- **sensitive_level**: sensitivity level
 	//
 	// example:
 	//
@@ -163,25 +175,25 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// }
 	ApiSensitive *string `json:"ApiSensitive,omitempty" xml:"ApiSensitive,omitempty"`
-	// The types of sensitive data detected in the API request. The value is a JSON array of sensitive data type IDs.
+	// The sensitive data type in the request.
 	//
 	// example:
 	//
 	// ["1002","1005"]
 	ApiSensitiveRequest *string `json:"ApiSensitiveRequest,omitempty" xml:"ApiSensitiveRequest,omitempty"`
-	// The types of sensitive data detected in the API response. The value is a JSON array of sensitive data type IDs.
+	// The sensitive data type in the response.
 	//
 	// example:
 	//
 	// ["1002","1005"]
 	ApiSensitiveResponse *string `json:"ApiSensitiveResponse,omitempty" xml:"ApiSensitiveResponse,omitempty"`
-	// The lifecycle status of the API. Valid values:
+	// The API status. Valid values:
 	//
-	// - **NewbornInterface**: newly discovered.
+	// 	- **NewbornInterface**: The API is newly added.
 	//
-	// - **OfflineInterface**: inactive.
+	// 	- **OfflineInterface**: The API is inactive.
 	//
-	// - **normal**: active.
+	// 	- **normal**: The API is normal.
 	//
 	// example:
 	//
@@ -189,47 +201,47 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported business purposes.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The type of service that the API serves. Valid values:
+	// The service object. Valid values:
 	//
-	// - **PublicAPI**: public-facing service.
+	// 	- **PublicAPI**: public services
 	//
-	// - **ThirdpartAPI**: third-party service.
+	// 	- **ThirdpartAPI**: cooperation with third-party partners
 	//
-	// - **InternalAPI**: internal service.
+	// 	- **InternalAPI**: internal office
 	//
 	// example:
 	//
 	// PublicAPI
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	// Indicates whether the API requires authentication. Valid values:
+	// Indicates whether authentication is required. Valid values:
 	//
-	// - **0**: The API requires authentication.
+	// 	- **0**: Authentication is required.
 	//
-	// - **1**: The API does not require authentication.
+	// 	- **1**: Authentication is not required.
 	//
 	// example:
 	//
 	// 1
 	AuthFlag *string `json:"AuthFlag,omitempty" xml:"AuthFlag,omitempty"`
-	// The number of bot requests in the last 30 days.
+	// The number of bot-initiated requests in the previous 30 days.
 	//
 	// example:
 	//
 	// 2
 	BotCnt *int64 `json:"BotCnt,omitempty" xml:"BotCnt,omitempty"`
-	// The number of cross-border requests in the last 30 days.
+	// The number of the cross-border requests in the previous 30 days.
 	//
 	// example:
 	//
 	// 2
 	CrossBorderCnt *int64 `json:"CrossBorderCnt,omitempty" xml:"CrossBorderCnt,omitempty"`
-	// The number of security events associated with the API.
+	// The number of API-related security events.
 	//
 	// example:
 	//
@@ -237,43 +249,43 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
 	// Deprecated
 	//
-	// The list of API samples.
+	// The sample APIs.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
-	// The time when the API was first discovered. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the API asset was first detected. This value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683388800
 	FarthestTs *int64 `json:"FarthestTs,omitempty" xml:"FarthestTs,omitempty"`
-	// Indicates whether the API is followed. Valid values:
+	// Specifies whether to follow the API. Valid values:
 	//
-	// - **1**: The API is followed.
+	// 	- **1**: follows the API.
 	//
-	// - **0**: The API is not followed.
+	// 	- **0**: does not follow the API.
 	//
 	// example:
 	//
 	// 1
 	Follow *int32 `json:"Follow,omitempty" xml:"Follow,omitempty"`
-	// The time of the most recent access to the API. The value is a UNIX timestamp. Unit: seconds.
+	// The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683388800
 	LastestTs *int64 `json:"LastestTs,omitempty" xml:"LastestTs,omitempty"`
-	// The domain name or IP address that the API resides on.
+	// The domain name or IP address of the API.
 	//
 	// example:
 	//
 	// a.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The remarks of the API asset.
+	// The remarks.
 	//
 	// example:
 	//
-	// loginApi
+	// Password changed
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The list of protected objects associated with the API.
+	// The list of protection objects corresponding to this asset.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 

@@ -18,7 +18,7 @@ type iDescribeApisecProtectionGroupsResponseBody interface {
 }
 
 type DescribeApisecProtectionGroupsResponseBody struct {
-	// The list of protected object groups.
+	// The protected object groups.
 	Data []*DescribeApisecProtectionGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,13 +83,13 @@ func (s *DescribeApisecProtectionGroupsResponseBody) Validate() error {
 }
 
 type DescribeApisecProtectionGroupsResponseBodyData struct {
-	// The master switch for API security.
+	// The switch of the API security module.
 	//
 	// example:
 	//
 	// 1
 	ApisecStatus *int64 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
-	// The compliance check switch.
+	// The switch of the compliance check feature.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeApisecProtectionGroupsResponseBodyData struct {
 	//
 	// group1
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The traceability audit switch.
+	// The switch of the tracing and auditing feature.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeResourcePortResponseBody interface {
 }
 
 type DescribeResourcePortResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// All HTTP and HTTPS listener ports that are added to WAF.
+	// An array of HTTP and HTTPS listener ports that are added to the WAF instance.
 	ResourcePorts []*string `json:"ResourcePorts,omitempty" xml:"ResourcePorts,omitempty" type:"Repeated"`
 }
 

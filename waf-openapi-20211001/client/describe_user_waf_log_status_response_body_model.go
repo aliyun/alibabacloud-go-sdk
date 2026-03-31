@@ -20,45 +20,45 @@ type iDescribeUserWafLogStatusResponseBody interface {
 }
 
 type DescribeUserWafLogStatusResponseBody struct {
-	// The ID of the region where logs are stored. Valid values:
+	// The ID of the region where WAF logs are stored. Valid values:
 	//
-	// - **cn-hangzhou**: indicates China East 1 (Hangzhou).
+	// 	- **cn-hangzhou**: China (Hangzhou).
 	//
-	// - **cn-beijing**: indicates China North 2 (Beijing).
+	// 	- **cn-beijing**: China (Beijing).
 	//
-	// - **cn-hongkong**: indicates China (Hong Kong).
+	// 	- **cn-hongkong**: China (Hong Kong).
 	//
-	// - **ap-southeast-1**: indicates Singapore.
+	// 	- **ap-southeast-1**: Singapore.
 	//
-	// - **ap-southeast-3**: indicates Malaysia (Kuala Lumpur).
+	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
 	//
-	// - **ap-southeast-5**: indicates Indonesia (Jakarta).
+	// 	- **ap-southeast-5**: Indonesia (Jakarta).
 	//
-	// - **ap-southeast-6**: indicates Philippines (Manila).
+	// 	- **ap-southeast-6**: Philippines (Manila).
 	//
-	// - **ap-southeast-7**: indicates Thailand (Bangkok).
+	// 	- **ap-southeast-7**: Thailand (Bangkok).
 	//
-	// - **me-east-1**: indicates UAE (Dubai).
+	// 	- **me-east-1**: UAE (Dubai).
 	//
-	// - **eu-central-1**: indicates Germany (Frankfurt).
+	// 	- **eu-central-1**: Germany (Frankfurt).
 	//
-	// - **us-east-1**: indicates US (Virginia).
+	// 	- **us-east-1**: US (Virginia).
 	//
-	// - **us-west-1**: indicates US (Silicon Valley).
+	// 	- **us-west-1**: US (Silicon Valley).
 	//
-	// - **ap-northeast-1**: indicates Japan (Tokyo).
+	// 	- **ap-northeast-1**: Japan (Tokyo).
 	//
-	// - **ap-northeast-2**: indicates South Korea (Seoul).
+	// 	- **ap-northeast-2**: South Korea (Seoul).
 	//
-	// - **eu-west-1**: indicates UK (London).
+	// 	- **eu-west-1**: UK (London).
 	//
-	// - **cn-hangzhou-finance**: indicates China East 1 Hangzhou Finance Cloud.
+	// 	- **cn-hangzhou-finance**: China East 1 Finance.
 	//
-	// - **cn-shanghai-finance-1**: indicates China East 2 Shanghai Finance Cloud.
+	// 	- **cn-shanghai-finance-1**: China East 2 Finance.
 	//
-	// - **cn-shenzhen-finance**: indicates China South 1 Shenzhen Finance Cloud.
+	// 	- **cn-shenzhen-finance**: China South 1 Finance.
 	//
-	// > The Finance Cloud regions are available only to Finance Cloud users, and Finance Cloud users can obtain only these regions.
+	// >  The China East 1 Finance, China East 2 Finance, and China South 1 Finance regions are available only for Alibaba Finance Cloud users. Alibaba Finance Cloud users are also limited to storing logs within these specific regions.
 	//
 	// example:
 	//
@@ -66,25 +66,25 @@ type DescribeUserWafLogStatusResponseBody struct {
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
 	// The status of WAF logs.
 	//
-	// - **initializing**: The logs are being initialized.
+	// 	- **initializing**
 	//
-	// - **initialize_failed**: The initialization failed.
+	// 	- **initialize_failed**
 	//
-	// - **normal**: The logs are running properly.
+	// 	- **normal**
 	//
-	// - **releasing**: The logs are being released.
+	// 	- **releasing**
 	//
-	// - **release_failed**: The release failed.
+	// 	- **release_failed**
 	//
 	// example:
 	//
 	// normal
 	LogStatus *string `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID.
 	//
 	// example:
 	//
-	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	// D7861F61-5B61-46CE-A47C-6B19160D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time when the log status was modified. Unit: milliseconds.
 	//

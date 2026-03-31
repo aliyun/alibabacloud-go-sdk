@@ -26,29 +26,23 @@ type iDeleteApisecEventsRequest interface {
 type DeleteApisecEventsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter is available only in hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to query information about hybrid cloud clusters.
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A list of API security event IDs.
+	// The IDs of the security events.
 	//
 	// This parameter is required.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
-	// The dimension of the security event. Valid values:
-	//
-	// - **ip**: IP address dimension.
-	//
-	// - **account**: account dimension.
-	//
 	// example:
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +50,17 @@ type DeleteApisecEventsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-g4t*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: regions outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//

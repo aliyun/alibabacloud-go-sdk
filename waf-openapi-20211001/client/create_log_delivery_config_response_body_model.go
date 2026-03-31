@@ -22,7 +22,7 @@ type CreateLogDeliveryConfigResponseBody struct {
 	//
 	// test1
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

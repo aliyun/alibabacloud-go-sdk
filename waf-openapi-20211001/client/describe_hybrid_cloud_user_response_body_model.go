@@ -16,13 +16,13 @@ type iDescribeHybridCloudUserResponseBody interface {
 }
 
 type DescribeHybridCloudUserResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9178CB86-285F-5679-A30A-3B3F007E4206
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the available HTTP and HTTPS port ranges for hybrid cloud access.
+	// The information about the ports that can be used by a hybrid cloud cluster.
 	UserInfo *DescribeHybridCloudUserResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *DescribeHybridCloudUserResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudUserResponseBodyUserInfo struct {
-	// The available HTTP ports. The value is a string. If multiple ports are returned, they are separated by commas (,). Example: **port1,port2,port3**.
+	// The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
 	//
 	// example:
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The available HTTPS ports. The value is a string. If multiple ports are returned, they are separated by commas (,). Example: **port1,port2,port3**.
+	// The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
 	//
 	// example:
 	//

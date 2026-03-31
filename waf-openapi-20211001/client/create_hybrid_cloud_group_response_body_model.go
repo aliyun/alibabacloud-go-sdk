@@ -16,13 +16,13 @@ type iCreateHybridCloudGroupResponseBody interface {
 }
 
 type CreateHybridCloudGroupResponseBody struct {
-	// The ID of the created node group.
+	// The ID of the node group.
 	//
 	// example:
 	//
 	// 1
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

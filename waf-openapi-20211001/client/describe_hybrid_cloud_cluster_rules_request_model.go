@@ -30,74 +30,42 @@ type iDescribeHybridCloudClusterRulesRequest interface {
 }
 
 type DescribeHybridCloudClusterRulesRequest struct {
-	// The ID of the hybrid cloud cluster.
-	//
-	// > This parameter is available only for hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about hybrid cloud clusters.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3prepaid_public_cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Default value: **1**.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The prefix of the rule value to match.
-	//
 	// example:
 	//
 	// 1.1.1.1
 	RuleContent *string `json:"RuleContent,omitempty" xml:"RuleContent,omitempty"`
-	// The matching logic. Valid values:
-	//
-	// - exact: exact match
-	//
-	// - regex: regular expression match
-	//
 	// example:
 	//
 	// exact
 	RuleMatchType *string `json:"RuleMatchType,omitempty" xml:"RuleMatchType,omitempty"`
-	// The type of the rule. Valid value:
-	//
-	// - **pullin**: traffic redirection
-	//
 	// This parameter is required.
 	//
 	// example:

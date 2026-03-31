@@ -32,7 +32,7 @@ type iDescribeCloudResourceAccessPortDetailsRequest interface {
 type DescribeCloudResourceAccessPortDetailsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,27 +58,27 @@ type DescribeCloudResourceAccessPortDetailsRequest struct {
 	//
 	// 443
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol. Valid values:
+	// The type of the protocol. Valid values:
 	//
-	// - **http**: HTTP.
+	// 	- **http**
 	//
-	// - **https**: HTTPS.
+	// 	- **https**
 	//
 	// example:
 	//
 	// https
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource instance.
+	// The instance ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -86,21 +86,19 @@ type DescribeCloudResourceAccessPortDetailsRequest struct {
 	//
 	// lb-2zeugkfj81jvo****4tqm
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of the cloud service. Valid values:
+	// The cloud service. Valid values:
 	//
-	// - **clb4**: Layer 4 Classic Load Balancer (CLB).
+	// 	- **clb4**: Layer 4 CLB.
 	//
-	// - **clb7**: Layer 7 CLB.
+	// 	- **clb7**: Layer 7 CLB.
 	//
-	// - **ecs**: Elastic Compute Service (ECS).
-	//
-	// - **nlb**: Network Load Balancer (NLB).
+	// 	- **ecs**: ECS.
 	//
 	// example:
 	//

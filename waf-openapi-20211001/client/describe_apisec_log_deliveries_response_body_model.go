@@ -18,7 +18,7 @@ type iDescribeApisecLogDeliveriesResponseBody interface {
 type DescribeApisecLogDeliveriesResponseBody struct {
 	// The configurations of API security log subscription.
 	DeliveryConfigs []*DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs `json:"DeliveryConfigs,omitempty" xml:"DeliveryConfigs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ func (s *DescribeApisecLogDeliveriesResponseBody) Validate() error {
 type DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs struct {
 	// The type of the log subscription. Valid values:
 	//
-	// - **risk**: risk information.
+	// 	- **risk**: risk information.
 	//
-	// - **event**: attack event information.
+	// 	- **event**: attack event information.
 	//
-	// - **asset**: asset information.
+	// 	- **asset**: asset information.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The status of API security log subscription. Valid values:
 	//
-	// - **true**: enabled.
+	// 	- **true**: enabled.
 	//
-	// - **false**: disabled.
+	// 	- **false**: disabled.
 	//
 	// example:
 	//

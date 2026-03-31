@@ -20,7 +20,7 @@ type iDescribeCertDetailRequest interface {
 }
 
 type DescribeCertDetailRequest struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeCertDetailRequest struct {
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type DescribeCertDetailRequest struct {
 	//
 	// waf_v3prepaid_public_cn-uax****3k0e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: indicates the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: indicates regions outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

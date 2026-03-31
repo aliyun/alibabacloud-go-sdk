@@ -16,13 +16,13 @@ type iCreateDomainResponseBody interface {
 }
 
 type CreateDomainResponseBody struct {
-	// The details of the added domain name.
+	// The information about the domain name that is added.
 	DomainInfo *CreateDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
+	// D7861F61-5B61-46CE-A47C-6B19160D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -62,19 +62,19 @@ func (s *CreateDomainResponseBody) Validate() error {
 }
 
 type CreateDomainResponseBodyDomainInfo struct {
-	// The CNAME assigned by WAF to the domain name.
+	// The CNAME that is assigned by WAF to the domain name.
 	//
 	// example:
 	//
 	// xxxxxwww.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The domain name that is onboarded to WAF.
+	// The domain name that you added to WAF.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the domain name.
+	// The name of the protected object that is generated.
 	//
 	// example:
 	//

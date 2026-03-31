@@ -34,13 +34,11 @@ type iDescribeApisecSensitiveDomainStatisticRequest interface {
 type DescribeApisecSensitiveDomainStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter is applicable only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about hybrid cloud clusters.
-	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. Specify a Unix timestamp in UTC. Unit: milliseconds.
+	// The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -48,7 +46,7 @@ type DescribeApisecSensitiveDomainStatisticRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -56,33 +54,33 @@ type DescribeApisecSensitiveDomainStatisticRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The sorting method of the list. Valid values:
+	// The sorting order. Valid values:
 	//
-	// - asc: Ascending order.
+	// -  **asc**: ascending order.
 	//
-	// - desc: Descending order.
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The page number. Default value: **1**, which indicates the first page.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **5**, which indicates 5 entries per page.
+	// The number of entries per page. Default value: **5**.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -94,17 +92,17 @@ type DescribeApisecSensitiveDomainStatisticRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify a Unix timestamp in UTC. Unit: milliseconds.
+	// The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1668496310
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of sensitive data. Valid values:
+	// The sensitive data type. Valid values:
 	//
-	// - request: Sensitive data in requests.
+	// - **request**: sensitive data in requests.
 	//
-	// - response: Sensitive data in responses.
+	// - **response**: sensitive data in responses.
 	//
 	// example:
 	//

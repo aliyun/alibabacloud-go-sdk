@@ -16,13 +16,10 @@ type iDescribeHybridCloudSupportRegionsResponseBody interface {
 }
 
 type DescribeHybridCloudSupportRegionsResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 256959D5-3B45-54CD-A66D-F75F11E8E754
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of regions that are supported for hybrid cloud access.
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportRegions []*string `json:"SupportRegions,omitempty" xml:"SupportRegions,omitempty" type:"Repeated"`
 }
 

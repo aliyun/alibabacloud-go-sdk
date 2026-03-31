@@ -26,31 +26,24 @@ type iModifyDomainShrinkRequest interface {
 }
 
 type ModifyDomainShrinkRequest struct {
-	// The access mode of the WAF instance. Valid values:
+	// The mode in which you want to add the domain name to WAF. Set the value to share.
 	//
-	// - **share*	- (default): onboarding by using a CNAME record.
-	//
-	// - **hybrid_cloud_cname**: onboarding by using a hybrid cloud CNAME record.
+	// 	- **share:*	- adds the domain name to WAF in CNAME record mode. This is the default value.
 	//
 	// example:
 	//
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The domain name whose configurations you want to modify.
+	// The domain name whose access configurations you want to modify.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the domain name.
-	//
-	// example:
-	//
-	// www.aliyundoc.com-waf
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,19 +51,19 @@ type ModifyDomainShrinkRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listening settings.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
-	// The forwarding settings.
+	// The forwarding configurations.
 	//
 	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//

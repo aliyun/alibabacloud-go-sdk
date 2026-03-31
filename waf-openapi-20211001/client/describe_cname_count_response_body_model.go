@@ -16,7 +16,7 @@ type iDescribeCnameCountResponseBody interface {
 }
 
 type DescribeCnameCountResponseBody struct {
-	// The number of CNAME records that are added.
+	// The information about the number of domain names that are added to WAF in CNAME record mode and hybrid cloud reverse proxy mode.
 	CnameCount *DescribeCnameCountResponseBodyCnameCount `json:"CnameCount,omitempty" xml:"CnameCount,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,19 +62,19 @@ func (s *DescribeCnameCountResponseBody) Validate() error {
 }
 
 type DescribeCnameCountResponseBodyCnameCount struct {
-	// The number of domain names that are added in CNAME mode.
+	// The number of domain names that are added to WAF in CNAME record mode.
 	//
 	// example:
 	//
 	// 1
 	Cname *int64 `json:"Cname,omitempty" xml:"Cname,omitempty"`
-	// The number of domain names that are added in hybrid cloud mode.
+	// The number of domain names that are added to WAF in hybrid cloud reverse proxy mode.
 	//
 	// example:
 	//
 	// 1
 	HybridCloudCname *int64 `json:"HybridCloudCname,omitempty" xml:"HybridCloudCname,omitempty"`
-	// The total number of domain names.
+	// The total number of domain names that are added to WAF in CNAME record mode and hybrid cloud reverse proxy mode.
 	//
 	// example:
 	//

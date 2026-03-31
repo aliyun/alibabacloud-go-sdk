@@ -28,7 +28,7 @@ type iModifyDefaultHttpsRequest interface {
 }
 
 type ModifyDefaultHttpsRequest struct {
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// This parameter is required.
 	//
@@ -36,33 +36,33 @@ type ModifyDefaultHttpsRequest struct {
 	//
 	// 123-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of the cipher suite. Valid values:
+	// The type of the cipher suites. Valid values:
 	//
-	// - **1**: adds all cipher suites.
+	// 	- **1**: all cipher suites.
 	//
-	// - **2**: adds strong cipher suites.
+	// 	- **2**: strong cipher suites.
 	//
-	// - **99**: adds custom cipher suites.
+	// 	- **99**: custom cipher suites.
 	//
 	// example:
 	//
 	// 0
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites that you want to add. This parameter is used only when **CipherSuite*	- is set to **99**.
+	// The custom cipher suites that you want to add. This parameter is available only if you set **CipherSuite*	- to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Specifies whether to support TLS 1.3. Valid values:
 	//
-	// - **true**: supports TLS 1.3.
+	// 	- **true**
 	//
-	// - **false**: does not support TLS 1.3.
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to view the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -72,15 +72,15 @@ type ModifyDefaultHttpsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: regions outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// 阿里云资源组ID。
 	//
 	// example:
 	//
@@ -88,11 +88,11 @@ type ModifyDefaultHttpsRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The version of the TLS protocol. Valid values:
 	//
-	// - **tlsv1**
+	// 	- **tlsv1**
 	//
-	// - **tlsv1.1**
+	// 	- **tlsv1.1**
 	//
-	// - **tlsv1.2**
+	// 	- **tlsv1.2**
 	//
 	// This parameter is required.
 	//

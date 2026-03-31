@@ -18,15 +18,15 @@ type iDescribeDefenseTemplatesResponseBody interface {
 }
 
 type DescribeDefenseTemplatesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 4F26D2F1-E288-5104-8518-05E240E337A4
+	// 4F26D2F1-E288-5104-8518-05E240E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of protection templates.
+	// The protection templates.
 	Templates []*DescribeDefenseTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
-	// The total number of protection templates returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,55 +83,51 @@ func (s *DescribeDefenseTemplatesResponseBody) Validate() error {
 }
 
 type DescribeDefenseTemplatesResponseBodyTemplates struct {
-	// The protection scenario. Valid values:
+	// The scenario in which the protection template is used.
 	//
-	// - **waf_group**: Basic Protection.
+	// 	- **waf_group**: basic protection.
 	//
-	// - **antiscan**: Scan Protection.
+	// 	- **antiscan**: scan protection.
 	//
-	// - **ip_blacklist**: IP Blocklist.
+	// 	- **ip_blacklist**: IP address blacklist.
 	//
-	// - **custom_acl**: Custom Rule.
+	// 	- **custom_acl**: custom rule.
 	//
-	// - **whitelist**: Allowlist.
+	// 	- **whitelist**: whitelist.
 	//
-	// - **region_block**: Geographic Blocking.
+	// 	- **region_block**: region blacklist.
 	//
-	// - **custom_response**: Custom Response.
+	// 	- **custom_response**: custom response.
 	//
-	// - **cc**: HTTP Flood Protection.
+	// 	- **cc**: HTTP flood protection.
 	//
-	// - **tamperproof**: Webpage Tamper Protection.
+	// 	- **tamperproof**: website tamper-proofing.
 	//
-	// - **dlp**: Data Loss Prevention.
-	//
-	// - **bot_manager**: Bot Management.
+	// 	- **dlp**: data leakage prevention.
 	//
 	// example:
 	//
 	// whitelist
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The sub-scenario for the Bot Management template. This parameter is returned only when `DefenseScene` is set to `bot_manager`. Valid values:
+	// The sub-scenario in which the protection template is used. Valid values:
 	//
-	// - **web**: web protection
+	// 	- **web**: bot management for website protection.
 	//
-	// - **app**: app protection
+	// 	- **app**: bot management for app protection.
 	//
-	// - **basic**: basic protection
-	//
-	// - **bot_custom_acl**: The protection template for advanced Custom Rules in Bot Management.
+	// 	- **basic**: bot management for basic protection.
 	//
 	// example:
 	//
 	// basic
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
-	// The description of the template.
+	// The description of the protection template.
 	//
 	// example:
 	//
-	// testTemplate
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last modification time of the protection template. This value is a UNIX timestamp in milliseconds.
+	// The time when the protection template was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -141,15 +137,15 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	//
 	// example:
 	//
-	// 56477
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the protection template.
 	//
 	// example:
 	//
-	// template-blockarea1
+	// testTemplateName
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The origin of the protection template to be created. The value is custom, which indicates a user-defined template.
+	// The origin of the protection template. The value custom indicates that the protection template is a custom template created by the user.
 	//
 	// example:
 	//
@@ -157,9 +153,9 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection template. Valid values:
 	//
-	// - **0**: Disabled.
+	// 	- **0**: disabled.
 	//
-	// - **1**: Enabled.
+	// 	- **1**: enabled.
 	//
 	// example:
 	//
@@ -167,9 +163,9 @@ type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	// The type of the protection template. Valid values:
 	//
-	// - **user_default**: The user\\"s default protection template.
+	// 	- **user_default**: default template.
 	//
-	// - **user_custom**: A custom protection template defined by the user.
+	// 	- **user_custom**: custom template.
 	//
 	// example:
 	//

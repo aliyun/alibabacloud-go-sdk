@@ -20,7 +20,7 @@ type iDescribeHybridCloudUnsupportPortsRequest interface {
 type DescribeHybridCloudUnsupportPortsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query the ID of your WAF instance.
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type DescribeHybridCloudUnsupportPortsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the Web Application Firewall (WAF) instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

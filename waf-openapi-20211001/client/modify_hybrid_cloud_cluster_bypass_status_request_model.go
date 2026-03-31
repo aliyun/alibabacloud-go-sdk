@@ -32,7 +32,9 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	ClusterResourceId *string `json:"ClusterResourceId,omitempty" xml:"ClusterResourceId,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	// **
+	//
+	// **You can call the **DescribeInstanceInfo[ operation to obtain the ID of the WAF instance.](https://help.aliyun.com/document_detail/140857.html)
 	//
 	// This parameter is required.
 	//
@@ -40,11 +42,11 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -56,11 +58,11 @@ type ModifyHybridCloudClusterBypassStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The status of the manual bypass. Valid values:
+	// The status of manual bypass. Valid values:
 	//
-	// - **on**: The manual bypass is enabled.
+	// 	- **on**: enabled.
 	//
-	// - **off*	- (default): The manual bypass is disabled.
+	// 	- **off**: disabled. This is the default value.
 	//
 	// This parameter is required.
 	//

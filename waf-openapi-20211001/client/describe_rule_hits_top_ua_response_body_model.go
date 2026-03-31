@@ -22,7 +22,7 @@ type DescribeRuleHitsTopUaResponseBody struct {
 	//
 	// 8E5C7ED7-503A-5986-A005-36F2511EB89F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 User-Agents that initiated attacks.
+	// The array of the top 10 user agents that are used to initiate attacks.
 	RuleHitsTopUa []*DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa `json:"RuleHitsTopUa,omitempty" xml:"RuleHitsTopUa,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeRuleHitsTopUaResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa struct {
-	// The number of attack requests.
+	// The number of attacks that are initiated from the IP address.
 	//
 	// example:
 	//
 	// 531
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The User-Agent string.
+	// The user agent.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeHybridCloudResourcesResponseBody interface {
 }
 
 type DescribeHybridCloudResourcesResponseBody struct {
-	// The list of domain names.
+	// The domain names.
 	Domains []*DescribeHybridCloudResourcesResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type DescribeHybridCloudResourcesResponseBody struct {
 	//
 	// 98D2AA9A-5959-5CCD-83E3-B6606232A2BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that are returned.
 	//
 	// example:
 	//
@@ -83,9 +83,9 @@ func (s *DescribeHybridCloudResourcesResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudResourcesResponseBodyDomains struct {
-	// The CNAME that is assigned by WAF to the domain name.
+	// The CNAME assigned by WAF.
 	//
-	// > This parameter is returned only when **CnameEnabled*	- is set to true.
+	// >  This parameter is returned only if the value of **CnameEnabled*	- is true.
 	//
 	// example:
 	//
@@ -97,17 +97,17 @@ type DescribeHybridCloudResourcesResponseBodyDomains struct {
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the domain name configuration.
+	// The access ID.
 	//
 	// example:
 	//
-	// 12345
+	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The listener configuration.
+	// The listeners.
 	Listen *DescribeHybridCloudResourcesResponseBodyDomainsListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	// The forwarding configuration.
+	// The configurations of the forwarding rule.
 	Redirect *DescribeHybridCloudResourcesResponseBodyDomainsRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -115,21 +115,21 @@ type DescribeHybridCloudResourcesResponseBodyDomains struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// - **1**: The domain name is in a normal state.
+	// 	- **1:*	- The domain name is in a normal state.
 	//
-	// - **2**: The domain name is being created.
+	// 	- **2:*	- The domain name is being created.
 	//
-	// - **3**: The domain name is being modified.
+	// 	- **3:*	- The domain name is being modified.
 	//
-	// - **4**: The domain name is being released.
+	// 	- **4:*	- The domain name is being released.
 	//
-	// - **5**: Forwarding is disabled for the domain name.
+	// 	- **5:*	- WAF no longer forwards the traffic of the domain name.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The user ID.
 	//
 	// example:
 	//
@@ -238,47 +238,47 @@ type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
 	//
 	// 72***76-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of the cipher suite. Valid values:
+	// The types of cipher suites that are added. Valid values:
 	//
-	// - **1**: all cipher suites.
+	// 	- **1:*	- all cipher suites.
 	//
-	// - **2**: strong cipher suites.
+	// 	- **2:*	- strong cipher suites.
 	//
-	// - **99**: custom cipher suites.
+	// 	- **99:*	- custom cipher suites.
 	//
 	// example:
 	//
 	// 1
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites to be added.
+	// The custom cipher suites.
 	//
-	// > This parameter is returned only when **CipherSuite*	- is set to **99**.
+	// >  This parameter is returned only if the value of **CipherSuite*	- is **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Indicates whether TLS 1.3 is supported. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Indicates whether an exclusive IP address is used. Valid values:
+	// Indicates whether exclusive IP addresses are supported. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// Indicates whether HTTPS to HTTP redirection is enabled. Valid values:
+	// Indicates whether the HTTP to HTTPS redirection feature is enabled for the domain name. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
@@ -286,23 +286,23 @@ type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// false
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The list of HTTP listener ports.
+	// The HTTP listener ports.
 	HttpPorts []*int64 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	// The list of HTTPS ports.
+	// The HTTPS listener ports.
 	HttpsPorts []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
-	// Indicates whether IPv6 is enabled. Valid values:
+	// Specifies whether to enable IPv6. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
@@ -310,41 +310,41 @@ type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	// The type of the protection resource. Valid values:
 	//
-	// - **share**: shared cluster.
+	// 	- **share:*	- shared cluster.
 	//
-	// - **gslb**: intelligent load balancing for a shared cluster.
+	// 	- **gslb:*	- shared cluster-based intelligent load balancing.
 	//
 	// example:
 	//
 	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
-	// The TLS version. Valid values:
+	// The version of the Transport Layer Security (TLS) protocol. Valid values:
 	//
-	// - **tlsv1**
+	// 	- **tlsv1**
 	//
-	// - **tlsv1.1**
+	// 	- **tlsv1.1**
 	//
-	// - **tlsv1.2**
+	// 	- **tlsv1.2**
 	//
 	// example:
 	//
 	// tlsv1.2
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	// The method that WAF uses to obtain the client IP address. Valid values:
+	// The method that is used to obtain the actual IP address of a client. Valid values:
 	//
-	// - **0**: No Layer 7 proxies are deployed in front of WAF.
+	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
 	//
-	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the client IP address.
+	// 	- **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
 	//
-	// - **2**: WAF reads the value of a custom header field as the client IP address.
+	// 	- **2**: WAF reads the value of a custom header field as the actual IP address of the client.
 	//
 	// example:
 	//
 	// 0
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The list of custom header fields that are used to obtain the client IP address. The value is in the \\`["header1","header2",...]\\` format.
+	// The custom header fields that are used to obtain the actual IP addresses of clients. The value is in the ["header1","header2",...] format.
 	//
-	// > This parameter is returned only when XffHeaderMode is set to **2**.
+	// >  This parameter is returned only if the value of **XffHeaderMode*	- is 2.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -487,97 +487,97 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomainsListen) Validate() error
 }
 
 type DescribeHybridCloudResourcesResponseBodyDomainsRedirect struct {
-	// The IP addresses or domain names of the origin servers for back-to-origin.
+	// The IP addresses or domain names of the origin server.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	// Indicates whether public cloud disaster recovery is enabled. Valid values:
+	// Indicates whether the public cloud disaster recovery feature is enabled. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
-	// The connection timeout period. Unit: seconds. Valid values: 5 to 120.
+	// The timeout period for connections. Unit: seconds. Valid values: 5 to 120.
 	//
 	// example:
 	//
 	// 120
 	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	// Indicates whether back-to-origin requests are forcefully sent over HTTP. Valid values:
+	// Indicates whether the HTTPS to HTTP redirection feature is enabled for back-to-origin requests. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	// Indicates whether persistent connections are enabled. Valid values:
+	// Indicates whether the persistent connection feature is enabled. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
-	// The maximum number of requests that can be sent over a persistent connection. Valid values: 60 to 1000.
+	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
-	// > After the specified number of requests are sent, the persistent connection is closed and a new connection is established.
+	// >  This parameter indicates the number of reused persistent connections after the persistent connection feature is enabled.
 	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period for an idle persistent connection. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+	// The timeout period for persistent connections that are in the Idle state. Unit: seconds. Valid values: 1 to 60. Default value: 15.
 	//
-	// > An idle persistent connection is released after the timeout period expires.
+	// >  This parameter indicates the period of time during which a reused persistent connection can remain in the Idle state before the persistent connection is released.
 	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int64 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The load balancing algorithm for back-to-origin requests. Valid values:
+	// The load balancing algorithm that is used to forward requests to the origin server. Valid values:
 	//
-	// - **iphash**: the IP hash algorithm.
+	// 	- **iphash**
 	//
-	// - **roundRobin**: the round-robin algorithm.
+	// 	- **roundRobin**
 	//
-	// - **leastTime**: the least time algorithm.
+	// 	- **leastTime**
 	//
 	// example:
 	//
 	// iphash
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	// The read timeout period. Unit: seconds. Valid values: 5 to 1800.
+	// The timeout period for read connections. Unit: seconds. Valid values: 5 to 1800.
 	//
 	// example:
 	//
 	// 200
 	ReadTimeout *int64 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The custom header field and value that are used to mark the traffic that is processed by WAF.
+	// The key-value pair that is used to label requests that pass through WAF.
 	RequestHeaders []*DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// Indicates whether WAF retries forwarding requests when a back-to-origin request fails. Valid values:
+	// Indicates whether WAF retries forwarding requests if requests fail to be forwarded to the origin server. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The forwarding rules for the hybrid cloud. The value is a string that consists of a JSON array. Each element in the array is a struct that contains the following fields:
+	// The forwarding rules that are configured for the domain name. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	// - **rs**: The back-to-origin IP addresses or CNAMEs. This field is of the Array type.
+	// 	- **rs**: the back-to-origin IP addresses or CNAMEs. The value is of the ARRAY type.
 	//
-	// - **location**: The name of the protection node. This field is of the String type.
+	// 	- **location**: the name of the protection node. The value is of the STRING type.
 	//
-	// - **locationId**: The ID of the protection node. This field is of the Long type.
+	// 	- **locationId**: the ID of the protection node. The value is of the LONG type.
 	//
 	// example:
 	//
@@ -599,25 +599,25 @@ type DescribeHybridCloudResourcesResponseBodyDomainsRedirect struct {
 	//
 	// ]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
-	// Indicates whether back-to-origin Server Name Indication (SNI) is enabled. Valid values:
+	// Indicates whether the origin Server Name Indication (SNI) feature is enabled. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The custom value of the SNI extension field. If this parameter is not specified, the value of the **Host*	- field in the request header is used as the value of the SNI extension field by default.
+	// The value of the custom SNI field. If the parameter is left empty, the value of the **Host*	- field in the request header is automatically used as the value of the SNI field.
 	//
-	// > This parameter is returned only when **SniEnabled*	- is set to **true**.
+	// >  This parameter is returned only if the value of **SniEnabled*	- is **true**.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	// The write timeout period. Unit: seconds. Valid values: 5 to 1800.
+	// The timeout period for write connections. Unit: seconds. Valid values: 5 to 1800.
 	//
 	// example:
 	//
@@ -782,13 +782,13 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) Validate() err
 }
 
 type DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders struct {
-	// The custom request header field.
+	// The key of the custom header field.
 	//
 	// example:
 	//
 	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the custom request header field.
+	// The value of the custom header field.
 	//
 	// example:
 	//

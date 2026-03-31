@@ -24,54 +24,30 @@ type iModifyResourceLogDeliveryStatusRequest interface {
 }
 
 type ModifyResourceLogDeliveryStatusRequest struct {
-	// The name of the log delivery configuration.
-	//
-	// > This parameter is required when you enable log delivery by setting **Status*	- to **true**.
-	//
 	// example:
 	//
 	// export-kafka
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-uqm35*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object for which you want to modify the log delivery status.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test.waf.com-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// Indicates whether to enable log delivery for the protected object. Valid values:
-	//
-	// - **true**: enables log delivery.
-	//
-	// - **false**: disables log delivery.
-	//
 	// This parameter is required.
 	//
 	// example:

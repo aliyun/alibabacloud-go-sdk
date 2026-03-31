@@ -18,7 +18,7 @@ type iDescribeDefenseResourceNamesResponseBody interface {
 }
 
 type DescribeDefenseResourceNamesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

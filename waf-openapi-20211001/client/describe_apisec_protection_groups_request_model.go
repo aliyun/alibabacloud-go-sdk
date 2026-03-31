@@ -26,15 +26,15 @@ type iDescribeApisecProtectionGroupsRequest interface {
 }
 
 type DescribeApisecProtectionGroupsRequest struct {
-	// The API security detection switch.
+	// The switch of the API security module.
 	//
 	// example:
 	//
 	// 1
 	ApisecStatus *int32 `json:"ApisecStatus,omitempty" xml:"ApisecStatus,omitempty"`
-	// The ID of the WAF instance.
+	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeApisecProtectionGroupsRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
@@ -54,17 +54,17 @@ type DescribeApisecProtectionGroupsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protected object group.
+	// The name of the protected object group to which the protected object belongs.
 	//
 	// example:
 	//

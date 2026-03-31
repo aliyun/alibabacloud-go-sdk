@@ -22,13 +22,13 @@ type iDescribeNetworkFlowTimeSeriesMetricShrinkRequest interface {
 }
 
 type DescribeNetworkFlowTimeSeriesMetricShrinkRequest struct {
-	// The filter conditions for the query. Multiple filter conditions are combined with a logical AND.
+	// Specifies filtering conditions. Multiple filter parameters use AND logic.
 	//
 	// This parameter is required.
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The ID of the WAF instance.
+	// The Web Application Firewall (WAF) instance ID.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type DescribeNetworkFlowTimeSeriesMetricShrinkRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies the type of data to return. Different values for Metric correspond to different data. This API operation supports the following values:
+	// Specifies the data type to be returned. Valid values:
 	//
-	// - qps: The number of requests that WAF processes per second. A queries per second (QPS) value is calculated every 10 seconds. The peak QPS value within the specified time granularity is returned.
+	// 	- qps: Returns the queries per second (QPS) processed by WAF. This value is calculated using a peak detection method: QPS is measured every 10 seconds, and the highest value within the specified time range is returned.
 	//
-	// - total_requests: The total number of requests processed by WAF.
+	// 	- total_requests: Returns the total number of requests processed by WAF.
 	//
-	// - top5_status: The top five response status codes that WAF returns to the client, and the corresponding time series statistics.
+	// 	- top5_status: Returns the top 5 HTTP status codes returned by the WAF to clients, along with their corresponding time series statistics.
 	//
-	// - top 5_upstream_status: The top five response status codes that the origin server returns to the client, and the corresponding time series statistics.
+	// 	- top 5_upstream_status: Returns the top 5 HTTP status codes returned by the origin server to clients, along with their corresponding time series data.
 	//
 	// This parameter is required.
 	//
@@ -52,17 +52,17 @@ type DescribeNetworkFlowTimeSeriesMetricShrinkRequest struct {
 	//
 	// total_requests
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: The Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// ap-southeast-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The resource group ID.
 	//
 	// example:
 	//

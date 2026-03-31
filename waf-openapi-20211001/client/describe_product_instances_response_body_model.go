@@ -83,55 +83,30 @@ func (s *DescribeProductInstancesResponseBody) Validate() error {
 }
 
 type DescribeProductInstancesResponseBodyProductInstances struct {
-	// The ID of the instance added to WAF.
-	//
-	// example:
-	//
-	// i-2ze1tm4pvghp****cluv
-	AccessInstanceId *string `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
-	// The port and protocol information of the cloud service added to WAF.
+	AccessInstanceId       *string                                                                       `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
 	AccessPortAndProtocols []*DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols `json:"AccessPortAndProtocols,omitempty" xml:"AccessPortAndProtocols,omitempty" type:"Repeated"`
-	// The list of ports added to WAF.
-	AccessPorts []*int32 `json:"AccessPorts,omitempty" xml:"AccessPorts,omitempty" type:"Repeated"`
-	// The user ID (UID) of the Alibaba Cloud account to which the instance belongs.
+	AccessPorts            []*int32                                                                      `json:"AccessPorts,omitempty" xml:"AccessPorts,omitempty" type:"Repeated"`
+	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// example:
 	//
 	// 1704********9107
-	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The protection status of WAF. Valid values:
-	//
-	// - **all**: All protected.
-	//
-	// - **any**: Protected.
-	//
-	// - **part**: Partially protected.
-	//
-	// - **non**: Not protected.
-	//
-	// example:
-	//
-	// all
+	OwnerUserId                  *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	ResourceInstanceAccessStatus *string `json:"ResourceInstanceAccessStatus,omitempty" xml:"ResourceInstanceAccessStatus,omitempty"`
-	// The edition of the instance.
-	//
-	// example:
-	//
-	// ecs.e-c1m1.large
-	ResourceInstanceEdition *string `json:"ResourceInstanceEdition,omitempty" xml:"ResourceInstanceEdition,omitempty"`
-	// The instance ID.
+	ResourceInstanceEdition      *string `json:"ResourceInstanceEdition,omitempty" xml:"ResourceInstanceEdition,omitempty"`
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// i-2ze1tm4pvghp****cluv
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	// The IP address of the instance.
+	// The IP address of the instance that is added to WAF.
 	//
 	// example:
 	//
 	// 1.X.X.1
 	ResourceInstanceIp *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
-	// The name of the instance.
+	// The name of the instance that is added to WAF.
 	//
 	// example:
 	//
@@ -155,15 +130,13 @@ type DescribeProductInstancesResponseBodyProductInstances struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The information about the ports.
 	ResourcePorts []*DescribeProductInstancesResponseBodyProductInstancesResourcePorts `json:"ResourcePorts,omitempty" xml:"ResourcePorts,omitempty" type:"Repeated"`
-	// The type of the cloud service. Valid values:
+	// The cloud service to which the instance belongs. Valid values:
 	//
-	// - **clb4**: Layer 4 CLB.
+	// 	- **clb4**: Layer 4 CLB.
 	//
-	// - **clb7**: Layer 7 CLB.
+	// 	- **clb7**: Layer 7 CLB.
 	//
-	// - **ecs**: ECS.
-	//
-	// - **nlb**: NLB.
+	// 	- **ecs**: ECS.
 	//
 	// example:
 	//
@@ -171,25 +144,25 @@ type DescribeProductInstancesResponseBodyProductInstances struct {
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// - **cn-chengdu**: China (Chengdu).
+	// 	- **cn-chengdu**: China (Chengdu).
 	//
-	// - **cn-beijing**: China (Beijing).
+	// 	- **cn-beijing**: China (Beijing).
 	//
-	// - **cn-zhangjiakou**: China (Zhangjiakou).
+	// 	- **cn-zhangjiakou**: China (Zhangjiakou).
 	//
-	// - **cn-hangzhou**: China (Hangzhou).
+	// 	- **cn-hangzhou**: China (Hangzhou).
 	//
-	// - **cn-shanghai**: China (Shanghai).
+	// 	- **cn-shanghai**: China (Shanghai).
 	//
-	// - **cn-shenzhen**: China (Shenzhen).
+	// 	- **cn-shenzhen**: China (Shenzhen).
 	//
-	// - **cn-qingdao**: China (Qingdao).
+	// 	- **cn-qingdao**: China (Qingdao).
 	//
-	// - **cn-hongkong**: China (Hong Kong).
+	// 	- **cn-hongkong**: China (Hong Kong).
 	//
-	// - **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
 	//
-	// - **ap-southeast-5**: Indonesia (Jakarta).
+	// 	- **ap-southeast-5**: Indonesia (Jakarta).
 	//
 	// example:
 	//
@@ -354,24 +327,9 @@ func (s *DescribeProductInstancesResponseBodyProductInstances) Validate() error 
 }
 
 type DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols struct {
-	// The certificates.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The port of the cloud service added to WAF.
-	//
-	// example:
-	//
-	// 443
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol type. Valid values:
-	//
-	// - **http**: HTTP protocol.
-	//
-	// - **https**: HTTPS protocol.
-	//
-	// example:
-	//
-	// http
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Port           *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol       *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) String() string {
@@ -416,7 +374,7 @@ func (s *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtoc
 type DescribeProductInstancesResponseBodyProductInstancesResourcePorts struct {
 	// The information about the certificates.
 	Certificates []*DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//
@@ -424,9 +382,9 @@ type DescribeProductInstancesResponseBodyProductInstancesResourcePorts struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **http**: HTTP protocol.
+	// 	- **http**
 	//
-	// - **https**: HTTPS protocol.
+	// 	- **https**
 	//
 	// example:
 	//
@@ -483,34 +441,20 @@ func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) Vali
 }
 
 type DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates struct {
-	// The type of the HTTPS certificate. Valid values:
-	//
-	// - **default**: Default certificate.
-	//
-	// - **extension**: Extension certificate.
-	//
-	// example:
-	//
-	// default
 	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
-	// 1234567
+	// 10106183
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The name of the certificate.
 	//
 	// example:
 	//
-	// demoCertName
+	// trafficxxxx.cn
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The domain name bound to the certificate.
-	//
-	// example:
-	//
-	// www.test.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) String() string {

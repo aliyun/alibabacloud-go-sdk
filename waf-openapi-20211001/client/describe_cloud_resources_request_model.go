@@ -42,7 +42,7 @@ type iDescribeCloudResourcesRequest interface {
 type DescribeCloudResourcesRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeCloudResourcesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-lbj****cn0c
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The UID of the account to which the resource belongs.
+	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// example:
 	//
@@ -68,29 +68,29 @@ type DescribeCloudResourcesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The domain name of the resource. This parameter is available when you query FC or SAE resources.
+	// The domain name. You can use this parameter if you set ResourceProduct to fc or sae.
 	//
 	// example:
 	//
 	// fc-domain-test
 	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
-	// The name of the function. This parameter is available when you query FC resources.
+	// The function name. You can use this parameter if you set ResourceProduct to fc.
 	//
 	// example:
 	//
 	// fc-test
 	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
-	// The ID of the resource instance.
+	// The ID of the resource.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeCloudResourcesRequest struct {
 	//
 	// test-name
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -110,45 +110,45 @@ type DescribeCloudResourcesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The name of the resource instance.
+	// The name of the resource.
 	//
 	// example:
 	//
 	// alb-name
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The cloud service to which the resource belongs. By default, instances of Application Load Balancer (ALB), Microservices Engine (MSE), Function Compute (FC), and Serverless App Engine (SAE) are returned. Valid values:
+	// The cloud service to which the resource belongs. If you do not specify this parameter, the system automatically returns the Application Load Balancer (ALB), Microservices Engine (MSE), Function Compute, and Serverless App Engine (SAE) resources that are added to WAF. Valid values:
 	//
-	// - **alb**: ALB
+	// 	- **alb**: ALB.
 	//
-	// - **mse**: MSE
+	// 	- **mse**: MSE.
 	//
-	// - **fc**: FC
+	// 	- **fc**: Function Compute.
 	//
-	// - **sae**: SAE
+	// 	- **sae**: SAE.
 	//
-	// - **ecs**: Elastic Compute Service (ECS)
+	// 	- **ecs**: Elastic Compute Service (ECS).
 	//
-	// - **clb4**: Classic Load Balancer (CLB) that uses TCP
+	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
 	//
-	// - **clb7**: CLB that uses HTTP or HTTPS
+	// 	- **clb7**: Layer 7 CLB.
 	//
-	// - **nlb**: Network Load Balancer (NLB)
+	// 	- **nlb**: Network Load Balancer (NLB).
 	//
-	// > Each cloud service supports different regions. If you specify this parameter, make sure the region you specify for the ResourceRegionId parameter supports this service. Otherwise, the query may fail.
+	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
 	//
 	// example:
 	//
 	// alb
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
-	// The ID of the region where the resource resides. For more information, see the "Regions and supported products" section in this topic.
+	// The region ID of the resource. For information about region IDs, see the following table.
 	//
-	// > Each cloud service supports different regions. If you specify the ResourceProduct parameter, make sure the region you specify for this parameter supports that service. Otherwise, the query may fail.
+	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
 	//
 	// example:
 	//
 	// cn-beijing
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The name of the route. This parameter is available when you query MSE resources.
+	// The route name. You can use this parameter if you set ResourceProduct to mse.
 	//
 	// example:
 	//

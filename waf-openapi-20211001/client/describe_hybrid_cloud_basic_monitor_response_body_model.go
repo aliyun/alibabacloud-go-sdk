@@ -18,20 +18,15 @@ type iDescribeHybridCloudBasicMonitorResponseBody interface {
 }
 
 type DescribeHybridCloudBasicMonitorResponseBody struct {
-	// The list of basic monitoring metrics.
+	// The basic metrics.
 	BasicMonitors []*DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors `json:"BasicMonitors,omitempty" xml:"BasicMonitors,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 0B8AF42B-16A9-5762-AEF3-D148****FE5D
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// > This parameter is deprecated. No meaningful data is returned.
-	//
-	// example:
-	//
-	// 3
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHybridCloudBasicMonitorResponseBody) String() string {
@@ -83,29 +78,20 @@ func (s *DescribeHybridCloudBasicMonitorResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors struct {
-	// The status. Valid values:
-	//
-	// - **normal**: Normal.
-	//
-	// - \\*\\*\\*\\*: Abnormal.
-	//
-	// example:
-	//
-	// normal
 	Levle *string `json:"Levle,omitempty" xml:"Levle,omitempty"`
 	// The metric. Valid values:
 	//
-	// - **basic_monitor_cpu_usage**: CPU.
+	// 	- **basic_monitor_cpu_usage**: the CPU.
 	//
-	// - **basic_monitor_memory_usage**: memory.
+	// 	- **basic_monitor_memory_usage**: the memory.
 	//
-	// - **basic_monitor_disk_usage**: disk.
+	// 	- **basic_monitor_disk_usage**: the disk.
 	//
 	// example:
 	//
 	// basic_monitor_cpu_usage
 	MonitorName *string `json:"MonitorName,omitempty" xml:"MonitorName,omitempty"`
-	// The usage percentage.
+	// The resource usage.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DescribeTemplateResourceCountResponseBody struct {
 	//
 	// B8064433-9781-5E86-806E-C1DD****1D95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of resource count objects. Each object contains the number of protected objects, protected object groups, and protected assets that are associated with a protection template.
+	// The number of protected objects or protected object groups for which the protection template takes effect.
 	ResourceCount []*DescribeTemplateResourceCountResponseBodyResourceCount `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty" type:"Repeated"`
 }
 
@@ -66,19 +66,17 @@ func (s *DescribeTemplateResourceCountResponseBody) Validate() error {
 }
 
 type DescribeTemplateResourceCountResponseBodyResourceCount struct {
-	// The number of protected assets that are associated with the protection template.
-	//
 	// example:
 	//
 	// 10
 	AssetCount *int32 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
-	// The number of protected object groups that are associated with the protection template.
+	// The number of protected object groups.
 	//
 	// example:
 	//
 	// 30
 	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	// The number of protected objects that are associated with the protection template.
+	// The number of protected objects.
 	//
 	// example:
 	//

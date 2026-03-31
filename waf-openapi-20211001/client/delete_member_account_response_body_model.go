@@ -14,11 +14,11 @@ type iDeleteMemberAccountResponseBody interface {
 }
 
 type DeleteMemberAccountResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 5ABE714C-8890-5D7E-A08B-45CB650F5473
+	// 5ABE714C-8890-5D7E-A08B-45CB****5473
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

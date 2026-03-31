@@ -42,13 +42,13 @@ type DescribeSlsLogStoreResponseBody struct {
 	//
 	// 3298534883328
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The request
+	// The request ID.
 	//
 	// example:
 	//
-	// CAC0A24B-486A-5E12-9894-BE860E5F41CC
+	// CAC0A24B-486A-5E12-9894-BE860E5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The log retention period. Unit: days.
+	// The storage duration of the Logstore. Unit: days.
 	//
 	// example:
 	//

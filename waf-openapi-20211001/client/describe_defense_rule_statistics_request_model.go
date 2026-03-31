@@ -28,62 +28,40 @@ type iDescribeDefenseRuleStatisticsRequest interface {
 }
 
 type DescribeDefenseRuleStatisticsRequest struct {
-	// The quaternary condition by which to group the rule statistics. This value cannot be the same as the primary, secondary, or tertiary condition.
-	//
 	// example:
 	//
 	// riskLevel
 	FourthKey *string `json:"FourthKey,omitempty" xml:"FourthKey,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The primary condition by which to group the rule statistics.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// scene
 	PrimaryKey *string `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The region of the WAF instance. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The secondary condition by which to group the rule statistics. This value cannot be the same as the primary condition.
-	//
 	// example:
 	//
 	// action
 	SecondaryKey *string `json:"SecondaryKey,omitempty" xml:"SecondaryKey,omitempty"`
-	// The ID of the protection template.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 239136
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The tertiary condition by which to group the rule statistics. This value cannot be the same as the primary or secondary condition.
-	//
 	// example:
 	//
 	// status

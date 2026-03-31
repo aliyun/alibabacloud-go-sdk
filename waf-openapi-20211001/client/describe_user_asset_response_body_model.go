@@ -16,9 +16,9 @@ type iDescribeUserAssetResponseBody interface {
 }
 
 type DescribeUserAssetResponseBody struct {
-	// A list of asset statistics.
+	// The API statistics.
 	Assets []*DescribeUserAssetResponseBodyAssets `json:"Assets,omitempty" xml:"Assets,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeUserAssetResponseBody) Validate() error {
 }
 
 type DescribeUserAssetResponseBodyAssets struct {
-	// The number of assets.
+	// The number of APIs returned.
 	//
 	// example:
 	//
 	// 134
 	AssetNum *int64 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	// The time when the statistics are collected. This value is a UNIX timestamp in seconds. The time is in UTC.
+	// The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iListTagValuesRequest interface {
 }
 
 type ListTagValuesRequest struct {
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListTagValuesRequest struct {
 	//
 	// waf_v2_public_cn-lbj****x10g
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The key of the tag that you want to query.
+	// The tag key.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,17 @@ type ListTagValuesRequest struct {
 	//
 	// demoKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListTagValuesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iListTagKeysRequest interface {
 type ListTagKeysRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type ListTagKeysRequest struct {
 	//
 	// waf_v3prepaid_public_cn-wwo****iw02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The pagination token used in the next request to retrieve a new page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListTagKeysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// This parameter is required.
 	//

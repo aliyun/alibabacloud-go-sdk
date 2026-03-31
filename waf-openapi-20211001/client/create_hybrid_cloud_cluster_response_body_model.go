@@ -16,7 +16,7 @@ type iCreateHybridCloudClusterResponseBody interface {
 }
 
 type CreateHybridCloudClusterResponseBody struct {
-	// The ID of the hybrid cloud cluster.
+	// The ID of the cluster.
 	//
 	// example:
 	//

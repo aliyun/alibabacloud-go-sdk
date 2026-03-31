@@ -18,7 +18,7 @@ type iDescribeSensitiveRequestsResponseBody interface {
 }
 
 type DescribeSensitiveRequestsResponseBody struct {
-	// A list of sensitive data tracing results.
+	// The tracing results of the data.
 	Data []*DescribeSensitiveRequestsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeSensitiveRequestsResponseBody) Validate() error {
 }
 
 type DescribeSensitiveRequestsResponseBodyData struct {
-	// The number of threats in the last 30 days.
+	// The number of risks in the previous 30 days.
 	//
 	// example:
 	//
@@ -109,29 +109,29 @@ type DescribeSensitiveRequestsResponseBodyData struct {
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
 	// The evaluation result. Valid values:
 	//
-	// - **leak**: A data leak risk is detected.
+	// 	- **leak**: Data leaks may occur.
 	//
-	// - **none**: No data leak risk is detected.
+	// 	- **none**: No data leak can occur.
 	//
 	// example:
 	//
 	// leak
 	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
-	// The number of events in the last 30 days.
+	// The number of events in the previous 30 days.
 	//
 	// example:
 	//
 	// 679
 	EventCount *int64 `json:"EventCount,omitempty" xml:"EventCount,omitempty"`
-	// A list of statistics about sensitive data.
+	// The statistics of the sensitive data.
 	InfoCount []*DescribeSensitiveRequestsResponseBodyDataInfoCount `json:"InfoCount,omitempty" xml:"InfoCount,omitempty" type:"Repeated"`
-	// The domain name to which the API belongs.
+	// The domain name of the API.
 	//
 	// example:
 	//
 	// a.****.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// A list of sensitive data.
+	// The sensitive data.
 	SensitiveList []*string `json:"SensitiveList,omitempty" xml:"SensitiveList,omitempty" type:"Repeated"`
 }
 
@@ -238,7 +238,7 @@ func (s *DescribeSensitiveRequestsResponseBodyData) Validate() error {
 }
 
 type DescribeSensitiveRequestsResponseBodyDataInfoCount struct {
-	// The type of sensitive data.
+	// The type of the sensitive data.
 	//
 	// example:
 	//

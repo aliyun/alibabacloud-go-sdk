@@ -14,7 +14,7 @@ type iModifyDomainCertResponseBody interface {
 }
 
 type ModifyDomainCertResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

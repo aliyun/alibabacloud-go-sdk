@@ -22,7 +22,7 @@ type DescribeRuleHitsTopUrlResponseBody struct {
 	//
 	// 3D8AF43B-08EB-51CE-B33A-93AA****9B0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 URLs that trigger protection rules.
+	// The top 10 URLs that match protection rules.
 	RuleHitsTopUrl []*DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeRuleHitsTopUrlResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl struct {
-	// The number of requests that triggered the rule.
+	// The number of requests that match protection rules.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl struct {
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The request URL.
 	//
-	// > The value of this parameter is Base64-encoded.
+	// >  The value is Base64-encoded.
 	//
 	// example:
 	//

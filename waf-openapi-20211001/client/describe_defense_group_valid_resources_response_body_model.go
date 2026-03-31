@@ -18,16 +18,11 @@ type iDescribeDefenseGroupValidResourcesResponseBody interface {
 }
 
 type DescribeDefenseGroupValidResourcesResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// A57BA089-3B28-5C82-8331-7B94****4978
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The names of the protected objects.
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
-	//
 	// example:
 	//
 	// 12

@@ -46,39 +46,14 @@ type iModifyHybridCloudClusterRequest interface {
 }
 
 type ModifyHybridCloudClusterRequest struct {
-	// The network access mode of the hybrid cloud cluster. Valid values:
-	//
-	// - **internet**: access over the Internet.
-	//
-	// - **vpc**: access over a leased line through a virtual private cloud (VPC).
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// internet
-	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The region in which the leased line resides. This parameter is required when AccessMode is set to vpc. Valid values:
-	//
-	// - **cn-hangzhou**: Hangzhou.
-	//
-	// - **cn-beijing**: Beijing.
-	//
-	// - **cn-shanghai**: Shanghai.
-	//
-	// example:
-	//
-	// cn-beijing
+	AccessMode   *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
 	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
-	// The name of the hybrid cloud cluster.
+	// The name of the cluster.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// waf-example-***
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The list of HTTP ports supported by the hybrid cloud cluster. Separate multiple ports with commas (,). Format: **port1,port2,port3**.
+	// The HTTP ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3*	- format.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +61,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The list of HTTPS ports supported by the hybrid cloud cluster. Separate multiple ports with commas (,). Format: **port1,port2,port3**.
+	// The HTTPS ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3*	- format.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +69,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 443,8443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// The ID of the hybrid cloud cluster.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -104,118 +79,44 @@ type ModifyHybridCloudClusterRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-mp9153****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The log fields that are excluded from the response.
-	//
-	// example:
-	//
-	// log_example
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LogFieldsNotReturned *string `json:"LogFieldsNotReturned,omitempty" xml:"LogFieldsNotReturned,omitempty"`
-	// The maximum number of protection nodes that can be added to the hybrid cloud cluster.
+	// The number of protection nodes that can be added to the cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
-	// Indicates whether the proxy gateway is enabled. Valid values:
+	ProtectionServerCount *int32  `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
+	ProxyStatus           *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	ProxyType             *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	// The region ID of the WAF instance. Valid values:
 	//
-	// - **on**: The proxy gateway is enabled.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **off**: The proxy gateway is disabled.
-	//
-	// example:
-	//
-	// off
-	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	// The type of the hybrid cloud cluster. Valid values:
-	//
-	// - **cname**: a reverse proxy cluster.
-	//
-	// - **service**: a service cluster.
-	//
-	// example:
-	//
-	// service
-	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remarks of the hybrid cloud cluster.
-	//
-	// example:
-	//
-	// remarkExample
+	// The remarks about the cluster.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
-	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The rule configuration in JSON format. This includes settings such as the circuit breaker, request body length limit, and timeout.
-	//
-	// example:
-	//
-	// {
-	//
-	//       "enable": true,
-	//
-	//       "param": {
-	//
-	//             "breaker": {
-	//
-	//                   "duration": 1,
-	//
-	//                   "failed": 1,
-	//
-	//                   "recent_failed": 1
-	//
-	//             },
-	//
-	//             "disable_protect": false,
-	//
-	//             "max_request_body_len": 1,
-	//
-	//             "timeout": 1
-	//
-	//       }
-	//
-	// }
-	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - **on**: The rule is enabled.
-	//
-	// - **off**: The rule is disabled.
-	//
-	// example:
-	//
-	// off
-	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The rule type. Valid values:
-	//
-	// - **bypass**: WAF bypasses security checks.
-	//
-	// example:
-	//
-	// bypass
-	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleConfig                     *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	RuleStatus                     *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	RuleType                       *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
 func (s ModifyHybridCloudClusterRequest) String() string {

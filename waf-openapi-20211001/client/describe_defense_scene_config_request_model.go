@@ -22,44 +22,28 @@ type iDescribeDefenseSceneConfigRequest interface {
 }
 
 type DescribeDefenseSceneConfigRequest struct {
-	// The name of the configuration item that you want to query. For more information, see the **ConfigKey*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// autoEnableStatus
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// The defense scenario whose configuration you want to query. For more information, see the **DefenseScene*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apisec
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqtm005
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q

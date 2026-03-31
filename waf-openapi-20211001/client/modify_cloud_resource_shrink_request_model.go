@@ -24,17 +24,10 @@ type iModifyCloudResourceShrinkRequest interface {
 }
 
 type ModifyCloudResourceShrinkRequest struct {
-	// The ID of the cloud resource that is added to WAF.
-	//
-	// > Call [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) to add a cloud resource. The resource ID is included in the response.
-	//
-	// example:
-	//
-	// lb-***-80-clb7
 	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +35,17 @@ type ModifyCloudResourceShrinkRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listener configuration.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
-	// The forwarding configuration.
+	// The forwarding configurations.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +53,7 @@ type ModifyCloudResourceShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

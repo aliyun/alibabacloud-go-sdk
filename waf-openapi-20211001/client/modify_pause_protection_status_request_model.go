@@ -22,7 +22,7 @@ type iModifyPauseProtectionStatusRequest interface {
 type ModifyPauseProtectionStatusRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type ModifyPauseProtectionStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to pause WAF protection.
 	//
-	// - **0 (default)**: WAF protection is not paused.
+	// 	- **0**: does not pause WAF protection. This is the default value.
 	//
-	// - **1**: WAF protection is paused.
+	// 	- **1**: pauses WAF protection.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type ModifyPauseProtectionStatusRequest struct {
 	//
 	// 0
 	PauseStatus *int32 `json:"PauseStatus,omitempty" xml:"PauseStatus,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

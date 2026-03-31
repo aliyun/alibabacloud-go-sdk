@@ -16,7 +16,7 @@ type iDescribeHybridCloudClusterRuleResponseBody interface {
 }
 
 type DescribeHybridCloudClusterRuleResponseBody struct {
-	// The information about the rule.
+	// The details of the rule.
 	ClusterRule *DescribeHybridCloudClusterRuleResponseBodyClusterRule `json:"ClusterRule,omitempty" xml:"ClusterRule,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,27 +62,8 @@ func (s *DescribeHybridCloudClusterRuleResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
-	// The resource ID of the cluster rule.
-	//
-	// example:
-	//
-	// hdbc-clusterrule-2m*****m0w
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
-	// The configuration of the traffic routing rule.
-	//
-	// - **check_mode**: Defines the traffic scope for the routing rule. Valid values:
-	//
-	//   - **all**: Routes all traffic.
-	//
-	//   - **part**: Routes a portion of the traffic.
-	//
-	// - **type**: The rule\\"s match type. Valid values:
-	//
-	//   - **exact**: Exact match.
-	//
-	//   - **regex**: Regular expression match.
-	//
-	// - **substance**: The value of the rule.
+	// The configuration of the rule.
 	//
 	// example:
 	//
@@ -90,17 +71,17 @@ type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// - **on**: Enabled.
+	// 	- **on**: enabled.
 	//
-	// - **off**: Disabled.
+	// 	- **off**: disabled.
 	//
 	// example:
 	//
 	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The type of the rule.
+	// The type of the rule. Valid values:
 	//
-	// - pullin: The traffic routing rule.
+	// 	- **pullin**: The traffic redirection rule of the hybrid cloud cluster.
 	//
 	// example:
 	//

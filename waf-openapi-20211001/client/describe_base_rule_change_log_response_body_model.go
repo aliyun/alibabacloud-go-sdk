@@ -18,16 +18,11 @@ type iDescribeBaseRuleChangeLogResponseBody interface {
 }
 
 type DescribeBaseRuleChangeLogResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 6FBF08CB-8691-5B65-BBF8-***
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of ruleset changes.
-	Rules []*DescribeBaseRuleChangeLogResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of rule change entries in the list.
-	//
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     []*DescribeBaseRuleChangeLogResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 63
@@ -83,36 +78,22 @@ func (s *DescribeBaseRuleChangeLogResponseBody) Validate() error {
 }
 
 type DescribeBaseRuleChangeLogResponseBodyRules struct {
-	// The CVE ID of the vulnerability associated with the system rule.
-	//
 	// example:
 	//
 	// CVE-2021-34538
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The operation type. Valid values:
-	//
-	// - add: Add.
-	//
-	// - modify: Modify.
-	//
 	// example:
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The rule ID.
-	//
 	// example:
 	//
 	// 42755
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The rule name.
-	//
 	// example:
 	//
 	// Header XSS Scanner Behavior
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The update time of the rule.
-	//
 	// example:
 	//
 	// 1665460629000

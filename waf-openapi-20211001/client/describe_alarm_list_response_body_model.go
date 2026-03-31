@@ -16,10 +16,7 @@ type iDescribeAlarmListResponseBody interface {
 }
 
 type DescribeAlarmListResponseBody struct {
-	// The alerts.
 	Alarms []*DescribeAlarmListResponseBodyAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 8D8EBFB7-E1EB-5236-952A-092EDC72***
@@ -66,62 +63,30 @@ func (s *DescribeAlarmListResponseBody) Validate() error {
 }
 
 type DescribeAlarmListResponseBodyAlarms struct {
-	// The cause of the alert. Valid values:
-	//
-	// - **fivefold**: The QPS exceeds the limit of the current WAF instance specifications.
-	//
-	// - **4count**: The actual QPS has cumulatively exceeded the limit of the current WAF instance specifications.
-	//
-	// - **exceed10w**: The peak QPS exceeds 100,000.
-	//
-	// - **costProtection**: Billing protection is triggered.
-	//
 	// example:
 	//
 	// 4count
 	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
-	// The end time of the alert. This is a UNIX timestamp. Unit: milliseconds.
-	//
 	// example:
 	//
 	// 1605600798
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The peak QPS during the alert period.
-	//
 	// example:
 	//
 	// 12000
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	// The QPS limit of the current WAF instance specifications.
-	//
 	// example:
 	//
 	// 10000
 	Spec *int64 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The start time of the alert. This is a UNIX timestamp. Unit: milliseconds.
-	//
 	// example:
 	//
 	// 1605600767
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The current status of the alert. Valid values:
-	//
-	// - **1**: The queries per second (QPS) limit is exceeded.
-	//
-	// - **2**: The WAF instance enters the sandbox.
-	//
-	// - **3**: The WAF instance is removed from the sandbox.
-	//
-	// - **4**: The QPS no longer exceeds the limit.
-	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the alert. Valid value:
-	//
-	// - **qps**: a QPS alert.
-	//
 	// example:
 	//
 	// qps

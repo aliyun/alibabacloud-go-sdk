@@ -24,33 +24,11 @@ type iModifyLogDeliveryConfigRequest interface {
 }
 
 type ModifyLogDeliveryConfigRequest struct {
-	// The details of the log delivery configuration, in JSON format.
+	// The content of the log delivery configuration. Set the value to a JSON string that contains multiple parameters.
 	//
-	// > The value of this parameter is the same as the **DeliveryDetail*	- parameter of the **CreateLogDeliveryConfig*	- operation. For more information, see [CreateLogDeliveryConfig]().
+	// >  This parameter is the same as the **DeliveryDetail*	- parameter of the **CreateLogDeliveryConfig*	- operation. For more information, see **Parameter description for log delivery configuration*	- of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "rfcVersion": "rfc3164",
-	//
-	//   "protocol": "tcp",
-	//
-	//   "servers": [
-	//
-	//     {
-	//
-	//       "address": "1.1.1.1",
-	//
-	//       "port": 20
-	//
-	//     }
-	//
-	//   ]
-	//
-	// }
 	DeliveryDetail *string `json:"DeliveryDetail,omitempty" xml:"DeliveryDetail,omitempty"`
 	// The name of the log delivery configuration that you want to modify.
 	//
@@ -60,21 +38,21 @@ type ModifyLogDeliveryConfigRequest struct {
 	//
 	// test1
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The type of the log delivery destination. Valid values:
+	// The type of the log delivery configuration that you want to modify. Valid values:
 	//
-	// - **syslog**: delivers logs to a syslog server.
+	// 	- **syslog**: Logs are delivered to a syslog service.
 	//
-	// - **kafka**: delivers logs to a Kafka cluster.
+	// 	- **kafka**: Logs are delivered to a Kafka service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// syslog
+	// kafka
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -82,17 +60,17 @@ type ModifyLogDeliveryConfigRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

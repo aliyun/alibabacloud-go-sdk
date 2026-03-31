@@ -16,9 +16,9 @@ type iDescribeLogDeliveryConfigResponseBody interface {
 }
 
 type DescribeLogDeliveryConfigResponseBody struct {
-	// The log delivery configuration.
+	// The information about the log delivery configuration.
 	DeliveryConfig *DescribeLogDeliveryConfigResponseBodyDeliveryConfig `json:"DeliveryConfig,omitempty" xml:"DeliveryConfig,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,31 +62,9 @@ func (s *DescribeLogDeliveryConfigResponseBody) Validate() error {
 }
 
 type DescribeLogDeliveryConfigResponseBodyDeliveryConfig struct {
-	// The details of the log delivery configuration, in JSON format.
+	// The content of the log delivery configuration. The value is a JSON string that contains multiple parameters.
 	//
-	// > This parameter is the same as the **DeliveryDetail*	- parameter of the **CreateLogDeliveryConfig*	- operation. For more information, see [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~).
-	//
-	// example:
-	//
-	// {
-	//
-	//   "rfcVersion": "rfc3164",
-	//
-	//   "protocol": "tcp",
-	//
-	//   "servers": [
-	//
-	//     {
-	//
-	//       "address": "1.1.1.1",
-	//
-	//       "port": 20
-	//
-	//     }
-	//
-	//   ]
-	//
-	// }
+	// >  This parameter is the same as the **DeliveryDetail*	- parameter of the **CreateLogDeliveryConfig*	- operation. For more information, see **Parameter description for log delivery configuration*	- of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
 	DeliveryDetail *string `json:"DeliveryDetail,omitempty" xml:"DeliveryDetail,omitempty"`
 	// The name of the log delivery configuration.
 	//
@@ -96,9 +74,9 @@ type DescribeLogDeliveryConfigResponseBodyDeliveryConfig struct {
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
 	// The type of the log delivery configuration. Valid values:
 	//
-	// - **syslog**: The logs are delivered to a syslog service.
+	// 	- **syslog**: Logs are delivered to a syslog service.
 	//
-	// - **kafka**: The logs are delivered to a Kafka service.
+	// 	- **kafka**: Logs are delivered to a Kafka service.
 	//
 	// example:
 	//

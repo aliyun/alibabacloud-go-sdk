@@ -18,7 +18,7 @@ type iDescribeCloudResourcesResponseBody interface {
 }
 
 type DescribeCloudResourcesResponseBody struct {
-	// A list of cloud services.
+	// The cloud service resources that are added to WAF.
 	CloudResources []*DescribeCloudResourcesResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeCloudResourcesResponseBody struct {
 	//
 	// C327F81A-CCE2-5B21-817C-F93E29C5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of cloud services found.
+	// The total number of cloud service resources returned.
 	//
 	// example:
 	//
@@ -83,35 +83,35 @@ func (s *DescribeCloudResourcesResponseBody) Validate() error {
 }
 
 type DescribeCloudResourcesResponseBodyCloudResources struct {
-	// The number of HTTP ports that are added to WAF.
+	// The number of the HTTP ports that are added to WAF.
 	//
-	// > This parameter is returned only for ECS and CLB instances.
+	// >  This parameter is returned only if the cloud service is ECS or CLB.
 	//
 	// example:
 	//
 	// 1
 	HttpPortCount *int32 `json:"HttpPortCount,omitempty" xml:"HttpPortCount,omitempty"`
-	// The number of HTTPS ports that are added to WAF.
+	// The number of the HTTPS ports that are added to WAF.
 	//
-	// > This parameter is returned only for ECS and CLB instances.
+	// >  This parameter is returned only if the cloud service is ECS or CLB.
 	//
 	// example:
 	//
 	// 1
 	HttpsPortCount *int32 `json:"HttpsPortCount,omitempty" xml:"HttpsPortCount,omitempty"`
-	// The UID of the account to which the resource belongs.
+	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// example:
 	//
 	// 11769793******
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The domain name of the resource. This parameter is returned for FC or SAE instances.
+	// The domain name. This parameter has a value only if the value of ResourceProduct is fc or sae.
 	//
 	// example:
 	//
 	// test-resource-domain
 	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
-	// The name of the function. This parameter is returned for FC instances.
+	// The function name. This parameter has a value only if the value of ResourceProduct is fc.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
 	// Deprecated
 	//
-	// The ID of the resource instance.
+	// The ID of the resource.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
 	// Deprecated
 	//
-	// The name of the instance.
+	// The name of the resource.
 	//
 	// example:
 	//
@@ -153,39 +153,37 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The cloud service to which the resource belongs. Valid values:
 	//
-	// - **alb**: ALB
+	// 	- **alb**: ALB.
 	//
-	// - **mse**: MSE
+	// 	- **mse**: MSE.
 	//
-	// - **fc**: FC
+	// 	- **fc**: Function Compute.
 	//
-	// - **sae**: SAE
+	// 	- **sae**: SAE.
 	//
-	// - **ecs**: ECS
+	// 	- **ecs**: ECS.
 	//
-	// - **clb4**: CLB that uses TCP
+	// 	- **clb4**: Layer 4 CLB.
 	//
-	// - **clb7**: CLB that uses HTTP or HTTPS
-	//
-	// - **nlb**: NLB
+	// 	- **clb7**: Layer 7 CLB.
 	//
 	// example:
 	//
 	// alb
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
-	// The region where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The name of the route. This parameter is returned for MSE instances.
+	// The route name. This parameter has a value only if the value of ResourceProduct is mse.
 	//
 	// example:
 	//
 	// test-route-name
 	ResourceRouteName *string `json:"ResourceRouteName,omitempty" xml:"ResourceRouteName,omitempty"`
-	// The name of the service. This parameter is returned for FC instances.
+	// The service name. This parameter has a value only if the value of ResourceProduct is fc.
 	//
 	// example:
 	//

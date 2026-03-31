@@ -16,13 +16,13 @@ type iDescribeVisitTopIpResponseBody interface {
 }
 
 type DescribeVisitTopIpResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5D2B8DAE-A761-58CB-A68D-74989E4831DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 IP addresses that initiate the most requests.
+	// The array of the top 10 IP addresses from which requests are sent.
 	TopIp []*DescribeVisitTopIpResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeVisitTopIpResponseBody) Validate() error {
 }
 
 type DescribeVisitTopIpResponseBodyTopIp struct {
-	// The code of the geographical location.
+	// The ordinal number of the area to which the IP address belongs.
 	//
 	// example:
 	//
 	// 310000
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The total number of requests that are initiated from the IP address.
+	// The total number of requests that are sent from the IP address.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeVisitTopIpResponseBodyTopIp struct {
 	//
 	// 1.1.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The Internet service provider (ISP).
+	// The ISP.
 	//
 	// example:
 	//

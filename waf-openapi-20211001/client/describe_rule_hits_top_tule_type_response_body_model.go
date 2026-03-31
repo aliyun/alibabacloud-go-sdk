@@ -22,7 +22,7 @@ type DescribeRuleHitsTopTuleTypeResponseBody struct {
 	//
 	// 45E377CE-0B04-578E-B653-EEA63CFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 protection rule types that were hit.
+	// The top 10 protection modules that are matched.
 	RuleHitsTopTuleType []*DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType `json:"RuleHitsTopTuleType,omitempty" xml:"RuleHitsTopTuleType,omitempty" type:"Repeated"`
 }
 
@@ -66,33 +66,33 @@ func (s *DescribeRuleHitsTopTuleTypeResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType struct {
-	// The number of requests that hit the rule.
+	// The number of requests that match protection rules.
 	//
 	// example:
 	//
 	// 698455
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The type of rule that was hit. This parameter is not returned by default, which indicates that data for all rule types is returned.
+	// The type of rule that is matched. By default, this parameter is not returned. This indicates that all types of rules that are matched are returned.
 	//
-	// - **waf**: basic protection rules.
+	// 	- **waf:*	- basic protection rules.
 	//
-	// - **blacklist**: IP address blacklist.
+	// 	- **blacklist:*	- IP address blacklist rules.
 	//
-	// - **custom**: custom rules.
+	// 	- **custom:*	- custom rules.
 	//
-	// - **antiscan**: scan protection rules.
+	// 	- **antiscan:*	- scan protection rules.
 	//
-	// - **cc_system**: HTTP flood protection rules.
+	// 	- **cc_system:*	- HTTP flood protection rules.
 	//
-	// - **region_block**: location blacklist.
+	// 	- **region_block:*	- region blacklist rules.
 	//
-	// - **scene**: bot management.
+	// 	- **scene:*	- bot management rules.
 	//
-	// - **dlp**: data leak prevention.
+	// 	- **dlp:*	- data leakage prevention rules.
 	//
 	// example:
 	//
-	// blacklist
+	// cc_system
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 

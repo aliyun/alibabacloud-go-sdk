@@ -18,28 +18,16 @@ type iDescribeChargeModuleRequest interface {
 }
 
 type DescribeChargeModuleRequest struct {
-	// The billing method of the instance. Valid values:
-	//
-	// - **POSTPAY**: a pay-as-you-go WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q

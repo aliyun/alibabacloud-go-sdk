@@ -16,7 +16,7 @@ type iDescribeFreeUserEventsResponseBody interface {
 }
 
 type DescribeFreeUserEventsResponseBody struct {
-	// The list of security events detected by the basic scan.
+	// The security events on which basic detection is performed.
 	Event []*DescribeFreeUserEventsResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,45 +66,45 @@ func (s *DescribeFreeUserEventsResponseBody) Validate() error {
 }
 
 type DescribeFreeUserEventsResponseBodyEvent struct {
-	// The API path.
+	// The API.
 	//
 	// example:
 	//
 	// /api/login
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The attack IP address.
+	// The attacker IP address.
 	//
 	// example:
 	//
 	// 104.234.140.**
 	AttackIP *string `json:"AttackIP,omitempty" xml:"AttackIP,omitempty"`
-	// The time of the attack. This value is a UNIX timestamp. Unit: seconds.
+	// The time at which the attack was launched. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683703260
 	AttackTime *int64 `json:"AttackTime,omitempty" xml:"AttackTime,omitempty"`
-	// The domain name to which the API belongs.
+	// The domain name of the API.
 	//
 	// example:
 	//
 	// www.***.cn
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The event level. Valid values:
+	// The severity level of the security event. Valid values:
 	//
-	// - **high**: high risk.
+	// 	- **high**
 	//
-	// - **medium**: medium risk.
+	// 	- **medium**
 	//
-	// - **low**: low risk.
+	// 	- **low**
 	//
 	// example:
 	//
 	// high
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event type.
+	// The type of the security event.
 	//
-	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported event types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of security events.
 	//
 	// example:
 	//

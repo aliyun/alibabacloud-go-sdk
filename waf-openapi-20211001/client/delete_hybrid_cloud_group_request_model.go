@@ -22,44 +22,28 @@ type iDeleteHybridCloudGroupRequest interface {
 }
 
 type DeleteHybridCloudGroupRequest struct {
-	// The ID of the hybrid cloud cluster.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the node group.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-*****tm005
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q

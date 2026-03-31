@@ -24,17 +24,17 @@ type DescribeSecurityEventLogsResponseBody struct {
 	//
 	// example:
 	//
-	// D827FCFE-90A7-4330-9326-******4C7726
+	// D827FCFE-90A7-4330-9326-D33C8B4C7726
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of detailed attack logs.
+	// The attack logs returned.
 	SecurityEventLogs []interface{} `json:"SecurityEventLogs,omitempty" xml:"SecurityEventLogs,omitempty" type:"Repeated"`
-	// The total number of attack logs found.
+	// The total number of logs returned.
 	//
 	// example:
 	//
 	// 1000
 	SecurityEventLogsTotalCount *int64 `json:"SecurityEventLogsTotalCount,omitempty" xml:"SecurityEventLogsTotalCount,omitempty"`
-	// The metadata of the returned data.
+	// The metadata of the time series data returned.
 	SecurityEventMetaData *DescribeSecurityEventLogsResponseBodySecurityEventMetaData `json:"SecurityEventMetaData,omitempty" xml:"SecurityEventMetaData,omitempty" type:"Struct"`
 }
 
@@ -92,9 +92,9 @@ func (s *DescribeSecurityEventLogsResponseBody) Validate() error {
 }
 
 type DescribeSecurityEventLogsResponseBodySecurityEventMetaData struct {
-	// The time range used for the query.
+	// The time range that is used for the query.
 	DateRange *DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
-	// The unit of the returned statistical data.
+	// The unit of the statistics returned. The value is fixed as requests.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) Validate() 
 }
 
 type DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange struct {
-	// The end of the time range used for the query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start of the time range used for the query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
 	//
 	// example:
 	//

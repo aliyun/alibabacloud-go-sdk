@@ -16,9 +16,9 @@ type iDescribeApisecUserOperationsResponseBody interface {
 }
 
 type DescribeApisecUserOperationsResponseBody struct {
-	// The user operation records for API security.
+	// The operation records.
 	Data []*DescribeApisecUserOperationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,81 +66,72 @@ func (s *DescribeApisecUserOperationsResponseBody) Validate() error {
 }
 
 type DescribeApisecUserOperationsResponseBodyData struct {
-	// The status of the threat detection or security event before the operation was performed.
+	// The state before the operation.
 	//
-	// Valid values for threat detection:
+	// Valid values of the risk state:
 	//
-	// - **toBeConfirmed**: to be confirmed.
+	// 	- **toBeConfirmed**
 	//
-	// - **confirmed**: confirmed.
+	// 	- **confirmed**
 	//
-	// - **toBeFixed**: to be fixed.
+	// 	- **toBeFixed**
 	//
-	// - **fixed**: fixed.
+	// 	- **fixed**
 	//
-	// - **ignored**: ignored.
+	// 	- **ignored**
 	//
-	// Valid values for a security event:
+	// Valid values of the event state:
 	//
-	// - **toBeConfirmed**: to be confirmed.
+	// 	- **toBeConfirmed**
 	//
-	// - **confirmed**: confirmed.
+	// 	- **confirmed**
 	//
-	// - **ignored**: ignored.
+	// 	- **ignored**
 	//
 	// example:
 	//
 	// ignored
 	FromStatus *string `json:"FromStatus,omitempty" xml:"FromStatus,omitempty"`
-	// The remarks that the user added to the operation record.
+	// The remarks.
 	//
 	// example:
 	//
-	// Procesed
+	// Handled
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The ID of the threat detection or security event associated with the operation record.
+	// The object ID of the operation record.
 	//
 	// example:
 	//
 	// 24d997acc48a67a01e09b9c5ad861287
-	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The source of the operation. Valid values:
-	//
-	// - **system**: the operation was automatically performed by the system.
-	//
-	// - **custom**: the operation was manually performed by a user.
-	//
-	// example:
-	//
-	// custom
+	ObjectId        *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	OperationSource *string `json:"OperationSource,omitempty" xml:"OperationSource,omitempty"`
-	// The time when the operation was performed. This value is a UNIX timestamp. Unit: seconds.
+	// The time at which the operation was performed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1685072214
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The status of the threat detection or security event after the operation was performed.
+	// The state after the operation.
 	//
-	// Valid values for threat detection:
+	// Valid values of the risk state:
 	//
-	// - **toBeConfirmed**: to be confirmed.
+	// 	- **toBeConfirmed**
 	//
-	// - **confirmed**: confirmed.
+	// 	- **confirmed**
 	//
-	// - **toBeFixed**: to be fixed.
+	// 	- **toBeFixed**
 	//
-	// - **fixed**: fixed.
+	// 	- **fixed**
 	//
-	// - **ignored**: ignored.
+	// 	- **ignored**
 	//
-	// Valid values for a security event:
+	// Valid values of the event state:
 	//
-	// - **toBeConfirmed**: to be confirmed.
+	// 	- **toBeConfirmed**
 	//
-	// - **confirmed**: confirmed.
+	// 	- **confirmed**
 	//
-	// - **ignored**: ignored.
+	// 	- **ignored**
 	//
 	// example:
 	//
@@ -148,15 +139,15 @@ type DescribeApisecUserOperationsResponseBodyData struct {
 	ToStatus *string `json:"ToStatus,omitempty" xml:"ToStatus,omitempty"`
 	// The type of the operation record. Valid values:
 	//
-	// - **abnormal**: threat detection.
+	// 	- **abnormal**: risk detection
 	//
-	// - **event**: security event.
+	// 	- **event**: security event
 	//
 	// example:
 	//
 	// abnormal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the user who performed the operation.
+	// The user ID.
 	//
 	// example:
 	//

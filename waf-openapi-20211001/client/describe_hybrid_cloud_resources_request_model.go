@@ -28,17 +28,17 @@ type iDescribeHybridCloudResourcesRequest interface {
 }
 
 type DescribeHybridCloudResourcesRequest struct {
-	// The IP address or domain name of the origin server for back-to-origin.
+	// The back-to-origin IP address or domain name.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
-	// Indicates whether public cloud disaster recovery is enabled. Valid values:
+	// Specifies whether the public cloud disaster recovery feature is enabled for the domain name. Valid values:
 	//
-	// - **true**
+	// 	- **true**
 	//
-	// - **false**
+	// 	- **false**
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeHybridCloudResourcesRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type DescribeHybridCloudResourcesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type DescribeHybridCloudResourcesRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
 	//
 	// example:
 	//

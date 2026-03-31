@@ -20,28 +20,18 @@ type iAddAddressRequest interface {
 }
 
 type AddAddressRequest struct {
-	// The addresses to add to the address book.
-	//
 	// This parameter is required.
 	AddressList []*string `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
-	// The ID of the WAF instance.
-	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the WAF instance ID.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the address book.
-	//
 	// This parameter is required.
 	//
 	// example:

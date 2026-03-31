@@ -40,19 +40,17 @@ type iDescribeSensitiveRequestLogRequest interface {
 }
 
 type DescribeSensitiveRequestLogRequest struct {
-	// The account that initiated the request.
-	//
 	// example:
 	//
 	// admin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The API path.
+	// The API.
 	//
 	// example:
 	//
 	// /api/users/login
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The client IP address.
+	// The IP address.
 	//
 	// example:
 	//
@@ -60,13 +58,13 @@ type DescribeSensitiveRequestLogRequest struct {
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter is available only for hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about hybrid cloud clusters.
+	// >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
 	//
 	// example:
 	//
 	// 433
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	// The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -74,7 +72,7 @@ type DescribeSensitiveRequestLogRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -100,37 +98,37 @@ type DescribeSensitiveRequestLogRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of sensitive data.
+	// The type of the sensitive data.
 	//
-	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
 	//
 	// example:
 	//
 	// 1000,1001
 	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
-	// The sensitive data in the response.
+	// The response sensitive data.
 	//
 	// example:
 	//
 	// user
 	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	// The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//

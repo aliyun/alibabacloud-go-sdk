@@ -28,76 +28,39 @@ type iModifyDomainCertRequest interface {
 }
 
 type ModifyDomainCertRequest struct {
-	// The ID of the certificate.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of the cipher suite. Valid values:
-	//
-	// - **1**: all cipher suites.
-	//
-	// - **2**: strong cipher suites.
-	//
-	// - **99**: custom cipher suites.
-	//
 	// example:
 	//
 	// 1
-	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites. This parameter is available only when you set **CipherSuite*	- to **99**.
+	CipherSuite   *string   `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	// The domain name that is added to WAF in CNAME record mode.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether to enable TLS 1.3. Valid values:
-	//
-	// - **true**: TLS 1.3 is enabled.
-	//
-	// - **false**: TLS 1.3 is disabled.
-	//
 	// example:
 	//
 	// false
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-ww**b06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Transport Layer Security (TLS) version. Valid values:
-	//
-	// - **tlsv1**
-	//
-	// - **tlsv1.1**
-	//
-	// - **tlsv1.2**
-	//
 	// example:
 	//
 	// tlsv1

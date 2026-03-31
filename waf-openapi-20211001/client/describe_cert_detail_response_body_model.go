@@ -18,7 +18,7 @@ type iDescribeCertDetailResponseBody interface {
 type DescribeCertDetailResponseBody struct {
 	// The details of the certificate.
 	CertDetail *DescribeCertDetailResponseBodyCertDetail `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ func (s *DescribeCertDetailResponseBody) Validate() error {
 }
 
 type DescribeCertDetailResponseBodyCertDetail struct {
-	// The time when the certificate expires. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	// The time when the certificate was issued. Unit: milliseconds.
+	// The time when the certificate was issued. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1976256736582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The certificate ID.
+	// The ID of the certificate.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//

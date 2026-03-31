@@ -20,34 +20,18 @@ type iModifyResourceLogDeliveryStatusResponseBody interface {
 }
 
 type ModifyResourceLogDeliveryStatusResponseBody struct {
-	// The name of the log delivery configuration.
-	//
 	// example:
 	//
 	// test1
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The type of log delivery destination for the protected object. Valid values:
-	//
-	// - **syslog**: logs are delivered to a syslog server.
-	//
-	// - **kafka**: logs are delivered to a Kafka cluster.
-	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether log delivery is enabled for the protected object. Valid values:
-	//
-	// - **true**: Log delivery is enabled.
-	//
-	// - **false**: Log delivery is disabled.
-	//
 	// example:
 	//
 	// true

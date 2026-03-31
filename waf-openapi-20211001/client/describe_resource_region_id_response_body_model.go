@@ -22,7 +22,7 @@ type DescribeResourceRegionIdResponseBody struct {
 	//
 	// F5905D3F-F674-5177-9E48-466DD3B8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The region IDs of cloud service resources that can be added to WAF by using the SDK.
+	// The region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode.
 	ResourceRegionIds []*string `json:"ResourceRegionIds,omitempty" xml:"ResourceRegionIds,omitempty" type:"Repeated"`
 }
 

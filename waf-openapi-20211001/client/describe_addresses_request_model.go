@@ -26,52 +26,32 @@ type iDescribeAddressesRequest interface {
 }
 
 type DescribeAddressesRequest struct {
-	// The address to use for a fuzzy match. If you specify this parameter, only addresses that contain the specified string are returned.
-	//
 	// example:
 	//
 	// 1.2.3.3
 	AddressLike *string `json:"AddressLike,omitempty" xml:"AddressLike,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
-	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 500. Default value: 20.
-	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next page of results. Set this parameter to the value of **NextToken*	- that is returned from the previous call. Do not specify this parameter for the first call.
-	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-acfm4gh****wela
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the address book to query.
-	//
 	// example:
 	//
 	// 12345678

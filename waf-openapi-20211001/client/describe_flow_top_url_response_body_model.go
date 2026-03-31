@@ -22,7 +22,7 @@ type DescribeFlowTopUrlResponseBody struct {
 	//
 	// 520D4E4C-B8EC-5602-ACB6-4D378ACBA28D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 URLs that are most frequently accessed.
+	// The array of the top 10 URLs that are used to initiate requests.
 	RuleHitsTopUrl []*DescribeFlowTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeFlowTopUrlResponseBody) Validate() error {
 }
 
 type DescribeFlowTopUrlResponseBodyRuleHitsTopUrl struct {
-	// The total number of requests for the URL.
+	// The total number of requests that are initiated by using the URL.
 	//
 	// example:
 	//
 	// 181174784
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The requested URL.
+	// The URL that is used to initiate requests.
 	//
 	// example:
 	//

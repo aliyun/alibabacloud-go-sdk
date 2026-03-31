@@ -22,11 +22,11 @@ type iDescribePunishedDomainsRequest interface {
 }
 
 type DescribePunishedDomainsRequest struct {
-	// The list of domain names added to WAF.
+	// The domain names that are added to WAF.
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -34,21 +34,21 @@ type DescribePunishedDomainsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-uqm****qa07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The penalty type. Valid values:
+	// The type of punishment. Valid values:
 	//
-	// - **beian*	- (default): ICP filing center.
+	// 	- **beian*	- (default): the filing center.
 	//
-	// - **punishCenter**: penalty center.
+	// 	- **punishCenter**: the punishment center.
 	//
 	// example:
 	//
 	// beian
 	PunishType *string `json:"PunishType,omitempty" xml:"PunishType,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

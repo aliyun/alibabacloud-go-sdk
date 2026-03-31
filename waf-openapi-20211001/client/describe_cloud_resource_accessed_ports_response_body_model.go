@@ -18,11 +18,11 @@ type iDescribeCloudResourceAccessedPortsResponseBody interface {
 }
 
 type DescribeCloudResourceAccessedPortsResponseBody struct {
-	// The HTTP port.
+	// The HTTP ports.
 	Http []*int32 `json:"Http,omitempty" xml:"Http,omitempty" type:"Repeated"`
-	// The HTTPS port.
+	// The HTTPS ports.
 	Https []*int32 `json:"Https,omitempty" xml:"Https,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

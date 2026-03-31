@@ -22,9 +22,9 @@ type iDescribePrepayDailyBillsRequest interface {
 }
 
 type DescribePrepayDailyBillsRequest struct {
-	// ID of the WAF instance.
+	// The ID of the WAF instance.
 	//
-	// > To view your WAF instance ID, call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
+	// >  You can call the [DescribePayInfo](https://help.aliyun.com/document_detail/86651.html) operation to query the ID of your WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,29 +32,29 @@ type DescribePrepayDailyBillsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Page number of the returned list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of entries per page. Default value: **10**.
+	// The number of entries per page. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Region where the WAF instance is deployed. Valid values:
+	// The region ID of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ID of the Alibaba Cloud resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iModifyCloudResourceResponseBody interface {
 }
 
 type ModifyCloudResourceResponseBody struct {
-	// The ID of the cloud resource that is added to WAF.
+	// The ID of the resource that is added to WAF.
 	//
 	// example:
 	//
 	// lb-xxx-80-clb7
 	CloudResource *string `json:"CloudResource,omitempty" xml:"CloudResource,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

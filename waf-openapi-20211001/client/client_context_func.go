@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds one or more IP addresses or CIDR blocks to an address book in a Web Application Firewall (WAF) instance. Address books can be referenced in protection rules for centralized IP address management.
+// 地址簿添加地址
 //
 // @param request - AddAddressRequest
 //
@@ -125,7 +125,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Clears all addresses from a Web Application Firewall (WAF) address book.
+// 地址簿清空所有地址
 //
 // @param request - ClearAddressRequest
 //
@@ -177,7 +177,7 @@ func (client *Client) ClearAddressWithContext(ctx context.Context, request *Clea
 
 // Summary:
 //
-// Clears the IP blacklist for a critical event protection rule.
+// Clears an IP address blacklist for major event protection.
 //
 // @param request - ClearMajorProtectionBlackIpRequest
 //
@@ -237,7 +237,7 @@ func (client *Client) ClearMajorProtectionBlackIpWithContext(ctx context.Context
 
 // Summary:
 //
-// Copies a protection template.
+// Creates a new protection template from the copy.
 //
 // @param request - CopyDefenseTemplateRequest
 //
@@ -293,7 +293,7 @@ func (client *Client) CopyDefenseTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a task to export API security data.
+// Creates a data export task in the API security module.
 //
 // @param request - CreateApiExportRequest
 //
@@ -429,7 +429,7 @@ func (client *Client) CreateCertsWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Integrates cloud products with Web Application Firewall (WAF). Currently, only Elastic Compute Service (ECS) and Classic Load Balancer (CLB) are supported.
+// Adds a service to Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param tmpReq - CreateCloudResourceRequest
 //
@@ -507,7 +507,7 @@ func (client *Client) CreateCloudResourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Adds an extension certificate for cloud native mode.
+// 添加云产品接入的扩展证书
 //
 // @param request - CreateCloudResourceExtensionCertRequest
 //
@@ -567,7 +567,7 @@ func (client *Client) CreateCloudResourceExtensionCertWithContext(ctx context.Co
 
 // Summary:
 //
-// Creates a protected object.
+// 创建防护对象
 //
 // @param tmpReq - CreateDefenseResourceRequest
 //
@@ -807,7 +807,7 @@ func (client *Client) CreateDefenseRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a protection template in Web Application Firewall (WAF).
+// Creates a protection rule template.
 //
 // @param request - CreateDefenseTemplateRequest
 //
@@ -895,7 +895,7 @@ func (client *Client) CreateDefenseTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds a domain name to a Web Application Firewall (WAF) instance for protection.
+// Adds a domain name to Web Application Firewall (WAF).
 //
 // @param tmpReq - CreateDomainRequest
 //
@@ -977,7 +977,7 @@ func (client *Client) CreateDomainWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// Creates a hybrid cloud Web Application Firewall (WAF) cluster.
+// Creates a hybrid cloud cluster.
 //
 // @param request - CreateHybridCloudClusterRequest
 //
@@ -1081,7 +1081,7 @@ func (client *Client) CreateHybridCloudClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a Hybrid Cloud Web Application Firewall (WAF) cluster rule.
+// 新增集群规则信息
 //
 // @param request - CreateHybridCloudClusterRuleRequest
 //
@@ -1149,7 +1149,7 @@ func (client *Client) CreateHybridCloudClusterRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a node group in a Hybrid Cloud Web Application Firewall (WAF) cluster.
+// Creates a node group for a hybrid cloud cluster.
 //
 // @param request - CreateHybridCloudGroupRequest
 //
@@ -1229,7 +1229,7 @@ func (client *Client) CreateHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a log delivery configuration for a Web Application Firewall (WAF) instance in a hybrid cloud.
+// Creates a hybrid cloud log delivery configuration.
 //
 // @param request - CreateLogDeliveryConfigRequest
 //
@@ -1293,7 +1293,7 @@ func (client *Client) CreateLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an IP address blacklist for critical event protection.
+// Creates an IP address blacklist for major event protection.
 //
 // Description:
 //
@@ -1369,7 +1369,7 @@ func (client *Client) CreateMajorProtectionBlackIpWithContext(ctx context.Contex
 
 // Summary:
 //
-// Adds member accounts to use the multi-account management feature of Web Application Firewall (WAF).
+// Adds members to use the multi-account management feature of Web Application Firewall (WAF).
 //
 // @param request - CreateMemberAccountsRequest
 //
@@ -1429,7 +1429,7 @@ func (client *Client) CreateMemberAccountsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Starts a trial for a proof of concept (POC) feature.
+// 开启防护功能POC
 //
 // @param request - CreatePocFunctionRequest
 //
@@ -1533,7 +1533,7 @@ func (client *Client) CreatePostpaidInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Uploads an SM certificate for CNAME record access to Web Application Firewall (WAF).
+// Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
 //
 // @param request - CreateSM2CertRequest
 //
@@ -1605,7 +1605,7 @@ func (client *Client) CreateSM2CertWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Deletes addresses from an address book.
+// 地址簿添加地址
 //
 // @param request - DeleteAddressRequest
 //
@@ -1661,7 +1661,7 @@ func (client *Client) DeleteAddressWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes API security risks in a batch.
+// Deletes multiple risks detected by the API security module at a time.
 //
 // @param request - DeleteApisecAbnormalsRequest
 //
@@ -1721,7 +1721,7 @@ func (client *Client) DeleteApisecAbnormalsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes API security events in batches.
+// Deletes multiple security events detected by the API security module at a time.
 //
 // @param request - DeleteApisecEventsRequest
 //
@@ -1785,7 +1785,7 @@ func (client *Client) DeleteApisecEventsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Removes a cloud service from Web Application Firewall (WAF). This operation currently supports only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
+// Removes a service from Web Application Firewall (WAF). This operation is supported for only the Elastic Compute Service (ECS) and Classic Load Balancer (CLB) services.
 //
 // @param request - DeleteCloudResourceRequest
 //
@@ -1853,7 +1853,7 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes an extension certificate for cloud native mode.
+// 删除云产品接入的扩展证书
 //
 // @param request - DeleteCloudResourceExtensionCertRequest
 //
@@ -1913,7 +1913,7 @@ func (client *Client) DeleteCloudResourceExtensionCertWithContext(ctx context.Co
 
 // Summary:
 //
-// Deletes a protected object.
+// 删除单个防护对象
 //
 // @param request - DeleteDefenseResourceRequest
 //
@@ -2025,7 +2025,7 @@ func (client *Client) DeleteDefenseResourceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes the specified protection rules.
+// Deletes a protection rule.
 //
 // @param request - DeleteDefenseRuleRequest
 //
@@ -2093,7 +2093,7 @@ func (client *Client) DeleteDefenseRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Unblocks an IP address that is blocked by the scan protection module.
+// 更新防护规则封禁Ip
 //
 // @param request - DeleteDefenseRuleBlockIpRequest
 //
@@ -2209,7 +2209,7 @@ func (client *Client) DeleteDefenseTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a domain name that has been added to Web Application Firewall (WAF) in CNAME record mode.
+// Deletes a domain name that is added to Web Application Firewall (WAF).
 //
 // @param request - DeleteDomainRequest
 //
@@ -2269,7 +2269,7 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a hybrid cloud cluster rule from a Web Application Firewall (WAF) instance.
+// 删除集群规则信息
 //
 // @param request - DeleteHybridCloudClusterRuleRequest
 //
@@ -2325,7 +2325,7 @@ func (client *Client) DeleteHybridCloudClusterRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a group.
+// 删除组信息
 //
 // @param request - DeleteHybridCloudGroupRequest
 //
@@ -2385,7 +2385,7 @@ func (client *Client) DeleteHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a log delivery configuration.
+// Delets a hybrid cloud log delivery configuration.
 //
 // @param request - DeleteLogDeliveryConfigRequest
 //
@@ -2441,7 +2441,7 @@ func (client *Client) DeleteLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes an IP address from the blacklist for critical event protection.
+// Deletes an IP address blacklist for major event protection.
 //
 // @param request - DeleteMajorProtectionBlackIpRequest
 //
@@ -2505,7 +2505,7 @@ func (client *Client) DeleteMajorProtectionBlackIpWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a Web Application Firewall (WAF) member account.
+// Removes the members that are added for multi-account management in Web Application Firewall (WAF).
 //
 // @param request - DeleteMemberAccountRequest
 //
@@ -2565,7 +2565,7 @@ func (client *Client) DeleteMemberAccountWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries abnormal cloud resources added in cloud native mode.
+// 查询异常的云产品接入资源
 //
 // @param request - DescribeAbnormalCloudResourcesRequest
 //
@@ -2617,7 +2617,7 @@ func (client *Client) DescribeAbnormalCloudResourcesWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries whether an account is a delegated administrator for Web Application Firewall (WAF) using the multi-account management feature.
+// Queries whether an Alibaba Cloud account is the delegated administrator account of a Web Application Firewall (WAF) instance.
 //
 // @param request - DescribeAccountDelegatedStatusRequest
 //
@@ -2669,7 +2669,7 @@ func (client *Client) DescribeAccountDelegatedStatusWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries a paginated list of addresses in an address book.
+// 分页查询地址簿IP
 //
 // @param request - DescribeAddressesRequest
 //
@@ -2737,7 +2737,7 @@ func (client *Client) DescribeAddressesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the alert banner information of a Web Application Firewall (WAF) instance.
+// 查询实例信息
 //
 // @param request - DescribeAlarmBannerRequest
 //
@@ -2789,7 +2789,7 @@ func (client *Client) DescribeAlarmBannerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of alerts.
+// 查询实例信息
 //
 // @param request - DescribeAlarmListRequest
 //
@@ -2841,7 +2841,7 @@ func (client *Client) DescribeAlarmListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a list of API security export tasks.
+// Queries the list of data export tasks in the API security module.
 //
 // @param request - DescribeApiExportsRequest
 //
@@ -2905,7 +2905,7 @@ func (client *Client) DescribeApiExportsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the API security risk statistics for domain names that are protected by Web Application Firewall (WAF).
+// Queries the statistics on domain names on which risks are detected by the API security module.
 //
 // @param request - DescribeApisecAbnormalDomainStatisticRequest
 //
@@ -2981,7 +2981,7 @@ func (client *Client) DescribeApisecAbnormalDomainStatisticWithContext(ctx conte
 
 // Summary:
 //
-// Queries the API security risks that are detected by Web Application Firewall (WAF).
+// Queries the list of API security risks.
 //
 // @param request - DescribeApisecAbnormalsRequest
 //
@@ -3097,7 +3097,7 @@ func (client *Client) DescribeApisecAbnormalsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of API security assets that are protected by Web Application Firewall (WAF).
+// Queries API assets in the API security module.
 //
 // @param request - DescribeApisecApiResourcesRequest
 //
@@ -3229,7 +3229,7 @@ func (client *Client) DescribeApisecApiResourcesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the trend of API assets detected by the API security module of Web Application Firewall (WAF).
+// Queries the asset trends in the API security module.
 //
 // @param request - DescribeApisecAssetTrendRequest
 //
@@ -3293,7 +3293,7 @@ func (client *Client) DescribeApisecAssetTrendWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of an API security event.
+// 查询安全事件详情
 //
 // @param request - DescribeApisecEventDetailRequest
 //
@@ -3361,7 +3361,7 @@ func (client *Client) DescribeApisecEventDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries API security event statistics grouped by domain name for a Web Application Firewall (WAF) instance.
+// Queries the statistics on domain names on which security events are detected by the API security module.
 //
 // @param request - DescribeApisecEventDomainStatisticRequest
 //
@@ -3437,7 +3437,7 @@ func (client *Client) DescribeApisecEventDomainStatisticWithContext(ctx context.
 
 // Summary:
 //
-// Queries a list of API security events.
+// Queries API security events.
 //
 // @param request - DescribeApisecEventsRequest
 //
@@ -3565,7 +3565,7 @@ func (client *Client) DescribeApisecEventsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the API security examples that are detected by Web Application Firewall (WAF).
+// 查询API安全样例信息
 //
 // @param request - DescribeApisecExamplesRequest
 //
@@ -3701,7 +3701,7 @@ func (client *Client) DescribeApisecLogDeliveriesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the list of domain names that are protected by API security.
+// Queries the list of domain names detected in the API security module.
 //
 // @param request - DescribeApisecMatchedHostsRequest
 //
@@ -3773,7 +3773,7 @@ func (client *Client) DescribeApisecMatchedHostsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves a list of active API security protection object groups.
+// Queries the list of protected object groups to which API security policies are applied.
 //
 // @param request - DescribeApisecProtectionGroupsRequest
 //
@@ -3841,7 +3841,7 @@ func (client *Client) DescribeApisecProtectionGroupsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the protected objects of a Web Application Firewall (WAF) instance for which API security is enabled.
+// Queries the list of protected objects to which API security policies are applied.
 //
 // @param request - DescribeApisecProtectionResourcesRequest
 //
@@ -3909,7 +3909,7 @@ func (client *Client) DescribeApisecProtectionResourcesWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the rules of an API security policy.
+// Queries the policies configured in the API security module.
 //
 // @param request - DescribeApisecRulesRequest
 //
@@ -3993,7 +3993,7 @@ func (client *Client) DescribeApisecRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries statistics on domain names where sensitive data is detected by the API security module.
+// Queries the statistics on domain names on which sensitive data is detected by the API security module.
 //
 // @param request - DescribeApisecSensitiveDomainStatisticRequest
 //
@@ -4189,7 +4189,7 @@ func (client *Client) DescribeApisecSlsProjectsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries statistics for API security risks or security events.
+// Queries the statistics of API security-related risks and events.
 //
 // @param request - DescribeApisecStatisticsRequest
 //
@@ -4261,7 +4261,7 @@ func (client *Client) DescribeApisecStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries security suggestions for API assets.
+// Queries the protection suggestions for APIs.
 //
 // @param request - DescribeApisecSuggestionsRequest
 //
@@ -4321,7 +4321,7 @@ func (client *Client) DescribeApisecSuggestionsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries user operation records for API security of Web Application Firewall (WAF).
+// Queries user operation records in the API security module.
 //
 // @param request - DescribeApisecUserOperationsRequest
 //
@@ -4385,7 +4385,7 @@ func (client *Client) DescribeApisecUserOperationsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries paged records of ruleset changes.
+// 分页查询基础防护规则集变化记录
 //
 // @param request - DescribeBaseRuleChangeLogRequest
 //
@@ -4449,7 +4449,7 @@ func (client *Client) DescribeBaseRuleChangeLogWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the system rules for Web Application Firewall (WAF) protection.
+// 查询基础防护系统规则集
 //
 // @param request - DescribeBaseSystemRulesRequest
 //
@@ -4541,7 +4541,7 @@ func (client *Client) DescribeBaseSystemRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the AppKey for bot management.
+// 分页查询防护模板
 //
 // @param request - DescribeBotAppKeyRequest
 //
@@ -4597,7 +4597,7 @@ func (client *Client) DescribeBotAppKeyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the labels of bot management rules.
+// 分页获取Bot管理规则标签信息
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -4665,7 +4665,7 @@ func (client *Client) DescribeBotRuleLabelsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves certificate details, including the certificate name, expiration time, issuance time, and associated domain name.
+// Queries the details of a certificate, such as the certificate name, expiration time, issuance time, and associated domain name.
 //
 // @param request - DescribeCertDetailRequest
 //
@@ -4721,7 +4721,7 @@ func (client *Client) DescribeCertDetailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the list of certificates for a user.
+// Queries the certificates issued for your domain names that are added to Web Application Firewall (WAF).
 //
 // @param request - DescribeCertsRequest
 //
@@ -4789,7 +4789,7 @@ func (client *Client) DescribeCertsWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Retrieves the billing module information of Web Application Firewall (WAF).
+// 查询WAF计价模块信息
 //
 // @param request - DescribeChargeModuleRequest
 //
@@ -4841,7 +4841,7 @@ func (client *Client) DescribeChargeModuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the billing results for Web Application Firewall (WAF).
+// 查询WAF计价模块的计价结果
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -4901,7 +4901,7 @@ func (client *Client) DescribeChargeResultWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves port details of cloud service instances onboarded to Web Application Firewall (WAF).
+// Queries the port details of a cloud service instance that is added to Web Application Firewall (WAF). This operation is supported only for Elastic Compute Service (ECS), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances.
 //
 // @param request - DescribeCloudResourceAccessPortDetailsRequest
 //
@@ -4977,7 +4977,7 @@ func (client *Client) DescribeCloudResourceAccessPortDetailsWithContext(ctx cont
 
 // Summary:
 //
-// Queries the ports of cloud services added to Web Application Firewall (WAF). This operation is supported only for Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
+// Queries the ports of the cloud service that is added to Web Application Firewall (WAF). This operation is supported for only Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
 //
 // @param request - DescribeCloudResourceAccessedPortsRequest
 //
@@ -5033,7 +5033,7 @@ func (client *Client) DescribeCloudResourceAccessedPortsWithContext(ctx context.
 
 // Summary:
 //
-// Queries a list of resources added to Web Application Firewall (WAF) in cloud native mode.
+// 查询云产品接入资源列表
 //
 // @param request - DescribeCloudResourceListRequest
 //
@@ -5113,7 +5113,7 @@ func (client *Client) DescribeCloudResourceListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of cloud services added to Web Application Firewall (WAF).
+// Queries cloud service resources that are added to Web Application Firewall (WAF).
 //
 // @param request - DescribeCloudResourcesRequest
 //
@@ -5209,7 +5209,7 @@ func (client *Client) DescribeCloudResourcesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the total number of domain names added to WAF, including those in canonical name (CNAME) mode and hybrid cloud mode.
+// Queries the total number of domain names that are added to Web Application Firewall (WAF) in CNAME record mode and hybrid cloud reverse proxy mode.
 //
 // @param request - DescribeCnameCountRequest
 //
@@ -5261,7 +5261,7 @@ func (client *Client) DescribeCnameCountWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries all log fields supported by Simple Log Service for Web Application Firewall (WAF).
+// 查询日志服务支持的所有字段
 //
 // @param tmpReq - DescribeCommonLogFieldsRequest
 //
@@ -5331,7 +5331,7 @@ func (client *Client) DescribeCommonLogFieldsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Describes the compilation result of a custom regular expression rule.
+// 查询自定义正则规则编译结果
 //
 // @param request - DescribeCustomBaseRuleCompileResultRequest
 //
@@ -5383,7 +5383,7 @@ func (client *Client) DescribeCustomBaseRuleCompileResultWithContext(ctx context
 
 // Summary:
 //
-// Checks whether the current WAF instance is under a Distributed Denial of Service (DDoS) attack.
+// Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
 //
 // @param request - DescribeDDoSStatusRequest
 //
@@ -5435,7 +5435,7 @@ func (client *Client) DescribeDDoSStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the default SSL/TLS settings of a Web Application Firewall (WAF) instance.
+// Queries the default SSL and Transport Layer Security (TLS) settings.
 //
 // @param request - DescribeDefaultHttpsRequest
 //
@@ -5487,7 +5487,7 @@ func (client *Client) DescribeDefaultHttpsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a paginated list of protected objects that can be associated with a defense group.
+// 分页查询可以被防护组绑定的防护对象列表
 //
 // @param request - DescribeDefenseGroupValidResourcesRequest
 //
@@ -5555,7 +5555,7 @@ func (client *Client) DescribeDefenseGroupValidResourcesWithContext(ctx context.
 
 // Summary:
 //
-// Retrieves the details of a protected object.
+// Queries the information about a protected object.
 //
 // @param request - DescribeDefenseResourceRequest
 //
@@ -5611,7 +5611,7 @@ func (client *Client) DescribeDefenseResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the details of a protected object group.
+// Queries the information about a protected object group.
 //
 // @param request - DescribeDefenseResourceGroupRequest
 //
@@ -5731,7 +5731,7 @@ func (client *Client) DescribeDefenseResourceGroupNamesWithContext(ctx context.C
 
 // Summary:
 //
-// Retrieves information about protected object groups using pagination.
+// Performs a pagination query to retrieve the information about protected object groups.
 //
 // @param request - DescribeDefenseResourceGroupsRequest
 //
@@ -5863,7 +5863,7 @@ func (client *Client) DescribeDefenseResourceNamesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the asset owner account of protected objects in multi-account management scenarios.
+// 查询防护对象和所属资源的关系
 //
 // @param request - DescribeDefenseResourceOwnerUidRequest
 //
@@ -5919,7 +5919,7 @@ func (client *Client) DescribeDefenseResourceOwnerUidWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the protection templates associated with a protected object or protected object group.
+// Queries the protection templates that are associated with a protected object or protected object group.
 //
 // @param request - DescribeDefenseResourceTemplatesRequest
 //
@@ -5995,7 +5995,7 @@ func (client *Client) DescribeDefenseResourceTemplatesWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries a list of protected objects.
+// Queries protected objects by page.
 //
 // @param request - DescribeDefenseResourcesRequest
 //
@@ -6063,7 +6063,7 @@ func (client *Client) DescribeDefenseResourcesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of a specified protection rule.
+// Queries a protection rule.
 //
 // @param request - DescribeDefenseRuleRequest
 //
@@ -6131,7 +6131,7 @@ func (client *Client) DescribeDefenseRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the statistics of rules in a specified Web Application Firewall (WAF) protection module.
+// 查询防护规则的统计信息
 //
 // @param request - DescribeDefenseRuleStatisticsRequest
 //
@@ -6203,7 +6203,7 @@ func (client *Client) DescribeDefenseRuleStatisticsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a paginated list of protection rules.
+// Queries protection rules by page.
 //
 // @param request - DescribeDefenseRulesRequest
 //
@@ -6275,7 +6275,7 @@ func (client *Client) DescribeDefenseRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the protection configurations for a specific defense scenario.
+// 查询用户防护场景的配置
 //
 // @param request - DescribeDefenseSceneConfigRequest
 //
@@ -6335,7 +6335,7 @@ func (client *Client) DescribeDefenseSceneConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the details of a specific protection template.
+// Queries a protection rule template.
 //
 // @param request - DescribeDefenseTemplateRequest
 //
@@ -6391,7 +6391,7 @@ func (client *Client) DescribeDefenseTemplateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the names of protected object groups that can be associated with a specific protection template.
+// Queries the names of protected object groups for which a protection template can take effect.
 //
 // @param request - DescribeDefenseTemplateValidGroupsRequest
 //
@@ -6463,7 +6463,7 @@ func (client *Client) DescribeDefenseTemplateValidGroupsWithContext(ctx context.
 
 // Summary:
 //
-// Queries a paginated list of protected objects that are valid for a specified protection template.
+// 分页查询可以被自定义模板绑定的防护对象列表
 //
 // @param request - DescribeDefenseTemplateValidResourcesRequest
 //
@@ -6535,7 +6535,7 @@ func (client *Client) DescribeDefenseTemplateValidResourcesWithContext(ctx conte
 
 // Summary:
 //
-// Retrieves a paginated list of protection templates.
+// Performs a paging query to retrieve protection templates.
 //
 // @param request - DescribeDefenseTemplatesRequest
 //
@@ -6627,7 +6627,7 @@ func (client *Client) DescribeDefenseTemplatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Verifies that the DNS record of a domain name is correct.
+// Checks whether the Domain Name System (DNS) settings of a domain name are properly configured.
 //
 // @param request - DescribeDomainDNSRecordRequest
 //
@@ -6683,7 +6683,7 @@ func (client *Client) DescribeDomainDNSRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the access configuration details of a domain name onboarded to Web Application Firewall (WAF).
+// Queries the details of a domain name that is added to Web Application Firewall (WAF).
 //
 // @param request - DescribeDomainDetailRequest
 //
@@ -6739,7 +6739,7 @@ func (client *Client) DescribeDomainDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the ports used by all domain names that are added in CNAME record mode and hybrid cloud mode with public network disaster recovery enabled.
+// 查询域名已使用的端口
 //
 // @param request - DescribeDomainUsedPortsRequest
 //
@@ -6863,7 +6863,7 @@ func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the daily bills for WAF on-demand instances for the last 7 days.
+// Queries the daily billing information of a pay-as-you-go Web Application Firewall (WAF) instance. This allows you to check the daily security capacity unit (SeCU) usage. You can query only data in the previous seven days.
 //
 // @param request - DescribeElasticBillsRequest
 //
@@ -6923,7 +6923,7 @@ func (client *Client) DescribeElasticBillsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the traffic statistics.
+// Queries the traffic statistics of requests that are forwarded to Web Application Firewall (WAF).
 //
 // @param request - DescribeFlowChartRequest
 //
@@ -6991,7 +6991,7 @@ func (client *Client) DescribeFlowChartWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the top 10 protected objects by request count.
+// Queries the top 10 protected objects that receive requests.
 //
 // @param request - DescribeFlowTopResourceRequest
 //
@@ -7051,7 +7051,7 @@ func (client *Client) DescribeFlowTopResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the top 10 most requested URLs.
+// Queries the top 10 URLs that are used to initiate requests.
 //
 // @param request - DescribeFlowTopUrlRequest
 //
@@ -7115,7 +7115,7 @@ func (client *Client) DescribeFlowTopUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries statistics information about assets detected by the basic API security feature.
+// Queries the asset statistics provided by basic detection in the API security module.
 //
 // @param request - DescribeFreeUserAssetCountRequest
 //
@@ -7167,7 +7167,7 @@ func (client *Client) DescribeFreeUserAssetCountWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries statistics about security events detected by basic API security checks.
+// Queries the statistics of security events that are detected by using the basic detection feature of the API security module.
 //
 // @param request - DescribeFreeUserEventCountRequest
 //
@@ -7219,7 +7219,7 @@ func (client *Client) DescribeFreeUserEventCountWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the types of security events for basic API security detection.
+// Queries the types of security events on which basic detection is performed in the API security module.
 //
 // @param request - DescribeFreeUserEventTypesRequest
 //
@@ -7271,7 +7271,7 @@ func (client *Client) DescribeFreeUserEventTypesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries security events detected by the basic API security scan.
+// Queries the list of security events on which basic detection is performed in the API security module.
 //
 // @param request - DescribeFreeUserEventsRequest
 //
@@ -7379,7 +7379,7 @@ func (client *Client) DescribeHybridCloudBasicMonitorWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves a hybrid cloud cluster rule.
+// Obtains the rule information about a hybrid cloud cluster.
 //
 // @param request - DescribeHybridCloudClusterRuleRequest
 //
@@ -7419,7 +7419,7 @@ func (client *Client) DescribeHybridCloudClusterRuleWithContext(ctx context.Cont
 
 // Summary:
 //
-// # Cluster rules
+// 集群规则列表
 //
 // @param request - DescribeHybridCloudClusterRulesRequest
 //
@@ -7495,7 +7495,7 @@ func (client *Client) DescribeHybridCloudClusterRulesWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the servers in a hybrid cloud Web Application Firewall (WAF) cluster.
+// 集群机器列表
 //
 // @param request - DescribeHybridCloudClusterServersRequest
 //
@@ -7627,7 +7627,7 @@ func (client *Client) DescribeHybridCloudClustersWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the Hybrid Cloud WAF node groups that are added to Web Application Firewall (WAF).
+// Queries the hybrid cloud node groups that are added to Web Application Firewall (WAF).
 //
 // @param request - DescribeHybridCloudGroupsRequest
 //
@@ -7703,7 +7703,7 @@ func (client *Client) DescribeHybridCloudGroupsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the status of applications on nodes in a hybrid cloud Web Application Firewall (WAF) cluster.
+// Queries the status of applications running on a hybrid cloud cluster node.
 //
 // @param request - DescribeHybridCloudProcessMonitorRequest
 //
@@ -7759,7 +7759,7 @@ func (client *Client) DescribeHybridCloudProcessMonitorWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the count of protectable nodes that can be added to a hybrid cloud cluster.
+// Queries the number of protection nodes that can be added to a hybrid cloud cluster.
 //
 // @param request - DescribeHybridCloudProtectableCountRequest
 //
@@ -7811,7 +7811,7 @@ func (client *Client) DescribeHybridCloudProtectableCountWithContext(ctx context
 
 // Summary:
 //
-// Queries the details of a hybrid cloud domain name.
+// 查询混合云域名详情
 //
 // @param request - DescribeHybridCloudResourceDetailRequest
 //
@@ -7883,7 +7883,7 @@ func (client *Client) DescribeHybridCloudResourceDetailWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the domain names that are added to Web Application Firewall (WAF) in hybrid cloud mode.
+// Queries the domain names that are added to a Web Application Firewall (WAF) instance in hybrid cloud mode.
 //
 // @param request - DescribeHybridCloudResourcesRequest
 //
@@ -7955,7 +7955,7 @@ func (client *Client) DescribeHybridCloudResourcesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the hybrid cloud SDK servers that are managed by a Web Application Firewall (WAF) instance.
+// 获取SDK信息
 //
 // @param request - DescribeHybridCloudSdkServersRequest
 //
@@ -8027,7 +8027,7 @@ func (client *Client) DescribeHybridCloudSdkServersWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries hybrid cloud server regions, including carriers, continents, and cities.
+// Queries information about the regions that the hybrid cloud mode supports, such as the Internet service providers (ISPs), continents, and cities.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
 //
@@ -8087,7 +8087,7 @@ func (client *Client) DescribeHybridCloudServerRegionsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the regions that are supported for hybrid cloud access in Web Application Firewall (WAF).
+// 查询接入区域
 //
 // @param request - DescribeHybridCloudSupportRegionsRequest
 //
@@ -8139,7 +8139,7 @@ func (client *Client) DescribeHybridCloudSupportRegionsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the list of unassigned servers in a hybrid cloud cluster.
+// Queries servers that are not assigned to a hybrid cloud cluster.
 //
 // @param request - DescribeHybridCloudUnassignedMachinesRequest
 //
@@ -8211,7 +8211,7 @@ func (client *Client) DescribeHybridCloudUnassignedMachinesWithContext(ctx conte
 
 // Summary:
 //
-// Queries the list of unsupported ports for a hybrid cloud.
+// Queries the ports that are not supported by the hybrid cloud mode.
 //
 // @param request - DescribeHybridCloudUnsupportPortsRequest
 //
@@ -8263,7 +8263,7 @@ func (client *Client) DescribeHybridCloudUnsupportPortsWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the available HTTP and HTTPS port ranges for hybrid cloud access.
+// Queries the HTTP and HTTPS ports that you can use when you add a domain name to Web Application Firewall (WAF) in hybrid cloud mode.
 //
 // @param request - DescribeHybridCloudUserRequest
 //
@@ -8315,7 +8315,7 @@ func (client *Client) DescribeHybridCloudUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the details of the Web Application Firewall (WAF) instance in your Alibaba Cloud account.
+// Queries the details of a Web Application Firewall (WAF) instance within the current Alibaba Cloud account.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -8363,7 +8363,7 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves supported countries and regions outside China for IP-based region blacklist.
+// 获取支持的海外IP区域封禁支持的国际及地域。
 //
 // @param request - DescribeIpAbroadCountryInfosRequest
 //
@@ -8435,7 +8435,7 @@ func (client *Client) DescribeIpAbroadCountryInfosWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a single log delivery configuration for a hybrid cloud.
+// Queries a hybrid cloud log delivery configuration.
 //
 // @param request - DescribeLogDeliveryConfigRequest
 //
@@ -8491,7 +8491,7 @@ func (client *Client) DescribeLogDeliveryConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries all log delivery configurations of a Web Application Firewall (WAF) instance for hybrid cloud.
+// Queries all hybrid cloud log delivery configurations.
 //
 // @param request - DescribeLogDeliveryConfigsRequest
 //
@@ -8559,7 +8559,7 @@ func (client *Client) DescribeLogDeliveryConfigsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the IP address blacklist for critical event protection in a paginated format.
+// Queries IP addresses in an IP address blacklist for major event protection by page.
 //
 // @param request - DescribeMajorProtectionBlackIpsRequest
 //
@@ -8635,7 +8635,7 @@ func (client *Client) DescribeMajorProtectionBlackIpsWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves all member accounts managed by the WAF multi-account management feature.
+// Queries information about members.
 //
 // @param request - DescribeMemberAccountsRequest
 //
@@ -8695,7 +8695,7 @@ func (client *Client) DescribeMemberAccountsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the time series statistics for all traffic. This includes malicious and normal business requests.
+// Retrieves time-series data for all network traffic, including both malicious and legitimate requests.
 //
 // @param tmpReq - DescribeNetworkFlowTimeSeriesMetricRequest
 //
@@ -8761,7 +8761,7 @@ func (client *Client) DescribeNetworkFlowTimeSeriesMetricWithContext(ctx context
 
 // Summary:
 //
-// Queries the top N statistics for all traffic that passes through Web Application Firewall (WAF), including malicious and normal service requests. The results are aggregated by different dimensions and sorted in descending order.
+// Retrieves top aggregated traffic statistics, sorted by various dimensions, including malicious and legitimate requests.
 //
 // @param tmpReq - DescribeNetworkFlowTopNMetricRequest
 //
@@ -8831,7 +8831,7 @@ func (client *Client) DescribeNetworkFlowTopNMetricWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the protection pause status of a Web Application Firewall (WAF) instance.
+// Queries the protection status of Web Application Firewall (WAF).
 //
 // @param request - DescribePauseProtectionStatusRequest
 //
@@ -8883,7 +8883,7 @@ func (client *Client) DescribePauseProtectionStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the trend of queries per second (QPS).
+// Queries the queries per second (QPS) statistics of a WAF instance.
 //
 // @param request - DescribePeakTrendRequest
 //
@@ -8951,7 +8951,7 @@ func (client *Client) DescribePeakTrendWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the enabled proof of concept (POC) feature trials.
+// 查询开启POC的功能信息
 //
 // @param request - DescribePocFunctionsRequest
 //
@@ -9003,7 +9003,7 @@ func (client *Client) DescribePocFunctionsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries burstable pay-as-you-go charges for a WAF subscription instance, such as burstable QPS.
+// Queries the bills of the burstable QPS (pay-as-you-go) feature. The feature is supported only by subscription Web Application Firewall (WAF) instances.
 //
 // @param request - DescribePrepayDailyBillsRequest
 //
@@ -9063,7 +9063,7 @@ func (client *Client) DescribePrepayDailyBillsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries synchronized cloud service instances.
+// Queries the cloud service instances to be added to Web Application Firewall (WAF) in transparent proxy mode.
 //
 // @param request - DescribeProductInstancesRequest
 //
@@ -9159,7 +9159,7 @@ func (client *Client) DescribeProductInstancesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries penalties for domain names added to Web Application Firewall (WAF) without an Internet Content Provider (ICP) filing.
+// Queries a list of domain names that are added to Web Application Firewall (WAF) and penalized for failing to obtain an Internet Content Provider (ICP) filing.
 //
 // @param request - DescribePunishedDomainsRequest
 //
@@ -9219,7 +9219,7 @@ func (client *Client) DescribePunishedDomainsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a paginated list of associated protection rules.
+// 分页查询关联规则
 //
 // @param request - DescribeRelatedDefenseRulesRequest
 //
@@ -9291,7 +9291,7 @@ func (client *Client) DescribeRelatedDefenseRulesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the certificates of a cloud product instance. This operation is available only in multi-account scenarios and returns the certificates of both the delegated administrator and the member that owns the instance. For example, if user A is a delegated administrator with cert1 and the instance lb-xx-1 belongs to member B who has cert2, a query for the instance lb-xx-1 returns both cert1 and cert2.
+// Queries the certificates that are used in cloud service instances. The certificates returned include the certificates within the delegated administrator account and the certificates within members to which specific instances belong. For example, the delegated administrator account has certificate 1, instance lb-xx-1 belongs to member B, and member B has certificate 2. If you specify instance lb-xx-1 in the request, certificate 1 and certificate 2 are returned.
 //
 // @param request - DescribeResourceInstanceCertsRequest
 //
@@ -9355,7 +9355,7 @@ func (client *Client) DescribeResourceInstanceCertsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the log delivery status for protected objects.
+// 查询防护对象日志外发状态
 //
 // @param request - DescribeResourceLogDeliveryStatusRequest
 //
@@ -9411,7 +9411,7 @@ func (client *Client) DescribeResourceLogDeliveryStatusWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the log field configuration for a protected object.
+// 查询防护对象日志字段配置
 //
 // @param request - DescribeResourceLogFieldConfigRequest
 //
@@ -9471,7 +9471,7 @@ func (client *Client) DescribeResourceLogFieldConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the log collection status of protected objects in a Web Application Firewall (WAF) instance.
+// Queries whether the log collection feature is enabled for a protected object.
 //
 // @param request - DescribeResourceLogStatusRequest
 //
@@ -9583,7 +9583,7 @@ func (client *Client) DescribeResourcePortWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the region IDs of cloud service resources that can be added to Web Application Firewall (WAF) by using the SDK.
+// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) by using the SDK integration mode. The resources refer to Application Load Balancer (ALB) and Microservices Engine (MSE) instances.
 //
 // @param request - DescribeResourceRegionIdRequest
 //
@@ -9635,7 +9635,7 @@ func (client *Client) DescribeResourceRegionIdWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the list of regions supported by cloud native mode, primarily for CLB and ECS products.
+// Queries the region IDs of the Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that are added to Web Application Firewall (WAF) in cloud native mode.
 //
 // @param request - DescribeResourceSupportRegionsRequest
 //
@@ -9691,7 +9691,7 @@ func (client *Client) DescribeResourceSupportRegionsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the trend of abnormal response codes, such as 5xx, 405, 499, 302, and 444, that are returned by Web Application Firewall (WAF) to clients or by origin servers to WAF.
+// Queries the trend of the number of error codes that are returned to clients or Web Application Firewall (WAF). The error codes include 302, 405, 444, 499, and 5XX.
 //
 // @param request - DescribeResponseCodeTrendGraphRequest
 //
@@ -9763,7 +9763,7 @@ func (client *Client) DescribeResponseCodeTrendGraphWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the authorization status of the service-linked role for Web Application Firewall (WAF).
+// 查询授权状态
 //
 // @param request - DescribeRoleAuthStatusRequest
 //
@@ -9811,7 +9811,7 @@ func (client *Client) DescribeRoleAuthStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a paginated list of regular expression rule groups.
+// Queries regular expression rule groups by page.
 //
 // @param request - DescribeRuleGroupsRequest
 //
@@ -9879,7 +9879,7 @@ func (client *Client) DescribeRuleGroupsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the top 10 source IP addresses from which the most attacks originated.
+// Queries the top 10 IP addresses from which attacks are initiated.
 //
 // @param request - DescribeRuleHitsTopClientIpRequest
 //
@@ -9947,7 +9947,7 @@ func (client *Client) DescribeRuleHitsTopClientIpWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the top 10 protected objects that triggered protection rules most frequently.
+// Queries the top 10 protected objects that trigger protection rules.
 //
 // @param request - DescribeRuleHitsTopResourceRequest
 //
@@ -10011,7 +10011,7 @@ func (client *Client) DescribeRuleHitsTopResourceWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the top 10 rule IDs that are triggered most frequently.
+// Queries the IDs of the top 10 protection rules that are matched by requests.
 //
 // @param request - DescribeRuleHitsTopRuleIdRequest
 //
@@ -10083,7 +10083,7 @@ func (client *Client) DescribeRuleHitsTopRuleIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the top 10 most frequently triggered protection rule types.
+// Queries the top 10 protection modules that are matched.
 //
 // @param request - DescribeRuleHitsTopTuleTypeRequest
 //
@@ -10147,7 +10147,7 @@ func (client *Client) DescribeRuleHitsTopTuleTypeWithContext(ctx context.Context
 
 // Summary:
 //
-// Displays the top 10 User-Agents by number of attacks.
+// Queries the top 10 user agents that are used to initiate attacks.
 //
 // @param request - DescribeRuleHitsTopUaRequest
 //
@@ -10211,7 +10211,7 @@ func (client *Client) DescribeRuleHitsTopUaWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the top 10 URLs that trigger protection rules most frequently.
+// Queries the top 10 URLs that trigger protection rules.
 //
 // @param request - DescribeRuleHitsTopUrlRequest
 //
@@ -10279,17 +10279,17 @@ func (client *Client) DescribeRuleHitsTopUrlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the detailed logs of attack traffic. Each log entry contains the details of a request that matched a protection rule.
+// Queries the logs of attack traffic. Each log records the details of a request that matches protection rules.
 //
 // Description:
 //
-// Attack traffic refers to requests that hit a rule and are identified as threats. The following three types of requests are not included:
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
 //
-// - Requests that hit a whitelist rule.
+//   - Requests that match the protection rules of the whitelist module.
 //
-// - Requests that hit a bot rule whose action is set to Mark for Origin Fetch.
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
 //
-// - Requests that hit a rule whose action is set to Dynamic Token, Slider, Strict Slider, or JS Challenge, but are allowed because the user passed the verification.
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
 //
 // @param tmpReq - DescribeSecurityEventLogsRequest
 //
@@ -10359,17 +10359,17 @@ func (client *Client) DescribeSecurityEventLogsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the time series data of attack traffic. Attack requests are requests that hit a rule and are identified as a threat.
+// Queries the time series data of attack traffic. Attack requests refer to requests that match protection rules and are identified as risky.
 //
 // Description:
 //
-// Attack traffic refers to requests that hit a rule and are identified as a threat. The following data is excluded:
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
 //
-// - Requests that hit a whitelist rule.
+//   - Requests that match the protection rules of the whitelist module.
 //
-// - Requests that hit a bot rule where the rule action is "Mark for origin fetch".
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
 //
-// - Requests that hit a rule with the action "Dynamic Token", "Slider", "Strict Slider", or "JS Challenge", but are allowed because the user passed the verification.
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
 //
 // @param tmpReq - DescribeSecurityEventTimeSeriesMetricRequest
 //
@@ -10435,17 +10435,17 @@ func (client *Client) DescribeSecurityEventTimeSeriesMetricWithContext(ctx conte
 
 // Summary:
 //
-// Queries the top N statistics for attack traffic. Attack traffic is aggregated by a specified dimension, sorted, and the top N results are returned.
+// Queries top N data entries of attack traffic. The system performs statistical aggregation on attack traffic from specific dimensions and returns top N data entries.
 //
 // Description:
 //
-// Attack traffic refers to requests that hit a rule and are identified as a threat. The following types of requests are not included in the statistics:
+// Attack traffic refers to the traffic of requests that match protection rules and are identified as risky. The following types of requests are excluded:
 //
-// - Requests that hit a whitelist rule.
+//   - Requests that match the protection rules of the whitelist module.
 //
-// - Requests that hit a bot rule with the action set to Tag.
+//   - Requests that match the protection rules of the bot management module. The actions of the protection rules are set to Add Tag.
 //
-// - Requests that hit a rule with the action set to Dynamic Token, Slider, Strict Slider, or JS Challenge, and are allowed after the user passes verification.
+//   - Requests that match protection rules with actions set to Dynamic Token-based Authentication, Slider CAPTCHA, Strict Slider CAPTCHA Verification, and JavaScript Validation, pass the verifications specified by the actions, and are allowed.
 //
 // @param tmpReq - DescribeSecurityEventTopNMetricRequest
 //
@@ -10515,7 +10515,7 @@ func (client *Client) DescribeSecurityEventTopNMetricWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries statistics for domain names and APIs that handle personal information.
+// Queries the personal information-related APIs and domain names.
 //
 // @param request - DescribeSensitiveApiStatisticRequest
 //
@@ -10595,7 +10595,7 @@ func (client *Client) DescribeSensitiveApiStatisticWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the compliance detection results for API security.
+// Queries the compliance check results of API security.
 //
 // @param request - DescribeSensitiveDetectionResultRequest
 //
@@ -10659,7 +10659,7 @@ func (client *Client) DescribeSensitiveDetectionResultWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the distribution of outbound traffic that contains personal information.
+// Queries the traffic distribution of personal information records involved in cross-border data transfer.
 //
 // @param request - DescribeSensitiveOutboundDistributionRequest
 //
@@ -10723,7 +10723,7 @@ func (client *Client) DescribeSensitiveOutboundDistributionWithContext(ctx conte
 
 // Summary:
 //
-// Queries statistics about outbound transfers of personal information.
+// Queries the data types of personal information involved in cross-border data transfer.
 //
 // @param request - DescribeSensitiveOutboundStatisticRequest
 //
@@ -10819,7 +10819,7 @@ func (client *Client) DescribeSensitiveOutboundStatisticWithContext(ctx context.
 
 // Summary:
 //
-// Queries the trend of sensitive outbound data detected by Web Application Firewall (WAF).
+// Queries the trends of cross-border data transfer of personal information.
 //
 // @param request - DescribeSensitiveOutboundTrendRequest
 //
@@ -10883,7 +10883,7 @@ func (client *Client) DescribeSensitiveOutboundTrendWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries access logs for sensitive data.
+// Queries the access logs of sensitive data.
 //
 // @param request - DescribeSensitiveRequestLogRequest
 //
@@ -10979,7 +10979,7 @@ func (client *Client) DescribeSensitiveRequestLogWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the results of sensitive data tracing.
+// Queries the tracing results of sensitive data.
 //
 // @param request - DescribeSensitiveRequestsRequest
 //
@@ -11059,7 +11059,7 @@ func (client *Client) DescribeSensitiveRequestsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries statistics on sensitive data for data leakage prevention.
+// Queries the sensitive data statistics of the tracing and auditing feature.
 //
 // @param request - DescribeSensitiveStatisticRequest
 //
@@ -11135,7 +11135,7 @@ func (client *Client) DescribeSensitiveStatisticWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the Logstore authorization status.
+// Queries whether Web Application Firewall (WAF) is authorized to access Logstores.
 //
 // @param request - DescribeSlsAuthStatusRequest
 //
@@ -11187,7 +11187,7 @@ func (client *Client) DescribeSlsAuthStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves Logstore information, including total capacity, storage duration, and used capacity.
+// Queries information about a Logstore, such as the total capacity, storage duration, and used capacity.
 //
 // @param request - DescribeSlsLogStoreRequest
 //
@@ -11291,7 +11291,7 @@ func (client *Client) DescribeSlsLogStoreStatusWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the number of protected resources that are associated with one or more protection templates.
+// Queries the number of protected resources for which a protection template takes effect.
 //
 // @param request - DescribeTemplateResourceCountRequest
 //
@@ -11347,7 +11347,7 @@ func (client *Client) DescribeTemplateResourceCountWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the resources attached to a protection template.
+// Queries the resources that are associated to a protection rule template.
 //
 // @param request - DescribeTemplateResourcesRequest
 //
@@ -11423,7 +11423,7 @@ func (client *Client) DescribeTemplateResourcesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a paginated list of notable security events.
+// 查看攻击事件列表
 //
 // @param request - DescribeThreatEventRequest
 //
@@ -11495,7 +11495,7 @@ func (client *Client) DescribeThreatEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of a security event that requires attention.
+// 查看威胁事件详情
 //
 // @param request - DescribeThreatEventDetailRequest
 //
@@ -11551,7 +11551,7 @@ func (client *Client) DescribeThreatEventDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the top five security event metrics, which are aggregated by different objects and sorted in descending order.
+// 查询安全事件Top攻击统计数据
 //
 // @param request - DescribeThreatEventTopMetricRequest
 //
@@ -11611,7 +11611,7 @@ func (client *Client) DescribeThreatEventTopMetricWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the trend of API security risks for a Web Application Firewall (WAF) instance.
+// Queries the trends of API security risks.
 //
 // @param request - DescribeUserAbnormalTrendRequest
 //
@@ -11667,7 +11667,7 @@ func (client *Client) DescribeUserAbnormalTrendWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries user risk types and statistics related to API security in Web Application Firewall (WAF).
+// Queries the types and statistics of risks in the API security module.
 //
 // @param request - DescribeUserAbnormalTypeRequest
 //
@@ -11735,7 +11735,7 @@ func (client *Client) DescribeUserAbnormalTypeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries traffic statistics for an API operation.
+// Queries the traffic statistics of an API.
 //
 // @param request - DescribeUserApiRequestRequest
 //
@@ -11807,7 +11807,7 @@ func (client *Client) DescribeUserApiRequestWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries user asset statistics for API Security.
+// Queries the user asset statistics in the API security module.
 //
 // @param request - DescribeUserAssetRequest
 //
@@ -11871,7 +11871,7 @@ func (client *Client) DescribeUserAssetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Describes the trend of API security attacks.
+// Queries the trends of attacks detected by the API security module.
 //
 // @param request - DescribeUserEventTrendRequest
 //
@@ -11931,7 +11931,7 @@ func (client *Client) DescribeUserEventTrendWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the types and statistics of user security events.
+// Queries the types and statistics of security events in the API security module.
 //
 // @param request - DescribeUserEventTypeRequest
 //
@@ -12003,7 +12003,7 @@ func (client *Client) DescribeUserEventTypeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the log field configuration of a Web Application Firewall (WAF) instance, including additional fields, removed fields, delivery strategies, and extended settings.
+// 查询用户日志配置
 //
 // @param request - DescribeUserLogFieldConfigRequest
 //
@@ -12059,7 +12059,7 @@ func (client *Client) DescribeUserLogFieldConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the available log storage regions.
+// Queries available regions for log storage.
 //
 // @param request - DescribeUserSlsLogRegionsRequest
 //
@@ -12101,6 +12101,74 @@ func (client *Client) DescribeUserSlsLogRegionsWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeUserSlsLogRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看用户分类实时流量
+//
+// @param request - DescribeUserTrafficRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserTrafficResponse
+func (client *Client) DescribeUserTrafficWithContext(ctx context.Context, request *DescribeUserTrafficRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserTrafficResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTimestamp) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTimestamp) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserTraffic"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserTrafficResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12163,7 +12231,7 @@ func (client *Client) DescribeUserWafLogStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the domain ownership verification content of a Web Application Firewall (WAF) instance.
+// 查询归属校验内容
 //
 // @param request - DescribeVerifyContentRequest
 //
@@ -12215,7 +12283,7 @@ func (client *Client) DescribeVerifyContentWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the top 10 IP addresses that have the highest number of requests.
+// Queries the top 10 IP addresses from which requests are sent.
 //
 // @param request - DescribeVisitTopIpRequest
 //
@@ -12279,7 +12347,7 @@ func (client *Client) DescribeVisitTopIpWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the top 10 User-Agents that sent the most requests.
+// Queries the top 10 user agents that are used to initiate requests.
 //
 // @param request - DescribeVisitUasRequest
 //
@@ -12395,7 +12463,7 @@ func (client *Client) DescribeWafSourceIpSegmentWithContext(ctx context.Context,
 
 // Summary:
 //
-// Initializes a service-linked role for WAF.
+// 创建WAF服务关联角色
 //
 // @param request - InitializeWafOperationRoleRequest
 //
@@ -12563,7 +12631,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Lists the tag values of a specified tag key.
+// Queries the tag values of a tag key.
 //
 // @param request - ListTagValuesRequest
 //
@@ -12627,7 +12695,7 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Modifies the status of API security risks in batches.
+// Modifies the status of multiple risks detected by the API security module at a time.
 //
 // @param request - ModifyApisecAbnormalsRequest
 //
@@ -12695,7 +12763,7 @@ func (client *Client) ModifyApisecAbnormalsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the annotation of an API asset in the API security module of Web Application Firewall (WAF).
+// Modifies the annotations of APIs in the API security module.
 //
 // @param request - ModifyApisecApiResourceRequest
 //
@@ -12763,7 +12831,7 @@ func (client *Client) ModifyApisecApiResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the status of a batch of API security events.
+// Modifies the status of multiple security events detected by the API security module at a time.
 //
 // @param request - ModifyApisecEventsRequest
 //
@@ -12835,7 +12903,7 @@ func (client *Client) ModifyApisecEventsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the API security log subscription settings.
+// Modifies the configurations of API security log subscription.
 //
 // @param request - ModifyApisecLogDeliveryRequest
 //
@@ -12903,7 +12971,7 @@ func (client *Client) ModifyApisecLogDeliveryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the log delivery status of an API security module in a Web Application Firewall (WAF) instance.
+// Modifies the status of API security log subscription.
 //
 // @param request - ModifyApisecLogDeliveryStatusRequest
 //
@@ -12963,7 +13031,7 @@ func (client *Client) ModifyApisecLogDeliveryStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// Enables or disables API security features for a protected object or protected object group in the Web Application Firewall (WAF) API security module.
+// Changes the status of features in the API security module for protected objects or protected object groups.
 //
 // @param request - ModifyApisecModuleStatusRequest
 //
@@ -13031,7 +13099,7 @@ func (client *Client) ModifyApisecModuleStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the API security status for a protected object or a protected object group.
+// Changes the status of the API security module for protected objects or protected object groups.
 //
 // @param request - ModifyApisecStatusRequest
 //
@@ -13095,7 +13163,7 @@ func (client *Client) ModifyApisecStatusWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configuration of a cloud resource connected to WAF.
+// Modifies the configurations of a service that is added to Web Application Firewall (WAF).
 //
 // @param tmpReq - ModifyCloudResourceRequest
 //
@@ -13169,7 +13237,7 @@ func (client *Client) ModifyCloudResourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Modifies the certificate for a resource managed by WAF in cloud native mode.
+// 修改云产品接入的证书
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -13237,7 +13305,7 @@ func (client *Client) ModifyCloudResourceCertWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the default certificate for cloud native mode.
+// 修改云产品接入的默认证书
 //
 // @param request - ModifyCloudResourceDefaultCertRequest
 //
@@ -13297,7 +13365,7 @@ func (client *Client) ModifyCloudResourceDefaultCertWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies the default SSL/TLS settings.
+// Modifies the default Secure Sockets Layer (SSL) and Transport Layer Security (TLS) settings.
 //
 // @param request - ModifyDefaultHttpsRequest
 //
@@ -13369,7 +13437,7 @@ func (client *Client) ModifyDefaultHttpsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the configuration of a protected object group.
+// Modifies the configurations of a protected object group.
 //
 // @param request - ModifyDefenseResourceGroupRequest
 //
@@ -13517,7 +13585,7 @@ func (client *Client) ModifyDefenseResourceXffWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the configuration of a protection rule.
+// Modifies the configurations of a protection rule.
 //
 // @param request - ModifyDefenseRuleRequest
 //
@@ -13591,7 +13659,7 @@ func (client *Client) ModifyDefenseRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the cache for a web tamper-proofing rule.
+// Updates the cached page of a website that is protected based on a website tamper-proofing rule.
 //
 // @param request - ModifyDefenseRuleCacheRequest
 //
@@ -13651,7 +13719,7 @@ func (client *Client) ModifyDefenseRuleCacheWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Enables or disables a protection rule.
+// Changes the status of a protection rule.
 //
 // @param request - ModifyDefenseRuleStatusRequest
 //
@@ -13719,7 +13787,7 @@ func (client *Client) ModifyDefenseRuleStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the mitigation settings for a protection scenario.
+// 修改用户防护场景的配置
 //
 // @param request - ModifyDefenseSceneConfigRequest
 //
@@ -13783,7 +13851,7 @@ func (client *Client) ModifyDefenseSceneConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies a defense template.
+// Modifies the configurations of a protection rule template.
 //
 // @param request - ModifyDefenseTemplateRequest
 //
@@ -13907,7 +13975,7 @@ func (client *Client) ModifyDefenseTemplateStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates a CNAME-based domain name onboarded to Web Application Firewall (WAF).
+// Modifies the configurations of a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
 //
 // @param tmpReq - ModifyDomainRequest
 //
@@ -13985,7 +14053,7 @@ func (client *Client) ModifyDomainWithContext(ctx context.Context, tmpReq *Modif
 
 // Summary:
 //
-// Modifies the certificate that is associated with a domain name added to a Web Application Firewall (WAF) instance in CNAME record mode.
+// 修改域名的证书
 //
 // @param request - ModifyDomainCertRequest
 //
@@ -14057,7 +14125,7 @@ func (client *Client) ModifyDomainCertWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Re-add a domain name that was penalized for not having an ICP filing to Web Application Firewall (WAF).
+// Re-adds a domain name that is penalized for failing to obtain an Internet Content Provider (ICP) filing to Web Application Firewall (WAF).
 //
 // @param request - ModifyDomainPunishStatusRequest
 //
@@ -14113,7 +14181,7 @@ func (client *Client) ModifyDomainPunishStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Updates hybrid cloud cluster settings, such as the cluster name, ports, and access mode.
+// Modifies information about a hybrid cloud cluster.
 //
 // @param request - ModifyHybridCloudClusterRequest
 //
@@ -14221,7 +14289,7 @@ func (client *Client) ModifyHybridCloudClusterWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the manual bypass status for a hybrid cloud cluster that is integrated with an SDK.
+// Enables or disables manual bypass for a hybrid cloud cluster whose type is set to SDK Integration Mode.
 //
 // @param request - ModifyHybridCloudClusterBypassStatusRequest
 //
@@ -14353,7 +14421,7 @@ func (client *Client) ModifyHybridCloudClusterRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the information of a cluster group.
+// Modifies a node group in a hybrid cloud cluster.
 //
 // @param request - ModifyHybridCloudGroupRequest
 //
@@ -14421,7 +14489,7 @@ func (client *Client) ModifyHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds a node to a node group in a hybrid cloud cluster of a Web Application Firewall (WAF) instance.
+// Adds a node to a node group of a hybrid cloud cluster.
 //
 // @param request - ModifyHybridCloudGroupExpansionServerRequest
 //
@@ -14485,7 +14553,7 @@ func (client *Client) ModifyHybridCloudGroupExpansionServerWithContext(ctx conte
 
 // Summary:
 //
-// Removes a node from a group in a hybrid cloud cluster.
+// Deletes a node from a node group of a hybrid cloud cluster.
 //
 // @param request - ModifyHybridCloudGroupShrinkServerRequest
 //
@@ -14549,7 +14617,7 @@ func (client *Client) ModifyHybridCloudGroupShrinkServerWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the traffic redirection status of a hybrid cloud SDK.
+// Modifies the traffic redirection status of a hybrid cloud cluster by using an SDK.
 //
 // @param request - ModifyHybridCloudSdkPullinStatusRequest
 //
@@ -14601,7 +14669,7 @@ func (client *Client) ModifyHybridCloudSdkPullinStatusWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the configuration of a hybrid cloud node in a Web Application Firewall (WAF) instance.
+// Modifies the information about a hybrid cloud node.
 //
 // @param request - ModifyHybridCloudServerRequest
 //
@@ -14673,7 +14741,7 @@ func (client *Client) ModifyHybridCloudServerWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies a log delivery configuration for a hybrid cloud cluster.
+// Modifies a hybrid cloud log delivery configuration.
 //
 // @param request - ModifyLogDeliveryConfigRequest
 //
@@ -14737,7 +14805,7 @@ func (client *Client) ModifyLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies an IP address blacklist for critical event protection.
+// Modifies an IP address blacklist for major event protection.
 //
 // @param request - ModifyMajorProtectionBlackIpRequest
 //
@@ -14809,7 +14877,7 @@ func (client *Client) ModifyMajorProtectionBlackIpWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the information of a member account that is managed by the multi-account management feature of Web Application Firewall (WAF).
+// Modifies the information about members that are added for multi-account management.
 //
 // @param request - ModifyMemberAccountRequest
 //
@@ -14929,7 +14997,7 @@ func (client *Client) ModifyPauseProtectionStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the log delivery status of a protected object in Web Application Firewall (WAF).
+// 修改防护对象日志外发状态
 //
 // @param request - ModifyResourceLogDeliveryStatusRequest
 //
@@ -14993,7 +15061,7 @@ func (client *Client) ModifyResourceLogDeliveryStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the log field configuration of a protected object.
+// 修改防护对象的日志字段配置
 //
 // @param request - ModifyResourceLogFieldConfigRequest
 //
@@ -15125,7 +15193,7 @@ func (client *Client) ModifyResourceLogStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Attaches protected objects to or detaches protected objects from a protection template.
+// Associates or disassociates a protected object or protected object group with or from a protection rule template.
 //
 // @param request - ModifyTemplateResourcesRequest
 //
@@ -15205,7 +15273,7 @@ func (client *Client) ModifyTemplateResourcesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the default log field configuration of a Web Application Firewall (WAF) instance for log delivery to Simple Log Service.
+// 修改用户日志服务的默认字段配置
 //
 // @param request - ModifyUserLogFieldConfigRequest
 //
@@ -15273,7 +15341,7 @@ func (client *Client) ModifyUserLogFieldConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Enables or disables Simple Log Service for Web Application Firewall (WAF).
+// 开通或关闭WAF日志服务
 //
 // @param request - ModifyUserWafLogStatusRequest
 //
@@ -15333,7 +15401,7 @@ func (client *Client) ModifyUserWafLogStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Re-adds a cloud product to Web Application Firewall (WAF) to restore protection after a cloud product access failure.
+// 重新接入云产品
 //
 // @param request - ReCreateCloudResourceRequest
 //
@@ -15457,7 +15525,7 @@ func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *R
 //
 // Description:
 //
-// After you call this operation, the system performs the synchronization asynchronously. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the synchronization result.
+// SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
 //
 // @param request - SyncProductInstanceRequest
 //
@@ -15625,7 +15693,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Verifies that you own the specified domain name. Domain ownership must be verified before you can add a domain name to Web Application Firewall (WAF) by using CNAME access.
+// Verifies the ownership of a domain name.
 //
 // @param request - VerifyDomainOwnerRequest
 //

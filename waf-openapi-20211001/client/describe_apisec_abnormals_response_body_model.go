@@ -18,7 +18,7 @@ type iDescribeApisecAbnormalsResponseBody interface {
 }
 
 type DescribeApisecAbnormalsResponseBody struct {
-	// The list of security risks.
+	// The risks.
 	Data []*DescribeApisecAbnormalsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,11 +26,11 @@ type DescribeApisecAbnormalsResponseBody struct {
 	//
 	// 9469646C-F2CC-5F0F-8401-C53***4F46
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of security risks returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
-	// 5
+	// 35
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -83,83 +83,65 @@ func (s *DescribeApisecAbnormalsResponseBody) Validate() error {
 }
 
 type DescribeApisecAbnormalsResponseBodyData struct {
-	// The number of risk events that are associated with the security risk.
+	// The number of risk-related security events.
 	//
 	// example:
 	//
 	// 2
 	AbnormalEventNumber *int64 `json:"AbnormalEventNumber,omitempty" xml:"AbnormalEventNumber,omitempty"`
-	// The ID of the security risk.
+	// The ID of the risk.
 	//
 	// example:
 	//
 	// 7c1431f27ae7e9c8cc64095***68e
 	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
-	// The details of the security risk in JSON format. The JSON object contains the following fields:
+	// The details of the risk. The value is a string that consists of multiple parameters in the JSON format. Valid values:
 	//
-	// - **rule**: The detection rule that triggered the security risk.
+	// 	- **rule**: risk-related rule
 	//
-	// - **data_type**: The type of sensitive data.
+	// 	- **data_type**: sensitive data type
 	//
-	// - **custom_rule_name**: The name of the custom rule.
+	// 	- **custom_rule_name**: custom rule name
 	//
-	// - **rule_name**: The name of the built-in rule.
+	// 	- **rule_name**: built-in rule name
 	//
 	// example:
 	//
-	// {
-	//
-	//     "data_type": ["1005","1004"],
-	//
-	//     "rule": {
-	//
-	//         "parent": "RiskType_Permission",
-	//
-	//         "code": "Risk_UnauthSensitive",
-	//
-	//         "level": "high",
-	//
-	//         "origin": "default",
-	//
-	//         "name": "Risk_UnauthSensitive"
-	//
-	//     }
-	//
-	// }
+	// { "data_type": ["1005","1004"], "rule": { "parent": "RiskType_Permission", "code": "Risk_UnauthSensitive", "level": "high", "origin": "default", "name": "Risk_UnauthSensitive" } }
 	AbnormalInfo *string `json:"AbnormalInfo,omitempty" xml:"AbnormalInfo,omitempty"`
-	// The severity level of the security risk. Valid values:
+	// The level of the risk. Valid values:
 	//
-	// - **high**: High.
+	// 	- **high**
 	//
-	// - **medium**: Medium.
+	// 	- **medium**
 	//
-	// - **low**: Low.
+	// 	- **low**
 	//
 	// example:
 	//
 	// high
 	AbnormalLevel *string `json:"AbnormalLevel,omitempty" xml:"AbnormalLevel,omitempty"`
-	// The type of the security risk.
+	// The type of the risk.
 	//
-	// > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported risk types.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
 	//
 	// example:
 	//
 	// LackOfSpeedLimit
 	AbnormalTag *string `json:"AbnormalTag,omitempty" xml:"AbnormalTag,omitempty"`
-	// The processing status of the security risk.
+	// The status of the risk.
 	//
 	// example:
 	//
 	// unresolved
 	AbnromalStatus *string `json:"AbnromalStatus,omitempty" xml:"AbnromalStatus,omitempty"`
-	// The path of the API that is associated with the security risk.
+	// The risk-related API.
 	//
 	// example:
 	//
 	// /api/login
 	ApiFormat *string `json:"ApiFormat,omitempty" xml:"ApiFormat,omitempty"`
-	// The ID of the API that is associated with the security risk.
+	// The ID of the risk-related API.
 	//
 	// example:
 	//
@@ -167,13 +149,13 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported business purposes.
+	// >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
 	//
 	// example:
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The time when the security risk was first detected. The value is a UNIX timestamp. Unit: seconds.
+	// The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -181,81 +163,75 @@ type DescribeApisecAbnormalsResponseBodyData struct {
 	DiscoverTime *int64 `json:"DiscoverTime,omitempty" xml:"DiscoverTime,omitempty"`
 	// Deprecated
 	//
-	// The list of security risk samples.
+	// The risk-related samples.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
-	// The time when the API was first discovered. The value is a UNIX timestamp. Unit: seconds.
+	// The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1701138088
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// Indicates whether the security risk is being followed. Valid values:
+	// Indicates whether the API is followed. Valid values:
 	//
-	// - **1**: The security risk is being followed.
+	// 	- **1**: yes
 	//
-	// - **0*	- (default): The security risk is not being followed.
+	// 	- **0**(default): no
 	//
 	// example:
 	//
 	// 0
 	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
-	// The time when the security risk was marked as ignored. The value is a UNIX timestamp. Unit: seconds.
+	// The time at which the risk was marked as ignored. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	IgnoreTime *int64 `json:"IgnoreTime,omitempty" xml:"IgnoreTime,omitempty"`
-	// The most recent time when the API was accessed. The value is a UNIX timestamp. Unit: seconds.
+	// The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	LastestTime *int64 `json:"LastestTime,omitempty" xml:"LastestTime,omitempty"`
-	// The most recent time when the security risk was detected. The value is a UNIX timestamp. Unit: seconds.
+	// The time at which the risk was last detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1684252800
 	LatestDiscoverTime *int64 `json:"LatestDiscoverTime,omitempty" xml:"LatestDiscoverTime,omitempty"`
-	// The domain name or IP address that the API resides on.
+	// The domain name or IP address of the API.
 	//
 	// example:
 	//
 	// a.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The remarks for the security risk.
+	// The remarks.
 	//
 	// example:
 	//
-	// Strict
+	// Business side notified
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The source of the risk detection rule. Valid values:
+	// The source of the risk type. Valid values:
 	//
-	// - **custom**: Custom rule.
+	// 	- **custom**
 	//
-	// - **default**: Built-in rule.
+	// 	- **default**
 	//
 	// example:
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The handling status of the security risk. Valid values:
+	// The status of the risk. Valid values:
 	//
-	// - **toBeConfirmed**: To be confirmed.
+	// 	- **toBeConfirmed**
 	//
-	// - **confirmed**: Confirmed.
+	// 	- **confirmed**
 	//
-	// - **toBeFixed**: To be fixed.
+	// 	- **toBeFixed**
 	//
-	// - **fixed**: Fixed (manually verified).
+	// 	- **fixed**
 	//
-	// - **ignored**: Ignored.
-	//
-	// - **toBeVerified**: To be verified by the system.
-	//
-	// - **notFixed**: Verification failed.
-	//
-	// - **systemFixed**: Fixed (verified by the system).
+	// 	- **ignored**
 	//
 	// example:
 	//

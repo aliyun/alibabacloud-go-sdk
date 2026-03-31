@@ -14,7 +14,7 @@ type iModifyDefenseResourceGroupResponseBody interface {
 }
 
 type ModifyDefenseResourceGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

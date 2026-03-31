@@ -20,13 +20,13 @@ type DescribeSlsAuthStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 3589D3A3-4A04-51CB-AA89-353ED20ACB10
+	// 3589D3A3-4A04-51CB-AA89-353ED20A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The authorization status. Valid values:
+	// Indicates whether WAF is authorized to access Logstores. Valid values:
 	//
-	// - **true**: indicates that authorization is granted.
+	// 	- **true**
 	//
-	// - **false**: indicates that authorization is not granted.
+	// 	- **false**
 	//
 	// example:
 	//

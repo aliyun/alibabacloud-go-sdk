@@ -16,7 +16,7 @@ type iDescribeApisecStatisticsResponseBody interface {
 }
 
 type DescribeApisecStatisticsResponseBody struct {
-	// The statistical results of API security risks or events.
+	// The returned results.
 	Data *DescribeApisecStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,127 +62,117 @@ func (s *DescribeApisecStatisticsResponseBody) Validate() error {
 }
 
 type DescribeApisecStatisticsResponseBodyData struct {
-	// The number of accounts associated with the monitored APIs.
-	//
 	// example:
 	//
 	// 1
 	Account *int64 `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The number of handled items.
+	// The number of handled events.
 	//
 	// example:
 	//
 	// 1
 	Actioned *int64 `json:"Actioned,omitempty" xml:"Actioned,omitempty"`
-	// The number of APIs that are monitored by the API security module.
+	// The number of APIs.
 	//
 	// example:
 	//
-	// 202
+	// /api/v1/login
 	Api *int64 `json:"Api,omitempty" xml:"Api,omitempty"`
-	// The number of confirmed items.
+	// The number of confirmed events.
 	//
 	// example:
 	//
-	// 11
+	// 10
 	Confirmed *int64 `json:"Confirmed,omitempty" xml:"Confirmed,omitempty"`
-	// The number of domain names that are monitored by the API security module.
+	// The number of domain names.
 	//
 	// example:
 	//
-	// 22
+	// a.aliyun.com
 	Domain *int64 `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The number of items that are manually verified as fixed.
+	// The number of fixed risks.
 	//
 	// example:
 	//
-	// 13
+	// 0
 	Fixed *int64 `json:"Fixed,omitempty" xml:"Fixed,omitempty"`
-	// The number of high-risk items.
+	// The number of high-risk events.
 	//
 	// example:
 	//
-	// 135
+	// 10
 	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
-	// The number of ignored items.
+	// The number of ignored risks.
 	//
 	// example:
 	//
-	// 3
+	// 0
 	Ignore *int64 `json:"Ignore,omitempty" xml:"Ignore,omitempty"`
-	// The number of low-risk items.
+	// The number of low-risk events.
 	//
 	// example:
 	//
-	// 160
+	// 10
 	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
-	// The number of medium-risk items.
+	// The number of moderate-risk events.
 	//
 	// example:
 	//
-	// 27
+	// 10
 	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
-	// The number of items that are verified as not fixed.
-	//
 	// example:
 	//
 	// 0
 	NotFixed *int64 `json:"NotFixed,omitempty" xml:"NotFixed,omitempty"`
-	// The number of items that are verified as fixed by the system.
-	//
 	// example:
 	//
 	// 1
 	SystemFixed *int64 `json:"SystemFixed,omitempty" xml:"SystemFixed,omitempty"`
-	// The number of items to be confirmed.
+	// The number of events to be confirmed.
 	//
 	// example:
 	//
-	// 295
+	// 10
 	ToBeConfirmed *int64 `json:"ToBeConfirmed,omitempty" xml:"ToBeConfirmed,omitempty"`
-	// The number of items to be fixed.
+	// The number of risks to be fixed.
 	//
 	// example:
 	//
-	// 3
+	// 10
 	ToBeFixed *int64 `json:"ToBeFixed,omitempty" xml:"ToBeFixed,omitempty"`
-	// The number of items to be verified by the system.
-	//
 	// example:
 	//
 	// 2
 	ToBeVerified *int64 `json:"ToBeVerified,omitempty" xml:"ToBeVerified,omitempty"`
-	// The number of new high-risk items detected today.
+	// The number of new high-risk events today.
 	//
 	// example:
 	//
-	// 3
+	// 10
 	TodayHigh *string `json:"TodayHigh,omitempty" xml:"TodayHigh,omitempty"`
-	// The number of new low-risk items detected today.
+	// The number of new low-risk events today.
 	//
 	// example:
 	//
-	// 0
+	// 10
 	TodayLow *int64 `json:"TodayLow,omitempty" xml:"TodayLow,omitempty"`
-	// The number of new medium-risk items detected today.
+	// The number of new moderate-risk events today.
 	//
 	// example:
 	//
-	// 0
+	// 10
 	TodayMedium *string `json:"TodayMedium,omitempty" xml:"TodayMedium,omitempty"`
-	// The total number of new items detected today.
+	// The total number of new events today.
 	//
 	// example:
 	//
-	// 3
+	// 30
 	TodayTotal *string `json:"TodayTotal,omitempty" xml:"TodayTotal,omitempty"`
-	// The total number of items.
-	//
-	// > This is the sum of the values of the **High**, **Medium**, and **Low*	- response parameters.
+	// The total number of events.
 	//
 	// example:
 	//
-	// 322
+	// 30
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 

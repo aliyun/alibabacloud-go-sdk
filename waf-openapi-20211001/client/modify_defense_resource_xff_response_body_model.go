@@ -18,7 +18,7 @@ type ModifyDefenseResourceXffResponseBody struct {
 	//
 	// example:
 	//
-	// 6C094583-9B3F-5BD8-8748-DC638E48****
+	// 6C094583-9B3F-5BD8-8748-DC638E****BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

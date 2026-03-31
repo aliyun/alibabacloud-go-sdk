@@ -16,18 +16,10 @@ type iDescribeRoleAuthStatusRequest interface {
 }
 
 type DescribeRoleAuthStatusRequest struct {
-	// The region in which the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-aekzhalsanv***

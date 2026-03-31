@@ -24,7 +24,7 @@ type iDescribeApisecSlsLogStoresRequest interface {
 type DescribeApisecSlsLogStoresRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeApisecSlsLogStoresRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region where logs are stored.
 	//
-	// > You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+	// >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type DescribeApisecSlsLogStoresRequest struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The region where the WAF instance is deployed. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//

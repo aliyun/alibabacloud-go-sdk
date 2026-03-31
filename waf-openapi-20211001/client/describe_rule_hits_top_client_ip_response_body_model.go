@@ -16,13 +16,13 @@ type iDescribeRuleHitsTopClientIpResponseBody interface {
 }
 
 type DescribeRuleHitsTopClientIpResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9F0F9AD6-62E2-50BB-A3E5-30FFB9410262
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 source IP addresses that initiated the most attacks.
+	// The array of the top 10 IP addresses from which attacks are initiated.
 	RuleHitsTopClientIp []*DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp `json:"RuleHitsTopClientIp,omitempty" xml:"RuleHitsTopClientIp,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeRuleHitsTopClientIpResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp struct {
-	// The IP address of the client.
+	// The IP address of the service client.
 	//
 	// example:
 	//
 	// 3.3.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The number of attack requests.
+	// The number of attacks that are initiated from the IP address.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DescribeResourceLogStatusResponseBody struct {
 	//
 	// 0DABF8AB-2321-5F8D-A8D7-922D757FBFFE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The log status information of protected objects.
+	// The returned result.
 	Result []*DescribeResourceLogStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -66,17 +66,17 @@ func (s *DescribeResourceLogStatusResponseBody) Validate() error {
 }
 
 type DescribeResourceLogStatusResponseBodyResult struct {
-	// The name of the protected object.
+	// The protected object.
 	//
 	// example:
 	//
 	// alb-wewbb23dfsetetcic****
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Indicates whether log collection is enabled for the protected object. Valid values:
+	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
 	//
-	// - **true**: Log collection is enabled.
+	// 	- **true:*	- The log collection feature is enabled.
 	//
-	// - **false**: Log collection is disabled.
+	// 	- **false:*	- The log collection feature is disabled.
 	//
 	// example:
 	//

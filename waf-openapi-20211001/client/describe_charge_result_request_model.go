@@ -22,44 +22,22 @@ type iDescribeChargeResultRequest interface {
 }
 
 type DescribeChargeResultRequest struct {
-	// The billing cycle for the WAF instance. Valid values:
-	//
-	// - **Year**: yearly billing cycle.
-	//
-	// - **Month**: monthly billing cycle.
-	//
-	// - **Day**: daily billing cycle.
-	//
 	// example:
 	//
 	// Day
 	ChargeCycle *string `json:"ChargeCycle,omitempty" xml:"ChargeCycle,omitempty"`
-	// The billing modules to calculate.
-	//
 	// This parameter is required.
 	ChargeModules []*DescribeChargeResultRequestChargeModules `json:"ChargeModules,omitempty" xml:"ChargeModules,omitempty" type:"Repeated"`
-	// The billing method of the WAF instance. Valid value:
-	//
-	// - **POSTPAY**: pay-as-you-go.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region where the WAF instance resides. Valid values:
-	//
-	// - **cn-hangzhou**: the Chinese mainland.
-	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
-	//
 	// example:
 	//
 	// rg-acfm***q
@@ -133,14 +111,10 @@ func (s *DescribeChargeResultRequest) Validate() error {
 }
 
 type DescribeChargeResultRequestChargeModules struct {
-	// The ID of the billing module.
-	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The usage amount of the billing module.
-	//
 	// example:
 	//
 	// 10

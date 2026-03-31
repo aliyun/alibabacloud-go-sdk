@@ -22,30 +22,19 @@ type iDescribeBotRuleLabelsResponseBody interface {
 }
 
 type DescribeBotRuleLabelsResponseBody struct {
-	// The maximum number of entries returned per page. Valid values: 1 to 200. Default value: 20.
-	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results. This parameter is returned if a next page exists.
-	//
-	// > If a value is returned for this parameter, it indicates that more results are available. Use the returned **NextToken*	- value in the next request to retrieve the next page of results. Repeat this process until no value is returned for this parameter. This indicates that all results have been retrieved.
-	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of bot management rule labels.
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RuleLabels []*DescribeBotRuleLabelsResponseBodyRuleLabels `json:"RuleLabels,omitempty" xml:"RuleLabels,omitempty" type:"Repeated"`
-	// The total number of entries returned.
-	//
 	// example:
 	//
 	// 8
@@ -119,36 +108,18 @@ func (s *DescribeBotRuleLabelsResponseBody) Validate() error {
 }
 
 type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
-	// The bot behavior that corresponds to the rule label. Valid values:
-	//
-	// - **malicious**: malicious bot.
-	//
-	// - **suspicious**: suspected bot.
-	//
-	// - **normal**: normal bot.
-	//
 	// example:
 	//
 	// malicious
 	BotBehavior *string `json:"BotBehavior,omitempty" xml:"BotBehavior,omitempty"`
-	// The key of the bot management rule label.
-	//
 	// example:
 	//
 	// malicious_crawler_python
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The type of the bot rule label.
-	//
 	// example:
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The bot management scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
-	//
-	// - **web**: web protection.
-	//
-	// - **app**: app protection.
-	//
 	// example:
 	//
 	// Web,app

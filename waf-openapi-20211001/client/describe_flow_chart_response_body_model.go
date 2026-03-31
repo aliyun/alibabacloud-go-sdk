@@ -18,7 +18,7 @@ type iDescribeFlowChartResponseBody interface {
 type DescribeFlowChartResponseBody struct {
 	// The traffic statistics.
 	FlowChart []*DescribeFlowChartResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type DescribeFlowChartResponseBodyFlowChart struct {
 	//
 	// 0
 	CcCustomReportsSum *int64 `json:"CcCustomReportsSum,omitempty" xml:"CcCustomReportsSum,omitempty"`
-	// The number of requests that are blocked by system HTTP flood protection rules.
+	// The number of requests that are blocked by HTTP flood protection rules created by the system.
 	//
 	// example:
 	//
 	// 0
 	CcSystemBlocksSum *int64 `json:"CcSystemBlocksSum,omitempty" xml:"CcSystemBlocksSum,omitempty"`
-	// The number of requests that are monitored by system HTTP flood protection rules.
+	// The number of requests that are monitored by HTTP flood protection rules created by the system.
 	//
 	// example:
 	//
@@ -144,55 +144,55 @@ type DescribeFlowChartResponseBodyFlowChart struct {
 	//
 	// 2932
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The total volume of inbound traffic. Unit: bytes.
+	// The total number of requests that are redirected to the WAF instance.
 	//
 	// example:
 	//
 	// 121645464
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The time sequence number, sorted in chronological order.
+	// The serial number of the time interval. The serial numbers are arranged in chronological order.
 	//
 	// example:
 	//
 	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The peak number of requests.
+	// The peak traffic.
 	//
 	// example:
 	//
 	// 2932
 	MaxPv *int64 `json:"MaxPv,omitempty" xml:"MaxPv,omitempty"`
-	// The total volume of outbound traffic. Unit: bytes.
+	// The total number of requests that are forwarded by the WAF instance.
 	//
 	// example:
 	//
 	// 1200540464
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The number of requests that are blocked by peak traffic throttling rules.
+	// The number of requests that are blocked by rate limiting rules.
 	//
 	// example:
 	//
 	// 0
 	RatelimitBlockSum *int64 `json:"RatelimitBlockSum,omitempty" xml:"RatelimitBlockSum,omitempty"`
-	// The number of requests that are monitored by peak traffic throttling rules.
+	// The number of requests that are monitored by rate limiting rules.
 	//
 	// example:
 	//
 	// 0
 	RatelimitReportSum *int64 `json:"RatelimitReportSum,omitempty" xml:"RatelimitReportSum,omitempty"`
-	// The number of requests that are blocked by Location Blacklist rules.
+	// The number of requests that are blocked by region blacklist rules.
 	//
 	// example:
 	//
 	// 0
 	RegionBlockBlocksSum *int64 `json:"RegionBlockBlocksSum,omitempty" xml:"RegionBlockBlocksSum,omitempty"`
-	// The number of requests that are monitored by Location Blacklist rules.
+	// The number of requests that are monitored by region blacklist rules.
 	//
 	// example:
 	//
 	// 0
 	RegionBlockReportsSum *int64 `json:"RegionBlockReportsSum,omitempty" xml:"RegionBlockReportsSum,omitempty"`
-	// The total number of requests from bots.
+	// The total number of bot requests.
 	//
 	// example:
 	//

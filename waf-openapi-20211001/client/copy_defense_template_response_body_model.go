@@ -22,7 +22,7 @@ type CopyDefenseTemplateResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the newly created protection template.
+	// The ID of the new protection template.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type ModifyMajorProtectionBlackIpRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
-	// > If the value is **0**, the IP address blacklist is permanently valid.
+	// >  If you set this parameter to **0**, the blacklist is permanently valid.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyMajorProtectionBlackIpRequest struct {
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,7 @@ type ModifyMajorProtectionBlackIpRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address blacklist to add. You can specify custom IP addresses or CIDR blocks. Both IPv4 and IPv6 addresses are supported. Separate multiple IP addresses with commas (,).
-	//
-	// For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
+	// The IP addresses that you want to add to the IP address blacklist. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
 	//
 	// This parameter is required.
 	//
@@ -64,23 +62,23 @@ type ModifyMajorProtectionBlackIpRequest struct {
 	//
 	// 12.XX.XX.2,3.XX.XX.3/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: The Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
 	//
-	// - **ap-southeast-1**: Outside the Chinese mainland.
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the IP address blacklist rule for critical event protection.
+	// The ID of the IP address blacklist rule for major event protection.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +86,7 @@ type ModifyMajorProtectionBlackIpRequest struct {
 	//
 	// 20012033
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the critical event protection template.
+	// The ID of the IP address blacklist rule template for major event protection.
 	//
 	// This parameter is required.
 	//

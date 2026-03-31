@@ -28,51 +28,27 @@ type iCreateDefenseRuleRequest interface {
 }
 
 type CreateDefenseRuleRequest struct {
-	// The protection scenario for the rule.
+	// The module to which the protection rule that you want to create belongs.
 	//
-	// When **DefenseType*	- is **template**, valid values are:
+	// 	- **waf_group:*	- the basic protection rule module.
 	//
-	// - **waf_group**: basic protection.
+	// 	- **antiscan:*	- the scan protection module.
 	//
-	// - **waf_base**: new version of Web core protection.
+	// 	- **ip_blacklist:*	- the IP address blacklist module.
 	//
-	// - **antiscan**: scan protection.
+	// 	- **custom_acl:*	- the custom rule module.
 	//
-	// - **ip_blacklist**: IP blacklist.
+	// 	- **whitelist:*	- the whitelist module.
 	//
-	// - **custom_acl**: custom rules.
+	// 	- **region_block:*	- the region blacklist module.
 	//
-	// - **whitelist**: whitelist.
+	// 	- **custom_response:*	- the custom response module.
 	//
-	// - **region_block**: location blacklist.
+	// 	- **cc:*	- the HTTP flood protection module.
 	//
-	// - **custom_response**: legacy custom response.
+	// 	- **tamperproof:*	- the website tamper-proofing module.
 	//
-	// - **cc**: HTTP flood protection.
-	//
-	// - **tamperproof**: webpage tamper protection.
-	//
-	// - **dlp**: data leak prevention.
-	//
-	// - **spike_throttle**: peak traffic throttling.
-	//
-	// When **DefenseType*	- is **resource**, valid values are:
-	//
-	// - **account_identifier**: account extraction.
-	//
-	// - **custom_response**: new version of custom response.
-	//
-	// - **waf_codec**: decoding.
-	//
-	// When **DefenseType*	- is **global**, valid values are:
-	//
-	// - **regular_custom**: custom regex.
-	//
-	// - **address_book**: address book.
-	//
-	// - **custom_response**: new version of custom response.
-	//
-	// > For globally configured custom responses, users can reference them under protected objects or rules. When referenced at different levels, the effective logic follows this order: rule level > protected object level > default page.
+	// 	- **dlp:*	- the data leakage prevention module.
 	//
 	// This parameter is required.
 	//
@@ -80,21 +56,10 @@ type CreateDefenseRuleRequest struct {
 	//
 	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The type of the protection rule. Valid values:
-	//
-	// - **template*	- (default): template-based protection rules.
-	//
-	// - **resource**: rules applied at the protected object level.
-	//
-	// - **global**: global-level rules.
-	//
-	// example:
-	//
-	// template
-	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
+	DefenseType  *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -104,41 +69,32 @@ type CreateDefenseRuleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object associated with the rule.
-	//
-	// > Provide this parameter only when **DefenseType*	- is **resource**.
-	//
-	// example:
-	//
-	// sec****-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the Alibaba Cloud resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The rule configuration content, specified as a JSON string.
+	// The configurations of the protection rule. The value is a JSON string that contains multiple parameters.
 	//
-	// > The specific parameters vary based on the specified **DefenseType*	- (**DefenseScene**). For details, see **Protection Rule Parameter Descriptions**.
+	// >  The parameters vary based on the **protection module**, which is specified by **DefenseScene**. For more information, see the "**Parameters of protection rules**" section in this topic.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// waf_group
+	// For more information, see the following section
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The ID of the protection template to which the rule belongs.
-	//
-	// > Provide this parameter only when **DefenseType*	- is **template**.
+	// The ID of the rule template for which you want to create a protection rule.
 	//
 	// example:
 	//

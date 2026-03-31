@@ -16,13 +16,13 @@ type iDescribeRuleHitsTopResourceResponseBody interface {
 }
 
 type DescribeRuleHitsTopResourceResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ADA11BC7-AA95-5C31-9095-5802C02ED1DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 protected objects that triggered protection rules.
+	// The array of the top 10 protected objects that trigger protection rules.
 	RuleHitsTopResource []*DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource `json:"RuleHitsTopResource,omitempty" xml:"RuleHitsTopResource,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeRuleHitsTopResourceResponseBody) Validate() error {
 }
 
 type DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource struct {
-	// The number of requests that triggered the rule.
+	// The number of requests that match protection rules.
 	//
 	// example:
 	//

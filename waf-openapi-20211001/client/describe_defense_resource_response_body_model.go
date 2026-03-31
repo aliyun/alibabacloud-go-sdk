@@ -16,13 +16,13 @@ type iDescribeDefenseResourceResponseBody interface {
 }
 
 type DescribeDefenseResourceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 439AADF2-368C-5E98-B14E-3086****0573
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the protected object.
+	// The protected object.
 	Resource *DescribeDefenseResourceResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 }
 
@@ -62,39 +62,39 @@ func (s *DescribeDefenseResourceResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourceResponseBodyResource struct {
-	// Indicates whether the tracking cookie feature is enabled. Valid values:
+	// The status of the tracking cookie.
 	//
-	// - **0**: disabled.
+	// 	- **0**: disabled.
 	//
-	// - **1**: enabled.
+	// 	- **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// Indicates whether the secure attribute of the tracking cookie is enabled. Valid values:
+	// The status of the secure attribute of the tracking cookie.
 	//
-	// - **0**: disabled.
+	// 	- **0**: disabled.
 	//
-	// - **1**: enabled.
+	// 	- **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// Indicates whether the secure attribute of the slider CAPTCHA cookie is enabled. Valid values:
+	// The status of the secure attribute of the slider CAPTCHA cookie.
 	//
-	// - **0**: disabled.
+	// 	- **0**: disabled.
 	//
-	// - **1**: enabled.
+	// 	- **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// The list of custom header fields used to identify the actual client IP address.
+	// The custom header fields.
 	//
-	// > This parameter takes effect only when XffStatus is set to 1. WAF uses the first IP address in the specified header fields as the client source IP address to prevent X-Forwarded-For (XFF) spoofing. If multiple headers are specified, WAF checks them in order. If the first header does not contain a source IP address, WAF checks the next header. If none of the specified headers contain a source IP address, WAF uses the first IP address in the X-Forwarded-For header.
+	// >  If the value of XffStatus is 1, the first IP address in the specified header field is used as the originating IP address of the client to prevent X-Forwarded-For (XFF) forgery. If you specify multiple header fields, WAF reads the values of the header fields in sequence until the originating IP address is obtained. If the originating IP address cannot be obtained, the first IP address in the XFF header field is used as the originating IP address of the client.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description of the protected object.
 	//
@@ -102,7 +102,7 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	//
 	// This is Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The details of the protected object. The fields vary based on the cloud service type.
+	// The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
 	//
 	// example:
 	//
@@ -114,37 +114,32 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	//
 	// }
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The time when the protected object was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the protected object was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1607493144000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the protected object was modified. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the protected object was modified. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1691720010000
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// example:
-	//
-	// waf_v2_public_cn-wwo****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the protected object belongs.
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The user ID (UID) of the Alibaba Cloud account to which the protected object belongs.
 	//
 	// example:
 	//
 	// 170457******9107
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The protection pattern of the protected object.
+	// The pattern used for the protected object.
 	//
 	// example:
 	//
 	// domain
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
-	// The type of cloud service to which the protected object belongs.
+	// The name of the cloud service.
 	//
 	// example:
 	//
@@ -170,21 +165,21 @@ type DescribeDefenseResourceResponseBodyResource struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The origin of the protected object. Valid values:
 	//
-	// - **custom**: The protected object is created through provisioning.
+	// 	- **custom**
 	//
-	// - **access**: The protected object is user-defined.
+	// 	- **access**
 	//
 	// example:
 	//
 	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
-	// The custom response headers configured for the protected object.
+	// The response header.
 	ResponseHeaders []*DescribeDefenseResourceResponseBodyResourceResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	// Indicates whether a Layer 7 proxy such as Anti-DDoS or CDN is enabled in front of WAF. Valid values:
+	// Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
 	//
-	// - **0**: disabled.
+	// 	- **0**: No Layer 7 proxy is deployed.
 	//
-	// - **1**: enabled.
+	// 	- **1**: A Layer 7 proxy is deployed.
 	//
 	// example:
 	//
@@ -376,13 +371,13 @@ func (s *DescribeDefenseResourceResponseBodyResource) Validate() error {
 }
 
 type DescribeDefenseResourceResponseBodyResourceResponseHeaders struct {
-	// The key of the custom response header.
+	// Specifies the key for a custom response header.
 	//
 	// example:
 	//
 	// Header-Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the custom response header.
+	// Specifies the value for a custom response header.
 	//
 	// example:
 	//

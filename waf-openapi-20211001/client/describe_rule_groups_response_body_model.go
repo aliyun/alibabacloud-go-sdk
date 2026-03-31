@@ -18,15 +18,15 @@ type iDescribeRuleGroupsResponseBody interface {
 }
 
 type DescribeRuleGroupsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 02E9A4B8-90FB-5F41-A049-C82277EB82FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of regular expression rule groups.
+	// An array of regular expression rule groups.
 	RuleGroups []*DescribeRuleGroupsResponseBodyRuleGroups `json:"RuleGroups,omitempty" xml:"RuleGroups,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that are returned.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *DescribeRuleGroupsResponseBody) Validate() error {
 }
 
 type DescribeRuleGroupsResponseBodyRuleGroups struct {
-	// The time when the rule group was last updated.
+	// The most recent time when the rule group was modified.
 	//
 	// example:
 	//
 	// 1664336364000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The automatic update status of the rule group.
+	// Indicates whether the automatic update feature is enabled for the rule group.
 	//
-	// - 1: Automatic updates are enabled.
+	// 	- 1: The automatic update feature is enabled for the rule group.
 	//
-	// - 2: Automatic updates are disabled.
+	// 	- 2: The automatic update feature is disabled for the rule group.
 	//
 	// example:
 	//
 	// 1
 	IsSubscribe *int32 `json:"IsSubscribe,omitempty" xml:"IsSubscribe,omitempty"`
-	// The ID of the rule group that the current rule group inherits.
+	// The ID of the rule group.
 	//
-	// - 0: The rule group is created from scratch and does not inherit from another rule group.
+	// 	- 0: The rule group is created from scratch.
 	//
-	// - 1011: The Strict rule group.
+	// 	- 1011: The rule group is a strict rule group.
 	//
-	// - 1012: The Medium rule group.
+	// 	- 1012: The rule group is a medium rule group.
 	//
-	// - 1013: The Loose rule group.
+	// 	- 1013: The rue group is a loose rule group.
 	//
 	// example:
 	//
 	// 1012
 	ParentRuleGroupId *int64 `json:"ParentRuleGroupId,omitempty" xml:"ParentRuleGroupId,omitempty"`
-	// The ID of the rule group.
+	// The ID of the regular expression rule group.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeRuleGroupsResponseBodyRuleGroups struct {
 	//
 	// ssssss
 	RuleGroupName *string `json:"RuleGroupName,omitempty" xml:"RuleGroupName,omitempty"`
-	// The number of built-in rules.
+	// The number of built-in rules in the rule group.
 	//
 	// example:
 	//
