@@ -1042,6 +1042,72 @@ func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemp
 
 // Summary:
 //
+// 增加用户积分
+//
+// @param request - AddYikeUserCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddYikeUserCreditResponse
+func (client *Client) AddYikeUserCreditWithOptions(request *AddYikeUserCreditRequest, runtime *dara.RuntimeOptions) (_result *AddYikeUserCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Credit) {
+		query["Credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.YikeUserId) {
+		query["YikeUserId"] = request.YikeUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddYikeUserCredit"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddYikeUserCreditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 增加用户积分
+//
+// @param request - AddYikeUserCreditRequest
+//
+// @return AddYikeUserCreditResponse
+func (client *Client) AddYikeUserCredit(request *AddYikeUserCreditRequest) (_result *AddYikeUserCreditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddYikeUserCreditResponse{}
+	_body, _err := client.AddYikeUserCreditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies search index information including index status and configurations.
 //
 // @param request - AlterSearchIndexRequest
@@ -4883,6 +4949,216 @@ func (client *Client) CreateYikeAssetUpload(request *CreateYikeAssetUploadReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateYikeAssetUploadResponse{}
 	_body, _err := client.CreateYikeAssetUploadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一刻项目
+//
+// @param request - CreateYikeProductionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateYikeProductionResponse
+func (client *Client) CreateYikeProductionWithOptions(request *CreateYikeProductionRequest, runtime *dara.RuntimeOptions) (_result *CreateYikeProductionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateYikeProduction"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateYikeProductionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一刻项目
+//
+// @param request - CreateYikeProductionRequest
+//
+// @return CreateYikeProductionResponse
+func (client *Client) CreateYikeProduction(request *CreateYikeProductionRequest) (_result *CreateYikeProductionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateYikeProductionResponse{}
+	_body, _err := client.CreateYikeProductionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一刻子用户
+//
+// @param request - CreateYikeUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateYikeUserResponse
+func (client *Client) CreateYikeUserWithOptions(request *CreateYikeUserRequest, runtime *dara.RuntimeOptions) (_result *CreateYikeUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Nickname) {
+		query["Nickname"] = request.Nickname
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.ProductionIds) {
+		query["ProductionIds"] = request.ProductionIds
+	}
+
+	if !dara.IsNil(request.UserNamePrefix) {
+		query["UserNamePrefix"] = request.UserNamePrefix
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateYikeUser"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateYikeUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一刻子用户
+//
+// @param request - CreateYikeUserRequest
+//
+// @return CreateYikeUserResponse
+func (client *Client) CreateYikeUser(request *CreateYikeUserRequest) (_result *CreateYikeUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateYikeUserResponse{}
+	_body, _err := client.CreateYikeUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作室
+//
+// @param request - CreateYikeWorkspaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateYikeWorkspaceResponse
+func (client *Client) CreateYikeWorkspaceWithOptions(request *CreateYikeWorkspaceRequest, runtime *dara.RuntimeOptions) (_result *CreateYikeWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.UserCountLimit) {
+		query["UserCountLimit"] = request.UserCountLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateYikeWorkspace"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateYikeWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作室
+//
+// @param request - CreateYikeWorkspaceRequest
+//
+// @return CreateYikeWorkspaceResponse
+func (client *Client) CreateYikeWorkspace(request *CreateYikeWorkspaceRequest) (_result *CreateYikeWorkspaceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateYikeWorkspaceResponse{}
+	_body, _err := client.CreateYikeWorkspaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14329,6 +14605,68 @@ func (client *Client) GetYikeStoryboardJob(request *GetYikeStoryboardJobRequest)
 
 // Summary:
 //
+// 查询一刻用户积分
+//
+// @param request - GetYikeUserCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetYikeUserCreditResponse
+func (client *Client) GetYikeUserCreditWithOptions(request *GetYikeUserCreditRequest, runtime *dara.RuntimeOptions) (_result *GetYikeUserCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.YikeUserId) {
+		query["YikeUserId"] = request.YikeUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetYikeUserCredit"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetYikeUserCreditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询一刻用户积分
+//
+// @param request - GetYikeUserCreditRequest
+//
+// @return GetYikeUserCreditResponse
+func (client *Client) GetYikeUserCredit(request *GetYikeUserCreditRequest) (_result *GetYikeUserCreditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetYikeUserCreditResponse{}
+	_body, _err := client.GetYikeUserCreditWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a media asset in a search library. Before you call this operation, you must create a search library.
 //
 // @param request - InsertMediaToSearchLibRequest
@@ -23224,6 +23562,72 @@ func (client *Client) SetNotifyConfig(request *SetNotifyConfigRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &SetNotifyConfigResponse{}
 	_body, _err := client.SetNotifyConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置用户角色
+//
+// @param request - SetYikeUserRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetYikeUserRoleResponse
+func (client *Client) SetYikeUserRoleWithOptions(request *SetYikeUserRoleRequest, runtime *dara.RuntimeOptions) (_result *SetYikeUserRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !dara.IsNil(request.YikeUserId) {
+		query["YikeUserId"] = request.YikeUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetYikeUserRole"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetYikeUserRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置用户角色
+//
+// @param request - SetYikeUserRoleRequest
+//
+// @return SetYikeUserRoleResponse
+func (client *Client) SetYikeUserRole(request *SetYikeUserRoleRequest) (_result *SetYikeUserRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetYikeUserRoleResponse{}
+	_body, _err := client.SetYikeUserRoleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
