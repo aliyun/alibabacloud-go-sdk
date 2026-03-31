@@ -179,6 +179,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// 1
 	EndUserCount    *int32  `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
 	EntraDomainName *string `json:"EntraDomainName,omitempty" xml:"EntraDomainName,omitempty"`
+	EnvId           *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvType         *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The expiration date of the subscription cloud computer share.
 	//
 	// example:
@@ -563,6 +565,14 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetEntraDomainName() *s
 	return s.EntraDomainName
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetEnvId() *string {
+	return s.EnvId
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetEnvType() *string {
+	return s.EnvType
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetExpiredTime() *string {
 	return s.ExpiredTime
 }
@@ -805,6 +815,16 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEndUserCount(v int32
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEntraDomainName(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.EntraDomainName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEnvId(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.EnvId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetEnvType(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.EnvType = &v
 	return s
 }
 

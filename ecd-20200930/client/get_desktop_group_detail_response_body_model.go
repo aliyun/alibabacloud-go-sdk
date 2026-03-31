@@ -164,6 +164,8 @@ type GetDesktopGroupDetailResponseBodyDesktops struct {
 	//
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
+	EnvId         *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	EnvType       *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The expiration date of the subscription cloud computer share.
 	//
 	// example:
@@ -487,6 +489,14 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) GetDirectoryType() *string {
 	return s.DirectoryType
 }
 
+func (s *GetDesktopGroupDetailResponseBodyDesktops) GetEnvId() *string {
+	return s.EnvId
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) GetEnvType() *string {
+	return s.EnvType
+}
+
 func (s *GetDesktopGroupDetailResponseBodyDesktops) GetExpiredTime() *string {
 	return s.ExpiredTime
 }
@@ -711,6 +721,16 @@ func (s *GetDesktopGroupDetailResponseBodyDesktops) SetDirectoryId(v string) *Ge
 
 func (s *GetDesktopGroupDetailResponseBodyDesktops) SetDirectoryType(v string) *GetDesktopGroupDetailResponseBodyDesktops {
 	s.DirectoryType = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetEnvId(v string) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.EnvId = &v
+	return s
+}
+
+func (s *GetDesktopGroupDetailResponseBodyDesktops) SetEnvType(v string) *GetDesktopGroupDetailResponseBodyDesktops {
+	s.EnvType = &v
 	return s
 }
 
