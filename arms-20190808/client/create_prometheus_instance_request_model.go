@@ -401,7 +401,13 @@ func (s *CreatePrometheusInstanceRequest) Validate() error {
 }
 
 type CreatePrometheusInstanceRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

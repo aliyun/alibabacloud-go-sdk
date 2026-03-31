@@ -151,9 +151,8 @@ type CreateRetcodeAppResponseBodyRetcodeAppDataBean struct {
 	// example:
 	//
 	// rg-acfmxyexli2****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the task.
-	Tags *CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            *CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s CreateRetcodeAppResponseBodyRetcodeAppDataBean) String() string {
@@ -244,17 +243,7 @@ func (s *CreateRetcodeAppResponseBodyRetcodeAppDataBeanTags) Validate() error {
 }
 
 type CreateRetcodeAppResponseBodyRetcodeAppDataBeanTagsTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TestKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// TestValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -174,7 +174,7 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalView(request *AddAliClus
 //
 // Summary:
 //
-// Integrates the dashboard of Prometheus Service.
+// Integrates the dashboard of Managed Service for Prometheus.
 //
 // @param request - AddGrafanaRequest
 //
@@ -228,7 +228,7 @@ func (client *Client) AddGrafanaWithOptions(request *AddGrafanaRequest, runtime 
 //
 // Summary:
 //
-// Integrates the dashboard of Prometheus Service.
+// Integrates the dashboard of Managed Service for Prometheus.
 //
 // @param request - AddGrafanaRequest
 //
@@ -640,7 +640,7 @@ func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegration
 //
 // Summary:
 //
-// Creates or updates a recording rule of Managed Service for Prometheus.
+// Creates or updates a recording rule.
 //
 // @param request - AddRecordingRuleRequest
 //
@@ -694,7 +694,7 @@ func (client *Client) AddRecordingRuleWithOptions(request *AddRecordingRuleReque
 //
 // Summary:
 //
-// Creates or updates a recording rule of Managed Service for Prometheus.
+// Creates or updates a recording rule.
 //
 // @param request - AddRecordingRuleRequest
 //
@@ -1058,7 +1058,7 @@ func (client *Client) BindPrometheusGrafanaInstance(request *BindPrometheusGrafa
 
 // Summary:
 //
-// Blocks alert notifications in a time period.
+// Blocks alert notifications. After an alert is blocked, no more notifications are sent within the specified time range.
 //
 // @param request - BlockAlarmNotificationRequest
 //
@@ -1114,7 +1114,7 @@ func (client *Client) BlockAlarmNotificationWithOptions(request *BlockAlarmNotif
 
 // Summary:
 //
-// Blocks alert notifications in a time period.
+// Blocks alert notifications. After an alert is blocked, no more notifications are sent within the specified time range.
 //
 // @param request - BlockAlarmNotificationRequest
 //
@@ -2802,7 +2802,7 @@ func (client *Client) CreateOrUpdateContactGroup(request *CreateOrUpdateContactG
 
 // Summary:
 //
-// Creates or modifies an EventBridge integration.
+// Creates or modifies an EventBridge integration that is used to push notifications.
 //
 // @param request - CreateOrUpdateEventBridgeIntegrationRequest
 //
@@ -2878,7 +2878,7 @@ func (client *Client) CreateOrUpdateEventBridgeIntegrationWithOptions(request *C
 
 // Summary:
 //
-// Creates or modifies an EventBridge integration.
+// Creates or modifies an EventBridge integration that is used to push notifications.
 //
 // @param request - CreateOrUpdateEventBridgeIntegrationRequest
 //
@@ -4753,7 +4753,7 @@ func (client *Client) DeleteAppList(request *DeleteAppListRequest) (_result *Del
 //
 // Summary:
 //
-// Releases a Prometheus instance for Alibaba Cloud services.
+// Uninstalls a Prometheus instance.
 //
 // @param request - DeleteCmsExporterRequest
 //
@@ -4803,7 +4803,7 @@ func (client *Client) DeleteCmsExporterWithOptions(request *DeleteCmsExporterReq
 //
 // Summary:
 //
-// Releases a Prometheus instance for Alibaba Cloud services.
+// Uninstalls a Prometheus instance.
 //
 // @param request - DeleteCmsExporterRequest
 //
@@ -5370,7 +5370,7 @@ func (client *Client) DeleteEnvironmentFeature(request *DeleteEnvironmentFeature
 
 // Summary:
 //
-// Deletes an EventBridge integration.
+// Deletes an EventBridge integration that is used to push notifications.
 //
 // @param request - DeleteEventBridgeIntegrationRequest
 //
@@ -5414,7 +5414,7 @@ func (client *Client) DeleteEventBridgeIntegrationWithOptions(request *DeleteEve
 
 // Summary:
 //
-// Deletes an EventBridge integration.
+// Deletes an EventBridge integration that is used to push notifications.
 //
 // @param request - DeleteEventBridgeIntegrationRequest
 //
@@ -5651,7 +5651,7 @@ func (client *Client) DeleteIMRobot(request *DeleteIMRobotRequest) (_result *Del
 //
 // Summary:
 //
-// Deletes collection rules from an integration.
+// Deletes the collection rules for a Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DeleteIntegrationRequest
 //
@@ -5705,7 +5705,7 @@ func (client *Client) DeleteIntegrationWithOptions(request *DeleteIntegrationReq
 //
 // Summary:
 //
-// Deletes collection rules from an integration.
+// Deletes the collection rules for a Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DeleteIntegrationRequest
 //
@@ -6443,7 +6443,7 @@ func (client *Client) DeleteScenario(request *DeleteScenarioRequest) (_result *D
 
 // Summary:
 //
-// The ID of the silence policy.
+// Deletes a silence policy based on its ID.
 //
 // @param request - DeleteSilencePolicyRequest
 //
@@ -6487,7 +6487,7 @@ func (client *Client) DeleteSilencePolicyWithOptions(request *DeleteSilencePolic
 
 // Summary:
 //
-// The ID of the silence policy.
+// Deletes a silence policy based on its ID.
 //
 // @param request - DeleteSilencePolicyRequest
 //
@@ -7677,7 +7677,7 @@ func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFea
 
 // Summary:
 //
-// Queries instant messaging (IM) chatbots.
+// Queries a list of IM chatbots.
 //
 // @param request - DescribeIMRobotsRequest
 //
@@ -7733,7 +7733,7 @@ func (client *Client) DescribeIMRobotsWithOptions(request *DescribeIMRobotsReque
 
 // Summary:
 //
-// Queries instant messaging (IM) chatbots.
+// Queries a list of IM chatbots.
 //
 // @param request - DescribeIMRobotsRequest
 //
@@ -12759,7 +12759,7 @@ func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequ
 
 // Summary:
 //
-// 环境addon列表
+// Queries the information about the add-ons that are installed in an environment.
 //
 // @param request - ListEnvironmentAddonsRequest
 //
@@ -12807,7 +12807,7 @@ func (client *Client) ListEnvironmentAddonsWithOptions(request *ListEnvironmentA
 
 // Summary:
 //
-// 环境addon列表
+// Queries the information about the add-ons that are installed in an environment.
 //
 // @param request - ListEnvironmentAddonsRequest
 //
@@ -13351,7 +13351,7 @@ func (client *Client) ListEscalationPolicies(request *ListEscalationPoliciesRequ
 
 // Summary:
 //
-// Queries an EventBridge integration.
+// Queries EventBridge integrations that are used to push notifications.
 //
 // @param request - ListEventBridgeIntegrationsRequest
 //
@@ -13391,7 +13391,7 @@ func (client *Client) ListEventBridgeIntegrationsWithOptions(request *ListEventB
 
 // Summary:
 //
-// Queries an EventBridge integration.
+// Queries EventBridge integrations that are used to push notifications.
 //
 // @param request - ListEventBridgeIntegrationsRequest
 //
@@ -16493,7 +16493,7 @@ func (client *Client) SearchTraceAppByName(request *SearchTraceAppByNameRequest)
 
 // Summary:
 //
-// Queries application monitoring tasks by page.
+// Queries Application Monitoring tasks by page.
 //
 // @param request - SearchTraceAppByPageRequest
 //
@@ -16557,7 +16557,7 @@ func (client *Client) SearchTraceAppByPageWithOptions(request *SearchTraceAppByP
 
 // Summary:
 //
-// Queries application monitoring tasks by page.
+// Queries Application Monitoring tasks by page.
 //
 // @param request - SearchTraceAppByPageRequest
 //

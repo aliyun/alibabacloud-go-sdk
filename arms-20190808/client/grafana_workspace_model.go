@@ -66,68 +66,209 @@ type iGrafanaWorkspace interface {
 }
 
 type GrafanaWorkspace struct {
-	Commercial  *bool   `json:"commercial,omitempty" xml:"commercial,omitempty"`
-	DeployType  *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
+	// Indicates whether the workspace is commercialized.
+	//
+	// example:
+	//
+	// true
+	Commercial *bool `json:"commercial,omitempty" xml:"commercial,omitempty"`
+	// The deployment mode of Grafana. You can ignore this parameter.
+	//
+	// example:
+	//
+	// asi
+	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Grafana for Production
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The time when the workspace expires.
+	//
 	// example:
 	//
 	// 1652803200000
 	EndTime *float32 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The time when the workspace was created.
+	//
 	// example:
 	//
-	// 创建时间
-	GmtCreate              *float32 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	GrafanaVersion         *string  `json:"grafanaVersion,omitempty" xml:"grafanaVersion,omitempty"`
-	GrafanaWorkspaceDomain *string  `json:"grafanaWorkspaceDomain,omitempty" xml:"grafanaWorkspaceDomain,omitempty"`
+	// 1642079398000
+	GmtCreate *float32 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The version number of Grafana.
+	//
+	// Valid values:
+	//
+	// 	- 8.2.x
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- 10.0.x
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- 9.0.x
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// 9.0.x
+	GrafanaVersion *string `json:"grafanaVersion,omitempty" xml:"grafanaVersion,omitempty"`
+	// The domain name of the workspace.
+	//
+	// example:
+	//
+	// my-grafana.grafana.aliyuncs.com:443
+	GrafanaWorkspaceDomain *string `json:"grafanaWorkspaceDomain,omitempty" xml:"grafanaWorkspaceDomain,omitempty"`
+	// status of workspace domain
+	//
 	// example:
 	//
 	// on
 	GrafanaWorkspaceDomainStatus *string `json:"grafanaWorkspaceDomainStatus,omitempty" xml:"grafanaWorkspaceDomainStatus,omitempty"`
+	// The version.
+	//
+	// Valid values:
+	//
+	// - standard：Standard Edition
+	//
+	// - personal_deition：Developer Edition
+	//
+	// -  experts_edition：Expert Edition
+	//
+	// - advanced_edition：Advanced Edition
+	//
 	// example:
 	//
-	// experts_edition/advanced_edition/standard
+	// personal_edition、experts_edition、advanced_edition、standard
 	GrafanaWorkspaceEdition *string `json:"grafanaWorkspaceEdition,omitempty" xml:"grafanaWorkspaceEdition,omitempty"`
+	// The ID of the workspace.
+	//
 	// example:
 	//
-	// g-thisisademo666
+	// grafana-cn-4xl3g******
 	GrafanaWorkspaceId *string `json:"grafanaWorkspaceId,omitempty" xml:"grafanaWorkspaceId,omitempty"`
+	// The public IP address and port number.
+	//
 	// example:
 	//
-	// 127.0.0.1:3000
-	GrafanaWorkspaceIp   *string `json:"grafanaWorkspaceIp,omitempty" xml:"grafanaWorkspaceIp,omitempty"`
+	// 47.110.71.***:443
+	GrafanaWorkspaceIp *string `json:"grafanaWorkspaceIp,omitempty" xml:"grafanaWorkspaceIp,omitempty"`
+	// The workspace name.
+	//
+	// example:
+	//
+	// Grafana for Production
 	GrafanaWorkspaceName *string `json:"grafanaWorkspaceName,omitempty" xml:"grafanaWorkspaceName,omitempty"`
+	// The maximum number of accounts.
+	//
 	// example:
 	//
 	// 10
-	MaxAccount           *string `json:"maxAccount,omitempty" xml:"maxAccount,omitempty"`
-	NtmId                *string `json:"ntmId,omitempty" xml:"ntmId,omitempty"`
-	PersonalDomain       *string `json:"personalDomain,omitempty" xml:"personalDomain,omitempty"`
-	PersonalDomainPrefix *string `json:"personalDomainPrefix,omitempty" xml:"personalDomainPrefix,omitempty"`
-	PrivateDomain        *string `json:"privateDomain,omitempty" xml:"privateDomain,omitempty"`
-	PrivateIp            *string `json:"privateIp,omitempty" xml:"privateIp,omitempty"`
+	MaxAccount *string `json:"maxAccount,omitempty" xml:"maxAccount,omitempty"`
+	// The ID of the purchase order.
+	//
 	// example:
 	//
-	// http/https
+	// grafana-cn-4xl3g******
+	NtmId *string `json:"ntmId,omitempty" xml:"ntmId,omitempty"`
+	// The personalized domain name.
+	//
+	// example:
+	//
+	// my-grafana.grafana.aliyuncs.com:443
+	PersonalDomain *string `json:"personalDomain,omitempty" xml:"personalDomain,omitempty"`
+	// The prefix of the personalized domain name.
+	//
+	// example:
+	//
+	// my-grafana
+	PersonalDomainPrefix *string `json:"personalDomainPrefix,omitempty" xml:"personalDomainPrefix,omitempty"`
+	// The private domain name of the workspace.
+	//
+	// example:
+	//
+	// my-grafana.grafana.aliyuncs.com:80
+	PrivateDomain *string `json:"privateDomain,omitempty" xml:"privateDomain,omitempty"`
+	// The private IP address and port number.
+	//
+	// example:
+	//
+	// 192.168.1.1
+	PrivateIp *string `json:"privateIp,omitempty" xml:"privateIp,omitempty"`
+	// The protocol type.
+	//
+	// example:
+	//
+	// http、https
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The region ID of the disk.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aek2f4vzrfs6cla
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	ShareSynced     *bool   `json:"shareSynced,omitempty" xml:"shareSynced,omitempty"`
+	// Indicates whether the migration guide for the shared edition is provided.
+	//
 	// example:
 	//
-	// 1.1.1.1
+	// true
+	ShareSynced *bool `json:"shareSynced,omitempty" xml:"shareSynced,omitempty"`
+	// The outbound IP address.
+	//
+	// example:
+	//
+	// 47.110.71.***
 	SnatIp *string `json:"snatIp,omitempty" xml:"snatIp,omitempty"`
+	// The status of the workspace.
+	//
+	// Valid values:
+	//
+	// - StartFailed：The workspace failed to be started
+	//
+	// - Stop：The workspace is stopped
+	//
+	// - Starting：The workspace is being started
+	//
+	// - DeleteFailed：The workspace failed to be deleted
+	//
+	// - Running：The workspace is running
+	//
+	// - DeleteSucceed：The workspace is deleted
+	//
 	// example:
 	//
-	// Starting/Running/Stop/DeleteSucceed
-	Status         *string                 `json:"status,omitempty" xml:"status,omitempty"`
-	Tags           []*GrafanaWorkspaceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	UpgradeVersion []*string               `json:"upgradeVersion,omitempty" xml:"upgradeVersion,omitempty" type:"Repeated"`
+	// Starting、Running、Stop、DeleteSucceed
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tags.
+	Tags []*GrafanaWorkspaceTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The versions that are available for upgrades.
+	UpgradeVersion []*string `json:"upgradeVersion,omitempty" xml:"upgradeVersion,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
-	// 66666666
+	// 1412143830******
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
@@ -396,7 +537,17 @@ func (s *GrafanaWorkspace) Validate() error {
 }
 
 type GrafanaWorkspaceTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

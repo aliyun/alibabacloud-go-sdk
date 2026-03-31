@@ -69,7 +69,7 @@ func (client *Client) AddAliClusterIdsToPrometheusGlobalViewWithContext(ctx cont
 //
 // Summary:
 //
-// Integrates the dashboard of Prometheus Service.
+// Integrates the dashboard of Managed Service for Prometheus.
 //
 // @param request - AddGrafanaRequest
 //
@@ -409,7 +409,7 @@ func (client *Client) AddPrometheusIntegrationWithContext(ctx context.Context, r
 //
 // Summary:
 //
-// Creates or updates a recording rule of Managed Service for Prometheus.
+// Creates or updates a recording rule.
 //
 // @param request - AddRecordingRuleRequest
 //
@@ -729,7 +729,7 @@ func (client *Client) BindPrometheusGrafanaInstanceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Blocks alert notifications in a time period.
+// Blocks alert notifications. After an alert is blocked, no more notifications are sent within the specified time range.
 //
 // @param request - BlockAlarmNotificationRequest
 //
@@ -2085,7 +2085,7 @@ func (client *Client) CreateOrUpdateContactGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates or modifies an EventBridge integration.
+// Creates or modifies an EventBridge integration that is used to push notifications.
 //
 // @param request - CreateOrUpdateEventBridgeIntegrationRequest
 //
@@ -3643,7 +3643,7 @@ func (client *Client) DeleteAppListWithContext(ctx context.Context, request *Del
 //
 // Summary:
 //
-// Releases a Prometheus instance for Alibaba Cloud services.
+// Uninstalls a Prometheus instance.
 //
 // @param request - DeleteCmsExporterRequest
 //
@@ -4095,7 +4095,7 @@ func (client *Client) DeleteEnvironmentFeatureWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes an EventBridge integration.
+// Deletes an EventBridge integration that is used to push notifications.
 //
 // @param request - DeleteEventBridgeIntegrationRequest
 //
@@ -4295,7 +4295,7 @@ func (client *Client) DeleteIMRobotWithContext(ctx context.Context, request *Del
 //
 // Summary:
 //
-// Deletes collection rules from an integration.
+// Deletes the collection rules for a Container Service for Kubernetes (ACK) cluster.
 //
 // @param request - DeleteIntegrationRequest
 //
@@ -4877,7 +4877,7 @@ func (client *Client) DeleteScenarioWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// The ID of the silence policy.
+// Deletes a silence policy based on its ID.
 //
 // @param request - DeleteSilencePolicyRequest
 //
@@ -5805,7 +5805,7 @@ func (client *Client) DescribeEnvironmentFeatureWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries instant messaging (IM) chatbots.
+// Queries a list of IM chatbots.
 //
 // @param request - DescribeIMRobotsRequest
 //
@@ -9605,7 +9605,7 @@ func (client *Client) ListEnvServiceMonitorsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 环境addon列表
+// Queries the information about the add-ons that are installed in an environment.
 //
 // @param request - ListEnvironmentAddonsRequest
 //
@@ -10053,7 +10053,7 @@ func (client *Client) ListEscalationPoliciesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries an EventBridge integration.
+// Queries EventBridge integrations that are used to push notifications.
 //
 // @param request - ListEventBridgeIntegrationsRequest
 //
@@ -12421,7 +12421,7 @@ func (client *Client) SearchTraceAppByNameWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries application monitoring tasks by page.
+// Queries Application Monitoring tasks by page.
 //
 // @param request - SearchTraceAppByPageRequest
 //

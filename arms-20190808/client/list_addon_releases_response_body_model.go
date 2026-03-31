@@ -113,6 +113,7 @@ func (s *ListAddonReleasesResponseBody) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyData struct {
+	ContainsV2Addon *bool `json:"ContainsV2Addon,omitempty" xml:"ContainsV2Addon,omitempty"`
 	// The queried add-ons.
 	Releases []*ListAddonReleasesResponseBodyDataReleases `json:"Releases,omitempty" xml:"Releases,omitempty" type:"Repeated"`
 	// The total number of entries.
@@ -131,12 +132,21 @@ func (s ListAddonReleasesResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListAddonReleasesResponseBodyData) GetContainsV2Addon() *bool {
+	return s.ContainsV2Addon
+}
+
 func (s *ListAddonReleasesResponseBodyData) GetReleases() []*ListAddonReleasesResponseBodyDataReleases {
 	return s.Releases
 }
 
 func (s *ListAddonReleasesResponseBodyData) GetTotal() *int64 {
 	return s.Total
+}
+
+func (s *ListAddonReleasesResponseBodyData) SetContainsV2Addon(v bool) *ListAddonReleasesResponseBodyData {
+	s.ContainsV2Addon = &v
+	return s
 }
 
 func (s *ListAddonReleasesResponseBodyData) SetReleases(v []*ListAddonReleasesResponseBodyDataReleases) *ListAddonReleasesResponseBodyData {
