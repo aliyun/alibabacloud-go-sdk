@@ -251,7 +251,8 @@ type VoiceModerationResultResponseBodyDataSliceDetails struct {
 	// example:
 	//
 	// {}
-	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
+	OriginAlgoResult map[string]interface{}                                     `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
+	Result           []*VoiceModerationResultResponseBodyDataSliceDetailsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// Risk Level.
 	//
 	// example:
@@ -334,6 +335,10 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) GetOriginAlgoResult(
 	return s.OriginAlgoResult
 }
 
+func (s *VoiceModerationResultResponseBodyDataSliceDetails) GetResult() []*VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	return s.Result
+}
+
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) GetRiskLevel() *string {
 	return s.RiskLevel
 }
@@ -396,6 +401,11 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetOriginAlgoResult(
 	return s
 }
 
+func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetResult(v []*VoiceModerationResultResponseBodyDataSliceDetailsResult) *VoiceModerationResultResponseBodyDataSliceDetails {
+	s.Result = v
+	return s
+}
+
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetRiskLevel(v string) *VoiceModerationResultResponseBodyDataSliceDetails {
 	s.RiskLevel = &v
 	return s
@@ -437,5 +447,197 @@ func (s *VoiceModerationResultResponseBodyDataSliceDetails) SetUrl(v string) *Vo
 }
 
 func (s *VoiceModerationResultResponseBodyDataSliceDetails) Validate() error {
+	if s.Result != nil {
+		for _, item := range s.Result {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type VoiceModerationResultResponseBodyDataSliceDetailsResult struct {
+	Confidence    *float32                                                                `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	CustomizedHit []*VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
+	Description   *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Label         *string                                                                 `json:"Label,omitempty" xml:"Label,omitempty"`
+	RiskLevel     *string                                                                 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskPositions []*VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
+	RiskWords     *string                                                                 `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+}
+
+func (s VoiceModerationResultResponseBodyDataSliceDetailsResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VoiceModerationResultResponseBodyDataSliceDetailsResult) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetConfidence() *float32 {
+	return s.Confidence
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetCustomizedHit() []*VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit {
+	return s.CustomizedHit
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetDescription() *string {
+	return s.Description
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetLabel() *string {
+	return s.Label
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetRiskLevel() *string {
+	return s.RiskLevel
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetRiskPositions() []*VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions {
+	return s.RiskPositions
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) GetRiskWords() *string {
+	return s.RiskWords
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetConfidence(v float32) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetCustomizedHit(v []*VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.CustomizedHit = v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetDescription(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.Description = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetLabel(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.Label = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetRiskLevel(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetRiskPositions(v []*VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.RiskPositions = v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) SetRiskWords(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResult {
+	s.RiskWords = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResult) Validate() error {
+	if s.CustomizedHit != nil {
+		for _, item := range s.CustomizedHit {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RiskPositions != nil {
+		for _, item := range s.RiskPositions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit struct {
+	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
+	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+}
+
+func (s VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) GetKeyWords() *string {
+	return s.KeyWords
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) GetLibName() *string {
+	return s.LibName
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) SetKeyWords(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit {
+	s.KeyWords = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) SetLibName(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit {
+	s.LibName = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultCustomizedHit) Validate() error {
+	return dara.Validate(s)
+}
+
+type VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions struct {
+	EndPos   *int32  `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
+	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
+	StartPos *int32  `json:"StartPos,omitempty" xml:"StartPos,omitempty"`
+}
+
+func (s VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) GoString() string {
+	return s.String()
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) GetEndPos() *int32 {
+	return s.EndPos
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) GetRiskWord() *string {
+	return s.RiskWord
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) GetStartPos() *int32 {
+	return s.StartPos
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) SetEndPos(v int32) *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions {
+	s.EndPos = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) SetRiskWord(v string) *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions {
+	s.RiskWord = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) SetStartPos(v int32) *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions {
+	s.StartPos = &v
+	return s
+}
+
+func (s *VoiceModerationResultResponseBodyDataSliceDetailsResultRiskPositions) Validate() error {
 	return dara.Validate(s)
 }
