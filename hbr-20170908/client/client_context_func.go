@@ -3119,6 +3119,66 @@ func (client *Client) DescribeCrossAccountsWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// @param request - DescribeDataSourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataSourcesResponse
+func (client *Client) DescribeDataSourcesWithContext(ctx context.Context, request *DescribeDataSourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.DataSourceId) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.DataSourceName) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !dara.IsNil(request.DataSourceType) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataSources"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataSourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries one or more SAP HANA backup plans that meet the specified conditions.
@@ -4900,6 +4960,46 @@ func (client *Client) ListProtectedResourcesWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// @param request - RemoveDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDataSourceResponse
+func (client *Client) RemoveDataSourceWithContext(ctx context.Context, request *RemoveDataSourceRequest, runtime *dara.RuntimeOptions) (_result *RemoveDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataSourceId) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveDataSource"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveDataSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the information about one or more backup snapshots that meet the specified conditions.
@@ -5500,6 +5600,90 @@ func (client *Client) UpdateContainerClusterWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateContainerClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateDataSourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataSourceResponse
+func (client *Client) UpdateDataSourceWithContext(ctx context.Context, request *UpdateDataSourceRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ConnectionInfo) {
+		query["ConnectionInfo"] = request.ConnectionInfo
+	}
+
+	if !dara.IsNil(request.Credential) {
+		query["Credential"] = request.Credential
+	}
+
+	if !dara.IsNil(request.DataSourceId) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !dara.IsNil(request.DataSourceName) {
+		query["DataSourceName"] = request.DataSourceName
+	}
+
+	if !dara.IsNil(request.Exclude) {
+		query["Exclude"] = request.Exclude
+	}
+
+	if !dara.IsNil(request.Include) {
+		query["Include"] = request.Include
+	}
+
+	if !dara.IsNil(request.IndexLevel) {
+		query["IndexLevel"] = request.IndexLevel
+	}
+
+	if !dara.IsNil(request.Options) {
+		query["Options"] = request.Options
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.Schedule) {
+		query["Schedule"] = request.Schedule
+	}
+
+	if !dara.IsNil(request.SpeedLimit) {
+		query["SpeedLimit"] = request.SpeedLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataSource"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataSourceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
