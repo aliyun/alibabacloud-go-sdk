@@ -24,8 +24,6 @@ type QueryMemoryConfigRequest struct {
 	//
 	// mm_bfaf7e110b6d4359977d1686a3f8
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 110b6d4359977d1

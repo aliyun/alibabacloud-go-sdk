@@ -36,8 +36,6 @@ type UpdateProfileShrinkRequest struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 10b6d435

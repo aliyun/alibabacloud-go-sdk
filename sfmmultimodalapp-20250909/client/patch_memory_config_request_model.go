@@ -51,8 +51,6 @@ type PatchMemoryConfigRequest struct {
 	//
 	// 3
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 110b6d4359977d1

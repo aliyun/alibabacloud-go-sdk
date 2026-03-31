@@ -36,8 +36,6 @@ type CreateProfileRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 6e18191727f747ec9de06a2
