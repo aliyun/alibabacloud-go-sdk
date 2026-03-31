@@ -4390,6 +4390,10 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 		body["NodeGroupId"] = request.NodeGroupId
 	}
 
+	if !dara.IsNil(request.RamRoleName) {
+		body["RamRoleName"] = request.RamRoleName
+	}
+
 	if !dara.IsNil(request.UserData) {
 		body["UserData"] = request.UserData
 	}
