@@ -662,6 +662,10 @@ func (client *Client) CreateAndroidInstanceGroupWithContext(ctx context.Context,
 		query["PromotionId"] = request.PromotionId
 	}
 
+	if !dara.IsNil(request.SaleMode) {
+		query["SaleMode"] = request.SaleMode
+	}
+
 	if !dara.IsNil(request.StreamMode) {
 		query["StreamMode"] = request.StreamMode
 	}

@@ -57,6 +57,8 @@ type iCreateAndroidInstanceGroupShrinkRequest interface {
 	GetPolicyGroupId() *string
 	SetPromotionId(v string) *CreateAndroidInstanceGroupShrinkRequest
 	GetPromotionId() *string
+	SetSaleMode(v string) *CreateAndroidInstanceGroupShrinkRequest
+	GetSaleMode() *string
 	SetStreamMode(v int32) *CreateAndroidInstanceGroupShrinkRequest
 	GetStreamMode() *int32
 	SetTag(v []*CreateAndroidInstanceGroupShrinkRequestTag) *CreateAndroidInstanceGroupShrinkRequest
@@ -251,6 +253,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	// pg-b7bxrrwxkijjh****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	SaleMode      *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	// The tags
 	Tag []*CreateAndroidInstanceGroupShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -368,6 +371,10 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) GetPolicyGroupId() *string {
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) GetPromotionId() *string {
 	return s.PromotionId
+}
+
+func (s *CreateAndroidInstanceGroupShrinkRequest) GetSaleMode() *string {
+	return s.SaleMode
 }
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) GetStreamMode() *int32 {
@@ -499,6 +506,11 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) SetPolicyGroupId(v string) *Cr
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) SetPromotionId(v string) *CreateAndroidInstanceGroupShrinkRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupShrinkRequest) SetSaleMode(v string) *CreateAndroidInstanceGroupShrinkRequest {
+	s.SaleMode = &v
 	return s
 }
 

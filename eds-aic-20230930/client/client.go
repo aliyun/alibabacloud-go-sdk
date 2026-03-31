@@ -871,6 +871,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroi
 		query["PromotionId"] = request.PromotionId
 	}
 
+	if !dara.IsNil(request.SaleMode) {
+		query["SaleMode"] = request.SaleMode
+	}
+
 	if !dara.IsNil(request.StreamMode) {
 		query["StreamMode"] = request.StreamMode
 	}

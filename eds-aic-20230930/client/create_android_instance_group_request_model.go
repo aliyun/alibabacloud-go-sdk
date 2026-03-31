@@ -57,6 +57,8 @@ type iCreateAndroidInstanceGroupRequest interface {
 	GetPolicyGroupId() *string
 	SetPromotionId(v string) *CreateAndroidInstanceGroupRequest
 	GetPromotionId() *string
+	SetSaleMode(v string) *CreateAndroidInstanceGroupRequest
+	GetSaleMode() *string
 	SetStreamMode(v int32) *CreateAndroidInstanceGroupRequest
 	GetStreamMode() *int32
 	SetTag(v []*CreateAndroidInstanceGroupRequestTag) *CreateAndroidInstanceGroupRequest
@@ -251,6 +253,7 @@ type CreateAndroidInstanceGroupRequest struct {
 	// pg-b7bxrrwxkijjh****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	SaleMode      *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 	StreamMode    *int32  `json:"StreamMode,omitempty" xml:"StreamMode,omitempty"`
 	// The tags
 	Tag []*CreateAndroidInstanceGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -368,6 +371,10 @@ func (s *CreateAndroidInstanceGroupRequest) GetPolicyGroupId() *string {
 
 func (s *CreateAndroidInstanceGroupRequest) GetPromotionId() *string {
 	return s.PromotionId
+}
+
+func (s *CreateAndroidInstanceGroupRequest) GetSaleMode() *string {
+	return s.SaleMode
 }
 
 func (s *CreateAndroidInstanceGroupRequest) GetStreamMode() *int32 {
@@ -499,6 +506,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetPolicyGroupId(v string) *CreateAn
 
 func (s *CreateAndroidInstanceGroupRequest) SetPromotionId(v string) *CreateAndroidInstanceGroupRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetSaleMode(v string) *CreateAndroidInstanceGroupRequest {
+	s.SaleMode = &v
 	return s
 }
 
