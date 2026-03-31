@@ -13,10 +13,14 @@ type iCreateApplicationRequest interface {
 	GetApplicationIdentityType() *string
 	SetApplicationName(v string) *CreateApplicationRequest
 	GetApplicationName() *string
+	SetApplicationOwner(v *CreateApplicationRequestApplicationOwner) *CreateApplicationRequest
+	GetApplicationOwner() *CreateApplicationRequestApplicationOwner
 	SetApplicationSourceType(v string) *CreateApplicationRequest
 	GetApplicationSourceType() *string
 	SetApplicationTemplateId(v string) *CreateApplicationRequest
 	GetApplicationTemplateId() *string
+	SetCustomFields(v []*CreateApplicationRequestCustomFields) *CreateApplicationRequest
+	GetCustomFields() []*CreateApplicationRequestCustomFields
 	SetDescription(v string) *CreateApplicationRequest
 	GetDescription() *string
 	SetInstanceId(v string) *CreateApplicationRequest
@@ -39,7 +43,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// Ram Account SSO
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName  *string                                   `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationOwner *CreateApplicationRequestApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
 	// The type of the application source. Valid values:
 	//
 	// 	- urn:alibaba:idaas:app:source:template: application template
@@ -57,7 +62,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// template_cloud_ram
-	ApplicationTemplateId *string `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
+	ApplicationTemplateId *string                                 `json:"ApplicationTemplateId,omitempty" xml:"ApplicationTemplateId,omitempty"`
+	CustomFields          []*CreateApplicationRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The description of the application.
 	//
 	// example:
@@ -108,12 +114,20 @@ func (s *CreateApplicationRequest) GetApplicationName() *string {
 	return s.ApplicationName
 }
 
+func (s *CreateApplicationRequest) GetApplicationOwner() *CreateApplicationRequestApplicationOwner {
+	return s.ApplicationOwner
+}
+
 func (s *CreateApplicationRequest) GetApplicationSourceType() *string {
 	return s.ApplicationSourceType
 }
 
 func (s *CreateApplicationRequest) GetApplicationTemplateId() *string {
 	return s.ApplicationTemplateId
+}
+
+func (s *CreateApplicationRequest) GetCustomFields() []*CreateApplicationRequestCustomFields {
+	return s.CustomFields
 }
 
 func (s *CreateApplicationRequest) GetDescription() *string {
@@ -142,6 +156,11 @@ func (s *CreateApplicationRequest) SetApplicationName(v string) *CreateApplicati
 	return s
 }
 
+func (s *CreateApplicationRequest) SetApplicationOwner(v *CreateApplicationRequestApplicationOwner) *CreateApplicationRequest {
+	s.ApplicationOwner = v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetApplicationSourceType(v string) *CreateApplicationRequest {
 	s.ApplicationSourceType = &v
 	return s
@@ -149,6 +168,11 @@ func (s *CreateApplicationRequest) SetApplicationSourceType(v string) *CreateApp
 
 func (s *CreateApplicationRequest) SetApplicationTemplateId(v string) *CreateApplicationRequest {
 	s.ApplicationTemplateId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetCustomFields(v []*CreateApplicationRequestCustomFields) *CreateApplicationRequest {
+	s.CustomFields = v
 	return s
 }
 
@@ -173,5 +197,89 @@ func (s *CreateApplicationRequest) SetSsoType(v string) *CreateApplicationReques
 }
 
 func (s *CreateApplicationRequest) Validate() error {
+	if s.ApplicationOwner != nil {
+		if err := s.ApplicationOwner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateApplicationRequestApplicationOwner struct {
+	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	UserIds  []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateApplicationRequestApplicationOwner) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestApplicationOwner) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestApplicationOwner) GetGroupIds() []*string {
+	return s.GroupIds
+}
+
+func (s *CreateApplicationRequestApplicationOwner) GetUserIds() []*string {
+	return s.UserIds
+}
+
+func (s *CreateApplicationRequestApplicationOwner) SetGroupIds(v []*string) *CreateApplicationRequestApplicationOwner {
+	s.GroupIds = v
+	return s
+}
+
+func (s *CreateApplicationRequestApplicationOwner) SetUserIds(v []*string) *CreateApplicationRequestApplicationOwner {
+	s.UserIds = v
+	return s
+}
+
+func (s *CreateApplicationRequestApplicationOwner) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationRequestCustomFields struct {
+	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+}
+
+func (s CreateApplicationRequestCustomFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestCustomFields) GetFieldName() *string {
+	return s.FieldName
+}
+
+func (s *CreateApplicationRequestCustomFields) GetFieldValue() *string {
+	return s.FieldValue
+}
+
+func (s *CreateApplicationRequestCustomFields) SetFieldName(v string) *CreateApplicationRequestCustomFields {
+	s.FieldName = &v
+	return s
+}
+
+func (s *CreateApplicationRequestCustomFields) SetFieldValue(v string) *CreateApplicationRequestCustomFields {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *CreateApplicationRequestCustomFields) Validate() error {
 	return dara.Validate(s)
 }

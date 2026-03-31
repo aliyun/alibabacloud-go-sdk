@@ -19,6 +19,8 @@ type iListApplicationsRequest interface {
 	GetApplicationName() *string
 	SetAuthorizationType(v string) *ListApplicationsRequest
 	GetAuthorizationType() *string
+	SetCustomFields(v []*ListApplicationsRequestCustomFields) *ListApplicationsRequest
+	GetCustomFields() []*ListApplicationsRequestCustomFields
 	SetInstanceId(v string) *ListApplicationsRequest
 	GetInstanceId() *string
 	SetM2MClientStatus(v string) *ListApplicationsRequest
@@ -65,7 +67,8 @@ type ListApplicationsRequest struct {
 	// example:
 	//
 	// authorize_required
-	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	AuthorizationType *string                                `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
+	CustomFields      []*ListApplicationsRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -158,6 +161,10 @@ func (s *ListApplicationsRequest) GetAuthorizationType() *string {
 	return s.AuthorizationType
 }
 
+func (s *ListApplicationsRequest) GetCustomFields() []*ListApplicationsRequestCustomFields {
+	return s.CustomFields
+}
+
 func (s *ListApplicationsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -211,6 +218,11 @@ func (s *ListApplicationsRequest) SetAuthorizationType(v string) *ListApplicatio
 	return s
 }
 
+func (s *ListApplicationsRequest) SetCustomFields(v []*ListApplicationsRequestCustomFields) *ListApplicationsRequest {
+	s.CustomFields = v
+	return s
+}
+
 func (s *ListApplicationsRequest) SetInstanceId(v string) *ListApplicationsRequest {
 	s.InstanceId = &v
 	return s
@@ -247,5 +259,49 @@ func (s *ListApplicationsRequest) SetStatus(v string) *ListApplicationsRequest {
 }
 
 func (s *ListApplicationsRequest) Validate() error {
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListApplicationsRequestCustomFields struct {
+	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+}
+
+func (s ListApplicationsRequestCustomFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListApplicationsRequestCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsRequestCustomFields) GetFieldName() *string {
+	return s.FieldName
+}
+
+func (s *ListApplicationsRequestCustomFields) GetFieldValue() *string {
+	return s.FieldValue
+}
+
+func (s *ListApplicationsRequestCustomFields) SetFieldName(v string) *ListApplicationsRequestCustomFields {
+	s.FieldName = &v
+	return s
+}
+
+func (s *ListApplicationsRequestCustomFields) SetFieldValue(v string) *ListApplicationsRequestCustomFields {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *ListApplicationsRequestCustomFields) Validate() error {
 	return dara.Validate(s)
 }

@@ -1110,12 +1110,20 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, request 
 		query["ApplicationName"] = request.ApplicationName
 	}
 
+	if !dara.IsNil(request.ApplicationOwner) {
+		query["ApplicationOwner"] = request.ApplicationOwner
+	}
+
 	if !dara.IsNil(request.ApplicationSourceType) {
 		query["ApplicationSourceType"] = request.ApplicationSourceType
 	}
 
 	if !dara.IsNil(request.ApplicationTemplateId) {
 		query["ApplicationTemplateId"] = request.ApplicationTemplateId
+	}
+
+	if !dara.IsNil(request.CustomFields) {
+		query["CustomFields"] = request.CustomFields
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -10442,6 +10450,10 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 		query["AuthorizationType"] = request.AuthorizationType
 	}
 
+	if !dara.IsNil(request.CustomFields) {
+		query["CustomFields"] = request.CustomFields
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -16462,12 +16474,20 @@ func (client *Client) UpdateApplicationInfoWithContext(ctx context.Context, requ
 		query["ApplicationName"] = request.ApplicationName
 	}
 
+	if !dara.IsNil(request.ApplicationOwner) {
+		query["ApplicationOwner"] = request.ApplicationOwner
+	}
+
 	if !dara.IsNil(request.ApplicationVisibility) {
 		query["ApplicationVisibility"] = request.ApplicationVisibility
 	}
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CustomFields) {
+		query["CustomFields"] = request.CustomFields
 	}
 
 	if !dara.IsNil(request.InstanceId) {

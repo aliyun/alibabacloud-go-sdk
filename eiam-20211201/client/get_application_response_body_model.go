@@ -88,7 +88,8 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// SAML Application
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationName  *string                                                `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	ApplicationOwner *GetApplicationResponseBodyApplicationApplicationOwner `json:"ApplicationOwner,omitempty" xml:"ApplicationOwner,omitempty" type:"Struct"`
 	// The origin of the application. Valid values:
 	//
 	// 	- urn:alibaba:idaas:app:source:template: The application is created based on a template.
@@ -128,8 +129,9 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// 1649830226000
-	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomSubjectStatus *string `json:"CustomSubjectStatus,omitempty" xml:"CustomSubjectStatus,omitempty"`
+	CreateTime          *int64                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomFields        []*GetApplicationResponseBodyApplicationCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
+	CustomSubjectStatus *string                                              `json:"CustomSubjectStatus,omitempty" xml:"CustomSubjectStatus,omitempty"`
 	// The description of the application.
 	//
 	// example:
@@ -250,6 +252,10 @@ func (s *GetApplicationResponseBodyApplication) GetApplicationName() *string {
 	return s.ApplicationName
 }
 
+func (s *GetApplicationResponseBodyApplication) GetApplicationOwner() *GetApplicationResponseBodyApplicationApplicationOwner {
+	return s.ApplicationOwner
+}
+
 func (s *GetApplicationResponseBodyApplication) GetApplicationSourceType() *string {
 	return s.ApplicationSourceType
 }
@@ -272,6 +278,10 @@ func (s *GetApplicationResponseBodyApplication) GetClientId() *string {
 
 func (s *GetApplicationResponseBodyApplication) GetCreateTime() *int64 {
 	return s.CreateTime
+}
+
+func (s *GetApplicationResponseBodyApplication) GetCustomFields() []*GetApplicationResponseBodyApplicationCustomFields {
+	return s.CustomFields
 }
 
 func (s *GetApplicationResponseBodyApplication) GetCustomSubjectStatus() *string {
@@ -355,6 +365,11 @@ func (s *GetApplicationResponseBodyApplication) SetApplicationName(v string) *Ge
 	return s
 }
 
+func (s *GetApplicationResponseBodyApplication) SetApplicationOwner(v *GetApplicationResponseBodyApplicationApplicationOwner) *GetApplicationResponseBodyApplication {
+	s.ApplicationOwner = v
+	return s
+}
+
 func (s *GetApplicationResponseBodyApplication) SetApplicationSourceType(v string) *GetApplicationResponseBodyApplication {
 	s.ApplicationSourceType = &v
 	return s
@@ -382,6 +397,11 @@ func (s *GetApplicationResponseBodyApplication) SetClientId(v string) *GetApplic
 
 func (s *GetApplicationResponseBodyApplication) SetCreateTime(v int64) *GetApplicationResponseBodyApplication {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetCustomFields(v []*GetApplicationResponseBodyApplicationCustomFields) *GetApplicationResponseBodyApplication {
+	s.CustomFields = v
 	return s
 }
 
@@ -456,5 +476,89 @@ func (s *GetApplicationResponseBodyApplication) SetUpdateTime(v int64) *GetAppli
 }
 
 func (s *GetApplicationResponseBodyApplication) Validate() error {
+	if s.ApplicationOwner != nil {
+		if err := s.ApplicationOwner.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CustomFields != nil {
+		for _, item := range s.CustomFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetApplicationResponseBodyApplicationApplicationOwner struct {
+	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
+	UserIds  []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationResponseBodyApplicationApplicationOwner) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplicationApplicationOwner) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplicationApplicationOwner) GetGroupIds() []*string {
+	return s.GroupIds
+}
+
+func (s *GetApplicationResponseBodyApplicationApplicationOwner) GetUserIds() []*string {
+	return s.UserIds
+}
+
+func (s *GetApplicationResponseBodyApplicationApplicationOwner) SetGroupIds(v []*string) *GetApplicationResponseBodyApplicationApplicationOwner {
+	s.GroupIds = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationApplicationOwner) SetUserIds(v []*string) *GetApplicationResponseBodyApplicationApplicationOwner {
+	s.UserIds = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationApplicationOwner) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyApplicationCustomFields struct {
+	FieldName  *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+}
+
+func (s GetApplicationResponseBodyApplicationCustomFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyApplicationCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyApplicationCustomFields) GetFieldName() *string {
+	return s.FieldName
+}
+
+func (s *GetApplicationResponseBodyApplicationCustomFields) GetFieldValue() *string {
+	return s.FieldValue
+}
+
+func (s *GetApplicationResponseBodyApplicationCustomFields) SetFieldName(v string) *GetApplicationResponseBodyApplicationCustomFields {
+	s.FieldName = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationCustomFields) SetFieldValue(v string) *GetApplicationResponseBodyApplicationCustomFields {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationCustomFields) Validate() error {
 	return dara.Validate(s)
 }
