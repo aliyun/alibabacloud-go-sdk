@@ -16,8 +16,14 @@ type iListAggregatorsResponseBody interface {
 }
 
 type ListAggregatorsResponseBody struct {
+	// The account groups.
 	AggregatorsResult *ListAggregatorsResponseBodyAggregatorsResult `json:"AggregatorsResult,omitempty" xml:"AggregatorsResult,omitempty" type:"Struct"`
-	RequestId         *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 20C8526D-12C5-4336-BC72-EBD5D1BA732F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAggregatorsResponseBody) String() string {
@@ -56,8 +62,14 @@ func (s *ListAggregatorsResponseBody) Validate() error {
 }
 
 type ListAggregatorsResponseBodyAggregatorsResult struct {
+	// The list of the account groups.
 	Aggregators []*ListAggregatorsResponseBodyAggregatorsResultAggregators `json:"Aggregators,omitempty" xml:"Aggregators,omitempty" type:"Repeated"`
-	NextToken   *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	//
+	// example:
+	//
+	// TGlzdFJlc291cmNlU2hhcmVzJjE1MTI2NjY4NzY5MTAzOTEmMiZORnI4NDhVeEtrUT0
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResult) String() string {
@@ -100,16 +112,72 @@ func (s *ListAggregatorsResponseBodyAggregatorsResult) Validate() error {
 }
 
 type ListAggregatorsResponseBodyAggregatorsResultAggregators struct {
-	AccountId                 *int64                                                         `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AggregatorAccountCount    *int64                                                         `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
-	AggregatorCreateTimestamp *int64                                                         `json:"AggregatorCreateTimestamp,omitempty" xml:"AggregatorCreateTimestamp,omitempty"`
-	AggregatorId              *string                                                        `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	AggregatorName            *string                                                        `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	AggregatorStatus          *int32                                                         `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
-	AggregatorType            *string                                                        `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
-	Description               *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	FolderId                  *string                                                        `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	Tags                      []*ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the management account that is used to create the account group.
+	//
+	// example:
+	//
+	// 100931896542****
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The number of member accounts in the account group.
+	//
+	// example:
+	//
+	// 2
+	AggregatorAccountCount *int64 `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
+	// The timestamp generated when the account group was created.
+	//
+	// example:
+	//
+	// 1623036305000
+	AggregatorCreateTimestamp *int64 `json:"AggregatorCreateTimestamp,omitempty" xml:"AggregatorCreateTimestamp,omitempty"`
+	// The ID of the account group.
+	//
+	// example:
+	//
+	// ca-88ea626622af0055****
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// The name of the account group.
+	//
+	// example:
+	//
+	// Test_Group
+	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
+	// The status of the account group. Valid values:
+	//
+	// 	- 0: The account group is being created.
+	//
+	// 	- 1: The account group was created.
+	//
+	// example:
+	//
+	// 1
+	AggregatorStatus *int32 `json:"AggregatorStatus,omitempty" xml:"AggregatorStatus,omitempty"`
+	// The type of the account group. Valid values:
+	//
+	// 	- RD: global account group.
+	//
+	// 	- FOLDER: account group of the folder.
+	//
+	// 	- CUSTOM: custom account group.
+	//
+	// example:
+	//
+	// CUSTOM
+	AggregatorType *string `json:"AggregatorType,omitempty" xml:"AggregatorType,omitempty"`
+	// The description of the account group.
+	//
+	// example:
+	//
+	// Example-description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the folder.
+	//
+	// example:
+	//
+	// r-BU****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// tags
+	Tags []*ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListAggregatorsResponseBodyAggregatorsResultAggregators) String() string {
@@ -224,7 +292,17 @@ func (s *ListAggregatorsResponseBodyAggregatorsResultAggregators) Validate() err
 }
 
 type ListAggregatorsResponseBodyAggregatorsResultAggregatorsTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag keys of the resource.
+	//
+	// example:
+	//
+	// key-1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag values of the resource.
+	//
+	// example:
+	//
+	// value-1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

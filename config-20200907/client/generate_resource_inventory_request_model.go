@@ -18,17 +18,17 @@ type iGenerateResourceInventoryRequest interface {
 }
 
 type GenerateResourceInventoryRequest struct {
-	// The regions where the resources are located. Separate multiple regions with commas (,).
+	// The region IDs of the resources. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	// The resource status. Valid values:
+	// Indicates whether the resource is deleted. Valid values:
 	//
-	// - 1 (default): The resource is retained.
+	// 	- 1 (default): The resource is retained.
 	//
-	// - 0: The resource is deleted.
+	// 	- 0: The resource is deleted.
 	//
 	// example:
 	//

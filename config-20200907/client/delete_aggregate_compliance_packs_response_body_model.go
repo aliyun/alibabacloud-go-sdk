@@ -16,8 +16,14 @@ type iDeleteAggregateCompliancePacksResponseBody interface {
 }
 
 type DeleteAggregateCompliancePacksResponseBody struct {
+	// The results of the delete operations.
 	OperateCompliancePacksResult *DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResult `json:"OperateCompliancePacksResult,omitempty" xml:"OperateCompliancePacksResult,omitempty" type:"Struct"`
-	RequestId                    *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 6EC7AED1-172F-42AE-9C12-295BC2ADB751
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *DeleteAggregateCompliancePacksResponseBody) Validate() error {
 }
 
 type DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResult struct {
+	// An array that contains the deleted compliance packages.
 	OperateCompliancePacks []*DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks `json:"OperateCompliancePacks,omitempty" xml:"OperateCompliancePacks,omitempty" type:"Repeated"`
 }
 
@@ -90,9 +97,32 @@ func (s *DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResult)
 }
 
 type DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks struct {
+	// The ID of the compliance package.
+	//
+	// example:
+	//
+	// cp-541e626622af0087****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	ErrorCode        *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success          *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned.
+	//
+	// 	- If the compliance package is deleted, no error code is returned.
+	//
+	// 	- If the compliance package fails to be deleted, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
+	//
+	// example:
+	//
+	// CompliancePackAlreadyPending
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAggregateCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks) String() string {

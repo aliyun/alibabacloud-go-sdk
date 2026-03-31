@@ -14,8 +14,6 @@ type iTriggerReportSendRequest interface {
 }
 
 type TriggerReportSendRequest struct {
-	// The report template ID.
-	//
 	// This parameter is required.
 	//
 	// example:

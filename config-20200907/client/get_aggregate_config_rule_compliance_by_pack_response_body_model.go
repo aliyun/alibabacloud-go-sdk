@@ -16,9 +16,9 @@ type iGetAggregateConfigRuleComplianceByPackResponseBody interface {
 }
 
 type GetAggregateConfigRuleComplianceByPackResponseBody struct {
-	// The compliance results of the rules in the compliance pack.
+	// The compliance evaluation results that are returned by rules in the compliance package.
 	ConfigRuleComplianceResult *GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult `json:"ConfigRuleComplianceResult,omitempty" xml:"ConfigRuleComplianceResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,49 +62,29 @@ func (s *GetAggregateConfigRuleComplianceByPackResponseBody) Validate() error {
 }
 
 type GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult struct {
-	// The ID of the compliance pack.
+	// The ID of the compliance package.
 	//
 	// example:
 	//
 	// cp-541e626622af0087****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The total number of rules for which all evaluation results are **Compliant**.
+	CompliantCount   *int32  `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	// The information about rules in the compliance package.
+	ConfigRuleCompliances []*GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances `json:"ConfigRuleCompliances,omitempty" xml:"ConfigRuleCompliances,omitempty" type:"Repeated"`
+	IgnoredCount          *int32                                                                                               `json:"IgnoredCount,omitempty" xml:"IgnoredCount,omitempty"`
+	InsufficientDataCount *int32                                                                                               `json:"InsufficientDataCount,omitempty" xml:"InsufficientDataCount,omitempty"`
+	// The number of rules against which specific resources are evaluated as non-compliant.
 	//
 	// example:
 	//
 	// 0
-	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
-	// A list of rule compliance results.
-	ConfigRuleCompliances []*GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances `json:"ConfigRuleCompliances,omitempty" xml:"ConfigRuleCompliances,omitempty" type:"Repeated"`
-	// The total number of rules whose evaluation results include **Ignored**.
-	//
-	// example:
-	//
-	// 1
-	IgnoredCount *int32 `json:"IgnoredCount,omitempty" xml:"IgnoredCount,omitempty"`
-	// The total number of rules whose evaluation results include **Insufficient Data**.
-	//
-	// example:
-	//
-	// 1
-	InsufficientDataCount *int32 `json:"InsufficientDataCount,omitempty" xml:"InsufficientDataCount,omitempty"`
-	// The number of non-compliant rules.
-	//
-	// example:
-	//
-	// 1
-	NonCompliantCount *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
-	// The total number of rules whose evaluation results include **Not Applicable**.
-	//
-	// example:
-	//
-	// 1
+	NonCompliantCount  *int32 `json:"NonCompliantCount,omitempty" xml:"NonCompliantCount,omitempty"`
 	NotApplicableCount *int32 `json:"NotApplicableCount,omitempty" xml:"NotApplicableCount,omitempty"`
-	// The total number of rules.
+	// The total number of rules in the compliance package.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -202,31 +182,31 @@ func (s *GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceR
 }
 
 type GetAggregateConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigRuleCompliances struct {
-	// The compliance result. Valid values:
+	// The compliance evaluation result returned by the rule. Valid values:
 	//
-	// - COMPLIANT: The rule is compliant.
+	// 	- COMPLIANT: The relevant resources are evaluated as compliant.
 	//
-	// - NON_COMPLIANT: The rule is non-compliant.
+	// 	- NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: The rule is not applicable.
+	// 	- NOT_APPLICABLE: The rule does not apply to your resources.
 	//
-	// - INSUFFICIENT_DATA: No data is available.
+	// 	- INSUFFICIENT_DATA: No resource data is available.
 	//
 	// example:
 	//
 	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The ID of the rule in the compliance pack.
+	// The ID of the rule.
 	//
 	// example:
 	//
 	// cr-fdc8626622af00f9****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule in the compliance pack.
+	// The name of the rule.
 	//
 	// example:
 	//
-	// The bandwidth of the Elastic IP instance meets the minimum requirements.
+	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 }
 

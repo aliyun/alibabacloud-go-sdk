@@ -22,7 +22,7 @@ type CreateAggregateConfigDeliveryChannelResponseBody struct {
 	//
 	// cdc-8e45ff4e06a3a8****
 	DeliveryChannelId *string `json:"DeliveryChannelId,omitempty" xml:"DeliveryChannelId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,11 +16,11 @@ type iStartRemediationResponseBody interface {
 }
 
 type StartRemediationResponseBody struct {
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// 	- true: The request was successful.
 	//
-	// - false: The operation failed.
+	// 	- false: The request failed.
 	//
 	// example:
 	//

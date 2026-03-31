@@ -16,17 +16,17 @@ type iStartAggregateRemediationResponseBody interface {
 }
 
 type StartAggregateRemediationResponseBody struct {
-	// Indicates whether the operation succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The operation succeeded.
+	// 	- true
 	//
-	// - false: The operation failed.
+	// 	- false
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

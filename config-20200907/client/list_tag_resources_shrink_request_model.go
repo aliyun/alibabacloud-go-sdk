@@ -22,13 +22,13 @@ type iListTagResourcesShrinkRequest interface {
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// The token to retrieve the next page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctMTJ****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region to which the tags belong.
+	// The region ID of the tag.
 	//
 	// This parameter is required.
 	//
@@ -38,29 +38,29 @@ type ListTagResourcesShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource ID.
 	//
-	// You can query tags for a maximum of 50 resources.
+	// You can add tags to up to 50 resources.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type in CloudConfig. Valid values:
+	// The resource type. Valid values:
 	//
-	// - `ACS::Config::Rule`: a rule for a single account.
+	// 	- `ACS::Config::Rule`
 	//
-	// - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
+	// 	- `ACS::Config::AggregateConfigRule`
 	//
-	// - `ACS::Config::Aggregator`: an account group.
+	// 	- `ACS::Config::Aggregator`
 	//
-	// - `ACS::Config::CompliancePack`: a compliance package for a single account.
+	// 	- `ACS::Config::CompliancePack`
 	//
-	// - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
+	// 	- `ACS::Config::AggregateCompliancePack`
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ACS::Config::Rule
+	// ACS::Config:rule
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of the resource.
 	//
-	// You can filter resources by a maximum of 20 tags.
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

@@ -14,8 +14,6 @@ type iTriggerReportSendResponseBody interface {
 }
 
 type TriggerReportSendResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// DE9FFFE5-FCAD-4B24-9546-BF49273C562B

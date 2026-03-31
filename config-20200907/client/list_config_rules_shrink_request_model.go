@@ -34,7 +34,11 @@ type iListConfigRulesShrinkRequest interface {
 }
 
 type ListConfigRulesShrinkRequest struct {
-	// The ID of the compliance package.
+	// The compliance package ID.
+	//
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/606968.html).
+	//
+	// >  You must configure either the `CompliancePackId` or `ConfigRuleId` parameter.
 	//
 	// example:
 	//
@@ -42,13 +46,13 @@ type ListConfigRulesShrinkRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The compliance evaluation result of the rule. Valid values:
 	//
-	// - COMPLIANT: Compliant.
+	// 	- COMPLIANT: The resources are evaluated as compliant.
 	//
-	// - NON_COMPLIANT: Non-compliant.
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: Not applicable.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// - INSUFFICIENT_DATA: Insufficient data.
+	// 	- INSUFFICIENT_DATA: No resource data is available.
 	//
 	// example:
 	//
@@ -58,25 +62,25 @@ type ListConfigRulesShrinkRequest struct {
 	//
 	// example:
 	//
-	// The name of the rule.
+	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The state of the rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - ACTIVE: The rule is enabled.
+	// 	- ACTIVE: The rule is enabled.
 	//
-	// - DELETING: The rule is being deleted.
+	// 	- DELETING: The rule is being deleted.
 	//
-	// - EVALUATING: The rule is being evaluated.
+	// 	- EVALUATING: The rule is being used to evaluate resource configurations.
 	//
-	// - INACTIVE: The rule is disabled.
+	// 	- INACTIVE: The rule is disabled.
 	//
 	// example:
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	// The keyword for the fuzzy query.
+	// The query keyword.
 	//
-	// Supports fuzzy queries by rule ID, rule name, rule description, or rule template identifier.
+	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
 	//
 	// example:
 	//
@@ -84,47 +88,42 @@ type ListConfigRulesShrinkRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//
-	// The default value is 1.
+	// Page numbers start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// Valid values: 1 to 100. Default value: 10.
+	// Valid values: 1 to 100. A minimum of 1 entry can be returned per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of resource evaluated by the rule.
+	// The type of the resources to be evaluated based on the rule.
 	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The risk level of the rule. Valid values:
+	// The risk level of the resources that are not compliant with the rule. Valid values:
 	//
-	// - 1: High risk.
+	// 	- 1: high
 	//
-	// - 2: Medium risk.
+	// 	- 2: medium
 	//
-	// - 3: Low risk.
+	// 	- 3: low
 	//
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The sorting method. This parameter is not required. Set the value to `CreateDate-Desc` to sort the rules by creation time in descending order.
-	//
-	// example:
-	//
-	// CreateDate-Desc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The tags of the resource.
 	//
-	// A maximum of 20 tags can be attached.
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

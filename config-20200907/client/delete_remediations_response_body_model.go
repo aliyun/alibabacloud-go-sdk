@@ -16,7 +16,7 @@ type iDeleteRemediationsResponseBody interface {
 }
 
 type DeleteRemediationsResponseBody struct {
-	// The result of the delete operation.
+	// The returned result.
 	RemediationDeleteResults []*DeleteRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,27 +66,27 @@ func (s *DeleteRemediationsResponseBody) Validate() error {
 }
 
 type DeleteRemediationsResponseBodyRemediationDeleteResults struct {
-	// The error code.
+	// The error code returned.
 	//
-	// - This parameter is empty if the remediation setting is successfully deleted.
+	// 	- If the remediation template is deleted, no error code is returned.
 	//
-	// - This parameter returns an error code if the operation fails. For more information about error codes, see <props="intl">[Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	// 	- If the remediation template fails to be deleted, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
 	//
 	// example:
 	//
 	// RemediationConfigNotExist
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The remediation setting ID.
+	// The ID of the remediation template.
 	//
 	// example:
 	//
 	// crr-909ba2d4716700eb****
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// 	- true: The request was successful.
 	//
-	// - false: The operation failed.
+	// 	- false: The request failed.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iListPreManagedRulesResponseBody interface {
 }
 
 type ListPreManagedRulesResponseBody struct {
-	// The list of proactive rules.
+	// The evaluation rules.
 	ManagedRules []*ListPreManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *ListPreManagedRulesResponseBody) Validate() error {
 }
 
 type ListPreManagedRulesResponseBodyManagedRules struct {
-	// The details of the required input parameters for the rule.
+	// The details of the required input parameters of the rule.
 	//
 	// example:
 	//
@@ -110,15 +110,15 @@ type ListPreManagedRulesResponseBodyManagedRules struct {
 	//
 	// example:
 	//
-	// ECS实例开启释放保护
+	// ram-user-ak-used-expired-check
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The description of the rule.
 	//
 	// example:
 	//
-	// ECS实例开启释放保护，视为“合规”。
+	// Example description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the documentation that provides guidance on how to fix a non-compliant resource.
+	// The URL of the topic that describes how the evaluation rule remediates the incompliant configurations.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type ListPreManagedRulesResponseBodyManagedRules struct {
 	//
 	// ecs-instance-deletion-protection-enabled
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The details of the optional input parameters for the rule.
+	// The details of the optional input parameters of the rule.
 	//
 	// example:
 	//
 	// {}
 	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	// The resource type.
+	// The type of resource.
 	//
 	// example:
 	//

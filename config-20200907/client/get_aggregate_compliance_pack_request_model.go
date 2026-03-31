@@ -20,7 +20,7 @@ type iGetAggregateCompliancePackRequest interface {
 type GetAggregateCompliancePackRequest struct {
 	// The ID of the account group.
 	//
-	// For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetAggregateCompliancePackRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance pack.
+	// The ID of the compliance package.
 	//
-	// For more information about how to obtain the ID of a compliance pack, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
+	// For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type GetAggregateCompliancePackRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource. This parameter is deprecated and no longer takes effect.
+	// The tags of the resource.
 	//
-	// You can attach up to 20 tags to a resource.
+	// You can add up to 20 tags to a resource.
 	Tag []*GetAggregateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -95,17 +95,19 @@ func (s *GetAggregateCompliancePackRequest) Validate() error {
 }
 
 type GetAggregateCompliancePackRequestTag struct {
-	// The tag key of the resource.
+	// The tag key of the resource. You can specify up to 20 tag keys.
 	//
-	// You can attach up to 20 tag keys.
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource.
+	// The tag values.
 	//
-	// You can attach up to 20 tag values.
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
 	//
 	// example:
 	//

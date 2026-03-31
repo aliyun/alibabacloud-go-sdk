@@ -22,7 +22,7 @@ type GetSupportedResourceRelationConfigResponseBody struct {
 	//
 	// 409D022F-394C-5AAB-A74A-2F1DC9F6375E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of resource relations.
+	// An array that contains the relationships.
 	ResourceRelationConfigList []*GetSupportedResourceRelationConfigResponseBodyResourceRelationConfigList `json:"ResourceRelationConfigList,omitempty" xml:"ResourceRelationConfigList,omitempty" type:"Repeated"`
 }
 
@@ -66,21 +66,21 @@ func (s *GetSupportedResourceRelationConfigResponseBody) Validate() error {
 }
 
 type GetSupportedResourceRelationConfigResponseBodyResourceRelationConfigList struct {
-	// The type of the resource relation. Valid values:
+	// The type of the relationship between the resource and the object. Valid values:
 	//
-	// - IsContained: Is contained in.
+	// 	- IsContained: The object is included as part of the resource.
 	//
-	// - IsAttachedTo: Is attached to.
+	// 	- IsAttachedTo: The object is added to the resource.
 	//
-	// - IsAssociatedIn: Is associated with.
+	// 	- IsAssociatedIn: The object is associated with the resource.
 	//
-	// - Contains: Contains.
+	// 	- Contains: The actual value contains the expected value.
 	//
 	// example:
 	//
 	// IsAttachedTo
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The resource type of the relation target.
+	// The resource type.
 	//
 	// example:
 	//

@@ -16,13 +16,12 @@ type iListRecommendManagedRulesResponseBody interface {
 }
 
 type ListRecommendManagedRulesResponseBody struct {
-	// The list of rules.
 	RecommendedManagedRules *ListRecommendManagedRulesResponseBodyRecommendedManagedRules `json:"RecommendedManagedRules,omitempty" xml:"RecommendedManagedRules,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
-	// DC300244-FCE3-5061-8214-C27ECB66****
+	// DC300244-FCE3-5061-8214-C27ECB668487
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -62,24 +61,15 @@ func (s *ListRecommendManagedRulesResponseBody) Validate() error {
 }
 
 type ListRecommendManagedRulesResponseBodyRecommendedManagedRules struct {
-	// The maximum number of entries returned for the request.
-	//
 	// example:
 	//
-	// 200
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to initiate the next query.
-	//
-	// > If this parameter is left empty, no more results are returned.
-	//
 	// example:
 	//
-	// zXZXbg4Mra0kOrhpwl21****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of managed rules.
+	// zXZXbg4Mra0kOrhpwl21Lw==
+	NextToken                  *string                                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RecommendedManagedRuleList []*ListRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedManagedRuleList `json:"RecommendedManagedRuleList,omitempty" xml:"RecommendedManagedRuleList,omitempty" type:"Repeated"`
-	// The total number of rules.
-	//
 	// example:
 	//
 	// 39
@@ -144,29 +134,15 @@ func (s *ListRecommendManagedRulesResponseBodyRecommendedManagedRules) Validate(
 }
 
 type ListRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedManagedRuleList struct {
-	// The rule name.
-	//
-	// example:
-	//
-	// oss-bucket-referer-limit
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The description of the managed rule.
-	//
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
-	// If the hotlink protection feature is enabled for the OSS bucket and the Referer is added to a specified whitelist, the configuration is considered compliant.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The rule identifier.
-	//
-	// example:
-	//
-	// oss-bucket-referer-limit
+	// rds-instance-expired-check
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The resource type.
-	//
 	// example:
 	//
-	// ACS::OSS::Bucket
+	// ACS::RDS::Instance
 	ResourceTypeScope *string `json:"ResourceTypeScope,omitempty" xml:"ResourceTypeScope,omitempty"`
 }
 

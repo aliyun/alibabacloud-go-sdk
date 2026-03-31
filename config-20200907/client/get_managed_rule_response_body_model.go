@@ -16,9 +16,9 @@ type iGetManagedRuleResponseBody interface {
 }
 
 type GetManagedRuleResponseBody struct {
-	// The details of the rule template.
+	// The details of the managed rule.
 	ManagedRule *GetManagedRuleResponseBodyManagedRule `json:"ManagedRule,omitempty" xml:"ManagedRule,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,59 +62,59 @@ func (s *GetManagedRuleResponseBody) Validate() error {
 }
 
 type GetManagedRuleResponseBodyManagedRule struct {
-	// The information about the required input parameters for the rule template.
+	// The details of the required input parameters for the managed rule.
 	//
 	// example:
 	//
 	// {}
 	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
-	// The name of the rule template.
+	// The name of the managed rule.
 	//
 	// example:
 	//
-	// CDN域名开启HTTPS加密
+	// cdn-domain-https-enabled
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The description of the rule template.
+	// The description of the managed rule.
 	//
 	// example:
 	//
-	// CDN域名开启HTTPS协议加密，视为“合规”。
+	// If HTTPS encryption is enabled for the CDN domain name, the configuration is considered compliant.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the document that provides guidance on how to fix the issue.
+	// The URL of the topic that provides guidance on remediation for the managed rule.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com
 	HelpUrls *string `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
-	// The identifier of the rule template.
+	// The identifier of the managed rule.
 	//
 	// example:
 	//
 	// cdn-domain-https-enabled
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The labels of the rule template.
+	// The tags of the managed rule.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The information about the optional input parameters for the rule template.
+	// The details of the optional input parameters for the managed rule.
 	//
 	// example:
 	//
 	// {}
 	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	// The risk level of the rule template. Valid values:
+	// The risk level of the managed rule. Valid values:
 	//
-	// - 1: high risk.
+	// 	- 1: high
 	//
-	// - 2: medium risk.
+	// 	- 2: medium
 	//
-	// - 3: low risk.
+	// 	- 3: low
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The effective scope of the rule template.
+	// The effective scope of the managed rule.
 	Scope *GetManagedRuleResponseBodyManagedRuleScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	// The trigger methods for the rule.
+	// The information about the trigger type of the managed rule.
 	SourceDetails []*GetManagedRuleResponseBodyManagedRuleSourceDetails `json:"SourceDetails,omitempty" xml:"SourceDetails,omitempty" type:"Repeated"`
 }
 
@@ -235,7 +235,7 @@ func (s *GetManagedRuleResponseBodyManagedRule) Validate() error {
 }
 
 type GetManagedRuleResponseBodyManagedRuleScope struct {
-	// The resource types for which the rule template is effective.
+	// The types of resources to which the managed rule applies.
 	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -261,17 +261,17 @@ func (s *GetManagedRuleResponseBodyManagedRuleScope) Validate() error {
 }
 
 type GetManagedRuleResponseBodyManagedRuleSourceDetails struct {
-	// The execution period of the rule. Valid values:
+	// The interval at which the rule is triggered. Valid values: Valid values:
 	//
-	// - One_Hour: 1 hour.
+	// 	- One_Hour
 	//
-	// - Three_Hours: 3 hours.
+	// 	- Three_Hours
 	//
-	// - Six_Hours: 6 hours.
+	// 	- Six_Hours
 	//
-	// - Twelve_Hours: 12 hours.
+	// 	- Twelve_Hours
 	//
-	// - TwentyFour_Hours: 24 hours.
+	// 	- TwentyFour_Hours
 	//
 	// example:
 	//
@@ -279,9 +279,9 @@ type GetManagedRuleResponseBodyManagedRuleSourceDetails struct {
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
 	// The trigger type of the rule. Valid values:
 	//
-	// - ConfigurationItemChangeNotification: The rule is triggered by a configuration change.
+	// 	- ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// - ScheduledNotification: The rule is triggered periodically.
+	// 	- ScheduledNotification: The rule is periodically triggered.
 	//
 	// example:
 	//

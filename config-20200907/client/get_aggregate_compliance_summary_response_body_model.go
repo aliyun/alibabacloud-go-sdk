@@ -16,7 +16,7 @@ type iGetAggregateComplianceSummaryResponseBody interface {
 }
 
 type GetAggregateComplianceSummaryResponseBody struct {
-	// The compliance summary.
+	// The compliance statistics.
 	ComplianceSummary *GetAggregateComplianceSummaryResponseBodyComplianceSummary `json:"ComplianceSummary,omitempty" xml:"ComplianceSummary,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *GetAggregateComplianceSummaryResponseBody) Validate() error {
 }
 
 type GetAggregateComplianceSummaryResponseBodyComplianceSummary struct {
-	// The compliance summary by rule.
+	// The summary of compliance statistics from the rule dimension.
 	ComplianceSummaryByConfigRule *GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule `json:"ComplianceSummaryByConfigRule,omitempty" xml:"ComplianceSummaryByConfigRule,omitempty" type:"Struct"`
-	// The compliance summary by resource.
+	// The summary of compliance statistics from the resource dimension.
 	ComplianceSummaryByResource *GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource `json:"ComplianceSummaryByResource,omitempty" xml:"ComplianceSummaryByResource,omitempty" type:"Struct"`
 }
 
@@ -109,7 +109,7 @@ func (s *GetAggregateComplianceSummaryResponseBodyComplianceSummary) Validate() 
 }
 
 type GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule struct {
-	// The timestamp of the compliance summary. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the compliance statistics were collected. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ func (s *GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSum
 }
 
 type GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource struct {
-	// The timestamp of the compliance summary. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the compliance statistics were collected. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -195,24 +195,9 @@ type GetAggregateComplianceSummaryResponseBodyComplianceSummaryComplianceSummary
 	// example:
 	//
 	// 20
-	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
-	// The number of non-compliant resources detected by high-risk rules. Note: This value is not deduplicated by resource. If a resource is evaluated as non-compliant by two different rules, it is counted twice.
-	//
-	// example:
-	//
-	// 2
-	HighRiskRuleNonCompliantResourceCount *int32 `json:"HighRiskRuleNonCompliantResourceCount,omitempty" xml:"HighRiskRuleNonCompliantResourceCount,omitempty"`
-	// The number of non-compliant resources detected by low-risk rules. Note: This value is not deduplicated by resource. If a resource is evaluated as non-compliant by two different rules, it is counted twice.
-	//
-	// example:
-	//
-	// 2
-	LowRiskRuleNonCompliantResourceCount *int32 `json:"LowRiskRuleNonCompliantResourceCount,omitempty" xml:"LowRiskRuleNonCompliantResourceCount,omitempty"`
-	// The number of non-compliant resources detected by medium-risk rules. Note: This value is not deduplicated by resource. If a resource is evaluated as non-compliant by two different rules, it is counted twice.
-	//
-	// example:
-	//
-	// 6
+	CompliantCount                          *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	HighRiskRuleNonCompliantResourceCount   *int32 `json:"HighRiskRuleNonCompliantResourceCount,omitempty" xml:"HighRiskRuleNonCompliantResourceCount,omitempty"`
+	LowRiskRuleNonCompliantResourceCount    *int32 `json:"LowRiskRuleNonCompliantResourceCount,omitempty" xml:"LowRiskRuleNonCompliantResourceCount,omitempty"`
 	MediumRiskRuleNonCompliantResourceCount *int32 `json:"MediumRiskRuleNonCompliantResourceCount,omitempty" xml:"MediumRiskRuleNonCompliantResourceCount,omitempty"`
 	// The number of non-compliant resources.
 	//

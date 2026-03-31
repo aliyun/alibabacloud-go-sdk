@@ -46,7 +46,7 @@ type ListAggregateConfigRulesShrinkRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListAggregateConfigRulesShrinkRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The compliance evaluation result. Valid values:
 	//
-	// - COMPLIANT: The resource is compliant.
+	// 	- COMPLIANT: The resources are evaluated as compliant.
 	//
-	// - NON_COMPLIANT: The resource is non-compliant.
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// - INSUFFICIENT_DATA: No data is available.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type ListAggregateConfigRulesShrinkRequest struct {
 	//
 	// example:
 	//
-	// The name of the rule.
+	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The state of the rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - ACTIVE: The rule is enabled.
+	// 	- ACTIVE: The rule is being used to monitor resource configurations.
 	//
-	// - DELETING: The rule is being deleted.
+	// 	- DELETING: The rule is being deleted.
 	//
-	// - EVALUATING: The rule is being evaluated.
+	// 	- EVALUATING: The rule is triggered and is being used to monitor resource configurations.
 	//
-	// - INACTIVE: The rule is disabled.
+	// 	- INACTIVE: The rule is disabled.
 	//
 	// example:
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	// The keyword for a fuzzy query.
+	// The keyword that is used for queries.
 	//
-	// The keyword can be a rule ID, rule name, rule description, or rule template identifier.
+	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
 	//
 	// example:
 	//
@@ -96,47 +96,42 @@ type ListAggregateConfigRulesShrinkRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Pages start from page 1. Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// Valid values: 1 to 100. Default value: 10.
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource type to be evaluated by the rule.
+	// Resource type for the rule to evaluate.
 	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The risk level of the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// - 1: high
+	// 	- 1: high
 	//
-	// - 2: medium
+	// 	- 2: medium
 	//
-	// - 3: low
+	// 	- 3: low
 	//
 	// example:
 	//
 	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The method that is used to sort the rules. By default, this parameter is not specified. Set the value to `CreateDate-Desc` to sort the rules in descending order of their creation time.
-	//
-	// example:
-	//
-	// CreateDate-Desc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	RiskLevel *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The tags of the resource.
 	//
-	// You can add a maximum of 20 tags.
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

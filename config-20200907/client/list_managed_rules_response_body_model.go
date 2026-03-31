@@ -16,9 +16,9 @@ type iListManagedRulesResponseBody interface {
 }
 
 type ListManagedRulesResponseBody struct {
-	// The rule templates.
+	// The managed rules.
 	ManagedRules *ListManagedRulesResponseBodyManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *ListManagedRulesResponseBody) Validate() error {
 }
 
 type ListManagedRulesResponseBodyManagedRules struct {
-	// The details of the rule templates.
+	// The details of the managed rule.
 	ManagedRuleList []*ListManagedRulesResponseBodyManagedRulesManagedRuleList `json:"ManagedRuleList,omitempty" xml:"ManagedRuleList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
-	// The value must be greater than or equal to 1.
+	// Page start from page 1.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type ListManagedRulesResponseBodyManagedRules struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of rule templates.
+	// The total number of entries returned.
 	//
 	// example:
 	//
-	// 21
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -144,63 +144,63 @@ func (s *ListManagedRulesResponseBodyManagedRules) Validate() error {
 }
 
 type ListManagedRulesResponseBodyManagedRulesManagedRuleList struct {
-	// The name of the rule template.
+	// The name of the managed rule.
 	//
 	// example:
 	//
-	// CDN域名开启HTTPS加密
+	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The description of the rule template.
+	// The description of the managed rule.
 	//
 	// example:
 	//
-	// CDN域名开启HTTPS协议加密，视为“合规”。
+	// The description of the test rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the document that provides remediation guidance.
+	// The URL of the topic that describes how the managed rule remediates the incompliant configurations.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com
 	HelpUrls *string `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
-	// The unique identifier of the rule template.
+	// The unique identifier of the managed rule.
 	//
 	// example:
 	//
 	// cdn-domain-https-enabled
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The list of labels of the rule template.
+	// The classification description of the managed rule.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The identifier of the supported remediation template.
+	// The ID of the remediation template.
 	//
 	// example:
 	//
 	// ACS-CDN-SetDomainServerCertificate
 	RemediationTemplateIdentifier *string `json:"RemediationTemplateIdentifier,omitempty" xml:"RemediationTemplateIdentifier,omitempty"`
-	// The name of the supported remediation template.
+	// The name of the remediation template.
 	//
 	// example:
 	//
-	// 开启CDN域名HTTPS监听
+	// Configure encryption rules for OSS buckets
 	RemediationTemplateName *string `json:"RemediationTemplateName,omitempty" xml:"RemediationTemplateName,omitempty"`
-	// The risk level of the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// - 1: high
+	// 	- 1: high
 	//
-	// - 2: medium
+	// 	- 2: medium
 	//
-	// - 3: low
+	// 	- 3: low
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The effective scope of the rule template.
+	// The effective scope of the managed rule.
 	Scope *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	// Indicates whether the rule supports dry runs. Valid values:
+	// Indicates whether precheck is supported. Valid values:
 	//
-	// - true: The rule supports dry runs.
+	// 	- true
 	//
-	// - false: The rule does not support dry runs.
+	// 	- false
 	//
 	// example:
 	//
@@ -316,7 +316,7 @@ func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) Validate() err
 }
 
 type ListManagedRulesResponseBodyManagedRulesManagedRuleListScope struct {
-	// The types of resources that are evaluated based on the rule template.
+	// The types of resources to which the managed rule applies.
 	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
 }
 

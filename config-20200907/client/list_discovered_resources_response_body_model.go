@@ -16,7 +16,7 @@ type iListDiscoveredResourcesResponseBody interface {
 }
 
 type ListDiscoveredResourcesResponseBody struct {
-	// The list of resources.
+	// The information about the resources.
 	DiscoveredResourceProfiles *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,11 +70,11 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
-	// IWBjqMYSy0is7zSMGu16****
+	// 161259599160****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of resources.
 	//
@@ -148,7 +148,7 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	//
 	// 161259599160****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The availability zone of the resource.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the resource was created. This is a UNIX timestamp in milliseconds.
+	// The timestamp when the resource was created. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -168,16 +168,14 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	ResourceCreationTime *int64 `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
 	// The status of the resource. Valid values:
 	//
-	// - 0: Deleted.
+	// 	- 0: The resource is deleted.
 	//
-	// - 1: Active.
+	// 	- 1: The resource is retained.
 	//
 	// example:
 	//
 	// 1
 	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	// The ID of the resource group to which the resource belongs. Example: rg-acfmvoh45rhxxxx
-	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -199,17 +197,17 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	//
 	// Cloud Firewall
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The status of the resource. The status is defined by the corresponding Alibaba Cloud service. This parameter can be empty. For example:
+	// The status of the resource. The value of this parameter varies based on the resource type and may be empty. Examples:
 	//
-	// - If the resource type is ACS::ECS::Instance, the resource is stateful. The value can be Running or Stopped.
+	// 	- If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
 	//
-	// - If the resource type is ACS::OSS::Bucket, the resource is stateless. The value is empty.
+	// 	- If the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
 	//
 	// example:
 	//
 	// InUse
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//
@@ -221,14 +219,12 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	//
 	// {\\"key1\\":[\\"value2\\"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The time when the resource was last updated. This is a UNIX timestamp in milliseconds.
+	// The time when the resource was last updated. The value must be a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1722441600000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the vSwitch to which the resource belongs. Multiple vSwitch IDs are separated by commas (,). An empty string ("") is returned if the resource does not belong to a vSwitch.
-	//
 	// This parameter is required.
 	//
 	// if can be null:
@@ -244,8 +240,6 @@ type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredReso
 	//
 	// 1
 	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the resource belongs. An empty string ("") is returned if the resource does not belong to a VPC.
-	//
 	// This parameter is required.
 	//
 	// if can be null:

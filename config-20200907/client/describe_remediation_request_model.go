@@ -16,10 +16,17 @@ type iDescribeRemediationRequest interface {
 }
 
 type DescribeRemediationRequest struct {
+	// The rule ID.
+	//
 	// example:
 	//
-	// cr-3184626622af0038418c
-	ConfigRuleId  *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// cr-3184626622af003****
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	// The ID of the remediation configuration.
+	//
+	// example:
+	//
+	// crr-f381cf0c1c2f004e****
 	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
 }
 

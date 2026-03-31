@@ -18,23 +18,17 @@ type iDescribeDiscoveredResourceBatchRequest interface {
 }
 
 type DescribeDiscoveredResourceBatchRequest struct {
-	// The regions where the resources reside. Separate multiple regions with commas (`,`).
-	//
 	// example:
 	//
 	// cn-shanghai,cn-hongkong,cn-zhangjiakou,cn-hangzhou
 	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	// The resource IDs. Separate multiple resource IDs with commas (`,`).
-	//
 	// example:
 	//
-	// r-wz998f311e21****,r-wz97f4a73478****
+	// r-wz998f311e21exxx,r-wz97f4a734789xxx
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// The resource types. Separate multiple resource types with commas (`,`).
-	//
 	// example:
 	//
-	// ACS::ECS::Disk,ACS::ECS::Instance
+	// ACS::ECS::Disk
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 

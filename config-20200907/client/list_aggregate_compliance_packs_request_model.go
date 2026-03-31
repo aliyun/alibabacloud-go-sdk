@@ -34,9 +34,9 @@ type ListAggregateCompliancePacksRequest struct {
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The page number.
+	// The number of the page to return.
 	//
-	// Minimum value: 1. Default value: 1.
+	// Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
@@ -44,37 +44,24 @@ type ListAggregateCompliancePacksRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
-	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+	// Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The risk level of the compliance pack. Valid values:
-	//
-	// - 1: high
-	//
-	// - 2: medium
-	//
-	// - 3: low
-	//
-	// example:
-	//
-	// 1
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The status of the compliance pack. Valid values:
+	// The status of the one or more compliance packages to be queried. Valid values:
 	//
-	// - ACTIVE: The compliance pack is active.
+	// 	- ACTIVE: compliance packages that are available for use.
 	//
-	// - CREATING: The compliance pack is being created.
+	// 	- CREATING: compliance packages that are being created.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the resource.
-	//
-	// You can add up to 20 tags to a resource.
+	// The tags.
 	Tag []*ListAggregateCompliancePacksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -154,13 +141,19 @@ func (s *ListAggregateCompliancePacksRequest) Validate() error {
 }
 
 type ListAggregateCompliancePacksRequestTag struct {
-	// The tag key.
+	// The tag key of the resource. You can specify up to 20 tag keys.
+	//
+	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag values.
+	//
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
 	//
 	// example:
 	//

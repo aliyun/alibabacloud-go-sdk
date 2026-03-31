@@ -24,7 +24,7 @@ type iListCompliancePacksShrinkRequest interface {
 type ListCompliancePacksShrinkRequest struct {
 	// The page number.
 	//
-	// Minimum value: 1. Default value: 1.
+	// Pages start from page 1. Default value: 1
 	//
 	// example:
 	//
@@ -32,29 +32,18 @@ type ListCompliancePacksShrinkRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// Valid values: 1 to 100. Default value: 10.
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The risk level of the compliance pack. Valid values:
-	//
-	// - 1: high risk.
-	//
-	// - 2: medium risk.
-	//
-	// - 3: low risk.
-	//
-	// example:
-	//
-	// 1
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The status of the compliance pack. Valid values:
+	// The status of the compliance package to be queried. Valid values:
 	//
-	// - ACTIVE: The compliance pack is active.
+	// 	- ACTIVE: The compliance package is active.
 	//
-	// - CREATING: The compliance pack is being created.
+	// 	- CREATING: The compliance package is being created.
 	//
 	// example:
 	//
@@ -62,7 +51,7 @@ type ListCompliancePacksShrinkRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags of the resource.
 	//
-	// You can attach up to 20 tags to a resource.
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

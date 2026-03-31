@@ -16,9 +16,9 @@ type iListAggregateConfigRulesResponseBody interface {
 }
 
 type ListAggregateConfigRulesResponseBody struct {
-	// The rules.
+	// The queried rules.
 	ConfigRules *ListAggregateConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *ListAggregateConfigRulesResponseBody) Validate() error {
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRules struct {
-	// The details of the rules.
+	// The details of the rule.
 	ConfigRuleList []*ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
-	// The page number.
+	// The number of the page returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRules) Validate() error {
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
-	// The ID of the management account to which the rule belongs.
+	// The ID of the management account to which the rules belong.
 	//
 	// example:
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The remediation type. The value is fixed to OOS, which indicates Operation Orchestration Service.
+	// The type of the remediation template. Only OOS is returned, which indicates CloudOps Orchestration Service.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// acs:config::100931896542****:rule/cr-fdc8626622af00f9****
 	ConfigRuleArn *string `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -172,49 +172,44 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// example:
 	//
-	// The name of the rule.
+	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The state of the rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - ACTIVE: The rule is enabled.
+	// 	- ACTIVE: The rule is being used to monitor resource configurations.
 	//
-	// - DELETING: The rule is being deleted.
+	// 	- DELETING: The rule is being deleted.
 	//
-	// - EVALUATING: The rule is being evaluated.
+	// 	- EVALUATING: The rule is triggered and is being used to monitor resource configurations.
 	//
-	// - INACTIVE: The rule is disabled.
+	// 	- INACTIVE: The rule is disabled.
 	//
 	// example:
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	// The information about the creator of the rule.
-	CreateBy *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
-	// The time when the rule was created. The time is displayed in UTC+8.
-	//
-	// example:
-	//
-	// 2025-09-19T15:51:00
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the creation of the rule.
+	CreateBy   *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	CreateDate *string                                                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description of the rule.
 	//
 	// example:
 	//
-	// The description of the rule.
+	// The description of the test rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The types of the resources that are evaluated by the rule. Multiple resource types are separated by commas (,).
+	// The types of resources evaluated by the rule. Multiple resource types are separated with commas (,).
 	//
 	// example:
 	//
 	// ACS::EIP::EipAddress
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// - 1: high
+	// 	- 1: high
 	//
-	// - 2: medium
+	// 	- 2: medium
 	//
-	// - 3: low
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -222,19 +217,19 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The identifier of the rule.
 	//
-	// - If the rule is a managed rule, the value of this parameter is the identifier of the rule template.
+	// 	- If the rule is a managed rule, the value of this parameter is the name of the managed rule.
 	//
-	// - If the rule is a custom rule, the value of this parameter is the ARN of the function.
+	// 	- If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of a function.
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The owner of the rule. Valid values:
+	// The type of the rule. Valid values:
 	//
-	// - CUSTOM_FC: a custom rule.
+	// 	- CUSTOM_FC: a custom rule.
 	//
-	// - ALIYUN: a managed rule.
+	// 	- ALIYUN: a managed rule.
 	//
 	// example:
 	//
@@ -411,21 +406,21 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList) Validate
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
-	// The summary of the compliance evaluation result. Valid values:
+	// The compliance evaluation result. Valid values:
 	//
-	// - COMPLIANT: The resource is compliant.
+	// 	- COMPLIANT: The resources are evaluated as compliant.
 	//
-	// - NON_COMPLIANT: The resource is non-compliant.
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// - INSUFFICIENT_DATA: No data is available.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
 	// example:
 	//
 	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The number of resources that are evaluated based on the summary of the compliance evaluation.
+	// The number of evaluation resources that correspond to the summary result of the rule compliance evaluation.
 	//
 	// example:
 	//
@@ -464,7 +459,7 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
-	// The ID of the account group.
+	// The account group ID.
 	//
 	// example:
 	//
@@ -476,7 +471,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struc
 	//
 	// Test_Group
 	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// example:
 	//
@@ -486,7 +481,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struc
 	//
 	// example:
 	//
-	// The name of the compliance package.
+	// test-pack-name
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 	// The ID of the management account that created the rule.
 	//
@@ -494,13 +489,13 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struc
 	//
 	// 100931896542****
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the management account that created the rule.
+	// The name of the management account that create the rule.
 	//
 	// example:
 	//
 	// Alice
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The type of the creator. The value is fixed to AGGREGATOR.
+	// The type of the creator of the rule. The value is fixed to AGGREGATOR, which indicates an account group.
 	//
 	// example:
 	//
@@ -584,13 +579,13 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy) 
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags struct {
-	// The key of the tag.
+	// The tag key of the rule.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value of the rule.
 	//
 	// example:
 	//

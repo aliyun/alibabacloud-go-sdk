@@ -16,7 +16,7 @@ type iGetConfigurationRecorderResponseBody interface {
 }
 
 type GetConfigurationRecorderResponseBody struct {
-	// The resource monitoring information.
+	// The details of the configuration recorder that monitors resources.
 	ConfigurationRecorder *GetConfigurationRecorderResponseBodyConfigurationRecorder `json:"ConfigurationRecorder,omitempty" xml:"ConfigurationRecorder,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,21 +62,21 @@ func (s *GetConfigurationRecorderResponseBody) Validate() error {
 }
 
 type GetConfigurationRecorderResponseBodyConfigurationRecorder struct {
-	// The status of resource monitoring. Valid values:
+	// The status of the configuration recorder. Valid values:
 	//
-	// - REGISTRABLE: Not registered.
+	// 	- REGISTRABLE: The configuration recorder has not been registered.
 	//
-	// - BUILDING: Building.
+	// 	- BUILDING: The configuration recorder is being deployed.
 	//
-	// - REGISTERED: Registered.
+	// 	- REGISTERED: The configuration recorder has been registered.
 	//
-	// - REBUILDING: Rebuilding.
+	// 	- REBUILDING: The configuration recorder is being redeployed.
 	//
 	// example:
 	//
 	// REGISTERED
 	ConfigurationRecorderStatus *string `json:"ConfigurationRecorderStatus,omitempty" xml:"ConfigurationRecorderStatus,omitempty"`
-	// A list of monitored resource types.
+	// The types of resources that are monitored.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 

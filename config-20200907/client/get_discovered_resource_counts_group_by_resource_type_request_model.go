@@ -14,6 +14,11 @@ type iGetDiscoveredResourceCountsGroupByResourceTypeRequest interface {
 }
 
 type GetDiscoveredResourceCountsGroupByResourceTypeRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 

@@ -40,76 +40,60 @@ type ListAggregateResourceEvaluationResultsRequest struct {
 	//
 	// ca-7f00626622af0041****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The compliance evaluation result. Valid values:
+	// The compliance evaluation result of the resource. Valid values:
 	//
-	// - COMPLIANT: The resource is compliant.
+	// 	- COMPLIANT: The resource is evaluated as compliant.
 	//
-	// - NON_COMPLIANT: The resource is non-compliant.
+	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resource.
 	//
-	// - INSUFFICIENT_DATA: No data is available for the resource.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
-	// - IGNORED: The evaluation result is ignored.
+	// 	- IGNORED: The resource is ignored during compliance evaluation.
 	//
 	// example:
 	//
 	// NON_COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 1 to 100.
+	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the response is truncated, you can use this token to initiate another request to retrieve the remaining records.
+	// The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
 	//
 	// example:
 	//
 	// IWBjqMYSy0is7zSMGu16****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resource resides. For example, `global` indicates Global and `cn-hangzhou` indicates China (Hangzhou).
+	// The ID of the region where one or more resources that you want to query reside. For example, the value `global` indicates global regions and the value `cn-hangzhou` indicates the China (Hangzhou) region.
 	//
-	// For more information about how to obtain the region ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// example:
 	//
 	// global
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
-	// For more information about how to obtain the resource ID, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// example:
 	//
 	// 23642660635396****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
-	// For more information about how to obtain the resource type, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// example:
 	//
 	// ACS::RAM::User
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The risk level of the compliance package. Valid values:
-	//
-	// - 1: high
-	//
-	// - 2: medium
-	//
-	// - 3: low
-	//
-	// example:
-	//
-	// 1
-	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The sorting method. By default, this parameter is not specified. The supported value is `LastNonCompliantRecordTimestamp-Asc`. This value sorts resources based on the time when they first became non-compliant, in ascending order. You must set the `ComplianceType` parameter to `NON_COMPLIANT`.
-	//
-	// example:
-	//
-	// LastNonCompliantRecordTimestamp-Asc
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	RiskLevel    *int32  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SortBy       *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListAggregateResourceEvaluationResultsRequest) String() string {

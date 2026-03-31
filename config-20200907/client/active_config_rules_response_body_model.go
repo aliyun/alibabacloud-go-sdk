@@ -16,8 +16,14 @@ type iActiveConfigRulesResponseBody interface {
 }
 
 type ActiveConfigRulesResponseBody struct {
+	// The returned results.
 	OperateRuleResult *ActiveConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 61C1A88F-D163-40DF-84A6-F200229F37B2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ActiveConfigRulesResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *ActiveConfigRulesResponseBody) Validate() error {
 }
 
 type ActiveConfigRulesResponseBodyOperateRuleResult struct {
+	// The returned results.
 	OperateRuleItemList []*ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -90,9 +97,32 @@ func (s *ActiveConfigRulesResponseBodyOperateRuleResult) Validate() error {
 }
 
 type ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The rule ID.
+	//
+	// example:
+	//
+	// cr-2da35180a8d1008e****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// 	- If the rule is enabled, no error code is returned.
+	//
+	// 	- If the rule fails to be enabled, an error code is returned. For more information about error codes, see [Error codes](https://next.api.aliyun.com/document/Config/2020-09-07/errorCode).
+	//
+	// example:
+	//
+	// ConfigRuleStatusNotInActive
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the rule is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {

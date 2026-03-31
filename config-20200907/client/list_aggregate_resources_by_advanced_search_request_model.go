@@ -24,7 +24,7 @@ type ListAggregateResourcesByAdvancedSearchRequest struct {
 	//
 	// ca-4b05626622af000c****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The SQL search statement.
+	// The SQL query statement.
 	//
 	// This parameter is required.
 	//

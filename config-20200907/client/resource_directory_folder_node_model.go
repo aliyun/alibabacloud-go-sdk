@@ -24,12 +24,27 @@ type iResourceDirectoryFolderNode interface {
 }
 
 type ResourceDirectoryFolderNode struct {
-	AccountId      *string                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	Children       []*ResourceDirectoryFolderNode `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	DisplayName    *string                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	FolderId       *string                        `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	FolderName     *string                        `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	ParentFolderId *string                        `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
+	// example:
+	//
+	// 171322098523****
+	AccountId *string                        `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Children  []*ResourceDirectoryFolderNode `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Alice
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// fd-JeZYYJ****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// ECS
+	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	// example:
+	//
+	// fd-JeZYYJ****
+	ParentFolderId *string `json:"ParentFolderId,omitempty" xml:"ParentFolderId,omitempty"`
 }
 
 func (s ResourceDirectoryFolderNode) String() string {

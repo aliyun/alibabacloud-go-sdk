@@ -22,17 +22,17 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to detach all tags from the resources. Valid values:
+	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// - true: Detach all tags from the resources.
+	// 	- true: All tags are removed from the resource.
 	//
-	// - false (default): Detach the specified tags.
+	// 	- false (default): The specified tags are removed from the resource.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The ID of the region.
+	// The region ID of the tag.
 	//
 	// This parameter is required.
 	//
@@ -40,23 +40,23 @@ type UntagResourcesRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the resources. You can specify a maximum of 50 resource IDs.
+	// The resource ID.
 	//
-	// You can detach tags from up to 50 resources at a time.
+	// You can remove tags from up to 50 resources at a time.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the CloudConfig resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// - `ACS::Config::Rule`: a rule for a single account.
+	// 	- `ACS::Config::Rule`
 	//
-	// - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
+	// 	- `ACS::Config::AggregateConfigRule`
 	//
-	// - `ACS::Config::Aggregator`: an account group.
+	// 	- `ACS::Config::Aggregator`
 	//
-	// - `ACS::Config::CompliancePack`: a compliance package for a single account.
+	// 	- `ACS::Config::CompliancePack`
 	//
-	// - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
+	// 	- `ACS::Config::AggregateCompliancePack`
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type UntagResourcesRequest struct {
 	//
 	// ACS::Config::Rule
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys of the tags to detach.
+	// The tags of the resource.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

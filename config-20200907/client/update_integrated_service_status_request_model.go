@@ -20,14 +20,44 @@ type iUpdateIntegratedServiceStatusRequest interface {
 }
 
 type UpdateIntegratedServiceStatusRequest struct {
+	// The type of the event that is integrated across accounts. Valid values:
+	//
+	// 	- NonCompliantNotification: non-compliance event
+	//
+	// example:
+	//
+	// NonCompliantNotification
 	AggregatorDeliveryDataType *string `json:"AggregatorDeliveryDataType,omitempty" xml:"AggregatorDeliveryDataType,omitempty"`
-	IntegratedTypes            *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
+	// The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+	//
+	// 	- ConfigurationItemChangeNotification: resource change event
+	//
+	// 	- NonCompliantNotification: non-compliance event
+	//
+	// example:
+	//
+	// NonCompliantNotification
+	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
+	// The identity of the cloud service that is integrated with Cloud Config. Valid values:
+	//
+	// 	- eventbridge: EventBridge
+	//
+	// 	- cms: CloudMonitor
+	//
+	// 	- bpstudio: Cloud Architect Design Tools
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cadt
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// Specifies whether you want the product to be integrated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// This parameter is required.
 	//
 	// example:

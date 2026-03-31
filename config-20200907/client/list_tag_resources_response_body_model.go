@@ -18,9 +18,9 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token to retrieve the next page of results.
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
-	// > This parameter is empty when there are no more results to return.
+	// > If NextToken is empty, no next page exists.
 	//
 	// example:
 	//

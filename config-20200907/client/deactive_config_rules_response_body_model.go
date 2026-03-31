@@ -16,8 +16,14 @@ type iDeactiveConfigRulesResponseBody interface {
 }
 
 type DeactiveConfigRulesResponseBody struct {
+	// The results of the operations that are performed to disable the specified rules.
 	OperateRuleResult *DeactiveConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
-	RequestId         *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 54FA74D9-45D4-4CA5-9BE1-97F6EA19AF5B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeactiveConfigRulesResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *DeactiveConfigRulesResponseBody) Validate() error {
 }
 
 type DeactiveConfigRulesResponseBodyOperateRuleResult struct {
+	// The operations that are performed to disable the rule.
 	OperateRuleItemList []*DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -90,9 +97,32 @@ func (s *DeactiveConfigRulesResponseBodyOperateRuleResult) Validate() error {
 }
 
 type DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
+	// The rule ID.
+	//
+	// example:
+	//
+	// cr-19a56457e0d90058****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// 	- If the rule is disabled, no error code is returned.
+	//
+	// 	- If the rule fails to be disabled, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
+	//
+	// example:
+	//
+	// ConfigRuleCanNotDelete
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList) String() string {

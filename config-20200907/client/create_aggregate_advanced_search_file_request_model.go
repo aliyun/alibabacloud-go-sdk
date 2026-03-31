@@ -26,7 +26,7 @@ type CreateAggregateAdvancedSearchFileRequest struct {
 	//
 	// ca-edd3626622af00b3****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The SQL statement for the advanced search.
+	// The SQL statement used to query resources.
 	//
 	// This parameter is required.
 	//

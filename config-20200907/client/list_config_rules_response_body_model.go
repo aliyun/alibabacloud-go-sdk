@@ -16,7 +16,7 @@ type iListConfigRulesResponseBody interface {
 }
 
 type ListConfigRulesResponseBody struct {
-	// The list of rules.
+	// The information about the rules.
 	ConfigRules *ListConfigRulesResponseBodyConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ListConfigRulesResponseBody) Validate() error {
 }
 
 type ListConfigRulesResponseBodyConfigRules struct {
-	// The details of the rules.
+	// The details of the rule.
 	ConfigRuleList []*ListConfigRulesResponseBodyConfigRulesConfigRuleList `json:"ConfigRuleList,omitempty" xml:"ConfigRuleList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,7 +70,7 @@ type ListConfigRulesResponseBodyConfigRules struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type ListConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The remediation type. Only Operation Orchestration Service (OOS) is supported.
+	// The type of the remediation template. Only OOS is returned, which indicates CloudOps Orchestration Service.
 	//
 	// example:
 	//
 	// OOS
 	AutomationType *string `json:"AutomationType,omitempty" xml:"AutomationType,omitempty"`
-	// The compliance aggregation results of the rule.
+	// The compliance aggregation result of the rule.
 	Compliance *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
 	// The ARN of the rule.
 	//
@@ -172,49 +172,44 @@ type ListConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// example:
 	//
-	// The name of the rule.
+	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The state of the rule. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - ACTIVE: The rule is enabled.
+	// 	- ACTIVE: The rule is enabled.
 	//
-	// - DELETING: The rule is being deleted.
+	// 	- DELETING: The rule is being deleted.
 	//
-	// - EVALUATING: The rule is being evaluated.
+	// 	- EVALUATING: The rule is being used to evaluate resource configurations.
 	//
-	// - INACTIVE: The rule is disabled.
+	// 	- INACTIVE: The rule is disabled.
 	//
 	// example:
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	// The information about the creator of the rule.
-	CreateBy *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
-	// The time when the rule was created. The time is displayed in UTC+8.
-	//
-	// example:
-	//
-	// 2025-09-19T15:51:00
-	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the creation of the rule.
+	CreateBy   *ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy `json:"CreateBy,omitempty" xml:"CreateBy,omitempty" type:"Struct"`
+	CreateDate *string                                                       `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description of the rule.
 	//
 	// example:
 	//
-	// The description of the rule.
+	// The description of the test rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The types of resources evaluated by the rule. Multiple resource types are separated by commas (,).
+	// The types of resources evaluated by the rule. Multiple resource types are separated with commas (,).
 	//
 	// example:
 	//
 	// ACS::EIP::EipAddress
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// - 1: High risk.
+	// 	- 1: high.
 	//
-	// - 2: Medium risk.
+	// 	- 2: medium.
 	//
-	// - 3: Low risk.
+	// 	- 3: low.
 	//
 	// example:
 	//
@@ -222,19 +217,19 @@ type ListConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The identifier of the rule.
 	//
-	// - If the rule is a managed rule, this parameter indicates the identifier of the managed rule.
+	// 	- If the rule is a managed rule, the value of this parameter is the identifier of the managed rule.
 	//
-	// - If the rule is a custom rule, this parameter indicates the Alibaba Cloud Resource Name (ARN) of the function.
+	// 	- If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the rule.
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
-	// The owner of the rule. Valid values:
+	// The type of the rule. Valid values:
 	//
-	// - CUSTOM_FC: a custom rule created using a Function Compute (FC) function.
+	// 	- CUSTOM_FC: a custom rule.
 	//
-	// - ALIYUN: a managed rule.
+	// 	- ALIYUN: a managed rule.
 	//
 	// example:
 	//
@@ -411,21 +406,21 @@ func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleList) Validate() error 
 }
 
 type ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
-	// The summary of the compliance evaluation result. Valid values:
+	// The compliance evaluation result of the rule. Valid values:
 	//
-	// - COMPLIANT: Compliant.
+	// 	- COMPLIANT: The resources are evaluated as compliant.
 	//
-	// - NON_COMPLIANT: Non-compliant.
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: Not applicable.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// - INSUFFICIENT_DATA: Insufficient data.
+	// 	- INSUFFICIENT_DATA: No resource data is available.
 	//
 	// example:
 	//
 	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The number of evaluated resources that correspond to the compliance summary.
+	// The number of resources that are evaluated based on the rule.
 	//
 	// example:
 	//
@@ -464,7 +459,7 @@ func (s *ListConfigRulesResponseBodyConfigRulesConfigRuleListCompliance) Validat
 }
 
 type ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// example:
 	//
@@ -474,7 +469,7 @@ type ListConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
 	//
 	// example:
 	//
-	// The name of the compliance package.
+	// test-pack-name
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 }
 

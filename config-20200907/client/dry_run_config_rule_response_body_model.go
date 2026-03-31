@@ -18,59 +18,49 @@ type iDryRunConfigRuleResponseBody interface {
 }
 
 type DryRunConfigRuleResponseBody struct {
-	// The compliance type of the rule. Valid values:
-	//
-	// - COMPLIANT: Compliant.
-	//
-	// - NON_COMPLIANT: Non-compliant.
-	//
-	// - NOT_APPLICABLE: Not applicable.
-	//
-	// - INSUFFICIENT_DATA: Insufficient data.
-	//
 	// example:
 	//
 	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
-	// C32EEAD7-BF64-5927-977A-AFF9342B****
+	// C32EEAD7-BF64-5927-977A-AFF9342B7275
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The context of the rule conditions.
-	//
 	// example:
 	//
 	// {
 	//
-	//   "result":"NON_COMPLIANT",
+	// 			"result":"NON_COMPLIANT",
 	//
-	//   "children":[
+	// 			"children":[
 	//
-	//     {
+	// 				{
 	//
-	//       "featureValue":"1",
+	// 					"featureValue":"1",
 	//
-	//       "featureSource":"CONFIGURATION",
+	// 					"featureSource":"CONFIGURATION",
 	//
-	//       "result":"NON_COMPLIANT",
+	// 					"result":"NON_COMPLIANT",
 	//
-	//       "desired":"4",
+	// 					"desired":"4",
 	//
-	//       "children":[],
+	// 					"children":[],
 	//
-	//       "operator":"StringEquals",
+	// 					"operator":"StringEquals",
 	//
-	//       "featurePath":"$.Cpu"
+	// 					"featurePath":"$.Cpu"
 	//
-	//     }
+	// 				}
 	//
-	//   ],
+	// 			],
 	//
-	//   "operator":"and"
+	// 			"operator":"and"
 	//
-	// }
+	// 		}
+	//
+	// 	}
 	RuleConditionContext *string `json:"RuleConditionContext,omitempty" xml:"RuleConditionContext,omitempty"`
 }
 

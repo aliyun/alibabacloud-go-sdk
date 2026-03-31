@@ -14,6 +14,11 @@ type iUpdateIntegratedServiceStatusResponseBody interface {
 }
 
 type UpdateIntegratedServiceStatusResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 02EB7638-B029-5ABB-93F5-A2ABEEAC282D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

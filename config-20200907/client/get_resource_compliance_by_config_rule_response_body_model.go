@@ -16,8 +16,14 @@ type iGetResourceComplianceByConfigRuleResponseBody interface {
 }
 
 type GetResourceComplianceByConfigRuleResponseBody struct {
+	// The compliance result.
 	ComplianceResult *GetResourceComplianceByConfigRuleResponseBodyComplianceResult `json:"ComplianceResult,omitempty" xml:"ComplianceResult,omitempty" type:"Struct"`
-	RequestId        *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 23306AB1-34E0-468F-BD7B-68D8AEAB753d
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponseBody) String() string {
@@ -56,8 +62,14 @@ func (s *GetResourceComplianceByConfigRuleResponseBody) Validate() error {
 }
 
 type GetResourceComplianceByConfigRuleResponseBodyComplianceResult struct {
+	// The compliance evaluation results based on compliance types.
 	Compliances []*GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances `json:"Compliances,omitempty" xml:"Compliances,omitempty" type:"Repeated"`
-	TotalCount  *int64                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of evaluated resources.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponseBodyComplianceResult) String() string {
@@ -100,8 +112,26 @@ func (s *GetResourceComplianceByConfigRuleResponseBodyComplianceResult) Validate
 }
 
 type GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances struct {
+	// The compliance evaluation results of the resources. Valid values:
+	//
+	// 	- COMPLIANT: The resource was evaluated as compliant.
+	//
+	// 	- NON_COMPLIANT: The resource was evaluated as incompliant.
+	//
+	// 	- NOT_APPLICABLE: The rule did not apply to your resources.
+	//
+	// 	- INSUFFICIENT_DATA: No resource data was available.
+	//
+	// example:
+	//
+	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of resources that have compliance evaluation results. For example, if the value of the `ComplianceType` parameter is `COMPLIANT`, this parameter value indicates the number of compliant resources.
+	//
+	// example:
+	//
+	// 5
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances) String() string {

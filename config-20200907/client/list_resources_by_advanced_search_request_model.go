@@ -14,7 +14,13 @@ type iListResourcesByAdvancedSearchRequest interface {
 }
 
 type ListResourcesByAdvancedSearchRequest struct {
+	// The SQL query statement.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT ResourceId, ResourceName WHERE Tags.Kvpair=\\"business:online\\"
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
 }
 

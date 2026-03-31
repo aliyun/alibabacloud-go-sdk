@@ -16,9 +16,9 @@ type iGetCompliancePackShrinkRequest interface {
 }
 
 type GetCompliancePackShrinkRequest struct {
-	// The compliance package ID.
+	// The ID of the compliance package.
 	//
-	// For more information about how to obtain the compliance package ID, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type GetCompliancePackShrinkRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource. This parameter is deprecated and takes no effect if it is specified.
+	// The tags of the resource.
 	//
-	// You can add up to 20 tags.
+	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

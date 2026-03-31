@@ -28,25 +28,25 @@ type iListConfigRuleEvaluationResultsRequest interface {
 }
 
 type ListConfigRuleEvaluationResultsRequest struct {
-	// The compliance package ID.
+	// The ID of the compliance package.
 	//
-	// For more information about how to obtain a compliance package ID, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	//
 	// example:
 	//
 	// cp-f1e3326622af00cb****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The compliance evaluation result. Valid values:
+	// The compliance evaluation result of the resource. Valid values:
 	//
-	// - COMPLIANT: The resource is compliant.
+	// 	- COMPLIANT: The resource is evaluated as compliant.
 	//
-	// - NON_COMPLIANT: The resource is non-compliant.
+	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
 	//
-	// - NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// - INSUFFICIENT_DATA: No data is available.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
-	// - IGNORED: The evaluation result is ignored.
+	// 	- IGNORED: The resource is ignored during compliance evaluation.
 	//
 	// if can be null:
 	// true
@@ -57,41 +57,41 @@ type ListConfigRuleEvaluationResultsRequest struct {
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
 	// The rule ID.
 	//
-	// For more information about how to obtain a rule ID, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+	// You can call the [ListConfigRules](https://help.aliyun.com/document_detail/169607.html) operation to obtain the rule ID.
 	//
 	// example:
 	//
 	// cr-cac56457e0d900d3****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 1 to 100.
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If the response is truncated, use the `NextToken` to retrieve the next page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
 	//
 	// example:
 	//
 	// IWBjqMYSy0is7zSMGu16****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the evaluated resource resides. Separate multiple regions with commas (,).
+	// The ID of the region where the resources that you want to evaluate reside. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	// The ID of the resource group to which the evaluated resource belongs. Separate multiple resource group IDs with commas (,).
+	// The ID of the resource group to which the resources that you want to evaluate belong. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aek2indxn3g****
 	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
-	// The type of the evaluated resource. Separate multiple resource types with commas (,).
+	// The type of the resources that you want to evaluate. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
-	// ACS::ECS::Instance
+	// ACS::ECS::Instane
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
 }
 

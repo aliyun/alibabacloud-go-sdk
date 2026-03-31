@@ -46,15 +46,15 @@ type iUpdateCompliancePackRequest interface {
 }
 
 type UpdateCompliancePackRequest struct {
-	// A client token to ensure the idempotence of the request. Generate a unique token for each request. The `ClientToken` value can contain only ASCII characters and must be no more than 64 characters long.
+	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
 	//
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the compliance pack.
+	// The ID of the compliance package.
 	//
-	// For more information, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	//
 	// This parameter is required.
 	//
@@ -62,69 +62,69 @@ type UpdateCompliancePackRequest struct {
 	//
 	// cp-a8a8626622af0082****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The name of the compliance pack.
+	// The name of the compliance package.
 	//
-	// For more information, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+	// For more information about how to obtain the name of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	//
 	// example:
 	//
-	// 等保三级预检合规包
+	// The name of the compliance package.
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The rules in the compliance pack.
+	// The rules in the compliance package.
 	//
-	// If you leave this parameter empty when you modify the compliance pack, the original rules are retained. If you specify new rules, they replace the original rules.
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
 	ConfigRules []*UpdateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
-	// The description of the compliance pack.
+	// The description of the compliance package.
 	//
 	// example:
 	//
-	// 基于等保2.0三级标准，提供持续检测合规性的建议模板，帮助您提前自检并修复问题，以便快速通过正式检测。
+	// The description of the compliance package.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The compliance pack does not evaluate resources in the specified regions. Separate multiple region IDs with commas (,).
+	// The IDs of the regions to which the rule not applies. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-shanghai
 	ExcludeRegionIdsScope *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
-	// The compliance pack does not evaluate resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
+	// ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-bnczc6r7rml****
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The compliance pack does not evaluate the specified resources. Separate multiple resource IDs with commas (,).
+	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// 23642660635687****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
-	// The excluded tag scope.
+	// ExcludeTagsScope
 	ExcludeTagsScope []*UpdateCompliancePackRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The compliance pack evaluates only resources in the specified regions. Separate multiple region IDs with commas (,).
+	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The compliance pack evaluates only resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
+	// The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
 	//
 	// example:
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
-	// The compliance pack evaluates only the specified resources. Separate multiple resource IDs with commas (,).
+	// The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The risk level of the compliance pack. Valid values:
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
-	// - 1: High risk.
+	// 	- 1: high risk level
 	//
-	// - 2: Medium risk.
+	// 	- 2: medium risk level
 	//
-	// - 3: Low risk.
+	// 	- 3: low risk level
 	//
 	// example:
 	//
@@ -132,25 +132,25 @@ type UpdateCompliancePackRequest struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// Deprecated
 	//
-	// The tags of the resource. This parameter is deprecated. Ignore this parameter because it is no longer valid.
+	// The tags of the resource.
 	//
-	// You can add up to 20 tags.
+	// You can add up to 20 tags to a resource.
 	Tag []*UpdateCompliancePackRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The compliance pack evaluates only resources that have the specified tag key.
+	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The compliance pack evaluates only resources that have the specified tag key and value.
+	// The tag value of the resource that you want to evaluate by using the compliance package.
 	//
-	// > You must use TagValueScope with TagKeyScope.
+	// >  You must configure the TagValueScope parameter together with the TagValueScope parameter.
 	//
 	// example:
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
-	// The tag scope.
+	// TagsScope
 	TagsScope []*UpdateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
@@ -356,43 +356,43 @@ func (s *UpdateCompliancePackRequest) Validate() error {
 }
 
 type UpdateCompliancePackRequestConfigRules struct {
-	// The rule ID. CloudConfig adds an existing rule to the compliance pack.
+	// The rule ID. If you configure this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
 	//
-	// You must specify either `ManagedRuleIdentifier` or `ConfigRuleId`. If you specify both parameters, `ConfigRuleId` takes precedence. For more information, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+	// You need to only specify one of the `ManagedRuleIdentifier` and `ConfigRuleId` properties. If you specify both the properties, the value of the `ConfigRuleId` property takes precedence. You can call the [ListConfigRules](https://help.aliyun.com/document_detail/169607.html) operation to obtain the rule ID.
 	//
 	// example:
 	//
 	// cr-e918626622af000f****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
-	// 检测闲置弹性公网IP
+	// The rule name.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The parameters of the rule.
+	// The details of the input parameter of the rule.
 	ConfigRuleParameters []*UpdateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
-	// 弹性公网已绑定到ECS或者NAT实例，非闲置状态，视为“合规”。
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The identifier of the rule template. CloudConfig automatically creates a rule based on this identifier and adds the rule to the compliance pack.
+	// The identifier of the managed rule. Cloud Config automatically creates a rule based on the identifier of the managed rule and adds the rule to the current compliance package.
 	//
-	// You must specify either `ManagedRuleIdentifier` or `ConfigRuleId`. If you specify both parameters, `ConfigRuleId` takes precedence. For more information, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the identifier of a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The risk level of the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// - 1: High risk.
+	// 	- 1: high risk level
 	//
-	// - 2: Medium risk.
+	// 	- 2: medium risk level
 	//
-	// - 3: Low risk.
+	// 	- 3: low risk level
 	//
 	// example:
 	//
@@ -476,17 +476,17 @@ func (s *UpdateCompliancePackRequestConfigRules) Validate() error {
 }
 
 type UpdateCompliancePackRequestConfigRulesConfigRuleParameters struct {
-	// The name of the rule parameter.
+	// The name of the managed rule parameter.
 	//
-	// You must specify `ParameterName` and `ParameterValue` together, or leave them both empty. If a rule template has a parameter without a default value, you must specify this parameter. For more information, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// You must specify both `ParameterName` and `ParameterValue` or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
 	// bandwidth
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the rule parameter.
+	// The value of the managed rule parameter.
 	//
-	// You must specify `ParameterName` and `ParameterValue` together, or leave them both empty. If a rule template has a parameter without a default value, you must specify this parameter. For more information, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
@@ -570,19 +570,21 @@ func (s *UpdateCompliancePackRequestExcludeTagsScope) Validate() error {
 }
 
 type UpdateCompliancePackRequestTag struct {
-	// The tag key of the resource.
+	// The tag keys.
 	//
-	// If you specify this parameter, it cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
+	// The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// You can specify the tag keys of up to 20 tags at a time.
+	// You can specify at most 20 tag keys in each call.
 	//
 	// example:
 	//
 	// key-1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, it can be an empty string.
+	// The tag values.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	//
+	// Each key-value must be unique. You can specify at most 20 tag values in each call.
 	//
 	// example:
 	//

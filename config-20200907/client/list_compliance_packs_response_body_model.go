@@ -16,9 +16,9 @@ type iListCompliancePacksResponseBody interface {
 }
 
 type ListCompliancePacksResponseBody struct {
-	// The query results for the compliance packs.
+	// The compliance packages returned.
 	CompliancePacksResult *ListCompliancePacksResponseBodyCompliancePacksResult `json:"CompliancePacksResult,omitempty" xml:"CompliancePacksResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListCompliancePacksResponseBody) Validate() error {
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResult struct {
-	// A list of compliance packs.
+	// The compliance packages.
 	CompliancePacks []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of compliance packs.
+	// The total number of compliance packages returned.
 	//
 	// example:
 	//
@@ -142,65 +142,65 @@ func (s *ListCompliancePacksResponseBodyCompliancePacksResult) Validate() error 
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct {
-	// The ID of the Alibaba Cloud account to which the compliance pack belongs.
+	// The ID of the Alibaba Cloud account to which the compliance package belongs.
 	//
 	// example:
 	//
 	// 120886317861****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the compliance pack.
+	// The compliance package ID.
 	//
 	// example:
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
-	// The name of the compliance pack.
+	// The name of the compliance package.
 	//
 	// example:
 	//
-	// BestPracticesForResourceStability
+	// ClassifiedProtectionPreCheck
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the compliance pack template.
+	// The ID of the compliance package template.
 	//
 	// example:
 	//
-	// ct-484cff4e06a30062****
+	// ct-5f26ff4e06a300c4****
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The timestamp when the compliance pack was created. Unit: milliseconds.
+	// The timestamp when the compliance package was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1621325046000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The description of the compliance pack.
+	// The description of the compliance package.
 	//
 	// example:
 	//
-	// Check the stability of Alibaba Cloud resources based on the high-availability infrastructure, capacity protection, change management, monitoring management, backup management, and fault isolation. This helps you identify issues at the earliest opportunity and improve stability and the efficiency of O&M.
+	// Based on the Level 3 standards Equal Protection 2.0, this template provides continuous compliance monitoring recommendations to help you perform self-inspections and fix issues in advance, ensuring a quick pass during the official inspection.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The risk level of the compliance pack. Valid values:
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
-	// - 1: high risk.
+	// 	- 1: high
 	//
-	// - 2: medium risk.
+	// 	- 2: medium
 	//
-	// - 3: low risk.
+	// 	- 3: low
 	//
 	// example:
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The status of the compliance pack. Valid values:
+	// The status of the compliance package. Valid values:
 	//
-	// - ACTIVE: The compliance pack is active.
+	// 	- ACTIVE: The compliance package is normal.
 	//
-	// - CREATING: The compliance pack is being created.
+	// 	- CREATING: The compliance package is being created.
 	//
 	// example:
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the resource.
+	// The tags.
 	Tags []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -307,13 +307,13 @@ func (s *ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks) Va
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags struct {
-	// The tag key.
+	// tag key
 	//
 	// example:
 	//
 	// key-1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// tag value
 	//
 	// example:
 	//

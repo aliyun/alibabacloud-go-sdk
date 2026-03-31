@@ -16,14 +16,13 @@ type iGetResourceConfigurationSampleResponseBody interface {
 }
 
 type GetResourceConfigurationSampleResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
-	// DC300244-FCE3-5061-8214-C27ECB66****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sample.
-	Sample *GetResourceConfigurationSampleResponseBodySample `json:"Sample,omitempty" xml:"Sample,omitempty" type:"Struct"`
+	// DC300244-FCE3-5061-8214-C27ECB668487
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Sample    *GetResourceConfigurationSampleResponseBodySample `json:"Sample,omitempty" xml:"Sample,omitempty" type:"Struct"`
 }
 
 func (s GetResourceConfigurationSampleResponseBody) String() string {
@@ -62,78 +61,47 @@ func (s *GetResourceConfigurationSampleResponseBody) Validate() error {
 }
 
 type GetResourceConfigurationSampleResponseBodySample struct {
-	// The user ID.
-	//
 	// example:
 	//
-	// 101339776561****
+	// 10093xxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The zone.
-	//
 	// example:
 	//
-	// cn-shanghai-g
+	// cn-hangzhou
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	// The complete configuration information of the resource.
-	//
+	Configuration    *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// example:
 	//
-	// {\\"Status\\":\\"Running\\",\\"HibernationOptions\\":{\\"Configured\\":\\"false\\"},\\"ResourceGroupId\\":\\"rg-bp67acfmxazb4p****\\",\\"MetadataOptions\\":{\\"HttpPutResponseHopLimit\\":\\"0\\",\\"HttpTokens\\":\\"optional\\",\\"HttpEndpoint\\":\\"enabled\\"},\\"InstanceId\\":\\"i-bp67acfmxazb4p****\\",\\"InstanceChargeType\\":\\"PostPaid\\",\\"Memory\\":\\"16384\\",\\"StoppedMode\\":\\"KeepCharging\\",\\"CpuOptions\\":{\\"ThreadsPerCore\\":\\"4\\",\\"Numa\\":\\"2\\",\\"CoreCount\\":\\"2\\"},\\"StartTime\\":\\"2017-12-10T04:04Z\\",\\"Cpu\\":\\"8\\",\\"OSName\\":\\"CentOS 7.4 64 bit\\",\\"DeletionProtection\\":\\"false\\",\\"SecurityGroupIds\\":{\\"SecurityGroupId\\":[null]},\\"InstanceNetworkType\\":\\"vpc\\",\\"InnerIpAddress\\":{\\"IpAddress\\":[\\"``42.112.**.**``\\"]},\\"ExpiredTime\\":\\"2017-12-10T04:04Z\\",\\"EipAddress\\":{\\"AllocationId\\":\\"eip-2ze88m67qx5z****\\",\\"Bandwidth\\":\\"5\\",\\"IpAddress\\":\\"``42.112.**.**``\\",\\"IsSupportUnassociate\\":\\"true\\",\\"InternetChargeType\\":\\"PayByTraffic\\"},\\"ImageId\\":\\"m-bp67acfmxazb4p****\\",\\"ImageOptions\\":{\\"LoginAsNonRoot\\":\\"false\\"},\\"HostName\\":\\"testHostName\\",\\"Tags\\":{\\"Tag\\":[null]},\\"VlanId\\":\\"10\\"}
-	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
+	// cn-shenzhen
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the resource was created.
-	//
 	// example:
 	//
 	// 1646362560000
 	ResourceCreationTime *string `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
-	// The deletion status of the resource. Valid values:
-	//
-	// - 1: The resource is retained.
-	//
-	// - 0: The resource is deleted.
-	//
 	// example:
 	//
 	// 1
 	ResourceDeleted *string `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
-	// The resource ID.
-	//
 	// example:
 	//
-	// i-bp1aaegapahkh880****
+	// i-bp1aaegapahkh880x4wq
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource name.
-	//
 	// example:
 	//
 	// my-ecs
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource status.
-	//
 	// example:
 	//
 	// Running
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The resource type.
-	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag.
-	//
 	// example:
 	//
 	// {\\"key\\":\\"value\\"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The version information.
-	//
 	// example:
 	//
 	// 5

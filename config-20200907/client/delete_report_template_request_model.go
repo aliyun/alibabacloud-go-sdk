@@ -14,8 +14,6 @@ type iDeleteReportTemplateRequest interface {
 }
 
 type DeleteReportTemplateRequest struct {
-	// The ID of the report template.
-	//
 	// This parameter is required.
 	//
 	// example:

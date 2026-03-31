@@ -16,17 +16,17 @@ type iStartConfigRuleEvaluationResponseBody interface {
 }
 
 type StartConfigRuleEvaluationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D31EEAD7-BF1E-5927-977A-AFF9342A7273
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The request is successful.
+	// 	- true
 	//
-	// - false: The request failed.
+	// 	- false
 	//
 	// example:
 	//

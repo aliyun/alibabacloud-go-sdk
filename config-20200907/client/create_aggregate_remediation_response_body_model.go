@@ -16,7 +16,7 @@ type iCreateAggregateRemediationResponseBody interface {
 }
 
 type CreateAggregateRemediationResponseBody struct {
-	// The remediation ID.
+	// The ID of the remediation template.
 	//
 	// example:
 	//

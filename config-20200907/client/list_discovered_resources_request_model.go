@@ -32,25 +32,25 @@ type iListDiscoveredResourcesRequest interface {
 }
 
 type ListDiscoveredResourcesRequest struct {
-	// The end of the time range to query resources, specified as a UNIX timestamp in milliseconds. Note:
+	// The end time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
 	//
-	// - The value cannot be earlier than StartUpdateTimestamp.
+	// 	- The value must be a timestamp in milliseconds.
 	//
-	// - The time interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
+	// 	- The value cannot be less than the value of the StartUpdateTimestamp parameter. The interval between the value and the value of the StartUpdateTimestamp parameter must be less than or equal to 30 days.
 	//
-	// - Specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both blank.
+	// 	- The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
 	//
 	// example:
 	//
 	// 1724947200000
 	EndUpdateTimestamp *int64 `json:"EndUpdateTimestamp,omitempty" xml:"EndUpdateTimestamp,omitempty"`
-	// The resource types to exclude. Separate multiple resource types with commas (,). This parameter takes precedence over the ResourceTypes parameter.
+	// The types of resources that are excluded. Separate multiple values with commas (,). If this parameter conflicts with the ResourceTypes parameter, this parameter prevails.
 	//
 	// example:
 	//
 	// ACS::ECS::Instance,ACS::ECS::NetworkInterface
 	ExcludeResourceTypes *string `json:"ExcludeResourceTypes,omitempty" xml:"ExcludeResourceTypes,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 1 to 100.
+	// The maximum number of entries returned for a single request. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type ListDiscoveredResourcesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. If the response is truncated, use this token in a subsequent request to retrieve the next page of results.
+	// The `token` that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.
 	//
 	// example:
 	//
@@ -75,9 +75,9 @@ type ListDiscoveredResourcesRequest struct {
 	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
 	// The status of the resource. Valid values:
 	//
-	// - 0: The resource is deleted. If you delete a resource in the corresponding Alibaba Cloud service, Cloud Config displays the resource as **Deleted**.
+	// 	- 0: The resource is deleted. If a resource is deleted from the desired cloud service, **Deleted*	- is displayed in the resource list in the Cloud Config console.
 	//
-	// - 1 (Default): The resource is active. If a resource is managed, Cloud Config displays the resource as **Active**.
+	// 	- 1 (default): The resource is retained. If a resource is managed as expected, **Active*	- is displayed in the resource list in the Cloud Config console.
 	//
 	// example:
 	//
@@ -88,26 +88,21 @@ type ListDiscoveredResourcesRequest struct {
 	// example:
 	//
 	// eni-hp31cqoba96jagtz****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource name.
-	//
-	// example:
-	//
-	// test-resource-name
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The resource type. Separate multiple resource types with commas (,).
+	// The type of the resource. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// ACS::ECS::NetworkInterface
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The start of the time range to query resources, specified as a UNIX timestamp in milliseconds. Note:
+	// The start time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
 	//
-	// - The value cannot be later than EndUpdateTimestamp.
+	// 	- The value must be a timestamp in milliseconds.
 	//
-	// - The time interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
+	// 	- The value cannot be greater than the value of the EndUpdateTimestamp parameter. The interval between the value and the value of the EndUpdateTimestamp parameter must be less than or equal to 30 days.
 	//
-	// - Specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both blank.
+	// 	- The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left blank at the same time.
 	//
 	// example:
 	//

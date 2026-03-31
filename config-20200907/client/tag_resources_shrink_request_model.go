@@ -20,7 +20,7 @@ type iTagResourcesShrinkRequest interface {
 }
 
 type TagResourcesShrinkRequest struct {
-	// The ID of the region.
+	// The region ID of the tags.
 	//
 	// This parameter is required.
 	//
@@ -28,21 +28,21 @@ type TagResourcesShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
+	// The resource IDs. You can add tags to up to 50 resources.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource in CloudConfig. Valid values:
+	// The resource type. Valid values:
 	//
-	// - `ACS::Config::Rule`: a rule for a single account.
+	// 	- `ACS::Config::Rule`
 	//
-	// - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
+	// 	- `ACS::Config::AggregateConfigRule`
 	//
-	// - `ACS::Config::Aggregator`: an account group.
+	// 	- `ACS::Config::Aggregator`
 	//
-	// - `ACS::Config::CompliancePack`: a compliance package for a single account.
+	// 	- `ACS::Config::CompliancePack`
 	//
-	// - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
+	// 	- `ACS::Config::AggregateCompliancePack`
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type TagResourcesShrinkRequest struct {
 	//
 	// ACS::Config::Rule
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the resource.
+	// The tag value of the resource.
 	//
-	// You can attach a maximum of 20 tags.
+	// You can specify up to 20 tag values.
 	//
 	// This parameter is required.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`

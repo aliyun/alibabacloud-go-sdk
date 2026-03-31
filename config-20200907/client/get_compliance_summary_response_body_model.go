@@ -16,7 +16,7 @@ type iGetComplianceSummaryResponseBody interface {
 }
 
 type GetComplianceSummaryResponseBody struct {
-	// The compliance summary.
+	// The summary of compliance statistics.
 	ComplianceSummary *GetComplianceSummaryResponseBodyComplianceSummary `json:"ComplianceSummary,omitempty" xml:"ComplianceSummary,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *GetComplianceSummaryResponseBody) Validate() error {
 }
 
 type GetComplianceSummaryResponseBodyComplianceSummary struct {
-	// The compliance summary by rule.
+	// The summary of compliance statistics from the rule dimension.
 	ComplianceSummaryByConfigRule *GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule `json:"ComplianceSummaryByConfigRule,omitempty" xml:"ComplianceSummaryByConfigRule,omitempty" type:"Struct"`
-	// The compliance summary by resource.
+	// The summary of compliance statistics from the resource dimension.
 	ComplianceSummaryByResource *GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource `json:"ComplianceSummaryByResource,omitempty" xml:"ComplianceSummaryByResource,omitempty" type:"Struct"`
 }
 
@@ -109,19 +109,19 @@ func (s *GetComplianceSummaryResponseBodyComplianceSummary) Validate() error {
 }
 
 type GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByConfigRule struct {
-	// The timestamp when the compliance summary was generated. Unit: milliseconds.
+	// The time when the compliance summary was generated. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1589853712165
 	ComplianceSummaryTimestamp *int64 `json:"ComplianceSummaryTimestamp,omitempty" xml:"ComplianceSummaryTimestamp,omitempty"`
-	// The number of compliant rules.
+	// The number of rules evaluated as compliant.
 	//
 	// example:
 	//
 	// 5
 	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
-	// The number of non-compliant rules.
+	// The number of rules evaluated as non-compliant.
 	//
 	// example:
 	//
@@ -184,43 +184,22 @@ func (s *GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByCon
 }
 
 type GetComplianceSummaryResponseBodyComplianceSummaryComplianceSummaryByResource struct {
-	// The timestamp when the compliance summary was generated. Unit: milliseconds.
+	// The time when the compliance summary was generated. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1589853712165
 	ComplianceSummaryTimestamp *int64 `json:"ComplianceSummaryTimestamp,omitempty" xml:"ComplianceSummaryTimestamp,omitempty"`
-	// The number of compliant resources.
+	// The number of resources evaluated as compliant.
 	//
 	// example:
 	//
 	// 1
-	CompliantCount *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
-	// The number of non-compliant resources detected by high-risk rules.
-	//
-	// > Note: This value can be greater than the total number of resources in your account. Resources are counted based on each rule. For example, if a resource is evaluated as non-compliant by two rules, the value of this parameter increases by 2.
-	//
-	// example:
-	//
-	// 2
-	HighRiskRuleNonCompliantResourceCount *int32 `json:"HighRiskRuleNonCompliantResourceCount,omitempty" xml:"HighRiskRuleNonCompliantResourceCount,omitempty"`
-	// The number of non-compliant resources detected by low-risk rules.
-	//
-	// > Note: This value can be greater than the total number of resources in your account. Resources are counted based on each rule. For example, if a resource is evaluated as non-compliant by two low-risk rules, the value of this parameter increases by 2.
-	//
-	// example:
-	//
-	// 2
-	LowRiskRuleNonCompliantResourceCount *int32 `json:"LowRiskRuleNonCompliantResourceCount,omitempty" xml:"LowRiskRuleNonCompliantResourceCount,omitempty"`
-	// The number of non-compliant resources detected by medium-risk rules.
-	//
-	// > Note: This value can be greater than the total number of resources in your account. Resources are counted based on each rule. For example, if a resource is evaluated as non-compliant by two rules, the value of this parameter increases by 2.
-	//
-	// example:
-	//
-	// 6
+	CompliantCount                          *int32 `json:"CompliantCount,omitempty" xml:"CompliantCount,omitempty"`
+	HighRiskRuleNonCompliantResourceCount   *int32 `json:"HighRiskRuleNonCompliantResourceCount,omitempty" xml:"HighRiskRuleNonCompliantResourceCount,omitempty"`
+	LowRiskRuleNonCompliantResourceCount    *int32 `json:"LowRiskRuleNonCompliantResourceCount,omitempty" xml:"LowRiskRuleNonCompliantResourceCount,omitempty"`
 	MediumRiskRuleNonCompliantResourceCount *int32 `json:"MediumRiskRuleNonCompliantResourceCount,omitempty" xml:"MediumRiskRuleNonCompliantResourceCount,omitempty"`
-	// The number of non-compliant resources.
+	// The number of resources evaluated as non-compliant.
 	//
 	// example:
 	//
