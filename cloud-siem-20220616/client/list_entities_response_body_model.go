@@ -210,10 +210,11 @@ func (s *ListEntitiesResponseBodyDataPageInfo) Validate() error {
 }
 
 type ListEntitiesResponseBodyDataResponseData struct {
-	AgentConfidence           *string `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
-	AgentDisposalMethod       *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
-	AgentDisposalPlaybookUuid *string `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
-	AgentDisposalSuggestion   *string `json:"AgentDisposalSuggestion,omitempty" xml:"AgentDisposalSuggestion,omitempty"`
+	AgentConfidence           *string                                                  `json:"AgentConfidence,omitempty" xml:"AgentConfidence,omitempty"`
+	AgentDisposalMethod       *string                                                  `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
+	AgentDisposalPlaybookUuid *string                                                  `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
+	AgentDisposalSuggestion   *string                                                  `json:"AgentDisposalSuggestion,omitempty" xml:"AgentDisposalSuggestion,omitempty"`
+	AgentDisposes             []*ListEntitiesResponseBodyDataResponseDataAgentDisposes `json:"AgentDisposes,omitempty" xml:"AgentDisposes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -305,6 +306,10 @@ func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalPlaybookUuid(
 
 func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposalSuggestion() *string {
 	return s.AgentDisposalSuggestion
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) GetAgentDisposes() []*ListEntitiesResponseBodyDataResponseDataAgentDisposes {
+	return s.AgentDisposes
 }
 
 func (s *ListEntitiesResponseBodyDataResponseData) GetAlertNum() *int32 {
@@ -400,6 +405,11 @@ func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalPlaybookUuid(
 
 func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposalSuggestion(v string) *ListEntitiesResponseBodyDataResponseData {
 	s.AgentDisposalSuggestion = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseData) SetAgentDisposes(v []*ListEntitiesResponseBodyDataResponseDataAgentDisposes) *ListEntitiesResponseBodyDataResponseData {
+	s.AgentDisposes = v
 	return s
 }
 
@@ -499,5 +509,49 @@ func (s *ListEntitiesResponseBodyDataResponseData) SetTags(v string) *ListEntiti
 }
 
 func (s *ListEntitiesResponseBodyDataResponseData) Validate() error {
+	if s.AgentDisposes != nil {
+		for _, item := range s.AgentDisposes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListEntitiesResponseBodyDataResponseDataAgentDisposes struct {
+	AgentDisposalMethod       *string `json:"AgentDisposalMethod,omitempty" xml:"AgentDisposalMethod,omitempty"`
+	AgentDisposalPlaybookUuid *string `json:"AgentDisposalPlaybookUuid,omitempty" xml:"AgentDisposalPlaybookUuid,omitempty"`
+}
+
+func (s ListEntitiesResponseBodyDataResponseDataAgentDisposes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEntitiesResponseBodyDataResponseDataAgentDisposes) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) GetAgentDisposalMethod() *string {
+	return s.AgentDisposalMethod
+}
+
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) GetAgentDisposalPlaybookUuid() *string {
+	return s.AgentDisposalPlaybookUuid
+}
+
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) SetAgentDisposalMethod(v string) *ListEntitiesResponseBodyDataResponseDataAgentDisposes {
+	s.AgentDisposalMethod = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) SetAgentDisposalPlaybookUuid(v string) *ListEntitiesResponseBodyDataResponseDataAgentDisposes {
+	s.AgentDisposalPlaybookUuid = &v
+	return s
+}
+
+func (s *ListEntitiesResponseBodyDataResponseDataAgentDisposes) Validate() error {
 	return dara.Validate(s)
 }

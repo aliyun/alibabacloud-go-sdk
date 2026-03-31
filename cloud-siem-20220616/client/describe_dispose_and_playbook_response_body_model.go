@@ -427,7 +427,8 @@ type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
 	// example:
 	//
 	// {"opCode":"3"}
-	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	TaskConfig      *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	UnAvailableCode *string `json:"UnAvailableCode,omitempty" xml:"UnAvailableCode,omitempty"`
 	// example:
 	//
 	// kill_process_isolate_file
@@ -484,6 +485,10 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Get
 	return s.TaskConfig
 }
 
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GetUnAvailableCode() *string {
+	return s.UnAvailableCode
+}
+
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) GetUuid() *string {
 	return s.Uuid
 }
@@ -529,6 +534,11 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) Set
 
 func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetTaskConfig(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
 	s.TaskConfig = &v
+	return s
+}
+
+func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) SetUnAvailableCode(v string) *DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList {
+	s.UnAvailableCode = &v
 	return s
 }
 

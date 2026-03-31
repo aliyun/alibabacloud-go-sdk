@@ -423,7 +423,8 @@ type DescribeAlertsWithEventResponseBodyDataResponseData struct {
 	// example:
 	//
 	// 85ea4241-798f-4684-a876-65d4f0c3****
-	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IncidentUuid        *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	InvestigationReport *string `json:"InvestigationReport,omitempty" xml:"InvestigationReport,omitempty"`
 	// Indicates whether an attack is defended against. Valid values:
 	//
 	// 	- 0: detected.
@@ -596,6 +597,10 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) GetId() *int64 {
 
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) GetIncidentUuid() *string {
 	return s.IncidentUuid
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) GetInvestigationReport() *string {
+	return s.InvestigationReport
 }
 
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) GetIsDefend() *string {
@@ -775,6 +780,11 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetId(v int64) *De
 
 func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
 	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetInvestigationReport(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.InvestigationReport = &v
 	return s
 }
 
