@@ -9,6 +9,8 @@ type iListExecutionsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountId(v string) *ListExecutionsShrinkRequest
+	GetAccountId() *string
 	SetCategories(v string) *ListExecutionsShrinkRequest
 	GetCategories() *string
 	SetCategory(v string) *ListExecutionsShrinkRequest
@@ -37,6 +39,8 @@ type iListExecutionsShrinkRequest interface {
 	GetParentExecutionId() *string
 	SetRamRole(v string) *ListExecutionsShrinkRequest
 	GetRamRole() *string
+	SetRdFolderIdsShrink(v string) *ListExecutionsShrinkRequest
+	GetRdFolderIdsShrink() *string
 	SetRegionId(v string) *ListExecutionsShrinkRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *ListExecutionsShrinkRequest
@@ -62,6 +66,10 @@ type iListExecutionsShrinkRequest interface {
 }
 
 type ListExecutionsShrinkRequest struct {
+	// example:
+	//
+	// 123456789
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
 	//
 	// example:
@@ -149,7 +157,8 @@ type ListExecutionsShrinkRequest struct {
 	// example:
 	//
 	// OOSServiceRole
-	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RamRole           *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RdFolderIdsShrink *string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty"`
 	// The ID of the region.
 	//
 	// example:
@@ -236,6 +245,10 @@ func (s ListExecutionsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListExecutionsShrinkRequest) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *ListExecutionsShrinkRequest) GetCategories() *string {
 	return s.Categories
 }
@@ -292,6 +305,10 @@ func (s *ListExecutionsShrinkRequest) GetRamRole() *string {
 	return s.RamRole
 }
 
+func (s *ListExecutionsShrinkRequest) GetRdFolderIdsShrink() *string {
+	return s.RdFolderIdsShrink
+}
+
 func (s *ListExecutionsShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -334,6 +351,11 @@ func (s *ListExecutionsShrinkRequest) GetTagsShrink() *string {
 
 func (s *ListExecutionsShrinkRequest) GetTemplateName() *string {
 	return s.TemplateName
+}
+
+func (s *ListExecutionsShrinkRequest) SetAccountId(v string) *ListExecutionsShrinkRequest {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ListExecutionsShrinkRequest) SetCategories(v string) *ListExecutionsShrinkRequest {
@@ -403,6 +425,11 @@ func (s *ListExecutionsShrinkRequest) SetParentExecutionId(v string) *ListExecut
 
 func (s *ListExecutionsShrinkRequest) SetRamRole(v string) *ListExecutionsShrinkRequest {
 	s.RamRole = &v
+	return s
+}
+
+func (s *ListExecutionsShrinkRequest) SetRdFolderIdsShrink(v string) *ListExecutionsShrinkRequest {
+	s.RdFolderIdsShrink = &v
 	return s
 }
 

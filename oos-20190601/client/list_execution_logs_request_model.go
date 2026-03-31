@@ -9,6 +9,8 @@ type iListExecutionLogsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountId(v string) *ListExecutionLogsRequest
+	GetAccountId() *string
 	SetExecutionId(v string) *ListExecutionLogsRequest
 	GetExecutionId() *string
 	SetLogType(v string) *ListExecutionLogsRequest
@@ -24,6 +26,10 @@ type iListExecutionLogsRequest interface {
 }
 
 type ListExecutionLogsRequest struct {
+	// example:
+	//
+	// 123456789
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The ID of the execution.
 	//
 	// This parameter is required.
@@ -72,6 +78,10 @@ func (s ListExecutionLogsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListExecutionLogsRequest) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *ListExecutionLogsRequest) GetExecutionId() *string {
 	return s.ExecutionId
 }
@@ -94,6 +104,11 @@ func (s *ListExecutionLogsRequest) GetRegionId() *string {
 
 func (s *ListExecutionLogsRequest) GetTaskExecutionId() *string {
 	return s.TaskExecutionId
+}
+
+func (s *ListExecutionLogsRequest) SetAccountId(v string) *ListExecutionLogsRequest {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ListExecutionLogsRequest) SetExecutionId(v string) *ListExecutionLogsRequest {

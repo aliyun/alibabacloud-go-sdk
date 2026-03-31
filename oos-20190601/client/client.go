@@ -740,6 +740,186 @@ func (client *Client) CreateApplicationGroup(request *CreateApplicationGroupRequ
 
 // Summary:
 //
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - CreateChatConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatConfigurationResponse
+func (client *Client) CreateChatConfigurationWithOptions(request *CreateChatConfigurationRequest, runtime *dara.RuntimeOptions) (_result *CreateChatConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Configuration) {
+		query["Configuration"] = request.Configuration
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RamRole) {
+		query["RamRole"] = request.RamRole
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateChatConfiguration"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateChatConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - CreateChatConfigurationRequest
+//
+// @return CreateChatConfigurationResponse
+func (client *Client) CreateChatConfiguration(request *CreateChatConfigurationRequest) (_result *CreateChatConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateChatConfigurationResponse{}
+	_body, _err := client.CreateChatConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建部署制品
+//
+// @param request - CreateDeployRevisionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDeployRevisionResponse
+func (client *Client) CreateDeployRevisionWithOptions(request *CreateDeployRevisionRequest, runtime *dara.RuntimeOptions) (_result *CreateDeployRevisionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationName) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !dara.IsNil(request.DeployResourceType) {
+		query["DeployResourceType"] = request.DeployResourceType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Hooks) {
+		query["Hooks"] = request.Hooks
+	}
+
+	if !dara.IsNil(request.Location) {
+		query["Location"] = request.Location
+	}
+
+	if !dara.IsNil(request.RevisionType) {
+		query["RevisionType"] = request.RevisionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDeployRevision"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDeployRevisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建部署制品
+//
+// @param request - CreateDeployRevisionRequest
+//
+// @return CreateDeployRevisionResponse
+func (client *Client) CreateDeployRevision(request *CreateDeployRevisionRequest) (_result *CreateDeployRevisionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDeployRevisionResponse{}
+	_body, _err := client.CreateDeployRevisionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建仓库
 //
 // @param request - CreateGitRepositoryRequest
@@ -842,7 +1022,7 @@ func (client *Client) CreateGitRepository(request *CreateGitRepositoryRequest) (
 
 // Summary:
 //
-// Creates an O\\\\\\\\\\\\&M Item.
+// Creates an O\\\\\\\\\\\\\\\\\\\\&M Item.
 //
 // @param tmpReq - CreateOpsItemRequest
 //
@@ -940,7 +1120,7 @@ func (client *Client) CreateOpsItemWithOptions(tmpReq *CreateOpsItemRequest, run
 
 // Summary:
 //
-// Creates an O\\\\\\\\\\\\&M Item.
+// Creates an O\\\\\\\\\\\\\\\\\\\\&M Item.
 //
 // @param request - CreateOpsItemRequest
 //
@@ -1186,7 +1366,7 @@ func (client *Client) CreatePatchBaseline(request *CreatePatchBaselineRequest) (
 
 // Summary:
 //
-// Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+// Creates an encryption parameter. Make sure that you have the permissions to call the CreateSecret operation of Key Management Service (KMS) before you call this operation.
 //
 // @param tmpReq - CreateSecretParameterRequest
 //
@@ -1276,7 +1456,7 @@ func (client *Client) CreateSecretParameterWithOptions(tmpReq *CreateSecretParam
 
 // Summary:
 //
-// Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+// Creates an encryption parameter. Make sure that you have the permissions to call the CreateSecret operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - CreateSecretParameterRequest
 //
@@ -1642,7 +1822,89 @@ func (client *Client) DeleteApplicationGroup(request *DeleteApplicationGroupRequ
 
 // Summary:
 //
-// Deletes multiple executions.
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - DeleteChatConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChatConfigurationResponse
+func (client *Client) DeleteChatConfigurationWithOptions(request *DeleteChatConfigurationRequest, runtime *dara.RuntimeOptions) (_result *DeleteChatConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteChatConfiguration"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteChatConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - DeleteChatConfigurationRequest
+//
+// @return DeleteChatConfigurationResponse
+func (client *Client) DeleteChatConfiguration(request *DeleteChatConfigurationRequest) (_result *DeleteChatConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteChatConfigurationResponse{}
+	_body, _err := client.DeleteChatConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes executions.
 //
 // @param request - DeleteExecutionsRequest
 //
@@ -1694,7 +1956,7 @@ func (client *Client) DeleteExecutionsWithOptions(request *DeleteExecutionsReque
 
 // Summary:
 //
-// Deletes multiple executions.
+// Deletes executions.
 //
 // @param request - DeleteExecutionsRequest
 //
@@ -1910,7 +2172,7 @@ func (client *Client) DeletePatchBaseline(request *DeletePatchBaselineRequest) (
 
 // Summary:
 //
-// Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+// Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - DeleteSecretParameterRequest
 //
@@ -1958,7 +2220,7 @@ func (client *Client) DeleteSecretParameterWithOptions(request *DeleteSecretPara
 
 // Summary:
 //
-// Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+// Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - DeleteSecretParameterRequest
 //
@@ -2264,7 +2526,7 @@ func (client *Client) DeployApplicationGroup(request *DeployApplicationGroupRequ
 
 // Summary:
 //
-// 查询应用分组资源成本
+// Queries the resource costs of an application group.
 //
 // @param request - DescribeApplicationGroupBillRequest
 //
@@ -2332,7 +2594,7 @@ func (client *Client) DescribeApplicationGroupBillWithOptions(request *DescribeA
 
 // Summary:
 //
-// 查询应用分组资源成本
+// Queries the resource costs of an application group.
 //
 // @param request - DescribeApplicationGroupBillRequest
 //
@@ -2708,6 +2970,88 @@ func (client *Client) GetApplicationGroup(request *GetApplicationGroupRequest) (
 
 // Summary:
 //
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - GetChatConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatConfigurationResponse
+func (client *Client) GetChatConfigurationWithOptions(request *GetChatConfigurationRequest, runtime *dara.RuntimeOptions) (_result *GetChatConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChatConfiguration"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChatConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - GetChatConfigurationRequest
+//
+// @return GetChatConfigurationResponse
+func (client *Client) GetChatConfiguration(request *GetChatConfigurationRequest) (_result *GetChatConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetChatConfigurationResponse{}
+	_body, _err := client.GetChatConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about the template of an execution, including the content of the template.
 //
 // @param request - GetExecutionTemplateRequest
@@ -3020,7 +3364,7 @@ func (client *Client) GetInventorySchema(request *GetInventorySchemaRequest) (_r
 
 // Summary:
 //
-// Queries the details of an O\\\\\\\\\\\\&M item.
+// Queries the details of an O\\\\\\\\\\\\\\\\\\\\&M item.
 //
 // @param request - GetOpsItemRequest
 //
@@ -3068,7 +3412,7 @@ func (client *Client) GetOpsItemWithOptions(request *GetOpsItemRequest, runtime 
 
 // Summary:
 //
-// Queries the details of an O\\\\\\\\\\\\&M item.
+// Queries the details of an O\\\\\\\\\\\\\\\\\\\\&M item.
 //
 // @param request - GetOpsItemRequest
 //
@@ -3370,7 +3714,7 @@ func (client *Client) GetPatchBaseline(request *GetPatchBaselineRequest) (_resul
 
 // Summary:
 //
-// Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+// Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - GetSecretParameterRequest
 //
@@ -3426,7 +3770,7 @@ func (client *Client) GetSecretParameterWithOptions(request *GetSecretParameterR
 
 // Summary:
 //
-// Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+// Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - GetSecretParameterRequest
 //
@@ -3444,7 +3788,7 @@ func (client *Client) GetSecretParameter(request *GetSecretParameterRequest) (_r
 
 // Summary:
 //
-// Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+// Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - GetSecretParametersRequest
 //
@@ -3496,7 +3840,7 @@ func (client *Client) GetSecretParametersWithOptions(request *GetSecretParameter
 
 // Summary:
 //
-// Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+// Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - GetSecretParametersRequest
 //
@@ -3514,7 +3858,7 @@ func (client *Client) GetSecretParameters(request *GetSecretParametersRequest) (
 
 // Summary:
 //
-// Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+// Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - GetSecretParametersByPathRequest
 //
@@ -3578,7 +3922,7 @@ func (client *Client) GetSecretParametersByPathWithOptions(request *GetSecretPar
 
 // Summary:
 //
-// Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+// Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - GetSecretParametersByPathRequest
 //
@@ -3596,7 +3940,7 @@ func (client *Client) GetSecretParametersByPath(request *GetSecretParametersByPa
 
 // Summary:
 //
-// Queries the settings of the delivery feature.
+// Queries the service settings, including the configuration of delivering template execution records and the associated organization ID.
 //
 // @param request - GetServiceSettingsRequest
 //
@@ -3636,7 +3980,7 @@ func (client *Client) GetServiceSettingsWithOptions(request *GetServiceSettingsR
 
 // Summary:
 //
-// Queries the settings of the delivery feature.
+// Queries the service settings, including the configuration of delivering template execution records and the associated organization ID.
 //
 // @param request - GetServiceSettingsRequest
 //
@@ -3724,7 +4068,7 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 
 // Summary:
 //
-// 获取参数可用值
+// Obtains available values of parameters.
 //
 // @param request - GetTemplateParameterConstraintsRequest
 //
@@ -3788,7 +4132,7 @@ func (client *Client) GetTemplateParameterConstraintsWithOptions(request *GetTem
 
 // Summary:
 //
-// 获取参数可用值
+// Obtains available values of parameters.
 //
 // @param request - GetTemplateParameterConstraintsRequest
 //
@@ -4062,6 +4406,96 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 
 // Summary:
 //
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - ListChatConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatConfigurationsResponse
+func (client *Client) ListChatConfigurationsWithOptions(request *ListChatConfigurationsRequest, runtime *dara.RuntimeOptions) (_result *ListChatConfigurationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filters) {
+		query["Filters"] = request.Filters
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListChatConfigurations"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListChatConfigurationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - ListChatConfigurationsRequest
+//
+// @return ListChatConfigurationsResponse
+func (client *Client) ListChatConfigurations(request *ListChatConfigurationsRequest) (_result *ListChatConfigurationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListChatConfigurationsResponse{}
+	_body, _err := client.ListChatConfigurationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the logs of an execution.
 //
 // Description:
@@ -4081,6 +4515,10 @@ func (client *Client) ListExecutionLogsWithOptions(request *ListExecutionLogsReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
 	if !dara.IsNil(request.ExecutionId) {
 		query["ExecutionId"] = request.ExecutionId
 	}
@@ -4234,11 +4672,19 @@ func (client *Client) ListExecutionsWithOptions(tmpReq *ListExecutionsRequest, r
 	}
 	request := &ListExecutionsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RdFolderIds) {
+		request.RdFolderIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RdFolderIds, dara.String("RdFolderIds"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tags) {
 		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, dara.String("Tags"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
 	if !dara.IsNil(request.Categories) {
 		query["Categories"] = request.Categories
 	}
@@ -4293,6 +4739,10 @@ func (client *Client) ListExecutionsWithOptions(tmpReq *ListExecutionsRequest, r
 
 	if !dara.IsNil(request.RamRole) {
 		query["RamRole"] = request.RamRole
+	}
+
+	if !dara.IsNil(request.RdFolderIdsShrink) {
+		query["RdFolderIds"] = request.RdFolderIdsShrink
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4964,7 +5414,7 @@ func (client *Client) ListInstancePatchStates(request *ListInstancePatchStatesRe
 
 // Summary:
 //
-// Queries the information about the patches of an instance.
+// Queries the patches of an instance.
 //
 // @param request - ListInstancePatchesRequest
 //
@@ -5024,7 +5474,7 @@ func (client *Client) ListInstancePatchesWithOptions(request *ListInstancePatche
 
 // Summary:
 //
-// Queries the information about the patches of an instance.
+// Queries the patches of an instance.
 //
 // @param request - ListInstancePatchesRequest
 //
@@ -5124,7 +5574,7 @@ func (client *Client) ListInventoryEntries(request *ListInventoryEntriesRequest)
 
 // Summary:
 //
-// Queries O\\&M items.
+// Queries O\\\\\\&M items.
 //
 // @param tmpReq - ListOpsItemsRequest
 //
@@ -5198,7 +5648,7 @@ func (client *Client) ListOpsItemsWithOptions(tmpReq *ListOpsItemsRequest, runti
 
 // Summary:
 //
-// Queries O\\&M items.
+// Queries O\\\\\\&M items.
 //
 // @param request - ListOpsItemsRequest
 //
@@ -5522,7 +5972,7 @@ func (client *Client) ListPatchBaselines(request *ListPatchBaselinesRequest) (_r
 
 // Summary:
 //
-// Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+// Queries the information about a scheduled execution that involves O\\&M operations on Elastic Compute Service (ECS) instances.
 //
 // @param request - ListResourceExecutionStatusRequest
 //
@@ -5578,7 +6028,7 @@ func (client *Client) ListResourceExecutionStatusWithOptions(request *ListResour
 
 // Summary:
 //
-// Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+// Queries the information about a scheduled execution that involves O\\&M operations on Elastic Compute Service (ECS) instances.
 //
 // @param request - ListResourceExecutionStatusRequest
 //
@@ -6126,6 +6576,76 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 
 // Summary:
 //
+// 用于获取任务执行内部的云助手脚本执行ID
+//
+// @param request - ListTaskExecutionInvocationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskExecutionInvocationsResponse
+func (client *Client) ListTaskExecutionInvocationsWithOptions(request *ListTaskExecutionInvocationsRequest, runtime *dara.RuntimeOptions) (_result *ListTaskExecutionInvocationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskExecutionId) {
+		query["TaskExecutionId"] = request.TaskExecutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTaskExecutionInvocations"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTaskExecutionInvocationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于获取任务执行内部的云助手脚本执行ID
+//
+// @param request - ListTaskExecutionInvocationsRequest
+//
+// @return ListTaskExecutionInvocationsResponse
+func (client *Client) ListTaskExecutionInvocations(request *ListTaskExecutionInvocationsRequest) (_result *ListTaskExecutionInvocationsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTaskExecutionInvocationsResponse{}
+	_body, _err := client.ListTaskExecutionInvocationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries task executions. Multiple methods are supported to filter task executions.
 //
 // @param request - ListTaskExecutionsRequest
@@ -6141,6 +6661,10 @@ func (client *Client) ListTaskExecutionsWithOptions(request *ListTaskExecutionsR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
 	if !dara.IsNil(request.EndDateAfter) {
 		query["EndDateAfter"] = request.EndDateAfter
 	}
@@ -6248,7 +6772,7 @@ func (client *Client) ListTaskExecutions(request *ListTaskExecutionsRequest) (_r
 
 // Summary:
 //
-// Queries a list of versions of a template.
+// Queries the versions of a template.
 //
 // @param request - ListTemplateVersionsRequest
 //
@@ -6308,7 +6832,7 @@ func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersi
 
 // Summary:
 //
-// Queries a list of versions of a template.
+// Queries the versions of a template.
 //
 // @param request - ListTemplateVersionsRequest
 //
@@ -6724,20 +7248,26 @@ func (client *Client) SearchInventory(request *SearchInventoryRequest) (_result 
 
 // Summary:
 //
-// Enables or disables the feature of delivering template execution records and sets the storage location.
+// Enables or disables the feature of delivering template execution records and sets the storage location and organization ID.
 //
-// @param request - SetServiceSettingsRequest
+// @param tmpReq - SetServiceSettingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SetServiceSettingsResponse
-func (client *Client) SetServiceSettingsWithOptions(request *SetServiceSettingsRequest, runtime *dara.RuntimeOptions) (_result *SetServiceSettingsResponse, _err error) {
+func (client *Client) SetServiceSettingsWithOptions(tmpReq *SetServiceSettingsRequest, runtime *dara.RuntimeOptions) (_result *SetServiceSettingsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &SetServiceSettingsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RdFolderIds) {
+		request.RdFolderIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RdFolderIds, dara.String("RdFolderIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DeliveryOssBucketName) {
 		query["DeliveryOssBucketName"] = request.DeliveryOssBucketName
@@ -6759,12 +7289,20 @@ func (client *Client) SetServiceSettingsWithOptions(request *SetServiceSettingsR
 		query["DeliverySlsProjectName"] = request.DeliverySlsProjectName
 	}
 
+	if !dara.IsNil(request.RdFolderIdsShrink) {
+		query["RdFolderIds"] = request.RdFolderIdsShrink
+	}
+
 	if !dara.IsNil(request.RdcEnterpriseId) {
 		query["RdcEnterpriseId"] = request.RdcEnterpriseId
 	}
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceAccessRdEnabled) {
+		query["ServiceAccessRdEnabled"] = request.ServiceAccessRdEnabled
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6792,7 +7330,7 @@ func (client *Client) SetServiceSettingsWithOptions(request *SetServiceSettingsR
 
 // Summary:
 //
-// Enables or disables the feature of delivering template execution records and sets the storage location.
+// Enables or disables the feature of delivering template execution records and sets the storage location and organization ID.
 //
 // @param request - SetServiceSettingsRequest
 //
@@ -7375,6 +7913,10 @@ func (client *Client) UpdateApplicationGroupWithOptions(tmpReq *UpdateApplicatio
 		query["DeployedRevisionId"] = request.DeployedRevisionId
 	}
 
+	if !dara.IsNil(request.MonitorMetadata) {
+		query["MonitorMetadata"] = request.MonitorMetadata
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
@@ -7438,7 +7980,105 @@ func (client *Client) UpdateApplicationGroup(request *UpdateApplicationGroupRequ
 
 // Summary:
 //
-// Update executions that are in Running or Waiting status.
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - UpdateChatConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateChatConfigurationResponse
+func (client *Client) UpdateChatConfigurationWithOptions(request *UpdateChatConfigurationRequest, runtime *dara.RuntimeOptions) (_result *UpdateChatConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Configuration) {
+		query["Configuration"] = request.Configuration
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RamRole) {
+		query["RamRole"] = request.RamRole
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateChatConfiguration"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateChatConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于创建、更新、查询和删除聊天配置，支持钉钉等平台。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API主要用于管理和配置与钉钉等即时通讯工具集成的聊天机器人设置，包括但不限于创建新的聊天配置、更新现有配置、获取特定配置详情以及删除不再需要的配置。通过此API，可以实现对不同用户或用户组权限的精细化控制，并能够指定具体的RAM角色来执行相关操作。此外，还支持为每个配置添加标签以便于管理和分类。
+//
+// 特别注意的是，在调用此API时，需确保提供的`RegionId`、`ConversationId`以及请求体中的各项参数准确无误，尤其是涉及到安全敏感信息如`ClientId`、`ClientSecret`等字段时更应谨慎处理，避免泄露给非授权方。
+//
+// @param request - UpdateChatConfigurationRequest
+//
+// @return UpdateChatConfigurationResponse
+func (client *Client) UpdateChatConfiguration(request *UpdateChatConfigurationRequest) (_result *UpdateChatConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateChatConfigurationResponse{}
+	_body, _err := client.UpdateChatConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an execution in the Running or Waiting state.
 //
 // @param request - UpdateExecutionRequest
 //
@@ -7506,7 +8146,7 @@ func (client *Client) UpdateExecutionWithOptions(request *UpdateExecutionRequest
 
 // Summary:
 //
-// Update executions that are in Running or Waiting status.
+// Updates an execution in the Running or Waiting state.
 //
 // @param request - UpdateExecutionRequest
 //
@@ -7616,7 +8256,7 @@ func (client *Client) UpdateInstancePackageState(request *UpdateInstancePackageS
 
 // Summary:
 //
-// Modifies an O\\\\\\\\\\\\&M item.
+// Modifies an O\\\\\\\\\\\\\\\\\\\\&M item.
 //
 // @param tmpReq - UpdateOpsItemRequest
 //
@@ -7722,7 +8362,7 @@ func (client *Client) UpdateOpsItemWithOptions(tmpReq *UpdateOpsItemRequest, run
 
 // Summary:
 //
-// Modifies an O\\\\\\\\\\\\&M item.
+// Modifies an O\\\\\\\\\\\\\\\\\\\\&M item.
 //
 // @param request - UpdateOpsItemRequest
 //
@@ -7946,7 +8586,7 @@ func (client *Client) UpdatePatchBaseline(request *UpdatePatchBaselineRequest) (
 
 // Summary:
 //
-// Updates an encryption parameter.
+// Updates an encryption parameter. Make sure that you have the permissions to call the UpdateSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param tmpReq - UpdateSecretParameterRequest
 //
@@ -8016,7 +8656,7 @@ func (client *Client) UpdateSecretParameterWithOptions(tmpReq *UpdateSecretParam
 
 // Summary:
 //
-// Updates an encryption parameter.
+// Updates an encryption parameter. Make sure that you have the permissions to call the UpdateSecretValue operation of Key Management Service (KMS) before you call this operation.
 //
 // @param request - UpdateSecretParameterRequest
 //
@@ -8225,6 +8865,88 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateTemplateResponse{}
 	_body, _err := client.UpdateTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模板属性
+//
+// @param request - UpdateTemplateAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTemplateAttributesResponse
+func (client *Client) UpdateTemplateAttributesWithOptions(request *UpdateTemplateAttributesRequest, runtime *dara.RuntimeOptions) (_result *UpdateTemplateAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountIds) {
+		query["AccountIds"] = request.AccountIds
+	}
+
+	if !dara.IsNil(request.IsFavorite) {
+		query["IsFavorite"] = request.IsFavorite
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SharePermissionAction) {
+		query["SharePermissionAction"] = request.SharePermissionAction
+	}
+
+	if !dara.IsNil(request.ShareTemplateVersion) {
+		query["ShareTemplateVersion"] = request.ShareTemplateVersion
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTemplateAttributes"),
+		Version:     dara.String("2019-06-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTemplateAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模板属性
+//
+// @param request - UpdateTemplateAttributesRequest
+//
+// @return UpdateTemplateAttributesResponse
+func (client *Client) UpdateTemplateAttributes(request *UpdateTemplateAttributesRequest) (_result *UpdateTemplateAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateTemplateAttributesResponse{}
+	_body, _err := client.UpdateTemplateAttributesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -125,7 +125,8 @@ type GetApplicationGroupResponseBodyApplicationGroup struct {
 	// example:
 	//
 	// v1
-	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
+	ImportTagValue  *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
+	MonitorMetadata *string `json:"MonitorMetadata,omitempty" xml:"MonitorMetadata,omitempty"`
 	// The name of the application group.
 	//
 	// example:
@@ -228,6 +229,10 @@ func (s *GetApplicationGroupResponseBodyApplicationGroup) GetImportTagValue() *s
 	return s.ImportTagValue
 }
 
+func (s *GetApplicationGroupResponseBodyApplicationGroup) GetMonitorMetadata() *string {
+	return s.MonitorMetadata
+}
+
 func (s *GetApplicationGroupResponseBodyApplicationGroup) GetName() *string {
 	return s.Name
 }
@@ -319,6 +324,11 @@ func (s *GetApplicationGroupResponseBodyApplicationGroup) SetImportTagKey(v stri
 
 func (s *GetApplicationGroupResponseBodyApplicationGroup) SetImportTagValue(v string) *GetApplicationGroupResponseBodyApplicationGroup {
 	s.ImportTagValue = &v
+	return s
+}
+
+func (s *GetApplicationGroupResponseBodyApplicationGroup) SetMonitorMetadata(v string) *GetApplicationGroupResponseBodyApplicationGroup {
+	s.MonitorMetadata = &v
 	return s
 }
 

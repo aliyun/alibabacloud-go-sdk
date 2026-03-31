@@ -9,6 +9,8 @@ type iListExecutionsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountId(v string) *ListExecutionsRequest
+	GetAccountId() *string
 	SetCategories(v string) *ListExecutionsRequest
 	GetCategories() *string
 	SetCategory(v string) *ListExecutionsRequest
@@ -37,6 +39,8 @@ type iListExecutionsRequest interface {
 	GetParentExecutionId() *string
 	SetRamRole(v string) *ListExecutionsRequest
 	GetRamRole() *string
+	SetRdFolderIds(v []*string) *ListExecutionsRequest
+	GetRdFolderIds() []*string
 	SetRegionId(v string) *ListExecutionsRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *ListExecutionsRequest
@@ -62,6 +66,10 @@ type iListExecutionsRequest interface {
 }
 
 type ListExecutionsRequest struct {
+	// example:
+	//
+	// 123456789
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The types of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger. You can specify only one of the Categories and Category parameters. We recommend that you specify Categories.
 	//
 	// example:
@@ -149,7 +157,8 @@ type ListExecutionsRequest struct {
 	// example:
 	//
 	// OOSServiceRole
-	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RamRole     *string   `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RdFolderIds []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 	// The ID of the region.
 	//
 	// example:
@@ -236,6 +245,10 @@ func (s ListExecutionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListExecutionsRequest) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *ListExecutionsRequest) GetCategories() *string {
 	return s.Categories
 }
@@ -292,6 +305,10 @@ func (s *ListExecutionsRequest) GetRamRole() *string {
 	return s.RamRole
 }
 
+func (s *ListExecutionsRequest) GetRdFolderIds() []*string {
+	return s.RdFolderIds
+}
+
 func (s *ListExecutionsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -334,6 +351,11 @@ func (s *ListExecutionsRequest) GetTags() map[string]interface{} {
 
 func (s *ListExecutionsRequest) GetTemplateName() *string {
 	return s.TemplateName
+}
+
+func (s *ListExecutionsRequest) SetAccountId(v string) *ListExecutionsRequest {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ListExecutionsRequest) SetCategories(v string) *ListExecutionsRequest {
@@ -403,6 +425,11 @@ func (s *ListExecutionsRequest) SetParentExecutionId(v string) *ListExecutionsRe
 
 func (s *ListExecutionsRequest) SetRamRole(v string) *ListExecutionsRequest {
 	s.RamRole = &v
+	return s
+}
+
+func (s *ListExecutionsRequest) SetRdFolderIds(v []*string) *ListExecutionsRequest {
+	s.RdFolderIds = v
 	return s
 }
 

@@ -19,10 +19,14 @@ type iSetServiceSettingsRequest interface {
 	GetDeliverySlsEnabled() *bool
 	SetDeliverySlsProjectName(v string) *SetServiceSettingsRequest
 	GetDeliverySlsProjectName() *string
+	SetRdFolderIds(v []*string) *SetServiceSettingsRequest
+	GetRdFolderIds() []*string
 	SetRdcEnterpriseId(v string) *SetServiceSettingsRequest
 	GetRdcEnterpriseId() *string
 	SetRegionId(v string) *SetServiceSettingsRequest
 	GetRegionId() *string
+	SetServiceAccessRdEnabled(v bool) *SetServiceSettingsRequest
+	GetServiceAccessRdEnabled() *bool
 }
 
 type SetServiceSettingsRequest struct {
@@ -55,7 +59,8 @@ type SetServiceSettingsRequest struct {
 	// example:
 	//
 	// SlsProjectName
-	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
+	DeliverySlsProjectName *string   `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
+	RdFolderIds            []*string `json:"RdFolderIds,omitempty" xml:"RdFolderIds,omitempty" type:"Repeated"`
 	// The id of RDC Enterprise.
 	//
 	// example:
@@ -68,6 +73,9 @@ type SetServiceSettingsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// if can be null:
+	// true
+	ServiceAccessRdEnabled *bool `json:"ServiceAccessRdEnabled,omitempty" xml:"ServiceAccessRdEnabled,omitempty"`
 }
 
 func (s SetServiceSettingsRequest) String() string {
@@ -98,12 +106,20 @@ func (s *SetServiceSettingsRequest) GetDeliverySlsProjectName() *string {
 	return s.DeliverySlsProjectName
 }
 
+func (s *SetServiceSettingsRequest) GetRdFolderIds() []*string {
+	return s.RdFolderIds
+}
+
 func (s *SetServiceSettingsRequest) GetRdcEnterpriseId() *string {
 	return s.RdcEnterpriseId
 }
 
 func (s *SetServiceSettingsRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *SetServiceSettingsRequest) GetServiceAccessRdEnabled() *bool {
+	return s.ServiceAccessRdEnabled
 }
 
 func (s *SetServiceSettingsRequest) SetDeliveryOssBucketName(v string) *SetServiceSettingsRequest {
@@ -131,6 +147,11 @@ func (s *SetServiceSettingsRequest) SetDeliverySlsProjectName(v string) *SetServ
 	return s
 }
 
+func (s *SetServiceSettingsRequest) SetRdFolderIds(v []*string) *SetServiceSettingsRequest {
+	s.RdFolderIds = v
+	return s
+}
+
 func (s *SetServiceSettingsRequest) SetRdcEnterpriseId(v string) *SetServiceSettingsRequest {
 	s.RdcEnterpriseId = &v
 	return s
@@ -138,6 +159,11 @@ func (s *SetServiceSettingsRequest) SetRdcEnterpriseId(v string) *SetServiceSett
 
 func (s *SetServiceSettingsRequest) SetRegionId(v string) *SetServiceSettingsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *SetServiceSettingsRequest) SetServiceAccessRdEnabled(v bool) *SetServiceSettingsRequest {
+	s.ServiceAccessRdEnabled = &v
 	return s
 }
 

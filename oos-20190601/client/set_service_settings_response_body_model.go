@@ -101,7 +101,8 @@ type SetServiceSettingsResponseBodyServiceSettings struct {
 	// example:
 	//
 	// RdcEnterpriseId
-	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	RdcEnterpriseId        *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	ServiceAccessRdEnabled *bool   `json:"ServiceAccessRdEnabled,omitempty" xml:"ServiceAccessRdEnabled,omitempty"`
 }
 
 func (s SetServiceSettingsResponseBodyServiceSettings) String() string {
@@ -136,6 +137,10 @@ func (s *SetServiceSettingsResponseBodyServiceSettings) GetRdcEnterpriseId() *st
 	return s.RdcEnterpriseId
 }
 
+func (s *SetServiceSettingsResponseBodyServiceSettings) GetServiceAccessRdEnabled() *bool {
+	return s.ServiceAccessRdEnabled
+}
+
 func (s *SetServiceSettingsResponseBodyServiceSettings) SetDeliveryOssBucketName(v string) *SetServiceSettingsResponseBodyServiceSettings {
 	s.DeliveryOssBucketName = &v
 	return s
@@ -163,6 +168,11 @@ func (s *SetServiceSettingsResponseBodyServiceSettings) SetDeliverySlsProjectNam
 
 func (s *SetServiceSettingsResponseBodyServiceSettings) SetRdcEnterpriseId(v string) *SetServiceSettingsResponseBodyServiceSettings {
 	s.RdcEnterpriseId = &v
+	return s
+}
+
+func (s *SetServiceSettingsResponseBodyServiceSettings) SetServiceAccessRdEnabled(v bool) *SetServiceSettingsResponseBodyServiceSettings {
+	s.ServiceAccessRdEnabled = &v
 	return s
 }
 

@@ -117,6 +117,10 @@ func (s *ListExecutionsResponseBody) Validate() error {
 }
 
 type ListExecutionsResponseBodyExecutions struct {
+	// example:
+	//
+	// 123456789
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The type of the execution template. Valid values: Other, TimerTrigger, EventTrigger, and AlarmTrigger.
 	//
 	// example:
@@ -331,6 +335,10 @@ func (s ListExecutionsResponseBodyExecutions) GoString() string {
 	return s.String()
 }
 
+func (s *ListExecutionsResponseBodyExecutions) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *ListExecutionsResponseBodyExecutions) GetCategory() *string {
 	return s.Category
 }
@@ -465,6 +473,11 @@ func (s *ListExecutionsResponseBodyExecutions) GetUpdateDate() *string {
 
 func (s *ListExecutionsResponseBodyExecutions) GetWaitingStatus() *string {
 	return s.WaitingStatus
+}
+
+func (s *ListExecutionsResponseBodyExecutions) SetAccountId(v string) *ListExecutionsResponseBodyExecutions {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ListExecutionsResponseBodyExecutions) SetCategory(v string) *ListExecutionsResponseBodyExecutions {

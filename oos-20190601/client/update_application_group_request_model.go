@@ -13,6 +13,8 @@ type iUpdateApplicationGroupRequest interface {
 	GetApplicationName() *string
 	SetDeployedRevisionId(v string) *UpdateApplicationGroupRequest
 	GetDeployedRevisionId() *string
+	SetMonitorMetadata(v string) *UpdateApplicationGroupRequest
+	GetMonitorMetadata() *string
 	SetName(v string) *UpdateApplicationGroupRequest
 	GetName() *string
 	SetNewName(v string) *UpdateApplicationGroupRequest
@@ -35,6 +37,7 @@ type UpdateApplicationGroupRequest struct {
 	// MyApplication
 	ApplicationName    *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	DeployedRevisionId *string `json:"DeployedRevisionId,omitempty" xml:"DeployedRevisionId,omitempty"`
+	MonitorMetadata    *string `json:"MonitorMetadata,omitempty" xml:"MonitorMetadata,omitempty"`
 	// The name of the application group.
 	//
 	// This parameter is required.
@@ -85,6 +88,10 @@ func (s *UpdateApplicationGroupRequest) GetDeployedRevisionId() *string {
 	return s.DeployedRevisionId
 }
 
+func (s *UpdateApplicationGroupRequest) GetMonitorMetadata() *string {
+	return s.MonitorMetadata
+}
+
 func (s *UpdateApplicationGroupRequest) GetName() *string {
 	return s.Name
 }
@@ -112,6 +119,11 @@ func (s *UpdateApplicationGroupRequest) SetApplicationName(v string) *UpdateAppl
 
 func (s *UpdateApplicationGroupRequest) SetDeployedRevisionId(v string) *UpdateApplicationGroupRequest {
 	s.DeployedRevisionId = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupRequest) SetMonitorMetadata(v string) *UpdateApplicationGroupRequest {
+	s.MonitorMetadata = &v
 	return s
 }
 

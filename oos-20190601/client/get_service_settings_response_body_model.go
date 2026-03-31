@@ -96,12 +96,17 @@ type GetServiceSettingsResponseBodyServiceSettings struct {
 	//
 	// SlsProjectName
 	DeliverySlsProjectName *string `json:"DeliverySlsProjectName,omitempty" xml:"DeliverySlsProjectName,omitempty"`
+	// example:
+	//
+	// rd-123
+	RdFolders *string `json:"RdFolders,omitempty" xml:"RdFolders,omitempty"`
 	// The id of RDC Enterprise.
 	//
 	// example:
 	//
 	// RdcEnterpriseId
-	RdcEnterpriseId *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	RdcEnterpriseId        *string `json:"RdcEnterpriseId,omitempty" xml:"RdcEnterpriseId,omitempty"`
+	ServiceAccessRdEnabled *bool   `json:"ServiceAccessRdEnabled,omitempty" xml:"ServiceAccessRdEnabled,omitempty"`
 }
 
 func (s GetServiceSettingsResponseBodyServiceSettings) String() string {
@@ -132,8 +137,16 @@ func (s *GetServiceSettingsResponseBodyServiceSettings) GetDeliverySlsProjectNam
 	return s.DeliverySlsProjectName
 }
 
+func (s *GetServiceSettingsResponseBodyServiceSettings) GetRdFolders() *string {
+	return s.RdFolders
+}
+
 func (s *GetServiceSettingsResponseBodyServiceSettings) GetRdcEnterpriseId() *string {
 	return s.RdcEnterpriseId
+}
+
+func (s *GetServiceSettingsResponseBodyServiceSettings) GetServiceAccessRdEnabled() *bool {
+	return s.ServiceAccessRdEnabled
 }
 
 func (s *GetServiceSettingsResponseBodyServiceSettings) SetDeliveryOssBucketName(v string) *GetServiceSettingsResponseBodyServiceSettings {
@@ -161,8 +174,18 @@ func (s *GetServiceSettingsResponseBodyServiceSettings) SetDeliverySlsProjectNam
 	return s
 }
 
+func (s *GetServiceSettingsResponseBodyServiceSettings) SetRdFolders(v string) *GetServiceSettingsResponseBodyServiceSettings {
+	s.RdFolders = &v
+	return s
+}
+
 func (s *GetServiceSettingsResponseBodyServiceSettings) SetRdcEnterpriseId(v string) *GetServiceSettingsResponseBodyServiceSettings {
 	s.RdcEnterpriseId = &v
+	return s
+}
+
+func (s *GetServiceSettingsResponseBodyServiceSettings) SetServiceAccessRdEnabled(v bool) *GetServiceSettingsResponseBodyServiceSettings {
+	s.ServiceAccessRdEnabled = &v
 	return s
 }
 

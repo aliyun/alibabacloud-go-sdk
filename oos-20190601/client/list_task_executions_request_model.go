@@ -9,6 +9,8 @@ type iListTaskExecutionsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccountId(v string) *ListTaskExecutionsRequest
+	GetAccountId() *string
 	SetEndDateAfter(v string) *ListTaskExecutionsRequest
 	GetEndDateAfter() *string
 	SetEndDateBefore(v string) *ListTaskExecutionsRequest
@@ -44,6 +46,10 @@ type iListTaskExecutionsRequest interface {
 }
 
 type ListTaskExecutionsRequest struct {
+	// example:
+	//
+	// 123456789
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The execution ID of the task.
 	//
 	// example:
@@ -160,6 +166,10 @@ func (s ListTaskExecutionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTaskExecutionsRequest) GetAccountId() *string {
+	return s.AccountId
+}
+
 func (s *ListTaskExecutionsRequest) GetEndDateAfter() *string {
 	return s.EndDateAfter
 }
@@ -222,6 +232,11 @@ func (s *ListTaskExecutionsRequest) GetTaskExecutionId() *string {
 
 func (s *ListTaskExecutionsRequest) GetTaskName() *string {
 	return s.TaskName
+}
+
+func (s *ListTaskExecutionsRequest) SetAccountId(v string) *ListTaskExecutionsRequest {
+	s.AccountId = &v
+	return s
 }
 
 func (s *ListTaskExecutionsRequest) SetEndDateAfter(v string) *ListTaskExecutionsRequest {

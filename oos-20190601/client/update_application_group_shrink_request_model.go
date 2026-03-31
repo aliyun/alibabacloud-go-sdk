@@ -13,6 +13,8 @@ type iUpdateApplicationGroupShrinkRequest interface {
 	GetApplicationName() *string
 	SetDeployedRevisionId(v string) *UpdateApplicationGroupShrinkRequest
 	GetDeployedRevisionId() *string
+	SetMonitorMetadata(v string) *UpdateApplicationGroupShrinkRequest
+	GetMonitorMetadata() *string
 	SetName(v string) *UpdateApplicationGroupShrinkRequest
 	GetName() *string
 	SetNewName(v string) *UpdateApplicationGroupShrinkRequest
@@ -35,6 +37,7 @@ type UpdateApplicationGroupShrinkRequest struct {
 	// MyApplication
 	ApplicationName    *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	DeployedRevisionId *string `json:"DeployedRevisionId,omitempty" xml:"DeployedRevisionId,omitempty"`
+	MonitorMetadata    *string `json:"MonitorMetadata,omitempty" xml:"MonitorMetadata,omitempty"`
 	// The name of the application group.
 	//
 	// This parameter is required.
@@ -85,6 +88,10 @@ func (s *UpdateApplicationGroupShrinkRequest) GetDeployedRevisionId() *string {
 	return s.DeployedRevisionId
 }
 
+func (s *UpdateApplicationGroupShrinkRequest) GetMonitorMetadata() *string {
+	return s.MonitorMetadata
+}
+
 func (s *UpdateApplicationGroupShrinkRequest) GetName() *string {
 	return s.Name
 }
@@ -112,6 +119,11 @@ func (s *UpdateApplicationGroupShrinkRequest) SetApplicationName(v string) *Upda
 
 func (s *UpdateApplicationGroupShrinkRequest) SetDeployedRevisionId(v string) *UpdateApplicationGroupShrinkRequest {
 	s.DeployedRevisionId = &v
+	return s
+}
+
+func (s *UpdateApplicationGroupShrinkRequest) SetMonitorMetadata(v string) *UpdateApplicationGroupShrinkRequest {
+	s.MonitorMetadata = &v
 	return s
 }
 
