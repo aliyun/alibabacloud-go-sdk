@@ -16,8 +16,15 @@ type iUpdateComputeQuotaPlanRequest interface {
 }
 
 type UpdateComputeQuotaPlanRequest struct {
+	// The name of quota plan.
+	//
 	// This parameter is required.
-	Name  *string                             `json:"name,omitempty" xml:"name,omitempty"`
+	//
+	// example:
+	//
+	// planA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The parameters of quota plan.
 	Quota *UpdateComputeQuotaPlanRequestQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -57,7 +64,9 @@ func (s *UpdateComputeQuotaPlanRequest) Validate() error {
 }
 
 type UpdateComputeQuotaPlanRequestQuota struct {
-	Parameter        *UpdateComputeQuotaPlanRequestQuotaParameter          `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	// The parameters of level-1 quota.
+	Parameter *UpdateComputeQuotaPlanRequestQuotaParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	// The list of level-2 quotas.
 	SubQuotaInfoList []*UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 }
 
@@ -106,7 +115,15 @@ func (s *UpdateComputeQuotaPlanRequestQuota) Validate() error {
 }
 
 type UpdateComputeQuotaPlanRequestQuotaParameter struct {
+	// The value of elastic Reserved CUs in the level-1 quota.
+	//
+	// > The default value is 0. The maximum value of this parameter must be equal to the number of subscription-based reserved CUs and cannot exceed 10,000 CUs.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
 }
 
@@ -132,8 +149,15 @@ func (s *UpdateComputeQuotaPlanRequestQuotaParameter) Validate() error {
 }
 
 type UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList struct {
+	// The nickname of the level-2 quota.
+	//
 	// This parameter is required.
-	NickName  *string                                                      `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	//
+	// example:
+	//
+	// os_ComputeQuota
+	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The parameters of the level-2 quota.
 	Parameter *UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
 }
 
@@ -173,11 +197,39 @@ func (s *UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoList) Validate() error {
 }
 
 type UpdateComputeQuotaPlanRequestQuotaSubQuotaInfoListParameter struct {
+	// The value of elastic Reserved CUs.
+	//
+	// > The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
+	// The value of maxCU in Reserved CUs.
+	//
+	// > The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	// The value of minCU in Reserved CUs.
+	//
+	// >
+	//
+	// >- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.
+	//
+	// >- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	MinCU *int64 `json:"minCU,omitempty" xml:"minCU,omitempty"`
 }
 

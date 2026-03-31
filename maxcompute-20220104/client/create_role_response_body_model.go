@@ -16,7 +16,17 @@ type iCreateRoleResponseBody interface {
 }
 
 type CreateRoleResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// success
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0b87b7e716665825896565060e87a4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

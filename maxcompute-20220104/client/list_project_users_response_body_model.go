@@ -16,8 +16,14 @@ type iListProjectUsersResponseBody interface {
 }
 
 type ListProjectUsersResponseBody struct {
-	Data      *ListProjectUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned data.
+	Data *ListProjectUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0b87b7b316643495896551555e855b
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListProjectUsersResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *ListProjectUsersResponseBody) Validate() error {
 }
 
 type ListProjectUsersResponseBodyData struct {
+	// An array that contains users.
 	Users []*ListProjectUsersResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
@@ -90,6 +97,11 @@ func (s *ListProjectUsersResponseBodyData) Validate() error {
 }
 
 type ListProjectUsersResponseBodyDataUsers struct {
+	// The name of the user.
+	//
+	// example:
+	//
+	// userA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

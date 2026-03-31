@@ -16,13 +16,10 @@ type iCreateMmsFetchMetadataJobRequest interface {
 }
 
 type CreateMmsFetchMetadataJobRequest struct {
-	// Updates metadata for the specified source database, schema, or dataset.
-	//
 	// example:
 	//
 	// default
-	DbName *string `json:"dbName,omitempty" xml:"dbName,omitempty"`
-	// Updates metadata for the specified source tables.
+	DbName     *string   `json:"dbName,omitempty" xml:"dbName,omitempty"`
 	TableNames []*string `json:"tableNames,omitempty" xml:"tableNames,omitempty" type:"Repeated"`
 }
 

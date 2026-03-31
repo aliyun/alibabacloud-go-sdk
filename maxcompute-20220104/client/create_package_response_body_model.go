@@ -16,7 +16,17 @@ type iCreatePackageResponseBody interface {
 }
 
 type CreatePackageResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// success
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4ab16684833172127321e2c25
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

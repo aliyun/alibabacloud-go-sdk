@@ -16,8 +16,14 @@ type iGetRoleAclOnObjectResponseBody interface {
 }
 
 type GetRoleAclOnObjectResponseBody struct {
-	Data      *GetRoleAclOnObjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned data
+	Data *GetRoleAclOnObjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc1366d16686529650188023ef87f
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetRoleAclOnObjectResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *GetRoleAclOnObjectResponseBody) Validate() error {
 }
 
 type GetRoleAclOnObjectResponseBodyData struct {
+	// The operations that were performed on the object.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 }
 

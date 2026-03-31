@@ -22,11 +22,32 @@ type iGetRoleAclResponseBody interface {
 }
 
 type GetRoleAclResponseBody struct {
-	Data      *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned data.
+	Data *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 040002
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// error message
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dc0916696898838762018e9564
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetRoleAclResponseBody) String() string {
@@ -92,12 +113,18 @@ func (s *GetRoleAclResponseBody) Validate() error {
 }
 
 type GetRoleAclResponseBodyData struct {
+	// The function.
 	Function []*GetRoleAclResponseBodyDataFunction `json:"function,omitempty" xml:"function,omitempty" type:"Repeated"`
+	// The instance.
 	Instance []*GetRoleAclResponseBodyDataInstance `json:"instance,omitempty" xml:"instance,omitempty" type:"Repeated"`
-	Package  []*GetRoleAclResponseBodyDataPackage  `json:"package,omitempty" xml:"package,omitempty" type:"Repeated"`
-	Project  []*GetRoleAclResponseBodyDataProject  `json:"project,omitempty" xml:"project,omitempty" type:"Repeated"`
+	// The package.
+	Package []*GetRoleAclResponseBodyDataPackage `json:"package,omitempty" xml:"package,omitempty" type:"Repeated"`
+	// The project.
+	Project []*GetRoleAclResponseBodyDataProject `json:"project,omitempty" xml:"project,omitempty" type:"Repeated"`
+	// The resource.
 	Resource []*GetRoleAclResponseBodyDataResource `json:"resource,omitempty" xml:"resource,omitempty" type:"Repeated"`
-	Table    []*GetRoleAclResponseBodyDataTable    `json:"table,omitempty" xml:"table,omitempty" type:"Repeated"`
+	// The table.
+	Table []*GetRoleAclResponseBodyDataTable `json:"table,omitempty" xml:"table,omitempty" type:"Repeated"`
 }
 
 func (s GetRoleAclResponseBodyData) String() string {
@@ -221,9 +248,20 @@ func (s *GetRoleAclResponseBodyData) Validate() error {
 }
 
 type GetRoleAclResponseBodyDataFunction struct {
-	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The operations that were performed on the function.
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The name of the function.
+	//
+	// example:
+	//
+	// functionA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
+	//
+	// example:
+	//
+	// default
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataFunction) String() string {
@@ -266,9 +304,20 @@ func (s *GetRoleAclResponseBodyDataFunction) Validate() error {
 }
 
 type GetRoleAclResponseBodyDataInstance struct {
-	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The operations that were performed on the instance.
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// instanceA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
+	//
+	// example:
+	//
+	// default
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataInstance) String() string {
@@ -311,9 +360,20 @@ func (s *GetRoleAclResponseBodyDataInstance) Validate() error {
 }
 
 type GetRoleAclResponseBodyDataPackage struct {
-	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The operations that were performed on the package.
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The name of the package.
+	//
+	// example:
+	//
+	// packageA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
+	//
+	// example:
+	//
+	// default
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataPackage) String() string {
@@ -356,9 +416,20 @@ func (s *GetRoleAclResponseBodyDataPackage) Validate() error {
 }
 
 type GetRoleAclResponseBodyDataProject struct {
-	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The operations that were performed on the project.
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// projectA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
+	//
+	// example:
+	//
+	// default
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataProject) String() string {
@@ -401,9 +472,20 @@ func (s *GetRoleAclResponseBodyDataProject) Validate() error {
 }
 
 type GetRoleAclResponseBodyDataResource struct {
-	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The operations that were performed on the resource.
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The name of the resource.
+	//
+	// example:
+	//
+	// resourceA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
+	//
+	// example:
+	//
+	// default
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataResource) String() string {
@@ -446,9 +528,20 @@ func (s *GetRoleAclResponseBodyDataResource) Validate() error {
 }
 
 type GetRoleAclResponseBodyDataTable struct {
-	Actions    []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	Name       *string   `json:"name,omitempty" xml:"name,omitempty"`
-	SchemaName *string   `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
+	// The operations that were performed on the table.
+	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// tableA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Schema name.
+	//
+	// example:
+	//
+	// default
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataTable) String() string {

@@ -16,8 +16,14 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
-	Data      *ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The returned data.
+	Data *ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dd4816687424611405643e3730
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -56,10 +62,26 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyData struct {
-	PageNumber *int32                            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int32                            `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	TotalCount *int32                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	Users      []*ListUsersResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 2
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 64
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The users.
+	Users []*ListUsersResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
 func (s ListUsersResponseBodyData) String() string {
@@ -120,11 +142,36 @@ func (s *ListUsersResponseBodyData) Validate() error {
 }
 
 type ListUsersResponseBodyDataUsers struct {
-	AccountId   *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 167835629082
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// The username of the account.
+	//
+	// example:
+	//
+	// Bob@
 	AccountName *string `json:"accountName,omitempty" xml:"accountName,omitempty"`
+	// The type of the account.
+	//
+	// example:
+	//
+	// ALIYUN
 	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// Bob
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	TenantId    *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1567253789
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
 func (s ListUsersResponseBodyDataUsers) String() string {

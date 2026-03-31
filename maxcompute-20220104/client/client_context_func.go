@@ -7,6 +7,16 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Activate a Quota Plan Immediately.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36,6 +46,16 @@ func (client *Client) ApplyComputeQuotaPlanWithContext(ctx context.Context, nick
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param request - CreateComputeQuotaPlanRequest
 //
 // @param headers - map
@@ -85,7 +105,7 @@ func (client *Client) CreateComputeQuotaPlanWithContext(ctx context.Context, nic
 
 // Summary:
 //
-// Creates a data source to migrate data to MaxCompute using MaxCompute Migration Assist (MMA).
+// Creates a data source and uses MaxCompute Migration Assist (MMA) to migrate data from the data source to MaxCompute.
 //
 // @param request - CreateMmsDataSourceRequest
 //
@@ -144,7 +164,7 @@ func (client *Client) CreateMmsDataSourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a job to pull metadata from a data source.
+// Creates a MaxCompute Migration Assist (MMA) job to pull the metadata from a data source.
 //
 // @param request - CreateMmsFetchMetadataJobRequest
 //
@@ -324,6 +344,10 @@ func (client *Client) CreateMmsJobWithContext(ctx context.Context, sourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a package.
+//
 // @param request - CreatePackageRequest
 //
 // @param headers - map
@@ -370,7 +394,7 @@ func (client *Client) CreatePackageWithContext(ctx context.Context, projectName 
 
 // Summary:
 //
-// 创建项目
+// Creates a MaxCompute project.
 //
 // @param request - CreateProjectRequest
 //
@@ -412,11 +436,7 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates a quota. When you enable MaxCompute for the first time, a pay-as-you-go quota must be created. If you create a subscription quota, your Alibaba Cloud account is automatically charged.
-//
-// Description:
-//
-// *Before using this operation, review the MaxCompute billing model and [pricing](https://www.aliyun.com/product/maxcompute/pricing?spm=5176.30275541.J_ZGek9Blx07Hclc3Ddt9dg.2.19502f3dPPfezu\\&scm=20140722.S_card@@%E4%BA%A7%E5%93%81@@143540.S_new~UND~card.ID_card@@%E4%BA%A7%E5%93%81@@143540-RL_MaxCompute-LOC_2024SPSearchCard-OR_ser-PAR1_213c994b17738148516424527d0d07-V_4-RE_new9-P0_0-P1_0).**
+// # CreateQuota
 //
 // @param request - CreateQuotaRequest
 //
@@ -473,6 +493,10 @@ func (client *Client) CreateQuotaWithContext(ctx context.Context, request *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
 // @param request - CreateQuotaPlanRequest
 //
 // @param headers - map
@@ -521,6 +545,10 @@ func (client *Client) CreateQuotaPlanWithContext(ctx context.Context, nickname *
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a role at the MaxCompute project level.
+//
 // @param request - CreateRoleRequest
 //
 // @param headers - map
@@ -559,6 +587,10 @@ func (client *Client) CreateRoleWithContext(ctx context.Context, projectName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a MaxCompute quota plan.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -590,7 +622,7 @@ func (client *Client) DeleteComputeQuotaPlanWithContext(ctx context.Context, nic
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data source and its associated migration plans and metadata.
+// Deletes a MaxCompute Migration Assist (MMA) data source. For example, you can call this operation to delete the migration plan or metadata of a data source.
 //
 // @param headers - map
 //
@@ -623,7 +655,7 @@ func (client *Client) DeleteMmsDataSourceWithContext(ctx context.Context, source
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data migration plan.
+// Deletes a MaxCompute Migration Assist (MMA) migration job.
 //
 // @param headers - map
 //
@@ -656,7 +688,7 @@ func (client *Client) DeleteMmsJobWithContext(ctx context.Context, sourceId *str
 
 // Summary:
 //
-// Deletes a MaxCompute project. This operation is irreversible. Use this API with caution.
+// Deletes a MaxCompute project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -701,6 +733,10 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, projectName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a quota plan.
+//
 // @param request - DeleteQuotaPlanRequest
 //
 // @param headers - map
@@ -748,6 +784,10 @@ func (client *Client) DeleteQuotaPlanWithContext(ctx context.Context, nickname *
 	return _result, _err
 }
 
+// Summary:
+//
+// GetComputeEffectivePlan.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -777,6 +817,10 @@ func (client *Client) GetComputeEffectivePlanWithContext(ctx context.Context, ni
 	return _result, _err
 }
 
+// Summary:
+//
+// Get detailed information of a single compute quota plan.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -806,6 +850,10 @@ func (client *Client) GetComputeQuotaPlanWithContext(ctx context.Context, nickna
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the time-specific configuration of compute quota.
+//
 // @param request - GetComputeQuotaScheduleRequest
 //
 // @param headers - map
@@ -849,6 +897,10 @@ func (client *Client) GetComputeQuotaScheduleWithContext(ctx context.Context, ni
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the basic information about a job.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -878,6 +930,10 @@ func (client *Client) GetJobInfoWithContext(ctx context.Context, instanceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+//
 // @param tmpReq - GetJobResourceUsageRequest
 //
 // @param headers - map
@@ -949,7 +1005,7 @@ func (client *Client) GetJobResourceUsageWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Retrieves a single asynchronous task from MaxCompute Migration Assist (MMA).
+// Queries a MaxCompute Migration Assist (MMA) asynchronous task.
 //
 // @param headers - map
 //
@@ -982,7 +1038,7 @@ func (client *Client) GetMmsAsyncTaskWithContext(ctx context.Context, sourceId *
 
 // Summary:
 //
-// Retrieves the details of a single MaxCompute Migration Assist (MMA) data source.
+// Queries the information about a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - GetMmsDataSourceRequest
 //
@@ -1033,7 +1089,7 @@ func (client *Client) GetMmsDataSourceWithContext(ctx context.Context, sourceId 
 
 // Summary:
 //
-// Retrieves a database from a MaxCompute Migration Assist (MMA) data source.
+// Queries a database in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1066,7 +1122,7 @@ func (client *Client) GetMmsDbWithContext(ctx context.Context, sourceId *string,
 
 // Summary:
 //
-// Retrieves the details of a MaxCompute Migration Assist (MMA) job that fetches metadata.
+// Queries the details of a MaxCompute Migration Assist (MMA) job that is used to query the metadata of a data source.
 //
 // @param headers - map
 //
@@ -1099,7 +1155,7 @@ func (client *Client) GetMmsFetchMetadataJobWithContext(ctx context.Context, sou
 
 // Summary:
 //
-// Retrieves the details of a single MaxCompute Migration Assist (MMA) migration plan.
+// Queries the details of a MaxCompute Migration Assist (MMA) migration job.
 //
 // @param headers - map
 //
@@ -1132,7 +1188,7 @@ func (client *Client) GetMmsJobWithContext(ctx context.Context, sourceId *string
 
 // Summary:
 //
-// Retrieves a partition from a MaxCompute Migration Assist (MMA) data source.
+// Queries a partition from a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1165,7 +1221,7 @@ func (client *Client) GetMmsPartitionWithContext(ctx context.Context, sourceId *
 
 // Summary:
 //
-// Retrieves a table from a MaxCompute Migration Assist (MMA) data source.
+// Queries a table in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1198,7 +1254,7 @@ func (client *Client) GetMmsTableWithContext(ctx context.Context, sourceId *stri
 
 // Summary:
 //
-// Retrieves the details of a specific migration task.
+// Queries the details of a migration task.
 //
 // @param headers - map
 //
@@ -1229,6 +1285,10 @@ func (client *Client) GetMmsTaskWithContext(ctx context.Context, sourceId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a package.
+//
 // @param request - GetPackageRequest
 //
 // @param headers - map
@@ -1274,7 +1334,7 @@ func (client *Client) GetPackageWithContext(ctx context.Context, projectName *st
 
 // Summary:
 //
-// Queries the basic information about a MaxCompute project.
+// Queries the information about a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
@@ -1329,7 +1389,7 @@ func (client *Client) GetProjectWithContext(ctx context.Context, projectName *st
 
 // Summary:
 //
-// Retrieve information for the specified level-1 quota group. Warning: This operation will be decommissioned on July 31, 2024. It will be replaced by the `QueryQuota` operation. The request parameters, response parameters, and features of the two operations are the same.
+// Obtains the information about a specified level-1 quota.
 //
 // @param request - GetQuotaRequest
 //
@@ -1386,6 +1446,10 @@ func (client *Client) GetQuotaWithContext(ctx context.Context, nickname *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information of a quota plan.
+//
 // @param request - GetQuotaPlanRequest
 //
 // @param headers - map
@@ -1433,6 +1497,10 @@ func (client *Client) GetQuotaPlanWithContext(ctx context.Context, nickname *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the scheduling plan for a quota plan.
+//
 // @param request - GetQuotaScheduleRequest
 //
 // @param headers - map
@@ -1484,6 +1552,10 @@ func (client *Client) GetQuotaScheduleWithContext(ctx context.Context, nickname 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries quota resource consumption information.
+//
 // @param tmpReq - GetQuotaUsageRequest
 //
 // @param headers - map
@@ -1569,6 +1641,10 @@ func (client *Client) GetQuotaUsageWithContext(ctx context.Context, nickname *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the ACL-based permissions that is granted to a project-level role.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1598,6 +1674,10 @@ func (client *Client) GetRoleAclWithContext(ctx context.Context, projectName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains ACL-based permissions on an object that are granted to a project-level role.
+//
 // @param request - GetRoleAclOnObjectRequest
 //
 // @param headers - map
@@ -1645,6 +1725,10 @@ func (client *Client) GetRoleAclOnObjectWithContext(ctx context.Context, project
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the policy that is attached to a project-level role.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1674,6 +1758,10 @@ func (client *Client) GetRolePolicyWithContext(ctx context.Context, projectName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the running state data of jobs that are in the running state in a specified period of time.
+//
 // @param tmpReq - GetRunningJobsRequest
 //
 // @param headers - map
@@ -1747,10 +1835,6 @@ func (client *Client) GetRunningJobsWithContext(ctx context.Context, tmpReq *Get
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves a summary of the total storage amount.
-//
 // @param request - GetStorageAmountSummaryRequest
 //
 // @param headers - map
@@ -1802,10 +1886,6 @@ func (client *Client) GetStorageAmountSummaryWithContext(ctx context.Context, re
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves a summary of storage usage.
-//
 // @param request - GetStorageSizeSummaryRequest
 //
 // @param headers - map
@@ -1857,10 +1937,6 @@ func (client *Client) GetStorageSizeSummaryWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the year-on-year (YoY) change in storage usage.
-//
 // @param tmpReq - GetStorageSummaryComparedRequest
 //
 // @param headers - map
@@ -1926,6 +2002,10 @@ func (client *Client) GetStorageSummaryComparedWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+//
 // @param request - GetTableInfoRequest
 //
 // @param headers - map
@@ -1973,6 +2053,10 @@ func (client *Client) GetTableInfoWithContext(ctx context.Context, projectName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the trusted projects of the current project.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2002,6 +2086,10 @@ func (client *Client) GetTrustedProjectsWithContext(ctx context.Context, project
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a running job.
+//
 // @param request - KillJobsRequest
 //
 // @param headers - map
@@ -2050,6 +2138,10 @@ func (client *Client) KillJobsWithContext(ctx context.Context, request *KillJobs
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of computing resources used by a pay-as-you-go job.
+//
 // @param request - ListComputeMetricsByInstanceRequest
 //
 // @param headers - map
@@ -2135,7 +2227,7 @@ func (client *Client) ListComputeMetricsByInstanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// Lists compute quota plans.
+// Get computeQuotaPlan list.
 //
 // @param headers - map
 //
@@ -2166,6 +2258,10 @@ func (client *Client) ListComputeQuotaPlanWithContext(ctx context.Context, nickn
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains functions in a MaxCompute project.
+//
 // @param request - ListFunctionsRequest
 //
 // @param headers - map
@@ -2223,7 +2319,7 @@ func (client *Client) ListFunctionsWithContext(ctx context.Context, projectName 
 
 // Summary:
 //
-// Retrieves a list of jobs.
+// Views a list of jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -2354,6 +2450,10 @@ func (client *Client) ListJobInfosWithContext(ctx context.Context, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a performance metric of the job that is complete.
+//
 // @param request - ListJobMetricRequest
 //
 // @param headers - map
@@ -2429,7 +2529,7 @@ func (client *Client) ListJobMetricWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Retrieves job snapshot data at a specific point in time.
+// Views a list of job snapshot data at a specific point in time.
 //
 // @param request - ListJobSnapshotInfosRequest
 //
@@ -2550,7 +2650,7 @@ func (client *Client) ListJobSnapshotInfosWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Lists the MaxCompute Migration Assist (MMA) data sources.
+// Queries a list of MaxCompute Migration Assist (MMA) data sources.
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -2613,7 +2713,7 @@ func (client *Client) ListMmsDataSourcesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// List databases in the MMA data source.
+// Queries a list of databases in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsDbsRequest
 //
@@ -2682,7 +2782,7 @@ func (client *Client) ListMmsDbsWithContext(ctx context.Context, sourceId *strin
 
 // Summary:
 //
-// Lists migration jobs.
+// Queries a list of migration jobs.
 //
 // @param request - ListMmsJobsRequest
 //
@@ -2769,7 +2869,7 @@ func (client *Client) ListMmsJobsWithContext(ctx context.Context, sourceId *stri
 
 // Summary:
 //
-// Lists the partitions in a MaxCompute Migration Assist (MMA) data source.
+// Queries a list of partitions in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsPartitionsRequest
 //
@@ -2866,7 +2966,7 @@ func (client *Client) ListMmsPartitionsWithContext(ctx context.Context, sourceId
 
 // Summary:
 //
-// Lists the tables in a MaxCompute Migration Assist (MMA) data source.
+// Queries a list of tables in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsTablesRequest
 //
@@ -2975,7 +3075,7 @@ func (client *Client) ListMmsTablesWithContext(ctx context.Context, sourceId *st
 
 // Summary:
 //
-// Lists the execution logs for a specific migration task.
+// Queries a list of the execution logs of a single migration task.
 //
 // @param headers - map
 //
@@ -3008,7 +3108,7 @@ func (client *Client) ListMmsTaskLogsWithContext(ctx context.Context, sourceId *
 
 // Summary:
 //
-// Retrieves a list of migration tasks.
+// Queries a list of migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -3093,6 +3193,10 @@ func (client *Client) ListMmsTasksWithContext(ctx context.Context, sourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the packages in a MaxCompute project.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3124,7 +3228,7 @@ func (client *Client) ListPackagesWithContext(ctx context.Context, projectName *
 
 // Summary:
 //
-// # ListProjectUsers
+// Queries a list of users in a project.
 //
 // @param headers - map
 //
@@ -3155,6 +3259,10 @@ func (client *Client) ListProjectUsersWithContext(ctx context.Context, projectNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of MaxCompute projects.
+//
 // @param request - ListProjectsRequest
 //
 // @param headers - map
@@ -3236,7 +3344,7 @@ func (client *Client) ListProjectsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Retrieves a list of quotas.
+// Queries quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -3305,6 +3413,10 @@ func (client *Client) ListQuotasWithContext(ctx context.Context, request *ListQu
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains quota plans.
+//
 // @param request - ListQuotasPlansRequest
 //
 // @param headers - map
@@ -3352,6 +3464,10 @@ func (client *Client) ListQuotasPlansWithContext(ctx context.Context, nickname *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains resources in a MaxCompute project.
+//
 // @param request - ListResourcesRequest
 //
 // @param headers - map
@@ -3407,6 +3523,10 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, projectName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains MaxCompute project-level roles.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3436,6 +3556,10 @@ func (client *Client) ListRolesWithContext(ctx context.Context, projectName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage details of a specific partition in a partitioned table in a MaxCompute project.
+//
 // @param tmpReq - ListStoragePartitionsInfoRequest
 //
 // @param headers - map
@@ -3521,10 +3645,6 @@ func (client *Client) ListStoragePartitionsInfoWithContext(ctx context.Context, 
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the storage details of projects.
-//
 // @param request - ListStorageProjectsInfoRequest
 //
 // @param headers - map
@@ -3600,6 +3720,10 @@ func (client *Client) ListStorageProjectsInfoWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the table storage details of a MaxCompute project.
+//
 // @param tmpReq - ListStorageTablesInfoRequest
 //
 // @param headers - map
@@ -3689,6 +3813,10 @@ func (client *Client) ListStorageTablesInfoWithContext(ctx context.Context, proj
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains tables in a MaxCompute project.
+//
 // @param request - ListTablesRequest
 //
 // @param headers - map
@@ -3748,6 +3876,10 @@ func (client *Client) ListTablesWithContext(ctx context.Context, projectName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3777,6 +3909,10 @@ func (client *Client) ListTunnelQuotaTimerWithContext(ctx context.Context, nickn
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains users in a MaxCompute project.
+//
 // @param request - ListUsersRequest
 //
 // @param headers - map
@@ -3824,6 +3960,10 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains information about the users who are assigned a project-level role.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3853,6 +3993,10 @@ func (client *Client) ListUsersByRoleWithContext(ctx context.Context, projectNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a specified level-1 quota group.
+//
 // @param request - QueryQuotaRequest
 //
 // @param headers - map
@@ -3910,7 +4054,7 @@ func (client *Client) QueryQuotaWithContext(ctx context.Context, nickname *strin
 
 // Summary:
 //
-// Queries the time series data of resource consumption for a quota.
+// 查询quota的资源使用信息
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -3983,7 +4127,7 @@ func (client *Client) QueryQuotaMetricWithContext(ctx context.Context, metric *s
 
 // Summary:
 //
-// Queries time-series metrics of data storage.
+// Queries time series metrics of stored data.
 //
 // @param request - QueryStorageMetricRequest
 //
@@ -4044,23 +4188,7 @@ func (client *Client) QueryStorageMetricWithContext(ctx context.Context, metric 
 
 // Summary:
 //
-// Queries metric data for the Tunnel Data Transmission Service within a specified time range.
-//
-// Description:
-//
-// - You can use this API to query various Tunnel metrics, such as slot usage (`slot_usage`), slot usage limit (`slot_max`), throughput (`throughput`), throughput rate (`throughput_speed`), and number of requests (`request`).
-//
-// - The `startTime` and `endTime` parameters are required. They specify the start and end of the time range for the query. The values are UNIX timestamps in seconds.
-//
-// - The `metric` parameter is also required. It specifies the type of metric to query.
-//
-// - Depending on the value of `metric`, you may need to specify additional parameters for filtering to refine your query. These parameters include `quotaNickname`, `project`, `tableList`, `operationList`, `codeList`, `groupList`, and `topN`.
-//
-// - For some `metric` values, you must specify other parameters. For example, if `groupList` contains `table` or `ip`, you must specify the `project` parameter and other required parameters. In this case, the system returns only the top N results.
-//
-// - The `strategy` parameter defines the data aggregation logic. This logic is used when the automatic step size exceeds 60 seconds over a long time range. The default value is `max`.
-//
-// - Ensure all parameters meet the requirements in this document to prevent request failures.
+// Queries the metrics of the Tunnel service within a specified time range.
 //
 // @param request - QueryTunnelMetricRequest
 //
@@ -4145,21 +4273,7 @@ func (client *Client) QueryTunnelMetricWithContext(ctx context.Context, metric *
 
 // Summary:
 //
-// Queries detailed data for the Tunnel Data Transmission Service within a specified time range.
-//
-// Description:
-//
-// - This operation queries various Tunnel metrics, such as slot usage details (`slot_usage_detail`), throughput details (`throughput_detail`), and a throughput summary (`throughput_summary`).
-//
-// - The `quotaNickname` and `project` parameters cannot both be empty.
-//
-// - If the groupList parameter contains `table` or `ip`, you must specify the `project` parameter. If the `groupList` parameter contains `ip`, you must also specify the `tableList` parameter.
-//
-// - The orderColumn parameter can be set to `maxValue`, `minValue`, `avgValue`, or `sumValue`. The `sumValue` option is valid only for `throughput_summary`. By default, this parameter is empty, which means that no sorting is performed.
-//
-// - The default value of the `ascOrder` parameter is `false`, which indicates that the results are sorted in descending order.
-//
-// - The `limit` parameter specifies the maximum number of entries to return. The default value is 10, and the maximum value is 100.
+// Queries the metrics of the Tunnel service within a specified time range.
 //
 // @param request - QueryTunnelMetricDetailRequest
 //
@@ -4244,7 +4358,7 @@ func (client *Client) QueryTunnelMetricDetailWithContext(ctx context.Context, me
 
 // Summary:
 //
-// Retries a data migration job.
+// Retries a migration job.
 //
 // @param headers - map
 //
@@ -4277,7 +4391,7 @@ func (client *Client) RetryMmsJobWithContext(ctx context.Context, sourceId *stri
 
 // Summary:
 //
-// Starts a data migration job.
+// Starts a migration job.
 //
 // @param headers - map
 //
@@ -4310,7 +4424,7 @@ func (client *Client) StartMmsJobWithContext(ctx context.Context, sourceId *stri
 
 // Summary:
 //
-// Stops a data migration job.
+// Stops a migration job.
 //
 // @param headers - map
 //
@@ -4341,10 +4455,6 @@ func (client *Client) StopMmsJobWithContext(ctx context.Context, sourceId *strin
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the storage information for each category or project on a specified date.
-//
 // @param request - SumStorageMetricsByDateRequest
 //
 // @param headers - map
@@ -4408,6 +4518,16 @@ func (client *Client) SumStorageMetricsByDateWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the ComputeQuotaPlan.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param request - UpdateComputeQuotaPlanRequest
 //
 // @param headers - map
@@ -4457,11 +4577,13 @@ func (client *Client) UpdateComputeQuotaPlanWithContext(ctx context.Context, nic
 
 // Summary:
 //
-// Updates the time-based schedule for a computing quota.
+// Update the time-based plan for computing quota.
 //
 // Description:
 //
-// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of reserved compute units (CUs) in MaxCompute.
+// Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
 //
 // @param request - UpdateComputeQuotaScheduleRequest
 //
@@ -4507,6 +4629,10 @@ func (client *Client) UpdateComputeQuotaScheduleWithContext(ctx context.Context,
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic configuration of a MaxCompute quota. For example, you can call this operation to add or delete a level-2 quota, define the basic attributes of a level-2 quota, and define the configuration of compute units (CUs) for a quota plan that is in effect.
+//
 // @param request - UpdateComputeSubQuotaRequest
 //
 // @param headers - map
@@ -4552,7 +4678,7 @@ func (client *Client) UpdateComputeSubQuotaWithContext(ctx context.Context, nick
 
 // Summary:
 //
-// Refreshes the metadata of a MaxCompute Migration Assist (MMA) data source.
+// Updates the metadata of a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - UpdateMmsDataSourceRequest
 //
@@ -4609,6 +4735,10 @@ func (client *Client) UpdateMmsDataSourceWithContext(ctx context.Context, source
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the objects in a package and projects in which the package can be installed.
+//
 // @param request - UpdatePackageRequest
 //
 // @param headers - map
@@ -4649,7 +4779,7 @@ func (client *Client) UpdatePackageWithContext(ctx context.Context, projectName 
 
 // Summary:
 //
-// Modifies the basic information of a project.
+// # Update Project Basic Information
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -4698,6 +4828,10 @@ func (client *Client) UpdateProjectBasicMetaWithContext(ctx context.Context, pro
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the default computing quota of a project.
+//
 // @param request - UpdateProjectDefaultQuotaRequest
 //
 // @param headers - map
@@ -4741,6 +4875,10 @@ func (client *Client) UpdateProjectDefaultQuotaWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of a MaxCompute project.
+//
 // @param request - UpdateProjectIpWhiteListRequest
 //
 // @param headers - map
@@ -4781,7 +4919,7 @@ func (client *Client) UpdateProjectIpWhiteListWithContext(ctx context.Context, p
 
 // Summary:
 //
-// Upgrades a project\\"s Layer 2 model to a Layer 3 model.
+// 将project的二层模型升级为三层模型
 //
 // @param headers - map
 //
@@ -4812,6 +4950,10 @@ func (client *Client) UpdateProjectModelTierWithContext(ctx context.Context, pro
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota plan.
+//
 // @param request - UpdateQuotaPlanRequest
 //
 // @param headers - map
@@ -4860,6 +5002,10 @@ func (client *Client) UpdateQuotaPlanWithContext(ctx context.Context, nickname *
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the scheduling plan for a quota plan.
+//
 // @param request - UpdateQuotaScheduleRequest
 //
 // @param headers - map
@@ -4910,11 +5056,11 @@ func (client *Client) UpdateQuotaScheduleWithContext(ctx context.Context, nickna
 
 // Summary:
 //
-// Updates the time-based auto-scaling configuration for an exclusive resource group for Data Transmission Service (Tunnel Quota).
+// Updates the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
 //
 // Description:
 //
-// Before you call this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive Data Transmission Service resource groups and elastic reserved computing resources.
+// Before you call this operation, make sure that you are familiar with the [billing and prices](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Tunnel quotas and elastically reserved computing resources.
 //
 // @param request - UpdateTunnelQuotaTimerRequest
 //
@@ -4962,7 +5108,7 @@ func (client *Client) UpdateTunnelQuotaTimerWithContext(ctx context.Context, nic
 
 // Summary:
 //
-// Adds or removes users from a project role.
+// Add or remove users from a project role.
 //
 // @param request - UpdateUsersToRoleRequest
 //

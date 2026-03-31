@@ -16,14 +16,8 @@ type iCreateMmsJobResponseBody interface {
 }
 
 type CreateMmsJobResponseBody struct {
-	// The returned data.
-	Data *CreateMmsJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 73207140-0FD5-588A-B11A-3CE093924196
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data      *CreateMmsJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateMmsJobResponseBody) String() string {
@@ -62,11 +56,6 @@ func (s *CreateMmsJobResponseBody) Validate() error {
 }
 
 type CreateMmsJobResponseBodyData struct {
-	// The ID of the asynchronous task that is created for the migration job.
-	//
-	// example:
-	//
-	// 100
 	AsyncTaskId *int64 `json:"asyncTaskId,omitempty" xml:"asyncTaskId,omitempty"`
 }
 

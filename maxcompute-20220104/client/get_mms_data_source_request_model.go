@@ -16,14 +16,10 @@ type iGetMmsDataSourceRequest interface {
 }
 
 type GetMmsDataSourceRequest struct {
-	// The language of the description for the configuration items.
-	//
 	// example:
 	//
 	// en_US
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// Specifies whether to obtain the specific configuration items of the data source.
-	//
 	// example:
 	//
 	// true

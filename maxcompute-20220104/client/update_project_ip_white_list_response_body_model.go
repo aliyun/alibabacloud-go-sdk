@@ -16,7 +16,17 @@ type iUpdateProjectIpWhiteListResponseBody interface {
 }
 
 type UpdateProjectIpWhiteListResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned result.
+	//
+	// example:
+	//
+	// success
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc12e4316675560945192024e1044
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

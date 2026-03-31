@@ -16,10 +16,7 @@ type iCreateQuotaResponseBody interface {
 }
 
 type CreateQuotaResponseBody struct {
-	// Response parameters.
 	Data *CreateQuotaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// Request ID.
-	//
 	// example:
 	//
 	// 0bc520ad17171208978521777d742c
@@ -62,8 +59,6 @@ func (s *CreateQuotaResponseBody) Validate() error {
 }
 
 type CreateQuotaResponseBodyData struct {
-	// Quota alias.
-	//
 	// example:
 	//
 	// os_PayAsYouGoQuota_p

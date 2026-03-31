@@ -16,8 +16,98 @@ type iCreatePackageRequest interface {
 }
 
 type CreatePackageRequest struct {
-	Body      *string `json:"body,omitempty" xml:"body,omitempty"`
-	IsInstall *bool   `json:"isInstall,omitempty" xml:"isInstall,omitempty"`
+	// The request body parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	// "name": "test_packege",
+	//
+	//     "resourceList": {
+	//
+	//         "table": [
+	//
+	//             {
+	//
+	//                 "name": "table_name",
+	//
+	//                 "actions": [
+	//
+	//                     "Describe",
+	//
+	//                     "Select"
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "table_name",
+	//
+	//                 "actions": [
+	//
+	//                     "Describe",
+	//
+	//                     "Select"
+	//
+	//                 ]
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "resource": [
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "function": [
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             }
+	//
+	//         ]
+	//
+	//     }
+	//
+	// }
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to install the package.
+	//
+	// example:
+	//
+	// false
+	IsInstall *bool `json:"isInstall,omitempty" xml:"isInstall,omitempty"`
 }
 
 func (s CreatePackageRequest) String() string {

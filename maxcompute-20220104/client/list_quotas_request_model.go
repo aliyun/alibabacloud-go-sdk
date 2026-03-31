@@ -26,13 +26,13 @@ type iListQuotasRequest interface {
 }
 
 type ListQuotasRequest struct {
-	// The billing method.
+	// The billing method of the quota.
 	//
 	// example:
 	//
 	// subscription
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
-	// The token that specifies the position from which to start returning results. The results are sorted in alphabetical order.
+	// Specifies the marker after which the returned list begins.
 	//
 	// example:
 	//
@@ -45,16 +45,34 @@ type ListQuotasRequest struct {
 	// 100
 	MaxItem *int64 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// Deprecated
+	//
+	// The service ID.
+	//
+	// example:
+	//
+	// ODPS
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// Deprecated
+	//
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The cost allocation tags that are used to filter quotas. You can create cost allocation tags in the Tag service.
+	// The cost tag. You can filter out quota objects based on the cost tag. The cost tag is created when you tag a service.
 	//
 	// example:
 	//
 	// {"tag":"this_is_tag_demo"}
 	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
 	// Deprecated
+	//
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

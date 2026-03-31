@@ -22,7 +22,7 @@ type iListComputeQuotaPlanResponseBody interface {
 }
 
 type ListComputeQuotaPlanResponseBody struct {
-	// The returned data.
+	// The data returned.
 	Data *ListComputeQuotaPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -36,7 +36,17 @@ type ListComputeQuotaPlanResponseBody struct {
 	//
 	// This object does not exist.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
+	//
+	// - 1xx: informational response. The request is received and is being processed.
+	//
+	// - 2xx: success. The request is successfully received, understood, and accepted by the server.
+	//
+	// - 3xx: redirection. The request is redirected, and further actions are required to complete the request.
+	//
+	// - 4xx: client error. The request contains invalid request parameters or syntaxes, or specific request conditions cannot be met.
+	//
+	// - 5xx: server error. The server cannot meet requirements due to other reasons.
 	//
 	// example:
 	//
@@ -113,7 +123,7 @@ func (s *ListComputeQuotaPlanResponseBody) Validate() error {
 }
 
 type ListComputeQuotaPlanResponseBodyData struct {
-	// The list of quota plans.
+	// The list of quota plan.
 	PlanList []*ListComputeQuotaPlanResponseBodyDataPlanList `json:"planList,omitempty" xml:"planList,omitempty" type:"Repeated"`
 }
 
@@ -148,7 +158,7 @@ func (s *ListComputeQuotaPlanResponseBodyData) Validate() error {
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanList struct {
-	// The time when the plan was created.
+	// The time when the quota plan was created.
 	//
 	// example:
 	//
@@ -160,7 +170,7 @@ type ListComputeQuotaPlanResponseBodyDataPlanList struct {
 	//
 	// planA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The quota properties.
+	// The details of the quota.
 	Quota *ListComputeQuotaPlanResponseBodyDataPlanListQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -209,19 +219,19 @@ func (s *ListComputeQuotaPlanResponseBodyDataPlanList) Validate() error {
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanListQuota struct {
-	// The cluster ID.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the quota was created.
+	// The time when the level-1 quota was created.
 	//
 	// example:
 	//
 	// 1730247361356
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The creator of the resource. This is the UID of an Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account that is used to create the resource.
 	//
 	// example:
 	//
@@ -245,7 +255,7 @@ type ListComputeQuotaPlanResponseBodyDataPlanListQuota struct {
 	//
 	// os_MyQuota_p
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The quota configuration parameters.
+	// The description of the level-1 quota.
 	//
 	// example:
 	//
@@ -267,33 +277,33 @@ type ListComputeQuotaPlanResponseBodyDataPlanListQuota struct {
 	//
 	// }
 	Parameter *ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource status.
+	// Resource status.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The list of level-2 quotas.
+	// The list of subquotas.
 	SubQuotaInfoList []*ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
-	// The tenant ID.
+	// Tenant ID.
 	//
 	// example:
 	//
 	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// This corresponds to the resourceSystemType field of the control cluster.
+	// The type of quota.
 	//
 	// example:
 	//
 	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version.
+	// The version number.
 	//
 	// example:
 	//
@@ -490,19 +500,19 @@ func (s *ListComputeQuotaPlanResponseBodyDataPlanListQuotaParameter) Validate() 
 }
 
 type ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList struct {
-	// The cluster ID.
+	// Cluster ID.
 	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the quota was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1730946421757
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The creator of the resource. This is the UID of an Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account that is used to create the resource.
 	//
 	// example:
 	//
@@ -526,7 +536,7 @@ type ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList struct {
 	//
 	// os_MyQuota
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
-	// The quota configuration parameters.
+	// The description of the level-2 quota.
 	//
 	// example:
 	//
@@ -548,25 +558,25 @@ type ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoList struct {
 	//
 	// }
 	Parameter *ListComputeQuotaPlanResponseBodyDataPlanListQuotaSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// The region ID.
+	// Region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource status.
+	// Resource status.
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tenant ID.
+	// Tenant ID.
 	//
 	// example:
 	//
 	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The quota type.
+	// The type of quota.
 	//
 	// example:
 	//

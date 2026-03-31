@@ -16,7 +16,43 @@ type iGetRolePolicyResponseBody interface {
 }
 
 type GetRolePolicyResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Statement": [
+	//
+	//             {
+	//
+	//                   "Action": [
+	//
+	//                         "odps:*"
+	//
+	//                   ],
+	//
+	//                   "Effect": "Allow",
+	//
+	//                   "Resource": [
+	//
+	//                         "acs:odps:*:projects/{projectname}/authorization/packages"
+	//
+	//                   ]
+	//
+	//             }
+	//
+	//       ],
+	//
+	//       "Version": "1"
+	//
+	// }
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc1eeed16675342848904412e08dd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

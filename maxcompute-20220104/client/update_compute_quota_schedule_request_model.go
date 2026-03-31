@@ -17,15 +17,8 @@ type iUpdateComputeQuotaScheduleRequest interface {
 
 type UpdateComputeQuotaScheduleRequest struct {
 	// The request body parameters.
-	Body []*UpdateComputeQuotaScheduleRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// The time zone.
-	//
-	// > The default value is UTC+8.
-	//
-	// example:
-	//
-	// UTC+8
-	ScheduleTimezone *string `json:"scheduleTimezone,omitempty" xml:"scheduleTimezone,omitempty"`
+	Body             []*UpdateComputeQuotaScheduleRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	ScheduleTimezone *string                                  `json:"scheduleTimezone,omitempty" xml:"scheduleTimezone,omitempty"`
 }
 
 func (s UpdateComputeQuotaScheduleRequest) String() string {
@@ -68,7 +61,7 @@ func (s *UpdateComputeQuotaScheduleRequest) Validate() error {
 }
 
 type UpdateComputeQuotaScheduleRequestBody struct {
-	// The condition for the plan to take effect.
+	// The value of effective condition.
 	Condition *UpdateComputeQuotaScheduleRequestBodyCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
 	// The name of the quota plan.
 	//
@@ -78,11 +71,9 @@ type UpdateComputeQuotaScheduleRequestBody struct {
 	//
 	// planA
 	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
-	// The type.
+	// The type of the quota plan.
 	//
-	// 	Notice:
-	//
-	// Only daily is supported.
+	// 	Notice: Currently, only daily is supported.</notice>
 	//
 	// This parameter is required.
 	//
@@ -137,7 +128,7 @@ func (s *UpdateComputeQuotaScheduleRequestBody) Validate() error {
 }
 
 type UpdateComputeQuotaScheduleRequestBodyCondition struct {
-	// The time when the plan takes effect.
+	// The start time when the quota plan takes effect.
 	//
 	// This parameter is required.
 	//

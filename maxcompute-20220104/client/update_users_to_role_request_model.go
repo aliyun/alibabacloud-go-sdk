@@ -16,9 +16,9 @@ type iUpdateUsersToRoleRequest interface {
 }
 
 type UpdateUsersToRoleRequest struct {
-	// The action to add users to the project role.
+	// The accounts.
 	Add []*string `json:"add,omitempty" xml:"add,omitempty" type:"Repeated"`
-	// The action to remove users from the project role.
+	// The accounts.
 	Remove []*string `json:"remove,omitempty" xml:"remove,omitempty" type:"Repeated"`
 }
 

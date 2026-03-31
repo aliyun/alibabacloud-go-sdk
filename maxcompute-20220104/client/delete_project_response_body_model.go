@@ -16,13 +16,13 @@ type iDeleteProjectResponseBody interface {
 }
 
 type DeleteProjectResponseBody struct {
-	// The returned result.
+	// The returned data.
 	//
 	// example:
 	//
 	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

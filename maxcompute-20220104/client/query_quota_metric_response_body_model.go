@@ -22,38 +22,19 @@ type iQueryQuotaMetricResponseBody interface {
 }
 
 type QueryQuotaMetricResponseBody struct {
-	// The returned data.
 	Data *QueryQuotaMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The error code.
-	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message.
-	//
 	// example:
 	//
 	// plan \\"***\\" does not exist
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The HTTP status code.
-	//
-	// - 1xx: informational response. The request was received and is being processed.
-	//
-	// - 2xx: success. The request was successfully received, understood, and accepted by the server.
-	//
-	// - 3xx: redirection. The request was redirected. Further action needs to be taken to complete the request.
-	//
-	// - 4xx: client error. The request contains incorrect request parameters or syntax, or specific request conditions cannot be met.
-	//
-	// - 5xx: server error. The server failed to fulfill the request for other reasons.
-	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 0b87b7b316643495896551555e855b
@@ -123,22 +104,12 @@ func (s *QueryQuotaMetricResponseBody) Validate() error {
 }
 
 type QueryQuotaMetricResponseBodyData struct {
-	// This parameter is not supported.
-	//
-	// example:
-	//
-	// 不支持。
-	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The metric values.
-	Metrics []*QueryQuotaMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	// The name of the metric.
-	//
+	Category *string                                    `json:"category,omitempty" xml:"category,omitempty"`
+	Metrics  []*QueryQuotaMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cpu
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The step size of the monitoring data.
-	//
 	// example:
 	//
 	// 60
@@ -203,10 +174,8 @@ func (s *QueryQuotaMetricResponseBodyData) Validate() error {
 }
 
 type QueryQuotaMetricResponseBodyDataMetrics struct {
-	// The metadata of the metric.
 	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
-	// The time series data.
-	Values [][]*float64 `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	Values [][]*float64       `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s QueryQuotaMetricResponseBodyDataMetrics) String() string {

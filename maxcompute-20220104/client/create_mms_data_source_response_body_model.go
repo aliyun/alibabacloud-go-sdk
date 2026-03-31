@@ -16,10 +16,7 @@ type iCreateMmsDataSourceResponseBody interface {
 }
 
 type CreateMmsDataSourceResponseBody struct {
-	// The returned results.
 	Data *CreateMmsDataSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID.
-	//
 	// example:
 	//
 	// B42CA730-8187-50F1-9FE0-6733297036DB
@@ -62,8 +59,6 @@ func (s *CreateMmsDataSourceResponseBody) Validate() error {
 }
 
 type CreateMmsDataSourceResponseBodyData struct {
-	// The ID of the data source.
-	//
 	// example:
 	//
 	// 18

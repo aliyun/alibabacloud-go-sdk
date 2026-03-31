@@ -20,42 +20,22 @@ type iCreateQuotaRequest interface {
 }
 
 type CreateQuotaRequest struct {
-	// Billing type. Use payasyougo for pay-as-you-go or subscription for subscription.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// payasyougo
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// Product code. For example:
-	//
-	// Alibaba Cloud China Website (www\\.aliyun.com): use odps for pay-as-you-go and odpsplus for subscription.
-	//
-	// Alibaba Cloud International Website (www\\.alibabacloud.com): use odps_intl for pay-as-you-go and odpsplus_intl for subscription.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// odps
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// Quota specification.
-	//
-	// 	Notice: Required only for subscription quotas.
-	//
-	// The minimum CU value is 50.
-	//
-	// ord_time supports month and year.
-	//
 	// example:
 	//
 	// {"CU":50,"ord_time":"1:Month","autoRenew":false}
 	CommodityData *string `json:"commodityData,omitempty" xml:"commodityData,omitempty"`
-	// 	Notice:
-	//
-	// Required only for subscription quotas.
-	//
 	// example:
 	//
 	// MyQuota

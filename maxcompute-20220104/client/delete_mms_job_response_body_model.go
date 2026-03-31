@@ -16,14 +16,10 @@ type iDeleteMmsJobResponseBody interface {
 }
 
 type DeleteMmsJobResponseBody struct {
-	// The ID of the deleted job.
-	//
 	// example:
 	//
 	// 88
 	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 31BE216F-AEF7-581E-B9C9-DECEB5424AC4

@@ -14,6 +14,11 @@ type iUpdateProjectDefaultQuotaRequest interface {
 }
 
 type UpdateProjectDefaultQuotaRequest struct {
+	// The default computing quota that is used to allocate computing resources, the jobs that are initiated by this project consume the computing resources in the default quota.
+	//
+	// example:
+	//
+	// os_PayAsYouGoQuota
 	Quota *string `json:"quota,omitempty" xml:"quota,omitempty"`
 }
 

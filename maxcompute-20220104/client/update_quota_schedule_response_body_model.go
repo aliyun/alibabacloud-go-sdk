@@ -16,7 +16,17 @@ type iUpdateQuotaScheduleResponseBody interface {
 }
 
 type UpdateQuotaScheduleResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned result.
+	//
+	// example:
+	//
+	// success
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dfe516691014920015940e1c9d
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

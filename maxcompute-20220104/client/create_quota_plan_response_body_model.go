@@ -16,7 +16,17 @@ type iCreateQuotaPlanResponseBody interface {
 }
 
 type CreateQuotaPlanResponseBody struct {
-	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The returned result.
+	//
+	// example:
+	//
+	// success
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4b016674434996033675e71ee
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

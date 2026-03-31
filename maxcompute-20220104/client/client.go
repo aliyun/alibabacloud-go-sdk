@@ -112,6 +112,16 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Activate a Quota Plan Immediately.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -141,6 +151,16 @@ func (client *Client) ApplyComputeQuotaPlanWithOptions(nickname *string, planNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Activate a Quota Plan Immediately.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @return ApplyComputeQuotaPlanResponse
 func (client *Client) ApplyComputeQuotaPlan(nickname *string, planName *string) (_result *ApplyComputeQuotaPlanResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -154,6 +174,16 @@ func (client *Client) ApplyComputeQuotaPlan(nickname *string, planName *string) 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param request - CreateComputeQuotaPlanRequest
 //
 // @param headers - map
@@ -201,6 +231,16 @@ func (client *Client) CreateComputeQuotaPlanWithOptions(nickname *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param request - CreateComputeQuotaPlanRequest
 //
 // @return CreateComputeQuotaPlanResponse
@@ -218,7 +258,7 @@ func (client *Client) CreateComputeQuotaPlan(nickname *string, request *CreateCo
 
 // Summary:
 //
-// Creates a data source to migrate data to MaxCompute using MaxCompute Migration Assist (MMA).
+// Creates a data source and uses MaxCompute Migration Assist (MMA) to migrate data from the data source to MaxCompute.
 //
 // @param request - CreateMmsDataSourceRequest
 //
@@ -277,7 +317,7 @@ func (client *Client) CreateMmsDataSourceWithOptions(request *CreateMmsDataSourc
 
 // Summary:
 //
-// Creates a data source to migrate data to MaxCompute using MaxCompute Migration Assist (MMA).
+// Creates a data source and uses MaxCompute Migration Assist (MMA) to migrate data from the data source to MaxCompute.
 //
 // @param request - CreateMmsDataSourceRequest
 //
@@ -296,7 +336,7 @@ func (client *Client) CreateMmsDataSource(request *CreateMmsDataSourceRequest) (
 
 // Summary:
 //
-// Creates a job to pull metadata from a data source.
+// Creates a MaxCompute Migration Assist (MMA) job to pull the metadata from a data source.
 //
 // @param request - CreateMmsFetchMetadataJobRequest
 //
@@ -347,7 +387,7 @@ func (client *Client) CreateMmsFetchMetadataJobWithOptions(sourceId *string, req
 
 // Summary:
 //
-// Creates a job to pull metadata from a data source.
+// Creates a MaxCompute Migration Assist (MMA) job to pull the metadata from a data source.
 //
 // @param request - CreateMmsFetchMetadataJobRequest
 //
@@ -514,6 +554,10 @@ func (client *Client) CreateMmsJob(sourceId *string, request *CreateMmsJobReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a package.
+//
 // @param request - CreatePackageRequest
 //
 // @param headers - map
@@ -558,6 +602,10 @@ func (client *Client) CreatePackageWithOptions(projectName *string, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a package.
+//
 // @param request - CreatePackageRequest
 //
 // @return CreatePackageResponse
@@ -575,7 +623,7 @@ func (client *Client) CreatePackage(projectName *string, request *CreatePackageR
 
 // Summary:
 //
-// 创建项目
+// Creates a MaxCompute project.
 //
 // @param request - CreateProjectRequest
 //
@@ -617,7 +665,7 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 
 // Summary:
 //
-// 创建项目
+// Creates a MaxCompute project.
 //
 // @param request - CreateProjectRequest
 //
@@ -636,11 +684,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a quota. When you enable MaxCompute for the first time, a pay-as-you-go quota must be created. If you create a subscription quota, your Alibaba Cloud account is automatically charged.
-//
-// Description:
-//
-// *Before using this operation, review the MaxCompute billing model and [pricing](https://www.aliyun.com/product/maxcompute/pricing?spm=5176.30275541.J_ZGek9Blx07Hclc3Ddt9dg.2.19502f3dPPfezu\\&scm=20140722.S_card@@%E4%BA%A7%E5%93%81@@143540.S_new~UND~card.ID_card@@%E4%BA%A7%E5%93%81@@143540-RL_MaxCompute-LOC_2024SPSearchCard-OR_ser-PAR1_213c994b17738148516424527d0d07-V_4-RE_new9-P0_0-P1_0).**
+// # CreateQuota
 //
 // @param request - CreateQuotaRequest
 //
@@ -699,11 +743,7 @@ func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, header
 
 // Summary:
 //
-// Creates a quota. When you enable MaxCompute for the first time, a pay-as-you-go quota must be created. If you create a subscription quota, your Alibaba Cloud account is automatically charged.
-//
-// Description:
-//
-// *Before using this operation, review the MaxCompute billing model and [pricing](https://www.aliyun.com/product/maxcompute/pricing?spm=5176.30275541.J_ZGek9Blx07Hclc3Ddt9dg.2.19502f3dPPfezu\\&scm=20140722.S_card@@%E4%BA%A7%E5%93%81@@143540.S_new~UND~card.ID_card@@%E4%BA%A7%E5%93%81@@143540-RL_MaxCompute-LOC_2024SPSearchCard-OR_ser-PAR1_213c994b17738148516424527d0d07-V_4-RE_new9-P0_0-P1_0).**
+// # CreateQuota
 //
 // @param request - CreateQuotaRequest
 //
@@ -720,6 +760,10 @@ func (client *Client) CreateQuota(request *CreateQuotaRequest) (_result *CreateQ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
 // @param request - CreateQuotaPlanRequest
 //
 // @param headers - map
@@ -768,6 +812,10 @@ func (client *Client) CreateQuotaPlanWithOptions(nickname *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
 // @param request - CreateQuotaPlanRequest
 //
 // @return CreateQuotaPlanResponse
@@ -783,6 +831,10 @@ func (client *Client) CreateQuotaPlan(nickname *string, request *CreateQuotaPlan
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a role at the MaxCompute project level.
+//
 // @param request - CreateRoleRequest
 //
 // @param headers - map
@@ -821,6 +873,10 @@ func (client *Client) CreateRoleWithOptions(projectName *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a role at the MaxCompute project level.
+//
 // @param request - CreateRoleRequest
 //
 // @return CreateRoleResponse
@@ -836,6 +892,10 @@ func (client *Client) CreateRole(projectName *string, request *CreateRoleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a MaxCompute quota plan.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -865,6 +925,10 @@ func (client *Client) DeleteComputeQuotaPlanWithOptions(nickname *string, planNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a MaxCompute quota plan.
+//
 // @return DeleteComputeQuotaPlanResponse
 func (client *Client) DeleteComputeQuotaPlan(nickname *string, planName *string) (_result *DeleteComputeQuotaPlanResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -880,7 +944,7 @@ func (client *Client) DeleteComputeQuotaPlan(nickname *string, planName *string)
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data source and its associated migration plans and metadata.
+// Deletes a MaxCompute Migration Assist (MMA) data source. For example, you can call this operation to delete the migration plan or metadata of a data source.
 //
 // @param headers - map
 //
@@ -913,7 +977,7 @@ func (client *Client) DeleteMmsDataSourceWithOptions(sourceId *string, headers m
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data source and its associated migration plans and metadata.
+// Deletes a MaxCompute Migration Assist (MMA) data source. For example, you can call this operation to delete the migration plan or metadata of a data source.
 //
 // @return DeleteMmsDataSourceResponse
 func (client *Client) DeleteMmsDataSource(sourceId *string) (_result *DeleteMmsDataSourceResponse, _err error) {
@@ -930,7 +994,7 @@ func (client *Client) DeleteMmsDataSource(sourceId *string) (_result *DeleteMmsD
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data migration plan.
+// Deletes a MaxCompute Migration Assist (MMA) migration job.
 //
 // @param headers - map
 //
@@ -963,7 +1027,7 @@ func (client *Client) DeleteMmsJobWithOptions(sourceId *string, jobId *string, h
 
 // Summary:
 //
-// Deletes a MaxCompute Migration Assist (MMA) data migration plan.
+// Deletes a MaxCompute Migration Assist (MMA) migration job.
 //
 // @return DeleteMmsJobResponse
 func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *DeleteMmsJobResponse, _err error) {
@@ -980,7 +1044,7 @@ func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *De
 
 // Summary:
 //
-// Deletes a MaxCompute project. This operation is irreversible. Use this API with caution.
+// Deletes a MaxCompute project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -1027,7 +1091,7 @@ func (client *Client) DeleteProjectWithOptions(projectName *string, request *Del
 
 // Summary:
 //
-// Deletes a MaxCompute project. This operation is irreversible. Use this API with caution.
+// Deletes a MaxCompute project.
 //
 // @param request - DeleteProjectRequest
 //
@@ -1044,6 +1108,10 @@ func (client *Client) DeleteProject(projectName *string, request *DeleteProjectR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a quota plan.
+//
 // @param request - DeleteQuotaPlanRequest
 //
 // @param headers - map
@@ -1091,6 +1159,10 @@ func (client *Client) DeleteQuotaPlanWithOptions(nickname *string, planName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a quota plan.
+//
 // @param request - DeleteQuotaPlanRequest
 //
 // @return DeleteQuotaPlanResponse
@@ -1106,6 +1178,10 @@ func (client *Client) DeleteQuotaPlan(nickname *string, planName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// GetComputeEffectivePlan.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1135,6 +1211,10 @@ func (client *Client) GetComputeEffectivePlanWithOptions(nickname *string, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// GetComputeEffectivePlan.
+//
 // @return GetComputeEffectivePlanResponse
 func (client *Client) GetComputeEffectivePlan(nickname *string) (_result *GetComputeEffectivePlanResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -1148,6 +1228,10 @@ func (client *Client) GetComputeEffectivePlan(nickname *string) (_result *GetCom
 	return _result, _err
 }
 
+// Summary:
+//
+// Get detailed information of a single compute quota plan.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1177,6 +1261,10 @@ func (client *Client) GetComputeQuotaPlanWithOptions(nickname *string, planName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Get detailed information of a single compute quota plan.
+//
 // @return GetComputeQuotaPlanResponse
 func (client *Client) GetComputeQuotaPlan(nickname *string, planName *string) (_result *GetComputeQuotaPlanResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -1190,6 +1278,10 @@ func (client *Client) GetComputeQuotaPlan(nickname *string, planName *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the time-specific configuration of compute quota.
+//
 // @param request - GetComputeQuotaScheduleRequest
 //
 // @param headers - map
@@ -1233,6 +1325,10 @@ func (client *Client) GetComputeQuotaScheduleWithOptions(nickname *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the time-specific configuration of compute quota.
+//
 // @param request - GetComputeQuotaScheduleRequest
 //
 // @return GetComputeQuotaScheduleResponse
@@ -1248,6 +1344,10 @@ func (client *Client) GetComputeQuotaSchedule(nickname *string, request *GetComp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the basic information about a job.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1277,6 +1377,10 @@ func (client *Client) GetJobInfoWithOptions(instanceId *string, headers map[stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the basic information about a job.
+//
 // @return GetJobInfoResponse
 func (client *Client) GetJobInfo(instanceId *string) (_result *GetJobInfoResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -1290,6 +1394,10 @@ func (client *Client) GetJobInfo(instanceId *string) (_result *GetJobInfoRespons
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+//
 // @param tmpReq - GetJobResourceUsageRequest
 //
 // @param headers - map
@@ -1359,6 +1467,10 @@ func (client *Client) GetJobResourceUsageWithOptions(tmpReq *GetJobResourceUsage
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+//
 // @param request - GetJobResourceUsageRequest
 //
 // @return GetJobResourceUsageResponse
@@ -1376,7 +1488,7 @@ func (client *Client) GetJobResourceUsage(request *GetJobResourceUsageRequest) (
 
 // Summary:
 //
-// Retrieves a single asynchronous task from MaxCompute Migration Assist (MMA).
+// Queries a MaxCompute Migration Assist (MMA) asynchronous task.
 //
 // @param headers - map
 //
@@ -1409,7 +1521,7 @@ func (client *Client) GetMmsAsyncTaskWithOptions(sourceId *string, asyncTaskId *
 
 // Summary:
 //
-// Retrieves a single asynchronous task from MaxCompute Migration Assist (MMA).
+// Queries a MaxCompute Migration Assist (MMA) asynchronous task.
 //
 // @return GetMmsAsyncTaskResponse
 func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_result *GetMmsAsyncTaskResponse, _err error) {
@@ -1426,7 +1538,7 @@ func (client *Client) GetMmsAsyncTask(sourceId *string, asyncTaskId *string) (_r
 
 // Summary:
 //
-// Retrieves the details of a single MaxCompute Migration Assist (MMA) data source.
+// Queries the information about a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - GetMmsDataSourceRequest
 //
@@ -1477,7 +1589,7 @@ func (client *Client) GetMmsDataSourceWithOptions(sourceId *string, request *Get
 
 // Summary:
 //
-// Retrieves the details of a single MaxCompute Migration Assist (MMA) data source.
+// Queries the information about a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - GetMmsDataSourceRequest
 //
@@ -1496,7 +1608,7 @@ func (client *Client) GetMmsDataSource(sourceId *string, request *GetMmsDataSour
 
 // Summary:
 //
-// Retrieves a database from a MaxCompute Migration Assist (MMA) data source.
+// Queries a database in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1529,7 +1641,7 @@ func (client *Client) GetMmsDbWithOptions(sourceId *string, dbId *string, header
 
 // Summary:
 //
-// Retrieves a database from a MaxCompute Migration Assist (MMA) data source.
+// Queries a database in a MaxCompute Migration Assist (MMA) data source.
 //
 // @return GetMmsDbResponse
 func (client *Client) GetMmsDb(sourceId *string, dbId *string) (_result *GetMmsDbResponse, _err error) {
@@ -1546,7 +1658,7 @@ func (client *Client) GetMmsDb(sourceId *string, dbId *string) (_result *GetMmsD
 
 // Summary:
 //
-// Retrieves the details of a MaxCompute Migration Assist (MMA) job that fetches metadata.
+// Queries the details of a MaxCompute Migration Assist (MMA) job that is used to query the metadata of a data source.
 //
 // @param headers - map
 //
@@ -1579,7 +1691,7 @@ func (client *Client) GetMmsFetchMetadataJobWithOptions(sourceId *string, scanId
 
 // Summary:
 //
-// Retrieves the details of a MaxCompute Migration Assist (MMA) job that fetches metadata.
+// Queries the details of a MaxCompute Migration Assist (MMA) job that is used to query the metadata of a data source.
 //
 // @return GetMmsFetchMetadataJobResponse
 func (client *Client) GetMmsFetchMetadataJob(sourceId *string, scanId *string) (_result *GetMmsFetchMetadataJobResponse, _err error) {
@@ -1596,7 +1708,7 @@ func (client *Client) GetMmsFetchMetadataJob(sourceId *string, scanId *string) (
 
 // Summary:
 //
-// Retrieves the details of a single MaxCompute Migration Assist (MMA) migration plan.
+// Queries the details of a MaxCompute Migration Assist (MMA) migration job.
 //
 // @param headers - map
 //
@@ -1629,7 +1741,7 @@ func (client *Client) GetMmsJobWithOptions(sourceId *string, jobId *string, head
 
 // Summary:
 //
-// Retrieves the details of a single MaxCompute Migration Assist (MMA) migration plan.
+// Queries the details of a MaxCompute Migration Assist (MMA) migration job.
 //
 // @return GetMmsJobResponse
 func (client *Client) GetMmsJob(sourceId *string, jobId *string) (_result *GetMmsJobResponse, _err error) {
@@ -1646,7 +1758,7 @@ func (client *Client) GetMmsJob(sourceId *string, jobId *string) (_result *GetMm
 
 // Summary:
 //
-// Retrieves a partition from a MaxCompute Migration Assist (MMA) data source.
+// Queries a partition from a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1679,7 +1791,7 @@ func (client *Client) GetMmsPartitionWithOptions(sourceId *string, partitionId *
 
 // Summary:
 //
-// Retrieves a partition from a MaxCompute Migration Assist (MMA) data source.
+// Queries a partition from a MaxCompute Migration Assist (MMA) data source.
 //
 // @return GetMmsPartitionResponse
 func (client *Client) GetMmsPartition(sourceId *string, partitionId *string) (_result *GetMmsPartitionResponse, _err error) {
@@ -1696,7 +1808,7 @@ func (client *Client) GetMmsPartition(sourceId *string, partitionId *string) (_r
 
 // Summary:
 //
-// Retrieves a table from a MaxCompute Migration Assist (MMA) data source.
+// Queries a table in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param headers - map
 //
@@ -1729,7 +1841,7 @@ func (client *Client) GetMmsTableWithOptions(sourceId *string, tableId *string, 
 
 // Summary:
 //
-// Retrieves a table from a MaxCompute Migration Assist (MMA) data source.
+// Queries a table in a MaxCompute Migration Assist (MMA) data source.
 //
 // @return GetMmsTableResponse
 func (client *Client) GetMmsTable(sourceId *string, tableId *string) (_result *GetMmsTableResponse, _err error) {
@@ -1746,7 +1858,7 @@ func (client *Client) GetMmsTable(sourceId *string, tableId *string) (_result *G
 
 // Summary:
 //
-// Retrieves the details of a specific migration task.
+// Queries the details of a migration task.
 //
 // @param headers - map
 //
@@ -1779,7 +1891,7 @@ func (client *Client) GetMmsTaskWithOptions(sourceId *string, taskId *string, he
 
 // Summary:
 //
-// Retrieves the details of a specific migration task.
+// Queries the details of a migration task.
 //
 // @return GetMmsTaskResponse
 func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *GetMmsTaskResponse, _err error) {
@@ -1794,6 +1906,10 @@ func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a package.
+//
 // @param request - GetPackageRequest
 //
 // @param headers - map
@@ -1837,6 +1953,10 @@ func (client *Client) GetPackageWithOptions(projectName *string, packageName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a package.
+//
 // @param request - GetPackageRequest
 //
 // @return GetPackageResponse
@@ -1854,7 +1974,7 @@ func (client *Client) GetPackage(projectName *string, packageName *string, reque
 
 // Summary:
 //
-// Queries the basic information about a MaxCompute project.
+// Queries the information about a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
@@ -1909,7 +2029,7 @@ func (client *Client) GetProjectWithOptions(projectName *string, request *GetPro
 
 // Summary:
 //
-// Queries the basic information about a MaxCompute project.
+// Queries the information about a MaxCompute project.
 //
 // @param request - GetProjectRequest
 //
@@ -1928,7 +2048,7 @@ func (client *Client) GetProject(projectName *string, request *GetProjectRequest
 
 // Summary:
 //
-// Retrieve information for the specified level-1 quota group. Warning: This operation will be decommissioned on July 31, 2024. It will be replaced by the `QueryQuota` operation. The request parameters, response parameters, and features of the two operations are the same.
+// Obtains the information about a specified level-1 quota.
 //
 // @param request - GetQuotaRequest
 //
@@ -1987,7 +2107,7 @@ func (client *Client) GetQuotaWithOptions(nickname *string, request *GetQuotaReq
 
 // Summary:
 //
-// Retrieve information for the specified level-1 quota group. Warning: This operation will be decommissioned on July 31, 2024. It will be replaced by the `QueryQuota` operation. The request parameters, response parameters, and features of the two operations are the same.
+// Obtains the information about a specified level-1 quota.
 //
 // @param request - GetQuotaRequest
 //
@@ -2004,6 +2124,10 @@ func (client *Client) GetQuota(nickname *string, request *GetQuotaRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information of a quota plan.
+//
 // @param request - GetQuotaPlanRequest
 //
 // @param headers - map
@@ -2051,6 +2175,10 @@ func (client *Client) GetQuotaPlanWithOptions(nickname *string, planName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information of a quota plan.
+//
 // @param request - GetQuotaPlanRequest
 //
 // @return GetQuotaPlanResponse
@@ -2066,6 +2194,10 @@ func (client *Client) GetQuotaPlan(nickname *string, planName *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the scheduling plan for a quota plan.
+//
 // @param request - GetQuotaScheduleRequest
 //
 // @param headers - map
@@ -2117,6 +2249,10 @@ func (client *Client) GetQuotaScheduleWithOptions(nickname *string, request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the scheduling plan for a quota plan.
+//
 // @param request - GetQuotaScheduleRequest
 //
 // @return GetQuotaScheduleResponse
@@ -2132,6 +2268,10 @@ func (client *Client) GetQuotaSchedule(nickname *string, request *GetQuotaSchedu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries quota resource consumption information.
+//
 // @param tmpReq - GetQuotaUsageRequest
 //
 // @param headers - map
@@ -2217,6 +2357,10 @@ func (client *Client) GetQuotaUsageWithOptions(nickname *string, tmpReq *GetQuot
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries quota resource consumption information.
+//
 // @param request - GetQuotaUsageRequest
 //
 // @return GetQuotaUsageResponse
@@ -2232,6 +2376,10 @@ func (client *Client) GetQuotaUsage(nickname *string, request *GetQuotaUsageRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the ACL-based permissions that is granted to a project-level role.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2261,6 +2409,10 @@ func (client *Client) GetRoleAclWithOptions(projectName *string, roleName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the ACL-based permissions that is granted to a project-level role.
+//
 // @return GetRoleAclResponse
 func (client *Client) GetRoleAcl(projectName *string, roleName *string) (_result *GetRoleAclResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -2274,6 +2426,10 @@ func (client *Client) GetRoleAcl(projectName *string, roleName *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains ACL-based permissions on an object that are granted to a project-level role.
+//
 // @param request - GetRoleAclOnObjectRequest
 //
 // @param headers - map
@@ -2321,6 +2477,10 @@ func (client *Client) GetRoleAclOnObjectWithOptions(projectName *string, roleNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains ACL-based permissions on an object that are granted to a project-level role.
+//
 // @param request - GetRoleAclOnObjectRequest
 //
 // @return GetRoleAclOnObjectResponse
@@ -2336,6 +2496,10 @@ func (client *Client) GetRoleAclOnObject(projectName *string, roleName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the policy that is attached to a project-level role.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2365,6 +2529,10 @@ func (client *Client) GetRolePolicyWithOptions(projectName *string, roleName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the policy that is attached to a project-level role.
+//
 // @return GetRolePolicyResponse
 func (client *Client) GetRolePolicy(projectName *string, roleName *string) (_result *GetRolePolicyResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -2378,6 +2546,10 @@ func (client *Client) GetRolePolicy(projectName *string, roleName *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the running state data of jobs that are in the running state in a specified period of time.
+//
 // @param tmpReq - GetRunningJobsRequest
 //
 // @param headers - map
@@ -2451,6 +2623,10 @@ func (client *Client) GetRunningJobsWithOptions(tmpReq *GetRunningJobsRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the running state data of jobs that are in the running state in a specified period of time.
+//
 // @param request - GetRunningJobsRequest
 //
 // @return GetRunningJobsResponse
@@ -2466,10 +2642,6 @@ func (client *Client) GetRunningJobs(request *GetRunningJobsRequest) (_result *G
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves a summary of the total storage amount.
-//
 // @param request - GetStorageAmountSummaryRequest
 //
 // @param headers - map
@@ -2521,10 +2693,6 @@ func (client *Client) GetStorageAmountSummaryWithOptions(request *GetStorageAmou
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves a summary of the total storage amount.
-//
 // @param request - GetStorageAmountSummaryRequest
 //
 // @return GetStorageAmountSummaryResponse
@@ -2540,10 +2708,6 @@ func (client *Client) GetStorageAmountSummary(request *GetStorageAmountSummaryRe
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves a summary of storage usage.
-//
 // @param request - GetStorageSizeSummaryRequest
 //
 // @param headers - map
@@ -2595,10 +2759,6 @@ func (client *Client) GetStorageSizeSummaryWithOptions(request *GetStorageSizeSu
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves a summary of storage usage.
-//
 // @param request - GetStorageSizeSummaryRequest
 //
 // @return GetStorageSizeSummaryResponse
@@ -2614,10 +2774,6 @@ func (client *Client) GetStorageSizeSummary(request *GetStorageSizeSummaryReques
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the year-on-year (YoY) change in storage usage.
-//
 // @param tmpReq - GetStorageSummaryComparedRequest
 //
 // @param headers - map
@@ -2683,10 +2839,6 @@ func (client *Client) GetStorageSummaryComparedWithOptions(_type *string, tmpReq
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the year-on-year (YoY) change in storage usage.
-//
 // @param request - GetStorageSummaryComparedRequest
 //
 // @return GetStorageSummaryComparedResponse
@@ -2702,6 +2854,10 @@ func (client *Client) GetStorageSummaryCompared(_type *string, request *GetStora
 	return _result, _err
 }
 
+// Summary:
+//
+// Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+//
 // @param request - GetTableInfoRequest
 //
 // @param headers - map
@@ -2749,6 +2905,10 @@ func (client *Client) GetTableInfoWithOptions(projectName *string, tableName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Views the information about MaxCompute internal tables, views, external tables, clustered tables, or transactional tables.
+//
 // @param request - GetTableInfoRequest
 //
 // @return GetTableInfoResponse
@@ -2764,6 +2924,10 @@ func (client *Client) GetTableInfo(projectName *string, tableName *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the trusted projects of the current project.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2793,6 +2957,10 @@ func (client *Client) GetTrustedProjectsWithOptions(projectName *string, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the trusted projects of the current project.
+//
 // @return GetTrustedProjectsResponse
 func (client *Client) GetTrustedProjects(projectName *string) (_result *GetTrustedProjectsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -2806,6 +2974,10 @@ func (client *Client) GetTrustedProjects(projectName *string) (_result *GetTrust
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a running job.
+//
 // @param request - KillJobsRequest
 //
 // @param headers - map
@@ -2854,6 +3026,10 @@ func (client *Client) KillJobsWithOptions(request *KillJobsRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a running job.
+//
 // @param request - KillJobsRequest
 //
 // @return KillJobsResponse
@@ -2869,6 +3045,10 @@ func (client *Client) KillJobs(request *KillJobsRequest) (_result *KillJobsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of computing resources used by a pay-as-you-go job.
+//
 // @param request - ListComputeMetricsByInstanceRequest
 //
 // @param headers - map
@@ -2952,6 +3132,10 @@ func (client *Client) ListComputeMetricsByInstanceWithOptions(request *ListCompu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of computing resources used by a pay-as-you-go job.
+//
 // @param request - ListComputeMetricsByInstanceRequest
 //
 // @return ListComputeMetricsByInstanceResponse
@@ -2969,7 +3153,7 @@ func (client *Client) ListComputeMetricsByInstance(request *ListComputeMetricsBy
 
 // Summary:
 //
-// Lists compute quota plans.
+// Get computeQuotaPlan list.
 //
 // @param headers - map
 //
@@ -3002,7 +3186,7 @@ func (client *Client) ListComputeQuotaPlanWithOptions(nickname *string, headers 
 
 // Summary:
 //
-// Lists compute quota plans.
+// Get computeQuotaPlan list.
 //
 // @return ListComputeQuotaPlanResponse
 func (client *Client) ListComputeQuotaPlan(nickname *string) (_result *ListComputeQuotaPlanResponse, _err error) {
@@ -3017,6 +3201,10 @@ func (client *Client) ListComputeQuotaPlan(nickname *string) (_result *ListCompu
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains functions in a MaxCompute project.
+//
 // @param request - ListFunctionsRequest
 //
 // @param headers - map
@@ -3072,6 +3260,10 @@ func (client *Client) ListFunctionsWithOptions(projectName *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains functions in a MaxCompute project.
+//
 // @param request - ListFunctionsRequest
 //
 // @return ListFunctionsResponse
@@ -3089,7 +3281,7 @@ func (client *Client) ListFunctions(projectName *string, request *ListFunctionsR
 
 // Summary:
 //
-// Retrieves a list of jobs.
+// Views a list of jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -3222,7 +3414,7 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 
 // Summary:
 //
-// Retrieves a list of jobs.
+// Views a list of jobs.
 //
 // @param request - ListJobInfosRequest
 //
@@ -3239,6 +3431,10 @@ func (client *Client) ListJobInfos(request *ListJobInfosRequest) (_result *ListJ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a performance metric of the job that is complete.
+//
 // @param request - ListJobMetricRequest
 //
 // @param headers - map
@@ -3312,6 +3508,10 @@ func (client *Client) ListJobMetricWithOptions(request *ListJobMetricRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a performance metric of the job that is complete.
+//
 // @param request - ListJobMetricRequest
 //
 // @return ListJobMetricResponse
@@ -3329,7 +3529,7 @@ func (client *Client) ListJobMetric(request *ListJobMetricRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves job snapshot data at a specific point in time.
+// Views a list of job snapshot data at a specific point in time.
 //
 // @param request - ListJobSnapshotInfosRequest
 //
@@ -3450,7 +3650,7 @@ func (client *Client) ListJobSnapshotInfosWithOptions(request *ListJobSnapshotIn
 
 // Summary:
 //
-// Retrieves job snapshot data at a specific point in time.
+// Views a list of job snapshot data at a specific point in time.
 //
 // @param request - ListJobSnapshotInfosRequest
 //
@@ -3469,7 +3669,7 @@ func (client *Client) ListJobSnapshotInfos(request *ListJobSnapshotInfosRequest)
 
 // Summary:
 //
-// Lists the MaxCompute Migration Assist (MMA) data sources.
+// Queries a list of MaxCompute Migration Assist (MMA) data sources.
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -3532,7 +3732,7 @@ func (client *Client) ListMmsDataSourcesWithOptions(request *ListMmsDataSourcesR
 
 // Summary:
 //
-// Lists the MaxCompute Migration Assist (MMA) data sources.
+// Queries a list of MaxCompute Migration Assist (MMA) data sources.
 //
 // @param request - ListMmsDataSourcesRequest
 //
@@ -3551,7 +3751,7 @@ func (client *Client) ListMmsDataSources(request *ListMmsDataSourcesRequest) (_r
 
 // Summary:
 //
-// List databases in the MMA data source.
+// Queries a list of databases in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsDbsRequest
 //
@@ -3620,7 +3820,7 @@ func (client *Client) ListMmsDbsWithOptions(sourceId *string, tmpReq *ListMmsDbs
 
 // Summary:
 //
-// List databases in the MMA data source.
+// Queries a list of databases in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - ListMmsDbsRequest
 //
@@ -3639,7 +3839,7 @@ func (client *Client) ListMmsDbs(sourceId *string, request *ListMmsDbsRequest) (
 
 // Summary:
 //
-// Lists migration jobs.
+// Queries a list of migration jobs.
 //
 // @param request - ListMmsJobsRequest
 //
@@ -3726,7 +3926,7 @@ func (client *Client) ListMmsJobsWithOptions(sourceId *string, request *ListMmsJ
 
 // Summary:
 //
-// Lists migration jobs.
+// Queries a list of migration jobs.
 //
 // @param request - ListMmsJobsRequest
 //
@@ -3745,7 +3945,7 @@ func (client *Client) ListMmsJobs(sourceId *string, request *ListMmsJobsRequest)
 
 // Summary:
 //
-// Lists the partitions in a MaxCompute Migration Assist (MMA) data source.
+// Queries a list of partitions in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsPartitionsRequest
 //
@@ -3842,7 +4042,7 @@ func (client *Client) ListMmsPartitionsWithOptions(sourceId *string, tmpReq *Lis
 
 // Summary:
 //
-// Lists the partitions in a MaxCompute Migration Assist (MMA) data source.
+// Queries a list of partitions in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - ListMmsPartitionsRequest
 //
@@ -3861,7 +4061,7 @@ func (client *Client) ListMmsPartitions(sourceId *string, request *ListMmsPartit
 
 // Summary:
 //
-// Lists the tables in a MaxCompute Migration Assist (MMA) data source.
+// Queries a list of tables in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param tmpReq - ListMmsTablesRequest
 //
@@ -3970,7 +4170,7 @@ func (client *Client) ListMmsTablesWithOptions(sourceId *string, tmpReq *ListMms
 
 // Summary:
 //
-// Lists the tables in a MaxCompute Migration Assist (MMA) data source.
+// Queries a list of tables in a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - ListMmsTablesRequest
 //
@@ -3989,7 +4189,7 @@ func (client *Client) ListMmsTables(sourceId *string, request *ListMmsTablesRequ
 
 // Summary:
 //
-// Lists the execution logs for a specific migration task.
+// Queries a list of the execution logs of a single migration task.
 //
 // @param headers - map
 //
@@ -4022,7 +4222,7 @@ func (client *Client) ListMmsTaskLogsWithOptions(sourceId *string, taskId *strin
 
 // Summary:
 //
-// Lists the execution logs for a specific migration task.
+// Queries a list of the execution logs of a single migration task.
 //
 // @return ListMmsTaskLogsResponse
 func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result *ListMmsTaskLogsResponse, _err error) {
@@ -4039,7 +4239,7 @@ func (client *Client) ListMmsTaskLogs(sourceId *string, taskId *string) (_result
 
 // Summary:
 //
-// Retrieves a list of migration tasks.
+// Queries a list of migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -4126,7 +4326,7 @@ func (client *Client) ListMmsTasksWithOptions(sourceId *string, request *ListMms
 
 // Summary:
 //
-// Retrieves a list of migration tasks.
+// Queries a list of migration tasks.
 //
 // @param request - ListMmsTasksRequest
 //
@@ -4143,6 +4343,10 @@ func (client *Client) ListMmsTasks(sourceId *string, request *ListMmsTasksReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the packages in a MaxCompute project.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4172,6 +4376,10 @@ func (client *Client) ListPackagesWithOptions(projectName *string, headers map[s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the packages in a MaxCompute project.
+//
 // @return ListPackagesResponse
 func (client *Client) ListPackages(projectName *string) (_result *ListPackagesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -4187,7 +4395,7 @@ func (client *Client) ListPackages(projectName *string) (_result *ListPackagesRe
 
 // Summary:
 //
-// # ListProjectUsers
+// Queries a list of users in a project.
 //
 // @param headers - map
 //
@@ -4220,7 +4428,7 @@ func (client *Client) ListProjectUsersWithOptions(projectName *string, headers m
 
 // Summary:
 //
-// # ListProjectUsers
+// Queries a list of users in a project.
 //
 // @return ListProjectUsersResponse
 func (client *Client) ListProjectUsers(projectName *string) (_result *ListProjectUsersResponse, _err error) {
@@ -4235,6 +4443,10 @@ func (client *Client) ListProjectUsers(projectName *string) (_result *ListProjec
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of MaxCompute projects.
+//
 // @param request - ListProjectsRequest
 //
 // @param headers - map
@@ -4314,6 +4526,10 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of MaxCompute projects.
+//
 // @param request - ListProjectsRequest
 //
 // @return ListProjectsResponse
@@ -4331,7 +4547,7 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 
 // Summary:
 //
-// Retrieves a list of quotas.
+// Queries quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -4402,7 +4618,7 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 
 // Summary:
 //
-// Retrieves a list of quotas.
+// Queries quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -4419,6 +4635,10 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains quota plans.
+//
 // @param request - ListQuotasPlansRequest
 //
 // @param headers - map
@@ -4466,6 +4686,10 @@ func (client *Client) ListQuotasPlansWithOptions(nickname *string, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains quota plans.
+//
 // @param request - ListQuotasPlansRequest
 //
 // @return ListQuotasPlansResponse
@@ -4481,6 +4705,10 @@ func (client *Client) ListQuotasPlans(nickname *string, request *ListQuotasPlans
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains resources in a MaxCompute project.
+//
 // @param request - ListResourcesRequest
 //
 // @param headers - map
@@ -4536,6 +4764,10 @@ func (client *Client) ListResourcesWithOptions(projectName *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains resources in a MaxCompute project.
+//
 // @param request - ListResourcesRequest
 //
 // @return ListResourcesResponse
@@ -4551,6 +4783,10 @@ func (client *Client) ListResources(projectName *string, request *ListResourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains MaxCompute project-level roles.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4580,6 +4816,10 @@ func (client *Client) ListRolesWithOptions(projectName *string, headers map[stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains MaxCompute project-level roles.
+//
 // @return ListRolesResponse
 func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -4593,6 +4833,10 @@ func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage details of a specific partition in a partitioned table in a MaxCompute project.
+//
 // @param tmpReq - ListStoragePartitionsInfoRequest
 //
 // @param headers - map
@@ -4678,6 +4922,10 @@ func (client *Client) ListStoragePartitionsInfoWithOptions(project *string, tabl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the storage details of a specific partition in a partitioned table in a MaxCompute project.
+//
 // @param request - ListStoragePartitionsInfoRequest
 //
 // @return ListStoragePartitionsInfoResponse
@@ -4693,10 +4941,6 @@ func (client *Client) ListStoragePartitionsInfo(project *string, table *string, 
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the storage details of projects.
-//
 // @param request - ListStorageProjectsInfoRequest
 //
 // @param headers - map
@@ -4772,10 +5016,6 @@ func (client *Client) ListStorageProjectsInfoWithOptions(request *ListStoragePro
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the storage details of projects.
-//
 // @param request - ListStorageProjectsInfoRequest
 //
 // @return ListStorageProjectsInfoResponse
@@ -4791,6 +5031,10 @@ func (client *Client) ListStorageProjectsInfo(request *ListStorageProjectsInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the table storage details of a MaxCompute project.
+//
 // @param tmpReq - ListStorageTablesInfoRequest
 //
 // @param headers - map
@@ -4880,6 +5124,10 @@ func (client *Client) ListStorageTablesInfoWithOptions(project *string, tmpReq *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the table storage details of a MaxCompute project.
+//
 // @param request - ListStorageTablesInfoRequest
 //
 // @return ListStorageTablesInfoResponse
@@ -4895,6 +5143,10 @@ func (client *Client) ListStorageTablesInfo(project *string, request *ListStorag
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains tables in a MaxCompute project.
+//
 // @param request - ListTablesRequest
 //
 // @param headers - map
@@ -4954,6 +5206,10 @@ func (client *Client) ListTablesWithOptions(projectName *string, request *ListTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains tables in a MaxCompute project.
+//
 // @param request - ListTablesRequest
 //
 // @return ListTablesResponse
@@ -4969,6 +5225,10 @@ func (client *Client) ListTables(projectName *string, request *ListTablesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4998,6 +5258,10 @@ func (client *Client) ListTunnelQuotaTimerWithOptions(nickname *string, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
+//
 // @return ListTunnelQuotaTimerResponse
 func (client *Client) ListTunnelQuotaTimer(nickname *string) (_result *ListTunnelQuotaTimerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -5011,6 +5275,10 @@ func (client *Client) ListTunnelQuotaTimer(nickname *string) (_result *ListTunne
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains users in a MaxCompute project.
+//
 // @param request - ListUsersRequest
 //
 // @param headers - map
@@ -5058,6 +5326,10 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains users in a MaxCompute project.
+//
 // @param request - ListUsersRequest
 //
 // @return ListUsersResponse
@@ -5073,6 +5345,10 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains information about the users who are assigned a project-level role.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5102,6 +5378,10 @@ func (client *Client) ListUsersByRoleWithOptions(projectName *string, roleName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains information about the users who are assigned a project-level role.
+//
 // @return ListUsersByRoleResponse
 func (client *Client) ListUsersByRole(projectName *string, roleName *string) (_result *ListUsersByRoleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
@@ -5115,6 +5395,10 @@ func (client *Client) ListUsersByRole(projectName *string, roleName *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a specified level-1 quota group.
+//
 // @param request - QueryQuotaRequest
 //
 // @param headers - map
@@ -5170,6 +5454,10 @@ func (client *Client) QueryQuotaWithOptions(nickname *string, request *QueryQuot
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a specified level-1 quota group.
+//
 // @param request - QueryQuotaRequest
 //
 // @return QueryQuotaResponse
@@ -5187,7 +5475,7 @@ func (client *Client) QueryQuota(nickname *string, request *QueryQuotaRequest) (
 
 // Summary:
 //
-// Queries the time series data of resource consumption for a quota.
+// 查询quota的资源使用信息
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -5260,7 +5548,7 @@ func (client *Client) QueryQuotaMetricWithOptions(metric *string, request *Query
 
 // Summary:
 //
-// Queries the time series data of resource consumption for a quota.
+// 查询quota的资源使用信息
 //
 // @param request - QueryQuotaMetricRequest
 //
@@ -5279,7 +5567,7 @@ func (client *Client) QueryQuotaMetric(metric *string, request *QueryQuotaMetric
 
 // Summary:
 //
-// Queries time-series metrics of data storage.
+// Queries time series metrics of stored data.
 //
 // @param request - QueryStorageMetricRequest
 //
@@ -5340,7 +5628,7 @@ func (client *Client) QueryStorageMetricWithOptions(metric *string, request *Que
 
 // Summary:
 //
-// Queries time-series metrics of data storage.
+// Queries time series metrics of stored data.
 //
 // @param request - QueryStorageMetricRequest
 //
@@ -5359,23 +5647,7 @@ func (client *Client) QueryStorageMetric(metric *string, request *QueryStorageMe
 
 // Summary:
 //
-// Queries metric data for the Tunnel Data Transmission Service within a specified time range.
-//
-// Description:
-//
-// - You can use this API to query various Tunnel metrics, such as slot usage (`slot_usage`), slot usage limit (`slot_max`), throughput (`throughput`), throughput rate (`throughput_speed`), and number of requests (`request`).
-//
-// - The `startTime` and `endTime` parameters are required. They specify the start and end of the time range for the query. The values are UNIX timestamps in seconds.
-//
-// - The `metric` parameter is also required. It specifies the type of metric to query.
-//
-// - Depending on the value of `metric`, you may need to specify additional parameters for filtering to refine your query. These parameters include `quotaNickname`, `project`, `tableList`, `operationList`, `codeList`, `groupList`, and `topN`.
-//
-// - For some `metric` values, you must specify other parameters. For example, if `groupList` contains `table` or `ip`, you must specify the `project` parameter and other required parameters. In this case, the system returns only the top N results.
-//
-// - The `strategy` parameter defines the data aggregation logic. This logic is used when the automatic step size exceeds 60 seconds over a long time range. The default value is `max`.
-//
-// - Ensure all parameters meet the requirements in this document to prevent request failures.
+// Queries the metrics of the Tunnel service within a specified time range.
 //
 // @param request - QueryTunnelMetricRequest
 //
@@ -5460,23 +5732,7 @@ func (client *Client) QueryTunnelMetricWithOptions(metric *string, request *Quer
 
 // Summary:
 //
-// Queries metric data for the Tunnel Data Transmission Service within a specified time range.
-//
-// Description:
-//
-// - You can use this API to query various Tunnel metrics, such as slot usage (`slot_usage`), slot usage limit (`slot_max`), throughput (`throughput`), throughput rate (`throughput_speed`), and number of requests (`request`).
-//
-// - The `startTime` and `endTime` parameters are required. They specify the start and end of the time range for the query. The values are UNIX timestamps in seconds.
-//
-// - The `metric` parameter is also required. It specifies the type of metric to query.
-//
-// - Depending on the value of `metric`, you may need to specify additional parameters for filtering to refine your query. These parameters include `quotaNickname`, `project`, `tableList`, `operationList`, `codeList`, `groupList`, and `topN`.
-//
-// - For some `metric` values, you must specify other parameters. For example, if `groupList` contains `table` or `ip`, you must specify the `project` parameter and other required parameters. In this case, the system returns only the top N results.
-//
-// - The `strategy` parameter defines the data aggregation logic. This logic is used when the automatic step size exceeds 60 seconds over a long time range. The default value is `max`.
-//
-// - Ensure all parameters meet the requirements in this document to prevent request failures.
+// Queries the metrics of the Tunnel service within a specified time range.
 //
 // @param request - QueryTunnelMetricRequest
 //
@@ -5495,21 +5751,7 @@ func (client *Client) QueryTunnelMetric(metric *string, request *QueryTunnelMetr
 
 // Summary:
 //
-// Queries detailed data for the Tunnel Data Transmission Service within a specified time range.
-//
-// Description:
-//
-// - This operation queries various Tunnel metrics, such as slot usage details (`slot_usage_detail`), throughput details (`throughput_detail`), and a throughput summary (`throughput_summary`).
-//
-// - The `quotaNickname` and `project` parameters cannot both be empty.
-//
-// - If the groupList parameter contains `table` or `ip`, you must specify the `project` parameter. If the `groupList` parameter contains `ip`, you must also specify the `tableList` parameter.
-//
-// - The orderColumn parameter can be set to `maxValue`, `minValue`, `avgValue`, or `sumValue`. The `sumValue` option is valid only for `throughput_summary`. By default, this parameter is empty, which means that no sorting is performed.
-//
-// - The default value of the `ascOrder` parameter is `false`, which indicates that the results are sorted in descending order.
-//
-// - The `limit` parameter specifies the maximum number of entries to return. The default value is 10, and the maximum value is 100.
+// Queries the metrics of the Tunnel service within a specified time range.
 //
 // @param request - QueryTunnelMetricDetailRequest
 //
@@ -5594,21 +5836,7 @@ func (client *Client) QueryTunnelMetricDetailWithOptions(metric *string, request
 
 // Summary:
 //
-// Queries detailed data for the Tunnel Data Transmission Service within a specified time range.
-//
-// Description:
-//
-// - This operation queries various Tunnel metrics, such as slot usage details (`slot_usage_detail`), throughput details (`throughput_detail`), and a throughput summary (`throughput_summary`).
-//
-// - The `quotaNickname` and `project` parameters cannot both be empty.
-//
-// - If the groupList parameter contains `table` or `ip`, you must specify the `project` parameter. If the `groupList` parameter contains `ip`, you must also specify the `tableList` parameter.
-//
-// - The orderColumn parameter can be set to `maxValue`, `minValue`, `avgValue`, or `sumValue`. The `sumValue` option is valid only for `throughput_summary`. By default, this parameter is empty, which means that no sorting is performed.
-//
-// - The default value of the `ascOrder` parameter is `false`, which indicates that the results are sorted in descending order.
-//
-// - The `limit` parameter specifies the maximum number of entries to return. The default value is 10, and the maximum value is 100.
+// Queries the metrics of the Tunnel service within a specified time range.
 //
 // @param request - QueryTunnelMetricDetailRequest
 //
@@ -5627,7 +5855,7 @@ func (client *Client) QueryTunnelMetricDetail(metric *string, request *QueryTunn
 
 // Summary:
 //
-// Retries a data migration job.
+// Retries a migration job.
 //
 // @param headers - map
 //
@@ -5660,7 +5888,7 @@ func (client *Client) RetryMmsJobWithOptions(sourceId *string, jobId *string, he
 
 // Summary:
 //
-// Retries a data migration job.
+// Retries a migration job.
 //
 // @return RetryMmsJobResponse
 func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *RetryMmsJobResponse, _err error) {
@@ -5677,7 +5905,7 @@ func (client *Client) RetryMmsJob(sourceId *string, jobId *string) (_result *Ret
 
 // Summary:
 //
-// Starts a data migration job.
+// Starts a migration job.
 //
 // @param headers - map
 //
@@ -5710,7 +5938,7 @@ func (client *Client) StartMmsJobWithOptions(sourceId *string, jobId *string, he
 
 // Summary:
 //
-// Starts a data migration job.
+// Starts a migration job.
 //
 // @return StartMmsJobResponse
 func (client *Client) StartMmsJob(sourceId *string, jobId *string) (_result *StartMmsJobResponse, _err error) {
@@ -5727,7 +5955,7 @@ func (client *Client) StartMmsJob(sourceId *string, jobId *string) (_result *Sta
 
 // Summary:
 //
-// Stops a data migration job.
+// Stops a migration job.
 //
 // @param headers - map
 //
@@ -5760,7 +5988,7 @@ func (client *Client) StopMmsJobWithOptions(sourceId *string, jobId *string, hea
 
 // Summary:
 //
-// Stops a data migration job.
+// Stops a migration job.
 //
 // @return StopMmsJobResponse
 func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *StopMmsJobResponse, _err error) {
@@ -5775,10 +6003,6 @@ func (client *Client) StopMmsJob(sourceId *string, jobId *string) (_result *Stop
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the storage information for each category or project on a specified date.
-//
 // @param request - SumStorageMetricsByDateRequest
 //
 // @param headers - map
@@ -5842,10 +6066,6 @@ func (client *Client) SumStorageMetricsByDateWithOptions(request *SumStorageMetr
 	return _result, _err
 }
 
-// Summary:
-//
-// Retrieves the storage information for each category or project on a specified date.
-//
 // @param request - SumStorageMetricsByDateRequest
 //
 // @return SumStorageMetricsByDateResponse
@@ -5861,6 +6081,16 @@ func (client *Client) SumStorageMetricsByDate(request *SumStorageMetricsByDateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the ComputeQuotaPlan.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param request - UpdateComputeQuotaPlanRequest
 //
 // @param headers - map
@@ -5908,6 +6138,16 @@ func (client *Client) UpdateComputeQuotaPlanWithOptions(nickname *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the ComputeQuotaPlan.
+//
+// Description:
+//
+// Please ensure that before using this interface, you have fully understood the <props="china">[Pricing and Charges](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Charges](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
+//
 // @param request - UpdateComputeQuotaPlanRequest
 //
 // @return UpdateComputeQuotaPlanResponse
@@ -5925,11 +6165,13 @@ func (client *Client) UpdateComputeQuotaPlan(nickname *string, request *UpdateCo
 
 // Summary:
 //
-// Updates the time-based schedule for a computing quota.
+// Update the time-based plan for computing quota.
 //
 // Description:
 //
-// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of reserved compute units (CUs) in MaxCompute.
+// Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
 //
 // @param request - UpdateComputeQuotaScheduleRequest
 //
@@ -5977,11 +6219,13 @@ func (client *Client) UpdateComputeQuotaScheduleWithOptions(nickname *string, re
 
 // Summary:
 //
-// Updates the time-based schedule for a computing quota.
+// Update the time-based plan for computing quota.
 //
 // Description:
 //
-// Before you call this operation, ensure that you understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of reserved compute units (CUs) in MaxCompute.
+// Please ensure that before using this interface, you have fully understood the<props="china">[Pricing and Billing](https://help.aliyun.com/zh/maxcompute/product-overview/computing-pricing-1)
+//
+// <props="intl">[Pricing and Billing](https://www.alibabacloud.com/help/maxcompute/product-overview/computing-pricing-1) of MaxCompute Elastic Reserved CU.
 //
 // @param request - UpdateComputeQuotaScheduleRequest
 //
@@ -5998,6 +6242,10 @@ func (client *Client) UpdateComputeQuotaSchedule(nickname *string, request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic configuration of a MaxCompute quota. For example, you can call this operation to add or delete a level-2 quota, define the basic attributes of a level-2 quota, and define the configuration of compute units (CUs) for a quota plan that is in effect.
+//
 // @param request - UpdateComputeSubQuotaRequest
 //
 // @param headers - map
@@ -6041,6 +6289,10 @@ func (client *Client) UpdateComputeSubQuotaWithOptions(nickname *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the basic configuration of a MaxCompute quota. For example, you can call this operation to add or delete a level-2 quota, define the basic attributes of a level-2 quota, and define the configuration of compute units (CUs) for a quota plan that is in effect.
+//
 // @param request - UpdateComputeSubQuotaRequest
 //
 // @return UpdateComputeSubQuotaResponse
@@ -6058,7 +6310,7 @@ func (client *Client) UpdateComputeSubQuota(nickname *string, request *UpdateCom
 
 // Summary:
 //
-// Refreshes the metadata of a MaxCompute Migration Assist (MMA) data source.
+// Updates the metadata of a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - UpdateMmsDataSourceRequest
 //
@@ -6117,7 +6369,7 @@ func (client *Client) UpdateMmsDataSourceWithOptions(sourceId *string, request *
 
 // Summary:
 //
-// Refreshes the metadata of a MaxCompute Migration Assist (MMA) data source.
+// Updates the metadata of a MaxCompute Migration Assist (MMA) data source.
 //
 // @param request - UpdateMmsDataSourceRequest
 //
@@ -6134,6 +6386,10 @@ func (client *Client) UpdateMmsDataSource(sourceId *string, request *UpdateMmsDa
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the objects in a package and projects in which the package can be installed.
+//
 // @param request - UpdatePackageRequest
 //
 // @param headers - map
@@ -6172,6 +6428,10 @@ func (client *Client) UpdatePackageWithOptions(projectName *string, packageName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the objects in a package and projects in which the package can be installed.
+//
 // @param request - UpdatePackageRequest
 //
 // @return UpdatePackageResponse
@@ -6189,7 +6449,7 @@ func (client *Client) UpdatePackage(projectName *string, packageName *string, re
 
 // Summary:
 //
-// Modifies the basic information of a project.
+// # Update Project Basic Information
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -6240,7 +6500,7 @@ func (client *Client) UpdateProjectBasicMetaWithOptions(projectName *string, req
 
 // Summary:
 //
-// Modifies the basic information of a project.
+// # Update Project Basic Information
 //
 // @param request - UpdateProjectBasicMetaRequest
 //
@@ -6257,6 +6517,10 @@ func (client *Client) UpdateProjectBasicMeta(projectName *string, request *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the default computing quota of a project.
+//
 // @param request - UpdateProjectDefaultQuotaRequest
 //
 // @param headers - map
@@ -6300,6 +6564,10 @@ func (client *Client) UpdateProjectDefaultQuotaWithOptions(projectName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the default computing quota of a project.
+//
 // @param request - UpdateProjectDefaultQuotaRequest
 //
 // @return UpdateProjectDefaultQuotaResponse
@@ -6315,6 +6583,10 @@ func (client *Client) UpdateProjectDefaultQuota(projectName *string, request *Up
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of a MaxCompute project.
+//
 // @param request - UpdateProjectIpWhiteListRequest
 //
 // @param headers - map
@@ -6353,6 +6625,10 @@ func (client *Client) UpdateProjectIpWhiteListWithOptions(projectName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of a MaxCompute project.
+//
 // @param request - UpdateProjectIpWhiteListRequest
 //
 // @return UpdateProjectIpWhiteListResponse
@@ -6370,7 +6646,7 @@ func (client *Client) UpdateProjectIpWhiteList(projectName *string, request *Upd
 
 // Summary:
 //
-// Upgrades a project\\"s Layer 2 model to a Layer 3 model.
+// 将project的二层模型升级为三层模型
 //
 // @param headers - map
 //
@@ -6403,7 +6679,7 @@ func (client *Client) UpdateProjectModelTierWithOptions(projectName *string, hea
 
 // Summary:
 //
-// Upgrades a project\\"s Layer 2 model to a Layer 3 model.
+// 将project的二层模型升级为三层模型
 //
 // @return UpdateProjectModelTierResponse
 func (client *Client) UpdateProjectModelTier(projectName *string) (_result *UpdateProjectModelTierResponse, _err error) {
@@ -6418,6 +6694,10 @@ func (client *Client) UpdateProjectModelTier(projectName *string) (_result *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota plan.
+//
 // @param request - UpdateQuotaPlanRequest
 //
 // @param headers - map
@@ -6466,6 +6746,10 @@ func (client *Client) UpdateQuotaPlanWithOptions(nickname *string, planName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota plan.
+//
 // @param request - UpdateQuotaPlanRequest
 //
 // @return UpdateQuotaPlanResponse
@@ -6481,6 +6765,10 @@ func (client *Client) UpdateQuotaPlan(nickname *string, planName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the scheduling plan for a quota plan.
+//
 // @param request - UpdateQuotaScheduleRequest
 //
 // @param headers - map
@@ -6529,6 +6817,10 @@ func (client *Client) UpdateQuotaScheduleWithOptions(nickname *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the scheduling plan for a quota plan.
+//
 // @param request - UpdateQuotaScheduleRequest
 //
 // @return UpdateQuotaScheduleResponse
@@ -6546,11 +6838,11 @@ func (client *Client) UpdateQuotaSchedule(nickname *string, request *UpdateQuota
 
 // Summary:
 //
-// Updates the time-based auto-scaling configuration for an exclusive resource group for Data Transmission Service (Tunnel Quota).
+// Updates the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
 //
 // Description:
 //
-// Before you call this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive Data Transmission Service resource groups and elastic reserved computing resources.
+// Before you call this operation, make sure that you are familiar with the [billing and prices](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Tunnel quotas and elastically reserved computing resources.
 //
 // @param request - UpdateTunnelQuotaTimerRequest
 //
@@ -6598,11 +6890,11 @@ func (client *Client) UpdateTunnelQuotaTimerWithOptions(nickname *string, reques
 
 // Summary:
 //
-// Updates the time-based auto-scaling configuration for an exclusive resource group for Data Transmission Service (Tunnel Quota).
+// Updates the time-specific configuration of an exclusive resource group for Tunnel (referred to as Tunnel quota).
 //
 // Description:
 //
-// Before you call this operation, ensure that you fully understand the <props="china">[billing methods and pricing](https://help.aliyun.com/zh/maxcompute/product-overview/data-transfer-fees-hourly-billing)<props="intl">[billing methods and pricing](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) for exclusive Data Transmission Service resource groups and elastic reserved computing resources.
+// Before you call this operation, make sure that you are familiar with the [billing and prices](https://www.alibabacloud.com/help/maxcompute/product-overview/data-transfer-fees-hourly-billing) of Tunnel quotas and elastically reserved computing resources.
 //
 // @param request - UpdateTunnelQuotaTimerRequest
 //
@@ -6621,7 +6913,7 @@ func (client *Client) UpdateTunnelQuotaTimer(nickname *string, request *UpdateTu
 
 // Summary:
 //
-// Adds or removes users from a project role.
+// Add or remove users from a project role.
 //
 // @param request - UpdateUsersToRoleRequest
 //
@@ -6672,7 +6964,7 @@ func (client *Client) UpdateUsersToRoleWithOptions(projectName *string, roleName
 
 // Summary:
 //
-// Adds or removes users from a project role.
+// Add or remove users from a project role.
 //
 // @param request - UpdateUsersToRoleRequest
 //

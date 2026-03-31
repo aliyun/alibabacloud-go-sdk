@@ -17,13 +17,8 @@ type iUpdateTunnelQuotaTimerRequest interface {
 
 type UpdateTunnelQuotaTimerRequest struct {
 	// The request body.
-	Body []*UpdateTunnelQuotaTimerRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// The time zone.
-	//
-	// example:
-	//
-	// Asia/Shanghai
-	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	Body     []*UpdateTunnelQuotaTimerRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Timezone *string                              `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
 func (s UpdateTunnelQuotaTimerRequest) String() string {
@@ -66,19 +61,19 @@ func (s *UpdateTunnelQuotaTimerRequest) Validate() error {
 }
 
 type UpdateTunnelQuotaTimerRequestBody struct {
-	// The start time of the time-based configuration.
+	// The start time of the time-specific configuration.
 	//
 	// example:
 	//
 	// 00:00
 	BeginTime *string `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// The end time of the time-based configuration.
+	// The end time of the time-specific configuration.
 	//
 	// example:
 	//
 	// 08:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The parameters of the time-based configuration.
+	// The parameters for the time-specific configuration.
 	TunnelQuotaParameter *UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter `json:"tunnelQuotaParameter,omitempty" xml:"tunnelQuotaParameter,omitempty" type:"Struct"`
 }
 
@@ -127,13 +122,13 @@ func (s *UpdateTunnelQuotaTimerRequestBody) Validate() error {
 }
 
 type UpdateTunnelQuotaTimerRequestBodyTunnelQuotaParameter struct {
-	// The number of elastic reserved concurrent slots.
+	// The number of elastically reserved slots.
 	//
 	// example:
 	//
 	// 100
 	ElasticReservedSlotNum *int64 `json:"elasticReservedSlotNum,omitempty" xml:"elasticReservedSlotNum,omitempty"`
-	// The number of reserved concurrent slots.
+	// The number of reserved slots.
 	//
 	// example:
 	//

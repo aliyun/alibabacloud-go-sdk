@@ -16,7 +16,17 @@ type iDeleteQuotaPlanRequest interface {
 }
 
 type DeleteQuotaPlanRequest struct {
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 416441016836866
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

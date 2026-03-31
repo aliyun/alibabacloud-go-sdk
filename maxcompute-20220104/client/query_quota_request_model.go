@@ -20,9 +20,29 @@ type iQueryQuotaRequest interface {
 }
 
 type QueryQuotaRequest struct {
+	// The trusted AccessKey pairs.
+	//
+	// example:
+	//
+	// null
 	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
-	Mock     *bool   `json:"mock,omitempty" xml:"mock,omitempty"`
-	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Specifies whether to include submodules. Valid values: true and false. -true: The request includes submodules. -false (default): The request does not include submodules.
+	//
+	// example:
+	//
+	// false
+	Mock *bool `json:"mock,omitempty" xml:"mock,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-chengdu
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// 483212237127906
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
