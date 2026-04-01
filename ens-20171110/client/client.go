@@ -6950,6 +6950,68 @@ func (client *Client) DeleteNetworkInterfaces(request *DeleteNetworkInterfacesRe
 
 // Summary:
 //
+// Releases the VPC peering connection.
+//
+// @param request - DeleteNetworkPeerConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNetworkPeerConnectionResponse
+func (client *Client) DeleteNetworkPeerConnectionWithOptions(request *DeleteNetworkPeerConnectionRequest, runtime *dara.RuntimeOptions) (_result *DeleteNetworkPeerConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNetworkPeerConnection"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNetworkPeerConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Releases the VPC peering connection.
+//
+// @param request - DeleteNetworkPeerConnectionRequest
+//
+// @return DeleteNetworkPeerConnectionResponse
+func (client *Client) DeleteNetworkPeerConnection(request *DeleteNetworkPeerConnectionRequest) (_result *DeleteNetworkPeerConnectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteNetworkPeerConnectionResponse{}
+	_body, _err := client.DeleteNetworkPeerConnectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an object.
 //
 // @param request - DeleteObjectRequest
@@ -13776,6 +13838,88 @@ func (client *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfac
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeNetworkInterfacesResponse{}
 	_body, _err := client.DescribeNetworkInterfacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries VPC peering connections.
+//
+// @param request - DescribeNetworkPeerConnectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkPeerConnectionsResponse
+func (client *Client) DescribeNetworkPeerConnectionsWithOptions(request *DescribeNetworkPeerConnectionsRequest, runtime *dara.RuntimeOptions) (_result *DescribeNetworkPeerConnectionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnsRegionId) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NetworkIds) {
+		query["NetworkIds"] = request.NetworkIds
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeNetworkPeerConnections"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeNetworkPeerConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries VPC peering connections.
+//
+// @param request - DescribeNetworkPeerConnectionsRequest
+//
+// @return DescribeNetworkPeerConnectionsResponse
+func (client *Client) DescribeNetworkPeerConnections(request *DescribeNetworkPeerConnectionsRequest) (_result *DescribeNetworkPeerConnectionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeNetworkPeerConnectionsResponse{}
+	_body, _err := client.DescribeNetworkPeerConnectionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25414,6 +25558,68 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群证书
+//
+// @param request - UpdateClusterCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClusterCertificateResponse
+func (client *Client) UpdateClusterCertificateWithOptions(request *UpdateClusterCertificateRequest, runtime *dara.RuntimeOptions) (_result *UpdateClusterCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateClusterCertificate"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateClusterCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群证书
+//
+// @param request - UpdateClusterCertificateRequest
+//
+// @return UpdateClusterCertificateResponse
+func (client *Client) UpdateClusterCertificate(request *UpdateClusterCertificateRequest) (_result *UpdateClusterCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateClusterCertificateResponse{}
+	_body, _err := client.UpdateClusterCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
