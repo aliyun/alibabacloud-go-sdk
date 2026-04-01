@@ -17,6 +17,8 @@ type iTableSummary interface {
 	GetGeneratedDate() *string
 	SetLastAccessTime(v int64) *TableSummary
 	GetLastAccessTime() *int64
+	SetLastRequester(v string) *TableSummary
+	GetLastRequester() *string
 	SetObjTypeArchiveSize(v int64) *TableSummary
 	GetObjTypeArchiveSize() *int64
 	SetObjTypeColdArchiveSize(v int64) *TableSummary
@@ -37,6 +39,14 @@ type iTableSummary interface {
 	GetStorageClass() *string
 	SetTableName(v string) *TableSummary
 	GetTableName() *string
+	SetTopRequester(v string) *TableSummary
+	GetTopRequester() *string
+	SetTotalFileAccessNum(v int64) *TableSummary
+	GetTotalFileAccessNum() *int64
+	SetTotalFileAccessNum30d(v int64) *TableSummary
+	GetTotalFileAccessNum30d() *int64
+	SetTotalFileAccessNum7d(v int64) *TableSummary
+	GetTotalFileAccessNum7d() *int64
 	SetTotalFileCount(v int64) *TableSummary
 	GetTotalFileCount() *int64
 	SetTotalFileSizeInBytes(v int64) *TableSummary
@@ -73,11 +83,12 @@ type TableSummary struct {
 	// example:
 	//
 	// 1744970111419
-	LastAccessTime         *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	ObjTypeArchiveSize     *int64 `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
-	ObjTypeColdArchiveSize *int64 `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
-	ObjTypeIaSize          *int64 `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
-	ObjTypeStandardSize    *int64 `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
+	LastAccessTime         *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	LastRequester          *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
+	ObjTypeArchiveSize     *int64  `json:"objTypeArchiveSize,omitempty" xml:"objTypeArchiveSize,omitempty"`
+	ObjTypeColdArchiveSize *int64  `json:"objTypeColdArchiveSize,omitempty" xml:"objTypeColdArchiveSize,omitempty"`
+	ObjTypeIaSize          *int64  `json:"objTypeIaSize,omitempty" xml:"objTypeIaSize,omitempty"`
+	ObjTypeStandardSize    *int64  `json:"objTypeStandardSize,omitempty" xml:"objTypeStandardSize,omitempty"`
 	// Creation timestamp in milliseconds
 	//
 	// example:
@@ -96,7 +107,11 @@ type TableSummary struct {
 	// example:
 	//
 	// table1
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TableName             *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TopRequester          *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
+	TotalFileAccessNum    *int64  `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
+	TotalFileAccessNum30d *int64  `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
+	TotalFileAccessNum7d  *int64  `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
 	// 30-day access count
 	//
 	// example:
@@ -140,6 +155,10 @@ func (s *TableSummary) GetLastAccessTime() *int64 {
 	return s.LastAccessTime
 }
 
+func (s *TableSummary) GetLastRequester() *string {
+	return s.LastRequester
+}
+
 func (s *TableSummary) GetObjTypeArchiveSize() *int64 {
 	return s.ObjTypeArchiveSize
 }
@@ -178,6 +197,22 @@ func (s *TableSummary) GetStorageClass() *string {
 
 func (s *TableSummary) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *TableSummary) GetTopRequester() *string {
+	return s.TopRequester
+}
+
+func (s *TableSummary) GetTotalFileAccessNum() *int64 {
+	return s.TotalFileAccessNum
+}
+
+func (s *TableSummary) GetTotalFileAccessNum30d() *int64 {
+	return s.TotalFileAccessNum30d
+}
+
+func (s *TableSummary) GetTotalFileAccessNum7d() *int64 {
+	return s.TotalFileAccessNum7d
 }
 
 func (s *TableSummary) GetTotalFileCount() *int64 {
@@ -228,6 +263,11 @@ func (s *TableSummary) SetLastAccessTime(v int64) *TableSummary {
 	return s
 }
 
+func (s *TableSummary) SetLastRequester(v string) *TableSummary {
+	s.LastRequester = &v
+	return s
+}
+
 func (s *TableSummary) SetObjTypeArchiveSize(v int64) *TableSummary {
 	s.ObjTypeArchiveSize = &v
 	return s
@@ -275,6 +315,26 @@ func (s *TableSummary) SetStorageClass(v string) *TableSummary {
 
 func (s *TableSummary) SetTableName(v string) *TableSummary {
 	s.TableName = &v
+	return s
+}
+
+func (s *TableSummary) SetTopRequester(v string) *TableSummary {
+	s.TopRequester = &v
+	return s
+}
+
+func (s *TableSummary) SetTotalFileAccessNum(v int64) *TableSummary {
+	s.TotalFileAccessNum = &v
+	return s
+}
+
+func (s *TableSummary) SetTotalFileAccessNum30d(v int64) *TableSummary {
+	s.TotalFileAccessNum30d = &v
+	return s
+}
+
+func (s *TableSummary) SetTotalFileAccessNum7d(v int64) *TableSummary {
+	s.TotalFileAccessNum7d = &v
 	return s
 }
 

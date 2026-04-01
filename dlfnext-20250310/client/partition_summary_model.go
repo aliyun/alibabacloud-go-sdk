@@ -15,6 +15,8 @@ type iPartitionSummary interface {
 	GetDatabaseName() *string
 	SetLastAccessTime(v int64) *PartitionSummary
 	GetLastAccessTime() *int64
+	SetLastRequester(v string) *PartitionSummary
+	GetLastRequester() *string
 	SetPartitionName(v string) *PartitionSummary
 	GetPartitionName() *string
 	SetStorageActionParams(v map[string]*string) *PartitionSummary
@@ -25,6 +27,14 @@ type iPartitionSummary interface {
 	GetStorageClass() *string
 	SetTableName(v string) *PartitionSummary
 	GetTableName() *string
+	SetTopRequester(v string) *PartitionSummary
+	GetTopRequester() *string
+	SetTotalFileAccessNum(v int64) *PartitionSummary
+	GetTotalFileAccessNum() *int64
+	SetTotalFileAccessNum30d(v int64) *PartitionSummary
+	GetTotalFileAccessNum30d() *int64
+	SetTotalFileAccessNum7d(v int64) *PartitionSummary
+	GetTotalFileAccessNum7d() *int64
 	SetTotalFileCount(v int64) *PartitionSummary
 	GetTotalFileCount() *int64
 	SetTotalFileSizeInBytes(v int64) *PartitionSummary
@@ -51,7 +61,8 @@ type PartitionSummary struct {
 	// example:
 	//
 	// 1744970111419
-	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	LastAccessTime *int64  `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	LastRequester  *string `json:"lastRequester,omitempty" xml:"lastRequester,omitempty"`
 	// Partition identifier
 	//
 	// example:
@@ -66,7 +77,11 @@ type PartitionSummary struct {
 	// example:
 	//
 	// table1
-	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TableName             *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	TopRequester          *string `json:"topRequester,omitempty" xml:"topRequester,omitempty"`
+	TotalFileAccessNum    *int64  `json:"totalFileAccessNum,omitempty" xml:"totalFileAccessNum,omitempty"`
+	TotalFileAccessNum30d *int64  `json:"totalFileAccessNum30d,omitempty" xml:"totalFileAccessNum30d,omitempty"`
+	TotalFileAccessNum7d  *int64  `json:"totalFileAccessNum7d,omitempty" xml:"totalFileAccessNum7d,omitempty"`
 	// 24h access count
 	//
 	// example:
@@ -105,6 +120,10 @@ func (s *PartitionSummary) GetLastAccessTime() *int64 {
 	return s.LastAccessTime
 }
 
+func (s *PartitionSummary) GetLastRequester() *string {
+	return s.LastRequester
+}
+
 func (s *PartitionSummary) GetPartitionName() *string {
 	return s.PartitionName
 }
@@ -123,6 +142,22 @@ func (s *PartitionSummary) GetStorageClass() *string {
 
 func (s *PartitionSummary) GetTableName() *string {
 	return s.TableName
+}
+
+func (s *PartitionSummary) GetTopRequester() *string {
+	return s.TopRequester
+}
+
+func (s *PartitionSummary) GetTotalFileAccessNum() *int64 {
+	return s.TotalFileAccessNum
+}
+
+func (s *PartitionSummary) GetTotalFileAccessNum30d() *int64 {
+	return s.TotalFileAccessNum30d
+}
+
+func (s *PartitionSummary) GetTotalFileAccessNum7d() *int64 {
+	return s.TotalFileAccessNum7d
 }
 
 func (s *PartitionSummary) GetTotalFileCount() *int64 {
@@ -152,6 +187,11 @@ func (s *PartitionSummary) SetLastAccessTime(v int64) *PartitionSummary {
 	return s
 }
 
+func (s *PartitionSummary) SetLastRequester(v string) *PartitionSummary {
+	s.LastRequester = &v
+	return s
+}
+
 func (s *PartitionSummary) SetPartitionName(v string) *PartitionSummary {
 	s.PartitionName = &v
 	return s
@@ -174,6 +214,26 @@ func (s *PartitionSummary) SetStorageClass(v string) *PartitionSummary {
 
 func (s *PartitionSummary) SetTableName(v string) *PartitionSummary {
 	s.TableName = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTopRequester(v string) *PartitionSummary {
+	s.TopRequester = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTotalFileAccessNum(v int64) *PartitionSummary {
+	s.TotalFileAccessNum = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTotalFileAccessNum30d(v int64) *PartitionSummary {
+	s.TotalFileAccessNum30d = &v
+	return s
+}
+
+func (s *PartitionSummary) SetTotalFileAccessNum7d(v int64) *PartitionSummary {
+	s.TotalFileAccessNum7d = &v
 	return s
 }
 
