@@ -26,30 +26,50 @@ type iExecuteComponentRequest interface {
 }
 
 type ExecuteComponentRequest struct {
+  // The name of the component action.
+  // 
   // example:
   // 
   // doRequest
   ComponentActionName *string `json:"ComponentActionName,omitempty" xml:"ComponentActionName,omitempty"`
+  // Asset UUID.
+  // 
   // example:
   // 
   // 1C5F11E9-****-51F0-****-43BB312A0557
   ComponentAssetUuid *string `json:"ComponentAssetUuid,omitempty" xml:"ComponentAssetUuid,omitempty"`
+  // Component input parameters.
+  // 
   // example:
   // 
   // {}
   ComponentInput *string `json:"ComponentInput,omitempty" xml:"ComponentInput,omitempty"`
+  // The name of the component.
+  // 
   // example:
   // 
   // SLS
   ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+  // The language type for requests and responses. Values:
+  // 
+  // - **zh*	- (default): Chinese.
+  // 
+  // - **en**: English.
+  // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+  // The name of the node corresponding to the current component in the playbook.
+  // 
   // example:
   // 
   // node1
   PlayBookNodeName *string `json:"PlayBookNodeName,omitempty" xml:"PlayBookNodeName,omitempty"`
+  // The UUID of the playbook.
+  // 
+  // > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
+  // 
   // example:
   // 
   // ac343acc-1a61-4084-9a1cxxxxx

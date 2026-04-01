@@ -34,17 +34,106 @@ type iFieldInputConfig interface {
 }
 
 type FieldInputConfig struct {
-	Arrayed          *bool               `json:"Arrayed,omitempty" xml:"Arrayed,omitempty"`
-	DefaultValue     *string             `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FieldCheckRegex  *string             `json:"FieldCheckRegex,omitempty" xml:"FieldCheckRegex,omitempty"`
-	FieldClass       *string             `json:"FieldClass,omitempty" xml:"FieldClass,omitempty"`
-	FieldConfigs     []*FieldInputConfig `json:"FieldConfigs,omitempty" xml:"FieldConfigs,omitempty" type:"Repeated"`
-	FieldDescription *string             `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
-	FieldExample     *string             `json:"FieldExample,omitempty" xml:"FieldExample,omitempty"`
-	FieldName        *string             `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FieldPath        *string             `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
-	FieldType        *string             `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	Required         *bool               `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Is the field arrayed? Possible values are:
+	//
+	// - true: Arrayed.
+	//
+	// - false: Not Arrayed.
+	//
+	// example:
+	//
+	// false
+	Arrayed *bool `json:"Arrayed,omitempty" xml:"Arrayed,omitempty"`
+	// Field default value.
+	//
+	// example:
+	//
+	// test
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Field check regex.
+	//
+	// example:
+	//
+	// [a-zA-Z0-9\\u4e00-\\u9fa5_-]{2,128}
+	FieldCheckRegex *string `json:"FieldCheckRegex,omitempty" xml:"FieldCheckRegex,omitempty"`
+	// Field types, with the following values:
+	//
+	// - **normal**: Normal type.
+	//
+	// - **custom**: Complex type; in this mode, FieldConfigs can be configured.
+	//
+	// example:
+	//
+	// normal
+	FieldClass *string `json:"FieldClass,omitempty" xml:"FieldClass,omitempty"`
+	// Supports configuring nested input parameters in complex-type scenarios.
+	FieldConfigs []*FieldInputConfig `json:"FieldConfigs,omitempty" xml:"FieldConfigs,omitempty" type:"Repeated"`
+	// Field description.
+	//
+	// example:
+	//
+	// app name
+	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
+	// Field example.
+	//
+	// example:
+	//
+	// test
+	FieldExample *string `json:"FieldExample,omitempty" xml:"FieldExample,omitempty"`
+	// Field name.
+	//
+	// example:
+	//
+	// appName
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Field path.
+	//
+	// example:
+	//
+	// xx.appName
+	FieldPath *string `json:"FieldPath,omitempty" xml:"FieldPath,omitempty"`
+	// The field type. The value is as follows:
+	//
+	// - **String**: String.
+	//
+	// - **Long**: Long integer.
+	//
+	// - **Integer**: Integer.
+	//
+	// - **Double**: Floating-point type.
+	//
+	// - **Boolean**: Boolean.
+	//
+	// - **ip**: The IP entity.
+	//
+	// - **file**: file entity.
+	//
+	// - **process**: process entity.
+	//
+	// - **incident**: event entity.
+	//
+	// - **alert**: alert entity.
+	//
+	// - **host**: host entity.
+	//
+	// - **domain**: The domain name entity.
+	//
+	// - **container**: container entity.
+	//
+	// example:
+	//
+	// String
+	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	// Is the field mandatory? Possible values are:
+	//
+	// - **true**: Required.
+	//
+	// - **false**: Optional.
+	//
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s FieldInputConfig) String() string {

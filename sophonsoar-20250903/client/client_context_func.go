@@ -9,6 +9,66 @@ import (
 
 // Summary:
 //
+// 停止剧本
+//
+// @param request - AbortPlaybookExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbortPlaybookExecutionResponse
+func (client *Client) AbortPlaybookExecutionWithContext(ctx context.Context, request *AbortPlaybookExecutionRequest, runtime *dara.RuntimeOptions) (_result *AbortPlaybookExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PlaybookExecutionUuid) {
+		body["PlaybookExecutionUuid"] = request.PlaybookExecutionUuid
+	}
+
+	if !dara.IsNil(request.PlaybookUuid) {
+		body["PlaybookUuid"] = request.PlaybookUuid
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AbortPlaybookExecution"),
+		Version:     dara.String("2025-09-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AbortPlaybookExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Create Component Asset.
 //
 // Description:
@@ -263,7 +323,11 @@ func (client *Client) DeletePlaybookWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 执行组件动作
+// Execute component action.
+//
+// Description:
+//
+// Before using this interface, please make sure you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the Response Orchestration product (i.e., Threat Analysis and Response Log Ingress Traffic).
 //
 // @param request - ExecuteComponentRequest
 //

@@ -22,11 +22,46 @@ type iFieldOutputConfig interface {
 }
 
 type FieldOutputConfig struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Field default value.
+	//
+	// example:
+	//
+	// 11.**.*.11
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// Field description information.
+	//
+	// example:
+	//
+	// Single IP to be blocked
 	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
-	FieldExample     *string `json:"FieldExample,omitempty" xml:"FieldExample,omitempty"`
-	FieldName        *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FieldType        *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	// Field example.
+	//
+	// example:
+	//
+	// 2.*.*.2
+	FieldExample *string `json:"FieldExample,omitempty" xml:"FieldExample,omitempty"`
+	// Field name.
+	//
+	// example:
+	//
+	// ip
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// Field type, with the following values:
+	//
+	// - **String**: String.
+	//
+	// - **Long**: Long integer.
+	//
+	// - **Integer**: Integer.
+	//
+	// - **Double**: Double.
+	//
+	// - **Boolean**: Boolean.
+	//
+	// example:
+	//
+	// String
+	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
 }
 
 func (s FieldOutputConfig) String() string {
