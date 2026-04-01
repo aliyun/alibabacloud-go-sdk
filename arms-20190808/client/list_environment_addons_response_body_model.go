@@ -108,7 +108,8 @@ func (s *ListEnvironmentAddonsResponseBody) Validate() error {
 
 type ListEnvironmentAddonsResponseBodyData struct {
 	// The queried add-ons.
-	Addons []*ListEnvironmentAddonsResponseBodyDataAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	Addons          []*ListEnvironmentAddonsResponseBodyDataAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	ContainsV2Addon *bool                                          `json:"ContainsV2Addon,omitempty" xml:"ContainsV2Addon,omitempty"`
 	// example:
 	//
 	// 1
@@ -127,12 +128,21 @@ func (s *ListEnvironmentAddonsResponseBodyData) GetAddons() []*ListEnvironmentAd
 	return s.Addons
 }
 
+func (s *ListEnvironmentAddonsResponseBodyData) GetContainsV2Addon() *bool {
+	return s.ContainsV2Addon
+}
+
 func (s *ListEnvironmentAddonsResponseBodyData) GetTotal() *int64 {
 	return s.Total
 }
 
 func (s *ListEnvironmentAddonsResponseBodyData) SetAddons(v []*ListEnvironmentAddonsResponseBodyDataAddons) *ListEnvironmentAddonsResponseBodyData {
 	s.Addons = v
+	return s
+}
+
+func (s *ListEnvironmentAddonsResponseBodyData) SetContainsV2Addon(v bool) *ListEnvironmentAddonsResponseBodyData {
+	s.ContainsV2Addon = &v
 	return s
 }
 
