@@ -4251,7 +4251,13 @@ func (client *Client) DescribeFilesetsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询文件系统关联的 HpnZone 列表
+// Retrieves the list of HpnZones for a file system. Access performance is optimal when compute nodes are located in one of the associated HpnZones.
+//
+// Description:
+//
+//	  Only CPFS for Lingjun supports this operation.
+//
+//		- You can call this operation to query up to 20 file systems at a time.
 //
 // @param tmpReq - DescribeFilesystemsAssociatedHpnZonesRequest
 //
@@ -4397,6 +4403,62 @@ func (client *Client) DescribeLifecyclePoliciesWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeLifecyclePoliciesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询生命周期策略日志
+//
+// @param request - DescribeLifecyclePolicyLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLifecyclePolicyLogsResponse
+func (client *Client) DescribeLifecyclePolicyLogsWithContext(ctx context.Context, request *DescribeLifecyclePolicyLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLifecyclePolicyLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyId) {
+		query["LifecyclePolicyId"] = request.LifecyclePolicyId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLifecyclePolicyLogs"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLifecyclePolicyLogsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5497,7 +5559,7 @@ func (client *Client) GetFilesetWithContext(ctx context.Context, request *GetFil
 
 // Summary:
 //
-// 查询协议机挂载点
+// # Query the export directory information of the protocol service
 //
 // @param request - GetProtocolMountTargetRequest
 //
@@ -7251,6 +7313,54 @@ func (client *Client) StartDataFlowWithContext(ctx context.Context, request *Sta
 
 // Summary:
 //
+// 启动生命周期策略运行
+//
+// @param request - StartLifecyclePolicyExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartLifecyclePolicyExecutionResponse
+func (client *Client) StartLifecyclePolicyExecutionWithContext(ctx context.Context, request *StartLifecyclePolicyExecutionRequest, runtime *dara.RuntimeOptions) (_result *StartLifecyclePolicyExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyId) {
+		query["LifecyclePolicyId"] = request.LifecyclePolicyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartLifecyclePolicyExecution"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartLifecyclePolicyExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables a dataflow.
 //
 // Description:
@@ -7321,7 +7431,55 @@ func (client *Client) StopDataFlowWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// Creates tags and binds the tags to file systems.
+// 停止生命周期策略运行
+//
+// @param request - StopLifecyclePolicyExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopLifecyclePolicyExecutionResponse
+func (client *Client) StopLifecyclePolicyExecutionWithContext(ctx context.Context, request *StopLifecyclePolicyExecutionRequest, runtime *dara.RuntimeOptions) (_result *StopLifecyclePolicyExecutionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyId) {
+		query["LifecyclePolicyId"] = request.LifecyclePolicyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopLifecyclePolicyExecution"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopLifecyclePolicyExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates and adds tags to specified resources. File systems and access points are supported.
 //
 // @param request - TagResourcesRequest
 //
@@ -7373,7 +7531,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from a file system.
+// Deletes a tag from a specified resource.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7419,6 +7577,74 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新生命周期策略
+//
+// @param request - UpdateLifecyclePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLifecyclePolicyResponse
+func (client *Client) UpdateLifecyclePolicyWithContext(ctx context.Context, request *UpdateLifecyclePolicyRequest, runtime *dara.RuntimeOptions) (_result *UpdateLifecyclePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.LifecyclePolicyId) {
+		query["LifecyclePolicyId"] = request.LifecyclePolicyId
+	}
+
+	if !dara.IsNil(request.Paths) {
+		query["Paths"] = request.Paths
+	}
+
+	if !dara.IsNil(request.RetrieveRules) {
+		query["RetrieveRules"] = request.RetrieveRules
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.TransitRules) {
+		query["TransitRules"] = request.TransitRules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLifecyclePolicy"),
+		Version:     dara.String("2017-06-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLifecyclePolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

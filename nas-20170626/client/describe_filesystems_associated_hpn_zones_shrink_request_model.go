@@ -16,7 +16,12 @@ type iDescribeFilesystemsAssociatedHpnZonesShrinkRequest interface {
 }
 
 type DescribeFilesystemsAssociatedHpnZonesShrinkRequest struct {
+	// The collection of file system IDs.
+	//
+	// >  The maximum number of elements in the set must be less than or equal to 20.
 	FilesystemsShrink *string `json:"Filesystems,omitempty" xml:"Filesystems,omitempty"`
+	// The ID of the region where the file system resides.
+	//
 	// This parameter is required.
 	//
 	// example:

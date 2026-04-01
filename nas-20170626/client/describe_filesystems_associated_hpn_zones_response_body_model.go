@@ -16,7 +16,10 @@ type iDescribeFilesystemsAssociatedHpnZonesResponseBody interface {
 }
 
 type DescribeFilesystemsAssociatedHpnZonesResponseBody struct {
+	// The list of HpnZones associated with the file system.
 	Filesystems []*DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems `json:"Filesystems,omitempty" xml:"Filesystems,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
@@ -63,11 +66,16 @@ func (s *DescribeFilesystemsAssociatedHpnZonesResponseBody) Validate() error {
 }
 
 type DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems struct {
+	// The list of HpnZones supported by the file system.
 	AssociatedHpnZones []*string `json:"AssociatedHpnZones,omitempty" xml:"AssociatedHpnZones,omitempty" type:"Repeated"`
+	// The ID of the CPFS for Lingjun file system.
+	//
 	// example:
 	//
 	// bmcpfs-290t15yn4uo8lid****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-k
