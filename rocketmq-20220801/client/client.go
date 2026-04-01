@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// # Add Disaster Recovery Plan Entry
+// Adds a topic mapping to a Global Replicator task.
 //
 // @param request - AddDisasterRecoveryItemRequest
 //
@@ -105,7 +105,7 @@ func (client *Client) AddDisasterRecoveryItemWithOptions(planId *string, request
 
 // Summary:
 //
-// # Add Disaster Recovery Plan Entry
+// Adds a topic mapping to a Global Replicator task.
 //
 // @param request - AddDisasterRecoveryItemRequest
 //
@@ -970,7 +970,7 @@ func (client *Client) DeleteConsumerGroupSubscription(instanceId *string, consum
 
 // Summary:
 //
-// 删除容灾计划条目
+// Deletes a topic mapping of a Global Replicator task.
 //
 // @param headers - map
 //
@@ -1003,7 +1003,7 @@ func (client *Client) DeleteDisasterRecoveryItemWithOptions(planId *string, item
 
 // Summary:
 //
-// 删除容灾计划条目
+// Deletes a topic mapping of a Global Replicator task.
 //
 // @return DeleteDisasterRecoveryItemResponse
 func (client *Client) DeleteDisasterRecoveryItem(planId *string, itemId *string) (_result *DeleteDisasterRecoveryItemResponse, _err error) {
@@ -1070,7 +1070,7 @@ func (client *Client) DeleteDisasterRecoveryPlan(planId *string) (_result *Delet
 
 // Summary:
 //
-// Deletes a ApsaraMQ for RocketMQ instance.
+// Releases an instance.
 //
 // Description:
 //
@@ -1111,7 +1111,7 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 
 // Summary:
 //
-// Deletes a ApsaraMQ for RocketMQ instance.
+// Releases an instance.
 //
 // Description:
 //
@@ -1390,7 +1390,7 @@ func (client *Client) DeleteTopic(instanceId *string, topicName *string) (_resul
 
 // Summary:
 //
-// 执行迁移操作
+// Executes a specific operation on a specific migration task.
 //
 // @param request - ExecuteMigrationOperationRequest
 //
@@ -1443,7 +1443,7 @@ func (client *Client) ExecuteMigrationOperationWithOptions(migrationId *string, 
 
 // Summary:
 //
-// 执行迁移操作
+// Executes a specific operation on a specific migration task.
 //
 // @param request - ExecuteMigrationOperationRequest
 //
@@ -1528,7 +1528,7 @@ func (client *Client) FinishMigrationStage(migrationId *string, stageType *strin
 
 // Summary:
 //
-// 查询topic可重置时间范围
+// Queries the time range within which the consumer offset in a topic can be reset.
 //
 // @param headers - map
 //
@@ -1561,7 +1561,7 @@ func (client *Client) GetConsumeTimespanWithOptions(instanceId *string, consumer
 
 // Summary:
 //
-// 查询topic可重置时间范围
+// Queries the time range within which the consumer offset in a topic can be reset.
 //
 // @return GetConsumeTimespanResponse
 func (client *Client) GetConsumeTimespan(instanceId *string, consumerGroupId *string, topicName *string) (_result *GetConsumeTimespanResponse, _err error) {
@@ -1822,7 +1822,7 @@ func (client *Client) GetConsumerStack(instanceId *string, consumerGroupId *stri
 
 // Summary:
 //
-// 查询容灾计划条目详情
+// Queries the details of a topic mapping in a Global Replicator task.
 //
 // @param headers - map
 //
@@ -1855,7 +1855,7 @@ func (client *Client) GetDisasterRecoveryItemWithOptions(planId *string, itemId 
 
 // Summary:
 //
-// 查询容灾计划条目详情
+// Queries the details of a topic mapping in a Global Replicator task.
 //
 // @return GetDisasterRecoveryItemResponse
 func (client *Client) GetDisasterRecoveryItem(planId *string, itemId *string) (_result *GetDisasterRecoveryItemResponse, _err error) {
@@ -2358,7 +2358,7 @@ func (client *Client) GetTrace(instanceId *string, topicName *string, messageId 
 
 // Summary:
 //
-// 查询支持的可用区
+// Queries the supported zones.
 //
 // @param headers - map
 //
@@ -2391,7 +2391,7 @@ func (client *Client) ListAvailableZonesWithOptions(headers map[string]*string, 
 
 // Summary:
 //
-// 查询支持的可用区
+// Queries the supported zones.
 //
 // @return ListAvailableZonesResponse
 func (client *Client) ListAvailableZones() (_result *ListAvailableZonesResponse, _err error) {
@@ -2408,7 +2408,7 @@ func (client *Client) ListAvailableZones() (_result *ListAvailableZonesResponse,
 
 // Summary:
 //
-// 查询消费者客户端连接信息
+// Queries the connections of a specific consumer client.
 //
 // @param request - ListConsumerConnectionsRequest
 //
@@ -2459,7 +2459,7 @@ func (client *Client) ListConsumerConnectionsWithOptions(instanceId *string, con
 
 // Summary:
 //
-// 查询消费者客户端连接信息
+// Queries the connections of a specific consumer client.
 //
 // @param request - ListConsumerConnectionsRequest
 //
@@ -2626,7 +2626,7 @@ func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsum
 
 // Summary:
 //
-// # Query disaster recovery plan consumption progress information
+// Queries consumer progress synchronization tasks.
 //
 // @param request - ListDisasterRecoveryCheckpointsRequest
 //
@@ -2685,7 +2685,7 @@ func (client *Client) ListDisasterRecoveryCheckpointsWithOptions(planId *string,
 
 // Summary:
 //
-// # Query disaster recovery plan consumption progress information
+// Queries consumer progress synchronization tasks.
 //
 // @param request - ListDisasterRecoveryCheckpointsRequest
 //
@@ -3194,7 +3194,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the list of messages.
+// Queries messages.
 //
 // @param request - ListMessagesRequest
 //
@@ -3269,7 +3269,7 @@ func (client *Client) ListMessagesWithOptions(instanceId *string, topicName *str
 
 // Summary:
 //
-// Queries the list of messages.
+// Queries messages.
 //
 // @param request - ListMessagesRequest
 //
@@ -3358,7 +3358,7 @@ func (client *Client) ListMetricMeta(request *ListMetricMetaRequest) (_result *L
 
 // Summary:
 //
-// 查询迁移操作列表
+// Queries a list of migration operations.
 //
 // @param request - ListMigrationOperationsRequest
 //
@@ -3421,7 +3421,7 @@ func (client *Client) ListMigrationOperationsWithOptions(migrationId *string, st
 
 // Summary:
 //
-// 查询迁移操作列表
+// Queries a list of migration operations.
 //
 // @param request - ListMigrationOperationsRequest
 //
@@ -3440,7 +3440,7 @@ func (client *Client) ListMigrationOperations(migrationId *string, stageType *st
 
 // Summary:
 //
-// 查询迁移列表
+// Queries migration tasks.
 //
 // @param request - ListMigrationsRequest
 //
@@ -3503,7 +3503,7 @@ func (client *Client) ListMigrationsWithOptions(request *ListMigrationsRequest, 
 
 // Summary:
 //
-// 查询迁移列表
+// Queries migration tasks.
 //
 // @param request - ListMigrationsRequest
 //
@@ -3572,7 +3572,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// # Query visible resource tag relationships
+// Queries the tags that are added to resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3639,7 +3639,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// # Query visible resource tag relationships
+// Queries the tags that are added to resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3886,7 +3886,7 @@ func (client *Client) ListTraces(instanceId *string, topicName *string, request 
 
 // Summary:
 //
-// Resets the consumer offset of a consumer group.
+// Resets the consumer offset of a consumer group. If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. If faults occur or wrong messages are consumed during message consumption, you can reset the consumer offset to roll back the consumption to a specific offset for reconsumption. You can also reset the consumer offset to the latest offset and temporarily leave the accumulated messages unhandled.
 //
 // @param request - ResetConsumeOffsetRequest
 //
@@ -3937,7 +3937,7 @@ func (client *Client) ResetConsumeOffsetWithOptions(instanceId *string, consumer
 
 // Summary:
 //
-// Resets the consumer offset of a consumer group.
+// Resets the consumer offset of a consumer group. If you reset a consumer offset, the offset from which a consumer starts to consume messages is changed. If faults occur or wrong messages are consumed during message consumption, you can reset the consumer offset to roll back the consumption to a specific offset for reconsumption. You can also reset the consumer offset to the latest offset and temporarily leave the accumulated messages unhandled.
 //
 // @param request - ResetConsumeOffsetRequest
 //
@@ -3956,7 +3956,7 @@ func (client *Client) ResetConsumeOffset(instanceId *string, consumerGroupId *st
 
 // Summary:
 //
-// # Enable Disaster Recovery Plan Entry
+// Starts a topic mapping of a Global Replicator task.
 //
 // @param headers - map
 //
@@ -3989,7 +3989,7 @@ func (client *Client) StartDisasterRecoveryItemWithOptions(planId *string, itemI
 
 // Summary:
 //
-// # Enable Disaster Recovery Plan Entry
+// Starts a topic mapping of a Global Replicator task.
 //
 // @return StartDisasterRecoveryItemResponse
 func (client *Client) StartDisasterRecoveryItem(planId *string, itemId *string) (_result *StartDisasterRecoveryItemResponse, _err error) {
@@ -4006,7 +4006,7 @@ func (client *Client) StartDisasterRecoveryItem(planId *string, itemId *string) 
 
 // Summary:
 //
-// # Deactivate Disaster Recovery Plan Entry
+// Stops a topic mapping of a Global Replicator task.
 //
 // @param headers - map
 //
@@ -4039,7 +4039,7 @@ func (client *Client) StopDisasterRecoveryItemWithOptions(planId *string, itemId
 
 // Summary:
 //
-// # Deactivate Disaster Recovery Plan Entry
+// Stops a topic mapping of a Global Replicator task.
 //
 // @return StopDisasterRecoveryItemResponse
 func (client *Client) StopDisasterRecoveryItem(planId *string, itemId *string) (_result *StopDisasterRecoveryItemResponse, _err error) {
@@ -4907,6 +4907,10 @@ func (client *Client) VerifySendMessageWithOptions(instanceId *string, topicName
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeliveryTimeStamp) {
+		body["deliveryTimeStamp"] = request.DeliveryTimeStamp
+	}
+
 	if !dara.IsNil(request.LiteTopicName) {
 		body["liteTopicName"] = request.LiteTopicName
 	}
@@ -4915,12 +4919,20 @@ func (client *Client) VerifySendMessageWithOptions(instanceId *string, topicName
 		body["message"] = request.Message
 	}
 
+	if !dara.IsNil(request.MessageGroup) {
+		body["messageGroup"] = request.MessageGroup
+	}
+
 	if !dara.IsNil(request.MessageKey) {
 		body["messageKey"] = request.MessageKey
 	}
 
 	if !dara.IsNil(request.MessageTag) {
 		body["messageTag"] = request.MessageTag
+	}
+
+	if !dara.IsNil(request.UserProperties) {
+		body["userProperties"] = request.UserProperties
 	}
 
 	req := &openapiutil.OpenApiRequest{

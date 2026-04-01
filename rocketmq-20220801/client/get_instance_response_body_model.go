@@ -1415,6 +1415,10 @@ type GetInstanceResponseBodyDataProductInfo struct {
 	// true
 	AutoScaling  *bool   `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
 	CapacityType *string `json:"capacityType,omitempty" xml:"capacityType,omitempty"`
+	// example:
+	//
+	// async_cross_az
+	DrReplicationMode *string `json:"drReplicationMode,omitempty" xml:"drReplicationMode,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
 	// For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
@@ -1496,6 +1500,10 @@ func (s *GetInstanceResponseBodyDataProductInfo) GetCapacityType() *string {
 	return s.CapacityType
 }
 
+func (s *GetInstanceResponseBodyDataProductInfo) GetDrReplicationMode() *string {
+	return s.DrReplicationMode
+}
+
 func (s *GetInstanceResponseBodyDataProductInfo) GetMessageRetentionTime() *int32 {
 	return s.MessageRetentionTime
 }
@@ -1535,6 +1543,11 @@ func (s *GetInstanceResponseBodyDataProductInfo) SetAutoScaling(v bool) *GetInst
 
 func (s *GetInstanceResponseBodyDataProductInfo) SetCapacityType(v string) *GetInstanceResponseBodyDataProductInfo {
 	s.CapacityType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDataProductInfo) SetDrReplicationMode(v string) *GetInstanceResponseBodyDataProductInfo {
+	s.DrReplicationMode = &v
 	return s
 }
 

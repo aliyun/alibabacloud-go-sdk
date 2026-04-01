@@ -719,6 +719,10 @@ type CreateInstanceRequestProductInfo struct {
 	// true
 	AutoScaling  *bool   `json:"autoScaling,omitempty" xml:"autoScaling,omitempty"`
 	CapacityType *string `json:"capacityType,omitempty" xml:"capacityType,omitempty"`
+	// example:
+	//
+	// async_cross_az
+	DrReplicationMode *string `json:"drReplicationMode,omitempty" xml:"drReplicationMode,omitempty"`
 	// The retention period of messages. Unit: hours.
 	//
 	// For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
@@ -777,6 +781,10 @@ func (s *CreateInstanceRequestProductInfo) GetCapacityType() *string {
 	return s.CapacityType
 }
 
+func (s *CreateInstanceRequestProductInfo) GetDrReplicationMode() *string {
+	return s.DrReplicationMode
+}
+
 func (s *CreateInstanceRequestProductInfo) GetMessageRetentionTime() *int32 {
 	return s.MessageRetentionTime
 }
@@ -812,6 +820,11 @@ func (s *CreateInstanceRequestProductInfo) SetAutoScaling(v bool) *CreateInstanc
 
 func (s *CreateInstanceRequestProductInfo) SetCapacityType(v string) *CreateInstanceRequestProductInfo {
 	s.CapacityType = &v
+	return s
+}
+
+func (s *CreateInstanceRequestProductInfo) SetDrReplicationMode(v string) *CreateInstanceRequestProductInfo {
+	s.DrReplicationMode = &v
 	return s
 }
 
