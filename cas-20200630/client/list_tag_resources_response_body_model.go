@@ -149,19 +149,10 @@ func (s *ListTagResourcesResponseBodyDataTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyDataTagResourcesTagResources struct {
-	// example:
-	//
-	// cas-upload-xgjcng
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// example:
-	//
-	// ALIYUN::CAS::PCACERTIFICATE
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// example:
-	//
-	// PVDCDC
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyDataTagResourcesTagResources) String() string {

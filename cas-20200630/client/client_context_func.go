@@ -1071,7 +1071,7 @@ func (client *Client) DeleteClientCertificateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details about a root certificate authority (CA) certificate or an intermediate CA certificate.
+// Queries the details about a certificate authority (CA) certificate.
 //
 // Description:
 //
@@ -1349,7 +1349,7 @@ func (client *Client) DescribeClientCertificateWithContext(ctx context.Context, 
 //
 // Summary:
 //
-// 获取客户端证书
+// Queries the details about multiple client certificates or server certificates at a time by using the serial numbers of the certificates.
 //
 // @param request - DescribeClientCertificateForSerialNumberRequest
 //
@@ -1445,7 +1445,7 @@ func (client *Client) DescribeClientCertificateStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// 获取客户端证书状态
+// Queries the status information about client certificates or server certificates by using the serial numbers of the certificates.
 //
 // @param request - DescribeClientCertificateStatusForSerialNumberRequest
 //
@@ -1487,8 +1487,6 @@ func (client *Client) DescribeClientCertificateStatusForSerialNumberWithContext(
 	return _result, _err
 }
 
-// Deprecated: OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
-//
 // Summary:
 //
 // 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
@@ -1508,6 +1506,14 @@ func (client *Client) DescribePcaAndExternalCACertificateListWithContext(ctx con
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Identifiers) {
+		query["Identifiers"] = request.Identifiers
+	}
+
+	if !dara.IsNil(request.KeyWord) {
+		query["KeyWord"] = request.KeyWord
 	}
 
 	if !dara.IsNil(request.ShowSize) {
@@ -1659,7 +1665,7 @@ func (client *Client) ListAllEndEntityInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取证书日志
+// Queries the operation logs of a certificate authority (CA) certificate.
 //
 // @param request - ListCACertificateLogRequest
 //
@@ -1703,7 +1709,7 @@ func (client *Client) ListCACertificateLogWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取证书列表
+// Queries a list of certificates.
 //
 // @param request - ListCertRequest
 //
@@ -1847,7 +1853,7 @@ func (client *Client) ListClientCertificateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询私有CA机构证书
+// Queries private certificate authority (CA) certificates.
 //
 // @param request - ListPcaCaCertificateRequest
 //
@@ -2311,7 +2317,7 @@ func (client *Client) UpdatePcaCertificateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 上传pca证书到SSL上传证书
+// Synchronizes private certificate authority (CA) certificates to the list of SSL certificates.
 //
 // @param request - UploadPcaCertToCasRequest
 //

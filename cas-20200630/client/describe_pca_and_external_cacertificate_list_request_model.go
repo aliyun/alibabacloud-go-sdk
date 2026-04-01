@@ -11,6 +11,10 @@ type iDescribePcaAndExternalCACertificateListRequest interface {
 	GoString() string
 	SetCurrentPage(v int32) *DescribePcaAndExternalCACertificateListRequest
 	GetCurrentPage() *int32
+	SetIdentifiers(v string) *DescribePcaAndExternalCACertificateListRequest
+	GetIdentifiers() *string
+	SetKeyWord(v string) *DescribePcaAndExternalCACertificateListRequest
+	GetKeyWord() *string
 	SetShowSize(v int32) *DescribePcaAndExternalCACertificateListRequest
 	GetShowSize() *int32
 }
@@ -19,7 +23,9 @@ type DescribePcaAndExternalCACertificateListRequest struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Identifiers *string `json:"Identifiers,omitempty" xml:"Identifiers,omitempty"`
+	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	// example:
 	//
 	// 50
@@ -38,12 +44,30 @@ func (s *DescribePcaAndExternalCACertificateListRequest) GetCurrentPage() *int32
 	return s.CurrentPage
 }
 
+func (s *DescribePcaAndExternalCACertificateListRequest) GetIdentifiers() *string {
+	return s.Identifiers
+}
+
+func (s *DescribePcaAndExternalCACertificateListRequest) GetKeyWord() *string {
+	return s.KeyWord
+}
+
 func (s *DescribePcaAndExternalCACertificateListRequest) GetShowSize() *int32 {
 	return s.ShowSize
 }
 
 func (s *DescribePcaAndExternalCACertificateListRequest) SetCurrentPage(v int32) *DescribePcaAndExternalCACertificateListRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePcaAndExternalCACertificateListRequest) SetIdentifiers(v string) *DescribePcaAndExternalCACertificateListRequest {
+	s.Identifiers = &v
+	return s
+}
+
+func (s *DescribePcaAndExternalCACertificateListRequest) SetKeyWord(v string) *DescribePcaAndExternalCACertificateListRequest {
+	s.KeyWord = &v
 	return s
 }
 
