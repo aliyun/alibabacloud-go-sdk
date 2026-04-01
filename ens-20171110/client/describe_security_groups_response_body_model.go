@@ -39,8 +39,7 @@ type DescribeSecurityGroupsResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about security groups.
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroups *DescribeSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Struct"`
 	// The total number of returned pages.
 	//
@@ -147,40 +146,13 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroups) Validate() error {
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup struct {
-	// The creation time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-01T06:08:46Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the security group.
-	//
-	// example:
-	//
-	// TestDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of associated instances.
-	//
-	// example:
-	//
-	// 5
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The IDs of the instances that are associated with the security group.
-	InstanceIds *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	// The IDs of the ENIs that are associated with the security group.
+	CreationTime        *string                                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description         *string                                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceCount       *int32                                                                            `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceIds         *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds         `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	NetworkInterfaceIds *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
-	// The ID of the security group.
-	//
-	// example:
-	//
-	// sg-bp67acfmxazb4ph***
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the security group.
-	//
-	// example:
-	//
-	// DocTest
-	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
+	SecurityGroupId     *string                                                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupName   *string                                                                           `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 
 func (s DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup) String() string {

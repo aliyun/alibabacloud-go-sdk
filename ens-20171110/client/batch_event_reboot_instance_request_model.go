@@ -70,7 +70,8 @@ type BatchEventRebootInstanceRequestEventInfos struct {
 	// example:
 	//
 	// 1742452232000
-	PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PlanTime    *int64  `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
 	// A client ID.
 	//
 	// example:
@@ -99,6 +100,10 @@ func (s *BatchEventRebootInstanceRequestEventInfos) GetPlanTime() *int64 {
 	return s.PlanTime
 }
 
+func (s *BatchEventRebootInstanceRequestEventInfos) GetPlanUtcTime() *string {
+	return s.PlanUtcTime
+}
+
 func (s *BatchEventRebootInstanceRequestEventInfos) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -115,6 +120,11 @@ func (s *BatchEventRebootInstanceRequestEventInfos) SetOpsType(v string) *BatchE
 
 func (s *BatchEventRebootInstanceRequestEventInfos) SetPlanTime(v int64) *BatchEventRebootInstanceRequestEventInfos {
 	s.PlanTime = &v
+	return s
+}
+
+func (s *BatchEventRebootInstanceRequestEventInfos) SetPlanUtcTime(v string) *BatchEventRebootInstanceRequestEventInfos {
+	s.PlanUtcTime = &v
 	return s
 }
 

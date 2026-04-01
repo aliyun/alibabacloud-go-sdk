@@ -59,8 +59,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// 10.0.0.0/24
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The list of resources in the network.
+	CidrBlock      *string                                             `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	CloudResources *DescribeNetworkAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
 	// The time when the network was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -85,15 +84,11 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// rt-539***tbs
-	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
-	// List of HaVipIds.
-	HaVipIds *DescribeNetworkAttributeResponseBodyHaVipIds `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
-	// The instance IDs.
-	InstanceIds *DescribeNetworkAttributeResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	// List of ELB instances.
-	LoadBalancerIds *DescribeNetworkAttributeResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
-	// List of NAT Gateways.
-	NatGatewayIds *DescribeNetworkAttributeResponseBodyNatGatewayIds `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
+	GatewayRouteTableId *string                                              `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
+	HaVipIds            *DescribeNetworkAttributeResponseBodyHaVipIds        `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
+	InstanceIds         *DescribeNetworkAttributeResponseBodyInstanceIds     `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	LoadBalancerIds     *DescribeNetworkAttributeResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
+	NatGatewayIds       *DescribeNetworkAttributeResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
 	// The ID of the network access control list (ACL).
 	//
 	// example:
@@ -105,8 +100,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// n-5***
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// A list of multicast source IDs.
+	NetworkId           *string                                                  `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkInterfaceIds *DescribeNetworkAttributeResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
 	// The name of the network.
 	//
@@ -125,8 +119,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// rt-539***fpu
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// List of routing table IDs.
+	RouteTableId  *string                                            `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	RouteTableIds *DescribeNetworkAttributeResponseBodyRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
 	// The ID of the route table.
 	//
@@ -144,8 +137,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of vSwitches in the network.
+	Status     *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
 	VSwitchIds *DescribeNetworkAttributeResponseBodyVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
@@ -430,18 +422,8 @@ func (s *DescribeNetworkAttributeResponseBodyCloudResources) Validate() error {
 }
 
 type DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType struct {
-	// The number of resources in the network.
-	//
-	// example:
-	//
-	// 3
-	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	// The resource type. VSwitch.
-	//
-	// example:
-	//
-	// VSwitch
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ResourceCount *int32  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType) String() string {

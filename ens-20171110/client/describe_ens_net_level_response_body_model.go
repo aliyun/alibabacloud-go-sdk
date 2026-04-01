@@ -23,8 +23,7 @@ type DescribeEnsNetLevelResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The network levels.
+	Code         *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
 	EnsNetLevels *DescribeEnsNetLevelResponseBodyEnsNetLevels `json:"EnsNetLevels,omitempty" xml:"EnsNetLevels,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,17 +112,6 @@ func (s *DescribeEnsNetLevelResponseBodyEnsNetLevels) Validate() error {
 }
 
 type DescribeEnsNetLevelResponseBodyEnsNetLevelsEnsNetLevel struct {
-	// The network level. Valid values:
-	//
-	// 	- Big: greater area.
-	//
-	// 	- Middle: province.
-	//
-	// 	- Small: city.
-	//
-	// example:
-	//
-	// Big
 	EnsNetLevelCode *string `json:"EnsNetLevelCode,omitempty" xml:"EnsNetLevelCode,omitempty"`
 }
 

@@ -49,9 +49,8 @@ type DescribeInstanceSpecResponseBody struct {
 	// example:
 	//
 	// 0
-	DataDiskMinSize *int32 `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
-	// The information about instance specifications.
-	InstanceSpecs *DescribeInstanceSpecResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Struct"`
+	DataDiskMinSize *int32                                         `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
+	InstanceSpecs   *DescribeInstanceSpecResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -181,30 +180,10 @@ func (s *DescribeInstanceSpecResponseBodyInstanceSpecs) Validate() error {
 }
 
 type DescribeInstanceSpecResponseBodyInstanceSpecsInstanceSpec struct {
-	// The number of CPU cores.
-	//
-	// example:
-	//
-	// 1
-	Core *string `json:"Core,omitempty" xml:"Core,omitempty"`
-	// The display name of the instance type.
-	//
-	// example:
-	//
-	// Computational 1C2G
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The type of the instance.
-	//
-	// example:
-	//
-	// ens.sn1.stiny
+	Core         *string `json:"Core,omitempty" xml:"Core,omitempty"`
+	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The memory size. Unit: MB.
-	//
-	// example:
-	//
-	// 2048
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s DescribeInstanceSpecResponseBodyInstanceSpecsInstanceSpec) String() string {

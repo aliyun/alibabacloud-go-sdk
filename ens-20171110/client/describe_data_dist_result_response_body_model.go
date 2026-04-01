@@ -22,7 +22,6 @@ type iDescribeDataDistResultResponseBody interface {
 }
 
 type DescribeDataDistResultResponseBody struct {
-	// The distribution status of data files on edge instances.
 	DistResults *DescribeDataDistResultResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,20 +146,9 @@ func (s *DescribeDataDistResultResponseBodyDistResults) Validate() error {
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResult struct {
-	// The name of the data file.
-	//
-	// example:
-	//
-	// gcs-prod-websocket-eip-unicom
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The distribution status statistics.
+	Name        *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	StatusStats *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats `json:"StatusStats,omitempty" xml:"StatusStats,omitempty" type:"Struct"`
-	// The version number of the data file.
-	//
-	// example:
-	//
-	// standard
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version     *string                                                             `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBodyDistResultsDistResult) String() string {
@@ -242,30 +230,9 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats) Val
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStat struct {
-	// The number of associated edge instances.
-	//
-	// example:
-	//
-	// 10
-	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The distribution status of the edge instance.
-	Instances *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The distribution status. The value is of the enumeration type. Valid values:
-	//
-	// 	- SUCCESS: The distribution is successful.
-	//
-	// 	- FAILED: The distribution failed.
-	//
-	// 	- DISTING: The data is being distributed.
-	//
-	// 	- POD_RESTARTING: The idle pod is being restarted.
-	//
-	// 	- DELETED: The data is cleared or removed.
-	//
-	// example:
-	//
-	// SUCCESS
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	InstanceCount *string                                                                                `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	Instances     *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	Status        *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStat) String() string {
@@ -347,30 +314,10 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatu
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstancesInstance struct {
-	// The ID of the instance
-	//
-	// example:
-	//
-	// i-5qzje8f5un1wmi341m2yetaxv
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the distribution. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-11-19T07:24:52Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The description of the distribution status.
-	//
-	// example:
-	//
-	// SUCCESS
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatusDescrip *string `json:"StatusDescrip,omitempty" xml:"StatusDescrip,omitempty"`
-	// The time when the distribution status was last updated. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-10-11T02:38:19Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstancesInstance) String() string {

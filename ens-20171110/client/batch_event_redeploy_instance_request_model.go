@@ -70,7 +70,8 @@ type BatchEventRedeployInstanceRequestEventInfos struct {
 	// example:
 	//
 	// immediate
-	PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PlanTime    *int64  `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
 	// Resource ID.
 	//
 	// example:
@@ -99,6 +100,10 @@ func (s *BatchEventRedeployInstanceRequestEventInfos) GetPlanTime() *int64 {
 	return s.PlanTime
 }
 
+func (s *BatchEventRedeployInstanceRequestEventInfos) GetPlanUtcTime() *string {
+	return s.PlanUtcTime
+}
+
 func (s *BatchEventRedeployInstanceRequestEventInfos) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -115,6 +120,11 @@ func (s *BatchEventRedeployInstanceRequestEventInfos) SetOpsType(v string) *Batc
 
 func (s *BatchEventRedeployInstanceRequestEventInfos) SetPlanTime(v int64) *BatchEventRedeployInstanceRequestEventInfos {
 	s.PlanTime = &v
+	return s
+}
+
+func (s *BatchEventRedeployInstanceRequestEventInfos) SetPlanUtcTime(v string) *BatchEventRedeployInstanceRequestEventInfos {
+	s.PlanUtcTime = &v
 	return s
 }
 

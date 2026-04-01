@@ -25,16 +25,14 @@ type DescribeReservedResourceResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the image.
+	Code   *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Images *DescribeReservedResourceResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 6666C5A5-75ED-422E-A022-7121FA18C968
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources.
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportResources *DescribeReservedResourceResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -131,17 +129,7 @@ func (s *DescribeReservedResourceResponseBodyImages) Validate() error {
 }
 
 type DescribeReservedResourceResponseBodyImagesImage struct {
-	// The ID of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_alibase_****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_alibase_****
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 }
 
@@ -210,28 +198,11 @@ func (s *DescribeReservedResourceResponseBodySupportResources) Validate() error 
 }
 
 type DescribeReservedResourceResponseBodySupportResourcesSupportResource struct {
-	// The sizes of data disks.
-	DataDiskSizes *DescribeReservedResourceResponseBodySupportResourcesSupportResourceDataDiskSizes `json:"DataDiskSizes,omitempty" xml:"DataDiskSizes,omitempty" type:"Struct"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// cn-beijing-cmcc
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The specifications of instances.
-	//
-	// example:
-	//
-	// ens.sn1.stiny
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The number of resources that you can purchase.
-	//
-	// example:
-	//
-	// 9
-	SupportResourcesCount *string `json:"SupportResourcesCount,omitempty" xml:"SupportResourcesCount,omitempty"`
-	// The sizes of system disks.
-	SystemDiskSizes *DescribeReservedResourceResponseBodySupportResourcesSupportResourceSystemDiskSizes `json:"SystemDiskSizes,omitempty" xml:"SystemDiskSizes,omitempty" type:"Struct"`
+	DataDiskSizes         *DescribeReservedResourceResponseBodySupportResourcesSupportResourceDataDiskSizes   `json:"DataDiskSizes,omitempty" xml:"DataDiskSizes,omitempty" type:"Struct"`
+	EnsRegionId           *string                                                                             `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceSpec          *string                                                                             `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	SupportResourcesCount *string                                                                             `json:"SupportResourcesCount,omitempty" xml:"SupportResourcesCount,omitempty"`
+	SystemDiskSizes       *DescribeReservedResourceResponseBodySupportResourcesSupportResourceSystemDiskSizes `json:"SystemDiskSizes,omitempty" xml:"SystemDiskSizes,omitempty" type:"Struct"`
 }
 
 func (s DescribeReservedResourceResponseBodySupportResourcesSupportResource) String() string {

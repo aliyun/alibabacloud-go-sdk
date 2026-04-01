@@ -71,22 +71,17 @@ type DescribeVSwitchAttributesResponseBody struct {
 	// example:
 	//
 	// cn-xian-unicom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// A list of high-availability VIP instance IDs.
-	HaVipIds *DescribeVSwitchAttributesResponseBodyHaVipIds `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
-	// A list of instance IDs.
-	InstanceIds *DescribeVSwitchAttributesResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	// A list of load balancer instance IDs.
+	EnsRegionId     *string                                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HaVipIds        *DescribeVSwitchAttributesResponseBodyHaVipIds        `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
+	InstanceIds     *DescribeVSwitchAttributesResponseBodyInstanceIds     `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	LoadBalancerIds *DescribeVSwitchAttributesResponseBodyLoadBalancerIds `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Struct"`
-	// A list of NAT gateway IDs.
-	NatGatewayIds *DescribeVSwitchAttributesResponseBodyNatGatewayIds `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
+	NatGatewayIds   *DescribeVSwitchAttributesResponseBodyNatGatewayIds   `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Struct"`
 	// The network ID.
 	//
 	// example:
 	//
 	// n-257gqcdfvx6n****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// A list of elastic network interface IDs.
+	NetworkId           *string                                                   `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkInterfaceIds *DescribeVSwitchAttributesResponseBodyNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
 	// The request ID.
 	//

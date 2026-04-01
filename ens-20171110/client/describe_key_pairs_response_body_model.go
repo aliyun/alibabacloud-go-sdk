@@ -22,7 +22,6 @@ type iDescribeKeyPairsResponseBody interface {
 }
 
 type DescribeKeyPairsResponseBody struct {
-	// Details about the key pairs.
 	KeyPairs *DescribeKeyPairsResponseBodyKeyPairs `json:"KeyPairs,omitempty" xml:"KeyPairs,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,30 +146,10 @@ func (s *DescribeKeyPairsResponseBodyKeyPairs) Validate() error {
 }
 
 type DescribeKeyPairsResponseBodyKeyPairsKeyPair struct {
-	// The time when the key pair was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-04-26T15:38:27Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The fingerprint of the key pair.
-	//
-	// example:
-	//
-	// fdaf8ff7a756ef843814fc****
+	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	// The ID of the key pair.
-	//
-	// example:
-	//
-	// ssh-50cynkq42sgj4ej1tn78t4***
-	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the SSH key pair.
-	//
-	// example:
-	//
-	// TestKeyPairName
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	KeyPairId          *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	KeyPairName        *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 }
 
 func (s DescribeKeyPairsResponseBodyKeyPairsKeyPair) String() string {

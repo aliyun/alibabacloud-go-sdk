@@ -151,23 +151,133 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddresses) Validate() error {
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
-	AllocationId       *string                                                        `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	AllocationTime     *string                                                        `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	Bandwidth          *int32                                                         `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ChargeType         *string                                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Description        *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId        *string                                                        `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	IcmpReplyEnabled   *bool                                                          `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
-	InstanceId         *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType       *string                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType *string                                                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpAddress          *string                                                        `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	IpStatus           *string                                                        `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
-	Isp                *string                                                        `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name               *string                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	Standby            *bool                                                          `json:"Standby,omitempty" xml:"Standby,omitempty"`
-	Status             *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags               *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// EIP的实例ID。
+	//
+	// example:
+	//
+	// eip-5sainglpw7qfem3icir4s****
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// EIP的创建时间
+	//
+	// example:
+	//
+	// 1624885274000
+	AllocationTime *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	// EIP的带宽峰值，默认值为5。取值范围：**5**~**10000**，单位：Mbps。
+	//
+	// example:
+	//
+	// 50
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// EIP的计费模式。
+	//
+	// - **PrePaid**：包年包月。
+	//
+	// - **PostPaid**：按量计费。
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// EIP的描述信息。
+	//
+	// example:
+	//
+	// example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// ENS节点ID。
+	//
+	// example:
+	//
+	// cn-xian-telecom
+	EnsRegionId      *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	IcmpReplyEnabled *bool   `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	// 当前绑定的实例的ID。
+	//
+	// example:
+	//
+	// lb-5sc3kum2e0sz34wbqrws9****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 要绑定的云产品实例的类型，取值：
+	//
+	// - **EnsInstance**：VPC类型的ENS实例。
+	//
+	// - **SlbInstance**：负载均衡实例。
+	//
+	// example:
+	//
+	// SlbInstance
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// EIP的计费方式。
+	//
+	// - **95BandwidthByMonth**：月95峰值带宽。
+	//
+	// - **PayByBandwidth**：固定带宽计费。
+	//
+	// example:
+	//
+	// 95BandwidthByMonth
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// EIP的IP地址。
+	//
+	// example:
+	//
+	// 120.XXX.XXX.4
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// 如果该弹性IP是备用EIP时，表示当前EIP的运行状态。
+	//
+	// - **Stopped**：已停止。
+	//
+	// - **Running**：运行中。
+	//
+	// - **Starting**：启动中。
+	//
+	// - **Stopping**：停止中。
+	//
+	// example:
+	//
+	// Stopped
+	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
+	// 运营商，取值：
+	//
+	// - **cmcc**：中国移动。
+	//
+	// - **unicom**：中国联通。
+	//
+	// - **telecom**：中国电信。
+	//
+	// example:
+	//
+	// cmcc
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// EIP实例名称。
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 该EIP是否是备用。
+	//
+	// example:
+	//
+	// true
+	Standby *bool `json:"Standby,omitempty" xml:"Standby,omitempty"`
+	// EIP的状态。
+	//
+	// - **Associating**：绑定中。
+	//
+	// - **Unassociating**：解绑中。
+	//
+	// - **InUse**：已分配。
+	//
+	// - **Available**：可用。
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 标签集合。
+	Tags *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -375,12 +485,34 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) Validate
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
+	// 标签键
+	//
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
+	//
+	// 标签键。
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
+	//
+	// 标签值。
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 标签值。
+	//
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) String() string {

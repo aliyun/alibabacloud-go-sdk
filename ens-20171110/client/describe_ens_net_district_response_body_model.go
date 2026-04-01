@@ -23,8 +23,7 @@ type DescribeEnsNetDistrictResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the regions.
+	Code            *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	EnsNetDistricts *DescribeEnsNetDistrictResponseBodyEnsNetDistricts `json:"EnsNetDistricts,omitempty" xml:"EnsNetDistricts,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,48 +112,12 @@ func (s *DescribeEnsNetDistrictResponseBodyEnsNetDistricts) Validate() error {
 }
 
 type DescribeEnsNetDistrictResponseBodyEnsNetDistrictsEnsNetDistrict struct {
-	// The number of nodes in the region.
-	//
-	// example:
-	//
-	// 2
-	EnsRegionIdCount *string `json:"EnsRegionIdCount,omitempty" xml:"EnsRegionIdCount,omitempty"`
-	// The code of the region.
-	//
-	// example:
-	//
-	// 100106
-	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// southWest
-	NetDistrictEnName *string `json:"NetDistrictEnName,omitempty" xml:"NetDistrictEnName,omitempty"`
-	// The parent code of the region.
-	//
-	// example:
-	//
-	// 100000
+	EnsRegionIdCount      *string `json:"EnsRegionIdCount,omitempty" xml:"EnsRegionIdCount,omitempty"`
+	NetDistrictCode       *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	NetDistrictEnName     *string `json:"NetDistrictEnName,omitempty" xml:"NetDistrictEnName,omitempty"`
 	NetDistrictFatherCode *string `json:"NetDistrictFatherCode,omitempty" xml:"NetDistrictFatherCode,omitempty"`
-	// The level of the region.
-	//
-	// 	- **Big**: area
-	//
-	// 	- **Middle**: province
-	//
-	// 	- **Small**: city
-	//
-	// example:
-	//
-	// Big
-	NetDistrictLevel *string `json:"NetDistrictLevel,omitempty" xml:"NetDistrictLevel,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// southwest China
-	NetDistrictName *string `json:"NetDistrictName,omitempty" xml:"NetDistrictName,omitempty"`
+	NetDistrictLevel      *string `json:"NetDistrictLevel,omitempty" xml:"NetDistrictLevel,omitempty"`
+	NetDistrictName       *string `json:"NetDistrictName,omitempty" xml:"NetDistrictName,omitempty"`
 }
 
 func (s DescribeEnsNetDistrictResponseBodyEnsNetDistrictsEnsNetDistrict) String() string {

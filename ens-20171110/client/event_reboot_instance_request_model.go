@@ -15,6 +15,8 @@ type iEventRebootInstanceRequest interface {
   GetOpsType() *string 
   SetPlanTime(v int64) *EventRebootInstanceRequest
   GetPlanTime() *int64 
+  SetPlanUtcTime(v string) *EventRebootInstanceRequest
+  GetPlanUtcTime() *string 
   SetResourceId(v string) *EventRebootInstanceRequest
   GetResourceId() *string 
 }
@@ -46,6 +48,7 @@ type EventRebootInstanceRequest struct {
   // 
   // 1742452232000
   PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+  PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
   // The ID of the resource.
   // 
   // This parameter is required.
@@ -76,6 +79,10 @@ func (s *EventRebootInstanceRequest) GetPlanTime() *int64  {
   return s.PlanTime
 }
 
+func (s *EventRebootInstanceRequest) GetPlanUtcTime() *string  {
+  return s.PlanUtcTime
+}
+
 func (s *EventRebootInstanceRequest) GetResourceId() *string  {
   return s.ResourceId
 }
@@ -92,6 +99,11 @@ func (s *EventRebootInstanceRequest) SetOpsType(v string) *EventRebootInstanceRe
 
 func (s *EventRebootInstanceRequest) SetPlanTime(v int64) *EventRebootInstanceRequest {
   s.PlanTime = &v
+  return s
+}
+
+func (s *EventRebootInstanceRequest) SetPlanUtcTime(v string) *EventRebootInstanceRequest {
+  s.PlanUtcTime = &v
   return s
 }
 

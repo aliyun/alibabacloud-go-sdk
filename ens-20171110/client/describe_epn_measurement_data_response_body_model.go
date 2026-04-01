@@ -16,7 +16,6 @@ type iDescribeEpnMeasurementDataResponseBody interface {
 }
 
 type DescribeEpnMeasurementDataResponseBody struct {
-	// The metering data returned.
 	MeasurementDatas *DescribeEpnMeasurementDataResponseBodyMeasurementDatas `json:"MeasurementDatas,omitempty" xml:"MeasurementDatas,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,36 +95,11 @@ func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatas) Validate() erro
 }
 
 type DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData struct {
-	// The bandwidth data returned.
 	BandWidthFeeDatas *DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas `json:"BandWidthFeeDatas,omitempty" xml:"BandWidthFeeDatas,omitempty" type:"Struct"`
-	// The metering method. Valid values:
-	//
-	// 	- ChargeByUnified: unified metering.
-	//
-	// 	- ChargeByGrade: differential metering.
-	//
-	// example:
-	//
-	// ChargeByGrade
-	ChargeModel *string `json:"ChargeModel,omitempty" xml:"ChargeModel,omitempty"`
-	// The metering cycle.
-	//
-	// example:
-	//
-	// 2019-07-30
-	CostCycle *string `json:"CostCycle,omitempty" xml:"CostCycle,omitempty"`
-	// The end time of the metering cycle.
-	//
-	// example:
-	//
-	// 2019-07-30T16:00:00Z
-	CostEndTime *string `json:"CostEndTime,omitempty" xml:"CostEndTime,omitempty"`
-	// The start time of the metering cycle.
-	//
-	// example:
-	//
-	// 2019-07-29T16:00:00Z
-	CostStartTime *string `json:"CostStartTime,omitempty" xml:"CostStartTime,omitempty"`
+	ChargeModel       *string                                                                                 `json:"ChargeModel,omitempty" xml:"ChargeModel,omitempty"`
+	CostCycle         *string                                                                                 `json:"CostCycle,omitempty" xml:"CostCycle,omitempty"`
+	CostEndTime       *string                                                                                 `json:"CostEndTime,omitempty" xml:"CostEndTime,omitempty"`
+	CostStartTime     *string                                                                                 `json:"CostStartTime,omitempty" xml:"CostStartTime,omitempty"`
 }
 
 func (s DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementData) String() string {
@@ -225,40 +199,11 @@ func (s *DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBa
 }
 
 type DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData struct {
-	// The code of the billable item.
-	//
-	// example:
-	//
-	// cn-cmcc-1
 	CostCode *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
-	// The name of the billable item.
-	//
-	// example:
-	//
-	// Beijing, Shanghai, and Guangzhou Mobile
 	CostName *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
-	// Metering method
-	//
-	// 	- SpeedUp: bandwidth of intelligent acceleration
-	//
-	// 	- IntranetConnection: internal bandwidth
-	//
-	// example:
-	//
-	// SpeedUp
 	CostType *string `json:"CostType,omitempty" xml:"CostType,omitempty"`
-	// The value of the billable item.
-	//
-	// example:
-	//
-	// 16486
-	CostVal *int32 `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
-	// This parameter is unavailable.
-	//
-	// example:
-	//
-	// This parameter is not currently in use.
-	IspLine *string `json:"IspLine,omitempty" xml:"IspLine,omitempty"`
+	CostVal  *int32  `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
+	IspLine  *string `json:"IspLine,omitempty" xml:"IspLine,omitempty"`
 }
 
 func (s DescribeEpnMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData) String() string {

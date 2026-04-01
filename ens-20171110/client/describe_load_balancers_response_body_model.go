@@ -22,7 +22,6 @@ type iDescribeLoadBalancersResponseBody interface {
 }
 
 type DescribeLoadBalancersResponseBody struct {
-	// An array of ELB instances.
 	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,76 +146,18 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancers) Validate() error {
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
-	// The IP address that the ELB instance uses to provide services.
-	//
-	// example:
-	//
-	// 10.10.XX.XX
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The IP version. Valid values: ipv4 and ipv6.
-	//
-	// example:
-	//
-	// ipv4
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The time when the ELB instance was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-05-06T11:13:41Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the ENS node.
-	//
-	// example:
-	//
-	// cn-wuhan-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the ELB instance.
-	//
-	// example:
-	//
-	// lb-5snthcyu1x10g7tywj7iu****
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ELB instance.
-	//
-	// example:
-	//
-	// example
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The status of the listener for the ELB instance. Valid values:
-	//
-	// 	- **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
-	//
-	// 	- **InActive**: The listener for the instance does not forward the received traffic.
-	//
-	// example:
-	//
-	// InActive
+	Address            *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressIPVersion   *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AddressType        *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName   *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	LoadBalancerType   *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// The ID of the network.
-	//
-	// example:
-	//
-	// n-5rz0rj1caexauilpsjx0w****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The billing method. Valid values:
-	//
-	// 	- **PrePaid**: subscription.
-	//
-	// 	- **PostPaid**: pay-as-you-go. Only this billing method is supported.
-	//
-	// example:
-	//
-	// PostPaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-5rllcjb3ol6duzjdnbm1om****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	NetworkId          *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) String() string {

@@ -22,7 +22,6 @@ type iDescribeEpnInstancesResponseBody interface {
 }
 
 type DescribeEpnInstancesResponseBody struct {
-	// Details of EPN instances.
 	EPNInstances *DescribeEpnInstancesResponseBodyEPNInstances `json:"EPNInstances,omitempty" xml:"EPNInstances,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,78 +146,16 @@ func (s *DescribeEpnInstancesResponseBodyEPNInstances) Validate() error {
 }
 
 type DescribeEpnInstancesResponseBodyEPNInstancesEPNInstance struct {
-	// The time when the instance was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-01T06:08:46Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the EPN instance.
-	//
-	// example:
-	//
-	// epn****
-	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
-	// The name of the EPN instance.
-	//
-	// example:
-	//
-	// ens_test_epn
-	EPNInstanceName *string `json:"EPNInstanceName,omitempty" xml:"EPNInstanceName,omitempty"`
-	// Set the value to EdgeToEdge.
-	//
-	// example:
-	//
-	// EdgeToEdge
-	EPNInstanceType *string `json:"EPNInstanceType,omitempty" xml:"EPNInstanceType,omitempty"`
-	// The end of the time range during which the data was queried. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-01T06:08:46Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The inbound bandwidth. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 40
-	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The time when the instance was last modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-01T06:08:46Z
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The networking mode. Valid values:
-	//
-	// 	- SpeedUp: intelligent acceleration network (Internet)
-	//
-	// 	- Connection: internal network
-	//
-	// 	- SpeedUpAndConnection: intelligent acceleration network and internal network
-	//
-	// example:
-	//
-	// SpeedUp
-	NetworkingModel *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
-	// The beginning of the time range during which the data was queried. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-01T06:08:46Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// 	- Running
-	//
-	// 	- Excuting
-	//
-	// 	- Stopped
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreationTime            *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EPNInstanceId           *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
+	EPNInstanceName         *string `json:"EPNInstanceName,omitempty" xml:"EPNInstanceName,omitempty"`
+	EPNInstanceType         *string `json:"EPNInstanceType,omitempty" xml:"EPNInstanceType,omitempty"`
+	EndTime                 *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	ModifyTime              *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	NetworkingModel         *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
+	StartTime               *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEpnInstancesResponseBodyEPNInstancesEPNInstance) String() string {

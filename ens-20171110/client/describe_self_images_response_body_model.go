@@ -29,8 +29,7 @@ type DescribeSelfImagesResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The image information.
+	Code   *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Images *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -164,128 +163,21 @@ func (s *DescribeSelfImagesResponseBodyImages) Validate() error {
 }
 
 type DescribeSelfImagesResponseBodyImagesImage struct {
-	// The image architecture. Valid values:
-	//
-	// 	- i386
-	//
-	// 	- x86_64
-	//
-	// example:
-	//
-	// x86_64
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Computing type. ens_vm/ens: x86 computing. bare_metal: x86 bare machine or x86 bare metal. arm_vm: ARM computing. arm_bare_metal: ARM bare machine or ARM bare metal. pcfarm: heterogeneous computing.
-	//
-	// example:
-	//
-	// ens_vm
-	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
-	// The image creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-08T12:10:03Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The mappings between the disk and the snapshot in the image.
+	Architecture       *string                                                      `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	ComputeType        *string                                                      `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	CreationTime       *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DiskDeviceMappings *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
-	// The ID of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_a****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_a****
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The source of the image. Valid values:
-	//
-	// 	- **others**: a custom image that is shared by other Alibaba Cloud accounts.
-	//
-	// 	- **self**: your own custom image.
-	//
-	// example:
-	//
-	// system
-	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	// The size of the image. Unit: GiB.
-	//
-	// example:
-	//
-	// 20
-	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The size of the image storage.
-	//
-	// example:
-	//
-	// 400
-	ImageStorageSize *string `json:"ImageStorageSize,omitempty" xml:"ImageStorageSize,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-5iqczfxps7csjrxeca****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operating system version.
-	//
-	// example:
-	//
-	// 7.2
-	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The platform.
-	//
-	// 	- centos
-	//
-	// 	- ubuntu
-	//
-	// 	- alios
-	//
-	// 	- debian
-	//
-	// 	- rhel
-	//
-	// 	- windows
-	//
-	// example:
-	//
-	// centos
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-shenzhen
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The snapshot ID.
-	//
-	// example:
-	//
-	// sp-5yt3bdedxzdz6t6uuw****
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The state of the image.
-	//
-	// 	- Creating.
-	//
-	// 	- Packing.
-	//
-	// 	- Uploading.
-	//
-	// 	- Pack_failed.
-	//
-	// 	- Upload_failed.
-	//
-	// 	- Available: Only images in the Available state can be used and operated.
-	//
-	// 	- Unavailable.
-	//
-	// 	- Copying.
-	//
-	// example:
-	//
-	// Creating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ImageId            *string                                                      `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName          *string                                                      `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageOwnerAlias    *string                                                      `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	ImageSize          *string                                                      `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	ImageStorageSize   *string                                                      `json:"ImageStorageSize,omitempty" xml:"ImageStorageSize,omitempty"`
+	InstanceId         *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OsVersion          *string                                                      `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	Platform           *string                                                      `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RegionId           *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotId         *string                                                      `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Status             *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSelfImagesResponseBodyImagesImage) String() string {
@@ -475,37 +367,9 @@ func (s *DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappings) Validate()
 }
 
 type DescribeSelfImagesResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
-	// The format of the image.
-	//
-	// example:
-	//
-	// The format of the image.
-	//
-	// raw
-	//
-	// qcow2
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The size of the disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 100
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The type of the disk. Valid values:
-	//
-	// 	- system: system disk.
-	//
-	// 	- data: data disk.
-	//
-	// example:
-	//
-	// Data
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of image.
-	//
-	// example:
-	//
-	// i-test
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
 }
 

@@ -24,7 +24,6 @@ type iDescribeImageSharePermissionResponseBody interface {
 }
 
 type DescribeImageSharePermissionResponseBody struct {
-	// The account information.
 	Accounts *DescribeImageSharePermissionResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The ID of the image.
 	//
@@ -164,11 +163,6 @@ func (s *DescribeImageSharePermissionResponseBodyAccounts) Validate() error {
 }
 
 type DescribeImageSharePermissionResponseBodyAccountsAccount struct {
-	// The Alibaba Cloud account with which you share the image.
-	//
-	// example:
-	//
-	// 1515285523xxxx
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
 }
 

@@ -23,8 +23,7 @@ type DescribeInstanceMonitorDataResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The set of InstanceMonitorDataType data.
+	Code        *int32                                              `json:"Code,omitempty" xml:"Code,omitempty"`
 	MonitorData *DescribeInstanceMonitorDataResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,24 +112,9 @@ func (s *DescribeInstanceMonitorDataResponseBodyMonitorData) Validate() error {
 }
 
 type DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData struct {
-	// The vCPU usage of the instance, which is raw data. For example, a value of 0.02 indicates that the usage is 2%.
-	//
-	// example:
-	//
-	// 0.02
-	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// yourInstance ID
+	CPU        *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is not yet supported.
-	//
-	// example:
-	//
-	// Not currently supported
-	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory     *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData) String() string {

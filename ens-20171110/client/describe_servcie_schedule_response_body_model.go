@@ -169,8 +169,7 @@ type DescribeServcieScheduleResponseBodyPodAbstractInfo struct {
 	// example:
 	//
 	// android
-	ContainerService *bool `json:"ContainerService,omitempty" xml:"ContainerService,omitempty"`
-	// The information about the container.
+	ContainerService  *bool                                                                `json:"ContainerService,omitempty" xml:"ContainerService,omitempty"`
 	ContainerStatuses *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses `json:"ContainerStatuses,omitempty" xml:"ContainerStatuses,omitempty" type:"Struct"`
 	// The name of the pod.
 	//
@@ -304,18 +303,8 @@ func (s *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses) Va
 }
 
 type DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatusesContainerStatus struct {
-	// The ID of the container.
-	//
-	// example:
-	//
-	// container_e79_1638372147094_158091_02_000001
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	// The name of the container.
-	//
-	// example:
-	//
-	// nginx
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatusesContainerStatus) String() string {

@@ -16,7 +16,6 @@ type iSetBackendServersResponseBody interface {
 }
 
 type SetBackendServersResponseBody struct {
-	// The backend servers.
 	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,42 +95,11 @@ func (s *SetBackendServersResponseBodyBackendServers) Validate() error {
 }
 
 type SetBackendServersResponseBodyBackendServersBackendServer struct {
-	// The IP address of the backend server.
-	//
-	// example:
-	//
-	// 192.168.0.1
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The backend port that is used by the ELB instance.
-	//
-	// example:
-	//
-	// 0
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the instance that you want to use as the backend server.
-	//
-	// example:
-	//
-	// i-5uf6hj58zvml4ali8****
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of the backend server. Valid values:
-	//
-	// 	- **ens**: ENS instance.
-	//
-	// 	- **eni**: ENI instance.
-	//
-	// example:
-	//
-	// ens
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server. Default value: 100. Valid values: **0*	- to **100**.
-	//
-	// >  The value 0 indicates that requests are not forwarded to the backend server.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SetBackendServersResponseBodyBackendServersBackendServer) String() string {

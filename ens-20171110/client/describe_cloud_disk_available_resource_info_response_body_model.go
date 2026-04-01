@@ -21,8 +21,7 @@ type DescribeCloudDiskAvailableResourceInfoResponseBody struct {
 	// example:
 	//
 	// 0AE4F26E-7527-569F-A987-E3CF269A3C11
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The specifications of resources that you can purchase.
+	RequestId        *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportResources *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -96,58 +95,14 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources) Val
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
-	// Node product capability.
-	Ability *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Struct"`
-	// The number of disks that you can purchase.
-	//
-	// example:
-	//
-	// 2
-	CanBuyCount *int64 `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
-	// The type of the disk.
-	//
-	// 	- cloud_efficiency:ultra disk.
-	//
-	// 	- cloud_ssd:all-flash disk.
-	//
-	// 	- local_hdd:local HDD.
-	//
-	// 	- local_ssd:local SSD.
-	//
-	// example:
-	//
-	// cloud_ssd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The default size of the disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 20
-	DefaultDiskSize *int64 `json:"DefaultDiskSize,omitempty" xml:"DefaultDiskSize,omitempty"`
-	// The maximum size of the disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 80
-	DiskMaxSize *int64 `json:"DiskMaxSize,omitempty" xml:"DiskMaxSize,omitempty"`
-	// The minimum size of the disk size. Unit: GiB.
-	//
-	// example:
-	//
-	// 20
-	DiskMinSize *int64 `json:"DiskMinSize,omitempty" xml:"DiskMinSize,omitempty"`
-	// The ID of the edge node.
-	//
-	// example:
-	//
-	// cn-beijing-cmcc
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The name of the task node.
-	//
-	// example:
-	//
-	// Beijing Mobile
-	EnsRegionName *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
+	Ability         *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResourceAbility `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Struct"`
+	CanBuyCount     *int64                                                                                    `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
+	Category        *string                                                                                   `json:"Category,omitempty" xml:"Category,omitempty"`
+	DefaultDiskSize *int64                                                                                    `json:"DefaultDiskSize,omitempty" xml:"DefaultDiskSize,omitempty"`
+	DiskMaxSize     *int64                                                                                    `json:"DiskMaxSize,omitempty" xml:"DiskMaxSize,omitempty"`
+	DiskMinSize     *int64                                                                                    `json:"DiskMinSize,omitempty" xml:"DiskMinSize,omitempty"`
+	EnsRegionId     *string                                                                                   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionName   *string                                                                                   `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
 }
 
 func (s DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource) String() string {

@@ -27,8 +27,7 @@ type DescribeSecurityGroupAttributeResponseBody struct {
 	// example:
 	//
 	// testDescription1
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Details about the rules.
+	Description *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	Permissions *DescribeSecurityGroupAttributeResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -147,68 +146,18 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissions) Validate() error
 }
 
 type DescribeSecurityGroupAttributeResponseBodyPermissionsPermission struct {
-	// The time at which the security group rule was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-12-12T07:28:38Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// testDescription1
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The range of destination IP addresses for outbound access control.
-	//
-	// example:
-	//
-	// 0.0.0.0/0
-	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	// The direction in which the security group rule is applied.
-	//
-	// example:
-	//
-	// ingress
-	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The transport layer protocol.
-	//
-	// example:
-	//
-	// TCP
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp       *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	Direction        *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	Ipv6DestCidrIp   *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
 	Ipv6SourceCidrIp *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	// The policy.
-	//
-	// example:
-	//
-	// Accept
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The source port range.
-	//
-	// example:
-	//
-	// 80/80
-	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the rule.
-	//
-	// example:
-	//
-	// 1
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The range of source IP addresses for inbound access control.
-	//
-	// example:
-	//
-	// 0.0.0.0/0
-	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The source port number range for the security group.
-	//
-	// example:
-	//
-	// 22/22
-	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	Policy           *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange        *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority         *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SourceCidrIp     *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange  *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 
 func (s DescribeSecurityGroupAttributeResponseBodyPermissionsPermission) String() string {

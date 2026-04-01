@@ -20,16 +20,14 @@ type iDistApplicationDataResponseBody interface {
 }
 
 type DistApplicationDataResponseBody struct {
-	// The list of ENS instance IDs.
 	DistInstanceIds *DistApplicationDataResponseBodyDistInstanceIds `json:"DistInstanceIds,omitempty" xml:"DistInstanceIds,omitempty" type:"Struct"`
 	// The total number of ENS instance IDs.
 	//
 	// example:
 	//
 	// 2
-	DistInstanceTotalCount *int32 `json:"DistInstanceTotalCount,omitempty" xml:"DistInstanceTotalCount,omitempty"`
-	// The distribution result of the data file.
-	DistResults *DistApplicationDataResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
+	DistInstanceTotalCount *int32                                      `json:"DistInstanceTotalCount,omitempty" xml:"DistInstanceTotalCount,omitempty"`
+	DistResults            *DistApplicationDataResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -156,30 +154,10 @@ func (s *DistApplicationDataResponseBodyDistResults) Validate() error {
 }
 
 type DistApplicationDataResponseBodyDistResultsDistResult struct {
-	// The name of the data file.
-	//
-	// example:
-	//
-	// gcs-prod-websocket-eip-unicom
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The error code. The value is of the enumerated data type.
-	//
-	// example:
-	//
-	// 400
-	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// The description of the distribution result.
-	//
-	// example:
-	//
-	// Success
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResultCode    *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
 	ResultDescrip *string `json:"ResultDescrip,omitempty" xml:"ResultDescrip,omitempty"`
-	// The version number of the data file.
-	//
-	// example:
-	//
-	// standard
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DistApplicationDataResponseBodyDistResultsDistResult) String() string {

@@ -22,7 +22,6 @@ type iDescribeExportImageInfoResponseBody interface {
 }
 
 type DescribeExportImageInfoResponseBody struct {
-	// The returned result. For more information, see the Images parameter described in the JSON-formatted sample success response.
 	Images *DescribeExportImageInfoResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,66 +146,14 @@ func (s *DescribeExportImageInfoResponseBodyImages) Validate() error {
 }
 
 type DescribeExportImageInfoResponseBodyImagesImage struct {
-	// The architecture of the image. Example: **x86_64**.
-	//
-	// example:
-	//
-	// x86_64
-	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The time when the image was created.
-	//
-	// example:
-	//
-	// 2017-12-08T12:10:03Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The URL of the exported image.
-	//
-	// example:
-	//
-	// https://user_defined_bucket.oss-cn-beijing.aliyuncs.com/m-xxxxxxxxx1.qcow2
-	ExportedImageURL *string `json:"ExportedImageURL,omitempty" xml:"ExportedImageURL,omitempty"`
-	// The export status of the image. Valid values:
-	//
-	// 	- Exporting
-	//
-	// 	- Exported
-	//
-	// 	- ExportError
-	//
-	// 	- Unexported
-	//
-	// example:
-	//
-	// Exported
+	Architecture      *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	CreationTime      *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ExportedImageURL  *string `json:"ExportedImageURL,omitempty" xml:"ExportedImageURL,omitempty"`
 	ImageExportStatus *string `json:"ImageExportStatus,omitempty" xml:"ImageExportStatus,omitempty"`
-	// The ID of the image.
-	//
-	// example:
-	//
-	// m-xxxxxxxxx1
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
-	//
-	// example:
-	//
-	// m-xxxxxxxxx1
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The source of the image. Valid values:
-	//
-	// 	- system: public image
-	//
-	// 	- self: custom image
-	//
-	// example:
-	//
-	// system
-	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	// The OS.
-	//
-	// example:
-	//
-	// centos
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ImageId           *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName         *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageOwnerAlias   *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s DescribeExportImageInfoResponseBodyImagesImage) String() string {

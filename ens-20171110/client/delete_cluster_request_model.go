@@ -11,6 +11,8 @@ type iDeleteClusterRequest interface {
 	GoString() string
 	SetClusterId(v string) *DeleteClusterRequest
 	GetClusterId() *string
+	SetRetainResources(v bool) *DeleteClusterRequest
+	GetRetainResources() *bool
 }
 
 type DeleteClusterRequest struct {
@@ -19,7 +21,8 @@ type DeleteClusterRequest struct {
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RetainResources *bool   `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
 }
 
 func (s DeleteClusterRequest) String() string {
@@ -34,8 +37,17 @@ func (s *DeleteClusterRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DeleteClusterRequest) GetRetainResources() *bool {
+	return s.RetainResources
+}
+
 func (s *DeleteClusterRequest) SetClusterId(v string) *DeleteClusterRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteClusterRequest) SetRetainResources(v bool) *DeleteClusterRequest {
+	s.RetainResources = &v
 	return s
 }
 

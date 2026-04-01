@@ -24,12 +24,47 @@ type iPutBucketRequest interface {
 }
 
 type PutBucketRequest struct {
+	// The access control list (ACL) of the bucket. private public-read-write public-read
+	//
+	// example:
+	//
+	// private
 	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// The name of the bucket. This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
+	//
 	// This parameter is required.
-	BucketName        *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	DispatchScope     *string `json:"DispatchScope,omitempty" xml:"DispatchScope,omitempty"`
-	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	//
+	// example:
+	//
+	// test
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The description. The description can be 0 to 128 characters in length, and can contain Chinese characters and emoticons.
+	//
+	// example:
+	//
+	// numb
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The scheduling scope. This parameter takes effect only when the value of the LogicalBucketType parameter is standard. Valid values:
+	//
+	// 	- **domestic**: Chinese mainland.
+	//
+	// 	- **oversea**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// domestic
+	DispatchScope *string `json:"DispatchScope,omitempty" xml:"DispatchScope,omitempty"`
+	// The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
+	//
+	// example:
+	//
+	// cn-beijing-15
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The type of the logical bucket. Valid values: sink standard (default)
+	//
+	// example:
+	//
+	// sink
 	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
 }
 

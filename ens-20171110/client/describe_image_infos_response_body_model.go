@@ -23,8 +23,7 @@ type DescribeImageInfosResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about images.
+	Code   *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Images *DescribeImageInfosResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,64 +112,15 @@ func (s *DescribeImageInfosResponseBodyImages) Validate() error {
 }
 
 type DescribeImageInfosResponseBodyImagesImage struct {
-	// The computing type of the image. Valid values:
-	//
-	// 	- ens_vm: x86 computing.
-	//
-	// 	- arm_vm: ARM computing.
-	//
-	// 	- bare_metal: x86 bare machine.
-	//
-	// 	- pcfarm: heterogeneous computing.
-	//
-	// example:
-	//
-	// ens_vm
-	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
-	// The description of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_alibase_2017****
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mappings between disks and snapshots in the image.
+	ComputeType        *string                                                      `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	Description        *string                                                      `json:"Description,omitempty" xml:"Description,omitempty"`
 	DiskDeviceMappings *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Struct"`
-	// The ID of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_alibase_2017****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The size of the image. Unit: GiB.
-	//
-	// example:
-	//
-	// 20
-	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The version of the image.
-	//
-	// example:
-	//
-	// 6.8
-	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The type of the image. Valid values: **centos**, **debian**, **ubuntu**, and **windows**.
-	//
-	// example:
-	//
-	// centos
-	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	// The type of the operating system.
-	//
-	// example:
-	//
-	// linux
-	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-shenzhen
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ImageId            *string                                                      `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageSize          *string                                                      `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	ImageVersion       *string                                                      `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
+	OSName             *string                                                      `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	OSType             *string                                                      `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	RegionId           *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeImageInfosResponseBodyImagesImage) String() string {
@@ -306,33 +256,9 @@ func (s *DescribeImageInfosResponseBodyImagesImageDiskDeviceMappings) Validate()
 }
 
 type DescribeImageInfosResponseBodyImagesImageDiskDeviceMappingsDiskDeviceMapping struct {
-	// The format of the image.
-	//
-	// example:
-	//
-	// The format of the image.
-	//
-	// raw
-	//
-	// qcow2
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The size of the image. Unit: GB.
-	//
-	// example:
-	//
-	// 100
-	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The type of the disk. Valid values: System and Data.
-	//
-	// example:
-	//
-	// Data
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the image.
-	//
-	// example:
-	//
-	// i-test
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Size    *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
 }
 

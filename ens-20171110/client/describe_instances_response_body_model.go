@@ -29,8 +29,7 @@ type DescribeInstancesResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the instance is returned in an array of InstanceAttributesType.
+	Code      *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -164,189 +163,38 @@ func (s *DescribeInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
-	// The automatic release time of the instance.
-	//
-	// example:
-	//
-	// 2023-06-28T14:38:52Z
-	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// The number of vCPUs.
-	//
-	// example:
-	//
-	// 2
-	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-07-26T06:40:43Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Details of the data disk.
-	DataDisk           *DescribeInstancesResponseBodyInstancesInstanceDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Struct"`
-	DeletionProtection *bool                                                   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The total size of the disk. Unit: MiB.
-	//
-	// example:
-	//
-	// 71680
-	Disk *int32 `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2119-07-13T02:38:57Z
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The hostname of the instance.
-	//
-	// 	- The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
-	//
-	// 	- For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
-	//
-	// 	- For an instance that runs another operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
-	//
-	// example:
-	//
-	// testHostName
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the image.
-	//
-	// example:
-	//
-	// m-****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The private IP addresses of the instances.
-	InnerIpAddress *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-instanc****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// i-5itef0f28t17bcdw9deu6meub
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The category of the instance. Valid values:
-	//
-	// 	- EnsInstance: ENS instances that you purchase.
-	//
-	// 	- EnsService: ENS instances that belong to edge services.
-	//
-	// 	- BuildMachine: ENS instances that are configured with image builders.
-	//
-	// 	- EnsPostPaidInstance: pay-as-you-go ENS instances that you purchase.
-	//
-	// example:
-	//
-	// EnsService
-	InstanceResourceType *string `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
-	// The instance family. Valid values:
-	//
-	// 	- x86_vm: x86-based computing instance.
-	//
-	// 	- x86_pm: x86-based physical machine.
-	//
-	// 	- x86_bmi: x86-based bare metal instance.
-	//
-	// 	- x86_bm: bare metal instance with the SmartNIC.
-	//
-	// 	- pc_bmi: heterogeneous bare metal instance.
-	//
-	// 	- pc_vm: heterogeneous virtual machine.
-	//
-	// 	- arm_bmi: Arm-based computing instance.
-	//
-	// example:
-	//
-	// x86_vm
-	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The maximum outbound bandwidth. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 40
-	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The minimum inbound bandwidth. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 100
-	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The name of the SSH key pair.
-	//
-	// example:
-	//
-	// terraform-example
-	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The memory size. Unit: MB.
-	//
-	// example:
-	//
-	// 2048
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Details of the network.
-	NetworkAttributes *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	// The ENI attached to the instance.
-	NetworkInterfaces *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Struct"`
-	// The name of the image.
-	//
-	// example:
-	//
-	// centos 6.8 x86_64
-	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	// Details of the private IP addresses.
-	PrivateIpAddresses *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Struct"`
-	// The public IP addresses of the instances.
-	PublicIpAddress *DescribeInstancesResponseBodyInstancesInstancePublicIpAddress `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
-	// Details of the public IP addresses.
-	PublicIpAddresses *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
-	// The IDs of the security groups.
-	SecurityGroupIds *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The ID of your Alibaba Cloud account.
-	//
-	// example:
-	//
-	// Deleting
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// The instance type.
-	//
-	// example:
-	//
-	// ens.sn1.stiny
-	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The bidding policy of the preemptible instance.
-	//
-	// example:
-	//
-	// NoSpot
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// 	- Running
-	//
-	// 	- Expired
-	//
-	// 	- Stopped
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Details of the system disk.
-	SystemDisk *DescribeInstancesResponseBodyInstancesInstanceSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The tags of the instance.
-	//
-	// >  This operation does not return tag information. You can call this operation in combination with the tag-related operations.
-	Tags *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AutoReleaseTime         *string                                                           `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
+	Cpu                     *string                                                           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreationTime            *string                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataDisk                *DescribeInstancesResponseBodyInstancesInstanceDataDisk           `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Struct"`
+	DeletionProtection      *bool                                                             `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Disk                    *int32                                                            `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	EnsRegionId             *string                                                           `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	ExpiredTime             *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HostName                *string                                                           `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId                 *string                                                           `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InnerIpAddress          *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress     `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	InstanceId              *string                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName            *string                                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceResourceType    *string                                                           `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	InstanceTypeFamily      *string                                                           `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	InternetMaxBandwidthIn  *int32                                                            `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	InternetMaxBandwidthOut *int32                                                            `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	KeyPairName             *string                                                           `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	Memory                  *int32                                                            `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NetworkAttributes       *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes  `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
+	NetworkInterfaces       *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces  `json:"NetworkInterfaces,omitempty" xml:"NetworkInterfaces,omitempty" type:"Struct"`
+	OSName                  *string                                                           `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	PrivateIpAddresses      *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Struct"`
+	PublicIpAddress         *DescribeInstancesResponseBodyInstancesInstancePublicIpAddress    `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
+	PublicIpAddresses       *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses  `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
+	SecurityGroupIds        *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds   `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	ServiceStatus           *string                                                           `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	SpecName                *string                                                           `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	SpotStrategy            *string                                                           `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	Status                  *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemDisk              *DescribeInstancesResponseBodyInstancesInstanceSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	Tags                    *DescribeInstancesResponseBodyInstancesInstanceTags               `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstance) String() string {
@@ -734,92 +582,18 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceDataDisk) Validate() erro
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
-	// The category of the cloud disk or local disk. Valid values:
-	//
-	// 	- **file**: local disk.
-	//
-	// 	- **pangu**: ultra disk.
-	//
-	// 	- **local_hdd**: local HDD.
-	//
-	// example:
-	//
-	// file
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the disk.
-	//
-	// example:
-	//
-	// d-5ip4c2dhmas0vjd5u1r****
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// DiskName
-	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The size of the disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 100
-	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The KMS key ID used by the cloud drive.
-	//
-	// example:
-	//
-	// 0e478b7a-4262-4802-b8cb-00d3fxxxxx
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DiskId       *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskName     *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	DiskSize     *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	EncryptKeyId *string `json:"EncryptKeyId,omitempty" xml:"EncryptKeyId,omitempty"`
-	// Specifies whether to encrypt the disk.
-	//
-	// example:
-	//
-	// true
-	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The size of the disk. Unit: MiB.
-	//
-	// example:
-	//
-	// 51200
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The extended field of the disk category. Valid values:
-	//
-	// 	- **file**: local disk.
-	//
-	// 	- **pangu**: ultra disk.
-	//
-	// 	- **local_hdd**: local HDD.
-	//
-	// example:
-	//
-	// pangu
-	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
-	// The type of the cloud disk or local disk. Valid values:
-	//
-	// **system**: system disk. **data**: data disk.
-	//
-	// example:
-	//
-	// system
-	DiskType *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The size of the disk. Unit: MiB.
-	//
-	// example:
-	//
-	// 20480
-	Storage *int32 `json:"storage,omitempty" xml:"storage,omitempty"`
-	// The UUID of the disk.
-	//
-	// example:
-	//
-	// d-5itef1wtxj961mbff8xe9****
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	Encrypted    *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	DeviceType   *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
+	DiskType     *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	Storage      *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
+	Uuid         *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk) String() string {
@@ -968,20 +742,9 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress) Validate(
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes struct {
-	// The ID of the network.
-	//
-	// example:
-	//
-	// n-2zeuphj08tt7q3brd****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// Details of the private IP addresses.
+	NetworkId        *string                                                                          `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	PrivateIpAddress *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-2zeh0r1pabwtg6wcs****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId        *string                                                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes) String() string {
@@ -1088,38 +851,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfaces) Valida
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces struct {
-	// The IPv6 addresses of the ENI. This parameter has a value only when `AdditionalAttributes.N` is set to `NETWORK_PRIMARY_ENI_IP`.
-	Ipv6Sets *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	// The MAC address of the ENI.
-	//
-	// example:
-	//
-	// 00:16:3e:4f:5f:ca
-	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// The ID of the ENI.
-	//
-	// example:
-	//
-	// eni-0wlonoy6jo8532gfzuama****
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The primary IP address of the ENI.
-	//
-	// example:
-	//
-	// ***************
-	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// The private IP addresses of the ENI.
-	PrivateIpSets *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
-	// The type of the disk. Valid values:
-	//
-	// 	- system: system disk.
-	//
-	// 	- data: data disk.
-	//
-	// example:
-	//
-	// Secondary
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Ipv6Sets           *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets      `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
+	MacAddress         *string                                                                                        `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	NetworkInterfaceId *string                                                                                        `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PrimaryIpAddress   *string                                                                                        `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
+	PrivateIpSets      *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	Type               *string                                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) String() string {
@@ -1233,11 +970,6 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6SetsIpv6Set struct {
-	// IPv6 addresses N of the ENI. You can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
-	//
-	// example:
-	//
-	// 2408:4005:396:3200:****:6609:821e:df7a
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 }
 
@@ -1297,23 +1029,7 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSetsPrivateIpSet struct {
-	// Indicates whether the IP address is the primary private IP address. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
-	// The private IP address.
-	//
-	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
-	//
-	// example:
-	//
-	// 10.75.66.***
+	Primary          *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -1382,24 +1098,9 @@ func (s *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses) Valid
 }
 
 type DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpAddress struct {
-	// The gateway.
-	//
-	// example:
-	//
-	// 119.147.xx.xx
 	GateWay *string `json:"GateWay,omitempty" xml:"GateWay,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 119.147.xx.xx
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ISP.
-	//
-	// example:
-	//
-	// cmcc
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Isp     *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpAddress) String() string {
@@ -1501,24 +1202,9 @@ func (s *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses) Valida
 }
 
 type DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAddress struct {
-	// The gateway.
-	//
-	// example:
-	//
-	// 119.147.xx.xx
 	GateWay *string `json:"GateWay,omitempty" xml:"GateWay,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 119.147.xx.xx
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The Internet service provider (ISP).
-	//
-	// example:
-	//
-	// unicom
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Isp     *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAddress) String() string {
@@ -1586,76 +1272,15 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds) Validat
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceSystemDisk struct {
-	// The category of the cloud disk or local disk. Valid values:
-	//
-	// 	- **file**: local disk.
-	//
-	// 	- **pangu**: ultra disk.
-	//
-	// 	- **local_hdd**: local HDD.
-	//
-	// example:
-	//
-	// file
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the disk.
-	//
-	// example:
-	//
-	// d-5ip4c2dhmas0rn7rt0p9****
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// DiskName
-	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The size of the disk. Unit: MiB.
-	//
-	// example:
-	//
-	// 51200
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The extended field of the disk category. Valid values:
-	//
-	// 	- **file**: local disk.
-	//
-	// 	- **pangu**: ultra disk.
-	//
-	// 	- **local_hdd**: local HDD.
-	//
-	// example:
-	//
-	// pangu
+	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskName   *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
-	// The type of the cloud disk or local disk. Valid values:
-	//
-	// 	- **system**: system disk.
-	//
-	// 	- **data**: data disk.
-	//
-	// example:
-	//
-	// system
-	DiskType *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// DiskName
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The size of the disk. Unit: MiB.
-	//
-	// example:
-	//
-	// 20480
-	Storage *int32 `json:"storage,omitempty" xml:"storage,omitempty"`
-	// The UUID of the disk.
-	//
-	// example:
-	//
-	// d-5ip4c2dhmas0rn7rt0p96****
-	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	DiskType   *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	Storage    *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
+	Uuid       *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceSystemDisk) String() string {
@@ -1786,17 +1411,7 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceTags) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceTagsTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// key1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// value1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

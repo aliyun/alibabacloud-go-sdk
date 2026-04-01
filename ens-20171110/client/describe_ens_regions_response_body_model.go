@@ -23,8 +23,7 @@ type DescribeEnsRegionsResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the regions.
+	Code       *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	EnsRegions *DescribeEnsRegionsResponseBodyEnsRegions `json:"EnsRegions,omitempty" xml:"EnsRegions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,36 +112,11 @@ func (s *DescribeEnsRegionsResponseBodyEnsRegions) Validate() error {
 }
 
 type DescribeEnsRegionsResponseBodyEnsRegionsEnsRegions struct {
-	// The code of the region.
-	//
-	// example:
-	//
-	// NorthEastChina
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// NorthChina
-	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// cn-dalian-unicom
+	Area        *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	EnName      *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// Dalian Unicom
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The province where the node is deployed.
-	//
-	// example:
-	//
-	// Liaoning Province
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribeEnsRegionsResponseBodyEnsRegionsEnsRegions) String() string {

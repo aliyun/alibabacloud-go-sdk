@@ -23,8 +23,7 @@ type DescribeEnsNetSaleDistrictResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the ISPs in the area.
+	Code            *int32                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	EnsNetDistricts *DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts `json:"EnsNetDistricts,omitempty" xml:"EnsNetDistricts,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,54 +112,13 @@ func (s *DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts) Validate() error
 }
 
 type DescribeEnsNetSaleDistrictResponseBodyEnsNetDistrictsEnsNetDistrict struct {
-	// The information about the ISP.
-	//
-	// example:
-	//
-	// {                         "count":2,                         "name":"telecommunication",                         "code":"telecom",                         "country":"cn"                     }
-	EnsRegionIdCount *string `json:"EnsRegionIdCount,omitempty" xml:"EnsRegionIdCount,omitempty"`
-	// The information about the instance.
-	//
-	// example:
-	//
-	// {                         "count":2,                         "code":"multiCarrier"                     }
-	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The region code.
-	//
-	// example:
-	//
-	// 100101
-	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// northEast
-	NetDistrictEnName *string `json:"NetDistrictEnName,omitempty" xml:"NetDistrictEnName,omitempty"`
-	// The parent code of the region.
-	//
-	// example:
-	//
-	// 100000
+	EnsRegionIdCount      *string `json:"EnsRegionIdCount,omitempty" xml:"EnsRegionIdCount,omitempty"`
+	InstanceCount         *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	NetDistrictCode       *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	NetDistrictEnName     *string `json:"NetDistrictEnName,omitempty" xml:"NetDistrictEnName,omitempty"`
 	NetDistrictFatherCode *string `json:"NetDistrictFatherCode,omitempty" xml:"NetDistrictFatherCode,omitempty"`
-	// The region level. Valid values:
-	//
-	// 	- **Big**: area
-	//
-	// 	- **Middle**: province
-	//
-	// 	- **Small**: city
-	//
-	// example:
-	//
-	// Big
-	NetDistrictLevel *string `json:"NetDistrictLevel,omitempty" xml:"NetDistrictLevel,omitempty"`
-	// The Chinese name of the region.
-	//
-	// example:
-	//
-	// Northeast China
-	NetDistrictName *string `json:"NetDistrictName,omitempty" xml:"NetDistrictName,omitempty"`
+	NetDistrictLevel      *string `json:"NetDistrictLevel,omitempty" xml:"NetDistrictLevel,omitempty"`
+	NetDistrictName       *string `json:"NetDistrictName,omitempty" xml:"NetDistrictName,omitempty"`
 }
 
 func (s DescribeEnsNetSaleDistrictResponseBodyEnsNetDistrictsEnsNetDistrict) String() string {

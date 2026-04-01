@@ -13,6 +13,8 @@ type iDeleteClusterNodesShrinkRequest interface {
 	GetBodyShrink() *string
 	SetClusterId(v string) *DeleteClusterNodesShrinkRequest
 	GetClusterId() *string
+	SetReleaseNode(v bool) *DeleteClusterNodesShrinkRequest
+	GetReleaseNode() *bool
 }
 
 type DeleteClusterNodesShrinkRequest struct {
@@ -23,7 +25,8 @@ type DeleteClusterNodesShrinkRequest struct {
 	// example:
 	//
 	// eck-xxxxxxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ReleaseNode *bool   `json:"ReleaseNode,omitempty" xml:"ReleaseNode,omitempty"`
 }
 
 func (s DeleteClusterNodesShrinkRequest) String() string {
@@ -42,6 +45,10 @@ func (s *DeleteClusterNodesShrinkRequest) GetClusterId() *string {
 	return s.ClusterId
 }
 
+func (s *DeleteClusterNodesShrinkRequest) GetReleaseNode() *bool {
+	return s.ReleaseNode
+}
+
 func (s *DeleteClusterNodesShrinkRequest) SetBodyShrink(v string) *DeleteClusterNodesShrinkRequest {
 	s.BodyShrink = &v
 	return s
@@ -49,6 +56,11 @@ func (s *DeleteClusterNodesShrinkRequest) SetBodyShrink(v string) *DeleteCluster
 
 func (s *DeleteClusterNodesShrinkRequest) SetClusterId(v string) *DeleteClusterNodesShrinkRequest {
 	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteClusterNodesShrinkRequest) SetReleaseNode(v bool) *DeleteClusterNodesShrinkRequest {
+	s.ReleaseNode = &v
 	return s
 }
 

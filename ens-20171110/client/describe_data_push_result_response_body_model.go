@@ -33,8 +33,7 @@ type DescribeDataPushResultResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The push results of data files.
+	PageSize    *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PushResults *DescribeDataPushResultResponseBodyPushResults `json:"PushResults,omitempty" xml:"PushResults,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -147,20 +146,9 @@ func (s *DescribeDataPushResultResponseBodyPushResults) Validate() error {
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResult struct {
-	// The name of the data file.
-	//
-	// example:
-	//
-	// gcs-pre-websocket-eip-telecom
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The push status of data files.
+	Name        *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
 	StatusStatS *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS `json:"StatusStatS,omitempty" xml:"StatusStatS,omitempty" type:"Struct"`
-	// The version number of the data file.
-	//
-	// example:
-	//
-	// standard
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version     *string                                                             `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBodyPushResultsPushResult) String() string {
@@ -242,20 +230,9 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS) Val
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStat struct {
-	// The total number of ENS nodes.
-	//
-	// example:
-	//
-	// 2
-	RegionIdCount *int32 `json:"RegionIdCount,omitempty" xml:"RegionIdCount,omitempty"`
-	// The push status of data files on the ENS node.
-	RegionIds *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
-	// The push status. The value is of the enumeration type. Valid values: SUCCESS FAILED PUSHING
-	//
-	// example:
-	//
-	// FAILED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RegionIdCount *int32                                                                                 `json:"RegionIdCount,omitempty" xml:"RegionIdCount,omitempty"`
+	RegionIds     *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
+	Status        *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStat) String() string {
@@ -337,30 +314,10 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatu
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIdsRegionId struct {
-	// The ID of the ENS node.
-	//
-	// example:
-	//
-	// cn-wuxi-5
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the push operation. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-12-28T16:00:00Z
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The description of the status.
-	//
-	// example:
-	//
-	// Success
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StatusDescrip *string `json:"StatusDescrip,omitempty" xml:"StatusDescrip,omitempty"`
-	// The time when the status was last updated. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-12-07T02:37:10Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIdsRegionId) String() string {

@@ -21,8 +21,7 @@ type DescribeCloudDiskTypesResponseBody struct {
 	// example:
 	//
 	// 77990CEE-B714-5702-BDE6-943F702277DD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The specifications of resources that you can purchase.
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportResources *DescribeCloudDiskTypesResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -96,25 +95,7 @@ func (s *DescribeCloudDiskTypesResponseBodySupportResources) Validate() error {
 }
 
 type DescribeCloudDiskTypesResponseBodySupportResourcesSupportResource struct {
-	// The category of the disk.
-	//
-	// 	- cloud_efficiency: ultra disk.
-	//
-	// 	- cloud_ssd: all-flash disk.
-	//
-	// 	- local_hdd: local HDD.
-	//
-	// 	- local_ssd: local SSD.
-	//
-	// example:
-	//
-	// cloud_efficiency
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The ID of the edge node.
-	//
-	// example:
-	//
-	// cn-guangzhou-10
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 

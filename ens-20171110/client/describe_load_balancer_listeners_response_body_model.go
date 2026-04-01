@@ -22,7 +22,6 @@ type iDescribeLoadBalancerListenersResponseBody interface {
 }
 
 type DescribeLoadBalancerListenersResponseBody struct {
-	// The listeners of the ELB instance.
 	Listeners *DescribeLoadBalancerListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,76 +146,15 @@ func (s *DescribeLoadBalancerListenersResponseBodyListeners) Validate() error {
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersListener struct {
-	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
-	//
-	// example:
-	//
-	// 3306
-	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The timestamp when the listener was created.
-	//
-	// example:
-	//
-	// 2022-08-15T08:42:57Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the listener.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The listener port that is used for HTTP-to-HTTPS redirection.
-	//
-	// example:
-	//
-	// 443
-	ForwardPort *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// Indicates whether HTTP-to-HTTPS redirection is enabled for the listener. Valid values:
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// example:
-	//
-	// off
-	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// The listening port.
-	//
-	// example:
-	//
-	// 8080
-	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The ID of the ELB instance.
-	//
-	// example:
-	//
-	// lb-51a5fhou****
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The network transmission protocol that is used by the listener.
-	//
-	// 	- **tcp**
-	//
-	// 	- **udp**
-	//
-	// 	- **http**
-	//
-	// 	- **https**
-	//
-	// example:
-	//
-	// tcp
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The status of the listener. Valid values:
-	//
-	// 	- **running**
-	//
-	// 	- **stopped**
-	//
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BackendServerPort *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ForwardPort       *string `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	ListenerForward   *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ListenerPort      *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	LoadBalancerId    *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeLoadBalancerListenersResponseBodyListenersListener) String() string {

@@ -18,15 +18,13 @@ type iDescribeAvailableResourceInfoResponseBody interface {
 }
 
 type DescribeAvailableResourceInfoResponseBody struct {
-	// The information about the image.
 	Images *DescribeAvailableResourceInfoResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 8629F679-B51D-4194-A1CC-5D8F504C362B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The specifications of resources that you can purchase.
+	RequestId        *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportResources *DescribeAvailableResourceInfoResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -114,24 +112,9 @@ func (s *DescribeAvailableResourceInfoResponseBodyImages) Validate() error {
 }
 
 type DescribeAvailableResourceInfoResponseBodyImagesImage struct {
-	// The ID of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_a****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The name of the image.
-	//
-	// example:
-	//
-	// centos_6_08_64_20G_a****
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The size of the image. Unit: GB.
-	//
-	// example:
-	//
-	// 20
-	ImageSize *int32 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	ImageSize *int32  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 }
 
 func (s DescribeAvailableResourceInfoResponseBodyImagesImage) String() string {
@@ -208,39 +191,15 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResources) Validate() e
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
-	// Bandwidth billing method.
-	BandwidthTypes *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceBandwidthTypes `json:"BandwidthTypes,omitempty" xml:"BandwidthTypes,omitempty" type:"Struct"`
-	// The maximum capacity of a data disk. Unit: GB.
-	//
-	// example:
-	//
-	// 200
-	DataDiskMaxSize *int32 `json:"DataDiskMaxSize,omitempty" xml:"DataDiskMaxSize,omitempty"`
-	// The minimum data disk size. Unit: GiB.
-	//
-	// example:
-	//
-	// 100
-	DataDiskMinSize *int32 `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
-	// node ID
-	EnsRegionIds *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIds `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Struct"`
-	// The supplementary information about the edge nodes.
+	BandwidthTypes      *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceBandwidthTypes      `json:"BandwidthTypes,omitempty" xml:"BandwidthTypes,omitempty" type:"Struct"`
+	DataDiskMaxSize     *int32                                                                                       `json:"DataDiskMaxSize,omitempty" xml:"DataDiskMaxSize,omitempty"`
+	DataDiskMinSize     *int32                                                                                       `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
+	EnsRegionIds        *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIds        `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Struct"`
 	EnsRegionIdsExtends *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtends `json:"EnsRegionIdsExtends,omitempty" xml:"EnsRegionIdsExtends,omitempty" type:"Struct"`
 	InstanceSpeces      *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceInstanceSpeces      `json:"InstanceSpeces,omitempty" xml:"InstanceSpeces,omitempty" type:"Struct"`
-	// Operator
-	Isp *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp `json:"Isp,omitempty" xml:"Isp,omitempty" type:"Struct"`
-	// The maximum size of the system disk. Unit: GiB.
-	//
-	// example:
-	//
-	// 100
-	SystemDiskMaxSize *int32 `json:"SystemDiskMaxSize,omitempty" xml:"SystemDiskMaxSize,omitempty"`
-	// The minimum capacity of a system disk. Unit: GB.
-	//
-	// example:
-	//
-	// 20
-	SystemDiskMinSize *int32 `json:"SystemDiskMinSize,omitempty" xml:"SystemDiskMinSize,omitempty"`
+	Isp                 *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp                 `json:"Isp,omitempty" xml:"Isp,omitempty" type:"Struct"`
+	SystemDiskMaxSize   *int32                                                                                       `json:"SystemDiskMaxSize,omitempty" xml:"SystemDiskMaxSize,omitempty"`
+	SystemDiskMinSize   *int32                                                                                       `json:"SystemDiskMinSize,omitempty" xml:"SystemDiskMinSize,omitempty"`
 }
 
 func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource) String() string {
@@ -446,42 +405,12 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourc
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId struct {
-	// The region.
-	//
-	// example:
-	//
-	// EastChina
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The name. This parameter is empty by default.
-	//
-	// example:
-	//
-	// EnName
-	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	// The ID of the edge node.
-	//
-	// example:
-	//
-	// cn-chengdu-telecom-4
+	Area        *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	EnName      *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The information about the Internet service provider (ISP).
-	//
-	// example:
-	//
-	// unicom
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the edge node.
-	//
-	// example:
-	//
-	// Taizhou Telecom, China Unicom, and China Mobile
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The province.
-	//
-	// example:
-	//
-	// Zhejiang Province
-	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	Isp         *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId) String() string {

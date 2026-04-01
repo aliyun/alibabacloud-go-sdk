@@ -22,7 +22,6 @@ type iDescribeEnsRegionIdResourceResponseBody interface {
 }
 
 type DescribeEnsRegionIdResourceResponseBody struct {
-	// The returned data. For more information, see EnsRegionIdResources in sample JSON responses.
 	EnsRegionIdResources *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResources `json:"EnsRegionIdResources,omitempty" xml:"EnsRegionIdResources,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,68 +146,15 @@ func (s *DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResources) Validate()
 }
 
 type DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource struct {
-	// The region. Set the value to West.
-	//
-	// example:
-	//
-	// West
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The code of the region.
-	//
-	// example:
-	//
-	// 300100
-	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
-	// The date when the transaction was processed.
-	//
-	// example:
-	//
-	// 2019-10-30
-	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The ID of the node.
-	//
-	// example:
-	//
-	// cn-hangzhou-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The name of the node.
-	//
-	// example:
-	//
-	// Nanjing Mobile
-	EnsRegionIdName *string `json:"EnsRegionIdName,omitempty" xml:"EnsRegionIdName,omitempty"`
-	// The number of instances.
-	//
-	// example:
-	//
-	// 10
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The public bandwidth of the instance. Unit: Bits/s.
-	//
-	// example:
-	//
-	// 100
-	InternetBandwidth *int64 `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
-	// The ISP. Valid values:
-	//
-	// 	- cmcc: China Mobile
-	//
-	// 	- unicom: China Unicom
-	//
-	// 	- telecom: China Telecom
-	//
-	// 	- multiCarrier: multi-line ISP
-	//
-	// example:
-	//
-	// cmcc
-	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The number of vCPUs.
-	//
-	// example:
-	//
-	// 10
-	VCpu *int32 `json:"VCpu,omitempty" xml:"VCpu,omitempty"`
+	Area              *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	AreaCode          *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
+	BizDate           *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionIdName   *string `json:"EnsRegionIdName,omitempty" xml:"EnsRegionIdName,omitempty"`
+	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InternetBandwidth *int64  `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
+	Isp               *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	VCpu              *int32  `json:"VCpu,omitempty" xml:"VCpu,omitempty"`
 }
 
 func (s DescribeEnsRegionIdResourceResponseBodyEnsRegionIdResourcesEnsRegionIdResource) String() string {

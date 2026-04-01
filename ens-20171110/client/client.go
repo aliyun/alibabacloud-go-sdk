@@ -854,6 +854,182 @@ func (client *Client) AttachInstanceSDG(request *AttachInstanceSDGRequest) (_res
 
 // Summary:
 //
+// 添加已有节点到集群节点池
+//
+// @param tmpReq - AttachInstancesToNodePoolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachInstancesToNodePoolResponse
+func (client *Client) AttachInstancesToNodePoolWithOptions(tmpReq *AttachInstancesToNodePoolRequest, runtime *dara.RuntimeOptions) (_result *AttachInstancesToNodePoolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AttachInstancesToNodePoolShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Instances) {
+		request.InstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Instances, dara.String("Instances"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.InstancesShrink) {
+		query["Instances"] = request.InstancesShrink
+	}
+
+	if !dara.IsNil(request.NodepoolId) {
+		query["NodepoolId"] = request.NodepoolId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachInstancesToNodePool"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachInstancesToNodePoolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加已有节点到集群节点池
+//
+// @param request - AttachInstancesToNodePoolRequest
+//
+// @return AttachInstancesToNodePoolResponse
+func (client *Client) AttachInstancesToNodePool(request *AttachInstancesToNodePoolRequest) (_result *AttachInstancesToNodePoolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachInstancesToNodePoolResponse{}
+	_body, _err := client.AttachInstancesToNodePoolWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a Secure Shell (SSH) key pair to specific instances. You can bind a maximum of 30 instances at a time.
+//
+// Description:
+//
+// ## [](#)
+//
+// This operation is used to bind a key pair to instances. Only disabled instances are supported.
+//
+//   - You can bind a maximum of 30 instances at a time.
+//
+//   - At least one of the key_pair_name and key_pair_id parameters is not empty.
+//
+//   - Specify the key_pair_id parameter when you call this parameter. The key_pair_name parameter will be discarded.
+//
+// @param tmpReq - AttachKeyPairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachKeyPairResponse
+func (client *Client) AttachKeyPairWithOptions(tmpReq *AttachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *AttachKeyPairResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AttachKeyPairShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.KeyPairId) {
+		query["KeyPairId"] = request.KeyPairId
+	}
+
+	if !dara.IsNil(request.KeyPairName) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AttachKeyPair"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AttachKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a Secure Shell (SSH) key pair to specific instances. You can bind a maximum of 30 instances at a time.
+//
+// Description:
+//
+// ## [](#)
+//
+// This operation is used to bind a key pair to instances. Only disabled instances are supported.
+//
+//   - You can bind a maximum of 30 instances at a time.
+//
+//   - At least one of the key_pair_name and key_pair_id parameters is not empty.
+//
+//   - Specify the key_pair_id parameter when you call this parameter. The key_pair_name parameter will be discarded.
+//
+// @param request - AttachKeyPairRequest
+//
+// @return AttachKeyPairResponse
+func (client *Client) AttachKeyPair(request *AttachKeyPairRequest) (_result *AttachKeyPairResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AttachKeyPairResponse{}
+	_body, _err := client.AttachKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches an Elastic Network Interface (ENI) to an Edge Node Service (ECS) instance.
 //
 // Description:
@@ -5353,6 +5529,10 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 		query["ClusterId"] = request.ClusterId
 	}
 
+	if !dara.IsNil(request.RetainResources) {
+		query["RetainResources"] = request.RetainResources
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5489,6 +5669,10 @@ func (client *Client) DeleteClusterNodesWithOptions(tmpReq *DeleteClusterNodesRe
 
 	if !dara.IsNil(request.ClusterId) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ReleaseNode) {
+		query["ReleaseNode"] = request.ReleaseNode
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8300,6 +8484,76 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
+// 查询添加已有节点到集群节点池的脚本
+//
+// @param request - DescribeClusterAttachScriptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterAttachScriptsResponse
+func (client *Client) DescribeClusterAttachScriptsWithOptions(request *DescribeClusterAttachScriptsRequest, runtime *dara.RuntimeOptions) (_result *DescribeClusterAttachScriptsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.NodepoolId) {
+		query["NodepoolId"] = request.NodepoolId
+	}
+
+	if !dara.IsNil(request.Options) {
+		query["Options"] = request.Options
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeClusterAttachScripts"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeClusterAttachScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询添加已有节点到集群节点池的脚本
+//
+// @param request - DescribeClusterAttachScriptsRequest
+//
+// @return DescribeClusterAttachScriptsResponse
+func (client *Client) DescribeClusterAttachScripts(request *DescribeClusterAttachScriptsRequest) (_result *DescribeClusterAttachScriptsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeClusterAttachScriptsResponse{}
+	_body, _err := client.DescribeClusterAttachScriptsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询集群详细信息
 //
 // @param request - DescribeClusterDetailRequest
@@ -10932,7 +11186,7 @@ func (client *Client) DescribeExportImageStatus(request *DescribeExportImageStat
 
 // Summary:
 //
-// Queries the information about file systems.
+// Queries the information about Apsara File Storage NAS (NAS) file systems.
 //
 // @param request - DescribeFileSystemsRequest
 //
@@ -10972,7 +11226,7 @@ func (client *Client) DescribeFileSystemsWithOptions(request *DescribeFileSystem
 
 // Summary:
 //
-// Queries the information about file systems.
+// Queries the information about Apsara File Storage NAS (NAS) file systems.
 //
 // @param request - DescribeFileSystemsRequest
 //
@@ -15618,6 +15872,110 @@ func (client *Client) DetachInstanceSDG(request *DetachInstanceSDGRequest) (_res
 
 // Summary:
 //
+// Unbinds a Secure Shell (SSH) key pair from specific instances by specifying the name or ID of the SSH key pair.
+//
+// Description:
+//
+// ## [](#)
+//
+// This operation is used to unbind a key pair from instances. Only disabled instances are supported.
+//
+//   - You can unbind a maximum of 30 instances at a time.
+//
+//   - If the name of the SSH key pair that is bound to an instance is not same as the value of the keyPairName parameter, an exception is thrown.
+//
+//   - At least one of key_pair_name and key_pair_id is not empty.
+//
+//   - Specify the key_pair_id parameter when you call this parameter. The key_pair_name parameter will be discarded.
+//
+// @param tmpReq - DetachKeyPairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachKeyPairResponse
+func (client *Client) DetachKeyPairWithOptions(tmpReq *DetachKeyPairRequest, runtime *dara.RuntimeOptions) (_result *DetachKeyPairResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DetachKeyPairShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.KeyPairId) {
+		query["KeyPairId"] = request.KeyPairId
+	}
+
+	if !dara.IsNil(request.KeyPairName) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachKeyPair"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachKeyPairResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a Secure Shell (SSH) key pair from specific instances by specifying the name or ID of the SSH key pair.
+//
+// Description:
+//
+// ## [](#)
+//
+// This operation is used to unbind a key pair from instances. Only disabled instances are supported.
+//
+//   - You can unbind a maximum of 30 instances at a time.
+//
+//   - If the name of the SSH key pair that is bound to an instance is not same as the value of the keyPairName parameter, an exception is thrown.
+//
+//   - At least one of key_pair_name and key_pair_id is not empty.
+//
+//   - Specify the key_pair_id parameter when you call this parameter. The key_pair_name parameter will be discarded.
+//
+// @param request - DetachKeyPairRequest
+//
+// @return DetachKeyPairResponse
+func (client *Client) DetachKeyPair(request *DetachKeyPairRequest) (_result *DetachKeyPairResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DetachKeyPairResponse{}
+	_body, _err := client.DetachKeyPairWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Detach an elastic network interface (ENI) from an instance.
 //
 // Description:
@@ -15813,6 +16171,10 @@ func (client *Client) EventMigrateInstanceWithOptions(request *EventMigrateInsta
 		query["PlanTime"] = request.PlanTime
 	}
 
+	if !dara.IsNil(request.PlanUtcTime) {
+		query["PlanUtcTime"] = request.PlanUtcTime
+	}
+
 	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -15895,6 +16257,10 @@ func (client *Client) EventRebootInstanceWithOptions(request *EventRebootInstanc
 		query["PlanTime"] = request.PlanTime
 	}
 
+	if !dara.IsNil(request.PlanUtcTime) {
+		query["PlanUtcTime"] = request.PlanUtcTime
+	}
+
 	if !dara.IsNil(request.ResourceId) {
 		query["ResourceId"] = request.ResourceId
 	}
@@ -15975,6 +16341,10 @@ func (client *Client) EventRedeployInstanceWithOptions(request *EventRedeployIns
 
 	if !dara.IsNil(request.PlanTime) {
 		query["PlanTime"] = request.PlanTime
+	}
+
+	if !dara.IsNil(request.PlanUtcTime) {
+		query["PlanUtcTime"] = request.PlanUtcTime
 	}
 
 	if !dara.IsNil(request.ResourceId) {
@@ -16812,7 +17182,7 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 
 // Summary:
 //
-// 为当前用户创建ENS的服务关联角色（SLR），管控资源。
+// Create a service-linked role (SLR) for ENS for the current user to manage resources.
 //
 // @param request - InitializeENSECKServiceRoleRequest
 //
@@ -16843,7 +17213,7 @@ func (client *Client) InitializeENSECKServiceRoleWithOptions(runtime *dara.Runti
 
 // Summary:
 //
-// 为当前用户创建ENS的服务关联角色（SLR），管控资源。
+// Create a service-linked role (SLR) for ENS for the current user to manage resources.
 //
 // @return InitializeENSECKServiceRoleResponse
 func (client *Client) InitializeENSECKServiceRole() (_result *InitializeENSECKServiceRoleResponse, _err error) {
@@ -17742,7 +18112,7 @@ func (client *Client) ListObjects(request *ListObjectsRequest) (_result *ListObj
 
 // Summary:
 //
-// 获取所有产品能力
+// Lists all service capabilities.
 //
 // @param request - ListProductAbilitiesRequest
 //
@@ -17773,7 +18143,7 @@ func (client *Client) ListProductAbilitiesWithOptions(runtime *dara.RuntimeOptio
 
 // Summary:
 //
-// 获取所有产品能力
+// Lists all service capabilities.
 //
 // @return ListProductAbilitiesResponse
 func (client *Client) ListProductAbilities() (_result *ListProductAbilitiesResponse, _err error) {
@@ -19679,7 +20049,7 @@ func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRe
 
 // Summary:
 //
-// 修改snat规则
+// Modifies a specified SNAT entry.
 //
 // @param request - ModifySnatEntryRequest
 //
@@ -19739,7 +20109,7 @@ func (client *Client) ModifySnatEntryWithOptions(request *ModifySnatEntryRequest
 
 // Summary:
 //
-// 修改snat规则
+// Modifies a specified SNAT entry.
 //
 // @param request - ModifySnatEntryRequest
 //

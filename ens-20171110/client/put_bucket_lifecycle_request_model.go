@@ -9,8 +9,8 @@ type iPutBucketLifecycleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAllowSameActionOverlap(v string) *PutBucketLifecycleRequest
-	GetAllowSameActionOverlap() *string
+	SetAllowSameActionOverlap(v bool) *PutBucketLifecycleRequest
+	GetAllowSameActionOverlap() *bool
 	SetBucketName(v string) *PutBucketLifecycleRequest
 	GetBucketName() *string
 	SetCreatedBeforeDate(v string) *PutBucketLifecycleRequest
@@ -35,7 +35,7 @@ type PutBucketLifecycleRequest struct {
 	// example:
 	//
 	// false
-	AllowSameActionOverlap *string `json:"AllowSameActionOverlap,omitempty" xml:"AllowSameActionOverlap,omitempty"`
+	AllowSameActionOverlap *bool `json:"AllowSameActionOverlap,omitempty" xml:"AllowSameActionOverlap,omitempty"`
 	// The name of the bucket.
 	//
 	// This parameter is required.
@@ -104,7 +104,7 @@ func (s PutBucketLifecycleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PutBucketLifecycleRequest) GetAllowSameActionOverlap() *string {
+func (s *PutBucketLifecycleRequest) GetAllowSameActionOverlap() *bool {
 	return s.AllowSameActionOverlap
 }
 
@@ -132,7 +132,7 @@ func (s *PutBucketLifecycleRequest) GetStatus() *string {
 	return s.Status
 }
 
-func (s *PutBucketLifecycleRequest) SetAllowSameActionOverlap(v string) *PutBucketLifecycleRequest {
+func (s *PutBucketLifecycleRequest) SetAllowSameActionOverlap(v bool) *PutBucketLifecycleRequest {
 	s.AllowSameActionOverlap = &v
 	return s
 }

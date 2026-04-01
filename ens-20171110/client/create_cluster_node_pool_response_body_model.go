@@ -422,6 +422,10 @@ type CreateClusterNodePoolResponseBodyNodepoolStatus struct {
 	// example:
 	//
 	// 0
+	FailedNodes *int32 `json:"FailedNodes,omitempty" xml:"FailedNodes,omitempty"`
+	// example:
+	//
+	// 0
 	InitialNodes *int32 `json:"InitialNodes,omitempty" xml:"InitialNodes,omitempty"`
 	// example:
 	//
@@ -453,6 +457,10 @@ func (s *CreateClusterNodePoolResponseBodyNodepoolStatus) GetDesiredNodes() *int
 	return s.DesiredNodes
 }
 
+func (s *CreateClusterNodePoolResponseBodyNodepoolStatus) GetFailedNodes() *int32 {
+	return s.FailedNodes
+}
+
 func (s *CreateClusterNodePoolResponseBodyNodepoolStatus) GetInitialNodes() *int32 {
 	return s.InitialNodes
 }
@@ -475,6 +483,11 @@ func (s *CreateClusterNodePoolResponseBodyNodepoolStatus) GetTotalNodes() *int32
 
 func (s *CreateClusterNodePoolResponseBodyNodepoolStatus) SetDesiredNodes(v int32) *CreateClusterNodePoolResponseBodyNodepoolStatus {
 	s.DesiredNodes = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolResponseBodyNodepoolStatus) SetFailedNodes(v int32) *CreateClusterNodePoolResponseBodyNodepoolStatus {
+	s.FailedNodes = &v
 	return s
 }
 

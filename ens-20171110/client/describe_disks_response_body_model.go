@@ -29,8 +29,7 @@ type DescribeDisksResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the disks.
+	Code  *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Disks *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -164,163 +163,25 @@ func (s *DescribeDisksResponseBodyDisks) Validate() error {
 }
 
 type DescribeDisksResponseBodyDisksDisks struct {
-	// The category of the disk.
-	//
-	// 	- cloud_efficiency: ultra disk.
-	//
-	// 	- cloud_ssd: all-flash disk.
-	//
-	// 	- local_hdd: local HDD.
-	//
-	// 	- local_ssd: local SSD.
-	//
-	// example:
-	//
-	// local_ssd
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-11-11T14:34:55+08:00
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the disk is released when the instance to which the disk is attached is released. Valid values:
-	//
-	// 	- true: The disk is released when the associated instance is released.
-	//
-	// 	- false: The disk is retained when the associated instance is released.
-	//
-	// example:
-	//
-	// false
-	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The namespace description.
-	//
-	// example:
-	//
-	// disk-description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The billing method of the cloud disk or local disk. Valid values:
-	//
-	// 	- **prepaid**: subscription.
-	//
-	// 	- **postpaid**: pay-as-you-go.
-	//
-	// example:
-	//
-	// prepaid
-	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	// The ID of the disk.
-	//
-	// example:
-	//
-	// d-5svum1dx1w4a4spr54lgr****
-	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The name of the disk.
-	//
-	// example:
-	//
-	// fvt-ecs-5cf0****
-	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Indicates whether the cloud disk is encrypted. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// False
-	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used for the cloud disk.
-	//
-	// example:
-	//
-	// 05467897a-4262-4802-b8cb-00d3fb40****
-	EncryptedKeyId *string `json:"EncryptedKeyId,omitempty" xml:"EncryptedKeyId,omitempty"`
-	// The ID of the edge node.
-	//
-	// example:
-	//
-	// cn-guangzhou-10
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-5t77rb0yoz79m28ku60sx****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// Edge Prod Environment Streaming Machine -1063
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the cloud disk or local disk is removable. Valid values:
-	//
-	// 	- true: The disk is removable. A removable disk can independently exist and can be attached to or detached from an instance within the same zone.
-	//
-	// 	- false: The disk is not removable. A disk that is not removable cannot independently exist or be attached to or detached from an instance within the same zone.
-	//
-	// If disks are of the following categories or types, the **Portable*	- value is **false*	- and the disks have the same lifecycle as their attached instances:
-	//
-	// 	- Local HDDs
-	//
-	// 	- Local SSDs
-	//
-	// 	- Data disks that use the subscription billing method
-	//
-	// example:
-	//
-	// true
-	Portable *bool `json:"Portable,omitempty" xml:"Portable,omitempty"`
-	// The serial number.
-	//
-	// example:
-	//
-	// 123
-	SerialId *string `json:"SerialId,omitempty" xml:"SerialId,omitempty"`
-	// The size of the disk. Unit: MiB.
-	//
-	// example:
-	//
-	// 20
-	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot.
-	//
-	// example:
-	//
-	// s-bp67acfmxazb4p****
-	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The status of the disk. Valid values:
-	//
-	// 	- In-use: The disk is in use.
-	//
-	// 	- Available: The disk can be attached.
-	//
-	// 	- Attaching: The disk is being attached.
-	//
-	// 	- Detaching: The disk is being detached.
-	//
-	// 	- Creating: The disk is being created.
-	//
-	// 	- ReIniting: The disk is being reset.
-	//
-	// example:
-	//
-	// Available
-	Status *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeDisksResponseBodyDisksDisksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of the cloud disk or local disk. Valid values:
-	//
-	// 	- 1: system disk.
-	//
-	// 	- 2: data disk.
-	//
-	// example:
-	//
-	// 1
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Category           *string                                  `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreationTime       *string                                  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DeleteWithInstance *bool                                    `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	Description        *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	DiskChargeType     *string                                  `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
+	DiskId             *string                                  `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskName           *string                                  `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Encrypted          *bool                                    `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	EncryptedKeyId     *string                                  `json:"EncryptedKeyId,omitempty" xml:"EncryptedKeyId,omitempty"`
+	EnsRegionId        *string                                  `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceId         *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Portable           *bool                                    `json:"Portable,omitempty" xml:"Portable,omitempty"`
+	SerialId           *string                                  `json:"SerialId,omitempty" xml:"SerialId,omitempty"`
+	Size               *int32                                   `json:"Size,omitempty" xml:"Size,omitempty"`
+	SnapshotId         *string                                  `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	Status             *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags               *DescribeDisksResponseBodyDisksDisksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Type               *string                                  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDisksResponseBodyDisksDisks) String() string {

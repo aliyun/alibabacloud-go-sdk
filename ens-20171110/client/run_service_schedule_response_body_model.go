@@ -28,7 +28,6 @@ type iRunServiceScheduleResponseBody interface {
 }
 
 type RunServiceScheduleResponseBody struct {
-	// The execution results of the commands.
 	CommandResults *RunServiceScheduleResponseBodyCommandResults `json:"CommandResults,omitempty" xml:"CommandResults,omitempty" type:"Struct"`
 	// The index number of the scheduled virtual device (pod).
 	//
@@ -198,24 +197,9 @@ func (s *RunServiceScheduleResponseBodyCommandResults) Validate() error {
 }
 
 type RunServiceScheduleResponseBodyCommandResultsCommandResult struct {
-	// The command.
-	//
-	// example:
-	//
-	// ls -l /data
-	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The name of the container.
-	//
-	// example:
-	//
-	// android
+	Command       *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	// The execution result of the command.
-	//
-	// example:
-	//
-	// success
-	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	ResultMsg     *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
 }
 
 func (s RunServiceScheduleResponseBodyCommandResultsCommandResult) String() string {

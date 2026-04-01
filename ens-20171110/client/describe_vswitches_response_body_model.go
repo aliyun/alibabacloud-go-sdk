@@ -45,9 +45,8 @@ type DescribeVSwitchesResponseBody struct {
 	// example:
 	//
 	// 3
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the vSwitches. For more information, see the array of vSwitches in the response examples in the JSON format.
-	VSwitches *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitches  *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -147,65 +146,16 @@ func (s *DescribeVSwitchesResponseBodyVSwitches) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
-	// The IPv4 CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 10.21.224.0/22
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the VPC was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-06-16T06:33:15Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the vSwitch.
-	//
-	// example:
-	//
-	// VSwitchDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENS node.
-	//
-	// example:
-	//
-	// cn-xian-unicom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The number of available IP addresses.
-	//
-	// example:
-	//
-	// 1024
-	FreeIpCount *int64 `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-25cdvfeq58pl****
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The status of the vSwitch. Valid values:
-	//
-	// 	- Pending
-	//
-	// 	- Available
-	//
-	// example:
-	//
-	// Pending
-	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-5m9xhlq8oh***
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the vSwitch.
-	//
-	// example:
-	//
-	// testVSwitchName
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	CidrBlock   *string                                            `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreatedTime *string                                            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId *string                                            `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	FreeIpCount *int64                                             `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	NetworkId   *string                                            `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	Status      *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags        *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId   *string                                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName *string                                            `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchesVSwitch) String() string {
@@ -350,30 +300,12 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
-	//
-	// example:
-	//
-	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
-	//
-	// example:
-	//
-	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The request error rate.
-	//
-	// example:
-	//
-	// TestValue
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) String() string {

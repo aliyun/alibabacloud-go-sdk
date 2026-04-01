@@ -96,7 +96,8 @@ type BatchEventMigrateInstanceRequestEventInfos struct {
 	// example:
 	//
 	// 1742452232000
-	PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PlanTime    *int64  `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+	PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
 	// Resource ID i-\\*.
 	//
 	// This parameter is required.
@@ -135,6 +136,10 @@ func (s *BatchEventMigrateInstanceRequestEventInfos) GetPlanTime() *int64 {
 	return s.PlanTime
 }
 
+func (s *BatchEventMigrateInstanceRequestEventInfos) GetPlanUtcTime() *string {
+	return s.PlanUtcTime
+}
+
 func (s *BatchEventMigrateInstanceRequestEventInfos) GetResourceId() *string {
 	return s.ResourceId
 }
@@ -161,6 +166,11 @@ func (s *BatchEventMigrateInstanceRequestEventInfos) SetPassword(v string) *Batc
 
 func (s *BatchEventMigrateInstanceRequestEventInfos) SetPlanTime(v int64) *BatchEventMigrateInstanceRequestEventInfos {
 	s.PlanTime = &v
+	return s
+}
+
+func (s *BatchEventMigrateInstanceRequestEventInfos) SetPlanUtcTime(v string) *BatchEventMigrateInstanceRequestEventInfos {
+	s.PlanUtcTime = &v
 	return s
 }
 

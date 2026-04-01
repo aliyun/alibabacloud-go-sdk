@@ -23,8 +23,7 @@ type DescribeInstanceTypesResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Details about the instance types.
+	Code          *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceTypes *DescribeInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,30 +112,10 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) Validate() error {
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
-	// The number of vCPUs.
-	//
-	// example:
-	//
-	// 2
-	CpuCoreCount *int32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
-	// This parameter is unavailable.
-	//
-	// example:
-	//
-	// This parameter is not needed temporarily.
-	InstanceTypeId *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
-	// The name of the instance type.
-	//
-	// example:
-	//
-	// ens.xxx.small
+	CpuCoreCount     *int32  `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	InstanceTypeId   *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
 	InstanceTypeName *string `json:"InstanceTypeName,omitempty" xml:"InstanceTypeName,omitempty"`
-	// The memory size. Unit: MB.
-	//
-	// example:
-	//
-	// 8192
-	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemorySize       *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) String() string {

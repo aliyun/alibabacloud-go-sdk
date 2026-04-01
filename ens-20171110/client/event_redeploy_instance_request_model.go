@@ -15,6 +15,8 @@ type iEventRedeployInstanceRequest interface {
   GetOpsType() *string 
   SetPlanTime(v int64) *EventRedeployInstanceRequest
   GetPlanTime() *int64 
+  SetPlanUtcTime(v string) *EventRedeployInstanceRequest
+  GetPlanUtcTime() *string 
   SetResourceId(v string) *EventRedeployInstanceRequest
   GetResourceId() *string 
 }
@@ -46,6 +48,7 @@ type EventRedeployInstanceRequest struct {
   // 
   // 1742452232000
   PlanTime *int64 `json:"PlanTime,omitempty" xml:"PlanTime,omitempty"`
+  PlanUtcTime *string `json:"PlanUtcTime,omitempty" xml:"PlanUtcTime,omitempty"`
   // The ID of the resource.
   // 
   // This parameter is required.
@@ -76,6 +79,10 @@ func (s *EventRedeployInstanceRequest) GetPlanTime() *int64  {
   return s.PlanTime
 }
 
+func (s *EventRedeployInstanceRequest) GetPlanUtcTime() *string  {
+  return s.PlanUtcTime
+}
+
 func (s *EventRedeployInstanceRequest) GetResourceId() *string  {
   return s.ResourceId
 }
@@ -92,6 +99,11 @@ func (s *EventRedeployInstanceRequest) SetOpsType(v string) *EventRedeployInstan
 
 func (s *EventRedeployInstanceRequest) SetPlanTime(v int64) *EventRedeployInstanceRequest {
   s.PlanTime = &v
+  return s
+}
+
+func (s *EventRedeployInstanceRequest) SetPlanUtcTime(v string) *EventRedeployInstanceRequest {
+  s.PlanUtcTime = &v
   return s
 }
 

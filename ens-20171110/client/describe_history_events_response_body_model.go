@@ -190,13 +190,15 @@ type DescribeHistoryEventsResponseBodyEvents struct {
 	// example:
 	//
 	// 1715578245000
-	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	NotBefore        *int64  `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	NotBeforeUtcTime *string `json:"NotBeforeUtcTime,omitempty" xml:"NotBeforeUtcTime,omitempty"`
 	// The release time in milliseconds.
 	//
 	// example:
 	//
 	// 1715578245000
-	PublishTime *int64 `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishTime    *int64  `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishUtcTime *string `json:"PublishUtcTime,omitempty" xml:"PublishUtcTime,omitempty"`
 	// The event cause.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The ID of the associated resources.
@@ -239,8 +241,16 @@ func (s *DescribeHistoryEventsResponseBodyEvents) GetNotBefore() *int64 {
 	return s.NotBefore
 }
 
+func (s *DescribeHistoryEventsResponseBodyEvents) GetNotBeforeUtcTime() *string {
+	return s.NotBeforeUtcTime
+}
+
 func (s *DescribeHistoryEventsResponseBodyEvents) GetPublishTime() *int64 {
 	return s.PublishTime
+}
+
+func (s *DescribeHistoryEventsResponseBodyEvents) GetPublishUtcTime() *string {
+	return s.PublishUtcTime
 }
 
 func (s *DescribeHistoryEventsResponseBodyEvents) GetReason() *string {
@@ -281,8 +291,18 @@ func (s *DescribeHistoryEventsResponseBodyEvents) SetNotBefore(v int64) *Describ
 	return s
 }
 
+func (s *DescribeHistoryEventsResponseBodyEvents) SetNotBeforeUtcTime(v string) *DescribeHistoryEventsResponseBodyEvents {
+	s.NotBeforeUtcTime = &v
+	return s
+}
+
 func (s *DescribeHistoryEventsResponseBodyEvents) SetPublishTime(v int64) *DescribeHistoryEventsResponseBodyEvents {
 	s.PublishTime = &v
+	return s
+}
+
+func (s *DescribeHistoryEventsResponseBodyEvents) SetPublishUtcTime(v string) *DescribeHistoryEventsResponseBodyEvents {
+	s.PublishUtcTime = &v
 	return s
 }
 

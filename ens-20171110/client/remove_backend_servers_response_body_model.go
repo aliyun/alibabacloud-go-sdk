@@ -16,7 +16,6 @@ type iRemoveBackendServersResponseBody interface {
 }
 
 type RemoveBackendServersResponseBody struct {
-	// The list of backend servers that you want to add to the SLB instance.
 	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,42 +95,11 @@ func (s *RemoveBackendServersResponseBodyBackendServers) Validate() error {
 }
 
 type RemoveBackendServersResponseBodyBackendServersBackendServer struct {
-	// The IP address of the backend server.
-	//
-	// example:
-	//
-	// 192.1XX.X.X
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The backend port that is used by the ELB instance.
-	//
-	// example:
-	//
-	// 0
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The instance ID of the backend server.
-	//
-	// example:
-	//
-	// i-5vb5h5njxiuhn48a****
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of the backend server. Valid values:
-	//
-	// 	- **ens**: an ENS instance.
-	//
-	// 	- **eni**: an ENI.
-	//
-	// example:
-	//
-	// ens
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// >  The value 0 indicates that requests are not forwarded to the backend server.
-	//
-	// example:
-	//
-	// 50
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s RemoveBackendServersResponseBodyBackendServersBackendServer) String() string {

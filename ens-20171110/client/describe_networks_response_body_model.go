@@ -22,7 +22,6 @@ type iDescribeNetworksResponseBody interface {
 }
 
 type DescribeNetworksResponseBody struct {
-	// The VPCs.
 	Networks *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,82 +146,21 @@ func (s *DescribeNetworksResponseBodyNetworks) Validate() error {
 }
 
 type DescribeNetworksResponseBodyNetworksNetwork struct {
-	// The IPv4 CIDR block of the network.
-	//
-	// example:
-	//
-	// 10.0.xx.xx/24
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The timestamp when the instance was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 2020-06-16T06:33:15Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the network.
-	//
-	// example:
-	//
-	// exampleDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the edge node.
-	//
-	// example:
-	//
-	// cn-beijing
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the gateway route table.
-	//
-	// example:
-	//
-	// rt-5*****tbs
-	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
-	// The ID of the network access control list (ACL).
-	//
-	// example:
-	//
-	// nacl-a2do9e413e0spxscd****
-	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	// The ID of the network.
-	//
-	// example:
-	//
-	// n-5***
-	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The name of the network.
-	//
-	// example:
-	//
-	// example
-	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	// The ID of the route table.
-	//
-	// example:
-	//
-	// rt-5*****pks
-	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The IDs of the route tables.
-	RouteTableIds *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
-	// The route table ID.
-	//
-	// example:
-	//
-	// rtb-5**
+	CidrBlock           *string                                                         `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreatedTime         *string                                                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description         *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId         *string                                                         `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	GatewayRouteTableId *string                                                         `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
+	NetworkAclId        *string                                                         `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	NetworkId           *string                                                         `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkName         *string                                                         `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	RouteTableId        *string                                                         `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableIds       *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds       `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
 	RouterTableId       *string                                                         `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
 	SecondaryCidrBlocks *DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks `json:"SecondaryCidrBlocks,omitempty" xml:"SecondaryCidrBlocks,omitempty" type:"Struct"`
-	// The status of the network. Valid values:
-	//
-	// 	- Pending
-	//
-	// 	- Available
-	//
-	// example:
-	//
-	// Available
-	Status *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   *DescribeNetworksResponseBodyNetworksNetworkTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The list of vSwitches in the network.
-	VSwitchIds *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	Status              *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                *DescribeNetworksResponseBodyNetworksNetworkTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchIds          *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds          `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworksResponseBodyNetworksNetwork) String() string {
@@ -477,30 +415,12 @@ func (s *DescribeNetworksResponseBodyNetworksNetworkTags) Validate() error {
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
-	//
-	// example:
-	//
-	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
-	//
-	// example:
-	//
-	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The bandwidth.
-	//
-	// example:
-	//
-	// TestValue
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeNetworksResponseBodyNetworksNetworkTagsTag) String() string {

@@ -25,8 +25,7 @@ type CreateInstanceResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The IDs of instances.
+	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceIds *CreateInstanceResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
 	// The request ID.
 	//

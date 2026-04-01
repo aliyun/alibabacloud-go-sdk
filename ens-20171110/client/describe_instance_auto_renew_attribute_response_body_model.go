@@ -23,8 +23,7 @@ type DescribeInstanceAutoRenewAttributeResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The renewal status of the instance.
+	Code                    *int32                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceRenewAttributes *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes `json:"InstanceRenewAttributes,omitempty" xml:"InstanceRenewAttributes,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,28 +112,9 @@ func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes) 
 }
 
 type DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute struct {
-	// The renewal type of the instance.
-	//
-	// 	- **true**: enables auto-renewal.
-	//
-	// 	- **false**: disables auto-renewal.
-	//
-	// example:
-	//
-	// false
-	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The unit of the auto-renewal period.
-	//
-	// example:
-	//
-	// 0
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// i-5ci7l7k1m9m2zmhp4iw3o****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	AutoRenewal *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute) String() string {

@@ -16,7 +16,6 @@ type iDescribeMeasurementDataResponseBody interface {
 }
 
 type DescribeMeasurementDataResponseBody struct {
-	// The metering data returned.
 	MeasurementDatas *DescribeMeasurementDataResponseBodyMeasurementDatas `json:"MeasurementDatas,omitempty" xml:"MeasurementDatas,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,39 +95,12 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatas) Validate() error {
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementData struct {
-	// The bandwidth data returned.
-	BandWidthFeeDatas *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas `json:"BandWidthFeeDatas,omitempty" xml:"BandWidthFeeDatas,omitempty" type:"Struct"`
-	// The metering method. Valid values:
-	//
-	// 	- ChargeByUnified: unified metering.
-	//
-	// 	- ChargeByGrade: differential metering.
-	//
-	// example:
-	//
-	// ChargeByGrade
-	ChargeModel *string `json:"ChargeModel,omitempty" xml:"ChargeModel,omitempty"`
-	// The metering cycle.
-	//
-	// example:
-	//
-	// 2019-07-30
-	CostCycle *string `json:"CostCycle,omitempty" xml:"CostCycle,omitempty"`
-	// The end time of the metering cycle.
-	//
-	// example:
-	//
-	// 2019-07-30T16:00:00Z
-	CostEndTime *string `json:"CostEndTime,omitempty" xml:"CostEndTime,omitempty"`
-	// The start time of the metering cycle.
-	//
-	// example:
-	//
-	// 2019-07-29T16:00:00Z
-	CostStartTime *string `json:"CostStartTime,omitempty" xml:"CostStartTime,omitempty"`
-	// The information about computing resources.
-	ResourceFeeData *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData `json:"ResourceFeeData,omitempty" xml:"ResourceFeeData,omitempty" type:"Struct"`
-	// Details of the computing resources.
+	BandWidthFeeDatas      *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas      `json:"BandWidthFeeDatas,omitempty" xml:"BandWidthFeeDatas,omitempty" type:"Struct"`
+	ChargeModel            *string                                                                                   `json:"ChargeModel,omitempty" xml:"ChargeModel,omitempty"`
+	CostCycle              *string                                                                                   `json:"CostCycle,omitempty" xml:"CostCycle,omitempty"`
+	CostEndTime            *string                                                                                   `json:"CostEndTime,omitempty" xml:"CostEndTime,omitempty"`
+	CostStartTime          *string                                                                                   `json:"CostStartTime,omitempty" xml:"CostStartTime,omitempty"`
+	ResourceFeeData        *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData        `json:"ResourceFeeData,omitempty" xml:"ResourceFeeData,omitempty" type:"Struct"`
 	ResourceFeeDataDetails *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetails `json:"ResourceFeeDataDetails,omitempty" xml:"ResourceFeeDataDetails,omitempty" type:"Struct"`
 }
 
@@ -257,24 +229,9 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData struct {
-	// The code of the bandwidth plan.
-	//
-	// example:
-	//
-	// cn-cmcc-1
 	CostCode *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
-	// The name of the bandwidth plan.
-	//
-	// example:
-	//
-	// Beijing, Shanghai, and Guangzhou Mobile
 	CostName *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
-	// The bandwidth consumption. Unit: bit/second.
-	//
-	// example:
-	//
-	// 16486
-	CostVal *int32 `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
+	CostVal  *int32  `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
 }
 
 func (s DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData) String() string {
@@ -317,24 +274,9 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData struct {
-	// The memory size. Unit: GB.
-	//
-	// example:
-	//
-	// 24
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The storage capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 60
+	Memory  *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	Storage *int32 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The number of vCPUs.
-	//
-	// example:
-	//
-	// 12
-	Vcpu *int32 `json:"Vcpu,omitempty" xml:"Vcpu,omitempty"`
+	Vcpu    *int32 `json:"Vcpu,omitempty" xml:"Vcpu,omitempty"`
 }
 
 func (s DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData) String() string {
@@ -411,35 +353,9 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResou
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetailsResourceFeeDataDetail struct {
-	// The code of the resource.
-	//
-	// example:
-	//
-	// vCPU
-	CostCode *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
-	// The name of the resource.
-	//
-	// example:
-	//
-	// vCPU
-	CostName *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
-	// The consumption of the resource.
-	//
-	// 	- Memory unit: GB.
-	//
-	// 	- CPU unit: vCPU.
-	//
-	// 	- Storage unit: GB.
-	//
-	// example:
-	//
-	// 55
-	CostVal *int32 `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
-	// The type of the resource.
-	//
-	// example:
-	//
-	// vCPU
+	CostCode     *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
+	CostName     *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
+	CostVal      *int32  `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
