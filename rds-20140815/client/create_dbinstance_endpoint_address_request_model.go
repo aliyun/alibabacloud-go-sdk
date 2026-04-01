@@ -28,17 +28,59 @@ type iCreateDBInstanceEndpointAddressRequest interface {
 }
 
 type CreateDBInstanceEndpointAddressRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The prefix of the public endpoint.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-*****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The network type of the endpoint. Only Internet is supported. Set the value to **Public**.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Public
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The port number of the public endpoint.
+	//
 	// This parameter is required.
-	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	//
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

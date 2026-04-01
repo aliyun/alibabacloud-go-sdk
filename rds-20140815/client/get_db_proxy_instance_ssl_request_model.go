@@ -18,10 +18,26 @@ type iGetDbProxyInstanceSslRequest interface {
 }
 
 type GetDbProxyInstanceSslRequest struct {
+	// A reserved parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-t4n3axxxxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetDbProxyInstanceSslRequest) String() string {

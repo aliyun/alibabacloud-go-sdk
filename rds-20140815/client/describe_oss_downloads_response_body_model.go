@@ -20,10 +20,25 @@ type iDescribeOssDownloadsResponseBody interface {
 }
 
 type DescribeOssDownloadsResponseBody struct {
-	DBInstanceId  *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Items         *DescribeOssDownloadsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	MigrateTaskId *string                                `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
-	RequestId     *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
+	DBInstanceId *string                                `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Items        *DescribeOssDownloadsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The ID of the migration task.
+	//
+	// example:
+	//
+	// 562154852
+	MigrateTaskId *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A5409D02-D661-4BF3-8F3D-0A814D0574E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOssDownloadsResponseBody) String() string {

@@ -20,10 +20,34 @@ type iModifyRCInstanceKeyPairRequest interface {
 }
 
 type ModifyRCInstanceKeyPairRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rc-m5sc1271fv344a1r****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the key pair.
+	//
+	// example:
+	//
+	// customer_keypairs
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Reboot      *bool   `json:"Reboot,omitempty" xml:"Reboot,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to restart the instance.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// ture
+	Reboot *bool `json:"Reboot,omitempty" xml:"Reboot,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyRCInstanceKeyPairRequest) String() string {

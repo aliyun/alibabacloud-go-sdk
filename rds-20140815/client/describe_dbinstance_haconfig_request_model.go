@@ -22,7 +22,13 @@ type iDescribeDBInstanceHAConfigRequest interface {
 }
 
 type DescribeDBInstanceHAConfigRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxx
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

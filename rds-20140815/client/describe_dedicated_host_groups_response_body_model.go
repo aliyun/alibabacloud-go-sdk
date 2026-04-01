@@ -17,7 +17,12 @@ type iDescribeDedicatedHostGroupsResponseBody interface {
 
 type DescribeDedicatedHostGroupsResponseBody struct {
 	DedicatedHostGroups *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups `json:"DedicatedHostGroups,omitempty" xml:"DedicatedHostGroups,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AB44DC0A-7E77-442A-97A9-C6418694CB22
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDedicatedHostGroupsResponseBody) String() string {

@@ -24,7 +24,10 @@ type CheckRdsCustomInitResponseBody struct {
 	//
 	// true
 	HasServiceLinkedRole *string `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
-	RegisterUidSuccess   *bool   `json:"RegisterUidSuccess,omitempty" xml:"RegisterUidSuccess,omitempty"`
+	// example:
+	//
+	// true
+	RegisterUidSuccess *bool `json:"RegisterUidSuccess,omitempty" xml:"RegisterUidSuccess,omitempty"`
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AA****

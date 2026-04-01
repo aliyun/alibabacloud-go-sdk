@@ -16,9 +16,20 @@ type iStartRCInstanceRequest interface {
 }
 
 type StartRCInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rc-l02u59b2kjfd2us0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartRCInstanceRequest) String() string {

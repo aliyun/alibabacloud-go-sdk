@@ -18,9 +18,24 @@ type iDescribeRCInstanceDdosCountRequest interface {
 }
 
 type DescribeRCInstanceDdosCountRequest struct {
+	// The region ID of the asset.
+	//
+	// example:
+	//
+	// cn-beijing
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
+	// The type of the asset that is assigned a public IP address. Fixed value: **ecs**.
+	//
+	// example:
+	//
+	// ecs
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region in which the RDS Custom instance resides.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRCInstanceDdosCountRequest) String() string {

@@ -20,10 +20,30 @@ type iUpgradeDBInstanceMajorVersionResponseBody interface {
 }
 
 type UpgradeDBInstanceMajorVersionResponseBody struct {
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// pgm-bp1gm3yh0ht1****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 21128667463****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 006729E5-2A33-5955-89E3-651D3F44EBE6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// 416980000
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBInstanceMajorVersionResponseBody) String() string {

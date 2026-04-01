@@ -16,8 +16,14 @@ type iCheckRegionSupportBackupEncryptionResponseBody interface {
 }
 
 type CheckRegionSupportBackupEncryptionResponseBody struct {
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SupportBackupEncryption *bool   `json:"SupportBackupEncryption,omitempty" xml:"SupportBackupEncryption,omitempty"`
+	// example:
+	//
+	// 081FAAD5-9E56-5BE7-A495-*******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SupportBackupEncryption *bool `json:"SupportBackupEncryption,omitempty" xml:"SupportBackupEncryption,omitempty"`
 }
 
 func (s CheckRegionSupportBackupEncryptionResponseBody) String() string {

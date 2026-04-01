@@ -22,14 +22,34 @@ type iRebootRCInstancesShrinkRequest interface {
 }
 
 type RebootRCInstancesShrinkRequest struct {
+	// The batch operation mode. Set the value to **AllTogether**. In this mode, if all specified instances are restarted, a success message is returned. If an instance fails the verification, none of the specified instances can be restarted and an error message is returned.
+	//
+	// example:
+	//
+	// AllTogether
 	BatchOptimization *string `json:"BatchOptimization,omitempty" xml:"BatchOptimization,omitempty"`
-	ForceReboot       *bool   `json:"ForceReboot,omitempty" xml:"ForceReboot,omitempty"`
+	// Specifies whether to forcefully restart the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
+	ForceReboot *bool `json:"ForceReboot,omitempty" xml:"ForceReboot,omitempty"`
+	// The node IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// example:
 	//
 	// 2018-01-01T12:05Z
 	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RebootRCInstancesShrinkRequest) String() string {

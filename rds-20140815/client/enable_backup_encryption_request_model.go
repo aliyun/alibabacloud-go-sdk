@@ -19,7 +19,14 @@ type iEnableBackupEncryptionRequest interface {
 
 type EnableBackupEncryptionRequest struct {
   // This parameter is required.
+  // 
+  // example:
+  // 
+  // rm-wz951f7f******
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+  // example:
+  // 
+  // 564cf6c4-d2ee-495b-b265-5724******
   EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }

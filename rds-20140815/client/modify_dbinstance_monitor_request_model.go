@@ -30,7 +30,7 @@ type ModifyDBInstanceMonitorRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
@@ -38,7 +38,7 @@ type ModifyDBInstanceMonitorRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

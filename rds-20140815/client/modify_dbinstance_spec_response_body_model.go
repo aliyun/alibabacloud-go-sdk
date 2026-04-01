@@ -18,9 +18,24 @@ type iModifyDBInstanceSpecResponseBody interface {
 }
 
 type ModifyDBInstanceSpecResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5*******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 20793850608****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3C5CFDEE-F774-4DED-89A2-1D76EC63C575
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDBInstanceSpecResponseBody) String() string {

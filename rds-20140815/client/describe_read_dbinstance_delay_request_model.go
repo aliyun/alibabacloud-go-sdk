@@ -28,12 +28,29 @@ type iDescribeReadDBInstanceDelayRequest interface {
 }
 
 type DescribeReadDBInstanceDelayRequest struct {
+	// The primary instance ID. You can call the DescribeDBInstances operation to query the primary instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The read-only instance ID. You can call the DescribeDBInstances operation to query the read-only instance ID.
+	//
 	// This parameter is required.
-	ReadInstanceId       *string `json:"ReadInstanceId,omitempty" xml:"ReadInstanceId,omitempty"`
+	//
+	// example:
+	//
+	// rr-bp*****
+	ReadInstanceId *string `json:"ReadInstanceId,omitempty" xml:"ReadInstanceId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

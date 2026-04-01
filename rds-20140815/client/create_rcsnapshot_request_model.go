@@ -48,13 +48,13 @@ type CreateRCSnapshotRequest struct {
 	//
 	// example:
 	//
-	// None
+	// none
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
 	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// None
+	// none
 	InstantAccessRetentionDays *int32 `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
 	// The region ID.
 	//
@@ -62,11 +62,9 @@ type CreateRCSnapshotRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
-	//
 	// example:
 	//
-	// rc-t8q22a87745hf8****
+	// None
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.
 	//
@@ -75,14 +73,13 @@ type CreateRCSnapshotRequest struct {
 	// example:
 	//
 	// 2
-	RetentionDays *int32 `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	// Tag Details.
-	Tag []*CreateRCSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RetentionDays *int32                        `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Tag           []*CreateRCSnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// This parameter has been deprecated.
 	//
 	// example:
 	//
-	// None
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -189,17 +186,13 @@ func (s *CreateRCSnapshotRequest) Validate() error {
 }
 
 type CreateRCSnapshotRequestTag struct {
-	// tag key.
-	//
 	// example:
 	//
-	// testRC
+	// None
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// tag value.
-	//
 	// example:
 	//
-	// test01
+	// None
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

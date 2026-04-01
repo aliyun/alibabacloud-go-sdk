@@ -36,78 +36,50 @@ type iDescribeImportTaskResponseBody interface {
 }
 
 type DescribeImportTaskResponseBody struct {
-	// Account name.
-	//
 	// example:
 	//
 	// myadmin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// Milvus version number.
-	//
 	// example:
 	//
 	// 5.7
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// Detailed information about the job
-	//
 	// example:
 	//
 	// Error Message
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Request ID.
-	//
 	// example:
 	//
 	// A103039D-B1B2-4C57-B989-7D7C0DA95426
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Source instance category.
-	//
-	// - **ECS**: Alibaba Cloud ECS.
-	//
-	// - **other**: Other.
-	//
 	// example:
 	//
 	// aliyunRDS
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// Source IP address for access.
-	//
 	// example:
 	//
 	// 59.172.25.122
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Source MySQL port
-	//
 	// example:
 	//
 	// 3306
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// Task Status
-	//
 	// example:
 	//
 	// Importing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Name of the target disaster recovery instance to switch to.
-	//
 	// example:
 	//
 	// rm-t4neh0q12v1******
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// Job ID
-	//
 	// example:
 	//
 	// 416980000
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Task Name.
-	//
 	// example:
 	//
 	// test01
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Task Type, used to query jobs of specific types. Separate multiple types with commas. A maximum of 30 types are supported. The default value is empty, indicating no restriction.
-	//
 	// example:
 	//
 	// import

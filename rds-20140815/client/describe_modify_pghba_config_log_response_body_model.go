@@ -20,10 +20,25 @@ type iDescribeModifyPGHbaConfigLogResponseBody interface {
 }
 
 type DescribeModifyPGHbaConfigLogResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// pgm-bp1lymyn1v3i****
 	DBInstanceId *string                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	HbaLogItems  *DescribeModifyPGHbaConfigLogResponseBodyHbaLogItems `json:"HbaLogItems,omitempty" xml:"HbaLogItems,omitempty" type:"Struct"`
-	LogItemCount *int32                                               `json:"LogItemCount,omitempty" xml:"LogItemCount,omitempty"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of modification records.
+	//
+	// example:
+	//
+	// 1
+	LogItemCount *int32 `json:"LogItemCount,omitempty" xml:"LogItemCount,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 6D797E6B-E157-510C-A27F-6F9E6DA40633
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeModifyPGHbaConfigLogResponseBody) String() string {

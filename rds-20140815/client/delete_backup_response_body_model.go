@@ -14,6 +14,11 @@ type iDeleteBackupResponseBody interface {
 }
 
 type DeleteBackupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 37441409-FFD1-40AA-8EC5-9ECF5E2F7C29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

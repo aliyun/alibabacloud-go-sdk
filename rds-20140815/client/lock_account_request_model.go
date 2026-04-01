@@ -22,9 +22,21 @@ type iLockAccountRequest interface {
 }
 
 type LockAccountRequest struct {
+	// The account that you want to lock. You can lock only a single account at a time.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bpxxxxx
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

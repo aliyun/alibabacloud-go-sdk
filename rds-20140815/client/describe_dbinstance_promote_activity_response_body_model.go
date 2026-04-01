@@ -26,13 +26,56 @@ type iDescribeDBInstancePromoteActivityResponseBody interface {
 }
 
 type DescribeDBInstancePromoteActivityResponseBody struct {
-	AliUid         *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 22973492**********
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 	- China site: 26842
+	//
+	// 	- International site: 26888
+	//
+	// example:
+	//
+	// 268**
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBType         *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	IsActivity     *string `json:"IsActivity,omitempty" xml:"IsActivity,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the database engine. Valid values:
+	//
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The activity information about the instance. For more information, see [Instance activities](https://help.aliyun.com/document_detail/2391834.html).
+	//
+	// example:
+	//
+	// 1
+	IsActivity *string `json:"IsActivity,omitempty" xml:"IsActivity,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 94CB8D93-017A-5AE7-A118-6E0F89D93C0A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstancePromoteActivityResponseBody) String() string {

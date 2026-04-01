@@ -14,8 +14,6 @@ type iModifyDBInstanceVectorSupportStatusResponseBody interface {
 }
 
 type ModifyDBInstanceVectorSupportStatusResponseBody struct {
-	// Request ID.
-	//
 	// example:
 	//
 	// 16C62438-491B-5C02-9B49-BA924A1372A2

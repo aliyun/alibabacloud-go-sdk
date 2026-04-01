@@ -65,19 +65,8 @@ type ImportUserBackupFileRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	BucketRegion *string `json:"BucketRegion,omitempty" xml:"BucketRegion,omitempty"`
-	// Specifies whether to automatically set up replication. Valid values:
-	//
-	// - true: Yes. The `MasterInfo` parameter is required.
-	//
-	// - false: No.
-	//
-	// > This applies only to native replication instances and requires the `DBInstanceId` parameter to be passed when invoking the API.
-	//
-	// example:
-	//
-	// true
-	BuildReplication *bool `json:"BuildReplication,omitempty" xml:"BuildReplication,omitempty"`
+	BucketRegion     *string `json:"BucketRegion,omitempty" xml:"BucketRegion,omitempty"`
+	BuildReplication *bool   `json:"BuildReplication,omitempty" xml:"BuildReplication,omitempty"`
 	// The description of the full backup file.
 	//
 	// example:
@@ -96,36 +85,7 @@ type ImportUserBackupFileRequest struct {
 	//
 	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// A case-sensitive JSON array containing the Master information for setting up MySQL replication. Example:
-	//
-	// ```
-	//
-	// {"masterIp":"172.20.xx.xx","masterPort":"3306","masterUser":"replica","masterPassword":"W33uopkehBQ="}
-	//
-	// ```
-	//
-	// The parameters in the array are described as follows:
-	//
-	// - `masterIp`: Primary database IP address.
-	//
-	// - `masterPort`: Primary database port.
-	//
-	// - `masterUser`: Replication account for the primary database.
-	//
-	// - `masterPassword`: Password for the replication account of the primary database, which must be Base64-encoded.
-	//
-	// > This applies only to native replication instances and requires the `DBInstanceId` parameter to be passed when invoking the API.
-	//
-	// example:
-	//
-	// {"masterIp":"172.20.xx.xx","masterPort":"3306","masterUser":"replica","masterPassword":"W33uopkehBQ="}
-	MasterInfo *string `json:"MasterInfo,omitempty" xml:"MasterInfo,omitempty"`
-	// Import mode. Valid values:
-	//
-	// - oss: Download the backup from OSS and import it.
-	//
-	// - stream: Import the backup over the network.
-	//
+	MasterInfo    *string `json:"MasterInfo,omitempty" xml:"MasterInfo,omitempty"`
 	// example:
 	//
 	// oss
@@ -166,26 +126,7 @@ type ImportUserBackupFileRequest struct {
 	// example:
 	//
 	// 30
-	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// A case-sensitive JSON array that provides the source information for a full backup. Example:
-	//
-	// ```
-	//
-	// {"sourceIp":"172.20.xx.xx","sourcePort":"9999"}
-	//
-	// ```
-	//
-	// The parameters in the array are described as follows:
-	//
-	// - `sourceIp`: Source IP address.
-	//
-	// - `sourcePort`: Port on which Netcat listens at the source.
-	//
-	// > This applies only to native replication instances and requires the `DBInstanceId` parameter to be passed when invoking the API.
-	//
-	// example:
-	//
-	// {"sourceIp":"172.20.xx.xx","sourcePort":"9999"}
+	Retention  *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	SourceInfo *string `json:"SourceInfo,omitempty" xml:"SourceInfo,omitempty"`
 	// The zone ID. You can call the DescribeRegions operation to query the zone ID.
 	//

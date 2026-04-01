@@ -14,6 +14,11 @@ type iModifyADInfoResponseBody interface {
 }
 
 type ModifyADInfoResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

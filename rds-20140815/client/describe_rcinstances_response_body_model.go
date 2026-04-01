@@ -124,33 +124,14 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// testrdscustom
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Number of vCPUs.
-	//
-	// example:
-	//
-	// 8
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Indicates whether the instance can be added to an ACK cluster. When this parameter is set to **1**, the created instance can be added to an ACK cluster by using the **AttachRCInstances*	- API operation, enabling efficient management of container applications.
-	//
-	// - **1**: Yes
-	//
-	// - **0*	- (default): No
-	//
-	// example:
-	//
-	// 0
-	CreateMode *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
+	Cpu         *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CreateMode  *string `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
 	// The database type.
 	//
 	// example:
 	//
 	// rds_custom
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The deployment set ID.
-	//
-	// example:
-	//
-	// ds-bp14k1xvolvsy4z3****
+	DbType          *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The instance description.
 	//
@@ -162,13 +143,6 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// testHostName
 	EcsHostName *string `json:"EcsHostName,omitempty" xml:"EcsHostName,omitempty"`
-	// Instance Expiration Time. It is represented in ISO 8601 format using UTC+0 time, with the pattern `yyyy-MM-ddTHH:mm:ssZ`.
-	//
-	// > The expiration time displayed in the console is 8 hours later.
-	//
-	// example:
-	//
-	// 2025-05-02T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The time when the task was created. The time is displayed in GMT.
 	//
@@ -180,29 +154,15 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// example:
 	//
-	// 172.16.XX.XX
+	// 172.30.XXX.XXX
 	HostIp *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
 	// The host name.
 	//
 	// example:
 	//
 	// i-2zeaiz4g9u23f40m****
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// Image ID.
-	//
-	// example:
-	//
-	// aliyun_3_x64_20G_alibase_20250117.vhd
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Billing method. Valid values:
-	//
-	// 	- **PrePaid**: subscription
-	//
-	// 	- **PostPaid**: pay-as-you-go
-	//
-	// example:
-	//
-	// PrePaid
+	HostName           *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId            *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance ID.
 	//
@@ -210,40 +170,14 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	//
 	// rm-2ze704f*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Instance name
-	//
 	// example:
 	//
 	// k8s-node
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Instance Type.
-	//
-	// For more information, see [RDS Custom Instance Type List](https://help.aliyun.com/document_detail/2844823.html).
-	//
-	// example:
-	//
-	// mysql.x2.xlarge.6cm
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Instance family.
-	//
-	// For more information, see [RDS Custom instance type list](https://help.aliyun.com/document_detail/2844823.html).
-	//
-	// example:
-	//
-	// x.6cm
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// Memory size, in MiB.
-	//
-	// example:
-	//
-	// 16384
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// File Type. When **rds_vnode*	- is returned, it indicates that the node is a container node.
-	//
-	// example:
-	//
-	// rds_vnode
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Memory             *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NodeType           *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// example:
 	//
 	// CentOS  7.4 64 位
@@ -251,35 +185,16 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// example:
 	//
 	// linux
-	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// Public IP address of the instance.
-	//
-	// example:
-	//
-	// 121.89.XX.XX
+	OSType   *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
-	//
-	// example:
-	//
-	// sg-2vcbcivwfxiozhtp****
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// Spot strategy for pay-as-you-go instances. The return value is as follows:
-	//
-	// - **NoSpot**: Normal pay-as-you-go instance.
-	//
-	// - **SpotAsPriceGo**: System automatically bids based on the current market price.
-	//
-	// example:
-	//
-	// NoSpot
-	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+	SpotStrategy    *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// example:
 	//
 	// 2017-12-10T04:04Z
@@ -301,14 +216,10 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// example:
 	//
 	// Running
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	// The queried instances and tag details.
+	Status       *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StoppedMode  *string                                                   `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
 	TagResources []*DescribeRCInstancesResponseBodyRCInstancesTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-	// Tag Details.
-	Tags []*DescribeRCInstancesResponseBodyRCInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) attributes.
-	//
+	Tags         []*DescribeRCInstancesResponseBodyRCInstancesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// if can be null:
 	// true
 	VpcAttributes *DescribeRCInstancesResponseBodyRCInstancesVpcAttributes `json:"VpcAttributes,omitempty" xml:"VpcAttributes,omitempty" type:"Struct"`
@@ -317,12 +228,7 @@ type DescribeRCInstancesResponseBodyRCInstances struct {
 	// example:
 	//
 	// vpc-uf6f7l4fg90****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// Zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-j
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -668,34 +574,10 @@ func (s *DescribeRCInstancesResponseBodyRCInstances) Validate() error {
 }
 
 type DescribeRCInstancesResponseBodyRCInstancesTagResources struct {
-	// Resource ID.
-	//
-	// example:
-	//
-	// rc-t8q22a87745hf8******
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Resource type.
-	//
-	// - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance
-	//
-	// - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
-	//
-	// example:
-	//
-	// ALIYUN::RDS::CUSTOM
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Tag key.
-	//
-	// example:
-	//
-	// testRC
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// Tag value.
-	//
-	// example:
-	//
-	// test01
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeRCInstancesResponseBodyRCInstancesTagResources) String() string {
@@ -747,34 +629,10 @@ func (s *DescribeRCInstancesResponseBodyRCInstancesTagResources) Validate() erro
 }
 
 type DescribeRCInstancesResponseBodyRCInstancesTags struct {
-	// Resource ID.
-	//
-	// example:
-	//
-	// rc-t8q22a87745hf8******
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Resource type.
-	//
-	// - `ALIYUN::RDS::INSTANCE`: ApsaraDB RDS instance
-	//
-	// - `ALIYUN::RDS::CUSTOM`: RDS Custom instance
-	//
-	// example:
-	//
-	// ALIYUN::RDS::CUSTOM
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Tag key.
-	//
-	// example:
-	//
-	// testRC
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// Tag value.
-	//
-	// example:
-	//
-	// test01
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeRCInstancesResponseBodyRCInstancesTags) String() string {
@@ -826,26 +684,10 @@ func (s *DescribeRCInstancesResponseBodyRCInstancesTags) Validate() error {
 }
 
 type DescribeRCInstancesResponseBodyRCInstancesVpcAttributes struct {
-	// Reserved parameter.
-	//
-	// example:
-	//
-	// None
-	NatIpAddress *string `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
-	// The private IP addresses.
+	NatIpAddress     *string   `json:"NatIpAddress,omitempty" xml:"NatIpAddress,omitempty"`
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-bp1nb3pv03878tgnj****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// example:
-	//
-	// vpc-uf6f7l4fg90****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VSwitchId        *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCInstancesResponseBodyRCInstancesVpcAttributes) String() string {

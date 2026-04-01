@@ -20,20 +20,11 @@ type iListImportTasksResponseBody interface {
 }
 
 type ListImportTasksResponseBody struct {
-	// None
 	Items []*ListImportTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Number of records per page. Valid values: **1–100**.
-	//
-	// Default value: **30**.
-	//
-	// >If this parameter is specified, the **PageSize*	- and **PageNumber*	- parameters are unavailable.
-	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Paging cursor identity.
-	//
 	// example:
 	//
 	// None
@@ -104,44 +95,30 @@ func (s *ListImportTasksResponseBody) Validate() error {
 }
 
 type ListImportTasksResponseBodyItems struct {
-	// Creation time in UTC, formatted as YYYY-MM-DDTHH:mm:ssZ.
-	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Milvus version number.
-	//
 	// example:
 	//
 	// 5.7
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// Job status.
-	//
 	// example:
 	//
 	// Importing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Target instance ID.
-	//
 	// example:
 	//
 	// rm-bp*****
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// Job ID.
-	//
 	// example:
 	//
 	// 342900000
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// Job name.
-	//
 	// example:
 	//
 	// 362c6c7a-4d20-4eac-898c-1495ceab374c
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// Job type.
-	//
 	// example:
 	//
 	// import

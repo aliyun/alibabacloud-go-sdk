@@ -20,10 +20,24 @@ type iDeleteRCClusterNodesShrinkRequest interface {
 }
 
 type DeleteRCClusterNodesShrinkRequest struct {
+	// The instance IDs.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	NodesShrink       *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The node information.
+	NodesShrink *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// >  This is a reserved parameter.
+	//
+	// example:
+	//
+	// None
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DeleteRCClusterNodesShrinkRequest) String() string {

@@ -38,22 +38,89 @@ type iModifyDBProxyInstanceShrinkRequest interface {
 }
 
 type ModifyDBProxyInstanceShrinkRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	//
+	// example:
+	//
+	// rm-t4n3a****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A deprecated parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
+	// The number of database proxies. If you set this parameter to 0, the database proxy feature is disabled for the instance. Valid values: **1*	- to **16**.
+	//
+	// >  The capability of the database proxy feature to process requests increases with the number of database proxies that are enabled. You can monitor the load on the instance and specify an appropriate number of database proxies based on the load monitoring data.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
+	// The database proxy type. Valid values:
+	//
+	// 	- **common**: general-purpose database proxy
+	//
+	// 	- **exclusive*	- (default): dedicated database proxy
+	//
 	// This parameter is required.
-	DBProxyInstanceType   *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	DBProxyNodesShrink    *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
+	//
+	// example:
+	//
+	// DedicatedProxy
+	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	// List of proxy nodes.
+	//
+	// > This parameter must be passed when the current proxy instance is deployed in multiple availability zones.
+	DBProxyNodesShrink *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
+	// The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// >  If the **EffectiveTime*	- parameter is set to **SpecificTime**, you must specify this parameter.
+	//
+	// example:
+	//
+	// 2019-07-10T13:15:12Z
 	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
-	EffectiveTime         *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	MigrateAZShrink       *string `json:"MigrateAZ,omitempty" xml:"MigrateAZ,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VSwitchIds            *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The effective time. Valid values:
+	//
+	// 	- **Immediate**: The effective time is immediate.
+	//
+	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	//
+	// 	- **SpecificTime**: The effective time is a specified point in time.
+	//
+	// Default value: **MaintainTime**.
+	//
+	// example:
+	//
+	// MaintainTime
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// The list of available zones for migration agents.
+	//
+	// > Currently, only RDS MySQL cloud disk version agent instance migration is supported.
+	MigrateAZShrink *string `json:"MigrateAZ,omitempty" xml:"MigrateAZ,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the vSwitch in the destination zone. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/610431.html) operation to query existing vSwitches.
+	//
+	// >  Only database proxies for ApsaraDB RDS for MySQL instances that use cloud disks can be migrated to different zones.
+	//
+	// example:
+	//
+	// vsw-uf6adz52c2p****
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 }
 
 func (s ModifyDBProxyInstanceShrinkRequest) String() string {

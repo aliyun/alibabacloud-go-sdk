@@ -14,7 +14,7 @@ type iDeleteDBInstanceReplicationResponseBody interface {
 }
 
 type DeleteDBInstanceReplicationResponseBody struct {
-	// ID of the request
+	// Id of the request
 	//
 	// example:
 	//

@@ -60,29 +60,67 @@ type iRunRCCommandShrinkRequest interface {
 }
 
 type RunRCCommandShrinkRequest struct {
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCziJZNwH****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ZWNobyAxMjM=
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	ContainerId    *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	ContainerName  *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// example:
+	//
+	// ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
+	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
+	// example:
+	//
+	// test-container
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// example:
 	//
 	// PlainText
-	ContentEncoding   *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
 	EnableParameter   *bool   `json:"EnableParameter,omitempty" xml:"EnableParameter,omitempty"`
 	Frequency         *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	KeepCommand       *bool   `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
-	Launcher          *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParametersShrink  *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// false
+	KeepCommand *bool `json:"KeepCommand,omitempty" xml:"KeepCommand,omitempty"`
+	// example:
+	//
+	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
+	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
+	// example:
+	//
+	// testName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {"name":"Jack", "accessKey":"LTAI*************"}
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// Once
-	RepeatMode         *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceTagsShrink *string `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty"`
 	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -90,16 +128,28 @@ type RunRCCommandShrinkRequest struct {
 	//
 	// ProcessTree
 	TerminationMode *string `json:"TerminationMode,omitempty" xml:"TerminationMode,omitempty"`
-	Timeout         *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RunShellScript
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Username            *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// test
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// None
 	WindowsPasswordName *string `json:"WindowsPasswordName,omitempty" xml:"WindowsPasswordName,omitempty"`
-	WorkingDir          *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	// example:
+	//
+	// /home/user
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s RunRCCommandShrinkRequest) String() string {

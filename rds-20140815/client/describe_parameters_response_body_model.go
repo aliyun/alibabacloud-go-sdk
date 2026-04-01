@@ -24,10 +24,26 @@ type iDescribeParametersResponseBody interface {
 }
 
 type DescribeParametersResponseBody struct {
-	ConfigParameters  *DescribeParametersResponseBodyConfigParameters  `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
-	Engine            *string                                          `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion     *string                                          `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ParamGroupInfo    *DescribeParametersResponseBodyParamGroupInfo    `json:"ParamGroupInfo,omitempty" xml:"ParamGroupInfo,omitempty" type:"Struct"`
+	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
+	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	//
+	// example:
+	//
+	// 5.5
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The information about the parameter template.
+	ParamGroupInfo *DescribeParametersResponseBodyParamGroupInfo `json:"ParamGroupInfo,omitempty" xml:"ParamGroupInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
@@ -193,9 +209,29 @@ func (s *DescribeParametersResponseBodyConfigParametersDBInstanceParameter) Vali
 }
 
 type DescribeParametersResponseBodyParamGroupInfo struct {
-	ParamGroupId       *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// The ID of the parameter template.
+	//
+	// example:
+	//
+	// rpg-sys-01040401010200
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// The description of the parameter template.
+	//
+	// example:
+	//
+	// sync_binlog=1000, innodb_flush_log_at_trx_commit=2, async
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// The name of the parameter template.
+	//
+	// example:
+	//
+	// mysql_innodb_8.0_basic_normal_high
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	// The type of the parameter template.
+	//
+	// example:
+	//
+	// 0
 	ParameterGroupType *string `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
 }
 

@@ -42,13 +42,13 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-uf6wjk5******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the database.
 	//
 	// example:
 	//
-	// testdb
+	// RDS_MySQL
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.**
 	//

@@ -16,8 +16,18 @@ type iDeleteSlotResponseBody interface {
 }
 
 type DeleteSlotResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 2875D608-A228-53D7-B8C9-35F13EDCF36D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SlotName  *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
+	// The name of the replication slot.
+	//
+	// example:
+	//
+	// slot_test01
+	SlotName *string `json:"SlotName,omitempty" xml:"SlotName,omitempty"`
 }
 
 func (s DeleteSlotResponseBody) String() string {

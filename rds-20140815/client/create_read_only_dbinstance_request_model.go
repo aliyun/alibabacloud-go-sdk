@@ -142,7 +142,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// false
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
 	// An invalid parameter. You do not need to specify this parameter.
 	//
@@ -169,12 +169,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// A reserved parameter. No configuration is required.
-	//
-	// example:
-	//
-	// None
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CustomExtraInfo *string `json:"CustomExtraInfo,omitempty" xml:"CustomExtraInfo,omitempty"`
 	// The instance type of the read-only instance. For more information, see [Read-only instance types](https://help.aliyun.com/document_detail/145759.html). We recommend that you specify an instance type whose specifications are higher than or equal to the specifications of the instance type of the primary instance. If the specifications of the read-only instance are lower than the specifications of the primary instance, the read-only instance may encounter issues such as high latency and heavy load.
 	//
@@ -182,7 +177,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// mysqlro.n2.small.1c
+	// rds.mys2.small
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The description of the read-only instance. The description must be 2 to 256 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The value must start with a letter
 	//
@@ -190,7 +185,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// testReadOnly
+	// Test read-only instance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The primary instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
@@ -264,7 +259,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// test
+	// None
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
 	// The network type of the read-only instance. Valid values:
 	//
@@ -284,21 +279,14 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// test
+	// None
 	InstructionSetArch *string `json:"InstructionSetArch,omitempty" xml:"InstructionSetArch,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
 	//
-	// 0
+	// None
 	IoAccelerationEnabled *string `json:"IoAccelerationEnabled,omitempty" xml:"IoAccelerationEnabled,omitempty"`
-	// Specifies whether to create a DuckDB analytic instance. Valid values:
-	//
-	// - **true**: Enabled
-	//
-	// - **false**: Disabled
-	//
-	// > Currently, only RDS MySQL and RDS PostgreSQL support creating DuckDB analytic instances.
 	IsAnalyticReadOnlyIns *bool   `json:"IsAnalyticReadOnlyIns,omitempty" xml:"IsAnalyticReadOnlyIns,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -342,7 +330,7 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// 71744626****
+	// 717446260784
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID. The read-only instance and the primary instance must reside in the same region. You can call the DescribeRegions operation to query the most recent region list.
 	//
@@ -370,13 +358,13 @@ type CreateReadOnlyDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// test
+	// None
 	TddlBizType *string `json:"TddlBizType,omitempty" xml:"TddlBizType,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
 	//
-	// test
+	// None
 	TddlRegionConfig *string `json:"TddlRegionConfig,omitempty" xml:"TddlRegionConfig,omitempty"`
 	// The subscription duration of the read-only instance. Valid values:
 	//

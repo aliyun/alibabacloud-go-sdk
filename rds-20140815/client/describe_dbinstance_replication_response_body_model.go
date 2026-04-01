@@ -44,13 +44,11 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// ON
 	ExternalReplication *string `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
-	// The executed global transaction identifier.
-	//
 	// example:
 	//
 	// bd2a34b9-8b8d-11ef-8917-00163e1298b9:1-20567
 	GtidExecuted *string `json:"GtidExecuted,omitempty" xml:"GtidExecuted,omitempty"`
-	// Indicates whether full data has been successfully imported.
+	// COMPLETED: 导入完成，INIT: 初始化，IMPORTING: 正在导入
 	//
 	// example:
 	//
@@ -68,14 +66,10 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// Got fatal error 1236 from master when reading data from binary log...
 	ReplicationErrorMessage *string `json:"ReplicationErrorMessage,omitempty" xml:"ReplicationErrorMessage,omitempty"`
-	// The replication IP address.
-	//
 	// example:
 	//
 	// 192.168.10.x
 	ReplicationIp *string `json:"ReplicationIp,omitempty" xml:"ReplicationIp,omitempty"`
-	// The replication port.
-	//
 	// example:
 	//
 	// 3306
@@ -84,7 +78,7 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// example:
 	//
-	// 192.168.XX.XX
+	// 192.168.x.x
 	ReplicationSource *string `json:"ReplicationSource,omitempty" xml:"ReplicationSource,omitempty"`
 	// The current replication status. Valid values:
 	//
@@ -98,7 +92,13 @@ type DescribeDBInstanceReplicationResponseBody struct {
 	//
 	// example:
 	//
+	// Running
+	//
+	// Connecting
+	//
 	// Stopped
+	//
+	// Error
 	ReplicationState *string `json:"ReplicationState,omitempty" xml:"ReplicationState,omitempty"`
 	// The request ID.
 	//

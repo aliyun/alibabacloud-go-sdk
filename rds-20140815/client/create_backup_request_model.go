@@ -47,13 +47,8 @@ type CreateBackupRequest struct {
 	// example:
 	//
 	// Physical
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// When the **BackupStrategy*	- of an SQL Server instance is set to **db**, the **BackupMethod*	- is **Physical**, and the **BackupType*	- is **FullBackup**, you can specify the retention period for the backup set. Valid values are 7 to 730 days or -1 (permanent retention).
-	//
-	// example:
-	//
-	// 7
-	BackupRetentionPeriod *int64 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	BackupMethod          *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupRetentionPeriod *int64  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The backup policy. Valid values:
 	//
 	// 	- **db**: a database-level backup.

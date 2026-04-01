@@ -34,17 +34,57 @@ type iDescribeKmsAssociateResourcesRequest interface {
 }
 
 type DescribeKmsAssociateResourcesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the KMS resource. Only key IDs are supported.
+	//
 	// This parameter is required.
-	KmsResourceId       *string `json:"KmsResourceId,omitempty" xml:"KmsResourceId,omitempty"`
+	//
+	// example:
+	//
+	// 494c98ce-f2b5-48ab-96ab-36c986b6****
+	KmsResourceId *string `json:"KmsResourceId,omitempty" xml:"KmsResourceId,omitempty"`
+	// The ID of the region to which the KMS resource belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	KmsResourceRegionId *string `json:"KmsResourceRegionId,omitempty" xml:"KmsResourceRegionId,omitempty"`
+	// The type of the KMS resource. Only key is supported.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// key
 	KmsResourceType *string `json:"KmsResourceType,omitempty" xml:"KmsResourceType,omitempty"`
+	// The ID of the Alibaba Cloud account to which the KMS resource belongs.
+	//
 	// This parameter is required.
-	KmsResourceUser      *string `json:"KmsResourceUser,omitempty" xml:"KmsResourceUser,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// 164882191396****
+	KmsResourceUser *string `json:"KmsResourceUser,omitempty" xml:"KmsResourceUser,omitempty"`
+	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

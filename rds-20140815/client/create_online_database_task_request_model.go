@@ -30,14 +30,49 @@ type iCreateOnlineDatabaseTaskRequest interface {
 }
 
 type CreateOnlineDatabaseTaskRequest struct {
+	// The consistency check method after the database is open. Valid values:
+	//
+	// 	- **SyncExecuteDBCheck**: synchronous database check
+	//
+	// 	- **AsyncExecuteDBCheck**: asynchronous database check
+	//
+	// > The check methods are supported for RDS instances that run SQL Server 2008 R2.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// AsyncExecuteDBCheck
 	CheckDBMode *string `json:"CheckDBMode,omitempty" xml:"CheckDBMode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The ID of the migration task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5652255443
 	MigrateTaskId        *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

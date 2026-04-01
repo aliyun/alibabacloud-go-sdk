@@ -179,12 +179,7 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Resource group ID.
-	//
-	// example:
-	//
-	// rc-t8q22a87745hf8****
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The snapshot ID.
 	//
@@ -196,7 +191,7 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	//
 	// example:
 	//
-	// csw-37-系统盘
+	// s-2ze8klip00xcogcwer76
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 	// The snapshot type. Valid values:
 	//
@@ -251,9 +246,8 @@ type DescribeRCSnapshotsResponseBodySnapshots struct {
 	// example:
 	//
 	// progressing
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Tag Details.
-	Tag []*DescribeRCSnapshotsResponseBodySnapshotsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*DescribeRCSnapshotsResponseBodySnapshotsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Indicates whether the snapshot is used to create custom images or disks. Valid values:
 	//
 	// 	- image: The snapshot is used to create custom images.
@@ -472,17 +466,7 @@ func (s *DescribeRCSnapshotsResponseBodySnapshots) Validate() error {
 }
 
 type DescribeRCSnapshotsResponseBodySnapshotsTag struct {
-	// tag key.
-	//
-	// example:
-	//
-	// testRC
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// tag value.
-	//
-	// example:
-	//
-	// test01
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

@@ -20,22 +20,15 @@ type iDeleteMaskingRulesResponseBody interface {
 }
 
 type DeleteMaskingRulesResponseBody struct {
-	// Returned data
 	Data map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Return message
-	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
-	//
 	// example:
 	//
 	// 5EEE1ED1-A459-38D2-840C-0C49********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded
-	//
 	// example:
 	//
 	// true

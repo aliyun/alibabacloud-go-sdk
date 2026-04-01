@@ -24,13 +24,55 @@ type iDescribeReplicationLinkLogsRequest interface {
 }
 
 type DescribeReplicationLinkLogsRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber   *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The task ID. You must set this parameter to the ID of the task that you create by calling the **CreateReplicationLink*	- operation for the disaster recovery instance.
+	//
+	// example:
+	//
+	// 8413252
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name. You must set this parameter to the name of the task that you create by calling the **CreateReplicationLink*	- operation for the disaster recovery instance.
+	//
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The type of the task. Valid values:
+	//
+	// 	- **create**: creates a synchronization link.
+	//
+	// 	- **create-dryrun**: performs a precheck before a synchronization link is created.
+	//
+	// Valid values:
+	//
+	// 	- create: creates a replication link.
+	//
+	// 	- create-dryrun: performs a precheck before a replication link is created.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// create
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 

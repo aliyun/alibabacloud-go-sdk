@@ -38,30 +38,55 @@ type iDescribeRCInvocationResultsRequest interface {
 }
 
 type DescribeRCInvocationResultsRequest struct {
+	// example:
+	//
+	// c-7d2a745b412b4601b2d47f6a768d****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
 	// example:
 	//
-	// PlainText
+	// Base64
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	IncludeHistory  *bool   `json:"IncludeHistory,omitempty" xml:"IncludeHistory,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvokeId        *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// example:
+	//
+	// false
+	IncludeHistory *bool `json:"IncludeHistory,omitempty" xml:"IncludeHistory,omitempty"`
+	// example:
+	//
+	// rc-i322y2t562oh7o******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// t-7d2a745b412b4601b2d47f6a768d****
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 	// example:
 	//
 	// Running
 	InvokeRecordStatus *string `json:"InvokeRecordStatus,omitempty" xml:"InvokeRecordStatus,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// example:
 	//
 	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// None
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// None
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	RegionId        *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmx****
 	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeRCInvocationResultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -205,7 +230,13 @@ func (s *DescribeRCInvocationResultsRequest) Validate() error {
 }
 
 type DescribeRCInvocationResultsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

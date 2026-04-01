@@ -16,8 +16,18 @@ type iCreateParameterGroupResponseBody interface {
 }
 
 type CreateParameterGroupResponseBody struct {
+	// The ID of the parameter template. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the IDs of parameter templates.
+	//
+	// example:
+	//
+	// rpg-q488w14xvsk****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7A41C147-C8D0-4DAE-A1A2-17EBCD60DFA1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateParameterGroupResponseBody) String() string {

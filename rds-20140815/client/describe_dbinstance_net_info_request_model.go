@@ -30,16 +30,48 @@ type iDescribeDBInstanceNetInfoRequest interface {
 }
 
 type DescribeDBInstanceNetInfoRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOC*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
-	DBInstanceId             *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	//
+	// example:
+	//
+	// rm-uf6wjk5*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The type of the endpoint. Valid values:
+	//
+	// 	- **Normal**: regular endpoint
+	//
+	// 	- **ReadWriteSplitting**: read/write splitting endpoint
+	//
+	// > By default, the system returns both types of endpoints.
+	//
+	// example:
+	//
+	// Normal
 	DBInstanceNetRWSplitType *string `json:"DBInstanceNetRWSplitType,omitempty" xml:"DBInstanceNetRWSplitType,omitempty"`
-	Flag                     *int32  `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	GeneralGroupName         *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
-	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// A reserved parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// None
+	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
+	// The name of the dedicated cluster to which the instance belongs. This parameter takes effect only when the instance runs MySQL on RDS Standard Edition and is created in a dedicated cluster.
+	//
+	// example:
+	//
+	// rgc-2ze*****
+	GeneralGroupName     *string `json:"GeneralGroupName,omitempty" xml:"GeneralGroupName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoRequest) String() string {

@@ -22,14 +22,14 @@ type DescribeSecurityGroupConfigurationResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk****
+	// rm-uf6wjk5xxxxxx
 	DBInstanceName *string                                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	Items          *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
-	// 87BDAE8C-ACB0-4A26-BBCC-7D1DD31D630D
+	// 87BDAE8C-xxxx-4A26-BBCC-7D1DD31D630D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

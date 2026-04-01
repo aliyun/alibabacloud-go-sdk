@@ -14,6 +14,11 @@ type iModifyRCInstanceKeyPairResponseBody interface {
 }
 
 type ModifyRCInstanceKeyPairResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 6C36770E-21AE-5689-BAA6-313DA58D5467
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

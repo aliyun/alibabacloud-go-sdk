@@ -32,18 +32,65 @@ type iDeleteSecretRequest interface {
 }
 
 type DeleteSecretRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz*****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
+	// >  If you specify this parameter, you must also specify the **SecretName*	- parameter. parameter.
+	//
+	// example:
+	//
+	// rm-sfjdlsjxxxxx
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The engine of the database.
+	//
+	// > Only MySQL is supported.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeSecrets operation to query the region ID.
+	//
 	// This parameter is required.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretArn            *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	SecretName           *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account. You can call the CreateSecret operation to obtain the value of this parameter.
+	//
+	// >  You must specify one of the SecretArn and **SecretName*	- parameters.
+	//
+	// example:
+	//
+	// acs:rds:cn-hangzhou:1335786***:dbInstance/rm-bp1m7l3j63****
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the credential.
+	//
+	// > 	- You must specify one of **SecretArn*	- and SecretName.
+	//
+	// > 	- If you specify this parameter, you must also specify **DbInstanceId**.
+	//
+	// example:
+	//
+	// Foo
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s DeleteSecretRequest) String() string {

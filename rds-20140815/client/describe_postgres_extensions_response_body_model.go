@@ -20,9 +20,21 @@ type iDescribePostgresExtensionsResponseBody interface {
 }
 
 type DescribePostgresExtensionsResponseBody struct {
-	InstalledExtensions   []*DescribePostgresExtensionsResponseBodyInstalledExtensions   `json:"InstalledExtensions,omitempty" xml:"InstalledExtensions,omitempty" type:"Repeated"`
-	Overview              map[string]interface{}                                         `json:"Overview,omitempty" xml:"Overview,omitempty"`
-	RequestId             *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of extensions that are installed on the specified database.
+	InstalledExtensions []*DescribePostgresExtensionsResponseBodyInstalledExtensions `json:"InstalledExtensions,omitempty" xml:"InstalledExtensions,omitempty" type:"Repeated"`
+	// The overview of the extension.
+	//
+	// example:
+	//
+	// None
+	Overview map[string]interface{} `json:"Overview,omitempty" xml:"Overview,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7E4448A6-9FE6-4474-A0C1-AA7CFC772CAC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of extensions that are not installed on the specified database.
 	UninstalledExtensions []*DescribePostgresExtensionsResponseBodyUninstalledExtensions `json:"UninstalledExtensions,omitempty" xml:"UninstalledExtensions,omitempty" type:"Repeated"`
 }
 
@@ -93,15 +105,88 @@ func (s *DescribePostgresExtensionsResponseBody) Validate() error {
 }
 
 type DescribePostgresExtensionsResponseBodyInstalledExtensions struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Comment          *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	DefaultVersion   *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The category of the extension.
+	//
+	// 	- **external_access**
+	//
+	// 	- **index_support**
+	//
+	// 	- **information_stat**
+	//
+	// 	- **geography_space**
+	//
+	// 	- **vector_engine**
+	//
+	// 	- **timing_engine**
+	//
+	// 	- **data_type**
+	//
+	// 	- **encrypt_secure**
+	//
+	// 	- **text_process**
+	//
+	// 	- **operation_maintenance**
+	//
+	// 	- **self_develop**
+	//
+	// example:
+	//
+	// information_stat
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The purpose of the extension.
+	//
+	// example:
+	//
+	// PostgreSQL load profile repository and report builder
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The default version of the extension.
+	//
+	// example:
+	//
+	// 4.1
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The current version of the extension.
+	//
+	// example:
+	//
+	// 4.1
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority         *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Requires         *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	Uid              *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The name of the extension.
+	//
+	// example:
+	//
+	// pg_profile
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user of the extension.
+	//
+	// example:
+	//
+	// test_user
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the extension.
+	//
+	// 	- **0**: The extension is displayed by default.
+	//
+	// 	- **1**: The extension is preferentially displayed.
+	//
+	// example:
+	//
+	// 0
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The extensions on which the current extension depends when it is installed.
+	//
+	// example:
+	//
+	// {dblink,plpgsql}
+	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 181578148294****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribePostgresExtensionsResponseBodyInstalledExtensions) String() string {
@@ -198,15 +283,62 @@ func (s *DescribePostgresExtensionsResponseBodyInstalledExtensions) Validate() e
 }
 
 type DescribePostgresExtensionsResponseBodyUninstalledExtensions struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Comment          *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	DefaultVersion   *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The category of the extension.
+	//
+	// example:
+	//
+	// information_stat
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The purpose of the extension.
+	//
+	// example:
+	//
+	// PostgreSQL load profile repository and report builder
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The default version of the extension.
+	//
+	// example:
+	//
+	// 4.1
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The current version of the extension.
+	//
+	// example:
+	//
+	// 4.1
 	InstalledVersion *string `json:"InstalledVersion,omitempty" xml:"InstalledVersion,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Priority         *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Requires         *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
-	Uid              *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The name of the extension.
+	//
+	// example:
+	//
+	// pg_cron
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The user of the extension.
+	//
+	// example:
+	//
+	// test_user
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The priority of the extension.
+	//
+	// example:
+	//
+	// 0
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The extensions on which the current extension depends when it is installed.
+	//
+	// example:
+	//
+	// {dblink,plpgsql}
+	Requires *string `json:"Requires,omitempty" xml:"Requires,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// >  This parameter is returned only for self-developed exclusive extensions. You can view exclusive extensions only within your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 181578148294****
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribePostgresExtensionsResponseBodyUninstalledExtensions) String() string {

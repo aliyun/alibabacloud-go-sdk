@@ -18,9 +18,28 @@ type iModifyDBInstanceMetricsResponseBody interface {
 }
 
 type ModifyDBInstanceMetricsResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// pgm-bp1s1j103lo6****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B55934BB-FFAA-5276-80A8-E0FDB12810B3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The application scope of this modification. Valid values:
+	//
+	// 	- **instance**: This modification is applied only to the current instance.
+	//
+	// 	- **region**: This modification is applied to all ApsaraDB RDS for PostgreSQL instances that are equipped with the same type of storage media as the current instance in the region to which the current instance belongs.
+	//
+	// example:
+	//
+	// instance
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s ModifyDBInstanceMetricsResponseBody) String() string {

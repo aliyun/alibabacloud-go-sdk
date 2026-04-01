@@ -24,12 +24,58 @@ type iDescribeWhitelistTemplateResponseBody interface {
 }
 
 type DescribeWhitelistTemplateResponseBody struct {
-	Code           *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *DescribeWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code returned. Valid values:
+	//
+	// 	- **200**: success
+	//
+	// 	- **400**: client error
+	//
+	// 	- **401**: identity authentication failed
+	//
+	// 	- **404**: request page not found
+	//
+	// 	- **500**: server error
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned. Valid values:
+	//
+	// 	- **200**: success
+	//
+	// 	- **400**: client error
+	//
+	// 	- **500**: server error
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ED169A3E-1657-4104-82AB-24EA8CD0DB75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeWhitelistTemplateResponseBody) String() string {
@@ -104,6 +150,7 @@ func (s *DescribeWhitelistTemplateResponseBody) Validate() error {
 }
 
 type DescribeWhitelistTemplateResponseBodyData struct {
+	// The information about the IP whitelist template.
 	Template *DescribeWhitelistTemplateResponseBodyDataTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
 
@@ -134,11 +181,36 @@ func (s *DescribeWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type DescribeWhitelistTemplateResponseBodyDataTemplate struct {
-	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Ips          *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	TemplateId   *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The primary key of the data table.
+	//
+	// example:
+	//
+	// 1013
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IP addresses.
+	//
+	// example:
+	//
+	// 10.1.X.X,2.3.X.X
+	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	// The ID of the whitelist template.
+	//
+	// example:
+	//
+	// 424
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The name of the IP whitelist template.
+	//
+	// example:
+	//
+	// template_123
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UserId       *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 16****
+	UserId *int32 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeWhitelistTemplateResponseBodyDataTemplate) String() string {

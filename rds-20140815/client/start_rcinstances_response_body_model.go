@@ -14,6 +14,11 @@ type iStartRCInstancesResponseBody interface {
 }
 
 type StartRCInstancesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 847BA085-B377-4BFA-8267-F82345ECE1D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -26,13 +26,43 @@ type iDescribeCrossBackupMetaListResponseBody interface {
 }
 
 type DescribeCrossBackupMetaListResponseBody struct {
-	DBInstanceName   *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	Items            *DescribeCrossBackupMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	PageNumber       *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                        `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalPageCount   *int32                                        `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
-	TotalRecordCount *int32                                        `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	// The instance to which the cross-region backup file belongs.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
+	DBInstanceName *string                                       `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	Items          *DescribeCrossBackupMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 1
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 60F9A12A-16B8-4728-B099-4CA38D32C31C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPageCount *int32 `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
+	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeCrossBackupMetaListResponseBody) String() string {

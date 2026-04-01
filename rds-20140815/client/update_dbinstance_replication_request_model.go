@@ -30,13 +30,13 @@ type iUpdateDBInstanceReplicationRequest interface {
 }
 
 type UpdateDBInstanceReplicationRequest struct {
-	// The name of the replication channel, used to identify the replication channel.
+	// 复制通道名称，用于标识复制链路
 	//
 	// example:
 	//
 	// replication-channel-001
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The instance ID.
+	// 目标RDS实例ID，复制链路将在此实例上更新
 	//
 	// This parameter is required.
 	//
@@ -44,31 +44,31 @@ type UpdateDBInstanceReplicationRequest struct {
 	//
 	// rm-bp1234567890abcdef
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The host address of the master database, which can be an IP address or a domain name.
+	// 主数据库主机地址，支持IP或域名，仅在需要更新时提供
 	//
 	// example:
 	//
 	// 192.168.1.100
 	MasterHost *string `json:"MasterHost,omitempty" xml:"MasterHost,omitempty"`
-	// The password of the master database, used to authenticate the replication user. It must be Base64-encoded in advance.
+	// 主数据库密码，用于验证复制用户，需要提前经过Base64编码，仅在需要更新时提供
 	//
 	// example:
 	//
 	// U2VjdXJlUGFzczEyMyE=
 	MasterPassword *string `json:"MasterPassword,omitempty" xml:"MasterPassword,omitempty"`
-	// The port number of the master database, typically 3306 for MySQL.
+	// 主数据库端口号，通常为3306（MySQL）或5432（PostgreSQL），仅在需要更新时提供
 	//
 	// example:
 	//
 	// 3306
 	MasterPort *int32 `json:"MasterPort,omitempty" xml:"MasterPort,omitempty"`
-	// The username of the master database, used to establish the replication connection. Provide this only when an update is required.
+	// 主数据库用户名，用于建立复制连接，仅在需要更新时提供
 	//
 	// example:
 	//
 	// repl_user
 	MasterUser *string `json:"MasterUser,omitempty" xml:"MasterUser,omitempty"`
-	// The Operation Type, specifying the operation to perform on the replication channel.
+	// 操作类型，指定对复制链路执行的操作
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type UpdateDBInstanceReplicationRequest struct {
 	//
 	// 1234567890123456
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Region ID.
+	// 地域ID，表示RDS实例所在的地域
 	//
 	// This parameter is required.
 	//

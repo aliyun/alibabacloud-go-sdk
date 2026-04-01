@@ -26,31 +26,23 @@ type iDescribeMaskingRulesRequest interface {
 }
 
 type DescribeMaskingRulesRequest struct {
-	// Instance Name
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o******5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Database Name
-	//
 	// example:
 	//
 	// myDB
 	DBName  *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID
-	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Rule Name (comma-separated)
-	//
 	// example:
 	//
 	// test1,test2

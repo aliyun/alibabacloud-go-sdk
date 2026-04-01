@@ -22,11 +22,36 @@ type iDescribeSupportOnlineResizeDiskResponseBody interface {
 }
 
 type DescribeSupportOnlineResizeDiskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code returned.
+	//
+	// example:
+	//
+	// NotExists.InstanceId
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response result set.
+	//
+	// example:
+	//
+	// {"SupportOnlineResizeDisk":true,"DBInstanceName":"rm-uf6wjk5xxxxxxx"}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSupportOnlineResizeDiskResponseBody) String() string {

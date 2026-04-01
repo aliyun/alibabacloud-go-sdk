@@ -22,11 +22,42 @@ type iTransformDBInstancePayTypeResponseBody interface {
 }
 
 type TransformDBInstancePayTypeResponseBody struct {
-	ChargeType   *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The payment type.
+	//
+	// 	- Valid value if the new billing method is pay-as-you-go: POSTPAY
+	//
+	// 	- Valid value if the new billing method is subscription: PREPAY
+	//
+	// example:
+	//
+	// Prepaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The expiration time.
+	//
+	// > If you call this operation to change the billing method of an instance from subscription to pay-as-you-go, this parameter is not returned.
+	//
+	// example:
+	//
+	// 2020-04-20T10:00:00Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 205157600280623
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 5E6E09DE-5B12-4BFF-A55E-1C86EDE06D9A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TransformDBInstancePayTypeResponseBody) String() string {

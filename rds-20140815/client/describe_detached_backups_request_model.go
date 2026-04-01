@@ -34,18 +34,91 @@ type iDescribeDetachedBackupsRequest interface {
 }
 
 type DescribeDetachedBackupsRequest struct {
-	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupMode   *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 327xxxxx3
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The backup method. Valid values:
+	//
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Automated
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// The status of the backup set. Valid values:
+	//
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time.
+	//
+	// Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-03-15T16:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number. Pages start from page 1.
+	//
+	// > The default value is 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// > The default value is **30**.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-03-01T16:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDetachedBackupsRequest) String() string {

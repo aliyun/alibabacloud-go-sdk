@@ -36,20 +36,90 @@ type iCreateReplicationLinkRequest interface {
 }
 
 type CreateReplicationLinkRequest struct {
+	// The ID of the DR instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to perform a dry run before the system creates the DR instance. Valid values:
+	//
+	// 	- **true**: performs a dry run but does not create the instance. The system checks the request parameters, request syntax, limits, and available resources.
+	//
+	// 	- **false*	- (default): performs a dry run and the actual request. If the request passes the dry run, the instance is directly created.
+	//
 	// This parameter is required.
-	DryRun                 *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	ReplicatorAccount      *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
-	ReplicatorPassword     *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
-	SourceAddress          *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
-	SourceCategory         *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	SourceInstanceName     *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The account of the database that is used for data synchronization.
+	//
+	// example:
+	//
+	// testdbuser
+	ReplicatorAccount *string `json:"ReplicatorAccount,omitempty" xml:"ReplicatorAccount,omitempty"`
+	// The password of the account.
+	//
+	// example:
+	//
+	// testpassword
+	ReplicatorPassword *string `json:"ReplicatorPassword,omitempty" xml:"ReplicatorPassword,omitempty"`
+	// The endpoint of the source ApsaraDB RDS for PostgreSQL instance or the IP address of the source ApsaraDB RDS for SQL Server instance.
+	//
+	// example:
+	//
+	// pgm-****.pg.rds.aliyuncs.com
+	SourceAddress *string `json:"SourceAddress,omitempty" xml:"SourceAddress,omitempty"`
+	// The type of the source instance. Valid values:
+	//
+	// 	- **other**: other instances. **SQL Server instances are not supported.**
+	//
+	// 	- **aliyunRDS**: an ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// aliyunRDS
+	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
+	// The name of the source instance. If you set **SourceCategory*	- to **aliyunRDS**, this parameter is required.
+	//
+	// example:
+	//
+	// testInstance
+	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
+	// The region ID of the source instance. If you set **SourceCategory*	- to **aliyunRDS**, this parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	SourceInstanceRegionId *string `json:"SourceInstanceRegionId,omitempty" xml:"SourceInstanceRegionId,omitempty"`
-	SourcePort             *int64  `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	TargetAddress          *string `json:"TargetAddress,omitempty" xml:"TargetAddress,omitempty"`
-	TaskId                 *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName               *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The port of the source instance.
+	//
+	// example:
+	//
+	// 5432
+	SourcePort *int64 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+	// The IP address of the DR instance of the ApsaraDB RDS for SQL Server instance.
+	//
+	// example:
+	//
+	// 192.XXX.XX.XXX
+	TargetAddress *string `json:"TargetAddress,omitempty" xml:"TargetAddress,omitempty"`
+	// The task ID of the successful dry run.
+	//
+	// example:
+	//
+	// 439946016
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name of the dry run. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
+	//
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateReplicationLinkRequest) String() string {

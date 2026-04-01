@@ -20,10 +20,34 @@ type iModifyDTCSecurityIpHostsForSQLServerResponseBody interface {
 }
 
 type ModifyDTCSecurityIpHostsForSQLServerResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The result of the IP address whitelist configuration. Valid values:
+	//
+	// 	- **Success**
+	//
+	// 	- **Fail**
+	//
+	// example:
+	//
+	// Success
 	DTCSetResult *string `json:"DTCSetResult,omitempty" xml:"DTCSetResult,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 671B6D32-B907-4EFF-A3B7-94D2EAD5E3A3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 178968983
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDTCSecurityIpHostsForSQLServerResponseBody) String() string {

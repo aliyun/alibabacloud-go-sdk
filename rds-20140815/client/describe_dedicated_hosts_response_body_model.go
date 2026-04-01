@@ -18,9 +18,19 @@ type iDescribeDedicatedHostsResponseBody interface {
 }
 
 type DescribeDedicatedHostsResponseBody struct {
+	// The host group ID.
+	//
+	// example:
+	//
+	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string                                           `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	DedicatedHosts       *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	RequestId            *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C860658E-68A6-46C1-AF6E-3AE7C4D3CACF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDedicatedHostsResponseBody) String() string {

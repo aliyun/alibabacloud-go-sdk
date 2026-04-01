@@ -46,7 +46,7 @@ type QueryRecommendByCodeResponseBody struct {
 	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

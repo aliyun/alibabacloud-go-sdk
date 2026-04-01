@@ -16,8 +16,18 @@ type iModifyParameterGroupResponseBody interface {
 }
 
 type ModifyParameterGroupResponseBody struct {
+	// The parameter template ID.
+	//
+	// example:
+	//
+	// rpg-13ppdh****
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 857DC00B-7B85-4853-8B27-AD65EB618BC6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyParameterGroupResponseBody) String() string {

@@ -14,6 +14,11 @@ type iModifyHASwitchConfigResponseBody interface {
 }
 
 type ModifyHASwitchConfigResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// B6AE1448-D846-4831-B1C7-CFF3E99D5470
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -16,8 +16,14 @@ type iCreateDBInstanceEndpointResponseBody interface {
 }
 
 type CreateDBInstanceEndpointResponseBody struct {
-	Data      *CreateDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *CreateDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// C8E88DED-533F-4B3C-9207-731FBF394CCA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBInstanceEndpointResponseBody) String() string {
@@ -56,9 +62,24 @@ func (s *CreateDBInstanceEndpointResponseBody) Validate() error {
 }
 
 type CreateDBInstanceEndpointResponseBodyData struct {
-	ConnectionString     *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The internal endpoint.
+	//
+	// example:
+	//
+	// rm-****.mysql.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The endpoint ID of the instance.
+	//
+	// example:
+	//
+	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// rm-****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s CreateDBInstanceEndpointResponseBodyData) String() string {

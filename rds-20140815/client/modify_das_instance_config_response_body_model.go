@@ -14,6 +14,11 @@ type iModifyDasInstanceConfigResponseBody interface {
 }
 
 type ModifyDasInstanceConfigResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// C3C247D4-1643-4C5D-87C2-C829543FC626
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

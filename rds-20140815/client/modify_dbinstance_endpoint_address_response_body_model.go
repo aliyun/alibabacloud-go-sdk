@@ -16,8 +16,14 @@ type iModifyDBInstanceEndpointAddressResponseBody interface {
 }
 
 type ModifyDBInstanceEndpointAddressResponseBody struct {
-	Data      *ModifyDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *ModifyDBInstanceEndpointAddressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 90496720-2319-42A8-87CD-FCE4DF95EBED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDBInstanceEndpointAddressResponseBody) String() string {
@@ -56,8 +62,18 @@ func (s *ModifyDBInstanceEndpointAddressResponseBody) Validate() error {
 }
 
 type ModifyDBInstanceEndpointAddressResponseBodyData struct {
+	// The endpoint ID of the instance.
+	//
+	// example:
+	//
+	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// rm-****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s ModifyDBInstanceEndpointAddressResponseBodyData) String() string {

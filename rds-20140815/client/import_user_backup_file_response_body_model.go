@@ -25,7 +25,7 @@ type ImportUserBackupFileResponseBody struct {
 	//
 	// example:
 	//
-	// b-n8tpg24c6i0v****
+	// b-n8tpg24c6i0v********
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of the request.
 	//

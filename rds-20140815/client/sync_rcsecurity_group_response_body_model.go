@@ -14,6 +14,11 @@ type iSyncRCSecurityGroupResponseBody interface {
 }
 
 type SyncRCSecurityGroupResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 300333A0-68E5-59CE-94AD-75153D17639E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

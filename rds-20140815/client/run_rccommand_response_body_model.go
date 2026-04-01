@@ -18,8 +18,17 @@ type iRunRCCommandResponseBody interface {
 }
 
 type RunRCCommandResponseBody struct {
+	// example:
+	//
+	// c-7d2a745b412b4601b2d47f6a768d****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	InvokeId  *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// example:
+	//
+	// t-7d2a745b412b4601b2d47f6a768d****
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// example:
+	//
+	// 06B220E2-EAC5-4DBE-A1FC-1B62DB6A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

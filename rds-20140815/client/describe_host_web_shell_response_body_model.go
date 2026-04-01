@@ -16,7 +16,17 @@ type iDescribeHostWebShellResponseBody interface {
 }
 
 type DescribeHostWebShellResponseBody struct {
-	LoginUrl  *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The webshell URL.
+	//
+	// example:
+	//
+	// ***
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 842B73C8-5776-4BD9-9872-69C8C46DD7D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

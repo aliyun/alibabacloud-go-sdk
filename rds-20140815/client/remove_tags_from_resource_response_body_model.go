@@ -14,6 +14,11 @@ type iRemoveTagsFromResourceResponseBody interface {
 }
 
 type RemoveTagsFromResourceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// AE00ACCD-1CF9-4920-9BB9-0175EFF43405
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

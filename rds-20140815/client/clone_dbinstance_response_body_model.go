@@ -22,7 +22,7 @@ type CloneDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the order.
 	//
@@ -34,7 +34,7 @@ type CloneDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 1E43AAE0-BEE8-43DA-860D-EAF2****
+	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

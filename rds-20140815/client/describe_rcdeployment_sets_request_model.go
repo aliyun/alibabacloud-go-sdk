@@ -26,12 +26,57 @@ type iDescribeRCDeploymentSetsRequest interface {
 }
 
 type DescribeRCDeploymentSetsRequest struct {
-	DeploymentSetIds  *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
+	// The IDs of the deployment sets. The value can be a JSON array that consists of deployment set IDs in the format of `["ds-xxxxxxxxx", "ds-yyyyyyyyy", ... "ds-zzzzzzzzz"]`. You can specify up to 100 deployment set IDs in each request. Separate the deployment set IDs with commas (,).
+	//
+	// example:
+	//
+	// ["ds-2zeeuw16zo2gr9e6****"]
+	DeploymentSetIds *string `json:"DeploymentSetIds,omitempty" xml:"DeploymentSetIds,omitempty"`
+	// The deployment set name. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain digits, letters, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// deployment_test
 	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number.
+	//
+	// Pages start from page 1.
+	//
+	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Maximum value: 50.
+	//
+	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The deployment strategy. Valid values:
+	//
+	// 	- **Availability**: high availability strategy
+	//
+	// 	- **AvailabilityGroup**: high availability group strategy
+	//
+	// Default value: Availability.
+	//
+	// example:
+	//
+	// Availability
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 	Tag      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }

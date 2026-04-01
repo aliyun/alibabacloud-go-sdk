@@ -36,22 +36,16 @@ type iCreateImportTaskRequest interface {
 }
 
 type CreateImportTaskRequest struct {
-	// The instance ID.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-bp1u*****ggm7j9j
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// Estimated data space, in GB
-	//
 	// example:
 	//
 	// 1000
 	EstimatedSize *int32 `json:"EstimatedSize,omitempty" xml:"EstimatedSize,omitempty"`
-	// The source MySQL host IP address. RDS will access this IP address to retrieve the backup.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -59,88 +53,44 @@ type CreateImportTaskRequest struct {
 	// 172.20.246.90
 	Host    *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The Password of the source MySQL Account, which must be Base64-encoded.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OEF5JjVOM2pzZXFKRw==
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Source MySQL port
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The Region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) to obtain it.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source cloud instance ID.
-	//
 	// example:
 	//
 	// i-bp1fe296n52ub3chezpg
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// Source cloud instance type
-	//
 	// example:
 	//
 	// ECS
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// Stream port used for backup transmission
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9999
 	StreamPort *int32 `json:"StreamPort,omitempty" xml:"StreamPort,omitempty"`
-	// Source MySQL account, which must have permissions to create backups and set up replication. Refer to the following SQL for granting permissions:
-	//
-	// ```
-	//
-	// -- MySQL 5.7
-	//
-	// mysql> CREATE USER \\"myadmin\\"@\\"%\\" IDENTIFIED BY \\"s3cret\\";
-	//
-	// mysql> GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT, REPLICATION SLAVE ON *.	- TO
-	//
-	//        \\"myadmin\\"@\\"%\\";
-	//
-	// mysql> FLUSH PRIVILEGES;
-	//
-	// -- MySQL 8.0
-	//
-	// mysql> CREATE USER \\"myadmin\\"@\\"%\\" IDENTIFIED BY \\"Test123!\\";
-	//
-	// mysql> GRANT BACKUP_ADMIN, PROCESS, RELOAD, LOCK TABLES, REPLICATION CLIENT, REPLICATION SLAVE ON *.	- TO \\"myadmin\\"@\\"%\\";
-	//
-	// mysql> GRANT SELECT ON performance_schema.log_status TO \\"myadmin\\"@\\"%\\";
-	//
-	// mysql> GRANT SELECT ON performance_schema.keyring_component_status TO myadmin@\\"%\\";
-	//
-	// mysql> GRANT SELECT ON performance_schema.replication_group_members TO myadmin@\\"%\\";
-	//
-	// mysql> FLUSH PRIVILEGES;
-	//
-	// ```
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myadmin
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// Installation path of xtrabackup on the source
-	//
 	// example:
 	//
 	// /usr/bin/xtrabackup

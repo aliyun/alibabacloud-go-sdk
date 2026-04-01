@@ -28,13 +28,67 @@ type iCreateRCDeploymentSetRequest interface {
 }
 
 type CreateRCDeploymentSetRequest struct {
-	ClientToken                      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeploymentSetName                *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
-	Description                      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupCount                       *int64  `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The deployment set name. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (.), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// deployment_test
+	DeploymentSetName *string `json:"DeploymentSetName,omitempty" xml:"DeploymentSetName,omitempty"`
+	// The description of the deployment set. The value must be 2 to 256 characters in length and cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of groups in the deployment set. Valid values: 1 to 7.
+	//
+	// Default value: 3.
+	//
+	// >  This parameter takes effect only when `Strategy is set to AvailabilityGroup`.
+	//
+	// example:
+	//
+	// 3
+	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
+	// The emergency solution to use in the scenario in which instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+	//
+	// 	- **CancelMembershipAndStart**: removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	//
+	// 	- **KeepStopped**: does not remove the instances from the deployment set and keeps the instances in the Stopped state.
+	//
+	// Default value: CancelMembershipAndStart.
+	//
+	// example:
+	//
+	// CancelMembershipAndStart
 	OnUnableToRedeployFailedInstance *string `json:"OnUnableToRedeployFailedInstance,omitempty" xml:"OnUnableToRedeployFailedInstance,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
-	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The deployment strategy. Valid values:
+	//
+	// 	- **Availability**: high-availability strategy
+	//
+	// 	- **AvailabilityGroup**: high-availability group strategy
+	//
+	// 	- **LowLatency**: low latency strategy
+	//
+	// Default value: Availability.
+	//
+	// example:
+	//
+	// Availability
 	Strategy *string                            `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 	Tag      []*CreateRCDeploymentSetRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }

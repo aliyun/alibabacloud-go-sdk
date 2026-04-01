@@ -14,6 +14,11 @@ type iUnassociateEipAddressWithRCInstanceResponseBody interface {
 }
 
 type UnassociateEipAddressWithRCInstanceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// CDEAC7BF-D64B-54A1-9051-BE9AC0990E68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

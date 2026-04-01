@@ -44,22 +44,122 @@ type iDescribeInstanceCrossBackupPolicyResponseBody interface {
 }
 
 type DescribeInstanceCrossBackupPolicyResponseBody struct {
-	BackupEnabled         *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
-	BackupEnabledTime     *string `json:"BackupEnabledTime,omitempty" xml:"BackupEnabledTime,omitempty"`
-	CrossBackupRegion     *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
-	CrossBackupType       *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
+	// The status of the cross-region backup feature on the instance. Valid values:
+	//
+	// 	- **Disable**
+	//
+	// 	- **Enable**
+	//
+	// example:
+	//
+	// Enable
+	BackupEnabled *string `json:"BackupEnabled,omitempty" xml:"BackupEnabled,omitempty"`
+	// The point in time at which the cross-region backup feature is enabled. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-06-12T05:44:21Z
+	BackupEnabledTime *string `json:"BackupEnabledTime,omitempty" xml:"BackupEnabledTime,omitempty"`
+	// The ID of the destination region where the cross-region backup files of the instance are stored.
+	//
+	// example:
+	//
+	// cn-shanghai
+	CrossBackupRegion *string `json:"CrossBackupRegion,omitempty" xml:"CrossBackupRegion,omitempty"`
+	// The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
+	//
+	// example:
+	//
+	// 1
+	CrossBackupType *string `json:"CrossBackupType,omitempty" xml:"CrossBackupType,omitempty"`
+	// The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// >  The value cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// Test database
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	Engine                *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	LockMode              *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LogBackupEnabled      *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
-	LogBackupEnabledTime  *string `json:"LogBackupEnabledTime,omitempty" xml:"LogBackupEnabledTime,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RetentType            *int32  `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
-	Retention             *int32  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
+	//
+	// example:
+	//
+	// Running
+	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// The database engine of the instance.
+	//
+	// example:
+	//
+	// mysql
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version.
+	//
+	// example:
+	//
+	// 5.6
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The lock status of the instance. Valid values:
+	//
+	// 	- **Unlock**: The instance is not locked.
+	//
+	// 	- **ManualLock**: The instance is manually locked.
+	//
+	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
+	//
+	// 	- **LockByRestoration**: The instance is automatically locked before a rollback.
+	//
+	// 	- **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
+	//
+	// example:
+	//
+	// Unlock
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The status of the cross-region log backup feature on the instance. Valid values:
+	//
+	// 	- **Disable**
+	//
+	// 	- **Enable**
+	//
+	// example:
+	//
+	// Enable
+	LogBackupEnabled *string `json:"LogBackupEnabled,omitempty" xml:"LogBackupEnabled,omitempty"`
+	// The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-06-12T05:44:21Z
+	LogBackupEnabledTime *string `json:"LogBackupEnabledTime,omitempty" xml:"LogBackupEnabledTime,omitempty"`
+	// The region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CB7667B2-72C8-497B-9BD8-3B343CEF51AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The policy that is used to retain the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that the cross-region backup files of the instance are retained based on the specified retention period.
+	//
+	// example:
+	//
+	// 1
+	RetentType *int32 `json:"RetentType,omitempty" xml:"RetentType,omitempty"`
+	// The number of days for which the cross-region backup files of the instance are retained. Valid values: **7 to 1825**.
+	//
+	// example:
+	//
+	// 15
+	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 }
 
 func (s DescribeInstanceCrossBackupPolicyResponseBody) String() string {

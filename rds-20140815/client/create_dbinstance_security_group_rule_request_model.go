@@ -30,17 +30,50 @@ type iCreateDBInstanceSecurityGroupRuleRequest interface {
 }
 
 type CreateDBInstanceSecurityGroupRuleRequest struct {
+	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp15i4hn07r******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the security group rule.
+	//
+	// example:
+	//
+	// zht_test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the transport layer protocol. Valid values:
+	//
+	// 	- TCP
+	//
+	// 	- UDP
+	//
+	// example:
+	//
+	// TCP
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+	//
+	// Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1/200
 	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceCidrIp         *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
+	//
+	// example:
+	//
+	// 192.XX.XX.100
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 }
 
 func (s CreateDBInstanceSecurityGroupRuleRequest) String() string {

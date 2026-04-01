@@ -100,7 +100,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// rm-wz9s06u4drm******
+	// rm-wz92gn1ll9fe5d3a4
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The maximum IOPS.
 	//
@@ -172,7 +172,7 @@ type DescribeCustinsResourceInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 20
+	// 2023-10-25
 	MemoryIncreaseRatio *string `json:"MemoryIncreaseRatio,omitempty" xml:"MemoryIncreaseRatio,omitempty"`
 	// The memory usage. Unit: MB.
 	//

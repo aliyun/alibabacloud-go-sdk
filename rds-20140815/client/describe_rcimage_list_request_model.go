@@ -38,23 +38,8 @@ type DescribeRCImageListRequest struct {
 	//
 	// x86_64
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Image ID.
-	//
-	// example:
-	//
-	// m-2oqiu973jwcxe****
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Image Name.
-	//
-	// example:
-	//
-	// test_image_name
-	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// Query images that can be used for the specified instance type.
-	//
-	// example:
-	//
-	// mysql.x2.xlarge.6cm
+	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName    *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The page number.
 	//

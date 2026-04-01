@@ -16,7 +16,17 @@ type iUpdateUserBackupFileResponseBody interface {
 }
 
 type UpdateUserBackupFileResponseBody struct {
-	BackupId  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The ID of the backup file.
+	//
+	// example:
+	//
+	// b-g14d0m772f7b********
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 6A236067-4727-4B42-92CF-734E417ED69A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

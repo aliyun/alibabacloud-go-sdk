@@ -22,6 +22,17 @@ type iDescribeInstanceKeywordsRequest interface {
 }
 
 type DescribeInstanceKeywordsRequest struct {
+	// The type of reserved keyword to query. Valid values:
+	//
+	// 	- **account**
+	//
+	// 	- **database**
+	//
+	// >  This parameter is required.
+	//
+	// example:
+	//
+	// account
 	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

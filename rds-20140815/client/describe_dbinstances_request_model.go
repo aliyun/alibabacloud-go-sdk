@@ -98,7 +98,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
@@ -116,7 +116,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
+	// rm-uf6wjk5xxxxxxx.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
@@ -128,7 +128,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/26315.html).
 	//
@@ -156,13 +156,13 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// dhg-7a9****
+	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// The host ID of the instance in the dedicated cluster.
 	//
 	// example:
 	//
-	// i-bp****
+	// i-bpxxxxxxx
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 	// The database engine of the instance. Valid values:
 	//
@@ -184,7 +184,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// 8.0
+	// 5.7
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// Specifies whether the instances have expired. Valid values:
 	//
@@ -238,7 +238,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// o7PORW5o2TJg****
+	// o7PORW5o2TJg**********
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -267,13 +267,8 @@ type DescribeDBInstancesRequest struct {
 	// example:
 	//
 	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// Reserved parameter. No configuration is required.
-	//
-	// example:
-	//
-	// test
-	QueryAutoRenewal *bool `json:"QueryAutoRenewal,omitempty" xml:"QueryAutoRenewal,omitempty"`
+	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	QueryAutoRenewal *bool   `json:"QueryAutoRenewal,omitempty" xml:"QueryAutoRenewal,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -286,7 +281,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmy****
+	// rg-acfmyxxxxx
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -306,13 +301,13 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// vsw-uf6adz52c2p****
+	// vsw-uf6adz52c2pxxxxxxxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
 	// example:
 	//
-	// vpc-uf6f7l4fg90****
+	// vpc-uf6f7l4fg90xxxxxxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID of the instance.
 	//

@@ -24,10 +24,33 @@ type iDescribeAccountsRequest interface {
 }
 
 type DescribeAccountsRequest struct {
+	// The name of the database account.
+	//
+	// example:
+	//
+	// test1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
+	// >  This parameter is not supported for RDS instances that run SQL Server 2017 on RDS Cluster Edition.
+	//
 	// This parameter is required.
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	//
+	// example:
+	//
+	// rm-uf6wjk5*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The page number. Default value: **1**. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

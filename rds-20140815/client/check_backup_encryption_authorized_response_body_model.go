@@ -18,9 +18,18 @@ type iCheckBackupEncryptionAuthorizedResponseBody interface {
 }
 
 type CheckBackupEncryptionAuthorizedResponseBody struct {
+	// example:
+	//
+	// 1
 	AuthorizationState *string `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleARN            *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
+	// example:
+	//
+	// CB07C463-7428-50AA-9E39-********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// acs:ram::1139916************:role/AliyunServiceRoleForRdsBackupEncryption
+	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 }
 
 func (s CheckBackupEncryptionAuthorizedResponseBody) String() string {

@@ -28,12 +28,38 @@ type iDescribeDBInstancesAsCsvRequest interface {
 }
 
 type DescribeDBInstancesAsCsvRequest struct {
-	CachedAsync  *bool   `json:"CachedAsync,omitempty" xml:"CachedAsync,omitempty"`
+	// A deprecated parameter. You do not need to configure this parameter.
+	//
+	// example:
+	//
+	// API
+	CachedAsync *bool `json:"CachedAsync,omitempty" xml:"CachedAsync,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the IDs of instances.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ExportKey    *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A deprecated parameter. You do not need to configure this parameter.
+	//
+	// example:
+	//
+	// API
+	ExportKey *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

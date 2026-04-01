@@ -26,13 +26,13 @@ type EvaluateLocalExtendDiskResponseBody struct {
   // 
   // example:
   // 
-  // true
+  // True
   Available *string `json:"Available,omitempty" xml:"Available,omitempty"`
   // The instance ID.
   // 
   // example:
   // 
-  // rm-wz9s06u4drm******
+  // rm-bp1375i66nd******
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
   // The data transfer type supported by the instance.
   // 

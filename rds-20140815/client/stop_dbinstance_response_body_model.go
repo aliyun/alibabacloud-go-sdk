@@ -14,6 +14,11 @@ type iStopDBInstanceResponseBody interface {
 }
 
 type StopDBInstanceResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// A417FB41-A3D9-464E-AD0A-C7FE05C72E98
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

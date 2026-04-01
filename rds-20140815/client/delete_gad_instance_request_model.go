@@ -18,9 +18,25 @@ type iDeleteGadInstanceRequest interface {
 }
 
 type DeleteGadInstanceRequest struct {
+	// The ID of the global active database cluster. You can call the GadInstanceName operation to query the cluster ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// gad-rm-bp1npi2j8********
 	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the central node of the global active database cluster. The central node refers to the primary node. You can call the DescribeGadInstances operation to query the region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 

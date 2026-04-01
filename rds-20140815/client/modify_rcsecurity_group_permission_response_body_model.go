@@ -14,6 +14,9 @@ type iModifyRCSecurityGroupPermissionResponseBody interface {
 }
 
 type ModifyRCSecurityGroupPermissionResponseBody struct {
+	// example:
+	//
+	// AB44DC0A-7E77-442A-97A9-C6418694CB22
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

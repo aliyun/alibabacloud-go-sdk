@@ -32,15 +32,52 @@ type iModifyADInfoRequest interface {
 }
 
 type ModifyADInfoRequest struct {
-	ADAccountName     *string `json:"ADAccountName,omitempty" xml:"ADAccountName,omitempty"`
-	ADDNS             *string `json:"ADDNS,omitempty" xml:"ADDNS,omitempty"`
-	ADPassword        *string `json:"ADPassword,omitempty" xml:"ADPassword,omitempty"`
+	// The account of the AD domain.
+	//
+	// example:
+	//
+	// test_account
+	ADAccountName *string `json:"ADAccountName,omitempty" xml:"ADAccountName,omitempty"`
+	// The DNS information about the AD domain.
+	//
+	// example:
+	//
+	// example.com
+	ADDNS *string `json:"ADDNS,omitempty" xml:"ADDNS,omitempty"`
+	// The password for the account of the AD domain.
+	//
+	// example:
+	//
+	// test_password
+	ADPassword *string `json:"ADPassword,omitempty" xml:"ADPassword,omitempty"`
+	// The IP address of the AD domain.
+	//
+	// example:
+	//
+	// 47.100.XX.XX
 	ADServerIpAddress *string `json:"ADServerIpAddress,omitempty" xml:"ADServerIpAddress,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -16,8 +16,14 @@ type iDeleteDBInstanceEndpointResponseBody interface {
 }
 
 type DeleteDBInstanceEndpointResponseBody struct {
-	Data      *DeleteDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DeleteDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDBInstanceEndpointResponseBody) String() string {
@@ -56,8 +62,18 @@ func (s *DeleteDBInstanceEndpointResponseBody) Validate() error {
 }
 
 type DeleteDBInstanceEndpointResponseBodyData struct {
+	// The endpoint ID of the instance.
+	//
+	// example:
+	//
+	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// rm-****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 }
 
 func (s DeleteDBInstanceEndpointResponseBodyData) String() string {

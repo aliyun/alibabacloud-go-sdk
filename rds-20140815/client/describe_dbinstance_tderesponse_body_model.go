@@ -22,11 +22,41 @@ type iDescribeDBInstanceTDEResponseBody interface {
 }
 
 type DescribeDBInstanceTDEResponseBody struct {
-	Databases     *DescribeDBInstanceTDEResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
-	EncryptionKey *string                                     `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TDEMode       *string                                     `json:"TDEMode,omitempty" xml:"TDEMode,omitempty"`
-	TDEStatus     *string                                     `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
+	Databases *DescribeDBInstanceTDEResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
+	// The ID of the custom key.
+	//
+	// example:
+	//
+	// 749c1df7-****-****-****-****
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// C816A4BF-A6EC-4722-95F9-2055859CCFD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The method that is used to generate the key for TDE at the instance level. Valid values:
+	//
+	// 	- **Aliyun_Generate_Key**
+	//
+	// 	- **Customer_Provided_Key**
+	//
+	// 	- **Unknown**
+	//
+	// example:
+	//
+	// Aliyun_Generate_Key
+	TDEMode *string `json:"TDEMode,omitempty" xml:"TDEMode,omitempty"`
+	// The TDE status of the instance. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Enabled
+	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
 func (s DescribeDBInstanceTDEResponseBody) String() string {

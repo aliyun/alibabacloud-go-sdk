@@ -32,19 +32,69 @@ type iModifyDBInstanceEndpointAddressRequest interface {
 }
 
 type ModifyDBInstanceEndpointAddressRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	//
+	// The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The endpoint that you want to modify. The endpoint can be a public endpoint or an internal endpoint.
+	//
 	// This parameter is required.
-	ConnectionString       *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	//
+	// example:
+	//
+	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The prefix of the new endpoint. You can modify only the prefix of the endpoint that is specified by the ConnectionString parameter.
+	//
+	// example:
+	//
+	// rm-bp181qoj4s34m33****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
+	// The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-****
 	DBInstanceEndpointId *string `json:"DBInstanceEndpointId,omitempty" xml:"DBInstanceEndpointId,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+	//
 	// This parameter is required.
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	//
+	// example:
+	//
+	// rm-****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The port number of the new endpoint.
+	//
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the internal endpoint.
+	//
+	// example:
+	//
+	// 172.16.XX.XX
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The vSwitch ID of the internal endpoint.
+	//
+	// example:
+	//
+	// vsw-bp12u14ecz****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID of the internal endpoint.
+	//
+	// example:
+	//
+	// vpc-bp17xdic25d****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ModifyDBInstanceEndpointAddressRequest) String() string {

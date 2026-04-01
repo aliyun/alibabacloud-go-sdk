@@ -22,11 +22,40 @@ type iCreateDdrInstanceResponseBody interface {
 }
 
 type CreateDdrInstanceResponseBody struct {
+	// The endpoint that is used to connect to the destination instance.
+	//
+	// >  The **DBInstanceNetType*	- parameter indicates whether the endpoint is internal or public.
+	//
+	// example:
+	//
+	// rm-xxxxx.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The destination instance ID.
+	//
+	// example:
+	//
+	// rm-xxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 2038691xxxxx
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The port number that is used to connect to the destination instance.
+	//
+	// > **DBInstanceNetType*	- indicates whether the port is internal or public.
+	//
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// E52666CC-330E-418A-8E5B-A19E3FB42D13
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDdrInstanceResponseBody) String() string {

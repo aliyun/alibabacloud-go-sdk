@@ -20,10 +20,30 @@ type iModifyDBInstanceDelayedReplicationTimeResponseBody interface {
 }
 
 type ModifyDBInstanceDelayedReplicationTimeResponseBody struct {
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The replication latency of the read-only instance. Unit: seconds.
+	//
+	// example:
+	//
+	// 100
 	ReadSQLReplicationTime *string `json:"ReadSQLReplicationTime,omitempty" xml:"ReadSQLReplicationTime,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId                 *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EFB6083A-7699-489B-8278-C0CB4793A96E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 1715482.0
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDBInstanceDelayedReplicationTimeResponseBody) String() string {

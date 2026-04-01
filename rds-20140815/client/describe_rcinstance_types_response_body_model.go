@@ -16,8 +16,14 @@ type iDescribeRCInstanceTypesResponseBody interface {
 }
 
 type DescribeRCInstanceTypesResponseBody struct {
+	// The information about the instance types.
 	InstanceTypes *DescribeRCInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F2911788-25E8-42E5-A3A3-1B38D263F01E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCInstanceTypesResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *DescribeRCInstanceTypesResponseBody) Validate() error {
 }
 
 type DescribeRCInstanceTypesResponseBodyInstanceTypes struct {
+	// The instance types.
 	InstanceType []*DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Repeated"`
 }
 
@@ -90,15 +97,35 @@ func (s *DescribeRCInstanceTypesResponseBodyInstanceTypes) Validate() error {
 }
 
 type DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType struct {
+	// The maximum number of CPU cores.
+	//
+	// example:
+	//
+	// 32
 	CpuCoreCount *int32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
 	// example:
 	//
 	// 16
-	DiskQuantity       *int64  `json:"DiskQuantity,omitempty" xml:"DiskQuantity,omitempty"`
+	DiskQuantity *int64 `json:"DiskQuantity,omitempty" xml:"DiskQuantity,omitempty"`
+	// The ID of the instance family.
+	//
+	// example:
+	//
+	// gn8.cm
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	InstanceTypeId     *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
-	JumboFrameSupport  *bool   `json:"JumboFrameSupport,omitempty" xml:"JumboFrameSupport,omitempty"`
-	MemorySize         *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The instance type of the instance.
+	//
+	// example:
+	//
+	// rds.gna8.2xlarge.8cm
+	InstanceTypeId    *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	JumboFrameSupport *bool   `json:"JumboFrameSupport,omitempty" xml:"JumboFrameSupport,omitempty"`
+	// The memory size of the instance type. Unit: GiB.
+	//
+	// example:
+	//
+	// 256
+	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 }
 
 func (s DescribeRCInstanceTypesResponseBodyInstanceTypesInstanceType) String() string {

@@ -36,18 +36,66 @@ type iDescribeDBInstancesByExpireTimeRequest interface {
 }
 
 type DescribeDBInstancesByExpireTimeRequest struct {
-	ExpirePeriod         *int32  `json:"ExpirePeriod,omitempty" xml:"ExpirePeriod,omitempty"`
-	Expired              *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of remaining days for which the instances are available. Valid values: **0 to 180**.
+	//
+	// example:
+	//
+	// 180
+	ExpirePeriod *int32 `json:"ExpirePeriod,omitempty" xml:"ExpirePeriod,omitempty"`
+	// Specifies whether to query instances that have expired. Valid values:
+	//
+	// 	- **True**: queries instances that have expired.
+	//
+	// 	- **False**: does not query instances that have expired.
+	//
+	// example:
+	//
+	// True
+	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. Valid values: any **non-zero*	- positive integer.
+	//
+	// Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: **1 to 100**.
+	//
+	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	ProxyId              *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
+	// The tag that is added to the instance. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. You can specify a maximum of five tags in the following format for each request: `{"key1":"value1","key2":"value2"...}`.
+	//
+	// example:
+	//
+	// {"key1":"value1"}
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// A deprecated parameter. You do not need to configure this parameter.
+	//
+	// example:
+	//
+	// None
+	ProxyId *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
 }
 
 func (s DescribeDBInstancesByExpireTimeRequest) String() string {

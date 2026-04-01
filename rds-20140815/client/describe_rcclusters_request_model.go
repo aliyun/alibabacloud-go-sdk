@@ -18,7 +18,12 @@ type iDescribeRCClustersRequest interface {
 }
 
 type DescribeRCClustersRequest struct {
-	Profile  *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }

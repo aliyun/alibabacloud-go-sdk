@@ -14,6 +14,11 @@ type iRevokeAccountPrivilegeResponseBody interface {
 }
 
 type RevokeAccountPrivilegeResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// E22099CA-A61E-4992-A0B7-CE82DC175626
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

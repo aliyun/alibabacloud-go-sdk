@@ -14,6 +14,11 @@ type iDetachRCDiskResponseBody interface {
 }
 
 type DetachRCDiskResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// C8E88DED-533F-4B3C-9207-731FBF394CCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

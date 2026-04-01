@@ -305,7 +305,7 @@ func (s *DescribeRCNetworkInterfacesResponseBodyNetworkInterfaceSets) Validate()
 type DescribeRCNetworkInterfacesResponseBodyNetworkInterfaceSetsAssociatedPublicIp struct {
 	// example:
 	//
-	// `116.62.**.**`
+	// ``116.62.**.**``
 	PublicIpAddress *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
 }
 
@@ -362,7 +362,7 @@ type DescribeRCNetworkInterfacesResponseBodyNetworkInterfaceSetsPrivateIpSets st
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
 	// example:
 	//
-	// `172.17.**.**`
+	// ``172.17.**.**``
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 

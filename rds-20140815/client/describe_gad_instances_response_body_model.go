@@ -16,8 +16,14 @@ type iDescribeGadInstancesResponseBody interface {
 }
 
 type DescribeGadInstancesResponseBody struct {
+	// The details about the global active database cluster.
 	GadInstances []*DescribeGadInstancesResponseBodyGadInstances `json:"GadInstances,omitempty" xml:"GadInstances,omitempty" type:"Repeated"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 76AF0609-4195-5DFC-BC78-3AD76FF872BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGadInstancesResponseBody) String() string {
@@ -60,13 +66,52 @@ func (s *DescribeGadInstancesResponseBody) Validate() error {
 }
 
 type DescribeGadInstancesResponseBodyGadInstances struct {
-	CreationTime       *string                                                           `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description        *string                                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the global active database cluster was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-21T02:57:08Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The name of the cluster.
+	//
+	// example:
+	//
+	// GadTest
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The information about each node in the cluster.
 	GadInstanceMembers []*DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers `json:"GadInstanceMembers,omitempty" xml:"GadInstanceMembers,omitempty" type:"Repeated"`
-	GadInstanceName    *string                                                           `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
-	ModificationTime   *string                                                           `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	Service            *string                                                           `json:"Service,omitempty" xml:"Service,omitempty"`
-	Status             *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the global active database cluster.
+	//
+	// example:
+	//
+	// gad-rm-bp1npi2j8********
+	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
+	// The time when the most recent modification was made to the global active database cluster. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-21T03:01:20Z
+	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	// The database engine that is run by the global active database cluster.
+	//
+	// >  The value of this parameter is fixed as **mysql**.
+	//
+	// example:
+	//
+	// mysql
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	// 	- **activation**: The cluster is running.
+	//
+	// 	- **creating**: The cluster is being created.
+	//
+	// 	- **replica_adding**: Nodes are being added to the cluster.
+	//
+	// example:
+	//
+	// activation
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeGadInstancesResponseBodyGadInstances) String() string {
@@ -154,14 +199,66 @@ func (s *DescribeGadInstancesResponseBodyGadInstances) Validate() error {
 }
 
 type DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers struct {
-	DBInstanceID    *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	DtsInstance     *string `json:"DtsInstance,omitempty" xml:"DtsInstance,omitempty"`
-	Engine          *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion   *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the node.
+	//
+	// example:
+	//
+	// rm-bp1npi2j8********
+	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
+	// A JSON array that consists of the details about the Data Transmission Service (DTS) synchronization task.
+	//
+	// >  Each unit node (secondary node) synchronizes data from the central node (primary node) by using DTS. This parameter contains the synchronization link ID and request ID of DTS.
+	//
+	// example:
+	//
+	// {\\"dtsInstanceId\\":\\"dtsm9t107c********\\",\\"dtsRequestId\\":\\"190F0C6C-4BE6-5676-989B-DBDE6D34CD9C\\"}
+	DtsInstance *string `json:"DtsInstance,omitempty" xml:"DtsInstance,omitempty"`
+	// The database engine that is run by the node.
+	//
+	// >  The value of this parameter is fixed as **mysql**.
+	//
+	// example:
+	//
+	// mysql
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version that is run by the node.
+	//
+	// example:
+	//
+	// 8.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The ID of the region where the node resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the node. Valid values:
+	//
+	// 	- **CENTRAL**: The node is a central node. Each global active database cluster has only one central node. All unit nodes synchronize data from the central node.
+	//
+	// 	- **UNIT**: The node is a unit node. Each global active database cluster can have up to 10 unit nodes. All unit nodes synchronize data from the central node.
+	//
+	// example:
+	//
+	// CENTRAL
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The node status. Valid values:
+	//
+	// 	- **activation**: The node is running.
+	//
+	// 	- **creating**: The node is being created.
+	//
+	// example:
+	//
+	// activation
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeGadInstancesResponseBodyGadInstancesGadInstanceMembers) String() string {

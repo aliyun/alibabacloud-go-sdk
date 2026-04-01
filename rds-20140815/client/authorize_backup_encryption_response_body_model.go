@@ -20,10 +20,22 @@ type iAuthorizeBackupEncryptionResponseBody interface {
 }
 
 type AuthorizeBackupEncryptionResponseBody struct {
-	AuthorizationState *int32  `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleARN            *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
+	// example:
+	//
+	// 1
+	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
+	// example:
+	//
+	// create backup encrypt service linked role error.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1A1DD2A4-69F7-5848-AD56-********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// acs:ram::113991************:role/AliyunServiceRoleForRdsBackupEncryption
+	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 }
 
 func (s AuthorizeBackupEncryptionResponseBody) String() string {

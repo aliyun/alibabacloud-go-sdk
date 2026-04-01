@@ -16,8 +16,14 @@ type iCreateGADInstanceResponseBody interface {
 }
 
 type CreateGADInstanceResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *CreateGADInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Result *CreateGADInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateGADInstanceResponseBody) String() string {
@@ -56,9 +62,24 @@ func (s *CreateGADInstanceResponseBody) Validate() error {
 }
 
 type CreateGADInstanceResponseBodyResult struct {
+	// The number of unit nodes that are created by calling this operation.
+	//
+	// example:
+	//
+	// 2
 	CreateMemberCount *string `json:"CreateMemberCount,omitempty" xml:"CreateMemberCount,omitempty"`
-	GadInstanceName   *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
-	TaskID            *string `json:"TaskID,omitempty" xml:"TaskID,omitempty"`
+	// The ID of the global active database cluster.
+	//
+	// example:
+	//
+	// gad-rm-bp1npi2j8********
+	GadInstanceName *string `json:"GadInstanceName,omitempty" xml:"GadInstanceName,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 5374xxxx
+	TaskID *string `json:"TaskID,omitempty" xml:"TaskID,omitempty"`
 }
 
 func (s CreateGADInstanceResponseBodyResult) String() string {

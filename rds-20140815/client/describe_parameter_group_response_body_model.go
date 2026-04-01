@@ -20,7 +20,12 @@ type iDescribeParameterGroupResponseBody interface {
 type DescribeParameterGroupResponseBody struct {
 	ParamGroup         *DescribeParameterGroupResponseBodyParamGroup         `json:"ParamGroup,omitempty" xml:"ParamGroup,omitempty" type:"Struct"`
 	RelatedCustinsInfo *DescribeParameterGroupResponseBodyRelatedCustinsInfo `json:"RelatedCustinsInfo,omitempty" xml:"RelatedCustinsInfo,omitempty" type:"Struct"`
-	RequestId          *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 498AE8CA-8C81-4A01-AF37-2B902014ED30
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeParameterGroupResponseBody) String() string {

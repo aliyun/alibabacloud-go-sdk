@@ -14,6 +14,11 @@ type iLockAccountResponseBody interface {
 }
 
 type LockAccountResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 1B291C4B-DDCD-4D0A-8F6D-7F3241DE9228
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

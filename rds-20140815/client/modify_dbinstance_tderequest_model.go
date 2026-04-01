@@ -38,20 +38,105 @@ type iModifyDBInstanceTDERequest interface {
 }
 
 type ModifyDBInstanceTDERequest struct {
+	// The file that contains the certificate.\\
+	//
+	// Format:
+	//
+	// 	- Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
+	//
+	// 	- Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
+	//
+	// > 	- This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	//
+	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// oss-ap-southeast-1.aliyuncs.com:****:key.cer
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	IsRotate             *bool   `json:"IsRotate,omitempty" xml:"IsRotate,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PassWord             *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	//
+	// example:
+	//
+	// rm-uf6wjk5****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
+	//
+	// > This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	//
+	// example:
+	//
+	// testDB
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The ID of the custom key.
+	//
+	// > This parameter is available when the instance runs MySQL or PostgreSQL.
+	//
+	// example:
+	//
+	// 749c1df7-****-****-****-****
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// Specifies whether to replace the key. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// >  This parameter is available for only ApsaraDB RDS for PostgreSQL instances.
+	//
+	// example:
+	//
+	// false
+	IsRotate     *bool   `json:"IsRotate,omitempty" xml:"IsRotate,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password of the certificate.
+	//
+	// > This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	//
+	// example:
+	//
+	// 1qaz@WSX
+	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	// The file that contains the private key of the certificate.\\
+	//
+	// Format:
+	//
+	// 	- Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
+	//
+	// 	- Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
+	//
+	// > 	- This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+	//
+	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// oss-ap-southeast-1.aliyuncs.com:****:key.pvk
 	PrivateKey           *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RoleArn              *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+	//
+	// > This parameter is available when the instance runs MySQL or PostgreSQL.
+	//
+	// example:
+	//
+	// acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The status of TDE. Valid values:
+	//
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Enabled
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 

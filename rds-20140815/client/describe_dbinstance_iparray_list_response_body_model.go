@@ -16,8 +16,13 @@ type iDescribeDBInstanceIPArrayListResponseBody interface {
 }
 
 type DescribeDBInstanceIPArrayListResponseBody struct {
-	Items     *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E2B6AF71-DC32-4055-B477-43B348798D10
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceIPArrayListResponseBody) String() string {

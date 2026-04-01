@@ -32,12 +32,53 @@ type iDescribeBackupTasksRequest interface {
 }
 
 type DescribeBackupTasksRequest struct {
-	BackupJobId     *int32  `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// The ID of the backup task.
+	//
+	// example:
+	//
+	// 4762614
+	BackupJobId *int32 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	// The status of the backup task. Valid values:
+	//
+	// 	- **NoStart**
+	//
+	// 	- **Progressing**
+	//
+	// By default, this operation returns backup tasks in both states.
+	//
+	// example:
+	//
+	// NoStart
 	BackupJobStatus *string `json:"BackupJobStatus,omitempty" xml:"BackupJobStatus,omitempty"`
-	BackupMode      *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The backup mode. Valid values:
+	//
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Automated
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// None
 	Flag                 *string `json:"Flag,omitempty" xml:"Flag,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -16,8 +16,13 @@ type iCalculateDBInstanceWeightResponseBody interface {
 }
 
 type CalculateDBInstanceWeightResponseBody struct {
-	Items     *CalculateDBInstanceWeightResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Items *CalculateDBInstanceWeightResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C816A4BF-A6EC-4722-95F9-2055859CCFD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CalculateDBInstanceWeightResponseBody) String() string {

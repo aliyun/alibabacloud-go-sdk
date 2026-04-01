@@ -14,6 +14,11 @@ type iRebootRCInstanceResponseBody interface {
 }
 
 type RebootRCInstanceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 3E36DB6E-AE3B-53B6-A703-85F883FD1B2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

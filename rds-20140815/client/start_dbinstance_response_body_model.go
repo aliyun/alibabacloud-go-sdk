@@ -18,9 +18,24 @@ type iStartDBInstanceResponseBody interface {
 }
 
 type StartDBInstanceResponseBody struct {
-	MigrationId *int32  `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The migration task ID. This parameter is available only for instances that are created in dedicated clusters.
+	//
+	// example:
+	//
+	// 740
+	MigrationId *int32 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// A417FB41-A3D9-464E-AD0A-C7FE05C72E98
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// 238028563
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s StartDBInstanceResponseBody) String() string {

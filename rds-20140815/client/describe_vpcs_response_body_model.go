@@ -22,9 +22,21 @@ type iDescribeVpcsResponseBody interface {
 }
 
 type DescribeVpcsResponseBody struct {
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 8F4596F7-FA71-590E-9E1C-********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 14
 	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Vpcs       []*DescribeVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
 }
@@ -96,17 +108,47 @@ func (s *DescribeVpcsResponseBody) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcs struct {
-	AliUid      *string                                 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Bid         *string                                 `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	CidrBlock   *string                                 `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	GmtCreate   *string                                 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *string                                 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsDefault   *bool                                   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	RegionNo    *string                                 `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	Status      *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchs    []*DescribeVpcsResponseBodyVpcsVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
-	VpcId       *string                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName     *string                                 `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// example:
+	//
+	// 18757856124****
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 26888
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// example:
+	//
+	// 172.16.0.0/12
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// example:
+	//
+	// 2023-01-01T12:00:00Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-01-01T12:00:00Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// example:
+	//
+	// Available
+	Status   *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchs []*DescribeVpcsResponseBodyVpcsVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-xxxxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// my-vpc
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeVpcsResponseBodyVpcs) String() string {
@@ -230,13 +272,37 @@ func (s *DescribeVpcsResponseBodyVpcs) Validate() error {
 }
 
 type DescribeVpcsResponseBodyVpcsVSwitchs struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 172.16.0.0/24
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// example:
+	//
+	// 2023-01-01T12:00:00Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-01-01T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vsw-xxxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// default-vswitch
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 

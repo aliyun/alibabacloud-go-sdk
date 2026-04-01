@@ -32,18 +32,66 @@ type iDescribeClassDetailsRequest interface {
 }
 
 type DescribeClassDetailsRequest struct {
+	// The code of the instance type.
+	//
 	// This parameter is required.
-	ClassCode   *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	//
+	// example:
+	//
+	// rds.mysql.s3.large
+	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The commodity code of the instance. Valid values:
+	//
+	// 	- **bards_intl**: The instance is a pay-as-you-go primary instance.
+	//
+	// 	- **rds_intl**: The instance is a subscription primary instance.
+	//
+	// 	- **rords_intl**: The instance is a pay-as-you-go read-only instance.
+	//
+	// 	- **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The type of the database engine.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 5.6
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

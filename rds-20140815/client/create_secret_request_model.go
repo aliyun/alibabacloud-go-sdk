@@ -38,24 +38,82 @@ type iCreateSecretRequest interface {
 }
 
 type CreateSecretRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the instance. You can call the DescribeDBInstances operation to query the ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-sdfljk123***
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	DbNames      *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// users
+	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	// The description of the credential.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The engine of the database.
+	//
+	// > Only MySQL is supported.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password that is used to access the database.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345678
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID of the resource group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfmxypivk***
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretName           *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The name of the credential.
+	//
+	// example:
+	//
+	// Foo
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The username that is used to access the database.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// user_jack
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

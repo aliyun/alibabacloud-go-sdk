@@ -20,10 +20,36 @@ type iCopyDatabaseResponseBody interface {
 }
 
 type CopyDatabaseResponseBody struct {
-	DBName    *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	DBStatus  *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test02
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The status of the database. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Running**
+	//
+	// 	- **Deleting**
+	//
+	// example:
+	//
+	// Creating
+	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the task.
+	//
+	// example:
+	//
+	// 2562****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CopyDatabaseResponseBody) String() string {

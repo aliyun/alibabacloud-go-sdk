@@ -14,6 +14,9 @@ type iDeleteRCVClusterResponseBody interface {
 }
 
 type DeleteRCVClusterResponseBody struct {
+	// example:
+	//
+	// 0688F1D2-CDA8-5617-A43C-ADAC61D80D43
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

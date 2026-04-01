@@ -24,12 +24,58 @@ type iDescribeInstanceLinkedWhitelistTemplateResponseBody interface {
 }
 
 type DescribeInstanceLinkedWhitelistTemplateResponseBody struct {
-	Code           *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *DescribeInstanceLinkedWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code returned. Valid values:
+	//
+	// 	- **200**: success
+	//
+	// 	- **400**: client error
+	//
+	// 	- **401**: identity authentication failed
+	//
+	// 	- **404**: request page not found
+	//
+	// 	- **500**: server error
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeInstanceLinkedWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned. Valid values:
+	//
+	// 	- **200**: success
+	//
+	// 	- **400**: client error
+	//
+	// 	- **500**: server error
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceLinkedWhitelistTemplateResponseBody) String() string {
@@ -104,7 +150,13 @@ func (s *DescribeInstanceLinkedWhitelistTemplateResponseBody) Validate() error {
 }
 
 type DescribeInstanceLinkedWhitelistTemplateResponseBodyData struct {
-	InsName   *string                                                             `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// rm-bp191w771kd3****
+	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The information about whitelists that are returned by page.
 	Templates []*DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -148,11 +200,36 @@ func (s *DescribeInstanceLinkedWhitelistTemplateResponseBodyData) Validate() err
 }
 
 type DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates struct {
-	Id           *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Ips          *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	TemplateId   *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The primary key of the data table.
+	//
+	// example:
+	//
+	// 1884
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IP addresses.
+	//
+	// example:
+	//
+	// 12.0.X.X,10.2.X.X
+	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	// The whitelist template ID.
+	//
+	// example:
+	//
+	// 412
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The whitelist template name.
+	//
+	// example:
+	//
+	// template_123
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	UserId       *int32  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 16****
+	UserId *int32 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeInstanceLinkedWhitelistTemplateResponseBodyDataTemplates) String() string {

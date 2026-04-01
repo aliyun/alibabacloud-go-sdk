@@ -22,11 +22,31 @@ type iDescribeReadDBInstanceDelayResponseBody interface {
 }
 
 type DescribeReadDBInstanceDelayResponseBody struct {
-	DBInstanceId     *string                                       `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DelayTime        *int32                                        `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	Items            *DescribeReadDBInstanceDelayResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	ReadDBInstanceId *string                                       `json:"ReadDBInstanceId,omitempty" xml:"ReadDBInstanceId,omitempty"`
-	RequestId        *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The primary instance ID.
+	//
+	// example:
+	//
+	// rm-bp*****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The latency of data replication. Unit: seconds.
+	//
+	// example:
+	//
+	// 0
+	DelayTime *int32                                        `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	Items     *DescribeReadDBInstanceDelayResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The read-only instance ID.
+	//
+	// example:
+	//
+	// rr-bp*****
+	ReadDBInstanceId *string `json:"ReadDBInstanceId,omitempty" xml:"ReadDBInstanceId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F1BDDEA8-452D-450B-AB10-CD5C5BAFC5DF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeReadDBInstanceDelayResponseBody) String() string {

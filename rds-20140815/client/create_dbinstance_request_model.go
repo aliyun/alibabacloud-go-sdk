@@ -222,7 +222,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// false
 	BpeEnabled *string `json:"BpeEnabled,omitempty" xml:"BpeEnabled,omitempty"`
 	// Specifies whether to enable the I/O burst feature of Premium ESSDs. Valid values:
 	//
@@ -274,7 +274,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// ETnLKlblzczshOTUbOCz****
+	// ETnLKlblzczshOTUbOCz*****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable the data archiving feature of Premium ESSDs. Valid values:
 	//
@@ -306,7 +306,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****.mysql.rds.aliyuncs.com
+	// rm-uf6wjk5*****.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The policy based on which multiple instances are created. The parameter takes effect only when the value of the **Amount*	- parameter is greater than 1. Valid values:
 	//
@@ -337,7 +337,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// mysql.n2.medium.2c
+	// rds.mysql.s1.small
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The instance name. The value must be 2 to 255 characters in length The name can contain letters, digits, and hyphens (-) and must start with a letter.
 	//
@@ -345,7 +345,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// testInstance
+	// Test database
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The network connection type of the instance. The value of this parameter is fixed as **Intranet**, indicating an internal network connection.
 	//
@@ -353,7 +353,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// Intranet
+	// Internet
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
@@ -387,7 +387,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// general_essd
+	// cloud_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// Specifies whether the table name is case-sensitive. Valid values:
 	//
@@ -405,7 +405,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// rpg-sys-****
+	// rpg-sys-*****
 	DBParamGroupId *string `json:"DBParamGroupId,omitempty" xml:"DBParamGroupId,omitempty"`
 	// The time zone of the instance. This parameter takes effect only when you set **Engine*	- to **MySQL*	- or **PostgreSQL**.
 	//
@@ -439,7 +439,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// dhg-4n****
+	// dhg-4n*****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the instance. This feature is available only for pay-as-you-go instances. Valid values:
 	//
@@ -526,18 +526,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// 8.0
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Enable or disable [RDS MySQL native replication](https://help.aliyun.com/document_detail/2856526.html). Valid values:
-	//
-	// - **ON**: Enabled.
-	//
-	// - **OFF**: Disabled.
-	//
-	// example:
-	//
-	// ON
-	ExternalReplication *bool `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
+	// 5.6
+	EngineVersion       *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExternalReplication *bool   `json:"ExternalReplication,omitempty" xml:"ExternalReplication,omitempty"`
 	// The network type of the instance. Valid values:
 	//
 	// 	- **VPC**: virtual private cloud (VPC)
@@ -554,7 +545,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// VPC
+	// Classic
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// Specifies whether to enable Buffer Pool Extension (BPE) of Premium ESSDs. Valid values:
 	//
@@ -642,7 +633,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// rg-acfmy****
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the CheckCloudResourceAuthorized operation to query the ARN.
@@ -651,7 +642,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// acs:ram::1406****:role/aliyunrdsinstanceencryptiondefaultrole
+	// acs:ram::1406xxxxxx:role/aliyunrdsinstanceencryptiondefaultrole
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The IP address whitelist of the instance. For more information, see [Configure an IP address whitelist](https://help.aliyun.com/document_detail/43185.html). Separate multiple IP addresses or CIDR blocks with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to the whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	//
@@ -727,7 +718,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// i-bp****
+	// i-bp*****3
 	TargetDedicatedHostIdForLog *string `json:"TargetDedicatedHostIdForLog,omitempty" xml:"TargetDedicatedHostIdForLog,omitempty"`
 	// The ID of the host to which the instance belongs in the specified dedicated cluster.
 	//
@@ -739,7 +730,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// i-bp****
+	// i-bp*****1
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
 	// The ID of the host to which the secondary instance belongs in the specified dedicated cluster.
 	//
@@ -751,7 +742,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// i-bp****
+	// i-bp*****2
 	TargetDedicatedHostIdForSlave *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
 	// The minor engine version of the instance. This parameter is required only when you create an instance that runs MySQL or PostgreSQL. The value format varies based on the database engine of the instance.
 	//
@@ -803,7 +794,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// 67798****
+	// 67798*****
 	UserBackupId *string `json:"UserBackupId,omitempty" xml:"UserBackupId,omitempty"`
 	// The ID of the VPC to which the instance belongs.
 	//
@@ -811,7 +802,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// vpc-****
+	// vpc-*****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
 	//
@@ -825,13 +816,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// example:
 	//
-	// vsw-****
+	// vsw-*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
 	//
 	// example:
 	//
-	// 192.168.0.1,172.16.213.9
+	// 192.XXX.XX.1,172.XXX.XX.9
 	WhitelistTemplateList *string `json:"WhitelistTemplateList,omitempty" xml:"WhitelistTemplateList,omitempty"`
 	// The zone ID of the primary instance.
 	//

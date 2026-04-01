@@ -24,15 +24,36 @@ type iModifyRCInstanceChargeTypeResponseBody interface {
 }
 
 type ModifyRCInstanceChargeTypeResponseBody struct {
+	// The billing method.
+	//
+	// 	- **POSTPAY**: pay-as-you-go.
+	//
+	// 	- **PREPAY**: subscription.
+	//
 	// example:
 	//
-	// Prepaid
-	ChargeType     *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpiredTime    []*string                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty" type:"Repeated"`
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The time when the instance expires.
+	//
+	// >  If you change the billing method from subscription to pay-as-you-go, this parameter is not returned.
+	ExpiredTime []*string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty" type:"Repeated"`
+	// The reserved parameter. This parameter is not supported.
 	FeeOfInstances []*ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances `json:"FeeOfInstances,omitempty" xml:"FeeOfInstances,omitempty" type:"Repeated"`
-	InstanceIds    []*string                                               `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OrderId        *string                                                 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 2133400000****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 6EF82B07-28D2-48D1-B5D6-7E78FED277C7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyRCInstanceChargeTypeResponseBody) String() string {
@@ -111,8 +132,23 @@ func (s *ModifyRCInstanceChargeTypeResponseBody) Validate() error {
 }
 
 type ModifyRCInstanceChargeTypeResponseBodyFeeOfInstances struct {
-	Currency   *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	Fee        *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
+	Fee *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
+	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// None
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

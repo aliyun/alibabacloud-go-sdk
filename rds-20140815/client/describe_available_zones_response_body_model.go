@@ -16,8 +16,14 @@ type iDescribeAvailableZonesResponseBody interface {
 }
 
 type DescribeAvailableZonesResponseBody struct {
+	// The available zones in the region.
 	AvailableZones []*DescribeAvailableZonesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4256E149-C3C4-4FA7-BDEA-13CA415E8763
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableZonesResponseBody) String() string {
@@ -60,9 +66,20 @@ func (s *DescribeAvailableZonesResponseBody) Validate() error {
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZones struct {
-	RegionId         *string                                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The database engines that are available for purchase.
 	SupportedEngines []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
-	ZoneId           *string                                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableZonesResponseBodyAvailableZones) String() string {
@@ -114,7 +131,13 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZones) Validate() error {
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines struct {
-	Engine                  *string                                                                                    `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the instance.
+	//
+	// example:
+	//
+	// MySQL
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine versions that are available for purchase.
 	SupportedEngineVersions []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Repeated"`
 }
 
@@ -158,8 +181,14 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEngines) Valid
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions struct {
+	// The RDS editions that are available that are available for purchase.
 	SupportedCategorys []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys `json:"SupportedCategorys,omitempty" xml:"SupportedCategorys,omitempty" type:"Repeated"`
-	Version            *string                                                                                                      `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The database engine version.
+	//
+	// example:
+	//
+	// 8.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersions) String() string {
@@ -202,7 +231,13 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupport
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorys struct {
-	Category              *string                                                                                                                           `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The RDS edition of the instance.
+	//
+	// example:
+	//
+	// HighAvailability
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The storage types that are available for purchase.
 	SupportedStorageTypes []*DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Repeated"`
 }
 
@@ -246,6 +281,11 @@ func (s *DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupport
 }
 
 type DescribeAvailableZonesResponseBodyAvailableZonesSupportedEnginesSupportedEngineVersionsSupportedCategorysSupportedStorageTypes struct {
+	// The storage type of the instance.
+	//
+	// example:
+	//
+	// local_ssd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 

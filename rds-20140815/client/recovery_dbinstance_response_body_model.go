@@ -18,9 +18,24 @@ type iRecoveryDBInstanceResponseBody interface {
 }
 
 type RecoveryDBInstanceResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 54325****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EFB6083A-7699-489B-8278-C0CB4793A96E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RecoveryDBInstanceResponseBody) String() string {

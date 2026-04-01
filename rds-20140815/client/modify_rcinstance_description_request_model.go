@@ -18,9 +18,26 @@ type iModifyRCInstanceDescriptionRequest interface {
 }
 
 type ModifyRCInstanceDescriptionRequest struct {
+	// The instance name.
+	//
+	// >  The name must be 2 to 255 characters in length and can contain letters, digits, `underscores (_)`, and `hyphens (-)`. It must start with a letter.
+	//
+	// example:
+	//
+	// testInstance
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rc-m5ei7b1w38w2l91x****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyRCInstanceDescriptionRequest) String() string {

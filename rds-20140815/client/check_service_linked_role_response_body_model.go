@@ -18,8 +18,23 @@ type iCheckServiceLinkedRoleResponseBody interface {
 }
 
 type CheckServiceLinkedRoleResponseBody struct {
-	HasServiceLinkedRole     *string `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
-	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether an SLR is created.
+	//
+	// example:
+	//
+	// true
+	HasServiceLinkedRole *string `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AB44DC0A-7E77-442A-97A9-C6418694CB22
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the service-linked role is required. Default value: true.
+	//
+	// example:
+	//
+	// true
 	RequireServiceLinkedRole *string `json:"RequireServiceLinkedRole,omitempty" xml:"RequireServiceLinkedRole,omitempty"`
 }
 

@@ -17,7 +17,12 @@ type iGetDbProxyInstanceSslResponseBody interface {
 
 type GetDbProxyInstanceSslResponseBody struct {
 	DbProxyCertListItems *GetDbProxyInstanceSslResponseBodyDbProxyCertListItems `json:"DbProxyCertListItems,omitempty" xml:"DbProxyCertListItems,omitempty" type:"Struct"`
-	RequestId            *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D330E60C-8AAA-4D63-8F64-5B78F4692F98
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDbProxyInstanceSslResponseBody) String() string {

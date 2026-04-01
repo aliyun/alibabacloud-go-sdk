@@ -28,29 +28,11 @@ type DescribeRCInstanceAttributeRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name
-	//
 	// example:
 	//
 	// k8s-node
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Set the upper limit for the number of instance disks in the return result. The valid range is 10 to 500.
-	//
-	// - If no value is set, the default value is 20.
-	//
-	// - If the set value is less than 10, it is fixed to 10.
-	//
-	// - If the set value is greater than or equal to 10 and less than or equal to 500, the set value is used.
-	//
-	// example:
-	//
-	// 20
-	MaxDisksResults *int64 `json:"MaxDisksResults,omitempty" xml:"MaxDisksResults,omitempty"`
-	// The VPC network IP address of the instance, that is, the private IP address.
-	//
-	// example:
-	//
-	// 192.168.XXX.XXX
+	InstanceName     *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MaxDisksResults  *int64  `json:"MaxDisksResults,omitempty" xml:"MaxDisksResults,omitempty"`
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// The region ID.
 	//

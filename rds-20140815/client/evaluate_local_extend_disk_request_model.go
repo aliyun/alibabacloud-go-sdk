@@ -32,7 +32,7 @@ type EvaluateLocalExtendDiskRequest struct {
   // 
   // example:
   // 
-  // rm-wz9s06u4drm******
+  // rm-m5e999iqm65******
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.

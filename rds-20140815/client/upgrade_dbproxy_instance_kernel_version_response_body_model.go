@@ -18,9 +18,24 @@ type iUpgradeDBProxyInstanceKernelVersionResponseBody interface {
 }
 
 type UpgradeDBProxyInstanceKernelVersionResponseBody struct {
+	// The ID of the database proxy of the instance.
+	//
+	// example:
+	//
+	// bu9***
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 44537EC8-DFA2-4745-B579-E733FF2C5B9A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 33436****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBProxyInstanceKernelVersionResponseBody) String() string {

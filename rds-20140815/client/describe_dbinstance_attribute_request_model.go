@@ -26,7 +26,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	//
 	// example:
 	//
-	// rm-uf6wjk5****
+	// rm-uf6wjk5*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether the instance expires. Valid values:
 	//

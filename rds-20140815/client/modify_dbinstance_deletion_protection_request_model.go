@@ -26,10 +26,31 @@ type iModifyDBInstanceDeletionProtectionRequest interface {
 }
 
 type ModifyDBInstanceDeletionProtectionRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// Specifies whether to enable the release protection feature for the read-only instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	DeletionProtection   *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -24,10 +24,34 @@ type iDescribeDedicatedHostGroupsRequest interface {
 }
 
 type DescribeDedicatedHostGroupsRequest struct {
+	// The dedicated cluster ID.
+	//
+	// example:
+	//
+	// dhg-7a9xxxxxxxx
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The image based on which the hosts in the dedicated clusters are created. Valid values:
+	//
+	// 	- **WindowsWithMssqlStdLicense**: a Windows image that contains the licenses of SQL Server Standard Edition
+	//
+	// 	- **WindowsWithMssqlEntLisence**: a Windows image that contains the licenses of SQL Server Enterprise Edition
+	//
+	// 	- **WindowsWithMssqlWebLisence**: a Windows image that contains the licenses of SQL Server Web Edition
+	//
+	// 	- **AliLinux**: a Linux image
+	//
+	// example:
+	//
+	// WindowsWithMssqlStdLicense
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

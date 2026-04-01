@@ -42,21 +42,75 @@ type iDescribeDBInstancesByPerformanceRequest interface {
 }
 
 type DescribeDBInstancesByPerformanceRequest struct {
-	Tag                  []*DescribeDBInstancesByPerformanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ClientToken          *string                                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceId         *string                                       `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount         *string                                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64                                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string                                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SortKey              *string                                       `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
-	SortMethod           *string                                       `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
-	Tags                 *string                                       `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	ProxyId              *string                                       `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
+	Tag []*DescribeDBInstancesByPerformanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of the page to return. Valid values: any non-zero positive integer.
+	//
+	// Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: **5*	- to **100**.
+	//
+	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy*****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The sorting basis.
+	//
+	// example:
+	//
+	// CPU_Usage
+	SortKey *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	// The sorting method.
+	//
+	// example:
+	//
+	// ASC
+	SortMethod *string `json:"SortMethod,omitempty" xml:"SortMethod,omitempty"`
+	// The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
+	//
+	// example:
+	//
+	// {"key1":"value1"}
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the proxy mode.
+	//
+	// example:
+	//
+	// API
+	ProxyId *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
 }
 
 func (s DescribeDBInstancesByPerformanceRequest) String() string {
@@ -216,7 +270,17 @@ func (s *DescribeDBInstancesByPerformanceRequest) Validate() error {
 }
 
 type DescribeDBInstancesByPerformanceRequestTag struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key of tag 1 that is added to the instances.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of tag 1 that is added to the instances.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

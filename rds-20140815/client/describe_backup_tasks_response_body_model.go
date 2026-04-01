@@ -16,8 +16,13 @@ type iDescribeBackupTasksResponseBody interface {
 }
 
 type DescribeBackupTasksResponseBody struct {
-	Items     *DescribeBackupTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Items *DescribeBackupTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 90496720-2319-42A8-87CD-FCE4DF95EBED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupTasksResponseBody) String() string {

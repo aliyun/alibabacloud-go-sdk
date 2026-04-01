@@ -16,14 +16,11 @@ type iDescribeParameterTimedScheduleTaskResponseBody interface {
 }
 
 type DescribeParameterTimedScheduleTaskResponseBody struct {
-	// Request ID.
-	//
 	// example:
 	//
 	// A807C95D-410C-5BB5-96C0-C6E09F2C3D36
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// List of scan jobs.
-	TaskList []*DescribeParameterTimedScheduleTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskList  []*DescribeParameterTimedScheduleTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeParameterTimedScheduleTaskResponseBody) String() string {
@@ -66,40 +63,22 @@ func (s *DescribeParameterTimedScheduleTaskResponseBody) Validate() error {
 }
 
 type DescribeParameterTimedScheduleTaskResponseBodyTaskList struct {
-	// Instance name.
-	//
 	// example:
 	//
 	// rm-2ze2za3is7baay****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Modified parameter settings.
-	//
 	// example:
 	//
 	// {"auto_increment_increment":"1000","back_log":"99"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// Status. Valid values:
-	//
-	// 	- **PENDING**: Pending execution.
-	//
-	// 	- **EXECUTING**: Executing.
-	//
-	// 	- **COMPLETED**: Completed.
-	//
-	// 	- **EXECUTING**: Failed.
-	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Effective period for the parameter modification.
-	//
 	// example:
 	//
 	// 2022-05-06T09:24:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// Scheduled task ID for parameter modification.
-	//
 	// example:
 	//
 	// 27056921

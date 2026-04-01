@@ -26,7 +26,7 @@ type CheckRdsCustomInitRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
-	// rg-bp67acfmxazb4p****
+	// None
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// This parameter is required.
 	//

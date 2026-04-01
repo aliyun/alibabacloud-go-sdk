@@ -16,8 +16,14 @@ type iDescribeRCClustersResponseBody interface {
 }
 
 type DescribeRCClustersResponseBody struct {
-	Clusters  []*DescribeRCClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the clusters.
+	Clusters []*DescribeRCClustersResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2875D608-A228-53D7-B8C9-35F13EDCF36D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCClustersResponseBody) String() string {
@@ -60,12 +66,37 @@ func (s *DescribeRCClustersResponseBody) Validate() error {
 }
 
 type DescribeRCClustersResponseBodyClusters struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster name.
+	//
+	// example:
+	//
+	// test01
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Profile     *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2024-10-30T02:16:04Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Profile    *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The cluster status. Valid values:
+	//
+	// 	- **Pending**
+	//
+	// 	- **Running**
+	//
+	// 	- **Starting**
+	//
+	// 	- **Stopping**
+	//
+	// 	- **Stopped**
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeRCClustersResponseBodyClusters) String() string {

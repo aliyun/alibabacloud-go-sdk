@@ -28,14 +28,39 @@ type iCopyDatabaseRequest interface {
 }
 
 type CopyDatabaseRequest struct {
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DstDBName            *string `json:"DstDBName,omitempty" xml:"DstDBName,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReserveAccount       *int32  `json:"ReserveAccount,omitempty" xml:"ReserveAccount,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// rm-uf6wjk5******
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The destination database name.
+	//
+	// example:
+	//
+	// db2***
+	DstDBName *string `json:"DstDBName,omitempty" xml:"DstDBName,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The reserved account.
+	//
+	// example:
+	//
+	// 1
+	ReserveAccount *int32 `json:"ReserveAccount,omitempty" xml:"ReserveAccount,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SrcDBName            *string `json:"SrcDBName,omitempty" xml:"SrcDBName,omitempty"`
+	// The source database name.
+	//
+	// example:
+	//
+	// db1***
+	SrcDBName *string `json:"SrcDBName,omitempty" xml:"SrcDBName,omitempty"`
 }
 
 func (s CopyDatabaseRequest) String() string {

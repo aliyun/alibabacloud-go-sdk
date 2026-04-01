@@ -20,10 +20,25 @@ type iDescribeDTCSecurityIpHostsForSQLServerResponseBody interface {
 }
 
 type DescribeDTCSecurityIpHostsForSQLServerResponseBody struct {
-	DBInstanceId  *string                                                  `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The number of distributed transaction whitelists.
+	//
+	// example:
+	//
+	// 1
 	IpHostPairNum *string                                                  `json:"IpHostPairNum,omitempty" xml:"IpHostPairNum,omitempty"`
 	Items         *DescribeDTCSecurityIpHostsForSQLServerResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2CA62A70-2203-45C6-8E90-8971D5ACC0C2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDTCSecurityIpHostsForSQLServerResponseBody) String() string {

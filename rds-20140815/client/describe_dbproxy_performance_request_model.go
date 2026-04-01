@@ -40,7 +40,7 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// example:
 	//
-	// rm-t4n3a****
+	// rm-t4n3axxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// A reserved parameter. You do not need to specify this parameter.
 	//
@@ -56,15 +56,11 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// example:
 	//
-	// exclusive
+	// DedicatedProxy
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
 	// Dimension.
 	//
 	// example:
-	//
-	// service,node
-	//
-	// server,node
 	//
 	// service
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`

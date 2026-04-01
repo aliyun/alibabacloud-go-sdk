@@ -34,34 +34,24 @@ type iModifyMaskingRulesRequest interface {
 }
 
 type ModifyMaskingRulesRequest struct {
-	// Instance ID
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-t4n8t18o******6d5
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Database name
-	//
 	// example:
 	//
 	// myDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// Name of the default encryption or masking algorithm
-	//
 	// example:
 	//
 	// sm4-128-gcm
 	DefaultAlgo *string `json:"DefaultAlgo,omitempty" xml:"DefaultAlgo,omitempty"`
-	// Indicates whether the rule is enabled. Valid values: true, false
-	//
 	// example:
 	//
 	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Rule algorithm. Multiple algorithms can be specified. Masking Algorithm can include additional parameters. Format: {name: algorithm1}, {name: algorithm2, params: {encryption position, number of encrypted digits}}
-	//
 	// example:
 	//
 	// [{"name": "sha256"},
@@ -69,18 +59,13 @@ type ModifyMaskingRulesRequest struct {
 	//         {"name":"sm4-128-gcm"}]
 	MaskingAlgo *string `json:"MaskingAlgo,omitempty" xml:"MaskingAlgo,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID
-	//
 	// example:
 	//
 	// ap-southeast-1
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Rule configuration, in JSON string format
-	RuleConfig *ModifyMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
-	// Name of the rule to modify
-	//
+	RegionId             *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RuleConfig           *ModifyMaskingRulesRequestRuleConfig `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -206,12 +191,9 @@ func (s *ModifyMaskingRulesRequest) Validate() error {
 }
 
 type ModifyMaskingRulesRequestRuleConfig struct {
-	// List of columns
-	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// List of databases
+	Columns   []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// Table list
-	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
 func (s ModifyMaskingRulesRequestRuleConfig) String() string {

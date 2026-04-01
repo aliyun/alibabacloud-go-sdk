@@ -22,14 +22,45 @@ type iModifyDBInstancePayTypeRequest interface {
 }
 
 type ModifyDBInstancePayTypeRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp1842vmucoa5w874
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The billing method of the instance. The value is fixed as **Prepaid**, which indicates the subscription billing method.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The renewal cycle of the instance.
+	//
+	// 	- **Year**
+	//
+	// 	- **Month**
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Year
 	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UsedTime        *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The subscription duration of the instance. Valid values:
+	//
+	// 	- If you set the **Period*	- parameter to **Year**, the value of the **UsedTime*	- parameter ranges from 1 to 5.
+	//
+	// 	- If you set the **Period*	- parameter to **Month**, the value of the **UsedTime*	- parameter ranges from 1 to 11.
+	//
+	// example:
+	//
+	// 2
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
 func (s ModifyDBInstancePayTypeRequest) String() string {

@@ -17,7 +17,12 @@ type iDescribeCollationTimeZonesResponseBody interface {
 
 type DescribeCollationTimeZonesResponseBody struct {
 	CollationTimeZones *DescribeCollationTimeZonesResponseBodyCollationTimeZones `json:"CollationTimeZones,omitempty" xml:"CollationTimeZones,omitempty" type:"Struct"`
-	RequestId          *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4EAED246-DB18-4C8D-9EB5-C319626F2A77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCollationTimeZonesResponseBody) String() string {

@@ -16,8 +16,14 @@ type iDescribeDBInstanceEndpointsResponseBody interface {
 }
 
 type DescribeDBInstanceEndpointsResponseBody struct {
-	Data      *DescribeDBInstanceEndpointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *DescribeDBInstanceEndpointsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 777C4593-8053-427B-****105593277CAB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceEndpointsResponseBody) String() string {
@@ -57,8 +63,22 @@ func (s *DescribeDBInstanceEndpointsResponseBody) Validate() error {
 
 type DescribeDBInstanceEndpointsResponseBodyData struct {
 	DBInstanceEndpoints *DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpoints `json:"DBInstanceEndpoints,omitempty" xml:"DBInstanceEndpoints,omitempty" type:"Struct"`
-	DBInstanceName      *string                                                         `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	IpVersion           *string                                                         `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The name of the instance.
+	//
+	// example:
+	//
+	// rm-u****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The version of the IP protocol. Valid values:
+	//
+	// 	- **ipv4**
+	//
+	// 	- **ipv6**
+	//
+	// example:
+	//
+	// ipv4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
 func (s DescribeDBInstanceEndpointsResponseBodyData) String() string {

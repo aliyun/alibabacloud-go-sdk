@@ -20,12 +20,34 @@ type iDetachRCDiskRequest interface {
 }
 
 type DetachRCDiskRequest struct {
+	// The reserved parameter. This parameter is not supported.
+	//
+	// example:
+	//
+	// true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
+	// The ID of the disk that you want to detach.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rcd-f8zh55g5gbk1byjr****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DetachRCDiskRequest) String() string {

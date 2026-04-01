@@ -22,11 +22,36 @@ type iDescribeAvailableRecoveryTimeResponseBody interface {
 }
 
 type DescribeAvailableRecoveryTimeResponseBody struct {
-	CrossBackupId     *int32  `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
+	// The ID of the cross-region data backup file.
+	//
+	// example:
+	//
+	// 14377
+	CrossBackupId *int32 `json:"CrossBackupId,omitempty" xml:"CrossBackupId,omitempty"`
+	// The start time from which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-06-12T05:22:29Z
 	RecoveryBeginTime *string `json:"RecoveryBeginTime,omitempty" xml:"RecoveryBeginTime,omitempty"`
-	RecoveryEndTime   *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-06-12T07:33:12Z
+	RecoveryEndTime *string `json:"RecoveryEndTime,omitempty" xml:"RecoveryEndTime,omitempty"`
+	// The region where the source instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 8CCBF4BA-7CE1-47E1-B49F-E97EA200A40D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableRecoveryTimeResponseBody) String() string {

@@ -16,8 +16,14 @@ type iDescribeRCInstanceTypeFamiliesResponseBody interface {
 }
 
 type DescribeRCInstanceTypeFamiliesResponseBody struct {
+	// The instance families.
 	InstanceTypeFamilies *DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Struct"`
-	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F2911788-25E8-42E5-A3A3-1B38D263F01E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRCInstanceTypeFamiliesResponseBody) String() string {
@@ -56,6 +62,7 @@ func (s *DescribeRCInstanceTypeFamiliesResponseBody) Validate() error {
 }
 
 type DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies struct {
+	// The instance family.
 	InstanceTypeFamily []*DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty" type:"Repeated"`
 }
 
@@ -90,8 +97,14 @@ func (s *DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamilies) Validat
 }
 
 type DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily struct {
+	// The description of the instance family.
 	InstanceTypeFamilyDesc *string `json:"InstanceTypeFamilyDesc,omitempty" xml:"InstanceTypeFamilyDesc,omitempty"`
-	InstanceTypeFamilyId   *string `json:"InstanceTypeFamilyId,omitempty" xml:"InstanceTypeFamilyId,omitempty"`
+	// The ID of the instance family.
+	//
+	// example:
+	//
+	// x.6cm
+	InstanceTypeFamilyId *string `json:"InstanceTypeFamilyId,omitempty" xml:"InstanceTypeFamilyId,omitempty"`
 }
 
 func (s DescribeRCInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily) String() string {

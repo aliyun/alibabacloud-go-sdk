@@ -16,7 +16,17 @@ type iCancelActiveOperationTasksResponseBody interface {
 }
 
 type CancelActiveOperationTasksResponseBody struct {
-	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The IDs of the tasks that are canceled. Multiple task IDs are separated with commas (,).
+	//
+	// example:
+	//
+	// 188****,188****,188****
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A807C95D-410C-5BB5-96C0-C6E09F2C3D36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

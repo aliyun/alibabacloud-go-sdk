@@ -28,11 +28,45 @@ type iSwitchDBInstanceHARequest interface {
 }
 
 type SwitchDBInstanceHARequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
-	DBInstanceId  *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The time when the switching takes effect. Valid values:
+	//
+	// 	- **Immediate**: The switching immediately takes effect.
+	//
+	// 	- **MaintainTime**: The switching takes effect during the maintenance time.
+	//
+	// Default value: **Immediate**.
+	//
+	// example:
+	//
+	// Immediate
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	Force         *string `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to enable forcible switching. Valid values:
+	//
+	// 	- **Yes**
+	//
+	// 	- **No**
+	//
+	// Default value: **No**.
+	//
+	// example:
+	//
+	// No
+	Force *string `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The secondary instance ID. You can call the DescribeDBInstanceHAConfig operation to query the secondary instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 349054
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

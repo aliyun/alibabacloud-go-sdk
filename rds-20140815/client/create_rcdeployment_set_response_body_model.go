@@ -16,8 +16,18 @@ type iCreateRCDeploymentSetResponseBody interface {
 }
 
 type CreateRCDeploymentSetResponseBody struct {
+	// The deployment set ID.
+	//
+	// example:
+	//
+	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateRCDeploymentSetResponseBody) String() string {

@@ -32,17 +32,50 @@ type iDescribeTagsRequest interface {
 }
 
 type DescribeTagsRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOC****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
+	// >  If you specify this parameter, all tags that are added to this instance are queried, and other filter conditions becomes invalid.
+	//
+	// example:
+	//
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	ProxyId              *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
+	// The type of resource. Set the value to INSTANCE.
+	//
+	// example:
+	//
+	// INSTANCE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag that you want to query. The value of the parameter consists of TagKey and TagValue. Format: `{"TagKey":"TagValue"}`.
+	//
+	// example:
+	//
+	// {“key1”:”value1”}
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the proxy mode.
+	//
+	// example:
+	//
+	// API
+	ProxyId *string `json:"proxyId,omitempty" xml:"proxyId,omitempty"`
 }
 
 func (s DescribeTagsRequest) String() string {

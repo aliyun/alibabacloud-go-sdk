@@ -16,7 +16,17 @@ type iDescribeDBInstanceMonitorResponseBody interface {
 }
 
 type DescribeDBInstanceMonitorResponseBody struct {
-	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The monitoring frequency. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 30829FD4-1A84-4C2A-A625-2EADECB95CA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

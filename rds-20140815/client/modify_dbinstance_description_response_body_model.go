@@ -14,6 +14,11 @@ type iModifyDBInstanceDescriptionResponseBody interface {
 }
 
 type ModifyDBInstanceDescriptionResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 17F57FEE-EA4F-4337-8D2E-9C23CAA63D74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -14,8 +14,6 @@ type iDeleteParameterTimedScheduleTaskResponseBody interface {
 }
 
 type DeleteParameterTimedScheduleTaskResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// 16C62438-491B-5C02-9B49-BA924A1372A2

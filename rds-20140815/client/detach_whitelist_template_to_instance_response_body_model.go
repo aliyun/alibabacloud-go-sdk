@@ -24,12 +24,58 @@ type iDetachWhitelistTemplateToInstanceResponseBody interface {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBody struct {
-	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *DetachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. Valid values:
+	//
+	// 	- **200**: success
+	//
+	// 	- **400**: client error
+	//
+	// 	- **401**: identity authentication failed
+	//
+	// 	- **404**: request page not found
+	//
+	// 	- **500**: server error
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DetachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned. Valid values:
+	//
+	// 	- **200**: success
+	//
+	// 	- **400**: client error
+	//
+	// 	- **500**: server error
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetachWhitelistTemplateToInstanceResponseBody) String() string {
@@ -104,6 +150,15 @@ func (s *DetachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type DetachWhitelistTemplateToInstanceResponseBodyData struct {
+	// The status code returned. Valid values:
+	//
+	// 	- **ok**: The request is successful.
+	//
+	// 	- **error**: The request fails.
+	//
+	// example:
+	//
+	// ok
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

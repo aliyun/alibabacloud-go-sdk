@@ -20,10 +20,30 @@ type iCreateReplicationLinkResponseBody interface {
 }
 
 type CreateReplicationLinkResponseBody struct {
+	// The ID of the DR instance.
+	//
+	// example:
+	//
+	// pgm-****.pg.rds.aliyuncs.com
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId       *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName     *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9F8C06AD-3F37-57A0-ABBF-ABD7824F55CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 564532302
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// test01
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s CreateReplicationLinkResponseBody) String() string {

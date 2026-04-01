@@ -22,33 +22,21 @@ type iListImportTasksRequest interface {
 }
 
 type ListImportTasksRequest struct {
-	// Instance ID. You can invoke DescribeDBInstances to obtain it.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Number of records per page. Valid values: **1–100**.
-	//
-	// Default Value: **30**.
-	//
-	// >If you specify this parameter, the **PageSize*	- and **PageNumber*	- parameters are unavailable.
-	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Paging cursor identity.
-	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Region ID.
-	//
 	// This parameter is required.
 	//
 	// example:

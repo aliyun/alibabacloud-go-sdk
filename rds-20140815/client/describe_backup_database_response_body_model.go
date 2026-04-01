@@ -16,8 +16,18 @@ type iDescribeBackupDatabaseResponseBody interface {
 }
 
 type DescribeBackupDatabaseResponseBody struct {
+	// The name of the database. Format: "db1,db2".
+	//
+	// example:
+	//
+	// db1,db2
 	DatabaseNames *string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 08A3B71B-FE08-4B03-974F-CC7EA6DB1828
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupDatabaseResponseBody) String() string {

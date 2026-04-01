@@ -38,21 +38,96 @@ type iTransformDBInstancePayTypeRequest interface {
 }
 
 type TransformDBInstancePayTypeRequest struct {
-	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	BusinessInfo  *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable the auto-renewal feature for the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// > - This parameter is valid only when you change the billing method from pay-as-you-go to subscription.
+	//
+	// > - All strings except **true*	- are considered **false**.
+	//
+	// example:
+	//
+	// true
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to use vouchers to offset fees. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The additional business information about the instance.
+	//
+	// example:
+	//
+	// None
+	BusinessInfo *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCzxxxxxxxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-uf6wjk5xxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The new billing method of the instance. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
 	// This parameter is required.
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	//
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The renewal cycle of the instance. Valid values:
+	//
+	// 	- **Year**
+	//
+	// 	- **Month**
+	//
+	// > This parameter must be specified if you set **PayType*	- to **Prepaid**.
+	//
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 726702810223
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UsedTime             *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The subscription duration of the instance. Valid values:
+	//
+	// 	- If you set **Period*	- to **Year**, the value of UsedTime ranges from **1 to 5**.
+	//
+	// 	- If you set **Period*	- to **Month**, the value of UsedTime ranges from **1 to 11**.
+	//
+	// > This parameter must be specified when **PayType*	- is set to **Prepaid**.
+	//
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
 func (s TransformDBInstancePayTypeRequest) String() string {

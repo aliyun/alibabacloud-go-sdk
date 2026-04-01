@@ -22,10 +22,35 @@ type iModifyEventInfoResponseBody interface {
 }
 
 type ModifyEventInfoResponseBody struct {
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorEventId   *string `json:"ErrorEventId,omitempty" xml:"ErrorEventId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SuccessCount   *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// mst.errorcode.success.errormessage
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error ID.
+	//
+	// example:
+	//
+	// 12343
+	ErrorEventId *string `json:"ErrorEventId,omitempty" xml:"ErrorEventId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 224DB9F7-3100-4899-AB9C-C938BCCB43E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of successful records.
+	//
+	// example:
+	//
+	// 1
+	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	// The ID of the successful event.
+	//
+	// example:
+	//
+	// 234221
 	SuccessEventId *string `json:"SuccessEventId,omitempty" xml:"SuccessEventId,omitempty"`
 }
 

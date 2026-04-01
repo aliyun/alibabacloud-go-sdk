@@ -16,8 +16,18 @@ type iModifySecurityIpsResponseBody interface {
 }
 
 type ModifySecurityIpsResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 115855279
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifySecurityIpsResponseBody) String() string {

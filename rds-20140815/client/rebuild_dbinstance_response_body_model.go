@@ -18,9 +18,24 @@ type iRebuildDBInstanceResponseBody interface {
 }
 
 type RebuildDBInstanceResponseBody struct {
-	MigrationId *int32  `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId      *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The serial number of the task in the rebuild task queue. When the serial number becomes 0, the system starts to rebuild the secondary instance.
+	//
+	// example:
+	//
+	// 329****
+	MigrationId *int32 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 355DA57C-8CC4-40AB-B3F8-B684BA32EB9E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 20867****
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RebuildDBInstanceResponseBody) String() string {

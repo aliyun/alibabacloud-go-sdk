@@ -14,7 +14,13 @@ type iRebuildReplicationLinkRequest interface {
 }
 
 type RebuildReplicationLinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pgm-bp1trqb4p1xd****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 

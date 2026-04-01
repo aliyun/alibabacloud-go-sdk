@@ -18,7 +18,17 @@ type iDescribeInstanceKeywordsResponseBody interface {
 }
 
 type DescribeInstanceKeywordsResponseBody struct {
-	Key       *string                                    `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The type of reserved keyword returned.
+	//
+	// example:
+	//
+	// account
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1E43AAE0-BEE8-43DA-860D-EAF2AA0724DC
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Words     *DescribeInstanceKeywordsResponseBodyWords `json:"Words,omitempty" xml:"Words,omitempty" type:"Struct"`
 }

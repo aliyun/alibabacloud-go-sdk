@@ -18,9 +18,19 @@ type iSyncRCKeyPairRequest interface {
 }
 
 type SyncRCKeyPairRequest struct {
+	// The name of the key pair.
+	//
+	// example:
+	//
+	// customer_keypairs
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SyncMode    *bool   `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SyncMode *bool   `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
 }
 
 func (s SyncRCKeyPairRequest) String() string {

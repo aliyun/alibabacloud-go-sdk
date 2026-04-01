@@ -18,9 +18,20 @@ type iStartRCInstancesRequest interface {
 }
 
 type StartRCInstancesRequest struct {
-	BatchOptimization *string   `json:"BatchOptimization,omitempty" xml:"BatchOptimization,omitempty"`
-	InstanceIds       []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The batch operation mode. Set the value to **AllTogether**. In this mode, a success message is returned if all specified instances are started. If an instance fails the verification, none of the specified instances can be started and an error message is returned.
+	//
+	// example:
+	//
+	// AllTogether
+	BatchOptimization *string `json:"BatchOptimization,omitempty" xml:"BatchOptimization,omitempty"`
+	// The node IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s StartRCInstancesRequest) String() string {

@@ -16,8 +16,14 @@ type iDescribeHistoryTasksStatResponseBody interface {
 }
 
 type DescribeHistoryTasksStatResponseBody struct {
-	Items     []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried tasks.
+	Items []*DescribeHistoryTasksStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHistoryTasksStatResponseBody) String() string {
@@ -60,8 +66,32 @@ func (s *DescribeHistoryTasksStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryTasksStatResponseBodyItems struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// 	- **Scheduled**
+	//
+	// 	- **Running**
+	//
+	// 	- **Succeed**
+	//
+	// 	- **Failed**
+	//
+	// 	- **Cancelling**
+	//
+	// 	- **Canceled**
+	//
+	// 	- **Waiting**
+	//
+	// example:
+	//
+	// Succeed,Waiting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of tasks.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeHistoryTasksStatResponseBodyItems) String() string {

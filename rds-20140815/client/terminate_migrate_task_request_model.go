@@ -22,9 +22,21 @@ type iTerminateMigrateTaskRequest interface {
 }
 
 type TerminateMigrateTaskRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp159vfbu******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 56254****
 	MigrateTaskId        *string `json:"MigrateTaskId,omitempty" xml:"MigrateTaskId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

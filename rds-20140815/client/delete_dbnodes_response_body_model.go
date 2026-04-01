@@ -18,9 +18,24 @@ type iDeleteDBNodesResponseBody interface {
 }
 
 type DeleteDBNodesResponseBody struct {
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// rm-uf6wjk5****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OrderId      *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	//
+	// example:
+	//
+	// 100780000000000
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 8B993DA9-5272-5414-94E3-4CA8BA0146C2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteDBNodesResponseBody) String() string {

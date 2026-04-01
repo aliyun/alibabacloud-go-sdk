@@ -18,9 +18,20 @@ type iDescribeRCInstanceIpAddressResponseBody interface {
 }
 
 type DescribeRCInstanceIpAddressResponseBody struct {
+	// An array that consists of details of the instance.
 	RCInstanceList []*DescribeRCInstanceIpAddressResponseBodyRCInstanceList `json:"RCInstanceList,omitempty" xml:"RCInstanceList,omitempty" type:"Repeated"`
-	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total          *string                                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C048E440-EA84-5E97-8C81-2A7060D0****_th**
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of the assets.
+	//
+	// example:
+	//
+	// 1
+	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRCInstanceIpAddressResponseBody) String() string {
@@ -72,10 +83,35 @@ func (s *DescribeRCInstanceIpAddressResponseBody) Validate() error {
 }
 
 type DescribeRCInstanceIpAddressResponseBodyRCInstanceList struct {
-	InstanceId      *string                                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string                                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus  *string                                                                 `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType    *string                                                                 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the RDS Custom instance.
+	//
+	// example:
+	//
+	// rc-kti8hw44yy0x53******
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// rc-kti8hw44yy0x53******
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The DDoS mitigation status of the instance. Valid values:
+	//
+	// 	- **normal**
+	//
+	// 	- **abnormal**
+	//
+	// example:
+	//
+	// normal
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The type of the asset. The value is fixed to **ecs**.
+	//
+	// example:
+	//
+	// ecs
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// An array that consists of the details of the asset.
 	IpAddressConfig []*DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig `json:"IpAddressConfig,omitempty" xml:"IpAddressConfig,omitempty" type:"Repeated"`
 }
 
@@ -146,16 +182,84 @@ func (s *DescribeRCInstanceIpAddressResponseBodyRCInstanceList) Validate() error
 }
 
 type DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig struct {
-	BlackholeThreshold  *int32  `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
-	DefenseBpsThreshold *int32  `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
-	DefensePpsThreshold *int32  `json:"DefensePpsThreshold,omitempty" xml:"DefensePpsThreshold,omitempty"`
-	ElasticThreshold    *int32  `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
-	InstanceIp          *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	IpStatus            *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
-	IpVersion           *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	IsBgppack           *bool   `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
-	IsFullProtection    *int32  `json:"IsFullProtection,omitempty" xml:"IsFullProtection,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The basic protection threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 5200
+	BlackholeThreshold *int32 `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
+	// The traffic scrubbing threshold for the asset measured in Mbit/s. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 300
+	DefenseBpsThreshold *int32 `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
+	// The traffic scrubbing threshold for the asset measured in packets per second (PPS). Unit: packets per second (pps).
+	//
+	// example:
+	//
+	// 70000
+	DefensePpsThreshold *int32 `json:"DefensePpsThreshold,omitempty" xml:"DefensePpsThreshold,omitempty"`
+	// The burstable protection threshold for the asset. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 12310
+	ElasticThreshold *int32 `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
+	// The IP address of the asset.
+	//
+	// example:
+	//
+	// 39.105.XXX.XXX
+	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	// The DDoS mitigation status of the asset. Valid values:
+	//
+	// 	- **mitigating**
+	//
+	// 	- **blackholed**
+	//
+	// 	- **normal**
+	//
+	// example:
+	//
+	// normal
+	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
+	// The IP version of the instance. Valid values:
+	//
+	// 	- **v4**
+	//
+	// 	- **v6**
+	//
+	// example:
+	//
+	// v4
+	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// Indicates whether the asset is added to the instance. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	IsBgppack *bool `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
+	// Indicates whether best-effort protection is enabled for the asset. Valid values:
+	//
+	// 	- **0**: Best-effort protection is disabled.
+	//
+	// 	- **1**: Best-effort protection is enabled.
+	//
+	// example:
+	//
+	// 0
+	IsFullProtection *int32 `json:"IsFullProtection,omitempty" xml:"IsFullProtection,omitempty"`
+	// The region code of the asset.
+	//
+	// example:
+	//
+	// cn-beijing-wt97-a01
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRCInstanceIpAddressResponseBodyRCInstanceListIpAddressConfig) String() string {

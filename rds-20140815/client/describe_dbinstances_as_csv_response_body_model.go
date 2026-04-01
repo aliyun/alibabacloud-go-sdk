@@ -16,8 +16,13 @@ type iDescribeDBInstancesAsCsvResponseBody interface {
 }
 
 type DescribeDBInstancesAsCsvResponseBody struct {
-	Items     *DescribeDBInstancesAsCsvResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Items *DescribeDBInstancesAsCsvResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A444291****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstancesAsCsvResponseBody) String() string {

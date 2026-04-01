@@ -20,10 +20,33 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	DBInstanceNetInfos  *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
-	InstanceNetworkType *string                                                  `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	RequestId           *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityIPMode      *string                                                  `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
+	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
+	// The network type of the instance. Valid values:
+	//
+	// 	- **Classic**: classic network
+	//
+	// 	- **VPC**: virtual private cloud (VPC)
+	//
+	// example:
+	//
+	// VPC
+	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 777C4593-8053-427B-99E2-105593277CAB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The whitelist mode of the instance. Valid values:
+	//
+	// 	- **normal**: standard whitelist mode
+	//
+	// 	- **safety**: enhanced whitelist mode
+	//
+	// example:
+	//
+	// safety
+	SecurityIPMode *string `json:"SecurityIPMode,omitempty" xml:"SecurityIPMode,omitempty"`
 }
 
 func (s DescribeDBInstanceNetInfoResponseBody) String() string {
