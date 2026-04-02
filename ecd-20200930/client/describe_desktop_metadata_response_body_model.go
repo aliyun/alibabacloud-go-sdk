@@ -78,6 +78,7 @@ func (s *DescribeDesktopMetadataResponseBody) Validate() error {
 }
 
 type DescribeDesktopMetadataResponseBodyDesktops struct {
+	AgentProviderList []*string `json:"AgentProviderList,omitempty" xml:"AgentProviderList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// PostPaid
@@ -143,6 +144,10 @@ func (s DescribeDesktopMetadataResponseBodyDesktops) String() string {
 
 func (s DescribeDesktopMetadataResponseBodyDesktops) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDesktopMetadataResponseBodyDesktops) GetAgentProviderList() []*string {
+	return s.AgentProviderList
 }
 
 func (s *DescribeDesktopMetadataResponseBodyDesktops) GetChargeType() *string {
@@ -215,6 +220,11 @@ func (s *DescribeDesktopMetadataResponseBodyDesktops) GetResourceGroupName() *st
 
 func (s *DescribeDesktopMetadataResponseBodyDesktops) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *DescribeDesktopMetadataResponseBodyDesktops) SetAgentProviderList(v []*string) *DescribeDesktopMetadataResponseBodyDesktops {
+	s.AgentProviderList = v
+	return s
 }
 
 func (s *DescribeDesktopMetadataResponseBodyDesktops) SetChargeType(v string) *DescribeDesktopMetadataResponseBodyDesktops {

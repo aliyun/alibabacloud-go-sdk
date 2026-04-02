@@ -134,7 +134,8 @@ func (s *DescribeDesktopsResponseBody) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktops struct {
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AccountType       *string   `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AgentProviderList []*string `json:"AgentProviderList,omitempty" xml:"AgentProviderList,omitempty" type:"Repeated"`
 	// The number of concurrent sessions of each cloud computer in a multi-session cloud computer pool.
 	//
 	// example:
@@ -579,6 +580,10 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetAccountType() *string {
 	return s.AccountType
 }
 
+func (s *DescribeDesktopsResponseBodyDesktops) GetAgentProviderList() []*string {
+	return s.AgentProviderList
+}
+
 func (s *DescribeDesktopsResponseBodyDesktops) GetBindAmount() *int32 {
 	return s.BindAmount
 }
@@ -857,6 +862,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) GetZoneType() *string {
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetAccountType(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.AccountType = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetAgentProviderList(v []*string) *DescribeDesktopsResponseBodyDesktops {
+	s.AgentProviderList = v
 	return s
 }
 
