@@ -58,7 +58,7 @@ type UpdateNetworkAclEntriesRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The information about the outbound rules.
 	EgressAclEntries []*UpdateNetworkAclEntriesRequestEgressAclEntries `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Repeated"`
-	// The information about the inbound rule.
+	// The information about the inbound rules.
 	IngressAclEntries []*UpdateNetworkAclEntriesRequestIngressAclEntries `json:"IngressAclEntries,omitempty" xml:"IngressAclEntries,omitempty" type:"Repeated"`
 	// The ID of the network ACL.
 	//
@@ -249,27 +249,29 @@ func (s *UpdateNetworkAclEntriesRequest) Validate() error {
 type UpdateNetworkAclEntriesRequestEgressAclEntries struct {
 	// The description of the outbound rule.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is EgressAclEntries.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block.
+	// The destination CIDR block. Alternatively, a prefix list ID can be provided.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
+	//
+	// pl-xxxxxx
 	DestinationCidrIp *string `json:"DestinationCidrIp,omitempty" xml:"DestinationCidrIp,omitempty"`
-	// The type of the rule. Set the value to **custom**, which specifies custom rules.
+	// The rule type. Set the value to **custom**.
 	//
 	// example:
 	//
 	// custom
 	EntryType *string `json:"EntryType,omitempty" xml:"EntryType,omitempty"`
-	// The IP version. Valid values:
+	// The IP version:
 	//
-	// 	- **IPv4*	- (default)
+	// 	- **IPv4**
 	//
 	// 	- **IPv6**
 	//
@@ -279,7 +281,7 @@ type UpdateNetworkAclEntriesRequestEgressAclEntries struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The ID of the outbound rule.
 	//
-	// Valid values of **N**: **0*	- to **99**. You can specify at most 100 outbound rules.
+	// Valid values of **N**: **0*	- to **99**. You can specify at most 100 outbound rule IDs.
 	//
 	// example:
 	//
@@ -293,7 +295,7 @@ type UpdateNetworkAclEntriesRequestEgressAclEntries struct {
 	//
 	// acl-2
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	// The action to be performed on network traffic that matches the rule. Valid values:
+	// The access control policy. Valid values:
 	//
 	// 	- **accept**
 	//
@@ -305,15 +307,15 @@ type UpdateNetworkAclEntriesRequestEgressAclEntries struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The destination port range of the outbound traffic.
 	//
-	// 	- If the **protocol*	- of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
+	// 	- If **Protocol*	- is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates all ports are available.
 	//
-	// 	- If the **protocol*	- of the outbound rule is set to **tcp*	- or **udp**, set the port range in the following format: **1/200*	- or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1*	- to **65535**.
+	// 	- If **Protocol*	- is set to **tcp*	- or **udp**, valid port numbers are **1*	- to **65535**. Format: **1/200*	- (port 1 to 200) or **80/80*	- (port 80).
 	//
 	// example:
 	//
 	// -1/-1
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol. Valid values:
+	// The protocol type. Valid values:
 	//
 	// 	- **icmp**
 	//
@@ -324,6 +326,8 @@ type UpdateNetworkAclEntriesRequestEgressAclEntries struct {
 	// 	- **udp**
 	//
 	// 	- **all**
+	//
+	// 	- **icmpv6**
 	//
 	// example:
 	//
@@ -427,21 +431,21 @@ func (s *UpdateNetworkAclEntriesRequestEgressAclEntries) Validate() error {
 type UpdateNetworkAclEntriesRequestIngressAclEntries struct {
 	// The description of the inbound rule.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+	// The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is IngressAclEntries.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the rule. Set the value to **custom**, which specifies custom rules.
+	// The rule type. Set the value to **custom**.
 	//
 	// example:
 	//
 	// custom
 	EntryType *string `json:"EntryType,omitempty" xml:"EntryType,omitempty"`
-	// The IP version. Valid values:
+	// The IP version:
 	//
-	// 	- **IPv4*	- (default)
+	// 	- **IPv4**
 	//
 	// 	- **IPv6**
 	//
@@ -451,7 +455,7 @@ type UpdateNetworkAclEntriesRequestIngressAclEntries struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The ID of the inbound rule.
 	//
-	// Valid values of **N**: **0*	- to **99**. You can specify at most 100 inbound rules.
+	// Valid values of **N**: **0*	- to **99**. You can specify at most 100 inbound rule IDs.
 	//
 	// example:
 	//
@@ -465,9 +469,9 @@ type UpdateNetworkAclEntriesRequestIngressAclEntries struct {
 	//
 	// acl-3
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	// The action to be performed on network traffic that matches the rule. Valid values:
+	// The access control policy. Valid values:
 	//
-	// 	- **accept**
+	// 	- **accept**: allows network traffic.
 	//
 	// 	- **drop**
 	//
@@ -477,15 +481,15 @@ type UpdateNetworkAclEntriesRequestIngressAclEntries struct {
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	// The source port range of the inbound rule.
 	//
-	// 	- If the **protocol*	- of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
+	// 	- If **Protocol*	- is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates all ports are available.
 	//
-	// 	- If the **protocol*	- of the inbound rule is set to **tcp*	- or **udp**, set the port range in the following format: **1/200*	- or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1*	- to **65535**.
+	// 	- If **Protocol*	- is set to **tcp*	- or **udp**, valid port numbers are **1*	- to **65535**. Format: **1/200*	- (port 1 to 200) or **80/80*	- (port 80).
 	//
 	// example:
 	//
 	// -1/-1
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol. Valid values:
+	// Protocol type. Valid values:
 	//
 	// 	- **icmp**
 	//
@@ -497,15 +501,19 @@ type UpdateNetworkAclEntriesRequestIngressAclEntries struct {
 	//
 	// 	- **all**
 	//
+	// 	- **icmpv6**
+	//
 	// example:
 	//
 	// all
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block.
+	// The source CIDR block. Alternatively, a prefix list ID can be provided.
 	//
 	// example:
 	//
 	// 10.0.0.0/24
+	//
+	// pl-xxxxxx
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 }
 

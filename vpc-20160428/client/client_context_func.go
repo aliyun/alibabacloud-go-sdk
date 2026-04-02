@@ -225,7 +225,7 @@ func (client *Client) AddBgpNetworkWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Associates an elastic IP address (EIP) with an Internet Shared Bandwidth instance.
+// # AddCommonBandwidthPackageIp
 //
 // Description:
 //
@@ -3931,6 +3931,102 @@ func (client *Client) CreateDhcpOptionsSetWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateDhcpOptionsSetResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建增强型VPN网关
+//
+// @param request - CreateEnhancedVpnGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEnhancedVpnGatewayResponse
+func (client *Client) CreateEnhancedVpnGatewayWithContext(ctx context.Context, request *CreateEnhancedVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateEnhancedVpnGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DisasterRecoveryVSwitchId) {
+		query["DisasterRecoveryVSwitchId"] = request.DisasterRecoveryVSwitchId
+	}
+
+	if !dara.IsNil(request.GatewayType) {
+		query["GatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VpnType) {
+		query["VpnType"] = request.VpnType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateEnhancedVpnGateway"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateEnhancedVpnGatewayResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10195,6 +10291,74 @@ func (client *Client) DeleteDhcpOptionsSetWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Deletes an Enhanced VPN gateway.
+//
+// @param request - DeleteEnhancedVpnGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEnhancedVpnGatewayResponse
+func (client *Client) DeleteEnhancedVpnGatewayWithContext(ctx context.Context, request *DeleteEnhancedVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteEnhancedVpnGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.VpnGatewayId) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteEnhancedVpnGateway"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteEnhancedVpnGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Express Connect instance, including the initiator and acceptor.
 //
 // @param request - DeleteExpressConnectRequest
@@ -15125,7 +15289,7 @@ func (client *Client) DescribeEipGatewayInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days, and get up to 400 data points in each request.
+// Queries the monitoring data of an elastic IP address (EIP). You can query monitoring data within the last 30 days, and obtain up to 400 data points in each request.
 //
 // Description:
 //
@@ -23459,7 +23623,7 @@ func (client *Client) ListNatIpsWithContext(ctx context.Context, request *ListNa
 
 // Summary:
 //
-// Queries he connection features supported by a Express Connect circuit.
+// Querying the connection features supported by a Express Connect circuit.
 //
 // @param request - ListPhysicalConnectionFeaturesRequest
 //
@@ -30871,7 +31035,9 @@ func (client *Client) ReleaseIpv6AddressWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Disassociates an EIP from an Internet Shared Bandwidth instance.
+// The region ID of the Internet Shared Bandwidth instance.
+//
+// You can call the [DescribeRegions]\\(~~36063~~) operation to query the most recent region list.
 //
 // @param request - RemoveCommonBandwidthPackageIpRequest
 //
@@ -33111,6 +33277,86 @@ func (client *Client) UpdateDhcpOptionsSetAttributeWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateDhcpOptionsSetAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改增强型VPN实例属性
+//
+// @param request - UpdateEnhancedVpnGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEnhancedVpnGatewayResponse
+func (client *Client) UpdateEnhancedVpnGatewayWithContext(ctx context.Context, request *UpdateEnhancedVpnGatewayRequest, runtime *dara.RuntimeOptions) (_result *UpdateEnhancedVpnGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoPropagate) {
+		query["AutoPropagate"] = request.AutoPropagate
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.VpnGatewayId) {
+		query["VpnGatewayId"] = request.VpnGatewayId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateEnhancedVpnGateway"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateEnhancedVpnGatewayResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
