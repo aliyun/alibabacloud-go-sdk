@@ -9,6 +9,8 @@ type iExperimentConfig interface {
   dara.Model
   String() string
   GoString() string
+  SetEndpointConnectorId(v string) *ExperimentConfig
+  GetEndpointConnectorId() *string 
   SetLabel(v string) *ExperimentConfig
   GetLabel() *string 
   SetModelName(v string) *ExperimentConfig
@@ -24,6 +26,7 @@ type iExperimentConfig interface {
 }
 
 type ExperimentConfig struct {
+  EndpointConnectorId *string `json:"endpointConnectorId,omitempty" xml:"endpointConnectorId,omitempty"`
   Label *string `json:"label,omitempty" xml:"label,omitempty"`
   ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
   ModelParameters *ModelParameters `json:"modelParameters,omitempty" xml:"modelParameters,omitempty"`
@@ -38,6 +41,10 @@ func (s ExperimentConfig) String() string {
 
 func (s ExperimentConfig) GoString() string {
   return s.String()
+}
+
+func (s *ExperimentConfig) GetEndpointConnectorId() *string  {
+  return s.EndpointConnectorId
 }
 
 func (s *ExperimentConfig) GetLabel() *string  {
@@ -62,6 +69,11 @@ func (s *ExperimentConfig) GetName() *string  {
 
 func (s *ExperimentConfig) GetPromptTemplate() []*PromptTemplateItem  {
   return s.PromptTemplate
+}
+
+func (s *ExperimentConfig) SetEndpointConnectorId(v string) *ExperimentConfig {
+  s.EndpointConnectorId = &v
+  return s
 }
 
 func (s *ExperimentConfig) SetLabel(v string) *ExperimentConfig {
