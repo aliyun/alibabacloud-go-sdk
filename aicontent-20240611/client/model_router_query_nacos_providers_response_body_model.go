@@ -190,9 +190,18 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyData) Validate() error {
 }
 
 type ModelRouterQueryNacosProvidersResponseBodyDataModels struct {
-	Identifier  *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	Extensions *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions `json:"extensions,omitempty" xml:"extensions,omitempty" type:"Struct"`
+	Identifier *string                                                         `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// example:
+	//
+	// text
+	InOut       *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
 	InputToken  *string `json:"inputToken,omitempty" xml:"inputToken,omitempty"`
 	OutputToken *string `json:"outputToken,omitempty" xml:"outputToken,omitempty"`
+	// example:
+	//
+	// Chat
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ModelRouterQueryNacosProvidersResponseBodyDataModels) String() string {
@@ -203,8 +212,16 @@ func (s ModelRouterQueryNacosProvidersResponseBodyDataModels) GoString() string 
 	return s.String()
 }
 
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) GetExtensions() *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions {
+	return s.Extensions
+}
+
 func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) GetIdentifier() *string {
 	return s.Identifier
+}
+
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) GetInOut() *string {
+	return s.InOut
 }
 
 func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) GetInputToken() *string {
@@ -215,8 +232,22 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) GetOutputToken() 
 	return s.OutputToken
 }
 
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) GetType() *string {
+	return s.Type
+}
+
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) SetExtensions(v *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions) *ModelRouterQueryNacosProvidersResponseBodyDataModels {
+	s.Extensions = v
+	return s
+}
+
 func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) SetIdentifier(v string) *ModelRouterQueryNacosProvidersResponseBodyDataModels {
 	s.Identifier = &v
+	return s
+}
+
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) SetInOut(v string) *ModelRouterQueryNacosProvidersResponseBodyDataModels {
+	s.InOut = &v
 	return s
 }
 
@@ -230,6 +261,41 @@ func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) SetOutputToken(v 
 	return s
 }
 
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) SetType(v string) *ModelRouterQueryNacosProvidersResponseBodyDataModels {
+	s.Type = &v
+	return s
+}
+
 func (s *ModelRouterQueryNacosProvidersResponseBodyDataModels) Validate() error {
+	if s.Extensions != nil {
+		if err := s.Extensions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions struct {
+	Async *bool `json:"async,omitempty" xml:"async,omitempty"`
+}
+
+func (s ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions) GetAsync() *bool {
+	return s.Async
+}
+
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions) SetAsync(v bool) *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions {
+	s.Async = &v
+	return s
+}
+
+func (s *ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions) Validate() error {
 	return dara.Validate(s)
 }

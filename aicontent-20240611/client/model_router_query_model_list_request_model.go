@@ -15,6 +15,8 @@ type iModelRouterQueryModelListRequest interface {
 	GetKeyword() *string
 	SetMaxResults(v int32) *ModelRouterQueryModelListRequest
 	GetMaxResults() *int32
+	SetModelType(v string) *ModelRouterQueryModelListRequest
+	GetModelType() *string
 	SetNeedTotalCount(v bool) *ModelRouterQueryModelListRequest
 	GetNeedTotalCount() *bool
 	SetNextToken(v string) *ModelRouterQueryModelListRequest
@@ -44,6 +46,10 @@ type ModelRouterQueryModelListRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// Chat
+	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
 	// example:
 	//
 	// true
@@ -94,6 +100,10 @@ func (s *ModelRouterQueryModelListRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
 
+func (s *ModelRouterQueryModelListRequest) GetModelType() *string {
+	return s.ModelType
+}
+
 func (s *ModelRouterQueryModelListRequest) GetNeedTotalCount() *bool {
 	return s.NeedTotalCount
 }
@@ -134,6 +144,11 @@ func (s *ModelRouterQueryModelListRequest) SetKeyword(v string) *ModelRouterQuer
 
 func (s *ModelRouterQueryModelListRequest) SetMaxResults(v int32) *ModelRouterQueryModelListRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListRequest) SetModelType(v string) *ModelRouterQueryModelListRequest {
+	s.ModelType = &v
 	return s
 }
 

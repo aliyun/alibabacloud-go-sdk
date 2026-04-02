@@ -17,6 +17,8 @@ type iModelRouterCreateClientRequest interface {
 	GetContact() *string
 	SetName(v string) *ModelRouterCreateClientRequest
 	GetName() *string
+	SetParentId(v int64) *ModelRouterCreateClientRequest
+	GetParentId() *int64
 	SetRemark(v string) *ModelRouterCreateClientRequest
 	GetRemark() *string
 }
@@ -38,6 +40,10 @@ type ModelRouterCreateClientRequest struct {
 	//
 	// 我的客户
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1
+	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// example:
 	//
 	// 备注
@@ -68,6 +74,10 @@ func (s *ModelRouterCreateClientRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *ModelRouterCreateClientRequest) GetParentId() *int64 {
+	return s.ParentId
+}
+
 func (s *ModelRouterCreateClientRequest) GetRemark() *string {
 	return s.Remark
 }
@@ -89,6 +99,11 @@ func (s *ModelRouterCreateClientRequest) SetContact(v string) *ModelRouterCreate
 
 func (s *ModelRouterCreateClientRequest) SetName(v string) *ModelRouterCreateClientRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModelRouterCreateClientRequest) SetParentId(v int64) *ModelRouterCreateClientRequest {
+	s.ParentId = &v
 	return s
 }
 

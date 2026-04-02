@@ -126,8 +126,16 @@ func (s *ModelRouterQueryNacosTagsResponseBody) Validate() error {
 }
 
 type ModelRouterQueryNacosTagsResponseBodyData struct {
+	// example:
+	//
+	// 文本生成
+	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
 	Tag     *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	// example:
+	//
+	// NLP
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ModelRouterQueryNacosTagsResponseBodyData) String() string {
@@ -138,12 +146,25 @@ func (s ModelRouterQueryNacosTagsResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryNacosTagsResponseBodyData) GetLabel() *string {
+	return s.Label
+}
+
 func (s *ModelRouterQueryNacosTagsResponseBodyData) GetTag() *string {
 	return s.Tag
 }
 
 func (s *ModelRouterQueryNacosTagsResponseBodyData) GetTagName() *string {
 	return s.TagName
+}
+
+func (s *ModelRouterQueryNacosTagsResponseBodyData) GetValue() *string {
+	return s.Value
+}
+
+func (s *ModelRouterQueryNacosTagsResponseBodyData) SetLabel(v string) *ModelRouterQueryNacosTagsResponseBodyData {
+	s.Label = &v
+	return s
 }
 
 func (s *ModelRouterQueryNacosTagsResponseBodyData) SetTag(v string) *ModelRouterQueryNacosTagsResponseBodyData {
@@ -153,6 +174,11 @@ func (s *ModelRouterQueryNacosTagsResponseBodyData) SetTag(v string) *ModelRoute
 
 func (s *ModelRouterQueryNacosTagsResponseBodyData) SetTagName(v string) *ModelRouterQueryNacosTagsResponseBodyData {
 	s.TagName = &v
+	return s
+}
+
+func (s *ModelRouterQueryNacosTagsResponseBodyData) SetValue(v string) *ModelRouterQueryNacosTagsResponseBodyData {
+	s.Value = &v
 	return s
 }
 

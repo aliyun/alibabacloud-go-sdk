@@ -9,6 +9,8 @@ type iModelRouterQueryNacosTagsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfigType(v string) *ModelRouterQueryNacosTagsRequest
+	GetConfigType() *string
 	SetGroupBy(v string) *ModelRouterQueryNacosTagsRequest
 	GetGroupBy() *string
 	SetMaxResults(v int32) *ModelRouterQueryNacosTagsRequest
@@ -28,6 +30,10 @@ type iModelRouterQueryNacosTagsRequest interface {
 }
 
 type ModelRouterQueryNacosTagsRequest struct {
+	// example:
+	//
+	// providers
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 	// example:
 	//
 	// resourceId
@@ -70,6 +76,10 @@ func (s ModelRouterQueryNacosTagsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModelRouterQueryNacosTagsRequest) GetConfigType() *string {
+	return s.ConfigType
+}
+
 func (s *ModelRouterQueryNacosTagsRequest) GetGroupBy() *string {
 	return s.GroupBy
 }
@@ -100,6 +110,11 @@ func (s *ModelRouterQueryNacosTagsRequest) GetPageIndex() *int32 {
 
 func (s *ModelRouterQueryNacosTagsRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ModelRouterQueryNacosTagsRequest) SetConfigType(v string) *ModelRouterQueryNacosTagsRequest {
+	s.ConfigType = &v
+	return s
 }
 
 func (s *ModelRouterQueryNacosTagsRequest) SetGroupBy(v string) *ModelRouterQueryNacosTagsRequest {

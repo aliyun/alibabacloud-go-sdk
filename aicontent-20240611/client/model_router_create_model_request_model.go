@@ -15,6 +15,10 @@ type iModelRouterCreateModelRequest interface {
 	GetBaseUrl() *string
 	SetDescription(v string) *ModelRouterCreateModelRequest
 	GetDescription() *string
+	SetExtensions(v string) *ModelRouterCreateModelRequest
+	GetExtensions() *string
+	SetInOut(v string) *ModelRouterCreateModelRequest
+	GetInOut() *string
 	SetMaxInputLength(v string) *ModelRouterCreateModelRequest
 	GetMaxInputLength() *string
 	SetMaxOutputLength(v string) *ModelRouterCreateModelRequest
@@ -48,6 +52,14 @@ type ModelRouterCreateModelRequest struct {
 	//
 	// 通义千问大模型
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// {}
+	Extensions *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
+	// example:
+	//
+	// text
+	InOut *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
 	// example:
 	//
 	// 32K
@@ -98,6 +110,14 @@ func (s *ModelRouterCreateModelRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ModelRouterCreateModelRequest) GetExtensions() *string {
+	return s.Extensions
+}
+
+func (s *ModelRouterCreateModelRequest) GetInOut() *string {
+	return s.InOut
+}
+
 func (s *ModelRouterCreateModelRequest) GetMaxInputLength() *string {
 	return s.MaxInputLength
 }
@@ -138,6 +158,16 @@ func (s *ModelRouterCreateModelRequest) SetBaseUrl(v string) *ModelRouterCreateM
 
 func (s *ModelRouterCreateModelRequest) SetDescription(v string) *ModelRouterCreateModelRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *ModelRouterCreateModelRequest) SetExtensions(v string) *ModelRouterCreateModelRequest {
+	s.Extensions = &v
+	return s
+}
+
+func (s *ModelRouterCreateModelRequest) SetInOut(v string) *ModelRouterCreateModelRequest {
+	s.InOut = &v
 	return s
 }
 

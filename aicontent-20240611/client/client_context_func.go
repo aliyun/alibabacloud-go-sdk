@@ -2446,6 +2446,10 @@ func (client *Client) ModelRouterCreateClientWithContext(ctx context.Context, re
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.ParentId) {
+		body["parentId"] = request.ParentId
+	}
+
 	if !dara.IsNil(request.Remark) {
 		body["remark"] = request.Remark
 	}
@@ -2558,6 +2562,14 @@ func (client *Client) ModelRouterCreateModelWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Extensions) {
+		body["extensions"] = request.Extensions
+	}
+
+	if !dara.IsNil(request.InOut) {
+		body["inOut"] = request.InOut
 	}
 
 	if !dara.IsNil(request.MaxInputLength) {
@@ -3127,6 +3139,10 @@ func (client *Client) ModelRouterQueryModelListWithContext(ctx context.Context, 
 		query["maxResults"] = request.MaxResults
 	}
 
+	if !dara.IsNil(request.ModelType) {
+		query["modelType"] = request.ModelType
+	}
+
 	if !dara.IsNil(request.NeedTotalCount) {
 		query["needTotalCount"] = request.NeedTotalCount
 	}
@@ -3273,6 +3289,10 @@ func (client *Client) ModelRouterQueryNacosTagsWithContext(ctx context.Context, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigType) {
+		query["configType"] = request.ConfigType
+	}
+
 	if !dara.IsNil(request.GroupBy) {
 		query["groupBy"] = request.GroupBy
 	}

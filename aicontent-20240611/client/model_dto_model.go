@@ -17,12 +17,16 @@ type iModelDTO interface {
 	GetDeleteTag() *int32
 	SetDescription(v string) *ModelDTO
 	GetDescription() *string
+	SetExtensions(v string) *ModelDTO
+	GetExtensions() *string
 	SetGmtCreate(v string) *ModelDTO
 	GetGmtCreate() *string
 	SetGmtModified(v string) *ModelDTO
 	GetGmtModified() *string
 	SetId(v int64) *ModelDTO
 	GetId() *int64
+	SetInOut(v string) *ModelDTO
+	GetInOut() *string
 	SetIsCustom(v bool) *ModelDTO
 	GetIsCustom() *bool
 	SetMaxInputLength(v string) *ModelDTO
@@ -61,6 +65,7 @@ type ModelDTO struct {
 	// 0
 	DeleteTag   *int32  `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Extensions  *string `json:"extensions,omitempty" xml:"extensions,omitempty"`
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -74,7 +79,8 @@ type ModelDTO struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	Id    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	InOut *string `json:"inOut,omitempty" xml:"inOut,omitempty"`
 	// example:
 	//
 	// false
@@ -135,6 +141,10 @@ func (s *ModelDTO) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ModelDTO) GetExtensions() *string {
+	return s.Extensions
+}
+
 func (s *ModelDTO) GetGmtCreate() *string {
 	return s.GmtCreate
 }
@@ -145,6 +155,10 @@ func (s *ModelDTO) GetGmtModified() *string {
 
 func (s *ModelDTO) GetId() *int64 {
 	return s.Id
+}
+
+func (s *ModelDTO) GetInOut() *string {
+	return s.InOut
 }
 
 func (s *ModelDTO) GetIsCustom() *bool {
@@ -207,6 +221,11 @@ func (s *ModelDTO) SetDescription(v string) *ModelDTO {
 	return s
 }
 
+func (s *ModelDTO) SetExtensions(v string) *ModelDTO {
+	s.Extensions = &v
+	return s
+}
+
 func (s *ModelDTO) SetGmtCreate(v string) *ModelDTO {
 	s.GmtCreate = &v
 	return s
@@ -219,6 +238,11 @@ func (s *ModelDTO) SetGmtModified(v string) *ModelDTO {
 
 func (s *ModelDTO) SetId(v int64) *ModelDTO {
 	s.Id = &v
+	return s
+}
+
+func (s *ModelDTO) SetInOut(v string) *ModelDTO {
+	s.InOut = &v
 	return s
 }
 

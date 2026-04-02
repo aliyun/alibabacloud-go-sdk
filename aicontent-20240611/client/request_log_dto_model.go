@@ -31,6 +31,8 @@ type iRequestLogDTO interface {
 	GetModelId() *int64
 	SetModelName(v string) *RequestLogDTO
 	GetModelName() *string
+	SetModelType(v string) *RequestLogDTO
+	GetModelType() *string
 	SetPromptTokens(v int32) *RequestLogDTO
 	GetPromptTokens() *int32
 	SetRequestBody(v string) *RequestLogDTO
@@ -51,6 +53,8 @@ type iRequestLogDTO interface {
 	GetSymbol() *string
 	SetTotalTokens(v int32) *RequestLogDTO
 	GetTotalTokens() *int32
+	SetUsage(v *UsageInfoDTO) *RequestLogDTO
+	GetUsage() *UsageInfoDTO
 }
 
 type RequestLogDTO struct {
@@ -100,6 +104,10 @@ type RequestLogDTO struct {
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// example:
 	//
+	// Chat
+	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// example:
+	//
 	// 100
 	PromptTokens *int32 `json:"promptTokens,omitempty" xml:"promptTokens,omitempty"`
 	// example:
@@ -138,6 +146,10 @@ type RequestLogDTO struct {
 	//
 	// 150
 	TotalTokens *int32 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+	// example:
+	//
+	// {"prompt_tokens":100,"completion_tokens":50,"total_tokens":150}
+	Usage *UsageInfoDTO `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 
 func (s RequestLogDTO) String() string {
@@ -192,6 +204,10 @@ func (s *RequestLogDTO) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *RequestLogDTO) GetModelType() *string {
+	return s.ModelType
+}
+
 func (s *RequestLogDTO) GetPromptTokens() *int32 {
 	return s.PromptTokens
 }
@@ -230,6 +246,10 @@ func (s *RequestLogDTO) GetSymbol() *string {
 
 func (s *RequestLogDTO) GetTotalTokens() *int32 {
 	return s.TotalTokens
+}
+
+func (s *RequestLogDTO) GetUsage() *UsageInfoDTO {
+	return s.Usage
 }
 
 func (s *RequestLogDTO) SetApiKeyId(v int64) *RequestLogDTO {
@@ -287,6 +307,11 @@ func (s *RequestLogDTO) SetModelName(v string) *RequestLogDTO {
 	return s
 }
 
+func (s *RequestLogDTO) SetModelType(v string) *RequestLogDTO {
+	s.ModelType = &v
+	return s
+}
+
 func (s *RequestLogDTO) SetPromptTokens(v int32) *RequestLogDTO {
 	s.PromptTokens = &v
 	return s
@@ -337,6 +362,16 @@ func (s *RequestLogDTO) SetTotalTokens(v int32) *RequestLogDTO {
 	return s
 }
 
+func (s *RequestLogDTO) SetUsage(v *UsageInfoDTO) *RequestLogDTO {
+	s.Usage = v
+	return s
+}
+
 func (s *RequestLogDTO) Validate() error {
-	return dara.Validate(s)
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
