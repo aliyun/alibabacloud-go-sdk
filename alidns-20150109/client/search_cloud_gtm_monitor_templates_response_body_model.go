@@ -153,21 +153,28 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplates) Validate() error {
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate struct {
-	CreateTime      *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                                                   `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	EvaluationCount *int32                                                                   `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	ExtendInfo      *string                                                                  `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	FailureRate     *int32                                                                   `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
-	Interval        *int32                                                                   `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	IpVersion       *string                                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	IspCityNodes    *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
-	Name            *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Protocol        *string                                                                  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Remark          *string                                                                  `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	TemplateId      *string                                                                  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Timeout         *int32                                                                   `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	UpdateTime      *string                                                                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                                                   `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// mtp-xxxx
+	CloudGtmMonitorTemplateId *string                                                                  `json:"CloudGtmMonitorTemplateId,omitempty" xml:"CloudGtmMonitorTemplateId,omitempty"`
+	CreateTime                *string                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp           *int64                                                                   `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	EvaluationCount           *int32                                                                   `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
+	ExtendInfo                *string                                                                  `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	FailureRate               *int32                                                                   `json:"FailureRate,omitempty" xml:"FailureRate,omitempty"`
+	Interval                  *int32                                                                   `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IpVersion                 *string                                                                  `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IspCityNodes              *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes `json:"IspCityNodes,omitempty" xml:"IspCityNodes,omitempty" type:"Struct"`
+	Name                      *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Protocol                  *string                                                                  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// remark content: xxxx
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Timeout         *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) String() string {
@@ -176,6 +183,10 @@ func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) String() st
 
 func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GoString() string {
 	return s.String()
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GetCloudGtmMonitorTemplateId() *string {
+	return s.CloudGtmMonitorTemplateId
 }
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GetCreateTime() *string {
@@ -236,6 +247,11 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GetUpdateT
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) GetUpdateTimestamp() *int64 {
 	return s.UpdateTimestamp
+}
+
+func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetCloudGtmMonitorTemplateId(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
+	s.CloudGtmMonitorTemplateId = &v
+	return s
 }
 
 func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate) SetCreateTime(v string) *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate {
@@ -357,14 +373,38 @@ func (s *SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes
 }
 
 type SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode struct {
-	CityCode    *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
-	CityName    *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 718
+	CityCode *string `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
+	// example:
+	//
+	// 南京市
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// example:
+	//
+	// 629
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
+	// example:
+	//
+	// 中国
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupType   *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	IspCode     *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
-	IspName     *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
+	// 运营商节点
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// ISP
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// example:
+	//
+	// 5
+	IspCode *string `json:"IspCode,omitempty" xml:"IspCode,omitempty"`
+	// example:
+	//
+	// 移动
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 }
 
 func (s SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode) String() string {
