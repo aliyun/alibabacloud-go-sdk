@@ -32,7 +32,7 @@ type InitializeResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type InitializeResponseBodyResult struct {
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
 	// Standard encryption protocol for authentication.
 	//
-	// > This field is required when integrating with H5 web pages using iframe embedding.
+	// > Required when integrating with H5 web pages using iframe embedding.
 	//
 	// example:
 	//

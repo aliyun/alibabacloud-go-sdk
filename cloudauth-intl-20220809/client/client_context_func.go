@@ -1291,6 +1291,96 @@ func (client *Client) DocOcrMaxWithContext(ctx context.Context, request *DocOcrM
 
 // Summary:
 //
+// 卡证ocr纯服务端V2
+//
+// @param request - DocOcrV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocOcrV2Response
+func (client *Client) DocOcrV2WithContext(ctx context.Context, request *DocOcrV2Request, runtime *dara.RuntimeOptions) (_result *DocOcrV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CardSide) {
+		query["CardSide"] = request.CardSide
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.IdFaceQuality) {
+		query["IdFaceQuality"] = request.IdFaceQuality
+	}
+
+	if !dara.IsNil(request.IdOcrPictureUrl) {
+		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !dara.IsNil(request.IdThreshold) {
+		query["IdThreshold"] = request.IdThreshold
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.Ocr) {
+		query["Ocr"] = request.Ocr
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !dara.IsNil(request.Spoof) {
+		query["Spoof"] = request.Spoof
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdOcrPictureBase64) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.IdOcrPictureFile) {
+		body["IdOcrPictureFile"] = request.IdOcrPictureFile
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DocOcrV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DocOcrV2Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Console Export Records
 //
 // @param request - DownloadVerifyRecordIntlRequest
@@ -1445,6 +1535,108 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 
 // Summary:
 //
+// ekyc纯服务端接口V2
+//
+// @param request - EkycVerifyV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EkycVerifyV2Response
+func (client *Client) EkycVerifyV2WithContext(ctx context.Context, request *EkycVerifyV2Request, runtime *dara.RuntimeOptions) (_result *EkycVerifyV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Authorize) {
+		query["Authorize"] = request.Authorize
+	}
+
+	if !dara.IsNil(request.Crop) {
+		query["Crop"] = request.Crop
+	}
+
+	if !dara.IsNil(request.DocName) {
+		query["DocName"] = request.DocName
+	}
+
+	if !dara.IsNil(request.DocNo) {
+		query["DocNo"] = request.DocNo
+	}
+
+	if !dara.IsNil(request.DocType) {
+		query["DocType"] = request.DocType
+	}
+
+	if !dara.IsNil(request.FacePictureUrl) {
+		query["FacePictureUrl"] = request.FacePictureUrl
+	}
+
+	if !dara.IsNil(request.IdOcrPictureUrl) {
+		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !dara.IsNil(request.IdThreshold) {
+		query["IdThreshold"] = request.IdThreshold
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.MerchantUserId) {
+		query["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FacePictureBase64) {
+		body["FacePictureBase64"] = request.FacePictureBase64
+	}
+
+	if !dara.IsNil(request.FacePictureFile) {
+		body["FacePictureFile"] = request.FacePictureFile
+	}
+
+	if !dara.IsNil(request.IdOcrPictureBase64) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
+	if !dara.IsNil(request.IdOcrPictureFile) {
+		body["IdOcrPictureFile"] = request.IdOcrPictureFile
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EkycVerifyV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EkycVerifyV2Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // This topic describes how to integrate FaceCompare using only the server-side API.
 //
 // @param request - FaceCompareRequest
@@ -1501,6 +1693,80 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 		BodyType:    dara.String("json"),
 	}
 	_result = &FaceCompareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸比对V2
+//
+// @param request - FaceCompareV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FaceCompareV2Response
+func (client *Client) FaceCompareV2WithContext(ctx context.Context, request *FaceCompareV2Request, runtime *dara.RuntimeOptions) (_result *FaceCompareV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FacePictureQualityCheck) {
+		query["FacePictureQualityCheck"] = request.FacePictureQualityCheck
+	}
+
+	if !dara.IsNil(request.MerchantBizId) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !dara.IsNil(request.SourceFacePictureUrl) {
+		query["SourceFacePictureUrl"] = request.SourceFacePictureUrl
+	}
+
+	if !dara.IsNil(request.TargetFacePictureUrl) {
+		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SourceFacePicture) {
+		body["SourceFacePicture"] = request.SourceFacePicture
+	}
+
+	if !dara.IsNil(request.SourceFacePictureFile) {
+		body["SourceFacePictureFile"] = request.SourceFacePictureFile
+	}
+
+	if !dara.IsNil(request.TargetFacePicture) {
+		body["TargetFacePicture"] = request.TargetFacePicture
+	}
+
+	if !dara.IsNil(request.TargetFacePictureFile) {
+		body["TargetFacePictureFile"] = request.TargetFacePictureFile
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FaceCompareV2"),
+		Version:     dara.String("2022-08-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FaceCompareV2Response{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
