@@ -801,6 +801,80 @@ func (client *Client) CreateCloudResource() (_result *CreateCloudResourceRespons
 
 // Summary:
 //
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDatasetWithOptions(workspace *string, request *CreateDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetName) {
+		body["datasetName"] = request.DatasetName
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Schema) {
+		body["schema"] = request.Schema
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataset"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/dataset"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
+func (client *Client) CreateDataset(workspace *string, request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CreateDatasetWithOptions(workspace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据投递任务
 //
 // @param request - CreateDeliveryTaskRequest
@@ -2269,6 +2343,56 @@ func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceRespons
 
 // Summary:
 //
+// 删除数据集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDatasetWithOptions(workspace *string, datasetName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataset"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集
+//
+// @return DeleteDatasetResponse
+func (client *Client) DeleteDataset(workspace *string, datasetName *string) (_result *DeleteDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.DeleteDatasetWithOptions(workspace, datasetName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除数据投递任务
 //
 // @param headers - map
@@ -2829,6 +2953,56 @@ func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *D
 
 // Summary:
 //
+// 删除 Prometheus 虚拟实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePrometheusVirtualInstanceResponse
+func (client *Client) DeletePrometheusVirtualInstanceWithOptions(prometheusInstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePrometheusVirtualInstance"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/virtual-instances/" + dara.PercentEncode(dara.StringValue(prometheusInstanceId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePrometheusVirtualInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除 Prometheus 虚拟实例
+//
+// @return DeletePrometheusVirtualInstanceResponse
+func (client *Client) DeletePrometheusVirtualInstance(prometheusInstanceId *string) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePrometheusVirtualInstanceResponse{}
+	_body, _err := client.DeletePrometheusVirtualInstanceWithOptions(prometheusInstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Service
 //
 // @param headers - map
@@ -3242,6 +3416,76 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行查询语句
+//
+// @param request - ExecuteQueryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteQueryResponse
+func (client *Client) ExecuteQueryWithOptions(workspace *string, datasetName *string, request *ExecuteQueryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExecuteQueryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteQuery"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName)) + "/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行查询语句
+//
+// @param request - ExecuteQueryRequest
+//
+// @return ExecuteQueryResponse
+func (client *Client) ExecuteQuery(workspace *string, datasetName *string, request *ExecuteQueryRequest) (_result *ExecuteQueryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteQueryResponse{}
+	_body, _err := client.ExecuteQueryWithOptions(workspace, datasetName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3804,6 +4048,56 @@ func (client *Client) GetCmsService(request *GetCmsServiceRequest) (_result *Get
 	headers := make(map[string]*string)
 	_result = &GetCmsServiceResponse{}
 	_body, _err := client.GetCmsServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResponse
+func (client *Client) GetDatasetWithOptions(workspace *string, datasetName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataset"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据集
+//
+// @return GetDatasetResponse
+func (client *Client) GetDataset(workspace *string, datasetName *string) (_result *GetDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatasetResponse{}
+	_body, _err := client.GetDatasetWithOptions(workspace, datasetName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5645,6 +5939,80 @@ func (client *Client) ListBizTraces(request *ListBizTracesRequest) (_result *Lis
 	headers := make(map[string]*string)
 	_result = &ListBizTracesResponse{}
 	_body, _err := client.ListBizTracesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasetsWithOptions(workspace *string, request *ListDatasetsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetName) {
+		query["datasetName"] = request.DatasetName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDatasets"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/dataset"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @return ListDatasetsResponse
+func (client *Client) ListDatasets(workspace *string, request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.ListDatasetsWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8189,6 +8557,72 @@ func (client *Client) UpdateBizTrace(bizTraceId *string, request *UpdateBizTrace
 	headers := make(map[string]*string)
 	_result = &UpdateBizTraceResponse{}
 	_body, _err := client.UpdateBizTraceWithOptions(bizTraceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集
+//
+// @param request - UpdateDatasetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDatasetWithOptions(workspace *string, datasetName *string, request *UpdateDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataset"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspace/" + dara.PercentEncode(dara.StringValue(workspace)) + "/dataset/" + dara.PercentEncode(dara.StringValue(datasetName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据集
+//
+// @param request - UpdateDatasetRequest
+//
+// @return UpdateDatasetResponse
+func (client *Client) UpdateDataset(workspace *string, datasetName *string, request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.UpdateDatasetWithOptions(workspace, datasetName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
