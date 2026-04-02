@@ -477,6 +477,7 @@ func (s *CreateEndpointGroupRequest) Validate() error {
 }
 
 type CreateEndpointGroupRequestEndpointConfigurations struct {
+	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	// Specifies whether to automatically preserve client IP addresses. Valid values:
 	//
 	// 	- **true**
@@ -519,6 +520,10 @@ type CreateEndpointGroupRequestEndpointConfigurations struct {
 	//
 	// 120.1.XX.XX
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// BAILIAN
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	// The private IP address of the ENI.
 	//
 	// >  This parameter is available only when you set the endpoint type to **ENI**. If you leave this parameter empty, the primary private IP address of the ENI is used.
@@ -599,6 +604,10 @@ func (s CreateEndpointGroupRequestEndpointConfigurations) GoString() string {
 	return s.String()
 }
 
+func (s *CreateEndpointGroupRequestEndpointConfigurations) GetApiKeys() []*string {
+	return s.ApiKeys
+}
+
 func (s *CreateEndpointGroupRequestEndpointConfigurations) GetEnableClientIPPreservation() *bool {
 	return s.EnableClientIPPreservation
 }
@@ -609,6 +618,10 @@ func (s *CreateEndpointGroupRequestEndpointConfigurations) GetEnableProxyProtoco
 
 func (s *CreateEndpointGroupRequestEndpointConfigurations) GetEndpoint() *string {
 	return s.Endpoint
+}
+
+func (s *CreateEndpointGroupRequestEndpointConfigurations) GetProvider() *string {
+	return s.Provider
 }
 
 func (s *CreateEndpointGroupRequestEndpointConfigurations) GetSubAddress() *string {
@@ -631,6 +644,11 @@ func (s *CreateEndpointGroupRequestEndpointConfigurations) GetWeight() *int32 {
 	return s.Weight
 }
 
+func (s *CreateEndpointGroupRequestEndpointConfigurations) SetApiKeys(v []*string) *CreateEndpointGroupRequestEndpointConfigurations {
+	s.ApiKeys = v
+	return s
+}
+
 func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEnableClientIPPreservation(v bool) *CreateEndpointGroupRequestEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
 	return s
@@ -643,6 +661,11 @@ func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEnableProxyProtoco
 
 func (s *CreateEndpointGroupRequestEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupRequestEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEndpointGroupRequestEndpointConfigurations) SetProvider(v string) *CreateEndpointGroupRequestEndpointConfigurations {
+	s.Provider = &v
 	return s
 }
 

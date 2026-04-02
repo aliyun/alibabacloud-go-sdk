@@ -460,6 +460,7 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurations) Validate() erro
 }
 
 type UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
+	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	// Specifies whether to automatically preserve client IP addresses. Valid values:
 	//
 	// 	- **true**
@@ -494,6 +495,10 @@ type UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguration
 	//
 	// 47.0.XX.XX
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// BAILIAN
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	// The private IP address of the ENI.
 	//
 	// >  If you set the endpoint type to ENI, you can specify this parameter.
@@ -574,6 +579,10 @@ func (s UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurat
 	return s.String()
 }
 
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetApiKeys() []*string {
+	return s.ApiKeys
+}
+
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetEnableClientIPPreservation() *bool {
 	return s.EnableClientIPPreservation
 }
@@ -584,6 +593,10 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetEndpoint() *string {
 	return s.Endpoint
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetProvider() *string {
+	return s.Provider
 }
 
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetSubAddress() *string {
@@ -606,6 +619,11 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 	return s.Weight
 }
 
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetApiKeys(v []*string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.ApiKeys = v
+	return s
+}
+
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEnableClientIPPreservation(v bool) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
 	return s
@@ -618,6 +636,11 @@ func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 
 func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetProvider(v string) *UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Provider = &v
 	return s
 }
 

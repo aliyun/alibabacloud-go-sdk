@@ -52,6 +52,10 @@ type CreateEndpointGroupsRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The information about the endpoint groups.
+	//
+	// You can enter the information about up to 10 endpoint groups.
+	//
 	// This parameter is required.
 	EndpointGroupConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
 	// The ID of the listener.
@@ -150,26 +154,148 @@ func (s *CreateEndpointGroupsRequest) Validate() error {
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurations struct {
-	EndpointConfigurations   []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
-	EndpointGroupDescription *string                                                                         `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
-	EndpointGroupName        *string                                                                         `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	// The endpoints that are associated with the intelligent routing listener.
+	EndpointConfigurations []*CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations `json:"EndpointConfigurations,omitempty" xml:"EndpointConfigurations,omitempty" type:"Repeated"`
+	// The description of the endpoint group.
+	//
+	// The description must be up to 200 characters in length, and cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// group1
+	EndpointGroupDescription *string `json:"EndpointGroupDescription,omitempty" xml:"EndpointGroupDescription,omitempty"`
+	// The name of the endpoint group.
+	//
+	// The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// group1
+	EndpointGroupName *string `json:"EndpointGroupName,omitempty" xml:"EndpointGroupName,omitempty"`
+	// The ID of the region where the endpoint group is created.
+	//
+	// You can enter the IDs of up to 10 regions.
+	//
 	// This parameter is required.
-	EndpointGroupRegion        *string                                                                `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
-	EndpointGroupType          *string                                                                `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
-	EndpointIpVersion          *string                                                                `json:"EndpointIpVersion,omitempty" xml:"EndpointIpVersion,omitempty"`
-	EndpointProtocolVersion    *string                                                                `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
-	EndpointRequestProtocol    *string                                                                `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
-	HealthCheckEnabled         *bool                                                                  `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	HealthCheckHost            *string                                                                `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	HealthCheckIntervalSeconds *int64                                                                 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
-	HealthCheckPath            *string                                                                `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	HealthCheckPort            *int64                                                                 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	HealthCheckProtocol        *string                                                                `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	PortOverrides              []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
-	SystemTag                  []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag     `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
-	Tag                        []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag           `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	ThresholdCount             *int64                                                                 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
-	TrafficPercentage          *int64                                                                 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
+	//
+	// example:
+	//
+	// cn-hangzhou
+	EndpointGroupRegion *string `json:"EndpointGroupRegion,omitempty" xml:"EndpointGroupRegion,omitempty"`
+	// The type of the endpoint group associated with the intelligent routing listener. Valid values:
+	//
+	// 	- **default*	- (default)
+	//
+	// 	- **virtual**: a virtual endpoint group.
+	//
+	// You can specify up to 10 endpoint group types.
+	//
+	// example:
+	//
+	// default
+	EndpointGroupType *string `json:"EndpointGroupType,omitempty" xml:"EndpointGroupType,omitempty"`
+	EndpointIpVersion *string `json:"EndpointIpVersion,omitempty" xml:"EndpointIpVersion,omitempty"`
+	// The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values:
+	//
+	// 	- **HTTP1.1*	- (default)
+	//
+	// 	- **HTTP2**
+	//
+	// >  You can specify this parameter only if the EndpointRequestProtocol parameter is set to HTTPS.
+	//
+	// example:
+	//
+	// HTTP1.1
+	EndpointProtocolVersion *string `json:"EndpointProtocolVersion,omitempty" xml:"EndpointProtocolVersion,omitempty"`
+	// The backend service protocol. Valid values:
+	//
+	// 	- **HTTP**
+	//
+	// 	- **HTTPS**
+	//
+	// > 	- You can specify this parameter only if the listener that is associated with the endpoint group uses HTTP or HTTPS.
+	//
+	// >	- The backend service protocol of an HTTP listener must be HTTP.
+	//
+	// example:
+	//
+	// HTTP
+	EndpointRequestProtocol *string `json:"EndpointRequestProtocol,omitempty" xml:"EndpointRequestProtocol,omitempty"`
+	// Specifies whether to enable health checks for the endpoint group. Valid values:
+	//
+	// 	- **true**: enables the health check feature.
+	//
+	// 	- **false*	- (default): disables the health check feature.
+	//
+	// You can enable the health check feature for up to 10 endpoint groups.
+	//
+	// example:
+	//
+	// false
+	HealthCheckEnabled *bool   `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckHost    *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds.
+	//
+	// You can specify up to 10 health check intervals.
+	//
+	// example:
+	//
+	// 3
+	HealthCheckIntervalSeconds *int64 `json:"HealthCheckIntervalSeconds,omitempty" xml:"HealthCheckIntervalSeconds,omitempty"`
+	// The health check path.
+	//
+	// You can specify up to 10 health check paths.
+	//
+	// example:
+	//
+	// /healthcheck
+	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	// The port that you want to use for health checks. Valid values: **1*	- to **65535**.
+	//
+	// You can specify up to 10 ports for health checks.
+	//
+	// example:
+	//
+	// 20
+	HealthCheckPort *int64 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The protocol over which health check requests are sent. Valid values:
+	//
+	// 	- **tcp*	- or **TCP**
+	//
+	// 	- **http*	- or **HTTP**
+	//
+	// 	- **https*	- or **HTTPS**
+	//
+	// You can specify up to 10 health check protocols.
+	//
+	// example:
+	//
+	// tcp
+	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	// The port mappings.
+	PortOverrides []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	// This parameter is not in use. Ignore this parameter.
+	SystemTag []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
+	// The tags of the endpoint group.
+	Tag []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy. Valid values: **2*	- to **10**. Default value: **3**.
+	//
+	// You can specify up to 10 values (the number of consecutive health check successes or consecutive health check failures).
+	//
+	// example:
+	//
+	// 3
+	ThresholdCount *int64 `json:"ThresholdCount,omitempty" xml:"ThresholdCount,omitempty"`
+	// The traffic distribution ratio. If an intelligent routing listener is associated with multiple endpoint groups, you can configure this parameter to specify the ratio of traffic distributed to each endpoint group.
+	//
+	// Valid values: **1*	- to **100**. Default value: **100**.
+	//
+	// You can specify the traffic distribution ratios for up to 10 endpoint groups.
+	//
+	// example:
+	//
+	// 20
+	TrafficPercentage *int64 `json:"TrafficPercentage,omitempty" xml:"TrafficPercentage,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurations) String() string {
@@ -392,14 +518,123 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) Validate() erro
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations struct {
-	EnableClientIPPreservation *bool     `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
-	EnableProxyProtocol        *bool     `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
-	Endpoint                   *string   `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	SubAddress                 *string   `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
-	Type                       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	VSwitchIds                 []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId                      *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	Weight                     *int64    `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
+	// Specifies whether to automatically preserve client IP addresses. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// > 	- By default, client IP address preservation is disabled for an endpoint group of a UDP or TCP listener. You can configure this parameter based on your business requirements.
+	//
+	// > 	- By default, client IP address preservation is enabled for an endpoint group of an HTTP or HTTP listener. You can obtain client IP addresses by using the X-Forwarded-For header. You cannot disable the feature.
+	//
+	// > 	- EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
+	//
+	// > > For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+	//
+	// example:
+	//
+	// false
+	EnableClientIPPreservation *bool `json:"EnableClientIPPreservation,omitempty" xml:"EnableClientIPPreservation,omitempty"`
+	// Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// > 	- This parameter is available only to endpoint groups of TCP listeners.
+	//
+	// > 	- EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
+	//
+	// > >  For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+	//
+	// example:
+	//
+	// false
+	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
+	// The IP address or domain name of the endpoint that is associated with the intelligent routing listener.
+	//
+	// You can enter the IP addresses or domain names of up to 100 endpoints in an endpoint group that is associated with the intelligent routing listener.
+	//
+	// example:
+	//
+	// 47.0.XX.XX
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// BAILIAN
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The private IP address of the ENI.
+	//
+	// >  This parameter is available only when you set the endpoint type to **ENI**. If you leave this parameter empty, the primary private IP address of the ENI is used.
+	//
+	// example:
+	//
+	// 172.168.XX.XX
+	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
+	// The type of the endpoint that is associated with the intelligent routing listener. Valid values:
+	//
+	// 	- **Domain**: a custom domain name.
+	//
+	// 	- **Ip**: a custom IP address.
+	//
+	// 	- **IpTarget**: a custom private IP address.
+	//
+	// 	- **PublicIp**: a public IP address provided by Alibaba Cloud.
+	//
+	// 	- **ECS**: an Elastic Compute Service (ECS) instance.
+	//
+	// 	- **SLB**: a Server Load Balancer (SLB) instance.
+	//
+	// 	- **ALB**: an Application Load Balancer (ALB) instance.
+	//
+	// 	- **OSS**: an Object Storage Service (OSS) bucket.
+	//
+	// 	- **ENI**: an elastic network interface (ENI).
+	//
+	// 	- **NLB**: a Network Load Balancer (NLB) instance.
+	//
+	// You can specify up to 100 endpoint types in the endpoint group that is associated with the intelligent routing listener.
+	//
+	// > 	- If you set **Type*	- to **Standard**, you can configure the endpoint group and endpoint that are associated with the intelligent routing listener. In addition, this parameter is required.
+	//
+	// > 	- If you set this parameter to **ECS**, **ENI**, **SLB**, **ALB**, **NLB**, or **IpTarget*	- and the AliyunServiceRoleForGaVpcEndpoint service-linked role does not exist, the system automatically creates the role.
+	//
+	// > 	- If you set this parameter to **ALB*	- and the AliyunServiceRoleForGaAlb service-linked role does not exist, the system automatically creates the role.
+	//
+	// > 	- If you set this parameter to **OSS*	- and the AliyunServiceRoleForGaOss service-linked role does not exist, the system automatically creates the role.
+	//
+	// > 	- If you set this parameter to **NLB*	- and the AliyunServiceRoleForGaNlb service-linked role does not exist, the system automatically creates the role.
+	//
+	// >>  For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/178360.html).
+	//
+	// example:
+	//
+	// Ip
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IDs of vSwitches that are deployed in the VPC.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// You can specify one VPC ID for an endpoint group of an intelligent routing listener.
+	//
+	// >  This parameter is valid and required only if Type is set to **IpTarget**.
+	//
+	// example:
+	//
+	// vpc-2zekzii824szm3hps****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The weight of the endpoint.
+	//
+	// Valid values: **0*	- to **255**.
+	//
+	// >  If you set the weight of an endpoint to 0, GA stops distributing traffic to the endpoint. Proceed with caution.
+	//
+	// example:
+	//
+	// 20
+	Weight *int64 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) String() string {
@@ -408,6 +643,10 @@ func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurat
 
 func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetApiKeys() []*string {
+	return s.ApiKeys
 }
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetEnableClientIPPreservation() *bool {
@@ -420,6 +659,10 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetEndpoint() *string {
 	return s.Endpoint
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetProvider() *string {
+	return s.Provider
 }
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) GetSubAddress() *string {
@@ -442,6 +685,11 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 	return s.Weight
 }
 
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetApiKeys(v []*string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.ApiKeys = v
+	return s
+}
+
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEnableClientIPPreservation(v bool) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
 	return s
@@ -454,6 +702,11 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations) SetProvider(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Provider = &v
 	return s
 }
 
@@ -487,7 +740,25 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigura
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides struct {
+	// The endpoint port that is mapped to the listener port.
+	//
+	// example:
+	//
+	// 80
 	EndpointPort *int64 `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	// The listener port.
+	//
+	// Valid values: **1*	- to **65499**.
+	//
+	// > 	- You cannot configure port mappings for virtual endpoint groups of TCP listeners. If a virtual endpoint group already exists on the listener, you cannot configure port mappings for the default endpoint group. If port mappings are configured for the default endpoint group, you cannot add a virtual endpoint group.
+	//
+	// >	- If you configure port mappings for a listener, you cannot modify the listener protocol. You can only switch between HTTP and HTTPS.
+	//
+	// >	- Listener port: When you modify the listener port range, make sure that the port range includes the ports configured in port mappings. For example, if you set the listener port range to 80 to 82 and map the listener ports to endpoint ports 100 to 102, you cannot change the listener port range to 80 to 81.
+	//
+	// example:
+	//
+	// 443
 	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 }
 
@@ -522,8 +793,23 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Va
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is not in use. Ignore this parameter.
+	//
+	// example:
+	//
+	// system-tag-key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is not in use. Ignore this parameter.
+	//
+	// example:
+	//
+	// public
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// This parameter is not in use. Ignore this parameter.
+	//
+	// example:
+	//
+	// system-tag-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -567,7 +853,25 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) Valida
 }
 
 type CreateEndpointGroupsRequestEndpointGroupConfigurationsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the endpoint group. The tag key cannot be an empty string.
+	//
+	// The tag key must be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// You can enter up to 20 tag keys.
+	//
+	// example:
+	//
+	// tag-key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the endpoint group. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// You can enter up to 20 tag values.
+	//
+	// example:
+	//
+	// tag-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

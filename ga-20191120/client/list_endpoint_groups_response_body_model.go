@@ -605,6 +605,7 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroups) Validate() error {
 }
 
 type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
+	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	// Indicates whether the client IP address preservation feature is enabled. Valid values:
 	//
 	// 	- **true**
@@ -649,6 +650,10 @@ type ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations struct {
 	//
 	// tcp
 	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	// example:
+	//
+	// BAILIAN
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	// The private IP address of the ENI.
 	//
 	// example:
@@ -705,6 +710,10 @@ func (s ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GoSt
 	return s.String()
 }
 
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GetApiKeys() []*string {
+	return s.ApiKeys
+}
+
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GetEnableClientIPPreservation() *bool {
 	return s.EnableClientIPPreservation
 }
@@ -729,6 +738,10 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Get
 	return s.ProbeProtocol
 }
 
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GetProvider() *string {
+	return s.Provider
+}
+
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GetSubAddress() *string {
 	return s.SubAddress
 }
@@ -747,6 +760,11 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Get
 
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetApiKeys(v []*string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.ApiKeys = v
+	return s
 }
 
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetEnableClientIPPreservation(v bool) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
@@ -776,6 +794,11 @@ func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) Set
 
 func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetProbeProtocol(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
 	s.ProbeProtocol = &v
+	return s
+}
+
+func (s *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations) SetProvider(v string) *ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations {
+	s.Provider = &v
 	return s
 }
 

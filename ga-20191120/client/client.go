@@ -2470,31 +2470,7 @@ func (client *Client) CreateBasicIpSet(request *CreateBasicIpSetRequest) (_resul
 
 // Summary:
 //
-// After you configure a custom routing listener for a Global Accelerator (GA) instance, the GA instance generates a port mapping table based on the listener port range, mapping information (protocols and port ranges) of the associated endpoint groups, and IP addresses of endpoints (vSwitches), and forwards client requests to the specified IP addresses and ports in the vSwitches.
-//
-// You can call this operation to create mappings for an endpoint group of a custom routing listener. Take note of the following items:
-//
-//   - **CreateCustomRoutingEndpointGroupDestinations*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the task.
-//
-//   - If the endpoint group is in the **updating*	- state, it indicates that the mappings are being created for the endpoint group. In this case, you can perform only query operations.
-//
-//   - If the endpoint group is in the **active*	- state, it indicates that the mappings are created for the endpoint group.
-//
-//   - You cannot call the **CreateCustomRoutingEndpointGroupDestinations*	- operation again on the same GA instance before the previous task is completed.
-//
-// ### Prerequisites
-//
-// Make sure that the following prerequisites are met before you call this operation:
-//
-//   - A standard GA instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
-//
-//   - A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
-//
-//   - An application is deployed as an endpoint to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
-//
-//   - The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. The custom routing listener feature is in invitational preview. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex). For information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
-//
-//   - An endpoint group is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
+// Creates mappings for an endpoint group that is associated with a custom routing listener.
 //
 // Description:
 //
@@ -2558,31 +2534,7 @@ func (client *Client) CreateCustomRoutingEndpointGroupDestinationsWithOptions(re
 
 // Summary:
 //
-// After you configure a custom routing listener for a Global Accelerator (GA) instance, the GA instance generates a port mapping table based on the listener port range, mapping information (protocols and port ranges) of the associated endpoint groups, and IP addresses of endpoints (vSwitches), and forwards client requests to the specified IP addresses and ports in the vSwitches.
-//
-// You can call this operation to create mappings for an endpoint group of a custom routing listener. Take note of the following items:
-//
-//   - **CreateCustomRoutingEndpointGroupDestinations*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeCustomRoutingEndpointGroup](https://help.aliyun.com/document_detail/449373.html) operation to query the status of the task.
-//
-//   - If the endpoint group is in the **updating*	- state, it indicates that the mappings are being created for the endpoint group. In this case, you can perform only query operations.
-//
-//   - If the endpoint group is in the **active*	- state, it indicates that the mappings are created for the endpoint group.
-//
-//   - You cannot call the **CreateCustomRoutingEndpointGroupDestinations*	- operation again on the same GA instance before the previous task is completed.
-//
-// ### Prerequisites
-//
-// Make sure that the following prerequisites are met before you call this operation:
-//
-//   - A standard GA instance is created. For more information, see [CreateAccelerator](https://help.aliyun.com/document_detail/206786.html).
-//
-//   - A bandwidth plan is associated with the standard GA instance. For more information, see [BandwidthPackageAddAccelerator](https://help.aliyun.com/document_detail/153239.html).
-//
-//   - An application is deployed as an endpoint to receive requests that are forwarded from GA. You can specify only vSwitches as endpoints for custom routing listeners.
-//
-//   - The permissions to use custom routing listeners are acquired and a custom routing listener is created for the GA instance. The custom routing listener feature is in invitational preview. To use the feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex). For information about how to create a custom routing listener, see [CreateListener](https://help.aliyun.com/document_detail/153253.html).
-//
-//   - An endpoint group is created for the custom routing listener. For more information, see [CreateCustomRoutingEndpointGroups](https://help.aliyun.com/document_detail/449363.html).
+// Creates mappings for an endpoint group that is associated with a custom routing listener.
 //
 // Description:
 //
@@ -11400,7 +11352,7 @@ func (client *Client) OpenAcceleratorService(request *OpenAcceleratorServiceRequ
 
 // Summary:
 //
-// Inquire about the approval status of cross-border permissions for an Alibaba Cloud account (main account).
+// Queries the approval status of cross-border permissions for an Alibaba Cloud account (main account).
 //
 // @param request - QueryCrossBorderApprovalStatusRequest
 //
@@ -11444,7 +11396,7 @@ func (client *Client) QueryCrossBorderApprovalStatusWithOptions(request *QueryCr
 
 // Summary:
 //
-// Inquire about the approval status of cross-border permissions for an Alibaba Cloud account (main account).
+// Queries the approval status of cross-border permissions for an Alibaba Cloud account (main account).
 //
 // @param request - QueryCrossBorderApprovalStatusRequest
 //

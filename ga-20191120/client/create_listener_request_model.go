@@ -1228,6 +1228,7 @@ func (s *CreateListenerRequestEndpointGroupConfigurations) Validate() error {
 }
 
 type CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations struct {
+	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	// Specifies whether to automatically preserve client IP addresses. Valid values:
 	//
 	// 	- **true**
@@ -1264,6 +1265,10 @@ type CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations stru
 	//
 	// 47.0.XX.XX
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// BAILIAN
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	// The private IP address of the ENI.
 	//
 	// >  This parameter is available only when you set the endpoint type to **ENI**. If you leave this parameter empty, the primary private IP address of the ENI is used.
@@ -1348,6 +1353,10 @@ func (s CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) 
 	return s.String()
 }
 
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) GetApiKeys() []*string {
+	return s.ApiKeys
+}
+
 func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) GetEnableClientIPPreservation() *bool {
 	return s.EnableClientIPPreservation
 }
@@ -1358,6 +1367,10 @@ func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations)
 
 func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) GetEndpoint() *string {
 	return s.Endpoint
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) GetProvider() *string {
+	return s.Provider
 }
 
 func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) GetSubAddress() *string {
@@ -1380,6 +1393,11 @@ func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations)
 	return s.Weight
 }
 
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetApiKeys(v []*string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.ApiKeys = v
+	return s
+}
+
 func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetEnableClientIPPreservation(v bool) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.EnableClientIPPreservation = &v
 	return s
@@ -1392,6 +1410,11 @@ func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations)
 
 func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetProvider(v string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.Provider = &v
 	return s
 }
 

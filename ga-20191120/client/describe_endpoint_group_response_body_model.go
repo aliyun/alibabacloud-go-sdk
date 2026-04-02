@@ -696,6 +696,7 @@ func (s *DescribeEndpointGroupResponseBody) Validate() error {
 }
 
 type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
+	ApiKeys []*string `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Repeated"`
 	// Indicates whether the client IP address preservation feature is enabled. Valid values:
 	//
 	// 	- **true**
@@ -734,6 +735,10 @@ type DescribeEndpointGroupResponseBodyEndpointConfigurations struct {
 	//
 	// tcp
 	ProbeProtocol *string `json:"ProbeProtocol,omitempty" xml:"ProbeProtocol,omitempty"`
+	// example:
+	//
+	// BAILIAN
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	// The private IP address of the ENI.
 	//
 	// example:
@@ -790,6 +795,10 @@ func (s DescribeEndpointGroupResponseBodyEndpointConfigurations) GoString() stri
 	return s.String()
 }
 
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetApiKeys() []*string {
+	return s.ApiKeys
+}
+
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetEnableClientIPPreservation() *bool {
 	return s.EnableClientIPPreservation
 }
@@ -810,6 +819,10 @@ func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetProbeProtoc
 	return s.ProbeProtocol
 }
 
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetProvider() *string {
+	return s.Provider
+}
+
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetSubAddress() *string {
 	return s.SubAddress
 }
@@ -828,6 +841,11 @@ func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetVpcId() *st
 
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetApiKeys(v []*string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
+	s.ApiKeys = v
+	return s
 }
 
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetEnableClientIPPreservation(v bool) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
@@ -852,6 +870,11 @@ func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProbePort(v
 
 func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProbeProtocol(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
 	s.ProbeProtocol = &v
+	return s
+}
+
+func (s *DescribeEndpointGroupResponseBodyEndpointConfigurations) SetProvider(v string) *DescribeEndpointGroupResponseBodyEndpointConfigurations {
+	s.Provider = &v
 	return s
 }
 
