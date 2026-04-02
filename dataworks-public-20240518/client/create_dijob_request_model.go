@@ -345,7 +345,8 @@ type CreateDIJobRequestDestinationDataSourceSettings struct {
 	// example:
 	//
 	// holo_datasource_1
-	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceName       *string                                                              `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceProperties *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties `json:"DataSourceProperties,omitempty" xml:"DataSourceProperties,omitempty" type:"Struct"`
 }
 
 func (s CreateDIJobRequestDestinationDataSourceSettings) String() string {
@@ -360,12 +361,54 @@ func (s *CreateDIJobRequestDestinationDataSourceSettings) GetDataSourceName() *s
 	return s.DataSourceName
 }
 
+func (s *CreateDIJobRequestDestinationDataSourceSettings) GetDataSourceProperties() *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties {
+	return s.DataSourceProperties
+}
+
 func (s *CreateDIJobRequestDestinationDataSourceSettings) SetDataSourceName(v string) *CreateDIJobRequestDestinationDataSourceSettings {
 	s.DataSourceName = &v
 	return s
 }
 
+func (s *CreateDIJobRequestDestinationDataSourceSettings) SetDataSourceProperties(v *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties) *CreateDIJobRequestDestinationDataSourceSettings {
+	s.DataSourceProperties = v
+	return s
+}
+
 func (s *CreateDIJobRequestDestinationDataSourceSettings) Validate() error {
+	if s.DataSourceProperties != nil {
+		if err := s.DataSourceProperties.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties struct {
+	// example:
+	//
+	// {     "instanceType": "serverless",     "username": "zmtest",     "password": "xxxxxxx",     "regionId": "cn-beijing",     "appName": "es-servexxxx" }
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+}
+
+func (s CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties) GetConnectionProperties() *string {
+	return s.ConnectionProperties
+}
+
+func (s *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties) SetConnectionProperties(v string) *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties {
+	s.ConnectionProperties = &v
+	return s
+}
+
+func (s *CreateDIJobRequestDestinationDataSourceSettingsDataSourceProperties) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -962,6 +1005,10 @@ func (s *CreateDIJobRequestSourceDataSourceSettings) Validate() error {
 }
 
 type CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties struct {
+	// example:
+	//
+	// {     "instanceId": "rm-2ze09gn3x6xxx",     "password": "xxxx",     "database": "agent",     "username": "zmtest"     "regionId": "cn-beijing" }
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
 	// The database encoding.
 	//
 	// example:
@@ -984,12 +1031,21 @@ func (s CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) GoString
 	return s.String()
 }
 
+func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) GetConnectionProperties() *string {
+	return s.ConnectionProperties
+}
+
 func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) GetEncoding() *string {
 	return s.Encoding
 }
 
 func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) GetTimezone() *string {
 	return s.Timezone
+}
+
+func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) SetConnectionProperties(v string) *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties {
+	s.ConnectionProperties = &v
+	return s
 }
 
 func (s *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties) SetEncoding(v string) *CreateDIJobRequestSourceDataSourceSettingsDataSourceProperties {
