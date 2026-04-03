@@ -170,7 +170,8 @@ type ChatWithKnowledgeBaseRequestKnowledgeParams struct {
 	// example:
 	//
 	// 1.0001
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                                                `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// Knowledge base.
 	//
 	// This parameter is required.
@@ -203,6 +204,10 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) GetRerankFactor() *float64
 	return s.RerankFactor
 }
 
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) GetRerankModel() *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel {
+	return s.RerankModel
+}
+
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) GetSourceCollection() []*ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection {
 	return s.SourceCollection
 }
@@ -226,6 +231,11 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) SetRerankFactor(v float64)
 	return s
 }
 
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) SetRerankModel(v *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) *ChatWithKnowledgeBaseRequestKnowledgeParams {
+	s.RerankModel = v
+	return s
+}
+
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) SetSourceCollection(v []*ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollection) *ChatWithKnowledgeBaseRequestKnowledgeParams {
 	s.SourceCollection = v
 	return s
@@ -239,6 +249,11 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) SetTopK(v int64) *ChatWith
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParams) Validate() error {
 	if s.MergeMethodArgs != nil {
 		if err := s.MergeMethodArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -354,6 +369,47 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight) SetWe
 }
 
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsMergeMethodArgsWeight) Validate() error {
+	return dara.Validate(s)
+}
+
+type ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel struct {
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	// example:
+	//
+	// qwen3-rerank
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) SetInstruct(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) SetName(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsRerankModel) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -531,7 +587,8 @@ type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams stru
 	// example:
 	//
 	// 1.5
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                                                                           `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// The number of top results.
 	//
 	// example:
@@ -586,6 +643,10 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams)
 	return s.RerankFactor
 }
 
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams) GetRerankModel() *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	return s.RerankModel
+}
+
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams) GetTopK() *int64 {
 	return s.TopK
 }
@@ -634,6 +695,11 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams)
 	return s
 }
 
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams) SetRerankModel(v *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams {
+	s.RerankModel = v
+	return s
+}
+
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams) SetTopK(v int64) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams {
 	s.TopK = &v
 	return s
@@ -647,6 +713,11 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams)
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParams) Validate() error {
 	if s.GraphSearchArgs != nil {
 		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -680,6 +751,47 @@ func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsG
 }
 
 func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs) Validate() error {
+	return dara.Validate(s)
+}
+
+type ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel struct {
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	// example:
+	//
+	// qwen3-rerank
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetInstruct(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetName(v string) *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) Validate() error {
 	return dara.Validate(s)
 }
 

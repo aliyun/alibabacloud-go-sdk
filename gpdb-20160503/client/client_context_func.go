@@ -1115,7 +1115,15 @@ func (client *Client) CreateCollectionWithContext(ctx context.Context, tmpReq *C
 		request.SparseVectorIndexConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SparseVectorIndexConfig, dara.String("SparseVectorIndexConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VectorIndexConfig) {
+		request.VectorIndexConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VectorIndexConfig, dara.String("VectorIndexConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Algorithm) {
+		query["Algorithm"] = request.Algorithm
+	}
+
 	if !dara.IsNil(request.Collection) {
 		query["Collection"] = request.Collection
 	}
@@ -1190,6 +1198,10 @@ func (client *Client) CreateCollectionWithContext(ctx context.Context, tmpReq *C
 
 	if !dara.IsNil(request.SupportSparse) {
 		query["SupportSparse"] = request.SupportSparse
+	}
+
+	if !dara.IsNil(request.VectorIndexConfigShrink) {
+		query["VectorIndexConfig"] = request.VectorIndexConfigShrink
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1747,7 +1759,15 @@ func (client *Client) CreateDocumentCollectionWithContext(ctx context.Context, t
 		request.SparseVectorIndexConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SparseVectorIndexConfig, dara.String("SparseVectorIndexConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VectorIndexConfig) {
+		request.VectorIndexConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VectorIndexConfig, dara.String("VectorIndexConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Algorithm) {
+		query["Algorithm"] = request.Algorithm
+	}
+
 	if !dara.IsNil(request.Collection) {
 		query["Collection"] = request.Collection
 	}
@@ -1850,6 +1870,10 @@ func (client *Client) CreateDocumentCollectionWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.SupportSparse) {
 		query["SupportSparse"] = request.SupportSparse
+	}
+
+	if !dara.IsNil(request.VectorIndexConfigShrink) {
+		query["VectorIndexConfig"] = request.VectorIndexConfigShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3058,6 +3082,10 @@ func (client *Client) CreateVectorIndexWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Algorithm) {
+		query["Algorithm"] = request.Algorithm
+	}
+
 	if !dara.IsNil(request.Collection) {
 		query["Collection"] = request.Collection
 	}
@@ -3098,12 +3126,20 @@ func (client *Client) CreateVectorIndexWithContext(ctx context.Context, request 
 		query["Namespace"] = request.Namespace
 	}
 
+	if !dara.IsNil(request.Nlist) {
+		query["Nlist"] = request.Nlist
+	}
+
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
 	}
 
 	if !dara.IsNil(request.PqEnable) {
 		query["PqEnable"] = request.PqEnable
+	}
+
+	if !dara.IsNil(request.RabitqBits) {
+		query["RabitqBits"] = request.RabitqBits
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -3339,6 +3375,76 @@ func (client *Client) DeleteBackupWithContext(ctx context.Context, request *Dele
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteBackupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文本块
+//
+// @param tmpReq - DeleteChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteChunksResponse
+func (client *Client) DeleteChunksWithContext(ctx context.Context, tmpReq *DeleteChunksRequest, runtime *dara.RuntimeOptions) (_result *DeleteChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteChunksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChunkIds) {
+		request.ChunkIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChunkIds, dara.String("ChunkIds"), dara.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChunkIdsShrink) {
+		query["ChunkIds"] = request.ChunkIdsShrink
+	}
+
+	if !dara.IsNil(request.Collection) {
+		query["Collection"] = request.Collection
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NamespacePassword) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteChunks"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteChunksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10781,6 +10887,86 @@ func (client *Client) ListBackupJobsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// 获取文本块详情
+//
+// @param request - ListChunksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChunksResponse
+func (client *Client) ListChunksWithContext(ctx context.Context, request *ListChunksRequest, runtime *dara.RuntimeOptions) (_result *ListChunksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Collection) {
+		query["Collection"] = request.Collection
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.IncludeVector) {
+		query["IncludeVector"] = request.IncludeVector
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NamespacePassword) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListChunks"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListChunksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of vector collections.
 //
 // @param request - ListCollectionsRequest
@@ -14317,6 +14503,10 @@ func (client *Client) QueryContentWithContext(ctx context.Context, tmpReq *Query
 		request.RecallWindowShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecallWindow, dara.String("RecallWindow"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RerankModel) {
+		request.RerankModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RerankModel, dara.String("RerankModel"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Collection) {
 		query["Collection"] = request.Collection
@@ -14402,6 +14592,10 @@ func (client *Client) QueryContentWithContext(ctx context.Context, tmpReq *Query
 		query["RerankFactor"] = request.RerankFactor
 	}
 
+	if !dara.IsNil(request.RerankModelShrink) {
+		query["RerankModel"] = request.RerankModelShrink
+	}
+
 	if !dara.IsNil(request.TopK) {
 		query["TopK"] = request.TopK
 	}
@@ -14465,6 +14659,10 @@ func (client *Client) QueryKnowledgeBasesContentWithContext(ctx context.Context,
 		request.MergeMethodArgsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MergeMethodArgs, dara.String("MergeMethodArgs"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RerankModel) {
+		request.RerankModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RerankModel, dara.String("RerankModel"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SourceCollection) {
 		request.SourceCollectionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceCollection, dara.String("SourceCollection"), dara.String("json"))
 	}
@@ -14496,6 +14694,10 @@ func (client *Client) QueryKnowledgeBasesContentWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.RerankFactor) {
 		query["RerankFactor"] = request.RerankFactor
+	}
+
+	if !dara.IsNil(request.RerankModelShrink) {
+		query["RerankModel"] = request.RerankModelShrink
 	}
 
 	if !dara.IsNil(request.SourceCollectionShrink) {
@@ -14667,6 +14869,10 @@ func (client *Client) RerankWithContext(ctx context.Context, tmpReq *RerankReque
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DocumentsShrink) {
 		body["Documents"] = request.DocumentsShrink
+	}
+
+	if !dara.IsNil(request.Instruct) {
+		body["Instruct"] = request.Instruct
 	}
 
 	if !dara.IsNil(request.MaxChunksPerDoc) {

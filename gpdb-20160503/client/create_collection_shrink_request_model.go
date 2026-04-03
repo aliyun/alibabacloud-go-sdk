@@ -9,6 +9,8 @@ type iCreateCollectionShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlgorithm(v string) *CreateCollectionShrinkRequest
+	GetAlgorithm() *string
 	SetCollection(v string) *CreateCollectionShrinkRequest
 	GetCollection() *string
 	SetDBInstanceId(v string) *CreateCollectionShrinkRequest
@@ -47,11 +49,14 @@ type iCreateCollectionShrinkRequest interface {
 	GetSparseVectorIndexConfigShrink() *string
 	SetSupportSparse(v bool) *CreateCollectionShrinkRequest
 	GetSupportSparse() *bool
+	SetVectorIndexConfigShrink(v string) *CreateCollectionShrinkRequest
+	GetVectorIndexConfigShrink() *string
 	SetWorkspaceId(v string) *CreateCollectionShrinkRequest
 	GetWorkspaceId() *string
 }
 
 type CreateCollectionShrinkRequest struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The name of the collection that you want to create.
 	//
 	// >  The name must comply with the naming conventions of PostgreSQL objects.
@@ -202,6 +207,7 @@ type CreateCollectionShrinkRequest struct {
 	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SparseVectorIndexConfigShrink *string `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty"`
 	SupportSparse                 *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	VectorIndexConfigShrink       *string `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty"`
 	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
 	//
 	// example:
@@ -216,6 +222,10 @@ func (s CreateCollectionShrinkRequest) String() string {
 
 func (s CreateCollectionShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCollectionShrinkRequest) GetAlgorithm() *string {
+	return s.Algorithm
 }
 
 func (s *CreateCollectionShrinkRequest) GetCollection() *string {
@@ -294,8 +304,17 @@ func (s *CreateCollectionShrinkRequest) GetSupportSparse() *bool {
 	return s.SupportSparse
 }
 
+func (s *CreateCollectionShrinkRequest) GetVectorIndexConfigShrink() *string {
+	return s.VectorIndexConfigShrink
+}
+
 func (s *CreateCollectionShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateCollectionShrinkRequest) SetAlgorithm(v string) *CreateCollectionShrinkRequest {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateCollectionShrinkRequest) SetCollection(v string) *CreateCollectionShrinkRequest {
@@ -390,6 +409,11 @@ func (s *CreateCollectionShrinkRequest) SetSparseVectorIndexConfigShrink(v strin
 
 func (s *CreateCollectionShrinkRequest) SetSupportSparse(v bool) *CreateCollectionShrinkRequest {
 	s.SupportSparse = &v
+	return s
+}
+
+func (s *CreateCollectionShrinkRequest) SetVectorIndexConfigShrink(v string) *CreateCollectionShrinkRequest {
+	s.VectorIndexConfigShrink = &v
 	return s
 }
 

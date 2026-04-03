@@ -9,6 +9,8 @@ type iCreateCollectionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlgorithm(v string) *CreateCollectionRequest
+	GetAlgorithm() *string
 	SetCollection(v string) *CreateCollectionRequest
 	GetCollection() *string
 	SetDBInstanceId(v string) *CreateCollectionRequest
@@ -47,11 +49,14 @@ type iCreateCollectionRequest interface {
 	GetSparseVectorIndexConfig() *CreateCollectionRequestSparseVectorIndexConfig
 	SetSupportSparse(v bool) *CreateCollectionRequest
 	GetSupportSparse() *bool
+	SetVectorIndexConfig(v *CreateCollectionRequestVectorIndexConfig) *CreateCollectionRequest
+	GetVectorIndexConfig() *CreateCollectionRequestVectorIndexConfig
 	SetWorkspaceId(v string) *CreateCollectionRequest
 	GetWorkspaceId() *string
 }
 
 type CreateCollectionRequest struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The name of the collection that you want to create.
 	//
 	// >  The name must comply with the naming conventions of PostgreSQL objects.
@@ -202,6 +207,7 @@ type CreateCollectionRequest struct {
 	RegionId                *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SparseVectorIndexConfig *CreateCollectionRequestSparseVectorIndexConfig `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty" type:"Struct"`
 	SupportSparse           *bool                                           `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	VectorIndexConfig       *CreateCollectionRequestVectorIndexConfig       `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty" type:"Struct"`
 	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
 	//
 	// example:
@@ -216,6 +222,10 @@ func (s CreateCollectionRequest) String() string {
 
 func (s CreateCollectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCollectionRequest) GetAlgorithm() *string {
+	return s.Algorithm
 }
 
 func (s *CreateCollectionRequest) GetCollection() *string {
@@ -294,8 +304,17 @@ func (s *CreateCollectionRequest) GetSupportSparse() *bool {
 	return s.SupportSparse
 }
 
+func (s *CreateCollectionRequest) GetVectorIndexConfig() *CreateCollectionRequestVectorIndexConfig {
+	return s.VectorIndexConfig
+}
+
 func (s *CreateCollectionRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateCollectionRequest) SetAlgorithm(v string) *CreateCollectionRequest {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateCollectionRequest) SetCollection(v string) *CreateCollectionRequest {
@@ -393,6 +412,11 @@ func (s *CreateCollectionRequest) SetSupportSparse(v bool) *CreateCollectionRequ
 	return s
 }
 
+func (s *CreateCollectionRequest) SetVectorIndexConfig(v *CreateCollectionRequestVectorIndexConfig) *CreateCollectionRequest {
+	s.VectorIndexConfig = v
+	return s
+}
+
 func (s *CreateCollectionRequest) SetWorkspaceId(v string) *CreateCollectionRequest {
 	s.WorkspaceId = &v
 	return s
@@ -404,12 +428,18 @@ func (s *CreateCollectionRequest) Validate() error {
 			return err
 		}
 	}
+	if s.VectorIndexConfig != nil {
+		if err := s.VectorIndexConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type CreateCollectionRequestSparseVectorIndexConfig struct {
-	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	HnswM              *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	Algorithm          *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	HnswEfConstruction *int32  `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
+	HnswM              *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 }
 
 func (s CreateCollectionRequestSparseVectorIndexConfig) String() string {
@@ -420,12 +450,21 @@ func (s CreateCollectionRequestSparseVectorIndexConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCollectionRequestSparseVectorIndexConfig) GetAlgorithm() *string {
+	return s.Algorithm
+}
+
 func (s *CreateCollectionRequestSparseVectorIndexConfig) GetHnswEfConstruction() *int32 {
 	return s.HnswEfConstruction
 }
 
 func (s *CreateCollectionRequestSparseVectorIndexConfig) GetHnswM() *int32 {
 	return s.HnswM
+}
+
+func (s *CreateCollectionRequestSparseVectorIndexConfig) SetAlgorithm(v string) *CreateCollectionRequestSparseVectorIndexConfig {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateCollectionRequestSparseVectorIndexConfig) SetHnswEfConstruction(v int32) *CreateCollectionRequestSparseVectorIndexConfig {
@@ -439,5 +478,40 @@ func (s *CreateCollectionRequestSparseVectorIndexConfig) SetHnswM(v int32) *Crea
 }
 
 func (s *CreateCollectionRequestSparseVectorIndexConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateCollectionRequestVectorIndexConfig struct {
+	Nlist      *int32 `json:"Nlist,omitempty" xml:"Nlist,omitempty"`
+	RabitqBits *int32 `json:"RabitqBits,omitempty" xml:"RabitqBits,omitempty"`
+}
+
+func (s CreateCollectionRequestVectorIndexConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateCollectionRequestVectorIndexConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCollectionRequestVectorIndexConfig) GetNlist() *int32 {
+	return s.Nlist
+}
+
+func (s *CreateCollectionRequestVectorIndexConfig) GetRabitqBits() *int32 {
+	return s.RabitqBits
+}
+
+func (s *CreateCollectionRequestVectorIndexConfig) SetNlist(v int32) *CreateCollectionRequestVectorIndexConfig {
+	s.Nlist = &v
+	return s
+}
+
+func (s *CreateCollectionRequestVectorIndexConfig) SetRabitqBits(v int32) *CreateCollectionRequestVectorIndexConfig {
+	s.RabitqBits = &v
+	return s
+}
+
+func (s *CreateCollectionRequestVectorIndexConfig) Validate() error {
 	return dara.Validate(s)
 }

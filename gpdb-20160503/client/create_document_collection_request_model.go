@@ -9,6 +9,8 @@ type iCreateDocumentCollectionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlgorithm(v string) *CreateDocumentCollectionRequest
+	GetAlgorithm() *string
 	SetCollection(v string) *CreateDocumentCollectionRequest
 	GetCollection() *string
 	SetDBInstanceId(v string) *CreateDocumentCollectionRequest
@@ -61,9 +63,12 @@ type iCreateDocumentCollectionRequest interface {
 	GetSparseVectorIndexConfig() *CreateDocumentCollectionRequestSparseVectorIndexConfig
 	SetSupportSparse(v bool) *CreateDocumentCollectionRequest
 	GetSupportSparse() *bool
+	SetVectorIndexConfig(v *CreateDocumentCollectionRequestVectorIndexConfig) *CreateDocumentCollectionRequest
+	GetVectorIndexConfig() *CreateDocumentCollectionRequestVectorIndexConfig
 }
 
 type CreateDocumentCollectionRequest struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The name of the document collection that you want to create.
 	//
 	// > The name must comply with PostgreSQL object naming restrictions.
@@ -247,6 +252,7 @@ type CreateDocumentCollectionRequest struct {
 	SparseRetrievalFields   *string                                                 `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
 	SparseVectorIndexConfig *CreateDocumentCollectionRequestSparseVectorIndexConfig `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty" type:"Struct"`
 	SupportSparse           *bool                                                   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	VectorIndexConfig       *CreateDocumentCollectionRequestVectorIndexConfig       `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty" type:"Struct"`
 }
 
 func (s CreateDocumentCollectionRequest) String() string {
@@ -255,6 +261,10 @@ func (s CreateDocumentCollectionRequest) String() string {
 
 func (s CreateDocumentCollectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDocumentCollectionRequest) GetAlgorithm() *string {
+	return s.Algorithm
 }
 
 func (s *CreateDocumentCollectionRequest) GetCollection() *string {
@@ -359,6 +369,15 @@ func (s *CreateDocumentCollectionRequest) GetSparseVectorIndexConfig() *CreateDo
 
 func (s *CreateDocumentCollectionRequest) GetSupportSparse() *bool {
 	return s.SupportSparse
+}
+
+func (s *CreateDocumentCollectionRequest) GetVectorIndexConfig() *CreateDocumentCollectionRequestVectorIndexConfig {
+	return s.VectorIndexConfig
+}
+
+func (s *CreateDocumentCollectionRequest) SetAlgorithm(v string) *CreateDocumentCollectionRequest {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateDocumentCollectionRequest) SetCollection(v string) *CreateDocumentCollectionRequest {
@@ -491,9 +510,19 @@ func (s *CreateDocumentCollectionRequest) SetSupportSparse(v bool) *CreateDocume
 	return s
 }
 
+func (s *CreateDocumentCollectionRequest) SetVectorIndexConfig(v *CreateDocumentCollectionRequestVectorIndexConfig) *CreateDocumentCollectionRequest {
+	s.VectorIndexConfig = v
+	return s
+}
+
 func (s *CreateDocumentCollectionRequest) Validate() error {
 	if s.SparseVectorIndexConfig != nil {
 		if err := s.SparseVectorIndexConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.VectorIndexConfig != nil {
+		if err := s.VectorIndexConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -501,8 +530,9 @@ func (s *CreateDocumentCollectionRequest) Validate() error {
 }
 
 type CreateDocumentCollectionRequestSparseVectorIndexConfig struct {
-	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	HnswM              *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	Algorithm          *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	HnswEfConstruction *int32  `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
+	HnswM              *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
 }
 
 func (s CreateDocumentCollectionRequestSparseVectorIndexConfig) String() string {
@@ -513,12 +543,21 @@ func (s CreateDocumentCollectionRequestSparseVectorIndexConfig) GoString() strin
 	return s.String()
 }
 
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) GetAlgorithm() *string {
+	return s.Algorithm
+}
+
 func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) GetHnswEfConstruction() *int32 {
 	return s.HnswEfConstruction
 }
 
 func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) GetHnswM() *int32 {
 	return s.HnswM
+}
+
+func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) SetAlgorithm(v string) *CreateDocumentCollectionRequestSparseVectorIndexConfig {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) SetHnswEfConstruction(v int32) *CreateDocumentCollectionRequestSparseVectorIndexConfig {
@@ -532,5 +571,40 @@ func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) SetHnswM(v int3
 }
 
 func (s *CreateDocumentCollectionRequestSparseVectorIndexConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDocumentCollectionRequestVectorIndexConfig struct {
+	Nlist      *int32 `json:"Nlist,omitempty" xml:"Nlist,omitempty"`
+	RabitqBits *int32 `json:"RabitqBits,omitempty" xml:"RabitqBits,omitempty"`
+}
+
+func (s CreateDocumentCollectionRequestVectorIndexConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDocumentCollectionRequestVectorIndexConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentCollectionRequestVectorIndexConfig) GetNlist() *int32 {
+	return s.Nlist
+}
+
+func (s *CreateDocumentCollectionRequestVectorIndexConfig) GetRabitqBits() *int32 {
+	return s.RabitqBits
+}
+
+func (s *CreateDocumentCollectionRequestVectorIndexConfig) SetNlist(v int32) *CreateDocumentCollectionRequestVectorIndexConfig {
+	s.Nlist = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequestVectorIndexConfig) SetRabitqBits(v int32) *CreateDocumentCollectionRequestVectorIndexConfig {
+	s.RabitqBits = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequestVectorIndexConfig) Validate() error {
 	return dara.Validate(s)
 }

@@ -9,6 +9,8 @@ type iCreateDocumentCollectionShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlgorithm(v string) *CreateDocumentCollectionShrinkRequest
+	GetAlgorithm() *string
 	SetCollection(v string) *CreateDocumentCollectionShrinkRequest
 	GetCollection() *string
 	SetDBInstanceId(v string) *CreateDocumentCollectionShrinkRequest
@@ -61,9 +63,12 @@ type iCreateDocumentCollectionShrinkRequest interface {
 	GetSparseVectorIndexConfigShrink() *string
 	SetSupportSparse(v bool) *CreateDocumentCollectionShrinkRequest
 	GetSupportSparse() *bool
+	SetVectorIndexConfigShrink(v string) *CreateDocumentCollectionShrinkRequest
+	GetVectorIndexConfigShrink() *string
 }
 
 type CreateDocumentCollectionShrinkRequest struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The name of the document collection that you want to create.
 	//
 	// > The name must comply with PostgreSQL object naming restrictions.
@@ -247,6 +252,7 @@ type CreateDocumentCollectionShrinkRequest struct {
 	SparseRetrievalFields         *string `json:"SparseRetrievalFields,omitempty" xml:"SparseRetrievalFields,omitempty"`
 	SparseVectorIndexConfigShrink *string `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty"`
 	SupportSparse                 *bool   `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
+	VectorIndexConfigShrink       *string `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty"`
 }
 
 func (s CreateDocumentCollectionShrinkRequest) String() string {
@@ -255,6 +261,10 @@ func (s CreateDocumentCollectionShrinkRequest) String() string {
 
 func (s CreateDocumentCollectionShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) GetAlgorithm() *string {
+	return s.Algorithm
 }
 
 func (s *CreateDocumentCollectionShrinkRequest) GetCollection() *string {
@@ -359,6 +369,15 @@ func (s *CreateDocumentCollectionShrinkRequest) GetSparseVectorIndexConfigShrink
 
 func (s *CreateDocumentCollectionShrinkRequest) GetSupportSparse() *bool {
 	return s.SupportSparse
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) GetVectorIndexConfigShrink() *string {
+	return s.VectorIndexConfigShrink
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) SetAlgorithm(v string) *CreateDocumentCollectionShrinkRequest {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateDocumentCollectionShrinkRequest) SetCollection(v string) *CreateDocumentCollectionShrinkRequest {
@@ -488,6 +507,11 @@ func (s *CreateDocumentCollectionShrinkRequest) SetSparseVectorIndexConfigShrink
 
 func (s *CreateDocumentCollectionShrinkRequest) SetSupportSparse(v bool) *CreateDocumentCollectionShrinkRequest {
 	s.SupportSparse = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionShrinkRequest) SetVectorIndexConfigShrink(v string) *CreateDocumentCollectionShrinkRequest {
+	s.VectorIndexConfigShrink = &v
 	return s
 }
 

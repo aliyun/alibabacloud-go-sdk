@@ -13,6 +13,8 @@ type iRerankRequest interface {
 	GetDBInstanceId() *string
 	SetDocuments(v []*string) *RerankRequest
 	GetDocuments() []*string
+	SetInstruct(v string) *RerankRequest
+	GetInstruct() *string
 	SetMaxChunksPerDoc(v int32) *RerankRequest
 	GetMaxChunksPerDoc() *int32
 	SetModel(v string) *RerankRequest
@@ -42,6 +44,10 @@ type RerankRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// List of documents to be re-ordered.
 	Documents []*string `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
 	// Maximum number of chunks allowed when the text exceeds the model window:
 	//
 	// - bge-reranker-v2-m3: default value is 10.
@@ -111,6 +117,10 @@ func (s *RerankRequest) GetDocuments() []*string {
 	return s.Documents
 }
 
+func (s *RerankRequest) GetInstruct() *string {
+	return s.Instruct
+}
+
 func (s *RerankRequest) GetMaxChunksPerDoc() *int32 {
 	return s.MaxChunksPerDoc
 }
@@ -146,6 +156,11 @@ func (s *RerankRequest) SetDBInstanceId(v string) *RerankRequest {
 
 func (s *RerankRequest) SetDocuments(v []*string) *RerankRequest {
 	s.Documents = v
+	return s
+}
+
+func (s *RerankRequest) SetInstruct(v string) *RerankRequest {
+	s.Instruct = &v
 	return s
 }
 

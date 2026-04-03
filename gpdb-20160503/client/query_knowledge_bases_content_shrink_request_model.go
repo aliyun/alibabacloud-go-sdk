@@ -23,6 +23,8 @@ type iQueryKnowledgeBasesContentShrinkRequest interface {
 	GetRegionId() *string
 	SetRerankFactor(v float64) *QueryKnowledgeBasesContentShrinkRequest
 	GetRerankFactor() *float64
+	SetRerankModelShrink(v string) *QueryKnowledgeBasesContentShrinkRequest
+	GetRerankModelShrink() *string
 	SetSourceCollectionShrink(v string) *QueryKnowledgeBasesContentShrinkRequest
 	GetSourceCollectionShrink() *string
 	SetTopK(v int64) *QueryKnowledgeBasesContentShrinkRequest
@@ -76,7 +78,8 @@ type QueryKnowledgeBasesContentShrinkRequest struct {
 	// example:
 	//
 	// 2
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor      *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModelShrink *string  `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
 	// The information about collections to retrieve from.
 	//
 	// This parameter is required.
@@ -125,6 +128,10 @@ func (s *QueryKnowledgeBasesContentShrinkRequest) GetRerankFactor() *float64 {
 	return s.RerankFactor
 }
 
+func (s *QueryKnowledgeBasesContentShrinkRequest) GetRerankModelShrink() *string {
+	return s.RerankModelShrink
+}
+
 func (s *QueryKnowledgeBasesContentShrinkRequest) GetSourceCollectionShrink() *string {
 	return s.SourceCollectionShrink
 }
@@ -165,6 +172,11 @@ func (s *QueryKnowledgeBasesContentShrinkRequest) SetRegionId(v string) *QueryKn
 
 func (s *QueryKnowledgeBasesContentShrinkRequest) SetRerankFactor(v float64) *QueryKnowledgeBasesContentShrinkRequest {
 	s.RerankFactor = &v
+	return s
+}
+
+func (s *QueryKnowledgeBasesContentShrinkRequest) SetRerankModelShrink(v string) *QueryKnowledgeBasesContentShrinkRequest {
+	s.RerankModelShrink = &v
 	return s
 }
 

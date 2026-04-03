@@ -170,7 +170,8 @@ type ChatWithKnowledgeBaseStreamRequestKnowledgeParams struct {
 	// example:
 	//
 	// 5.0
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                                                      `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// Knowledge base.
 	//
 	// This parameter is required.
@@ -203,6 +204,10 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) GetRerankFactor() *f
 	return s.RerankFactor
 }
 
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) GetRerankModel() *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel {
+	return s.RerankModel
+}
+
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) GetSourceCollection() []*ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection {
 	return s.SourceCollection
 }
@@ -226,6 +231,11 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) SetRerankFactor(v fl
 	return s
 }
 
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) SetRerankModel(v *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) *ChatWithKnowledgeBaseStreamRequestKnowledgeParams {
+	s.RerankModel = v
+	return s
+}
+
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) SetSourceCollection(v []*ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollection) *ChatWithKnowledgeBaseStreamRequestKnowledgeParams {
 	s.SourceCollection = v
 	return s
@@ -239,6 +249,11 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) SetTopK(v int64) *Ch
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParams) Validate() error {
 	if s.MergeMethodArgs != nil {
 		if err := s.MergeMethodArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -354,6 +369,47 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight)
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsMergeMethodArgsWeight) Validate() error {
+	return dara.Validate(s)
+}
+
+type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel struct {
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	// example:
+	//
+	// qwen3-rerank
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) SetInstruct(v string) *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) SetName(v string) *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsRerankModel) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -531,7 +587,8 @@ type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParam
 	// example:
 	//
 	// 2.0
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                                                                                 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// The number of top results.
 	//
 	// example:
@@ -586,6 +643,10 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryP
 	return s.RerankFactor
 }
 
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams) GetRerankModel() *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	return s.RerankModel
+}
+
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams) GetTopK() *int64 {
 	return s.TopK
 }
@@ -634,6 +695,11 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryP
 	return s
 }
 
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams) SetRerankModel(v *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams {
+	s.RerankModel = v
+	return s
+}
+
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams) SetTopK(v int64) *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams {
 	s.TopK = &v
 	return s
@@ -647,6 +713,11 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryP
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParams) Validate() error {
 	if s.GraphSearchArgs != nil {
 		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -680,6 +751,47 @@ func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryP
 }
 
 func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsGraphSearchArgs) Validate() error {
+	return dara.Validate(s)
+}
+
+type ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel struct {
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	// example:
+	//
+	// qwen3-rerank
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetInstruct(v string) *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) SetName(v string) *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *ChatWithKnowledgeBaseStreamRequestKnowledgeParamsSourceCollectionQueryParamsRerankModel) Validate() error {
 	return dara.Validate(s)
 }
 

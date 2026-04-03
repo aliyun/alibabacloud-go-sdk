@@ -23,6 +23,8 @@ type iQueryKnowledgeBasesContentRequest interface {
 	GetRegionId() *string
 	SetRerankFactor(v float64) *QueryKnowledgeBasesContentRequest
 	GetRerankFactor() *float64
+	SetRerankModel(v *QueryKnowledgeBasesContentRequestRerankModel) *QueryKnowledgeBasesContentRequest
+	GetRerankModel() *QueryKnowledgeBasesContentRequestRerankModel
 	SetSourceCollection(v []*QueryKnowledgeBasesContentRequestSourceCollection) *QueryKnowledgeBasesContentRequest
 	GetSourceCollection() []*QueryKnowledgeBasesContentRequestSourceCollection
 	SetTopK(v int64) *QueryKnowledgeBasesContentRequest
@@ -76,7 +78,8 @@ type QueryKnowledgeBasesContentRequest struct {
 	// example:
 	//
 	// 2
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                                      `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *QueryKnowledgeBasesContentRequestRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// The information about collections to retrieve from.
 	//
 	// This parameter is required.
@@ -125,6 +128,10 @@ func (s *QueryKnowledgeBasesContentRequest) GetRerankFactor() *float64 {
 	return s.RerankFactor
 }
 
+func (s *QueryKnowledgeBasesContentRequest) GetRerankModel() *QueryKnowledgeBasesContentRequestRerankModel {
+	return s.RerankModel
+}
+
 func (s *QueryKnowledgeBasesContentRequest) GetSourceCollection() []*QueryKnowledgeBasesContentRequestSourceCollection {
 	return s.SourceCollection
 }
@@ -168,6 +175,11 @@ func (s *QueryKnowledgeBasesContentRequest) SetRerankFactor(v float64) *QueryKno
 	return s
 }
 
+func (s *QueryKnowledgeBasesContentRequest) SetRerankModel(v *QueryKnowledgeBasesContentRequestRerankModel) *QueryKnowledgeBasesContentRequest {
+	s.RerankModel = v
+	return s
+}
+
 func (s *QueryKnowledgeBasesContentRequest) SetSourceCollection(v []*QueryKnowledgeBasesContentRequestSourceCollection) *QueryKnowledgeBasesContentRequest {
 	s.SourceCollection = v
 	return s
@@ -181,6 +193,11 @@ func (s *QueryKnowledgeBasesContentRequest) SetTopK(v int64) *QueryKnowledgeBase
 func (s *QueryKnowledgeBasesContentRequest) Validate() error {
 	if s.MergeMethodArgs != nil {
 		if err := s.MergeMethodArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -296,6 +313,41 @@ func (s *QueryKnowledgeBasesContentRequestMergeMethodArgsWeight) SetWeights(v []
 }
 
 func (s *QueryKnowledgeBasesContentRequestMergeMethodArgsWeight) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryKnowledgeBasesContentRequestRerankModel struct {
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s QueryKnowledgeBasesContentRequestRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryKnowledgeBasesContentRequestRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryKnowledgeBasesContentRequestRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *QueryKnowledgeBasesContentRequestRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *QueryKnowledgeBasesContentRequestRerankModel) SetInstruct(v string) *QueryKnowledgeBasesContentRequestRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *QueryKnowledgeBasesContentRequestRerankModel) SetName(v string) *QueryKnowledgeBasesContentRequestRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryKnowledgeBasesContentRequestRerankModel) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -495,7 +547,8 @@ type QueryKnowledgeBasesContentRequestSourceCollectionQueryParams struct {
 	// example:
 	//
 	// 2.0
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                                                                 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// The number of top results.
 	//
 	// example:
@@ -558,6 +611,10 @@ func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) GetRerank
 	return s.RerankFactor
 }
 
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) GetRerankModel() *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel {
+	return s.RerankModel
+}
+
 func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) GetTopK() *int64 {
 	return s.TopK
 }
@@ -616,6 +673,11 @@ func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) SetRerank
 	return s
 }
 
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) SetRerankModel(v *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams {
+	s.RerankModel = v
+	return s
+}
+
 func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) SetTopK(v int64) *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams {
 	s.TopK = &v
 	return s
@@ -629,6 +691,11 @@ func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) SetUseFul
 func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParams) Validate() error {
 	if s.GraphSearchArgs != nil {
 		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -662,5 +729,40 @@ func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearch
 }
 
 func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsGraphSearchArgs) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel struct {
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) SetInstruct(v string) *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) SetName(v string) *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryKnowledgeBasesContentRequestSourceCollectionQueryParamsRerankModel) Validate() error {
 	return dara.Validate(s)
 }

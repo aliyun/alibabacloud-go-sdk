@@ -54,6 +54,8 @@ type iQueryContentAdvanceRequest interface {
 	GetRegionId() *string
 	SetRerankFactor(v float64) *QueryContentAdvanceRequest
 	GetRerankFactor() *float64
+	SetRerankModel(v *QueryContentAdvanceRequestRerankModel) *QueryContentAdvanceRequest
+	GetRerankModel() *QueryContentAdvanceRequestRerankModel
 	SetTopK(v int32) *QueryContentAdvanceRequest
 	GetTopK() *int32
 	SetUrlExpiration(v string) *QueryContentAdvanceRequest
@@ -261,7 +263,8 @@ type QueryContentAdvanceRequest struct {
 	// example:
 	//
 	// 2
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                               `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *QueryContentAdvanceRequestRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// The number of the returned top results.
 	//
 	// example:
@@ -386,6 +389,10 @@ func (s *QueryContentAdvanceRequest) GetRerankFactor() *float64 {
 	return s.RerankFactor
 }
 
+func (s *QueryContentAdvanceRequest) GetRerankModel() *QueryContentAdvanceRequestRerankModel {
+	return s.RerankModel
+}
+
 func (s *QueryContentAdvanceRequest) GetTopK() *int32 {
 	return s.TopK
 }
@@ -508,6 +515,11 @@ func (s *QueryContentAdvanceRequest) SetRerankFactor(v float64) *QueryContentAdv
 	return s
 }
 
+func (s *QueryContentAdvanceRequest) SetRerankModel(v *QueryContentAdvanceRequestRerankModel) *QueryContentAdvanceRequest {
+	s.RerankModel = v
+	return s
+}
+
 func (s *QueryContentAdvanceRequest) SetTopK(v int32) *QueryContentAdvanceRequest {
 	s.TopK = &v
 	return s
@@ -526,6 +538,11 @@ func (s *QueryContentAdvanceRequest) SetUseFullTextRetrieval(v bool) *QueryConte
 func (s *QueryContentAdvanceRequest) Validate() error {
 	if s.GraphSearchArgs != nil {
 		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -559,5 +576,46 @@ func (s *QueryContentAdvanceRequestGraphSearchArgs) SetGraphTopK(v int32) *Query
 }
 
 func (s *QueryContentAdvanceRequestGraphSearchArgs) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentAdvanceRequestRerankModel struct {
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	// example:
+	//
+	// qwen3-rerank
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s QueryContentAdvanceRequestRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentAdvanceRequestRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentAdvanceRequestRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *QueryContentAdvanceRequestRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *QueryContentAdvanceRequestRerankModel) SetInstruct(v string) *QueryContentAdvanceRequestRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequestRerankModel) SetName(v string) *QueryContentAdvanceRequestRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryContentAdvanceRequestRerankModel) Validate() error {
 	return dara.Validate(s)
 }

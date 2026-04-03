@@ -53,6 +53,8 @@ type iQueryContentShrinkRequest interface {
 	GetRegionId() *string
 	SetRerankFactor(v float64) *QueryContentShrinkRequest
 	GetRerankFactor() *float64
+	SetRerankModelShrink(v string) *QueryContentShrinkRequest
+	GetRerankModelShrink() *string
 	SetTopK(v int32) *QueryContentShrinkRequest
 	GetTopK() *int32
 	SetUrlExpiration(v string) *QueryContentShrinkRequest
@@ -260,7 +262,8 @@ type QueryContentShrinkRequest struct {
 	// example:
 	//
 	// 2
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor      *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModelShrink *string  `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
 	// The number of the returned top results.
 	//
 	// example:
@@ -385,6 +388,10 @@ func (s *QueryContentShrinkRequest) GetRerankFactor() *float64 {
 	return s.RerankFactor
 }
 
+func (s *QueryContentShrinkRequest) GetRerankModelShrink() *string {
+	return s.RerankModelShrink
+}
+
 func (s *QueryContentShrinkRequest) GetTopK() *int32 {
 	return s.TopK
 }
@@ -504,6 +511,11 @@ func (s *QueryContentShrinkRequest) SetRegionId(v string) *QueryContentShrinkReq
 
 func (s *QueryContentShrinkRequest) SetRerankFactor(v float64) *QueryContentShrinkRequest {
 	s.RerankFactor = &v
+	return s
+}
+
+func (s *QueryContentShrinkRequest) SetRerankModelShrink(v string) *QueryContentShrinkRequest {
+	s.RerankModelShrink = &v
 	return s
 }
 

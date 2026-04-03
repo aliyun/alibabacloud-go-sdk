@@ -13,6 +13,8 @@ type iRerankShrinkRequest interface {
 	GetDBInstanceId() *string
 	SetDocumentsShrink(v string) *RerankShrinkRequest
 	GetDocumentsShrink() *string
+	SetInstruct(v string) *RerankShrinkRequest
+	GetInstruct() *string
 	SetMaxChunksPerDoc(v int32) *RerankShrinkRequest
 	GetMaxChunksPerDoc() *int32
 	SetModel(v string) *RerankShrinkRequest
@@ -42,6 +44,10 @@ type RerankShrinkRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// List of documents to be re-ordered.
 	DocumentsShrink *string `json:"Documents,omitempty" xml:"Documents,omitempty"`
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
 	// Maximum number of chunks allowed when the text exceeds the model window:
 	//
 	// - bge-reranker-v2-m3: default value is 10.
@@ -111,6 +117,10 @@ func (s *RerankShrinkRequest) GetDocumentsShrink() *string {
 	return s.DocumentsShrink
 }
 
+func (s *RerankShrinkRequest) GetInstruct() *string {
+	return s.Instruct
+}
+
 func (s *RerankShrinkRequest) GetMaxChunksPerDoc() *int32 {
 	return s.MaxChunksPerDoc
 }
@@ -146,6 +156,11 @@ func (s *RerankShrinkRequest) SetDBInstanceId(v string) *RerankShrinkRequest {
 
 func (s *RerankShrinkRequest) SetDocumentsShrink(v string) *RerankShrinkRequest {
 	s.DocumentsShrink = &v
+	return s
+}
+
+func (s *RerankShrinkRequest) SetInstruct(v string) *RerankShrinkRequest {
+	s.Instruct = &v
 	return s
 }
 

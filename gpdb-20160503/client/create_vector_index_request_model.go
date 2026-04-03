@@ -9,6 +9,8 @@ type iCreateVectorIndexRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlgorithm(v string) *CreateVectorIndexRequest
+	GetAlgorithm() *string
 	SetCollection(v string) *CreateVectorIndexRequest
 	GetCollection() *string
 	SetDBInstanceId(v string) *CreateVectorIndexRequest
@@ -29,10 +31,14 @@ type iCreateVectorIndexRequest interface {
 	GetMetrics() *string
 	SetNamespace(v string) *CreateVectorIndexRequest
 	GetNamespace() *string
+	SetNlist(v int32) *CreateVectorIndexRequest
+	GetNlist() *int32
 	SetOwnerId(v int64) *CreateVectorIndexRequest
 	GetOwnerId() *int64
 	SetPqEnable(v int32) *CreateVectorIndexRequest
 	GetPqEnable() *int32
+	SetRabitqBits(v int32) *CreateVectorIndexRequest
+	GetRabitqBits() *int32
 	SetRegionId(v string) *CreateVectorIndexRequest
 	GetRegionId() *string
 	SetType(v string) *CreateVectorIndexRequest
@@ -40,6 +46,7 @@ type iCreateVectorIndexRequest interface {
 }
 
 type CreateVectorIndexRequest struct {
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// Collection name.
 	//
 	// > You can use the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) API to view the list.
@@ -135,6 +142,7 @@ type CreateVectorIndexRequest struct {
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Nlist     *int32  `json:"Nlist,omitempty" xml:"Nlist,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Whether to enable PQ (Product Quantization) algorithm acceleration for the index. It is recommended to enable this when the data volume exceeds 500,000. Value description:
 	//
@@ -145,7 +153,8 @@ type CreateVectorIndexRequest struct {
 	// example:
 	//
 	// 1
-	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	PqEnable   *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	RabitqBits *int32 `json:"RabitqBits,omitempty" xml:"RabitqBits,omitempty"`
 	// Region ID where the instance is located.
 	//
 	// This parameter is required.
@@ -163,6 +172,10 @@ func (s CreateVectorIndexRequest) String() string {
 
 func (s CreateVectorIndexRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateVectorIndexRequest) GetAlgorithm() *string {
+	return s.Algorithm
 }
 
 func (s *CreateVectorIndexRequest) GetCollection() *string {
@@ -205,6 +218,10 @@ func (s *CreateVectorIndexRequest) GetNamespace() *string {
 	return s.Namespace
 }
 
+func (s *CreateVectorIndexRequest) GetNlist() *int32 {
+	return s.Nlist
+}
+
 func (s *CreateVectorIndexRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
@@ -213,12 +230,21 @@ func (s *CreateVectorIndexRequest) GetPqEnable() *int32 {
 	return s.PqEnable
 }
 
+func (s *CreateVectorIndexRequest) GetRabitqBits() *int32 {
+	return s.RabitqBits
+}
+
 func (s *CreateVectorIndexRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *CreateVectorIndexRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateVectorIndexRequest) SetAlgorithm(v string) *CreateVectorIndexRequest {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *CreateVectorIndexRequest) SetCollection(v string) *CreateVectorIndexRequest {
@@ -271,6 +297,11 @@ func (s *CreateVectorIndexRequest) SetNamespace(v string) *CreateVectorIndexRequ
 	return s
 }
 
+func (s *CreateVectorIndexRequest) SetNlist(v int32) *CreateVectorIndexRequest {
+	s.Nlist = &v
+	return s
+}
+
 func (s *CreateVectorIndexRequest) SetOwnerId(v int64) *CreateVectorIndexRequest {
 	s.OwnerId = &v
 	return s
@@ -278,6 +309,11 @@ func (s *CreateVectorIndexRequest) SetOwnerId(v int64) *CreateVectorIndexRequest
 
 func (s *CreateVectorIndexRequest) SetPqEnable(v int32) *CreateVectorIndexRequest {
 	s.PqEnable = &v
+	return s
+}
+
+func (s *CreateVectorIndexRequest) SetRabitqBits(v int32) *CreateVectorIndexRequest {
+	s.RabitqBits = &v
 	return s
 }
 

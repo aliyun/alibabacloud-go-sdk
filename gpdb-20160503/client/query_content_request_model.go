@@ -53,6 +53,8 @@ type iQueryContentRequest interface {
 	GetRegionId() *string
 	SetRerankFactor(v float64) *QueryContentRequest
 	GetRerankFactor() *float64
+	SetRerankModel(v *QueryContentRequestRerankModel) *QueryContentRequest
+	GetRerankModel() *QueryContentRequestRerankModel
 	SetTopK(v int32) *QueryContentRequest
 	GetTopK() *int32
 	SetUrlExpiration(v string) *QueryContentRequest
@@ -260,7 +262,8 @@ type QueryContentRequest struct {
 	// example:
 	//
 	// 2
-	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankFactor *float64                        `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
+	RerankModel  *QueryContentRequestRerankModel `json:"RerankModel,omitempty" xml:"RerankModel,omitempty" type:"Struct"`
 	// The number of the returned top results.
 	//
 	// example:
@@ -385,6 +388,10 @@ func (s *QueryContentRequest) GetRerankFactor() *float64 {
 	return s.RerankFactor
 }
 
+func (s *QueryContentRequest) GetRerankModel() *QueryContentRequestRerankModel {
+	return s.RerankModel
+}
+
 func (s *QueryContentRequest) GetTopK() *int32 {
 	return s.TopK
 }
@@ -507,6 +514,11 @@ func (s *QueryContentRequest) SetRerankFactor(v float64) *QueryContentRequest {
 	return s
 }
 
+func (s *QueryContentRequest) SetRerankModel(v *QueryContentRequestRerankModel) *QueryContentRequest {
+	s.RerankModel = v
+	return s
+}
+
 func (s *QueryContentRequest) SetTopK(v int32) *QueryContentRequest {
 	s.TopK = &v
 	return s
@@ -525,6 +537,11 @@ func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentReque
 func (s *QueryContentRequest) Validate() error {
 	if s.GraphSearchArgs != nil {
 		if err := s.GraphSearchArgs.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RerankModel != nil {
+		if err := s.RerankModel.Validate(); err != nil {
 			return err
 		}
 	}
@@ -558,5 +575,46 @@ func (s *QueryContentRequestGraphSearchArgs) SetGraphTopK(v int32) *QueryContent
 }
 
 func (s *QueryContentRequestGraphSearchArgs) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryContentRequestRerankModel struct {
+	// example:
+	//
+	// Given a web search query, retrieve relevant passages that answer the query
+	Instruct *string `json:"Instruct,omitempty" xml:"Instruct,omitempty"`
+	// example:
+	//
+	// qwen3-rerank
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s QueryContentRequestRerankModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryContentRequestRerankModel) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentRequestRerankModel) GetInstruct() *string {
+	return s.Instruct
+}
+
+func (s *QueryContentRequestRerankModel) GetName() *string {
+	return s.Name
+}
+
+func (s *QueryContentRequestRerankModel) SetInstruct(v string) *QueryContentRequestRerankModel {
+	s.Instruct = &v
+	return s
+}
+
+func (s *QueryContentRequestRerankModel) SetName(v string) *QueryContentRequestRerankModel {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryContentRequestRerankModel) Validate() error {
 	return dara.Validate(s)
 }
