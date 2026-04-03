@@ -57324,6 +57324,10 @@ func (client *Client) ModifyNoticeConfigWithOptions(request *ModifyNoticeConfigR
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.FocusLevel) {
+		query["FocusLevel"] = request.FocusLevel
+	}
+
 	if !dara.IsNil(request.Project) {
 		query["Project"] = request.Project
 	}

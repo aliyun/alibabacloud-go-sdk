@@ -11,6 +11,8 @@ type iModifyNoticeConfigRequest interface {
 	GoString() string
 	SetBizType(v string) *ModifyNoticeConfigRequest
 	GetBizType() *string
+	SetFocusLevel(v string) *ModifyNoticeConfigRequest
+	GetFocusLevel() *string
 	SetProject(v string) *ModifyNoticeConfigRequest
 	GetProject() *string
 	SetRoute(v int32) *ModifyNoticeConfigRequest
@@ -29,7 +31,8 @@ type ModifyNoticeConfigRequest struct {
 	// example:
 	//
 	// cms
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	FocusLevel *string `json:"FocusLevel,omitempty" xml:"FocusLevel,omitempty"`
 	// The identifier of the notification item. Valid values:
 	//
 	// 	- **yundun_security_Weekreport**: notification for vulnerabilities
@@ -144,6 +147,10 @@ func (s *ModifyNoticeConfigRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *ModifyNoticeConfigRequest) GetFocusLevel() *string {
+	return s.FocusLevel
+}
+
 func (s *ModifyNoticeConfigRequest) GetProject() *string {
 	return s.Project
 }
@@ -162,6 +169,11 @@ func (s *ModifyNoticeConfigRequest) GetTimeLimit() *int32 {
 
 func (s *ModifyNoticeConfigRequest) SetBizType(v string) *ModifyNoticeConfigRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *ModifyNoticeConfigRequest) SetFocusLevel(v string) *ModifyNoticeConfigRequest {
+	s.FocusLevel = &v
 	return s
 }
 

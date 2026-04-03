@@ -173,7 +173,8 @@ type DescribeImageListBySensitiveFileResponseBodyImageInfos struct {
 	// example:
 	//
 	// cri-a595qp31knh9****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The timestamp when the last scan was performed. Unit: milliseconds.
 	//
 	// example:
@@ -256,6 +257,10 @@ func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) GetInstanceId()
 	return s.InstanceId
 }
 
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) GetInstanceName() *string {
+	return s.InstanceName
+}
+
 func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) GetLastScanTime() *int64 {
 	return s.LastScanTime
 }
@@ -300,6 +305,11 @@ func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetFirstScanTim
 
 func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetInstanceId(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeImageListBySensitiveFileResponseBodyImageInfos) SetInstanceName(v string) *DescribeImageListBySensitiveFileResponseBodyImageInfos {
+	s.InstanceName = &v
 	return s
 }
 

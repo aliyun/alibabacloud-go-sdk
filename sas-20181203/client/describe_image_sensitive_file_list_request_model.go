@@ -317,7 +317,8 @@ type DescribeImageSensitiveFileListRequest struct {
 	// 	- **image**
 	//
 	// 	- **container**
-	ScanRange        []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	ScanRange []*string `json:"ScanRange,omitempty" xml:"ScanRange,omitempty" type:"Repeated"`
+	// 敏感文件Key列表
 	SensitiveKeyList []*string `json:"SensitiveKeyList,omitempty" xml:"SensitiveKeyList,omitempty" type:"Repeated"`
 }
 

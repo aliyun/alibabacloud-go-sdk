@@ -40646,6 +40646,10 @@ func (client *Client) ModifyNoticeConfigWithContext(ctx context.Context, request
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.FocusLevel) {
+		query["FocusLevel"] = request.FocusLevel
+	}
+
 	if !dara.IsNil(request.Project) {
 		query["Project"] = request.Project
 	}

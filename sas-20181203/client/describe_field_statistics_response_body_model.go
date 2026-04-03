@@ -80,6 +80,10 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 5
 	AzureInstanceCount *int32 `json:"AzureInstanceCount,omitempty" xml:"AzureInstanceCount,omitempty"`
+	// example:
+	//
+	// 5
+	BaiduInstanceCount *int32 `json:"BaiduInstanceCount,omitempty" xml:"BaiduInstanceCount,omitempty"`
 	// The number of cores of exposed assets.
 	//
 	// example:
@@ -146,6 +150,10 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 10
 	InstanceSyncTaskCount *int32 `json:"InstanceSyncTaskCount,omitempty" xml:"InstanceSyncTaskCount,omitempty"`
+	// example:
+	//
+	// 5
+	KingsoftInstanceCount *int32 `json:"KingsoftInstanceCount,omitempty" xml:"KingsoftInstanceCount,omitempty"`
 	// The number of cores of new servers.
 	//
 	// example:
@@ -218,6 +226,10 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 90
 	RiskInstanceCount *int32 `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
+	// example:
+	//
+	// 5
+	StateCloudInstanceCount *int32 `json:"StateCloudInstanceCount,omitempty" xml:"StateCloudInstanceCount,omitempty"`
 	// The total number of cloud services that are protected by Security Center.
 	//
 	// example:
@@ -236,6 +248,10 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 2
 	TripartiteInstanceCount *int32 `json:"TripartiteInstanceCount,omitempty" xml:"TripartiteInstanceCount,omitempty"`
+	// example:
+	//
+	// 5
+	UcloudInstanceCount *int32 `json:"UcloudInstanceCount,omitempty" xml:"UcloudInstanceCount,omitempty"`
 	// The number of servers that are in the Unknown state.
 	//
 	// example:
@@ -288,6 +304,10 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetAzureInstanceCount
 	return s.AzureInstanceCount
 }
 
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetBaiduInstanceCount() *int32 {
+	return s.BaiduInstanceCount
+}
+
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetExposedInstanceCoreCount() *int64 {
 	return s.ExposedInstanceCoreCount
 }
@@ -330,6 +350,10 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetInstanceCount() *i
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetInstanceSyncTaskCount() *int32 {
 	return s.InstanceSyncTaskCount
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetKingsoftInstanceCount() *int32 {
+	return s.KingsoftInstanceCount
 }
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetNewInstanceCoreCount() *int64 {
@@ -380,6 +404,10 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetRiskInstanceCount(
 	return s.RiskInstanceCount
 }
 
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetStateCloudInstanceCount() *int32 {
+	return s.StateCloudInstanceCount
+}
+
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetTencentInstanceCount() *int32 {
 	return s.TencentInstanceCount
 }
@@ -390,6 +418,10 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetTestAssetCount() *
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetTripartiteInstanceCount() *int32 {
 	return s.TripartiteInstanceCount
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetUcloudInstanceCount() *int32 {
+	return s.UcloudInstanceCount
 }
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) GetUnKnowStatusInstanceCount() *int32 {
@@ -424,6 +456,11 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetAwsInstanceCount(v
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetAzureInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
 	s.AzureInstanceCount = &v
+	return s
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetBaiduInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.BaiduInstanceCount = &v
 	return s
 }
 
@@ -479,6 +516,11 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetInstanceCount(v in
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetInstanceSyncTaskCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
 	s.InstanceSyncTaskCount = &v
+	return s
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetKingsoftInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.KingsoftInstanceCount = &v
 	return s
 }
 
@@ -542,6 +584,11 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetRiskInstanceCount(
 	return s
 }
 
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetStateCloudInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.StateCloudInstanceCount = &v
+	return s
+}
+
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetTencentInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
 	s.TencentInstanceCount = &v
 	return s
@@ -554,6 +601,11 @@ func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetTestAssetCount(v i
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetTripartiteInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
 	s.TripartiteInstanceCount = &v
+	return s
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetUcloudInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.UcloudInstanceCount = &v
 	return s
 }
 
