@@ -156,6 +156,10 @@ type DescribeParameterTemplatesResponseBodyDataParameters struct {
 	//
 	// 0
 	Revisable *int32 `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
+	// example:
+	//
+	// 0
+	UserChangable *int32 `json:"UserChangable,omitempty" xml:"UserChangable,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyDataParameters) String() string {
@@ -190,6 +194,10 @@ func (s *DescribeParameterTemplatesResponseBodyDataParameters) GetRevisable() *i
 	return s.Revisable
 }
 
+func (s *DescribeParameterTemplatesResponseBodyDataParameters) GetUserChangable() *int32 {
+	return s.UserChangable
+}
+
 func (s *DescribeParameterTemplatesResponseBodyDataParameters) SetCheckingCode(v string) *DescribeParameterTemplatesResponseBodyDataParameters {
 	s.CheckingCode = &v
 	return s
@@ -217,6 +225,11 @@ func (s *DescribeParameterTemplatesResponseBodyDataParameters) SetParameterValue
 
 func (s *DescribeParameterTemplatesResponseBodyDataParameters) SetRevisable(v int32) *DescribeParameterTemplatesResponseBodyDataParameters {
 	s.Revisable = &v
+	return s
+}
+
+func (s *DescribeParameterTemplatesResponseBodyDataParameters) SetUserChangable(v int32) *DescribeParameterTemplatesResponseBodyDataParameters {
+	s.UserChangable = &v
 	return s
 }
 

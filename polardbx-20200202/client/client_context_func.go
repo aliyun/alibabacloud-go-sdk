@@ -3787,6 +3787,10 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看参数模版
+//
 // @param request - DescribeParameterTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

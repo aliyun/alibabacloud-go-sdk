@@ -5031,6 +5031,10 @@ func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看参数模版
+//
 // @param request - DescribeParameterTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5083,6 +5087,10 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看参数模版
+//
 // @param request - DescribeParameterTemplatesRequest
 //
 // @return DescribeParameterTemplatesResponse
