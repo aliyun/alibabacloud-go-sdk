@@ -23,7 +23,7 @@ type CodeInterpreterSessionConfig struct {
 	// example:
 	//
 	// PYTHONPATH=/app,DEBUG=true
-	Environment map[string]*string `json:"environment,omitempty" xml:"environment,omitempty"`
+	Environment map[string]*string `json:"environment" xml:"environment"`
 	// 代码解释器会话的超时时间，单位为秒
 	//
 	// example:

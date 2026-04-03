@@ -22,7 +22,7 @@ type PolarFsConfig struct {
 	//
 	// 1000
 	GroupId     *int32                `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	MountPoints []*PolarFsMountConfig `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	MountPoints []*PolarFsMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 	// example:
 	//
 	// 1000

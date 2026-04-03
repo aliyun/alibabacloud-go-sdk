@@ -17,6 +17,8 @@ type iCreateAgentRuntimeEndpointInput interface {
 	GetDisablePublicNetworkAccess() *bool
 	SetRoutingConfiguration(v *RoutingConfiguration) *CreateAgentRuntimeEndpointInput
 	GetRoutingConfiguration() *RoutingConfiguration
+	SetScalingConfig(v *ScalingConfig) *CreateAgentRuntimeEndpointInput
+	GetScalingConfig() *ScalingConfig
 	SetTargetVersion(v string) *CreateAgentRuntimeEndpointInput
 	GetTargetVersion() *string
 }
@@ -38,6 +40,8 @@ type CreateAgentRuntimeEndpointInput struct {
 	//
 	// {}
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
+	// 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
+	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 智能体运行时的目标版本
 	//
 	// example:
@@ -70,6 +74,10 @@ func (s *CreateAgentRuntimeEndpointInput) GetRoutingConfiguration() *RoutingConf
 	return s.RoutingConfiguration
 }
 
+func (s *CreateAgentRuntimeEndpointInput) GetScalingConfig() *ScalingConfig {
+	return s.ScalingConfig
+}
+
 func (s *CreateAgentRuntimeEndpointInput) GetTargetVersion() *string {
 	return s.TargetVersion
 }
@@ -94,6 +102,11 @@ func (s *CreateAgentRuntimeEndpointInput) SetRoutingConfiguration(v *RoutingConf
 	return s
 }
 
+func (s *CreateAgentRuntimeEndpointInput) SetScalingConfig(v *ScalingConfig) *CreateAgentRuntimeEndpointInput {
+	s.ScalingConfig = v
+	return s
+}
+
 func (s *CreateAgentRuntimeEndpointInput) SetTargetVersion(v string) *CreateAgentRuntimeEndpointInput {
 	s.TargetVersion = &v
 	return s
@@ -102,6 +115,11 @@ func (s *CreateAgentRuntimeEndpointInput) SetTargetVersion(v string) *CreateAgen
 func (s *CreateAgentRuntimeEndpointInput) Validate() error {
 	if s.RoutingConfiguration != nil {
 		if err := s.RoutingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingConfig != nil {
+		if err := s.ScalingConfig.Validate(); err != nil {
 			return err
 		}
 	}

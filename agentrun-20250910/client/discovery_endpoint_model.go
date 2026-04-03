@@ -20,7 +20,7 @@ type iDiscoveryEndpoint interface {
 }
 
 type DiscoveryEndpoint struct {
-	AgentEndpointConfigs []*AgentEndpointConfig `json:"agentEndpointConfigs,omitempty" xml:"agentEndpointConfigs,omitempty" type:"Repeated"`
+	AgentEndpointConfigs []*AgentEndpointConfig `json:"agentEndpointConfigs" xml:"agentEndpointConfigs" type:"Repeated"`
 	// 该发现端点使用的凭证名称
 	CredentialName *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Name           *string `json:"name,omitempty" xml:"name,omitempty"`

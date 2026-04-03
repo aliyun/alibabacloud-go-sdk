@@ -44,7 +44,7 @@ type ModelService struct {
 	CredentialName       *string               `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
 	LastUpdatedAt        *string               `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
-	ModelInfoConfigs     []*ModelInfoConfig    `json:"modelInfoConfigs,omitempty" xml:"modelInfoConfigs,omitempty" type:"Repeated"`
+	ModelInfoConfigs     []*ModelInfoConfig    `json:"modelInfoConfigs" xml:"modelInfoConfigs" type:"Repeated"`
 	ModelServiceId       *string               `json:"modelServiceId,omitempty" xml:"modelServiceId,omitempty"`
 	ModelServiceName     *string               `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
 	ModelType            *string               `json:"modelType,omitempty" xml:"modelType,omitempty"`

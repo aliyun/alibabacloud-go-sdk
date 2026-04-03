@@ -16,7 +16,7 @@ type iActivateTemplateMCPRequest interface {
 }
 
 type ActivateTemplateMCPRequest struct {
-	EnabledTools []*string `json:"enabledTools,omitempty" xml:"enabledTools,omitempty" type:"Repeated"`
+	EnabledTools []*string `json:"enabledTools" xml:"enabledTools" type:"Repeated"`
 	// example:
 	//
 	// streamable-http

@@ -21,7 +21,7 @@ type iListTemplatesOutput interface {
 
 type ListTemplatesOutput struct {
 	// This parameter is required.
-	Items []*Template `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items []*Template `json:"items" xml:"items" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:

@@ -20,7 +20,7 @@ type iListToolsOutput interface {
 }
 
 type ListToolsOutput struct {
-	Data     []*ToolListItem `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Data     []*ToolListItem `json:"data" xml:"data" type:"Repeated"`
 	PageNum  *int32          `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize *int32          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total    *int32          `json:"total,omitempty" xml:"total,omitempty"`

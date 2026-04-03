@@ -20,7 +20,7 @@ type iProviderSettings interface {
 type ProviderSettings struct {
 	ApiKey     *string   `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	BaseUrl    *string   `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	ModelNames []*string `json:"modelNames,omitempty" xml:"modelNames,omitempty" type:"Repeated"`
+	ModelNames []*string `json:"modelNames" xml:"modelNames" type:"Repeated"`
 }
 
 func (s ProviderSettings) String() string {

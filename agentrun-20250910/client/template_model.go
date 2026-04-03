@@ -83,7 +83,7 @@ type Template struct {
 	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnableAgent             *bool                    `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	EnvironmentVariables    map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
 	ExecutionRoleArn        *string                  `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
 	LastUpdatedAt           *string                  `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	LogConfiguration        *LogConfiguration        `json:"logConfiguration,omitempty" xml:"logConfiguration,omitempty"`
@@ -93,7 +93,7 @@ type Template struct {
 	Memory                      *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
 	NasConfig                   *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	NetworkConfiguration        *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration            []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
+	OssConfiguration            []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
 	ResourceName                *string               `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
 	SandboxIdleTimeoutInSeconds *string               `json:"sandboxIdleTimeoutInSeconds,omitempty" xml:"sandboxIdleTimeoutInSeconds,omitempty"`
 	// Deprecated
@@ -102,7 +102,7 @@ type Template struct {
 	Status                *string                `json:"status,omitempty" xml:"status,omitempty"`
 	StatusReason          *string                `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	TemplateArn           *string                `json:"templateArn,omitempty" xml:"templateArn,omitempty"`
-	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
 	// This parameter is required.
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 	// This parameter is required.
@@ -453,7 +453,7 @@ func (s *Template) Validate() error {
 }
 
 type TemplateMcpOptions struct {
-	EnabledTools []*string `json:"enabledTools,omitempty" xml:"enabledTools,omitempty" type:"Repeated"`
+	EnabledTools []*string `json:"enabledTools" xml:"enabledTools" type:"Repeated"`
 	// example:
 	//
 	// streamable-http

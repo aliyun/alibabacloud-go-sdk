@@ -33,7 +33,7 @@ type ContainerConfiguration struct {
 	// example:
 	//
 	// python3,app.py
-	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
+	Command []*string `json:"command" xml:"command" type:"Repeated"`
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/my-namespace/agent-runtime:latest

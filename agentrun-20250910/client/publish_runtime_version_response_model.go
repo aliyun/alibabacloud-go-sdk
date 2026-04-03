@@ -18,7 +18,7 @@ type iPublishRuntimeVersionResponse interface {
 }
 
 type PublishRuntimeVersionResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	Headers    map[string]*string         `json:"headers" xml:"headers"`
 	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 	Body       *AgentRuntimeVersionResult `json:"body,omitempty" xml:"body,omitempty"`
 }

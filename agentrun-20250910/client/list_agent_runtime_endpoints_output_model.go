@@ -20,7 +20,7 @@ type iListAgentRuntimeEndpointsOutput interface {
 }
 
 type ListAgentRuntimeEndpointsOutput struct {
-	Items      []*AgentRuntimeEndpoint `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*AgentRuntimeEndpoint `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *int                    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int                    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int                    `json:"total,omitempty" xml:"total,omitempty"`

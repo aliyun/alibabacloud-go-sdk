@@ -18,8 +18,8 @@ type iCustomRuntimeConfig interface {
 }
 
 type CustomRuntimeConfig struct {
-	Args    []*string `json:"args,omitempty" xml:"args,omitempty" type:"Repeated"`
-	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
+	Args    []*string `json:"args" xml:"args" type:"Repeated"`
+	Command []*string `json:"command" xml:"command" type:"Repeated"`
 	Port    *int32    `json:"port,omitempty" xml:"port,omitempty"`
 }
 

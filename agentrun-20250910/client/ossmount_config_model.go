@@ -14,7 +14,7 @@ type iOSSMountConfig interface {
 }
 
 type OSSMountConfig struct {
-	MountPoints []*OSSMountPoint `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	MountPoints []*OSSMountPoint `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 }
 
 func (s OSSMountConfig) String() string {

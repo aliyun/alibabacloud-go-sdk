@@ -23,7 +23,7 @@ type BrowserSessionListOut struct {
 	// example:
 	//
 	// []
-	Items []*BrowserSessionOut `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items []*BrowserSessionOut `json:"items" xml:"items" type:"Repeated"`
 	// example:
 	//
 	// 1

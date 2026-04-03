@@ -23,9 +23,9 @@ type iAiServiceConfig interface {
 
 type AiServiceConfig struct {
 	Address           *string   `json:"address,omitempty" xml:"address,omitempty"`
-	ApiKeys           []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	ApiKeys           []*string `json:"apiKeys" xml:"apiKeys" type:"Repeated"`
 	EnableHealthCheck *bool     `json:"enableHealthCheck,omitempty" xml:"enableHealthCheck,omitempty"`
-	Protocols         []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
+	Protocols         []*string `json:"protocols" xml:"protocols" type:"Repeated"`
 	Provider          *string   `json:"provider,omitempty" xml:"provider,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iProxyConfig interface {
 }
 
 type ProxyConfig struct {
-	Endpoints []*ProxyConfigEndpoints `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	Endpoints []*ProxyConfigEndpoints `json:"endpoints" xml:"endpoints" type:"Repeated"`
 	Policies  *ProxyConfigPolicies    `json:"policies,omitempty" xml:"policies,omitempty" type:"Struct"`
 }
 
@@ -66,7 +66,7 @@ func (s *ProxyConfig) Validate() error {
 
 type ProxyConfigEndpoints struct {
 	BaseUrl          *string   `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	ModelNames       []*string `json:"modelNames,omitempty" xml:"modelNames,omitempty" type:"Repeated"`
+	ModelNames       []*string `json:"modelNames" xml:"modelNames" type:"Repeated"`
 	ModelServiceName *string   `json:"modelServiceName,omitempty" xml:"modelServiceName,omitempty"`
 	Weight           *int32    `json:"weight,omitempty" xml:"weight,omitempty"`
 }
@@ -123,7 +123,7 @@ type ProxyConfigPolicies struct {
 	AiGuardrailConfig *ProxyConfigPoliciesAiGuardrailConfig `json:"aiGuardrailConfig,omitempty" xml:"aiGuardrailConfig,omitempty" type:"Struct"`
 	Cache             *bool                                 `json:"cache,omitempty" xml:"cache,omitempty"`
 	ConcurrencyLimit  *int32                                `json:"concurrencyLimit,omitempty" xml:"concurrencyLimit,omitempty"`
-	Fallbacks         []*ProxyConfigPoliciesFallbacks       `json:"fallbacks,omitempty" xml:"fallbacks,omitempty" type:"Repeated"`
+	Fallbacks         []*ProxyConfigPoliciesFallbacks       `json:"fallbacks" xml:"fallbacks" type:"Repeated"`
 	NumRetries        *int32                                `json:"numRetries,omitempty" xml:"numRetries,omitempty"`
 	RequestTimeout    *int32                                `json:"requestTimeout,omitempty" xml:"requestTimeout,omitempty"`
 	TokenRateLimiter  *ProxyConfigPoliciesTokenRateLimiter  `json:"tokenRateLimiter,omitempty" xml:"tokenRateLimiter,omitempty" type:"Struct"`

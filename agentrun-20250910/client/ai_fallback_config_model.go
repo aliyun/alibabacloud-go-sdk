@@ -14,7 +14,7 @@ type iAiFallbackConfig interface {
 }
 
 type AiFallbackConfig struct {
-	ServiceConfigs []*AiFallbackServiceConfig `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	ServiceConfigs []*AiFallbackServiceConfig `json:"serviceConfigs" xml:"serviceConfigs" type:"Repeated"`
 }
 
 func (s AiFallbackConfig) String() string {

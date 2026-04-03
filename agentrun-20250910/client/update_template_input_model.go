@@ -75,7 +75,7 @@ type UpdateTemplateInput struct {
 	//
 	// true
 	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	// example:
 	//
 	// arn:acs:agentrun:cn-hangzhou:123456789:xxx/test
@@ -89,7 +89,7 @@ type UpdateTemplateInput struct {
 	Memory               *int32                `json:"memory,omitempty" xml:"memory,omitempty"`
 	NasConfig            *NASConfig            `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
+	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
 	// 沙箱空闲超时时间（秒）
 	//
 	// example:
@@ -106,7 +106,7 @@ type UpdateTemplateInput struct {
 	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
 	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
-	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
 	// example:
 	//
 	// ws-1234567890abcdef

@@ -26,10 +26,10 @@ type iLLMAPIConfiguration interface {
 }
 
 type LLMAPIConfiguration struct {
-	AiProtocols             []*string             `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	AttachPolicyConfigs     []*AttachPolicyConfig `json:"attachPolicyConfigs,omitempty" xml:"attachPolicyConfigs,omitempty" type:"Repeated"`
+	AiProtocols             []*string             `json:"aiProtocols" xml:"aiProtocols" type:"Repeated"`
+	AttachPolicyConfigs     []*AttachPolicyConfig `json:"attachPolicyConfigs" xml:"attachPolicyConfigs" type:"Repeated"`
 	BasePath                *string               `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	DeployConfigs           []*LLMDeployConfig    `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	DeployConfigs           []*LLMDeployConfig    `json:"deployConfigs" xml:"deployConfigs" type:"Repeated"`
 	ModelCategory           *string               `json:"modelCategory,omitempty" xml:"modelCategory,omitempty"`
 	RemoveBasePathOnForward *bool                 `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
 	Type                    *string               `json:"type,omitempty" xml:"type,omitempty"`

@@ -39,7 +39,7 @@ type CreateModelServiceInput struct {
 	// Auto generate task: Pipeline[pipeline-run-1742178254775] pipelineTemplate[data-export-service-online-iVnQB5] taskTemplate[serverless-runner-task], time[2025-03-17T02:24:36Z]
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// modelInfoConfigs
-	ModelInfoConfigs []*ModelInfoConfig `json:"modelInfoConfigs,omitempty" xml:"modelInfoConfigs,omitempty" type:"Repeated"`
+	ModelInfoConfigs []*ModelInfoConfig `json:"modelInfoConfigs" xml:"modelInfoConfigs" type:"Repeated"`
 	// modelServiceName
 	//
 	// This parameter is required.

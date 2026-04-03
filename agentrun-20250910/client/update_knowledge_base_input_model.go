@@ -24,8 +24,8 @@ type iUpdateKnowledgeBaseInput interface {
 type UpdateKnowledgeBaseInput struct {
 	CredentialName   *string                `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description      *string                `json:"description,omitempty" xml:"description,omitempty"`
-	ProviderSettings map[string]interface{} `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
-	RetrieveSettings map[string]interface{} `json:"retrieveSettings,omitempty" xml:"retrieveSettings,omitempty"`
+	ProviderSettings map[string]interface{} `json:"providerSettings" xml:"providerSettings"`
+	RetrieveSettings map[string]interface{} `json:"retrieveSettings" xml:"retrieveSettings"`
 	WorkspaceId      *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 

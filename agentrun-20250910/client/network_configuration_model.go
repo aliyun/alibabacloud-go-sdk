@@ -35,7 +35,7 @@ type NetworkConfiguration struct {
 	// example:
 	//
 	// vsw-1234567890abcdef0,vsw-abcdef1234567890
-	VswitchIds []*string `json:"vswitchIds,omitempty" xml:"vswitchIds,omitempty" type:"Repeated"`
+	VswitchIds []*string `json:"vswitchIds" xml:"vswitchIds" type:"Repeated"`
 }
 
 func (s NetworkConfiguration) String() string {

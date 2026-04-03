@@ -20,7 +20,7 @@ type ScalingConfig struct {
 	//
 	// 2
 	MinInstances      *int64             `json:"minInstances,omitempty" xml:"minInstances,omitempty"`
-	ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies,omitempty" xml:"scheduledPolicies,omitempty" type:"Repeated"`
+	ScheduledPolicies []*ScheduledPolicy `json:"scheduledPolicies" xml:"scheduledPolicies" type:"Repeated"`
 }
 
 func (s ScalingConfig) String() string {

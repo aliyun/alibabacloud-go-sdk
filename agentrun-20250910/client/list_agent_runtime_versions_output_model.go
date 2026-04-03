@@ -20,7 +20,7 @@ type iListAgentRuntimeVersionsOutput interface {
 }
 
 type ListAgentRuntimeVersionsOutput struct {
-	Items      []*AgentRuntimeVersion `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*AgentRuntimeVersion `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *int                   `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int                   `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int                   `json:"total,omitempty" xml:"total,omitempty"`

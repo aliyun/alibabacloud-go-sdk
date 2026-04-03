@@ -20,7 +20,7 @@ type iListModelServicesOutput interface {
 }
 
 type ListModelServicesOutput struct {
-	Items      []*ModelService `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*ModelService `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *int32          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int64          `json:"total,omitempty" xml:"total,omitempty"`

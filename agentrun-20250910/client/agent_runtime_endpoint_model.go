@@ -25,6 +25,8 @@ type iAgentRuntimeEndpoint interface {
 	GetEndpointPublicUrl() *string
 	SetRoutingConfiguration(v *RoutingConfiguration) *AgentRuntimeEndpoint
 	GetRoutingConfiguration() *RoutingConfiguration
+	SetScalingStatus(v *ScalingStatus) *AgentRuntimeEndpoint
+	GetScalingStatus() *ScalingStatus
 	SetStatus(v string) *AgentRuntimeEndpoint
 	GetStatus() *string
 	SetStatusReason(v string) *AgentRuntimeEndpoint
@@ -64,6 +66,8 @@ type AgentRuntimeEndpoint struct {
 	EndpointPublicUrl *string `json:"endpointPublicUrl,omitempty" xml:"endpointPublicUrl,omitempty"`
 	// 智能体运行时端点的路由配置，支持多版本权重分配
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
+	// 端点的弹性伸缩状态，包括最小/目标/当前实例数及定时策略（复用 ScalingStatus）
+	ScalingStatus *ScalingStatus `json:"scalingStatus,omitempty" xml:"scalingStatus,omitempty"`
 	// example:
 	//
 	// ACTIVE
@@ -118,6 +122,10 @@ func (s *AgentRuntimeEndpoint) GetRoutingConfiguration() *RoutingConfiguration {
 	return s.RoutingConfiguration
 }
 
+func (s *AgentRuntimeEndpoint) GetScalingStatus() *ScalingStatus {
+	return s.ScalingStatus
+}
+
 func (s *AgentRuntimeEndpoint) GetStatus() *string {
 	return s.Status
 }
@@ -170,6 +178,11 @@ func (s *AgentRuntimeEndpoint) SetRoutingConfiguration(v *RoutingConfiguration) 
 	return s
 }
 
+func (s *AgentRuntimeEndpoint) SetScalingStatus(v *ScalingStatus) *AgentRuntimeEndpoint {
+	s.ScalingStatus = v
+	return s
+}
+
 func (s *AgentRuntimeEndpoint) SetStatus(v string) *AgentRuntimeEndpoint {
 	s.Status = &v
 	return s
@@ -188,6 +201,11 @@ func (s *AgentRuntimeEndpoint) SetTargetVersion(v string) *AgentRuntimeEndpoint 
 func (s *AgentRuntimeEndpoint) Validate() error {
 	if s.RoutingConfiguration != nil {
 		if err := s.RoutingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingStatus != nil {
+		if err := s.ScalingStatus.Validate(); err != nil {
 			return err
 		}
 	}

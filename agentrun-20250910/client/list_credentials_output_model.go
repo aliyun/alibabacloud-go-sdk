@@ -20,7 +20,7 @@ type iListCredentialsOutput interface {
 }
 
 type ListCredentialsOutput struct {
-	Items      []*CredentialListItem `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*CredentialListItem `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *string               `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *string               `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *string               `json:"total,omitempty" xml:"total,omitempty"`

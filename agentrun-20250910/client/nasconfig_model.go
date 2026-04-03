@@ -22,7 +22,7 @@ type NASConfig struct {
 	//
 	// 100
 	GroupId     *int32            `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	MountPoints []*NASMountConfig `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
+	MountPoints []*NASMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
 	// example:
 	//
 	// 100

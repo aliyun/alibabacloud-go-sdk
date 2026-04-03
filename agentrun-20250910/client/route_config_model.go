@@ -19,7 +19,7 @@ type RouteConfig struct {
 	// example:
 	//
 	// []
-	Routes []*PathConfig `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+	Routes []*PathConfig `json:"routes" xml:"routes" type:"Repeated"`
 }
 
 func (s RouteConfig) String() string {

@@ -17,7 +17,7 @@ type iTriggerConfig interface {
 
 type TriggerConfig struct {
 	AuthType *string   `json:"authType,omitempty" xml:"authType,omitempty"`
-	Methods  []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	Methods  []*string `json:"methods" xml:"methods" type:"Repeated"`
 }
 
 func (s TriggerConfig) String() string {

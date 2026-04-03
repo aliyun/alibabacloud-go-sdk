@@ -1,3 +1,13 @@
+2026-04-03 Version: v5.6.0
+- Support API CreateTool.
+- Support API DeleteTool.
+- Support API GetTool.
+- Support API ListTools.
+- Support API PauseSandbox.
+- Support API ResumeSandbox.
+- Support API UpdateTool.
+
+
 2026-03-25 Version: v5.5.3
 - Update API ListSandboxes: add request parameters sandboxId.
 

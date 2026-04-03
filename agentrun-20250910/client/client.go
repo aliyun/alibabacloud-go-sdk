@@ -908,6 +908,75 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 
 // Summary:
 //
+// 创建工具
+//
+// Description:
+//
+// 创建一个新的工具，支持创建 MCP、函数调用和技能等多种类型的工具。工具创建后可以被 Agent 调用以扩展其能力。
+//
+// @param request - CreateToolRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateToolResponse
+func (client *Client) CreateToolWithOptions(request *CreateToolRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateToolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTool"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/tools"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateToolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工具
+//
+// Description:
+//
+// 创建一个新的工具，支持创建 MCP、函数调用和技能等多种类型的工具。工具创建后可以被 Agent 调用以扩展其能力。
+//
+// @param request - CreateToolRequest
+//
+// @return CreateToolResponse
+func (client *Client) CreateTool(request *CreateToolRequest) (_result *CreateToolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateToolResponse{}
+	_body, _err := client.CreateToolWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建工作空间
 //
 // Description:
@@ -1600,6 +1669,64 @@ func (client *Client) DeleteTemplate(templateName *string) (_result *DeleteTempl
 	headers := make(map[string]*string)
 	_result = &DeleteTemplateResponse{}
 	_body, _err := client.DeleteTemplateWithOptions(templateName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工具
+//
+// Description:
+//
+// 删除指定的工具。删除操作不可逆，请谨慎操作。删除工具后，所有引用该工具的 Agent 将无法继续使用该工具。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteToolResponse
+func (client *Client) DeleteToolWithOptions(toolName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteToolResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTool"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/tools/" + dara.PercentEncode(dara.StringValue(toolName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteToolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工具
+//
+// Description:
+//
+// 删除指定的工具。删除操作不可逆，请谨慎操作。删除工具后，所有引用该工具的 Agent 将无法继续使用该工具。
+//
+// @return DeleteToolResponse
+func (client *Client) DeleteTool(toolName *string) (_result *DeleteToolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteToolResponse{}
+	_body, _err := client.DeleteToolWithOptions(toolName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2388,6 +2515,64 @@ func (client *Client) GetTemplate(templateName *string) (_result *GetTemplateRes
 	headers := make(map[string]*string)
 	_result = &GetTemplateResponse{}
 	_body, _err := client.GetTemplateWithOptions(templateName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工具详情
+//
+// Description:
+//
+// 根据工具名称获取工具的完整配置信息，包括工具的基本信息、资源配置、网络配置、运行状态等所有详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetToolResponse
+func (client *Client) GetToolWithOptions(toolName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetToolResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTool"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/tools/" + dara.PercentEncode(dara.StringValue(toolName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetToolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工具详情
+//
+// Description:
+//
+// 根据工具名称获取工具的完整配置信息，包括工具的基本信息、资源配置、网络配置、运行状态等所有详细信息。
+//
+// @return GetToolResponse
+func (client *Client) GetTool(toolName *string) (_result *GetToolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetToolResponse{}
+	_body, _err := client.GetToolWithOptions(toolName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3741,6 +3926,96 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 
 // Summary:
 //
+// 工具列表
+//
+// Description:
+//
+// 查询工具列表，支持分页查询和按工具类型、工作空间等条件过滤。返回符合条件的工具列表及分页信息。
+//
+// @param request - ListToolsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListToolsResponse
+func (client *Client) ListToolsWithOptions(request *ListToolsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListToolsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ToolType) {
+		query["toolType"] = request.ToolType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTools"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/tools"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListToolsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工具列表
+//
+// Description:
+//
+// 查询工具列表，支持分页查询和按工具类型、工作空间等条件过滤。返回符合条件的工具列表及分页信息。
+//
+// @param request - ListToolsRequest
+//
+// @return ListToolsResponse
+func (client *Client) ListTools(request *ListToolsRequest) (_result *ListToolsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListToolsResponse{}
+	_body, _err := client.ListToolsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取工作空间列表
 //
 // Description:
@@ -3827,6 +4102,64 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
+// 暂停沙箱
+//
+// Description:
+//
+// 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseSandboxResponse
+func (client *Client) PauseSandboxWithOptions(sandboxId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PauseSandboxResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PauseSandbox"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/sandboxes/" + dara.PercentEncode(dara.StringValue(sandboxId)) + "/pause"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PauseSandboxResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停沙箱
+//
+// Description:
+//
+// 停止指定的沙箱实例。停止后，沙箱将进入TERMINATED状态。
+//
+// @return PauseSandboxResponse
+func (client *Client) PauseSandbox(sandboxId *string) (_result *PauseSandboxResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PauseSandboxResponse{}
+	_body, _err := client.PauseSandboxWithOptions(sandboxId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 发布运行时版本
 //
 // Description:
@@ -3896,7 +4229,57 @@ func (client *Client) PublishRuntimeVersion(agentRuntimeId *string, request *Pub
 
 // Summary:
 //
-// 删除沙箱
+// 恢复沙箱
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeSandboxResponse
+func (client *Client) ResumeSandboxWithOptions(sandboxId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResumeSandboxResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResumeSandbox"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/sandboxes/" + dara.PercentEncode(dara.StringValue(sandboxId)) + "/resume"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResumeSandboxResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复沙箱
+//
+// @return ResumeSandboxResponse
+func (client *Client) ResumeSandbox(sandboxId *string) (_result *ResumeSandboxResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResumeSandboxResponse{}
+	_body, _err := client.ResumeSandboxWithOptions(sandboxId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止沙箱
 //
 // Description:
 //
@@ -3933,7 +4316,7 @@ func (client *Client) StopSandboxWithOptions(sandboxId *string, headers map[stri
 
 // Summary:
 //
-// 删除沙箱
+// 停止沙箱
 //
 // Description:
 //
@@ -4566,6 +4949,75 @@ func (client *Client) UpdateTemplate(templateName *string, request *UpdateTempla
 	headers := make(map[string]*string)
 	_result = &UpdateTemplateResponse{}
 	_body, _err := client.UpdateTemplateWithOptions(templateName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工具
+//
+// Description:
+//
+// 更新现有工具的配置信息，可以修改工具的描述、资源配置、网络配置等。更新操作支持部分更新，只需提供需要修改的字段。
+//
+// @param request - UpdateToolRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateToolResponse
+func (client *Client) UpdateToolWithOptions(toolName *string, request *UpdateToolRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateToolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTool"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/agents/tools/" + dara.PercentEncode(dara.StringValue(toolName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateToolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工具
+//
+// Description:
+//
+// 更新现有工具的配置信息，可以修改工具的描述、资源配置、网络配置等。更新操作支持部分更新，只需提供需要修改的字段。
+//
+// @param request - UpdateToolRequest
+//
+// @return UpdateToolResponse
+func (client *Client) UpdateTool(toolName *string, request *UpdateToolRequest) (_result *UpdateToolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateToolResponse{}
+	_body, _err := client.UpdateToolWithOptions(toolName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

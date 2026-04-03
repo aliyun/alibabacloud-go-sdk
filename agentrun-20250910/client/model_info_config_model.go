@@ -22,7 +22,7 @@ type iModelInfoConfig interface {
 type ModelInfoConfig struct {
 	ModelFeatures       *ModelFeatures        `json:"modelFeatures,omitempty" xml:"modelFeatures,omitempty"`
 	ModelName           *string               `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	ModelParameterRules []*ModelParameterRule `json:"modelParameterRules,omitempty" xml:"modelParameterRules,omitempty" type:"Repeated"`
+	ModelParameterRules []*ModelParameterRule `json:"modelParameterRules" xml:"modelParameterRules" type:"Repeated"`
 	ModelProperties     *ModelProperties      `json:"modelProperties,omitempty" xml:"modelProperties,omitempty"`
 }
 

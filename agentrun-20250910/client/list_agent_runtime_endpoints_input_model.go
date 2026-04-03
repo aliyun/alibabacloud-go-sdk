@@ -27,7 +27,7 @@ type ListAgentRuntimeEndpointsInput struct {
 	// 每页记录数
 	PageSize *int `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// 按状态过滤
-	Statuses []*string `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
+	Statuses []*string `json:"statuses" xml:"statuses" type:"Repeated"`
 }
 
 func (s ListAgentRuntimeEndpointsInput) String() string {

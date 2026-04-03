@@ -81,7 +81,7 @@ type CreateTemplateInput struct {
 	// 10240
 	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	EnableAgent          *bool              `json:"enableAgent,omitempty" xml:"enableAgent,omitempty"`
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	// example:
 	//
 	// acs:ram::123456789:role/aliyunfcdefaultrole
@@ -98,7 +98,7 @@ type CreateTemplateInput struct {
 	NasConfig *NASConfig `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
 	// This parameter is required.
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
-	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration,omitempty" xml:"ossConfiguration,omitempty" type:"Repeated"`
+	OssConfiguration     []*OssConfiguration   `json:"ossConfiguration" xml:"ossConfiguration" type:"Repeated"`
 	// 沙箱空闲超时时间（秒）
 	//
 	// example:
@@ -115,7 +115,7 @@ type CreateTemplateInput struct {
 	SandboxTTLInSeconds *int32         `json:"sandboxTTLInSeconds,omitempty" xml:"sandboxTTLInSeconds,omitempty"`
 	ScalingConfig       *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 模板配置（灵活的对象结构，根据 templateType 不同而不同）
-	TemplateConfiguration map[string]interface{} `json:"templateConfiguration,omitempty" xml:"templateConfiguration,omitempty"`
+	TemplateConfiguration map[string]interface{} `json:"templateConfiguration" xml:"templateConfiguration"`
 	// 模板名称（要求账号唯一的）
 	//
 	// This parameter is required.

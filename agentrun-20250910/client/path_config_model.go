@@ -31,7 +31,7 @@ type PathConfig struct {
 	// example:
 	//
 	// [\"GET\"]
-	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+	Methods []*string `json:"methods" xml:"methods" type:"Repeated"`
 	// 此条路由规则对应的请求路径。
 	//
 	// example:

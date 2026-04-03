@@ -17,7 +17,7 @@ type iMCPBackendConfig interface {
 
 type MCPBackendConfig struct {
 	Scene    *string             `json:"scene,omitempty" xml:"scene,omitempty"`
-	Services []*MCPServiceConfig `json:"services,omitempty" xml:"services,omitempty" type:"Repeated"`
+	Services []*MCPServiceConfig `json:"services" xml:"services" type:"Repeated"`
 }
 
 func (s MCPBackendConfig) String() string {

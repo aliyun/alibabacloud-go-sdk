@@ -20,7 +20,7 @@ type iListCustomDomainsOutput interface {
 }
 
 type ListCustomDomainsOutput struct {
-	Items      []*CustomDomain `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*CustomDomain `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *int32          `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32          `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int32          `json:"total,omitempty" xml:"total,omitempty"`

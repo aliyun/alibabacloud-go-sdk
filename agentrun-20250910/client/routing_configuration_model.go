@@ -15,7 +15,7 @@ type iRoutingConfiguration interface {
 
 type RoutingConfiguration struct {
 	// 不同版本的流量权重配置
-	VersionWeights []*VersionWeight `json:"versionWeights,omitempty" xml:"versionWeights,omitempty" type:"Repeated"`
+	VersionWeights []*VersionWeight `json:"versionWeights" xml:"versionWeights" type:"Repeated"`
 }
 
 func (s RoutingConfiguration) String() string {

@@ -43,7 +43,7 @@ type ListAgentRuntimesInput struct {
 	// example:
 	//
 	// READY,CREATING
-	Statuses []*string `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
+	Statuses []*string `json:"statuses" xml:"statuses" type:"Repeated"`
 }
 
 func (s ListAgentRuntimesInput) String() string {

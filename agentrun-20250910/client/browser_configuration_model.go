@@ -24,7 +24,7 @@ type iBrowserConfiguration interface {
 type BrowserConfiguration struct {
 	BrowserType *string `json:"browserType,omitempty" xml:"browserType,omitempty"`
 	// 要启用的浏览器扩展列表
-	EnableExtension []*string `json:"enableExtension,omitempty" xml:"enableExtension,omitempty" type:"Repeated"`
+	EnableExtension []*string `json:"enableExtension" xml:"enableExtension" type:"Repeated"`
 	// 是否以无头模式运行浏览器
 	Headless *bool `json:"headless,omitempty" xml:"headless,omitempty"`
 	// 浏览器用户代理字符串

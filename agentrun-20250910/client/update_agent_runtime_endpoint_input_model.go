@@ -11,12 +11,16 @@ type iUpdateAgentRuntimeEndpointInput interface {
 	GoString() string
 	SetAgentRuntimeEndpointName(v string) *UpdateAgentRuntimeEndpointInput
 	GetAgentRuntimeEndpointName() *string
+	SetDeleteScalingConfig(v bool) *UpdateAgentRuntimeEndpointInput
+	GetDeleteScalingConfig() *bool
 	SetDescription(v string) *UpdateAgentRuntimeEndpointInput
 	GetDescription() *string
 	SetDisablePublicNetworkAccess(v bool) *UpdateAgentRuntimeEndpointInput
 	GetDisablePublicNetworkAccess() *bool
 	SetRoutingConfiguration(v *RoutingConfiguration) *UpdateAgentRuntimeEndpointInput
 	GetRoutingConfiguration() *RoutingConfiguration
+	SetScalingConfig(v *ScalingConfig) *UpdateAgentRuntimeEndpointInput
+	GetScalingConfig() *ScalingConfig
 	SetTargetVersion(v string) *UpdateAgentRuntimeEndpointInput
 	GetTargetVersion() *string
 }
@@ -26,6 +30,8 @@ type UpdateAgentRuntimeEndpointInput struct {
 	//
 	// production-endpoint
 	AgentRuntimeEndpointName *string `json:"agentRuntimeEndpointName,omitempty" xml:"agentRuntimeEndpointName,omitempty"`
+	// 为 true 时删除该端点的弹性配置
+	DeleteScalingConfig *bool `json:"deleteScalingConfig,omitempty" xml:"deleteScalingConfig,omitempty"`
 	// example:
 	//
 	// Updated endpoint configuration
@@ -38,6 +44,8 @@ type UpdateAgentRuntimeEndpointInput struct {
 	//
 	// {}
 	RoutingConfiguration *RoutingConfiguration `json:"routingConfiguration,omitempty" xml:"routingConfiguration,omitempty"`
+	// 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
+	ScalingConfig *ScalingConfig `json:"scalingConfig,omitempty" xml:"scalingConfig,omitempty"`
 	// 智能体运行时的目标版本
 	//
 	// example:
@@ -58,6 +66,10 @@ func (s *UpdateAgentRuntimeEndpointInput) GetAgentRuntimeEndpointName() *string 
 	return s.AgentRuntimeEndpointName
 }
 
+func (s *UpdateAgentRuntimeEndpointInput) GetDeleteScalingConfig() *bool {
+	return s.DeleteScalingConfig
+}
+
 func (s *UpdateAgentRuntimeEndpointInput) GetDescription() *string {
 	return s.Description
 }
@@ -70,12 +82,21 @@ func (s *UpdateAgentRuntimeEndpointInput) GetRoutingConfiguration() *RoutingConf
 	return s.RoutingConfiguration
 }
 
+func (s *UpdateAgentRuntimeEndpointInput) GetScalingConfig() *ScalingConfig {
+	return s.ScalingConfig
+}
+
 func (s *UpdateAgentRuntimeEndpointInput) GetTargetVersion() *string {
 	return s.TargetVersion
 }
 
 func (s *UpdateAgentRuntimeEndpointInput) SetAgentRuntimeEndpointName(v string) *UpdateAgentRuntimeEndpointInput {
 	s.AgentRuntimeEndpointName = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeEndpointInput) SetDeleteScalingConfig(v bool) *UpdateAgentRuntimeEndpointInput {
+	s.DeleteScalingConfig = &v
 	return s
 }
 
@@ -94,6 +115,11 @@ func (s *UpdateAgentRuntimeEndpointInput) SetRoutingConfiguration(v *RoutingConf
 	return s
 }
 
+func (s *UpdateAgentRuntimeEndpointInput) SetScalingConfig(v *ScalingConfig) *UpdateAgentRuntimeEndpointInput {
+	s.ScalingConfig = v
+	return s
+}
+
 func (s *UpdateAgentRuntimeEndpointInput) SetTargetVersion(v string) *UpdateAgentRuntimeEndpointInput {
 	s.TargetVersion = &v
 	return s
@@ -102,6 +128,11 @@ func (s *UpdateAgentRuntimeEndpointInput) SetTargetVersion(v string) *UpdateAgen
 func (s *UpdateAgentRuntimeEndpointInput) Validate() error {
 	if s.RoutingConfiguration != nil {
 		if err := s.RoutingConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScalingConfig != nil {
+		if err := s.ScalingConfig.Validate(); err != nil {
 			return err
 		}
 	}

@@ -55,7 +55,7 @@ type Sandbox struct {
 	// example:
 	//
 	// {}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Metadata map[string]interface{} `json:"metadata" xml:"metadata"`
 	// example:
 	//
 	// acs:ram::1760720386195983:role/aliyunfcdefaultrole

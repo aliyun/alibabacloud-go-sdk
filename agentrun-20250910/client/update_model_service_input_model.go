@@ -30,7 +30,7 @@ type iUpdateModelServiceInput interface {
 type UpdateModelServiceInput struct {
 	CredentialName       *string               `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	Description          *string               `json:"description,omitempty" xml:"description,omitempty"`
-	ModelInfoConfigs     []*ModelInfoConfig    `json:"modelInfoConfigs,omitempty" xml:"modelInfoConfigs,omitempty" type:"Repeated"`
+	ModelInfoConfigs     []*ModelInfoConfig    `json:"modelInfoConfigs" xml:"modelInfoConfigs" type:"Repeated"`
 	NetworkConfiguration *NetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty"`
 	ProviderSettings     *ProviderSettings     `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
 	Status               *string               `json:"status,omitempty" xml:"status,omitempty"`

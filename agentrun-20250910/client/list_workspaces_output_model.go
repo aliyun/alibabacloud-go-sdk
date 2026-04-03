@@ -23,7 +23,7 @@ type ListWorkspacesOutput struct {
 	PageNumber *int32       `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32       `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int64       `json:"total,omitempty" xml:"total,omitempty"`
-	Workspaces []*Workspace `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
+	Workspaces []*Workspace `json:"workspaces" xml:"workspaces" type:"Repeated"`
 }
 
 func (s ListWorkspacesOutput) String() string {

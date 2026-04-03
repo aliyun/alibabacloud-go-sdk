@@ -29,7 +29,7 @@ type CreateModelInput struct {
 	Address  *string   `json:"address,omitempty" xml:"address,omitempty"`
 	ApiKey   *string   `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	Desc     *string   `json:"desc,omitempty" xml:"desc,omitempty"`
-	Models   []*string `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	Models   []*string `json:"models" xml:"models" type:"Repeated"`
 	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
 	Provider *string   `json:"provider,omitempty" xml:"provider,omitempty"`
 	Type     *string   `json:"type,omitempty" xml:"type,omitempty"`

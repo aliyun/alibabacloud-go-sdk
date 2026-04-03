@@ -144,7 +144,7 @@ type AgentRuntime struct {
 	// example:
 	//
 	// ENV_VAR1=value1,ENV_VAR2=value2
-	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	// 为智能体运行时提供访问云服务权限的执行角色ARN
 	//
 	// example:

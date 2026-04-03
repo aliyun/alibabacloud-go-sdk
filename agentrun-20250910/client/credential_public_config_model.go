@@ -28,14 +28,14 @@ type iCredentialPublicConfig interface {
 }
 
 type CredentialPublicConfig struct {
-	AuthConfig   map[string]*string                  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	AuthConfig   map[string]*string                  `json:"authConfig" xml:"authConfig"`
 	AuthType     *string                             `json:"authType,omitempty" xml:"authType,omitempty"`
 	HeaderKey    *string                             `json:"headerKey,omitempty" xml:"headerKey,omitempty"`
 	Jwks         *string                             `json:"jwks,omitempty" xml:"jwks,omitempty"`
 	Prefix       *string                             `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	Provider     *string                             `json:"provider,omitempty" xml:"provider,omitempty"`
 	RemoteConfig *CredentialPublicConfigRemoteConfig `json:"remoteConfig,omitempty" xml:"remoteConfig,omitempty" type:"Struct"`
-	Users        []*CredentialPublicConfigUsers      `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
+	Users        []*CredentialPublicConfigUsers      `json:"users" xml:"users" type:"Repeated"`
 }
 
 func (s CredentialPublicConfig) String() string {

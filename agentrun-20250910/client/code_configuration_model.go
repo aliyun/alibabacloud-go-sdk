@@ -35,7 +35,7 @@ type CodeConfiguration struct {
 	// example:
 	//
 	// python,main.py
-	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
+	Command []*string `json:"command" xml:"command" type:"Repeated"`
 	// 代码运行时的编程语言，如 python3、nodejs 等
 	//
 	// example:

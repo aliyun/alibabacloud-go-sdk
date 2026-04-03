@@ -74,7 +74,7 @@ func (s *ListModelProvidersResponseBody) Validate() error {
 }
 
 type ListModelProvidersResponseBodyData struct {
-	Items []*ListModelProvidersResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items []*ListModelProvidersResponseBodyDataItems `json:"items" xml:"items" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -159,7 +159,7 @@ type ListModelProvidersResponseBodyDataItems struct {
 	//
 	// native
 	ModelType *string   `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	Models    []*string `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	Models    []*string `json:"models" xml:"models" type:"Repeated"`
 	// example:
 	//
 	// providerName

@@ -20,7 +20,7 @@ type iListMemoryCollectionsOutput interface {
 }
 
 type ListMemoryCollectionsOutput struct {
-	Items      []*MemoryCollection `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*MemoryCollection `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *int32              `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32              `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int64              `json:"total,omitempty" xml:"total,omitempty"`

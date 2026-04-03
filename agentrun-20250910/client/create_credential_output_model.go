@@ -38,12 +38,12 @@ type CreateCredentialOutput struct {
 	CredentialAuthType     *string            `json:"credentialAuthType,omitempty" xml:"credentialAuthType,omitempty"`
 	CredentialId           *string            `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
 	CredentialName         *string            `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	CredentialPublicConfig map[string]*string `json:"credentialPublicConfig,omitempty" xml:"credentialPublicConfig,omitempty"`
+	CredentialPublicConfig map[string]*string `json:"credentialPublicConfig" xml:"credentialPublicConfig"`
 	CredentialSecret       *string            `json:"credentialSecret,omitempty" xml:"credentialSecret,omitempty"`
 	CredentialSourceType   *string            `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
 	Description            *string            `json:"description,omitempty" xml:"description,omitempty"`
 	Enabled                *bool              `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	RelatedResources       []*RelatedResource `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	RelatedResources       []*RelatedResource `json:"relatedResources" xml:"relatedResources" type:"Repeated"`
 	UpdatedAt              *string            `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 

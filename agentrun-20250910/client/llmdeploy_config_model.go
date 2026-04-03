@@ -26,10 +26,10 @@ type iLLMDeployConfig interface {
 type LLMDeployConfig struct {
 	AutoDeploy      *bool                  `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
 	BackendScene    *string                `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	CustomDomainIds []*string              `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	CustomDomainIds []*string              `json:"customDomainIds" xml:"customDomainIds" type:"Repeated"`
 	GatewayType     *string                `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	PolicyConfigs   []*PolicyConfig        `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
-	ServiceConfigs  []*TargetServiceConfig `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	PolicyConfigs   []*PolicyConfig        `json:"policyConfigs" xml:"policyConfigs" type:"Repeated"`
+	ServiceConfigs  []*TargetServiceConfig `json:"serviceConfigs" xml:"serviceConfigs" type:"Repeated"`
 }
 
 func (s LLMDeployConfig) String() string {

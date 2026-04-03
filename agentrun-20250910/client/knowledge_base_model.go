@@ -39,8 +39,8 @@ type KnowledgeBase struct {
 	KnowledgeBaseName *string                `json:"knowledgeBaseName,omitempty" xml:"knowledgeBaseName,omitempty"`
 	LastUpdatedAt     *string                `json:"lastUpdatedAt,omitempty" xml:"lastUpdatedAt,omitempty"`
 	Provider          *string                `json:"provider,omitempty" xml:"provider,omitempty"`
-	ProviderSettings  map[string]interface{} `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
-	RetrieveSettings  map[string]interface{} `json:"retrieveSettings,omitempty" xml:"retrieveSettings,omitempty"`
+	ProviderSettings  map[string]interface{} `json:"providerSettings" xml:"providerSettings"`
+	RetrieveSettings  map[string]interface{} `json:"retrieveSettings" xml:"retrieveSettings"`
 	WorkspaceId       *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 

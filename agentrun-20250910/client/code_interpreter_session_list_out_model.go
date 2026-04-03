@@ -23,7 +23,7 @@ type CodeInterpreterSessionListOut struct {
 	// example:
 	//
 	// []
-	Items []*CodeInterpreterSessionOut `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items []*CodeInterpreterSessionOut `json:"items" xml:"items" type:"Repeated"`
 	// example:
 	//
 	// 1

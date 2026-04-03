@@ -45,7 +45,7 @@ type Credential struct {
 	CredentialSourceType   *string                 `json:"credentialSourceType,omitempty" xml:"credentialSourceType,omitempty"`
 	Description            *string                 `json:"description,omitempty" xml:"description,omitempty"`
 	Enabled                *bool                   `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	RelatedResources       []*RelatedResource      `json:"relatedResources,omitempty" xml:"relatedResources,omitempty" type:"Repeated"`
+	RelatedResources       []*RelatedResource      `json:"relatedResources" xml:"relatedResources" type:"Repeated"`
 	UpdatedAt              *string                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 	WorkspaceId            *string                 `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }

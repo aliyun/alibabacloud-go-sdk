@@ -17,7 +17,7 @@ type iListSandboxesOutput interface {
 
 type ListSandboxesOutput struct {
 	// This parameter is required.
-	Items     []*Sandbox `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items     []*Sandbox `json:"items" xml:"items" type:"Repeated"`
 	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 

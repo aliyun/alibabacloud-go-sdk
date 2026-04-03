@@ -18,7 +18,7 @@ type iGetDiscoveryEndpointsOutput interface {
 type GetDiscoveryEndpointsOutput struct {
 	// Deprecated
 	CredentialName     *string              `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
-	DiscoveryEndpoints []*DiscoveryEndpoint `json:"discoveryEndpoints,omitempty" xml:"discoveryEndpoints,omitempty" type:"Repeated"`
+	DiscoveryEndpoints []*DiscoveryEndpoint `json:"discoveryEndpoints" xml:"discoveryEndpoints" type:"Repeated"`
 }
 
 func (s GetDiscoveryEndpointsOutput) String() string {

@@ -20,7 +20,7 @@ type iListKnowledgeBasesOutput interface {
 }
 
 type ListKnowledgeBasesOutput struct {
-	Items      []*KnowledgeBase `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Items      []*KnowledgeBase `json:"items" xml:"items" type:"Repeated"`
 	PageNumber *int32           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	PageSize   *int32           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Total      *int64           `json:"total,omitempty" xml:"total,omitempty"`

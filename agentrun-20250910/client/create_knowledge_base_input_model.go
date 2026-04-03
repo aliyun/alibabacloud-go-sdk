@@ -33,8 +33,8 @@ type CreateKnowledgeBaseInput struct {
 	// This parameter is required.
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 	// This parameter is required.
-	ProviderSettings map[string]interface{} `json:"providerSettings,omitempty" xml:"providerSettings,omitempty"`
-	RetrieveSettings map[string]interface{} `json:"retrieveSettings,omitempty" xml:"retrieveSettings,omitempty"`
+	ProviderSettings map[string]interface{} `json:"providerSettings" xml:"providerSettings"`
+	RetrieveSettings map[string]interface{} `json:"retrieveSettings" xml:"retrieveSettings"`
 	WorkspaceId      *string                `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
