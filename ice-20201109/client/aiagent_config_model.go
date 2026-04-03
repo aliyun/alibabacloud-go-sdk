@@ -676,6 +676,7 @@ func (s *AIAgentConfigAutoSpeechConfig) Validate() error {
 
 type AIAgentConfigAutoSpeechConfigLlmPending struct {
 	Messages []*AIAgentConfigAutoSpeechConfigLlmPendingMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	Mode     *string                                            `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	WaitTime *int32                                             `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 
@@ -691,12 +692,21 @@ func (s *AIAgentConfigAutoSpeechConfigLlmPending) GetMessages() []*AIAgentConfig
 	return s.Messages
 }
 
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) GetMode() *string {
+	return s.Mode
+}
+
 func (s *AIAgentConfigAutoSpeechConfigLlmPending) GetWaitTime() *int32 {
 	return s.WaitTime
 }
 
 func (s *AIAgentConfigAutoSpeechConfigLlmPending) SetMessages(v []*AIAgentConfigAutoSpeechConfigLlmPendingMessages) *AIAgentConfigAutoSpeechConfigLlmPending {
 	s.Messages = v
+	return s
+}
+
+func (s *AIAgentConfigAutoSpeechConfigLlmPending) SetMode(v string) *AIAgentConfigAutoSpeechConfigLlmPending {
+	s.Mode = &v
 	return s
 }
 
@@ -754,9 +764,10 @@ func (s *AIAgentConfigAutoSpeechConfigLlmPendingMessages) Validate() error {
 }
 
 type AIAgentConfigAutoSpeechConfigUserIdle struct {
-	MaxRepeats *int32                                           `json:"MaxRepeats,omitempty" xml:"MaxRepeats,omitempty"`
-	Messages   []*AIAgentConfigAutoSpeechConfigUserIdleMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	WaitTime   *int32                                           `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+	HangupEndWord *string                                          `json:"HangupEndWord,omitempty" xml:"HangupEndWord,omitempty"`
+	MaxRepeats    *int32                                           `json:"MaxRepeats,omitempty" xml:"MaxRepeats,omitempty"`
+	Messages      []*AIAgentConfigAutoSpeechConfigUserIdleMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	WaitTime      *int32                                           `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 
 func (s AIAgentConfigAutoSpeechConfigUserIdle) String() string {
@@ -765,6 +776,10 @@ func (s AIAgentConfigAutoSpeechConfigUserIdle) String() string {
 
 func (s AIAgentConfigAutoSpeechConfigUserIdle) GoString() string {
 	return s.String()
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetHangupEndWord() *string {
+	return s.HangupEndWord
 }
 
 func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetMaxRepeats() *int32 {
@@ -777,6 +792,11 @@ func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetMessages() []*AIAgentConfigAu
 
 func (s *AIAgentConfigAutoSpeechConfigUserIdle) GetWaitTime() *int32 {
 	return s.WaitTime
+}
+
+func (s *AIAgentConfigAutoSpeechConfigUserIdle) SetHangupEndWord(v string) *AIAgentConfigAutoSpeechConfigUserIdle {
+	s.HangupEndWord = &v
+	return s
 }
 
 func (s *AIAgentConfigAutoSpeechConfigUserIdle) SetMaxRepeats(v int32) *AIAgentConfigAutoSpeechConfigUserIdle {

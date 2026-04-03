@@ -62,7 +62,8 @@ func (s *DescribeAIAgentInstanceResponseBody) Validate() error {
 }
 
 type DescribeAIAgentInstanceResponseBodyInstance struct {
-	AgentConfig *AIAgentConfig `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
+	AgentConfig *AIAgentConfig   `json:"AgentConfig,omitempty" xml:"AgentConfig,omitempty"`
+	CallInfo    *AIAgentCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty"`
 	// The URL of the call log file.
 	//
 	// example:
@@ -112,6 +113,10 @@ func (s *DescribeAIAgentInstanceResponseBodyInstance) GetAgentConfig() *AIAgentC
 	return s.AgentConfig
 }
 
+func (s *DescribeAIAgentInstanceResponseBodyInstance) GetCallInfo() *AIAgentCallInfo {
+	return s.CallInfo
+}
+
 func (s *DescribeAIAgentInstanceResponseBodyInstance) GetCallLogUrl() *string {
 	return s.CallLogUrl
 }
@@ -146,6 +151,11 @@ func (s *DescribeAIAgentInstanceResponseBodyInstance) GetUserData() *string {
 
 func (s *DescribeAIAgentInstanceResponseBodyInstance) SetAgentConfig(v *AIAgentConfig) *DescribeAIAgentInstanceResponseBodyInstance {
 	s.AgentConfig = v
+	return s
+}
+
+func (s *DescribeAIAgentInstanceResponseBodyInstance) SetCallInfo(v *AIAgentCallInfo) *DescribeAIAgentInstanceResponseBodyInstance {
+	s.CallInfo = v
 	return s
 }
 
@@ -192,6 +202,11 @@ func (s *DescribeAIAgentInstanceResponseBodyInstance) SetUserData(v string) *Des
 func (s *DescribeAIAgentInstanceResponseBodyInstance) Validate() error {
 	if s.AgentConfig != nil {
 		if err := s.AgentConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.CallInfo != nil {
+		if err := s.CallInfo.Validate(); err != nil {
 			return err
 		}
 	}

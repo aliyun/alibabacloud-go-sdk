@@ -11,6 +11,8 @@ type iGenerateAIAgentCallResponseBody interface {
 	GoString() string
 	SetAIAgentUserId(v string) *GenerateAIAgentCallResponseBody
 	GetAIAgentUserId() *string
+	SetAvatarUserId(v string) *GenerateAIAgentCallResponseBody
+	GetAvatarUserId() *string
 	SetChannelId(v string) *GenerateAIAgentCallResponseBody
 	GetChannelId() *string
 	SetInstanceId(v string) *GenerateAIAgentCallResponseBody
@@ -30,6 +32,7 @@ type GenerateAIAgentCallResponseBody struct {
 	//
 	// 877ae632caae49b1afc81c2e8194ffb4
 	AIAgentUserId *string `json:"AIAgentUserId,omitempty" xml:"AIAgentUserId,omitempty"`
+	AvatarUserId  *string `json:"AvatarUserId,omitempty" xml:"AvatarUserId,omitempty"`
 	// The ARTC channel ID.
 	//
 	// example:
@@ -74,6 +77,10 @@ func (s *GenerateAIAgentCallResponseBody) GetAIAgentUserId() *string {
 	return s.AIAgentUserId
 }
 
+func (s *GenerateAIAgentCallResponseBody) GetAvatarUserId() *string {
+	return s.AvatarUserId
+}
+
 func (s *GenerateAIAgentCallResponseBody) GetChannelId() *string {
 	return s.ChannelId
 }
@@ -96,6 +103,11 @@ func (s *GenerateAIAgentCallResponseBody) GetUserId() *string {
 
 func (s *GenerateAIAgentCallResponseBody) SetAIAgentUserId(v string) *GenerateAIAgentCallResponseBody {
 	s.AIAgentUserId = &v
+	return s
+}
+
+func (s *GenerateAIAgentCallResponseBody) SetAvatarUserId(v string) *GenerateAIAgentCallResponseBody {
+	s.AvatarUserId = &v
 	return s
 }
 
