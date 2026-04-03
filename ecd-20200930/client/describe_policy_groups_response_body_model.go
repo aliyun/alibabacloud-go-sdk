@@ -127,7 +127,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// deny
-	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminAccess               *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminKeyboardOnFullScreen *string `json:"AdminKeyboardOnFullScreen,omitempty" xml:"AdminKeyboardOnFullScreen,omitempty"`
+	AdminKeyboardOnWindows    *string `json:"AdminKeyboardOnWindows,omitempty" xml:"AdminKeyboardOnWindows,omitempty"`
 	// Indicates whether the anti-screenshot feature is enabled.
 	//
 	// Valid values:
@@ -236,7 +238,8 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 70
-	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	CpuSingleRateLimit *int32  `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The number of cloud computers bound with this policy.
 	//
 	// example:
@@ -395,6 +398,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// BOTH
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
 	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
+	KeyboardControl               *string `json:"KeyboardControl,omitempty" xml:"KeyboardControl,omitempty"`
 	// The permissions on local disk mapping.
 	//
 	// Valid values:
@@ -1070,6 +1074,14 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAdminAccess() 
 	return s.AdminAccess
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAdminKeyboardOnFullScreen() *string {
+	return s.AdminKeyboardOnFullScreen
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAdminKeyboardOnWindows() *string {
+	return s.AdminKeyboardOnWindows
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetAppContentProtection() *string {
 	return s.AppContentProtection
 }
@@ -1152,6 +1164,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCpuSampleDurat
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetCpuSingleRateLimit() *int32 {
 	return s.CpuSingleRateLimit
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetDescription() *string {
+	return s.Description
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetDesktopCount() *int32 {
@@ -1264,6 +1280,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetInternetCommun
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetInternetPrinter() *string {
 	return s.InternetPrinter
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetKeyboardControl() *string {
+	return s.KeyboardControl
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetLocalDrive() *string {
@@ -1616,6 +1636,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAdminAccess(v 
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAdminKeyboardOnFullScreen(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.AdminKeyboardOnFullScreen = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAdminKeyboardOnWindows(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.AdminKeyboardOnWindows = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetAppContentProtection(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.AppContentProtection = &v
 	return s
@@ -1718,6 +1748,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuSampleDurat
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuSingleRateLimit(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.CpuSingleRateLimit = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDescription(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.Description = &v
 	return s
 }
 
@@ -1858,6 +1893,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetInternetCommun
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetInternetPrinter(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.InternetPrinter = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetKeyboardControl(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.KeyboardControl = &v
 	return s
 }
 

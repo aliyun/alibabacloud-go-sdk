@@ -13,6 +13,10 @@ type iModifyCenterPolicyRequest interface {
 	GetAcademicProxy() *string
 	SetAdminAccess(v string) *ModifyCenterPolicyRequest
 	GetAdminAccess() *string
+	SetAdminKeyboardOnFullScreen(v string) *ModifyCenterPolicyRequest
+	GetAdminKeyboardOnFullScreen() *string
+	SetAdminKeyboardOnWindows(v string) *ModifyCenterPolicyRequest
+	GetAdminKeyboardOnWindows() *string
 	SetAppContentProtection(v string) *ModifyCenterPolicyRequest
 	GetAppContentProtection() *string
 	SetAuthorizeAccessPolicyRule(v []*ModifyCenterPolicyRequestAuthorizeAccessPolicyRule) *ModifyCenterPolicyRequest
@@ -57,6 +61,8 @@ type iModifyCenterPolicyRequest interface {
 	GetCpuSampleDuration() *int32
 	SetCpuSingleRateLimit(v int32) *ModifyCenterPolicyRequest
 	GetCpuSingleRateLimit() *int32
+	SetDescription(v string) *ModifyCenterPolicyRequest
+	GetDescription() *string
 	SetDeviceConnectHint(v string) *ModifyCenterPolicyRequest
 	GetDeviceConnectHint() *string
 	SetDeviceRedirects(v []*ModifyCenterPolicyRequestDeviceRedirects) *ModifyCenterPolicyRequest
@@ -292,7 +298,9 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// deny
-	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminAccess               *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminKeyboardOnFullScreen *string `json:"AdminKeyboardOnFullScreen,omitempty" xml:"AdminKeyboardOnFullScreen,omitempty"`
+	AdminKeyboardOnWindows    *string `json:"AdminKeyboardOnWindows,omitempty" xml:"AdminKeyboardOnWindows,omitempty"`
 	// The anti-screenshot policy.
 	//
 	// Valid values:
@@ -413,7 +421,8 @@ type ModifyCenterPolicyRequest struct {
 	// example:
 	//
 	// 80
-	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	CpuSingleRateLimit *int32  `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to display the peripheral connection prompt.
 	//
 	// Valid values:
@@ -1258,6 +1267,14 @@ func (s *ModifyCenterPolicyRequest) GetAdminAccess() *string {
 	return s.AdminAccess
 }
 
+func (s *ModifyCenterPolicyRequest) GetAdminKeyboardOnFullScreen() *string {
+	return s.AdminKeyboardOnFullScreen
+}
+
+func (s *ModifyCenterPolicyRequest) GetAdminKeyboardOnWindows() *string {
+	return s.AdminKeyboardOnWindows
+}
+
 func (s *ModifyCenterPolicyRequest) GetAppContentProtection() *string {
 	return s.AppContentProtection
 }
@@ -1344,6 +1361,10 @@ func (s *ModifyCenterPolicyRequest) GetCpuSampleDuration() *int32 {
 
 func (s *ModifyCenterPolicyRequest) GetCpuSingleRateLimit() *int32 {
 	return s.CpuSingleRateLimit
+}
+
+func (s *ModifyCenterPolicyRequest) GetDescription() *string {
+	return s.Description
 }
 
 func (s *ModifyCenterPolicyRequest) GetDeviceConnectHint() *string {
@@ -1788,6 +1809,16 @@ func (s *ModifyCenterPolicyRequest) SetAdminAccess(v string) *ModifyCenterPolicy
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetAdminKeyboardOnFullScreen(v string) *ModifyCenterPolicyRequest {
+	s.AdminKeyboardOnFullScreen = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetAdminKeyboardOnWindows(v string) *ModifyCenterPolicyRequest {
+	s.AdminKeyboardOnWindows = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetAppContentProtection(v string) *ModifyCenterPolicyRequest {
 	s.AppContentProtection = &v
 	return s
@@ -1895,6 +1926,11 @@ func (s *ModifyCenterPolicyRequest) SetCpuSampleDuration(v int32) *ModifyCenterP
 
 func (s *ModifyCenterPolicyRequest) SetCpuSingleRateLimit(v int32) *ModifyCenterPolicyRequest {
 	s.CpuSingleRateLimit = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetDescription(v string) *ModifyCenterPolicyRequest {
+	s.Description = &v
 	return s
 }
 

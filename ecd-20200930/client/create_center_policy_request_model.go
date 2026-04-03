@@ -13,6 +13,10 @@ type iCreateCenterPolicyRequest interface {
 	GetAcademicProxy() *string
 	SetAdminAccess(v string) *CreateCenterPolicyRequest
 	GetAdminAccess() *string
+	SetAdminKeyboardOnFullScreen(v string) *CreateCenterPolicyRequest
+	GetAdminKeyboardOnFullScreen() *string
+	SetAdminKeyboardOnWindows(v string) *CreateCenterPolicyRequest
+	GetAdminKeyboardOnWindows() *string
 	SetAppContentProtection(v string) *CreateCenterPolicyRequest
 	GetAppContentProtection() *string
 	SetAuthorizeAccessPolicyRule(v []*CreateCenterPolicyRequestAuthorizeAccessPolicyRule) *CreateCenterPolicyRequest
@@ -57,6 +61,8 @@ type iCreateCenterPolicyRequest interface {
 	GetCpuSampleDuration() *int32
 	SetCpuSingleRateLimit(v int32) *CreateCenterPolicyRequest
 	GetCpuSingleRateLimit() *int32
+	SetDescription(v string) *CreateCenterPolicyRequest
+	GetDescription() *string
 	SetDeviceConnectHint(v string) *CreateCenterPolicyRequest
 	GetDeviceConnectHint() *string
 	SetDeviceRedirects(v []*CreateCenterPolicyRequestDeviceRedirects) *CreateCenterPolicyRequest
@@ -101,6 +107,8 @@ type iCreateCenterPolicyRequest interface {
 	GetInternetCommunicationProtocol() *string
 	SetInternetPrinter(v string) *CreateCenterPolicyRequest
 	GetInternetPrinter() *string
+	SetKeyboardControl(v string) *CreateCenterPolicyRequest
+	GetKeyboardControl() *string
 	SetLocalDrive(v string) *CreateCenterPolicyRequest
 	GetLocalDrive() *string
 	SetMaxReconnectTime(v int32) *CreateCenterPolicyRequest
@@ -286,7 +294,9 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// deny
-	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminAccess               *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminKeyboardOnFullScreen *string `json:"AdminKeyboardOnFullScreen,omitempty" xml:"AdminKeyboardOnFullScreen,omitempty"`
+	AdminKeyboardOnWindows    *string `json:"AdminKeyboardOnWindows,omitempty" xml:"AdminKeyboardOnWindows,omitempty"`
 	// The anti-screenshot policy.
 	//
 	// Valid values:
@@ -410,7 +420,8 @@ type CreateCenterPolicyRequest struct {
 	// example:
 	//
 	// 70
-	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	CpuSingleRateLimit *int32  `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to display the peripheral connection prompt.
 	//
 	// example:
@@ -566,6 +577,7 @@ type CreateCenterPolicyRequest struct {
 	// both
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
 	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
+	KeyboardControl               *string `json:"KeyboardControl,omitempty" xml:"KeyboardControl,omitempty"`
 	// The read/write permissions on the on-premises drive.
 	//
 	// Valid values:
@@ -1221,6 +1233,14 @@ func (s *CreateCenterPolicyRequest) GetAdminAccess() *string {
 	return s.AdminAccess
 }
 
+func (s *CreateCenterPolicyRequest) GetAdminKeyboardOnFullScreen() *string {
+	return s.AdminKeyboardOnFullScreen
+}
+
+func (s *CreateCenterPolicyRequest) GetAdminKeyboardOnWindows() *string {
+	return s.AdminKeyboardOnWindows
+}
+
 func (s *CreateCenterPolicyRequest) GetAppContentProtection() *string {
 	return s.AppContentProtection
 }
@@ -1309,6 +1329,10 @@ func (s *CreateCenterPolicyRequest) GetCpuSingleRateLimit() *int32 {
 	return s.CpuSingleRateLimit
 }
 
+func (s *CreateCenterPolicyRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *CreateCenterPolicyRequest) GetDeviceConnectHint() *string {
 	return s.DeviceConnectHint
 }
@@ -1395,6 +1419,10 @@ func (s *CreateCenterPolicyRequest) GetInternetCommunicationProtocol() *string {
 
 func (s *CreateCenterPolicyRequest) GetInternetPrinter() *string {
 	return s.InternetPrinter
+}
+
+func (s *CreateCenterPolicyRequest) GetKeyboardControl() *string {
+	return s.KeyboardControl
 }
 
 func (s *CreateCenterPolicyRequest) GetLocalDrive() *string {
@@ -1739,6 +1767,16 @@ func (s *CreateCenterPolicyRequest) SetAdminAccess(v string) *CreateCenterPolicy
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetAdminKeyboardOnFullScreen(v string) *CreateCenterPolicyRequest {
+	s.AdminKeyboardOnFullScreen = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetAdminKeyboardOnWindows(v string) *CreateCenterPolicyRequest {
+	s.AdminKeyboardOnWindows = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetAppContentProtection(v string) *CreateCenterPolicyRequest {
 	s.AppContentProtection = &v
 	return s
@@ -1849,6 +1887,11 @@ func (s *CreateCenterPolicyRequest) SetCpuSingleRateLimit(v int32) *CreateCenter
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetDescription(v string) *CreateCenterPolicyRequest {
+	s.Description = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetDeviceConnectHint(v string) *CreateCenterPolicyRequest {
 	s.DeviceConnectHint = &v
 	return s
@@ -1956,6 +1999,11 @@ func (s *CreateCenterPolicyRequest) SetInternetCommunicationProtocol(v string) *
 
 func (s *CreateCenterPolicyRequest) SetInternetPrinter(v string) *CreateCenterPolicyRequest {
 	s.InternetPrinter = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetKeyboardControl(v string) *CreateCenterPolicyRequest {
+	s.KeyboardControl = &v
 	return s
 }
 

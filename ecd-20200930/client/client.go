@@ -3257,6 +3257,14 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["AdminAccess"] = request.AdminAccess
 	}
 
+	if !dara.IsNil(request.AdminKeyboardOnFullScreen) {
+		query["AdminKeyboardOnFullScreen"] = request.AdminKeyboardOnFullScreen
+	}
+
+	if !dara.IsNil(request.AdminKeyboardOnWindows) {
+		query["AdminKeyboardOnWindows"] = request.AdminKeyboardOnWindows
+	}
+
 	if !dara.IsNil(request.AppContentProtection) {
 		query["AppContentProtection"] = request.AppContentProtection
 	}
@@ -3345,6 +3353,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 		query["CpuSingleRateLimit"] = request.CpuSingleRateLimit
 	}
 
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
 	if !dara.IsNil(request.DeviceConnectHint) {
 		query["DeviceConnectHint"] = request.DeviceConnectHint
 	}
@@ -3431,6 +3443,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !dara.IsNil(request.InternetPrinter) {
 		query["InternetPrinter"] = request.InternetPrinter
+	}
+
+	if !dara.IsNil(request.KeyboardControl) {
+		query["KeyboardControl"] = request.KeyboardControl
 	}
 
 	if !dara.IsNil(request.LocalDrive) {
@@ -19224,6 +19240,14 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["AdminAccess"] = request.AdminAccess
 	}
 
+	if !dara.IsNil(request.AdminKeyboardOnFullScreen) {
+		query["AdminKeyboardOnFullScreen"] = request.AdminKeyboardOnFullScreen
+	}
+
+	if !dara.IsNil(request.AdminKeyboardOnWindows) {
+		query["AdminKeyboardOnWindows"] = request.AdminKeyboardOnWindows
+	}
+
 	if !dara.IsNil(request.AppContentProtection) {
 		query["AppContentProtection"] = request.AppContentProtection
 	}
@@ -19310,6 +19334,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !dara.IsNil(request.CpuSingleRateLimit) {
 		query["CpuSingleRateLimit"] = request.CpuSingleRateLimit
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.DeviceConnectHint) {
