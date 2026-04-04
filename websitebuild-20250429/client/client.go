@@ -382,6 +382,232 @@ func (client *Client) CheckResourceMeasure(request *CheckResourceMeasureRequest)
 
 // Summary:
 //
+// 校验用户资源计量
+//
+// @param request - CheckUserResourceMeasureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckUserResourceMeasureResponse
+func (client *Client) CheckUserResourceMeasureWithOptions(request *CheckUserResourceMeasureRequest, runtime *dara.RuntimeOptions) (_result *CheckUserResourceMeasureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BelongId) {
+		query["BelongId"] = request.BelongId
+	}
+
+	if !dara.IsNil(request.BelongIdType) {
+		query["BelongIdType"] = request.BelongIdType
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EspBizId) {
+		query["EspBizId"] = request.EspBizId
+	}
+
+	if !dara.IsNil(request.OrderComponentParams) {
+		query["OrderComponentParams"] = request.OrderComponentParams
+	}
+
+	if !dara.IsNil(request.ResourceCode) {
+		query["ResourceCode"] = request.ResourceCode
+	}
+
+	if !dara.IsNil(request.ResourceValue) {
+		query["ResourceValue"] = request.ResourceValue
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckUserResourceMeasure"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckUserResourceMeasureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验用户资源计量
+//
+// @param request - CheckUserResourceMeasureRequest
+//
+// @return CheckUserResourceMeasureResponse
+func (client *Client) CheckUserResourceMeasure(request *CheckUserResourceMeasureRequest) (_result *CheckUserResourceMeasureResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckUserResourceMeasureResponse{}
+	_body, _err := client.CheckUserResourceMeasureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用助手智能体
+//
+// @param request - CreateAppAssistantAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppAssistantAgentResponse
+func (client *Client) CreateAppAssistantAgentWithOptions(request *CreateAppAssistantAgentRequest, runtime *dara.RuntimeOptions) (_result *CreateAppAssistantAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PlatformType) {
+		query["PlatformType"] = request.PlatformType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppAssistantAgent"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppAssistantAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用助手智能体
+//
+// @param request - CreateAppAssistantAgentRequest
+//
+// @return CreateAppAssistantAgentResponse
+func (client *Client) CreateAppAssistantAgent(request *CreateAppAssistantAgentRequest) (_result *CreateAppAssistantAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAppAssistantAgentResponse{}
+	_body, _err := client.CreateAppAssistantAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成应用助手SSO免登
+//
+// @param request - CreateAppAssistantAgentSsoLoginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppAssistantAgentSsoLoginResponse
+func (client *Client) CreateAppAssistantAgentSsoLoginWithOptions(request *CreateAppAssistantAgentSsoLoginRequest, runtime *dara.RuntimeOptions) (_result *CreateAppAssistantAgentSsoLoginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PlatformType) {
+		query["PlatformType"] = request.PlatformType
+	}
+
+	if !dara.IsNil(request.TargetUrl) {
+		query["TargetUrl"] = request.TargetUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAppAssistantAgentSsoLogin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAppAssistantAgentSsoLoginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成应用助手SSO免登
+//
+// @param request - CreateAppAssistantAgentSsoLoginRequest
+//
+// @return CreateAppAssistantAgentSsoLoginResponse
+func (client *Client) CreateAppAssistantAgentSsoLogin(request *CreateAppAssistantAgentSsoLoginRequest) (_result *CreateAppAssistantAgentSsoLoginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAppAssistantAgentSsoLoginResponse{}
+	_body, _err := client.CreateAppAssistantAgentSsoLoginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create a website instance
 //
 // @param tmpReq - CreateAppInstanceRequest
@@ -2108,6 +2334,72 @@ func (client *Client) IntrospectAppInstanceTicketForPreview(request *IntrospectA
 	runtime := &dara.RuntimeOptions{}
 	_result = &IntrospectAppInstanceTicketForPreviewResponse{}
 	_body, _err := client.IntrospectAppInstanceTicketForPreviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用助手智能体列表
+//
+// @param request - ListAppAssistantAgentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppAssistantAgentsResponse
+func (client *Client) ListAppAssistantAgentsWithOptions(request *ListAppAssistantAgentsRequest, runtime *dara.RuntimeOptions) (_result *ListAppAssistantAgentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PlatformType) {
+		query["PlatformType"] = request.PlatformType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppAssistantAgents"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppAssistantAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用助手智能体列表
+//
+// @param request - ListAppAssistantAgentsRequest
+//
+// @return ListAppAssistantAgentsResponse
+func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequest) (_result *ListAppAssistantAgentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAppAssistantAgentsResponse{}
+	_body, _err := client.ListAppAssistantAgentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
