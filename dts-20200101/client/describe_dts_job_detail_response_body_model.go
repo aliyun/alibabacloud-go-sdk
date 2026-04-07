@@ -11,6 +11,10 @@ type iDescribeDtsJobDetailResponseBody interface {
 	GoString() string
 	SetAppName(v string) *DescribeDtsJobDetailResponseBody
 	GetAppName() *string
+	SetApprovalProcessStatus(v int64) *DescribeDtsJobDetailResponseBody
+	GetApprovalProcessStatus() *int64
+	SetApprovalProcessUrl(v string) *DescribeDtsJobDetailResponseBody
+	GetApprovalProcessUrl() *string
 	SetBeginTimestamp(v string) *DescribeDtsJobDetailResponseBody
 	GetBeginTimestamp() *string
 	SetBinlog(v string) *DescribeDtsJobDetailResponseBody
@@ -137,7 +141,9 @@ type DescribeDtsJobDetailResponseBody struct {
 	// example:
 	//
 	// new
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName               *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ApprovalProcessStatus *int64  `json:"ApprovalProcessStatus,omitempty" xml:"ApprovalProcessStatus,omitempty"`
+	ApprovalProcessUrl    *string `json:"ApprovalProcessUrl,omitempty" xml:"ApprovalProcessUrl,omitempty"`
 	// The start of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
@@ -542,6 +548,14 @@ func (s *DescribeDtsJobDetailResponseBody) GetAppName() *string {
 	return s.AppName
 }
 
+func (s *DescribeDtsJobDetailResponseBody) GetApprovalProcessStatus() *int64 {
+	return s.ApprovalProcessStatus
+}
+
+func (s *DescribeDtsJobDetailResponseBody) GetApprovalProcessUrl() *string {
+	return s.ApprovalProcessUrl
+}
+
 func (s *DescribeDtsJobDetailResponseBody) GetBeginTimestamp() *string {
 	return s.BeginTimestamp
 }
@@ -776,6 +790,16 @@ func (s *DescribeDtsJobDetailResponseBody) GetTaskType() *string {
 
 func (s *DescribeDtsJobDetailResponseBody) SetAppName(v string) *DescribeDtsJobDetailResponseBody {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetApprovalProcessStatus(v int64) *DescribeDtsJobDetailResponseBody {
+	s.ApprovalProcessStatus = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetApprovalProcessUrl(v string) *DescribeDtsJobDetailResponseBody {
+	s.ApprovalProcessUrl = &v
 	return s
 }
 

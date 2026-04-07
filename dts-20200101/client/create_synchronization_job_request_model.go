@@ -98,7 +98,12 @@ type CreateSynchronizationJobRequest struct {
 	// example:
 	//
 	// Year
-	Period   *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The ID of the region where the data synchronization instance resides. The region ID is the same as the value of the **DestRegion*	- parameter.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Resource GroupId
 	//

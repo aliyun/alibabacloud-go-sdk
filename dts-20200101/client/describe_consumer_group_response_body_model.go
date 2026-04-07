@@ -28,7 +28,6 @@ type iDescribeConsumerGroupResponseBody interface {
 }
 
 type DescribeConsumerGroupResponseBody struct {
-	// The list of consumer groups.
 	ConsumerChannels *DescribeConsumerGroupResponseBodyConsumerChannels `json:"ConsumerChannels,omitempty" xml:"ConsumerChannels,omitempty" type:"Struct"`
 	// The error code returned if the call failed.
 	//
@@ -198,46 +197,12 @@ func (s *DescribeConsumerGroupResponseBodyConsumerChannels) Validate() error {
 }
 
 type DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChannel struct {
-	// The ID of the consumer group.
-	//
-	// example:
-	//
-	// dtspis1110z232****
-	ConsumerGroupID *string `json:"ConsumerGroupID,omitempty" xml:"ConsumerGroupID,omitempty"`
-	// The name of the consumer group.
-	//
-	// example:
-	//
-	// consumergrouptest
-	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The username of the consumer group.
-	//
-	// example:
-	//
-	// test
+	ConsumerGroupID       *string `json:"ConsumerGroupID,omitempty" xml:"ConsumerGroupID,omitempty"`
+	ConsumerGroupName     *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
-	// The consumption checkpoint, which is the time when the latest data record was consumed by the change tracking client. The format is *yyyy-MM-dd*T*HH:mm:ss*Z. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-10-02T12:00:00Z
 	ConsumptionCheckpoint *string `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
-	// The message delay, which is the current time minus the timestamp of the earliest unconsumed message in the change tracking instance. Unit: seconds.
-	//
-	// >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
-	//
-	// example:
-	//
-	// 172714
-	MessageDelay *int64 `json:"MessageDelay,omitempty" xml:"MessageDelay,omitempty"`
-	// The total number of unconsumed messages, which is the number of unconsumed data records plus the number of heartbeat messages.
-	//
-	// >  If the return value of this parameter is **-1**, no client is connected to the consumer group.
-	//
-	// example:
-	//
-	// 186600
-	UnconsumedData *int64 `json:"UnconsumedData,omitempty" xml:"UnconsumedData,omitempty"`
+	MessageDelay          *int64  `json:"MessageDelay,omitempty" xml:"MessageDelay,omitempty"`
+	UnconsumedData        *int64  `json:"UnconsumedData,omitempty" xml:"UnconsumedData,omitempty"`
 }
 
 func (s DescribeConsumerGroupResponseBodyConsumerChannelsDescribeConsumerChannel) String() string {

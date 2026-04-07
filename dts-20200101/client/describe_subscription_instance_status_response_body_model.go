@@ -151,9 +151,8 @@ type DescribeSubscriptionInstanceStatusResponseBody struct {
 	// example:
 	//
 	// dtstest
-	SubscriptionInstanceName *string `json:"SubscriptionInstanceName,omitempty" xml:"SubscriptionInstanceName,omitempty"`
-	// The objects for change tracking.
-	SubscriptionObject *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject `json:"SubscriptionObject,omitempty" xml:"SubscriptionObject,omitempty" type:"Struct"`
+	SubscriptionInstanceName *string                                                           `json:"SubscriptionInstanceName,omitempty" xml:"SubscriptionInstanceName,omitempty"`
+	SubscriptionObject       *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject `json:"SubscriptionObject,omitempty" xml:"SubscriptionObject,omitempty" type:"Struct"`
 	// Indicates whether the call was successful.
 	//
 	// example:
@@ -566,24 +565,9 @@ func (s *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObject) Valid
 }
 
 type DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObject struct {
-	// The name of the database to which the object belongs.
-	//
-	// example:
-	//
-	// dtstestdata
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The table name.
-	TableList *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObjectTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Struct"`
-	// Indicates whether the data of an entire database is tracked. Valid values:
-	//
-	// 	- **true**: yes
-	//
-	// 	- **false**: no
-	//
-	// example:
-	//
-	// false
-	WholeDatabase *string `json:"WholeDatabase,omitempty" xml:"WholeDatabase,omitempty"`
+	DatabaseName  *string                                                                                     `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	TableList     *DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObjectTableList `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Struct"`
+	WholeDatabase *string                                                                                     `json:"WholeDatabase,omitempty" xml:"WholeDatabase,omitempty"`
 }
 
 func (s DescribeSubscriptionInstanceStatusResponseBodySubscriptionObjectSynchronousObject) String() string {

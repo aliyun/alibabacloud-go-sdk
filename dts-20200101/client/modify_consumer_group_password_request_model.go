@@ -71,7 +71,12 @@ type ModifyConsumerGroupPasswordRequest struct {
 	// dtstest
 	ConsumerGroupUserName *string `json:"ConsumerGroupUserName,omitempty" xml:"ConsumerGroupUserName,omitempty"`
 	OwnerId               *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Resource group ID.
 	//
 	// example:

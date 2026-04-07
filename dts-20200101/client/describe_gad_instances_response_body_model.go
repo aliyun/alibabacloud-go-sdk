@@ -228,59 +228,20 @@ func (s *DescribeGadInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeGadInstancesResponseBodyInstancesInstances struct {
-	// example:
-	//
-	// 2024-05-29 23:55:58
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// MySQL
-	DbEngineType *string `json:"DbEngineType,omitempty" xml:"DbEngineType,omitempty"`
-	// example:
-	//
-	// 2
-	DbInstanceCount *int32 `json:"DbInstanceCount,omitempty" xml:"DbInstanceCount,omitempty"`
-	// example:
-	//
-	// rg-a76s8afa****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	InstanceRegion *string `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
-	// example:
-	//
-	// DR
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// example:
-	//
-	// rm-sadfasfa****
-	MasterDbInstanceId *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
-	// example:
-	//
-	// test
-	MasterDbInstanceName *string `json:"MasterDbInstanceName,omitempty" xml:"MasterDbInstanceName,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
+	CreateTime             *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DbEngineType           *string `json:"DbEngineType,omitempty" xml:"DbEngineType,omitempty"`
+	DbInstanceCount        *int32  `json:"DbInstanceCount,omitempty" xml:"DbInstanceCount,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName           *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRegion         *string `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
+	InstanceType           *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MasterDbInstanceId     *string `json:"MasterDbInstanceId,omitempty" xml:"MasterDbInstanceId,omitempty"`
+	MasterDbInstanceName   *string `json:"MasterDbInstanceName,omitempty" xml:"MasterDbInstanceName,omitempty"`
 	MasterDbInstanceRegion *string `json:"MasterDbInstanceRegion,omitempty" xml:"MasterDbInstanceRegion,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
 	MasterDbInstanceZoneId *string `json:"MasterDbInstanceZoneId,omitempty" xml:"MasterDbInstanceZoneId,omitempty"`
 	MasterEngineArchType   *int32  `json:"MasterEngineArchType,omitempty" xml:"MasterEngineArchType,omitempty"`
-	// example:
-	//
-	// rg-aekzq276dmnaxqa
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// example:
-	//
-	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeGadInstancesResponseBodyInstancesInstances) String() string {

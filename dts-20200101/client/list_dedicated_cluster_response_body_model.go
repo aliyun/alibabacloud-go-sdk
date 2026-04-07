@@ -30,7 +30,6 @@ type iListDedicatedClusterResponseBody interface {
 }
 
 type ListDedicatedClusterResponseBody struct {
-	// The statuses of all clusters.
 	DedicatedClusterStatusList *ListDedicatedClusterResponseBodyDedicatedClusterStatusList `json:"DedicatedClusterStatusList,omitempty" xml:"DedicatedClusterStatusList,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	//
@@ -215,142 +214,26 @@ func (s *ListDedicatedClusterResponseBodyDedicatedClusterStatusList) Validate() 
 }
 
 type ListDedicatedClusterResponseBodyDedicatedClusterStatusListDedicatedClusterStatus struct {
-	// The CPU utilization, in percentage.
-	//
-	// example:
-	//
-	// 30
-	CpuUtilization *int64 `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
-	// The ID of the cluster.
-	//
-	// example:
-	//
-	// dtscluster*******
-	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
-	// The name of the cluster.
-	//
-	// example:
-	//
-	// daily_test
+	CpuUtilization       *int64  `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
+	DedicatedClusterId   *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	DedicatedClusterName *string `json:"DedicatedClusterName,omitempty" xml:"DedicatedClusterName,omitempty"`
-	// The disk usage.
-	//
-	// example:
-	//
-	// 50
-	DiskUtilization *int64 `json:"DiskUtilization,omitempty" xml:"DiskUtilization,omitempty"`
-	// The ID of the DTS instance.
-	//
-	// example:
-	//
-	// dtsi03e3zty16i****
-	DtsInstanceID *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
-	// The number of DTS units (DUs).
-	//
-	// example:
-	//
-	// 30
-	Du *int64 `json:"Du,omitempty" xml:"Du,omitempty"`
-	// The DU usage, in percentage.
-	//
-	// example:
-	//
-	// 16.6667
-	DuUtilization *int64 `json:"DuUtilization,omitempty" xml:"DuUtilization,omitempty"`
-	// The time when the cluster was created.
-	//
-	// example:
-	//
-	// 1647424384606
-	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The memory usage.
-	//
-	// example:
-	//
-	// 20
-	MemUtilization *int64 `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty"`
-	// The number of nodes in the cluster.
-	//
-	// example:
-	//
-	// 5
-	NodeCount *int64 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The number of over-provisioned DUs.
-	//
-	// example:
-	//
-	// 60
-	OversoldDu *int64 `json:"OversoldDu,omitempty" xml:"OversoldDu,omitempty"`
-	// The ID of the region in which the DTS instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the cluster. Valid values:
-	//
-	// 	- **init**: The cluster is being initialized.
-	//
-	// 	- **schedule**: The cluster is pending scheduling.
-	//
-	// 	- **running**: The cluster is running.
-	//
-	// 	- **upgrade**: The cluster is being upgraded.
-	//
-	// 	- **downgrade**: The cluster is being downgraded.
-	//
-	// 	- **locked**: The cluster is locked.
-	//
-	// 	- **releasing**: The cluster is being released.
-	//
-	// 	- **released**: The cluster is released.
-	//
-	// example:
-	//
-	// init
-	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The total number of CPU cores.
-	//
-	// example:
-	//
-	// 100
-	TotalCpuCore *int64 `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
-	// The total disk capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 2048
-	TotalDiskGBSize *int64 `json:"TotalDiskGBSize,omitempty" xml:"TotalDiskGBSize,omitempty"`
-	// The total memory capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 256
-	TotalMemGBSize *int64 `json:"TotalMemGBSize,omitempty" xml:"TotalMemGBSize,omitempty"`
-	// The number of used CPU cores.
-	//
-	// example:
-	//
-	// 30
-	UsedCpuCore *int64 `json:"UsedCpuCore,omitempty" xml:"UsedCpuCore,omitempty"`
-	// The used disk capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 1024
-	UsedDiskGBSize *int64 `json:"UsedDiskGBSize,omitempty" xml:"UsedDiskGBSize,omitempty"`
-	// The number of used DUs.
-	//
-	// example:
-	//
-	// 5
-	UsedDu *int64 `json:"UsedDu,omitempty" xml:"UsedDu,omitempty"`
-	// The used memory capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 128
-	UsedMemGBSize *int64 `json:"UsedMemGBSize,omitempty" xml:"UsedMemGBSize,omitempty"`
+	DiskUtilization      *int64  `json:"DiskUtilization,omitempty" xml:"DiskUtilization,omitempty"`
+	DtsInstanceID        *string `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
+	Du                   *int64  `json:"Du,omitempty" xml:"Du,omitempty"`
+	DuUtilization        *int64  `json:"DuUtilization,omitempty" xml:"DuUtilization,omitempty"`
+	GmtCreated           *int64  `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	MemUtilization       *int64  `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty"`
+	NodeCount            *int64  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	OversoldDu           *int64  `json:"OversoldDu,omitempty" xml:"OversoldDu,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	State                *string `json:"State,omitempty" xml:"State,omitempty"`
+	TotalCpuCore         *int64  `json:"TotalCpuCore,omitempty" xml:"TotalCpuCore,omitempty"`
+	TotalDiskGBSize      *int64  `json:"TotalDiskGBSize,omitempty" xml:"TotalDiskGBSize,omitempty"`
+	TotalMemGBSize       *int64  `json:"TotalMemGBSize,omitempty" xml:"TotalMemGBSize,omitempty"`
+	UsedCpuCore          *int64  `json:"UsedCpuCore,omitempty" xml:"UsedCpuCore,omitempty"`
+	UsedDiskGBSize       *int64  `json:"UsedDiskGBSize,omitempty" xml:"UsedDiskGBSize,omitempty"`
+	UsedDu               *int64  `json:"UsedDu,omitempty" xml:"UsedDu,omitempty"`
+	UsedMemGBSize        *int64  `json:"UsedMemGBSize,omitempty" xml:"UsedMemGBSize,omitempty"`
 }
 
 func (s ListDedicatedClusterResponseBodyDedicatedClusterStatusListDedicatedClusterStatus) String() string {

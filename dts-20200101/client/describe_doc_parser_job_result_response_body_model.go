@@ -23,6 +23,8 @@ type iDescribeDocParserJobResultResponseBody interface {
 	GetFileUrl() *string
 	SetHttpStatusCode(v int32) *DescribeDocParserJobResultResponseBody
 	GetHttpStatusCode() *int32
+	SetOuterFileUrl(v string) *DescribeDocParserJobResultResponseBody
+	GetOuterFileUrl() *string
 	SetRequestId(v string) *DescribeDocParserJobResultResponseBody
 	GetRequestId() *string
 	SetSuccess(v bool) *DescribeDocParserJobResultResponseBody
@@ -54,7 +56,8 @@ type DescribeDocParserJobResultResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	OuterFileUrl   *string `json:"OuterFileUrl,omitempty" xml:"OuterFileUrl,omitempty"`
 	// example:
 	//
 	// C166D79D-436B-45F0-B5A5-25E1959F****
@@ -101,6 +104,10 @@ func (s *DescribeDocParserJobResultResponseBody) GetHttpStatusCode() *int32 {
 	return s.HttpStatusCode
 }
 
+func (s *DescribeDocParserJobResultResponseBody) GetOuterFileUrl() *string {
+	return s.OuterFileUrl
+}
+
 func (s *DescribeDocParserJobResultResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -141,6 +148,11 @@ func (s *DescribeDocParserJobResultResponseBody) SetFileUrl(v string) *DescribeD
 
 func (s *DescribeDocParserJobResultResponseBody) SetHttpStatusCode(v int32) *DescribeDocParserJobResultResponseBody {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeDocParserJobResultResponseBody) SetOuterFileUrl(v string) *DescribeDocParserJobResultResponseBody {
+	s.OuterFileUrl = &v
 	return s
 }
 

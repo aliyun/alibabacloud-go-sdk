@@ -62,7 +62,12 @@ type ShieldPrecheckRequest struct {
 	//
 	// CHECK_SAME_OBJ
 	PrecheckItems *string `json:"PrecheckItems,omitempty" xml:"PrecheckItems,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Resource group ID.
 	//
 	// example:

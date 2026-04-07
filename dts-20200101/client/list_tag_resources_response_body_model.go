@@ -55,8 +55,7 @@ type ListTagResourcesResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The collection of tags.
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -166,30 +165,10 @@ func (s *ListTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the DTS instance.
-	//
-	// example:
-	//
-	// dtsntk10k6r12v****
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
-	//
-	// example:
-	//
-	// ALIYUN::DTS::INSTANCE
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
-	//
-	// example:
-	//
-	// testkey1
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value that corresponds to the tag key.
-	//
-	// example:
-	//
-	// testvalue1
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {

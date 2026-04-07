@@ -44,7 +44,10 @@ type ConfigureSubscriptionInstanceRequest struct {
 	// 12323344****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 资源组ID。
 	//
 	// example:

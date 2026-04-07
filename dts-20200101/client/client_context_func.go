@@ -1487,7 +1487,7 @@ func (client *Client) CreateDedicatedClusterMonitorRuleWithContext(ctx context.C
 
 // Summary:
 //
-// 查看工作流任务结果
+// Creates a document parsing task.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -2593,7 +2593,7 @@ func (client *Client) DescribeChannelAccountWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 请求所有数据校验任务数据
+// # Verifies data migration tasks and data synchronization tasks
 //
 // @param request - DescribeCheckJobsRequest
 //
@@ -3465,7 +3465,7 @@ func (client *Client) DescribeDedicatedClusterMonitorRuleWithContext(ctx context
 
 // Summary:
 //
-// 查看工作流任务结果
+// Retrieves the result of a document parsing task.
 //
 // @param request - DescribeDocParserJobResultRequest
 //
@@ -3521,7 +3521,7 @@ func (client *Client) DescribeDocParserJobResultWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查看工作流任务结果
+// Queries the execution status of a document parsing task.
 //
 // @param request - DescribeDocParserJobStatusRequest
 //
@@ -3705,9 +3705,7 @@ func (client *Client) DescribeDtsJobConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// The latency of incremental data migration or synchronization.
-//
-// \\\\\\\\\\>  If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+// The latency of incremental data migration or synchronization. \\\\\\\\\\\\\\\\> If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
 //
 // @param request - DescribeDtsJobDetailRequest
 //
@@ -4173,7 +4171,7 @@ func (client *Client) DescribeFullProcessListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询GAD实例列表
+// Queries the GAD instances.
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -4735,7 +4733,7 @@ func (client *Client) DescribeMigrationJobsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询预检查创建GAD订单任务结果
+// Queries the result of a precheck task before a GAD instance is created.
 //
 // @param request - DescribePreCheckCreateGadOrderResultRequest
 //
@@ -5763,7 +5761,7 @@ func (client *Client) DescribeTagValuesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 移除从角色
+// # Removes a secondary instance
 //
 // @param request - DetachGadInstanceDbMemberRequest
 //
@@ -7023,7 +7021,7 @@ func (client *Client) ModifyDynamicConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改GAD实例名称
+// Modifies the name of a GAD instance.
 //
 // @param request - ModifyGadInstanceNameRequest
 //
@@ -7357,7 +7355,7 @@ func (client *Client) ModifySynchronizationObjectWithContext(ctx context.Context
 
 // Summary:
 //
-// 预检查创建GAD订单
+// Prechecks before a GAD instance is created.
 //
 // @param request - PreCheckCreateGadOrderRequest
 //
@@ -7697,7 +7695,7 @@ func (client *Client) ResetSynchronizationJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 调转双向任务的方向
+// Reverse the direction of a two-way synchronization task.
 //
 // @param request - ReverseTwoWayDirectionRequest
 //
@@ -8879,7 +8877,7 @@ func (client *Client) SuspendSynchronizationJobWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 物理迁移任务切换上云
+// # Migrates Microsoft SQL Server (MSSQL) to the cloud by using a physical gateway
 //
 // @param request - SwitchPhysicalDtsJobToCloudRequest
 //
@@ -9371,9 +9369,9 @@ func (client *Client) UpgradeTwoWayWithContext(ctx context.Context, request *Upg
 
 // Summary:
 //
-// If the \\\\*\\\\*source or destination instance\\\\*\\\\	- is a \\\\*\\\\*self-managed database\\\\*\\\\	- or a \\\\*\\\\*third-party cloud database\\\\*\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\(~~176627~~).
+// If the \\\\\\\\*\\\\\\\\*source or destination instance\\\\\\\\*\\\\\\\\	- is a \\\\\\\\*\\\\\\\\*self-managed database\\\\\\\\*\\\\\\\\	- or a \\\\\\\\*\\\\\\\\*third-party cloud database\\\\\\\\*\\\\\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\\\\\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\\\(~~176627~~).
 //
-// \\\\>  If the \\\\*\\\\*source or destination database\\\\*\\\\	- is an \\\\*\\\\*ApsaraDB database instance\\\\*\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\*\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\*\\\\*, you do not need to add the CIDR blocks. When you click \\\\*\\\\*Set Whitelist and Next\\\\*\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+// \\\\\\>  If the \\\\\\\\*\\\\\\\\*source or destination database\\\\\\\\*\\\\\\\\	- is an \\\\\\\\*\\\\\\\\*ApsaraDB database instance\\\\\\\\*\\\\\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\\\\\*\\\\\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\\\\\*\\\\\\\\*, you do not need to add the CIDR blocks. When you click \\\\\\\\*\\\\\\\\*Set Whitelist and Next\\\\\\\\*\\\\\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source o
 //
 // Description:
 //

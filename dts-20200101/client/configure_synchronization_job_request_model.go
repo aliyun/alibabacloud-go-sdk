@@ -80,7 +80,12 @@ type ConfigureSynchronizationJobRequest struct {
 	// {     "autoStartModulesAfterConfig": "none",     "targetTableMode": 2 }
 	MigrationReserved *string `json:"MigrationReserved,omitempty" xml:"MigrationReserved,omitempty"`
 	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 资源组ID。
 	//
 	// example:

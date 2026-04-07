@@ -2049,7 +2049,7 @@ func (client *Client) CreateDedicatedClusterMonitorRule(request *CreateDedicated
 
 // Summary:
 //
-// 查看工作流任务结果
+// Creates a document parsing task.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -2113,7 +2113,7 @@ func (client *Client) CreateDocParserJobWithOptions(request *CreateDocParserJobR
 
 // Summary:
 //
-// 查看工作流任务结果
+// Creates a document parsing task.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -3554,7 +3554,7 @@ func (client *Client) DescribeChannelAccount(request *DescribeChannelAccountRequ
 
 // Summary:
 //
-// 请求所有数据校验任务数据
+// # Verifies data migration tasks and data synchronization tasks
 //
 // @param request - DescribeCheckJobsRequest
 //
@@ -3622,7 +3622,7 @@ func (client *Client) DescribeCheckJobsWithOptions(request *DescribeCheckJobsReq
 
 // Summary:
 //
-// 请求所有数据校验任务数据
+// # Verifies data migration tasks and data synchronization tasks
 //
 // @param request - DescribeCheckJobsRequest
 //
@@ -4642,7 +4642,7 @@ func (client *Client) DescribeDedicatedClusterMonitorRule(request *DescribeDedic
 
 // Summary:
 //
-// 查看工作流任务结果
+// Retrieves the result of a document parsing task.
 //
 // @param request - DescribeDocParserJobResultRequest
 //
@@ -4698,7 +4698,7 @@ func (client *Client) DescribeDocParserJobResultWithOptions(request *DescribeDoc
 
 // Summary:
 //
-// 查看工作流任务结果
+// Retrieves the result of a document parsing task.
 //
 // @param request - DescribeDocParserJobResultRequest
 //
@@ -4716,7 +4716,7 @@ func (client *Client) DescribeDocParserJobResult(request *DescribeDocParserJobRe
 
 // Summary:
 //
-// 查看工作流任务结果
+// Queries the execution status of a document parsing task.
 //
 // @param request - DescribeDocParserJobStatusRequest
 //
@@ -4772,7 +4772,7 @@ func (client *Client) DescribeDocParserJobStatusWithOptions(request *DescribeDoc
 
 // Summary:
 //
-// 查看工作流任务结果
+// Queries the execution status of a document parsing task.
 //
 // @param request - DescribeDocParserJobStatusRequest
 //
@@ -4954,9 +4954,7 @@ func (client *Client) DescribeDtsJobConfig(request *DescribeDtsJobConfigRequest)
 
 // Summary:
 //
-// The latency of incremental data migration or synchronization.
-//
-// \\\\\\\\\\>  If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+// The latency of incremental data migration or synchronization. \\\\\\\\\\\\\\\\> If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
 //
 // @param request - DescribeDtsJobDetailRequest
 //
@@ -5024,9 +5022,7 @@ func (client *Client) DescribeDtsJobDetailWithOptions(request *DescribeDtsJobDet
 
 // Summary:
 //
-// The latency of incremental data migration or synchronization.
-//
-// \\\\\\\\\\>  If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
+// The latency of incremental data migration or synchronization. \\\\\\\\\\\\\\\\> If you query data migration tasks, the unit of this parameter is milliseconds. If you query data synchronization tasks, the unit of this parameter is seconds.
 //
 // @param request - DescribeDtsJobDetailRequest
 //
@@ -5538,7 +5534,7 @@ func (client *Client) DescribeFullProcessList(request *DescribeFullProcessListRe
 
 // Summary:
 //
-// 查询GAD实例列表
+// Queries the GAD instances.
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -5614,7 +5610,7 @@ func (client *Client) DescribeGadInstancesWithOptions(request *DescribeGadInstan
 
 // Summary:
 //
-// 查询GAD实例列表
+// Queries the GAD instances.
 //
 // @param request - DescribeGadInstancesRequest
 //
@@ -6244,7 +6240,7 @@ func (client *Client) DescribeMigrationJobs(request *DescribeMigrationJobsReques
 
 // Summary:
 //
-// 查询预检查创建GAD订单任务结果
+// Queries the result of a precheck task before a GAD instance is created.
 //
 // @param request - DescribePreCheckCreateGadOrderResultRequest
 //
@@ -6304,7 +6300,7 @@ func (client *Client) DescribePreCheckCreateGadOrderResultWithOptions(request *D
 
 // Summary:
 //
-// 查询预检查创建GAD订单任务结果
+// Queries the result of a precheck task before a GAD instance is created.
 //
 // @param request - DescribePreCheckCreateGadOrderResultRequest
 //
@@ -7548,7 +7544,7 @@ func (client *Client) DescribeTagValues(request *DescribeTagValuesRequest) (_res
 
 // Summary:
 //
-// 移除从角色
+// # Removes a secondary instance
 //
 // @param request - DetachGadInstanceDbMemberRequest
 //
@@ -7608,7 +7604,7 @@ func (client *Client) DetachGadInstanceDbMemberWithOptions(request *DetachGadIns
 
 // Summary:
 //
-// 移除从角色
+// # Removes a secondary instance
 //
 // @param request - DetachGadInstanceDbMemberRequest
 //
@@ -9253,7 +9249,7 @@ func (client *Client) ModifyDynamicConfig(request *ModifyDynamicConfigRequest) (
 
 // Summary:
 //
-// 修改GAD实例名称
+// Modifies the name of a GAD instance.
 //
 // @param request - ModifyGadInstanceNameRequest
 //
@@ -9313,7 +9309,7 @@ func (client *Client) ModifyGadInstanceNameWithOptions(request *ModifyGadInstanc
 
 // Summary:
 //
-// 修改GAD实例名称
+// Modifies the name of a GAD instance.
 //
 // @param request - ModifyGadInstanceNameRequest
 //
@@ -9681,7 +9677,7 @@ func (client *Client) ModifySynchronizationObject(request *ModifySynchronization
 
 // Summary:
 //
-// 预检查创建GAD订单
+// Prechecks before a GAD instance is created.
 //
 // @param request - PreCheckCreateGadOrderRequest
 //
@@ -9769,7 +9765,7 @@ func (client *Client) PreCheckCreateGadOrderWithOptions(request *PreCheckCreateG
 
 // Summary:
 //
-// 预检查创建GAD订单
+// Prechecks before a GAD instance is created.
 //
 // @param request - PreCheckCreateGadOrderRequest
 //
@@ -10115,7 +10111,7 @@ func (client *Client) ResetSynchronizationJob(request *ResetSynchronizationJobRe
 
 // Summary:
 //
-// 调转双向任务的方向
+// Reverse the direction of a two-way synchronization task.
 //
 // @param request - ReverseTwoWayDirectionRequest
 //
@@ -10171,7 +10167,7 @@ func (client *Client) ReverseTwoWayDirectionWithOptions(request *ReverseTwoWayDi
 
 // Summary:
 //
-// 调转双向任务的方向
+// Reverse the direction of a two-way synchronization task.
 //
 // @param request - ReverseTwoWayDirectionRequest
 //
@@ -11657,7 +11653,7 @@ func (client *Client) SuspendSynchronizationJob(request *SuspendSynchronizationJ
 
 // Summary:
 //
-// 物理迁移任务切换上云
+// # Migrates Microsoft SQL Server (MSSQL) to the cloud by using a physical gateway
 //
 // @param request - SwitchPhysicalDtsJobToCloudRequest
 //
@@ -11717,7 +11713,7 @@ func (client *Client) SwitchPhysicalDtsJobToCloudWithOptions(request *SwitchPhys
 
 // Summary:
 //
-// 物理迁移任务切换上云
+// # Migrates Microsoft SQL Server (MSSQL) to the cloud by using a physical gateway
 //
 // @param request - SwitchPhysicalDtsJobToCloudRequest
 //
@@ -12315,9 +12311,9 @@ func (client *Client) UpgradeTwoWay(request *UpgradeTwoWayRequest) (_result *Upg
 
 // Summary:
 //
-// If the \\\\*\\\\*source or destination instance\\\\*\\\\	- is a \\\\*\\\\*self-managed database\\\\*\\\\	- or a \\\\*\\\\*third-party cloud database\\\\*\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\(~~176627~~).
+// If the \\\\\\\\*\\\\\\\\*source or destination instance\\\\\\\\*\\\\\\\\	- is a \\\\\\\\*\\\\\\\\*self-managed database\\\\\\\\*\\\\\\\\	- or a \\\\\\\\*\\\\\\\\*third-party cloud database\\\\\\\\*\\\\\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\\\\\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\\\(~~176627~~).
 //
-// \\\\>  If the \\\\*\\\\*source or destination database\\\\*\\\\	- is an \\\\*\\\\*ApsaraDB database instance\\\\*\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\*\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\*\\\\*, you do not need to add the CIDR blocks. When you click \\\\*\\\\*Set Whitelist and Next\\\\*\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+// \\\\\\>  If the \\\\\\\\*\\\\\\\\*source or destination database\\\\\\\\*\\\\\\\\	- is an \\\\\\\\*\\\\\\\\*ApsaraDB database instance\\\\\\\\*\\\\\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\\\\\*\\\\\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\\\\\*\\\\\\\\*, you do not need to add the CIDR blocks. When you click \\\\\\\\*\\\\\\\\*Set Whitelist and Next\\\\\\\\*\\\\\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source o
 //
 // Description:
 //
@@ -12425,9 +12421,9 @@ func (client *Client) WhiteIpListWithOptions(request *WhiteIpListRequest, runtim
 
 // Summary:
 //
-// If the \\\\*\\\\*source or destination instance\\\\*\\\\	- is a \\\\*\\\\*self-managed database\\\\*\\\\	- or a \\\\*\\\\*third-party cloud database\\\\*\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\(~~176627~~).
+// If the \\\\\\\\*\\\\\\\\*source or destination instance\\\\\\\\*\\\\\\\\	- is a \\\\\\\\*\\\\\\\\*self-managed database\\\\\\\\*\\\\\\\\	- or a \\\\\\\\*\\\\\\\\*third-party cloud database\\\\\\\\*\\\\\\\\*, you need to call this operation to query the CIDR blocks of DTS servers. Then, you need to add the CIDR blocks of DTS servers to the security settings of the source or destination instance, for example, the firewall of your database. For more information, see \\\\\\[Add the CIDR blocks of DTS servers to the security settings of on-premises databases]\\\\\\(~~176627~~).
 //
-// \\\\>  If the \\\\*\\\\*source or destination database\\\\*\\\\	- is an \\\\*\\\\*ApsaraDB database instance\\\\*\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\*\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\*\\\\*, you do not need to add the CIDR blocks. When you click \\\\*\\\\*Set Whitelist and Next\\\\*\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source or destination instance.
+// \\\\\\>  If the \\\\\\\\*\\\\\\\\*source or destination database\\\\\\\\*\\\\\\\\	- is an \\\\\\\\*\\\\\\\\*ApsaraDB database instance\\\\\\\\*\\\\\\\\	- (such as RDS instance and ApsaraDB for MongoDB instance) or a \\\\\\\\*\\\\\\\\*self-managed database hosted on Elastic Compute Service (ECS)\\\\\\\\*\\\\\\\\*, you do not need to add the CIDR blocks. When you click \\\\\\\\*\\\\\\\\*Set Whitelist and Next\\\\\\\\*\\\\\\\\	- in the DTS console, DTS automatically adds the CIDR blocks of DTS servers to the security settings of the source o
 //
 // Description:
 //

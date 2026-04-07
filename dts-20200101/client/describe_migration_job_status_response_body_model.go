@@ -744,7 +744,6 @@ func (s *DescribeMigrationJobStatusResponseBodyMigrationMode) Validate() error {
 }
 
 type DescribeMigrationJobStatusResponseBodyPrecheckStatus struct {
-	// The result of each precheck item.
 	Detail *DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
 	// The precheck progress. Unit: %.
 	//
@@ -849,37 +848,9 @@ func (s *DescribeMigrationJobStatusResponseBodyPrecheckStatusDetail) Validate() 
 }
 
 type DescribeMigrationJobStatusResponseBodyPrecheckStatusDetailCheckItem struct {
-	// The precheck result. Valid values:
-	//
-	// 	- **Success**: The task passed the precheck.
-	//
-	// 	- **Failed**: The task failed to pass the precheck.
-	//
-	// example:
-	//
-	// Success
-	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The error message returned if the task failed to pass the precheck.
-	//
-	// >  This parameter is returned only if the return value of the **CheckStatus*	- parameter is **Failed**.
-	//
-	// example:
-	//
-	// Original error: Access denied for user \\"dtstest\\"@\\"100.104.***.**\\" (using password: YES)
+	CheckStatus  *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the precheck item.
-	//
-	// example:
-	//
-	// CHECK_CONN_SRC
-	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
-	// The method to fix the precheck failure.
-	//
-	// >  This parameter is returned only if the return value of the **CheckStatus*	- parameter is **Failed**.
-	//
-	// example:
-	//
-	// CHECK_ERROR_DEST_CONN_REPAIR2
+	ItemName     *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	RepairMethod *string `json:"RepairMethod,omitempty" xml:"RepairMethod,omitempty"`
 }
 

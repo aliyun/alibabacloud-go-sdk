@@ -243,18 +243,9 @@ func (s *DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItems) Validate
 }
 
 type DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems struct {
-	// example:
-	//
-	// CHECK_MASTER_DB_STATUS
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// example:
-	//
-	// test
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePreCheckCreateGadOrderResultResponseBodyPreCheckItemsPreCheckItems) String() string {

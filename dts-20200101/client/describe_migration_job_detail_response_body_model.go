@@ -32,9 +32,7 @@ type iDescribeMigrationJobDetailResponseBody interface {
 }
 
 type DescribeMigrationJobDetailResponseBody struct {
-	// The maximum number of data migration instances that can be displayed on one page.
-	DataInitializationDetailList *DescribeMigrationJobDetailResponseBodyDataInitializationDetailList `json:"DataInitializationDetailList,omitempty" xml:"DataInitializationDetailList,omitempty" type:"Struct"`
-	// The error message returned if full data migration failed.
+	DataInitializationDetailList  *DescribeMigrationJobDetailResponseBodyDataInitializationDetailList  `json:"DataInitializationDetailList,omitempty" xml:"DataInitializationDetailList,omitempty" type:"Struct"`
 	DataSynchronizationDetailList *DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailList `json:"DataSynchronizationDetailList,omitempty" xml:"DataSynchronizationDetailList,omitempty" type:"Struct"`
 	// Specifies whether to query the details of incremental data migration. Valid values:
 	//
@@ -77,8 +75,7 @@ type DescribeMigrationJobDetailResponseBody struct {
 	// example:
 	//
 	// 0AE3CD0B-4148-426F-A90E-952467CC****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the database to which the migration object in the source instance belongs.
+	RequestId                         *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StructureInitializationDetailList *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList `json:"StructureInitializationDetailList,omitempty" xml:"StructureInitializationDetailList,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
 	//
@@ -246,62 +243,14 @@ func (s *DescribeMigrationJobDetailResponseBodyDataInitializationDetailList) Val
 }
 
 type DescribeMigrationJobDetailResponseBodyDataInitializationDetailListDataInitializationDetail struct {
-	// The status of full data migration. Valid values:
-	//
-	// - **NotStarted**: Full data migration is not started.
-	//
-	// - **Migrating**: Full data migration is in progress.
-	//
-	// - **Failed**: Full data migration failed.
-	//
-	// - **Finished**: Full data migration is completed.
-	//
-	// example:
-	//
-	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The page number of the returned page.
-	//
-	// example:
-	//
-	// java.lang.NumberFormatException: For input string: ""
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The details of full data migration.
-	//
-	// example:
-	//
-	// 200001
-	FinishRowNum *string `json:"FinishRowNum,omitempty" xml:"FinishRowNum,omitempty"`
-	// The name of the database to which the migration object in the source instance belongs.
-	//
-	// example:
-	//
-	// 0.0
-	MigrationTime *string `json:"MigrationTime,omitempty" xml:"MigrationTime,omitempty"`
-	// Indicates whether the call was successful.
-	//
-	// example:
-	//
-	// dtstestdata
-	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The total number of entries that are returned.
-	//
-	// example:
-	//
-	// Finished
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The error message returned if the call failed.
-	//
-	// example:
-	//
-	// customer
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// 201477
-	TotalRowNum *string `json:"TotalRowNum,omitempty" xml:"TotalRowNum,omitempty"`
+	ErrorMessage           *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FinishRowNum           *string `json:"FinishRowNum,omitempty" xml:"FinishRowNum,omitempty"`
+	MigrationTime          *string `json:"MigrationTime,omitempty" xml:"MigrationTime,omitempty"`
+	SourceOwnerDBName      *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableName              *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TotalRowNum            *string `json:"TotalRowNum,omitempty" xml:"TotalRowNum,omitempty"`
 }
 
 func (s DescribeMigrationJobDetailResponseBodyDataInitializationDetailListDataInitializationDetail) String() string {
@@ -423,44 +372,11 @@ func (s *DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailList) Va
 }
 
 type DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailListDataSynchronizationDetail struct {
-	// The status of incremental data migration. Valid values:
-	//
-	// 	- **NotStarted**: Incremental data migration is not started.
-	//
-	// 	- **Migrating**: Incremental data migration is in progress.
-	//
-	// 	- **Failed**: Incremental data migration failed.
-	//
-	// 	- **Finished**: Incremental data migration is completed.
-	//
-	// example:
-	//
-	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The total number of records that are supposed to be migrated by the task.
-	//
-	// example:
-	//
-	// The details of incremental data migration.
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The time taken by full data migration.
-	//
-	// example:
-	//
-	// dtstestdata
-	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The number of records that have been migrated.
-	//
-	// example:
-	//
-	// Migrating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the database to which the migration object in the destination instance belongs.
-	//
-	// example:
-	//
-	// customer
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ErrorMessage           *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	SourceOwnerDBName      *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableName              *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeMigrationJobDetailResponseBodyDataSynchronizationDetailListDataSynchronizationDetail) String() string {
@@ -555,58 +471,14 @@ func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList
 }
 
 type DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetail struct {
-	// The schema of the migration object.
-	ConstraintList *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintList `json:"ConstraintList,omitempty" xml:"ConstraintList,omitempty" type:"Struct"`
-	// The status of schema migration. Valid values:
-	//
-	// - **NotStarted**: Schema migration is not started.
-	//
-	// - **Migrating**: Schema migration is in progress.
-	//
-	// - **Failed**: Schema migration failed.
-	//
-	// - **Finished**: Schema migration is completed.
-	//
-	// example:
-	//
-	// dtstestdata
-	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The details of schema migration.
-	//
-	// example:
-	//
-	// DTS-1020042 Execute sql error sql: DTS-1020042 Execute sql error sql: ERROR: column \\"id\\" named in key does not exist
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The task has failed for too long and cannot be restored
-	//
-	// example:
-	//
-	// CREATE TABLE `dtstestdata`.`customer` (\\n`runoob_id`  int(10) unsigned   auto_increment  COMMENT \\"\\"   NOT NULL   , \\n`runoob_title`  varchar(100)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`runoob_author1216`  varchar(40)  CHARSET `utf8` COLLATE `utf8_general_ci`    COMMENT \\"\\"   NOT NULL   , \\n`submission_date1216`  date     COMMENT \\"\\"   NULL   \\n, PRIMARY KEY (`runoob_id`)) engine=InnoDB AUTO_INCREMENT=200001 DEFAULT CHARSET=`utf8` DEFAULT COLLATE `utf8_general_ci` ROW_FORMAT= Dynamic comment = \\"\\" ;\\n
-	ObjectDefinition *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
-	// The name of the database to which the migration object in the source instance belongs.
-	//
-	// example:
-	//
-	// customer
-	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The name of the database to which the migration object in the destination instance belongs.
-	//
-	// example:
-	//
-	// Table
-	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The error message returned if incremental data migration failed.
-	//
-	// example:
-	//
-	// dtstestdata
-	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// Finished
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ConstraintList         *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintList `json:"ConstraintList,omitempty" xml:"ConstraintList,omitempty" type:"Struct"`
+	DestinationOwnerDBName *string                                                                                                             `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
+	ErrorMessage           *string                                                                                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ObjectDefinition       *string                                                                                                             `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
+	ObjectName             *string                                                                                                             `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	ObjectType             *string                                                                                                             `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	SourceOwnerDBName      *string                                                                                                             `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
+	Status                 *string                                                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetail) String() string {
@@ -733,58 +605,13 @@ func (s *DescribeMigrationJobDetailResponseBodyStructureInitializationDetailList
 }
 
 type DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintListStructureInitializationDetail struct {
-	// The status of constraint creation. Valid values:
-	//
-	// - **NotStarted**
-	//
-	// - **Migrating**
-	//
-	// - **Failed**
-	//
-	// - **Finished**
-	//
-	// example:
-	//
-	// dtstestdata
 	DestinationOwnerDBName *string `json:"DestinationOwnerDBName,omitempty" xml:"DestinationOwnerDBName,omitempty"`
-	// The constraints of the migration object, such as indexes and foreign keys.
-	//
-	// >  This parameter is returned only if the **ObjectType*	- parameter is set to **Table*	- and the migration object has constraints.
-	//
-	// example:
-	//
-	// DTS-1020042 Execute sql error sql: ERROR: type "geometry" does not exist；
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The name of the database to which the migration object in the destination instance belongs.
-	//
-	// example:
-	//
-	// CREATE SEQUENCE "public"."collections_id_seq"   MINVALUE 1   MAXVALUE 9223372036854775807   START 249   INCREMENT BY 1 ;
-	ObjectDefinition *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
-	// The name of the database to which the migration object in the source instance belongs.
-	//
-	// example:
-	//
-	// customer
-	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The name of migration object.
-	//
-	// example:
-	//
-	// Table
-	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The error message returned if schema migration failed.
-	//
-	// example:
-	//
-	// dtstestdata
-	SourceOwnerDBName *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
-	// The type of the migration object. Valid values: **Table**, **Constraint**, **Index**, **View**, **Materialize View**, **Type**, **Synonym**, **Trigger**, **Function**, **Procedure**, **Package**, **Default**, **Rule**, **PlanGuide**, and **Sequence**.
-	//
-	// example:
-	//
-	// Finished
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ErrorMessage           *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ObjectDefinition       *string `json:"ObjectDefinition,omitempty" xml:"ObjectDefinition,omitempty"`
+	ObjectName             *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	ObjectType             *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	SourceOwnerDBName      *string `json:"SourceOwnerDBName,omitempty" xml:"SourceOwnerDBName,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMigrationJobDetailResponseBodyStructureInitializationDetailListStructureInitializationDetailConstraintListStructureInitializationDetail) String() string {
