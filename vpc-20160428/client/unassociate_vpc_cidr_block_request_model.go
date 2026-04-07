@@ -30,7 +30,9 @@ type iUnassociateVpcCidrBlockRequest interface {
 type UnassociateVpcCidrBlockRequest struct {
 	// The secondary IPv6 CIDR block to be deleted.
 	//
-	// >  You must set one of the **Ipv6CidrBlock*	- and **SecondaryCidrBlock*	- parameters.
+	// >
+	//
+	// > - You must set one of the Ipv6CidrBlock and SecondaryCidrBlock parameters.
 	//
 	// example:
 	//
@@ -40,19 +42,21 @@ type UnassociateVpcCidrBlockRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VPC to which the secondary CIDR block to be deleted belongs.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ch-hangzhou
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The secondary IPv4 CIDR block to be deleted.
 	//
-	// >  You must set one of the **SecondaryCidrBlock*	- and **Ipv6CidrBlock*	- parameters.
+	// >
+	//
+	// > - You must set one of the SecondaryCidrBlock and Ipv6CidrBlock parameters.
 	//
 	// example:
 	//

@@ -54,7 +54,7 @@ type CreateDefaultVSwitchRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// ap-southeast-1
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -66,7 +66,7 @@ type CreateDefaultVSwitchRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou-b
+	// ap-southeast-1a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

@@ -129,7 +129,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// vsw-23dscddcffvf3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The vSwitch name.
+	// The exact name of the vSwitch that you want to query. Fuzzy match is not supported.
 	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	//

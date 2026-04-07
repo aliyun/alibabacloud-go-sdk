@@ -54,7 +54,7 @@ type iCreateVpcRequest interface {
 }
 
 type CreateVpcRequest struct {
-	// The CIDR block of the VPC.
+	// VPC CIDR.
 	//
 	// 	- We recommend using the private IPv4 address specified in RFC 1918 as the primary IPv4 CIDR block of the VPC with a recommended mask length of 16 to 28 bits. For example, 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
 	//
@@ -190,7 +190,7 @@ type CreateVpcRequest struct {
 	//
 	// example:
 	//
-	// 192.168.0.0/12
+	// 192.168.0.0/16
 	UserCidr *string `json:"UserCidr,omitempty" xml:"UserCidr,omitempty"`
 	// The name of the VPC.
 	//

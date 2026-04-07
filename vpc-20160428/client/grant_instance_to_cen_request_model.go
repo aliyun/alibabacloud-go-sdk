@@ -40,7 +40,7 @@ type GrantInstanceToCenRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The user ID (UID) of the Apsara Stack tenant account to which the CEN instance belongs.
+	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
 	//
 	// This parameter is required.
 	//

@@ -94,7 +94,7 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// example:
 	//
-	// ch-hangzhou
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -110,7 +110,7 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// 	- The CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block of the VPC.
 	//
-	// >  You must and can specify only one of **SecondaryCidrBlock*	- and **Ipv6CidrBlock**.
+	// >  You must and can specify only one of **SecondaryCidrBlock*	- and **IPv6CidrBlock**.
 	//
 	// example:
 	//

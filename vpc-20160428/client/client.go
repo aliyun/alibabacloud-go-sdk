@@ -1720,7 +1720,7 @@ func (client *Client) AllocateIpv6InternetBandwidth(request *AllocateIpv6Interne
 //
 // 1.  Call the AllocateVpcIpv6Cidr operation to reserve the IPv6 CIDR block.
 //
-// 2.  To allocate an IPv6 CIDR block to an existing VPC, call the [AssociateVpcCidrBlock](https://help.aliyun.com/document_detail/146745.html) operation. Set **RegionId**, **VpcId**, and **IPv6CidrBlock*	- to the IPv6 CIDR bock, and set **IpVersion*	- to **ipv6**. To allocate an IPv6 CIDR block when you create a VPC, call the [CreateVpc](https://help.aliyun.com/document_detail/35737.html) operation. Set **RegionId*	- and **Ipv6CidrBlock*	- to the IPv6 CIDR block, and set **EnableIpv6*	- to **true**.
+// 2.  To allocate an IPv6 CIDR block to an existing VPC, call the [AssociateVpcCidrBlock](https://help.aliyun.com/document_detail/146745.html) operation. Set **RegionId**, **VpcId**, and **IPv6CidrBlock*	- to the IPv6 CIDR block, and set **IpVersion*	- to **ipv6**. To allocate an IPv6 CIDR block when you create a VPC, call the [CreateVpc](https://help.aliyun.com/document_detail/35737.html) operation. Set **RegionId*	- and **Ipv6CidrBlock*	- to the IPv6 CIDR block, and set **EnableIpv6*	- to **true**.
 //
 // @param request - AllocateVpcIpv6CidrRequest
 //
@@ -1810,7 +1810,7 @@ func (client *Client) AllocateVpcIpv6CidrWithOptions(request *AllocateVpcIpv6Cid
 //
 // 1.  Call the AllocateVpcIpv6Cidr operation to reserve the IPv6 CIDR block.
 //
-// 2.  To allocate an IPv6 CIDR block to an existing VPC, call the [AssociateVpcCidrBlock](https://help.aliyun.com/document_detail/146745.html) operation. Set **RegionId**, **VpcId**, and **IPv6CidrBlock*	- to the IPv6 CIDR bock, and set **IpVersion*	- to **ipv6**. To allocate an IPv6 CIDR block when you create a VPC, call the [CreateVpc](https://help.aliyun.com/document_detail/35737.html) operation. Set **RegionId*	- and **Ipv6CidrBlock*	- to the IPv6 CIDR block, and set **EnableIpv6*	- to **true**.
+// 2.  To allocate an IPv6 CIDR block to an existing VPC, call the [AssociateVpcCidrBlock](https://help.aliyun.com/document_detail/146745.html) operation. Set **RegionId**, **VpcId**, and **IPv6CidrBlock*	- to the IPv6 CIDR block, and set **IpVersion*	- to **ipv6**. To allocate an IPv6 CIDR block when you create a VPC, call the [CreateVpc](https://help.aliyun.com/document_detail/35737.html) operation. Set **RegionId*	- and **Ipv6CidrBlock*	- to the IPv6 CIDR block, and set **EnableIpv6*	- to **true**.
 //
 // @param request - AllocateVpcIpv6CidrRequest
 //
@@ -11094,11 +11094,11 @@ func (client *Client) CreateVirtualPhysicalConnection(request *CreateVirtualPhys
 //
 //   - **CreateVpc*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of the task:
 //
-//   - If the VPC is in the **Creating*	- state, the VPC is being created.
+//   - If the VPC is in the **Pending*	- state, the VPC is being created.
 //
-//   - If the VPC is in the **Created*	- state, the VPC is created.
+//   - If the VPC is in the **Available*	- state, the VPC is created.
 //
-//   - You cannot repeatedly call the **DeleteRouteEntry*	- operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
+//   - You cannot repeatedly call the **CreateVpc*	- operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
 //
 // @param request - CreateVpcRequest
 //
@@ -11240,11 +11240,11 @@ func (client *Client) CreateVpcWithOptions(request *CreateVpcRequest, runtime *d
 //
 //   - **CreateVpc*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](https://help.aliyun.com/document_detail/94565.html) operation to query the status of the task:
 //
-//   - If the VPC is in the **Creating*	- state, the VPC is being created.
+//   - If the VPC is in the **Pending*	- state, the VPC is being created.
 //
-//   - If the VPC is in the **Created*	- state, the VPC is created.
+//   - If the VPC is in the **Available*	- state, the VPC is created.
 //
-//   - You cannot repeatedly call the **DeleteRouteEntry*	- operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
+//   - You cannot repeatedly call the **CreateVpc*	- operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
 //
 // @param request - CreateVpcRequest
 //
@@ -17154,9 +17154,9 @@ func (client *Client) DeleteTrafficMirrorSession(request *DeleteTrafficMirrorSes
 //
 //   - **DeleteVSwitch*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
 //
-//   - If the vSwitch is in the **Pending*	- state, the vSwitch is being deleted.
+//   - If the vSwitch is in the **Deleting*	- state, the vSwitch is being deleted.
 //
-//   - If you cannot query the vSwitch, the vSwitch is deleted.
+//   - If the DescribeVSwitchAttributes operation returns empty values for the vSwitch attributes, the vSwitch is deleted.
 //
 //   - You cannot repeatedly call the **DeleteVSwitch*	- operation to delete a vSwitch within the specified period of time.
 //
@@ -17240,9 +17240,9 @@ func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, ru
 //
 //   - **DeleteVSwitch*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) operation to query the status of the task:
 //
-//   - If the vSwitch is in the **Pending*	- state, the vSwitch is being deleted.
+//   - If the vSwitch is in the **Deleting*	- state, the vSwitch is being deleted.
 //
-//   - If you cannot query the vSwitch, the vSwitch is deleted.
+//   - If the DescribeVSwitchAttributes operation returns empty values for the vSwitch attributes, the vSwitch is deleted.
 //
 //   - You cannot repeatedly call the **DeleteVSwitch*	- operation to delete a vSwitch within the specified period of time.
 //
@@ -25062,6 +25062,12 @@ func (client *Client) DescribeVirtualBorderRoutersForPhysicalConnection(request 
 //
 // Queries the configuration of a virtual private cloud (VPC).
 //
+// Description:
+//
+// ## Debugging
+//
+// [You can run this interface directly in OpenAPI Explorer, saving you the trouble of calculating signatures. After running successfully, OpenAPI Explorer can automatically generate SDK code samples.](https://api.aliyun.com/#product=Vpc\\&api=DescribeVpcAttribute\\&type=RPC\\&version=2016-04-28)
+//
 // @param request - DescribeVpcAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -25133,6 +25139,12 @@ func (client *Client) DescribeVpcAttributeWithOptions(request *DescribeVpcAttrib
 // Summary:
 //
 // Queries the configuration of a virtual private cloud (VPC).
+//
+// Description:
+//
+// ## Debugging
+//
+// [You can run this interface directly in OpenAPI Explorer, saving you the trouble of calculating signatures. After running successfully, OpenAPI Explorer can automatically generate SDK code samples.](https://api.aliyun.com/#product=Vpc\\&api=DescribeVpcAttribute\\&type=RPC\\&version=2016-04-28)
 //
 // @param request - DescribeVpcAttributeRequest
 //
@@ -36407,7 +36419,7 @@ func (client *Client) ModifyVRouterAttribute(request *ModifyVRouterAttributeRequ
 
 // Summary:
 //
-// Modifies the name and description of a vSwitch.
+// Modifies the name, description, and IPv6 settings of a vSwitch.
 //
 // Description:
 //
@@ -36501,7 +36513,7 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 
 // Summary:
 //
-// Modifies the name and description of a vSwitch.
+// Modifies the name, description, and IPv6 settings of a vSwitch.
 //
 // Description:
 //
@@ -36951,7 +36963,7 @@ func (client *Client) ModifyVirtualBorderRouterAttribute(request *ModifyVirtualB
 
 // Summary:
 //
-// Modifies the configurations of a specified VPC.
+// Modifies the name and description of a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -37049,7 +37061,7 @@ func (client *Client) ModifyVpcAttributeWithOptions(request *ModifyVpcAttributeR
 
 // Summary:
 //
-// Modifies the configurations of a specified VPC.
+// Modifies the name and description of a virtual private cloud (VPC).
 //
 // Description:
 //
