@@ -206,6 +206,118 @@ func (client *Client) CreateScript(request *CreateScriptRequest) (_result *Creat
 
 // Summary:
 //
+// 创建场景配置
+//
+// @param tmpReq - CreateScriptVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScriptVersionResponse
+func (client *Client) CreateScriptVersionWithOptions(tmpReq *CreateScriptVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateScriptVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateScriptVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InteractionConfig) {
+		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.LabelConfig) {
+		request.LabelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelConfig, dara.String("LabelConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ScriptProfile) {
+		request.ScriptProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScriptProfile, dara.String("ScriptProfile"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SynthesizerConfig) {
+		request.SynthesizerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SynthesizerConfig, dara.String("SynthesizerConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TranscriberConfig) {
+		request.TranscriberConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TranscriberConfig, dara.String("TranscriberConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InteractionConfigShrink) {
+		body["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.LabelConfigShrink) {
+		body["LabelConfig"] = request.LabelConfigShrink
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.ScriptProfileShrink) {
+		body["ScriptProfile"] = request.ScriptProfileShrink
+	}
+
+	if !dara.IsNil(request.SourceVersionId) {
+		body["SourceVersionId"] = request.SourceVersionId
+	}
+
+	if !dara.IsNil(request.SynthesizerConfigShrink) {
+		body["SynthesizerConfig"] = request.SynthesizerConfigShrink
+	}
+
+	if !dara.IsNil(request.TranscriberConfigShrink) {
+		body["TranscriberConfig"] = request.TranscriberConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateScriptVersion"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateScriptVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建场景配置
+//
+// @param request - CreateScriptVersionRequest
+//
+// @return CreateScriptVersionResponse
+func (client *Client) CreateScriptVersion(request *CreateScriptVersionRequest) (_result *CreateScriptVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateScriptVersionResponse{}
+	_body, _err := client.CreateScriptVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建变量
 //
 // @param request - CreateVariableRequest
@@ -966,6 +1078,76 @@ func (client *Client) ExportVocabulary(request *ExportVocabularyRequest) (_resul
 
 // Summary:
 //
+// 获取实例详情
+//
+// @param request - GenerateFileUploadParamsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateFileUploadParamsResponse
+func (client *Client) GenerateFileUploadParamsWithOptions(request *GenerateFileUploadParamsRequest, runtime *dara.RuntimeOptions) (_result *GenerateFileUploadParamsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessType) {
+		body["BusinessType"] = request.BusinessType
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateFileUploadParams"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateFileUploadParamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - GenerateFileUploadParamsRequest
+//
+// @return GenerateFileUploadParamsResponse
+func (client *Client) GenerateFileUploadParams(request *GenerateFileUploadParamsRequest) (_result *GenerateFileUploadParamsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateFileUploadParamsResponse{}
+	_body, _err := client.GenerateFileUploadParamsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取通话详情
 //
 // @param request - GetCallDetailRecordRequest
@@ -1032,6 +1214,68 @@ func (client *Client) GetCallDetailRecord(request *GetCallDetailRecordRequest) (
 
 // Summary:
 //
+// 获取实例实时指标
+//
+// @param request - GetRealtimeInstanceStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRealtimeInstanceStatsResponse
+func (client *Client) GetRealtimeInstanceStatsWithOptions(request *GetRealtimeInstanceStatsRequest, runtime *dara.RuntimeOptions) (_result *GetRealtimeInstanceStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRealtimeInstanceStats"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRealtimeInstanceStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例实时指标
+//
+// @param request - GetRealtimeInstanceStatsRequest
+//
+// @return GetRealtimeInstanceStatsResponse
+func (client *Client) GetRealtimeInstanceStats(request *GetRealtimeInstanceStatsRequest) (_result *GetRealtimeInstanceStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRealtimeInstanceStatsResponse{}
+	_body, _err := client.GetRealtimeInstanceStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取录音
 //
 // @param request - GetRecordingRequest
@@ -1089,6 +1333,72 @@ func (client *Client) GetRecording(request *GetRecordingRequest) (_result *GetRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetRecordingResponse{}
 	_body, _err := client.GetRecordingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - GetScriptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScriptResponse
+func (client *Client) GetScriptWithOptions(request *GetScriptRequest, runtime *dara.RuntimeOptions) (_result *GetScriptResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScript"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - GetScriptRequest
+//
+// @return GetScriptResponse
+func (client *Client) GetScript(request *GetScriptRequest) (_result *GetScriptResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetScriptResponse{}
+	_body, _err := client.GetScriptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1353,6 +1663,148 @@ func (client *Client) ListBackgroundMusics(request *ListBackgroundMusicsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListBackgroundMusicsResponse{}
 	_body, _err := client.ListBackgroundMusicsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param tmpReq - ListCallDetailRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallDetailRecordsResponse
+func (client *Client) ListCallDetailRecordsWithOptions(tmpReq *ListCallDetailRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListCallDetailRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListCallDetailRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DispositionCodes) {
+		request.DispositionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DispositionCodes, dara.String("DispositionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DispositionReasons) {
+		request.DispositionReasonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DispositionReasons, dara.String("DispositionReasons"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SessionIds) {
+		request.SessionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionIds, dara.String("SessionIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessChannelId) {
+		query["AccessChannelId"] = request.AccessChannelId
+	}
+
+	if !dara.IsNil(request.AccessChannelType) {
+		query["AccessChannelType"] = request.AccessChannelType
+	}
+
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.IssueResolved) {
+		query["IssueResolved"] = request.IssueResolved
+	}
+
+	if !dara.IsNil(request.MaxTalkTurns) {
+		query["MaxTalkTurns"] = request.MaxTalkTurns
+	}
+
+	if !dara.IsNil(request.MinTalkTurns) {
+		query["MinTalkTurns"] = request.MinTalkTurns
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Callee) {
+		body["Callee"] = request.Callee
+	}
+
+	if !dara.IsNil(request.Caller) {
+		body["Caller"] = request.Caller
+	}
+
+	if !dara.IsNil(request.DispositionCodesShrink) {
+		body["DispositionCodes"] = request.DispositionCodesShrink
+	}
+
+	if !dara.IsNil(request.DispositionReasonsShrink) {
+		body["DispositionReasons"] = request.DispositionReasonsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionIdsShrink) {
+		body["SessionIds"] = request.SessionIdsShrink
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCallDetailRecords"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCallDetailRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - ListCallDetailRecordsRequest
+//
+// @return ListCallDetailRecordsResponse
+func (client *Client) ListCallDetailRecords(request *ListCallDetailRecordsRequest) (_result *ListCallDetailRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCallDetailRecordsResponse{}
+	_body, _err := client.ListCallDetailRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
