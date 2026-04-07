@@ -1,3 +1,13 @@
+2026-04-07 Version: v7.10.2
+- Update API CreateApplication: add request parameters SkillTemplateId.
+- Update API DescribeApplicationAttribute: add response parameters Body.PolarClawSaaSApplicationAttribute.SupabaseClusterId.
+- Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.ConnectionString.
+- Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.NetType.
+- Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.Port.
+- Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.Protocol.
+- Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.VPCId.
+
+
 2026-03-30 Version: v7.10.1
 - Update API CreateApplication: add request parameters AuthProvider.
 - Update API CreateApplication: add request parameters AuthProviderConfig.

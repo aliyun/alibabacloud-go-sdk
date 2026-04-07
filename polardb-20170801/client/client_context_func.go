@@ -1881,6 +1881,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 		query["SecurityIPType"] = request.SecurityIPType
 	}
 
+	if !dara.IsNil(request.SkillTemplateId) {
+		query["SkillTemplateId"] = request.SkillTemplateId
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}

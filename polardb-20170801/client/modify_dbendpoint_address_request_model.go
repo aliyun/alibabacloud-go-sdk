@@ -60,8 +60,6 @@ type ModifyDBEndpointAddressRequest struct {
 	//
 	// > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// pe-****************

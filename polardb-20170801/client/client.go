@@ -2438,6 +2438,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["SecurityIPType"] = request.SecurityIPType
 	}
 
+	if !dara.IsNil(request.SkillTemplateId) {
+		query["SkillTemplateId"] = request.SkillTemplateId
+	}
+
 	if !dara.IsNil(request.Tag) {
 		query["Tag"] = request.Tag
 	}

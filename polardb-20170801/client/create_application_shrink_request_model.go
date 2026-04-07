@@ -69,6 +69,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetSecurityIPList() *string
 	SetSecurityIPType(v string) *CreateApplicationShrinkRequest
 	GetSecurityIPType() *string
+	SetSkillTemplateId(v string) *CreateApplicationShrinkRequest
+	GetSkillTemplateId() *string
 	SetTag(v []*CreateApplicationShrinkRequestTag) *CreateApplicationShrinkRequest
 	GetTag() []*CreateApplicationShrinkRequestTag
 	SetTargetVersion(v string) *CreateApplicationShrinkRequest
@@ -178,6 +180,7 @@ type CreateApplicationShrinkRequest struct {
 	SecurityIPArrayName *string                              `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
 	SecurityIPList      *string                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SecurityIPType      *string                              `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	SkillTemplateId     *string                              `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
 	Tag                 []*CreateApplicationShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -324,6 +327,10 @@ func (s *CreateApplicationShrinkRequest) GetSecurityIPList() *string {
 
 func (s *CreateApplicationShrinkRequest) GetSecurityIPType() *string {
 	return s.SecurityIPType
+}
+
+func (s *CreateApplicationShrinkRequest) GetSkillTemplateId() *string {
+	return s.SkillTemplateId
 }
 
 func (s *CreateApplicationShrinkRequest) GetTag() []*CreateApplicationShrinkRequestTag {
@@ -497,6 +504,11 @@ func (s *CreateApplicationShrinkRequest) SetSecurityIPList(v string) *CreateAppl
 
 func (s *CreateApplicationShrinkRequest) SetSecurityIPType(v string) *CreateApplicationShrinkRequest {
 	s.SecurityIPType = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetSkillTemplateId(v string) *CreateApplicationShrinkRequest {
+	s.SkillTemplateId = &v
 	return s
 }
 

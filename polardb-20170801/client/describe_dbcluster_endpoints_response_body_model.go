@@ -77,7 +77,8 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	// example:
 	//
 	// Enable
-	AutoAddNewNodes *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
+	AutoAddNewNodes  *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The ID of the cluster.
 	//
 	// example:
@@ -136,6 +137,7 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	//
 	// Custom
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number. For example, you can use **Reader1*	- and **Reader2*	- as the role names.
 	//
 	// >  This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
@@ -166,6 +168,8 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	//
 	// 100
 	PolarSccWaitTimeout *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
+	Port                *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The read/write mode. Valid values:
 	//
 	// 	- **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
@@ -187,6 +191,7 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	// on
 	SccMode     *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	VPCId       *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 }
 
 func (s DescribeDBClusterEndpointsResponseBodyItems) String() string {
@@ -203,6 +208,10 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) GetAddressItems() []*Descr
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) GetAutoAddNewNodes() *string {
 	return s.AutoAddNewNodes
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) GetConnectionString() *string {
+	return s.ConnectionString
 }
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) GetDBClusterId() *string {
@@ -225,6 +234,10 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) GetEndpointType() *string 
 	return s.EndpointType
 }
 
+func (s *DescribeDBClusterEndpointsResponseBodyItems) GetNetType() *string {
+	return s.NetType
+}
+
 func (s *DescribeDBClusterEndpointsResponseBodyItems) GetNodeWithRoles() *string {
 	return s.NodeWithRoles
 }
@@ -241,6 +254,14 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) GetPolarSccWaitTimeout() *
 	return s.PolarSccWaitTimeout
 }
 
+func (s *DescribeDBClusterEndpointsResponseBodyItems) GetPort() *string {
+	return s.Port
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) GetProtocol() *string {
+	return s.Protocol
+}
+
 func (s *DescribeDBClusterEndpointsResponseBodyItems) GetReadWriteMode() *string {
 	return s.ReadWriteMode
 }
@@ -253,6 +274,10 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) GetServiceName() *string {
 	return s.ServiceName
 }
 
+func (s *DescribeDBClusterEndpointsResponseBodyItems) GetVPCId() *string {
+	return s.VPCId
+}
+
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetAddressItems(v []*DescribeDBClusterEndpointsResponseBodyItemsAddressItems) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.AddressItems = v
 	return s
@@ -260,6 +285,11 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetAddressItems(v []*Descr
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetAutoAddNewNodes(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.AutoAddNewNodes = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetConnectionString(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.ConnectionString = &v
 	return s
 }
 
@@ -288,6 +318,11 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetEndpointType(v string) 
 	return s
 }
 
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetNetType(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.NetType = &v
+	return s
+}
+
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetNodeWithRoles(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.NodeWithRoles = &v
 	return s
@@ -308,6 +343,16 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetPolarSccWaitTimeout(v s
 	return s
 }
 
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetPort(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetProtocol(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.Protocol = &v
+	return s
+}
+
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetReadWriteMode(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.ReadWriteMode = &v
 	return s
@@ -320,6 +365,11 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetSccMode(v string) *Desc
 
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetServiceName(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetVPCId(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.VPCId = &v
 	return s
 }
 

@@ -40,8 +40,6 @@ type DeleteDBEndpointAddressRequest struct {
 	//
 	// >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the endpoints of a specified PolarDB cluster.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// pe-***************

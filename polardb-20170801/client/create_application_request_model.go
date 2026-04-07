@@ -69,6 +69,8 @@ type iCreateApplicationRequest interface {
 	GetSecurityIPList() *string
 	SetSecurityIPType(v string) *CreateApplicationRequest
 	GetSecurityIPType() *string
+	SetSkillTemplateId(v string) *CreateApplicationRequest
+	GetSkillTemplateId() *string
 	SetTag(v []*CreateApplicationRequestTag) *CreateApplicationRequest
 	GetTag() []*CreateApplicationRequestTag
 	SetTargetVersion(v string) *CreateApplicationRequest
@@ -178,6 +180,7 @@ type CreateApplicationRequest struct {
 	SecurityIPArrayName *string                        `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
 	SecurityIPList      *string                        `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SecurityIPType      *string                        `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
+	SkillTemplateId     *string                        `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
 	Tag                 []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -324,6 +327,10 @@ func (s *CreateApplicationRequest) GetSecurityIPList() *string {
 
 func (s *CreateApplicationRequest) GetSecurityIPType() *string {
 	return s.SecurityIPType
+}
+
+func (s *CreateApplicationRequest) GetSkillTemplateId() *string {
+	return s.SkillTemplateId
 }
 
 func (s *CreateApplicationRequest) GetTag() []*CreateApplicationRequestTag {
@@ -497,6 +504,11 @@ func (s *CreateApplicationRequest) SetSecurityIPList(v string) *CreateApplicatio
 
 func (s *CreateApplicationRequest) SetSecurityIPType(v string) *CreateApplicationRequest {
 	s.SecurityIPType = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetSkillTemplateId(v string) *CreateApplicationRequest {
+	s.SkillTemplateId = &v
 	return s
 }
 
