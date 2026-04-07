@@ -1477,6 +1477,72 @@ func (client *Client) CreateGdnInstance(request *CreateGdnInstanceRequest) (_res
 
 // Summary:
 //
+// 创建mem0
+//
+// @param request - CreateMem0Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMem0Response
+func (client *Client) CreateMem0WithOptions(request *CreateMem0Request, runtime *dara.RuntimeOptions) (_result *CreateMem0Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMem0"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMem0Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建mem0
+//
+// @param request - CreateMem0Request
+//
+// @return CreateMem0Response
+func (client *Client) CreateMem0(request *CreateMem0Request) (_result *CreateMem0Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMem0Response{}
+	_body, _err := client.CreateMem0WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建评估预检任务
 //
 // @param request - CreateRplInspectionTaskRequest
@@ -2362,6 +2428,72 @@ func (client *Client) DeleteGdnInstance(request *DeleteGdnInstanceRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteGdnInstanceResponse{}
 	_body, _err := client.DeleteGdnInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除mem0
+//
+// @param request - DeleteMem0Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMem0Response
+func (client *Client) DeleteMem0WithOptions(request *DeleteMem0Request, runtime *dara.RuntimeOptions) (_result *DeleteMem0Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMem0"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMem0Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除mem0
+//
+// @param request - DeleteMem0Request
+//
+// @return DeleteMem0Response
+func (client *Client) DeleteMem0(request *DeleteMem0Request) (_result *DeleteMem0Response, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMem0Response{}
+	_body, _err := client.DeleteMem0WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4896,6 +5028,72 @@ func (client *Client) DescribeGdnInstances(request *DescribeGdnInstancesRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeGdnInstancesResponse{}
 	_body, _err := client.DescribeGdnInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询mem0实例信息
+//
+// @param request - DescribeMem0InfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMem0InfoResponse
+func (client *Client) DescribeMem0InfoWithOptions(request *DescribeMem0InfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeMem0InfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMem0Info"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMem0InfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询mem0实例信息
+//
+// @param request - DescribeMem0InfoRequest
+//
+// @return DescribeMem0InfoResponse
+func (client *Client) DescribeMem0Info(request *DescribeMem0InfoRequest) (_result *DescribeMem0InfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeMem0InfoResponse{}
+	_body, _err := client.DescribeMem0InfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
