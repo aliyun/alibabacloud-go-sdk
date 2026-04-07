@@ -4,6 +4,12 @@
 - Update API DescribeDtsJobDetail: add response parameters Body.ApprovalProcessUrl.
 
 
+2026-04-07 Version: v2.10.2
+- Update API DescribeDocParserJobResult: add response parameters Body.OuterFileUrl.
+- Update API DescribeDtsJobDetail: add response parameters Body.ApprovalProcessStatus.
+- Update API DescribeDtsJobDetail: add response parameters Body.ApprovalProcessUrl.
+
+
 2026-02-04 Version: v2.10.1
 - Update API CreateDtsInstance: add request parameters InsightModule.
 - Update API DescribeDtsJobDetail: add response parameters Body.InsightModule.
