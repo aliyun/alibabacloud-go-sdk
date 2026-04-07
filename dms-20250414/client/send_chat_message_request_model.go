@@ -15,6 +15,8 @@ type iSendChatMessageRequest interface {
 	GetDMSUnit() *string
 	SetDataSource(v *SendChatMessageRequestDataSource) *SendChatMessageRequest
 	GetDataSource() *SendChatMessageRequestDataSource
+	SetDataSources(v []*SendChatMessageRequestDataSources) *SendChatMessageRequest
+	GetDataSources() []*SendChatMessageRequestDataSources
 	SetMessage(v string) *SendChatMessageRequest
 	GetMessage() *string
 	SetMessageType(v string) *SendChatMessageRequest
@@ -43,8 +45,9 @@ type SendChatMessageRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit    *string                           `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	DataSource *SendChatMessageRequestDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	DMSUnit     *string                              `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	DataSource  *SendChatMessageRequestDataSource    `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	DataSources []*SendChatMessageRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -96,6 +99,10 @@ func (s *SendChatMessageRequest) GetDataSource() *SendChatMessageRequestDataSour
 	return s.DataSource
 }
 
+func (s *SendChatMessageRequest) GetDataSources() []*SendChatMessageRequestDataSources {
+	return s.DataSources
+}
+
 func (s *SendChatMessageRequest) GetMessage() *string {
 	return s.Message
 }
@@ -143,6 +150,11 @@ func (s *SendChatMessageRequest) SetDataSource(v *SendChatMessageRequestDataSour
 	return s
 }
 
+func (s *SendChatMessageRequest) SetDataSources(v []*SendChatMessageRequestDataSources) *SendChatMessageRequest {
+	s.DataSources = v
+	return s
+}
+
 func (s *SendChatMessageRequest) SetMessage(v string) *SendChatMessageRequest {
 	s.Message = &v
 	return s
@@ -187,6 +199,15 @@ func (s *SendChatMessageRequest) Validate() error {
 	if s.DataSource != nil {
 		if err := s.DataSource.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.SessionConfig != nil {
@@ -349,6 +370,131 @@ func (s *SendChatMessageRequestDataSource) SetTables(v []*string) *SendChatMessa
 }
 
 func (s *SendChatMessageRequestDataSource) Validate() error {
+	return dara.Validate(s)
+}
+
+type SendChatMessageRequestDataSources struct {
+	DataSourceId   *string   `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType *string   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	Database       *string   `json:"Database,omitempty" xml:"Database,omitempty"`
+	DbName         *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DmsDatabaseId  *string   `json:"DmsDatabaseId,omitempty" xml:"DmsDatabaseId,omitempty"`
+	DmsInstanceId  *string   `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	Engine         *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	FileId         *string   `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	Location       *string   `json:"Location,omitempty" xml:"Location,omitempty"`
+	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tables         []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s SendChatMessageRequestDataSources) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendChatMessageRequestDataSources) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatMessageRequestDataSources) GetDataSourceId() *string {
+	return s.DataSourceId
+}
+
+func (s *SendChatMessageRequestDataSources) GetDataSourceType() *string {
+	return s.DataSourceType
+}
+
+func (s *SendChatMessageRequestDataSources) GetDatabase() *string {
+	return s.Database
+}
+
+func (s *SendChatMessageRequestDataSources) GetDbName() *string {
+	return s.DbName
+}
+
+func (s *SendChatMessageRequestDataSources) GetDmsDatabaseId() *string {
+	return s.DmsDatabaseId
+}
+
+func (s *SendChatMessageRequestDataSources) GetDmsInstanceId() *string {
+	return s.DmsInstanceId
+}
+
+func (s *SendChatMessageRequestDataSources) GetEngine() *string {
+	return s.Engine
+}
+
+func (s *SendChatMessageRequestDataSources) GetFileId() *string {
+	return s.FileId
+}
+
+func (s *SendChatMessageRequestDataSources) GetLocation() *string {
+	return s.Location
+}
+
+func (s *SendChatMessageRequestDataSources) GetRegionId() *string {
+	return s.RegionId
+}
+
+func (s *SendChatMessageRequestDataSources) GetTables() []*string {
+	return s.Tables
+}
+
+func (s *SendChatMessageRequestDataSources) SetDataSourceId(v string) *SendChatMessageRequestDataSources {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetDataSourceType(v string) *SendChatMessageRequestDataSources {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetDatabase(v string) *SendChatMessageRequestDataSources {
+	s.Database = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetDbName(v string) *SendChatMessageRequestDataSources {
+	s.DbName = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetDmsDatabaseId(v string) *SendChatMessageRequestDataSources {
+	s.DmsDatabaseId = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetDmsInstanceId(v string) *SendChatMessageRequestDataSources {
+	s.DmsInstanceId = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetEngine(v string) *SendChatMessageRequestDataSources {
+	s.Engine = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetFileId(v string) *SendChatMessageRequestDataSources {
+	s.FileId = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetLocation(v string) *SendChatMessageRequestDataSources {
+	s.Location = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetRegionId(v string) *SendChatMessageRequestDataSources {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) SetTables(v []*string) *SendChatMessageRequestDataSources {
+	s.Tables = v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSources) Validate() error {
 	return dara.Validate(s)
 }
 

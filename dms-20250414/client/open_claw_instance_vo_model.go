@@ -17,6 +17,8 @@ type iOpenClawInstanceVO interface {
 	GetBasicAuthPassword() *string
 	SetBasicAuthUsername(v string) *OpenClawInstanceVO
 	GetBasicAuthUsername() *string
+	SetChargeType(v string) *OpenClawInstanceVO
+	GetChargeType() *string
 	SetCpu(v float64) *OpenClawInstanceVO
 	GetCpu() *float64
 	SetGmtCreate(v string) *OpenClawInstanceVO
@@ -35,6 +37,8 @@ type iOpenClawInstanceVO interface {
 	GetInstanceRegion() *string
 	SetLastActiveTime(v string) *OpenClawInstanceVO
 	GetLastActiveTime() *string
+	SetLockTime(v string) *OpenClawInstanceVO
+	GetLockTime() *string
 	SetMemorySize(v int32) *OpenClawInstanceVO
 	GetMemorySize() *int32
 	SetOpenclawToken(v string) *OpenClawInstanceVO
@@ -49,6 +53,8 @@ type iOpenClawInstanceVO interface {
 	GetStatusDesc() *string
 	SetStatusMessage(v string) *OpenClawInstanceVO
 	GetStatusMessage() *string
+	SetTrialExpireTime(v string) *OpenClawInstanceVO
+	GetTrialExpireTime() *string
 	SetVariables(v string) *OpenClawInstanceVO
 	GetVariables() *string
 }
@@ -58,6 +64,7 @@ type OpenClawInstanceVO struct {
 	AuthType          *string                      `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BasicAuthPassword *string                      `json:"BasicAuthPassword,omitempty" xml:"BasicAuthPassword,omitempty"`
 	BasicAuthUsername *string                      `json:"BasicAuthUsername,omitempty" xml:"BasicAuthUsername,omitempty"`
+	ChargeType        *string                      `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Cpu               *float64                     `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	GmtCreate         *string                      `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified       *string                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
@@ -67,6 +74,7 @@ type OpenClawInstanceVO struct {
 	InstanceName      *string                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceRegion    *string                      `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
 	LastActiveTime    *string                      `json:"LastActiveTime,omitempty" xml:"LastActiveTime,omitempty"`
+	LockTime          *string                      `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
 	MemorySize        *int32                       `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	OpenclawToken     *string                      `json:"OpenclawToken,omitempty" xml:"OpenclawToken,omitempty"`
 	OwnerUid          *string                      `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
@@ -74,6 +82,7 @@ type OpenClawInstanceVO struct {
 	Status            *int32                       `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusDesc        *string                      `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	StatusMessage     *string                      `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	TrialExpireTime   *string                      `json:"TrialExpireTime,omitempty" xml:"TrialExpireTime,omitempty"`
 	Variables         *string                      `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
@@ -99,6 +108,10 @@ func (s *OpenClawInstanceVO) GetBasicAuthPassword() *string {
 
 func (s *OpenClawInstanceVO) GetBasicAuthUsername() *string {
 	return s.BasicAuthUsername
+}
+
+func (s *OpenClawInstanceVO) GetChargeType() *string {
+	return s.ChargeType
 }
 
 func (s *OpenClawInstanceVO) GetCpu() *float64 {
@@ -137,6 +150,10 @@ func (s *OpenClawInstanceVO) GetLastActiveTime() *string {
 	return s.LastActiveTime
 }
 
+func (s *OpenClawInstanceVO) GetLockTime() *string {
+	return s.LockTime
+}
+
 func (s *OpenClawInstanceVO) GetMemorySize() *int32 {
 	return s.MemorySize
 }
@@ -165,6 +182,10 @@ func (s *OpenClawInstanceVO) GetStatusMessage() *string {
 	return s.StatusMessage
 }
 
+func (s *OpenClawInstanceVO) GetTrialExpireTime() *string {
+	return s.TrialExpireTime
+}
+
 func (s *OpenClawInstanceVO) GetVariables() *string {
 	return s.Variables
 }
@@ -186,6 +207,11 @@ func (s *OpenClawInstanceVO) SetBasicAuthPassword(v string) *OpenClawInstanceVO 
 
 func (s *OpenClawInstanceVO) SetBasicAuthUsername(v string) *OpenClawInstanceVO {
 	s.BasicAuthUsername = &v
+	return s
+}
+
+func (s *OpenClawInstanceVO) SetChargeType(v string) *OpenClawInstanceVO {
+	s.ChargeType = &v
 	return s
 }
 
@@ -234,6 +260,11 @@ func (s *OpenClawInstanceVO) SetLastActiveTime(v string) *OpenClawInstanceVO {
 	return s
 }
 
+func (s *OpenClawInstanceVO) SetLockTime(v string) *OpenClawInstanceVO {
+	s.LockTime = &v
+	return s
+}
+
 func (s *OpenClawInstanceVO) SetMemorySize(v int32) *OpenClawInstanceVO {
 	s.MemorySize = &v
 	return s
@@ -266,6 +297,11 @@ func (s *OpenClawInstanceVO) SetStatusDesc(v string) *OpenClawInstanceVO {
 
 func (s *OpenClawInstanceVO) SetStatusMessage(v string) *OpenClawInstanceVO {
 	s.StatusMessage = &v
+	return s
+}
+
+func (s *OpenClawInstanceVO) SetTrialExpireTime(v string) *OpenClawInstanceVO {
+	s.TrialExpireTime = &v
 	return s
 }
 

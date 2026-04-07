@@ -15,6 +15,8 @@ type iSendChatMessageShrinkRequest interface {
 	GetDMSUnit() *string
 	SetDataSourceShrink(v string) *SendChatMessageShrinkRequest
 	GetDataSourceShrink() *string
+	SetDataSourcesShrink(v string) *SendChatMessageShrinkRequest
+	GetDataSourcesShrink() *string
 	SetMessage(v string) *SendChatMessageShrinkRequest
 	GetMessage() *string
 	SetMessageType(v string) *SendChatMessageShrinkRequest
@@ -43,8 +45,9 @@ type SendChatMessageShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	DMSUnit          *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	DMSUnit           *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
+	DataSourceShrink  *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	DataSourcesShrink *string `json:"DataSources,omitempty" xml:"DataSources,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -96,6 +99,10 @@ func (s *SendChatMessageShrinkRequest) GetDataSourceShrink() *string {
 	return s.DataSourceShrink
 }
 
+func (s *SendChatMessageShrinkRequest) GetDataSourcesShrink() *string {
+	return s.DataSourcesShrink
+}
+
 func (s *SendChatMessageShrinkRequest) GetMessage() *string {
 	return s.Message
 }
@@ -140,6 +147,11 @@ func (s *SendChatMessageShrinkRequest) SetDMSUnit(v string) *SendChatMessageShri
 
 func (s *SendChatMessageShrinkRequest) SetDataSourceShrink(v string) *SendChatMessageShrinkRequest {
 	s.DataSourceShrink = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetDataSourcesShrink(v string) *SendChatMessageShrinkRequest {
+	s.DataSourcesShrink = &v
 	return s
 }
 

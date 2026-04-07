@@ -3729,6 +3729,10 @@ func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *Se
 		request.DataSourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSource, dara.String("DataSource"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.DataSources) {
+		request.DataSourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSources, dara.String("DataSources"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.SessionConfig) {
 		request.SessionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SessionConfig, dara.String("SessionConfig"), dara.String("json"))
 	}
@@ -3744,6 +3748,10 @@ func (client *Client) SendChatMessageWithContext(ctx context.Context, tmpReq *Se
 
 	if !dara.IsNil(request.DataSourceShrink) {
 		query["DataSource"] = request.DataSourceShrink
+	}
+
+	if !dara.IsNil(request.DataSourcesShrink) {
+		query["DataSources"] = request.DataSourcesShrink
 	}
 
 	if !dara.IsNil(request.Message) {
