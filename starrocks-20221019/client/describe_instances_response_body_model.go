@@ -149,7 +149,8 @@ type DescribeInstancesResponseBodyData struct {
 	// example:
 	//
 	// 1733292921000
-	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	BeginTime        *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EnableAiFunction *bool  `json:"EnableAiFunction,omitempty" xml:"EnableAiFunction,omitempty"`
 	// example:
 	//
 	// true
@@ -272,6 +273,10 @@ func (s *DescribeInstancesResponseBodyData) GetBeginTime() *int64 {
 	return s.BeginTime
 }
 
+func (s *DescribeInstancesResponseBodyData) GetEnableAiFunction() *bool {
+	return s.EnableAiFunction
+}
+
 func (s *DescribeInstancesResponseBodyData) GetEnableAutoMinorVersionUpgrade() *bool {
 	return s.EnableAutoMinorVersionUpgrade
 }
@@ -388,6 +393,11 @@ func (s *DescribeInstancesResponseBodyData) SetArchitecture(v string) *DescribeI
 
 func (s *DescribeInstancesResponseBodyData) SetBeginTime(v int64) *DescribeInstancesResponseBodyData {
 	s.BeginTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyData) SetEnableAiFunction(v bool) *DescribeInstancesResponseBodyData {
+	s.EnableAiFunction = &v
 	return s
 }
 
