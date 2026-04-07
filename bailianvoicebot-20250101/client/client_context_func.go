@@ -28,6 +28,10 @@ func (client *Client) BridgeWebCallWithContext(ctx context.Context, request *Bri
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.AudioCodec) {
+		query["AudioCodec"] = request.AudioCodec
+	}
+
 	if !dara.IsNil(request.BusinessUnitId) {
 		query["BusinessUnitId"] = request.BusinessUnitId
 	}
@@ -227,6 +231,114 @@ func (client *Client) CreateApplicationVersionWithContext(ctx context.Context, t
 
 // Summary:
 //
+// 创建克隆音
+//
+// @param request - CreateCloneVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloneVoiceResponse
+func (client *Client) CreateCloneVoiceWithContext(ctx context.Context, request *CreateCloneVoiceRequest, runtime *dara.RuntimeOptions) (_result *CreateCloneVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.FileKey) {
+		body["FileKey"] = request.FileKey
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloneVoice"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建变量
+//
+// @param request - CreateVariableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVariableResponse
+func (client *Client) CreateVariableWithContext(ctx context.Context, request *CreateVariableRequest, runtime *dara.RuntimeOptions) (_result *CreateVariableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVariable"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVariableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除应用
 //
 // @param request - DeleteApplicationRequest
@@ -265,6 +377,102 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteApplicationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除场景
+//
+// @param request - DeleteCloneVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloneVoiceResponse
+func (client *Client) DeleteCloneVoiceWithContext(ctx context.Context, request *DeleteCloneVoiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloneVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.CloneVoiceId) {
+		body["CloneVoiceId"] = request.CloneVoiceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloneVoice"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除变量
+//
+// @param request - DeleteVariableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVariableResponse
+func (client *Client) DeleteVariableWithContext(ctx context.Context, request *DeleteVariableRequest, runtime *dara.RuntimeOptions) (_result *DeleteVariableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.VariableId) {
+		body["VariableId"] = request.VariableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVariable"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVariableResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -417,6 +625,118 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - ListCloneVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloneVoiceResponse
+func (client *Client) ListCloneVoiceWithContext(ctx context.Context, request *ListCloneVoiceRequest, runtime *dara.RuntimeOptions) (_result *ListCloneVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloneVoice"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取变量列表
+//
+// @param request - ListVariableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVariableResponse
+func (client *Client) ListVariableWithContext(ctx context.Context, request *ListVariableRequest, runtime *dara.RuntimeOptions) (_result *ListVariableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchPattern) {
+		body["SearchPattern"] = request.SearchPattern
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVariable"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVariableResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -615,6 +935,114 @@ func (client *Client) UpdateApplicationVersionWithContext(ctx context.Context, t
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateApplicationVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例
+//
+// @param request - UpdateCloneVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloneVoiceResponse
+func (client *Client) UpdateCloneVoiceWithContext(ctx context.Context, request *UpdateCloneVoiceRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloneVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.CloneVoiceId) {
+		body["CloneVoiceId"] = request.CloneVoiceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloneVoice"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新变量
+//
+// @param request - UpdateVariableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVariableResponse
+func (client *Client) UpdateVariableWithContext(ctx context.Context, request *UpdateVariableRequest, runtime *dara.RuntimeOptions) (_result *UpdateVariableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.VariableId) {
+		body["VariableId"] = request.VariableId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVariable"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVariableResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

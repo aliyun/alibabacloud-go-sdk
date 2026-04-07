@@ -11,6 +11,8 @@ type iBridgeWebCallRequest interface {
 	GoString() string
 	SetApplicationId(v string) *BridgeWebCallRequest
 	GetApplicationId() *string
+	SetAudioCodec(v string) *BridgeWebCallRequest
+	GetAudioCodec() *string
 	SetBusinessUnitId(v string) *BridgeWebCallRequest
 	GetBusinessUnitId() *string
 	SetCaller(v string) *BridgeWebCallRequest
@@ -34,6 +36,7 @@ type BridgeWebCallRequest struct {
 	//
 	// a395011f-a247-400f-bc69-28796749fd52
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	AudioCodec    *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -80,6 +83,10 @@ func (s *BridgeWebCallRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *BridgeWebCallRequest) GetAudioCodec() *string {
+	return s.AudioCodec
+}
+
 func (s *BridgeWebCallRequest) GetBusinessUnitId() *string {
 	return s.BusinessUnitId
 }
@@ -110,6 +117,11 @@ func (s *BridgeWebCallRequest) GetTimeoutSeconds() *int32 {
 
 func (s *BridgeWebCallRequest) SetApplicationId(v string) *BridgeWebCallRequest {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *BridgeWebCallRequest) SetAudioCodec(v string) *BridgeWebCallRequest {
+	s.AudioCodec = &v
 	return s
 }
 
