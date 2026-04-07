@@ -216,6 +216,12 @@ type GetSmsTemplateListResponseBodyDataList struct {
 	//
 	// 示例值示例值示例值
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// 模板内容
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// 模板名称
 	//
 	// example:
@@ -264,6 +270,10 @@ func (s *GetSmsTemplateListResponseBodyDataList) GetTemplateCode() *string {
 	return s.TemplateCode
 }
 
+func (s *GetSmsTemplateListResponseBodyDataList) GetTemplateContent() *string {
+	return s.TemplateContent
+}
+
 func (s *GetSmsTemplateListResponseBodyDataList) GetTemplateName() *string {
 	return s.TemplateName
 }
@@ -301,6 +311,11 @@ func (s *GetSmsTemplateListResponseBodyDataList) SetSignName(v string) *GetSmsTe
 
 func (s *GetSmsTemplateListResponseBodyDataList) SetTemplateCode(v string) *GetSmsTemplateListResponseBodyDataList {
 	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetSmsTemplateListResponseBodyDataList) SetTemplateContent(v string) *GetSmsTemplateListResponseBodyDataList {
+	s.TemplateContent = &v
 	return s
 }
 

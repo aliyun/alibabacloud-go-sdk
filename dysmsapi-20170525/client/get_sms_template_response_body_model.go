@@ -33,6 +33,8 @@ type iGetSmsTemplateResponseBody interface {
 	GetRemark() *string
 	SetRequestId(v string) *GetSmsTemplateResponseBody
 	GetRequestId() *string
+	SetSignList(v *GetSmsTemplateResponseBodySignList) *GetSmsTemplateResponseBody
+	GetSignList() *GetSmsTemplateResponseBodySignList
 	SetTemplateCode(v string) *GetSmsTemplateResponseBody
 	GetTemplateCode() *string
 	SetTemplateContent(v string) *GetSmsTemplateResponseBody
@@ -121,7 +123,8 @@ type GetSmsTemplateResponseBody struct {
 	// example:
 	//
 	// 819BE656-D2E0-4858-8B21-B2E47708****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignList  *GetSmsTemplateResponseBodySignList `json:"SignList,omitempty" xml:"SignList,omitempty" type:"Struct"`
 	// SMS template code.
 	//
 	// example:
@@ -247,6 +250,10 @@ func (s *GetSmsTemplateResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetSmsTemplateResponseBody) GetSignList() *GetSmsTemplateResponseBodySignList {
+	return s.SignList
+}
+
 func (s *GetSmsTemplateResponseBody) GetTemplateCode() *string {
 	return s.TemplateCode
 }
@@ -339,6 +346,11 @@ func (s *GetSmsTemplateResponseBody) SetRequestId(v string) *GetSmsTemplateRespo
 	return s
 }
 
+func (s *GetSmsTemplateResponseBody) SetSignList(v *GetSmsTemplateResponseBodySignList) *GetSmsTemplateResponseBody {
+	s.SignList = v
+	return s
+}
+
 func (s *GetSmsTemplateResponseBody) SetTemplateCode(v string) *GetSmsTemplateResponseBody {
 	s.TemplateCode = &v
 	return s
@@ -392,6 +404,11 @@ func (s *GetSmsTemplateResponseBody) Validate() error {
 	}
 	if s.MoreDataFileUrlList != nil {
 		if err := s.MoreDataFileUrlList.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SignList != nil {
+		if err := s.SignList.Validate(); err != nil {
 			return err
 		}
 	}
@@ -490,5 +507,30 @@ func (s *GetSmsTemplateResponseBodyMoreDataFileUrlList) SetMoreDataFileUrl(v []*
 }
 
 func (s *GetSmsTemplateResponseBodyMoreDataFileUrlList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetSmsTemplateResponseBodySignList struct {
+	SignList []*string `json:"SignList,omitempty" xml:"SignList,omitempty" type:"Repeated"`
+}
+
+func (s GetSmsTemplateResponseBodySignList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetSmsTemplateResponseBodySignList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateResponseBodySignList) GetSignList() []*string {
+	return s.SignList
+}
+
+func (s *GetSmsTemplateResponseBodySignList) SetSignList(v []*string) *GetSmsTemplateResponseBodySignList {
+	s.SignList = v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBodySignList) Validate() error {
 	return dara.Validate(s)
 }
