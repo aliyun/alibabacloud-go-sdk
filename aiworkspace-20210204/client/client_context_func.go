@@ -303,6 +303,10 @@ func (client *Client) CreateCodeSourceWithContext(ctx context.Context, request *
 		body["Accessibility"] = request.Accessibility
 	}
 
+	if !dara.IsNil(request.CloneType) {
+		body["CloneType"] = request.CloneType
+	}
+
 	if !dara.IsNil(request.CodeBranch) {
 		body["CodeBranch"] = request.CodeBranch
 	}
@@ -463,6 +467,10 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Accessibility) {
 		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.AccessibleRoleIdList) {
+		body["AccessibleRoleIdList"] = request.AccessibleRoleIdList
 	}
 
 	if !dara.IsNil(request.DataCount) {
@@ -3589,6 +3597,10 @@ func (client *Client) ListConnectionsWithContext(ctx context.Context, tmpReq *Li
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !dara.IsNil(request.ConnectionIdsShrink) {
 		query["ConnectionIds"] = request.ConnectionIdsShrink
 	}
@@ -3956,6 +3968,10 @@ func (client *Client) ListDatasetJobsWithContext(ctx context.Context, DatasetId 
 		query["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.WithLogs) {
+		query["WithLogs"] = request.WithLogs
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -4092,6 +4108,10 @@ func (client *Client) ListDatasetsWithContext(ctx context.Context, request *List
 
 	if !dara.IsNil(request.DataTypes) {
 		query["DataTypes"] = request.DataTypes
+	}
+
+	if !dara.IsNil(request.DatasetIds) {
+		query["DatasetIds"] = request.DatasetIds
 	}
 
 	if !dara.IsNil(request.Edition) {
@@ -4273,7 +4293,7 @@ func (client *Client) ListExperimentWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// 列举特性
+// Queries a list of features.
 //
 // @param request - ListFeaturesRequest
 //
@@ -5725,6 +5745,10 @@ func (client *Client) UpdateCodeSourceWithContext(ctx context.Context, CodeSourc
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CloneType) {
+		body["CloneType"] = request.CloneType
+	}
+
 	if !dara.IsNil(request.CodeBranch) {
 		body["CodeBranch"] = request.CodeBranch
 	}
@@ -5965,6 +5989,14 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, DatasetId *s
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.AccessibleRoleIdList) {
+		body["AccessibleRoleIdList"] = request.AccessibleRoleIdList
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}

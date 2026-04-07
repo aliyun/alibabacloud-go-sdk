@@ -34,35 +34,151 @@ type iDatasetFileMetaContentCreate interface {
 }
 
 type DatasetFileMetaContentCreate struct {
+	// The file comment.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The MIME type of the file. It contains Type and SubType.
+	//
+	// Valid values:
+	//
+	// 	- image/png: PNG.
+	//
+	// 	- image/jpeg: JPEG.
+	//
+	// 	- image/tiff: TIFF.
+	//
+	// 	- image/bmp: BMP.
+	//
+	// 	- image/gif: GIF.
+	//
+	// 	- image/x-icon: ICON.
+	//
+	// 	- image/svg+xml: SVG.
+	//
+	// 	- image/webp: WEBP.
+	//
+	// 	- image/heic: HEIC
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// image/jpeg
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DataSize    *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The file size. Unit: bytes.
+	//
+	// example:
+	//
+	// 10000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The time when the file was created. The time follows the ISO 8601 standard.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
+	// 2025-01-12T14:36:01Z
 	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	// The file fingerprint. Used to check the uniqueness of the file. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5 values.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// D41D8CD98F*****E9800998ECF8
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// 00001.jpeg
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type. The same as MIME type.
+	//
+	// Valid values:
+	//
+	// 	- image
+	//
+	// 	- application
+	//
+	// 	- audio
+	//
+	// 	- video
+	//
+	// 	- text
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// image
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The time when the file was last modified. The time follows the ISO 8601 standard.
+	//
 	// This parameter is required.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
+	// 2025-01-12T14:36:01Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// The specific metadata of the file. You cannot retrieve the metadata. The value is a JSON string.
+	//
 	// example:
 	//
-	// {"user":{"add":["cat"]}}
+	// {
+	//
+	//     "Image":
+	//
+	//     {
+	//
+	//         "Width": 1920,
+	//
+	//         "Height": 1080,
+	//
+	//         "Channel": 3
+	//
+	//     }
+	//
+	// }
+	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// The tags manually added. The value is a JSON string. Operable tag group:
+	//
+	// 	- user: the list of tags to add to a metadata entry.
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//         "user":{
+	//
+	//             "add":["lane line","sunny"]
+	//
+	//         }
+	//
+	//     }
+	//
+	// example:
+	//
+	// {"user":["cat", "White"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The URI of the file. Used to record the unique path of the file. File paths in Object Storage Service (OSS) and File Storage NAS (NAS) are supported.
+	//
+	// **OSS**
+	//
+	// oss://${bucket}/${path}
+	//
+	// **NAS**
+	//
+	// nas://${fileSystemId}/${path}
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://*****-test/dataset/1653421.jpg
+	//
+	// nas://0e25d***dff/dataset/1653421.jpg
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 

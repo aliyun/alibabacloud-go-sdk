@@ -9,6 +9,8 @@ type iUpdateCodeSourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloneType(v int32) *UpdateCodeSourceRequest
+	GetCloneType() *int32
 	SetCodeBranch(v string) *UpdateCodeSourceRequest
 	GetCodeBranch() *string
 	SetCodeCommit(v string) *UpdateCodeSourceRequest
@@ -28,6 +30,7 @@ type iUpdateCodeSourceRequest interface {
 }
 
 type UpdateCodeSourceRequest struct {
+	CloneType *int32 `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
 	// The name of the code branch.
 	//
 	// example:
@@ -82,6 +85,10 @@ func (s UpdateCodeSourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateCodeSourceRequest) GetCloneType() *int32 {
+	return s.CloneType
+}
+
 func (s *UpdateCodeSourceRequest) GetCodeBranch() *string {
 	return s.CodeBranch
 }
@@ -112,6 +119,11 @@ func (s *UpdateCodeSourceRequest) GetDisplayName() *string {
 
 func (s *UpdateCodeSourceRequest) GetMountPath() *string {
 	return s.MountPath
+}
+
+func (s *UpdateCodeSourceRequest) SetCloneType(v int32) *UpdateCodeSourceRequest {
+	s.CloneType = &v
+	return s
 }
 
 func (s *UpdateCodeSourceRequest) SetCodeBranch(v string) *UpdateCodeSourceRequest {

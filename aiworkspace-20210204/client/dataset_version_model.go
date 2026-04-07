@@ -42,32 +42,104 @@ type iDatasetVersion interface {
 }
 
 type DatasetVersion struct {
+	// DataCount
+	//
+	// example:
+	//
+	// 10000
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	DataSize  *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// DataSize
+	//
+	// example:
+	//
+	// 10000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// DataSourceType
+	//
 	// example:
 	//
 	// OSS
-	DataSourceType  *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImportInfo      *string  `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// Description
+	//
 	// example:
 	//
-	// RO RW
+	// base model v1
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// create time
+	//
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// modify time
+	//
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// ImportInfo
+	//
+	// example:
+	//
+	// {
+	//
+	//     "region": "cn-wulanchabu",
+	//
+	//     "fileSystemId": "bmcpfs-xxxxxxxxxxx",
+	//
+	//     "path": "/mnt",
+	//
+	//     "mountTarget": "cpfs-xxxxxxxxxxxx-vpc-gacs9f.cn-wulanchabu.cpfs.aliyuncs.com",
+	//
+	//     "isVpcMount": true
+	//
+	// }
+	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// Labels
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// MountAccess
+	//
+	// example:
+	//
+	// RO
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// Options
+	//
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// property
+	//
 	// example:
 	//
 	// FILE
-	Property   *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// SourceId
+	//
+	// example:
+	//
+	// d-65mrsr5fub4u74lej3
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// SourceType
+	//
+	// example:
+	//
+	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Uri
+	//
 	// example:
 	//
 	// OSS://xxx
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// version name
+	//
 	// example:
 	//
 	// v1

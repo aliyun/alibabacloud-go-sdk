@@ -9,6 +9,8 @@ type iListConnectionsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessibility(v string) *ListConnectionsRequest
+	GetAccessibility() *string
 	SetConnectionIds(v []*string) *ListConnectionsRequest
 	GetConnectionIds() []*string
 	SetConnectionName(v string) *ListConnectionsRequest
@@ -38,6 +40,7 @@ type iListConnectionsRequest interface {
 }
 
 type ListConnectionsRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// The list of connection IDs.
 	ConnectionIds []*string `json:"ConnectionIds,omitempty" xml:"ConnectionIds,omitempty" type:"Repeated"`
 	// The connection name.
@@ -119,6 +122,10 @@ func (s ListConnectionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListConnectionsRequest) GetAccessibility() *string {
+	return s.Accessibility
+}
+
 func (s *ListConnectionsRequest) GetConnectionIds() []*string {
 	return s.ConnectionIds
 }
@@ -169,6 +176,11 @@ func (s *ListConnectionsRequest) GetToolCall() *bool {
 
 func (s *ListConnectionsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListConnectionsRequest) SetAccessibility(v string) *ListConnectionsRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListConnectionsRequest) SetConnectionIds(v []*string) *ListConnectionsRequest {

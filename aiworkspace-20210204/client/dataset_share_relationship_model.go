@@ -33,15 +33,39 @@ type iDatasetShareRelationship interface {
 
 type DatasetShareRelationship struct {
 	AllowedMountAccessLevels []*string `json:"AllowedMountAccessLevels,omitempty" xml:"AllowedMountAccessLevels,omitempty" type:"Repeated"`
-	ExpiresAt                *string   `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
-	Extra                    *string   `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	IsSecureMode             *bool     `json:"IsSecureMode,omitempty" xml:"IsSecureMode,omitempty"`
-	SharedAt                 *string   `json:"SharedAt,omitempty" xml:"SharedAt,omitempty"`
-	SourceTenantId           *string   `json:"SourceTenantId,omitempty" xml:"SourceTenantId,omitempty"`
-	SourceWorkspaceId        *string   `json:"SourceWorkspaceId,omitempty" xml:"SourceWorkspaceId,omitempty"`
-	Status                   *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantId                 *string   `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	WorkspaceId              *string   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 2026-08-27T12:23:58Z
+	ExpiresAt *string `json:"ExpiresAt,omitempty" xml:"ExpiresAt,omitempty"`
+	Extra     *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// true
+	IsSecureMode *bool `json:"IsSecureMode,omitempty" xml:"IsSecureMode,omitempty"`
+	// example:
+	//
+	// 2025-08-26T12:23:58Z
+	SharedAt *string `json:"SharedAt,omitempty" xml:"SharedAt,omitempty"`
+	// example:
+	//
+	// 148***************115
+	SourceTenantId *string `json:"SourceTenantId,omitempty" xml:"SourceTenantId,omitempty"`
+	// example:
+	//
+	// 33**19
+	SourceWorkspaceId *string `json:"SourceWorkspaceId,omitempty" xml:"SourceWorkspaceId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 153***************249
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 42**2
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DatasetShareRelationship) String() string {

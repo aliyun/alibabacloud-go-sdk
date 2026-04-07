@@ -38,37 +38,169 @@ type iDatasetFileMetaConentUpdate interface {
 }
 
 type DatasetFileMetaConentUpdate struct {
-	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The file comment.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The MIME type of the file. The value consists of a type and a subtype.
+	//
+	// Valid values:
+	//
+	// 	- image/png
+	//
+	// 	- image/svg+xml
+	//
+	// 	- image/jpeg
+	//
+	// 	- image/tiff
+	//
+	// 	- image/gif
+	//
+	// 	- image/bmp
+	//
+	// 	- image/x-icon
+	//
+	// 	- image/heic
+	//
+	// 	- image/webp
+	//
+	// example:
+	//
+	// image/jpeg
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DataSize    *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The file size. Unit: byte.
+	//
+	// example:
+	//
+	// 10000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The metadata ID of the dataset file.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 07914c9534586e4e7aa6e9dbca5009082df******fd8a0d857b33296c59bf6
 	DatasetFileMetaId *string `json:"DatasetFileMetaId,omitempty" xml:"DatasetFileMetaId,omitempty"`
+	// The time when the file is created. The time follows the ISO 8601 standard.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
-	FileCreateTime  *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	// 2025-01-12T14:36:01Z
+	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	// The fingerprint information of the file.
+	//
+	// example:
+	//
+	// 124FB71******7BE45608CDEA4DE54B3
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileType        *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// 00001.jpeg
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type, which is the same as Multipurpose Internet Mail Extensions (MIME) type.
+	//
+	// Valid values:
+	//
+	// 	- image
+	//
+	// 	- application
+	//
+	// 	- audio
+	//
+	// 	- video
+	//
+	// 	- text
+	//
+	// example:
+	//
+	// image
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The time when the file is last modified. The time follows the ISO 8601 standard.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
-	FileUpdateTime     *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	MetaAttributes     *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// 2025-01-12T14:36:01Z
+	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
+	// The specific metadata of the file, such as the width and height of an image and the bitrate and resolution of a video file. You cannot retrieve the metadata. The value is a JSON string.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Image":
+	//
+	//     {
+	//
+	//         "Width": 1920,
+	//
+	//         "Height": 1080,
+	//
+	//         "Channel": 3
+	//
+	//     }
+	//
+	// }
+	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// The ID of the semantic index-based job.
+	//
+	// example:
+	//
+	// dsjob-klfwt*****l0escvt3
 	SemanticIndexJobId *string `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	// The time when the semantic index is created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01.000Z
 	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
+	// The tags to be updated.
+	//
+	// 	- Update an algorithm tag group (a valid TagJobId must be set):
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//        "ai":["Lane line", "Water horse", "Sunny day"]
+	//
+	//     }
+	//
+	// 	- Update a user-defined tag group (add or remove indicates that tags are added or deleted): Tag groups that can be updated:
+	//
+	//     	- user: a list of user-defined tags that can be added to or deleted from a single piece of metadata.
+	//
+	//     	- user-delete-ai-tags: a list of tags that you want to delete from an algorithm tag group.
+	//
+	// <!---->
+	//
+	//     {
+	//
+	//         "user":{
+	//
+	//             "add":["Lane line","Sunny day"],
+	//
+	//             "remove":["Water horse"]    },
+	//
+	//         "user-delete-ai-tags":{
+	//
+	//             "add": ["Ground shadow"],
+	//
+	//             "remove": []
+	//
+	//         }
+	//
+	//     }
+	//
 	// example:
 	//
-	// ● 执行算法打标更新（必须设置有效的TagJobId）： {    "ai":["车道线", "水马", "晴天"] } ● 用户手动打标：(add/remove表示对标签组内的标签进行增加/删除操作) 用户可操作的标签组为：   ○ user: 对单个元数据，用户自行添加的标签名列表。   ○ user-delete-ai-tags: 对单个元数据，算法标签组中用户需要删除的标签名列表。 {     "user":{         "add":["车道线","晴天"],         "remove":["水马"]     },     "user-delete-ai-tags":{         "add": ["地面阴影"],         "remove": []     } }
+	// {"ai":["cat"], "user":["black"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

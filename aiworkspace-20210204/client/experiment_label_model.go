@@ -22,22 +22,32 @@ type iExperimentLabel interface {
 }
 
 type ExperimentLabel struct {
+  // ExperimentId
+  // 
   // example:
   // 
   // exp-890waerw09a0f
   ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+  // Create time
+  // 
   // example:
   // 
   // 2023-12-27T03:30:04Z
   GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+  // Modified time
+  // 
   // example:
   // 
   // 2023-12-27T03:30:04Z
   GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+  // Key of Experiment Label
+  // 
   // example:
   // 
   // key
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+  // Value of Experiment Label
+  // 
   // example:
   // 
   // value

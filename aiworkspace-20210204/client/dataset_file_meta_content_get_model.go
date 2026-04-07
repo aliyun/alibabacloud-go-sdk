@@ -46,28 +46,126 @@ type iDatasetFileMetaContentGet interface {
 }
 
 type DatasetFileMetaContentGet struct {
-	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ContentType       *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	DataSize          *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The file comment.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The MIME type of the file. It contains a Type and a SubType.
+	//
+	// Valid value:
+	//
+	// 	- image/png: PNG
+	//
+	// 	- image/jpeg: JPEG
+	//
+	// 	- image/tiff: TIFF
+	//
+	// 	- image/bmp: BMP
+	//
+	// 	- image/gif: GIF
+	//
+	// 	- image/x-icon: ICON
+	//
+	// 	- image/svg + xml: SVG
+	//
+	// 	- image/heic: HEIC
+	//
+	// 	- image/webp: WEBP
+	//
+	// example:
+	//
+	// text/png
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The file size. Unit: byte.
+	//
+	// example:
+	//
+	// 10000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The metadata ID of the dataset file.
+	//
+	// example:
+	//
+	// 07914c9534586e4e7aa6e9dbca5009082df******fd8a0d857b33296c59bf6
 	DatasetFileMetaId *string `json:"DatasetFileMetaId,omitempty" xml:"DatasetFileMetaId,omitempty"`
+	// The time when the file was created. Format: ISO8601.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
-	FileCreateTime  *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	FileDir         *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
+	// 2025-01-12T14:36:01Z
+	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	// The directory of the file that is stored in OSS, NAS, or Cloud Parallel File Storage (CPFS).
+	//
+	// example:
+	//
+	// icp_certificate_card/icp/1577179298694813/1716429710367
+	FileDir *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
+	// The fingerprint value of the file. Used to check the uniqueness of the file. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5.
+	//
+	// example:
+	//
+	// D41D8CD98F*****E9800998ECF8
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileType        *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// 00001.jpeg
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type. The same as MIME type.
+	//
+	// Valid value:
+	//
+	// 	- image
+	//
+	// 	- application
+	//
+	// 	- audio
+	//
+	// 	- video
+	//
+	// 	- text
+	//
+	// example:
+	//
+	// image
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The time when the file was last modified. Format: ISO8601.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
-	FileUpdateTime     *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	MetaAttributes     *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// 2025-01-12T14:36:01Z
+	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
+	// The specific metadata of the file. You cannot retrieve the metadata. In JSON String format.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Image":
+	//
+	//     {
+	//
+	//         "Width": 1920,
+	//
+	//         "Height": 1080,
+	//
+	//         "Channel": 3
+	//
+	//     }
+	//
+	// }
+	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// The ID of the semantic index-based job.
+	//
+	// example:
+	//
+	// dsjob-klfwtjtov*****scvt3
 	SemanticIndexJobId *string `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	// The time when the semantic index-based job is created.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -75,14 +173,68 @@ type DatasetFileMetaContentGet struct {
 	// 2021-01-12T14:36:01.000Z
 	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
 	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the tag is last modified. The time follows the ISO 8601 standard.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01.000Z
 	TagUpdateTime *string `json:"TagUpdateTime,omitempty" xml:"TagUpdateTime,omitempty"`
-	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Uri           *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The tags for the metadata. The tags are divided into the following groups:
+	//
+	// 	- Algorithm tag group:
+	//
+	//     	- ai: a list of tags that are aggregated by all algorithm tagging tasks for a single piece of metadata.
+	//
+	// 	- User-defined tag groups:
+	//
+	//     	- user: a list of user-defined tags that are added to a single piece of metadata.
+	//
+	//     	- user-delete-ai-tags: a list of tags that you want to delete from an algorithm tag group.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "ai":
+	//
+	//     [
+	//
+	//         "Felis catus",
+	//
+	//         "Shorthair"
+	//
+	//     ],
+	//
+	//     "user":
+	//
+	//     [
+	//
+	//         "cat",
+	//
+	//         "White"
+	//
+	//     ]
+	//
+	// }
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The unique URI of the file. Used to record the unique path of the file. File paths in OSS and NAS are supported.
+	//
+	// **OSS**
+	//
+	// oss://${bucket}/${path}
+	//
+	// **NAS**
+	//
+	// nas://${fileSystemId}/${path}
+	//
+	// example:
+	//
+	// oss://*****-test/dataset/1653421.jpg
+	//
+	// nas://0e25d***dff/dataset/1653421.jpg
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DatasetFileMetaContentGet) String() string {

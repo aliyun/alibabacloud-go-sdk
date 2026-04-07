@@ -20,10 +20,14 @@ type iRelationship interface {
 }
 
 type Relationship struct {
-	Attributes       map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	DataChannel      *string                `json:"DataChannel,omitempty" xml:"DataChannel,omitempty"`
-	RelationshipGuid *string                `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
-	RelationshipType *string                `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
+	// Attributes
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// DataChannel
+	DataChannel *string `json:"DataChannel,omitempty" xml:"DataChannel,omitempty"`
+	// RelationshipGuid
+	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// RelationshipType
+	RelationshipType *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
 }
 
 func (s Relationship) String() string {

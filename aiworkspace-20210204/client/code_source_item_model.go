@@ -11,6 +11,8 @@ type iCodeSourceItem interface {
 	GoString() string
 	SetAccessibility(v string) *CodeSourceItem
 	GetAccessibility() *string
+	SetCloneType(v int32) *CodeSourceItem
+	GetCloneType() *int32
 	SetCodeBranch(v string) *CodeSourceItem
 	GetCodeBranch() *string
 	SetCodeCommit(v string) *CodeSourceItem
@@ -40,55 +42,87 @@ type iCodeSourceItem interface {
 }
 
 type CodeSourceItem struct {
+	// The visibility of the code source. Valid values:
+	//
+	// 	- PRIVATE: Visible only to you and the administrator in the workspace.
+	//
+	// 	- PUBLIC: Visible to all users in the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CloneType     *int32  `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
+	// The code branch.
+	//
 	// example:
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// The code commit ID
+	//
 	// example:
 	//
-	// 44da109b59f8596152987eaa8f3b2487bb72ea63
+	// 44da10**********
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// The address of the code repository.
+	//
 	// example:
 	//
-	// https://code.aliyun.com/pai-dlc/examples.git
-	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// https://code.aliyun.com/****
+	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// The token used to access the code repository.
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
+	// The username of the code repository.
+	//
 	// example:
 	//
 	// user
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// The code source ID.
+	//
 	// example:
 	//
-	// code-20210111103721-85qz78ia96lu
+	// code-202**********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The code source description.
+	//
 	// example:
 	//
 	// code source of dlc examples
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The code source name.
+	//
 	// example:
 	//
 	// MyCodeSourceName1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-01-18T12:52:15Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modified time.
+	//
 	// example:
 	//
 	// 2021-01-18T12:52:15Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The local mount path of the code.
+	//
 	// example:
 	//
 	// /root/code/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 1157290171663117
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -105,6 +139,10 @@ func (s CodeSourceItem) GoString() string {
 
 func (s *CodeSourceItem) GetAccessibility() *string {
 	return s.Accessibility
+}
+
+func (s *CodeSourceItem) GetCloneType() *int32 {
+	return s.CloneType
 }
 
 func (s *CodeSourceItem) GetCodeBranch() *string {
@@ -161,6 +199,11 @@ func (s *CodeSourceItem) GetWorkspaceId() *string {
 
 func (s *CodeSourceItem) SetAccessibility(v string) *CodeSourceItem {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *CodeSourceItem) SetCloneType(v int32) *CodeSourceItem {
+	s.CloneType = &v
 	return s
 }
 

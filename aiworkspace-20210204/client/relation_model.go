@@ -18,9 +18,12 @@ type iRelation interface {
 }
 
 type Relation struct {
-	ErrMsg          *string          `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// ErrMsg
+	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// LineageRelation
 	LineageRelation *LineageRelation `json:"LineageRelation,omitempty" xml:"LineageRelation,omitempty"`
-	Result          *bool            `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Result
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s Relation) String() string {

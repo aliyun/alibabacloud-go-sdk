@@ -56,15 +56,46 @@ type iModel interface {
 }
 
 type Model struct {
+	// The workspace accessibility. Valid values:
+	//
+	// 	- PRIVATE (default): The model is accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The model is accessible to all members of the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The domain where the model is applied, such as nlp (Natural Language Processing) and cv (Computer Vision).
+	//
 	// example:
 	//
-	// cv
-	Domain    *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// nlp
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The additional information.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"RatingCount": 2866,
+	//
+	// 	"Rating": 4.94,
+	//
+	// 	"FavoriteCount": 34992,
+	//
+	// 	"CommentCount": 754,
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/drea***w.png"],
+	//
+	// 	"TippedAmountCount": 32,
+	//
+	// 	"DownloadCount": 606056
+	//
+	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
@@ -73,34 +104,52 @@ type Model struct {
 	//
 	// 2021-01-21T17:12:35Z
 	GmtLatestVersionModifiedTime *string `json:"GmtLatestVersionModifiedTime,omitempty" xml:"GmtLatestVersionModifiedTime,omitempty"`
+	// The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
-	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The labels.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The latest version of the model.
+	LatestVersion *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The model description.
+	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// The model document.
+	//
 	// example:
 	//
 	// https://***.md
 	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// model-1123*****
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The model name.
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model type, such as checkpoint and LoRA.
+	//
 	// example:
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The sequence number of the model.
+	//
 	// example:
 	//
 	// 101
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// The community or organization to which the source model belongs, such as ModelScope or Hugging Face.
+	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1557702098******
@@ -109,19 +158,27 @@ type Model struct {
 	//
 	// 1024
 	ParameterSize *int64 `json:"ParameterSize,omitempty" xml:"ParameterSize,omitempty"`
+	// The model provider.
+	//
 	// example:
 	//
 	// pai
 	Provider *string  `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	Tags     []*Label `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The task. The specific issue that the model resolves, such as text-classification.
+	//
 	// example:
 	//
 	// text-classifiaction
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1557702098******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 234**

@@ -11,6 +11,8 @@ type iDataset interface {
 	GoString() string
 	SetAccessibility(v string) *Dataset
 	GetAccessibility() *string
+	SetAccessibleRoleIdList(v []*string) *Dataset
+	GetAccessibleRoleIdList() []*string
 	SetDataSourceType(v string) *Dataset
 	GetDataSourceType() *string
 	SetDataType(v string) *Dataset
@@ -70,100 +72,219 @@ type iDataset interface {
 }
 
 type Dataset struct {
+	// The workspace accessibility. Valid values:
+	//
+	// 	- PRIVATE (default): The dataset is accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The dataset is accessible to all members in the workspace.
+	//
 	// example:
 	//
-	// PRIVATE PUBLIC
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// PRIVATE
+	Accessibility        *string   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
+	// The data source type.
+	//
+	// Valid values:
+	//
+	// 	- NAS
+	//
+	// 	- OSS
+	//
 	// example:
 	//
-	// OSS URL
+	// NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The data type. Valid values:
+	//
+	// 	- COMMON (default)
+	//
+	// 	- PIC
+	//
+	// 	- TEXT
+	//
+	// 	- Video
+	//
+	// 	- AUDIO
+	//
 	// example:
 	//
-	// COMMON PIC TEXT VIDEO AUDIO
+	// COMMON
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
-	// d-c0h44g3wlwkj8o4348
+	// d-c0h44g3****j8o4348
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// example:
-	//
-	// Animal images.
+	// The dataset description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// BASIC
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The time when the dataset was created.
+	//
 	// example:
 	//
-	// 2021-01-30T12:51:33.028Z
+	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the dataset was modified.
+	//
 	// example:
 	//
-	// 2021-01-30T12:51:33.028Z
-	GmtModifiedTime *string         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImportInfo      *string         `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	IsShared        *bool           `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	Labels          []*Label        `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion   *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The dataset import information, such as OSS, NAS, and CPFS.
+	//
+	// **OSS**
+	//
+	// { "region": "${region}",//The region ID. "bucket": "${bucket}",//The bucket name. "path": "${path}" //The file path. }
+	//
+	// **NAS**
+	//
+	// **CPFS**
+	//
+	// **CPFS for Lingjun**
+	//
+	// example:
+	//
+	// {
+	//
+	//     "region": "cn-wulanchabu",
+	//
+	//     "fileSystemId": "bmcpfs-xxxxxxxxxxx",
+	//
+	//     "path": "/mnt",
+	//
+	//     "mountTarget": "cpfs-xxxxxxxxxxxx-vpc-gacs9f.cn-wulanchabu.cpfs.aliyuncs.com",
+	//
+	//     "isVpcMount": true
+	//
+	// }
+	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	IsShared   *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
+	// The labels.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The latest dataset version.
+	LatestVersion *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// MountAccess
+	//
 	// example:
 	//
 	// RO RW
-	MountAccess                    *string   `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The IDs of the roles that have read and write permissions on the dataset in the workspace. The IDs starting with PAI is the IDs of the basic roles, and the IDs starting with role- is the IDs of the custom roles. If the list contains "\\*", all roles have read and write permissions.
 	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
+	// The dataset name.
+	//
 	// example:
 	//
-	// AnimalDataset
+	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended field that can be used as an option. The value is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
+	//
 	// example:
 	//
-	// jsonstring
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
-	// 1004110000006048
+	// 1631044****3440
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The dataset property. Valid values:
+	//
+	// 	- FILE
+	//
+	// 	- DIRECTORY
+	//
 	// example:
 	//
-	// FILE DIRECTORY TABULAR
+	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The provider type of the dataset. Valid values:
+	//
+	// 	- Ecs (default)
+	//
+	// 	- Lingjun
+	//
 	// example:
 	//
 	// Ecs
 	ProviderType  *string                   `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	SharedFrom    *DatasetShareRelationship `json:"SharedFrom,omitempty" xml:"SharedFrom,omitempty"`
 	SharingConfig *DatasetSharingConfig     `json:"SharingConfig,omitempty" xml:"SharingConfig,omitempty" type:"Struct"`
+	// The ID of the source dataset for the labeled dataset.
+	//
 	// example:
 	//
-	// d-bvfasdf4wxxj8o411
+	// d-bvfasdfxxxxj8o411
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	// The version of the source dataset for the labeled dataset.
+	//
 	// example:
 	//
 	// v2
 	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
+	// The source ID.
+	//
 	// example:
 	//
-	// Source Id
+	// jdnhf***fnrimv
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type.
+	//
+	// Valid values:
+	//
+	// 	- PAI_PUBLIC_DATASET
+	//
+	// 	- ITAG
+	//
+	// 	- USER
+	//
 	// example:
 	//
-	// USER ITAG  PAI_PUBLIC_DATASET
+	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The labeling template of the iTAG labeled dataset.
+	//
 	// example:
 	//
 	// text-classification
 	TagTemplateType *string `json:"TagTemplateType,omitempty" xml:"TagTemplateType,omitempty"`
+	// URI examples:
+	//
+	// 	- Object Storage Service (OSS) data source: `oss://bucket.endpoint/object`
+	//
+	// 	- File Storage NAS (NAS) data source: `nas://<nasfisid>.region/subpath/to/dir/`
+	//
+	// 	- Cloud Parallel File Storage (CPFS) 1.0 data source: `nas://<cpfs-fsid>.region/subpath/to/dir/`
+	//
+	// 	- CPFS 2.0 data source: `nas://<cpfs-fsid>.region/<protocolserviceid>/`
+	//
+	// >  You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID of the CPFS 1.0 file system is in the cpfs-<8-bit ASCII characters> format. The ID of the CPFS 2.0 file system is in the cpfs-<16-bit ASCII characters> format.
+	//
 	// example:
 	//
-	// oss://xxx
+	// nas://09f****f2.cn-hangzhou/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
-	// 2004110000006048
+	// 2485765****023475
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace to which the dataset belongs.
+	//
 	// example:
 	//
-	// Workspace Id
+	// 478**
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -177,6 +298,10 @@ func (s Dataset) GoString() string {
 
 func (s *Dataset) GetAccessibility() *string {
 	return s.Accessibility
+}
+
+func (s *Dataset) GetAccessibleRoleIdList() []*string {
+	return s.AccessibleRoleIdList
 }
 
 func (s *Dataset) GetDataSourceType() *string {
@@ -293,6 +418,11 @@ func (s *Dataset) GetWorkspaceId() *string {
 
 func (s *Dataset) SetAccessibility(v string) *Dataset {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *Dataset) SetAccessibleRoleIdList(v []*string) *Dataset {
+	s.AccessibleRoleIdList = v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iListConnectionsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessibility(v string) *ListConnectionsShrinkRequest
+	GetAccessibility() *string
 	SetConnectionIdsShrink(v string) *ListConnectionsShrinkRequest
 	GetConnectionIdsShrink() *string
 	SetConnectionName(v string) *ListConnectionsShrinkRequest
@@ -38,6 +40,7 @@ type iListConnectionsShrinkRequest interface {
 }
 
 type ListConnectionsShrinkRequest struct {
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// The list of connection IDs.
 	ConnectionIdsShrink *string `json:"ConnectionIds,omitempty" xml:"ConnectionIds,omitempty"`
 	// The connection name.
@@ -119,6 +122,10 @@ func (s ListConnectionsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListConnectionsShrinkRequest) GetAccessibility() *string {
+	return s.Accessibility
+}
+
 func (s *ListConnectionsShrinkRequest) GetConnectionIdsShrink() *string {
 	return s.ConnectionIdsShrink
 }
@@ -169,6 +176,11 @@ func (s *ListConnectionsShrinkRequest) GetToolCall() *bool {
 
 func (s *ListConnectionsShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListConnectionsShrinkRequest) SetAccessibility(v string) *ListConnectionsShrinkRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListConnectionsShrinkRequest) SetConnectionIdsShrink(v string) *ListConnectionsShrinkRequest {

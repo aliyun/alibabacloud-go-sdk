@@ -46,46 +46,84 @@ type iDatasetFileMeta interface {
 }
 
 type DatasetFileMeta struct {
+	// The MIME Type of the file.
+	//
 	// example:
 	//
 	// image/jpeg
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// The file size. Unit: bytes.
+	//
 	// example:
 	//
-	// 12
-	DataSize          *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// 120000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The metadata ID of the dataset file.
+	//
+	// example:
+	//
+	// 07914c9534586e4e7aa6e9dbca5009082df******fd8a0d857b33296c59bf6
 	DatasetFileMetaId *string `json:"DatasetFileMetaId,omitempty" xml:"DatasetFileMetaId,omitempty"`
-	DownloadUrl       *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The download URL of the file.
+	//
+	// example:
+	//
+	// https://test-bucket.oss-cn-shanghai.aliyuncs.com/dataset/cat.png?Expires=1712801702&OSSAccessKeyId=****************&Signature=x4oSjZcXOn7FHMCT1D****NuNjs%3D
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The time when the file was created. A UTC timestamp in the ISO 8601 format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01.000Z
-	FileCreateTime  *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
+	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	// The file fingerprint, used to determine the uniqueness of the file content. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5 values.
+	//
 	// example:
 	//
-	// car.png
+	// D41D8CD98F*****E9800998ECF8
+	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// cat.png
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// image
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// The last modified time of the file. A UTC timestamp in the ISO 8601 format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01.000Z
+	// 2025-01-12T14:36:01Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
+	// The specific metadata of the file. For example, the width and height of an image file, or the bitrate and resolution of a video file. This parameter cannot be used for retrieval. In JSON String format.
+	//
 	// example:
 	//
 	// {     "ImageHeight": 400,     "ImageWidth": 800 }
 	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// The similarity score.
+	//
 	// example:
 	//
 	// 0.6
-	Score              *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	SemanticIndexJobId *string  `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The ID of the last semantic indexing job.
+	//
+	// example:
+	//
+	// dsjob-klfwtjto****scvt3
+	SemanticIndexJobId *string `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	// The last update time of the semantic index. A UTC timestamp in the ISO 8601 format.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -93,11 +131,63 @@ type DatasetFileMeta struct {
 	// 2021-01-12T14:36:01.000Z
 	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
 	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	ThumbnailUrl            *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
+	// The tags of the metadata, in JSON string format. Including:
+	//
+	// 	- Algorithm tag group:
+	//
+	//     	- ai: tags from all algorithm tagging tasks on this metadata.
+	//
+	// 	- User-defined tag group:
+	//
+	//     	- user: tags added by the user to this metadata.
+	//
+	//     	- user-delete-ai-tags: tags from the algorithm tag group that the user needs to delete.
+	//
 	// example:
 	//
-	// oss://test-bucket/dataset/car.png
+	// {
+	//
+	//     "ai":
+	//
+	//     [
+	//
+	//         "Felis catus",
+	//
+	//         "Shorthair"
+	//
+	//     ],
+	//
+	//     "user":
+	//
+	//     [
+	//
+	//         "cat",
+	//
+	//         "White"
+	//
+	//     ]
+	//
+	// }
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The URL of the thumbnail.
+	//
+	// example:
+	//
+	// https://test-bucket.oss-cn-shanghai.aliyuncs.com/dataset/cat.png?Expires=171280****&OSSAccessKeyId=LTAI************&Signature=****jZcXOn7FHMCT1DLE22NuNjs%3D
+	ThumbnailUrl *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
+	// The URI of the file. Used to record the unique path of the file. File paths in Object Storage Service (OSS) and File Storage NAS (NAS) are supported.
+	//
+	// **OSS**
+	//
+	// oss://${bucket}/${path}
+	//
+	// **NAS**
+	//
+	// nas://${fileSystemId}/${path}
+	//
+	// example:
+	//
+	// oss://test-bucket/dataset/cat.png
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 

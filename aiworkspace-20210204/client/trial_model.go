@@ -36,18 +36,30 @@ type iTrial interface {
 }
 
 type Trial struct {
-	Accessibility   *string                  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	ExperimentId    *string                  `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	GmtCreateTime   *string                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels          []map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name            *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string                  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SourceId        *string                  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType      *string                  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TrialId         *string                  `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
-	UserId          *string                  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId     *string                  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// Accessibility
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// ExperimentId
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// GmtCreateTime
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// GmtModifiedTime
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Labels
+	Labels []map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// OwnerId
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// SourceId
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// SourceType
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// TrialId
+	TrialId *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
+	// UserId
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// WorkspaceId
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Trial) String() string {

@@ -16,8 +16,12 @@ type iRunParam interface {
 }
 
 type RunParam struct {
+	// The name of the parameter.
+	//
 	// This parameter is required.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the parameter.
+	//
 	// This parameter is required.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }

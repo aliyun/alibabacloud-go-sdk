@@ -18,9 +18,12 @@ type iLineageRelation interface {
 }
 
 type LineageRelation struct {
+	// DestEntityQualifiedName
 	DestEntityQualifiedName *string `json:"DestEntityQualifiedName,omitempty" xml:"DestEntityQualifiedName,omitempty"`
-	RelationshipGuid        *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
-	SrcEntityQualifiedName  *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
+	// RelationshipGuid
+	RelationshipGuid *string `json:"RelationshipGuid,omitempty" xml:"RelationshipGuid,omitempty"`
+	// SrcEntityQualifiedName
+	SrcEntityQualifiedName *string `json:"SrcEntityQualifiedName,omitempty" xml:"SrcEntityQualifiedName,omitempty"`
 }
 
 func (s LineageRelation) String() string {

@@ -42,21 +42,36 @@ type iRun interface {
 }
 
 type Run struct {
-	Accessibility   *string      `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	ExperimentId    *string      `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	GmtCreateTime   *string      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string      `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels          []*RunLabel  `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Metrics         []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	Name            *string      `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *string      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Params          []*RunParam  `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	RequestId       *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RunId           *string      `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	SourceId        *string      `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType      *string      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	UserId          *string      `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId     *string      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The visibility.
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The ID of the experiment that corresponds to the run.
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The creation time.
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modified time.
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The labels added to the run.
+	Labels []*RunLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The metrics of the run.
+	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// Parameter
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the owner account.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The hyperparameters of the run.
+	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The run ID.
+	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// The ID of the source PAI workload.
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the source PAI workload.
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The owner ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace to which the run belongs.
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Run) String() string {

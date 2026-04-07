@@ -15,6 +15,8 @@ type iListDatasetsRequest interface {
 	GetDataSourceTypes() *string
 	SetDataTypes(v string) *ListDatasetsRequest
 	GetDataTypes() *string
+	SetDatasetIds(v string) *ListDatasetsRequest
+	GetDatasetIds() *string
 	SetEdition(v string) *ListDatasetsRequest
 	GetEdition() *string
 	SetLabel(v string) *ListDatasetsRequest
@@ -72,8 +74,9 @@ type ListDatasetsRequest struct {
 	// example:
 	//
 	// COMMON,TEXT
-	DataTypes *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
-	Edition   *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	DataTypes  *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
+	DatasetIds *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	Edition    *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The dataset tag, which is used to filter datasets. Datasets whose tag key or tag value contains a specified string are filtered.
 	//
 	// example:
@@ -189,6 +192,10 @@ func (s *ListDatasetsRequest) GetDataTypes() *string {
 	return s.DataTypes
 }
 
+func (s *ListDatasetsRequest) GetDatasetIds() *string {
+	return s.DatasetIds
+}
+
 func (s *ListDatasetsRequest) GetEdition() *string {
 	return s.Edition
 }
@@ -257,6 +264,11 @@ func (s *ListDatasetsRequest) SetDataSourceTypes(v string) *ListDatasetsRequest 
 
 func (s *ListDatasetsRequest) SetDataTypes(v string) *ListDatasetsRequest {
 	s.DataTypes = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetDatasetIds(v string) *ListDatasetsRequest {
+	s.DatasetIds = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetCodeSourceResponseBody interface {
 	GoString() string
 	SetAccessibility(v string) *GetCodeSourceResponseBody
 	GetAccessibility() *string
+	SetCloneType(v int32) *GetCodeSourceResponseBody
+	GetCloneType() *int32
 	SetCodeBranch(v string) *GetCodeSourceResponseBody
 	GetCodeBranch() *string
 	SetCodeCommit(v string) *GetCodeSourceResponseBody
@@ -52,6 +54,7 @@ type GetCodeSourceResponseBody struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CloneType     *int32  `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
 	// The code repository branch.
 	//
 	// example:
@@ -150,6 +153,10 @@ func (s *GetCodeSourceResponseBody) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *GetCodeSourceResponseBody) GetCloneType() *int32 {
+	return s.CloneType
+}
+
 func (s *GetCodeSourceResponseBody) GetCodeBranch() *string {
 	return s.CodeBranch
 }
@@ -208,6 +215,11 @@ func (s *GetCodeSourceResponseBody) GetWorkspaceId() *string {
 
 func (s *GetCodeSourceResponseBody) SetAccessibility(v string) *GetCodeSourceResponseBody {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *GetCodeSourceResponseBody) SetCloneType(v int32) *GetCodeSourceResponseBody {
+	s.CloneType = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iCreateDatasetRequest interface {
 	GoString() string
 	SetAccessibility(v string) *CreateDatasetRequest
 	GetAccessibility() *string
+	SetAccessibleRoleIdList(v []*string) *CreateDatasetRequest
+	GetAccessibleRoleIdList() []*string
 	SetDataCount(v int64) *CreateDatasetRequest
 	GetDataCount() *int64
 	SetDataSize(v int64) *CreateDatasetRequest
@@ -69,7 +71,8 @@ type CreateDatasetRequest struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility        *string   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
 	// The number of dataset files.
 	//
 	// example:
@@ -338,6 +341,10 @@ func (s *CreateDatasetRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *CreateDatasetRequest) GetAccessibleRoleIdList() []*string {
+	return s.AccessibleRoleIdList
+}
+
 func (s *CreateDatasetRequest) GetDataCount() *int64 {
 	return s.DataCount
 }
@@ -432,6 +439,11 @@ func (s *CreateDatasetRequest) GetWorkspaceId() *string {
 
 func (s *CreateDatasetRequest) SetAccessibility(v string) *CreateDatasetRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetAccessibleRoleIdList(v []*string) *CreateDatasetRequest {
+	s.AccessibleRoleIdList = v
 	return s
 }
 

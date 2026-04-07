@@ -22,19 +22,28 @@ type iTrialLabel interface {
 }
 
 type TrialLabel struct {
+	// Create time
+	//
 	// example:
 	//
 	// 2023-12-27T03:30:04Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// Modified time
+	//
 	// example:
 	//
 	// 2023-12-27T03:30:04Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Key of Trial Label
+	//
 	// example:
 	//
 	// key
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// trl-v0fw9a0sd8f9af
 	TrialId *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
+	// Value of Trial Label
+	//
 	// example:
 	//
 	// value

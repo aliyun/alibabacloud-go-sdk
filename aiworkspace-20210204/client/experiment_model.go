@@ -38,18 +38,31 @@ type iExperiment interface {
 }
 
 type Experiment struct {
+  // Accessibility
   Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+  // ArtifactUri
   ArtifactUri *string `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
+  // ExperimentId
   ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+  // GmtCreatedTime
   GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+  // GmtModifiedTime
   GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+  // Labels
   Labels []*ExperimentLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+  // LatestRun
   LatestRun *Run `json:"LatestRun,omitempty" xml:"LatestRun,omitempty"`
+  // Name
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+  // OwnerId
   OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // RequestId
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+  // TensorboardLogUri
   TensorboardLogUri *string `json:"TensorboardLogUri,omitempty" xml:"TensorboardLogUri,omitempty"`
+  // UserId
   UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+  // WorkspaceId
   WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

@@ -11,6 +11,8 @@ type iCreateCodeSourceRequest interface {
 	GoString() string
 	SetAccessibility(v string) *CreateCodeSourceRequest
 	GetAccessibility() *string
+	SetCloneType(v int32) *CreateCodeSourceRequest
+	GetCloneType() *int32
 	SetCodeBranch(v string) *CreateCodeSourceRequest
 	GetCodeBranch() *string
 	SetCodeCommit(v string) *CreateCodeSourceRequest
@@ -42,6 +44,7 @@ type CreateCodeSourceRequest struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CloneType     *int32  `json:"CloneType,omitempty" xml:"CloneType,omitempty"`
 	// The code branch.
 	//
 	// example:
@@ -109,6 +112,10 @@ func (s *CreateCodeSourceRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *CreateCodeSourceRequest) GetCloneType() *int32 {
+	return s.CloneType
+}
+
 func (s *CreateCodeSourceRequest) GetCodeBranch() *string {
 	return s.CodeBranch
 }
@@ -147,6 +154,11 @@ func (s *CreateCodeSourceRequest) GetWorkspaceId() *string {
 
 func (s *CreateCodeSourceRequest) SetAccessibility(v string) *CreateCodeSourceRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateCodeSourceRequest) SetCloneType(v int32) *CreateCodeSourceRequest {
+	s.CloneType = &v
 	return s
 }
 

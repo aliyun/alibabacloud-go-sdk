@@ -20,10 +20,14 @@ type iLineageEntity interface {
 }
 
 type LineageEntity struct {
-	Attributes    map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	EntityType    *string                `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Name          *string                `json:"Name,omitempty" xml:"Name,omitempty"`
-	QualifiedName *string                `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// Attributes
+	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// EntityType
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// QualifiedName
+	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
 }
 
 func (s LineageEntity) String() string {

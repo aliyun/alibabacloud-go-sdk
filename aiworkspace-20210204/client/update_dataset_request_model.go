@@ -9,6 +9,10 @@ type iUpdateDatasetRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessibility(v string) *UpdateDatasetRequest
+	GetAccessibility() *string
+	SetAccessibleRoleIdList(v []*string) *UpdateDatasetRequest
+	GetAccessibleRoleIdList() []*string
 	SetDescription(v string) *UpdateDatasetRequest
 	GetDescription() *string
 	SetEdition(v string) *UpdateDatasetRequest
@@ -24,6 +28,8 @@ type iUpdateDatasetRequest interface {
 }
 
 type UpdateDatasetRequest struct {
+	Accessibility        *string   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
 	// The description of the dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
@@ -64,6 +70,14 @@ func (s UpdateDatasetRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateDatasetRequest) GetAccessibility() *string {
+	return s.Accessibility
+}
+
+func (s *UpdateDatasetRequest) GetAccessibleRoleIdList() []*string {
+	return s.AccessibleRoleIdList
+}
+
 func (s *UpdateDatasetRequest) GetDescription() *string {
 	return s.Description
 }
@@ -86,6 +100,16 @@ func (s *UpdateDatasetRequest) GetOptions() *string {
 
 func (s *UpdateDatasetRequest) GetSharingConfig() *UpdateDatasetRequestSharingConfig {
 	return s.SharingConfig
+}
+
+func (s *UpdateDatasetRequest) SetAccessibility(v string) *UpdateDatasetRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateDatasetRequest) SetAccessibleRoleIdList(v []*string) *UpdateDatasetRequest {
+	s.AccessibleRoleIdList = v
+	return s
 }
 
 func (s *UpdateDatasetRequest) SetDescription(v string) *UpdateDatasetRequest {

@@ -40,20 +40,86 @@ type iDatasetJob interface {
 }
 
 type DatasetJob struct {
-	CompletedFileCount *int64    `json:"CompletedFileCount,omitempty" xml:"CompletedFileCount,omitempty"`
-	CreateTime         *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DatasetJobId       *string   `json:"DatasetJobId,omitempty" xml:"DatasetJobId,omitempty"`
-	DatasetVersion     *string   `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	Description        *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	FailedFileCount    *int64    `json:"FailedFileCount,omitempty" xml:"FailedFileCount,omitempty"`
-	FinishTime         *string   `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	JobAction          *string   `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
-	JobMode            *string   `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
-	JobSpec            *string   `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
-	Logs               []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Status             *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TotalFileCount     *int64    `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty"`
-	WorkspaceId        *string   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The number of completed files.
+	//
+	// example:
+	//
+	// 990
+	CompletedFileCount *int64 `json:"CompletedFileCount,omitempty" xml:"CompletedFileCount,omitempty"`
+	// The job creation time (UTC).
+	//
+	// example:
+	//
+	// 2023-06-20T04:05:59Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job ID.
+	//
+	// example:
+	//
+	// dsjob-9jx1*****uj9e
+	DatasetJobId *string `json:"DatasetJobId,omitempty" xml:"DatasetJobId,omitempty"`
+	// The dataset version.
+	//
+	// example:
+	//
+	// v1
+	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The job description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of failed files.
+	//
+	// example:
+	//
+	// 10
+	FailedFileCount *int64 `json:"FailedFileCount,omitempty" xml:"FailedFileCount,omitempty"`
+	// The job finish time (UTC).
+	//
+	// example:
+	//
+	// 2023-06-20T06:03:48Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The job action.
+	//
+	// example:
+	//
+	// SemanticIndex
+	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
+	// The job mode.
+	//
+	// Valid value:
+	//
+	// 	- Full
+	//
+	// example:
+	//
+	// Full
+	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
+	// The job details.
+	//
+	// example:
+	//
+	// {\\"modelId\\":\\"xxx\\"}
+	JobSpec *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
+	// The job logs.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The job status.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of job files.
+	//
+	// example:
+	//
+	// 1000
+	TotalFileCount *int64 `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 145883
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DatasetJob) String() string {

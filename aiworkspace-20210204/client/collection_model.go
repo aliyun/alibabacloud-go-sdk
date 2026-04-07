@@ -22,22 +22,32 @@ type iCollection interface {
 }
 
 type Collection struct {
+	// The name of the collection. The name must be globally unique.
+	//
 	// example:
 	//
 	// AI4D
 	CollectionName *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last update time.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 155770209******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the user that created the collection.
+	//
 	// example:
 	//
 	// 155770209******

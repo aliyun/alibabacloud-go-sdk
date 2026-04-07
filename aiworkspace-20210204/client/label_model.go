@@ -16,7 +16,17 @@ type iLabel interface {
 }
 
 type Label struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label key. The value can be up to 128 bytes in length and cannot contain equal signs (=) and commas (,).
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value. The value can be up to 128 bytes in length and cannot contain equal signs (=) and commas (,).
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

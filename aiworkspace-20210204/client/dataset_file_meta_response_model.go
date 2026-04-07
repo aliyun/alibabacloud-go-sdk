@@ -18,11 +18,28 @@ type iDatasetFileMetaResponse interface {
 }
 
 type DatasetFileMetaResponse struct {
+	// The metadata ID of the dataset file.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 07914c9534586e4e7aa6e9dbca5009082df*******8a0d857b33296c59bf6
 	DatasetFileMetaId *string `json:"DatasetFileMetaId,omitempty" xml:"DatasetFileMetaId,omitempty"`
+	// The description of the reason why the metadata operation failed.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Not Found
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The file URI.
+	//
+	// example:
+	//
+	// oss://l*****-test/dataset/1653421.jpg
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DatasetFileMetaResponse) String() string {

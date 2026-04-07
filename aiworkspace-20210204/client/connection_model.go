@@ -38,19 +38,82 @@ type iConnection interface {
 }
 
 type Connection struct {
-	Accessibility   *string                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Configs         map[string]*string      `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	ConnectionId    *string                 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	ConnectionName  *string                 `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	ConnectionType  *string                 `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	Creator         *string                 `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description     *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string                 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                 `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Models          []*ConnectionModels     `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	ResourceMeta    *ConnectionResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
-	Secrets         map[string]*string      `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
-	WorkspaceId     *string                 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace accessibility. Valid values:
+	//
+	// 	- PRIVATE (default): accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: accessible to all members in the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The connection configuration.
+	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The connection ID.
+	//
+	// example:
+	//
+	// conn-pai9m***mi47
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The connection name.
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// The connection type. Valid values:
+	//
+	// 	- DashScopeConnection
+	//
+	// 	- OpenLLMConnection
+	//
+	// 	- MilvusConnection
+	//
+	// 	- OpenSearchConnection
+	//
+	// 	- LindormConnection
+	//
+	// 	- ElasticsearchConnection
+	//
+	// 	- HologresConnection
+	//
+	// 	- RDSConnection
+	//
+	// 	- CustomConnection
+	//
+	// example:
+	//
+	// ElasticsearchConnection
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// The connection creator.
+	//
+	// example:
+	//
+	// 20925961****557803
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The connection description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
+	//
+	// example:
+	//
+	// 2025-03-07T07:54:56Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
+	//
+	// example:
+	//
+	// 2025-03-07T07:54:56Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The models.
+	Models []*ConnectionModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The connection resource. This parameter is used for the connection configuration of the database type.
+	ResourceMeta *ConnectionResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
+	// The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 228**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Connection) String() string {
@@ -197,10 +260,36 @@ func (s *Connection) Validate() error {
 }
 
 type ConnectionModels struct {
+	// The display name of the model.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	ModelType   *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	ToolCall    *bool   `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
+	// The model identifier.
+	//
+	// example:
+	//
+	// model_001
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model type. Valid values:
+	//
+	// 	- LLM
+	//
+	// 	- Embedding
+	//
+	// 	- ReRank
+	//
+	// example:
+	//
+	// LLM
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// Indicates whether tool calling was supported. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
 }
 
 func (s ConnectionModels) String() string {
@@ -252,8 +341,14 @@ func (s *ConnectionModels) Validate() error {
 }
 
 type ConnectionResourceMeta struct {
-	Extra        *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// ld-2vc1***v1zaqgzol
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 }
 

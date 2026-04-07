@@ -11,6 +11,8 @@ type iGetDatasetResponseBody interface {
 	GoString() string
 	SetAccessibility(v string) *GetDatasetResponseBody
 	GetAccessibility() *string
+	SetAccessibleRoleIdList(v []*string) *GetDatasetResponseBody
+	GetAccessibleRoleIdList() []*string
 	SetDataSourceType(v string) *GetDatasetResponseBody
 	GetDataSourceType() *string
 	SetDataType(v string) *GetDatasetResponseBody
@@ -83,7 +85,8 @@ type GetDatasetResponseBody struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility        *string   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	AccessibleRoleIdList []*string `json:"AccessibleRoleIdList,omitempty" xml:"AccessibleRoleIdList,omitempty" type:"Repeated"`
 	// The type of the data source. Valid values:
 	//
 	// 	- OSS: Object Storage Service (OSS)
@@ -361,6 +364,10 @@ func (s *GetDatasetResponseBody) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *GetDatasetResponseBody) GetAccessibleRoleIdList() []*string {
+	return s.AccessibleRoleIdList
+}
+
 func (s *GetDatasetResponseBody) GetDataSourceType() *string {
 	return s.DataSourceType
 }
@@ -483,6 +490,11 @@ func (s *GetDatasetResponseBody) GetWorkspaceId() *string {
 
 func (s *GetDatasetResponseBody) SetAccessibility(v string) *GetDatasetResponseBody {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetAccessibleRoleIdList(v []*string) *GetDatasetResponseBody {
+	s.AccessibleRoleIdList = v
 	return s
 }
 

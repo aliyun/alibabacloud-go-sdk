@@ -20,10 +20,16 @@ type iRunMetric interface {
 }
 
 type RunMetric struct {
+	// The metric name.
+	//
 	// This parameter is required.
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Step      *int64  `json:"Step,omitempty" xml:"Step,omitempty"`
-	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The step number that generated the metric.
+	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+	// The timestamp when the metric was generated.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The metric value.
+	//
 	// This parameter is required.
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }

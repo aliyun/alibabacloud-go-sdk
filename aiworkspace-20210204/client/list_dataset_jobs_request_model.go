@@ -23,6 +23,8 @@ type iListDatasetJobsRequest interface {
 	GetSortBy() *string
 	SetStatus(v string) *ListDatasetJobsRequest
 	GetStatus() *string
+	SetWithLogs(v bool) *ListDatasetJobsRequest
+	GetWithLogs() *bool
 	SetWorkspaceId(v string) *ListDatasetJobsRequest
 	GetWorkspaceId() *string
 }
@@ -55,6 +57,7 @@ type ListDatasetJobsRequest struct {
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SortBy   *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	WithLogs *bool   `json:"WithLogs,omitempty" xml:"WithLogs,omitempty"`
 	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
 	//
 	// example:
@@ -99,6 +102,10 @@ func (s *ListDatasetJobsRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListDatasetJobsRequest) GetWithLogs() *bool {
+	return s.WithLogs
+}
+
 func (s *ListDatasetJobsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -135,6 +142,11 @@ func (s *ListDatasetJobsRequest) SetSortBy(v string) *ListDatasetJobsRequest {
 
 func (s *ListDatasetJobsRequest) SetStatus(v string) *ListDatasetJobsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListDatasetJobsRequest) SetWithLogs(v bool) *ListDatasetJobsRequest {
+	s.WithLogs = &v
 	return s
 }
 

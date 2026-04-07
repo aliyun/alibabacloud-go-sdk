@@ -16,10 +16,14 @@ type iLabelInfo interface {
 }
 
 type LabelInfo struct {
+	// Key of Label
+	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Value of Label
+	//
 	// example:
 	//
 	// value
