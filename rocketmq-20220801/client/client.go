@@ -3360,27 +3360,45 @@ func (client *Client) ListMetricMeta(request *ListMetricMetaRequest) (_result *L
 //
 // Queries a list of migration operations.
 //
-// @param request - ListMigrationOperationsRequest
+// @param tmpReq - ListMigrationOperationsRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMigrationOperationsResponse
-func (client *Client) ListMigrationOperationsWithOptions(migrationId *string, stageType *string, request *ListMigrationOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMigrationOperationsResponse, _err error) {
+func (client *Client) ListMigrationOperationsWithOptions(migrationId *string, stageType *string, tmpReq *ListMigrationOperationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMigrationOperationsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListMigrationOperationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BusinessStatus) {
+		request.BusinessStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessStatus, dara.String("businessStatus"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.OperationStatus) {
+		request.OperationStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OperationStatus, dara.String("operationStatus"), dara.String("simple"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessStatusShrink) {
+		query["businessStatus"] = request.BusinessStatusShrink
+	}
+
 	if !dara.IsNil(request.Filter) {
 		query["filter"] = request.Filter
 	}
 
 	if !dara.IsNil(request.InstanceId) {
 		query["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OperationStatusShrink) {
+		query["operationStatus"] = request.OperationStatusShrink
 	}
 
 	if !dara.IsNil(request.OperationType) {

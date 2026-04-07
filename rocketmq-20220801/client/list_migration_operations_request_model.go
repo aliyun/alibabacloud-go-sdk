@@ -9,10 +9,14 @@ type iListMigrationOperationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBusinessStatus(v []*string) *ListMigrationOperationsRequest
+	GetBusinessStatus() []*string
 	SetFilter(v string) *ListMigrationOperationsRequest
 	GetFilter() *string
 	SetInstanceId(v string) *ListMigrationOperationsRequest
 	GetInstanceId() *string
+	SetOperationStatus(v []*string) *ListMigrationOperationsRequest
+	GetOperationStatus() []*string
 	SetOperationType(v string) *ListMigrationOperationsRequest
 	GetOperationType() *string
 	SetPageNumber(v int32) *ListMigrationOperationsRequest
@@ -22,6 +26,7 @@ type iListMigrationOperationsRequest interface {
 }
 
 type ListMigrationOperationsRequest struct {
+	BusinessStatus []*string `json:"businessStatus,omitempty" xml:"businessStatus,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -29,7 +34,8 @@ type ListMigrationOperationsRequest struct {
 	// example:
 	//
 	// rmq-cn-zxu37eiqq0x
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId      *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	OperationStatus []*string `json:"operationStatus,omitempty" xml:"operationStatus,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -58,12 +64,20 @@ func (s ListMigrationOperationsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListMigrationOperationsRequest) GetBusinessStatus() []*string {
+	return s.BusinessStatus
+}
+
 func (s *ListMigrationOperationsRequest) GetFilter() *string {
 	return s.Filter
 }
 
 func (s *ListMigrationOperationsRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *ListMigrationOperationsRequest) GetOperationStatus() []*string {
+	return s.OperationStatus
 }
 
 func (s *ListMigrationOperationsRequest) GetOperationType() *string {
@@ -78,6 +92,11 @@ func (s *ListMigrationOperationsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListMigrationOperationsRequest) SetBusinessStatus(v []*string) *ListMigrationOperationsRequest {
+	s.BusinessStatus = v
+	return s
+}
+
 func (s *ListMigrationOperationsRequest) SetFilter(v string) *ListMigrationOperationsRequest {
 	s.Filter = &v
 	return s
@@ -85,6 +104,11 @@ func (s *ListMigrationOperationsRequest) SetFilter(v string) *ListMigrationOpera
 
 func (s *ListMigrationOperationsRequest) SetInstanceId(v string) *ListMigrationOperationsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListMigrationOperationsRequest) SetOperationStatus(v []*string) *ListMigrationOperationsRequest {
+	s.OperationStatus = v
 	return s
 }
 
