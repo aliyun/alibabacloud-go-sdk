@@ -2883,6 +2883,10 @@ func (client *Client) ResumeSessionWithContext(ctx context.Context, functionName
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemOnly) {
+		query["fileSystemOnly"] = request.FileSystemOnly
+	}
+
 	if !dara.IsNil(request.Qualifier) {
 		query["qualifier"] = request.Qualifier
 	}
