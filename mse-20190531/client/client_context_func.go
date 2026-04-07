@@ -1387,6 +1387,68 @@ func (client *Client) AddServiceSourceWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
+// 增加ZooKeeper Sasl 用户
+//
+// @param tmpReq - AddZooKeeperSaslUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddZooKeeperSaslUserResponse
+func (client *Client) AddZooKeeperSaslUserWithContext(ctx context.Context, tmpReq *AddZooKeeperSaslUserRequest, runtime *dara.RuntimeOptions) (_result *AddZooKeeperSaslUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddZooKeeperSaslUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SaslUser) {
+		request.SaslUserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SaslUser, dara.String("SaslUser"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Reload) {
+		query["Reload"] = request.Reload
+	}
+
+	if !dara.IsNil(request.SaslUserShrink) {
+		query["SaslUser"] = request.SaslUserShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddZooKeeperSaslUser"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddZooKeeperSaslUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Publishes a route for a gateway.
 //
 // @param request - ApplyGatewayRouteRequest
@@ -11319,6 +11381,54 @@ func (client *Client) ListZnodeChildrenWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 列出所有ZooKeeper sasl用户
+//
+// @param request - ListZooKeeperSaslUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListZooKeeperSaslUserResponse
+func (client *Client) ListZooKeeperSaslUserWithContext(ctx context.Context, request *ListZooKeeperSaslUserRequest, runtime *dara.RuntimeOptions) (_result *ListZooKeeperSaslUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListZooKeeperSaslUser"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListZooKeeperSaslUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the information about a cluster for which Microservice Governance is enabled.
 //
 // @param tmpReq - ModifyGovernanceKubernetesClusterRequest
@@ -12837,6 +12947,68 @@ func (client *Client) RemoveAuthPolicyWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveAuthPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除ZooKeeper sasl用户
+//
+// @param tmpReq - RemoveZooKeeperSaslUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveZooKeeperSaslUserResponse
+func (client *Client) RemoveZooKeeperSaslUserWithContext(ctx context.Context, tmpReq *RemoveZooKeeperSaslUserRequest, runtime *dara.RuntimeOptions) (_result *RemoveZooKeeperSaslUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveZooKeeperSaslUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UserNames) {
+		request.UserNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserNames, dara.String("UserNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Reload) {
+		query["Reload"] = request.Reload
+	}
+
+	if !dara.IsNil(request.UserNamesShrink) {
+		query["UserNames"] = request.UserNamesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveZooKeeperSaslUser"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveZooKeeperSaslUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17015,6 +17187,68 @@ func (client *Client) UpdateZnodeWithContext(ctx context.Context, request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateZnodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改ZooKeeper sasl 用户信息
+//
+// @param tmpReq - UpdateZooKeeperSaslUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateZooKeeperSaslUserResponse
+func (client *Client) UpdateZooKeeperSaslUserWithContext(ctx context.Context, tmpReq *UpdateZooKeeperSaslUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateZooKeeperSaslUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateZooKeeperSaslUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SaslUser) {
+		request.SaslUserShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SaslUser, dara.String("SaslUser"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Reload) {
+		query["Reload"] = request.Reload
+	}
+
+	if !dara.IsNil(request.SaslUserShrink) {
+		query["SaslUser"] = request.SaslUserShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateZooKeeperSaslUser"),
+		Version:     dara.String("2019-05-31"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateZooKeeperSaslUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
