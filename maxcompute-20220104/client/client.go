@@ -556,6 +556,132 @@ func (client *Client) CreateMmsJob(sourceId *string, request *CreateMmsJobReques
 
 // Summary:
 //
+// # CreateMmsTimer
+//
+// @param request - CreateMmsTimerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMmsTimerResponse
+func (client *Client) CreateMmsTimerWithOptions(sourceId *string, request *CreateMmsTimerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMmsTimerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ColumnMapping) {
+		body["columnMapping"] = request.ColumnMapping
+	}
+
+	if !dara.IsNil(request.EnableDataMigration) {
+		body["enableDataMigration"] = request.EnableDataMigration
+	}
+
+	if !dara.IsNil(request.EnableSchemaMigration) {
+		body["enableSchemaMigration"] = request.EnableSchemaMigration
+	}
+
+	if !dara.IsNil(request.EnableVerification) {
+		body["enableVerification"] = request.EnableVerification
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Others) {
+		body["others"] = request.Others
+	}
+
+	if !dara.IsNil(request.PartitionFilters) {
+		body["partitionFilters"] = request.PartitionFilters
+	}
+
+	if !dara.IsNil(request.Partitions) {
+		body["partitions"] = request.Partitions
+	}
+
+	if !dara.IsNil(request.ScheduleType) {
+		body["scheduleType"] = request.ScheduleType
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		body["sourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.SrcDbName) {
+		body["srcDbName"] = request.SrcDbName
+	}
+
+	if !dara.IsNil(request.TableBlackList) {
+		body["tableBlackList"] = request.TableBlackList
+	}
+
+	if !dara.IsNil(request.TableMapping) {
+		body["tableMapping"] = request.TableMapping
+	}
+
+	if !dara.IsNil(request.TableWhiteList) {
+		body["tableWhiteList"] = request.TableWhiteList
+	}
+
+	if !dara.IsNil(request.Tables) {
+		body["tables"] = request.Tables
+	}
+
+	if !dara.IsNil(request.Value) {
+		body["value"] = request.Value
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMmsTimer"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMmsTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateMmsTimer
+//
+// @param request - CreateMmsTimerRequest
+//
+// @return CreateMmsTimerResponse
+func (client *Client) CreateMmsTimer(sourceId *string, request *CreateMmsTimerRequest) (_result *CreateMmsTimerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMmsTimerResponse{}
+	_body, _err := client.CreateMmsTimerWithOptions(sourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a package.
 //
 // @param request - CreatePackageRequest
@@ -1035,6 +1161,56 @@ func (client *Client) DeleteMmsJob(sourceId *string, jobId *string) (_result *De
 	headers := make(map[string]*string)
 	_result = &DeleteMmsJobResponse{}
 	_body, _err := client.DeleteMmsJobWithOptions(sourceId, jobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteMmsTimer
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMmsTimerResponse
+func (client *Client) DeleteMmsTimerWithOptions(sourceId *string, timerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMmsTimerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMmsTimer"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers/" + dara.PercentEncode(dara.StringValue(timerId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMmsTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteMmsTimer
+//
+// @return DeleteMmsTimerResponse
+func (client *Client) DeleteMmsTimer(sourceId *string, timerId *string) (_result *DeleteMmsTimerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMmsTimerResponse{}
+	_body, _err := client.DeleteMmsTimerWithOptions(sourceId, timerId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1899,6 +2075,56 @@ func (client *Client) GetMmsTask(sourceId *string, taskId *string) (_result *Get
 	headers := make(map[string]*string)
 	_result = &GetMmsTaskResponse{}
 	_body, _err := client.GetMmsTaskWithOptions(sourceId, taskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetMmsTimer
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMmsTimerResponse
+func (client *Client) GetMmsTimerWithOptions(sourceId *string, timerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMmsTimerResponse, _err error) {
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMmsTimer"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers/" + dara.PercentEncode(dara.StringValue(timerId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMmsTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # GetMmsTimer
+//
+// @return GetMmsTimerResponse
+func (client *Client) GetMmsTimer(sourceId *string, timerId *string) (_result *GetMmsTimerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMmsTimerResponse{}
+	_body, _err := client.GetMmsTimerWithOptions(sourceId, timerId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3669,6 +3895,76 @@ func (client *Client) ListJobSnapshotInfos(request *ListJobSnapshotInfosRequest)
 
 // Summary:
 //
+// # ListMmsDataSourceConfigItems
+//
+// @param request - ListMmsDataSourceConfigItemsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMmsDataSourceConfigItemsResponse
+func (client *Client) ListMmsDataSourceConfigItemsWithOptions(request *ListMmsDataSourceConfigItemsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsDataSourceConfigItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["sourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMmsDataSourceConfigItems"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/configItems"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMmsDataSourceConfigItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListMmsDataSourceConfigItems
+//
+// @param request - ListMmsDataSourceConfigItemsRequest
+//
+// @return ListMmsDataSourceConfigItemsResponse
+func (client *Client) ListMmsDataSourceConfigItems(request *ListMmsDataSourceConfigItemsRequest) (_result *ListMmsDataSourceConfigItemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMmsDataSourceConfigItemsResponse{}
+	_body, _err := client.ListMmsDataSourceConfigItemsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of MaxCompute Migration Assist (MMA) data sources.
 //
 // @param request - ListMmsDataSourcesRequest
@@ -4336,6 +4632,76 @@ func (client *Client) ListMmsTasks(sourceId *string, request *ListMmsTasksReques
 	headers := make(map[string]*string)
 	_result = &ListMmsTasksResponse{}
 	_body, _err := client.ListMmsTasksWithOptions(sourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListMmsTimerLogs
+//
+// @param request - ListMmsTimerLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMmsTimerLogsResponse
+func (client *Client) ListMmsTimerLogsWithOptions(sourceId *string, timerId *string, request *ListMmsTimerLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMmsTimerLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNum) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMmsTimerLogs"),
+		Version:     dara.String("2022-01-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/mms/datasources/" + dara.PercentEncode(dara.StringValue(sourceId)) + "/timers/" + dara.PercentEncode(dara.StringValue(timerId)) + "/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMmsTimerLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListMmsTimerLogs
+//
+// @param request - ListMmsTimerLogsRequest
+//
+// @return ListMmsTimerLogsResponse
+func (client *Client) ListMmsTimerLogs(sourceId *string, timerId *string, request *ListMmsTimerLogsRequest) (_result *ListMmsTimerLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMmsTimerLogsResponse{}
+	_body, _err := client.ListMmsTimerLogsWithOptions(sourceId, timerId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
