@@ -23,6 +23,8 @@ type iObtainCredentialResponseBody interface {
 	GetCredentialName() *string
 	SetCredentialScenarioLabel(v string) *ObtainCredentialResponseBody
 	GetCredentialScenarioLabel() *string
+	SetCredentialSharingScope(v string) *ObtainCredentialResponseBody
+	GetCredentialSharingScope() *string
 	SetCredentialSubjectId(v string) *ObtainCredentialResponseBody
 	GetCredentialSubjectId() *string
 	SetCredentialSubjectType(v string) *ObtainCredentialResponseBody
@@ -31,6 +33,8 @@ type iObtainCredentialResponseBody interface {
 	GetCredentialType() *string
 	SetDescription(v string) *ObtainCredentialResponseBody
 	GetDescription() *string
+	SetExclusiveUserId(v string) *ObtainCredentialResponseBody
+	GetExclusiveUserId() *string
 	SetInstanceId(v string) *ObtainCredentialResponseBody
 	GetInstanceId() *string
 	SetStatus(v string) *ObtainCredentialResponseBody
@@ -78,6 +82,12 @@ type ObtainCredentialResponseBody struct {
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"credentialScenarioLabel,omitempty" xml:"credentialScenarioLabel,omitempty"`
+	// 凭据的共享范围。
+	//
+	// example:
+	//
+	// user_exclusive
+	CredentialSharingScope *string `json:"credentialSharingScope,omitempty" xml:"credentialSharingScope,omitempty"`
 	// 凭据所属的主体ID。
 	//
 	// example:
@@ -102,6 +112,12 @@ type ObtainCredentialResponseBody struct {
 	//
 	// credential_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 凭据的专属账户ID。
+	//
+	// example:
+	//
+	// user_xxx
+	ExclusiveUserId *string `json:"exclusiveUserId,omitempty" xml:"exclusiveUserId,omitempty"`
 	// EIAM实例ID。
 	//
 	// example:
@@ -158,6 +174,10 @@ func (s *ObtainCredentialResponseBody) GetCredentialScenarioLabel() *string {
 	return s.CredentialScenarioLabel
 }
 
+func (s *ObtainCredentialResponseBody) GetCredentialSharingScope() *string {
+	return s.CredentialSharingScope
+}
+
 func (s *ObtainCredentialResponseBody) GetCredentialSubjectId() *string {
 	return s.CredentialSubjectId
 }
@@ -172,6 +192,10 @@ func (s *ObtainCredentialResponseBody) GetCredentialType() *string {
 
 func (s *ObtainCredentialResponseBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ObtainCredentialResponseBody) GetExclusiveUserId() *string {
+	return s.ExclusiveUserId
 }
 
 func (s *ObtainCredentialResponseBody) GetInstanceId() *string {
@@ -221,6 +245,11 @@ func (s *ObtainCredentialResponseBody) SetCredentialScenarioLabel(v string) *Obt
 	return s
 }
 
+func (s *ObtainCredentialResponseBody) SetCredentialSharingScope(v string) *ObtainCredentialResponseBody {
+	s.CredentialSharingScope = &v
+	return s
+}
+
 func (s *ObtainCredentialResponseBody) SetCredentialSubjectId(v string) *ObtainCredentialResponseBody {
 	s.CredentialSubjectId = &v
 	return s
@@ -238,6 +267,11 @@ func (s *ObtainCredentialResponseBody) SetCredentialType(v string) *ObtainCreden
 
 func (s *ObtainCredentialResponseBody) SetDescription(v string) *ObtainCredentialResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *ObtainCredentialResponseBody) SetExclusiveUserId(v string) *ObtainCredentialResponseBody {
+	s.ExclusiveUserId = &v
 	return s
 }
 
