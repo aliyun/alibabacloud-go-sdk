@@ -125,7 +125,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # SelectDB实例创建前检查
+// Performs a precheck before an ApsaraDB for SelectDB instance is created.
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -273,7 +273,7 @@ func (client *Client) CheckIpExistsInSecurityIpListWithContext(ctx context.Conte
 
 // Summary:
 //
-// 检查服务关联角色
+// Queries the service-linked role of ApsaraDB for SelectDB.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -953,7 +953,7 @@ func (client *Client) DeleteDBClusterBindingWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除DB实例
+// Deletes an ApsaraDB for SelectDB instance.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1989,7 +1989,7 @@ func (client *Client) ModifyBEClusterAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 集群变配
+// Scales a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -2563,7 +2563,7 @@ func (client *Client) RestartDBClusterWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 暂停后恢复集群
+// Starts a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - StartBEClusterRequest
 //
@@ -2619,7 +2619,7 @@ func (client *Client) StartBEClusterWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// 暂停BE集群
+// Stops a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - StopBEClusterRequest
 //

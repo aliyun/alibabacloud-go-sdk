@@ -210,7 +210,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// # SelectDB实例创建前检查
+// Performs a precheck before an ApsaraDB for SelectDB instance is created.
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -318,7 +318,7 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 
 // Summary:
 //
-// # SelectDB实例创建前检查
+// Performs a precheck before an ApsaraDB for SelectDB instance is created.
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -394,7 +394,7 @@ func (client *Client) CheckIpExistsInSecurityIpList(request *CheckIpExistsInSecu
 
 // Summary:
 //
-// 检查服务关联角色
+// Queries the service-linked role of ApsaraDB for SelectDB.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -442,7 +442,7 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 
 // Summary:
 //
-// 检查服务关联角色
+// Queries the service-linked role of ApsaraDB for SelectDB.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -1248,7 +1248,7 @@ func (client *Client) DeleteDBClusterBinding(request *DeleteDBClusterBindingRequ
 
 // Summary:
 //
-// 删除DB实例
+// Deletes an ApsaraDB for SelectDB instance.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -1302,7 +1302,7 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 // Summary:
 //
-// 删除DB实例
+// Deletes an ApsaraDB for SelectDB instance.
 //
 // @param request - DeleteDBInstanceRequest
 //
@@ -2626,7 +2626,7 @@ func (client *Client) ModifyBEClusterAttribute(request *ModifyBEClusterAttribute
 
 // Summary:
 //
-// 集群变配
+// Scales a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -2710,7 +2710,7 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 // Summary:
 //
-// 集群变配
+// Scales a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -3362,7 +3362,7 @@ func (client *Client) RestartDBCluster(request *RestartDBClusterRequest) (_resul
 
 // Summary:
 //
-// 暂停后恢复集群
+// Starts a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - StartBEClusterRequest
 //
@@ -3418,7 +3418,7 @@ func (client *Client) StartBEClusterWithOptions(request *StartBEClusterRequest, 
 
 // Summary:
 //
-// 暂停后恢复集群
+// Starts a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - StartBEClusterRequest
 //
@@ -3436,7 +3436,7 @@ func (client *Client) StartBECluster(request *StartBEClusterRequest) (_result *S
 
 // Summary:
 //
-// 暂停BE集群
+// Stops a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - StopBEClusterRequest
 //
@@ -3492,7 +3492,7 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 
 // Summary:
 //
-// 暂停BE集群
+// Stops a cluster in an ApsaraDB for SelectDB instance.
 //
 // @param request - StopBEClusterRequest
 //

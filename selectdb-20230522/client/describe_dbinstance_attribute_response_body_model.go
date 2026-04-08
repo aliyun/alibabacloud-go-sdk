@@ -45,6 +45,10 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 	GetMaintainStarttime() *string
 	SetMultiZone(v []*DescribeDBInstanceAttributeResponseBodyMultiZone) *DescribeDBInstanceAttributeResponseBody
 	GetMultiZone() []*DescribeDBInstanceAttributeResponseBodyMultiZone
+	SetOTelBearerToken(v string) *DescribeDBInstanceAttributeResponseBody
+	GetOTelBearerToken() *string
+	SetOTelGrafanaServiceStatus(v string) *DescribeDBInstanceAttributeResponseBody
+	GetOTelGrafanaServiceStatus() *string
 	SetObjectStoreSize(v int64) *DescribeDBInstanceAttributeResponseBody
 	GetObjectStoreSize() *int64
 	SetRegionId(v string) *DescribeDBInstanceAttributeResponseBody
@@ -171,7 +175,9 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
 	// if can be null:
 	// true
-	MultiZone []*DescribeDBInstanceAttributeResponseBodyMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
+	MultiZone                []*DescribeDBInstanceAttributeResponseBodyMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
+	OTelBearerToken          *string                                             `json:"OTelBearerToken,omitempty" xml:"OTelBearerToken,omitempty"`
+	OTelGrafanaServiceStatus *string                                             `json:"OTelGrafanaServiceStatus,omitempty" xml:"OTelGrafanaServiceStatus,omitempty"`
 	// The storage capacity of the instance.
 	//
 	// example:
@@ -341,6 +347,14 @@ func (s *DescribeDBInstanceAttributeResponseBody) GetMultiZone() []*DescribeDBIn
 	return s.MultiZone
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) GetOTelBearerToken() *string {
+	return s.OTelBearerToken
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) GetOTelGrafanaServiceStatus() *string {
+	return s.OTelGrafanaServiceStatus
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) GetObjectStoreSize() *int64 {
 	return s.ObjectStoreSize
 }
@@ -488,6 +502,16 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetMaintainStarttime(v string)
 
 func (s *DescribeDBInstanceAttributeResponseBody) SetMultiZone(v []*DescribeDBInstanceAttributeResponseBodyMultiZone) *DescribeDBInstanceAttributeResponseBody {
 	s.MultiZone = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetOTelBearerToken(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.OTelBearerToken = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetOTelGrafanaServiceStatus(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.OTelGrafanaServiceStatus = &v
 	return s
 }
 
