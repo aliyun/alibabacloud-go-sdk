@@ -18,9 +18,18 @@ type iGenerateTrafficControlTaskCodeResponseBody interface {
 }
 
 type GenerateTrafficControlTaskCodeResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	PreNeedConfig *bool   `json:"PreNeedConfig,omitempty" xml:"PreNeedConfig,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Create Table xxx.......
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// False
+	PreNeedConfig *bool `json:"PreNeedConfig,omitempty" xml:"PreNeedConfig,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateTrafficControlTaskCodeResponseBody) String() string {

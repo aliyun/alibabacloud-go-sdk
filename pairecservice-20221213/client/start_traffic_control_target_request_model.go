@@ -14,6 +14,9 @@ type iStartTrafficControlTargetRequest interface {
 }
 
 type StartTrafficControlTargetRequest struct {
+	// example:
+	//
+	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

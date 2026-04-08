@@ -18,7 +18,13 @@ type iListTrafficControlTargetTrafficHistoryResponseBody interface {
 }
 
 type ListTrafficControlTargetTrafficHistoryResponseBody struct {
-	RequestId                          *string                                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
 	TotalCount                         *string                                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TrafficControlTaskTrafficHistories []*ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories `json:"TrafficControlTaskTrafficHistories,omitempty" xml:"TrafficControlTaskTrafficHistories,omitempty" type:"Repeated"`
 }
@@ -72,12 +78,30 @@ func (s *ListTrafficControlTargetTrafficHistoryResponseBody) Validate() error {
 }
 
 type ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories struct {
-	ExperimentId                   *string  `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	ItemId                         *string  `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	RecordTime                     *string  `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	// example:
+	//
+	// E1
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// 1001
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// 2023-10-10 10:10:58
+	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	// example:
+	//
+	// 30
 	TrafficControlTargetAimTraffic *float64 `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
-	TrafficControlTargetTraffic    *float64 `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
-	TrafficControlTaskTraffic      *float64 `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
+	// example:
+	//
+	// 20
+	TrafficControlTargetTraffic *float64 `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	// example:
+	//
+	// 60
+	TrafficControlTaskTraffic *float64 `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
 }
 
 func (s ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) String() string {

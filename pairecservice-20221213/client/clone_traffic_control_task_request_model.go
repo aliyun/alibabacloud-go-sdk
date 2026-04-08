@@ -14,6 +14,9 @@ type iCloneTrafficControlTaskRequest interface {
 }
 
 type CloneTrafficControlTaskRequest struct {
+	// example:
+	//
+	// pairec_123****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

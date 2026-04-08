@@ -16,6 +16,9 @@ type iQueryTrafficControlTargetItemReportDetailResponseBody interface {
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId                            *string                                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TrafficControlTargetItemReportDetail *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetail `json:"TrafficControlTargetItemReportDetail,omitempty" xml:"TrafficControlTargetItemReportDetail,omitempty" type:"Struct"`
 }
@@ -109,10 +112,19 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTarg
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails struct {
-	Features       map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
-	ItemId         *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	TargetProgress *string                `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
-	TargetTraffic  *int64                 `json:"TargetTraffic,omitempty" xml:"TargetTraffic,omitempty"`
+	Features map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
+	// example:
+	//
+	// 794872809896
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// 49%
+	TargetProgress *string `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
+	// example:
+	//
+	// 20
+	TargetTraffic *int64 `json:"TargetTraffic,omitempty" xml:"TargetTraffic,omitempty"`
 }
 
 func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTailReportDetails) String() string {
@@ -164,10 +176,19 @@ func (s *QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTarg
 }
 
 type QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails struct {
-	Features       map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
-	ItemId         *string                `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	TargetProgress *string                `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
-	TargetTraffic  *int64                 `json:"TargetTraffic,omitempty" xml:"TargetTraffic,omitempty"`
+	Features map[string]interface{} `json:"Features,omitempty" xml:"Features,omitempty"`
+	// example:
+	//
+	// 398734
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// 49%
+	TargetProgress *string `json:"TargetProgress,omitempty" xml:"TargetProgress,omitempty"`
+	// example:
+	//
+	// 20
+	TargetTraffic *int64 `json:"TargetTraffic,omitempty" xml:"TargetTraffic,omitempty"`
 }
 
 func (s QueryTrafficControlTargetItemReportDetailResponseBodyTrafficControlTargetItemReportDetailItemControlTopReportDetails) String() string {

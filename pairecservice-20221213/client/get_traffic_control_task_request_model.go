@@ -22,11 +22,26 @@ type iGetTrafficControlTaskRequest interface {
 }
 
 type GetTrafficControlTaskRequest struct {
+	// example:
+	//
+	// All
 	ControlTargetFilter *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
-	Environment         *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// pairec-1324***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Latest
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetTrafficControlTaskRequest) String() string {

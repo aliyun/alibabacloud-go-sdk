@@ -19,10 +19,22 @@ type iCheckTrafficControlTaskExpressionRequest interface {
 
 type CheckTrafficControlTaskExpressionRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// event=exposure
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec_123****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
 }
 

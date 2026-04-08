@@ -40,20 +40,59 @@ type iUpdateTrafficControlTargetRequest interface {
 }
 
 type UpdateTrafficControlTargetRequest struct {
-	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Event                *string  `json:"Event,omitempty" xml:"Event,omitempty"`
-	ItemConditionArray   *string  `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	ItemConditionExpress *string  `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	ItemConditionType    *string  `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	NewProductRegulation *bool    `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	RecallName           *string  `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
-	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StatisPeriod         *string  `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
-	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ToleranceValue       *int64   `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
-	Value                *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
-	NewParam3            *string  `json:"new-param-3,omitempty" xml:"new-param-3,omitempty"`
+	// example:
+	//
+	// 2024-04-25
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// click
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// [{"field":"status","option":"=","value":"1"}]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// status=1
+	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// example:
+	//
+	// target-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	// example:
+	//
+	// recall-1
+	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	// example:
+	//
+	// 2024-03-25
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Daily
+	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	// example:
+	//
+	// Opened
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue *int64  `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	// example:
+	//
+	// 30
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// null
+	NewParam3 *string `json:"new-param-3,omitempty" xml:"new-param-3,omitempty"`
 }
 
 func (s UpdateTrafficControlTargetRequest) String() string {

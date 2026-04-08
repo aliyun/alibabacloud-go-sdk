@@ -18,8 +18,17 @@ type iCheckTrafficControlTaskExpressionResponseBody interface {
 }
 
 type CheckTrafficControlTaskExpressionResponseBody struct {
-	IsValie   *bool   `json:"IsValie,omitempty" xml:"IsValie,omitempty"`
-	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// true
+	IsValie *bool `json:"IsValie,omitempty" xml:"IsValie,omitempty"`
+	// example:
+	//
+	// ""
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

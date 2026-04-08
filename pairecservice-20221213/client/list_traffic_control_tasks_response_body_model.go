@@ -18,7 +18,13 @@ type iListTrafficControlTasksResponseBody interface {
 }
 
 type ListTrafficControlTasksResponseBody struct {
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3AAA45F6-0798-5461-9360-81D133823CE7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
 	TotalCount          *string                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TrafficControlTasks []*ListTrafficControlTasksResponseBodyTrafficControlTasks `json:"TrafficControlTasks,omitempty" xml:"TrafficControlTasks,omitempty" type:"Repeated"`
 }
@@ -72,46 +78,148 @@ func (s *ListTrafficControlTasksResponseBody) Validate() error {
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
-	BehaviorTableMetaId            *string                                                                        `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
-	ControlGranularity             *string                                                                        `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
-	ControlLogic                   *string                                                                        `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
-	ControlType                    *string                                                                        `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
-	Description                    *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	EffectiveSceneIds              []*int32                                                                       `json:"EffectiveSceneIds,omitempty" xml:"EffectiveSceneIds,omitempty" type:"Repeated"`
-	EffectiveSceneNameList         []*string                                                                      `json:"EffectiveSceneNameList,omitempty" xml:"EffectiveSceneNameList,omitempty" type:"Repeated"`
-	EffectiveSceneNames            []*int32                                                                       `json:"EffectiveSceneNames,omitempty" xml:"EffectiveSceneNames,omitempty" type:"Repeated"`
-	EndTime                        *string                                                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EverPublished                  *bool                                                                          `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
-	ExecutionTime                  *string                                                                        `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	FlinkResourceId                *string                                                                        `json:"FlinkResourceId,omitempty" xml:"FlinkResourceId,omitempty"`
-	FlinkResourceName              *string                                                                        `json:"FlinkResourceName,omitempty" xml:"FlinkResourceName,omitempty"`
-	GmtCreateTime                  *string                                                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime                *string                                                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ItemConditionArray             *string                                                                        `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	ItemConditionExpress           *string                                                                        `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	ItemConditionType              *string                                                                        `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	ItemTableMetaId                *string                                                                        `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
-	Name                           *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	PreExperimentIds               *string                                                                        `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
-	PrepubStatus                   *string                                                                        `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
-	ProdExperimentIds              *string                                                                        `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
-	ProductStatus                  *string                                                                        `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
-	SceneId                        *string                                                                        `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName                      *string                                                                        `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	ServiceId                      *string                                                                        `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceIdList                  []*int32                                                                       `json:"ServiceIdList,omitempty" xml:"ServiceIdList,omitempty" type:"Repeated"`
-	ServiceIds                     []*string                                                                      `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
-	StartTime                      *string                                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StatisBahaviorConditionExpress *string                                                                        `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
-	StatisBehaviorConditionArray   *string                                                                        `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
-	StatisBehaviorConditionExpress *string                                                                        `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
-	StatisBehaviorConditionType    *string                                                                        `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
-	TrafficControlTargets          []*ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
-	TrafficControlTaskId           *string                                                                        `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	UserConditionArray             *string                                                                        `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
-	UserConditionExpress           *string                                                                        `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
-	UserConditionType              *string                                                                        `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
-	UserTableMetaId                *string                                                                        `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
+	// example:
+	//
+	// 1
+	BehaviorTableMetaId *string `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	// example:
+	//
+	// Global
+	ControlGranularity *string `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	// example:
+	//
+	// Guaranteed
+	ControlLogic *string `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	// example:
+	//
+	// Percent
+	ControlType *string `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	// example:
+	//
+	// this is a test task
+	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	EffectiveSceneIds      []*int32  `json:"EffectiveSceneIds,omitempty" xml:"EffectiveSceneIds,omitempty" type:"Repeated"`
+	EffectiveSceneNameList []*string `json:"EffectiveSceneNameList,omitempty" xml:"EffectiveSceneNameList,omitempty" type:"Repeated"`
+	EffectiveSceneNames    []*int32  `json:"EffectiveSceneNames,omitempty" xml:"EffectiveSceneNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-04-25
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// false
+	EverPublished *bool `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
+	// example:
+	//
+	// Permanent
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// resource-xxx
+	FlinkResourceId *string `json:"FlinkResourceId,omitempty" xml:"FlinkResourceId,omitempty"`
+	// example:
+	//
+	// flink_test
+	FlinkResourceName *string `json:"FlinkResourceName,omitempty" xml:"FlinkResourceName,omitempty"`
+	// example:
+	//
+	// 2024-03-25T06:04:28.441Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2024-03-25T06:04:28.441Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// [{"field":"status","option":"=","value":"1"}]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// status=1
+	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// example:
+	//
+	// 3
+	ItemTableMetaId *string `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	// example:
+	//
+	// task_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1,2
+	PreExperimentIds *string `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
+	// example:
+	//
+	// Runnning
+	PrepubStatus *string `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
+	// example:
+	//
+	// 6,7
+	ProdExperimentIds *string `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
+	// example:
+	//
+	// Runnning
+	ProductStatus *string `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
+	// example:
+	//
+	// 4
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// home_feed
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceId     *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceIdList []*int32  `json:"ServiceIdList,omitempty" xml:"ServiceIdList,omitempty" type:"Repeated"`
+	ServiceIds    []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-03-25
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// event=click
+	StatisBahaviorConditionExpress *string `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
+	// example:
+	//
+	// [{"field":"click","option":"<=","value":"30"}]
+	StatisBehaviorConditionArray *string `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	// example:
+	//
+	// event=exposure
+	StatisBehaviorConditionExpress *string `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	StatisBehaviorConditionType *string                                                                        `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	TrafficControlTargets       []*ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	// example:
+	//
+	// [{"field":"gender","option":"=","value":"male"}]
+	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	// example:
+	//
+	// age<=30&&(3<=level<=6)&&gender=male
+	UserConditionExpress *string `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	UserConditionType *string `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	// example:
+	//
+	// 2
+	UserTableMetaId *string `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
 }
 
 func (s ListTrafficControlTasksResponseBodyTrafficControlTasks) String() string {
@@ -496,24 +604,75 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) Validate() erro
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets struct {
-	EndTime                *string                                                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Event                  *string                                                                                `json:"Event,omitempty" xml:"Event,omitempty"`
-	GmtCreateTime          *string                                                                                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime        *string                                                                                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ItemConditionArray     *string                                                                                `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	ItemConditionExpress   *string                                                                                `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	ItemConditionType      *string                                                                                `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	Name                   *string                                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	NewProductRegulation   *bool                                                                                  `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	RecallName             *string                                                                                `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
-	SplitParts             *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
-	StartTime              *string                                                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StatisPeriod           *string                                                                                `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
-	Status                 *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	ToleranceValue         *int64                                                                                 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
-	TrafficControlTargetId *string                                                                                `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
-	TrafficControlTaskId   *string                                                                                `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	Value                  *float32                                                                               `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 2024-04-25
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// click
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 2025-06-03T15:08:10.58+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2025-11-21T16:26:58.57+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// [{"field":"status","option":"=","value":"1"}]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// status=1
+	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// example:
+	//
+	// target-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	// example:
+	//
+	// recall-1
+	RecallName *string                                                                                `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	SplitParts *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-03-25
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Daily
+	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	// example:
+	//
+	// Opened
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 10
+	ToleranceValue *int64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	// example:
+	//
+	// 1
+	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	// example:
+	//
+	// 1
+	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	// example:
+	//
+	// 30
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) String() string {

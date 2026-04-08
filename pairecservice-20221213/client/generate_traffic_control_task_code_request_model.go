@@ -16,8 +16,15 @@ type iGenerateTrafficControlTaskCodeRequest interface {
 }
 
 type GenerateTrafficControlTaskCodeRequest struct {
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

@@ -18,10 +18,21 @@ type iQueryTrafficControlTargetItemReportDetailRequest interface {
 }
 
 type QueryTrafficControlTargetItemReportDetailRequest struct {
+	// example:
+	//
+	// 2024-01-01
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec_123****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

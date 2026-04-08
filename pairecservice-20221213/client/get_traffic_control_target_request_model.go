@@ -15,6 +15,10 @@ type iGetTrafficControlTargetRequest interface {
 
 type GetTrafficControlTargetRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

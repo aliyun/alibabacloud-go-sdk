@@ -18,9 +18,18 @@ type iStopTrafficControlTaskRequest interface {
 }
 
 type StopTrafficControlTaskRequest struct {
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec_123****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s StopTrafficControlTaskRequest) String() string {

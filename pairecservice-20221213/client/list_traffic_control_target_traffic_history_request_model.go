@@ -28,14 +28,38 @@ type iListTrafficControlTargetTrafficHistoryRequest interface {
 }
 
 type ListTrafficControlTargetTrafficHistoryRequest struct {
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Environment       *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// 2024-01-10 13:13:20
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// 2
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	ExperimentId      *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemId            *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Threshold         *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// example:
+	//
+	// ER_All
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// pairec-1324***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1001
+	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	// example:
+	//
+	// 2024-01-01 13:13:20
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 20
+	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s ListTrafficControlTargetTrafficHistoryRequest) String() string {

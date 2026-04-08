@@ -20,10 +20,19 @@ type iUpdateTrafficControlTaskTrafficRequest interface {
 }
 
 type UpdateTrafficControlTaskTrafficRequest struct {
-	Environment *string                                           `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Traffics    []*UpdateTrafficControlTaskTrafficRequestTraffics `json:"Traffics,omitempty" xml:"Traffics,omitempty" type:"Repeated"`
-	NewParam3   *string                                           `json:"new-param-3,omitempty" xml:"new-param-3,omitempty"`
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// learn-pairec-cn-xxx
+	InstanceId *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Traffics   []*UpdateTrafficControlTaskTrafficRequestTraffics `json:"Traffics,omitempty" xml:"Traffics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// null
+	NewParam3 *string `json:"new-param-3,omitempty" xml:"new-param-3,omitempty"`
 }
 
 func (s UpdateTrafficControlTaskTrafficRequest) String() string {
@@ -84,12 +93,30 @@ func (s *UpdateTrafficControlTaskTrafficRequest) Validate() error {
 }
 
 type UpdateTrafficControlTaskTrafficRequestTraffics struct {
-	ItemOrExperimentId             *string  `json:"ItemOrExperimentId,omitempty" xml:"ItemOrExperimentId,omitempty"`
-	RecordTime                     *string  `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	// example:
+	//
+	// item1
+	ItemOrExperimentId *string `json:"ItemOrExperimentId,omitempty" xml:"ItemOrExperimentId,omitempty"`
+	// example:
+	//
+	// 2024-01-01T02:05:06.111Z
+	RecordTime *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	// example:
+	//
+	// 10.0
 	TrafficControlTargetAimTraffic *float64 `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
-	TrafficControlTargetId         *string  `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
-	TrafficControlTargetTraffic    *int64   `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
-	TrafficControlTaskTraffic      *int64   `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
+	// example:
+	//
+	// 1
+	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	// example:
+	//
+	// 100000
+	TrafficControlTargetTraffic *int64 `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	// example:
+	//
+	// 1000000
+	TrafficControlTaskTraffic *int64 `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
 }
 
 func (s UpdateTrafficControlTaskTrafficRequestTraffics) String() string {

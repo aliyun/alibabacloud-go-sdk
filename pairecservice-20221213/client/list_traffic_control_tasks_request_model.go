@@ -38,19 +38,58 @@ type iListTrafficControlTasksRequest interface {
 }
 
 type ListTrafficControlTasksRequest struct {
-	All                  *bool   `json:"All,omitempty" xml:"All,omitempty"`
-	ControlTargetFilter  *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
-	Environment          *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order                *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber           *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SceneId              *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SortBy               *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// All
+	ControlTargetFilter *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// task_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	Version              *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// Latest
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListTrafficControlTasksRequest) String() string {

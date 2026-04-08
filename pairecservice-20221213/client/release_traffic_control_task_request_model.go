@@ -16,8 +16,14 @@ type iReleaseTrafficControlTaskRequest interface {
 }
 
 type ReleaseTrafficControlTaskRequest struct {
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec_123****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ReleaseTrafficControlTaskRequest) String() string {

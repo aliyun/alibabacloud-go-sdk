@@ -4049,6 +4049,61 @@ func (client *Client) DeleteTrafficControlTaskWithContext(ctx context.Context, T
 
 // Summary:
 //
+// 部署流量调控任务的flink code
+//
+// @param request - DeployTrafficControlTaskCodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployTrafficControlTaskCodeResponse
+func (client *Client) DeployTrafficControlTaskCodeWithContext(ctx context.Context, TrafficControlTaskId *string, request *DeployTrafficControlTaskCodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeployTrafficControlTaskCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RetryDeploy) {
+		body["RetryDeploy"] = request.RetryDeploy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeployTrafficControlTaskCode"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/trafficcontroltasks/" + dara.PercentEncode(dara.StringValue(TrafficControlTaskId)) + "/action/deploycode"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeployTrafficControlTaskCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成算法定制脚本
 //
 // @param request - GenerateAlgorithmCustomizationScriptRequest
@@ -8413,6 +8468,116 @@ func (client *Client) QueryTrafficControlTargetItemReportDetailWithContext(ctx c
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryTrafficControlTargetItemReportDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控任务部署的结果。
+//
+// @param request - QueryTrafficControlTaskDeployResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTrafficControlTaskDeployResultResponse
+func (client *Client) QueryTrafficControlTaskDeployResultWithContext(ctx context.Context, TrafficControlTaskId *string, request *QueryTrafficControlTaskDeployResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryTrafficControlTaskDeployResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		query["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryTrafficControlTaskDeployResult"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/trafficcontroltasks/" + dara.PercentEncode(dara.StringValue(TrafficControlTaskId)) + "/action/queryresult"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryTrafficControlTaskDeployResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询流量调控任务单品调控报表。
+//
+// @param request - QueryTrafficControlTaskItemReportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTrafficControlTaskItemReportResponse
+func (client *Client) QueryTrafficControlTaskItemReportWithContext(ctx context.Context, TrafficControlTaskId *string, request *QueryTrafficControlTaskItemReportRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryTrafficControlTaskItemReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Environment) {
+		query["Environment"] = request.Environment
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryTrafficControlTaskItemReport"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/trafficcontroltasks/" + dara.PercentEncode(dara.StringValue(TrafficControlTaskId)) + "/action/queryitemreport"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryTrafficControlTaskItemReportResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

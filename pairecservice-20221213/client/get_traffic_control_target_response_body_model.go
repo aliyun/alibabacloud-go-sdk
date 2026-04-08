@@ -48,24 +48,72 @@ type iGetTrafficControlTargetResponseBody interface {
 }
 
 type GetTrafficControlTargetResponseBody struct {
-	EndTime                *string                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Event                  *string                                        `json:"Event,omitempty" xml:"Event,omitempty"`
-	GmtCreateTime          *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	ItemConditionArray     *string                                        `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	ItemConditionExpress   *string                                        `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	ItemConditionType      *string                                        `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	Name                   *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	NewProductRegulation   *bool                                          `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	RecallName             *string                                        `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
-	RequestId              *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SplitParts             *GetTrafficControlTargetResponseBodySplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
-	StartTime              *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StatisPeriod           *string                                        `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
-	Status                 *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	ToleranceValue         *int64                                         `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
-	TrafficControlTargetId *string                                        `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
-	TrafficControlTaskId   *string                                        `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	Value                  *float32                                       `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 2024-04-25
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// click
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 2024-01-03T02:28:00.000Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// [{"field":"status","option":"=","value":"1"}]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// status=1
+	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// example:
+	//
+	// target-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	// example:
+	//
+	// recall-1
+	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SplitParts *GetTrafficControlTargetResponseBodySplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2024-03-25
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Daily
+	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 10
+	ToleranceValue *int64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	// example:
+	//
+	// 1
+	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	// example:
+	//
+	// 1
+	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	// example:
+	//
+	// 30
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetTrafficControlTargetResponseBody) String() string {

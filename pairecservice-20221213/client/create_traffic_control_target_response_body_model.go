@@ -16,7 +16,13 @@ type iCreateTrafficControlTargetResponseBody interface {
 }
 
 type CreateTrafficControlTargetResponseBody struct {
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
 	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
 }
 

@@ -14,6 +14,9 @@ type iDeleteTrafficControlTargetRequest interface {
 }
 
 type DeleteTrafficControlTargetRequest struct {
+	// example:
+	//
+	// pairec-1324***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
