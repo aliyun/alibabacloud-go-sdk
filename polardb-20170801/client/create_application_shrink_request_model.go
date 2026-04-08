@@ -49,6 +49,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetModelFrom() *string
 	SetModelName(v string) *CreateApplicationShrinkRequest
 	GetModelName() *string
+	SetParametersShrink(v string) *CreateApplicationShrinkRequest
+	GetParametersShrink() *string
 	SetPayType(v string) *CreateApplicationShrinkRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateApplicationShrinkRequest
@@ -151,7 +153,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// qwen3-max
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// example:
 	//
 	// Postpaid
@@ -287,6 +290,10 @@ func (s *CreateApplicationShrinkRequest) GetModelFrom() *string {
 
 func (s *CreateApplicationShrinkRequest) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *CreateApplicationShrinkRequest) GetParametersShrink() *string {
+	return s.ParametersShrink
 }
 
 func (s *CreateApplicationShrinkRequest) GetPayType() *string {
@@ -454,6 +461,11 @@ func (s *CreateApplicationShrinkRequest) SetModelFrom(v string) *CreateApplicati
 
 func (s *CreateApplicationShrinkRequest) SetModelName(v string) *CreateApplicationShrinkRequest {
 	s.ModelName = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetParametersShrink(v string) *CreateApplicationShrinkRequest {
+	s.ParametersShrink = &v
 	return s
 }
 

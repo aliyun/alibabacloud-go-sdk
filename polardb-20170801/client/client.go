@@ -2317,6 +2317,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		request.MemApplicationSpecShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemApplicationSpec, dara.String("MemApplicationSpec"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.Parameters) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, dara.String("Parameters"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AIDBClusterId) {
 		query["AIDBClusterId"] = request.AIDBClusterId
@@ -2396,6 +2400,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.ModelName) {
 		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ParametersShrink) {
+		query["Parameters"] = request.ParametersShrink
 	}
 
 	if !dara.IsNil(request.PayType) {

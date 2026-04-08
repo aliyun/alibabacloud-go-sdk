@@ -49,6 +49,8 @@ type iCreateApplicationRequest interface {
 	GetModelFrom() *string
 	SetModelName(v string) *CreateApplicationRequest
 	GetModelName() *string
+	SetParameters(v []*CreateApplicationRequestParameters) *CreateApplicationRequest
+	GetParameters() []*CreateApplicationRequestParameters
 	SetPayType(v string) *CreateApplicationRequest
 	GetPayType() *string
 	SetPeriod(v string) *CreateApplicationRequest
@@ -151,7 +153,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// qwen3-max
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelName  *string                               `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	Parameters []*CreateApplicationRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// example:
 	//
 	// Postpaid
@@ -287,6 +290,10 @@ func (s *CreateApplicationRequest) GetModelFrom() *string {
 
 func (s *CreateApplicationRequest) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *CreateApplicationRequest) GetParameters() []*CreateApplicationRequestParameters {
+	return s.Parameters
 }
 
 func (s *CreateApplicationRequest) GetPayType() *string {
@@ -457,6 +464,11 @@ func (s *CreateApplicationRequest) SetModelName(v string) *CreateApplicationRequ
 	return s
 }
 
+func (s *CreateApplicationRequest) SetParameters(v []*CreateApplicationRequestParameters) *CreateApplicationRequest {
+	s.Parameters = v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetPayType(v string) *CreateApplicationRequest {
 	s.PayType = &v
 	return s
@@ -564,6 +576,15 @@ func (s *CreateApplicationRequest) Validate() error {
 	if s.MemApplicationSpec != nil {
 		if err := s.MemApplicationSpec.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Parameters != nil {
+		for _, item := range s.Parameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.Tag != nil {
@@ -870,6 +891,41 @@ func (s *CreateApplicationRequestMemApplicationSpec) SetShard(v int32) *CreateAp
 }
 
 func (s *CreateApplicationRequestMemApplicationSpec) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationRequestParameters struct {
+	ParameterName  *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+}
+
+func (s CreateApplicationRequestParameters) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestParameters) GetParameterName() *string {
+	return s.ParameterName
+}
+
+func (s *CreateApplicationRequestParameters) GetParameterValue() *string {
+	return s.ParameterValue
+}
+
+func (s *CreateApplicationRequestParameters) SetParameterName(v string) *CreateApplicationRequestParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *CreateApplicationRequestParameters) SetParameterValue(v string) *CreateApplicationRequestParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+func (s *CreateApplicationRequestParameters) Validate() error {
 	return dara.Validate(s)
 }
 
