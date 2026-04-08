@@ -205,7 +205,8 @@ type ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList struct {
 	// example:
 	//
 	// false
-	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	Skip  *bool  `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	SqlId *int64 `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	// The type of the SQL statement, such as DELETE, UPDATE, or ALTER_TABLE.
 	//
 	// example:
@@ -296,6 +297,10 @@ func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) GetSkip() *bo
 	return s.Skip
 }
 
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) GetSqlId() *int64 {
+	return s.SqlId
+}
+
 func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) GetSqlType() *string {
 	return s.SqlType
 }
@@ -359,6 +364,11 @@ func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetLogic(v bo
 
 func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetSkip(v bool) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
 	s.Skip = &v
+	return s
+}
+
+func (s *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList) SetSqlId(v int64) *ListDBTaskSQLJobDetailResponseBodyDBTaskSQLJobDetailList {
+	s.SqlId = &v
 	return s
 }
 
