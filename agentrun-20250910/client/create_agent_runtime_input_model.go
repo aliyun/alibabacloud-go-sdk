@@ -11,6 +11,8 @@ type iCreateAgentRuntimeInput interface {
 	GoString() string
 	SetAgentRuntimeName(v string) *CreateAgentRuntimeInput
 	GetAgentRuntimeName() *string
+	SetArmsConfiguration(v *ArmsConfiguration) *CreateAgentRuntimeInput
+	GetArmsConfiguration() *ArmsConfiguration
 	SetArtifactType(v string) *CreateAgentRuntimeInput
 	GetArtifactType() *string
 	SetCodeConfiguration(v *CodeConfiguration) *CreateAgentRuntimeInput
@@ -67,7 +69,8 @@ type CreateAgentRuntimeInput struct {
 	// example:
 	//
 	// my-agent-runtime
-	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
+	AgentRuntimeName  *string            `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
+	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// 指定智能体运行时的部署类型，支持Code（代码模式）和Container（容器模式）
 	//
 	// This parameter is required.
@@ -223,6 +226,10 @@ func (s *CreateAgentRuntimeInput) GetAgentRuntimeName() *string {
 	return s.AgentRuntimeName
 }
 
+func (s *CreateAgentRuntimeInput) GetArmsConfiguration() *ArmsConfiguration {
+	return s.ArmsConfiguration
+}
+
 func (s *CreateAgentRuntimeInput) GetArtifactType() *string {
 	return s.ArtifactType
 }
@@ -317,6 +324,11 @@ func (s *CreateAgentRuntimeInput) GetWorkspaceId() *string {
 
 func (s *CreateAgentRuntimeInput) SetAgentRuntimeName(v string) *CreateAgentRuntimeInput {
 	s.AgentRuntimeName = &v
+	return s
+}
+
+func (s *CreateAgentRuntimeInput) SetArmsConfiguration(v *ArmsConfiguration) *CreateAgentRuntimeInput {
+	s.ArmsConfiguration = v
 	return s
 }
 
@@ -436,6 +448,11 @@ func (s *CreateAgentRuntimeInput) SetWorkspaceId(v string) *CreateAgentRuntimeIn
 }
 
 func (s *CreateAgentRuntimeInput) Validate() error {
+	if s.ArmsConfiguration != nil {
+		if err := s.ArmsConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CodeConfiguration != nil {
 		if err := s.CodeConfiguration.Validate(); err != nil {
 			return err

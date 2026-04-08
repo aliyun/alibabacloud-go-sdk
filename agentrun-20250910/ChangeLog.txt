@@ -1,3 +1,6 @@
+2026-04-08 Version: v5.6.1
+- Generated golang 2025-09-10 for AgentRun.
+
 2026-04-03 Version: v5.6.0
 - Support API CreateTool.
 - Support API DeleteTool.
