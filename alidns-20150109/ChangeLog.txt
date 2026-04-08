@@ -1,3 +1,7 @@
+2026-04-08 Version: v5.3.4
+- Update API DescribeInstanceDomains: add request parameters DomainKeywords.
+
+
 2026-04-02 Version: v5.3.3
 - Update API SearchCloudGtmMonitorTemplates: add response parameters Body.Templates.$.CloudGtmMonitorTemplateId.
 

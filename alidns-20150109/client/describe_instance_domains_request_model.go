@@ -9,6 +9,8 @@ type iDescribeInstanceDomainsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDomainKeywords(v string) *DescribeInstanceDomainsRequest
+	GetDomainKeywords() *string
 	SetInstanceId(v string) *DescribeInstanceDomainsRequest
 	GetInstanceId() *string
 	SetLang(v string) *DescribeInstanceDomainsRequest
@@ -20,6 +22,7 @@ type iDescribeInstanceDomainsRequest interface {
 }
 
 type DescribeInstanceDomainsRequest struct {
+	DomainKeywords *string `json:"DomainKeywords,omitempty" xml:"DomainKeywords,omitempty"`
 	// The ID of the Alibaba Cloud Domain Name System (DNS) instance. You can call the [DescribeDomainInfo](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaininfo?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
 	//
 	// This parameter is required.
@@ -62,6 +65,10 @@ func (s DescribeInstanceDomainsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceDomainsRequest) GetDomainKeywords() *string {
+	return s.DomainKeywords
+}
+
 func (s *DescribeInstanceDomainsRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -76,6 +83,11 @@ func (s *DescribeInstanceDomainsRequest) GetPageNumber() *int64 {
 
 func (s *DescribeInstanceDomainsRequest) GetPageSize() *int64 {
 	return s.PageSize
+}
+
+func (s *DescribeInstanceDomainsRequest) SetDomainKeywords(v string) *DescribeInstanceDomainsRequest {
+	s.DomainKeywords = &v
+	return s
 }
 
 func (s *DescribeInstanceDomainsRequest) SetInstanceId(v string) *DescribeInstanceDomainsRequest {
