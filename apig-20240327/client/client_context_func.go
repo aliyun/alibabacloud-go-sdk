@@ -2131,14 +2131,36 @@ func (client *Client) DeployMcpServerWithContext(ctx context.Context, mcpServerI
 //
 // Exports an HTTP API.
 //
+// @param request - ExportHttpApiRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportHttpApiResponse
-func (client *Client) ExportHttpApiWithContext(ctx context.Context, httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
+func (client *Client) ExportHttpApiWithContext(ctx context.Context, httpApiId *string, request *ExportHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExtensionConfig) {
+		body["extensionConfig"] = request.ExtensionConfig
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.OperationIds) {
+		body["operationIds"] = request.OperationIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ExportHttpApi"),
@@ -3305,6 +3327,69 @@ func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关外的服务信息
+//
+// @param request - ListExternalServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExternalServicesResponse
+func (client *Client) ListExternalServicesWithContext(ctx context.Context, gatewayId *string, request *ListExternalServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExternalServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImportableOnly) {
+		query["importableOnly"] = request.ImportableOnly
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PaiWorkspaceId) {
+		query["paiWorkspaceId"] = request.PaiWorkspaceId
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["sourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExternalServices"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/external-services"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExternalServicesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5404,10 +5489,6 @@ func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApi
 		body["backendConfig"] = request.BackendConfig
 	}
 
-	if !dara.IsNil(request.DeployConfigs) {
-		body["deployConfigs"] = request.DeployConfigs
-	}
-
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -5426,10 +5507,6 @@ func (client *Client) UpdateHttpApiRouteWithContext(ctx context.Context, httpApi
 
 	if !dara.IsNil(request.McpRouteConfig) {
 		body["mcpRouteConfig"] = request.McpRouteConfig
-	}
-
-	if !dara.IsNil(request.Name) {
-		body["name"] = request.Name
 	}
 
 	if !dara.IsNil(request.PolicyConfigs) {

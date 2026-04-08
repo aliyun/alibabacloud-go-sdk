@@ -2920,14 +2920,36 @@ func (client *Client) DeployMcpServer(mcpServerId *string) (_result *DeployMcpSe
 //
 // Exports an HTTP API.
 //
+// @param request - ExportHttpApiRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExportHttpApiResponse
-func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
+func (client *Client) ExportHttpApiWithOptions(httpApiId *string, request *ExportHttpApiRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportHttpApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExtensionConfig) {
+		body["extensionConfig"] = request.ExtensionConfig
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.OperationIds) {
+		body["operationIds"] = request.OperationIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ExportHttpApi"),
@@ -2953,12 +2975,14 @@ func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[st
 //
 // Exports an HTTP API.
 //
+// @param request - ExportHttpApiRequest
+//
 // @return ExportHttpApiResponse
-func (client *Client) ExportHttpApi(httpApiId *string) (_result *ExportHttpApiResponse, _err error) {
+func (client *Client) ExportHttpApi(httpApiId *string, request *ExportHttpApiRequest) (_result *ExportHttpApiResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ExportHttpApiResponse{}
-	_body, _err := client.ExportHttpApiWithOptions(httpApiId, headers, runtime)
+	_body, _err := client.ExportHttpApiWithOptions(httpApiId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4573,6 +4597,88 @@ func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListEnvironmentsResponse{}
 	_body, _err := client.ListEnvironmentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关外的服务信息
+//
+// @param request - ListExternalServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExternalServicesResponse
+func (client *Client) ListExternalServicesWithOptions(gatewayId *string, request *ListExternalServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExternalServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImportableOnly) {
+		query["importableOnly"] = request.ImportableOnly
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.NameLike) {
+		query["nameLike"] = request.NameLike
+	}
+
+	if !dara.IsNil(request.PaiWorkspaceId) {
+		query["paiWorkspaceId"] = request.PaiWorkspaceId
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["sourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExternalServices"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/external-services"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExternalServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关外的服务信息
+//
+// @param request - ListExternalServicesRequest
+//
+// @return ListExternalServicesResponse
+func (client *Client) ListExternalServices(gatewayId *string, request *ListExternalServicesRequest) (_result *ListExternalServicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListExternalServicesResponse{}
+	_body, _err := client.ListExternalServicesWithOptions(gatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7286,10 +7392,6 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 		body["backendConfig"] = request.BackendConfig
 	}
 
-	if !dara.IsNil(request.DeployConfigs) {
-		body["deployConfigs"] = request.DeployConfigs
-	}
-
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
 	}
@@ -7308,10 +7410,6 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 	if !dara.IsNil(request.McpRouteConfig) {
 		body["mcpRouteConfig"] = request.McpRouteConfig
-	}
-
-	if !dara.IsNil(request.Name) {
-		body["name"] = request.Name
 	}
 
 	if !dara.IsNil(request.PolicyConfigs) {

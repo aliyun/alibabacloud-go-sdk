@@ -9,15 +9,9 @@ type iValidationOptions interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetSkipVerifyAIChatCompletion(v bool) *ValidationOptions
-	GetSkipVerifyAIChatCompletion() *bool
 }
 
 type ValidationOptions struct {
-	// example:
-	//
-	// true
-	SkipVerifyAIChatCompletion *bool `json:"skipVerifyAIChatCompletion,omitempty" xml:"skipVerifyAIChatCompletion,omitempty"`
 }
 
 func (s ValidationOptions) String() string {
@@ -26,15 +20,6 @@ func (s ValidationOptions) String() string {
 
 func (s ValidationOptions) GoString() string {
 	return s.String()
-}
-
-func (s *ValidationOptions) GetSkipVerifyAIChatCompletion() *bool {
-	return s.SkipVerifyAIChatCompletion
-}
-
-func (s *ValidationOptions) SetSkipVerifyAIChatCompletion(v bool) *ValidationOptions {
-	s.SkipVerifyAIChatCompletion = &v
-	return s
 }
 
 func (s *ValidationOptions) Validate() error {

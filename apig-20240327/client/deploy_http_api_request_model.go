@@ -263,6 +263,9 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	// Deprecated
 	//
 	// The configurations of existing services. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
+	//
+	// if can be null:
+	// true
 	ServiceConfigs []*DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 }
 
