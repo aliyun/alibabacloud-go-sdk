@@ -160,11 +160,13 @@ type ListOperationActivityResponseBodyData struct {
 	// example:
 	//
 	// COMPLETED
-	ActivityStatus *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
+	ActivityStatus    *string `json:"ActivityStatus,omitempty" xml:"ActivityStatus,omitempty"`
+	ConsoleRetryCount *int32  `json:"ConsoleRetryCount,omitempty" xml:"ConsoleRetryCount,omitempty"`
 	// example:
 	//
 	// 1742178604000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
 	// example:
 	//
 	// UpdateClusterStatusToModifyingConfigStatus
@@ -191,8 +193,16 @@ func (s *ListOperationActivityResponseBodyData) GetActivityStatus() *string {
 	return s.ActivityStatus
 }
 
+func (s *ListOperationActivityResponseBodyData) GetConsoleRetryCount() *int32 {
+	return s.ConsoleRetryCount
+}
+
 func (s *ListOperationActivityResponseBodyData) GetEndTime() *int64 {
 	return s.EndTime
+}
+
+func (s *ListOperationActivityResponseBodyData) GetErrMessage() *string {
+	return s.ErrMessage
 }
 
 func (s *ListOperationActivityResponseBodyData) GetName() *string {
@@ -213,8 +223,18 @@ func (s *ListOperationActivityResponseBodyData) SetActivityStatus(v string) *Lis
 	return s
 }
 
+func (s *ListOperationActivityResponseBodyData) SetConsoleRetryCount(v int32) *ListOperationActivityResponseBodyData {
+	s.ConsoleRetryCount = &v
+	return s
+}
+
 func (s *ListOperationActivityResponseBodyData) SetEndTime(v int64) *ListOperationActivityResponseBodyData {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListOperationActivityResponseBodyData) SetErrMessage(v string) *ListOperationActivityResponseBodyData {
+	s.ErrMessage = &v
 	return s
 }
 

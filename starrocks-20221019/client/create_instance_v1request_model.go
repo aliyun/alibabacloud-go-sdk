@@ -27,6 +27,8 @@ type iCreateInstanceV1Request interface {
 	GetDlfCatalogType() *string
 	SetDuration(v int32) *CreateInstanceV1Request
 	GetDuration() *int32
+	SetEnableMultiAz(v bool) *CreateInstanceV1Request
+	GetEnableMultiAz() *bool
 	SetEncrypted(v bool) *CreateInstanceV1Request
 	GetEncrypted() *bool
 	SetFrontendNodeGroups(v []*CreateInstanceV1RequestFrontendNodeGroups) *CreateInstanceV1Request
@@ -102,7 +104,8 @@ type CreateInstanceV1Request struct {
 	// example:
 	//
 	// 1
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration      *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EnableMultiAz *bool  `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
 	// example:
 	//
 	// true
@@ -240,6 +243,10 @@ func (s *CreateInstanceV1Request) GetDuration() *int32 {
 	return s.Duration
 }
 
+func (s *CreateInstanceV1Request) GetEnableMultiAz() *bool {
+	return s.EnableMultiAz
+}
+
 func (s *CreateInstanceV1Request) GetEncrypted() *bool {
 	return s.Encrypted
 }
@@ -370,6 +377,11 @@ func (s *CreateInstanceV1Request) SetDlfCatalogType(v string) *CreateInstanceV1R
 
 func (s *CreateInstanceV1Request) SetDuration(v int32) *CreateInstanceV1Request {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreateInstanceV1Request) SetEnableMultiAz(v bool) *CreateInstanceV1Request {
+	s.EnableMultiAz = &v
 	return s
 }
 

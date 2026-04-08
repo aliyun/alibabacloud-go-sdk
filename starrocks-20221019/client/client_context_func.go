@@ -373,6 +373,10 @@ func (client *Client) CreateInstanceV1WithContext(ctx context.Context, request *
 		body["Duration"] = request.Duration
 	}
 
+	if !dara.IsNil(request.EnableMultiAz) {
+		body["EnableMultiAz"] = request.EnableMultiAz
+	}
+
 	if !dara.IsNil(request.Encrypted) {
 		body["Encrypted"] = request.Encrypted
 	}

@@ -155,6 +155,7 @@ type DescribeInstancesResponseBodyData struct {
 	//
 	// true
 	EnableAutoMinorVersionUpgrade *bool `json:"EnableAutoMinorVersionUpgrade,omitempty" xml:"EnableAutoMinorVersionUpgrade,omitempty"`
+	EnableMultiAz                 *bool `json:"EnableMultiAz,omitempty" xml:"EnableMultiAz,omitempty"`
 	// example:
 	//
 	// true
@@ -281,6 +282,10 @@ func (s *DescribeInstancesResponseBodyData) GetEnableAutoMinorVersionUpgrade() *
 	return s.EnableAutoMinorVersionUpgrade
 }
 
+func (s *DescribeInstancesResponseBodyData) GetEnableMultiAz() *bool {
+	return s.EnableMultiAz
+}
+
 func (s *DescribeInstancesResponseBodyData) GetEnableSSL() *bool {
 	return s.EnableSSL
 }
@@ -403,6 +408,11 @@ func (s *DescribeInstancesResponseBodyData) SetEnableAiFunction(v bool) *Describ
 
 func (s *DescribeInstancesResponseBodyData) SetEnableAutoMinorVersionUpgrade(v bool) *DescribeInstancesResponseBodyData {
 	s.EnableAutoMinorVersionUpgrade = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyData) SetEnableMultiAz(v bool) *DescribeInstancesResponseBodyData {
+	s.EnableMultiAz = &v
 	return s
 }
 
