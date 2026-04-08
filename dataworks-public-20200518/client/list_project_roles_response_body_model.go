@@ -53,7 +53,16 @@ func (s *ListProjectRolesResponseBody) SetRequestId(v string) *ListProjectRolesR
 }
 
 func (s *ListProjectRolesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectRoleList != nil {
+		for _, item := range s.ProjectRoleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectRolesResponseBodyProjectRoleList struct {

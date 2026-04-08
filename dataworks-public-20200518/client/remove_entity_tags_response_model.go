@@ -59,5 +59,10 @@ func (s *RemoveEntityTagsResponse) SetBody(v *RemoveEntityTagsResponseBody) *Rem
 }
 
 func (s *RemoveEntityTagsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

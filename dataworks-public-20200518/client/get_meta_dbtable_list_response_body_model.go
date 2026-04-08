@@ -53,7 +53,12 @@ func (s *GetMetaDBTableListResponseBody) SetRequestId(v string) *GetMetaDBTableL
 }
 
 func (s *GetMetaDBTableListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaDBTableListResponseBodyData struct {
@@ -124,7 +129,16 @@ func (s *GetMetaDBTableListResponseBodyData) SetTotalCount(v int64) *GetMetaDBTa
 }
 
 func (s *GetMetaDBTableListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TableEntityList != nil {
+		for _, item := range s.TableEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaDBTableListResponseBodyDataTableEntityList struct {

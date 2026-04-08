@@ -59,5 +59,10 @@ func (s *ListMetaCollectionsResponse) SetBody(v *ListMetaCollectionsResponseBody
 }
 
 func (s *ListMetaCollectionsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

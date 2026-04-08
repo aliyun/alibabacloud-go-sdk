@@ -74,5 +74,28 @@ func (s *LineageRelationRegisterBulkVO) SetSrcEntities(v []*LineageEntityVO) *Li
 }
 
 func (s *LineageRelationRegisterBulkVO) Validate() error {
-	return dara.Validate(s)
+	if s.DestEntities != nil {
+		for _, item := range s.DestEntities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Relationship != nil {
+		if err := s.Relationship.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcEntities != nil {
+		for _, item := range s.SrcEntities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

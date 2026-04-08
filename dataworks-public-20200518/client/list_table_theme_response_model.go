@@ -59,5 +59,10 @@ func (s *ListTableThemeResponse) SetBody(v *ListTableThemeResponseBody) *ListTab
 }
 
 func (s *ListTableThemeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

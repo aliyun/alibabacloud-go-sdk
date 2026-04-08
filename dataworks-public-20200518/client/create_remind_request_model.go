@@ -58,6 +58,8 @@ type CreateRemindRequest struct {
 	//
 	// 	- WEBHOOKS (WeCom or Lark chatbot): Alert notifications are sent by WeCom or Lark message. If you want to use this notification method, you must configure the Webhooks parameter.
 	//
+	// 	- DINGROBOTS: Alert notifications are sent by DingTalk chatbot.
+	//
 	// You can specify multiple notification methods. Separate them with commas (,).
 	//
 	// This parameter is required.

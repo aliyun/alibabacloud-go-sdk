@@ -53,7 +53,12 @@ func (s *ListDeploymentsResponseBody) SetRequestId(v string) *ListDeploymentsRes
 }
 
 func (s *ListDeploymentsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDeploymentsResponseBodyData struct {
@@ -124,7 +129,16 @@ func (s *ListDeploymentsResponseBodyData) SetTotalCount(v int64) *ListDeployment
 }
 
 func (s *ListDeploymentsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Deployments != nil {
+		for _, item := range s.Deployments {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDeploymentsResponseBodyDataDeployments struct {

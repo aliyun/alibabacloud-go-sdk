@@ -20,13 +20,18 @@ type iLineageRelationRegisterVO interface {
 }
 
 type LineageRelationRegisterVO struct {
+	// The time of lineage relation generation
+	//
 	// example:
 	//
 	// 1684327487964
-	CreateTimestamp *int64           `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	DestEntity      *LineageEntityVO `json:"DestEntity,omitempty" xml:"DestEntity,omitempty"`
-	Relationship    *RelationshipVO  `json:"Relationship,omitempty" xml:"Relationship,omitempty"`
-	SrcEntity       *LineageEntityVO `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The destination entity in lineage relation
+	DestEntity *LineageEntityVO `json:"DestEntity,omitempty" xml:"DestEntity,omitempty"`
+	// The relationship between entities
+	Relationship *RelationshipVO `json:"Relationship,omitempty" xml:"Relationship,omitempty"`
+	// The source entity in lineage relation
+	SrcEntity *LineageEntityVO `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
 }
 
 func (s LineageRelationRegisterVO) String() string {
@@ -74,5 +79,20 @@ func (s *LineageRelationRegisterVO) SetSrcEntity(v *LineageEntityVO) *LineageRel
 }
 
 func (s *LineageRelationRegisterVO) Validate() error {
-	return dara.Validate(s)
+	if s.DestEntity != nil {
+		if err := s.DestEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Relationship != nil {
+		if err := s.Relationship.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SrcEntity != nil {
+		if err := s.SrcEntity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

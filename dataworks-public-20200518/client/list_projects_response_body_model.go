@@ -53,7 +53,12 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 }
 
 func (s *ListProjectsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageResult != nil {
+		if err := s.PageResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyPageResult struct {
@@ -124,7 +129,16 @@ func (s *ListProjectsResponseBodyPageResult) SetTotalCount(v int32) *ListProject
 }
 
 func (s *ListProjectsResponseBodyPageResult) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectList != nil {
+		for _, item := range s.ProjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyPageResultProjectList struct {
@@ -386,7 +400,16 @@ func (s *ListProjectsResponseBodyPageResultProjectList) SetUseProxyOdpsAccount(v
 }
 
 func (s *ListProjectsResponseBodyPageResultProjectList) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProjectsResponseBodyPageResultProjectListTags struct {

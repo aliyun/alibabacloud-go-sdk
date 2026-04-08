@@ -74,7 +74,12 @@ func (s *StopDISyncInstanceResponseBody) SetSuccess(v bool) *StopDISyncInstanceR
 }
 
 func (s *StopDISyncInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type StopDISyncInstanceResponseBodyData struct {

@@ -59,5 +59,10 @@ func (s *ListDagsResponse) SetBody(v *ListDagsResponseBody) *ListDagsResponse {
 }
 
 func (s *ListDagsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -17,10 +17,16 @@ type iDsgDesensPlanQueryListRequest interface {
 	GetPageSize() *int32
 	SetRuleName(v string) *DsgDesensPlanQueryListRequest
 	GetRuleName() *string
-	SetSceneId(v int32) *DsgDesensPlanQueryListRequest
-	GetSceneId() *int32
+	SetSceneId(v int64) *DsgDesensPlanQueryListRequest
+	GetSceneId() *int64
 	SetStatus(v int32) *DsgDesensPlanQueryListRequest
 	GetStatus() *int32
+	SetColumns(v []*DsgDesensPlanQueryListRequestColumns) *DsgDesensPlanQueryListRequest
+	GetColumns() []*DsgDesensPlanQueryListRequestColumns
+	SetDataType(v string) *DsgDesensPlanQueryListRequest
+	GetDataType() *string
+	SetEmptyNotDesesn(v string) *DsgDesensPlanQueryListRequest
+	GetEmptyNotDesesn() *string
 }
 
 type DsgDesensPlanQueryListRequest struct {
@@ -59,7 +65,7 @@ type DsgDesensPlanQueryListRequest struct {
 	// example:
 	//
 	// 123
-	SceneId *int32 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	// The status of the data masking rule. Valid values:
 	//
 	// 	- 0: expired
@@ -69,7 +75,10 @@ type DsgDesensPlanQueryListRequest struct {
 	// example:
 	//
 	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *int32                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Columns        []*DsgDesensPlanQueryListRequestColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	DataType       *string                                 `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	EmptyNotDesesn *string                                 `json:"emptyNotDesesn,omitempty" xml:"emptyNotDesesn,omitempty"`
 }
 
 func (s DsgDesensPlanQueryListRequest) String() string {
@@ -96,12 +105,24 @@ func (s *DsgDesensPlanQueryListRequest) GetRuleName() *string {
 	return s.RuleName
 }
 
-func (s *DsgDesensPlanQueryListRequest) GetSceneId() *int32 {
+func (s *DsgDesensPlanQueryListRequest) GetSceneId() *int64 {
 	return s.SceneId
 }
 
 func (s *DsgDesensPlanQueryListRequest) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DsgDesensPlanQueryListRequest) GetColumns() []*DsgDesensPlanQueryListRequestColumns {
+	return s.Columns
+}
+
+func (s *DsgDesensPlanQueryListRequest) GetDataType() *string {
+	return s.DataType
+}
+
+func (s *DsgDesensPlanQueryListRequest) GetEmptyNotDesesn() *string {
+	return s.EmptyNotDesesn
 }
 
 func (s *DsgDesensPlanQueryListRequest) SetOwner(v string) *DsgDesensPlanQueryListRequest {
@@ -124,7 +145,7 @@ func (s *DsgDesensPlanQueryListRequest) SetRuleName(v string) *DsgDesensPlanQuer
 	return s
 }
 
-func (s *DsgDesensPlanQueryListRequest) SetSceneId(v int32) *DsgDesensPlanQueryListRequest {
+func (s *DsgDesensPlanQueryListRequest) SetSceneId(v int64) *DsgDesensPlanQueryListRequest {
 	s.SceneId = &v
 	return s
 }
@@ -134,6 +155,85 @@ func (s *DsgDesensPlanQueryListRequest) SetStatus(v int32) *DsgDesensPlanQueryLi
 	return s
 }
 
+func (s *DsgDesensPlanQueryListRequest) SetColumns(v []*DsgDesensPlanQueryListRequestColumns) *DsgDesensPlanQueryListRequest {
+	s.Columns = v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListRequest) SetDataType(v string) *DsgDesensPlanQueryListRequest {
+	s.DataType = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListRequest) SetEmptyNotDesesn(v string) *DsgDesensPlanQueryListRequest {
+	s.EmptyNotDesesn = &v
+	return s
+}
+
 func (s *DsgDesensPlanQueryListRequest) Validate() error {
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DsgDesensPlanQueryListRequestColumns struct {
+	Column  *string `json:"column,omitempty" xml:"column,omitempty"`
+	DbType  *string `json:"dbType,omitempty" xml:"dbType,omitempty"`
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	Table   *string `json:"table,omitempty" xml:"table,omitempty"`
+}
+
+func (s DsgDesensPlanQueryListRequestColumns) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DsgDesensPlanQueryListRequestColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) GetColumn() *string {
+	return s.Column
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) GetDbType() *string {
+	return s.DbType
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) GetProject() *string {
+	return s.Project
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) GetTable() *string {
+	return s.Table
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) SetColumn(v string) *DsgDesensPlanQueryListRequestColumns {
+	s.Column = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) SetDbType(v string) *DsgDesensPlanQueryListRequestColumns {
+	s.DbType = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) SetProject(v string) *DsgDesensPlanQueryListRequestColumns {
+	s.Project = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) SetTable(v string) *DsgDesensPlanQueryListRequestColumns {
+	s.Table = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListRequestColumns) Validate() error {
 	return dara.Validate(s)
 }

@@ -16,10 +16,14 @@ type iUserEntityTag interface {
 }
 
 type UserEntityTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// priority
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// p1

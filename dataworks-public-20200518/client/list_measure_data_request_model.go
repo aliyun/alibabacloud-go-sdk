@@ -20,9 +20,9 @@ type iListMeasureDataRequest interface {
 }
 
 type ListMeasureDataRequest struct {
-	// The measurement component. Valid values:
+	// The metering component. Valid values:
 	//
-	// 	- Count: phone call-based alerts and text message-based alerts
+	// 	- Count: The number of DideAlarmPhone (telephone/call) alerts, and the number of DideAlarmSms (SMS/text message) alerts.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListMeasureDataRequest struct {
 	//
 	// DideAlarmPhone
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
-	// The end timestamp of the measurement period, in milliseconds. The measurement period is calculated in days. You can query only the data within the previous 30 days.
+	// The end timestamp of the metering cycle, in milliseconds. The metering data is aggregated by day. The time range between EndTime and StartTime cannot exceed 30 days.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListMeasureDataRequest struct {
 	//
 	// 1717430400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start timestamp of the measurement period, in milliseconds. The measurement period is calculated in days. You can query only the data within the previous 30 days.
+	// The start timestamp of the metering cycle, in milliseconds. The metering data is aggregated by day. The time range between EndTime and StartTime cannot exceed 30 days.
 	//
 	// This parameter is required.
 	//

@@ -121,7 +121,12 @@ func (s *ListFileVersionsResponseBody) SetSuccess(v bool) *ListFileVersionsRespo
 }
 
 func (s *ListFileVersionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFileVersionsResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListFileVersionsResponseBodyData) SetTotalCount(v int32) *ListFileVersi
 }
 
 func (s *ListFileVersionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.FileVersions != nil {
+		for _, item := range s.FileVersions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFileVersionsResponseBodyDataFileVersions struct {

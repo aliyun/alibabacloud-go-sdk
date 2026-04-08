@@ -59,5 +59,10 @@ func (s *CreateDataServiceGroupResponse) SetBody(v *CreateDataServiceGroupRespon
 }
 
 func (s *CreateDataServiceGroupResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

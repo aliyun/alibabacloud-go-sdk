@@ -53,7 +53,12 @@ func (s *GetInstanceErrorRankResponseBody) SetRequestId(v string) *GetInstanceEr
 }
 
 func (s *GetInstanceErrorRankResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceErrorRank != nil {
+		if err := s.InstanceErrorRank.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceErrorRankResponseBodyInstanceErrorRank struct {
@@ -94,7 +99,16 @@ func (s *GetInstanceErrorRankResponseBodyInstanceErrorRank) SetUpdateTime(v int6
 }
 
 func (s *GetInstanceErrorRankResponseBodyInstanceErrorRank) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorRank != nil {
+		for _, item := range s.ErrorRank {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceErrorRankResponseBodyInstanceErrorRankErrorRank struct {

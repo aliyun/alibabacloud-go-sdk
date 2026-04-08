@@ -121,7 +121,12 @@ func (s *ListRemindsResponseBody) SetSuccess(v bool) *ListRemindsResponseBody {
 }
 
 func (s *ListRemindsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRemindsResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListRemindsResponseBodyData) SetTotalCount(v int32) *ListRemindsRespons
 }
 
 func (s *ListRemindsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Reminds != nil {
+		for _, item := range s.Reminds {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRemindsResponseBodyDataReminds struct {

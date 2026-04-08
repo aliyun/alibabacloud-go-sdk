@@ -121,7 +121,12 @@ func (s *GetBaselineStatusResponseBody) SetSuccess(v bool) *GetBaselineStatusRes
 }
 
 func (s *GetBaselineStatusResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBaselineStatusResponseBodyData struct {
@@ -368,7 +373,17 @@ func (s *GetBaselineStatusResponseBodyData) SetStatus(v string) *GetBaselineStat
 }
 
 func (s *GetBaselineStatusResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.BlockInstance != nil {
+		if err := s.BlockInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.LastInstance != nil {
+		if err := s.LastInstance.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBaselineStatusResponseBodyDataBlockInstance struct {

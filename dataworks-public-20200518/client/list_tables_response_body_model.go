@@ -53,7 +53,12 @@ func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody 
 }
 
 func (s *ListTablesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyData struct {
@@ -109,7 +114,16 @@ func (s *ListTablesResponseBodyData) SetTotal(v int64) *ListTablesResponseBodyDa
 }
 
 func (s *ListTablesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.TableEntityList != nil {
+		for _, item := range s.TableEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyDataTableEntityList struct {
@@ -150,7 +164,12 @@ func (s *ListTablesResponseBodyDataTableEntityList) SetEntityQualifiedName(v str
 }
 
 func (s *ListTablesResponseBodyDataTableEntityList) Validate() error {
-	return dara.Validate(s)
+	if s.EntityContent != nil {
+		if err := s.EntityContent.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTablesResponseBodyDataTableEntityListEntityContent struct {

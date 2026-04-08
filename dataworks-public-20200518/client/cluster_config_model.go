@@ -18,14 +18,36 @@ type iClusterConfig interface {
 }
 
 type ClusterConfig struct {
+	// The configuration value.
+	//
 	// example:
 	//
 	// {"spark.driver.memory":"1g"}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// Specifies whether to overwrite the advanced settings of nodes in DataStudio. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	EnableOverwrite *bool `json:"EnableOverwrite,omitempty" xml:"EnableOverwrite,omitempty"`
+	// The module in which the cluster is configured. Valid values:
+	//
+	// 	- ide: DataStudio.
+	//
+	// 	- da: DataAnalysis.
+	//
+	// 	- scheduler.auto: Operation Center - auto triggered instances.
+	//
+	// 	- scheduler.backfill: Operation Center - data backfill instances.
+	//
+	// 	- scheduler.test: Operation Center - test instances.
+	//
+	// 	- scheduler.manual: Operation Center - manually triggered instances.
+	//
 	// example:
 	//
 	// ide

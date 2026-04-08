@@ -16,12 +16,16 @@ type iCluster interface {
 }
 
 type Cluster struct {
+	// The unique business identifier of the cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c-d8a7523****
 	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	// The ID of the cluster associated with DataWorks.
+	//
 	// This parameter is required.
 	//
 	// example:

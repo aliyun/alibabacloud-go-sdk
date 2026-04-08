@@ -53,7 +53,16 @@ func (s *GetFileTypeStatisticResponseBody) SetRequestId(v string) *GetFileTypeSt
 }
 
 func (s *GetFileTypeStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProgramTypeAndCounts != nil {
+		for _, item := range s.ProgramTypeAndCounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetFileTypeStatisticResponseBodyProgramTypeAndCounts struct {

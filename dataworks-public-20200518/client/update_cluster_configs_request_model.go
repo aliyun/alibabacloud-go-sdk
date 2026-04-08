@@ -97,5 +97,14 @@ func (s *UpdateClusterConfigsRequest) SetProjectId(v int64) *UpdateClusterConfig
 }
 
 func (s *UpdateClusterConfigsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ConfigValues != nil {
+		for _, item := range s.ConfigValues {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -53,7 +53,12 @@ func (s *ListDataServiceFoldersResponseBody) SetRequestId(v string) *ListDataSer
 }
 
 func (s *ListDataServiceFoldersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.FolderPagingResult != nil {
+		if err := s.FolderPagingResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceFoldersResponseBodyFolderPagingResult struct {
@@ -124,7 +129,16 @@ func (s *ListDataServiceFoldersResponseBodyFolderPagingResult) SetTotalCount(v i
 }
 
 func (s *ListDataServiceFoldersResponseBodyFolderPagingResult) Validate() error {
-	return dara.Validate(s)
+	if s.Folders != nil {
+		for _, item := range s.Folders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceFoldersResponseBodyFolderPagingResultFolders struct {

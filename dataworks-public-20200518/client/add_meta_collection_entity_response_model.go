@@ -59,5 +59,10 @@ func (s *AddMetaCollectionEntityResponse) SetBody(v *AddMetaCollectionEntityResp
 }
 
 func (s *AddMetaCollectionEntityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

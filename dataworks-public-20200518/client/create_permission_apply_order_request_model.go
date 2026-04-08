@@ -201,7 +201,16 @@ func (s *CreatePermissionApplyOrderRequest) SetWorkspaceId(v int32) *CreatePermi
 }
 
 func (s *CreatePermissionApplyOrderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyObject != nil {
+		for _, item := range s.ApplyObject {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePermissionApplyOrderRequestApplyObject struct {
@@ -257,7 +266,16 @@ func (s *CreatePermissionApplyOrderRequestApplyObject) SetName(v string) *Create
 }
 
 func (s *CreatePermissionApplyOrderRequestApplyObject) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnMetaList != nil {
+		for _, item := range s.ColumnMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreatePermissionApplyOrderRequestApplyObjectColumnMetaList struct {

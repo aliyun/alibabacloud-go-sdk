@@ -121,7 +121,16 @@ func (s *ListNodesByOutputResponseBody) SetSuccess(v bool) *ListNodesByOutputRes
 }
 
 func (s *ListNodesByOutputResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesByOutputResponseBodyData struct {
@@ -162,7 +171,16 @@ func (s *ListNodesByOutputResponseBodyData) SetOutput(v string) *ListNodesByOutp
 }
 
 func (s *ListNodesByOutputResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.NodeList != nil {
+		for _, item := range s.NodeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesByOutputResponseBodyDataNodeList struct {

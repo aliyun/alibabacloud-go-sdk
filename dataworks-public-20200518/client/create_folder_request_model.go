@@ -18,7 +18,7 @@ type iCreateFolderRequest interface {
 }
 
 type CreateFolderRequest struct {
-	// The path of the folder.
+	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to obtain the workspace name. You must configure either this parameter or the **ProjectId*	- parameter to determine the DataWorks workspace to which the operation is applied.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type CreateFolderRequest struct {
 	//
 	// Business_process/System_Data/MaxCompute/import_layer
 	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
-	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the **ProjectIdentifier*	- parameter to determine the DataWorks workspace to which the operation is applied.
+	// $.parameters[4].schema.enumValueTitles
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace page to obtain the workspace name. You must configure either this parameter or the **ProjectId*	- parameter to determine the DataWorks workspace to which the operation is applied.
+	// The DataWorks workspace ID. You can log on to the DataWorks console and go to the Workspace page to query the ID. You must configure either this parameter or the **ProjectIdentifier*	- parameter to determine the DataWorks workspace to which the operation is applied.
 	//
 	// example:
 	//

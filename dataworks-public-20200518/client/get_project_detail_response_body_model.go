@@ -87,7 +87,12 @@ func (s *GetProjectDetailResponseBody) SetSuccess(v bool) *GetProjectDetailRespo
 }
 
 func (s *GetProjectDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetProjectDetailResponseBodyData struct {
@@ -466,7 +471,16 @@ func (s *GetProjectDetailResponseBodyData) SetUseProxyOdpsAccount(v bool) *GetPr
 }
 
 func (s *GetProjectDetailResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetProjectDetailResponseBodyDataTags struct {

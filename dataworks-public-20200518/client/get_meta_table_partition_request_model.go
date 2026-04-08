@@ -161,7 +161,12 @@ func (s *GetMetaTablePartitionRequest) SetTableName(v string) *GetMetaTableParti
 }
 
 func (s *GetMetaTablePartitionRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SortCriterion != nil {
+		if err := s.SortCriterion.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaTablePartitionRequestSortCriterion struct {

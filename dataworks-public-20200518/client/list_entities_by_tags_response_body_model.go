@@ -125,7 +125,12 @@ func (s *ListEntitiesByTagsResponseBody) SetSuccess(v bool) *ListEntitiesByTagsR
 }
 
 func (s *ListEntitiesByTagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListEntitiesByTagsResponseBodyData struct {
@@ -166,5 +171,14 @@ func (s *ListEntitiesByTagsResponseBodyData) SetNextToken(v string) *ListEntitie
 }
 
 func (s *ListEntitiesByTagsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EntityList != nil {
+		for _, item := range s.EntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

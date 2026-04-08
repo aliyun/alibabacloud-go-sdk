@@ -59,5 +59,10 @@ func (s *UpdateTableModelInfoResponse) SetBody(v *UpdateTableModelInfoResponseBo
 }
 
 func (s *UpdateTableModelInfoResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

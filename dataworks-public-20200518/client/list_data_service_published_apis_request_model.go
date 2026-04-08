@@ -50,7 +50,7 @@ type ListDataServicePublishedApisRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Default is 10, and the maximum is 100.
 	//
 	// example:
 	//

@@ -121,7 +121,12 @@ func (s *GetRemindResponseBody) SetSuccess(v bool) *GetRemindResponseBody {
 }
 
 func (s *GetRemindResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetRemindResponseBodyData struct {
@@ -440,7 +445,61 @@ func (s *GetRemindResponseBodyData) SetWebhooks(v []*string) *GetRemindResponseB
 }
 
 func (s *GetRemindResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Baselines != nil {
+		for _, item := range s.Baselines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.BizProcesses != nil {
+		for _, item := range s.BizProcesses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Receivers != nil {
+		for _, item := range s.Receivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Robots != nil {
+		for _, item := range s.Robots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetRemindResponseBodyDataBaselines struct {

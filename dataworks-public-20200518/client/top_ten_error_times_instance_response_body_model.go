@@ -53,7 +53,12 @@ func (s *TopTenErrorTimesInstanceResponseBody) SetRequestId(v string) *TopTenErr
 }
 
 func (s *TopTenErrorTimesInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceErrorRank != nil {
+		if err := s.InstanceErrorRank.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TopTenErrorTimesInstanceResponseBodyInstanceErrorRank struct {
@@ -94,7 +99,16 @@ func (s *TopTenErrorTimesInstanceResponseBodyInstanceErrorRank) SetUpdateTime(v 
 }
 
 func (s *TopTenErrorTimesInstanceResponseBodyInstanceErrorRank) Validate() error {
-	return dara.Validate(s)
+	if s.ErrorRank != nil {
+		for _, item := range s.ErrorRank {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TopTenErrorTimesInstanceResponseBodyInstanceErrorRankErrorRank struct {

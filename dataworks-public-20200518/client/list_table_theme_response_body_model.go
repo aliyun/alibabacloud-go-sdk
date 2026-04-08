@@ -121,7 +121,12 @@ func (s *ListTableThemeResponseBody) SetSuccess(v bool) *ListTableThemeResponseB
 }
 
 func (s *ListTableThemeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTableThemeResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *ListTableThemeResponseBodyData) SetTotalCount(v int64) *ListTableThemeR
 }
 
 func (s *ListTableThemeResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ThemeList != nil {
+		for _, item := range s.ThemeList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTableThemeResponseBodyDataThemeList struct {

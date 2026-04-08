@@ -121,7 +121,12 @@ func (s *GetMetaColumnLineageResponseBody) SetSuccess(v bool) *GetMetaColumnLine
 }
 
 func (s *GetMetaColumnLineageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaColumnLineageResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *GetMetaColumnLineageResponseBodyData) SetTotalCount(v int64) *GetMetaCo
 }
 
 func (s *GetMetaColumnLineageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataEntityList != nil {
+		for _, item := range s.DataEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaColumnLineageResponseBodyDataDataEntityList struct {

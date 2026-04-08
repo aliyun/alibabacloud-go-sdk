@@ -53,7 +53,12 @@ func (s *DeleteTableResponseBody) SetTaskInfo(v *DeleteTableResponseBodyTaskInfo
 }
 
 func (s *DeleteTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteTableResponseBodyTaskInfo struct {

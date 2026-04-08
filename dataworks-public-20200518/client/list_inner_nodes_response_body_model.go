@@ -70,7 +70,12 @@ func (s *ListInnerNodesResponseBody) SetSuccess(v bool) *ListInnerNodesResponseB
 }
 
 func (s *ListInnerNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Paging != nil {
+		if err := s.Paging.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListInnerNodesResponseBodyPaging struct {
@@ -141,7 +146,16 @@ func (s *ListInnerNodesResponseBodyPaging) SetTotalCount(v int32) *ListInnerNode
 }
 
 func (s *ListInnerNodesResponseBodyPaging) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListInnerNodesResponseBodyPagingNodes struct {

@@ -16,7 +16,7 @@ type iGetPermissionApplyOrderDetailResponseBody interface {
 }
 
 type GetPermissionApplyOrderDetailResponseBody struct {
-	// The details of the permission request order.
+	// Details of the permission request order.
 	ApplyOrderDetail *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail `json:"ApplyOrderDetail,omitempty" xml:"ApplyOrderDetail,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -53,7 +53,12 @@ func (s *GetPermissionApplyOrderDetailResponseBody) SetRequestId(v string) *GetP
 }
 
 func (s *GetPermissionApplyOrderDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ApplyOrderDetail != nil {
+		if err := s.ApplyOrderDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail struct {
@@ -72,9 +77,15 @@ type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail struct {
 	// The list of Alibaba Cloud accounts that are used to process the permission request order.
 	ApproveAccountList []*GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountList `json:"ApproveAccountList,omitempty" xml:"ApproveAccountList,omitempty" type:"Repeated"`
 	// The content of the permission request.
-	ApproveContent           *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
-	FinishAapprovalTimestamp *int64                                                                   `json:"FinishAapprovalTimestamp,omitempty" xml:"FinishAapprovalTimestamp,omitempty"`
-	FinishApprovalComment    *string                                                                  `json:"FinishApprovalComment,omitempty" xml:"FinishApprovalComment,omitempty"`
+	ApproveContent *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent `json:"ApproveContent,omitempty" xml:"ApproveContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1757496687000
+	FinishAapprovalTimestamp *int64 `json:"FinishAapprovalTimestamp,omitempty" xml:"FinishAapprovalTimestamp,omitempty"`
+	// example:
+	//
+	// agree
+	FinishApprovalComment *string `json:"FinishApprovalComment,omitempty" xml:"FinishApprovalComment,omitempty"`
 	// The ID of the permission request order.
 	//
 	// example:
@@ -189,7 +200,30 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) SetGranteeOb
 }
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail) Validate() error {
-	return dara.Validate(s)
+	if s.ApproveAccountList != nil {
+		for _, item := range s.ApproveAccountList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ApproveContent != nil {
+		if err := s.ApproveContent.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.GranteeObjectList != nil {
+		for _, item := range s.GranteeObjectList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountList struct {
@@ -290,7 +324,12 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent) Validate() error {
-	return dara.Validate(s)
+	if s.ProjectMeta != nil {
+		if err := s.ProjectMeta.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMeta struct {
@@ -346,7 +385,16 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMeta) Validate() error {
-	return dara.Validate(s)
+	if s.ObjectMetaList != nil {
+		for _, item := range s.ObjectMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList struct {
@@ -397,7 +445,16 @@ func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent
 }
 
 func (s *GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaList) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnMetaList != nil {
+		for _, item := range s.ColumnMetaList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContentProjectMetaObjectMetaListColumnMetaList struct {

@@ -240,7 +240,25 @@ func (s *UpdateBaselineRequest) SetRemoveNodeIds(v string) *UpdateBaselineReques
 }
 
 func (s *UpdateBaselineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.AlertSettings != nil {
+		for _, item := range s.AlertSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OvertimeSettings != nil {
+		for _, item := range s.OvertimeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBaselineRequestAlertSettings struct {
@@ -419,7 +437,16 @@ func (s *UpdateBaselineRequestAlertSettings) SetWebhooks(v []*string) *UpdateBas
 }
 
 func (s *UpdateBaselineRequestAlertSettings) Validate() error {
-	return dara.Validate(s)
+	if s.DingRobots != nil {
+		for _, item := range s.DingRobots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateBaselineRequestAlertSettingsDingRobots struct {

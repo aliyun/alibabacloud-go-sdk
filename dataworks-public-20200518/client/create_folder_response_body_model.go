@@ -24,37 +24,37 @@ type iCreateFolderResponseBody interface {
 }
 
 type CreateFolderResponseBody struct {
-	// The ID of the request. You can use the ID to troubleshoot issues.
+	// The unique identifier of the folder.
 	//
 	// example:
 	//
 	// bdfd68****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code.
+	// The error code returned.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the request was successful.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The unique identifier of the folder.
+	// The path of the folder.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The ID of the request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code returned.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

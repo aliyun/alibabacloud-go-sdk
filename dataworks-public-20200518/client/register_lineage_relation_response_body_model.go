@@ -125,7 +125,12 @@ func (s *RegisterLineageRelationResponseBody) SetSuccess(v bool) *RegisterLineag
 }
 
 func (s *RegisterLineageRelationResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.LineageRelation != nil {
+		if err := s.LineageRelation.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type RegisterLineageRelationResponseBodyLineageRelation struct {

@@ -53,7 +53,12 @@ func (s *GetDataServiceApiTestResponseBody) SetRequestId(v string) *GetDataServi
 }
 
 func (s *GetDataServiceApiTestResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataServiceApiTestResponseBodyData struct {

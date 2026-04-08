@@ -20,26 +20,18 @@ type iChangeResourceManagerResourceGroupResponseBody interface {
 }
 
 type ChangeResourceManagerResourceGroupResponseBody struct {
-	// Indicates whether the resource group is changed.
-	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code.
-	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 1AFAE64E-D1BE-432B-A9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
 	// example:
 	//
 	// true

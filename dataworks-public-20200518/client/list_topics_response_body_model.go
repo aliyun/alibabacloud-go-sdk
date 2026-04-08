@@ -121,7 +121,12 @@ func (s *ListTopicsResponseBody) SetSuccess(v bool) *ListTopicsResponseBody {
 }
 
 func (s *ListTopicsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTopicsResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListTopicsResponseBodyData) SetTotalCount(v int32) *ListTopicsResponseB
 }
 
 func (s *ListTopicsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTopicsResponseBodyDataTopics struct {

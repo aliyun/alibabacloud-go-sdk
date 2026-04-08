@@ -53,7 +53,12 @@ func (s *ListExtensionsResponseBody) SetRequestId(v string) *ListExtensionsRespo
 }
 
 func (s *ListExtensionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListExtensionsResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListExtensionsResponseBodyPagingInfo) SetTotalCount(v int32) *ListExten
 }
 
 func (s *ListExtensionsResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.Extensions != nil {
+		for _, item := range s.Extensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExtensionsResponseBodyPagingInfoExtensions struct {
@@ -225,7 +239,16 @@ func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetStatus(v int32) *Lis
 }
 
 func (s *ListExtensionsResponseBodyPagingInfoExtensions) Validate() error {
-	return dara.Validate(s)
+	if s.BindEventList != nil {
+		for _, item := range s.BindEventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListExtensionsResponseBodyPagingInfoExtensionsBindEventList struct {

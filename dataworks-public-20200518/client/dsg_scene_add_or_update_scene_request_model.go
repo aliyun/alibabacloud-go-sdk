@@ -38,7 +38,16 @@ func (s *DsgSceneAddOrUpdateSceneRequest) SetScenes(v []*DsgSceneAddOrUpdateScen
 }
 
 func (s *DsgSceneAddOrUpdateSceneRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Scenes != nil {
+		for _, item := range s.Scenes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgSceneAddOrUpdateSceneRequestScenes struct {
@@ -151,7 +160,16 @@ func (s *DsgSceneAddOrUpdateSceneRequestScenes) SetUserGroupIds(v []*int64) *Dsg
 }
 
 func (s *DsgSceneAddOrUpdateSceneRequestScenes) Validate() error {
-	return dara.Validate(s)
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgSceneAddOrUpdateSceneRequestScenesProjects struct {

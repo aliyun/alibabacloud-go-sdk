@@ -121,7 +121,12 @@ func (s *ListDagsResponseBody) SetSuccess(v bool) *ListDagsResponseBody {
 }
 
 func (s *ListDagsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDagsResponseBodyData struct {
@@ -147,7 +152,16 @@ func (s *ListDagsResponseBodyData) SetDags(v []*ListDagsResponseBodyDataDags) *L
 }
 
 func (s *ListDagsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Dags != nil {
+		for _, item := range s.Dags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDagsResponseBodyDataDags struct {

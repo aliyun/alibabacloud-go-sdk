@@ -121,11 +121,16 @@ func (s *ListDataServicePublishedApisResponseBody) SetSuccess(v bool) *ListDataS
 }
 
 func (s *ListDataServicePublishedApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyData struct {
-	// The information about the APIs in the published state.
+	// Information about published APIs.
 	Apis []*ListDataServicePublishedApisResponseBodyDataApis `json:"Apis,omitempty" xml:"Apis,omitempty" type:"Repeated"`
 	// The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
 	//
@@ -192,7 +197,16 @@ func (s *ListDataServicePublishedApisResponseBodyData) SetTotalCount(v int32) *L
 }
 
 func (s *ListDataServicePublishedApisResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Apis != nil {
+		for _, item := range s.Apis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyDataApis struct {
@@ -280,6 +294,8 @@ type ListDataServicePublishedApisResponseBodyDataApis struct {
 	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
 	// The details of the API generated in script mode. This parameter is returned only if the API is generated in script mode.
 	ScriptDetails *ListDataServicePublishedApisResponseBodyDataApisScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
+	// SQL mode. 0: Basic SQL; 1: Advanced SQL.
+	//
 	// example:
 	//
 	// 0
@@ -519,7 +535,22 @@ func (s *ListDataServicePublishedApisResponseBodyDataApis) SetWizardDetails(v *L
 }
 
 func (s *ListDataServicePublishedApisResponseBodyDataApis) Validate() error {
-	return dara.Validate(s)
+	if s.RegistrationDetails != nil {
+		if err := s.RegistrationDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScriptDetails != nil {
+		if err := s.ScriptDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WizardDetails != nil {
+		if err := s.WizardDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyDataApisRegistrationDetails struct {
@@ -646,7 +677,25 @@ func (s *ListDataServicePublishedApisResponseBodyDataApisRegistrationDetails) Se
 }
 
 func (s *ListDataServicePublishedApisResponseBodyDataApisRegistrationDetails) Validate() error {
-	return dara.Validate(s)
+	if s.RegistrationErrorCodes != nil {
+		for _, item := range s.RegistrationErrorCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegistrationRequestParameters != nil {
+		for _, item := range s.RegistrationRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyDataApisRegistrationDetailsRegistrationErrorCodes struct {
@@ -1004,7 +1053,39 @@ func (s *ListDataServicePublishedApisResponseBodyDataApisScriptDetails) SetSucce
 }
 
 func (s *ListDataServicePublishedApisResponseBodyDataApisScriptDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ScriptConnection != nil {
+		if err := s.ScriptConnection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScriptErrorCodes != nil {
+		for _, item := range s.ScriptErrorCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScriptRequestParameters != nil {
+		for _, item := range s.ScriptRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScriptResponseParameters != nil {
+		for _, item := range s.ScriptResponseParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyDataApisScriptDetailsScriptConnection struct {
@@ -1493,7 +1574,39 @@ func (s *ListDataServicePublishedApisResponseBodyDataApisWizardDetails) SetWizar
 }
 
 func (s *ListDataServicePublishedApisResponseBodyDataApisWizardDetails) Validate() error {
-	return dara.Validate(s)
+	if s.WizardConnection != nil {
+		if err := s.WizardConnection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WizardErrorCodes != nil {
+		for _, item := range s.WizardErrorCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WizardRequestParameters != nil {
+		for _, item := range s.WizardRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WizardResponseParameters != nil {
+		for _, item := range s.WizardResponseParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServicePublishedApisResponseBodyDataApisWizardDetailsWizardConnection struct {

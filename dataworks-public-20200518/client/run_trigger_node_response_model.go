@@ -59,5 +59,10 @@ func (s *RunTriggerNodeResponse) SetBody(v *RunTriggerNodeResponseBody) *RunTrig
 }
 
 func (s *RunTriggerNodeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

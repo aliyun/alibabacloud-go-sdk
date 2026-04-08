@@ -121,7 +121,12 @@ func (s *GetMetaTableThemeLevelResponseBody) SetSuccess(v bool) *GetMetaTableThe
 }
 
 func (s *GetMetaTableThemeLevelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Entity != nil {
+		if err := s.Entity.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaTableThemeLevelResponseBodyEntity struct {
@@ -158,7 +163,25 @@ func (s *GetMetaTableThemeLevelResponseBodyEntity) SetTheme(v []*GetMetaTableThe
 }
 
 func (s *GetMetaTableThemeLevelResponseBodyEntity) Validate() error {
-	return dara.Validate(s)
+	if s.Level != nil {
+		for _, item := range s.Level {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Theme != nil {
+		for _, item := range s.Theme {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaTableThemeLevelResponseBodyEntityLevel struct {

@@ -53,7 +53,12 @@ func (s *ListDIAlarmRulesResponseBody) SetRequestId(v string) *ListDIAlarmRulesR
 }
 
 func (s *ListDIAlarmRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DIAlarmRulePaging != nil {
+		if err := s.DIAlarmRulePaging.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePaging struct {
@@ -124,7 +129,16 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePaging) SetTotalCount(v int64) *
 }
 
 func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePaging) Validate() error {
-	return dara.Validate(s)
+	if s.DIJobAlarmRules != nil {
+		for _, item := range s.DIJobAlarmRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules struct {
@@ -242,7 +256,21 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules) SetTrigge
 }
 
 func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRules) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationSettings != nil {
+		if err := s.NotificationSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerConditions != nil {
+		for _, item := range s.TriggerConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings struct {
@@ -294,7 +322,25 @@ func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificatio
 }
 
 func (s *ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettings) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDIAlarmRulesResponseBodyDIAlarmRulePagingDIJobAlarmRulesNotificationSettingsNotificationChannels struct {

@@ -59,6 +59,11 @@ func (s *EditRecognizeRuleResponse) SetBody(v *EditRecognizeRuleResponseBody) *E
 }
 
 func (s *EditRecognizeRuleResponse) Validate() error {
-  return dara.Validate(s)
+  if s.Body != nil {
+    if err := s.Body.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 

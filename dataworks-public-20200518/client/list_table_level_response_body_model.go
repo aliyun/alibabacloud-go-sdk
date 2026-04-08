@@ -121,7 +121,12 @@ func (s *ListTableLevelResponseBody) SetTableLevelInfo(v *ListTableLevelResponse
 }
 
 func (s *ListTableLevelResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TableLevelInfo != nil {
+		if err := s.TableLevelInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListTableLevelResponseBodyTableLevelInfo struct {
@@ -162,7 +167,16 @@ func (s *ListTableLevelResponseBodyTableLevelInfo) SetTotalCount(v int64) *ListT
 }
 
 func (s *ListTableLevelResponseBodyTableLevelInfo) Validate() error {
-	return dara.Validate(s)
+	if s.LevelList != nil {
+		for _, item := range s.LevelList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListTableLevelResponseBodyTableLevelInfoLevelList struct {

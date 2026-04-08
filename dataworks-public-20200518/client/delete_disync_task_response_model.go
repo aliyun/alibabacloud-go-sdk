@@ -59,5 +59,10 @@ func (s *DeleteDISyncTaskResponse) SetBody(v *DeleteDISyncTaskResponseBody) *Del
 }
 
 func (s *DeleteDISyncTaskResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

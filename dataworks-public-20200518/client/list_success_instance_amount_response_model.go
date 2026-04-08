@@ -59,5 +59,10 @@ func (s *ListSuccessInstanceAmountResponse) SetBody(v *ListSuccessInstanceAmount
 }
 
 func (s *ListSuccessInstanceAmountResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

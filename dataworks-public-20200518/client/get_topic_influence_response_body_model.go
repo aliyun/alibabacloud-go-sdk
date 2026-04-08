@@ -121,7 +121,12 @@ func (s *GetTopicInfluenceResponseBody) SetSuccess(v bool) *GetTopicInfluenceRes
 }
 
 func (s *GetTopicInfluenceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetTopicInfluenceResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *GetTopicInfluenceResponseBodyData) SetTopicId(v int64) *GetTopicInfluen
 }
 
 func (s *GetTopicInfluenceResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Influences != nil {
+		for _, item := range s.Influences {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetTopicInfluenceResponseBodyDataInfluences struct {

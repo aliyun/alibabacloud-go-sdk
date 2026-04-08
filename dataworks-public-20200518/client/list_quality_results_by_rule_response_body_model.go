@@ -121,7 +121,12 @@ func (s *ListQualityResultsByRuleResponseBody) SetSuccess(v bool) *ListQualityRe
 }
 
 func (s *ListQualityResultsByRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQualityResultsByRuleResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListQualityResultsByRuleResponseBodyData) SetTotalCount(v int64) *ListQ
 }
 
 func (s *ListQualityResultsByRuleResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.RuleChecks != nil {
+		for _, item := range s.RuleChecks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQualityResultsByRuleResponseBodyDataRuleChecks struct {
@@ -845,7 +859,25 @@ func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) SetWhereCondition(v
 }
 
 func (s *ListQualityResultsByRuleResponseBodyDataRuleChecks) Validate() error {
-	return dara.Validate(s)
+	if s.ReferenceValue != nil {
+		for _, item := range s.ReferenceValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SampleValue != nil {
+		for _, item := range s.SampleValue {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQualityResultsByRuleResponseBodyDataRuleChecksReferenceValue struct {

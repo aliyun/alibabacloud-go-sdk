@@ -59,5 +59,10 @@ func (s *RunManualDagNodesResponse) SetBody(v *RunManualDagNodesResponseBody) *R
 }
 
 func (s *RunManualDagNodesResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

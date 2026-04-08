@@ -74,7 +74,12 @@ func (s *ListRefDISyncTasksResponseBody) SetSuccess(v bool) *ListRefDISyncTasksR
 }
 
 func (s *ListRefDISyncTasksResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRefDISyncTasksResponseBodyData struct {
@@ -100,7 +105,16 @@ func (s *ListRefDISyncTasksResponseBodyData) SetDISyncTasks(v []*ListRefDISyncTa
 }
 
 func (s *ListRefDISyncTasksResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DISyncTasks != nil {
+		for _, item := range s.DISyncTasks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListRefDISyncTasksResponseBodyDataDISyncTasks struct {

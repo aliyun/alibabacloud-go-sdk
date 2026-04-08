@@ -59,5 +59,10 @@ func (s *CallbackExtensionResponse) SetBody(v *CallbackExtensionResponseBody) *C
 }
 
 func (s *CallbackExtensionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -121,7 +121,12 @@ func (s *ListDataServiceApplicationsResponseBody) SetSuccess(v bool) *ListDataSe
 }
 
 func (s *ListDataServiceApplicationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApplicationsResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListDataServiceApplicationsResponseBodyData) SetTotalCount(v int32) *Li
 }
 
 func (s *ListDataServiceApplicationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Applications != nil {
+		for _, item := range s.Applications {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApplicationsResponseBodyDataApplications struct {

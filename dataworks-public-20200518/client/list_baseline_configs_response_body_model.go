@@ -121,7 +121,12 @@ func (s *ListBaselineConfigsResponseBody) SetSuccess(v bool) *ListBaselineConfig
 }
 
 func (s *ListBaselineConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBaselineConfigsResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListBaselineConfigsResponseBodyData) SetTotalCount(v int32) *ListBaseli
 }
 
 func (s *ListBaselineConfigsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Baselines != nil {
+		for _, item := range s.Baselines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBaselineConfigsResponseBodyDataBaselines struct {

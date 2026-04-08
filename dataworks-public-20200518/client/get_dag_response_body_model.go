@@ -121,7 +121,12 @@ func (s *GetDagResponseBody) SetSuccess(v bool) *GetDagResponseBody {
 }
 
 func (s *GetDagResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDagResponseBodyData struct {

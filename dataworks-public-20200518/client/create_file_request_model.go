@@ -256,7 +256,7 @@ type CreateFileRequest struct {
 	//
 	// false
 	IgnoreParentSkipRunningProperty *bool `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
-	// Custom image ID
+	// The ID of the custom image.
 	//
 	// example:
 	//

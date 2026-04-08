@@ -95,7 +95,12 @@ func (s *ExportDataSourcesResponseBody) SetSuccess(v bool) *ExportDataSourcesRes
 }
 
 func (s *ExportDataSourcesResponseBody) Validate() error {
-  return dara.Validate(s)
+  if s.Data != nil {
+    if err := s.Data.Validate(); err != nil {
+      return err
+    }
+  }
+  return nil
 }
 
 type ExportDataSourcesResponseBodyData struct {
@@ -166,7 +171,16 @@ func (s *ExportDataSourcesResponseBodyData) SetTotalCount(v int32) *ExportDataSo
 }
 
 func (s *ExportDataSourcesResponseBodyData) Validate() error {
-  return dara.Validate(s)
+  if s.DataSources != nil {
+    for _, item := range s.DataSources {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
 }
 
 type ExportDataSourcesResponseBodyDataDataSources struct {

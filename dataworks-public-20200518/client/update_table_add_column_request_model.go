@@ -57,7 +57,16 @@ func (s *UpdateTableAddColumnRequest) SetTableGuid(v string) *UpdateTableAddColu
 }
 
 func (s *UpdateTableAddColumnRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Column != nil {
+		for _, item := range s.Column {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTableAddColumnRequestColumn struct {

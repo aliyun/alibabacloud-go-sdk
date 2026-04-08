@@ -53,7 +53,12 @@ func (s *ListShiftPersonnelsResponseBody) SetRequestId(v string) *ListShiftPerso
 }
 
 func (s *ListShiftPersonnelsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Paging != nil {
+		if err := s.Paging.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListShiftPersonnelsResponseBodyPaging struct {
@@ -124,7 +129,16 @@ func (s *ListShiftPersonnelsResponseBodyPaging) SetTotalCount(v int32) *ListShif
 }
 
 func (s *ListShiftPersonnelsResponseBodyPaging) Validate() error {
-	return dara.Validate(s)
+	if s.ShiftPersons != nil {
+		for _, item := range s.ShiftPersons {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListShiftPersonnelsResponseBodyPagingShiftPersons struct {

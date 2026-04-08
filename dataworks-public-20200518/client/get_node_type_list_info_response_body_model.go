@@ -53,7 +53,12 @@ func (s *GetNodeTypeListInfoResponseBody) SetRequestId(v string) *GetNodeTypeLis
 }
 
 func (s *GetNodeTypeListInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.NodeTypeInfoList != nil {
+		if err := s.NodeTypeInfoList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeTypeListInfoResponseBodyNodeTypeInfoList struct {
@@ -124,7 +129,16 @@ func (s *GetNodeTypeListInfoResponseBodyNodeTypeInfoList) SetTotalCount(v int32)
 }
 
 func (s *GetNodeTypeListInfoResponseBodyNodeTypeInfoList) Validate() error {
-	return dara.Validate(s)
+	if s.NodeTypeInfo != nil {
+		for _, item := range s.NodeTypeInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNodeTypeListInfoResponseBodyNodeTypeInfoListNodeTypeInfo struct {

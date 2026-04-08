@@ -53,7 +53,12 @@ func (s *ListMetaDBResponseBody) SetRequestId(v string) *ListMetaDBResponseBody 
 }
 
 func (s *ListMetaDBResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DatabaseInfo != nil {
+		if err := s.DatabaseInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMetaDBResponseBodyDatabaseInfo struct {
@@ -94,7 +99,16 @@ func (s *ListMetaDBResponseBodyDatabaseInfo) SetTotalCount(v int64) *ListMetaDBR
 }
 
 func (s *ListMetaDBResponseBodyDatabaseInfo) Validate() error {
-	return dara.Validate(s)
+	if s.DbList != nil {
+		for _, item := range s.DbList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMetaDBResponseBodyDatabaseInfoDbList struct {

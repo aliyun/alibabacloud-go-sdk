@@ -59,5 +59,10 @@ func (s *ListDIProjectConfigResponse) SetBody(v *ListDIProjectConfigResponseBody
 }
 
 func (s *ListDIProjectConfigResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -121,7 +121,12 @@ func (s *GetMetaTableOutputResponseBody) SetSuccess(v bool) *GetMetaTableOutputR
 }
 
 func (s *GetMetaTableOutputResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaTableOutputResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *GetMetaTableOutputResponseBodyData) SetTotalCount(v int64) *GetMetaTabl
 }
 
 func (s *GetMetaTableOutputResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataEntityList != nil {
+		for _, item := range s.DataEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaTableOutputResponseBodyDataDataEntityList struct {

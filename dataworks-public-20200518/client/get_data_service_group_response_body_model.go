@@ -53,7 +53,12 @@ func (s *GetDataServiceGroupResponseBody) SetRequestId(v string) *GetDataService
 }
 
 func (s *GetDataServiceGroupResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Group != nil {
+		if err := s.Group.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataServiceGroupResponseBodyGroup struct {

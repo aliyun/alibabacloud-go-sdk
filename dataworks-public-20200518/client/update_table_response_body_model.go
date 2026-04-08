@@ -57,7 +57,12 @@ func (s *UpdateTableResponseBody) SetTaskInfo(v *UpdateTableResponseBodyTaskInfo
 }
 
 func (s *UpdateTableResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskInfo != nil {
+		if err := s.TaskInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateTableResponseBodyTaskInfo struct {

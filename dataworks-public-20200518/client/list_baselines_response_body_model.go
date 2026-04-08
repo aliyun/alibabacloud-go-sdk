@@ -125,7 +125,12 @@ func (s *ListBaselinesResponseBody) SetSuccess(v bool) *ListBaselinesResponseBod
 }
 
 func (s *ListBaselinesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBaselinesResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListBaselinesResponseBodyData) SetTotalCount(v string) *ListBaselinesRe
 }
 
 func (s *ListBaselinesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Baselines != nil {
+		for _, item := range s.Baselines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBaselinesResponseBodyDataBaselines struct {
@@ -357,7 +371,16 @@ func (s *ListBaselinesResponseBodyDataBaselines) SetProjectId(v int64) *ListBase
 }
 
 func (s *ListBaselinesResponseBodyDataBaselines) Validate() error {
-	return dara.Validate(s)
+	if s.OverTimeSettings != nil {
+		for _, item := range s.OverTimeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBaselinesResponseBodyDataBaselinesOverTimeSettings struct {

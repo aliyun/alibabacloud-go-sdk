@@ -59,5 +59,10 @@ func (s *StopDISyncInstanceResponse) SetBody(v *StopDISyncInstanceResponseBody) 
 }
 
 func (s *StopDISyncInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

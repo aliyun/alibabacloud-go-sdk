@@ -59,5 +59,10 @@ func (s *GetMetaCategoryResponse) SetBody(v *GetMetaCategoryResponseBody) *GetMe
 }
 
 func (s *GetMetaCategoryResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

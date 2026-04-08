@@ -125,5 +125,10 @@ func (s *GetMetaCollectionDetailResponseBody) SetSuccess(v bool) *GetMetaCollect
 }
 
 func (s *GetMetaCollectionDetailResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Collection != nil {
+		if err := s.Collection.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

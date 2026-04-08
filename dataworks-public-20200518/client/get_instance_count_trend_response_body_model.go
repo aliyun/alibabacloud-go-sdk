@@ -53,7 +53,16 @@ func (s *GetInstanceCountTrendResponseBody) SetRequestId(v string) *GetInstanceC
 }
 
 func (s *GetInstanceCountTrendResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceCounts != nil {
+		for _, item := range s.InstanceCounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceCountTrendResponseBodyInstanceCounts struct {

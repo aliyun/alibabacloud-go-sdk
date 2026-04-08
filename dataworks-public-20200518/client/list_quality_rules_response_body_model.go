@@ -24,7 +24,7 @@ type iListQualityRulesResponseBody interface {
 }
 
 type ListQualityRulesResponseBody struct {
-	// The list of monitoring rules.
+	// The list of retrieved rules.
 	Data *ListQualityRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -125,7 +125,12 @@ func (s *ListQualityRulesResponseBody) SetSuccess(v bool) *ListQualityRulesRespo
 }
 
 func (s *ListQualityRulesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListQualityRulesResponseBodyData struct {
@@ -141,7 +146,7 @@ type ListQualityRulesResponseBodyData struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the monitoring rules.
+	// The details of the validation rule.
 	Rules []*ListQualityRulesResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -196,7 +201,16 @@ func (s *ListQualityRulesResponseBodyData) SetTotalCount(v int64) *ListQualityRu
 }
 
 func (s *ListQualityRulesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rules != nil {
+		for _, item := range s.Rules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListQualityRulesResponseBodyDataRules struct {
@@ -324,13 +338,13 @@ type ListQualityRulesResponseBodyDataRules struct {
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the monitoring rule. Valid values:
+	// Rule type:
 	//
-	// 	- 0: The monitoring rule is created by the system.
+	// 	- 0: System template rule
 	//
-	// 	- 1: The monitoring rule is created by a user.
+	// 	- 1: Custom SQL rule
 	//
-	// 	- 2: The monitoring rule is a workspace-level rule.
+	// 	- 1: Custom template rule
 	//
 	// example:
 	//

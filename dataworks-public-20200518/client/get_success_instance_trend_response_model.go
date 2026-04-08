@@ -59,5 +59,10 @@ func (s *GetSuccessInstanceTrendResponse) SetBody(v *GetSuccessInstanceTrendResp
 }
 
 func (s *GetSuccessInstanceTrendResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

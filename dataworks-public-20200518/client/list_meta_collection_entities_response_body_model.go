@@ -125,7 +125,12 @@ func (s *ListMetaCollectionEntitiesResponseBody) SetSuccess(v bool) *ListMetaCol
 }
 
 func (s *ListMetaCollectionEntitiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMetaCollectionEntitiesResponseBodyData struct {
@@ -166,5 +171,14 @@ func (s *ListMetaCollectionEntitiesResponseBodyData) SetNextToken(v string) *Lis
 }
 
 func (s *ListMetaCollectionEntitiesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.EntityList != nil {
+		for _, item := range s.EntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

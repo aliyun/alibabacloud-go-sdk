@@ -38,7 +38,16 @@ func (s *DsgUserGroupAddOrUpdateRequest) SetUserGroups(v []*DsgUserGroupAddOrUpd
 }
 
 func (s *DsgUserGroupAddOrUpdateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.UserGroups != nil {
+		for _, item := range s.UserGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgUserGroupAddOrUpdateRequestUserGroups struct {
@@ -47,8 +56,6 @@ type DsgUserGroupAddOrUpdateRequestUserGroups struct {
 	// 	- If a user group is created by using an Alibaba Cloud account and a RAM role, you can call the [DsgUserGroupQueryUserList](https://help.aliyun.com/document_detail/2786445.html) operation to query the users in the group.
 	//
 	// 	- If a user group is created by using a MaxCompute role, you can call the [DsgUserGroupQueryUserList](https://help.aliyun.com/document_detail/2785695.html) operation to query the users in the group.
-	//
-	// This parameter is required.
 	Accounts []*string `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 	// The user group ID.
 	//
@@ -95,7 +102,8 @@ type DsgUserGroupAddOrUpdateRequestUserGroups struct {
 	// example:
 	//
 	// 1
-	UserGroupType *int32 `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	UserGroupType *int32  `json:"UserGroupType,omitempty" xml:"UserGroupType,omitempty"`
+	Projects      *string `json:"projects,omitempty" xml:"projects,omitempty"`
 }
 
 func (s DsgUserGroupAddOrUpdateRequestUserGroups) String() string {
@@ -130,6 +138,10 @@ func (s *DsgUserGroupAddOrUpdateRequestUserGroups) GetUserGroupType() *int32 {
 	return s.UserGroupType
 }
 
+func (s *DsgUserGroupAddOrUpdateRequestUserGroups) GetProjects() *string {
+	return s.Projects
+}
+
 func (s *DsgUserGroupAddOrUpdateRequestUserGroups) SetAccounts(v []*string) *DsgUserGroupAddOrUpdateRequestUserGroups {
 	s.Accounts = v
 	return s
@@ -157,6 +169,11 @@ func (s *DsgUserGroupAddOrUpdateRequestUserGroups) SetProjectName(v string) *Dsg
 
 func (s *DsgUserGroupAddOrUpdateRequestUserGroups) SetUserGroupType(v int32) *DsgUserGroupAddOrUpdateRequestUserGroups {
 	s.UserGroupType = &v
+	return s
+}
+
+func (s *DsgUserGroupAddOrUpdateRequestUserGroups) SetProjects(v string) *DsgUserGroupAddOrUpdateRequestUserGroups {
+	s.Projects = &v
 	return s
 }
 

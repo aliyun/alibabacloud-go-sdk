@@ -38,7 +38,16 @@ func (s *DsgDesensPlanAddOrUpdateRequest) SetDesensRules(v []*DsgDesensPlanAddOr
 }
 
 func (s *DsgDesensPlanAddOrUpdateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DesensRules != nil {
+		for _, item := range s.DesensRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
@@ -54,8 +63,6 @@ type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	CheckWatermark *bool `json:"CheckWatermark,omitempty" xml:"CheckWatermark,omitempty"`
 	// The sensitive field type.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// phone
@@ -69,7 +76,7 @@ type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	// example:
 	//
 	// 123
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The owner of the data masking rule.
 	//
 	// This parameter is required.
@@ -89,7 +96,7 @@ type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	// The level-2 data masking scenario.
 	//
 	// This parameter is required.
-	SceneIds []*int32 `json:"SceneIds,omitempty" xml:"SceneIds,omitempty" type:"Repeated"`
+	SceneIds []*int64 `json:"SceneIds,omitempty" xml:"SceneIds,omitempty" type:"Repeated"`
 	// The status of the data masking rule. Valid values:
 	//
 	// 	- 0: expired
@@ -99,7 +106,9 @@ type DsgDesensPlanAddOrUpdateRequestDesensRules struct {
 	// example:
 	//
 	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *int32                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Columns        []*DsgDesensPlanAddOrUpdateRequestDesensRulesColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	EmptyNotDesesn *bool                                                `json:"emptyNotDesesn,omitempty" xml:"emptyNotDesesn,omitempty"`
 }
 
 func (s DsgDesensPlanAddOrUpdateRequestDesensRules) String() string {
@@ -122,7 +131,7 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetDesensPlan() *DsgDesensP
 	return s.DesensPlan
 }
 
-func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetId() *int32 {
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetId() *int64 {
 	return s.Id
 }
 
@@ -134,12 +143,20 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetRuleName() *string {
 	return s.RuleName
 }
 
-func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetSceneIds() []*int32 {
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetSceneIds() []*int64 {
 	return s.SceneIds
 }
 
 func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetColumns() []*DsgDesensPlanAddOrUpdateRequestDesensRulesColumns {
+	return s.Columns
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) GetEmptyNotDesesn() *bool {
+	return s.EmptyNotDesesn
 }
 
 func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetCheckWatermark(v bool) *DsgDesensPlanAddOrUpdateRequestDesensRules {
@@ -157,7 +174,7 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetDesensPlan(v *DsgDesensP
 	return s
 }
 
-func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetId(v int32) *DsgDesensPlanAddOrUpdateRequestDesensRules {
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetId(v int64) *DsgDesensPlanAddOrUpdateRequestDesensRules {
 	s.Id = &v
 	return s
 }
@@ -172,7 +189,7 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetRuleName(v string) *DsgD
 	return s
 }
 
-func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetSceneIds(v []*int32) *DsgDesensPlanAddOrUpdateRequestDesensRules {
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetSceneIds(v []*int64) *DsgDesensPlanAddOrUpdateRequestDesensRules {
 	s.SceneIds = v
 	return s
 }
@@ -182,8 +199,32 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetStatus(v int32) *DsgDese
 	return s
 }
 
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetColumns(v []*DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) *DsgDesensPlanAddOrUpdateRequestDesensRules {
+	s.Columns = v
+	return s
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) SetEmptyNotDesesn(v bool) *DsgDesensPlanAddOrUpdateRequestDesensRules {
+	s.EmptyNotDesesn = &v
+	return s
+}
+
 func (s *DsgDesensPlanAddOrUpdateRequestDesensRules) Validate() error {
-	return dara.Validate(s)
+	if s.DesensPlan != nil {
+		if err := s.DesensPlan.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan struct {
@@ -240,5 +281,64 @@ func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan) SetExtParam(v map
 }
 
 func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan) Validate() error {
+	return dara.Validate(s)
+}
+
+type DsgDesensPlanAddOrUpdateRequestDesensRulesColumns struct {
+	// This parameter is required.
+	Column *string `json:"column,omitempty" xml:"column,omitempty"`
+	// This parameter is required.
+	DbType *string `json:"dbType,omitempty" xml:"dbType,omitempty"`
+	// This parameter is required.
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// This parameter is required.
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+}
+
+func (s DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) GetColumn() *string {
+	return s.Column
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) GetDbType() *string {
+	return s.DbType
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) GetProject() *string {
+	return s.Project
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) GetTable() *string {
+	return s.Table
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) SetColumn(v string) *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns {
+	s.Column = &v
+	return s
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) SetDbType(v string) *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns {
+	s.DbType = &v
+	return s
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) SetProject(v string) *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns {
+	s.Project = &v
+	return s
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) SetTable(v string) *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns {
+	s.Table = &v
+	return s
+}
+
+func (s *DsgDesensPlanAddOrUpdateRequestDesensRulesColumns) Validate() error {
 	return dara.Validate(s)
 }

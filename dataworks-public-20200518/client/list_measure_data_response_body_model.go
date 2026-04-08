@@ -42,7 +42,7 @@ type ListMeasureDataResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The measurement results.
+	// The metering results.
 	MeasureDatas []*ListMeasureDataResponseBodyMeasureDatas `json:"MeasureDatas,omitempty" xml:"MeasureDatas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -125,7 +125,16 @@ func (s *ListMeasureDataResponseBody) SetSuccess(v bool) *ListMeasureDataRespons
 }
 
 func (s *ListMeasureDataResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.MeasureDatas != nil {
+		for _, item := range s.MeasureDatas {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMeasureDataResponseBodyMeasureDatas struct {
@@ -141,13 +150,13 @@ type ListMeasureDataResponseBodyMeasureDatas struct {
 	//
 	// DideAlarmPhone
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
-	// The end timestamp of the measurement period, in milliseconds.
+	// The end timestamp of the metering cycle, in milliseconds.
 	//
 	// example:
 	//
 	// 1717430400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start timestamp of the measurement period, in milliseconds.
+	// The start timestamp of the metering cycle, in milliseconds.
 	//
 	// example:
 	//

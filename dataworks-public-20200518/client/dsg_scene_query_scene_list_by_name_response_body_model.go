@@ -125,7 +125,16 @@ func (s *DsgSceneQuerySceneListByNameResponseBody) SetSuccess(v bool) *DsgSceneQ
 }
 
 func (s *DsgSceneQuerySceneListByNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgSceneQuerySceneListByNameResponseBodyData struct {
@@ -184,7 +193,8 @@ type DsgSceneQuerySceneListByNameResponseBodyData struct {
 	// example:
 	//
 	// user1,user2
-	UserGroups *string `json:"UserGroups,omitempty" xml:"UserGroups,omitempty"`
+	UserGroups   *string `json:"UserGroups,omitempty" xml:"UserGroups,omitempty"`
+	ScenceDbType *string `json:"scenceDbType,omitempty" xml:"scenceDbType,omitempty"`
 }
 
 func (s DsgSceneQuerySceneListByNameResponseBodyData) String() string {
@@ -227,6 +237,10 @@ func (s *DsgSceneQuerySceneListByNameResponseBodyData) GetUserGroups() *string {
 	return s.UserGroups
 }
 
+func (s *DsgSceneQuerySceneListByNameResponseBodyData) GetScenceDbType() *string {
+	return s.ScenceDbType
+}
+
 func (s *DsgSceneQuerySceneListByNameResponseBodyData) SetChildren(v []interface{}) *DsgSceneQuerySceneListByNameResponseBodyData {
 	s.Children = v
 	return s
@@ -267,8 +281,22 @@ func (s *DsgSceneQuerySceneListByNameResponseBodyData) SetUserGroups(v string) *
 	return s
 }
 
+func (s *DsgSceneQuerySceneListByNameResponseBodyData) SetScenceDbType(v string) *DsgSceneQuerySceneListByNameResponseBodyData {
+	s.ScenceDbType = &v
+	return s
+}
+
 func (s *DsgSceneQuerySceneListByNameResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Projects != nil {
+		for _, item := range s.Projects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgSceneQuerySceneListByNameResponseBodyDataProjects struct {

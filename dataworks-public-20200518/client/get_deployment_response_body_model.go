@@ -121,7 +121,12 @@ func (s *GetDeploymentResponseBody) SetSuccess(v bool) *GetDeploymentResponseBod
 }
 
 func (s *GetDeploymentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeploymentResponseBodyData struct {
@@ -158,7 +163,21 @@ func (s *GetDeploymentResponseBodyData) SetDeployment(v *GetDeploymentResponseBo
 }
 
 func (s *GetDeploymentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DeployedItems != nil {
+		for _, item := range s.DeployedItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Deployment != nil {
+		if err := s.Deployment.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDeploymentResponseBodyDataDeployedItems struct {

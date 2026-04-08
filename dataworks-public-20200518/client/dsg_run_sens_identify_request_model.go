@@ -55,7 +55,16 @@ func (s *DsgRunSensIdentifyRequest) SetTenantId(v string) *DsgRunSensIdentifyReq
 }
 
 func (s *DsgRunSensIdentifyRequest) Validate() error {
-	return dara.Validate(s)
+	if s.EsMetaParams != nil {
+		for _, item := range s.EsMetaParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgRunSensIdentifyRequestEsMetaParams struct {

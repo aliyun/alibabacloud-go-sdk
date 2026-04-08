@@ -59,5 +59,10 @@ func (s *DeleteRecognizeRuleResponse) SetBody(v *DeleteRecognizeRuleResponseBody
 }
 
 func (s *DeleteRecognizeRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

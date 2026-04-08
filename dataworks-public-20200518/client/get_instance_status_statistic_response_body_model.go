@@ -53,7 +53,12 @@ func (s *GetInstanceStatusStatisticResponseBody) SetStatusCount(v *GetInstanceSt
 }
 
 func (s *GetInstanceStatusStatisticResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.StatusCount != nil {
+		if err := s.StatusCount.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceStatusStatisticResponseBodyStatusCount struct {

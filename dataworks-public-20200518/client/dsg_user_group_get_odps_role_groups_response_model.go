@@ -59,5 +59,10 @@ func (s *DsgUserGroupGetOdpsRoleGroupsResponse) SetBody(v *DsgUserGroupGetOdpsRo
 }
 
 func (s *DsgUserGroupGetOdpsRoleGroupsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

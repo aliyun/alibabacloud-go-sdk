@@ -9,8 +9,8 @@ type iDsgQueryDefaultTemplatesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetSceneId(v int32) *DsgQueryDefaultTemplatesRequest
-	GetSceneId() *int32
+	SetSceneId(v int64) *DsgQueryDefaultTemplatesRequest
+	GetSceneId() *int64
 }
 
 type DsgQueryDefaultTemplatesRequest struct {
@@ -21,7 +21,7 @@ type DsgQueryDefaultTemplatesRequest struct {
 	// example:
 	//
 	// 123
-	SceneId *int32 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s DsgQueryDefaultTemplatesRequest) String() string {
@@ -32,11 +32,11 @@ func (s DsgQueryDefaultTemplatesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DsgQueryDefaultTemplatesRequest) GetSceneId() *int32 {
+func (s *DsgQueryDefaultTemplatesRequest) GetSceneId() *int64 {
 	return s.SceneId
 }
 
-func (s *DsgQueryDefaultTemplatesRequest) SetSceneId(v int32) *DsgQueryDefaultTemplatesRequest {
+func (s *DsgQueryDefaultTemplatesRequest) SetSceneId(v int64) *DsgQueryDefaultTemplatesRequest {
 	s.SceneId = &v
 	return s
 }

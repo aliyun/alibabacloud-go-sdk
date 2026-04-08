@@ -38,7 +38,16 @@ func (s *DsgWhiteListAddOrUpdateRequest) SetWhiteLists(v []*DsgWhiteListAddOrUpd
 }
 
 func (s *DsgWhiteListAddOrUpdateRequest) Validate() error {
-	return dara.Validate(s)
+	if s.WhiteLists != nil {
+		for _, item := range s.WhiteLists {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgWhiteListAddOrUpdateRequestWhiteLists struct {

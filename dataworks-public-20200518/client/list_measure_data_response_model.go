@@ -59,5 +59,10 @@ func (s *ListMeasureDataResponse) SetBody(v *ListMeasureDataResponseBody) *ListM
 }
 
 func (s *ListMeasureDataResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

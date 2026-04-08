@@ -167,7 +167,16 @@ func (s *CreateBaselineRequest) SetProjectId(v int64) *CreateBaselineRequest {
 }
 
 func (s *CreateBaselineRequest) Validate() error {
-	return dara.Validate(s)
+	if s.OvertimeSettings != nil {
+		for _, item := range s.OvertimeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type CreateBaselineRequestOvertimeSettings struct {

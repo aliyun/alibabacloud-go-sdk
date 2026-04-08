@@ -59,5 +59,10 @@ func (s *ListEntityTagsResponse) SetBody(v *ListEntityTagsResponseBody) *ListEnt
 }
 
 func (s *ListEntityTagsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

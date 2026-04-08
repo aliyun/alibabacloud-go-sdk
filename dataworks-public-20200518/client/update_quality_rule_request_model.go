@@ -177,13 +177,13 @@ type UpdateQualityRuleRequest struct {
 	//
 	// 123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the monitoring rule. Valid values:
+	// Rule type:
 	//
-	// 	- 0: The monitoring rule is created by the system.
+	// 	- 0: System template rule
 	//
-	// 	- 1: The monitoring rule is created by a user.
+	// 	- 1: Custom SQL rule
 	//
-	// 	- 2: The monitoring rule is a workspace-level rule.
+	// 	- 4: Custom template rule
 	//
 	// example:
 	//

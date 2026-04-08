@@ -121,7 +121,12 @@ func (s *ListDataServiceApiAuthoritiesResponseBody) SetSuccess(v bool) *ListData
 }
 
 func (s *ListDataServiceApiAuthoritiesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiAuthoritiesResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListDataServiceApiAuthoritiesResponseBodyData) SetTotalCount(v int32) *
 }
 
 func (s *ListDataServiceApiAuthoritiesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ApiAuthorizationList != nil {
+		for _, item := range s.ApiAuthorizationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList struct {
@@ -368,7 +382,16 @@ func (s *ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList) SetT
 }
 
 func (s *ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationList) Validate() error {
-	return dara.Validate(s)
+	if s.AuthorizationRecords != nil {
+		for _, item := range s.AuthorizationRecords {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApiAuthoritiesResponseBodyDataApiAuthorizationListAuthorizationRecords struct {

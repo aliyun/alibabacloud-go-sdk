@@ -19,6 +19,8 @@ type iDsgUserGroupQueryListRequest interface {
 	GetPageSize() *int32
 	SetProjectName(v string) *DsgUserGroupQueryListRequest
 	GetProjectName() *string
+	SetUserGroupType(v int32) *DsgUserGroupQueryListRequest
+	GetUserGroupType() *int32
 }
 
 type DsgUserGroupQueryListRequest struct {
@@ -55,7 +57,8 @@ type DsgUserGroupQueryListRequest struct {
 	// example:
 	//
 	// dev_project
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	UserGroupType *int32  `json:"userGroupType,omitempty" xml:"userGroupType,omitempty"`
 }
 
 func (s DsgUserGroupQueryListRequest) String() string {
@@ -86,6 +89,10 @@ func (s *DsgUserGroupQueryListRequest) GetProjectName() *string {
 	return s.ProjectName
 }
 
+func (s *DsgUserGroupQueryListRequest) GetUserGroupType() *int32 {
+	return s.UserGroupType
+}
+
 func (s *DsgUserGroupQueryListRequest) SetName(v string) *DsgUserGroupQueryListRequest {
 	s.Name = &v
 	return s
@@ -108,6 +115,11 @@ func (s *DsgUserGroupQueryListRequest) SetPageSize(v int32) *DsgUserGroupQueryLi
 
 func (s *DsgUserGroupQueryListRequest) SetProjectName(v string) *DsgUserGroupQueryListRequest {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *DsgUserGroupQueryListRequest) SetUserGroupType(v int32) *DsgUserGroupQueryListRequest {
+	s.UserGroupType = &v
 	return s
 }
 

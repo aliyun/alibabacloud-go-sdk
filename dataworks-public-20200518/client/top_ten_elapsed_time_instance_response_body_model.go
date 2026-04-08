@@ -53,7 +53,12 @@ func (s *TopTenElapsedTimeInstanceResponseBody) SetRequestId(v string) *TopTenEl
 }
 
 func (s *TopTenElapsedTimeInstanceResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConsumeTimeRank != nil {
+		if err := s.InstanceConsumeTimeRank.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TopTenElapsedTimeInstanceResponseBodyInstanceConsumeTimeRank struct {
@@ -94,7 +99,16 @@ func (s *TopTenElapsedTimeInstanceResponseBodyInstanceConsumeTimeRank) SetUpdate
 }
 
 func (s *TopTenElapsedTimeInstanceResponseBodyInstanceConsumeTimeRank) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeTimeRank != nil {
+		for _, item := range s.ConsumeTimeRank {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TopTenElapsedTimeInstanceResponseBodyInstanceConsumeTimeRankConsumeTimeRank struct {

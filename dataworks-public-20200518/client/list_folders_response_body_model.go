@@ -24,33 +24,33 @@ type iListFoldersResponseBody interface {
 }
 
 type ListFoldersResponseBody struct {
-	// The information about the folders.
+	// The path of the folder.
 	Data *ListFoldersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The page number.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
+	// The information about the folders.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID. You can troubleshoot issues based on the ID.
+	// The number of entries per page.
 	//
 	// example:
 	//
-	// 0000-ABCD-EFG****
+	// 0000-ABCD-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The list of folders.
 	//
 	// example:
 	//
@@ -121,25 +121,29 @@ func (s *ListFoldersResponseBody) SetSuccess(v bool) *ListFoldersResponseBody {
 }
 
 func (s *ListFoldersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFoldersResponseBodyData struct {
-	// The list of folders.
 	Folders []*ListFoldersResponseBodyDataFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Repeated"`
-	// The page number.
+	// The folder ID.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// http://100.67.165.184/business/api/folders/list
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// ListFolders
 	//
 	// example:
 	//
@@ -192,18 +196,23 @@ func (s *ListFoldersResponseBodyData) SetTotalCount(v int32) *ListFoldersRespons
 }
 
 func (s *ListFoldersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Folders != nil {
+		for _, item := range s.Folders {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFoldersResponseBodyDataFolders struct {
-	// The folder ID.
-	//
 	// example:
 	//
 	// 2735c2****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The path of the folder.
-	//
 	// example:
 	//
 	// Business_process/my_first_business_process/MaxCompute/ods_layer

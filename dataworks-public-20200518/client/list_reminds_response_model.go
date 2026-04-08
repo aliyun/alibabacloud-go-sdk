@@ -59,5 +59,10 @@ func (s *ListRemindsResponse) SetBody(v *ListRemindsResponseBody) *ListRemindsRe
 }
 
 func (s *ListRemindsResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

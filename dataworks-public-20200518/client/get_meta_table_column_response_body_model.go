@@ -121,7 +121,12 @@ func (s *GetMetaTableColumnResponseBody) SetSuccess(v bool) *GetMetaTableColumnR
 }
 
 func (s *GetMetaTableColumnResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaTableColumnResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *GetMetaTableColumnResponseBodyData) SetTotalCount(v int64) *GetMetaTabl
 }
 
 func (s *GetMetaTableColumnResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnList != nil {
+		for _, item := range s.ColumnList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetMetaTableColumnResponseBodyDataColumnList struct {

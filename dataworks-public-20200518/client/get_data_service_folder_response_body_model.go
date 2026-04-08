@@ -53,7 +53,12 @@ func (s *GetDataServiceFolderResponseBody) SetRequestId(v string) *GetDataServic
 }
 
 func (s *GetDataServiceFolderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Folder != nil {
+		if err := s.Folder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDataServiceFolderResponseBodyFolder struct {

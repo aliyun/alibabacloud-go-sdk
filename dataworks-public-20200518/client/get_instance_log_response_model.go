@@ -59,5 +59,10 @@ func (s *GetInstanceLogResponse) SetBody(v *GetInstanceLogResponseBody) *GetInst
 }
 
 func (s *GetInstanceLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

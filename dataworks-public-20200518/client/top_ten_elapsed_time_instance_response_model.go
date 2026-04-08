@@ -59,5 +59,10 @@ func (s *TopTenElapsedTimeInstanceResponse) SetBody(v *TopTenElapsedTimeInstance
 }
 
 func (s *TopTenElapsedTimeInstanceResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

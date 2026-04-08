@@ -125,7 +125,12 @@ func (s *DsgWhiteListQueryListResponseBody) SetSuccess(v bool) *DsgWhiteListQuer
 }
 
 func (s *DsgWhiteListQueryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		if err := s.PageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DsgWhiteListQueryListResponseBodyPageData struct {
@@ -196,7 +201,16 @@ func (s *DsgWhiteListQueryListResponseBodyPageData) SetTotalCount(v int32) *DsgW
 }
 
 func (s *DsgWhiteListQueryListResponseBodyPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgWhiteListQueryListResponseBodyPageDataData struct {

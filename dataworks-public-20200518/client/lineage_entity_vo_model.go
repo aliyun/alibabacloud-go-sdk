@@ -30,6 +30,8 @@ type LineageEntityVO struct {
 	//
 	// attribute map
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Detail url of entity
+	//
 	// example:
 	//
 	// http://domain.test.url/entity
@@ -38,6 +40,8 @@ type LineageEntityVO struct {
 	//
 	// maxcompute-table
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// Name of entity
+	//
 	// example:
 	//
 	// tableName
@@ -46,10 +50,14 @@ type LineageEntityVO struct {
 	//
 	// owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// Parent name of entity
+	//
 	// example:
 	//
 	// dbName
 	ParentName *string `json:"ParentName,omitempty" xml:"ParentName,omitempty"`
+	// Unique identifier of entity
+	//
 	// example:
 	//
 	// maxcompute-table.projectName.tablename

@@ -121,7 +121,12 @@ func (s *GetMetaTableListByCategoryResponseBody) SetSuccess(v bool) *GetMetaTabl
 }
 
 func (s *GetMetaTableListByCategoryResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetMetaTableListByCategoryResponseBodyData struct {

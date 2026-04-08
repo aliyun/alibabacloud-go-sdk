@@ -59,5 +59,10 @@ func (s *ListLineageResponse) SetBody(v *ListLineageResponseBody) *ListLineageRe
 }
 
 func (s *ListLineageResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -121,7 +121,12 @@ func (s *ListAlertMessagesResponseBody) SetSuccess(v bool) *ListAlertMessagesRes
 }
 
 func (s *ListAlertMessagesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListAlertMessagesResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListAlertMessagesResponseBodyData) SetTotalCount(v string) *ListAlertMe
 }
 
 func (s *ListAlertMessagesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AlertMessages != nil {
+		for _, item := range s.AlertMessages {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertMessagesResponseBodyDataAlertMessages struct {
@@ -390,7 +404,39 @@ func (s *ListAlertMessagesResponseBodyDataAlertMessages) SetTopics(v []*ListAler
 }
 
 func (s *ListAlertMessagesResponseBodyDataAlertMessages) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SlaAlert != nil {
+		if err := s.SlaAlert.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListAlertMessagesResponseBodyDataAlertMessagesInstances struct {

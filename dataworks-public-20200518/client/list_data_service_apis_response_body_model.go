@@ -121,7 +121,12 @@ func (s *ListDataServiceApisResponseBody) SetSuccess(v bool) *ListDataServiceApi
 }
 
 func (s *ListDataServiceApisResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApisResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListDataServiceApisResponseBodyData) SetTotalCount(v int32) *ListDataSe
 }
 
 func (s *ListDataServiceApisResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Apis != nil {
+		for _, item := range s.Apis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApisResponseBodyDataApis struct {
@@ -521,7 +535,22 @@ func (s *ListDataServiceApisResponseBodyDataApis) SetWizardDetails(v *ListDataSe
 }
 
 func (s *ListDataServiceApisResponseBodyDataApis) Validate() error {
-	return dara.Validate(s)
+	if s.RegistrationDetails != nil {
+		if err := s.RegistrationDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScriptDetails != nil {
+		if err := s.ScriptDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WizardDetails != nil {
+		if err := s.WizardDetails.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApisResponseBodyDataApisRegistrationDetails struct {
@@ -648,7 +677,25 @@ func (s *ListDataServiceApisResponseBodyDataApisRegistrationDetails) SetSuccessf
 }
 
 func (s *ListDataServiceApisResponseBodyDataApisRegistrationDetails) Validate() error {
-	return dara.Validate(s)
+	if s.RegistrationErrorCodes != nil {
+		for _, item := range s.RegistrationErrorCodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RegistrationRequestParameters != nil {
+		for _, item := range s.RegistrationRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApisResponseBodyDataApisRegistrationDetailsRegistrationErrorCodes struct {
@@ -960,7 +1007,30 @@ func (s *ListDataServiceApisResponseBodyDataApisScriptDetails) SetScriptResponse
 }
 
 func (s *ListDataServiceApisResponseBodyDataApisScriptDetails) Validate() error {
-	return dara.Validate(s)
+	if s.ScriptConnection != nil {
+		if err := s.ScriptConnection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ScriptRequestParameters != nil {
+		for _, item := range s.ScriptRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ScriptResponseParameters != nil {
+		for _, item := range s.ScriptResponseParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptConnection struct {
@@ -1376,7 +1446,30 @@ func (s *ListDataServiceApisResponseBodyDataApisWizardDetails) SetWizardResponse
 }
 
 func (s *ListDataServiceApisResponseBodyDataApisWizardDetails) Validate() error {
-	return dara.Validate(s)
+	if s.WizardConnection != nil {
+		if err := s.WizardConnection.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.WizardRequestParameters != nil {
+		for _, item := range s.WizardRequestParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.WizardResponseParameters != nil {
+		for _, item := range s.WizardResponseParameters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceApisResponseBodyDataApisWizardDetailsWizardConnection struct {

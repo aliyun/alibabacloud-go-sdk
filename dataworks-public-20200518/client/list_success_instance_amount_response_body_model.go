@@ -53,7 +53,12 @@ func (s *ListSuccessInstanceAmountResponseBody) SetRequestId(v string) *ListSucc
 }
 
 func (s *ListSuccessInstanceAmountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceStatusTrend != nil {
+		if err := s.InstanceStatusTrend.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListSuccessInstanceAmountResponseBodyInstanceStatusTrend struct {
@@ -101,7 +106,34 @@ func (s *ListSuccessInstanceAmountResponseBodyInstanceStatusTrend) SetYesterdayT
 }
 
 func (s *ListSuccessInstanceAmountResponseBodyInstanceStatusTrend) Validate() error {
-	return dara.Validate(s)
+	if s.AvgTrend != nil {
+		for _, item := range s.AvgTrend {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TodayTrend != nil {
+		for _, item := range s.TodayTrend {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.YesterdayTrend != nil {
+		for _, item := range s.YesterdayTrend {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListSuccessInstanceAmountResponseBodyInstanceStatusTrendAvgTrend struct {

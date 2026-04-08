@@ -125,7 +125,12 @@ func (s *DsgDesensPlanQueryListResponseBody) SetSuccess(v bool) *DsgDesensPlanQu
 }
 
 func (s *DsgDesensPlanQueryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		if err := s.PageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DsgDesensPlanQueryListResponseBodyPageData struct {
@@ -196,7 +201,16 @@ func (s *DsgDesensPlanQueryListResponseBodyPageData) SetTotalCount(v int32) *Dsg
 }
 
 func (s *DsgDesensPlanQueryListResponseBodyPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgDesensPlanQueryListResponseBodyPageDataData struct {
@@ -299,7 +313,9 @@ type DsgDesensPlanQueryListResponseBodyPageDataData struct {
 	// example:
 	//
 	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *int32                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Columns        []*DsgDesensPlanQueryListResponseBodyPageDataDataColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	EmptyNotDesesn *bool                                                    `json:"emptyNotDesesn,omitempty" xml:"emptyNotDesesn,omitempty"`
 }
 
 func (s DsgDesensPlanQueryListResponseBodyPageDataData) String() string {
@@ -364,6 +380,14 @@ func (s *DsgDesensPlanQueryListResponseBodyPageDataData) GetSceneName() *string 
 
 func (s *DsgDesensPlanQueryListResponseBodyPageDataData) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataData) GetColumns() []*DsgDesensPlanQueryListResponseBodyPageDataDataColumns {
+	return s.Columns
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataData) GetEmptyNotDesesn() *bool {
+	return s.EmptyNotDesesn
 }
 
 func (s *DsgDesensPlanQueryListResponseBodyPageDataData) SetCheckWatermark(v bool) *DsgDesensPlanQueryListResponseBodyPageDataData {
@@ -436,8 +460,32 @@ func (s *DsgDesensPlanQueryListResponseBodyPageDataData) SetStatus(v int32) *Dsg
 	return s
 }
 
+func (s *DsgDesensPlanQueryListResponseBodyPageDataData) SetColumns(v []*DsgDesensPlanQueryListResponseBodyPageDataDataColumns) *DsgDesensPlanQueryListResponseBodyPageDataData {
+	s.Columns = v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataData) SetEmptyNotDesesn(v bool) *DsgDesensPlanQueryListResponseBodyPageDataData {
+	s.EmptyNotDesesn = &v
+	return s
+}
+
 func (s *DsgDesensPlanQueryListResponseBodyPageDataData) Validate() error {
-	return dara.Validate(s)
+	if s.DesensPlan != nil {
+		if err := s.DesensPlan.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgDesensPlanQueryListResponseBodyPageDataDataDesensPlan struct {
@@ -478,5 +526,60 @@ func (s *DsgDesensPlanQueryListResponseBodyPageDataDataDesensPlan) SetExtParam(v
 }
 
 func (s *DsgDesensPlanQueryListResponseBodyPageDataDataDesensPlan) Validate() error {
+	return dara.Validate(s)
+}
+
+type DsgDesensPlanQueryListResponseBodyPageDataDataColumns struct {
+	Column  *string `json:"column,omitempty" xml:"column,omitempty"`
+	DbType  *string `json:"dbType,omitempty" xml:"dbType,omitempty"`
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	Table   *string `json:"table,omitempty" xml:"table,omitempty"`
+}
+
+func (s DsgDesensPlanQueryListResponseBodyPageDataDataColumns) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DsgDesensPlanQueryListResponseBodyPageDataDataColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) GetColumn() *string {
+	return s.Column
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) GetDbType() *string {
+	return s.DbType
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) GetProject() *string {
+	return s.Project
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) GetTable() *string {
+	return s.Table
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) SetColumn(v string) *DsgDesensPlanQueryListResponseBodyPageDataDataColumns {
+	s.Column = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) SetDbType(v string) *DsgDesensPlanQueryListResponseBodyPageDataDataColumns {
+	s.DbType = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) SetProject(v string) *DsgDesensPlanQueryListResponseBodyPageDataDataColumns {
+	s.Project = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) SetTable(v string) *DsgDesensPlanQueryListResponseBodyPageDataDataColumns {
+	s.Table = &v
+	return s
+}
+
+func (s *DsgDesensPlanQueryListResponseBodyPageDataDataColumns) Validate() error {
 	return dara.Validate(s)
 }

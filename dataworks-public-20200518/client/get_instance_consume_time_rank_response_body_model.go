@@ -53,7 +53,12 @@ func (s *GetInstanceConsumeTimeRankResponseBody) SetRequestId(v string) *GetInst
 }
 
 func (s *GetInstanceConsumeTimeRankResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.InstanceConsumeTimeRank != nil {
+		if err := s.InstanceConsumeTimeRank.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank struct {
@@ -94,7 +99,16 @@ func (s *GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank) SetUpdat
 }
 
 func (s *GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRank) Validate() error {
-	return dara.Validate(s)
+	if s.ConsumeTimeRank != nil {
+		for _, item := range s.ConsumeTimeRank {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetInstanceConsumeTimeRankResponseBodyInstanceConsumeTimeRankConsumeTimeRank struct {

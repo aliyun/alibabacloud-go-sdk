@@ -24,7 +24,7 @@ type iGetQualityRuleResponseBody interface {
 }
 
 type GetQualityRuleResponseBody struct {
-	// The information about the monitoring rule.
+	// Information about the retrieved rule.
 	Data *GetQualityRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -121,7 +121,12 @@ func (s *GetQualityRuleResponseBody) SetSuccess(v bool) *GetQualityRuleResponseB
 }
 
 func (s *GetQualityRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetQualityRuleResponseBodyData struct {
@@ -241,7 +246,13 @@ type GetQualityRuleResponseBodyData struct {
 	//
 	// View table fluctuations
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the monitoring rule.
+	// Rule type:
+	//
+	// 	- 0: System template rule
+	//
+	// 	- 1: Custom SQL rule
+	//
+	// 	- 4: Custom template rule
 	//
 	// example:
 	//

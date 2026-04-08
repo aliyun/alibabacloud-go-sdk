@@ -125,7 +125,12 @@ func (s *ListLineageResponseBody) SetSuccess(v bool) *ListLineageResponseBody {
 }
 
 func (s *ListLineageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListLineageResponseBodyData struct {
@@ -166,7 +171,16 @@ func (s *ListLineageResponseBodyData) SetNextToken(v string) *ListLineageRespons
 }
 
 func (s *ListLineageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataEntityList != nil {
+		for _, item := range s.DataEntityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLineageResponseBodyDataDataEntityList struct {
@@ -218,7 +232,21 @@ func (s *ListLineageResponseBodyDataDataEntityList) SetRelationList(v []*ListLin
 }
 
 func (s *ListLineageResponseBodyDataDataEntityList) Validate() error {
-	return dara.Validate(s)
+	if s.Entity != nil {
+		if err := s.Entity.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RelationList != nil {
+		for _, item := range s.RelationList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListLineageResponseBodyDataDataEntityListRelationList struct {

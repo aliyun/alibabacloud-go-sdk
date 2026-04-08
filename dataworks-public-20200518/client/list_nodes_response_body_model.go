@@ -121,7 +121,12 @@ func (s *ListNodesResponseBody) SetSuccess(v bool) *ListNodesResponseBody {
 }
 
 func (s *ListNodesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListNodesResponseBodyData) SetTotalCount(v int32) *ListNodesResponseBod
 }
 
 func (s *ListNodesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListNodesResponseBodyDataNodes struct {
@@ -251,6 +265,10 @@ type ListNodesResponseBodyDataNodes struct {
 	// 1
 	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
 	// The file ID. You can call the ListFiles operation to query the ID.
+	//
+	// **
+	//
+	// **Warning*	- This field is deprecated.
 	//
 	// example:
 	//

@@ -125,7 +125,12 @@ func (s *GetBaselineResponseBody) SetSuccess(v bool) *GetBaselineResponseBody {
 }
 
 func (s *GetBaselineResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBaselineResponseBodyData struct {
@@ -316,7 +321,25 @@ func (s *GetBaselineResponseBodyData) SetProjectId(v int64) *GetBaselineResponse
 }
 
 func (s *GetBaselineResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AlertSettings != nil {
+		for _, item := range s.AlertSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OverTimeSettings != nil {
+		for _, item := range s.OverTimeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBaselineResponseBodyDataAlertSettings struct {
@@ -515,7 +538,16 @@ func (s *GetBaselineResponseBodyDataAlertSettings) SetWebhooks(v []*string) *Get
 }
 
 func (s *GetBaselineResponseBodyDataAlertSettings) Validate() error {
-	return dara.Validate(s)
+	if s.DingRobots != nil {
+		for _, item := range s.DingRobots {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBaselineResponseBodyDataAlertSettingsDingRobots struct {

@@ -74,7 +74,12 @@ func (s *TestNetworkConnectionResponseBody) SetTaskList(v *TestNetworkConnection
 }
 
 func (s *TestNetworkConnectionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.TaskList != nil {
+		if err := s.TaskList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type TestNetworkConnectionResponseBodyTaskList struct {

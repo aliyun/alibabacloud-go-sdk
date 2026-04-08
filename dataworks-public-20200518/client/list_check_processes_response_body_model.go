@@ -53,7 +53,12 @@ func (s *ListCheckProcessesResponseBody) SetRequestId(v string) *ListCheckProces
 }
 
 func (s *ListCheckProcessesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PagingInfo != nil {
+		if err := s.PagingInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCheckProcessesResponseBodyPagingInfo struct {
@@ -124,7 +129,16 @@ func (s *ListCheckProcessesResponseBodyPagingInfo) SetTotalCount(v int32) *ListC
 }
 
 func (s *ListCheckProcessesResponseBodyPagingInfo) Validate() error {
-	return dara.Validate(s)
+	if s.CheckProcesses != nil {
+		for _, item := range s.CheckProcesses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCheckProcessesResponseBodyPagingInfoCheckProcesses struct {

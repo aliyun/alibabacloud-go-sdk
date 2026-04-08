@@ -121,7 +121,12 @@ func (s *ListBusinessResponseBody) SetSuccess(v bool) *ListBusinessResponseBody 
 }
 
 func (s *ListBusinessResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListBusinessResponseBodyData struct {
@@ -192,7 +197,16 @@ func (s *ListBusinessResponseBodyData) SetTotalCount(v int32) *ListBusinessRespo
 }
 
 func (s *ListBusinessResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Business != nil {
+		for _, item := range s.Business {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListBusinessResponseBodyDataBusiness struct {

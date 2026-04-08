@@ -59,5 +59,10 @@ func (s *CreateTableResponse) SetBody(v *CreateTableResponseBody) *CreateTableRe
 }
 
 func (s *CreateTableResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

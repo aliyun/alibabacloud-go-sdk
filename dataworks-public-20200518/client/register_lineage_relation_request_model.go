@@ -38,5 +38,10 @@ func (s *RegisterLineageRelationRequest) SetLineageRelationRegisterVO(v *Lineage
 }
 
 func (s *RegisterLineageRelationRequest) Validate() error {
-	return dara.Validate(s)
+	if s.LineageRelationRegisterVO != nil {
+		if err := s.LineageRelationRegisterVO.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

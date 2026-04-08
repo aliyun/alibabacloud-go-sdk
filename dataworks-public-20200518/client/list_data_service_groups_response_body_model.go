@@ -53,7 +53,12 @@ func (s *ListDataServiceGroupsResponseBody) SetRequestId(v string) *ListDataServ
 }
 
 func (s *ListDataServiceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.GroupPagingResult != nil {
+		if err := s.GroupPagingResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataServiceGroupsResponseBodyGroupPagingResult struct {
@@ -124,7 +129,16 @@ func (s *ListDataServiceGroupsResponseBodyGroupPagingResult) SetTotalCount(v int
 }
 
 func (s *ListDataServiceGroupsResponseBodyGroupPagingResult) Validate() error {
-	return dara.Validate(s)
+	if s.Groups != nil {
+		for _, item := range s.Groups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataServiceGroupsResponseBodyGroupPagingResultGroups struct {

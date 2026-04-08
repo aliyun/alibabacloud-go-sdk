@@ -53,7 +53,12 @@ func (s *GetExtensionResponseBody) SetRequestId(v string) *GetExtensionResponseB
 }
 
 func (s *GetExtensionResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Extension != nil {
+		if err := s.Extension.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetExtensionResponseBodyExtension struct {
@@ -225,7 +230,25 @@ func (s *GetExtensionResponseBodyExtension) SetStatus(v int32) *GetExtensionResp
 }
 
 func (s *GetExtensionResponseBodyExtension) Validate() error {
-	return dara.Validate(s)
+	if s.BindEventList != nil {
+		for _, item := range s.BindEventList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.EventCategoryList != nil {
+		for _, item := range s.EventCategoryList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetExtensionResponseBodyExtensionBindEventList struct {

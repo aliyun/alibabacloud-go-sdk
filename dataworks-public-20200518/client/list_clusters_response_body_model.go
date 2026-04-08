@@ -125,7 +125,12 @@ func (s *ListClustersResponseBody) SetSuccess(v bool) *ListClustersResponseBody 
 }
 
 func (s *ListClustersResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListClustersResponseBodyData struct {
@@ -196,5 +201,14 @@ func (s *ListClustersResponseBodyData) SetTotalCount(v int32) *ListClustersRespo
 }
 
 func (s *ListClustersResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Clusters != nil {
+		for _, item := range s.Clusters {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

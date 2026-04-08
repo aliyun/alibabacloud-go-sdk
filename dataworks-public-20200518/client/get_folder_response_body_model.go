@@ -24,34 +24,31 @@ type iGetFolderResponseBody interface {
 }
 
 type GetFolderResponseBody struct {
-	// The details of the folder.
 	Data *GetFolderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// GetFolder
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message.
+	// The folder ID.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code.
+	// The path of the folder.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request ID.
+	// http://100.67.165.184/business/api/folders/detail
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
 	// example:
 	//
 	// true
@@ -121,18 +118,19 @@ func (s *GetFolderResponseBody) SetSuccess(v bool) *GetFolderResponseBody {
 }
 
 func (s *GetFolderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetFolderResponseBodyData struct {
-	// The folder ID.
-	//
 	// example:
 	//
 	// 2735****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The path of the folder.
-	//
 	// example:
 	//
 	// Business_process/my_first_business_process/MaxCompute/ods_layer

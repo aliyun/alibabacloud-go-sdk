@@ -59,5 +59,10 @@ func (s *GetMetaTableChangeLogResponse) SetBody(v *GetMetaTableChangeLogResponse
 }
 
 func (s *GetMetaTableChangeLogResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

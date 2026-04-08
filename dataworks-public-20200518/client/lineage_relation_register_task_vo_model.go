@@ -104,5 +104,23 @@ func (s *LineageRelationRegisterTaskVO) SetQualifiedName(v string) *LineageRelat
 }
 
 func (s *LineageRelationRegisterTaskVO) Validate() error {
-	return dara.Validate(s)
+	if s.InputEntities != nil {
+		for _, item := range s.InputEntities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.OutputEntities != nil {
+		for _, item := range s.OutputEntities {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

@@ -59,5 +59,10 @@ func (s *DeleteRemindResponse) SetBody(v *DeleteRemindResponseBody) *DeleteRemin
 }
 
 func (s *DeleteRemindResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

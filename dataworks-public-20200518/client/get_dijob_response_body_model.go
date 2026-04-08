@@ -53,7 +53,12 @@ func (s *GetDIJobResponseBody) SetRequestId(v string) *GetDIJobResponseBody {
 }
 
 func (s *GetDIJobResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDIJobResponseBodyData struct {
@@ -392,7 +397,53 @@ func (s *GetDIJobResponseBodyData) SetUpdatedUid(v string) *GetDIJobResponseBody
 }
 
 func (s *GetDIJobResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DestinationDataSourceSettings != nil {
+		for _, item := range s.DestinationDataSourceSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.JobSettings != nil {
+		if err := s.JobSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResourceSettings != nil {
+		if err := s.ResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SourceDataSourceSettings != nil {
+		for _, item := range s.SourceDataSourceSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TableMappings != nil {
+		for _, item := range s.TableMappings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransformationRules != nil {
+		for _, item := range s.TransformationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDIJobResponseBodyDataDestinationDataSourceSettings struct {
@@ -507,7 +558,39 @@ func (s *GetDIJobResponseBodyDataJobSettings) SetRuntimeSettings(v []*GetDIJobRe
 }
 
 func (s *GetDIJobResponseBodyDataJobSettings) Validate() error {
-	return dara.Validate(s)
+	if s.ColumnDataTypeSettings != nil {
+		for _, item := range s.ColumnDataTypeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.CycleScheduleSettings != nil {
+		if err := s.CycleScheduleSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DdlHandlingSettings != nil {
+		for _, item := range s.DdlHandlingSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RuntimeSettings != nil {
+		for _, item := range s.RuntimeSettings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDIJobResponseBodyDataJobSettingsColumnDataTypeSettings struct {
@@ -779,7 +862,17 @@ func (s *GetDIJobResponseBodyDataResourceSettings) SetRequestedCu(v float32) *Ge
 }
 
 func (s *GetDIJobResponseBodyDataResourceSettings) Validate() error {
-	return dara.Validate(s)
+	if s.OfflineResourceSettings != nil {
+		if err := s.OfflineResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RealtimeResourceSettings != nil {
+		if err := s.RealtimeResourceSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDIJobResponseBodyDataResourceSettingsOfflineResourceSettings struct {
@@ -917,7 +1010,25 @@ func (s *GetDIJobResponseBodyDataTableMappings) SetTransformationRules(v []*GetD
 }
 
 func (s *GetDIJobResponseBodyDataTableMappings) Validate() error {
-	return dara.Validate(s)
+	if s.SourceObjectSelectionRules != nil {
+		for _, item := range s.SourceObjectSelectionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.TransformationRules != nil {
+		for _, item := range s.TransformationRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDIJobResponseBodyDataTableMappingsSourceObjectSelectionRules struct {

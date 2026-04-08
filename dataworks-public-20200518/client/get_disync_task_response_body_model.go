@@ -74,7 +74,12 @@ func (s *GetDISyncTaskResponseBody) SetSuccess(v bool) *GetDISyncTaskResponseBod
 }
 
 func (s *GetDISyncTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDISyncTaskResponseBodyData struct {
@@ -164,7 +169,21 @@ func (s *GetDISyncTaskResponseBodyData) SetStatus(v string) *GetDISyncTaskRespon
 }
 
 func (s *GetDISyncTaskResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmList != nil {
+		for _, item := range s.AlarmList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SolutionDetail != nil {
+		if err := s.SolutionDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDISyncTaskResponseBodyDataAlarmList struct {
@@ -288,7 +307,21 @@ func (s *GetDISyncTaskResponseBodyDataAlarmList) SetRuleName(v string) *GetDISyn
 }
 
 func (s *GetDISyncTaskResponseBodyDataAlarmList) Validate() error {
-	return dara.Validate(s)
+	if s.AlarmRuleList != nil {
+		for _, item := range s.AlarmRuleList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotifyRule != nil {
+		if err := s.NotifyRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDISyncTaskResponseBodyDataAlarmListAlarmRuleList struct {

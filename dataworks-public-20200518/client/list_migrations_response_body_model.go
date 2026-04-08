@@ -74,7 +74,12 @@ func (s *ListMigrationsResponseBody) SetSuccess(v bool) *ListMigrationsResponseB
 }
 
 func (s *ListMigrationsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListMigrationsResponseBodyData struct {
@@ -145,7 +150,16 @@ func (s *ListMigrationsResponseBodyData) SetTotalCount(v int32) *ListMigrationsR
 }
 
 func (s *ListMigrationsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Migrations != nil {
+		for _, item := range s.Migrations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListMigrationsResponseBodyDataMigrations struct {

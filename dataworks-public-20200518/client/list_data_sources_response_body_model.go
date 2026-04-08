@@ -87,7 +87,12 @@ func (s *ListDataSourcesResponseBody) SetSuccess(v bool) *ListDataSourcesRespons
 }
 
 func (s *ListDataSourcesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListDataSourcesResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *ListDataSourcesResponseBodyData) SetTotalCount(v int32) *ListDataSource
 }
 
 func (s *ListDataSourcesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.DataSources != nil {
+		for _, item := range s.DataSources {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListDataSourcesResponseBodyDataDataSources struct {

@@ -121,7 +121,12 @@ func (s *GetNodeResponseBody) SetSuccess(v bool) *GetNodeResponseBody {
 }
 
 func (s *GetNodeResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeResponseBodyData struct {
@@ -179,7 +184,11 @@ type GetNodeResponseBodyData struct {
 	//
 	// 1
 	DqcType *int32 `json:"DqcType,omitempty" xml:"DqcType,omitempty"`
-	// The ID of the file.
+	// The file ID.
+	//
+	// **
+	//
+	// **Warning*	- The field is deprecated.
 	//
 	// example:
 	//

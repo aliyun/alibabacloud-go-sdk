@@ -125,7 +125,12 @@ func (s *DsgUserGroupQueryListResponseBody) SetSuccess(v bool) *DsgUserGroupQuer
 }
 
 func (s *DsgUserGroupQueryListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.PageData != nil {
+		if err := s.PageData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DsgUserGroupQueryListResponseBodyPageData struct {
@@ -196,7 +201,16 @@ func (s *DsgUserGroupQueryListResponseBodyPageData) SetTotalCount(v int32) *DsgU
 }
 
 func (s *DsgUserGroupQueryListResponseBodyPageData) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type DsgUserGroupQueryListResponseBodyPageDataData struct {
@@ -219,7 +233,7 @@ type DsgUserGroupQueryListResponseBodyPageDataData struct {
 	// example:
 	//
 	// 123
-	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the user group.
 	//
 	// example:
@@ -231,7 +245,8 @@ type DsgUserGroupQueryListResponseBodyPageDataData struct {
 	// example:
 	//
 	// user1
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	McAggregationInfo *string `json:"mcAggregationInfo,omitempty" xml:"mcAggregationInfo,omitempty"`
 }
 
 func (s DsgUserGroupQueryListResponseBodyPageDataData) String() string {
@@ -254,7 +269,7 @@ func (s *DsgUserGroupQueryListResponseBodyPageDataData) GetGmtModified() *string
 	return s.GmtModified
 }
 
-func (s *DsgUserGroupQueryListResponseBodyPageDataData) GetId() *int32 {
+func (s *DsgUserGroupQueryListResponseBodyPageDataData) GetId() *int64 {
 	return s.Id
 }
 
@@ -264,6 +279,10 @@ func (s *DsgUserGroupQueryListResponseBodyPageDataData) GetName() *string {
 
 func (s *DsgUserGroupQueryListResponseBodyPageDataData) GetOwner() *string {
 	return s.Owner
+}
+
+func (s *DsgUserGroupQueryListResponseBodyPageDataData) GetMcAggregationInfo() *string {
+	return s.McAggregationInfo
 }
 
 func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetAccounts(v []*string) *DsgUserGroupQueryListResponseBodyPageDataData {
@@ -281,7 +300,7 @@ func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetGmtModified(v string)
 	return s
 }
 
-func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetId(v int32) *DsgUserGroupQueryListResponseBodyPageDataData {
+func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetId(v int64) *DsgUserGroupQueryListResponseBodyPageDataData {
 	s.Id = &v
 	return s
 }
@@ -293,6 +312,11 @@ func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetName(v string) *DsgUs
 
 func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetOwner(v string) *DsgUserGroupQueryListResponseBodyPageDataData {
 	s.Owner = &v
+	return s
+}
+
+func (s *DsgUserGroupQueryListResponseBodyPageDataData) SetMcAggregationInfo(v string) *DsgUserGroupQueryListResponseBodyPageDataData {
+	s.McAggregationInfo = &v
 	return s
 }
 

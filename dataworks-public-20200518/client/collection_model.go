@@ -30,38 +30,60 @@ type iCollection interface {
 }
 
 type Collection struct {
+	// The type of the collection. Valid values:
+	//
+	// 	- **ALBUM**: data album
+	//
+	// 	- **ALBUM_CATEGORY**: category in a data album
+	//
 	// example:
 	//
 	// album
 	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1668600147617
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The level of the collection. This parameter takes effect only if the CollectionType parameter is set to ALBUM_CATEGORY. Maximum value: 4.
+	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The name of the collection.
+	//
 	// example:
 	//
 	// collectionName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account that is used by the collection owner.
+	//
 	// example:
 	//
 	// 1234444
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the collection owner.
+	//
 	// example:
 	//
 	// owner
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The unique identifier of the collection.
+	//
 	// example:
 	//
 	// album.12334
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1668600148617

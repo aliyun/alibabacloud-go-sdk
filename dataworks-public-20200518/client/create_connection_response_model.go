@@ -59,5 +59,10 @@ func (s *CreateConnectionResponse) SetBody(v *CreateConnectionResponseBody) *Cre
 }
 
 func (s *CreateConnectionResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

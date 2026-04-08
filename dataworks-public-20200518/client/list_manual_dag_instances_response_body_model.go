@@ -53,7 +53,16 @@ func (s *ListManualDagInstancesResponseBody) SetRequestId(v string) *ListManualD
 }
 
 func (s *ListManualDagInstancesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListManualDagInstancesResponseBodyInstances struct {

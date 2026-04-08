@@ -111,7 +111,43 @@ func (s *TestDataServiceApiRequest) SetQueryParam(v []*TestDataServiceApiRequest
 }
 
 func (s *TestDataServiceApiRequest) Validate() error {
-	return dara.Validate(s)
+	if s.BodyParams != nil {
+		for _, item := range s.BodyParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.HeadParams != nil {
+		for _, item := range s.HeadParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.PathParams != nil {
+		for _, item := range s.PathParams {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QueryParam != nil {
+		for _, item := range s.QueryParam {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type TestDataServiceApiRequestBodyParams struct {

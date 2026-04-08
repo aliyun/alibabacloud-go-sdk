@@ -87,7 +87,16 @@ func (s *ListResourceGroupsResponseBody) SetSuccess(v bool) *ListResourceGroupsR
 }
 
 func (s *ListResourceGroupsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceGroupsResponseBodyData struct {
@@ -403,7 +412,16 @@ func (s *ListResourceGroupsResponseBodyData) SetUpdateTime(v string) *ListResour
 }
 
 func (s *ListResourceGroupsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListResourceGroupsResponseBodyDataTags struct {

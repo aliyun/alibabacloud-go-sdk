@@ -74,7 +74,12 @@ func (s *DeleteDISyncTaskResponseBody) SetSuccess(v bool) *DeleteDISyncTaskRespo
 }
 
 func (s *DeleteDISyncTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type DeleteDISyncTaskResponseBodyData struct {

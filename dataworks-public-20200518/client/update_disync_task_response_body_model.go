@@ -74,7 +74,12 @@ func (s *UpdateDISyncTaskResponseBody) SetSuccess(v bool) *UpdateDISyncTaskRespo
 }
 
 func (s *UpdateDISyncTaskResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateDISyncTaskResponseBodyData struct {

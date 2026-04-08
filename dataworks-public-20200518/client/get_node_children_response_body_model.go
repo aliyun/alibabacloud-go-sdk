@@ -121,7 +121,12 @@ func (s *GetNodeChildrenResponseBody) SetSuccess(v bool) *GetNodeChildrenRespons
 }
 
 func (s *GetNodeChildrenResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetNodeChildrenResponseBodyData struct {
@@ -147,7 +152,16 @@ func (s *GetNodeChildrenResponseBodyData) SetNodes(v []*GetNodeChildrenResponseB
 }
 
 func (s *GetNodeChildrenResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetNodeChildrenResponseBodyDataNodes struct {

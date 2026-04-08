@@ -59,5 +59,10 @@ func (s *UpdateNodeOwnerResponse) SetBody(v *UpdateNodeOwnerResponseBody) *Updat
 }
 
 func (s *UpdateNodeOwnerResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

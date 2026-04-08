@@ -59,5 +59,10 @@ func (s *CreateQualityRuleResponse) SetBody(v *CreateQualityRuleResponseBody) *C
 }
 
 func (s *CreateQualityRuleResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

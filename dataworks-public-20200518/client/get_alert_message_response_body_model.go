@@ -125,7 +125,12 @@ func (s *GetAlertMessageResponseBody) SetSuccess(v bool) *GetAlertMessageRespons
 }
 
 func (s *GetAlertMessageResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAlertMessageResponseBodyData struct {
@@ -343,7 +348,39 @@ func (s *GetAlertMessageResponseBodyData) SetTopics(v []*GetAlertMessageResponse
 }
 
 func (s *GetAlertMessageResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Instances != nil {
+		for _, item := range s.Instances {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Nodes != nil {
+		for _, item := range s.Nodes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.SlaAlert != nil {
+		if err := s.SlaAlert.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetAlertMessageResponseBodyDataInstances struct {

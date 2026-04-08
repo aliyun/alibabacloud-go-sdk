@@ -59,5 +59,10 @@ func (s *CreateUdfFileResponse) SetBody(v *CreateUdfFileResponseBody) *CreateUdf
 }
 
 func (s *CreateUdfFileResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

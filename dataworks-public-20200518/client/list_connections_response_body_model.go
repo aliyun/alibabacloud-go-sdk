@@ -87,7 +87,12 @@ func (s *ListConnectionsResponseBody) SetSuccess(v bool) *ListConnectionsRespons
 }
 
 func (s *ListConnectionsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyData struct {
@@ -158,7 +163,16 @@ func (s *ListConnectionsResponseBodyData) SetTotalCount(v int32) *ListConnection
 }
 
 func (s *ListConnectionsResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Connections != nil {
+		for _, item := range s.Connections {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListConnectionsResponseBodyDataConnections struct {

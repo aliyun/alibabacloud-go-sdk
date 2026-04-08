@@ -59,5 +59,10 @@ func (s *CreateDataServiceApiAuthorityResponse) SetBody(v *CreateDataServiceApiA
 }
 
 func (s *CreateDataServiceApiAuthorityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

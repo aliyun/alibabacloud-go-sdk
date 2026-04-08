@@ -53,7 +53,16 @@ func (s *ListEnabledExtensionsForProjectResponseBody) SetRequestId(v string) *Li
 }
 
 func (s *ListEnabledExtensionsForProjectResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Extensions != nil {
+		for _, item := range s.Extensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListEnabledExtensionsForProjectResponseBodyExtensions struct {

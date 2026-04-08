@@ -59,5 +59,10 @@ func (s *GetQualityEntityResponse) SetBody(v *GetQualityEntityResponseBody) *Get
 }
 
 func (s *GetQualityEntityResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

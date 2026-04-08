@@ -91,7 +91,12 @@ func (s *ListCalcEnginesResponseBody) SetSuccess(v bool) *ListCalcEnginesRespons
 }
 
 func (s *ListCalcEnginesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListCalcEnginesResponseBodyData struct {
@@ -162,7 +167,16 @@ func (s *ListCalcEnginesResponseBodyData) SetTotalCount(v int32) *ListCalcEngine
 }
 
 func (s *ListCalcEnginesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.CalcEngines != nil {
+		for _, item := range s.CalcEngines {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListCalcEnginesResponseBodyDataCalcEngines struct {

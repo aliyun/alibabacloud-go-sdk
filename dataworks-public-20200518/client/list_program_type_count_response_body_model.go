@@ -53,7 +53,16 @@ func (s *ListProgramTypeCountResponseBody) SetRequestId(v string) *ListProgramTy
 }
 
 func (s *ListProgramTypeCountResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ProgramTypeAndCounts != nil {
+		for _, item := range s.ProgramTypeAndCounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListProgramTypeCountResponseBodyProgramTypeAndCounts struct {

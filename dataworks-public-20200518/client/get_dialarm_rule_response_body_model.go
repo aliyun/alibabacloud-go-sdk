@@ -53,7 +53,12 @@ func (s *GetDIAlarmRuleResponseBody) SetRequestId(v string) *GetDIAlarmRuleRespo
 }
 
 func (s *GetDIAlarmRuleResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.DIAlarmRule != nil {
+		if err := s.DIAlarmRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDIAlarmRuleResponseBodyDIAlarmRule struct {
@@ -231,7 +236,21 @@ func (s *GetDIAlarmRuleResponseBodyDIAlarmRule) SetUpdatedUid(v string) *GetDIAl
 }
 
 func (s *GetDIAlarmRuleResponseBodyDIAlarmRule) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationSettings != nil {
+		if err := s.NotificationSettings.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TriggerConditions != nil {
+		for _, item := range s.TriggerConditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettings struct {
@@ -283,7 +302,25 @@ func (s *GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettings) SetNotificat
 }
 
 func (s *GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettings) Validate() error {
-	return dara.Validate(s)
+	if s.NotificationChannels != nil {
+		for _, item := range s.NotificationChannels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NotificationReceivers != nil {
+		for _, item := range s.NotificationReceivers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDIAlarmRuleResponseBodyDIAlarmRuleNotificationSettingsNotificationChannels struct {

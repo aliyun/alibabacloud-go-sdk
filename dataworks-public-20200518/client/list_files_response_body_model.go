@@ -125,7 +125,12 @@ func (s *ListFilesResponseBody) SetSuccess(v bool) *ListFilesResponseBody {
 }
 
 func (s *ListFilesResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListFilesResponseBodyData struct {
@@ -196,7 +201,16 @@ func (s *ListFilesResponseBodyData) SetTotalCount(v int32) *ListFilesResponseBod
 }
 
 func (s *ListFilesResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Files != nil {
+		for _, item := range s.Files {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ListFilesResponseBodyDataFiles struct {

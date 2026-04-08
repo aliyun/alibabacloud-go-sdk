@@ -121,7 +121,16 @@ func (s *GetBaselineKeyPathResponseBody) SetSuccess(v bool) *GetBaselineKeyPathR
 }
 
 func (s *GetBaselineKeyPathResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBaselineKeyPathResponseBodyData struct {
@@ -278,7 +287,25 @@ func (s *GetBaselineKeyPathResponseBodyData) SetTopics(v []*GetBaselineKeyPathRe
 }
 
 func (s *GetBaselineKeyPathResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Runs != nil {
+		for _, item := range s.Runs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Topics != nil {
+		for _, item := range s.Topics {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetBaselineKeyPathResponseBodyDataRuns struct {

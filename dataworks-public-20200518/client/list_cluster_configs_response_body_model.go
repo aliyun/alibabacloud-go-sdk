@@ -125,5 +125,14 @@ func (s *ListClusterConfigsResponseBody) SetSuccess(v bool) *ListClusterConfigsR
 }
 
 func (s *ListClusterConfigsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ClusterConfigs != nil {
+		for _, item := range s.ClusterConfigs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

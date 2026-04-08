@@ -59,5 +59,10 @@ func (s *DeleteTableThemeResponse) SetBody(v *DeleteTableThemeResponseBody) *Del
 }
 
 func (s *DeleteTableThemeResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

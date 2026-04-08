@@ -74,7 +74,12 @@ func (s *GetDISyncInstanceInfoResponseBody) SetSuccess(v bool) *GetDISyncInstanc
 }
 
 func (s *GetDISyncInstanceInfoResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDISyncInstanceInfoResponseBodyData struct {
@@ -151,7 +156,12 @@ func (s *GetDISyncInstanceInfoResponseBodyData) SetStatus(v string) *GetDISyncIn
 }
 
 func (s *GetDISyncInstanceInfoResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.SolutionInfo != nil {
+		if err := s.SolutionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetDISyncInstanceInfoResponseBodyDataSolutionInfo struct {
@@ -222,7 +232,16 @@ func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) SetStepDetail(v []*G
 }
 
 func (s *GetDISyncInstanceInfoResponseBodyDataSolutionInfo) Validate() error {
-	return dara.Validate(s)
+	if s.StepDetail != nil {
+		for _, item := range s.StepDetail {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetDISyncInstanceInfoResponseBodyDataSolutionInfoStepDetail struct {

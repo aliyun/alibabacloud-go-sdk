@@ -361,7 +361,25 @@ func (s *UpdateTableRequest) SetVisibility(v int32) *UpdateTableRequest {
 }
 
 func (s *UpdateTableRequest) Validate() error {
-	return dara.Validate(s)
+	if s.Columns != nil {
+		for _, item := range s.Columns {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Themes != nil {
+		for _, item := range s.Themes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type UpdateTableRequestColumns struct {
@@ -374,10 +392,6 @@ type UpdateTableRequestColumns struct {
 	// abc
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
 	// The display name of the field.
-	//
-	// example:
-	//
-	// 名称
 	ColumnNameCn *string `json:"ColumnNameCn,omitempty" xml:"ColumnNameCn,omitempty"`
 	// The type of the field. For more information, see MaxCompute field types.
 	//

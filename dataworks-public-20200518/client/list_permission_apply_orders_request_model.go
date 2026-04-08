@@ -38,27 +38,27 @@ type iListPermissionApplyOrdersRequest interface {
 }
 
 type ListPermissionApplyOrdersRequest struct {
-	// 设置申请单类型，枚举值为：
+	// The type of permission request. Valid values:
 	//
-	// - [ MaxComputeTable]  MaxCompute表权限申请单
+	// 	- MaxComputeTable: Permission request for MaxCompute tables
 	//
-	// - [ MaxComputeFunction] MaxCompute函数申请单
+	// 	- MaxComputeFunction: Permission request for MaxCompute functions
 	//
-	// - [ MaxComputeResource] MaxCompute资源申请单
+	// 	- MaxComputeResource: Permission request for MaxCompute resources
 	//
-	// - [ DLFSchema] DLF1.0版本Schema权限申请单
+	// 	- DLFSchema: Permission request for DLF 1.0 schemas
 	//
-	// - [ DLFTable] DLF1.0版本表权限申请单
+	// 	- DLFTable: Permission request for DLF 1.0 tables
 	//
-	// - [ DLFColumn] DLF1.0版本列权限申请单
+	// 	- DLFColumn: Permission request for DLF 1.0 columns
 	//
-	// - [ DsApiDeploy] 发布数据服务权限申请单
+	// 	- DsApiDeploy: Permission request for publishing data services
 	//
 	// example:
 	//
 	// MaxComputeTable
 	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
-	// 查询的数据目录名称。
+	// The name of the data catalog to query.
 	//
 	// example:
 	//
@@ -70,21 +70,41 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// 1617200471885
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the compute engine with which the permission request order is associated. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
+	// This parameter is deprecated and does not take effect.
+	//
+	// Valid values:
+	//
+	// 	- odps
 	//
 	// example:
 	//
 	// odps
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The status of the permission request order. Valid values:
+	// The status of the permission request. Valid values:
 	//
-	// 	- 1: to be processed
+	// 	- 1: Pending approval
 	//
-	// 	- 2: approved and authorized
+	// 	- 2: Approved and authorization succeeded
 	//
-	// 	- 3: approved but authorization failed
+	// 	- 3: Approved but authorization failed
 	//
-	// 	- 4: rejected
+	// 	- 4: Rejected
+	//
+	// 	- 5: Withdrawn
+	//
+	// Valid values:
+	//
+	// 	- 0
+	//
+	// 	- 1
+	//
+	// 	- 2
+	//
+	// 	- 3
+	//
+	// 	- 4
+	//
+	// 	- 5
 	//
 	// example:
 	//
@@ -96,13 +116,19 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// aMaxComputeProject
 	MaxComputeProjectName *string `json:"MaxComputeProjectName,omitempty" xml:"MaxComputeProjectName,omitempty"`
-	// The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
+	// This parameter is deprecated and does not take effect.
+	//
+	// Valid values:
+	//
+	// 	- 1
+	//
+	// 	- 0
 	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number for pagination. The value must be a positive integer greater than or equal to 1. Default value: 1.
 	//
 	// example:
 	//
@@ -114,11 +140,13 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query type of the permission request order. Valid values:
+	// The query type for permission requests. Valid values:
 	//
-	// 	- 0: The permission request orders you submitted.
+	// 	- 0: Permission requests submitted by me
 	//
-	// 	- 1: The permission request orders you approved.
+	// 	- 1: Permission requests pending my approval
+	//
+	// 	- 2: All permission requests
 	//
 	// This parameter is required.
 	//
@@ -138,7 +166,7 @@ type ListPermissionApplyOrdersRequest struct {
 	//
 	// aTableName
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the DataWorks workspace that is associated with the permission request order. If you do not specify the parameter, the permission request orders of all workspaces are returned. You can go to the Workspace page in the DataWorks console to obtain the workspace ID.
+	// The ID of the workspace to which the permission request belongs. If you do not specify this parameter, permission requests from all workspaces are returned. To obtain the workspace ID, log on to the DataWorks console and navigate to the workspace configuration page.
 	//
 	// example:
 	//
