@@ -506,6 +506,92 @@ func (client *Client) CreateIdpDepartmentWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 创建内网访问诊断任务
+//
+// @param tmpReq - CreatePADiagnosisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePADiagnosisTaskResponse
+func (client *Client) CreatePADiagnosisTaskWithContext(ctx context.Context, tmpReq *CreatePADiagnosisTaskRequest, runtime *dara.RuntimeOptions) (_result *CreatePADiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePADiagnosisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UdpExtraConfigs) {
+		request.UdpExtraConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UdpExtraConfigs, dara.String("UdpExtraConfigs"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.DiagnoseType) {
+		body["DiagnoseType"] = request.DiagnoseType
+	}
+
+	if !dara.IsNil(request.Host) {
+		body["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.PopId) {
+		body["PopId"] = request.PopId
+	}
+
+	if !dara.IsNil(request.PopMode) {
+		body["PopMode"] = request.PopMode
+	}
+
+	if !dara.IsNil(request.Port) {
+		body["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.UdpExtraConfigsShrink) {
+		body["UdpExtraConfigs"] = request.UdpExtraConfigsShrink
+	}
+
+	if !dara.IsNil(request.UserGroupId) {
+		body["UserGroupId"] = request.UserGroupId
+	}
+
+	if !dara.IsNil(request.Username) {
+		body["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePADiagnosisTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePADiagnosisTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an office application within the current Alibaba Cloud account.
 //
 // Description:
@@ -2417,6 +2503,46 @@ func (client *Client) GetIdpConfigWithContext(ctx context.Context, request *GetI
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetIdpConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询内网访问诊断任务详情
+//
+// @param request - GetPADiagnosisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPADiagnosisTaskResponse
+func (client *Client) GetPADiagnosisTaskWithContext(ctx context.Context, request *GetPADiagnosisTaskRequest, runtime *dara.RuntimeOptions) (_result *GetPADiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPADiagnosisTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPADiagnosisTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -699,6 +699,110 @@ func (client *Client) CreateIdpDepartment(request *CreateIdpDepartmentRequest) (
 
 // Summary:
 //
+// 创建内网访问诊断任务
+//
+// @param tmpReq - CreatePADiagnosisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePADiagnosisTaskResponse
+func (client *Client) CreatePADiagnosisTaskWithOptions(tmpReq *CreatePADiagnosisTaskRequest, runtime *dara.RuntimeOptions) (_result *CreatePADiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePADiagnosisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UdpExtraConfigs) {
+		request.UdpExtraConfigsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UdpExtraConfigs, dara.String("UdpExtraConfigs"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.DiagnoseType) {
+		body["DiagnoseType"] = request.DiagnoseType
+	}
+
+	if !dara.IsNil(request.Host) {
+		body["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.PopId) {
+		body["PopId"] = request.PopId
+	}
+
+	if !dara.IsNil(request.PopMode) {
+		body["PopMode"] = request.PopMode
+	}
+
+	if !dara.IsNil(request.Port) {
+		body["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.UdpExtraConfigsShrink) {
+		body["UdpExtraConfigs"] = request.UdpExtraConfigsShrink
+	}
+
+	if !dara.IsNil(request.UserGroupId) {
+		body["UserGroupId"] = request.UserGroupId
+	}
+
+	if !dara.IsNil(request.Username) {
+		body["Username"] = request.Username
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePADiagnosisTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePADiagnosisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建内网访问诊断任务
+//
+// @param request - CreatePADiagnosisTaskRequest
+//
+// @return CreatePADiagnosisTaskResponse
+func (client *Client) CreatePADiagnosisTask(request *CreatePADiagnosisTaskRequest) (_result *CreatePADiagnosisTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePADiagnosisTaskResponse{}
+	_body, _err := client.CreatePADiagnosisTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an office application within the current Alibaba Cloud account.
 //
 // Description:
@@ -3310,6 +3414,64 @@ func (client *Client) GetIdpConfig(request *GetIdpConfigRequest) (_result *GetId
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetIdpConfigResponse{}
 	_body, _err := client.GetIdpConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询内网访问诊断任务详情
+//
+// @param request - GetPADiagnosisTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPADiagnosisTaskResponse
+func (client *Client) GetPADiagnosisTaskWithOptions(request *GetPADiagnosisTaskRequest, runtime *dara.RuntimeOptions) (_result *GetPADiagnosisTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPADiagnosisTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPADiagnosisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询内网访问诊断任务详情
+//
+// @param request - GetPADiagnosisTaskRequest
+//
+// @return GetPADiagnosisTaskResponse
+func (client *Client) GetPADiagnosisTask(request *GetPADiagnosisTaskRequest) (_result *GetPADiagnosisTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPADiagnosisTaskResponse{}
+	_body, _err := client.GetPADiagnosisTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
