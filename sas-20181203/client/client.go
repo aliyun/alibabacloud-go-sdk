@@ -32604,6 +32604,10 @@ func (client *Client) DescribeVulExportInfoWithOptions(request *DescribeVulExpor
 		query["ExportId"] = request.ExportId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35753,6 +35757,10 @@ func (client *Client) ExportVulWithOptions(request *ExportVulRequest, runtime *d
 
 	if !dara.IsNil(request.RaspDefend) {
 		query["RaspDefend"] = request.RaspDefend
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.SearchTags) {

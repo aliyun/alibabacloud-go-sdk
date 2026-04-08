@@ -1,3 +1,8 @@
+2026-04-08 Version: v9.1.2
+- Update API DescribeVulExportInfo: add request parameters ResourceDirectoryAccountId.
+- Update API ExportVul: add request parameters ResourceDirectoryAccountId.
+
+
 2026-04-03 Version: v9.1.1
 - Update API DescribeFieldStatistics: add response parameters Body.GroupedFields.BaiduInstanceCount.
 - Update API DescribeFieldStatistics: add response parameters Body.GroupedFields.KingsoftInstanceCount.

@@ -35,6 +35,8 @@ type iExportVulRequest interface {
   GetPath() *string 
   SetRaspDefend(v int32) *ExportVulRequest
   GetRaspDefend() *int32 
+  SetResourceDirectoryAccountId(v int64) *ExportVulRequest
+  GetResourceDirectoryAccountId() *int64 
   SetSearchTags(v string) *ExportVulRequest
   GetSearchTags() *string 
   SetType(v string) *ExportVulRequest
@@ -152,6 +154,10 @@ type ExportVulRequest struct {
   // 
   // 0
   RaspDefend *int32 `json:"RaspDefend,omitempty" xml:"RaspDefend,omitempty"`
+  // example:
+  // 
+  // 1
+  ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
   // The tag that is used to search for the vulnerabilities. Valid values:
   // 
   // 	- Restart required
@@ -266,6 +272,10 @@ func (s *ExportVulRequest) GetRaspDefend() *int32  {
   return s.RaspDefend
 }
 
+func (s *ExportVulRequest) GetResourceDirectoryAccountId() *int64  {
+  return s.ResourceDirectoryAccountId
+}
+
 func (s *ExportVulRequest) GetSearchTags() *string  {
   return s.SearchTags
 }
@@ -348,6 +358,11 @@ func (s *ExportVulRequest) SetPath(v string) *ExportVulRequest {
 
 func (s *ExportVulRequest) SetRaspDefend(v int32) *ExportVulRequest {
   s.RaspDefend = &v
+  return s
+}
+
+func (s *ExportVulRequest) SetResourceDirectoryAccountId(v int64) *ExportVulRequest {
+  s.ResourceDirectoryAccountId = &v
   return s
 }
 

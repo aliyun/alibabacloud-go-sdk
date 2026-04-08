@@ -11,6 +11,8 @@ type iDescribeVulExportInfoRequest interface {
 	GoString() string
 	SetExportId(v int64) *DescribeVulExportInfoRequest
 	GetExportId() *int64
+	SetResourceDirectoryAccountId(v int64) *DescribeVulExportInfoRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DescribeVulExportInfoRequest struct {
@@ -22,6 +24,10 @@ type DescribeVulExportInfoRequest struct {
 	//
 	// 14356
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeVulExportInfoRequest) String() string {
@@ -36,8 +42,17 @@ func (s *DescribeVulExportInfoRequest) GetExportId() *int64 {
 	return s.ExportId
 }
 
+func (s *DescribeVulExportInfoRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeVulExportInfoRequest) SetExportId(v int64) *DescribeVulExportInfoRequest {
 	s.ExportId = &v
+	return s
+}
+
+func (s *DescribeVulExportInfoRequest) SetResourceDirectoryAccountId(v int64) *DescribeVulExportInfoRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 
