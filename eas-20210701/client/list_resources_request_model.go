@@ -25,6 +25,8 @@ type iListResourcesRequest interface {
 	GetResourceType() *string
 	SetSort(v string) *ListResourcesRequest
 	GetSort() *string
+	SetUsageMode(v string) *ListResourcesRequest
+	GetUsageMode() *string
 }
 
 type ListResourcesRequest struct {
@@ -105,7 +107,8 @@ type ListResourcesRequest struct {
 	// example:
 	//
 	// CreateTime
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort      *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	UsageMode *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -148,6 +151,10 @@ func (s *ListResourcesRequest) GetSort() *string {
 	return s.Sort
 }
 
+func (s *ListResourcesRequest) GetUsageMode() *string {
+	return s.UsageMode
+}
+
 func (s *ListResourcesRequest) SetOrder(v string) *ListResourcesRequest {
 	s.Order = &v
 	return s
@@ -185,6 +192,11 @@ func (s *ListResourcesRequest) SetResourceType(v string) *ListResourcesRequest {
 
 func (s *ListResourcesRequest) SetSort(v string) *ListResourcesRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListResourcesRequest) SetUsageMode(v string) *ListResourcesRequest {
+	s.UsageMode = &v
 	return s
 }
 

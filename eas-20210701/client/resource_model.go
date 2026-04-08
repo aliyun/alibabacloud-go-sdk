@@ -53,6 +53,8 @@ type iResource interface {
 	GetStatus() *string
 	SetUpdateTime(v string) *Resource
 	GetUpdateTime() *string
+	SetUsageMode(v string) *Resource
+	GetUsageMode() *string
 	SetVendor(v string) *Resource
 	GetVendor() *string
 }
@@ -154,6 +156,7 @@ type Resource struct {
 	//
 	// 2019-02-26T19:52:49Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UsageMode  *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
 	// The vendor of the resource group instances.
 	//
 	// Valid values:
@@ -262,6 +265,10 @@ func (s *Resource) GetStatus() *string {
 
 func (s *Resource) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *Resource) GetUsageMode() *string {
+	return s.UsageMode
 }
 
 func (s *Resource) GetVendor() *string {
@@ -375,6 +382,11 @@ func (s *Resource) SetStatus(v string) *Resource {
 
 func (s *Resource) SetUpdateTime(v string) *Resource {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *Resource) SetUsageMode(v string) *Resource {
+	s.UsageMode = &v
 	return s
 }
 

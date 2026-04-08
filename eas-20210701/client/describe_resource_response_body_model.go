@@ -57,6 +57,8 @@ type iDescribeResourceResponseBody interface {
 	GetStatus() *string
 	SetUpdateTime(v string) *DescribeResourceResponseBody
 	GetUpdateTime() *string
+	SetUsageMode(v string) *DescribeResourceResponseBody
+	GetUsageMode() *string
 }
 
 type DescribeResourceResponseBody struct {
@@ -188,6 +190,7 @@ type DescribeResourceResponseBody struct {
 	//
 	// 2021-02-24T11:52:17Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UsageMode  *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
 }
 
 func (s DescribeResourceResponseBody) String() string {
@@ -292,6 +295,10 @@ func (s *DescribeResourceResponseBody) GetStatus() *string {
 
 func (s *DescribeResourceResponseBody) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *DescribeResourceResponseBody) GetUsageMode() *string {
+	return s.UsageMode
 }
 
 func (s *DescribeResourceResponseBody) SetClusterId(v string) *DescribeResourceResponseBody {
@@ -411,6 +418,11 @@ func (s *DescribeResourceResponseBody) SetStatus(v string) *DescribeResourceResp
 
 func (s *DescribeResourceResponseBody) SetUpdateTime(v string) *DescribeResourceResponseBody {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetUsageMode(v string) *DescribeResourceResponseBody {
+	s.UsageMode = &v
 	return s
 }
 

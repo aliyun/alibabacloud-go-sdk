@@ -630,6 +630,10 @@ func (client *Client) CreateResourceWithContext(ctx context.Context, request *Cr
 		body["SystemDiskSize"] = request.SystemDiskSize
 	}
 
+	if !dara.IsNil(request.UsageMode) {
+		body["UsageMode"] = request.UsageMode
+	}
+
 	if !dara.IsNil(request.Zone) {
 		body["Zone"] = request.Zone
 	}
@@ -3644,6 +3648,10 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 
 	if !dara.IsNil(request.Sort) {
 		query["Sort"] = request.Sort
+	}
+
+	if !dara.IsNil(request.UsageMode) {
+		query["UsageMode"] = request.UsageMode
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -27,6 +27,8 @@ type iCreateResourceRequest interface {
 	GetSelfManagedResourceOptions() *CreateResourceRequestSelfManagedResourceOptions
 	SetSystemDiskSize(v int32) *CreateResourceRequest
 	GetSystemDiskSize() *int32
+	SetUsageMode(v string) *CreateResourceRequest
+	GetUsageMode() *string
 	SetZone(v string) *CreateResourceRequest
 	GetZone() *string
 }
@@ -95,7 +97,8 @@ type CreateResourceRequest struct {
 	// example:
 	//
 	// 200
-	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	UsageMode      *string `json:"UsageMode,omitempty" xml:"UsageMode,omitempty"`
 	// The ID of the zone in which the instance resides.
 	//
 	// example:
@@ -148,6 +151,10 @@ func (s *CreateResourceRequest) GetSystemDiskSize() *int32 {
 	return s.SystemDiskSize
 }
 
+func (s *CreateResourceRequest) GetUsageMode() *string {
+	return s.UsageMode
+}
+
 func (s *CreateResourceRequest) GetZone() *string {
 	return s.Zone
 }
@@ -194,6 +201,11 @@ func (s *CreateResourceRequest) SetSelfManagedResourceOptions(v *CreateResourceR
 
 func (s *CreateResourceRequest) SetSystemDiskSize(v int32) *CreateResourceRequest {
 	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateResourceRequest) SetUsageMode(v string) *CreateResourceRequest {
+	s.UsageMode = &v
 	return s
 }
 
