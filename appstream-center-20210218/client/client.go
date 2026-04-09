@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 登录token主动失效
+// Manually invalidates a logon token.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -114,7 +114,7 @@ func (client *Client) ExpireLoginTokenWithOptions(request *ExpireLoginTokenReque
 
 // Summary:
 //
-// 登录token主动失效
+// Manually invalidates a logon token.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -132,7 +132,7 @@ func (client *Client) ExpireLoginToken(request *ExpireLoginTokenRequest) (_resul
 
 // Summary:
 //
-// 获取授权码
+// Obtains an authorization code that includes the identity and permission information of a user. You can use the code to launch cloud apps in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -146,6 +146,11 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TokenType) {
+		query["TokenType"] = request.TokenType
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoCreateUser) {
 		body["AutoCreateUser"] = request.AutoCreateUser
@@ -164,7 +169,8 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetAuthCode"),
@@ -188,7 +194,7 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 
 // Summary:
 //
-// 获取授权码
+// Obtains an authorization code that includes the identity and permission information of a user. You can use the code to launch cloud apps in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //

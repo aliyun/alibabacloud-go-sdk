@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 登录token主动失效
+// Manually invalidates a logon token.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -65,7 +65,7 @@ func (client *Client) ExpireLoginTokenWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取授权码
+// Obtains an authorization code that includes the identity and permission information of a user. You can use the code to launch cloud apps in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -79,6 +79,11 @@ func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAu
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TokenType) {
+		query["TokenType"] = request.TokenType
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoCreateUser) {
 		body["AutoCreateUser"] = request.AutoCreateUser
@@ -97,7 +102,8 @@ func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAu
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetAuthCode"),

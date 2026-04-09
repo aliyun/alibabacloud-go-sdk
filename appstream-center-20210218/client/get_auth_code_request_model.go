@@ -17,6 +17,8 @@ type iGetAuthCodeRequest interface {
 	GetExternalUserId() *string
 	SetPolicy(v string) *GetAuthCodeRequest
 	GetPolicy() *string
+	SetTokenType(v string) *GetAuthCodeRequest
+	GetTokenType() *string
 }
 
 type GetAuthCodeRequest struct {
@@ -44,7 +46,8 @@ type GetAuthCodeRequest struct {
 	//       }
 	//
 	// }
-	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
 }
 
 func (s GetAuthCodeRequest) String() string {
@@ -71,6 +74,10 @@ func (s *GetAuthCodeRequest) GetPolicy() *string {
 	return s.Policy
 }
 
+func (s *GetAuthCodeRequest) GetTokenType() *string {
+	return s.TokenType
+}
+
 func (s *GetAuthCodeRequest) SetAutoCreateUser(v bool) *GetAuthCodeRequest {
 	s.AutoCreateUser = &v
 	return s
@@ -88,6 +95,11 @@ func (s *GetAuthCodeRequest) SetExternalUserId(v string) *GetAuthCodeRequest {
 
 func (s *GetAuthCodeRequest) SetPolicy(v string) *GetAuthCodeRequest {
 	s.Policy = &v
+	return s
+}
+
+func (s *GetAuthCodeRequest) SetTokenType(v string) *GetAuthCodeRequest {
+	s.TokenType = &v
 	return s
 }
 
