@@ -17871,6 +17871,54 @@ func (client *Client) StopRtcRobotInstanceWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 扣减用户积分
+//
+// @param request - SubYikeUserCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubYikeUserCreditResponse
+func (client *Client) SubYikeUserCreditWithContext(ctx context.Context, request *SubYikeUserCreditRequest, runtime *dara.RuntimeOptions) (_result *SubYikeUserCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Credit) {
+		query["Credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.YikeUserId) {
+		query["YikeUserId"] = request.YikeUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubYikeUserCredit"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubYikeUserCreditResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a video to a specified AI agent for content moderation. This operation supports video input from OSS and delivers the results asynchronously via callbacks. You can define custom frame-capturing policies and moderation prompts.
 //
 // Description:

@@ -9522,8 +9522,6 @@ func (client *Client) GenerateAIAgentCall(request *GenerateAIAgentCallRequest) (
 //
 // Generates a random Key Management Service (KMS) data key used for HTTP Live Streaming (HLS) encryption and transcoding of videos.
 //
-// @param request - GenerateKMSDataKeyRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GenerateKMSDataKeyResponse
@@ -10309,8 +10307,6 @@ func (client *Client) GetChannel(request *GetChannelRequest) (_result *GetChanne
 //
 // 获取内容分析搜索配置
 //
-// @param request - GetContentAnalyzeConfigRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetContentAnalyzeConfigResponse
@@ -10666,8 +10662,6 @@ func (client *Client) GetCustomizedVoiceJob(request *GetCustomizedVoiceJobReques
 //
 // 获取用户默认存储地址
 //
-// @param request - GetDefaultStorageLocationRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDefaultStorageLocationResponse
@@ -10964,8 +10958,6 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 // Summary:
 //
 // Queries event callback configurations.
-//
-// @param request - GetEventCallbackRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -11889,8 +11881,6 @@ func (client *Client) GetLiveTranscodeTemplate(request *GetLiveTranscodeTemplate
 // Summary:
 //
 // Retrieves all regions where MediaConnect is available.
-//
-// @param request - GetMediaConnectAvailableRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -24574,6 +24564,72 @@ func (client *Client) StopRtcRobotInstance(request *StopRtcRobotInstanceRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopRtcRobotInstanceResponse{}
 	_body, _err := client.StopRtcRobotInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 扣减用户积分
+//
+// @param request - SubYikeUserCreditRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubYikeUserCreditResponse
+func (client *Client) SubYikeUserCreditWithOptions(request *SubYikeUserCreditRequest, runtime *dara.RuntimeOptions) (_result *SubYikeUserCreditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Credit) {
+		query["Credit"] = request.Credit
+	}
+
+	if !dara.IsNil(request.YikeUserId) {
+		query["YikeUserId"] = request.YikeUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubYikeUserCredit"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubYikeUserCreditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 扣减用户积分
+//
+// @param request - SubYikeUserCreditRequest
+//
+// @return SubYikeUserCreditResponse
+func (client *Client) SubYikeUserCredit(request *SubYikeUserCreditRequest) (_result *SubYikeUserCreditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubYikeUserCreditResponse{}
+	_body, _err := client.SubYikeUserCreditWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
