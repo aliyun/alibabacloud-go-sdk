@@ -1,3 +1,6 @@
+2026-04-09 Version: v1.20.6
+- Generated golang 2024-06-28 for DianJin.
+
 2026-02-02 Version: v1.20.5
 - Update API GetDialogDetail: add response parameters Body.data.dialogueList.$.recordId.
 

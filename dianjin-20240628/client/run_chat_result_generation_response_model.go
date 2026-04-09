@@ -13,6 +13,10 @@ type iRunChatResultGenerationResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *RunChatResultGenerationResponse
 	GetStatusCode() *int32
+	SetId(v string) *RunChatResultGenerationResponse
+	GetId() *string
+	SetEvent(v string) *RunChatResultGenerationResponse
+	GetEvent() *string
 	SetBody(v *RunChatResultGenerationResponseBody) *RunChatResultGenerationResponse
 	GetBody() *RunChatResultGenerationResponseBody
 }
@@ -20,6 +24,8 @@ type iRunChatResultGenerationResponse interface {
 type RunChatResultGenerationResponse struct {
 	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                              `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                              `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *RunChatResultGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *RunChatResultGenerationResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *RunChatResultGenerationResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *RunChatResultGenerationResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *RunChatResultGenerationResponse) GetBody() *RunChatResultGenerationResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *RunChatResultGenerationResponse) SetHeaders(v map[string]*string) *RunC
 
 func (s *RunChatResultGenerationResponse) SetStatusCode(v int32) *RunChatResultGenerationResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *RunChatResultGenerationResponse) SetId(v string) *RunChatResultGenerationResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *RunChatResultGenerationResponse) SetEvent(v string) *RunChatResultGenerationResponse {
+	s.Event = &v
 	return s
 }
 
