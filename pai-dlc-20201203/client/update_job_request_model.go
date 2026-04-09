@@ -11,6 +11,8 @@ type iUpdateJobRequest interface {
 	GoString() string
 	SetAccessibility(v string) *UpdateJobRequest
 	GetAccessibility() *string
+	SetDescription(v string) *UpdateJobRequest
+	GetDescription() *string
 	SetJobSpecs(v []*JobSpec) *UpdateJobRequest
 	GetJobSpecs() []*JobSpec
 	SetPriority(v int32) *UpdateJobRequest
@@ -28,6 +30,7 @@ type UpdateJobRequest struct {
 	//
 	// PRIVATE
 	Accessibility *string    `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Description   *string    `json:"Description,omitempty" xml:"Description,omitempty"`
 	JobSpecs      []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
 	// The job priority. Valid values: 1 to 9.
 	//
@@ -53,6 +56,10 @@ func (s *UpdateJobRequest) GetAccessibility() *string {
 	return s.Accessibility
 }
 
+func (s *UpdateJobRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *UpdateJobRequest) GetJobSpecs() []*JobSpec {
 	return s.JobSpecs
 }
@@ -63,6 +70,11 @@ func (s *UpdateJobRequest) GetPriority() *int32 {
 
 func (s *UpdateJobRequest) SetAccessibility(v string) *UpdateJobRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetDescription(v string) *UpdateJobRequest {
+	s.Description = &v
 	return s
 }
 

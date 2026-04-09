@@ -21,6 +21,8 @@ type iCreateJobRequest interface {
 	GetDataSources() []*CreateJobRequestDataSources
 	SetDebuggerConfigContent(v string) *CreateJobRequest
 	GetDebuggerConfigContent() *string
+	SetDescription(v string) *CreateJobRequest
+	GetDescription() *string
 	SetDisplayName(v string) *CreateJobRequest
 	GetDisplayName() *string
 	SetElasticSpec(v *JobElasticSpec) *CreateJobRequest
@@ -83,6 +85,7 @@ type CreateJobRequest struct {
 	//
 	// “”
 	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The job name. The name must be in the following format:
 	//
 	// 	- The name must be 1 to 256 characters in length.
@@ -261,6 +264,10 @@ func (s *CreateJobRequest) GetDebuggerConfigContent() *string {
 	return s.DebuggerConfigContent
 }
 
+func (s *CreateJobRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *CreateJobRequest) GetDisplayName() *string {
 	return s.DisplayName
 }
@@ -360,6 +367,11 @@ func (s *CreateJobRequest) SetDataSources(v []*CreateJobRequestDataSources) *Cre
 
 func (s *CreateJobRequest) SetDebuggerConfigContent(v string) *CreateJobRequest {
 	s.DebuggerConfigContent = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetDescription(v string) *CreateJobRequest {
+	s.Description = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iListJobsShrinkRequest interface {
 	GetBusinessUserId() *string
 	SetCaller(v string) *ListJobsShrinkRequest
 	GetCaller() *string
+	SetDescription(v string) *ListJobsShrinkRequest
+	GetDescription() *string
 	SetDisplayName(v string) *ListJobsShrinkRequest
 	GetDisplayName() *string
 	SetDisplayNameSearchMode(v string) *ListJobsShrinkRequest
@@ -103,7 +105,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// local
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller      *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
 	//
 	// example:
@@ -323,6 +326,10 @@ func (s *ListJobsShrinkRequest) GetCaller() *string {
 	return s.Caller
 }
 
+func (s *ListJobsShrinkRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *ListJobsShrinkRequest) GetDisplayName() *string {
 	return s.DisplayName
 }
@@ -463,6 +470,11 @@ func (s *ListJobsShrinkRequest) SetBusinessUserId(v string) *ListJobsShrinkReque
 
 func (s *ListJobsShrinkRequest) SetCaller(v string) *ListJobsShrinkRequest {
 	s.Caller = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetDescription(v string) *ListJobsShrinkRequest {
+	s.Description = &v
 	return s
 }
 

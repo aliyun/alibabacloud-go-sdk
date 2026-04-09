@@ -21,6 +21,8 @@ type iGetJobResponseBody interface {
 	GetCustomEnvs() []*GetJobResponseBodyCustomEnvs
 	SetDataSources(v []*GetJobResponseBodyDataSources) *GetJobResponseBody
 	GetDataSources() []*GetJobResponseBodyDataSources
+	SetDescription(v string) *GetJobResponseBody
+	GetDescription() *string
 	SetDisplayName(v string) *GetJobResponseBody
 	GetDisplayName() *string
 	SetDuration(v int64) *GetJobResponseBody
@@ -125,6 +127,7 @@ type GetJobResponseBody struct {
 	CustomEnvs       []*GetJobResponseBodyCustomEnvs `json:"CustomEnvs,omitempty" xml:"CustomEnvs,omitempty" type:"Repeated"`
 	// The data sources.
 	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	Description *string                          `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The job name.
 	//
 	// example:
@@ -372,6 +375,10 @@ func (s *GetJobResponseBody) GetDataSources() []*GetJobResponseBodyDataSources {
 	return s.DataSources
 }
 
+func (s *GetJobResponseBody) GetDescription() *string {
+	return s.Description
+}
+
 func (s *GetJobResponseBody) GetDisplayName() *string {
 	return s.DisplayName
 }
@@ -555,6 +562,11 @@ func (s *GetJobResponseBody) SetCustomEnvs(v []*GetJobResponseBodyCustomEnvs) *G
 
 func (s *GetJobResponseBody) SetDataSources(v []*GetJobResponseBodyDataSources) *GetJobResponseBody {
 	s.DataSources = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetDescription(v string) *GetJobResponseBody {
+	s.Description = &v
 	return s
 }
 

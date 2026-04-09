@@ -15,6 +15,8 @@ type iListJobsRequest interface {
 	GetBusinessUserId() *string
 	SetCaller(v string) *ListJobsRequest
 	GetCaller() *string
+	SetDescription(v string) *ListJobsRequest
+	GetDescription() *string
 	SetDisplayName(v string) *ListJobsRequest
 	GetDisplayName() *string
 	SetDisplayNameSearchMode(v string) *ListJobsRequest
@@ -103,7 +105,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// local
-	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller      *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
 	//
 	// example:
@@ -323,6 +326,10 @@ func (s *ListJobsRequest) GetCaller() *string {
 	return s.Caller
 }
 
+func (s *ListJobsRequest) GetDescription() *string {
+	return s.Description
+}
+
 func (s *ListJobsRequest) GetDisplayName() *string {
 	return s.DisplayName
 }
@@ -463,6 +470,11 @@ func (s *ListJobsRequest) SetBusinessUserId(v string) *ListJobsRequest {
 
 func (s *ListJobsRequest) SetCaller(v string) *ListJobsRequest {
 	s.Caller = &v
+	return s
+}
+
+func (s *ListJobsRequest) SetDescription(v string) *ListJobsRequest {
+	s.Description = &v
 	return s
 }
 
