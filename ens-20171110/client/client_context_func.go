@@ -9074,6 +9074,14 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, tmpReq *
 		query["VSwitchId"] = request.VSwitchId
 	}
 
+	if !dara.IsNil(request.VpdId) {
+		query["VpdId"] = request.VpdId
+	}
+
+	if !dara.IsNil(request.VpdVSwitchId) {
+		query["VpdVSwitchId"] = request.VpdVSwitchId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16665,6 +16673,10 @@ func (client *Client) RunInstancesWithContext(ctx context.Context, tmpReq *RunIn
 		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, dara.String("SystemDisk"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VpdVSwitchIds) {
+		request.VpdVSwitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VpdVSwitchIds, dara.String("VpdVSwitchIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		query["Amount"] = request.Amount
@@ -16832,6 +16844,14 @@ func (client *Client) RunInstancesWithContext(ctx context.Context, tmpReq *RunIn
 
 	if !dara.IsNil(request.VSwitchId) {
 		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpdId) {
+		query["VpdId"] = request.VpdId
+	}
+
+	if !dara.IsNil(request.VpdVSwitchIdsShrink) {
+		query["VpdVSwitchIds"] = request.VpdVSwitchIdsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

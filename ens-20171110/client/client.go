@@ -8152,8 +8152,6 @@ func (client *Client) DescribeApplication(request *DescribeApplicationRequest) (
 //
 // Queries the resources that can be created.
 //
-// @param request - DescribeAvailableResourceRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAvailableResourceResponse
@@ -8199,8 +8197,6 @@ func (client *Client) DescribeAvailableResource() (_result *DescribeAvailableRes
 //
 // Queries the specifications of resources that you can purchase when you create an instance.
 //
-// @param request - DescribeAvailableResourceInfoRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAvailableResourceInfoResponse
@@ -8245,8 +8241,6 @@ func (client *Client) DescribeAvailableResourceInfo() (_result *DescribeAvailabl
 // Summary:
 //
 // Queries available bandwidth metering methods.
-//
-// @param request - DescribeBandWithdChargeTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -8366,8 +8360,6 @@ func (client *Client) DescribeBandwitdhByInternetChargeType(request *DescribeBan
 // Summary:
 //
 // Queries the available resources in a region.
-//
-// @param request - DescribeCloudDiskAvailableResourceInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -9574,8 +9566,6 @@ func (client *Client) DescribeDisks(request *DescribeDisksRequest) (_result *Des
 //
 // Queries the specifications of resources that you can purchase when you create an instance.
 //
-// @param request - DescribeElbAvailableResourceInfoRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeElbAvailableResourceInfoResponse
@@ -9920,8 +9910,6 @@ func (client *Client) DescribeEnsNetDistrict(request *DescribeEnsNetDistrictRequ
 // Summary:
 //
 // Queries the supported network levels.
-//
-// @param request - DescribeEnsNetLevelRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12208,8 +12196,6 @@ func (client *Client) DescribeInstanceSDGStatus(request *DescribeInstanceSDGStat
 //
 // Queries the instance specifications that you can purchase.
 //
-// @param request - DescribeInstanceSpecRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstanceSpecResponse
@@ -12254,8 +12240,6 @@ func (client *Client) DescribeInstanceSpec() (_result *DescribeInstanceSpecRespo
 // Summary:
 //
 // Queries the specifications of instance types.
-//
-// @param request - DescribeInstanceTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12481,6 +12465,14 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 
 	if !dara.IsNil(request.VSwitchId) {
 		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpdId) {
+		query["VpdId"] = request.VpdId
+	}
+
+	if !dara.IsNil(request.VpdVSwitchId) {
+		query["VpdVSwitchId"] = request.VpdVSwitchId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13416,8 +13408,6 @@ func (client *Client) DescribeMountTargets(request *DescribeMountTargetsRequest)
 //
 // Queries the specifications of resources that you can purchase when you create a NAS.
 //
-// @param request - DescribeNASAvailableResourceInfoRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeNASAvailableResourceInfoResponse
@@ -14318,8 +14308,6 @@ func (client *Client) DescribeRegionResource(request *DescribeRegionResourceRequ
 // Summary:
 //
 // Queries the specifications of resources that you can purchase.
-//
-// @param request - DescribeReservedResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -17328,8 +17316,6 @@ func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *Imp
 //
 // Create a service-linked role (SLR) for ENS for the current user to manage resources.
 //
-// @param request - InitializeENSECKServiceRoleRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InitializeENSECKServiceRoleResponse
@@ -17903,8 +17889,6 @@ func (client *Client) ListAICPublicKeys(request *ListAICPublicKeysRequest) (_res
 //
 // # Querying the details of a cluster component
 //
-// @param request - ListAddonsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAddonsResponse
@@ -18257,8 +18241,6 @@ func (client *Client) ListObjects(request *ListObjectsRequest) (_result *ListObj
 // Summary:
 //
 // Lists all service capabilities.
-//
-// @param request - ListProductAbilitiesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -23005,6 +22987,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		request.SystemDiskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SystemDisk, dara.String("SystemDisk"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.VpdVSwitchIds) {
+		request.VpdVSwitchIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VpdVSwitchIds, dara.String("VpdVSwitchIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		query["Amount"] = request.Amount
@@ -23172,6 +23158,14 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 	if !dara.IsNil(request.VSwitchId) {
 		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpdId) {
+		query["VpdId"] = request.VpdId
+	}
+
+	if !dara.IsNil(request.VpdVSwitchIdsShrink) {
+		query["VpdVSwitchIds"] = request.VpdVSwitchIdsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

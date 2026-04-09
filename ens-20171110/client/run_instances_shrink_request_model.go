@@ -93,6 +93,10 @@ type iRunInstancesShrinkRequest interface {
 	GetUserData() *string
 	SetVSwitchId(v string) *RunInstancesShrinkRequest
 	GetVSwitchId() *string
+	SetVpdId(v string) *RunInstancesShrinkRequest
+	GetVpdId() *string
+	SetVpdVSwitchIdsShrink(v string) *RunInstancesShrinkRequest
+	GetVpdVSwitchIdsShrink() *string
 }
 
 type RunInstancesShrinkRequest struct {
@@ -423,7 +427,9 @@ type RunInstancesShrinkRequest struct {
 	// example:
 	//
 	// vsw-5sagnw7m613oulalkd10nv0ob
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId           *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpdId               *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	VpdVSwitchIdsShrink *string `json:"VpdVSwitchIds,omitempty" xml:"VpdVSwitchIds,omitempty"`
 }
 
 func (s RunInstancesShrinkRequest) String() string {
@@ -600,6 +606,14 @@ func (s *RunInstancesShrinkRequest) GetUserData() *string {
 
 func (s *RunInstancesShrinkRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *RunInstancesShrinkRequest) GetVpdId() *string {
+	return s.VpdId
+}
+
+func (s *RunInstancesShrinkRequest) GetVpdVSwitchIdsShrink() *string {
+	return s.VpdVSwitchIdsShrink
 }
 
 func (s *RunInstancesShrinkRequest) SetAmount(v int64) *RunInstancesShrinkRequest {
@@ -809,6 +823,16 @@ func (s *RunInstancesShrinkRequest) SetUserData(v string) *RunInstancesShrinkReq
 
 func (s *RunInstancesShrinkRequest) SetVSwitchId(v string) *RunInstancesShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetVpdId(v string) *RunInstancesShrinkRequest {
+	s.VpdId = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetVpdVSwitchIdsShrink(v string) *RunInstancesShrinkRequest {
+	s.VpdVSwitchIdsShrink = &v
 	return s
 }
 

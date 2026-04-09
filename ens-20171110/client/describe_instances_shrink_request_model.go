@@ -51,6 +51,10 @@ type iDescribeInstancesShrinkRequest interface {
 	GetTagsShrink() *string
 	SetVSwitchId(v string) *DescribeInstancesShrinkRequest
 	GetVSwitchId() *string
+	SetVpdId(v string) *DescribeInstancesShrinkRequest
+	GetVpdId() *string
+	SetVpdVSwitchId(v string) *DescribeInstancesShrinkRequest
+	GetVpdVSwitchId() *string
 }
 
 type DescribeInstancesShrinkRequest struct {
@@ -186,7 +190,9 @@ type DescribeInstancesShrinkRequest struct {
 	// example:
 	//
 	// vsw-2zeh0r1pabwtg6wcs****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpdId        *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	VpdVSwitchId *string `json:"VpdVSwitchId,omitempty" xml:"VpdVSwitchId,omitempty"`
 }
 
 func (s DescribeInstancesShrinkRequest) String() string {
@@ -279,6 +285,14 @@ func (s *DescribeInstancesShrinkRequest) GetTagsShrink() *string {
 
 func (s *DescribeInstancesShrinkRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeInstancesShrinkRequest) GetVpdId() *string {
+	return s.VpdId
+}
+
+func (s *DescribeInstancesShrinkRequest) GetVpdVSwitchId() *string {
+	return s.VpdVSwitchId
 }
 
 func (s *DescribeInstancesShrinkRequest) SetEipAddressesShrink(v string) *DescribeInstancesShrinkRequest {
@@ -383,6 +397,16 @@ func (s *DescribeInstancesShrinkRequest) SetTagsShrink(v string) *DescribeInstan
 
 func (s *DescribeInstancesShrinkRequest) SetVSwitchId(v string) *DescribeInstancesShrinkRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetVpdId(v string) *DescribeInstancesShrinkRequest {
+	s.VpdId = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetVpdVSwitchId(v string) *DescribeInstancesShrinkRequest {
+	s.VpdVSwitchId = &v
 	return s
 }
 

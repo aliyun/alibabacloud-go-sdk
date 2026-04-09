@@ -93,6 +93,10 @@ type iRunInstancesRequest interface {
 	GetUserData() *string
 	SetVSwitchId(v string) *RunInstancesRequest
 	GetVSwitchId() *string
+	SetVpdId(v string) *RunInstancesRequest
+	GetVpdId() *string
+	SetVpdVSwitchIds(v []*string) *RunInstancesRequest
+	GetVpdVSwitchIds() []*string
 }
 
 type RunInstancesRequest struct {
@@ -423,7 +427,9 @@ type RunInstancesRequest struct {
 	// example:
 	//
 	// vsw-5sagnw7m613oulalkd10nv0ob
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId     *string   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpdId         *string   `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	VpdVSwitchIds []*string `json:"VpdVSwitchIds,omitempty" xml:"VpdVSwitchIds,omitempty" type:"Repeated"`
 }
 
 func (s RunInstancesRequest) String() string {
@@ -600,6 +606,14 @@ func (s *RunInstancesRequest) GetUserData() *string {
 
 func (s *RunInstancesRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *RunInstancesRequest) GetVpdId() *string {
+	return s.VpdId
+}
+
+func (s *RunInstancesRequest) GetVpdVSwitchIds() []*string {
+	return s.VpdVSwitchIds
 }
 
 func (s *RunInstancesRequest) SetAmount(v int64) *RunInstancesRequest {
@@ -809,6 +823,16 @@ func (s *RunInstancesRequest) SetUserData(v string) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetVSwitchId(v string) *RunInstancesRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetVpdId(v string) *RunInstancesRequest {
+	s.VpdId = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetVpdVSwitchIds(v []*string) *RunInstancesRequest {
+	s.VpdVSwitchIds = v
 	return s
 }
 

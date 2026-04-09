@@ -857,6 +857,8 @@ type DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInter
 	PrimaryIpAddress   *string                                                                                        `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
 	PrivateIpSets      *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
 	Type               *string                                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	VpdId              *string                                                                                        `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	VpdVSwitchId       *string                                                                                        `json:"VpdVSwitchId,omitempty" xml:"VpdVSwitchId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) String() string {
@@ -891,6 +893,14 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 	return s.Type
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) GetVpdId() *string {
+	return s.VpdId
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) GetVpdVSwitchId() *string {
+	return s.VpdVSwitchId
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetIpv6Sets(v *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfacesIpv6Sets) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
 	s.Ipv6Sets = v
 	return s
@@ -918,6 +928,16 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkI
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetType(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetVpdId(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.VpdId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces) SetVpdVSwitchId(v string) *DescribeInstancesResponseBodyInstancesInstanceNetworkInterfacesNetworkInterfaces {
+	s.VpdVSwitchId = &v
 	return s
 }
 

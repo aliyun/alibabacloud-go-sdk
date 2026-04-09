@@ -51,6 +51,10 @@ type iDescribeInstancesRequest interface {
 	GetTags() []*DescribeInstancesRequestTags
 	SetVSwitchId(v string) *DescribeInstancesRequest
 	GetVSwitchId() *string
+	SetVpdId(v string) *DescribeInstancesRequest
+	GetVpdId() *string
+	SetVpdVSwitchId(v string) *DescribeInstancesRequest
+	GetVpdVSwitchId() *string
 }
 
 type DescribeInstancesRequest struct {
@@ -186,7 +190,9 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// vsw-2zeh0r1pabwtg6wcs****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpdId        *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
+	VpdVSwitchId *string `json:"VpdVSwitchId,omitempty" xml:"VpdVSwitchId,omitempty"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -279,6 +285,14 @@ func (s *DescribeInstancesRequest) GetTags() []*DescribeInstancesRequestTags {
 
 func (s *DescribeInstancesRequest) GetVSwitchId() *string {
 	return s.VSwitchId
+}
+
+func (s *DescribeInstancesRequest) GetVpdId() *string {
+	return s.VpdId
+}
+
+func (s *DescribeInstancesRequest) GetVpdVSwitchId() *string {
+	return s.VpdVSwitchId
 }
 
 func (s *DescribeInstancesRequest) SetEipAddresses(v []*string) *DescribeInstancesRequest {
@@ -383,6 +397,16 @@ func (s *DescribeInstancesRequest) SetTags(v []*DescribeInstancesRequestTags) *D
 
 func (s *DescribeInstancesRequest) SetVSwitchId(v string) *DescribeInstancesRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetVpdId(v string) *DescribeInstancesRequest {
+	s.VpdId = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetVpdVSwitchId(v string) *DescribeInstancesRequest {
+	s.VpdVSwitchId = &v
 	return s
 }
 
