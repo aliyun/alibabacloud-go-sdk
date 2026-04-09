@@ -9,6 +9,8 @@ type iCreateDatasetShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessLevel(v string) *CreateDatasetShrinkRequest
+	GetAccessLevel() *string
 	SetDatasetConfigShrink(v string) *CreateDatasetShrinkRequest
 	GetDatasetConfigShrink() *string
 	SetDatasetDescription(v string) *CreateDatasetShrinkRequest
@@ -28,6 +30,10 @@ type iCreateDatasetShrinkRequest interface {
 }
 
 type CreateDatasetShrinkRequest struct {
+	// example:
+	//
+	// private
+	AccessLevel         *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
 	DatasetConfigShrink *string `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty"`
 	// example:
 	//
@@ -68,6 +74,10 @@ func (s CreateDatasetShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDatasetShrinkRequest) GetAccessLevel() *string {
+	return s.AccessLevel
+}
+
 func (s *CreateDatasetShrinkRequest) GetDatasetConfigShrink() *string {
 	return s.DatasetConfigShrink
 }
@@ -98,6 +108,11 @@ func (s *CreateDatasetShrinkRequest) GetSearchDatasetEnable() *int32 {
 
 func (s *CreateDatasetShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateDatasetShrinkRequest) SetAccessLevel(v string) *CreateDatasetShrinkRequest {
+	s.AccessLevel = &v
+	return s
 }
 
 func (s *CreateDatasetShrinkRequest) SetDatasetConfigShrink(v string) *CreateDatasetShrinkRequest {

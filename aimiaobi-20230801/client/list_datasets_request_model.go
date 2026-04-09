@@ -9,6 +9,8 @@ type iListDatasetsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDatasetDescription(v string) *ListDatasetsRequest
+	GetDatasetDescription() *string
 	SetDatasetId(v int64) *ListDatasetsRequest
 	GetDatasetId() *int64
 	SetDatasetName(v string) *ListDatasetsRequest
@@ -32,6 +34,10 @@ type iListDatasetsRequest interface {
 }
 
 type ListDatasetsRequest struct {
+	// example:
+	//
+	// xx
+	DatasetDescription *string `json:"DatasetDescription,omitempty" xml:"DatasetDescription,omitempty"`
 	// example:
 	//
 	// 1
@@ -81,6 +87,10 @@ func (s ListDatasetsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListDatasetsRequest) GetDatasetDescription() *string {
+	return s.DatasetDescription
+}
+
 func (s *ListDatasetsRequest) GetDatasetId() *int64 {
 	return s.DatasetId
 }
@@ -119,6 +129,11 @@ func (s *ListDatasetsRequest) GetStartTime() *string {
 
 func (s *ListDatasetsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListDatasetsRequest) SetDatasetDescription(v string) *ListDatasetsRequest {
+	s.DatasetDescription = &v
+	return s
 }
 
 func (s *ListDatasetsRequest) SetDatasetId(v int64) *ListDatasetsRequest {

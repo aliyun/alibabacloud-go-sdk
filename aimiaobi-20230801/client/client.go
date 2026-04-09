@@ -1240,6 +1240,86 @@ func (client *Client) ConfirmAndPostProcessAuditNote(request *ConfirmAndPostProc
 
 // Summary:
 //
+// 用户数据集权限-批量添加
+//
+// @param tmpReq - CreateDataPermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataPermissionsResponse
+func (client *Client) CreateDataPermissionsWithOptions(tmpReq *CreateDataPermissionsRequest, runtime *dara.RuntimeOptions) (_result *CreateDataPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateDataPermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PermissionUserInfos) {
+		request.PermissionUserInfosShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PermissionUserInfos, dara.String("PermissionUserInfos"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataId) {
+		body["DataId"] = request.DataId
+	}
+
+	if !dara.IsNil(request.DataType) {
+		body["DataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.PermissionUserInfosShrink) {
+		body["PermissionUserInfos"] = request.PermissionUserInfosShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataPermissions"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户数据集权限-批量添加
+//
+// @param request - CreateDataPermissionsRequest
+//
+// @return CreateDataPermissionsResponse
+func (client *Client) CreateDataPermissions(request *CreateDataPermissionsRequest) (_result *CreateDataPermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataPermissionsResponse{}
+	_body, _err := client.CreateDataPermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 数据集管理-创建
 //
 // @param tmpReq - CreateDatasetRequest
@@ -1265,6 +1345,10 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessLevel) {
+		body["AccessLevel"] = request.AccessLevel
+	}
+
 	if !dara.IsNil(request.DatasetConfigShrink) {
 		body["DatasetConfig"] = request.DatasetConfigShrink
 	}
@@ -1911,6 +1995,78 @@ func (client *Client) DeleteCustomTopicViewPointById(request *DeleteCustomTopicV
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteCustomTopicViewPointByIdResponse{}
 	_body, _err := client.DeleteCustomTopicViewPointByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户数据集权限-批量删除
+//
+// @param tmpReq - DeleteDataPermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataPermissionsResponse
+func (client *Client) DeleteDataPermissionsWithOptions(tmpReq *DeleteDataPermissionsRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteDataPermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ids) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, dara.String("Ids"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdsShrink) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataPermissions"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户数据集权限-批量删除
+//
+// @param request - DeleteDataPermissionsRequest
+//
+// @return DeleteDataPermissionsResponse
+func (client *Client) DeleteDataPermissions(request *DeleteDataPermissionsRequest) (_result *DeleteDataPermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataPermissionsResponse{}
+	_body, _err := client.DeleteDataPermissionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8180,6 +8336,84 @@ func (client *Client) ListCustomViewPoints(request *ListCustomViewPointsRequest)
 
 // Summary:
 //
+// 用户数据集权限-列表
+//
+// @param request - ListDataPermissionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataPermissionsResponse
+func (client *Client) ListDataPermissionsWithOptions(request *ListDataPermissionsRequest, runtime *dara.RuntimeOptions) (_result *ListDataPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DataId) {
+		body["DataId"] = request.DataId
+	}
+
+	if !dara.IsNil(request.DataType) {
+		body["DataType"] = request.DataType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataPermissions"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户数据集权限-列表
+//
+// @param request - ListDataPermissionsRequest
+//
+// @return ListDataPermissionsResponse
+func (client *Client) ListDataPermissions(request *ListDataPermissionsRequest) (_result *ListDataPermissionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDataPermissionsResponse{}
+	_body, _err := client.ListDataPermissionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询数据集文档列表
 //
 // @param tmpReq - ListDatasetDocumentsRequest
@@ -8375,6 +8609,10 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DatasetDescription) {
+		body["DatasetDescription"] = request.DatasetDescription
+	}
+
 	if !dara.IsNil(request.DatasetId) {
 		body["DatasetId"] = request.DatasetId
 	}
@@ -16978,6 +17216,10 @@ func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, run
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessLevel) {
+		body["AccessLevel"] = request.AccessLevel
+	}
+
 	if !dara.IsNil(request.DatasetConfigShrink) {
 		body["DatasetConfig"] = request.DatasetConfigShrink
 	}

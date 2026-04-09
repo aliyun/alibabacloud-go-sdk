@@ -121,6 +121,10 @@ func (s *GetDatasetResponseBody) Validate() error {
 type GetDatasetResponseBodyData struct {
 	// example:
 	//
+	// private
+	AccessLevel *string `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// example:
+	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
@@ -159,6 +163,10 @@ func (s GetDatasetResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetDatasetResponseBodyData) GetAccessLevel() *string {
+	return s.AccessLevel
+}
+
 func (s *GetDatasetResponseBodyData) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -193,6 +201,11 @@ func (s *GetDatasetResponseBodyData) GetDocumentHandleConfig() *GetDatasetRespon
 
 func (s *GetDatasetResponseBodyData) GetSearchDatasetEnable() *int32 {
 	return s.SearchDatasetEnable
+}
+
+func (s *GetDatasetResponseBodyData) SetAccessLevel(v string) *GetDatasetResponseBodyData {
+	s.AccessLevel = &v
+	return s
 }
 
 func (s *GetDatasetResponseBodyData) SetCreateTime(v string) *GetDatasetResponseBodyData {

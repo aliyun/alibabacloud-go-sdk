@@ -9,6 +9,8 @@ type iCreateDatasetRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessLevel(v string) *CreateDatasetRequest
+	GetAccessLevel() *string
 	SetDatasetConfig(v *CreateDatasetRequestDatasetConfig) *CreateDatasetRequest
 	GetDatasetConfig() *CreateDatasetRequestDatasetConfig
 	SetDatasetDescription(v string) *CreateDatasetRequest
@@ -28,6 +30,10 @@ type iCreateDatasetRequest interface {
 }
 
 type CreateDatasetRequest struct {
+	// example:
+	//
+	// private
+	AccessLevel   *string                            `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
 	DatasetConfig *CreateDatasetRequestDatasetConfig `json:"DatasetConfig,omitempty" xml:"DatasetConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -68,6 +74,10 @@ func (s CreateDatasetRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDatasetRequest) GetAccessLevel() *string {
+	return s.AccessLevel
+}
+
 func (s *CreateDatasetRequest) GetDatasetConfig() *CreateDatasetRequestDatasetConfig {
 	return s.DatasetConfig
 }
@@ -98,6 +108,11 @@ func (s *CreateDatasetRequest) GetSearchDatasetEnable() *int32 {
 
 func (s *CreateDatasetRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *CreateDatasetRequest) SetAccessLevel(v string) *CreateDatasetRequest {
+	s.AccessLevel = &v
+	return s
 }
 
 func (s *CreateDatasetRequest) SetDatasetConfig(v *CreateDatasetRequestDatasetConfig) *CreateDatasetRequest {

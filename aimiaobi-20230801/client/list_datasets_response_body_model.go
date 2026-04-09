@@ -271,6 +271,11 @@ func (s *ListDatasetsResponseBodyCustomSemanticSearchConfig) Validate() error {
 type ListDatasetsResponseBodyData struct {
 	// example:
 	//
+	// private
+	AccessLevel    *string                                       `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	Administrators []*ListDatasetsResponseBodyDataAdministrators `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// example:
+	//
 	// 2024-11-12 21:46:24
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
@@ -311,6 +316,14 @@ func (s ListDatasetsResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListDatasetsResponseBodyData) GetAccessLevel() *string {
+	return s.AccessLevel
+}
+
+func (s *ListDatasetsResponseBodyData) GetAdministrators() []*ListDatasetsResponseBodyDataAdministrators {
+	return s.Administrators
+}
+
 func (s *ListDatasetsResponseBodyData) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -341,6 +354,16 @@ func (s *ListDatasetsResponseBodyData) GetDocUsedQuota() *int64 {
 
 func (s *ListDatasetsResponseBodyData) GetSearchDatasetEnable() *int32 {
 	return s.SearchDatasetEnable
+}
+
+func (s *ListDatasetsResponseBodyData) SetAccessLevel(v string) *ListDatasetsResponseBodyData {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyData) SetAdministrators(v []*ListDatasetsResponseBodyDataAdministrators) *ListDatasetsResponseBodyData {
+	s.Administrators = v
+	return s
 }
 
 func (s *ListDatasetsResponseBodyData) SetCreateTime(v string) *ListDatasetsResponseBodyData {
@@ -384,6 +407,56 @@ func (s *ListDatasetsResponseBodyData) SetSearchDatasetEnable(v int32) *ListData
 }
 
 func (s *ListDatasetsResponseBodyData) Validate() error {
+	if s.Administrators != nil {
+		for _, item := range s.Administrators {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListDatasetsResponseBodyDataAdministrators struct {
+	// example:
+	//
+	// xx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// xx
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyDataAdministrators) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyDataAdministrators) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyDataAdministrators) GetUserId() *string {
+	return s.UserId
+}
+
+func (s *ListDatasetsResponseBodyDataAdministrators) GetUsername() *string {
+	return s.Username
+}
+
+func (s *ListDatasetsResponseBodyDataAdministrators) SetUserId(v string) *ListDatasetsResponseBodyDataAdministrators {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyDataAdministrators) SetUsername(v string) *ListDatasetsResponseBodyDataAdministrators {
+	s.Username = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyDataAdministrators) Validate() error {
 	return dara.Validate(s)
 }
 
