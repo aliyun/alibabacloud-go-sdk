@@ -497,14 +497,117 @@ func (client *Client) CreateUser(instanceId *string, applicationId *string, requ
 
 // Summary:
 //
+// 创建账户专属凭据。
+//
+// @param request - CreateUserExclusiveCredentialRequest
+//
+// @param headers - CreateUserExclusiveCredentialHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserExclusiveCredentialResponse
+func (client *Client) CreateUserExclusiveCredentialWithOptions(instanceId *string, request *CreateUserExclusiveCredentialRequest, headers *CreateUserExclusiveCredentialHeaders, runtime *dara.RuntimeOptions) (_result *CreateUserExclusiveCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialContent) {
+		body["credentialContent"] = request.CredentialContent
+	}
+
+	if !dara.IsNil(request.CredentialIdentifier) {
+		body["credentialIdentifier"] = request.CredentialIdentifier
+	}
+
+	if !dara.IsNil(request.CredentialName) {
+		body["credentialName"] = request.CredentialName
+	}
+
+	if !dara.IsNil(request.CredentialScenarioLabel) {
+		body["credentialScenarioLabel"] = request.CredentialScenarioLabel
+	}
+
+	if !dara.IsNil(request.CredentialType) {
+		body["credentialType"] = request.CredentialType
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUserExclusiveCredential"),
+		Version:     dara.String("2022-02-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/" + dara.PercentEncode(dara.StringValue(instanceId)) + "/credentials/_/actions/createUserExclusive"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("Anonymous"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserExclusiveCredentialResponse{}
+	_body, _err := client.DoROARequest(params.Action, params.Version, params.Protocol, params.Method, params.AuthType, params.Pathname, params.BodyType, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建账户专属凭据。
+//
+// @param request - CreateUserExclusiveCredentialRequest
+//
+// @return CreateUserExclusiveCredentialResponse
+func (client *Client) CreateUserExclusiveCredential(instanceId *string, request *CreateUserExclusiveCredentialRequest) (_result *CreateUserExclusiveCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &CreateUserExclusiveCredentialHeaders{}
+	_result = &CreateUserExclusiveCredentialResponse{}
+	_body, _err := client.CreateUserExclusiveCredentialWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a group.
+//
+// @param request - DeleteGroupRequest
 //
 // @param headers - DeleteGroupHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGroupResponse
-func (client *Client) DeleteGroupWithOptions(instanceId *string, applicationId *string, groupId *string, headers *DeleteGroupHeaders, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+func (client *Client) DeleteGroupWithOptions(instanceId *string, applicationId *string, groupId *string, request *DeleteGroupRequest, headers *DeleteGroupHeaders, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -541,12 +644,14 @@ func (client *Client) DeleteGroupWithOptions(instanceId *string, applicationId *
 //
 // Deletes a group.
 //
+// @param request - DeleteGroupRequest
+//
 // @return DeleteGroupResponse
-func (client *Client) DeleteGroup(instanceId *string, applicationId *string, groupId *string) (_result *DeleteGroupResponse, _err error) {
+func (client *Client) DeleteGroup(instanceId *string, applicationId *string, groupId *string, request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &DeleteGroupHeaders{}
 	_result = &DeleteGroupResponse{}
-	_body, _err := client.DeleteGroupWithOptions(instanceId, applicationId, groupId, headers, runtime)
+	_body, _err := client.DeleteGroupWithOptions(instanceId, applicationId, groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -558,12 +663,20 @@ func (client *Client) DeleteGroup(instanceId *string, applicationId *string, gro
 //
 // Deletes an organizational unit.
 //
+// @param request - DeleteOrganizationalUnitRequest
+//
 // @param headers - DeleteOrganizationalUnitHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteOrganizationalUnitResponse
-func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *DeleteOrganizationalUnitHeaders, runtime *dara.RuntimeOptions) (_result *DeleteOrganizationalUnitResponse, _err error) {
+func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, request *DeleteOrganizationalUnitRequest, headers *DeleteOrganizationalUnitHeaders, runtime *dara.RuntimeOptions) (_result *DeleteOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -600,12 +713,14 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(instanceId *string, ap
 //
 // Deletes an organizational unit.
 //
+// @param request - DeleteOrganizationalUnitRequest
+//
 // @return DeleteOrganizationalUnitResponse
-func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *DeleteOrganizationalUnitResponse, _err error) {
+func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string, request *DeleteOrganizationalUnitRequest) (_result *DeleteOrganizationalUnitResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &DeleteOrganizationalUnitHeaders{}
 	_result = &DeleteOrganizationalUnitResponse{}
-	_body, _err := client.DeleteOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
+	_body, _err := client.DeleteOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -617,12 +732,20 @@ func (client *Client) DeleteOrganizationalUnit(instanceId *string, applicationId
 //
 // Deletes an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - DeleteUserRequest
+//
 // @param headers - DeleteUserHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUserResponse
-func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *DeleteUserHeaders, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
+func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *string, userId *string, request *DeleteUserRequest, headers *DeleteUserHeaders, runtime *dara.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -659,12 +782,14 @@ func (client *Client) DeleteUserWithOptions(instanceId *string, applicationId *s
 //
 // Deletes an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - DeleteUserRequest
+//
 // @return DeleteUserResponse
-func (client *Client) DeleteUser(instanceId *string, applicationId *string, userId *string) (_result *DeleteUserResponse, _err error) {
+func (client *Client) DeleteUser(instanceId *string, applicationId *string, userId *string, request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &DeleteUserHeaders{}
 	_result = &DeleteUserResponse{}
-	_body, _err := client.DeleteUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	_body, _err := client.DeleteUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -676,12 +801,20 @@ func (client *Client) DeleteUser(instanceId *string, applicationId *string, user
 //
 // Disables an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - DisableUserRequest
+//
 // @param headers - DisableUserHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DisableUserResponse
-func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *DisableUserHeaders, runtime *dara.RuntimeOptions) (_result *DisableUserResponse, _err error) {
+func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *string, userId *string, request *DisableUserRequest, headers *DisableUserHeaders, runtime *dara.RuntimeOptions) (_result *DisableUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -718,12 +851,14 @@ func (client *Client) DisableUserWithOptions(instanceId *string, applicationId *
 //
 // Disables an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - DisableUserRequest
+//
 // @return DisableUserResponse
-func (client *Client) DisableUser(instanceId *string, applicationId *string, userId *string) (_result *DisableUserResponse, _err error) {
+func (client *Client) DisableUser(instanceId *string, applicationId *string, userId *string, request *DisableUserRequest) (_result *DisableUserResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &DisableUserHeaders{}
 	_result = &DisableUserResponse{}
-	_body, _err := client.DisableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	_body, _err := client.DisableUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -735,12 +870,20 @@ func (client *Client) DisableUser(instanceId *string, applicationId *string, use
 //
 // Enables an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - EnableUserRequest
+//
 // @param headers - EnableUserHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableUserResponse
-func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *EnableUserHeaders, runtime *dara.RuntimeOptions) (_result *EnableUserResponse, _err error) {
+func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *string, userId *string, request *EnableUserRequest, headers *EnableUserHeaders, runtime *dara.RuntimeOptions) (_result *EnableUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -777,12 +920,14 @@ func (client *Client) EnableUserWithOptions(instanceId *string, applicationId *s
 //
 // Enables an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - EnableUserRequest
+//
 // @return EnableUserResponse
-func (client *Client) EnableUser(instanceId *string, applicationId *string, userId *string) (_result *EnableUserResponse, _err error) {
+func (client *Client) EnableUser(instanceId *string, applicationId *string, userId *string, request *EnableUserRequest) (_result *EnableUserResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &EnableUserHeaders{}
 	_result = &EnableUserResponse{}
-	_body, _err := client.EnableUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	_body, _err := client.EnableUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1288,12 +1433,20 @@ func (client *Client) GenerateTokenByAuthorizationServer(instanceId *string, aut
 //
 //   - You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
 //
+// @param request - GetApplicationProvisioningScopeRequest
+//
 // @param headers - GetApplicationProvisioningScopeHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetApplicationProvisioningScopeResponse
-func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *string, applicationId *string, headers *GetApplicationProvisioningScopeHeaders, runtime *dara.RuntimeOptions) (_result *GetApplicationProvisioningScopeResponse, _err error) {
+func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *string, applicationId *string, request *GetApplicationProvisioningScopeRequest, headers *GetApplicationProvisioningScopeHeaders, runtime *dara.RuntimeOptions) (_result *GetApplicationProvisioningScopeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -1336,12 +1489,14 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(instanceId *str
 //
 //   - You can go to the Applications page in the IDaaS console to set the synchronization scope. After an application is created, the application has the permission to call this operation by default.
 //
+// @param request - GetApplicationProvisioningScopeRequest
+//
 // @return GetApplicationProvisioningScopeResponse
-func (client *Client) GetApplicationProvisioningScope(instanceId *string, applicationId *string) (_result *GetApplicationProvisioningScopeResponse, _err error) {
+func (client *Client) GetApplicationProvisioningScope(instanceId *string, applicationId *string, request *GetApplicationProvisioningScopeRequest) (_result *GetApplicationProvisioningScopeResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &GetApplicationProvisioningScopeHeaders{}
 	_result = &GetApplicationProvisioningScopeResponse{}
-	_body, _err := client.GetApplicationProvisioningScopeWithOptions(instanceId, applicationId, headers, runtime)
+	_body, _err := client.GetApplicationProvisioningScopeWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1353,12 +1508,20 @@ func (client *Client) GetApplicationProvisioningScope(instanceId *string, applic
 //
 // Queries the details of a group.
 //
+// @param request - GetGroupRequest
+//
 // @param headers - GetGroupHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetGroupResponse
-func (client *Client) GetGroupWithOptions(instanceId *string, applicationId *string, groupId *string, headers *GetGroupHeaders, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+func (client *Client) GetGroupWithOptions(instanceId *string, applicationId *string, groupId *string, request *GetGroupRequest, headers *GetGroupHeaders, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -1395,12 +1558,14 @@ func (client *Client) GetGroupWithOptions(instanceId *string, applicationId *str
 //
 // Queries the details of a group.
 //
+// @param request - GetGroupRequest
+//
 // @return GetGroupResponse
-func (client *Client) GetGroup(instanceId *string, applicationId *string, groupId *string) (_result *GetGroupResponse, _err error) {
+func (client *Client) GetGroup(instanceId *string, applicationId *string, groupId *string, request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &GetGroupHeaders{}
 	_result = &GetGroupResponse{}
-	_body, _err := client.GetGroupWithOptions(instanceId, applicationId, groupId, headers, runtime)
+	_body, _err := client.GetGroupWithOptions(instanceId, applicationId, groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1412,12 +1577,20 @@ func (client *Client) GetGroup(instanceId *string, applicationId *string, groupI
 //
 // Queries the information of an organizational unit.
 //
+// @param request - GetOrganizationalUnitRequest
+//
 // @param headers - GetOrganizationalUnitHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOrganizationalUnitResponse
-func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *GetOrganizationalUnitHeaders, runtime *dara.RuntimeOptions) (_result *GetOrganizationalUnitResponse, _err error) {
+func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, request *GetOrganizationalUnitRequest, headers *GetOrganizationalUnitHeaders, runtime *dara.RuntimeOptions) (_result *GetOrganizationalUnitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -1454,12 +1627,14 @@ func (client *Client) GetOrganizationalUnitWithOptions(instanceId *string, appli
 //
 // Queries the information of an organizational unit.
 //
+// @param request - GetOrganizationalUnitRequest
+//
 // @return GetOrganizationalUnitResponse
-func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *GetOrganizationalUnitResponse, _err error) {
+func (client *Client) GetOrganizationalUnit(instanceId *string, applicationId *string, organizationalUnitId *string, request *GetOrganizationalUnitRequest) (_result *GetOrganizationalUnitResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &GetOrganizationalUnitHeaders{}
 	_result = &GetOrganizationalUnitResponse{}
-	_body, _err := client.GetOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
+	_body, _err := client.GetOrganizationalUnitWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1554,12 +1729,20 @@ func (client *Client) GetOrganizationalUnitIdByExternalId(instanceId *string, ap
 //
 // Queries the details of an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - GetUserRequest
+//
 // @param headers - GetUserHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserResponse
-func (client *Client) GetUserWithOptions(instanceId *string, applicationId *string, userId *string, headers *GetUserHeaders, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+func (client *Client) GetUserWithOptions(instanceId *string, applicationId *string, userId *string, request *GetUserRequest, headers *GetUserHeaders, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -1596,12 +1779,14 @@ func (client *Client) GetUserWithOptions(instanceId *string, applicationId *stri
 //
 // Queries the details of an Employee Identity and Access Management (EIAM) account.
 //
+// @param request - GetUserRequest
+//
 // @return GetUserResponse
-func (client *Client) GetUser(instanceId *string, applicationId *string, userId *string) (_result *GetUserResponse, _err error) {
+func (client *Client) GetUser(instanceId *string, applicationId *string, userId *string, request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &GetUserHeaders{}
 	_result = &GetUserResponse{}
-	_body, _err := client.GetUserWithOptions(instanceId, applicationId, userId, headers, runtime)
+	_body, _err := client.GetUserWithOptions(instanceId, applicationId, userId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1921,12 +2106,20 @@ func (client *Client) GetUserIdByUsername(instanceId *string, applicationId *str
 //
 // Queries the information of a user by using the user token.
 //
+// @param request - GetUserInfoRequest
+//
 // @param headers - GetUserInfoHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUserInfoResponse
-func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *string, headers *GetUserInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
+func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *string, request *GetUserInfoRequest, headers *GetUserInfoHeaders, runtime *dara.RuntimeOptions) (_result *GetUserInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -1963,12 +2156,14 @@ func (client *Client) GetUserInfoWithOptions(instanceId *string, applicationId *
 //
 // Queries the information of a user by using the user token.
 //
+// @param request - GetUserInfoRequest
+//
 // @return GetUserInfoResponse
-func (client *Client) GetUserInfo(instanceId *string, applicationId *string) (_result *GetUserInfoResponse, _err error) {
+func (client *Client) GetUserInfo(instanceId *string, applicationId *string, request *GetUserInfoRequest) (_result *GetUserInfoResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &GetUserInfoHeaders{}
 	_result = &GetUserInfoResponse{}
-	_body, _err := client.GetUserInfoWithOptions(instanceId, applicationId, headers, runtime)
+	_body, _err := client.GetUserInfoWithOptions(instanceId, applicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2237,12 +2432,20 @@ func (client *Client) ListGroupsForUser(instanceId *string, applicationId *strin
 //
 // Queries the information of all the parent organizational units of an organizational unit.
 //
+// @param request - ListOrganizationalUnitParentIdsRequest
+//
 // @param headers - ListOrganizationalUnitParentIdsHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListOrganizationalUnitParentIdsResponse
-func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, headers *ListOrganizationalUnitParentIdsHeaders, runtime *dara.RuntimeOptions) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
+func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *string, applicationId *string, organizationalUnitId *string, request *ListOrganizationalUnitParentIdsRequest, headers *ListOrganizationalUnitParentIdsHeaders, runtime *dara.RuntimeOptions) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	realHeaders := make(map[string]*string)
 	if !dara.IsNil(headers.CommonHeaders) {
 		realHeaders = headers.CommonHeaders
@@ -2279,12 +2482,14 @@ func (client *Client) ListOrganizationalUnitParentIdsWithOptions(instanceId *str
 //
 // Queries the information of all the parent organizational units of an organizational unit.
 //
+// @param request - ListOrganizationalUnitParentIdsRequest
+//
 // @return ListOrganizationalUnitParentIdsResponse
-func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applicationId *string, organizationalUnitId *string) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
+func (client *Client) ListOrganizationalUnitParentIds(instanceId *string, applicationId *string, organizationalUnitId *string, request *ListOrganizationalUnitParentIdsRequest) (_result *ListOrganizationalUnitParentIdsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := &ListOrganizationalUnitParentIdsHeaders{}
 	_result = &ListOrganizationalUnitParentIdsResponse{}
-	_body, _err := client.ListOrganizationalUnitParentIdsWithOptions(instanceId, applicationId, organizationalUnitId, headers, runtime)
+	_body, _err := client.ListOrganizationalUnitParentIdsWithOptions(instanceId, applicationId, organizationalUnitId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
