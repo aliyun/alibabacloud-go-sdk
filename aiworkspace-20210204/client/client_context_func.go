@@ -196,12 +196,20 @@ func (client *Client) AddImageLabelsWithContext(ctx context.Context, ImageId *st
 //
 // Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
 //
+// @param request - AddMemberRoleRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return AddMemberRoleResponse
-func (client *Client) AddMemberRoleWithContext(ctx context.Context, WorkspaceId *string, MemberId *string, RoleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMemberRoleResponse, _err error) {
+func (client *Client) AddMemberRoleWithContext(ctx context.Context, WorkspaceId *string, MemberId *string, RoleName *string, request *AddMemberRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddMemberRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1698,12 +1706,20 @@ func (client *Client) CreateWorkspaceResourceWithContext(ctx context.Context, Wo
 //
 // Deletes a code source based on the provided ID.
 //
+// @param request - DeleteCodeSourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCodeSourceResponse
-func (client *Client) DeleteCodeSourceWithContext(ctx context.Context, CodeSourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCodeSourceResponse, _err error) {
+func (client *Client) DeleteCodeSourceWithContext(ctx context.Context, CodeSourceId *string, request *DeleteCodeSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCodeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1782,12 +1798,20 @@ func (client *Client) DeleteConfigWithContext(ctx context.Context, WorkspaceId *
 //
 // Deletes a connection.
 //
+// @param request - DeleteConnectionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteConnectionResponse
-func (client *Client) DeleteConnectionWithContext(ctx context.Context, ConnectionId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
+func (client *Client) DeleteConnectionWithContext(ctx context.Context, ConnectionId *string, request *DeleteConnectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1815,12 +1839,20 @@ func (client *Client) DeleteConnectionWithContext(ctx context.Context, Connectio
 //
 // Deletes a dataset.
 //
+// @param request - DeleteDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDatasetResponse
-func (client *Client) DeleteDatasetWithContext(ctx context.Context, DatasetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+func (client *Client) DeleteDatasetWithContext(ctx context.Context, DatasetId *string, request *DeleteDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1903,12 +1935,20 @@ func (client *Client) DeleteDatasetFileMetasWithContext(ctx context.Context, Dat
 //
 // Deletes a dataset job.
 //
+// @param request - DeleteDatasetJobRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDatasetJobResponse
-func (client *Client) DeleteDatasetJobWithContext(ctx context.Context, DatasetId *string, DatasetJobId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetJobResponse, _err error) {
+func (client *Client) DeleteDatasetJobWithContext(ctx context.Context, DatasetId *string, DatasetJobId *string, request *DeleteDatasetJobRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2030,12 +2070,20 @@ func (client *Client) DeleteDatasetLabelsWithContext(ctx context.Context, Datase
 //
 // Deletes the information about a specified version of a dataset. Version v1 cannot be deleted by using this operation. When you call the DeleteDataset operation to delete a dataset, it can be deleted at the same time.
 //
+// @param request - DeleteDatasetVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDatasetVersionResponse
-func (client *Client) DeleteDatasetVersionWithContext(ctx context.Context, DatasetId *string, VersionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetVersionResponse, _err error) {
+func (client *Client) DeleteDatasetVersionWithContext(ctx context.Context, DatasetId *string, VersionName *string, request *DeleteDatasetVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2110,12 +2158,20 @@ func (client *Client) DeleteDatasetVersionLabelsWithContext(ctx context.Context,
 //
 // Deletes an experiment.
 //
+// @param request - DeleteExperimentRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExperimentResponse
-func (client *Client) DeleteExperimentWithContext(ctx context.Context, ExperimentId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
+func (client *Client) DeleteExperimentWithContext(ctx context.Context, ExperimentId *string, request *DeleteExperimentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2143,12 +2199,20 @@ func (client *Client) DeleteExperimentWithContext(ctx context.Context, Experimen
 //
 // Deletes an experiment tag.
 //
+// @param request - DeleteExperimentLabelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteExperimentLabelResponse
-func (client *Client) DeleteExperimentLabelWithContext(ctx context.Context, ExperimentId *string, Key *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentLabelResponse, _err error) {
+func (client *Client) DeleteExperimentLabelWithContext(ctx context.Context, ExperimentId *string, Key *string, request *DeleteExperimentLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteExperimentLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2223,12 +2287,20 @@ func (client *Client) DeleteMembersWithContext(ctx context.Context, WorkspaceId 
 //
 // Deletes a model.
 //
+// @param request - DeleteModelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteModelResponse
-func (client *Client) DeleteModelWithContext(ctx context.Context, ModelId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
+func (client *Client) DeleteModelWithContext(ctx context.Context, ModelId *string, request *DeleteModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2303,12 +2375,20 @@ func (client *Client) DeleteModelLabelsWithContext(ctx context.Context, ModelId 
 //
 // Deletes a model version.
 //
+// @param request - DeleteModelVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteModelVersionResponse
-func (client *Client) DeleteModelVersionWithContext(ctx context.Context, ModelId *string, VersionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelVersionResponse, _err error) {
+func (client *Client) DeleteModelVersionWithContext(ctx context.Context, ModelId *string, VersionName *string, request *DeleteModelVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModelVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2383,12 +2463,20 @@ func (client *Client) DeleteModelVersionLabelsWithContext(ctx context.Context, M
 //
 // Deletes a run.
 //
+// @param request - DeleteRunRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRunResponse
-func (client *Client) DeleteRunWithContext(ctx context.Context, RunId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRunResponse, _err error) {
+func (client *Client) DeleteRunWithContext(ctx context.Context, RunId *string, request *DeleteRunRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRunResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2416,12 +2504,20 @@ func (client *Client) DeleteRunWithContext(ctx context.Context, RunId *string, h
 //
 // Deletes a tag that is added to a run.
 //
+// @param request - DeleteRunLabelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRunLabelResponse
-func (client *Client) DeleteRunLabelWithContext(ctx context.Context, RunId *string, Key *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRunLabelResponse, _err error) {
+func (client *Client) DeleteRunLabelWithContext(ctx context.Context, RunId *string, Key *string, request *DeleteRunLabelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRunLabelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2500,12 +2596,20 @@ func (client *Client) DeleteUserConfigWithContext(ctx context.Context, CategoryN
 //
 // Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
 //
+// @param request - DeleteWorkspaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWorkspaceResponse
-func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, WorkspaceId *string, request *DeleteWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2600,12 +2704,20 @@ func (client *Client) DeleteWorkspaceResourceWithContext(ctx context.Context, Wo
 //
 // Obtains the details of a code source.
 //
+// @param request - GetCodeSourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCodeSourceResponse
-func (client *Client) GetCodeSourceWithContext(ctx context.Context, CodeSourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCodeSourceResponse, _err error) {
+func (client *Client) GetCodeSourceWithContext(ctx context.Context, CodeSourceId *string, request *GetCodeSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCodeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2735,12 +2847,20 @@ func (client *Client) GetConnectionWithContext(ctx context.Context, ConnectionId
 //
 // Obtains a dataset.
 //
+// @param request - GetDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatasetResponse
-func (client *Client) GetDatasetWithContext(ctx context.Context, DatasetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+func (client *Client) GetDatasetWithContext(ctx context.Context, DatasetId *string, request *GetDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2976,12 +3096,20 @@ func (client *Client) GetDatasetJobConfigWithContext(ctx context.Context, Datase
 //
 // Obtains the information about a specified version of a dataset.
 //
+// @param request - GetDatasetVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatasetVersionResponse
-func (client *Client) GetDatasetVersionWithContext(ctx context.Context, DatasetId *string, VersionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetVersionResponse, _err error) {
+func (client *Client) GetDatasetVersionWithContext(ctx context.Context, DatasetId *string, VersionName *string, request *GetDatasetVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3201,12 +3329,20 @@ func (client *Client) GetMemberWithContext(ctx context.Context, WorkspaceId *str
 //
 // Obtains the details of a specified model.
 //
+// @param request - GetModelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetModelResponse
-func (client *Client) GetModelWithContext(ctx context.Context, ModelId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelResponse, _err error) {
+func (client *Client) GetModelWithContext(ctx context.Context, ModelId *string, request *GetModelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3234,12 +3370,20 @@ func (client *Client) GetModelWithContext(ctx context.Context, ModelId *string, 
 //
 // Queries a model version.
 //
+// @param request - GetModelVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetModelVersionResponse
-func (client *Client) GetModelVersionWithContext(ctx context.Context, ModelId *string, VersionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelVersionResponse, _err error) {
+func (client *Client) GetModelVersionWithContext(ctx context.Context, ModelId *string, VersionName *string, request *GetModelVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4523,6 +4667,10 @@ func (client *Client) ListMembersWithContext(ctx context.Context, WorkspaceId *s
 		query["Roles"] = request.Roles
 	}
 
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -4755,12 +4903,20 @@ func (client *Client) ListModelsWithContext(ctx context.Context, tmpReq *ListMod
 //
 // Lists the permissions that a user has in a workspace.
 //
+// @param request - ListPermissionsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPermissionsResponse
-func (client *Client) ListPermissionsWithContext(ctx context.Context, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
+func (client *Client) ListPermissionsWithContext(ctx context.Context, WorkspaceId *string, request *ListPermissionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5387,12 +5543,20 @@ func (client *Client) LogRunMetricsWithContext(ctx context.Context, RunId *strin
 //
 // Publishes a private code source to a workspace to make the code source publicly accessible.
 //
+// @param request - PublishCodeSourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishCodeSourceResponse
-func (client *Client) PublishCodeSourceWithContext(ctx context.Context, CodeSourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishCodeSourceResponse, _err error) {
+func (client *Client) PublishCodeSourceWithContext(ctx context.Context, CodeSourceId *string, request *PublishCodeSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishCodeSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5420,12 +5584,20 @@ func (client *Client) PublishCodeSourceWithContext(ctx context.Context, CodeSour
 //
 // Publishes a private dataset in a workspace.
 //
+// @param request - PublishDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishDatasetResponse
-func (client *Client) PublishDatasetWithContext(ctx context.Context, DatasetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishDatasetResponse, _err error) {
+func (client *Client) PublishDatasetWithContext(ctx context.Context, DatasetId *string, request *PublishDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5453,12 +5625,20 @@ func (client *Client) PublishDatasetWithContext(ctx context.Context, DatasetId *
 //
 // Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
 //
+// @param request - PublishImageRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishImageResponse
-func (client *Client) PublishImageWithContext(ctx context.Context, ImageId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishImageResponse, _err error) {
+func (client *Client) PublishImageWithContext(ctx context.Context, ImageId *string, request *PublishImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5486,12 +5666,20 @@ func (client *Client) PublishImageWithContext(ctx context.Context, ImageId *stri
 //
 // Removes an image.
 //
+// @param request - RemoveImageRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveImageResponse
-func (client *Client) RemoveImageWithContext(ctx context.Context, ImageId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
+func (client *Client) RemoveImageWithContext(ctx context.Context, ImageId *string, request *RemoveImageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5519,12 +5707,20 @@ func (client *Client) RemoveImageWithContext(ctx context.Context, ImageId *strin
 //
 // Removes an image tag.
 //
+// @param request - RemoveImageLabelsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveImageLabelsResponse
-func (client *Client) RemoveImageLabelsWithContext(ctx context.Context, ImageId *string, LabelKey *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
+func (client *Client) RemoveImageLabelsWithContext(ctx context.Context, ImageId *string, LabelKey *string, request *RemoveImageLabelsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5552,12 +5748,20 @@ func (client *Client) RemoveImageLabelsWithContext(ctx context.Context, ImageId 
 //
 // Removes a member role.
 //
+// @param request - RemoveMemberRoleRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RemoveMemberRoleResponse
-func (client *Client) RemoveMemberRoleWithContext(ctx context.Context, WorkspaceId *string, MemberId *string, RoleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveMemberRoleResponse, _err error) {
+func (client *Client) RemoveMemberRoleWithContext(ctx context.Context, WorkspaceId *string, MemberId *string, RoleName *string, request *RemoveMemberRoleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveMemberRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}

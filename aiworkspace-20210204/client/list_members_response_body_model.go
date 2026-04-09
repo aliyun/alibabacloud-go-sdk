@@ -83,7 +83,13 @@ func (s *ListMembersResponseBody) Validate() error {
 }
 
 type ListMembersResponseBodyMembers struct {
+	// example:
+	//
+	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 5
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The display name of the member.
 	//

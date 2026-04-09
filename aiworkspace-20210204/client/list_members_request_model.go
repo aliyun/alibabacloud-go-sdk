@@ -17,6 +17,8 @@ type iListMembersRequest interface {
 	GetPageSize() *int32
 	SetRoles(v string) *ListMembersRequest
 	GetRoles() *string
+	SetUserId(v string) *ListMembersRequest
+	GetUserId() *string
 }
 
 type ListMembersRequest struct {
@@ -58,6 +60,10 @@ type ListMembersRequest struct {
 	//
 	// PAI.AlgoDeveloper
 	Roles *string `json:"Roles,omitempty" xml:"Roles,omitempty"`
+	// example:
+	//
+	// 2788******129
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListMembersRequest) String() string {
@@ -84,6 +90,10 @@ func (s *ListMembersRequest) GetRoles() *string {
 	return s.Roles
 }
 
+func (s *ListMembersRequest) GetUserId() *string {
+	return s.UserId
+}
+
 func (s *ListMembersRequest) SetMemberName(v string) *ListMembersRequest {
 	s.MemberName = &v
 	return s
@@ -101,6 +111,11 @@ func (s *ListMembersRequest) SetPageSize(v int32) *ListMembersRequest {
 
 func (s *ListMembersRequest) SetRoles(v string) *ListMembersRequest {
 	s.Roles = &v
+	return s
+}
+
+func (s *ListMembersRequest) SetUserId(v string) *ListMembersRequest {
+	s.UserId = &v
 	return s
 }
 
