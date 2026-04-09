@@ -53,9 +53,8 @@ type DescribeZonesResponseBody struct {
 	// example:
 	//
 	// 3
-	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	// The zones.
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	TotalPages *int32                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Zones      *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -164,143 +163,25 @@ func (s *DescribeZonesResponseBodyZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-28T13:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1514466483000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The creator of the zone.
-	//
-	// example:
-	//
-	// 546356****
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The account type. Valid values:
-	//
-	// 	- **CUSTOMER**: Alibaba Cloud account
-	//
-	// 	- **SUB**: RAM user
-	//
-	// 	- **STS**: assumed role that obtains the Security Token Service (STS) token of a RAM role
-	//
-	// 	- **OTHER**: other types
-	//
-	// example:
-	//
-	// SUB
-	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	// The logical location type of the built-in authoritative module in which the zone is added. Valid values:
-	//
-	// 	- **NORMAL_ZONE**: regular module
-	//
-	// 	- **FAST_ZONE**: acceleration module
-	//
-	// example:
-	//
-	// NORMAL_ZONE
-	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	// Indicates whether the zone is being removed to another logical location. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	DnsGroupChanging *bool `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
-	// Indicates whether the zone is a reverse lookup zone. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsPtr *bool `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	// Indicates whether the recursive resolution proxy for subdomain names is enabled. Valid values:
-	//
-	// 	- **ZONE**: The recursive resolution proxy for subdomain names is disabled. In this case, NXDOMAIN is returned if the queried domain name does not exist in the zone.
-	//
-	// 	- **RECORD**: The recursive resolution proxy for subdomain names is enabled. In this case, if the queried domain name does not exist in the zone, DNS requests are recursively forwarded to the forward module and then to the recursion module until DNS results are returned.
-	//
-	// example:
-	//
-	// ZONE
-	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	// The number of Domain Name System (DNS) records added in the zone.
-	//
-	// example:
-	//
-	// 2
-	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The description of the zone.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the resource group to which the zone belongs.
-	//
-	// example:
-	//
-	// rg-aekz2qj7awz****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags added to the zone.
-	ResourceTags   *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
-	SlaveDnsStatus *string                                         `json:"SlaveDnsStatus,omitempty" xml:"SlaveDnsStatus,omitempty"`
-	// The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-01-03T08:57Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
-	//
-	// example:
-	//
-	// 1514969843000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The zone ID. This ID uniquely identifies the zone.
-	//
-	// example:
-	//
-	// 6d83e3b31aa60ca4aaa7161f1b6b**95
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone.
-	//
-	// example:
-	//
-	// test.com
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	// The type of the cloud service. Valid values:
-	//
-	// 	- If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
-	//
-	// 	- If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
-	//
-	// example:
-	//
-	// BLINK
-	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	// The zone type. Valid values:
-	//
-	// 	- **AUTH_ZONE**: authoritative zone
-	//
-	// 	- **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
-	//
-	// example:
-	//
-	// CLOUD_PRODUCT_ZONE
-	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	CreateTime       *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp  *int64                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator          *string                                         `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorSubType   *string                                         `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	DnsGroup         *string                                         `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	DnsGroupChanging *bool                                           `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	IsPtr            *bool                                           `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	ProxyPattern     *string                                         `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	RecordCount      *int32                                          `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark           *string                                         `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId  *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTags     *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
+	SlaveDnsStatus   *string                                         `json:"SlaveDnsStatus,omitempty" xml:"SlaveDnsStatus,omitempty"`
+	UpdateTime       *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp  *int64                                          `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	ZoneId           *string                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName         *string                                         `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ZoneTag          *string                                         `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	ZoneType         *string                                         `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {
@@ -526,17 +407,7 @@ func (s *DescribeZonesResponseBodyZonesZoneResourceTags) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag struct {
-	// The key of tag N added to the zone.
-	//
-	// example:
-	//
-	// env
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N added to the zone.
-	//
-	// example:
-	//
-	// daily
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

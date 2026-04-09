@@ -55,8 +55,6 @@ type AddResolverRuleRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The name of the forwarding rule. You can name the rule based on your business requirements.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test

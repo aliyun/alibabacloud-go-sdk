@@ -55,8 +55,7 @@ type iDescribeZoneInfoResponseBody interface {
 
 type DescribeZoneInfoResponseBody struct {
 	BindEdgeDnsClusters *DescribeZoneInfoResponseBodyBindEdgeDnsClusters `json:"BindEdgeDnsClusters,omitempty" xml:"BindEdgeDnsClusters,omitempty" type:"Struct"`
-	// The VPCs associated with the zone.
-	BindVpcs *DescribeZoneInfoResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
+	BindVpcs            *DescribeZoneInfoResponseBodyBindVpcs            `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
 	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
@@ -522,46 +521,12 @@ func (s *DescribeZoneInfoResponseBodyBindVpcs) Validate() error {
 }
 
 type DescribeZoneInfoResponseBodyBindVpcsVpc struct {
-	// The region ID of the VPC.
-	//
-	// example:
-	//
-	// cn-heyuan
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region where the VPC resides.
-	//
-	// example:
-	//
-	// China (Heyuan)
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The VPC ID. This ID uniquely identifies the VPC.
-	//
-	// example:
-	//
-	// vpc-f8zvrvr1payllgz38****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC name.
-	//
-	// example:
-	//
-	// vpc_test
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The VPC type. Valid values:
-	//
-	// 	- STANDARD: standard VPC
-	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
-	//
-	// example:
-	//
-	// STANDARD
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
-	// The user ID to which the VPC belongs. If null is returned, the VPC belongs to the current user.
-	//
-	// example:
-	//
-	// 141339776561****
-	VpcUserId *int64 `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName    *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType    *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcUserId  *int64  `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
 func (s DescribeZoneInfoResponseBodyBindVpcsVpc) String() string {

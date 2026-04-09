@@ -1,3 +1,6 @@
+2026-04-09 Version: v2.5.4
+- Generated golang 2018-01-01 for pvtz.
+
 2025-12-30 Version: v2.5.3
 - Update API DescribeResolverRules: add response parameters Body.Rules.$.PriorityForwardConfigs.
 - Update API UpdateResolverRule: add request parameters PriorityForwardConfigs.

@@ -24,10 +24,8 @@ type iDescribeSyncEcsHostTaskResponseBody interface {
 }
 
 type DescribeSyncEcsHostTaskResponseBody struct {
-	// The synchronized regions where the ECS instances are deployed.
 	EcsRegions *DescribeSyncEcsHostTaskResponseBodyEcsRegions `json:"EcsRegions,omitempty" xml:"EcsRegions,omitempty" type:"Struct"`
-	// The synchronized region IDs of the ECS instances.
-	Regions *DescribeSyncEcsHostTaskResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	Regions    *DescribeSyncEcsHostTaskResponseBodyRegions    `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -173,14 +171,8 @@ func (s *DescribeSyncEcsHostTaskResponseBodyEcsRegions) Validate() error {
 }
 
 type DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion struct {
-	// The synchronized region IDs.
 	RegionIds *DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
-	// The user ID to which the region belongs. This parameter is used in cross-account synchronization scenarios.
-	//
-	// example:
-	//
-	// 141339776561****
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId    *int64                                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion) String() string {

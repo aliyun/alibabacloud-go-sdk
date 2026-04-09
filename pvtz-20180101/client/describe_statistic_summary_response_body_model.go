@@ -31,10 +31,8 @@ type DescribeStatisticSummaryResponseBody struct {
 	// example:
 	//
 	// 2254
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The top three VPCs with the largest number of DNS requests.
-	VpcRequestTops *DescribeStatisticSummaryResponseBodyVpcRequestTops `json:"VpcRequestTops,omitempty" xml:"VpcRequestTops,omitempty" type:"Struct"`
-	// The top three zones with the largest number of DNS requests.
+	TotalCount      *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VpcRequestTops  *DescribeStatisticSummaryResponseBodyVpcRequestTops  `json:"VpcRequestTops,omitempty" xml:"VpcRequestTops,omitempty" type:"Struct"`
 	ZoneRequestTops *DescribeStatisticSummaryResponseBodyZoneRequestTops `json:"ZoneRequestTops,omitempty" xml:"ZoneRequestTops,omitempty" type:"Struct"`
 }
 
@@ -131,46 +129,12 @@ func (s *DescribeStatisticSummaryResponseBodyVpcRequestTops) Validate() error {
 }
 
 type DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop struct {
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region.
-	//
-	// example:
-	//
-	// 华北 2
-	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The number of DNS requests on the previous day.
-	//
-	// example:
-	//
-	// 2254
-	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	// The tunnel ID.
-	//
-	// example:
-	//
-	// tun-7h33lkqfuhgnyy****
-	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// The VPC ID.
-	//
-	// example:
-	//
-	// vpc-f8zvrvr1payllgz38****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC type. Valid values:
-	//
-	// 	- STANDARD: standard VPC
-	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
-	//
-	// example:
-	//
-	// STANDARD
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	TunnelId     *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcType      *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop) String() string {
@@ -274,30 +238,9 @@ func (s *DescribeStatisticSummaryResponseBodyZoneRequestTops) Validate() error {
 }
 
 type DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop struct {
-	// The business type. Valid values:
-	//
-	// 	- AUTH_ZONE: authoritative zone
-	//
-	// 	- RESOLVER_RULE: forwarding rule
-	//
-	// 	- INBOUND: inbound endpoint
-	//
-	// example:
-	//
-	// AUTH_ZONE
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The number of DNS requests on the previous day.
-	//
-	// example:
-	//
-	// 2251
-	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	// The zone name.
-	//
-	// example:
-	//
-	// test.com
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	ZoneName     *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop) String() string {

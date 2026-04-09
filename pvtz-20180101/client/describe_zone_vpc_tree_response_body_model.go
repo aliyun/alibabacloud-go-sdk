@@ -21,9 +21,8 @@ type DescribeZoneVpcTreeResponseBody struct {
 	// example:
 	//
 	// 7B07FBC3-3A53-4939-A3C6-2BDFE407BAB2
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zones.
-	Zones *DescribeZoneVpcTreeResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZoneVpcTreeResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZoneVpcTreeResponseBody) String() string {
@@ -96,121 +95,22 @@ func (s *DescribeZoneVpcTreeResponseBodyZones) Validate() error {
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZone struct {
-	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-09-18T08:20Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1568794812000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The creator of the zone.
-	//
-	// example:
-	//
-	// 141339776561****
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The operator type.
-	//
-	// example:
-	//
-	// USER
-	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	// The logical location of the built-in authoritative module in which the zone is added. Valid values:
-	//
-	// 	- NORMAL_ZONE: regular module
-	//
-	// 	- FAST_ZONE: acceleration module
-	//
-	// example:
-	//
-	// NORMAL_ZONE
-	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	// Indicates whether the zone is being removed to another logical location. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	DnsGroupChanging *bool `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
-	// Indicates whether the zone is a reverse lookup zone. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// false
-	IsPtr *bool `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	// The number of Domain Name System (DNS) records added for the zone.
-	//
-	// example:
-	//
-	// 1
-	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	// The description of the zone.
-	//
-	// example:
-	//
-	// demo
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-09-18T08:20Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the zone was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1568794834000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The VPCs associated with the zone.
-	Vpcs *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
-	// The zone ID. This ID uniquely identifies the zone.
-	//
-	// example:
-	//
-	// 6d83e3b31aa60ca4aaa7161f1b6baa95
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone name.
-	//
-	// example:
-	//
-	// example.com
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	// The type of the cloud service.
-	//
-	//
-	// **Valid values:**
-	//
-	// 	- If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
-	//
-	// 	- If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
-	//
-	// example:
-	//
-	// BLINK
-	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	// The zone type. Valid values:
-	//
-	// 	- AUTH_ZONE: authoritative zone
-	//
-	// 	- CLOUD_PRODUCT_ZONE: authoritative zone for cloud services
-	//
-	// example:
-	//
-	// AUTH_ZONE
-	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	CreateTime       *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp  *int64                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator          *string                                       `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorType      *string                                       `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	DnsGroup         *string                                       `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	DnsGroupChanging *bool                                         `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	IsPtr            *bool                                         `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	RecordCount      *int32                                        `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	Remark           *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UpdateTime       *string                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp  *int64                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Vpcs             *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	ZoneId           *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName         *string                                       `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	ZoneTag          *string                                       `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	ZoneType         *string                                       `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZoneVpcTreeResponseBodyZonesZone) String() string {
@@ -409,40 +309,11 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs) Validate() error {
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc struct {
-	// The region ID of the VPC.
-	//
-	// example:
-	//
-	// cn-heyuan
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region to which the VPC belongs.
-	//
-	// example:
-	//
-	// China (Heyuan)
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The VPC ID. The unique ID of the VPC.
-	//
-	// example:
-	//
-	// vpc-f8zvrvr1payllgz38****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC name.
-	//
-	// example:
-	//
-	// demo-vpc
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The VPC type. Valid values:
-	//
-	// 	- STANDARD: standard VPC
-	//
-	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
-	//
-	// example:
-	//
-	// STANDARD
-	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName    *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	VpcType    *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc) String() string {

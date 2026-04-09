@@ -16,7 +16,6 @@ type iDescribeRequestGraphResponseBody interface {
 }
 
 type DescribeRequestGraphResponseBody struct {
-	// The details of the DNS requests.
 	RequestDetails *DescribeRequestGraphResponseBodyRequestDetails `json:"RequestDetails,omitempty" xml:"RequestDetails,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,9 @@ func (s *DescribeRequestGraphResponseBodyRequestDetails) Validate() error {
 }
 
 type DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop struct {
-	// The number of DNS requests.
-	//
-	// example:
-	//
-	// 103
-	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	// The time when the data was collected. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-10-21T10:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The time when the data was collected. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1571652000000
-	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	Time         *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Timestamp    *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop) String() string {

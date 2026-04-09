@@ -24,7 +24,6 @@ type iDescribeCustomLinesResponseBody interface {
 }
 
 type DescribeCustomLinesResponseBody struct {
-	// The custom lines.
 	CustomLines *DescribeCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Struct"`
 	// The page number. Pages start from page **1**. Default value: **1**.
 	//
@@ -164,71 +163,17 @@ func (s *DescribeCustomLinesResponseBodyCustomLines) Validate() error {
 }
 
 type DescribeCustomLinesResponseBodyCustomLinesCustomLine struct {
-	// The time when the custom line was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-03-25T08:07Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the custom line was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1671174074000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The creator of the custom line.
-	//
-	// example:
-	//
-	// 21312421
-	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The type of the creator for the custom line. Valid values:
-	//
-	// 	- CUSTOM: Alibaba Cloud account
-	//
-	// 	- SUB: RAM user
-	//
-	// 	- STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
-	//
-	// 	- OTHER: other roles
-	//
-	// example:
-	//
-	// SUB
-	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	// The role of the creator for the custom line. Valid values:
-	//
-	// 	- USER: user
-	//
-	// 	- SYSTEM: system
-	//
-	// example:
-	//
-	// USER
-	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	DnsCategory *string `json:"DnsCategory,omitempty" xml:"DnsCategory,omitempty"`
-	// The IPv4 CIDR blocks.
-	Ipv4s *DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Struct"`
-	// The unique ID of the custom line.
-	//
-	// example:
-	//
-	// 160002
-	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
-	// The name of the custom line.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the custom line was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-08-24T16:08Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the custom line was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1681879029000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	CreateTime      *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64                                                     `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Creator         *string                                                    `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorSubType  *string                                                    `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	CreatorType     *string                                                    `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	DnsCategory     *string                                                    `json:"DnsCategory,omitempty" xml:"DnsCategory,omitempty"`
+	Ipv4s           *DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Struct"`
+	LineId          *string                                                    `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	Name            *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	UpdateTime      *string                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64                                                     `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
 func (s DescribeCustomLinesResponseBodyCustomLinesCustomLine) String() string {

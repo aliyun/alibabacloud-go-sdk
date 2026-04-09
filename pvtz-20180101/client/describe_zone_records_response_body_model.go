@@ -35,9 +35,8 @@ type DescribeZoneRecordsResponseBody struct {
 	// example:
 	//
 	// 100
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The DNS records.
-	Records *DescribeZoneRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	PageSize *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records  *DescribeZoneRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -164,114 +163,21 @@ func (s *DescribeZoneRecordsResponseBodyRecords) Validate() error {
 }
 
 type DescribeZoneRecordsResponseBodyRecordsRecord struct {
-	// The time when the DNS record was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-03-14T03:47Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1672740294000
-	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The resolution line.
-	//
-	// example:
-	//
-	// default
-	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	// The priority of the mail exchanger (MX) record.
-	//
-	// example:
-	//
-	// 10
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the DNS record.
-	//
-	// example:
-	//
-	// 246959****
-	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The description of the DNS record.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The hostname.
-	//
-	// example:
-	//
-	// www
-	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	// The state of the DNS record. Valid values:
-	//
-	// 	- ENABLE: The DNS record is enabled.
-	//
-	// 	- DISABLE: The DNS record is disabled.
-	//
-	// example:
-	//
-	// ENABLE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time to live (TTL) period.
-	//
-	// example:
-	//
-	// 60
-	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The type of the DNS record. Valid values:
-	//
-	// 	- **A**: An A record points a domain name to an IPv4 address.
-	//
-	// 	- **AAAA**: An AAAA record points a domain name to an IPv6 address.
-	//
-	// 	- **CNAME**: A canonical name (CNAME) record points a domain name to another domain name.
-	//
-	// 	- **TXT**: A text (TXT) record usually serves as a Sender Policy Framework (SPF) record to prevent email spam. The record value of the TXT record can be up to 255 characters in length.
-	//
-	// 	- **MX**: A mail exchanger (MX) record points a domain name to a mail server address.
-	//
-	// 	- **PTR**: A pointer (PTR) points an IP address to a domain name.
-	//
-	// 	- **SRV**: A service (SRV) record specifies a server that hosts a specific service.
-	//
-	// example:
-	//
-	// A
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the DNS record was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-05-08T02:31Z
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1654777678000
-	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// The record value.
-	//
-	// example:
-	//
-	// 127.0.XX.XX
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight value of the address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for DNS requests. A weight value must be an integer that ranges from 1 to 100.
-	//
-	// example:
-	//
-	// 1
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// a49f55537f3b0b1e6e43add0bf5f****
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	Line            *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RecordId        *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Rr              *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZoneRecordsResponseBodyRecordsRecord) String() string {
