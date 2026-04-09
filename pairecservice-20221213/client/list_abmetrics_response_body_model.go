@@ -81,12 +81,18 @@ type ListABMetricsResponseBodyABMetrics struct {
 	// example:
 	//
 	// 1
-	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	ABMetricId        *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	AggregationByUser *bool   `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
 	// example:
 	//
 	// sum(click_cnt)
-	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// example:
+	//
+	// pv
+	Denominator            *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
 	// example:
 	//
 	// 3
@@ -94,7 +100,12 @@ type ListABMetricsResponseBodyABMetrics struct {
 	// example:
 	//
 	// pv
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NeedSignificance *bool   `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	// example:
+	//
+	// click
+	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
 	// example:
 	//
 	// Division
@@ -149,12 +160,24 @@ func (s *ListABMetricsResponseBodyABMetrics) GetABMetricId() *string {
 	return s.ABMetricId
 }
 
+func (s *ListABMetricsResponseBodyABMetrics) GetAggregationByUser() *bool {
+	return s.AggregationByUser
+}
+
 func (s *ListABMetricsResponseBodyABMetrics) GetDefinition() *string {
 	return s.Definition
 }
 
+func (s *ListABMetricsResponseBodyABMetrics) GetDenominator() *string {
+	return s.Denominator
+}
+
 func (s *ListABMetricsResponseBodyABMetrics) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) GetIsBinomialDistribution() *bool {
+	return s.IsBinomialDistribution
 }
 
 func (s *ListABMetricsResponseBodyABMetrics) GetLeftMetricId() *string {
@@ -163,6 +186,14 @@ func (s *ListABMetricsResponseBodyABMetrics) GetLeftMetricId() *string {
 
 func (s *ListABMetricsResponseBodyABMetrics) GetName() *string {
 	return s.Name
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) GetNeedSignificance() *bool {
+	return s.NeedSignificance
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) GetNumerator() *string {
+	return s.Numerator
 }
 
 func (s *ListABMetricsResponseBodyABMetrics) GetOperator() *string {
@@ -210,13 +241,28 @@ func (s *ListABMetricsResponseBodyABMetrics) SetABMetricId(v string) *ListABMetr
 	return s
 }
 
+func (s *ListABMetricsResponseBodyABMetrics) SetAggregationByUser(v bool) *ListABMetricsResponseBodyABMetrics {
+	s.AggregationByUser = &v
+	return s
+}
+
 func (s *ListABMetricsResponseBodyABMetrics) SetDefinition(v string) *ListABMetricsResponseBodyABMetrics {
 	s.Definition = &v
 	return s
 }
 
+func (s *ListABMetricsResponseBodyABMetrics) SetDenominator(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Denominator = &v
+	return s
+}
+
 func (s *ListABMetricsResponseBodyABMetrics) SetDescription(v string) *ListABMetricsResponseBodyABMetrics {
 	s.Description = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetIsBinomialDistribution(v bool) *ListABMetricsResponseBodyABMetrics {
+	s.IsBinomialDistribution = &v
 	return s
 }
 
@@ -227,6 +273,16 @@ func (s *ListABMetricsResponseBodyABMetrics) SetLeftMetricId(v string) *ListABMe
 
 func (s *ListABMetricsResponseBodyABMetrics) SetName(v string) *ListABMetricsResponseBodyABMetrics {
 	s.Name = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetNeedSignificance(v bool) *ListABMetricsResponseBodyABMetrics {
+	s.NeedSignificance = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetNumerator(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Numerator = &v
 	return s
 }
 

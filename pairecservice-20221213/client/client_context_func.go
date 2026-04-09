@@ -678,8 +678,16 @@ func (client *Client) CreateABMetricWithContext(ctx context.Context, request *Cr
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggregationByUser) {
+		body["AggregationByUser"] = request.AggregationByUser
+	}
+
 	if !dara.IsNil(request.Definition) {
 		body["Definition"] = request.Definition
+	}
+
+	if !dara.IsNil(request.Denominator) {
+		body["Denominator"] = request.Denominator
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -690,12 +698,24 @@ func (client *Client) CreateABMetricWithContext(ctx context.Context, request *Cr
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.IsBinomialDistribution) {
+		body["IsBinomialDistribution"] = request.IsBinomialDistribution
+	}
+
 	if !dara.IsNil(request.LeftMetricId) {
 		body["LeftMetricId"] = request.LeftMetricId
 	}
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedSignificance) {
+		body["NeedSignificance"] = request.NeedSignificance
+	}
+
+	if !dara.IsNil(request.Numerator) {
+		body["Numerator"] = request.Numerator
 	}
 
 	if !dara.IsNil(request.Operator) {
@@ -3313,12 +3333,20 @@ func (client *Client) DeleteExperimentGroupWithContext(ctx context.Context, Expe
 //
 // 删除指定实例下的指定配置资源。
 //
+// @param request - DeleteInstanceResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceResourceResponse
-func (client *Client) DeleteInstanceResourceWithContext(ctx context.Context, InstanceId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResourceResponse, _err error) {
+func (client *Client) DeleteInstanceResourceWithContext(ctx context.Context, InstanceId *string, ResourceId *string, request *DeleteInstanceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4682,12 +4710,20 @@ func (client *Client) GetFeatureConsistencyCheckJobConfigWithContext(ctx context
 //
 // 获取指定推荐全链路深度定制开发平台实例信息。
 //
+// @param request - GetInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResponse
-func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *string, request *GetInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4715,12 +4751,20 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, InstanceId *st
 //
 // 获取指定实例下指定资源的详细信息。
 //
+// @param request - GetInstanceResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResourceResponse
-func (client *Client) GetInstanceResourceWithContext(ctx context.Context, InstanceId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceResponse, _err error) {
+func (client *Client) GetInstanceResourceWithContext(ctx context.Context, InstanceId *string, ResourceId *string, request *GetInstanceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4748,12 +4792,20 @@ func (client *Client) GetInstanceResourceWithContext(ctx context.Context, Instan
 //
 // 获取数据源下指定表的详细信息。
 //
+// @param request - GetInstanceResourceTableRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResourceTableResponse
-func (client *Client) GetInstanceResourceTableWithContext(ctx context.Context, InstanceId *string, ResourceId *string, TableName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceTableResponse, _err error) {
+func (client *Client) GetInstanceResourceTableWithContext(ctx context.Context, InstanceId *string, ResourceId *string, TableName *string, request *GetInstanceResourceTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -9228,8 +9280,16 @@ func (client *Client) UpdateABMetricWithContext(ctx context.Context, ABMetricId 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggregationByUser) {
+		body["AggregationByUser"] = request.AggregationByUser
+	}
+
 	if !dara.IsNil(request.Definition) {
 		body["Definition"] = request.Definition
+	}
+
+	if !dara.IsNil(request.Denominator) {
+		body["Denominator"] = request.Denominator
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -9240,12 +9300,24 @@ func (client *Client) UpdateABMetricWithContext(ctx context.Context, ABMetricId 
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.IsBinomialDistribution) {
+		body["IsBinomialDistribution"] = request.IsBinomialDistribution
+	}
+
 	if !dara.IsNil(request.LeftMetricId) {
 		body["LeftMetricId"] = request.LeftMetricId
 	}
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedSignificance) {
+		body["NeedSignificance"] = request.NeedSignificance
+	}
+
+	if !dara.IsNil(request.Numerator) {
+		body["Numerator"] = request.Numerator
 	}
 
 	if !dara.IsNil(request.Operator) {

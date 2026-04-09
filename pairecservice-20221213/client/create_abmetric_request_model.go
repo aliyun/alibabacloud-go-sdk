@@ -9,16 +9,26 @@ type iCreateABMetricRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAggregationByUser(v bool) *CreateABMetricRequest
+	GetAggregationByUser() *bool
 	SetDefinition(v string) *CreateABMetricRequest
 	GetDefinition() *string
+	SetDenominator(v string) *CreateABMetricRequest
+	GetDenominator() *string
 	SetDescription(v string) *CreateABMetricRequest
 	GetDescription() *string
 	SetInstanceId(v string) *CreateABMetricRequest
 	GetInstanceId() *string
+	SetIsBinomialDistribution(v bool) *CreateABMetricRequest
+	GetIsBinomialDistribution() *bool
 	SetLeftMetricId(v string) *CreateABMetricRequest
 	GetLeftMetricId() *string
 	SetName(v string) *CreateABMetricRequest
 	GetName() *string
+	SetNeedSignificance(v bool) *CreateABMetricRequest
+	GetNeedSignificance() *bool
+	SetNumerator(v string) *CreateABMetricRequest
+	GetNumerator() *string
 	SetOperator(v string) *CreateABMetricRequest
 	GetOperator() *string
 	SetRealtime(v bool) *CreateABMetricRequest
@@ -38,12 +48,17 @@ type iCreateABMetricRequest interface {
 }
 
 type CreateABMetricRequest struct {
+	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sum(click_cnt)
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// example:
+	//
+	// pv
+	Denominator *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
 	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -51,7 +66,8 @@ type CreateABMetricRequest struct {
 	// example:
 	//
 	// pairec-cn-test1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
 	// example:
 	//
 	// 2
@@ -61,7 +77,12 @@ type CreateABMetricRequest struct {
 	// example:
 	//
 	// pv
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NeedSignificance *bool   `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	// example:
+	//
+	// click
+	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
 	// example:
 	//
 	// Division
@@ -112,8 +133,16 @@ func (s CreateABMetricRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateABMetricRequest) GetAggregationByUser() *bool {
+	return s.AggregationByUser
+}
+
 func (s *CreateABMetricRequest) GetDefinition() *string {
 	return s.Definition
+}
+
+func (s *CreateABMetricRequest) GetDenominator() *string {
+	return s.Denominator
 }
 
 func (s *CreateABMetricRequest) GetDescription() *string {
@@ -124,12 +153,24 @@ func (s *CreateABMetricRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *CreateABMetricRequest) GetIsBinomialDistribution() *bool {
+	return s.IsBinomialDistribution
+}
+
 func (s *CreateABMetricRequest) GetLeftMetricId() *string {
 	return s.LeftMetricId
 }
 
 func (s *CreateABMetricRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateABMetricRequest) GetNeedSignificance() *bool {
+	return s.NeedSignificance
+}
+
+func (s *CreateABMetricRequest) GetNumerator() *string {
+	return s.Numerator
 }
 
 func (s *CreateABMetricRequest) GetOperator() *string {
@@ -164,8 +205,18 @@ func (s *CreateABMetricRequest) GetType() *string {
 	return s.Type
 }
 
+func (s *CreateABMetricRequest) SetAggregationByUser(v bool) *CreateABMetricRequest {
+	s.AggregationByUser = &v
+	return s
+}
+
 func (s *CreateABMetricRequest) SetDefinition(v string) *CreateABMetricRequest {
 	s.Definition = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetDenominator(v string) *CreateABMetricRequest {
+	s.Denominator = &v
 	return s
 }
 
@@ -179,6 +230,11 @@ func (s *CreateABMetricRequest) SetInstanceId(v string) *CreateABMetricRequest {
 	return s
 }
 
+func (s *CreateABMetricRequest) SetIsBinomialDistribution(v bool) *CreateABMetricRequest {
+	s.IsBinomialDistribution = &v
+	return s
+}
+
 func (s *CreateABMetricRequest) SetLeftMetricId(v string) *CreateABMetricRequest {
 	s.LeftMetricId = &v
 	return s
@@ -186,6 +242,16 @@ func (s *CreateABMetricRequest) SetLeftMetricId(v string) *CreateABMetricRequest
 
 func (s *CreateABMetricRequest) SetName(v string) *CreateABMetricRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetNeedSignificance(v bool) *CreateABMetricRequest {
+	s.NeedSignificance = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetNumerator(v string) *CreateABMetricRequest {
+	s.Numerator = &v
 	return s
 }
 

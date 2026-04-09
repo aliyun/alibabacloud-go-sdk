@@ -955,8 +955,16 @@ func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggregationByUser) {
+		body["AggregationByUser"] = request.AggregationByUser
+	}
+
 	if !dara.IsNil(request.Definition) {
 		body["Definition"] = request.Definition
+	}
+
+	if !dara.IsNil(request.Denominator) {
+		body["Denominator"] = request.Denominator
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -967,12 +975,24 @@ func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, 
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.IsBinomialDistribution) {
+		body["IsBinomialDistribution"] = request.IsBinomialDistribution
+	}
+
 	if !dara.IsNil(request.LeftMetricId) {
 		body["LeftMetricId"] = request.LeftMetricId
 	}
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedSignificance) {
+		body["NeedSignificance"] = request.NeedSignificance
+	}
+
+	if !dara.IsNil(request.Numerator) {
+		body["Numerator"] = request.Numerator
 	}
 
 	if !dara.IsNil(request.Operator) {
@@ -4274,12 +4294,20 @@ func (client *Client) DeleteExperimentGroup(ExperimentGroupId *string, request *
 //
 // 删除指定实例下的指定配置资源。
 //
+// @param request - DeleteInstanceResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteInstanceResourceResponse
-func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResourceResponse, _err error) {
+func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, ResourceId *string, request *DeleteInstanceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteInstanceResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4307,12 +4335,14 @@ func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, Reso
 //
 // 删除指定实例下的指定配置资源。
 //
+// @param request - DeleteInstanceResourceRequest
+//
 // @return DeleteInstanceResourceResponse
-func (client *Client) DeleteInstanceResource(InstanceId *string, ResourceId *string) (_result *DeleteInstanceResourceResponse, _err error) {
+func (client *Client) DeleteInstanceResource(InstanceId *string, ResourceId *string, request *DeleteInstanceResourceRequest) (_result *DeleteInstanceResourceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteInstanceResourceResponse{}
-	_body, _err := client.DeleteInstanceResourceWithOptions(InstanceId, ResourceId, headers, runtime)
+	_body, _err := client.DeleteInstanceResourceWithOptions(InstanceId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6192,12 +6222,20 @@ func (client *Client) GetFeatureConsistencyCheckJobConfig(FeatureConsistencyChec
 //
 // 获取指定推荐全链路深度定制开发平台实例信息。
 //
+// @param request - GetInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResponse
-func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstanceWithOptions(InstanceId *string, request *GetInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6225,12 +6263,14 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 //
 // 获取指定推荐全链路深度定制开发平台实例信息。
 //
+// @param request - GetInstanceRequest
+//
 // @return GetInstanceResponse
-func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
+func (client *Client) GetInstance(InstanceId *string, request *GetInstanceRequest) (_result *GetInstanceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetInstanceResponse{}
-	_body, _err := client.GetInstanceWithOptions(InstanceId, headers, runtime)
+	_body, _err := client.GetInstanceWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6242,12 +6282,20 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 //
 // 获取指定实例下指定资源的详细信息。
 //
+// @param request - GetInstanceResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResourceResponse
-func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceResponse, _err error) {
+func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, ResourceId *string, request *GetInstanceResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6275,12 +6323,14 @@ func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, Resourc
 //
 // 获取指定实例下指定资源的详细信息。
 //
+// @param request - GetInstanceResourceRequest
+//
 // @return GetInstanceResourceResponse
-func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string) (_result *GetInstanceResourceResponse, _err error) {
+func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string, request *GetInstanceResourceRequest) (_result *GetInstanceResourceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetInstanceResourceResponse{}
-	_body, _err := client.GetInstanceResourceWithOptions(InstanceId, ResourceId, headers, runtime)
+	_body, _err := client.GetInstanceResourceWithOptions(InstanceId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6292,12 +6342,20 @@ func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string
 //
 // 获取数据源下指定表的详细信息。
 //
+// @param request - GetInstanceResourceTableRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInstanceResourceTableResponse
-func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, ResourceId *string, TableName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceTableResponse, _err error) {
+func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, ResourceId *string, TableName *string, request *GetInstanceResourceTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInstanceResourceTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6325,12 +6383,14 @@ func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, Re
 //
 // 获取数据源下指定表的详细信息。
 //
+// @param request - GetInstanceResourceTableRequest
+//
 // @return GetInstanceResourceTableResponse
-func (client *Client) GetInstanceResourceTable(InstanceId *string, ResourceId *string, TableName *string) (_result *GetInstanceResourceTableResponse, _err error) {
+func (client *Client) GetInstanceResourceTable(InstanceId *string, ResourceId *string, TableName *string, request *GetInstanceResourceTableRequest) (_result *GetInstanceResourceTableResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetInstanceResourceTableResponse{}
-	_body, _err := client.GetInstanceResourceTableWithOptions(InstanceId, ResourceId, TableName, headers, runtime)
+	_body, _err := client.GetInstanceResourceTableWithOptions(InstanceId, ResourceId, TableName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12271,8 +12331,16 @@ func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *Upd
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AggregationByUser) {
+		body["AggregationByUser"] = request.AggregationByUser
+	}
+
 	if !dara.IsNil(request.Definition) {
 		body["Definition"] = request.Definition
+	}
+
+	if !dara.IsNil(request.Denominator) {
+		body["Denominator"] = request.Denominator
 	}
 
 	if !dara.IsNil(request.Description) {
@@ -12283,12 +12351,24 @@ func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *Upd
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.IsBinomialDistribution) {
+		body["IsBinomialDistribution"] = request.IsBinomialDistribution
+	}
+
 	if !dara.IsNil(request.LeftMetricId) {
 		body["LeftMetricId"] = request.LeftMetricId
 	}
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NeedSignificance) {
+		body["NeedSignificance"] = request.NeedSignificance
+	}
+
+	if !dara.IsNil(request.Numerator) {
+		body["Numerator"] = request.Numerator
 	}
 
 	if !dara.IsNil(request.Operator) {

@@ -9,14 +9,24 @@ type iGetABMetricResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAggregationByUser(v bool) *GetABMetricResponseBody
+	GetAggregationByUser() *bool
 	SetDefinition(v string) *GetABMetricResponseBody
 	GetDefinition() *string
+	SetDenominator(v string) *GetABMetricResponseBody
+	GetDenominator() *string
 	SetDescription(v string) *GetABMetricResponseBody
 	GetDescription() *string
+	SetIsBinomialDistribution(v bool) *GetABMetricResponseBody
+	GetIsBinomialDistribution() *bool
 	SetLeftMetricId(v string) *GetABMetricResponseBody
 	GetLeftMetricId() *string
 	SetName(v string) *GetABMetricResponseBody
 	GetName() *string
+	SetNeedSignificance(v bool) *GetABMetricResponseBody
+	GetNeedSignificance() *bool
+	SetNumerator(v string) *GetABMetricResponseBody
+	GetNumerator() *string
 	SetOperator(v string) *GetABMetricResponseBody
 	GetOperator() *string
 	SetRealtime(v string) *GetABMetricResponseBody
@@ -42,11 +52,17 @@ type iGetABMetricResponseBody interface {
 }
 
 type GetABMetricResponseBody struct {
+	AggregationByUser *bool `json:"AggregationByUser,omitempty" xml:"AggregationByUser,omitempty"`
 	// example:
 	//
 	// sum(click_cnt)
-	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// example:
+	//
+	// pv
+	Denominator            *string `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsBinomialDistribution *bool   `json:"IsBinomialDistribution,omitempty" xml:"IsBinomialDistribution,omitempty"`
 	// example:
 	//
 	// 3
@@ -54,7 +70,12 @@ type GetABMetricResponseBody struct {
 	// example:
 	//
 	// pv
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NeedSignificance *bool   `json:"NeedSignificance,omitempty" xml:"NeedSignificance,omitempty"`
+	// example:
+	//
+	// click
+	Numerator *string `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
 	// example:
 	//
 	// Division
@@ -109,12 +130,24 @@ func (s GetABMetricResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetABMetricResponseBody) GetAggregationByUser() *bool {
+	return s.AggregationByUser
+}
+
 func (s *GetABMetricResponseBody) GetDefinition() *string {
 	return s.Definition
 }
 
+func (s *GetABMetricResponseBody) GetDenominator() *string {
+	return s.Denominator
+}
+
 func (s *GetABMetricResponseBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetABMetricResponseBody) GetIsBinomialDistribution() *bool {
+	return s.IsBinomialDistribution
 }
 
 func (s *GetABMetricResponseBody) GetLeftMetricId() *string {
@@ -123,6 +156,14 @@ func (s *GetABMetricResponseBody) GetLeftMetricId() *string {
 
 func (s *GetABMetricResponseBody) GetName() *string {
 	return s.Name
+}
+
+func (s *GetABMetricResponseBody) GetNeedSignificance() *bool {
+	return s.NeedSignificance
+}
+
+func (s *GetABMetricResponseBody) GetNumerator() *string {
+	return s.Numerator
 }
 
 func (s *GetABMetricResponseBody) GetOperator() *string {
@@ -169,13 +210,28 @@ func (s *GetABMetricResponseBody) GetType() *string {
 	return s.Type
 }
 
+func (s *GetABMetricResponseBody) SetAggregationByUser(v bool) *GetABMetricResponseBody {
+	s.AggregationByUser = &v
+	return s
+}
+
 func (s *GetABMetricResponseBody) SetDefinition(v string) *GetABMetricResponseBody {
 	s.Definition = &v
 	return s
 }
 
+func (s *GetABMetricResponseBody) SetDenominator(v string) *GetABMetricResponseBody {
+	s.Denominator = &v
+	return s
+}
+
 func (s *GetABMetricResponseBody) SetDescription(v string) *GetABMetricResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetIsBinomialDistribution(v bool) *GetABMetricResponseBody {
+	s.IsBinomialDistribution = &v
 	return s
 }
 
@@ -186,6 +242,16 @@ func (s *GetABMetricResponseBody) SetLeftMetricId(v string) *GetABMetricResponse
 
 func (s *GetABMetricResponseBody) SetName(v string) *GetABMetricResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetNeedSignificance(v bool) *GetABMetricResponseBody {
+	s.NeedSignificance = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetNumerator(v string) *GetABMetricResponseBody {
+	s.Numerator = &v
 	return s
 }
 
