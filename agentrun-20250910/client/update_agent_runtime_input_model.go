@@ -11,6 +11,8 @@ type iUpdateAgentRuntimeInput interface {
 	GoString() string
 	SetAgentRuntimeName(v string) *UpdateAgentRuntimeInput
 	GetAgentRuntimeName() *string
+	SetArmsConfiguration(v *ArmsConfiguration) *UpdateAgentRuntimeInput
+	GetArmsConfiguration() *ArmsConfiguration
 	SetArtifactType(v string) *UpdateAgentRuntimeInput
 	GetArtifactType() *string
 	SetCodeConfiguration(v *CodeConfiguration) *UpdateAgentRuntimeInput
@@ -60,6 +62,12 @@ type UpdateAgentRuntimeInput struct {
 	//
 	// my-agent-runtime
 	AgentRuntimeName *string `json:"agentRuntimeName,omitempty" xml:"agentRuntimeName,omitempty"`
+	// 应用实时监控服务（ARMS）的配置信息
+	//
+	// example:
+	//
+	// {}
+	ArmsConfiguration *ArmsConfiguration `json:"armsConfiguration,omitempty" xml:"armsConfiguration,omitempty"`
 	// example:
 	//
 	// Code
@@ -182,6 +190,10 @@ func (s *UpdateAgentRuntimeInput) GetAgentRuntimeName() *string {
 	return s.AgentRuntimeName
 }
 
+func (s *UpdateAgentRuntimeInput) GetArmsConfiguration() *ArmsConfiguration {
+	return s.ArmsConfiguration
+}
+
 func (s *UpdateAgentRuntimeInput) GetArtifactType() *string {
 	return s.ArtifactType
 }
@@ -268,6 +280,11 @@ func (s *UpdateAgentRuntimeInput) GetWorkspaceId() *string {
 
 func (s *UpdateAgentRuntimeInput) SetAgentRuntimeName(v string) *UpdateAgentRuntimeInput {
 	s.AgentRuntimeName = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetArmsConfiguration(v *ArmsConfiguration) *UpdateAgentRuntimeInput {
+	s.ArmsConfiguration = v
 	return s
 }
 
@@ -377,6 +394,11 @@ func (s *UpdateAgentRuntimeInput) SetWorkspaceId(v string) *UpdateAgentRuntimeIn
 }
 
 func (s *UpdateAgentRuntimeInput) Validate() error {
+	if s.ArmsConfiguration != nil {
+		if err := s.ArmsConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CodeConfiguration != nil {
 		if err := s.CodeConfiguration.Validate(); err != nil {
 			return err

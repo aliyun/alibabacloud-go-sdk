@@ -9,6 +9,8 @@ type iBoundTool interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApis(v []*BoundToolApi) *BoundTool
+	GetApis() []*BoundToolApi
 	SetMethod(v string) *BoundTool
 	GetMethod() *string
 	SetPath(v string) *BoundTool
@@ -18,12 +20,17 @@ type iBoundTool interface {
 }
 
 type BoundTool struct {
+	Apis []*BoundToolApi `json:"apis" xml:"apis" type:"Repeated"`
+	// Deprecated
+	//
 	// 绑定的 HTTP 请求方法，支持：GET、PUT、POST、PATCH、DELETE、OPTIONS
 	//
 	// example:
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	// Deprecated
+	//
 	// 绑定的 URL 路径，用于路由匹配
 	//
 	// example:
@@ -46,6 +53,10 @@ func (s BoundTool) GoString() string {
 	return s.String()
 }
 
+func (s *BoundTool) GetApis() []*BoundToolApi {
+	return s.Apis
+}
+
 func (s *BoundTool) GetMethod() *string {
 	return s.Method
 }
@@ -56,6 +67,11 @@ func (s *BoundTool) GetPath() *string {
 
 func (s *BoundTool) GetToolName() *string {
 	return s.ToolName
+}
+
+func (s *BoundTool) SetApis(v []*BoundToolApi) *BoundTool {
+	s.Apis = v
+	return s
 }
 
 func (s *BoundTool) SetMethod(v string) *BoundTool {
@@ -74,5 +90,14 @@ func (s *BoundTool) SetToolName(v string) *BoundTool {
 }
 
 func (s *BoundTool) Validate() error {
-	return dara.Validate(s)
+	if s.Apis != nil {
+		for _, item := range s.Apis {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }

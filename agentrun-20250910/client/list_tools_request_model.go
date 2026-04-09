@@ -13,6 +13,8 @@ type iListToolsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListToolsRequest
 	GetPageSize() *int32
+	SetToolName(v string) *ListToolsRequest
+	GetToolName() *string
 	SetToolType(v string) *ListToolsRequest
 	GetToolType() *string
 	SetWorkspaceId(v string) *ListToolsRequest
@@ -34,6 +36,10 @@ type ListToolsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// tool-1
+	ToolName *string `json:"toolName,omitempty" xml:"toolName,omitempty"`
 	// 按工具类型过滤，可选值：MCP、FUNCTIONCALL、SKILL
 	//
 	// example:
@@ -68,6 +74,10 @@ func (s *ListToolsRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListToolsRequest) GetToolName() *string {
+	return s.ToolName
+}
+
 func (s *ListToolsRequest) GetToolType() *string {
 	return s.ToolType
 }
@@ -87,6 +97,11 @@ func (s *ListToolsRequest) SetPageNumber(v int32) *ListToolsRequest {
 
 func (s *ListToolsRequest) SetPageSize(v int32) *ListToolsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListToolsRequest) SetToolName(v string) *ListToolsRequest {
+	s.ToolName = &v
 	return s
 }
 
