@@ -2361,6 +2361,80 @@ func (client *Client) CreateNodeWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
+// 创建参数。
+//
+// @param tmpReq - CreateParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParameterResponse
+func (client *Client) CreateParameterWithContext(ctx context.Context, tmpReq *CreateParameterRequest, runtime *dara.RuntimeOptions) (_result *CreateParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateParameterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Properties) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, dara.String("Properties"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.PropertiesShrink) {
+		body["Properties"] = request.PropertiesShrink
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateParameterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a deployment process for entities in the Data Studio (new version).
 //
 // Description:
@@ -4339,6 +4413,50 @@ func (client *Client) DeleteNodeWithContext(ctx context.Context, request *Delete
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除参数。
+//
+// @param request - DeleteParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterResponse
+func (client *Client) DeleteParameterWithContext(ctx context.Context, request *DeleteParameterRequest, runtime *dara.RuntimeOptions) (_result *DeleteParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteParameterResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6675,6 +6793,50 @@ func (client *Client) GetNodeWithContext(ctx context.Context, request *GetNodeRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据参数ID获取参数的详细信息。
+//
+// @param request - GetParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParameterResponse
+func (client *Client) GetParameterWithContext(ctx context.Context, request *GetParameterRequest, runtime *dara.RuntimeOptions) (_result *GetParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetParameterResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9945,6 +10107,148 @@ func (client *Client) ListNodesWithContext(ctx context.Context, request *ListNod
 
 // Summary:
 //
+// 查询参数版本列表。
+//
+// @param request - ListParameterVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParameterVersionsResponse
+func (client *Client) ListParameterVersionsWithContext(ctx context.Context, request *ListParameterVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListParameterVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListParameterVersions"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListParameterVersionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数列表。
+//
+// @param tmpReq - ListParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParametersResponse
+func (client *Client) ListParametersWithContext(ctx context.Context, tmpReq *ListParametersRequest, runtime *dara.RuntimeOptions) (_result *ListParametersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListParametersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ids) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, dara.String("Ids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Names) {
+		request.NamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Names, dara.String("Names"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdsShrink) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !dara.IsNil(request.NamesShrink) {
+		body["Names"] = request.NamesShrink
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListParameters"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListParametersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of partitions in a table in Data Map. Only tables of the MaxCompute and E-MapReduce (EMR)-type Hive Metastore Service (HMS) metadata crawlers are supported.
 //
 // @param request - ListPartitionsRequest
@@ -12149,6 +12453,54 @@ func (client *Client) RevokeMemberProjectRolesWithContext(ctx context.Context, t
 		BodyType:    dara.String("json"),
 	}
 	_result = &RevokeMemberProjectRolesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚参数版本。
+//
+// @param request - RollbackParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackParameterResponse
+func (client *Client) RollbackParameterWithContext(ctx context.Context, request *RollbackParameterRequest, runtime *dara.RuntimeOptions) (_result *RollbackParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.RollbackVersion) {
+		body["RollbackVersion"] = request.RollbackVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackParameterResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14541,6 +14893,68 @@ func (client *Client) UpdateNodeWithContext(ctx context.Context, request *Update
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateNodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新参数。
+//
+// @param tmpReq - UpdateParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateParameterResponse
+func (client *Client) UpdateParameterWithContext(ctx context.Context, tmpReq *UpdateParameterRequest, runtime *dara.RuntimeOptions) (_result *UpdateParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateParameterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Properties) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, dara.String("Properties"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.PropertiesShrink) {
+		body["Properties"] = request.PropertiesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateParameterResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

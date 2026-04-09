@@ -131,11 +131,13 @@ func (client *Client) _postOSSObject(bucketName *string, form map[string]interfa
 
 		request_ = dara.NewRequest()
 		boundary := dara.GetBoundary()
+		tmp := dara.ToString(form["host"])
+		host := dara.StringValue(bucketName) + "." + tmp
 		request_.Protocol = dara.String("HTTPS")
 		request_.Method = dara.String("POST")
 		request_.Pathname = dara.String("/")
 		request_.Headers = map[string]*string{
-			"host":       dara.String(dara.ToString(form["host"])),
+			"host":       dara.String(host),
 			"date":       openapiutil.GetDateUTCString(),
 			"user-agent": openapiutil.GetUserAgent(dara.String("")),
 		}
@@ -3243,6 +3245,98 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 
 // Summary:
 //
+// 创建参数。
+//
+// @param tmpReq - CreateParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParameterResponse
+func (client *Client) CreateParameterWithOptions(tmpReq *CreateParameterRequest, runtime *dara.RuntimeOptions) (_result *CreateParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateParameterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Properties) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, dara.String("Properties"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.PropertiesShrink) {
+		body["Properties"] = request.PropertiesShrink
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建参数。
+//
+// @param request - CreateParameterRequest
+//
+// @return CreateParameterResponse
+func (client *Client) CreateParameter(request *CreateParameterRequest) (_result *CreateParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateParameterResponse{}
+	_body, _err := client.CreateParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a deployment process for entities in the Data Studio (new version).
 //
 // Description:
@@ -3674,7 +3768,7 @@ func (client *Client) CreateResourceAdvance(request *CreateResourceAdvanceReques
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -3887,7 +3981,7 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -6168,6 +6262,68 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteNodeResponse{}
 	_body, _err := client.DeleteNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除参数。
+//
+// @param request - DeleteParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterResponse
+func (client *Client) DeleteParameterWithOptions(request *DeleteParameterRequest, runtime *dara.RuntimeOptions) (_result *DeleteParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除参数。
+//
+// @param request - DeleteParameterRequest
+//
+// @return DeleteParameterResponse
+func (client *Client) DeleteParameter(request *DeleteParameterRequest) (_result *DeleteParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteParameterResponse{}
+	_body, _err := client.DeleteParameterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9502,6 +9658,68 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 
 // Summary:
 //
+// 根据参数ID获取参数的详细信息。
+//
+// @param request - GetParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParameterResponse
+func (client *Client) GetParameterWithOptions(request *GetParameterRequest, runtime *dara.RuntimeOptions) (_result *GetParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据参数ID获取参数的详细信息。
+//
+// @param request - GetParameterRequest
+//
+// @return GetParameterResponse
+func (client *Client) GetParameter(request *GetParameterRequest) (_result *GetParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetParameterResponse{}
+	_body, _err := client.GetParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves partition details for a data map table. Currently supports MaxCompute and HMS (EMR cluster) types only.
 //
 // Description:
@@ -10843,7 +11061,7 @@ func (client *Client) ImportCertificateAdvance(request *ImportCertificateAdvance
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -11496,8 +11714,6 @@ func (client *Client) ListComputeResources(request *ListComputeResourcesRequest)
 // Summary:
 //
 // Queries a list of metadata crawler types supported in Data Map. The subtypes of the types and the hierarchical relationship between the subtypes are also returned.
-//
-// @param request - ListCrawlerTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -14206,6 +14422,184 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListNodesResponse{}
 	_body, _err := client.ListNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数版本列表。
+//
+// @param request - ListParameterVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParameterVersionsResponse
+func (client *Client) ListParameterVersionsWithOptions(request *ListParameterVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListParameterVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListParameterVersions"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListParameterVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数版本列表。
+//
+// @param request - ListParameterVersionsRequest
+//
+// @return ListParameterVersionsResponse
+func (client *Client) ListParameterVersions(request *ListParameterVersionsRequest) (_result *ListParameterVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListParameterVersionsResponse{}
+	_body, _err := client.ListParameterVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数列表。
+//
+// @param tmpReq - ListParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParametersResponse
+func (client *Client) ListParametersWithOptions(tmpReq *ListParametersRequest, runtime *dara.RuntimeOptions) (_result *ListParametersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListParametersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Ids) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, dara.String("Ids"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Names) {
+		request.NamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Names, dara.String("Names"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IdsShrink) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !dara.IsNil(request.NamesShrink) {
+		body["Names"] = request.NamesShrink
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Scope) {
+		body["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		body["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListParameters"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数列表。
+//
+// @param request - ListParametersRequest
+//
+// @return ListParametersResponse
+func (client *Client) ListParameters(request *ListParametersRequest) (_result *ListParametersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListParametersResponse{}
+	_body, _err := client.ListParametersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17148,6 +17542,72 @@ func (client *Client) RevokeMemberProjectRoles(request *RevokeMemberProjectRoles
 	runtime := &dara.RuntimeOptions{}
 	_result = &RevokeMemberProjectRolesResponse{}
 	_body, _err := client.RevokeMemberProjectRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚参数版本。
+//
+// @param request - RollbackParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackParameterResponse
+func (client *Client) RollbackParameterWithOptions(request *RollbackParameterRequest, runtime *dara.RuntimeOptions) (_result *RollbackParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.RollbackVersion) {
+		body["RollbackVersion"] = request.RollbackVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚参数版本。
+//
+// @param request - RollbackParameterRequest
+//
+// @return RollbackParameterResponse
+func (client *Client) RollbackParameter(request *RollbackParameterRequest) (_result *RollbackParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RollbackParameterResponse{}
+	_body, _err := client.RollbackParameterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20266,6 +20726,86 @@ func (client *Client) UpdateNode(request *UpdateNodeRequest) (_result *UpdateNod
 
 // Summary:
 //
+// 更新参数。
+//
+// @param tmpReq - UpdateParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateParameterResponse
+func (client *Client) UpdateParameterWithOptions(tmpReq *UpdateParameterRequest, runtime *dara.RuntimeOptions) (_result *UpdateParameterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateParameterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Properties) {
+		request.PropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Properties, dara.String("Properties"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.PropertiesShrink) {
+		body["Properties"] = request.PropertiesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateParameter"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新参数。
+//
+// @param request - UpdateParameterRequest
+//
+// @return UpdateParameterResponse
+func (client *Client) UpdateParameter(request *UpdateParameterRequest) (_result *UpdateParameterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateParameterResponse{}
+	_body, _err := client.UpdateParameterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a DataWorks workspace.
 //
 // @param request - UpdateProjectRequest
@@ -20507,7 +21047,7 @@ func (client *Client) UpdateResourceAdvance(request *UpdateResourceAdvanceReques
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
