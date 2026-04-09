@@ -39,6 +39,9 @@ type FindIdpListByLoginIdentifierRequest struct {
 	//
 	// 370b56f8-2812-4b6c-bfa6-2560791c****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 22.21.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// example:
 	//

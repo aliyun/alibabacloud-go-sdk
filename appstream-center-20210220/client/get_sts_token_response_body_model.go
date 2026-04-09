@@ -59,6 +59,9 @@ func (s *GetStsTokenResponseBody) Validate() error {
 }
 
 type GetStsTokenResponseBodyStsTokenModel struct {
+	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	ProfileRegion *string `json:"ProfileRegion,omitempty" xml:"ProfileRegion,omitempty"`
 	// example:
 	//
 	// be4be09e-cd00-4b4c-add7-11b4d8****
@@ -81,6 +84,18 @@ func (s GetStsTokenResponseBodyStsTokenModel) GoString() string {
 	return s.String()
 }
 
+func (s *GetStsTokenResponseBodyStsTokenModel) GetEndUserId() *string {
+	return s.EndUserId
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) GetLoginToken() *string {
+	return s.LoginToken
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) GetProfileRegion() *string {
+	return s.ProfileRegion
+}
+
 func (s *GetStsTokenResponseBodyStsTokenModel) GetSessionId() *string {
 	return s.SessionId
 }
@@ -91,6 +106,21 @@ func (s *GetStsTokenResponseBodyStsTokenModel) GetStsToken() *string {
 
 func (s *GetStsTokenResponseBodyStsTokenModel) GetTenantId() *int64 {
 	return s.TenantId
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) SetEndUserId(v string) *GetStsTokenResponseBodyStsTokenModel {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) SetLoginToken(v string) *GetStsTokenResponseBodyStsTokenModel {
+	s.LoginToken = &v
+	return s
+}
+
+func (s *GetStsTokenResponseBodyStsTokenModel) SetProfileRegion(v string) *GetStsTokenResponseBodyStsTokenModel {
+	s.ProfileRegion = &v
+	return s
 }
 
 func (s *GetStsTokenResponseBodyStsTokenModel) SetSessionId(v string) *GetStsTokenResponseBodyStsTokenModel {

@@ -69,7 +69,7 @@ func (client *Client) ClientUserLogoutWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 身份认证查询接口
+// Queries the information about identity providers by logon identifier.
 //
 // @param tmpReq - FindIdpListByLoginIdentifierRequest
 //
@@ -153,7 +153,7 @@ func (client *Client) FindIdpListByLoginIdentifierWithContext(ctx context.Contex
 
 // Summary:
 //
-// # GetLoginToken
+// Queries a logon token using an enterprise identifier.
 //
 // @param tmpReq - GetLoginTokenRequest
 //
@@ -351,7 +351,7 @@ func (client *Client) GetLoginTokenWithContext(ctx context.Context, tmpReq *GetL
 
 // Summary:
 //
-// 获取无影StsToken
+// Obtains an STS token.
 //
 // @param request - GetStsTokenRequest
 //
@@ -413,6 +413,10 @@ func (client *Client) GetStsTokenWithContext(ctx context.Context, request *GetSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Refreshes a logon token.
+//
 // @param request - RefreshLoginTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

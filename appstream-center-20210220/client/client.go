@@ -136,7 +136,7 @@ func (client *Client) ClientUserLogout(request *ClientUserLogoutRequest) (_resul
 
 // Summary:
 //
-// 身份认证查询接口
+// Queries the information about identity providers by logon identifier.
 //
 // @param tmpReq - FindIdpListByLoginIdentifierRequest
 //
@@ -220,7 +220,7 @@ func (client *Client) FindIdpListByLoginIdentifierWithOptions(tmpReq *FindIdpLis
 
 // Summary:
 //
-// 身份认证查询接口
+// Queries the information about identity providers by logon identifier.
 //
 // @param request - FindIdpListByLoginIdentifierRequest
 //
@@ -238,7 +238,7 @@ func (client *Client) FindIdpListByLoginIdentifier(request *FindIdpListByLoginId
 
 // Summary:
 //
-// # GetLoginToken
+// Queries a logon token using an enterprise identifier.
 //
 // @param tmpReq - GetLoginTokenRequest
 //
@@ -436,7 +436,7 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 
 // Summary:
 //
-// # GetLoginToken
+// Queries a logon token using an enterprise identifier.
 //
 // @param request - GetLoginTokenRequest
 //
@@ -454,7 +454,7 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 
 // Summary:
 //
-// 获取无影StsToken
+// Obtains an STS token.
 //
 // @param request - GetStsTokenRequest
 //
@@ -518,7 +518,7 @@ func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtim
 
 // Summary:
 //
-// 获取无影StsToken
+// Obtains an STS token.
 //
 // @param request - GetStsTokenRequest
 //
@@ -534,6 +534,10 @@ func (client *Client) GetStsToken(request *GetStsTokenRequest) (_result *GetStsT
 	return _result, _err
 }
 
+// Summary:
+//
+// Refreshes a logon token.
+//
 // @param request - RefreshLoginTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -606,6 +610,10 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Refreshes a logon token.
+//
 // @param request - RefreshLoginTokenRequest
 //
 // @return RefreshLoginTokenResponse
