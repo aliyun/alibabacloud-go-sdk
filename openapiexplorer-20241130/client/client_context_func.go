@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Validates the syntax of HashiCorp Configuration Language (HCL) for Terraform.
+// 验证 Terraform HCL 语法
 //
 // @param request - ApiMcpServerValidateHclRequest
 //
@@ -56,7 +56,7 @@ func (client *Client) ApiMcpServerValidateHclWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an API MCP service.
+// 创建ApiMcpServer
 //
 // @param request - CreateApiMcpServerRequest
 //
@@ -167,7 +167,7 @@ func (client *Client) CreateApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes an API MCP service.
+// 删除ApiMcpServer
 //
 // @param request - DeleteApiMcpServerRequest
 //
@@ -218,7 +218,7 @@ func (client *Client) DeleteApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Generates an Alibaba Cloud CLI command dynamically.
+// 动态生成Aliyun CLI命令
 //
 // @param tmpReq - GenerateCLICommandRequest
 //
@@ -295,7 +295,7 @@ func (client *Client) GenerateCLICommandWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Retrieves the OpenAPI metadata for an API in a product.
+// 获取产品相关接口的开放元数据
 //
 // @param request - GetApiDefinitionRequest
 //
@@ -350,7 +350,7 @@ func (client *Client) GetApiDefinitionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the details of a specific API MCP service.
+// 查询 ApiMcpServer
 //
 // @param request - GetApiMcpServerRequest
 //
@@ -397,7 +397,7 @@ func (client *Client) GetApiMcpServerWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the global API MCP Server configuration for a user. The configuration includes settings for public network access and the whitelist of source VPC IDs for requests from a VPC.
+// 查询用户全局API MCP Server配置
 //
 // @param headers - map
 //
@@ -493,11 +493,11 @@ func (client *Client) GetErrorCodeSolutionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of an OpenAPI call log for your account using the request ID returned from an API call. This operation is used for troubleshooting.
+// Queries the log of an API call performed by using the current account based on the returned request ID of the API to troubleshoot issues.
 //
 // Description:
 //
-// This API does not support authorization.
+// Permissions on this API cannot be granted to other members.
 //
 // @param request - GetOwnRequestLogRequest
 //
@@ -544,7 +544,7 @@ func (client *Client) GetOwnRequestLogWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the endpoint information for a product.
+// 获取产品的接入点信息
 //
 // @param request - GetProductEndpointsRequest
 //
@@ -591,11 +591,11 @@ func (client *Client) GetProductEndpointsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of a request log using the request ID that is returned from an API call. This operation is useful for troubleshooting.
+// Queries the log of an API call based on the returned request ID of the API to troubleshoot issues.
 //
 // Description:
 //
-// You can query call logs across different RAM users or Alibaba Cloud accounts using RAM authorization or role assumption. For more information, see [Cross-account API error diagnosis authorization](https://help.aliyun.com/document_detail/2868101.html).
+// You can grant permissions to a Resource Access Management (RAM) user or assume a role to query the log of an API call across RAM users or Alibaba Cloud accounts. For more information, see [Grant permissions to troubleshoot API errors across accounts](https://help.aliyun.com/document_detail/2868101.html).
 //
 // @param request - GetRequestLogRequest
 //
@@ -642,7 +642,7 @@ func (client *Client) GetRequestLogWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Retrieves the OpenAPI metadata for a product.
+// 获取产品的开放元数据
 //
 // @param request - ListApiDefinitionsRequest
 //
@@ -693,7 +693,7 @@ func (client *Client) ListApiDefinitionsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists the system tools supported by the MCP service.
+// 查询系统工具列表
 //
 // @param request - ListApiMcpServerSystemToolsRequest
 //
@@ -748,7 +748,7 @@ func (client *Client) ListApiMcpServerSystemToolsWithContext(ctx context.Context
 
 // Summary:
 //
-// This operation queries a list of all API MCP servers in an Alibaba Cloud account.
+// 列出资源ApiMcpServer
 //
 // @param request - ListApiMcpServersRequest
 //
@@ -831,7 +831,54 @@ func (client *Client) ListApiMcpServersWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates an API MCP service.
+// 列举云产品
+//
+// @param request - ListProductsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProductsResponse
+func (client *Client) ListProductsWithContext(ctx context.Context, request *ListProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["filter"] = request.Filter
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProducts"),
+		Version:     dara.String("2024-11-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/listProducts"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProductsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新UpdateApiMcpServer
 //
 // @param request - UpdateApiMcpServerRequest
 //
@@ -944,7 +991,7 @@ func (client *Client) UpdateApiMcpServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the global API MCP Server configuration for a user.
+// 修改用户全局API MCP Server配置
 //
 // @param request - UpdateApiMcpServerUserConfigRequest
 //

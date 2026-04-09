@@ -18,17 +18,10 @@ type iGenerateCLICommandResponseBody interface {
 }
 
 type GenerateCLICommandResponseBody struct {
-	// CLI command.
-	//
 	// example:
 	//
 	// aliyun ecs DescribeRegions --ResourceType instance
-	Cli *string `json:"cli,omitempty" xml:"cli,omitempty"`
-	// Request ID.
-	//
-	// example:
-	//
-	// A707AFA8-1A4C-5B2A-A165-8436C1EA38DB
+	Cli        *string `json:"cli,omitempty" xml:"cli,omitempty"`
 	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	UnifiedCli *string `json:"unifiedCli,omitempty" xml:"unifiedCli,omitempty"`
 }

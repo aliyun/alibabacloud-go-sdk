@@ -22,30 +22,19 @@ type iListApiMcpServersResponseBody interface {
 }
 
 type ListApiMcpServersResponseBody struct {
-	// The list of queried API MCP servers.
 	ApiMcpServers []*ListApiMcpServersResponseBodyApiMcpServers `json:"apiMcpServers,omitempty" xml:"apiMcpServers,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
-	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The paging cursor.
-	//
-	// > If this parameter is not empty, more data is available.
-	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 9BFC4AC1-6BE4-5405-BDEC-CA288D404812
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
-	//
 	// example:
 	//
 	// 5
@@ -119,12 +108,8 @@ func (s *ListApiMcpServersResponseBody) Validate() error {
 }
 
 type ListApiMcpServersResponseBodyApiMcpServers struct {
-	// A list of supplementary API descriptions.
 	AdditionalApiDescriptions []*ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptions `json:"additionalApiDescriptions,omitempty" xml:"additionalApiDescriptions,omitempty" type:"Repeated"`
-	// A list of API information.
-	Apis []*ListApiMcpServersResponseBodyApiMcpServersApis `json:"apis,omitempty" xml:"apis,omitempty" type:"Repeated"`
-	// The extra policy for role assumption when multi-account access is enabled. If this policy is specified, the permissions for the role assumption are based on this policy and overwrite the permissions that are defined for the role.
-	//
+	Apis                      []*ListApiMcpServersResponseBodyApiMcpServersApis                      `json:"apis,omitempty" xml:"apis,omitempty" type:"Repeated"`
 	// example:
 	//
 	// {
@@ -155,102 +140,55 @@ type ListApiMcpServersResponseBodyApiMcpServers struct {
 	//
 	// }
 	AssumeRoleExtraPolicy *string `json:"assumeRoleExtraPolicy,omitempty" xml:"assumeRoleExtraPolicy,omitempty"`
-	// The name of the RAM role in the destination account that is assumed for cross-account operations when multi-account access is enabled.
-	//
 	// example:
 	//
 	// test
 	AssumeRoleName *string `json:"assumeRoleName,omitempty" xml:"assumeRoleName,omitempty"`
-	// The time when the API MCP server was created.
-	//
 	// example:
 	//
 	// 2024-12-10T03:20:21Z
-	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the API MCP server.
-	//
-	// example:
-	//
-	// 这是一个API MCP服务器。
+	CreateTime  *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable multi-account access.
-	//
 	// example:
 	//
 	// true
-	EnableAssumeRole *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
-	// Specifies whether to enable a custom VPC whitelist. If this parameter is disabled, the account-level configuration is used.
-	//
-	// example:
-	//
-	// true
+	EnableAssumeRole         *bool `json:"enableAssumeRole,omitempty" xml:"enableAssumeRole,omitempty"`
 	EnableCustomVpcWhitelist *bool `json:"enableCustomVpcWhitelist,omitempty" xml:"enableCustomVpcWhitelist,omitempty"`
-	// The ID of the API MCP service.
-	//
 	// example:
 	//
 	// v6ZZ7ftCzEILW***
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The MCP instruction. It prompts the large language model on how to use the MCP. The client must support the \\`Instructions\\` field of the standard MCP protocol.
-	//
 	// example:
 	//
 	// test
 	Instructions *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
-	// The language of the API reference for the API MCP service. You can select Chinese or English. The language of the prompt can affect the response from the AI.
-	//
 	// example:
 	//
 	// ZH_CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The name of the MCP server. The name must be 3 to 64 characters in length. It can contain lowercase letters and digits, and cannot start with a digit. The name must be unique within the same Alibaba Cloud account.
-	//
 	// example:
 	//
 	// mcp-demo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The custom OAuth client ID that is used for a custom OAuth configuration.
-	//
-	// ``Only web and native applications are supported. The OAuth scope must include `/acs/mcp-server`.``
-	//
 	// example:
 	//
 	// 403*************370
-	OauthClientId *string `json:"oauthClientId,omitempty" xml:"oauthClientId,omitempty"`
-	// A list of prompt configurations.
-	Prompts []*ListApiMcpServersResponseBodyApiMcpServersPrompts `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
-	// Specifies whether to enable access over the Internet.
-	//
-	// example:
-	//
-	// on
-	PublicAccess *string `json:"publicAccess,omitempty" xml:"publicAccess,omitempty"`
-	// The type of the API MCP service.
-	//
-	// - custom: a custom service
-	//
-	// - system: a system service
-	//
+	OauthClientId *string                                              `json:"oauthClientId,omitempty" xml:"oauthClientId,omitempty"`
+	Prompts       []*ListApiMcpServersResponseBodyApiMcpServersPrompts `json:"prompts,omitempty" xml:"prompts,omitempty" type:"Repeated"`
+	PublicAccess  *string                                              `json:"publicAccess,omitempty" xml:"publicAccess,omitempty"`
 	// example:
 	//
 	// system
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// A list of system MCP services.
+	SourceType          *string                                                        `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	SystemMcpServerInfo *ListApiMcpServersResponseBodyApiMcpServersSystemMcpServerInfo `json:"systemMcpServerInfo,omitempty" xml:"systemMcpServerInfo,omitempty" type:"Struct"`
-	// A list of system tools.
-	SystemTools []*string `json:"systemTools,omitempty" xml:"systemTools,omitempty" type:"Repeated"`
-	// A list of Terraform tools.
-	TerraformTools []*ListApiMcpServersResponseBodyApiMcpServersTerraformTools `json:"terraformTools,omitempty" xml:"terraformTools,omitempty" type:"Repeated"`
-	// The time when the API MCP server was last updated.
-	//
+	SystemTools         []*string                                                      `json:"systemTools,omitempty" xml:"systemTools,omitempty" type:"Repeated"`
+	TerraformTools      []*ListApiMcpServersResponseBodyApiMcpServersTerraformTools    `json:"terraformTools,omitempty" xml:"terraformTools,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2025-01-10T02:11:43Z
-	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The connection information for the API MCP service.
-	Urls *ListApiMcpServersResponseBodyApiMcpServersUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
-	// The VPC whitelist that specifies the allowed source VPCs after Internet access is disabled. If this parameter is not set or is left empty, the source is not restricted.
-	VpcWhitelists []*string `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
+	UpdateTime    *string                                         `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	Urls          *ListApiMcpServersResponseBodyApiMcpServersUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
+	VpcWhitelists []*string                                       `json:"vpcWhitelists,omitempty" xml:"vpcWhitelists,omitempty" type:"Repeated"`
 }
 
 func (s ListApiMcpServersResponseBodyApiMcpServers) String() string {
@@ -510,48 +448,24 @@ func (s *ListApiMcpServersResponseBodyApiMcpServers) Validate() error {
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptions struct {
-	// The API name.
-	//
 	// example:
 	//
 	// DescribeRegions
-	ApiName *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
-	// The API metadata in JSON format, which can be used to overwrite the \\`summary\\` and \\`parameters\\` fields. For an example of the format, see https\\://api.alibabacloud.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
-	//
-	// example:
-	//
-	// {
-	//
-	//   "summary": "本接口支持根据不同请求条件查询实例列表，并关联查询实例的详细信息。"
-	//
-	// }
+	ApiName         *string `json:"apiName,omitempty" xml:"apiName,omitempty"`
 	ApiOverrideJson *string `json:"apiOverrideJson,omitempty" xml:"apiOverrideJson,omitempty"`
-	// The POP version of the API that is exposed to the MCP server.
-	//
 	// example:
 	//
 	// 2014-05-26
-	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// A list of constant input parameters. These parameters are not included in the output during API parameter parsing.
+	ApiVersion      *string                                                                               `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
 	ConstParameters []*ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptionsConstParameters `json:"constParameters,omitempty" xml:"constParameters,omitempty" type:"Repeated"`
-	// Specifies whether to return the schema of the response parameters. Returning the schema increases the size of the API MCP server. The default value is null, which means the schema is not returned.
-	//
 	// example:
 	//
 	// true
 	EnableOutputSchema *bool `json:"enableOutputSchema,omitempty" xml:"enableOutputSchema,omitempty"`
-	// Specifies whether to return the command-line interface (CLI) command for execution. In this mode, the API call is not executed. Instead, the corresponding CLI command is returned. This mode is suitable for long-running tasks executed using the Alibaba Cloud CLI.
-	//
 	// example:
 	//
 	// true
 	ExecuteCliCommand *bool `json:"executeCliCommand,omitempty" xml:"executeCliCommand,omitempty"`
-	// The product code.
-	//
-	// - Call the GetRequestLog operation and obtain the product code from the response.
-	//
-	// - Find the product code from the URL of the OpenAPI Portal. For example, the URL for the OpenAPI Portal of Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is Dysmsapi.
-	//
 	// example:
 	//
 	// Ecs
@@ -643,14 +557,10 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptions) Va
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptionsConstParameters struct {
-	// The parameter name. Only top-level parameter names are supported. For ROA-style APIs, you can specify parameters such as \\`body.xx\\`. You cannot set values for nested parameters.
-	//
 	// example:
 	//
 	// InstanceId
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the parameter.
-	//
 	// example:
 	//
 	// 1234
@@ -688,23 +598,14 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersAdditionalApiDescriptionsCons
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersApis struct {
-	// The POP version of the API that is exposed to the MCP server.
-	//
 	// example:
 	//
 	// 2014-05-26
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The product code.
-	//
-	// - Call the GetRequestLog operation and obtain the product code from the response.
-	//
-	// - Find the product code from the URL of the OpenAPI Portal. For example, the URL for the OpenAPI Portal of Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is Dysmsapi.
-	//
 	// example:
 	//
 	// Ecs
-	Product *string `json:"product,omitempty" xml:"product,omitempty"`
-	// A list of API name matching rules.
+	Product   *string   `json:"product,omitempty" xml:"product,omitempty"`
 	Selectors []*string `json:"selectors,omitempty" xml:"selectors,omitempty" type:"Repeated"`
 }
 
@@ -748,22 +649,12 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersApis) Validate() error {
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersPrompts struct {
-	// A list of parameters that the prompt supports.
 	Arguments []*ListApiMcpServersResponseBodyApiMcpServersPromptsArguments `json:"arguments,omitempty" xml:"arguments,omitempty" type:"Repeated"`
-	// The content of the prompt. Variables are specified in the \\`{{xxx}}\\` format. \\`xxx\\` is a variable that must be defined in the \\`arguments\\` parameter.
-	//
-	// example:
-	//
-	// prompt正文，{{name}}
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The description of the prompt.
-	//
+	Content   *string                                                       `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
 	// prompt description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the prompt.
-	//
 	// example:
 	//
 	// test
@@ -828,20 +719,14 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersPrompts) Validate() error {
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersPromptsArguments struct {
-	// The description of the parameter.
-	//
 	// example:
 	//
 	// argument description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The parameter name.
-	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether the parameter is required.
-	//
 	// example:
 	//
 	// true
@@ -888,18 +773,10 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersPromptsArguments) Validate() 
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersSystemMcpServerInfo struct {
-	// The name of the system MCP service.
-	//
 	// example:
 	//
 	// mcp-system
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The product code.
-	//
-	// - Call the GetRequestLog operation and obtain the product code from the response.
-	//
-	// - Find the product code from the URL of the OpenAPI Portal. For example, the URL for the OpenAPI Portal of Short Message Service is https\\://api.alibabacloud.com/product/Dysmsapi. The product code is Dysmsapi.
-	//
 	// example:
 	//
 	// Ecs
@@ -937,14 +814,10 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersSystemMcpServerInfo) Validate
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersTerraformTools struct {
-	// Specifies whether to execute tasks asynchronously. If this parameter is set to true, the system immediately proceeds to the next task after a task is initiated, without waiting for each resource operation to complete.
-	//
 	// example:
 	//
 	// true
 	Async *bool `json:"async,omitempty" xml:"async,omitempty"`
-	// The code for the Terraform tool. For more information, see [HCL language overview](https://www.alibabacloud.com/help/en/terraform/terraform-configuration-and-hcl-language-overview).
-	//
 	// example:
 	//
 	// variable "name" {
@@ -973,26 +846,14 @@ type ListApiMcpServersResponseBodyApiMcpServersTerraformTools struct {
 	//
 	// }
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the Terraform tool.
-	//
 	// example:
 	//
 	// Terraform Tool description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The deletion policy. After a task is executed, the system applies one of the following cleanup policies to temporary resources based on the task execution status.
-	//
-	// - NEVER: Does not delete any created resources, regardless of whether the task succeeds or fails.
-	//
-	// - ALWAYS: Immediately destroys all related resources after execution, regardless of whether the task succeeds or fails.
-	//
-	// - ON_FAILURE: Deletes related resources only if the task fails. If the task succeeds, the resources are retained.
-	//
 	// example:
 	//
 	// ON_FAILURE
 	DestroyPolicy *string `json:"destroyPolicy,omitempty" xml:"destroyPolicy,omitempty"`
-	// The name of the Terraform tool.
-	//
 	// example:
 	//
 	// test
@@ -1057,29 +918,15 @@ func (s *ListApiMcpServersResponseBodyApiMcpServersTerraformTools) Validate() er
 }
 
 type ListApiMcpServersResponseBodyApiMcpServersUrls struct {
-	// The connection information for the streamable HTTP protocol. This protocol is recommended.
-	//
 	// example:
 	//
-	// https://openapi-mcp.cn-hangzhou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/mcp
+	// https://mcpserverinner-pre.cn-zhangjiakou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/mcp
 	Mcp *string `json:"mcp,omitempty" xml:"mcp,omitempty"`
-	// The connection information for the Server-Sent Events (SSE) protocol.
-	//
 	// example:
 	//
-	// https://openapi-mcp.cn-hangzhou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
-	Sse *string `json:"sse,omitempty" xml:"sse,omitempty"`
-	// The endpoint for the streamable HTTP protocol in a VPC.
-	//
-	// example:
-	//
-	// https://openapi-mcp-cn.vpc-proxy.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/mcp
+	// https://mcpserverinner-pre.cn-zhangjiakou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
+	Sse    *string `json:"sse,omitempty" xml:"sse,omitempty"`
 	VpcMcp *string `json:"vpcMcp,omitempty" xml:"vpcMcp,omitempty"`
-	// The endpoint for the SSE protocol in a VPC.
-	//
-	// example:
-	//
-	// https://openapi-mcp-cn.vpc-proxy.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
 	VpcSse *string `json:"vpcSse,omitempty" xml:"vpcSse,omitempty"`
 }
 

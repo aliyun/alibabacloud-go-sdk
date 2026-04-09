@@ -18,22 +18,14 @@ type iListApiMcpServerSystemToolsRequest interface {
 }
 
 type ListApiMcpServerSystemToolsRequest struct {
-	// The maximum number of entries to return on each page. The maximum value is 100. The default value is 20.
-	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token to start the next query. Set this parameter to the NextToken value returned by the last API call.
-	//
-	// > Do not specify this parameter for the first query. If a query does not return all results, pass the NextToken value from the previous response to the next query to continue.
-	//
 	// example:
 	//
 	// AAAAAZjtYxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The number of entries to skip.
-	//
 	// example:
 	//
 	// 5

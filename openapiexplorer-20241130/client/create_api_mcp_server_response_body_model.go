@@ -18,20 +18,15 @@ type iCreateApiMcpServerResponseBody interface {
 }
 
 type CreateApiMcpServerResponseBody struct {
-	// The ID of the successfully created API MCP service.
-	//
 	// example:
 	//
 	// v6ZZ7ftCzEILW***
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 9BFC4AC1-6BE4-5405-BDEC-CA288D404812
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The connection information for the API MCP service.
-	Urls *CreateApiMcpServerResponseBodyUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Urls      *CreateApiMcpServerResponseBodyUrls `json:"urls,omitempty" xml:"urls,omitempty" type:"Struct"`
 }
 
 func (s CreateApiMcpServerResponseBody) String() string {
@@ -79,29 +74,15 @@ func (s *CreateApiMcpServerResponseBody) Validate() error {
 }
 
 type CreateApiMcpServerResponseBodyUrls struct {
-	// The connection information for the streamable HTTP protocol. This is the recommended protocol.
-	//
 	// example:
 	//
 	// https://mcpserverinner-pre.cn-zhangjiakou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/mcp
 	Mcp *string `json:"mcp,omitempty" xml:"mcp,omitempty"`
-	// The connection information for the Server-Sent Events (SSE) protocol.
-	//
 	// example:
 	//
 	// https://mcpserverinner-pre.cn-zhangjiakou.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
-	Sse *string `json:"sse,omitempty" xml:"sse,omitempty"`
-	// The endpoint of the streamable HTTP protocol in a VPC.
-	//
-	// example:
-	//
-	// https://openapi-mcp-cn.vpc-proxy.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/mcp
+	Sse    *string `json:"sse,omitempty" xml:"sse,omitempty"`
 	VpcMcp *string `json:"vpcMcp,omitempty" xml:"vpcMcp,omitempty"`
-	// The endpoint of the SSE protocol in a VPC.
-	//
-	// example:
-	//
-	// https://openapi-mcp-cn.vpc-proxy.aliyuncs.com/accounts/xxxx/custom/xxx/id/xxxx/sse
 	VpcSse *string `json:"vpcSse,omitempty" xml:"vpcSse,omitempty"`
 }
 

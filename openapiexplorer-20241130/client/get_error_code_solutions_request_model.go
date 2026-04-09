@@ -32,23 +32,23 @@ type GetErrorCodeSolutionsRequest struct {
 	//
 	// example:
 	//
-	// IncorrectStatus.TransitRouter
+	// 1234-56789012
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message for which you want to query a solution. This parameter must be configured together with the errorCode parameter.
 	//
 	// example:
 	//
-	// The resource is not in a valid state for the operation.
+	// An error occurred while processing your request.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// The product code. You can use one of the following methods to query a product code:
 	//
-	// - Call the GetRequestLog operation to query a product code from the response.
+	// 	- Call the GetRequestLog operation to query a product code from the response.
 	//
-	// - Query the code of a product in the OpenAPI Explorer URL of the product. For example, the OpenAPI Explorer URL of Short Message Service (SMS) is https\\://api.alibabacloud.com/product/Dysmsapi. Therefore, the product code of SMS is Dysmsapi.
+	// 	- Query the code of a product in the OpenAPI Explorer URL of the product. For example, the OpenAPI Explorer URL of Short Message Service (SMS) is https://api.alibabacloud.com/product/Dysmsapi. Therefore, the product code of SMS is Dysmsapi.
 	//
 	// example:
 	//
-	// Ecs
+	// oss
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
 }
 

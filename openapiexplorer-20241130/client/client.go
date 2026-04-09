@@ -62,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Validates the syntax of HashiCorp Configuration Language (HCL) for Terraform.
+// 验证 Terraform HCL 语法
 //
 // @param request - ApiMcpServerValidateHclRequest
 //
@@ -109,7 +109,7 @@ func (client *Client) ApiMcpServerValidateHclWithOptions(request *ApiMcpServerVa
 
 // Summary:
 //
-// Validates the syntax of HashiCorp Configuration Language (HCL) for Terraform.
+// 验证 Terraform HCL 语法
 //
 // @param request - ApiMcpServerValidateHclRequest
 //
@@ -128,7 +128,7 @@ func (client *Client) ApiMcpServerValidateHcl(request *ApiMcpServerValidateHclRe
 
 // Summary:
 //
-// Creates an API MCP service.
+// 创建ApiMcpServer
 //
 // @param request - CreateApiMcpServerRequest
 //
@@ -239,7 +239,7 @@ func (client *Client) CreateApiMcpServerWithOptions(request *CreateApiMcpServerR
 
 // Summary:
 //
-// Creates an API MCP service.
+// 创建ApiMcpServer
 //
 // @param request - CreateApiMcpServerRequest
 //
@@ -258,7 +258,7 @@ func (client *Client) CreateApiMcpServer(request *CreateApiMcpServerRequest) (_r
 
 // Summary:
 //
-// Deletes an API MCP service.
+// 删除ApiMcpServer
 //
 // @param request - DeleteApiMcpServerRequest
 //
@@ -309,7 +309,7 @@ func (client *Client) DeleteApiMcpServerWithOptions(request *DeleteApiMcpServerR
 
 // Summary:
 //
-// Deletes an API MCP service.
+// 删除ApiMcpServer
 //
 // @param request - DeleteApiMcpServerRequest
 //
@@ -328,7 +328,7 @@ func (client *Client) DeleteApiMcpServer(request *DeleteApiMcpServerRequest) (_r
 
 // Summary:
 //
-// Generates an Alibaba Cloud CLI command dynamically.
+// 动态生成Aliyun CLI命令
 //
 // @param tmpReq - GenerateCLICommandRequest
 //
@@ -405,7 +405,7 @@ func (client *Client) GenerateCLICommandWithOptions(tmpReq *GenerateCLICommandRe
 
 // Summary:
 //
-// Generates an Alibaba Cloud CLI command dynamically.
+// 动态生成Aliyun CLI命令
 //
 // @param request - GenerateCLICommandRequest
 //
@@ -424,7 +424,7 @@ func (client *Client) GenerateCLICommand(request *GenerateCLICommandRequest) (_r
 
 // Summary:
 //
-// Retrieves the OpenAPI metadata for an API in a product.
+// 获取产品相关接口的开放元数据
 //
 // @param request - GetApiDefinitionRequest
 //
@@ -479,7 +479,7 @@ func (client *Client) GetApiDefinitionWithOptions(request *GetApiDefinitionReque
 
 // Summary:
 //
-// Retrieves the OpenAPI metadata for an API in a product.
+// 获取产品相关接口的开放元数据
 //
 // @param request - GetApiDefinitionRequest
 //
@@ -498,7 +498,7 @@ func (client *Client) GetApiDefinition(request *GetApiDefinitionRequest) (_resul
 
 // Summary:
 //
-// Retrieves the details of a specific API MCP service.
+// 查询 ApiMcpServer
 //
 // @param request - GetApiMcpServerRequest
 //
@@ -545,7 +545,7 @@ func (client *Client) GetApiMcpServerWithOptions(request *GetApiMcpServerRequest
 
 // Summary:
 //
-// Retrieves the details of a specific API MCP service.
+// 查询 ApiMcpServer
 //
 // @param request - GetApiMcpServerRequest
 //
@@ -564,7 +564,7 @@ func (client *Client) GetApiMcpServer(request *GetApiMcpServerRequest) (_result 
 
 // Summary:
 //
-// Queries the global API MCP Server configuration for a user. The configuration includes settings for public network access and the whitelist of source VPC IDs for requests from a VPC.
+// 查询用户全局API MCP Server配置
 //
 // @param headers - map
 //
@@ -597,7 +597,7 @@ func (client *Client) GetApiMcpServerUserConfigWithOptions(headers map[string]*s
 
 // Summary:
 //
-// Queries the global API MCP Server configuration for a user. The configuration includes settings for public network access and the whitelist of source VPC IDs for requests from a VPC.
+// 查询用户全局API MCP Server配置
 //
 // @return GetApiMcpServerUserConfigResponse
 func (client *Client) GetApiMcpServerUserConfig() (_result *GetApiMcpServerUserConfigResponse, _err error) {
@@ -700,11 +700,11 @@ func (client *Client) GetErrorCodeSolutions(request *GetErrorCodeSolutionsReques
 
 // Summary:
 //
-// Queries the details of an OpenAPI call log for your account using the request ID returned from an API call. This operation is used for troubleshooting.
+// Queries the log of an API call performed by using the current account based on the returned request ID of the API to troubleshoot issues.
 //
 // Description:
 //
-// This API does not support authorization.
+// Permissions on this API cannot be granted to other members.
 //
 // @param request - GetOwnRequestLogRequest
 //
@@ -751,11 +751,11 @@ func (client *Client) GetOwnRequestLogWithOptions(request *GetOwnRequestLogReque
 
 // Summary:
 //
-// Queries the details of an OpenAPI call log for your account using the request ID returned from an API call. This operation is used for troubleshooting.
+// Queries the log of an API call performed by using the current account based on the returned request ID of the API to troubleshoot issues.
 //
 // Description:
 //
-// This API does not support authorization.
+// Permissions on this API cannot be granted to other members.
 //
 // @param request - GetOwnRequestLogRequest
 //
@@ -774,7 +774,7 @@ func (client *Client) GetOwnRequestLog(request *GetOwnRequestLogRequest) (_resul
 
 // Summary:
 //
-// Retrieves the endpoint information for a product.
+// 获取产品的接入点信息
 //
 // @param request - GetProductEndpointsRequest
 //
@@ -821,7 +821,7 @@ func (client *Client) GetProductEndpointsWithOptions(request *GetProductEndpoint
 
 // Summary:
 //
-// Retrieves the endpoint information for a product.
+// 获取产品的接入点信息
 //
 // @param request - GetProductEndpointsRequest
 //
@@ -840,11 +840,11 @@ func (client *Client) GetProductEndpoints(request *GetProductEndpointsRequest) (
 
 // Summary:
 //
-// Queries the details of a request log using the request ID that is returned from an API call. This operation is useful for troubleshooting.
+// Queries the log of an API call based on the returned request ID of the API to troubleshoot issues.
 //
 // Description:
 //
-// You can query call logs across different RAM users or Alibaba Cloud accounts using RAM authorization or role assumption. For more information, see [Cross-account API error diagnosis authorization](https://help.aliyun.com/document_detail/2868101.html).
+// You can grant permissions to a Resource Access Management (RAM) user or assume a role to query the log of an API call across RAM users or Alibaba Cloud accounts. For more information, see [Grant permissions to troubleshoot API errors across accounts](https://help.aliyun.com/document_detail/2868101.html).
 //
 // @param request - GetRequestLogRequest
 //
@@ -891,11 +891,11 @@ func (client *Client) GetRequestLogWithOptions(request *GetRequestLogRequest, he
 
 // Summary:
 //
-// Queries the details of a request log using the request ID that is returned from an API call. This operation is useful for troubleshooting.
+// Queries the log of an API call based on the returned request ID of the API to troubleshoot issues.
 //
 // Description:
 //
-// You can query call logs across different RAM users or Alibaba Cloud accounts using RAM authorization or role assumption. For more information, see [Cross-account API error diagnosis authorization](https://help.aliyun.com/document_detail/2868101.html).
+// You can grant permissions to a Resource Access Management (RAM) user or assume a role to query the log of an API call across RAM users or Alibaba Cloud accounts. For more information, see [Grant permissions to troubleshoot API errors across accounts](https://help.aliyun.com/document_detail/2868101.html).
 //
 // @param request - GetRequestLogRequest
 //
@@ -914,7 +914,7 @@ func (client *Client) GetRequestLog(request *GetRequestLogRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves the OpenAPI metadata for a product.
+// 获取产品的开放元数据
 //
 // @param request - ListApiDefinitionsRequest
 //
@@ -965,7 +965,7 @@ func (client *Client) ListApiDefinitionsWithOptions(request *ListApiDefinitionsR
 
 // Summary:
 //
-// Retrieves the OpenAPI metadata for a product.
+// 获取产品的开放元数据
 //
 // @param request - ListApiDefinitionsRequest
 //
@@ -984,7 +984,7 @@ func (client *Client) ListApiDefinitions(request *ListApiDefinitionsRequest) (_r
 
 // Summary:
 //
-// Lists the system tools supported by the MCP service.
+// 查询系统工具列表
 //
 // @param request - ListApiMcpServerSystemToolsRequest
 //
@@ -1039,7 +1039,7 @@ func (client *Client) ListApiMcpServerSystemToolsWithOptions(request *ListApiMcp
 
 // Summary:
 //
-// Lists the system tools supported by the MCP service.
+// 查询系统工具列表
 //
 // @param request - ListApiMcpServerSystemToolsRequest
 //
@@ -1058,7 +1058,7 @@ func (client *Client) ListApiMcpServerSystemTools(request *ListApiMcpServerSyste
 
 // Summary:
 //
-// This operation queries a list of all API MCP servers in an Alibaba Cloud account.
+// 列出资源ApiMcpServer
 //
 // @param request - ListApiMcpServersRequest
 //
@@ -1141,7 +1141,7 @@ func (client *Client) ListApiMcpServersWithOptions(request *ListApiMcpServersReq
 
 // Summary:
 //
-// This operation queries a list of all API MCP servers in an Alibaba Cloud account.
+// 列出资源ApiMcpServer
 //
 // @param request - ListApiMcpServersRequest
 //
@@ -1160,7 +1160,73 @@ func (client *Client) ListApiMcpServers(request *ListApiMcpServersRequest) (_res
 
 // Summary:
 //
-// Updates an API MCP service.
+// 列举云产品
+//
+// @param request - ListProductsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProductsResponse
+func (client *Client) ListProductsWithOptions(request *ListProductsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListProductsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filter) {
+		query["filter"] = request.Filter
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListProducts"),
+		Version:     dara.String("2024-11-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/listProducts"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListProductsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举云产品
+//
+// @param request - ListProductsRequest
+//
+// @return ListProductsResponse
+func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProductsResponse{}
+	_body, _err := client.ListProductsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新UpdateApiMcpServer
 //
 // @param request - UpdateApiMcpServerRequest
 //
@@ -1273,7 +1339,7 @@ func (client *Client) UpdateApiMcpServerWithOptions(request *UpdateApiMcpServerR
 
 // Summary:
 //
-// Updates an API MCP service.
+// 更新UpdateApiMcpServer
 //
 // @param request - UpdateApiMcpServerRequest
 //
@@ -1292,7 +1358,7 @@ func (client *Client) UpdateApiMcpServer(request *UpdateApiMcpServerRequest) (_r
 
 // Summary:
 //
-// Updates the global API MCP Server configuration for a user.
+// 修改用户全局API MCP Server配置
 //
 // @param request - UpdateApiMcpServerUserConfigRequest
 //
@@ -1343,7 +1409,7 @@ func (client *Client) UpdateApiMcpServerUserConfigWithOptions(request *UpdateApi
 
 // Summary:
 //
-// Updates the global API MCP Server configuration for a user.
+// 修改用户全局API MCP Server配置
 //
 // @param request - UpdateApiMcpServerUserConfigRequest
 //

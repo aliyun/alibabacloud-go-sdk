@@ -26,36 +26,25 @@ type iApiMcpServerValidateHclResponseBody interface {
 }
 
 type ApiMcpServerValidateHclResponseBody struct {
-	// The diagnostic report of the code.
-	//
 	// example:
 	//
 	// Argument or block definition required: An argument or block definition is required here.
 	DiagnosticReport interface{} `json:"diagnosticReport,omitempty" xml:"diagnosticReport,omitempty"`
-	// The list of error messages.
-	Errors []*string `json:"errors,omitempty" xml:"errors,omitempty" type:"Repeated"`
-	// The unique identifier of the Terraform HCL code.
-	//
+	Errors           []*string   `json:"errors,omitempty" xml:"errors,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0628e13692023222bef9d6377dd03da3304b689e1b2df60f584ea27b4163bf07
 	Hash *string `json:"hash,omitempty" xml:"hash,omitempty"`
-	// Indicates whether the code is valid.
-	//
 	// example:
 	//
 	// true
-	IsValid *bool `json:"isValid,omitempty" xml:"isValid,omitempty"`
-	// The list of parameters.
+	IsValid    *bool         `json:"isValid,omitempty" xml:"isValid,omitempty"`
 	Parameters []interface{} `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 9BFC4AC1-6BE4-5405-BDEC-CA288D404812
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of warning messages.
-	Warnings []*string `json:"warnings,omitempty" xml:"warnings,omitempty" type:"Repeated"`
+	RequestId *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Warnings  []*string `json:"warnings,omitempty" xml:"warnings,omitempty" type:"Repeated"`
 }
 
 func (s ApiMcpServerValidateHclResponseBody) String() string {

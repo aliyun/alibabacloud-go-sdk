@@ -14,8 +14,6 @@ type iGetApiMcpServerRequest interface {
 }
 
 type GetApiMcpServerRequest struct {
-	// The ID of the API MCP service.
-	//
 	// This parameter is required.
 	//
 	// example:
