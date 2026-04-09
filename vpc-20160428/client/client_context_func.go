@@ -252,6 +252,10 @@ func (client *Client) AddCommonBandwidthPackageIpWithContext(ctx context.Context
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.IpInstanceId) {
 		query["IpInstanceId"] = request.IpInstanceId
 	}
@@ -5690,6 +5694,10 @@ func (client *Client) CreateIpv6EgressOnlyRuleWithContext(ctx context.Context, r
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -5786,6 +5794,10 @@ func (client *Client) CreateIpv6GatewayWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -11526,6 +11538,10 @@ func (client *Client) DeleteIpv6EgressOnlyRuleWithContext(ctx context.Context, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Ipv6EgressOnlyRuleId) {
@@ -20647,7 +20663,7 @@ func (client *Client) DescribeVpnRouteEntriesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the log of an SSL server.
+// Queries the log entries of an SSL server.
 //
 // @param request - DescribeVpnSslServerLogsRequest
 //
@@ -29567,7 +29583,7 @@ func (client *Client) ModifyVpnConnectionAttributeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the name and description of a VPN Gateway or the automatic route advertisement feature.
+// Modifies the name and description of a VPN gateway.
 //
 // Description:
 //
@@ -31064,6 +31080,10 @@ func (client *Client) RemoveCommonBandwidthPackageIpWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.IpInstanceId) {

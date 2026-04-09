@@ -13,6 +13,8 @@ type iAddCommonBandwidthPackageIpRequest interface {
 	GetBandwidthPackageId() *string
 	SetClientToken(v string) *AddCommonBandwidthPackageIpRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *AddCommonBandwidthPackageIpRequest
+	GetDryRun() *bool
 	SetIpInstanceId(v string) *AddCommonBandwidthPackageIpRequest
 	GetIpInstanceId() *string
 	SetIpType(v string) *AddCommonBandwidthPackageIpRequest
@@ -40,6 +42,7 @@ type AddCommonBandwidthPackageIpRequest struct {
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -78,6 +81,10 @@ func (s *AddCommonBandwidthPackageIpRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *AddCommonBandwidthPackageIpRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *AddCommonBandwidthPackageIpRequest) GetIpInstanceId() *string {
 	return s.IpInstanceId
 }
@@ -113,6 +120,11 @@ func (s *AddCommonBandwidthPackageIpRequest) SetBandwidthPackageId(v string) *Ad
 
 func (s *AddCommonBandwidthPackageIpRequest) SetClientToken(v string) *AddCommonBandwidthPackageIpRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *AddCommonBandwidthPackageIpRequest) SetDryRun(v bool) *AddCommonBandwidthPackageIpRequest {
+	s.DryRun = &v
 	return s
 }
 

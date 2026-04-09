@@ -13,6 +13,8 @@ type iCreateIpv6GatewayRequest interface {
 	GetClientToken() *string
 	SetDescription(v string) *CreateIpv6GatewayRequest
 	GetDescription() *string
+	SetDryRun(v bool) *CreateIpv6GatewayRequest
+	GetDryRun() *bool
 	SetName(v string) *CreateIpv6GatewayRequest
 	GetName() *string
 	SetOwnerAccount(v string) *CreateIpv6GatewayRequest
@@ -52,6 +54,7 @@ type CreateIpv6GatewayRequest struct {
 	//
 	// ipv6gatewayforVPC1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The name of the IPv6 gateway.
 	//
 	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -106,6 +109,10 @@ func (s *CreateIpv6GatewayRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateIpv6GatewayRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateIpv6GatewayRequest) GetName() *string {
 	return s.Name
 }
@@ -149,6 +156,11 @@ func (s *CreateIpv6GatewayRequest) SetClientToken(v string) *CreateIpv6GatewayRe
 
 func (s *CreateIpv6GatewayRequest) SetDescription(v string) *CreateIpv6GatewayRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateIpv6GatewayRequest) SetDryRun(v bool) *CreateIpv6GatewayRequest {
+	s.DryRun = &v
 	return s
 }
 

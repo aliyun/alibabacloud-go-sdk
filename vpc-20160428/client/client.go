@@ -409,6 +409,10 @@ func (client *Client) AddCommonBandwidthPackageIpWithOptions(request *AddCommonB
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.IpInstanceId) {
 		query["IpInstanceId"] = request.IpInstanceId
 	}
@@ -7333,6 +7337,10 @@ func (client *Client) CreateIpv6EgressOnlyRuleWithOptions(request *CreateIpv6Egr
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -7457,6 +7465,10 @@ func (client *Client) CreateIpv6GatewayWithOptions(request *CreateIpv6GatewayReq
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -14809,6 +14821,10 @@ func (client *Client) DeleteIpv6EgressOnlyRuleWithOptions(request *DeleteIpv6Egr
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Ipv6EgressOnlyRuleId) {
@@ -26318,7 +26334,7 @@ func (client *Client) DescribeVpnRouteEntries(request *DescribeVpnRouteEntriesRe
 
 // Summary:
 //
-// Queries the log of an SSL server.
+// Queries the log entries of an SSL server.
 //
 // @param request - DescribeVpnSslServerLogsRequest
 //
@@ -26406,7 +26422,7 @@ func (client *Client) DescribeVpnSslServerLogsWithOptions(request *DescribeVpnSs
 
 // Summary:
 //
-// Queries the log of an SSL server.
+// Queries the log entries of an SSL server.
 //
 // @param request - DescribeVpnSslServerLogsRequest
 //
@@ -29589,8 +29605,6 @@ func (client *Client) ListGatewayRouteTableEntries(request *ListGatewayRouteTabl
 // Summary:
 //
 // Queries the most recent region list.
-//
-// @param request - ListGeographicSubRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -37585,7 +37599,7 @@ func (client *Client) ModifyVpnConnectionAttribute(request *ModifyVpnConnectionA
 
 // Summary:
 //
-// Modifies the name and description of a VPN Gateway or the automatic route advertisement feature.
+// Modifies the name and description of a VPN gateway.
 //
 // Description:
 //
@@ -37675,7 +37689,7 @@ func (client *Client) ModifyVpnGatewayAttributeWithOptions(request *ModifyVpnGat
 
 // Summary:
 //
-// Modifies the name and description of a VPN Gateway or the automatic route advertisement feature.
+// Modifies the name and description of a VPN gateway.
 //
 // Description:
 //
@@ -39524,6 +39538,10 @@ func (client *Client) RemoveCommonBandwidthPackageIpWithOptions(request *RemoveC
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.IpInstanceId) {

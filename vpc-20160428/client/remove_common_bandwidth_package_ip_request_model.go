@@ -13,6 +13,8 @@ type iRemoveCommonBandwidthPackageIpRequest interface {
 	GetBandwidthPackageId() *string
 	SetClientToken(v string) *RemoveCommonBandwidthPackageIpRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *RemoveCommonBandwidthPackageIpRequest
+	GetDryRun() *bool
 	SetIpInstanceId(v string) *RemoveCommonBandwidthPackageIpRequest
 	GetIpInstanceId() *string
 	SetOwnerAccount(v string) *RemoveCommonBandwidthPackageIpRequest
@@ -38,6 +40,7 @@ type RemoveCommonBandwidthPackageIpRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -72,6 +75,10 @@ func (s *RemoveCommonBandwidthPackageIpRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *RemoveCommonBandwidthPackageIpRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *RemoveCommonBandwidthPackageIpRequest) GetIpInstanceId() *string {
 	return s.IpInstanceId
 }
@@ -103,6 +110,11 @@ func (s *RemoveCommonBandwidthPackageIpRequest) SetBandwidthPackageId(v string) 
 
 func (s *RemoveCommonBandwidthPackageIpRequest) SetClientToken(v string) *RemoveCommonBandwidthPackageIpRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveCommonBandwidthPackageIpRequest) SetDryRun(v bool) *RemoveCommonBandwidthPackageIpRequest {
+	s.DryRun = &v
 	return s
 }
 

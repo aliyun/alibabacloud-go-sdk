@@ -13,6 +13,8 @@ type iCreateIpv6EgressOnlyRuleRequest interface {
 	GetClientToken() *string
 	SetDescription(v string) *CreateIpv6EgressOnlyRuleRequest
 	GetDescription() *string
+	SetDryRun(v bool) *CreateIpv6EgressOnlyRuleRequest
+	GetDryRun() *bool
 	SetInstanceId(v string) *CreateIpv6EgressOnlyRuleRequest
 	GetInstanceId() *string
 	SetInstanceType(v string) *CreateIpv6EgressOnlyRuleRequest
@@ -52,6 +54,7 @@ type CreateIpv6EgressOnlyRuleRequest struct {
 	//
 	// ruledescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the IPv6 address for which you want to create an egress-only rule.
 	//
 	// This parameter is required.
@@ -116,6 +119,10 @@ func (s *CreateIpv6EgressOnlyRuleRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateIpv6EgressOnlyRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateIpv6EgressOnlyRuleRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -159,6 +166,11 @@ func (s *CreateIpv6EgressOnlyRuleRequest) SetClientToken(v string) *CreateIpv6Eg
 
 func (s *CreateIpv6EgressOnlyRuleRequest) SetDescription(v string) *CreateIpv6EgressOnlyRuleRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateIpv6EgressOnlyRuleRequest) SetDryRun(v bool) *CreateIpv6EgressOnlyRuleRequest {
+	s.DryRun = &v
 	return s
 }
 

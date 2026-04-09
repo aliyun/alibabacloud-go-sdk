@@ -11,6 +11,8 @@ type iDeleteIpv6EgressOnlyRuleRequest interface {
 	GoString() string
 	SetClientToken(v string) *DeleteIpv6EgressOnlyRuleRequest
 	GetClientToken() *string
+	SetDryRun(v bool) *DeleteIpv6EgressOnlyRuleRequest
+	GetDryRun() *bool
 	SetIpv6EgressOnlyRuleId(v string) *DeleteIpv6EgressOnlyRuleRequest
 	GetIpv6EgressOnlyRuleId() *string
 	SetOwnerAccount(v string) *DeleteIpv6EgressOnlyRuleRequest
@@ -36,6 +38,7 @@ type DeleteIpv6EgressOnlyRuleRequest struct {
 	//
 	// 123456
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the egress-only rule that you want to delete.
 	//
 	// This parameter is required.
@@ -70,6 +73,10 @@ func (s *DeleteIpv6EgressOnlyRuleRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *DeleteIpv6EgressOnlyRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *DeleteIpv6EgressOnlyRuleRequest) GetIpv6EgressOnlyRuleId() *string {
 	return s.Ipv6EgressOnlyRuleId
 }
@@ -96,6 +103,11 @@ func (s *DeleteIpv6EgressOnlyRuleRequest) GetResourceOwnerId() *int64 {
 
 func (s *DeleteIpv6EgressOnlyRuleRequest) SetClientToken(v string) *DeleteIpv6EgressOnlyRuleRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteIpv6EgressOnlyRuleRequest) SetDryRun(v bool) *DeleteIpv6EgressOnlyRuleRequest {
+	s.DryRun = &v
 	return s
 }
 
