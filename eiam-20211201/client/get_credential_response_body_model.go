@@ -97,6 +97,7 @@ type GetCredentialResponseBodyCredential struct {
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
+	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
 	// 凭据所属的主体ID。
 	//
 	// example:
@@ -120,7 +121,8 @@ type GetCredentialResponseBodyCredential struct {
 	// example:
 	//
 	// credential_description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
 	// EIAM实例ID。
 	//
 	// example:
@@ -177,6 +179,10 @@ func (s *GetCredentialResponseBodyCredential) GetCredentialScenarioLabel() *stri
 	return s.CredentialScenarioLabel
 }
 
+func (s *GetCredentialResponseBodyCredential) GetCredentialSharingScope() *string {
+	return s.CredentialSharingScope
+}
+
 func (s *GetCredentialResponseBodyCredential) GetCredentialSubjectId() *string {
 	return s.CredentialSubjectId
 }
@@ -191,6 +197,10 @@ func (s *GetCredentialResponseBodyCredential) GetCredentialType() *string {
 
 func (s *GetCredentialResponseBodyCredential) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetCredentialResponseBodyCredential) GetExclusiveUserId() *string {
+	return s.ExclusiveUserId
 }
 
 func (s *GetCredentialResponseBodyCredential) GetInstanceId() *string {
@@ -240,6 +250,11 @@ func (s *GetCredentialResponseBodyCredential) SetCredentialScenarioLabel(v strin
 	return s
 }
 
+func (s *GetCredentialResponseBodyCredential) SetCredentialSharingScope(v string) *GetCredentialResponseBodyCredential {
+	s.CredentialSharingScope = &v
+	return s
+}
+
 func (s *GetCredentialResponseBodyCredential) SetCredentialSubjectId(v string) *GetCredentialResponseBodyCredential {
 	s.CredentialSubjectId = &v
 	return s
@@ -257,6 +272,11 @@ func (s *GetCredentialResponseBodyCredential) SetCredentialType(v string) *GetCr
 
 func (s *GetCredentialResponseBodyCredential) SetDescription(v string) *GetCredentialResponseBodyCredential {
 	s.Description = &v
+	return s
+}
+
+func (s *GetCredentialResponseBodyCredential) SetExclusiveUserId(v string) *GetCredentialResponseBodyCredential {
+	s.ExclusiveUserId = &v
 	return s
 }
 

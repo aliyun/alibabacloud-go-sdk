@@ -2513,6 +2513,10 @@ func (client *Client) CreateCredentialWithOptions(request *CreateCredentialReque
 		query["CredentialScenarioLabel"] = request.CredentialScenarioLabel
 	}
 
+	if !dara.IsNil(request.CredentialSharingScope) {
+		query["CredentialSharingScope"] = request.CredentialSharingScope
+	}
+
 	if !dara.IsNil(request.CredentialSubjectId) {
 		query["CredentialSubjectId"] = request.CredentialSubjectId
 	}
@@ -2527,6 +2531,10 @@ func (client *Client) CreateCredentialWithOptions(request *CreateCredentialReque
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExclusiveUserId) {
+		query["ExclusiveUserId"] = request.ExclusiveUserId
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -3009,6 +3017,10 @@ func (client *Client) CreateFederatedCredentialProviderWithOptions(request *Crea
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudIdPProviderConfig) {
+		query["CloudIdPProviderConfig"] = request.CloudIdPProviderConfig
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -15721,6 +15733,10 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 		query["CredentialIds"] = request.CredentialIds
 	}
 
+	if !dara.IsNil(request.CredentialSharingScopes) {
+		query["CredentialSharingScopes"] = request.CredentialSharingScopes
+	}
+
 	if !dara.IsNil(request.CredentialTypes) {
 		query["CredentialTypes"] = request.CredentialTypes
 	}
@@ -16143,8 +16159,6 @@ func (client *Client) ListEiamInstances(request *ListEiamInstancesRequest) (_res
 // Summary:
 //
 // Queries the regions in which Employee Identity and Access Management (EIAM) V1.0 instances or EIAM V2.0 instances reside.
-//
-// @param request - ListEiamRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -16963,8 +16977,6 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 //
 // Get a list of regions that support network access endpoints.
 //
-// @param request - ListNetworkAccessEndpointAvailableRegionsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListNetworkAccessEndpointAvailableRegionsResponse
@@ -17617,8 +17629,6 @@ func (client *Client) ListOrganizationalUnitsForResourceServer(request *ListOrga
 // Summary:
 //
 // Queries a list of supported Alibaba Cloud regions.
-//
-// @param request - ListRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

@@ -129,6 +129,7 @@ func (s *ListFederatedCredentialProvidersResponseBody) Validate() error {
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders struct {
+	CloudIdPProviderConfig *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
 	// 创建时间
 	//
 	// example:
@@ -199,6 +200,10 @@ func (s ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders
 	return s.String()
 }
 
+func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders) GetCloudIdPProviderConfig() *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig {
+	return s.CloudIdPProviderConfig
+}
+
 func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders) GetCreateTime() *int64 {
 	return s.CreateTime
 }
@@ -245,6 +250,11 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 
 func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders) GetUpdateTime() *int64 {
 	return s.UpdateTime
+}
+
+func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders) SetCloudIdPProviderConfig(v *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig) *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders {
+	s.CloudIdPProviderConfig = v
+	return s
 }
 
 func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders) SetCreateTime(v int64) *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders {
@@ -308,6 +318,11 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 }
 
 func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders) Validate() error {
+	if s.CloudIdPProviderConfig != nil {
+		if err := s.CloudIdPProviderConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.OidcProviderConfig != nil {
 		if err := s.OidcProviderConfig.Validate(); err != nil {
 			return err
@@ -324,6 +339,31 @@ func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvider
 		}
 	}
 	return nil
+}
+
+type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig struct {
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+}
+
+func (s ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig) GetIdentityProviderId() *string {
+	return s.IdentityProviderId
+}
+
+func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig) SetIdentityProviderId(v string) *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersCloudIdPProviderConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOidcProviderConfig struct {

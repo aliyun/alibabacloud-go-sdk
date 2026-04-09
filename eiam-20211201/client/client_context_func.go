@@ -1898,6 +1898,10 @@ func (client *Client) CreateCredentialWithContext(ctx context.Context, request *
 		query["CredentialScenarioLabel"] = request.CredentialScenarioLabel
 	}
 
+	if !dara.IsNil(request.CredentialSharingScope) {
+		query["CredentialSharingScope"] = request.CredentialSharingScope
+	}
+
 	if !dara.IsNil(request.CredentialSubjectId) {
 		query["CredentialSubjectId"] = request.CredentialSubjectId
 	}
@@ -1912,6 +1916,10 @@ func (client *Client) CreateCredentialWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExclusiveUserId) {
+		query["ExclusiveUserId"] = request.ExclusiveUserId
 	}
 
 	if !dara.IsNil(request.InstanceId) {
@@ -2286,6 +2294,10 @@ func (client *Client) CreateFederatedCredentialProviderWithContext(ctx context.C
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudIdPProviderConfig) {
+		query["CloudIdPProviderConfig"] = request.CloudIdPProviderConfig
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -11676,6 +11688,10 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CredentialIds) {
 		query["CredentialIds"] = request.CredentialIds
+	}
+
+	if !dara.IsNil(request.CredentialSharingScopes) {
+		query["CredentialSharingScopes"] = request.CredentialSharingScopes
 	}
 
 	if !dara.IsNil(request.CredentialTypes) {

@@ -9,6 +9,8 @@ type iCreateFederatedCredentialProviderRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCloudIdPProviderConfig(v *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) *CreateFederatedCredentialProviderRequest
+	GetCloudIdPProviderConfig() *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig
 	SetDescription(v string) *CreateFederatedCredentialProviderRequest
 	GetDescription() *string
 	SetFederatedCredentialProviderName(v string) *CreateFederatedCredentialProviderRequest
@@ -28,6 +30,7 @@ type iCreateFederatedCredentialProviderRequest interface {
 }
 
 type CreateFederatedCredentialProviderRequest struct {
+	CloudIdPProviderConfig *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig `json:"CloudIdPProviderConfig,omitempty" xml:"CloudIdPProviderConfig,omitempty" type:"Struct"`
 	// 联邦凭证提供方描述
 	//
 	// example:
@@ -80,6 +83,10 @@ func (s CreateFederatedCredentialProviderRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateFederatedCredentialProviderRequest) GetCloudIdPProviderConfig() *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig {
+	return s.CloudIdPProviderConfig
+}
+
 func (s *CreateFederatedCredentialProviderRequest) GetDescription() *string {
 	return s.Description
 }
@@ -110,6 +117,11 @@ func (s *CreateFederatedCredentialProviderRequest) GetPkcs7ProviderConfig() *Cre
 
 func (s *CreateFederatedCredentialProviderRequest) GetPrivateCaProviderConfig() *CreateFederatedCredentialProviderRequestPrivateCaProviderConfig {
 	return s.PrivateCaProviderConfig
+}
+
+func (s *CreateFederatedCredentialProviderRequest) SetCloudIdPProviderConfig(v *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) *CreateFederatedCredentialProviderRequest {
+	s.CloudIdPProviderConfig = v
+	return s
 }
 
 func (s *CreateFederatedCredentialProviderRequest) SetDescription(v string) *CreateFederatedCredentialProviderRequest {
@@ -153,6 +165,11 @@ func (s *CreateFederatedCredentialProviderRequest) SetPrivateCaProviderConfig(v 
 }
 
 func (s *CreateFederatedCredentialProviderRequest) Validate() error {
+	if s.CloudIdPProviderConfig != nil {
+		if err := s.CloudIdPProviderConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.OidcProviderConfig != nil {
 		if err := s.OidcProviderConfig.Validate(); err != nil {
 			return err
@@ -169,6 +186,34 @@ func (s *CreateFederatedCredentialProviderRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateFederatedCredentialProviderRequestCloudIdPProviderConfig struct {
+	// example:
+	//
+	// idp_m7hk2hbnew5ir3ycfabug6xxxx
+	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
+}
+
+func (s CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) GetIdentityProviderId() *string {
+	return s.IdentityProviderId
+}
+
+func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) SetIdentityProviderId(v string) *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig {
+	s.IdentityProviderId = &v
+	return s
+}
+
+func (s *CreateFederatedCredentialProviderRequestCloudIdPProviderConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateFederatedCredentialProviderRequestOidcProviderConfig struct {

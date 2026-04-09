@@ -19,6 +19,8 @@ type iCreateCredentialRequest interface {
 	GetCredentialName() *string
 	SetCredentialScenarioLabel(v string) *CreateCredentialRequest
 	GetCredentialScenarioLabel() *string
+	SetCredentialSharingScope(v string) *CreateCredentialRequest
+	GetCredentialSharingScope() *string
 	SetCredentialSubjectId(v string) *CreateCredentialRequest
 	GetCredentialSubjectId() *string
 	SetCredentialSubjectType(v string) *CreateCredentialRequest
@@ -27,6 +29,8 @@ type iCreateCredentialRequest interface {
 	GetCredentialType() *string
 	SetDescription(v string) *CreateCredentialRequest
 	GetDescription() *string
+	SetExclusiveUserId(v string) *CreateCredentialRequest
+	GetExclusiveUserId() *string
 	SetInstanceId(v string) *CreateCredentialRequest
 	GetInstanceId() *string
 }
@@ -66,6 +70,7 @@ type CreateCredentialRequest struct {
 	//
 	// llm
 	CredentialScenarioLabel *string `json:"CredentialScenarioLabel,omitempty" xml:"CredentialScenarioLabel,omitempty"`
+	CredentialSharingScope  *string `json:"CredentialSharingScope,omitempty" xml:"CredentialSharingScope,omitempty"`
 	// 凭据所属的主体ID。
 	//
 	// example:
@@ -91,7 +96,8 @@ type CreateCredentialRequest struct {
 	// example:
 	//
 	// credential_description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExclusiveUserId *string `json:"ExclusiveUserId,omitempty" xml:"ExclusiveUserId,omitempty"`
 	// IDaaS EIAM实例的ID。
 	//
 	// This parameter is required.
@@ -130,6 +136,10 @@ func (s *CreateCredentialRequest) GetCredentialScenarioLabel() *string {
 	return s.CredentialScenarioLabel
 }
 
+func (s *CreateCredentialRequest) GetCredentialSharingScope() *string {
+	return s.CredentialSharingScope
+}
+
 func (s *CreateCredentialRequest) GetCredentialSubjectId() *string {
 	return s.CredentialSubjectId
 }
@@ -144,6 +154,10 @@ func (s *CreateCredentialRequest) GetCredentialType() *string {
 
 func (s *CreateCredentialRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateCredentialRequest) GetExclusiveUserId() *string {
+	return s.ExclusiveUserId
 }
 
 func (s *CreateCredentialRequest) GetInstanceId() *string {
@@ -175,6 +189,11 @@ func (s *CreateCredentialRequest) SetCredentialScenarioLabel(v string) *CreateCr
 	return s
 }
 
+func (s *CreateCredentialRequest) SetCredentialSharingScope(v string) *CreateCredentialRequest {
+	s.CredentialSharingScope = &v
+	return s
+}
+
 func (s *CreateCredentialRequest) SetCredentialSubjectId(v string) *CreateCredentialRequest {
 	s.CredentialSubjectId = &v
 	return s
@@ -192,6 +211,11 @@ func (s *CreateCredentialRequest) SetCredentialType(v string) *CreateCredentialR
 
 func (s *CreateCredentialRequest) SetDescription(v string) *CreateCredentialRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateCredentialRequest) SetExclusiveUserId(v string) *CreateCredentialRequest {
+	s.ExclusiveUserId = &v
 	return s
 }
 
