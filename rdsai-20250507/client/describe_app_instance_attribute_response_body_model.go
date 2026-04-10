@@ -13,6 +13,8 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetAppName() *string
 	SetAppType(v string) *DescribeAppInstanceAttributeResponseBody
 	GetAppType() *string
+	SetComponents(v []*DescribeAppInstanceAttributeResponseBodyComponents) *DescribeAppInstanceAttributeResponseBody
+	GetComponents() []*DescribeAppInstanceAttributeResponseBodyComponents
 	SetDBInstanceName(v string) *DescribeAppInstanceAttributeResponseBody
 	GetDBInstanceName() *string
 	SetEipId(v string) *DescribeAppInstanceAttributeResponseBody
@@ -59,7 +61,8 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// supabase
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType    *string                                               `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Components []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
 	//
 	// example:
@@ -149,6 +152,10 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetAppType() *string {
 	return s.AppType
 }
 
+func (s *DescribeAppInstanceAttributeResponseBody) GetComponents() []*DescribeAppInstanceAttributeResponseBodyComponents {
+	return s.Components
+}
+
 func (s *DescribeAppInstanceAttributeResponseBody) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
@@ -220,6 +227,11 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetAppName(v string) *Describ
 
 func (s *DescribeAppInstanceAttributeResponseBody) SetAppType(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.AppType = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetComponents(v []*DescribeAppInstanceAttributeResponseBodyComponents) *DescribeAppInstanceAttributeResponseBody {
+	s.Components = v
 	return s
 }
 
@@ -304,5 +316,49 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetZoneId(v string) *Describe
 }
 
 func (s *DescribeAppInstanceAttributeResponseBody) Validate() error {
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAppInstanceAttributeResponseBodyComponents struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAppInstanceAttributeResponseBodyComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppInstanceAttributeResponseBodyComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyComponents) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyComponents) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyComponents) SetStatus(v string) *DescribeAppInstanceAttributeResponseBodyComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyComponents) SetType(v string) *DescribeAppInstanceAttributeResponseBodyComponents {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBodyComponents) Validate() error {
 	return dara.Validate(s)
 }

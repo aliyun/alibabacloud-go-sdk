@@ -21,6 +21,8 @@ type iCreateScheduledTaskRequest interface {
 	GetRegionId() *string
 	SetReportLanguage(v string) *CreateScheduledTaskRequest
 	GetReportLanguage() *string
+	SetReportRegionId(v string) *CreateScheduledTaskRequest
+	GetReportRegionId() *string
 	SetReportType(v string) *CreateScheduledTaskRequest
 	GetReportType() *string
 	SetStartTime(v string) *CreateScheduledTaskRequest
@@ -66,6 +68,7 @@ type CreateScheduledTaskRequest struct {
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
 	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
 	//
@@ -113,6 +116,10 @@ func (s *CreateScheduledTaskRequest) GetReportLanguage() *string {
 	return s.ReportLanguage
 }
 
+func (s *CreateScheduledTaskRequest) GetReportRegionId() *string {
+	return s.ReportRegionId
+}
+
 func (s *CreateScheduledTaskRequest) GetReportType() *string {
 	return s.ReportType
 }
@@ -152,6 +159,11 @@ func (s *CreateScheduledTaskRequest) SetRegionId(v string) *CreateScheduledTaskR
 
 func (s *CreateScheduledTaskRequest) SetReportLanguage(v string) *CreateScheduledTaskRequest {
 	s.ReportLanguage = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetReportRegionId(v string) *CreateScheduledTaskRequest {
+	s.ReportRegionId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iCreateAppInstanceShrinkRequest interface {
 	GetAppType() *string
 	SetClientToken(v string) *CreateAppInstanceShrinkRequest
 	GetClientToken() *string
+	SetComponentsShrink(v string) *CreateAppInstanceShrinkRequest
+	GetComponentsShrink() *string
 	SetDBInstanceConfigShrink(v string) *CreateAppInstanceShrinkRequest
 	GetDBInstanceConfigShrink() *string
 	SetDBInstanceName(v string) *CreateAppInstanceShrinkRequest
@@ -61,7 +63,8 @@ type CreateAppInstanceShrinkRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	// A reserved parameter.
 	DBInstanceConfigShrink *string `json:"DBInstanceConfig,omitempty" xml:"DBInstanceConfig,omitempty"`
 	// The instance type. Only **rdsai.supabase.basic*	- is supported.
@@ -166,6 +169,10 @@ func (s *CreateAppInstanceShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAppInstanceShrinkRequest) GetComponentsShrink() *string {
+	return s.ComponentsShrink
+}
+
 func (s *CreateAppInstanceShrinkRequest) GetDBInstanceConfigShrink() *string {
 	return s.DBInstanceConfigShrink
 }
@@ -226,6 +233,11 @@ func (s *CreateAppInstanceShrinkRequest) SetAppType(v string) *CreateAppInstance
 
 func (s *CreateAppInstanceShrinkRequest) SetClientToken(v string) *CreateAppInstanceShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppInstanceShrinkRequest) SetComponentsShrink(v string) *CreateAppInstanceShrinkRequest {
+	s.ComponentsShrink = &v
 	return s
 }
 

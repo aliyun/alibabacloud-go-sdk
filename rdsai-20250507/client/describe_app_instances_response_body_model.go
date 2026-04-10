@@ -145,7 +145,8 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// supabase
-	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType    *string                                                `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Components []*DescribeAppInstancesResponseBodyInstancesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
 	//
 	// example:
@@ -218,6 +219,10 @@ func (s *DescribeAppInstancesResponseBodyInstances) GetAppType() *string {
 	return s.AppType
 }
 
+func (s *DescribeAppInstancesResponseBodyInstances) GetComponents() []*DescribeAppInstancesResponseBodyInstancesComponents {
+	return s.Components
+}
+
 func (s *DescribeAppInstancesResponseBodyInstances) GetDBInstanceName() *string {
 	return s.DBInstanceName
 }
@@ -261,6 +266,11 @@ func (s *DescribeAppInstancesResponseBodyInstances) SetAppName(v string) *Descri
 
 func (s *DescribeAppInstancesResponseBodyInstances) SetAppType(v string) *DescribeAppInstancesResponseBodyInstances {
 	s.AppType = &v
+	return s
+}
+
+func (s *DescribeAppInstancesResponseBodyInstances) SetComponents(v []*DescribeAppInstancesResponseBodyInstancesComponents) *DescribeAppInstancesResponseBodyInstances {
+	s.Components = v
 	return s
 }
 
@@ -310,5 +320,49 @@ func (s *DescribeAppInstancesResponseBodyInstances) SetVpcConnectionString(v str
 }
 
 func (s *DescribeAppInstancesResponseBodyInstances) Validate() error {
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeAppInstancesResponseBodyInstancesComponents struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAppInstancesResponseBodyInstancesComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAppInstancesResponseBodyInstancesComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppInstancesResponseBodyInstancesComponents) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeAppInstancesResponseBodyInstancesComponents) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeAppInstancesResponseBodyInstancesComponents) SetStatus(v string) *DescribeAppInstancesResponseBodyInstancesComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAppInstancesResponseBodyInstancesComponents) SetType(v string) *DescribeAppInstancesResponseBodyInstancesComponents {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAppInstancesResponseBodyInstancesComponents) Validate() error {
 	return dara.Validate(s)
 }

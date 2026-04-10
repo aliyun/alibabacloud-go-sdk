@@ -15,6 +15,8 @@ type iCreateAppInstanceRequest interface {
 	GetAppType() *string
 	SetClientToken(v string) *CreateAppInstanceRequest
 	GetClientToken() *string
+	SetComponents(v []*CreateAppInstanceRequestComponents) *CreateAppInstanceRequest
+	GetComponents() []*CreateAppInstanceRequestComponents
 	SetDBInstanceConfig(v *CreateAppInstanceRequestDBInstanceConfig) *CreateAppInstanceRequest
 	GetDBInstanceConfig() *CreateAppInstanceRequestDBInstanceConfig
 	SetDBInstanceName(v string) *CreateAppInstanceRequest
@@ -61,7 +63,8 @@ type CreateAppInstanceRequest struct {
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string                               `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Components  []*CreateAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// A reserved parameter.
 	DBInstanceConfig *CreateAppInstanceRequestDBInstanceConfig `json:"DBInstanceConfig,omitempty" xml:"DBInstanceConfig,omitempty" type:"Struct"`
 	// The instance type. Only **rdsai.supabase.basic*	- is supported.
@@ -166,6 +169,10 @@ func (s *CreateAppInstanceRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateAppInstanceRequest) GetComponents() []*CreateAppInstanceRequestComponents {
+	return s.Components
+}
+
 func (s *CreateAppInstanceRequest) GetDBInstanceConfig() *CreateAppInstanceRequestDBInstanceConfig {
 	return s.DBInstanceConfig
 }
@@ -226,6 +233,11 @@ func (s *CreateAppInstanceRequest) SetAppType(v string) *CreateAppInstanceReques
 
 func (s *CreateAppInstanceRequest) SetClientToken(v string) *CreateAppInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequest) SetComponents(v []*CreateAppInstanceRequestComponents) *CreateAppInstanceRequest {
+	s.Components = v
 	return s
 }
 
@@ -290,12 +302,46 @@ func (s *CreateAppInstanceRequest) SetVSwitchId(v string) *CreateAppInstanceRequ
 }
 
 func (s *CreateAppInstanceRequest) Validate() error {
+	if s.Components != nil {
+		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.DBInstanceConfig != nil {
 		if err := s.DBInstanceConfig.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type CreateAppInstanceRequestComponents struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAppInstanceRequestComponents) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAppInstanceRequestComponents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceRequestComponents) GetType() *string {
+	return s.Type
+}
+
+func (s *CreateAppInstanceRequestComponents) SetType(v string) *CreateAppInstanceRequestComponents {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateAppInstanceRequestComponents) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateAppInstanceRequestDBInstanceConfig struct {

@@ -19,6 +19,8 @@ type iCreateInspectionTaskRequest interface {
 	GetRegionId() *string
 	SetReportLanguage(v string) *CreateInspectionTaskRequest
 	GetReportLanguage() *string
+	SetReportRegionId(v string) *CreateInspectionTaskRequest
+	GetReportRegionId() *string
 	SetReportType(v string) *CreateInspectionTaskRequest
 	GetReportType() *string
 	SetStartTime(v string) *CreateInspectionTaskRequest
@@ -72,6 +74,7 @@ type CreateInspectionTaskRequest struct {
 	InstanceIds    *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportRegionId *string `json:"ReportRegionId,omitempty" xml:"ReportRegionId,omitempty"`
 	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. By default, the time range of the task is the latest 24 hours.
 	//
@@ -109,6 +112,10 @@ func (s *CreateInspectionTaskRequest) GetReportLanguage() *string {
 	return s.ReportLanguage
 }
 
+func (s *CreateInspectionTaskRequest) GetReportRegionId() *string {
+	return s.ReportRegionId
+}
+
 func (s *CreateInspectionTaskRequest) GetReportType() *string {
 	return s.ReportType
 }
@@ -139,6 +146,11 @@ func (s *CreateInspectionTaskRequest) SetRegionId(v string) *CreateInspectionTas
 
 func (s *CreateInspectionTaskRequest) SetReportLanguage(v string) *CreateInspectionTaskRequest {
 	s.ReportLanguage = &v
+	return s
+}
+
+func (s *CreateInspectionTaskRequest) SetReportRegionId(v string) *CreateInspectionTaskRequest {
+	s.ReportRegionId = &v
 	return s
 }
 

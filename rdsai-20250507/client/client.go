@@ -247,6 +247,10 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 	}
 	request := &CreateAppInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Components) {
+		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, dara.String("Components"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.DBInstanceConfig) {
 		request.DBInstanceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DBInstanceConfig, dara.String("DBInstanceConfig"), dara.String("json"))
 	}
@@ -262,6 +266,10 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ComponentsShrink) {
+		query["Components"] = request.ComponentsShrink
 	}
 
 	if !dara.IsNil(request.DBInstanceConfigShrink) {
@@ -598,6 +606,10 @@ func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionT
 		query["ReportLanguage"] = request.ReportLanguage
 	}
 
+	if !dara.IsNil(request.ReportRegionId) {
+		query["ReportRegionId"] = request.ReportRegionId
+	}
+
 	if !dara.IsNil(request.ReportType) {
 		query["ReportType"] = request.ReportType
 	}
@@ -686,6 +698,10 @@ func (client *Client) CreateScheduledTaskWithOptions(request *CreateScheduledTas
 
 	if !dara.IsNil(request.ReportLanguage) {
 		query["ReportLanguage"] = request.ReportLanguage
+	}
+
+	if !dara.IsNil(request.ReportRegionId) {
+		query["ReportRegionId"] = request.ReportRegionId
 	}
 
 	if !dara.IsNil(request.ReportType) {
@@ -2045,6 +2061,92 @@ func (client *Client) DescribeInstanceStorageConfig(request *DescribeInstanceSto
 
 // Summary:
 //
+// 查询沙箱模板列表
+//
+// @param request - DescribeSandboxTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSandboxTemplatesResponse
+func (client *Client) DescribeSandboxTemplatesWithOptions(request *DescribeSandboxTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeSandboxTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceName) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSandboxTemplates"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSandboxTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询沙箱模板列表
+//
+// @param request - DescribeSandboxTemplatesRequest
+//
+// @return DescribeSandboxTemplatesResponse
+func (client *Client) DescribeSandboxTemplates(request *DescribeSandboxTemplatesRequest) (_result *DescribeSandboxTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSandboxTemplatesResponse{}
+	_body, _err := client.DescribeSandboxTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the history conversations of a user.
 //
 // @param request - GetConversationsRequest
@@ -2684,8 +2786,6 @@ func (client *Client) ListCustomAgent(request *ListCustomAgentRequest) (_result 
 // Summary:
 //
 // Queries the custom agent tools of the user.
-//
-// @param request - ListCustomAgentToolsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
