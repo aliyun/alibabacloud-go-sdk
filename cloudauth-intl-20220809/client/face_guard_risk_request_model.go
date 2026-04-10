@@ -17,6 +17,8 @@ type iFaceGuardRiskRequest interface {
 	GetMerchantBizId() *string
 	SetProductCode(v string) *FaceGuardRiskRequest
 	GetProductCode() *string
+	SetType(v string) *FaceGuardRiskRequest
+	GetType() *string
 }
 
 type FaceGuardRiskRequest struct {
@@ -44,6 +46,7 @@ type FaceGuardRiskRequest struct {
 	//
 	// FACE_GUARD
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s FaceGuardRiskRequest) String() string {
@@ -70,6 +73,10 @@ func (s *FaceGuardRiskRequest) GetProductCode() *string {
 	return s.ProductCode
 }
 
+func (s *FaceGuardRiskRequest) GetType() *string {
+	return s.Type
+}
+
 func (s *FaceGuardRiskRequest) SetBizId(v string) *FaceGuardRiskRequest {
 	s.BizId = &v
 	return s
@@ -87,6 +94,11 @@ func (s *FaceGuardRiskRequest) SetMerchantBizId(v string) *FaceGuardRiskRequest 
 
 func (s *FaceGuardRiskRequest) SetProductCode(v string) *FaceGuardRiskRequest {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *FaceGuardRiskRequest) SetType(v string) *FaceGuardRiskRequest {
+	s.Type = &v
 	return s
 }
 

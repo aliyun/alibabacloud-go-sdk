@@ -2000,6 +2000,10 @@ func (client *Client) FaceGuardRiskWithContext(ctx context.Context, request *Fac
 		query["ProductCode"] = request.ProductCode
 	}
 
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
