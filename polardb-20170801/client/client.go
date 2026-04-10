@@ -16317,8 +16317,6 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // 查询资源包列表
 //
-// @param request - DescribeResourcePackagesRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourcePackagesResponse
@@ -26460,6 +26458,92 @@ func (client *Client) RevokeAccountPrivilegeZonal(request *RevokeAccountPrivileg
 	runtime := &dara.RuntimeOptions{}
 	_result = &RevokeAccountPrivilegeZonalResponse{}
 	_body, _err := client.RevokeAccountPrivilegeZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 检索记忆
+//
+// @param request - SearchMemoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMemoriesResponse
+func (client *Client) SearchMemoriesWithOptions(request *SearchMemoriesRequest, runtime *dara.RuntimeOptions) (_result *SearchMemoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.CreateTimeBegin) {
+		query["CreateTimeBegin"] = request.CreateTimeBegin
+	}
+
+	if !dara.IsNil(request.CreateTimeEnd) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !dara.IsNil(request.MemoryAgentId) {
+		query["MemoryAgentId"] = request.MemoryAgentId
+	}
+
+	if !dara.IsNil(request.MemoryUserId) {
+		query["MemoryUserId"] = request.MemoryUserId
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchMemories"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchMemoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检索记忆
+//
+// @param request - SearchMemoriesRequest
+//
+// @return SearchMemoriesResponse
+func (client *Client) SearchMemories(request *SearchMemoriesRequest) (_result *SearchMemoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchMemoriesResponse{}
+	_body, _err := client.SearchMemoriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

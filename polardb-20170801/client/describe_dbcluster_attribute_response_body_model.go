@@ -21,6 +21,8 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetBlktagTotal() *int64
 	SetBlktagUsed(v int64) *DescribeDBClusterAttributeResponseBody
 	GetBlktagUsed() *int64
+	SetBranch(v *DescribeDBClusterAttributeResponseBodyBranch) *DescribeDBClusterAttributeResponseBody
+	GetBranch() *DescribeDBClusterAttributeResponseBodyBranch
 	SetBurstingEnabled(v string) *DescribeDBClusterAttributeResponseBody
 	GetBurstingEnabled() *string
 	SetCategory(v string) *DescribeDBClusterAttributeResponseBody
@@ -197,7 +199,8 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// example:
 	//
 	// 5,242,880
-	BlktagUsed *int64 `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
+	BlktagUsed *int64                                        `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
+	Branch     *DescribeDBClusterAttributeResponseBodyBranch `json:"Branch,omitempty" xml:"Branch,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -714,6 +717,10 @@ func (s *DescribeDBClusterAttributeResponseBody) GetBlktagUsed() *int64 {
 	return s.BlktagUsed
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) GetBranch() *DescribeDBClusterAttributeResponseBodyBranch {
+	return s.Branch
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) GetBurstingEnabled() *string {
 	return s.BurstingEnabled
 }
@@ -993,6 +1000,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetBlktagTotal(v int64) *Descri
 
 func (s *DescribeDBClusterAttributeResponseBody) SetBlktagUsed(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.BlktagUsed = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetBranch(v *DescribeDBClusterAttributeResponseBodyBranch) *DescribeDBClusterAttributeResponseBody {
+	s.Branch = v
 	return s
 }
 
@@ -1312,6 +1324,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetZoneIds(v string) *DescribeD
 }
 
 func (s *DescribeDBClusterAttributeResponseBody) Validate() error {
+	if s.Branch != nil {
+		if err := s.Branch.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DBNodes != nil {
 		for _, item := range s.DBNodes {
 			if item != nil {
@@ -1331,6 +1348,135 @@ func (s *DescribeDBClusterAttributeResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeDBClusterAttributeResponseBodyBranch struct {
+	BranchLsn     *string                                                    `json:"BranchLsn,omitempty" xml:"BranchLsn,omitempty"`
+	BranchTime    *string                                                    `json:"BranchTime,omitempty" xml:"BranchTime,omitempty"`
+	ChildBranch   []*DescribeDBClusterAttributeResponseBodyBranchChildBranch `json:"ChildBranch,omitempty" xml:"ChildBranch,omitempty" type:"Repeated"`
+	ParentInsName *string                                                    `json:"ParentInsName,omitempty" xml:"ParentInsName,omitempty"`
+}
+
+func (s DescribeDBClusterAttributeResponseBodyBranch) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBClusterAttributeResponseBodyBranch) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) GetBranchLsn() *string {
+	return s.BranchLsn
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) GetBranchTime() *string {
+	return s.BranchTime
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) GetChildBranch() []*DescribeDBClusterAttributeResponseBodyBranchChildBranch {
+	return s.ChildBranch
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) GetParentInsName() *string {
+	return s.ParentInsName
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) SetBranchLsn(v string) *DescribeDBClusterAttributeResponseBodyBranch {
+	s.BranchLsn = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) SetBranchTime(v string) *DescribeDBClusterAttributeResponseBodyBranch {
+	s.BranchTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) SetChildBranch(v []*DescribeDBClusterAttributeResponseBodyBranchChildBranch) *DescribeDBClusterAttributeResponseBodyBranch {
+	s.ChildBranch = v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) SetParentInsName(v string) *DescribeDBClusterAttributeResponseBodyBranch {
+	s.ParentInsName = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranch) Validate() error {
+	if s.ChildBranch != nil {
+		for _, item := range s.ChildBranch {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBClusterAttributeResponseBodyBranchChildBranch struct {
+	BranchLsn            *string `json:"BranchLsn,omitempty" xml:"BranchLsn,omitempty"`
+	BranchTime           *string `json:"BranchTime,omitempty" xml:"BranchTime,omitempty"`
+	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	HasChild             *bool   `json:"HasChild,omitempty" xml:"HasChild,omitempty"`
+	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+}
+
+func (s DescribeDBClusterAttributeResponseBodyBranchChildBranch) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBClusterAttributeResponseBodyBranchChildBranch) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) GetBranchLsn() *string {
+	return s.BranchLsn
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) GetBranchTime() *string {
+	return s.BranchTime
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) GetDBClusterDescription() *string {
+	return s.DBClusterDescription
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) GetHasChild() *bool {
+	return s.HasChild
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) GetInsName() *string {
+	return s.InsName
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) SetBranchLsn(v string) *DescribeDBClusterAttributeResponseBodyBranchChildBranch {
+	s.BranchLsn = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) SetBranchTime(v string) *DescribeDBClusterAttributeResponseBodyBranchChildBranch {
+	s.BranchTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) SetDBClusterDescription(v string) *DescribeDBClusterAttributeResponseBodyBranchChildBranch {
+	s.DBClusterDescription = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) SetHasChild(v bool) *DescribeDBClusterAttributeResponseBodyBranchChildBranch {
+	s.HasChild = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) SetInsName(v string) *DescribeDBClusterAttributeResponseBodyBranchChildBranch {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyBranchChildBranch) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeDBClusterAttributeResponseBodyDBNodes struct {
