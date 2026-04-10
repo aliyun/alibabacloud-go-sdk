@@ -146,45 +146,46 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSet) Validate(
 }
 
 type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType struct {
-	AccessPointId                  *string                                                                                 `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
-	AccessPointType                *string                                                                                 `json:"AccessPointType,omitempty" xml:"AccessPointType,omitempty"`
-	AdDetailLocation               *string                                                                                 `json:"AdDetailLocation,omitempty" xml:"AdDetailLocation,omitempty"`
-	AdLocation                     *string                                                                                 `json:"AdLocation,omitempty" xml:"AdLocation,omitempty"`
-	Bandwidth                      *int64                                                                                  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BusinessStatus                 *string                                                                                 `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	ChargeType                     *string                                                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CircuitCode                    *string                                                                                 `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	CreationTime                   *string                                                                                 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description                    *string                                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnabledTime                    *string                                                                                 `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
-	EndTime                        *string                                                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExpectSpec                     *string                                                                                 `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
-	HasReservationData             *string                                                                                 `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
-	LineOperator                   *string                                                                                 `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
-	LoaStatus                      *string                                                                                 `json:"LoaStatus,omitempty" xml:"LoaStatus,omitempty"`
-	Name                           *string                                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	OpticalModuleModel             *string                                                                                 `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
-	OrderMode                      *string                                                                                 `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	ParentPhysicalConnectionAliUid *int64                                                                                  `json:"ParentPhysicalConnectionAliUid,omitempty" xml:"ParentPhysicalConnectionAliUid,omitempty"`
-	ParentPhysicalConnectionId     *string                                                                                 `json:"ParentPhysicalConnectionId,omitempty" xml:"ParentPhysicalConnectionId,omitempty"`
-	PeerLocation                   *string                                                                                 `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
-	PhysicalConnectionId           *string                                                                                 `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
-	PortNumber                     *string                                                                                 `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
-	PortType                       *string                                                                                 `json:"PortType,omitempty" xml:"PortType,omitempty"`
-	ProductType                    *string                                                                                 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	QosId                          *string                                                                                 `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	RedundantPhysicalConnectionId  *string                                                                                 `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
-	ReservationActiveTime          *string                                                                                 `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
-	ReservationInternetChargeType  *string                                                                                 `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	ReservationOrderType           *string                                                                                 `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
-	ResourceGroupId                *string                                                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Spec                           *string                                                                                 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Status                         *string                                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                           *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Type                           *string                                                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
-	VirtualPhysicalConnectionCount *int32                                                                                  `json:"VirtualPhysicalConnectionCount,omitempty" xml:"VirtualPhysicalConnectionCount,omitempty"`
-	VlanId                         *string                                                                                 `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
-	VpconnStatus                   *string                                                                                 `json:"VpconnStatus,omitempty" xml:"VpconnStatus,omitempty"`
+	AccessPointId                  *string                                                                                       `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	AccessPointType                *string                                                                                       `json:"AccessPointType,omitempty" xml:"AccessPointType,omitempty"`
+	AdDetailLocation               *string                                                                                       `json:"AdDetailLocation,omitempty" xml:"AdDetailLocation,omitempty"`
+	AdLocation                     *string                                                                                       `json:"AdLocation,omitempty" xml:"AdLocation,omitempty"`
+	Bandwidth                      *int64                                                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BusinessStatus                 *string                                                                                       `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	ChargeType                     *string                                                                                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CircuitCode                    *string                                                                                       `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
+	CreationTime                   *string                                                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description                    *string                                                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnabledTime                    *string                                                                                       `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
+	EndTime                        *string                                                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExpectSpec                     *string                                                                                       `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
+	HasReservationData             *string                                                                                       `json:"HasReservationData,omitempty" xml:"HasReservationData,omitempty"`
+	LineOperator                   *string                                                                                       `json:"LineOperator,omitempty" xml:"LineOperator,omitempty"`
+	LoaStatus                      *string                                                                                       `json:"LoaStatus,omitempty" xml:"LoaStatus,omitempty"`
+	MacsecKeys                     *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys `json:"MacsecKeys,omitempty" xml:"MacsecKeys,omitempty" type:"Struct"`
+	Name                           *string                                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpticalModuleModel             *string                                                                                       `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
+	OrderMode                      *string                                                                                       `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
+	ParentPhysicalConnectionAliUid *int64                                                                                        `json:"ParentPhysicalConnectionAliUid,omitempty" xml:"ParentPhysicalConnectionAliUid,omitempty"`
+	ParentPhysicalConnectionId     *string                                                                                       `json:"ParentPhysicalConnectionId,omitempty" xml:"ParentPhysicalConnectionId,omitempty"`
+	PeerLocation                   *string                                                                                       `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
+	PhysicalConnectionId           *string                                                                                       `json:"PhysicalConnectionId,omitempty" xml:"PhysicalConnectionId,omitempty"`
+	PortNumber                     *string                                                                                       `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
+	PortType                       *string                                                                                       `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	ProductType                    *string                                                                                       `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	QosId                          *string                                                                                       `json:"QosId,omitempty" xml:"QosId,omitempty"`
+	RedundantPhysicalConnectionId  *string                                                                                       `json:"RedundantPhysicalConnectionId,omitempty" xml:"RedundantPhysicalConnectionId,omitempty"`
+	ReservationActiveTime          *string                                                                                       `json:"ReservationActiveTime,omitempty" xml:"ReservationActiveTime,omitempty"`
+	ReservationInternetChargeType  *string                                                                                       `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	ReservationOrderType           *string                                                                                       `json:"ReservationOrderType,omitempty" xml:"ReservationOrderType,omitempty"`
+	ResourceGroupId                *string                                                                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Spec                           *string                                                                                       `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status                         *string                                                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                           *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Type                           *string                                                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	VirtualPhysicalConnectionCount *int32                                                                                        `json:"VirtualPhysicalConnectionCount,omitempty" xml:"VirtualPhysicalConnectionCount,omitempty"`
+	VlanId                         *string                                                                                       `json:"VlanId,omitempty" xml:"VlanId,omitempty"`
+	VpconnStatus                   *string                                                                                       `json:"VpconnStatus,omitempty" xml:"VpconnStatus,omitempty"`
 }
 
 func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) String() string {
@@ -257,6 +258,10 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetLoaStatus() *string {
 	return s.LoaStatus
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetMacsecKeys() *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys {
+	return s.MacsecKeys
 }
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) GetName() *string {
@@ -431,6 +436,11 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 	return s
 }
 
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetMacsecKeys(v *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
+	s.MacsecKeys = v
+	return s
+}
+
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) SetName(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType {
 	s.Name = &v
 	return s
@@ -547,12 +557,116 @@ func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalCon
 }
 
 func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionType) Validate() error {
+	if s.MacsecKeys != nil {
+		if err := s.MacsecKeys.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		if err := s.Tags.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys struct {
+	MacsecKey []*DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey `json:"MacsecKey,omitempty" xml:"MacsecKey,omitempty" type:"Repeated"`
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys) GetMacsecKey() []*DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey {
+	return s.MacsecKey
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys) SetMacsecKey(v []*DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys {
+	s.MacsecKey = v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeys) Validate() error {
+	if s.MacsecKey != nil {
+		for _, item := range s.MacsecKey {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey struct {
+	Cak         *string `json:"Cak,omitempty" xml:"Cak,omitempty"`
+	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	Ckn         *string `json:"Ckn,omitempty" xml:"Ckn,omitempty"`
+	StartOn     *string `json:"StartOn,omitempty" xml:"StartOn,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) GetCak() *string {
+	return s.Cak
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) GetCipherSuite() *string {
+	return s.CipherSuite
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) GetCkn() *string {
+	return s.Ckn
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) GetStartOn() *string {
+	return s.StartOn
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) SetCak(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey {
+	s.Cak = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) SetCipherSuite(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) SetCkn(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey {
+	s.Ckn = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) SetStartOn(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey {
+	s.StartOn = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) SetStatus(v string) *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeMacsecKeysMacsecKey) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnectionTypeTags struct {

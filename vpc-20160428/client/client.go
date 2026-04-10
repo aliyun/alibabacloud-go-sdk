@@ -42437,7 +42437,7 @@ func (client *Client) UpdateDhcpOptionsSetAttribute(request *UpdateDhcpOptionsSe
 
 // Summary:
 //
-// 修改增强型VPN实例属性
+// Modifies the name, description, or route auto-propagation feature of an Enhanced VPN gateway.
 //
 // @param request - UpdateEnhancedVpnGatewayRequest
 //
@@ -42517,7 +42517,7 @@ func (client *Client) UpdateEnhancedVpnGatewayWithOptions(request *UpdateEnhance
 
 // Summary:
 //
-// 修改增强型VPN实例属性
+// Modifies the name, description, or route auto-propagation feature of an Enhanced VPN gateway.
 //
 // @param request - UpdateEnhancedVpnGatewayRequest
 //
