@@ -13,6 +13,8 @@ type iGetMemoriesRequest interface {
 	GetAgentId() *string
 	SetAppId(v string) *GetMemoriesRequest
 	GetAppId() *string
+	SetFilters(v map[string]interface{}) *GetMemoriesRequest
+	GetFilters() map[string]interface{}
 	SetPage(v int32) *GetMemoriesRequest
 	GetPage() *int32
 	SetPageSize(v int32) *GetMemoriesRequest
@@ -31,7 +33,8 @@ type GetMemoriesRequest struct {
 	// example:
 	//
 	// 150130323
-	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	AppId   *string                `json:"appId,omitempty" xml:"appId,omitempty"`
+	Filters map[string]interface{} `json:"filters,omitempty" xml:"filters,omitempty"`
 	// example:
 	//
 	// 1
@@ -66,6 +69,10 @@ func (s *GetMemoriesRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *GetMemoriesRequest) GetFilters() map[string]interface{} {
+	return s.Filters
+}
+
 func (s *GetMemoriesRequest) GetPage() *int32 {
 	return s.Page
 }
@@ -89,6 +96,11 @@ func (s *GetMemoriesRequest) SetAgentId(v string) *GetMemoriesRequest {
 
 func (s *GetMemoriesRequest) SetAppId(v string) *GetMemoriesRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetMemoriesRequest) SetFilters(v map[string]interface{}) *GetMemoriesRequest {
+	s.Filters = v
 	return s
 }
 

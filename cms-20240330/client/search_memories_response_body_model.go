@@ -165,7 +165,7 @@ type SearchMemoriesResponseBodyResults struct {
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
-	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// example:
 	//
 	// user
@@ -220,7 +220,7 @@ func (s *SearchMemoriesResponseBodyResults) GetMemory() *string {
 	return s.Memory
 }
 
-func (s *SearchMemoriesResponseBodyResults) GetMetadata() *string {
+func (s *SearchMemoriesResponseBodyResults) GetMetadata() map[string]interface{} {
 	return s.Metadata
 }
 
@@ -274,8 +274,8 @@ func (s *SearchMemoriesResponseBodyResults) SetMemory(v string) *SearchMemoriesR
 	return s
 }
 
-func (s *SearchMemoriesResponseBodyResults) SetMetadata(v string) *SearchMemoriesResponseBodyResults {
-	s.Metadata = &v
+func (s *SearchMemoriesResponseBodyResults) SetMetadata(v map[string]interface{}) *SearchMemoriesResponseBodyResults {
+	s.Metadata = v
 	return s
 }
 

@@ -13,14 +13,18 @@ type iSearchMemoriesRequest interface {
 	GetAgentId() *string
 	SetAppId(v string) *SearchMemoriesRequest
 	GetAppId() *string
-	SetMetadata(v map[string]interface{}) *SearchMemoriesRequest
-	GetMetadata() map[string]interface{}
+	SetFilters(v map[string]interface{}) *SearchMemoriesRequest
+	GetFilters() map[string]interface{}
 	SetQuery(v string) *SearchMemoriesRequest
 	GetQuery() *string
 	SetRerank(v bool) *SearchMemoriesRequest
 	GetRerank() *bool
+	SetRetrieveLevel(v string) *SearchMemoriesRequest
+	GetRetrieveLevel() *string
 	SetRunId(v string) *SearchMemoriesRequest
 	GetRunId() *string
+	SetThreshold(v float64) *SearchMemoriesRequest
+	GetThreshold() *float64
 	SetTopK(v int32) *SearchMemoriesRequest
 	GetTopK() *int32
 	SetUserId(v string) *SearchMemoriesRequest
@@ -35,11 +39,8 @@ type SearchMemoriesRequest struct {
 	// example:
 	//
 	// mm_480d961a1b5e4efe84603f4cbc0f
-	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// example:
-	//
-	// {"sessionId":"test_session_001"}
-	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	AppId   *string                `json:"appId,omitempty" xml:"appId,omitempty"`
+	Filters map[string]interface{} `json:"filters,omitempty" xml:"filters,omitempty"`
 	// example:
 	//
 	// What I like
@@ -50,8 +51,16 @@ type SearchMemoriesRequest struct {
 	Rerank *bool `json:"rerank,omitempty" xml:"rerank,omitempty"`
 	// example:
 	//
+	// L1
+	RetrieveLevel *string `json:"retrieveLevel,omitempty" xml:"retrieveLevel,omitempty"`
+	// example:
+	//
 	// test_session_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// 0.3
+	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 	// example:
 	//
 	// 1
@@ -78,8 +87,8 @@ func (s *SearchMemoriesRequest) GetAppId() *string {
 	return s.AppId
 }
 
-func (s *SearchMemoriesRequest) GetMetadata() map[string]interface{} {
-	return s.Metadata
+func (s *SearchMemoriesRequest) GetFilters() map[string]interface{} {
+	return s.Filters
 }
 
 func (s *SearchMemoriesRequest) GetQuery() *string {
@@ -90,8 +99,16 @@ func (s *SearchMemoriesRequest) GetRerank() *bool {
 	return s.Rerank
 }
 
+func (s *SearchMemoriesRequest) GetRetrieveLevel() *string {
+	return s.RetrieveLevel
+}
+
 func (s *SearchMemoriesRequest) GetRunId() *string {
 	return s.RunId
+}
+
+func (s *SearchMemoriesRequest) GetThreshold() *float64 {
+	return s.Threshold
 }
 
 func (s *SearchMemoriesRequest) GetTopK() *int32 {
@@ -112,8 +129,8 @@ func (s *SearchMemoriesRequest) SetAppId(v string) *SearchMemoriesRequest {
 	return s
 }
 
-func (s *SearchMemoriesRequest) SetMetadata(v map[string]interface{}) *SearchMemoriesRequest {
-	s.Metadata = v
+func (s *SearchMemoriesRequest) SetFilters(v map[string]interface{}) *SearchMemoriesRequest {
+	s.Filters = v
 	return s
 }
 
@@ -127,8 +144,18 @@ func (s *SearchMemoriesRequest) SetRerank(v bool) *SearchMemoriesRequest {
 	return s
 }
 
+func (s *SearchMemoriesRequest) SetRetrieveLevel(v string) *SearchMemoriesRequest {
+	s.RetrieveLevel = &v
+	return s
+}
+
 func (s *SearchMemoriesRequest) SetRunId(v string) *SearchMemoriesRequest {
 	s.RunId = &v
+	return s
+}
+
+func (s *SearchMemoriesRequest) SetThreshold(v float64) *SearchMemoriesRequest {
+	s.Threshold = &v
 	return s
 }
 

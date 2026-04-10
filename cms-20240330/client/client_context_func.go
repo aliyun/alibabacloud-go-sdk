@@ -877,12 +877,20 @@ func (client *Client) CreateDigitalEmployeeSkillWithContext(ctx context.Context,
 //
 // # Create storage related to EntityStore
 //
+// @param request - CreateEntityStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEntityStoreResponse
-func (client *Client) CreateEntityStoreWithContext(ctx context.Context, workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEntityStoreResponse, _err error) {
+func (client *Client) CreateEntityStoreWithContext(ctx context.Context, workspaceName *string, request *CreateEntityStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEntityStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1360,12 +1368,20 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 //
 // 创建应用可观测实例
 //
+// @param request - CreateServiceObservabilityRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceObservabilityResponse
-func (client *Client) CreateServiceObservabilityWithContext(ctx context.Context, workspace *string, _type *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceObservabilityResponse, _err error) {
+func (client *Client) CreateServiceObservabilityWithContext(ctx context.Context, workspace *string, _type *string, request *CreateServiceObservabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceObservabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1605,12 +1621,20 @@ func (client *Client) DeleteAddonReleaseWithContext(ctx context.Context, policyI
 //
 // # Delete Aggregation Task Group
 //
+// @param request - DeleteAggTaskGroupRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAggTaskGroupResponse
-func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanceId *string, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAggTaskGroupResponse, _err error) {
+func (client *Client) DeleteAggTaskGroupWithContext(ctx context.Context, instanceId *string, groupId *string, request *DeleteAggTaskGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAggTaskGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1691,12 +1715,20 @@ func (client *Client) DeleteAlertWebhooksWithContext(ctx context.Context, tmpReq
 //
 // 删除业务链路
 //
+// @param request - DeleteBizTraceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBizTraceResponse
-func (client *Client) DeleteBizTraceWithContext(ctx context.Context, bizTraceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBizTraceResponse, _err error) {
+func (client *Client) DeleteBizTraceWithContext(ctx context.Context, bizTraceId *string, request *DeleteBizTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBizTraceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1757,12 +1789,20 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, header
 //
 // 删除数据集
 //
+// @param request - DeleteDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDatasetResponse
-func (client *Client) DeleteDatasetWithContext(ctx context.Context, workspace *string, datasetName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+func (client *Client) DeleteDatasetWithContext(ctx context.Context, workspace *string, datasetName *string, request *DeleteDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1790,12 +1830,20 @@ func (client *Client) DeleteDatasetWithContext(ctx context.Context, workspace *s
 //
 // 删除数据投递任务
 //
+// @param request - DeleteDeliveryTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDeliveryTaskResponse
-func (client *Client) DeleteDeliveryTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryTaskResponse, _err error) {
+func (client *Client) DeleteDeliveryTaskWithContext(ctx context.Context, taskId *string, request *DeleteDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1823,12 +1871,20 @@ func (client *Client) DeleteDeliveryTaskWithContext(ctx context.Context, taskId 
 //
 // 删除DigitalEmployee
 //
+// @param request - DeleteDigitalEmployeeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDigitalEmployeeResponse
-func (client *Client) DeleteDigitalEmployeeWithContext(ctx context.Context, name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeResponse, _err error) {
+func (client *Client) DeleteDigitalEmployeeWithContext(ctx context.Context, name *string, request *DeleteDigitalEmployeeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1856,12 +1912,20 @@ func (client *Client) DeleteDigitalEmployeeWithContext(ctx context.Context, name
 //
 // 删除技能
 //
+// @param request - DeleteDigitalEmployeeSkillRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDigitalEmployeeSkillResponse
-func (client *Client) DeleteDigitalEmployeeSkillWithContext(ctx context.Context, name *string, skillName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
+func (client *Client) DeleteDigitalEmployeeSkillWithContext(ctx context.Context, name *string, skillName *string, request *DeleteDigitalEmployeeSkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1889,12 +1953,20 @@ func (client *Client) DeleteDigitalEmployeeSkillWithContext(ctx context.Context,
 //
 // # Delete EntityStore related storage
 //
+// @param request - DeleteEntityStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEntityStoreResponse
-func (client *Client) DeleteEntityStoreWithContext(ctx context.Context, workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEntityStoreResponse, _err error) {
+func (client *Client) DeleteEntityStoreWithContext(ctx context.Context, workspaceName *string, request *DeleteEntityStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEntityStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2028,12 +2100,20 @@ func (client *Client) DeleteMemoriesWithContext(ctx context.Context, workspace *
 //
 // 删除记忆
 //
+// @param request - DeleteMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspace *string, memoryStoreName *string, memoryId *string, request *DeleteMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2061,12 +2141,20 @@ func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspace *st
 //
 // 删除记忆库
 //
+// @param request - DeleteMemoryStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryStoreResponse
-func (client *Client) DeleteMemoryStoreWithContext(ctx context.Context, workspace *string, memoryStoreName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryStoreResponse, _err error) {
+func (client *Client) DeleteMemoryStoreWithContext(ctx context.Context, workspace *string, memoryStoreName *string, request *DeleteMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2098,12 +2186,20 @@ func (client *Client) DeleteMemoryStoreWithContext(ctx context.Context, workspac
 //
 // Delete a Prometheus instance.
 //
+// @param request - DeletePrometheusInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusInstanceResponse
-func (client *Client) DeletePrometheusInstanceWithContext(ctx context.Context, prometheusInstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusInstanceResponse, _err error) {
+func (client *Client) DeletePrometheusInstanceWithContext(ctx context.Context, prometheusInstanceId *string, request *DeletePrometheusInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2135,12 +2231,20 @@ func (client *Client) DeletePrometheusInstanceWithContext(ctx context.Context, p
 //
 // Delete prometheus view instance.
 //
+// @param request - DeletePrometheusViewRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusViewResponse
-func (client *Client) DeletePrometheusViewWithContext(ctx context.Context, prometheusViewId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusViewResponse, _err error) {
+func (client *Client) DeletePrometheusViewWithContext(ctx context.Context, prometheusViewId *string, request *DeletePrometheusViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2168,12 +2272,20 @@ func (client *Client) DeletePrometheusViewWithContext(ctx context.Context, prome
 //
 // 删除 Prometheus 虚拟实例
 //
+// @param request - DeletePrometheusVirtualInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusVirtualInstanceResponse
-func (client *Client) DeletePrometheusVirtualInstanceWithContext(ctx context.Context, prometheusInstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+func (client *Client) DeletePrometheusVirtualInstanceWithContext(ctx context.Context, prometheusInstanceId *string, request *DeletePrometheusVirtualInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2201,12 +2313,20 @@ func (client *Client) DeletePrometheusVirtualInstanceWithContext(ctx context.Con
 //
 // # Delete Service
 //
+// @param request - DeleteServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceResponse
-func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *string, serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *string, serviceId *string, request *DeleteServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2234,12 +2354,20 @@ func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *s
 //
 // 删除会话
 //
+// @param request - DeleteThreadRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteThreadResponse
-func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string, threadId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteThreadResponse, _err error) {
+func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string, threadId *string, request *DeleteThreadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteThreadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2271,12 +2399,20 @@ func (client *Client) DeleteThreadWithContext(ctx context.Context, name *string,
 //
 // # Delete the Umodel under the specified workspace
 //
+// @param request - DeleteUmodelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUmodelResponse
-func (client *Client) DeleteUmodelWithContext(ctx context.Context, workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUmodelResponse, _err error) {
+func (client *Client) DeleteUmodelWithContext(ctx context.Context, workspace *string, request *DeleteUmodelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUmodelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2410,12 +2546,20 @@ func (client *Client) DeleteUmodelDataWithContext(ctx context.Context, workspace
 //
 // # Delete Workspace
 //
+// @param request - DeleteWorkspaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWorkspaceResponse
-func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceName *string, request *DeleteWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2647,12 +2791,20 @@ func (client *Client) GetAddonCodeTemplateWithContext(ctx context.Context, addon
 //
 // Check addon release (view connection status)
 //
+// @param request - GetAddonReleaseRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAddonReleaseResponse
-func (client *Client) GetAddonReleaseWithContext(ctx context.Context, releaseName *string, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonReleaseResponse, _err error) {
+func (client *Client) GetAddonReleaseWithContext(ctx context.Context, releaseName *string, policyId *string, request *GetAddonReleaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonReleaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2735,12 +2887,20 @@ func (client *Client) GetAddonSchemaWithContext(ctx context.Context, addonName *
 //
 // # Describes the aggregation task group
 //
+// @param request - GetAggTaskGroupRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAggTaskGroupResponse
-func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId *string, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAggTaskGroupResponse, _err error) {
+func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId *string, groupId *string, request *GetAggTaskGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAggTaskGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2768,12 +2928,20 @@ func (client *Client) GetAggTaskGroupWithContext(ctx context.Context, instanceId
 //
 // 查询业务链路
 //
+// @param request - GetBizTraceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBizTraceResponse
-func (client *Client) GetBizTraceWithContext(ctx context.Context, bizTraceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBizTraceResponse, _err error) {
+func (client *Client) GetBizTraceWithContext(ctx context.Context, bizTraceId *string, request *GetBizTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBizTraceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2940,12 +3108,20 @@ func (client *Client) GetCmsServiceWithContext(ctx context.Context, request *Get
 //
 // 查询数据集
 //
+// @param request - GetDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatasetResponse
-func (client *Client) GetDatasetWithContext(ctx context.Context, workspace *string, datasetName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+func (client *Client) GetDatasetWithContext(ctx context.Context, workspace *string, datasetName *string, request *GetDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2973,12 +3149,20 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, workspace *stri
 //
 // 获取数据投递任务详情
 //
+// @param request - GetDeliveryTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDeliveryTaskResponse
-func (client *Client) GetDeliveryTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeliveryTaskResponse, _err error) {
+func (client *Client) GetDeliveryTaskWithContext(ctx context.Context, taskId *string, request *GetDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3006,12 +3190,20 @@ func (client *Client) GetDeliveryTaskWithContext(ctx context.Context, taskId *st
 //
 // 查询 DigitalEmployee
 //
+// @param request - GetDigitalEmployeeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDigitalEmployeeResponse
-func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeResponse, _err error) {
+func (client *Client) GetDigitalEmployeeWithContext(ctx context.Context, name *string, request *GetDigitalEmployeeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3086,12 +3278,20 @@ func (client *Client) GetDigitalEmployeeSkillWithContext(ctx context.Context, na
 //
 // # Get EntityStore related storage information
 //
+// @param request - GetEntityStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEntityStoreResponse
-func (client *Client) GetEntityStoreWithContext(ctx context.Context, workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEntityStoreResponse, _err error) {
+func (client *Client) GetEntityStoreWithContext(ctx context.Context, workspaceName *string, request *GetEntityStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEntityStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3183,12 +3383,20 @@ func (client *Client) GetEntityStoreDataWithContext(ctx context.Context, workspa
 //
 // # Query the list of access center policies
 //
+// @param request - GetIntegrationPolicyRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIntegrationPolicyResponse
-func (client *Client) GetIntegrationPolicyWithContext(ctx context.Context, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIntegrationPolicyResponse, _err error) {
+func (client *Client) GetIntegrationPolicyWithContext(ctx context.Context, policyId *string, request *GetIntegrationPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIntegrationPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3290,6 +3498,10 @@ func (client *Client) GetMemoriesWithContext(ctx context.Context, workspace *str
 		body["appId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.Filters) {
+		body["filters"] = request.Filters
+	}
+
 	if !dara.IsNil(request.Page) {
 		body["page"] = request.Page
 	}
@@ -3334,12 +3546,20 @@ func (client *Client) GetMemoriesWithContext(ctx context.Context, workspace *str
 //
 // 查询记忆
 //
+// @param request - GetMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryResponse
-func (client *Client) GetMemoryWithContext(ctx context.Context, workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemoryWithContext(ctx context.Context, workspace *string, memoryStoreName *string, memoryId *string, request *GetMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3367,12 +3587,20 @@ func (client *Client) GetMemoryWithContext(ctx context.Context, workspace *strin
 //
 // 查询记忆历史记录
 //
+// @param request - GetMemoryHistoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryHistoryResponse
-func (client *Client) GetMemoryHistoryWithContext(ctx context.Context, workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryHistoryResponse, _err error) {
+func (client *Client) GetMemoryHistoryWithContext(ctx context.Context, workspace *string, memoryStoreName *string, memoryId *string, request *GetMemoryHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3400,12 +3628,20 @@ func (client *Client) GetMemoryHistoryWithContext(ctx context.Context, workspace
 //
 // 查询记忆库
 //
+// @param request - GetMemoryStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryStoreResponse
-func (client *Client) GetMemoryStoreWithContext(ctx context.Context, workspace *string, memoryStoreName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryStoreResponse, _err error) {
+func (client *Client) GetMemoryStoreWithContext(ctx context.Context, workspace *string, memoryStoreName *string, request *GetMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3590,12 +3826,20 @@ func (client *Client) GetPrometheusViewWithContext(ctx context.Context, promethe
 //
 // # Query Service
 //
+// @param request - GetServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceResponse
-func (client *Client) GetServiceWithContext(ctx context.Context, workspace *string, serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+func (client *Client) GetServiceWithContext(ctx context.Context, workspace *string, serviceId *string, request *GetServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3623,12 +3867,20 @@ func (client *Client) GetServiceWithContext(ctx context.Context, workspace *stri
 //
 // # Get Application Observability Instance
 //
+// @param request - GetServiceObservabilityRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceObservabilityResponse
-func (client *Client) GetServiceObservabilityWithContext(ctx context.Context, workspace *string, _type *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceObservabilityResponse, _err error) {
+func (client *Client) GetServiceObservabilityWithContext(ctx context.Context, workspace *string, _type *string, request *GetServiceObservabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceObservabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3656,12 +3908,20 @@ func (client *Client) GetServiceObservabilityWithContext(ctx context.Context, wo
 //
 // 获取会话
 //
+// @param request - GetThreadRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetThreadResponse
-func (client *Client) GetThreadWithContext(ctx context.Context, name *string, threadId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetThreadResponse, _err error) {
+func (client *Client) GetThreadWithContext(ctx context.Context, name *string, threadId *string, request *GetThreadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetThreadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3744,12 +4004,20 @@ func (client *Client) GetThreadDataWithContext(ctx context.Context, name *string
 //
 // # Get Umodel configuration information
 //
+// @param request - GetUmodelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUmodelResponse
-func (client *Client) GetUmodelWithContext(ctx context.Context, workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelResponse, _err error) {
+func (client *Client) GetUmodelWithContext(ctx context.Context, workspace *string, request *GetUmodelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3777,12 +4045,20 @@ func (client *Client) GetUmodelWithContext(ctx context.Context, workspace *strin
 //
 // 获取Umodel配置信息
 //
+// @param request - GetUmodelCommonSchemaRefRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUmodelCommonSchemaRefResponse
-func (client *Client) GetUmodelCommonSchemaRefWithContext(ctx context.Context, workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+func (client *Client) GetUmodelCommonSchemaRefWithContext(ctx context.Context, workspace *string, request *GetUmodelCommonSchemaRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3867,12 +4143,20 @@ func (client *Client) GetUmodelDataWithContext(ctx context.Context, workspace *s
 //
 // # Get Workspace
 //
+// @param request - GetWorkspaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWorkspaceResponse
-func (client *Client) GetWorkspaceWithContext(ctx context.Context, workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetWorkspaceWithContext(ctx context.Context, workspaceName *string, request *GetWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4412,12 +4696,20 @@ func (client *Client) ListDeliveryTasksWithContext(ctx context.Context, tmpReq *
 //
 // 列出技能版本
 //
+// @param request - ListDigitalEmployeeSkillVersionsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDigitalEmployeeSkillVersionsResponse
-func (client *Client) ListDigitalEmployeeSkillVersionsWithContext(ctx context.Context, name *string, skillName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
+func (client *Client) ListDigitalEmployeeSkillVersionsWithContext(ctx context.Context, name *string, skillName *string, request *ListDigitalEmployeeSkillVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4686,12 +4978,20 @@ func (client *Client) ListIntegrationPoliciesWithContext(ctx context.Context, tm
 //
 // 策略addon列表
 //
+// @param request - ListIntegrationPolicyAddonsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIntegrationPolicyAddonsResponse
-func (client *Client) ListIntegrationPolicyAddonsWithContext(ctx context.Context, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
+func (client *Client) ListIntegrationPolicyAddonsWithContext(ctx context.Context, policyId *string, request *ListIntegrationPolicyAddonsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5892,8 +6192,8 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspace *
 		body["appId"] = request.AppId
 	}
 
-	if !dara.IsNil(request.Metadata) {
-		body["metadata"] = request.Metadata
+	if !dara.IsNil(request.Filters) {
+		body["filters"] = request.Filters
 	}
 
 	if !dara.IsNil(request.Query) {
@@ -5904,8 +6204,16 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspace *
 		body["rerank"] = request.Rerank
 	}
 
+	if !dara.IsNil(request.RetrieveLevel) {
+		body["retrieveLevel"] = request.RetrieveLevel
+	}
+
 	if !dara.IsNil(request.RunId) {
 		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.Threshold) {
+		body["threshold"] = request.Threshold
 	}
 
 	if !dara.IsNil(request.TopK) {

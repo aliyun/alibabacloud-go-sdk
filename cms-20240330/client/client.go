@@ -1155,12 +1155,20 @@ func (client *Client) CreateDigitalEmployeeSkill(name *string, request *CreateDi
 //
 // # Create storage related to EntityStore
 //
+// @param request - CreateEntityStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateEntityStoreResponse
-func (client *Client) CreateEntityStoreWithOptions(workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEntityStoreResponse, _err error) {
+func (client *Client) CreateEntityStoreWithOptions(workspaceName *string, request *CreateEntityStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateEntityStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1188,12 +1196,14 @@ func (client *Client) CreateEntityStoreWithOptions(workspaceName *string, header
 //
 // # Create storage related to EntityStore
 //
+// @param request - CreateEntityStoreRequest
+//
 // @return CreateEntityStoreResponse
-func (client *Client) CreateEntityStore(workspaceName *string) (_result *CreateEntityStoreResponse, _err error) {
+func (client *Client) CreateEntityStore(workspaceName *string, request *CreateEntityStoreRequest) (_result *CreateEntityStoreResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateEntityStoreResponse{}
-	_body, _err := client.CreateEntityStoreWithOptions(workspaceName, headers, runtime)
+	_body, _err := client.CreateEntityStoreWithOptions(workspaceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1781,12 +1791,20 @@ func (client *Client) CreateService(workspace *string, request *CreateServiceReq
 //
 // 创建应用可观测实例
 //
+// @param request - CreateServiceObservabilityRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateServiceObservabilityResponse
-func (client *Client) CreateServiceObservabilityWithOptions(workspace *string, _type *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceObservabilityResponse, _err error) {
+func (client *Client) CreateServiceObservabilityWithOptions(workspace *string, _type *string, request *CreateServiceObservabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateServiceObservabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1814,12 +1832,14 @@ func (client *Client) CreateServiceObservabilityWithOptions(workspace *string, _
 //
 // 创建应用可观测实例
 //
+// @param request - CreateServiceObservabilityRequest
+//
 // @return CreateServiceObservabilityResponse
-func (client *Client) CreateServiceObservability(workspace *string, _type *string) (_result *CreateServiceObservabilityResponse, _err error) {
+func (client *Client) CreateServiceObservability(workspace *string, _type *string, request *CreateServiceObservabilityRequest) (_result *CreateServiceObservabilityResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateServiceObservabilityResponse{}
-	_body, _err := client.CreateServiceObservabilityWithOptions(workspace, _type, headers, runtime)
+	_body, _err := client.CreateServiceObservabilityWithOptions(workspace, _type, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2123,12 +2143,20 @@ func (client *Client) DeleteAddonRelease(policyId *string, request *DeleteAddonR
 //
 // # Delete Aggregation Task Group
 //
+// @param request - DeleteAggTaskGroupRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAggTaskGroupResponse
-func (client *Client) DeleteAggTaskGroupWithOptions(instanceId *string, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAggTaskGroupResponse, _err error) {
+func (client *Client) DeleteAggTaskGroupWithOptions(instanceId *string, groupId *string, request *DeleteAggTaskGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAggTaskGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2156,12 +2184,14 @@ func (client *Client) DeleteAggTaskGroupWithOptions(instanceId *string, groupId 
 //
 // # Delete Aggregation Task Group
 //
+// @param request - DeleteAggTaskGroupRequest
+//
 // @return DeleteAggTaskGroupResponse
-func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string) (_result *DeleteAggTaskGroupResponse, _err error) {
+func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string, request *DeleteAggTaskGroupRequest) (_result *DeleteAggTaskGroupResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAggTaskGroupResponse{}
-	_body, _err := client.DeleteAggTaskGroupWithOptions(instanceId, groupId, headers, runtime)
+	_body, _err := client.DeleteAggTaskGroupWithOptions(instanceId, groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2245,12 +2275,20 @@ func (client *Client) DeleteAlertWebhooks(request *DeleteAlertWebhooksRequest) (
 //
 // 删除业务链路
 //
+// @param request - DeleteBizTraceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBizTraceResponse
-func (client *Client) DeleteBizTraceWithOptions(bizTraceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBizTraceResponse, _err error) {
+func (client *Client) DeleteBizTraceWithOptions(bizTraceId *string, request *DeleteBizTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBizTraceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2278,12 +2316,14 @@ func (client *Client) DeleteBizTraceWithOptions(bizTraceId *string, headers map[
 //
 // 删除业务链路
 //
+// @param request - DeleteBizTraceRequest
+//
 // @return DeleteBizTraceResponse
-func (client *Client) DeleteBizTrace(bizTraceId *string) (_result *DeleteBizTraceResponse, _err error) {
+func (client *Client) DeleteBizTrace(bizTraceId *string, request *DeleteBizTraceRequest) (_result *DeleteBizTraceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteBizTraceResponse{}
-	_body, _err := client.DeleteBizTraceWithOptions(bizTraceId, headers, runtime)
+	_body, _err := client.DeleteBizTraceWithOptions(bizTraceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2345,12 +2385,20 @@ func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceRespons
 //
 // 删除数据集
 //
+// @param request - DeleteDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDatasetResponse
-func (client *Client) DeleteDatasetWithOptions(workspace *string, datasetName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+func (client *Client) DeleteDatasetWithOptions(workspace *string, datasetName *string, request *DeleteDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2378,12 +2426,14 @@ func (client *Client) DeleteDatasetWithOptions(workspace *string, datasetName *s
 //
 // 删除数据集
 //
+// @param request - DeleteDatasetRequest
+//
 // @return DeleteDatasetResponse
-func (client *Client) DeleteDataset(workspace *string, datasetName *string) (_result *DeleteDatasetResponse, _err error) {
+func (client *Client) DeleteDataset(workspace *string, datasetName *string, request *DeleteDatasetRequest) (_result *DeleteDatasetResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteDatasetResponse{}
-	_body, _err := client.DeleteDatasetWithOptions(workspace, datasetName, headers, runtime)
+	_body, _err := client.DeleteDatasetWithOptions(workspace, datasetName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2395,12 +2445,20 @@ func (client *Client) DeleteDataset(workspace *string, datasetName *string) (_re
 //
 // 删除数据投递任务
 //
+// @param request - DeleteDeliveryTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDeliveryTaskResponse
-func (client *Client) DeleteDeliveryTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryTaskResponse, _err error) {
+func (client *Client) DeleteDeliveryTaskWithOptions(taskId *string, request *DeleteDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2428,12 +2486,14 @@ func (client *Client) DeleteDeliveryTaskWithOptions(taskId *string, headers map[
 //
 // 删除数据投递任务
 //
+// @param request - DeleteDeliveryTaskRequest
+//
 // @return DeleteDeliveryTaskResponse
-func (client *Client) DeleteDeliveryTask(taskId *string) (_result *DeleteDeliveryTaskResponse, _err error) {
+func (client *Client) DeleteDeliveryTask(taskId *string, request *DeleteDeliveryTaskRequest) (_result *DeleteDeliveryTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteDeliveryTaskResponse{}
-	_body, _err := client.DeleteDeliveryTaskWithOptions(taskId, headers, runtime)
+	_body, _err := client.DeleteDeliveryTaskWithOptions(taskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2445,12 +2505,20 @@ func (client *Client) DeleteDeliveryTask(taskId *string) (_result *DeleteDeliver
 //
 // 删除DigitalEmployee
 //
+// @param request - DeleteDigitalEmployeeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDigitalEmployeeResponse
-func (client *Client) DeleteDigitalEmployeeWithOptions(name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeResponse, _err error) {
+func (client *Client) DeleteDigitalEmployeeWithOptions(name *string, request *DeleteDigitalEmployeeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2478,12 +2546,14 @@ func (client *Client) DeleteDigitalEmployeeWithOptions(name *string, headers map
 //
 // 删除DigitalEmployee
 //
+// @param request - DeleteDigitalEmployeeRequest
+//
 // @return DeleteDigitalEmployeeResponse
-func (client *Client) DeleteDigitalEmployee(name *string) (_result *DeleteDigitalEmployeeResponse, _err error) {
+func (client *Client) DeleteDigitalEmployee(name *string, request *DeleteDigitalEmployeeRequest) (_result *DeleteDigitalEmployeeResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteDigitalEmployeeResponse{}
-	_body, _err := client.DeleteDigitalEmployeeWithOptions(name, headers, runtime)
+	_body, _err := client.DeleteDigitalEmployeeWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2495,12 +2565,20 @@ func (client *Client) DeleteDigitalEmployee(name *string) (_result *DeleteDigita
 //
 // 删除技能
 //
+// @param request - DeleteDigitalEmployeeSkillRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteDigitalEmployeeSkillResponse
-func (client *Client) DeleteDigitalEmployeeSkillWithOptions(name *string, skillName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
+func (client *Client) DeleteDigitalEmployeeSkillWithOptions(name *string, skillName *string, request *DeleteDigitalEmployeeSkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2528,12 +2606,14 @@ func (client *Client) DeleteDigitalEmployeeSkillWithOptions(name *string, skillN
 //
 // 删除技能
 //
+// @param request - DeleteDigitalEmployeeSkillRequest
+//
 // @return DeleteDigitalEmployeeSkillResponse
-func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
+func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string, request *DeleteDigitalEmployeeSkillRequest) (_result *DeleteDigitalEmployeeSkillResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteDigitalEmployeeSkillResponse{}
-	_body, _err := client.DeleteDigitalEmployeeSkillWithOptions(name, skillName, headers, runtime)
+	_body, _err := client.DeleteDigitalEmployeeSkillWithOptions(name, skillName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2545,12 +2625,20 @@ func (client *Client) DeleteDigitalEmployeeSkill(name *string, skillName *string
 //
 // # Delete EntityStore related storage
 //
+// @param request - DeleteEntityStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteEntityStoreResponse
-func (client *Client) DeleteEntityStoreWithOptions(workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEntityStoreResponse, _err error) {
+func (client *Client) DeleteEntityStoreWithOptions(workspaceName *string, request *DeleteEntityStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteEntityStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2578,12 +2666,14 @@ func (client *Client) DeleteEntityStoreWithOptions(workspaceName *string, header
 //
 // # Delete EntityStore related storage
 //
+// @param request - DeleteEntityStoreRequest
+//
 // @return DeleteEntityStoreResponse
-func (client *Client) DeleteEntityStore(workspaceName *string) (_result *DeleteEntityStoreResponse, _err error) {
+func (client *Client) DeleteEntityStore(workspaceName *string, request *DeleteEntityStoreRequest) (_result *DeleteEntityStoreResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteEntityStoreResponse{}
-	_body, _err := client.DeleteEntityStoreWithOptions(workspaceName, headers, runtime)
+	_body, _err := client.DeleteEntityStoreWithOptions(workspaceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2739,12 +2829,20 @@ func (client *Client) DeleteMemories(workspace *string, memoryStoreName *string,
 //
 // 删除记忆
 //
+// @param request - DeleteMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, request *DeleteMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2772,12 +2870,14 @@ func (client *Client) DeleteMemoryWithOptions(workspace *string, memoryStoreName
 //
 // 删除记忆
 //
+// @param request - DeleteMemoryRequest
+//
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemory(workspace *string, memoryStoreName *string, memoryId *string) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemory(workspace *string, memoryStoreName *string, memoryId *string, request *DeleteMemoryRequest) (_result *DeleteMemoryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteMemoryResponse{}
-	_body, _err := client.DeleteMemoryWithOptions(workspace, memoryStoreName, memoryId, headers, runtime)
+	_body, _err := client.DeleteMemoryWithOptions(workspace, memoryStoreName, memoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2789,12 +2889,20 @@ func (client *Client) DeleteMemory(workspace *string, memoryStoreName *string, m
 //
 // 删除记忆库
 //
+// @param request - DeleteMemoryStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryStoreResponse
-func (client *Client) DeleteMemoryStoreWithOptions(workspace *string, memoryStoreName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryStoreResponse, _err error) {
+func (client *Client) DeleteMemoryStoreWithOptions(workspace *string, memoryStoreName *string, request *DeleteMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2822,12 +2930,14 @@ func (client *Client) DeleteMemoryStoreWithOptions(workspace *string, memoryStor
 //
 // 删除记忆库
 //
+// @param request - DeleteMemoryStoreRequest
+//
 // @return DeleteMemoryStoreResponse
-func (client *Client) DeleteMemoryStore(workspace *string, memoryStoreName *string) (_result *DeleteMemoryStoreResponse, _err error) {
+func (client *Client) DeleteMemoryStore(workspace *string, memoryStoreName *string, request *DeleteMemoryStoreRequest) (_result *DeleteMemoryStoreResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteMemoryStoreResponse{}
-	_body, _err := client.DeleteMemoryStoreWithOptions(workspace, memoryStoreName, headers, runtime)
+	_body, _err := client.DeleteMemoryStoreWithOptions(workspace, memoryStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2843,12 +2953,20 @@ func (client *Client) DeleteMemoryStore(workspace *string, memoryStoreName *stri
 //
 // Delete a Prometheus instance.
 //
+// @param request - DeletePrometheusInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusInstanceResponse
-func (client *Client) DeletePrometheusInstanceWithOptions(prometheusInstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusInstanceResponse, _err error) {
+func (client *Client) DeletePrometheusInstanceWithOptions(prometheusInstanceId *string, request *DeletePrometheusInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2880,12 +2998,14 @@ func (client *Client) DeletePrometheusInstanceWithOptions(prometheusInstanceId *
 //
 // Delete a Prometheus instance.
 //
+// @param request - DeletePrometheusInstanceRequest
+//
 // @return DeletePrometheusInstanceResponse
-func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_result *DeletePrometheusInstanceResponse, _err error) {
+func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string, request *DeletePrometheusInstanceRequest) (_result *DeletePrometheusInstanceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeletePrometheusInstanceResponse{}
-	_body, _err := client.DeletePrometheusInstanceWithOptions(prometheusInstanceId, headers, runtime)
+	_body, _err := client.DeletePrometheusInstanceWithOptions(prometheusInstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2901,12 +3021,20 @@ func (client *Client) DeletePrometheusInstance(prometheusInstanceId *string) (_r
 //
 // Delete prometheus view instance.
 //
+// @param request - DeletePrometheusViewRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusViewResponse
-func (client *Client) DeletePrometheusViewWithOptions(prometheusViewId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusViewResponse, _err error) {
+func (client *Client) DeletePrometheusViewWithOptions(prometheusViewId *string, request *DeletePrometheusViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2938,12 +3066,14 @@ func (client *Client) DeletePrometheusViewWithOptions(prometheusViewId *string, 
 //
 // Delete prometheus view instance.
 //
+// @param request - DeletePrometheusViewRequest
+//
 // @return DeletePrometheusViewResponse
-func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *DeletePrometheusViewResponse, _err error) {
+func (client *Client) DeletePrometheusView(prometheusViewId *string, request *DeletePrometheusViewRequest) (_result *DeletePrometheusViewResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeletePrometheusViewResponse{}
-	_body, _err := client.DeletePrometheusViewWithOptions(prometheusViewId, headers, runtime)
+	_body, _err := client.DeletePrometheusViewWithOptions(prometheusViewId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2955,12 +3085,20 @@ func (client *Client) DeletePrometheusView(prometheusViewId *string) (_result *D
 //
 // 删除 Prometheus 虚拟实例
 //
+// @param request - DeletePrometheusVirtualInstanceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePrometheusVirtualInstanceResponse
-func (client *Client) DeletePrometheusVirtualInstanceWithOptions(prometheusInstanceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+func (client *Client) DeletePrometheusVirtualInstanceWithOptions(prometheusInstanceId *string, request *DeletePrometheusVirtualInstanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2988,12 +3126,14 @@ func (client *Client) DeletePrometheusVirtualInstanceWithOptions(prometheusInsta
 //
 // 删除 Prometheus 虚拟实例
 //
+// @param request - DeletePrometheusVirtualInstanceRequest
+//
 // @return DeletePrometheusVirtualInstanceResponse
-func (client *Client) DeletePrometheusVirtualInstance(prometheusInstanceId *string) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
+func (client *Client) DeletePrometheusVirtualInstance(prometheusInstanceId *string, request *DeletePrometheusVirtualInstanceRequest) (_result *DeletePrometheusVirtualInstanceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeletePrometheusVirtualInstanceResponse{}
-	_body, _err := client.DeletePrometheusVirtualInstanceWithOptions(prometheusInstanceId, headers, runtime)
+	_body, _err := client.DeletePrometheusVirtualInstanceWithOptions(prometheusInstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3005,12 +3145,20 @@ func (client *Client) DeletePrometheusVirtualInstance(prometheusInstanceId *stri
 //
 // # Delete Service
 //
+// @param request - DeleteServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceResponse
-func (client *Client) DeleteServiceWithOptions(workspace *string, serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteServiceWithOptions(workspace *string, serviceId *string, request *DeleteServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3038,12 +3186,14 @@ func (client *Client) DeleteServiceWithOptions(workspace *string, serviceId *str
 //
 // # Delete Service
 //
+// @param request - DeleteServiceRequest
+//
 // @return DeleteServiceResponse
-func (client *Client) DeleteService(workspace *string, serviceId *string) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteService(workspace *string, serviceId *string, request *DeleteServiceRequest) (_result *DeleteServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.DeleteServiceWithOptions(workspace, serviceId, headers, runtime)
+	_body, _err := client.DeleteServiceWithOptions(workspace, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3055,12 +3205,20 @@ func (client *Client) DeleteService(workspace *string, serviceId *string) (_resu
 //
 // 删除会话
 //
+// @param request - DeleteThreadRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteThreadResponse
-func (client *Client) DeleteThreadWithOptions(name *string, threadId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteThreadResponse, _err error) {
+func (client *Client) DeleteThreadWithOptions(name *string, threadId *string, request *DeleteThreadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteThreadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3088,12 +3246,14 @@ func (client *Client) DeleteThreadWithOptions(name *string, threadId *string, he
 //
 // 删除会话
 //
+// @param request - DeleteThreadRequest
+//
 // @return DeleteThreadResponse
-func (client *Client) DeleteThread(name *string, threadId *string) (_result *DeleteThreadResponse, _err error) {
+func (client *Client) DeleteThread(name *string, threadId *string, request *DeleteThreadRequest) (_result *DeleteThreadResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteThreadResponse{}
-	_body, _err := client.DeleteThreadWithOptions(name, threadId, headers, runtime)
+	_body, _err := client.DeleteThreadWithOptions(name, threadId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3109,12 +3269,20 @@ func (client *Client) DeleteThread(name *string, threadId *string) (_result *Del
 //
 // # Delete the Umodel under the specified workspace
 //
+// @param request - DeleteUmodelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteUmodelResponse
-func (client *Client) DeleteUmodelWithOptions(workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUmodelResponse, _err error) {
+func (client *Client) DeleteUmodelWithOptions(workspace *string, request *DeleteUmodelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteUmodelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3146,12 +3314,14 @@ func (client *Client) DeleteUmodelWithOptions(workspace *string, headers map[str
 //
 // # Delete the Umodel under the specified workspace
 //
+// @param request - DeleteUmodelRequest
+//
 // @return DeleteUmodelResponse
-func (client *Client) DeleteUmodel(workspace *string) (_result *DeleteUmodelResponse, _err error) {
+func (client *Client) DeleteUmodel(workspace *string, request *DeleteUmodelRequest) (_result *DeleteUmodelResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteUmodelResponse{}
-	_body, _err := client.DeleteUmodelWithOptions(workspace, headers, runtime)
+	_body, _err := client.DeleteUmodelWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3311,12 +3481,20 @@ func (client *Client) DeleteUmodelData(workspace *string, request *DeleteUmodelD
 //
 // # Delete Workspace
 //
+// @param request - DeleteWorkspaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWorkspaceResponse
-func (client *Client) DeleteWorkspaceWithOptions(workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+func (client *Client) DeleteWorkspaceWithOptions(workspaceName *string, request *DeleteWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3344,12 +3522,14 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceName *string, headers 
 //
 // # Delete Workspace
 //
+// @param request - DeleteWorkspaceRequest
+//
 // @return DeleteWorkspaceResponse
-func (client *Client) DeleteWorkspace(workspaceName *string) (_result *DeleteWorkspaceResponse, _err error) {
+func (client *Client) DeleteWorkspace(workspaceName *string, request *DeleteWorkspaceRequest) (_result *DeleteWorkspaceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteWorkspaceResponse{}
-	_body, _err := client.DeleteWorkspaceWithOptions(workspaceName, headers, runtime)
+	_body, _err := client.DeleteWorkspaceWithOptions(workspaceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3641,12 +3821,20 @@ func (client *Client) GetAddonCodeTemplate(addonName *string, request *GetAddonC
 //
 // Check addon release (view connection status)
 //
+// @param request - GetAddonReleaseRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAddonReleaseResponse
-func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonReleaseResponse, _err error) {
+func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *string, request *GetAddonReleaseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAddonReleaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3674,12 +3862,14 @@ func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *
 //
 // Check addon release (view connection status)
 //
+// @param request - GetAddonReleaseRequest
+//
 // @return GetAddonReleaseResponse
-func (client *Client) GetAddonRelease(releaseName *string, policyId *string) (_result *GetAddonReleaseResponse, _err error) {
+func (client *Client) GetAddonRelease(releaseName *string, policyId *string, request *GetAddonReleaseRequest) (_result *GetAddonReleaseResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetAddonReleaseResponse{}
-	_body, _err := client.GetAddonReleaseWithOptions(releaseName, policyId, headers, runtime)
+	_body, _err := client.GetAddonReleaseWithOptions(releaseName, policyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3765,12 +3955,20 @@ func (client *Client) GetAddonSchema(addonName *string, request *GetAddonSchemaR
 //
 // # Describes the aggregation task group
 //
+// @param request - GetAggTaskGroupRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAggTaskGroupResponse
-func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAggTaskGroupResponse, _err error) {
+func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *string, request *GetAggTaskGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAggTaskGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3798,12 +3996,14 @@ func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *st
 //
 // # Describes the aggregation task group
 //
+// @param request - GetAggTaskGroupRequest
+//
 // @return GetAggTaskGroupResponse
-func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_result *GetAggTaskGroupResponse, _err error) {
+func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string, request *GetAggTaskGroupRequest) (_result *GetAggTaskGroupResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetAggTaskGroupResponse{}
-	_body, _err := client.GetAggTaskGroupWithOptions(instanceId, groupId, headers, runtime)
+	_body, _err := client.GetAggTaskGroupWithOptions(instanceId, groupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3815,12 +4015,20 @@ func (client *Client) GetAggTaskGroup(instanceId *string, groupId *string) (_res
 //
 // 查询业务链路
 //
+// @param request - GetBizTraceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBizTraceResponse
-func (client *Client) GetBizTraceWithOptions(bizTraceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBizTraceResponse, _err error) {
+func (client *Client) GetBizTraceWithOptions(bizTraceId *string, request *GetBizTraceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBizTraceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3848,12 +4056,14 @@ func (client *Client) GetBizTraceWithOptions(bizTraceId *string, headers map[str
 //
 // 查询业务链路
 //
+// @param request - GetBizTraceRequest
+//
 // @return GetBizTraceResponse
-func (client *Client) GetBizTrace(bizTraceId *string) (_result *GetBizTraceResponse, _err error) {
+func (client *Client) GetBizTrace(bizTraceId *string, request *GetBizTraceRequest) (_result *GetBizTraceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetBizTraceResponse{}
-	_body, _err := client.GetBizTraceWithOptions(bizTraceId, headers, runtime)
+	_body, _err := client.GetBizTraceWithOptions(bizTraceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4059,12 +4269,20 @@ func (client *Client) GetCmsService(request *GetCmsServiceRequest) (_result *Get
 //
 // 查询数据集
 //
+// @param request - GetDatasetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDatasetResponse
-func (client *Client) GetDatasetWithOptions(workspace *string, datasetName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+func (client *Client) GetDatasetWithOptions(workspace *string, datasetName *string, request *GetDatasetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4092,12 +4310,14 @@ func (client *Client) GetDatasetWithOptions(workspace *string, datasetName *stri
 //
 // 查询数据集
 //
+// @param request - GetDatasetRequest
+//
 // @return GetDatasetResponse
-func (client *Client) GetDataset(workspace *string, datasetName *string) (_result *GetDatasetResponse, _err error) {
+func (client *Client) GetDataset(workspace *string, datasetName *string, request *GetDatasetRequest) (_result *GetDatasetResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetDatasetResponse{}
-	_body, _err := client.GetDatasetWithOptions(workspace, datasetName, headers, runtime)
+	_body, _err := client.GetDatasetWithOptions(workspace, datasetName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4109,12 +4329,20 @@ func (client *Client) GetDataset(workspace *string, datasetName *string) (_resul
 //
 // 获取数据投递任务详情
 //
+// @param request - GetDeliveryTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDeliveryTaskResponse
-func (client *Client) GetDeliveryTaskWithOptions(taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeliveryTaskResponse, _err error) {
+func (client *Client) GetDeliveryTaskWithOptions(taskId *string, request *GetDeliveryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDeliveryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4142,12 +4370,14 @@ func (client *Client) GetDeliveryTaskWithOptions(taskId *string, headers map[str
 //
 // 获取数据投递任务详情
 //
+// @param request - GetDeliveryTaskRequest
+//
 // @return GetDeliveryTaskResponse
-func (client *Client) GetDeliveryTask(taskId *string) (_result *GetDeliveryTaskResponse, _err error) {
+func (client *Client) GetDeliveryTask(taskId *string, request *GetDeliveryTaskRequest) (_result *GetDeliveryTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetDeliveryTaskResponse{}
-	_body, _err := client.GetDeliveryTaskWithOptions(taskId, headers, runtime)
+	_body, _err := client.GetDeliveryTaskWithOptions(taskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4159,12 +4389,20 @@ func (client *Client) GetDeliveryTask(taskId *string) (_result *GetDeliveryTaskR
 //
 // 查询 DigitalEmployee
 //
+// @param request - GetDigitalEmployeeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDigitalEmployeeResponse
-func (client *Client) GetDigitalEmployeeWithOptions(name *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeResponse, _err error) {
+func (client *Client) GetDigitalEmployeeWithOptions(name *string, request *GetDigitalEmployeeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDigitalEmployeeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4192,12 +4430,14 @@ func (client *Client) GetDigitalEmployeeWithOptions(name *string, headers map[st
 //
 // 查询 DigitalEmployee
 //
+// @param request - GetDigitalEmployeeRequest
+//
 // @return GetDigitalEmployeeResponse
-func (client *Client) GetDigitalEmployee(name *string) (_result *GetDigitalEmployeeResponse, _err error) {
+func (client *Client) GetDigitalEmployee(name *string, request *GetDigitalEmployeeRequest) (_result *GetDigitalEmployeeResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetDigitalEmployeeResponse{}
-	_body, _err := client.GetDigitalEmployeeWithOptions(name, headers, runtime)
+	_body, _err := client.GetDigitalEmployeeWithOptions(name, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4275,12 +4515,20 @@ func (client *Client) GetDigitalEmployeeSkill(name *string, skillName *string, r
 //
 // # Get EntityStore related storage information
 //
+// @param request - GetEntityStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetEntityStoreResponse
-func (client *Client) GetEntityStoreWithOptions(workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEntityStoreResponse, _err error) {
+func (client *Client) GetEntityStoreWithOptions(workspaceName *string, request *GetEntityStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEntityStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4308,12 +4556,14 @@ func (client *Client) GetEntityStoreWithOptions(workspaceName *string, headers m
 //
 // # Get EntityStore related storage information
 //
+// @param request - GetEntityStoreRequest
+//
 // @return GetEntityStoreResponse
-func (client *Client) GetEntityStore(workspaceName *string) (_result *GetEntityStoreResponse, _err error) {
+func (client *Client) GetEntityStore(workspaceName *string, request *GetEntityStoreRequest) (_result *GetEntityStoreResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetEntityStoreResponse{}
-	_body, _err := client.GetEntityStoreWithOptions(workspaceName, headers, runtime)
+	_body, _err := client.GetEntityStoreWithOptions(workspaceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4408,12 +4658,20 @@ func (client *Client) GetEntityStoreData(workspace *string, request *GetEntitySt
 //
 // # Query the list of access center policies
 //
+// @param request - GetIntegrationPolicyRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetIntegrationPolicyResponse
-func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIntegrationPolicyResponse, _err error) {
+func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, request *GetIntegrationPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetIntegrationPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4441,12 +4699,14 @@ func (client *Client) GetIntegrationPolicyWithOptions(policyId *string, headers 
 //
 // # Query the list of access center policies
 //
+// @param request - GetIntegrationPolicyRequest
+//
 // @return GetIntegrationPolicyResponse
-func (client *Client) GetIntegrationPolicy(policyId *string) (_result *GetIntegrationPolicyResponse, _err error) {
+func (client *Client) GetIntegrationPolicy(policyId *string, request *GetIntegrationPolicyRequest) (_result *GetIntegrationPolicyResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetIntegrationPolicyResponse{}
-	_body, _err := client.GetIntegrationPolicyWithOptions(policyId, headers, runtime)
+	_body, _err := client.GetIntegrationPolicyWithOptions(policyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4551,6 +4811,10 @@ func (client *Client) GetMemoriesWithOptions(workspace *string, memoryStoreName 
 		body["appId"] = request.AppId
 	}
 
+	if !dara.IsNil(request.Filters) {
+		body["filters"] = request.Filters
+	}
+
 	if !dara.IsNil(request.Page) {
 		body["page"] = request.Page
 	}
@@ -4614,12 +4878,20 @@ func (client *Client) GetMemories(workspace *string, memoryStoreName *string, re
 //
 // 查询记忆
 //
+// @param request - GetMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryResponse
-func (client *Client) GetMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, request *GetMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4647,12 +4919,14 @@ func (client *Client) GetMemoryWithOptions(workspace *string, memoryStoreName *s
 //
 // 查询记忆
 //
+// @param request - GetMemoryRequest
+//
 // @return GetMemoryResponse
-func (client *Client) GetMemory(workspace *string, memoryStoreName *string, memoryId *string) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemory(workspace *string, memoryStoreName *string, memoryId *string, request *GetMemoryRequest) (_result *GetMemoryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetMemoryResponse{}
-	_body, _err := client.GetMemoryWithOptions(workspace, memoryStoreName, memoryId, headers, runtime)
+	_body, _err := client.GetMemoryWithOptions(workspace, memoryStoreName, memoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4664,12 +4938,20 @@ func (client *Client) GetMemory(workspace *string, memoryStoreName *string, memo
 //
 // 查询记忆历史记录
 //
+// @param request - GetMemoryHistoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryHistoryResponse
-func (client *Client) GetMemoryHistoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryHistoryResponse, _err error) {
+func (client *Client) GetMemoryHistoryWithOptions(workspace *string, memoryStoreName *string, memoryId *string, request *GetMemoryHistoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4697,12 +4979,14 @@ func (client *Client) GetMemoryHistoryWithOptions(workspace *string, memoryStore
 //
 // 查询记忆历史记录
 //
+// @param request - GetMemoryHistoryRequest
+//
 // @return GetMemoryHistoryResponse
-func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *string, memoryId *string) (_result *GetMemoryHistoryResponse, _err error) {
+func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *string, memoryId *string, request *GetMemoryHistoryRequest) (_result *GetMemoryHistoryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetMemoryHistoryResponse{}
-	_body, _err := client.GetMemoryHistoryWithOptions(workspace, memoryStoreName, memoryId, headers, runtime)
+	_body, _err := client.GetMemoryHistoryWithOptions(workspace, memoryStoreName, memoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4714,12 +4998,20 @@ func (client *Client) GetMemoryHistory(workspace *string, memoryStoreName *strin
 //
 // 查询记忆库
 //
+// @param request - GetMemoryStoreRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryStoreResponse
-func (client *Client) GetMemoryStoreWithOptions(workspace *string, memoryStoreName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryStoreResponse, _err error) {
+func (client *Client) GetMemoryStoreWithOptions(workspace *string, memoryStoreName *string, request *GetMemoryStoreRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryStoreResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4747,12 +5039,14 @@ func (client *Client) GetMemoryStoreWithOptions(workspace *string, memoryStoreNa
 //
 // 查询记忆库
 //
+// @param request - GetMemoryStoreRequest
+//
 // @return GetMemoryStoreResponse
-func (client *Client) GetMemoryStore(workspace *string, memoryStoreName *string) (_result *GetMemoryStoreResponse, _err error) {
+func (client *Client) GetMemoryStore(workspace *string, memoryStoreName *string, request *GetMemoryStoreRequest) (_result *GetMemoryStoreResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetMemoryStoreResponse{}
-	_body, _err := client.GetMemoryStoreWithOptions(workspace, memoryStoreName, headers, runtime)
+	_body, _err := client.GetMemoryStoreWithOptions(workspace, memoryStoreName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4986,12 +5280,20 @@ func (client *Client) GetPrometheusView(prometheusViewId *string, request *GetPr
 //
 // # Query Service
 //
+// @param request - GetServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceResponse
-func (client *Client) GetServiceWithOptions(workspace *string, serviceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+func (client *Client) GetServiceWithOptions(workspace *string, serviceId *string, request *GetServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5019,12 +5321,14 @@ func (client *Client) GetServiceWithOptions(workspace *string, serviceId *string
 //
 // # Query Service
 //
+// @param request - GetServiceRequest
+//
 // @return GetServiceResponse
-func (client *Client) GetService(workspace *string, serviceId *string) (_result *GetServiceResponse, _err error) {
+func (client *Client) GetService(workspace *string, serviceId *string, request *GetServiceRequest) (_result *GetServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetServiceResponse{}
-	_body, _err := client.GetServiceWithOptions(workspace, serviceId, headers, runtime)
+	_body, _err := client.GetServiceWithOptions(workspace, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5036,12 +5340,20 @@ func (client *Client) GetService(workspace *string, serviceId *string) (_result 
 //
 // # Get Application Observability Instance
 //
+// @param request - GetServiceObservabilityRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetServiceObservabilityResponse
-func (client *Client) GetServiceObservabilityWithOptions(workspace *string, _type *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceObservabilityResponse, _err error) {
+func (client *Client) GetServiceObservabilityWithOptions(workspace *string, _type *string, request *GetServiceObservabilityRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetServiceObservabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5069,12 +5381,14 @@ func (client *Client) GetServiceObservabilityWithOptions(workspace *string, _typ
 //
 // # Get Application Observability Instance
 //
+// @param request - GetServiceObservabilityRequest
+//
 // @return GetServiceObservabilityResponse
-func (client *Client) GetServiceObservability(workspace *string, _type *string) (_result *GetServiceObservabilityResponse, _err error) {
+func (client *Client) GetServiceObservability(workspace *string, _type *string, request *GetServiceObservabilityRequest) (_result *GetServiceObservabilityResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetServiceObservabilityResponse{}
-	_body, _err := client.GetServiceObservabilityWithOptions(workspace, _type, headers, runtime)
+	_body, _err := client.GetServiceObservabilityWithOptions(workspace, _type, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5086,12 +5400,20 @@ func (client *Client) GetServiceObservability(workspace *string, _type *string) 
 //
 // 获取会话
 //
+// @param request - GetThreadRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetThreadResponse
-func (client *Client) GetThreadWithOptions(name *string, threadId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetThreadResponse, _err error) {
+func (client *Client) GetThreadWithOptions(name *string, threadId *string, request *GetThreadRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetThreadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5119,12 +5441,14 @@ func (client *Client) GetThreadWithOptions(name *string, threadId *string, heade
 //
 // 获取会话
 //
+// @param request - GetThreadRequest
+//
 // @return GetThreadResponse
-func (client *Client) GetThread(name *string, threadId *string) (_result *GetThreadResponse, _err error) {
+func (client *Client) GetThread(name *string, threadId *string, request *GetThreadRequest) (_result *GetThreadResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetThreadResponse{}
-	_body, _err := client.GetThreadWithOptions(name, threadId, headers, runtime)
+	_body, _err := client.GetThreadWithOptions(name, threadId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5210,12 +5534,20 @@ func (client *Client) GetThreadData(name *string, threadId *string, request *Get
 //
 // # Get Umodel configuration information
 //
+// @param request - GetUmodelRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUmodelResponse
-func (client *Client) GetUmodelWithOptions(workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelResponse, _err error) {
+func (client *Client) GetUmodelWithOptions(workspace *string, request *GetUmodelRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5247,12 +5579,14 @@ func (client *Client) GetUmodelWithOptions(workspace *string, headers map[string
 //
 // # Get Umodel configuration information
 //
+// @param request - GetUmodelRequest
+//
 // @return GetUmodelResponse
-func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, _err error) {
+func (client *Client) GetUmodel(workspace *string, request *GetUmodelRequest) (_result *GetUmodelResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetUmodelResponse{}
-	_body, _err := client.GetUmodelWithOptions(workspace, headers, runtime)
+	_body, _err := client.GetUmodelWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5264,12 +5598,20 @@ func (client *Client) GetUmodel(workspace *string) (_result *GetUmodelResponse, 
 //
 // 获取Umodel配置信息
 //
+// @param request - GetUmodelCommonSchemaRefRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUmodelCommonSchemaRefResponse
-func (client *Client) GetUmodelCommonSchemaRefWithOptions(workspace *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+func (client *Client) GetUmodelCommonSchemaRefWithOptions(workspace *string, request *GetUmodelCommonSchemaRefRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5297,12 +5639,14 @@ func (client *Client) GetUmodelCommonSchemaRefWithOptions(workspace *string, hea
 //
 // 获取Umodel配置信息
 //
+// @param request - GetUmodelCommonSchemaRefRequest
+//
 // @return GetUmodelCommonSchemaRefResponse
-func (client *Client) GetUmodelCommonSchemaRef(workspace *string) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
+func (client *Client) GetUmodelCommonSchemaRef(workspace *string, request *GetUmodelCommonSchemaRefRequest) (_result *GetUmodelCommonSchemaRefResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetUmodelCommonSchemaRefResponse{}
-	_body, _err := client.GetUmodelCommonSchemaRefWithOptions(workspace, headers, runtime)
+	_body, _err := client.GetUmodelCommonSchemaRefWithOptions(workspace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5394,12 +5738,20 @@ func (client *Client) GetUmodelData(workspace *string, request *GetUmodelDataReq
 //
 // # Get Workspace
 //
+// @param request - GetWorkspaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetWorkspaceResponse
-func (client *Client) GetWorkspaceWithOptions(workspaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetWorkspaceWithOptions(workspaceName *string, request *GetWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5427,12 +5779,14 @@ func (client *Client) GetWorkspaceWithOptions(workspaceName *string, headers map
 //
 // # Get Workspace
 //
+// @param request - GetWorkspaceRequest
+//
 // @return GetWorkspaceResponse
-func (client *Client) GetWorkspace(workspaceName *string) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetWorkspace(workspaceName *string, request *GetWorkspaceRequest) (_result *GetWorkspaceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetWorkspaceResponse{}
-	_body, _err := client.GetWorkspaceWithOptions(workspaceName, headers, runtime)
+	_body, _err := client.GetWorkspaceWithOptions(workspaceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6112,12 +6466,20 @@ func (client *Client) ListDeliveryTasks(request *ListDeliveryTasksRequest) (_res
 //
 // 列出技能版本
 //
+// @param request - ListDigitalEmployeeSkillVersionsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDigitalEmployeeSkillVersionsResponse
-func (client *Client) ListDigitalEmployeeSkillVersionsWithOptions(name *string, skillName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
+func (client *Client) ListDigitalEmployeeSkillVersionsWithOptions(name *string, skillName *string, request *ListDigitalEmployeeSkillVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6145,12 +6507,14 @@ func (client *Client) ListDigitalEmployeeSkillVersionsWithOptions(name *string, 
 //
 // 列出技能版本
 //
+// @param request - ListDigitalEmployeeSkillVersionsRequest
+//
 // @return ListDigitalEmployeeSkillVersionsResponse
-func (client *Client) ListDigitalEmployeeSkillVersions(name *string, skillName *string) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
+func (client *Client) ListDigitalEmployeeSkillVersions(name *string, skillName *string, request *ListDigitalEmployeeSkillVersionsRequest) (_result *ListDigitalEmployeeSkillVersionsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListDigitalEmployeeSkillVersionsResponse{}
-	_body, _err := client.ListDigitalEmployeeSkillVersionsWithOptions(name, skillName, headers, runtime)
+	_body, _err := client.ListDigitalEmployeeSkillVersionsWithOptions(name, skillName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6464,12 +6828,20 @@ func (client *Client) ListIntegrationPolicies(request *ListIntegrationPoliciesRe
 //
 // 策略addon列表
 //
+// @param request - ListIntegrationPolicyAddonsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListIntegrationPolicyAddonsResponse
-func (client *Client) ListIntegrationPolicyAddonsWithOptions(policyId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
+func (client *Client) ListIntegrationPolicyAddonsWithOptions(policyId *string, request *ListIntegrationPolicyAddonsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6497,12 +6869,14 @@ func (client *Client) ListIntegrationPolicyAddonsWithOptions(policyId *string, h
 //
 // 策略addon列表
 //
+// @param request - ListIntegrationPolicyAddonsRequest
+//
 // @return ListIntegrationPolicyAddonsResponse
-func (client *Client) ListIntegrationPolicyAddons(policyId *string) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
+func (client *Client) ListIntegrationPolicyAddons(policyId *string, request *ListIntegrationPolicyAddonsRequest) (_result *ListIntegrationPolicyAddonsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListIntegrationPolicyAddonsResponse{}
-	_body, _err := client.ListIntegrationPolicyAddonsWithOptions(policyId, headers, runtime)
+	_body, _err := client.ListIntegrationPolicyAddonsWithOptions(policyId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8059,8 +8433,8 @@ func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreNa
 		body["appId"] = request.AppId
 	}
 
-	if !dara.IsNil(request.Metadata) {
-		body["metadata"] = request.Metadata
+	if !dara.IsNil(request.Filters) {
+		body["filters"] = request.Filters
 	}
 
 	if !dara.IsNil(request.Query) {
@@ -8071,8 +8445,16 @@ func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreNa
 		body["rerank"] = request.Rerank
 	}
 
+	if !dara.IsNil(request.RetrieveLevel) {
+		body["retrieveLevel"] = request.RetrieveLevel
+	}
+
 	if !dara.IsNil(request.RunId) {
 		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.Threshold) {
+		body["threshold"] = request.Threshold
 	}
 
 	if !dara.IsNil(request.TopK) {
