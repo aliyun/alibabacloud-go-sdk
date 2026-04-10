@@ -397,10 +397,18 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 type DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource struct {
 	AvailableAmount           *int32                                                                                                                                             `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
 	CapacityReservationUsages *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResourceCapacityReservationUsages `json:"CapacityReservationUsages,omitempty" xml:"CapacityReservationUsages,omitempty" type:"Struct"`
-	InstanceType              *string                                                                                                                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	TotalAmount               *int32                                                                                                                                             `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
-	UsedAmount                *int32                                                                                                                                             `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
-	ZoneId                    *string                                                                                                                                            `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	// example:
+	//
+	// 1
+	FailedAmount *int32  `json:"FailedAmount,omitempty" xml:"FailedAmount,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 1
+	LockedAmount *int32  `json:"LockedAmount,omitempty" xml:"LockedAmount,omitempty"`
+	TotalAmount  *int32  `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
+	UsedAmount   *int32  `json:"UsedAmount,omitempty" xml:"UsedAmount,omitempty"`
+	ZoneId       *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) String() string {
@@ -419,8 +427,16 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 	return s.CapacityReservationUsages
 }
 
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) GetFailedAmount() *int32 {
+	return s.FailedAmount
+}
+
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) GetInstanceType() *string {
 	return s.InstanceType
+}
+
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) GetLockedAmount() *int32 {
+	return s.LockedAmount
 }
 
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) GetTotalAmount() *int32 {
@@ -445,8 +461,18 @@ func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityR
 	return s
 }
 
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetFailedAmount(v int32) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
+	s.FailedAmount = &v
+	return s
+}
+
 func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetInstanceType(v string) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource) SetLockedAmount(v int32) *DescribeCapacityReservationsResponseBodyCapacityReservationSetCapacityReservationItemAllocatedResourcesAllocatedResource {
+	s.LockedAmount = &v
 	return s
 }
 
