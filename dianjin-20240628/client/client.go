@@ -1442,6 +1442,97 @@ func (client *Client) EvictTask(workspaceId *string, request *EvictTaskRequest) 
 
 // Summary:
 //
+// 兑换权益
+//
+// @param request - ExchangeEntitlementRequest
+//
+// @param headers - ExchangeEntitlementHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExchangeEntitlementResponse
+func (client *Client) ExchangeEntitlementWithOptions(workspaceId *string, tenantId *string, request *ExchangeEntitlementRequest, headers *ExchangeEntitlementHeaders, runtime *dara.RuntimeOptions) (_result *ExchangeEntitlementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["externalUserId"] = request.ExternalUserId
+	}
+
+	if !dara.IsNil(request.KeyHash) {
+		body["keyHash"] = request.KeyHash
+	}
+
+	if !dara.IsNil(request.RequestId) {
+		body["requestId"] = request.RequestId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		body["templateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["userName"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExchangeEntitlement"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/v1/tenants/" + dara.PercentEncode(dara.StringValue(tenantId)) + "/redeem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExchangeEntitlementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 兑换权益
+//
+// @param request - ExchangeEntitlementRequest
+//
+// @return ExchangeEntitlementResponse
+func (client *Client) ExchangeEntitlement(workspaceId *string, tenantId *string, request *ExchangeEntitlementRequest) (_result *ExchangeEntitlementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ExchangeEntitlementHeaders{}
+	_result = &ExchangeEntitlementResponse{}
+	_body, _err := client.ExchangeEntitlementWithOptions(workspaceId, tenantId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据文档解析问答QA
 //
 // @param request - GenDocQaResultRequest
@@ -2827,6 +2918,85 @@ func (client *Client) GetTaskStatus(workspaceId *string, request *GetTaskStatusR
 
 // Summary:
 //
+// 查询用量明细
+//
+// @param request - GetUsageRequest
+//
+// @param headers - GetUsageHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUsageResponse
+func (client *Client) GetUsageWithOptions(workspaceId *string, tenantId *string, request *GetUsageRequest, headers *GetUsageHeaders, runtime *dara.RuntimeOptions) (_result *GetUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		query["externalUserId"] = request.ExternalUserId
+	}
+
+	if !dara.IsNil(request.RedemptionOrderNo) {
+		query["redemptionOrderNo"] = request.RedemptionOrderNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUsage"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/v1/tenants/" + dara.PercentEncode(dara.StringValue(tenantId)) + "/usage"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用量明细
+//
+// @param request - GetUsageRequest
+//
+// @return GetUsageResponse
+func (client *Client) GetUsage(workspaceId *string, tenantId *string, request *GetUsageRequest) (_result *GetUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetUsageHeaders{}
+	_result = &GetUsageResponse{}
+	_body, _err := client.GetUsageWithOptions(workspaceId, tenantId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取视频生成任务结果
 //
 // @param request - GetVideoCreationTaskResultRequest
@@ -3033,6 +3203,168 @@ func (client *Client) PreviewDocument(workspaceId *string, request *PreviewDocum
 	headers := make(map[string]*string)
 	_result = &PreviewDocumentResponse{}
 	_body, _err := client.PreviewDocumentWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询兑换记录
+//
+// @param request - QueryApiKeysRequest
+//
+// @param headers - QueryApiKeysHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryApiKeysResponse
+func (client *Client) QueryApiKeysWithOptions(workspaceId *string, tenantId *string, request *QueryApiKeysRequest, headers *QueryApiKeysHeaders, runtime *dara.RuntimeOptions) (_result *QueryApiKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		query["externalUserId"] = request.ExternalUserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryApiKeys"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/v1/tenants/" + dara.PercentEncode(dara.StringValue(tenantId)) + "/apikeys"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryApiKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询兑换记录
+//
+// @param request - QueryApiKeysRequest
+//
+// @return QueryApiKeysResponse
+func (client *Client) QueryApiKeys(workspaceId *string, tenantId *string, request *QueryApiKeysRequest) (_result *QueryApiKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &QueryApiKeysHeaders{}
+	_result = &QueryApiKeysResponse{}
+	_body, _err := client.QueryApiKeysWithOptions(workspaceId, tenantId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询兑换记录
+//
+// @param request - QueryRedemptionRecordsRequest
+//
+// @param headers - QueryRedemptionRecordsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRedemptionRecordsResponse
+func (client *Client) QueryRedemptionRecordsWithOptions(workspaceId *string, tenantId *string, request *QueryRedemptionRecordsRequest, headers *QueryRedemptionRecordsHeaders, runtime *dara.RuntimeOptions) (_result *QueryRedemptionRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		query["externalUserId"] = request.ExternalUserId
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RedemptionOrderNo) {
+		query["redemptionOrderNo"] = request.RedemptionOrderNo
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XLoadTest) {
+		realHeaders["X-Load-Test"] = dara.String(dara.Stringify(dara.BoolValue(headers.XLoadTest)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRedemptionRecords"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/v1/tenants/" + dara.PercentEncode(dara.StringValue(tenantId)) + "/redemption-records"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRedemptionRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询兑换记录
+//
+// @param request - QueryRedemptionRecordsRequest
+//
+// @return QueryRedemptionRecordsResponse
+func (client *Client) QueryRedemptionRecords(workspaceId *string, tenantId *string, request *QueryRedemptionRecordsRequest) (_result *QueryRedemptionRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &QueryRedemptionRecordsHeaders{}
+	_result = &QueryRedemptionRecordsResponse{}
+	_body, _err := client.QueryRedemptionRecordsWithOptions(workspaceId, tenantId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

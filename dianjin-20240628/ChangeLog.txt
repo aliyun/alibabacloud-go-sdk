@@ -1,3 +1,10 @@
+2026-04-10 Version: v1.21.0
+- Support API ExchangeEntitlement.
+- Support API GetUsage.
+- Support API QueryApiKeys.
+- Support API QueryRedemptionRecords.
+
+
 2026-04-09 Version: v1.20.6
 - Generated golang 2024-06-28 for DianJin.
 
