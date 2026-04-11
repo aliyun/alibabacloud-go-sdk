@@ -11,6 +11,8 @@ type iFetchFileRequest interface {
 	GoString() string
 	SetAndroidInstanceIdList(v []*string) *FetchFileRequest
 	GetAndroidInstanceIdList() []*string
+	SetClientToken(v string) *FetchFileRequest
+	GetClientToken() *string
 	SetSourceFilePath(v string) *FetchFileRequest
 	GetSourceFilePath() *string
 	SetUploadEndpoint(v string) *FetchFileRequest
@@ -26,6 +28,7 @@ type FetchFileRequest struct {
 	//
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
+	ClientToken           *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The path to the file that you want to pull from the cloud phone instance.
 	//
 	// This parameter is required.
@@ -74,6 +77,10 @@ func (s *FetchFileRequest) GetAndroidInstanceIdList() []*string {
 	return s.AndroidInstanceIdList
 }
 
+func (s *FetchFileRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *FetchFileRequest) GetSourceFilePath() *string {
 	return s.SourceFilePath
 }
@@ -92,6 +99,11 @@ func (s *FetchFileRequest) GetUploadUrl() *string {
 
 func (s *FetchFileRequest) SetAndroidInstanceIdList(v []*string) *FetchFileRequest {
 	s.AndroidInstanceIdList = v
+	return s
+}
+
+func (s *FetchFileRequest) SetClientToken(v string) *FetchFileRequest {
+	s.ClientToken = &v
 	return s
 }
 

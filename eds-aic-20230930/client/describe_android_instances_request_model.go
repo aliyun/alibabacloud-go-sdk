@@ -27,6 +27,8 @@ type iDescribeAndroidInstancesRequest interface {
 	GetInstanceGroupIds() []*string
 	SetInstanceGroupName(v string) *DescribeAndroidInstancesRequest
 	GetInstanceGroupName() *string
+	SetInstanceVersion(v string) *DescribeAndroidInstancesRequest
+	GetInstanceVersion() *string
 	SetKeyPairId(v string) *DescribeAndroidInstancesRequest
 	GetKeyPairId() *string
 	SetMaxResults(v int32) *DescribeAndroidInstancesRequest
@@ -45,6 +47,10 @@ type iDescribeAndroidInstancesRequest interface {
 	GetQosRuleIds() []*string
 	SetSaleMode(v string) *DescribeAndroidInstancesRequest
 	GetSaleMode() *string
+	SetSortKey(v string) *DescribeAndroidInstancesRequest
+	GetSortKey() *string
+	SetSortType(v string) *DescribeAndroidInstancesRequest
+	GetSortType() *string
 	SetStatus(v string) *DescribeAndroidInstancesRequest
 	GetStatus() *string
 	SetTag(v []*DescribeAndroidInstancesRequestTag) *DescribeAndroidInstancesRequest
@@ -94,6 +100,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// test
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The ID of the bound key pair.
 	//
 	// example:
@@ -139,6 +146,8 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// Instance
 	SaleMode *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
+	SortKey  *string `json:"SortKey,omitempty" xml:"SortKey,omitempty"`
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	// The state of the instance.
 	//
 	// Valid values:
@@ -225,6 +234,10 @@ func (s *DescribeAndroidInstancesRequest) GetInstanceGroupName() *string {
 	return s.InstanceGroupName
 }
 
+func (s *DescribeAndroidInstancesRequest) GetInstanceVersion() *string {
+	return s.InstanceVersion
+}
+
 func (s *DescribeAndroidInstancesRequest) GetKeyPairId() *string {
 	return s.KeyPairId
 }
@@ -259,6 +272,14 @@ func (s *DescribeAndroidInstancesRequest) GetQosRuleIds() []*string {
 
 func (s *DescribeAndroidInstancesRequest) GetSaleMode() *string {
 	return s.SaleMode
+}
+
+func (s *DescribeAndroidInstancesRequest) GetSortKey() *string {
+	return s.SortKey
+}
+
+func (s *DescribeAndroidInstancesRequest) GetSortType() *string {
+	return s.SortType
 }
 
 func (s *DescribeAndroidInstancesRequest) GetStatus() *string {
@@ -314,6 +335,11 @@ func (s *DescribeAndroidInstancesRequest) SetInstanceGroupName(v string) *Descri
 	return s
 }
 
+func (s *DescribeAndroidInstancesRequest) SetInstanceVersion(v string) *DescribeAndroidInstancesRequest {
+	s.InstanceVersion = &v
+	return s
+}
+
 func (s *DescribeAndroidInstancesRequest) SetKeyPairId(v string) *DescribeAndroidInstancesRequest {
 	s.KeyPairId = &v
 	return s
@@ -356,6 +382,16 @@ func (s *DescribeAndroidInstancesRequest) SetQosRuleIds(v []*string) *DescribeAn
 
 func (s *DescribeAndroidInstancesRequest) SetSaleMode(v string) *DescribeAndroidInstancesRequest {
 	s.SaleMode = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetSortKey(v string) *DescribeAndroidInstancesRequest {
+	s.SortKey = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetSortType(v string) *DescribeAndroidInstancesRequest {
+	s.SortType = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iDescribeAndroidInstanceGroupsRequest interface {
 	GetInstanceGroupIds() []*string
 	SetInstanceGroupName(v string) *DescribeAndroidInstanceGroupsRequest
 	GetInstanceGroupName() *string
+	SetInstanceVersion(v string) *DescribeAndroidInstanceGroupsRequest
+	GetInstanceVersion() *string
 	SetKeyPairId(v string) *DescribeAndroidInstanceGroupsRequest
 	GetKeyPairId() *string
 	SetMaxResults(v int32) *DescribeAndroidInstanceGroupsRequest
@@ -60,6 +62,7 @@ type DescribeAndroidInstanceGroupsRequest struct {
 	//
 	// defaultInstanceGroup
 	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// The ID of the key pair.
 	//
 	// example:
@@ -147,6 +150,10 @@ func (s *DescribeAndroidInstanceGroupsRequest) GetInstanceGroupName() *string {
 	return s.InstanceGroupName
 }
 
+func (s *DescribeAndroidInstanceGroupsRequest) GetInstanceVersion() *string {
+	return s.InstanceVersion
+}
+
 func (s *DescribeAndroidInstanceGroupsRequest) GetKeyPairId() *string {
 	return s.KeyPairId
 }
@@ -192,6 +199,11 @@ func (s *DescribeAndroidInstanceGroupsRequest) SetInstanceGroupIds(v []*string) 
 
 func (s *DescribeAndroidInstanceGroupsRequest) SetInstanceGroupName(v string) *DescribeAndroidInstanceGroupsRequest {
 	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsRequest) SetInstanceVersion(v string) *DescribeAndroidInstanceGroupsRequest {
+	s.InstanceVersion = &v
 	return s
 }
 

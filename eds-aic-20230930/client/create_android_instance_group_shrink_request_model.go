@@ -35,6 +35,8 @@ type iCreateAndroidInstanceGroupShrinkRequest interface {
 	GetInstanceGroupName() *string
 	SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupShrinkRequest
 	GetInstanceGroupSpec() *string
+	SetInstanceVersion(v string) *CreateAndroidInstanceGroupShrinkRequest
+	GetInstanceVersion() *string
 	SetIpv6Bandwidth(v int32) *CreateAndroidInstanceGroupShrinkRequest
 	GetIpv6Bandwidth() *int32
 	SetKeyPairId(v string) *CreateAndroidInstanceGroupShrinkRequest
@@ -190,6 +192,7 @@ type CreateAndroidInstanceGroupShrinkRequest struct {
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
+	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// >  This parameter is not publicly available.
 	//
 	// example:
@@ -329,6 +332,10 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) GetInstanceGroupSpec() *string
 	return s.InstanceGroupSpec
 }
 
+func (s *CreateAndroidInstanceGroupShrinkRequest) GetInstanceVersion() *string {
+	return s.InstanceVersion
+}
+
 func (s *CreateAndroidInstanceGroupShrinkRequest) GetIpv6Bandwidth() *int32 {
 	return s.Ipv6Bandwidth
 }
@@ -451,6 +458,11 @@ func (s *CreateAndroidInstanceGroupShrinkRequest) SetInstanceGroupName(v string)
 
 func (s *CreateAndroidInstanceGroupShrinkRequest) SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupShrinkRequest {
 	s.InstanceGroupSpec = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupShrinkRequest) SetInstanceVersion(v string) *CreateAndroidInstanceGroupShrinkRequest {
+	s.InstanceVersion = &v
 	return s
 }
 

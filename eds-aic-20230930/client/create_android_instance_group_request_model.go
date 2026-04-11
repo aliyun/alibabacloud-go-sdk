@@ -35,6 +35,8 @@ type iCreateAndroidInstanceGroupRequest interface {
 	GetInstanceGroupName() *string
 	SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupRequest
 	GetInstanceGroupSpec() *string
+	SetInstanceVersion(v string) *CreateAndroidInstanceGroupRequest
+	GetInstanceVersion() *string
 	SetIpv6Bandwidth(v int32) *CreateAndroidInstanceGroupRequest
 	GetIpv6Bandwidth() *int32
 	SetKeyPairId(v string) *CreateAndroidInstanceGroupRequest
@@ -190,6 +192,7 @@ type CreateAndroidInstanceGroupRequest struct {
 	//
 	// acp.basic.small
 	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
+	InstanceVersion   *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
 	// >  This parameter is not publicly available.
 	//
 	// example:
@@ -329,6 +332,10 @@ func (s *CreateAndroidInstanceGroupRequest) GetInstanceGroupSpec() *string {
 	return s.InstanceGroupSpec
 }
 
+func (s *CreateAndroidInstanceGroupRequest) GetInstanceVersion() *string {
+	return s.InstanceVersion
+}
+
 func (s *CreateAndroidInstanceGroupRequest) GetIpv6Bandwidth() *int32 {
 	return s.Ipv6Bandwidth
 }
@@ -451,6 +458,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupName(v string) *Crea
 
 func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupRequest {
 	s.InstanceGroupSpec = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetInstanceVersion(v string) *CreateAndroidInstanceGroupRequest {
+	s.InstanceVersion = &v
 	return s
 }
 

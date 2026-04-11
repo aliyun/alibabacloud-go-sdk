@@ -9,6 +9,8 @@ type iUninstallAppResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetChildTaskInfo(v []*UninstallAppResponseBodyChildTaskInfo) *UninstallAppResponseBody
+	GetChildTaskInfo() []*UninstallAppResponseBodyChildTaskInfo
 	SetRequestId(v string) *UninstallAppResponseBody
 	GetRequestId() *string
 	SetTaskId(v string) *UninstallAppResponseBody
@@ -16,6 +18,7 @@ type iUninstallAppResponseBody interface {
 }
 
 type UninstallAppResponseBody struct {
+	ChildTaskInfo []*UninstallAppResponseBodyChildTaskInfo `json:"ChildTaskInfo,omitempty" xml:"ChildTaskInfo,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
 	// example:
@@ -38,12 +41,21 @@ func (s UninstallAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UninstallAppResponseBody) GetChildTaskInfo() []*UninstallAppResponseBodyChildTaskInfo {
+	return s.ChildTaskInfo
+}
+
 func (s *UninstallAppResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *UninstallAppResponseBody) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *UninstallAppResponseBody) SetChildTaskInfo(v []*UninstallAppResponseBodyChildTaskInfo) *UninstallAppResponseBody {
+	s.ChildTaskInfo = v
+	return s
 }
 
 func (s *UninstallAppResponseBody) SetRequestId(v string) *UninstallAppResponseBody {
@@ -57,5 +69,55 @@ func (s *UninstallAppResponseBody) SetTaskId(v string) *UninstallAppResponseBody
 }
 
 func (s *UninstallAppResponseBody) Validate() error {
+	if s.ChildTaskInfo != nil {
+		for _, item := range s.ChildTaskInfo {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UninstallAppResponseBodyChildTaskInfo struct {
+	// example:
+	//
+	// t-ybde48cevxxxx
+	ChildTaskId *string `json:"ChildTaskId,omitempty" xml:"ChildTaskId,omitempty"`
+	// example:
+	//
+	// acp-ty3bnd7b9xxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UninstallAppResponseBodyChildTaskInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UninstallAppResponseBodyChildTaskInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallAppResponseBodyChildTaskInfo) GetChildTaskId() *string {
+	return s.ChildTaskId
+}
+
+func (s *UninstallAppResponseBodyChildTaskInfo) GetInstanceId() *string {
+	return s.InstanceId
+}
+
+func (s *UninstallAppResponseBodyChildTaskInfo) SetChildTaskId(v string) *UninstallAppResponseBodyChildTaskInfo {
+	s.ChildTaskId = &v
+	return s
+}
+
+func (s *UninstallAppResponseBodyChildTaskInfo) SetInstanceId(v string) *UninstallAppResponseBodyChildTaskInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UninstallAppResponseBodyChildTaskInfo) Validate() error {
 	return dara.Validate(s)
 }

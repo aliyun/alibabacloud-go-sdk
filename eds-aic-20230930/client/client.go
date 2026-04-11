@@ -827,6 +827,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(tmpReq *CreateAndroi
 		query["InstanceGroupSpec"] = request.InstanceGroupSpec
 	}
 
+	if !dara.IsNil(request.InstanceVersion) {
+		query["InstanceVersion"] = request.InstanceVersion
+	}
+
 	if !dara.IsNil(request.Ipv6Bandwidth) {
 		query["Ipv6Bandwidth"] = request.Ipv6Bandwidth
 	}
@@ -2279,6 +2283,10 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 		query["InstanceGroupName"] = request.InstanceGroupName
 	}
 
+	if !dara.IsNil(request.InstanceVersion) {
+		query["InstanceVersion"] = request.InstanceVersion
+	}
+
 	if !dara.IsNil(request.KeyPairId) {
 		query["KeyPairId"] = request.KeyPairId
 	}
@@ -2401,6 +2409,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 		query["InstanceGroupName"] = request.InstanceGroupName
 	}
 
+	if !dara.IsNil(request.InstanceVersion) {
+		query["InstanceVersion"] = request.InstanceVersion
+	}
+
 	if !dara.IsNil(request.KeyPairId) {
 		query["KeyPairId"] = request.KeyPairId
 	}
@@ -2435,6 +2447,14 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 	if !dara.IsNil(request.SaleMode) {
 		query["SaleMode"] = request.SaleMode
+	}
+
+	if !dara.IsNil(request.SortKey) {
+		query["SortKey"] = request.SortKey
+	}
+
+	if !dara.IsNil(request.SortType) {
+		query["SortType"] = request.SortType
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -4357,6 +4377,10 @@ func (client *Client) FetchFileWithOptions(request *FetchFileRequest, runtime *d
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AndroidInstanceIdList) {
 		query["AndroidInstanceIdList"] = request.AndroidInstanceIdList
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.SourceFilePath) {
@@ -6767,6 +6791,10 @@ func (client *Client) SendFileWithOptions(request *SendFileRequest, runtime *dar
 
 	if !dara.IsNil(request.AutoInstall) {
 		query["AutoInstall"] = request.AutoInstall
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.SourceFilePath) {
