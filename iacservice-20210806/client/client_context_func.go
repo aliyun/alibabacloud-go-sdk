@@ -65,6 +65,61 @@ func (client *Client) AddSharedAccountsWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 将参数集关联资源
+//
+// @param request - AssociateDetectConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateDetectConfigResponse
+func (client *Client) AssociateDetectConfigWithContext(ctx context.Context, request *AssociateDetectConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AssociateDetectConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DetectConfigId) {
+		body["detectConfigId"] = request.DetectConfigId
+	}
+
+	if !dara.IsNil(request.TargetId) {
+		body["targetId"] = request.TargetId
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateDetectConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig/operations/associate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateDetectConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 分组关联
 //
 // @param request - AssociateGroupRequest
@@ -216,6 +271,77 @@ func (client *Client) CancelResourceExportTaskWithContext(ctx context.Context, e
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelResourceExportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建偏差检测配置
+//
+// @param request - CreateDetectConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDetectConfigResponse
+func (client *Client) CreateDetectConfigWithContext(ctx context.Context, request *CreateDetectConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateDetectConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlarmConfigs) {
+		body["alarmConfigs"] = request.AlarmConfigs
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CronExpression) {
+		body["cronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DetectConfigName) {
+		body["detectConfigName"] = request.DetectConfigName
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		body["triggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDetectConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDetectConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -960,14 +1086,63 @@ func (client *Client) CreateTaskWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
+// 删除偏差检测配置
+//
+// @param request - DeleteDetectConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDetectConfigResponse
+func (client *Client) DeleteDetectConfigWithContext(ctx context.Context, detectConfigId *string, request *DeleteDetectConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteDetectConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDetectConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig/" + dara.PercentEncode(dara.StringValue(detectConfigId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDetectConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除分组
+//
+// @param request - DeleteGroupRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGroupResponse
-func (client *Client) DeleteGroupWithContext(ctx context.Context, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+func (client *Client) DeleteGroupWithContext(ctx context.Context, groupId *string, request *DeleteGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -995,12 +1170,20 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, groupId *strin
 //
 // 删除模板
 //
+// @param request - DeleteModuleRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteModuleResponse
-func (client *Client) DeleteModuleWithContext(ctx context.Context, moduleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModuleResponse, _err error) {
+func (client *Client) DeleteModuleWithContext(ctx context.Context, moduleId *string, request *DeleteModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteModuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1028,12 +1211,20 @@ func (client *Client) DeleteModuleWithContext(ctx context.Context, moduleId *str
 //
 // 删除参数集
 //
+// @param request - DeleteParameterSetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteParameterSetResponse
-func (client *Client) DeleteParameterSetWithContext(ctx context.Context, parameterSetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteParameterSetResponse, _err error) {
+func (client *Client) DeleteParameterSetWithContext(ctx context.Context, parameterSetId *string, request *DeleteParameterSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteParameterSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1061,12 +1252,20 @@ func (client *Client) DeleteParameterSetWithContext(ctx context.Context, paramet
 //
 // 删除项目
 //
+// @param request - DeleteProjectRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteProjectResponse
-func (client *Client) DeleteProjectWithContext(ctx context.Context, projectId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+func (client *Client) DeleteProjectWithContext(ctx context.Context, projectId *string, request *DeleteProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1094,12 +1293,20 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, projectId *s
 //
 // 删除RegistryModule
 //
+// @param request - DeleteRegistryModuleRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistryModuleResponse
-func (client *Client) DeleteRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleResponse, _err error) {
+func (client *Client) DeleteRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, request *DeleteRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1127,12 +1334,20 @@ func (client *Client) DeleteRegistryModuleWithContext(ctx context.Context, names
 //
 // 删除RegistryModule版本
 //
+// @param request - DeleteRegistryModuleVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistryModuleVersionResponse
-func (client *Client) DeleteRegistryModuleVersionWithContext(ctx context.Context, namespaceName *string, moduleName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleVersionResponse, _err error) {
+func (client *Client) DeleteRegistryModuleVersionWithContext(ctx context.Context, namespaceName *string, moduleName *string, version *string, request *DeleteRegistryModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryModuleVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1160,12 +1375,20 @@ func (client *Client) DeleteRegistryModuleVersionWithContext(ctx context.Context
 //
 // 删除工作空间
 //
+// @param request - DeleteRegistryNamespaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteRegistryNamespaceResponse
-func (client *Client) DeleteRegistryNamespaceWithContext(ctx context.Context, namespaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryNamespaceResponse, _err error) {
+func (client *Client) DeleteRegistryNamespaceWithContext(ctx context.Context, namespaceName *string, request *DeleteRegistryNamespaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRegistryNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1193,12 +1416,20 @@ func (client *Client) DeleteRegistryNamespaceWithContext(ctx context.Context, na
 //
 // 删除资源导出任务
 //
+// @param request - DeleteResourceExportTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceExportTaskResponse
-func (client *Client) DeleteResourceExportTaskWithContext(ctx context.Context, exportTaskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceExportTaskResponse, _err error) {
+func (client *Client) DeleteResourceExportTaskWithContext(ctx context.Context, exportTaskId *string, request *DeleteResourceExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceExportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1224,14 +1455,69 @@ func (client *Client) DeleteResourceExportTaskWithContext(ctx context.Context, e
 
 // Summary:
 //
+// 删除资源栈
+//
+// @param request - DeleteStackRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStackResponse
+func (client *Client) DeleteStackWithContext(ctx context.Context, stackId *string, request *DeleteStackRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteStackResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CleanResources) {
+		query["cleanResources"] = request.CleanResources
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteStack"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/stacks/" + dara.PercentEncode(dara.StringValue(stackId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteStackResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除任务
+//
+// @param request - DeleteTaskRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTaskResponse
-func (client *Client) DeleteTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
+func (client *Client) DeleteTaskWithContext(ctx context.Context, taskId *string, request *DeleteTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1247,6 +1533,116 @@ func (client *Client) DeleteTaskWithContext(ctx context.Context, taskId *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发起状态文件一致性检测
+//
+// @param request - DetectTerraformStateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectTerraformStateResponse
+func (client *Client) DetectTerraformStateWithContext(ctx context.Context, request *DetectTerraformStateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DetectTerraformStateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Identifier) {
+		body["identifier"] = request.Identifier
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetectTerraformState"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detect"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetectTerraformStateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解除参数集关联资源关系
+//
+// @param request - DissociateDetectConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateDetectConfigResponse
+func (client *Client) DissociateDetectConfigWithContext(ctx context.Context, request *DissociateDetectConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DissociateDetectConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DetectConfigId) {
+		body["detectConfigId"] = request.DetectConfigId
+	}
+
+	if !dara.IsNil(request.TargetId) {
+		body["targetId"] = request.TargetId
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		body["targetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DissociateDetectConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig/operations/dissociate"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DissociateDetectConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1697,14 +2093,63 @@ func (client *Client) GenerateModuleWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 偏差检测配置详情
+//
+// @param request - GetDetectConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDetectConfigResponse
+func (client *Client) GetDetectConfigWithContext(ctx context.Context, detectConfigId *string, request *GetDetectConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetDetectConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDetectConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig/" + dara.PercentEncode(dara.StringValue(detectConfigId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDetectConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取Terraform运行结果
+//
+// @param request - GetExecuteStateRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetExecuteStateResponse
-func (client *Client) GetExecuteStateWithContext(ctx context.Context, stateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExecuteStateResponse, _err error) {
+func (client *Client) GetExecuteStateWithContext(ctx context.Context, stateId *string, request *GetExecuteStateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetExecuteStateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1732,12 +2177,20 @@ func (client *Client) GetExecuteStateWithContext(ctx context.Context, stateId *s
 //
 // 查询分组
 //
+// @param request - GetGroupRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetGroupResponse
-func (client *Client) GetGroupWithContext(ctx context.Context, groupId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+func (client *Client) GetGroupWithContext(ctx context.Context, groupId *string, request *GetGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1812,12 +2265,20 @@ func (client *Client) GetJobWithContext(ctx context.Context, taskId *string, job
 //
 // # Get Module Details
 //
+// @param request - GetModuleRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetModuleResponse
-func (client *Client) GetModuleWithContext(ctx context.Context, moduleId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleResponse, _err error) {
+func (client *Client) GetModuleWithContext(ctx context.Context, moduleId *string, request *GetModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1845,12 +2306,20 @@ func (client *Client) GetModuleWithContext(ctx context.Context, moduleId *string
 //
 // 模板版本详情
 //
+// @param request - GetModuleVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetModuleVersionResponse
-func (client *Client) GetModuleVersionWithContext(ctx context.Context, moduleId *string, moduleVersion *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleVersionResponse, _err error) {
+func (client *Client) GetModuleVersionWithContext(ctx context.Context, moduleId *string, moduleVersion *string, request *GetModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModuleVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1878,12 +2347,20 @@ func (client *Client) GetModuleVersionWithContext(ctx context.Context, moduleId 
 //
 // 参数集详情
 //
+// @param request - GetParameterSetRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetParameterSetResponse
-func (client *Client) GetParameterSetWithContext(ctx context.Context, parameterSetId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParameterSetResponse, _err error) {
+func (client *Client) GetParameterSetWithContext(ctx context.Context, parameterSetId *string, request *GetParameterSetRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetParameterSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1911,12 +2388,20 @@ func (client *Client) GetParameterSetWithContext(ctx context.Context, parameterS
 //
 // 查询项目
 //
+// @param request - GetProjectRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProjectResponse
-func (client *Client) GetProjectWithContext(ctx context.Context, projectId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+func (client *Client) GetProjectWithContext(ctx context.Context, projectId *string, request *GetProjectRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetProjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1944,12 +2429,20 @@ func (client *Client) GetProjectWithContext(ctx context.Context, projectId *stri
 //
 // 获取RegistryModule信息
 //
+// @param request - GetRegistryModuleRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryModuleResponse
-func (client *Client) GetRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleResponse, _err error) {
+func (client *Client) GetRegistryModuleWithContext(ctx context.Context, namespaceName *string, moduleName *string, request *GetRegistryModuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1977,12 +2470,20 @@ func (client *Client) GetRegistryModuleWithContext(ctx context.Context, namespac
 //
 // 获取RegistryModule版本信息
 //
+// @param request - GetRegistryModuleVersionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryModuleVersionResponse
-func (client *Client) GetRegistryModuleVersionWithContext(ctx context.Context, namespaceName *string, moduleName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleVersionResponse, _err error) {
+func (client *Client) GetRegistryModuleVersionWithContext(ctx context.Context, namespaceName *string, moduleName *string, version *string, request *GetRegistryModuleVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryModuleVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2010,12 +2511,20 @@ func (client *Client) GetRegistryModuleVersionWithContext(ctx context.Context, n
 //
 // 获取工作空间信息
 //
+// @param request - GetRegistryNamespaceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryNamespaceResponse
-func (client *Client) GetRegistryNamespaceWithContext(ctx context.Context, namespaceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryNamespaceResponse, _err error) {
+func (client *Client) GetRegistryNamespaceWithContext(ctx context.Context, namespaceName *string, request *GetRegistryNamespaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRegistryNamespaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2143,14 +2652,89 @@ func (client *Client) GetResourceTypeWithContext(ctx context.Context, resourceTy
 
 // Summary:
 //
+// 部署详情接口
+//
+// @param request - GetStackDeploymentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStackDeploymentsResponse
+func (client *Client) GetStackDeploymentsWithContext(ctx context.Context, stackId *string, request *GetStackDeploymentsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStackDeploymentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigVersion) {
+		query["configVersion"] = request.ConfigVersion
+	}
+
+	if !dara.IsNil(request.DeploymentName) {
+		query["deploymentName"] = request.DeploymentName
+	}
+
+	if !dara.IsNil(request.DeploymentNo) {
+		query["deploymentNo"] = request.DeploymentNo
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStackDeployments"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/stacks/" + dara.PercentEncode(dara.StringValue(stackId)) + "/deployments"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStackDeploymentsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取资源栈部署结果
+//
+// @param request - GetStackExecutionResultRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetStackExecutionResultResponse
-func (client *Client) GetStackExecutionResultWithContext(ctx context.Context, triggerId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStackExecutionResultResponse, _err error) {
+func (client *Client) GetStackExecutionResultWithContext(ctx context.Context, triggerId *string, request *GetStackExecutionResultRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetStackExecutionResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2178,12 +2762,20 @@ func (client *Client) GetStackExecutionResultWithContext(ctx context.Context, tr
 //
 // 查询任务详情
 //
+// @param request - GetTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskResponse
-func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, request *GetTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2199,6 +2791,157 @@ func (client *Client) GetTaskWithContext(ctx context.Context, taskId *string, he
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取状态文件检测结果
+//
+// @param request - GetTerraformStateDetectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTerraformStateDetectionResponse
+func (client *Client) GetTerraformStateDetectionWithContext(ctx context.Context, detectionId *string, request *GetTerraformStateDetectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTerraformStateDetectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTerraformStateDetection"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detect/" + dara.PercentEncode(dara.StringValue(detectionId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTerraformStateDetectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关联到资源的偏差检测配置列表
+//
+// @param request - ListDetectConfigRelationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDetectConfigRelationsResponse
+func (client *Client) ListDetectConfigRelationsWithContext(ctx context.Context, request *ListDetectConfigRelationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDetectConfigRelationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DetectConfigId) {
+		query["detectConfigId"] = request.DetectConfigId
+	}
+
+	if !dara.IsNil(request.TargetId) {
+		query["targetId"] = request.TargetId
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["targetType"] = request.TargetType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDetectConfigRelations"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig/operations/relation"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDetectConfigRelationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 偏差检测配置列表
+//
+// @param request - ListDetectConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDetectConfigsResponse
+func (client *Client) ListDetectConfigsWithContext(ctx context.Context, request *ListDetectConfigsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListDetectConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DetectConfigName) {
+		query["detectConfigName"] = request.DetectConfigName
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDetectConfigs"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDetectConfigsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3814,6 +4557,77 @@ func (client *Client) TriggerStackExecutionWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &TriggerStackExecutionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新偏差检测配置
+//
+// @param request - UpdateDetectConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDetectConfigResponse
+func (client *Client) UpdateDetectConfigWithContext(ctx context.Context, detectConfigId *string, request *UpdateDetectConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateDetectConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AlarmConfigs) {
+		body["alarmConfigs"] = request.AlarmConfigs
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CronExpression) {
+		body["cronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DetectConfigName) {
+		body["detectConfigName"] = request.DetectConfigName
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		body["triggerType"] = request.TriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDetectConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/terraformState/detectConfig/" + dara.PercentEncode(dara.StringValue(detectConfigId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDetectConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
