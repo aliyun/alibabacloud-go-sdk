@@ -128,7 +128,8 @@ type DescribeServiceEventResponseBodyEvents struct {
 	// example:
 	//
 	// Updating
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason   *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The time when the event occurred. The time must be in UTC.
 	//
 	// example:
@@ -163,6 +164,10 @@ func (s *DescribeServiceEventResponseBodyEvents) GetReason() *string {
 	return s.Reason
 }
 
+func (s *DescribeServiceEventResponseBodyEvents) GetResource() *string {
+	return s.Resource
+}
+
 func (s *DescribeServiceEventResponseBodyEvents) GetTime() *string {
 	return s.Time
 }
@@ -178,6 +183,11 @@ func (s *DescribeServiceEventResponseBodyEvents) SetMessage(v string) *DescribeS
 
 func (s *DescribeServiceEventResponseBodyEvents) SetReason(v string) *DescribeServiceEventResponseBodyEvents {
 	s.Reason = &v
+	return s
+}
+
+func (s *DescribeServiceEventResponseBodyEvents) SetResource(v string) *DescribeServiceEventResponseBodyEvents {
+	s.Resource = &v
 	return s
 }
 

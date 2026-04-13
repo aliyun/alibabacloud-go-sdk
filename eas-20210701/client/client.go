@@ -222,12 +222,20 @@ func (client *Client) CloneService(ClusterId *string, ServiceName *string, reque
 //
 // Commits the Worker0 container in the custom container service and deploys the container as a new image.
 //
+// @param request - CommitServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CommitServiceResponse
-func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CommitServiceResponse, _err error) {
+func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *string, request *CommitServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CommitServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -255,12 +263,14 @@ func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *s
 //
 // Commits the Worker0 container in the custom container service and deploys the container as a new image.
 //
+// @param request - CommitServiceRequest
+//
 // @return CommitServiceResponse
-func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_result *CommitServiceResponse, _err error) {
+func (client *Client) CommitService(ClusterId *string, ServiceName *string, request *CommitServiceRequest) (_result *CommitServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CommitServiceResponse{}
-	_body, _err := client.CommitServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.CommitServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1634,12 +1644,20 @@ func (client *Client) DeleteAclPolicy(ClusterId *string, GatewayId *string, requ
 //
 // Deletes a stress testing task.
 //
+// @param request - DeleteBenchmarkTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteBenchmarkTaskResponse
-func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBenchmarkTaskResponse, _err error) {
+func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *DeleteBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteBenchmarkTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1667,12 +1685,14 @@ func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName
 //
 // Deletes a stress testing task.
 //
+// @param request - DeleteBenchmarkTaskRequest
+//
 // @return DeleteBenchmarkTaskResponse
-func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (_result *DeleteBenchmarkTaskResponse, _err error) {
+func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string, request *DeleteBenchmarkTaskRequest) (_result *DeleteBenchmarkTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteBenchmarkTaskResponse{}
-	_body, _err := client.DeleteBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_body, _err := client.DeleteBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1684,12 +1704,20 @@ func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (
 //
 // 删除故障注入任务
 //
+// @param request - DeleteFaultInjectionRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFaultInjectionResponse
-func (client *Client) DeleteFaultInjectionWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, FaultType *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFaultInjectionResponse, _err error) {
+func (client *Client) DeleteFaultInjectionWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, FaultType *string, request *DeleteFaultInjectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFaultInjectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1717,12 +1745,14 @@ func (client *Client) DeleteFaultInjectionWithOptions(ClusterId *string, Service
 //
 // 删除故障注入任务
 //
+// @param request - DeleteFaultInjectionRequest
+//
 // @return DeleteFaultInjectionResponse
-func (client *Client) DeleteFaultInjection(ClusterId *string, ServiceName *string, InstanceName *string, FaultType *string) (_result *DeleteFaultInjectionResponse, _err error) {
+func (client *Client) DeleteFaultInjection(ClusterId *string, ServiceName *string, InstanceName *string, FaultType *string, request *DeleteFaultInjectionRequest) (_result *DeleteFaultInjectionResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteFaultInjectionResponse{}
-	_body, _err := client.DeleteFaultInjectionWithOptions(ClusterId, ServiceName, InstanceName, FaultType, headers, runtime)
+	_body, _err := client.DeleteFaultInjectionWithOptions(ClusterId, ServiceName, InstanceName, FaultType, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1734,12 +1764,20 @@ func (client *Client) DeleteFaultInjection(ClusterId *string, ServiceName *strin
 //
 // Deletes a private gateway.
 //
+// @param request - DeleteGatewayRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteGatewayResponse
-func (client *Client) DeleteGatewayWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
+func (client *Client) DeleteGatewayWithOptions(ClusterId *string, GatewayId *string, request *DeleteGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1767,12 +1805,14 @@ func (client *Client) DeleteGatewayWithOptions(ClusterId *string, GatewayId *str
 //
 // Deletes a private gateway.
 //
+// @param request - DeleteGatewayRequest
+//
 // @return DeleteGatewayResponse
-func (client *Client) DeleteGateway(ClusterId *string, GatewayId *string) (_result *DeleteGatewayResponse, _err error) {
+func (client *Client) DeleteGateway(ClusterId *string, GatewayId *string, request *DeleteGatewayRequest) (_result *DeleteGatewayResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteGatewayResponse{}
-	_body, _err := client.DeleteGatewayWithOptions(ClusterId, GatewayId, headers, runtime)
+	_body, _err := client.DeleteGatewayWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2002,12 +2042,20 @@ func (client *Client) DeleteGatewayLabel(ClusterId *string, GatewayId *string, r
 //
 // Deletes a resource group that contains no resources or instances.
 //
+// @param request - DeleteResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceResponse
-func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
+func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *string, request *DeleteResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2035,12 +2083,14 @@ func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *s
 //
 // Deletes a resource group that contains no resources or instances.
 //
+// @param request - DeleteResourceRequest
+//
 // @return DeleteResourceResponse
-func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_result *DeleteResourceResponse, _err error) {
+func (client *Client) DeleteResource(ClusterId *string, ResourceId *string, request *DeleteResourceRequest) (_result *DeleteResourceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteResourceResponse{}
-	_body, _err := client.DeleteResourceWithOptions(ClusterId, ResourceId, headers, runtime)
+	_body, _err := client.DeleteResourceWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2052,12 +2102,20 @@ func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_re
 //
 // Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
 //
+// @param request - DeleteResourceDLinkRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceDLinkResponse
-func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceDLinkResponse, _err error) {
+func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, ResourceId *string, request *DeleteResourceDLinkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceDLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2085,12 +2143,14 @@ func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, Resource
 //
 // Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
 //
+// @param request - DeleteResourceDLinkRequest
+//
 // @return DeleteResourceDLinkResponse
-func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string) (_result *DeleteResourceDLinkResponse, _err error) {
+func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string, request *DeleteResourceDLinkRequest) (_result *DeleteResourceDLinkResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteResourceDLinkResponse{}
-	_body, _err := client.DeleteResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
+	_body, _err := client.DeleteResourceDLinkWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2264,12 +2324,20 @@ func (client *Client) DeleteResourceInstances(ClusterId *string, ResourceId *str
 //
 // Disables the LogShipper feature of Log Service for a dedicated resource group.
 //
+// @param request - DeleteResourceLogRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteResourceLogResponse
-func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceLogResponse, _err error) {
+func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId *string, request *DeleteResourceLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteResourceLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2297,12 +2365,14 @@ func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId
 //
 // Disables the LogShipper feature of Log Service for a dedicated resource group.
 //
+// @param request - DeleteResourceLogRequest
+//
 // @return DeleteResourceLogResponse
-func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (_result *DeleteResourceLogResponse, _err error) {
+func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string, request *DeleteResourceLogRequest) (_result *DeleteResourceLogResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteResourceLogResponse{}
-	_body, _err := client.DeleteResourceLogWithOptions(ClusterId, ResourceId, headers, runtime)
+	_body, _err := client.DeleteResourceLogWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2314,12 +2384,20 @@ func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (
 //
 // Deletes a service.
 //
+// @param request - DeleteServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceResponse
-func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *string, request *DeleteServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2347,12 +2425,14 @@ func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *s
 //
 // Deletes a service.
 //
+// @param request - DeleteServiceRequest
+//
 // @return DeleteServiceResponse
-func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_result *DeleteServiceResponse, _err error) {
+func (client *Client) DeleteService(ClusterId *string, ServiceName *string, request *DeleteServiceRequest) (_result *DeleteServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.DeleteServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DeleteServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2364,12 +2444,20 @@ func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_re
 //
 // Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
 //
+// @param request - DeleteServiceAutoScalerRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceAutoScalerResponse
-func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceAutoScalerResponse, _err error) {
+func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, request *DeleteServiceAutoScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceAutoScalerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2397,12 +2485,14 @@ func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, Serv
 //
 // Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
 //
+// @param request - DeleteServiceAutoScalerRequest
+//
 // @return DeleteServiceAutoScalerResponse
-func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceAutoScalerResponse, _err error) {
+func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *string, request *DeleteServiceAutoScalerRequest) (_result *DeleteServiceAutoScalerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteServiceAutoScalerResponse{}
-	_body, _err := client.DeleteServiceAutoScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DeleteServiceAutoScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2414,12 +2504,20 @@ func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *st
 //
 // Disables the Cronscaler feature for a service.
 //
+// @param request - DeleteServiceCronScalerRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceCronScalerResponse
-func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceCronScalerResponse, _err error) {
+func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, request *DeleteServiceCronScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceCronScalerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2447,12 +2545,14 @@ func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, Serv
 //
 // Disables the Cronscaler feature for a service.
 //
+// @param request - DeleteServiceCronScalerRequest
+//
 // @return DeleteServiceCronScalerResponse
-func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceCronScalerResponse, _err error) {
+func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *string, request *DeleteServiceCronScalerRequest) (_result *DeleteServiceCronScalerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteServiceCronScalerResponse{}
-	_body, _err := client.DeleteServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DeleteServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2622,12 +2722,20 @@ func (client *Client) DeleteServiceLabel(ClusterId *string, ServiceName *string,
 //
 // Disables the traffic mirroring feature for a service.
 //
+// @param request - DeleteServiceMirrorRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteServiceMirrorResponse
-func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceMirrorResponse, _err error) {
+func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceName *string, request *DeleteServiceMirrorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteServiceMirrorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2655,12 +2763,14 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 //
 // Disables the traffic mirroring feature for a service.
 //
+// @param request - DeleteServiceMirrorRequest
+//
 // @return DeleteServiceMirrorResponse
-func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string) (_result *DeleteServiceMirrorResponse, _err error) {
+func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string, request *DeleteServiceMirrorRequest) (_result *DeleteServiceMirrorResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteServiceMirrorResponse{}
-	_body, _err := client.DeleteServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DeleteServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2672,12 +2782,20 @@ func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string
 //
 // Deletes a virtual resource group that contains no resources or instances.
 //
+// @param request - DeleteVirtualResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVirtualResourceResponse
-func (client *Client) DeleteVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVirtualResourceResponse, _err error) {
+func (client *Client) DeleteVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, request *DeleteVirtualResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVirtualResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2705,12 +2823,14 @@ func (client *Client) DeleteVirtualResourceWithOptions(ClusterId *string, Virtua
 //
 // Deletes a virtual resource group that contains no resources or instances.
 //
+// @param request - DeleteVirtualResourceRequest
+//
 // @return DeleteVirtualResourceResponse
-func (client *Client) DeleteVirtualResource(ClusterId *string, VirtualResourceId *string) (_result *DeleteVirtualResourceResponse, _err error) {
+func (client *Client) DeleteVirtualResource(ClusterId *string, VirtualResourceId *string, request *DeleteVirtualResourceRequest) (_result *DeleteVirtualResourceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteVirtualResourceResponse{}
-	_body, _err := client.DeleteVirtualResourceWithOptions(ClusterId, VirtualResourceId, headers, runtime)
+	_body, _err := client.DeleteVirtualResourceWithOptions(ClusterId, VirtualResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2722,12 +2842,20 @@ func (client *Client) DeleteVirtualResource(ClusterId *string, VirtualResourceId
 //
 // Queries details about the configurations of a stress testing task.
 //
+// @param request - DescribeBenchmarkTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBenchmarkTaskResponse
-func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeBenchmarkTaskResponse, _err error) {
+func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeBenchmarkTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2755,12 +2883,14 @@ func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskNa
 //
 // Queries details about the configurations of a stress testing task.
 //
+// @param request - DescribeBenchmarkTaskRequest
+//
 // @return DescribeBenchmarkTaskResponse
-func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskResponse, _err error) {
+func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskRequest) (_result *DescribeBenchmarkTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeBenchmarkTaskResponse{}
-	_body, _err := client.DescribeBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_body, _err := client.DescribeBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2838,12 +2968,20 @@ func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *s
 //
 // Queries the details of a private gateway.
 //
+// @param request - DescribeGatewayRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGatewayResponse
-func (client *Client) DescribeGatewayWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeGatewayResponse, _err error) {
+func (client *Client) DescribeGatewayWithOptions(ClusterId *string, GatewayId *string, request *DescribeGatewayRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2871,12 +3009,14 @@ func (client *Client) DescribeGatewayWithOptions(ClusterId *string, GatewayId *s
 //
 // Queries the details of a private gateway.
 //
+// @param request - DescribeGatewayRequest
+//
 // @return DescribeGatewayResponse
-func (client *Client) DescribeGateway(ClusterId *string, GatewayId *string) (_result *DescribeGatewayResponse, _err error) {
+func (client *Client) DescribeGateway(ClusterId *string, GatewayId *string, request *DescribeGatewayRequest) (_result *DescribeGatewayResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeGatewayResponse{}
-	_body, _err := client.DescribeGatewayWithOptions(ClusterId, GatewayId, headers, runtime)
+	_body, _err := client.DescribeGatewayWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2888,12 +3028,20 @@ func (client *Client) DescribeGateway(ClusterId *string, GatewayId *string) (_re
 //
 // Queries the information about a service group.
 //
+// @param request - DescribeGroupRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGroupResponse
-func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeGroupResponse, _err error) {
+func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *string, request *DescribeGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2921,12 +3069,14 @@ func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *str
 //
 // Queries the information about a service group.
 //
+// @param request - DescribeGroupRequest
+//
 // @return DescribeGroupResponse
-func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_result *DescribeGroupResponse, _err error) {
+func (client *Client) DescribeGroup(ClusterId *string, GroupName *string, request *DescribeGroupRequest) (_result *DescribeGroupResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeGroupResponse{}
-	_body, _err := client.DescribeGroupWithOptions(ClusterId, GroupName, headers, runtime)
+	_body, _err := client.DescribeGroupWithOptions(ClusterId, GroupName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2938,12 +3088,20 @@ func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_resu
 //
 // Obtains a list of endpoints of service groups.
 //
+// @param request - DescribeGroupEndpointsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeGroupEndpointsResponse
-func (client *Client) DescribeGroupEndpointsWithOptions(ClusterId *string, GroupName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeGroupEndpointsResponse, _err error) {
+func (client *Client) DescribeGroupEndpointsWithOptions(ClusterId *string, GroupName *string, request *DescribeGroupEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeGroupEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2971,12 +3129,14 @@ func (client *Client) DescribeGroupEndpointsWithOptions(ClusterId *string, Group
 //
 // Obtains a list of endpoints of service groups.
 //
+// @param request - DescribeGroupEndpointsRequest
+//
 // @return DescribeGroupEndpointsResponse
-func (client *Client) DescribeGroupEndpoints(ClusterId *string, GroupName *string) (_result *DescribeGroupEndpointsResponse, _err error) {
+func (client *Client) DescribeGroupEndpoints(ClusterId *string, GroupName *string, request *DescribeGroupEndpointsRequest) (_result *DescribeGroupEndpointsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeGroupEndpointsResponse{}
-	_body, _err := client.DescribeGroupEndpointsWithOptions(ClusterId, GroupName, headers, runtime)
+	_body, _err := client.DescribeGroupEndpointsWithOptions(ClusterId, GroupName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3118,12 +3278,20 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 //
 // Queries the information about a resource group.
 //
+// @param request - DescribeResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceResponse
-func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceResponse, _err error) {
+func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId *string, request *DescribeResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3151,12 +3319,14 @@ func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId 
 //
 // Queries the information about a resource group.
 //
+// @param request - DescribeResourceRequest
+//
 // @return DescribeResourceResponse
-func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_result *DescribeResourceResponse, _err error) {
+func (client *Client) DescribeResource(ClusterId *string, ResourceId *string, request *DescribeResourceRequest) (_result *DescribeResourceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeResourceResponse{}
-	_body, _err := client.DescribeResourceWithOptions(ClusterId, ResourceId, headers, runtime)
+	_body, _err := client.DescribeResourceWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3168,12 +3338,20 @@ func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_
 //
 // Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
 //
+// @param request - DescribeResourceDLinkRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceDLinkResponse
-func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceDLinkResponse, _err error) {
+func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, ResourceId *string, request *DescribeResourceDLinkRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceDLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3201,12 +3379,14 @@ func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, Resour
 //
 // Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
 //
+// @param request - DescribeResourceDLinkRequest
+//
 // @return DescribeResourceDLinkResponse
-func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *string) (_result *DescribeResourceDLinkResponse, _err error) {
+func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *string, request *DescribeResourceDLinkRequest) (_result *DescribeResourceDLinkResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeResourceDLinkResponse{}
-	_body, _err := client.DescribeResourceDLinkWithOptions(ClusterId, ResourceId, headers, runtime)
+	_body, _err := client.DescribeResourceDLinkWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3218,12 +3398,20 @@ func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *strin
 //
 // Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
 //
+// @param request - DescribeResourceLogRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeResourceLogResponse
-func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceLogResponse, _err error) {
+func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, ResourceId *string, request *DescribeResourceLogRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeResourceLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3251,12 +3439,14 @@ func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, Resource
 //
 // Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
 //
+// @param request - DescribeResourceLogRequest
+//
 // @return DescribeResourceLogResponse
-func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string) (_result *DescribeResourceLogResponse, _err error) {
+func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string, request *DescribeResourceLogRequest) (_result *DescribeResourceLogResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeResourceLogResponse{}
-	_body, _err := client.DescribeResourceLogWithOptions(ClusterId, ResourceId, headers, runtime)
+	_body, _err := client.DescribeResourceLogWithOptions(ClusterId, ResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3268,12 +3458,20 @@ func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string)
 //
 // Queries the details about a service.
 //
+// @param request - DescribeServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceResponse
-func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceResponse, _err error) {
+func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3301,12 +3499,14 @@ func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName 
 //
 // Queries the details about a service.
 //
+// @param request - DescribeServiceRequest
+//
 // @return DescribeServiceResponse
-func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_result *DescribeServiceResponse, _err error) {
+func (client *Client) DescribeService(ClusterId *string, ServiceName *string, request *DescribeServiceRequest) (_result *DescribeServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceResponse{}
-	_body, _err := client.DescribeServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DescribeServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3318,12 +3518,20 @@ func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_
 //
 // Queries information about the Autoscaler configurations of a service.
 //
+// @param request - DescribeServiceAutoScalerRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceAutoScalerResponse
-func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceAutoScalerResponse, _err error) {
+func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceAutoScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceAutoScalerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3351,12 +3559,14 @@ func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, Se
 //
 // Queries information about the Autoscaler configurations of a service.
 //
+// @param request - DescribeServiceAutoScalerRequest
+//
 // @return DescribeServiceAutoScalerResponse
-func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceAutoScalerResponse, _err error) {
+func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *string, request *DescribeServiceAutoScalerRequest) (_result *DescribeServiceAutoScalerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceAutoScalerResponse{}
-	_body, _err := client.DescribeServiceAutoScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DescribeServiceAutoScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3368,12 +3578,20 @@ func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *
 //
 // Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
 //
+// @param request - DescribeServiceCronScalerRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceCronScalerResponse
-func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceCronScalerResponse, _err error) {
+func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceCronScalerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceCronScalerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3401,12 +3619,14 @@ func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, Se
 //
 // Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
 //
+// @param request - DescribeServiceCronScalerRequest
+//
 // @return DescribeServiceCronScalerResponse
-func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceCronScalerResponse, _err error) {
+func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *string, request *DescribeServiceCronScalerRequest) (_result *DescribeServiceCronScalerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceCronScalerResponse{}
-	_body, _err := client.DescribeServiceCronScalerWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DescribeServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3418,12 +3638,20 @@ func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *
 //
 // Queries the diagnostics details of a service.
 //
+// @param request - DescribeServiceDiagnosisRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceDiagnosisResponse
-func (client *Client) DescribeServiceDiagnosisWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceDiagnosisResponse, _err error) {
+func (client *Client) DescribeServiceDiagnosisWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceDiagnosisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceDiagnosisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3451,12 +3679,14 @@ func (client *Client) DescribeServiceDiagnosisWithOptions(ClusterId *string, Ser
 //
 // Queries the diagnostics details of a service.
 //
+// @param request - DescribeServiceDiagnosisRequest
+//
 // @return DescribeServiceDiagnosisResponse
-func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *string) (_result *DescribeServiceDiagnosisResponse, _err error) {
+func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *string, request *DescribeServiceDiagnosisRequest) (_result *DescribeServiceDiagnosisResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceDiagnosisResponse{}
-	_body, _err := client.DescribeServiceDiagnosisWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DescribeServiceDiagnosisWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3468,12 +3698,20 @@ func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *s
 //
 // Obtains a list of service endpoints.
 //
+// @param request - DescribeServiceEndpointsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceEndpointsResponse
-func (client *Client) DescribeServiceEndpointsWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceEndpointsResponse, _err error) {
+func (client *Client) DescribeServiceEndpointsWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3501,12 +3739,14 @@ func (client *Client) DescribeServiceEndpointsWithOptions(ClusterId *string, Ser
 //
 // Obtains a list of service endpoints.
 //
+// @param request - DescribeServiceEndpointsRequest
+//
 // @return DescribeServiceEndpointsResponse
-func (client *Client) DescribeServiceEndpoints(ClusterId *string, ServiceName *string) (_result *DescribeServiceEndpointsResponse, _err error) {
+func (client *Client) DescribeServiceEndpoints(ClusterId *string, ServiceName *string, request *DescribeServiceEndpointsRequest) (_result *DescribeServiceEndpointsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceEndpointsResponse{}
-	_body, _err := client.DescribeServiceEndpointsWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DescribeServiceEndpointsWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3604,12 +3844,20 @@ func (client *Client) DescribeServiceEvent(ClusterId *string, ServiceName *strin
 //
 // Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
 //
+// @param request - DescribeServiceInstanceDiagnosisRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceInstanceDiagnosisResponse
-func (client *Client) DescribeServiceInstanceDiagnosisWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceInstanceDiagnosisResponse, _err error) {
+func (client *Client) DescribeServiceInstanceDiagnosisWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, request *DescribeServiceInstanceDiagnosisRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceInstanceDiagnosisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3637,12 +3885,14 @@ func (client *Client) DescribeServiceInstanceDiagnosisWithOptions(ClusterId *str
 //
 // Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
 //
+// @param request - DescribeServiceInstanceDiagnosisRequest
+//
 // @return DescribeServiceInstanceDiagnosisResponse
-func (client *Client) DescribeServiceInstanceDiagnosis(ClusterId *string, ServiceName *string, InstanceName *string) (_result *DescribeServiceInstanceDiagnosisResponse, _err error) {
+func (client *Client) DescribeServiceInstanceDiagnosis(ClusterId *string, ServiceName *string, InstanceName *string, request *DescribeServiceInstanceDiagnosisRequest) (_result *DescribeServiceInstanceDiagnosisResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceInstanceDiagnosisResponse{}
-	_body, _err := client.DescribeServiceInstanceDiagnosisWithOptions(ClusterId, ServiceName, InstanceName, headers, runtime)
+	_body, _err := client.DescribeServiceInstanceDiagnosisWithOptions(ClusterId, ServiceName, InstanceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3752,12 +4002,20 @@ func (client *Client) DescribeServiceLog(ClusterId *string, ServiceName *string,
 //
 // Queries details about the traffic mirroring settings of a service.
 //
+// @param request - DescribeServiceMirrorRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeServiceMirrorResponse
-func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceMirrorResponse, _err error) {
+func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceMirrorRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeServiceMirrorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3785,12 +4043,14 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 //
 // Queries details about the traffic mirroring settings of a service.
 //
+// @param request - DescribeServiceMirrorRequest
+//
 // @return DescribeServiceMirrorResponse
-func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *string) (_result *DescribeServiceMirrorResponse, _err error) {
+func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *string, request *DescribeServiceMirrorRequest) (_result *DescribeServiceMirrorResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeServiceMirrorResponse{}
-	_body, _err := client.DescribeServiceMirrorWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.DescribeServiceMirrorWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3946,12 +4206,20 @@ func (client *Client) DescribeSpotDiscountHistory(request *DescribeSpotDiscountH
 //
 // Views the details of a virtual resource group.
 //
+// @param request - DescribeVirtualResourceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVirtualResourceResponse
-func (client *Client) DescribeVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeVirtualResourceResponse, _err error) {
+func (client *Client) DescribeVirtualResourceWithOptions(ClusterId *string, VirtualResourceId *string, request *DescribeVirtualResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeVirtualResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3979,12 +4247,14 @@ func (client *Client) DescribeVirtualResourceWithOptions(ClusterId *string, Virt
 //
 // Views the details of a virtual resource group.
 //
+// @param request - DescribeVirtualResourceRequest
+//
 // @return DescribeVirtualResourceResponse
-func (client *Client) DescribeVirtualResource(ClusterId *string, VirtualResourceId *string) (_result *DescribeVirtualResourceResponse, _err error) {
+func (client *Client) DescribeVirtualResource(ClusterId *string, VirtualResourceId *string, request *DescribeVirtualResourceRequest) (_result *DescribeVirtualResourceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeVirtualResourceResponse{}
-	_body, _err := client.DescribeVirtualResourceWithOptions(ClusterId, VirtualResourceId, headers, runtime)
+	_body, _err := client.DescribeVirtualResourceWithOptions(ClusterId, VirtualResourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4414,12 +4684,20 @@ func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGat
 //
 // Queries a list of custom domain names of a private gateway.
 //
+// @param request - ListGatewayDomainsRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewayDomainsResponse
-func (client *Client) ListGatewayDomainsWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayDomainsResponse, _err error) {
+func (client *Client) ListGatewayDomainsWithOptions(ClusterId *string, GatewayId *string, request *ListGatewayDomainsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayDomainsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4447,12 +4725,14 @@ func (client *Client) ListGatewayDomainsWithOptions(ClusterId *string, GatewayId
 //
 // Queries a list of custom domain names of a private gateway.
 //
+// @param request - ListGatewayDomainsRequest
+//
 // @return ListGatewayDomainsResponse
-func (client *Client) ListGatewayDomains(ClusterId *string, GatewayId *string) (_result *ListGatewayDomainsResponse, _err error) {
+func (client *Client) ListGatewayDomains(ClusterId *string, GatewayId *string, request *ListGatewayDomainsRequest) (_result *ListGatewayDomainsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListGatewayDomainsResponse{}
-	_body, _err := client.ListGatewayDomainsWithOptions(ClusterId, GatewayId, headers, runtime)
+	_body, _err := client.ListGatewayDomainsWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4464,12 +4744,20 @@ func (client *Client) ListGatewayDomains(ClusterId *string, GatewayId *string) (
 //
 // Queries a list of the internal endpoints of a private gateway.
 //
+// @param request - ListGatewayIntranetLinkedVpcRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewayIntranetLinkedVpcResponse
-func (client *Client) ListGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
+func (client *Client) ListGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, request *ListGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4497,12 +4785,14 @@ func (client *Client) ListGatewayIntranetLinkedVpcWithOptions(ClusterId *string,
 //
 // Queries a list of the internal endpoints of a private gateway.
 //
+// @param request - ListGatewayIntranetLinkedVpcRequest
+//
 // @return ListGatewayIntranetLinkedVpcResponse
-func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
+func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string, request *ListGatewayIntranetLinkedVpcRequest) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListGatewayIntranetLinkedVpcResponse{}
-	_body, _err := client.ListGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, headers, runtime)
+	_body, _err := client.ListGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4580,12 +4870,20 @@ func (client *Client) ListGatewayIntranetLinkedVpcPeer(ClusterId *string, Gatewa
 //
 // Obtains the zones supported by a gateway within an intranet.
 //
+// @param request - ListGatewayIntranetSupportedZoneRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListGatewayIntranetSupportedZoneResponse
-func (client *Client) ListGatewayIntranetSupportedZoneWithOptions(GatewayId *string, ClusterId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
+func (client *Client) ListGatewayIntranetSupportedZoneWithOptions(GatewayId *string, ClusterId *string, request *ListGatewayIntranetSupportedZoneRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -4613,12 +4911,14 @@ func (client *Client) ListGatewayIntranetSupportedZoneWithOptions(GatewayId *str
 //
 // Obtains the zones supported by a gateway within an intranet.
 //
+// @param request - ListGatewayIntranetSupportedZoneRequest
+//
 // @return ListGatewayIntranetSupportedZoneResponse
-func (client *Client) ListGatewayIntranetSupportedZone(GatewayId *string, ClusterId *string) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
+func (client *Client) ListGatewayIntranetSupportedZone(GatewayId *string, ClusterId *string, request *ListGatewayIntranetSupportedZoneRequest) (_result *ListGatewayIntranetSupportedZoneResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListGatewayIntranetSupportedZoneResponse{}
-	_body, _err := client.ListGatewayIntranetSupportedZoneWithOptions(GatewayId, ClusterId, headers, runtime)
+	_body, _err := client.ListGatewayIntranetSupportedZoneWithOptions(GatewayId, ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5103,12 +5403,20 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 //
 // Queries the containers of a service.
 //
+// @param request - ListServiceContainersRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServiceContainersResponse
-func (client *Client) ListServiceContainersWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceContainersResponse, _err error) {
+func (client *Client) ListServiceContainersWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, request *ListServiceContainersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceContainersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5136,12 +5444,14 @@ func (client *Client) ListServiceContainersWithOptions(ClusterId *string, Servic
 //
 // Queries the containers of a service.
 //
+// @param request - ListServiceContainersRequest
+//
 // @return ListServiceContainersResponse
-func (client *Client) ListServiceContainers(ClusterId *string, ServiceName *string, InstanceName *string) (_result *ListServiceContainersResponse, _err error) {
+func (client *Client) ListServiceContainers(ClusterId *string, ServiceName *string, InstanceName *string, request *ListServiceContainersRequest) (_result *ListServiceContainersResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListServiceContainersResponse{}
-	_body, _err := client.ListServiceContainersWithOptions(ClusterId, ServiceName, InstanceName, headers, runtime)
+	_body, _err := client.ListServiceContainersWithOptions(ClusterId, ServiceName, InstanceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5153,12 +5463,20 @@ func (client *Client) ListServiceContainers(ClusterId *string, ServiceName *stri
 //
 // 获取故障注入信息
 //
+// @param request - ListServiceInstanceFaultInjectionInfoRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListServiceInstanceFaultInjectionInfoResponse
-func (client *Client) ListServiceInstanceFaultInjectionInfoWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceInstanceFaultInjectionInfoResponse, _err error) {
+func (client *Client) ListServiceInstanceFaultInjectionInfoWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, request *ListServiceInstanceFaultInjectionInfoRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListServiceInstanceFaultInjectionInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5186,12 +5504,14 @@ func (client *Client) ListServiceInstanceFaultInjectionInfoWithOptions(ClusterId
 //
 // 获取故障注入信息
 //
+// @param request - ListServiceInstanceFaultInjectionInfoRequest
+//
 // @return ListServiceInstanceFaultInjectionInfoResponse
-func (client *Client) ListServiceInstanceFaultInjectionInfo(ClusterId *string, ServiceName *string, InstanceName *string) (_result *ListServiceInstanceFaultInjectionInfoResponse, _err error) {
+func (client *Client) ListServiceInstanceFaultInjectionInfo(ClusterId *string, ServiceName *string, InstanceName *string, request *ListServiceInstanceFaultInjectionInfoRequest) (_result *ListServiceInstanceFaultInjectionInfoResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListServiceInstanceFaultInjectionInfoResponse{}
-	_body, _err := client.ListServiceInstanceFaultInjectionInfoWithOptions(ClusterId, ServiceName, InstanceName, headers, runtime)
+	_body, _err := client.ListServiceInstanceFaultInjectionInfoWithOptions(ClusterId, ServiceName, InstanceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5793,12 +6113,20 @@ func (client *Client) MigrateResourceInstance(ClusterId *string, ResourceId *str
 //
 // Resets tenant configurations.
 //
+// @param request - ReinstallTenantAddonRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReinstallTenantAddonResponse
-func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantAddonName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReinstallTenantAddonResponse, _err error) {
+func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantAddonName *string, request *ReinstallTenantAddonRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ReinstallTenantAddonResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5826,12 +6154,14 @@ func (client *Client) ReinstallTenantAddonWithOptions(ClusterId *string, TenantA
 //
 // Resets tenant configurations.
 //
+// @param request - ReinstallTenantAddonRequest
+//
 // @return ReinstallTenantAddonResponse
-func (client *Client) ReinstallTenantAddon(ClusterId *string, TenantAddonName *string) (_result *ReinstallTenantAddonResponse, _err error) {
+func (client *Client) ReinstallTenantAddon(ClusterId *string, TenantAddonName *string, request *ReinstallTenantAddonRequest) (_result *ReinstallTenantAddonResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ReinstallTenantAddonResponse{}
-	_body, _err := client.ReinstallTenantAddonWithOptions(ClusterId, TenantAddonName, headers, runtime)
+	_body, _err := client.ReinstallTenantAddonWithOptions(ClusterId, TenantAddonName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5913,12 +6243,20 @@ func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, req
 //
 // Restarts a service.
 //
+// @param request - RestartServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RestartServiceResponse
-func (client *Client) RestartServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartServiceResponse, _err error) {
+func (client *Client) RestartServiceWithOptions(ClusterId *string, ServiceName *string, request *RestartServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RestartServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -5946,12 +6284,14 @@ func (client *Client) RestartServiceWithOptions(ClusterId *string, ServiceName *
 //
 // Restarts a service.
 //
+// @param request - RestartServiceRequest
+//
 // @return RestartServiceResponse
-func (client *Client) RestartService(ClusterId *string, ServiceName *string) (_result *RestartServiceResponse, _err error) {
+func (client *Client) RestartService(ClusterId *string, ServiceName *string, request *RestartServiceRequest) (_result *RestartServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &RestartServiceResponse{}
-	_body, _err := client.RestartServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.RestartServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6033,12 +6373,20 @@ func (client *Client) ScaleService(ClusterId *string, ServiceName *string, reque
 //
 // Starts a stress testing task.
 //
+// @param request - StartBenchmarkTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartBenchmarkTaskResponse
-func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartBenchmarkTaskResponse, _err error) {
+func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *StartBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartBenchmarkTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6066,12 +6414,14 @@ func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName 
 //
 // Starts a stress testing task.
 //
+// @param request - StartBenchmarkTaskRequest
+//
 // @return StartBenchmarkTaskResponse
-func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_result *StartBenchmarkTaskResponse, _err error) {
+func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string, request *StartBenchmarkTaskRequest) (_result *StartBenchmarkTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StartBenchmarkTaskResponse{}
-	_body, _err := client.StartBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_body, _err := client.StartBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6083,12 +6433,20 @@ func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_
 //
 // Starts a service.
 //
+// @param request - StartServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartServiceResponse
-func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartServiceResponse, _err error) {
+func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *string, request *StartServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StartServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6116,12 +6474,14 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 //
 // Starts a service.
 //
+// @param request - StartServiceRequest
+//
 // @return StartServiceResponse
-func (client *Client) StartService(ClusterId *string, ServiceName *string) (_result *StartServiceResponse, _err error) {
+func (client *Client) StartService(ClusterId *string, ServiceName *string, request *StartServiceRequest) (_result *StartServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StartServiceResponse{}
-	_body, _err := client.StartServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.StartServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6133,12 +6493,20 @@ func (client *Client) StartService(ClusterId *string, ServiceName *string) (_res
 //
 // Stops a stress testing task.
 //
+// @param request - StopBenchmarkTaskRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopBenchmarkTaskResponse
-func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopBenchmarkTaskResponse, _err error) {
+func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *StopBenchmarkTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopBenchmarkTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6166,12 +6534,14 @@ func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *
 //
 // Stops a stress testing task.
 //
+// @param request - StopBenchmarkTaskRequest
+//
 // @return StopBenchmarkTaskResponse
-func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_result *StopBenchmarkTaskResponse, _err error) {
+func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string, request *StopBenchmarkTaskRequest) (_result *StopBenchmarkTaskResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StopBenchmarkTaskResponse{}
-	_body, _err := client.StopBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	_body, _err := client.StopBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6183,12 +6553,20 @@ func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_r
 //
 // Stops a running service.
 //
+// @param request - StopServiceRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StopServiceResponse
-func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopServiceResponse, _err error) {
+func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *string, request *StopServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -6216,12 +6594,14 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 //
 // Stops a running service.
 //
+// @param request - StopServiceRequest
+//
 // @return StopServiceResponse
-func (client *Client) StopService(ClusterId *string, ServiceName *string) (_result *StopServiceResponse, _err error) {
+func (client *Client) StopService(ClusterId *string, ServiceName *string, request *StopServiceRequest) (_result *StopServiceResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &StopServiceResponse{}
-	_body, _err := client.StopServiceWithOptions(ClusterId, ServiceName, headers, runtime)
+	_body, _err := client.StopServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
