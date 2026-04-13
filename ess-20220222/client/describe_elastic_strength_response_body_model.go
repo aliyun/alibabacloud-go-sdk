@@ -227,7 +227,8 @@ type DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools struc
 	// example:
 	//
 	// InstanceTypesOrDiskTypesNotSupported
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The instance type of the resource pool.
 	//
 	// example:
@@ -284,6 +285,10 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) 
 	return s.Code
 }
 
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) GetElasticStrength() *string {
+	return s.ElasticStrength
+}
+
 func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) GetInstanceType() *string {
 	return s.InstanceType
 }
@@ -314,6 +319,11 @@ func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) 
 
 func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetCode(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools) SetElasticStrength(v string) *DescribeElasticStrengthResponseBodyElasticStrengthModelsResourcePools {
+	s.ElasticStrength = &v
 	return s
 }
 
@@ -456,7 +466,8 @@ type DescribeElasticStrengthResponseBodyResourcePools struct {
 	// example:
 	//
 	// IMG_NOT_SUPPORTED
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The instance type of the resource pool.
 	//
 	// example:
@@ -509,6 +520,10 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) GetCode() *string {
 	return s.Code
 }
 
+func (s *DescribeElasticStrengthResponseBodyResourcePools) GetElasticStrength() *string {
+	return s.ElasticStrength
+}
+
 func (s *DescribeElasticStrengthResponseBodyResourcePools) GetInstanceType() *string {
 	return s.InstanceType
 }
@@ -539,6 +554,11 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) GetZoneId() *string {
 
 func (s *DescribeElasticStrengthResponseBodyResourcePools) SetCode(v string) *DescribeElasticStrengthResponseBodyResourcePools {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeElasticStrengthResponseBodyResourcePools) SetElasticStrength(v string) *DescribeElasticStrengthResponseBodyResourcePools {
+	s.ElasticStrength = &v
 	return s
 }
 
