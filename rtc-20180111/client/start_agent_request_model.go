@@ -579,7 +579,8 @@ func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigBackChannelConfig struct {
-	UserTurnEnd *bool `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
+	UserTurnEnd *bool  `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
+	Version     *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s StartAgentRequestVoiceChatConfigBackChannelConfig) String() string {
@@ -594,8 +595,17 @@ func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) GetUserTurnEnd() *bo
 	return s.UserTurnEnd
 }
 
+func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) GetVersion() *int32 {
+	return s.Version
+}
+
 func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) SetUserTurnEnd(v bool) *StartAgentRequestVoiceChatConfigBackChannelConfig {
 	s.UserTurnEnd = &v
+	return s
+}
+
+func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) SetVersion(v int32) *StartAgentRequestVoiceChatConfigBackChannelConfig {
+	s.Version = &v
 	return s
 }
 
