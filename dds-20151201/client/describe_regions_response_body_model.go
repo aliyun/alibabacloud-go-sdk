@@ -16,7 +16,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,36 +95,10 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsDdsRegion struct {
-	// The public endpoint of the region.
-	//
-	// For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following value is returned for the EndPoint parameter:
-	//
-	// 	- mongodb.aliyuncs.com
-	//
-	// example:
-	//
-	// mongodb.aliyuncs.com
-	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the region.
-	//
-	// The value of the LocalName parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the RegionId parameter in the response is **cn-hangzhou**, the following values are returned for the LocalName parameter:
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **zh**, the value **华东1（杭州）*	- is returned for the LocalName parameter.
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **en**, the value **China (Hangzhou)*	- is returned for the LocalName parameter.
-	//
-	// example:
-	//
-	// China (Hangzhou)
-	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// The zones.
-	Zones *DescribeRegionsResponseBodyRegionsDdsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	EndPoint   *string                                           `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	RegionId   *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionName *string                                           `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	Zones      *DescribeRegionsResponseBodyRegionsDdsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsDdsRegion) String() string {
@@ -216,34 +189,9 @@ func (s *DescribeRegionsResponseBodyRegionsDdsRegionZones) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsDdsRegionZonesZone struct {
-	// Indicates whether a virtual private cloud (VPC) is supported. Valid values:
-	//
-	// 	- **true**: VPC is supported.
-	//
-	// 	- **false**: VPC is not supported.
-	//
-	// example:
-	//
-	// true
-	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The name of the zone.
-	//
-	// The value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **zh**, the value **H*	- is returned for the ZoneName parameter.
-	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **en**, the value **Hangzhou Zone H*	- is returned for the ZoneName parameter.
-	//
-	// example:
-	//
-	// Hangzhou Zone H
-	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	VpcEnabled *bool   `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneName   *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsDdsRegionZonesZone) String() string {

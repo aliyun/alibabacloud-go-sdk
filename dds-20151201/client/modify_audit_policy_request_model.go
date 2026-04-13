@@ -15,6 +15,8 @@ type iModifyAuditPolicyRequest interface {
 	GetAuditStatus() *string
 	SetDBInstanceId(v string) *ModifyAuditPolicyRequest
 	GetDBInstanceId() *string
+	SetHotStoragePeriod(v int32) *ModifyAuditPolicyRequest
+	GetHotStoragePeriod() *int32
 	SetOwnerAccount(v string) *ModifyAuditPolicyRequest
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyAuditPolicyRequest
@@ -56,6 +58,7 @@ type ModifyAuditPolicyRequest struct {
 	//
 	// dds-bp1785659e3f****
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	HotStoragePeriod     *int32  `json:"HotStoragePeriod,omitempty" xml:"HotStoragePeriod,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -100,6 +103,10 @@ func (s *ModifyAuditPolicyRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
+func (s *ModifyAuditPolicyRequest) GetHotStoragePeriod() *int32 {
+	return s.HotStoragePeriod
+}
+
 func (s *ModifyAuditPolicyRequest) GetOwnerAccount() *string {
 	return s.OwnerAccount
 }
@@ -136,6 +143,11 @@ func (s *ModifyAuditPolicyRequest) SetAuditStatus(v string) *ModifyAuditPolicyRe
 
 func (s *ModifyAuditPolicyRequest) SetDBInstanceId(v string) *ModifyAuditPolicyRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyAuditPolicyRequest) SetHotStoragePeriod(v int32) *ModifyAuditPolicyRequest {
+	s.HotStoragePeriod = &v
 	return s
 }
 

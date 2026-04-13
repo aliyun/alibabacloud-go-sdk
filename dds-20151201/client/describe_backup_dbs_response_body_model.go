@@ -22,7 +22,6 @@ type iDescribeBackupDBsResponseBody interface {
 }
 
 type DescribeBackupDBsResponseBody struct {
-	// The details of the databases.
 	Databases *DescribeBackupDBsResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The page number of the page returned.
 	//
@@ -147,11 +146,6 @@ func (s *DescribeBackupDBsResponseBodyDatabases) Validate() error {
 }
 
 type DescribeBackupDBsResponseBodyDatabasesDatabase struct {
-	// The name of the database.
-	//
-	// example:
-	//
-	// mongodbtest
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 }
 

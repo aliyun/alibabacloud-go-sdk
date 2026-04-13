@@ -21,8 +21,7 @@ type DescribeAvailableResourceResponseBody struct {
 	// example:
 	//
 	// 344EE51D-8850-4935-B68B-58A8F4DCE3BD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The supported database types.
+	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupportedDBTypes *DescribeAvailableResourceResponseBodySupportedDBTypes `json:"SupportedDBTypes,omitempty" xml:"SupportedDBTypes,omitempty" type:"Struct"`
 }
 
@@ -96,18 +95,8 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypes) Validate() error
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType struct {
-	// The available zones.
 	AvailableZones *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	// The architecture of the instance. Valid values:
-	//
-	// 	- **normal**: replica set instance
-	//
-	// 	- **sharding**: sharded cluster instance
-	//
-	// example:
-	//
-	// sharding
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbType         *string                                                                             `json:"DbType,omitempty" xml:"DbType,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBType) String() string {
@@ -180,20 +169,9 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone struct {
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The supported storage engine versions.
+	RegionId                *string                                                                                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportedEngineVersions *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId                  *string                                                                                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZone) String() string {
@@ -275,14 +253,8 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion struct {
-	// The supported storage engines.
 	SupportedEngines *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	// The database engine version of the instance.
-	//
-	// example:
-	//
-	// 4.0
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version          *string                                                                                                                                                       `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -355,13 +327,7 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngine struct {
-	// The storage engine of the instance.
-	//
-	// example:
-	//
-	// WiredTiger
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The supported instance types.
+	Engine             *string                                                                                                                                                                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	SupportedNodeTypes *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypes `json:"SupportedNodeTypes,omitempty" xml:"SupportedNodeTypes,omitempty" type:"Struct"`
 }
 
@@ -435,20 +401,9 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType struct {
-	// The details of the available resources.
 	AvailableResources *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
-	// The network type of the instance.
-	//
-	// example:
-	//
-	// VPC
-	NetworkTypes *string `json:"NetworkTypes,omitempty" xml:"NetworkTypes,omitempty"`
-	// The number of nodes in the instance.
-	//
-	// example:
-	//
-	// 3
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	NetworkTypes       *string                                                                                                                                                                                                                           `json:"NetworkTypes,omitempty" xml:"NetworkTypes,omitempty"`
+	NodeType           *string                                                                                                                                                                                                                           `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeType) String() string {
@@ -530,20 +485,9 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource struct {
-	// The storage capacity range of the instance.
 	DBInstanceStorageRange *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
-	// The instance family.
-	//
-	// example:
-	//
-	// mdb.shard.2x.xlarge.d
-	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The type of the instance.
-	//
-	// example:
-	//
-	// 4 cores, 8 GB (Dedicated) (Current instance type: mdb.shard.2x.xlarge.d (4 cores, 8 GB (Dedicated cloud-disk), maximum connections: 3000, maximum IOPS: min{1800 + 50 × Storage capacity, 21000}))
-	InstanceClassRemark *string `json:"InstanceClassRemark,omitempty" xml:"InstanceClassRemark,omitempty"`
+	InstanceClass          *string                                                                                                                                                                                                                                                                  `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	InstanceClassRemark    *string                                                                                                                                                                                                                                                                  `json:"InstanceClassRemark,omitempty" xml:"InstanceClassRemark,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResource) String() string {
@@ -591,23 +535,8 @@ func (s *DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAva
 }
 
 type DescribeAvailableResourceResponseBodySupportedDBTypesSupportedDBTypeAvailableZonesAvailableZoneSupportedEngineVersionsSupportedEngineVersionSupportedEnginesSupportedEngineSupportedNodeTypesSupportedNodeTypeAvailableResourcesAvailableResourceDBInstanceStorageRange struct {
-	// The maximum storage capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 16000
-	Max *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The minimum storage capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 20
-	Min *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
-	// The step size for adjusting the storage capacity. Unit: GB.
-	//
-	// example:
-	//
-	// 10
+	Max  *int32 `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min  *int32 `json:"Min,omitempty" xml:"Min,omitempty"`
 	Step *int32 `json:"Step,omitempty" xml:"Step,omitempty"`
 }
 

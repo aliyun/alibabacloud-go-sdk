@@ -9,6 +9,8 @@ type iDescribeReplicaSetRoleResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConnectionStringSuffix(v string) *DescribeReplicaSetRoleResponseBody
+	GetConnectionStringSuffix() *string
 	SetDBInstanceId(v string) *DescribeReplicaSetRoleResponseBody
 	GetDBInstanceId() *string
 	SetReplicaSets(v *DescribeReplicaSetRoleResponseBodyReplicaSets) *DescribeReplicaSetRoleResponseBody
@@ -18,14 +20,14 @@ type iDescribeReplicaSetRoleResponseBody interface {
 }
 
 type DescribeReplicaSetRoleResponseBody struct {
+	ConnectionStringSuffix *string `json:"ConnectionStringSuffix,omitempty" xml:"ConnectionStringSuffix,omitempty"`
 	// The instance ID.
 	//
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The details of the roles of the replica set instance.
-	ReplicaSets *DescribeReplicaSetRoleResponseBodyReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
+	DBInstanceId *string                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ReplicaSets  *DescribeReplicaSetRoleResponseBodyReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -42,6 +44,10 @@ func (s DescribeReplicaSetRoleResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeReplicaSetRoleResponseBody) GetConnectionStringSuffix() *string {
+	return s.ConnectionStringSuffix
+}
+
 func (s *DescribeReplicaSetRoleResponseBody) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
@@ -52,6 +58,11 @@ func (s *DescribeReplicaSetRoleResponseBody) GetReplicaSets() *DescribeReplicaSe
 
 func (s *DescribeReplicaSetRoleResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribeReplicaSetRoleResponseBody) SetConnectionStringSuffix(v string) *DescribeReplicaSetRoleResponseBody {
+	s.ConnectionStringSuffix = &v
+	return s
 }
 
 func (s *DescribeReplicaSetRoleResponseBody) SetDBInstanceId(v string) *DescribeReplicaSetRoleResponseBody {
@@ -113,58 +124,13 @@ func (s *DescribeReplicaSetRoleResponseBodyReplicaSets) Validate() error {
 }
 
 type DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet struct {
-	// The endpoint of the node.
-	//
-	// example:
-	//
-	// dds-bpxxxxxxxx.mongodb.rds.aliyuncs.com
 	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The port number that is used to connect to the node.
-	//
-	// example:
-	//
-	// 3717
-	ConnectionPort *string `json:"ConnectionPort,omitempty" xml:"ConnectionPort,omitempty"`
-	// The connection type of the node.
-	//
-	// example:
-	//
-	// SRV
-	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The remaining duration of the classic network endpoint. Unit: seconds.
-	//
-	// example:
-	//
-	// 1209582
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **VPC**: the virtual private cloud (VPC)
-	//
-	// 	- **Classic**: the classic network
-	//
-	// 	- **Public**: the Internet
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The role of the node in the replica set instance. Valid values:
-	//
-	// 	- **Primary**
-	//
-	// 	- **Secondary**
-	//
-	// example:
-	//
-	// Primary
-	ReplicaSetRole *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
-	// The role ID of the node.
-	//
-	// example:
-	//
-	// 651xxxxx
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	ConnectionPort   *string `json:"ConnectionPort,omitempty" xml:"ConnectionPort,omitempty"`
+	ConnectionType   *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	ExpiredTime      *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	NetworkType      *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ReplicaSetRole   *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
+	RoleId           *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 }
 
 func (s DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet) String() string {

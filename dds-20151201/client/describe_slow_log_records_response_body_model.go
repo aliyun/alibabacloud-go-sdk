@@ -29,9 +29,8 @@ type DescribeSlowLogRecordsResponseBody struct {
 	// example:
 	//
 	// MongoDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// An array that consists of the information about each slow query.
-	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Engine *string                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Items  *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page. The value is a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
@@ -164,66 +163,16 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyItemsLogRecords struct {
-	// The username of the database account that performs the operation.
-	//
-	// example:
-	//
-	// test
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// mongodbtest
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The number of documents that are scanned during the operation.
-	//
-	// example:
-	//
-	// 1000000
-	DocsExamined *int64 `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
-	// The start time of the operation. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-25T 01:41:28Z
+	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	DocsExamined       *int64  `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
-	// The host IP address that is used to connect to the database.
-	//
-	// example:
-	//
-	// 192.168.XX.XX
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The number of rows involved in index scans.
-	//
-	// example:
-	//
-	// 0
-	KeysExamined *int64 `json:"KeysExamined,omitempty" xml:"KeysExamined,omitempty"`
-	// The execution time of the statement. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 600
-	QueryTimes *string `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
-	// The number of rows returned by the SQL statement.
-	//
-	// example:
-	//
-	// 0
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// The SQL statement that is executed during the slow operation.
-	//
-	// example:
-	//
-	// {\\"op\\":\\"query\\",\\"ns\\":\\"mongodbtest.customer\\",\\"query\\":{\\"find\\":\\"customer\\",\\"filter\\":{\\"name\\":\\"jack\\"}}}
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The name of the collection.
-	//
-	// example:
-	//
-	// C1
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	HostAddress        *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	KeysExamined       *int64  `json:"KeysExamined,omitempty" xml:"KeysExamined,omitempty"`
+	QueryTimes         *string `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
+	ReturnRowCounts    *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	SQLText            *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	TableName          *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsResponseBodyItemsLogRecords) String() string {

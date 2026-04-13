@@ -22,7 +22,6 @@ type iDescribeRestoreDBInstanceListResponseBody interface {
 }
 
 type DescribeRestoreDBInstanceListResponseBody struct {
-	// DB instances list.
 	DBInstances *DescribeRestoreDBInstanceListResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,110 +146,18 @@ func (s *DescribeRestoreDBInstanceListResponseBodyDBInstances) Validate() error 
 }
 
 type DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance struct {
-	// The time of instance creation, formatted as <i>yyyy-MM-dd</i>T<i>HH:00:00</i>Z (UTC time).
-	//
-	// example:
-	//
-	// 2022-01-02T07:43:59Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the instance.
-	//
-	// example:
-	//
-	// test-database
+	CreationTime          *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// dds-bp12c5b040dc****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The architecture of the instance. Valid values:
-	//
-	// 	- **sharding**: sharded cluster instance
-	//
-	// 	- **replicate**: replica set or standalone instance
-	//
-	// example:
-	//
-	// replicate
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The database engine version of the instance. Valid values:
-	//
-	// 	- **7.0**
-	//
-	// 	- **6.0**
-	//
-	// 	- **5.0**
-	//
-	// 	- **4.4**
-	//
-	// 	- **4.2**
-	//
-	// 	- **4.0**
-	//
-	// 	- **3.4**
-	//
-	// example:
-	//
-	// 4.2
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The secondary availability zone 2 for the instance when implementing multi-AZ deployment.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
-	// Specifies whether the instance is deleted. Valid values:
-	//
-	// 	- **0**: not deleted
-	//
-	// 	- **1**: deleted
-	//
-	// example:
-	//
-	// 0
-	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The locked state of the instance, value description:
-	//
-	// - Unlock: Normal.
-	//
-	// - ManualLock: Manually triggered lock.
-	//
-	// - LockByExpiration: Automatically locked due to expiration.
-	//
-	// - LockByRestoration: Automatically locked before restoration.
-	//
-	// - LockByDiskQuota: Automatically locked due to disk quota exceeded.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The secondary availability zone 1 for the instance when implementing multi-AZ deployment.
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The zone ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	DBInstanceId          *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceStatus      *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceType        *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	HiddenZoneId          *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
+	IsDeleted             *int32  `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LockMode              *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecondaryZoneId       *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	ZoneId                *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRestoreDBInstanceListResponseBodyDBInstancesDBInstance) String() string {

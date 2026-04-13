@@ -22,7 +22,6 @@ type iDescribeBackupsResponseBody interface {
 }
 
 type DescribeBackupsResponseBody struct {
-	// The details of the backup set.
 	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -153,131 +152,23 @@ func (s *DescribeBackupsResponseBodyBackups) Validate() error {
 }
 
 type DescribeBackupsResponseBodyBackupsBackup struct {
-	// The name of the database that has been backed up.
-	//
-	// example:
-	//
-	// database
-	BackupDBNames *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
-	// The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, an empty string is returned.
-	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	// The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-01-14T03:57:34Z
-	BackupEndTime    *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupExpireTime *string `json:"BackupExpireTime,omitempty" xml:"BackupExpireTime,omitempty"`
-	// The ID of the backup set.
-	//
-	// example:
-	//
-	// 32102****
-	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The internal download URL of the backup set.
-	//
-	// >  You can use the URL to download the specified backup set on an Elastic Compute Service (ECS) instance that is in the same virtual private cloud (VPC) as the ApsaraDB for MongoDB instance.
+	BackupDBNames             *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
+	BackupDownloadURL         *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime             *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupExpireTime          *string `json:"BackupExpireTime,omitempty" xml:"BackupExpireTime,omitempty"`
+	BackupId                  *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	BackupIntranetDownloadURL *string `json:"BackupIntranetDownloadURL,omitempty" xml:"BackupIntranetDownloadURL,omitempty"`
-	// The ID of the backup task.
-	//
-	// example:
-	//
-	// 1123xxxx
-	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
-	// The method that is used to generate the backup set. Valid values:
-	//
-	// 	- **Snapshot**
-	//
-	// 	- **Physical**
-	//
-	// 	- **Logical**
-	//
-	// example:
-	//
-	// Physical
-	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup mode of the backup set. Valid values:
-	//
-	// 	- **Automated**
-	//
-	// 	- **Manual**
-	//
-	// example:
-	//
-	// Automated
-	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The name of the backup set. The parameter is invalid.
-	//
-	// example:
-	//
-	// 12345678.tar.gz
-	BackupName *string `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
-	// The backup granularity. The parameter is invalid.
-	//
-	// example:
-	//
-	// DBInstance
-	BackupScale *string `json:"BackupScale,omitempty" xml:"BackupScale,omitempty"`
-	// The size of the backup set. Unit: bytes.
-	//
-	// example:
-	//
-	// 6168576
-	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-01-14T03:56:17Z
-	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The status of the backup task. Valid values:
-	//
-	// 	- **Success**: The backup task is successful.
-	//
-	// 	- **Failed**: The backup task failed.
-	//
-	// example:
-	//
-	// Success
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type. Valid values:
-	//
-	// 	- **FullBackup**
-	//
-	// 	- **IncrementalBackup**
-	//
-	// example:
-	//
-	// FullBackup
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// Version of the backuped instance.
-	//
-	// 	- **6.0**
-	//
-	// 	- **5.0**
-	//
-	// 	- **4.4**
-	//
-	// 	- **4.2**
-	//
-	// 	- **4.0**
-	//
-	// 	- **3.4**
-	//
-	// example:
-	//
-	// 4.2
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// Availability of the backup set.
-	//
-	// - 0: unavailable
-	//
-	// - 1: available
-	//
-	// example:
-	//
-	// 1
-	IsAvail *bool `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	BackupJobId               *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
+	BackupMethod              *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode                *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupName                *string `json:"BackupName,omitempty" xml:"BackupName,omitempty"`
+	BackupScale               *string `json:"BackupScale,omitempty" xml:"BackupScale,omitempty"`
+	BackupSize                *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime           *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStatus              *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType                *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	EngineVersion             *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	IsAvail                   *bool   `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyBackupsBackup) String() string {

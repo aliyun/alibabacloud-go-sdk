@@ -16,7 +16,6 @@ type iDescribeSecurityGroupConfigurationResponseBody interface {
 }
 
 type DescribeSecurityGroupConfigurationResponseBody struct {
-	// Details about the ECS security groups.
 	Items *DescribeSecurityGroupConfigurationResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeSecurityGroupConfigurationResponseBodyItems) Validate() error {
 }
 
 type DescribeSecurityGroupConfigurationResponseBodyItemsRdsEcsSecurityGroupRel struct {
-	// The network type of the ECS security group. Valid values:
-	//
-	// 	- **vpc**
-	//
-	// 	- **classic**
-	//
-	// example:
-	//
-	// vpc
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The region ID of the ECS security group.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the ECS security group.
-	//
-	// example:
-	//
-	// sg-bpxxxxxxxx
+	NetType         *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 

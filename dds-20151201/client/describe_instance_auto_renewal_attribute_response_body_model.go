@@ -22,7 +22,6 @@ type iDescribeInstanceAutoRenewalAttributeResponseBody interface {
 }
 
 type DescribeInstanceAutoRenewalAttributeResponseBody struct {
-	// Details about returned entries.
 	Items *DescribeInstanceAutoRenewalAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
@@ -147,48 +146,11 @@ func (s *DescribeInstanceAutoRenewalAttributeResponseBodyItems) Validate() error
 }
 
 type DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem struct {
-	// Indicates whether auto-renewal is enabled for the instance. Valid values:
-	//
-	// 	- **true**: Auto-renewal is enabled for the instance.
-	//
-	// 	- **false**: Auto-renewal is disabled for the instance.
-	//
-	// example:
-	//
-	// true
-	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The category of the instance. Valid values:
-	//
-	// 	- **replicate**: the standalone or replica set instance
-	//
-	// 	- **sharding**: the sharded cluster instance
-	//
-	// example:
-	//
-	// replicate
+	AutoRenew      *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// dds-bp2568*****
-	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// The auto-renewal period. Unit: months.
-	//
-	// > 	- This parameter is ruturned only when the returned value of the **AutoRenew*	- parameter is **true**.
-	//
-	// > 	- You can call the [ModifyInstanceAutoRenewalAttribute](https://help.aliyun.com/document_detail/145979.html) operation to modify the auto-renewal period.
-	//
-	// example:
-	//
-	// 1
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DbInstanceId   *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem) String() string {

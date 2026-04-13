@@ -39,9 +39,8 @@ type DescribeParameterTemplatesResponseBody struct {
 	// example:
 	//
 	// 10
-	ParameterCount *string `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	// Details about the parameter templates.
-	Parameters *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	ParameterCount *string                                           `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
+	Parameters     *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -147,50 +146,12 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) Validate() error {
 }
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
-	// The value range of modifiable parameters.
-	//
-	// example:
-	//
-	// [0-65536]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether the parameter is modifiable.
-	//
-	// 	- **false**: The parameter cannot be modified.
-	//
-	// 	- **true**: The parameter can be modified.
-	//
-	// example:
-	//
-	// true
-	ForceModify *bool `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
-	// Indicates whether a restart is required for parameter modifications to take effect.
-	//
-	// 	- **false**: A restart is not required. Parameter modifications immediately take effect.
-	//
-	// 	- **true**: A restart is required for parameter modifications to take effect.
-	//
-	// example:
-	//
-	// false
-	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// The threshold in milliseconds at which the database profiler considers a query slow, default is 100.
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceModify          *bool   `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
+	ForceRestart         *bool   `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// net.compression.compressors
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The default value of the parameter.
-	//
-	// example:
-	//
-	// 100
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyParametersTemplateRecord) String() string {

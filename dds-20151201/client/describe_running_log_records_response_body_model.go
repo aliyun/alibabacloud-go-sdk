@@ -29,9 +29,8 @@ type DescribeRunningLogRecordsResponseBody struct {
 	// example:
 	//
 	// MongoDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// Details about the operational log entries.
-	Items *DescribeRunningLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Engine *string                                     `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Items  *DescribeRunningLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The number of the page to return.
 	//
 	// example:
@@ -164,29 +163,9 @@ func (s *DescribeRunningLogRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeRunningLogRecordsResponseBodyItemsLogRecords struct {
-	// The category of the log entry.
-	//
-	// example:
-	//
-	// NETWORK
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The connection information of the log entry.
-	//
-	// example:
-	//
-	// conn18xxxxxx
-	ConnInfo *string `json:"ConnInfo,omitempty" xml:"ConnInfo,omitempty"`
-	// The content of the log entry.
-	//
-	// example:
-	//
-	// end connection 11.xxx.xxx.xx:3xxxx (0 connections now open)\\n
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The time when the log entry was generated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-26T12:09:34Z
+	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ConnInfo   *string `json:"ConnInfo,omitempty" xml:"ConnInfo,omitempty"`
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 }
 

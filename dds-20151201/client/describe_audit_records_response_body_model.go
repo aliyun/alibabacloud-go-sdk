@@ -22,7 +22,6 @@ type iDescribeAuditRecordsResponseBody interface {
 }
 
 type DescribeAuditRecordsResponseBody struct {
-	// An array that consists of the information of audit log entries.
 	Items *DescribeAuditRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,60 +146,15 @@ func (s *DescribeAuditRecordsResponseBodyItems) Validate() error {
 }
 
 type DescribeAuditRecordsResponseBodyItemsSQLRecord struct {
-	// The account of the database.
-	//
-	// example:
-	//
-	// test
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The name of the database.
-	//
-	// example:
-	//
-	// test123
-	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the statement was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-03-11T03:30:27Z
-	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The IP addresses of the client.
-	//
-	// example:
-	//
-	// 11.xxx.xxx.xxx
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The number of SQL audit log entries that are returned.
-	//
-	// example:
-	//
-	// 2
-	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// The statement that was executed.
-	//
-	// example:
-	//
-	// { \\"atype\\" : \\"createCollection\\", \\"param\\" : { \\"ns\\" : \\"123.test1\\" }, \\"result\\": \\"OK\\" }
-	Syntax *string `json:"Syntax,omitempty" xml:"Syntax,omitempty"`
-	// The name of the collection.
-	//
-	// example:
-	//
-	// C1
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The ID of the thread.
-	//
-	// example:
-	//
-	// 140682188297984
-	ThreadID *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
-	// The duration of the statement execution. Unit: microseconds.
-	//
-	// example:
-	//
-	// 700
-	TotalExecutionTimes *int64 `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
+	AccountName         *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	DBName              *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	ExecuteTime         *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	HostAddress         *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	ReturnRowCounts     *int64  `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	Syntax              *string `json:"Syntax,omitempty" xml:"Syntax,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ThreadID            *string `json:"ThreadID,omitempty" xml:"ThreadID,omitempty"`
+	TotalExecutionTimes *int64  `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
 }
 
 func (s DescribeAuditRecordsResponseBodyItemsSQLRecord) String() string {

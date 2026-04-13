@@ -23,8 +23,7 @@ type DescribeSecurityIpsResponseBody struct {
 	// example:
 	//
 	// FC724D23-2962-479E-ABB1-606C935AE7FD
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information of IP whitelists.
+	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityIpGroups *DescribeSecurityIpsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Struct"`
 	// The IP addresses in the default whitelist.
 	//
@@ -113,24 +112,9 @@ func (s *DescribeSecurityIpsResponseBodySecurityIpGroups) Validate() error {
 }
 
 type DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup struct {
-	// The attribute of the IP address whitelist.
-	//
-	// example:
-	//
-	// hidden
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
-	// The name of the IP whitelist.
-	//
-	// example:
-	//
-	// default
-	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	// The name of the IP whitelist.
-	//
-	// example:
-	//
-	// 47.xxx.xxx.xx,100.xxx.xxx.0/24
-	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+	SecurityIpGroupName      *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	SecurityIpList           *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 }
 
 func (s DescribeSecurityIpsResponseBodySecurityIpGroupsSecurityIpGroup) String() string {

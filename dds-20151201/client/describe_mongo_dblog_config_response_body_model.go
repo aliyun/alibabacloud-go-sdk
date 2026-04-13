@@ -11,6 +11,8 @@ type iDescribeMongoDBLogConfigResponseBody interface {
 	GoString() string
 	SetEnableAudit(v bool) *DescribeMongoDBLogConfigResponseBody
 	GetEnableAudit() *bool
+	SetHotTtlForV2Standard(v int64) *DescribeMongoDBLogConfigResponseBody
+	GetHotTtlForV2Standard() *int64
 	SetIsEtlMetaExist(v int32) *DescribeMongoDBLogConfigResponseBody
 	GetIsEtlMetaExist() *int32
 	SetIsUserProjectLogstoreExist(v int32) *DescribeMongoDBLogConfigResponseBody
@@ -27,6 +29,8 @@ type iDescribeMongoDBLogConfigResponseBody interface {
 	GetTtlForStandard() *int64
 	SetTtlForTrail(v int64) *DescribeMongoDBLogConfigResponseBody
 	GetTtlForTrail() *int64
+	SetTtlForV2Standard(v int64) *DescribeMongoDBLogConfigResponseBody
+	GetTtlForV2Standard() *int64
 	SetUsedStorageForStandard(v int64) *DescribeMongoDBLogConfigResponseBody
 	GetUsedStorageForStandard() *int64
 	SetUsedStorageForTrail(v int64) *DescribeMongoDBLogConfigResponseBody
@@ -45,7 +49,8 @@ type DescribeMongoDBLogConfigResponseBody struct {
 	// example:
 	//
 	// true
-	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	EnableAudit         *bool  `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	HotTtlForV2Standard *int64 `json:"HotTtlForV2Standard,omitempty" xml:"HotTtlForV2Standard,omitempty"`
 	// Indicates whether a rule to distribute logs to Logtail is created. For more information, see [Logtail overview](https://help.aliyun.com/document_detail/28979.html). Valid values:
 	//
 	// 	- **1**: A rule to distribute logs to Logtail is created.
@@ -105,7 +110,8 @@ type DescribeMongoDBLogConfigResponseBody struct {
 	// example:
 	//
 	// 1
-	TtlForTrail *int64 `json:"TtlForTrail,omitempty" xml:"TtlForTrail,omitempty"`
+	TtlForTrail      *int64 `json:"TtlForTrail,omitempty" xml:"TtlForTrail,omitempty"`
+	TtlForV2Standard *int64 `json:"TtlForV2Standard,omitempty" xml:"TtlForV2Standard,omitempty"`
 	// The used storage capacity for the formal edition of the audit log feature. Unit: bytes.
 	//
 	// example:
@@ -136,6 +142,10 @@ func (s DescribeMongoDBLogConfigResponseBody) GoString() string {
 
 func (s *DescribeMongoDBLogConfigResponseBody) GetEnableAudit() *bool {
 	return s.EnableAudit
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) GetHotTtlForV2Standard() *int64 {
+	return s.HotTtlForV2Standard
 }
 
 func (s *DescribeMongoDBLogConfigResponseBody) GetIsEtlMetaExist() *int32 {
@@ -170,6 +180,10 @@ func (s *DescribeMongoDBLogConfigResponseBody) GetTtlForTrail() *int64 {
 	return s.TtlForTrail
 }
 
+func (s *DescribeMongoDBLogConfigResponseBody) GetTtlForV2Standard() *int64 {
+	return s.TtlForV2Standard
+}
+
 func (s *DescribeMongoDBLogConfigResponseBody) GetUsedStorageForStandard() *int64 {
 	return s.UsedStorageForStandard
 }
@@ -184,6 +198,11 @@ func (s *DescribeMongoDBLogConfigResponseBody) GetUserProjectName() *string {
 
 func (s *DescribeMongoDBLogConfigResponseBody) SetEnableAudit(v bool) *DescribeMongoDBLogConfigResponseBody {
 	s.EnableAudit = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetHotTtlForV2Standard(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.HotTtlForV2Standard = &v
 	return s
 }
 
@@ -224,6 +243,11 @@ func (s *DescribeMongoDBLogConfigResponseBody) SetTtlForStandard(v int64) *Descr
 
 func (s *DescribeMongoDBLogConfigResponseBody) SetTtlForTrail(v int64) *DescribeMongoDBLogConfigResponseBody {
 	s.TtlForTrail = &v
+	return s
+}
+
+func (s *DescribeMongoDBLogConfigResponseBody) SetTtlForV2Standard(v int64) *DescribeMongoDBLogConfigResponseBody {
+	s.TtlForV2Standard = &v
 	return s
 }
 

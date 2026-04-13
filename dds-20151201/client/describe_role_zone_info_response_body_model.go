@@ -21,8 +21,7 @@ type DescribeRoleZoneInfoResponseBody struct {
 	// example:
 	//
 	// 728B9A96-E262-4AE5-915E-3A51CCE2FDA9
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of nodes in the zone.
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ZoneInfos *DescribeRoleZoneInfoResponseBodyZoneInfos `json:"ZoneInfos,omitempty" xml:"ZoneInfos,omitempty" type:"Struct"`
 }
 
@@ -96,52 +95,11 @@ func (s *DescribeRoleZoneInfoResponseBodyZoneInfos) Validate() error {
 }
 
 type DescribeRoleZoneInfoResponseBodyZoneInfosZoneInfo struct {
-	// The ID of the node.
-	//
-	// example:
-	//
-	// dds-bpxxxxxxxx
-	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The type of the node. Valid values:
-	//
-	// 	- **normal**
-	//
-	// 	- **configServer**
-	//
-	// 	- **shard**
-	//
-	// 	- **mongos**
-	//
-	// > Valid value for replica set instances: **normal**. Valid values for sharded cluster instances: **configServer**, **shard**, and **mongos**.
-	//
-	// example:
-	//
-	// normal
+	InsName  *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The role ID.
-	//
-	// example:
-	//
-	// 83xxxxx
-	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The role of the node. Valid values:
-	//
-	// 	- **Primary**
-	//
-	// 	- **Secondary**
-	//
-	// 	- **Hidden**
-	//
-	// example:
-	//
-	// Primary
+	RoleId   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The zone ID of the node.
-	//
-	// example:
-	//
-	// cn-hangzhou-e
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRoleZoneInfoResponseBodyZoneInfosZoneInfo) String() string {

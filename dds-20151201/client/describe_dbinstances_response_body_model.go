@@ -22,7 +22,6 @@ type iDescribeDBInstancesResponseBody interface {
 }
 
 type DescribeDBInstancesResponseBody struct {
-	// The details of the instance.
 	DBInstances *DescribeDBInstancesResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,326 +146,36 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstance struct {
-	// The backup retention policy configured for the instance. Valid values:
-	//
-	// 	- **0**: All backup sets of the instance are immediately deleted when the instance is released.
-	//
-	// 	- **1**: A backup set of the instance is automatically backed up and retained for a long period of time when the instance is released.
-	//
-	// 	- **2**: All backup sets of the instance are automatically backed up and retained for a long period of time when the instance is released.
-	//
-	// example:
-	//
-	// 1
-	BackupRetentionPolicy *int32 `json:"BackupRetentionPolicy,omitempty" xml:"BackupRetentionPolicy,omitempty"`
-	// The I/O throughput consumed by the instance.
-	//
-	// >  This parameter is required only when the instance is a serverless instance.
-	//
-	// example:
-	//
-	// 100
-	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **PrePaid**: subscription
-	//
-	// 	- **PostPaid:*	- pay-as-you-go
-	//
-	// example:
-	//
-	// PrePaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-03-25T02:18:00Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance type of the instance.
-	//
-	// example:
-	//
-	// dds.mongo.mid
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The description of the instance.
-	//
-	// example:
-	//
-	// Test database
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// dds-bp18b0934e70****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The storage capacity of the instance.
-	//
-	// example:
-	//
-	// 20
-	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The architecture of the instance.
-	//
-	// 	- **sharding**: sharded cluster instance
-	//
-	// 	- **replicate**: replica set or standalone instance
-	//
-	// example:
-	//
-	// sharding
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The time when the instance data is destroyed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// > 	- For a subscription instance, the computing resources of the instance are released on the 16th day after expiration, and the data of the instance is retained for seven days. The data is deleted on the 23th day after expiration and cannot be restored.
-	//
-	// > 	- For a pay-as-you-go instance, the computing resources of the instance are released on the 16th day after the payment becomes overdue, and the data of the instance is retained for seven days. The data is deleted on the 23th day after the payment becomes overdue and cannot be restored.
-	//
-	// example:
-	//
-	// 2021-12-10T16:00:00Z
-	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	// The engine of the instance.
-	//
-	// example:
-	//
-	// MongoDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Valid values:
-	//
-	// 	- **7.0**
-	//
-	// 	- **6.0**
-	//
-	// 	- **5.0**
-	//
-	// 	- **4.4**
-	//
-	// 	- **4.2**
-	//
-	// 	- **4.0**
-	//
-	// 	- **3.4**
-	//
-	// example:
-	//
-	// 4.2
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-11-25T16:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The secondary zone 2 of the instance in the multi-zone deployment. Valid values:
-	//
-	// 	- **cn-hangzhou-g**: Hangzhou Zone G
-	//
-	// 	- **cn-hangzhou-h**: Hangzhou Zone H
-	//
-	// 	- **cn-hangzhou-i**: Hangzhou Zone I
-	//
-	// 	- **cn-hongkong-b**: Hong Kong Zone B
-	//
-	// 	- **cn-hongkong-c**: Hong Kong Zone C
-	//
-	// 	- **cn-hongkong-d**: Hong Kong Zone D
-	//
-	// 	- **cn-wulanchabu-a**: Ulanqab Zone A
-	//
-	// 	- **cn-wulanchabu-b**: Ulanqab Zone B
-	//
-	// 	- **cn-wulanchabu-c**: Ulanqab Zone C
-	//
-	// 	- **ap-southeast-1a**: Singapore Zone A
-	//
-	// 	- **ap-southeast-1b**: Singapore Zone B
-	//
-	// 	- **ap-southeast-1c**: Singapore Zone C
-	//
-	// 	- **ap-southeast-5a**: Jakarta Zone A
-	//
-	// 	- **ap-southeast-5b**: Jakarta Zone B
-	//
-	// 	- **ap-southeast-5c**: Jakarta Zone C
-	//
-	// 	- **eu-central-1a**: Frankfurt Zone A
-	//
-	// 	- **eu-central-1b**: Frankfurt Zone B
-	//
-	// 	- **eu-central-1c**: Frankfurt Zone C
-	//
-	// > 	- This parameter is returned only when the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses the multi-zone deployment.
-	//
-	// > 	- This parameter is returned only if you use the China site (aliyun.com).
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
-	// The kind code of the instance. Valid values:
-	//
-	// 	- **0**: physical machine
-	//
-	// 	- **1**: Elastic Compute Service (ECS) instance
-	//
-	// 	- **2**: Docker cluster
-	//
-	// 	- **18**: Kubernetes cluster
-	//
-	// example:
-	//
-	// 1
-	KindCode *string `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The date when the last downgrade operation was performed.
-	//
-	// example:
-	//
-	// 2021-05-08
-	LastDowngradeTime *string `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
-	// The lock status of the instance. Valid values:
-	//
-	// 	- **Unlock**: The cluster is unlocked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before it is rolled back.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
-	//
-	// 	- **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The details of the mongos node.
-	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
-	MongosList *DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosList `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **Classic**: classic network
-	//
-	// 	- **VPC**: VPC
-	//
-	// example:
-	//
-	// Classic
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the instance was released.
-	//
-	// example:
-	//
-	// 2024-06-17T07:01Z
-	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The number of nodes in the instance.
-	//
-	// >  This parameter is returned if the instance is a replica set instance.
-	//
-	// example:
-	//
-	// 3
-	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The ID of the resource group to which the instance belongs.
-	//
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The secondary zone 1 of the instance in the multi-zone deployment. Valid values:
-	//
-	// 	- **cn-hangzhou-g**: Hangzhou Zone G
-	//
-	// 	- **cn-hangzhou-h**: Hangzhou Zone H
-	//
-	// 	- **cn-hangzhou-i**: Hangzhou Zone I
-	//
-	// 	- **cn-hongkong-b**: Hong Kong Zone B
-	//
-	// 	- **cn-hongkong-c**: Hong Kong Zone C
-	//
-	// 	- **cn-hongkong-d**: Hong Kong Zone D
-	//
-	// 	- **cn-wulanchabu-a**: Ulanqab Zone A
-	//
-	// 	- **cn-wulanchabu-b**: Ulanqab Zone B
-	//
-	// 	- **cn-wulanchabu-c**: Ulanqab Zone C
-	//
-	// 	- **ap-southeast-1a**: Singapore Zone A
-	//
-	// 	- **ap-southeast-1b**: Singapore Zone B
-	//
-	// 	- **ap-southeast-1c**: Singapore Zone C
-	//
-	// 	- **ap-southeast-5a**: Jakarta Zone A
-	//
-	// 	- **ap-southeast-5b**: Jakarta Zone B
-	//
-	// 	- **ap-southeast-5c**: Jakarta Zone C
-	//
-	// 	- **eu-central-1a**: Frankfurt Zone A
-	//
-	// 	- **eu-central-1b**: Frankfurt Zone B
-	//
-	// 	- **eu-central-1c**: Frankfurt Zone C
-	//
-	// > 	- This parameter is returned only when the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses the multi-zone deployment.
-	//
-	// > 	- This parameter is returned only if you use the China site (aliyun.com).
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The details of the shard node.
-	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
-	ShardList *DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
-	// The storage type of the instance. Valid values:
-	//
-	// 	- **cloud_essd**: Enterprise SSD (ESSD)
-	//
-	// 	- **local_ssd**: local SSD
-	//
-	// example:
-	//
-	// local_ssd
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The details of the tag.
-	Tags *DescribeDBInstancesResponseBodyDBInstancesDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Indicates whether password-free access over virtual private cloud (VPC) is enabled. Valid values:
-	//
-	// 	- **Open**: Password-free access over VPC is enabled.
-	//
-	// 	- **Close**: Password-free access over VPC is disabled.
-	//
-	// example:
-	//
-	// Close
-	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
-	// The zone ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	BackupRetentionPolicy *int32                                                          `json:"BackupRetentionPolicy,omitempty" xml:"BackupRetentionPolicy,omitempty"`
+	CapacityUnit          *string                                                         `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
+	ChargeType            *string                                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CreationTime          *string                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DBInstanceClass       *string                                                         `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription *string                                                         `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId          *string                                                         `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceStatus      *string                                                         `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorage     *int32                                                          `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	DBInstanceType        *string                                                         `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	DestroyTime           *string                                                         `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	Engine                *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion         *string                                                         `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime            *string                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HiddenZoneId          *string                                                         `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
+	KindCode              *string                                                         `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
+	LastDowngradeTime     *string                                                         `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
+	LockMode              *string                                                         `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MongosList            *DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosList `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
+	NetworkType           *string                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	RegionId              *string                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReleaseTime           *string                                                         `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	ReplicationFactor     *string                                                         `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
+	ResourceGroupId       *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryZoneId       *string                                                         `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	ShardList             *DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardList  `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
+	StorageType           *string                                                         `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags                  *DescribeDBInstancesResponseBodyDBInstancesDBInstanceTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcAuthMode           *string                                                         `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
+	ZoneId                *string                                                         `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyDBInstancesDBInstance) String() string {
@@ -801,24 +510,9 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosList) Validat
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosListMongosAttribute struct {
-	// The instance type of the mongos node.
-	//
-	// example:
-	//
-	// dds.mongos.standard
-	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The description of the mongos node.
-	//
-	// example:
-	//
-	// testmongosnode
+	NodeClass       *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The ID of the mongos node.
-	//
-	// example:
-	//
-	// s-bp10e3b0d02f****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyDBInstancesDBInstanceMongosListMongosAttribute) String() string {
@@ -895,36 +589,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardList) Validate
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardListShardAttribute struct {
-	// The instance type of the shard node.
-	//
-	// example:
-	//
-	// dds.shard.mid
-	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The description of the shard node.
-	//
-	// example:
-	//
-	// testshardnode
-	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The ID of the shard node.
-	//
-	// example:
-	//
-	// d-bp1cac6f2083****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the shard node. Unit: GB.
-	//
-	// example:
-	//
-	// 10
-	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
-	// The number of read-only nodes in the shard node. Valid values: **0*	- to **5**.
-	//
-	// example:
-	//
-	// 2
-	ReadonlyReplicas *int32 `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
+	NodeClass        *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	NodeDescription  *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
+	NodeId           *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeStorage      *int32  `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
+	ReadonlyReplicas *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardListShardAttribute) String() string {
@@ -1019,17 +688,7 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstanceTags) Validate() er
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesDBInstanceTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// api
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

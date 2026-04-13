@@ -26,7 +26,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-qingdao":                  dara.String("mongodb.aliyuncs.com"),
+		"cn-qingdao":                  dara.String("mongodb.cn-qingdao.aliyuncs.com"),
 		"cn-beijing":                  dara.String("mongodb.aliyuncs.com"),
 		"cn-zhangjiakou":              dara.String("mongodb.cn-zhangjiakou.aliyuncs.com"),
 		"cn-huhehaote":                dara.String("mongodb.cn-huhehaote.aliyuncs.com"),
@@ -54,7 +54,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shenzhen-finance-1":       dara.String("mongodb.cn-shenzhen-finance-1.aliyuncs.com"),
 		"cn-north-2-gov-1":            dara.String("mongodb.cn-north-2-gov-1.aliyuncs.com"),
 		"ap-northeast-2-pop":          dara.String("mongodb.aliyuncs.com"),
-		"cn-beijing-finance-1":        dara.String("mongodb.aliyuncs.com"),
+		"cn-beijing-finance-1":        dara.String("mongodb.cn-beijing-finance-1.aliyuncs.com"),
 		"cn-beijing-finance-pop":      dara.String("mongodb.aliyuncs.com"),
 		"cn-beijing-gov-1":            dara.String("mongodb.aliyuncs.com"),
 		"cn-beijing-nu16-b01":         dara.String("mongodb.aliyuncs.com"),
@@ -117,6 +117,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for an SRV endpoint for an ApsaraDB for MongoDB instance.
+//
 // @param request - AllocateDBInstanceSrvNetworkAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -181,6 +185,10 @@ func (client *Client) AllocateDBInstanceSrvNetworkAddressWithOptions(request *Al
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for an SRV endpoint for an ApsaraDB for MongoDB instance.
+//
 // @param request - AllocateDBInstanceSrvNetworkAddressRequest
 //
 // @return AllocateDBInstanceSrvNetworkAddressResponse
@@ -459,7 +467,7 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 
 // Summary:
 //
-// You can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+// Checks whether Key Management Service (KMS) keys are authorized to an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
@@ -527,7 +535,7 @@ func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckClou
 
 // Summary:
 //
-// You can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+// Checks whether Key Management Service (KMS) keys are authorized to an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
@@ -679,7 +687,7 @@ func (client *Client) CheckRecoveryCondition(request *CheckRecoveryConditionRequ
 
 // Summary:
 //
-// Queries whether a service-linked role is created.
+// Checks whether a service-linked role (SLR) is created for an instance.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -731,7 +739,7 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 
 // Summary:
 //
-// Queries whether a service-linked role is created.
+// Checks whether a service-linked role (SLR) is created for an instance.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -1833,7 +1841,7 @@ func (client *Client) CreateShardingDBInstance(request *CreateShardingDBInstance
 
 // Summary:
 //
-// 删除MongoDB备份集
+// Deletes the backup set of MongoDB.
 //
 // @param request - DeleteBackupRequest
 //
@@ -1897,7 +1905,7 @@ func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runt
 
 // Summary:
 //
-// 删除MongoDB备份集
+// Deletes the backup set of MongoDB.
 //
 // @param request - DeleteBackupRequest
 //
@@ -2547,6 +2555,10 @@ func (client *Client) DescribeActiveOperationTaskCount(request *DescribeActiveOp
 	return _result, _err
 }
 
+// Summary:
+//
+// Query maintenance task types and task quantities.
+//
 // @param request - DescribeActiveOperationTaskRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2607,6 +2619,10 @@ func (client *Client) DescribeActiveOperationTaskRegionWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Query maintenance task types and task quantities.
+//
 // @param request - DescribeActiveOperationTaskRegionRequest
 //
 // @return DescribeActiveOperationTaskRegionResponse
@@ -3307,7 +3323,7 @@ func (client *Client) DescribeAvailabilityZones(request *DescribeAvailabilityZon
 
 // Summary:
 //
-// You can call this operation to query the engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
+// Queries the engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
 //
 // @param request - DescribeAvailableEngineVersionRequest
 //
@@ -3367,7 +3383,7 @@ func (client *Client) DescribeAvailableEngineVersionWithOptions(request *Describ
 
 // Summary:
 //
-// You can call this operation to query the engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
+// Queries the engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
 //
 // @param request - DescribeAvailableEngineVersionRequest
 //
@@ -3719,7 +3735,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// Queries the storage used for backup in an ApsaraDB for MongoDB replica set or sharded cluster instance that uses cloud disks. Note that you are charged only for the backup-used storage of each shard in a sharded cluster instance. You can call this operation only to query the storage used by a single shard in the instance for backup.
+// Queries the backup storage capacity of an ApsaraDB for MongoDB replica set or sharded cluster instance that uses cloud disks.
 //
 // @param request - DescribeBackupStorageRequest
 //
@@ -3787,7 +3803,7 @@ func (client *Client) DescribeBackupStorageWithOptions(request *DescribeBackupSt
 
 // Summary:
 //
-// Queries the storage used for backup in an ApsaraDB for MongoDB replica set or sharded cluster instance that uses cloud disks. Note that you are charged only for the backup-used storage of each shard in a sharded cluster instance. You can call this operation only to query the storage used by a single shard in the instance for backup.
+// Queries the backup storage capacity of an ApsaraDB for MongoDB replica set or sharded cluster instance that uses cloud disks.
 //
 // @param request - DescribeBackupStorageRequest
 //
@@ -4000,6 +4016,124 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
 	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries binary log files bound to an ApsaraDB for MongoDB instance.
+//
+// @param request - DescribeBinlogFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBinlogFilesResponse
+func (client *Client) DescribeBinlogFilesWithOptions(request *DescribeBinlogFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBinlogFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BinlogId) {
+		query["BinlogId"] = request.BinlogId
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DestRegion) {
+		query["DestRegion"] = request.DestRegion
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SrcRegion) {
+		query["SrcRegion"] = request.SrcRegion
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBinlogFiles"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBinlogFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries binary log files bound to an ApsaraDB for MongoDB instance.
+//
+// @param request - DescribeBinlogFilesRequest
+//
+// @return DescribeBinlogFilesResponse
+func (client *Client) DescribeBinlogFiles(request *DescribeBinlogFilesRequest) (_result *DescribeBinlogFilesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBinlogFilesResponse{}
+	_body, _err := client.DescribeBinlogFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4711,7 +4845,7 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 
 // Summary:
 //
-// 查看规格信息详情
+// Queries the specifications of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstanceSpecInfoRequest
 //
@@ -4775,7 +4909,7 @@ func (client *Client) DescribeDBInstanceSpecInfoWithOptions(request *DescribeDBI
 
 // Summary:
 //
-// 查看规格信息详情
+// Queries the specifications of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstanceSpecInfoRequest
 //
@@ -7305,7 +7439,7 @@ func (client *Client) DescribeRoleZoneInfo(request *DescribeRoleZoneInfoRequest)
 
 // Summary:
 //
-// Queries entries in operational logs of an ApsaraDB for MongoDB instance.
+// Queries the operational logs of an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
@@ -7419,7 +7553,7 @@ func (client *Client) DescribeRunningLogRecordsWithOptions(request *DescribeRunn
 
 // Summary:
 //
-// Queries entries in operational logs of an ApsaraDB for MongoDB instance.
+// Queries the operational logs of an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
@@ -7443,7 +7577,7 @@ func (client *Client) DescribeRunningLogRecords(request *DescribeRunningLogRecor
 
 // Summary:
 //
-// You can call this operation to query ECS security groups that are bound to an ApsaraDB for MongoDB instance.
+// Queries the Elastic Compute Service (ECS) security groups that are associated with an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeSecurityGroupConfigurationRequest
 //
@@ -7503,7 +7637,7 @@ func (client *Client) DescribeSecurityGroupConfigurationWithOptions(request *Des
 
 // Summary:
 //
-// You can call this operation to query ECS security groups that are bound to an ApsaraDB for MongoDB instance.
+// Queries the Elastic Compute Service (ECS) security groups that are associated with an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeSecurityGroupConfigurationRequest
 //
@@ -8747,6 +8881,10 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the O\\\\\\&M task configurations for an instance.
+//
 // @param request - ModifyActiveOperationMaintenanceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8819,6 +8957,10 @@ func (client *Client) ModifyActiveOperationMaintenanceConfigWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the O\\\\\\&M task configurations for an instance.
+//
 // @param request - ModifyActiveOperationMaintenanceConfigRequest
 //
 // @return ModifyActiveOperationMaintenanceConfigResponse
@@ -8835,7 +8977,7 @@ func (client *Client) ModifyActiveOperationMaintenanceConfig(request *ModifyActi
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\\\\\&M tasks for an ApsaraDB for MongoDB instance.
+// Modifies the switching time of scheduled O\\\\\\\\\\\\&M tasks for an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -8907,7 +9049,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\\\\\&M tasks for an ApsaraDB for MongoDB instance.
+// Modifies the switching time of scheduled O\\\\\\\\\\\\&M tasks for an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -9060,6 +9202,10 @@ func (client *Client) ModifyAuditPolicyWithOptions(request *ModifyAuditPolicyReq
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.HotStoragePeriod) {
+		query["HotStoragePeriod"] = request.HotStoragePeriod
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -9133,7 +9279,7 @@ func (client *Client) ModifyAuditPolicy(request *ModifyAuditPolicyRequest) (_res
 
 // Summary:
 //
-// 修改MongoDB备份集的过期时间
+// # Modifies the expiration time of MongoDB backup sets
 //
 // @param request - ModifyBackupExpireTimeRequest
 //
@@ -9201,7 +9347,7 @@ func (client *Client) ModifyBackupExpireTimeWithOptions(request *ModifyBackupExp
 
 // Summary:
 //
-// 修改MongoDB备份集的过期时间
+// # Modifies the expiration time of MongoDB backup sets
 //
 // @param request - ModifyBackupExpireTimeRequest
 //
@@ -9383,6 +9529,10 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies existing release protection configurations.
+//
 // @param request - ModifyDBInstanceAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9443,6 +9593,10 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies existing release protection configurations.
+//
 // @param request - ModifyDBInstanceAttributeRequest
 //
 // @return ModifyDBInstanceAttributeResponse
@@ -9459,7 +9613,7 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 
 // Summary:
 //
-// 修改实例配置
+// Modifies the configurations of an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -9527,7 +9681,7 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 
 // Summary:
 //
-// 修改实例配置
+// Modifies the configurations of an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -9576,6 +9730,14 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.ForceModifySuffix) {
+		query["ForceModifySuffix"] = request.ForceModifySuffix
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		query["NetworkType"] = request.NetworkType
+	}
+
 	if !dara.IsNil(request.NewConnectionString) {
 		query["NewConnectionString"] = request.NewConnectionString
 	}
@@ -9594,6 +9756,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PortModifyOnly) {
+		query["PortModifyOnly"] = request.PortModifyOnly
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -11811,7 +11977,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// 修改MongoDB实例的SRV连接地址
+// Modifies the SRV connection string that is used to connect to an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifySrvNetworkAddressRequest
 //
@@ -11879,7 +12045,7 @@ func (client *Client) ModifySrvNetworkAddressWithOptions(request *ModifySrvNetwo
 
 // Summary:
 //
-// 修改MongoDB实例的SRV连接地址
+// Modifies the SRV connection string that is used to connect to an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifySrvNetworkAddressRequest
 //

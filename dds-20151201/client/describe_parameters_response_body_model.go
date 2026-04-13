@@ -22,7 +22,6 @@ type iDescribeParametersResponseBody interface {
 }
 
 type DescribeParametersResponseBody struct {
-	// The parameter settings in the configuration template.
 	ConfigParameters *DescribeParametersResponseBodyConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Struct"`
 	// The database engine of the instance. Default value: **mongodb**.
 	//
@@ -41,8 +40,7 @@ type DescribeParametersResponseBody struct {
 	// example:
 	//
 	// 3ADD0C7D-2D2A-4F15-88FF-E7AC9B9FDCC8
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The settings of the parameters that have taken effect.
+	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -148,50 +146,12 @@ func (s *DescribeParametersResponseBodyConfigParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyConfigParametersParameter struct {
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// [0-65536]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
-	//
-	// 	- **false**: A restart is not required. Modifications take effect immediately.
-	//
-	// 	- **true**: A restart is required for parameter modifications to take effect.
-	//
-	// example:
-	//
-	// true
-	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter value can be modified. Valid values:
-	//
-	// 	- **false**: The parameter value cannot be modified.
-	//
-	// 	- **true**: The parameter value can be modified.
-	//
-	// example:
-	//
-	// true
-	ModifiableStatus *bool `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// The threshold in milliseconds at which the database profiler considers a query slow, default is 100.
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceRestart         *bool   `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ModifiableStatus     *bool   `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// operationProfiling.slowOpThresholdMs
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// 200
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyConfigParametersParameter) String() string {
@@ -295,62 +255,13 @@ func (s *DescribeParametersResponseBodyRunningParameters) Validate() error {
 }
 
 type DescribeParametersResponseBodyRunningParametersParameter struct {
-	// 实例的角色类型，取值说明：
-	//
-	// - **db**：shard角色。
-	//
-	// - **cs**：config server角色。
-	//
-	// - **mongos**：mongos角色。
-	//
-	// example:
-	//
-	// db
-	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The valid values of the parameter.
-	//
-	// example:
-	//
-	// [33554432-268435456]
-	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
-	//
-	// 	- **false**: A restart is not required. Modifications take effect immediately.
-	//
-	// 	- **true**: A restart is required for parameter modifications to take effect.
-	//
-	// example:
-	//
-	// false
-	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Indicates whether the parameter value can be modified. Valid values:
-	//
-	// 	- **false**: The parameter value cannot be modified.
-	//
-	// 	- **true**: The parameter value can be modified.
-	//
-	// example:
-	//
-	// true
-	ModifiableStatus *string `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
-	// The description of the parameter.
-	//
-	// example:
-	//
-	// The maximum memory bytes that sort stage may use, default is 33554432(i.e. 32MB)
+	CharacterType        *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	ForceRestart         *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	ModifiableStatus     *string `json:"ModifiableStatus,omitempty" xml:"ModifiableStatus,omitempty"`
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// setParameter.internalQueryExecMaxBlockingSortBytes
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
-	//
-	// example:
-	//
-	// 33554432
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyRunningParametersParameter) String() string {

@@ -9,11 +9,14 @@ type iModifyDBInstanceConnectionStringResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetModifiedConnectionString(v string) *ModifyDBInstanceConnectionStringResponseBody
+	GetModifiedConnectionString() *string
 	SetRequestId(v string) *ModifyDBInstanceConnectionStringResponseBody
 	GetRequestId() *string
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
+	ModifiedConnectionString *string `json:"ModifiedConnectionString,omitempty" xml:"ModifiedConnectionString,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -30,8 +33,17 @@ func (s ModifyDBInstanceConnectionStringResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyDBInstanceConnectionStringResponseBody) GetModifiedConnectionString() *string {
+	return s.ModifiedConnectionString
+}
+
 func (s *ModifyDBInstanceConnectionStringResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ModifyDBInstanceConnectionStringResponseBody) SetModifiedConnectionString(v string) *ModifyDBInstanceConnectionStringResponseBody {
+	s.ModifiedConnectionString = &v
+	return s
 }
 
 func (s *ModifyDBInstanceConnectionStringResponseBody) SetRequestId(v string) *ModifyDBInstanceConnectionStringResponseBody {

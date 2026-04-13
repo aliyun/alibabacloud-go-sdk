@@ -11,6 +11,8 @@ type iDescribeShardingNetworkAddressResponseBody interface {
 	GoString() string
 	SetCompatibleConnections(v *DescribeShardingNetworkAddressResponseBodyCompatibleConnections) *DescribeShardingNetworkAddressResponseBody
 	GetCompatibleConnections() *DescribeShardingNetworkAddressResponseBodyCompatibleConnections
+	SetConnectionStringSuffix(v string) *DescribeShardingNetworkAddressResponseBody
+	GetConnectionStringSuffix() *string
 	SetNetworkAddresses(v *DescribeShardingNetworkAddressResponseBodyNetworkAddresses) *DescribeShardingNetworkAddressResponseBody
 	GetNetworkAddresses() *DescribeShardingNetworkAddressResponseBodyNetworkAddresses
 	SetRequestId(v string) *DescribeShardingNetworkAddressResponseBody
@@ -18,10 +20,9 @@ type iDescribeShardingNetworkAddressResponseBody interface {
 }
 
 type DescribeShardingNetworkAddressResponseBody struct {
-	// The endpoints of DynamoDB-compatible instances.
-	CompatibleConnections *DescribeShardingNetworkAddressResponseBodyCompatibleConnections `json:"CompatibleConnections,omitempty" xml:"CompatibleConnections,omitempty" type:"Struct"`
-	// The endpoints of the ApsaraDB for MongoDB sharded cluster instance.
-	NetworkAddresses *DescribeShardingNetworkAddressResponseBodyNetworkAddresses `json:"NetworkAddresses,omitempty" xml:"NetworkAddresses,omitempty" type:"Struct"`
+	CompatibleConnections  *DescribeShardingNetworkAddressResponseBodyCompatibleConnections `json:"CompatibleConnections,omitempty" xml:"CompatibleConnections,omitempty" type:"Struct"`
+	ConnectionStringSuffix *string                                                          `json:"ConnectionStringSuffix,omitempty" xml:"ConnectionStringSuffix,omitempty"`
+	NetworkAddresses       *DescribeShardingNetworkAddressResponseBodyNetworkAddresses      `json:"NetworkAddresses,omitempty" xml:"NetworkAddresses,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -42,6 +43,10 @@ func (s *DescribeShardingNetworkAddressResponseBody) GetCompatibleConnections() 
 	return s.CompatibleConnections
 }
 
+func (s *DescribeShardingNetworkAddressResponseBody) GetConnectionStringSuffix() *string {
+	return s.ConnectionStringSuffix
+}
+
 func (s *DescribeShardingNetworkAddressResponseBody) GetNetworkAddresses() *DescribeShardingNetworkAddressResponseBodyNetworkAddresses {
 	return s.NetworkAddresses
 }
@@ -52,6 +57,11 @@ func (s *DescribeShardingNetworkAddressResponseBody) GetRequestId() *string {
 
 func (s *DescribeShardingNetworkAddressResponseBody) SetCompatibleConnections(v *DescribeShardingNetworkAddressResponseBodyCompatibleConnections) *DescribeShardingNetworkAddressResponseBody {
 	s.CompatibleConnections = v
+	return s
+}
+
+func (s *DescribeShardingNetworkAddressResponseBody) SetConnectionStringSuffix(v string) *DescribeShardingNetworkAddressResponseBody {
+	s.ConnectionStringSuffix = &v
 	return s
 }
 
@@ -114,58 +124,13 @@ func (s *DescribeShardingNetworkAddressResponseBodyCompatibleConnections) Valida
 }
 
 type DescribeShardingNetworkAddressResponseBodyCompatibleConnectionsCompatibleConnection struct {
-	// The remaining duration of the classic network endpoint. Unit: seconds.
-	//
-	// example:
-	//
-	// 2591963
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The IP address of the instance.
-	//
-	// example:
-	//
-	// 10.140.xxx.xx
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The endpoint of the instance.
-	//
-	// example:
-	//
-	// dds-bpxxxxxxxxxxxxxx.mongodb.rds.aliyuncs.com
+	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	IPAddress      *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	NetworkAddress *string `json:"NetworkAddress,omitempty" xml:"NetworkAddress,omitempty"`
-	// The network type of the instance.
-	//
-	// 	- **VPC**: virtual private cloud
-	//
-	// 	- **Classic**: classic network
-	//
-	// 	- **Public**: the Internet
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The port that is used to connect to the instance.
-	//
-	// example:
-	//
-	// 3717
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// >  This parameter is returned when the network type is **VPC**.
-	//
-	// example:
-	//
-	// vpc-bpxxxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch in the Virtual Private Cloud (VPC).
-	//
-	// >  This parameter is returned when the network type is **VPC**.
-	//
-	// example:
-	//
-	// vsw-bpxxxxxxxx
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	NetworkType    *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	VPCId          *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VswitchId      *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeShardingNetworkAddressResponseBodyCompatibleConnectionsCompatibleConnection) String() string {
@@ -278,102 +243,18 @@ func (s *DescribeShardingNetworkAddressResponseBodyNetworkAddresses) Validate() 
 }
 
 type DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress struct {
-	// The public endpoint type. Valid values:
-	//
-	// 	- **SRV**
-	//
-	// 	- **Normal**
-	//
-	// example:
-	//
-	// SRV
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The remaining duration of the classic network endpoint. Unit: seconds.
-	//
-	// example:
-	//
-	// 2591963
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The IP address of the instance.
-	//
-	// example:
-	//
-	// 10.140.xxx.xx
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The connection string of the instance.
-	//
-	// example:
-	//
-	// s-bpxxxxxxxx.mongodb.rds.aliyuncs.com
+	ExpiredTime    *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	IPAddress      *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	NetworkAddress *string `json:"NetworkAddress,omitempty" xml:"NetworkAddress,omitempty"`
-	// The network type of the instance.
-	//
-	// 	- **VPC**: virtual private cloud
-	//
-	// 	- **Classic**: classic network
-	//
-	// 	- **Public**: the Internet
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the mongos node.
-	//
-	// example:
-	//
-	// s-bpxxxxxxxx
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The type of the node. Valid values:
-	//
-	// 	- **mongos**: mongos node
-	//
-	// 	- **shard**: shard node
-	//
-	// 	- **configserver**: Configserver node
-	//
-	// example:
-	//
-	// mongos
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port that is used to connect to the instance.
-	//
-	// example:
-	//
-	// 3717
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The role of the node. Valid values:
-	//
-	// 	- Primary
-	//
-	// 	- Secondary
-	//
-	// example:
-	//
-	// Primary
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Txt record which can be used to store MongoDB-related meta data, such as version, configuration parameters and etc. With the combination of txt record and other technology, for example SRV record, the MongoDB client can complete the complex service discovery and configuration passing.
-	//
-	// example:
-	//
-	// mongo.example.com. IN TXT "config=replicaSet=myReplicaSet"
-	TxtRecord *string `json:"TxtRecord,omitempty" xml:"TxtRecord,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// >  This parameter is returned when the network type is **VPC**.
-	//
-	// example:
-	//
-	// vpc-bpxxxxxxxx
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch in the VPC.
-	//
-	// >  This parameter is returned when the network type is **VPC**.
-	//
-	// example:
-	//
-	// vsw-bpxxxxxxxx
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	NetworkType    *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType       *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	TxtRecord      *string `json:"TxtRecord,omitempty" xml:"TxtRecord,omitempty"`
+	VPCId          *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VswitchId      *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 }
 
 func (s DescribeShardingNetworkAddressResponseBodyNetworkAddressesNetworkAddress) String() string {

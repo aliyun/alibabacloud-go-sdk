@@ -16,7 +16,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The details of the account.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,50 +95,11 @@ func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountsAccount struct {
-	// The description of the account.
-	//
-	// example:
-	//
-	// Admin
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account.
-	//
-	// example:
-	//
-	// root
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The status of the account. Valid values:
-	//
-	// 	- **Unavailable**
-	//
-	// 	- **Available**
-	//
-	// example:
-	//
-	// Available
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The role of the account. Valid values:
-	//
-	// 	- **db**: shard node
-	//
-	// 	- **cs**: Configserver node
-	//
-	// 	- **mongos**: mongos node
-	//
-	// 	- **logic**: sharded cluster instance
-	//
-	// 	- **normal**: replica set instance
-	//
-	// example:
-	//
-	// mongos
-	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The ID of the instance to which the account belongs.
-	//
-	// example:
-	//
-	// dds-bp1fd530f271****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	CharacterType      *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	DBInstanceId       *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsAccount) String() string {

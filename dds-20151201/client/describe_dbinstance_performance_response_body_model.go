@@ -25,8 +25,7 @@ type DescribeDBInstancePerformanceResponseBody struct {
 	// example:
 	//
 	// 2022-06-13T11:58Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The details of performance metrics.
+	EndTime         *string                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBInstancePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -130,28 +129,10 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeys) Validate() er
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey struct {
-	// The performance metrics that are returned.
-	//
-	// example:
-	//
-	// CpuUsage
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The details of the performance metric values.
+	Key               *string                                                                                  `json:"Key,omitempty" xml:"Key,omitempty"`
 	PerformanceValues *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerformanceValues `json:"PerformanceValues,omitempty" xml:"PerformanceValues,omitempty" type:"Struct"`
-	// The unit of the performance metric.
-	//
-	// example:
-	//
-	// %
-	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	// The format of the performance metric value. If the performance metric contains multiple fields, the fields are separated with ampersands ( &).
-	//
-	// For example, if you query disk space usage, the returned value of the **ValueFormat*	- parameter is **ins_size\\&data_size\\&log_size**.
-	//
-	// example:
-	//
-	// cpu_usage
-	ValueFormat *string `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
+	Unit              *string                                                                                  `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	ValueFormat       *string                                                                                  `json:"ValueFormat,omitempty" xml:"ValueFormat,omitempty"`
 }
 
 func (s DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey) String() string {
@@ -242,17 +223,7 @@ func (s *DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyP
 }
 
 type DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyPerformanceValuesPerformanceValue struct {
-	// The date and time when the metric value was generated.
-	//
-	// example:
-	//
-	// 2022-06-13T10:58:00Z
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The value of the performance metric.
-	//
-	// example:
-	//
-	// 0.23
+	Date  *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

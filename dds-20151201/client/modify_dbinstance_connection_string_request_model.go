@@ -13,6 +13,10 @@ type iModifyDBInstanceConnectionStringRequest interface {
 	GetCurrentConnectionString() *string
 	SetDBInstanceId(v string) *ModifyDBInstanceConnectionStringRequest
 	GetDBInstanceId() *string
+	SetForceModifySuffix(v bool) *ModifyDBInstanceConnectionStringRequest
+	GetForceModifySuffix() *bool
+	SetNetworkType(v string) *ModifyDBInstanceConnectionStringRequest
+	GetNetworkType() *string
 	SetNewConnectionString(v string) *ModifyDBInstanceConnectionStringRequest
 	GetNewConnectionString() *string
 	SetNewPort(v int32) *ModifyDBInstanceConnectionStringRequest
@@ -23,6 +27,8 @@ type iModifyDBInstanceConnectionStringRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *ModifyDBInstanceConnectionStringRequest
 	GetOwnerId() *int64
+	SetPortModifyOnly(v bool) *ModifyDBInstanceConnectionStringRequest
+	GetPortModifyOnly() *bool
 	SetResourceOwnerAccount(v string) *ModifyDBInstanceConnectionStringRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ModifyDBInstanceConnectionStringRequest
@@ -31,8 +37,6 @@ type iModifyDBInstanceConnectionStringRequest interface {
 
 type ModifyDBInstanceConnectionStringRequest struct {
 	// The current endpoint that is to be modified.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -47,12 +51,15 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	// example:
 	//
 	// dds-bpxxxxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ForceModifySuffix *bool   `json:"ForceModifySuffix,omitempty" xml:"ForceModifySuffix,omitempty"`
+	// example:
+	//
+	// vpc
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The new endpoint. It must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter.
 	//
 	// > You need only to specify the prefix of the endpoint. The content other than the prefix cannot be modified.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -76,6 +83,7 @@ type ModifyDBInstanceConnectionStringRequest struct {
 	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PortModifyOnly       *bool   `json:"PortModifyOnly,omitempty" xml:"PortModifyOnly,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -94,6 +102,14 @@ func (s *ModifyDBInstanceConnectionStringRequest) GetCurrentConnectionString() *
 
 func (s *ModifyDBInstanceConnectionStringRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) GetForceModifySuffix() *bool {
+	return s.ForceModifySuffix
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) GetNetworkType() *string {
+	return s.NetworkType
 }
 
 func (s *ModifyDBInstanceConnectionStringRequest) GetNewConnectionString() *string {
@@ -116,6 +132,10 @@ func (s *ModifyDBInstanceConnectionStringRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *ModifyDBInstanceConnectionStringRequest) GetPortModifyOnly() *bool {
+	return s.PortModifyOnly
+}
+
 func (s *ModifyDBInstanceConnectionStringRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -131,6 +151,16 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetCurrentConnectionString(v s
 
 func (s *ModifyDBInstanceConnectionStringRequest) SetDBInstanceId(v string) *ModifyDBInstanceConnectionStringRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetForceModifySuffix(v bool) *ModifyDBInstanceConnectionStringRequest {
+	s.ForceModifySuffix = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetNetworkType(v string) *ModifyDBInstanceConnectionStringRequest {
+	s.NetworkType = &v
 	return s
 }
 
@@ -156,6 +186,11 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetOwnerAccount(v string) *Mod
 
 func (s *ModifyDBInstanceConnectionStringRequest) SetOwnerId(v int64) *ModifyDBInstanceConnectionStringRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceConnectionStringRequest) SetPortModifyOnly(v bool) *ModifyDBInstanceConnectionStringRequest {
+	s.PortModifyOnly = &v
 	return s
 }
 

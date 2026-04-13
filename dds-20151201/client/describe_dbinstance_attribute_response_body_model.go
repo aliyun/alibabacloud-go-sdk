@@ -16,7 +16,6 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The instance details.
 	DBInstances *DescribeDBInstanceAttributeResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,357 +95,48 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstances) Validate() error {
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
-	// Indicates whether performance burst is enabled for the ESSD AutoPL disk.
-	//
-	// example:
-	//
-	// true
-	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The read and write throughput consumed by the instance.
-	//
-	// example:
-	//
-	// 100
-	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **PrePaid**: subscription
-	//
-	// 	- **PostPaid**: pay-as-you-go
-	//
-	// example:
-	//
-	// PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The details of the ConfigServer node.
-	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
-	ConfigserverList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList `json:"ConfigserverList,omitempty" xml:"ConfigserverList,omitempty" type:"Struct"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-01-02T07:43:59Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The minor version of the current database in the instance.
-	//
-	// example:
-	//
-	// 5.0.5-20220721143518_0
-	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	// The instance type of the instance.
-	//
-	// example:
-	//
-	// dds.mongo.mid
-	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
-	// The name of the instance.
-	//
-	// example:
-	//
-	// Test database
-	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// dds-bp11483712c1****
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The status of the orders generated for the instance. Valid values:
-	//
-	// 	- **all_completed**: All orders are being produced or complete.
-	//
-	// 	- **order_unpaid**: The instance has unpaid orders.
-	//
-	// 	- **order_wait_for_produce**: Orders are being delivered for production.
-	//
-	// >  The order production process includes the following steps: place an order, pay for an order, deliver an order for production, produce an order, and complete the production.
-	//
-	// 	- If an order is in the **order_wait_for_produce*	- state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
-	//
-	// 	- The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
-	//
-	// example:
-	//
-	// all_completed
-	DBInstanceOrderStatus *string `json:"DBInstanceOrderStatus,omitempty" xml:"DBInstanceOrderStatus,omitempty"`
-	// Indicates whether release protection is enabled for the instance. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// false
-	DBInstanceReleaseProtection *bool `json:"DBInstanceReleaseProtection,omitempty" xml:"DBInstanceReleaseProtection,omitempty"`
-	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
-	//
-	// example:
-	//
-	// Running
-	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The storage capacity of the instance.
-	//
-	// example:
-	//
-	// 10
-	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The architecture of the instance. Valid values:
-	//
-	// 	- **replicate**: replica set instance
-	//
-	// 	- **sharding**: sharded cluster instance
-	//
-	// example:
-	//
-	// replicate
-	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	// The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2021-12-10T16:00:00Z
-	DestroyTime          *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	DisasterRecoveryInfo *string `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
-	// Indicates whether disk encryption is enabled.
-	//
-	// example:
-	//
-	// true
-	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The Key Management Service (KMS) key used for disk encryption.
-	//
-	// example:
-	//
-	// 07609cc3-3109-408f-a35e-c548e776da0b
-	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The database engine of the instance.
-	//
-	// example:
-	//
-	// MongoDB
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance.
-	//
-	// 	- **6.0**
-	//
-	// 	- **5.0**
-	//
-	// 	- **4.4**
-	//
-	// 	- **4.2**
-	//
-	// 	- **4.0**
-	//
-	// example:
-	//
-	// 4.4
-	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The time when the subscription instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
-	//
-	// >  This parameter is returned if the instance is a subscription instance.
-	//
-	// example:
-	//
-	// 2022-02-05T16:00Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the secondary zone 2 of the instance. Valid values:
-	//
-	// 	- **cn-hangzhou-g**: Hangzhou Zone G
-	//
-	// 	- **cn-hangzhou-h**: Hangzhou Zone H
-	//
-	// 	- **cn-hangzhou-i**: Hangzhou Zone I
-	//
-	// 	- **cn-hongkong-b**: Hongkong Zone B
-	//
-	// 	- **cn-hongkong-c**: Hongkong Zone C
-	//
-	// 	- **cn-hongkong-d**: Hongkong Zone D
-	//
-	// 	- **cn-wulanchabu-a**: Ulanqab Zone A
-	//
-	// 	- **cn-wulanchabu-b**: Ulanqab Zone B
-	//
-	// 	- **cn-wulanchabu-c**: Ulanqab Zone C
-	//
-	// 	- **ap-southeast-1a**: Singapore Zone A
-	//
-	// 	- **ap-southeast-1b**: Singapore Zone B
-	//
-	// 	- **ap-southeast-1c**: Singapore Zone C
-	//
-	// 	- **ap-southeast-5a**: Jakarta Zone A
-	//
-	// 	- **ap-southeast-5b**: Jakarta Zone B
-	//
-	// 	- **ap-southeast-5c**: Jakarta Zone C
-	//
-	// 	- **eu-central-1a**: Frankfurt Zone A
-	//
-	// 	- **eu-central-1b**: Frankfurt Zone B
-	//
-	// 	- **eu-central-1c**: Frankfurt Zone C
-	//
-	// >
-	//
-	// 	- This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-	//
-	// 	- This parameter is returned only if you use the China site (aliyun.com).
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	HiddenZoneId *string `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
-	// The kind code of the instance. Valid values:
-	//
-	// 	- **0**: physical machine
-	//
-	// 	- **1**: Elastic Compute Service (ECS) instance
-	//
-	// 	- **2**: Docker cluster
-	//
-	// 	- **18**: Kubernetes cluster
-	//
-	// example:
-	//
-	// 1
-	KindCode *string `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The date when the last downgrade operation was performed on the instance.
-	//
-	// example:
-	//
-	// 2022-01-08
-	LastDowngradeTime *string `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
-	// The lock status of the instance. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before the instance is rolled back.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
-	//
-	// 	- **Released**: The instance is released.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The end time of the maintenance window. The time follows the ISO 8601 standard in the *HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 03:00Z
-	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time follows the ISO 8601 standard in the *HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 18:00Z
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The maximum number of connections to the instance.
-	//
-	// example:
-	//
-	// 500
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum IOPS of the instance.
-	//
-	// example:
-	//
-	// 1000
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The maximum MBPS of the instance.
-	//
-	// example:
-	//
-	// 350
-	MaxMBPS *int32 `json:"MaxMBPS,omitempty" xml:"MaxMBPS,omitempty"`
-	// The details of the mongos node.
-	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
-	MongosList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **Classic**: classic network
-	//
-	// 	- **VPC**: VPC
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The access protocol type of the instance. Valid values:
-	//
-	// 	- **mongodb**
-	//
-	// 	- **dynamodb**
-	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
-	//
-	// example:
-	//
-	// mongodb
-	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The provisioned performance of the ESSD AutoPL disk.
-	//
-	// example:
-	//
-	// 1960
-	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The number of read-only nodes in the instance.
-	//
-	// example:
-	//
-	// 1
-	ReadonlyReplicas *string `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-	// The region ID of the instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The logical ID of the replica set instance.
-	//
-	// >  ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica set instances.
-	//
-	// example:
-	//
-	// bls-m****
-	ReplacateId *string `json:"ReplacateId,omitempty" xml:"ReplacateId,omitempty"`
-	// The name of the replica set instance.
-	//
-	// >  This parameter is returned if the instance is a replica set instance.
-	//
-	// example:
-	//
-	// mgset-10ace****
-	ReplicaSetName *string `json:"ReplicaSetName,omitempty" xml:"ReplicaSetName,omitempty"`
-	// The information of the replica set instance.
-	//
-	// >  This parameter is returned if the instance is a replica set instance.
-	ReplicaSets *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
-	// The number of nodes in the instance.
-	//
-	// >  This parameter is returned if the instance is a replica set instance.
-	//
-	// example:
-	//
-	// 3
-	ReplicationFactor *string `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
-	// The ID of the resource group to which the instance belongs.
-	//
-	// >  This parameter is returned only if you use the China site (aliyun.com).
-	//
-	// example:
-	//
-	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	BurstingEnabled             *bool                                                                         `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	CapacityUnit                *string                                                                       `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
+	ChargeType                  *string                                                                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ColdDataEnabled             *bool                                                                         `json:"ColdDataEnabled,omitempty" xml:"ColdDataEnabled,omitempty"`
+	ConfigserverList            *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList `json:"ConfigserverList,omitempty" xml:"ConfigserverList,omitempty" type:"Struct"`
+	CreationTime                *string                                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CurrentKernelVersion        *string                                                                       `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
+	DBInstanceClass             *string                                                                       `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceDescription       *string                                                                       `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceId                *string                                                                       `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DBInstanceOrderStatus       *string                                                                       `json:"DBInstanceOrderStatus,omitempty" xml:"DBInstanceOrderStatus,omitempty"`
+	DBInstanceReleaseProtection *bool                                                                         `json:"DBInstanceReleaseProtection,omitempty" xml:"DBInstanceReleaseProtection,omitempty"`
+	DBInstanceStatus            *string                                                                       `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStorage           *int32                                                                        `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	DBInstanceType              *string                                                                       `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	DestroyTime                 *string                                                                       `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	DisasterRecoveryInfo        *string                                                                       `json:"DisasterRecoveryInfo,omitempty" xml:"DisasterRecoveryInfo,omitempty"`
+	Encrypted                   *bool                                                                         `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	EncryptionKey               *string                                                                       `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	Engine                      *string                                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion               *string                                                                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireTime                  *string                                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HiddenZoneId                *string                                                                       `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
+	KindCode                    *string                                                                       `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
+	LastDowngradeTime           *string                                                                       `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
+	LockMode                    *string                                                                       `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MaintainEndTime             *string                                                                       `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime           *string                                                                       `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MaxConnections              *int32                                                                        `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOPS                     *int32                                                                        `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MaxMBPS                     *int32                                                                        `json:"MaxMBPS,omitempty" xml:"MaxMBPS,omitempty"`
+	MongosList                  *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList       `json:"MongosList,omitempty" xml:"MongosList,omitempty" type:"Struct"`
+	NetworkType                 *string                                                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ProtocolType                *string                                                                       `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProvisionedIops             *int64                                                                        `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	ReadonlyReplicas            *string                                                                       `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
+	RegionId                    *string                                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReplacateId                 *string                                                                       `json:"ReplacateId,omitempty" xml:"ReplacateId,omitempty"`
+	ReplicaSetName              *string                                                                       `json:"ReplicaSetName,omitempty" xml:"ReplicaSetName,omitempty"`
+	ReplicaSets                 *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets      `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
+	ReplicationFactor           *string                                                                       `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
+	ResourceGroupId             *string                                                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
 	// mdb.shard.2x.xlarge.d
@@ -458,133 +148,19 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	// example:
 	//
 	// 20
-	SearchNodeStorage *int32 `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
-	// The ID of the secondary zone 1 of the instance. Valid values:
-	//
-	// 	- **cn-hangzhou-g**: Hangzhou Zone G
-	//
-	// 	- **cn-hangzhou-h**: Hangzhou Zone H
-	//
-	// 	- **cn-hangzhou-i**: Hangzhou Zone I
-	//
-	// 	- **cn-hongkong-b**: Hongkong Zone B
-	//
-	// 	- **cn-hongkong-c**: Hongkong Zone C
-	//
-	// 	- **cn-hongkong-d**: Hongkong Zone D
-	//
-	// 	- **cn-wulanchabu-a**: Ulanqab Zone A
-	//
-	// 	- **cn-wulanchabu-b**: Ulanqab Zone B
-	//
-	// 	- **cn-wulanchabu-c**: Ulanqab Zone C
-	//
-	// 	- **ap-southeast-1a**: Singapore Zone A
-	//
-	// 	- **ap-southeast-1b**: Singapore Zone B
-	//
-	// 	- **ap-southeast-1c**: Singapore Zone C
-	//
-	// 	- **ap-southeast-5a**: Jakarta Zone A
-	//
-	// 	- **ap-southeast-5b**: Jakarta Zone B
-	//
-	// 	- **ap-southeast-5c**: Jakarta Zone C
-	//
-	// 	- **eu-central-1a**: Frankfurt Zone A
-	//
-	// 	- **eu-central-1b**: Frankfurt Zone B
-	//
-	// 	- **eu-central-1c**: Frankfurt Zone C
-	//
-	// >
-	//
-	// 	- This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
-	//
-	// 	- This parameter is returned only if you use the China site (aliyun.com).
-	//
-	// example:
-	//
-	// cn-hangzhou-i
-	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The details of the shard node.
-	//
-	// >  This parameter is returned if the instance is a sharded cluster instance.
-	ShardList *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
-	// The storage engine of the instance.
-	//
-	// example:
-	//
-	// WiredTiger
-	StorageEngine *string `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
-	// The storage type of the instance. Valid values:
-	//
-	// **cloud_essd1**: ESSD PL1 **cloud_essd2**: ESSD PL2 **cloud_essd3**: ESSD PL3 **local_ssd**: local SSD **cloud_essd_dbfs_s**: DBFS disk
-	//
-	// example:
-	//
-	// cloud_essd1
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The progress of data synchronization in percentage. When you are changing the configurations of the instance, you must synchronize the data of the instance. You can obtain the data synchronization progress based on the value returned for this parameter.
-	//
-	// example:
-	//
-	// 0.8
-	SyncPercent *string `json:"SyncPercent,omitempty" xml:"SyncPercent,omitempty"`
-	// The details of the instance tags.
-	Tags *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// Indicates whether the cluster backup mode is enabled. Valid values:
-	//
-	// 	- **true**: The cluster backup mode is enabled.
-	//
-	// 	- **false**: The cluster backup mode is disabled.
-	//
-	// example:
-	//
-	// true
-	UseClusterBackup *bool `json:"UseClusterBackup,omitempty" xml:"UseClusterBackup,omitempty"`
-	// The instance ID.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// dds-bp11483712c1****
-	VPCCloudInstanceIds *string `json:"VPCCloudInstanceIds,omitempty" xml:"VPCCloudInstanceIds,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// vpc-bp1n3i15v90el48nx****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the instance.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// vsw-bp1oo2a7isyrb8igf****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Indicates whether password-free access within the VPC is enabled. Valid values:
-	//
-	// 	- **Open**: Password-free access within the VPC is enabled.
-	//
-	// 	- **Close**: Password-free access within the VPC is disabled, and you must use a password for access.
-	//
-	// 	- **NotSupport**: Password-free access within the VPC is not supported.
-	//
-	// example:
-	//
-	// Open
-	VpcAuthMode *string `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
-	// The ID of the zone in which the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	SearchNodeStorage   *int32                                                                 `json:"SearchNodeStorage,omitempty" xml:"SearchNodeStorage,omitempty"`
+	SecondaryZoneId     *string                                                                `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	ShardList           *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
+	StorageEngine       *string                                                                `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
+	StorageType         *string                                                                `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	SyncPercent         *string                                                                `json:"SyncPercent,omitempty" xml:"SyncPercent,omitempty"`
+	Tags                *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseClusterBackup    *bool                                                                  `json:"UseClusterBackup,omitempty" xml:"UseClusterBackup,omitempty"`
+	VPCCloudInstanceIds *string                                                                `json:"VPCCloudInstanceIds,omitempty" xml:"VPCCloudInstanceIds,omitempty"`
+	VPCId               *string                                                                `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId           *string                                                                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcAuthMode         *string                                                                `json:"VpcAuthMode,omitempty" xml:"VpcAuthMode,omitempty"`
+	ZoneId              *string                                                                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) String() string {
@@ -605,6 +181,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetCapaci
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetChargeType() *string {
 	return s.ChargeType
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetColdDataEnabled() *bool {
+	return s.ColdDataEnabled
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) GetConfigserverList() *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverList {
@@ -831,6 +411,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetCapaci
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetChargeType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetColdDataEnabled(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.ColdDataEnabled = &v
 	return s
 }
 
@@ -1163,82 +748,17 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserve
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute struct {
-	// The endpoint of the Configserver node.
-	//
-	// example:
-	//
-	// dds-bp18b0934e7053e4-cs****.mongodb.rds.aliyuncs.com
-	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
-	// The minor version of the current MongoDB kernel.
-	//
-	// example:
-	//
-	// mongodb_20230613_4.0.25
+	ConnectString        *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	// The lock status of the Configserver node. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before a rollback.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maximum number of connections to the Configserver node.
-	//
-	// example:
-	//
-	// 1000
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum IOPS of the Configserver node.
-	//
-	// example:
-	//
-	// 1000
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The instance type of the Configserver node.
-	//
-	// example:
-	//
-	// dds.cs.mid
-	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The name of the Configserver node.
-	//
-	// example:
-	//
-	// testConfigserver
-	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The ID of the Configserver node.
-	//
-	// example:
-	//
-	// dds-bp11483712c1****-cs
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the Configserver node. Unit: GB.
-	//
-	// example:
-	//
-	// 20
-	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
-	// The port number that is used to connect to the Configserver node.
-	//
-	// example:
-	//
-	// 3717
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The status of the Configserver node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MaxConnections       *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOPS              *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	NodeClass            *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	NodeDescription      *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeStorage          *int32  `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
+	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverListConfigserverAttribute) String() string {
@@ -1387,104 +907,20 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosList)
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute struct {
-	// The endpoint of the mongos node.
-	//
-	// example:
-	//
-	// s-bp1d8c262a15****.mongodb.rds.aliyuncs.com
-	ConnectSting *string `json:"ConnectSting,omitempty" xml:"ConnectSting,omitempty"`
-	// The endpoint of the mongos node.
-	//
-	// example:
-	//
-	// s-bp1d8c262a15****.mongodb.rds.aliyuncs.com
-	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
-	// The minor version of the current MongoDB kernel.
-	//
-	// example:
-	//
-	// mongodb_20220518_4.0.21
+	ConnectSting         *string `json:"ConnectSting,omitempty" xml:"ConnectSting,omitempty"`
+	ConnectString        *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	// The lock status of the instance. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before a rollback.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maximum number of connections to the mongos node.
-	//
-	// example:
-	//
-	// 1000
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum IOPS of the mongos node.
-	//
-	// example:
-	//
-	// 800
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The instance type of the mongos node.
-	//
-	// example:
-	//
-	// dds.mongos.mid
-	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The name of the mongos node.
-	//
-	// example:
-	//
-	// mongos1
-	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The ID of the mongos node.
-	//
-	// example:
-	//
-	// s-bp1d8c262a15****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The port number that is used to connect to the mongos node.
-	//
-	// example:
-	//
-	// 3717
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The status of the mongos node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// vpc-bp1n3i15v90el48nx****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the instance.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// vsw-bp1vj604nj5a9zz74****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the mongos node.
-	//
-	// example:
-	//
-	// s-bp1d8c262a158****
-	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MaxConnections       *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxIOPS              *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	NodeClass            *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	NodeDescription      *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcCloudInstanceId   *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongosAttribute) String() string {
@@ -1660,62 +1096,13 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsReplicaSet struct {
-	// The endpoint of the node.
-	//
-	// example:
-	//
-	// dds-bp11483712c1****.mongodb.rds.aliyuncs.com
-	ConnectionDomain *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
-	// The port number that is used to connect to the node.
-	//
-	// example:
-	//
-	// 3717
-	ConnectionPort *string `json:"ConnectionPort,omitempty" xml:"ConnectionPort,omitempty"`
-	// The network type of the instance. Valid values:
-	//
-	// 	- **Classic**: classic network
-	//
-	// 	- **VPC**: VPC
-	//
-	// example:
-	//
-	// VPC
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The role of the node. Valid values:
-	//
-	// 	- **Primary**
-	//
-	// 	- **Secondary**
-	//
-	// example:
-	//
-	// Primary
-	ReplicaSetRole *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
-	// The instance ID.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// dds-bp11483712c1****
+	ConnectionDomain   *string `json:"ConnectionDomain,omitempty" xml:"ConnectionDomain,omitempty"`
+	ConnectionPort     *string `json:"ConnectionPort,omitempty" xml:"ConnectionPort,omitempty"`
+	NetworkType        *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ReplicaSetRole     *string `json:"ReplicaSetRole,omitempty" xml:"ReplicaSetRole,omitempty"`
 	VPCCloudInstanceId *string `json:"VPCCloudInstanceId,omitempty" xml:"VPCCloudInstanceId,omitempty"`
-	// The VPC ID of the instance.
-	//
-	// >  This parameter is returned if the network type of the instance is VPC.
-	//
-	// example:
-	//
-	// vpc-bp1jk5vwkcri27qme****
-	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID of the instance.
-	//
-	// >  This parameter is returned if the network type of the instance is virtual private cloud (VPC).
-	//
-	// example:
-	//
-	// vpc-bp1jk5vwkcri27qme****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VPCId              *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsReplicaSet) String() string {
@@ -1828,95 +1215,20 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList) 
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute struct {
-	// The endpoint of the shard node.
-	//
-	// example:
-	//
-	// d-bp1af0680a9c6d3****.mongodb.rds.aliyuncs.com:****
-	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
-	// The minor version of the current MongoDB kernel.
-	//
-	// example:
-	//
-	// mongodb_20230613_4.0.25
+	ConnectString        *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	CurrentKernelVersion *string `json:"CurrentKernelVersion,omitempty" xml:"CurrentKernelVersion,omitempty"`
-	// The lock status of the shard node. Valid values:
-	//
-	// 	- **Unlock**: The instance is not locked.
-	//
-	// 	- **ManualLock**: The instance is manually locked.
-	//
-	// 	- **LockByExpiration**: The instance is automatically locked due to instance expiration.
-	//
-	// 	- **LockByRestoration**: The instance is automatically locked before a rollback.
-	//
-	// 	- **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maximum number of connections to the shard node.
-	//
-	// example:
-	//
-	// 8000
-	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum MBPS of the shard node.
-	//
-	// example:
-	//
-	// 350
-	MaxDiskMbps *string `json:"MaxDiskMbps,omitempty" xml:"MaxDiskMbps,omitempty"`
-	// The maximum IOPS of the shard node.
-	//
-	// example:
-	//
-	// 8000
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The instance type of the shard node.
-	//
-	// example:
-	//
-	// dds.shard.mid
-	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The name of the shard node.
-	//
-	// example:
-	//
-	// testshard
-	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The ID of the shard node.
-	//
-	// example:
-	//
-	// d-bp16e09d9c5d****
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The storage capacity of the shard node. Unit: GB.
-	//
-	// example:
-	//
-	// 10
-	NodeStorage *int32 `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
-	// The port number that is used to connect to the shard node.
-	//
-	// example:
-	//
-	// 3717
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The number of read-only nodes in the shard node. Valid values: **0*	- to **5**. The value must be an integer.
-	//
-	// example:
-	//
-	// 0
-	ReadonlyReplicas *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-	ReplicaSetName   *string `json:"ReplicaSetName,omitempty" xml:"ReplicaSetName,omitempty"`
-	// The status of the shard node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
-	//
-	// example:
-	//
-	// Running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MaxConnections       *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxDiskMbps          *string `json:"MaxDiskMbps,omitempty" xml:"MaxDiskMbps,omitempty"`
+	MaxIOPS              *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	NodeClass            *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	NodeDescription      *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
+	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeStorage          *int32  `json:"NodeStorage,omitempty" xml:"NodeStorage,omitempty"`
+	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ReadonlyReplicas     *int32  `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
+	ReplicaSetName       *string `json:"ReplicaSetName,omitempty" xml:"ReplicaSetName,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShardAttribute) String() string {
@@ -2092,17 +1404,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags) Valid
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// api
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

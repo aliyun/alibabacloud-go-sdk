@@ -16,7 +16,6 @@ type iDescribeKernelReleaseNotesResponseBody interface {
 }
 
 type DescribeKernelReleaseNotesResponseBody struct {
-	// The list of the version release notes.
 	ReleaseNotes *DescribeKernelReleaseNotesResponseBodyReleaseNotes `json:"ReleaseNotes,omitempty" xml:"ReleaseNotes,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeKernelReleaseNotesResponseBodyReleaseNotes) Validate() error {
 }
 
 type DescribeKernelReleaseNotesResponseBodyReleaseNotesReleaseNote struct {
-	// The version number.
-	//
-	// example:
-	//
-	// mongodb_20180619_0.4.9
 	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
-	// The release notes.
-	//
-	// example:
-	//
-	// test release note.
-	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNote   *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
 }
 
 func (s DescribeKernelReleaseNotesResponseBodyReleaseNotesReleaseNote) String() string {

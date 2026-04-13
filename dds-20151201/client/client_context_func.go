@@ -7,6 +7,10 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// Applies for an SRV endpoint for an ApsaraDB for MongoDB instance.
+//
 // @param request - AllocateDBInstanceSrvNetworkAddressRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -279,7 +283,7 @@ func (client *Client) CancelActiveOperationTasksWithContext(ctx context.Context,
 
 // Summary:
 //
-// You can call this operation to check whether KMS keys are authorized to ApsaraDB for MongoDB instances.
+// Checks whether Key Management Service (KMS) keys are authorized to an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
@@ -453,7 +457,7 @@ func (client *Client) CheckRecoveryConditionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries whether a service-linked role is created.
+// Checks whether a service-linked role (SLR) is created for an instance.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -1411,7 +1415,7 @@ func (client *Client) CreateShardingDBInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除MongoDB备份集
+// Deletes the backup set of MongoDB.
 //
 // @param request - DeleteBackupRequest
 //
@@ -1959,6 +1963,10 @@ func (client *Client) DescribeActiveOperationTaskCountWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// Query maintenance task types and task quantities.
+//
 // @param request - DescribeActiveOperationTaskRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2565,7 +2573,7 @@ func (client *Client) DescribeAvailabilityZonesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// You can call this operation to query the engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
+// Queries the engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
 //
 // @param request - DescribeAvailableEngineVersionRequest
 //
@@ -2889,7 +2897,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the storage used for backup in an ApsaraDB for MongoDB replica set or sharded cluster instance that uses cloud disks. Note that you are charged only for the backup-used storage of each shard in a sharded cluster instance. You can call this operation only to query the storage used by a single shard in the instance for backup.
+// Queries the backup storage capacity of an ApsaraDB for MongoDB replica set or sharded cluster instance that uses cloud disks.
 //
 // @param request - DescribeBackupStorageRequest
 //
@@ -3115,6 +3123,106 @@ func (client *Client) DescribeBackupsWithContext(ctx context.Context, request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeBackupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries binary log files bound to an ApsaraDB for MongoDB instance.
+//
+// @param request - DescribeBinlogFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBinlogFilesResponse
+func (client *Client) DescribeBinlogFilesWithContext(ctx context.Context, request *DescribeBinlogFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBinlogFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BinlogId) {
+		query["BinlogId"] = request.BinlogId
+	}
+
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.DestRegion) {
+		query["DestRegion"] = request.DestRegion
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SrcRegion) {
+		query["SrcRegion"] = request.SrcRegion
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBinlogFiles"),
+		Version:     dara.String("2015-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBinlogFilesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3675,7 +3783,7 @@ func (client *Client) DescribeDBInstanceSSLWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查看规格信息详情
+// Queries the specifications of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeDBInstanceSpecInfoRequest
 //
@@ -5723,7 +5831,7 @@ func (client *Client) DescribeRoleZoneInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries entries in operational logs of an ApsaraDB for MongoDB instance.
+// Queries the operational logs of an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
@@ -5837,7 +5945,7 @@ func (client *Client) DescribeRunningLogRecordsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// You can call this operation to query ECS security groups that are bound to an ApsaraDB for MongoDB instance.
+// Queries the Elastic Compute Service (ECS) security groups that are associated with an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribeSecurityGroupConfigurationRequest
 //
@@ -6859,6 +6967,10 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the O\\\\\\&M task configurations for an instance.
+//
 // @param request - ModifyActiveOperationMaintenanceConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6933,7 +7045,7 @@ func (client *Client) ModifyActiveOperationMaintenanceConfigWithContext(ctx cont
 
 // Summary:
 //
-// Modifies the switching time of scheduled O\\\\\\&M tasks for an ApsaraDB for MongoDB instance.
+// Modifies the switching time of scheduled O\\\\\\\\\\\\&M tasks for an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -7114,6 +7226,10 @@ func (client *Client) ModifyAuditPolicyWithContext(ctx context.Context, request 
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.HotStoragePeriod) {
+		query["HotStoragePeriod"] = request.HotStoragePeriod
+	}
+
 	if !dara.IsNil(request.OwnerAccount) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -7163,7 +7279,7 @@ func (client *Client) ModifyAuditPolicyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改MongoDB备份集的过期时间
+// # Modifies the expiration time of MongoDB backup sets
 //
 // @param request - ModifyBackupExpireTimeRequest
 //
@@ -7373,6 +7489,10 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies existing release protection configurations.
+//
 // @param request - ModifyDBInstanceAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7435,7 +7555,7 @@ func (client *Client) ModifyDBInstanceAttributeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 修改实例配置
+// Modifies the configurations of an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifyDBInstanceConfigRequest
 //
@@ -7534,6 +7654,14 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !dara.IsNil(request.ForceModifySuffix) {
+		query["ForceModifySuffix"] = request.ForceModifySuffix
+	}
+
+	if !dara.IsNil(request.NetworkType) {
+		query["NetworkType"] = request.NetworkType
+	}
+
 	if !dara.IsNil(request.NewConnectionString) {
 		query["NewConnectionString"] = request.NewConnectionString
 	}
@@ -7552,6 +7680,10 @@ func (client *Client) ModifyDBInstanceConnectionStringWithContext(ctx context.Co
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PortModifyOnly) {
+		query["PortModifyOnly"] = request.PortModifyOnly
 	}
 
 	if !dara.IsNil(request.ResourceOwnerAccount) {
@@ -9275,7 +9407,7 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改MongoDB实例的SRV连接地址
+// Modifies the SRV connection string that is used to connect to an ApsaraDB for MongoDB instance.
 //
 // @param request - ModifySrvNetworkAddressRequest
 //

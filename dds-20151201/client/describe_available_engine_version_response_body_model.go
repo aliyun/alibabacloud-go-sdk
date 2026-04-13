@@ -16,9 +16,6 @@ type iDescribeAvailableEngineVersionResponseBody interface {
 }
 
 type DescribeAvailableEngineVersionResponseBody struct {
-	// The list of one or more engine versions to which an ApsaraDB for MongoDB instance can be upgraded.
-	//
-	// >  An empty string is returned if the latest version is being used.
 	EngineVersions *DescribeAvailableEngineVersionResponseBodyEngineVersions `json:"EngineVersions,omitempty" xml:"EngineVersions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
