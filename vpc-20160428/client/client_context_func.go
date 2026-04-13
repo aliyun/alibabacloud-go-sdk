@@ -1771,6 +1771,66 @@ func (client *Client) AssociateHaVipWithContext(ctx context.Context, request *As
 
 // Summary:
 //
+// 关联MACSec配置到物理专线
+//
+// @param request - AssociateMacSecKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateMacSecKeyResponse
+func (client *Client) AssociateMacSecKeyWithContext(ctx context.Context, request *AssociateMacSecKeyRequest, runtime *dara.RuntimeOptions) (_result *AssociateMacSecKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cak) {
+		query["Cak"] = request.Cak
+	}
+
+	if !dara.IsNil(request.CipherSuite) {
+		query["CipherSuite"] = request.CipherSuite
+	}
+
+	if !dara.IsNil(request.Ckn) {
+		query["Ckn"] = request.Ckn
+	}
+
+	if !dara.IsNil(request.PhysicalConnectionId) {
+		query["PhysicalConnectionId"] = request.PhysicalConnectionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateMacSecKey"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateMacSecKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Associates a network access control list (ACL) with a vSwitch.
 //
 // Description:
@@ -21107,6 +21167,58 @@ func (client *Client) DisableVpcClassicLinkWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableVpcClassicLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消关联MACSec配置到物理专线
+//
+// @param request - DisassociateMacSecKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisassociateMacSecKeyResponse
+func (client *Client) DisassociateMacSecKeyWithContext(ctx context.Context, request *DisassociateMacSecKeyRequest, runtime *dara.RuntimeOptions) (_result *DisassociateMacSecKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Ckn) {
+		query["Ckn"] = request.Ckn
+	}
+
+	if !dara.IsNil(request.PhysicalConnectionId) {
+		query["PhysicalConnectionId"] = request.PhysicalConnectionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisassociateMacSecKey"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisassociateMacSecKeyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
