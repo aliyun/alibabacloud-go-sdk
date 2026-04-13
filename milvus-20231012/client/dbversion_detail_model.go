@@ -72,10 +72,11 @@ func (s *DBVersionDetail) Validate() error {
 }
 
 type DBVersionDetailSpecs struct {
-	ComponentSpecs []*DBVersionDetailSpecsComponentSpecs `json:"componentSpecs,omitempty" xml:"componentSpecs,omitempty" type:"Repeated"`
-	IsHA           *bool                                 `json:"isHA,omitempty" xml:"isHA,omitempty"`
-	IsStandalone   *bool                                 `json:"isStandalone,omitempty" xml:"isStandalone,omitempty"`
-	ZoneMode       *string                               `json:"zoneMode,omitempty" xml:"zoneMode,omitempty"`
+	ComponentSpecs  []*DBVersionDetailSpecsComponentSpecs `json:"componentSpecs,omitempty" xml:"componentSpecs,omitempty" type:"Repeated"`
+	IsHA            *bool                                 `json:"isHA,omitempty" xml:"isHA,omitempty"`
+	IsStandalone    *bool                                 `json:"isStandalone,omitempty" xml:"isStandalone,omitempty"`
+	IsStandalonePro *bool                                 `json:"isStandalonePro,omitempty" xml:"isStandalonePro,omitempty"`
+	ZoneMode        *string                               `json:"zoneMode,omitempty" xml:"zoneMode,omitempty"`
 }
 
 func (s DBVersionDetailSpecs) String() string {
@@ -98,6 +99,10 @@ func (s *DBVersionDetailSpecs) GetIsStandalone() *bool {
 	return s.IsStandalone
 }
 
+func (s *DBVersionDetailSpecs) GetIsStandalonePro() *bool {
+	return s.IsStandalonePro
+}
+
 func (s *DBVersionDetailSpecs) GetZoneMode() *string {
 	return s.ZoneMode
 }
@@ -114,6 +119,11 @@ func (s *DBVersionDetailSpecs) SetIsHA(v bool) *DBVersionDetailSpecs {
 
 func (s *DBVersionDetailSpecs) SetIsStandalone(v bool) *DBVersionDetailSpecs {
 	s.IsStandalone = &v
+	return s
+}
+
+func (s *DBVersionDetailSpecs) SetIsStandalonePro(v bool) *DBVersionDetailSpecs {
+	s.IsStandalonePro = &v
 	return s
 }
 

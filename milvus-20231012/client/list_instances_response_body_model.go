@@ -275,9 +275,10 @@ type ListInstancesResponseBodyData struct {
 	// example:
 	//
 	// sg-123xxx
-	SgId    *string                              `json:"SgId,omitempty" xml:"SgId,omitempty"`
-	Tags    []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Version *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
+	SgId            *string                              `json:"SgId,omitempty" xml:"SgId,omitempty"`
+	Tags            []*ListInstancesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateVersion *string                              `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	Version         *string                              `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The virtual private cloud (VPC) ID.
 	//
 	// example:
@@ -372,6 +373,10 @@ func (s *ListInstancesResponseBodyData) GetSgId() *string {
 
 func (s *ListInstancesResponseBodyData) GetTags() []*ListInstancesResponseBodyDataTags {
 	return s.Tags
+}
+
+func (s *ListInstancesResponseBodyData) GetTemplateVersion() *string {
+	return s.TemplateVersion
 }
 
 func (s *ListInstancesResponseBodyData) GetVersion() *string {
@@ -472,6 +477,11 @@ func (s *ListInstancesResponseBodyData) SetSgId(v string) *ListInstancesResponse
 
 func (s *ListInstancesResponseBodyData) SetTags(v []*ListInstancesResponseBodyDataTags) *ListInstancesResponseBodyData {
 	s.Tags = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyData) SetTemplateVersion(v string) *ListInstancesResponseBodyData {
+	s.TemplateVersion = &v
 	return s
 }
 

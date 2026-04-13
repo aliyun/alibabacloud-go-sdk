@@ -13,6 +13,8 @@ type iUpdateInstanceRequest interface {
 	GetRegionId() *string
 	SetAutoBackup(v bool) *UpdateInstanceRequest
 	GetAutoBackup() *bool
+	SetAutoPay(v bool) *UpdateInstanceRequest
+	GetAutoPay() *bool
 	SetComponents(v []*UpdateInstanceRequestComponents) *UpdateInstanceRequest
 	GetComponents() []*UpdateInstanceRequestComponents
 	SetConfiguration(v string) *UpdateInstanceRequest
@@ -36,6 +38,7 @@ type UpdateInstanceRequest struct {
 	//
 	// true
 	AutoBackup *bool                              `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
+	AutoPay    *bool                              `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
 	Components []*UpdateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -77,6 +80,10 @@ func (s *UpdateInstanceRequest) GetAutoBackup() *bool {
 	return s.AutoBackup
 }
 
+func (s *UpdateInstanceRequest) GetAutoPay() *bool {
+	return s.AutoPay
+}
+
 func (s *UpdateInstanceRequest) GetComponents() []*UpdateInstanceRequestComponents {
 	return s.Components
 }
@@ -108,6 +115,11 @@ func (s *UpdateInstanceRequest) SetRegionId(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetAutoBackup(v bool) *UpdateInstanceRequest {
 	s.AutoBackup = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetAutoPay(v bool) *UpdateInstanceRequest {
+	s.AutoPay = &v
 	return s
 }
 
@@ -160,7 +172,8 @@ type UpdateInstanceRequestComponents struct {
 	// example:
 	//
 	// 8
-	CuNum *int32 `json:"cuNum,omitempty" xml:"cuNum,omitempty"`
+	CuNum   *int32  `json:"cuNum,omitempty" xml:"cuNum,omitempty"`
+	PayType *string `json:"payType,omitempty" xml:"payType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -187,6 +200,10 @@ func (s *UpdateInstanceRequestComponents) GetCuNum() *int32 {
 	return s.CuNum
 }
 
+func (s *UpdateInstanceRequestComponents) GetPayType() *string {
+	return s.PayType
+}
+
 func (s *UpdateInstanceRequestComponents) GetReplica() *int32 {
 	return s.Replica
 }
@@ -197,6 +214,11 @@ func (s *UpdateInstanceRequestComponents) GetType() *string {
 
 func (s *UpdateInstanceRequestComponents) SetCuNum(v int32) *UpdateInstanceRequestComponents {
 	s.CuNum = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestComponents) SetPayType(v string) *UpdateInstanceRequestComponents {
+	s.PayType = &v
 	return s
 }
 

@@ -58,34 +58,96 @@ type iInstanceDetail interface {
 }
 
 type InstanceDetail struct {
-	AutoBackup    *bool                       `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
-	Components    []*InstanceDetailComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	Configuration *string                     `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// true
+	AutoBackup *bool                       `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
+	Components []*InstanceDetailComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rootCoord:
+	//
+	//     maxDatabaseNum: 64 # Maximum number of database
+	//
+	//     maxPartitionNum: 4096
+	Configuration *string `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2025-04-27T02:04:25Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	DbVersion  *string `json:"dbVersion,omitempty" xml:"dbVersion,omitempty"`
-	Encrypted  *bool   `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
+	// example:
+	//
+	// 2.5
+	DbVersion *string `json:"dbVersion,omitempty" xml:"dbVersion,omitempty"`
+	// example:
+	//
+	// false
+	Encrypted *bool `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2025-04-27T02:04:25Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	Ha         *bool   `json:"ha,omitempty" xml:"ha,omitempty"`
+	// example:
+	//
+	// true
+	Ha *bool `json:"ha,omitempty" xml:"ha,omitempty"`
+	// example:
+	//
+	// c-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// example:
 	//
 	// milvus-test
-	InstanceName     *string                     `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	KmsKeyId         *string                     `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
-	MultiZoneMode    *string                     `json:"multiZoneMode,omitempty" xml:"multiZoneMode,omitempty"`
-	OrderId          *string                     `json:"orderId,omitempty" xml:"orderId,omitempty"`
-	PaymentType      *string                     `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	RegionId         *string                     `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	ResourceGroupId  *string                     `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	RunningTime      *int64                      `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
-	SecurityGroupIds []*string                   `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty" type:"Repeated"`
-	Status           *string                     `json:"status,omitempty" xml:"status,omitempty"`
-	Tags             []*InstanceDetailTags       `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	VSwitchIds       []*InstanceDetailVSwitchIds `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	VpcId            *string                     `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	ZoneId           *string                     `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
+	// kms key Id。
+	//
+	// example:
+	//
+	// key-xxx
+	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
+	// example:
+	//
+	// Single
+	MultiZoneMode *string `json:"multiZoneMode,omitempty" xml:"multiZoneMode,omitempty"`
+	// example:
+	//
+	// 4751
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// rg-aek3dcgyq7pnqwa
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// example:
+	//
+	// 1
+	RunningTime      *int64    `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	SecurityGroupIds []*string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// running
+	Status     *string                     `json:"status,omitempty" xml:"status,omitempty"`
+	Tags       []*InstanceDetailTags       `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VSwitchIds []*InstanceDetailVSwitchIds `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-xxx
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
 func (s InstanceDetail) String() string {
@@ -335,11 +397,27 @@ func (s *InstanceDetail) Validate() error {
 }
 
 type InstanceDetailComponents struct {
-	CuNum        *int32  `json:"cuNum,omitempty" xml:"cuNum,omitempty"`
-	CuType       *string `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	// example:
+	//
+	// 4
+	CuNum *int32 `json:"cuNum,omitempty" xml:"cuNum,omitempty"`
+	// example:
+	//
+	// general
+	CuType *string `json:"cuType,omitempty" xml:"cuType,omitempty"`
+	// example:
+	//
+	// Normal
 	DiskSizeType *string `json:"diskSizeType,omitempty" xml:"diskSizeType,omitempty"`
-	Replica      *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	PayType      *string `json:"payType,omitempty" xml:"payType,omitempty"`
+	// example:
+	//
+	// 1
+	Replica *int32 `json:"replica,omitempty" xml:"replica,omitempty"`
+	// example:
+	//
+	// data
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s InstanceDetailComponents) String() string {
@@ -360,6 +438,10 @@ func (s *InstanceDetailComponents) GetCuType() *string {
 
 func (s *InstanceDetailComponents) GetDiskSizeType() *string {
 	return s.DiskSizeType
+}
+
+func (s *InstanceDetailComponents) GetPayType() *string {
+	return s.PayType
 }
 
 func (s *InstanceDetailComponents) GetReplica() *int32 {
@@ -385,6 +467,11 @@ func (s *InstanceDetailComponents) SetDiskSizeType(v string) *InstanceDetailComp
 	return s
 }
 
+func (s *InstanceDetailComponents) SetPayType(v string) *InstanceDetailComponents {
+	s.PayType = &v
+	return s
+}
+
 func (s *InstanceDetailComponents) SetReplica(v int32) *InstanceDetailComponents {
 	s.Replica = &v
 	return s
@@ -400,7 +487,13 @@ func (s *InstanceDetailComponents) Validate() error {
 }
 
 type InstanceDetailTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// k1
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// v1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -435,7 +528,13 @@ func (s *InstanceDetailTags) Validate() error {
 }
 
 type InstanceDetailVSwitchIds struct {
-	VswId  *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
+	// example:
+	//
+	// vsw-xxx
+	VswId *string `json:"vswId,omitempty" xml:"vswId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 

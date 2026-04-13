@@ -216,12 +216,24 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AiFunction) {
+		body["aiFunction"] = request.AiFunction
+	}
+
 	if !dara.IsNil(request.AutoBackup) {
 		body["autoBackup"] = request.AutoBackup
 	}
 
+	if !dara.IsNil(request.AutoPay) {
+		body["autoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		body["autoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BackupRestoreInfo) {
+		body["backupRestoreInfo"] = request.BackupRestoreInfo
 	}
 
 	if !dara.IsNil(request.Components) {
@@ -1234,6 +1246,10 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoBackup) {
 		body["autoBackup"] = request.AutoBackup
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		body["autoPay"] = request.AutoPay
 	}
 
 	if !dara.IsNil(request.Components) {

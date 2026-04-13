@@ -214,10 +214,11 @@ type GetInstanceDetailResponseBodyData struct {
 	// example:
 	//
 	// running
-	InstanceStatus *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	KmsKeyId       *string                                         `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	MeasureConfig  *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
-	MultiZoneMode  *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
+	InstanceStatus     *string                                         `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	KmsKeyId           *string                                         `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	MaintainablePeriod *string                                         `json:"MaintainablePeriod,omitempty" xml:"MaintainablePeriod,omitempty"`
+	MeasureConfig      *GetInstanceDetailResponseBodyDataMeasureConfig `json:"MeasureConfig,omitempty" xml:"MeasureConfig,omitempty" type:"Struct"`
+	MultiZoneMode      *string                                         `json:"MultiZoneMode,omitempty" xml:"MultiZoneMode,omitempty"`
 	// example:
 	//
 	// perf
@@ -378,6 +379,10 @@ func (s *GetInstanceDetailResponseBodyData) GetKmsKeyId() *string {
 	return s.KmsKeyId
 }
 
+func (s *GetInstanceDetailResponseBodyData) GetMaintainablePeriod() *string {
+	return s.MaintainablePeriod
+}
+
 func (s *GetInstanceDetailResponseBodyData) GetMeasureConfig() *GetInstanceDetailResponseBodyDataMeasureConfig {
 	return s.MeasureConfig
 }
@@ -516,6 +521,11 @@ func (s *GetInstanceDetailResponseBodyData) SetInstanceStatus(v string) *GetInst
 
 func (s *GetInstanceDetailResponseBodyData) SetKmsKeyId(v string) *GetInstanceDetailResponseBodyData {
 	s.KmsKeyId = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyData) SetMaintainablePeriod(v string) *GetInstanceDetailResponseBodyData {
+	s.MaintainablePeriod = &v
 	return s
 }
 
@@ -847,6 +857,7 @@ type GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList struct {
 	//
 	// essd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	PayType  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The number of replicas.
 	//
 	// example:
@@ -884,6 +895,10 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Get
 	return s.DiskType
 }
 
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetPayType() *string {
+	return s.PayType
+}
+
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) GetReplica() *int32 {
 	return s.Replica
 }
@@ -914,6 +929,11 @@ func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) Set
 
 func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetDiskType(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
 	s.DiskType = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList) SetPayType(v string) *GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList {
+	s.PayType = &v
 	return s
 }
 

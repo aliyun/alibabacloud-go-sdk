@@ -131,12 +131,24 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AiFunction) {
+		body["aiFunction"] = request.AiFunction
+	}
+
 	if !dara.IsNil(request.AutoBackup) {
 		body["autoBackup"] = request.AutoBackup
 	}
 
+	if !dara.IsNil(request.AutoPay) {
+		body["autoPay"] = request.AutoPay
+	}
+
 	if !dara.IsNil(request.AutoRenew) {
 		body["autoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BackupRestoreInfo) {
+		body["backupRestoreInfo"] = request.BackupRestoreInfo
 	}
 
 	if !dara.IsNil(request.Components) {
@@ -921,6 +933,10 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoBackup) {
 		body["autoBackup"] = request.AutoBackup
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		body["autoPay"] = request.AutoPay
 	}
 
 	if !dara.IsNil(request.Components) {

@@ -13,6 +13,8 @@ type iUpdateInstanceResponseBody interface {
 	GetRequestId() *string
 	SetData(v bool) *UpdateInstanceResponseBody
 	GetData() *bool
+	SetOrderId(v string) *UpdateInstanceResponseBody
+	GetOrderId() *string
 	SetSuccess(v bool) *UpdateInstanceResponseBody
 	GetSuccess() *bool
 }
@@ -25,7 +27,8 @@ type UpdateInstanceResponseBody struct {
 	// example:
 	//
 	// true
-	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	Data    *bool   `json:"data,omitempty" xml:"data,omitempty"`
+	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	// example:
 	//
 	// true
@@ -48,6 +51,10 @@ func (s *UpdateInstanceResponseBody) GetData() *bool {
 	return s.Data
 }
 
+func (s *UpdateInstanceResponseBody) GetOrderId() *string {
+	return s.OrderId
+}
+
 func (s *UpdateInstanceResponseBody) GetSuccess() *bool {
 	return s.Success
 }
@@ -59,6 +66,11 @@ func (s *UpdateInstanceResponseBody) SetRequestId(v string) *UpdateInstanceRespo
 
 func (s *UpdateInstanceResponseBody) SetData(v bool) *UpdateInstanceResponseBody {
 	s.Data = &v
+	return s
+}
+
+func (s *UpdateInstanceResponseBody) SetOrderId(v string) *UpdateInstanceResponseBody {
+	s.OrderId = &v
 	return s
 }
 

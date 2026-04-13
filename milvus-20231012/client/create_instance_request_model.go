@@ -11,10 +11,16 @@ type iCreateInstanceRequest interface {
 	GoString() string
 	SetRegionId(v string) *CreateInstanceRequest
 	GetRegionId() *string
+	SetAiFunction(v bool) *CreateInstanceRequest
+	GetAiFunction() *bool
 	SetAutoBackup(v bool) *CreateInstanceRequest
 	GetAutoBackup() *bool
+	SetAutoPay(v bool) *CreateInstanceRequest
+	GetAutoPay() *bool
 	SetAutoRenew(v bool) *CreateInstanceRequest
 	GetAutoRenew() *bool
+	SetBackupRestoreInfo(v *CreateInstanceRequestBackupRestoreInfo) *CreateInstanceRequest
+	GetBackupRestoreInfo() *CreateInstanceRequestBackupRestoreInfo
 	SetComponents(v []*CreateInstanceRequestComponents) *CreateInstanceRequest
 	GetComponents() []*CreateInstanceRequestComponents
 	SetConfiguration(v string) *CreateInstanceRequest
@@ -63,11 +69,14 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId      *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	AutoBackup    *bool                              `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
-	AutoRenew     *bool                              `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	Components    []*CreateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	Configuration *string                            `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	RegionId          *string                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AiFunction        *bool                                   `json:"aiFunction,omitempty" xml:"aiFunction,omitempty"`
+	AutoBackup        *bool                                   `json:"autoBackup,omitempty" xml:"autoBackup,omitempty"`
+	AutoPay           *bool                                   `json:"autoPay,omitempty" xml:"autoPay,omitempty"`
+	AutoRenew         *bool                                   `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
+	BackupRestoreInfo *CreateInstanceRequestBackupRestoreInfo `json:"backupRestoreInfo,omitempty" xml:"backupRestoreInfo,omitempty" type:"Struct"`
+	Components        []*CreateInstanceRequestComponents      `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
+	Configuration     *string                                 `json:"configuration,omitempty" xml:"configuration,omitempty"`
 	// example:
 	//
 	// test12
@@ -142,12 +151,24 @@ func (s *CreateInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateInstanceRequest) GetAiFunction() *bool {
+	return s.AiFunction
+}
+
 func (s *CreateInstanceRequest) GetAutoBackup() *bool {
 	return s.AutoBackup
 }
 
+func (s *CreateInstanceRequest) GetAutoPay() *bool {
+	return s.AutoPay
+}
+
 func (s *CreateInstanceRequest) GetAutoRenew() *bool {
 	return s.AutoRenew
+}
+
+func (s *CreateInstanceRequest) GetBackupRestoreInfo() *CreateInstanceRequestBackupRestoreInfo {
+	return s.BackupRestoreInfo
 }
 
 func (s *CreateInstanceRequest) GetComponents() []*CreateInstanceRequestComponents {
@@ -239,13 +260,28 @@ func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetAiFunction(v bool) *CreateInstanceRequest {
+	s.AiFunction = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetAutoBackup(v bool) *CreateInstanceRequest {
 	s.AutoBackup = &v
 	return s
 }
 
+func (s *CreateInstanceRequest) SetAutoPay(v bool) *CreateInstanceRequest {
+	s.AutoPay = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetBackupRestoreInfo(v *CreateInstanceRequestBackupRestoreInfo) *CreateInstanceRequest {
+	s.BackupRestoreInfo = v
 	return s
 }
 
@@ -355,6 +391,11 @@ func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest 
 }
 
 func (s *CreateInstanceRequest) Validate() error {
+	if s.BackupRestoreInfo != nil {
+		if err := s.BackupRestoreInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Components != nil {
 		for _, item := range s.Components {
 			if item != nil {
@@ -383,6 +424,51 @@ func (s *CreateInstanceRequest) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateInstanceRequestBackupRestoreInfo struct {
+	BackupId        *string `json:"backupId,omitempty" xml:"backupId,omitempty"`
+	BackupName      *string `json:"backupName,omitempty" xml:"backupName,omitempty"`
+	SourceClusterId *string `json:"sourceClusterId,omitempty" xml:"sourceClusterId,omitempty"`
+}
+
+func (s CreateInstanceRequestBackupRestoreInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateInstanceRequestBackupRestoreInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) GetBackupId() *string {
+	return s.BackupId
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) GetBackupName() *string {
+	return s.BackupName
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) GetSourceClusterId() *string {
+	return s.SourceClusterId
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) SetBackupId(v string) *CreateInstanceRequestBackupRestoreInfo {
+	s.BackupId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) SetBackupName(v string) *CreateInstanceRequestBackupRestoreInfo {
+	s.BackupName = &v
+	return s
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) SetSourceClusterId(v string) *CreateInstanceRequestBackupRestoreInfo {
+	s.SourceClusterId = &v
+	return s
+}
+
+func (s *CreateInstanceRequestBackupRestoreInfo) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateInstanceRequestComponents struct {
