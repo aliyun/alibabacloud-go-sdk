@@ -11,6 +11,8 @@ type iListProtectedResourcesRequest interface {
 	GoString() string
 	SetCreatedByProduct(v string) *ListProtectedResourcesRequest
 	GetCreatedByProduct() *string
+	SetHasSnapshot(v bool) *ListProtectedResourcesRequest
+	GetHasSnapshot() *bool
 	SetMaxResults(v int32) *ListProtectedResourcesRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListProtectedResourcesRequest
@@ -28,6 +30,7 @@ type ListProtectedResourcesRequest struct {
 	//
 	// BASIC
 	CreatedByProduct *string `json:"CreatedByProduct,omitempty" xml:"CreatedByProduct,omitempty"`
+	HasSnapshot      *bool   `json:"HasSnapshot,omitempty" xml:"HasSnapshot,omitempty"`
 	// example:
 	//
 	// 10
@@ -62,6 +65,10 @@ func (s *ListProtectedResourcesRequest) GetCreatedByProduct() *string {
 	return s.CreatedByProduct
 }
 
+func (s *ListProtectedResourcesRequest) GetHasSnapshot() *bool {
+	return s.HasSnapshot
+}
+
 func (s *ListProtectedResourcesRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -84,6 +91,11 @@ func (s *ListProtectedResourcesRequest) GetSourceType() *string {
 
 func (s *ListProtectedResourcesRequest) SetCreatedByProduct(v string) *ListProtectedResourcesRequest {
 	s.CreatedByProduct = &v
+	return s
+}
+
+func (s *ListProtectedResourcesRequest) SetHasSnapshot(v bool) *ListProtectedResourcesRequest {
+	s.HasSnapshot = &v
 	return s
 }
 

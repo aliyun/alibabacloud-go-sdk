@@ -231,25 +231,29 @@ type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
 	SnapshotHash         *string                                                         `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
 	SnapshotId           *string                                                         `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	SourceInstanceId     *string                                                         `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	SourceType           *string                                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Speed                *int64                                                          `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StartTime            *int64                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status               *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageClass         *string                                                         `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	TargetBucket         *string                                                         `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	TargetClientId       *string                                                         `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
-	TargetCreateTime     *int64                                                          `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	TargetDataSourceId   *string                                                         `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
-	TargetFileSystemId   *string                                                         `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	TargetInstanceId     *string                                                         `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetInstanceName   *string                                                         `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	TargetPath           *string                                                         `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPrefix         *string                                                         `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	TargetTableName      *string                                                         `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TargetTime           *int64                                                          `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	UdmDetail            *string                                                         `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	UpdatedTime          *int64                                                          `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId              *string                                                         `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// example:
+	//
+	// i-123***7890
+	SourceResourceId   *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	SourceType         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Speed              *int64  `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StartTime          *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass       *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	TargetBucket       *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
+	TargetClientId     *string `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
+	TargetCreateTime   *int64  `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
+	TargetDataSourceId *string `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
+	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
+	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	TargetPath         *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetPrefix       *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
+	TargetTableName    *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	TargetTime         *int64  `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetail          *string `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
+	UpdatedTime        *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId            *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) String() string {
@@ -378,6 +382,10 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSnapshotId() 
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSourceInstanceId() *string {
 	return s.SourceInstanceId
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSourceResourceId() *string {
+	return s.SourceResourceId
 }
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) GetSourceType() *string {
@@ -603,6 +611,11 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetSnapshotId(v 
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetSourceInstanceId(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.SourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetSourceResourceId(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.SourceResourceId = &v
 	return s
 }
 

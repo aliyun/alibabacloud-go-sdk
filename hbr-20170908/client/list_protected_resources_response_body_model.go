@@ -155,6 +155,10 @@ func (s *ListProtectedResourcesResponseBody) Validate() error {
 type ListProtectedResourcesResponseBodyProtectedResources struct {
 	// example:
 	//
+	// 1
+	BackupPlanCount *int64 `json:"BackupPlanCount,omitempty" xml:"BackupPlanCount,omitempty"`
+	// example:
+	//
 	// BASIC
 	CreatedByProduct *string `json:"CreatedByProduct,omitempty" xml:"CreatedByProduct,omitempty"`
 	// example:
@@ -175,6 +179,10 @@ type ListProtectedResourcesResponseBodyProtectedResources struct {
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
+	// cn-hangzhou
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// example:
+	//
 	// 30
 	SnapshotCount *int64 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
 	// example:
@@ -189,6 +197,10 @@ func (s ListProtectedResourcesResponseBodyProtectedResources) String() string {
 
 func (s ListProtectedResourcesResponseBodyProtectedResources) GoString() string {
 	return s.String()
+}
+
+func (s *ListProtectedResourcesResponseBodyProtectedResources) GetBackupPlanCount() *int64 {
+	return s.BackupPlanCount
 }
 
 func (s *ListProtectedResourcesResponseBodyProtectedResources) GetCreatedByProduct() *string {
@@ -211,12 +223,21 @@ func (s *ListProtectedResourcesResponseBodyProtectedResources) GetResourceOwnerI
 	return s.ResourceOwnerId
 }
 
+func (s *ListProtectedResourcesResponseBodyProtectedResources) GetResourceRegionId() *string {
+	return s.ResourceRegionId
+}
+
 func (s *ListProtectedResourcesResponseBodyProtectedResources) GetSnapshotCount() *int64 {
 	return s.SnapshotCount
 }
 
 func (s *ListProtectedResourcesResponseBodyProtectedResources) GetSourceType() *string {
 	return s.SourceType
+}
+
+func (s *ListProtectedResourcesResponseBodyProtectedResources) SetBackupPlanCount(v int64) *ListProtectedResourcesResponseBodyProtectedResources {
+	s.BackupPlanCount = &v
+	return s
 }
 
 func (s *ListProtectedResourcesResponseBodyProtectedResources) SetCreatedByProduct(v string) *ListProtectedResourcesResponseBodyProtectedResources {
@@ -241,6 +262,11 @@ func (s *ListProtectedResourcesResponseBodyProtectedResources) SetResourceId(v s
 
 func (s *ListProtectedResourcesResponseBodyProtectedResources) SetResourceOwnerId(v int64) *ListProtectedResourcesResponseBodyProtectedResources {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListProtectedResourcesResponseBodyProtectedResources) SetResourceRegionId(v string) *ListProtectedResourcesResponseBodyProtectedResources {
+	s.ResourceRegionId = &v
 	return s
 }
 

@@ -4917,6 +4917,10 @@ func (client *Client) ListProtectedResourcesWithContext(ctx context.Context, req
 		query["CreatedByProduct"] = request.CreatedByProduct
 	}
 
+	if !dara.IsNil(request.HasSnapshot) {
+		query["HasSnapshot"] = request.HasSnapshot
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}

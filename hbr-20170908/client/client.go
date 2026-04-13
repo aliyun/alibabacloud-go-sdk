@@ -5156,8 +5156,6 @@ func (client *Client) DescribeRecoverableOtsInstances(request *DescribeRecoverab
 //
 // Queries available regions.
 //
-// @param request - DescribeRegionsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
@@ -6502,6 +6500,10 @@ func (client *Client) ListProtectedResourcesWithOptions(request *ListProtectedRe
 		query["CreatedByProduct"] = request.CreatedByProduct
 	}
 
+	if !dara.IsNil(request.HasSnapshot) {
+		query["HasSnapshot"] = request.HasSnapshot
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -6566,8 +6568,6 @@ func (client *Client) ListProtectedResources(request *ListProtectedResourcesRequ
 // Summary:
 //
 // Activates Cloud Backup.
-//
-// @param request - OpenHbrServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
