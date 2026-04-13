@@ -1065,8 +1065,9 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) Valida
 }
 
 type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute struct {
-	AuthCallbackURL   *string `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
-	SupabaseClusterId *string `json:"SupabaseClusterId,omitempty" xml:"SupabaseClusterId,omitempty"`
+	AuthCallbackURL   *string   `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
+	AuthProviders     []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
+	SupabaseClusterId *string   `json:"SupabaseClusterId,omitempty" xml:"SupabaseClusterId,omitempty"`
 }
 
 func (s DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) String() string {
@@ -1081,12 +1082,21 @@ func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribu
 	return s.AuthCallbackURL
 }
 
+func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) GetAuthProviders() []*string {
+	return s.AuthProviders
+}
+
 func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) GetSupabaseClusterId() *string {
 	return s.SupabaseClusterId
 }
 
 func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) SetAuthCallbackURL(v string) *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute {
 	s.AuthCallbackURL = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) SetAuthProviders(v []*string) *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute {
+	s.AuthProviders = v
 	return s
 }
 
