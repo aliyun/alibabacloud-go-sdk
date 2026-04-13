@@ -1986,8 +1986,6 @@ func (client *Client) GetRule(request *GetRuleRequest) (_result *GetRuleResponse
 //
 // You can call this API operation to query all Alibaba Cloud service event sources.
 //
-// @param request - ListAliyunOfficialEventSourcesRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAliyunOfficialEventSourcesResponse

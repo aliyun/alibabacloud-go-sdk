@@ -8796,19 +8796,23 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameter
 	// example:
 	//
 	// bastionhost-cn-zvp27kcha1r
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the region where the ApsaraMQ for MQTT instance resides.
 	//
 	// example:
 	//
 	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The name of the topic on the ApsaraMQ for MQTT instance.
 	//
 	// example:
 	//
 	// migration_instance
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) String() string {
@@ -8827,12 +8831,28 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParam
 	return s.InstanceId
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GetNetworkType() *string {
+	return s.NetworkType
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GetTopic() *string {
 	return s.Topic
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GetVSwitchIds() *string {
+	return s.VSwitchIds
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GetVpcId() *string {
+	return s.VpcId
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetBodyDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
@@ -8845,13 +8865,33 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParam
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetNetworkType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
+	s.NetworkType = &v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetRegionId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
 	s.RegionId = &v
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
 	s.Topic = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
+	s.VpcId = &v
 	return s
 }
 

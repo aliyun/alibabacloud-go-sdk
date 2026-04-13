@@ -10189,19 +10189,23 @@ type CreateEventStreamingRequestSourceSourceMQTTParameters struct {
 	// example:
 	//
 	// r-bp1b5ncun5lqerzg4r
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The ID of the region where the ApsaraMQ for MQTT instance resides.
 	//
 	// example:
 	//
 	// cn-shenzhen
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The topic from which messages are sent.
 	//
 	// example:
 	//
 	// CANAL_VICUTU_UAT
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSourceSourceMQTTParameters) String() string {
@@ -10220,12 +10224,28 @@ func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetInstanceId() 
 	return s.InstanceId
 }
 
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetNetworkType() *string {
+	return s.NetworkType
+}
+
 func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetSecurityGroupId() *string {
+	return s.SecurityGroupId
+}
+
 func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetTopic() *string {
 	return s.Topic
+}
+
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetVSwitchIds() *string {
+	return s.VSwitchIds
+}
+
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) GetVpcId() *string {
+	return s.VpcId
 }
 
 func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetBodyDataType(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
@@ -10238,13 +10258,33 @@ func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetInstanceId(v 
 	return s
 }
 
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetNetworkType(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
+	s.NetworkType = &v
+	return s
+}
+
 func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetRegionId(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
 	s.RegionId = &v
 	return s
 }
 
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetSecurityGroupId(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
 func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetTopic(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
 	s.Topic = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetVSwitchIds(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetVpcId(v string) *CreateEventStreamingRequestSourceSourceMQTTParameters {
+	s.VpcId = &v
 	return s
 }
 
