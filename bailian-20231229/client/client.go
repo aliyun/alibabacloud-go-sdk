@@ -372,6 +372,86 @@ func (client *Client) AddFilesFromAuthorizedOss(WorkspaceId *string, request *Ad
 
 // Summary:
 //
+// 添加表格
+//
+// @param tmpReq - AddTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTableResponse
+func (client *Client) AddTableWithOptions(WorkspaceId *string, tmpReq *AddTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TableColumns) {
+		request.TableColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableColumns, dara.String("TableColumns"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.TableColumnsShrink) {
+		body["TableColumns"] = request.TableColumnsShrink
+	}
+
+	if !dara.IsNil(request.TableName) {
+		body["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddTable"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/table"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加表格
+//
+// @param request - AddTableRequest
+//
+// @return AddTableResponse
+func (client *Client) AddTable(WorkspaceId *string, request *AddTableRequest) (_result *AddTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddTableResponse{}
+	_body, _err := client.AddTableWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Applies for a document upload lease to upload a document. You cannot use the API to upload structured documents. Use the console instead.
 //
 // Description:
@@ -1188,12 +1268,20 @@ func (client *Client) CreatePromptTemplate(workspaceId *string, request *CreateP
 //
 // 删除智能体
 //
+// @param request - DeleteAgentRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAgentResponse
-func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *string, request *DeleteAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1221,12 +1309,14 @@ func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *strin
 //
 // 删除智能体
 //
+// @param request - DeleteAgentRequest
+//
 // @return DeleteAgentResponse
-func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result *DeleteAgentResponse, _err error) {
+func (client *Client) DeleteAgent(workspaceId *string, appCode *string, request *DeleteAgentRequest) (_result *DeleteAgentResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAgentResponse{}
-	_body, _err := client.DeleteAgentWithOptions(workspaceId, appCode, headers, runtime)
+	_body, _err := client.DeleteAgentWithOptions(workspaceId, appCode, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1238,12 +1328,20 @@ func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result
 //
 // Deletes a specified category permanently.
 //
+// @param request - DeleteCategoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCategoryResponse
-func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
+func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId *string, request *DeleteCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1271,12 +1369,14 @@ func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId 
 //
 // Deletes a specified category permanently.
 //
+// @param request - DeleteCategoryRequest
+//
 // @return DeleteCategoryResponse
-func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string) (_result *DeleteCategoryResponse, _err error) {
+func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string, request *DeleteCategoryRequest) (_result *DeleteCategoryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteCategoryResponse{}
-	_body, _err := client.DeleteCategoryWithOptions(CategoryId, WorkspaceId, headers, runtime)
+	_body, _err := client.DeleteCategoryWithOptions(CategoryId, WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1404,12 +1504,20 @@ func (client *Client) DeleteChunk(WorkspaceId *string, request *DeleteChunkReque
 //
 // Deletes a specified unstructured document permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
+// @param request - DeleteFileRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFileResponse
-func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string, request *DeleteFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1437,12 +1545,14 @@ func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string,
 //
 // Deletes a specified unstructured document permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
+// @param request - DeleteFileRequest
+//
 // @return DeleteFileResponse
-func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *DeleteFileResponse, _err error) {
+func (client *Client) DeleteFile(FileId *string, WorkspaceId *string, request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteFileResponse{}
-	_body, _err := client.DeleteFileWithOptions(FileId, WorkspaceId, headers, runtime)
+	_body, _err := client.DeleteFileWithOptions(FileId, WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1644,12 +1754,20 @@ func (client *Client) DeleteIndexDocument(WorkspaceId *string, request *DeleteIn
 //
 // 删除memory
 //
+// @param request - DeleteMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *string, request *DeleteMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1677,12 +1795,14 @@ func (client *Client) DeleteMemoryWithOptions(workspaceId *string, memoryId *str
 //
 // 删除memory
 //
+// @param request - DeleteMemoryRequest
+//
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemory(workspaceId *string, memoryId *string) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemory(workspaceId *string, memoryId *string, request *DeleteMemoryRequest) (_result *DeleteMemoryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteMemoryResponse{}
-	_body, _err := client.DeleteMemoryWithOptions(workspaceId, memoryId, headers, runtime)
+	_body, _err := client.DeleteMemoryWithOptions(workspaceId, memoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1694,12 +1814,20 @@ func (client *Client) DeleteMemory(workspaceId *string, memoryId *string) (_resu
 //
 // 删除记忆Node
 //
+// @param request - DeleteMemoryNodeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryNodeResponse
-func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
+func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, request *DeleteMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1727,12 +1855,14 @@ func (client *Client) DeleteMemoryNodeWithOptions(workspaceId *string, memoryId 
 //
 // 删除记忆Node
 //
+// @param request - DeleteMemoryNodeRequest
+//
 // @return DeleteMemoryNodeResponse
-func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string) (_result *DeleteMemoryNodeResponse, _err error) {
+func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string, request *DeleteMemoryNodeRequest) (_result *DeleteMemoryNodeResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteMemoryNodeResponse{}
-	_body, _err := client.DeleteMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
+	_body, _err := client.DeleteMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1744,12 +1874,20 @@ func (client *Client) DeleteMemoryNode(workspaceId *string, memoryId *string, me
 //
 // Deletes a prompt template based on the template ID.
 //
+// @param request - DeletePromptTemplateRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePromptTemplateResponse
-func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
+func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, request *DeletePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1777,12 +1915,14 @@ func (client *Client) DeletePromptTemplateWithOptions(workspaceId *string, promp
 //
 // Deletes a prompt template based on the template ID.
 //
+// @param request - DeletePromptTemplateRequest
+//
 // @return DeletePromptTemplateResponse
-func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId *string) (_result *DeletePromptTemplateResponse, _err error) {
+func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId *string, request *DeletePromptTemplateRequest) (_result *DeletePromptTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeletePromptTemplateResponse{}
-	_body, _err := client.DeletePromptTemplateWithOptions(workspaceId, promptTemplateId, headers, runtime)
+	_body, _err := client.DeletePromptTemplateWithOptions(workspaceId, promptTemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1804,12 +1944,20 @@ func (client *Client) DeletePromptTemplate(workspaceId *string, promptTemplateId
 //
 // **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
+// @param request - DescribeFileRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFileResponse
-func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeFileResponse, _err error) {
+func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *string, request *DescribeFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1847,12 +1995,14 @@ func (client *Client) DescribeFileWithOptions(WorkspaceId *string, FileId *strin
 //
 // **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
+// @param request - DescribeFileRequest
+//
 // @return DescribeFileResponse
-func (client *Client) DescribeFile(WorkspaceId *string, FileId *string) (_result *DescribeFileResponse, _err error) {
+func (client *Client) DescribeFile(WorkspaceId *string, FileId *string, request *DescribeFileRequest) (_result *DescribeFileResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeFileResponse{}
-	_body, _err := client.DescribeFileWithOptions(WorkspaceId, FileId, headers, runtime)
+	_body, _err := client.DescribeFileWithOptions(WorkspaceId, FileId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2238,12 +2388,20 @@ func (client *Client) GetIndexMonitor(WorkspaceId *string, request *GetIndexMoni
 //
 // 获取memory
 //
+// @param request - GetMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryResponse
-func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string, request *GetMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2271,12 +2429,14 @@ func (client *Client) GetMemoryWithOptions(workspaceId *string, memoryId *string
 //
 // 获取memory
 //
+// @param request - GetMemoryRequest
+//
 // @return GetMemoryResponse
-func (client *Client) GetMemory(workspaceId *string, memoryId *string) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemory(workspaceId *string, memoryId *string, request *GetMemoryRequest) (_result *GetMemoryResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetMemoryResponse{}
-	_body, _err := client.GetMemoryWithOptions(workspaceId, memoryId, headers, runtime)
+	_body, _err := client.GetMemoryWithOptions(workspaceId, memoryId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2288,12 +2448,20 @@ func (client *Client) GetMemory(workspaceId *string, memoryId *string) (_result 
 //
 // 获取记忆Node
 //
+// @param request - GetMemoryNodeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryNodeResponse
-func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
+func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *string, memoryNodeId *string, request *GetMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2321,12 +2489,14 @@ func (client *Client) GetMemoryNodeWithOptions(workspaceId *string, memoryId *st
 //
 // 获取记忆Node
 //
+// @param request - GetMemoryNodeRequest
+//
 // @return GetMemoryNodeResponse
-func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string) (_result *GetMemoryNodeResponse, _err error) {
+func (client *Client) GetMemoryNode(workspaceId *string, memoryId *string, memoryNodeId *string, request *GetMemoryNodeRequest) (_result *GetMemoryNodeResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetMemoryNodeResponse{}
-	_body, _err := client.GetMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, headers, runtime)
+	_body, _err := client.GetMemoryNodeWithOptions(workspaceId, memoryId, memoryNodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2404,12 +2574,20 @@ func (client *Client) GetParseSettings(WorkspaceId *string, request *GetParseSet
 //
 // Obtains a prompt template based on the template ID.
 //
+// @param request - GetPromptTemplateRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPromptTemplateResponse
-func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
+func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTemplateId *string, request *GetPromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2437,12 +2615,14 @@ func (client *Client) GetPromptTemplateWithOptions(workspaceId *string, promptTe
 //
 // Obtains a prompt template based on the template ID.
 //
+// @param request - GetPromptTemplateRequest
+//
 // @return GetPromptTemplateResponse
-func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *string) (_result *GetPromptTemplateResponse, _err error) {
+func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *string, request *GetPromptTemplateRequest) (_result *GetPromptTemplateResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetPromptTemplateResponse{}
-	_body, _err := client.GetPromptTemplateWithOptions(workspaceId, promptTemplateId, headers, runtime)
+	_body, _err := client.GetPromptTemplateWithOptions(workspaceId, promptTemplateId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2454,12 +2634,20 @@ func (client *Client) GetPromptTemplate(workspaceId *string, promptTemplateId *s
 //
 // 获取发布态智能体应用
 //
+// @param request - GetPublishedAgentRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPublishedAgentResponse
-func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
+func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode *string, request *GetPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2487,12 +2675,14 @@ func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode 
 //
 // 获取发布态智能体应用
 //
+// @param request - GetPublishedAgentRequest
+//
 // @return GetPublishedAgentResponse
-func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string) (_result *GetPublishedAgentResponse, _err error) {
+func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string, request *GetPublishedAgentRequest) (_result *GetPublishedAgentResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetPublishedAgentResponse{}
-	_body, _err := client.GetPublishedAgentWithOptions(workspaceId, appCode, headers, runtime)
+	_body, _err := client.GetPublishedAgentWithOptions(workspaceId, appCode, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4455,6 +4645,84 @@ func (client *Client) UpdatePromptTemplate(workspaceId *string, promptTemplateId
 	headers := make(map[string]*string)
 	_result = &UpdatePromptTemplateResponse{}
 	_body, _err := client.UpdatePromptTemplateWithOptions(workspaceId, promptTemplateId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从oss上传table
+//
+// @param request - UpdateTableFromAuthorizedOssRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableFromAuthorizedOssResponse
+func (client *Client) UpdateTableFromAuthorizedOssWithOptions(WorkspaceId *string, TableId *string, request *UpdateTableFromAuthorizedOssRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTableFromAuthorizedOssResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OssBucket) {
+		body["OssBucket"] = request.OssBucket
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		body["OssKey"] = request.OssKey
+	}
+
+	if !dara.IsNil(request.OssRegionId) {
+		body["OssRegionId"] = request.OssRegionId
+	}
+
+	if !dara.IsNil(request.UpdateMode) {
+		body["UpdateMode"] = request.UpdateMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTableFromAuthorizedOss"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/table/fromoss/" + dara.PercentEncode(dara.StringValue(TableId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTableFromAuthorizedOssResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从oss上传table
+//
+// @param request - UpdateTableFromAuthorizedOssRequest
+//
+// @return UpdateTableFromAuthorizedOssResponse
+func (client *Client) UpdateTableFromAuthorizedOss(WorkspaceId *string, TableId *string, request *UpdateTableFromAuthorizedOssRequest) (_result *UpdateTableFromAuthorizedOssResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTableFromAuthorizedOssResponse{}
+	_body, _err := client.UpdateTableFromAuthorizedOssWithOptions(WorkspaceId, TableId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

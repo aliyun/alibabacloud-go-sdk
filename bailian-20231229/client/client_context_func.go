@@ -242,6 +242,67 @@ func (client *Client) AddFilesFromAuthorizedOssWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 添加表格
+//
+// @param tmpReq - AddTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTableResponse
+func (client *Client) AddTableWithContext(ctx context.Context, WorkspaceId *string, tmpReq *AddTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TableColumns) {
+		request.TableColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableColumns, dara.String("TableColumns"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
+	if !dara.IsNil(request.TableColumnsShrink) {
+		body["TableColumns"] = request.TableColumnsShrink
+	}
+
+	if !dara.IsNil(request.TableName) {
+		body["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddTable"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/table"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddTableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Applies for a document upload lease to upload a document. You cannot use the API to upload structured documents. Use the console instead.
 //
 // Description:
@@ -874,12 +935,20 @@ func (client *Client) CreatePromptTemplateWithContext(ctx context.Context, works
 //
 // 删除智能体
 //
+// @param request - DeleteAgentRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAgentResponse
-func (client *Client) DeleteAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+func (client *Client) DeleteAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, request *DeleteAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -907,12 +976,20 @@ func (client *Client) DeleteAgentWithContext(ctx context.Context, workspaceId *s
 //
 // Deletes a specified category permanently.
 //
+// @param request - DeleteCategoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCategoryResponse
-func (client *Client) DeleteCategoryWithContext(ctx context.Context, CategoryId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
+func (client *Client) DeleteCategoryWithContext(ctx context.Context, CategoryId *string, WorkspaceId *string, request *DeleteCategoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1017,12 +1094,20 @@ func (client *Client) DeleteChunkWithContext(ctx context.Context, WorkspaceId *s
 //
 // Deletes a specified unstructured document permanently. You cannot use the API to delete structured documents, see the Usage notes section of this topic.
 //
+// @param request - DeleteFileRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFileResponse
-func (client *Client) DeleteFileWithContext(ctx context.Context, FileId *string, WorkspaceId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+func (client *Client) DeleteFileWithContext(ctx context.Context, FileId *string, WorkspaceId *string, request *DeleteFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1178,12 +1263,20 @@ func (client *Client) DeleteIndexDocumentWithContext(ctx context.Context, Worksp
 //
 // 删除memory
 //
+// @param request - DeleteMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryResponse
-func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *DeleteMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1211,12 +1304,20 @@ func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspaceId *
 //
 // 删除记忆Node
 //
+// @param request - DeleteMemoryNodeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteMemoryNodeResponse
-func (client *Client) DeleteMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
+func (client *Client) DeleteMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, request *DeleteMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1244,12 +1345,20 @@ func (client *Client) DeleteMemoryNodeWithContext(ctx context.Context, workspace
 //
 // Deletes a prompt template based on the template ID.
 //
+// @param request - DeletePromptTemplateRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeletePromptTemplateResponse
-func (client *Client) DeletePromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
+func (client *Client) DeletePromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, request *DeletePromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePromptTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1287,12 +1396,20 @@ func (client *Client) DeletePromptTemplateWithContext(ctx context.Context, works
 //
 // **Throttling:*	- Make sure that the interval between the two queries is at least 15 seconds. Otherwise, you may trigger system throttling. If throttling is triggered, try again later.
 //
+// @param request - DescribeFileRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeFileResponse
-func (client *Client) DescribeFileWithContext(ctx context.Context, WorkspaceId *string, FileId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeFileResponse, _err error) {
+func (client *Client) DescribeFileWithContext(ctx context.Context, WorkspaceId *string, FileId *string, request *DescribeFileRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1591,12 +1708,20 @@ func (client *Client) GetIndexMonitorWithContext(ctx context.Context, WorkspaceI
 //
 // 获取memory
 //
+// @param request - GetMemoryRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryResponse
-func (client *Client) GetMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+func (client *Client) GetMemoryWithContext(ctx context.Context, workspaceId *string, memoryId *string, request *GetMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1624,12 +1749,20 @@ func (client *Client) GetMemoryWithContext(ctx context.Context, workspaceId *str
 //
 // 获取记忆Node
 //
+// @param request - GetMemoryNodeRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetMemoryNodeResponse
-func (client *Client) GetMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
+func (client *Client) GetMemoryNodeWithContext(ctx context.Context, workspaceId *string, memoryId *string, memoryNodeId *string, request *GetMemoryNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1704,12 +1837,20 @@ func (client *Client) GetParseSettingsWithContext(ctx context.Context, Workspace
 //
 // Obtains a prompt template based on the template ID.
 //
+// @param request - GetPromptTemplateRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPromptTemplateResponse
-func (client *Client) GetPromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
+func (client *Client) GetPromptTemplateWithContext(ctx context.Context, workspaceId *string, promptTemplateId *string, request *GetPromptTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPromptTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1737,12 +1878,20 @@ func (client *Client) GetPromptTemplateWithContext(ctx context.Context, workspac
 //
 // 获取发布态智能体应用
 //
+// @param request - GetPublishedAgentRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPublishedAgentResponse
-func (client *Client) GetPublishedAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
+func (client *Client) GetPublishedAgentWithContext(ctx context.Context, workspaceId *string, appCode *string, request *GetPublishedAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3230,6 +3379,65 @@ func (client *Client) UpdatePromptTemplateWithContext(ctx context.Context, works
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePromptTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从oss上传table
+//
+// @param request - UpdateTableFromAuthorizedOssRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableFromAuthorizedOssResponse
+func (client *Client) UpdateTableFromAuthorizedOssWithContext(ctx context.Context, WorkspaceId *string, TableId *string, request *UpdateTableFromAuthorizedOssRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateTableFromAuthorizedOssResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OssBucket) {
+		body["OssBucket"] = request.OssBucket
+	}
+
+	if !dara.IsNil(request.OssKey) {
+		body["OssKey"] = request.OssKey
+	}
+
+	if !dara.IsNil(request.OssRegionId) {
+		body["OssRegionId"] = request.OssRegionId
+	}
+
+	if !dara.IsNil(request.UpdateMode) {
+		body["UpdateMode"] = request.UpdateMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTableFromAuthorizedOss"),
+		Version:     dara.String("2023-12-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(WorkspaceId)) + "/datacenter/table/fromoss/" + dara.PercentEncode(dara.StringValue(TableId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTableFromAuthorizedOssResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
