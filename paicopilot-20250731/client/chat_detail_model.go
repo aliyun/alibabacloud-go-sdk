@@ -20,6 +20,10 @@ type iChatDetail interface {
 type ChatDetail struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
 	GmtCreateTime *string             `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	UserInfo      *ChatDetailUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -69,7 +73,13 @@ func (s *ChatDetail) Validate() error {
 }
 
 type ChatDetailUserInfo struct {
+	// example:
+	//
+	// to******
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// assistant
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 

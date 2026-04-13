@@ -5,37 +5,39 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iChat interface {
+type iGetChatResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAnswer(v *ChatDetail) *Chat
+	SetAnswer(v *ChatDetail) *GetChatResponseBody
 	GetAnswer() *ChatDetail
-	SetChatId(v string) *Chat
+	SetChatId(v string) *GetChatResponseBody
 	GetChatId() *string
-	SetExtraData(v string) *Chat
+	SetExtraData(v string) *GetChatResponseBody
 	GetExtraData() *string
-	SetGmtCreateTime(v string) *Chat
+	SetGmtCreateTime(v string) *GetChatResponseBody
 	GetGmtCreateTime() *string
-	SetGmtModified(v string) *Chat
+	SetGmtModified(v string) *GetChatResponseBody
 	GetGmtModified() *string
-	SetMessage(v string) *Chat
+	SetMessage(v string) *GetChatResponseBody
 	GetMessage() *string
-	SetOwnerId(v string) *Chat
+	SetOwnerId(v string) *GetChatResponseBody
 	GetOwnerId() *string
-	SetQuestion(v *ChatDetail) *Chat
+	SetQuestion(v *ChatDetail) *GetChatResponseBody
 	GetQuestion() *ChatDetail
-	SetSessionId(v string) *Chat
+	SetRequestId(v string) *GetChatResponseBody
+	GetRequestId() *string
+	SetSessionId(v string) *GetChatResponseBody
 	GetSessionId() *string
-	SetStatus(v string) *Chat
+	SetStatus(v string) *GetChatResponseBody
 	GetStatus() *string
-	SetTitle(v string) *Chat
+	SetTitle(v string) *GetChatResponseBody
 	GetTitle() *string
-	SetUserId(v string) *Chat
+	SetUserId(v string) *GetChatResponseBody
 	GetUserId() *string
 }
 
-type Chat struct {
+type GetChatResponseBody struct {
 	Answer *ChatDetail `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// example:
 	//
@@ -55,7 +57,7 @@ type Chat struct {
 	//
 	// example:
 	//
-	// 2026-01-20T09:41:23Z
+	// 2025-12-01T17:52:05+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// example:
 	//
@@ -66,6 +68,10 @@ type Chat struct {
 	// 1500******860
 	OwnerId  *string     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Question *ChatDetail `json:"Question,omitempty" xml:"Question,omitempty"`
+	// example:
+	//
+	// 44553E9A-******-37ADC33FE2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// se-dss******
@@ -84,123 +90,132 @@ type Chat struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
-func (s Chat) String() string {
+func (s GetChatResponseBody) String() string {
 	return dara.Prettify(s)
 }
 
-func (s Chat) GoString() string {
+func (s GetChatResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *Chat) GetAnswer() *ChatDetail {
+func (s *GetChatResponseBody) GetAnswer() *ChatDetail {
 	return s.Answer
 }
 
-func (s *Chat) GetChatId() *string {
+func (s *GetChatResponseBody) GetChatId() *string {
 	return s.ChatId
 }
 
-func (s *Chat) GetExtraData() *string {
+func (s *GetChatResponseBody) GetExtraData() *string {
 	return s.ExtraData
 }
 
-func (s *Chat) GetGmtCreateTime() *string {
+func (s *GetChatResponseBody) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
 
-func (s *Chat) GetGmtModified() *string {
+func (s *GetChatResponseBody) GetGmtModified() *string {
 	return s.GmtModified
 }
 
-func (s *Chat) GetMessage() *string {
+func (s *GetChatResponseBody) GetMessage() *string {
 	return s.Message
 }
 
-func (s *Chat) GetOwnerId() *string {
+func (s *GetChatResponseBody) GetOwnerId() *string {
 	return s.OwnerId
 }
 
-func (s *Chat) GetQuestion() *ChatDetail {
+func (s *GetChatResponseBody) GetQuestion() *ChatDetail {
 	return s.Question
 }
 
-func (s *Chat) GetSessionId() *string {
+func (s *GetChatResponseBody) GetRequestId() *string {
+	return s.RequestId
+}
+
+func (s *GetChatResponseBody) GetSessionId() *string {
 	return s.SessionId
 }
 
-func (s *Chat) GetStatus() *string {
+func (s *GetChatResponseBody) GetStatus() *string {
 	return s.Status
 }
 
-func (s *Chat) GetTitle() *string {
+func (s *GetChatResponseBody) GetTitle() *string {
 	return s.Title
 }
 
-func (s *Chat) GetUserId() *string {
+func (s *GetChatResponseBody) GetUserId() *string {
 	return s.UserId
 }
 
-func (s *Chat) SetAnswer(v *ChatDetail) *Chat {
+func (s *GetChatResponseBody) SetAnswer(v *ChatDetail) *GetChatResponseBody {
 	s.Answer = v
 	return s
 }
 
-func (s *Chat) SetChatId(v string) *Chat {
+func (s *GetChatResponseBody) SetChatId(v string) *GetChatResponseBody {
 	s.ChatId = &v
 	return s
 }
 
-func (s *Chat) SetExtraData(v string) *Chat {
+func (s *GetChatResponseBody) SetExtraData(v string) *GetChatResponseBody {
 	s.ExtraData = &v
 	return s
 }
 
-func (s *Chat) SetGmtCreateTime(v string) *Chat {
+func (s *GetChatResponseBody) SetGmtCreateTime(v string) *GetChatResponseBody {
 	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *Chat) SetGmtModified(v string) *Chat {
+func (s *GetChatResponseBody) SetGmtModified(v string) *GetChatResponseBody {
 	s.GmtModified = &v
 	return s
 }
 
-func (s *Chat) SetMessage(v string) *Chat {
+func (s *GetChatResponseBody) SetMessage(v string) *GetChatResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *Chat) SetOwnerId(v string) *Chat {
+func (s *GetChatResponseBody) SetOwnerId(v string) *GetChatResponseBody {
 	s.OwnerId = &v
 	return s
 }
 
-func (s *Chat) SetQuestion(v *ChatDetail) *Chat {
+func (s *GetChatResponseBody) SetQuestion(v *ChatDetail) *GetChatResponseBody {
 	s.Question = v
 	return s
 }
 
-func (s *Chat) SetSessionId(v string) *Chat {
+func (s *GetChatResponseBody) SetRequestId(v string) *GetChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetChatResponseBody) SetSessionId(v string) *GetChatResponseBody {
 	s.SessionId = &v
 	return s
 }
 
-func (s *Chat) SetStatus(v string) *Chat {
+func (s *GetChatResponseBody) SetStatus(v string) *GetChatResponseBody {
 	s.Status = &v
 	return s
 }
 
-func (s *Chat) SetTitle(v string) *Chat {
+func (s *GetChatResponseBody) SetTitle(v string) *GetChatResponseBody {
 	s.Title = &v
 	return s
 }
 
-func (s *Chat) SetUserId(v string) *Chat {
+func (s *GetChatResponseBody) SetUserId(v string) *GetChatResponseBody {
 	s.UserId = &v
 	return s
 }
 
-func (s *Chat) Validate() error {
+func (s *GetChatResponseBody) Validate() error {
 	if s.Answer != nil {
 		if err := s.Answer.Validate(); err != nil {
 			return err
