@@ -17,16 +17,16 @@ type iResourceInstanceWorker interface {
 	GetGpuLimit() *int32
 	SetGpuRequest(v int32) *ResourceInstanceWorker
 	GetGpuRequest() *int32
-	SetMemoryLimit(v int32) *ResourceInstanceWorker
-	GetMemoryLimit() *int32
+	SetMemoryLimit(v int64) *ResourceInstanceWorker
+	GetMemoryLimit() *int64
 	SetMemoryRquest(v int32) *ResourceInstanceWorker
 	GetMemoryRquest() *int32
 	SetName(v string) *ResourceInstanceWorker
 	GetName() *string
 	SetReady(v bool) *ResourceInstanceWorker
 	GetReady() *bool
-	SetRestartCount(v int32) *ResourceInstanceWorker
-	GetRestartCount() *int32
+	SetRestartCount(v int64) *ResourceInstanceWorker
+	GetRestartCount() *int64
 	SetServiceName(v string) *ResourceInstanceWorker
 	GetServiceName() *string
 	SetStartTime(v string) *ResourceInstanceWorker
@@ -65,7 +65,7 @@ type ResourceInstanceWorker struct {
 	// example:
 	//
 	// 400
-	MemoryLimit *int32 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryLimit *int64 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
 	// The memory size that you applied for.
 	//
 	// example:
@@ -89,7 +89,7 @@ type ResourceInstanceWorker struct {
 	// example:
 	//
 	// 3
-	RestartCount *int32 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	RestartCount *int64 `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
 	// The service name.
 	//
 	// example:
@@ -184,7 +184,7 @@ func (s *ResourceInstanceWorker) GetGpuRequest() *int32 {
 	return s.GpuRequest
 }
 
-func (s *ResourceInstanceWorker) GetMemoryLimit() *int32 {
+func (s *ResourceInstanceWorker) GetMemoryLimit() *int64 {
 	return s.MemoryLimit
 }
 
@@ -200,7 +200,7 @@ func (s *ResourceInstanceWorker) GetReady() *bool {
 	return s.Ready
 }
 
-func (s *ResourceInstanceWorker) GetRestartCount() *int32 {
+func (s *ResourceInstanceWorker) GetRestartCount() *int64 {
 	return s.RestartCount
 }
 
@@ -236,7 +236,7 @@ func (s *ResourceInstanceWorker) SetGpuRequest(v int32) *ResourceInstanceWorker 
 	return s
 }
 
-func (s *ResourceInstanceWorker) SetMemoryLimit(v int32) *ResourceInstanceWorker {
+func (s *ResourceInstanceWorker) SetMemoryLimit(v int64) *ResourceInstanceWorker {
 	s.MemoryLimit = &v
 	return s
 }
@@ -256,7 +256,7 @@ func (s *ResourceInstanceWorker) SetReady(v bool) *ResourceInstanceWorker {
 	return s
 }
 
-func (s *ResourceInstanceWorker) SetRestartCount(v int32) *ResourceInstanceWorker {
+func (s *ResourceInstanceWorker) SetRestartCount(v int64) *ResourceInstanceWorker {
 	s.RestartCount = &v
 	return s
 }
