@@ -14553,6 +14553,97 @@ func (client *Client) GetRunningTasks(request *GetRunningTasksRequest) (_result 
 
 // Summary:
 //
+// 查询群信息
+//
+// @param tmpReq - GetScenegroupRequest
+//
+// @param tmpHeader - GetScenegroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScenegroupResponse
+func (client *Client) GetScenegroupWithOptions(tmpReq *GetScenegroupRequest, tmpHeader *GetScenegroupHeaders, runtime *dara.RuntimeOptions) (_result *GetScenegroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetScenegroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &GetScenegroupShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TenantContext) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, dara.String("TenantContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OpenConversationId) {
+		body["OpenConversationId"] = request.OpenConversationId
+	}
+
+	if !dara.IsNil(request.TenantContextShrink) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScenegroup"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/im/getScenegroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScenegroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询群信息
+//
+// @param request - GetScenegroupRequest
+//
+// @return GetScenegroupResponse
+func (client *Client) GetScenegroup(request *GetScenegroupRequest) (_result *GetScenegroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetScenegroupHeaders{}
+	_result = &GetScenegroupResponse{}
+	_body, _err := client.GetScenegroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取用户忙闲信息
 //
 // @param tmpReq - GetScheduleRequest
