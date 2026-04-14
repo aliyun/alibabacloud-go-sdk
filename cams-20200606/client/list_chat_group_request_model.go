@@ -15,8 +15,12 @@ type iListChatGroupRequest interface {
 	GetChannelType() *string
 	SetCustSpaceId(v string) *ListChatGroupRequest
 	GetCustSpaceId() *string
+	SetGroupLink(v string) *ListChatGroupRequest
+	GetGroupLink() *string
 	SetGroupStatus(v string) *ListChatGroupRequest
 	GetGroupStatus() *string
+	SetGroupType(v string) *ListChatGroupRequest
+	GetGroupType() *string
 	SetOwnerId(v int64) *ListChatGroupRequest
 	GetOwnerId() *int64
 	SetPage(v *ListChatGroupRequestPage) *ListChatGroupRequest
@@ -48,9 +52,17 @@ type ListChatGroupRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// example:
 	//
+	// 示例值示例值
+	GroupLink *string `json:"GroupLink,omitempty" xml:"GroupLink,omitempty"`
+	// example:
+	//
 	// ACTIVE
 	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 示例值
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	Page                 *ListChatGroupRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -81,8 +93,16 @@ func (s *ListChatGroupRequest) GetCustSpaceId() *string {
 	return s.CustSpaceId
 }
 
+func (s *ListChatGroupRequest) GetGroupLink() *string {
+	return s.GroupLink
+}
+
 func (s *ListChatGroupRequest) GetGroupStatus() *string {
 	return s.GroupStatus
+}
+
+func (s *ListChatGroupRequest) GetGroupType() *string {
+	return s.GroupType
 }
 
 func (s *ListChatGroupRequest) GetOwnerId() *int64 {
@@ -120,8 +140,18 @@ func (s *ListChatGroupRequest) SetCustSpaceId(v string) *ListChatGroupRequest {
 	return s
 }
 
+func (s *ListChatGroupRequest) SetGroupLink(v string) *ListChatGroupRequest {
+	s.GroupLink = &v
+	return s
+}
+
 func (s *ListChatGroupRequest) SetGroupStatus(v string) *ListChatGroupRequest {
 	s.GroupStatus = &v
+	return s
+}
+
+func (s *ListChatGroupRequest) SetGroupType(v string) *ListChatGroupRequest {
+	s.GroupType = &v
 	return s
 }
 

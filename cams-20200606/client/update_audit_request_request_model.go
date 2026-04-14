@@ -38,15 +38,24 @@ type UpdateAuditRequestRequest struct {
 	//
 	// cams-8pi**urn5s
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1500111740532860
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 114624518**5956096
-	RequestNo            *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
+	RequestNo *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
+	// example:
+	//
+	// user1@example.com\"
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1577495724967111
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s UpdateAuditRequestRequest) String() string {
@@ -174,8 +183,24 @@ type UpdateAuditRequestRequestAuditRecord struct {
 	CompleteAddressOfHeadquarters *string `json:"CompleteAddressOfHeadquarters,omitempty" xml:"CompleteAddressOfHeadquarters,omitempty"`
 	// example:
 	//
+	// 5**8585@gmail.com
+	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// example:
+	//
 	// xxxx@gamil.com
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// example:
+	//
+	// mary
+	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// example:
+	//
+	// 861515115***
+	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// example:
+	//
+	// job
+	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
 	// example:
 	//
 	// N/A‌
@@ -286,8 +311,24 @@ func (s *UpdateAuditRequestRequestAuditRecord) GetCompleteAddressOfHeadquarters(
 	return s.CompleteAddressOfHeadquarters
 }
 
+func (s *UpdateAuditRequestRequestAuditRecord) GetContactEmail() *string {
+	return s.ContactEmail
+}
+
 func (s *UpdateAuditRequestRequestAuditRecord) GetContactMail() *string {
 	return s.ContactMail
+}
+
+func (s *UpdateAuditRequestRequestAuditRecord) GetContactName() *string {
+	return s.ContactName
+}
+
+func (s *UpdateAuditRequestRequestAuditRecord) GetContactPhone() *string {
+	return s.ContactPhone
+}
+
+func (s *UpdateAuditRequestRequestAuditRecord) GetContactPosition() *string {
+	return s.ContactPosition
 }
 
 func (s *UpdateAuditRequestRequestAuditRecord) GetEnableAutoReply() *string {
@@ -410,8 +451,28 @@ func (s *UpdateAuditRequestRequestAuditRecord) SetCompleteAddressOfHeadquarters(
 	return s
 }
 
+func (s *UpdateAuditRequestRequestAuditRecord) SetContactEmail(v string) *UpdateAuditRequestRequestAuditRecord {
+	s.ContactEmail = &v
+	return s
+}
+
 func (s *UpdateAuditRequestRequestAuditRecord) SetContactMail(v string) *UpdateAuditRequestRequestAuditRecord {
 	s.ContactMail = &v
+	return s
+}
+
+func (s *UpdateAuditRequestRequestAuditRecord) SetContactName(v string) *UpdateAuditRequestRequestAuditRecord {
+	s.ContactName = &v
+	return s
+}
+
+func (s *UpdateAuditRequestRequestAuditRecord) SetContactPhone(v string) *UpdateAuditRequestRequestAuditRecord {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *UpdateAuditRequestRequestAuditRecord) SetContactPosition(v string) *UpdateAuditRequestRequestAuditRecord {
+	s.ContactPosition = &v
 	return s
 }
 

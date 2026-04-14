@@ -34,10 +34,19 @@ type AddAuditViberOpenRequest struct {
 	// example:
 	//
 	// 示例值示例值示例值
-	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// 1651322271196729
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// testuser@testdomain.co
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1754580903499898
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s AddAuditViberOpenRequest) String() string {
@@ -152,8 +161,24 @@ type AddAuditViberOpenRequestAuditRecord struct {
 	CompleteAddressOfHeadquarters *string `json:"CompleteAddressOfHeadquarters,omitempty" xml:"CompleteAddressOfHeadquarters,omitempty"`
 	// example:
 	//
+	// 7151***5@qq.com
+	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// example:
+	//
 	// 123@123.com
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// example:
+	//
+	// mary
+	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// example:
+	//
+	// 8615115**777
+	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// example:
+	//
+	// 职员
+	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
 	// example:
 	//
 	// 示例值
@@ -251,8 +276,24 @@ func (s *AddAuditViberOpenRequestAuditRecord) GetCompleteAddressOfHeadquarters()
 	return s.CompleteAddressOfHeadquarters
 }
 
+func (s *AddAuditViberOpenRequestAuditRecord) GetContactEmail() *string {
+	return s.ContactEmail
+}
+
 func (s *AddAuditViberOpenRequestAuditRecord) GetContactMail() *string {
 	return s.ContactMail
+}
+
+func (s *AddAuditViberOpenRequestAuditRecord) GetContactName() *string {
+	return s.ContactName
+}
+
+func (s *AddAuditViberOpenRequestAuditRecord) GetContactPhone() *string {
+	return s.ContactPhone
+}
+
+func (s *AddAuditViberOpenRequestAuditRecord) GetContactPosition() *string {
+	return s.ContactPosition
 }
 
 func (s *AddAuditViberOpenRequestAuditRecord) GetEnableAutoReply() *string {
@@ -362,8 +403,28 @@ func (s *AddAuditViberOpenRequestAuditRecord) SetCompleteAddressOfHeadquarters(v
 	return s
 }
 
+func (s *AddAuditViberOpenRequestAuditRecord) SetContactEmail(v string) *AddAuditViberOpenRequestAuditRecord {
+	s.ContactEmail = &v
+	return s
+}
+
 func (s *AddAuditViberOpenRequestAuditRecord) SetContactMail(v string) *AddAuditViberOpenRequestAuditRecord {
 	s.ContactMail = &v
+	return s
+}
+
+func (s *AddAuditViberOpenRequestAuditRecord) SetContactName(v string) *AddAuditViberOpenRequestAuditRecord {
+	s.ContactName = &v
+	return s
+}
+
+func (s *AddAuditViberOpenRequestAuditRecord) SetContactPhone(v string) *AddAuditViberOpenRequestAuditRecord {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *AddAuditViberOpenRequestAuditRecord) SetContactPosition(v string) *AddAuditViberOpenRequestAuditRecord {
+	s.ContactPosition = &v
 	return s
 }
 

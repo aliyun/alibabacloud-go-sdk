@@ -11,12 +11,6 @@ type iDeleteInstanceRequest interface {
 	GoString() string
 	SetInstanceId(v string) *DeleteInstanceRequest
 	GetInstanceId() *string
-	SetOwnerId(v int64) *DeleteInstanceRequest
-	GetOwnerId() *int64
-	SetResourceOwnerAccount(v string) *DeleteInstanceRequest
-	GetResourceOwnerAccount() *string
-	SetResourceOwnerId(v int64) *DeleteInstanceRequest
-	GetResourceOwnerId() *int64
 }
 
 type DeleteInstanceRequest struct {
@@ -25,10 +19,7 @@ type DeleteInstanceRequest struct {
 	// example:
 	//
 	// 2399393****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteInstanceRequest) String() string {
@@ -43,35 +34,8 @@ func (s *DeleteInstanceRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
-func (s *DeleteInstanceRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
-func (s *DeleteInstanceRequest) GetResourceOwnerAccount() *string {
-	return s.ResourceOwnerAccount
-}
-
-func (s *DeleteInstanceRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
-}
-
 func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetOwnerId(v int64) *DeleteInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetResourceOwnerAccount(v string) *DeleteInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *DeleteInstanceRequest) SetResourceOwnerId(v int64) *DeleteInstanceRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

@@ -15,8 +15,12 @@ type iListChatGroupShrinkRequest interface {
 	GetChannelType() *string
 	SetCustSpaceId(v string) *ListChatGroupShrinkRequest
 	GetCustSpaceId() *string
+	SetGroupLink(v string) *ListChatGroupShrinkRequest
+	GetGroupLink() *string
 	SetGroupStatus(v string) *ListChatGroupShrinkRequest
 	GetGroupStatus() *string
+	SetGroupType(v string) *ListChatGroupShrinkRequest
+	GetGroupType() *string
 	SetOwnerId(v int64) *ListChatGroupShrinkRequest
 	GetOwnerId() *int64
 	SetPageShrink(v string) *ListChatGroupShrinkRequest
@@ -48,9 +52,17 @@ type ListChatGroupShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// example:
 	//
+	// 示例值示例值
+	GroupLink *string `json:"GroupLink,omitempty" xml:"GroupLink,omitempty"`
+	// example:
+	//
 	// ACTIVE
 	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 示例值
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -81,8 +93,16 @@ func (s *ListChatGroupShrinkRequest) GetCustSpaceId() *string {
 	return s.CustSpaceId
 }
 
+func (s *ListChatGroupShrinkRequest) GetGroupLink() *string {
+	return s.GroupLink
+}
+
 func (s *ListChatGroupShrinkRequest) GetGroupStatus() *string {
 	return s.GroupStatus
+}
+
+func (s *ListChatGroupShrinkRequest) GetGroupType() *string {
+	return s.GroupType
 }
 
 func (s *ListChatGroupShrinkRequest) GetOwnerId() *int64 {
@@ -120,8 +140,18 @@ func (s *ListChatGroupShrinkRequest) SetCustSpaceId(v string) *ListChatGroupShri
 	return s
 }
 
+func (s *ListChatGroupShrinkRequest) SetGroupLink(v string) *ListChatGroupShrinkRequest {
+	s.GroupLink = &v
+	return s
+}
+
 func (s *ListChatGroupShrinkRequest) SetGroupStatus(v string) *ListChatGroupShrinkRequest {
 	s.GroupStatus = &v
+	return s
+}
+
+func (s *ListChatGroupShrinkRequest) SetGroupType(v string) *ListChatGroupShrinkRequest {
+	s.GroupType = &v
 	return s
 }
 

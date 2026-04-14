@@ -38,15 +38,24 @@ type UpdateAuditRequestShrinkRequest struct {
 	//
 	// cams-8pi**urn5s
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1500111740532860
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 114624518**5956096
-	RequestNo            *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
+	RequestNo *string `json:"RequestNo,omitempty" xml:"RequestNo,omitempty"`
+	// example:
+	//
+	// user1@example.com\"
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1577495724967111
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s UpdateAuditRequestShrinkRequest) String() string {

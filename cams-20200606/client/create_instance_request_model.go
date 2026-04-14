@@ -27,14 +27,8 @@ type iCreateInstanceRequest interface {
 	GetIsvTerms() *string
 	SetOfficeAddress(v string) *CreateInstanceRequest
 	GetOfficeAddress() *string
-	SetOwnerId(v int64) *CreateInstanceRequest
-	GetOwnerId() *int64
 	SetResourceGroupId(v string) *CreateInstanceRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerAccount(v string) *CreateInstanceRequest
-	GetResourceOwnerAccount() *string
-	SetResourceOwnerId(v int64) *CreateInstanceRequest
-	GetResourceOwnerId() *int64
 }
 
 type CreateInstanceRequest struct {
@@ -80,13 +74,10 @@ type CreateInstanceRequest struct {
 	//
 	// 长沙麓谷
 	OfficeAddress *string `json:"OfficeAddress,omitempty" xml:"OfficeAddress,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
 	// 示例值
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -133,20 +124,8 @@ func (s *CreateInstanceRequest) GetOfficeAddress() *string {
 	return s.OfficeAddress
 }
 
-func (s *CreateInstanceRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *CreateInstanceRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
-}
-
-func (s *CreateInstanceRequest) GetResourceOwnerAccount() *string {
-	return s.ResourceOwnerAccount
-}
-
-func (s *CreateInstanceRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
 }
 
 func (s *CreateInstanceRequest) SetChannelType(v string) *CreateInstanceRequest {
@@ -194,23 +173,8 @@ func (s *CreateInstanceRequest) SetOfficeAddress(v string) *CreateInstanceReques
 	return s
 }
 
-func (s *CreateInstanceRequest) SetOwnerId(v int64) *CreateInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetResourceOwnerAccount(v string) *CreateInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CreateInstanceRequest) SetResourceOwnerId(v int64) *CreateInstanceRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

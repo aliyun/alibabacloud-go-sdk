@@ -17,6 +17,8 @@ type iAddChatGroupRequest interface {
 	GetCustSpaceId() *string
 	SetDescription(v string) *AddChatGroupRequest
 	GetDescription() *string
+	SetGroupLink(v string) *AddChatGroupRequest
+	GetGroupLink() *string
 	SetOwnerId(v int64) *AddChatGroupRequest
 	GetOwnerId() *int64
 	SetResourceOwnerAccount(v string) *AddChatGroupRequest
@@ -47,12 +49,14 @@ type AddChatGroupRequest struct {
 	// example:
 	//
 	// 示例值示例值
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// https://t.me/testgroup
+	GroupLink            *string `json:"GroupLink,omitempty" xml:"GroupLink,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 示例值示例值
@@ -81,6 +85,10 @@ func (s *AddChatGroupRequest) GetCustSpaceId() *string {
 
 func (s *AddChatGroupRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *AddChatGroupRequest) GetGroupLink() *string {
+	return s.GroupLink
 }
 
 func (s *AddChatGroupRequest) GetOwnerId() *int64 {
@@ -116,6 +124,11 @@ func (s *AddChatGroupRequest) SetCustSpaceId(v string) *AddChatGroupRequest {
 
 func (s *AddChatGroupRequest) SetDescription(v string) *AddChatGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *AddChatGroupRequest) SetGroupLink(v string) *AddChatGroupRequest {
+	s.GroupLink = &v
 	return s
 }
 

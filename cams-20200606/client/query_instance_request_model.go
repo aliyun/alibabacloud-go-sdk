@@ -11,12 +11,6 @@ type iQueryInstanceRequest interface {
 	GoString() string
 	SetInstanceId(v string) *QueryInstanceRequest
 	GetInstanceId() *string
-	SetOwnerId(v int64) *QueryInstanceRequest
-	GetOwnerId() *int64
-	SetResourceOwnerAccount(v string) *QueryInstanceRequest
-	GetResourceOwnerAccount() *string
-	SetResourceOwnerId(v int64) *QueryInstanceRequest
-	GetResourceOwnerId() *int64
 }
 
 type QueryInstanceRequest struct {
@@ -25,10 +19,7 @@ type QueryInstanceRequest struct {
 	// example:
 	//
 	// 9293938****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s QueryInstanceRequest) String() string {
@@ -43,35 +34,8 @@ func (s *QueryInstanceRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
 
-func (s *QueryInstanceRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
-func (s *QueryInstanceRequest) GetResourceOwnerAccount() *string {
-	return s.ResourceOwnerAccount
-}
-
-func (s *QueryInstanceRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
-}
-
 func (s *QueryInstanceRequest) SetInstanceId(v string) *QueryInstanceRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *QueryInstanceRequest) SetOwnerId(v int64) *QueryInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *QueryInstanceRequest) SetResourceOwnerAccount(v string) *QueryInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *QueryInstanceRequest) SetResourceOwnerId(v int64) *QueryInstanceRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

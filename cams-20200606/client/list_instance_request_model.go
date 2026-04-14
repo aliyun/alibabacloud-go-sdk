@@ -17,18 +17,12 @@ type iListInstanceRequest interface {
 	GetInstanceId() *string
 	SetInstanceName(v string) *ListInstanceRequest
 	GetInstanceName() *string
-	SetOwnerId(v int64) *ListInstanceRequest
-	GetOwnerId() *int64
 	SetPageIndex(v int64) *ListInstanceRequest
 	GetPageIndex() *int64
 	SetPageSize(v int64) *ListInstanceRequest
 	GetPageSize() *int64
 	SetResourceGroupId(v string) *ListInstanceRequest
 	GetResourceGroupId() *string
-	SetResourceOwnerAccount(v string) *ListInstanceRequest
-	GetResourceOwnerAccount() *string
-	SetResourceOwnerId(v int64) *ListInstanceRequest
-	GetResourceOwnerId() *int64
 	SetSubmitTime(v string) *ListInstanceRequest
 	GetSubmitTime() *string
 }
@@ -50,7 +44,6 @@ type ListInstanceRequest struct {
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
 	//
 	// 92
@@ -62,9 +55,7 @@ type ListInstanceRequest struct {
 	// example:
 	//
 	// 11
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// example:
 	//
 	// 2023-12-12 00:00:00
@@ -95,10 +86,6 @@ func (s *ListInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
-func (s *ListInstanceRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *ListInstanceRequest) GetPageIndex() *int64 {
 	return s.PageIndex
 }
@@ -109,14 +96,6 @@ func (s *ListInstanceRequest) GetPageSize() *int64 {
 
 func (s *ListInstanceRequest) GetResourceGroupId() *string {
 	return s.ResourceGroupId
-}
-
-func (s *ListInstanceRequest) GetResourceOwnerAccount() *string {
-	return s.ResourceOwnerAccount
-}
-
-func (s *ListInstanceRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
 }
 
 func (s *ListInstanceRequest) GetSubmitTime() *string {
@@ -143,11 +122,6 @@ func (s *ListInstanceRequest) SetInstanceName(v string) *ListInstanceRequest {
 	return s
 }
 
-func (s *ListInstanceRequest) SetOwnerId(v int64) *ListInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *ListInstanceRequest) SetPageIndex(v int64) *ListInstanceRequest {
 	s.PageIndex = &v
 	return s
@@ -160,16 +134,6 @@ func (s *ListInstanceRequest) SetPageSize(v int64) *ListInstanceRequest {
 
 func (s *ListInstanceRequest) SetResourceGroupId(v string) *ListInstanceRequest {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *ListInstanceRequest) SetResourceOwnerAccount(v string) *ListInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListInstanceRequest) SetResourceOwnerId(v int64) *ListInstanceRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 

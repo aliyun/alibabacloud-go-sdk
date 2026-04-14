@@ -169,16 +169,32 @@ type ListChatGroupResponseBodyDataList struct {
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
 	// example:
 	//
+	// 示例值
+	BusinessRole *string `json:"BusinessRole,omitempty" xml:"BusinessRole,omitempty"`
+	// example:
+	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 94
+	GmtModifier *int64 `json:"GmtModifier,omitempty" xml:"GmtModifier,omitempty"`
 	// example:
 	//
 	// EA30d***
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// example:
 	//
+	// 示例值示例值
+	GroupLink *string `json:"GroupLink,omitempty" xml:"GroupLink,omitempty"`
+	// example:
+	//
 	// ACTIVE
 	GroupStatus *string `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// example:
 	//
 	// https://chat.whatsapp.com/***
@@ -191,6 +207,10 @@ type ListChatGroupResponseBodyDataList struct {
 	//
 	// 示例值示例值
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// 35
+	TotalParticipantCount *int64 `json:"TotalParticipantCount,omitempty" xml:"TotalParticipantCount,omitempty"`
 }
 
 func (s ListChatGroupResponseBodyDataList) String() string {
@@ -205,16 +225,32 @@ func (s *ListChatGroupResponseBodyDataList) GetBusinessNumber() *string {
 	return s.BusinessNumber
 }
 
+func (s *ListChatGroupResponseBodyDataList) GetBusinessRole() *string {
+	return s.BusinessRole
+}
+
 func (s *ListChatGroupResponseBodyDataList) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListChatGroupResponseBodyDataList) GetGmtModifier() *int64 {
+	return s.GmtModifier
 }
 
 func (s *ListChatGroupResponseBodyDataList) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *ListChatGroupResponseBodyDataList) GetGroupLink() *string {
+	return s.GroupLink
+}
+
 func (s *ListChatGroupResponseBodyDataList) GetGroupStatus() *string {
 	return s.GroupStatus
+}
+
+func (s *ListChatGroupResponseBodyDataList) GetGroupType() *string {
+	return s.GroupType
 }
 
 func (s *ListChatGroupResponseBodyDataList) GetInviteLink() *string {
@@ -229,8 +265,17 @@ func (s *ListChatGroupResponseBodyDataList) GetSubject() *string {
 	return s.Subject
 }
 
+func (s *ListChatGroupResponseBodyDataList) GetTotalParticipantCount() *int64 {
+	return s.TotalParticipantCount
+}
+
 func (s *ListChatGroupResponseBodyDataList) SetBusinessNumber(v string) *ListChatGroupResponseBodyDataList {
 	s.BusinessNumber = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetBusinessRole(v string) *ListChatGroupResponseBodyDataList {
+	s.BusinessRole = &v
 	return s
 }
 
@@ -239,13 +284,28 @@ func (s *ListChatGroupResponseBodyDataList) SetDescription(v string) *ListChatGr
 	return s
 }
 
+func (s *ListChatGroupResponseBodyDataList) SetGmtModifier(v int64) *ListChatGroupResponseBodyDataList {
+	s.GmtModifier = &v
+	return s
+}
+
 func (s *ListChatGroupResponseBodyDataList) SetGroupId(v string) *ListChatGroupResponseBodyDataList {
 	s.GroupId = &v
 	return s
 }
 
+func (s *ListChatGroupResponseBodyDataList) SetGroupLink(v string) *ListChatGroupResponseBodyDataList {
+	s.GroupLink = &v
+	return s
+}
+
 func (s *ListChatGroupResponseBodyDataList) SetGroupStatus(v string) *ListChatGroupResponseBodyDataList {
 	s.GroupStatus = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetGroupType(v string) *ListChatGroupResponseBodyDataList {
+	s.GroupType = &v
 	return s
 }
 
@@ -261,6 +321,11 @@ func (s *ListChatGroupResponseBodyDataList) SetProfilePictureFile(v string) *Lis
 
 func (s *ListChatGroupResponseBodyDataList) SetSubject(v string) *ListChatGroupResponseBodyDataList {
 	s.Subject = &v
+	return s
+}
+
+func (s *ListChatGroupResponseBodyDataList) SetTotalParticipantCount(v int64) *ListChatGroupResponseBodyDataList {
+	s.TotalParticipantCount = &v
 	return s
 }
 

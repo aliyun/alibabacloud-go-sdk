@@ -364,8 +364,24 @@ type GetViberByRequestNoResponseBodyDataAuditRecord struct {
 	CompleteAddressOfHeadquarters *string `json:"CompleteAddressOfHeadquarters,omitempty" xml:"CompleteAddressOfHeadquarters,omitempty"`
 	// example:
 	//
+	// 6944**@gmail.com
+	ContactEmail *string `json:"ContactEmail,omitempty" xml:"ContactEmail,omitempty"`
+	// example:
+	//
 	// 示例值示例值
 	ContactMail *string `json:"ContactMail,omitempty" xml:"ContactMail,omitempty"`
+	// example:
+	//
+	// qwq
+	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// example:
+	//
+	// 861151515***
+	ContactPhone *string `json:"ContactPhone,omitempty" xml:"ContactPhone,omitempty"`
+	// example:
+	//
+	// 职员
+	ContactPosition *string `json:"ContactPosition,omitempty" xml:"ContactPosition,omitempty"`
 	// example:
 	//
 	// N
@@ -481,8 +497,24 @@ func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetCompleteAddressOfHea
 	return s.CompleteAddressOfHeadquarters
 }
 
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetContactEmail() *string {
+	return s.ContactEmail
+}
+
 func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetContactMail() *string {
 	return s.ContactMail
+}
+
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetContactName() *string {
+	return s.ContactName
+}
+
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetContactPhone() *string {
+	return s.ContactPhone
+}
+
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetContactPosition() *string {
+	return s.ContactPosition
 }
 
 func (s *GetViberByRequestNoResponseBodyDataAuditRecord) GetEnableAutoReply() *string {
@@ -609,8 +641,28 @@ func (s *GetViberByRequestNoResponseBodyDataAuditRecord) SetCompleteAddressOfHea
 	return s
 }
 
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) SetContactEmail(v string) *GetViberByRequestNoResponseBodyDataAuditRecord {
+	s.ContactEmail = &v
+	return s
+}
+
 func (s *GetViberByRequestNoResponseBodyDataAuditRecord) SetContactMail(v string) *GetViberByRequestNoResponseBodyDataAuditRecord {
 	s.ContactMail = &v
+	return s
+}
+
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) SetContactName(v string) *GetViberByRequestNoResponseBodyDataAuditRecord {
+	s.ContactName = &v
+	return s
+}
+
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) SetContactPhone(v string) *GetViberByRequestNoResponseBodyDataAuditRecord {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *GetViberByRequestNoResponseBodyDataAuditRecord) SetContactPosition(v string) *GetViberByRequestNoResponseBodyDataAuditRecord {
+	s.ContactPosition = &v
 	return s
 }
 

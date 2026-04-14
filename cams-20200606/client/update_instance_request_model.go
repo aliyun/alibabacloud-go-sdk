@@ -27,12 +27,6 @@ type iUpdateInstanceRequest interface {
 	GetIsvTerms() *string
 	SetOfficeAddress(v string) *UpdateInstanceRequest
 	GetOfficeAddress() *string
-	SetOwnerId(v int64) *UpdateInstanceRequest
-	GetOwnerId() *int64
-	SetResourceOwnerAccount(v string) *UpdateInstanceRequest
-	GetResourceOwnerAccount() *string
-	SetResourceOwnerId(v int64) *UpdateInstanceRequest
-	GetResourceOwnerId() *int64
 }
 
 type UpdateInstanceRequest struct {
@@ -77,10 +71,7 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// 长沙麓谷
-	OfficeAddress        *string `json:"OfficeAddress,omitempty" xml:"OfficeAddress,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	OfficeAddress *string `json:"OfficeAddress,omitempty" xml:"OfficeAddress,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -127,18 +118,6 @@ func (s *UpdateInstanceRequest) GetOfficeAddress() *string {
 	return s.OfficeAddress
 }
 
-func (s *UpdateInstanceRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
-func (s *UpdateInstanceRequest) GetResourceOwnerAccount() *string {
-	return s.ResourceOwnerAccount
-}
-
-func (s *UpdateInstanceRequest) GetResourceOwnerId() *int64 {
-	return s.ResourceOwnerId
-}
-
 func (s *UpdateInstanceRequest) SetContactMail(v string) *UpdateInstanceRequest {
 	s.ContactMail = &v
 	return s
@@ -181,21 +160,6 @@ func (s *UpdateInstanceRequest) SetIsvTerms(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetOfficeAddress(v string) *UpdateInstanceRequest {
 	s.OfficeAddress = &v
-	return s
-}
-
-func (s *UpdateInstanceRequest) SetOwnerId(v int64) *UpdateInstanceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateInstanceRequest) SetResourceOwnerAccount(v string) *UpdateInstanceRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *UpdateInstanceRequest) SetResourceOwnerId(v int64) *UpdateInstanceRequest {
-	s.ResourceOwnerId = &v
 	return s
 }
 
