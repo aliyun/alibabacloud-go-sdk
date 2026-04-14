@@ -20,6 +20,8 @@ type iUpdateWhitelistTemplateRequest interface {
 }
 
 type UpdateWhitelistTemplateRequest struct {
+	// RegionId
+	//
 	// This parameter is required.
 	//
 	// example:

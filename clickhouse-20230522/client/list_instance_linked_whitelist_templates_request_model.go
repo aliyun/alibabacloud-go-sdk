@@ -22,6 +22,8 @@ type ListInstanceLinkedWhitelistTemplatesRequest struct {
 	//
 	// cc-exadfas
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// RegionId
+	//
 	// This parameter is required.
 	//
 	// example:

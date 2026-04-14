@@ -17,6 +17,8 @@ type iListInstanceLinkedWhitelistTemplatesResponseBody interface {
 
 type ListInstanceLinkedWhitelistTemplatesResponseBody struct {
 	Data *ListInstanceLinkedWhitelistTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 1234567890

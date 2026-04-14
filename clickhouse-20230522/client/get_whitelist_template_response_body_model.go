@@ -17,6 +17,8 @@ type iGetWhitelistTemplateResponseBody interface {
 
 type GetWhitelistTemplateResponseBody struct {
 	Data *GetWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID。
+	//
 	// example:
 	//
 	// 1234567890

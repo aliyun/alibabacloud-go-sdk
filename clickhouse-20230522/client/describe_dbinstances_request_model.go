@@ -25,6 +25,8 @@ type iDescribeDBInstancesRequest interface {
 	GetResourceGroupId() *string
 	SetTags(v []*DescribeDBInstancesRequestTags) *DescribeDBInstancesRequest
 	GetTags() []*DescribeDBInstancesRequestTags
+	SetVpcIds(v string) *DescribeDBInstancesRequest
+	GetVpcIds() *string
 }
 
 type DescribeDBInstancesRequest struct {
@@ -71,6 +73,10 @@ type DescribeDBInstancesRequest struct {
 	// rg-4690g37929****
 	ResourceGroupId *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags            []*DescribeDBInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-2ze4ee9z******,vpc-2ze4ee9z5l******
+	VpcIds *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -113,6 +119,10 @@ func (s *DescribeDBInstancesRequest) GetTags() []*DescribeDBInstancesRequestTags
 	return s.Tags
 }
 
+func (s *DescribeDBInstancesRequest) GetVpcIds() *string {
+	return s.VpcIds
+}
+
 func (s *DescribeDBInstancesRequest) SetDBInstanceIds(v string) *DescribeDBInstancesRequest {
 	s.DBInstanceIds = &v
 	return s
@@ -150,6 +160,11 @@ func (s *DescribeDBInstancesRequest) SetResourceGroupId(v string) *DescribeDBIns
 
 func (s *DescribeDBInstancesRequest) SetTags(v []*DescribeDBInstancesRequestTags) *DescribeDBInstancesRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeDBInstancesRequest) SetVpcIds(v string) *DescribeDBInstancesRequest {
+	s.VpcIds = &v
 	return s
 }
 

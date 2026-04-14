@@ -155,7 +155,8 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	// example:
 	//
 	// 2024-04-17T08:14:48Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime          *string   `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	LangfuseInstanceIds []*string `json:"LangfuseInstanceIds,omitempty" xml:"LangfuseInstanceIds,omitempty" type:"Repeated"`
 	// The latest minor engine version.
 	//
 	// example:
@@ -344,6 +345,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) GetExpireTime() *string {
 	return s.ExpireTime
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyData) GetLangfuseInstanceIds() []*string {
+	return s.LangfuseInstanceIds
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyData) GetLatestEngineMinorVersion() *string {
 	return s.LatestEngineMinorVersion
 }
@@ -508,6 +513,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) SetEngineVersion(v string)
 
 func (s *DescribeDBInstanceAttributeResponseBodyData) SetExpireTime(v string) *DescribeDBInstanceAttributeResponseBodyData {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyData) SetLangfuseInstanceIds(v []*string) *DescribeDBInstanceAttributeResponseBodyData {
+	s.LangfuseInstanceIds = v
 	return s
 }
 

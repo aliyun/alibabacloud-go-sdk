@@ -1829,6 +1829,10 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 		query["Tags"] = request.Tags
 	}
 
+	if !dara.IsNil(request.VpcIds) {
+		query["VpcIds"] = request.VpcIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2041,8 +2045,6 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 // Summary:
 //
 // 查询云数据库ClickHouse所有地域和可用区的信息
-//
-// @param request - DescribeRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

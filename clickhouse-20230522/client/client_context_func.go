@@ -1338,6 +1338,10 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 		query["Tags"] = request.Tags
 	}
 
+	if !dara.IsNil(request.VpcIds) {
+		query["VpcIds"] = request.VpcIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

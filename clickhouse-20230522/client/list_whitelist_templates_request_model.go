@@ -28,6 +28,8 @@ type ListWhitelistTemplatesRequest struct {
 	//
 	// 25
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// RegionId
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -17,6 +17,8 @@ type iUpdateWhitelistTemplateResponseBody interface {
 
 type UpdateWhitelistTemplateResponseBody struct {
 	Data *UpdateWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID。
+	//
 	// example:
 	//
 	// 1234567890
