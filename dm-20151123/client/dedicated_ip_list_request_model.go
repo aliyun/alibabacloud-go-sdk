@@ -18,19 +18,19 @@ type iDedicatedIpListRequest interface {
 }
 
 type DedicatedIpListRequest struct {
-	// The keyword for searching IP addresses.
+	// IP search keyword
 	//
 	// example:
 	//
 	// xxx
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number. The value starts from 1.
+	// Pagination index, starting from 1
 	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries per page.
+	// Page size
 	//
 	// example:
 	//

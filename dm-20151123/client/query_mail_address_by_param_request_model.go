@@ -26,20 +26,20 @@ type iQueryMailAddressByParamRequest interface {
 }
 
 type QueryMailAddressByParamRequest struct {
-	// The email address. The length is 1 to 60 characters. It supports digits, letters, periods (.), hyphens (-), and at signs (@).
+	// Email address, length 1-60, supports numbers, letters, ., -, @.
 	//
 	// example:
 	//
-	// 账号+@+域名
+	// sender@example.com
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The current page number. The default value is 1.
+	// Current page number, default: 1
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. The default value is 10.
+	// Page size, default: 10
 	//
 	// example:
 	//
@@ -47,11 +47,11 @@ type QueryMailAddressByParamRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the sender address. Valid values:
+	// Sending address type. Values:
 	//
-	// - batch: batch emails
+	// - batch: bulk email
 	//
-	// - trigger: triggered emails
+	// - trigger: triggered email
 	//
 	// example:
 	//

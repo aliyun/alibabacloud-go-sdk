@@ -22,26 +22,18 @@ type iQueryTemplateByParamResponseBody interface {
 }
 
 type QueryTemplateByParamResponseBody struct {
-	// The page number.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// 10Axxxxxxxxxxxx37
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
-	//
 	// example:
 	//
 	// 21

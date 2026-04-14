@@ -28,7 +28,7 @@ type CreateReceiverRequest struct {
 	//
 	// example:
 	//
-	// 描述
+	// the description
 	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// List alias, an email address less than 30 characters long.

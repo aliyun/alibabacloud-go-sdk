@@ -14,6 +14,7 @@ type iUpdateUserRequest interface {
 }
 
 type UpdateUserRequest struct {
+	// User Information
 	User *UpdateUserRequestUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -44,6 +45,11 @@ func (s *UpdateUserRequest) Validate() error {
 }
 
 type UpdateUserRequestUser struct {
+	// Whether EventBridge is enabled
+	//
+	// example:
+	//
+	// true
 	EnableEventbridge *bool `json:"EnableEventbridge,omitempty" xml:"EnableEventbridge,omitempty"`
 }
 

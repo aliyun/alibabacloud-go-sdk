@@ -18,13 +18,13 @@ type iSenderStatisticsDetailByParamResponseBody interface {
 }
 
 type SenderStatisticsDetailByParamResponseBody struct {
-	// Used for paging. If more results are available, set the \\`NextStart\\` parameter in your next request to this return value.
+	// Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
 	//
 	// example:
 	//
 	// 90f0243616#203#a***@example.net-1658817689#a***@example.net.247141122178
 	NextStart *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//

@@ -16,14 +16,10 @@ type iConfigSetRelationFromAddressRequest interface {
 }
 
 type ConfigSetRelationFromAddressRequest struct {
-	// The sender address. This parameter is required.
-	//
 	// example:
 	//
 	// xxx@xxx.com
 	FromAddress *string `json:"FromAddress,omitempty" xml:"FromAddress,omitempty"`
-	// The ID of the configuration set. This parameter is required.
-	//
 	// example:
 	//
 	// xxx

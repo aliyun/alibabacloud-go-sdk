@@ -48,41 +48,22 @@ type iGetTrackListRequest interface {
 }
 
 type GetTrackListRequest struct {
-	// The sender address.
+	// Sender address.
 	//
-	// > If you omit this parameter, the query returns data for all sender addresses. This parameter is required if you specify the `TagName` parameter.
+	// > If not filled, it represents all addresses; if TagName is provided, this parameter must not be empty.
 	//
 	// example:
 	//
 	// test@example.com
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the configuration set.
-	//
-	// example:
-	//
-	// xxx
-	ConfigSetId *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
-	// The dedicated IP address to query.
-	//
-	// If this parameter is omitted, data for all dedicated IPs is returned.
-	//
-	// example:
-	//
-	// xxx.xxx.xxx.xxx
-	DedicatedIp *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
-	// The ID of the dedicated IP pool to query.
-	//
-	// If this parameter is omitted, data for all IP pools is returned.
-	//
-	// example:
-	//
-	// xxx
+	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ConfigSetId       *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
+	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
 	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
 	// example:
 	//
 	// dmdomain.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end date of the query. The duration between the StartTime and EndTime cannot exceed 7 days. The format is `yyyy-MM-dd`.
+	// End time, the span between start and end time cannot exceed 7 days. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -90,50 +71,33 @@ type GetTrackListRequest struct {
 	//
 	// 2019-09-29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The Email Service Provider (ESP) to query. Valid values are:
-	//
-	// - gmail.com
-	//
-	// - yahoo.com
-	//
-	// - outlook.com
-	//
-	// - icloud.com
-	//
-	// - Others: Any ESP not listed above.
-	//
-	// If you omit this parameter, the query returns data for all ESPs.
+	Esp     *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
+	// For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
 	//
 	// example:
 	//
-	// gmail.com
-	Esp *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
-	// Set this to 0 for the first query. For subsequent queries, set it to 1 to perform a paged query in chronological order. (This field is deprecated)
-	//
-	// example:
-	//
-	// （本字段已废弃）
+	// (This field is deprecated)
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// Used for pagination. Do not set this parameter for the first query. For subsequent queries, set this parameter to the `OffsetCreateTime` value returned in the previous response. (This field is deprecated)
+	// Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated)
 	OffsetCreateTime *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
 	// (This field is deprecated)
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated)
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number to return.
+	// Page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size
 	//
 	// example:
 	//
@@ -141,7 +105,7 @@ type GetTrackListRequest struct {
 	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start date of the query. The date must be within the last 30 days. The format is `yyyy-MM-dd`.
+	// Start time, which cannot be earlier than 30 days. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -149,7 +113,7 @@ type GetTrackListRequest struct {
 	//
 	// 2019-09-29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The tag name.
+	// Tag name
 	//
 	// example:
 	//
@@ -159,7 +123,7 @@ type GetTrackListRequest struct {
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated)
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 

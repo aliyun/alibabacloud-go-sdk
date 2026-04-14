@@ -46,37 +46,18 @@ type iGetTrackListByMailFromAndTagNameRequest interface {
 }
 
 type GetTrackListByMailFromAndTagNameRequest struct {
-	// The sender address.
+	// Sender address.
 	//
-	// > If you leave this parameter empty, data for all addresses is returned. This parameter is required if you specify TagName.
+	// > If not filled, it represents all addresses; if there is a TagName, this parameter must not be empty.
 	//
 	// example:
 	//
 	// e-service@amegroups.cn
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The configuration set ID.
-	//
-	// example:
-	//
-	// xxx
-	ConfigSetId *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
-	// The dedicated IP address. This parameter is available only for users of dedicated IPs.
-	//
-	// If you do not specify this parameter, data for all IPs is returned.
-	//
-	// example:
-	//
-	// xxx.xxx.xxx.xxx
-	DedicatedIp *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
-	// The ID of the dedicated IP pool. This parameter is available only for users of dedicated IPs.
-	//
-	// If you do not specify this parameter, data for all IP pools is returned.
-	//
-	// example:
-	//
-	// xxx
+	AccountName       *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	ConfigSetId       *string `json:"ConfigSetId,omitempty" xml:"ConfigSetId,omitempty"`
+	DedicatedIp       *string `json:"DedicatedIp,omitempty" xml:"DedicatedIp,omitempty"`
 	DedicatedIpPoolId *string `json:"DedicatedIpPoolId,omitempty" xml:"DedicatedIpPoolId,omitempty"`
-	// The end time. The time span between the start time and end time cannot exceed 15 days. The format is yyyy-MM-dd.
+	// End time, with a span from the start time that cannot exceed 15 days. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -84,31 +65,14 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	//
 	// 2019-09-29
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The Email Service Provider (ESP). This parameter is available only for users of dedicated IPs. Valid values:
-	//
-	// - gmail.com
-	//
-	// - yahoo.com
-	//
-	// - outlook.com
-	//
-	// - icloud.com
-	//
-	// - others (data for ESPs other than the ones listed above)
-	//
-	// If you do not specify this parameter, data for all ESPs is returned.
-	//
-	// example:
-	//
-	// gmail.com
-	Esp *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
-	// The value is 0 for the first query and 1 for subsequent queries. A value of 1 indicates a paged query in chronological order. (This field is deprecated)
+	Esp     *string `json:"Esp,omitempty" xml:"Esp,omitempty"`
+	// For the first query, set to 0; for subsequent queries, fixed at 1. 1 indicates pagination in ascending order by time. (This field is deprecated)
 	//
 	// example:
 	//
 	// （本字段已废弃）
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// Used for paging. Do not set this parameter for the first query. For subsequent queries, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated)
+	// Used for pagination. Not set for the first query; for subsequent queries, set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
 	//
 	// example:
 	//
@@ -121,13 +85,13 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	// （本字段已废弃）
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The current page number.
+	// Current page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size
 	//
 	// example:
 	//
@@ -135,7 +99,7 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start time. The time cannot be earlier than 30 days ago. The format is yyyy-MM-dd.
+	// Start time, which cannot be earlier than 30 days. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -143,7 +107,7 @@ type GetTrackListByMailFromAndTagNameRequest struct {
 	//
 	// 2019-09-29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The email tag. If you leave this parameter empty, data for all tags is returned.
+	// Email tag. If not filled, it represents all tags.
 	//
 	// example:
 	//

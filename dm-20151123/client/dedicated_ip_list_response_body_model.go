@@ -24,33 +24,33 @@ type iDedicatedIpListResponseBody interface {
 }
 
 type DedicatedIpListResponseBody struct {
-	// The current page number.
+	// Current page
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Indicates whether the next page exists.
+	// Whether there is a next page
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The list of IP addresses.
+	// IP list
 	Ips []*DedicatedIpListResponseBodyIps `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// Page size
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of purchased IP addresses.
+	// Total amount of purchased IP data
 	//
 	// example:
 	//
@@ -134,57 +134,57 @@ func (s *DedicatedIpListResponseBody) Validate() error {
 }
 
 type DedicatedIpListResponseBodyIps struct {
-	// The expiration time.
+	// Expiration time
 	//
 	// example:
 	//
 	// 2025-06-12T09:19:20Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The IP address ID. This is the same as the purchased instance ID.
+	// IP ID, consistent with the purchased instance ID
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the purchased instance.
+	// Purchased instance ID
 	//
 	// example:
 	//
 	// xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address.
+	// IP address
 	//
 	// example:
 	//
 	// xxx
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The extended information.
+	// Extended information
 	IpExt *DedicatedIpListResponseBodyIpsIpExt `json:"IpExt,omitempty" xml:"IpExt,omitempty" type:"Struct"`
-	// The name of the IP pool to which the IP address belongs.
+	// Name of the IP pool
 	//
 	// example:
 	//
 	// xxx
 	IpPoolName *string `json:"IpPoolName,omitempty" xml:"IpPoolName,omitempty"`
-	// The purchase time.
+	// Purchase time
 	//
 	// example:
 	//
 	// 2025-05-12T09:19:20Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the IP address.
+	// IP status
 	//
 	// example:
 	//
 	// sold
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The prefetch status.
+	// Warm-up status
 	//
 	// example:
 	//
 	// finish
 	WarmupStatus *string `json:"WarmupStatus,omitempty" xml:"WarmupStatus,omitempty"`
-	// The prefetch method.
+	// Warm-up method
 	//
 	// example:
 	//
@@ -310,13 +310,13 @@ func (s *DedicatedIpListResponseBodyIps) Validate() error {
 }
 
 type DedicatedIpListResponseBodyIpsIpExt struct {
-	// Indicates whether auto-renewal is enabled.
+	// Whether auto-renewal is enabled
 	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// Indicates whether emails have been sent.
+	// Whether an email has been sent
 	//
 	// example:
 	//

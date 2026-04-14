@@ -14,7 +14,7 @@ type iUnblockSendingResponseBody interface {
 }
 
 type UnblockSendingResponseBody struct {
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//

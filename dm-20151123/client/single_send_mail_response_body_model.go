@@ -16,13 +16,13 @@ type iSingleSendMailResponseBody interface {
 }
 
 type SingleSendMailResponseBody struct {
-	// The event ID.
+	// Event ID
 	//
 	// example:
 	//
 	// 600000xxxxxxxxxx642
 	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//

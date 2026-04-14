@@ -16,7 +16,7 @@ type iDedicatedIpAutoRenewalRequest interface {
 }
 
 type DedicatedIpAutoRenewalRequest struct {
-	// Specifies whether to enable auto-renewal.
+	// Whether to enable auto-renewal
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DedicatedIpAutoRenewalRequest struct {
 	//
 	// false
 	AutoRenewal *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The IDs of the purchased instances. Separate multiple IDs with commas.
+	// Purchase instance ID, separated by English commas if multiple.
 	//
 	// This parameter is required.
 	//

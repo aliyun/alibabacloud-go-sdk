@@ -14,8 +14,6 @@ type iDeleteValidateFileResponseBody interface {
 }
 
 type DeleteValidateFileResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// yyyy-yyyy-yyyy-yyyy

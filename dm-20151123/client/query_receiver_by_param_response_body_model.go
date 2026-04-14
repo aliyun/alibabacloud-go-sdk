@@ -22,25 +22,25 @@ type iQueryReceiverByParamResponseBody interface {
 }
 
 type QueryReceiverByParamResponseBody struct {
-	// Used for paging. If more results are available, set this value as the NextStart parameter in your next request.
+	// Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
 	//
 	// example:
 	//
 	// 6aec200853#102#1638894326#test@example.com
 	NextStart *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
-	// Number of entries per page.
+	// Number of items displayed per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries.
+	// Total count
 	//
 	// example:
 	//

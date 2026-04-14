@@ -14,8 +14,6 @@ type iDeleteValidateFileRequest interface {
 }
 
 type DeleteValidateFileRequest struct {
-	// The ID of the file that is returned after the task is submitted.
-	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxx

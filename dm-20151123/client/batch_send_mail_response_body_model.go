@@ -16,13 +16,13 @@ type iBatchSendMailResponseBody interface {
 }
 
 type BatchSendMailResponseBody struct {
-	// The event ID.
+	// Event ID
 	//
 	// example:
 	//
 	// xxx
 	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//

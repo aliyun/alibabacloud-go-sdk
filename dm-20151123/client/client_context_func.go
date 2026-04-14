@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 添加IP防护信息
+// # Add IP Protection Information
 //
 // @param request - AddIpfilterRequest
 //
@@ -121,7 +121,7 @@ func (client *Client) ApproveReplyMailAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sends a batch of emails.
+// # Batch Send Emails
 //
 // @param request - BatchSendMailRequest
 //
@@ -449,7 +449,7 @@ func (client *Client) CheckReplyToMailAddressWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Disassociates a sender address from a configuration set.
+// 配置集取消关联发信地址
 //
 // @param request - ConfigSetCancelRelationFromAddressRequest
 //
@@ -497,7 +497,7 @@ func (client *Client) ConfigSetCancelRelationFromAddressWithContext(ctx context.
 
 // Summary:
 //
-// Creates a configuration set. You can create up to 100 configuration sets.
+// 配置集创建
 //
 // @param request - ConfigSetCreateRequest
 //
@@ -549,7 +549,7 @@ func (client *Client) ConfigSetCreateWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Deletes configuration sets.
+// 删除配置集
 //
 // @param request - ConfigSetDeleteRequest
 //
@@ -597,7 +597,7 @@ func (client *Client) ConfigSetDeleteWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Retrieves the details of a configuration set.
+// 配置集详情
 //
 // @param request - ConfigSetDetailRequest
 //
@@ -641,7 +641,7 @@ func (client *Client) ConfigSetDetailWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Lists configuration sets.
+// 配置集列表
 //
 // @param request - ConfigSetListRequest
 //
@@ -697,7 +697,7 @@ func (client *Client) ConfigSetListWithContext(ctx context.Context, request *Con
 
 // Summary:
 //
-// Associates a configuration set with a sender address.
+// 配置集关联发信地址
 //
 // @param request - ConfigSetRelationFromAddressRequest
 //
@@ -745,7 +745,7 @@ func (client *Client) ConfigSetRelationFromAddressWithContext(ctx context.Contex
 
 // Summary:
 //
-// Updates a configuration set.
+// 配置集更新
 //
 // @param request - ConfigSetUpdateRequest
 //
@@ -989,7 +989,7 @@ func (client *Client) CreateReceiverWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a tag.
+// # Create Tag
 //
 // @param request - CreateTagRequest
 //
@@ -1105,7 +1105,7 @@ func (client *Client) CreateUserSuppressionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Sets auto-renewal for a dedicated IP address.
+// # Set Dedicated IP Auto Renewal
 //
 // @param request - DedicatedIpAutoRenewalRequest
 //
@@ -1153,7 +1153,7 @@ func (client *Client) DedicatedIpAutoRenewalWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Updates the prefetch method for a dedicated IP address.
+// # Change the warmup method for a dedicated IP
 //
 // @param request - DedicatedIpChangeWarmupTypeRequest
 //
@@ -1201,7 +1201,7 @@ func (client *Client) DedicatedIpChangeWarmupTypeWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the IP addresses that you have purchased.
+// # Dedicated IP User IP List
 //
 // @param request - DedicatedIpListRequest
 //
@@ -1253,7 +1253,7 @@ func (client *Client) DedicatedIpListWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Creates a dedicated IP pool.
+// # Creation of Independent IP Pool
 //
 // @param request - DedicatedIpPoolCreateRequest
 //
@@ -1301,7 +1301,7 @@ func (client *Client) DedicatedIpPoolCreateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a dedicated IP pool.
+// # Dedicated IP Pool Deletion
 //
 // @param request - DedicatedIpPoolDeleteRequest
 //
@@ -1345,7 +1345,7 @@ func (client *Client) DedicatedIpPoolDeleteWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Lists IP pools.
+// # Dedicated IP Pool List
 //
 // @param request - DedicatedIpPoolListRequest
 //
@@ -1405,7 +1405,7 @@ func (client *Client) DedicatedIpPoolListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates an IP pool.
+// # Update of dedicated IP Pool
 //
 // @param request - DedicatedIpPoolUpdateRequest
 //
@@ -1857,7 +1857,7 @@ func (client *Client) DeleteTagWithContext(ctx context.Context, request *DeleteT
 
 // Summary:
 //
-// Deletes the verification file after the verification process is complete.
+// 删除批量校验任务的结果文件
 //
 // @param request - DeleteValidateFileRequest
 //
@@ -1901,7 +1901,7 @@ func (client *Client) DeleteValidateFileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves account information.
+// Retrieve account information.
 //
 // @param request - DescAccountSummaryRequest
 //
@@ -1953,7 +1953,7 @@ func (client *Client) DescAccountSummaryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can configure domain names.
+// # Get Domain Details
 //
 // @param request - DescDomainRequest
 //
@@ -2013,11 +2013,7 @@ func (client *Client) DescDomainWithContext(ctx context.Context, request *DescDo
 
 // Summary:
 //
-// Views the information about a template.
-//
-// Description:
-//
-// You can call this operation to view the information about a template.
+// 查看模板信息
 //
 // @param request - DescTemplateRequest
 //
@@ -2177,7 +2173,7 @@ func (client *Client) GetDedicatedIpWarmUpInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取IP保护信息
+// # Get IP Protection Information
 //
 // @param request - GetIpProtectionRequest
 //
@@ -2333,7 +2329,7 @@ func (client *Client) GetSuppressionListLevelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Email Tracking retrieves data on sent emails.
+// # Get tracking information
 //
 // @param request - GetTrackListRequest
 //
@@ -2445,7 +2441,7 @@ func (client *Client) GetTrackListWithContext(ctx context.Context, request *GetT
 
 // Summary:
 //
-// Retrieves email tracking data that meets specified conditions.
+// # Get tracking information based on the sender address and tag name
 //
 // @param request - GetTrackListByMailFromAndTagNameRequest
 //
@@ -2553,7 +2549,7 @@ func (client *Client) GetTrackListByMailFromAndTagNameWithContext(ctx context.Co
 
 // Summary:
 //
-// Retrieves the results file of a batch validation task.
+// 获取批量校验任务的结果文件
 //
 // @param request - GetValidateFileRequest
 //
@@ -2597,7 +2593,7 @@ func (client *Client) GetValidateFileWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Retrieves the status of a validation file.
+// 获取批量校验任务的状态
 //
 // @param request - GetValidateFileStatusRequest
 //
@@ -2641,11 +2637,7 @@ func (client *Client) GetValidateFileStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the email sending blacklist.
-//
-// Description:
-//
-// Queries data about unsubscribes or spam reports.
+// 获取发信的黑名单列表
 //
 // @param request - ListBlockSendingRequest
 //
@@ -2793,7 +2785,7 @@ func (client *Client) ListUserSuppressionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves a list of uploaded validation files.
+// 获取上传的校验文件的列表
 //
 // @param request - ListValidateFileRequest
 //
@@ -3185,7 +3177,7 @@ func (client *Client) QueryInvalidAddressWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of sender addresses.
+// Query the list of sending addresses.
 //
 // @param request - QueryMailAddressByParamRequest
 //
@@ -3253,7 +3245,7 @@ func (client *Client) QueryMailAddressByParamWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Query the recipient list.
+// # Query the details of the recipient list
 //
 // @param request - QueryReceiverByParamRequest
 //
@@ -3453,7 +3445,7 @@ func (client *Client) QueryTagByParamWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// Queries tasks based on specified parameters.
+// # Query task list
 //
 // @param request - QueryTaskByParamRequest
 //
@@ -3521,11 +3513,7 @@ func (client *Client) QueryTaskByParamWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Performs a paged query to retrieve a list of templates.
-//
-// Description:
-//
-// Performs a paged query to retrieve a list of templates.
+// 查询模板信息
 //
 // @param request - QueryTemplateByParamRequest
 //
@@ -3597,7 +3585,7 @@ func (client *Client) QueryTemplateByParamWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes system-identified and manually added addresses from the user-level suppression list.
+// Delete User\\"s Invalid Addresses
 //
 // @param request - RemoveUserSuppressionRequest
 //
@@ -3653,7 +3641,7 @@ func (client *Client) RemoveUserSuppressionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Create a single recipient.
+// # Create a Single Recipient
 //
 // @param request - SaveReceiverDetailRequest
 //
@@ -3717,7 +3705,7 @@ func (client *Client) SaveReceiverDetailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can send a test email.
+// # Send Template Test Email
 //
 // @param request - SendTestByTemplateRequest
 //
@@ -3805,7 +3793,7 @@ func (client *Client) SendTestByTemplateWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can upload the list of addresses to be verified.
+// 提交批量校验任务
 //
 // @param request - SendValidateFileRequest
 //
@@ -3865,7 +3853,7 @@ func (client *Client) SendValidateFileWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves sending statistics that match specified criteria.
+// # Retrieve Sending Data under Specified Conditions
 //
 // @param request - SenderStatisticsByTagNameAndBatchIDRequest
 //
@@ -3949,7 +3937,7 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithContext(ctx context
 
 // Summary:
 //
-// Queries sending details.
+// # Query Delivery Result Details
 //
 // @param request - SenderStatisticsDetailByParamRequest
 //
@@ -4097,7 +4085,7 @@ func (client *Client) SetSuppressionListLevelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sends a single email.
+// # API for Sending Emails
 //
 // @param tmpReq - SingleSendMailRequest
 //
@@ -4237,7 +4225,7 @@ func (client *Client) SingleSendMailWithContext(ctx context.Context, tmpReq *Sin
 
 // Summary:
 //
-// Removes sending restrictions caused by unsubscribes or complaints.
+// Lift sending restrictions due to unsubscription, reporting, etc.
 //
 // @param request - UnblockSendingRequest
 //
@@ -4345,7 +4333,7 @@ func (client *Client) UpdateIpProtectionWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新帐号信息
+// # Update account information
 //
 // @param tmpReq - UpdateUserRequest
 //
@@ -4395,7 +4383,7 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, tmpReq *UpdateU
 
 // Summary:
 //
-// Validates an email address.
+// 校验电子邮件地址
 //
 // @param request - ValidateEmailRequest
 //

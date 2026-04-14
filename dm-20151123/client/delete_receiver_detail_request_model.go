@@ -26,7 +26,7 @@ type DeleteReceiverDetailRequest struct {
 	//
 	// example:
 	//
-	// 账号+@+域名
+	// test@example.com
 	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Recipient list ID

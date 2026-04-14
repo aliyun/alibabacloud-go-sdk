@@ -28,47 +28,42 @@ type iGetTrackListResponseBody interface {
 }
 
 type GetTrackListResponseBody struct {
-	// Used for pagination. Do not set this parameter for the first request. For subsequent requests, set this parameter to the OffsetCreateTime value from the previous response. (This field is deprecated.)
+	// Used for pagination. Not set for the first query, but for subsequent queries, it should be set to the value of OffsetCreateTime from the previous response. (This field is deprecated)
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated)
 	OffsetCreateTime *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
-	// (This field is deprecated.)
+	// (This field is deprecated)
 	//
 	// example:
 	//
-	// （本字段已废弃）
+	// (This field is deprecated)
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
-	// The current page number.
+	// Current page number
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// Number of items per page
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier for the request.
+	// Request ID
 	//
 	// example:
 	//
 	// 10A1AD70-E48E-476D-98D9-39BD92193837
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching records.
+	// Total number of items
 	//
 	// example:
 	//
 	// 100
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The total number of pages.
-	//
-	// example:
-	//
-	// 2
+	Total      *int32                        `json:"Total,omitempty" xml:"Total,omitempty"`
 	TotalPages *int32                        `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 	Data       *GetTrackListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }

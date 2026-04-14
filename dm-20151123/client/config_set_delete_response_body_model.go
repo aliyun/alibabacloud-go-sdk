@@ -14,8 +14,6 @@ type iConfigSetDeleteResponseBody interface {
 }
 
 type ConfigSetDeleteResponseBody struct {
-	// The request ID.
-	//
 	// example:
 	//
 	// xxx

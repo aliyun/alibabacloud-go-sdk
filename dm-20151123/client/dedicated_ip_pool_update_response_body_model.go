@@ -16,13 +16,13 @@ type iDedicatedIpPoolUpdateResponseBody interface {
 }
 
 type DedicatedIpPoolUpdateResponseBody struct {
-	// The ID of the IP pool.
+	// IP pool ID
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//

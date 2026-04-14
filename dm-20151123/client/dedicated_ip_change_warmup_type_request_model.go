@@ -16,13 +16,13 @@ type iDedicatedIpChangeWarmupTypeRequest interface {
 }
 
 type DedicatedIpChangeWarmupTypeRequest struct {
-	// The ID of the dedicated IP address.
+	// Dedicated IP ID
 	//
 	// example:
 	//
 	// xxx
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The prefetch method.
+	// Warmup method
 	//
 	// example:
 	//

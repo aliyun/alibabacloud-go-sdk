@@ -18,19 +18,19 @@ type iUnblockSendingRequest interface {
 }
 
 type UnblockSendingRequest struct {
-	// The blacklisted recipient address.
+	// Blacklisted recipient\\"s email address
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// recipient@yyy.com
+	// recipient@example.com
 	BlockEmail *string `json:"BlockEmail,omitempty" xml:"BlockEmail,omitempty"`
-	// The blacklist type.
+	// Blacklist type
 	//
 	// - UNSUB: Unsubscribe
 	//
-	// - REPORT: Complaint
+	// - REPORT: Report
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type UnblockSendingRequest struct {
 	//
 	// UNSUB
 	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
-	// The sender address.
+	// Sender\\"s email address
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// sender@xxx.com
+	// sender@example.com
 	SenderEmail *string `json:"SenderEmail,omitempty" xml:"SenderEmail,omitempty"`
 }
 

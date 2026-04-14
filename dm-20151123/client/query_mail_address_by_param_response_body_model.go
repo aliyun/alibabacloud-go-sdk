@@ -22,25 +22,25 @@ type iQueryMailAddressByParamResponseBody interface {
 }
 
 type QueryMailAddressByParamResponseBody struct {
-	// The current page number.
+	// Current page number
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// Page size
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Request ID
 	//
 	// example:
 	//
 	// 95A7D497-F8DD-4834-B81E-C1783236E55F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// Total count
 	//
 	// example:
 	//

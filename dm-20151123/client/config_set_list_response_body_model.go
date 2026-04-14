@@ -24,34 +24,23 @@ type iConfigSetListResponseBody interface {
 }
 
 type ConfigSetListResponseBody struct {
-	// The list of configuration sets.
 	ConfigSets []*ConfigSetListResponseBodyConfigSets `json:"ConfigSets,omitempty" xml:"ConfigSets,omitempty" type:"Repeated"`
-	// The current page number.
-	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Indicates whether a next page of results exists.
-	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The number of entries per page.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
 	// example:
 	//
 	// xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the request.
-	//
 	// example:
 	//
 	// 5
@@ -134,24 +123,16 @@ func (s *ConfigSetListResponseBody) Validate() error {
 }
 
 type ConfigSetListResponseBodyConfigSets struct {
-	// The description.
-	//
 	// example:
 	//
 	// xxx
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of associated sender addresses.
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	FromAddresses []*string `json:"FromAddresses,omitempty" xml:"FromAddresses,omitempty" type:"Repeated"`
-	// The ID of the configuration set.
-	//
 	// example:
 	//
 	// xxx
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP pool information.
+	Id     *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
 	IpPool *ConfigSetListResponseBodyConfigSetsIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
-	// The name of the configuration set.
-	//
 	// example:
 	//
 	// xxx
@@ -221,14 +202,10 @@ func (s *ConfigSetListResponseBodyConfigSets) Validate() error {
 }
 
 type ConfigSetListResponseBodyConfigSetsIpPool struct {
-	// The ID of the associated IP pool.
-	//
 	// example:
 	//
 	// xxx
 	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
-	// The name of the associated IP pool.
-	//
 	// example:
 	//
 	// xxx

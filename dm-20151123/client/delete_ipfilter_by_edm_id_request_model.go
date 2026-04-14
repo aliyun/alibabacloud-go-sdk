@@ -26,7 +26,7 @@ type DeleteIpfilterByEdmIdRequest struct {
 	//
 	// example:
 	//
-	// 废弃，历史原因兼容
+	// 1
 	FromType *int32 `json:"FromType,omitempty" xml:"FromType,omitempty"`
 	// Record ID
 	//
