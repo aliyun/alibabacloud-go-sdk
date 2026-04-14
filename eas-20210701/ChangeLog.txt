@@ -1,3 +1,6 @@
+2026-04-14 Version: v7.6.3
+- Generated golang 2021-07-01 for eas.
+
 2026-04-13 Version: v7.6.2
 - Update API DescribeServiceEvent: add response parameters Body.Events.$.Resource.
 
