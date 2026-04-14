@@ -9,6 +9,10 @@ type iCreateChatSessionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppId(v string) *CreateChatSessionRequest
+	GetAppId() *string
+	SetDeviceId(v string) *CreateChatSessionRequest
+	GetDeviceId() *string
 	SetInstanceId(v string) *CreateChatSessionRequest
 	GetInstanceId() *string
 	SetLicense(v string) *CreateChatSessionRequest
@@ -18,6 +22,14 @@ type iCreateChatSessionRequest interface {
 }
 
 type CreateChatSessionRequest struct {
+	// example:
+	//
+	// emaPet0p1tWYNkqD
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// example:
+	//
+	// xzzx1SIcXGYSju3S
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
 	// 需要在[数字人实时交互服务](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.457876812ETi6y&commodityCode=avatar_2dchat_public_cn)购买完成对应的服务购买，当前有可用的服务时，前往阿里云-[我的订单](https://billing-cost.console.aliyun.com/order/list)页面对应订单详情下进行查询
 	//
 	// This parameter is required.
@@ -48,6 +60,14 @@ func (s CreateChatSessionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateChatSessionRequest) GetAppId() *string {
+	return s.AppId
+}
+
+func (s *CreateChatSessionRequest) GetDeviceId() *string {
+	return s.DeviceId
+}
+
 func (s *CreateChatSessionRequest) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -58,6 +78,16 @@ func (s *CreateChatSessionRequest) GetLicense() *string {
 
 func (s *CreateChatSessionRequest) GetPlatform() *string {
 	return s.Platform
+}
+
+func (s *CreateChatSessionRequest) SetAppId(v string) *CreateChatSessionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateChatSessionRequest) SetDeviceId(v string) *CreateChatSessionRequest {
+	s.DeviceId = &v
+	return s
 }
 
 func (s *CreateChatSessionRequest) SetInstanceId(v string) *CreateChatSessionRequest {

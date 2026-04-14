@@ -448,6 +448,14 @@ func (client *Client) CreateChatSessionWithContext(ctx context.Context, id *stri
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["appId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["deviceId"] = request.DeviceId
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["instanceId"] = request.InstanceId
 	}
