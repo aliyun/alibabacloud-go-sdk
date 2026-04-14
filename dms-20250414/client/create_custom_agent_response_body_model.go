@@ -612,6 +612,7 @@ type CreateCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	//
 	// mcp
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	KbUuid     *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
 	// example:
 	//
 	// nhdpt9adf6ac**********ca
@@ -630,12 +631,21 @@ func (s *CreateCustomAgentResponseBodyDataKnowledgeConfigList) GetAccessType() *
 	return s.AccessType
 }
 
+func (s *CreateCustomAgentResponseBodyDataKnowledgeConfigList) GetKbUuid() *string {
+	return s.KbUuid
+}
+
 func (s *CreateCustomAgentResponseBodyDataKnowledgeConfigList) GetMcpServerId() *string {
 	return s.McpServerId
 }
 
 func (s *CreateCustomAgentResponseBodyDataKnowledgeConfigList) SetAccessType(v string) *CreateCustomAgentResponseBodyDataKnowledgeConfigList {
 	s.AccessType = &v
+	return s
+}
+
+func (s *CreateCustomAgentResponseBodyDataKnowledgeConfigList) SetKbUuid(v string) *CreateCustomAgentResponseBodyDataKnowledgeConfigList {
+	s.KbUuid = &v
 	return s
 }
 

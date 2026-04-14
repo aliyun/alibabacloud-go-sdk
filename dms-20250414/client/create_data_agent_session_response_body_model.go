@@ -244,9 +244,10 @@ type CreateDataAgentSessionResponseBodyDataSessionConfig struct {
 	// example:
 	//
 	// true
-	EnableSearch *bool   `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	EncryptKey   *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	EncryptType  *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	EnableSearch *bool     `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	EncryptKey   *string   `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
+	EncryptType  *string   `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	KbUuidList   []*string `json:"KbUuidList,omitempty" xml:"KbUuidList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// CHINESE
@@ -287,6 +288,10 @@ func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetEncryptKey() *s
 
 func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetEncryptType() *string {
 	return s.EncryptType
+}
+
+func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetKbUuidList() []*string {
+	return s.KbUuidList
 }
 
 func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) GetLanguage() *string {
@@ -335,6 +340,11 @@ func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) SetEncryptKey(v st
 
 func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) SetEncryptType(v string) *CreateDataAgentSessionResponseBodyDataSessionConfig {
 	s.EncryptType = &v
+	return s
+}
+
+func (s *CreateDataAgentSessionResponseBodyDataSessionConfig) SetKbUuidList(v []*string) *CreateDataAgentSessionResponseBodyDataSessionConfig {
+	s.KbUuidList = v
 	return s
 }
 

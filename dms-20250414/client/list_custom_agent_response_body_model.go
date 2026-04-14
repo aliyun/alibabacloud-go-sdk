@@ -690,6 +690,7 @@ func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) Validate() error
 
 type ListCustomAgentResponseBodyDataContentKnowledgeConfigList struct {
 	AccessType  *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	KbUuid      *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
 	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
 }
 
@@ -705,12 +706,21 @@ func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) GetAccessTyp
 	return s.AccessType
 }
 
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) GetKbUuid() *string {
+	return s.KbUuid
+}
+
 func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) GetMcpServerId() *string {
 	return s.McpServerId
 }
 
 func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) SetAccessType(v string) *ListCustomAgentResponseBodyDataContentKnowledgeConfigList {
 	s.AccessType = &v
+	return s
+}
+
+func (s *ListCustomAgentResponseBodyDataContentKnowledgeConfigList) SetKbUuid(v string) *ListCustomAgentResponseBodyDataContentKnowledgeConfigList {
+	s.KbUuid = &v
 	return s
 }
 
