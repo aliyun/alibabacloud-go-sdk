@@ -33,6 +33,8 @@ type iAgentRuntime interface {
 	GetDescription() *string
 	SetDiskSize(v int) *AgentRuntime
 	GetDiskSize() *int
+	SetEnableSessionIsolation(v bool) *AgentRuntime
+	GetEnableSessionIsolation() *bool
 	SetEnvironmentVariables(v map[string]*string) *AgentRuntime
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *AgentRuntime
@@ -139,6 +141,12 @@ type AgentRuntime struct {
 	// AI agent runtime for customer service automation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize    *int    `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
+	//
+	// example:
+	//
+	// false
+	EnableSessionIsolation *bool `json:"enableSessionIsolation,omitempty" xml:"enableSessionIsolation,omitempty"`
 	// 智能体运行时的环境变量配置
 	//
 	// example:
@@ -301,6 +309,10 @@ func (s *AgentRuntime) GetDiskSize() *int {
 	return s.DiskSize
 }
 
+func (s *AgentRuntime) GetEnableSessionIsolation() *bool {
+	return s.EnableSessionIsolation
+}
+
 func (s *AgentRuntime) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -430,6 +442,11 @@ func (s *AgentRuntime) SetDescription(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetDiskSize(v int) *AgentRuntime {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *AgentRuntime) SetEnableSessionIsolation(v bool) *AgentRuntime {
+	s.EnableSessionIsolation = &v
 	return s
 }
 

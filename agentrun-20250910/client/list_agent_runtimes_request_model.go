@@ -23,6 +23,8 @@ type iListAgentRuntimesRequest interface {
 	GetSearchMode() *string
 	SetStatus(v string) *ListAgentRuntimesRequest
 	GetStatus() *string
+	SetSystemTags(v string) *ListAgentRuntimesRequest
+	GetSystemTags() *string
 	SetWorkspaceId(v string) *ListAgentRuntimesRequest
 	GetWorkspaceId() *string
 	SetWorkspaceIds(v string) *ListAgentRuntimesRequest
@@ -70,6 +72,12 @@ type ListAgentRuntimesRequest struct {
 	//
 	// READY,CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 根据系统标签进行过滤，多个标签用逗号分隔，支持精确匹配
+	//
+	// example:
+	//
+	// acs:ecs:tag1,acs:ecs:tag2
+	SystemTags *string `json:"systemTags,omitempty" xml:"systemTags,omitempty"`
 	// 根据工作空间ID进行过滤，用于资源隔离和权限管理
 	//
 	// example:
@@ -115,6 +123,10 @@ func (s *ListAgentRuntimesRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListAgentRuntimesRequest) GetSystemTags() *string {
+	return s.SystemTags
+}
+
 func (s *ListAgentRuntimesRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -155,6 +167,11 @@ func (s *ListAgentRuntimesRequest) SetSearchMode(v string) *ListAgentRuntimesReq
 
 func (s *ListAgentRuntimesRequest) SetStatus(v string) *ListAgentRuntimesRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAgentRuntimesRequest) SetSystemTags(v string) *ListAgentRuntimesRequest {
+	s.SystemTags = &v
 	return s
 }
 

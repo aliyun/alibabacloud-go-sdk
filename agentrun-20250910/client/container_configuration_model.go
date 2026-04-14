@@ -19,6 +19,8 @@ type iContainerConfiguration interface {
 	GetImageRegistryType() *string
 	SetPort(v int32) *ContainerConfiguration
 	GetPort() *int32
+	SetRegistryConfig(v *RegistryConfig) *ContainerConfiguration
+	GetRegistryConfig() *RegistryConfig
 }
 
 type ContainerConfiguration struct {
@@ -45,6 +47,12 @@ type ContainerConfiguration struct {
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
 	Port              *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	// 自定义镜像仓库的配置信息，当imageRegistryType为CUSTOM时使用
+	//
+	// example:
+	//
+	// {}
+	RegistryConfig *RegistryConfig `json:"registryConfig,omitempty" xml:"registryConfig,omitempty"`
 }
 
 func (s ContainerConfiguration) String() string {
@@ -75,6 +83,10 @@ func (s *ContainerConfiguration) GetPort() *int32 {
 	return s.Port
 }
 
+func (s *ContainerConfiguration) GetRegistryConfig() *RegistryConfig {
+	return s.RegistryConfig
+}
+
 func (s *ContainerConfiguration) SetAcrInstanceId(v string) *ContainerConfiguration {
 	s.AcrInstanceId = &v
 	return s
@@ -100,6 +112,16 @@ func (s *ContainerConfiguration) SetPort(v int32) *ContainerConfiguration {
 	return s
 }
 
+func (s *ContainerConfiguration) SetRegistryConfig(v *RegistryConfig) *ContainerConfiguration {
+	s.RegistryConfig = v
+	return s
+}
+
 func (s *ContainerConfiguration) Validate() error {
-	return dara.Validate(s)
+	if s.RegistryConfig != nil {
+		if err := s.RegistryConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

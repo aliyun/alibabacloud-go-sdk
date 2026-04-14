@@ -27,6 +27,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetDescription() *string
 	SetDiskSize(v int32) *UpdateAgentRuntimeInput
 	GetDiskSize() *int32
+	SetEnableSessionIsolation(v bool) *UpdateAgentRuntimeInput
+	GetEnableSessionIsolation() *bool
 	SetEnvironmentVariables(v map[string]*string) *UpdateAgentRuntimeInput
 	GetEnvironmentVariables() map[string]*string
 	SetExecutionRoleArn(v string) *UpdateAgentRuntimeInput
@@ -101,6 +103,12 @@ type UpdateAgentRuntimeInput struct {
 	// 更新后的智能体运行时描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	DiskSize    *int32  `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// 是否启用会话隔离，启用后每个会话将在独立的环境中运行
+	//
+	// example:
+	//
+	// false
+	EnableSessionIsolation *bool `json:"enableSessionIsolation,omitempty" xml:"enableSessionIsolation,omitempty"`
 	// 智能体运行时的环境变量配置，用于在运行时传递配置参数
 	//
 	// example:
@@ -222,6 +230,10 @@ func (s *UpdateAgentRuntimeInput) GetDiskSize() *int32 {
 	return s.DiskSize
 }
 
+func (s *UpdateAgentRuntimeInput) GetEnableSessionIsolation() *bool {
+	return s.EnableSessionIsolation
+}
+
 func (s *UpdateAgentRuntimeInput) GetEnvironmentVariables() map[string]*string {
 	return s.EnvironmentVariables
 }
@@ -320,6 +332,11 @@ func (s *UpdateAgentRuntimeInput) SetDescription(v string) *UpdateAgentRuntimeIn
 
 func (s *UpdateAgentRuntimeInput) SetDiskSize(v int32) *UpdateAgentRuntimeInput {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetEnableSessionIsolation(v bool) *UpdateAgentRuntimeInput {
+	s.EnableSessionIsolation = &v
 	return s
 }
 

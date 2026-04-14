@@ -2145,6 +2145,10 @@ func (client *Client) ListAgentRuntimesWithContext(ctx context.Context, request 
 		query["status"] = request.Status
 	}
 
+	if !dara.IsNil(request.SystemTags) {
+		query["systemTags"] = request.SystemTags
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["workspaceId"] = request.WorkspaceId
 	}

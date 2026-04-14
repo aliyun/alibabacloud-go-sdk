@@ -17,6 +17,8 @@ type iListAgentRuntimesInput interface {
 	GetPageSize() *int
 	SetStatuses(v []*string) *ListAgentRuntimesInput
 	GetStatuses() []*string
+	SetSystemTags(v []*string) *ListAgentRuntimesInput
+	GetSystemTags() []*string
 }
 
 type ListAgentRuntimesInput struct {
@@ -44,6 +46,12 @@ type ListAgentRuntimesInput struct {
 	//
 	// READY,CREATING
 	Statuses []*string `json:"statuses" xml:"statuses" type:"Repeated"`
+	// 按系统标签过滤
+	//
+	// example:
+	//
+	// acs:ecs:tag1,acs:ecs:tag2
+	SystemTags []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
 }
 
 func (s ListAgentRuntimesInput) String() string {
@@ -70,6 +78,10 @@ func (s *ListAgentRuntimesInput) GetStatuses() []*string {
 	return s.Statuses
 }
 
+func (s *ListAgentRuntimesInput) GetSystemTags() []*string {
+	return s.SystemTags
+}
+
 func (s *ListAgentRuntimesInput) SetAgentRuntimeName(v string) *ListAgentRuntimesInput {
 	s.AgentRuntimeName = &v
 	return s
@@ -87,6 +99,11 @@ func (s *ListAgentRuntimesInput) SetPageSize(v int) *ListAgentRuntimesInput {
 
 func (s *ListAgentRuntimesInput) SetStatuses(v []*string) *ListAgentRuntimesInput {
 	s.Statuses = v
+	return s
+}
+
+func (s *ListAgentRuntimesInput) SetSystemTags(v []*string) *ListAgentRuntimesInput {
+	s.SystemTags = v
 	return s
 }
 
