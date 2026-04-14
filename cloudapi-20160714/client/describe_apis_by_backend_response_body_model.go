@@ -22,7 +22,6 @@ type iDescribeApisByBackendResponseBody interface {
 }
 
 type DescribeApisByBackendResponseBody struct {
-	// The information about the returned API list.
 	ApiInfoList *DescribeApisByBackendResponseBodyApiInfoList `json:"ApiInfoList,omitempty" xml:"ApiInfoList,omitempty" type:"Struct"`
 	// The number of the current page.
 	//
@@ -147,48 +146,13 @@ func (s *DescribeApisByBackendResponseBodyApiInfoList) Validate() error {
 }
 
 type DescribeApisByBackendResponseBodyApiInfoListApiInfo struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 20bcdc9453524b78a8beb1f6de21edb7
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	//
-	// example:
-	//
-	// testApi
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The description of the API.
-	//
-	// example:
-	//
-	// test
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 15bcdc9453524b7gs8beb1f6de21edb7
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	//
-	// example:
-	//
-	// testApiGroup
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The request method of the API.
-	//
-	// example:
-	//
-	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /test
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DescribeApisByBackendResponseBodyApiInfoListApiInfo) String() string {

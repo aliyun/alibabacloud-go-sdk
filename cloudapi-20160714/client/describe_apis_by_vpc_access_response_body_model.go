@@ -22,7 +22,6 @@ type iDescribeApisByVpcAccessResponseBody interface {
 }
 
 type DescribeApisByVpcAccessResponseBody struct {
-	// The returned API information. It is an array consisting of ApiInfo data.
 	ApiVpcAccessInfos *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos `json:"ApiVpcAccessInfos,omitempty" xml:"ApiVpcAccessInfos,omitempty" type:"Struct"`
 	// The page number. Pages start from page 1. Default value: 1.
 	//
@@ -147,96 +146,20 @@ func (s *DescribeApisByVpcAccessResponseBodyApiVpcAccessInfos) Validate() error 
 }
 
 type DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// 09839002de484e76b5a213b040a6a3ca
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// iwc
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The description, which can be up to 200 characters in length.
-	//
-	// example:
-	//
-	// 123
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// 41c33748cbfb41f6b00870156203b72a
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// RT_PLU_IP_CTRL_group
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The instance ID or IP address in the VPC access authorization.
-	//
-	// example:
-	//
-	// Ib-04e41XXXXXd95e9c1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The HTTP request method of the API.
-	//
-	// example:
-	//
-	// POST
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /api/v1/friends/rc/status
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The port number.
-	//
-	// example:
-	//
-	// 443
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The environment ID.
-	//
-	// example:
-	//
-	// 57e17906a69b4424914fb1e05f67c78a
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The environment to which the API is published. Valid values:
-	//
-	// 	- **RELEASE**: the production environment
-	//
-	// 	- **PRE**: the staging environment
-	//
-	// 	- **TEST**: the test environment
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// vpc id
-	//
-	// example:
-	//
-	// vpc-2ze7bj64wstznvftrskbk
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC access authorization.
-	//
-	// example:
-	//
-	// aliYun_service_prod
-	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageId     *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName     *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
 }
 
 func (s DescribeApisByVpcAccessResponseBodyApiVpcAccessInfosApiVpcAccessInfo) String() string {

@@ -16,7 +16,6 @@ type iDescribeInstanceHttpCodeResponseBody interface {
 }
 
 type DescribeInstanceHttpCodeResponseBody struct {
-	// The HTTP status codes.
 	InstanceHttpCode *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode `json:"InstanceHttpCode,omitempty" xml:"InstanceHttpCode,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeInstanceHttpCodeResponseBodyInstanceHttpCode) Validate() error 
 }
 
 type DescribeInstanceHttpCodeResponseBodyInstanceHttpCodeMonitorItem struct {
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 404
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The corresponding value.
-	//
-	// example:
-	//
-	// 1
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

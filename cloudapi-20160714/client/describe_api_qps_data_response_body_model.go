@@ -18,9 +18,7 @@ type iDescribeApiQpsDataResponseBody interface {
 }
 
 type DescribeApiQpsDataResponseBody struct {
-	// The returned information about failed API calls. It is an array consisting of MonitorItem data.
-	CallFails *DescribeApiQpsDataResponseBodyCallFails `json:"CallFails,omitempty" xml:"CallFails,omitempty" type:"Struct"`
-	// The returned information about successful API calls. It is an array consisting of MonitorItem data.
+	CallFails     *DescribeApiQpsDataResponseBodyCallFails     `json:"CallFails,omitempty" xml:"CallFails,omitempty" type:"Struct"`
 	CallSuccesses *DescribeApiQpsDataResponseBodyCallSuccesses `json:"CallSuccesses,omitempty" xml:"CallSuccesses,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -114,17 +112,7 @@ func (s *DescribeApiQpsDataResponseBodyCallFails) Validate() error {
 }
 
 type DescribeApiQpsDataResponseBodyCallFailsMonitorItem struct {
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2016-07-28T08:20:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The value corresponding to the monitoring metric.
-	//
-	// example:
-	//
-	// 0
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -193,17 +181,7 @@ func (s *DescribeApiQpsDataResponseBodyCallSuccesses) Validate() error {
 }
 
 type DescribeApiQpsDataResponseBodyCallSuccessesMonitorItem struct {
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2016-07-28T08:24:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The value corresponding to the monitoring metric.
-	//
-	// example:
-	//
-	// 650
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

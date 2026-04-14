@@ -115,7 +115,14 @@ type CreateApiRequest struct {
 	// example:
 	//
 	// a0305308908c4740aba9cbfd63ba99b7
-	BackendId          *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The parameters of API requests sent by API Gateway to the backend service.
+	//
+	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
+	//
+	// example:
+	//
+	// [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":"SYSTEM"},{"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog":"CONSTANT"}]
 	ConstantParameters *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
 	// The description of the API. The description can be up to 180 characters in length.
 	//
@@ -136,8 +143,20 @@ type CreateApiRequest struct {
 	// example:
 	//
 	// true
-	DisableInternet  *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	// The return description of the API.
+	//
+	// example:
+	//
+	// []
 	ErrorCodeSamples *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
+	// The sample error codes returned by the backend service.
+	//
+	// For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).(Support up to 16KB)
+	//
+	// example:
+	//
+	// {"errorCode":"fail","errorMessage":"param invalid"}
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
 	// 	- Specifies whether to set **DisableInternet*	- to **true*	- to limit API calls to within the VPC.
 	//
@@ -174,7 +193,12 @@ type CreateApiRequest struct {
 	// example:
 	//
 	// {"RequestProtocol":"HTTP","RequestHttpMethod":"GET","RequestPath":"/v3/getUserTest/[userId]","BodyFormat":"FORM","PostBodyDescription":""}
-	RequestConfig     *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
+	RequestConfig *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
+	// The common parameters of APIs in JSON format.
+	//
+	// example:
+	//
+	// [{\\\\"demoValue\\\\":\\\\"12345678\\\\",\\\\"description\\\\":\\\\"ConsumerAppKey\\\\",\\\\"location\\\\":\\\\"HEAD\\\\",\\\\"parameterName\\\\":\\\\"CaAppKey\\\\",\\\\"serviceParameterName\\\\":\\\\"X-Ca-Key\\\\"}]
 	RequestParameters *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
 	// 	- Specifies whether to set **ForceNonceCheck*	- to **true*	- to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
 	//
@@ -183,9 +207,19 @@ type CreateApiRequest struct {
 	// example:
 	//
 	// {}
-	ResultBodyModel    *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
+	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
+	// The switch status of ACL. Valid values:- **on*	- and **off**.
+	//
+	// example:
+	//
+	// []
 	ResultDescriptions *string `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty"`
-	ResultSample       *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	// An example of a response returned by the backend service. This value is used only to generate documentation. The actually returned result shall prevail.(Support up to 32KB)
+	//
+	// example:
+	//
+	// 200
+	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The sample response from the backend service.
 	//
 	// example:
@@ -202,10 +236,27 @@ type CreateApiRequest struct {
 	// example:
 	//
 	// {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customerdomain.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"}
-	ServiceConfig        *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
+	//
+	// For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
+	//
+	// example:
+	//
+	// [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":"SYSTEM"},{"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog":"CONSTANT"}]
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	// The format of the response from the backend service. Valid values: JSON, TEXT, BINARY, XML, and HTML. Default value: JSON.
+	//
+	// example:
+	//
+	// [{"ServiceParameterName":"age","RequestParameterName":"age"},{"ServiceParameterName":"sex","RequestParameterName":"sex"},{"ServiceParameterName":"userId","RequestParameterName":"userId"},{"ServiceParameterName":"clientIp","RequestParameterName":"CaClientIp"},{"ServiceParameterName":"constance","RequestParameterName":"constance"}]
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
-	SystemParameters     *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
+	// The parameters of the API.
+	//
+	// example:
+	//
+	// [{\\"demoValue\\":\\"12345678\\",\\"description\\":\\"ConsumerAppKey\\",\\"location\\":\\"HEAD\\",\\"parameterName\\":\\"CaAppKey\\",\\"serviceParameterName\\":\\"X-Ca-Key\\"}]
+	SystemParameters *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
 	// The list of tags.
 	Tag []*CreateApiRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Specifies whether to make the API public. Valid values:

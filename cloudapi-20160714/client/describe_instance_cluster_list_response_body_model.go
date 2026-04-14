@@ -22,7 +22,6 @@ type iDescribeInstanceClusterListResponseBody interface {
 }
 
 type DescribeInstanceClusterListResponseBody struct {
-	// The instance cluster list.
 	InstanceClusters *DescribeInstanceClusterListResponseBodyInstanceClusters `json:"InstanceClusters,omitempty" xml:"InstanceClusters,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,54 +146,14 @@ func (s *DescribeInstanceClusterListResponseBodyInstanceClusters) Validate() err
 }
 
 type DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster struct {
-	// The time when the cluster was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-08-14T17:46:59+08:00
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The cluster description.
-	//
-	// example:
-	//
-	// Test TrafficControl
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The cluster ID.
-	//
-	// example:
-	//
-	// apigateway-cluster-hz-xxxxxxxxxxxx
-	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
-	// The cluster name.
-	//
-	// example:
-	//
-	// test-cluster
-	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
-	// The cluster status.
-	//
-	// example:
-	//
-	// RUNNING
+	CreatedTime           *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceClusterId     *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	InstanceClusterName   *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
 	InstanceClusterStatus *string `json:"InstanceClusterStatus,omitempty" xml:"InstanceClusterStatus,omitempty"`
-	// The cluster type.
-	//
-	// example:
-	//
-	// normal
-	InstanceClusterType *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
-	// The time when the cluster was last modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-01-12T10:11:08+08:00
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region ID of the cluster.
-	//
-	// example:
-	//
-	// cn-shenzhen
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceClusterType   *string `json:"InstanceClusterType,omitempty" xml:"InstanceClusterType,omitempty"`
+	ModifiedTime          *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInstanceClusterListResponseBodyInstanceClustersInstanceCluster) String() string {

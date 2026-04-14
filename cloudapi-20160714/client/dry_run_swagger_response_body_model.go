@@ -24,26 +24,22 @@ type iDryRunSwaggerResponseBody interface {
 }
 
 type DryRunSwaggerResponseBody struct {
-	// The APIs that failed to be created based on the Swagger-compliant data imported this time.
 	Failed *DryRunSwaggerResponseBodyFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
 	// The global condition.
 	//
 	// example:
 	//
 	// {}
-	GlobalCondition *string `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
-	// The models that failed to be imported through the Swagger-compliant data this time.
-	ModelFailed *DryRunSwaggerResponseBodyModelFailed `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
-	// The models that failed to be imported through the Swagger-compliant data this time.
-	ModelSuccess *DryRunSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
+	GlobalCondition *string                                `json:"GlobalCondition,omitempty" xml:"GlobalCondition,omitempty"`
+	ModelFailed     *DryRunSwaggerResponseBodyModelFailed  `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
+	ModelSuccess    *DryRunSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The APIs that are created based on the Swagger-compliant data imported this time.
-	Success *DryRunSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *DryRunSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
 }
 
 func (s DryRunSwaggerResponseBody) String() string {
@@ -167,24 +163,9 @@ func (s *DryRunSwaggerResponseBodyFailed) Validate() error {
 }
 
 type DryRunSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
-	// The error message returned when the API is created.
-	//
-	// example:
-	//
-	// api already exists : apiUid ===> 8e274ec61cf6468e83b68371956831cb
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method configured when the API is created.
-	//
-	// example:
-	//
-	// post
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when the API is created.
-	//
-	// example:
-	//
-	// /http/get/mapping
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DryRunSwaggerResponseBodyFailedApiImportSwaggerFailed) String() string {
@@ -261,23 +242,8 @@ func (s *DryRunSwaggerResponseBodyModelFailed) Validate() error {
 }
 
 type DryRunSwaggerResponseBodyModelFailedApiImportModelFailed struct {
-	// The error message.
-	//
-	// example:
-	//
-	// Not Found
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 36d4bcfaec1946e1870d90b2d7519710
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// Region
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -355,30 +321,10 @@ func (s *DryRunSwaggerResponseBodyModelSuccess) Validate() error {
 }
 
 type DryRunSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// b2d552ed90ca435b86f7bf8d45414793
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// NewInstance
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model operation.
-	//
-	// example:
-	//
-	// CREATE
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
-	// The UID of the model.
-	//
-	// example:
-	//
-	// ec1946e1870d90b2d7519
-	ModelUid *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
 }
 
 func (s DryRunSwaggerResponseBodyModelSuccessApiImportModelSuccess) String() string {
@@ -464,36 +410,11 @@ func (s *DryRunSwaggerResponseBodySuccess) Validate() error {
 }
 
 type DryRunSwaggerResponseBodySuccessApiDryRunSwaggerSuccess struct {
-	// Specifies whether the operation is CREATE or MODIFY.
-	//
-	// example:
-	//
-	// CREATE
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The API definition that complies with the Swagger specification.
-	//
-	// example:
-	//
-	// "A Swagger API definition in YAML"
-	ApiSwagger *string `json:"ApiSwagger,omitempty" xml:"ApiSwagger,omitempty"`
-	// The UID of the successfully imported API.
-	//
-	// example:
-	//
-	// 8e274ec61cf6468e83b68371956831cb
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The HTTP method configured when the API is created.
-	//
-	// example:
-	//
-	// get
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when the API is created.
-	//
-	// example:
-	//
-	// /http/get/mapping
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ApiSwagger   *string `json:"ApiSwagger,omitempty" xml:"ApiSwagger,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DryRunSwaggerResponseBodySuccessApiDryRunSwaggerSuccess) String() string {

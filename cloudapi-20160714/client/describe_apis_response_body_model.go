@@ -22,7 +22,6 @@ type iDescribeApisResponseBody interface {
 }
 
 type DescribeApisResponseBody struct {
-	// The queried API definitions.
 	ApiSummarys *DescribeApisResponseBodyApiSummarys `json:"ApiSummarys,omitempty" xml:"ApiSummarys,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,80 +146,19 @@ func (s *DescribeApisResponseBodyApiSummarys) Validate() error {
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummary struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// 5af418828f0344a3b588c0cc1331a3bc
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The HTTP method of the API request.
-	//
-	// example:
-	//
-	// GET
-	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// CreateObject
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /sqb/
-	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The time when the API was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-05-20T18:18:25Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The API publishing statuses.
+	ApiId         *string                                                     `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiMethod     *string                                                     `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
+	ApiName       *string                                                     `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiPath       *string                                                     `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
+	CreatedTime   *string                                                     `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	DeployedInfos *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos `json:"DeployedInfos,omitempty" xml:"DeployedInfos,omitempty" type:"Struct"`
-	// The API description.
-	//
-	// example:
-	//
-	// Creates an object
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The API group ID.
-	//
-	// example:
-	//
-	// 1084f9034c744137901057206b39d2b6
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// myGroup2
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The time when the API was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the region to which the API belongs.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags that are added to the APIs.
-	TagList *DescribeApisResponseBodyApiSummarysApiSummaryTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
-	// Indicates whether the API is public. Valid values:
-	//
-	// 	- **PUBLIC**: The API is public.
-	//
-	// 	- **PRIVATE**: The API is private.
-	//
-	// example:
-	//
-	// PUBLIC
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	Description   *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId       *string                                                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string                                                     `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ModifiedTime  *string                                                     `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RegionId      *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TagList       *DescribeApisResponseBodyApiSummarysApiSummaryTagList       `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
+	Visibility    *string                                                     `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribeApisResponseBodyApiSummarysApiSummary) String() string {
@@ -397,30 +335,9 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfos) Validate() 
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo struct {
-	// The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
-	//
-	// example:
-	//
-	// DEPLOYED
-	DeployedStatus *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
-	// The deployed version.
-	//
-	// example:
-	//
-	// 20220103170737313
+	DeployedStatus   *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
 	EffectiveVersion *string `json:"EffectiveVersion,omitempty" xml:"EffectiveVersion,omitempty"`
-	// Stage Name:
-	//
-	// 	- **RELEASE**: production environment
-	//
-	// 	- **PRE**: staging environment
-	//
-	// 	- **TEST**: test environment
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApisResponseBodyApiSummarysApiSummaryDeployedInfosDeployedInfo) String() string {
@@ -497,17 +414,7 @@ func (s *DescribeApisResponseBodyApiSummarysApiSummaryTagList) Validate() error 
 }
 
 type DescribeApisResponseBodyApiSummarysApiSummaryTagListTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// tagKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// tagValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

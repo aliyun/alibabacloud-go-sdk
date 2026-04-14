@@ -21,8 +21,7 @@ type DescribeSystemParametersResponseBody struct {
 	// example:
 	//
 	// 0CCDF65E-6050-412D-AD68-FA3D9196836C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned information about system parameters. It is an array that consists of SystemParam data.
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SystemParams *DescribeSystemParametersResponseBodySystemParams `json:"SystemParams,omitempty" xml:"SystemParams,omitempty" type:"Struct"`
 }
 
@@ -96,30 +95,10 @@ func (s *DescribeSystemParametersResponseBodySystemParams) Validate() error {
 }
 
 type DescribeSystemParametersResponseBodySystemParamsSystemParamItem struct {
-	// Examples
-	//
-	// example:
-	//
-	// 192.168.1.1
-	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The description of a parameter.
-	//
-	// example:
-	//
-	// Client IP Address
+	DemoValue   *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the parameter.
-	//
-	// example:
-	//
-	// CaClientIp
-	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The type of the parameter.
-	//
-	// example:
-	//
-	// string
-	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	ParamName   *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 }
 
 func (s DescribeSystemParametersResponseBodySystemParamsSystemParamItem) String() string {

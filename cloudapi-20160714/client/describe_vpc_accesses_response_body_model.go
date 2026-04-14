@@ -45,8 +45,7 @@ type DescribeVpcAccessesResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the VPC access authorization. The information is an array consisting of VpcAccessAttribute data.
+	TotalCount          *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VpcAccessAttributes *DescribeVpcAccessesResponseBodyVpcAccessAttributes `json:"VpcAccessAttributes,omitempty" xml:"VpcAccessAttributes,omitempty" type:"Struct"`
 }
 
@@ -147,62 +146,16 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributes) Validate() error {
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute struct {
-	// The time when the authorization was created.
-	//
-	// example:
-	//
-	// 2017-01-30T04:10:19Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the VPC access authorization.
-	//
-	// example:
-	//
-	// Test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of an Elastic Compute Service (ECS) or Server Load Balancer (SLB) instance in the VPC.
-	//
-	// example:
-	//
-	// i-uf6bzcg1pr4oh5jjmxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the authorization.
-	//
-	// example:
-	//
-	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The port number that corresponds to the instance.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
-	Tags *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the VPC access authorization.
-	//
-	// example:
-	//
-	// vpc-*****ssds24
-	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
-	// The VPC ID.
-	//
-	// example:
-	//
-	// vpc-uf657qec7lx42paw3qxxx
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The host of the backend service.
-	//
-	// example:
-	//
-	// hos-a***.fh-**nc.com
-	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
+	CreatedTime       *string                                                                   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description       *string                                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId        *string                                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int32                                                                    `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId          *string                                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags              *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcAccessId       *string                                                                   `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
+	VpcId             *string                                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcTargetHostName *string                                                                   `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
 func (s DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) String() string {
@@ -347,17 +300,7 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTag
 }
 
 type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttributeTagsTagInfo struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// PROJECT
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 6427a17ae6041d1be62414e4
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

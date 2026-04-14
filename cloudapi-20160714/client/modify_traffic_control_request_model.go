@@ -45,12 +45,7 @@ type ModifyTrafficControlRequest struct {
 	// example:
 	//
 	// ThrottlingTestDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 4223a10e-eed3-46a6-8b7c-23003f488153
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the throttling policy.
 	//

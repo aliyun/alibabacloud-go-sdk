@@ -21,8 +21,7 @@ type QueryRequestLogsResponseBody struct {
 	// example:
 	//
 	// CE5722A6-AE78-4741-A9B0-6C81********
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request logs.
+	RequestId   *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RequestLogs *QueryRequestLogsResponseBodyRequestLogs `json:"RequestLogs,omitempty" xml:"RequestLogs,omitempty" type:"Struct"`
 }
 
@@ -96,270 +95,50 @@ func (s *QueryRequestLogsResponseBodyRequestLogs) Validate() error {
 }
 
 type QueryRequestLogsResponseBodyRequestLogsRequestLog struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// 4b83229ebcab4ecd88956fb3********
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// ApiName
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The application name.
-	//
-	// example:
-	//
-	// VIPROOM_VIPROOM
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when API Gateway finished forwarding the request to the backend service.
-	//
-	// example:
-	//
-	// 1731487224969
-	BackendRequestEnd *int64 `json:"BackendRequestEnd,omitempty" xml:"BackendRequestEnd,omitempty"`
-	// The time when API Gateway started to forward the request to the backend service.
-	//
-	// example:
-	//
-	// 1731487224969
-	BackendRequestStart *int64 `json:"BackendRequestStart,omitempty" xml:"BackendRequestStart,omitempty"`
-	// The time when API Gateway finished receiving the response from the backend service.
-	//
-	// example:
-	//
-	// 1731487224989
-	BackendResponseEnd *int64 `json:"BackendResponseEnd,omitempty" xml:"BackendResponseEnd,omitempty"`
-	// The time when API Gateway started to receive the response from the backend service.
-	//
-	// example:
-	//
-	// 1731487224989
-	BackendResponseStart *int64 `json:"BackendResponseStart,omitempty" xml:"BackendResponseStart,omitempty"`
-	// The IP address of the client that sends the request.
-	//
-	// example:
-	//
-	// 21.237.XXX.XXX
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The X-Ca-Nonce header included in the request from the client.
-	//
-	// example:
-	//
-	// d43df9db-3b05-4cd6-888a-1c0b********
-	ClientNonce *string `json:"ClientNonce,omitempty" xml:"ClientNonce,omitempty"`
-	// The application ID that is used by the caller.
-	//
-	// example:
-	//
-	// 11096****
-	ConsumerAppId *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	// The App Key that is used by the caller.
-	//
-	// example:
-	//
-	// 20412****
-	ConsumerAppKey *string `json:"ConsumerAppKey,omitempty" xml:"ConsumerAppKey,omitempty"`
-	// The custom trace ID.
-	//
-	// example:
-	//
-	// 95657ED9-2F6F-426F-BD99-79C8********
-	CustomTraceId *string `json:"CustomTraceId,omitempty" xml:"CustomTraceId,omitempty"`
-	// The requested domain name in the request.
-	//
-	// example:
-	//
-	// 360bdd88695c48ae8085c7f2********-ap-southeast-1.alicloudapi.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The error code that is returned.
-	//
-	// example:
-	//
-	// X500ER
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call fails.
-	//
-	// example:
-	//
-	// Backend service connect failed `Timeout connecting to [/1XX.20.0.XX:8080]`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The specific error message returned by the backend service.
-	//
-	// example:
-	//
-	// error msg
-	Exception *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
-	// The time when API Gateway finished receiving the request.
-	//
-	// example:
-	//
-	// 1731487224968
-	FrontRequestEnd *int64 `json:"FrontRequestEnd,omitempty" xml:"FrontRequestEnd,omitempty"`
-	// The time when API Gateway started to receive the request.
-	//
-	// example:
-	//
-	// 1731487224968
-	FrontRequestStart *int64 `json:"FrontRequestStart,omitempty" xml:"FrontRequestStart,omitempty"`
-	// The time when API Gateway finished forwarding the response to the client.
-	//
-	// example:
-	//
-	// 1731487224989
-	FrontResponseEnd *int64 `json:"FrontResponseEnd,omitempty" xml:"FrontResponseEnd,omitempty"`
-	// The time when API Gateway started to forward the response to the client.
-	//
-	// example:
-	//
-	// 1731487224989
-	FrontResponseStart *int64 `json:"FrontResponseStart,omitempty" xml:"FrontResponseStart,omitempty"`
-	// The ID of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// dc024277fe6c4cada79ba0bd6********
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// GroupName
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The HTTP method that is used to send the request.
-	//
-	// example:
-	//
-	// POST
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The path of the request.
-	//
-	// example:
-	//
-	// /testPath
-	HttpPath *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
-	// The initial request ID when API Gateway calls an API. For example, if API-1 calls API-2, the initialRequestId parameter in the log of API-2 indicates the ID of the request from API-1.
-	//
-	// example:
-	//
-	// 95657ED9-2F6F-426F-BD99-79C8********
-	InitialRequestId *string `json:"InitialRequestId,omitempty" xml:"InitialRequestId,omitempty"`
-	// The ID of the API Gateway instance to which the API belongs.
-	//
-	// example:
-	//
-	// apigateway-bj-ab2b********
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The JSON web token (JWT) claims. The claims can be configured at the group level.
-	//
-	// example:
-	//
-	// {}
-	JwtClaims *string `json:"JwtClaims,omitempty" xml:"JwtClaims,omitempty"`
-	// The region in which the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The request body. A request body cannot exceed 1,024 bytes in size.
-	//
-	// example:
-	//
-	// param=paramName
-	RequestBody *string `json:"RequestBody,omitempty" xml:"RequestBody,omitempty"`
-	// The request headers.
-	//
-	// example:
-	//
-	// content-type: application/x-www-form-urlencoded
-	RequestHeaders *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 95657ED9-2F6F-426F-BD99-79C8********
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The protocol used by the client to send the request. Valid values: HTTP, HTTPS, and WS.
-	//
-	// example:
-	//
-	// HTTP
-	RequestProtocol *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
-	// The query string for the request.
-	//
-	// example:
-	//
-	// username=name
-	RequestQueryString *string `json:"RequestQueryString,omitempty" xml:"RequestQueryString,omitempty"`
-	// The size of the request. Unit: bytes.
-	//
-	// example:
-	//
-	// 1923
-	RequestSize *string `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
-	// The request time, in UTC.
-	//
-	// example:
-	//
-	// 2022-10-29T03:59:59Z
-	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	// The response body. A response body cannot exceed 1,024 bytes in size.
-	//
-	// example:
-	//
-	// param=paramName
-	ResponseBody *string `json:"ResponseBody,omitempty" xml:"ResponseBody,omitempty"`
-	// The headers in the API response.
-	//
-	// example:
-	//
-	// content-type: application/x-www-form-urlencoded
-	ResponseHeaders *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
-	// The size of returned data. Unit: bytes.
-	//
-	// example:
-	//
-	// 23441
-	ResponseSize *string `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
-	// The total time consumed to access the backend resources. The total time includes the time consumed to request a connection to the resources, the time consumed to establish the connection, and the time consumed to call the backend service. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 324
-	ServiceLatency *string `json:"ServiceLatency,omitempty" xml:"ServiceLatency,omitempty"`
-	// The ID of the API environment.
-	//
-	// example:
-	//
-	// 8a305b7f10334052a52d9156********
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The name of the API environment.
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The status code returned.
-	//
-	// example:
-	//
-	// 200
-	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The total time consumed by the request. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1345
-	TotalLatency *string `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
-	// The plug-in hit by the request and the relevant context.
-	//
-	// example:
-	//
-	// []
-	Plugin *string `json:"plugin,omitempty" xml:"plugin,omitempty"`
+	ApiId                *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName              *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackendRequestEnd    *int64  `json:"BackendRequestEnd,omitempty" xml:"BackendRequestEnd,omitempty"`
+	BackendRequestStart  *int64  `json:"BackendRequestStart,omitempty" xml:"BackendRequestStart,omitempty"`
+	BackendResponseEnd   *int64  `json:"BackendResponseEnd,omitempty" xml:"BackendResponseEnd,omitempty"`
+	BackendResponseStart *int64  `json:"BackendResponseStart,omitempty" xml:"BackendResponseStart,omitempty"`
+	ClientIp             *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientNonce          *string `json:"ClientNonce,omitempty" xml:"ClientNonce,omitempty"`
+	ConsumerAppId        *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
+	ConsumerAppKey       *string `json:"ConsumerAppKey,omitempty" xml:"ConsumerAppKey,omitempty"`
+	CustomTraceId        *string `json:"CustomTraceId,omitempty" xml:"CustomTraceId,omitempty"`
+	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ErrorCode            *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage         *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Exception            *string `json:"Exception,omitempty" xml:"Exception,omitempty"`
+	FrontRequestEnd      *int64  `json:"FrontRequestEnd,omitempty" xml:"FrontRequestEnd,omitempty"`
+	FrontRequestStart    *int64  `json:"FrontRequestStart,omitempty" xml:"FrontRequestStart,omitempty"`
+	FrontResponseEnd     *int64  `json:"FrontResponseEnd,omitempty" xml:"FrontResponseEnd,omitempty"`
+	FrontResponseStart   *int64  `json:"FrontResponseStart,omitempty" xml:"FrontResponseStart,omitempty"`
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HttpMethod           *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	HttpPath             *string `json:"HttpPath,omitempty" xml:"HttpPath,omitempty"`
+	InitialRequestId     *string `json:"InitialRequestId,omitempty" xml:"InitialRequestId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JwtClaims            *string `json:"JwtClaims,omitempty" xml:"JwtClaims,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestBody          *string `json:"RequestBody,omitempty" xml:"RequestBody,omitempty"`
+	RequestHeaders       *string `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestProtocol      *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
+	RequestQueryString   *string `json:"RequestQueryString,omitempty" xml:"RequestQueryString,omitempty"`
+	RequestSize          *string `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
+	RequestTime          *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	ResponseBody         *string `json:"ResponseBody,omitempty" xml:"ResponseBody,omitempty"`
+	ResponseHeaders      *string `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty"`
+	ResponseSize         *string `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
+	ServiceLatency       *string `json:"ServiceLatency,omitempty" xml:"ServiceLatency,omitempty"`
+	StageId              *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName            *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StatusCode           *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	TotalLatency         *string `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
+	Plugin               *string `json:"plugin,omitempty" xml:"plugin,omitempty"`
 }
 
 func (s QueryRequestLogsResponseBodyRequestLogsRequestLog) String() string {

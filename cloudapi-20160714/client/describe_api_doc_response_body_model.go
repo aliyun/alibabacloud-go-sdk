@@ -87,8 +87,7 @@ type DescribeApiDocResponseBody struct {
 	// example:
 	//
 	// true
-	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// The sample error codes returned by the backend service.
+	DisableInternet  *bool                                       `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	ErrorCodeSamples *DescribeApiDocResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
 	// The sample error response from the backend service.
 	//
@@ -129,8 +128,7 @@ type DescribeApiDocResponseBody struct {
 	// example:
 	//
 	// F253FB5F-9AE1-5DDA-99B5-46BE00A3719E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned frontend input parameters in the API. It is an array consisting of RequestParameter data.
+	RequestId         *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RequestParameters *DescribeApiDocResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
 	// The sample response.
 	//
@@ -395,24 +393,9 @@ func (s *DescribeApiDocResponseBodyErrorCodeSamples) Validate() error {
 }
 
 type DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample struct {
-	// The returned error code.
-	//
-	// example:
-	//
-	// Error
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error description.
-	//
-	// example:
-	//
-	// Unauthorized
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The returned error message.
-	//
-	// example:
-	//
-	// error message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s DescribeApiDocResponseBodyErrorCodeSamplesErrorCodeSample) String() string {
@@ -617,108 +600,23 @@ func (s *DescribeApiDocResponseBodyRequestParameters) Validate() error {
 }
 
 type DescribeApiDocResponseBodyRequestParametersRequestParameter struct {
-	// The name of the parameter in the API request.
-	//
-	// example:
-	//
-	// Length
-	ApiParameterName *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
-	// The type of the array element.
-	//
-	// example:
-	//
-	// String
-	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
-	// The default value.
-	//
-	// example:
-	//
-	// 20
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The example value.
-	//
-	// example:
-	//
-	// 20
-	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The parameter description.
-	//
-	// example:
-	//
-	// Parameters
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The order in which the parameter is sorted in the document.
-	//
-	// example:
-	//
-	// 0
-	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// Indicates whether the document is public. Valid values: **PUBLIC*	- and **PRIVATE**.
-	//
-	// example:
-	//
-	// PUBLIC
-	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that are supported when **ParameterType*	- is set to Int, Long, Float, Double, or String. Separate values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
-	//
-	// example:
-	//
-	// boy,girl
-	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
-	// JSON scheme
-	//
-	// example:
-	//
-	// {}
-	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	//
-	// example:
-	//
-	// HEAD
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum length.
-	//
-	// example:
-	//
-	// 123456
-	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum value.
-	//
-	// example:
-	//
-	// 200
-	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum length.
-	//
-	// example:
-	//
-	// 2
-	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum value.
-	//
-	// example:
-	//
-	// 123456
-	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The data type of the parameter.
-	//
-	// example:
-	//
-	// String
-	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression that is used for parameter validation when **ParameterType*	- is set to String.
-	//
-	// example:
-	//
-	// xxx
+	ApiParameterName  *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
+	ArrayItemsType    *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
+	DefaultValue      *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	DemoValue         *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocOrder          *int32  `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
+	DocShow           *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
+	EnumValue         *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
+	JsonScheme        *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
+	Location          *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxLength         *int64  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	MaxValue          *int64  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinLength         *int64  `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	MinValue          *int64  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	ParameterType     *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Indicates whether the parameter is required.
-	//
-	// example:
-	//
-	// OPTIONAL
-	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
+	Required          *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s DescribeApiDocResponseBodyRequestParametersRequestParameter) String() string {

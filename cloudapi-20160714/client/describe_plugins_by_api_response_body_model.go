@@ -33,9 +33,8 @@ type DescribePluginsByApiResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plug-in information. The information is an array that consists of PluginAttribute data.
-	Plugins *DescribePluginsByApiResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
+	PageSize *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Plugins  *DescribePluginsByApiResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -147,54 +146,14 @@ func (s *DescribePluginsByApiResponseBodyPlugins) Validate() error {
 }
 
 type DescribePluginsByApiResponseBodyPluginsPluginAttribute struct {
-	// The time when the plug-in was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-01-11T09:29:58Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The plug-in description.
-	//
-	// example:
-	//
-	// Traffic throttling
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the plug-in was last modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-01-11T09:29:58Z
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The definition statement of the plug-in.
-	//
-	// example:
-	//
-	// {\\"unit\\":\\"MINUTE\\",\\"apiDefault\\":20}
-	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// The plug-in ID.
-	//
-	// example:
-	//
-	// 9a3f1a5279434f2ba74ccd91c295af9f
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The plug-in name.
-	//
-	// example:
-	//
-	// firstPlugin
-	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The plug-in type.
-	//
-	// example:
-	//
-	// trafficControl
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// The region where the plug-in resides.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PluginData   *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	PluginId     *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginName   *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginType   *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribePluginsByApiResponseBodyPluginsPluginAttribute) String() string {

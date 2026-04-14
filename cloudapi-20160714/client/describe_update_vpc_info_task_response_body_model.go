@@ -93,37 +93,13 @@ func (s *DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResults) Validate(
 }
 
 type DescribeUpdateVpcInfoTaskResponseBodyApiUpdateVpcInfoResultsApiUpdateVpcInfoResult struct {
-	// example:
-	//
-	// api_test2
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// example:
-	//
-	// 86364e7c166c47ba819b3f8f95ac0913
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// example:
-	//
-	// Success. Request Success.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// example:
-	//
-	// e8da6f6346184da9a30d0dc1888b1f3b
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// example:
-	//
-	// test
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// example:
-	//
-	// fe952b95072747e2a8dfd336bcff8d7f
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// example:
-	//
-	// success
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
 }
 

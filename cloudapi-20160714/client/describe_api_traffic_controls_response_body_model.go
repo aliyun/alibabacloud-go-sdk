@@ -22,7 +22,6 @@ type iDescribeApiTrafficControlsResponseBody interface {
 }
 
 type DescribeApiTrafficControlsResponseBody struct {
-	// The returned throttling policy information. It is an array consisting of ApiTrafficControlItem data.
 	ApiTrafficControls *DescribeApiTrafficControlsResponseBodyApiTrafficControls `json:"ApiTrafficControls,omitempty" xml:"ApiTrafficControls,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,35 +146,10 @@ func (s *DescribeApiTrafficControlsResponseBodyApiTrafficControls) Validate() er
 }
 
 type DescribeApiTrafficControlsResponseBodyApiTrafficControlsApiTrafficControlItem struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 46fbb52840d146f186e38e8e70fc8c90
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// API operation
-	//
-	// example:
-	//
-	// testapi
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The binding time of the throttling policy.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The ID of the throttling policy.
-	//
-	// example:
-	//
-	// dd05f1c54d6749eda95f9fa6d491449a
-	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
-	// The name of the throttling policy.
-	//
-	// example:
-	//
-	// backendsignature
+	ApiId              *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName            *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	BoundTime          *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	TrafficControlId   *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
 	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
 }
 

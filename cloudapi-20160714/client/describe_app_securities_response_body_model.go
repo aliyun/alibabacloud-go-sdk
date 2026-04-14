@@ -16,7 +16,6 @@ type iDescribeAppSecuritiesResponseBody interface {
 }
 
 type DescribeAppSecuritiesResponseBody struct {
-	// The associated security policy information.
 	AppSecuritys *DescribeAppSecuritiesResponseBodyAppSecuritys `json:"AppSecuritys,omitempty" xml:"AppSecuritys,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,35 +95,10 @@ func (s *DescribeAppSecuritiesResponseBodyAppSecuritys) Validate() error {
 }
 
 type DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity struct {
-	// The application AppCode.
-	//
-	// example:
-	//
-	// d2350ecd62c44cbfbe35a7f182e35105
-	AppCode *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	// The application AppKey.
-	//
-	// example:
-	//
-	// 34379343
-	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The application AppSecret.
-	//
-	// example:
-	//
-	// ea5291a7aff343769eb3139a2f6de8c9
-	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The time when the AppKey was created.
-	//
-	// example:
-	//
-	// 2021-09-14T18:50:59
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The time when the AppSecret was last modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-08-14T18:03:00+08:00
+	AppCode      *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppKey       *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppSecret    *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 }
 

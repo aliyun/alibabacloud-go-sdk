@@ -22,20 +22,16 @@ type iImportSwaggerResponseBody interface {
 }
 
 type ImportSwaggerResponseBody struct {
-	// The APIs that failed to be created based on the Swagger-compliant data imported this time.
-	Failed *ImportSwaggerResponseBodyFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
-	// The models that failed to be imported through the Swagger-compliant data this time.
-	ModelFailed *ImportSwaggerResponseBodyModelFailed `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
-	// The models that were imported through the Swagger-compliant data this time.
+	Failed       *ImportSwaggerResponseBodyFailed       `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Struct"`
+	ModelFailed  *ImportSwaggerResponseBodyModelFailed  `json:"ModelFailed,omitempty" xml:"ModelFailed,omitempty" type:"Struct"`
 	ModelSuccess *ImportSwaggerResponseBodyModelSuccess `json:"ModelSuccess,omitempty" xml:"ModelSuccess,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 647CEF05-404C-4125-B3D7-44792EB77392
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The APIs that are created based on the Swagger-compliant data imported this time.
-	Success *ImportSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *ImportSwaggerResponseBodySuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Struct"`
 }
 
 func (s ImportSwaggerResponseBody) String() string {
@@ -150,24 +146,9 @@ func (s *ImportSwaggerResponseBodyFailed) Validate() error {
 }
 
 type ImportSwaggerResponseBodyFailedApiImportSwaggerFailed struct {
-	// The error message returned when the API is created.
-	//
-	// example:
-	//
-	// api already exists : apiUid ===> 8e274ec61cf6468e83b68371956831cb
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method configured when the API is created.
-	//
-	// example:
-	//
-	// post
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when the API is created.
-	//
-	// example:
-	//
-	// /http/get/mapping
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportSwaggerResponseBodyFailedApiImportSwaggerFailed) String() string {
@@ -244,23 +225,8 @@ func (s *ImportSwaggerResponseBodyModelFailed) Validate() error {
 }
 
 type ImportSwaggerResponseBodyModelFailedApiImportModelFailed struct {
-	// The error message.
-	//
-	// example:
-	//
-	// error msg
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 36d4bcfaec1946e1870d90b2d7519710
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// Region
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -338,30 +304,10 @@ func (s *ImportSwaggerResponseBodyModelSuccess) Validate() error {
 }
 
 type ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess struct {
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// b2d552ed90ca435b86f7bf8d45414793
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// NewInstance
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model operation
-	//
-	// example:
-	//
-	// CREATE
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
-	// The UID of the model.
-	//
-	// example:
-	//
-	// d4bcfaec1946e1870d
-	ModelUid *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
 }
 
 func (s ImportSwaggerResponseBodyModelSuccessApiImportModelSuccess) String() string {
@@ -447,30 +393,10 @@ func (s *ImportSwaggerResponseBodySuccess) Validate() error {
 }
 
 type ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess struct {
-	// Specifies whether the operation is CREATE or MODIFY.
-	//
-	// example:
-	//
-	// CREATE
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The UID of the successfully imported API.
-	//
-	// example:
-	//
-	// 8e274ec61cf6468e83b68371956831cb
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The HTTP method configured when the API is created.
-	//
-	// example:
-	//
-	// get
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when the API is created.
-	//
-	// example:
-	//
-	// /http/get/mapping
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportSwaggerResponseBodySuccessApiImportSwaggerSuccess) String() string {

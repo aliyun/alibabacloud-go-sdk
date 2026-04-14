@@ -33,9 +33,8 @@ type DescribePurchasedApiGroupResponseBody struct {
 	// example:
 	//
 	// api group description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of domain names.
-	Domains *DescribePurchasedApiGroupResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
+	Description *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domains     *DescribePurchasedApiGroupResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Struct"`
 	// The ID of the API group.
 	//
 	// example:
@@ -202,11 +201,6 @@ func (s *DescribePurchasedApiGroupResponseBodyDomains) Validate() error {
 }
 
 type DescribePurchasedApiGroupResponseBodyDomainsDomainItem struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// test_domain.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 

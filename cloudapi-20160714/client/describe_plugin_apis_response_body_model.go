@@ -22,7 +22,6 @@ type iDescribePluginApisResponseBody interface {
 }
 
 type DescribePluginApisResponseBody struct {
-	// The information about APIs.
 	ApiSummarys *DescribePluginApisResponseBodyApiSummarys `json:"ApiSummarys,omitempty" xml:"ApiSummarys,omitempty" type:"Struct"`
 	// The page number of the page to return.
 	//
@@ -147,72 +146,16 @@ func (s *DescribePluginApisResponseBodyApiSummarys) Validate() error {
 }
 
 type DescribePluginApisResponseBodyApiSummarysApiPluginSummary struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// accc8c68b7294b1cb4928741********
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// fhosQueryDayOfStock_V2
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The API description.
-	//
-	// example:
-	//
-	// API description
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 5f51f89261854fd9ad5116be********
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The API group to which the API belongs.
-	//
-	// example:
-	//
-	// myGroup2
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The HTTP method of the API.
-	//
-	// example:
-	//
-	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /mqTest
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The ID of the region in which the API resides.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The environment alias.
-	//
-	// example:
-	//
-	// Production
-	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
-	// The environment to which the API is published. Valid values:
-	//
-	// 	- **RELEASE**: the production environment
-	//
-	// 	- **PRE**: the pre-release environment
-	//
-	// 	- **TEST**: the test environment
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageAlias  *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribePluginApisResponseBodyApiSummarysApiPluginSummary) String() string {

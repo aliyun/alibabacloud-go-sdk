@@ -33,8 +33,7 @@ type DescribePurchasedApiGroupsResponseBody struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The attributes of the API group.
+	PageSize                    *int32                                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PurchasedApiGroupAttributes *DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes `json:"PurchasedApiGroupAttributes,omitempty" xml:"PurchasedApiGroupAttributes,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -147,70 +146,16 @@ func (s *DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributes) Vali
 }
 
 type DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributesPurchasedApiGroupAttribute struct {
-	// The billing method.
-	//
-	// example:
-	//
-	// POSTPAID
-	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
-	// The description of the API group.
-	//
-	// example:
-	//
-	// 1
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the API group expires.
-	//
-	// example:
-	//
-	// 2021-12-19T00:00:00
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 8e91f23f88f94348855b82c9a73209f3
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	//
-	// example:
-	//
-	// group1
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The maximum number of calls.
-	//
-	// example:
-	//
-	// 10
-	InvokeTimesMax *int64 `json:"InvokeTimesMax,omitempty" xml:"InvokeTimesMax,omitempty"`
-	// The current number of calls.
-	//
-	// example:
-	//
-	// 10
-	InvokeTimesNow *int64 `json:"InvokeTimesNow,omitempty" xml:"InvokeTimesNow,omitempty"`
-	// The time when the API group was purchased.
-	//
-	// example:
-	//
-	// 2021-12-19T00:00:00
-	PurchasedTime *string `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
-	// The ID of the region where the API group is located.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the API group.
-	//
-	// 	- **NORMAL**: The API group is normal.
-	//
-	// 	- **DELETE**: The API group is deleted.
-	//
-	// example:
-	//
-	// NORMAL
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	BillingType    *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InvokeTimesMax *int64  `json:"InvokeTimesMax,omitempty" xml:"InvokeTimesMax,omitempty"`
+	InvokeTimesNow *int64  `json:"InvokeTimesNow,omitempty" xml:"InvokeTimesNow,omitempty"`
+	PurchasedTime  *string `json:"PurchasedTime,omitempty" xml:"PurchasedTime,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribePurchasedApiGroupsResponseBodyPurchasedApiGroupAttributesPurchasedApiGroupAttribute) String() string {

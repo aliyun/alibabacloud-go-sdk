@@ -93,26 +93,11 @@ func (s *DescribePluginSchemasResponseBodyPluginSchemas) Validate() error {
 }
 
 type DescribePluginSchemasResponseBodyPluginSchemasPluginSchema struct {
-	// example:
-	//
-	// plugin scheme description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// 4107**
-	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
-	// example:
-	//
-	// VPC_C
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// true
-	SupportClassic *bool `json:"SupportClassic,omitempty" xml:"SupportClassic,omitempty"`
-	// example:
-	//
-	// plugin schema title
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocumentId     *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SupportClassic *bool   `json:"SupportClassic,omitempty" xml:"SupportClassic,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribePluginSchemasResponseBodyPluginSchemasPluginSchema) String() string {

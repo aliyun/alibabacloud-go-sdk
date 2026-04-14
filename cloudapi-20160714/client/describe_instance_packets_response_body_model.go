@@ -16,7 +16,6 @@ type iDescribeInstancePacketsResponseBody interface {
 }
 
 type DescribeInstancePacketsResponseBody struct {
-	// The list of inbound and outbound data packets in the instance.
 	InstancePackets *DescribeInstancePacketsResponseBodyInstancePackets `json:"InstancePackets,omitempty" xml:"InstancePackets,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeInstancePacketsResponseBodyInstancePackets) Validate() error {
 }
 
 type DescribeInstancePacketsResponseBodyInstancePacketsMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- InstancePacketRX: inbound data packets
-	//
-	// 	- InstancePacketTX: outbound data packets
-	//
-	// example:
-	//
-	// InstancePacketRX
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-05-24T10:14:53Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of inbound and outbound data packets in the instance.
-	//
-	// example:
-	//
-	// 0
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

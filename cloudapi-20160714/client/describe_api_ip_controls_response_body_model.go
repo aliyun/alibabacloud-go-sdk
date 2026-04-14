@@ -22,7 +22,6 @@ type iDescribeApiIpControlsResponseBody interface {
 }
 
 type DescribeApiIpControlsResponseBody struct {
-	// The information about the ACLs. The information is an array of ApiIpControlItem data.
 	ApiIpControls *DescribeApiIpControlsResponseBodyApiIpControls `json:"ApiIpControls,omitempty" xml:"ApiIpControls,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,35 +146,10 @@ func (s *DescribeApiIpControlsResponseBodyApiIpControls) Validate() error {
 }
 
 type DescribeApiIpControlsResponseBodyApiIpControlsApiIpControlItem struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 46fbb52840d146f186e38e8e70fc8c90
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	//
-	// example:
-	//
-	// testapi
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The time of binding.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The ID of the ACL.
-	//
-	// example:
-	//
-	// dd05f1c54d6749eda95f9fa6d491449a
-	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The name of the ACL.
-	//
-	// example:
-	//
-	// testControlName
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	BoundTime     *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
 }
 

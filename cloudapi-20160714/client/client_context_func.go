@@ -825,7 +825,7 @@ func (client *Client) CreateApiWithContext(ctx context.Context, request *CreateA
 
 // Summary:
 //
-// 创建API分组
+// Creates an API group.
 //
 // @param request - CreateApiGroupRequest
 //
@@ -961,7 +961,7 @@ func (client *Client) CreateApiStageVariableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates an application for calling APIs in API Gateway.
+// Creates an app for API Gateway.
 //
 // Description:
 //
@@ -1215,7 +1215,7 @@ func (client *Client) CreateBackendWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建后端服务在环境上的配置
+// Creates a backend service configuration in an environment.
 //
 // @param request - CreateBackendModelRequest
 //
@@ -1339,7 +1339,7 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// 创建自定义数据集条目
+// Creates a data entry in a custom dataset.
 //
 // @param request - CreateDatasetItemRequest
 //
@@ -1495,7 +1495,7 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建内网域名
+// Grants an internal second-level domain name to an API group.
 //
 // @param request - CreateIntranetDomainRequest
 //
@@ -2411,7 +2411,7 @@ func (client *Client) DeleteApiStageVariableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an application.
+// Deletes a specified app.
 //
 // Description:
 //
@@ -2671,7 +2671,7 @@ func (client *Client) DeleteBackendModelWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除自定义数据集
+// Deletes a custom dataset.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -2991,7 +2991,7 @@ func (client *Client) DeleteIpControlWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Delete the specified log configuration.
+// Deletes a log configuration.
 //
 // @param request - DeleteLogConfigRequest
 //
@@ -3429,7 +3429,7 @@ func (client *Client) DeleteTrafficSpecialControlWithContext(ctx context.Context
 
 // Summary:
 //
-// Publishes an API to an environment.
+// Publishes an API to a specified environment.
 //
 // Description:
 //
@@ -3497,7 +3497,7 @@ func (client *Client) DeployApiWithContext(ctx context.Context, request *DeployA
 
 // Summary:
 //
-// 查询批量下线API任务
+// Queries the progress of an API unpublishing task.
 //
 // @param request - DescribeAbolishApiTaskRequest
 //
@@ -5175,7 +5175,7 @@ func (client *Client) DescribeApisByVpcAccessWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries APIs by application. The environment information is also returned.
+// Queries APIs by application and returns the result by environment.
 //
 // @param request - DescribeApisWithStageNameIntegratedByAppRequest
 //
@@ -7324,6 +7324,14 @@ func (client *Client) DescribeInstancesWithContext(ctx context.Context, request 
 		query["Language"] = request.Language
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.SecurityToken) {
 		query["SecurityToken"] = request.SecurityToken
 	}
@@ -7809,7 +7817,7 @@ func (client *Client) DescribePluginGroupsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询插件列表
+// Describes the plug-in modes supported by API Gateway.
 //
 // @param request - DescribePluginSchemasRequest
 //
@@ -7987,7 +7995,7 @@ func (client *Client) DescribePluginsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the plug-ins that are bound to a running API in an environment.
+// Queries the plug-ins that are bound to a running API in a specified environment.
 //
 // Description:
 //
@@ -8217,7 +8225,7 @@ func (client *Client) DescribePurchasedApiGroupsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries APIs that are purchased from Alibaba Cloud Marketplace.
+// Queries the APIs purchased in the Alibaba Cloud Marketplace.
 //
 // @param request - DescribePurchasedApisRequest
 //
@@ -8703,7 +8711,7 @@ func (client *Client) DescribeTrafficControlsByApiWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询批量更新API后端元定结果
+// Queries the update results of associated published APIs after the definition of a backend service is modified in an environment.
 //
 // @param request - DescribeUpdateBackendTaskRequest
 //
@@ -8751,7 +8759,7 @@ func (client *Client) DescribeUpdateBackendTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询更新VPC授权的任务
+// Queries the update progress of an API that is being published after its associated VPC access authorization is updated.
 //
 // @param request - DescribeUpdateVpcInfoTaskRequest
 //
@@ -9035,7 +9043,7 @@ func (client *Client) DetachGroupPluginWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 解绑插件
+// Unbinds a plug-in from an API.
 //
 // @param request - DetachPluginRequest
 //
@@ -9343,7 +9351,7 @@ func (client *Client) EnableInstanceAccessControlWithContext(ctx context.Context
 
 // Summary:
 //
-// 导出OAS
+// Exports APIs based on OpenAPI Specification (OAS).
 //
 // @param tmpReq - ExportOASRequest
 //
@@ -9421,7 +9429,7 @@ func (client *Client) ExportOASWithContext(ctx context.Context, tmpReq *ExportOA
 
 // Summary:
 //
-// Imports APIs based on the OAS standard.
+// Imports OpenAPI Specification (OAS)-compliant data to create an API.
 //
 // @param request - ImportOASRequest
 //
@@ -9887,7 +9895,7 @@ func (client *Client) ModifyApiWithContext(ctx context.Context, request *ModifyA
 
 // Summary:
 //
-// Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+// This API operation is used to modify the draft definition of an API. It is different from the ModifyApi operation in that it does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you need to only specify the value of AuthType, which is APP.
 //
 // @param request - ModifyApiConfigurationRequest
 //
@@ -10445,7 +10453,7 @@ func (client *Client) ModifyAppWithContext(ctx context.Context, request *ModifyA
 
 // Summary:
 //
-// 修改后端服务
+// Modifies the basic information of a backend service, such as name and description. The backend service type cannot be modified once the backend service is created.
 //
 // @param request - ModifyBackendRequest
 //
@@ -10505,7 +10513,7 @@ func (client *Client) ModifyBackendWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// 修改后端服务在环境上的定义
+// Modifies the definition of a backend service in the environment. After the modification, the backend paths of the APIs that use the backend service in the same environment will be updated at the same time automatically. You do not need to manually publish the APIs again.
 //
 // @param request - ModifyBackendModelRequest
 //
@@ -10629,7 +10637,7 @@ func (client *Client) ModifyDatasetWithContext(ctx context.Context, request *Mod
 
 // Summary:
 //
-// Modifies the expiration time and description of a data entry in a custom dataset.
+// Modifies the timeout period and description of a data entry in a custom dataset.
 //
 // @param request - ModifyDatasetItemRequest
 //
@@ -11429,7 +11437,7 @@ func (client *Client) ModifyTrafficControlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+// Modifies the information of a VPC access authorization and updates the metadata of the associated API.
 //
 // @param request - ModifyVpcAccessAndUpdateApisRequest
 //
@@ -11615,7 +11623,7 @@ func (client *Client) ReactivateDomainWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除访问控制策略中IP条目
+// This feature provides instance-level access control for dedicated instances. Deletes an IP address entry from an access control policy.
 //
 // @param request - RemoveAccessControlListEntryRequest
 //
@@ -11795,7 +11803,7 @@ func (client *Client) RemoveApisAuthoritiesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+// Revokes the access permissions on a specified API from multiple apps. In this case, multiple apps map to a single API.
 //
 // Description:
 //
@@ -12115,7 +12123,7 @@ func (client *Client) RemoveTrafficControlApisWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes a VPC authorization without unpublishing the associated APIs.
+// Deletes a VPC access authorization without unpublishing the associated APIs.
 //
 // Description:
 //
@@ -12183,7 +12191,7 @@ func (client *Client) RemoveVpcAccessWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 删除VPC授权并下线关联API
+// Deletes a VPC access authorization and unpublishes the associated API.
 //
 // @param request - RemoveVpcAccessAndAbolishApisRequest
 //
@@ -12295,7 +12303,7 @@ func (client *Client) ResetAppCodeWithContext(ctx context.Context, request *Rese
 
 // Summary:
 //
-// Resets the key of an application.
+// Resets the key for an app.
 //
 // Description:
 //
@@ -12359,7 +12367,7 @@ func (client *Client) ResetAppSecretWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 根据APP生成SDK
+// Generates an SDK by application.
 //
 // @param request - SdkGenerateByAppRequest
 //
@@ -12463,7 +12471,7 @@ func (client *Client) SdkGenerateByAppForRegionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 根据分组生成SDK
+// Generates an SDK by API group.
 //
 // @param request - SdkGenerateByGroupRequest
 //
@@ -12515,7 +12523,7 @@ func (client *Client) SdkGenerateByGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 修改访问控制策略的名称
+// This feature provides instance-level access control for dedicated instances. Modifies the name of an access control policy.
 //
 // @param request - SetAccessControlListAttributeRequest
 //
@@ -13503,7 +13511,7 @@ func (client *Client) SwitchApiWithContext(ctx context.Context, request *SwitchA
 
 // Summary:
 //
-// Creates a tag-resource relationship.
+// Adds user tags to resources.
 //
 // Description:
 //

@@ -21,8 +21,7 @@ type DescribePluginTemplatesResponseBody struct {
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The templates.
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Templates *DescribePluginTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Struct"`
 }
 
@@ -96,36 +95,11 @@ func (s *DescribePluginTemplatesResponseBodyTemplates) Validate() error {
 }
 
 type DescribePluginTemplatesResponseBodyTemplatesTemplate struct {
-	// The description.
-	//
-	// example:
-	//
-	// balabala
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The document anchor point.
-	//
-	// example:
-	//
-	// anchor
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DocumentAnchor *string `json:"DocumentAnchor,omitempty" xml:"DocumentAnchor,omitempty"`
-	// The ID of the document.
-	//
-	// example:
-	//
-	// 41079
-	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
-	// The sample.
-	//
-	// example:
-	//
-	// 1
-	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// The title of the plug-in template title.
-	//
-	// example:
-	//
-	// template title
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	DocumentId     *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	Sample         *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribePluginTemplatesResponseBodyTemplatesTemplate) String() string {

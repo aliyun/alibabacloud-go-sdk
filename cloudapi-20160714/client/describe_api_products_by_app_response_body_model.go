@@ -22,7 +22,6 @@ type iDescribeApiProductsByAppResponseBody interface {
 }
 
 type DescribeApiProductsByAppResponseBody struct {
-	// The information about API products.
 	ApiProductInfoList *DescribeApiProductsByAppResponseBodyApiProductInfoList `json:"ApiProductInfoList,omitempty" xml:"ApiProductInfoList,omitempty" type:"Struct"`
 	// The page number. Default value: 1.
 	//
@@ -147,11 +146,6 @@ func (s *DescribeApiProductsByAppResponseBodyApiProductInfoList) Validate() erro
 }
 
 type DescribeApiProductsByAppResponseBodyApiProductInfoListApiProductInfo struct {
-	// The ID of the API product.
-	//
-	// example:
-	//
-	// 117b7a64a8b3f064eaa4a47ac62aac5e
 	ApiProductId *string `json:"ApiProductId,omitempty" xml:"ApiProductId,omitempty"`
 }
 

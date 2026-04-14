@@ -53,12 +53,7 @@ type UntagResourcesRequest struct {
 	// example:
 	//
 	// apiGroup
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 0f96f124-1276-4f81-b52b-c554240beb4c
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tag keys of the resource.
 	//

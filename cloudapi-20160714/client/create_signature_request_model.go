@@ -20,11 +20,6 @@ type iCreateSignatureRequest interface {
 }
 
 type CreateSignatureRequest struct {
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// fa876ffb-caab-4f0a-93b3-3409f2fa5199
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The Key value of the key. The value must be 6 to 20 characters in length and can contain letters, digits, and underscores (_). It must start with a letter.
 	//

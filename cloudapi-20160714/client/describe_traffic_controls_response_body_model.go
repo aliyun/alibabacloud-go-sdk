@@ -45,8 +45,7 @@ type DescribeTrafficControlsResponseBody struct {
 	// example:
 	//
 	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The returned throttling policy information. It is an array consisting of TrafficControl data.
+	TotalCount      *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	TrafficControls *DescribeTrafficControlsResponseBodyTrafficControls `json:"TrafficControls,omitempty" xml:"TrafficControls,omitempty" type:"Struct"`
 }
 
@@ -147,68 +146,16 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControls) Validate() error {
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl struct {
-	// The default throttling value for each API.
-	//
-	// example:
-	//
-	// 20000
-	ApiDefault *int32 `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
-	// The default throttling value for each app.
-	//
-	// example:
-	//
-	// 8000
-	AppDefault *int32 `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
-	// The creation time (UTC) of the throttling policy.
-	//
-	// example:
-	//
-	// 2016-01-27T10:19:39Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the throttling policy.
-	//
-	// example:
-	//
-	// test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last modification time (UTC) of the throttling policy.
-	//
-	// example:
-	//
-	// 2016-01-27T10:34:38Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The returned information about a special throttling policy. It is an array consisting of SpecialPolicy data.
-	SpecialPolicies *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPolicies `json:"SpecialPolicies,omitempty" xml:"SpecialPolicies,omitempty" type:"Struct"`
-	// The ID of the throttling policy.
-	//
-	// example:
-	//
-	// cfed6c970d45481dbe136d6b5ac68c41
-	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
-	// The name of the throttling policy.
-	//
-	// example:
-	//
-	// wulingtestq1
-	TrafficControlName *string `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
-	// The unit to be used in the throttling policy. Valid values:
-	//
-	// 	- MINUTE
-	//
-	// 	- HOUR
-	//
-	// 	- DAY
-	//
-	// example:
-	//
-	// Minute
-	TrafficControlUnit *string `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
-	// The default throttling value for each user.
-	//
-	// example:
-	//
-	// 15000
-	UserDefault *int32 `json:"UserDefault,omitempty" xml:"UserDefault,omitempty"`
+	ApiDefault         *int32                                                                           `json:"ApiDefault,omitempty" xml:"ApiDefault,omitempty"`
+	AppDefault         *int32                                                                           `json:"AppDefault,omitempty" xml:"AppDefault,omitempty"`
+	CreatedTime        *string                                                                          `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description        *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime       *string                                                                          `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	SpecialPolicies    *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPolicies `json:"SpecialPolicies,omitempty" xml:"SpecialPolicies,omitempty" type:"Struct"`
+	TrafficControlId   *string                                                                          `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
+	TrafficControlName *string                                                                          `json:"TrafficControlName,omitempty" xml:"TrafficControlName,omitempty"`
+	TrafficControlUnit *string                                                                          `json:"TrafficControlUnit,omitempty" xml:"TrafficControlUnit,omitempty"`
+	UserDefault        *int32                                                                           `json:"UserDefault,omitempty" xml:"UserDefault,omitempty"`
 }
 
 func (s DescribeTrafficControlsResponseBodyTrafficControlsTrafficControl) String() string {
@@ -353,18 +300,8 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicy struct {
-	// The type of the special throttling policy. Valid values:
-	//
-	// 	- **APP**
-	//
-	// 	- **USER**
-	//
-	// example:
-	//
-	// USER
-	SpecialType *string `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
-	// The returned information about a special throttling policy. It is an array consisting of Special data.
-	Specials *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecials `json:"Specials,omitempty" xml:"Specials,omitempty" type:"Struct"`
+	SpecialType *string                                                                                               `json:"SpecialType,omitempty" xml:"SpecialType,omitempty"`
+	Specials    *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecials `json:"Specials,omitempty" xml:"Specials,omitempty" type:"Struct"`
 }
 
 func (s DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicy) String() string {
@@ -437,18 +374,8 @@ func (s *DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecial
 }
 
 type DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecialsSpecial struct {
-	// The AppId or user account corresponding to SpecialType.
-	//
-	// example:
-	//
-	// test_wg@aliyun.com
-	SpecialKey *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
-	// The throttling value.
-	//
-	// example:
-	//
-	// 100
-	TrafficValue *int32 `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
+	SpecialKey   *string `json:"SpecialKey,omitempty" xml:"SpecialKey,omitempty"`
+	TrafficValue *int32  `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
 }
 
 func (s DescribeTrafficControlsResponseBodyTrafficControlsTrafficControlSpecialPoliciesSpecialPolicySpecialsSpecial) String() string {

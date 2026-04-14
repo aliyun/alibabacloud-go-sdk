@@ -22,7 +22,6 @@ type iDescribeAppAttributesResponseBody interface {
 }
 
 type DescribeAppAttributesResponseBody struct {
-	// The returned app information. It is an array that consists of AppAttribute data.
 	Apps *DescribeAppAttributesResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,45 +146,14 @@ func (s *DescribeAppAttributesResponseBodyApps) Validate() error {
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttribute struct {
-	// The ID of the app.
-	//
-	// example:
-	//
-	// 20112314518278
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the app.
-	//
-	// example:
-	//
-	// CreateApptest
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The creation time (UTC) of the app.
-	//
-	// example:
-	//
-	// 2016-07-31T04:10:19Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the app.
-	//
-	// example:
-	//
-	// App test
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// 扩展信息
-	//
-	// example:
-	//
-	// 110461946884
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The modification time (UTC) of the app.
-	//
-	// example:
-	//
-	// 2016-07-31T04:10:19Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The tags.
-	Tags *DescribeAppAttributesResponseBodyAppsAppAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AppId        *int64                                                 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName      *string                                                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreatedTime  *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Disabled     *bool                                                  `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Extend       *string                                                `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Tags         *DescribeAppAttributesResponseBodyAppsAppAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeAppAttributesResponseBodyAppsAppAttribute) String() string {
@@ -312,17 +280,7 @@ func (s *DescribeAppAttributesResponseBodyAppsAppAttributeTags) Validate() error
 }
 
 type DescribeAppAttributesResponseBodyAppsAppAttributeTagsTagInfo struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// appid
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// 123
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

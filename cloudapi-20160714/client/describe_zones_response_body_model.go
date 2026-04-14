@@ -21,13 +21,8 @@ type DescribeZonesResponseBody struct {
 	// example:
 	//
 	// 9324B68F-9863-5722-A0FD-0798E2B02A0E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zones available in the current region.
-	//
-	// example:
-	//
-	// {\\"Zone\\": [{\\"ZoneId\\": \\"cn-hangzhou-i\\"}]}
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -100,18 +95,8 @@ func (s *DescribeZonesResponseBodyZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// The name of the zone.
-	//
-	// example:
-	//
-	// China (Hangzhou) Multi-zone 2(j,g)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-MAZ2(j,g)
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {

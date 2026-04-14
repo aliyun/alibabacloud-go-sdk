@@ -22,7 +22,6 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
-	// The information about the instances.
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,286 +146,50 @@ func (s *DescribeInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
-	// The ACL ID.
-	//
-	// example:
-	//
-	// acl-uf6f9zfxfxtp5j9ng3yv4
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the access control list (ACL).
-	//
-	// example:
-	//
-	// test
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// Indicates whether the ACL is enabled. Valid values:
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// example:
-	//
-	// on
-	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The ACL type. Valid values:
-	//
-	// 	- black: blacklist
-	//
-	// 	- white: whitelist
-	//
-	// example:
-	//
-	// white
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The egress IP address.
-	//
-	// example:
-	//
-	// 10.0.0.1
-	ClassicEgressAddress *string `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
-	// The internal CIDR block of the user\\"s VPC that can be accessed if the instance is a VPC integration instance.
-	//
-	// example:
-	//
-	// [\\"172.16.0.0/24\\",\\"172.16.1.0/24\\"]
-	ConnectCidrBlocks *string `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
-	// The ID of the user\\"s VPC if the instance is a VPC integration instance.
-	//
-	// example:
-	//
-	// vpc-m5eo7khlb4h4f8y9egsdg
-	ConnectVpcId *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
-	// The time when the instance was created.
-	//
-	// example:
-	//
-	// 2021-10-22 15:36:53.0
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The type of the dedicated instance. Valid values:
-	//
-	// 	- vpc_connect: VPC integration instance
-	//
-	// 	- normal: conventional dedicated instance
-	//
-	// example:
-	//
-	// vpc_connect
-	DedicatedInstanceType *string `json:"DedicatedInstanceType,omitempty" xml:"DedicatedInstanceType,omitempty"`
-	// Indicates whether outbound IPv6 traffic is supported.
-	//
-	// example:
-	//
-	// true
-	EgressIpv6Enable *bool `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
-	// The time when the instance expires.
-	//
-	// example:
-	//
-	// 1659801600000
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The HTTPS security policy.
-	//
-	// example:
-	//
-	// HTTPS2_TLS1_2
-	HttpsPolicies *string `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
-	// The ID of the IPv6 ACL.
-	//
-	// example:
-	//
-	// acl-124resFfs235
-	IPV6AclId *string `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
-	// The name of the IPv6 ACL.
-	//
-	// example:
-	//
-	// testIPV6
-	IPV6AclName *string `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
-	// Indicates whether the IPv6 ACL is enabled. Valid values:
-	//
-	// 	- **on**
-	//
-	// 	- **off**
-	//
-	// example:
-	//
-	// on
-	IPV6AclStatus *string `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
-	// The type of the IPv6 ACL. Valid values:
-	//
-	// 	- black: blacklist
-	//
-	// 	- white: whitelist
-	//
-	// example:
-	//
-	// black
-	IPV6AclType *string `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- PrePaid: subscription
-	//
-	// 	- PayAsYouGo: pay-as-you-go
-	//
-	// example:
-	//
-	// PrePaid
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The CIDR block of the dedicated instance.
-	//
-	// 	- 172.16.0.0/12
-	//
-	// 	- 192.168.0.0/16
-	//
-	// example:
-	//
-	// 192.168.0.0/16
-	InstanceCidrBlock *string `json:"InstanceCidrBlock,omitempty" xml:"InstanceCidrBlock,omitempty"`
-	// The ID of the cluster to which the dedicated instance cluster belongs.
-	//
-	// example:
-	//
-	// apigateway-cluster-sh-1523cafbgffd
-	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// api-shared-vpc-020
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// test
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The requests per second (RPS) limit on the instance.
-	//
-	// example:
-	//
-	// 500
-	InstanceRpsLimit *int32 `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
-	// The instance specification.
-	//
-	// example:
-	//
-	// api.s1.small
-	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The instance specification details.
-	InstanceSpecAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
-	// The instance type. Valid values:
-	//
-	// 	- VPC_SHARED: shared instance (VPC)
-	//
-	// 	- VPC_DEDICATED: dedicated instance (VPC)
-	//
-	// example:
-	//
-	// VPC_SHARED
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The outbound public IP address.
-	//
-	// example:
-	//
-	// 47.241.89.244
-	InternetEgressAddress *string `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
-	// The internal CIDR block that is allowed to access the API Gateway instance.
-	//
-	// example:
-	//
-	// [\\"172.36.0.0/16\\",\\"172.31.16.0/20\\"]
-	IntranetSegments *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
-	// The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 01:00Z
-	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 22:00Z
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The network information of the user\\"s VPC if the instance is a VPC integration instance.
+	AclId                      *string                                                                            `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName                    *string                                                                            `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclStatus                  *string                                                                            `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AclType                    *string                                                                            `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ClassicEgressAddress       *string                                                                            `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
+	ConnectCidrBlocks          *string                                                                            `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
+	ConnectVpcId               *string                                                                            `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
+	CreatedTime                *string                                                                            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DedicatedInstanceType      *string                                                                            `json:"DedicatedInstanceType,omitempty" xml:"DedicatedInstanceType,omitempty"`
+	EgressIpv6Enable           *bool                                                                              `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	ExpiredTime                *string                                                                            `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HttpsPolicies              *string                                                                            `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	IPV6AclId                  *string                                                                            `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
+	IPV6AclName                *string                                                                            `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
+	IPV6AclStatus              *string                                                                            `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
+	IPV6AclType                *string                                                                            `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
+	InstanceChargeType         *string                                                                            `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceCidrBlock          *string                                                                            `json:"InstanceCidrBlock,omitempty" xml:"InstanceCidrBlock,omitempty"`
+	InstanceClusterId          *string                                                                            `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	InstanceId                 *string                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName               *string                                                                            `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRpsLimit           *int32                                                                             `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
+	InstanceSpec               *string                                                                            `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceSpecAttributes     *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes     `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
+	InstanceType               *string                                                                            `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetEgressAddress      *string                                                                            `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	IntranetSegments           *string                                                                            `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	MaintainEndTime            *string                                                                            `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime          *string                                                                            `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	NetworkInterfaceAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes `json:"NetworkInterfaceAttributes,omitempty" xml:"NetworkInterfaceAttributes,omitempty" type:"Struct"`
-	// The new VPC egress CIDR block.
-	//
-	// example:
-	//
-	// 100.104.253.0/26
-	NewVpcEgressAddress *string `json:"NewVpcEgressAddress,omitempty" xml:"NewVpcEgressAddress,omitempty"`
-	// The private DNS list.
-	PrivateDnsList *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList `json:"PrivateDnsList,omitempty" xml:"PrivateDnsList,omitempty" type:"Struct"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance status.
-	//
-	// example:
-	//
-	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether IPv6 traffic is supported.
-	//
-	// example:
-	//
-	// true
-	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
-	// The tags of the instance.
-	Tags *DescribeInstancesResponseBodyInstancesInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The user VPC ID.
-	//
-	// example:
-	//
-	// vpc-t***hx****yu9****t0g4
-	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
-	// The user vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-t4***eh****d7q****i2f
-	UserVswitchId *string `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
-	// The VPC egress CIDR block.
-	//
-	// example:
-	//
-	// 100.104.254.0/26
-	VpcEgressAddress *string `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
-	// Indicates whether VPC access is enabled.
-	//
-	// example:
-	//
-	// true
-	VpcIntranetEnable *bool `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
-	// The ID of the account to which the VPC-based instance belongs.
-	//
-	// example:
-	//
-	// 1408453217640291****
-	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// Indicates whether virtual private cloud (VPC) Server Load Balancer (SLB) is enabled.
-	//
-	// example:
-	//
-	// true
-	VpcSlbIntranetEnable *bool `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-MAZ5(g,h)
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone.
-	//
-	// example:
-	//
-	// Multi-Availability Zone 3(b,c,a)
-	ZoneLocalName *string `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
+	NewVpcEgressAddress        *string                                                                            `json:"NewVpcEgressAddress,omitempty" xml:"NewVpcEgressAddress,omitempty"`
+	PrivateDnsList             *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList             `json:"PrivateDnsList,omitempty" xml:"PrivateDnsList,omitempty" type:"Struct"`
+	RegionId                   *string                                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                     *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportIpv6                *bool                                                                              `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	Tags                       *DescribeInstancesResponseBodyInstancesInstanceAttributeTags                       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UserVpcId                  *string                                                                            `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	UserVswitchId              *string                                                                            `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	VpcEgressAddress           *string                                                                            `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
+	VpcIntranetEnable          *bool                                                                              `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VpcOwnerId                 *int64                                                                             `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	VpcSlbIntranetEnable       *bool                                                                              `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+	ZoneId                     *string                                                                            `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneLocalName              *string                                                                            `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) String() string {
@@ -892,18 +655,8 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute struct {
-	// The variable name.
-	//
-	// example:
-	//
-	// SLA
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The variable value.
-	//
-	// example:
-	//
-	// 99.95%
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) String() string {
@@ -971,30 +724,10 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterface
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute struct {
-	// The CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 192.168.17.0/24
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The security group ID. Services in the same security group can access each other.
-	//
-	// example:
-	//
-	// sg-2zeehz13zcyj1kfk3o85
+	CidrBlock       *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-2zeqals6rbj51bhjn8b89
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-shenzhen-d
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	VswitchId       *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute) String() string {
@@ -1105,17 +838,7 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeTags) Validate()
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeTagsTagInfo struct {
-	// The tag key of the instance.
-	//
-	// example:
-	//
-	// Cookie
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the instance.
-	//
-	// example:
-	//
-	// 240
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

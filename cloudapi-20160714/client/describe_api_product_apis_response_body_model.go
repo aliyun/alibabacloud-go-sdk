@@ -22,7 +22,6 @@ type iDescribeApiProductApisResponseBody interface {
 }
 
 type DescribeApiProductApisResponseBody struct {
-	// The information about the returned APIs.
 	ApiInfoList *DescribeApiProductApisResponseBodyApiInfoList `json:"ApiInfoList,omitempty" xml:"ApiInfoList,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,66 +146,15 @@ func (s *DescribeApiProductApisResponseBodyApiInfoList) Validate() error {
 }
 
 type DescribeApiProductApisResponseBodyApiInfoListApiInfo struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// dd46297680014a7e8e318308f3345951
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// testApi
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The API description.
-	//
-	// example:
-	//
-	// test
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 1e377f18142345dfb700cd8911c2463a
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// testApiGroup
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The request method of the API.
-	//
-	// example:
-	//
-	// POST
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /test
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The ID of the region where the API is deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The environment to which the API is published. Valid values:
-	//
-	// 	- **RELEASE**: the production environment
-	//
-	// 	- **PRE**: the staging environment
-	//
-	// 	- **TEST**: the test environment
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method      *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiProductApisResponseBodyApiInfoListApiInfo) String() string {

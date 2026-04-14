@@ -22,7 +22,6 @@ type iDescribeAppsByApiProductResponseBody interface {
 }
 
 type DescribeAppsByApiProductResponseBody struct {
-	// The information about authorized applications.
 	AuthorizedApps *DescribeAppsByApiProductResponseBodyAuthorizedApps `json:"AuthorizedApps,omitempty" xml:"AuthorizedApps,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,42 +146,12 @@ func (s *DescribeAppsByApiProductResponseBodyAuthorizedApps) Validate() error {
 }
 
 type DescribeAppsByApiProductResponseBodyAuthorizedAppsAuthorizedApp struct {
-	// The application ID.
-	//
-	// example:
-	//
-	// 110982419
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
-	//
-	// example:
-	//
-	// APP_02580_DEV
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The expiration time of the authorization. The time is in GMT. An empty value indicates that the authorization does not expire.
-	//
-	// example:
-	//
-	// 2023-06-17T03:41:53Z
-	AuthValidTime *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
-	// The time when the authorization was created. The time is in GMT.
-	//
-	// example:
-	//
-	// 2016-07-21T06:17:20Z
+	AppId          *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AuthValidTime  *string `json:"AuthValidTime,omitempty" xml:"AuthValidTime,omitempty"`
 	AuthorizedTime *string `json:"AuthorizedTime,omitempty" xml:"AuthorizedTime,omitempty"`
-	// The authorization description.
-	//
-	// example:
-	//
-	// Test share with nsc qiming
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extended information.
-	//
-	// example:
-	//
-	// extra info
-	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Extend         *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 }
 
 func (s DescribeAppsByApiProductResponseBodyAuthorizedAppsAuthorizedApp) String() string {

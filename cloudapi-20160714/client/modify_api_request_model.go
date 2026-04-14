@@ -121,7 +121,12 @@ type ModifyApiRequest struct {
 	// example:
 	//
 	// 0d105f80a8f340408bd34954d4e4ff22
-	BackendId          *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The constant parameters sent by API Gateway to the backend service.
+	//
+	// example:
+	//
+	// [{\\"ServiceParameterName\\":\\"HOST\\",\\"ConstantValue\\":\\"uat-cgi.smarket.net.cn\\",\\"Location\\":\\"HEAD\\",\\"Description\\":\\"\\\\u540e\\\\u7aefVPC-HOST\\"}]
 	ConstantParameters *string `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty"`
 	// The description of the API. The description can be up to 180 characters in length.
 	//
@@ -142,8 +147,20 @@ type ModifyApiRequest struct {
 	// example:
 	//
 	// true
-	DisableInternet  *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	// The sample error codes returned by the backend service.
+	//
+	// For more information, see [ErrorCodeSample](https://help.aliyun.com/document_detail/44392.html).
+	//
+	// example:
+	//
+	// [{"Code":"400","Message":"Missing the userId","Description":"param invalid"}]
 	ErrorCodeSamples *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
+	// The sample error response from the backend service. This value is used only to generate documents. It does not affect the returned result.
+	//
+	// example:
+	//
+	// {"errorCode":"fail","errorMessage":"param invalid"}
 	FailResultSample *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
 	// 	- Specifies whether to set DisableInternet to **true*	- to limit API calls to within the VPC.
 	//
@@ -178,7 +195,14 @@ type ModifyApiRequest struct {
 	// example:
 	//
 	// {"RequestProtocol":"HTTP","RequestHttpMethod":"GET","RequestPath":"/v3/getUserTest/[userId]","BodyFormat":"FORM","PostBodyDescription":""}
-	RequestConfig     *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
+	RequestConfig *string `json:"RequestConfig,omitempty" xml:"RequestConfig,omitempty"`
+	// The parameters of API requests sent by the consumer to API Gateway.
+	//
+	// For more information, see [RequestParameter](https://help.aliyun.com/document_detail/43986.html).
+	//
+	// example:
+	//
+	// [{\\\\"ParameterName\\\\": \\\\"CaAppId\\\\", \\\\"Location\\\\": \\\\"HEAD\\\\", \\\\"ServiceParameterName\\\\": \\\\"x-ca-appid\\\\"}]
 	RequestParameters *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
 	// 	- Specifies whether to set **ForceNonceCheck*	- to **true*	- to force the check of X-Ca-Nonce during the request. This is the unique identifier of the request and is generally identified by UUID. After receiving this parameter, API Gateway verifies the validity of this parameter. The same value can be used only once within 15 minutes. This helps prevent replay attacks.
 	//
@@ -187,9 +211,19 @@ type ModifyApiRequest struct {
 	// example:
 	//
 	// {}
-	ResultBodyModel    *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
+	ResultBodyModel *string `json:"ResultBodyModel,omitempty" xml:"ResultBodyModel,omitempty"`
+	// The descriptions of API responses.
+	//
+	// example:
+	//
+	// []
 	ResultDescriptions *string `json:"ResultDescriptions,omitempty" xml:"ResultDescriptions,omitempty"`
-	ResultSample       *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	// The sample response that is returned from the backend service. This value is used only to generate documents. It does not affect the actually returned result.
+	//
+	// example:
+	//
+	// 200
+	ResultSample *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
 	// The sample response from the backend service.
 	//
 	// example:
@@ -204,10 +238,29 @@ type ModifyApiRequest struct {
 	// example:
 	//
 	// {"ServiceProtocol":"HTTP","ServiceHttpMethod":"GET","ServiceAddress":"http://www.customerdomain.com","ServiceTimeout":"1000","ServicePath":"/v3/getUserTest/[userId]"}
-	ServiceConfig        *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// The parameters of API requests sent by API Gateway to the back-end service.
+	//
+	// For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
+	//
+	// example:
+	//
+	// [{"ServiceParameterName":"age","Location":"Head","Type":"Number","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"sex","Location":"Query","Type":"String","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"userId","Location":"Path","Type":"Number","ParameterCatalog":"REQUEST"},{"ServiceParameterName":"clientIp","Location":"Head","Type":"String","ParameterCatalog":"SYSTEM"},{"ServiceParameterName":"constance","Location":"Head","Type":"String","ParameterCatalog":"CONSTANT"}]
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the back-end service.
+	//
+	// For more information, see [ServiceParameterMap](https://help.aliyun.com/document_detail/43989.html).
+	//
+	// example:
+	//
+	// [{"ServiceParameterName":"age","RequestParameterName":"age"},{"ServiceParameterName":"sex","RequestParameterName":"sex"},{"ServiceParameterName":"userId","RequestParameterName":"userId"},{"ServiceParameterName":"clientIp","RequestParameterName":"CaClientIp"},{"ServiceParameterName":"constance","RequestParameterName":"constance"}]
 	ServiceParametersMap *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
-	SystemParameters     *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
+	// The system parameters sent by API Gateway to the backend service.
+	//
+	// example:
+	//
+	// [{\\"ParameterName\\": \\"CaAppId\\", \\"Location\\": \\"HEAD\\", \\"ServiceParameterName\\": \\"x-ca-appid\\"}]
+	SystemParameters *string `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty"`
 	// Specifies whether the API is public. Valid values:
 	//
 	// 	- **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.

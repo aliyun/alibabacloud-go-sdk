@@ -22,7 +22,6 @@ type iDescribeHistoryApisResponseBody interface {
 }
 
 type DescribeHistoryApisResponseBody struct {
-	// The returned API information. It is an array consisting of ApiHisItems.
 	ApiHisItems *DescribeHistoryApisResponseBodyApiHisItems `json:"ApiHisItems,omitempty" xml:"ApiHisItems,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,76 +146,17 @@ func (s *DescribeHistoryApisResponseBodyApiHisItems) Validate() error {
 }
 
 type DescribeHistoryApisResponseBodyApiHisItemsApiHisItem struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// 5af418828f0344a3b588c0cc1331a3bc
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// v2_role_assign
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The time when the API was published. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2016-07-20T08:28:48Z
-	DeployedTime *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
-	// The API description.
-	//
-	// example:
-	//
-	// Creates an object
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The API group ID.
-	//
-	// example:
-	//
-	// 1084f9034c744137901057206b39d2b6
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group to which the API belongs.
-	//
-	// example:
-	//
-	// myGroup2
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The historical version of the API definition.
-	//
-	// example:
-	//
-	// 20210915101416294
+	ApiId          *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName        *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	DeployedTime   *string `json:"DeployedTime,omitempty" xml:"DeployedTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	HistoryVersion *string `json:"HistoryVersion,omitempty" xml:"HistoryVersion,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The environment alias.
-	//
-	// example:
-	//
-	// Online
-	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
-	// The environment name. Valid values:
-	//
-	// 	- **RELEASE**
-	//
-	// 	- **TEST**
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// Indicates whether an API version is effective. Valid values: ONLINE and OFFLINE.
-	//
-	// example:
-	//
-	// ONLINE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageAlias     *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
+	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeHistoryApisResponseBodyApiHisItemsApiHisItem) String() string {

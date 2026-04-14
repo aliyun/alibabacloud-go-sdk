@@ -22,7 +22,6 @@ type iDescribeIpControlsResponseBody interface {
 }
 
 type DescribeIpControlsResponseBody struct {
-	// The information about the ACL. The information is an array that consists of IpControlInfo data. The information does not include specific policies.
 	IpControlInfos *DescribeIpControlsResponseBodyIpControlInfos `json:"IpControlInfos,omitempty" xml:"IpControlInfos,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,48 +146,13 @@ func (s *DescribeIpControlsResponseBodyIpControlInfos) Validate() error {
 }
 
 type DescribeIpControlsResponseBodyIpControlInfosIpControlInfo struct {
-	// The time when the ACL was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-01-17T05:48:11Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the ACL.
-	//
-	// example:
-	//
-	// description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ACL.
-	//
-	// example:
-	//
-	// 7ea91319a34d48a09b5c9c871d9768b1
-	IpControlId *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
-	// The name of the ACL.
-	//
-	// example:
-	//
-	// testControl11
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IpControlId   *string `json:"IpControlId,omitempty" xml:"IpControlId,omitempty"`
 	IpControlName *string `json:"IpControlName,omitempty" xml:"IpControlName,omitempty"`
-	// The type of the ACL.
-	//
-	// example:
-	//
-	// ALLOW
 	IpControlType *string `json:"IpControlType,omitempty" xml:"IpControlType,omitempty"`
-	// The time when the ACL was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-01-17T06:00:38Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the region in which the ACL is deployed.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ModifiedTime  *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeIpControlsResponseBodyIpControlInfosIpControlInfo) String() string {

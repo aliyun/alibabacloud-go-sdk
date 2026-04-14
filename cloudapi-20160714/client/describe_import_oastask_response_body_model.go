@@ -20,29 +20,7 @@ type iDescribeImportOASTaskResponseBody interface {
 }
 
 type DescribeImportOASTaskResponseBody struct {
-	// The execution status of the subtask. Valid values:
-	//
-	// 	- RUNNING
-	//
-	// 	- WAIT
-	//
-	// 	- OVER
-	//
-	// 	- FAIL
-	//
-	// 	- CANCEL
-	ApiResults *DescribeImportOASTaskResponseBodyApiResults `json:"ApiResults,omitempty" xml:"ApiResults,omitempty" type:"Struct"`
-	// The execution status of the subtask. Valid values:
-	//
-	// 	- RUNNING
-	//
-	// 	- WAIT
-	//
-	// 	- OVER
-	//
-	// 	- FAIL
-	//
-	// 	- CANCEL
+	ApiResults   *DescribeImportOASTaskResponseBodyApiResults   `json:"ApiResults,omitempty" xml:"ApiResults,omitempty" type:"Struct"`
 	ModelResults *DescribeImportOASTaskResponseBodyModelResults `json:"ModelResults,omitempty" xml:"ModelResults,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -155,63 +133,13 @@ func (s *DescribeImportOASTaskResponseBodyApiResults) Validate() error {
 }
 
 type DescribeImportOASTaskResponseBodyApiResultsApiResult struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// c5a0c2900ff746b789c007545be22fb8
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// GetByCreatorIdUsingGET
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The API description.
-	//
-	// example:
-	//
-	// release data api 411055691505041
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The cause of the failure if the API fails to be imported.
-	//
-	// example:
-	//
-	// Internal Error
+	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The API group ID.
-	//
-	// example:
-	//
-	// 736508d885074167ba8fbce3bc95ea0b
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The HTTP request HTTP method of the API.
-	//
-	// example:
-	//
-	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /creator/getByCreatorId
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The execution status of the subtask. Valid values:
-	//
-	// 	- RUNNING
-	//
-	// 	- WAIT
-	//
-	// 	- OVER
-	//
-	// 	- FAIL
-	//
-	// 	- CANCEL
-	//
-	// example:
-	//
-	// WAIT
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Method       *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
 }
 
@@ -334,45 +262,10 @@ func (s *DescribeImportOASTaskResponseBodyModelResults) Validate() error {
 }
 
 type DescribeImportOASTaskResponseBodyModelResultsModelResult struct {
-	// The cause of the failure if the model fails to be imported.
-	//
-	// example:
-	//
-	// Internal Error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The API group ID.
-	//
-	// example:
-	//
-	// 736508d885074167ba8fbce3bc95ea0b
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the imported model.
-	//
-	// example:
-	//
-	// 6b48d724c921415486e190c494dd6bf8
-	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The model name.
-	//
-	// example:
-	//
-	// Pet
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The execution status of the subtask. Valid values:
-	//
-	// 	- RUNNING
-	//
-	// 	- WAIT
-	//
-	// 	- OVER
-	//
-	// 	- FAIL
-	//
-	// 	- CANCEL
-	//
-	// example:
-	//
-	// FAIL
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelId      *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName    *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
 }
 

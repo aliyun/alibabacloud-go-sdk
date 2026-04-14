@@ -22,7 +22,6 @@ type iDescribeAppsResponseBody interface {
 }
 
 type DescribeAppsResponseBody struct {
-	// The returned app information. It is an array consisting of AppItem data.
 	Apps *DescribeAppsResponseBodyApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,23 +146,8 @@ func (s *DescribeAppsResponseBodyApps) Validate() error {
 }
 
 type DescribeAppsResponseBodyAppsAppItem struct {
-	// The ID of the app.
-	//
-	// example:
-	//
-	// 20112314518278
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the app.
-	//
-	// example:
-	//
-	// CreateApptest
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the app.
-	//
-	// example:
-	//
-	// App test
+	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 

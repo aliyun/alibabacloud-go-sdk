@@ -16,7 +16,6 @@ type iDescribeInstanceSlbConnectResponseBody interface {
 }
 
 type DescribeInstanceSlbConnectResponseBody struct {
-	// The list of concurrent connections in the instance.
 	InstanceSlbConnect *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect `json:"InstanceSlbConnect,omitempty" xml:"InstanceSlbConnect,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,29 +95,8 @@ func (s *DescribeInstanceSlbConnectResponseBodyInstanceSlbConnect) Validate() er
 }
 
 type DescribeInstanceSlbConnectResponseBodyInstanceSlbConnectMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- InstanceMaxConnection: the maximum number of connections
-	//
-	// 	- InstanceInactiveConnection: the number of inactive connections
-	//
-	// 	- InstanceActiveConnection: the number of active connections
-	//
-	// example:
-	//
-	// InstanceActiveConnection
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-09-15T15:07:06Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of concurrent connections in the instance.
-	//
-	// example:
-	//
-	// 12
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

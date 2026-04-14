@@ -16,7 +16,6 @@ type iDescribeInstanceTrafficResponseBody interface {
 }
 
 type DescribeInstanceTrafficResponseBody struct {
-	// The traffic consumed by the requests and responses in the instance.
 	InstanceTraffic *DescribeInstanceTrafficResponseBodyInstanceTraffic `json:"InstanceTraffic,omitempty" xml:"InstanceTraffic,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeInstanceTrafficResponseBodyInstanceTraffic) Validate() error {
 }
 
 type DescribeInstanceTrafficResponseBodyInstanceTrafficMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- inbound: traffic consumed by requests
-	//
-	// 	- outbound: traffic consumed by responses
-	//
-	// example:
-	//
-	// inbound
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-04-01T06:34:03Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The amount of traffic consumed by the requests and responses in the instance.
-	//
-	// example:
-	//
-	// 10
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

@@ -16,7 +16,6 @@ type iDescribeInstanceLatencyResponseBody interface {
 }
 
 type DescribeInstanceLatencyResponseBody struct {
-	// The list of average latencies in the instance.
 	InstanceLatency *DescribeInstanceLatencyResponseBodyInstanceLatency `json:"InstanceLatency,omitempty" xml:"InstanceLatency,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeInstanceLatencyResponseBodyInstanceLatency) Validate() error {
 }
 
 type DescribeInstanceLatencyResponseBodyInstanceLatencyMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- gatewayLatency API: the processing latency of API Gateway
-	//
-	// 	- latency: the processing latency of the backend service.
-	//
-	// example:
-	//
-	// latency
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-09-06T02:05:13Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The value of the average latency.
-	//
-	// example:
-	//
-	// 10
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

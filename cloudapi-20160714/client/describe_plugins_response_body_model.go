@@ -33,9 +33,8 @@ type DescribePluginsResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned information about the plug-in. It is an array consisting of PluginAttribute data.
-	Plugins *DescribePluginsResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
+	PageSize *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Plugins  *DescribePluginsResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -147,56 +146,15 @@ func (s *DescribePluginsResponseBodyPlugins) Validate() error {
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttribute struct {
-	// The creation time (UTC) of the plug-in.
-	//
-	// example:
-	//
-	// 2019-01-11T09:29:58Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The plug-in description.
-	//
-	// example:
-	//
-	// Throttling
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The last modification time (UTC) of the plug-in.
-	//
-	// example:
-	//
-	// 2019-01-11T09:29:58Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The definition statement of the plug-in.
-	//
-	// example:
-	//
-	// {"unit":"MINUTE","apiDefault":20}
-	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// The ID of the plug-in.
-	//
-	// example:
-	//
-	// 9a3f1a5279434f2ba74ccd91c295af9f
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The name of the plug-in.
-	//
-	// example:
-	//
-	// firstPlugin
-	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// The type of the plug-in.
-	//
-	// example:
-	//
-	// trafficControl
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// The region where the plug-in is located.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tags.
-	Tags *DescribePluginsResponseBodyPluginsPluginAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CreatedTime  *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	PluginData   *string                                                `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	PluginId     *string                                                `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginName   *string                                                `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginType   *string                                                `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RegionId     *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tags         *DescribePluginsResponseBodyPluginsPluginAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribePluginsResponseBodyPluginsPluginAttribute) String() string {
@@ -332,17 +290,7 @@ func (s *DescribePluginsResponseBodyPluginsPluginAttributeTags) Validate() error
 }
 
 type DescribePluginsResponseBodyPluginsPluginAttributeTagsTagInfo struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// testkey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// tetstvalue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -20,11 +20,6 @@ type iDeleteTrafficSpecialControlRequest interface {
 }
 
 type DeleteTrafficSpecialControlRequest struct {
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 7c51b234-48d3-44e1-9b36-e2ddccc738e3
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the app or Alibaba Cloud account. You can view your account ID on the [Account Management](https://account.console.aliyun.com/?spm=a2c4g.11186623.2.15.343130a8sDi8cO#/secure) page.
 	//

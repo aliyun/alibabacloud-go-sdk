@@ -16,7 +16,6 @@ type iDescribeGroupLatencyResponseBody interface {
 }
 
 type DescribeGroupLatencyResponseBody struct {
-	// The latency information.
 	LatencyPacket *DescribeGroupLatencyResponseBodyLatencyPacket `json:"LatencyPacket,omitempty" xml:"LatencyPacket,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeGroupLatencyResponseBodyLatencyPacket) Validate() error {
 }
 
 type DescribeGroupLatencyResponseBodyLatencyPacketMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- latency: the backend processing latency
-	//
-	// 	- gatewayLatency: the API Gateway processing latency
-	//
-	// example:
-	//
-	// latency
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The point in time when the latency data was collected. The format is YYYY-MM-DDThh:mm:ssZ.
-	//
-	// example:
-	//
-	// 2023-03-30T16:10:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The latency. Unit: ms.
-	//
-	// example:
-	//
-	// 100.0
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

@@ -22,7 +22,6 @@ type iDescribeAccessControlListAttributeResponseBody interface {
 }
 
 type DescribeAccessControlListAttributeResponseBody struct {
-	// The information about the access control policy.
 	AclEntrys *DescribeAccessControlListAttributeResponseBodyAclEntrys `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
 	// The ID of the access control policy.
 	//
@@ -147,18 +146,8 @@ func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) Validate() err
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
-	// The entry description.
-	//
-	// example:
-	//
-	// default
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The ACL entry.
-	//
-	// example:
-	//
-	// 192.168.1.0/24
-	AclEntryIp *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
+	AclEntryIp      *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) String() string {

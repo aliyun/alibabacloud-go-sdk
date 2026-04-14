@@ -22,7 +22,6 @@ type iDescribeModelsResponseBody interface {
 }
 
 type DescribeModelsResponseBody struct {
-	// The returned information about models. It is an array consisting of ModelDetail data.
 	ModelDetails *DescribeModelsResponseBodyModelDetails `json:"ModelDetails,omitempty" xml:"ModelDetails,omitempty" type:"Struct"`
 	// The page number of the page to return.
 	//
@@ -147,56 +146,15 @@ func (s *DescribeModelsResponseBodyModelDetails) Validate() error {
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetail struct {
-	// The time when the model was created.
-	//
-	// example:
-	//
-	// 2019-01-29T11:07:48Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The description of the model definition.
-	//
-	// example:
-	//
-	// Model Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group to which the model belongs.
-	//
-	// example:
-	//
-	// 30e792398d6c4569b04c0e53a3494381
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the model.
-	//
-	// example:
-	//
-	// 766c0b9538a04bdf974953b5576783ba
-	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// Test
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The URI of the model.
-	//
-	// example:
-	//
-	// https://apigateway.aliyun.com/models/30e792398d6c4569b04c0e53a3494381/766c0b9538a04bdf974953b5576783ba
-	ModelRef *string `json:"ModelRef,omitempty" xml:"ModelRef,omitempty"`
-	// The time when the model was last modified.
-	//
-	// example:
-	//
-	// 2019-01-29T11:07:48Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The definition of the model.
-	//
-	// example:
-	//
-	// {\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}
-	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The tags of the model.
-	Tags *DescribeModelsResponseBodyModelDetailsModelDetailTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CreatedTime  *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId      *string                                                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelId      *string                                                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName    *string                                                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelRef     *string                                                `json:"ModelRef,omitempty" xml:"ModelRef,omitempty"`
+	ModifiedTime *string                                                `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Schema       *string                                                `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	Tags         *DescribeModelsResponseBodyModelDetailsModelDetailTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeModelsResponseBodyModelDetailsModelDetail) String() string {
@@ -332,17 +290,7 @@ func (s *DescribeModelsResponseBodyModelDetailsModelDetailTags) Validate() error
 }
 
 type DescribeModelsResponseBodyModelDetailsModelDetailTagsTagInfo struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// ENV
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// ST4
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

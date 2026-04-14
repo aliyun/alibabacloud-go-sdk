@@ -16,7 +16,6 @@ type iDescribeGroupQpsResponseBody interface {
 }
 
 type DescribeGroupQpsResponseBody struct {
-	// The number of requests directed to the API group.
 	GroupQps *DescribeGroupQpsResponseBodyGroupQps `json:"GroupQps,omitempty" xml:"GroupQps,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeGroupQpsResponseBodyGroupQps) Validate() error {
 }
 
 type DescribeGroupQpsResponseBodyGroupQpsMonitorItem struct {
-	// The point in time.
-	//
-	// example:
-	//
-	// 2023-08-02T09:15:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of requests at the specified point in time.
-	//
-	// example:
-	//
-	// 17
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

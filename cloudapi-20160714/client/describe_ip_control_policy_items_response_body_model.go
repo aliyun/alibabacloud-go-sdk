@@ -22,7 +22,6 @@ type iDescribeIpControlPolicyItemsResponseBody interface {
 }
 
 type DescribeIpControlPolicyItemsResponseBody struct {
-	// The information about policies. The information is an array of IpControlPolicyItem data.
 	IpControlPolicyItems *DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems `json:"IpControlPolicyItems,omitempty" xml:"IpControlPolicyItems,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,35 +146,10 @@ func (s *DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItems) Validate(
 }
 
 type DescribeIpControlPolicyItemsResponseBodyIpControlPolicyItemsIpControlPolicyItem struct {
-	// The ID of the application.
-	//
-	// example:
-	//
-	// 11112
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IP addresses or CIDR blocks.
-	//
-	// example:
-	//
-	// 113.125.XX.XX;101.11.XX.XX
-	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The time when the policy was created. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-01-17T06:20:08Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the policy was modified. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-01-17T06:25:13Z
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CidrIp       *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the policy.
-	//
-	// example:
-	//
-	// P151617000829241
 	PolicyItemId *string `json:"PolicyItemId,omitempty" xml:"PolicyItemId,omitempty"`
 }
 

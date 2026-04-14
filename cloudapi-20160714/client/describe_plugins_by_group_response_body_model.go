@@ -33,9 +33,8 @@ type DescribePluginsByGroupResponseBody struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Returns information about the plugins
-	Plugins *DescribePluginsByGroupResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
+	PageSize *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Plugins  *DescribePluginsByGroupResponseBodyPlugins `json:"Plugins,omitempty" xml:"Plugins,omitempty" type:"Struct"`
 	// Request ID
 	//
 	// example:
@@ -147,54 +146,14 @@ func (s *DescribePluginsByGroupResponseBodyPlugins) Validate() error {
 }
 
 type DescribePluginsByGroupResponseBodyPluginsPluginAttribute struct {
-	// Creation time, in GMT
-	//
-	// example:
-	//
-	// 2024-12-20T02:05:57Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Plugin description
-	//
-	// example:
-	//
-	// traffic controll
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Last modified time, in GMT
-	//
-	// example:
-	//
-	// 2022-03-15T02:30:18Z
+	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// Plugin definition statement
-	//
-	// example:
-	//
-	// {\\"unit\\":\\"MINUTE\\",\\"apiDefault\\":20}
-	PluginData *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
-	// Plugin ID
-	//
-	// example:
-	//
-	// 5e204eeb4aa94c919a49f471ad3fc716
-	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Plugin name
-	//
-	// example:
-	//
-	// firstPlugin
-	PluginName *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
-	// Plugin type
-	//
-	// example:
-	//
-	// trafficControl
-	PluginType *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
-	// 插件所在Region
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PluginData   *string `json:"PluginData,omitempty" xml:"PluginData,omitempty"`
+	PluginId     *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginName   *string `json:"PluginName,omitempty" xml:"PluginName,omitempty"`
+	PluginType   *string `json:"PluginType,omitempty" xml:"PluginType,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribePluginsByGroupResponseBodyPluginsPluginAttribute) String() string {

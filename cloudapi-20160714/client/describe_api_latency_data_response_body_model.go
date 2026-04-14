@@ -16,7 +16,6 @@ type iDescribeApiLatencyDataResponseBody interface {
 }
 
 type DescribeApiLatencyDataResponseBody struct {
-	// The returned information about API call latency. It is an array consisting of MonitorItem data.
 	CallLatencys *DescribeApiLatencyDataResponseBodyCallLatencys `json:"CallLatencys,omitempty" xml:"CallLatencys,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeApiLatencyDataResponseBodyCallLatencys) Validate() error {
 }
 
 type DescribeApiLatencyDataResponseBodyCallLatencysMonitorItem struct {
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2016-07-28T08:20:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The value corresponding to the monitoring metric.
-	//
-	// example:
-	//
-	// 15
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

@@ -17,6 +17,10 @@ type iDescribeInstancesRequest interface {
 	GetInstanceType() *string
 	SetLanguage(v string) *DescribeInstancesRequest
 	GetLanguage() *string
+	SetPageNumber(v int32) *DescribeInstancesRequest
+	GetPageNumber() *int32
+	SetPageSize(v int32) *DescribeInstancesRequest
+	GetPageSize() *int32
 	SetSecurityToken(v string) *DescribeInstancesRequest
 	GetSecurityToken() *string
 	SetTag(v []*DescribeInstancesRequestTag) *DescribeInstancesRequest
@@ -48,7 +52,12 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// zh
-	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 500
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tag that is bound to the instance.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -78,6 +87,14 @@ func (s *DescribeInstancesRequest) GetLanguage() *string {
 	return s.Language
 }
 
+func (s *DescribeInstancesRequest) GetPageNumber() *int32 {
+	return s.PageNumber
+}
+
+func (s *DescribeInstancesRequest) GetPageSize() *int32 {
+	return s.PageSize
+}
+
 func (s *DescribeInstancesRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
@@ -103,6 +120,16 @@ func (s *DescribeInstancesRequest) SetInstanceType(v string) *DescribeInstancesR
 
 func (s *DescribeInstancesRequest) SetLanguage(v string) *DescribeInstancesRequest {
 	s.Language = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetPageNumber(v int32) *DescribeInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetPageSize(v int32) *DescribeInstancesRequest {
+	s.PageSize = &v
 	return s
 }
 

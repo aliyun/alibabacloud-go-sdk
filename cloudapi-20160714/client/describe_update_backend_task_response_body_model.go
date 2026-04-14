@@ -93,41 +93,14 @@ func (s *DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResults) Validate(
 }
 
 type DescribeUpdateBackendTaskResponseBodyApiUpdateBackendResultsApiUpdateBackendResult struct {
-	// example:
-	//
-	// checkin_linechart_today
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// example:
-	//
-	// 14faa7ba0572445685866ddb6a6f19da
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// example:
-	//
-	// c09b078bcb8f4ade9677bd8b18cdf43f
-	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
-	// example:
-	//
-	// Failed
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// example:
-	//
-	// 3013a55c0c44483f984d26df27120513
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// example:
-	//
-	// imotob1
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// example:
-	//
-	// d8f2f54f3309458b8aaceb36c01c2dd9
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// example:
-	//
-	// OVER
+	ApiName      *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid       *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	BackendId    *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	ErrorMsg     *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId      *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName    *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
 }
 

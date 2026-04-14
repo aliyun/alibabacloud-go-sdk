@@ -22,7 +22,6 @@ type iDescribeApisByAppResponseBody interface {
 }
 
 type DescribeApisByAppResponseBody struct {
-	// The API authorizations.
 	AppApiRelationInfos *DescribeApisByAppResponseBodyAppApiRelationInfos `json:"AppApiRelationInfos,omitempty" xml:"AppApiRelationInfos,omitempty" type:"Struct"`
 	// The number of pages to return the results on.
 	//
@@ -147,94 +146,20 @@ func (s *DescribeApisByAppResponseBodyAppApiRelationInfos) Validate() error {
 }
 
 type DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// c625795a1e664782a918eaa629e96ab5
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// sd2_h5_player_history_competition
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The validity period of the authorization.
-	//
-	// example:
-	//
-	// Sun, 02 Jan 2022 16:00:00 GMT
-	AuthVaildTime *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
-	// The authorization source.
-	//
-	// example:
-	//
-	// SELF
+	ApiId               *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName             *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AuthVaildTime       *string `json:"AuthVaildTime,omitempty" xml:"AuthVaildTime,omitempty"`
 	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
-	// The time when the authorization was created.
-	//
-	// example:
-	//
-	// Sun, 02 Jan 2022 16:00:00 GMT
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The authorization description.
-	//
-	// example:
-	//
-	// b1008kz
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 38bed48d664149e4b9b5ea576319673f
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	//
-	// example:
-	//
-	// wb2022012101605749
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The HTTP method of the API.
-	//
-	// example:
-	//
-	// GET
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The authorizer. Valid values:
-	//
-	// 	- **PROVIDER**: API owner
-	//
-	// 	- **CONSUMER**: API caller
-	//
-	// example:
-	//
-	// PROVIDER
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /api/offline/cacheData
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The environment alias.
-	//
-	// example:
-	//
-	// Online
-	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
-	// The environment name.
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	CreatedTime         *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName           *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method              *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Path                *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageAlias          *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
+	StageName           *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApisByAppResponseBodyAppApiRelationInfosAppApiRelationInfo) String() string {

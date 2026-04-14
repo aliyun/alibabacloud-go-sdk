@@ -79,9 +79,8 @@ type DescribeInstanceClusterInfoResponseBody struct {
 	// example:
 	//
 	// 3.5.3.856
-	InstanceClusterVersion *string `json:"InstanceClusterVersion,omitempty" xml:"InstanceClusterVersion,omitempty"`
-	// The dedicated instances contained in the cluster.
-	InstanceList *DescribeInstanceClusterInfoResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
+	InstanceClusterVersion *string                                              `json:"InstanceClusterVersion,omitempty" xml:"InstanceClusterVersion,omitempty"`
+	InstanceList           *DescribeInstanceClusterInfoResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The time when the cluster was last modified.
 	//
 	// example:
@@ -624,30 +623,10 @@ func (s *DescribeInstanceClusterInfoResponseBodyInstanceList) Validate() error {
 }
 
 type DescribeInstanceClusterInfoResponseBodyInstanceListInstance struct {
-	// The error message returned if the call fails.
-	//
-	// example:
-	//
-	// Instance not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// apigateway-ht-04e41d95e9c1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// tf-testacceu-central-1apigatewayinstance8752
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance status.
-	//
-	// example:
-	//
-	// RUNNING
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstanceClusterInfoResponseBodyInstanceListInstance) String() string {

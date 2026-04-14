@@ -143,19 +143,16 @@ type DescribeApiResponseBody struct {
 	// example:
 	//
 	// true
-	BackendEnable *bool `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
-	// System parameters sent by API Gateway to the backend service
+	BackendEnable      *bool                                      `json:"BackendEnable,omitempty" xml:"BackendEnable,omitempty"`
 	ConstantParameters *DescribeApiResponseBodyConstantParameters `json:"ConstantParameters,omitempty" xml:"ConstantParameters,omitempty" type:"Struct"`
 	// The creation time of the API.
 	//
 	// example:
 	//
 	// 2016-07-28T09:50:43Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Custom system parameters
+	CreatedTime            *string                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	CustomSystemParameters *DescribeApiResponseBodyCustomSystemParameters `json:"CustomSystemParameters,omitempty" xml:"CustomSystemParameters,omitempty" type:"Struct"`
-	// The API publishing status.
-	DeployedInfos *DescribeApiResponseBodyDeployedInfos `json:"DeployedInfos,omitempty" xml:"DeployedInfos,omitempty" type:"Struct"`
+	DeployedInfos          *DescribeApiResponseBodyDeployedInfos          `json:"DeployedInfos,omitempty" xml:"DeployedInfos,omitempty" type:"Struct"`
 	// The description of the API.
 	//
 	// example:
@@ -171,8 +168,7 @@ type DescribeApiResponseBody struct {
 	// example:
 	//
 	// false
-	DisableInternet *bool `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
-	// The sample error codes returned by the backend service.
+	DisableInternet  *bool                                    `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
 	ErrorCodeSamples *DescribeApiResponseBodyErrorCodeSamples `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty" type:"Struct"`
 	// The sample error response from the backend service.
 	//
@@ -239,8 +235,7 @@ type DescribeApiResponseBody struct {
 	// example:
 	//
 	// D0FF585F-7966-40CF-BC60-75DB070B23D5<
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters of API requests sent by the consumer to API Gateway.
+	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RequestParameters *DescribeApiResponseBodyRequestParameters `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty" type:"Struct"`
 	// The returned description of the API.
 	//
@@ -261,15 +256,11 @@ type DescribeApiResponseBody struct {
 	// JSON
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 	// The configuration items of API requests that API Gateway sends to the backend service.
-	ServiceConfig *DescribeApiResponseBodyServiceConfig `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
-	// The parameters of API requests sent by API Gateway to the backend service.
-	ServiceParameters *DescribeApiResponseBodyServiceParameters `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
-	// The mappings between parameters of requests sent by the consumer to API Gateway and parameters of requests sent by API Gateway to the backend service.
+	ServiceConfig        *DescribeApiResponseBodyServiceConfig        `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty" type:"Struct"`
+	ServiceParameters    *DescribeApiResponseBodyServiceParameters    `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty" type:"Struct"`
 	ServiceParametersMap *DescribeApiResponseBodyServiceParametersMap `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty" type:"Struct"`
-	// System parameters sent by API Gateway to the backend service
-	SystemParameters *DescribeApiResponseBodySystemParameters `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty" type:"Struct"`
-	// Tag List.
-	TagList *DescribeApiResponseBodyTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
+	SystemParameters     *DescribeApiResponseBodySystemParameters     `json:"SystemParameters,omitempty" xml:"SystemParameters,omitempty" type:"Struct"`
+	TagList              *DescribeApiResponseBodyTagList              `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Struct"`
 	// Specifies whether to make the API public. Valid values:
 	//
 	// 	- **PUBLIC**: Make the API public. If you set this parameter to PUBLIC, this API is displayed on the APIs page for all users after the API is published to the production environment.
@@ -792,29 +783,9 @@ func (s *DescribeApiResponseBodyConstantParameters) Validate() error {
 }
 
 type DescribeApiResponseBodyConstantParametersConstantParameter struct {
-	// The constant parameter value.
-	//
-	// example:
-	//
-	// constance
-	ConstantValue *string `json:"ConstantValue,omitempty" xml:"ConstantValue,omitempty"`
-	// The parameter description.
-	//
-	// example:
-	//
-	// constance
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	//
-	// example:
-	//
-	// HEAD
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The mapped parameter name in the backend service.
-	//
-	// example:
-	//
-	// constance
+	ConstantValue        *string `json:"ConstantValue,omitempty" xml:"ConstantValue,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location             *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -901,35 +872,10 @@ func (s *DescribeApiResponseBodyCustomSystemParameters) Validate() error {
 }
 
 type DescribeApiResponseBodyCustomSystemParametersCustomSystemParameter struct {
-	// The example value.
-	//
-	// example:
-	//
-	// 192.168.1.1
-	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The parameter description.
-	//
-	// example:
-	//
-	// Client IP Address
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	//
-	// example:
-	//
-	// HEAD
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The name of the system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
-	//
-	// example:
-	//
-	// CaClientIp
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The mapped parameter name in the backend service.
-	//
-	// example:
-	//
-	// clientIp
+	DemoValue            *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location             *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -1025,24 +971,9 @@ func (s *DescribeApiResponseBodyDeployedInfos) Validate() error {
 }
 
 type DescribeApiResponseBodyDeployedInfosDeployedInfo struct {
-	// The deployment status. Valid values: DEPLOYED and NONDEPLOYED.
-	//
-	// example:
-	//
-	// DEPLOYED
-	DeployedStatus *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
-	// The effective version.
-	//
-	// example:
-	//
-	// xxx
+	DeployedStatus   *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
 	EffectiveVersion *string `json:"EffectiveVersion,omitempty" xml:"EffectiveVersion,omitempty"`
-	// The environment to which the API is published. Valid values: RELEASE and TEST.
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	StageName        *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeApiResponseBodyDeployedInfosDeployedInfo) String() string {
@@ -1119,30 +1050,10 @@ func (s *DescribeApiResponseBodyErrorCodeSamples) Validate() error {
 }
 
 type DescribeApiResponseBodyErrorCodeSamplesErrorCodeSample struct {
-	// The returned error code.
-	//
-	// example:
-	//
-	// 400
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error description.
-	//
-	// example:
-	//
-	// The UserId parameter is missing from the request.
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The returned error message.
-	//
-	// example:
-	//
-	// Missing the parameter UserId
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The model.
-	//
-	// example:
-	//
-	// [\\"*\\"]
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
 }
 
 func (s DescribeApiResponseBodyErrorCodeSamplesErrorCodeSample) String() string {
@@ -1444,108 +1355,23 @@ func (s *DescribeApiResponseBodyRequestParameters) Validate() error {
 }
 
 type DescribeApiResponseBodyRequestParametersRequestParameter struct {
-	// The parameter name.
-	//
-	// example:
-	//
-	// age
-	ApiParameterName *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
-	// The type of the array element.
-	//
-	// example:
-	//
-	// String
-	ArrayItemsType *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
-	// The default value.
-	//
-	// example:
-	//
-	// 20
-	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The example value.
-	//
-	// example:
-	//
-	// 20
-	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The parameter description.
-	//
-	// example:
-	//
-	// Age
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The order in which the parameter is sorted in the document.
-	//
-	// example:
-	//
-	// 0
-	DocOrder *int32 `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
-	// Indicates whether the document is public. Valid values: **PUBLIC*	- and **PRIVATE**.
-	//
-	// example:
-	//
-	// PUBLIC
-	DocShow *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
-	// The hash values that are supported when **ParameterType*	- is set to Int, Long, Float, Double, or String. Separate values with commas (,). Examples: 1,2,3,4,9 and A,B,C,E,F.
-	//
-	// example:
-	//
-	// boy,girl
-	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
-	// The JSON Schema used for JSON validation when **ParameterType*	- is set to String.
-	//
-	// example:
-	//
-	// JSON
-	JsonScheme *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	//
-	// example:
-	//
-	// HEAD
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The maximum parameter length when **ParameterType*	- is set to String.
-	//
-	// example:
-	//
-	// 123456
-	MaxLength *int64 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The maximum parameter value when **ParameterType*	- is set to Int, Long, Float, or Double.
-	//
-	// example:
-	//
-	// 123456
-	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum parameter length when **ParameterType*	- is set to String.
-	//
-	// example:
-	//
-	// 123456
-	MinLength *int64 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The minimum parameter value when **ParameterType*	- is set to Int, Long, Float, or Double.
-	//
-	// example:
-	//
-	// 123456
-	MinValue *int64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The data type of the parameter. Valid values: String, Int, Long, Float, Double, and Boolean.
-	//
-	// example:
-	//
-	// String
-	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The regular expression that is used for parameter validation when **ParameterType*	- is set to String.
-	//
-	// example:
-	//
-	// xxx
+	ApiParameterName  *string `json:"ApiParameterName,omitempty" xml:"ApiParameterName,omitempty"`
+	ArrayItemsType    *string `json:"ArrayItemsType,omitempty" xml:"ArrayItemsType,omitempty"`
+	DefaultValue      *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	DemoValue         *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocOrder          *int32  `json:"DocOrder,omitempty" xml:"DocOrder,omitempty"`
+	DocShow           *string `json:"DocShow,omitempty" xml:"DocShow,omitempty"`
+	EnumValue         *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
+	JsonScheme        *string `json:"JsonScheme,omitempty" xml:"JsonScheme,omitempty"`
+	Location          *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	MaxLength         *int64  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	MaxValue          *int64  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinLength         *int64  `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	MinValue          *int64  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	ParameterType     *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
 	RegularExpression *string `json:"RegularExpression,omitempty" xml:"RegularExpression,omitempty"`
-	// Indicates whether the parameter is required. Valid values: **REQUIRED*	- and **OPTIONAL**.
-	//
-	// example:
-	//
-	// OPTIONAL
-	Required *string `json:"Required,omitempty" xml:"Required,omitempty"`
+	Required          *string `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s DescribeApiResponseBodyRequestParametersRequestParameter) String() string {
@@ -1751,8 +1577,7 @@ type DescribeApiResponseBodyServiceConfig struct {
 	// example:
 	//
 	// TRUE
-	Mock *string `json:"Mock,omitempty" xml:"Mock,omitempty"`
-	// The simulated headers.
+	Mock        *string                                          `json:"Mock,omitempty" xml:"Mock,omitempty"`
 	MockHeaders *DescribeApiResponseBodyServiceConfigMockHeaders `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Struct"`
 	// The result returned when the Mock mode is enabled.
 	//
@@ -2338,17 +2163,7 @@ func (s *DescribeApiResponseBodyServiceConfigMockHeaders) Validate() error {
 }
 
 type DescribeApiResponseBodyServiceConfigMockHeadersMockHeader struct {
-	// The HTTP header.
-	//
-	// example:
-	//
-	// Content-Length
-	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
-	// The value of the HTTP header.
-	//
-	// example:
-	//
-	// 86400
+	HeaderName  *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
 	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
 }
 
@@ -2596,23 +2411,8 @@ func (s *DescribeApiResponseBodyServiceParameters) Validate() error {
 }
 
 type DescribeApiResponseBodyServiceParametersServiceParameter struct {
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	//
-	// example:
-	//
-	// HEAD
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The data type of the parameter. Valid values: STRING, NUMBER, and BOOLEAN.
-	//
-	// example:
-	//
-	// String
-	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
-	// The mapped parameter name in the backend service.
-	//
-	// example:
-	//
-	// clientIp
+	Location             *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	ParameterType        *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -2690,17 +2490,7 @@ func (s *DescribeApiResponseBodyServiceParametersMap) Validate() error {
 }
 
 type DescribeApiResponseBodyServiceParametersMapServiceParameterMap struct {
-	// The corresponding frontend parameter name. The value must be contained in RequestParametersObject and match RequestParam.ApiParameterName.
-	//
-	// example:
-	//
-	// sex
 	RequestParameterName *string `json:"RequestParameterName,omitempty" xml:"RequestParameterName,omitempty"`
-	// The mapped parameter name in the backend service.
-	//
-	// example:
-	//
-	// sex
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -2769,35 +2559,10 @@ func (s *DescribeApiResponseBodySystemParameters) Validate() error {
 }
 
 type DescribeApiResponseBodySystemParametersSystemParameter struct {
-	// The example value.
-	//
-	// example:
-	//
-	// 192.168.1.1
-	DemoValue *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
-	// The parameter description.
-	//
-	// example:
-	//
-	// Client IP Address
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The parameter location. Valid values: BODY, HEAD, QUERY, and PATH.
-	//
-	// example:
-	//
-	// HEAD
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// The system parameter. Valid values: CaClientIp, CaDomain, CaRequestHandleTime, CaAppId, CaRequestId, CaHttpSchema, and CaProxy.
-	//
-	// example:
-	//
-	// CaClientIp
-	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The mapped parameter name in the backend service.
-	//
-	// example:
-	//
-	// clientIp
+	DemoValue            *string `json:"DemoValue,omitempty" xml:"DemoValue,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Location             *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	ServiceParameterName *string `json:"ServiceParameterName,omitempty" xml:"ServiceParameterName,omitempty"`
 }
 
@@ -2893,17 +2658,7 @@ func (s *DescribeApiResponseBodyTagList) Validate() error {
 }
 
 type DescribeApiResponseBodyTagListTag struct {
-	// Label key.
-	//
-	// example:
-	//
-	// APP
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// Label value.
-	//
-	// example:
-	//
-	// value3
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

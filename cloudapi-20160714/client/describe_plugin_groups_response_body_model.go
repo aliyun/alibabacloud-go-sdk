@@ -22,7 +22,6 @@ type iDescribePluginGroupsResponseBody interface {
 }
 
 type DescribePluginGroupsResponseBody struct {
-	// Collection of group information
 	GroupSummarys *DescribePluginGroupsResponseBodyGroupSummarys `json:"GroupSummarys,omitempty" xml:"GroupSummarys,omitempty" type:"Struct"`
 	// Pagination parameter: current page number
 	//
@@ -147,54 +146,13 @@ func (s *DescribePluginGroupsResponseBodyGroupSummarys) Validate() error {
 }
 
 type DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary struct {
-	// API root path
-	//
-	// example:
-	//
-	// /rpew
-	BasePath *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
-	// Description
-	//
-	// example:
-	//
-	// test
+	BasePath    *string `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// API group ID
-	//
-	// example:
-	//
-	// 4ed31575e2de43de8c51eb1217a1f56b
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// API group name
-	//
-	// example:
-	//
-	// ECP_API
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Region ID where the API group is located
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Stage name Alias
-	//
-	// example:
-	//
-	// DEV
-	StageAlias *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
-	// Environment name, possible values:
-	//
-	// - **RELEASE**: Production
-	//
-	// - **PRE**: Pre-release
-	//
-	// - **TEST**: Testing
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageAlias  *string `json:"StageAlias,omitempty" xml:"StageAlias,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary) String() string {

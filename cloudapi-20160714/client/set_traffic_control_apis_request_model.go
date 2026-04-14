@@ -37,12 +37,7 @@ type SetTrafficControlApisRequest struct {
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 556d15cb-0808-432d-ab07-33e6b961b703
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the runtime environment. Valid values:
 	//

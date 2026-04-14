@@ -16,7 +16,6 @@ type iDescribeInstanceQpsResponseBody interface {
 }
 
 type DescribeInstanceQpsResponseBody struct {
-	// The list of requests sent to the APIs in the instance.
 	InstanceQps *DescribeInstanceQpsResponseBodyInstanceQps `json:"InstanceQps,omitempty" xml:"InstanceQps,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeInstanceQpsResponseBodyInstanceQps) Validate() error {
 }
 
 type DescribeInstanceQpsResponseBodyInstanceQpsMonitorItem struct {
-	// The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-03-29T06:25:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of requests sent to the APIs in the instance.
-	//
-	// example:
-	//
-	// 500
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

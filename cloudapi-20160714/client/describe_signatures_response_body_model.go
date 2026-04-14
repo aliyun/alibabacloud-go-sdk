@@ -39,8 +39,7 @@ type DescribeSignaturesResponseBody struct {
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ004
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned signature information. It is an array consisting of SignatureInfo data.
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SignatureInfos *DescribeSignaturesResponseBodySignatureInfos `json:"SignatureInfos,omitempty" xml:"SignatureInfos,omitempty" type:"Struct"`
 	// The total number of returned entries.
 	//
@@ -147,47 +146,12 @@ func (s *DescribeSignaturesResponseBodySignatureInfos) Validate() error {
 }
 
 type DescribeSignaturesResponseBodySignatureInfosSignatureInfo struct {
-	// The creation time of the key.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The last modification time of the key.
-	//
-	// example:
-	//
-	// 2016-07-24T08:28:48Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The region where the key is located.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the backend signature key.
-	//
-	// example:
-	//
-	// dd05f1c54d6749eda95f9fa6d491449a
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The Key value of the backend signature key.
-	//
-	// example:
-	//
-	// qwertyuiop
-	SignatureKey *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
-	// The name of the backend signature key.
-	//
-	// example:
-	//
-	// backendsignature
-	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
-	// The Secret value of the backend signature key.
-	//
-	// example:
-	//
-	// asdfghjkl
+	CreatedTime     *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	ModifiedTime    *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SignatureId     *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
+	SignatureKey    *string `json:"SignatureKey,omitempty" xml:"SignatureKey,omitempty"`
+	SignatureName   *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 	SignatureSecret *string `json:"SignatureSecret,omitempty" xml:"SignatureSecret,omitempty"`
 }
 

@@ -16,7 +16,6 @@ type iDescribeInstanceDropPacketResponseBody interface {
 }
 
 type DescribeInstanceDropPacketResponseBody struct {
-	// The list of dropped packets in the instance.
 	InstanceDropPacket *DescribeInstanceDropPacketResponseBodyInstanceDropPacket `json:"InstanceDropPacket,omitempty" xml:"InstanceDropPacket,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,27 +95,8 @@ func (s *DescribeInstanceDropPacketResponseBodyInstanceDropPacket) Validate() er
 }
 
 type DescribeInstanceDropPacketResponseBodyInstanceDropPacketMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- InstanceDropPacketRX: the number of inbound packets dropped in the instance per second.
-	//
-	// 	- InstanceDropPacketTX: the number of outbound packets dropped in the instance per second.
-	//
-	// example:
-	//
-	// InstanceDropPacketRX
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-09-06T04:00:36Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of dropped packets in the instance.
-	//
-	// example:
-	//
-	// 0.0
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

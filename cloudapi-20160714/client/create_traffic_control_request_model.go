@@ -45,12 +45,7 @@ type CreateTrafficControlRequest struct {
 	// example:
 	//
 	// ThrottlingTestDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 436fa39b-b3b9-40c5-ae5d-ce3e000e38c5
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The name of the throttling policy. The name must be 4 to 50 characters in length and can contain letters, digits, and underscores (_). It cannot start with an underscore.
 	//

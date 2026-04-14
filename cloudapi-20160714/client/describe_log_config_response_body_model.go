@@ -16,7 +16,6 @@ type iDescribeLogConfigResponseBody interface {
 }
 
 type DescribeLogConfigResponseBody struct {
-	// Info of the log config.
 	LogInfos *DescribeLogConfigResponseBodyLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,30 +95,10 @@ func (s *DescribeLogConfigResponseBodyLogInfos) Validate() error {
 }
 
 type DescribeLogConfigResponseBodyLogInfosLogInfo struct {
-	// The log type.
-	//
-	// example:
-	//
-	// PROVIDER
-	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The region ID of the Logstore.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the Logstore in Log Service.
-	//
-	// example:
-	//
-	// slsstore
+	LogType     *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SlsLogStore *string `json:"SlsLogStore,omitempty" xml:"SlsLogStore,omitempty"`
-	// The name of the Log Service project.
-	//
-	// example:
-	//
-	// slsproject
-	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
+	SlsProject  *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
 }
 
 func (s DescribeLogConfigResponseBodyLogInfosLogInfo) String() string {

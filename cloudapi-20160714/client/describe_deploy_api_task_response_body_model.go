@@ -16,7 +16,6 @@ type iDescribeDeployApiTaskResponseBody interface {
 }
 
 type DescribeDeployApiTaskResponseBody struct {
-	// The returned result.
 	DeployedResults *DescribeDeployApiTaskResponseBodyDeployedResults `json:"DeployedResults,omitempty" xml:"DeployedResults,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,40 +95,11 @@ func (s *DescribeDeployApiTaskResponseBodyDeployedResults) Validate() error {
 }
 
 type DescribeDeployApiTaskResponseBodyDeployedResultsDeployedResult struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 0433c1cd84724923b7a4f9ca1cfc249c
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The deployment status of the API.
-	//
-	// example:
-	//
-	// OVER
+	ApiUid         *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
 	DeployedStatus *string `json:"DeployedStatus,omitempty" xml:"DeployedStatus,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// Success. Request Success.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// e8da6f6346184da9a30d0dc1888b1f3b
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The runtime environment of the API. Valid values:
-	//
-	// 	- **RELEASE**
-	//
-	// 	- **TEST**
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ErrorMsg       *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	StageName      *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeDeployApiTaskResponseBodyDeployedResultsDeployedResult) String() string {

@@ -22,7 +22,6 @@ type iDescribeAccessControlListsResponseBody interface {
 }
 
 type DescribeAccessControlListsResponseBody struct {
-	// The ACLs.
 	Acls *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
 	// The page number of the current page.
 	//
@@ -147,27 +146,8 @@ func (s *DescribeAccessControlListsResponseBodyAcls) Validate() error {
 }
 
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
-	// The ID of the access control policy.
-	//
-	// example:
-	//
-	// acl-3nsohdozz0ru8fi5onwz1
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the access control policy.
-	//
-	// example:
-	//
-	// testAcl
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// 访问控制策略组的IP版本。
-	//
-	// - **IPv4**。
-	//
-	// - **IPv6**。
-	//
-	// example:
-	//
-	// ipv4
+	AclId            *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName          *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 }
 

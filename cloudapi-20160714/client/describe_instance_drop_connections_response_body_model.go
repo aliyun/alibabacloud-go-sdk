@@ -16,7 +16,6 @@ type iDescribeInstanceDropConnectionsResponseBody interface {
 }
 
 type DescribeInstanceDropConnectionsResponseBody struct {
-	// The list of dropped connections in the instance.
 	InstanceDropConnections *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections `json:"InstanceDropConnections,omitempty" xml:"InstanceDropConnections,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeInstanceDropConnectionsResponseBodyInstanceDropConnections) Val
 }
 
 type DescribeInstanceDropConnectionsResponseBodyInstanceDropConnectionsMonitorItem struct {
-	// The monitoring time. The time follows the ISO 8601 standard. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2023-01-31T01:11:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of dropped packets in the instance.
-	//
-	// example:
-	//
-	// 0.0
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

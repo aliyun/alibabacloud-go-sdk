@@ -16,7 +16,6 @@ type iDescribeInstanceNewConnectionsResponseBody interface {
 }
 
 type DescribeInstanceNewConnectionsResponseBody struct {
-	// The list of new connections in the instance.
 	InstanceNewConnections *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections `json:"InstanceNewConnections,omitempty" xml:"InstanceNewConnections,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,17 +95,7 @@ func (s *DescribeInstanceNewConnectionsResponseBodyInstanceNewConnections) Valid
 }
 
 type DescribeInstanceNewConnectionsResponseBodyInstanceNewConnectionsMonitorItem struct {
-	// The monitoring time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2022-10-08T02:08:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The number of new connections in the instance.
-	//
-	// example:
-	//
-	// 16
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

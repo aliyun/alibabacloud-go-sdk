@@ -22,7 +22,6 @@ type iDescribeApisByIpControlResponseBody interface {
 }
 
 type DescribeApisByIpControlResponseBody struct {
-	// The returned API information. It is an array of ApiInfo data.
 	ApiInfos *DescribeApisByIpControlResponseBodyApiInfos `json:"ApiInfos,omitempty" xml:"ApiInfos,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,68 +146,15 @@ func (s *DescribeApisByIpControlResponseBodyApiInfos) Validate() error {
 }
 
 type DescribeApisByIpControlResponseBodyApiInfosApiInfo struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 3b81fd160f5645e097cc8855d75a1cf6
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API
-	//
-	// example:
-	//
-	// testapi
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The time of API binding.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The description of the API.
-	//
-	// example:
-	//
-	// Description
+	ApiId       *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	BoundTime   *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 0009db9c828549768a200320714b8930
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	//
-	// example:
-	//
-	// mygroup
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The region in which the API is located.
-	//
-	// example:
-	//
-	// cn-qingdao
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// 	- **RELEASE**
-	//
-	// 	- **TEST.
-	//
-	// example:
-	//
-	// TEST
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
-	// The visibility of the API. Valid values:
-	//
-	// 	- **PUBLIC**
-	//
-	// 	- **PRIVATE**
-	//
-	// example:
-	//
-	// PUBLIC
-	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageName   *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	Visibility  *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s DescribeApisByIpControlResponseBodyApiInfosApiInfo) String() string {

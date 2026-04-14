@@ -22,7 +22,6 @@ type iDescribeApiSignaturesResponseBody interface {
 }
 
 type DescribeApiSignaturesResponseBody struct {
-	// The returned signature key information. It is an array consisting of ApiSignatureItem data.
 	ApiSignatures *DescribeApiSignaturesResponseBodyApiSignatures `json:"ApiSignatures,omitempty" xml:"ApiSignatures,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,35 +146,10 @@ func (s *DescribeApiSignaturesResponseBodyApiSignatures) Validate() error {
 }
 
 type DescribeApiSignaturesResponseBodyApiSignaturesApiSignatureItem struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 46fbb52840d146f186e38e8e70fc8c90
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The name of the API.
-	//
-	// example:
-	//
-	// testapi
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The time when the backend signature key was bound.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The ID of the backend signature key.
-	//
-	// example:
-	//
-	// dd05f1c54d6749eda95f9fa6d491449a
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The name of the backend signature key.
-	//
-	// example:
-	//
-	// backendsignature
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	BoundTime     *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	SignatureId   *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 

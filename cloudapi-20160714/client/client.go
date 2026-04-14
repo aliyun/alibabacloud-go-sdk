@@ -1204,7 +1204,7 @@ func (client *Client) CreateApi(request *CreateApiRequest) (_result *CreateApiRe
 
 // Summary:
 //
-// 创建API分组
+// Creates an API group.
 //
 // @param request - CreateApiGroupRequest
 //
@@ -1268,7 +1268,7 @@ func (client *Client) CreateApiGroupWithOptions(request *CreateApiGroupRequest, 
 
 // Summary:
 //
-// 创建API分组
+// Creates an API group.
 //
 // @param request - CreateApiGroupRequest
 //
@@ -1380,7 +1380,7 @@ func (client *Client) CreateApiStageVariable(request *CreateApiStageVariableRequ
 
 // Summary:
 //
-// Creates an application for calling APIs in API Gateway.
+// Creates an app for API Gateway.
 //
 // Description:
 //
@@ -1466,7 +1466,7 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *d
 
 // Summary:
 //
-// Creates an application for calling APIs in API Gateway.
+// Creates an app for API Gateway.
 //
 // Description:
 //
@@ -1720,7 +1720,7 @@ func (client *Client) CreateBackend(request *CreateBackendRequest) (_result *Cre
 
 // Summary:
 //
-// 创建后端服务在环境上的配置
+// Creates a backend service configuration in an environment.
 //
 // @param request - CreateBackendModelRequest
 //
@@ -1784,7 +1784,7 @@ func (client *Client) CreateBackendModelWithOptions(request *CreateBackendModelR
 
 // Summary:
 //
-// 创建后端服务在环境上的配置
+// Creates a backend service configuration in an environment.
 //
 // @param request - CreateBackendModelRequest
 //
@@ -1880,7 +1880,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// 创建自定义数据集条目
+// Creates a data entry in a custom dataset.
 //
 // @param request - CreateDatasetItemRequest
 //
@@ -1940,7 +1940,7 @@ func (client *Client) CreateDatasetItemWithOptions(request *CreateDatasetItemReq
 
 // Summary:
 //
-// 创建自定义数据集条目
+// Creates a data entry in a custom dataset.
 //
 // @param request - CreateDatasetItemRequest
 //
@@ -2072,7 +2072,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建内网域名
+// Grants an internal second-level domain name to an API group.
 //
 // @param request - CreateIntranetDomainRequest
 //
@@ -2120,7 +2120,7 @@ func (client *Client) CreateIntranetDomainWithOptions(request *CreateIntranetDom
 
 // Summary:
 //
-// 创建内网域名
+// Grants an internal second-level domain name to an API group.
 //
 // @param request - CreateIntranetDomainRequest
 //
@@ -3334,7 +3334,7 @@ func (client *Client) DeleteApiStageVariable(request *DeleteApiStageVariableRequ
 
 // Summary:
 //
-// Deletes an application.
+// Deletes a specified app.
 //
 // Description:
 //
@@ -3394,7 +3394,7 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *d
 
 // Summary:
 //
-// Deletes an application.
+// Deletes a specified app.
 //
 // Description:
 //
@@ -3692,7 +3692,7 @@ func (client *Client) DeleteBackendModel(request *DeleteBackendModelRequest) (_r
 
 // Summary:
 //
-// 删除自定义数据集
+// Deletes a custom dataset.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -3740,7 +3740,7 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 
 // Summary:
 //
-// 删除自定义数据集
+// Deletes a custom dataset.
 //
 // @param request - DeleteDatasetRequest
 //
@@ -4136,7 +4136,7 @@ func (client *Client) DeleteIpControl(request *DeleteIpControlRequest) (_result 
 
 // Summary:
 //
-// Delete the specified log configuration.
+// Deletes a log configuration.
 //
 // @param request - DeleteLogConfigRequest
 //
@@ -4184,7 +4184,7 @@ func (client *Client) DeleteLogConfigWithOptions(request *DeleteLogConfigRequest
 
 // Summary:
 //
-// Delete the specified log configuration.
+// Deletes a log configuration.
 //
 // @param request - DeleteLogConfigRequest
 //
@@ -4748,7 +4748,7 @@ func (client *Client) DeleteTrafficSpecialControl(request *DeleteTrafficSpecialC
 
 // Summary:
 //
-// Publishes an API to an environment.
+// Publishes an API to a specified environment.
 //
 // Description:
 //
@@ -4816,7 +4816,7 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *d
 
 // Summary:
 //
-// Publishes an API to an environment.
+// Publishes an API to a specified environment.
 //
 // Description:
 //
@@ -4842,7 +4842,7 @@ func (client *Client) DeployApi(request *DeployApiRequest) (_result *DeployApiRe
 
 // Summary:
 //
-// 查询批量下线API任务
+// Queries the progress of an API unpublishing task.
 //
 // @param request - DescribeAbolishApiTaskRequest
 //
@@ -4890,7 +4890,7 @@ func (client *Client) DescribeAbolishApiTaskWithOptions(request *DescribeAbolish
 
 // Summary:
 //
-// 查询批量下线API任务
+// Queries the progress of an API unpublishing task.
 //
 // @param request - DescribeAbolishApiTaskRequest
 //
@@ -7090,7 +7090,7 @@ func (client *Client) DescribeApisByVpcAccess(request *DescribeApisByVpcAccessRe
 
 // Summary:
 //
-// Queries APIs by application. The environment information is also returned.
+// Queries APIs by application and returns the result by environment.
 //
 // @param request - DescribeApisWithStageNameIntegratedByAppRequest
 //
@@ -7166,7 +7166,7 @@ func (client *Client) DescribeApisWithStageNameIntegratedByAppWithOptions(reques
 
 // Summary:
 //
-// Queries APIs by application. The environment information is also returned.
+// Queries APIs by application and returns the result by environment.
 //
 // @param request - DescribeApisWithStageNameIntegratedByAppRequest
 //
@@ -9903,6 +9903,14 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		query["Language"] = request.Language
 	}
 
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
 	if !dara.IsNil(request.SecurityToken) {
 		query["SecurityToken"] = request.SecurityToken
 	}
@@ -10552,7 +10560,7 @@ func (client *Client) DescribePluginGroups(request *DescribePluginGroupsRequest)
 
 // Summary:
 //
-// 查询插件列表
+// Describes the plug-in modes supported by API Gateway.
 //
 // @param request - DescribePluginSchemasRequest
 //
@@ -10600,7 +10608,7 @@ func (client *Client) DescribePluginSchemasWithOptions(request *DescribePluginSc
 
 // Summary:
 //
-// 查询插件列表
+// Describes the plug-in modes supported by API Gateway.
 //
 // @param request - DescribePluginSchemasRequest
 //
@@ -10794,7 +10802,7 @@ func (client *Client) DescribePlugins(request *DescribePluginsRequest) (_result 
 
 // Summary:
 //
-// Queries the plug-ins that are bound to a running API in an environment.
+// Queries the plug-ins that are bound to a running API in a specified environment.
 //
 // Description:
 //
@@ -10864,7 +10872,7 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 
 // Summary:
 //
-// Queries the plug-ins that are bound to a running API in an environment.
+// Queries the plug-ins that are bound to a running API in a specified environment.
 //
 // Description:
 //
@@ -11102,7 +11110,7 @@ func (client *Client) DescribePurchasedApiGroups(request *DescribePurchasedApiGr
 
 // Summary:
 //
-// Queries APIs that are purchased from Alibaba Cloud Marketplace.
+// Queries the APIs purchased in the Alibaba Cloud Marketplace.
 //
 // @param request - DescribePurchasedApisRequest
 //
@@ -11174,7 +11182,7 @@ func (client *Client) DescribePurchasedApisWithOptions(request *DescribePurchase
 
 // Summary:
 //
-// Queries APIs that are purchased from Alibaba Cloud Marketplace.
+// Queries the APIs purchased in the Alibaba Cloud Marketplace.
 //
 // @param request - DescribePurchasedApisRequest
 //
@@ -11766,7 +11774,7 @@ func (client *Client) DescribeTrafficControlsByApi(request *DescribeTrafficContr
 
 // Summary:
 //
-// 查询批量更新API后端元定结果
+// Queries the update results of associated published APIs after the definition of a backend service is modified in an environment.
 //
 // @param request - DescribeUpdateBackendTaskRequest
 //
@@ -11814,7 +11822,7 @@ func (client *Client) DescribeUpdateBackendTaskWithOptions(request *DescribeUpda
 
 // Summary:
 //
-// 查询批量更新API后端元定结果
+// Queries the update results of associated published APIs after the definition of a backend service is modified in an environment.
 //
 // @param request - DescribeUpdateBackendTaskRequest
 //
@@ -11832,7 +11840,7 @@ func (client *Client) DescribeUpdateBackendTask(request *DescribeUpdateBackendTa
 
 // Summary:
 //
-// 查询更新VPC授权的任务
+// Queries the update progress of an API that is being published after its associated VPC access authorization is updated.
 //
 // @param request - DescribeUpdateVpcInfoTaskRequest
 //
@@ -11880,7 +11888,7 @@ func (client *Client) DescribeUpdateVpcInfoTaskWithOptions(request *DescribeUpda
 
 // Summary:
 //
-// 查询更新VPC授权的任务
+// Queries the update progress of an API that is being published after its associated VPC access authorization is updated.
 //
 // @param request - DescribeUpdateVpcInfoTaskRequest
 //
@@ -12206,7 +12214,7 @@ func (client *Client) DetachGroupPlugin(request *DetachGroupPluginRequest) (_res
 
 // Summary:
 //
-// 解绑插件
+// Unbinds a plug-in from an API.
 //
 // @param request - DetachPluginRequest
 //
@@ -12266,7 +12274,7 @@ func (client *Client) DetachPluginWithOptions(request *DetachPluginRequest, runt
 
 // Summary:
 //
-// 解绑插件
+// Unbinds a plug-in from an API.
 //
 // @param request - DetachPluginRequest
 //
@@ -12604,7 +12612,7 @@ func (client *Client) EnableInstanceAccessControl(request *EnableInstanceAccessC
 
 // Summary:
 //
-// 导出OAS
+// Exports APIs based on OpenAPI Specification (OAS).
 //
 // @param tmpReq - ExportOASRequest
 //
@@ -12682,7 +12690,7 @@ func (client *Client) ExportOASWithOptions(tmpReq *ExportOASRequest, runtime *da
 
 // Summary:
 //
-// 导出OAS
+// Exports APIs based on OpenAPI Specification (OAS).
 //
 // @param request - ExportOASRequest
 //
@@ -12700,7 +12708,7 @@ func (client *Client) ExportOAS(request *ExportOASRequest) (_result *ExportOASRe
 
 // Summary:
 //
-// Imports APIs based on the OAS standard.
+// Imports OpenAPI Specification (OAS)-compliant data to create an API.
 //
 // @param request - ImportOASRequest
 //
@@ -12782,7 +12790,7 @@ func (client *Client) ImportOASWithOptions(request *ImportOASRequest, runtime *d
 
 // Summary:
 //
-// Imports APIs based on the OAS standard.
+// Imports OpenAPI Specification (OAS)-compliant data to create an API.
 //
 // @param request - ImportOASRequest
 //
@@ -13294,7 +13302,7 @@ func (client *Client) ModifyApi(request *ModifyApiRequest) (_result *ModifyApiRe
 
 // Summary:
 //
-// Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+// This API operation is used to modify the draft definition of an API. It is different from the ModifyApi operation in that it does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you need to only specify the value of AuthType, which is APP.
 //
 // @param request - ModifyApiConfigurationRequest
 //
@@ -13478,7 +13486,7 @@ func (client *Client) ModifyApiConfigurationWithOptions(request *ModifyApiConfig
 
 // Summary:
 //
-// Modifies the draft definition of an API. This operation is different from the ModifyApi operation. This operation does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you specify APP as the value of AuthType and do not need to configure other parameters.
+// This API operation is used to modify the draft definition of an API. It is different from the ModifyApi operation in that it does not require all information about the API. You need to only specify the parameters that you want to modify. For example, if you want to change the authentication method of the API from Anonymous to APP, you need to only specify the value of AuthType, which is APP.
 //
 // @param request - ModifyApiConfigurationRequest
 //
@@ -13974,7 +13982,7 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
-// 修改后端服务
+// Modifies the basic information of a backend service, such as name and description. The backend service type cannot be modified once the backend service is created.
 //
 // @param request - ModifyBackendRequest
 //
@@ -14034,7 +14042,7 @@ func (client *Client) ModifyBackendWithOptions(request *ModifyBackendRequest, ru
 
 // Summary:
 //
-// 修改后端服务
+// Modifies the basic information of a backend service, such as name and description. The backend service type cannot be modified once the backend service is created.
 //
 // @param request - ModifyBackendRequest
 //
@@ -14052,7 +14060,7 @@ func (client *Client) ModifyBackend(request *ModifyBackendRequest) (_result *Mod
 
 // Summary:
 //
-// 修改后端服务在环境上的定义
+// Modifies the definition of a backend service in the environment. After the modification, the backend paths of the APIs that use the backend service in the same environment will be updated at the same time automatically. You do not need to manually publish the APIs again.
 //
 // @param request - ModifyBackendModelRequest
 //
@@ -14120,7 +14128,7 @@ func (client *Client) ModifyBackendModelWithOptions(request *ModifyBackendModelR
 
 // Summary:
 //
-// 修改后端服务在环境上的定义
+// Modifies the definition of a backend service in the environment. After the modification, the backend paths of the APIs that use the backend service in the same environment will be updated at the same time automatically. You do not need to manually publish the APIs again.
 //
 // @param request - ModifyBackendModelRequest
 //
@@ -14212,7 +14220,7 @@ func (client *Client) ModifyDataset(request *ModifyDatasetRequest) (_result *Mod
 
 // Summary:
 //
-// Modifies the expiration time and description of a data entry in a custom dataset.
+// Modifies the timeout period and description of a data entry in a custom dataset.
 //
 // @param request - ModifyDatasetItemRequest
 //
@@ -14272,7 +14280,7 @@ func (client *Client) ModifyDatasetItemWithOptions(request *ModifyDatasetItemReq
 
 // Summary:
 //
-// Modifies the expiration time and description of a data entry in a custom dataset.
+// Modifies the timeout period and description of a data entry in a custom dataset.
 //
 // @param request - ModifyDatasetItemRequest
 //
@@ -15266,7 +15274,7 @@ func (client *Client) ModifyTrafficControl(request *ModifyTrafficControlRequest)
 
 // Summary:
 //
-// Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+// Modifies the information of a VPC access authorization and updates the metadata of the associated API.
 //
 // @param request - ModifyVpcAccessAndUpdateApisRequest
 //
@@ -15342,7 +15350,7 @@ func (client *Client) ModifyVpcAccessAndUpdateApisWithOptions(request *ModifyVpc
 
 // Summary:
 //
-// Modifies a virtual private cloud (VPC) authorization and updates the metadata of the API associated with the VPC authorization.
+// Modifies the information of a VPC access authorization and updates the metadata of the associated API.
 //
 // @param request - ModifyVpcAccessAndUpdateApisRequest
 //
@@ -15360,9 +15368,7 @@ func (client *Client) ModifyVpcAccessAndUpdateApis(request *ModifyVpcAccessAndUp
 
 // Summary:
 //
-// 开通API网关服务
-//
-// @param request - OpenApiGatewayServiceRequest
+// Activates the API Gateway service.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -15391,7 +15397,7 @@ func (client *Client) OpenApiGatewayServiceWithOptions(runtime *dara.RuntimeOpti
 
 // Summary:
 //
-// 开通API网关服务
+// Activates the API Gateway service.
 //
 // @return OpenApiGatewayServiceResponse
 func (client *Client) OpenApiGatewayService() (_result *OpenApiGatewayServiceResponse, _err error) {
@@ -15563,7 +15569,7 @@ func (client *Client) ReactivateDomain(request *ReactivateDomainRequest) (_resul
 
 // Summary:
 //
-// 删除访问控制策略中IP条目
+// This feature provides instance-level access control for dedicated instances. Deletes an IP address entry from an access control policy.
 //
 // @param request - RemoveAccessControlListEntryRequest
 //
@@ -15615,7 +15621,7 @@ func (client *Client) RemoveAccessControlListEntryWithOptions(request *RemoveAcc
 
 // Summary:
 //
-// 删除访问控制策略中IP条目
+// This feature provides instance-level access control for dedicated instances. Deletes an IP address entry from an access control policy.
 //
 // @param request - RemoveAccessControlListEntryRequest
 //
@@ -15803,7 +15809,7 @@ func (client *Client) RemoveApisAuthorities(request *RemoveApisAuthoritiesReques
 
 // Summary:
 //
-// Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+// Revokes the access permissions on a specified API from multiple apps. In this case, multiple apps map to a single API.
 //
 // Description:
 //
@@ -15869,7 +15875,7 @@ func (client *Client) RemoveAppsAuthoritiesWithOptions(request *RemoveAppsAuthor
 
 // Summary:
 //
-// Revokes the access permissions on a specified API from multiple applications. In this case, multiple applications map to a single API.
+// Revokes the access permissions on a specified API from multiple apps. In this case, multiple apps map to a single API.
 //
 // Description:
 //
@@ -16241,7 +16247,7 @@ func (client *Client) RemoveTrafficControlApis(request *RemoveTrafficControlApis
 
 // Summary:
 //
-// Deletes a VPC authorization without unpublishing the associated APIs.
+// Deletes a VPC access authorization without unpublishing the associated APIs.
 //
 // Description:
 //
@@ -16309,7 +16315,7 @@ func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest
 
 // Summary:
 //
-// Deletes a VPC authorization without unpublishing the associated APIs.
+// Deletes a VPC access authorization without unpublishing the associated APIs.
 //
 // Description:
 //
@@ -16335,7 +16341,7 @@ func (client *Client) RemoveVpcAccess(request *RemoveVpcAccessRequest) (_result 
 
 // Summary:
 //
-// 删除VPC授权并下线关联API
+// Deletes a VPC access authorization and unpublishes the associated API.
 //
 // @param request - RemoveVpcAccessAndAbolishApisRequest
 //
@@ -16395,7 +16401,7 @@ func (client *Client) RemoveVpcAccessAndAbolishApisWithOptions(request *RemoveVp
 
 // Summary:
 //
-// 删除VPC授权并下线关联API
+// Deletes a VPC access authorization and unpublishes the associated API.
 //
 // @param request - RemoveVpcAccessAndAbolishApisRequest
 //
@@ -16483,7 +16489,7 @@ func (client *Client) ResetAppCode(request *ResetAppCodeRequest) (_result *Reset
 
 // Summary:
 //
-// Resets the key of an application.
+// Resets the key for an app.
 //
 // Description:
 //
@@ -16547,7 +16553,7 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 
 // Summary:
 //
-// Resets the key of an application.
+// Resets the key for an app.
 //
 // Description:
 //
@@ -16573,7 +16579,7 @@ func (client *Client) ResetAppSecret(request *ResetAppSecretRequest) (_result *R
 
 // Summary:
 //
-// 根据APP生成SDK
+// Generates an SDK by application.
 //
 // @param request - SdkGenerateByAppRequest
 //
@@ -16625,7 +16631,7 @@ func (client *Client) SdkGenerateByAppWithOptions(request *SdkGenerateByAppReque
 
 // Summary:
 //
-// 根据APP生成SDK
+// Generates an SDK by application.
 //
 // @param request - SdkGenerateByAppRequest
 //
@@ -16713,7 +16719,7 @@ func (client *Client) SdkGenerateByAppForRegion(request *SdkGenerateByAppForRegi
 
 // Summary:
 //
-// 根据分组生成SDK
+// Generates an SDK by API group.
 //
 // @param request - SdkGenerateByGroupRequest
 //
@@ -16765,7 +16771,7 @@ func (client *Client) SdkGenerateByGroupWithOptions(request *SdkGenerateByGroupR
 
 // Summary:
 //
-// 根据分组生成SDK
+// Generates an SDK by API group.
 //
 // @param request - SdkGenerateByGroupRequest
 //
@@ -16783,7 +16789,7 @@ func (client *Client) SdkGenerateByGroup(request *SdkGenerateByGroupRequest) (_r
 
 // Summary:
 //
-// 修改访问控制策略的名称
+// This feature provides instance-level access control for dedicated instances. Modifies the name of an access control policy.
 //
 // @param request - SetAccessControlListAttributeRequest
 //
@@ -16835,7 +16841,7 @@ func (client *Client) SetAccessControlListAttributeWithOptions(request *SetAcces
 
 // Summary:
 //
-// 修改访问控制策略的名称
+// This feature provides instance-level access control for dedicated instances. Modifies the name of an access control policy.
 //
 // @param request - SetAccessControlListAttributeRequest
 //
@@ -18083,7 +18089,7 @@ func (client *Client) SwitchApi(request *SwitchApiRequest) (_result *SwitchApiRe
 
 // Summary:
 //
-// Creates a tag-resource relationship.
+// Adds user tags to resources.
 //
 // Description:
 //
@@ -18151,7 +18157,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Creates a tag-resource relationship.
+// Adds user tags to resources.
 //
 // Description:
 //

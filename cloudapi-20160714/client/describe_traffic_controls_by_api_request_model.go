@@ -35,12 +35,7 @@ type DescribeTrafficControlsByApiRequest struct {
 	// example:
 	//
 	// 0009db9c828549768a200320714b8930
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 7c51b234-48d3-44e1-9b36-e2ddccc738e3
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The runtime environment of the API. Valid values:
 	//

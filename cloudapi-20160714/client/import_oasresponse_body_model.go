@@ -28,12 +28,9 @@ type iImportOASResponseBody interface {
 }
 
 type ImportOASResponseBody struct {
-	// The error messages that appear due to the invalid data in the imported file.
 	ErrorMessages *ImportOASResponseBodyErrorMessages `json:"ErrorMessages,omitempty" xml:"ErrorMessages,omitempty" type:"Struct"`
-	// The APIs that failed to pass the precheck.
-	FailedApis *ImportOASResponseBodyFailedApis `json:"FailedApis,omitempty" xml:"FailedApis,omitempty" type:"Struct"`
-	// The information about the models that failed to pass the precheck.
-	FailedModels *ImportOASResponseBodyFailedModels `json:"FailedModels,omitempty" xml:"FailedModels,omitempty" type:"Struct"`
+	FailedApis    *ImportOASResponseBodyFailedApis    `json:"FailedApis,omitempty" xml:"FailedApis,omitempty" type:"Struct"`
+	FailedModels  *ImportOASResponseBodyFailedModels  `json:"FailedModels,omitempty" xml:"FailedModels,omitempty" type:"Struct"`
 	// The ID of the asynchronous API import task that was generated during the import operation. This ID is used to query the execution status of the API import task.
 	//
 	// example:
@@ -45,12 +42,9 @@ type ImportOASResponseBody struct {
 	// example:
 	//
 	// E7FE7172-AA75-5880-B6F7-C00893E9BC06
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the APIs that have passed the precheck.
-	SuccessApis *ImportOASResponseBodySuccessApis `json:"SuccessApis,omitempty" xml:"SuccessApis,omitempty" type:"Struct"`
-	// The information about the models that have passed the precheck.
-	SuccessModels *ImportOASResponseBodySuccessModels `json:"SuccessModels,omitempty" xml:"SuccessModels,omitempty" type:"Struct"`
-	// The warning messages that appear due to the invalid data in the imported file.
+	RequestId       *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessApis     *ImportOASResponseBodySuccessApis     `json:"SuccessApis,omitempty" xml:"SuccessApis,omitempty" type:"Struct"`
+	SuccessModels   *ImportOASResponseBodySuccessModels   `json:"SuccessModels,omitempty" xml:"SuccessModels,omitempty" type:"Struct"`
 	WarningMessages *ImportOASResponseBodyWarningMessages `json:"WarningMessages,omitempty" xml:"WarningMessages,omitempty" type:"Struct"`
 }
 
@@ -228,24 +222,9 @@ func (s *ImportOASResponseBodyFailedApis) Validate() error {
 }
 
 type ImportOASResponseBodyFailedApisFailedApi struct {
-	// The error message.
-	//
-	// example:
-	//
-	// Invalid Api Definition.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The HTTP method configured when you created the API.
-	//
-	// example:
-	//
-	// POST
+	ErrorMsg   *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when you created the API.
-	//
-	// example:
-	//
-	// /st1
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportOASResponseBodyFailedApisFailedApi) String() string {
@@ -322,23 +301,8 @@ func (s *ImportOASResponseBodyFailedModels) Validate() error {
 }
 
 type ImportOASResponseBodyFailedModelsFailedModel struct {
-	// The error message.
-	//
-	// example:
-	//
-	// Invalid Model Definition.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 2c1bc62e19614cc68c6b0b484bc9c5db
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// test
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -416,30 +380,10 @@ func (s *ImportOASResponseBodySuccessApis) Validate() error {
 }
 
 type ImportOASResponseBodySuccessApisSuccessApi struct {
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 92af1abffc2443eaa2b815fdbd9c13f1
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// Indicates that the operation is CREATE or MODIFY.
-	//
-	// example:
-	//
-	// CREATE
+	ApiId        *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ApiOperation *string `json:"ApiOperation,omitempty" xml:"ApiOperation,omitempty"`
-	// The HTTP method configured when you created the API.
-	//
-	// example:
-	//
-	// POST
-	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request path configured when you created the API.
-	//
-	// example:
-	//
-	// /st1
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	HttpMethod   *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s ImportOASResponseBodySuccessApisSuccessApi) String() string {
@@ -525,30 +469,10 @@ func (s *ImportOASResponseBodySuccessModels) Validate() error {
 }
 
 type ImportOASResponseBodySuccessModelsSuccessModel struct {
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// feaccf67040643bcbdedb253e59eb527
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the model.
-	//
-	// example:
-	//
-	// test
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The operation of the model. Valid values: CREATE and MODIFY.
-	//
-	// example:
-	//
-	// CREATE
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ModelName      *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	ModelOperation *string `json:"ModelOperation,omitempty" xml:"ModelOperation,omitempty"`
-	// The UID of the model.
-	//
-	// example:
-	//
-	// 1r4efwee19614cc68c6b0b484bc9c5dbs
-	ModelUid *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
+	ModelUid       *string `json:"ModelUid,omitempty" xml:"ModelUid,omitempty"`
 }
 
 func (s ImportOASResponseBodySuccessModelsSuccessModel) String() string {

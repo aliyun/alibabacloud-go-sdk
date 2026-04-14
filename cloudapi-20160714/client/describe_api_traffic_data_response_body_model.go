@@ -18,10 +18,8 @@ type iDescribeApiTrafficDataResponseBody interface {
 }
 
 type DescribeApiTrafficDataResponseBody struct {
-	// The returned downlink traffic data of API calls. It is an array consisting of MonitorItem data.
 	CallDownloads *DescribeApiTrafficDataResponseBodyCallDownloads `json:"CallDownloads,omitempty" xml:"CallDownloads,omitempty" type:"Struct"`
-	// The returned uplink traffic data of API calls. It is an array consisting of MonitorItem data.
-	CallUploads *DescribeApiTrafficDataResponseBodyCallUploads `json:"CallUploads,omitempty" xml:"CallUploads,omitempty" type:"Struct"`
+	CallUploads   *DescribeApiTrafficDataResponseBodyCallUploads   `json:"CallUploads,omitempty" xml:"CallUploads,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -114,17 +112,7 @@ func (s *DescribeApiTrafficDataResponseBodyCallDownloads) Validate() error {
 }
 
 type DescribeApiTrafficDataResponseBodyCallDownloadsMonitorItem struct {
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2016-07-28T08:20:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The value corresponding to the monitoring metric.
-	//
-	// example:
-	//
-	// 0
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 
@@ -193,17 +181,7 @@ func (s *DescribeApiTrafficDataResponseBodyCallUploads) Validate() error {
 }
 
 type DescribeApiTrafficDataResponseBodyCallUploadsMonitorItem struct {
-	// The time of the monitoring metric. The time format follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ
-	//
-	// example:
-	//
-	// 2016-07-28T08:20:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The value corresponding to the monitoring metric.
-	//
-	// example:
-	//
-	// 670
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

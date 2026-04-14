@@ -21,8 +21,7 @@ type DescribeSignaturesByApiResponseBody struct {
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BZ004
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned signature key information. It is an array consisting of SignatureItem data.
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Signatures *DescribeSignaturesByApiResponseBodySignatures `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Struct"`
 }
 
@@ -96,23 +95,8 @@ func (s *DescribeSignaturesByApiResponseBodySignatures) Validate() error {
 }
 
 type DescribeSignaturesByApiResponseBodySignaturesSignatureItem struct {
-	// The time when the key was bound.
-	//
-	// example:
-	//
-	// 2016-07-23T08:28:48Z
-	BoundTime *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
-	// The ID of the backend signature key.
-	//
-	// example:
-	//
-	// dd05f1c54d6749eda95f9fa6d491449a
-	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
-	// The name of the backend signature key.
-	//
-	// example:
-	//
-	// mysecret
+	BoundTime     *string `json:"BoundTime,omitempty" xml:"BoundTime,omitempty"`
+	SignatureId   *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
 }
 

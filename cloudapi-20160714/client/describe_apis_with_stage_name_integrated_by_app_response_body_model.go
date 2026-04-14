@@ -22,7 +22,6 @@ type iDescribeApisWithStageNameIntegratedByAppResponseBody interface {
 }
 
 type DescribeApisWithStageNameIntegratedByAppResponseBody struct {
-	// The authorization information of the API.
 	AppApiRelationInfos *DescribeApisWithStageNameIntegratedByAppResponseBodyAppApiRelationInfos `json:"AppApiRelationInfos,omitempty" xml:"AppApiRelationInfos,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,78 +146,18 @@ func (s *DescribeApisWithStageNameIntegratedByAppResponseBodyAppApiRelationInfos
 }
 
 type DescribeApisWithStageNameIntegratedByAppResponseBodyAppApiRelationInfosAppApiRelationInfo struct {
-	// The API ID.
-	//
-	// example:
-	//
-	// c625795a1e664782a918eaa629e96ab5
-	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
-	//
-	// example:
-	//
-	// sd2_h5_player_history_competition
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The authorization source.
-	//
-	// example:
-	//
-	// SELF
-	AuthorizationSource *string `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
-	// The time when the authorization was created.
-	//
-	// example:
-	//
-	// Sun, 02 Jan 2022 16:00:00 GMT
-	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The API description.
-	//
-	// example:
-	//
-	// b1008kz
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 38bed48d664149e4b9b5ea576319673f
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	//
-	// example:
-	//
-	// manager_vehicles
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The request HTTP method of the API.
-	//
-	// example:
-	//
-	// POST
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The authorizer. Valid values:
-	//
-	// 	- **PROVIDER:*	- the API owner
-	//
-	// 	- **CONSUMER:*	- the API caller
-	//
-	// example:
-	//
-	// PROVIDER
-	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The request path of the API.
-	//
-	// example:
-	//
-	// /api/offline/cacheData
-	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The mapping information between environments and authorizations.
-	StageNameAndAuth map[string]*string `json:"StageNameAndAuth,omitempty" xml:"StageNameAndAuth,omitempty"`
+	ApiId               *string            `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName             *string            `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AuthorizationSource *string            `json:"AuthorizationSource,omitempty" xml:"AuthorizationSource,omitempty"`
+	CreatedTime         *string            `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description         *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId             *string            `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName           *string            `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Method              *string            `json:"Method,omitempty" xml:"Method,omitempty"`
+	Operator            *string            `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Path                *string            `json:"Path,omitempty" xml:"Path,omitempty"`
+	RegionId            *string            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StageNameAndAuth    map[string]*string `json:"StageNameAndAuth,omitempty" xml:"StageNameAndAuth,omitempty"`
 }
 
 func (s DescribeApisWithStageNameIntegratedByAppResponseBodyAppApiRelationInfosAppApiRelationInfo) String() string {

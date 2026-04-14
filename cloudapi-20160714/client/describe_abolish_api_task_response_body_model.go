@@ -16,7 +16,6 @@ type iDescribeAbolishApiTaskResponseBody interface {
 }
 
 type DescribeAbolishApiTaskResponseBody struct {
-	// The result returned.
 	ApiAbolishResults *DescribeAbolishApiTaskResponseBodyApiAbolishResults `json:"ApiAbolishResults,omitempty" xml:"ApiAbolishResults,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,58 +95,14 @@ func (s *DescribeAbolishApiTaskResponseBodyApiAbolishResults) Validate() error {
 }
 
 type DescribeAbolishApiTaskResponseBodyApiAbolishResultsApiAbolishResult struct {
-	// The unpublishing status.
-	//
-	// example:
-	//
-	// OVER
 	AbolishStatus *string `json:"AbolishStatus,omitempty" xml:"AbolishStatus,omitempty"`
-	// The name of the API.
-	//
-	// example:
-	//
-	// v2_page_consent
-	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the API.
-	//
-	// example:
-	//
-	// 4e26cdbbb113416dba1f0285bed29979
-	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
-	// The error message.
-	//
-	// example:
-	//
-	// Success. Request Success.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The ID of the API group.
-	//
-	// example:
-	//
-	// 160cb6505e1c43a6b84346856d74eb47
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the API group.
-	//
-	// example:
-	//
-	// wb2022021401619286
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the runtime environment.
-	//
-	// example:
-	//
-	// 0919f2854a88484c91dc9253347c78f9
-	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
-	// The name of the runtime environment. Valid values:
-	//
-	// 	- **RELEASE**
-	//
-	// 	- **TEST**
-	//
-	// example:
-	//
-	// RELEASE
-	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	ApiName       *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiUid        *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
+	ErrorMsg      *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	StageId       *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
 }
 
 func (s DescribeAbolishApiTaskResponseBodyApiAbolishResultsApiAbolishResult) String() string {

@@ -21,8 +21,7 @@ type DescribeGroupTrafficResponseBody struct {
 	// example:
 	//
 	// EF924FE4-2EDD-4CD3-89EC-34E4708574E7
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The traffic information per second.
+	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TrafficPerSecond *DescribeGroupTrafficResponseBodyTrafficPerSecond `json:"TrafficPerSecond,omitempty" xml:"TrafficPerSecond,omitempty" type:"Struct"`
 }
 
@@ -96,27 +95,8 @@ func (s *DescribeGroupTrafficResponseBodyTrafficPerSecond) Validate() error {
 }
 
 type DescribeGroupTrafficResponseBodyTrafficPerSecondMonitorItem struct {
-	// The metric. Valid values:
-	//
-	// 	- inbound: traffic consumed by requests
-	//
-	// 	- outbound: traffic consumed by responses
-	//
-	// example:
-	//
-	// inbound
-	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The corresponding time. The time follows the ISO 8601 standard and UTC time is used. Format: YYYY-MM-DDThh:mm:ssZ.
-	//
-	// example:
-	//
-	// 2023-01-29T01:30:00Z
-	ItemTime *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
-	// The traffic volume per second.
-	//
-	// example:
-	//
-	// 100.0
+	Item      *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemTime  *string `json:"ItemTime,omitempty" xml:"ItemTime,omitempty"`
 	ItemValue *string `json:"ItemValue,omitempty" xml:"ItemValue,omitempty"`
 }
 

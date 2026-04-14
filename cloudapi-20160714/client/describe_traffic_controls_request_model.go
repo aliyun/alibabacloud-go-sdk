@@ -51,12 +51,7 @@ type DescribeTrafficControlsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The security token included in the WebSocket request header. The system uses this token to authenticate the request.
-	//
-	// example:
-	//
-	// 436fa39b-b3b9-40c5-ae5d-ce3e000e38c5
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The environment name. This parameter must be specified together with GroupId and ApiId. Valid values:********
 	//
