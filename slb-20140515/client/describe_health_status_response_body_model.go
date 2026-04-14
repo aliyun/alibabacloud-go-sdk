@@ -16,7 +16,6 @@ type iDescribeHealthStatusResponseBody interface {
 }
 
 type DescribeHealthStatusResponseBody struct {
-	// The backend servers.
 	BackendServers *DescribeHealthStatusResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,48 +95,12 @@ func (s *DescribeHealthStatusResponseBodyBackendServers) Validate() error {
 }
 
 type DescribeHealthStatusResponseBodyBackendServersBackendServer struct {
-	// The frontend port that is used by the SLB instance.
-	//
-	// example:
-	//
-	// 80
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The backend port that is used by the SLB instance.
-	//
-	// example:
-	//
-	// 70
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The frontend protocol that is used by the SLB instance.
-	//
-	// example:
-	//
-	// https
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The health status of the backend server. Valid values:
-	//
-	// 	- normal: The backend server is healthy.
-	//
-	// 	- abnormal: The backend server is unhealthy.
-	//
-	// 	- unavailable: The health check is not completed.
-	//
-	// example:
-	//
-	// abnormal
+	ListenerPort       *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	Port               *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol           *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	ServerHealthStatus *string `json:"ServerHealthStatus,omitempty" xml:"ServerHealthStatus,omitempty"`
-	// The ID of the backend server.
-	//
-	// example:
-	//
-	// i-bp1h5u3fv54ytf***
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the backend server.
-	//
-	// example:
-	//
-	// 192.XX.XX.11
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerId           *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp           *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 }
 
 func (s DescribeHealthStatusResponseBodyBackendServersBackendServer) String() string {

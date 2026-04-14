@@ -65,8 +65,7 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// 123943****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the access control list (ACL).
+	AclId  *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclIds *DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values: **on*	- and **off**. Default value: off.
 	//
@@ -213,9 +212,8 @@ type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// stopped
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
-	Tags *DescribeLoadBalancerUDPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Status *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeLoadBalancerUDPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The unhealthy threshold. The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**. Valid values: **2*	- to **10**.
 	//
 	// example:
@@ -528,17 +526,7 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponseBodyTags) Validate() er
 }
 
 type DescribeLoadBalancerUDPListenerAttributeResponseBodyTagsTag struct {
-	// The key of tag N. Valid values of N: **1*	- to **20**. The tag value cannot be an empty string. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag N. Valid values of N: **1*	- to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

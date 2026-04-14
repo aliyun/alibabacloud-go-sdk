@@ -24,7 +24,6 @@ type iDescribeAccessControlListsResponseBody interface {
 }
 
 type DescribeAccessControlListsResponseBody struct {
-	// A list of ACLs.
 	Acls *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
 	// The number of ACLs on the current page.
 	//
@@ -164,38 +163,12 @@ func (s *DescribeAccessControlListsResponseBodyAcls) Validate() error {
 }
 
 type DescribeAccessControlListsResponseBodyAclsAcl struct {
-	// The ACL ID.
-	//
-	// example:
-	//
-	// acl-bp1l0kk4gxce43k*****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ACL name.
-	//
-	// example:
-	//
-	// rule1
-	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The IP version that is used by the CLB instance associated with the ACL.
-	//
-	// example:
-	//
-	// ipv4
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2022-08-31T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-jfenfbp1lhl0****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags added to the network ACL. The value of this parameter must be a STRING list in the JSON format.
-	Tags *DescribeAccessControlListsResponseBodyAclsAclTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AclId            *string                                            `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName          *string                                            `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AddressIPVersion *string                                            `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	CreateTime       *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ResourceGroupId  *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags             *DescribeAccessControlListsResponseBodyAclsAclTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeAccessControlListsResponseBodyAclsAcl) String() string {
@@ -304,17 +277,7 @@ func (s *DescribeAccessControlListsResponseBodyAclsAclTags) Validate() error {
 }
 
 type DescribeAccessControlListsResponseBodyAclsAclTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

@@ -13,6 +13,8 @@ type iSetRuleRequest interface {
 	GetCookie() *string
 	SetCookieTimeout(v int32) *SetRuleRequest
 	GetCookieTimeout() *int32
+	SetDryRun(v bool) *SetRuleRequest
+	GetDryRun() *bool
 	SetHealthCheck(v string) *SetRuleRequest
 	GetHealthCheck() *string
 	SetHealthCheckConnectPort(v int32) *SetRuleRequest
@@ -76,6 +78,7 @@ type SetRuleRequest struct {
 	//
 	// 123
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	DryRun        *bool  `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the health check feature. Valid values:
 	//
 	// 	- **on**: yes
@@ -266,6 +269,10 @@ func (s *SetRuleRequest) GetCookieTimeout() *int32 {
 	return s.CookieTimeout
 }
 
+func (s *SetRuleRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *SetRuleRequest) GetHealthCheck() *string {
 	return s.HealthCheck
 }
@@ -357,6 +364,11 @@ func (s *SetRuleRequest) SetCookie(v string) *SetRuleRequest {
 
 func (s *SetRuleRequest) SetCookieTimeout(v int32) *SetRuleRequest {
 	s.CookieTimeout = &v
+	return s
+}
+
+func (s *SetRuleRequest) SetDryRun(v bool) *SetRuleRequest {
+	s.DryRun = &v
 	return s
 }
 

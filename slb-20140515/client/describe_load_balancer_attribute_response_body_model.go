@@ -107,9 +107,8 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	// example:
 	//
 	// 1513947075000
-	AutoReleaseTime *int64 `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// The backend servers of the CLB instance.
-	BackendServers *DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
+	AutoReleaseTime *int64                                                   `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
+	BackendServers  *DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The maximum bandwidth of the Internet-facing CLB instance that is billed on a pay-by-bandwidth basis.
 	//
 	// example:
@@ -169,12 +168,9 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	// example:
 	//
 	// paybytraffic
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The frontend port used by the CLB instance.
-	ListenerPorts *DescribeLoadBalancerAttributeResponseBodyListenerPorts `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
-	// The ports or protocols of the listeners.
+	InternetChargeType       *string                                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	ListenerPorts            *DescribeLoadBalancerAttributeResponseBodyListenerPorts            `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
 	ListenerPortsAndProtocal *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
-	// The ports or protocols of the listeners.
 	ListenerPortsAndProtocol *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol `json:"ListenerPortsAndProtocol,omitempty" xml:"ListenerPortsAndProtocol,omitempty" type:"Struct"`
 	// The CLB instance ID.
 	//
@@ -313,9 +309,8 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	// example:
 	//
 	// cn-hangzhou-d
-	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	// The tags.
-	Tags *DescribeLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SlaveZoneId *string                                        `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	Tags        *DescribeLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vSwitch to which the internal-facing CLB instance belongs.
 	//
 	// example:
@@ -726,38 +721,11 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) Validate() err
 }
 
 type DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer struct {
-	// The description of the backend server.
-	//
-	// > This parameter is not returned if Description is not set.
-	//
-	// example:
-	//
-	// backend server description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The backend server ID.
-	//
-	// example:
-	//
-	// i-2zej4lxhjoq1icu*****
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The ID of the elastic network interface (ENI) or elastic container instance.
-	//
-	// example:
-	//
-	// 192.XX.XX.11
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The type of the backend server.
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// example:
-	//
-	// 90
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBodyBackendServersBackendServer) String() string {
@@ -877,17 +845,7 @@ func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal) Vali
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocalListenerPortAndProtocal struct {
-	// The frontend port that is used by the CLB instance.
-	//
-	// example:
-	//
-	// 443
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The frontend protocol that is used by the CLB instance.
-	//
-	// example:
-	//
-	// http
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocal *string `json:"ListenerProtocal,omitempty" xml:"ListenerProtocal,omitempty"`
 }
 
@@ -956,35 +914,10 @@ func (s *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocol) Vali
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocolListenerPortAndProtocol struct {
-	// Indicates whether the listener is enabled.
-	//
-	// example:
-	//
-	// Listener Description
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination listening port to which requests are forwarded. The port must be open and use HTTPS.
-	//
-	// example:
-	//
-	// 443
-	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// Indicates whether the listener is enabled.
-	//
-	// example:
-	//
-	// on
-	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	// The frontend port that is used by the CLB instance.
-	//
-	// example:
-	//
-	// 80
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The frontend protocol that is used by the CLB instance.
-	//
-	// example:
-	//
-	// https
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 }
 
@@ -1080,21 +1013,7 @@ func (s *DescribeLoadBalancerAttributeResponseBodyTags) Validate() error {
 }
 
 type DescribeLoadBalancerAttributeResponseBodyTagsTag struct {
-	// The tag key. Valid values of N: **1*	- to **20**. The tag key cannot be an empty string.
-	//
-	// The tag key can be at most 64 characters in length, and cannot contain `http://` or `https://`. It must not start with `aliyun` or `acs:`.
-	//
-	// example:
-	//
-	// test
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value. Valid values of N: **1*	- to **20**. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// value
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

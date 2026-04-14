@@ -16,7 +16,6 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,24 +95,9 @@ func (s *DescribeRegionsResponseBodyRegions) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The name of the region.
-	//
-	// example:
-	//
-	// China (Beijing)
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint of the region.
-	//
-	// example:
-	//
-	// slb.aliyuncs.com
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
-	//
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {

@@ -18,7 +18,6 @@ type iCreateMasterSlaveServerGroupResponseBody interface {
 }
 
 type CreateMasterSlaveServerGroupResponseBody struct {
-	// The backend servers in the primary/secondary server group.
 	MasterSlaveBackendServers *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
 	// The ID of the active/standby server group.
 	//
@@ -113,50 +112,12 @@ func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) Vali
 }
 
 type CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer struct {
-	// The description of the primary/secondary server group.
-	//
-	// example:
-	//
-	// test-112
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port that is used by the backend server.
-	//
-	// example:
-	//
-	// 82
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend server that you want to add.
-	//
-	// example:
-	//
-	// i-bp1fq61enf4loa5i****
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of backend server.
-	//
-	// Valid values: **Master*	- and **Slave**.
-	//
-	// example:
-	//
-	// Master
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The type of backend server. Valid values:
-	//
-	// 	- **ecs**: ECS instance
-	//
-	// 	- **eni**: ENI
-	//
-	// 	- **eci**: elastic container instance
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerType  *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer) String() string {

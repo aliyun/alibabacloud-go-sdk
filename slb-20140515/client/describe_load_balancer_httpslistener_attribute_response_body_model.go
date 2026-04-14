@@ -115,8 +115,7 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	// example:
 	//
 	// acl-a2do9e413e0spzasx****
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the network access control list (ACL) that is associated with the listener.
+	AclId  *string                                                       `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclIds *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values:
 	//
@@ -179,8 +178,7 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	// example:
 	//
 	// HTTPS_443
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// A list of additional certificates.
+	Description      *string                                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
 	DomainExtensions *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
 	// Indicates whether `HTTP/2` is used. Valid values:
 	//
@@ -297,9 +295,8 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	// example:
 	//
 	// 43
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The list of forwarding rules that are associated with the listener.
-	Rules *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestTimeout *int32                                                       `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Rules          *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	// The routing algorithm. Valid values: **wrr*	- and **rr**.
 	//
 	// 	- **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
@@ -399,9 +396,8 @@ type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
 	// example:
 	//
 	// tls_cipher_policy_1_0
-	TLSCipherPolicy *string `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
-	// The tags.
-	Tags *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TLSCipherPolicy *string                                                     `json:"TLSCipherPolicy,omitempty" xml:"TLSCipherPolicy,omitempty"`
+	Tags            *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The unhealthy threshold.
 	//
 	// example:
@@ -1040,23 +1036,8 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensions)
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyDomainExtensionsDomainExtension struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// www.example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the additional certificate.
-	//
-	// example:
-	//
-	// 12
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-	// The ID of the certificate used by the domain name.
-	//
-	// example:
-	//
-	// 13344444****
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 
@@ -1134,35 +1115,10 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRules) Validate()
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyRulesRule struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// www.example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the forwarding rule.
-	//
-	// example:
-	//
-	// 23
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule.
-	//
-	// example:
-	//
-	// example
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The request URL.
-	//
-	// example:
-	//
-	// /example
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The ID of the server group specified in the forwarding rule.
-	//
-	// example:
-	//
-	// rsp-cige6j5e********
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -1258,17 +1214,7 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTags) Validate() 
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBodyTagsTag struct {
-	// The key of tag N. Valid values of N: **1*	- to **20**. The tag value cannot be an empty string. The tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag N. Valid values of N: **1*	- to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

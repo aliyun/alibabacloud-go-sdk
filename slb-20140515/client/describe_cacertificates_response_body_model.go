@@ -16,7 +16,6 @@ type iDescribeCACertificatesResponseBody interface {
 }
 
 type DescribeCACertificatesResponseBody struct {
-	// The information about the CA certificate.
 	CACertificates *DescribeCACertificatesResponseBodyCACertificates `json:"CACertificates,omitempty" xml:"CACertificates,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,72 +95,17 @@ func (s *DescribeCACertificatesResponseBodyCACertificates) Validate() error {
 }
 
 type DescribeCACertificatesResponseBodyCACertificatesCACertificate struct {
-	// The CA certificate ID.
-	//
-	// example:
-	//
-	// 139a00604bd-cn-east-hangzho****
-	CACertificateId *string `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
-	// The CA certificate name.
-	//
-	// example:
-	//
-	// test
-	CACertificateName *string `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
-	// The domain name of the CA certificate.
-	//
-	// example:
-	//
-	// www.example.com
-	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the CA certificate was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2021-08-31T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp when the CA certificate was created. Unit: milliseconds.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1504147745000
-	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The time when the CA certificate expires. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2024-11-21T06:04:25Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The timestamp that indicates when the CA certificate expires. Unit: milliseconds.
-	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1732169065000
-	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	// The fingerprint of the CA certificate.
-	//
-	// example:
-	//
-	// 79:43:fb:7d:a4:7f:44:32:61:16:57:17:e3:e8:b7:36:03:57:f6:89
-	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The region of the CA certificate.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-atstuj3rtop****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag.
-	Tags *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	CACertificateId   *string                                                            `json:"CACertificateId,omitempty" xml:"CACertificateId,omitempty"`
+	CACertificateName *string                                                            `json:"CACertificateName,omitempty" xml:"CACertificateName,omitempty"`
+	CommonName        *string                                                            `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CreateTime        *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimeStamp   *int64                                                             `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	ExpireTime        *string                                                            `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimeStamp   *int64                                                             `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	Fingerprint       *string                                                            `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	RegionId          *string                                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId   *string                                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags              *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeCACertificatesResponseBodyCACertificatesCACertificate) String() string {
@@ -315,17 +259,7 @@ func (s *DescribeCACertificatesResponseBodyCACertificatesCACertificateTags) Vali
 }
 
 type DescribeCACertificatesResponseBodyCACertificatesCACertificateTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

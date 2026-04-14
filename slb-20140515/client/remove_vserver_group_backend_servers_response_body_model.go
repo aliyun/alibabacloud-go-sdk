@@ -18,7 +18,6 @@ type iRemoveVServerGroupBackendServersResponseBody interface {
 }
 
 type RemoveVServerGroupBackendServersResponseBody struct {
-	// The backend servers.
 	BackendServers *RemoveVServerGroupBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -113,36 +112,10 @@ func (s *RemoveVServerGroupBackendServersResponseBodyBackendServers) Validate() 
 }
 
 type RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer struct {
-	// The port that is used by the backend server.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend server.
-	//
-	// example:
-	//
-	// vm-230
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of the backend server. Valid values:
-	//
-	// 	- **ecs*	- (default): ECS instance
-	//
-	// 	- **eni**: ENI
-	//
-	// 	- **eci**: elastic container instance
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s RemoveVServerGroupBackendServersResponseBodyBackendServersBackendServer) String() string {

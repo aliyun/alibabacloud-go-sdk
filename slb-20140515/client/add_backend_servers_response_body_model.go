@@ -18,7 +18,6 @@ type iAddBackendServersResponseBody interface {
 }
 
 type AddBackendServersResponseBody struct {
-	// The list of backend servers.
 	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The ID of the CLB instance.
 	//
@@ -113,40 +112,10 @@ func (s *AddBackendServersResponseBodyBackendServers) Validate() error {
 }
 
 type AddBackendServersResponseBodyBackendServersBackendServer struct {
-	// The description of the backend server.
-	//
-	// example:
-	//
-	// backend server
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ECS instance, ENI, or elastic container instance.
-	//
-	// example:
-	//
-	// i-2zej4lxhjoq1icu*****
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of the backend server. Valid values:
-	//
-	// 	- **ecs*	- (default): an ECS instance
-	//
-	// 	- **eni**: an ENI
-	//
-	// 	- **eci**: an elastic container instance
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// Valid values: **0 to 100**. Default value: **100**.
-	//
-	// If the value is set to **0**, no requests are forwarded to the backend server.
-	//
-	// example:
-	//
-	// 100
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddBackendServersResponseBodyBackendServersBackendServer) String() string {

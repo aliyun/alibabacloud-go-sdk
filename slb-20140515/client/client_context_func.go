@@ -1546,6 +1546,10 @@ func (client *Client) CreateRulesWithContext(ctx context.Context, request *Creat
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.ListenerPort) {
 		query["ListenerPort"] = request.ListenerPort
 	}
@@ -6039,7 +6043,7 @@ func (client *Client) SetDomainExtensionAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Enables or disables the whitelist of a specified listener.
+// Enables or disables the whitelist of a listener.
 //
 // @param request - SetListenerAccessControlStatusRequest
 //
@@ -6232,6 +6236,10 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithContext(ctx contex
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Gzip) {
@@ -6436,6 +6444,10 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithContext(ctx conte
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.EnableHttp2) {
 		query["EnableHttp2"] = request.EnableHttp2
 	}
@@ -6597,7 +6609,7 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithContext(ctx conte
 
 // Summary:
 //
-// Modifies the configuration of the configuration read-only mode for a Classic Load Balancer (CLB) instance.
+// Enable or disable the configuration read-only mode for a Classic Load Balancer (CLB) instance.
 //
 // @param request - SetLoadBalancerModificationProtectionRequest
 //
@@ -6854,6 +6866,10 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithContext(ctx context
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.EstablishedTimeout) {
 		query["EstablishedTimeout"] = request.EstablishedTimeout
 	}
@@ -7024,6 +7040,10 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithContext(ctx context
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !dara.IsNil(request.HealthCheckConnectPort) {
 		query["HealthCheckConnectPort"] = request.HealthCheckConnectPort
 	}
@@ -7154,6 +7174,10 @@ func (client *Client) SetRuleWithContext(ctx context.Context, request *SetRuleRe
 
 	if !dara.IsNil(request.CookieTimeout) {
 		query["CookieTimeout"] = request.CookieTimeout
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.HealthCheck) {

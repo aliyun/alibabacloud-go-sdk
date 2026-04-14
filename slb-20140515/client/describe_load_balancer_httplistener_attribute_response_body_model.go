@@ -101,8 +101,7 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// acl-uf60jw******
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ID of the access control list (ACL).
+	AclId  *string                                                      `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclIds *DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values:
 	//
@@ -293,9 +292,8 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// 34
-	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The list of forwarding rules.
-	Rules *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestTimeout *int32                                                      `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	Rules          *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 	// The routing algorithm. Valid values:
 	//
 	// 	- **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
@@ -353,9 +351,8 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// insert
-	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	// The tags.
-	Tags *DescribeLoadBalancerHTTPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	StickySessionType *string                                                    `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	Tags              *DescribeLoadBalancerHTTPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The unhealthy threshold.
 	//
 	// example:
@@ -886,35 +883,10 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyRules) Validate() 
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// www.example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the forwarding rule.
-	//
-	// example:
-	//
-	// 1234
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule.
-	//
-	// example:
-	//
-	// test
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The request URL.
-	//
-	// example:
-	//
-	// /example
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// The ID of the server group specified in the forwarding rule.
-	//
-	// example:
-	//
-	// rsp-uf6w******
+	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	RuleId         *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName       *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 }
 
@@ -1010,17 +982,7 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBodyTags) Validate() e
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBodyTagsTag struct {
-	// The key of tag N. Valid values of N: **1*	- to **20**. The tag value cannot be an empty string. The tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag N. Valid values of N: **1*	- to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

@@ -18,7 +18,6 @@ type iRemoveBackendServersResponseBody interface {
 }
 
 type RemoveBackendServersResponseBody struct {
-	// The backend servers.
 	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The ID of the CLB instance.
 	//
@@ -113,36 +112,10 @@ func (s *RemoveBackendServersResponseBodyBackendServers) Validate() error {
 }
 
 type RemoveBackendServersResponseBodyBackendServersBackendServer struct {
-	// The description of the server group.
-	//
-	// example:
-	//
-	// BackendServer1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the backend server.
-	//
-	// example:
-	//
-	// i-bp1fq61enf4loa5i****
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of backend server. Valid values:
-	//
-	// 	- **ecs**: ECS instance
-	//
-	// 	- **eni**: ENI
-	//
-	// 	- **eci**: elastic container instances
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server. Valid values: **0 to 100**.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s RemoveBackendServersResponseBodyBackendServersBackendServer) String() string {

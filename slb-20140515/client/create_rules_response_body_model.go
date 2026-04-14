@@ -21,9 +21,8 @@ type CreateRulesResponseBody struct {
 	// example:
 	//
 	// 9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The forwarding rules.
-	Rules *CreateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules     *CreateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s CreateRulesResponseBody) String() string {
@@ -96,17 +95,7 @@ func (s *CreateRulesResponseBodyRules) Validate() error {
 }
 
 type CreateRulesResponseBodyRulesRule struct {
-	// The forwarding rule ID.
-	//
-	// example:
-	//
-	// rule-bp12jzy0*****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule.
-	//
-	// example:
-	//
-	// Rule2
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

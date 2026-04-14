@@ -39,9 +39,8 @@ type DescribeTagsResponseBody struct {
 	// example:
 	//
 	// 365F4154-92F6-4AE4-92F8-7FF34B540710
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are queried.
-	TagSets *DescribeTagsResponseBodyTagSets `json:"TagSets,omitempty" xml:"TagSets,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagSets   *DescribeTagsResponseBodyTagSets `json:"TagSets,omitempty" xml:"TagSets,omitempty" type:"Struct"`
 	// The number of instances returned.
 	//
 	// example:
@@ -147,24 +146,9 @@ func (s *DescribeTagsResponseBodyTagSets) Validate() error {
 }
 
 type DescribeTagsResponseBodyTagSetsTagSet struct {
-	// The number of instances to which the tag is added.
-	//
-	// example:
-	//
-	// 10
-	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// api
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	InstanceCount *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	TagKey        *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue      *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeTagsResponseBodyTagSetsTagSet) String() string {

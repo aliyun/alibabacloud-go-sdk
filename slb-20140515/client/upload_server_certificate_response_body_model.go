@@ -133,10 +133,7 @@ type UploadServerCertificateResponseBody struct {
 	// example:
 	//
 	// mycert01
-	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
-	// The subject alternative names.
-	//
-	// A domain name list is supported. A maximum of 10 domain names are supported.
+	ServerCertificateName   *string                                                     `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	SubjectAlternativeNames *UploadServerCertificateResponseBodySubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
 }
 

@@ -20,7 +20,6 @@ type iSetVServerGroupAttributeResponseBody interface {
 }
 
 type SetVServerGroupAttributeResponseBody struct {
-	// The backend servers.
 	BackendServers *SetVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -130,42 +129,11 @@ func (s *SetVServerGroupAttributeResponseBodyBackendServers) Validate() error {
 }
 
 type SetVServerGroupAttributeResponseBodyBackendServersBackendServer struct {
-	// The description of the server group.
-	//
-	// example:
-	//
-	// Backend server group description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port that is used by the backend server.
-	//
-	// example:
-	//
-	// 70
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend server.
-	//
-	// example:
-	//
-	// i-bp1ek6yd7jvkx****
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The type of backend server. Valid values:
-	//
-	// 	- **ecs*	- (default): ECS instance
-	//
-	// 	- **eni**: ENI
-	//
-	// 	- **eci**: elastic container instance
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SetVServerGroupAttributeResponseBodyBackendServersBackendServer) String() string {

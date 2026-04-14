@@ -22,7 +22,6 @@ type iDescribeLoadBalancersResponseBody interface {
 }
 
 type DescribeLoadBalancersResponseBody struct {
-	// An array of CLB instances.
 	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -147,202 +146,32 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancers) Validate() error {
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
-	// The endpoint of the CLB instance.
-	//
-	// example:
-	//
-	// 100.XX.XX.28
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The IP version that is used by the CLB instance. Valid values: **ipv4*	- and **ipv6**.
-	//
-	// example:
-	//
-	// ipv4
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The network type of the CLB instance. Valid values:
-	//
-	// 	- **internet:*	- After an Internet-facing CLB instance is created, the system assigns a public IP address to the CLB instance. Then, the CLB instance can forward requests over the Internet.
-	//
-	// 	- **intranet:*	- After an internal-facing CLB instance is created, the system assigns a private IP address to the CLB instance. Then, the CLB instance can forward requests only over internal networks.
-	//
-	// example:
-	//
-	// intranet
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The maximum bandwidth of the listener. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// -1
-	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2021-12-02T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp when the instance was created.
-	//
-	// example:
-	//
-	// 1504147745000
-	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// Indicates whether deletion protection is enabled for the CLB instance. Valid values:
-	//
-	// 	- **on:*	- Deletion protection is enabled.
-	//
-	// 	- **off:*	- Deletion protection is disabled.
-	//
-	// example:
-	//
-	// off
-	DeleteProtection *string `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
-	// The metering method of the CLB instance. Valid values:
-	//
-	// 	- **PayBySpec:*	- pay-by-specification.
-	//
-	// 	- **PayByCLCU:*	- pay-by-LCU.
-	//
-	// >  This parameter takes effect only for accounts registered on the China site (aliyun.com) and when the **PayType*	- parameter is set to **PayOnDemand**.
-	//
-	// example:
-	//
-	// PayBySpec
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The metering method of the Internet-facing CLB instance. Valid values:
-	//
-	// 	- **3:*	- pay-by-bandwidth (**paybybandwidth**).
-	//
-	// 	- **4:*	- pay-by-data-transfer (**paybytraffic**).
-	//
-	// example:
-	//
-	// 3
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The metering method of Internet data transfer. Valid values:
-	//
-	// 	- **paybybandwidth:*	- pay-by-bandwidth.
-	//
-	// 	- **paybytraffic:*	- pay-by-data-transfer.
-	//
-	// example:
-	//
-	// paybybandwidth
-	InternetChargeTypeAlias *string `json:"InternetChargeTypeAlias,omitempty" xml:"InternetChargeTypeAlias,omitempty"`
-	// The ID of the CLB instance.
-	//
-	// example:
-	//
-	// lb-bp1b6c719dfa****
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the CLB instance.
-	//
-	// example:
-	//
-	// lb-bp1o94dp5i6ea****
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The specification of the CLB instance.
-	//
-	// >  Pay-as-you-go CLB instances are not subject to specifications. **slb.lcu.elastic*	- is returned by default.
-	//
-	// example:
-	//
-	// slb.s1.small
-	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	// The status of the CLB instance. Valid values:
-	//
-	// 	- **inactive:*	- The CLB instance is disabled. CLB instances in the inactive state do not forward traffic.
-	//
-	// 	- **active:*	- The CLB instance runs as expected. By default, newly created CLB instances are in the **active*	- state.
-	//
-	// 	- **locked:*	- The CLB instance is locked.
-	//
-	// example:
-	//
-	// active
-	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The ID of the primary zone to which the CLB instance belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	// The reason why the configuration read-only mode was enabled. The reason must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
-	//
-	// > This parameter takes effect only when you set the `ModificationProtectionStatus` parameter to **ConsoleProtection**.
-	//
-	// example:
-	//
-	// ManagedInstance
-	ModificationProtectionReason *string `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
-	// Indicates whether the configuration read-only mode is enabled for the CLB instance. Valid values:
-	//
-	// 	- **NonProtection:*	- The configuration read-only mode is disabled. In this case, you cannot specify the ModificationProtectionReason parameter. If you specify the `ModificationProtectionReason` parameter, the value is cleared.
-	//
-	// 	- **ConsoleProtection:*	- The configuration read-only mode is enabled.
-	//
-	// >  If you set this parameter to **ConsoleProtection**, you cannot modify the configurations of the CLB instance in the CLB console. However, you can call API operations to modify the configurations of the CLB instance.
-	//
-	// example:
-	//
-	// ConsoleProtection
-	ModificationProtectionStatus *string `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
-	// The network type of the internal-facing CLB instance. Valid values:
-	//
-	// 	- **vpc**: VPC
-	//
-	// 	- **Classic**: classic network
-	//
-	// example:
-	//
-	// vpc
-	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The billing method of the CLB instance.
-	//
-	// 	- **PayOnDemand*	- is returned, which indicates the pay-as-you-go billing method.
-	//
-	// example:
-	//
-	// PayOnDemand
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the region where the CLB instance was deployed.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region where the CLB instance was deployed.
-	//
-	// example:
-	//
-	// hangzhou
-	RegionIdAlias *string `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-atstuj3r****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the secondary zone to which the CLB instance belongs.
-	//
-	// example:
-	//
-	// cn-hangzhou-d
-	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	// The tags.
-	Tags *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancerTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch to which the internal-facing CLB instance belongs.
-	//
-	// example:
-	//
-	// vsw-255ecr****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC in which the internal-facing CLB instance was deployed.
-	//
-	// example:
-	//
-	// vpc-25dvzy9f8****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Address                      *string                                                         `json:"Address,omitempty" xml:"Address,omitempty"`
+	AddressIPVersion             *string                                                         `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	AddressType                  *string                                                         `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	Bandwidth                    *int32                                                          `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	CreateTime                   *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimeStamp              *int64                                                          `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	DeleteProtection             *string                                                         `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	InstanceChargeType           *string                                                         `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InternetChargeType           *string                                                         `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetChargeTypeAlias      *string                                                         `json:"InternetChargeTypeAlias,omitempty" xml:"InternetChargeTypeAlias,omitempty"`
+	LoadBalancerId               *string                                                         `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	LoadBalancerName             *string                                                         `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerSpec             *string                                                         `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	LoadBalancerStatus           *string                                                         `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	MasterZoneId                 *string                                                         `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	ModificationProtectionReason *string                                                         `json:"ModificationProtectionReason,omitempty" xml:"ModificationProtectionReason,omitempty"`
+	ModificationProtectionStatus *string                                                         `json:"ModificationProtectionStatus,omitempty" xml:"ModificationProtectionStatus,omitempty"`
+	NetworkType                  *string                                                         `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType                      *string                                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId                     *string                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionIdAlias                *string                                                         `json:"RegionIdAlias,omitempty" xml:"RegionIdAlias,omitempty"`
+	ResourceGroupId              *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SlaveZoneId                  *string                                                         `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
+	Tags                         *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancerTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId                    *string                                                         `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                        *string                                                         `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) String() string {
@@ -631,17 +460,7 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancerTags) Validat
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancerTagsTag struct {
-	// The key of the tag.
-	//
-	// example:
-	//
-	// FinanceDept
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	//
-	// example:
-	//
-	// FinanceJoshua
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

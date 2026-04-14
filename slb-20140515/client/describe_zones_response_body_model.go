@@ -21,9 +21,8 @@ type DescribeZonesResponseBody struct {
 	// example:
 	//
 	// A48D35FF-440A-4BC0-A4A2-A9BF69B7E43A
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The zones.
-	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Zones     *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -96,20 +95,9 @@ func (s *DescribeZonesResponseBodyZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	// The name of the zone.
-	//
-	// example:
-	//
-	// The list of secondary zones.
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The secondary zones.
+	LocalName  *string                                       `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	SlaveZones *DescribeZonesResponseBodyZonesZoneSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
-	// The ID of the zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId     *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZone) String() string {
@@ -191,18 +179,8 @@ func (s *DescribeZonesResponseBodyZonesZoneSlaveZones) Validate() error {
 }
 
 type DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone struct {
-	// The name of the secondary zone.
-	//
-	// example:
-	//
-	// Queries zones in a specified region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the secondary zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-g
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZonesResponseBodyZonesZoneSlaveZonesSlaveZone) String() string {

@@ -23,6 +23,8 @@ type iSetLoadBalancerHTTPListenerAttributeRequest interface {
 	GetCookieTimeout() *int32
 	SetDescription(v string) *SetLoadBalancerHTTPListenerAttributeRequest
 	GetDescription() *string
+	SetDryRun(v bool) *SetLoadBalancerHTTPListenerAttributeRequest
+	GetDryRun() *bool
 	SetGzip(v string) *SetLoadBalancerHTTPListenerAttributeRequest
 	GetGzip() *string
 	SetHealthCheck(v string) *SetLoadBalancerHTTPListenerAttributeRequest
@@ -156,6 +158,7 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable `GZIP` compression to compress specific types of files. Valid values:
 	//
 	// 	- **on**
@@ -460,6 +463,10 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) GetGzip() *string {
 	return s.Gzip
 }
@@ -616,6 +623,11 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetCookieTimeout(v int32) 
 
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetDryRun(v bool) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.DryRun = &v
 	return s
 }
 

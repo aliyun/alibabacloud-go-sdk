@@ -16,7 +16,6 @@ type iDescribeDomainExtensionsResponseBody interface {
 }
 
 type DescribeDomainExtensionsResponseBody struct {
-	// A list of additional certificates.
 	DomainExtensions *DescribeDomainExtensionsResponseBodyDomainExtensions `json:"DomainExtensions,omitempty" xml:"DomainExtensions,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,23 +95,8 @@ func (s *DescribeDomainExtensionsResponseBodyDomainExtensions) Validate() error 
 }
 
 type DescribeDomainExtensionsResponseBodyDomainExtensionsDomainExtension struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// www.example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the additional certificate.
-	//
-	// example:
-	//
-	// de-bp1rp7ta1****
-	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
-	// The ID of the certificate used by the domain name.
-	//
-	// example:
-	//
-	// 1231579085529123_166f8204689_1714763408_70998****
+	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainExtensionId   *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
 }
 

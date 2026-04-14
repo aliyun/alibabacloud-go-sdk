@@ -16,7 +16,6 @@ type iDescribeAvailableResourceResponseBody interface {
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	// The zones and the supported resources.
 	AvailableResources *DescribeAvailableResourceResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,19 +95,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResources) Validate() err
 }
 
 type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResource struct {
-	// The primary zone.
-	//
-	// example:
-	//
-	// cn-shanghai-a
-	MasterZoneId *string `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
-	// The secondary zone.
-	//
-	// example:
-	//
-	// cn-shanghai-b
-	SlaveZoneId *string `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
-	// The supported resources.
+	MasterZoneId     *string                                                                                   `json:"MasterZoneId,omitempty" xml:"MasterZoneId,omitempty"`
+	SlaveZoneId      *string                                                                                   `json:"SlaveZoneId,omitempty" xml:"SlaveZoneId,omitempty"`
 	SupportResources *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -191,22 +179,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourc
 }
 
 type DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource struct {
-	// The type of the IP address.
-	//
-	// Valid values: **ipv4 and ipv6**.
-	//
-	// example:
-	//
-	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The network type.
-	//
-	// Valid values: **vpc, classic-internet, and classic-intranet**.
-	//
-	// example:
-	//
-	// classic_internet
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableResourcesAvailableResourceSupportResourcesSupportResource) String() string {

@@ -16,7 +16,6 @@ type iDescribeMasterSlaveServerGroupsResponseBody interface {
 }
 
 type DescribeMasterSlaveServerGroupsResponseBody struct {
-	// The primary/secondary server groups.
 	MasterSlaveServerGroups *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups `json:"MasterSlaveServerGroups,omitempty" xml:"MasterSlaveServerGroups,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,28 +95,11 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) Val
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
-	// The associated resources.
-	AssociatedObjects *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	// The time when the CLB instance was created. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2022-12-02T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the primary/secondary server group.
-	//
-	// example:
-	//
-	// rsp-0bfuc******
-	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	// The name of the primary/secondary server group.
-	//
-	// example:
-	//
-	// Group3
-	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
-	// The tags to add to the resource.
-	Tags *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AssociatedObjects          *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
+	CreateTime                 *string                                                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	MasterSlaveServerGroupId   *string                                                                                                    `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
+	MasterSlaveServerGroupName *string                                                                                                    `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
+	Tags                       *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup) String() string {
@@ -188,7 +170,6 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects struct {
-	// The listeners.
 	Listeners *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
 }
 
@@ -253,17 +234,7 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener struct {
-	// The listener port.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The listener protocol.
-	//
-	// example:
-	//
-	// tcp
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -332,17 +303,7 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test_slb_yaochi_tag_key-0
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 000098dab00323fb
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

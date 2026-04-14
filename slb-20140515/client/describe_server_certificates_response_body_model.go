@@ -21,8 +21,7 @@ type DescribeServerCertificatesResponseBody struct {
 	// example:
 	//
 	// 365F4154-92F6-4AE4-92F8-7FF34B540710
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The server certificates.
+	RequestId          *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServerCertificates *DescribeServerCertificatesResponseBodyServerCertificates `json:"ServerCertificates,omitempty" xml:"ServerCertificates,omitempty" type:"Struct"`
 }
 
@@ -96,92 +95,21 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificates) Validate() er
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate struct {
-	// The ID of the server certificate from Alibaba Cloud Certificate Management Service.
-	//
-	// example:
-	//
-	// 7309********_15d97e7709a_71445759hr_789289731
-	AliCloudCertificateId *string `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
-	// The name of the server certificate from Alibaba Cloud Certificate Management Service.
-	//
-	// example:
-	//
-	// testcertkey
-	AliCloudCertificateName *string `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
-	// The domain name of the server certificate. The domain name is specified in the `CommonName` field.
-	//
-	// example:
-	//
-	// www.example.com
-	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the server certificate was uploaded.
-	//
-	// example:
-	//
-	// 2021-08-31T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The timestamp when the server certificate was uploaded.
-	//
-	// example:
-	//
-	// 1504147745000
-	CreateTimeStamp *int64 `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
-	// The time when the server certificate expires.
-	//
-	// example:
-	//
-	// 2023-01-26T23:59:59Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The timestamp when the server certificate expires.
-	//
-	// example:
-	//
-	// 15041477450
-	ExpireTimeStamp *int64 `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
-	// The fingerprint of the server certificate.
-	//
-	// example:
-	//
-	// 68:08:1a:f8:2c:97:69:a3:a1:e6:16:41:4b:ca:4f:5d:ee:a5:ef:0d
-	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// Indicates whether the server certificate is from Alibaba Cloud Certificate Management Service. Valid values:
-	//
-	// 	- **1**: yes
-	//
-	// 	- **0**: no
-	//
-	// example:
-	//
-	// 0
-	IsAliCloudCertificate *int32 `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
-	// The region ID of the server certificate.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
-	//
-	// example:
-	//
-	// rg-atstuj3rtop****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The server certificate ID.
-	//
-	// example:
-	//
-	// 123157********_166f8204689_1714763408_709981430-cn-east-hangzhou-02
-	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The name of the server certificate.
-	//
-	// example:
-	//
-	// slb
-	ServerCertificateName *string `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
-	// The alternative domain names of the server certificate. The alternative domain names are specified in the Subject Alternative Name field of the server certificate.
+	AliCloudCertificateId   *string                                                                                           `json:"AliCloudCertificateId,omitempty" xml:"AliCloudCertificateId,omitempty"`
+	AliCloudCertificateName *string                                                                                           `json:"AliCloudCertificateName,omitempty" xml:"AliCloudCertificateName,omitempty"`
+	CommonName              *string                                                                                           `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	CreateTime              *string                                                                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTimeStamp         *int64                                                                                            `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	ExpireTime              *string                                                                                           `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimeStamp         *int64                                                                                            `json:"ExpireTimeStamp,omitempty" xml:"ExpireTimeStamp,omitempty"`
+	Fingerprint             *string                                                                                           `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	IsAliCloudCertificate   *int32                                                                                            `json:"IsAliCloudCertificate,omitempty" xml:"IsAliCloudCertificate,omitempty"`
+	RegionId                *string                                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string                                                                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerCertificateId     *string                                                                                           `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	ServerCertificateName   *string                                                                                           `json:"ServerCertificateName,omitempty" xml:"ServerCertificateName,omitempty"`
 	SubjectAlternativeNames *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateSubjectAlternativeNames `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Struct"`
-	// The tags.
-	Tags *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Tags                    *DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeServerCertificatesResponseBodyServerCertificatesServerCertificate) String() string {
@@ -401,17 +329,7 @@ func (s *DescribeServerCertificatesResponseBodyServerCertificatesServerCertifica
 }
 
 type DescribeServerCertificatesResponseBodyServerCertificatesServerCertificateTagsTag struct {
-	// The tag keys of the resource.
-	//
-	// example:
-	//
-	// test
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// 1
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

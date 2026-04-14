@@ -83,8 +83,7 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// acl-uf60jwfi******
-	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The IDs of the ACLs.
+	AclId  *string                                                     `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	AclIds *DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Struct"`
 	// Indicates whether access control is enabled. Valid values:
 	//
@@ -311,9 +310,8 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	// example:
 	//
 	// disable
-	SynProxy *string `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
-	// The tags.
-	Tags *DescribeLoadBalancerTCPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SynProxy *string                                                   `json:"SynProxy,omitempty" xml:"SynProxy,omitempty"`
+	Tags     *DescribeLoadBalancerTCPListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The unhealthy threshold. The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**. Valid values: **2*	- to **10**.
 	//
 	// example:
@@ -698,17 +696,7 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponseBodyTags) Validate() er
 }
 
 type DescribeLoadBalancerTCPListenerAttributeResponseBodyTagsTag struct {
-	// The key of tag N. Valid values of N: **1*	- to **20**. The tag value cannot be an empty string. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag N. Valid values of N: **1*	- to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

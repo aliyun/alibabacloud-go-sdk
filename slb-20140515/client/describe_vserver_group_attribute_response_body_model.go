@@ -26,7 +26,6 @@ type iDescribeVServerGroupAttributeResponseBody interface {
 }
 
 type DescribeVServerGroupAttributeResponseBody struct {
-	// The backend servers.
 	BackendServers *DescribeVServerGroupAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
 	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
@@ -45,9 +44,8 @@ type DescribeVServerGroupAttributeResponseBody struct {
 	// example:
 	//
 	// 9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags of the backend server.
-	Tags *DescribeVServerGroupAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags      *DescribeVServerGroupAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vServer group.
 	//
 	// example:
@@ -182,50 +180,12 @@ func (s *DescribeVServerGroupAttributeResponseBodyBackendServers) Validate() err
 }
 
 type DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer struct {
-	// The description of the server group.
-	//
-	// >  This parameter is not returned if the Description parameter is not specified in the request.
-	//
-	// example:
-	//
-	// Server Group Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port that is used by the backend server.
-	//
-	// example:
-	//
-	// 90
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend server.
-	//
-	// example:
-	//
-	// vm-233
-	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP address of the backend server.
-	//
-	// example:
-	//
-	// 192.XX.XX.11
-	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The type of backend server. Valid values:
-	//
-	// 	- **ecs**: ECS instance
-	//
-	// 	- **eni**: ENI
-	//
-	// 	- **eci**: elastic container instance
-	//
-	// example:
-	//
-	// ecs
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the backend server.
-	//
-	// example:
-	//
-	// 100
-	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ServerId    *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	ServerIp    *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight      *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeVServerGroupAttributeResponseBodyBackendServersBackendServer) String() string {
@@ -329,21 +289,7 @@ func (s *DescribeVServerGroupAttributeResponseBodyTags) Validate() error {
 }
 
 type DescribeVServerGroupAttributeResponseBodyTagsTag struct {
-	// The tag key. Valid values of N: **1*	- to **20**. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value. Valid values of N: **1*	- to **20**. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

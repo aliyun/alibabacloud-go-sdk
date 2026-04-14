@@ -23,6 +23,8 @@ type iSetLoadBalancerTCPListenerAttributeRequest interface {
 	GetConnectionDrainTimeout() *int32
 	SetDescription(v string) *SetLoadBalancerTCPListenerAttributeRequest
 	GetDescription() *string
+	SetDryRun(v bool) *SetLoadBalancerTCPListenerAttributeRequest
+	GetDryRun() *bool
 	SetEstablishedTimeout(v int32) *SetLoadBalancerTCPListenerAttributeRequest
 	GetEstablishedTimeout() *int32
 	SetHealthCheckConnectPort(v int32) *SetLoadBalancerTCPListenerAttributeRequest
@@ -148,6 +150,7 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// tcp_80
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The timeout period of a connection. Unit: seconds. Valid values: **10*	- to **900**.
 	//
 	// example:
@@ -398,6 +401,10 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *SetLoadBalancerTCPListenerAttributeRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *SetLoadBalancerTCPListenerAttributeRequest) GetEstablishedTimeout() *int32 {
 	return s.EstablishedTimeout
 }
@@ -534,6 +541,11 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetConnectionDrainTimeout(v
 
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerTCPListenerAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetDryRun(v bool) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.DryRun = &v
 	return s
 }
 

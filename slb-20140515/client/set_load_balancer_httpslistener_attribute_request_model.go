@@ -25,6 +25,8 @@ type iSetLoadBalancerHTTPSListenerAttributeRequest interface {
 	GetCookieTimeout() *int32
 	SetDescription(v string) *SetLoadBalancerHTTPSListenerAttributeRequest
 	GetDescription() *string
+	SetDryRun(v bool) *SetLoadBalancerHTTPSListenerAttributeRequest
+	GetDryRun() *bool
 	SetEnableHttp2(v string) *SetLoadBalancerHTTPSListenerAttributeRequest
 	GetEnableHttp2() *string
 	SetGzip(v string) *SetLoadBalancerHTTPSListenerAttributeRequest
@@ -178,6 +180,7 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//
 	// https_80
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to use `HTTP 2.0`. Valid values:
 	//
 	// 	- **on**: yes
@@ -538,6 +541,10 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) GetDescription() *string 
 	return s.Description
 }
 
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) GetEnableHttp2() *string {
 	return s.EnableHttp2
 }
@@ -711,6 +718,11 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetCookieTimeout(v int32)
 
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetDryRun(v bool) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.DryRun = &v
 	return s
 }
 

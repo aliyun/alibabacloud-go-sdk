@@ -22,7 +22,6 @@ type iDescribeAccessLogsDownloadAttributeResponseBody interface {
 }
 
 type DescribeAccessLogsDownloadAttributeResponseBody struct {
-	// The configuration of the access log.
 	LogsDownloadAttributes *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes `json:"LogsDownloadAttributes,omitempty" xml:"LogsDownloadAttributes,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,36 +146,11 @@ func (s *DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributes) 
 }
 
 type DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute struct {
-	// The CLB instance ID.
-	//
-	// example:
-	//
-	// lb-bp1b6c719dfa08ex*****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the Log Service project.
-	//
-	// example:
-	//
-	// test-log-project
-	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the Logstore.
-	//
-	// example:
-	//
-	// test-log-store
-	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The type of access log. Only **layer7*	- is returned, which indicates Layer 7 access logs.
-	//
-	// example:
-	//
-	// layer7
-	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// The region ID of the CLB instance.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	LogProject     *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	LogStore       *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	LogType        *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeAccessLogsDownloadAttributeResponseBodyLogsDownloadAttributesLogsDownloadAttribute) String() string {

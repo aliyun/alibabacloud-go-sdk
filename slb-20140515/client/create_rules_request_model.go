@@ -9,6 +9,8 @@ type iCreateRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDryRun(v bool) *CreateRulesRequest
+	GetDryRun() *bool
 	SetListenerPort(v int32) *CreateRulesRequest
 	GetListenerPort() *int32
 	SetListenerProtocol(v string) *CreateRulesRequest
@@ -30,6 +32,7 @@ type iCreateRulesRequest interface {
 }
 
 type CreateRulesRequest struct {
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The frontend listener port that is used by the SLB instance.
 	//
 	// Valid values: **1 to 65535**.
@@ -98,6 +101,10 @@ func (s CreateRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateRulesRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateRulesRequest) GetListenerPort() *int32 {
 	return s.ListenerPort
 }
@@ -132,6 +139,11 @@ func (s *CreateRulesRequest) GetResourceOwnerId() *int64 {
 
 func (s *CreateRulesRequest) GetRuleList() *string {
 	return s.RuleList
+}
+
+func (s *CreateRulesRequest) SetDryRun(v bool) *CreateRulesRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *CreateRulesRequest) SetListenerPort(v int32) *CreateRulesRequest {

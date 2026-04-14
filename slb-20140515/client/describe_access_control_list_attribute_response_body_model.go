@@ -32,7 +32,6 @@ type iDescribeAccessControlListAttributeResponseBody interface {
 }
 
 type DescribeAccessControlListAttributeResponseBody struct {
-	// The information about the access control policy.
 	AclEntrys *DescribeAccessControlListAttributeResponseBodyAclEntrys `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
 	// The ACL ID.
 	//
@@ -57,8 +56,7 @@ type DescribeAccessControlListAttributeResponseBody struct {
 	// example:
 	//
 	// 2022-08-31T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The listeners with which the ACL is associated.
+	CreateTime       *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	RelatedListeners *DescribeAccessControlListAttributeResponseBodyRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -71,9 +69,8 @@ type DescribeAccessControlListAttributeResponseBody struct {
 	// example:
 	//
 	// rg-acfmz3jksig****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags added to the ACL.
-	Tags *DescribeAccessControlListAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            *DescribeAccessControlListAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The total number of ACL entries.
 	//
 	// example:
@@ -234,18 +231,8 @@ func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) Validate() err
 }
 
 type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
-	// The remarks of the ACL entry.
-	//
-	// example:
-	//
-	// test
 	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
-	// The IP entry in the ACL.
-	//
-	// example:
-	//
-	// 192.168.0.1
-	AclEntryIP *string `json:"AclEntryIP,omitempty" xml:"AclEntryIP,omitempty"`
+	AclEntryIP      *string `json:"AclEntryIP,omitempty" xml:"AclEntryIP,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) String() string {
@@ -313,34 +300,10 @@ func (s *DescribeAccessControlListAttributeResponseBodyRelatedListeners) Validat
 }
 
 type DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener struct {
-	// The type of ACL. Valid values:
-	//
-	// 	- **black**
-	//
-	// 	- **white**
-	//
-	// example:
-	//
-	// white
-	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
-	// The frontend port of the listener with which the ACL is associated.
-	//
-	// example:
-	//
-	// 443
-	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The CLB instance ID.
-	//
-	// example:
-	//
-	// lb-bp1qpzldlm38bnexl****
+	AclType        *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The type of protocol that the associated listener uses.
-	//
-	// example:
-	//
-	// https
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeAccessControlListAttributeResponseBodyRelatedListenersRelatedListener) String() string {
@@ -426,17 +389,7 @@ func (s *DescribeAccessControlListAttributeResponseBodyTags) Validate() error {
 }
 
 type DescribeAccessControlListAttributeResponseBodyTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

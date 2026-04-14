@@ -21,8 +21,7 @@ type DescribeVServerGroupsResponseBody struct {
 	// example:
 	//
 	// 9DEC9C28-AB05-4DDF-9A78-6B08EC9CE18C
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The backend servers.
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VServerGroups *DescribeVServerGroupsResponseBodyVServerGroups `json:"VServerGroups,omitempty" xml:"VServerGroups,omitempty" type:"Struct"`
 }
 
@@ -96,36 +95,12 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroups) Validate() error {
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup struct {
-	// The associated resources.
 	AssociatedObjects *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
-	//
-	// example:
-	//
-	// 2022-08-31T02:49:05Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of servers.
-	//
-	// This parameter is unavailable by default. To use this parameter, submit a ticket or contact your account manager.
-	//
-	// example:
-	//
-	// 1
-	ServerCount *int64 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
-	// The tags.
-	Tags *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The server group ID.
-	//
-	// example:
-	//
-	// rsp-0bfuc*****
-	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The server group name.
-	//
-	// example:
-	//
-	// Group3
-	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
+	CreateTime        *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ServerCount       *int64                                                                       `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	Tags              *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTags              `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VServerGroupId    *string                                                                      `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	VServerGroupName  *string                                                                      `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) String() string {
@@ -205,10 +180,8 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroup) Validate() 
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects struct {
-	// The listeners.
 	Listeners *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
-	// The forwarding rules.
-	Rules *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
+	Rules     *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRules     `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjects) String() string {
@@ -286,17 +259,7 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObj
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsListenersListener struct {
-	// The listener port.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The listener protocol. Valid values: **tcp**, **udp**, **http**, and **https**.
-	//
-	// example:
-	//
-	// tcp
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -365,30 +328,10 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObj
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule struct {
-	// The requested domain name.
-	//
-	// example:
-	//
-	// www.example.com
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The ID of the forwarding rule.
-	//
-	// example:
-	//
-	// rule-a3x3pg1yohq3lq****
-	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule.
-	//
-	// example:
-	//
-	// test
+	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The request URL.
-	//
-	// example:
-	//
-	// /example
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupAssociatedObjectsRulesRule) String() string {
@@ -474,17 +417,7 @@ func (s *DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTags) Validat
 }
 
 type DescribeVServerGroupsResponseBodyVServerGroupsVServerGroupTagsTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// TestKey
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// TestValue
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 

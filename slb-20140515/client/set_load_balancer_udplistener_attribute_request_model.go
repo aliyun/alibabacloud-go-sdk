@@ -19,6 +19,8 @@ type iSetLoadBalancerUDPListenerAttributeRequest interface {
 	GetBandwidth() *int32
 	SetDescription(v string) *SetLoadBalancerUDPListenerAttributeRequest
 	GetDescription() *string
+	SetDryRun(v bool) *SetLoadBalancerUDPListenerAttributeRequest
+	GetDryRun() *bool
 	SetHealthCheckConnectPort(v int32) *SetLoadBalancerUDPListenerAttributeRequest
 	GetHealthCheckConnectPort() *int32
 	SetHealthCheckConnectTimeout(v int32) *SetLoadBalancerUDPListenerAttributeRequest
@@ -116,6 +118,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// udp_80
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The port that is used for health checks.
 	//
 	// Valid values: **1*	- to **65535**.
@@ -310,6 +313,10 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *SetLoadBalancerUDPListenerAttributeRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *SetLoadBalancerUDPListenerAttributeRequest) GetHealthCheckConnectPort() *int32 {
 	return s.HealthCheckConnectPort
 }
@@ -416,6 +423,11 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetBandwidth(v int32) *SetL
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerUDPListenerAttributeRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetDryRun(v bool) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.DryRun = &v
 	return s
 }
 
