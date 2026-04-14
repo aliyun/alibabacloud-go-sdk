@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 获取连接信息
+// Queries the credential used to connect to an app instance.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -149,7 +149,7 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 已上架应用列表
+// Queries information about published apps.
 //
 // @param request - ListPublishedAppInfoRequest
 //
@@ -249,7 +249,7 @@ func (client *Client) ListPublishedAppInfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 运行中应用列表
+// Queries running apps.
 //
 // @param request - ListRunningAppsRequest
 //
@@ -337,7 +337,7 @@ func (client *Client) ListRunningAppsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 重置应用资源
+// Resets app resources.
 //
 // @param request - ResetAppResourcesRequest
 //
@@ -429,7 +429,7 @@ func (client *Client) ResetAppResourcesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 重启应用资源
+// Restarts app resources.
 //
 // @param request - RestartAppResourcesRequest
 //
@@ -521,7 +521,7 @@ func (client *Client) RestartAppResourcesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 启动应用资源
+// Starts app resources.
 //
 // @param request - StartAppResourcesRequest
 //
@@ -613,7 +613,7 @@ func (client *Client) StartAppResourcesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 停止应用
+// Stops a specific app.
 //
 // @param request - StopAppRequest
 //
@@ -737,7 +737,7 @@ func (client *Client) StopAppWithContext(ctx context.Context, request *StopAppRe
 
 // Summary:
 //
-// 关闭应用资源
+// Stops app resources.
 //
 // @param request - StopAppResourcesRequest
 //
@@ -829,7 +829,7 @@ func (client *Client) StopAppResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 解绑实例
+// Unbinds an app instance from a user.
 //
 // @param request - UnbindRequest
 //

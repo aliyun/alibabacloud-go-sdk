@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 获取连接信息
+// Queries the credential used to connect to an app instance.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -198,7 +198,7 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 // Summary:
 //
-// 获取连接信息
+// Queries the credential used to connect to an app instance.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -216,7 +216,7 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 
 // Summary:
 //
-// 已上架应用列表
+// Queries information about published apps.
 //
 // @param request - ListPublishedAppInfoRequest
 //
@@ -316,7 +316,7 @@ func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppI
 
 // Summary:
 //
-// 已上架应用列表
+// Queries information about published apps.
 //
 // @param request - ListPublishedAppInfoRequest
 //
@@ -334,7 +334,7 @@ func (client *Client) ListPublishedAppInfo(request *ListPublishedAppInfoRequest)
 
 // Summary:
 //
-// 运行中应用列表
+// Queries running apps.
 //
 // @param request - ListRunningAppsRequest
 //
@@ -422,7 +422,7 @@ func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest
 
 // Summary:
 //
-// 运行中应用列表
+// Queries running apps.
 //
 // @param request - ListRunningAppsRequest
 //
@@ -440,7 +440,7 @@ func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result 
 
 // Summary:
 //
-// 重置应用资源
+// Resets app resources.
 //
 // @param request - ResetAppResourcesRequest
 //
@@ -532,7 +532,7 @@ func (client *Client) ResetAppResourcesWithOptions(request *ResetAppResourcesReq
 
 // Summary:
 //
-// 重置应用资源
+// Resets app resources.
 //
 // @param request - ResetAppResourcesRequest
 //
@@ -550,7 +550,7 @@ func (client *Client) ResetAppResources(request *ResetAppResourcesRequest) (_res
 
 // Summary:
 //
-// 重启应用资源
+// Restarts app resources.
 //
 // @param request - RestartAppResourcesRequest
 //
@@ -642,7 +642,7 @@ func (client *Client) RestartAppResourcesWithOptions(request *RestartAppResource
 
 // Summary:
 //
-// 重启应用资源
+// Restarts app resources.
 //
 // @param request - RestartAppResourcesRequest
 //
@@ -660,7 +660,7 @@ func (client *Client) RestartAppResources(request *RestartAppResourcesRequest) (
 
 // Summary:
 //
-// 启动应用资源
+// Starts app resources.
 //
 // @param request - StartAppResourcesRequest
 //
@@ -752,7 +752,7 @@ func (client *Client) StartAppResourcesWithOptions(request *StartAppResourcesReq
 
 // Summary:
 //
-// 启动应用资源
+// Starts app resources.
 //
 // @param request - StartAppResourcesRequest
 //
@@ -770,7 +770,7 @@ func (client *Client) StartAppResources(request *StartAppResourcesRequest) (_res
 
 // Summary:
 //
-// 停止应用
+// Stops a specific app.
 //
 // @param request - StopAppRequest
 //
@@ -894,7 +894,7 @@ func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *dara.
 
 // Summary:
 //
-// 停止应用
+// Stops a specific app.
 //
 // @param request - StopAppRequest
 //
@@ -912,7 +912,7 @@ func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse
 
 // Summary:
 //
-// 关闭应用资源
+// Stops app resources.
 //
 // @param request - StopAppResourcesRequest
 //
@@ -1004,7 +1004,7 @@ func (client *Client) StopAppResourcesWithOptions(request *StopAppResourcesReque
 
 // Summary:
 //
-// 关闭应用资源
+// Stops app resources.
 //
 // @param request - StopAppResourcesRequest
 //
@@ -1022,7 +1022,7 @@ func (client *Client) StopAppResources(request *StopAppResourcesRequest) (_resul
 
 // Summary:
 //
-// 解绑实例
+// Unbinds an app instance from a user.
 //
 // @param request - UnbindRequest
 //
@@ -1118,7 +1118,7 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *dara.Ru
 
 // Summary:
 //
-// 解绑实例
+// Unbinds an app instance from a user.
 //
 // @param request - UnbindRequest
 //
