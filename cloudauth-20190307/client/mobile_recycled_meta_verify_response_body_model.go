@@ -97,6 +97,10 @@ type MobileRecycledMetaVerifyResponseBodyResultObject struct {
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	// example:
 	//
+	// CMCC
+	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
+	// example:
+	//
 	// 101
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 }
@@ -113,12 +117,21 @@ func (s *MobileRecycledMetaVerifyResponseBodyResultObject) GetBizCode() *string 
 	return s.BizCode
 }
 
+func (s *MobileRecycledMetaVerifyResponseBodyResultObject) GetIspName() *string {
+	return s.IspName
+}
+
 func (s *MobileRecycledMetaVerifyResponseBodyResultObject) GetSubCode() *string {
 	return s.SubCode
 }
 
 func (s *MobileRecycledMetaVerifyResponseBodyResultObject) SetBizCode(v string) *MobileRecycledMetaVerifyResponseBodyResultObject {
 	s.BizCode = &v
+	return s
+}
+
+func (s *MobileRecycledMetaVerifyResponseBodyResultObject) SetIspName(v string) *MobileRecycledMetaVerifyResponseBodyResultObject {
+	s.IspName = &v
 	return s
 }
 

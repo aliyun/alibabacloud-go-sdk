@@ -27,8 +27,7 @@ type DescribeDeviceInfoResponseBody struct {
 	// example:
 	//
 	// 1
-	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Array of device information.
+	CurrentPage    *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DeviceInfoList *DescribeDeviceInfoResponseBodyDeviceInfoList `json:"DeviceInfoList,omitempty" xml:"DeviceInfoList,omitempty" type:"Struct"`
 	// Number of items per page.
 	//
@@ -147,35 +146,10 @@ func (s *DescribeDeviceInfoResponseBodyDeviceInfoList) Validate() error {
 }
 
 type DescribeDeviceInfoResponseBodyDeviceInfoListDeviceInfo struct {
-	// Authorization start date.
-	//
-	// example:
-	//
-	// 20180101
-	BeginDay *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
-	// Corresponds to the BizType in the request.
-	//
-	// example:
-	//
-	// FACE_TEST
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Corresponds to the DeviceId in the request.
-	//
-	// example:
-	//
-	// wd.6ziUffspAeW5FVYbaqmexR-1qwNjM
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// Authorization expiration date.
-	//
-	// example:
-	//
-	// 20180101
-	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
-	// Corresponds to the UserDeviceId in the request.
-	//
-	// example:
-	//
-	// 3iJ1AY$oHcu7mC69
+	BeginDay     *string `json:"BeginDay,omitempty" xml:"BeginDay,omitempty"`
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	ExpiredDay   *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
 	UserDeviceId *string `json:"UserDeviceId,omitempty" xml:"UserDeviceId,omitempty"`
 }
 

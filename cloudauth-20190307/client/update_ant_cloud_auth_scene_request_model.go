@@ -36,38 +36,59 @@ type iUpdateAntCloudAuthSceneRequest interface {
 }
 
 type UpdateAntCloudAuthSceneRequest struct {
-	// Whether to enable binding to a mini program:
-	//
-	// - **Y**: Enable
-	//
-	// - **N (default)**: Do not enable
-	//
-	// 	Notice: If enabling the binding of a mini program, please ensure all parameters for the mini program are passed.
+	// Update Ant Blockchain Transaction Scenario
 	//
 	// example:
 	//
 	// Y
 	BindMiniProgram *string `json:"BindMiniProgram,omitempty" xml:"BindMiniProgram,omitempty"`
-	// Content of the uploaded verification file.
+	// Whether to enable binding with a mini program:
+	//
+	// - **Y**: Enable
+	//
+	// - **N (default)**: Disable
+	//
+	// 	Notice: If you enable binding with a mini program, please ensure that all parameters for the mini program are passed.
 	//
 	// example:
 	//
 	// 774c4aab45981ff4a86cde9255a11xxx
 	CheckFileBody *string `json:"CheckFileBody,omitempty" xml:"CheckFileBody,omitempty"`
+	// Scenario name.
+	//
+	// example:
+	//
+	// Whether to enable storing the authentication files generated during the authentication process to the user\\"s OSS:
+	//
+	// - **Y**: Enable
+	//
+	// - **N (default)**: Disable
+	CheckFileName *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
 	// Name of the uploaded verification file.
 	//
 	// example:
 	//
-	// 测试.txt
-	CheckFileName  *string `json:"CheckFileName,omitempty" xml:"CheckFileName,omitempty"`
+	// Y
 	DeviceRiskPlus *string `json:"DeviceRiskPlus,omitempty" xml:"DeviceRiskPlus,omitempty"`
+	// System-defined parameter. Value: **UpdateAntCloudAuthScene**.
+	//
+	// example:
+	//
+	// Scenario ID.
+	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
+	// Currently meaningless, can be omitted.
+	//
+	// example:
+	//
+	// IOS
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// Mini program name.
 	//
 	// example:
 	//
-	// 测试APP
-	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
-	// Binding mini program platform:
+	// 1
+	ReturnPicCount *int64 `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
+	// Platform for binding the mini program:
 	//
 	// - **WECHAT**: WeChat
 	//
@@ -77,11 +98,9 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// example:
 	//
-	// IOS
-	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	ReturnPicCount    *int64  `json:"ReturnPicCount,omitempty" xml:"ReturnPicCount,omitempty"`
-	ReturnVideoLength *int64  `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
-	// Scenario ID.
+	// 2
+	ReturnVideoLength *int64 `json:"ReturnVideoLength,omitempty" xml:"ReturnVideoLength,omitempty"`
+	// Update Financial-Level Authentication Scenario
 	//
 	// This parameter is required.
 	//
@@ -89,23 +108,27 @@ type UpdateAntCloudAuthSceneRequest struct {
 	//
 	// 1000013372
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// Scenario name.
+	// Update the information of a financial-level authentication scenario based on the scenario ID.
+	//
+	// - Service address: cloudauth.aliyuncs.com.
+	//
+	// - Request method: HTTPS POST.
 	//
 	// example:
 	//
 	// test
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Currently meaningless, can be omitted.
+	// Update Ant Blockchain Transaction Scenario
 	//
 	// example:
 	//
 	// -
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether to enable delivering the authentication files generated during the authentication process to the user\\"s OSS:
+	// Update the information of a financial-level authentication scenario based on the scenario ID.
 	//
-	// - **Y**: Enable
+	// - Service address: cloudauth.aliyuncs.com.
 	//
-	// - **N (default)**: Disable
+	// - Request method: HTTPS POST.
 	//
 	// example:
 	//

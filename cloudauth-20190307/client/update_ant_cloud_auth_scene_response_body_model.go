@@ -14,7 +14,7 @@ type iUpdateAntCloudAuthSceneResponseBody interface {
 }
 
 type UpdateAntCloudAuthSceneResponseBody struct {
-	// ID of this request.
+	// Content of the uploaded verification file.
 	//
 	// example:
 	//

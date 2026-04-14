@@ -2109,7 +2109,7 @@ func (client *Client) DescribeFaceVerifyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询任务导出记录
+// # Query export task records
 //
 // @param request - DescribeInfoCheckExportRecordRequest
 //
@@ -2355,7 +2355,7 @@ func (client *Client) DescribeListFaceVerifyInfosWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询页面元数据
+// # Query Page Metadata
 //
 // @param request - DescribeMetaSearchPageListRequest
 //
@@ -2451,7 +2451,7 @@ func (client *Client) DescribeMetaSearchPageListWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询认证统计信息
+// # Query Authentication Statistics
 //
 // @param request - DescribeMetaStatisticsListRequest
 //
@@ -2503,7 +2503,7 @@ func (client *Client) DescribeMetaStatisticsListWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询认证统计页面
+// # Query Authentication Statistics Page
 //
 // @param request - DescribeMetaStatisticsPageListRequest
 //
@@ -6025,11 +6025,7 @@ func (client *Client) RemoveWhiteListSettingWithContext(ctx context.Context, tmp
 //
 // Description:
 //
-// Update the information of a financial-level authentication scenario based on the scenario ID.
-//
-// - Service address: cloudauth.aliyuncs.com.
-//
-// - Request method: HTTPS POST.
+// Content of the uploaded verification file.
 //
 // @param request - UpdateAntCloudAuthSceneRequest
 //

@@ -76,19 +76,19 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 3
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// End date of the query. The format is a Unix timestamp, in milliseconds.
+	// End time of the query. Format is Unix timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 2025-10-16 23:59:59 +0800
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// Whether there is device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
+	// Whether there is a device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
 	//
 	// example:
 	//
 	// true
 	HasDeviceRisk *bool `json:"HasDeviceRisk,omitempty" xml:"HasDeviceRisk,omitempty"`
-	// Liveness detection model.
+	// Model for liveness detection.
 	//
 	// example:
 	//
@@ -123,12 +123,57 @@ type DescribeVerifySearchPageListRequest struct {
 	// example:
 	//
 	// ID_PRO
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RiskBizScenario *int32  `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
-	RiskDevice      *int32  `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
-	RiskDeviceToken *int32  `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
-	RiskGeneric     *int32  `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
-	RiskModelMining *int32  `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Business scenario risk
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskBizScenario *int32 `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
+	// Device risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskDevice *int32 `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
+	// DeviceToken risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 0
+	RiskDeviceToken *int32 `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
+	// General risk
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskGeneric *int32 `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
+	// Large model mining risk
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskModelMining *int32 `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
 	// Whether it is rooted (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
 	//
 	// example:
@@ -147,7 +192,7 @@ type DescribeVerifySearchPageListRequest struct {
 	//
 	// 1
 	Simulator *int32 `json:"Simulator,omitempty" xml:"Simulator,omitempty"`
-	// Start date of the query.
+	// Start time of the query.
 	//
 	// example:
 	//

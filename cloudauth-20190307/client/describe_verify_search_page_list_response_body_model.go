@@ -38,7 +38,7 @@ type DescribeVerifySearchPageListResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// ID of this request.
+	// ID of the current request.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *DescribeVerifySearchPageListResponseBody) Validate() error {
 }
 
 type DescribeVerifySearchPageListResponseBodyItems struct {
-	// Desensitized ID number.
+	// Desensitized ID card number.
 	//
 	// example:
 	//
 	// 3****************2
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// Certification ID.
+	// Authentication ID.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	// Extended information.
 	ExtInfo *DescribeVerifySearchPageListResponseBodyItemsExtInfo `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty" type:"Struct"`
-	// Verification time of this authentication.
+	// Verification time for this authentication.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Whether the certification passed. Values:
+	// Whether the authentication passed. Values:
 	//
 	// - **T**: Passed.
 	//
@@ -181,12 +181,57 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	// example:
 	//
 	// ID_PRO
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RiskBizScenario *int32  `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
-	RiskDevice      *int32  `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
-	RiskDeviceToken *int32  `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
-	RiskGeneric     *int32  `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
-	RiskModelMining *int32  `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Business scenario risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskBizScenario *int32 `json:"RiskBizScenario,omitempty" xml:"RiskBizScenario,omitempty"`
+	// Device risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskDevice *int32 `json:"RiskDevice,omitempty" xml:"RiskDevice,omitempty"`
+	// DeviceToken risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 0
+	RiskDeviceToken *int32 `json:"RiskDeviceToken,omitempty" xml:"RiskDeviceToken,omitempty"`
+	// General risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskGeneric *int32 `json:"RiskGeneric,omitempty" xml:"RiskGeneric,omitempty"`
+	// Large model mining risk:
+	//
+	// - **0**: No risk
+	//
+	// - **1**: Risk present
+	//
+	// example:
+	//
+	// 1
+	RiskModelMining *int32 `json:"RiskModelMining,omitempty" xml:"RiskModelMining,omitempty"`
 	// Whether it is root (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
 	//
 	// example:
@@ -217,7 +262,7 @@ type DescribeVerifySearchPageListResponseBodyItems struct {
 	//
 	// 198123xxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Whether it is a virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+	// Whether it is virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
 	//
 	// example:
 	//
@@ -420,29 +465,29 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// 何*
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// Face guard label.
+	// Facial bodyguard label.
 	//
 	// example:
 	//
-	// -
+	// HOOK,ROOT
 	DeviceRisk *string `json:"DeviceRisk,omitempty" xml:"DeviceRisk,omitempty"`
-	// Whether it is a face attack:
+	// 是否是人脸攻击：
 	//
-	// - **T**: Yes
+	// - **T**：是
 	//
-	// - **F**: No
+	// - **F**：否
 	//
 	// example:
 	//
 	// T
 	FaceAttack *string `json:"FaceAttack,omitempty" xml:"FaceAttack,omitempty"`
-	// Face attack score, with a range of 0~1. A value closer to 1 indicates a higher likelihood of an attack.
+	// Face attack score, ranging from 0 to 1, with values closer to 1 indicating a higher likelihood of an attack.
 	//
 	// example:
 	//
 	// 0.0000445161
 	FaceAttackScore *float32 `json:"FaceAttackScore,omitempty" xml:"FaceAttackScore,omitempty"`
-	// Whether the face is occluded, T if yes, F otherwise.
+	// Whether the face is occluded. T if occluded, otherwise F.
 	//
 	// example:
 	//
@@ -454,7 +499,7 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// 0.9
 	IdCardVerifyScore *float32 `json:"IdCardVerifyScore,omitempty" xml:"IdCardVerifyScore,omitempty"`
-	// The OSS bucket for the photo.
+	// Photo OSS bucket.
 	//
 	// example:
 	//
@@ -472,7 +517,7 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// -
 	OssIdNationalEmblemObjectName *string `json:"OssIdNationalEmblemObjectName,omitempty" xml:"OssIdNationalEmblemObjectName,omitempty"`
-	// The name of the stored object.
+	// Storage object name.
 	//
 	// example:
 	//
@@ -490,15 +535,15 @@ type DescribeVerifySearchPageListResponseBodyItemsExtInfo struct {
 	//
 	// 0.0
 	VerifyScore *float32 `json:"VerifyScore,omitempty" xml:"VerifyScore,omitempty"`
-	// List of ASR texts.
+	// ASR text list.
 	AsrTexts []*string `json:"asrTexts,omitempty" xml:"asrTexts,omitempty" type:"Repeated"`
-	// List of OSS file names for screen recording files.
+	// Screen recording file OSS name list.
 	//
 	// example:
 	//
 	// -
 	ScreenVideoObjectNames []*string `json:"screenVideoObjectNames,omitempty" xml:"screenVideoObjectNames,omitempty" type:"Repeated"`
-	// List of OSS file names for audio files.
+	// Audio file OSS name list.
 	//
 	// example:
 	//

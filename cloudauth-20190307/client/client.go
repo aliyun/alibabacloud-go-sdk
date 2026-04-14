@@ -72,11 +72,13 @@ func (client *Client) _postOSSObject(bucketName *string, form map[string]interfa
 
 		request_ = dara.NewRequest()
 		boundary := dara.GetBoundary()
+		tmp := dara.ToString(form["host"])
+		host := dara.StringValue(bucketName) + "." + tmp
 		request_.Protocol = dara.String("HTTPS")
 		request_.Method = dara.String("POST")
 		request_.Pathname = dara.String("/")
 		request_.Headers = map[string]*string{
-			"host":       dara.String(dara.ToString(form["host"])),
+			"host":       dara.String(host),
 			"date":       openapiutil.GetDateUTCString(),
 			"user-agent": openapiutil.GetUserAgent(dara.String("")),
 		}
@@ -900,7 +902,7 @@ func (client *Client) ContrastFaceVerifyAdvance(request *ContrastFaceVerifyAdvan
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -1651,7 +1653,7 @@ func (client *Client) CredentialProductVerifyV2Advance(request *CredentialProduc
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2014,7 +2016,7 @@ func (client *Client) CredentialVerifyV2Advance(request *CredentialVerifyV2Advan
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -2858,8 +2860,6 @@ func (client *Client) DeleteWhitelistSetting(request *DeleteWhitelistSettingRequ
 //
 // > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
 //
-// @param request - DescribeAntAndCloudAuthUserStatusRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAntAndCloudAuthUserStatusResponse
@@ -3369,7 +3369,7 @@ func (client *Client) DescribeFaceVerify(request *DescribeFaceVerifyRequest) (_r
 
 // Summary:
 //
-// 查询任务导出记录
+// # Query export task records
 //
 // @param request - DescribeInfoCheckExportRecordRequest
 //
@@ -3429,7 +3429,7 @@ func (client *Client) DescribeInfoCheckExportRecordWithOptions(request *Describe
 
 // Summary:
 //
-// 查询任务导出记录
+// # Query export task records
 //
 // @param request - DescribeInfoCheckExportRecordRequest
 //
@@ -3705,7 +3705,7 @@ func (client *Client) DescribeListFaceVerifyInfos(request *DescribeListFaceVerif
 
 // Summary:
 //
-// 查询页面元数据
+// # Query Page Metadata
 //
 // @param request - DescribeMetaSearchPageListRequest
 //
@@ -3801,7 +3801,7 @@ func (client *Client) DescribeMetaSearchPageListWithOptions(request *DescribeMet
 
 // Summary:
 //
-// 查询页面元数据
+// # Query Page Metadata
 //
 // @param request - DescribeMetaSearchPageListRequest
 //
@@ -3819,7 +3819,7 @@ func (client *Client) DescribeMetaSearchPageList(request *DescribeMetaSearchPage
 
 // Summary:
 //
-// 查询认证统计信息
+// # Query Authentication Statistics
 //
 // @param request - DescribeMetaStatisticsListRequest
 //
@@ -3871,7 +3871,7 @@ func (client *Client) DescribeMetaStatisticsListWithOptions(request *DescribeMet
 
 // Summary:
 //
-// 查询认证统计信息
+// # Query Authentication Statistics
 //
 // @param request - DescribeMetaStatisticsListRequest
 //
@@ -3889,7 +3889,7 @@ func (client *Client) DescribeMetaStatisticsList(request *DescribeMetaStatistics
 
 // Summary:
 //
-// 查询认证统计页面
+// # Query Authentication Statistics Page
 //
 // @param request - DescribeMetaStatisticsPageListRequest
 //
@@ -3949,7 +3949,7 @@ func (client *Client) DescribeMetaStatisticsPageListWithOptions(request *Describ
 
 // Summary:
 //
-// 查询认证统计页面
+// # Query Authentication Statistics Page
 //
 // @param request - DescribeMetaStatisticsPageListRequest
 //
@@ -4121,8 +4121,6 @@ func (client *Client) DescribeOssStatusV2(request *DescribeOssStatusV2Request) (
 //
 // Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
 //
-// @param request - DescribeOssUploadTokenRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeOssUploadTokenResponse
@@ -4254,8 +4252,6 @@ func (client *Client) DescribePageFaceVerifyData(request *DescribePageFaceVerify
 //
 // Request Method: Only supports sending requests via HTTPS POST method.
 //
-// @param request - DescribePageSettingRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePageSettingResponse
@@ -4308,8 +4304,6 @@ func (client *Client) DescribePageSetting() (_result *DescribePageSettingRespons
 // Description:
 //
 // Request Method: Supports sending requests via HTTPS GET/POST methods.
-//
-// @param request - DescribeProductCodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -6249,7 +6243,7 @@ func (client *Client) Id2MetaVerifyWithOCRAdvance(request *Id2MetaVerifyWithOCRA
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -6279,7 +6273,7 @@ func (client *Client) Id2MetaVerifyWithOCRAdvance(request *Id2MetaVerifyWithOCRA
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -6476,7 +6470,7 @@ func (client *Client) Id3MetaVerifyAdvance(request *Id3MetaVerifyAdvanceRequest,
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -6665,7 +6659,7 @@ func (client *Client) Id3MetaVerifyWithOCRAdvance(request *Id3MetaVerifyWithOCRA
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -6695,7 +6689,7 @@ func (client *Client) Id3MetaVerifyWithOCRAdvance(request *Id3MetaVerifyWithOCRA
 			ContentType: dara.String(""),
 		}
 		ossHeader = map[string]interface{}{
-			"host":                  dara.StringValue(authResponseBody["Bucket"]) + "." + dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
+			"host":                  dara.StringValue(openapiutil.GetEndpoint(authResponseBody["Endpoint"], dara.Bool(useAccelerate), client.EndpointType)),
 			"OSSAccessKeyId":        dara.StringValue(authResponseBody["AccessKeyId"]),
 			"policy":                dara.StringValue(authResponseBody["EncodedPolicy"]),
 			"Signature":             dara.StringValue(authResponseBody["Signature"]),
@@ -9179,11 +9173,7 @@ func (client *Client) RemoveWhiteListSetting(request *RemoveWhiteListSettingRequ
 //
 // Description:
 //
-// Update the information of a financial-level authentication scenario based on the scenario ID.
-//
-// - Service address: cloudauth.aliyuncs.com.
-//
-// - Request method: HTTPS POST.
+// Content of the uploaded verification file.
 //
 // @param request - UpdateAntCloudAuthSceneRequest
 //
@@ -9275,11 +9265,7 @@ func (client *Client) UpdateAntCloudAuthSceneWithOptions(request *UpdateAntCloud
 //
 // Description:
 //
-// Update the information of a financial-level authentication scenario based on the scenario ID.
-//
-// - Service address: cloudauth.aliyuncs.com.
-//
-// - Request method: HTTPS POST.
+// Content of the uploaded verification file.
 //
 // @param request - UpdateAntCloudAuthSceneRequest
 //
