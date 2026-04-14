@@ -37,6 +37,8 @@ type iCreateApplicationRequest interface {
 	GetDryRun() *bool
 	SetEndpoints(v []*CreateApplicationRequestEndpoints) *CreateApplicationRequest
 	GetEndpoints() []*CreateApplicationRequestEndpoints
+	SetKnowledgeApplicationSpec(v *CreateApplicationRequestKnowledgeApplicationSpec) *CreateApplicationRequest
+	GetKnowledgeApplicationSpec() *CreateApplicationRequestKnowledgeApplicationSpec
 	SetMemApplicationSpec(v *CreateApplicationRequestMemApplicationSpec) *CreateApplicationRequest
 	GetMemApplicationSpec() *CreateApplicationRequestMemApplicationSpec
 	SetModelApi(v string) *CreateApplicationRequest
@@ -131,9 +133,10 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// false
-	DryRun             *bool                                       `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Endpoints          []*CreateApplicationRequestEndpoints        `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
+	DryRun                   *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	Endpoints                []*CreateApplicationRequestEndpoints              `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	KnowledgeApplicationSpec *CreateApplicationRequestKnowledgeApplicationSpec `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty" type:"Struct"`
+	MemApplicationSpec       *CreateApplicationRequestMemApplicationSpec       `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
 	// example:
 	//
 	// openai-completions
@@ -266,6 +269,10 @@ func (s *CreateApplicationRequest) GetDryRun() *bool {
 
 func (s *CreateApplicationRequest) GetEndpoints() []*CreateApplicationRequestEndpoints {
 	return s.Endpoints
+}
+
+func (s *CreateApplicationRequest) GetKnowledgeApplicationSpec() *CreateApplicationRequestKnowledgeApplicationSpec {
+	return s.KnowledgeApplicationSpec
 }
 
 func (s *CreateApplicationRequest) GetMemApplicationSpec() *CreateApplicationRequestMemApplicationSpec {
@@ -434,6 +441,11 @@ func (s *CreateApplicationRequest) SetEndpoints(v []*CreateApplicationRequestEnd
 	return s
 }
 
+func (s *CreateApplicationRequest) SetKnowledgeApplicationSpec(v *CreateApplicationRequestKnowledgeApplicationSpec) *CreateApplicationRequest {
+	s.KnowledgeApplicationSpec = v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetMemApplicationSpec(v *CreateApplicationRequestMemApplicationSpec) *CreateApplicationRequest {
 	s.MemApplicationSpec = v
 	return s
@@ -571,6 +583,11 @@ func (s *CreateApplicationRequest) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.KnowledgeApplicationSpec != nil {
+		if err := s.KnowledgeApplicationSpec.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.MemApplicationSpec != nil {
@@ -776,6 +793,51 @@ func (s *CreateApplicationRequestEndpoints) SetEndpointType(v string) *CreateApp
 }
 
 func (s *CreateApplicationRequestEndpoints) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateApplicationRequestKnowledgeApplicationSpec struct {
+	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
+	DbPassword        *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
+	LlmModel          *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
+}
+
+func (s CreateApplicationRequestKnowledgeApplicationSpec) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestKnowledgeApplicationSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetDashboardPassword() *string {
+	return s.DashboardPassword
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetDbPassword() *string {
+	return s.DbPassword
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) GetLlmModel() *string {
+	return s.LlmModel
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetDashboardPassword(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.DashboardPassword = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetDbPassword(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.DbPassword = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) SetLlmModel(v string) *CreateApplicationRequestKnowledgeApplicationSpec {
+	s.LlmModel = &v
+	return s
+}
+
+func (s *CreateApplicationRequestKnowledgeApplicationSpec) Validate() error {
 	return dara.Validate(s)
 }
 

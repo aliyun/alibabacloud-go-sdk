@@ -37,6 +37,8 @@ type iCreateApplicationShrinkRequest interface {
 	GetDryRun() *bool
 	SetEndpointsShrink(v string) *CreateApplicationShrinkRequest
 	GetEndpointsShrink() *string
+	SetKnowledgeApplicationSpecShrink(v string) *CreateApplicationShrinkRequest
+	GetKnowledgeApplicationSpecShrink() *string
 	SetMemApplicationSpecShrink(v string) *CreateApplicationShrinkRequest
 	GetMemApplicationSpecShrink() *string
 	SetModelApi(v string) *CreateApplicationShrinkRequest
@@ -131,9 +133,10 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// false
-	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EndpointsShrink          *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
-	MemApplicationSpecShrink *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
+	DryRun                         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EndpointsShrink                *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
+	KnowledgeApplicationSpecShrink *string `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty"`
+	MemApplicationSpecShrink       *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
 	// example:
 	//
 	// openai-completions
@@ -266,6 +269,10 @@ func (s *CreateApplicationShrinkRequest) GetDryRun() *bool {
 
 func (s *CreateApplicationShrinkRequest) GetEndpointsShrink() *string {
 	return s.EndpointsShrink
+}
+
+func (s *CreateApplicationShrinkRequest) GetKnowledgeApplicationSpecShrink() *string {
+	return s.KnowledgeApplicationSpecShrink
 }
 
 func (s *CreateApplicationShrinkRequest) GetMemApplicationSpecShrink() *string {
@@ -431,6 +438,11 @@ func (s *CreateApplicationShrinkRequest) SetDryRun(v bool) *CreateApplicationShr
 
 func (s *CreateApplicationShrinkRequest) SetEndpointsShrink(v string) *CreateApplicationShrinkRequest {
 	s.EndpointsShrink = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetKnowledgeApplicationSpecShrink(v string) *CreateApplicationShrinkRequest {
+	s.KnowledgeApplicationSpecShrink = &v
 	return s
 }
 
