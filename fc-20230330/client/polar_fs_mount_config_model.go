@@ -13,6 +13,8 @@ type iPolarFsMountConfig interface {
 	GetInstanceId() *string
 	SetMountDir(v string) *PolarFsMountConfig
 	GetMountDir() *string
+	SetReadOnly(v bool) *PolarFsMountConfig
+	GetReadOnly() *bool
 	SetRemoteDir(v string) *PolarFsMountConfig
 	GetRemoteDir() *string
 }
@@ -20,6 +22,7 @@ type iPolarFsMountConfig interface {
 type PolarFsMountConfig struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 	RemoteDir  *string `json:"remoteDir,omitempty" xml:"remoteDir,omitempty"`
 }
 
@@ -39,6 +42,10 @@ func (s *PolarFsMountConfig) GetMountDir() *string {
 	return s.MountDir
 }
 
+func (s *PolarFsMountConfig) GetReadOnly() *bool {
+	return s.ReadOnly
+}
+
 func (s *PolarFsMountConfig) GetRemoteDir() *string {
 	return s.RemoteDir
 }
@@ -50,6 +57,11 @@ func (s *PolarFsMountConfig) SetInstanceId(v string) *PolarFsMountConfig {
 
 func (s *PolarFsMountConfig) SetMountDir(v string) *PolarFsMountConfig {
 	s.MountDir = &v
+	return s
+}
+
+func (s *PolarFsMountConfig) SetReadOnly(v bool) *PolarFsMountConfig {
+	s.ReadOnly = &v
 	return s
 }
 
