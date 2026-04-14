@@ -13,6 +13,10 @@ type iGenerateCopilotStreamResponseResponse interface {
 	GetHeaders() map[string]*string
 	SetStatusCode(v int32) *GenerateCopilotStreamResponseResponse
 	GetStatusCode() *int32
+	SetId(v string) *GenerateCopilotStreamResponseResponse
+	GetId() *string
+	SetEvent(v string) *GenerateCopilotStreamResponseResponse
+	GetEvent() *string
 	SetBody(v *GenerateCopilotStreamResponseResponseBody) *GenerateCopilotStreamResponseResponse
 	GetBody() *GenerateCopilotStreamResponseResponseBody
 }
@@ -20,6 +24,8 @@ type iGenerateCopilotStreamResponseResponse interface {
 type GenerateCopilotStreamResponseResponse struct {
 	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Id         *string                                    `json:"id,omitempty" xml:"id,omitempty"`
+	Event      *string                                    `json:"event,omitempty" xml:"event,omitempty"`
 	Body       *GenerateCopilotStreamResponseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -39,6 +45,14 @@ func (s *GenerateCopilotStreamResponseResponse) GetStatusCode() *int32 {
 	return s.StatusCode
 }
 
+func (s *GenerateCopilotStreamResponseResponse) GetId() *string {
+	return s.Id
+}
+
+func (s *GenerateCopilotStreamResponseResponse) GetEvent() *string {
+	return s.Event
+}
+
 func (s *GenerateCopilotStreamResponseResponse) GetBody() *GenerateCopilotStreamResponseResponseBody {
 	return s.Body
 }
@@ -50,6 +64,16 @@ func (s *GenerateCopilotStreamResponseResponse) SetHeaders(v map[string]*string)
 
 func (s *GenerateCopilotStreamResponseResponse) SetStatusCode(v int32) *GenerateCopilotStreamResponseResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateCopilotStreamResponseResponse) SetId(v string) *GenerateCopilotStreamResponseResponse {
+	s.Id = &v
+	return s
+}
+
+func (s *GenerateCopilotStreamResponseResponse) SetEvent(v string) *GenerateCopilotStreamResponseResponse {
+	s.Event = &v
 	return s
 }
 

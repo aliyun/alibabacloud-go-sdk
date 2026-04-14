@@ -202,6 +202,89 @@ func (client *Client) CheckInstanceSupport(request *CheckInstanceSupportRequest)
 
 // Summary:
 //
+// cpu高agent流式接口
+//
+// @param request - CpuHighAgentStreamResponseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CpuHighAgentStreamResponseResponse
+func (client *Client) CpuHighAgentStreamResponseWithSSE(request *CpuHighAgentStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *CpuHighAgentStreamResponseResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.cpuHighAgentStreamResponseWithSSE_opYieldFunc(_yield, _yieldErr, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// cpu高agent流式接口
+//
+// @param request - CpuHighAgentStreamResponseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CpuHighAgentStreamResponseResponse
+func (client *Client) CpuHighAgentStreamResponseWithOptions(request *CpuHighAgentStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CpuHighAgentStreamResponseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.LlmParamString) {
+		body["llmParamString"] = request.LlmParamString
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CpuHighAgentStreamResponse"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/highCpuAgent/streamResponse"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CpuHighAgentStreamResponseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// cpu高agent流式接口
+//
+// @param request - CpuHighAgentStreamResponseRequest
+//
+// @return CpuHighAgentStreamResponseResponse
+func (client *Client) CpuHighAgentStreamResponse(request *CpuHighAgentStreamResponseRequest) (_result *CpuHighAgentStreamResponseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CpuHighAgentStreamResponseResponse{}
+	_body, _err := client.CpuHighAgentStreamResponseWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增推送告警的策略
 //
 // @param request - CreateAlertStrategyRequest
@@ -3465,7 +3548,7 @@ func (client *Client) ListDiagnosis(request *ListDiagnosisRequest) (_result *Lis
 
 // Summary:
 //
-// 获取一定时间内集群节点/Pod健康度列表
+// Obtain a list of cluster node or pod health degrees within a specified time period.
 //
 // @param request - ListInstanceHealthRequest
 //
@@ -3532,7 +3615,7 @@ func (client *Client) ListInstanceHealthWithOptions(request *ListInstanceHealthR
 
 // Summary:
 //
-// 获取一定时间内集群节点/Pod健康度列表
+// Obtain a list of cluster node or pod health degrees within a specified time period.
 //
 // @param request - ListInstanceHealthRequest
 //
@@ -5001,6 +5084,55 @@ func (client *Client) UpgradeAgentForCluster(request *UpgradeAgentForClusterRequ
 	return _result, _err
 }
 
+func (client *Client) cpuHighAgentStreamResponseWithSSE_opYieldFunc(_yield chan *CpuHighAgentStreamResponseResponse, _yieldErr chan error, request *CpuHighAgentStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.LlmParamString) {
+		body["llmParamString"] = request.LlmParamString
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CpuHighAgentStreamResponse"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/highCpuAgent/streamResponse"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
 func (client *Client) generateCopilotStreamResponseWithSSE_opYieldFunc(_yield chan *GenerateCopilotStreamResponseResponse, _yieldErr chan error, request *GenerateCopilotStreamResponseRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err := request.Validate()
@@ -5032,18 +5164,20 @@ func (client *Client) generateCopilotStreamResponseWithSSE_opYieldFunc(_yield ch
 	sseResp := make(chan *openapi.SSEResponse, 1)
 	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
 	for resp := range sseResp {
-		data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
-		_err := dara.ConvertChan(map[string]interface{}{
-			"statusCode": dara.IntValue(resp.StatusCode),
-			"headers":    resp.Headers,
-			"body": dara.ToMap(map[string]interface{}{
-				"RequestId": dara.StringValue(resp.Event.Id),
-				"Message":   dara.StringValue(resp.Event.Event),
-			}, data),
-		}, _yield)
-		if _err != nil {
-			_yieldErr <- _err
-			return
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
 		}
+
 	}
 }

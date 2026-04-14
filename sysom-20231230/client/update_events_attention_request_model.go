@@ -18,9 +18,19 @@ type iUpdateEventsAttentionRequest interface {
 }
 
 type UpdateEventsAttentionRequest struct {
-	Mode  *int32  `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// 0
+	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
+	// example:
+	//
+	// cluster
 	Range *string `json:"range,omitempty" xml:"range,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 03de78af-f49f-433d-b5b1-0f6a70c493ba
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 

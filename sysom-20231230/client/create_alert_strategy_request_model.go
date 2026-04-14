@@ -91,8 +91,9 @@ func (s *CreateAlertStrategyRequest) Validate() error {
 }
 
 type CreateAlertStrategyRequestStrategy struct {
-	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
-	Items    []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Clusters     []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	Destinations []*int32  `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
+	Items        []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
 func (s CreateAlertStrategyRequestStrategy) String() string {
@@ -107,12 +108,21 @@ func (s *CreateAlertStrategyRequestStrategy) GetClusters() []*string {
 	return s.Clusters
 }
 
+func (s *CreateAlertStrategyRequestStrategy) GetDestinations() []*int32 {
+	return s.Destinations
+}
+
 func (s *CreateAlertStrategyRequestStrategy) GetItems() []*string {
 	return s.Items
 }
 
 func (s *CreateAlertStrategyRequestStrategy) SetClusters(v []*string) *CreateAlertStrategyRequestStrategy {
 	s.Clusters = v
+	return s
+}
+
+func (s *CreateAlertStrategyRequestStrategy) SetDestinations(v []*int32) *CreateAlertStrategyRequestStrategy {
+	s.Destinations = v
 	return s
 }
 

@@ -258,8 +258,9 @@ func (s *ListAlertStrategiesResponseBodyData) Validate() error {
 }
 
 type ListAlertStrategiesResponseBodyDataStrategy struct {
-	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
-	Items    []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	Clusters     []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
+	Destinations []*int32  `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
+	Items        []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 }
 
 func (s ListAlertStrategiesResponseBodyDataStrategy) String() string {
@@ -274,12 +275,21 @@ func (s *ListAlertStrategiesResponseBodyDataStrategy) GetClusters() []*string {
 	return s.Clusters
 }
 
+func (s *ListAlertStrategiesResponseBodyDataStrategy) GetDestinations() []*int32 {
+	return s.Destinations
+}
+
 func (s *ListAlertStrategiesResponseBodyDataStrategy) GetItems() []*string {
 	return s.Items
 }
 
 func (s *ListAlertStrategiesResponseBodyDataStrategy) SetClusters(v []*string) *ListAlertStrategiesResponseBodyDataStrategy {
 	s.Clusters = v
+	return s
+}
+
+func (s *ListAlertStrategiesResponseBodyDataStrategy) SetDestinations(v []*int32) *ListAlertStrategiesResponseBodyDataStrategy {
+	s.Destinations = v
 	return s
 }
 
