@@ -34552,6 +34552,10 @@ func (client *Client) ModifyDBProxyEndpointWithOptions(request *ModifyDBProxyEnd
 		query["DbEndpointAliases"] = request.DbEndpointAliases
 	}
 
+	if !dara.IsNil(request.DbEndpointCostThresholdForDuckdb) {
+		query["DbEndpointCostThresholdForDuckdb"] = request.DbEndpointCostThresholdForDuckdb
+	}
+
 	if !dara.IsNil(request.DbEndpointMinSlaveCount) {
 		query["DbEndpointMinSlaveCount"] = request.DbEndpointMinSlaveCount
 	}
@@ -42550,6 +42554,10 @@ func (client *Client) RunRCInstancesWithOptions(tmpReq *RunRCInstancesRequest, r
 
 	if !dara.IsNil(request.AutoUseCoupon) {
 		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !dara.IsNil(request.BusinessInfo) {
+		query["BusinessInfo"] = request.BusinessInfo
 	}
 
 	if !dara.IsNil(request.ClientToken) {

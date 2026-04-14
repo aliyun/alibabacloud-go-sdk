@@ -17,6 +17,8 @@ type iDescribeDBProxyEndpointResponseBody interface {
 	GetDBProxyConnectStringNetType() *string
 	SetDBProxyConnectStringPort(v string) *DescribeDBProxyEndpointResponseBody
 	GetDBProxyConnectStringPort() *string
+	SetDBProxyEndpointCostThresholdForDuckdb(v string) *DescribeDBProxyEndpointResponseBody
+	GetDBProxyEndpointCostThresholdForDuckdb() *string
 	SetDBProxyEndpointId(v string) *DescribeDBProxyEndpointResponseBody
 	GetDBProxyEndpointId() *string
 	SetDBProxyEndpointMinSlaveCount(v string) *DescribeDBProxyEndpointResponseBody
@@ -77,7 +79,8 @@ type DescribeDBProxyEndpointResponseBody struct {
 	// example:
 	//
 	// 3306
-	DBProxyConnectStringPort *string `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
+	DBProxyConnectStringPort              *string `json:"DBProxyConnectStringPort,omitempty" xml:"DBProxyConnectStringPort,omitempty"`
+	DBProxyEndpointCostThresholdForDuckdb *string `json:"DBProxyEndpointCostThresholdForDuckdb,omitempty" xml:"DBProxyEndpointCostThresholdForDuckdb,omitempty"`
 	// The ID of the proxy endpoint.
 	//
 	// example:
@@ -216,6 +219,10 @@ func (s *DescribeDBProxyEndpointResponseBody) GetDBProxyConnectStringPort() *str
 	return s.DBProxyConnectStringPort
 }
 
+func (s *DescribeDBProxyEndpointResponseBody) GetDBProxyEndpointCostThresholdForDuckdb() *string {
+	return s.DBProxyEndpointCostThresholdForDuckdb
+}
+
 func (s *DescribeDBProxyEndpointResponseBody) GetDBProxyEndpointId() *string {
 	return s.DBProxyEndpointId
 }
@@ -293,6 +300,11 @@ func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectStringNetType(v s
 
 func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyConnectStringPort(v string) *DescribeDBProxyEndpointResponseBody {
 	s.DBProxyConnectStringPort = &v
+	return s
+}
+
+func (s *DescribeDBProxyEndpointResponseBody) SetDBProxyEndpointCostThresholdForDuckdb(v string) *DescribeDBProxyEndpointResponseBody {
+	s.DBProxyEndpointCostThresholdForDuckdb = &v
 	return s
 }
 

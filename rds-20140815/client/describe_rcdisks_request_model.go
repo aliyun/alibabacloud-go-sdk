@@ -19,6 +19,8 @@ type iDescribeRCDisksRequest interface {
 	GetPageSize() *int64
 	SetRegionId(v string) *DescribeRCDisksRequest
 	GetRegionId() *string
+	SetStatus(v string) *DescribeRCDisksRequest
+	GetStatus() *string
 	SetTag(v []*DescribeRCDisksRequestTag) *DescribeRCDisksRequest
 	GetTag() []*DescribeRCDisksRequestTag
 }
@@ -56,6 +58,10 @@ type DescribeRCDisksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// All
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of the tags.
 	Tag []*DescribeRCDisksRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -88,6 +94,10 @@ func (s *DescribeRCDisksRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeRCDisksRequest) GetStatus() *string {
+	return s.Status
+}
+
 func (s *DescribeRCDisksRequest) GetTag() []*DescribeRCDisksRequestTag {
 	return s.Tag
 }
@@ -114,6 +124,11 @@ func (s *DescribeRCDisksRequest) SetPageSize(v int64) *DescribeRCDisksRequest {
 
 func (s *DescribeRCDisksRequest) SetRegionId(v string) *DescribeRCDisksRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRCDisksRequest) SetStatus(v string) *DescribeRCDisksRequest {
+	s.Status = &v
 	return s
 }
 

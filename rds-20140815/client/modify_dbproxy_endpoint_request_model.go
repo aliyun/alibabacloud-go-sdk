@@ -21,6 +21,8 @@ type iModifyDBProxyEndpointRequest interface {
 	GetDBProxyEngineType() *string
 	SetDbEndpointAliases(v string) *ModifyDBProxyEndpointRequest
 	GetDbEndpointAliases() *string
+	SetDbEndpointCostThresholdForDuckdb(v string) *ModifyDBProxyEndpointRequest
+	GetDbEndpointCostThresholdForDuckdb() *string
 	SetDbEndpointMinSlaveCount(v string) *ModifyDBProxyEndpointRequest
 	GetDbEndpointMinSlaveCount() *string
 	SetDbEndpointOperator(v string) *ModifyDBProxyEndpointRequest
@@ -119,7 +121,8 @@ type ModifyDBProxyEndpointRequest struct {
 	// example:
 	//
 	// test-proxy
-	DbEndpointAliases *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
+	DbEndpointAliases                *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
+	DbEndpointCostThresholdForDuckdb *string `json:"DbEndpointCostThresholdForDuckdb,omitempty" xml:"DbEndpointCostThresholdForDuckdb,omitempty"`
 	// The minimum number of reserved instances.
 	//
 	// example:
@@ -275,6 +278,10 @@ func (s *ModifyDBProxyEndpointRequest) GetDbEndpointAliases() *string {
 	return s.DbEndpointAliases
 }
 
+func (s *ModifyDBProxyEndpointRequest) GetDbEndpointCostThresholdForDuckdb() *string {
+	return s.DbEndpointCostThresholdForDuckdb
+}
+
 func (s *ModifyDBProxyEndpointRequest) GetDbEndpointMinSlaveCount() *string {
 	return s.DbEndpointMinSlaveCount
 }
@@ -362,6 +369,11 @@ func (s *ModifyDBProxyEndpointRequest) SetDBProxyEngineType(v string) *ModifyDBP
 
 func (s *ModifyDBProxyEndpointRequest) SetDbEndpointAliases(v string) *ModifyDBProxyEndpointRequest {
 	s.DbEndpointAliases = &v
+	return s
+}
+
+func (s *ModifyDBProxyEndpointRequest) SetDbEndpointCostThresholdForDuckdb(v string) *ModifyDBProxyEndpointRequest {
+	s.DbEndpointCostThresholdForDuckdb = &v
 	return s
 }
 

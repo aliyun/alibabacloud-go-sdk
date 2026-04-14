@@ -19,6 +19,8 @@ type iRunRCInstancesRequest interface {
 	GetAutoRenew() *bool
 	SetAutoUseCoupon(v bool) *RunRCInstancesRequest
 	GetAutoUseCoupon() *bool
+	SetBusinessInfo(v string) *RunRCInstancesRequest
+	GetBusinessInfo() *string
 	SetClientToken(v string) *RunRCInstancesRequest
 	GetClientToken() *string
 	SetCreateAckEdgeParam(v *RunRCInstancesRequestCreateAckEdgeParam) *RunRCInstancesRequest
@@ -133,8 +135,9 @@ type RunRCInstancesRequest struct {
 	// example:
 	//
 	// false
-	AutoRenew     *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoRenew     *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	BusinessInfo  *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -332,6 +335,10 @@ func (s *RunRCInstancesRequest) GetAutoUseCoupon() *bool {
 	return s.AutoUseCoupon
 }
 
+func (s *RunRCInstancesRequest) GetBusinessInfo() *string {
+	return s.BusinessInfo
+}
+
 func (s *RunRCInstancesRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -510,6 +517,11 @@ func (s *RunRCInstancesRequest) SetAutoRenew(v bool) *RunRCInstancesRequest {
 
 func (s *RunRCInstancesRequest) SetAutoUseCoupon(v bool) *RunRCInstancesRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *RunRCInstancesRequest) SetBusinessInfo(v string) *RunRCInstancesRequest {
+	s.BusinessInfo = &v
 	return s
 }
 
