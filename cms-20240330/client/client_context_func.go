@@ -1261,6 +1261,10 @@ func (client *Client) CreatePrometheusVirtualInstanceWithContext(ctx context.Con
 		body["namespace"] = request.Namespace
 	}
 
+	if !dara.IsNil(request.TenantId) {
+		body["tenantId"] = request.TenantId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -5680,6 +5684,10 @@ func (client *Client) ListPrometheusVirtualInstancesWithContext(ctx context.Cont
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Namespace) {
 		query["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
 	}
 
 	req := &openapiutil.OpenApiRequest{

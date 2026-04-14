@@ -11,6 +11,8 @@ type iListPrometheusVirtualInstancesRequest interface {
 	GoString() string
 	SetNamespace(v string) *ListPrometheusVirtualInstancesRequest
 	GetNamespace() *string
+	SetTenantId(v string) *ListPrometheusVirtualInstancesRequest
+	GetTenantId() *string
 }
 
 type ListPrometheusVirtualInstancesRequest struct {
@@ -20,6 +22,7 @@ type ListPrometheusVirtualInstancesRequest struct {
 	//
 	// ack-csi-fuse
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	TenantId  *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
 func (s ListPrometheusVirtualInstancesRequest) String() string {
@@ -34,8 +37,17 @@ func (s *ListPrometheusVirtualInstancesRequest) GetNamespace() *string {
 	return s.Namespace
 }
 
+func (s *ListPrometheusVirtualInstancesRequest) GetTenantId() *string {
+	return s.TenantId
+}
+
 func (s *ListPrometheusVirtualInstancesRequest) SetNamespace(v string) *ListPrometheusVirtualInstancesRequest {
 	s.Namespace = &v
+	return s
+}
+
+func (s *ListPrometheusVirtualInstancesRequest) SetTenantId(v string) *ListPrometheusVirtualInstancesRequest {
+	s.TenantId = &v
 	return s
 }
 
