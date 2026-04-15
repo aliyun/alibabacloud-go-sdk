@@ -180,6 +180,65 @@ func (client *Client) CpuHighAgentStreamResponseWithContext(ctx context.Context,
 
 // Summary:
 //
+// 创建一个告警联系人
+//
+// @param request - CreateAlertDestinationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAlertDestinationResponse
+func (client *Client) CreateAlertDestinationWithContext(ctx context.Context, request *CreateAlertDestinationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAlertDestinationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Params) {
+		body["params"] = request.Params
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Target) {
+		body["target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAlertDestination"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/alertPusher/alert/createDestination"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAlertDestinationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增推送告警的策略
 //
 // @param request - CreateAlertStrategyRequest
@@ -292,6 +351,53 @@ func (client *Client) CreateVmcoreDiagnosisTaskWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVmcoreDiagnosisTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除告警联系人
+//
+// @param request - DeleteAlertDestinationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAlertDestinationResponse
+func (client *Client) DeleteAlertDestinationWithContext(ctx context.Context, request *DeleteAlertDestinationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAlertDestinationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAlertDestination"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/alertPusher/alert/deleteDestination"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAlertDestinationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -725,6 +831,53 @@ func (client *Client) GetAgentTaskWithContext(ctx context.Context, request *GetA
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAgentTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取告警联系人详情
+//
+// @param request - GetAlertDestinationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlertDestinationResponse
+func (client *Client) GetAlertDestinationWithContext(ctx context.Context, request *GetAlertDestinationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAlertDestinationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAlertDestination"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/alertPusher/alert/getDestination"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAlertDestinationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2271,6 +2424,69 @@ func (client *Client) ListAgentsWithContext(ctx context.Context, request *ListAg
 
 // Summary:
 //
+// 查看告警联系人列表
+//
+// @param request - ListAlertDestinationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertDestinationsResponse
+func (client *Client) ListAlertDestinationsWithContext(ctx context.Context, request *ListAlertDestinationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlertDestinationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Current) {
+		query["current"] = request.Current
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAlertDestinations"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/alertPusher/alert/listDestinations"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAlertDestinationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取所有告警项
 //
 // @param headers - map
@@ -3476,6 +3692,73 @@ func (client *Client) UninstallAgentForClusterWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &UninstallAgentForClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新告警联系人
+//
+// Description:
+//
+// 、
+//
+// @param request - UpdateAlertDestinationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAlertDestinationResponse
+func (client *Client) UpdateAlertDestinationWithContext(ctx context.Context, request *UpdateAlertDestinationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAlertDestinationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Params) {
+		body["params"] = request.Params
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Target) {
+		body["target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAlertDestination"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/alertPusher/alert/updateDestination"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAlertDestinationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
