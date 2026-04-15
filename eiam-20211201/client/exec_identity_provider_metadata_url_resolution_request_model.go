@@ -17,6 +17,8 @@ type iExecIdentityProviderMetadataUrlResolutionRequest interface {
   GetNetworkAccessEndpointId() *string 
   SetOidcIssuer(v string) *ExecIdentityProviderMetadataUrlResolutionRequest
   GetOidcIssuer() *string 
+  SetSamlMetadataUrl(v string) *ExecIdentityProviderMetadataUrlResolutionRequest
+  GetSamlMetadataUrl() *string 
 }
 
 type ExecIdentityProviderMetadataUrlResolutionRequest struct {
@@ -38,12 +40,14 @@ type ExecIdentityProviderMetadataUrlResolutionRequest struct {
   NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
   // OIDC Issuer地址。
   // 
-  // This parameter is required.
-  // 
   // example:
   // 
   // https://login.example.com/.well-known/openid-configuration
   OidcIssuer *string `json:"OidcIssuer,omitempty" xml:"OidcIssuer,omitempty"`
+  // example:
+  // 
+  // https://dc.test.com/FederationMetadata/2007-06/FederationMetadata.xml
+  SamlMetadataUrl *string `json:"SamlMetadataUrl,omitempty" xml:"SamlMetadataUrl,omitempty"`
 }
 
 func (s ExecIdentityProviderMetadataUrlResolutionRequest) String() string {
@@ -70,6 +74,10 @@ func (s *ExecIdentityProviderMetadataUrlResolutionRequest) GetOidcIssuer() *stri
   return s.OidcIssuer
 }
 
+func (s *ExecIdentityProviderMetadataUrlResolutionRequest) GetSamlMetadataUrl() *string  {
+  return s.SamlMetadataUrl
+}
+
 func (s *ExecIdentityProviderMetadataUrlResolutionRequest) SetIdentityProviderId(v string) *ExecIdentityProviderMetadataUrlResolutionRequest {
   s.IdentityProviderId = &v
   return s
@@ -87,6 +95,11 @@ func (s *ExecIdentityProviderMetadataUrlResolutionRequest) SetNetworkAccessEndpo
 
 func (s *ExecIdentityProviderMetadataUrlResolutionRequest) SetOidcIssuer(v string) *ExecIdentityProviderMetadataUrlResolutionRequest {
   s.OidcIssuer = &v
+  return s
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionRequest) SetSamlMetadataUrl(v string) *ExecIdentityProviderMetadataUrlResolutionRequest {
+  s.SamlMetadataUrl = &v
   return s
 }
 

@@ -29,6 +29,8 @@ type iUpdateIdentityProviderRequest interface {
 	GetNetworkAccessEndpointId() *string
 	SetOidcConfig(v *UpdateIdentityProviderRequestOidcConfig) *UpdateIdentityProviderRequest
 	GetOidcConfig() *UpdateIdentityProviderRequestOidcConfig
+	SetSamlConfig(v *UpdateIdentityProviderRequestSamlConfig) *UpdateIdentityProviderRequest
+	GetSamlConfig() *UpdateIdentityProviderRequestSamlConfig
 	SetWeComConfig(v *UpdateIdentityProviderRequestWeComConfig) *UpdateIdentityProviderRequest
 	GetWeComConfig() *UpdateIdentityProviderRequestWeComConfig
 }
@@ -72,6 +74,7 @@ type UpdateIdentityProviderRequest struct {
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// OIDC IdP配置。
 	OidcConfig *UpdateIdentityProviderRequestOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
+	SamlConfig *UpdateIdentityProviderRequestSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
 	// 企业微信基本信息
 	WeComConfig *UpdateIdentityProviderRequestWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
 }
@@ -122,6 +125,10 @@ func (s *UpdateIdentityProviderRequest) GetNetworkAccessEndpointId() *string {
 
 func (s *UpdateIdentityProviderRequest) GetOidcConfig() *UpdateIdentityProviderRequestOidcConfig {
 	return s.OidcConfig
+}
+
+func (s *UpdateIdentityProviderRequest) GetSamlConfig() *UpdateIdentityProviderRequestSamlConfig {
+	return s.SamlConfig
 }
 
 func (s *UpdateIdentityProviderRequest) GetWeComConfig() *UpdateIdentityProviderRequestWeComConfig {
@@ -178,6 +185,11 @@ func (s *UpdateIdentityProviderRequest) SetOidcConfig(v *UpdateIdentityProviderR
 	return s
 }
 
+func (s *UpdateIdentityProviderRequest) SetSamlConfig(v *UpdateIdentityProviderRequestSamlConfig) *UpdateIdentityProviderRequest {
+	s.SamlConfig = v
+	return s
+}
+
 func (s *UpdateIdentityProviderRequest) SetWeComConfig(v *UpdateIdentityProviderRequestWeComConfig) *UpdateIdentityProviderRequest {
 	s.WeComConfig = v
 	return s
@@ -201,6 +213,11 @@ func (s *UpdateIdentityProviderRequest) Validate() error {
 	}
 	if s.OidcConfig != nil {
 		if err := s.OidcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamlConfig != nil {
+		if err := s.SamlConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -721,6 +738,133 @@ func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) SetUserinfoEndpo
 }
 
 func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateIdentityProviderRequestSamlConfig struct {
+	// example:
+	//
+	// HTTP-REDIRECT
+	BindingMethod *string                                                `json:"BindingMethod,omitempty" xml:"BindingMethod,omitempty"`
+	Certificates  []*UpdateIdentityProviderRequestSamlConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://dc.test.com/adfs/services/trust
+	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
+	// example:
+	//
+	// https://dc.test.com/adfs/ls/
+	IdPSsoUrl *string `json:"IdPSsoUrl,omitempty" xml:"IdPSsoUrl,omitempty"`
+	// example:
+	//
+	// 180
+	MaxClockSkew *int64 `json:"MaxClockSkew,omitempty" xml:"MaxClockSkew,omitempty"`
+	// example:
+	//
+	// true
+	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestSamlConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestSamlConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) GetBindingMethod() *string {
+	return s.BindingMethod
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) GetCertificates() []*UpdateIdentityProviderRequestSamlConfigCertificates {
+	return s.Certificates
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) GetIdPEntityId() *string {
+	return s.IdPEntityId
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) GetIdPSsoUrl() *string {
+	return s.IdPSsoUrl
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) GetMaxClockSkew() *int64 {
+	return s.MaxClockSkew
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) GetRequireRequestSigned() *bool {
+	return s.RequireRequestSigned
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) SetBindingMethod(v string) *UpdateIdentityProviderRequestSamlConfig {
+	s.BindingMethod = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) SetCertificates(v []*UpdateIdentityProviderRequestSamlConfigCertificates) *UpdateIdentityProviderRequestSamlConfig {
+	s.Certificates = v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) SetIdPEntityId(v string) *UpdateIdentityProviderRequestSamlConfig {
+	s.IdPEntityId = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) SetIdPSsoUrl(v string) *UpdateIdentityProviderRequestSamlConfig {
+	s.IdPSsoUrl = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) SetMaxClockSkew(v int64) *UpdateIdentityProviderRequestSamlConfig {
+	s.MaxClockSkew = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) SetRequireRequestSigned(v bool) *UpdateIdentityProviderRequestSamlConfig {
+	s.RequireRequestSigned = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfig) Validate() error {
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateIdentityProviderRequestSamlConfigCertificates struct {
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- MIIC0jCCAbqgAwIBAgIQXXXXX-----END CERTIFICATE-----
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s UpdateIdentityProviderRequestSamlConfigCertificates) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateIdentityProviderRequestSamlConfigCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfigCertificates) GetContent() *string {
+	return s.Content
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfigCertificates) SetContent(v string) *UpdateIdentityProviderRequestSamlConfigCertificates {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateIdentityProviderRequestSamlConfigCertificates) Validate() error {
 	return dara.Validate(s)
 }
 

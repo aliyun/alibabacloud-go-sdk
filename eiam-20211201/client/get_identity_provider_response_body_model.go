@@ -132,6 +132,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	DingtalkAppConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
 	// DingTalk synchronous configuration.
 	DingtalkProvisioningConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig `json:"DingtalkProvisioningConfig,omitempty" xml:"DingtalkProvisioningConfig,omitempty" type:"Struct"`
+	EndpointMetadata           *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata           `json:"EndpointMetadata,omitempty" xml:"EndpointMetadata,omitempty" type:"Struct"`
 	// Identity provider external ID.
 	//
 	// example:
@@ -192,6 +193,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
 	// OIDC IdP configuration.
 	OidcConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
+	SamlConfig *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
 	// Sync in configuration.
 	UdPullConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
 	// Indicates whether the IDaaS EIAM system supports UD (User Directory) synchronization.
@@ -258,6 +260,10 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetDingtalkProvi
 	return s.DingtalkProvisioningConfig
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetEndpointMetadata() *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata {
+	return s.EndpointMetadata
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetIdentityProviderExternalId() *string {
 	return s.IdentityProviderExternalId
 }
@@ -304,6 +310,10 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetNetworkAccess
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetOidcConfig() *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig {
 	return s.OidcConfig
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetSamlConfig() *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	return s.SamlConfig
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) GetUdPullConfig() *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig {
@@ -370,6 +380,11 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetDingtalkProvi
 	return s
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetEndpointMetadata(v *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.EndpointMetadata = v
+	return s
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetIdentityProviderExternalId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetail {
 	s.IdentityProviderExternalId = &v
 	return s
@@ -430,6 +445,11 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetOidcConfig(v 
 	return s
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetSamlConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
+	s.SamlConfig = v
+	return s
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) SetUdPullConfig(v *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) *GetIdentityProviderResponseBodyIdentityProviderDetail {
 	s.UdPullConfig = v
 	return s
@@ -471,6 +491,11 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) Validate() error
 			return err
 		}
 	}
+	if s.EndpointMetadata != nil {
+		if err := s.EndpointMetadata.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.LarkConfig != nil {
 		if err := s.LarkConfig.Validate(); err != nil {
 			return err
@@ -483,6 +508,11 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetail) Validate() error
 	}
 	if s.OidcConfig != nil {
 		if err := s.OidcConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SamlConfig != nil {
+		if err := s.SamlConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -792,6 +822,60 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioni
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfigAuthedUsers) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata struct {
+	// example:
+	//
+	// https://9test.aliyunidaas.com/login/saml2/idp_nhlraxfiwsx7w7zp26qzyoxxxx/acs
+	SamlAcsEndpoint *string `json:"SamlAcsEndpoint,omitempty" xml:"SamlAcsEndpoint,omitempty"`
+	// example:
+	//
+	// https://9test.aliyunidaas.com/login/saml2/idp_nhlraxfiwsx7w7zp26qzyoxxxx/meta
+	SamlEntityId *string `json:"SamlEntityId,omitempty" xml:"SamlEntityId,omitempty"`
+	// example:
+	//
+	// https://9test.aliyunidaas.com/login/saml2/idp_nhlraxfiwsx7w7zp26qzyoxxxx/meta
+	SamlMetaEndpoint *string `json:"SamlMetaEndpoint,omitempty" xml:"SamlMetaEndpoint,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) GetSamlAcsEndpoint() *string {
+	return s.SamlAcsEndpoint
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) GetSamlEntityId() *string {
+	return s.SamlEntityId
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) GetSamlMetaEndpoint() *string {
+	return s.SamlMetaEndpoint
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) SetSamlAcsEndpoint(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata {
+	s.SamlAcsEndpoint = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) SetSamlEntityId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata {
+	s.SamlEntityId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) SetSamlMetaEndpoint(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata {
+	s.SamlMetaEndpoint = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1270,6 +1354,189 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpoint
 }
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig struct {
+	// example:
+	//
+	// HTTP-REDIRECT
+	BindingMethod *string                                                                        `json:"BindingMethod,omitempty" xml:"BindingMethod,omitempty"`
+	Certificates  []*GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://dc.test.com/adfs/services/trust
+	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
+	// example:
+	//
+	// https://dc.test.com/adfs/ls/
+	IdPSsoUrl *string `json:"IdPSsoUrl,omitempty" xml:"IdPSsoUrl,omitempty"`
+	// example:
+	//
+	// 180
+	MaxClockSkew *int64 `json:"MaxClockSkew,omitempty" xml:"MaxClockSkew,omitempty"`
+	// example:
+	//
+	// true
+	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetBindingMethod() *string {
+	return s.BindingMethod
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetCertificates() []*GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates {
+	return s.Certificates
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetIdPEntityId() *string {
+	return s.IdPEntityId
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetIdPSsoUrl() *string {
+	return s.IdPSsoUrl
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetMaxClockSkew() *int64 {
+	return s.MaxClockSkew
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) GetRequireRequestSigned() *bool {
+	return s.RequireRequestSigned
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetBindingMethod(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.BindingMethod = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetCertificates(v []*GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.Certificates = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetIdPEntityId(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.IdPEntityId = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetIdPSsoUrl(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.IdPSsoUrl = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetMaxClockSkew(v int64) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.MaxClockSkew = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) SetRequireRequestSigned(v bool) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig {
+	s.RequireRequestSigned = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) Validate() error {
+	if s.Certificates != nil {
+		for _, item := range s.Certificates {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates struct {
+	CertificateMetadata *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata `json:"CertificateMetadata,omitempty" xml:"CertificateMetadata,omitempty" type:"Struct"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE----- MIIC0jCCAbqgAwIBAgIQXXXXX -----END CERTIFICATE-----
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) GetCertificateMetadata() *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata {
+	return s.CertificateMetadata
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) GetContent() *string {
+	return s.Content
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) SetCertificateMetadata(v *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates {
+	s.CertificateMetadata = v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) SetContent(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates {
+	s.Content = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates) Validate() error {
+	if s.CertificateMetadata != nil {
+		if err := s.CertificateMetadata.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata struct {
+	// example:
+	//
+	// 1704067200000
+	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 1672531200000
+	NotBefore *int64 `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) GetNotAfter() *int64 {
+	return s.NotAfter
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) GetNotBefore() *int64 {
+	return s.NotBefore
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) SetNotAfter(v int64) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) SetNotBefore(v int64) *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata) Validate() error {
 	return dara.Validate(s)
 }
 

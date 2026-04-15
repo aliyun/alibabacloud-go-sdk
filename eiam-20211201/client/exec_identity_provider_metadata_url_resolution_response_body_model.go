@@ -61,6 +61,7 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBody) Validate() error
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata struct {
   // OIDC IdP的Meta信息。
   OidcOpenIdConfiguration *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration `json:"OidcOpenIdConfiguration,omitempty" xml:"OidcOpenIdConfiguration,omitempty" type:"Struct"`
+  SamlMetadataConfiguration *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration `json:"SamlMetadataConfiguration,omitempty" xml:"SamlMetadataConfiguration,omitempty" type:"Struct"`
 }
 
 func (s ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata) String() string {
@@ -75,14 +76,28 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
   return s.OidcOpenIdConfiguration
 }
 
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata) GetSamlMetadataConfiguration() *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration  {
+  return s.SamlMetadataConfiguration
+}
+
 func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata) SetOidcOpenIdConfiguration(v *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration) *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata {
   s.OidcOpenIdConfiguration = v
+  return s
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata) SetSamlMetadataConfiguration(v *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata {
+  s.SamlMetadataConfiguration = v
   return s
 }
 
 func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata) Validate() error {
   if s.OidcOpenIdConfiguration != nil {
     if err := s.OidcOpenIdConfiguration.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.SamlMetadataConfiguration != nil {
+    if err := s.SamlMetadataConfiguration.Validate(); err != nil {
       return err
     }
   }
@@ -176,6 +191,94 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration) Validate() error {
+  return dara.Validate(s)
+}
+
+type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration struct {
+  Certificates []*ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+  // example:
+  // 
+  // http://dc.test.com/adfs/services/trust
+  IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
+  // example:
+  // 
+  // https://dc.test.com/adfs/ls/
+  IdPSsoUrl *string `json:"IdPSsoUrl,omitempty" xml:"IdPSsoUrl,omitempty"`
+}
+
+func (s ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) String() string {
+  return dara.Prettify(s)
+}
+
+func (s ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) GoString() string {
+  return s.String()
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) GetCertificates() []*ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates  {
+  return s.Certificates
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) GetIdPEntityId() *string  {
+  return s.IdPEntityId
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) GetIdPSsoUrl() *string  {
+  return s.IdPSsoUrl
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) SetCertificates(v []*ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates) *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration {
+  s.Certificates = v
+  return s
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) SetIdPEntityId(v string) *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration {
+  s.IdPEntityId = &v
+  return s
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) SetIdPSsoUrl(v string) *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration {
+  s.IdPSsoUrl = &v
+  return s
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration) Validate() error {
+  if s.Certificates != nil {
+    for _, item := range s.Certificates {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
+}
+
+type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates struct {
+  // example:
+  // 
+  // -----BEGIN CERTIFICATE----- MIIE+zCCA0egAwIBAgIJAJZY0ZY0ZY0Z -----END CERTIFICATE-----
+  Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates) String() string {
+  return dara.Prettify(s)
+}
+
+func (s ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates) GoString() string {
+  return s.String()
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates) GetContent() *string  {
+  return s.Content
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates) SetContent(v string) *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates {
+  s.Content = &v
+  return s
+}
+
+func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates) Validate() error {
   return dara.Validate(s)
 }
 

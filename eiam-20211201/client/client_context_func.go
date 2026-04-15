@@ -2482,6 +2482,10 @@ func (client *Client) CreateIdentityProviderWithContext(ctx context.Context, req
 		query["OidcConfig"] = request.OidcConfig
 	}
 
+	if !dara.IsNil(request.SamlConfig) {
+		query["SamlConfig"] = request.SamlConfig
+	}
+
 	if !dara.IsNil(request.UdPullConfig) {
 		query["UdPullConfig"] = request.UdPullConfig
 	}
@@ -7218,6 +7222,10 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithContext(ctx c
 		query["OidcIssuer"] = request.OidcIssuer
 	}
 
+	if !dara.IsNil(request.SamlMetadataUrl) {
+		query["SamlMetadataUrl"] = request.SamlMetadataUrl
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8763,7 +8771,7 @@ func (client *Client) GetGroupWithContext(ctx context.Context, request *GetGroup
 
 // Summary:
 //
-// # Get identity provider
+// Obtains an identity provider (IdP).
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -18118,6 +18126,10 @@ func (client *Client) UpdateIdentityProviderWithContext(ctx context.Context, req
 
 	if !dara.IsNil(request.OidcConfig) {
 		query["OidcConfig"] = request.OidcConfig
+	}
+
+	if !dara.IsNil(request.SamlConfig) {
+		query["SamlConfig"] = request.SamlConfig
 	}
 
 	if !dara.IsNil(request.WeComConfig) {
