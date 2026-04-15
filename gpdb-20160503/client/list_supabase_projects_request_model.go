@@ -19,6 +19,14 @@ type iListSupabaseProjectsRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *ListSupabaseProjectsRequest
 	GetRegionId() *string
+	SetSearchField(v string) *ListSupabaseProjectsRequest
+	GetSearchField() *string
+	SetSearchValue(v string) *ListSupabaseProjectsRequest
+	GetSearchValue() *string
+	SetSortField(v string) *ListSupabaseProjectsRequest
+	GetSortField() *string
+	SetSortOrder(v string) *ListSupabaseProjectsRequest
+	GetSortOrder() *string
 }
 
 type ListSupabaseProjectsRequest struct {
@@ -43,7 +51,11 @@ type ListSupabaseProjectsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SearchField *string `json:"SearchField,omitempty" xml:"SearchField,omitempty"`
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	SortField   *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	SortOrder   *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 
 func (s ListSupabaseProjectsRequest) String() string {
@@ -74,6 +86,22 @@ func (s *ListSupabaseProjectsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListSupabaseProjectsRequest) GetSearchField() *string {
+	return s.SearchField
+}
+
+func (s *ListSupabaseProjectsRequest) GetSearchValue() *string {
+	return s.SearchValue
+}
+
+func (s *ListSupabaseProjectsRequest) GetSortField() *string {
+	return s.SortField
+}
+
+func (s *ListSupabaseProjectsRequest) GetSortOrder() *string {
+	return s.SortOrder
+}
+
 func (s *ListSupabaseProjectsRequest) SetMaxResults(v int32) *ListSupabaseProjectsRequest {
 	s.MaxResults = &v
 	return s
@@ -96,6 +124,26 @@ func (s *ListSupabaseProjectsRequest) SetPageSize(v int32) *ListSupabaseProjects
 
 func (s *ListSupabaseProjectsRequest) SetRegionId(v string) *ListSupabaseProjectsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetSearchField(v string) *ListSupabaseProjectsRequest {
+	s.SearchField = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetSearchValue(v string) *ListSupabaseProjectsRequest {
+	s.SearchValue = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetSortField(v string) *ListSupabaseProjectsRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListSupabaseProjectsRequest) SetSortOrder(v string) *ListSupabaseProjectsRequest {
+	s.SortOrder = &v
 	return s
 }
 

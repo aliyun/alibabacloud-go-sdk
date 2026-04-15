@@ -11,6 +11,8 @@ type iCreateSupabaseProjectRequest interface {
 	GoString() string
 	SetAccountPassword(v string) *CreateSupabaseProjectRequest
 	GetAccountPassword() *string
+	SetAutoScale(v bool) *CreateSupabaseProjectRequest
+	GetAutoScale() *bool
 	SetClientToken(v string) *CreateSupabaseProjectRequest
 	GetClientToken() *string
 	SetDiskPerformanceLevel(v string) *CreateSupabaseProjectRequest
@@ -54,6 +56,7 @@ type CreateSupabaseProjectRequest struct {
 	//
 	// Pw123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	AutoScale       *bool   `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
 	//
 	// example:
@@ -169,6 +172,10 @@ func (s *CreateSupabaseProjectRequest) GetAccountPassword() *string {
 	return s.AccountPassword
 }
 
+func (s *CreateSupabaseProjectRequest) GetAutoScale() *bool {
+	return s.AutoScale
+}
+
 func (s *CreateSupabaseProjectRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -223,6 +230,11 @@ func (s *CreateSupabaseProjectRequest) GetZoneId() *string {
 
 func (s *CreateSupabaseProjectRequest) SetAccountPassword(v string) *CreateSupabaseProjectRequest {
 	s.AccountPassword = &v
+	return s
+}
+
+func (s *CreateSupabaseProjectRequest) SetAutoScale(v bool) *CreateSupabaseProjectRequest {
+	s.AutoScale = &v
 	return s
 }
 

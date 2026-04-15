@@ -2990,6 +2990,10 @@ func (client *Client) CreateSupabaseProjectWithContext(ctx context.Context, requ
 		query["AccountPassword"] = request.AccountPassword
 	}
 
+	if !dara.IsNil(request.AutoScale) {
+		query["AutoScale"] = request.AutoScale
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -12178,6 +12182,22 @@ func (client *Client) ListSupabaseProjectsWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchField) {
+		query["SearchField"] = request.SearchField
+	}
+
+	if !dara.IsNil(request.SearchValue) {
+		query["SearchValue"] = request.SearchValue
+	}
+
+	if !dara.IsNil(request.SortField) {
+		query["SortField"] = request.SortField
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
 	}
 
 	req := &openapiutil.OpenApiRequest{

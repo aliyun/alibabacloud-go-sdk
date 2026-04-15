@@ -9,6 +9,8 @@ type iGetSupabaseProjectResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoScale(v string) *GetSupabaseProjectResponseBody
+	GetAutoScale() *string
 	SetCreateTime(v string) *GetSupabaseProjectResponseBody
 	GetCreateTime() *string
 	SetDBSecurityIpList(v string) *GetSupabaseProjectResponseBody
@@ -60,6 +62,7 @@ type iGetSupabaseProjectResponseBody interface {
 }
 
 type GetSupabaseProjectResponseBody struct {
+	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -203,6 +206,10 @@ func (s GetSupabaseProjectResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetSupabaseProjectResponseBody) GetAutoScale() *string {
+	return s.AutoScale
+}
+
 func (s *GetSupabaseProjectResponseBody) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -297,6 +304,11 @@ func (s *GetSupabaseProjectResponseBody) GetVpcId() *string {
 
 func (s *GetSupabaseProjectResponseBody) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *GetSupabaseProjectResponseBody) SetAutoScale(v string) *GetSupabaseProjectResponseBody {
+	s.AutoScale = &v
+	return s
 }
 
 func (s *GetSupabaseProjectResponseBody) SetCreateTime(v string) *GetSupabaseProjectResponseBody {

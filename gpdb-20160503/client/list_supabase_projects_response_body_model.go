@@ -151,6 +151,7 @@ func (s *ListSupabaseProjectsResponseBody) Validate() error {
 }
 
 type ListSupabaseProjectsResponseBodyItems struct {
+	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -288,6 +289,10 @@ func (s ListSupabaseProjectsResponseBodyItems) GoString() string {
 	return s.String()
 }
 
+func (s *ListSupabaseProjectsResponseBodyItems) GetAutoScale() *string {
+	return s.AutoScale
+}
+
 func (s *ListSupabaseProjectsResponseBodyItems) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -366,6 +371,11 @@ func (s *ListSupabaseProjectsResponseBodyItems) GetVpcId() *string {
 
 func (s *ListSupabaseProjectsResponseBodyItems) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *ListSupabaseProjectsResponseBodyItems) SetAutoScale(v string) *ListSupabaseProjectsResponseBodyItems {
+	s.AutoScale = &v
+	return s
 }
 
 func (s *ListSupabaseProjectsResponseBodyItems) SetCreateTime(v string) *ListSupabaseProjectsResponseBodyItems {
