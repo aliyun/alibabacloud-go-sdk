@@ -1,3 +1,6 @@
+2026-04-15 Version: v1.21.1
+- Generated golang 2023-08-08 for emr-serverless-spark.
+
 2026-04-14 Version: v1.21.0
 - Support API CreateNetworkService.
 - Support API ListNetworkServices.
