@@ -128,6 +128,78 @@ func (client *Client) CreateCloneVoice(request *CreateCloneVoiceRequest) (_resul
 
 // Summary:
 //
+// 创建语言模型配置信息
+//
+// @param tmpReq - CreateLlmAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLlmAccessProfileResponse
+func (client *Client) CreateLlmAccessProfileWithOptions(tmpReq *CreateLlmAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *CreateLlmAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateLlmAccessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Profile) {
+		request.ProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Profile, dara.String("Profile"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProfileShrink) {
+		body["Profile"] = request.ProfileShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLlmAccessProfile"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLlmAccessProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建语言模型配置信息
+//
+// @param request - CreateLlmAccessProfileRequest
+//
+// @return CreateLlmAccessProfileResponse
+func (client *Client) CreateLlmAccessProfile(request *CreateLlmAccessProfileRequest) (_result *CreateLlmAccessProfileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLlmAccessProfileResponse{}
+	_body, _err := client.CreateLlmAccessProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建实例
 //
 // @param request - CreateScriptRequest
@@ -605,6 +677,72 @@ func (client *Client) DeleteCloneVoice(request *DeleteCloneVoiceRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteCloneVoiceResponse{}
 	_body, _err := client.DeleteCloneVoiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除语言模型配置信息
+//
+// @param request - DeleteLlmAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLlmAccessProfileResponse
+func (client *Client) DeleteLlmAccessProfileWithOptions(request *DeleteLlmAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *DeleteLlmAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessProfileId) {
+		body["AccessProfileId"] = request.AccessProfileId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLlmAccessProfile"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLlmAccessProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除语言模型配置信息
+//
+// @param request - DeleteLlmAccessProfileRequest
+//
+// @return DeleteLlmAccessProfileResponse
+func (client *Client) DeleteLlmAccessProfile(request *DeleteLlmAccessProfileRequest) (_result *DeleteLlmAccessProfileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLlmAccessProfileResponse{}
+	_body, _err := client.DeleteLlmAccessProfileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1954,6 +2092,76 @@ func (client *Client) ListCloneVoiceModels(request *ListCloneVoiceModelsRequest)
 
 // Summary:
 //
+// 获取语言模型配置信息
+//
+// @param request - ListLlmAccessProfilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLlmAccessProfilesResponse
+func (client *Client) ListLlmAccessProfilesWithOptions(request *ListLlmAccessProfilesRequest, runtime *dara.RuntimeOptions) (_result *ListLlmAccessProfilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLlmAccessProfiles"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLlmAccessProfilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取语言模型配置信息
+//
+// @param request - ListLlmAccessProfilesRequest
+//
+// @return ListLlmAccessProfilesResponse
+func (client *Client) ListLlmAccessProfiles(request *ListLlmAccessProfilesRequest) (_result *ListLlmAccessProfilesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLlmAccessProfilesResponse{}
+	_body, _err := client.ListLlmAccessProfilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取对话模型列表
 //
 // @param request - ListNluModelsRequest
@@ -2755,6 +2963,82 @@ func (client *Client) UpdateCloneVoice(request *UpdateCloneVoiceRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateCloneVoiceResponse{}
 	_body, _err := client.UpdateCloneVoiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新语言模型配置信息
+//
+// @param tmpReq - UpdateLlmAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLlmAccessProfileResponse
+func (client *Client) UpdateLlmAccessProfileWithOptions(tmpReq *UpdateLlmAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *UpdateLlmAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateLlmAccessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Profile) {
+		request.ProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Profile, dara.String("Profile"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessProfileId) {
+		body["AccessProfileId"] = request.AccessProfileId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProfileShrink) {
+		body["Profile"] = request.ProfileShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLlmAccessProfile"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLlmAccessProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新语言模型配置信息
+//
+// @param request - UpdateLlmAccessProfileRequest
+//
+// @return UpdateLlmAccessProfileResponse
+func (client *Client) UpdateLlmAccessProfile(request *UpdateLlmAccessProfileRequest) (_result *UpdateLlmAccessProfileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateLlmAccessProfileResponse{}
+	_body, _err := client.UpdateLlmAccessProfileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
