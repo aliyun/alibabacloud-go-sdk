@@ -159,6 +159,7 @@ type BatchTranslateForHtmlRequestExt struct {
 	// this sentence from an e-commerce product image, please provide a translation that is both highly concise and no more than 1.2 times the length of the original.
 	DomainHint    *string                                         `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*BatchTranslateForHtmlRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	LangDetect    *bool                                           `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
 	Sensitives    []*string                                       `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*BatchTranslateForHtmlRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
 	TextTransform *BatchTranslateForHtmlRequestExtTextTransform   `json:"textTransform,omitempty" xml:"textTransform,omitempty" type:"Struct"`
@@ -182,6 +183,10 @@ func (s *BatchTranslateForHtmlRequestExt) GetDomainHint() *string {
 
 func (s *BatchTranslateForHtmlRequestExt) GetExamples() []*BatchTranslateForHtmlRequestExtExamples {
 	return s.Examples
+}
+
+func (s *BatchTranslateForHtmlRequestExt) GetLangDetect() *bool {
+	return s.LangDetect
 }
 
 func (s *BatchTranslateForHtmlRequestExt) GetSensitives() []*string {
@@ -208,6 +213,11 @@ func (s *BatchTranslateForHtmlRequestExt) SetDomainHint(v string) *BatchTranslat
 
 func (s *BatchTranslateForHtmlRequestExt) SetExamples(v []*BatchTranslateForHtmlRequestExtExamples) *BatchTranslateForHtmlRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *BatchTranslateForHtmlRequestExt) SetLangDetect(v bool) *BatchTranslateForHtmlRequestExt {
+	s.LangDetect = &v
 	return s
 }
 

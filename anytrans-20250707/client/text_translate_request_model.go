@@ -145,6 +145,7 @@ type TextTranslateRequestExt struct {
 	// technology
 	DomainHint    *string                                 `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*TextTranslateRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	LangDetect    *bool                                   `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
 	ParamMap      interface{}                             `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Prefix        *string                                 `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	Sensitives    []*string                               `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
@@ -174,6 +175,10 @@ func (s *TextTranslateRequestExt) GetDomainHint() *string {
 
 func (s *TextTranslateRequestExt) GetExamples() []*TextTranslateRequestExtExamples {
 	return s.Examples
+}
+
+func (s *TextTranslateRequestExt) GetLangDetect() *bool {
+	return s.LangDetect
 }
 
 func (s *TextTranslateRequestExt) GetParamMap() interface{} {
@@ -213,6 +218,11 @@ func (s *TextTranslateRequestExt) SetDomainHint(v string) *TextTranslateRequestE
 
 func (s *TextTranslateRequestExt) SetExamples(v []*TextTranslateRequestExtExamples) *TextTranslateRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *TextTranslateRequestExt) SetLangDetect(v bool) *TextTranslateRequestExt {
+	s.LangDetect = &v
 	return s
 }
 

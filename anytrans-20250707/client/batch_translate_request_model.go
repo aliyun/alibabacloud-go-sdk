@@ -156,6 +156,7 @@ type BatchTranslateRequestExt struct {
 	// technology
 	DomainHint    *string                                  `json:"domainHint,omitempty" xml:"domainHint,omitempty"`
 	Examples      []*BatchTranslateRequestExtExamples      `json:"examples,omitempty" xml:"examples,omitempty" type:"Repeated"`
+	LangDetect    *bool                                    `json:"langDetect,omitempty" xml:"langDetect,omitempty"`
 	ParamMap      interface{}                              `json:"paramMap,omitempty" xml:"paramMap,omitempty"`
 	Sensitives    []*string                                `json:"sensitives,omitempty" xml:"sensitives,omitempty" type:"Repeated"`
 	Terminologies []*BatchTranslateRequestExtTerminologies `json:"terminologies,omitempty" xml:"terminologies,omitempty" type:"Repeated"`
@@ -180,6 +181,10 @@ func (s *BatchTranslateRequestExt) GetDomainHint() *string {
 
 func (s *BatchTranslateRequestExt) GetExamples() []*BatchTranslateRequestExtExamples {
 	return s.Examples
+}
+
+func (s *BatchTranslateRequestExt) GetLangDetect() *bool {
+	return s.LangDetect
 }
 
 func (s *BatchTranslateRequestExt) GetParamMap() interface{} {
@@ -210,6 +215,11 @@ func (s *BatchTranslateRequestExt) SetDomainHint(v string) *BatchTranslateReques
 
 func (s *BatchTranslateRequestExt) SetExamples(v []*BatchTranslateRequestExtExamples) *BatchTranslateRequestExt {
 	s.Examples = v
+	return s
+}
+
+func (s *BatchTranslateRequestExt) SetLangDetect(v bool) *BatchTranslateRequestExt {
+	s.LangDetect = &v
 	return s
 }
 
