@@ -124,6 +124,7 @@ type ListStackConfigsResponseBodyConfigs struct {
 	//
 	// format_version: IaCService/2021-08-06\\ndescription: create ALB\\nupstream_input:\\n  - name: stack_network\\n ...
 	DeploymentContent *string `json:"deploymentContent,omitempty" xml:"deploymentContent,omitempty"`
+	FailedReason      *string `json:"failedReason,omitempty" xml:"failedReason,omitempty"`
 	// example:
 	//
 	// Deployed
@@ -162,6 +163,10 @@ func (s *ListStackConfigsResponseBodyConfigs) GetDeploymentContent() *string {
 	return s.DeploymentContent
 }
 
+func (s *ListStackConfigsResponseBodyConfigs) GetFailedReason() *string {
+	return s.FailedReason
+}
+
 func (s *ListStackConfigsResponseBodyConfigs) GetStatus() *string {
 	return s.Status
 }
@@ -192,6 +197,11 @@ func (s *ListStackConfigsResponseBodyConfigs) SetDeploymentConfig(v *ListStackCo
 
 func (s *ListStackConfigsResponseBodyConfigs) SetDeploymentContent(v string) *ListStackConfigsResponseBodyConfigs {
 	s.DeploymentContent = &v
+	return s
+}
+
+func (s *ListStackConfigsResponseBodyConfigs) SetFailedReason(v string) *ListStackConfigsResponseBodyConfigs {
+	s.FailedReason = &v
 	return s
 }
 
