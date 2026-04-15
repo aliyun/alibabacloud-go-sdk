@@ -27,7 +27,10 @@ type CreateScheduleConferenceShrinkRequest struct {
 	// example:
 	//
 	// 1687928400000L
-	EndTime                        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 预约会议设置
 	ScheduleConfSettingModelShrink *string `json:"ScheduleConfSettingModel,omitempty" xml:"ScheduleConfSettingModel,omitempty"`
 	// This parameter is required.
 	//

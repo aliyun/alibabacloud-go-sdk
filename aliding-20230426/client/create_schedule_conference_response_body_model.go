@@ -19,6 +19,10 @@ type iCreateScheduleConferenceResponseBody interface {
 	GetScheduleConferenceId() *string
 	SetUrl(v string) *CreateScheduleConferenceResponseBody
 	GetUrl() *string
+	SetVendorRequestId(v string) *CreateScheduleConferenceResponseBody
+	GetVendorRequestId() *string
+	SetVendorType(v string) *CreateScheduleConferenceResponseBody
+	GetVendorType() *string
 }
 
 type CreateScheduleConferenceResponseBody struct {
@@ -44,6 +48,14 @@ type CreateScheduleConferenceResponseBody struct {
 	//
 	// https://meeting.dingtalk.com/j/knvMq1ixxxx
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
 }
 
 func (s CreateScheduleConferenceResponseBody) String() string {
@@ -74,6 +86,14 @@ func (s *CreateScheduleConferenceResponseBody) GetUrl() *string {
 	return s.Url
 }
 
+func (s *CreateScheduleConferenceResponseBody) GetVendorRequestId() *string {
+	return s.VendorRequestId
+}
+
+func (s *CreateScheduleConferenceResponseBody) GetVendorType() *string {
+	return s.VendorType
+}
+
 func (s *CreateScheduleConferenceResponseBody) SetPhones(v []*string) *CreateScheduleConferenceResponseBody {
 	s.Phones = v
 	return s
@@ -96,6 +116,16 @@ func (s *CreateScheduleConferenceResponseBody) SetScheduleConferenceId(v string)
 
 func (s *CreateScheduleConferenceResponseBody) SetUrl(v string) *CreateScheduleConferenceResponseBody {
 	s.Url = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceResponseBody) SetVendorRequestId(v string) *CreateScheduleConferenceResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceResponseBody) SetVendorType(v string) *CreateScheduleConferenceResponseBody {
+	s.VendorType = &v
 	return s
 }
 

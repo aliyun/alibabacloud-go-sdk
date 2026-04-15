@@ -27,7 +27,10 @@ type CreateScheduleConferenceRequest struct {
 	// example:
 	//
 	// 1687928400000L
-	EndTime                  *int64                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 预约会议设置
 	ScheduleConfSettingModel *CreateScheduleConferenceRequestScheduleConfSettingModel `json:"ScheduleConfSettingModel,omitempty" xml:"ScheduleConfSettingModel,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
@@ -112,6 +115,13 @@ func (s *CreateScheduleConferenceRequest) Validate() error {
 }
 
 type CreateScheduleConferenceRequestScheduleConfSettingModel struct {
+	// example:
+	//
+	// {}
+	AiAgentSummarySetting *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting `json:"AiAgentSummarySetting,omitempty" xml:"AiAgentSummarySetting,omitempty" type:"Struct"`
+	// example:
+	//
+	// ["012345"]
 	CohostUserIds []*string `json:"CohostUserIds,omitempty" xml:"CohostUserIds,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -124,8 +134,14 @@ type CreateScheduleConferenceRequestScheduleConfSettingModel struct {
 	// example:
 	//
 	// 0
-	LockRoom                    *int32                                                                              `json:"LockRoom,omitempty" xml:"LockRoom,omitempty"`
-	MoziConfOpenRecordSetting   *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting   `json:"MoziConfOpenRecordSetting,omitempty" xml:"MoziConfOpenRecordSetting,omitempty" type:"Struct"`
+	LockRoom *int32 `json:"LockRoom,omitempty" xml:"LockRoom,omitempty"`
+	// example:
+	//
+	// {}
+	MoziConfOpenRecordSetting *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting `json:"MoziConfOpenRecordSetting,omitempty" xml:"MoziConfOpenRecordSetting,omitempty" type:"Struct"`
+	// example:
+	//
+	// {}
 	MoziConfVirtualExtraSetting *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting `json:"MoziConfVirtualExtraSetting,omitempty" xml:"MoziConfVirtualExtraSetting,omitempty" type:"Struct"`
 	// example:
 	//
@@ -143,6 +159,10 @@ func (s CreateScheduleConferenceRequestScheduleConfSettingModel) String() string
 
 func (s CreateScheduleConferenceRequestScheduleConfSettingModel) GoString() string {
 	return s.String()
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) GetAiAgentSummarySetting() *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting {
+	return s.AiAgentSummarySetting
 }
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) GetCohostUserIds() []*string {
@@ -175,6 +195,11 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) GetMuteOnJoin(
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) GetScreenShareForbidden() *int32 {
 	return s.ScreenShareForbidden
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetAiAgentSummarySetting(v *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) *CreateScheduleConferenceRequestScheduleConfSettingModel {
+	s.AiAgentSummarySetting = v
+	return s
 }
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetCohostUserIds(v []*string) *CreateScheduleConferenceRequestScheduleConfSettingModel {
@@ -218,6 +243,11 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) SetScreenShare
 }
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) Validate() error {
+	if s.AiAgentSummarySetting != nil {
+		if err := s.AiAgentSummarySetting.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.MoziConfOpenRecordSetting != nil {
 		if err := s.MoziConfOpenRecordSetting.Validate(); err != nil {
 			return err
@@ -231,7 +261,77 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModel) Validate() err
 	return nil
 }
 
+type CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting struct {
+	// example:
+	//
+	// 0
+	AllowAllParticipantsStart *int32 `json:"AllowAllParticipantsStart,omitempty" xml:"AllowAllParticipantsStart,omitempty"`
+	// example:
+	//
+	// 0
+	ReceiverType *int32 `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
+	// example:
+	//
+	// 0
+	RestrictShareMinutesSummaryOnly *int32 `json:"RestrictShareMinutesSummaryOnly,omitempty" xml:"RestrictShareMinutesSummaryOnly,omitempty"`
+	// example:
+	//
+	// disable
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) GetAllowAllParticipantsStart() *int32 {
+	return s.AllowAllParticipantsStart
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) GetReceiverType() *int32 {
+	return s.ReceiverType
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) GetRestrictShareMinutesSummaryOnly() *int32 {
+	return s.RestrictShareMinutesSummaryOnly
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) SetAllowAllParticipantsStart(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting {
+	s.AllowAllParticipantsStart = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) SetReceiverType(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting {
+	s.ReceiverType = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) SetRestrictShareMinutesSummaryOnly(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting {
+	s.RestrictShareMinutesSummaryOnly = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) SetValue(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelAiAgentSummarySetting) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting struct {
+	// example:
+	//
+	// true
 	IsFollowHost *bool `json:"IsFollowHost,omitempty" xml:"IsFollowHost,omitempty"`
 	// example:
 	//
@@ -245,6 +345,10 @@ type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSe
 	//
 	// 0
 	RecordAutoStartType *int32 `json:"RecordAutoStartType,omitempty" xml:"RecordAutoStartType,omitempty"`
+	// example:
+	//
+	// 0
+	RestrictShareMinutesSummaryOnly *int32 `json:"RestrictShareMinutesSummaryOnly,omitempty" xml:"RestrictShareMinutesSummaryOnly,omitempty"`
 }
 
 func (s CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) String() string {
@@ -271,6 +375,10 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenReco
 	return s.RecordAutoStartType
 }
 
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) GetRestrictShareMinutesSummaryOnly() *int32 {
+	return s.RestrictShareMinutesSummaryOnly
+}
+
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetIsFollowHost(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
 	s.IsFollowHost = &v
 	return s
@@ -291,6 +399,11 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenReco
 	return s
 }
 
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) SetRestrictShareMinutesSummaryOnly(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting {
+	s.RestrictShareMinutesSummaryOnly = &v
+	return s
+}
+
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfOpenRecordSetting) Validate() error {
 	return dara.Validate(s)
 }
@@ -303,8 +416,15 @@ type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtra
 	// example:
 	//
 	// 0
-	EnableChat             *int32 `json:"EnableChat,omitempty" xml:"EnableChat,omitempty"`
-	EnableWebAnonymousJoin *bool  `json:"EnableWebAnonymousJoin,omitempty" xml:"EnableWebAnonymousJoin,omitempty"`
+	EnableChat *int32 `json:"EnableChat,omitempty" xml:"EnableChat,omitempty"`
+	// example:
+	//
+	// true
+	EnableWebAnonymousJoin *bool `json:"EnableWebAnonymousJoin,omitempty" xml:"EnableWebAnonymousJoin,omitempty"`
+	// example:
+	//
+	// false
+	HiddenOwnerNick *bool `json:"HiddenOwnerNick,omitempty" xml:"HiddenOwnerNick,omitempty"`
 	// example:
 	//
 	// 0
@@ -316,12 +436,33 @@ type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtra
 	// example:
 	//
 	// 0
-	LockNick                     *int32                                                                                                            `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
-	MinutesOwnerUserId           *string                                                                                                           `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
+	LockNick *int32 `json:"LockNick,omitempty" xml:"LockNick,omitempty"`
+	// example:
+	//
+	// 0
+	MinutesOwnerUserId *string `json:"MinutesOwnerUserId,omitempty" xml:"MinutesOwnerUserId,omitempty"`
+	// example:
+	//
+	// 1
+	MinutesSummaryDiyTemplateVersion *string `json:"MinutesSummaryDiyTemplateVersion,omitempty" xml:"MinutesSummaryDiyTemplateVersion,omitempty"`
+	MinutesSummaryTemplateId         *string `json:"MinutesSummaryTemplateId,omitempty" xml:"MinutesSummaryTemplateId,omitempty"`
+	MinutesSummaryTemplateType       *string `json:"MinutesSummaryTemplateType,omitempty" xml:"MinutesSummaryTemplateType,omitempty"`
+	// example:
+	//
+	// {}
 	MoziConfExtensionAppSettings []*CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings `json:"MoziConfExtensionAppSettings,omitempty" xml:"MoziConfExtensionAppSettings,omitempty" type:"Repeated"`
-	PushAllMeetingRecords        *bool                                                                                                             `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
-	PushCloudRecordCard          *bool                                                                                                             `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
-	PushMinutesCard              *bool                                                                                                             `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
+	// example:
+	//
+	// true
+	PushAllMeetingRecords *bool `json:"PushAllMeetingRecords,omitempty" xml:"PushAllMeetingRecords,omitempty"`
+	// example:
+	//
+	// true
+	PushCloudRecordCard *bool `json:"PushCloudRecordCard,omitempty" xml:"PushCloudRecordCard,omitempty"`
+	// example:
+	//
+	// true
+	PushMinutesCard *bool `json:"PushMinutesCard,omitempty" xml:"PushMinutesCard,omitempty"`
 	// example:
 	//
 	// 1
@@ -348,6 +489,10 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualE
 	return s.EnableWebAnonymousJoin
 }
 
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetHiddenOwnerNick() *bool {
+	return s.HiddenOwnerNick
+}
+
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetJoinBeforeHost() *int32 {
 	return s.JoinBeforeHost
 }
@@ -362,6 +507,18 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualE
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetMinutesOwnerUserId() *string {
 	return s.MinutesOwnerUserId
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetMinutesSummaryDiyTemplateVersion() *string {
+	return s.MinutesSummaryDiyTemplateVersion
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetMinutesSummaryTemplateId() *string {
+	return s.MinutesSummaryTemplateId
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetMinutesSummaryTemplateType() *string {
+	return s.MinutesSummaryTemplateType
 }
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) GetMoziConfExtensionAppSettings() []*CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSettingMoziConfExtensionAppSettings {
@@ -399,6 +556,11 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualE
 	return s
 }
 
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetHiddenOwnerNick(v bool) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.HiddenOwnerNick = &v
+	return s
+}
+
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetJoinBeforeHost(v int32) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
 	s.JoinBeforeHost = &v
 	return s
@@ -416,6 +578,21 @@ func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualE
 
 func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMinutesOwnerUserId(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
 	s.MinutesOwnerUserId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMinutesSummaryDiyTemplateVersion(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MinutesSummaryDiyTemplateVersion = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMinutesSummaryTemplateId(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MinutesSummaryTemplateId = &v
+	return s
+}
+
+func (s *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting) SetMinutesSummaryTemplateType(v string) *CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtraSetting {
+	s.MinutesSummaryTemplateType = &v
 	return s
 }
 
@@ -464,7 +641,7 @@ type CreateScheduleConferenceRequestScheduleConfSettingModelMoziConfVirtualExtra
 	AutoOpenMode *int32 `json:"AutoOpenMode,omitempty" xml:"AutoOpenMode,omitempty"`
 	// example:
 	//
-	// xxx
+	// xxxx
 	CoolAppCode *string `json:"CoolAppCode,omitempty" xml:"CoolAppCode,omitempty"`
 	// example:
 	//
