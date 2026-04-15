@@ -60,6 +60,52 @@ func (client *Client) ActivateTemplateMCPWithContext(ctx context.Context, templa
 
 // Summary:
 //
+// 转换Flow DSL
+//
+// Description:
+//
+// 将第三方工作流DSL（如Dify、n8n等）转换为AgentRun Flow定义。支持兼容性检查、插件识别和元数据提取，返回转换后的Flow配置、兼容性分析报告和所需的Toolset安装配置。此操作为dry-run模式，不会创建实际的Flow资源。
+//
+// @param request - ConvertFlowDSLRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertFlowDSLResponse
+func (client *Client) ConvertFlowDSLWithContext(ctx context.Context, request *ConvertFlowDSLRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ConvertFlowDSLResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConvertFlowDSL"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/action/convertDsl"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConvertFlowDSLResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # CreateAgentRuntime
 //
 // Description:
@@ -318,6 +364,98 @@ func (client *Client) CreateCustomDomainWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作流
+//
+// Description:
+//
+// 创建一个新的工作流实例，用于定义和执行自动化流程。工作流是AgentRun服务的核心组件，支持可视化编排和版本管理。
+//
+// @param request - CreateFlowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFlowResponse
+func (client *Client) CreateFlowWithContext(ctx context.Context, request *CreateFlowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFlow"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFlowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建工作流端点
+//
+// Description:
+//
+// 为指定工作流创建一个新的端点，用于对外提供服务访问。
+//
+// @param request - CreateFlowEndpointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFlowEndpointResponse
+func (client *Client) CreateFlowEndpointWithContext(ctx context.Context, flowName *string, request *CreateFlowEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFlowEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFlowEndpoint"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/endpoints"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFlowEndpointResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -928,6 +1066,141 @@ func (client *Client) DeleteCustomDomainWithContext(ctx context.Context, domainN
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工作流
+//
+// Description:
+//
+// 删除指定的工作流实例，包括其所有相关资源和数据。删除操作不可逆，请谨慎操作。
+//
+// @param request - DeleteFlowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFlowResponse
+func (client *Client) DeleteFlowWithContext(ctx context.Context, flowName *string, request *DeleteFlowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFlow"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFlowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工作流端点
+//
+// Description:
+//
+// 删除指定的工作流端点。删除操作不可逆，请谨慎操作。
+//
+// @param request - DeleteFlowEndpointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFlowEndpointResponse
+func (client *Client) DeleteFlowEndpointWithContext(ctx context.Context, flowName *string, flowEndpointName *string, request *DeleteFlowEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFlowEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFlowEndpoint"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/endpoints/" + dara.PercentEncode(dara.StringValue(flowEndpointName))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFlowEndpointResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除工作流版本
+//
+// Description:
+//
+// 删除指定工作流的指定版本。删除操作不可逆，请谨慎操作。
+//
+// @param request - DeleteFlowVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFlowVersionResponse
+func (client *Client) DeleteFlowVersionWithContext(ctx context.Context, flowName *string, flowVersion *string, request *DeleteFlowVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFlowVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteFlowVersion"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/versions/" + dara.PercentEncode(dara.StringValue(flowVersion))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteFlowVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1587,6 +1860,186 @@ func (client *Client) GetCustomDomainWithContext(ctx context.Context, domainName
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流详情
+//
+// Description:
+//
+// 根据工作流ID获取指定工作流的详细信息，包括配置、定义、版本信息等。
+//
+// @param request - GetFlowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlowResponse
+func (client *Client) GetFlowWithContext(ctx context.Context, flowName *string, request *GetFlowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFlow"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFlowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流草稿
+//
+// Description:
+//
+// 获取指定工作流的草稿版本，返回草稿中的配置信息。
+//
+// @param request - GetFlowDraftRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlowDraftResponse
+func (client *Client) GetFlowDraftWithContext(ctx context.Context, flowName *string, request *GetFlowDraftRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFlowDraftResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFlowDraft"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/draft"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFlowDraftResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流端点详情
+//
+// Description:
+//
+// 根据工作流ID和端点ID获取指定工作流端点的详细信息。
+//
+// @param request - GetFlowEndpointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlowEndpointResponse
+func (client *Client) GetFlowEndpointWithContext(ctx context.Context, flowName *string, flowEndpointName *string, request *GetFlowEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFlowEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFlowEndpoint"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/endpoints/" + dara.PercentEncode(dara.StringValue(flowEndpointName))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFlowEndpointResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取工作流版本详情
+//
+// Description:
+//
+// 根据工作流名称和版本号获取指定版本的详细信息，包括该版本的完整配置快照（定义、环境变量、追踪配置、日志配置等）。
+//
+// @param request - GetFlowVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlowVersionResponse
+func (client *Client) GetFlowVersionWithContext(ctx context.Context, flowName *string, flowVersion *string, request *GetFlowVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetFlowVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFlowVersion"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/versions/" + dara.PercentEncode(dara.StringValue(flowVersion))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFlowVersionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2451,6 +2904,183 @@ func (client *Client) ListCustomDomainsWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 列出工作流端点
+//
+// Description:
+//
+// 获取指定工作流的所有端点列表，支持分页查询。
+//
+// @param request - ListFlowEndpointsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowEndpointsResponse
+func (client *Client) ListFlowEndpointsWithContext(ctx context.Context, flowId *string, request *ListFlowEndpointsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFlowEndpointsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFlowEndpoints"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowId)) + "/endpoints"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFlowEndpointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出工作流版本
+//
+// Description:
+//
+// 获取指定工作流的所有版本列表，支持分页查询。
+//
+// @param request - ListFlowVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowVersionsResponse
+func (client *Client) ListFlowVersionsWithContext(ctx context.Context, flowName *string, request *ListFlowVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFlowVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFlowVersions"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/versions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFlowVersionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出工作流
+//
+// Description:
+//
+// 获取当前用户的工作流列表，支持按名称、工作空间等条件过滤，支持分页查询。
+//
+// @param request - ListFlowsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFlowsResponse
+func (client *Client) ListFlowsWithContext(ctx context.Context, request *ListFlowsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListFlowsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FlowName) {
+		query["flowName"] = request.FlowName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceIds) {
+		query["workspaceIds"] = request.WorkspaceIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListFlows"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListFlowsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出知识库
 //
 // @param request - ListKnowledgeBasesRequest
@@ -3111,6 +3741,52 @@ func (client *Client) PauseSandboxWithContext(ctx context.Context, sandboxId *st
 
 // Summary:
 //
+// 发布工作流版本
+//
+// Description:
+//
+// 为指定工作流发布新版本，用于版本管理和回滚。
+//
+// @param request - PublishFlowVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishFlowVersionResponse
+func (client *Client) PublishFlowVersionWithContext(ctx context.Context, flowName *string, request *PublishFlowVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *PublishFlowVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PublishFlowVersion"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/versions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PublishFlowVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 发布运行时版本
 //
 // Description:
@@ -3446,6 +4122,144 @@ func (client *Client) UpdateCustomDomainWithContext(ctx context.Context, domainN
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCustomDomainResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流
+//
+// Description:
+//
+// 更新指定工作流的配置信息，包括定义、执行模式、环境变量等。
+//
+// @param request - UpdateFlowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFlowResponse
+func (client *Client) UpdateFlowWithContext(ctx context.Context, flowName *string, request *UpdateFlowRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFlow"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFlowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流草稿
+//
+// Description:
+//
+// 更新指定工作流的草稿版本，草稿更新不影响已发布的工作流版本。
+//
+// @param request - UpdateFlowDraftRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFlowDraftResponse
+func (client *Client) UpdateFlowDraftWithContext(ctx context.Context, flowName *string, request *UpdateFlowDraftRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFlowDraftResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFlowDraft"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/draft"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFlowDraftResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新工作流端点
+//
+// Description:
+//
+// 更新指定工作流端点的配置信息，包括目标版本、路由配置等。
+//
+// @param request - UpdateFlowEndpointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFlowEndpointResponse
+func (client *Client) UpdateFlowEndpointWithContext(ctx context.Context, flowName *string, flowEndpointName *string, request *UpdateFlowEndpointRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFlowEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFlowEndpoint"),
+		Version:     dara.String("2025-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/2025-09-10/flows/" + dara.PercentEncode(dara.StringValue(flowName)) + "/endpoints/" + dara.PercentEncode(dara.StringValue(flowEndpointName))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFlowEndpointResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

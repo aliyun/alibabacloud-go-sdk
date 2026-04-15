@@ -575,7 +575,7 @@ type ConvertFlowDSLDataToolsetInstallations struct {
 	// Toolset规格配置（JSON对象）
 	//
 	// This parameter is required.
-	Spec map[string]*string `json:"spec" xml:"spec"`
+	Spec map[string]interface{} `json:"spec" xml:"spec"`
 }
 
 func (s ConvertFlowDSLDataToolsetInstallations) String() string {
@@ -594,7 +594,7 @@ func (s *ConvertFlowDSLDataToolsetInstallations) GetName() *string {
 	return s.Name
 }
 
-func (s *ConvertFlowDSLDataToolsetInstallations) GetSpec() map[string]*string {
+func (s *ConvertFlowDSLDataToolsetInstallations) GetSpec() map[string]interface{} {
 	return s.Spec
 }
 
@@ -608,7 +608,7 @@ func (s *ConvertFlowDSLDataToolsetInstallations) SetName(v string) *ConvertFlowD
 	return s
 }
 
-func (s *ConvertFlowDSLDataToolsetInstallations) SetSpec(v map[string]*string) *ConvertFlowDSLDataToolsetInstallations {
+func (s *ConvertFlowDSLDataToolsetInstallations) SetSpec(v map[string]interface{}) *ConvertFlowDSLDataToolsetInstallations {
 	s.Spec = v
 	return s
 }

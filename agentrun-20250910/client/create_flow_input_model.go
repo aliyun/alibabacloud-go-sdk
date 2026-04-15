@@ -25,8 +25,6 @@ type iCreateFlowInput interface {
 	GetLoggingConfiguration() *LoggingConfiguration
 	SetResourceGroupId(v string) *CreateFlowInput
 	GetResourceGroupId() *string
-	SetTags(v []*string) *CreateFlowInput
-	GetTags() []*string
 	SetTracingConfiguration(v *TracingConfiguration) *CreateFlowInput
 	GetTracingConfiguration() *TracingConfiguration
 	SetWorkspaceId(v string) *CreateFlowInput
@@ -76,12 +74,6 @@ type CreateFlowInput struct {
 	//
 	// rg-acfmxsn4m4a4b4a
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 工作流的标签信息，用于资源分类和管理
-	//
-	// example:
-	//
-	// production,automation
-	Tags []*string `json:"tags" xml:"tags" type:"Repeated"`
 	// 工作流的链路追踪配置
 	TracingConfiguration *TracingConfiguration `json:"tracingConfiguration,omitempty" xml:"tracingConfiguration,omitempty"`
 	// 工作流所属的工作空间标识符，用于资源隔离和权限管理
@@ -132,10 +124,6 @@ func (s *CreateFlowInput) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *CreateFlowInput) GetTags() []*string {
-	return s.Tags
-}
-
 func (s *CreateFlowInput) GetTracingConfiguration() *TracingConfiguration {
 	return s.TracingConfiguration
 }
@@ -181,11 +169,6 @@ func (s *CreateFlowInput) SetLoggingConfiguration(v *LoggingConfiguration) *Crea
 
 func (s *CreateFlowInput) SetResourceGroupId(v string) *CreateFlowInput {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateFlowInput) SetTags(v []*string) *CreateFlowInput {
-	s.Tags = v
 	return s
 }
 

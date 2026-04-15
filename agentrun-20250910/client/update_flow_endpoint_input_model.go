@@ -15,8 +15,6 @@ type iUpdateFlowEndpointInput interface {
 	GetFlowEndpointName() *string
 	SetRoutingConfiguration(v []*FlowEndpointRoutingConfig) *UpdateFlowEndpointInput
 	GetRoutingConfiguration() []*FlowEndpointRoutingConfig
-	SetTags(v []*string) *UpdateFlowEndpointInput
-	GetTags() []*string
 	SetTargetVersion(v string) *UpdateFlowEndpointInput
 	GetTargetVersion() *string
 }
@@ -40,12 +38,6 @@ type UpdateFlowEndpointInput struct {
 	//
 	// []
 	RoutingConfiguration []*FlowEndpointRoutingConfig `json:"routingConfiguration" xml:"routingConfiguration" type:"Repeated"`
-	// 工作流端点的标签信息
-	//
-	// example:
-	//
-	// production
-	Tags []*string `json:"tags" xml:"tags" type:"Repeated"`
 	// 工作流端点指向的目标版本号
 	//
 	// example:
@@ -74,10 +66,6 @@ func (s *UpdateFlowEndpointInput) GetRoutingConfiguration() []*FlowEndpointRouti
 	return s.RoutingConfiguration
 }
 
-func (s *UpdateFlowEndpointInput) GetTags() []*string {
-	return s.Tags
-}
-
 func (s *UpdateFlowEndpointInput) GetTargetVersion() *string {
 	return s.TargetVersion
 }
@@ -94,11 +82,6 @@ func (s *UpdateFlowEndpointInput) SetFlowEndpointName(v string) *UpdateFlowEndpo
 
 func (s *UpdateFlowEndpointInput) SetRoutingConfiguration(v []*FlowEndpointRoutingConfig) *UpdateFlowEndpointInput {
 	s.RoutingConfiguration = v
-	return s
-}
-
-func (s *UpdateFlowEndpointInput) SetTags(v []*string) *UpdateFlowEndpointInput {
-	s.Tags = v
 	return s
 }
 

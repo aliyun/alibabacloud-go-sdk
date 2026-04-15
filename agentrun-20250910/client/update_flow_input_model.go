@@ -25,8 +25,6 @@ type iUpdateFlowInput interface {
 	GetLoggingConfiguration() *LoggingConfiguration
 	SetResourceGroupId(v string) *UpdateFlowInput
 	GetResourceGroupId() *string
-	SetTags(v []*string) *UpdateFlowInput
-	GetTags() []*string
 	SetTracingConfiguration(v *TracingConfiguration) *UpdateFlowInput
 	GetTracingConfiguration() *TracingConfiguration
 	SetWorkspaceId(v string) *UpdateFlowInput
@@ -74,12 +72,6 @@ type UpdateFlowInput struct {
 	//
 	// rg-acfmxsn4m4a4b4a
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 工作流的标签信息，用于资源分类和管理
-	//
-	// example:
-	//
-	// production,automation
-	Tags []*string `json:"tags" xml:"tags" type:"Repeated"`
 	// 工作流的链路追踪配置
 	TracingConfiguration *TracingConfiguration `json:"tracingConfiguration,omitempty" xml:"tracingConfiguration,omitempty"`
 	// 工作流所属的工作空间标识符，用于资源隔离和权限管理
@@ -130,10 +122,6 @@ func (s *UpdateFlowInput) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
-func (s *UpdateFlowInput) GetTags() []*string {
-	return s.Tags
-}
-
 func (s *UpdateFlowInput) GetTracingConfiguration() *TracingConfiguration {
 	return s.TracingConfiguration
 }
@@ -179,11 +167,6 @@ func (s *UpdateFlowInput) SetLoggingConfiguration(v *LoggingConfiguration) *Upda
 
 func (s *UpdateFlowInput) SetResourceGroupId(v string) *UpdateFlowInput {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *UpdateFlowInput) SetTags(v []*string) *UpdateFlowInput {
-	s.Tags = v
 	return s
 }
 

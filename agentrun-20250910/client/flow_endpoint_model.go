@@ -25,8 +25,6 @@ type iFlowEndpoint interface {
 	GetLastUpdatedAt() *string
 	SetRoutingConfiguration(v []*FlowEndpointRoutingConfig) *FlowEndpoint
 	GetRoutingConfiguration() []*FlowEndpointRoutingConfig
-	SetTags(v []*string) *FlowEndpoint
-	GetTags() []*string
 	SetTargetVersion(v string) *FlowEndpoint
 	GetTargetVersion() *string
 }
@@ -80,12 +78,6 @@ type FlowEndpoint struct {
 	//
 	// []
 	RoutingConfiguration []*FlowEndpointRoutingConfig `json:"routingConfiguration" xml:"routingConfiguration" type:"Repeated"`
-	// 工作流端点的标签信息
-	//
-	// example:
-	//
-	// production
-	Tags []*string `json:"tags" xml:"tags" type:"Repeated"`
 	// 工作流端点指向的目标版本号
 	//
 	// example:
@@ -134,10 +126,6 @@ func (s *FlowEndpoint) GetRoutingConfiguration() []*FlowEndpointRoutingConfig {
 	return s.RoutingConfiguration
 }
 
-func (s *FlowEndpoint) GetTags() []*string {
-	return s.Tags
-}
-
 func (s *FlowEndpoint) GetTargetVersion() *string {
 	return s.TargetVersion
 }
@@ -179,11 +167,6 @@ func (s *FlowEndpoint) SetLastUpdatedAt(v string) *FlowEndpoint {
 
 func (s *FlowEndpoint) SetRoutingConfiguration(v []*FlowEndpointRoutingConfig) *FlowEndpoint {
 	s.RoutingConfiguration = v
-	return s
-}
-
-func (s *FlowEndpoint) SetTags(v []*string) *FlowEndpoint {
-	s.Tags = v
 	return s
 }
 
