@@ -2249,6 +2249,88 @@ func (client *Client) CreateOpenSingleDataWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 获取token
+//
+// @param tmpReq - CreatePayOrderToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePayOrderToMsenceResponse
+func (client *Client) CreatePayOrderToMsenceWithContext(ctx context.Context, tmpReq *CreatePayOrderToMsenceRequest, runtime *dara.RuntimeOptions) (_result *CreatePayOrderToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePayOrderToMsenceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExtraInfo) {
+		request.ExtraInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtraInfo, dara.String("ExtraInfo"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthToken) {
+		body["AuthToken"] = request.AuthToken
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.ExtraInfoShrink) {
+		body["ExtraInfo"] = request.ExtraInfoShrink
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePayOrderToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePayOrderToMsenceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建模版
 //
 // @param request - CreateTemplateRequest
@@ -3107,6 +3189,70 @@ func (client *Client) ExportMappCenterAppConfigWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取授权token
+//
+// @param request - GetAuthTokenToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthTokenToMsenceResponse
+func (client *Client) GetAuthTokenToMsenceWithContext(ctx context.Context, request *GetAuthTokenToMsenceRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthCode) {
+		body["AuthCode"] = request.AuthCode
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuthTokenToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuthTokenToMsenceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - GetFileTokenForUploadToMsaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3879,6 +4025,39 @@ func (client *Client) ListAnalysisCoreIndexWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAnalysisCoreIndexResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCubecardAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCubecardAppsResponse
+func (client *Client) ListCubecardAppsWithContext(ctx context.Context, request *ListCubecardAppsRequest, runtime *dara.RuntimeOptions) (_result *ListCubecardAppsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCubecardApps"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCubecardAppsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6863,6 +7042,70 @@ func (client *Client) QueryMscpRiskInfoWithContext(ctx context.Context, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询支付订单信息
+//
+// @param request - QueryPayOrderToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPayOrderToMsenceResponse
+func (client *Client) QueryPayOrderToMsenceWithContext(ctx context.Context, request *QueryPayOrderToMsenceRequest, runtime *dara.RuntimeOptions) (_result *QueryPayOrderToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryPayOrderToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryPayOrderToMsenceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - QueryPushAnalysisCoreIndexRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7127,6 +7370,70 @@ func (client *Client) QueryPushSchedulerListWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户信息
+//
+// @param request - QueryUserInfoToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserInfoToMsenceResponse
+func (client *Client) QueryUserInfoToMsenceWithContext(ctx context.Context, request *QueryUserInfoToMsenceRequest, runtime *dara.RuntimeOptions) (_result *QueryUserInfoToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthToken) {
+		body["AuthToken"] = request.AuthToken
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUserInfoToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUserInfoToMsenceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - RevokePushMessageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7331,6 +7638,86 @@ func (client *Client) SaveMgsApirestWithContext(ctx context.Context, request *Sa
 		BodyType:    dara.String("json"),
 	}
 	_result = &SaveMgsApirestResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关联订单信息
+//
+// @param request - SaveOrderRelationInfoToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveOrderRelationInfoToMsenceResponse
+func (client *Client) SaveOrderRelationInfoToMsenceWithContext(ctx context.Context, request *SaveOrderRelationInfoToMsenceRequest, runtime *dara.RuntimeOptions) (_result *SaveOrderRelationInfoToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.BizOrderId) {
+		body["BizOrderId"] = request.BizOrderId
+	}
+
+	if !dara.IsNil(request.BizOrderStatus) {
+		body["BizOrderStatus"] = request.BizOrderStatus
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.OpenUid) {
+		body["OpenUid"] = request.OpenUid
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveOrderRelationInfoToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveOrderRelationInfoToMsenceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8101,6 +8488,70 @@ func (client *Client) UploadUserAppToMsaWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadUserAppToMsaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 虚拟发货接口
+//
+// @param request - VirtualDeliveryToMsceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VirtualDeliveryToMsceneResponse
+func (client *Client) VirtualDeliveryToMsceneWithContext(ctx context.Context, request *VirtualDeliveryToMsceneRequest, runtime *dara.RuntimeOptions) (_result *VirtualDeliveryToMsceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VirtualDeliveryToMscene"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VirtualDeliveryToMsceneResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

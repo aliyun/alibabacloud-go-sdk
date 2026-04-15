@@ -2790,6 +2790,106 @@ func (client *Client) CreateOpenSingleData(request *CreateOpenSingleDataRequest)
 
 // Summary:
 //
+// 获取token
+//
+// @param tmpReq - CreatePayOrderToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePayOrderToMsenceResponse
+func (client *Client) CreatePayOrderToMsenceWithOptions(tmpReq *CreatePayOrderToMsenceRequest, runtime *dara.RuntimeOptions) (_result *CreatePayOrderToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePayOrderToMsenceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExtraInfo) {
+		request.ExtraInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtraInfo, dara.String("ExtraInfo"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthToken) {
+		body["AuthToken"] = request.AuthToken
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.ExtraInfoShrink) {
+		body["ExtraInfo"] = request.ExtraInfoShrink
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePayOrderToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePayOrderToMsenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取token
+//
+// @param request - CreatePayOrderToMsenceRequest
+//
+// @return CreatePayOrderToMsenceResponse
+func (client *Client) CreatePayOrderToMsence(request *CreatePayOrderToMsenceRequest) (_result *CreatePayOrderToMsenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePayOrderToMsenceResponse{}
+	_body, _err := client.CreatePayOrderToMsenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建模版
 //
 // @param request - CreateTemplateRequest
@@ -3870,6 +3970,88 @@ func (client *Client) ExportMappCenterAppConfig(request *ExportMappCenterAppConf
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取授权token
+//
+// @param request - GetAuthTokenToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthTokenToMsenceResponse
+func (client *Client) GetAuthTokenToMsenceWithOptions(request *GetAuthTokenToMsenceRequest, runtime *dara.RuntimeOptions) (_result *GetAuthTokenToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthCode) {
+		body["AuthCode"] = request.AuthCode
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuthTokenToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuthTokenToMsenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取授权token
+//
+// @param request - GetAuthTokenToMsenceRequest
+//
+// @return GetAuthTokenToMsenceResponse
+func (client *Client) GetAuthTokenToMsence(request *GetAuthTokenToMsenceRequest) (_result *GetAuthTokenToMsenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAuthTokenToMsenceResponse{}
+	_body, _err := client.GetAuthTokenToMsenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - GetFileTokenForUploadToMsaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4863,7 +5045,13 @@ func (client *Client) ListAnalysisCoreIndex(request *ListAnalysisCoreIndexReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCubecardAppsResponse
-func (client *Client) ListCubecardAppsWithOptions(runtime *dara.RuntimeOptions) (_result *ListCubecardAppsResponse, _err error) {
+func (client *Client) ListCubecardAppsWithOptions(request *ListCubecardAppsRequest, runtime *dara.RuntimeOptions) (_result *ListCubecardAppsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
 	req := &openapiutil.OpenApiRequest{}
 	params := &openapiutil.Params{
 		Action:      dara.String("ListCubecardApps"),
@@ -4885,11 +5073,13 @@ func (client *Client) ListCubecardAppsWithOptions(runtime *dara.RuntimeOptions) 
 	return _result, _err
 }
 
+// @param request - ListCubecardAppsRequest
+//
 // @return ListCubecardAppsResponse
-func (client *Client) ListCubecardApps() (_result *ListCubecardAppsResponse, _err error) {
+func (client *Client) ListCubecardApps(request *ListCubecardAppsRequest) (_result *ListCubecardAppsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCubecardAppsResponse{}
-	_body, _err := client.ListCubecardAppsWithOptions(runtime)
+	_body, _err := client.ListCubecardAppsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4897,8 +5087,6 @@ func (client *Client) ListCubecardApps() (_result *ListCubecardAppsResponse, _er
 	return _result, _err
 }
 
-// @param request - ListMappCenterAppsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMappCenterAppsResponse
@@ -4936,8 +5124,6 @@ func (client *Client) ListMappCenterApps() (_result *ListMappCenterAppsResponse,
 	return _result, _err
 }
 
-// @param request - ListMappCenterWorkspacesRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListMappCenterWorkspacesResponse
@@ -8579,6 +8765,88 @@ func (client *Client) QueryMscpRiskInfo(request *QueryMscpRiskInfoRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询支付订单信息
+//
+// @param request - QueryPayOrderToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPayOrderToMsenceResponse
+func (client *Client) QueryPayOrderToMsenceWithOptions(request *QueryPayOrderToMsenceRequest, runtime *dara.RuntimeOptions) (_result *QueryPayOrderToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryPayOrderToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryPayOrderToMsenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询支付订单信息
+//
+// @param request - QueryPayOrderToMsenceRequest
+//
+// @return QueryPayOrderToMsenceResponse
+func (client *Client) QueryPayOrderToMsence(request *QueryPayOrderToMsenceRequest) (_result *QueryPayOrderToMsenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryPayOrderToMsenceResponse{}
+	_body, _err := client.QueryPayOrderToMsenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - QueryPushAnalysisCoreIndexRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8899,6 +9167,88 @@ func (client *Client) QueryPushSchedulerList(request *QueryPushSchedulerListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户信息
+//
+// @param request - QueryUserInfoToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserInfoToMsenceResponse
+func (client *Client) QueryUserInfoToMsenceWithOptions(request *QueryUserInfoToMsenceRequest, runtime *dara.RuntimeOptions) (_result *QueryUserInfoToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthToken) {
+		body["AuthToken"] = request.AuthToken
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUserInfoToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUserInfoToMsenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户信息
+//
+// @param request - QueryUserInfoToMsenceRequest
+//
+// @return QueryUserInfoToMsenceResponse
+func (client *Client) QueryUserInfoToMsence(request *QueryUserInfoToMsenceRequest) (_result *QueryUserInfoToMsenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryUserInfoToMsenceResponse{}
+	_body, _err := client.QueryUserInfoToMsenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - RevokePushMessageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9160,6 +9510,104 @@ func (client *Client) SaveMgsApirest(request *SaveMgsApirestRequest) (_result *S
 	runtime := &dara.RuntimeOptions{}
 	_result = &SaveMgsApirestResponse{}
 	_body, _err := client.SaveMgsApirestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关联订单信息
+//
+// @param request - SaveOrderRelationInfoToMsenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveOrderRelationInfoToMsenceResponse
+func (client *Client) SaveOrderRelationInfoToMsenceWithOptions(request *SaveOrderRelationInfoToMsenceRequest, runtime *dara.RuntimeOptions) (_result *SaveOrderRelationInfoToMsenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.BizOrderId) {
+		body["BizOrderId"] = request.BizOrderId
+	}
+
+	if !dara.IsNil(request.BizOrderStatus) {
+		body["BizOrderStatus"] = request.BizOrderStatus
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.OpenUid) {
+		body["OpenUid"] = request.OpenUid
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveOrderRelationInfoToMsence"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveOrderRelationInfoToMsenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关联订单信息
+//
+// @param request - SaveOrderRelationInfoToMsenceRequest
+//
+// @return SaveOrderRelationInfoToMsenceResponse
+func (client *Client) SaveOrderRelationInfoToMsence(request *SaveOrderRelationInfoToMsenceRequest) (_result *SaveOrderRelationInfoToMsenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveOrderRelationInfoToMsenceResponse{}
+	_body, _err := client.SaveOrderRelationInfoToMsenceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10082,6 +10530,88 @@ func (client *Client) UploadUserAppToMsa(request *UploadUserAppToMsaRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &UploadUserAppToMsaResponse{}
 	_body, _err := client.UploadUserAppToMsaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 虚拟发货接口
+//
+// @param request - VirtualDeliveryToMsceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VirtualDeliveryToMsceneResponse
+func (client *Client) VirtualDeliveryToMsceneWithOptions(request *VirtualDeliveryToMsceneRequest, runtime *dara.RuntimeOptions) (_result *VirtualDeliveryToMsceneResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CustomId) {
+		body["CustomId"] = request.CustomId
+	}
+
+	if !dara.IsNil(request.MiniProgramId) {
+		body["MiniProgramId"] = request.MiniProgramId
+	}
+
+	if !dara.IsNil(request.PlatformId) {
+		body["PlatformId"] = request.PlatformId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VirtualDeliveryToMscene"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VirtualDeliveryToMsceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 虚拟发货接口
+//
+// @param request - VirtualDeliveryToMsceneRequest
+//
+// @return VirtualDeliveryToMsceneResponse
+func (client *Client) VirtualDeliveryToMscene(request *VirtualDeliveryToMsceneRequest) (_result *VirtualDeliveryToMsceneResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &VirtualDeliveryToMsceneResponse{}
+	_body, _err := client.VirtualDeliveryToMsceneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
