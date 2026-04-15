@@ -1160,6 +1160,112 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 
 // Summary:
 //
+// 创建自动响应规则
+//
+// @param request - CreateResponseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResponseRuleResponse
+func (client *Client) CreateResponseRuleWithOptions(request *CreateResponseRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateResponseRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseActionConfig) {
+		body["ResponseActionConfig"] = request.ResponseActionConfig
+	}
+
+	if !dara.IsNil(request.ResponseActionType) {
+		body["ResponseActionType"] = request.ResponseActionType
+	}
+
+	if !dara.IsNil(request.ResponseExecutionCondition) {
+		body["ResponseExecutionCondition"] = request.ResponseExecutionCondition
+	}
+
+	if !dara.IsNil(request.ResponseRuleName) {
+		body["ResponseRuleName"] = request.ResponseRuleName
+	}
+
+	if !dara.IsNil(request.ResponseRulePriority) {
+		body["ResponseRulePriority"] = request.ResponseRulePriority
+	}
+
+	if !dara.IsNil(request.ResponseTriggerType) {
+		body["ResponseTriggerType"] = request.ResponseTriggerType
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateResponseRule"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateResponseRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建自动响应规则
+//
+// @param request - CreateResponseRuleRequest
+//
+// @return CreateResponseRuleResponse
+func (client *Client) CreateResponseRule(request *CreateResponseRuleRequest) (_result *CreateResponseRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateResponseRuleResponse{}
+	_body, _err := client.CreateResponseRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建厂商
 //
 // @param request - CreateVendorRequest
@@ -1920,6 +2026,84 @@ func (client *Client) DeleteProduct(request *DeleteProductRequest) (_result *Del
 
 // Summary:
 //
+// 删除自动响应规则
+//
+// @param request - DeleteResponseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResponseRuleResponse
+func (client *Client) DeleteResponseRuleWithOptions(request *DeleteResponseRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteResponseRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseRuleId) {
+		body["ResponseRuleId"] = request.ResponseRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteResponseRule"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteResponseRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自动响应规则
+//
+// @param request - DeleteResponseRuleRequest
+//
+// @return DeleteResponseRuleResponse
+func (client *Client) DeleteResponseRule(request *DeleteResponseRuleRequest) (_result *DeleteResponseRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteResponseRuleResponse{}
+	_body, _err := client.DeleteResponseRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除厂商
 //
 // @param request - DeleteVendorRequest
@@ -2610,7 +2794,7 @@ func (client *Client) GetExportTask(request *GetExportTaskRequest) (_result *Get
 
 // Summary:
 //
-// 获取事件列表
+// Queries the details of a management event.
 //
 // @param request - GetIncidentRequest
 //
@@ -2666,7 +2850,7 @@ func (client *Client) GetIncidentWithOptions(request *GetIncidentRequest, runtim
 
 // Summary:
 //
-// 获取事件列表
+// Queries the details of a management event.
 //
 // @param request - GetIncidentRequest
 //
@@ -3854,7 +4038,7 @@ func (client *Client) ListDetectionRules(request *ListDetectionRulesRequest) (_r
 
 // Summary:
 //
-// 获取事件列表
+// Queries the management event list.
 //
 // @param tmpReq - ListIncidentsRequest
 //
@@ -3986,7 +4170,7 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 
 // Summary:
 //
-// 获取事件列表
+// Queries the management event list.
 //
 // @param request - ListIncidentsRequest
 //
@@ -4889,6 +5073,116 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListProductsResponse{}
 	_body, _err := client.ListProductsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询自动响应规则
+//
+// @param request - ListResponseRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResponseRulesResponse
+func (client *Client) ListResponseRulesWithOptions(request *ListResponseRulesRequest, runtime *dara.RuntimeOptions) (_result *ListResponseRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseActionType) {
+		body["ResponseActionType"] = request.ResponseActionType
+	}
+
+	if !dara.IsNil(request.ResponseRuleName) {
+		body["ResponseRuleName"] = request.ResponseRuleName
+	}
+
+	if !dara.IsNil(request.ResponseRuleStatus) {
+		body["ResponseRuleStatus"] = request.ResponseRuleStatus
+	}
+
+	if !dara.IsNil(request.ResponseRuleType) {
+		body["ResponseRuleType"] = request.ResponseRuleType
+	}
+
+	if !dara.IsNil(request.ResponseTriggerType) {
+		body["ResponseTriggerType"] = request.ResponseTriggerType
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResponseRules"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResponseRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询自动响应规则
+//
+// @param request - ListResponseRulesRequest
+//
+// @return ListResponseRulesResponse
+func (client *Client) ListResponseRules(request *ListResponseRulesRequest) (_result *ListResponseRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListResponseRulesResponse{}
+	_body, _err := client.ListResponseRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6799,6 +7093,112 @@ func (client *Client) UpdateProduct(request *UpdateProductRequest) (_result *Upd
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateProductResponse{}
 	_body, _err := client.UpdateProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自动响应规则
+//
+// @param request - UpdateResponseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResponseRuleResponse
+func (client *Client) UpdateResponseRuleWithOptions(request *UpdateResponseRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateResponseRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseActionConfig) {
+		body["ResponseActionConfig"] = request.ResponseActionConfig
+	}
+
+	if !dara.IsNil(request.ResponseActionType) {
+		body["ResponseActionType"] = request.ResponseActionType
+	}
+
+	if !dara.IsNil(request.ResponseExecutionCondition) {
+		body["ResponseExecutionCondition"] = request.ResponseExecutionCondition
+	}
+
+	if !dara.IsNil(request.ResponseRuleId) {
+		body["ResponseRuleId"] = request.ResponseRuleId
+	}
+
+	if !dara.IsNil(request.ResponseRuleName) {
+		body["ResponseRuleName"] = request.ResponseRuleName
+	}
+
+	if !dara.IsNil(request.ResponseRulePriority) {
+		body["ResponseRulePriority"] = request.ResponseRulePriority
+	}
+
+	if !dara.IsNil(request.ResponseRuleStatus) {
+		body["ResponseRuleStatus"] = request.ResponseRuleStatus
+	}
+
+	if !dara.IsNil(request.ResponseTriggerType) {
+		body["ResponseTriggerType"] = request.ResponseTriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateResponseRule"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateResponseRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自动响应规则
+//
+// @param request - UpdateResponseRuleRequest
+//
+// @return UpdateResponseRuleResponse
+func (client *Client) UpdateResponseRule(request *UpdateResponseRuleRequest) (_result *UpdateResponseRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateResponseRuleResponse{}
+	_body, _err := client.UpdateResponseRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

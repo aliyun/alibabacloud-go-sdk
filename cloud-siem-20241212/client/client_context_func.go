@@ -931,6 +931,94 @@ func (client *Client) CreateProductWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
+// 创建自动响应规则
+//
+// @param request - CreateResponseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResponseRuleResponse
+func (client *Client) CreateResponseRuleWithContext(ctx context.Context, request *CreateResponseRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateResponseRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseActionConfig) {
+		body["ResponseActionConfig"] = request.ResponseActionConfig
+	}
+
+	if !dara.IsNil(request.ResponseActionType) {
+		body["ResponseActionType"] = request.ResponseActionType
+	}
+
+	if !dara.IsNil(request.ResponseExecutionCondition) {
+		body["ResponseExecutionCondition"] = request.ResponseExecutionCondition
+	}
+
+	if !dara.IsNil(request.ResponseRuleName) {
+		body["ResponseRuleName"] = request.ResponseRuleName
+	}
+
+	if !dara.IsNil(request.ResponseRulePriority) {
+		body["ResponseRulePriority"] = request.ResponseRulePriority
+	}
+
+	if !dara.IsNil(request.ResponseTriggerType) {
+		body["ResponseTriggerType"] = request.ResponseTriggerType
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateResponseRule"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateResponseRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建厂商
 //
 // @param request - CreateVendorRequest
@@ -1511,6 +1599,66 @@ func (client *Client) DeleteProductWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
+// 删除自动响应规则
+//
+// @param request - DeleteResponseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResponseRuleResponse
+func (client *Client) DeleteResponseRuleWithContext(ctx context.Context, request *DeleteResponseRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteResponseRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseRuleId) {
+		body["ResponseRuleId"] = request.ResponseRuleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteResponseRule"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteResponseRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除厂商
 //
 // @param request - DeleteVendorRequest
@@ -2039,7 +2187,7 @@ func (client *Client) GetExportTaskWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// 获取事件列表
+// Queries the details of a management event.
 //
 // @param request - GetIncidentRequest
 //
@@ -3049,7 +3197,7 @@ func (client *Client) ListDetectionRulesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取事件列表
+// Queries the management event list.
 //
 // @param tmpReq - ListIncidentsRequest
 //
@@ -3885,6 +4033,98 @@ func (client *Client) ListProductsWithContext(ctx context.Context, tmpReq *ListP
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListProductsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询自动响应规则
+//
+// @param request - ListResponseRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResponseRulesResponse
+func (client *Client) ListResponseRulesWithContext(ctx context.Context, request *ListResponseRulesRequest, runtime *dara.RuntimeOptions) (_result *ListResponseRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseActionType) {
+		body["ResponseActionType"] = request.ResponseActionType
+	}
+
+	if !dara.IsNil(request.ResponseRuleName) {
+		body["ResponseRuleName"] = request.ResponseRuleName
+	}
+
+	if !dara.IsNil(request.ResponseRuleStatus) {
+		body["ResponseRuleStatus"] = request.ResponseRuleStatus
+	}
+
+	if !dara.IsNil(request.ResponseRuleType) {
+		body["ResponseRuleType"] = request.ResponseRuleType
+	}
+
+	if !dara.IsNil(request.ResponseTriggerType) {
+		body["ResponseTriggerType"] = request.ResponseTriggerType
+	}
+
+	if !dara.IsNil(request.RoleFor) {
+		body["RoleFor"] = request.RoleFor
+	}
+
+	if !dara.IsNil(request.RoleType) {
+		body["RoleType"] = request.RoleType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListResponseRules"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListResponseRulesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5435,6 +5675,94 @@ func (client *Client) UpdateProductWithContext(ctx context.Context, request *Upd
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateProductResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自动响应规则
+//
+// @param request - UpdateResponseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResponseRuleResponse
+func (client *Client) UpdateResponseRuleWithContext(ctx context.Context, request *UpdateResponseRuleRequest, runtime *dara.RuntimeOptions) (_result *UpdateResponseRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResponseActionConfig) {
+		body["ResponseActionConfig"] = request.ResponseActionConfig
+	}
+
+	if !dara.IsNil(request.ResponseActionType) {
+		body["ResponseActionType"] = request.ResponseActionType
+	}
+
+	if !dara.IsNil(request.ResponseExecutionCondition) {
+		body["ResponseExecutionCondition"] = request.ResponseExecutionCondition
+	}
+
+	if !dara.IsNil(request.ResponseRuleId) {
+		body["ResponseRuleId"] = request.ResponseRuleId
+	}
+
+	if !dara.IsNil(request.ResponseRuleName) {
+		body["ResponseRuleName"] = request.ResponseRuleName
+	}
+
+	if !dara.IsNil(request.ResponseRulePriority) {
+		body["ResponseRulePriority"] = request.ResponseRulePriority
+	}
+
+	if !dara.IsNil(request.ResponseRuleStatus) {
+		body["ResponseRuleStatus"] = request.ResponseRuleStatus
+	}
+
+	if !dara.IsNil(request.ResponseTriggerType) {
+		body["ResponseTriggerType"] = request.ResponseTriggerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateResponseRule"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateResponseRuleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
