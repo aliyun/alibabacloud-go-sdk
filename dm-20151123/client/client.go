@@ -794,6 +794,10 @@ func (client *Client) ConfigSetCreateWithOptions(request *ConfigSetCreateRequest
 		query["IpPoolId"] = request.IpPoolId
 	}
 
+	if !dara.IsNil(request.IsPublicChannelBackoff) {
+		query["IsPublicChannelBackoff"] = request.IsPublicChannelBackoff
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
@@ -1134,6 +1138,10 @@ func (client *Client) ConfigSetUpdateWithOptions(request *ConfigSetUpdateRequest
 
 	if !dara.IsNil(request.IpPoolId) {
 		query["IpPoolId"] = request.IpPoolId
+	}
+
+	if !dara.IsNil(request.IsPublicChannelBackoff) {
+		query["IsPublicChannelBackoff"] = request.IsPublicChannelBackoff
 	}
 
 	if !dara.IsNil(request.Name) {

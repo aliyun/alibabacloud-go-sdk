@@ -520,6 +520,10 @@ func (client *Client) ConfigSetCreateWithContext(ctx context.Context, request *C
 		query["IpPoolId"] = request.IpPoolId
 	}
 
+	if !dara.IsNil(request.IsPublicChannelBackoff) {
+		query["IsPublicChannelBackoff"] = request.IsPublicChannelBackoff
+	}
+
 	if !dara.IsNil(request.Name) {
 		query["Name"] = request.Name
 	}
@@ -770,6 +774,10 @@ func (client *Client) ConfigSetUpdateWithContext(ctx context.Context, request *C
 
 	if !dara.IsNil(request.IpPoolId) {
 		query["IpPoolId"] = request.IpPoolId
+	}
+
+	if !dara.IsNil(request.IsPublicChannelBackoff) {
+		query["IsPublicChannelBackoff"] = request.IsPublicChannelBackoff
 	}
 
 	if !dara.IsNil(request.Name) {

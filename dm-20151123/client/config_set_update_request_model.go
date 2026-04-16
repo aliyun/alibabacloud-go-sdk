@@ -15,6 +15,8 @@ type iConfigSetUpdateRequest interface {
 	GetId() *string
 	SetIpPoolId(v string) *ConfigSetUpdateRequest
 	GetIpPoolId() *string
+	SetIsPublicChannelBackoff(v bool) *ConfigSetUpdateRequest
+	GetIsPublicChannelBackoff() *bool
 	SetName(v string) *ConfigSetUpdateRequest
 	GetName() *string
 }
@@ -31,7 +33,8 @@ type ConfigSetUpdateRequest struct {
 	// example:
 	//
 	// XXX
-	IpPoolId *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	IpPoolId               *string `json:"IpPoolId,omitempty" xml:"IpPoolId,omitempty"`
+	IsPublicChannelBackoff *bool   `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
 	// example:
 	//
 	// XXX
@@ -58,6 +61,10 @@ func (s *ConfigSetUpdateRequest) GetIpPoolId() *string {
 	return s.IpPoolId
 }
 
+func (s *ConfigSetUpdateRequest) GetIsPublicChannelBackoff() *bool {
+	return s.IsPublicChannelBackoff
+}
+
 func (s *ConfigSetUpdateRequest) GetName() *string {
 	return s.Name
 }
@@ -74,6 +81,11 @@ func (s *ConfigSetUpdateRequest) SetId(v string) *ConfigSetUpdateRequest {
 
 func (s *ConfigSetUpdateRequest) SetIpPoolId(v string) *ConfigSetUpdateRequest {
 	s.IpPoolId = &v
+	return s
+}
+
+func (s *ConfigSetUpdateRequest) SetIsPublicChannelBackoff(v bool) *ConfigSetUpdateRequest {
+	s.IsPublicChannelBackoff = &v
 	return s
 }
 

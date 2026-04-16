@@ -131,8 +131,9 @@ type ConfigSetListResponseBodyConfigSets struct {
 	// example:
 	//
 	// xxx
-	Id     *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	IpPool *ConfigSetListResponseBodyConfigSetsIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
+	Id                     *string                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	IpPool                 *ConfigSetListResponseBodyConfigSetsIpPool `json:"IpPool,omitempty" xml:"IpPool,omitempty" type:"Struct"`
+	IsPublicChannelBackoff *bool                                      `json:"IsPublicChannelBackoff,omitempty" xml:"IsPublicChannelBackoff,omitempty"`
 	// example:
 	//
 	// xxx
@@ -163,6 +164,10 @@ func (s *ConfigSetListResponseBodyConfigSets) GetIpPool() *ConfigSetListResponse
 	return s.IpPool
 }
 
+func (s *ConfigSetListResponseBodyConfigSets) GetIsPublicChannelBackoff() *bool {
+	return s.IsPublicChannelBackoff
+}
+
 func (s *ConfigSetListResponseBodyConfigSets) GetName() *string {
 	return s.Name
 }
@@ -184,6 +189,11 @@ func (s *ConfigSetListResponseBodyConfigSets) SetId(v string) *ConfigSetListResp
 
 func (s *ConfigSetListResponseBodyConfigSets) SetIpPool(v *ConfigSetListResponseBodyConfigSetsIpPool) *ConfigSetListResponseBodyConfigSets {
 	s.IpPool = v
+	return s
+}
+
+func (s *ConfigSetListResponseBodyConfigSets) SetIsPublicChannelBackoff(v bool) *ConfigSetListResponseBodyConfigSets {
+	s.IsPublicChannelBackoff = &v
 	return s
 }
 
