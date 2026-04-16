@@ -159,6 +159,7 @@ type DescribeResourceConstraintsResponseBodyData struct {
 	ZoneSupportedEedTypes         map[string][]*string                                                      `json:"ZoneSupportedEedTypes,omitempty" xml:"ZoneSupportedEedTypes,omitempty"`
 	ZoneSupportedSpecTypes        map[string][]*string                                                      `json:"ZoneSupportedSpecTypes,omitempty" xml:"ZoneSupportedSpecTypes,omitempty"`
 	CompactionServiceCuConstraint *DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint `json:"compactionServiceCuConstraint,omitempty" xml:"compactionServiceCuConstraint,omitempty" type:"Struct"`
+	ZoneSupportCompactionService  map[string][]*DataZoneSupportCompactionServiceValue                       `json:"zoneSupportCompactionService,omitempty" xml:"zoneSupportCompactionService,omitempty"`
 }
 
 func (s DescribeResourceConstraintsResponseBodyData) String() string {
@@ -247,6 +248,10 @@ func (s *DescribeResourceConstraintsResponseBodyData) GetZoneSupportedSpecTypes(
 
 func (s *DescribeResourceConstraintsResponseBodyData) GetCompactionServiceCuConstraint() *DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint {
 	return s.CompactionServiceCuConstraint
+}
+
+func (s *DescribeResourceConstraintsResponseBodyData) GetZoneSupportCompactionService() map[string][]*DataZoneSupportCompactionServiceValue {
+	return s.ZoneSupportCompactionService
 }
 
 func (s *DescribeResourceConstraintsResponseBodyData) SetAgentCu(v []*int32) *DescribeResourceConstraintsResponseBodyData {
@@ -346,6 +351,11 @@ func (s *DescribeResourceConstraintsResponseBodyData) SetZoneSupportedSpecTypes(
 
 func (s *DescribeResourceConstraintsResponseBodyData) SetCompactionServiceCuConstraint(v *DescribeResourceConstraintsResponseBodyDataCompactionServiceCuConstraint) *DescribeResourceConstraintsResponseBodyData {
 	s.CompactionServiceCuConstraint = v
+	return s
+}
+
+func (s *DescribeResourceConstraintsResponseBodyData) SetZoneSupportCompactionService(v map[string][]*DataZoneSupportCompactionServiceValue) *DescribeResourceConstraintsResponseBodyData {
+	s.ZoneSupportCompactionService = v
 	return s
 }
 
