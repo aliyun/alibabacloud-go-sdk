@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds the association relationship between a virtual number and real numbers in batches.
+// Binds multiple real numbers to a service instance at a time.
 //
 // Description:
 //
@@ -87,7 +87,7 @@ func (client *Client) AddVirtualNumberRelationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Initiates an outbound robocall task.
+// Initiates outbound robocall tasks in a batch. You can set up to 100 numbers in a task.
 //
 // Description:
 //
@@ -197,6 +197,10 @@ func (client *Client) BatchRobotSmartCallWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels the two-way call that is initiated by calling the ClickToDial operation.
+//
 // @param request - CancelCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -445,7 +449,665 @@ func (client *Client) ChangeMediaTypeWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a task for sending voice notifications or voice verification codes.
+// 新增任务
+//
+// @param request - CloudCreateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateTaskResponse
+func (client *Client) CloudCreateTaskWithContext(ctx context.Context, request *CloudCreateTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentGroup) {
+		query["AgentGroup"] = request.AgentGroup
+	}
+
+	if !dara.IsNil(request.AgentTimeout) {
+		query["AgentTimeout"] = request.AgentTimeout
+	}
+
+	if !dara.IsNil(request.AnswerRate) {
+		query["AnswerRate"] = request.AnswerRate
+	}
+
+	if !dara.IsNil(request.AutoComplete) {
+		query["AutoComplete"] = request.AutoComplete
+	}
+
+	if !dara.IsNil(request.AutoDelete) {
+		query["AutoDelete"] = request.AutoDelete
+	}
+
+	if !dara.IsNil(request.AutoStart) {
+		query["AutoStart"] = request.AutoStart
+	}
+
+	if !dara.IsNil(request.AutoStartDay) {
+		query["AutoStartDay"] = request.AutoStartDay
+	}
+
+	if !dara.IsNil(request.AutoStartTime) {
+		query["AutoStartTime"] = request.AutoStartTime
+	}
+
+	if !dara.IsNil(request.AutoStop) {
+		query["AutoStop"] = request.AutoStop
+	}
+
+	if !dara.IsNil(request.AutoStopDay) {
+		query["AutoStopDay"] = request.AutoStopDay
+	}
+
+	if !dara.IsNil(request.AutoStopTime) {
+		query["AutoStopTime"] = request.AutoStopTime
+	}
+
+	if !dara.IsNil(request.AutoTaskType) {
+		query["AutoTaskType"] = request.AutoTaskType
+	}
+
+	if !dara.IsNil(request.AutoTriggerTimeStrategy) {
+		query["AutoTriggerTimeStrategy"] = request.AutoTriggerTimeStrategy
+	}
+
+	if !dara.IsNil(request.CallGroupType) {
+		query["CallGroupType"] = request.CallGroupType
+	}
+
+	if !dara.IsNil(request.CallLimitStrategy) {
+		query["CallLimitStrategy"] = request.CallLimitStrategy
+	}
+
+	if !dara.IsNil(request.CallPriorityStrategy) {
+		query["CallPriorityStrategy"] = request.CallPriorityStrategy
+	}
+
+	if !dara.IsNil(request.CallRouteStrategy) {
+		query["CallRouteStrategy"] = request.CallRouteStrategy
+	}
+
+	if !dara.IsNil(request.CallStrategy) {
+		query["CallStrategy"] = request.CallStrategy
+	}
+
+	if !dara.IsNil(request.CallVariables) {
+		query["CallVariables"] = request.CallVariables
+	}
+
+	if !dara.IsNil(request.ClidProperty) {
+		query["ClidProperty"] = request.ClidProperty
+	}
+
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.Concurrency) {
+		query["Concurrency"] = request.Concurrency
+	}
+
+	if !dara.IsNil(request.CustomerClidType) {
+		query["CustomerClidType"] = request.CustomerClidType
+	}
+
+	if !dara.IsNil(request.CustomerClidWeight) {
+		query["CustomerClidWeight"] = request.CustomerClidWeight
+	}
+
+	if !dara.IsNil(request.CustomerClidWeightFlag) {
+		query["CustomerClidWeightFlag"] = request.CustomerClidWeightFlag
+	}
+
+	if !dara.IsNil(request.CustomerClids) {
+		query["CustomerClids"] = request.CustomerClids
+	}
+
+	if !dara.IsNil(request.CustomerClidsCategory) {
+		query["CustomerClidsCategory"] = request.CustomerClidsCategory
+	}
+
+	if !dara.IsNil(request.CustomerClidsGroup) {
+		query["CustomerClidsGroup"] = request.CustomerClidsGroup
+	}
+
+	if !dara.IsNil(request.CustomerMoh) {
+		query["CustomerMoh"] = request.CustomerMoh
+	}
+
+	if !dara.IsNil(request.CustomerTimeout) {
+		query["CustomerTimeout"] = request.CustomerTimeout
+	}
+
+	if !dara.IsNil(request.CustomerVoice) {
+		query["CustomerVoice"] = request.CustomerVoice
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.ForceEndFlag) {
+		query["ForceEndFlag"] = request.ForceEndFlag
+	}
+
+	if !dara.IsNil(request.IsRewarm) {
+		query["IsRewarm"] = request.IsRewarm
+	}
+
+	if !dara.IsNil(request.IvrId) {
+		query["IvrId"] = request.IvrId
+	}
+
+	if !dara.IsNil(request.IvrName) {
+		query["IvrName"] = request.IvrName
+	}
+
+	if !dara.IsNil(request.MaxWaitTime) {
+		query["MaxWaitTime"] = request.MaxWaitTime
+	}
+
+	if !dara.IsNil(request.MinAvailableAgentCount) {
+		query["MinAvailableAgentCount"] = request.MinAvailableAgentCount
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PredictAdjust) {
+		query["PredictAdjust"] = request.PredictAdjust
+	}
+
+	if !dara.IsNil(request.Quotiety) {
+		query["Quotiety"] = request.Quotiety
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RetryStrategy) {
+		query["RetryStrategy"] = request.RetryStrategy
+	}
+
+	if !dara.IsNil(request.RetryStrategyOnlyToday) {
+		query["RetryStrategyOnlyToday"] = request.RetryStrategyOnlyToday
+	}
+
+	if !dara.IsNil(request.RetryStrategyTimeType) {
+		query["RetryStrategyTimeType"] = request.RetryStrategyTimeType
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TimeStrategy) {
+		query["TimeStrategy"] = request.TimeStrategy
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UserFields) {
+		query["UserFields"] = request.UserFields
+	}
+
+	if !dara.IsNil(request.WarmUpDuration) {
+		query["WarmUpDuration"] = request.WarmUpDuration
+	}
+
+	if !dara.IsNil(request.Wrapup) {
+		query["Wrapup"] = request.Wrapup
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务号码导入
+//
+// @param tmpReq - CloudImportTaskTelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudImportTaskTelResponse
+func (client *Client) CloudImportTaskTelWithContext(ctx context.Context, tmpReq *CloudImportTaskTelRequest, runtime *dara.RuntimeOptions) (_result *CloudImportTaskTelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CloudImportTaskTelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TaskTelList) {
+		request.TaskTelListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskTelList, dara.String("TaskTelList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BridgeVoicePath) {
+		query["BridgeVoicePath"] = request.BridgeVoicePath
+	}
+
+	if !dara.IsNil(request.BridgeVoiceType) {
+		query["BridgeVoiceType"] = request.BridgeVoiceType
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.ImportTelAutoStart) {
+		query["ImportTelAutoStart"] = request.ImportTelAutoStart
+	}
+
+	if !dara.IsNil(request.IsRepeat) {
+		query["IsRepeat"] = request.IsRepeat
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskTelListShrink) {
+		query["TaskTelList"] = request.TaskTelListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudImportTaskTel"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudImportTaskTelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务启动
+//
+// @param request - CloudStartTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudStartTaskResponse
+func (client *Client) CloudStartTaskWithContext(ctx context.Context, request *CloudStartTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudStartTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudStartTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudStartTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务
+//
+// @param request - CloudUpdateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudUpdateTaskResponse
+func (client *Client) CloudUpdateTaskWithContext(ctx context.Context, request *CloudUpdateTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudUpdateTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentGroup) {
+		query["AgentGroup"] = request.AgentGroup
+	}
+
+	if !dara.IsNil(request.AgentTimeout) {
+		query["AgentTimeout"] = request.AgentTimeout
+	}
+
+	if !dara.IsNil(request.AnswerRate) {
+		query["AnswerRate"] = request.AnswerRate
+	}
+
+	if !dara.IsNil(request.AutoComplete) {
+		query["AutoComplete"] = request.AutoComplete
+	}
+
+	if !dara.IsNil(request.AutoStart) {
+		query["AutoStart"] = request.AutoStart
+	}
+
+	if !dara.IsNil(request.AutoStartDay) {
+		query["AutoStartDay"] = request.AutoStartDay
+	}
+
+	if !dara.IsNil(request.AutoStartTime) {
+		query["AutoStartTime"] = request.AutoStartTime
+	}
+
+	if !dara.IsNil(request.AutoStop) {
+		query["AutoStop"] = request.AutoStop
+	}
+
+	if !dara.IsNil(request.AutoStopDay) {
+		query["AutoStopDay"] = request.AutoStopDay
+	}
+
+	if !dara.IsNil(request.AutoStopTime) {
+		query["AutoStopTime"] = request.AutoStopTime
+	}
+
+	if !dara.IsNil(request.AutoTaskType) {
+		query["AutoTaskType"] = request.AutoTaskType
+	}
+
+	if !dara.IsNil(request.AutoTriggerTimeStrategy) {
+		query["AutoTriggerTimeStrategy"] = request.AutoTriggerTimeStrategy
+	}
+
+	if !dara.IsNil(request.CallLimitStrategy) {
+		query["CallLimitStrategy"] = request.CallLimitStrategy
+	}
+
+	if !dara.IsNil(request.CallPriorityStrategy) {
+		query["CallPriorityStrategy"] = request.CallPriorityStrategy
+	}
+
+	if !dara.IsNil(request.CallRouteStrategy) {
+		query["CallRouteStrategy"] = request.CallRouteStrategy
+	}
+
+	if !dara.IsNil(request.CallStrategy) {
+		query["CallStrategy"] = request.CallStrategy
+	}
+
+	if !dara.IsNil(request.CallVariables) {
+		query["CallVariables"] = request.CallVariables
+	}
+
+	if !dara.IsNil(request.ClidProperty) {
+		query["ClidProperty"] = request.ClidProperty
+	}
+
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.Concurrency) {
+		query["Concurrency"] = request.Concurrency
+	}
+
+	if !dara.IsNil(request.CustomerClidType) {
+		query["CustomerClidType"] = request.CustomerClidType
+	}
+
+	if !dara.IsNil(request.CustomerClidWeight) {
+		query["CustomerClidWeight"] = request.CustomerClidWeight
+	}
+
+	if !dara.IsNil(request.CustomerClidWeightFlag) {
+		query["CustomerClidWeightFlag"] = request.CustomerClidWeightFlag
+	}
+
+	if !dara.IsNil(request.CustomerClids) {
+		query["CustomerClids"] = request.CustomerClids
+	}
+
+	if !dara.IsNil(request.CustomerClidsCategory) {
+		query["CustomerClidsCategory"] = request.CustomerClidsCategory
+	}
+
+	if !dara.IsNil(request.CustomerClidsGroup) {
+		query["CustomerClidsGroup"] = request.CustomerClidsGroup
+	}
+
+	if !dara.IsNil(request.CustomerMoh) {
+		query["CustomerMoh"] = request.CustomerMoh
+	}
+
+	if !dara.IsNil(request.CustomerTimeout) {
+		query["CustomerTimeout"] = request.CustomerTimeout
+	}
+
+	if !dara.IsNil(request.CustomerVoice) {
+		query["CustomerVoice"] = request.CustomerVoice
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.ForceEndFlag) {
+		query["ForceEndFlag"] = request.ForceEndFlag
+	}
+
+	if !dara.IsNil(request.IsRewarm) {
+		query["IsRewarm"] = request.IsRewarm
+	}
+
+	if !dara.IsNil(request.IvrId) {
+		query["IvrId"] = request.IvrId
+	}
+
+	if !dara.IsNil(request.IvrName) {
+		query["IvrName"] = request.IvrName
+	}
+
+	if !dara.IsNil(request.MaxWaitTime) {
+		query["MaxWaitTime"] = request.MaxWaitTime
+	}
+
+	if !dara.IsNil(request.MinAvailableAgentCount) {
+		query["MinAvailableAgentCount"] = request.MinAvailableAgentCount
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PredictAdjust) {
+		query["PredictAdjust"] = request.PredictAdjust
+	}
+
+	if !dara.IsNil(request.Quotiety) {
+		query["Quotiety"] = request.Quotiety
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RetryStrategy) {
+		query["RetryStrategy"] = request.RetryStrategy
+	}
+
+	if !dara.IsNil(request.RetryStrategyOnlyToday) {
+		query["RetryStrategyOnlyToday"] = request.RetryStrategyOnlyToday
+	}
+
+	if !dara.IsNil(request.RetryStrategyTimeType) {
+		query["RetryStrategyTimeType"] = request.RetryStrategyTimeType
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TimeStrategy) {
+		query["TimeStrategy"] = request.TimeStrategy
+	}
+
+	if !dara.IsNil(request.UserFields) {
+		query["UserFields"] = request.UserFields
+	}
+
+	if !dara.IsNil(request.WarmUpDuration) {
+		query["WarmUpDuration"] = request.WarmUpDuration
+	}
+
+	if !dara.IsNil(request.Wrapup) {
+		query["Wrapup"] = request.Wrapup
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudUpdateTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudUpdateTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uses a service instance to create a text-to-speech (TTS) task, a voice notification task, or a voice verification code task for multiple called numbers.
 //
 // Description:
 //
@@ -649,7 +1311,7 @@ func (client *Client) CreateRobotTaskWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// # DegradeVideoFile
+// Downgrades from a video call to a voice call.
 //
 // @param request - DegradeVideoFileRequest
 //
@@ -851,7 +1513,7 @@ func (client *Client) ExecuteCallTaskWithContext(ctx context.Context, request *E
 
 // Summary:
 //
-// # GetCallMediaType
+// Obtains the call type during a call.
 //
 // @param request - GetCallMediaTypeRequest
 //
@@ -1033,7 +1695,7 @@ func (client *Client) GetHotlineQualificationByOrderWithContext(ctx context.Cont
 
 // Summary:
 //
-// # GetTemporaryFileUrl
+// Obtains a temporary URL of a video or audio file. You can view the video or audio file immediately by using this temporary URL.
 //
 // @param request - GetTemporaryFileUrlRequest
 //
@@ -1311,7 +1973,7 @@ func (client *Client) IvrCallWithContext(ctx context.Context, request *IvrCallRe
 
 // Summary:
 //
-// Queries task information.
+// Queries the information about a voice call task after the task is created, including the task ID, task status, and templates used by the task.
 //
 // Description:
 //
@@ -1397,7 +2059,7 @@ func (client *Client) ListCallTaskWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the information about a task based on the task ID.
+// Queries the details of call tasks based on task IDs after call tasks are complete.
 //
 // Description:
 //
@@ -1627,7 +2289,7 @@ func (client *Client) ListServiceInstanceForPageWithContext(ctx context.Context,
 
 // Summary:
 //
-// # PauseVideoFile
+// Pauses video playback when a video file is played back during a voice call.
 //
 // @param request - PauseVideoFileRequest
 //
@@ -1687,7 +2349,7 @@ func (client *Client) PauseVideoFileWithContext(ctx context.Context, request *Pa
 
 // Summary:
 //
-// # PlayVideoFile
+// Plays back a video file during a voice call.
 //
 // @param request - PlayVideoFileRequest
 //
@@ -2035,7 +2697,7 @@ func (client *Client) QueryCallInTransferRecordWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a list of robots.
+// Queries a list of robots to obtain their details.
 //
 // @param request - QueryRobotInfoListRequest
 //
@@ -2091,7 +2753,7 @@ func (client *Client) QueryRobotInfoListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the call details of a called number in a robocall task.
+// Queries the call details of a called number.
 //
 // Description:
 //
@@ -2457,7 +3119,7 @@ func (client *Client) QueryRobotv2AllListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # QueryVideoPlayProgress
+// Queries the video playback progress after you play a video file during a voice call.
 //
 // @param request - QueryVideoPlayProgressRequest
 //
@@ -2517,81 +3179,7 @@ func (client *Client) QueryVideoPlayProgressWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of virtual numbers.
-//
-// Description:
-//
-// ### QPS limits
-//
-// You can call this operation up to 100 times per second per account.
-//
-// @param request - QueryVirtualNumberRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return QueryVirtualNumberResponse
-func (client *Client) QueryVirtualNumberWithContext(ctx context.Context, request *QueryVirtualNumberRequest, runtime *dara.RuntimeOptions) (_result *QueryVirtualNumberResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !dara.IsNil(request.PageNo) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !dara.IsNil(request.PageSize) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !dara.IsNil(request.ProdCode) {
-		query["ProdCode"] = request.ProdCode
-	}
-
-	if !dara.IsNil(request.ResourceOwnerAccount) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !dara.IsNil(request.ResourceOwnerId) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !dara.IsNil(request.RouteType) {
-		query["RouteType"] = request.RouteType
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("QueryVirtualNumber"),
-		Version:     dara.String("2017-05-25"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &QueryVirtualNumberResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of associations between virtual numbers and real numbers.
+// Lists real numbers bound to service instances. The returned data includes the binding time, the number activation time, and the number of real numbers bound to a service instance.
 //
 // Description:
 //
@@ -2945,7 +3533,7 @@ func (client *Client) RecoverCallInConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # ResumeVideoFile
+// Resumes video playback after you pause video playback during a voice call.
 //
 // @param request - ResumeVideoFileRequest
 //
@@ -3307,7 +3895,7 @@ func (client *Client) SingleCallByTtsWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 语音视频单呼接口
+// Sends voice file notifications or video file notifications to a single called number.
 //
 // @param request - SingleCallByVideoRequest
 //
@@ -3481,7 +4069,7 @@ func (client *Client) SingleCallByVoiceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # SkipVideoFile
+// Fast forwards or rewinds a video when you play the video.
 //
 // @param request - SkipVideoFileRequest
 //
@@ -3979,7 +4567,7 @@ func (client *Client) StopRobotTaskWithContext(ctx context.Context, request *Sto
 
 // Summary:
 //
-// Submits a China 400 number for registration.
+// Submits a 400 number for registration.
 //
 // Description:
 //
@@ -4077,7 +4665,7 @@ func (client *Client) SubmitHotlineTransferRegisterWithContext(ctx context.Conte
 
 // Summary:
 //
-// # UpgradeVideoFile
+// Upgrades from a voice call to a video call.
 //
 // @param request - UpgradeVideoFileRequest
 //
