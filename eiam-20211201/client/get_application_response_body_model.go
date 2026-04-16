@@ -195,7 +195,8 @@ type GetApplicationResponseBodyApplication struct {
 	// example:
 	//
 	// true
-	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceManaged          *bool     `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	SmartConfigCapabilities []*string `json:"SmartConfigCapabilities,omitempty" xml:"SmartConfigCapabilities,omitempty" type:"Repeated"`
 	// The type of the single sign-on (SSO) protocol. Valid values:
 	//
 	// 	- saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
@@ -328,6 +329,10 @@ func (s *GetApplicationResponseBodyApplication) GetServiceManaged() *bool {
 	return s.ServiceManaged
 }
 
+func (s *GetApplicationResponseBodyApplication) GetSmartConfigCapabilities() []*string {
+	return s.SmartConfigCapabilities
+}
+
 func (s *GetApplicationResponseBodyApplication) GetSsoType() *string {
 	return s.SsoType
 }
@@ -457,6 +462,11 @@ func (s *GetApplicationResponseBodyApplication) SetResourceServerStatus(v string
 
 func (s *GetApplicationResponseBodyApplication) SetServiceManaged(v bool) *GetApplicationResponseBodyApplication {
 	s.ServiceManaged = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetSmartConfigCapabilities(v []*string) *GetApplicationResponseBodyApplication {
+	s.SmartConfigCapabilities = v
 	return s
 }
 
