@@ -27,6 +27,8 @@ type iDescribeDBClusterAttributeResponseBody interface {
 	GetBurstingEnabled() *string
 	SetCategory(v string) *DescribeDBClusterAttributeResponseBody
 	GetCategory() *string
+	SetColumnTable(v string) *DescribeDBClusterAttributeResponseBody
+	GetColumnTable() *string
 	SetCompressStorageMode(v string) *DescribeDBClusterAttributeResponseBody
 	GetCompressStorageMode() *string
 	SetCompressStorageUsed(v int64) *DescribeDBClusterAttributeResponseBody
@@ -227,6 +229,10 @@ type DescribeDBClusterAttributeResponseBody struct {
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// OFF
+	ColumnTable *string `json:"ColumnTable,omitempty" xml:"ColumnTable,omitempty"`
 	// Whether storage compression is enabled. Values are as follows:
 	//
 	// - ON: Enabled
@@ -729,6 +735,10 @@ func (s *DescribeDBClusterAttributeResponseBody) GetCategory() *string {
 	return s.Category
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) GetColumnTable() *string {
+	return s.ColumnTable
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) GetCompressStorageMode() *string {
 	return s.CompressStorageMode
 }
@@ -1015,6 +1025,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetBurstingEnabled(v string) *D
 
 func (s *DescribeDBClusterAttributeResponseBody) SetCategory(v string) *DescribeDBClusterAttributeResponseBody {
 	s.Category = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetColumnTable(v string) *DescribeDBClusterAttributeResponseBody {
+	s.ColumnTable = &v
 	return s
 }
 
