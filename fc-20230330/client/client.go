@@ -578,20 +578,12 @@ func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcB
 //
 // Deletes an alias.
 //
-// @param request - DeleteAliasRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteAliasResponse
-func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *string, request *DeleteAliasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -619,14 +611,12 @@ func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *st
 //
 // Deletes an alias.
 //
-// @param request - DeleteAliasRequest
-//
 // @return DeleteAliasResponse
-func (client *Client) DeleteAlias(functionName *string, aliasName *string, request *DeleteAliasRequest) (_result *DeleteAliasResponse, _err error) {
+func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_result *DeleteAliasResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteAliasResponse{}
-	_body, _err := client.DeleteAliasWithOptions(functionName, aliasName, request, headers, runtime)
+	_body, _err := client.DeleteAliasWithOptions(functionName, aliasName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -704,20 +694,12 @@ func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *Del
 //
 // Deletes a concurrency configuration.
 //
-// @param request - DeleteConcurrencyConfigRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteConcurrencyConfigResponse
-func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, request *DeleteConcurrencyConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConcurrencyConfigResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteConcurrencyConfigResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -745,14 +727,12 @@ func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, r
 //
 // Deletes a concurrency configuration.
 //
-// @param request - DeleteConcurrencyConfigRequest
-//
 // @return DeleteConcurrencyConfigResponse
-func (client *Client) DeleteConcurrencyConfig(functionName *string, request *DeleteConcurrencyConfigRequest) (_result *DeleteConcurrencyConfigResponse, _err error) {
+func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *DeleteConcurrencyConfigResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteConcurrencyConfigResponse{}
-	_body, _err := client.DeleteConcurrencyConfigWithOptions(functionName, request, headers, runtime)
+	_body, _err := client.DeleteConcurrencyConfigWithOptions(functionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -764,20 +744,12 @@ func (client *Client) DeleteConcurrencyConfig(functionName *string, request *Del
 //
 // Deletes a custom domain name.
 //
-// @param request - DeleteCustomDomainRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteCustomDomainResponse
-func (client *Client) DeleteCustomDomainWithOptions(domainName *string, request *DeleteCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -805,14 +777,12 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, request 
 //
 // Deletes a custom domain name.
 //
-// @param request - DeleteCustomDomainRequest
-//
 // @return DeleteCustomDomainResponse
-func (client *Client) DeleteCustomDomain(domainName *string, request *DeleteCustomDomainRequest) (_result *DeleteCustomDomainResponse, _err error) {
+func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCustomDomainResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteCustomDomainResponse{}
-	_body, _err := client.DeleteCustomDomainWithOptions(domainName, request, headers, runtime)
+	_body, _err := client.DeleteCustomDomainWithOptions(domainName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -824,20 +794,12 @@ func (client *Client) DeleteCustomDomain(domainName *string, request *DeleteCust
 //
 // Deletes a function.
 //
-// @param request - DeleteFunctionRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFunctionResponse
-func (client *Client) DeleteFunctionWithOptions(functionName *string, request *DeleteFunctionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFunctionResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteFunctionWithOptions(functionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFunctionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -865,14 +827,12 @@ func (client *Client) DeleteFunctionWithOptions(functionName *string, request *D
 //
 // Deletes a function.
 //
-// @param request - DeleteFunctionRequest
-//
 // @return DeleteFunctionResponse
-func (client *Client) DeleteFunction(functionName *string, request *DeleteFunctionRequest) (_result *DeleteFunctionResponse, _err error) {
+func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunctionResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteFunctionResponse{}
-	_body, _err := client.DeleteFunctionWithOptions(functionName, request, headers, runtime)
+	_body, _err := client.DeleteFunctionWithOptions(functionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -884,20 +844,12 @@ func (client *Client) DeleteFunction(functionName *string, request *DeleteFuncti
 //
 // Deletes a function version.
 //
-// @param request - DeleteFunctionVersionRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteFunctionVersionResponse
-func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, versionId *string, request *DeleteFunctionVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFunctionVersionResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, versionId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteFunctionVersionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -925,14 +877,12 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 //
 // Deletes a function version.
 //
-// @param request - DeleteFunctionVersionRequest
-//
 // @return DeleteFunctionVersionResponse
-func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string, request *DeleteFunctionVersionRequest) (_result *DeleteFunctionVersionResponse, _err error) {
+func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string) (_result *DeleteFunctionVersionResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteFunctionVersionResponse{}
-	_body, _err := client.DeleteFunctionVersionWithOptions(functionName, versionId, request, headers, runtime)
+	_body, _err := client.DeleteFunctionVersionWithOptions(functionName, versionId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -944,20 +894,12 @@ func (client *Client) DeleteFunctionVersion(functionName *string, versionId *str
 //
 // Deletes a layer version.
 //
-// @param request - DeleteLayerVersionRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteLayerVersionResponse
-func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, request *DeleteLayerVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -985,14 +927,12 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 //
 // Deletes a layer version.
 //
-// @param request - DeleteLayerVersionRequest
-//
 // @return DeleteLayerVersionResponse
-func (client *Client) DeleteLayerVersion(layerName *string, version *string, request *DeleteLayerVersionRequest) (_result *DeleteLayerVersionResponse, _err error) {
+func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_result *DeleteLayerVersionResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteLayerVersionResponse{}
-	_body, _err := client.DeleteLayerVersionWithOptions(layerName, version, request, headers, runtime)
+	_body, _err := client.DeleteLayerVersionWithOptions(layerName, version, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1202,20 +1142,12 @@ func (client *Client) DeleteSession(functionName *string, sessionId *string, req
 //
 // Deletes a trigger.
 //
-// @param request - DeleteTriggerRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteTriggerResponse
-func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName *string, request *DeleteTriggerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1243,14 +1175,12 @@ func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName
 //
 // Deletes a trigger.
 //
-// @param request - DeleteTriggerRequest
-//
 // @return DeleteTriggerResponse
-func (client *Client) DeleteTrigger(functionName *string, triggerName *string, request *DeleteTriggerRequest) (_result *DeleteTriggerResponse, _err error) {
+func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (_result *DeleteTriggerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteTriggerResponse{}
-	_body, _err := client.DeleteTriggerWithOptions(functionName, triggerName, request, headers, runtime)
+	_body, _err := client.DeleteTriggerWithOptions(functionName, triggerName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1262,20 +1192,12 @@ func (client *Client) DeleteTrigger(functionName *string, triggerName *string, r
 //
 // Deletes an access control policy from a specified policy group for a VPC firewall.
 //
-// @param request - DeleteVpcBindingRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteVpcBindingResponse
-func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *string, request *DeleteVpcBindingRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1303,14 +1225,12 @@ func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *s
 //
 // Deletes an access control policy from a specified policy group for a VPC firewall.
 //
-// @param request - DeleteVpcBindingRequest
-//
 // @return DeleteVpcBindingResponse
-func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string, request *DeleteVpcBindingRequest) (_result *DeleteVpcBindingResponse, _err error) {
+func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_result *DeleteVpcBindingResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteVpcBindingResponse{}
-	_body, _err := client.DeleteVpcBindingWithOptions(functionName, vpcId, request, headers, runtime)
+	_body, _err := client.DeleteVpcBindingWithOptions(functionName, vpcId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1466,20 +1386,12 @@ func (client *Client) DisableFunctionInvocation(functionName *string, request *D
 //
 // The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
 //
-// @param request - EnableFunctionInvocationRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return EnableFunctionInvocationResponse
-func (client *Client) EnableFunctionInvocationWithOptions(functionName *string, request *EnableFunctionInvocationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableFunctionInvocationResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) EnableFunctionInvocationWithOptions(functionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *EnableFunctionInvocationResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1507,14 +1419,12 @@ func (client *Client) EnableFunctionInvocationWithOptions(functionName *string, 
 //
 // The EnableFunctionInvocation operation allows a function to be invoked and resumes the creation of provisioned instances. This operation is currently in private preview.
 //
-// @param request - EnableFunctionInvocationRequest
-//
 // @return EnableFunctionInvocationResponse
-func (client *Client) EnableFunctionInvocation(functionName *string, request *EnableFunctionInvocationRequest) (_result *EnableFunctionInvocationResponse, _err error) {
+func (client *Client) EnableFunctionInvocation(functionName *string) (_result *EnableFunctionInvocationResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &EnableFunctionInvocationResponse{}
-	_body, _err := client.EnableFunctionInvocationWithOptions(functionName, request, headers, runtime)
+	_body, _err := client.EnableFunctionInvocationWithOptions(functionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1526,20 +1436,12 @@ func (client *Client) EnableFunctionInvocation(functionName *string, request *En
 //
 // Queries information about an alias.
 //
-// @param request - GetAliasRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAliasResponse
-func (client *Client) GetAliasWithOptions(functionName *string, aliasName *string, request *GetAliasRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAliasResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) GetAliasWithOptions(functionName *string, aliasName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAliasResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1567,14 +1469,12 @@ func (client *Client) GetAliasWithOptions(functionName *string, aliasName *strin
 //
 // Queries information about an alias.
 //
-// @param request - GetAliasRequest
-//
 // @return GetAliasResponse
-func (client *Client) GetAlias(functionName *string, aliasName *string, request *GetAliasRequest) (_result *GetAliasResponse, _err error) {
+func (client *Client) GetAlias(functionName *string, aliasName *string) (_result *GetAliasResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetAliasResponse{}
-	_body, _err := client.GetAliasWithOptions(functionName, aliasName, request, headers, runtime)
+	_body, _err := client.GetAliasWithOptions(functionName, aliasName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1718,20 +1618,12 @@ func (client *Client) GetAsyncTask(functionName *string, taskId *string, request
 //
 // Obtains a concurrency configuration.
 //
-// @param request - GetConcurrencyConfigRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetConcurrencyConfigResponse
-func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, request *GetConcurrencyConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConcurrencyConfigResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetConcurrencyConfigResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1759,14 +1651,12 @@ func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, requ
 //
 // Obtains a concurrency configuration.
 //
-// @param request - GetConcurrencyConfigRequest
-//
 // @return GetConcurrencyConfigResponse
-func (client *Client) GetConcurrencyConfig(functionName *string, request *GetConcurrencyConfigRequest) (_result *GetConcurrencyConfigResponse, _err error) {
+func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetConcurrencyConfigResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetConcurrencyConfigResponse{}
-	_body, _err := client.GetConcurrencyConfigWithOptions(functionName, request, headers, runtime)
+	_body, _err := client.GetConcurrencyConfigWithOptions(functionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1778,20 +1668,12 @@ func (client *Client) GetConcurrencyConfig(functionName *string, request *GetCon
 //
 // Queries information about a custom domain name.
 //
-// @param request - GetCustomDomainRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCustomDomainResponse
-func (client *Client) GetCustomDomainWithOptions(domainName *string, request *GetCustomDomainRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -1819,14 +1701,12 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, request *Ge
 //
 // Queries information about a custom domain name.
 //
-// @param request - GetCustomDomainRequest
-//
 // @return GetCustomDomainResponse
-func (client *Client) GetCustomDomain(domainName *string, request *GetCustomDomainRequest) (_result *GetCustomDomainResponse, _err error) {
+func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetCustomDomainResponse{}
-	_body, _err := client.GetCustomDomainWithOptions(domainName, request, headers, runtime)
+	_body, _err := client.GetCustomDomainWithOptions(domainName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1970,20 +1850,12 @@ func (client *Client) GetFunctionCode(functionName *string, request *GetFunction
 //
 // Queries versions of a layer.
 //
-// @param request - GetLayerVersionRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLayerVersionResponse
-func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, request *GetLayerVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2011,14 +1883,12 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 //
 // Queries versions of a layer.
 //
-// @param request - GetLayerVersionRequest
-//
 // @return GetLayerVersionResponse
-func (client *Client) GetLayerVersion(layerName *string, version *string, request *GetLayerVersionRequest) (_result *GetLayerVersionResponse, _err error) {
+func (client *Client) GetLayerVersion(layerName *string, version *string) (_result *GetLayerVersionResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetLayerVersionResponse{}
-	_body, _err := client.GetLayerVersionWithOptions(layerName, version, request, headers, runtime)
+	_body, _err := client.GetLayerVersionWithOptions(layerName, version, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2030,20 +1900,12 @@ func (client *Client) GetLayerVersion(layerName *string, version *string, reques
 //
 // Obtain version information of a layer by using ARNs.
 //
-// @param request - GetLayerVersionByArnRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLayerVersionByArnResponse
-func (client *Client) GetLayerVersionByArnWithOptions(arn *string, request *GetLayerVersionByArnRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2071,14 +1933,12 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, request *GetL
 //
 // Obtain version information of a layer by using ARNs.
 //
-// @param request - GetLayerVersionByArnRequest
-//
 // @return GetLayerVersionByArnResponse
-func (client *Client) GetLayerVersionByArn(arn *string, request *GetLayerVersionByArnRequest) (_result *GetLayerVersionByArnResponse, _err error) {
+func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersionByArnResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetLayerVersionByArnResponse{}
-	_body, _err := client.GetLayerVersionByArnWithOptions(arn, request, headers, runtime)
+	_body, _err := client.GetLayerVersionByArnWithOptions(arn, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2288,20 +2148,12 @@ func (client *Client) GetSession(functionName *string, sessionId *string, reques
 //
 // Queries information about a trigger.
 //
-// @param request - GetTriggerRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTriggerResponse
-func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *string, request *GetTriggerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -2329,14 +2181,12 @@ func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *s
 //
 // Queries information about a trigger.
 //
-// @param request - GetTriggerRequest
-//
 // @return GetTriggerResponse
-func (client *Client) GetTrigger(functionName *string, triggerName *string, request *GetTriggerRequest) (_result *GetTriggerResponse, _err error) {
+func (client *Client) GetTrigger(functionName *string, triggerName *string) (_result *GetTriggerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetTriggerResponse{}
-	_body, _err := client.GetTriggerWithOptions(functionName, triggerName, request, headers, runtime)
+	_body, _err := client.GetTriggerWithOptions(functionName, triggerName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3686,20 +3536,12 @@ func (client *Client) ListTriggers(functionName *string, request *ListTriggersRe
 //
 // Queries a list of existing VPC connections.
 //
-// @param request - ListVpcBindingsRequest
-//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListVpcBindingsResponse
-func (client *Client) ListVpcBindingsWithOptions(functionName *string, request *ListVpcBindingsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
+func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 	}
@@ -3727,14 +3569,12 @@ func (client *Client) ListVpcBindingsWithOptions(functionName *string, request *
 //
 // Queries a list of existing VPC connections.
 //
-// @param request - ListVpcBindingsRequest
-//
 // @return ListVpcBindingsResponse
-func (client *Client) ListVpcBindings(functionName *string, request *ListVpcBindingsRequest) (_result *ListVpcBindingsResponse, _err error) {
+func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBindingsResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListVpcBindingsResponse{}
-	_body, _err := client.ListVpcBindingsWithOptions(functionName, request, headers, runtime)
+	_body, _err := client.ListVpcBindingsWithOptions(functionName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
