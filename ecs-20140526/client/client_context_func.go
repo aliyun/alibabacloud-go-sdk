@@ -2401,7 +2401,7 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, request *Cancel
 
 // Summary:
 //
-// 使用一块已有的磁盘克隆出新磁盘
+// Disk cloning allows you to quickly create a new disk with the same data as the source disk in the same zone. The cloned disk supports custom capacity, type, and encryption properties. After being mounted to an instance, you can quickly copy business data or scale out services.
 //
 // @param request - CloneDisksRequest
 //

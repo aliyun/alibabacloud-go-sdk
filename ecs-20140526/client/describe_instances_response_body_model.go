@@ -957,7 +957,8 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) Validate() error {
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo struct {
-	EnableHighDensityMode *bool `json:"EnableHighDensityMode,omitempty" xml:"EnableHighDensityMode,omitempty"`
+	EnableHighDensityMode *bool   `json:"EnableHighDensityMode,omitempty" xml:"EnableHighDensityMode,omitempty"`
+	NodeSerialNumber      *string `json:"NodeSerialNumber,omitempty" xml:"NodeSerialNumber,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) String() string {
@@ -972,8 +973,17 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) GetEnable
 	return s.EnableHighDensityMode
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) GetNodeSerialNumber() *string {
+	return s.NodeSerialNumber
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) SetEnableHighDensityMode(v bool) *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo {
 	s.EnableHighDensityMode = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo) SetNodeSerialNumber(v string) *DescribeInstancesResponseBodyInstancesInstanceAdditionalInfo {
+	s.NodeSerialNumber = &v
 	return s
 }
 
@@ -1007,13 +1017,17 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceClockOptions) Validate() 
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceCpuOptions struct {
-	CoreCount      *int32  `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
-	EnableVISST    *bool   `json:"EnableVISST,omitempty" xml:"EnableVISST,omitempty"`
-	EnableVRDT     *bool   `json:"EnableVRDT,omitempty" xml:"EnableVRDT,omitempty"`
-	Numa           *string `json:"Numa,omitempty" xml:"Numa,omitempty"`
-	ThreadsPerCore *int32  `json:"ThreadsPerCore,omitempty" xml:"ThreadsPerCore,omitempty"`
-	TopologyType   *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	TurboMode      *string `json:"TurboMode,omitempty" xml:"TurboMode,omitempty"`
+	CoreCount   *int32 `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
+	EnableVISST *bool  `json:"EnableVISST,omitempty" xml:"EnableVISST,omitempty"`
+	EnableVRDT  *bool  `json:"EnableVRDT,omitempty" xml:"EnableVRDT,omitempty"`
+	// example:
+	//
+	// enabled
+	NestedVirtualization *string `json:"NestedVirtualization,omitempty" xml:"NestedVirtualization,omitempty"`
+	Numa                 *string `json:"Numa,omitempty" xml:"Numa,omitempty"`
+	ThreadsPerCore       *int32  `json:"ThreadsPerCore,omitempty" xml:"ThreadsPerCore,omitempty"`
+	TopologyType         *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	TurboMode            *string `json:"TurboMode,omitempty" xml:"TurboMode,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceCpuOptions) String() string {
@@ -1034,6 +1048,10 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) GetEnableVISS
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) GetEnableVRDT() *bool {
 	return s.EnableVRDT
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) GetNestedVirtualization() *string {
+	return s.NestedVirtualization
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) GetNuma() *string {
@@ -1064,6 +1082,11 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) SetEnableVISS
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) SetEnableVRDT(v bool) *DescribeInstancesResponseBodyInstancesInstanceCpuOptions {
 	s.EnableVRDT = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceCpuOptions) SetNestedVirtualization(v string) *DescribeInstancesResponseBodyInstancesInstanceCpuOptions {
+	s.NestedVirtualization = &v
 	return s
 }
 
