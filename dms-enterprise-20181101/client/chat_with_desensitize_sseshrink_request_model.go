@@ -57,6 +57,10 @@ type iChatWithDesensitizeSSEShrinkRequest interface {
 	GetTemperature() *string
 	SetThinkingBudget(v int32) *ChatWithDesensitizeSSEShrinkRequest
 	GetThinkingBudget() *int32
+	SetToolChoice(v string) *ChatWithDesensitizeSSEShrinkRequest
+	GetToolChoice() *string
+	SetTools(v string) *ChatWithDesensitizeSSEShrinkRequest
+	GetTools() *string
 	SetTopK(v int32) *ChatWithDesensitizeSSEShrinkRequest
 	GetTopK() *int32
 	SetTopLogprobs(v int32) *ChatWithDesensitizeSSEShrinkRequest
@@ -222,6 +226,14 @@ type ChatWithDesensitizeSSEShrinkRequest struct {
 	//
 	// 256
 	ThinkingBudget *int32 `json:"ThinkingBudget,omitempty" xml:"ThinkingBudget,omitempty"`
+	// example:
+	//
+	// {}
+	ToolChoice *string `json:"ToolChoice,omitempty" xml:"ToolChoice,omitempty"`
+	// example:
+	//
+	// {}
+	Tools *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
 	// Specifies the number of candidate tokens to consider during sampling. Higher values increase randomness, while lower values make the output more deterministic. Set to null or a value greater than 100 to disable.
 	//
 	// example:
@@ -356,6 +368,14 @@ func (s *ChatWithDesensitizeSSEShrinkRequest) GetTemperature() *string {
 
 func (s *ChatWithDesensitizeSSEShrinkRequest) GetThinkingBudget() *int32 {
 	return s.ThinkingBudget
+}
+
+func (s *ChatWithDesensitizeSSEShrinkRequest) GetToolChoice() *string {
+	return s.ToolChoice
+}
+
+func (s *ChatWithDesensitizeSSEShrinkRequest) GetTools() *string {
+	return s.Tools
 }
 
 func (s *ChatWithDesensitizeSSEShrinkRequest) GetTopK() *int32 {
@@ -495,6 +515,16 @@ func (s *ChatWithDesensitizeSSEShrinkRequest) SetTemperature(v string) *ChatWith
 
 func (s *ChatWithDesensitizeSSEShrinkRequest) SetThinkingBudget(v int32) *ChatWithDesensitizeSSEShrinkRequest {
 	s.ThinkingBudget = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeSSEShrinkRequest) SetToolChoice(v string) *ChatWithDesensitizeSSEShrinkRequest {
+	s.ToolChoice = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeSSEShrinkRequest) SetTools(v string) *ChatWithDesensitizeSSEShrinkRequest {
+	s.Tools = &v
 	return s
 }
 

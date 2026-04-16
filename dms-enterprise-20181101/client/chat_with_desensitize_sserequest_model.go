@@ -57,6 +57,10 @@ type iChatWithDesensitizeSSERequest interface {
 	GetTemperature() *string
 	SetThinkingBudget(v int32) *ChatWithDesensitizeSSERequest
 	GetThinkingBudget() *int32
+	SetToolChoice(v string) *ChatWithDesensitizeSSERequest
+	GetToolChoice() *string
+	SetTools(v string) *ChatWithDesensitizeSSERequest
+	GetTools() *string
 	SetTopK(v int32) *ChatWithDesensitizeSSERequest
 	GetTopK() *int32
 	SetTopLogprobs(v int32) *ChatWithDesensitizeSSERequest
@@ -222,6 +226,14 @@ type ChatWithDesensitizeSSERequest struct {
 	//
 	// 256
 	ThinkingBudget *int32 `json:"ThinkingBudget,omitempty" xml:"ThinkingBudget,omitempty"`
+	// example:
+	//
+	// {}
+	ToolChoice *string `json:"ToolChoice,omitempty" xml:"ToolChoice,omitempty"`
+	// example:
+	//
+	// {}
+	Tools *string `json:"Tools,omitempty" xml:"Tools,omitempty"`
 	// Specifies the number of candidate tokens to consider during sampling. Higher values increase randomness, while lower values make the output more deterministic. Set to null or a value greater than 100 to disable.
 	//
 	// example:
@@ -356,6 +368,14 @@ func (s *ChatWithDesensitizeSSERequest) GetTemperature() *string {
 
 func (s *ChatWithDesensitizeSSERequest) GetThinkingBudget() *int32 {
 	return s.ThinkingBudget
+}
+
+func (s *ChatWithDesensitizeSSERequest) GetToolChoice() *string {
+	return s.ToolChoice
+}
+
+func (s *ChatWithDesensitizeSSERequest) GetTools() *string {
+	return s.Tools
 }
 
 func (s *ChatWithDesensitizeSSERequest) GetTopK() *int32 {
@@ -495,6 +515,16 @@ func (s *ChatWithDesensitizeSSERequest) SetTemperature(v string) *ChatWithDesens
 
 func (s *ChatWithDesensitizeSSERequest) SetThinkingBudget(v int32) *ChatWithDesensitizeSSERequest {
 	s.ThinkingBudget = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeSSERequest) SetToolChoice(v string) *ChatWithDesensitizeSSERequest {
+	s.ToolChoice = &v
+	return s
+}
+
+func (s *ChatWithDesensitizeSSERequest) SetTools(v string) *ChatWithDesensitizeSSERequest {
+	s.Tools = &v
 	return s
 }
 

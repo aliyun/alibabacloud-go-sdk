@@ -1643,6 +1643,14 @@ func (client *Client) ChatWithDesensitizeSSEWithContext(ctx context.Context, tmp
 		query["ThinkingBudget"] = request.ThinkingBudget
 	}
 
+	if !dara.IsNil(request.ToolChoice) {
+		query["ToolChoice"] = request.ToolChoice
+	}
+
+	if !dara.IsNil(request.Tools) {
+		query["Tools"] = request.Tools
+	}
+
 	if !dara.IsNil(request.TopK) {
 		query["TopK"] = request.TopK
 	}
@@ -19560,6 +19568,14 @@ func (client *Client) chatWithDesensitizeSSEWithSSECtx_opYieldFunc(_yield chan *
 
 	if !dara.IsNil(request.ThinkingBudget) {
 		query["ThinkingBudget"] = request.ThinkingBudget
+	}
+
+	if !dara.IsNil(request.ToolChoice) {
+		query["ToolChoice"] = request.ToolChoice
+	}
+
+	if !dara.IsNil(request.Tools) {
+		query["Tools"] = request.Tools
 	}
 
 	if !dara.IsNil(request.TopK) {
