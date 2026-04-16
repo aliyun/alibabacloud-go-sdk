@@ -2440,6 +2440,10 @@ func (client *Client) ModifyBrowserInstanceGroupWithContext(ctx context.Context,
 		request.PolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Policy, dara.String("Policy"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.StoragePolicy) {
+		request.StoragePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoragePolicy, dara.String("StoragePolicy"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Timers) {
 		request.TimersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Timers, dara.String("Timers"), dara.String("json"))
 	}
@@ -2466,8 +2470,16 @@ func (client *Client) ModifyBrowserInstanceGroupWithContext(ctx context.Context,
 		body["CloudBrowserName"] = request.CloudBrowserName
 	}
 
+	if !dara.IsNil(request.MaxAmount) {
+		body["MaxAmount"] = request.MaxAmount
+	}
+
 	if !dara.IsNil(request.NetworkShrink) {
 		body["Network"] = request.NetworkShrink
+	}
+
+	if !dara.IsNil(request.StoragePolicyShrink) {
+		body["StoragePolicy"] = request.StoragePolicyShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

@@ -15,10 +15,14 @@ type iModifyBrowserInstanceGroupShrinkRequest interface {
 	GetBrowserInstanceGroupId() *string
 	SetCloudBrowserName(v string) *ModifyBrowserInstanceGroupShrinkRequest
 	GetCloudBrowserName() *string
+	SetMaxAmount(v int32) *ModifyBrowserInstanceGroupShrinkRequest
+	GetMaxAmount() *int32
 	SetNetworkShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest
 	GetNetworkShrink() *string
 	SetPolicyShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest
 	GetPolicyShrink() *string
+	SetStoragePolicyShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest
+	GetStoragePolicyShrink() *string
 	SetTimersShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest
 	GetTimersShrink() *string
 }
@@ -40,10 +44,15 @@ type ModifyBrowserInstanceGroupShrinkRequest struct {
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
+	// example:
+	//
+	// 5
+	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
 	// The network configurations.
 	NetworkShrink *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The access policy.
-	PolicyShrink *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PolicyShrink        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 	// The timer.
 	TimersShrink *string `json:"Timers,omitempty" xml:"Timers,omitempty"`
 }
@@ -68,12 +77,20 @@ func (s *ModifyBrowserInstanceGroupShrinkRequest) GetCloudBrowserName() *string 
 	return s.CloudBrowserName
 }
 
+func (s *ModifyBrowserInstanceGroupShrinkRequest) GetMaxAmount() *int32 {
+	return s.MaxAmount
+}
+
 func (s *ModifyBrowserInstanceGroupShrinkRequest) GetNetworkShrink() *string {
 	return s.NetworkShrink
 }
 
 func (s *ModifyBrowserInstanceGroupShrinkRequest) GetPolicyShrink() *string {
 	return s.PolicyShrink
+}
+
+func (s *ModifyBrowserInstanceGroupShrinkRequest) GetStoragePolicyShrink() *string {
+	return s.StoragePolicyShrink
 }
 
 func (s *ModifyBrowserInstanceGroupShrinkRequest) GetTimersShrink() *string {
@@ -95,6 +112,11 @@ func (s *ModifyBrowserInstanceGroupShrinkRequest) SetCloudBrowserName(v string) 
 	return s
 }
 
+func (s *ModifyBrowserInstanceGroupShrinkRequest) SetMaxAmount(v int32) *ModifyBrowserInstanceGroupShrinkRequest {
+	s.MaxAmount = &v
+	return s
+}
+
 func (s *ModifyBrowserInstanceGroupShrinkRequest) SetNetworkShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest {
 	s.NetworkShrink = &v
 	return s
@@ -102,6 +124,11 @@ func (s *ModifyBrowserInstanceGroupShrinkRequest) SetNetworkShrink(v string) *Mo
 
 func (s *ModifyBrowserInstanceGroupShrinkRequest) SetPolicyShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest {
 	s.PolicyShrink = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupShrinkRequest) SetStoragePolicyShrink(v string) *ModifyBrowserInstanceGroupShrinkRequest {
+	s.StoragePolicyShrink = &v
 	return s
 }
 

@@ -15,10 +15,14 @@ type iModifyBrowserInstanceGroupRequest interface {
 	GetBrowserInstanceGroupId() *string
 	SetCloudBrowserName(v string) *ModifyBrowserInstanceGroupRequest
 	GetCloudBrowserName() *string
+	SetMaxAmount(v int32) *ModifyBrowserInstanceGroupRequest
+	GetMaxAmount() *int32
 	SetNetwork(v *ModifyBrowserInstanceGroupRequestNetwork) *ModifyBrowserInstanceGroupRequest
 	GetNetwork() *ModifyBrowserInstanceGroupRequestNetwork
 	SetPolicy(v *ModifyBrowserInstanceGroupRequestPolicy) *ModifyBrowserInstanceGroupRequest
 	GetPolicy() *ModifyBrowserInstanceGroupRequestPolicy
+	SetStoragePolicy(v *ModifyBrowserInstanceGroupRequestStoragePolicy) *ModifyBrowserInstanceGroupRequest
+	GetStoragePolicy() *ModifyBrowserInstanceGroupRequestStoragePolicy
 	SetTimers(v []*ModifyBrowserInstanceGroupRequestTimers) *ModifyBrowserInstanceGroupRequest
 	GetTimers() []*ModifyBrowserInstanceGroupRequestTimers
 }
@@ -40,10 +44,15 @@ type ModifyBrowserInstanceGroupRequest struct {
 	//
 	// BrowserTest
 	CloudBrowserName *string `json:"CloudBrowserName,omitempty" xml:"CloudBrowserName,omitempty"`
+	// example:
+	//
+	// 5
+	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
 	// The network configurations.
 	Network *ModifyBrowserInstanceGroupRequestNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The access policy.
-	Policy *ModifyBrowserInstanceGroupRequestPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	Policy        *ModifyBrowserInstanceGroupRequestPolicy        `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	StoragePolicy *ModifyBrowserInstanceGroupRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
 	// The timer.
 	Timers []*ModifyBrowserInstanceGroupRequestTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
 }
@@ -68,12 +77,20 @@ func (s *ModifyBrowserInstanceGroupRequest) GetCloudBrowserName() *string {
 	return s.CloudBrowserName
 }
 
+func (s *ModifyBrowserInstanceGroupRequest) GetMaxAmount() *int32 {
+	return s.MaxAmount
+}
+
 func (s *ModifyBrowserInstanceGroupRequest) GetNetwork() *ModifyBrowserInstanceGroupRequestNetwork {
 	return s.Network
 }
 
 func (s *ModifyBrowserInstanceGroupRequest) GetPolicy() *ModifyBrowserInstanceGroupRequestPolicy {
 	return s.Policy
+}
+
+func (s *ModifyBrowserInstanceGroupRequest) GetStoragePolicy() *ModifyBrowserInstanceGroupRequestStoragePolicy {
+	return s.StoragePolicy
 }
 
 func (s *ModifyBrowserInstanceGroupRequest) GetTimers() []*ModifyBrowserInstanceGroupRequestTimers {
@@ -95,6 +112,11 @@ func (s *ModifyBrowserInstanceGroupRequest) SetCloudBrowserName(v string) *Modif
 	return s
 }
 
+func (s *ModifyBrowserInstanceGroupRequest) SetMaxAmount(v int32) *ModifyBrowserInstanceGroupRequest {
+	s.MaxAmount = &v
+	return s
+}
+
 func (s *ModifyBrowserInstanceGroupRequest) SetNetwork(v *ModifyBrowserInstanceGroupRequestNetwork) *ModifyBrowserInstanceGroupRequest {
 	s.Network = v
 	return s
@@ -102,6 +124,11 @@ func (s *ModifyBrowserInstanceGroupRequest) SetNetwork(v *ModifyBrowserInstanceG
 
 func (s *ModifyBrowserInstanceGroupRequest) SetPolicy(v *ModifyBrowserInstanceGroupRequestPolicy) *ModifyBrowserInstanceGroupRequest {
 	s.Policy = v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequest) SetStoragePolicy(v *ModifyBrowserInstanceGroupRequestStoragePolicy) *ModifyBrowserInstanceGroupRequest {
+	s.StoragePolicy = v
 	return s
 }
 
@@ -126,6 +153,11 @@ func (s *ModifyBrowserInstanceGroupRequest) Validate() error {
 			return err
 		}
 	}
+	if s.StoragePolicy != nil {
+		if err := s.StoragePolicy.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Timers != nil {
 		for _, item := range s.Timers {
 			if item != nil {
@@ -141,12 +173,20 @@ func (s *ModifyBrowserInstanceGroupRequest) Validate() error {
 type ModifyBrowserInstanceGroupRequestBrowserConfig struct {
 	// The bookmark.
 	Bookmarks []*ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks `json:"Bookmarks,omitempty" xml:"Bookmarks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou/aig_upm/xxx/temp/BrowserBookmarks/浏览器书签模版.csv
+	BookmarksFilePath *string `json:"BookmarksFilePath,omitempty" xml:"BookmarksFilePath,omitempty"`
 	// The startup parameter.
 	//
 	// example:
 	//
 	// --incognito
 	BrowserParam *string `json:"BrowserParam,omitempty" xml:"BrowserParam,omitempty"`
+	// example:
+	//
+	// true
+	CookiesSync *string `json:"CookiesSync,omitempty" xml:"CookiesSync,omitempty"`
 	// The home page.
 	//
 	// example:
@@ -169,8 +209,16 @@ func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetBookmarks() []*Modif
 	return s.Bookmarks
 }
 
+func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetBookmarksFilePath() *string {
+	return s.BookmarksFilePath
+}
+
 func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetBrowserParam() *string {
 	return s.BrowserParam
+}
+
+func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetCookiesSync() *string {
+	return s.CookiesSync
 }
 
 func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetHomepage() *string {
@@ -186,8 +234,18 @@ func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetBookmarks(v []*Modif
 	return s
 }
 
+func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetBookmarksFilePath(v string) *ModifyBrowserInstanceGroupRequestBrowserConfig {
+	s.BookmarksFilePath = &v
+	return s
+}
+
 func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetBrowserParam(v string) *ModifyBrowserInstanceGroupRequestBrowserConfig {
 	s.BrowserParam = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetCookiesSync(v string) *ModifyBrowserInstanceGroupRequestBrowserConfig {
+	s.CookiesSync = &v
 	return s
 }
 
@@ -308,6 +366,10 @@ type ModifyBrowserInstanceGroupRequestNetwork struct {
 	RemoveRestrictedURLIds []*string `json:"RemoveRestrictedURLIds,omitempty" xml:"RemoveRestrictedURLIds,omitempty" type:"Repeated"`
 	// The domain restriction configurations.
 	RestrictedURLs []*ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs `json:"RestrictedURLs,omitempty" xml:"RestrictedURLs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou/aig_upm/xxx/temp/BrowserRestrictionUrls/URL白名单模版.csv
+	RestrictedURLsFilePath *string `json:"RestrictedURLsFilePath,omitempty" xml:"RestrictedURLsFilePath,omitempty"`
 }
 
 func (s ModifyBrowserInstanceGroupRequestNetwork) String() string {
@@ -330,6 +392,10 @@ func (s *ModifyBrowserInstanceGroupRequestNetwork) GetRestrictedURLs() []*Modify
 	return s.RestrictedURLs
 }
 
+func (s *ModifyBrowserInstanceGroupRequestNetwork) GetRestrictedURLsFilePath() *string {
+	return s.RestrictedURLsFilePath
+}
+
 func (s *ModifyBrowserInstanceGroupRequestNetwork) SetAccessRestriction(v string) *ModifyBrowserInstanceGroupRequestNetwork {
 	s.AccessRestriction = &v
 	return s
@@ -342,6 +408,11 @@ func (s *ModifyBrowserInstanceGroupRequestNetwork) SetRemoveRestrictedURLIds(v [
 
 func (s *ModifyBrowserInstanceGroupRequestNetwork) SetRestrictedURLs(v []*ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs) *ModifyBrowserInstanceGroupRequestNetwork {
 	s.RestrictedURLs = v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestNetwork) SetRestrictedURLsFilePath(v string) *ModifyBrowserInstanceGroupRequestNetwork {
+	s.RestrictedURLsFilePath = &v
 	return s
 }
 
@@ -429,9 +500,15 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	// example:
 	//
 	// off
-	Html5FileTransfer         *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	NoOperationDisconnect     *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
-	NoOperationDisconnectTime *int32  `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
+	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
+	// example:
+	//
+	// on
+	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
+	// example:
+	//
+	// 1
+	NoOperationDisconnectTime *int32 `json:"NoOperationDisconnectTime,omitempty" xml:"NoOperationDisconnectTime,omitempty"`
 	// The ID of the policy.
 	//
 	// example:
@@ -605,7 +682,10 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	// example:
 	//
 	// global
-	ClipboardScope    *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
+	ClipboardScope *string `json:"ClipboardScope,omitempty" xml:"ClipboardScope,omitempty"`
+	// example:
+	//
+	// B
 	ClipboardSizeUnit *string `json:"ClipboardSizeUnit,omitempty" xml:"ClipboardSizeUnit,omitempty"`
 	// The maximum number of characters allowed when copying to the clipboard.
 	//
@@ -644,8 +724,14 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	// example:
 	//
 	// off
-	RichTextClipboard         *string `json:"RichTextClipboard,omitempty" xml:"RichTextClipboard,omitempty"`
-	RichTextClipboardLimit    *int32  `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
+	RichTextClipboard *string `json:"RichTextClipboard,omitempty" xml:"RichTextClipboard,omitempty"`
+	// example:
+	//
+	// 1
+	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
+	// example:
+	//
+	// B
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
 	// The text clipboard policy.
 	//
@@ -841,6 +927,61 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy) SetWatermarkTyp
 }
 
 func (s *ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy) Validate() error {
+	return dara.Validate(s)
+}
+
+type ModifyBrowserInstanceGroupRequestStoragePolicy struct {
+	UserProfile *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile `json:"UserProfile,omitempty" xml:"UserProfile,omitempty" type:"Struct"`
+}
+
+func (s ModifyBrowserInstanceGroupRequestStoragePolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyBrowserInstanceGroupRequestStoragePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBrowserInstanceGroupRequestStoragePolicy) GetUserProfile() *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile {
+	return s.UserProfile
+}
+
+func (s *ModifyBrowserInstanceGroupRequestStoragePolicy) SetUserProfile(v *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile) *ModifyBrowserInstanceGroupRequestStoragePolicy {
+	s.UserProfile = v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestStoragePolicy) Validate() error {
+	if s.UserProfile != nil {
+		if err := s.UserProfile.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile struct {
+	UserProfileSwitch *bool `json:"UserProfileSwitch,omitempty" xml:"UserProfileSwitch,omitempty"`
+}
+
+func (s ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile) GetUserProfileSwitch() *bool {
+	return s.UserProfileSwitch
+}
+
+func (s *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile) SetUserProfileSwitch(v bool) *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile {
+	s.UserProfileSwitch = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile) Validate() error {
 	return dara.Validate(s)
 }
 
