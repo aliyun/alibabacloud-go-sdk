@@ -403,6 +403,7 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	FullDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus `json:"FullDataCheckStatus,omitempty" xml:"FullDataCheckStatus,omitempty" type:"Struct"`
 	// The state information about the incremental data verification task.
 	IncDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus `json:"IncDataCheckStatus,omitempty" xml:"IncDataCheckStatus,omitempty" type:"Struct"`
+	InsightModule      *bool                                                    `json:"InsightModule,omitempty" xml:"InsightModule,omitempty"`
 	// The type of the DTS task. Valid values:
 	//
 	// - **MIGRATION**: data migration task
@@ -668,6 +669,10 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) GetIncDataCheckStatus() *Describ
 	return s.IncDataCheckStatus
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobList) GetInsightModule() *bool {
+	return s.InsightModule
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobList) GetJobType() *string {
 	return s.JobType
 }
@@ -915,6 +920,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetFullDataCheckStatus(v *Descri
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetIncDataCheckStatus(v *DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.IncDataCheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetInsightModule(v bool) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.InsightModule = &v
 	return s
 }
 
