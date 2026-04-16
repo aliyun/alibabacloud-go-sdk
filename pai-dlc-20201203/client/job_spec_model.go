@@ -13,6 +13,8 @@ type iJobSpec interface {
 	GetAssignNodeSpec() *AssignNodeSpec
 	SetAutoScalingSpec(v *AutoScalingSpec) *JobSpec
 	GetAutoScalingSpec() *AutoScalingSpec
+	SetConsiderInSuccessPolicy(v bool) *JobSpec
+	GetConsiderInSuccessPolicy() *bool
 	SetEcsSpec(v string) *JobSpec
 	GetEcsSpec() *string
 	SetExtraPodSpec(v *ExtraPodSpec) *JobSpec
@@ -53,7 +55,8 @@ type JobSpec struct {
 	// The scheduling node configurations.
 	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	// The auto scaling configurations.
-	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
+	AutoScalingSpec         *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
+	ConsiderInSuccessPolicy *bool            `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
 	// The hardware specifications of the worker. For more information, see [Billing of DLC](https://help.aliyun.com/document_detail/171758.html) of PAI.
 	//
 	// >  The price varies based on instance types.
@@ -145,6 +148,10 @@ func (s *JobSpec) GetAutoScalingSpec() *AutoScalingSpec {
 	return s.AutoScalingSpec
 }
 
+func (s *JobSpec) GetConsiderInSuccessPolicy() *bool {
+	return s.ConsiderInSuccessPolicy
+}
+
 func (s *JobSpec) GetEcsSpec() *string {
 	return s.EcsSpec
 }
@@ -220,6 +227,11 @@ func (s *JobSpec) SetAssignNodeSpec(v *AssignNodeSpec) *JobSpec {
 
 func (s *JobSpec) SetAutoScalingSpec(v *AutoScalingSpec) *JobSpec {
 	s.AutoScalingSpec = v
+	return s
+}
+
+func (s *JobSpec) SetConsiderInSuccessPolicy(v bool) *JobSpec {
+	s.ConsiderInSuccessPolicy = &v
 	return s
 }
 
