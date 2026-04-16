@@ -2442,6 +2442,10 @@ func (client *Client) ModelRouterCreateClientWithContext(ctx context.Context, re
 		body["contact"] = request.Contact
 	}
 
+	if !dara.IsNil(request.Discount) {
+		body["discount"] = request.Discount
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
 	}
@@ -3643,6 +3647,10 @@ func (client *Client) ModelRouterUpdateClientWithContext(ctx context.Context, id
 
 	if !dara.IsNil(request.Contact) {
 		body["contact"] = request.Contact
+	}
+
+	if !dara.IsNil(request.Discount) {
+		body["discount"] = request.Discount
 	}
 
 	if !dara.IsNil(request.Name) {

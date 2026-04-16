@@ -15,6 +15,8 @@ type iModelRouterCreateClientRequest interface {
 	GetAllowedModels() *string
 	SetContact(v string) *ModelRouterCreateClientRequest
 	GetContact() *string
+	SetDiscount(v float64) *ModelRouterCreateClientRequest
+	GetDiscount() *float64
 	SetName(v string) *ModelRouterCreateClientRequest
 	GetName() *string
 	SetParentId(v int64) *ModelRouterCreateClientRequest
@@ -36,6 +38,10 @@ type ModelRouterCreateClientRequest struct {
 	//
 	// 13800138000
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// example:
+	//
+	// 1.0
+	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
 	// example:
 	//
 	// 我的客户
@@ -70,6 +76,10 @@ func (s *ModelRouterCreateClientRequest) GetContact() *string {
 	return s.Contact
 }
 
+func (s *ModelRouterCreateClientRequest) GetDiscount() *float64 {
+	return s.Discount
+}
+
 func (s *ModelRouterCreateClientRequest) GetName() *string {
 	return s.Name
 }
@@ -94,6 +104,11 @@ func (s *ModelRouterCreateClientRequest) SetAllowedModels(v string) *ModelRouter
 
 func (s *ModelRouterCreateClientRequest) SetContact(v string) *ModelRouterCreateClientRequest {
 	s.Contact = &v
+	return s
+}
+
+func (s *ModelRouterCreateClientRequest) SetDiscount(v float64) *ModelRouterCreateClientRequest {
+	s.Discount = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iModelRouterQueryModelListResponseBody interface {
 	GetErrMessage() *string
 	SetHttpStatusCode(v int32) *ModelRouterQueryModelListResponseBody
 	GetHttpStatusCode() *int32
+	SetMaxResults(v int32) *ModelRouterQueryModelListResponseBody
+	GetMaxResults() *int32
 	SetRequestId(v string) *ModelRouterQueryModelListResponseBody
 	GetRequestId() *string
 	SetSuccess(v bool) *ModelRouterQueryModelListResponseBody
@@ -40,6 +42,12 @@ type ModelRouterQueryModelListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// maxResults
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxxxxxx
@@ -74,6 +82,10 @@ func (s *ModelRouterQueryModelListResponseBody) GetHttpStatusCode() *int32 {
 	return s.HttpStatusCode
 }
 
+func (s *ModelRouterQueryModelListResponseBody) GetMaxResults() *int32 {
+	return s.MaxResults
+}
+
 func (s *ModelRouterQueryModelListResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -99,6 +111,11 @@ func (s *ModelRouterQueryModelListResponseBody) SetErrMessage(v string) *ModelRo
 
 func (s *ModelRouterQueryModelListResponseBody) SetHttpStatusCode(v int32) *ModelRouterQueryModelListResponseBody {
 	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModelRouterQueryModelListResponseBody) SetMaxResults(v int32) *ModelRouterQueryModelListResponseBody {
+	s.MaxResults = &v
 	return s
 }
 

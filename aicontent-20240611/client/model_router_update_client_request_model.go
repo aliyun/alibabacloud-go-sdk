@@ -15,6 +15,8 @@ type iModelRouterUpdateClientRequest interface {
 	GetAllowedModels() *string
 	SetContact(v string) *ModelRouterUpdateClientRequest
 	GetContact() *string
+	SetDiscount(v float64) *ModelRouterUpdateClientRequest
+	GetDiscount() *float64
 	SetName(v string) *ModelRouterUpdateClientRequest
 	GetName() *string
 	SetRemark(v string) *ModelRouterUpdateClientRequest
@@ -36,6 +38,10 @@ type ModelRouterUpdateClientRequest struct {
 	//
 	// 13800138000
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
+	// example:
+	//
+	// 1.0
+	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
 	// example:
 	//
 	// 我的客户
@@ -70,6 +76,10 @@ func (s *ModelRouterUpdateClientRequest) GetContact() *string {
 	return s.Contact
 }
 
+func (s *ModelRouterUpdateClientRequest) GetDiscount() *float64 {
+	return s.Discount
+}
+
 func (s *ModelRouterUpdateClientRequest) GetName() *string {
 	return s.Name
 }
@@ -94,6 +104,11 @@ func (s *ModelRouterUpdateClientRequest) SetAllowedModels(v string) *ModelRouter
 
 func (s *ModelRouterUpdateClientRequest) SetContact(v string) *ModelRouterUpdateClientRequest {
 	s.Contact = &v
+	return s
+}
+
+func (s *ModelRouterUpdateClientRequest) SetDiscount(v float64) *ModelRouterUpdateClientRequest {
+	s.Discount = &v
 	return s
 }
 

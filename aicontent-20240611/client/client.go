@@ -3244,6 +3244,10 @@ func (client *Client) ModelRouterCreateClientWithOptions(request *ModelRouterCre
 		body["contact"] = request.Contact
 	}
 
+	if !dara.IsNil(request.Discount) {
+		body["discount"] = request.Discount
+	}
+
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
 	}
@@ -4792,6 +4796,10 @@ func (client *Client) ModelRouterUpdateClientWithOptions(id *string, request *Mo
 
 	if !dara.IsNil(request.Contact) {
 		body["contact"] = request.Contact
+	}
+
+	if !dara.IsNil(request.Discount) {
+		body["discount"] = request.Discount
 	}
 
 	if !dara.IsNil(request.Name) {

@@ -21,6 +21,8 @@ type iClientTreeDTO interface {
 	GetContact() *string
 	SetDeleteTag(v int32) *ClientTreeDTO
 	GetDeleteTag() *int32
+	SetDiscount(v float64) *ClientTreeDTO
+	GetDiscount() *float64
 	SetGmtCreate(v string) *ClientTreeDTO
 	GetGmtCreate() *string
 	SetGmtModified(v string) *ClientTreeDTO
@@ -64,6 +66,10 @@ type ClientTreeDTO struct {
 	//
 	// 0
 	DeleteTag *int32 `json:"deleteTag,omitempty" xml:"deleteTag,omitempty"`
+	// example:
+	//
+	// 1.0
+	Discount *float64 `json:"discount,omitempty" xml:"discount,omitempty"`
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
@@ -130,6 +136,10 @@ func (s *ClientTreeDTO) GetDeleteTag() *int32 {
 	return s.DeleteTag
 }
 
+func (s *ClientTreeDTO) GetDiscount() *float64 {
+	return s.Discount
+}
+
 func (s *ClientTreeDTO) GetGmtCreate() *string {
 	return s.GmtCreate
 }
@@ -189,6 +199,11 @@ func (s *ClientTreeDTO) SetContact(v string) *ClientTreeDTO {
 
 func (s *ClientTreeDTO) SetDeleteTag(v int32) *ClientTreeDTO {
 	s.DeleteTag = &v
+	return s
+}
+
+func (s *ClientTreeDTO) SetDiscount(v float64) *ClientTreeDTO {
+	s.Discount = &v
 	return s
 }
 

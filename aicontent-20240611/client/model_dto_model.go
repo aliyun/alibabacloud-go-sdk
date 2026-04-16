@@ -23,6 +23,8 @@ type iModelDTO interface {
 	GetGmtCreate() *string
 	SetGmtModified(v string) *ModelDTO
 	GetGmtModified() *string
+	SetHasBillingRule(v bool) *ModelDTO
+	GetHasBillingRule() *bool
 	SetId(v int64) *ModelDTO
 	GetId() *int64
 	SetInOut(v string) *ModelDTO
@@ -74,6 +76,10 @@ type ModelDTO struct {
 	//
 	// 2024-01-01T00:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// false
+	HasBillingRule *bool `json:"hasBillingRule,omitempty" xml:"hasBillingRule,omitempty"`
 	// ID
 	//
 	// example:
@@ -151,6 +157,10 @@ func (s *ModelDTO) GetGmtCreate() *string {
 
 func (s *ModelDTO) GetGmtModified() *string {
 	return s.GmtModified
+}
+
+func (s *ModelDTO) GetHasBillingRule() *bool {
+	return s.HasBillingRule
 }
 
 func (s *ModelDTO) GetId() *int64 {
@@ -233,6 +243,11 @@ func (s *ModelDTO) SetGmtCreate(v string) *ModelDTO {
 
 func (s *ModelDTO) SetGmtModified(v string) *ModelDTO {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *ModelDTO) SetHasBillingRule(v bool) *ModelDTO {
+	s.HasBillingRule = &v
 	return s
 }
 
