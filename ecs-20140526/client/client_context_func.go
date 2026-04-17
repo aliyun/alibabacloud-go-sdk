@@ -3837,19 +3837,29 @@ func (client *Client) CreateDiagnosticMetricSetWithContext(ctx context.Context, 
 //
 // Creates a diagnostic report for a resource. When you call this operation, you can configure the MetricSetId parameter to create a diagnostic report based on the specified diagnostic metric set. Then, you can call the DescribeDiagnosticReportAttributes operation based on the returned diagnostic report ID to view the details of the diagnostic report.
 //
-// @param request - CreateDiagnosticReportRequest
+// @param tmpReq - CreateDiagnosticReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateDiagnosticReportResponse
-func (client *Client) CreateDiagnosticReportWithContext(ctx context.Context, request *CreateDiagnosticReportRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticReportResponse, _err error) {
+func (client *Client) CreateDiagnosticReportWithContext(ctx context.Context, tmpReq *CreateDiagnosticReportRequest, runtime *dara.RuntimeOptions) (_result *CreateDiagnosticReportResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreateDiagnosticReportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AdditionalOptions) {
+		request.AdditionalOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AdditionalOptions, dara.String("AdditionalOptions"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdditionalOptionsShrink) {
+		query["AdditionalOptions"] = request.AdditionalOptionsShrink
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}

@@ -5,26 +5,26 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iCreateDiagnosticReportRequest interface {
+type iCreateDiagnosticReportShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetAdditionalOptions(v map[string]*string) *CreateDiagnosticReportRequest
-	GetAdditionalOptions() map[string]*string
-	SetEndTime(v string) *CreateDiagnosticReportRequest
+	SetAdditionalOptionsShrink(v string) *CreateDiagnosticReportShrinkRequest
+	GetAdditionalOptionsShrink() *string
+	SetEndTime(v string) *CreateDiagnosticReportShrinkRequest
 	GetEndTime() *string
-	SetMetricSetId(v string) *CreateDiagnosticReportRequest
+	SetMetricSetId(v string) *CreateDiagnosticReportShrinkRequest
 	GetMetricSetId() *string
-	SetRegionId(v string) *CreateDiagnosticReportRequest
+	SetRegionId(v string) *CreateDiagnosticReportShrinkRequest
 	GetRegionId() *string
-	SetResourceId(v string) *CreateDiagnosticReportRequest
+	SetResourceId(v string) *CreateDiagnosticReportShrinkRequest
 	GetResourceId() *string
-	SetStartTime(v string) *CreateDiagnosticReportRequest
+	SetStartTime(v string) *CreateDiagnosticReportShrinkRequest
 	GetStartTime() *string
 }
 
-type CreateDiagnosticReportRequest struct {
-	AdditionalOptions map[string]*string `json:"AdditionalOptions,omitempty" xml:"AdditionalOptions,omitempty"`
+type CreateDiagnosticReportShrinkRequest struct {
+	AdditionalOptionsShrink *string `json:"AdditionalOptions,omitempty" xml:"AdditionalOptions,omitempty"`
 	// The end time. This parameter takes effect only for diagnostic metrics that do not need to be assessed by running Cloud Assistant commands in guest operating systems.
 	//
 	// example:
@@ -61,68 +61,68 @@ type CreateDiagnosticReportRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
-func (s CreateDiagnosticReportRequest) String() string {
+func (s CreateDiagnosticReportShrinkRequest) String() string {
 	return dara.Prettify(s)
 }
 
-func (s CreateDiagnosticReportRequest) GoString() string {
+func (s CreateDiagnosticReportShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateDiagnosticReportRequest) GetAdditionalOptions() map[string]*string {
-	return s.AdditionalOptions
+func (s *CreateDiagnosticReportShrinkRequest) GetAdditionalOptionsShrink() *string {
+	return s.AdditionalOptionsShrink
 }
 
-func (s *CreateDiagnosticReportRequest) GetEndTime() *string {
+func (s *CreateDiagnosticReportShrinkRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
-func (s *CreateDiagnosticReportRequest) GetMetricSetId() *string {
+func (s *CreateDiagnosticReportShrinkRequest) GetMetricSetId() *string {
 	return s.MetricSetId
 }
 
-func (s *CreateDiagnosticReportRequest) GetRegionId() *string {
+func (s *CreateDiagnosticReportShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
-func (s *CreateDiagnosticReportRequest) GetResourceId() *string {
+func (s *CreateDiagnosticReportShrinkRequest) GetResourceId() *string {
 	return s.ResourceId
 }
 
-func (s *CreateDiagnosticReportRequest) GetStartTime() *string {
+func (s *CreateDiagnosticReportShrinkRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
-func (s *CreateDiagnosticReportRequest) SetAdditionalOptions(v map[string]*string) *CreateDiagnosticReportRequest {
-	s.AdditionalOptions = v
+func (s *CreateDiagnosticReportShrinkRequest) SetAdditionalOptionsShrink(v string) *CreateDiagnosticReportShrinkRequest {
+	s.AdditionalOptionsShrink = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportRequest) SetEndTime(v string) *CreateDiagnosticReportRequest {
+func (s *CreateDiagnosticReportShrinkRequest) SetEndTime(v string) *CreateDiagnosticReportShrinkRequest {
 	s.EndTime = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportRequest) SetMetricSetId(v string) *CreateDiagnosticReportRequest {
+func (s *CreateDiagnosticReportShrinkRequest) SetMetricSetId(v string) *CreateDiagnosticReportShrinkRequest {
 	s.MetricSetId = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportRequest) SetRegionId(v string) *CreateDiagnosticReportRequest {
+func (s *CreateDiagnosticReportShrinkRequest) SetRegionId(v string) *CreateDiagnosticReportShrinkRequest {
 	s.RegionId = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportRequest) SetResourceId(v string) *CreateDiagnosticReportRequest {
+func (s *CreateDiagnosticReportShrinkRequest) SetResourceId(v string) *CreateDiagnosticReportShrinkRequest {
 	s.ResourceId = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportRequest) SetStartTime(v string) *CreateDiagnosticReportRequest {
+func (s *CreateDiagnosticReportShrinkRequest) SetStartTime(v string) *CreateDiagnosticReportShrinkRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *CreateDiagnosticReportRequest) Validate() error {
+func (s *CreateDiagnosticReportShrinkRequest) Validate() error {
 	return dara.Validate(s)
 }
