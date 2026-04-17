@@ -23,6 +23,8 @@ type iSearchMemoriesRequest interface {
 	GetRetrieveLevel() *string
 	SetRunId(v string) *SearchMemoriesRequest
 	GetRunId() *string
+	SetSearchType(v string) *SearchMemoriesRequest
+	GetSearchType() *string
 	SetThreshold(v float64) *SearchMemoriesRequest
 	GetThreshold() *float64
 	SetTopK(v int32) *SearchMemoriesRequest
@@ -57,6 +59,10 @@ type SearchMemoriesRequest struct {
 	//
 	// test_session_001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// example:
+	//
+	// experience
+	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
 	// example:
 	//
 	// 0.3
@@ -107,6 +113,10 @@ func (s *SearchMemoriesRequest) GetRunId() *string {
 	return s.RunId
 }
 
+func (s *SearchMemoriesRequest) GetSearchType() *string {
+	return s.SearchType
+}
+
 func (s *SearchMemoriesRequest) GetThreshold() *float64 {
 	return s.Threshold
 }
@@ -151,6 +161,11 @@ func (s *SearchMemoriesRequest) SetRetrieveLevel(v string) *SearchMemoriesReques
 
 func (s *SearchMemoriesRequest) SetRunId(v string) *SearchMemoriesRequest {
 	s.RunId = &v
+	return s
+}
+
+func (s *SearchMemoriesRequest) SetSearchType(v string) *SearchMemoriesRequest {
+	s.SearchType = &v
 	return s
 }
 

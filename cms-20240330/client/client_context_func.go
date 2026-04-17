@@ -6220,6 +6220,10 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspace *
 		body["runId"] = request.RunId
 	}
 
+	if !dara.IsNil(request.SearchType) {
+		body["searchType"] = request.SearchType
+	}
+
 	if !dara.IsNil(request.Threshold) {
 		body["threshold"] = request.Threshold
 	}
