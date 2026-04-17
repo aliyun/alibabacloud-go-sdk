@@ -33,8 +33,7 @@ type GetConsumerListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The consumer groups.
+	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
 	// The number of the page to return. Pages start from page 1.
 	//
@@ -198,44 +197,13 @@ func (s *GetConsumerListResponseBodyConsumerList) Validate() error {
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVO struct {
-	// Indicates that the consumer group was automatically created by the system.
-	//
-	// example:
-	//
-	// false
-	AutomaticallyCreatedGroup *bool `json:"AutomaticallyCreatedGroup,omitempty" xml:"AutomaticallyCreatedGroup,omitempty"`
-	// The consumer group ID.
-	//
-	// example:
-	//
-	// kafka-test
-	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The timestamp that indicates when the consumer group was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1729736584002
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// alikafka_post-cn-v0h18sav****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance description.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The tags.
-	Tags *GetConsumerListResponseBodyConsumerListConsumerVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AutomaticallyCreatedGroup *bool                                                  `json:"AutomaticallyCreatedGroup,omitempty" xml:"AutomaticallyCreatedGroup,omitempty"`
+	ConsumerId                *string                                                `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	CreateTime                *int64                                                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId                *string                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId                  *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark                    *string                                                `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Tags                      *GetConsumerListResponseBodyConsumerListConsumerVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s GetConsumerListResponseBodyConsumerListConsumerVO) String() string {
@@ -353,17 +321,7 @@ func (s *GetConsumerListResponseBodyConsumerListConsumerVOTags) Validate() error
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVOTagsTagVO struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// test
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

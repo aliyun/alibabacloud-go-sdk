@@ -454,7 +454,7 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 
 // Summary:
 //
-// 创建后付费实例。
+// Creates a pay-as-you-go instance and returns the instance ID and order ID.
 //
 // @param tmpReq - CreatePostPayInstanceRequest
 //
@@ -548,7 +548,7 @@ func (client *Client) CreatePostPayInstanceWithOptions(tmpReq *CreatePostPayInst
 
 // Summary:
 //
-// 创建后付费实例。
+// Creates a pay-as-you-go instance and returns the instance ID and order ID.
 //
 // @param request - CreatePostPayInstanceRequest
 //
@@ -694,7 +694,7 @@ func (client *Client) CreatePostPayOrder(request *CreatePostPayOrderRequest) (_r
 
 // Summary:
 //
-// 创建预付费实例
+// Creates a subscription instance and returns the instance ID and order ID.
 //
 // @param tmpReq - CreatePrePayInstanceRequest
 //
@@ -792,7 +792,7 @@ func (client *Client) CreatePrePayInstanceWithOptions(tmpReq *CreatePrePayInstan
 
 // Summary:
 //
-// 创建预付费实例
+// Creates a subscription instance and returns the instance ID and order ID.
 //
 // @param request - CreatePrePayInstanceRequest
 //
@@ -1798,7 +1798,7 @@ func (client *Client) DeleteUserDefinedSg(request *DeleteUserDefinedSgRequest) (
 
 // Summary:
 //
-// 查询acl资源名
+// Queries the name of the resource with which an access control list (ACL) is associated.
 //
 // @param request - DescribeAclResourceNameRequest
 //
@@ -1854,7 +1854,7 @@ func (client *Client) DescribeAclResourceNameWithOptions(request *DescribeAclRes
 
 // Summary:
 //
-// 查询acl资源名
+// Queries the name of the resource with which an access control list (ACL) is associated.
 //
 // @param request - DescribeAclResourceNameRequest
 //
@@ -3386,7 +3386,7 @@ func (client *Client) GetTopicSubscribeStatus(request *GetTopicSubscribeStatusRe
 
 // Summary:
 //
-// 获取Rebalance详情
+// Obtains the rebalance details of a consumer group.
 //
 // @param request - ListRebalanceInfoRequest
 //
@@ -3438,7 +3438,7 @@ func (client *Client) ListRebalanceInfoWithOptions(request *ListRebalanceInfoReq
 
 // Summary:
 //
-// 获取Rebalance详情
+// Obtains the rebalance details of a consumer group.
 //
 // @param request - ListRebalanceInfoRequest
 //
@@ -5088,7 +5088,7 @@ func (client *Client) UpgradePostPayOrder(request *UpgradePostPayOrderRequest) (
 
 // Summary:
 //
-// Upgrades a Message Queue for Apache Kafka instance that uses the subscription billing method.
+// # Upgrade Prepaid Instance
 //
 // Description:
 //
@@ -5186,7 +5186,7 @@ func (client *Client) UpgradePrePayOrderWithOptions(tmpReq *UpgradePrePayOrderRe
 
 // Summary:
 //
-// Upgrades a Message Queue for Apache Kafka instance that uses the subscription billing method.
+// # Upgrade Prepaid Instance
 //
 // Description:
 //

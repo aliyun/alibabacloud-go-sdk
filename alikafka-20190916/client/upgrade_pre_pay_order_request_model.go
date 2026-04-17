@@ -280,24 +280,25 @@ func (s *UpgradePrePayOrderRequest) Validate() error {
 }
 
 type UpgradePrePayOrderRequestConfluentConfig struct {
-	ConnectCU             *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
-	ConnectReplica        *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
-	ControlCenterCU       *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
-	ControlCenterReplica  *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
-	ControlCenterStorage  *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
-	KafkaCU               *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
-	KafkaReplica          *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
-	KafkaRestProxyCU      *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
-	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
-	KafkaStorage          *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
-	KsqlCU                *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
-	KsqlReplica           *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
-	KsqlStorage           *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
-	SchemaRegistryCU      *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
-	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
-	ZooKeeperCU           *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
-	ZooKeeperReplica      *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
-	ZooKeeperStorage      *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+	ConnectCU             *int32                                              `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	ConnectReplica        *int32                                              `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	ControlCenterCU       *int32                                              `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	ControlCenterReplica  *int32                                              `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	ControlCenterStorage  *int32                                              `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	KafkaCU               *int32                                              `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	KafkaReplica          *int32                                              `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	KafkaRestProxyCU      *int32                                              `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	KafkaRestProxyReplica *int32                                              `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	KafkaStorage          *int32                                              `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KsqlCU                *int32                                              `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlList              []*UpgradePrePayOrderRequestConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Repeated"`
+	KsqlReplica           *int32                                              `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	KsqlStorage           *int32                                              `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	SchemaRegistryCU      *int32                                              `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	SchemaRegistryReplica *int32                                              `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	ZooKeeperCU           *int32                                              `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	ZooKeeperReplica      *int32                                              `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	ZooKeeperStorage      *int32                                              `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
 }
 
 func (s UpgradePrePayOrderRequestConfluentConfig) String() string {
@@ -350,6 +351,10 @@ func (s *UpgradePrePayOrderRequestConfluentConfig) GetKafkaStorage() *int32 {
 
 func (s *UpgradePrePayOrderRequestConfluentConfig) GetKsqlCU() *int32 {
 	return s.KsqlCU
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfig) GetKsqlList() []*UpgradePrePayOrderRequestConfluentConfigKsqlList {
+	return s.KsqlList
 }
 
 func (s *UpgradePrePayOrderRequestConfluentConfig) GetKsqlReplica() *int32 {
@@ -435,6 +440,11 @@ func (s *UpgradePrePayOrderRequestConfluentConfig) SetKsqlCU(v int32) *UpgradePr
 	return s
 }
 
+func (s *UpgradePrePayOrderRequestConfluentConfig) SetKsqlList(v []*UpgradePrePayOrderRequestConfluentConfigKsqlList) *UpgradePrePayOrderRequestConfluentConfig {
+	s.KsqlList = v
+	return s
+}
+
 func (s *UpgradePrePayOrderRequestConfluentConfig) SetKsqlReplica(v int32) *UpgradePrePayOrderRequestConfluentConfig {
 	s.KsqlReplica = &v
 	return s
@@ -471,5 +481,79 @@ func (s *UpgradePrePayOrderRequestConfluentConfig) SetZooKeeperStorage(v int32) 
 }
 
 func (s *UpgradePrePayOrderRequestConfluentConfig) Validate() error {
+	if s.KsqlList != nil {
+		for _, item := range s.KsqlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpgradePrePayOrderRequestConfluentConfigKsqlList struct {
+	Cu         *int32  `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	InternalId *string `json:"InternalId,omitempty" xml:"InternalId,omitempty"`
+	Replica    *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	Storage    *int32  `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpgradePrePayOrderRequestConfluentConfigKsqlList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpgradePrePayOrderRequestConfluentConfigKsqlList) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) GetCu() *int32 {
+	return s.Cu
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) GetInternalId() *string {
+	return s.InternalId
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) GetReplica() *int32 {
+	return s.Replica
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) GetStorage() *int32 {
+	return s.Storage
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) GetType() *string {
+	return s.Type
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) SetCu(v int32) *UpgradePrePayOrderRequestConfluentConfigKsqlList {
+	s.Cu = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) SetInternalId(v string) *UpgradePrePayOrderRequestConfluentConfigKsqlList {
+	s.InternalId = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) SetReplica(v int32) *UpgradePrePayOrderRequestConfluentConfigKsqlList {
+	s.Replica = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) SetStorage(v int32) *UpgradePrePayOrderRequestConfluentConfigKsqlList {
+	s.Storage = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) SetType(v string) *UpgradePrePayOrderRequestConfluentConfigKsqlList {
+	s.Type = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderRequestConfluentConfigKsqlList) Validate() error {
 	return dara.Validate(s)
 }

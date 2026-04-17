@@ -27,8 +27,7 @@ type DescribeAclsResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The access control lists (ACLs).
+	Code         *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	KafkaAclList *DescribeAclsResponseBodyKafkaAclList `json:"KafkaAclList,omitempty" xml:"KafkaAclList,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -147,82 +146,13 @@ func (s *DescribeAclsResponseBodyKafkaAclList) Validate() error {
 }
 
 type DescribeAclsResponseBodyKafkaAclListKafkaAclVO struct {
-	// The types of operations allowed by the ACL. Separate multiple operation types with commas (,).
-	//
-	// - Valid values:
-	//
-	// - Write
-	//
-	// - Read
-	//
-	// - Describe: reads of transactional IDs.
-	//
-	// - IdempotentWrite: idempotent data writes to clusters.
-	//
-	// - IDEMPOTENT_WRITE: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
-	//
-	// - DESCRIBE_CONFIGS: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
-	//
-	// > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
-	//
-	// example:
-	//
-	// Write
-	AclOperationType *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
-	// The authorization method. Valid values:
-	//
-	// - DENY
-	//
-	// - ALLOW
-	//
-	// > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
-	//
-	// example:
-	//
-	// DENY
-	AclPermissionType *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
-	// The resource name.
-	//
-	// 	- The value can be the name of a topic or consumer group.
-	//
-	// 	- You can use the asterisk (\\*) wildcard character to specify the names of all topics or consumer groups.
-	//
-	// example:
-	//
-	// demo
-	AclResourceName *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
-	// The matching mode. Valid values:
-	//
-	// 	- **LITERAL:*	- full-name match
-	//
-	// 	- **PREFIXED**: prefix match
-	//
-	// example:
-	//
-	// LITERAL
+	AclOperationType       *string `json:"AclOperationType,omitempty" xml:"AclOperationType,omitempty"`
+	AclPermissionType      *string `json:"AclPermissionType,omitempty" xml:"AclPermissionType,omitempty"`
+	AclResourceName        *string `json:"AclResourceName,omitempty" xml:"AclResourceName,omitempty"`
 	AclResourcePatternType *string `json:"AclResourcePatternType,omitempty" xml:"AclResourcePatternType,omitempty"`
-	// The resource type. Valid values:
-	//
-	// 	- **Topic**
-	//
-	// 	- **Group**
-	//
-	// example:
-	//
-	// Topic
-	AclResourceType *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
-	// The host.
-	//
-	// example:
-	//
-	// ****
-	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The username.
-	//
-	// example:
-	//
-	// test12***
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	AclResourceType        *string `json:"AclResourceType,omitempty" xml:"AclResourceType,omitempty"`
+	Host                   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Username               *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeAclsResponseBodyKafkaAclListKafkaAclVO) String() string {

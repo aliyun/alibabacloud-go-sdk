@@ -120,9 +120,8 @@ type GetKafkaClientIpResponseBodyData struct {
 	// example:
 	//
 	// true
-	Alert *bool `json:"Alert,omitempty" xml:"Alert,omitempty"`
-	// The data returned.
-	Data *GetKafkaClientIpResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Alert *bool                                 `json:"Alert,omitempty" xml:"Alert,omitempty"`
+	Data  *GetKafkaClientIpResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The end of the date range within which data is queried.
 	//
 	// example:
@@ -259,16 +258,8 @@ func (s *GetKafkaClientIpResponseBodyDataData) Validate() error {
 }
 
 type GetKafkaClientIpResponseBodyDataDataData struct {
-	// The response parameters.
 	Data *GetKafkaClientIpResponseBodyDataDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request name.
-	//
-	// >  The value of this parameter indicates the type of request that the client sends to the broker within the specified period of time.
-	//
-	// example:
-	//
-	// OFFSET_COMMIT
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetKafkaClientIpResponseBodyDataDataData) String() string {
@@ -341,20 +332,8 @@ func (s *GetKafkaClientIpResponseBodyDataDataDataData) Validate() error {
 }
 
 type GetKafkaClientIpResponseBodyDataDataDataDataData struct {
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 58.210.117.154
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The statistics.
-	//
-	// >  The value of this parameter indicates the number of connections on different ports of the IP address within the specified period of time.
-	//
-	// example:
-	//
-	// 3
-	Num *int64 `json:"Num,omitempty" xml:"Num,omitempty"`
+	Ip  *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Num *int64  `json:"Num,omitempty" xml:"Num,omitempty"`
 }
 
 func (s GetKafkaClientIpResponseBodyDataDataDataDataData) String() string {

@@ -118,11 +118,9 @@ type GetConsumerProgressResponseBodyConsumerProgress struct {
 	// example:
 	//
 	// 1566874931671
-	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// The details of rebalances in the consumer group.
+	LastTimestamp     *int64                                                            `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
 	RebalanceInfoList *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList `json:"RebalanceInfoList,omitempty" xml:"RebalanceInfoList,omitempty" type:"Struct"`
-	// The consumer progress of each topic to which the consumer group subscribes.
-	TopicList *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
+	TopicList         *GetConsumerProgressResponseBodyConsumerProgressTopicList         `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
 	// The total number of unconsumed messages in all topics to which the consumer group subscribes.
 	//
 	// example:
@@ -234,42 +232,12 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoList) Valid
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList struct {
-	// The number of rebalances.
-	//
-	// example:
-	//
-	// 100
-	Generation *int64 `json:"Generation,omitempty" xml:"Generation,omitempty"`
-	// The group ID of the subscriber.
-	//
-	// example:
-	//
-	// falcon-uat
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The time when the last rebalance occurred. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1709199270
-	LastRebalanceTimestamp *int64 `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
-	// The cause of the rebalance.
-	//
-	// example:
-	//
-	// removing member consumer-1-cd14eb9c-379b-4b8e-9bbd-76f147f8536f on LeaveGroup
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Indicates whether new members are added to the consumer group in the rebalance.
-	//
-	// example:
-	//
-	// true
-	RebalanceSuccess *bool `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
-	// The duration of the rebalance. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1
-	RebalanceTimeConsuming *int64 `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
+	Generation             *int64  `json:"Generation,omitempty" xml:"Generation,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	LastRebalanceTimestamp *int64  `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
+	Reason                 *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RebalanceSuccess       *bool   `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
+	RebalanceTimeConsuming *int64  `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressRebalanceInfoListRebalanceInfoList) String() string {
@@ -373,26 +341,10 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) Validate() er
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList struct {
-	// The time when the last consumed message in the topic was generated.
-	//
-	// example:
-	//
-	// 1566874931649
-	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// The consumer offsets.
-	OffsetList *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
-	// The topic name.
-	//
-	// example:
-	//
-	// kafka-test
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The number of unconsumed messages in the topic to which the consumer group subscribes.
-	//
-	// example:
-	//
-	// 0
-	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	LastTimestamp *int64                                                                       `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	OffsetList    *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
+	Topic         *string                                                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	TotalDiff     *int64                                                                       `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) String() string {
@@ -483,49 +435,14 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList struct {
-	Accumulate *int64 `json:"Accumulate,omitempty" xml:"Accumulate,omitempty"`
-	// The latest offset in the partition of the topic.
-	//
-	// example:
-	//
-	// 9
-	BrokerOffset *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
-	// Client ID of the application.
-	//
-	// example:
-	//
-	// client-id-KafkaConsumerDemo
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The IP address of the client.
-	//
-	// example:
-	//
-	// 172.16.11.3
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The consumer offset in the partition of the topic.
-	//
-	// example:
-	//
-	// 9
-	ConsumerOffset *int64 `json:"ConsumerOffset,omitempty" xml:"ConsumerOffset,omitempty"`
-	// The time when the last consumed message in the partition was generated.
-	//
-	// example:
-	//
-	// 1566874931649
-	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	// Member ID.
-	//
-	// example:
-	//
-	// client-id-KafkaConsumerDemo-70b64883-a911-4882-8084-598b958848b4
-	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The partition ID.
-	//
-	// example:
-	//
-	// 0
-	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Accumulate     *int64  `json:"Accumulate,omitempty" xml:"Accumulate,omitempty"`
+	BrokerOffset   *int64  `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
+	ClientId       *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientIp       *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ConsumerOffset *int64  `json:"ConsumerOffset,omitempty" xml:"ConsumerOffset,omitempty"`
+	LastTimestamp  *int64  `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	MemberId       *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	Partition      *int32  `json:"Partition,omitempty" xml:"Partition,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) String() string {

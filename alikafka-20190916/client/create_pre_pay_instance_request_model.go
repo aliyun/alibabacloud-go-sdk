@@ -275,7 +275,8 @@ type CreatePrePayInstanceRequestConfluentConfig struct {
 	// example:
 	//
 	// 4
-	KsqlCU *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlCU   *int32                                                `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlList []*CreatePrePayInstanceRequestConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -356,6 +357,10 @@ func (s *CreatePrePayInstanceRequestConfluentConfig) GetKafkaStorage() *int32 {
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) GetKsqlCU() *int32 {
 	return s.KsqlCU
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfig) GetKsqlList() []*CreatePrePayInstanceRequestConfluentConfigKsqlList {
+	return s.KsqlList
 }
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) GetKsqlReplica() *int32 {
@@ -441,6 +446,11 @@ func (s *CreatePrePayInstanceRequestConfluentConfig) SetKsqlCU(v int32) *CreateP
 	return s
 }
 
+func (s *CreatePrePayInstanceRequestConfluentConfig) SetKsqlList(v []*CreatePrePayInstanceRequestConfluentConfigKsqlList) *CreatePrePayInstanceRequestConfluentConfig {
+	s.KsqlList = v
+	return s
+}
+
 func (s *CreatePrePayInstanceRequestConfluentConfig) SetKsqlReplica(v int32) *CreatePrePayInstanceRequestConfluentConfig {
 	s.KsqlReplica = &v
 	return s
@@ -477,6 +487,80 @@ func (s *CreatePrePayInstanceRequestConfluentConfig) SetZooKeeperStorage(v int32
 }
 
 func (s *CreatePrePayInstanceRequestConfluentConfig) Validate() error {
+	if s.KsqlList != nil {
+		for _, item := range s.KsqlList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreatePrePayInstanceRequestConfluentConfigKsqlList struct {
+	InternalId *string `json:"InternalId,omitempty" xml:"InternalId,omitempty"`
+	Cu         *int32  `json:"cu,omitempty" xml:"cu,omitempty"`
+	Replica    *int32  `json:"replica,omitempty" xml:"replica,omitempty"`
+	Storage    *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreatePrePayInstanceRequestConfluentConfigKsqlList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreatePrePayInstanceRequestConfluentConfigKsqlList) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) GetInternalId() *string {
+	return s.InternalId
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) GetCu() *int32 {
+	return s.Cu
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) GetReplica() *int32 {
+	return s.Replica
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) GetStorage() *int32 {
+	return s.Storage
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) GetType() *string {
+	return s.Type
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) SetInternalId(v string) *CreatePrePayInstanceRequestConfluentConfigKsqlList {
+	s.InternalId = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) SetCu(v int32) *CreatePrePayInstanceRequestConfluentConfigKsqlList {
+	s.Cu = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) SetReplica(v int32) *CreatePrePayInstanceRequestConfluentConfigKsqlList {
+	s.Replica = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) SetStorage(v int32) *CreatePrePayInstanceRequestConfluentConfigKsqlList {
+	s.Storage = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) SetType(v string) *CreatePrePayInstanceRequestConfluentConfigKsqlList {
+	s.Type = &v
+	return s
+}
+
+func (s *CreatePrePayInstanceRequestConfluentConfigKsqlList) Validate() error {
 	return dara.Validate(s)
 }
 

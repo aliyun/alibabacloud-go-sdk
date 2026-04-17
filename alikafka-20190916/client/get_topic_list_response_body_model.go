@@ -63,8 +63,7 @@ type GetTopicListResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The topics.
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
 	TopicList *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
 	// The number of topics.
 	//
@@ -198,104 +197,19 @@ func (s *GetTopicListResponseBodyTopicList) Validate() error {
 }
 
 type GetTopicListResponseBodyTopicListTopicVO struct {
-	// Indicates whether the topic was automatically created.
-	//
-	// example:
-	//
-	// false
-	AutoCreate *bool `json:"AutoCreate,omitempty" xml:"AutoCreate,omitempty"`
-	// The log cleanup policy for the topic. This parameter is returned only if **LocalTopic*	- is set to **true**. Valid values:
-	//
-	// 	- false: the default log cleanup policy.
-	//
-	// 	- true: the Apache Kafka log compaction policy.
-	//
-	// example:
-	//
-	// false
-	CompactTopic *bool `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
-	// The timestamp that indicates when the topic was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1576563109000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// alikafka_pre-cn-0pp1954n****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The storage type that is used for the topic. Valid values:
-	//
-	// 	- false: cloud storage
-	//
-	// 	- true: local storage
-	//
-	// example:
-	//
-	// false
-	LocalTopic *bool `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
-	// The number of partitions in the topic.
-	//
-	// example:
-	//
-	// 6
-	PartitionNum *int32 `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
-	// The ID of the region where the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The topic description. Valid values:
-	//
-	// 	- The description can contain only letters, digits, hyphens (-), and underscores (_).
-	//
-	// 	- The description must be 3 to 64 characters in length.
-	//
-	// example:
-	//
-	// test
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The topic status. Valid value:
-	//
-	// **0**: running.
-	//
-	// If the topic is deleted, this parameter is not returned.
-	//
-	// example:
-	//
-	// 0
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The topic status. Valid value:
-	//
-	// **Running**.
-	//
-	// If the topic is deleted, this parameter is not returned.
-	//
-	// example:
-	//
-	// Running
-	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	// The tags.
-	Tags *GetTopicListResponseBodyTopicListTopicVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The topic name. Valid values:
-	//
-	// 	- The name can contain only letters, digits, hyphens (-), and underscores (_).
-	//
-	// 	- The name must be 3 to 64 characters in length. If the name contains more than 64 characters, the system automatically truncates the name.
-	//
-	// example:
-	//
-	// topic_name
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The topic configuration.
-	//
-	// example:
-	//
-	// {"replication-factor":3}
-	TopicConfig *string `json:"TopicConfig,omitempty" xml:"TopicConfig,omitempty"`
+	AutoCreate   *bool                                         `json:"AutoCreate,omitempty" xml:"AutoCreate,omitempty"`
+	CompactTopic *bool                                         `json:"CompactTopic,omitempty" xml:"CompactTopic,omitempty"`
+	CreateTime   *int64                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId   *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LocalTopic   *bool                                         `json:"LocalTopic,omitempty" xml:"LocalTopic,omitempty"`
+	PartitionNum *int32                                        `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty"`
+	RegionId     *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark       *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Status       *int32                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusName   *string                                       `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
+	Tags         *GetTopicListResponseBodyTopicListTopicVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Topic        *string                                       `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	TopicConfig  *string                                       `json:"TopicConfig,omitempty" xml:"TopicConfig,omitempty"`
 }
 
 func (s GetTopicListResponseBodyTopicListTopicVO) String() string {
@@ -467,17 +381,7 @@ func (s *GetTopicListResponseBodyTopicListTopicVOTags) Validate() error {
 }
 
 type GetTopicListResponseBodyTopicListTopicVOTagsTagVO struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// Test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// Test
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

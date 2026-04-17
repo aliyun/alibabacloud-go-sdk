@@ -27,8 +27,7 @@ type GetInstanceListResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The instances.
+	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceList *GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
 	// The message returned.
 	//
@@ -147,411 +146,58 @@ func (s *GetInstanceListResponseBodyInstanceList) Validate() error {
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVO struct {
-	// The configurations of the deployed ApsaraMQ for Kafka instance.
-	//
-	// example:
-	//
-	// {\\"enable.vpc_sasl_ssl\\":\\"false\\",\\"kafka.log.retention.hours\\":\\"66\\",\\"enable.acl\\":\\"false\\",\\"kafka.message.max.bytes\\":\\"6291456\\"}
-	AllConfig *string `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
-	// Indicates whether the flexible group creation feature is enabled.
-	//
-	// example:
-	//
-	// true
-	AutoCreateGroupEnable *bool `json:"AutoCreateGroupEnable,omitempty" xml:"AutoCreateGroupEnable,omitempty"`
-	// Indicates whether the automatic topic creation feature is enabled.
-	//
-	// example:
-	//
-	// true
-	AutoCreateTopicEnable *bool `json:"AutoCreateTopicEnable,omitempty" xml:"AutoCreateTopicEnable,omitempty"`
-	// The ID of the secondary zone.
-	//
-	// example:
-	//
-	// cn-hangzhou-a
-	BackupZoneId *string `json:"BackupZoneId,omitempty" xml:"BackupZoneId,omitempty"`
-	// The parameters that are returned for the ApsaraMQ for Confluent instance.
+	AllConfig                   *string                                                                       `json:"AllConfig,omitempty" xml:"AllConfig,omitempty"`
+	AutoCreateGroupEnable       *bool                                                                         `json:"AutoCreateGroupEnable,omitempty" xml:"AutoCreateGroupEnable,omitempty"`
+	AutoCreateTopicEnable       *bool                                                                         `json:"AutoCreateTopicEnable,omitempty" xml:"AutoCreateTopicEnable,omitempty"`
+	BackupZoneId                *string                                                                       `json:"BackupZoneId,omitempty" xml:"BackupZoneId,omitempty"`
 	ConfluentConfig             *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig             `json:"ConfluentConfig,omitempty" xml:"ConfluentConfig,omitempty" type:"Struct"`
 	ConfluentInstanceComponents *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents `json:"ConfluentInstanceComponents,omitempty" xml:"ConfluentInstanceComponents,omitempty" type:"Struct"`
-	// The time when the instance was created. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1577961819000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of partitions in a topic that is automatically created.
-	//
-	// example:
-	//
-	// 12
-	DefaultPartitionNum *int32 `json:"DefaultPartitionNum,omitempty" xml:"DefaultPartitionNum,omitempty"`
-	// The type of the network in which the instance is deployed. Valid values:
-	//
-	// 	- **4**: Internet and VPC
-	//
-	// 	- **5**: VPC
-	//
-	// example:
-	//
-	// 5
-	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The disk size. Unit: GB
-	//
-	// example:
-	//
-	// 3600
-	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The disk type of the instance. Valid values:
-	//
-	// 	- **0**: ultra disk
-	//
-	// 	- **1**: standard SSD
-	//
-	// example:
-	//
-	// 1
-	DiskType *int32 `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The default endpoint of the instance in domain name mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// alikafka-pre-cn-zv**********-1-vpc.alikafka.aliyuncs.com:9092,alikafka-pre-cn-zv**********-2-vpc.alikafka.aliyuncs.com:9092,alikafka-pre-cn-zv**********-3-vpc.alikafka.aliyuncs.com:9092
-	DomainEndpoint *string `json:"DomainEndpoint,omitempty" xml:"DomainEndpoint,omitempty"`
-	// The maximum Internet traffic in the instance.
-	//
-	// example:
-	//
-	// 20
-	EipMax *int32 `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
-	// The default endpoint of the instance in IP address mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// 192.168.XX.XX:9092,192.168.XX.XX:9092,192.168.XX.XX:9092
-	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	// The time when the instance expires. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1893581018000
-	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// alikafka_pre-cn-mp919o4v****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum traffic in the instance.
-	//
-	// example:
-	//
-	// 20
-	IoMax *int32 `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
-	// The maximum read traffic in the instance. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 1000
-	IoMaxRead *int32 `json:"IoMaxRead,omitempty" xml:"IoMaxRead,omitempty"`
-	// The traffic specification.
-	//
-	// example:
-	//
-	// alikafka.hw.2xlarge
-	IoMaxSpec *string `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
-	// The maximum write traffic. Unit: Mbit/s.
-	//
-	// example:
-	//
-	// 1000
-	IoMaxWrite *int32 `json:"IoMaxWrite,omitempty" xml:"IoMaxWrite,omitempty"`
-	// The ID of the key that is used for disk encryption in the region where the instance is deployed.
-	//
-	// example:
-	//
-	// 0d24xxxx-da7b-4786-b981-9a164dxxxxxx
-	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The retention period of messages in the instance. Unit: hours.
-	//
-	// example:
-	//
-	// 72
-	MsgRetain *int32 `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
-	// The instance name.
-	//
-	// example:
-	//
-	// alikafka_post-cn-mp91gnw0****
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing method of the instance. Valid values:
-	//
-	// 	- **0**: the subscription billing method
-	//
-	// 	- **1**: the pay-as-you-go billing method
-	//
-	// 	- **3**: the pay-as-you-go billing method for serverless ApsaraMQ for Kafka V3 instances
-	//
-	// 	- **4**: the pay-as-you-go billing method for ApsaraMQ for Confluent instances
-	//
-	// example:
-	//
-	// 1
-	PaidType                  *int32 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
-	RecommendedPartitionCount *int32 `json:"RecommendedPartitionCount,omitempty" xml:"RecommendedPartitionCount,omitempty"`
-	// The ID of the region where the instance resides.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The traffic reserved for message publishing. Unit: MB/s.
-	//
-	// >  This parameter is returned only if the instance is a serverless ApsaraMQ for Kafka V3 instance.
-	//
-	// example:
-	//
-	// 60
-	ReservedPublishCapacity *int32 `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
-	// The traffic reserved for message subscription. Unit: MB/s.
-	//
-	// >  This parameter is returned only if the instance is a serverless ApsaraMQ for Kafka V3 instance.
-	//
-	// example:
-	//
-	// 60
-	ReservedSubscribeCapacity *int32 `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-ac***********7q
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// alikafka-pre-cn-zv**********-1-vpc.alikafka.aliyuncs.com:9094,alikafka-pre-cn-zv**********-2-vpc.alikafka.aliyuncs.com:9094,alikafka-pre-cn-zv**********-3-vpc.alikafka.aliyuncs.com:9094
-	SaslDomainEndpoint *string `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
-	// The Simple Authentication and Security Layer (SASL) endpoint of the instance in IP address mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// 172.16.3.XX:9094,172.16.3.XX:9094,172.16.3.XX:9094
-	SaslEndPoint        *string `json:"SaslEndPoint,omitempty" xml:"SaslEndPoint,omitempty"`
-	ScheduledRetirement *bool   `json:"ScheduledRetirement,omitempty" xml:"ScheduledRetirement,omitempty"`
-	// The security group to which the instance belongs.
-	//
-	// 	- If the instance is deployed in the ApsaraMQ for Kafka console or by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation without a security group configured, no value is returned.
-	//
-	// 	- If the instance is deployed by calling the [StartInstance](https://help.aliyun.com/document_detail/157786.html) operation with a security group configured, the returned value is the configured security group.
-	//
-	// example:
-	//
-	// sg-bp13wfx7kz9pkow****
-	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The instance version. Valid values: v2, v3, and confluent.
-	//
-	// example:
-	//
-	// v3
-	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// >  This parameter is out of date. We recommend that you refer to the ViewInstanceStatusCode parameter.
-	//
-	// The instance status. Valid values:
-	//
-	// 	- **0**: pending
-	//
-	// 	- **1**: preparing hardware resources
-	//
-	// 	- **2**: initializing
-	//
-	// 	- **3**: starting
-	//
-	// 	- **5**: running
-	//
-	// 	- **6**: migrating
-	//
-	// 	- **7**: ready for upgrade
-	//
-	// 	- **8**: upgrading
-	//
-	// 	- **9**: ready for change
-	//
-	// 	- **10**: released
-	//
-	// 	- **11**: changing
-	//
-	// 	- **15**: expired
-	//
-	// 	- **30**: scaling
-	//
-	// example:
-	//
-	// 5
-	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// The instance edition. Valid values:
-	//
-	// 	- **professional**: Professional Edition (High Write)
-	//
-	// 	- **professionalForHighRead**: Professional Edition (High Read)
-	//
-	// 	- **normal**: Standard Edition
-	//
-	// example:
-	//
-	// professional
-	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	// The SSL endpoint of the instance in domain name mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// alikafka-pre-cn-zv**********-1.alikafka.aliyuncs.com:9093,alikafka-pre-cn-zv**********-2.alikafka.aliyuncs.com:9093,alikafka-pre-cn-zv**********-3.alikafka.aliyuncs.com:9093
-	SslDomainEndpoint *string `json:"SslDomainEndpoint,omitempty" xml:"SslDomainEndpoint,omitempty"`
-	// The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode. ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// 192.0.XX.XX:9093,198.51.XX.XX:9093,203.0.XX.XX:9093
-	SslEndPoint *string `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-k
-	StandardZoneId *string `json:"StandardZoneId,omitempty" xml:"StandardZoneId,omitempty"`
-	// The tags.
-	Tags *GetInstanceListResponseBodyInstanceListInstanceVOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The maximum number of topics on the instance.
-	//
-	// example:
-	//
-	// 180
-	TopicNumLimit *int32 `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
-	// The upgrade information about the instance.
-	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
-	// The number of used groups.
-	//
-	// example:
-	//
-	// 10
-	UsedGroupCount *int32 `json:"UsedGroupCount,omitempty" xml:"UsedGroupCount,omitempty"`
-	// The number of used partitions.
-	//
-	// example:
-	//
-	// 25
-	UsedPartitionCount *int32 `json:"UsedPartitionCount,omitempty" xml:"UsedPartitionCount,omitempty"`
-	// The number of used topics.
-	//
-	// example:
-	//
-	// 3
-	UsedTopicCount *int32 `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
-	// The ID of the vSwitch to which the instance belongs.
-	//
-	// example:
-	//
-	// vsw-bp1fvuw0ljd7vzmo3****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The vSwitch IDs.
-	VSwitchIds *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The instance status. The valid values are consistent with the values displayed in the ApsaraMQ for Kafka console. This parameter is used in the new version of ApsaraMQ for Kafka.
-	//
-	// Valid values:
-	//
-	// 	- **0**: pending
-	//
-	// 	- **1**: deploying
-	//
-	// 	- **2**: running
-	//
-	// 	- **3**: stopped
-	//
-	// 	- **4**: expiring
-	//
-	// 	- **5**: expired
-	//
-	// 	- **6**: released
-	//
-	// 	- **7**: upgrading
-	//
-	// 	- **8**: migrating
-	//
-	// 	- **21**: stopping
-	//
-	// 	- **22**: starting
-	//
-	// 	- **23**: releasing
-	//
-	// 	- **30**: auto scaling
-	//
-	// 	- **101**: deployment failed
-	//
-	// 	- **102**: upgrade failed
-	//
-	// 	- **103**: migration failed
-	//
-	// example:
-	//
-	// 2
-	ViewInstanceStatusCode *int32 `json:"ViewInstanceStatusCode,omitempty" xml:"ViewInstanceStatusCode,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// example:
-	//
-	// vpc-bp1ojac7bv448nifj****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The SSL endpoint of the instance in domain name mode. You can use the endpoint to access the instance only in virtual private clouds (VPCs). ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// alikafka-post-cn-******-1-vpc.alikafka.aliyuncs.com:9095,alikafka-post-cn-******-2-vpc.alikafka.aliyuncs.com:9095,alikafka-post-cn-******-3-vpc.alikafka.aliyuncs.com:9095
-	VpcSaslDomainEndpoint *string `json:"VpcSaslDomainEndpoint,omitempty" xml:"VpcSaslDomainEndpoint,omitempty"`
-	// The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode. You can use the endpoint to access the instance only in virtual private clouds (VPCs). ApsaraMQ for Kafka instances support endpoints in domain name mode and IP address mode.
-	//
-	// 	- Endpoints in domain name mode: An endpoint in this mode consists of the domain name of the instance and a port number. The format of an endpoint in this mode is `{Instance domain name}:{Port number}`.
-	//
-	// 	- Endpoints in IP address mode: An endpoint in this mode consists of the IP address of the broker and a port number. The format of an endpoint in this mode is `{Broker IP address}:{Port number}`.
-	//
-	// example:
-	//
-	// 172.16.3.XX:9095,172.16.3.XX:9095,172.16.3.XX:9095
-	VpcSaslEndPoint *string `json:"VpcSaslEndPoint,omitempty" xml:"VpcSaslEndPoint,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// zonei
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	CreateTime                  *int64                                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultPartitionNum         *int32                                                                        `json:"DefaultPartitionNum,omitempty" xml:"DefaultPartitionNum,omitempty"`
+	DeployType                  *int32                                                                        `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	DiskSize                    *int32                                                                        `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType                    *int32                                                                        `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	DomainEndpoint              *string                                                                       `json:"DomainEndpoint,omitempty" xml:"DomainEndpoint,omitempty"`
+	EipMax                      *int32                                                                        `json:"EipMax,omitempty" xml:"EipMax,omitempty"`
+	EndPoint                    *string                                                                       `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	ExpiredTime                 *int64                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	InstanceId                  *string                                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IoMax                       *int32                                                                        `json:"IoMax,omitempty" xml:"IoMax,omitempty"`
+	IoMaxRead                   *int32                                                                        `json:"IoMaxRead,omitempty" xml:"IoMaxRead,omitempty"`
+	IoMaxSpec                   *string                                                                       `json:"IoMaxSpec,omitempty" xml:"IoMaxSpec,omitempty"`
+	IoMaxWrite                  *int32                                                                        `json:"IoMaxWrite,omitempty" xml:"IoMaxWrite,omitempty"`
+	KmsKeyId                    *string                                                                       `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	MsgRetain                   *int32                                                                        `json:"MsgRetain,omitempty" xml:"MsgRetain,omitempty"`
+	Name                        *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	PaidType                    *int32                                                                        `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	RecommendedPartitionCount   *int32                                                                        `json:"RecommendedPartitionCount,omitempty" xml:"RecommendedPartitionCount,omitempty"`
+	RegionId                    *string                                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservedPublishCapacity     *int32                                                                        `json:"ReservedPublishCapacity,omitempty" xml:"ReservedPublishCapacity,omitempty"`
+	ReservedSubscribeCapacity   *int32                                                                        `json:"ReservedSubscribeCapacity,omitempty" xml:"ReservedSubscribeCapacity,omitempty"`
+	ResourceGroupId             *string                                                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SaslDomainEndpoint          *string                                                                       `json:"SaslDomainEndpoint,omitempty" xml:"SaslDomainEndpoint,omitempty"`
+	SaslEndPoint                *string                                                                       `json:"SaslEndPoint,omitempty" xml:"SaslEndPoint,omitempty"`
+	ScheduledRetirement         *bool                                                                         `json:"ScheduledRetirement,omitempty" xml:"ScheduledRetirement,omitempty"`
+	SecurityGroup               *string                                                                       `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	Series                      *string                                                                       `json:"Series,omitempty" xml:"Series,omitempty"`
+	ServiceStatus               *int32                                                                        `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	SpecType                    *string                                                                       `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	SslDomainEndpoint           *string                                                                       `json:"SslDomainEndpoint,omitempty" xml:"SslDomainEndpoint,omitempty"`
+	SslEndPoint                 *string                                                                       `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
+	StandardZoneId              *string                                                                       `json:"StandardZoneId,omitempty" xml:"StandardZoneId,omitempty"`
+	Tags                        *GetInstanceListResponseBodyInstanceListInstanceVOTags                        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TopicNumLimit               *int32                                                                        `json:"TopicNumLimit,omitempty" xml:"TopicNumLimit,omitempty"`
+	UpgradeServiceDetailInfo    *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo    `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
+	UsedGroupCount              *int32                                                                        `json:"UsedGroupCount,omitempty" xml:"UsedGroupCount,omitempty"`
+	UsedPartitionCount          *int32                                                                        `json:"UsedPartitionCount,omitempty" xml:"UsedPartitionCount,omitempty"`
+	UsedTopicCount              *int32                                                                        `json:"UsedTopicCount,omitempty" xml:"UsedTopicCount,omitempty"`
+	VSwitchId                   *string                                                                       `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchIds                  *GetInstanceListResponseBodyInstanceListInstanceVOVSwitchIds                  `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	ViewInstanceStatusCode      *int32                                                                        `json:"ViewInstanceStatusCode,omitempty" xml:"ViewInstanceStatusCode,omitempty"`
+	VpcId                       *string                                                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcSaslDomainEndpoint       *string                                                                       `json:"VpcSaslDomainEndpoint,omitempty" xml:"VpcSaslDomainEndpoint,omitempty"`
+	VpcSaslEndPoint             *string                                                                       `json:"VpcSaslEndPoint,omitempty" xml:"VpcSaslEndPoint,omitempty"`
+	ZoneId                      *string                                                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetInstanceListResponseBodyInstanceListInstanceVO) String() string {
@@ -1060,114 +706,25 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVO) Validate() error {
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig struct {
-	// The number of CPU cores of Connect.
-	//
-	// example:
-	//
-	// 4
-	ConnectCU *int32 `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
-	// The number of replicas of Connect.
-	//
-	// example:
-	//
-	// 2
-	ConnectReplica *int32 `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
-	// The number of CPU cores of Control Center.
-	//
-	// example:
-	//
-	// 4
-	ControlCenterCU *int32 `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
-	// The number of replicas of Control Center.
-	//
-	// example:
-	//
-	// 1
-	ControlCenterReplica *int32 `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
-	// The disk capacity of Control Center. Unit: GB.
-	//
-	// example:
-	//
-	// 300
-	ControlCenterStorage *int32 `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
-	// The number of CPU cores of the Kafka broker.
-	//
-	// example:
-	//
-	// 4
-	KafkaCU *int32 `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
-	// The number of replicas of the Kafka broker.
-	//
-	// example:
-	//
-	// 3
-	KafkaReplica *int32 `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
-	// The number of CPU cores of Kafka Rest Proxy.
-	//
-	// example:
-	//
-	// 4
-	KafkaRestProxyCU *int32 `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
-	// The number of replicas of Kafka Rest Proxy.
-	//
-	// example:
-	//
-	// 2
-	KafkaRestProxyReplica *int32 `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
-	// The disk capacity of the Kafka broker. Unit: GB.
-	//
-	// example:
-	//
-	// 800
-	KafkaStorage *int32 `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
-	// The number of CPU cores of ksqlDB.
-	//
-	// example:
-	//
-	// 2
-	KsqlCU *int32 `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
-	// The number of replicas of ksqlDB.
-	//
-	// example:
-	//
-	// 2
-	KsqlReplica *int32 `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
-	// The disk capacity of ksqlDB. Unit: GB.
-	//
-	// example:
-	//
-	// 100
-	KsqlStorage *int32 `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
-	// The number of CPU cores of Schema Registry.
-	//
-	// example:
-	//
-	// 4
-	SchemaRegistryCU *int32 `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
-	// The number of replicas of Schema Registry.
-	//
-	// example:
-	//
-	// 2
-	SchemaRegistryReplica *int32 `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
-	// The number of CPU cores of ZooKeeper.
-	//
-	// example:
-	//
-	// 2
-	ZooKeeperCU *int32 `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
-	// The number of replicas of ZooKeeper.
-	//
-	// example:
-	//
-	// 3
-	ZooKeeperReplica *int32 `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
-	// The disk capacity of ZooKeeper. Unit: GB.
-	//
-	// example:
-	//
-	// 100
-	ZooKeeperStorage *int32 `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
+	ConnectCU             *int32                                                                    `json:"ConnectCU,omitempty" xml:"ConnectCU,omitempty"`
+	ConnectReplica        *int32                                                                    `json:"ConnectReplica,omitempty" xml:"ConnectReplica,omitempty"`
+	ControlCenterCU       *int32                                                                    `json:"ControlCenterCU,omitempty" xml:"ControlCenterCU,omitempty"`
+	ControlCenterReplica  *int32                                                                    `json:"ControlCenterReplica,omitempty" xml:"ControlCenterReplica,omitempty"`
+	ControlCenterStorage  *int32                                                                    `json:"ControlCenterStorage,omitempty" xml:"ControlCenterStorage,omitempty"`
+	KafkaCU               *int32                                                                    `json:"KafkaCU,omitempty" xml:"KafkaCU,omitempty"`
+	KafkaReplica          *int32                                                                    `json:"KafkaReplica,omitempty" xml:"KafkaReplica,omitempty"`
+	KafkaRestProxyCU      *int32                                                                    `json:"KafkaRestProxyCU,omitempty" xml:"KafkaRestProxyCU,omitempty"`
+	KafkaRestProxyReplica *int32                                                                    `json:"KafkaRestProxyReplica,omitempty" xml:"KafkaRestProxyReplica,omitempty"`
+	KafkaStorage          *int32                                                                    `json:"KafkaStorage,omitempty" xml:"KafkaStorage,omitempty"`
+	KsqlCU                *int32                                                                    `json:"KsqlCU,omitempty" xml:"KsqlCU,omitempty"`
+	KsqlList              *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList `json:"KsqlList,omitempty" xml:"KsqlList,omitempty" type:"Struct"`
+	KsqlReplica           *int32                                                                    `json:"KsqlReplica,omitempty" xml:"KsqlReplica,omitempty"`
+	KsqlStorage           *int32                                                                    `json:"KsqlStorage,omitempty" xml:"KsqlStorage,omitempty"`
+	SchemaRegistryCU      *int32                                                                    `json:"SchemaRegistryCU,omitempty" xml:"SchemaRegistryCU,omitempty"`
+	SchemaRegistryReplica *int32                                                                    `json:"SchemaRegistryReplica,omitempty" xml:"SchemaRegistryReplica,omitempty"`
+	ZooKeeperCU           *int32                                                                    `json:"ZooKeeperCU,omitempty" xml:"ZooKeeperCU,omitempty"`
+	ZooKeeperReplica      *int32                                                                    `json:"ZooKeeperReplica,omitempty" xml:"ZooKeeperReplica,omitempty"`
+	ZooKeeperStorage      *int32                                                                    `json:"ZooKeeperStorage,omitempty" xml:"ZooKeeperStorage,omitempty"`
 }
 
 func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) String() string {
@@ -1220,6 +777,10 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) GetKa
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) GetKsqlCU() *int32 {
 	return s.KsqlCU
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) GetKsqlList() *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList {
+	return s.KsqlList
 }
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) GetKsqlReplica() *int32 {
@@ -1305,6 +866,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKs
 	return s
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKsqlList(v *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
+	s.KsqlList = v
+	return s
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetKsqlReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig {
 	s.KsqlReplica = &v
 	return s
@@ -1341,6 +907,110 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) SetZo
 }
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig) Validate() error {
+	if s.KsqlList != nil {
+		if err := s.KsqlList.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList struct {
+	ConfluentInstanceComponentResourceVO []*GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO `json:"ConfluentInstanceComponentResourceVO,omitempty" xml:"ConfluentInstanceComponentResourceVO,omitempty" type:"Repeated"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList) GetConfluentInstanceComponentResourceVO() []*GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO {
+	return s.ConfluentInstanceComponentResourceVO
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList) SetConfluentInstanceComponentResourceVO(v []*GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList {
+	s.ConfluentInstanceComponentResourceVO = v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlList) Validate() error {
+	if s.ConfluentInstanceComponentResourceVO != nil {
+		for _, item := range s.ConfluentInstanceComponentResourceVO {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO struct {
+	Cu         *int32  `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	InternalId *string `json:"InternalId,omitempty" xml:"InternalId,omitempty"`
+	Replica    *int32  `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	Storage    *int32  `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) GetCu() *int32 {
+	return s.Cu
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) GetInternalId() *string {
+	return s.InternalId
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) GetReplica() *int32 {
+	return s.Replica
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) GetStorage() *int32 {
+	return s.Storage
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) GetType() *string {
+	return s.Type
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) SetCu(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO {
+	s.Cu = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) SetInternalId(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO {
+	s.InternalId = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) SetReplica(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO {
+	s.Replica = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) SetStorage(v int32) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO {
+	s.Storage = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) SetType(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO {
+	s.Type = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfigKsqlListConfluentInstanceComponentResourceVO) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1383,6 +1053,7 @@ type GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponent
 	DeployModule  *string `json:"DeployModule,omitempty" xml:"DeployModule,omitempty"`
 	PubEndpoint   *string `json:"PubEndpoint,omitempty" xml:"PubEndpoint,omitempty"`
 	VpcEndpoint   *string `json:"VpcEndpoint,omitempty" xml:"VpcEndpoint,omitempty"`
+	InternalId    *string `json:"internalId,omitempty" xml:"internalId,omitempty"`
 }
 
 func (s GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) String() string {
@@ -1409,6 +1080,10 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceCompo
 	return s.VpcEndpoint
 }
 
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) GetInternalId() *string {
+	return s.InternalId
+}
+
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetComponentType(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
 	s.ComponentType = &v
 	return s
@@ -1426,6 +1101,11 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceCompo
 
 func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetVpcEndpoint(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
 	s.VpcEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO) SetInternalId(v string) *GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO {
+	s.InternalId = &v
 	return s
 }
 
@@ -1468,17 +1148,7 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOTags) Validate() error
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// test
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1513,11 +1183,6 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO) Validate() 
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo struct {
-	// The open source Apache Kafka version that corresponds to the instance.
-	//
-	// example:
-	//
-	// 2.2.0
 	Current2OpenSourceVersion *string `json:"Current2OpenSourceVersion,omitempty" xml:"Current2OpenSourceVersion,omitempty"`
 }
 

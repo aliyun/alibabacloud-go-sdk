@@ -118,9 +118,8 @@ type GetTopicStatusResponseBodyTopicStatus struct {
 	// example:
 	//
 	// 1566470063575
-	LastTimeStamp *int64 `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
-	// The information about offsets in the topic.
-	OffsetTable *GetTopicStatusResponseBodyTopicStatusOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Struct"`
+	LastTimeStamp *int64                                            `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
+	OffsetTable   *GetTopicStatusResponseBodyTopicStatusOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Struct"`
 	// The number of messages in the topic.
 	//
 	// example:
@@ -208,36 +207,11 @@ func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) Validate() error {
 }
 
 type GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable struct {
-	// The last time when the partition was modified.
-	//
-	// example:
-	//
-	// 1566470063547
-	LastUpdateTimestamp *int64 `json:"LastUpdateTimestamp,omitempty" xml:"LastUpdateTimestamp,omitempty"`
-	// The latest offset in the partition of the topic.
-	//
-	// example:
-	//
-	// 76
-	MaxOffset *int64 `json:"MaxOffset,omitempty" xml:"MaxOffset,omitempty"`
-	// The earliest offset in the partition of the topic.
-	//
-	// example:
-	//
-	// 0
-	MinOffset *int64 `json:"MinOffset,omitempty" xml:"MinOffset,omitempty"`
-	// The ID of the partition.
-	//
-	// example:
-	//
-	// 0
-	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	// The name of the topic.
-	//
-	// example:
-	//
-	// testkafka
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	LastUpdateTimestamp *int64  `json:"LastUpdateTimestamp,omitempty" xml:"LastUpdateTimestamp,omitempty"`
+	MaxOffset           *int64  `json:"MaxOffset,omitempty" xml:"MaxOffset,omitempty"`
+	MinOffset           *int64  `json:"MinOffset,omitempty" xml:"MinOffset,omitempty"`
+	Partition           *int32  `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) String() string {

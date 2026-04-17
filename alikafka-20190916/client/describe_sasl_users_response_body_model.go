@@ -39,8 +39,7 @@ type DescribeSaslUsersResponseBody struct {
 	// example:
 	//
 	// 9E3B3592-5994-4F65-A61E-E62A77A****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Simple Authentication and Security Layer (SASL) users.
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SaslUserList *DescribeSaslUsersResponseBodySaslUserList `json:"SaslUserList,omitempty" xml:"SaslUserList,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
 	//
@@ -147,40 +146,10 @@ func (s *DescribeSaslUsersResponseBodySaslUserList) Validate() error {
 }
 
 type DescribeSaslUsersResponseBodySaslUserListSaslUserVO struct {
-	// The encryption method.
-	//
-	// >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
-	//
-	// example:
-	//
-	// SCRAM-SHA-256
 	Mechanism *string `json:"Mechanism,omitempty" xml:"Mechanism,omitempty"`
-	// The password.
-	//
-	// example:
-	//
-	// ******
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The type of the SASL user. Valid values:
-	//
-	// 	- **plain**: a simple mechanism that uses usernames and passwords to verify user identities. ApsaraMQ for Kafka provides an improved PLAIN mechanism that allows you to dynamically add SASL users without the need to restart an instance.
-	//
-	// 	- **SCRAM**: a mechanism that uses usernames and passwords to verify user identities. Compared with the PLAIN mechanism, this mechanism provides better security protection. ApsaraMQ for Kafka uses the SCRAM-SHA-256 algorithm.
-	//
-	// 	- **LDAP**: This value is available only for the SASL users of ApsaraMQ for Confluent instances.
-	//
-	// Default value: **plain**.
-	//
-	// example:
-	//
-	// scram
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The username.
-	//
-	// example:
-	//
-	// test12***
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Password  *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Username  *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeSaslUsersResponseBodySaslUserListSaslUserVO) String() string {

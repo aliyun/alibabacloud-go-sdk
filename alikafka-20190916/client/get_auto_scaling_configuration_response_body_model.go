@@ -113,7 +113,6 @@ func (s *GetAutoScalingConfigurationResponseBody) Validate() error {
 }
 
 type GetAutoScalingConfigurationResponseBodyData struct {
-	// The scheduled scaling rules.
 	ScheduledScalingRules *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules `json:"ScheduledScalingRules,omitempty" xml:"ScheduledScalingRules,omitempty" type:"Struct"`
 }
 
@@ -178,92 +177,19 @@ func (s *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRules) Valid
 }
 
 type GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules struct {
-	// The duration of a scheduled scaling task. Unit: minutes.
-	//
-	// example:
-	//
-	// 60
-	DurationMinutes *int64 `json:"DurationMinutes,omitempty" xml:"DurationMinutes,omitempty"`
-	// Indicates whether the scheduled scaling rule is enabled. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The estimated scale-in duration. Unit: seconds.
-	//
-	// example:
-	//
-	// 780
-	EstimatedElasticScalingDownTimeSecs *int64 `json:"EstimatedElasticScalingDownTimeSecs,omitempty" xml:"EstimatedElasticScalingDownTimeSecs,omitempty"`
-	// The estimated scale-out duration. Unit: seconds.
-	//
-	// example:
-	//
-	// 780
-	EstimatedElasticScalingUpTimeSecs *int64 `json:"EstimatedElasticScalingUpTimeSecs,omitempty" xml:"EstimatedElasticScalingUpTimeSecs,omitempty"`
-	// The timestamp that indicates the start time of the scheduled scaling task.
-	//
-	// example:
-	//
-	// 1714467540000
-	FirstScheduledTime *int64 `json:"FirstScheduledTime,omitempty" xml:"FirstScheduledTime,omitempty"`
-	// The frequency at which the scheduled scaling task is executed. This parameter is returned only if ScheduleType is set to repeat. Valid values:
-	//
-	// 	- Daily: The scheduled scaling task is executed every day.
-	//
-	// 	- Weekly: The scheduled scaling task is executed every week.
-	//
-	// example:
-	//
-	// Weekly
-	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
-	// The reserved production capacity for scheduled scaling. Unit: MB/s.
-	//
-	// example:
-	//
-	// 120
-	ReservedPubFlow *int64 `json:"ReservedPubFlow,omitempty" xml:"ReservedPubFlow,omitempty"`
-	// The reserved consumption capacity for scheduled scaling. Unit: MB/s.
-	//
-	// example:
-	//
-	// 120
-	ReservedSubFlow *int64 `json:"ReservedSubFlow,omitempty" xml:"ReservedSubFlow,omitempty"`
-	// The ID of the scheduled scaling rule.
-	//
-	// example:
-	//
-	// 64
-	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the scheduled scaling rule.
-	//
-	// example:
-	//
-	// test
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the scheduled scaling task. Valid values:
-	//
-	// 	- at: The scheduled scaling task is executed only once.
-	//
-	// 	- repeat: The scheduled scaling task is repeatedly executed.
-	//
-	// example:
-	//
-	// at
-	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The time zone in Coordinated Universal Time (UTC).
-	//
-	// example:
-	//
-	// GMT+8
-	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	// The day on which the scheduled scaling task is repeatedly executed. You can specify multiple days for this parameter.
-	WeeklyTypes *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes `json:"WeeklyTypes,omitempty" xml:"WeeklyTypes,omitempty" type:"Struct"`
+	DurationMinutes                     *int64                                                                                            `json:"DurationMinutes,omitempty" xml:"DurationMinutes,omitempty"`
+	Enable                              *bool                                                                                             `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	EstimatedElasticScalingDownTimeSecs *int64                                                                                            `json:"EstimatedElasticScalingDownTimeSecs,omitempty" xml:"EstimatedElasticScalingDownTimeSecs,omitempty"`
+	EstimatedElasticScalingUpTimeSecs   *int64                                                                                            `json:"EstimatedElasticScalingUpTimeSecs,omitempty" xml:"EstimatedElasticScalingUpTimeSecs,omitempty"`
+	FirstScheduledTime                  *int64                                                                                            `json:"FirstScheduledTime,omitempty" xml:"FirstScheduledTime,omitempty"`
+	RepeatType                          *string                                                                                           `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	ReservedPubFlow                     *int64                                                                                            `json:"ReservedPubFlow,omitempty" xml:"ReservedPubFlow,omitempty"`
+	ReservedSubFlow                     *int64                                                                                            `json:"ReservedSubFlow,omitempty" xml:"ReservedSubFlow,omitempty"`
+	RuleId                              *int64                                                                                            `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName                            *string                                                                                           `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ScheduleType                        *string                                                                                           `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	TimeZone                            *string                                                                                           `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	WeeklyTypes                         *GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRulesWeeklyTypes `json:"WeeklyTypes,omitempty" xml:"WeeklyTypes,omitempty" type:"Struct"`
 }
 
 func (s GetAutoScalingConfigurationResponseBodyDataScheduledScalingRulesScheduledScalingRules) String() string {

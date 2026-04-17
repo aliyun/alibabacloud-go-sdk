@@ -138,30 +138,12 @@ func (s *ListRebalanceInfoResponseBodyData) Validate() error {
 }
 
 type ListRebalanceInfoResponseBodyDataRebalanceInfoList struct {
-	// example:
-	//
-	// 100
-	Generation *int64 `json:"Generation,omitempty" xml:"Generation,omitempty"`
-	// example:
-	//
-	// kafka-test
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// example:
-	//
-	// 1709199270
-	LastRebalanceTimestamp *int64 `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
-	// example:
-	//
-	// removing member consumer-1-cd14eb9c-379b-4b8e-9bbd-76f147f8536f on LeaveGroup
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// example:
-	//
-	// true
-	RebalanceSuccess *bool `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
-	// example:
-	//
-	// 12
-	RebalanceTimeConsuming *int64 `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
+	Generation             *int64  `json:"Generation,omitempty" xml:"Generation,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	LastRebalanceTimestamp *int64  `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
+	Reason                 *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RebalanceSuccess       *bool   `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
+	RebalanceTimeConsuming *int64  `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
 }
 
 func (s ListRebalanceInfoResponseBodyDataRebalanceInfoList) String() string {

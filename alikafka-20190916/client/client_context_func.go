@@ -315,7 +315,7 @@ func (client *Client) CreateConsumerGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建后付费实例。
+// Creates a pay-as-you-go instance and returns the instance ID and order ID.
 //
 // @param tmpReq - CreatePostPayInstanceRequest
 //
@@ -515,7 +515,7 @@ func (client *Client) CreatePostPayOrderWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 创建预付费实例
+// Creates a subscription instance and returns the instance ID and order ID.
 //
 // @param tmpReq - CreatePrePayInstanceRequest
 //
@@ -1383,7 +1383,7 @@ func (client *Client) DeleteUserDefinedSgWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 查询acl资源名
+// Queries the name of the resource with which an access control list (ACL) is associated.
 //
 // @param request - DescribeAclResourceNameRequest
 //
@@ -2599,7 +2599,7 @@ func (client *Client) GetTopicSubscribeStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取Rebalance详情
+// Obtains the rebalance details of a consumer group.
 //
 // @param request - ListRebalanceInfoRequest
 //
@@ -3879,7 +3879,7 @@ func (client *Client) UpgradePostPayOrderWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Upgrades a Message Queue for Apache Kafka instance that uses the subscription billing method.
+// # Upgrade Prepaid Instance
 //
 // Description:
 //
