@@ -41,6 +41,8 @@ type iCreateCloudPhoneNodeShrinkRequest interface {
 	GetNetworkType() *string
 	SetNodeName(v string) *CreateCloudPhoneNodeShrinkRequest
 	GetNodeName() *string
+	SetPaidCallBackUrl(v string) *CreateCloudPhoneNodeShrinkRequest
+	GetPaidCallBackUrl() *string
 	SetPeriod(v int32) *CreateCloudPhoneNodeShrinkRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *CreateCloudPhoneNodeShrinkRequest
@@ -154,7 +156,8 @@ type CreateCloudPhoneNodeShrinkRequest struct {
 	// example:
 	//
 	// node_name
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName        *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
 	//
 	// 	- When `PeriodUnit` is set to **year**: 1.
@@ -301,6 +304,10 @@ func (s *CreateCloudPhoneNodeShrinkRequest) GetNodeName() *string {
 	return s.NodeName
 }
 
+func (s *CreateCloudPhoneNodeShrinkRequest) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
+}
+
 func (s *CreateCloudPhoneNodeShrinkRequest) GetPeriod() *int32 {
 	return s.Period
 }
@@ -438,6 +445,11 @@ func (s *CreateCloudPhoneNodeShrinkRequest) SetNetworkType(v string) *CreateClou
 
 func (s *CreateCloudPhoneNodeShrinkRequest) SetNodeName(v string) *CreateCloudPhoneNodeShrinkRequest {
 	s.NodeName = &v
+	return s
+}
+
+func (s *CreateCloudPhoneNodeShrinkRequest) SetPaidCallBackUrl(v string) *CreateCloudPhoneNodeShrinkRequest {
+	s.PaidCallBackUrl = &v
 	return s
 }
 

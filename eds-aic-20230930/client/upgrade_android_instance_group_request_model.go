@@ -15,6 +15,8 @@ type iUpgradeAndroidInstanceGroupRequest interface {
 	GetIncreaseNumberOfInstance() *int32
 	SetInstanceGroupId(v string) *UpgradeAndroidInstanceGroupRequest
 	GetInstanceGroupId() *string
+	SetPaidCallBackUrl(v string) *UpgradeAndroidInstanceGroupRequest
+	GetPaidCallBackUrl() *string
 	SetPromotionId(v string) *UpgradeAndroidInstanceGroupRequest
 	GetPromotionId() *string
 }
@@ -44,6 +46,7 @@ type UpgradeAndroidInstanceGroupRequest struct {
 	//
 	// ag-asguicdjh****
 	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	PaidCallBackUrl *string `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	PromotionId     *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
@@ -67,6 +70,10 @@ func (s *UpgradeAndroidInstanceGroupRequest) GetInstanceGroupId() *string {
 	return s.InstanceGroupId
 }
 
+func (s *UpgradeAndroidInstanceGroupRequest) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
+}
+
 func (s *UpgradeAndroidInstanceGroupRequest) GetPromotionId() *string {
 	return s.PromotionId
 }
@@ -83,6 +90,11 @@ func (s *UpgradeAndroidInstanceGroupRequest) SetIncreaseNumberOfInstance(v int32
 
 func (s *UpgradeAndroidInstanceGroupRequest) SetInstanceGroupId(v string) *UpgradeAndroidInstanceGroupRequest {
 	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *UpgradeAndroidInstanceGroupRequest) SetPaidCallBackUrl(v string) *UpgradeAndroidInstanceGroupRequest {
+	s.PaidCallBackUrl = &v
 	return s
 }
 

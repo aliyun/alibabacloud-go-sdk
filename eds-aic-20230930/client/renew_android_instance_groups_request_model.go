@@ -13,6 +13,8 @@ type iRenewAndroidInstanceGroupsRequest interface {
 	GetAutoPay() *bool
 	SetInstanceGroupIds(v []*string) *RenewAndroidInstanceGroupsRequest
 	GetInstanceGroupIds() []*string
+	SetPaidCallBackUrl(v string) *RenewAndroidInstanceGroupsRequest
+	GetPaidCallBackUrl() *string
 	SetPeriod(v int32) *RenewAndroidInstanceGroupsRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *RenewAndroidInstanceGroupsRequest
@@ -36,6 +38,7 @@ type RenewAndroidInstanceGroupsRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The IDs of the instance groups.
 	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	PaidCallBackUrl  *string   `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The duration of the renewal, measured in units defined by PeriodUnit.
 	//
 	// example:
@@ -73,6 +76,10 @@ func (s *RenewAndroidInstanceGroupsRequest) GetInstanceGroupIds() []*string {
 	return s.InstanceGroupIds
 }
 
+func (s *RenewAndroidInstanceGroupsRequest) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
+}
+
 func (s *RenewAndroidInstanceGroupsRequest) GetPeriod() *int32 {
 	return s.Period
 }
@@ -92,6 +99,11 @@ func (s *RenewAndroidInstanceGroupsRequest) SetAutoPay(v bool) *RenewAndroidInst
 
 func (s *RenewAndroidInstanceGroupsRequest) SetInstanceGroupIds(v []*string) *RenewAndroidInstanceGroupsRequest {
 	s.InstanceGroupIds = v
+	return s
+}
+
+func (s *RenewAndroidInstanceGroupsRequest) SetPaidCallBackUrl(v string) *RenewAndroidInstanceGroupsRequest {
+	s.PaidCallBackUrl = &v
 	return s
 }
 

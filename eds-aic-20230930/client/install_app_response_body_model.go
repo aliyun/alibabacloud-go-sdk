@@ -82,6 +82,7 @@ func (s *InstallAppResponseBody) Validate() error {
 }
 
 type InstallAppResponseBodyChildTaskInfo struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// example:
 	//
 	// t-ybde48cevxxxx
@@ -100,12 +101,21 @@ func (s InstallAppResponseBodyChildTaskInfo) GoString() string {
 	return s.String()
 }
 
+func (s *InstallAppResponseBodyChildTaskInfo) GetAppId() *string {
+	return s.AppId
+}
+
 func (s *InstallAppResponseBodyChildTaskInfo) GetChildTaskId() *string {
 	return s.ChildTaskId
 }
 
 func (s *InstallAppResponseBodyChildTaskInfo) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *InstallAppResponseBodyChildTaskInfo) SetAppId(v string) *InstallAppResponseBodyChildTaskInfo {
+	s.AppId = &v
+	return s
 }
 
 func (s *InstallAppResponseBodyChildTaskInfo) SetChildTaskId(v string) *InstallAppResponseBodyChildTaskInfo {

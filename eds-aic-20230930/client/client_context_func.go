@@ -393,6 +393,50 @@ func (client *Client) BatchGetAcpConnectionTicketWithContext(ctx context.Context
 
 // Summary:
 //
+// 取消云手机实例上正在运行的Agent任务。
+//
+// @param request - CancelAgentTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAgentTaskResponse
+func (client *Client) CancelAgentTaskWithContext(ctx context.Context, request *CancelAgentTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelAgentTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TaskIds) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelAgentTask"),
+		Version:     dara.String("2023-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelAgentTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改云手机矩阵的配置
 //
 // @param request - ChangeCloudPhoneNodeRequest
@@ -900,6 +944,10 @@ func (client *Client) CreateCloudPhoneNodeWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.NodeName) {
 		query["NodeName"] = request.NodeName
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
 	}
 
 	if !dara.IsNil(request.Period) {
@@ -3284,6 +3332,10 @@ func (client *Client) ExpandDataVolumeWithContext(ctx context.Context, request *
 		query["NodeIds"] = request.NodeIds
 	}
 
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
+	}
+
 	if !dara.IsNil(request.PhoneDataVolume) {
 		query["PhoneDataVolume"] = request.PhoneDataVolume
 	}
@@ -3346,6 +3398,10 @@ func (client *Client) ExpandPhoneDataVolumeWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
 	}
 
 	if !dara.IsNil(request.PhoneDataVolume) {
@@ -4922,6 +4978,10 @@ func (client *Client) RenewAndroidInstanceGroupsWithContext(ctx context.Context,
 		query["InstanceGroupIds"] = request.InstanceGroupIds
 	}
 
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
+	}
+
 	if !dara.IsNil(request.Period) {
 		query["Period"] = request.Period
 	}
@@ -4976,6 +5036,10 @@ func (client *Client) RenewCloudPhoneNodesWithContext(ctx context.Context, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AutoPay) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
 	}
 
 	if !dara.IsNil(request.PromotionId) {
@@ -6084,6 +6148,10 @@ func (client *Client) UpgradeAndroidInstanceGroupWithContext(ctx context.Context
 
 	if !dara.IsNil(request.InstanceGroupId) {
 		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !dara.IsNil(request.PaidCallBackUrl) {
+		query["PaidCallBackUrl"] = request.PaidCallBackUrl
 	}
 
 	if !dara.IsNil(request.PromotionId) {

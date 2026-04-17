@@ -82,6 +82,7 @@ func (s *UninstallAppResponseBody) Validate() error {
 }
 
 type UninstallAppResponseBodyChildTaskInfo struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// example:
 	//
 	// t-ybde48cevxxxx
@@ -100,12 +101,21 @@ func (s UninstallAppResponseBodyChildTaskInfo) GoString() string {
 	return s.String()
 }
 
+func (s *UninstallAppResponseBodyChildTaskInfo) GetAppId() *string {
+	return s.AppId
+}
+
 func (s *UninstallAppResponseBodyChildTaskInfo) GetChildTaskId() *string {
 	return s.ChildTaskId
 }
 
 func (s *UninstallAppResponseBodyChildTaskInfo) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *UninstallAppResponseBodyChildTaskInfo) SetAppId(v string) *UninstallAppResponseBodyChildTaskInfo {
+	s.AppId = &v
+	return s
 }
 
 func (s *UninstallAppResponseBodyChildTaskInfo) SetChildTaskId(v string) *UninstallAppResponseBodyChildTaskInfo {

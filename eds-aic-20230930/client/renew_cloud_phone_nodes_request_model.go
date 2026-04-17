@@ -15,6 +15,8 @@ type iRenewCloudPhoneNodesRequest interface {
 	GetAutoRenew() *bool
 	SetNodeIds(v []*string) *RenewCloudPhoneNodesRequest
 	GetNodeIds() []*string
+	SetPaidCallBackUrl(v string) *RenewCloudPhoneNodesRequest
+	GetPaidCallBackUrl() *string
 	SetPeriod(v int32) *RenewCloudPhoneNodesRequest
 	GetPeriod() *int32
 	SetPeriodUnit(v string) *RenewCloudPhoneNodesRequest
@@ -38,7 +40,8 @@ type RenewCloudPhoneNodesRequest struct {
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The cloud phone matrix IDs.
-	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	NodeIds         []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	PaidCallBackUrl *string   `json:"PaidCallBackUrl,omitempty" xml:"PaidCallBackUrl,omitempty"`
 	// The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
 	//
 	// 	- When `PeriodUnit` is set to **year**: 1.
@@ -84,6 +87,10 @@ func (s *RenewCloudPhoneNodesRequest) GetNodeIds() []*string {
 	return s.NodeIds
 }
 
+func (s *RenewCloudPhoneNodesRequest) GetPaidCallBackUrl() *string {
+	return s.PaidCallBackUrl
+}
+
 func (s *RenewCloudPhoneNodesRequest) GetPeriod() *int32 {
 	return s.Period
 }
@@ -108,6 +115,11 @@ func (s *RenewCloudPhoneNodesRequest) SetAutoRenew(v bool) *RenewCloudPhoneNodes
 
 func (s *RenewCloudPhoneNodesRequest) SetNodeIds(v []*string) *RenewCloudPhoneNodesRequest {
 	s.NodeIds = v
+	return s
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetPaidCallBackUrl(v string) *RenewCloudPhoneNodesRequest {
+	s.PaidCallBackUrl = &v
 	return s
 }
 

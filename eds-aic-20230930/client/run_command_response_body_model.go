@@ -15,6 +15,8 @@ type iRunCommandResponseBody interface {
 	GetRequestId() *string
 	SetRunCommandInfos(v []*RunCommandResponseBodyRunCommandInfos) *RunCommandResponseBody
 	GetRunCommandInfos() []*RunCommandResponseBodyRunCommandInfos
+	SetTaskId(v string) *RunCommandResponseBody
+	GetTaskId() *string
 }
 
 type RunCommandResponseBody struct {
@@ -31,6 +33,7 @@ type RunCommandResponseBody struct {
 	// 440D7342-5E7C-B2DB-D0B4EAC2BDF1****
 	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunCommandInfos []*RunCommandResponseBodyRunCommandInfos `json:"RunCommandInfos,omitempty" xml:"RunCommandInfos,omitempty" type:"Repeated"`
+	TaskId          *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RunCommandResponseBody) String() string {
@@ -53,6 +56,10 @@ func (s *RunCommandResponseBody) GetRunCommandInfos() []*RunCommandResponseBodyR
 	return s.RunCommandInfos
 }
 
+func (s *RunCommandResponseBody) GetTaskId() *string {
+	return s.TaskId
+}
+
 func (s *RunCommandResponseBody) SetInvokeId(v string) *RunCommandResponseBody {
 	s.InvokeId = &v
 	return s
@@ -65,6 +72,11 @@ func (s *RunCommandResponseBody) SetRequestId(v string) *RunCommandResponseBody 
 
 func (s *RunCommandResponseBody) SetRunCommandInfos(v []*RunCommandResponseBodyRunCommandInfos) *RunCommandResponseBody {
 	s.RunCommandInfos = v
+	return s
+}
+
+func (s *RunCommandResponseBody) SetTaskId(v string) *RunCommandResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -82,8 +94,9 @@ func (s *RunCommandResponseBody) Validate() error {
 }
 
 type RunCommandResponseBodyRunCommandInfos struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InvokeId   *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	ChildTaskId *string `json:"ChildTaskId,omitempty" xml:"ChildTaskId,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InvokeId    *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
 }
 
 func (s RunCommandResponseBodyRunCommandInfos) String() string {
@@ -94,12 +107,21 @@ func (s RunCommandResponseBodyRunCommandInfos) GoString() string {
 	return s.String()
 }
 
+func (s *RunCommandResponseBodyRunCommandInfos) GetChildTaskId() *string {
+	return s.ChildTaskId
+}
+
 func (s *RunCommandResponseBodyRunCommandInfos) GetInstanceId() *string {
 	return s.InstanceId
 }
 
 func (s *RunCommandResponseBodyRunCommandInfos) GetInvokeId() *string {
 	return s.InvokeId
+}
+
+func (s *RunCommandResponseBodyRunCommandInfos) SetChildTaskId(v string) *RunCommandResponseBodyRunCommandInfos {
+	s.ChildTaskId = &v
+	return s
 }
 
 func (s *RunCommandResponseBodyRunCommandInfos) SetInstanceId(v string) *RunCommandResponseBodyRunCommandInfos {
