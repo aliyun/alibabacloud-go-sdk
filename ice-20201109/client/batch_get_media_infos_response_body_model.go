@@ -159,8 +159,11 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfos) Validate() error {
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoList struct {
+	AudioStreamInfoList []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList `json:"AudioStreamInfoList,omitempty" xml:"AudioStreamInfoList,omitempty" type:"Repeated"`
 	// The basic information of the file, including the duration and size.
-	FileBasicInfo *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	FileBasicInfo          *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo            `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
+	SubtitleStreamInfoList []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
+	VideoStreamInfoList    []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList    `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) String() string {
@@ -171,8 +174,25 @@ func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) GoString() string 
 	return s.String()
 }
 
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) GetAudioStreamInfoList() []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	return s.AudioStreamInfoList
+}
+
 func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) GetFileBasicInfo() *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo {
 	return s.FileBasicInfo
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) GetSubtitleStreamInfoList() []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	return s.SubtitleStreamInfoList
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) GetVideoStreamInfoList() []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	return s.VideoStreamInfoList
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetAudioStreamInfoList(v []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList {
+	s.AudioStreamInfoList = v
+	return s
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(v *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList {
@@ -180,13 +200,245 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetFileBasicInfo(
 	return s
 }
 
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetSubtitleStreamInfoList(v []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList {
+	s.SubtitleStreamInfoList = v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) SetVideoStreamInfoList(v []*BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList {
+	s.VideoStreamInfoList = v
+	return s
+}
+
 func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoList) Validate() error {
+	if s.AudioStreamInfoList != nil {
+		for _, item := range s.AudioStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.FileBasicInfo != nil {
 		if err := s.FileBasicInfo.Validate(); err != nil {
 			return err
 		}
 	}
+	if s.SubtitleStreamInfoList != nil {
+		for _, item := range s.SubtitleStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.VideoStreamInfoList != nil {
+		for _, item := range s.VideoStreamInfoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList struct {
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	ChannelLayout  *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
+	Channels       *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	SampleFmt      *string `json:"SampleFmt,omitempty" xml:"SampleFmt,omitempty"`
+	SampleRate     *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetBitrate() *string {
+	return s.Bitrate
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetChannelLayout() *string {
+	return s.ChannelLayout
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetChannels() *string {
+	return s.Channels
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetCodecLongName() *string {
+	return s.CodecLongName
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetCodecName() *string {
+	return s.CodecName
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetCodecTag() *string {
+	return s.CodecTag
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetCodecTagString() *string {
+	return s.CodecTagString
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetCodecTimeBase() *string {
+	return s.CodecTimeBase
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetDuration() *string {
+	return s.Duration
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetFps() *string {
+	return s.Fps
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetIndex() *string {
+	return s.Index
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetLang() *string {
+	return s.Lang
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetNumFrames() *string {
+	return s.NumFrames
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetProfile() *string {
+	return s.Profile
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetSampleFmt() *string {
+	return s.SampleFmt
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetSampleRate() *string {
+	return s.SampleRate
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) GetTimebase() *string {
+	return s.Timebase
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetBitrate(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetChannelLayout(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.ChannelLayout = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetChannels(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Channels = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetCodecLongName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetCodecName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetCodecTag(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetCodecTagString(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetCodecTimeBase(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetDuration(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetFps(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Fps = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetIndex(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetLang(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetNumFrames(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetProfile(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Profile = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetSampleFmt(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.SampleFmt = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetSampleRate(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.SampleRate = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetStartTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) SetTimebase(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList) Validate() error {
+	return dara.Validate(s)
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo struct {
@@ -366,6 +618,376 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetW
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList struct {
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetCodecLongName() *string {
+	return s.CodecLongName
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetCodecName() *string {
+	return s.CodecName
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetCodecTag() *string {
+	return s.CodecTag
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetCodecTagString() *string {
+	return s.CodecTagString
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetCodecTimeBase() *string {
+	return s.CodecTimeBase
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetDuration() *string {
+	return s.Duration
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetIndex() *string {
+	return s.Index
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetLang() *string {
+	return s.Lang
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) GetTimebase() *string {
+	return s.Timebase
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetCodecLongName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetCodecName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetCodecTag(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetCodecTagString(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetCodecTimeBase(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetDuration(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetIndex(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetLang(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetStartTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) SetTimebase(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList) Validate() error {
+	return dara.Validate(s)
+}
+
+type BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList struct {
+	AvgFPS         *string `json:"AvgFPS,omitempty" xml:"AvgFPS,omitempty"`
+	Bitrate        *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecLongName  *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
+	CodecName      *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CodecTag       *string `json:"CodecTag,omitempty" xml:"CodecTag,omitempty"`
+	CodecTagString *string `json:"CodecTagString,omitempty" xml:"CodecTagString,omitempty"`
+	CodecTimeBase  *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
+	Dar            *string `json:"Dar,omitempty" xml:"Dar,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Fps            *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HasBFrames     *string `json:"HasBFrames,omitempty" xml:"HasBFrames,omitempty"`
+	Height         *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	Index          *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	NbFrames       *string `json:"Nb_frames,omitempty" xml:"Nb_frames,omitempty"`
+	NumFrames      *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
+	PixFmt         *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
+	Profile        *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Rotate         *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	Sar            *string `json:"Sar,omitempty" xml:"Sar,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Timebase       *string `json:"Timebase,omitempty" xml:"Timebase,omitempty"`
+	Width          *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetAvgFPS() *string {
+	return s.AvgFPS
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetBitrate() *string {
+	return s.Bitrate
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetCodecLongName() *string {
+	return s.CodecLongName
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetCodecName() *string {
+	return s.CodecName
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetCodecTag() *string {
+	return s.CodecTag
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetCodecTagString() *string {
+	return s.CodecTagString
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetCodecTimeBase() *string {
+	return s.CodecTimeBase
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetDar() *string {
+	return s.Dar
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetDuration() *string {
+	return s.Duration
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetFps() *string {
+	return s.Fps
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetHasBFrames() *string {
+	return s.HasBFrames
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetHeight() *string {
+	return s.Height
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetIndex() *string {
+	return s.Index
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetLang() *string {
+	return s.Lang
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetLevel() *string {
+	return s.Level
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetNbFrames() *string {
+	return s.NbFrames
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetNumFrames() *string {
+	return s.NumFrames
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetPixFmt() *string {
+	return s.PixFmt
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetProfile() *string {
+	return s.Profile
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetRotate() *string {
+	return s.Rotate
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetSar() *string {
+	return s.Sar
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetStartTime() *string {
+	return s.StartTime
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetTimebase() *string {
+	return s.Timebase
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) GetWidth() *string {
+	return s.Width
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetAvgFPS(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.AvgFPS = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetBitrate(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Bitrate = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetCodecLongName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.CodecLongName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetCodecName(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.CodecName = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetCodecTag(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.CodecTag = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetCodecTagString(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.CodecTagString = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetCodecTimeBase(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.CodecTimeBase = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetDar(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Dar = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetDuration(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Duration = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetFps(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Fps = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetHasBFrames(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.HasBFrames = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetHeight(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Height = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetIndex(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Index = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetLang(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Lang = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetLevel(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Level = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetNbFrames(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.NbFrames = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetNumFrames(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.NumFrames = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetPixFmt(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.PixFmt = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetProfile(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Profile = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetRotate(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Rotate = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetSar(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Sar = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetStartTime(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetTimebase(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Timebase = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) SetWidth(v string) *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList {
+	s.Width = &v
+	return s
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList) Validate() error {
 	return dara.Validate(s)
 }
 
