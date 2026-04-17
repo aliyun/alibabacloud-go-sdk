@@ -521,6 +521,7 @@ type GetLindormV2InstanceResponseBodyEngineList struct {
 	ConnectAddressList []*GetLindormV2InstanceResponseBodyEngineListConnectAddressList `json:"ConnectAddressList,omitempty" xml:"ConnectAddressList,omitempty" type:"Repeated"`
 	EnableBackup       *string                                                         `json:"EnableBackup,omitempty" xml:"EnableBackup,omitempty"`
 	EnableCDC          *string                                                         `json:"EnableCDC,omitempty" xml:"EnableCDC,omitempty"`
+	EnableMaaS         *string                                                         `json:"EnableMaaS,omitempty" xml:"EnableMaaS,omitempty"`
 	Engine             *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	IsLastVersion      *bool                                                           `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
 	LatestVersion      *string                                                         `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
@@ -546,6 +547,10 @@ func (s *GetLindormV2InstanceResponseBodyEngineList) GetEnableBackup() *string {
 
 func (s *GetLindormV2InstanceResponseBodyEngineList) GetEnableCDC() *string {
 	return s.EnableCDC
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) GetEnableMaaS() *string {
+	return s.EnableMaaS
 }
 
 func (s *GetLindormV2InstanceResponseBodyEngineList) GetEngine() *string {
@@ -580,6 +585,11 @@ func (s *GetLindormV2InstanceResponseBodyEngineList) SetEnableBackup(v string) *
 
 func (s *GetLindormV2InstanceResponseBodyEngineList) SetEnableCDC(v string) *GetLindormV2InstanceResponseBodyEngineList {
 	s.EnableCDC = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodyEngineList) SetEnableMaaS(v string) *GetLindormV2InstanceResponseBodyEngineList {
+	s.EnableMaaS = &v
 	return s
 }
 

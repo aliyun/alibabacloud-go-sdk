@@ -126,6 +126,152 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// # Lindormv2创建预校验
+//
+// @param request - CheckCreateLindormV2InstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckCreateLindormV2InstanceResponse
+func (client *Client) CheckCreateLindormV2InstanceWithOptions(request *CheckCreateLindormV2InstanceRequest, runtime *dara.RuntimeOptions) (_result *CheckCreateLindormV2InstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArbiterVSwitchId) {
+		query["ArbiterVSwitchId"] = request.ArbiterVSwitchId
+	}
+
+	if !dara.IsNil(request.ArbiterZoneId) {
+		query["ArbiterZoneId"] = request.ArbiterZoneId
+	}
+
+	if !dara.IsNil(request.ArchVersion) {
+		query["ArchVersion"] = request.ArchVersion
+	}
+
+	if !dara.IsNil(request.CloudStorageSize) {
+		query["CloudStorageSize"] = request.CloudStorageSize
+	}
+
+	if !dara.IsNil(request.CloudStorageType) {
+		query["CloudStorageType"] = request.CloudStorageType
+	}
+
+	if !dara.IsNil(request.ClusterPattern) {
+		query["ClusterPattern"] = request.ClusterPattern
+	}
+
+	if !dara.IsNil(request.EngineList) {
+		query["EngineList"] = request.EngineList
+	}
+
+	if !dara.IsNil(request.InstanceAlias) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PrimaryVSwitchId) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !dara.IsNil(request.PrimaryZoneId) {
+		query["PrimaryZoneId"] = request.PrimaryZoneId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StandbyVSwitchId) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !dara.IsNil(request.StandbyZoneId) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckCreateLindormV2Instance"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckCreateLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Lindormv2创建预校验
+//
+// @param request - CheckCreateLindormV2InstanceRequest
+//
+// @return CheckCreateLindormV2InstanceResponse
+func (client *Client) CheckCreateLindormV2Instance(request *CheckCreateLindormV2InstanceRequest) (_result *CheckCreateLindormV2InstanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckCreateLindormV2InstanceResponse{}
+	_body, _err := client.CheckCreateLindormV2InstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CheckLdpsColumnarIndexStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -193,6 +339,84 @@ func (client *Client) CheckLdpsColumnarIndexStatus(request *CheckLdpsColumnarInd
 	runtime := &dara.RuntimeOptions{}
 	_result = &CheckLdpsColumnarIndexStatusResponse{}
 	_body, _err := client.CheckLdpsColumnarIndexStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// vpc打通
+//
+// @param request - CreateAdditionalVpcLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAdditionalVpcLinkResponse
+func (client *Client) CreateAdditionalVpcLinkWithOptions(request *CreateAdditionalVpcLinkRequest, runtime *dara.RuntimeOptions) (_result *CreateAdditionalVpcLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdditionalVpcId) {
+		query["AdditionalVpcId"] = request.AdditionalVpcId
+	}
+
+	if !dara.IsNil(request.AdditionalVswitchId) {
+		query["AdditionalVswitchId"] = request.AdditionalVswitchId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAdditionalVpcLink"),
+		Version:     dara.String("2020-06-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAdditionalVpcLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// vpc打通
+//
+// @param request - CreateAdditionalVpcLinkRequest
+//
+// @return CreateAdditionalVpcLinkResponse
+func (client *Client) CreateAdditionalVpcLink(request *CreateAdditionalVpcLinkRequest) (_result *CreateAdditionalVpcLinkResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAdditionalVpcLinkResponse{}
+	_body, _err := client.CreateAdditionalVpcLinkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5358,7 +5582,7 @@ func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLService
 
 // Summary:
 //
-// Associates tags with a single or multiple Lindorm instances.
+// Adds tags to one or more Lindorm instances.
 //
 // @param request - TagResourcesRequest
 //
@@ -5434,7 +5658,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Associates tags with a single or multiple Lindorm instances.
+// Adds tags to one or more Lindorm instances.
 //
 // @param request - TagResourcesRequest
 //
