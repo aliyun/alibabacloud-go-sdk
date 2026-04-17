@@ -6144,6 +6144,102 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
+// 查询机器人
+//
+// @param tmpReq - ListAlertRobotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAlertRobotsResponse
+func (client *Client) ListAlertRobotsWithOptions(tmpReq *ListAlertRobotsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAlertRobotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAlertRobotsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RobotIds) {
+		request.RobotIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RobotIds, dara.String("robotIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Types) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, dara.String("types"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RobotIdsShrink) {
+		query["robotIds"] = request.RobotIdsShrink
+	}
+
+	if !dara.IsNil(request.TypesShrink) {
+		query["types"] = request.TypesShrink
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAlertRobots"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/robots"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAlertRobotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询机器人
+//
+// @param request - ListAlertRobotsRequest
+//
+// @return ListAlertRobotsResponse
+func (client *Client) ListAlertRobots(request *ListAlertRobotsRequest) (_result *ListAlertRobotsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAlertRobotsResponse{}
+	_body, _err := client.ListAlertRobotsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询Webhook
 //
 // @param tmpReq - ListAlertWebhooksRequest
@@ -6297,6 +6393,198 @@ func (client *Client) ListBizTraces(request *ListBizTracesRequest) (_result *Lis
 	headers := make(map[string]*string)
 	_result = &ListBizTracesResponse{}
 	_body, _err := client.ListBizTracesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询联系人组
+//
+// @param tmpReq - ListContactGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContactGroupsResponse
+func (client *Client) ListContactGroupsWithOptions(tmpReq *ListContactGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListContactGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListContactGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContactGroupIds) {
+		request.ContactGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactGroupIds, dara.String("contactGroupIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactGroupIdsShrink) {
+		query["contactGroupIds"] = request.ContactGroupIdsShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContactGroups"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contactGroups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContactGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询联系人组
+//
+// @param request - ListContactGroupsRequest
+//
+// @return ListContactGroupsResponse
+func (client *Client) ListContactGroups(request *ListContactGroupsRequest) (_result *ListContactGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListContactGroupsResponse{}
+	_body, _err := client.ListContactGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询联系人
+//
+// @param tmpReq - ListContactsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListContactsResponse
+func (client *Client) ListContactsWithOptions(tmpReq *ListContactsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListContactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListContactsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ContactIds) {
+		request.ContactIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContactIds, dara.String("contactIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContactIdsShrink) {
+		query["contactIds"] = request.ContactIdsShrink
+	}
+
+	if !dara.IsNil(request.Email) {
+		query["email"] = request.Email
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		query["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Phone) {
+		query["phone"] = request.Phone
+	}
+
+	if !dara.IsNil(request.QueryUngroupedContacts) {
+		query["queryUngroupedContacts"] = request.QueryUngroupedContacts
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListContacts"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/contact"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询联系人
+//
+// @param request - ListContactsRequest
+//
+// @return ListContactsResponse
+func (client *Client) ListContacts(request *ListContactsRequest) (_result *ListContactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListContactsResponse{}
+	_body, _err := client.ListContactsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
