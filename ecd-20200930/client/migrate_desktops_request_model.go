@@ -13,8 +13,12 @@ type iMigrateDesktopsRequest interface {
 	GetDesktopId() []*string
 	SetRegionId(v string) *MigrateDesktopsRequest
 	GetRegionId() *string
+	SetTargetMemberIp(v string) *MigrateDesktopsRequest
+	GetTargetMemberIp() *string
 	SetTargetOfficeSiteId(v string) *MigrateDesktopsRequest
 	GetTargetOfficeSiteId() *string
+	SetTargetSubnetId(v string) *MigrateDesktopsRequest
+	GetTargetSubnetId() *string
 }
 
 type MigrateDesktopsRequest struct {
@@ -29,7 +33,8 @@ type MigrateDesktopsRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TargetMemberIp *string `json:"TargetMemberIp,omitempty" xml:"TargetMemberIp,omitempty"`
 	// The ID of the destination office network.
 	//
 	// This parameter is required.
@@ -38,6 +43,12 @@ type MigrateDesktopsRequest struct {
 	//
 	// cn-shenzhen+dir-388505****
 	TargetOfficeSiteId *string `json:"TargetOfficeSiteId,omitempty" xml:"TargetOfficeSiteId,omitempty"`
+	// > This parameter is for internal use only.
+	//
+	// example:
+	//
+	// null
+	TargetSubnetId *string `json:"TargetSubnetId,omitempty" xml:"TargetSubnetId,omitempty"`
 }
 
 func (s MigrateDesktopsRequest) String() string {
@@ -56,8 +67,16 @@ func (s *MigrateDesktopsRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *MigrateDesktopsRequest) GetTargetMemberIp() *string {
+	return s.TargetMemberIp
+}
+
 func (s *MigrateDesktopsRequest) GetTargetOfficeSiteId() *string {
 	return s.TargetOfficeSiteId
+}
+
+func (s *MigrateDesktopsRequest) GetTargetSubnetId() *string {
+	return s.TargetSubnetId
 }
 
 func (s *MigrateDesktopsRequest) SetDesktopId(v []*string) *MigrateDesktopsRequest {
@@ -70,8 +89,18 @@ func (s *MigrateDesktopsRequest) SetRegionId(v string) *MigrateDesktopsRequest {
 	return s
 }
 
+func (s *MigrateDesktopsRequest) SetTargetMemberIp(v string) *MigrateDesktopsRequest {
+	s.TargetMemberIp = &v
+	return s
+}
+
 func (s *MigrateDesktopsRequest) SetTargetOfficeSiteId(v string) *MigrateDesktopsRequest {
 	s.TargetOfficeSiteId = &v
+	return s
+}
+
+func (s *MigrateDesktopsRequest) SetTargetSubnetId(v string) *MigrateDesktopsRequest {
+	s.TargetSubnetId = &v
 	return s
 }
 

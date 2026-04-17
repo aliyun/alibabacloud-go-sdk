@@ -18394,8 +18394,16 @@ func (client *Client) MigrateDesktopsWithOptions(request *MigrateDesktopsRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.TargetMemberIp) {
+		query["TargetMemberIp"] = request.TargetMemberIp
+	}
+
 	if !dara.IsNil(request.TargetOfficeSiteId) {
 		query["TargetOfficeSiteId"] = request.TargetOfficeSiteId
+	}
+
+	if !dara.IsNil(request.TargetSubnetId) {
+		query["TargetSubnetId"] = request.TargetSubnetId
 	}
 
 	req := &openapiutil.OpenApiRequest{
