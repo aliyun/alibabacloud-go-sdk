@@ -6288,6 +6288,10 @@ func (client *Client) ListBindingsWithContext(ctx context.Context, request *List
 		query["MaxResults"] = request.MaxResults
 	}
 
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
 	}

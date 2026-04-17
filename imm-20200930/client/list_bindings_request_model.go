@@ -13,6 +13,8 @@ type iListBindingsRequest interface {
 	GetDatasetName() *string
 	SetMaxResults(v int64) *ListBindingsRequest
 	GetMaxResults() *int64
+	SetName(v string) *ListBindingsRequest
+	GetName() *string
 	SetNextToken(v string) *ListBindingsRequest
 	GetNextToken() *string
 	SetProjectName(v string) *ListBindingsRequest
@@ -34,6 +36,10 @@ type ListBindingsRequest struct {
 	//
 	// 1
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// imm
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// 	- The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
 	//
 	// 	- The next call to the operation returns results lexicographically after the NextToken parameter value.
@@ -70,6 +76,10 @@ func (s *ListBindingsRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
 
+func (s *ListBindingsRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *ListBindingsRequest) GetNextToken() *string {
 	return s.NextToken
 }
@@ -85,6 +95,11 @@ func (s *ListBindingsRequest) SetDatasetName(v string) *ListBindingsRequest {
 
 func (s *ListBindingsRequest) SetMaxResults(v int64) *ListBindingsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *ListBindingsRequest) SetName(v string) *ListBindingsRequest {
+	s.Name = &v
 	return s
 }
 
