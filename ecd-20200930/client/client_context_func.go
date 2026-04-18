@@ -18461,6 +18461,106 @@ func (client *Client) MoveCdsFileWithContext(ctx context.Context, request *MoveC
 
 // Summary:
 //
+// 查询历史活跃用户数量
+//
+// @param request - QueryHistoryActiveUserCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHistoryActiveUserCountResponse
+func (client *Client) QueryHistoryActiveUserCountWithContext(ctx context.Context, request *QueryHistoryActiveUserCountRequest, runtime *dara.RuntimeOptions) (_result *QueryHistoryActiveUserCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataDate) {
+		query["DataDate"] = request.DataDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryHistoryActiveUserCount"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryHistoryActiveUserCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面历史指标分布
+//
+// @param request - QueryHistoryMetricDistributionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHistoryMetricDistributionResponse
+func (client *Client) QueryHistoryMetricDistributionWithContext(ctx context.Context, request *QueryHistoryMetricDistributionRequest, runtime *dara.RuntimeOptions) (_result *QueryHistoryMetricDistributionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.MetricName) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !dara.IsNil(request.Ranges) {
+		query["Ranges"] = request.Ranges
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryHistoryMetricDistribution"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryHistoryMetricDistributionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Restart cloud computers.
 //
 // Description:
