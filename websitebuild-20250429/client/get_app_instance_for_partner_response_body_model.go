@@ -2156,6 +2156,7 @@ type GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile struct {
 	//
 	// ServiceSpecText
 	ServiceSpecText *string `json:"ServiceSpecText,omitempty" xml:"ServiceSpecText,omitempty"`
+	UpgradeStatus   *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 
 func (s GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) String() string {
@@ -2206,6 +2207,10 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) GetSer
 	return s.ServiceSpecText
 }
 
+func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) GetUpgradeStatus() *string {
+	return s.UpgradeStatus
+}
+
 func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) SetBizId(v string) *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile {
 	s.BizId = &v
 	return s
@@ -2253,6 +2258,11 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) SetSer
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) SetServiceSpecText(v string) *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile {
 	s.ServiceSpecText = &v
+	return s
+}
+
+func (s *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile) SetUpgradeStatus(v string) *GetAppInstanceForPartnerResponseBodyModuleAppServiceListProfile {
+	s.UpgradeStatus = &v
 	return s
 }
 
@@ -2573,7 +2583,8 @@ type GetAppInstanceForPartnerResponseBodyModuleProfile struct {
 	// example:
 	//
 	// https://aloss-recruit-aiinterview.oss-cn-beijing.aliyuncs.com/thumbnail-1753495551714-10000.png
-	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Thumbnail     *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 
 func (s GetAppInstanceForPartnerResponseBodyModuleProfile) String() string {
@@ -2702,6 +2713,10 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) GetTextList() *strin
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) GetThumbnail() *string {
 	return s.Thumbnail
+}
+
+func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) GetUpgradeStatus() *string {
+	return s.UpgradeStatus
 }
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) SetAdminUrl(v string) *GetAppInstanceForPartnerResponseBodyModuleProfile {
@@ -2851,6 +2866,11 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) SetTextList(v string
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) SetThumbnail(v string) *GetAppInstanceForPartnerResponseBodyModuleProfile {
 	s.Thumbnail = &v
+	return s
+}
+
+func (s *GetAppInstanceForPartnerResponseBodyModuleProfile) SetUpgradeStatus(v string) *GetAppInstanceForPartnerResponseBodyModuleProfile {
+	s.UpgradeStatus = &v
 	return s
 }
 
@@ -3374,7 +3394,8 @@ type GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile struct
 	// example:
 	//
 	// https://aloss-recruit-aiinterview.oss-cn-beijing.aliyuncs.com/thumbnail-1766456326256-0.png
-	Thumbnail *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	Thumbnail     *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
+	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
 }
 
 func (s GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) String() string {
@@ -3503,6 +3524,10 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) G
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) GetThumbnail() *string {
 	return s.Thumbnail
+}
+
+func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) GetUpgradeStatus() *string {
+	return s.UpgradeStatus
 }
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) SetAdminUrl(v string) *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile {
@@ -3652,6 +3677,11 @@ func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) S
 
 func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) SetThumbnail(v string) *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile {
 	s.Thumbnail = &v
+	return s
+}
+
+func (s *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile) SetUpgradeStatus(v string) *GetAppInstanceForPartnerResponseBodyModuleRelatedInstanceListProfile {
+	s.UpgradeStatus = &v
 	return s
 }
 

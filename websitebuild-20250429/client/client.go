@@ -1890,8 +1890,6 @@ func (client *Client) GetAppRecommendedCommodities(request *GetAppRecommendedCom
 //
 // 查询万小智灵感值服务
 //
-// @param request - GetAppTokenServiceRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAppTokenServiceResponse
@@ -2407,15 +2405,16 @@ func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListAppCommoditySpecificationsForPartner is deprecated, please use WebsiteBuild::2025-04-29::ListAppCommoditySpecificationsV2ForPartner instead.
+//
 // Summary:
 //
 // 获取商品配置信息
 //
-// @param request - ListAppCommoditySpecificationsForPartnerRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAppCommoditySpecificationsForPartnerResponse
+// Deprecated
 func (client *Client) ListAppCommoditySpecificationsForPartnerWithOptions(runtime *dara.RuntimeOptions) (_result *ListAppCommoditySpecificationsForPartnerResponse, _err error) {
 	req := &openapiutil.OpenApiRequest{}
 	params := &openapiutil.Params{
@@ -2438,11 +2437,14 @@ func (client *Client) ListAppCommoditySpecificationsForPartnerWithOptions(runtim
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListAppCommoditySpecificationsForPartner is deprecated, please use WebsiteBuild::2025-04-29::ListAppCommoditySpecificationsV2ForPartner instead.
+//
 // Summary:
 //
 // 获取商品配置信息
 //
 // @return ListAppCommoditySpecificationsForPartnerResponse
+// Deprecated
 func (client *Client) ListAppCommoditySpecificationsForPartner() (_result *ListAppCommoditySpecificationsForPartnerResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListAppCommoditySpecificationsForPartnerResponse{}
@@ -3665,8 +3667,6 @@ func (client *Client) QueryInspirationAccountDetails(request *QueryInspirationAc
 // Summary:
 //
 // 查询灵感值余额总览
-//
-// @param request - QueryInspirationBalanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
