@@ -483,6 +483,58 @@ func (client *Client) DeleteVariableWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// 获取文件上传信息
+//
+// @param request - GenerateFileUploadParamsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateFileUploadParamsResponse
+func (client *Client) GenerateFileUploadParamsWithContext(ctx context.Context, request *GenerateFileUploadParamsRequest, runtime *dara.RuntimeOptions) (_result *GenerateFileUploadParamsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessType) {
+		body["BusinessType"] = request.BusinessType
+	}
+
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["FileName"] = request.FileName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateFileUploadParams"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateFileUploadParamsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get应用
 //
 // @param request - GetApplicationRequest
