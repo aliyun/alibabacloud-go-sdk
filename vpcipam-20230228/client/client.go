@@ -1952,6 +1952,96 @@ func (client *Client) GetVpcIpamServiceStatus(request *GetVpcIpamServiceStatusRe
 
 // Summary:
 //
+// 查询VPC或VSwitch下已使用IP信息。
+//
+// @param request - ListIpamDiscoveredIpAddressesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIpamDiscoveredIpAddressesResponse
+func (client *Client) ListIpamDiscoveredIpAddressesWithOptions(request *ListIpamDiscoveredIpAddressesRequest, runtime *dara.RuntimeOptions) (_result *ListIpamDiscoveredIpAddressesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cidr) {
+		query["Cidr"] = request.Cidr
+	}
+
+	if !dara.IsNil(request.IpVersion) {
+		query["IpVersion"] = request.IpVersion
+	}
+
+	if !dara.IsNil(request.IpamResourceDiscoveryId) {
+		query["IpamResourceDiscoveryId"] = request.IpamResourceDiscoveryId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListIpamDiscoveredIpAddresses"),
+		Version:     dara.String("2023-02-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListIpamDiscoveredIpAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询VPC或VSwitch下已使用IP信息。
+//
+// @param request - ListIpamDiscoveredIpAddressesRequest
+//
+// @return ListIpamDiscoveredIpAddressesResponse
+func (client *Client) ListIpamDiscoveredIpAddresses(request *ListIpamDiscoveredIpAddressesRequest) (_result *ListIpamDiscoveredIpAddressesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListIpamDiscoveredIpAddressesResponse{}
+	_body, _err := client.ListIpamDiscoveredIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries discovered resources.
 //
 // @param request - ListIpamDiscoveredResourceRequest
@@ -3426,7 +3516,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates an IP Address Manager (IPAM).
+// Modifies an IPAM instance.
 //
 // @param request - UpdateIpamRequest
 //
@@ -3514,7 +3604,7 @@ func (client *Client) UpdateIpamWithOptions(request *UpdateIpamRequest, runtime 
 
 // Summary:
 //
-// Updates an IP Address Manager (IPAM).
+// Modifies an IPAM instance.
 //
 // @param request - UpdateIpamRequest
 //
