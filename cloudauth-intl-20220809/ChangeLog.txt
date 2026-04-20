@@ -4,6 +4,12 @@
 - Update API Initialize: add request parameters TemplateType.
 
 
+2026-04-20 Version: v3.17.2
+- Update API Initialize: add request parameters TemplateConfig.
+- Update API Initialize: add request parameters TemplateRanCount.
+- Update API Initialize: add request parameters TemplateType.
+
+
 2026-04-10 Version: v3.17.1
 - Update API FaceGuardRisk: add request parameters Type.
 
