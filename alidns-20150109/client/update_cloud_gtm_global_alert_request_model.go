@@ -134,6 +134,10 @@ type UpdateCloudGtmGlobalAlertRequestAlertConfig struct {
 	//
 	// addr_alert
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// example:
+	//
+	// 10
+	QpsThreshold *int64 `json:"QpsThreshold,omitempty" xml:"QpsThreshold,omitempty"`
 	// Specifies whether to configure text message notifications. Valid values:
 	//
 	// 	- true: configures text message notifications. Text messages are sent when alerts are triggered.
@@ -172,6 +176,10 @@ func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) GetNoticeType() *string {
 	return s.NoticeType
 }
 
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) GetQpsThreshold() *int64 {
+	return s.QpsThreshold
+}
+
 func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) GetSmsNotice() *bool {
 	return s.SmsNotice
 }
@@ -192,6 +200,11 @@ func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetEmailNotice(v bool) *Up
 
 func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetNoticeType(v string) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
 	s.NoticeType = &v
+	return s
+}
+
+func (s *UpdateCloudGtmGlobalAlertRequestAlertConfig) SetQpsThreshold(v int64) *UpdateCloudGtmGlobalAlertRequestAlertConfig {
+	s.QpsThreshold = &v
 	return s
 }
 

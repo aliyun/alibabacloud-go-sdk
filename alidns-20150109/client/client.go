@@ -4418,8 +4418,6 @@ func (client *Client) DescribeCloudGtmSummary(request *DescribeCloudGtmSummaryRe
 	return _result, _err
 }
 
-// @param request - DescribeCloudGtmSystemLinesRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudGtmSystemLinesResponse

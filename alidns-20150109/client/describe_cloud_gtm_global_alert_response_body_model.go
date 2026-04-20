@@ -115,7 +115,11 @@ type DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig struct {
 	DingtalkNotice *bool   `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
 	EmailNotice    *bool   `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
 	NoticeType     *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
-	SmsNotice      *bool   `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
+	// example:
+	//
+	// 10
+	QpsThreshold *int64 `json:"QpsThreshold,omitempty" xml:"QpsThreshold,omitempty"`
+	SmsNotice    *bool  `json:"SmsNotice,omitempty" xml:"SmsNotice,omitempty"`
 	// example:
 	//
 	// 50
@@ -142,6 +146,10 @@ func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) GetNotic
 	return s.NoticeType
 }
 
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) GetQpsThreshold() *int64 {
+	return s.QpsThreshold
+}
+
 func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) GetSmsNotice() *bool {
 	return s.SmsNotice
 }
@@ -162,6 +170,11 @@ func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetEmail
 
 func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetNoticeType(v string) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
 	s.NoticeType = &v
+	return s
+}
+
+func (s *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig) SetQpsThreshold(v int64) *DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig {
+	s.QpsThreshold = &v
 	return s
 }
 
