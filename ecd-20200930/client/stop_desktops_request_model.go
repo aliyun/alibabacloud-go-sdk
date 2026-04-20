@@ -9,10 +9,14 @@ type iStopDesktopsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCreateSnapshot(v string) *StopDesktopsRequest
+	GetCreateSnapshot() *string
 	SetDesktopId(v []*string) *StopDesktopsRequest
 	GetDesktopId() []*string
 	SetOsUpdate(v bool) *StopDesktopsRequest
 	GetOsUpdate() *bool
+	SetPatchId(v string) *StopDesktopsRequest
+	GetPatchId() *string
 	SetRegionId(v string) *StopDesktopsRequest
 	GetRegionId() *string
 	SetStoppedMode(v string) *StopDesktopsRequest
@@ -20,6 +24,10 @@ type iStopDesktopsRequest interface {
 }
 
 type StopDesktopsRequest struct {
+	// example:
+	//
+	// false
+	CreateSnapshot *string `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
 	// The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
 	//
 	// This parameter is required.
@@ -34,6 +42,10 @@ type StopDesktopsRequest struct {
 	//
 	// false
 	OsUpdate *bool `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
+	// example:
+	//
+	// KB5082063
+	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -76,12 +88,20 @@ func (s StopDesktopsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StopDesktopsRequest) GetCreateSnapshot() *string {
+	return s.CreateSnapshot
+}
+
 func (s *StopDesktopsRequest) GetDesktopId() []*string {
 	return s.DesktopId
 }
 
 func (s *StopDesktopsRequest) GetOsUpdate() *bool {
 	return s.OsUpdate
+}
+
+func (s *StopDesktopsRequest) GetPatchId() *string {
+	return s.PatchId
 }
 
 func (s *StopDesktopsRequest) GetRegionId() *string {
@@ -92,6 +112,11 @@ func (s *StopDesktopsRequest) GetStoppedMode() *string {
 	return s.StoppedMode
 }
 
+func (s *StopDesktopsRequest) SetCreateSnapshot(v string) *StopDesktopsRequest {
+	s.CreateSnapshot = &v
+	return s
+}
+
 func (s *StopDesktopsRequest) SetDesktopId(v []*string) *StopDesktopsRequest {
 	s.DesktopId = v
 	return s
@@ -99,6 +124,11 @@ func (s *StopDesktopsRequest) SetDesktopId(v []*string) *StopDesktopsRequest {
 
 func (s *StopDesktopsRequest) SetOsUpdate(v bool) *StopDesktopsRequest {
 	s.OsUpdate = &v
+	return s
+}
+
+func (s *StopDesktopsRequest) SetPatchId(v string) *StopDesktopsRequest {
+	s.PatchId = &v
 	return s
 }
 

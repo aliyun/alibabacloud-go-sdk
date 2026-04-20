@@ -18580,12 +18580,20 @@ func (client *Client) RebootDesktopsWithContext(ctx context.Context, request *Re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreateSnapshot) {
+		query["CreateSnapshot"] = request.CreateSnapshot
+	}
+
 	if !dara.IsNil(request.DesktopId) {
 		query["DesktopId"] = request.DesktopId
 	}
 
 	if !dara.IsNil(request.OsUpdate) {
 		query["OsUpdate"] = request.OsUpdate
+	}
+
+	if !dara.IsNil(request.PatchId) {
+		query["PatchId"] = request.PatchId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -20120,12 +20128,20 @@ func (client *Client) StopDesktopsWithContext(ctx context.Context, request *Stop
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CreateSnapshot) {
+		query["CreateSnapshot"] = request.CreateSnapshot
+	}
+
 	if !dara.IsNil(request.DesktopId) {
 		query["DesktopId"] = request.DesktopId
 	}
 
 	if !dara.IsNil(request.OsUpdate) {
 		query["OsUpdate"] = request.OsUpdate
+	}
+
+	if !dara.IsNil(request.PatchId) {
+		query["PatchId"] = request.PatchId
 	}
 
 	if !dara.IsNil(request.RegionId) {

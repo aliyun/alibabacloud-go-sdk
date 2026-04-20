@@ -488,6 +488,7 @@ type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
 	//
 	// 1764660600967
 	AppointmentTimer  *int64  `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
+	CreateSnapshot    *bool   `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
 	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
 	// example:
@@ -498,9 +499,13 @@ type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
 	// example:
 	//
 	// 1800
-	LockScreenTime      *int32    `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
-	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	LockScreenTime   *int32  `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
+	NotificationTime *int32  `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
+	OperationType    *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// example:
+	//
+	// KB5082063
+	PatchId             *string   `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
 	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
 	ResetType           *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
 	StartCronExpression *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
@@ -519,6 +524,10 @@ func (s DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GoString() 
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetAppointmentTimer() *int64 {
 	return s.AppointmentTimer
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetCreateSnapshot() *bool {
+	return s.CreateSnapshot
 }
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetEndCronExpression() *string {
@@ -549,6 +558,10 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetOperati
 	return s.OperationType
 }
 
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetPatchId() *string {
+	return s.PatchId
+}
+
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetProcessWhitelist() []*string {
 	return s.ProcessWhitelist
 }
@@ -575,6 +588,11 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetTrigger
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetAppointmentTimer(v int64) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.AppointmentTimer = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetCreateSnapshot(v bool) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.CreateSnapshot = &v
 	return s
 }
 
@@ -610,6 +628,11 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetNotific
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetOperationType(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetPatchId(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.PatchId = &v
 	return s
 }
 
