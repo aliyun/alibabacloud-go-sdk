@@ -136,7 +136,8 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// example:
 	//
 	// 2
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu        *int32                                                                    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CpuOptions *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions `json:"CpuOptions,omitempty" xml:"CpuOptions,omitempty" type:"Struct"`
 	// The time at which the scaling configuration was created.
 	//
 	// example:
@@ -645,6 +646,10 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) GetCpu(
 	return s.Cpu
 }
 
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) GetCpuOptions() *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions {
+	return s.CpuOptions
+}
+
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) GetCreationTime() *string {
 	return s.CreationTime
 }
@@ -940,6 +945,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetAffi
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetCpu(v int32) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
 	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetCpuOptions(v *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions) *DescribeScalingConfigurationsResponseBodyScalingConfigurations {
+	s.CpuOptions = v
 	return s
 }
 
@@ -1304,6 +1314,11 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) SetZone
 }
 
 func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) Validate() error {
+	if s.CpuOptions != nil {
+		if err := s.CpuOptions.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CustomPriorities != nil {
 		for _, item := range s.CustomPriorities {
 			if item != nil {
@@ -1379,6 +1394,31 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurations) Validat
 		}
 	}
 	return nil
+}
+
+type DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions struct {
+	NestedVirtualization *string `json:"NestedVirtualization,omitempty" xml:"NestedVirtualization,omitempty"`
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions) GetNestedVirtualization() *string {
+	return s.NestedVirtualization
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions) SetNestedVirtualization(v string) *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions {
+	s.NestedVirtualization = &v
+	return s
+}
+
+func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsCpuOptions) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsCustomPriorities struct {
