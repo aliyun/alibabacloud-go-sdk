@@ -1444,6 +1444,10 @@ func (client *Client) CreateCenInterRegionTrafficQosPolicyWithOptions(request *C
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.ConsoleDryRun) {
+		query["ConsoleDryRun"] = request.ConsoleDryRun
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -13504,6 +13508,98 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyFlowLogAttributeResponse{}
 	_body, _err := client.ModifyFlowLogAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑跨账号授权记录
+//
+// @param request - ModifyGrantInstanceToTransitRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGrantInstanceToTransitRouterResponse
+func (client *Client) ModifyGrantInstanceToTransitRouterWithOptions(request *ModifyGrantInstanceToTransitRouterRequest, runtime *dara.RuntimeOptions) (_result *ModifyGrantInstanceToTransitRouterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CenId) {
+		query["CenId"] = request.CenId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.OrderType) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyGrantInstanceToTransitRouter"),
+		Version:     dara.String("2017-09-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyGrantInstanceToTransitRouterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑跨账号授权记录
+//
+// @param request - ModifyGrantInstanceToTransitRouterRequest
+//
+// @return ModifyGrantInstanceToTransitRouterResponse
+func (client *Client) ModifyGrantInstanceToTransitRouter(request *ModifyGrantInstanceToTransitRouterRequest) (_result *ModifyGrantInstanceToTransitRouterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyGrantInstanceToTransitRouterResponse{}
+	_body, _err := client.ModifyGrantInstanceToTransitRouterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -13,6 +13,8 @@ type iCreateCenInterRegionTrafficQosPolicyRequest interface {
 	GetBandwidthGuaranteeMode() *string
 	SetClientToken(v string) *CreateCenInterRegionTrafficQosPolicyRequest
 	GetClientToken() *string
+	SetConsoleDryRun(v bool) *CreateCenInterRegionTrafficQosPolicyRequest
+	GetConsoleDryRun() *bool
 	SetDryRun(v bool) *CreateCenInterRegionTrafficQosPolicyRequest
 	GetDryRun() *bool
 	SetOwnerAccount(v string) *CreateCenInterRegionTrafficQosPolicyRequest
@@ -53,7 +55,8 @@ type CreateCenInterRegionTrafficQosPolicyRequest struct {
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConsoleDryRun *bool   `json:"ConsoleDryRun,omitempty" xml:"ConsoleDryRun,omitempty"`
 	// Specifies whether only to precheck the API request. Valid values:
 	//
 	// 	- **true**: prechecks the request but does not create the QoS policy. The system checks the required parameters, the request format, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
@@ -122,6 +125,10 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *CreateCenInterRegionTrafficQosPolicyRequest) GetConsoleDryRun() *bool {
+	return s.ConsoleDryRun
+}
+
 func (s *CreateCenInterRegionTrafficQosPolicyRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -169,6 +176,11 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetBandwidthGuaranteeMode(
 
 func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetClientToken(v string) *CreateCenInterRegionTrafficQosPolicyRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateCenInterRegionTrafficQosPolicyRequest) SetConsoleDryRun(v bool) *CreateCenInterRegionTrafficQosPolicyRequest {
+	s.ConsoleDryRun = &v
 	return s
 }
 
