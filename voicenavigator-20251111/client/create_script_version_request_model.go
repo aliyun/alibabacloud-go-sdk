@@ -900,6 +900,7 @@ func (s *CreateScriptVersionRequestSynthesizerConfigPronRules) Validate() error 
 }
 
 type CreateScriptVersionRequestTranscriberConfig struct {
+	CorrectionRules []*CreateScriptVersionRequestTranscriberConfigCorrectionRules `json:"CorrectionRules,omitempty" xml:"CorrectionRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cd97223f-42f2-4cd9-95af-e734e2fe1fe4
@@ -939,6 +940,10 @@ func (s CreateScriptVersionRequestTranscriberConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateScriptVersionRequestTranscriberConfig) GetCorrectionRules() []*CreateScriptVersionRequestTranscriberConfigCorrectionRules {
+	return s.CorrectionRules
+}
+
 func (s *CreateScriptVersionRequestTranscriberConfig) GetCustomizationId() *string {
 	return s.CustomizationId
 }
@@ -969,6 +974,11 @@ func (s *CreateScriptVersionRequestTranscriberConfig) GetSpeechNoiseThreshold() 
 
 func (s *CreateScriptVersionRequestTranscriberConfig) GetVocabularyId() *string {
 	return s.VocabularyId
+}
+
+func (s *CreateScriptVersionRequestTranscriberConfig) SetCorrectionRules(v []*CreateScriptVersionRequestTranscriberConfigCorrectionRules) *CreateScriptVersionRequestTranscriberConfig {
+	s.CorrectionRules = v
+	return s
 }
 
 func (s *CreateScriptVersionRequestTranscriberConfig) SetCustomizationId(v string) *CreateScriptVersionRequestTranscriberConfig {
@@ -1012,12 +1022,56 @@ func (s *CreateScriptVersionRequestTranscriberConfig) SetVocabularyId(v string) 
 }
 
 func (s *CreateScriptVersionRequestTranscriberConfig) Validate() error {
+	if s.CorrectionRules != nil {
+		for _, item := range s.CorrectionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.NlsAccessProfile != nil {
 		if err := s.NlsAccessProfile.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type CreateScriptVersionRequestTranscriberConfigCorrectionRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s CreateScriptVersionRequestTranscriberConfigCorrectionRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateScriptVersionRequestTranscriberConfigCorrectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScriptVersionRequestTranscriberConfigCorrectionRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *CreateScriptVersionRequestTranscriberConfigCorrectionRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *CreateScriptVersionRequestTranscriberConfigCorrectionRules) SetPattern(v string) *CreateScriptVersionRequestTranscriberConfigCorrectionRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *CreateScriptVersionRequestTranscriberConfigCorrectionRules) SetReplacement(v string) *CreateScriptVersionRequestTranscriberConfigCorrectionRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *CreateScriptVersionRequestTranscriberConfigCorrectionRules) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateScriptVersionRequestTranscriberConfigNlsAccessProfile struct {

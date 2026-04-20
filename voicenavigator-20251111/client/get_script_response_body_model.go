@@ -1123,6 +1123,7 @@ func (s *GetScriptResponseBodyDataDraftVersionSynthesizerConfigPronRules) Valida
 }
 
 type GetScriptResponseBodyDataDraftVersionTranscriberConfig struct {
+	CorrectionRules []*GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules `json:"CorrectionRules,omitempty" xml:"CorrectionRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0c4f978a-73bb-4841-bd84-75c0398edd6f
@@ -1162,6 +1163,10 @@ func (s GetScriptResponseBodyDataDraftVersionTranscriberConfig) GoString() strin
 	return s.String()
 }
 
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) GetCorrectionRules() []*GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules {
+	return s.CorrectionRules
+}
+
 func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) GetCustomizationId() *string {
 	return s.CustomizationId
 }
@@ -1192,6 +1197,11 @@ func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) GetSpeechNoiseT
 
 func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) GetVocabularyId() *string {
 	return s.VocabularyId
+}
+
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) SetCorrectionRules(v []*GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) *GetScriptResponseBodyDataDraftVersionTranscriberConfig {
+	s.CorrectionRules = v
+	return s
 }
 
 func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) SetCustomizationId(v string) *GetScriptResponseBodyDataDraftVersionTranscriberConfig {
@@ -1235,12 +1245,56 @@ func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) SetVocabularyId
 }
 
 func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfig) Validate() error {
+	if s.CorrectionRules != nil {
+		for _, item := range s.CorrectionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.NlsAccessProfile != nil {
 		if err := s.NlsAccessProfile.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) SetPattern(v string) *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) SetReplacement(v string) *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *GetScriptResponseBodyDataDraftVersionTranscriberConfigCorrectionRules) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetScriptResponseBodyDataDraftVersionTranscriberConfigNlsAccessProfile struct {
@@ -2154,6 +2208,7 @@ func (s *GetScriptResponseBodyDataPublishedVersionSynthesizerConfigPronRules) Va
 }
 
 type GetScriptResponseBodyDataPublishedVersionTranscriberConfig struct {
+	CorrectionRules []*GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules `json:"CorrectionRules,omitempty" xml:"CorrectionRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// cd97223f-42f2-4cd9-95af-e734e2fe1fe4
@@ -2193,6 +2248,10 @@ func (s GetScriptResponseBodyDataPublishedVersionTranscriberConfig) GoString() s
 	return s.String()
 }
 
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) GetCorrectionRules() []*GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules {
+	return s.CorrectionRules
+}
+
 func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) GetCustomizationId() *string {
 	return s.CustomizationId
 }
@@ -2223,6 +2282,11 @@ func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) GetSpeechNo
 
 func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) GetVocabularyId() *string {
 	return s.VocabularyId
+}
+
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) SetCorrectionRules(v []*GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) *GetScriptResponseBodyDataPublishedVersionTranscriberConfig {
+	s.CorrectionRules = v
+	return s
 }
 
 func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) SetCustomizationId(v string) *GetScriptResponseBodyDataPublishedVersionTranscriberConfig {
@@ -2266,12 +2330,56 @@ func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) SetVocabula
 }
 
 func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfig) Validate() error {
+	if s.CorrectionRules != nil {
+		for _, item := range s.CorrectionRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.NlsAccessProfile != nil {
 		if err := s.NlsAccessProfile.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules struct {
+	Pattern     *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Replacement *string `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
+}
+
+func (s GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) GetPattern() *string {
+	return s.Pattern
+}
+
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) GetReplacement() *string {
+	return s.Replacement
+}
+
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) SetPattern(v string) *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) SetReplacement(v string) *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules {
+	s.Replacement = &v
+	return s
+}
+
+func (s *GetScriptResponseBodyDataPublishedVersionTranscriberConfigCorrectionRules) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetScriptResponseBodyDataPublishedVersionTranscriberConfigNlsAccessProfile struct {
