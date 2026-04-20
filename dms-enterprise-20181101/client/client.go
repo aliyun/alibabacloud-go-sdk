@@ -755,6 +755,80 @@ func (client *Client) AddTaskFlowEdges(request *AddTaskFlowEdgesRequest) (_resul
 
 // Summary:
 //
+// 工作空间添加用户
+//
+// @param request - AddWorkspaceUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorkspaceUserResponse
+func (client *Client) AddWorkspaceUserWithOptions(request *AddWorkspaceUserRequest, runtime *dara.RuntimeOptions) (_result *AddWorkspaceUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DmsUserIds) {
+		query["DmsUserIds"] = request.DmsUserIds
+	}
+
+	if !dara.IsNil(request.RoleId) {
+		query["RoleId"] = request.RoleId
+	}
+
+	if !dara.IsNil(request.RoleSource) {
+		query["RoleSource"] = request.RoleSource
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddWorkspaceUser"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddWorkspaceUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间添加用户
+//
+// @param request - AddWorkspaceUserRequest
+//
+// @return AddWorkspaceUserResponse
+func (client *Client) AddWorkspaceUser(request *AddWorkspaceUserRequest) (_result *AddWorkspaceUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddWorkspaceUserResponse{}
+	_body, _err := client.AddWorkspaceUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Analyzes the lineage (dependencies and influence) between tables and between fields in SQL statements.
 //
 // Description:
@@ -19667,6 +19741,80 @@ func (client *Client) ListWorkFlowTemplates(request *ListWorkFlowTemplatesReques
 
 // Summary:
 //
+// 列出工作空间内的用户
+//
+// @param request - ListWorkspaceUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceUsersResponse
+func (client *Client) ListWorkspaceUsersWithOptions(request *ListWorkspaceUsersRequest, runtime *dara.RuntimeOptions) (_result *ListWorkspaceUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWorkspaceUsers"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWorkspaceUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出工作空间内的用户
+//
+// @param request - ListWorkspaceUsersRequest
+//
+// @return ListWorkspaceUsersResponse
+func (client *Client) ListWorkspaceUsers(request *ListWorkspaceUsersRequest) (_result *ListWorkspaceUsersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListWorkspaceUsersResponse{}
+	_body, _err := client.ListWorkspaceUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of workspaces of the tenant.
 //
 // @param request - ListWorkspacesRequest
@@ -21485,6 +21633,72 @@ func (client *Client) RemoveTableFromCategory(request *RemoveTableFromCategoryRe
 
 // Summary:
 //
+// 工作空间添加用户
+//
+// @param request - RemoveWorkspaceUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveWorkspaceUserResponse
+func (client *Client) RemoveWorkspaceUserWithOptions(request *RemoveWorkspaceUserRequest, runtime *dara.RuntimeOptions) (_result *RemoveWorkspaceUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DmsUserIds) {
+		query["DmsUserIds"] = request.DmsUserIds
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveWorkspaceUser"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveWorkspaceUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 工作空间添加用户
+//
+// @param request - RemoveWorkspaceUserRequest
+//
+// @return RemoveWorkspaceUserResponse
+func (client *Client) RemoveWorkspaceUser(request *RemoveWorkspaceUserRequest) (_result *RemoveWorkspaceUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveWorkspaceUserResponse{}
+	_body, _err := client.RemoveWorkspaceUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Reruns a failed SQL task for data change.
 //
 // @param request - RestartDataCorrectSQLJobRequest
@@ -22326,6 +22540,86 @@ func (client *Client) SearchTableKnowledge(request *SearchTableKnowledgeRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &SearchTableKnowledgeResponse{}
 	_body, _err := client.SearchTableKnowledgeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索工作空间内的角色
+//
+// @param request - SearchWorkspaceRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchWorkspaceRolesResponse
+func (client *Client) SearchWorkspaceRolesWithOptions(request *SearchWorkspaceRolesRequest, runtime *dara.RuntimeOptions) (_result *SearchWorkspaceRolesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchWorkspaceRoles"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchWorkspaceRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索工作空间内的角色
+//
+// @param request - SearchWorkspaceRolesRequest
+//
+// @return SearchWorkspaceRolesResponse
+func (client *Client) SearchWorkspaceRoles(request *SearchWorkspaceRolesRequest) (_result *SearchWorkspaceRolesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchWorkspaceRolesResponse{}
+	_body, _err := client.SearchWorkspaceRolesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25616,6 +25910,76 @@ func (client *Client) UpdateWorkspace(request *UpdateWorkspaceRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateWorkspaceResponse{}
 	_body, _err := client.UpdateWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改工作空间的用户权限等信息
+//
+// @param request - UpdateWorkspaceUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceUserResponse
+func (client *Client) UpdateWorkspaceUserWithOptions(request *UpdateWorkspaceUserRequest, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DmsUserId) {
+		query["DmsUserId"] = request.DmsUserId
+	}
+
+	if !dara.IsNil(request.RoleIds) {
+		query["RoleIds"] = request.RoleIds
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkspaceUser"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkspaceUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改工作空间的用户权限等信息
+//
+// @param request - UpdateWorkspaceUserRequest
+//
+// @return UpdateWorkspaceUserResponse
+func (client *Client) UpdateWorkspaceUser(request *UpdateWorkspaceUserRequest) (_result *UpdateWorkspaceUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateWorkspaceUserResponse{}
+	_body, _err := client.UpdateWorkspaceUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
