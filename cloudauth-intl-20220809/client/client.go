@@ -3963,6 +3963,18 @@ func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *
 		query["TargetFacePictureUrl"] = request.TargetFacePictureUrl
 	}
 
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !dara.IsNil(request.TemplateRanCount) {
+		query["TemplateRanCount"] = request.TemplateRanCount
+	}
+
+	if !dara.IsNil(request.TemplateType) {
+		query["TemplateType"] = request.TemplateType
+	}
+
 	if !dara.IsNil(request.UseNFC) {
 		query["UseNFC"] = request.UseNFC
 	}

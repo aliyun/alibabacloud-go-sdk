@@ -109,6 +109,12 @@ type iInitializeRequest interface {
 	GetTargetFacePicture() *string
 	SetTargetFacePictureUrl(v string) *InitializeRequest
 	GetTargetFacePictureUrl() *string
+	SetTemplateConfig(v string) *InitializeRequest
+	GetTemplateConfig() *string
+	SetTemplateRanCount(v string) *InitializeRequest
+	GetTemplateRanCount() *string
+	SetTemplateType(v string) *InitializeRequest
+	GetTemplateType() *string
 	SetUseNFC(v string) *InitializeRequest
 	GetUseNFC() *string
 	SetVerifyModel(v string) *InitializeRequest
@@ -529,6 +535,9 @@ type InitializeRequest struct {
 	//
 	// https://www.xxxxx.com/1.jpg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
+	TemplateConfig       *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	TemplateRanCount     *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
+	TemplateType         *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// Optional to enable NFC verification when **DocType**=01000000 (global passport).
 	//
 	// - **Y*	- (Enabled)
@@ -753,6 +762,18 @@ func (s *InitializeRequest) GetTargetFacePicture() *string {
 
 func (s *InitializeRequest) GetTargetFacePictureUrl() *string {
 	return s.TargetFacePictureUrl
+}
+
+func (s *InitializeRequest) GetTemplateConfig() *string {
+	return s.TemplateConfig
+}
+
+func (s *InitializeRequest) GetTemplateRanCount() *string {
+	return s.TemplateRanCount
+}
+
+func (s *InitializeRequest) GetTemplateType() *string {
+	return s.TemplateType
 }
 
 func (s *InitializeRequest) GetUseNFC() *string {
@@ -1010,6 +1031,21 @@ func (s *InitializeRequest) SetTargetFacePicture(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetTargetFacePictureUrl(v string) *InitializeRequest {
 	s.TargetFacePictureUrl = &v
+	return s
+}
+
+func (s *InitializeRequest) SetTemplateConfig(v string) *InitializeRequest {
+	s.TemplateConfig = &v
+	return s
+}
+
+func (s *InitializeRequest) SetTemplateRanCount(v string) *InitializeRequest {
+	s.TemplateRanCount = &v
+	return s
+}
+
+func (s *InitializeRequest) SetTemplateType(v string) *InitializeRequest {
+	s.TemplateType = &v
 	return s
 }
 

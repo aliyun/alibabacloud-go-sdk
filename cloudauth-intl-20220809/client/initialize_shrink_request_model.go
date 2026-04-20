@@ -109,6 +109,12 @@ type iInitializeShrinkRequest interface {
 	GetTargetFacePicture() *string
 	SetTargetFacePictureUrl(v string) *InitializeShrinkRequest
 	GetTargetFacePictureUrl() *string
+	SetTemplateConfig(v string) *InitializeShrinkRequest
+	GetTemplateConfig() *string
+	SetTemplateRanCount(v string) *InitializeShrinkRequest
+	GetTemplateRanCount() *string
+	SetTemplateType(v string) *InitializeShrinkRequest
+	GetTemplateType() *string
 	SetUseNFC(v string) *InitializeShrinkRequest
 	GetUseNFC() *string
 	SetVerifyModel(v string) *InitializeShrinkRequest
@@ -529,6 +535,9 @@ type InitializeShrinkRequest struct {
 	//
 	// https://www.xxxxx.com/1.jpg
 	TargetFacePictureUrl *string `json:"TargetFacePictureUrl,omitempty" xml:"TargetFacePictureUrl,omitempty"`
+	TemplateConfig       *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
+	TemplateRanCount     *string `json:"TemplateRanCount,omitempty" xml:"TemplateRanCount,omitempty"`
+	TemplateType         *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 	// Optional to enable NFC verification when **DocType**=01000000 (global passport).
 	//
 	// - **Y*	- (Enabled)
@@ -753,6 +762,18 @@ func (s *InitializeShrinkRequest) GetTargetFacePicture() *string {
 
 func (s *InitializeShrinkRequest) GetTargetFacePictureUrl() *string {
 	return s.TargetFacePictureUrl
+}
+
+func (s *InitializeShrinkRequest) GetTemplateConfig() *string {
+	return s.TemplateConfig
+}
+
+func (s *InitializeShrinkRequest) GetTemplateRanCount() *string {
+	return s.TemplateRanCount
+}
+
+func (s *InitializeShrinkRequest) GetTemplateType() *string {
+	return s.TemplateType
 }
 
 func (s *InitializeShrinkRequest) GetUseNFC() *string {
@@ -1010,6 +1031,21 @@ func (s *InitializeShrinkRequest) SetTargetFacePicture(v string) *InitializeShri
 
 func (s *InitializeShrinkRequest) SetTargetFacePictureUrl(v string) *InitializeShrinkRequest {
 	s.TargetFacePictureUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetTemplateConfig(v string) *InitializeShrinkRequest {
+	s.TemplateConfig = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetTemplateRanCount(v string) *InitializeShrinkRequest {
+	s.TemplateRanCount = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetTemplateType(v string) *InitializeShrinkRequest {
+	s.TemplateType = &v
 	return s
 }
 
