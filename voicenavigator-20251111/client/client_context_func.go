@@ -3,9 +3,239 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
+
+// Summary:
+//
+// 开启会话
+//
+// @param request - BeginSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginSessionResponse
+func (client *Client) BeginSessionWithSSECtx(ctx context.Context, request *BeginSessionRequest, runtime *dara.RuntimeOptions, _yield chan *BeginSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.beginSessionWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 开启会话
+//
+// @param request - BeginSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginSessionResponse
+func (client *Client) BeginSessionWithContext(ctx context.Context, request *BeginSessionRequest, runtime *dara.RuntimeOptions) (_result *BeginSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.VendorParams) {
+		query["VendorParams"] = request.VendorParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BeginSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BeginSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发起呼叫
+//
+// @param request - BridgeWebCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BridgeWebCallResponse
+func (client *Client) BridgeWebCallWithContext(ctx context.Context, request *BridgeWebCallRequest, runtime *dara.RuntimeOptions) (_result *BridgeWebCallResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessChannelId) {
+		query["AccessChannelId"] = request.AccessChannelId
+	}
+
+	if !dara.IsNil(request.AccessChannelType) {
+		query["AccessChannelType"] = request.AccessChannelType
+	}
+
+	if !dara.IsNil(request.Caller) {
+		query["Caller"] = request.Caller
+	}
+
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.SampleRate) {
+		query["SampleRate"] = request.SampleRate
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.TimeoutSeconds) {
+		query["TimeoutSeconds"] = request.TimeoutSeconds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BridgeWebCall"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BridgeWebCallResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建服务提供商
+//
+// @param request - CreateCallCenterProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCallCenterProviderResponse
+func (client *Client) CreateCallCenterProviderWithContext(ctx context.Context, request *CreateCallCenterProviderRequest, runtime *dara.RuntimeOptions) (_result *CreateCallCenterProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Destination) {
+		body["Destination"] = request.Destination
+	}
+
+	if !dara.IsNil(request.Extras) {
+		body["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Originator) {
+		body["Originator"] = request.Originator
+	}
+
+	if !dara.IsNil(request.ProviderType) {
+		body["ProviderType"] = request.ProviderType
+	}
+
+	if !dara.IsNil(request.ReferTo) {
+		body["ReferTo"] = request.ReferTo
+	}
+
+	if !dara.IsNil(request.TrunkId) {
+		body["TrunkId"] = request.TrunkId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCallCenterProvider"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCallCenterProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
 
 // Summary:
 //
@@ -51,6 +281,66 @@ func (client *Client) CreateCloneVoiceWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建指令
+//
+// @param request - CreateInstructionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstructionResponse
+func (client *Client) CreateInstructionWithContext(ctx context.Context, request *CreateInstructionRequest, runtime *dara.RuntimeOptions) (_result *CreateInstructionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		body["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstruction"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstructionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -445,6 +735,54 @@ func (client *Client) CreateVoiceAccessProfileWithContext(ctx context.Context, t
 
 // Summary:
 //
+// 删除服务提供商
+//
+// @param request - DeleteCallCenterProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCallCenterProviderResponse
+func (client *Client) DeleteCallCenterProviderWithContext(ctx context.Context, request *DeleteCallCenterProviderRequest, runtime *dara.RuntimeOptions) (_result *DeleteCallCenterProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProviderId) {
+		body["ProviderId"] = request.ProviderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCallCenterProvider"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCallCenterProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除场景
 //
 // @param request - DeleteCloneVoiceRequest
@@ -483,6 +821,54 @@ func (client *Client) DeleteCloneVoiceWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指令
+//
+// @param request - DeleteInstructionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstructionResponse
+func (client *Client) DeleteInstructionWithContext(ctx context.Context, request *DeleteInstructionRequest, runtime *dara.RuntimeOptions) (_result *DeleteInstructionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		body["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteInstruction"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteInstructionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -733,6 +1119,81 @@ func (client *Client) DeleteVoiceAccessProfileWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 开启会话
+//
+// @param request - DialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DialogueResponse
+func (client *Client) DialogueWithSSECtx(ctx context.Context, request *DialogueRequest, runtime *dara.RuntimeOptions, _yield chan *DialogueResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.dialogueWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 开启会话
+//
+// @param request - DialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DialogueResponse
+func (client *Client) DialogueWithContext(ctx context.Context, request *DialogueRequest, runtime *dara.RuntimeOptions) (_result *DialogueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Extras) {
+		query["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Utterance) {
+		query["Utterance"] = request.Utterance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Dialogue"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DialogueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 禁用消息订阅
 //
 // @param request - DisableSubscriptionRequest
@@ -767,6 +1228,58 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 结束会话
+//
+// @param request - EndSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndSessionResponse
+func (client *Client) EndSessionWithContext(ctx context.Context, request *EndSessionRequest, runtime *dara.RuntimeOptions) (_result *EndSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EndSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EndSessionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -969,6 +1482,54 @@ func (client *Client) GetCallDetailRecordWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCallDetailRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取语音对话参数
+//
+// @param request - GetDataChannelCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataChannelCredentialResponse
+func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, request *GetDataChannelCredentialRequest, runtime *dara.RuntimeOptions) (_result *GetDataChannelCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeviceId) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataChannelCredential"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataChannelCredentialResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1311,6 +1872,62 @@ func (client *Client) ListBackgroundMusicsWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 查询服务提供商
+//
+// @param request - ListCallCenterProvidersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallCenterProvidersResponse
+func (client *Client) ListCallCenterProvidersWithContext(ctx context.Context, request *ListCallCenterProvidersRequest, runtime *dara.RuntimeOptions) (_result *ListCallCenterProvidersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProviderId) {
+		body["ProviderId"] = request.ProviderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCallCenterProviders"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCallCenterProvidersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取实例详情
 //
 // @param tmpReq - ListCallDetailRecordsRequest
@@ -1529,6 +2146,62 @@ func (client *Client) ListCloneVoiceModelsWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCloneVoiceModelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指令
+//
+// @param request - ListInstructionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstructionsResponse
+func (client *Client) ListInstructionsWithContext(ctx context.Context, request *ListInstructionsRequest, runtime *dara.RuntimeOptions) (_result *ListInstructionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProviderId) {
+		body["ProviderId"] = request.ProviderId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstructions"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstructionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2151,6 +2824,88 @@ func (client *Client) PublishScriptWithContext(ctx context.Context, request *Pub
 
 // Summary:
 //
+// 修改服务提供商
+//
+// @param request - UpdateCallCenterProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCallCenterProviderResponse
+func (client *Client) UpdateCallCenterProviderWithContext(ctx context.Context, request *UpdateCallCenterProviderRequest, runtime *dara.RuntimeOptions) (_result *UpdateCallCenterProviderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Destination) {
+		body["Destination"] = request.Destination
+	}
+
+	if !dara.IsNil(request.Extras) {
+		body["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Originator) {
+		body["Originator"] = request.Originator
+	}
+
+	if !dara.IsNil(request.ProviderId) {
+		body["ProviderId"] = request.ProviderId
+	}
+
+	if !dara.IsNil(request.ProviderType) {
+		body["ProviderType"] = request.ProviderType
+	}
+
+	if !dara.IsNil(request.ReferTo) {
+		body["ReferTo"] = request.ReferTo
+	}
+
+	if !dara.IsNil(request.TrunkId) {
+		body["TrunkId"] = request.TrunkId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCallCenterProvider"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCallCenterProviderResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新实例
 //
 // @param request - UpdateCloneVoiceRequest
@@ -2193,6 +2948,66 @@ func (client *Client) UpdateCloneVoiceWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCloneVoiceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改指令
+//
+// @param request - UpdateInstructionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstructionResponse
+func (client *Client) UpdateInstructionWithContext(ctx context.Context, request *UpdateInstructionRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstructionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		body["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstruction"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstructionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2583,4 +3398,128 @@ func (client *Client) UpdateVoiceAccessProfileWithContext(ctx context.Context, t
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) beginSessionWithSSECtx_opYieldFunc(_yield chan *BeginSessionResponse, _yieldErr chan error, ctx context.Context, request *BeginSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.VendorParams) {
+		query["VendorParams"] = request.VendorParams
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BeginSession"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) dialogueWithSSECtx_opYieldFunc(_yield chan *DialogueResponse, _yieldErr chan error, ctx context.Context, request *DialogueRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Extras) {
+		query["Extras"] = request.Extras
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Utterance) {
+		query["Utterance"] = request.Utterance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("Dialogue"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
