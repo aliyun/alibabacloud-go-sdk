@@ -1901,6 +1901,238 @@ func (client *Client) ContinueDBClusterMigration(request *ContinueDBClusterMigra
 
 // Summary:
 //
+// 创建数据集
+//
+// @param request - CreateAIDBClusterDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAIDBClusterDatasetResponse
+func (client *Client) CreateAIDBClusterDatasetWithOptions(request *CreateAIDBClusterDatasetRequest, runtime *dara.RuntimeOptions) (_result *CreateAIDBClusterDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetName) {
+		query["DatasetName"] = request.DatasetName
+	}
+
+	if !dara.IsNil(request.DatasetType) {
+		query["DatasetType"] = request.DatasetType
+	}
+
+	if !dara.IsNil(request.ImportMode) {
+		query["ImportMode"] = request.ImportMode
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TrainMode) {
+		query["TrainMode"] = request.TrainMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAIDBClusterDataset"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAIDBClusterDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateAIDBClusterDatasetRequest
+//
+// @return CreateAIDBClusterDatasetResponse
+func (client *Client) CreateAIDBClusterDataset(request *CreateAIDBClusterDatasetRequest) (_result *CreateAIDBClusterDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAIDBClusterDatasetResponse{}
+	_body, _err := client.CreateAIDBClusterDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型评测任务
+//
+// @param request - CreateAIDBClusterTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAIDBClusterTaskResponse
+func (client *Client) CreateAIDBClusterTaskWithOptions(request *CreateAIDBClusterTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateAIDBClusterTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBInstanceClass) {
+		query["DBInstanceClass"] = request.DBInstanceClass
+	}
+
+	if !dara.IsNil(request.DatasetPath) {
+		query["DatasetPath"] = request.DatasetPath
+	}
+
+	if !dara.IsNil(request.EvalDatasetPath) {
+		query["EvalDatasetPath"] = request.EvalDatasetPath
+	}
+
+	if !dara.IsNil(request.KubeType) {
+		query["KubeType"] = request.KubeType
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelSource) {
+		query["ModelSource"] = request.ModelSource
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		query["ModelType"] = request.ModelType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.RunningParameter) {
+		query["RunningParameter"] = request.RunningParameter
+	}
+
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAIDBClusterTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAIDBClusterTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型评测任务
+//
+// @param request - CreateAIDBClusterTaskRequest
+//
+// @return CreateAIDBClusterTaskResponse
+func (client *Client) CreateAIDBClusterTask(request *CreateAIDBClusterTaskRequest) (_result *CreateAIDBClusterTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAIDBClusterTaskResponse{}
+	_body, _err := client.CreateAIDBClusterTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建AI节点
 //
 // @param request - CreateAINodesRequest
@@ -5115,6 +5347,178 @@ func (client *Client) DeleteAIDBCluster(request *DeleteAIDBClusterRequest) (_res
 
 // Summary:
 //
+// 删除数据集
+//
+// @param request - DeleteAIDBClusterDatasetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAIDBClusterDatasetResponse
+func (client *Client) DeleteAIDBClusterDatasetWithOptions(request *DeleteAIDBClusterDatasetRequest, runtime *dara.RuntimeOptions) (_result *DeleteAIDBClusterDatasetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAIDBClusterDataset"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAIDBClusterDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除数据集
+//
+// @param request - DeleteAIDBClusterDatasetRequest
+//
+// @return DeleteAIDBClusterDatasetResponse
+func (client *Client) DeleteAIDBClusterDataset(request *DeleteAIDBClusterDatasetRequest) (_result *DeleteAIDBClusterDatasetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAIDBClusterDatasetResponse{}
+	_body, _err := client.DeleteAIDBClusterDatasetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除任务实例
+//
+// @param request - DeleteAIDBClusterTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAIDBClusterTaskResponse
+func (client *Client) DeleteAIDBClusterTaskWithOptions(request *DeleteAIDBClusterTaskRequest, runtime *dara.RuntimeOptions) (_result *DeleteAIDBClusterTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAIDBClusterTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAIDBClusterTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除任务实例
+//
+// @param request - DeleteAIDBClusterTaskRequest
+//
+// @return DeleteAIDBClusterTaskResponse
+func (client *Client) DeleteAIDBClusterTask(request *DeleteAIDBClusterTaskRequest) (_result *DeleteAIDBClusterTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAIDBClusterTaskResponse{}
+	_body, _err := client.DeleteAIDBClusterTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除ai实例子节点
 //
 // @param request - DeleteAINodesRequest
@@ -7469,6 +7873,112 @@ func (client *Client) DescribeAIDBClusterAttribute(request *DescribeAIDBClusterA
 
 // Summary:
 //
+// 查询数据集列表
+//
+// @param request - DescribeAIDBClusterDatasetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIDBClusterDatasetsResponse
+func (client *Client) DescribeAIDBClusterDatasetsWithOptions(request *DescribeAIDBClusterDatasetsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIDBClusterDatasetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContinuationToken) {
+		query["ContinuationToken"] = request.ContinuationToken
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DatasetId) {
+		query["DatasetId"] = request.DatasetId
+	}
+
+	if !dara.IsNil(request.DatasetType) {
+		query["DatasetType"] = request.DatasetType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TrainMode) {
+		query["TrainMode"] = request.TrainMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIDBClusterDatasets"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIDBClusterDatasetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据集列表
+//
+// @param request - DescribeAIDBClusterDatasetsRequest
+//
+// @return DescribeAIDBClusterDatasetsResponse
+func (client *Client) DescribeAIDBClusterDatasets(request *DescribeAIDBClusterDatasetsRequest) (_result *DescribeAIDBClusterDatasetsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAIDBClusterDatasetsResponse{}
+	_body, _err := client.DescribeAIDBClusterDatasetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取ai容器性能指标
 //
 // @param request - DescribeAIDBClusterPerformanceRequest
@@ -7538,6 +8048,92 @@ func (client *Client) DescribeAIDBClusterPerformance(request *DescribeAIDBCluste
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeAIDBClusterPerformanceResponse{}
 	_body, _err := client.DescribeAIDBClusterPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务实例详情
+//
+// @param request - DescribeAIDBClusterTaskAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIDBClusterTaskAttributeResponse
+func (client *Client) DescribeAIDBClusterTaskAttributeWithOptions(request *DescribeAIDBClusterTaskAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIDBClusterTaskAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DescribeType) {
+		query["DescribeType"] = request.DescribeType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIDBClusterTaskAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIDBClusterTaskAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务实例详情
+//
+// @param request - DescribeAIDBClusterTaskAttributeRequest
+//
+// @return DescribeAIDBClusterTaskAttributeResponse
+func (client *Client) DescribeAIDBClusterTaskAttribute(request *DescribeAIDBClusterTaskAttributeRequest) (_result *DescribeAIDBClusterTaskAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAIDBClusterTaskAttributeResponse{}
+	_body, _err := client.DescribeAIDBClusterTaskAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7718,6 +8314,92 @@ func (client *Client) DescribeAIDBClusterTaskMetrics(request *DescribeAIDBCluste
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeAIDBClusterTaskMetricsResponse{}
 	_body, _err := client.DescribeAIDBClusterTaskMetricsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务实例列表
+//
+// @param request - DescribeAIDBClusterTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIDBClusterTasksResponse
+func (client *Client) DescribeAIDBClusterTasksWithOptions(request *DescribeAIDBClusterTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIDBClusterTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KubeType) {
+		query["KubeType"] = request.KubeType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIDBClusterTasks"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIDBClusterTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务实例列表
+//
+// @param request - DescribeAIDBClusterTasksRequest
+//
+// @return DescribeAIDBClusterTasksResponse
+func (client *Client) DescribeAIDBClusterTasks(request *DescribeAIDBClusterTasksRequest) (_result *DescribeAIDBClusterTasksResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAIDBClusterTasksResponse{}
+	_body, _err := client.DescribeAIDBClusterTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
