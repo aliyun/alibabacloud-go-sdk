@@ -95,6 +95,10 @@ func (client *Client) AddCategoryWithOptions(WorkspaceId *string, request *AddCa
 		body["CategoryType"] = request.CategoryType
 	}
 
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
 	if !dara.IsNil(request.ParentCategoryId) {
 		body["ParentCategoryId"] = request.ParentCategoryId
 	}

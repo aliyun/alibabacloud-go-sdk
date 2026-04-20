@@ -46,6 +46,10 @@ func (client *Client) AddCategoryWithContext(ctx context.Context, WorkspaceId *s
 		body["CategoryType"] = request.CategoryType
 	}
 
+	if !dara.IsNil(request.ConnectorId) {
+		body["ConnectorId"] = request.ConnectorId
+	}
+
 	if !dara.IsNil(request.ParentCategoryId) {
 		body["ParentCategoryId"] = request.ParentCategoryId
 	}
