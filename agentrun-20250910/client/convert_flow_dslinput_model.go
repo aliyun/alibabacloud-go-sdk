@@ -134,7 +134,10 @@ type ConvertFlowDSLInputOptions struct {
 	// example:
 	//
 	// true
-	CompatibilityCheck *bool `json:"compatibilityCheck,omitempty" xml:"compatibilityCheck,omitempty"`
+	CompatibilityCheck *bool   `json:"compatibilityCheck,omitempty" xml:"compatibilityCheck,omitempty"`
+	CredentialName     *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
+	FlowName           *string `json:"flowName,omitempty" xml:"flowName,omitempty"`
+	VpcEndpointName    *string `json:"vpcEndpointName,omitempty" xml:"vpcEndpointName,omitempty"`
 }
 
 func (s ConvertFlowDSLInputOptions) String() string {
@@ -149,8 +152,35 @@ func (s *ConvertFlowDSLInputOptions) GetCompatibilityCheck() *bool {
 	return s.CompatibilityCheck
 }
 
+func (s *ConvertFlowDSLInputOptions) GetCredentialName() *string {
+	return s.CredentialName
+}
+
+func (s *ConvertFlowDSLInputOptions) GetFlowName() *string {
+	return s.FlowName
+}
+
+func (s *ConvertFlowDSLInputOptions) GetVpcEndpointName() *string {
+	return s.VpcEndpointName
+}
+
 func (s *ConvertFlowDSLInputOptions) SetCompatibilityCheck(v bool) *ConvertFlowDSLInputOptions {
 	s.CompatibilityCheck = &v
+	return s
+}
+
+func (s *ConvertFlowDSLInputOptions) SetCredentialName(v string) *ConvertFlowDSLInputOptions {
+	s.CredentialName = &v
+	return s
+}
+
+func (s *ConvertFlowDSLInputOptions) SetFlowName(v string) *ConvertFlowDSLInputOptions {
+	s.FlowName = &v
+	return s
+}
+
+func (s *ConvertFlowDSLInputOptions) SetVpcEndpointName(v string) *ConvertFlowDSLInputOptions {
+	s.VpcEndpointName = &v
 	return s
 }
 
