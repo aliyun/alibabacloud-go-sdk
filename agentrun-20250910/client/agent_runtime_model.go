@@ -69,6 +69,8 @@ type iAgentRuntime interface {
 	GetStatus() *string
 	SetStatusReason(v string) *AgentRuntime
 	GetStatusReason() *string
+	SetSystemTags(v []*string) *AgentRuntime
+	GetSystemTags() []*string
 	SetWorkspaceId(v string) *AgentRuntime
 	GetWorkspaceId() *string
 }
@@ -245,6 +247,12 @@ type AgentRuntime struct {
 	//
 	// Runtime is ready for use
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
+	// 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+	//
+	// example:
+	//
+	// system-tag-1,system-tag-2
+	SystemTags []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
 	// 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
 	//
 	// example:
@@ -379,6 +387,10 @@ func (s *AgentRuntime) GetStatus() *string {
 
 func (s *AgentRuntime) GetStatusReason() *string {
 	return s.StatusReason
+}
+
+func (s *AgentRuntime) GetSystemTags() []*string {
+	return s.SystemTags
 }
 
 func (s *AgentRuntime) GetWorkspaceId() *string {
@@ -532,6 +544,11 @@ func (s *AgentRuntime) SetStatus(v string) *AgentRuntime {
 
 func (s *AgentRuntime) SetStatusReason(v string) *AgentRuntime {
 	s.StatusReason = &v
+	return s
+}
+
+func (s *AgentRuntime) SetSystemTags(v []*string) *AgentRuntime {
+	s.SystemTags = v
 	return s
 }
 

@@ -55,6 +55,8 @@ type iUpdateAgentRuntimeInput interface {
 	GetSessionConcurrencyLimitPerInstance() *int32
 	SetSessionIdleTimeoutSeconds(v int32) *UpdateAgentRuntimeInput
 	GetSessionIdleTimeoutSeconds() *int32
+	SetSystemTags(v []*string) *UpdateAgentRuntimeInput
+	GetSystemTags() []*string
 	SetWorkspaceId(v string) *UpdateAgentRuntimeInput
 	GetWorkspaceId() *string
 }
@@ -182,8 +184,14 @@ type UpdateAgentRuntimeInput struct {
 	// example:
 	//
 	// 3600
-	SessionIdleTimeoutSeconds *int32  `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	WorkspaceId               *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	// 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+	//
+	// example:
+	//
+	// system-tag-1,system-tag-2
+	SystemTags  []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
+	WorkspaceId *string   `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
 func (s UpdateAgentRuntimeInput) String() string {
@@ -284,6 +292,10 @@ func (s *UpdateAgentRuntimeInput) GetSessionConcurrencyLimitPerInstance() *int32
 
 func (s *UpdateAgentRuntimeInput) GetSessionIdleTimeoutSeconds() *int32 {
 	return s.SessionIdleTimeoutSeconds
+}
+
+func (s *UpdateAgentRuntimeInput) GetSystemTags() []*string {
+	return s.SystemTags
 }
 
 func (s *UpdateAgentRuntimeInput) GetWorkspaceId() *string {
@@ -402,6 +414,11 @@ func (s *UpdateAgentRuntimeInput) SetSessionConcurrencyLimitPerInstance(v int32)
 
 func (s *UpdateAgentRuntimeInput) SetSessionIdleTimeoutSeconds(v int32) *UpdateAgentRuntimeInput {
 	s.SessionIdleTimeoutSeconds = &v
+	return s
+}
+
+func (s *UpdateAgentRuntimeInput) SetSystemTags(v []*string) *UpdateAgentRuntimeInput {
+	s.SystemTags = v
 	return s
 }
 

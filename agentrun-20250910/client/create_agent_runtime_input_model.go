@@ -59,6 +59,8 @@ type iCreateAgentRuntimeInput interface {
 	GetSessionConcurrencyLimitPerInstance() *int32
 	SetSessionIdleTimeoutSeconds(v int32) *CreateAgentRuntimeInput
 	GetSessionIdleTimeoutSeconds() *int32
+	SetSystemTags(v []*string) *CreateAgentRuntimeInput
+	GetSystemTags() []*string
 	SetWorkspaceId(v string) *CreateAgentRuntimeInput
 	GetWorkspaceId() *string
 }
@@ -214,6 +216,12 @@ type CreateAgentRuntimeInput struct {
 	//
 	// 3600
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
+	// 智能体运行时的系统标签信息，用于系统级别的资源分类和管理
+	//
+	// example:
+	//
+	// system-tag-1,system-tag-2
+	SystemTags []*string `json:"systemTags" xml:"systemTags" type:"Repeated"`
 	// 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
 	//
 	// example:
@@ -328,6 +336,10 @@ func (s *CreateAgentRuntimeInput) GetSessionConcurrencyLimitPerInstance() *int32
 
 func (s *CreateAgentRuntimeInput) GetSessionIdleTimeoutSeconds() *int32 {
 	return s.SessionIdleTimeoutSeconds
+}
+
+func (s *CreateAgentRuntimeInput) GetSystemTags() []*string {
+	return s.SystemTags
 }
 
 func (s *CreateAgentRuntimeInput) GetWorkspaceId() *string {
@@ -456,6 +468,11 @@ func (s *CreateAgentRuntimeInput) SetSessionConcurrencyLimitPerInstance(v int32)
 
 func (s *CreateAgentRuntimeInput) SetSessionIdleTimeoutSeconds(v int32) *CreateAgentRuntimeInput {
 	s.SessionIdleTimeoutSeconds = &v
+	return s
+}
+
+func (s *CreateAgentRuntimeInput) SetSystemTags(v []*string) *CreateAgentRuntimeInput {
+	s.SystemTags = v
 	return s
 }
 
