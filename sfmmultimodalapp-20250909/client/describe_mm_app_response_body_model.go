@@ -9,10 +9,14 @@ type iDescribeMmAppResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppConfig(v *DescribeMmAppResponseBodyAppConfig) *DescribeMmAppResponseBody
+	GetAppConfig() *DescribeMmAppResponseBodyAppConfig
 	SetAppId(v string) *DescribeMmAppResponseBody
 	GetAppId() *string
 	SetAppName(v string) *DescribeMmAppResponseBody
 	GetAppName() *string
+	SetBindingConfig(v *DescribeMmAppResponseBodyBindingConfig) *DescribeMmAppResponseBody
+	GetBindingConfig() *DescribeMmAppResponseBodyBindingConfig
 	SetConversationConfig(v *DescribeMmAppResponseBodyConversationConfig) *DescribeMmAppResponseBody
 	GetConversationConfig() *DescribeMmAppResponseBodyConversationConfig
 	SetCreateUserId(v string) *DescribeMmAppResponseBody
@@ -40,6 +44,7 @@ type iDescribeMmAppResponseBody interface {
 }
 
 type DescribeMmAppResponseBody struct {
+	AppConfig *DescribeMmAppResponseBodyAppConfig `json:"AppConfig,omitempty" xml:"AppConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// mm_xxxx
@@ -48,6 +53,7 @@ type DescribeMmAppResponseBody struct {
 	//
 	// 多模态应用xxxx
 	AppName            *string                                      `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BindingConfig      *DescribeMmAppResponseBodyBindingConfig      `json:"BindingConfig,omitempty" xml:"BindingConfig,omitempty" type:"Struct"`
 	ConversationConfig *DescribeMmAppResponseBodyConversationConfig `json:"ConversationConfig,omitempty" xml:"ConversationConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -82,6 +88,8 @@ type DescribeMmAppResponseBody struct {
 	//
 	// 1
 	PublishVersion *int64 `json:"PublishVersion,omitempty" xml:"PublishVersion,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// xxxx
@@ -100,12 +108,20 @@ func (s DescribeMmAppResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeMmAppResponseBody) GetAppConfig() *DescribeMmAppResponseBodyAppConfig {
+	return s.AppConfig
+}
+
 func (s *DescribeMmAppResponseBody) GetAppId() *string {
 	return s.AppId
 }
 
 func (s *DescribeMmAppResponseBody) GetAppName() *string {
 	return s.AppName
+}
+
+func (s *DescribeMmAppResponseBody) GetBindingConfig() *DescribeMmAppResponseBodyBindingConfig {
+	return s.BindingConfig
 }
 
 func (s *DescribeMmAppResponseBody) GetConversationConfig() *DescribeMmAppResponseBodyConversationConfig {
@@ -156,6 +172,11 @@ func (s *DescribeMmAppResponseBody) GetStatus() *string {
 	return s.Status
 }
 
+func (s *DescribeMmAppResponseBody) SetAppConfig(v *DescribeMmAppResponseBodyAppConfig) *DescribeMmAppResponseBody {
+	s.AppConfig = v
+	return s
+}
+
 func (s *DescribeMmAppResponseBody) SetAppId(v string) *DescribeMmAppResponseBody {
 	s.AppId = &v
 	return s
@@ -163,6 +184,11 @@ func (s *DescribeMmAppResponseBody) SetAppId(v string) *DescribeMmAppResponseBod
 
 func (s *DescribeMmAppResponseBody) SetAppName(v string) *DescribeMmAppResponseBody {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBody) SetBindingConfig(v *DescribeMmAppResponseBodyBindingConfig) *DescribeMmAppResponseBody {
+	s.BindingConfig = v
 	return s
 }
 
@@ -227,6 +253,16 @@ func (s *DescribeMmAppResponseBody) SetStatus(v string) *DescribeMmAppResponseBo
 }
 
 func (s *DescribeMmAppResponseBody) Validate() error {
+	if s.AppConfig != nil {
+		if err := s.AppConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.BindingConfig != nil {
+		if err := s.BindingConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ConversationConfig != nil {
 		if err := s.ConversationConfig.Validate(); err != nil {
 			return err
@@ -238,6 +274,278 @@ func (s *DescribeMmAppResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeMmAppResponseBodyAppConfig struct {
+	// example:
+	//
+	// true
+	EnableTransition *bool `json:"EnableTransition,omitempty" xml:"EnableTransition,omitempty"`
+}
+
+func (s DescribeMmAppResponseBodyAppConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMmAppResponseBodyAppConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMmAppResponseBodyAppConfig) GetEnableTransition() *bool {
+	return s.EnableTransition
+}
+
+func (s *DescribeMmAppResponseBodyAppConfig) SetEnableTransition(v bool) *DescribeMmAppResponseBodyAppConfig {
+	s.EnableTransition = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyAppConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeMmAppResponseBodyBindingConfig struct {
+	Commands  []*DescribeMmAppResponseBodyBindingConfigCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	Mcps      []*DescribeMmAppResponseBodyBindingConfigMcps     `json:"Mcps,omitempty" xml:"Mcps,omitempty" type:"Repeated"`
+	RagConfig *DescribeMmAppResponseBodyBindingConfigRagConfig  `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
+}
+
+func (s DescribeMmAppResponseBodyBindingConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMmAppResponseBodyBindingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) GetCommands() []*DescribeMmAppResponseBodyBindingConfigCommands {
+	return s.Commands
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) GetMcps() []*DescribeMmAppResponseBodyBindingConfigMcps {
+	return s.Mcps
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) GetRagConfig() *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	return s.RagConfig
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) SetCommands(v []*DescribeMmAppResponseBodyBindingConfigCommands) *DescribeMmAppResponseBodyBindingConfig {
+	s.Commands = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) SetMcps(v []*DescribeMmAppResponseBodyBindingConfigMcps) *DescribeMmAppResponseBodyBindingConfig {
+	s.Mcps = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) SetRagConfig(v *DescribeMmAppResponseBodyBindingConfigRagConfig) *DescribeMmAppResponseBodyBindingConfig {
+	s.RagConfig = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfig) Validate() error {
+	if s.Commands != nil {
+		for _, item := range s.Commands {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Mcps != nil {
+		for _, item := range s.Mcps {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeMmAppResponseBodyBindingConfigCommands struct {
+	// example:
+	//
+	// xxx
+	DomainCode *string   `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
+	Tools      []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BAILIAN
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeMmAppResponseBodyBindingConfigCommands) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMmAppResponseBodyBindingConfigCommands) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) GetDomainCode() *string {
+	return s.DomainCode
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) GetTools() []*string {
+	return s.Tools
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) GetType() *string {
+	return s.Type
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) SetDomainCode(v string) *DescribeMmAppResponseBodyBindingConfigCommands {
+	s.DomainCode = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) SetTools(v []*string) *DescribeMmAppResponseBodyBindingConfigCommands {
+	s.Tools = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) SetType(v string) *DescribeMmAppResponseBodyBindingConfigCommands {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigCommands) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeMmAppResponseBodyBindingConfigMcps struct {
+	// example:
+	//
+	// mcp-xxxx
+	Code     *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	ToolList []*string `json:"ToolList,omitempty" xml:"ToolList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMmAppResponseBodyBindingConfigMcps) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMmAppResponseBodyBindingConfigMcps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigMcps) GetCode() *string {
+	return s.Code
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigMcps) GetToolList() []*string {
+	return s.ToolList
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigMcps) SetCode(v string) *DescribeMmAppResponseBodyBindingConfigMcps {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigMcps) SetToolList(v []*string) *DescribeMmAppResponseBodyBindingConfigMcps {
+	s.ToolList = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigMcps) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeMmAppResponseBodyBindingConfigRagConfig struct {
+	// example:
+	//
+	// true
+	EnableSearch          *string   `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
+	KnowledgeBaseCodeList []*string `json:"KnowledgeBaseCodeList,omitempty" xml:"KnowledgeBaseCodeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// top_k
+	PromptStrategy *string             `json:"PromptStrategy,omitempty" xml:"PromptStrategy,omitempty"`
+	RankWeights    map[string]*float64 `json:"RankWeights,omitempty" xml:"RankWeights,omitempty"`
+	// example:
+	//
+	// 1000
+	RetrieveMaxLength *int32 `json:"RetrieveMaxLength,omitempty" xml:"RetrieveMaxLength,omitempty"`
+	// example:
+	//
+	// 5
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+}
+
+func (s DescribeMmAppResponseBodyBindingConfigRagConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeMmAppResponseBodyBindingConfigRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) GetEnableSearch() *string {
+	return s.EnableSearch
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) GetKnowledgeBaseCodeList() []*string {
+	return s.KnowledgeBaseCodeList
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) GetPromptStrategy() *string {
+	return s.PromptStrategy
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) GetRankWeights() map[string]*float64 {
+	return s.RankWeights
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) GetRetrieveMaxLength() *int32 {
+	return s.RetrieveMaxLength
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) GetTopK() *int32 {
+	return s.TopK
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) SetEnableSearch(v string) *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	s.EnableSearch = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) SetPromptStrategy(v string) *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	s.PromptStrategy = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) SetRankWeights(v map[string]*float64) *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	s.RankWeights = v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) SetRetrieveMaxLength(v int32) *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	s.RetrieveMaxLength = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) SetTopK(v int32) *DescribeMmAppResponseBodyBindingConfigRagConfig {
+	s.TopK = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyBindingConfigRagConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeMmAppResponseBodyConversationConfig struct {
@@ -310,6 +618,7 @@ type DescribeMmAppResponseBodyModelConfig struct {
 	//
 	// MMH
 	ModelType     *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	OpenMemory    *bool   `json:"OpenMemory,omitempty" xml:"OpenMemory,omitempty"`
 	OpenWebSearch *bool   `json:"OpenWebSearch,omitempty" xml:"OpenWebSearch,omitempty"`
 	// example:
 	//
@@ -333,6 +642,10 @@ func (s *DescribeMmAppResponseBodyModelConfig) GetModelType() *string {
 	return s.ModelType
 }
 
+func (s *DescribeMmAppResponseBodyModelConfig) GetOpenMemory() *bool {
+	return s.OpenMemory
+}
+
 func (s *DescribeMmAppResponseBodyModelConfig) GetOpenWebSearch() *bool {
 	return s.OpenWebSearch
 }
@@ -348,6 +661,11 @@ func (s *DescribeMmAppResponseBodyModelConfig) SetHistoryLimit(v int32) *Describ
 
 func (s *DescribeMmAppResponseBodyModelConfig) SetModelType(v string) *DescribeMmAppResponseBodyModelConfig {
 	s.ModelType = &v
+	return s
+}
+
+func (s *DescribeMmAppResponseBodyModelConfig) SetOpenMemory(v bool) *DescribeMmAppResponseBodyModelConfig {
+	s.OpenMemory = &v
 	return s
 }
 

@@ -821,6 +821,122 @@ func (client *Client) ListPublishedMmAppWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 多模态应用绑定MCP
+//
+// @param tmpReq - MmAppBindingMcpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MmAppBindingMcpResponse
+func (client *Client) MmAppBindingMcpWithContext(ctx context.Context, tmpReq *MmAppBindingMcpRequest, runtime *dara.RuntimeOptions) (_result *MmAppBindingMcpResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MmAppBindingMcpShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Mcps) {
+		request.McpsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Mcps, dara.String("Mcps"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.McpsShrink) {
+		query["Mcps"] = request.McpsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MmAppBindingMcp"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MmAppBindingMcpResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 多模态应用绑定知识库
+//
+// @param tmpReq - MmAppBindingRagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MmAppBindingRagResponse
+func (client *Client) MmAppBindingRagWithContext(ctx context.Context, tmpReq *MmAppBindingRagRequest, runtime *dara.RuntimeOptions) (_result *MmAppBindingRagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &MmAppBindingRagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.KnowledgeBaseCodeList) {
+		request.KnowledgeBaseCodeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KnowledgeBaseCodeList, dara.String("KnowledgeBaseCodeList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseCodeListShrink) {
+		query["KnowledgeBaseCodeList"] = request.KnowledgeBaseCodeListShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MmAppBindingRag"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MmAppBindingRagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 变更用户记忆配置
 //
 // @param request - PatchMemoryConfigRequest
@@ -1397,6 +1513,280 @@ func (client *Client) UpdateMmAppWithContext(ctx context.Context, tmpReq *Update
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateMmAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改多模态应用长期记忆开关
+//
+// @param request - UpdateMmAppMemoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmAppMemoryResponse
+func (client *Client) UpdateMmAppMemoryWithContext(ctx context.Context, request *UpdateMmAppMemoryRequest, runtime *dara.RuntimeOptions) (_result *UpdateMmAppMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmAppMemory"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmAppMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改知识库开关
+//
+// @param request - UpdateMmAppRagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmAppRagResponse
+func (client *Client) UpdateMmAppRagWithContext(ctx context.Context, request *UpdateMmAppRagRequest, runtime *dara.RuntimeOptions) (_result *UpdateMmAppRagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmAppRag"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmAppRagResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改知识库配置
+//
+// @param request - UpdateMmAppRagConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmAppRagConfigResponse
+func (client *Client) UpdateMmAppRagConfigWithContext(ctx context.Context, request *UpdateMmAppRagConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateMmAppRagConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.PromptStrategy) {
+		query["PromptStrategy"] = request.PromptStrategy
+	}
+
+	if !dara.IsNil(request.RetrieveMaxLength) {
+		query["RetrieveMaxLength"] = request.RetrieveMaxLength
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmAppRagConfig"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmAppRagConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改知识库权重
+//
+// @param tmpReq - UpdateMmAppRagWeightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmAppRagWeightResponse
+func (client *Client) UpdateMmAppRagWeightWithContext(ctx context.Context, tmpReq *UpdateMmAppRagWeightRequest, runtime *dara.RuntimeOptions) (_result *UpdateMmAppRagWeightResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMmAppRagWeightShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RankWeights) {
+		request.RankWeightsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RankWeights, dara.String("RankWeights"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.RankWeightsShrink) {
+		query["RankWeights"] = request.RankWeightsShrink
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmAppRagWeight"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmAppRagWeightResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用承接语开关
+//
+// @param request - UpdateMmAppTransitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMmAppTransitionResponse
+func (client *Client) UpdateMmAppTransitionWithContext(ctx context.Context, request *UpdateMmAppTransitionRequest, runtime *dara.RuntimeOptions) (_result *UpdateMmAppTransitionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMmAppTransition"),
+		Version:     dara.String("2025-09-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMmAppTransitionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
