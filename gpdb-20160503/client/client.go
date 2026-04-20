@@ -18545,6 +18545,76 @@ func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_r
 
 // Summary:
 //
+// 修改Supabase自动启停策略
+//
+// @param request - ModifySupabaseAutoScalePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseAutoScalePolicyResponse
+func (client *Client) ModifySupabaseAutoScalePolicyWithOptions(request *ModifySupabaseAutoScalePolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseAutoScalePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoScale) {
+		query["AutoScale"] = request.AutoScale
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySupabaseAutoScalePolicy"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySupabaseAutoScalePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改Supabase自动启停策略
+//
+// @param request - ModifySupabaseAutoScalePolicyRequest
+//
+// @return ModifySupabaseAutoScalePolicyResponse
+func (client *Client) ModifySupabaseAutoScalePolicy(request *ModifySupabaseAutoScalePolicyRequest) (_result *ModifySupabaseAutoScalePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySupabaseAutoScalePolicyResponse{}
+	_body, _err := client.ModifySupabaseAutoScalePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sets or replaces the IP address whitelist for a specified Supabase project.
 //
 // Description:

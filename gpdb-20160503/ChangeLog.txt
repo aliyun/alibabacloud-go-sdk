@@ -1,3 +1,7 @@
+2026-04-20 Version: v5.3.0
+- Support API ModifySupabaseAutoScalePolicy.
+
+
 2026-04-15 Version: v5.2.2
 - Update API CreateSupabaseProject: add request parameters AutoScale.
 - Update API GetSupabaseProject: add response parameters Body.AutoScale.
