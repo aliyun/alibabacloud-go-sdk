@@ -362,6 +362,95 @@ func (client *Client) DeleteEmbodiedAIPlatform(request *DeleteEmbodiedAIPlatform
 
 // Summary:
 //
+// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+//
+// @param request - DescribeChatMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChatMessageResponse
+func (client *Client) DescribeChatMessageWithSSE(request *DescribeChatMessageRequest, runtime *dara.RuntimeOptions, _yield chan *DescribeChatMessageResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.describeChatMessageWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+//
+// @param request - DescribeChatMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChatMessageResponse
+func (client *Client) DescribeChatMessageWithOptions(request *DescribeChatMessageRequest, runtime *dara.RuntimeOptions) (_result *DescribeChatMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		query["Timezone"] = request.Timezone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeChatMessage"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeChatMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 对ADB-MySQL提供产品RAG检索和实例分析、运维诊断
+//
+// @param request - DescribeChatMessageRequest
+//
+// @return DescribeChatMessageResponse
+func (client *Client) DescribeChatMessage(request *DescribeChatMessageRequest) (_result *DescribeChatMessageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeChatMessageResponse{}
+	_body, _err := client.DescribeChatMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询具身智能平台
 //
 // @param request - DescribeEmbodiedAIPlatformsRequest
@@ -912,4 +1001,64 @@ func (client *Client) UnlockEmbodiedAIPlatform(request *UnlockEmbodiedAIPlatform
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) describeChatMessageWithSSE_opYieldFunc(_yield chan *DescribeChatMessageResponse, _yieldErr chan error, request *DescribeChatMessageRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		query["Timezone"] = request.Timezone
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeChatMessage"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
