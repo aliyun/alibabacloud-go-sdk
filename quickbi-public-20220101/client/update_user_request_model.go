@@ -13,6 +13,8 @@ type iUpdateUserRequest interface {
 	GetAdminUser() *bool
 	SetAuthAdminUser(v bool) *UpdateUserRequest
 	GetAuthAdminUser() *bool
+	SetCopilotModules(v string) *UpdateUserRequest
+	GetCopilotModules() *string
 	SetIsDeleted(v bool) *UpdateUserRequest
 	GetIsDeleted() *bool
 	SetNickName(v string) *UpdateUserRequest
@@ -48,7 +50,8 @@ type UpdateUserRequest struct {
 	// example:
 	//
 	// true
-	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser  *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	CopilotModules *string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty"`
 	// User status:
 	//
 	// 	- **false**: Active
@@ -113,6 +116,10 @@ func (s *UpdateUserRequest) GetAuthAdminUser() *bool {
 	return s.AuthAdminUser
 }
 
+func (s *UpdateUserRequest) GetCopilotModules() *string {
+	return s.CopilotModules
+}
+
 func (s *UpdateUserRequest) GetIsDeleted() *bool {
 	return s.IsDeleted
 }
@@ -140,6 +147,11 @@ func (s *UpdateUserRequest) SetAdminUser(v bool) *UpdateUserRequest {
 
 func (s *UpdateUserRequest) SetAuthAdminUser(v bool) *UpdateUserRequest {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetCopilotModules(v string) *UpdateUserRequest {
+	s.CopilotModules = &v
 	return s
 }
 

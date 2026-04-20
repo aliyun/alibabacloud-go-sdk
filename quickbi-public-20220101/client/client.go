@@ -128,7 +128,7 @@ func (client *Client) AddDataLevelPermissionRuleUsers(request *AddDataLevelPermi
 
 // Summary:
 //
-// 43342***435,1553a****41231
+// Modifies the whitelist of the row and column permissions for a specified dataset.
 //
 // Description:
 //
@@ -192,7 +192,7 @@ func (client *Client) AddDataLevelPermissionWhiteListWithOptions(request *AddDat
 
 // Summary:
 //
-// 43342***435,1553a****41231
+// Modifies the whitelist of the row and column permissions for a specified dataset.
 //
 // Description:
 //
@@ -383,6 +383,10 @@ func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *dara.
 
 	if !dara.IsNil(request.AuthAdminUser) {
 		query["AuthAdminUser"] = request.AuthAdminUser
+	}
+
+	if !dara.IsNil(request.CopilotModules) {
+		query["CopilotModules"] = request.CopilotModules
 	}
 
 	if !dara.IsNil(request.NickName) {
@@ -701,6 +705,88 @@ func (client *Client) AddUserToWorkspace(request *AddUserToWorkspaceRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &AddUserToWorkspaceResponse{}
 	_body, _err := client.AddUserToWorkspaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增作品的协同授权记录
+//
+// @param request - AddWorksAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorksAuthorizationResponse
+func (client *Client) AddWorksAuthorizationWithOptions(request *AddWorksAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AddWorksAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthPoints) {
+		query["AuthPoints"] = request.AuthPoints
+	}
+
+	if !dara.IsNil(request.AuthorizeScope) {
+		query["AuthorizeScope"] = request.AuthorizeScope
+	}
+
+	if !dara.IsNil(request.AuthorizedId) {
+		query["AuthorizedId"] = request.AuthorizedId
+	}
+
+	if !dara.IsNil(request.ExpireDay) {
+		query["ExpireDay"] = request.ExpireDay
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddWorksAuthorization"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddWorksAuthorizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增作品的协同授权记录
+//
+// @param request - AddWorksAuthorizationRequest
+//
+// @return AddWorksAuthorizationResponse
+func (client *Client) AddWorksAuthorization(request *AddWorksAuthorizationRequest) (_result *AddWorksAuthorizationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddWorksAuthorizationResponse{}
+	_body, _err := client.AddWorksAuthorizationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2257,7 +2343,7 @@ func (client *Client) DelayTicketExpireTime(request *DelayTicketExpireTimeReques
 
 // Summary:
 //
-// { "ruleId": "a5bb24da- ***-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+// Deletes a selected group of people for a single row and column permission rule.
 //
 // Description:
 //
@@ -2305,7 +2391,7 @@ func (client *Client) DeleteDataLevelPermissionRuleUsersWithOptions(request *Del
 
 // Summary:
 //
-// { "ruleId": "a5bb24da- ***-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+// Deletes a selected group of people for a single row and column permission rule.
 //
 // Description:
 //
@@ -2327,7 +2413,7 @@ func (client *Client) DeleteDataLevelPermissionRuleUsers(request *DeleteDataLeve
 
 // Summary:
 //
-// The ID of the request.
+// Deletes a single row or column permission rule.
 //
 // Description:
 //
@@ -2379,7 +2465,7 @@ func (client *Client) DeleteDataLevelRuleConfigWithOptions(request *DeleteDataLe
 
 // Summary:
 //
-// The ID of the request.
+// Deletes a single row or column permission rule.
 //
 // Description:
 //
@@ -3840,8 +3926,6 @@ func (client *Client) ListOrganizationRoleUsers(request *ListOrganizationRoleUse
 // Summary:
 //
 // Retrieve the list of custom roles at the organization level.
-//
-// @param request - ListOrganizationRolesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -5797,9 +5881,9 @@ func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequ
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-// \\	- true: custom SQL table
+// \\\\	- true: custom SQL table
 //
-// \\	- false: non-custom SQL table
+// \\\\	- false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -5845,9 +5929,9 @@ func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoReque
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-// \\	- true: custom SQL table
+// \\\\	- true: custom SQL table
 //
-// \\	- false: non-custom SQL table
+// \\\\	- false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -5865,7 +5949,7 @@ func (client *Client) QueryDatasetInfo(request *QueryDatasetInfoRequest) (_resul
 
 // Summary:
 //
-// The name of the training dataset.
+// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -5929,7 +6013,7 @@ func (client *Client) QueryDatasetListWithOptions(request *QueryDatasetListReque
 
 // Summary:
 //
-// The name of the training dataset.
+// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -6080,8 +6164,6 @@ func (client *Client) QueryDatasetSwitchInfo(request *QueryDatasetSwitchInfoRequ
 // Summary:
 //
 // Obtain the embedding configuration in the organization, including the maximum number of embeddings and the number of embeddings.
-//
-// @param request - QueryEmbeddedInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7371,8 +7453,6 @@ func (client *Client) QueryUserRoleInfoInWorkspace(request *QueryUserRoleInfoInW
 //
 // Queries the metadata list of member tags in an organization.
 //
-// @param request - QueryUserTagMetaListRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryUserTagMetaListResponse
@@ -8314,7 +8394,7 @@ func (client *Client) SmartqAuthTransfer(request *SmartqAuthTransferRequest) (_r
 
 // Summary:
 //
-// Batch Management of Smart Q\\\\\\&A Authorizations
+// Batch Management of Smart Q\\\\\\\\\\\\&A Authorizations
 //
 // Description:
 //
@@ -8382,7 +8462,7 @@ func (client *Client) SmartqAuthorizeWithOptions(request *SmartqAuthorizeRequest
 
 // Summary:
 //
-// Batch Management of Smart Q\\\\\\&A Authorizations
+// Batch Management of Smart Q\\\\\\\\\\\\&A Authorizations
 //
 // Description:
 //
@@ -8564,11 +8644,7 @@ func (client *Client) UpdateCubeBySql(request *UpdateCubeBySqlRequest) (_result 
 
 // Summary:
 //
-// Indicates whether the request is successful. Valid values:
-//
-//   - true: The request was successful.
-//
-//   - false: The request failed.
+// Updates the status of the row and column permission switch for a dataset.
 //
 // Description:
 //
@@ -8628,11 +8704,7 @@ func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *Update
 
 // Summary:
 //
-// Indicates whether the request is successful. Valid values:
-//
-//   - true: The request was successful.
-//
-//   - false: The request failed.
+// Updates the status of the row and column permission switch for a dataset.
 //
 // Description:
 //
@@ -8873,6 +8945,10 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 	if !dara.IsNil(request.AuthAdminUser) {
 		query["AuthAdminUser"] = request.AuthAdminUser
+	}
+
+	if !dara.IsNil(request.CopilotModules) {
+		query["CopilotModules"] = request.CopilotModules
 	}
 
 	if !dara.IsNil(request.IsDeleted) {

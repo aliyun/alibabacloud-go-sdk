@@ -114,7 +114,8 @@ type QueryUserInfoByAccountResponseBodyResult struct {
 	// example:
 	//
 	// true
-	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser  *bool     `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
 	// The email address of the user.
 	//
 	// example:
@@ -179,6 +180,10 @@ func (s *QueryUserInfoByAccountResponseBodyResult) GetAuthAdminUser() *bool {
 	return s.AuthAdminUser
 }
 
+func (s *QueryUserInfoByAccountResponseBodyResult) GetCopilotModules() []*string {
+	return s.CopilotModules
+}
+
 func (s *QueryUserInfoByAccountResponseBodyResult) GetEmail() *string {
 	return s.Email
 }
@@ -220,6 +225,11 @@ func (s *QueryUserInfoByAccountResponseBodyResult) SetAdminUser(v bool) *QueryUs
 
 func (s *QueryUserInfoByAccountResponseBodyResult) SetAuthAdminUser(v bool) *QueryUserInfoByAccountResponseBodyResult {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *QueryUserInfoByAccountResponseBodyResult) SetCopilotModules(v []*string) *QueryUserInfoByAccountResponseBodyResult {
+	s.CopilotModules = v
 	return s
 }
 

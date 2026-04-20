@@ -112,7 +112,8 @@ type AddUserResponseBodyResult struct {
 	// example:
 	//
 	// true
-	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser  *bool     `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
 	// Aliyun account nickname.
 	//
 	// example:
@@ -161,6 +162,10 @@ func (s *AddUserResponseBodyResult) GetAuthAdminUser() *bool {
 	return s.AuthAdminUser
 }
 
+func (s *AddUserResponseBodyResult) GetCopilotModules() []*string {
+	return s.CopilotModules
+}
+
 func (s *AddUserResponseBodyResult) GetNickName() *string {
 	return s.NickName
 }
@@ -189,6 +194,11 @@ func (s *AddUserResponseBodyResult) SetAdminUser(v bool) *AddUserResponseBodyRes
 
 func (s *AddUserResponseBodyResult) SetAuthAdminUser(v bool) *AddUserResponseBodyResult {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *AddUserResponseBodyResult) SetCopilotModules(v []*string) *AddUserResponseBodyResult {
+	s.CopilotModules = v
 	return s
 }
 

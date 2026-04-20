@@ -209,7 +209,8 @@ type QueryUserListResponseBodyResultData struct {
 	// example:
 	//
 	// true
-	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser  *bool     `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
 	// User status:
 	//
 	// - Active - false
@@ -284,6 +285,10 @@ func (s *QueryUserListResponseBodyResultData) GetAuthAdminUser() *bool {
 	return s.AuthAdminUser
 }
 
+func (s *QueryUserListResponseBodyResultData) GetCopilotModules() []*string {
+	return s.CopilotModules
+}
+
 func (s *QueryUserListResponseBodyResultData) GetIsDeleted() *bool {
 	return s.IsDeleted
 }
@@ -329,6 +334,11 @@ func (s *QueryUserListResponseBodyResultData) SetAdminUser(v bool) *QueryUserLis
 
 func (s *QueryUserListResponseBodyResultData) SetAuthAdminUser(v bool) *QueryUserListResponseBodyResultData {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *QueryUserListResponseBodyResultData) SetCopilotModules(v []*string) *QueryUserListResponseBodyResultData {
+	s.CopilotModules = v
 	return s
 }
 

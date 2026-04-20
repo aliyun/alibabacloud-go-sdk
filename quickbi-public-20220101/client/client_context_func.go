@@ -57,7 +57,7 @@ func (client *Client) AddDataLevelPermissionRuleUsersWithContext(ctx context.Con
 
 // Summary:
 //
-// 43342***435,1553a****41231
+// Modifies the whitelist of the row and column permissions for a specified dataset.
 //
 // Description:
 //
@@ -254,6 +254,10 @@ func (client *Client) AddUserWithContext(ctx context.Context, request *AddUserRe
 
 	if !dara.IsNil(request.AuthAdminUser) {
 		query["AuthAdminUser"] = request.AuthAdminUser
+	}
+
+	if !dara.IsNil(request.CopilotModules) {
+		query["CopilotModules"] = request.CopilotModules
 	}
 
 	if !dara.IsNil(request.NickName) {
@@ -481,6 +485,70 @@ func (client *Client) AddUserToWorkspaceWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddUserToWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增作品的协同授权记录
+//
+// @param request - AddWorksAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddWorksAuthorizationResponse
+func (client *Client) AddWorksAuthorizationWithContext(ctx context.Context, request *AddWorksAuthorizationRequest, runtime *dara.RuntimeOptions) (_result *AddWorksAuthorizationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthPoints) {
+		query["AuthPoints"] = request.AuthPoints
+	}
+
+	if !dara.IsNil(request.AuthorizeScope) {
+		query["AuthorizeScope"] = request.AuthorizeScope
+	}
+
+	if !dara.IsNil(request.AuthorizedId) {
+		query["AuthorizedId"] = request.AuthorizedId
+	}
+
+	if !dara.IsNil(request.ExpireDay) {
+		query["ExpireDay"] = request.ExpireDay
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddWorksAuthorization"),
+		Version:     dara.String("2022-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddWorksAuthorizationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1653,7 +1721,7 @@ func (client *Client) DelayTicketExpireTimeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// { "ruleId": "a5bb24da- ***-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+// Deletes a selected group of people for a single row and column permission rule.
 //
 // Description:
 //
@@ -1701,7 +1769,7 @@ func (client *Client) DeleteDataLevelPermissionRuleUsersWithContext(ctx context.
 
 // Summary:
 //
-// The ID of the request.
+// Deletes a single row or column permission rule.
 //
 // Description:
 //
@@ -4205,9 +4273,9 @@ func (client *Client) QueryDatasetDetailInfoWithContext(ctx context.Context, req
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-// \\	- true: custom SQL table
+// \\\\	- true: custom SQL table
 //
-// \\	- false: non-custom SQL table
+// \\\\	- false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -4251,7 +4319,7 @@ func (client *Client) QueryDatasetInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// The name of the training dataset.
+// Queries the datasets of a specified workspace. The datasets are sorted in descending order by creation time.
 //
 // @param request - QueryDatasetListRequest
 //
@@ -5957,7 +6025,7 @@ func (client *Client) SmartqAuthTransferWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Batch Management of Smart Q\\\\\\&A Authorizations
+// Batch Management of Smart Q\\\\\\\\\\\\&A Authorizations
 //
 // Description:
 //
@@ -6145,11 +6213,7 @@ func (client *Client) UpdateCubeBySqlWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Indicates whether the request is successful. Valid values:
-//
-//   - true: The request was successful.
-//
-//   - false: The request failed.
+// Updates the status of the row and column permission switch for a dataset.
 //
 // Description:
 //
@@ -6370,6 +6434,10 @@ func (client *Client) UpdateUserWithContext(ctx context.Context, request *Update
 
 	if !dara.IsNil(request.AuthAdminUser) {
 		query["AuthAdminUser"] = request.AuthAdminUser
+	}
+
+	if !dara.IsNil(request.CopilotModules) {
+		query["CopilotModules"] = request.CopilotModules
 	}
 
 	if !dara.IsNil(request.IsDeleted) {

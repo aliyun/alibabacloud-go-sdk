@@ -17,6 +17,8 @@ type iAddUserRequest interface {
 	GetAdminUser() *bool
 	SetAuthAdminUser(v bool) *AddUserRequest
 	GetAuthAdminUser() *bool
+	SetCopilotModules(v string) *AddUserRequest
+	GetCopilotModules() *string
 	SetNickName(v string) *AddUserRequest
 	GetNickName() *string
 	SetRoleIds(v string) *AddUserRequest
@@ -78,7 +80,8 @@ type AddUserRequest struct {
 	// example:
 	//
 	// true
-	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser  *bool   `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	CopilotModules *string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty"`
 	// Aliyun account nickname.
 	//
 	// - Format check: Maximum length of 50 characters.
@@ -143,6 +146,10 @@ func (s *AddUserRequest) GetAuthAdminUser() *bool {
 	return s.AuthAdminUser
 }
 
+func (s *AddUserRequest) GetCopilotModules() *string {
+	return s.CopilotModules
+}
+
 func (s *AddUserRequest) GetNickName() *string {
 	return s.NickName
 }
@@ -172,6 +179,11 @@ func (s *AddUserRequest) SetAdminUser(v bool) *AddUserRequest {
 
 func (s *AddUserRequest) SetAuthAdminUser(v bool) *AddUserRequest {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *AddUserRequest) SetCopilotModules(v string) *AddUserRequest {
+	s.CopilotModules = &v
 	return s
 }
 
