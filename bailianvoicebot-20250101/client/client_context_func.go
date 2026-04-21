@@ -799,6 +799,66 @@ func (client *Client) ListVariableWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// 获取音色列表
+//
+// @param request - ListVoicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVoicesResponse
+func (client *Client) ListVoicesWithContext(ctx context.Context, request *ListVoicesRequest, runtime *dara.RuntimeOptions) (_result *ListVoicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.NlsAccessType) {
+		body["NlsAccessType"] = request.NlsAccessType
+	}
+
+	if !dara.IsNil(request.NlsEngine) {
+		body["NlsEngine"] = request.NlsEngine
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVoices"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVoicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 发布版本
 //
 // @param request - PublishApplicationVersionRequest

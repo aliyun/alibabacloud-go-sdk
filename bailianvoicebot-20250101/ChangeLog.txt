@@ -1,3 +1,7 @@
+2026-04-21 Version: v1.4.0
+- Support API ListVoices.
+
+
 2026-04-20 Version: v1.3.0
 - Support API GenerateFileUploadParams.
 
