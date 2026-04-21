@@ -24,12 +24,27 @@ type iAccountInfoManageRequest interface {
 }
 
 type AccountInfoManageRequest struct {
-	AccountId       *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
-	QuarkKey        *string `json:"quarkKey,omitempty" xml:"quarkKey,omitempty"`
-	QuarkName       *string `json:"quarkName,omitempty" xml:"quarkName,omitempty"`
-	TestQps         *int32  `json:"testQps,omitempty" xml:"testQps,omitempty"`
-	TestQueryPerDay *int32  `json:"testQueryPerDay,omitempty" xml:"testQueryPerDay,omitempty"`
+	// example:
+	//
+	// 1159902965389687
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1
+	QuarkKey *string `json:"quarkKey,omitempty" xml:"quarkKey,omitempty"`
+	// example:
+	//
+	// 1
+	QuarkName *string `json:"quarkName,omitempty" xml:"quarkName,omitempty"`
+	// example:
+	//
+	// 3
+	TestQps *int32 `json:"testQps,omitempty" xml:"testQps,omitempty"`
+	// example:
+	//
+	// 2000
+	TestQueryPerDay *int32 `json:"testQueryPerDay,omitempty" xml:"testQueryPerDay,omitempty"`
 }
 
 func (s AccountInfoManageRequest) String() string {

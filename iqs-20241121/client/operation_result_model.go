@@ -14,6 +14,9 @@ type iOperationResult interface {
 }
 
 type OperationResult struct {
+	// example:
+	//
+	// True
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

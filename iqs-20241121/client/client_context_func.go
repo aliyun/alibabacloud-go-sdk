@@ -339,6 +339,47 @@ func (client *Client) GetMeteringSummaryWithContext(ctx context.Context, request
 
 // Summary:
 //
+// 查询转正用户调用量信息
+//
+// @param request - GetNormalServiceConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNormalServiceConfigResponse
+func (client *Client) GetNormalServiceConfigWithContext(ctx context.Context, request *GetNormalServiceConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetNormalServiceConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetNormalServiceConfig"),
+		Version:     dara.String("2024-11-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-admin/console/v1/services/commands/normalServiceConfig"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetNormalServiceConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询服务额度信息
 //
 // @param headers - map
@@ -439,6 +480,47 @@ func (client *Client) ListApiCallDailyDetailWithContext(ctx context.Context, req
 
 // Summary:
 //
+// api基础信息
+//
+// @param request - ListApiInfosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApiInfosResponse
+func (client *Client) ListApiInfosWithContext(ctx context.Context, request *ListApiInfosRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListApiInfosResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApiInfos"),
+		Version:     dara.String("2024-11-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-admin/console/v1/monitors/commands/apiInfos"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApiInfosResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Api名称列表
 //
 // @param headers - map
@@ -462,6 +544,47 @@ func (client *Client) ListApiNamesWithContext(ctx context.Context, headers map[s
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApiNamesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// api基础信息
+//
+// @param request - ListLimitationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLimitationsResponse
+func (client *Client) ListLimitationsWithContext(ctx context.Context, request *ListLimitationsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListLimitationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLimitations"),
+		Version:     dara.String("2024-11-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-admin/openService/v1/console/limitation/commands/list/account"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLimitationsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -608,6 +731,88 @@ func (client *Client) ManageSearchAccountInfoWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ManageSearchAccountInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止自动转正
+//
+// @param request - OpenAutoNormalReviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenAutoNormalReviewResponse
+func (client *Client) OpenAutoNormalReviewWithContext(ctx context.Context, request *OpenAutoNormalReviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OpenAutoNormalReviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenAutoNormalReview"),
+		Version:     dara.String("2024-11-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-admin/openService/v1/account/commands/openAutoNormalReview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenAutoNormalReviewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止自动转正
+//
+// @param request - StopAutoNormalReviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAutoNormalReviewResponse
+func (client *Client) StopAutoNormalReviewWithContext(ctx context.Context, request *StopAutoNormalReviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *StopAutoNormalReviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopAutoNormalReview"),
+		Version:     dara.String("2024-11-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/linked-retrieval/linked-retrieval-admin/openService/v1/account/commands/stopAutoNormalReview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopAutoNormalReviewResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

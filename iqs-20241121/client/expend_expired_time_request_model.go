@@ -16,7 +16,13 @@ type iExpendExpiredTimeRequest interface {
 }
 
 type ExpendExpiredTimeRequest struct {
+  // example:
+  // 
+  // 280451935746041600
   AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+  // example:
+  // 
+  // 2025:02:24 00:00:00
   TestStartTime *string `json:"testStartTime,omitempty" xml:"testStartTime,omitempty"`
 }
 
