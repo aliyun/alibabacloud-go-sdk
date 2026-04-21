@@ -35,6 +35,8 @@ type iDescribeDBInstanceAttributeResponseBody interface {
 	GetExpireTime() *string
 	SetGmtModified(v string) *DescribeDBInstanceAttributeResponseBody
 	GetGmtModified() *string
+	SetLangfuseInstanceIds(v []*string) *DescribeDBInstanceAttributeResponseBody
+	GetLangfuseInstanceIds() []*string
 	SetLockMode(v int64) *DescribeDBInstanceAttributeResponseBody
 	GetLockMode() *int64
 	SetLockReason(v string) *DescribeDBInstanceAttributeResponseBody
@@ -148,7 +150,8 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// example:
 	//
 	// 2023-08-17T09:58Z
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified         *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	LangfuseInstanceIds []*string `json:"LangfuseInstanceIds,omitempty" xml:"LangfuseInstanceIds,omitempty" type:"Repeated"`
 	// The lock mode of the instance. Set the value to **lock**, which specifies that the instance is locked when it automatically expires or has an overdue payment.
 	//
 	// example:
@@ -327,6 +330,10 @@ func (s *DescribeDBInstanceAttributeResponseBody) GetGmtModified() *string {
 	return s.GmtModified
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) GetLangfuseInstanceIds() []*string {
+	return s.LangfuseInstanceIds
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) GetLockMode() *int64 {
 	return s.LockMode
 }
@@ -477,6 +484,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetExpireTime(v string) *Descr
 
 func (s *DescribeDBInstanceAttributeResponseBody) SetGmtModified(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetLangfuseInstanceIds(v []*string) *DescribeDBInstanceAttributeResponseBody {
+	s.LangfuseInstanceIds = v
 	return s
 }
 
