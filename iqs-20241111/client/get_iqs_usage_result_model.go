@@ -57,6 +57,7 @@ type GetIqsUsageResultRecords struct {
 	MainAccountId      *string `json:"mainAccountId,omitempty" xml:"mainAccountId,omitempty"`
 	SubAccountId       *string `json:"subAccountId,omitempty" xml:"subAccountId,omitempty"`
 	SuccessCalls       *int32  `json:"successCalls,omitempty" xml:"successCalls,omitempty"`
+	TotalBillStatCalls *int32  `json:"totalBillStatCalls,omitempty" xml:"totalBillStatCalls,omitempty"`
 	TotalCalls         *int32  `json:"totalCalls,omitempty" xml:"totalCalls,omitempty"`
 	ValueAddedAdvanced *int32  `json:"valueAddedAdvanced,omitempty" xml:"valueAddedAdvanced,omitempty"`
 	ValueAddedSummary  *int32  `json:"valueAddedSummary,omitempty" xml:"valueAddedSummary,omitempty"`
@@ -104,6 +105,10 @@ func (s *GetIqsUsageResultRecords) GetSubAccountId() *string {
 
 func (s *GetIqsUsageResultRecords) GetSuccessCalls() *int32 {
 	return s.SuccessCalls
+}
+
+func (s *GetIqsUsageResultRecords) GetTotalBillStatCalls() *int32 {
+	return s.TotalBillStatCalls
 }
 
 func (s *GetIqsUsageResultRecords) GetTotalCalls() *int32 {
@@ -160,6 +165,11 @@ func (s *GetIqsUsageResultRecords) SetSubAccountId(v string) *GetIqsUsageResultR
 
 func (s *GetIqsUsageResultRecords) SetSuccessCalls(v int32) *GetIqsUsageResultRecords {
 	s.SuccessCalls = &v
+	return s
+}
+
+func (s *GetIqsUsageResultRecords) SetTotalBillStatCalls(v int32) *GetIqsUsageResultRecords {
+	s.TotalBillStatCalls = &v
 	return s
 }
 
