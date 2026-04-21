@@ -4144,8 +4144,9 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters s
 	// 	- If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
 	//
 	// 	- If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
-	Acks            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
-	CompressionType *string                                                                        `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	Acks            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks         `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	CompressionType *string                                                                                `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	DynamicTopic    *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
 	// The ID of the ApsaraMQ for Kafka instance.
 	InstanceId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
@@ -4170,6 +4171,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) GetCompressionType() *string {
 	return s.CompressionType
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) GetDynamicTopic() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic {
+	return s.DynamicTopic
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) GetInstanceId() *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId {
@@ -4198,6 +4203,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) SetDynamicTopic(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters {
+	s.DynamicTopic = v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) SetInstanceId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersInstanceId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters {
 	s.InstanceId = v
 	return s
@@ -4221,6 +4231,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters) Validate() error {
 	if s.Acks != nil {
 		if err := s.Acks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DynamicTopic != nil {
+		if err := s.DynamicTopic.Validate(); err != nil {
 			return err
 		}
 	}
@@ -4306,6 +4321,51 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParamete
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersAcks) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) GetForm() *string {
+	return s.Form
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParametersDynamicTopic) Validate() error {
 	return dara.Validate(s)
 }
 

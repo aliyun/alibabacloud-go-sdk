@@ -938,22 +938,26 @@ func (s *CreateEventStreamingRequestSink) Validate() error {
 }
 
 type CreateEventStreamingRequestSinkSinkApacheKafkaParameters struct {
-	Acks                      *string                                                                  `json:"Acks,omitempty" xml:"Acks,omitempty"`
-	Bootstraps                *string                                                                  `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	CompressionType           *string                                                                  `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
-	Headers                   *CreateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders         `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	Key                       *CreateEventStreamingRequestSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
-	NetworkType               *CreateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
-	SaslMechanism             *string                                                                  `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	SaslPassword              *string                                                                  `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	SaslUser                  *string                                                                  `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	SecurityGroupId           *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	SecurityProtocol          *string                                                                  `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	SslTruststoreCertificates *string                                                                  `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
-	Topic                     *string                                                                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds                *CreateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	Value                     *CreateEventStreamingRequestSinkSinkApacheKafkaParametersValue           `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
-	VpcId                     *CreateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
+	Acks                        *string                                                                  `json:"Acks,omitempty" xml:"Acks,omitempty"`
+	Bootstraps                  *string                                                                  `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	CompressionType             *string                                                                  `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	DynamicTopic                *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic    `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
+	Headers                     *CreateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders         `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	Key                         *CreateEventStreamingRequestSinkSinkApacheKafkaParametersKey             `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
+	NetworkType                 *CreateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
+	SaslMechanism               *string                                                                  `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword                *string                                                                  `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser                    *string                                                                  `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId             *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
+	SecurityProtocol            *string                                                                  `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	SslKeyPassword              *string                                                                  `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
+	SslKeystoreCertificateChain *string                                                                  `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
+	SslKeystoreKey              *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey  `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
+	SslTruststoreCertificates   *string                                                                  `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
+	Topic                       *string                                                                  `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds                  *CreateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	Value                       *CreateEventStreamingRequestSinkSinkApacheKafkaParametersValue           `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
+	VpcId                       *CreateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
 func (s CreateEventStreamingRequestSinkSinkApacheKafkaParameters) String() string {
@@ -974,6 +978,10 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetBootstraps
 
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetCompressionType() *string {
 	return s.CompressionType
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetDynamicTopic() *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic {
+	return s.DynamicTopic
 }
 
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetHeaders() *CreateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders {
@@ -1008,6 +1016,18 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSecurityPr
 	return s.SecurityProtocol
 }
 
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSslKeyPassword() *string {
+	return s.SslKeyPassword
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSslKeystoreCertificateChain() *string {
+	return s.SslKeystoreCertificateChain
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSslKeystoreKey() *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey {
+	return s.SslKeystoreKey
+}
+
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) GetSslTruststoreCertificates() *string {
 	return s.SslTruststoreCertificates
 }
@@ -1040,6 +1060,11 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetBootstraps
 
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetCompressionType(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParameters {
 	s.CompressionType = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetDynamicTopic(v *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) *CreateEventStreamingRequestSinkSinkApacheKafkaParameters {
+	s.DynamicTopic = v
 	return s
 }
 
@@ -1083,6 +1108,21 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSecurityPr
 	return s
 }
 
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSslKeyPassword(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParameters {
+	s.SslKeyPassword = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSslKeystoreCertificateChain(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParameters {
+	s.SslKeystoreCertificateChain = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSslKeystoreKey(v *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) *CreateEventStreamingRequestSinkSinkApacheKafkaParameters {
+	s.SslKeystoreKey = v
+	return s
+}
+
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetSslTruststoreCertificates(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParameters {
 	s.SslTruststoreCertificates = &v
 	return s
@@ -1109,6 +1149,11 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) SetVpcId(v *C
 }
 
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) Validate() error {
+	if s.DynamicTopic != nil {
+		if err := s.DynamicTopic.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Headers != nil {
 		if err := s.Headers.Validate(); err != nil {
 			return err
@@ -1129,6 +1174,11 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) Validate() er
 			return err
 		}
 	}
+	if s.SslKeystoreKey != nil {
+		if err := s.SslKeystoreKey.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.VSwitchIds != nil {
 		if err := s.VSwitchIds.Validate(); err != nil {
 			return err
@@ -1145,6 +1195,51 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParameters) Validate() er
 		}
 	}
 	return nil
+}
+
+type CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) GetForm() *string {
+	return s.Form
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) SetForm(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) SetValue(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders struct {
@@ -1324,6 +1419,41 @@ func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId
 }
 
 func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey struct {
+	KmsArn            *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
+	KmsSecretValueKey *string `json:"KmsSecretValueKey,omitempty" xml:"KmsSecretValueKey,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) GetKmsArn() *string {
+	return s.KmsArn
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) GetKmsSecretValueKey() *string {
+	return s.KmsSecretValueKey
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) SetKmsArn(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey {
+	s.KmsArn = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) SetKmsSecretValueKey(v string) *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey {
+	s.KmsSecretValueKey = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -4615,9 +4745,10 @@ type CreateEventStreamingRequestSinkSinkKafkaParameters struct {
 	// 	- If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
 	//
 	// 	- If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
-	Acks            *CreateEventStreamingRequestSinkSinkKafkaParametersAcks    `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
-	CompressionType *string                                                    `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
-	Headers         *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	Acks            *CreateEventStreamingRequestSinkSinkKafkaParametersAcks         `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	CompressionType *string                                                         `json:"CompressionType,omitempty" xml:"CompressionType,omitempty"`
+	DynamicTopic    *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic `json:"DynamicTopic,omitempty" xml:"DynamicTopic,omitempty" type:"Struct"`
+	Headers         *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders      `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The ID of the ApsaraMQ for Kafka instance.
 	InstanceId *CreateEventStreamingRequestSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
@@ -4642,6 +4773,10 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) GetAcks() *CreateEv
 
 func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) GetCompressionType() *string {
 	return s.CompressionType
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) GetDynamicTopic() *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic {
+	return s.DynamicTopic
 }
 
 func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) GetHeaders() *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders {
@@ -4674,6 +4809,11 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetCompressionType(
 	return s
 }
 
+func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetDynamicTopic(v *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) *CreateEventStreamingRequestSinkSinkKafkaParameters {
+	s.DynamicTopic = v
+	return s
+}
+
 func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetHeaders(v *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) *CreateEventStreamingRequestSinkSinkKafkaParameters {
 	s.Headers = v
 	return s
@@ -4702,6 +4842,11 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetValue(v *CreateE
 func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) Validate() error {
 	if s.Acks != nil {
 		if err := s.Acks.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.DynamicTopic != nil {
+		if err := s.DynamicTopic.Validate(); err != nil {
 			return err
 		}
 	}
@@ -4796,6 +4941,51 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) SetValue(v stri
 }
 
 func (s *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) GetForm() *string {
+	return s.Form
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) GetTemplate() *string {
+	return s.Template
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) SetForm(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) SetValue(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -9399,20 +9589,23 @@ func (s *CreateEventStreamingRequestSource) Validate() error {
 }
 
 type CreateEventStreamingRequestSourceSourceApacheKafkaParameters struct {
-	Bootstraps                *string `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
-	ConsumerGroup             *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	NetworkType               *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	OffsetReset               *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	SaslMechanism             *string `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
-	SaslPassword              *string `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
-	SaslUser                  *string `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
-	SecurityGroupId           *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SecurityProtocol          *string `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
-	SslTruststoreCertificates *string `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
-	Topic                     *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds                *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	ValueDataType             *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
-	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Bootstraps                  *string                                                                     `json:"Bootstraps,omitempty" xml:"Bootstraps,omitempty"`
+	ConsumerGroup               *string                                                                     `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	NetworkType                 *string                                                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	OffsetReset                 *string                                                                     `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	SaslMechanism               *string                                                                     `json:"SaslMechanism,omitempty" xml:"SaslMechanism,omitempty"`
+	SaslPassword                *string                                                                     `json:"SaslPassword,omitempty" xml:"SaslPassword,omitempty"`
+	SaslUser                    *string                                                                     `json:"SaslUser,omitempty" xml:"SaslUser,omitempty"`
+	SecurityGroupId             *string                                                                     `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityProtocol            *string                                                                     `json:"SecurityProtocol,omitempty" xml:"SecurityProtocol,omitempty"`
+	SslKeyPassword              *string                                                                     `json:"SslKeyPassword,omitempty" xml:"SslKeyPassword,omitempty"`
+	SslKeystoreCertificateChain *string                                                                     `json:"SslKeystoreCertificateChain,omitempty" xml:"SslKeystoreCertificateChain,omitempty"`
+	SslKeystoreKey              *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey `json:"SslKeystoreKey,omitempty" xml:"SslKeystoreKey,omitempty" type:"Struct"`
+	SslTruststoreCertificates   *string                                                                     `json:"SslTruststoreCertificates,omitempty" xml:"SslTruststoreCertificates,omitempty"`
+	Topic                       *string                                                                     `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds                  *string                                                                     `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType               *string                                                                     `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
+	VpcId                       *string                                                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSourceSourceApacheKafkaParameters) String() string {
@@ -9457,6 +9650,18 @@ func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSecuri
 
 func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSecurityProtocol() *string {
 	return s.SecurityProtocol
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSslKeyPassword() *string {
+	return s.SslKeyPassword
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSslKeystoreCertificateChain() *string {
+	return s.SslKeystoreCertificateChain
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSslKeystoreKey() *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey {
+	return s.SslKeystoreKey
 }
 
 func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) GetSslTruststoreCertificates() *string {
@@ -9524,6 +9729,21 @@ func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSecuri
 	return s
 }
 
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSslKeyPassword(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SslKeyPassword = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSslKeystoreCertificateChain(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SslKeystoreCertificateChain = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSslKeystoreKey(v *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
+	s.SslKeystoreKey = v
+	return s
+}
+
 func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetSslTruststoreCertificates(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
 	s.SslTruststoreCertificates = &v
 	return s
@@ -9550,6 +9770,46 @@ func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVpcId(
 }
 
 func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) Validate() error {
+	if s.SslKeystoreKey != nil {
+		if err := s.SslKeystoreKey.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey struct {
+	KmsArn            *string `json:"KmsArn,omitempty" xml:"KmsArn,omitempty"`
+	KmsSecretValueKey *string `json:"KmsSecretValueKey,omitempty" xml:"KmsSecretValueKey,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) GetKmsArn() *string {
+	return s.KmsArn
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) GetKmsSecretValueKey() *string {
+	return s.KmsSecretValueKey
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) SetKmsArn(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey {
+	s.KmsArn = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) SetKmsSecretValueKey(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey {
+	s.KmsSecretValueKey = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey) Validate() error {
 	return dara.Validate(s)
 }
 
