@@ -320,8 +320,6 @@ func (s *CreateWorkspaceResourceRequestResourcesLabels) Validate() error {
 type CreateWorkspaceResourceRequestResourcesQuotas struct {
 	// The quota ID. You can call [ListQuotas](https://help.aliyun.com/document_detail/449144.html) to obtain the quota ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 232892******92912
