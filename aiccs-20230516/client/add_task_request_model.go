@@ -55,16 +55,14 @@ type iAddTaskRequest interface {
 	GetTemplateId() *int64
 	SetTemplateType(v int64) *AddTaskRequest
 	GetTemplateType() *int64
+	SetWeekTag(v []*string) *AddTaskRequest
+	GetWeekTag() []*string
 }
 
 type AddTaskRequest struct {
 	// 外呼时间
 	CallTimeList []*AddTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
 	// 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
-	//
-	// example:
-	//
-	// [["08:31","12:05"]["13:33","19:00"]]
 	CallTimeStrList []*AddTaskRequestCallTimeStrList `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty" type:"Repeated"`
 	// 回调地址
 	//
@@ -100,7 +98,7 @@ type AddTaskRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
-	// 1234567890
+	// 无需填写
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
 	//
@@ -144,11 +142,11 @@ type AddTaskRequest struct {
 	RepeatTimes []*string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty" type:"Repeated"`
 	// example:
 	//
-	// example@aliyun.com
+	// 无需填写
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// example:
 	//
-	// 1885017412614451
+	// 无需填写
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信发送规则
 	SendSmsPlan []*AddTaskRequestSendSmsPlan `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty" type:"Repeated"`
@@ -178,6 +176,8 @@ type AddTaskRequest struct {
 	//
 	// 1
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// 外呼时间需要的按星期几进行外呼，例：“1,2,3,4,5,6,7”，代表周一到周日都外呼
+	WeekTag []*string `json:"WeekTag,omitempty" xml:"WeekTag,omitempty" type:"Repeated"`
 }
 
 func (s AddTaskRequest) String() string {
@@ -278,6 +278,10 @@ func (s *AddTaskRequest) GetTemplateId() *int64 {
 
 func (s *AddTaskRequest) GetTemplateType() *int64 {
 	return s.TemplateType
+}
+
+func (s *AddTaskRequest) GetWeekTag() []*string {
+	return s.WeekTag
 }
 
 func (s *AddTaskRequest) SetCallTimeList(v []*AddTaskRequestCallTimeList) *AddTaskRequest {
@@ -395,6 +399,11 @@ func (s *AddTaskRequest) SetTemplateType(v int64) *AddTaskRequest {
 	return s
 }
 
+func (s *AddTaskRequest) SetWeekTag(v []*string) *AddTaskRequest {
+	s.WeekTag = v
+	return s
+}
+
 func (s *AddTaskRequest) Validate() error {
 	if s.CallTimeList != nil {
 		for _, item := range s.CallTimeList {
@@ -452,9 +461,6 @@ func (s *AddTaskRequestCallTimeList) Validate() error {
 }
 
 type AddTaskRequestCallTimeStrList struct {
-	// example:
-	//
-	// ["08:31","12:05"]
 	CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
 }
 

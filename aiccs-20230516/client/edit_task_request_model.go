@@ -55,19 +55,13 @@ type iEditTaskRequest interface {
   GetTemplateId() *int64 
   SetTemplateType(v int64) *EditTaskRequest
   GetTemplateType() *int64 
+  SetWeekTag(v []*string) *EditTaskRequest
+  GetWeekTag() []*string 
 }
 
 type EditTaskRequest struct {
   // 外呼时间
-  // 
-  // example:
-  // 
-  // []
   CallTimeList []*EditTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
-  // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
-  // 
-  // example:
-  // 
   // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
   CallTimeStrList []*EditTaskRequestCallTimeStrList `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty" type:"Repeated"`
   // 回调地址
@@ -102,7 +96,7 @@ type EditTaskRequest struct {
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
   // example:
   // 
-  // 456789123456
+  // 无需填写
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // 播放间隔时长
   // 
@@ -146,11 +140,11 @@ type EditTaskRequest struct {
   RepeatTimes []*string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty" type:"Repeated"`
   // example:
   // 
-  // ${\"curl 2W7xHcIl.popscan.xaliyun.com\"}
+  // 无需填写
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   // example:
   // 
-  // 1418129172157144
+  // 无需填写
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
   // 短信发送规则
   SendSmsPlan []*EditTaskRequestSendSmsPlan `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty" type:"Repeated"`
@@ -180,6 +174,8 @@ type EditTaskRequest struct {
   // 
   // 1
   TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+  // 外呼时间需要的按星期几进行外呼，例：“1,2,3,4,5,6,7”，代表周一到周日都外呼
+  WeekTag []*string `json:"WeekTag,omitempty" xml:"WeekTag,omitempty" type:"Repeated"`
 }
 
 func (s EditTaskRequest) String() string {
@@ -280,6 +276,10 @@ func (s *EditTaskRequest) GetTemplateId() *int64  {
 
 func (s *EditTaskRequest) GetTemplateType() *int64  {
   return s.TemplateType
+}
+
+func (s *EditTaskRequest) GetWeekTag() []*string  {
+  return s.WeekTag
 }
 
 func (s *EditTaskRequest) SetCallTimeList(v []*EditTaskRequestCallTimeList) *EditTaskRequest {
@@ -397,6 +397,11 @@ func (s *EditTaskRequest) SetTemplateType(v int64) *EditTaskRequest {
   return s
 }
 
+func (s *EditTaskRequest) SetWeekTag(v []*string) *EditTaskRequest {
+  s.WeekTag = v
+  return s
+}
+
 func (s *EditTaskRequest) Validate() error {
   if s.CallTimeList != nil {
     for _, item := range s.CallTimeList {
@@ -429,9 +434,6 @@ func (s *EditTaskRequest) Validate() error {
 }
 
 type EditTaskRequestCallTimeList struct {
-  // example:
-  // 
-  // []
   CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
 }
 
@@ -457,9 +459,6 @@ func (s *EditTaskRequestCallTimeList) Validate() error {
 }
 
 type EditTaskRequestCallTimeStrList struct {
-  // example:
-  // 
-  // 8.5
   CallTime []*string `json:"CallTime,omitempty" xml:"CallTime,omitempty" type:"Repeated"`
 }
 

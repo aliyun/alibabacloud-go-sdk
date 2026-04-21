@@ -26,6 +26,9 @@ type iEditTaskResponseBody interface {
 }
 
 type EditTaskResponseBody struct {
+  // example:
+  // 
+  // None
   AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
   // example:
   // 

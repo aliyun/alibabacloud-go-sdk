@@ -346,6 +346,10 @@ func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *dara.R
 		request.SendSmsPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SendSmsPlan, dara.String("SendSmsPlan"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.WeekTag) {
+		request.WeekTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WeekTag, dara.String("WeekTag"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallTimeListShrink) {
 		query["CallTimeList"] = request.CallTimeListShrink
@@ -437,6 +441,10 @@ func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *dara.R
 
 	if !dara.IsNil(request.TemplateType) {
 		query["TemplateType"] = request.TemplateType
+	}
+
+	if !dara.IsNil(request.WeekTagShrink) {
+		query["WeekTag"] = request.WeekTagShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1288,6 +1296,10 @@ func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *dara
 		request.SendSmsPlanShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SendSmsPlan, dara.String("SendSmsPlan"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.WeekTag) {
+		request.WeekTagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WeekTag, dara.String("WeekTag"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CallTimeListShrink) {
 		query["CallTimeList"] = request.CallTimeListShrink
@@ -1379,6 +1391,10 @@ func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *dara
 
 	if !dara.IsNil(request.TemplateType) {
 		query["TemplateType"] = request.TemplateType
+	}
+
+	if !dara.IsNil(request.WeekTagShrink) {
+		query["WeekTag"] = request.WeekTagShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{

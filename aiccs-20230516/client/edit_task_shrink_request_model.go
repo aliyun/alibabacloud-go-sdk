@@ -55,19 +55,13 @@ type iEditTaskShrinkRequest interface {
   GetTemplateId() *int64 
   SetTemplateType(v int64) *EditTaskShrinkRequest
   GetTemplateType() *int64 
+  SetWeekTagShrink(v string) *EditTaskShrinkRequest
+  GetWeekTagShrink() *string 
 }
 
 type EditTaskShrinkRequest struct {
   // 外呼时间
-  // 
-  // example:
-  // 
-  // []
   CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
-  // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
-  // 
-  // example:
-  // 
   // 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
   CallTimeStrListShrink *string `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty"`
   // 回调地址
@@ -102,7 +96,7 @@ type EditTaskShrinkRequest struct {
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
   // example:
   // 
-  // 456789123456
+  // 无需填写
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   // 播放间隔时长
   // 
@@ -146,11 +140,11 @@ type EditTaskShrinkRequest struct {
   RepeatTimesShrink *string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
   // example:
   // 
-  // ${\"curl 2W7xHcIl.popscan.xaliyun.com\"}
+  // 无需填写
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   // example:
   // 
-  // 1418129172157144
+  // 无需填写
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
   // 短信发送规则
   SendSmsPlanShrink *string `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty"`
@@ -180,6 +174,8 @@ type EditTaskShrinkRequest struct {
   // 
   // 1
   TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+  // 外呼时间需要的按星期几进行外呼，例：“1,2,3,4,5,6,7”，代表周一到周日都外呼
+  WeekTagShrink *string `json:"WeekTag,omitempty" xml:"WeekTag,omitempty"`
 }
 
 func (s EditTaskShrinkRequest) String() string {
@@ -280,6 +276,10 @@ func (s *EditTaskShrinkRequest) GetTemplateId() *int64  {
 
 func (s *EditTaskShrinkRequest) GetTemplateType() *int64  {
   return s.TemplateType
+}
+
+func (s *EditTaskShrinkRequest) GetWeekTagShrink() *string  {
+  return s.WeekTagShrink
 }
 
 func (s *EditTaskShrinkRequest) SetCallTimeListShrink(v string) *EditTaskShrinkRequest {
@@ -394,6 +394,11 @@ func (s *EditTaskShrinkRequest) SetTemplateId(v int64) *EditTaskShrinkRequest {
 
 func (s *EditTaskShrinkRequest) SetTemplateType(v int64) *EditTaskShrinkRequest {
   s.TemplateType = &v
+  return s
+}
+
+func (s *EditTaskShrinkRequest) SetWeekTagShrink(v string) *EditTaskShrinkRequest {
+  s.WeekTagShrink = &v
   return s
 }
 

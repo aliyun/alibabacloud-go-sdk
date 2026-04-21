@@ -55,16 +55,14 @@ type iAddTaskShrinkRequest interface {
 	GetTemplateId() *int64
 	SetTemplateType(v int64) *AddTaskShrinkRequest
 	GetTemplateType() *int64
+	SetWeekTagShrink(v string) *AddTaskShrinkRequest
+	GetWeekTagShrink() *string
 }
 
 type AddTaskShrinkRequest struct {
 	// 外呼时间
 	CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
 	// 外呼时间:精确到分钟.如果两个字段都存在值，以该字段为准。建议用该字段，精确到分钟, 08:31-12:05 13:33-19:00 则传[["08:31","12:05"]["13:33","19:00"]]；默认为[["08:00","20:00"]]
-	//
-	// example:
-	//
-	// [["08:31","12:05"]["13:33","19:00"]]
 	CallTimeStrListShrink *string `json:"CallTimeStrList,omitempty" xml:"CallTimeStrList,omitempty"`
 	// 回调地址
 	//
@@ -100,7 +98,7 @@ type AddTaskShrinkRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
-	// 1234567890
+	// 无需填写
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
 	//
@@ -144,11 +142,11 @@ type AddTaskShrinkRequest struct {
 	RepeatTimesShrink *string `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
 	// example:
 	//
-	// example@aliyun.com
+	// 无需填写
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// example:
 	//
-	// 1885017412614451
+	// 无需填写
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信发送规则
 	SendSmsPlanShrink *string `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty"`
@@ -178,6 +176,8 @@ type AddTaskShrinkRequest struct {
 	//
 	// 1
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// 外呼时间需要的按星期几进行外呼，例：“1,2,3,4,5,6,7”，代表周一到周日都外呼
+	WeekTagShrink *string `json:"WeekTag,omitempty" xml:"WeekTag,omitempty"`
 }
 
 func (s AddTaskShrinkRequest) String() string {
@@ -278,6 +278,10 @@ func (s *AddTaskShrinkRequest) GetTemplateId() *int64 {
 
 func (s *AddTaskShrinkRequest) GetTemplateType() *int64 {
 	return s.TemplateType
+}
+
+func (s *AddTaskShrinkRequest) GetWeekTagShrink() *string {
+	return s.WeekTagShrink
 }
 
 func (s *AddTaskShrinkRequest) SetCallTimeListShrink(v string) *AddTaskShrinkRequest {
@@ -392,6 +396,11 @@ func (s *AddTaskShrinkRequest) SetTemplateId(v int64) *AddTaskShrinkRequest {
 
 func (s *AddTaskShrinkRequest) SetTemplateType(v int64) *AddTaskShrinkRequest {
 	s.TemplateType = &v
+	return s
+}
+
+func (s *AddTaskShrinkRequest) SetWeekTagShrink(v string) *AddTaskShrinkRequest {
+	s.WeekTagShrink = &v
 	return s
 }
 
