@@ -65,6 +65,58 @@ func (client *Client) CheckUpgradeItemWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 创建用户自动处置配置
+//
+// @param request - CreateAutoDisposeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAutoDisposeConfigResponse
+func (client *Client) CreateAutoDisposeConfigWithContext(ctx context.Context, request *CreateAutoDisposeConfigRequest, runtime *dara.RuntimeOptions) (_result *CreateAutoDisposeConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoDecisionStatus) {
+		body["AutoDecisionStatus"] = request.AutoDecisionStatus
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAutoDisposeConfig"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAutoDisposeConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据源
 //
 // @param request - CreateDataIngestionRequest
@@ -1835,6 +1887,61 @@ func (client *Client) EnableDataIngestionWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 手动处置告警
+//
+// @param request - ExecuteAutoDisposeRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteAutoDisposeRecordsResponse
+func (client *Client) ExecuteAutoDisposeRecordsWithContext(ctx context.Context, request *ExecuteAutoDisposeRecordsRequest, runtime *dara.RuntimeOptions) (_result *ExecuteAutoDisposeRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.SelectedEntityList) {
+		bodyFlat["SelectedEntityList"] = request.SelectedEntityList
+	}
+
+	if !dara.IsNil(request.UnSelectedEntityList) {
+		bodyFlat["UnSelectedEntityList"] = request.UnSelectedEntityList
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecuteAutoDisposeRecords"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecuteAutoDisposeRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看LogStore
 //
 // @param request - ExecuteLogQueryRequest
@@ -1965,6 +2072,54 @@ func (client *Client) ExecuteUpgradeWithContext(ctx context.Context, request *Ex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ExecuteUpgradeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户自动处置配置
+//
+// @param request - GetAutoDisposeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutoDisposeConfigResponse
+func (client *Client) GetAutoDisposeConfigWithContext(ctx context.Context, request *GetAutoDisposeConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAutoDisposeConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAutoDisposeConfig"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAutoDisposeConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2517,6 +2672,84 @@ func (client *Client) GetUserConfigWithContext(ctx context.Context, request *Get
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetUserConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI研判实体列表
+//
+// @param tmpReq - ListAutoDisposeEntitiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAutoDisposeEntitiesResponse
+func (client *Client) ListAutoDisposeEntitiesWithContext(ctx context.Context, tmpReq *ListAutoDisposeEntitiesRequest, runtime *dara.RuntimeOptions) (_result *ListAutoDisposeEntitiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAutoDisposeEntitiesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AutoDisposeRecordIds) {
+		request.AutoDisposeRecordIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AutoDisposeRecordIds, dara.String("AutoDisposeRecordIds"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoDisposeRecordIdsShrink) {
+		body["AutoDisposeRecordIds"] = request.AutoDisposeRecordIdsShrink
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.DataSourceType) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAutoDisposeEntities"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAutoDisposeEntitiesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4517,6 +4750,118 @@ func (client *Client) SetDefaultNormalizationRuleVersionWithContext(ctx context.
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetDefaultNormalizationRuleVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新用户自动处置配置
+//
+// @param request - UpdateAutoDisposeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutoDisposeConfigResponse
+func (client *Client) UpdateAutoDisposeConfigWithContext(ctx context.Context, request *UpdateAutoDisposeConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateAutoDisposeConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoDecisionStatus) {
+		body["AutoDecisionStatus"] = request.AutoDecisionStatus
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAutoDisposeConfig"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAutoDisposeConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步研判结果
+//
+// @param request - UpdateAutoDisposeRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAutoDisposeRecordResponse
+func (client *Client) UpdateAutoDisposeRecordWithContext(ctx context.Context, request *UpdateAutoDisposeRecordRequest, runtime *dara.RuntimeOptions) (_result *UpdateAutoDisposeRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AutoDecisionConclusion) {
+		body["AutoDecisionConclusion"] = request.AutoDecisionConclusion
+	}
+
+	if !dara.IsNil(request.AutoDecisionEntityList) {
+		body["AutoDecisionEntityList"] = request.AutoDecisionEntityList
+	}
+
+	if !dara.IsNil(request.AutoDecisionResult) {
+		body["AutoDecisionResult"] = request.AutoDecisionResult
+	}
+
+	if !dara.IsNil(request.AutoDisposeRecordId) {
+		body["AutoDisposeRecordId"] = request.AutoDisposeRecordId
+	}
+
+	if !dara.IsNil(request.Lang) {
+		body["Lang"] = request.Lang
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAutoDisposeRecord"),
+		Version:     dara.String("2024-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAutoDisposeRecordResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
