@@ -893,7 +893,7 @@ func (client *Client) CreateModule(request *CreateModuleRequest) (_result *Creat
 
 // Summary:
 //
-// 创建模板版本
+// Publish a template version.
 //
 // @param request - CreateModuleVersionRequest
 //
@@ -948,7 +948,7 @@ func (client *Client) CreateModuleVersionWithOptions(moduleId *string, request *
 
 // Summary:
 //
-// 创建模板版本
+// Publish a template version.
 //
 // @param request - CreateModuleVersionRequest
 //

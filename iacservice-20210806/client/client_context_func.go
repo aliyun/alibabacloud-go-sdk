@@ -593,7 +593,7 @@ func (client *Client) CreateModuleWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建模板版本
+// Publish a template version.
 //
 // @param request - CreateModuleVersionRequest
 //

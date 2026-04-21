@@ -122,6 +122,7 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// https://vpc.console.aliyun.com/vpc/${RegionId}/route-tables
 	ResourceListPageUrl *string `json:"resourceListPageUrl,omitempty" xml:"resourceListPageUrl,omitempty"`
+	ResourceType        *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// example:
 	//
 	// Available
@@ -177,6 +178,10 @@ func (s *ListResourceTypesResponseBodyResourceTypes) GetResourceListPageUrl() *s
 	return s.ResourceListPageUrl
 }
 
+func (s *ListResourceTypesResponseBodyResourceTypes) GetResourceType() *string {
+	return s.ResourceType
+}
+
 func (s *ListResourceTypesResponseBodyResourceTypes) GetStatus() *string {
 	return s.Status
 }
@@ -227,6 +232,11 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceDetailPageUrl(v 
 
 func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceListPageUrl(v string) *ListResourceTypesResponseBodyResourceTypes {
 	s.ResourceListPageUrl = &v
+	return s
+}
+
+func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceType(v string) *ListResourceTypesResponseBodyResourceTypes {
+	s.ResourceType = &v
 	return s
 }
 
