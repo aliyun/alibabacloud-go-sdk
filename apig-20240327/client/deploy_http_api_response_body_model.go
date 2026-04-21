@@ -11,6 +11,8 @@ type iDeployHttpApiResponseBody interface {
 	GoString() string
 	SetCode(v string) *DeployHttpApiResponseBody
 	GetCode() *string
+	SetData(v *DeployHttpApiResponseBodyData) *DeployHttpApiResponseBody
+	GetData() *DeployHttpApiResponseBodyData
 	SetMessage(v string) *DeployHttpApiResponseBody
 	GetMessage() *string
 	SetRequestId(v string) *DeployHttpApiResponseBody
@@ -23,7 +25,8 @@ type DeployHttpApiResponseBody struct {
 	// example:
 	//
 	// Ok
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Data *DeployHttpApiResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Response message.
 	//
 	// example:
@@ -50,6 +53,10 @@ func (s *DeployHttpApiResponseBody) GetCode() *string {
 	return s.Code
 }
 
+func (s *DeployHttpApiResponseBody) GetData() *DeployHttpApiResponseBodyData {
+	return s.Data
+}
+
 func (s *DeployHttpApiResponseBody) GetMessage() *string {
 	return s.Message
 }
@@ -60,6 +67,11 @@ func (s *DeployHttpApiResponseBody) GetRequestId() *string {
 
 func (s *DeployHttpApiResponseBody) SetCode(v string) *DeployHttpApiResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DeployHttpApiResponseBody) SetData(v *DeployHttpApiResponseBodyData) *DeployHttpApiResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -74,5 +86,35 @@ func (s *DeployHttpApiResponseBody) SetRequestId(v string) *DeployHttpApiRespons
 }
 
 func (s *DeployHttpApiResponseBody) Validate() error {
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DeployHttpApiResponseBodyData struct {
+	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
+}
+
+func (s DeployHttpApiResponseBodyData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DeployHttpApiResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiResponseBodyData) GetHttpApiId() *string {
+	return s.HttpApiId
+}
+
+func (s *DeployHttpApiResponseBodyData) SetHttpApiId(v string) *DeployHttpApiResponseBodyData {
+	s.HttpApiId = &v
+	return s
+}
+
+func (s *DeployHttpApiResponseBodyData) Validate() error {
 	return dara.Validate(s)
 }
