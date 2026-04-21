@@ -80,7 +80,8 @@ type GetKyuubiTokenResponseBodyData struct {
 	// example:
 	//
 	// dev_serverless_spark
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
 	// example:
 	//
 	// dxj**********wfg
@@ -129,6 +130,10 @@ func (s *GetKyuubiTokenResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *GetKyuubiTokenResponseBodyData) GetSparkRole() []*string {
+	return s.SparkRole
+}
+
 func (s *GetKyuubiTokenResponseBodyData) GetToken() *string {
 	return s.Token
 }
@@ -169,6 +174,11 @@ func (s *GetKyuubiTokenResponseBodyData) SetMemberArns(v []*string) *GetKyuubiTo
 
 func (s *GetKyuubiTokenResponseBodyData) SetName(v string) *GetKyuubiTokenResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetKyuubiTokenResponseBodyData) SetSparkRole(v []*string) *GetKyuubiTokenResponseBodyData {
+	s.SparkRole = v
 	return s
 }
 

@@ -476,6 +476,10 @@ func (client *Client) CreateKyuubiTokenWithOptions(workspaceId *string, kyuubiSe
 		body["name"] = request.Name
 	}
 
+	if !dara.IsNil(request.SparkRole) {
+		body["sparkRole"] = request.SparkRole
+	}
+
 	if !dara.IsNil(request.Token) {
 		body["token"] = request.Token
 	}
@@ -5266,6 +5270,10 @@ func (client *Client) UpdateKyuubiTokenWithOptions(workspaceId *string, kyuubiSe
 
 	if !dara.IsNil(request.Name) {
 		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SparkRole) {
+		body["sparkRole"] = request.SparkRole
 	}
 
 	if !dara.IsNil(request.Token) {

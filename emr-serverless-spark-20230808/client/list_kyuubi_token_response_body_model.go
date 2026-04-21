@@ -114,7 +114,8 @@ type ListKyuubiTokenResponseBodyDataTokens struct {
 	// example:
 	//
 	// dev_serveless_spark
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
 	// example:
 	//
 	// f14c1347-dcfd-4082-b101-77aa96b5de36
@@ -163,6 +164,10 @@ func (s *ListKyuubiTokenResponseBodyDataTokens) GetName() *string {
 	return s.Name
 }
 
+func (s *ListKyuubiTokenResponseBodyDataTokens) GetSparkRole() []*string {
+	return s.SparkRole
+}
+
 func (s *ListKyuubiTokenResponseBodyDataTokens) GetToken() *string {
 	return s.Token
 }
@@ -203,6 +208,11 @@ func (s *ListKyuubiTokenResponseBodyDataTokens) SetMemberArns(v []*string) *List
 
 func (s *ListKyuubiTokenResponseBodyDataTokens) SetName(v string) *ListKyuubiTokenResponseBodyDataTokens {
 	s.Name = &v
+	return s
+}
+
+func (s *ListKyuubiTokenResponseBodyDataTokens) SetSparkRole(v []*string) *ListKyuubiTokenResponseBodyDataTokens {
+	s.SparkRole = v
 	return s
 }
 

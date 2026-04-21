@@ -15,6 +15,8 @@ type iUpdateKyuubiTokenRequest interface {
 	GetMemberArns() []*string
 	SetName(v string) *UpdateKyuubiTokenRequest
 	GetName() *string
+	SetSparkRole(v []*string) *UpdateKyuubiTokenRequest
+	GetSparkRole() []*string
 	SetToken(v string) *UpdateKyuubiTokenRequest
 	GetToken() *string
 	SetRegionId(v string) *UpdateKyuubiTokenRequest
@@ -27,7 +29,8 @@ type UpdateKyuubiTokenRequest struct {
 	// example:
 	//
 	// dev_serverless_spark
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SparkRole []*string `json:"sparkRole,omitempty" xml:"sparkRole,omitempty" type:"Repeated"`
 	// example:
 	//
 	// rjy7ejhej9gkzjjuun49jnx2xk8if2cu
@@ -58,6 +61,10 @@ func (s *UpdateKyuubiTokenRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateKyuubiTokenRequest) GetSparkRole() []*string {
+	return s.SparkRole
+}
+
 func (s *UpdateKyuubiTokenRequest) GetToken() *string {
 	return s.Token
 }
@@ -78,6 +85,11 @@ func (s *UpdateKyuubiTokenRequest) SetMemberArns(v []*string) *UpdateKyuubiToken
 
 func (s *UpdateKyuubiTokenRequest) SetName(v string) *UpdateKyuubiTokenRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateKyuubiTokenRequest) SetSparkRole(v []*string) *UpdateKyuubiTokenRequest {
+	s.SparkRole = v
 	return s
 }
 
