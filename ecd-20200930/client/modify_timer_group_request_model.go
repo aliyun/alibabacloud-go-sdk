@@ -342,15 +342,17 @@ type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
 	// example:
 	//
 	// 1800
-	LockScreenTime      *int32    `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
-	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	ResetType           *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	StartCronExpression *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
-	TimerOrder          *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
-	Timezone            *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TriggerType         *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	LockScreenTime               *int32    `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
+	NotificationTime             *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
+	OperationType                *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ProcessWhitelist             []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
+	ResetType                    *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	StartCronExpression          *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+	TimerOrder                   *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
+	Timezone                     *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TriggerType                  *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	VerificationNotificationTime *int32    `json:"VerificationNotificationTime,omitempty" xml:"VerificationNotificationTime,omitempty"`
+	VerificationTime             *int32    `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
 }
 
 func (s ModifyTimerGroupRequestConfigTimersSegmentTimers) String() string {
@@ -415,6 +417,14 @@ func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetTimezone() *string
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetTriggerType() *string {
 	return s.TriggerType
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetVerificationNotificationTime() *int32 {
+	return s.VerificationNotificationTime
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetVerificationTime() *int32 {
+	return s.VerificationTime
 }
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetAppointmentTimer(v int64) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
@@ -484,6 +494,16 @@ func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetTimezone(v string)
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetTriggerType(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetVerificationNotificationTime(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.VerificationNotificationTime = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetVerificationTime(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.VerificationTime = &v
 	return s
 }
 

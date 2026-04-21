@@ -505,13 +505,15 @@ type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
 	// example:
 	//
 	// KB5082063
-	PatchId             *string   `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	ResetType           *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	StartCronExpression *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
-	TimerOrder          *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
-	Timezone            *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TriggerType         *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	PatchId                      *string   `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
+	ProcessWhitelist             []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
+	ResetType                    *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	StartCronExpression          *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+	TimerOrder                   *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
+	Timezone                     *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TriggerType                  *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	VerificationNotificationTime *int32    `json:"VerificationNotificationTime,omitempty" xml:"VerificationNotificationTime,omitempty"`
+	VerificationTime             *int32    `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
 }
 
 func (s DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) String() string {
@@ -584,6 +586,14 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetTimezon
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetTriggerType() *string {
 	return s.TriggerType
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetVerificationNotificationTime() *int32 {
+	return s.VerificationNotificationTime
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GetVerificationTime() *int32 {
+	return s.VerificationTime
 }
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetAppointmentTimer(v int64) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
@@ -663,6 +673,16 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetTimezon
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetTriggerType(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetVerificationNotificationTime(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.VerificationNotificationTime = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetVerificationTime(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.VerificationTime = &v
 	return s
 }
 
