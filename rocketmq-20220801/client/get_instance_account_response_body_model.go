@@ -182,6 +182,10 @@ type GetInstanceAccountResponseBodyData struct {
 	//
 	// *************
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// The username of the account.
 	//
 	// example:
@@ -206,6 +210,10 @@ func (s *GetInstanceAccountResponseBodyData) GetPassword() *string {
 	return s.Password
 }
 
+func (s *GetInstanceAccountResponseBodyData) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *GetInstanceAccountResponseBodyData) GetUsername() *string {
 	return s.Username
 }
@@ -217,6 +225,11 @@ func (s *GetInstanceAccountResponseBodyData) SetAccountStatus(v string) *GetInst
 
 func (s *GetInstanceAccountResponseBodyData) SetPassword(v string) *GetInstanceAccountResponseBodyData {
 	s.Password = &v
+	return s
+}
+
+func (s *GetInstanceAccountResponseBodyData) SetRemark(v string) *GetInstanceAccountResponseBodyData {
+	s.Remark = &v
 	return s
 }
 

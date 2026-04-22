@@ -13,6 +13,8 @@ type iUpdateInstanceAccountRequest interface {
 	GetAccountStatus() *string
 	SetPassword(v string) *UpdateInstanceAccountRequest
 	GetPassword() *string
+	SetRemark(v string) *UpdateInstanceAccountRequest
+	GetRemark() *string
 }
 
 type UpdateInstanceAccountRequest struct {
@@ -34,6 +36,10 @@ type UpdateInstanceAccountRequest struct {
 	//
 	// test
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 
 func (s UpdateInstanceAccountRequest) String() string {
@@ -52,6 +58,10 @@ func (s *UpdateInstanceAccountRequest) GetPassword() *string {
 	return s.Password
 }
 
+func (s *UpdateInstanceAccountRequest) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *UpdateInstanceAccountRequest) SetAccountStatus(v string) *UpdateInstanceAccountRequest {
 	s.AccountStatus = &v
 	return s
@@ -59,6 +69,11 @@ func (s *UpdateInstanceAccountRequest) SetAccountStatus(v string) *UpdateInstanc
 
 func (s *UpdateInstanceAccountRequest) SetPassword(v string) *UpdateInstanceAccountRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *UpdateInstanceAccountRequest) SetRemark(v string) *UpdateInstanceAccountRequest {
+	s.Remark = &v
 	return s
 }
 

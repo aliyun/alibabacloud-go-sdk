@@ -11,6 +11,8 @@ type iCreateInstanceAccountRequest interface {
 	GoString() string
 	SetPassword(v string) *CreateInstanceAccountRequest
 	GetPassword() *string
+	SetRemark(v string) *CreateInstanceAccountRequest
+	GetRemark() *string
 	SetUsername(v string) *CreateInstanceAccountRequest
 	GetUsername() *string
 }
@@ -24,6 +26,10 @@ type CreateInstanceAccountRequest struct {
 	//
 	// xxx
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// The username of the account.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *CreateInstanceAccountRequest) GetPassword() *string {
 	return s.Password
 }
 
+func (s *CreateInstanceAccountRequest) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *CreateInstanceAccountRequest) GetUsername() *string {
 	return s.Username
 }
 
 func (s *CreateInstanceAccountRequest) SetPassword(v string) *CreateInstanceAccountRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateInstanceAccountRequest) SetRemark(v string) *CreateInstanceAccountRequest {
+	s.Remark = &v
 	return s
 }
 

@@ -295,6 +295,10 @@ type ListInstanceAccountResponseBodyDataList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// example:
+	//
+	// test
+	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 	// The username of the account.
 	//
 	// example:
@@ -327,6 +331,10 @@ func (s *ListInstanceAccountResponseBodyDataList) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListInstanceAccountResponseBodyDataList) GetRemark() *string {
+	return s.Remark
+}
+
 func (s *ListInstanceAccountResponseBodyDataList) GetUsername() *string {
 	return s.Username
 }
@@ -348,6 +356,11 @@ func (s *ListInstanceAccountResponseBodyDataList) SetInstanceId(v string) *ListI
 
 func (s *ListInstanceAccountResponseBodyDataList) SetRegionId(v string) *ListInstanceAccountResponseBodyDataList {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstanceAccountResponseBodyDataList) SetRemark(v string) *ListInstanceAccountResponseBodyDataList {
+	s.Remark = &v
 	return s
 }
 

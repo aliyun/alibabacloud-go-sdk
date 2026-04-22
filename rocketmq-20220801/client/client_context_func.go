@@ -399,6 +399,10 @@ func (client *Client) CreateInstanceAccountWithContext(ctx context.Context, inst
 		body["password"] = request.Password
 	}
 
+	if !dara.IsNil(request.Remark) {
+		body["remark"] = request.Remark
+	}
+
 	if !dara.IsNil(request.Username) {
 		body["username"] = request.Username
 	}
@@ -3352,6 +3356,10 @@ func (client *Client) UpdateInstanceAccountWithContext(ctx context.Context, inst
 
 	if !dara.IsNil(request.Password) {
 		query["password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["remark"] = request.Remark
 	}
 
 	req := &openapiutil.OpenApiRequest{
