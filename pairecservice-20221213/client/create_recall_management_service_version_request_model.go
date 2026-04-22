@@ -249,6 +249,7 @@ type CreateRecallManagementServiceVersionRequestConfigsRecallConfigs struct {
 	//
 	// X2I
 	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	SortFields *string `json:"SortFields,omitempty" xml:"SortFields,omitempty"`
 	// example:
 	//
 	// user_embedding
@@ -311,6 +312,10 @@ func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs) GetRec
 	return s.RecallType
 }
 
+func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs) GetSortFields() *string {
+	return s.SortFields
+}
+
 func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs) GetUserVectorField() *string {
 	return s.UserVectorField
 }
@@ -371,6 +376,11 @@ func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs) SetRec
 
 func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs) SetRecallType(v string) *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs {
 	s.RecallType = &v
+	return s
+}
+
+func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs) SetSortFields(v string) *CreateRecallManagementServiceVersionRequestConfigsRecallConfigs {
+	s.SortFields = &v
 	return s
 }
 

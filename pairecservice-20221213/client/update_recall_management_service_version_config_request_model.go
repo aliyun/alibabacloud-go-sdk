@@ -199,6 +199,7 @@ type UpdateRecallManagementServiceVersionConfigRequestRecallConfig struct {
 	Priority                          *int64                                                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RecallManagementTableId           *string                                                                   `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
 	RecallType                        *string                                                                   `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	SortFields                        *string                                                                   `json:"SortFields,omitempty" xml:"SortFields,omitempty"`
 	UserVectorField                   *string                                                                   `json:"UserVectorField,omitempty" xml:"UserVectorField,omitempty"`
 	UserVectorRecallManagementTableId *string                                                                   `json:"UserVectorRecallManagementTableId,omitempty" xml:"UserVectorRecallManagementTableId,omitempty"`
 }
@@ -253,6 +254,10 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetRecal
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetRecallType() *string {
 	return s.RecallType
+}
+
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetSortFields() *string {
+	return s.SortFields
 }
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) GetUserVectorField() *string {
@@ -315,6 +320,11 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetRecal
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetRecallType(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfig {
 	s.RecallType = &v
+	return s
+}
+
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfig) SetSortFields(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfig {
+	s.SortFields = &v
 	return s
 }
 
