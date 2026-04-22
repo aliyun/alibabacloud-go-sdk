@@ -1540,6 +1540,62 @@ func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 获取实例指标趋势详情
+//
+// @param request - GetInstanceTrendingReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceTrendingReportResponse
+func (client *Client) GetInstanceTrendingReportWithContext(ctx context.Context, request *GetInstanceTrendingReportRequest, runtime *dara.RuntimeOptions) (_result *GetInstanceTrendingReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeInterval) {
+		body["TimeInterval"] = request.TimeInterval
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInstanceTrendingReport"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInstanceTrendingReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取实例实时指标
 //
 // @param request - GetRealtimeInstanceStatsRequest
@@ -1574,6 +1630,54 @@ func (client *Client) GetRealtimeInstanceStatsWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetRealtimeInstanceStatsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取场景实时指标
+//
+// @param request - GetRealtimeScriptStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRealtimeScriptStatsResponse
+func (client *Client) GetRealtimeScriptStatsWithContext(ctx context.Context, request *GetRealtimeScriptStatsRequest, runtime *dara.RuntimeOptions) (_result *GetRealtimeScriptStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRealtimeScriptStats"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRealtimeScriptStatsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1670,6 +1774,66 @@ func (client *Client) GetScriptWithContext(ctx context.Context, request *GetScri
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetScriptResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取场景指标趋势详情
+//
+// @param request - GetScriptTrendingReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScriptTrendingReportResponse
+func (client *Client) GetScriptTrendingReportWithContext(ctx context.Context, request *GetScriptTrendingReportRequest, runtime *dara.RuntimeOptions) (_result *GetScriptTrendingReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ScriptId) {
+		body["ScriptId"] = request.ScriptId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeInterval) {
+		body["TimeInterval"] = request.TimeInterval
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScriptTrendingReport"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScriptTrendingReportResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2156,6 +2320,142 @@ func (client *Client) ListCloneVoiceModelsWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 获取实例指标汇总数据
+//
+// @param tmpReq - ListHistoricalInstanceReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHistoricalInstanceReportResponse
+func (client *Client) ListHistoricalInstanceReportWithContext(ctx context.Context, tmpReq *ListHistoricalInstanceReportRequest, runtime *dara.RuntimeOptions) (_result *ListHistoricalInstanceReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListHistoricalInstanceReportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		body["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListHistoricalInstanceReport"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListHistoricalInstanceReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取场景指标汇总数据
+//
+// @param tmpReq - ListHistoricalScriptReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHistoricalScriptReportResponse
+func (client *Client) ListHistoricalScriptReportWithContext(ctx context.Context, tmpReq *ListHistoricalScriptReportRequest, runtime *dara.RuntimeOptions) (_result *ListHistoricalScriptReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListHistoricalScriptReportShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ScriptIds) {
+		request.ScriptIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScriptIds, dara.String("ScriptIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScriptIdsShrink) {
+		body["ScriptIds"] = request.ScriptIdsShrink
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListHistoricalScriptReport"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListHistoricalScriptReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询指令
 //
 // @param request - ListInstructionsRequest
@@ -2298,6 +2598,64 @@ func (client *Client) ListNluModelsWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListNluModelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例实时指标
+//
+// @param tmpReq - ListRealtimeInstanceStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRealtimeInstanceStatsResponse
+func (client *Client) ListRealtimeInstanceStatsWithContext(ctx context.Context, tmpReq *ListRealtimeInstanceStatsRequest, runtime *dara.RuntimeOptions) (_result *ListRealtimeInstanceStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListRealtimeInstanceStatsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		body["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRealtimeInstanceStats"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRealtimeInstanceStatsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
