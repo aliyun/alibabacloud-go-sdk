@@ -9,6 +9,8 @@ type iGetEmbodiedAIPlatformResourceUsageInfoResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAcuDetails(v *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) *GetEmbodiedAIPlatformResourceUsageInfoResponseBody
+	GetAcuDetails() *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails
 	SetGpuDetails(v []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) *GetEmbodiedAIPlatformResourceUsageInfoResponseBody
 	GetGpuDetails() []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails
 	SetMaxRegisteredDevices(v int64) *GetEmbodiedAIPlatformResourceUsageInfoResponseBody
@@ -24,6 +26,7 @@ type iGetEmbodiedAIPlatformResourceUsageInfoResponseBody interface {
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBody struct {
+	AcuDetails *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails   `json:"AcuDetails,omitempty" xml:"AcuDetails,omitempty" type:"Struct"`
 	GpuDetails []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails `json:"GpuDetails,omitempty" xml:"GpuDetails,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -51,6 +54,10 @@ func (s GetEmbodiedAIPlatformResourceUsageInfoResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) GetAcuDetails() *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails {
+	return s.AcuDetails
+}
+
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) GetGpuDetails() []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails {
 	return s.GpuDetails
 }
@@ -73,6 +80,11 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) GetSlbTraffic() *Ge
 
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) GetStorageUsage() *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyStorageUsage {
 	return s.StorageUsage
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) SetAcuDetails(v *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) *GetEmbodiedAIPlatformResourceUsageInfoResponseBody {
+	s.AcuDetails = v
+	return s
 }
 
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) SetGpuDetails(v []*GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails) *GetEmbodiedAIPlatformResourceUsageInfoResponseBody {
@@ -106,6 +118,11 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) SetStorageUsage(v *
 }
 
 func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) Validate() error {
+	if s.AcuDetails != nil {
+		if err := s.AcuDetails.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.GpuDetails != nil {
 		for _, item := range s.GpuDetails {
 			if item != nil {
@@ -126,6 +143,61 @@ func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails struct {
+	EapWebserverACUCount *float64 `json:"EapWebserverACUCount,omitempty" xml:"EapWebserverACUCount,omitempty"`
+	RayHeadACUCount      *float64 `json:"RayHeadACUCount,omitempty" xml:"RayHeadACUCount,omitempty"`
+	RayWorkerACUCount    *float64 `json:"RayWorkerACUCount,omitempty" xml:"RayWorkerACUCount,omitempty"`
+	TotalACUCount        *float64 `json:"TotalACUCount,omitempty" xml:"TotalACUCount,omitempty"`
+}
+
+func (s GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) GetEapWebserverACUCount() *float64 {
+	return s.EapWebserverACUCount
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) GetRayHeadACUCount() *float64 {
+	return s.RayHeadACUCount
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) GetRayWorkerACUCount() *float64 {
+	return s.RayWorkerACUCount
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) GetTotalACUCount() *float64 {
+	return s.TotalACUCount
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) SetEapWebserverACUCount(v float64) *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails {
+	s.EapWebserverACUCount = &v
+	return s
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) SetRayHeadACUCount(v float64) *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails {
+	s.RayHeadACUCount = &v
+	return s
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) SetRayWorkerACUCount(v float64) *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails {
+	s.RayWorkerACUCount = &v
+	return s
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) SetTotalACUCount(v float64) *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails {
+	s.TotalACUCount = &v
+	return s
+}
+
+func (s *GetEmbodiedAIPlatformResourceUsageInfoResponseBodyAcuDetails) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails struct {

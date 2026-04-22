@@ -11,6 +11,8 @@ type iModifyEmbodiedAIPlatformShrinkRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ModifyEmbodiedAIPlatformShrinkRequest
 	GetDBClusterId() *string
+	SetDeviceCount(v string) *ModifyEmbodiedAIPlatformShrinkRequest
+	GetDeviceCount() *string
 	SetPlatformName(v string) *ModifyEmbodiedAIPlatformShrinkRequest
 	GetPlatformName() *string
 	SetRayConfigShrink(v string) *ModifyEmbodiedAIPlatformShrinkRequest
@@ -28,13 +30,13 @@ type ModifyEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eap_platform
-	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	// This parameter is required.
+	PlatformName    *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
 	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	// This parameter is required.
 	//
@@ -42,8 +44,6 @@ type ModifyEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// large
@@ -60,6 +60,10 @@ func (s ModifyEmbodiedAIPlatformShrinkRequest) GoString() string {
 
 func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetDBClusterId() *string {
 	return s.DBClusterId
+}
+
+func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetDeviceCount() *string {
+	return s.DeviceCount
 }
 
 func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetPlatformName() *string {
@@ -80,6 +84,11 @@ func (s *ModifyEmbodiedAIPlatformShrinkRequest) GetWebserverSpecName() *string {
 
 func (s *ModifyEmbodiedAIPlatformShrinkRequest) SetDBClusterId(v string) *ModifyEmbodiedAIPlatformShrinkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyEmbodiedAIPlatformShrinkRequest) SetDeviceCount(v string) *ModifyEmbodiedAIPlatformShrinkRequest {
+	s.DeviceCount = &v
 	return s
 }
 

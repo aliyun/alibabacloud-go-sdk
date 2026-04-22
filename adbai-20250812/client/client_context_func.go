@@ -97,6 +97,10 @@ func (client *Client) CreateEmbodiedAIPlatformWithContext(ctx context.Context, t
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.DeviceCount) {
+		query["DeviceCount"] = request.DeviceCount
+	}
+
 	if !dara.IsNil(request.PlatformName) {
 		query["PlatformName"] = request.PlatformName
 	}
@@ -303,6 +307,58 @@ func (client *Client) DescribeChatMessageWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeChatMessageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询具身智能平台设备资源分配方案
+//
+// @param request - DescribeEapDeviceResourceAllocationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEapDeviceResourceAllocationResponse
+func (client *Client) DescribeEapDeviceResourceAllocationWithContext(ctx context.Context, request *DescribeEapDeviceResourceAllocationRequest, runtime *dara.RuntimeOptions) (_result *DescribeEapDeviceResourceAllocationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DeviceCount) {
+		query["DeviceCount"] = request.DeviceCount
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEapDeviceResourceAllocation"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEapDeviceResourceAllocationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -590,6 +646,10 @@ func (client *Client) ModifyEmbodiedAIPlatformWithContext(ctx context.Context, t
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DeviceCount) {
+		query["DeviceCount"] = request.DeviceCount
 	}
 
 	if !dara.IsNil(request.PlatformName) {

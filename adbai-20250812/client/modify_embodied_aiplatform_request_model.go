@@ -11,6 +11,8 @@ type iModifyEmbodiedAIPlatformRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *ModifyEmbodiedAIPlatformRequest
 	GetDBClusterId() *string
+	SetDeviceCount(v string) *ModifyEmbodiedAIPlatformRequest
+	GetDeviceCount() *string
 	SetPlatformName(v string) *ModifyEmbodiedAIPlatformRequest
 	GetPlatformName() *string
 	SetRayConfig(v *ModifyEmbodiedAIPlatformRequestRayConfig) *ModifyEmbodiedAIPlatformRequest
@@ -28,22 +30,20 @@ type ModifyEmbodiedAIPlatformRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DeviceCount *string `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eap_platform
-	PlatformName *string `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
-	// This parameter is required.
-	RayConfig *ModifyEmbodiedAIPlatformRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
+	PlatformName *string                                   `json:"PlatformName,omitempty" xml:"PlatformName,omitempty"`
+	RayConfig    *ModifyEmbodiedAIPlatformRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// large
@@ -60,6 +60,10 @@ func (s ModifyEmbodiedAIPlatformRequest) GoString() string {
 
 func (s *ModifyEmbodiedAIPlatformRequest) GetDBClusterId() *string {
 	return s.DBClusterId
+}
+
+func (s *ModifyEmbodiedAIPlatformRequest) GetDeviceCount() *string {
+	return s.DeviceCount
 }
 
 func (s *ModifyEmbodiedAIPlatformRequest) GetPlatformName() *string {
@@ -80,6 +84,11 @@ func (s *ModifyEmbodiedAIPlatformRequest) GetWebserverSpecName() *string {
 
 func (s *ModifyEmbodiedAIPlatformRequest) SetDBClusterId(v string) *ModifyEmbodiedAIPlatformRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyEmbodiedAIPlatformRequest) SetDeviceCount(v string) *ModifyEmbodiedAIPlatformRequest {
+	s.DeviceCount = &v
 	return s
 }
 

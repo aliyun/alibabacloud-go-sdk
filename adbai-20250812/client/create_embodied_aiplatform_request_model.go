@@ -11,6 +11,8 @@ type iCreateEmbodiedAIPlatformRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *CreateEmbodiedAIPlatformRequest
 	GetDBClusterId() *string
+	SetDeviceCount(v int32) *CreateEmbodiedAIPlatformRequest
+	GetDeviceCount() *int32
 	SetPlatformName(v string) *CreateEmbodiedAIPlatformRequest
 	GetPlatformName() *string
 	SetRayConfig(v *CreateEmbodiedAIPlatformRequestRayConfig) *CreateEmbodiedAIPlatformRequest
@@ -28,6 +30,7 @@ type CreateEmbodiedAIPlatformRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DeviceCount *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -59,6 +62,10 @@ func (s *CreateEmbodiedAIPlatformRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *CreateEmbodiedAIPlatformRequest) GetDeviceCount() *int32 {
+	return s.DeviceCount
+}
+
 func (s *CreateEmbodiedAIPlatformRequest) GetPlatformName() *string {
 	return s.PlatformName
 }
@@ -77,6 +84,11 @@ func (s *CreateEmbodiedAIPlatformRequest) GetWebserverSpecName() *string {
 
 func (s *CreateEmbodiedAIPlatformRequest) SetDBClusterId(v string) *CreateEmbodiedAIPlatformRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformRequest) SetDeviceCount(v int32) *CreateEmbodiedAIPlatformRequest {
+	s.DeviceCount = &v
 	return s
 }
 

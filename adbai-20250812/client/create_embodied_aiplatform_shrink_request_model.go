@@ -11,6 +11,8 @@ type iCreateEmbodiedAIPlatformShrinkRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *CreateEmbodiedAIPlatformShrinkRequest
 	GetDBClusterId() *string
+	SetDeviceCount(v int32) *CreateEmbodiedAIPlatformShrinkRequest
+	GetDeviceCount() *int32
 	SetPlatformName(v string) *CreateEmbodiedAIPlatformShrinkRequest
 	GetPlatformName() *string
 	SetRayConfigShrink(v string) *CreateEmbodiedAIPlatformShrinkRequest
@@ -28,6 +30,7 @@ type CreateEmbodiedAIPlatformShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DeviceCount *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -59,6 +62,10 @@ func (s *CreateEmbodiedAIPlatformShrinkRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *CreateEmbodiedAIPlatformShrinkRequest) GetDeviceCount() *int32 {
+	return s.DeviceCount
+}
+
 func (s *CreateEmbodiedAIPlatformShrinkRequest) GetPlatformName() *string {
 	return s.PlatformName
 }
@@ -77,6 +84,11 @@ func (s *CreateEmbodiedAIPlatformShrinkRequest) GetWebserverSpecName() *string {
 
 func (s *CreateEmbodiedAIPlatformShrinkRequest) SetDBClusterId(v string) *CreateEmbodiedAIPlatformShrinkRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateEmbodiedAIPlatformShrinkRequest) SetDeviceCount(v int32) *CreateEmbodiedAIPlatformShrinkRequest {
+	s.DeviceCount = &v
 	return s
 }
 
