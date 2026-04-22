@@ -140,6 +140,84 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
+// 创建白名单分组
+//
+// @param request - CreateAclGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAclGroupResponse
+func (client *Client) CreateAclGroupWithOptions(request *CreateAclGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAclGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cidrs) {
+		query["cidrs"] = request.Cidrs
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["groupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAclGroup"),
+		Version:     dara.String("2023-10-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/milvus/createAclGroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAclGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建白名单分组
+//
+// @param request - CreateAclGroupRequest
+//
+// @return CreateAclGroupResponse
+func (client *Client) CreateAclGroup(request *CreateAclGroupRequest) (_result *CreateAclGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAclGroupResponse{}
+	_body, _err := client.CreateAclGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create a service role for Milvus to access other cloud products
 //
 // @param headers - map
@@ -700,6 +778,76 @@ func (client *Client) GetInstanceDetail(request *GetInstanceDetailRequest) (_res
 
 // Summary:
 //
+// 获取当前用户下的分组信息和内容
+//
+// @param request - ListAclGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAclGroupsResponse
+func (client *Client) ListAclGroupsWithOptions(request *ListAclGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAclGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAclGroups"),
+		Version:     dara.String("2023-10-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/milvus/listAclGroups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAclGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前用户下的分组信息和内容
+//
+// @param request - ListAclGroupsRequest
+//
+// @return ListAclGroupsResponse
+func (client *Client) ListAclGroups(request *ListAclGroupsRequest) (_result *ListAclGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAclGroupsResponse{}
+	_body, _err := client.ListAclGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Get the list of Milvus instances under the current account.
 //
 // @param tmpReq - ListInstancesRequest
@@ -1209,6 +1357,80 @@ func (client *Client) UpdateAccessControlList(request *UpdateAccessControlListRe
 	headers := make(map[string]*string)
 	_result = &UpdateAccessControlListResponse{}
 	_body, _err := client.UpdateAccessControlListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改分组内的白名单
+//
+// @param request - UpdateAclGroupCidrsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAclGroupCidrsResponse
+func (client *Client) UpdateAclGroupCidrsWithOptions(request *UpdateAclGroupCidrsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAclGroupCidrsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GroupName) {
+		query["groupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NewCidrs) {
+		query["newCidrs"] = request.NewCidrs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAclGroupCidrs"),
+		Version:     dara.String("2023-10-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/milvus/updateAclGroupCidrs"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAclGroupCidrsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改分组内的白名单
+//
+// @param request - UpdateAclGroupCidrsRequest
+//
+// @return UpdateAclGroupCidrsResponse
+func (client *Client) UpdateAclGroupCidrs(request *UpdateAclGroupCidrsRequest) (_result *UpdateAclGroupCidrsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAclGroupCidrsResponse{}
+	_body, _err := client.UpdateAclGroupCidrsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
