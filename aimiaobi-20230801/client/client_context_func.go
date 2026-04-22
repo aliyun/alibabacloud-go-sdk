@@ -5544,6 +5544,78 @@ func (client *Client) InitiatePptCreationWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 初始化PPT创建操作V2
+//
+// @param request - InitiatePptCreationV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitiatePptCreationV2Response
+func (client *Client) InitiatePptCreationV2WithContext(ctx context.Context, request *InitiatePptCreationV2Request, runtime *dara.RuntimeOptions) (_result *InitiatePptCreationV2Response, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExternalUserId) {
+		body["ExternalUserId"] = request.ExternalUserId
+	}
+
+	if !dara.IsNil(request.IsMobile) {
+		body["IsMobile"] = request.IsMobile
+	}
+
+	if !dara.IsNil(request.Outline) {
+		body["Outline"] = request.Outline
+	}
+
+	if !dara.IsNil(request.PptTemplateId) {
+		body["PptTemplateId"] = request.PptTemplateId
+	}
+
+	if !dara.IsNil(request.PptTemplateType) {
+		body["PptTemplateType"] = request.PptTemplateType
+	}
+
+	if !dara.IsNil(request.ProcessType) {
+		body["ProcessType"] = request.ProcessType
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InitiatePptCreationV2"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InitiatePptCreationV2Response{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 设置干预全局回复
 //
 // @param tmpReq - InsertInterveneGlobalReplyRequest
@@ -6830,6 +6902,64 @@ func (client *Client) ListDocumentRetrieveWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDocumentRetrieveResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PPT模板列表
+//
+// @param request - ListEnterprisePptTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnterprisePptTemplatesResponse
+func (client *Client) ListEnterprisePptTemplatesWithContext(ctx context.Context, request *ListEnterprisePptTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListEnterprisePptTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListEnterprisePptTemplates"),
+		Version:     dara.String("2023-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListEnterprisePptTemplatesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
