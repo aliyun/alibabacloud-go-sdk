@@ -21,6 +21,8 @@ type iGetChatContentResponseBody interface {
 	GetEventType() *string
 	SetLevel(v int64) *GetChatContentResponseBody
 	GetLevel() *int64
+	SetTimestamp(v string) *GetChatContentResponseBody
+	GetTimestamp() *string
 }
 
 type GetChatContentResponseBody struct {
@@ -47,7 +49,8 @@ type GetChatContentResponseBody struct {
 	// example:
 	//
 	// 20
-	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
+	Level     *int64  `json:"level,omitempty" xml:"level,omitempty"`
+	Timestamp *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s GetChatContentResponseBody) String() string {
@@ -82,6 +85,10 @@ func (s *GetChatContentResponseBody) GetLevel() *int64 {
 	return s.Level
 }
 
+func (s *GetChatContentResponseBody) GetTimestamp() *string {
+	return s.Timestamp
+}
+
 func (s *GetChatContentResponseBody) SetCategory(v string) *GetChatContentResponseBody {
 	s.Category = &v
 	return s
@@ -109,6 +116,11 @@ func (s *GetChatContentResponseBody) SetEventType(v string) *GetChatContentRespo
 
 func (s *GetChatContentResponseBody) SetLevel(v int64) *GetChatContentResponseBody {
 	s.Level = &v
+	return s
+}
+
+func (s *GetChatContentResponseBody) SetTimestamp(v string) *GetChatContentResponseBody {
+	s.Timestamp = &v
 	return s
 }
 
