@@ -1,3 +1,11 @@
+2026-04-22 Version: v2.6.0
+- Support API DescribeIntranetUserCanAnalysisVpcs.
+- Support API DescribePvtzStatisticsGlobalOverview.
+- Support API DescribePvtzStatisticsHistory.
+- Support API DescribePvtzStatisticsSummary.
+- Support API DescribePvtzStatisticsZoneOverview.
+
+
 2026-04-09 Version: v2.5.4
 - Generated golang 2018-01-01 for pvtz.
 
