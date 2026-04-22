@@ -68,8 +68,6 @@ type VerifyInstanceADAuthServerRequest struct {
 	//
 	// true
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// ******

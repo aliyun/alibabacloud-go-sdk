@@ -408,6 +408,10 @@ type SetPolicyProtocolConfigRequestProtocolConfigSSH struct {
 	//
 	// Enable
 	SSHChannel *string `json:"SSHChannel,omitempty" xml:"SSHChannel,omitempty"`
+	// example:
+	//
+	// Enable
+	TcpForwarding *string `json:"TcpForwarding,omitempty" xml:"TcpForwarding,omitempty"`
 	// Specifies whether to enable X11 forwarding. Valid values:
 	//
 	// 	- Enable
@@ -474,6 +478,10 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetSSHChannel() *strin
 	return s.SSHChannel
 }
 
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetTcpForwarding() *string {
+	return s.TcpForwarding
+}
+
 func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) GetX11Forwarding() *string {
 	return s.X11Forwarding
 }
@@ -530,6 +538,11 @@ func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSFTPUploadFile(v st
 
 func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetSSHChannel(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
 	s.SSHChannel = &v
+	return s
+}
+
+func (s *SetPolicyProtocolConfigRequestProtocolConfigSSH) SetTcpForwarding(v string) *SetPolicyProtocolConfigRequestProtocolConfigSSH {
+	s.TcpForwarding = &v
 	return s
 }
 

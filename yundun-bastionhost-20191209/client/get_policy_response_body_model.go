@@ -563,6 +563,14 @@ type GetPolicyResponseBodyPolicyProtocolConfigRDP struct {
 	//
 	// Enable
 	DiskRedirection *string `json:"DiskRedirection,omitempty" xml:"DiskRedirection,omitempty"`
+	// example:
+	//
+	// Enable
+	DiskRedirectionDownload *string `json:"DiskRedirectionDownload,omitempty" xml:"DiskRedirectionDownload,omitempty"`
+	// example:
+	//
+	// Enable
+	DiskRedirectionUpload *string `json:"DiskRedirectionUpload,omitempty" xml:"DiskRedirectionUpload,omitempty"`
 	// Indicates whether keyboard recording is enabled. Valid values:
 	//
 	// 	- Enable
@@ -595,6 +603,14 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) GetDiskRedirection() *str
 	return s.DiskRedirection
 }
 
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) GetDiskRedirectionDownload() *string {
+	return s.DiskRedirectionDownload
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) GetDiskRedirectionUpload() *string {
+	return s.DiskRedirectionUpload
+}
+
 func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) GetRecordKeyboard() *string {
 	return s.RecordKeyboard
 }
@@ -614,6 +630,16 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetDiskRedirection(v stri
 	return s
 }
 
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetDiskRedirectionDownload(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
+	s.DiskRedirectionDownload = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetDiskRedirectionUpload(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
+	s.DiskRedirectionUpload = &v
+	return s
+}
+
 func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) SetRecordKeyboard(v string) *GetPolicyResponseBodyPolicyProtocolConfigRDP {
 	s.RecordKeyboard = &v
 	return s
@@ -624,6 +650,14 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfigRDP) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicyProtocolConfigSSH struct {
+	// example:
+	//
+	// Enable
+	AllowDirectTcp *string `json:"AllowDirectTcp,omitempty" xml:"AllowDirectTcp,omitempty"`
+	// example:
+	//
+	// Enable
+	AllowTcpForwarding *string `json:"AllowTcpForwarding,omitempty" xml:"AllowTcpForwarding,omitempty"`
 	// Indicates whether remote command execution is enabled. Valid values:
 	//
 	// 	- Enable
@@ -714,6 +748,10 @@ type GetPolicyResponseBodyPolicyProtocolConfigSSH struct {
 	//
 	// Enable
 	SSHChannel *string `json:"SSHChannel,omitempty" xml:"SSHChannel,omitempty"`
+	// example:
+	//
+	// Enable
+	TcpForwarding *string `json:"TcpForwarding,omitempty" xml:"TcpForwarding,omitempty"`
 	// Indicates whether X11 forwarding is enabled. Valid values:
 	//
 	// 	- Enable
@@ -732,6 +770,14 @@ func (s GetPolicyResponseBodyPolicyProtocolConfigSSH) String() string {
 
 func (s GetPolicyResponseBodyPolicyProtocolConfigSSH) GoString() string {
 	return s.String()
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) GetAllowDirectTcp() *string {
+	return s.AllowDirectTcp
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) GetAllowTcpForwarding() *string {
+	return s.AllowTcpForwarding
 }
 
 func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) GetExecCommand() *string {
@@ -770,8 +816,22 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) GetSSHChannel() *string {
 	return s.SSHChannel
 }
 
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) GetTcpForwarding() *string {
+	return s.TcpForwarding
+}
+
 func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) GetX11Forwarding() *string {
 	return s.X11Forwarding
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetAllowDirectTcp(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.AllowDirectTcp = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetAllowTcpForwarding(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.AllowTcpForwarding = &v
+	return s
 }
 
 func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetExecCommand(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
@@ -816,6 +876,11 @@ func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSFTPUploadFile(v strin
 
 func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetSSHChannel(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
 	s.SSHChannel = &v
+	return s
+}
+
+func (s *GetPolicyResponseBodyPolicyProtocolConfigSSH) SetTcpForwarding(v string) *GetPolicyResponseBodyPolicyProtocolConfigSSH {
+	s.TcpForwarding = &v
 	return s
 }
 
