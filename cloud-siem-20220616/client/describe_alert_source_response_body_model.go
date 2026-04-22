@@ -125,6 +125,7 @@ func (s *DescribeAlertSourceResponseBody) Validate() error {
 }
 
 type DescribeAlertSourceResponseBodyData struct {
+	Modules []*string `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Repeated"`
 	// The internal code of the alert data source.
 	//
 	// example:
@@ -147,12 +148,21 @@ func (s DescribeAlertSourceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAlertSourceResponseBodyData) GetModules() []*string {
+	return s.Modules
+}
+
 func (s *DescribeAlertSourceResponseBodyData) GetSource() *string {
 	return s.Source
 }
 
 func (s *DescribeAlertSourceResponseBodyData) GetSourceName() *string {
 	return s.SourceName
+}
+
+func (s *DescribeAlertSourceResponseBodyData) SetModules(v []*string) *DescribeAlertSourceResponseBodyData {
+	s.Modules = v
+	return s
 }
 
 func (s *DescribeAlertSourceResponseBodyData) SetSource(v string) *DescribeAlertSourceResponseBodyData {
