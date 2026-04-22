@@ -585,6 +585,82 @@ func (client *Client) BatchUpdateTasks(request *BatchUpdateTasksRequest) (_resul
 
 // Summary:
 //
+// 取消并停止Agent当前正在进行中的Session会话
+//
+// @param tmpReq - CancelAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAgentSessionResponse
+func (client *Client) CancelAgentSessionWithOptions(tmpReq *CancelAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *CancelAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CancelAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消并停止Agent当前正在进行中的Session会话
+//
+// @param request - CancelAgentSessionRequest
+//
+// @return CancelAgentSessionResponse
+func (client *Client) CancelAgentSession(request *CancelAgentSessionRequest) (_result *CancelAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CancelAgentSessionResponse{}
+	_body, _err := client.CancelAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Clones an existing data source.
 //
 // Description:
@@ -658,6 +734,82 @@ func (client *Client) CloneDataSource(request *CloneDataSourceRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloneDataSourceResponse{}
 	_body, _err := client.CloneDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个Agent Session会话
+//
+// @param tmpReq - CreateAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentSessionResponse
+func (client *Client) CreateAgentSessionWithOptions(tmpReq *CreateAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *CreateAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一个Agent Session会话
+//
+// @param request - CreateAgentSessionRequest
+//
+// @return CreateAgentSessionResponse
+func (client *Client) CreateAgentSession(request *CreateAgentSessionRequest) (_result *CreateAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAgentSessionResponse{}
+	_body, _err := client.CreateAgentSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3245,7 +3397,7 @@ func (client *Client) CreateNode(request *CreateNodeRequest) (_result *CreateNod
 
 // Summary:
 //
-// 创建参数。
+// Creates a parameter.
 //
 // @param tmpReq - CreateParameterRequest
 //
@@ -3319,7 +3471,7 @@ func (client *Client) CreateParameterWithOptions(tmpReq *CreateParameterRequest,
 
 // Summary:
 //
-// 创建参数。
+// Creates a parameter.
 //
 // @param request - CreateParameterRequest
 //
@@ -6271,7 +6423,7 @@ func (client *Client) DeleteNode(request *DeleteNodeRequest) (_result *DeleteNod
 
 // Summary:
 //
-// 删除参数。
+// Remove specified parameters.
 //
 // @param request - DeleteParameterRequest
 //
@@ -6315,7 +6467,7 @@ func (client *Client) DeleteParameterWithOptions(request *DeleteParameterRequest
 
 // Summary:
 //
-// 删除参数。
+// Remove specified parameters.
 //
 // @param request - DeleteParameterRequest
 //
@@ -7405,6 +7557,158 @@ func (client *Client) ExecuteAdhocWorkflowInstance(request *ExecuteAdhocWorkflow
 	runtime := &dara.RuntimeOptions{}
 	_result = &ExecuteAdhocWorkflowInstanceResponse{}
 	_body, _err := client.ExecuteAdhocWorkflowInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Agent指定Session下的模型产出物详情
+//
+// @param tmpReq - GetAgentSessionArtifactMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentSessionArtifactMetaResponse
+func (client *Client) GetAgentSessionArtifactMetaWithOptions(tmpReq *GetAgentSessionArtifactMetaRequest, runtime *dara.RuntimeOptions) (_result *GetAgentSessionArtifactMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAgentSessionArtifactMetaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentSessionArtifactMeta"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentSessionArtifactMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Agent指定Session下的模型产出物详情
+//
+// @param request - GetAgentSessionArtifactMetaRequest
+//
+// @return GetAgentSessionArtifactMetaResponse
+func (client *Client) GetAgentSessionArtifactMeta(request *GetAgentSessionArtifactMetaRequest) (_result *GetAgentSessionArtifactMetaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentSessionArtifactMetaResponse{}
+	_body, _err := client.GetAgentSessionArtifactMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Agent指定Session下的Token用量
+//
+// @param tmpReq - GetAgentSessionTokenUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentSessionTokenUsageResponse
+func (client *Client) GetAgentSessionTokenUsageWithOptions(tmpReq *GetAgentSessionTokenUsageRequest, runtime *dara.RuntimeOptions) (_result *GetAgentSessionTokenUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAgentSessionTokenUsageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentSessionTokenUsage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentSessionTokenUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Agent指定Session下的Token用量
+//
+// @param request - GetAgentSessionTokenUsageRequest
+//
+// @return GetAgentSessionTokenUsageResponse
+func (client *Client) GetAgentSessionTokenUsage(request *GetAgentSessionTokenUsageRequest) (_result *GetAgentSessionTokenUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentSessionTokenUsageResponse{}
+	_body, _err := client.GetAgentSessionTokenUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9658,7 +9962,7 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 
 // Summary:
 //
-// 根据参数ID获取参数的详细信息。
+// Obtains the details of a parameter by parameter ID.
 //
 // @param request - GetParameterRequest
 //
@@ -9702,7 +10006,7 @@ func (client *Client) GetParameterWithOptions(request *GetParameterRequest, runt
 
 // Summary:
 //
-// 根据参数ID获取参数的详细信息。
+// Obtains the details of a parameter by parameter ID.
 //
 // @param request - GetParameterRequest
 //
@@ -11160,6 +11464,234 @@ func (client *Client) ImportWorkflowDefinition(request *ImportWorkflowDefinition
 	runtime := &dara.RuntimeOptions{}
 	_result = &ImportWorkflowDefinitionResponse{}
 	_body, _err := client.ImportWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Agent指定Session下的模型产出物清单列表
+//
+// @param tmpReq - ListAgentSessionArtifactsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentSessionArtifactsResponse
+func (client *Client) ListAgentSessionArtifactsWithOptions(tmpReq *ListAgentSessionArtifactsRequest, runtime *dara.RuntimeOptions) (_result *ListAgentSessionArtifactsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAgentSessionArtifactsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentSessionArtifacts"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentSessionArtifactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Agent指定Session下的模型产出物清单列表
+//
+// @param request - ListAgentSessionArtifactsRequest
+//
+// @return ListAgentSessionArtifactsResponse
+func (client *Client) ListAgentSessionArtifacts(request *ListAgentSessionArtifactsRequest) (_result *ListAgentSessionArtifactsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgentSessionArtifactsResponse{}
+	_body, _err := client.ListAgentSessionArtifactsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 加载Agent Session对话历史列表
+//
+// @param tmpReq - ListAgentSessionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentSessionsResponse
+func (client *Client) ListAgentSessionsWithOptions(tmpReq *ListAgentSessionsRequest, runtime *dara.RuntimeOptions) (_result *ListAgentSessionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAgentSessionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentSessions"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentSessionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 加载Agent Session对话历史列表
+//
+// @param request - ListAgentSessionsRequest
+//
+// @return ListAgentSessionsResponse
+func (client *Client) ListAgentSessions(request *ListAgentSessionsRequest) (_result *ListAgentSessionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgentSessionsResponse{}
+	_body, _err := client.ListAgentSessionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取DataAgent的Agent定义列表
+//
+// @param tmpReq - ListAgentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentsResponse
+func (client *Client) ListAgentsWithOptions(tmpReq *ListAgentsRequest, runtime *dara.RuntimeOptions) (_result *ListAgentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAgentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgents"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取DataAgent的Agent定义列表
+//
+// @param request - ListAgentsRequest
+//
+// @return ListAgentsResponse
+func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgentsResponse{}
+	_body, _err := client.ListAgentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14431,7 +14963,7 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// 查询参数版本列表。
+// Queries the list of parameter versions.
 //
 // @param request - ListParameterVersionsRequest
 //
@@ -14487,7 +15019,7 @@ func (client *Client) ListParameterVersionsWithOptions(request *ListParameterVer
 
 // Summary:
 //
-// 查询参数版本列表。
+// Queries the list of parameter versions.
 //
 // @param request - ListParameterVersionsRequest
 //
@@ -14505,7 +15037,7 @@ func (client *Client) ListParameterVersions(request *ListParameterVersionsReques
 
 // Summary:
 //
-// 查询参数列表。
+// Queries a list of parameters.
 //
 // @param tmpReq - ListParametersRequest
 //
@@ -14591,7 +15123,7 @@ func (client *Client) ListParametersWithOptions(tmpReq *ListParametersRequest, r
 
 // Summary:
 //
-// 查询参数列表。
+// Queries a list of parameters.
 //
 // @param request - ListParametersRequest
 //
@@ -16421,6 +16953,97 @@ func (client *Client) ListWorkflows(request *ListWorkflowsRequest) (_result *Lis
 
 // Summary:
 //
+// 加载Agent Session对话历史
+//
+// @param tmpReq - LoadAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoadAgentSessionResponse
+func (client *Client) LoadAgentSessionWithSSE(tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions, _yield chan *LoadAgentSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.loadAgentSessionWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 加载Agent Session对话历史
+//
+// @param tmpReq - LoadAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoadAgentSessionResponse
+func (client *Client) LoadAgentSessionWithOptions(tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *LoadAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &LoadAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LoadAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &LoadAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 加载Agent Session对话历史
+//
+// @param request - LoadAgentSessionRequest
+//
+// @return LoadAgentSessionResponse
+func (client *Client) LoadAgentSession(request *LoadAgentSessionRequest) (_result *LoadAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &LoadAgentSessionResponse{}
+	_body, _err := client.LoadAgentSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves a user-defined function (UDF) to a path in DataStudio.
 //
 // @param request - MoveFunctionRequest
@@ -16754,6 +17377,97 @@ func (client *Client) PreviewDatasetVersion(request *PreviewDatasetVersionReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &PreviewDatasetVersionResponse{}
 	_body, _err := client.PreviewDatasetVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 在当前的Agent Session中发起一轮新的对话
+//
+// @param tmpReq - PromptAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PromptAgentSessionResponse
+func (client *Client) PromptAgentSessionWithSSE(tmpReq *PromptAgentSessionRequest, runtime *dara.RuntimeOptions, _yield chan *PromptAgentSessionResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.promptAgentSessionWithSSE_opYieldFunc(_yield, _yieldErr, tmpReq, runtime)
+	return
+}
+
+// Summary:
+//
+// 在当前的Agent Session中发起一轮新的对话
+//
+// @param tmpReq - PromptAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PromptAgentSessionResponse
+func (client *Client) PromptAgentSessionWithOptions(tmpReq *PromptAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *PromptAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PromptAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PromptAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PromptAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 在当前的Agent Session中发起一轮新的对话
+//
+// @param request - PromptAgentSessionRequest
+//
+// @return PromptAgentSessionResponse
+func (client *Client) PromptAgentSession(request *PromptAgentSessionRequest) (_result *PromptAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PromptAgentSessionResponse{}
+	_body, _err := client.PromptAgentSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17551,7 +18265,7 @@ func (client *Client) RevokeMemberProjectRoles(request *RevokeMemberProjectRoles
 
 // Summary:
 //
-// 回滚参数版本。
+// Rolls back the specified parameter.
 //
 // @param request - RollbackParameterRequest
 //
@@ -17599,7 +18313,7 @@ func (client *Client) RollbackParameterWithOptions(request *RollbackParameterReq
 
 // Summary:
 //
-// 回滚参数版本。
+// Rolls back the specified parameter.
 //
 // @param request - RollbackParameterRequest
 //
@@ -20726,7 +21440,7 @@ func (client *Client) UpdateNode(request *UpdateNodeRequest) (_result *UpdateNod
 
 // Summary:
 //
-// 更新参数。
+// Updates a parameter. Incremental modification. Only the specified columns are modified.
 //
 // @param tmpReq - UpdateParameterRequest
 //
@@ -20788,7 +21502,7 @@ func (client *Client) UpdateParameterWithOptions(tmpReq *UpdateParameterRequest,
 
 // Summary:
 //
-// 更新参数。
+// Updates a parameter. Incremental modification. Only the specified columns are modified.
 //
 // @param request - UpdateParameterRequest
 //
@@ -21892,4 +22606,128 @@ func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]int
 	_err = dara.Convert(dara.ToMap(respMap), &_result)
 
 	return _result, _err
+}
+
+func (client *Client) loadAgentSessionWithSSE_opYieldFunc(_yield chan *LoadAgentSessionResponse, _yieldErr chan error, tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &LoadAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("LoadAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
+}
+
+func (client *Client) promptAgentSessionWithSSE_opYieldFunc(_yield chan *PromptAgentSessionResponse, _yieldErr chan error, tmpReq *PromptAgentSessionRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := tmpReq.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	request := &PromptAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PromptAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
