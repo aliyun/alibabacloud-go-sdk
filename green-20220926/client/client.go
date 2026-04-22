@@ -1836,6 +1836,92 @@ func (client *Client) DescribeOnlineTestResult(request *DescribeOnlineTestResult
 
 // Summary:
 //
+// 获取oss结果v2
+//
+// @param request - DescribeOssV2ResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOssV2ResultResponse
+func (client *Client) DescribeOssV2ResultWithOptions(request *DescribeOssV2ResultRequest, runtime *dara.RuntimeOptions) (_result *DescribeOssV2ResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Bucket) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RiskLevel) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOssV2Result"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOssV2ResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取oss结果v2
+//
+// @param request - DescribeOssV2ResultRequest
+//
+// @return DescribeOssV2ResultResponse
+func (client *Client) DescribeOssV2Result(request *DescribeOssV2ResultRequest) (_result *DescribeOssV2ResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeOssV2ResultResponse{}
+	_body, _err := client.DescribeOssV2ResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 导出代答答案
 //
 // @param request - ExportAnswerSampleRequest
@@ -5308,6 +5394,88 @@ func (client *Client) LlmStreamChat(request *LlmStreamChatRequest) (_result *Llm
 	runtime := &dara.RuntimeOptions{}
 	_result = &LlmStreamChatResponse{}
 	_body, _err := client.LlmStreamChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// oss结果反馈
+//
+// @param request - MarkOssV2ResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MarkOssV2ResultResponse
+func (client *Client) MarkOssV2ResultWithOptions(request *MarkOssV2ResultRequest, runtime *dara.RuntimeOptions) (_result *MarkOssV2ResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.FreezeType) {
+		query["FreezeType"] = request.FreezeType
+	}
+
+	if !dara.IsNil(request.Operation) {
+		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.RequestIds) {
+		query["RequestIds"] = request.RequestIds
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MarkOssV2Result"),
+		Version:     dara.String("2022-09-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MarkOssV2ResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// oss结果反馈
+//
+// @param request - MarkOssV2ResultRequest
+//
+// @return MarkOssV2ResultResponse
+func (client *Client) MarkOssV2Result(request *MarkOssV2ResultRequest) (_result *MarkOssV2ResultResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MarkOssV2ResultResponse{}
+	_body, _err := client.MarkOssV2ResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
