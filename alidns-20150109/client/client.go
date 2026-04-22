@@ -8587,6 +8587,350 @@ func (client *Client) DescribeInstanceDomains(request *DescribeInstanceDomainsRe
 
 // Summary:
 //
+// 公网权威解析统计信息全局总览
+//
+// @param request - DescribeInterAuthStatisticsGlobalOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInterAuthStatisticsGlobalOverviewResponse
+func (client *Client) DescribeInterAuthStatisticsGlobalOverviewWithOptions(request *DescribeInterAuthStatisticsGlobalOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeInterAuthStatisticsGlobalOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcceptLanguage) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.OverviewPeriod) {
+		query["OverviewPeriod"] = request.OverviewPeriod
+	}
+
+	if !dara.IsNil(request.ServerRegion) {
+		query["ServerRegion"] = request.ServerRegion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInterAuthStatisticsGlobalOverview"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInterAuthStatisticsGlobalOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息全局总览
+//
+// @param request - DescribeInterAuthStatisticsGlobalOverviewRequest
+//
+// @return DescribeInterAuthStatisticsGlobalOverviewResponse
+func (client *Client) DescribeInterAuthStatisticsGlobalOverview(request *DescribeInterAuthStatisticsGlobalOverviewRequest) (_result *DescribeInterAuthStatisticsGlobalOverviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInterAuthStatisticsGlobalOverviewResponse{}
+	_body, _err := client.DescribeInterAuthStatisticsGlobalOverviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息趋势
+//
+// @param request - DescribeInterAuthStatisticsHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInterAuthStatisticsHistoryResponse
+func (client *Client) DescribeInterAuthStatisticsHistoryWithOptions(request *DescribeInterAuthStatisticsHistoryRequest, runtime *dara.RuntimeOptions) (_result *DescribeInterAuthStatisticsHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EndTimestamp) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.Rcode) {
+		query["Rcode"] = request.Rcode
+	}
+
+	if !dara.IsNil(request.ServerRegion) {
+		query["ServerRegion"] = request.ServerRegion
+	}
+
+	if !dara.IsNil(request.StartTimestamp) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !dara.IsNil(request.StatisticalType) {
+		query["StatisticalType"] = request.StatisticalType
+	}
+
+	if !dara.IsNil(request.ZoneName) {
+		query["ZoneName"] = request.ZoneName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInterAuthStatisticsHistory"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInterAuthStatisticsHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息趋势
+//
+// @param request - DescribeInterAuthStatisticsHistoryRequest
+//
+// @return DescribeInterAuthStatisticsHistoryResponse
+func (client *Client) DescribeInterAuthStatisticsHistory(request *DescribeInterAuthStatisticsHistoryRequest) (_result *DescribeInterAuthStatisticsHistoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInterAuthStatisticsHistoryResponse{}
+	_body, _err := client.DescribeInterAuthStatisticsHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息摘要列表
+//
+// @param request - DescribeInterAuthStatisticsSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInterAuthStatisticsSummaryResponse
+func (client *Client) DescribeInterAuthStatisticsSummaryWithOptions(request *DescribeInterAuthStatisticsSummaryRequest, runtime *dara.RuntimeOptions) (_result *DescribeInterAuthStatisticsSummaryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Direction) {
+		query["Direction"] = request.Direction
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EndTimestamp) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.GrowType) {
+		query["GrowType"] = request.GrowType
+	}
+
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.Rcode) {
+		query["Rcode"] = request.Rcode
+	}
+
+	if !dara.IsNil(request.ServerRegion) {
+		query["ServerRegion"] = request.ServerRegion
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.StartTimestamp) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !dara.IsNil(request.StatisticalType) {
+		query["StatisticalType"] = request.StatisticalType
+	}
+
+	if !dara.IsNil(request.ZoneName) {
+		query["ZoneName"] = request.ZoneName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInterAuthStatisticsSummary"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInterAuthStatisticsSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息摘要列表
+//
+// @param request - DescribeInterAuthStatisticsSummaryRequest
+//
+// @return DescribeInterAuthStatisticsSummaryResponse
+func (client *Client) DescribeInterAuthStatisticsSummary(request *DescribeInterAuthStatisticsSummaryRequest) (_result *DescribeInterAuthStatisticsSummaryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInterAuthStatisticsSummaryResponse{}
+	_body, _err := client.DescribeInterAuthStatisticsSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息Zone维度总览
+//
+// @param request - DescribeInterAuthStatisticsZoneOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInterAuthStatisticsZoneOverviewResponse
+func (client *Client) DescribeInterAuthStatisticsZoneOverviewWithOptions(request *DescribeInterAuthStatisticsZoneOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeInterAuthStatisticsZoneOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OverviewPeriod) {
+		query["OverviewPeriod"] = request.OverviewPeriod
+	}
+
+	if !dara.IsNil(request.ServerRegion) {
+		query["ServerRegion"] = request.ServerRegion
+	}
+
+	if !dara.IsNil(request.ZoneName) {
+		query["ZoneName"] = request.ZoneName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInterAuthStatisticsZoneOverview"),
+		Version:     dara.String("2015-01-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInterAuthStatisticsZoneOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 公网权威解析统计信息Zone维度总览
+//
+// @param request - DescribeInterAuthStatisticsZoneOverviewRequest
+//
+// @return DescribeInterAuthStatisticsZoneOverviewResponse
+func (client *Client) DescribeInterAuthStatisticsZoneOverview(request *DescribeInterAuthStatisticsZoneOverviewRequest) (_result *DescribeInterAuthStatisticsZoneOverviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInterAuthStatisticsZoneOverviewResponse{}
+	_body, _err := client.DescribeInterAuthStatisticsZoneOverviewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询解析日志
 //
 // @param request - DescribeInternetDnsLogsRequest
