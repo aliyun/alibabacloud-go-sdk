@@ -2810,6 +2810,84 @@ func (client *Client) ListCatalogs(workspaceId *string, request *ListCatalogsReq
 
 // Summary:
 //
+// 列出作业executor的日志文件列表
+//
+// @param request - ListExecutorLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutorLogsResponse
+func (client *Client) ListExecutorLogsWithOptions(workspaceId *string, jobRunId *string, executorId *string, request *ListExecutorLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListExecutorLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LogType) {
+		query["logType"] = request.LogType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExecutorLogs"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/jobRuns/" + dara.PercentEncode(dara.StringValue(jobRunId)) + "/executors/" + dara.PercentEncode(dara.StringValue(executorId)) + "/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExecutorLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出作业executor的日志文件列表
+//
+// @param request - ListExecutorLogsRequest
+//
+// @return ListExecutorLogsResponse
+func (client *Client) ListExecutorLogs(workspaceId *string, jobRunId *string, executorId *string, request *ListExecutorLogsRequest) (_result *ListExecutorLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListExecutorLogsResponse{}
+	_body, _err := client.ListExecutorLogsWithOptions(workspaceId, jobRunId, executorId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 列出作业的executors
 //
 // @param request - ListJobExecutorsRequest
