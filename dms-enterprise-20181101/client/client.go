@@ -2332,6 +2332,76 @@ func (client *Client) CheckBatchTableAccessPermission(request *CheckBatchTableAc
 
 // Summary:
 //
+// 查询资产盘点任务的执行状态与进度信息
+//
+// Description:
+//
+// 查询资产盘点任务的执行状态与进度信息，包含子任务列表、进度百分比、知识统计等
+//
+// @param request - CheckInventoryJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInventoryJobResponse
+func (client *Client) CheckInventoryJobWithOptions(request *CheckInventoryJobRequest, runtime *dara.RuntimeOptions) (_result *CheckInventoryJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckInventoryJob"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckInventoryJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资产盘点任务的执行状态与进度信息
+//
+// Description:
+//
+// 查询资产盘点任务的执行状态与进度信息，包含子任务列表、进度百分比、知识统计等
+//
+// @param request - CheckInventoryJobRequest
+//
+// @return CheckInventoryJobResponse
+func (client *Client) CheckInventoryJob(request *CheckInventoryJobRequest) (_result *CheckInventoryJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckInventoryJobResponse{}
+	_body, _err := client.CheckInventoryJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Closes a ticket.
 //
 // @param request - CloseOrderRequest
@@ -2393,6 +2463,84 @@ func (client *Client) CloseOrder(request *CloseOrderRequest) (_result *CloseOrde
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloseOrderResponse{}
 	_body, _err := client.CloseOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 确认盘点任务中的单条知识，将其标记为已认证
+//
+// Description:
+//
+// 确认盘点任务中的单条知识，将其标记为已认证状态（解锁级别）
+//
+// @param request - ConfirmInventoryKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmInventoryKnowledgeResponse
+func (client *Client) ConfirmInventoryKnowledgeWithOptions(request *ConfirmInventoryKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *ConfirmInventoryKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EntityId) {
+		query["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.KnowledgeType) {
+		query["KnowledgeType"] = request.KnowledgeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfirmInventoryKnowledge"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfirmInventoryKnowledgeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 确认盘点任务中的单条知识，将其标记为已认证
+//
+// Description:
+//
+// 确认盘点任务中的单条知识，将其标记为已认证状态（解锁级别）
+//
+// @param request - ConfirmInventoryKnowledgeRequest
+//
+// @return ConfirmInventoryKnowledgeResponse
+func (client *Client) ConfirmInventoryKnowledge(request *ConfirmInventoryKnowledgeRequest) (_result *ConfirmInventoryKnowledgeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfirmInventoryKnowledgeResponse{}
+	_body, _err := client.ConfirmInventoryKnowledgeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4135,6 +4283,76 @@ func (client *Client) CreateFreeLockCorrectOrder(request *CreateFreeLockCorrectO
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateFreeLockCorrectOrderResponse{}
 	_body, _err := client.CreateFreeLockCorrectOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资产盘点任务，对指定实例/数据库/表进行知识盘点
+//
+// Description:
+//
+// 创建资产盘点任务，支持选择实例、数据库、表维度进行知识盘点，返回任务ID
+//
+// @param request - CreateInventoryJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInventoryJobResponse
+func (client *Client) CreateInventoryJobWithOptions(request *CreateInventoryJobRequest, runtime *dara.RuntimeOptions) (_result *CreateInventoryJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Param) {
+		query["Param"] = request.Param
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInventoryJob"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInventoryJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资产盘点任务，对指定实例/数据库/表进行知识盘点
+//
+// Description:
+//
+// 创建资产盘点任务，支持选择实例、数据库、表维度进行知识盘点，返回任务ID
+//
+// @param request - CreateInventoryJobRequest
+//
+// @return CreateInventoryJobResponse
+func (client *Client) CreateInventoryJob(request *CreateInventoryJobRequest) (_result *CreateInventoryJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInventoryJobResponse{}
+	_body, _err := client.CreateInventoryJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22360,6 +22578,100 @@ func (client *Client) SearchDatabase(request *SearchDatabaseRequest) (_result *S
 	runtime := &dara.RuntimeOptions{}
 	_result = &SearchDatabaseResponse{}
 	_body, _err := client.SearchDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询盘点任务产出的知识列表，支持按关键词、知识类型等条件筛选
+//
+// Description:
+//
+// 分页查询盘点任务产出的知识列表，支持按关键词、知识类型、排序方式等条件筛选
+//
+// @param request - SearchInventoryKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchInventoryKnowledgeResponse
+func (client *Client) SearchInventoryKnowledgeWithOptions(request *SearchInventoryKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *SearchInventoryKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.ShowType) {
+		query["ShowType"] = request.ShowType
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchInventoryKnowledge"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchInventoryKnowledgeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询盘点任务产出的知识列表，支持按关键词、知识类型等条件筛选
+//
+// Description:
+//
+// 分页查询盘点任务产出的知识列表，支持按关键词、知识类型、排序方式等条件筛选
+//
+// @param request - SearchInventoryKnowledgeRequest
+//
+// @return SearchInventoryKnowledgeResponse
+func (client *Client) SearchInventoryKnowledge(request *SearchInventoryKnowledgeRequest) (_result *SearchInventoryKnowledgeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SearchInventoryKnowledgeResponse{}
+	_body, _err := client.SearchInventoryKnowledgeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,10 @@
+2026-04-23 Version: v3.6.0
+- Support API CheckInventoryJob.
+- Support API ConfirmInventoryKnowledge.
+- Support API CreateInventoryJob.
+- Support API SearchInventoryKnowledge.
+
+
 2026-04-20 Version: v3.5.0
 - Support API AddWorkspaceUser.
 - Support API ListWorkspaceUsers.
