@@ -18,7 +18,6 @@ type iDescribeVodDomainBpsDataByLayerResponseBody interface {
 }
 
 type DescribeVodDomainBpsDataByLayerResponseBody struct {
-	// The bandwidth returned at each time interval. Unit: bit/s.
 	BpsDataInterval *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
 	// The time interval between the entries returned. Unit: seconds.
 	//
@@ -113,24 +112,9 @@ func (s *DescribeVodDomainBpsDataByLayerResponseBodyBpsDataInterval) Validate() 
 }
 
 type DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-02-08T10:09:19Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 1000
-	TrafficValue *int64 `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
-	// The peak bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 75.33
-	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp    *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TrafficValue *int64   `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
+	Value        *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) String() string {

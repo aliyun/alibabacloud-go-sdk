@@ -18,7 +18,6 @@ type iListLiveRecordVideoResponseBody interface {
 }
 
 type ListLiveRecordVideoResponseBody struct {
-	// The list of videos.
 	LiveRecordVideoList *ListLiveRecordVideoResponseBodyLiveRecordVideoList `json:"LiveRecordVideoList,omitempty" xml:"LiveRecordVideoList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -113,44 +112,13 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoList) Validate() error {
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo struct {
-	// The name of the app.
-	//
-	// example:
-	//
-	// testApp
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the playlist.
-	//
-	// example:
-	//
-	// ****
-	PlaylistId *string `json:"PlaylistId,omitempty" xml:"PlaylistId,omitempty"`
-	// The recording end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-08T08:44:56Z
-	RecordEndTime *string `json:"RecordEndTime,omitempty" xml:"RecordEndTime,omitempty"`
-	// The recording start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-08T07:40:56Z
-	RecordStartTime *string `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
-	// The name of the live-to-VOD file.
-	//
-	// example:
-	//
-	// live-test
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The information about the live-to-VOD file.
-	Video *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
+	AppName         *string                                                                 `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DomainName      *string                                                                 `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PlaylistId      *string                                                                 `json:"PlaylistId,omitempty" xml:"PlaylistId,omitempty"`
+	RecordEndTime   *string                                                                 `json:"RecordEndTime,omitempty" xml:"RecordEndTime,omitempty"`
+	RecordStartTime *string                                                                 `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
+	StreamName      *string                                                                 `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Video           *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
 
 func (s ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo) String() string {
@@ -234,100 +202,20 @@ func (s *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo) Vali
 }
 
 type ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo struct {
-	// The ID of the video category.
-	//
-	// example:
-	//
-	// 78
-	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category of the video.
-	//
-	// example:
-	//
-	// Category name
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The URL of the video thumbnail.
-	//
-	// example:
-	//
-	// https://example.aliyundoc.com/coversample.jpg
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the audio or video file was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-08T07:40:56Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the video file.
-	//
-	// example:
-	//
-	// Description of the ApsaraVideo VOD video
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the video file. Unit: seconds.
-	//
-	// example:
-	//
-	// 135.6
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the video was updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-12-08T09:40:56Z
-	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The size of the source video file. Unit: bytes.
-	//
-	// example:
-	//
-	// 10897890
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The array of video snapshot URLs.
-	Snapshots *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The status of the video. Valid values:
-	//
-	// 	- **Uploading**
-	//
-	// 	- **UploadFail**
-	//
-	// 	- **UploadSuccess**
-	//
-	// 	- **Transcoding**
-	//
-	// 	- **TranscodeFail**
-	//
-	// 	- **Blocked**
-	//
-	// 	- **Normal**: The video is normal.
-	//
-	// example:
-	//
-	// Normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the video. Multiple tags are separated with commas (,).
-	//
-	// example:
-	//
-	// tag1, tag2
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the transcoding template group.
-	//
-	// example:
-	//
-	// 1
-	TemplateGroupId *string `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
-	// The title of the video.
-	//
-	// example:
-	//
-	// Title of the ApsaraVideo VOD video
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The ID of the video.
-	//
-	// example:
-	//
-	// 93ab850b4f6f*****54b6e91d24d81d4
-	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	CateId          *int32                                                                           `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName        *string                                                                          `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	CoverURL        *string                                                                          `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreationTime    *string                                                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description     *string                                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration        *float32                                                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ModifyTime      *string                                                                          `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Size            *int64                                                                           `json:"Size,omitempty" xml:"Size,omitempty"`
+	Snapshots       *ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
+	Status          *string                                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            *string                                                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TemplateGroupId *string                                                                          `json:"TemplateGroupId,omitempty" xml:"TemplateGroupId,omitempty"`
+	Title           *string                                                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	VideoId         *string                                                                          `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo) String() string {

@@ -33,8 +33,7 @@ type DescribeVodStorageDataResponseBody struct {
 	// example:
 	//
 	// C370DAF1-C838-4288-****-9A87633D248E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The storage usage data returned.
+	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StorageData *DescribeVodStorageDataResponseBodyStorageData `json:"StorageData,omitempty" xml:"StorageData,omitempty" type:"Struct"`
 }
 
@@ -117,24 +116,9 @@ func (s *DescribeVodStorageDataResponseBodyStorageData) Validate() error {
 }
 
 type DescribeVodStorageDataResponseBodyStorageDataStorageDataItem struct {
-	// The outbound traffic. Unit: bytes. The outbound traffic is generated when videos are directly downloaded or played from OSS buckets without Alibaba Cloud CDN acceleration.
-	//
-	// example:
-	//
-	// 111111
-	NetworkOut *string `json:"NetworkOut,omitempty" xml:"NetworkOut,omitempty"`
-	// The detailed usage data of storage-related resources. Unit: bytes.
-	//
-	// example:
-	//
-	// 111111
+	NetworkOut         *string `json:"NetworkOut,omitempty" xml:"NetworkOut,omitempty"`
 	StorageUtilization *string `json:"StorageUtilization,omitempty" xml:"StorageUtilization,omitempty"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-01T15:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodStorageDataResponseBodyStorageDataStorageDataItem) String() string {

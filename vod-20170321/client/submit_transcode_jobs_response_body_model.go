@@ -23,10 +23,7 @@ type SubmitTranscodeJobsResponseBody struct {
 	// example:
 	//
 	// E4EBD2BF-5EB0-4476-8829-9D94E1B1****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the transcoding job.
-	//
-	// >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeJobs *SubmitTranscodeJobsResponseBodyTranscodeJobs `json:"TranscodeJobs,omitempty" xml:"TranscodeJobs,omitempty" type:"Struct"`
 	// The ID of the transcoding task that was submitted.
 	//
@@ -115,13 +112,6 @@ func (s *SubmitTranscodeJobsResponseBodyTranscodeJobs) Validate() error {
 }
 
 type SubmitTranscodeJobsResponseBodyTranscodeJobsTranscodeJob struct {
-	// The ID of the transcoding job.
-	//
-	// >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
-	//
-	// example:
-	//
-	// d8921ce8505716cfe86fb112c4****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 

@@ -143,8 +143,7 @@ type DescribeVodDomainDetailResponseBodyDomainDetail struct {
 	// example:
 	//
 	// domestic
-	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The information about the origin server.
+	Scope   *string                                                 `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	Sources *DescribeVodDomainDetailResponseBodyDomainDetailSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Struct"`
 	// The weight of the origin server.
 	//
@@ -314,52 +313,12 @@ func (s *DescribeVodDomainDetailResponseBodyDomainDetailSources) Validate() erro
 }
 
 type DescribeVodDomainDetailResponseBodyDomainDetailSourcesSource struct {
-	// The address of the origin server.
-	//
-	// example:
-	//
-	// ****.oss-cn-hangzhou.aliyuncs.com
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The status of the origin server. Valid values:
-	//
-	// 	- **online**: indicates that the origin server is enabled.
-	//
-	// 	- **offline**: indicates that the origin server is disabled.
-	//
-	// example:
-	//
-	// online
-	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The port number. Valid values: 443 and 80.
-	//
-	// example:
-	//
-	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the origin server.
-	//
-	// example:
-	//
-	// 50
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Enabled  *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of the origin server. Valid values:
-	//
-	// 	- **ipaddr**: a server that you can access by using an IP address.
-	//
-	// 	- **domain**: a server that you can access by using a domain name.
-	//
-	// 	- **oss**: the URL of an Object Storage Service (OSS) bucket.
-	//
-	// example:
-	//
-	// oss
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin server if multiple origin servers have been specified.
-	//
-	// example:
-	//
-	// 10
-	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Weight   *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeVodDomainDetailResponseBodyDomainDetailSourcesSource) String() string {

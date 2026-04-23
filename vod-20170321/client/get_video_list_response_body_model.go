@@ -29,8 +29,7 @@ type GetVideoListResponseBody struct {
 	// example:
 	//
 	// 100
-	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The information about the audio or video files. Information about a maximum of 5,000 audio or video files can be returned.
+	Total     *int32                             `json:"Total,omitempty" xml:"Total,omitempty"`
 	VideoList *GetVideoListResponseBodyVideoList `json:"VideoList,omitempty" xml:"VideoList,omitempty" type:"Struct"`
 }
 
@@ -113,159 +112,29 @@ func (s *GetVideoListResponseBodyVideoList) Validate() error {
 }
 
 type GetVideoListResponseBodyVideoListVideo struct {
-	// The ID of the application. Default value: **app-1000000**.
-	//
-	// example:
-	//
-	// app-1000000
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The category ID of the audio or video file.
-	//
-	// example:
-	//
-	// 781111
-	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The name of the category.
-	//
-	// example:
-	//
-	// Category name
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the audio or video file.
-	//
-	// example:
-	//
-	// https://example.aliyundoc.com/****.jpg
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-11-14T09:15:50Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the audio or video file.
-	//
-	// example:
-	//
-	// Video description in ApsaraVideo VOD
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the audio or video file. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
-	//
-	// example:
-	//
-	// 135.6
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-11-14T09:16:50Z
-	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	AppId            *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CateId           *int64   `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName         *string  `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	CoverURL         *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreationTime     *string  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration         *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ModificationTime *string  `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// example:
 	//
 	// 123-123
-	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
-	// The period of time in which the audio or video file remains in the restored state.
-	//
-	// example:
-	//
-	// 2023-03-30T10:14:14Z
-	RestoreExpiration *string `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
-	// The restoration status of the audio or video file. Valid values:
-	//
-	// 	- **Processing**
-	//
-	// 	- **Success**
-	//
-	// 	- **Failed**
-	//
-	// example:
-	//
-	// Success
-	RestoreStatus *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
-	// The size of the source file. Unit: bytes.
-	//
-	// example:
-	//
-	// 10897890
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The URL array of video snapshots.
-	Snapshots *GetVideoListResponseBodyVideoListVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The status of the audio or video file. Valid values:
-	//
-	// 	- **Uploading**: The video is being uploaded.
-	//
-	// 	- **UploadFail**: The video failed to be uploaded.
-	//
-	// 	- **UploadSucc**: The video is uploaded.
-	//
-	// 	- **Transcoding**: The video is being transcoded.
-	//
-	// 	- **TranscodeFail**: The video failed to be transcoded.
-	//
-	// 	- **checking**: The video is being reviewed.
-	//
-	// 	- **Blocked**: The video is blocked.
-	//
-	// 	- **Normal**: The video is normal.
-	//
-	// 	- **ProduceFail**: The video failed to be produced.
-	//
-	// For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
-	//
-	// example:
-	//
-	// Normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage class of the audio or video file. Valid values:
-	//
-	// 	- **Standard**: All media resources are stored as Standard objects.
-	//
-	// 	- **IA**: All media resources are stored as IA objects.
-	//
-	// 	- **Archive**: All media resources are stored as Archive objects.
-	//
-	// 	- **ColdArchive**: All media resources are stored as Cold Archive objects.
-	//
-	// 	- **SourceIA**: Only the source files are IA objects.
-	//
-	// 	- **SourceArchive**: Only the source files are Archive objects.
-	//
-	// 	- **SourceColdArchive**: Only the source files are Cold Archive objects.
-	//
-	// 	- **Changing**: The storage class of the audio or video file is being changed.
-	//
-	// 	- **SourceChanging**: The storage class of the source file is being changed.
-	//
-	// example:
-	//
-	// Standard
-	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
-	// The storage address of the audio or video file.
-	//
-	// example:
-	//
-	// out-****.oss-cn-shanghai.aliyuncs.com
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The tags of the audio or video file. Multiple tags are separated by commas (,).
-	//
-	// example:
-	//
-	// Tag 1,Tag 2
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the audio or video file.
-	//
-	// example:
-	//
-	// Video title in ApsaraVideo VOD
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The ID of the audio or video file.
-	//
-	// example:
-	//
-	// 9ae2af636ca6c10412f44891fc****
-	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	ReferenceId       *string                                          `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	RestoreExpiration *string                                          `json:"RestoreExpiration,omitempty" xml:"RestoreExpiration,omitempty"`
+	RestoreStatus     *string                                          `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
+	Size              *int64                                           `json:"Size,omitempty" xml:"Size,omitempty"`
+	Snapshots         *GetVideoListResponseBodyVideoListVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
+	Status            *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass      *string                                          `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	StorageLocation   *string                                          `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	Tags              *string                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title             *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData          *string                                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VideoId           *string                                          `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s GetVideoListResponseBodyVideoListVideo) String() string {

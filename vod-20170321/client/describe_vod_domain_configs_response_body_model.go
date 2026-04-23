@@ -16,7 +16,6 @@ type iDescribeVodDomainConfigsResponseBody interface {
 }
 
 type DescribeVodDomainConfigsResponseBody struct {
-	// The configurations of the domain name.
 	DomainConfigs *DescribeVodDomainConfigsResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,34 +95,10 @@ func (s *DescribeVodDomainConfigsResponseBodyDomainConfigs) Validate() error {
 }
 
 type DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
-	// The configuration ID.
-	//
-	// example:
-	//
-	// 5003576
-	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The feature parameters.
+	ConfigId     *string                                                                    `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
-	// The feature name.
-	//
-	// example:
-	//
-	// set_req_host_header
-	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The configuration status. Valid values:
-	//
-	// 	- **success**
-	//
-	// 	- **testing**
-	//
-	// 	- **failed**
-	//
-	// 	- **configuring**
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FunctionName *string                                                                    `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	Status       *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfig) String() string {
@@ -214,17 +189,7 @@ func (s *DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionAr
 }
 
 type DescribeVodDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgsFunctionArg struct {
-	// The parameter name.
-	//
-	// example:
-	//
-	// file_type
-	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	// The parameter value.
-	//
-	// example:
-	//
-	// txt
+	ArgName  *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
 	ArgValue *string `json:"ArgValue,omitempty" xml:"ArgValue,omitempty"`
 }
 

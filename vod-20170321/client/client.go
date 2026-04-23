@@ -186,7 +186,7 @@ func (client *Client) AddAITemplate(request *AddAITemplateRequest) (_result *Add
 
 // Summary:
 //
-// Creates a video category. You can call this operation to categorize media assets including audio or video files, images, and short video materials in ApsaraVideo VOD. This simplifies the query and management of media assets.
+// Creates a category to classify media assets that are stored in ApsaraVideo VOD. This helps you query and manage resources in a more efficient and convenient way.
 //
 // Description:
 //
@@ -244,7 +244,7 @@ func (client *Client) AddCategoryWithOptions(request *AddCategoryRequest, runtim
 
 // Summary:
 //
-// Creates a video category. You can call this operation to categorize media assets including audio or video files, images, and short video materials in ApsaraVideo VOD. This simplifies the query and management of media assets.
+// Creates a category to classify media assets that are stored in ApsaraVideo VOD. This helps you query and manage resources in a more efficient and convenient way.
 //
 // Description:
 //
@@ -844,7 +844,7 @@ func (client *Client) AddVodTemplate(request *AddVodTemplateRequest) (_result *A
 
 // Summary:
 //
-// Creates an image or text watermark. ApsaraVideo VOD allows you to create watermark templates to reuse your parameter configurations such as watermark position, size, font, and color. Each watermark template is assigned a unique ID. This simplifies the progress of creating watermark tasks.
+// Creates an image or text watermark template. ApsaraVideo VOD allows you to create watermark templates to reuse your parameter configurations such as watermark position, size, font, and color. Each watermark template is assigned a unique ID. This simplifies the processing of watermark tasks.
 //
 // Description:
 //
@@ -912,7 +912,7 @@ func (client *Client) AddWatermarkWithOptions(request *AddWatermarkRequest, runt
 
 // Summary:
 //
-// Creates an image or text watermark. ApsaraVideo VOD allows you to create watermark templates to reuse your parameter configurations such as watermark position, size, font, and color. Each watermark template is assigned a unique ID. This simplifies the progress of creating watermark tasks.
+// Creates an image or text watermark template. ApsaraVideo VOD allows you to create watermark templates to reuse your parameter configurations such as watermark position, size, font, and color. Each watermark template is assigned a unique ID. This simplifies the processing of watermark tasks.
 //
 // Description:
 //
@@ -1652,7 +1652,7 @@ func (client *Client) CreateAudit(request *CreateAuditRequest) (_result *CreateA
 
 // Summary:
 //
-// Obtains an upload URL and an upload credential for an auxiliary media asset such as a watermark image, subtitle file, or material and generates the media ID. ApsaraVideo VOD issues upload URLs and credentials to perform authorization and ensure security. This prevents unauthorized users from uploading media files. ApsaraVideo VOD generates media IDs together with upload URLs and credentials. Media IDs are used in lifecycle management and media processing.
+// Obtain an upload credential and create auxiliary media assets, such as watermarks and subtitles. The upload URL and credential are provided by ApsaraVideo VOD to resolve authorization and security issues, prevent malicious uploads, and automatically create media IDs (Mediaid) for management and processing.
 //
 // Description:
 //
@@ -1748,7 +1748,7 @@ func (client *Client) CreateUploadAttachedMediaWithOptions(request *CreateUpload
 
 // Summary:
 //
-// Obtains an upload URL and an upload credential for an auxiliary media asset such as a watermark image, subtitle file, or material and generates the media ID. ApsaraVideo VOD issues upload URLs and credentials to perform authorization and ensure security. This prevents unauthorized users from uploading media files. ApsaraVideo VOD generates media IDs together with upload URLs and credentials. Media IDs are used in lifecycle management and media processing.
+// Obtain an upload credential and create auxiliary media assets, such as watermarks and subtitles. The upload URL and credential are provided by ApsaraVideo VOD to resolve authorization and security issues, prevent malicious uploads, and automatically create media IDs (Mediaid) for management and processing.
 //
 // Description:
 //
@@ -1778,7 +1778,7 @@ func (client *Client) CreateUploadAttachedMedia(request *CreateUploadAttachedMed
 
 // Summary:
 //
-// Queries a URL and a credential for uploading an image.
+// ApsaraVideo VOD returns the upload URL and credential to ensure authorization and security, prevent malicious uploads, and automatically create an image ID for management. Obtains an upload URL and an upload credential for uploading an audio or video file and generates the audio or video ID.
 //
 // Description:
 //
@@ -1870,7 +1870,7 @@ func (client *Client) CreateUploadImageWithOptions(request *CreateUploadImageReq
 
 // Summary:
 //
-// Queries a URL and a credential for uploading an image.
+// ApsaraVideo VOD returns the upload URL and credential to ensure authorization and security, prevent malicious uploads, and automatically create an image ID for management. Obtains an upload URL and an upload credential for uploading an audio or video file and generates the audio or video ID.
 //
 // Description:
 //
@@ -2268,7 +2268,7 @@ func (client *Client) DeleteAITemplate(request *DeleteAITemplateRequest) (_resul
 
 // Summary:
 //
-// Deletes an application.
+// Deletes the information about applications.
 //
 // Description:
 //
@@ -2316,7 +2316,7 @@ func (client *Client) DeleteAppInfoWithOptions(request *DeleteAppInfoRequest, ru
 
 // Summary:
 //
-// Deletes an application.
+// Deletes the information about applications.
 //
 // Description:
 //
@@ -2338,7 +2338,7 @@ func (client *Client) DeleteAppInfo(request *DeleteAppInfoRequest) (_result *Del
 
 // Summary:
 //
-// Deletes auxiliary media assets from ApsaraVideo VOD. You can delete multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch.
+// Deletes auxiliary media assets from ApsaraVideo VOD. You can delete one or more auxiliary media assets such as watermark images, subtitle files, and materials in a batch.
 //
 // Description:
 //
@@ -2388,7 +2388,7 @@ func (client *Client) DeleteAttachedMediaWithOptions(request *DeleteAttachedMedi
 
 // Summary:
 //
-// Deletes auxiliary media assets from ApsaraVideo VOD. You can delete multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch.
+// Deletes auxiliary media assets from ApsaraVideo VOD. You can delete one or more auxiliary media assets such as watermark images, subtitle files, and materials in a batch.
 //
 // Description:
 //
@@ -2646,7 +2646,7 @@ func (client *Client) DeleteEditingProject(request *DeleteEditingProjectRequest)
 
 // Summary:
 //
-// 删除剪辑资源
+// Deletes the materials to be edited for an online editing project.
 //
 // @param request - DeleteEditingProjectMaterialsRequest
 //
@@ -2714,7 +2714,7 @@ func (client *Client) DeleteEditingProjectMaterialsWithOptions(request *DeleteEd
 
 // Summary:
 //
-// 删除剪辑资源
+// Deletes the materials to be edited for an online editing project.
 //
 // @param request - DeleteEditingProjectMaterialsRequest
 //
@@ -3064,7 +3064,7 @@ func (client *Client) DeleteMultipartUpload(request *DeleteMultipartUploadReques
 
 // Summary:
 //
-// Deletes one or more video or audio streams and their storage files at a time.
+// Deletes media streams such as video or audio streams and their storage files.
 //
 // @param request - DeleteStreamRequest
 //
@@ -3116,7 +3116,7 @@ func (client *Client) DeleteStreamWithOptions(request *DeleteStreamRequest, runt
 
 // Summary:
 //
-// Deletes one or more video or audio streams and their storage files at a time.
+// Deletes media streams such as video or audio streams and their storage files.
 //
 // @param request - DeleteStreamRequest
 //
@@ -4342,7 +4342,7 @@ func (client *Client) DescribeVodDomainBpsData(request *DescribeVodDomainBpsData
 
 // Summary:
 //
-// Queries the bandwidth data by protocol.
+// Queries the bandwidth data for one or more accelerated domain names by the protocol type.
 //
 // Description:
 //
@@ -4430,7 +4430,7 @@ func (client *Client) DescribeVodDomainBpsDataByLayerWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the bandwidth data by protocol.
+// Queries the bandwidth data for one or more accelerated domain names by the protocol type.
 //
 // Description:
 //
@@ -4485,6 +4485,10 @@ func (client *Client) DescribeVodDomainCertificateInfoWithOptions(request *Descr
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.HeraApiAutoVersion) {
+		query["HeraApiAutoVersion"] = request.HeraApiAutoVersion
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -6446,7 +6450,7 @@ func (client *Client) DescribeVodDomainUsageData(request *DescribeVodDomainUsage
 
 // Summary:
 //
-// 点播云剪辑用量查询
+// Queries the online editing usage in ApsaraVideo VOD.
 //
 // @param request - DescribeVodEditingUsageDataRequest
 //
@@ -6510,7 +6514,7 @@ func (client *Client) DescribeVodEditingUsageDataWithOptions(request *DescribeVo
 
 // Summary:
 //
-// 点播云剪辑用量查询
+// Queries the online editing usage in ApsaraVideo VOD.
 //
 // @param request - DescribeVodEditingUsageDataRequest
 //
@@ -8372,7 +8376,7 @@ func (client *Client) GetAIMediaAuditJob(request *GetAIMediaAuditJobRequest) (_r
 
 // Summary:
 //
-// Queries the details of an AI template.
+// Queries AI templates.
 //
 // Description:
 //
@@ -8422,7 +8426,7 @@ func (client *Client) GetAITemplateWithOptions(request *GetAITemplateRequest, ru
 
 // Summary:
 //
-// Queries the details of an AI template.
+// Queries AI templates.
 //
 // Description:
 //
@@ -8910,7 +8914,7 @@ func (client *Client) GetCategories(request *GetCategoriesRequest) (_result *Get
 
 // Summary:
 //
-// 支持区域化媒资ID级别播放数据查询
+// Obtains all media traffic data of a specific date and region. The data is generated based on Alibaba Cloud CDN traffic logs and reflects the traffic consumption of videos. The data is exported as a CSV file, including the date, video ID, domain name, traffic, application ID, and category ID. You can download the file to your local storage for operational data analysis and billing.
 //
 // @param request - GetDailyPlayRegionStatisRequest
 //
@@ -8958,7 +8962,7 @@ func (client *Client) GetDailyPlayRegionStatisWithOptions(request *GetDailyPlayR
 
 // Summary:
 //
-// 支持区域化媒资ID级别播放数据查询
+// Obtains all media traffic data of a specific date and region. The data is generated based on Alibaba Cloud CDN traffic logs and reflects the traffic consumption of videos. The data is exported as a CSV file, including the date, video ID, domain name, traffic, application ID, and category ID. You can download the file to your local storage for operational data analysis and billing.
 //
 // @param request - GetDailyPlayRegionStatisRequest
 //
@@ -8976,7 +8980,7 @@ func (client *Client) GetDailyPlayRegionStatis(request *GetDailyPlayRegionStatis
 
 // Summary:
 //
-// Queries information about the default AI template.
+// Queries the default AI template.
 //
 // Description:
 //
@@ -9026,7 +9030,7 @@ func (client *Client) GetDefaultAITemplateWithOptions(request *GetDefaultAITempl
 
 // Summary:
 //
-// Queries information about the default AI template.
+// Queries the default AI template.
 //
 // Description:
 //
@@ -9152,7 +9156,7 @@ func (client *Client) GetDigitalWatermarkExtractResult(request *GetDigitalWaterm
 
 // Summary:
 //
-// 获取剪辑工程
+// Queries the details of an online editing project.
 //
 // @param request - GetEditingProjectRequest
 //
@@ -9212,7 +9216,7 @@ func (client *Client) GetEditingProjectWithOptions(request *GetEditingProjectReq
 
 // Summary:
 //
-// 获取剪辑工程
+// Queries the details of an online editing project.
 //
 // @param request - GetEditingProjectRequest
 //
@@ -9230,7 +9234,7 @@ func (client *Client) GetEditingProject(request *GetEditingProjectRequest) (_res
 
 // Summary:
 //
-// Queries materials to be edited for an online editing project.
+// Queries materials that are waiting to be edited in an online editing project.
 //
 // Description:
 //
@@ -9302,7 +9306,7 @@ func (client *Client) GetEditingProjectMaterialsWithOptions(request *GetEditingP
 
 // Summary:
 //
-// Queries materials to be edited for an online editing project.
+// Queries materials that are waiting to be edited in an online editing project.
 //
 // Description:
 //
@@ -9324,7 +9328,7 @@ func (client *Client) GetEditingProjectMaterials(request *GetEditingProjectMater
 
 // Summary:
 //
-// Queries the basic information and access URL of an image based on the image ID.
+// Queries the basic information and URL of an image based on the image ID after you upload the image to ApsaraVideo VOD.
 //
 // @param request - GetImageInfoRequest
 //
@@ -9376,7 +9380,7 @@ func (client *Client) GetImageInfoWithOptions(request *GetImageInfoRequest, runt
 
 // Summary:
 //
-// Queries the basic information and access URL of an image based on the image ID.
+// Queries the basic information and URL of an image based on the image ID after you upload the image to ApsaraVideo VOD.
 //
 // @param request - GetImageInfoRequest
 //
@@ -9874,7 +9878,7 @@ func (client *Client) GetMediaAuditResultTimeline(request *GetMediaAuditResultTi
 
 // Summary:
 //
-// Queries a media fingerprinting result. After a media fingerprinting job is complete, you can call this operation to query the media fingerprinting result.
+// Queries the results of video fingerprinting jobs. After a media fingerprinting job is complete, you can call this operation to query the media fingerprinting result.
 //
 // Description:
 //
@@ -9938,7 +9942,7 @@ func (client *Client) GetMediaDNAResultWithOptions(request *GetMediaDNAResultReq
 
 // Summary:
 //
-// Queries a media fingerprinting result. After a media fingerprinting job is complete, you can call this operation to query the media fingerprinting result.
+// Queries the results of video fingerprinting jobs. After a media fingerprinting job is complete, you can call this operation to query the media fingerprinting result.
 //
 // Description:
 //
@@ -10034,7 +10038,7 @@ func (client *Client) GetMediaRefreshJobs(request *GetMediaRefreshJobsRequest) (
 
 // Summary:
 //
-// Queries the callback method, callback URL, and event type for event notifications.
+// Queries the callback method, callback URL, and event type of an event notification.
 //
 // Description:
 //
@@ -10086,7 +10090,7 @@ func (client *Client) GetMessageCallbackWithOptions(request *GetMessageCallbackR
 
 // Summary:
 //
-// Queries the callback method, callback URL, and event type for event notifications.
+// Queries the callback method, callback URL, and event type of an event notification.
 //
 // Description:
 //
@@ -11074,7 +11078,7 @@ func (client *Client) GetVideoPlayAuth(request *GetVideoPlayAuthRequest) (_resul
 
 // Summary:
 //
-// Queries a single snapshot template.
+// Queries details of a snapshot template.
 //
 // @param request - GetVodTemplateRequest
 //
@@ -11118,7 +11122,7 @@ func (client *Client) GetVodTemplateWithOptions(request *GetVodTemplateRequest, 
 
 // Summary:
 //
-// Queries a single snapshot template.
+// Queries details of a snapshot template.
 //
 // @param request - GetVodTemplateRequest
 //
@@ -11136,7 +11140,7 @@ func (client *Client) GetVodTemplate(request *GetVodTemplateRequest) (_result *G
 
 // Summary:
 //
-// Queries the information about an image or text watermark based on the watermark template ID. You can call this operation to obtain information such as the position, size, and display time of an image watermark or the content, position, font, and font color of a text watermark.
+// Queries the configurations of an image or text watermark template based on tits ID. You can call this operation to obtain information such as the position, size, and display time of an image watermark or the content, position, font, and font color of a text watermark.
 //
 // @param request - GetWatermarkRequest
 //
@@ -11180,7 +11184,7 @@ func (client *Client) GetWatermarkWithOptions(request *GetWatermarkRequest, runt
 
 // Summary:
 //
-// Queries the information about an image or text watermark based on the watermark template ID. You can call this operation to obtain information such as the position, size, and display time of an image watermark or the content, position, font, and font color of a text watermark.
+// Queries the configurations of an image or text watermark template based on tits ID. You can call this operation to obtain information such as the position, size, and display time of an image watermark or the content, position, font, and font color of a text watermark.
 //
 // @param request - GetWatermarkRequest
 //
@@ -11272,7 +11276,7 @@ func (client *Client) ListAIImageInfo(request *ListAIImageInfoRequest) (_result 
 
 // Summary:
 //
-// Queries AI jobs. After a job is submitted, ApsaraVideo VOD asynchronously processes the job. You can call this operation to query the job information in real time.
+// Queries a smart tagging or video fingerprinting job. After you submit a smart tagging or video fingerprinting job, ApsaraVideo VOD asynchronously processes the job. You can call this operation to query the job information in real time.
 //
 // Description:
 //
@@ -11338,7 +11342,7 @@ func (client *Client) ListAIJobWithOptions(request *ListAIJobRequest, runtime *d
 
 // Summary:
 //
-// Queries AI jobs. After a job is submitted, ApsaraVideo VOD asynchronously processes the job. You can call this operation to query the job information in real time.
+// Queries a smart tagging or video fingerprinting job. After you submit a smart tagging or video fingerprinting job, ApsaraVideo VOD asynchronously processes the job. You can call this operation to query the job information in real time.
 //
 // Description:
 //
@@ -11608,7 +11612,7 @@ func (client *Client) ListAppPoliciesForIdentity(request *ListAppPoliciesForIden
 
 // Summary:
 //
-// Queries the IP addresses in a review security group.
+// Queries the IP addresses in a security group.
 //
 // @param request - ListAuditSecurityIpRequest
 //
@@ -11652,7 +11656,7 @@ func (client *Client) ListAuditSecurityIpWithOptions(request *ListAuditSecurityI
 
 // Summary:
 //
-// Queries the IP addresses in a review security group.
+// Queries the IP addresses in a security group.
 //
 // @param request - ListAuditSecurityIpRequest
 //
@@ -11670,7 +11674,7 @@ func (client *Client) ListAuditSecurityIp(request *ListAuditSecurityIpRequest) (
 
 // Summary:
 //
-// Queries the information about animated stickers of a video based on the video ID.
+// Queries the information about animated images of a video based on the video ID.
 //
 // @param request - ListDynamicImageRequest
 //
@@ -11714,7 +11718,7 @@ func (client *Client) ListDynamicImageWithOptions(request *ListDynamicImageReque
 
 // Summary:
 //
-// Queries the information about animated stickers of a video based on the video ID.
+// Queries the information about animated images of a video based on the video ID.
 //
 // @param request - ListDynamicImageRequest
 //
@@ -11920,7 +11924,7 @@ func (client *Client) ListLiveRecordVideo(request *ListLiveRecordVideoRequest) (
 
 // Summary:
 //
-// Queries the snapshots that are captured by submitting snapshot jobs or snapshots that are generated by the system when you upload the video.
+// Queries snapshots that were captured by submitting snapshot jobs or the thumbnail that was generated by the system when you uploaded a video.
 //
 // Description:
 //
@@ -11984,7 +11988,7 @@ func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, ru
 
 // Summary:
 //
-// Queries the snapshots that are captured by submitting snapshot jobs or snapshots that are generated by the system when you upload the video.
+// Queries snapshots that were captured by submitting snapshot jobs or the thumbnail that was generated by the system when you uploaded a video.
 //
 // Description:
 //
@@ -13412,7 +13416,7 @@ func (client *Client) SetAppPlayKey(request *SetAppPlayKeyRequest) (_result *Set
 
 // Summary:
 //
-// Manages the IP addresses in review security groups.
+// Sets IP addresses in review security groups.
 //
 // Description:
 //
@@ -13468,7 +13472,7 @@ func (client *Client) SetAuditSecurityIpWithOptions(request *SetAuditSecurityIpR
 
 // Summary:
 //
-// Manages the IP addresses in review security groups.
+// Sets IP addresses in review security groups.
 //
 // Description:
 //
@@ -15418,7 +15422,7 @@ func (client *Client) UpdateAppInfo(request *UpdateAppInfoRequest) (_result *Upd
 
 // Summary:
 //
-// Modifies the information about multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch based on IDs. You can modify information such as the title, description, tags, and category.
+// Modifies the information about multiple auxiliary media assets at a time. After you upload auxiliary media assets, such as images that contain watermarks, subtitle files, or other materials, to ApsaraVideo VOD, you can call this operation to update their titles, descriptions, tags, and categories at a time based on the unique identifiers (IDs) of the auxiliary media assets.
 //
 // Description:
 //
@@ -15466,7 +15470,7 @@ func (client *Client) UpdateAttachedMediaInfosWithOptions(request *UpdateAttache
 
 // Summary:
 //
-// Modifies the information about multiple auxiliary media assets such as watermark images, subtitle files, and materials in a batch based on IDs. You can modify information such as the title, description, tags, and category.
+// Modifies the information about multiple auxiliary media assets at a time. After you upload auxiliary media assets, such as images that contain watermarks, subtitle files, or other materials, to ApsaraVideo VOD, you can call this operation to update their titles, descriptions, tags, and categories at a time based on the unique identifiers (IDs) of the auxiliary media assets.
 //
 // Description:
 //
@@ -15488,7 +15492,7 @@ func (client *Client) UpdateAttachedMediaInfos(request *UpdateAttachedMediaInfos
 
 // Summary:
 //
-// Modifies a video category.
+// Updates the category name.
 //
 // Description:
 //
@@ -15540,7 +15544,7 @@ func (client *Client) UpdateCategoryWithOptions(request *UpdateCategoryRequest, 
 
 // Summary:
 //
-// Modifies a video category.
+// Updates the category name.
 //
 // Description:
 //
@@ -15656,7 +15660,7 @@ func (client *Client) UpdateEditingProject(request *UpdateEditingProjectRequest)
 
 // Summary:
 //
-// Modifies the information about one or more images at a time.
+// Modifies the information about multiple images at a time. After you upload images to ApsaraVideo VOD, you can call this operation to update their titles, descriptions, tags, and categories at a time based on the IDs of the images.
 //
 // Description:
 //
@@ -15706,7 +15710,7 @@ func (client *Client) UpdateImageInfosWithOptions(request *UpdateImageInfosReque
 
 // Summary:
 //
-// Modifies the information about one or more images at a time.
+// Modifies the information about multiple images at a time. After you upload images to ApsaraVideo VOD, you can call this operation to update their titles, descriptions, tags, and categories at a time based on the IDs of the images.
 //
 // Description:
 //
@@ -16020,7 +16024,7 @@ func (client *Client) UpdateVideoInfo(request *UpdateVideoInfoRequest) (_result 
 
 // Summary:
 //
-// Modifies the information about multiple videos at a time.
+// Modifies information about multiple audio or video files at a time.
 //
 // Description:
 //
@@ -16068,7 +16072,7 @@ func (client *Client) UpdateVideoInfosWithOptions(request *UpdateVideoInfosReque
 
 // Summary:
 //
-// Modifies the information about multiple videos at a time.
+// Modifies information about multiple audio or video files at a time.
 //
 // Description:
 //

@@ -41,8 +41,7 @@ type DescribeVodDomainQpsDataResponseBody struct {
 	// example:
 	//
 	// 2024-05-02T15:59:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of QPS records at each interval.
+	EndTime         *string                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	QpsDataInterval *DescribeVodDomainQpsDataResponseBodyQpsDataInterval `json:"QpsDataInterval,omitempty" xml:"QpsDataInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,84 +163,19 @@ func (s *DescribeVodDomainQpsDataResponseBodyQpsDataInterval) Validate() error {
 }
 
 type DescribeVodDomainQpsDataResponseBodyQpsDataIntervalDataModule struct {
-	// The number of requests in the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
-	AccDomesticValue *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
-	// The number of requests outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
-	AccOverseasValue *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
-	// The total number of requests.
-	//
-	// example:
-	//
-	// 0
-	AccValue *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
-	// The QPS data in the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The QPS that is calculated based on the HTTPS requests sent to POPs in the Chinese mainland.
-	//
-	// example:
-	//
-	// 1
+	AccDomesticValue      *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
+	AccOverseasValue      *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
+	AccValue              *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
+	DomesticValue         *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsAccDomesticValue *string `json:"HttpsAccDomesticValue,omitempty" xml:"HttpsAccDomesticValue,omitempty"`
-	// The number of HTTPS requests sent to POPs outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 1
 	HttpsAccOverseasValue *string `json:"HttpsAccOverseasValue,omitempty" xml:"HttpsAccOverseasValue,omitempty"`
-	// The number of HTTPS requests sent to POPs.
-	//
-	// example:
-	//
-	// 1
-	HttpsAccValue *string `json:"HttpsAccValue,omitempty" xml:"HttpsAccValue,omitempty"`
-	// The QPS that is calculated based on the HTTPS requests sent to POPs in the Chinese mainland.
-	//
-	// example:
-	//
-	// 1
-	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The QPS that is calculated based on the HTTPS requests sent to POPs outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 1
-	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The QPS that is calculated based on the HTTPS requests sent to points of presence (POPs).
-	//
-	// example:
-	//
-	// 1
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The QPS data outside the Chinese mainland.
-	//
-	// example:
-	//
-	// 0
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-06-27 10:10:58
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total QPS.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsAccValue         *string `json:"HttpsAccValue,omitempty" xml:"HttpsAccValue,omitempty"`
+	HttpsDomesticValue    *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
+	HttpsOverseasValue    *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
+	HttpsValue            *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue         *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp             *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value                 *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainQpsDataResponseBodyQpsDataIntervalDataModule) String() string {

@@ -16,7 +16,6 @@ type iDescribeVodDomainRealTimeReqHitRateDataResponseBody interface {
 }
 
 type DescribeVodDomainRealTimeReqHitRateDataResponseBody struct {
-	// The returned results.
 	Data *DescribeVodDomainRealTimeReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeVodDomainRealTimeReqHitRateDataResponseBodyData) Validate() err
 }
 
 type DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel struct {
-	// The cache hit ratio that is calculated based on requests. The cache hit ratio is measured in percentage.
-	//
-	// example:
-	//
-	// 0.8956940476262277
 	ReqHitRate *float32 `json:"ReqHitRate,omitempty" xml:"ReqHitRate,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-01-02T11:26:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp  *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodDomainRealTimeReqHitRateDataResponseBodyDataReqHitRateDataModel) String() string {

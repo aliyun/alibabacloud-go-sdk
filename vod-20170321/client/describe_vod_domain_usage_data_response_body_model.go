@@ -73,8 +73,7 @@ type DescribeVodDomainUsageDataResponseBody struct {
 	// example:
 	//
 	// static
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The traffic or bandwidth data returned at each interval.
+	Type                 *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
 	UsageDataPerInterval *DescribeVodDomainUsageDataResponseBodyUsageDataPerInterval `json:"UsageDataPerInterval,omitempty" xml:"UsageDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -202,18 +201,8 @@ func (s *DescribeVodDomainUsageDataResponseBodyUsageDataPerInterval) Validate() 
 }
 
 type DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule struct {
-	// The timestamp of the returned data. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-10T10:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The traffic or bandwidth data. Unit: bit/s.
-	//
-	// example:
-	//
-	// 2592.3920000000003
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainUsageDataResponseBodyUsageDataPerIntervalDataModule) String() string {

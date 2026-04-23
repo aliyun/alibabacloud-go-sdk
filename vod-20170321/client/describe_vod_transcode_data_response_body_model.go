@@ -33,8 +33,7 @@ type DescribeVodTranscodeDataResponseBody struct {
 	// example:
 	//
 	// C370DAF1-C838-4288-****-9A87633D248E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The transcoding statistics returned.
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeData *DescribeVodTranscodeDataResponseBodyTranscodeData `json:"TranscodeData,omitempty" xml:"TranscodeData,omitempty" type:"Struct"`
 }
 
@@ -117,14 +116,8 @@ func (s *DescribeVodTranscodeDataResponseBodyTranscodeData) Validate() error {
 }
 
 type DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItem struct {
-	// The statistics on transcoding of different specifications.
-	Data *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-01T16:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Data      *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	TimeStamp *string                                                                 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItem) String() string {
@@ -197,23 +190,7 @@ func (s *DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemData)
 }
 
 type DescribeVodTranscodeDataResponseBodyTranscodeDataTranscodeDataItemDataDataItem struct {
-	// The transcoding specification. Valid values:
-	//
-	// 	- **Audio**: audio transcoding
-	//
-	// 	- **Segmentation**: container format conversion
-	//
-	// 	- **H264.LD, H264.SD, H264.HD, H264.2K, H264.4K, and more**
-	//
-	// example:
-	//
-	// H264.SD
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The transcoding duration. Unit: seconds.
-	//
-	// example:
-	//
-	// 111
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

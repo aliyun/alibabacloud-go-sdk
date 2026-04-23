@@ -39,8 +39,7 @@ type DescribePlayTopVideosResponseBody struct {
 	// example:
 	//
 	// 4B0BCF9F-2FD5-4817-****-7BEBBE3AF90B"
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The daily playback statistics on each top video.
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TopPlayVideos *DescribePlayTopVideosResponseBodyTopPlayVideos `json:"TopPlayVideos,omitempty" xml:"TopPlayVideos,omitempty" type:"Struct"`
 	// The total number of entries that were collected in playback statistics on top videos.
 	//
@@ -147,36 +146,11 @@ func (s *DescribePlayTopVideosResponseBodyTopPlayVideos) Validate() error {
 }
 
 type DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis struct {
-	// The total playback duration. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 4640369
 	PlayDuration *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
-	// The title of the video.
-	//
-	// example:
-	//
-	// Four streams (two streams encrypted): LD-HLS-encrypted + SD-MP4 + HD-H
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The number of unique visitors.
-	//
-	// example:
-	//
-	// 1
-	UV *string `json:"UV,omitempty" xml:"UV,omitempty"`
-	// The number of video views.
-	//
-	// example:
-	//
-	// 107
-	VV *string `json:"VV,omitempty" xml:"VV,omitempty"`
-	// The ID of the video.
-	//
-	// example:
-	//
-	// 2a8d4cb9ecbb487681473a15****8fda
-	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UV           *string `json:"UV,omitempty" xml:"UV,omitempty"`
+	VV           *string `json:"VV,omitempty" xml:"VV,omitempty"`
+	VideoId      *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
 }
 
 func (s DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis) String() string {

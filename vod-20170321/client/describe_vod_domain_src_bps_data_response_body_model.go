@@ -47,8 +47,7 @@ type DescribeVodDomainSrcBpsDataResponseBody struct {
 	// example:
 	//
 	// 25818875-5F78-4A13-BEF6-****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The origin bandwidth data at each time interval.
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SrcBpsDataPerInterval *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
 	// The beginning of the time range.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) Validate(
 }
 
 type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
-	// The bandwidth consumed for fetching resources from the origin over HTTPS.
-	//
-	// example:
-	//
-	// 0
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-08-23T02:02:57Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total origin bandwidth data. Unit: bit/s.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {

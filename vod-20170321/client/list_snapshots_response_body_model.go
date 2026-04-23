@@ -79,8 +79,7 @@ type ListSnapshotsResponseBodyMediaSnapshot struct {
 	// example:
 	//
 	// http://example.aliyundoc.com/snapshot/sample{SnapshotCount}.jpg
-	Regular *string `json:"Regular,omitempty" xml:"Regular,omitempty"`
-	// The details of the snapshot.
+	Regular   *string                                          `json:"Regular,omitempty" xml:"Regular,omitempty"`
 	Snapshots *ListSnapshotsResponseBodyMediaSnapshotSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The total number of snapshots.
 	//
@@ -187,18 +186,8 @@ func (s *ListSnapshotsResponseBodyMediaSnapshotSnapshots) Validate() error {
 }
 
 type ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot struct {
-	// The index of the snapshot.
-	//
-	// example:
-	//
-	// 1
-	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The URL of the snapshot.
-	//
-	// example:
-	//
-	// http://example.aliyundoc.com/snapshot/sample00001****.jpg
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Index *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
+	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot) String() string {

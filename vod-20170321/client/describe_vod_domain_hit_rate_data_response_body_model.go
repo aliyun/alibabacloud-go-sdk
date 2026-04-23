@@ -41,8 +41,7 @@ type DescribeVodDomainHitRateDataResponseBody struct {
 	// example:
 	//
 	// 2024-01-20T14:59:58Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The byte hit rate data at each time interval.
+	EndTime         *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	HitRateInterval *DescribeVodDomainHitRateDataResponseBodyHitRateInterval `json:"HitRateInterval,omitempty" xml:"HitRateInterval,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeVodDomainHitRateDataResponseBodyHitRateInterval) Validate() err
 }
 
 type DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule struct {
-	// The HTTPS byte hit rate.
-	//
-	// example:
-	//
-	// 50
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2024-01-20T13:59:58Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total byte hit rate.
-	//
-	// example:
-	//
-	// 100
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainHitRateDataResponseBodyHitRateIntervalDataModule) String() string {

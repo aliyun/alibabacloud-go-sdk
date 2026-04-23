@@ -16,7 +16,6 @@ type iDescribeVodDomainRealTimeBpsDataResponseBody interface {
 }
 
 type DescribeVodDomainRealTimeBpsDataResponseBody struct {
-	// The returned data.
 	Data *DescribeVodDomainRealTimeBpsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeVodDomainRealTimeBpsDataResponseBodyData) Validate() error {
 }
 
 type DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel struct {
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 16710625.733333332
-	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-11-30T05:41:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Bps       *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	TimeStamp *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodDomainRealTimeBpsDataResponseBodyDataBpsModel) String() string {

@@ -20,10 +20,8 @@ type iUpdateMediaStorageClassResponseBody interface {
 }
 
 type UpdateMediaStorageClassResponseBody struct {
-	// The IDs of the media assets that failed to be processed.
 	ForbiddenList *UpdateMediaStorageClassResponseBodyForbiddenList `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Struct"`
-	// The IDs of the media assets that failed to be obtained.
-	IgnoredList *UpdateMediaStorageClassResponseBodyIgnoredList `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
+	IgnoredList   *UpdateMediaStorageClassResponseBodyIgnoredList   `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -135,18 +133,8 @@ func (s *UpdateMediaStorageClassResponseBodyForbiddenList) Validate() error {
 }
 
 type UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO struct {
-	// The ID of the media asset.
-	//
-	// example:
-	//
-	// 19e231ee6e3e417fbf2e92ec2680****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The reason for the failure.
-	//
-	// example:
-	//
-	// TargetStorageClassInconsistent
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s UpdateMediaStorageClassResponseBodyForbiddenListMediaForbiddenReasonDTO) String() string {

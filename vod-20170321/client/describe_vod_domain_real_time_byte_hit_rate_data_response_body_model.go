@@ -16,7 +16,6 @@ type iDescribeVodDomainRealTimeByteHitRateDataResponseBody interface {
 }
 
 type DescribeVodDomainRealTimeByteHitRateDataResponseBody struct {
-	// The returned data.
 	Data *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeVodDomainRealTimeByteHitRateDataResponseBodyData) Validate() er
 }
 
 type DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel struct {
-	// The byte hit ratio in percentage.
-	//
-	// example:
-	//
-	// 0.8956940476262277
 	ByteHitRate *float32 `json:"ByteHitRate,omitempty" xml:"ByteHitRate,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2020-05-15T09:13:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TimeStamp   *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodDomainRealTimeByteHitRateDataResponseBodyDataByteHitRateDataModel) String() string {

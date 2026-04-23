@@ -11,6 +11,8 @@ type iDescribeVodDomainCertificateInfoRequest interface {
 	GoString() string
 	SetDomainName(v string) *DescribeVodDomainCertificateInfoRequest
 	GetDomainName() *string
+	SetHeraApiAutoVersion(v string) *DescribeVodDomainCertificateInfoRequest
+	GetHeraApiAutoVersion() *string
 	SetOwnerId(v int64) *DescribeVodDomainCertificateInfoRequest
 	GetOwnerId() *int64
 }
@@ -23,8 +25,9 @@ type DescribeVodDomainCertificateInfoRequest struct {
 	// example:
 	//
 	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	HeraApiAutoVersion *string `json:"HeraApiAutoVersion,omitempty" xml:"HeraApiAutoVersion,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeVodDomainCertificateInfoRequest) String() string {
@@ -39,12 +42,21 @@ func (s *DescribeVodDomainCertificateInfoRequest) GetDomainName() *string {
 	return s.DomainName
 }
 
+func (s *DescribeVodDomainCertificateInfoRequest) GetHeraApiAutoVersion() *string {
+	return s.HeraApiAutoVersion
+}
+
 func (s *DescribeVodDomainCertificateInfoRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
 func (s *DescribeVodDomainCertificateInfoRequest) SetDomainName(v string) *DescribeVodDomainCertificateInfoRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeVodDomainCertificateInfoRequest) SetHeraApiAutoVersion(v string) *DescribeVodDomainCertificateInfoRequest {
+	s.HeraApiAutoVersion = &v
 	return s
 }
 

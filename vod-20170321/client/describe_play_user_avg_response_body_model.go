@@ -21,8 +21,7 @@ type DescribePlayUserAvgResponseBody struct {
 	// example:
 	//
 	// 6C7F90B2-BDA4-4FAC-****-A38A121DFE19
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics on average playback each day.
+	RequestId          *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserPlayStatisAvgs *DescribePlayUserAvgResponseBodyUserPlayStatisAvgs `json:"UserPlayStatisAvgs,omitempty" xml:"UserPlayStatisAvgs,omitempty" type:"Struct"`
 }
 
@@ -96,24 +95,9 @@ func (s *DescribePlayUserAvgResponseBodyUserPlayStatisAvgs) Validate() error {
 }
 
 type DescribePlayUserAvgResponseBodyUserPlayStatisAvgsUserPlayStatisAvg struct {
-	// The average number of video views.
-	//
-	// example:
-	//
-	// 170
-	AvgPlayCount *string `json:"AvgPlayCount,omitempty" xml:"AvgPlayCount,omitempty"`
-	// The average playback duration. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1035902.8
+	AvgPlayCount    *string `json:"AvgPlayCount,omitempty" xml:"AvgPlayCount,omitempty"`
 	AvgPlayDuration *string `json:"AvgPlayDuration,omitempty" xml:"AvgPlayDuration,omitempty"`
-	// The date when the statistics were generated. The date follows the *yyyy-MM-dd	- format.
-	//
-	// example:
-	//
-	// 20170120
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	Date            *string `json:"Date,omitempty" xml:"Date,omitempty"`
 }
 
 func (s DescribePlayUserAvgResponseBodyUserPlayStatisAvgsUserPlayStatisAvg) String() string {

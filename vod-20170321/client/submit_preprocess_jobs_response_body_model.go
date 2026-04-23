@@ -16,7 +16,6 @@ type iSubmitPreprocessJobsResponseBody interface {
 }
 
 type SubmitPreprocessJobsResponseBody struct {
-	// The information about the job.
 	PreprocessJobs *SubmitPreprocessJobsResponseBodyPreprocessJobs `json:"PreprocessJobs,omitempty" xml:"PreprocessJobs,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,11 +95,6 @@ func (s *SubmitPreprocessJobsResponseBodyPreprocessJobs) Validate() error {
 }
 
 type SubmitPreprocessJobsResponseBodyPreprocessJobsPreprocessJob struct {
-	// The ID of the job.
-	//
-	// example:
-	//
-	// bb396607fd11fee9effbb99c4****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 

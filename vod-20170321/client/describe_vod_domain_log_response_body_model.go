@@ -16,7 +16,6 @@ type iDescribeVodDomainLogResponseBody interface {
 }
 
 type DescribeVodDomainLogResponseBody struct {
-	// The details of CDN logs.
 	DomainLogDetails *DescribeVodDomainLogResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,22 +95,10 @@ func (s *DescribeVodDomainLogResponseBodyDomainLogDetails) Validate() error {
 }
 
 type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetail struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The total number of entries returned on the current page.
-	//
-	// example:
-	//
-	// 2
-	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// The queried CDN logs.
-	LogInfos *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
-	// The pagination information.
-	PageInfos *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	DomainName *string                                                                   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LogCount   *int64                                                                    `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos   *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	PageInfos  *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
 }
 
 func (s DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetail) String() string {
@@ -207,35 +194,10 @@ func (s *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos
 }
 
 type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-05-31T05:00:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the log file.
-	//
-	// example:
-	//
-	// example.com_2018_03_25_180000_19****.gz
-	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The path of the log file.
-	//
-	// example:
-	//
-	// example.com/2018_03_25/example.com_2018_03_25_180000_19****.gz?Expires=1522659931&OSSAccessKeyId=****&Signature=****
-	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
-	// The size of the log file.
-	//
-	// example:
-	//
-	// 2645401
-	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2018-05-31T04:00:00Z
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -297,24 +259,9 @@ func (s *DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos
 }
 
 type DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
-	// The page number.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 300
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
-	//
-	// example:
-	//
-	// 2
-	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageSize   *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total      *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeVodDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {

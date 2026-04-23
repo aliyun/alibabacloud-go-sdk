@@ -20,10 +20,8 @@ type iRestoreMediaResponseBody interface {
 }
 
 type RestoreMediaResponseBody struct {
-	// The IDs of the media asset that failed to be processed.
 	ForbiddenList *RestoreMediaResponseBodyForbiddenList `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Struct"`
-	// The IDs of the media assets that failed to be obtained.
-	IgnoredList *RestoreMediaResponseBodyIgnoredList `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
+	IgnoredList   *RestoreMediaResponseBodyIgnoredList   `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -131,18 +129,8 @@ func (s *RestoreMediaResponseBodyForbiddenList) Validate() error {
 }
 
 type RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO struct {
-	// The ID of the media asset.
-	//
-	// example:
-	//
-	// fa10ee70898671edb99f6eb3690d****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The reason for the failure.
-	//
-	// example:
-	//
-	// Forbidden.RestoreMedia
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s RestoreMediaResponseBodyForbiddenListMediaForbiddenReasonDTO) String() string {

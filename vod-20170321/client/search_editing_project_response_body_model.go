@@ -18,7 +18,6 @@ type iSearchEditingProjectResponseBody interface {
 }
 
 type SearchEditingProjectResponseBody struct {
-	// The list of online editing projects.
 	ProjectList *SearchEditingProjectResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -113,78 +112,16 @@ func (s *SearchEditingProjectResponseBodyProjectList) Validate() error {
 }
 
 type SearchEditingProjectResponseBodyProjectListProject struct {
-	// The thumbnail URL of the online editing project.
-	//
-	// example:
-	//
-	// cover_url
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the online editing project was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-01-11T12:00:00Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the online editing project.
-	//
-	// example:
-	//
-	// test project 001
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the online editing project, which must be consistent with the duration of the timeline.
-	//
-	// > The Timeline parameter is not included in response parameters.
-	//
-	// example:
-	//
-	// 22.65
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The last time when the online editing project was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-01-11T13:00:00Z
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the online editing project.
-	//
-	// example:
-	//
-	// 25cfc178d2de4*****e77aebed6afcd
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region where the online editing project was created.
-	//
-	// example:
-	//
-	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the online editing project. Separate multiple states with commas (,). By default, all online editing projects were queried. Valid values:
-	//
-	// 	- **Normal**: indicates that the online editing project is in draft.
-	//
-	// 	- **Producing**: indicates that the video is being produced.
-	//
-	// 	- **Produced**: indicates that the video was produced.
-	//
-	// 	- **ProduceFailed**: indicates that the video failed to be produced.
-	//
-	// example:
-	//
-	// Normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The path of the Object Storage Service (OSS) bucket where the produced video is stored.
-	//
-	// > To view the path of the OSS bucket, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.15.6948257eaZ4m54#/vod/settings/censored), and choose **Configuration Management*	- > **Media Management*	- > **Storage**. On the Storage page, you can view the path of the OSS bucket.
-	//
-	// example:
-	//
-	// location_s
-	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The title of the online editing project.
-	//
-	// example:
-	//
-	// video_150873681****
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CoverURL        *string  `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreationTime    *string  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration        *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ModifiedTime    *string  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	ProjectId       *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageLocation *string  `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	Title           *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s SearchEditingProjectResponseBodyProjectListProject) String() string {

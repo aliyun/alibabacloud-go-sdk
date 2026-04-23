@@ -18,7 +18,6 @@ type iGetPlayInfoResponseBody interface {
 }
 
 type GetPlayInfoResponseBody struct {
-	// The information about the audio or video stream.
 	PlayInfoList *GetPlayInfoResponseBodyPlayInfoList `json:"PlayInfoList,omitempty" xml:"PlayInfoList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -114,220 +113,31 @@ func (s *GetPlayInfoResponseBodyPlayInfoList) Validate() error {
 }
 
 type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
-	// The color depth. This value is an integer.
-	//
-	// example:
-	//
-	// 8
-	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
-	// The bitrate of the media stream. Unit: Kbit/s.
-	//
-	// example:
-	//
-	// 450.878
-	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The encoding type. The possible values are:
-	//
-	// - H264
-	//
-	// - H265
-	//
-	// example:
-	//
-	// H264
-	CodecName *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
-	// The time when the audio or video stream was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-04-18T07:37:15Z
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The quality of the video stream. Valid values:
-	//
-	// 	- **FD**: low definition
-	//
-	// 	- **LD**: standard definition
-	//
-	// 	- **SD**: high definition
-	//
-	// 	- **HD**: ultra-high definition
-	//
-	// 	- **OD**: original definition
-	//
-	// 	- **2K**
-	//
-	// 	- **4K**
-	//
-	// 	- **SQ**: standard sound quality
-	//
-	// 	- **HQ**: high sound quality
-	//
-	// 	- **AUTO**: adaptive bitrate
-	//
-	// example:
-	//
-	// LD
-	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The duration of the media stream. Unit: seconds.
-	//
-	// example:
-	//
-	// 9.0464
-	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether the media stream is encrypted. Valid values:
-	//
-	// 	- **0**: The media stream is not encrypted.
-	//
-	// 	- **1**: The media stream is encrypted.
-	//
-	// example:
-	//
-	// 1
-	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
-	// The encryption type of the media stream. Valid values:
-	//
-	// 	- **License**: decryption on local devices
-	//
-	// >  If the encryption type is **License**, only ApsaraVideo Player SDK can be used to play videos.
-	//
-	// example:
-	//
-	// License
-	EncryptMode *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
-	// The encryption type of the media stream. Valid values:
-	//
-	// 	- **AliyunVoDEncryption**: Alibaba Cloud proprietary cryptography
-	//
-	// 	- **HLSEncryption**: HTTP-Live-Streaming (HLS) encryption
-	//
-	// >  If the encryption type is AliyunVoDEncryption, only ApsaraVideo Player SDK can be used to play videos.
-	//
-	// example:
-	//
-	// AliyunVoDEncryption
-	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The format of the media stream.
-	//
-	// 	- If the media file is a video file, the valid values are **mp4*	- and **m3u8**.
-	//
-	// 	- If the media asset is an audio-only file, the value is **mp3**.
-	//
-	// example:
-	//
-	// m3u8
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The frame rate of the media stream. Unit: frames per second.
-	//
-	// example:
-	//
-	// 25
-	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The HDR type of the media stream. Valid values:
-	//
-	// 	- HDR
-	//
-	// 	- HDR10
-	//
-	// 	- HLG
-	//
-	// 	- DolbyVision
-	//
-	// 	- HDRVivid
-	//
-	// 	- SDR+
-	//
-	// example:
-	//
-	// HLG
-	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// The height of the media stream. Unit: pixels.
-	//
-	// example:
-	//
-	// 640
-	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The custom watermark information of the copyright watermark. This parameter is returned if you set `JobType` to `2`.
-	//
-	// example:
-	//
-	// CopyrightMarkTest
-	JobExt *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
-	// The job ID for transcoding the media stream. This ID uniquely identifies a media stream.
-	//
-	// example:
-	//
-	// 80e9c6580e754a798c3c19c59b16****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The type of the digital watermark. Valid values:
-	//
-	// 	- **1**: user-tracing watermark
-	//
-	// 	- **2**: copyright watermark
-	//
-	// example:
-	//
-	// 2
-	JobType *int32 `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The time when the audio or video file was last updated. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-04-20T06:32:19Z
+	BitDepth         *int32  `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
+	Bitrate          *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
+	CodecName        *string `json:"CodecName,omitempty" xml:"CodecName,omitempty"`
+	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Duration         *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Encrypt          *int64  `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
+	EncryptMode      *string `json:"EncryptMode,omitempty" xml:"EncryptMode,omitempty"`
+	EncryptType      *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	Format           *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Fps              *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	HDRType          *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
+	Height           *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	JobExt           *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
+	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType          *int32  `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The transcoding type. Valid values:
-	//
-	// 	- **0**: regular transcoding
-	//
-	// 	- **1.0**: Narrowband HD™ 1.0 transcoding
-	//
-	// 	- **2.0**: Narrowband HD™ 2.0 transcoding
-	//
-	// example:
-	//
-	// 0
-	NarrowBandType *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
-	// The playback URL of the video stream.
-	PlayURL *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
-	// The size of the media stream. Unit: bytes.
-	//
-	// example:
-	//
-	// 418112
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The specifications of transcoded audio and video streams. For more information about the valid values, see [Output specifications](~~124671#section-6bv-l0g-opq~~).
-	//
-	// example:
-	//
-	// H264.LD
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The status of the audio or video stream. Valid values:
-	//
-	// 	- **Normal**: The latest transcoded stream in each quality and format is in the Normal status.
-	//
-	// 	- **Invisible**: If multiple streams are transcoded in the same quality and format, the latest transcoded stream is in the Normal status and other streams are in the Invisible status.
-	//
-	// example:
-	//
-	// Normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the media stream. If the media stream is a video stream, the value is **video**. If the media stream is an audio-only stream, the value is **audio**.
-	//
-	// example:
-	//
-	// video
-	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	// The ID of the watermark that is associated with the media stream.
-	//
-	// example:
-	//
-	// dgfn26457856****
-	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
-	// The width of the media stream. Unit: pixels.
-	//
-	// example:
-	//
-	// 360
-	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	NarrowBandType   *string `json:"NarrowBandType,omitempty" xml:"NarrowBandType,omitempty"`
+	PlayURL          *string `json:"PlayURL,omitempty" xml:"PlayURL,omitempty"`
+	Size             *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Specification    *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StreamType       *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	WatermarkId      *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
+	Width            *int64  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetPlayInfoResponseBodyPlayInfoListPlayInfo) String() string {

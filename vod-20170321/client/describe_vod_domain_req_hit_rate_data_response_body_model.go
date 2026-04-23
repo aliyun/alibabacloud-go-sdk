@@ -24,7 +24,6 @@ type iDescribeVodDomainReqHitRateDataResponseBody interface {
 }
 
 type DescribeVodDomainReqHitRateDataResponseBody struct {
-	// The request hit rate data at each time interval.
 	Data *DescribeVodDomainReqHitRateDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The time interval at which data is returned, which is the time granularity. Unit: seconds.
 	//
@@ -164,24 +163,9 @@ func (s *DescribeVodDomainReqHitRateDataResponseBodyData) Validate() error {
 }
 
 type DescribeVodDomainReqHitRateDataResponseBodyDataDataModule struct {
-	// The HTTPS request hit rate.
-	//
-	// example:
-	//
-	// 50
 	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2023-12-21T08:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total request hit rate.
-	//
-	// example:
-	//
-	// 100
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainReqHitRateDataResponseBodyDataDataModule) String() string {

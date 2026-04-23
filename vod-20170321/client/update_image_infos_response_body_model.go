@@ -16,7 +16,6 @@ type iUpdateImageInfosResponseBody interface {
 }
 
 type UpdateImageInfosResponseBody struct {
-	// The IDs of the images that do not exist.
 	NonExistImageIds *UpdateImageInfosResponseBodyNonExistImageIds `json:"NonExistImageIds,omitempty" xml:"NonExistImageIds,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

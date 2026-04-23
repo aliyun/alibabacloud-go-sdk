@@ -18,7 +18,6 @@ type iDescribeVodAIDataResponseBody interface {
 }
 
 type DescribeVodAIDataResponseBody struct {
-	// The statistics on video AI.
 	AIData *DescribeVodAIDataResponseBodyAIData `json:"AIData,omitempty" xml:"AIData,omitempty" type:"Struct"`
 	// The time granularity at which the data was queried. Valid values:
 	//
@@ -117,14 +116,8 @@ func (s *DescribeVodAIDataResponseBodyAIData) Validate() error {
 }
 
 type DescribeVodAIDataResponseBodyAIDataAIDataItem struct {
-	// The statistics on video AI of each type.
-	Data *DescribeVodAIDataResponseBodyAIDataAIDataItemData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-02-01T13:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Data      *DescribeVodAIDataResponseBodyAIDataAIDataItemData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	TimeStamp *string                                            `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodAIDataResponseBodyAIDataAIDataItem) String() string {
@@ -197,23 +190,7 @@ func (s *DescribeVodAIDataResponseBodyAIDataAIDataItemData) Validate() error {
 }
 
 type DescribeVodAIDataResponseBodyAIDataAIDataItemDataDataItem struct {
-	// The type of video AI. Valid values:
-	//
-	// 	- **AIVideoCensor**: automated review
-	//
-	// 	- **AIVideoFPShot**: media fingerprinting
-	//
-	// 	- **AIVideoTag**: smart tagging
-	//
-	// example:
-	//
-	// AIVideoCensor
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The processing duration. Unit: seconds.
-	//
-	// example:
-	//
-	// 111
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

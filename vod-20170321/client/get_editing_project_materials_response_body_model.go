@@ -16,7 +16,6 @@ type iGetEditingProjectMaterialsResponseBody interface {
 }
 
 type GetEditingProjectMaterialsResponseBody struct {
-	// The materials.
 	MaterialList *GetEditingProjectMaterialsResponseBodyMaterialList `json:"MaterialList,omitempty" xml:"MaterialList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,110 +95,23 @@ func (s *GetEditingProjectMaterialsResponseBodyMaterialList) Validate() error {
 }
 
 type GetEditingProjectMaterialsResponseBodyMaterialListMaterial struct {
-	// The category ID of the material.
-	//
-	// example:
-	//
-	// 100005****
-	CateId *int32 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// The category name of the material.
-	//
-	// example:
-	//
-	// test1
-	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
-	// The thumbnail URL of the material.
-	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the material was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-10-19 10:48:17
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the material.
-	//
-	// example:
-	//
-	// test2
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The duration of the material. The value is rounded to four decimal places. Unit: seconds.
-	//
-	// example:
-	//
-	// 15.16
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the material.
-	//
-	// example:
-	//
-	// 85befc4118b84c6723e53b80b1****
-	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
-	// The type of the material. Valid values:
-	//
-	// 	- **video**
-	//
-	// 	- **audio**
-	//
-	// 	- **image**
-	//
-	// example:
-	//
-	// video
-	MaterialType *string `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
-	// The time when the material was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2017-10-19 10:48:17
-	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The size of the mezzanine file. Unit: byte.
-	//
-	// example:
-	//
-	// 1682694
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The URLs of material snapshots. The value is an array.
-	Snapshots *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The source of the sprite.
-	//
-	// example:
-	//
-	// xxx
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The configuration of the sprite.
-	//
-	// example:
-	//
-	// xxx
-	SpriteConfig *string `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
-	// The URLs of material sprites. The value is an array.
-	Sprites *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSprites `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Struct"`
-	// The status of the material. Valid values:
-	//
-	// 	- **Normal**: The material is in draft.
-	//
-	// 	- **Producing**: The material is being produced.
-	//
-	// 	- **Produced**: The material was produced.
-	//
-	// 	- **ProduceFailed**: The material failed to be produced.
-	//
-	// example:
-	//
-	// Normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag of the material. Multiple tags are separated by commas (,).
-	//
-	// example:
-	//
-	// editing test
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the material.
-	//
-	// example:
-	//
-	// test
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	CateId       *int32                                                               `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName     *string                                                              `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	CoverURL     *string                                                              `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	CreationTime *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string                                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration     *float32                                                             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	MaterialId   *string                                                              `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
+	MaterialType *string                                                              `json:"MaterialType,omitempty" xml:"MaterialType,omitempty"`
+	ModifiedTime *string                                                              `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Size         *int64                                                               `json:"Size,omitempty" xml:"Size,omitempty"`
+	Snapshots    *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
+	Source       *string                                                              `json:"Source,omitempty" xml:"Source,omitempty"`
+	SpriteConfig *string                                                              `json:"SpriteConfig,omitempty" xml:"SpriteConfig,omitempty"`
+	Sprites      *GetEditingProjectMaterialsResponseBodyMaterialListMaterialSprites   `json:"Sprites,omitempty" xml:"Sprites,omitempty" type:"Struct"`
+	Status       *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags         *string                                                              `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title        *string                                                              `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetEditingProjectMaterialsResponseBodyMaterialListMaterial) String() string {

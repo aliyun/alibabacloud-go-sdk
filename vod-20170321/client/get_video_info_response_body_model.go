@@ -169,8 +169,7 @@ type GetVideoInfoResponseBodyVideo struct {
 	// example:
 	//
 	// 10897890
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The video snapshot URLs.
+	Size      *int64                                  `json:"Size,omitempty" xml:"Size,omitempty"`
 	Snapshots *GetVideoInfoResponseBodyVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The status of the media file. For more information about the operations that you can perform on files in different statuses and usage limits, see [Status: the status of a video](~~52839#title-vqg-8cz-7p8~~). Valid values:
 	//

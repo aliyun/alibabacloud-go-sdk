@@ -39,9 +39,8 @@ type DescribeVodRefreshTasksResponseBody struct {
 	// example:
 	//
 	// 174F6032-AA26-470D-****-36F0EB205BEE
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the returned tasks.
-	Tasks *DescribeVodRefreshTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     *DescribeVodRefreshTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	//
 	// example:
@@ -147,68 +146,13 @@ func (s *DescribeVodRefreshTasksResponseBodyTasks) Validate() error {
 }
 
 type DescribeVodRefreshTasksResponseBodyTasksTask struct {
-	// The time when the task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2014-11-27T08:23:22Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The type of error returned when the refresh or prefetch task failed. Valid values: Valid values:
-	//
-	// 	- **Internal Error**: An internal error occurred.
-	//
-	// 	- **Origin Timeout**: The response from the origin server timed out.
-	//
-	// 	- **Origin Return StatusCode 5XX**: The origin server returned an HTTP status code 5xx.
-	//
-	// example:
-	//
-	// Internal Error
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the object refreshed.
-	//
-	// example:
-	//
-	// http://example.com/****.txt
-	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The type of the task. Default value: file. Valid values:
-	//
-	// 	- **file**: refreshes one or more files.
-	//
-	// 	- **directory**: refreshes files in the specified directory.
-	//
-	// 	- **preload**: prefetches one or more files.
-	//
-	// example:
-	//
-	// file
-	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The progress of the task in percentage.
-	//
-	// example:
-	//
-	// 100%
-	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The status of the task. Valid values:
-	//
-	// 	- **Complete**: The task is complete.
-	//
-	// 	- **Refreshing**: The task is in progress.
-	//
-	// 	- **Failed**: The task failed.
-	//
-	// 	- **Pending**: The task is pending.
-	//
-	// example:
-	//
-	// Complete
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task.
-	//
-	// example:
-	//
-	// 704225667
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ObjectPath   *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
+	ObjectType   *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Process      *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeVodRefreshTasksResponseBodyTasksTask) String() string {

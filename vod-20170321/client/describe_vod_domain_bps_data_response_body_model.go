@@ -28,7 +28,6 @@ type iDescribeVodDomainBpsDataResponseBody interface {
 }
 
 type DescribeVodDomainBpsDataResponseBody struct {
-	// The bandwidth data that is collected for each interval.
 	BpsDataPerInterval *DescribeVodDomainBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
 	// The time interval between the returned entries. Unit: seconds.
 	//
@@ -198,48 +197,13 @@ func (s *DescribeVodDomainBpsDataResponseBodyBpsDataPerInterval) Validate() erro
 }
 
 type DescribeVodDomainBpsDataResponseBodyBpsDataPerIntervalDataModule struct {
-	// The bandwidth in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
-	//
-	// example:
-	//
-	// 11286111
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The HTTPS bandwidth on L1 nodes in mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
-	//
-	// example:
-	//
-	// 11286111
+	DomesticValue      *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The HTTPS bandwidth on L1 nodes outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
-	//
-	// example:
-	//
-	// 2000
 	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The total HTTPS bandwidth on L1 nodes. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The bandwidth outside mainland China. Unit: bit/s. When the bandwidth data is queried by ISP, no value is returned.
-	//
-	// example:
-	//
-	// 2000
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the returned data. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2015-12-10T13:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11288111
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsValue         *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue      *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainBpsDataResponseBodyBpsDataPerIntervalDataModule) String() string {

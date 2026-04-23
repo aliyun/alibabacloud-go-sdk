@@ -61,8 +61,7 @@ type DescribeVodDomainTrafficDataResponseBody struct {
 	// example:
 	//
 	// 5906662826
-	TotalTraffic *string `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
-	// The amount of network traffic at each time interval.
+	TotalTraffic           *string                                                         `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 	TrafficDataPerInterval *DescribeVodDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -181,48 +180,13 @@ func (s *DescribeVodDomainTrafficDataResponseBodyTrafficDataPerInterval) Validat
 }
 
 type DescribeVodDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule struct {
-	// The amount of network traffic in the Chinese mainland. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
-	DomesticValue *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
-	// The amount of HTTPS network traffic on points of presence (POPs) in the Chinese mainland. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
+	DomesticValue      *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
 	HttpsDomesticValue *string `json:"HttpsDomesticValue,omitempty" xml:"HttpsDomesticValue,omitempty"`
-	// The amount of HTTPS network traffic on POPs outside the Chinese mainland. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
 	HttpsOverseasValue *string `json:"HttpsOverseasValue,omitempty" xml:"HttpsOverseasValue,omitempty"`
-	// The total amount of HTTPS network traffic on POPs. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	// The amount of network traffic outside the Chinese mainland. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
-	OverseasValue *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
-	// The timestamp of the data returned. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2019-01-15T19:00:00Z
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The total traffic. Unit: bytes.
-	//
-	// example:
-	//
-	// 0
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	HttpsValue         *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
+	OverseasValue      *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value              *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVodDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule) String() string {

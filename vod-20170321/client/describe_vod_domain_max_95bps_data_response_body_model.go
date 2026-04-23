@@ -28,7 +28,6 @@ type iDescribeVodDomainMax95BpsDataResponseBody interface {
 }
 
 type DescribeVodDomainMax95BpsDataResponseBody struct {
-	// Details of the 95th percentile bandwidth.
 	DetailData *DescribeVodDomainMax95BpsDataResponseBodyDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Struct"`
 	// The domain name for CDN.
 	//
@@ -204,30 +203,10 @@ func (s *DescribeVodDomainMax95BpsDataResponseBodyDetailData) Validate() error {
 }
 
 type DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail struct {
-	// The billable region where the peak 95 data was collected.
-	//
-	// example:
-	//
-	// CN
-	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The 95th percentile bandwidth.
-	//
-	// example:
-	//
-	// 16777590.28
-	Max95Bps *float32 `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
-	// The time corresponding to the 95th percentile bandwidth peak.
-	//
-	// example:
-	//
-	// 2015-12-11T21:05:00Z
-	Max95BpsPeakTime *string `json:"Max95BpsPeakTime,omitempty" xml:"Max95BpsPeakTime,omitempty"`
-	// The timestamp of the returned data.
-	//
-	// example:
-	//
-	// 2024-01-18 10:11:32
-	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Area             *string  `json:"Area,omitempty" xml:"Area,omitempty"`
+	Max95Bps         *float32 `json:"Max95Bps,omitempty" xml:"Max95Bps,omitempty"`
+	Max95BpsPeakTime *string  `json:"Max95BpsPeakTime,omitempty" xml:"Max95BpsPeakTime,omitempty"`
+	TimeStamp        *string  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail) String() string {

@@ -21,8 +21,7 @@ type DescribePlayUserTotalResponseBody struct {
 	// example:
 	//
 	// 1FAFB884-D5A7-47D1-****-8928AA9C8720
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The daily playback statistics.
+	RequestId            *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UserPlayStatisTotals *DescribePlayUserTotalResponseBodyUserPlayStatisTotals `json:"UserPlayStatisTotals,omitempty" xml:"UserPlayStatisTotals,omitempty" type:"Struct"`
 }
 
@@ -96,28 +95,11 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotals) Validate() error
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal struct {
-	// The date. The date is displayed in the yyyy-MM-dd format.
-	//
-	// example:
-	//
-	// 20170120
-	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The total playback duration. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 9340070
-	PlayDuration *string `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
-	// The distribution of the playback duration.
-	//
-	// example:
-	//
-	// "<=1m:74.3%;>1<=5m:22.8%;>5<=10m:1.0%;>10<=15m:1.0%;>15<=30m:1.0%"
-	PlayRange *string `json:"PlayRange,omitempty" xml:"PlayRange,omitempty"`
-	// The total number of unique visitors.
-	UV *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV `json:"UV,omitempty" xml:"UV,omitempty" type:"Struct"`
-	// The total number of video views.
-	VV *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV `json:"VV,omitempty" xml:"VV,omitempty" type:"Struct"`
+	Date         *string                                                                     `json:"Date,omitempty" xml:"Date,omitempty"`
+	PlayDuration *string                                                                     `json:"PlayDuration,omitempty" xml:"PlayDuration,omitempty"`
+	PlayRange    *string                                                                     `json:"PlayRange,omitempty" xml:"PlayRange,omitempty"`
+	UV           *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV `json:"UV,omitempty" xml:"UV,omitempty" type:"Struct"`
+	VV           *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV `json:"VV,omitempty" xml:"VV,omitempty" type:"Struct"`
 }
 
 func (s DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal) String() string {
@@ -188,30 +170,10 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV struct {
-	// The total number of unique visitors who use ApsaraVideo Player SDK for Android.
-	//
-	// example:
-	//
-	// 2
 	Android *string `json:"Android,omitempty" xml:"Android,omitempty"`
-	// The total number of unique visitors who use the Flash player.
-	//
-	// example:
-	//
-	// 1
-	Flash *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	// The total number of unique visitors who use the HTML5 player.
-	//
-	// example:
-	//
-	// 1
-	HTML5 *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
-	// The total number of unique visitors who use ApsaraVideo Player SDK for iOS.
-	//
-	// example:
-	//
-	// 0
-	IOS *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
+	Flash   *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
+	HTML5   *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
+	IOS     *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
 }
 
 func (s DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV) String() string {
@@ -263,30 +225,10 @@ func (s *DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTota
 }
 
 type DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV struct {
-	// The total number of video views played by using ApsaraVideo Player SDK for Android.
-	//
-	// example:
-	//
-	// 161
 	Android *string `json:"Android,omitempty" xml:"Android,omitempty"`
-	// The total number of video views played by using the Flash player.
-	//
-	// example:
-	//
-	// 2
-	Flash *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
-	// The total number of video views played by using the HTML5 player.
-	//
-	// example:
-	//
-	// 2
-	HTML5 *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
-	// The total number of video views played by using ApsaraVideo Player SDK for iOS.
-	//
-	// example:
-	//
-	// 0
-	IOS *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
+	Flash   *string `json:"Flash,omitempty" xml:"Flash,omitempty"`
+	HTML5   *string `json:"HTML5,omitempty" xml:"HTML5,omitempty"`
+	IOS     *string `json:"iOS,omitempty" xml:"iOS,omitempty"`
 }
 
 func (s DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV) String() string {

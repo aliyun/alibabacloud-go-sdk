@@ -16,7 +16,6 @@ type iSubmitAIJobResponseBody interface {
 }
 
 type SubmitAIJobResponseBody struct {
-	// The information about the AI jobs.
 	AIJobList *SubmitAIJobResponseBodyAIJobList `json:"AIJobList,omitempty" xml:"AIJobList,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -96,28 +95,9 @@ func (s *SubmitAIJobResponseBodyAIJobList) Validate() error {
 }
 
 type SubmitAIJobResponseBodyAIJobListAIJob struct {
-	// The ID of the AI job.
-	//
-	// example:
-	//
-	// 9e82640c85114bf5af23edfaf****
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the video.
-	//
-	// example:
-	//
-	// 3D3D12340d92c641401fab46a0b847****
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The type of the AI job. Valid values:
-	//
-	// 	- **AIMediaDNA**: The media fingerprinting job.
-	//
-	// 	- **AIVideoTag**: The smart tagging job.
-	//
-	// example:
-	//
-	// AIVideoTag
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SubmitAIJobResponseBodyAIJobListAIJob) String() string {

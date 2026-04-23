@@ -62,7 +62,6 @@ func (s *DescribeVodCertificateListResponseBody) Validate() error {
 }
 
 type DescribeVodCertificateListResponseBodyCertificateListModel struct {
-	// The list of certificates.
 	CertList *DescribeVodCertificateListResponseBodyCertificateListModelCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Struct"`
 	// The number of certificates that are returned.
 	//
@@ -142,84 +141,19 @@ func (s *DescribeVodCertificateListResponseBodyCertificateListModelCertList) Val
 }
 
 type DescribeVodCertificateListResponseBodyCertificateListModelCertListCert struct {
-	// The algorithm.
-	//
-	// example:
-	//
-	// RSA
-	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// 235437
-	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The ID of the certificate.
-	//
-	// example:
-	//
-	// 14173772-cn-hangzhou
-	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate.
-	//
-	// example:
-	//
-	// certificate
-	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The common name of the certificate.
-	//
-	// example:
-	//
-	// test
-	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	// The time when the certificate was created.
-	//
-	// example:
-	//
-	// 1725206400000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// DomainMatchCert.
-	//
-	// example:
-	//
-	// false
-	DomainMatchCert *bool `json:"DomainMatchCert,omitempty" xml:"DomainMatchCert,omitempty"`
-	// The time when the certificate expired.
-	//
-	// example:
-	//
-	// 1759507200000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The fingerprint of the certificate.
-	//
-	// example:
-	//
-	// ****
-	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The ID of the instance.
-	//
-	// example:
-	//
-	// cert-cn-cd806ae0fdfbfa60
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The certificate authority (CA) that issued the certificate.
-	//
-	// example:
-	//
-	// ****
-	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	// The time when the certificate was issued. Unit: seconds.
-	//
-	// example:
-	//
-	// 1512388610
-	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The signAlgorithm.
-	//
-	// example:
-	//
-	// sha256withrsa
-	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
+	Algorithm       *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertId          *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertIdentifier  *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	Common          *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainMatchCert *bool   `json:"DomainMatchCert,omitempty" xml:"DomainMatchCert,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Fingerprint     *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Issuer          *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	LastTime        *int64  `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	SignAlgorithm   *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
 }
 
 func (s DescribeVodCertificateListResponseBodyCertificateListModelCertListCert) String() string {
