@@ -13,6 +13,10 @@ type iOneMetaKnowledgeBase interface {
 	GetCreator() *string
 	SetDescription(v string) *OneMetaKnowledgeBase
 	GetDescription() *string
+	SetDomain(v string) *OneMetaKnowledgeBase
+	GetDomain() *string
+	SetExtraInfo(v string) *OneMetaKnowledgeBase
+	GetExtraInfo() *string
 	SetGmtCreate(v string) *OneMetaKnowledgeBase
 	GetGmtCreate() *string
 	SetGmtModified(v string) *OneMetaKnowledgeBase
@@ -30,6 +34,8 @@ type iOneMetaKnowledgeBase interface {
 type OneMetaKnowledgeBase struct {
 	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo   *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	KbUuid      *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
@@ -52,6 +58,14 @@ func (s *OneMetaKnowledgeBase) GetCreator() *string {
 
 func (s *OneMetaKnowledgeBase) GetDescription() *string {
 	return s.Description
+}
+
+func (s *OneMetaKnowledgeBase) GetDomain() *string {
+	return s.Domain
+}
+
+func (s *OneMetaKnowledgeBase) GetExtraInfo() *string {
+	return s.ExtraInfo
 }
 
 func (s *OneMetaKnowledgeBase) GetGmtCreate() *string {
@@ -85,6 +99,16 @@ func (s *OneMetaKnowledgeBase) SetCreator(v string) *OneMetaKnowledgeBase {
 
 func (s *OneMetaKnowledgeBase) SetDescription(v string) *OneMetaKnowledgeBase {
 	s.Description = &v
+	return s
+}
+
+func (s *OneMetaKnowledgeBase) SetDomain(v string) *OneMetaKnowledgeBase {
+	s.Domain = &v
+	return s
+}
+
+func (s *OneMetaKnowledgeBase) SetExtraInfo(v string) *OneMetaKnowledgeBase {
+	s.ExtraInfo = &v
 	return s
 }
 

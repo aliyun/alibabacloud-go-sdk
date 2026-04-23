@@ -511,6 +511,7 @@ type SendChatMessageRequestSessionConfig struct {
 	//
 	// ENGLISH
 	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Mode            *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ReportWaterMark *string `json:"ReportWaterMark,omitempty" xml:"ReportWaterMark,omitempty"`
 }
 
@@ -534,6 +535,10 @@ func (s *SendChatMessageRequestSessionConfig) GetLanguage() *string {
 	return s.Language
 }
 
+func (s *SendChatMessageRequestSessionConfig) GetMode() *string {
+	return s.Mode
+}
+
 func (s *SendChatMessageRequestSessionConfig) GetReportWaterMark() *string {
 	return s.ReportWaterMark
 }
@@ -550,6 +555,11 @@ func (s *SendChatMessageRequestSessionConfig) SetCustomAgentStage(v string) *Sen
 
 func (s *SendChatMessageRequestSessionConfig) SetLanguage(v string) *SendChatMessageRequestSessionConfig {
 	s.Language = &v
+	return s
+}
+
+func (s *SendChatMessageRequestSessionConfig) SetMode(v string) *SendChatMessageRequestSessionConfig {
+	s.Mode = &v
 	return s
 }
 
