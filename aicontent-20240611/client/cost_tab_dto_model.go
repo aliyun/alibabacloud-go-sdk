@@ -21,10 +21,7 @@ type CostTabDTO struct {
 	// example:
 	//
 	// all
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// example:
-	//
-	// 全部
+	Key        *string   `json:"key,omitempty" xml:"key,omitempty"`
 	Label      *string   `json:"label,omitempty" xml:"label,omitempty"`
 	ModelTypes []*string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty" type:"Repeated"`
 }

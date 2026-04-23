@@ -19,8 +19,11 @@ type CostModelDetailRowDTO struct {
 	// example:
 	//
 	// 1700000000
-	Timestamp *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Values    *string `json:"values,omitempty" xml:"values,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// example:
+	//
+	// "{\\"total_calls\\":3,\\"video_duration\\":0,\\"total_amount\\":0.6,\\"image_count\\":3,\\"timestamp\\":1776787200}"
+	Values *string `json:"values,omitempty" xml:"values,omitempty"`
 }
 
 func (s CostModelDetailRowDTO) String() string {

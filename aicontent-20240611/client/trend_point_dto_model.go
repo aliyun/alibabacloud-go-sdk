@@ -19,8 +19,11 @@ type TrendPointDTO struct {
 	// example:
 	//
 	// 1700000000
-	Timestamp *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-	Values    *string `json:"values,omitempty" xml:"values,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// example:
+	//
+	// "{\\"total_calls\\":0,\\"video_duration\\":0,\\"total_amount\\":0,\\"model_count\\":0,\\"image_count\\":0}"
+	Values *string `json:"values,omitempty" xml:"values,omitempty"`
 }
 
 func (s TrendPointDTO) String() string {

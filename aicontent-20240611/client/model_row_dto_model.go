@@ -27,12 +27,12 @@ type ModelRowDTO struct {
 	// example:
 	//
 	// 1
-	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelId   *int64  `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// example:
 	//
-	// 通义千问-Plus
-	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	Values    *string `json:"values,omitempty" xml:"values,omitempty"`
+	// "{\\"total_calls\\":21,\\"video_duration\\":210,\\"total_amount\\":126,\\"image_count\\":0}"
+	Values *string `json:"values,omitempty" xml:"values,omitempty"`
 }
 
 func (s ModelRowDTO) String() string {

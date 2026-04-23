@@ -23,15 +23,9 @@ type MetricValueDTO struct {
 	// example:
 	//
 	// total_calls
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// example:
-	//
-	// 调用次数
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
-	// example:
-	//
-	// 次
-	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	Unit  *string `json:"unit,omitempty" xml:"unit,omitempty"`
 	// example:
 	//
 	// 100

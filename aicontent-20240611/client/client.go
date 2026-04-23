@@ -3021,6 +3021,76 @@ func (client *Client) ListTextbookAssistantSceneDetails(request *ListTextbookAss
 
 // Summary:
 //
+// 计费管理/获取成本监控Tab配置
+//
+// @param request - ModelRouterBillingCostTabsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterBillingCostTabsResponse
+func (client *Client) ModelRouterBillingCostTabsWithOptions(request *ModelRouterBillingCostTabsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterBillingCostTabsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterBillingCostTabs"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/cost/tabs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterBillingCostTabsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取成本监控Tab配置
+//
+// @param request - ModelRouterBillingCostTabsRequest
+//
+// @return ModelRouterBillingCostTabsResponse
+func (client *Client) ModelRouterBillingCostTabs(request *ModelRouterBillingCostTabsRequest) (_result *ModelRouterBillingCostTabsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterBillingCostTabsResponse{}
+	_body, _err := client.ModelRouterBillingCostTabsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 聊天/聊天接口
 //
 // @param request - ModelRouterChatCompletionsRequest
@@ -3206,6 +3276,92 @@ func (client *Client) ModelRouterCreateApiKey(request *ModelRouterCreateApiKeyRe
 	headers := make(map[string]*string)
 	_result = &ModelRouterCreateApiKeyResponse{}
 	_body, _err := client.ModelRouterCreateApiKeyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/创建计费规则
+//
+// @param request - ModelRouterCreateBillingRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateBillingRuleResponse
+func (client *Client) ModelRouterCreateBillingRuleWithOptions(request *ModelRouterCreateBillingRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateBillingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BillingType) {
+		body["billingType"] = request.BillingType
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		body["effectiveTime"] = request.EffectiveTime
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		body["expireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.PricingConfig) {
+		body["pricingConfig"] = request.PricingConfig
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateBillingRule"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/rules"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateBillingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/创建计费规则
+//
+// @param request - ModelRouterCreateBillingRuleRequest
+//
+// @return ModelRouterCreateBillingRuleResponse
+func (client *Client) ModelRouterCreateBillingRule(request *ModelRouterCreateBillingRuleRequest) (_result *ModelRouterCreateBillingRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterCreateBillingRuleResponse{}
+	_body, _err := client.ModelRouterCreateBillingRuleWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3845,6 +4001,174 @@ func (client *Client) ModelRouterQueryApiKeyList(request *ModelRouterQueryApiKey
 
 // Summary:
 //
+// 计费管理/查询计费规则列表
+//
+// @param request - ModelRouterQueryBillingRuleListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryBillingRuleListResponse
+func (client *Client) ModelRouterQueryBillingRuleListWithOptions(request *ModelRouterQueryBillingRuleListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryBillingRuleListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActiveOnly) {
+		query["activeOnly"] = request.ActiveOnly
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelCode) {
+		query["modelCode"] = request.ModelCode
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		query["modelType"] = request.ModelType
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryBillingRuleList"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryBillingRuleListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/查询计费规则列表
+//
+// @param request - ModelRouterQueryBillingRuleListRequest
+//
+// @return ModelRouterQueryBillingRuleListResponse
+func (client *Client) ModelRouterQueryBillingRuleList(request *ModelRouterQueryBillingRuleListRequest) (_result *ModelRouterQueryBillingRuleListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryBillingRuleListResponse{}
+	_body, _err := client.ModelRouterQueryBillingRuleListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门折扣修改历史
+//
+// @param request - ModelRouterQueryClientDiscountLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryClientDiscountLogsResponse
+func (client *Client) ModelRouterQueryClientDiscountLogsWithOptions(id *string, request *ModelRouterQueryClientDiscountLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryClientDiscountLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryClientDiscountLogs"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/discount-logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryClientDiscountLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门折扣修改历史
+//
+// @param request - ModelRouterQueryClientDiscountLogsRequest
+//
+// @return ModelRouterQueryClientDiscountLogsResponse
+func (client *Client) ModelRouterQueryClientDiscountLogs(id *string, request *ModelRouterQueryClientDiscountLogsRequest) (_result *ModelRouterQueryClientDiscountLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryClientDiscountLogsResponse{}
+	_body, _err := client.ModelRouterQueryClientDiscountLogsWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 客户管理/获取客户列表
 //
 // @param request - ModelRouterQueryClientListRequest
@@ -3938,6 +4262,76 @@ func (client *Client) ModelRouterQueryClientList(request *ModelRouterQueryClient
 	headers := make(map[string]*string)
 	_result = &ModelRouterQueryClientListResponse{}
 	_body, _err := client.ModelRouterQueryClientListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取客户树
+//
+// @param request - ModelRouterQueryClientTreeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryClientTreeResponse
+func (client *Client) ModelRouterQueryClientTreeWithOptions(request *ModelRouterQueryClientTreeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryClientTreeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryClientTree"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/tree"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryClientTreeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取客户树
+//
+// @param request - ModelRouterQueryClientTreeRequest
+//
+// @return ModelRouterQueryClientTreeResponse
+func (client *Client) ModelRouterQueryClientTree(request *ModelRouterQueryClientTreeRequest) (_result *ModelRouterQueryClientTreeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryClientTreeResponse{}
+	_body, _err := client.ModelRouterQueryClientTreeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4090,6 +4484,378 @@ func (client *Client) ModelRouterQueryConversationList(request *ModelRouterQuery
 	headers := make(map[string]*string)
 	_result = &ModelRouterQueryConversationListResponse{}
 	_body, _err := client.ModelRouterQueryConversationListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取模型明细
+//
+// @param request - ModelRouterQueryCostModelDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryCostModelDetailResponse
+func (client *Client) ModelRouterQueryCostModelDetailWithOptions(request *ModelRouterQueryCostModelDetailRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryCostModelDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageIndex) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryCostModelDetail"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/cost/model-detail"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryCostModelDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取模型明细
+//
+// @param request - ModelRouterQueryCostModelDetailRequest
+//
+// @return ModelRouterQueryCostModelDetailResponse
+func (client *Client) ModelRouterQueryCostModelDetail(request *ModelRouterQueryCostModelDetailRequest) (_result *ModelRouterQueryCostModelDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryCostModelDetailResponse{}
+	_body, _err := client.ModelRouterQueryCostModelDetailWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取调用模型列表
+//
+// @param request - ModelRouterQueryCostModelListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryCostModelListResponse
+func (client *Client) ModelRouterQueryCostModelListWithOptions(request *ModelRouterQueryCostModelListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryCostModelListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelTypes) {
+		query["modelTypes"] = request.ModelTypes
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Search) {
+		query["search"] = request.Search
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryCostModelList"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/cost/models"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryCostModelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取调用模型列表
+//
+// @param request - ModelRouterQueryCostModelListRequest
+//
+// @return ModelRouterQueryCostModelListResponse
+func (client *Client) ModelRouterQueryCostModelList(request *ModelRouterQueryCostModelListRequest) (_result *ModelRouterQueryCostModelListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryCostModelListResponse{}
+	_body, _err := client.ModelRouterQueryCostModelListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取成本概览指标
+//
+// @param request - ModelRouterQueryCostOverviewMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryCostOverviewMetricsResponse
+func (client *Client) ModelRouterQueryCostOverviewMetricsWithOptions(request *ModelRouterQueryCostOverviewMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryCostOverviewMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelTypes) {
+		query["modelTypes"] = request.ModelTypes
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryCostOverviewMetrics"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/cost/overview"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryCostOverviewMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取成本概览指标
+//
+// @param request - ModelRouterQueryCostOverviewMetricsRequest
+//
+// @return ModelRouterQueryCostOverviewMetricsResponse
+func (client *Client) ModelRouterQueryCostOverviewMetrics(request *ModelRouterQueryCostOverviewMetricsRequest) (_result *ModelRouterQueryCostOverviewMetricsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryCostOverviewMetricsResponse{}
+	_body, _err := client.ModelRouterQueryCostOverviewMetricsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取费用趋势
+//
+// @param request - ModelRouterQueryCostTrendMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryCostTrendMetricsResponse
+func (client *Client) ModelRouterQueryCostTrendMetricsWithOptions(request *ModelRouterQueryCostTrendMetricsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryCostTrendMetricsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.ModelTypes) {
+		query["modelTypes"] = request.ModelTypes
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryCostTrendMetrics"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/cost/trend"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryCostTrendMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/获取费用趋势
+//
+// @param request - ModelRouterQueryCostTrendMetricsRequest
+//
+// @return ModelRouterQueryCostTrendMetricsResponse
+func (client *Client) ModelRouterQueryCostTrendMetrics(request *ModelRouterQueryCostTrendMetricsRequest) (_result *ModelRouterQueryCostTrendMetricsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryCostTrendMetricsResponse{}
+	_body, _err := client.ModelRouterQueryCostTrendMetricsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4760,6 +5526,92 @@ func (client *Client) ModelRouterQueryObservationMetrics(request *ModelRouterQue
 	headers := make(map[string]*string)
 	_result = &ModelRouterQueryObservationMetricsResponse{}
 	_body, _err := client.ModelRouterQueryObservationMetricsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/更新计费规则
+//
+// @param request - ModelRouterUpdateBillingRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterUpdateBillingRuleResponse
+func (client *Client) ModelRouterUpdateBillingRuleWithOptions(id *string, request *ModelRouterUpdateBillingRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterUpdateBillingRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BillingType) {
+		body["billingType"] = request.BillingType
+	}
+
+	if !dara.IsNil(request.EffectiveTime) {
+		body["effectiveTime"] = request.EffectiveTime
+	}
+
+	if !dara.IsNil(request.ExpireTime) {
+		body["expireTime"] = request.ExpireTime
+	}
+
+	if !dara.IsNil(request.PricingConfig) {
+		body["pricingConfig"] = request.PricingConfig
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterUpdateBillingRule"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/rules/" + dara.PercentEncode(dara.StringValue(id))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterUpdateBillingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/更新计费规则
+//
+// @param request - ModelRouterUpdateBillingRuleRequest
+//
+// @return ModelRouterUpdateBillingRuleResponse
+func (client *Client) ModelRouterUpdateBillingRule(id *string, request *ModelRouterUpdateBillingRuleRequest) (_result *ModelRouterUpdateBillingRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterUpdateBillingRuleResponse{}
+	_body, _err := client.ModelRouterUpdateBillingRuleWithOptions(id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

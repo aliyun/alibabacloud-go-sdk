@@ -36,10 +36,7 @@ type CostModelDetailRespDTO struct {
 	// example:
 	//
 	// 1
-	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// example:
-	//
-	// 通义千问-Plus
+	ModelId   *int64  `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// example:
 	//
