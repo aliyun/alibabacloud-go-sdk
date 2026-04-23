@@ -9639,6 +9639,68 @@ func (client *Client) GenerateMessageChatToken(request *GenerateMessageChatToken
 
 // Summary:
 //
+// 获取智能体当前通话并发数
+//
+// @param request - GetAIAgentConcurrencyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIAgentConcurrencyResponse
+func (client *Client) GetAIAgentConcurrencyWithOptions(request *GetAIAgentConcurrencyRequest, runtime *dara.RuntimeOptions) (_result *GetAIAgentConcurrencyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AIAgentId) {
+		query["AIAgentId"] = request.AIAgentId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIAgentConcurrency"),
+		Version:     dara.String("2020-11-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIAgentConcurrencyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取智能体当前通话并发数
+//
+// @param request - GetAIAgentConcurrencyRequest
+//
+// @return GetAIAgentConcurrencyResponse
+func (client *Client) GetAIAgentConcurrency(request *GetAIAgentConcurrencyRequest) (_result *GetAIAgentConcurrencyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAIAgentConcurrencyResponse{}
+	_body, _err := client.GetAIAgentConcurrencyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a workflow task.
 //
 // @param request - GetAIWorkflowTaskRequest
