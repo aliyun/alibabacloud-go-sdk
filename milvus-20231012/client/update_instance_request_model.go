@@ -173,6 +173,7 @@ type UpdateInstanceRequestComponents struct {
 	//
 	// 8
 	CuNum   *int32  `json:"cuNum,omitempty" xml:"cuNum,omitempty"`
+	CuType  *string `json:"cuType,omitempty" xml:"cuType,omitempty"`
 	PayType *string `json:"payType,omitempty" xml:"payType,omitempty"`
 	// This parameter is required.
 	//
@@ -200,6 +201,10 @@ func (s *UpdateInstanceRequestComponents) GetCuNum() *int32 {
 	return s.CuNum
 }
 
+func (s *UpdateInstanceRequestComponents) GetCuType() *string {
+	return s.CuType
+}
+
 func (s *UpdateInstanceRequestComponents) GetPayType() *string {
 	return s.PayType
 }
@@ -214,6 +219,11 @@ func (s *UpdateInstanceRequestComponents) GetType() *string {
 
 func (s *UpdateInstanceRequestComponents) SetCuNum(v int32) *UpdateInstanceRequestComponents {
 	s.CuNum = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestComponents) SetCuType(v string) *UpdateInstanceRequestComponents {
+	s.CuType = &v
 	return s
 }
 
