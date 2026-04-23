@@ -33,9 +33,8 @@ type QueryDomainListResponseBody struct {
 	// example:
 	//
 	// 0
-	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The domain names.
-	Data *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	CurrentPageNum *int32                           `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	Data           *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates whether the current page is followed by a page.
 	//
 	// example:
@@ -198,164 +197,30 @@ func (s *QueryDomainListResponseBodyData) Validate() error {
 }
 
 type QueryDomainListResponseBodyDataDomain struct {
-	// The name of the domain name registrant.
-	//
-	// example:
-	//
-	// Guangzhou Forest Advertising Decoration Co., LTD
-	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
-	// domain transfer status. value:
-	//
-	// - 0: domain status normal.
-	//
-	// - 1: domain is pending change holder.
-	//
-	// - 2: change holder failed.
-	//
-	// example:
-	//
-	// 0
-	ChgholderStatus *string                                       `json:"ChgholderStatus,omitempty" xml:"ChgholderStatus,omitempty"`
-	DnsList         *QueryDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	// The state of real-name verification for the domain name. Valid values:
-	//
-	// 	- **FAILED**: Real-name verification for the domain name fails.
-	//
-	// 	- **SUCCEED**: Real-name verification for the domain name is successful.
-	//
-	// 	- **NONAUDIT**: Real-name verification for the domain name is not performed.
-	//
-	// 	- **AUDITING**: Real-name verification for the domain name is in progress.
-	//
-	// example:
-	//
-	// FAILED
-	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	// The ID of the domain name group.
-	//
-	// example:
-	//
-	// 123456
-	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	// The name of the domain name group.
-	//
-	// example:
-	//
-	// test group
-	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// test.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The state of the domain name. Valid values:
-	//
-	// 	- **1**: The domain name needs to be renewed.
-	//
-	// 	- **2**: The domain name needs to be redeemed.
-	//
-	// 	- **3**: The domain name is normal.
-	//
-	// example:
-	//
-	// 3
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The type of the domain name. Valid values:
-	//
-	// 	- **New gTLD**
-	//
-	// 	- **gTLD**
-	//
-	// 	- **ccTLD**
-	//
-	// example:
-	//
-	// gTLD
-	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The number of days from the expiration date of the domain name to the current date.
-	//
-	// example:
-	//
-	// -30
-	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	// The time when the domain name expires.
-	//
-	// example:
-	//
-	// 2017-11-02 04:00:45
-	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	// The validity period of the domain name. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1522080000000
-	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	// Indicates whether the domain name expires. Valid values:
-	//
-	// 	- **1**: The domain name does not expire.
-	//
-	// 	- **2**: The domain name expires.
-	//
-	// example:
-	//
-	// 1
-	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	// The instance ID.
-	//
-	// example:
-	//
-	// ST20151102120031118
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the domain name is a premium domain name.
-	//
-	// example:
-	//
-	// true
-	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	// The service ID.
-	//
-	// example:
-	//
-	// 2a
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The registration type of the domain name. Valid values:
-	//
-	// 	- **1**: individual
-	//
-	// 	- **2**: enterprise
-	//
-	// example:
-	//
-	// 1
-	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	Registrar      *string `json:"Registrar,omitempty" xml:"Registrar,omitempty"`
-	// The time when the domain name was registered.
-	//
-	// example:
-	//
-	// 2017-11-02 04:00:45
-	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	// Indicates how long the domain name has been registered. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1522080000000
-	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	// The remarks of the domain name.
-	//
-	// example:
-	//
-	// test remark
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the resource group to which the domain name belongs.
-	//
-	// example:
-	//
-	// rg-aek2yyciz557g3q
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags added to the resource.
-	Tag *QueryDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	AutoRenewEnabled       *bool                                         `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
+	Ccompany               *string                                       `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	ChgholderStatus        *string                                       `json:"ChgholderStatus,omitempty" xml:"ChgholderStatus,omitempty"`
+	DnsList                *QueryDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	DomainAuditStatus      *string                                       `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	DomainGroupId          *string                                       `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName        *string                                       `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	DomainName             *string                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus           *string                                       `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainType             *string                                       `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	ExpirationCurrDateDiff *int32                                        `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	ExpirationDate         *string                                       `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExpirationDateLong     *int64                                        `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	ExpirationDateStatus   *string                                       `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	InstanceId             *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Premium                *bool                                         `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	ProductId              *string                                       `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegistrantType         *string                                       `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	Registrar              *string                                       `json:"Registrar,omitempty" xml:"Registrar,omitempty"`
+	RegistrationDate       *string                                       `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	RegistrationDateLong   *int64                                        `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark                 *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId        *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                    *QueryDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
 func (s QueryDomainListResponseBodyDataDomain) String() string {
@@ -364,6 +229,10 @@ func (s QueryDomainListResponseBodyDataDomain) String() string {
 
 func (s QueryDomainListResponseBodyDataDomain) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) GetAutoRenewEnabled() *bool {
+	return s.AutoRenewEnabled
 }
 
 func (s *QueryDomainListResponseBodyDataDomain) GetCcompany() *string {
@@ -456,6 +325,11 @@ func (s *QueryDomainListResponseBodyDataDomain) GetResourceGroupId() *string {
 
 func (s *QueryDomainListResponseBodyDataDomain) GetTag() *QueryDomainListResponseBodyDataDomainTag {
 	return s.Tag
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) SetAutoRenewEnabled(v bool) *QueryDomainListResponseBodyDataDomain {
+	s.AutoRenewEnabled = &v
+	return s
 }
 
 func (s *QueryDomainListResponseBodyDataDomain) SetCcompany(v string) *QueryDomainListResponseBodyDataDomain {
@@ -647,17 +521,7 @@ func (s *QueryDomainListResponseBodyDataDomainTag) Validate() error {
 }
 
 type QueryDomainListResponseBodyDataDomainTagTag struct {
-	// The key of the tag added to the resource.
-	//
-	// example:
-	//
-	// testKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag added to the resource.
-	//
-	// example:
-	//
-	// testValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

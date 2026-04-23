@@ -53,6 +53,8 @@ type iQueryDomainByDomainNameResponseBody interface {
 	GetRegistrantType() *string
 	SetRegistrantUpdatingStatus(v string) *QueryDomainByDomainNameResponseBody
 	GetRegistrantUpdatingStatus() *string
+	SetRegistrar(v string) *QueryDomainByDomainNameResponseBody
+	GetRegistrar() *string
 	SetRegistrationDate(v string) *QueryDomainByDomainNameResponseBody
 	GetRegistrationDate() *string
 	SetRegistrationDateLong(v int64) *QueryDomainByDomainNameResponseBody
@@ -80,7 +82,6 @@ type iQueryDomainByDomainNameResponseBody interface {
 }
 
 type QueryDomainByDomainNameResponseBody struct {
-	// The Domain Name System (DNS) servers of the domain name.
 	DnsList *QueryDomainByDomainNameResponseBodyDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
 	// The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
 	//
@@ -248,6 +249,7 @@ type QueryDomainByDomainNameResponseBody struct {
 	//
 	// NORMAL
 	RegistrantUpdatingStatus *string `json:"RegistrantUpdatingStatus,omitempty" xml:"RegistrantUpdatingStatus,omitempty"`
+	Registrar                *string `json:"Registrar,omitempty" xml:"Registrar,omitempty"`
 	// The time when the domain name was registered.
 	//
 	// example:
@@ -273,9 +275,8 @@ type QueryDomainByDomainNameResponseBody struct {
 	// example:
 	//
 	// rg-acfmw6bpc6n7zai
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
-	Tag *QueryDomainByDomainNameResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             *QueryDomainByDomainNameResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	// The transfer status of the domain name. Valid values:
 	//
 	// 	- **NORMAL**: The domain name is normal.
@@ -416,6 +417,10 @@ func (s *QueryDomainByDomainNameResponseBody) GetRegistrantType() *string {
 
 func (s *QueryDomainByDomainNameResponseBody) GetRegistrantUpdatingStatus() *string {
 	return s.RegistrantUpdatingStatus
+}
+
+func (s *QueryDomainByDomainNameResponseBody) GetRegistrar() *string {
+	return s.Registrar
 }
 
 func (s *QueryDomainByDomainNameResponseBody) GetRegistrationDate() *string {
@@ -576,6 +581,11 @@ func (s *QueryDomainByDomainNameResponseBody) SetRegistrantUpdatingStatus(v stri
 	return s
 }
 
+func (s *QueryDomainByDomainNameResponseBody) SetRegistrar(v string) *QueryDomainByDomainNameResponseBody {
+	s.Registrar = &v
+	return s
+}
+
 func (s *QueryDomainByDomainNameResponseBody) SetRegistrationDate(v string) *QueryDomainByDomainNameResponseBody {
 	s.RegistrationDate = &v
 	return s
@@ -710,9 +720,7 @@ func (s *QueryDomainByDomainNameResponseBodyTag) Validate() error {
 }
 
 type QueryDomainByDomainNameResponseBodyTagTag struct {
-	// The tag key.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Vaue *string `json:"Vaue,omitempty" xml:"Vaue,omitempty"`
 }
 

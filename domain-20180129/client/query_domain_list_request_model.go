@@ -9,6 +9,8 @@ type iQueryDomainListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoRenewEnabled(v bool) *QueryDomainListRequest
+	GetAutoRenewEnabled() *bool
 	SetCcompany(v string) *QueryDomainListRequest
 	GetCcompany() *string
 	SetDns(v string) *QueryDomainListRequest
@@ -50,6 +52,7 @@ type iQueryDomainListRequest interface {
 }
 
 type QueryDomainListRequest struct {
+	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
 	// The name of the domain name registrant.
 	//
 	// example:
@@ -192,6 +195,10 @@ func (s QueryDomainListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryDomainListRequest) GetAutoRenewEnabled() *bool {
+	return s.AutoRenewEnabled
+}
+
 func (s *QueryDomainListRequest) GetCcompany() *string {
 	return s.Ccompany
 }
@@ -266,6 +273,11 @@ func (s *QueryDomainListRequest) GetTag() []*QueryDomainListRequestTag {
 
 func (s *QueryDomainListRequest) GetUserClientIp() *string {
 	return s.UserClientIp
+}
+
+func (s *QueryDomainListRequest) SetAutoRenewEnabled(v bool) *QueryDomainListRequest {
+	s.AutoRenewEnabled = &v
+	return s
 }
 
 func (s *QueryDomainListRequest) SetCcompany(v string) *QueryDomainListRequest {

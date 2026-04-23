@@ -123,13 +123,7 @@ func (s *QueryQualificationDetailResponseBodyCredentials) Validate() error {
 }
 
 type QueryQualificationDetailResponseBodyCredentialsQualificationCredential struct {
-	// example:
-	//
-	// 92610725MA7G2E****
-	CredentialNo *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
-	// example:
-	//
-	// SHSQB
+	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	CredentialUrl  *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
 }

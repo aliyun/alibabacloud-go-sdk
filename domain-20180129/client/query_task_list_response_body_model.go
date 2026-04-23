@@ -183,46 +183,19 @@ func (s *QueryTaskListResponseBodyData) Validate() error {
 }
 
 type QueryTaskListResponseBodyDataTaskInfo struct {
-	// example:
-	//
-	// 127.0.0.1
-	Clientip *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
-	// example:
-	//
-	// Dec 26,2017 11:00:54
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	TaskBizType *string `json:"TaskBizType,omitempty" xml:"TaskBizType,omitempty"`
-	// example:
-	//
-	// INIT
-	TaskCancelStatus *string `json:"TaskCancelStatus,omitempty" xml:"TaskCancelStatus,omitempty"`
-	// example:
-	//
-	// 0
-	TaskCancelStatusCode *int32 `json:"TaskCancelStatusCode,omitempty" xml:"TaskCancelStatusCode,omitempty"`
-	// example:
-	//
-	// 8b1cd755-4928-4b02-adee-e5d41d7b1939
-	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	// example:
-	//
-	// 1
-	TaskNum    *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
-	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// example:
-	//
-	// COMPLETE
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// example:
-	//
-	// 1
-	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
-	// example:
-	//
-	// CREATE_DNSHOST
-	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskTypeCode        *int32  `json:"TaskTypeCode,omitempty" xml:"TaskTypeCode,omitempty"`
-	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
+	Clientip             *string `json:"Clientip,omitempty" xml:"Clientip,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	TaskBizType          *string `json:"TaskBizType,omitempty" xml:"TaskBizType,omitempty"`
+	TaskCancelStatus     *string `json:"TaskCancelStatus,omitempty" xml:"TaskCancelStatus,omitempty"`
+	TaskCancelStatusCode *int32  `json:"TaskCancelStatusCode,omitempty" xml:"TaskCancelStatusCode,omitempty"`
+	TaskNo               *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	TaskNum              *int32  `json:"TaskNum,omitempty" xml:"TaskNum,omitempty"`
+	TaskResult           *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	TaskStatus           *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatusCode       *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
+	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	TaskTypeCode         *int32  `json:"TaskTypeCode,omitempty" xml:"TaskTypeCode,omitempty"`
+	TaskTypeDescription  *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
 }
 
 func (s QueryTaskListResponseBodyDataTaskInfo) String() string {

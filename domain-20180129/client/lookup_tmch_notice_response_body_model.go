@@ -153,18 +153,12 @@ func (s *LookupTmchNoticeResponseBodyClaims) Validate() error {
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaim struct {
-	ClassDescs *LookupTmchNoticeResponseBodyClaimsClaimClassDescs `json:"ClassDescs,omitempty" xml:"ClassDescs,omitempty" type:"Struct"`
-	Contacts   *LookupTmchNoticeResponseBodyClaimsClaimContacts   `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
-	// example:
-	//
-	// Class 9: Calculators; bags, coverings,containers, carriers and holders for mobile phones, personal handheld computers and notebooks; headphones; speakers; blank storage media;batteries. Class 16: Paper
-	GoodsAndServices *string                                         `json:"GoodsAndServices,omitempty" xml:"GoodsAndServices,omitempty"`
-	Holders          *LookupTmchNoticeResponseBodyClaimsClaimHolders `json:"Holders,omitempty" xml:"Holders,omitempty" type:"Struct"`
-	JurDesc          *LookupTmchNoticeResponseBodyClaimsClaimJurDesc `json:"JurDesc,omitempty" xml:"JurDesc,omitempty" type:"Struct"`
-	// example:
-	//
-	// POTED
-	MarkName *string `json:"MarkName,omitempty" xml:"MarkName,omitempty"`
+	ClassDescs       *LookupTmchNoticeResponseBodyClaimsClaimClassDescs `json:"ClassDescs,omitempty" xml:"ClassDescs,omitempty" type:"Struct"`
+	Contacts         *LookupTmchNoticeResponseBodyClaimsClaimContacts   `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Struct"`
+	GoodsAndServices *string                                            `json:"GoodsAndServices,omitempty" xml:"GoodsAndServices,omitempty"`
+	Holders          *LookupTmchNoticeResponseBodyClaimsClaimHolders    `json:"Holders,omitempty" xml:"Holders,omitempty" type:"Struct"`
+	JurDesc          *LookupTmchNoticeResponseBodyClaimsClaimJurDesc    `json:"JurDesc,omitempty" xml:"JurDesc,omitempty" type:"Struct"`
+	MarkName         *string                                            `json:"MarkName,omitempty" xml:"MarkName,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaim) String() string {
@@ -288,14 +282,8 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimClassDescs) Validate() error {
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimClassDescsClassDesc struct {
-	// example:
-	//
-	// 18
-	ClassNum *int32 `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
-	// example:
-	//
-	// New Zealand
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	ClassNum *int32  `json:"ClassNum,omitempty" xml:"ClassNum,omitempty"`
+	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaimClassDescsClassDesc) String() string {
@@ -363,31 +351,13 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimContacts) Validate() error {
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimContactsContact struct {
-	Addr *LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	// example:
-	//
-	// username@example.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// example:
-	//
-	// 4472335**8
-	Fax *string `json:"Fax,omitempty" xml:"Fax,omitempty"`
-	// example:
-	//
-	// Tom
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// Tom
-	Org *string `json:"Org,omitempty" xml:"Org,omitempty"`
-	// example:
-	//
-	// agent
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// example:
-	//
-	// 1390000****
-	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Addr  *LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
+	Email *string                                                     `json:"Email,omitempty" xml:"Email,omitempty"`
+	Fax   *string                                                     `json:"Fax,omitempty" xml:"Fax,omitempty"`
+	Name  *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Org   *string                                                     `json:"Org,omitempty" xml:"Org,omitempty"`
+	Type  *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+	Voice *string                                                     `json:"Voice,omitempty" xml:"Voice,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaimContactsContact) String() string {
@@ -471,21 +441,9 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimContactsContact) Validate() erro
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddr struct {
-	// example:
-	//
-	// NZ
-	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	// example:
-	//
-	// Auckland
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// example:
-	//
-	// 1010
-	Pc *string `json:"Pc,omitempty" xml:"Pc,omitempty"`
-	// example:
-	//
-	// Auckland
+	Cc     *string                                                           `json:"Cc,omitempty" xml:"Cc,omitempty"`
+	City   *string                                                           `json:"City,omitempty" xml:"City,omitempty"`
+	Pc     *string                                                           `json:"Pc,omitempty" xml:"Pc,omitempty"`
 	Sp     *string                                                           `json:"Sp,omitempty" xml:"Sp,omitempty"`
 	Street *LookupTmchNoticeResponseBodyClaimsClaimContactsContactAddrStreet `json:"Street,omitempty" xml:"Street,omitempty" type:"Struct"`
 }
@@ -612,15 +570,9 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimHolders) Validate() error {
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimHoldersHolder struct {
-	Addr *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
-	// example:
-	//
-	// owner
-	Entitlement *string `json:"Entitlement,omitempty" xml:"Entitlement,omitempty"`
-	// example:
-	//
-	// Whitcoulls 2011 Limited
-	Org *string `json:"Org,omitempty" xml:"Org,omitempty"`
+	Addr        *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddr `json:"Addr,omitempty" xml:"Addr,omitempty" type:"Struct"`
+	Entitlement *string                                                   `json:"Entitlement,omitempty" xml:"Entitlement,omitempty"`
+	Org         *string                                                   `json:"Org,omitempty" xml:"Org,omitempty"`
 }
 
 func (s LookupTmchNoticeResponseBodyClaimsClaimHoldersHolder) String() string {
@@ -668,21 +620,9 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolder) Validate() error 
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddr struct {
-	// example:
-	//
-	// NZ
-	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	// example:
-	//
-	// Wellington
-	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// example:
-	//
-	// 6011
-	Pc *string `json:"Pc,omitempty" xml:"Pc,omitempty"`
-	// example:
-	//
-	// Wellington
+	Cc     *string                                                         `json:"Cc,omitempty" xml:"Cc,omitempty"`
+	City   *string                                                         `json:"City,omitempty" xml:"City,omitempty"`
+	Pc     *string                                                         `json:"Pc,omitempty" xml:"Pc,omitempty"`
 	Sp     *string                                                         `json:"Sp,omitempty" xml:"Sp,omitempty"`
 	Street *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddrStreet `json:"Street,omitempty" xml:"Street,omitempty" type:"Struct"`
 }
@@ -775,13 +715,7 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimHoldersHolderAddrStreet) Validat
 }
 
 type LookupTmchNoticeResponseBodyClaimsClaimJurDesc struct {
-	// example:
-	//
-	// New Zealand
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// example:
-	//
-	// NZ
+	Desc  *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	JurCC *string `json:"JurCC,omitempty" xml:"JurCC,omitempty"`
 }
 

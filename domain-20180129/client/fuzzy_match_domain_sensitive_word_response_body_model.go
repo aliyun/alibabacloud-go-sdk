@@ -123,9 +123,6 @@ func (s *FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWords) Validate(
 }
 
 type FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWordsMatchedSensitiveWord struct {
-	// example:
-	//
-	// xxx
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 

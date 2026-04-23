@@ -183,87 +183,27 @@ func (s *QueryTransferInListResponseBodyData) Validate() error {
 }
 
 type QueryTransferInListResponseBodyDataTransferInInfo struct {
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// username@example.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// example:
-	//
-	// 2018-03-28 00:41:42
-	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	// example:
-	//
-	// 1514428524669
-	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	// example:
-	//
-	// S20181T0WLI85212
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 2018-03-28 00:41:42
-	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	// example:
-	//
-	// 1514428524669
-	ModificationDateLong *int64 `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
-	// example:
-	//
-	// true
-	NeedMailCheck *bool `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
-	// example:
-	//
-	// 0
-	ProgressBarType *int32 `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
-	// example:
-	//
-	// clientCancelled
-	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// example:
-	//
-	// 2018-03-28 00:41:42
-	ResultDate *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
-	// example:
-	//
-	// 1514428524669
-	ResultDateLong *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
-	ResultMsg      *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
-	// example:
-	//
-	// FAIL
-	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
-	// example:
-	//
-	// 11
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 2018-03-28 00:41:42
-	SubmissionDate *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
-	// example:
-	//
-	// 1514428524669
-	SubmissionDateLong *int64 `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
-	// example:
-	//
-	// 2018-03-28 00:41:42
-	TransferAuthorizationCodeSubmissionDate *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
-	// example:
-	//
-	// 1514428524669
-	TransferAuthorizationCodeSubmissionDateLong *int64 `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
-	// example:
-	//
-	// 123456
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// example:
-	//
-	// true
-	WhoisMailStatus *bool `json:"WhoisMailStatus,omitempty" xml:"WhoisMailStatus,omitempty"`
+	DomainName                                  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Email                                       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	ExpirationDate                              *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExpirationDateLong                          *int64  `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	InstanceId                                  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModificationDate                            *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	ModificationDateLong                        *int64  `json:"ModificationDateLong,omitempty" xml:"ModificationDateLong,omitempty"`
+	NeedMailCheck                               *bool   `json:"NeedMailCheck,omitempty" xml:"NeedMailCheck,omitempty"`
+	ProgressBarType                             *int32  `json:"ProgressBarType,omitempty" xml:"ProgressBarType,omitempty"`
+	ResultCode                                  *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	ResultDate                                  *string `json:"ResultDate,omitempty" xml:"ResultDate,omitempty"`
+	ResultDateLong                              *int64  `json:"ResultDateLong,omitempty" xml:"ResultDateLong,omitempty"`
+	ResultMsg                                   *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	SimpleTransferInStatus                      *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
+	Status                                      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmissionDate                              *string `json:"SubmissionDate,omitempty" xml:"SubmissionDate,omitempty"`
+	SubmissionDateLong                          *int64  `json:"SubmissionDateLong,omitempty" xml:"SubmissionDateLong,omitempty"`
+	TransferAuthorizationCodeSubmissionDate     *string `json:"TransferAuthorizationCodeSubmissionDate,omitempty" xml:"TransferAuthorizationCodeSubmissionDate,omitempty"`
+	TransferAuthorizationCodeSubmissionDateLong *int64  `json:"TransferAuthorizationCodeSubmissionDateLong,omitempty" xml:"TransferAuthorizationCodeSubmissionDateLong,omitempty"`
+	UserId                                      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WhoisMailStatus                             *bool   `json:"WhoisMailStatus,omitempty" xml:"WhoisMailStatus,omitempty"`
 }
 
 func (s QueryTransferInListResponseBodyDataTransferInInfo) String() string {

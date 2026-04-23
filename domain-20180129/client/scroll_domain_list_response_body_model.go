@@ -22,7 +22,6 @@ type iScrollDomainListResponseBody interface {
 }
 
 type ScrollDomainListResponseBody struct {
-	// The domain names.
 	Data *ScrollDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The number of entries per page.
 	//
@@ -147,174 +146,29 @@ func (s *ScrollDomainListResponseBodyData) Validate() error {
 }
 
 type ScrollDomainListResponseBodyDataDomain struct {
-	// The Domain Name System (DNS) servers of the domain name.
-	DnsList *ScrollDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	// The status of real-name verification for the domain name. Valid values:
-	//
-	// 	- **FAILED**: Real-name verification for the domain name fails.
-	//
-	// 	- **SUCCEED**: Real-name verification for the domain name is successful.
-	//
-	// 	- **NONAUDIT**: Real-name verification for the domain name is not performed.
-	//
-	// 	- **AUDITING**: Real-name verification for the domain name is in progress.
-	//
-	// example:
-	//
-	// NONAUDIT
-	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	// The ID of the domain name group.
-	//
-	// example:
-	//
-	// 1234
-	DomainGroupId *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	// The name of the domain name group.
-	//
-	// example:
-	//
-	// test group
-	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of the domain name. Valid values:
-	//
-	// 	- **1**: The domain name needs to be renewed.
-	//
-	// 	- **2**: The domain name needs to be redeemed.
-	//
-	// 	- **3**: The domain name is normal.
-	//
-	// 	- **4**: The domain name is being transferred out.
-	//
-	// 	- **5**: The information about the domain name registrant is being modified.
-	//
-	// 	- **6**: Real-name verification is not performed on the domain name.
-	//
-	// 	- **7**: Real-name verification for the domain name fails.
-	//
-	// 	- **8**: The real-name verification is being reviewed.
-	//
-	// example:
-	//
-	// 3
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The type of the domain name. Valid values:
-	//
-	// 	- **New gTLD**
-	//
-	// 	- **gTLD**
-	//
-	// 	- **ccTLD**
-	//
-	// example:
-	//
-	// gTLD
-	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The email address.
-	//
-	// example:
-	//
-	// username@example.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The number of days from the expiration date of the domain name to the current date.
-	//
-	// example:
-	//
-	// 10
-	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	// The time when the domain name expires.
-	//
-	// example:
-	//
-	// 2019-02-15 17:30:35
-	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	// The time when the domain name expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1550223035000
-	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	// Indicates whether the domain name expires. Valid values:
-	//
-	// 	- **1**: The domain name does not expire.
-	//
-	// 	- **2**: The domain name expires.
-	//
-	// example:
-	//
-	// 1
-	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	// The instance ID of the domain name.
-	//
-	// example:
-	//
-	// S1234
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the domain name is a premium domain name.
-	//
-	// example:
-	//
-	// false
-	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	// The service ID.
-	//
-	// example:
-	//
-	// 2a
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The registrant of the domain name.
-	//
-	// example:
-	//
-	// alibaba cloud
-	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	// The registration type of the domain name. Valid values:
-	//
-	// 	- **1**: individual.
-	//
-	// 	- **2**: enterprise.
-	//
-	// example:
-	//
-	// 1
-	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	// The time when the domain name was registered.
-	//
-	// example:
-	//
-	// 2017-02-15 00:00:00
-	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	// The time when the domain name was registered. This value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1487088000000
-	RegistrationDateLong *int64 `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	// The remarks on the domain name.
-	//
-	// example:
-	//
-	// test domain
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The ID of the resource group.
-	//
-	// example:
-	//
-	// rg-aek2yyciz557g3q
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource tag.
-	Tag *ScrollDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	// The Chinese name of the domain name registrant.
-	//
-	// example:
-	//
-	// 阿里云
-	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	DnsList                  *ScrollDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	DomainAuditStatus        *string                                        `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	DomainGroupId            *string                                        `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName          *string                                        `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	DomainName               *string                                        `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus             *string                                        `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainType               *string                                        `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	Email                    *string                                        `json:"Email,omitempty" xml:"Email,omitempty"`
+	ExpirationCurrDateDiff   *int32                                         `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	ExpirationDate           *string                                        `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExpirationDateLong       *int64                                         `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	ExpirationDateStatus     *string                                        `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	InstanceId               *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Premium                  *bool                                          `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	ProductId                *string                                        `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegistrantOrganization   *string                                        `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	RegistrantType           *string                                        `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	RegistrationDate         *string                                        `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	RegistrationDateLong     *int64                                         `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark                   *string                                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId          *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                      *ScrollDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	ZhRegistrantOrganization *string                                        `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s ScrollDomainListResponseBodyDataDomain) String() string {
@@ -606,17 +460,7 @@ func (s *ScrollDomainListResponseBodyDataDomainTag) Validate() error {
 }
 
 type ScrollDomainListResponseBodyDataDomainTagTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// testKey
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// testValue
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

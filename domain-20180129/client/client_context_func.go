@@ -317,7 +317,7 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, request *Cancel
 
 // Summary:
 //
-// 修改实例所在资源组
+// # ChangeResourceGroup
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -375,6 +375,10 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a domain name can be registered.
+//
 // @param request - CheckDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -481,7 +485,7 @@ func (client *Client) CheckDomainSunriseClaimWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 校验在售国际一口价域名状态和询价
+// Checks the domain name status and price inquiries of a fixed-price order at the international site (alibabacloud.com).
 //
 // @param request - CheckIntlFixPriceDomainStatusRequest
 //
@@ -733,7 +737,7 @@ func (client *Client) ConfirmTransferInEmailWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建国际一口价订单
+// Creates a fixed-price order at the international site (alibabacloud.com).
 //
 // @param request - CreateIntlFixedPriceDomainOrderRequest
 //
@@ -1555,7 +1559,7 @@ func (client *Client) PollTaskResultWithContext(ctx context.Context, request *Po
 
 // Summary:
 //
-// 搜索域名列表
+// Searches for domain names by using the advanced search feature.
 //
 // @param request - QueryAdvancedDomainListRequest
 //
@@ -1759,7 +1763,7 @@ func (client *Client) QueryArtExtensionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询操作记录
+// Queries the operations logs of a domain name.
 //
 // @param request - QueryChangeLogListRequest
 //
@@ -2123,7 +2127,7 @@ func (client *Client) QueryDomainByInstanceIdWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询域名分组信息
+// Queries a list of domain name groups.
 //
 // @param request - QueryDomainGroupListRequest
 //
@@ -2202,6 +2206,10 @@ func (client *Client) QueryDomainListWithContext(ctx context.Context, request *Q
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenewEnabled) {
+		query["AutoRenewEnabled"] = request.AutoRenewEnabled
+	}
+
 	if !dara.IsNil(request.Ccompany) {
 		query["Ccompany"] = request.Ccompany
 	}
@@ -2813,7 +2821,7 @@ func (client *Client) QueryFailingReasonListForQualificationWithContext(ctx cont
 
 // Summary:
 //
-// 查询国际一口价订单列表
+// Queries the list of fixed-price orders at the international site (alibabacloud.com).
 //
 // @param request - QueryIntlFixedPriceOrderListRequest
 //
@@ -3477,7 +3485,7 @@ func (client *Client) QueryTaskInfoHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询任务列表
+// Queries the domain name tasks under your account by page.
 //
 // @param request - QueryTaskListRequest
 //
@@ -3587,6 +3595,10 @@ func (client *Client) QueryTransferInByInstanceIdWithContext(ctx context.Context
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are transferred to Alibaba Cloud.
+//
 // @param request - QueryTransferInListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3983,7 +3995,7 @@ func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenlyWithContext(ctx
 
 // Summary:
 //
-// 保存批量任务-注册订单
+// Submits a task to register multiple domain names at a time.
 //
 // @param request - SaveBatchTaskForCreatingOrderActivateRequest
 //
@@ -4421,7 +4433,7 @@ func (client *Client) SaveBatchTaskForModifyingDomainDnsWithContext(ctx context.
 
 // Summary:
 //
-// 提交批量预定删除抢注域名任务
+// Submits a task to reserve multiple domain names that are provided by HiChina.
 //
 // @param request - SaveBatchTaskForReserveDropListDomainRequest
 //
@@ -4469,7 +4481,7 @@ func (client *Client) SaveBatchTaskForReserveDropListDomainWithContext(ctx conte
 
 // Summary:
 //
-// 基于转移码的批量转出任务提交
+// Submits multiple transfer-out tasks based on the transfer keys of domain names.
 //
 // @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
 //
@@ -6605,7 +6617,7 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithContext(ctx conte
 
 // Summary:
 //
-// Submit a single transfer-out task based on the transfer key of domain names.
+// Submits a single transfer-out task based on the transfer key of a domain name.
 //
 // Description:
 //

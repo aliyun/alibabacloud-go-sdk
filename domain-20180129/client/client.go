@@ -466,7 +466,7 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 
 // Summary:
 //
-// 修改实例所在资源组
+// # ChangeResourceGroup
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -526,7 +526,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 修改实例所在资源组
+// # ChangeResourceGroup
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -542,6 +542,10 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a domain name can be registered.
+//
 // @param request - CheckDomainRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -598,6 +602,10 @@ func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a domain name can be registered.
+//
 // @param request - CheckDomainRequest
 //
 // @return CheckDomainResponse
@@ -676,7 +684,7 @@ func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRe
 
 // Summary:
 //
-// 校验在售国际一口价域名状态和询价
+// Checks the domain name status and price inquiries of a fixed-price order at the international site (alibabacloud.com).
 //
 // @param request - CheckIntlFixPriceDomainStatusRequest
 //
@@ -720,7 +728,7 @@ func (client *Client) CheckIntlFixPriceDomainStatusWithOptions(request *CheckInt
 
 // Summary:
 //
-// 校验在售国际一口价域名状态和询价
+// Checks the domain name status and price inquiries of a fixed-price order at the international site (alibabacloud.com).
 //
 // @param request - CheckIntlFixPriceDomainStatusRequest
 //
@@ -1002,7 +1010,7 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 
 // Summary:
 //
-// 创建国际一口价订单
+// Creates a fixed-price order at the international site (alibabacloud.com).
 //
 // @param request - CreateIntlFixedPriceDomainOrderRequest
 //
@@ -1058,7 +1066,7 @@ func (client *Client) CreateIntlFixedPriceDomainOrderWithOptions(request *Create
 
 // Summary:
 //
-// 创建国际一口价订单
+// Creates a fixed-price order at the international site (alibabacloud.com).
 //
 // @param request - CreateIntlFixedPriceDomainOrderRequest
 //
@@ -2074,7 +2082,7 @@ func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *P
 
 // Summary:
 //
-// 搜索域名列表
+// Searches for domain names by using the advanced search feature.
 //
 // @param request - QueryAdvancedDomainListRequest
 //
@@ -2230,7 +2238,7 @@ func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedD
 
 // Summary:
 //
-// 搜索域名列表
+// Searches for domain names by using the advanced search feature.
 //
 // @param request - QueryAdvancedDomainListRequest
 //
@@ -2310,7 +2318,7 @@ func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_res
 
 // Summary:
 //
-// 查询操作记录
+// Queries the operations logs of a domain name.
 //
 // @param request - QueryChangeLogListRequest
 //
@@ -2378,7 +2386,7 @@ func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListR
 
 // Summary:
 //
-// 查询操作记录
+// Queries the operations logs of a domain name.
 //
 // @param request - QueryChangeLogListRequest
 //
@@ -2784,7 +2792,7 @@ func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRe
 
 // Summary:
 //
-// 查询域名分组信息
+// Queries a list of domain name groups.
 //
 // @param request - QueryDomainGroupListRequest
 //
@@ -2848,7 +2856,7 @@ func (client *Client) QueryDomainGroupListWithOptions(request *QueryDomainGroupL
 
 // Summary:
 //
-// 查询域名分组信息
+// Queries a list of domain name groups.
 //
 // @param request - QueryDomainGroupListRequest
 //
@@ -2881,6 +2889,10 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenewEnabled) {
+		query["AutoRenewEnabled"] = request.AutoRenewEnabled
+	}
+
 	if !dara.IsNil(request.Ccompany) {
 		query["Ccompany"] = request.Ccompany
 	}
@@ -3666,7 +3678,7 @@ func (client *Client) QueryFailingReasonListForQualification(request *QueryFaili
 
 // Summary:
 //
-// 查询国际一口价订单列表
+// Queries the list of fixed-price orders at the international site (alibabacloud.com).
 //
 // @param request - QueryIntlFixedPriceOrderListRequest
 //
@@ -3722,7 +3734,7 @@ func (client *Client) QueryIntlFixedPriceOrderListWithOptions(request *QueryIntl
 
 // Summary:
 //
-// 查询国际一口价订单列表
+// Queries the list of fixed-price orders at the international site (alibabacloud.com).
 //
 // @param request - QueryIntlFixedPriceOrderListRequest
 //
@@ -4504,7 +4516,7 @@ func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest)
 
 // Summary:
 //
-// 查询任务列表
+// Queries the domain name tasks under your account by page.
 //
 // @param request - QueryTaskListRequest
 //
@@ -4568,7 +4580,7 @@ func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, ru
 
 // Summary:
 //
-// 查询任务列表
+// Queries the domain name tasks under your account by page.
 //
 // @param request - QueryTaskListRequest
 //
@@ -4646,6 +4658,10 @@ func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are transferred to Alibaba Cloud.
+//
 // @param request - QueryTransferInListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4714,6 +4730,10 @@ func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are transferred to Alibaba Cloud.
+//
 // @param request - QueryTransferInListRequest
 //
 // @return QueryTransferInListResponse
@@ -5160,7 +5180,7 @@ func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenly(request *SaveB
 
 // Summary:
 //
-// 保存批量任务-注册订单
+// Submits a task to register multiple domain names at a time.
 //
 // @param request - SaveBatchTaskForCreatingOrderActivateRequest
 //
@@ -5228,7 +5248,7 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *
 
 // Summary:
 //
-// 保存批量任务-注册订单
+// Submits a task to register multiple domain names at a time.
 //
 // @param request - SaveBatchTaskForCreatingOrderActivateRequest
 //
@@ -5716,7 +5736,7 @@ func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskF
 
 // Summary:
 //
-// 提交批量预定删除抢注域名任务
+// Submits a task to reserve multiple domain names that are provided by HiChina.
 //
 // @param request - SaveBatchTaskForReserveDropListDomainRequest
 //
@@ -5764,7 +5784,7 @@ func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *
 
 // Summary:
 //
-// 提交批量预定删除抢注域名任务
+// Submits a task to reserve multiple domain names that are provided by HiChina.
 //
 // @param request - SaveBatchTaskForReserveDropListDomainRequest
 //
@@ -5782,7 +5802,7 @@ func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTa
 
 // Summary:
 //
-// 基于转移码的批量转出任务提交
+// Submits multiple transfer-out tasks based on the transfer keys of domain names.
 //
 // @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
 //
@@ -5826,7 +5846,7 @@ func (client *Client) SaveBatchTaskForTransferOutByAuthorizationCodeWithOptions(
 
 // Summary:
 //
-// 基于转移码的批量转出任务提交
+// Submits multiple transfer-out tasks based on the transfer keys of domain names.
 //
 // @param request - SaveBatchTaskForTransferOutByAuthorizationCodeRequest
 //
@@ -8452,7 +8472,7 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleT
 
 // Summary:
 //
-// Submit a single transfer-out task based on the transfer key of domain names.
+// Submits a single transfer-out task based on the transfer key of a domain name.
 //
 // Description:
 //
@@ -8504,7 +8524,7 @@ func (client *Client) SaveSingleTaskForTransferOutByAuthorizationCodeWithOptions
 
 // Summary:
 //
-// Submit a single transfer-out task based on the transfer key of domain names.
+// Submits a single transfer-out task based on the transfer key of a domain name.
 //
 // Description:
 //

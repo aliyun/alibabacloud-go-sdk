@@ -183,86 +183,29 @@ func (s *QueryAdvancedDomainListResponseBodyData) Validate() error {
 }
 
 type QueryAdvancedDomainListResponseBodyDataDomain struct {
-	DnsList *QueryAdvancedDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
-	// example:
-	//
-	// SUCCEED
-	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	// example:
-	//
-	// -1
-	DomainGroupId   *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// 5
-	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// example:
-	//
-	// gTLD
-	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// example:
-	//
-	// username@example.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// example:
-	//
-	// 356
-	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	// example:
-	//
-	// 2019-04-09 17:07:03
-	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	// example:
-	//
-	// 1554800823000
-	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	// example:
-	//
-	// 1
-	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	// example:
-	//
-	// S20182000000000
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// false
-	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	// example:
-	//
-	// 2a
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// example:
-	//
-	// Tom
-	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	// example:
-	//
-	// 1
-	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	// example:
-	//
-	// 2018-04-09 17:07:03
-	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	// example:
-	//
-	// 1523264823000
-	RegistrationDateLong *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// rg-aek2yyciz557g3q
-	ResourceGroupId *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             *QueryAdvancedDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
-	// example:
-	//
-	// Tom
-	ZhRegistrantOrganization *string `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
+	DnsList                  *QueryAdvancedDomainListResponseBodyDataDomainDnsList `json:"DnsList,omitempty" xml:"DnsList,omitempty" type:"Struct"`
+	DomainAuditStatus        *string                                               `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	DomainGroupId            *string                                               `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName          *string                                               `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	DomainName               *string                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus             *string                                               `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainType               *string                                               `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	Email                    *string                                               `json:"Email,omitempty" xml:"Email,omitempty"`
+	ExpirationCurrDateDiff   *int32                                                `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	ExpirationDate           *string                                               `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExpirationDateLong       *int64                                                `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	ExpirationDateStatus     *string                                               `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	InstanceId               *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Premium                  *bool                                                 `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	ProductId                *string                                               `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegistrantOrganization   *string                                               `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	RegistrantType           *string                                               `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	RegistrationDate         *string                                               `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	RegistrationDateLong     *int64                                                `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark                   *string                                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId          *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                      *QueryAdvancedDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
+	ZhRegistrantOrganization *string                                               `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
 func (s QueryAdvancedDomainListResponseBodyDataDomain) String() string {

@@ -183,55 +183,19 @@ func (s *PollTaskResultResponseBodyData) Validate() error {
 }
 
 type PollTaskResultResponseBodyDataTaskDetail struct {
-	// example:
-	//
-	// 2018-03-26 15:08:20
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// The operation is successful.
-	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// example:
-	//
-	// S201817141000000
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// 15fee9d10d514bada66bd08c5723c583
-	TaskDetailNo *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
-	// example:
-	//
-	// b95bc334-f7d8-4f39-8a62-4c4302a243d8
-	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	// example:
-	//
-	// test
-	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// example:
-	//
-	// EXECUTE_SUCCESS
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// example:
-	//
-	// 2
-	TaskStatusCode *int32 `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
-	// example:
-	//
-	// CHG_DNS
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ErrorMsg            *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TaskDetailNo        *string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty"`
+	TaskNo              *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	TaskResult          *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
+	TaskStatus          *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatusCode      *int32  `json:"TaskStatusCode,omitempty" xml:"TaskStatusCode,omitempty"`
 	TaskType            *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	TaskTypeDescription *string `json:"TaskTypeDescription,omitempty" xml:"TaskTypeDescription,omitempty"`
-	// example:
-	//
-	// 0
-	TryCount *int32 `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
-	// example:
-	//
-	// 2018-03-26 15:22:18
-	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	TryCount            *int32  `json:"TryCount,omitempty" xml:"TryCount,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s PollTaskResultResponseBodyDataTaskDetail) String() string {

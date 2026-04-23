@@ -198,31 +198,13 @@ func (s *QueryChangeLogListResponseBodyData) Validate() error {
 }
 
 type QueryChangeLogListResponseBodyDataChangeLog struct {
-	// example:
-	//
-	// dns1;dns2 -> dns3;dns4
-	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// example:
-	//
-	// DNS modification
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// example:
-	//
-	// 127.0.0.1
+	Details            *string `json:"Details,omitempty" xml:"Details,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Operation          *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	OperationIPAddress *string `json:"OperationIPAddress,omitempty" xml:"OperationIPAddress,omitempty"`
 	Remark             *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// example:
-	//
-	// Failed
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// example:
-	//
-	// 2017-12-26 12:00:00
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Result             *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Time               *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryChangeLogListResponseBodyDataChangeLog) String() string {

@@ -93,31 +93,13 @@ func (s *QueryDomainGroupListResponseBodyData) Validate() error {
 }
 
 type QueryDomainGroupListResponseBodyDataDomainGroup struct {
-	// example:
-	//
-	// false
-	BeingDeleted *bool `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
-	// example:
-	//
-	// 2018-04-02 15:59:06
-	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-	// example:
-	//
-	// -1
-	DomainGroupId   *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	// example:
-	//
-	// COMPLETE
+	BeingDeleted      *bool   `json:"BeingDeleted,omitempty" xml:"BeingDeleted,omitempty"`
+	CreationDate      *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	DomainGroupId     *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName   *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
 	DomainGroupStatus *string `json:"DomainGroupStatus,omitempty" xml:"DomainGroupStatus,omitempty"`
-	// example:
-	//
-	// 2018-04-02 15:59:06
-	ModificationDate *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
-	// example:
-	//
-	// 20
-	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	ModificationDate  *string `json:"ModificationDate,omitempty" xml:"ModificationDate,omitempty"`
+	TotalNumber       *int32  `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s QueryDomainGroupListResponseBodyDataDomainGroup) String() string {

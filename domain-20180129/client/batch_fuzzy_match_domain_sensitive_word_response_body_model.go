@@ -93,13 +93,7 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultL
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultListSensitiveWordMatchResult struct {
-	// example:
-	//
-	// true
-	Exist *bool `json:"Exist,omitempty" xml:"Exist,omitempty"`
-	// example:
-	//
-	// example.com,aliyundoc.com
+	Exist               *bool                                                                                                                  `json:"Exist,omitempty" xml:"Exist,omitempty"`
 	Keyword             *string                                                                                                                `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	MatchedSentiveWords *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultListSensitiveWordMatchResultMatchedSentiveWords `json:"MatchedSentiveWords,omitempty" xml:"MatchedSentiveWords,omitempty" type:"Struct"`
 }
@@ -183,9 +177,6 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultL
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultListSensitiveWordMatchResultMatchedSentiveWordsMatchedSensitiveWord struct {
-	// example:
-	//
-	// xxx
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
