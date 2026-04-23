@@ -320,7 +320,7 @@ func (client *Client) CreateAgentResourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建StarRocks集群
+// Restarts an E-MapReduce (EMR) Serverless StarRocks instance.
 //
 // @param request - CreateInstanceV1Request
 //
@@ -2241,6 +2241,53 @@ func (client *Client) ListOperationHistoryWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListOperationHistoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取集群SSL详情
+//
+// @param request - ListSSLDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSSLDetailsResponse
+func (client *Client) ListSSLDetailsWithContext(ctx context.Context, request *ListSSLDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSSLDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSSLDetails"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/starrocks/listSSLDetails"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSSLDetailsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

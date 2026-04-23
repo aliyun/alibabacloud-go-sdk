@@ -464,7 +464,7 @@ func (client *Client) CreateAgentResource(request *CreateAgentResourceRequest) (
 
 // Summary:
 //
-// 创建StarRocks集群
+// Restarts an E-MapReduce (EMR) Serverless StarRocks instance.
 //
 // @param request - CreateInstanceV1Request
 //
@@ -635,7 +635,7 @@ func (client *Client) CreateInstanceV1WithOptions(request *CreateInstanceV1Reque
 
 // Summary:
 //
-// 创建StarRocks集群
+// Restarts an E-MapReduce (EMR) Serverless StarRocks instance.
 //
 // @param request - CreateInstanceV1Request
 //
@@ -3001,6 +3001,72 @@ func (client *Client) ListOperationHistory(request *ListOperationHistoryRequest)
 	headers := make(map[string]*string)
 	_result = &ListOperationHistoryResponse{}
 	_body, _err := client.ListOperationHistoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取集群SSL详情
+//
+// @param request - ListSSLDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSSLDetailsResponse
+func (client *Client) ListSSLDetailsWithOptions(request *ListSSLDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSSLDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSSLDetails"),
+		Version:     dara.String("2022-10-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/webapi/starrocks/listSSLDetails"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSSLDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取集群SSL详情
+//
+// @param request - ListSSLDetailsRequest
+//
+// @return ListSSLDetailsResponse
+func (client *Client) ListSSLDetails(request *ListSSLDetailsRequest) (_result *ListSSLDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSSLDetailsResponse{}
+	_body, _err := client.ListSSLDetailsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
