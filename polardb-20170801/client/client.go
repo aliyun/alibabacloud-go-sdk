@@ -3620,6 +3620,14 @@ func (client *Client) CreateDBClusterEndpointWithOptions(request *CreateDBCluste
 		query["SccMode"] = request.SccMode
 	}
 
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}

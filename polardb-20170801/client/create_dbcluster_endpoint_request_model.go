@@ -41,6 +41,10 @@ type iCreateDBClusterEndpointRequest interface {
 	GetResourceOwnerId() *int64
 	SetSccMode(v string) *CreateDBClusterEndpointRequest
 	GetSccMode() *string
+	SetVPCId(v string) *CreateDBClusterEndpointRequest
+	GetVPCId() *string
+	SetVSwitchId(v string) *CreateDBClusterEndpointRequest
+	GetVSwitchId() *string
 }
 
 type CreateDBClusterEndpointRequest struct {
@@ -190,6 +194,14 @@ type CreateDBClusterEndpointRequest struct {
 	//
 	// on
 	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
+	// example:
+	//
+	// vpc-2zehr7ghqovftils0****
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// example:
+	//
+	// vsw-2ze775gnf7jn33ua****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateDBClusterEndpointRequest) String() string {
@@ -262,6 +274,14 @@ func (s *CreateDBClusterEndpointRequest) GetResourceOwnerId() *int64 {
 
 func (s *CreateDBClusterEndpointRequest) GetSccMode() *string {
 	return s.SccMode
+}
+
+func (s *CreateDBClusterEndpointRequest) GetVPCId() *string {
+	return s.VPCId
+}
+
+func (s *CreateDBClusterEndpointRequest) GetVSwitchId() *string {
+	return s.VSwitchId
 }
 
 func (s *CreateDBClusterEndpointRequest) SetAutoAddNewNodes(v string) *CreateDBClusterEndpointRequest {
@@ -341,6 +361,16 @@ func (s *CreateDBClusterEndpointRequest) SetResourceOwnerId(v int64) *CreateDBCl
 
 func (s *CreateDBClusterEndpointRequest) SetSccMode(v string) *CreateDBClusterEndpointRequest {
 	s.SccMode = &v
+	return s
+}
+
+func (s *CreateDBClusterEndpointRequest) SetVPCId(v string) *CreateDBClusterEndpointRequest {
+	s.VPCId = &v
+	return s
+}
+
+func (s *CreateDBClusterEndpointRequest) SetVSwitchId(v string) *CreateDBClusterEndpointRequest {
+	s.VSwitchId = &v
 	return s
 }
 
