@@ -642,6 +642,164 @@ func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result 
 
 // Summary:
 //
+// 座席新增
+//
+// @param request - CloudCreateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateAgentResponse
+func (client *Client) CloudCreateAgentWithOptions(request *CloudCreateAgentRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Active) {
+		query["Active"] = request.Active
+	}
+
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.CallPower) {
+		query["CallPower"] = request.CallPower
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.IbRecord) {
+		query["IbRecord"] = request.IbRecord
+	}
+
+	if !dara.IsNil(request.IsAsr) {
+		query["IsAsr"] = request.IsAsr
+	}
+
+	if !dara.IsNil(request.IsOb) {
+		query["IsOb"] = request.IsOb
+	}
+
+	if !dara.IsNil(request.IsObRemember) {
+		query["IsObRemember"] = request.IsObRemember
+	}
+
+	if !dara.IsNil(request.IsQualityCheck) {
+		query["IsQualityCheck"] = request.IsQualityCheck
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ObClid) {
+		query["ObClid"] = request.ObClid
+	}
+
+	if !dara.IsNil(request.ObClidProperty) {
+		query["ObClidProperty"] = request.ObClidProperty
+	}
+
+	if !dara.IsNil(request.ObClidType) {
+		query["ObClidType"] = request.ObClidType
+	}
+
+	if !dara.IsNil(request.ObRecord) {
+		query["ObRecord"] = request.ObRecord
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PermitObPreviewTime) {
+		query["PermitObPreviewTime"] = request.PermitObPreviewTime
+	}
+
+	if !dara.IsNil(request.Power) {
+		query["Power"] = request.Power
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SkillIds) {
+		query["SkillIds"] = request.SkillIds
+	}
+
+	if !dara.IsNil(request.SkillLevels) {
+		query["SkillLevels"] = request.SkillLevels
+	}
+
+	if !dara.IsNil(request.WebrtcUrlType) {
+		query["WebrtcUrlType"] = request.WebrtcUrlType
+	}
+
+	if !dara.IsNil(request.Wrapup) {
+		query["Wrapup"] = request.Wrapup
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateAgent"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 座席新增
+//
+// @param request - CloudCreateAgentRequest
+//
+// @return CloudCreateAgentResponse
+func (client *Client) CloudCreateAgent(request *CloudCreateAgentRequest) (_result *CloudCreateAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateAgentResponse{}
+	_body, _err := client.CloudCreateAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增任务
 //
 // @param request - CloudCreateTaskRequest
