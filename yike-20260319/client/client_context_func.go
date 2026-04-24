@@ -877,6 +877,54 @@ func (client *Client) ResumeYikeStoryboardJobWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 配置一刻事件回调
+//
+// @param request - SetYikeCallbackConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetYikeCallbackConfigResponse
+func (client *Client) SetYikeCallbackConfigWithContext(ctx context.Context, request *SetYikeCallbackConfigRequest, runtime *dara.RuntimeOptions) (_result *SetYikeCallbackConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallbackConfig) {
+		query["CallbackConfig"] = request.CallbackConfig
+	}
+
+	if !dara.IsNil(request.CallbackUrl) {
+		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetYikeCallbackConfig"),
+		Version:     dara.String("2026-03-19"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetYikeCallbackConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 设置用户角色
 //
 // @param request - SetYikeUserRoleRequest
