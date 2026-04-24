@@ -559,7 +559,8 @@ type ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
 	// example:
 	//
 	// 623731286945488XXXX
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
 func (s ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs) String() string {
@@ -574,8 +575,17 @@ func (s *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs) GetData() *strin
 	return s.Data
 }
 
+func (s *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs) GetRefTableName() *string {
+	return s.RefTableName
+}
+
 func (s *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs) SetData(v string) *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs {
 	s.Data = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs) SetRefTableName(v string) *ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs {
+	s.RefTableName = &v
 	return s
 }
 
@@ -865,7 +875,8 @@ type ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
 func (s ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs) String() string {
@@ -880,8 +891,17 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs) GetData() *stri
 	return s.Data
 }
 
+func (s *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs) GetRefTableName() *string {
+	return s.RefTableName
+}
+
 func (s *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs) SetData(v string) *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs {
 	s.Data = &v
+	return s
+}
+
+func (s *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs) SetRefTableName(v string) *ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs {
+	s.RefTableName = &v
 	return s
 }
 

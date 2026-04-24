@@ -559,7 +559,8 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs struct {
 	// example:
 	//
 	// 860438872620113XXXX
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
 func (s ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs) String() string {
@@ -574,8 +575,17 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs) GetDa
 	return s.Data
 }
 
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs) GetRefTableName() *string {
+	return s.RefTableName
+}
+
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs) SetData(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs {
 	s.Data = &v
+	return s
+}
+
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs) SetRefTableName(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs {
+	s.RefTableName = &v
 	return s
 }
 
@@ -865,7 +875,8 @@ type ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs struct {
 	// example:
 	//
 	// 463497880880954XXXX
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
 }
 
 func (s ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs) String() string {
@@ -880,8 +891,17 @@ func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs) GetD
 	return s.Data
 }
 
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs) GetRefTableName() *string {
+	return s.RefTableName
+}
+
 func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs) SetData(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs {
 	s.Data = &v
+	return s
+}
+
+func (s *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs) SetRefTableName(v string) *ListNodeDependenciesResponseBodyPagingInfoNodesOutputsNodeOutputs {
+	s.RefTableName = &v
 	return s
 }
 

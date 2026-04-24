@@ -114,6 +114,54 @@ func (client *Client) AddEntityIntoMetaCollectionWithContext(ctx context.Context
 
 // Summary:
 //
+// Adds a custom image to a workspace.
+//
+// @param request - AssociateProjectToImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateProjectToImageResponse
+func (client *Client) AssociateProjectToImageWithContext(ctx context.Context, request *AssociateProjectToImageRequest, runtime *dara.RuntimeOptions) (_result *AssociateProjectToImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AssociateProjectToImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AssociateProjectToImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Associates a resource group with a workspace.
 //
 // Description:
@@ -288,7 +336,7 @@ func (client *Client) BatchUpdateTasksWithContext(ctx context.Context, tmpReq *B
 
 // Summary:
 //
-// 取消并停止Agent当前正在进行中的Session会话
+// Interrupts an agent call for a specified session. Streaming response interruption is supported.
 //
 // @param tmpReq - CancelAgentSessionRequest
 //
@@ -402,7 +450,7 @@ func (client *Client) CloneDataSourceWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建一个Agent Session会话
+// Creates a new Agent session and returns the session ID.
 //
 // @param tmpReq - CreateAgentSessionRequest
 //
@@ -5112,6 +5160,54 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithContext(ctx co
 
 // Summary:
 //
+// Disassociates an image from a workspace.
+//
+// @param request - DissociateProjectFromImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateProjectFromImageResponse
+func (client *Client) DissociateProjectFromImageWithContext(ctx context.Context, request *DissociateProjectFromImageRequest, runtime *dara.RuntimeOptions) (_result *DissociateProjectFromImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DissociateProjectFromImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DissociateProjectFromImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Disassociates a resource group from a workspace.
 //
 // Description:
@@ -5362,7 +5458,7 @@ func (client *Client) ExecuteAdhocWorkflowInstanceWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取Agent指定Session下的模型产出物详情
+// Obtains the metadata and body content of an Artifact based on the session ID and file path.
 //
 // @param tmpReq - GetAgentSessionArtifactMetaRequest
 //
@@ -5420,7 +5516,7 @@ func (client *Client) GetAgentSessionArtifactMetaWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取Agent指定Session下的Token用量
+// Queries the cumulative AI token usage of a session aggregated by session ID.
 //
 // @param tmpReq - GetAgentSessionTokenUsageRequest
 //
@@ -6832,6 +6928,54 @@ func (client *Client) GetIDEEventDetailWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Obtains the details of a specified image by image ID.
+//
+// @param request - GetImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageResponse
+func (client *Client) GetImageWithContext(ctx context.Context, request *GetImageRequest, runtime *dara.RuntimeOptions) (_result *GetImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ImageVersion) {
+		query["ImageVersion"] = request.ImageVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status information of an asynchronous task. After you call an asynchronous operation, an asynchronous task is generated. You can call the GetJobStatus operation to query the status of the asynchronous task.
 //
 // @param request - GetJobStatusRequest
@@ -8002,7 +8146,7 @@ func (client *Client) ImportWorkflowDefinitionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取Agent指定Session下的模型产出物清单列表
+// Queries the Artifact files that are produced by a specified session.
 //
 // @param tmpReq - ListAgentSessionArtifactsRequest
 //
@@ -8060,7 +8204,7 @@ func (client *Client) ListAgentSessionArtifactsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 加载Agent Session对话历史列表
+// Loads the conversation history list of an Agent Session.
 //
 // @param tmpReq - ListAgentSessionsRequest
 //
@@ -8118,7 +8262,7 @@ func (client *Client) ListAgentSessionsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 获取DataAgent的Agent定义列表
+// Queries the list of agents available for the current tenant. Supports filtering by name and pagination.
 //
 // @param tmpReq - ListAgentsRequest
 //
@@ -10270,6 +10414,220 @@ func (client *Client) ListFunctionsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
+// Queries the workspaces associated with an image.
+//
+// @param request - ListImageAssociatedProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageAssociatedProjectsResponse
+func (client *Client) ListImageAssociatedProjectsWithContext(ctx context.Context, request *ListImageAssociatedProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListImageAssociatedProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImageAssociatedProjects"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImageAssociatedProjectsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified image version.
+//
+// @param request - ListImageVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageVersionsResponse
+func (client *Client) ListImageVersionsWithContext(ctx context.Context, request *ListImageVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListImageVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImageVersions"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImageVersionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of images.
+//
+// @param tmpReq - ListImagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImagesResponse
+func (client *Client) ListImagesWithContext(ctx context.Context, tmpReq *ListImagesRequest, runtime *dara.RuntimeOptions) (_result *ListImagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListImagesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ProjectIds) {
+		request.ProjectIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProjectIds, dara.String("ProjectIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ProviderTypes) {
+		request.ProviderTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProviderTypes, dara.String("ProviderTypes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Stages) {
+		request.StagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Stages, dara.String("Stages"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Statuses) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, dara.String("Statuses"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SupportedModules) {
+		request.SupportedModulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SupportedModules, dara.String("SupportedModules"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SupportedTaskTypes) {
+		request.SupportedTaskTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SupportedTaskTypes, dara.String("SupportedTaskTypes"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		query["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Official) {
+		query["Official"] = request.Official
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectIdsShrink) {
+		query["ProjectIds"] = request.ProjectIdsShrink
+	}
+
+	if !dara.IsNil(request.ProviderTypesShrink) {
+		query["ProviderTypes"] = request.ProviderTypesShrink
+	}
+
+	if !dara.IsNil(request.SearchAll) {
+		query["SearchAll"] = request.SearchAll
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.StagesShrink) {
+		query["Stages"] = request.StagesShrink
+	}
+
+	if !dara.IsNil(request.StatusesShrink) {
+		query["Statuses"] = request.StatusesShrink
+	}
+
+	if !dara.IsNil(request.SupportedModulesShrink) {
+		query["SupportedModules"] = request.SupportedModulesShrink
+	}
+
+	if !dara.IsNil(request.SupportedTaskTypesShrink) {
+		query["SupportedTaskTypes"] = request.SupportedTaskTypesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImages"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImagesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the lineage between two entities, such as tables, fields, and Object Storage Service (OSS) files, in Data Map.
 //
 // @param request - ListLineageRelationshipsRequest
@@ -12026,7 +12384,7 @@ func (client *Client) ListWorkflowsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 加载Agent Session对话历史
+// Loads historical messages of an existing session and returns them in SSE streaming mode. If the session does not exist, a JSONRPCResponse.error with code 400 is output through SSE. Content-Type is text/event-stream. Applicable to scenarios where the session context needs to be restored.
 //
 // @param tmpReq - LoadAgentSessionRequest
 //
@@ -12041,7 +12399,7 @@ func (client *Client) LoadAgentSessionWithSSECtx(ctx context.Context, tmpReq *Lo
 
 // Summary:
 //
-// 加载Agent Session对话历史
+// Loads historical messages of an existing session and returns them in SSE streaming mode. If the session does not exist, a JSONRPCResponse.error with code 400 is output through SSE. Content-Type is text/event-stream. Applicable to scenarios where the session context needs to be restored.
 //
 // @param tmpReq - LoadAgentSessionRequest
 //
@@ -12351,7 +12709,7 @@ func (client *Client) PreviewDatasetVersionWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 在当前的Agent Session中发起一轮新的对话
+// Sends a user prompt to an existing session and streams back the agent response.
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -12366,7 +12724,7 @@ func (client *Client) PromptAgentSessionWithSSECtx(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 在当前的Agent Session中发起一轮新的对话
+// Sends a user prompt to an existing session and streams back the agent response.
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
