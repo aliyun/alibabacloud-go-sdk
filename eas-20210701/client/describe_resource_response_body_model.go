@@ -53,6 +53,8 @@ type iDescribeResourceResponseBody interface {
 	GetResourceName() *string
 	SetResourceType(v string) *DescribeResourceResponseBody
 	GetResourceType() *string
+	SetServiceCount(v string) *DescribeResourceResponseBody
+	GetServiceCount() *string
 	SetStatus(v string) *DescribeResourceResponseBody
 	GetStatus() *string
 	SetUpdateTime(v string) *DescribeResourceResponseBody
@@ -178,6 +180,7 @@ type DescribeResourceResponseBody struct {
 	//
 	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ServiceCount *string `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 	// The state of the resource group.
 	//
 	// example:
@@ -287,6 +290,10 @@ func (s *DescribeResourceResponseBody) GetResourceName() *string {
 
 func (s *DescribeResourceResponseBody) GetResourceType() *string {
 	return s.ResourceType
+}
+
+func (s *DescribeResourceResponseBody) GetServiceCount() *string {
+	return s.ServiceCount
 }
 
 func (s *DescribeResourceResponseBody) GetStatus() *string {
@@ -408,6 +415,11 @@ func (s *DescribeResourceResponseBody) SetResourceName(v string) *DescribeResour
 
 func (s *DescribeResourceResponseBody) SetResourceType(v string) *DescribeResourceResponseBody {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeResourceResponseBody) SetServiceCount(v string) *DescribeResourceResponseBody {
+	s.ServiceCount = &v
 	return s
 }
 

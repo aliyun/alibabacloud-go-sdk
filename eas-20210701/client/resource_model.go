@@ -49,6 +49,8 @@ type iResource interface {
 	GetResourceName() *string
 	SetResourceType(v string) *Resource
 	GetResourceType() *string
+	SetServiceCount(v int32) *Resource
+	GetServiceCount() *int32
 	SetStatus(v string) *Resource
 	GetStatus() *string
 	SetUpdateTime(v string) *Resource
@@ -144,6 +146,7 @@ type Resource struct {
 	//
 	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ServiceCount *int32  `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
 	// The status of the resource group.
 	//
 	// example:
@@ -259,6 +262,10 @@ func (s *Resource) GetResourceType() *string {
 	return s.ResourceType
 }
 
+func (s *Resource) GetServiceCount() *int32 {
+	return s.ServiceCount
+}
+
 func (s *Resource) GetStatus() *string {
 	return s.Status
 }
@@ -372,6 +379,11 @@ func (s *Resource) SetResourceName(v string) *Resource {
 
 func (s *Resource) SetResourceType(v string) *Resource {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *Resource) SetServiceCount(v int32) *Resource {
+	s.ServiceCount = &v
 	return s
 }
 
