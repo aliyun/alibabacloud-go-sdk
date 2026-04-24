@@ -37,8 +37,7 @@ type DescribeDBClusterNetInfoItemsResponseBody struct {
 	// example:
 	//
 	// true
-	EnableSLB *bool `json:"EnableSLB,omitempty" xml:"EnableSLB,omitempty"`
-	// The network information about the cluster.
+	EnableSLB    *bool                                                  `json:"EnableSLB,omitempty" xml:"EnableSLB,omitempty"`
 	NetInfoItems *DescribeDBClusterNetInfoItemsResponseBodyNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -136,68 +135,15 @@ func (s *DescribeDBClusterNetInfoItemsResponseBodyNetInfoItems) Validate() error
 }
 
 type DescribeDBClusterNetInfoItemsResponseBodyNetInfoItemsNetInfoItem struct {
-	// The endpoint that is used to connect to the database.
-	//
-	// example:
-	//
-	// cc-bp1554t789i8e****.clickhouse.ads.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The HTTP port number.
-	//
-	// example:
-	//
-	// 8123
-	HttpPort *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	// The HTTPS port number.
-	//
-	// example:
-	//
-	// 8443
-	HttpsPort *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	// The IP address.
-	//
-	// example:
-	//
-	// 10.255.234.251
-	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The port number that is used in Java Database Connectivity (JDBC).
-	//
-	// example:
-	//
-	// 3306
-	JdbcPort *string `json:"JdbcPort,omitempty" xml:"JdbcPort,omitempty"`
-	// The port of the MySQL instance.
-	//
-	// example:
-	//
-	// 9004
-	MySQLPort *string `json:"MySQLPort,omitempty" xml:"MySQLPort,omitempty"`
-	// The network type of the endpoint. Valid values:
-	//
-	// 	- Public: public endpoint
-	//
-	// 	- VPC: VPC
-	//
-	// example:
-	//
-	// VPC
-	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The vSwitch ID.
-	//
-	// >  If the value of the NetType parameter is set to Public, an empty string is returned.
-	//
-	// example:
-	//
-	// vsw-bp1gzt31twhlo0sa5****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The virtual private cloud (VPC) ID.
-	//
-	// >  If the value of the NetType parameter is set to Public, an empty string is returned.
-	//
-	// example:
-	//
-	// vpc-bp175iuvg8nxqraf2****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	HttpPort         *string `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
+	HttpsPort        *string `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
+	IPAddress        *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	JdbcPort         *string `json:"JdbcPort,omitempty" xml:"JdbcPort,omitempty"`
+	MySQLPort        *string `json:"MySQLPort,omitempty" xml:"MySQLPort,omitempty"`
+	NetType          *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeDBClusterNetInfoItemsResponseBodyNetInfoItemsNetInfoItem) String() string {

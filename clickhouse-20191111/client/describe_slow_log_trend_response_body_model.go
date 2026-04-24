@@ -179,26 +179,11 @@ func (s *DescribeSlowLogTrendResponseBodySlowLogTrendData) Validate() error {
 }
 
 type DescribeSlowLogTrendResponseBodySlowLogTrendDataResultSet struct {
-	// example:
-	//
-	// 2000
 	AvgQueryDurationMs *string `json:"AvgQueryDurationMs,omitempty" xml:"AvgQueryDurationMs,omitempty"`
-	// example:
-	//
-	// 4000
-	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// example:
-	//
-	// 3000
+	Count              *string `json:"Count,omitempty" xml:"Count,omitempty"`
 	MaxQueryDurationMs *string `json:"MaxQueryDurationMs,omitempty" xml:"MaxQueryDurationMs,omitempty"`
-	// example:
-	//
-	// 1000
 	MinQueryDurationMs *string `json:"MinQueryDurationMs,omitempty" xml:"MinQueryDurationMs,omitempty"`
-	// example:
-	//
-	// 2022-05-22 20:00:01
-	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	QueryStartTime     *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
 }
 
 func (s DescribeSlowLogTrendResponseBodySlowLogTrendDataResultSet) String() string {
@@ -347,13 +332,7 @@ func (s *DescribeSlowLogTrendResponseBodySlowLogTrendTableSchema) Validate() err
 }
 
 type DescribeSlowLogTrendResponseBodySlowLogTrendTableSchemaResultSet struct {
-	// example:
-	//
-	// query_start_time
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// UInt64
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

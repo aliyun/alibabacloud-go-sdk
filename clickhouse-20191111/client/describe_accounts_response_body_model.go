@@ -22,7 +22,6 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The database accounts.
 	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -147,50 +146,11 @@ func (s *DescribeAccountsResponseBodyAccounts) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountsAccount struct {
-	// The description of the database account.
-	//
-	// example:
-	//
-	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account.
-	//
-	// example:
-	//
-	// test
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The state of the database account. Valid values:
-	//
-	// 	- **Creating**
-	//
-	// 	- **Available**
-	//
-	// 	- **AuthorityModifying**
-	//
-	// 	- **Deleting**
-	//
-	// >  Only XML-configured database accounts can be in the **AuthorityModifying*	- state.
-	//
-	// example:
-	//
-	// Creating
-	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// The type of the database account. Valid values:
-	//
-	// 	- **Super**: privileged account
-	//
-	// 	- **Normal**: standard account
-	//
-	// example:
-	//
-	// Super
-	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The configuration mode of the database account.
-	//
-	// example:
-	//
-	// SQL
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType        *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	ConfigType         *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountsAccount) String() string {

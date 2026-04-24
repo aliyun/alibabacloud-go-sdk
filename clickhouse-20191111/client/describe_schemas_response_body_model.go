@@ -16,7 +16,6 @@ type iDescribeSchemasResponseBody interface {
 }
 
 type DescribeSchemasResponseBody struct {
-	// The information about the databases of the cluster.
 	Items *DescribeSchemasResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,18 +95,8 @@ func (s *DescribeSchemasResponseBodyItems) Validate() error {
 }
 
 type DescribeSchemasResponseBodyItemsSchema struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// database
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeSchemasResponseBodyItemsSchema) String() string {

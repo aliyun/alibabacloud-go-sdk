@@ -452,9 +452,8 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	// example:
 	//
 	// 1
-	SupportOss *int32 `json:"SupportOss,omitempty" xml:"SupportOss,omitempty"`
-	// The tags.
-	Tags *DescribeDBClusterAttributeResponseBodyDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	SupportOss *int32                                               `json:"SupportOss,omitempty" xml:"SupportOss,omitempty"`
+	Tags       *DescribeDBClusterAttributeResponseBodyDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The vSwitch ID.
 	//
 	// example:
@@ -479,6 +478,14 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	//
 	// 192.168.xx.xx
 	VpcIpAddr *string `json:"VpcIpAddr,omitempty" xml:"VpcIpAddr,omitempty"`
+	// example:
+	//
+	// active
+	WebUISnatStatus *string `json:"WebUISnatStatus,omitempty" xml:"WebUISnatStatus,omitempty"`
+	// example:
+	//
+	// active
+	WebUIStatus *string `json:"WebUIStatus,omitempty" xml:"WebUIStatus,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -721,6 +728,14 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetVpcId() *string {
 
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetVpcIpAddr() *string {
 	return s.VpcIpAddr
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetWebUISnatStatus() *string {
+	return s.WebUISnatStatus
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetWebUIStatus() *string {
+	return s.WebUIStatus
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) GetZoneId() *string {
@@ -1005,6 +1020,16 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetVpcIpAddr(v string)
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetWebUISnatStatus(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.WebUISnatStatus = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetWebUIStatus(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.WebUIStatus = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetZoneId(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
 	s.ZoneId = &v
 	return s
@@ -1118,17 +1143,7 @@ func (s *DescribeDBClusterAttributeResponseBodyDBClusterTags) Validate() error {
 }
 
 type DescribeDBClusterAttributeResponseBodyDBClusterTagsTag struct {
-	// The tag name.
-	//
-	// example:
-	//
-	// department
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// it
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

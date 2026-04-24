@@ -62,7 +62,6 @@ func (s *DescribeSlowLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodySlowLogRecords struct {
-	// Details about the slow query logs.
 	Data *DescribeSlowLogRecordsResponseBodySlowLogRecordsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The number of rows in the result set.
 	//
@@ -77,8 +76,7 @@ type DescribeSlowLogRecordsResponseBodySlowLogRecords struct {
 	// 1
 	RowsBeforeLimitAtLeast *string `json:"RowsBeforeLimitAtLeast,omitempty" xml:"RowsBeforeLimitAtLeast,omitempty"`
 	// The statistics of the results.
-	Statistics *DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	// The schema of the table in the database.
+	Statistics  *DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	TableSchema *DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
 
@@ -189,76 +187,17 @@ func (s *DescribeSlowLogRecordsResponseBodySlowLogRecordsData) Validate() error 
 }
 
 type DescribeSlowLogRecordsResponseBodySlowLogRecordsDataResultSet struct {
-	// The IP address of the client that initiated the query.
-	//
-	// example:
-	//
-	// ::ffff:100.104.XX.XX
-	InitialAddress *string `json:"InitialAddress,omitempty" xml:"InitialAddress,omitempty"`
-	// The query ID.
-	//
-	// example:
-	//
-	// \\"b51496f2-6b0b-4546-aff9-e17951cb9410\\"
-	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The username that is used to initiate the query.
-	//
-	// example:
-	//
-	// test_users
-	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The peak memory usage for the query. Unit: bytes.
-	//
-	// example:
-	//
-	// 1048576
-	MemoryUsage *string `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
-	// The statement that was executed in the query.
-	//
-	// example:
-	//
-	// Select 	- from table
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The duration of the query. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 2000
+	InitialAddress  *string `json:"InitialAddress,omitempty" xml:"InitialAddress,omitempty"`
+	InitialQueryId  *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
+	InitialUser     *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
+	MemoryUsage     *string `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	Query           *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
-	//
-	// example:
-	//
-	// 2022-05-22 20:00:01
-	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// The size of the data read by executing the statement. Unit: bytes.
-	//
-	// example:
-	//
-	// 1048576
-	ReadBytes *string `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
-	// The number of rows read by executing the statement.
-	//
-	// example:
-	//
-	// 10027008
-	ReadRows *string `json:"ReadRows,omitempty" xml:"ReadRows,omitempty"`
-	// The size of the result data. Unit: bytes.
-	//
-	// example:
-	//
-	// 1024
-	ResultBytes *string `json:"ResultBytes,omitempty" xml:"ResultBytes,omitempty"`
-	// The query status. Valid values:
-	//
-	// 	- **QueryFinish**: The query is complete.
-	//
-	// 	- **Processing**: The query is running.
-	//
-	// example:
-	//
-	// QueryFinish
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	QueryStartTime  *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	ReadBytes       *string `json:"ReadBytes,omitempty" xml:"ReadBytes,omitempty"`
+	ReadRows        *string `json:"ReadRows,omitempty" xml:"ReadRows,omitempty"`
+	ResultBytes     *string `json:"ResultBytes,omitempty" xml:"ResultBytes,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSlowLogRecordsResponseBodySlowLogRecordsDataResultSet) String() string {
@@ -467,17 +406,7 @@ func (s *DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchema) Validate()
 }
 
 type DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchemaResultSet struct {
-	// The name of the column.
-	//
-	// example:
-	//
-	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the column.
-	//
-	// example:
-	//
-	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

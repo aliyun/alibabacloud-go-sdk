@@ -62,7 +62,6 @@ func (s *DescribeProcessListResponseBody) Validate() error {
 }
 
 type DescribeProcessListResponseBodyProcessList struct {
-	// The details of the query.
 	Data *DescribeProcessListResponseBodyProcessListData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The number of rows returned for the query.
 	//
@@ -77,8 +76,7 @@ type DescribeProcessListResponseBodyProcessList struct {
 	// 1
 	RowsBeforeLimitAtLeast *string `json:"RowsBeforeLimitAtLeast,omitempty" xml:"RowsBeforeLimitAtLeast,omitempty"`
 	// The statistics of the results.
-	Statistics *DescribeProcessListResponseBodyProcessListStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
-	// Details of the columns.
+	Statistics  *DescribeProcessListResponseBodyProcessListStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	TableSchema *DescribeProcessListResponseBodyProcessListTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
 
@@ -189,42 +187,12 @@ func (s *DescribeProcessListResponseBodyProcessListData) Validate() error {
 }
 
 type DescribeProcessListResponseBodyProcessListDataResultSet struct {
-	// The IP address of the client that initiates the query.
-	//
-	// example:
-	//
-	// ::ffff:10.1.XX.XX
-	InitialAddress *string `json:"InitialAddress,omitempty" xml:"InitialAddress,omitempty"`
-	// The query ID.
-	//
-	// example:
-	//
-	// 2dd144fd-4230-4249-b15c-e63f964fbb5a
-	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
-	// The database account.
-	//
-	// example:
-	//
-	// test
-	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The SQL statement that is executed in the query.
-	//
-	// example:
-	//
-	// select 	- from test order by score limit 1;
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The execution duration of the query. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 2000
+	InitialAddress  *string `json:"InitialAddress,omitempty" xml:"InitialAddress,omitempty"`
+	InitialQueryId  *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
+	InitialUser     *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
+	Query           *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	QueryDurationMs *string `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The beginning of the time range to query. The value is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
-	//
-	// example:
-	//
-	// 2021-02-02T09:14:48Z
-	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	QueryStartTime  *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
 }
 
 func (s DescribeProcessListResponseBodyProcessListDataResultSet) String() string {
@@ -388,17 +356,7 @@ func (s *DescribeProcessListResponseBodyProcessListTableSchema) Validate() error
 }
 
 type DescribeProcessListResponseBodyProcessListTableSchemaResultSet struct {
-	// The column name.
-	//
-	// example:
-	//
-	// InitialUser
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The column type.
-	//
-	// example:
-	//
-	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

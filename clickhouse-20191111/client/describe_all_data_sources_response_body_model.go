@@ -20,18 +20,15 @@ type iDescribeAllDataSourcesResponseBody interface {
 }
 
 type DescribeAllDataSourcesResponseBody struct {
-	// Details of the columns.
 	Columns *DescribeAllDataSourcesResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
 	//
 	// 75EA41D7-025A-50A6-9287-359A91399F1E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the databases.
-	Schemas *DescribeAllDataSourcesResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
-	// The information about the tables.
-	Tables *DescribeAllDataSourcesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   *DescribeAllDataSourcesResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	Tables    *DescribeAllDataSourcesResponseBodyTables  `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeAllDataSourcesResponseBody) String() string {
@@ -132,56 +129,13 @@ func (s *DescribeAllDataSourcesResponseBodyColumns) Validate() error {
 }
 
 type DescribeAllDataSourcesResponseBodyColumnsColumn struct {
-	// Indicates whether the column is an auto-increment column. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	AutoIncrementColumn *bool `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
-	// The column name.
-	//
-	// example:
-	//
-	// name
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cc-bp108z124a8o7****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the column is the primary key of the table. Valid values:
-	//
-	// 	- **true**: The column is the primary key of the table.
-	//
-	// 	- **false**: The column is not the primary key of the table.
-	//
-	// example:
-	//
-	// true
-	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// database
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// table
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The column type.
-	//
-	// example:
-	//
-	// String
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	AutoIncrementColumn *bool   `json:"AutoIncrementColumn,omitempty" xml:"AutoIncrementColumn,omitempty"`
+	ColumnName          *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DBClusterId         *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PrimaryKey          *bool   `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	SchemaName          *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName           *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAllDataSourcesResponseBodyColumnsColumn) String() string {
@@ -294,18 +248,8 @@ func (s *DescribeAllDataSourcesResponseBodySchemas) Validate() error {
 }
 
 type DescribeAllDataSourcesResponseBodySchemasSchema struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// database
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 }
 
 func (s DescribeAllDataSourcesResponseBodySchemasSchema) String() string {
@@ -373,24 +317,9 @@ func (s *DescribeAllDataSourcesResponseBodyTables) Validate() error {
 }
 
 type DescribeAllDataSourcesResponseBodyTablesTable struct {
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// database
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The table name.
-	//
-	// example:
-	//
-	// table
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeAllDataSourcesResponseBodyTablesTable) String() string {

@@ -59,8 +59,7 @@ type CheckScaleOutBalancedResponseBody struct {
 	// example:
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error information returned for a check failure.
+	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TableDetails *CheckScaleOutBalancedResponseBodyTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Struct"`
 	// The amount of time that is required for the migration and scale-out. Unit: minutes.
 	//
@@ -191,33 +190,9 @@ func (s *CheckScaleOutBalancedResponseBodyTableDetails) Validate() error {
 }
 
 type CheckScaleOutBalancedResponseBodyTableDetailsTableDetail struct {
-	// The cluster. The value is fixed as **default**.
-	//
-	// example:
-	//
-	// default
-	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	// The database name.
-	//
-	// example:
-	//
-	// db_name
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The error details. Valid values:
-	//
-	// 	- **1**: The unique distributed table is missing.
-	//
-	// 	- **2**: More than one distributed table exists for the local table.
-	//
-	// example:
-	//
-	// 1
-	Detail *int32 `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The name of the local table.
-	//
-	// example:
-	//
-	// test
+	Cluster   *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	Database  *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Detail    *int32  `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 

@@ -22,7 +22,6 @@ type iDescribeDBClustersResponseBody interface {
 }
 
 type DescribeDBClustersResponseBody struct {
-	// The clusters.
 	DBClusters *DescribeDBClustersResponseBodyDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Struct"`
 	// The total number of returned pages.
 	//
@@ -153,276 +152,39 @@ func (s *DescribeDBClustersResponseBodyDBClusters) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyDBClustersDBCluster struct {
-	// The ID of the Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 140692647406****
-	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The site ID. Valid values:
-	//
-	// 	- **26842**: the China site (aliyun.com)
-	//
-	// 	- **26888**: the international site (alibabacloud.com)
-	//
-	// example:
-	//
-	// 26842
-	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	// The edition of the cluster. Valid values:
-	//
-	// 	- **Basic**: Single-replica Edition
-	//
-	// 	- **HighAvailability**: Double-replica Edition
-	//
-	// example:
-	//
-	// Basic
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The commodity code of the cluster.
-	//
-	// example:
-	//
-	// clickhouse_go_public_cn
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The VPC endpoint of the cluster.
-	//
-	// example:
-	//
-	// cc-bp1fs5o051c61****.clickhouse.ads.aliyuncs.com
-	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The version number of the backend management system of ApsaraDB for ClickHouse. Valid values:
-	//
-	// 	- **v1**
-	//
-	// 	- **v2**
-	//
-	// example:
-	//
-	// v1
-	ControlVersion *string `json:"ControlVersion,omitempty" xml:"ControlVersion,omitempty"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
-	//
-	// example:
-	//
-	// 2021-10-28T07:24:45Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cluster.
-	//
-	// example:
-	//
-	// test
-	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID.
-	//
-	// example:
-	//
-	// cc-bp108z124a8o7****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The network type of the cluster. Only VPC is supported.
-	//
-	// example:
-	//
-	// VPC
-	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The state of the cluster. Valid values:
-	//
-	// 	- **Preparing**: The cluster is being prepared.
-	//
-	// 	- **Creating**: The cluster is being created.
-	//
-	// 	- **Running**: The cluster is running.
-	//
-	// 	- **Deleting**: The cluster is being deleted.
-	//
-	// 	- **SCALING_OUT**: The storage capacity of the cluster is being expanded.
-	//
-	// example:
-	//
-	// Running
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The specifications of the cluster.
-	//
-	// 	- Valid values when the cluster is of Single-replica Edition: -**S4**: 4 CPU cores and 16 GB of memory -**S8**: 8 CPU cores and 32 GB of memory
-	//
-	//     	- **S16**: 16 CPU cores and 64 GB of memory
-	//
-	//     	- **S32**: 32 CPU cores and 128 GB of memory
-	//
-	//     	- **S64**: 64 CPU cores and 256 GB of memory
-	//
-	//     	- **S104**: 104 CPU cores and 384 GB of memory
-	//
-	// 	- Valid values when the cluster is of Double-replica Edition: -**C4**: 4 CPU cores and 16 GB of memory -**C8**: 8 CPU cores and 32 GB of memory -**C16**: 16 CPU cores and 64 GB of memory -**C32**: 32 CPU cores and 128 GB of memory -**C64**: 64 CPU cores and 256 GB of memory -**C104**: 104 CPU cores and 384 GB of memory
-	//
-	// example:
-	//
-	// C8
-	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The number of nodes.
-	//
-	// 	- Valid values when the cluster is of Single-replica Edition: 1 to 48.
-	//
-	// 	- Valid values when the cluster is of Double-replica Edition: 1 to 24.
-	//
-	// example:
-	//
-	// 2
-	DBNodeCount *int64 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	// The storage capacity of each node. Valid values: 100 to 32000. Unit: GB.
-	//
-	// >  This value is a multiple of 100.
-	//
-	// example:
-	//
-	// 100
-	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	// The engine version of the cluster.
-	//
-	// example:
-	//
-	// 23.8
-	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The time when the cluster expired. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
-	//
-	// >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
-	//
-	// example:
-	//
-	// 2011-05-30T12:11:4Z
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The extended storage space.
-	//
-	// example:
-	//
-	// 100GB
-	ExtStorageSize *int32 `json:"ExtStorageSize,omitempty" xml:"ExtStorageSize,omitempty"`
-	// The extended storage type. Valid values:
-	//
-	// 	- **CloudSSD**: standard SSD.
-	//
-	// 	- **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
-	//
-	// 	- **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
-	//
-	// 	- **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
-	//
-	// 	- **CloudEfficiency**: The cluster uses an ultra disk.
-	//
-	// example:
-	//
-	// CloudESSD
-	ExtStorageType *string `json:"ExtStorageType,omitempty" xml:"ExtStorageType,omitempty"`
-	// Indicates whether the cluster has expired. Valid values:
-	//
-	// 	- **true**: The cluster has expired.
-	//
-	// 	- **false**: The cluster has not expired.
-	//
-	// example:
-	//
-	// false
-	IsExpired *string `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	// The lock mode of the cluster. Valid values:
-	//
-	// 	- **Unlock**: The cluster is not locked.
-	//
-	// 	- **ManualLock**: The cluster is manually locked.
-	//
-	// 	- **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
-	//
-	// 	- **LockByRestoration**: The cluster is automatically locked because the cluster is about to be rolled back.
-	//
-	// 	- **LockByDiskQuota**: The cluster is automatically locked because the disk space is exhausted.
-	//
-	// example:
-	//
-	// Unlock
-	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The cause why the cluster was locked.
-	//
-	// >  If the value of the LockMode parameter is Unlock, an empty string is returned for this parameter.
-	//
-	// example:
-	//
-	// DISK_FULL
-	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The billing method of the cluster. Valid values:
-	//
-	// 	- **Postpaid**: The cluster uses the pay-as-you-go billing method.
-	//
-	// 	- **Prepaid**: The cluster uses the subscription billing method.
-	//
-	// example:
-	//
-	// Postpaid
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The HTTP port number.
-	//
-	// example:
-	//
-	// 8123
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region ID.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the cluster belongs.
-	//
-	// example:
-	//
-	// rg-4690g37929****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The time window during which write operations are stopped for specification changes.
-	//
-	// example:
-	//
-	// 2025-02-08T00:00:00+08:00,2025-02-12T00:00:00+08:00
-	ScaleOutDisableWriteWindows *string `json:"ScaleOutDisableWriteWindows,omitempty" xml:"ScaleOutDisableWriteWindows,omitempty"`
-	// The status of a data migration task.
-	ScaleOutStatus *DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus `json:"ScaleOutStatus,omitempty" xml:"ScaleOutStatus,omitempty" type:"Struct"`
-	// The storage type of the cluster. Valid values:
-	//
-	// 	- **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
-	//
-	// 	- **CloudESSD_PL2**: The cluster uses an ESSD of PL 2.
-	//
-	// 	- **CloudESSD_PL3**: The cluster uses an ESSD of PL 3.
-	//
-	// 	- **CloudEfficiency**: The cluster uses an ultra disk.
-	//
-	// example:
-	//
-	// CloudESSD
-	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The tags.
-	Tags *DescribeDBClustersResponseBodyDBClustersDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The vSwitch ID.
-	//
-	// example:
-	//
-	// vsw-bp1gzt31twhlo0sa5****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC in which the cluster is deployed.
-	//
-	// example:
-	//
-	// vpc-bp175iuvg8nxqraf2****
-	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the cluster is deployed.
-	//
-	// example:
-	//
-	// vpc-bp175iuvg8nxqraf2****
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID.
-	//
-	// example:
-	//
-	// cn-hangzhou-h
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AliUid                      *string                                                          `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Bid                         *string                                                          `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	Category                    *string                                                          `json:"Category,omitempty" xml:"Category,omitempty"`
+	CommodityCode               *string                                                          `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ConnectionString            *string                                                          `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	ControlVersion              *string                                                          `json:"ControlVersion,omitempty" xml:"ControlVersion,omitempty"`
+	CreateTime                  *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBClusterDescription        *string                                                          `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	DBClusterId                 *string                                                          `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterNetworkType        *string                                                          `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
+	DBClusterStatus             *string                                                          `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBNodeClass                 *string                                                          `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeCount                 *int64                                                           `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DBNodeStorage               *int64                                                           `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DbVersion                   *string                                                          `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	ExpireTime                  *string                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExtStorageSize              *int32                                                           `json:"ExtStorageSize,omitempty" xml:"ExtStorageSize,omitempty"`
+	ExtStorageType              *string                                                          `json:"ExtStorageType,omitempty" xml:"ExtStorageType,omitempty"`
+	IsExpired                   *string                                                          `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	LockMode                    *string                                                          `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason                  *string                                                          `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	PayType                     *string                                                          `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Port                        *int32                                                           `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId                    *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId             *string                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ScaleOutDisableWriteWindows *string                                                          `json:"ScaleOutDisableWriteWindows,omitempty" xml:"ScaleOutDisableWriteWindows,omitempty"`
+	ScaleOutStatus              *DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus `json:"ScaleOutStatus,omitempty" xml:"ScaleOutStatus,omitempty" type:"Struct"`
+	StorageType                 *string                                                          `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags                        *DescribeDBClustersResponseBodyDBClustersDBClusterTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VSwitchId                   *string                                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcCloudInstanceId          *string                                                          `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
+	VpcId                       *string                                                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                      *string                                                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyDBClustersDBCluster) String() string {
@@ -745,22 +507,8 @@ func (s *DescribeDBClustersResponseBodyDBClustersDBCluster) Validate() error {
 }
 
 type DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus struct {
-	// The progress of the data migration task in percentage.
-	//
-	// >  This parameter is returned only when the cluster is in the SCALING_OUT state.
-	//
-	// example:
-	//
-	// 0
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The progress of the data migration task. This value is displayed in the following format: Data volume that has been migrated/Total data volume.
-	//
-	// >  This parameter is returned only when the cluster is in the SCALING_OUT state.
-	//
-	// example:
-	//
-	// 0MB/60469MB
-	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	Ratio    *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyDBClustersDBClusterScaleOutStatus) String() string {
@@ -828,17 +576,7 @@ func (s *DescribeDBClustersResponseBodyDBClustersDBClusterTags) Validate() error
 }
 
 type DescribeDBClustersResponseBodyDBClustersDBClusterTagsTag struct {
-	// The tag name.
-	//
-	// example:
-	//
-	// department
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// it
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

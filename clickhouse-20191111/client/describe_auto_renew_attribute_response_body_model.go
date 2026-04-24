@@ -138,27 +138,12 @@ func (s *DescribeAutoRenewAttributeResponseBodyItems) Validate() error {
 }
 
 type DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute struct {
-	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
-	// example:
-	//
-	// cc-2ze57pg09*****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// example:
-	//
-	// 1
-	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// example:
-	//
-	// Year
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// example:
-	//
-	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// AutoRenewal
-	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
+	AutoRenewEnabled *bool   `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RenewalStatus    *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 }
 
 func (s DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute) String() string {

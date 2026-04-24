@@ -16,7 +16,6 @@ type iDescribeTransferHistoryResponseBody interface {
 }
 
 type DescribeTransferHistoryResponseBody struct {
-	// The migration information.
 	HistoryDetails *DescribeTransferHistoryResponseBodyHistoryDetails `json:"HistoryDetails,omitempty" xml:"HistoryDetails,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,92 +95,22 @@ func (s *DescribeTransferHistoryResponseBodyHistoryDetails) Validate() error {
 }
 
 type DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail struct {
-	// The amount of data that is migrated per minute.
-	//
-	// example:
-	//
-	// 10240
 	BytesPerMinute *int64 `json:"BytesPerMinute,omitempty" xml:"BytesPerMinute,omitempty"`
-	// The time window during which write operations are stopped.
-	//
 	// if can be null:
 	// false
-	//
-	// example:
-	//
-	// 2025-02-08T00:00:00+08:00,2025-02-12T00:00:00+08:00
-	DisableWriteWindows *string `json:"DisableWriteWindows,omitempty" xml:"DisableWriteWindows,omitempty"`
-	// The number of parts that are migrated per minute.
-	//
-	// example:
-	//
-	// 1.24
-	PartsPerMinute *float64 `json:"PartsPerMinute,omitempty" xml:"PartsPerMinute,omitempty"`
-	// The progress of the data migration.
-	//
-	// example:
-	//
-	// 100%
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The control version of the source cluster.
-	//
-	// example:
-	//
-	// v1
-	SourceControlVersion *string `json:"SourceControlVersion,omitempty" xml:"SourceControlVersion,omitempty"`
-	// The ID of the source cluster.
-	//
-	// example:
-	//
-	// cc-bp108z124a8o7****
-	SourceDBCluster *string `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
-	// The status of the data migration task. Valid values:
-	//
-	// 	- **Finished**: The data migration task is complete.
-	//
-	// 	- **Processing**: The data migration task is in progress.
-	//
-	// example:
-	//
-	// Finished
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The running subtask.
-	//
-	// example:
-	//
-	// SubJob
-	SubJob        *string `json:"SubJob,omitempty" xml:"SubJob,omitempty"`
-	SubJobMessage *string `json:"SubJobMessage,omitempty" xml:"SubJobMessage,omitempty"`
-	// The subtask status.
-	//
-	// example:
-	//
-	// running
-	SubJobStatus *string `json:"SubJobStatus,omitempty" xml:"SubJobStatus,omitempty"`
-	// The control version of the destination cluster.
-	//
-	// example:
-	//
-	// v2
-	TargetControlVersion *string `json:"TargetControlVersion,omitempty" xml:"TargetControlVersion,omitempty"`
-	// The ID of the destination cluster.
-	//
-	// example:
-	//
-	// cc-bp13zkh9uw523****
-	TargetDBCluster *string `json:"TargetDBCluster,omitempty" xml:"TargetDBCluster,omitempty"`
-	// The amount of data that is not migrated.
-	//
-	// example:
-	//
-	// 102400
-	UnsyncedBytes *int64 `json:"UnsyncedBytes,omitempty" xml:"UnsyncedBytes,omitempty"`
-	// The number of parts that are not migrated.
-	//
-	// example:
-	//
-	// 1000
-	UnsyncedParts *int64 `json:"UnsyncedParts,omitempty" xml:"UnsyncedParts,omitempty"`
+	DisableWriteWindows  *string  `json:"DisableWriteWindows,omitempty" xml:"DisableWriteWindows,omitempty"`
+	PartsPerMinute       *float64 `json:"PartsPerMinute,omitempty" xml:"PartsPerMinute,omitempty"`
+	Progress             *string  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	SourceControlVersion *string  `json:"SourceControlVersion,omitempty" xml:"SourceControlVersion,omitempty"`
+	SourceDBCluster      *string  `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
+	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubJob               *string  `json:"SubJob,omitempty" xml:"SubJob,omitempty"`
+	SubJobMessage        *string  `json:"SubJobMessage,omitempty" xml:"SubJobMessage,omitempty"`
+	SubJobStatus         *string  `json:"SubJobStatus,omitempty" xml:"SubJobStatus,omitempty"`
+	TargetControlVersion *string  `json:"TargetControlVersion,omitempty" xml:"TargetControlVersion,omitempty"`
+	TargetDBCluster      *string  `json:"TargetDBCluster,omitempty" xml:"TargetDBCluster,omitempty"`
+	UnsyncedBytes        *int64   `json:"UnsyncedBytes,omitempty" xml:"UnsyncedBytes,omitempty"`
+	UnsyncedParts        *int64   `json:"UnsyncedParts,omitempty" xml:"UnsyncedParts,omitempty"`
 }
 
 func (s DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail) String() string {

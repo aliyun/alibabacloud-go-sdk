@@ -16,7 +16,6 @@ type iDescribeDBClusterAccessWhiteListResponseBody interface {
 }
 
 type DescribeDBClusterAccessWhiteListResponseBody struct {
-	// The details about the IP address whitelist.
 	DBClusterAccessWhiteList *DescribeDBClusterAccessWhiteListResponseBodyDBClusterAccessWhiteList `json:"DBClusterAccessWhiteList,omitempty" xml:"DBClusterAccessWhiteList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -96,24 +95,9 @@ func (s *DescribeDBClusterAccessWhiteListResponseBodyDBClusterAccessWhiteList) V
 }
 
 type DescribeDBClusterAccessWhiteListResponseBodyDBClusterAccessWhiteListIPArray struct {
-	// The attribute of the IP address whitelist.
-	//
-	// example:
-	//
-	// default
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
-	// The name of the IP address whitelist.
-	//
-	// example:
-	//
-	// default
-	DBClusterIPArrayName *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
-	// The IP addresses in the IP address whitelist.
-	//
-	// example:
-	//
-	// 192.168.xx.xx,192.168.xx.xx
-	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	DBClusterIPArrayName      *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
+	SecurityIPList            *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
 func (s DescribeDBClusterAccessWhiteListResponseBodyDBClusterAccessWhiteListIPArray) String() string {

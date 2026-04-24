@@ -448,7 +448,7 @@ func (client *Client) CancelAppointmentRestartInstanceNodeList(request *CancelAp
 
 // Summary:
 //
-// 取消预约重启
+// Cancels the scheduled restart time of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - CancelRestartInstanceRequest
 //
@@ -524,7 +524,7 @@ func (client *Client) CancelRestartInstanceWithOptions(request *CancelRestartIns
 
 // Summary:
 //
-// 取消预约重启
+// Cancels the scheduled restart time of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - CancelRestartInstanceRequest
 //
@@ -5004,6 +5004,10 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trend of slow query logs for an ApsaraDB for ClickHouse cluster.
+//
 // @param request - DescribeSlowLogTrendRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5076,6 +5080,10 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trend of slow query logs for an ApsaraDB for ClickHouse cluster.
+//
 // @param request - DescribeSlowLogTrendRequest
 //
 // @return DescribeSlowLogTrendResponse
