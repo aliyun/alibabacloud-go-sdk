@@ -269,6 +269,10 @@ type DescribeDBInstanceAttributeResponseBodyData struct {
 	//
 	// vpc-wz9duj8xd6r1gzhsg*****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// active
+	WebUISnatStatus *string `json:"WebUISnatStatus,omitempty" xml:"WebUISnatStatus,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -435,6 +439,10 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) GetVSwitchId() *string {
 
 func (s *DescribeDBInstanceAttributeResponseBodyData) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyData) GetWebUISnatStatus() *string {
+	return s.WebUISnatStatus
 }
 
 func (s *DescribeDBInstanceAttributeResponseBodyData) GetZoneId() *string {
@@ -628,6 +636,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyData) SetVSwitchId(v string) *De
 
 func (s *DescribeDBInstanceAttributeResponseBodyData) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBodyData {
 	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyData) SetWebUISnatStatus(v string) *DescribeDBInstanceAttributeResponseBodyData {
+	s.WebUISnatStatus = &v
 	return s
 }
 
