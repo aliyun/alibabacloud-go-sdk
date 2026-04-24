@@ -20,6 +20,8 @@ type DeleteRecursionRecordRequest struct {
 	//
 	// 21079fa016944979537637959d09bc
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 17432432424

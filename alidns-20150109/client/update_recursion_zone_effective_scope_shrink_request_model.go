@@ -23,6 +23,8 @@ type UpdateRecursionZoneEffectiveScopeShrinkRequest struct {
 	// 21079fa016944979537637959d09bc
 	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	EffectiveScopesShrink *string `json:"EffectiveScopes,omitempty" xml:"EffectiveScopes,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173671468000011

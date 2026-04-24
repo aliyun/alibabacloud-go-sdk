@@ -24,6 +24,8 @@ type UpdateRecursionRecordRemarkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// record id
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173671468000010

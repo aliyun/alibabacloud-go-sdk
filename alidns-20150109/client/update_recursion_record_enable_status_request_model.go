@@ -26,6 +26,8 @@ type UpdateRecursionRecordEnableStatusRequest struct {
 	//
 	// enable
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1781234321

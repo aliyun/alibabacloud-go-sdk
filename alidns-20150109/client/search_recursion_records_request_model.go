@@ -102,6 +102,8 @@ type SearchRecursionRecordsRequest struct {
 	//
 	// 2
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 169438909000011

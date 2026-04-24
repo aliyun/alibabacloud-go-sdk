@@ -44,6 +44,8 @@ type UpdateRecursionRecordWeightEnableStatusRequest struct {
 	//
 	// A
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 176432424234

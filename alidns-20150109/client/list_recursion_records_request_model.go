@@ -84,6 +84,8 @@ type ListRecursionRecordsRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 17832322323

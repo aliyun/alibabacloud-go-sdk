@@ -70,6 +70,8 @@ type AddRecursionRecordRequest struct {
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 	// Zone ID。
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 173671468000011

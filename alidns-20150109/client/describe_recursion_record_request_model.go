@@ -14,6 +14,8 @@ type iDescribeRecursionRecordRequest interface {
 }
 
 type DescribeRecursionRecordRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1917628665627259904

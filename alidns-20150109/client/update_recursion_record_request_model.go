@@ -38,6 +38,8 @@ type UpdateRecursionRecordRequest struct {
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9*******

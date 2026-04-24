@@ -14,6 +14,8 @@ type iDescribeRecursionZoneRequest interface {
 }
 
 type DescribeRecursionZoneRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 169783221000012
