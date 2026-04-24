@@ -2188,6 +2188,79 @@ func (client *Client) DeleteWorkspaceWithContext(ctx context.Context, workspaceN
 
 // Summary:
 //
+// 查询元数据meta
+//
+// @param tmpReq - DescribeMetricMetaListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetricMetaListResponse
+func (client *Client) DescribeMetricMetaListWithContext(ctx context.Context, tmpReq *DescribeMetricMetaListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DescribeMetricMetaListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeMetricMetaListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Labels) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, dara.String("labels"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LabelsShrink) {
+		query["labels"] = request.LabelsShrink
+	}
+
+	if !dara.IsNil(request.MetaFormat) {
+		query["metaFormat"] = request.MetaFormat
+	}
+
+	if !dara.IsNil(request.MetricName) {
+		query["metricName"] = request.MetricName
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeMetricMetaList"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/describe-metric-meta-list"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeMetricMetaListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询地域信息列表
 //
 // @param request - DescribeRegionsRequest
