@@ -137,7 +137,14 @@ type ConvertFlowDSLInputOptions struct {
 	CompatibilityCheck *bool   `json:"compatibilityCheck,omitempty" xml:"compatibilityCheck,omitempty"`
 	CredentialName     *string `json:"credentialName,omitempty" xml:"credentialName,omitempty"`
 	FlowName           *string `json:"flowName,omitempty" xml:"flowName,omitempty"`
-	VpcEndpointName    *string `json:"vpcEndpointName,omitempty" xml:"vpcEndpointName,omitempty"`
+	// 全局VPC端点名称，对所有节点统一生效。如果指定了vpcEndpoints映射，则映射中的节点优先使用映射值
+	VpcEndpointName *string `json:"vpcEndpointName,omitempty" xml:"vpcEndpointName,omitempty"`
+	// 按节点名称指定VPC端点，key为节点名称(stateName)，value为该节点使用的VPC端点名称。优先级高于vpcEndpointName
+	//
+	// example:
+	//
+	// {"LLM节点":"vpc-endpoint-1","Agent节点":"vpc-endpoint-2"}
+	VpcEndpoints map[string]*string `json:"vpcEndpoints" xml:"vpcEndpoints"`
 }
 
 func (s ConvertFlowDSLInputOptions) String() string {
@@ -164,6 +171,10 @@ func (s *ConvertFlowDSLInputOptions) GetVpcEndpointName() *string {
 	return s.VpcEndpointName
 }
 
+func (s *ConvertFlowDSLInputOptions) GetVpcEndpoints() map[string]*string {
+	return s.VpcEndpoints
+}
+
 func (s *ConvertFlowDSLInputOptions) SetCompatibilityCheck(v bool) *ConvertFlowDSLInputOptions {
 	s.CompatibilityCheck = &v
 	return s
@@ -181,6 +192,11 @@ func (s *ConvertFlowDSLInputOptions) SetFlowName(v string) *ConvertFlowDSLInputO
 
 func (s *ConvertFlowDSLInputOptions) SetVpcEndpointName(v string) *ConvertFlowDSLInputOptions {
 	s.VpcEndpointName = &v
+	return s
+}
+
+func (s *ConvertFlowDSLInputOptions) SetVpcEndpoints(v map[string]*string) *ConvertFlowDSLInputOptions {
+	s.VpcEndpoints = v
 	return s
 }
 

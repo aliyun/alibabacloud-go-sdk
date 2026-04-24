@@ -171,7 +171,7 @@ type ConvertFlowDSLDataConversionPlanIssues struct {
 	// Tool node requires Toolset installation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// 问题的详细信息（JSON对象）
-	Details map[string]*string `json:"details" xml:"details"`
+	Details map[string]interface{} `json:"details" xml:"details"`
 	// 问题类型：needs_config, needs_conversion, unsupported
 	//
 	// This parameter is required.
@@ -230,7 +230,7 @@ func (s *ConvertFlowDSLDataConversionPlanIssues) GetDescription() *string {
 	return s.Description
 }
 
-func (s *ConvertFlowDSLDataConversionPlanIssues) GetDetails() map[string]*string {
+func (s *ConvertFlowDSLDataConversionPlanIssues) GetDetails() map[string]interface{} {
 	return s.Details
 }
 
@@ -263,7 +263,7 @@ func (s *ConvertFlowDSLDataConversionPlanIssues) SetDescription(v string) *Conve
 	return s
 }
 
-func (s *ConvertFlowDSLDataConversionPlanIssues) SetDetails(v map[string]*string) *ConvertFlowDSLDataConversionPlanIssues {
+func (s *ConvertFlowDSLDataConversionPlanIssues) SetDetails(v map[string]interface{}) *ConvertFlowDSLDataConversionPlanIssues {
 	s.Details = v
 	return s
 }
