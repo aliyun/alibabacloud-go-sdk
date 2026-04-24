@@ -353,6 +353,76 @@ func (client *Client) AddFirewallRules(request *AddFirewallRulesRequest) (_resul
 
 // Summary:
 //
+// 新增polarfs bucket路径
+//
+// @param request - AddPolarFsPathMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPolarFsPathMappingResponse
+func (client *Client) AddPolarFsPathMappingWithOptions(request *AddPolarFsPathMappingRequest, runtime *dara.RuntimeOptions) (_result *AddPolarFsPathMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomBucketPathList) {
+		query["CustomBucketPathList"] = request.CustomBucketPathList
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddPolarFsPathMapping"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddPolarFsPathMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增polarfs bucket路径
+//
+// @param request - AddPolarFsPathMappingRequest
+//
+// @return AddPolarFsPathMappingResponse
+func (client *Client) AddPolarFsPathMapping(request *AddPolarFsPathMappingRequest) (_result *AddPolarFsPathMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddPolarFsPathMappingResponse{}
+	_body, _err := client.AddPolarFsPathMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增PolarFs Quota规则
 //
 // @param request - AddPolarFsQuotaRequest
@@ -7642,6 +7712,76 @@ func (client *Client) DeletePolarFsObjects(request *DeletePolarFsObjectsRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePolarFsObjectsResponse{}
 	_body, _err := client.DeletePolarFsObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除polar fs bucket路径
+//
+// @param request - DeletePolarFsPathMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarFsPathMappingResponse
+func (client *Client) DeletePolarFsPathMappingWithOptions(request *DeletePolarFsPathMappingRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarFsPathMappingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomBucketPathList) {
+		query["CustomBucketPathList"] = request.CustomBucketPathList
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarFsPathMapping"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarFsPathMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除polar fs bucket路径
+//
+// @param request - DeletePolarFsPathMappingRequest
+//
+// @return DeletePolarFsPathMappingResponse
+func (client *Client) DeletePolarFsPathMapping(request *DeletePolarFsPathMappingRequest) (_result *DeletePolarFsPathMappingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarFsPathMappingResponse{}
+	_body, _err := client.DeletePolarFsPathMappingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16838,8 +16978,16 @@ func (client *Client) DescribePolarFsQuotaWithOptions(request *DescribePolarFsQu
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
 	if !dara.IsNil(request.PolarFsInstanceId) {
 		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.QuotaType) {
+		query["QuotaType"] = request.QuotaType
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -27431,7 +27579,7 @@ func (client *Client) SearchMemories(request *SearchMemoriesRequest) (_result *S
 
 // Summary:
 //
-// 为目录应用配额规则
+// 为目录配置配额或应用配额规则
 //
 // @param request - SetPolarFsFileQuotaRequest
 //
@@ -27483,7 +27631,7 @@ func (client *Client) SetPolarFsFileQuotaWithOptions(request *SetPolarFsFileQuot
 
 // Summary:
 //
-// 为目录应用配额规则
+// 为目录配置配额或应用配额规则
 //
 // @param request - SetPolarFsFileQuotaRequest
 //

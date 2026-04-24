@@ -11,8 +11,12 @@ type iDescribePolarFsQuotaRequest interface {
 	GoString() string
 	SetDBClusterId(v string) *DescribePolarFsQuotaRequest
 	GetDBClusterId() *string
+	SetPath(v string) *DescribePolarFsQuotaRequest
+	GetPath() *string
 	SetPolarFsInstanceId(v string) *DescribePolarFsQuotaRequest
 	GetPolarFsInstanceId() *string
+	SetQuotaType(v string) *DescribePolarFsQuotaRequest
+	GetQuotaType() *string
 	SetRegionId(v string) *DescribePolarFsQuotaRequest
 	GetRegionId() *string
 }
@@ -22,12 +26,20 @@ type DescribePolarFsQuotaRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// /data
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
+	// example:
+	//
+	// quotaPolicy
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -46,8 +58,16 @@ func (s *DescribePolarFsQuotaRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *DescribePolarFsQuotaRequest) GetPath() *string {
+	return s.Path
+}
+
 func (s *DescribePolarFsQuotaRequest) GetPolarFsInstanceId() *string {
 	return s.PolarFsInstanceId
+}
+
+func (s *DescribePolarFsQuotaRequest) GetQuotaType() *string {
+	return s.QuotaType
 }
 
 func (s *DescribePolarFsQuotaRequest) GetRegionId() *string {
@@ -59,8 +79,18 @@ func (s *DescribePolarFsQuotaRequest) SetDBClusterId(v string) *DescribePolarFsQ
 	return s
 }
 
+func (s *DescribePolarFsQuotaRequest) SetPath(v string) *DescribePolarFsQuotaRequest {
+	s.Path = &v
+	return s
+}
+
 func (s *DescribePolarFsQuotaRequest) SetPolarFsInstanceId(v string) *DescribePolarFsQuotaRequest {
 	s.PolarFsInstanceId = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaRequest) SetQuotaType(v string) *DescribePolarFsQuotaRequest {
+	s.QuotaType = &v
 	return s
 }
 

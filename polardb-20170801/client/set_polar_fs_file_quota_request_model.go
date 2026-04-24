@@ -83,8 +83,16 @@ func (s *SetPolarFsFileQuotaRequest) Validate() error {
 type SetPolarFsFileQuotaRequestFilePathQuotas struct {
 	// example:
 	//
+	// 100
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
 	// /a/project
 	FilePathId *string `json:"FilePathId,omitempty" xml:"FilePathId,omitempty"`
+	// example:
+	//
+	// 100
+	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
 	// example:
 	//
 	// 1
@@ -107,8 +115,16 @@ func (s SetPolarFsFileQuotaRequestFilePathQuotas) GoString() string {
 	return s.String()
 }
 
+func (s *SetPolarFsFileQuotaRequestFilePathQuotas) GetCapacity() *int64 {
+	return s.Capacity
+}
+
 func (s *SetPolarFsFileQuotaRequestFilePathQuotas) GetFilePathId() *string {
 	return s.FilePathId
+}
+
+func (s *SetPolarFsFileQuotaRequestFilePathQuotas) GetInodes() *int64 {
+	return s.Inodes
 }
 
 func (s *SetPolarFsFileQuotaRequestFilePathQuotas) GetMaxDepth() *int32 {
@@ -123,8 +139,18 @@ func (s *SetPolarFsFileQuotaRequestFilePathQuotas) GetStrategy() *string {
 	return s.Strategy
 }
 
+func (s *SetPolarFsFileQuotaRequestFilePathQuotas) SetCapacity(v int64) *SetPolarFsFileQuotaRequestFilePathQuotas {
+	s.Capacity = &v
+	return s
+}
+
 func (s *SetPolarFsFileQuotaRequestFilePathQuotas) SetFilePathId(v string) *SetPolarFsFileQuotaRequestFilePathQuotas {
 	s.FilePathId = &v
+	return s
+}
+
+func (s *SetPolarFsFileQuotaRequestFilePathQuotas) SetInodes(v int64) *SetPolarFsFileQuotaRequestFilePathQuotas {
+	s.Inodes = &v
 	return s
 }
 

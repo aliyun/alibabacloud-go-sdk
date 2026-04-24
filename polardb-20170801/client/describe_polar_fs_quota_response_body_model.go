@@ -15,10 +15,14 @@ type iDescribePolarFsQuotaResponseBody interface {
 	GetPageRecordCount() *string
 	SetPageSize(v string) *DescribePolarFsQuotaResponseBody
 	GetPageSize() *string
+	SetPath(v string) *DescribePolarFsQuotaResponseBody
+	GetPath() *string
 	SetPolarFsInstanceId(v string) *DescribePolarFsQuotaResponseBody
 	GetPolarFsInstanceId() *string
 	SetPolicyItems(v []*DescribePolarFsQuotaResponseBodyPolicyItems) *DescribePolarFsQuotaResponseBody
 	GetPolicyItems() []*DescribePolarFsQuotaResponseBodyPolicyItems
+	SetQuotaItems(v []*DescribePolarFsQuotaResponseBodyQuotaItems) *DescribePolarFsQuotaResponseBody
+	GetQuotaItems() []*DescribePolarFsQuotaResponseBodyQuotaItems
 	SetRequestId(v string) *DescribePolarFsQuotaResponseBody
 	GetRequestId() *string
 	SetTotalRecordCount(v string) *DescribePolarFsQuotaResponseBody
@@ -40,9 +44,14 @@ type DescribePolarFsQuotaResponseBody struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// example:
 	//
+	// /data
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string                                        `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
 	PolicyItems       []*DescribePolarFsQuotaResponseBodyPolicyItems `json:"PolicyItems,omitempty" xml:"PolicyItems,omitempty" type:"Repeated"`
+	QuotaItems        []*DescribePolarFsQuotaResponseBodyQuotaItems  `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
 	// Id of the request
 	//
 	// example:
@@ -75,12 +84,20 @@ func (s *DescribePolarFsQuotaResponseBody) GetPageSize() *string {
 	return s.PageSize
 }
 
+func (s *DescribePolarFsQuotaResponseBody) GetPath() *string {
+	return s.Path
+}
+
 func (s *DescribePolarFsQuotaResponseBody) GetPolarFsInstanceId() *string {
 	return s.PolarFsInstanceId
 }
 
 func (s *DescribePolarFsQuotaResponseBody) GetPolicyItems() []*DescribePolarFsQuotaResponseBodyPolicyItems {
 	return s.PolicyItems
+}
+
+func (s *DescribePolarFsQuotaResponseBody) GetQuotaItems() []*DescribePolarFsQuotaResponseBodyQuotaItems {
+	return s.QuotaItems
 }
 
 func (s *DescribePolarFsQuotaResponseBody) GetRequestId() *string {
@@ -106,6 +123,11 @@ func (s *DescribePolarFsQuotaResponseBody) SetPageSize(v string) *DescribePolarF
 	return s
 }
 
+func (s *DescribePolarFsQuotaResponseBody) SetPath(v string) *DescribePolarFsQuotaResponseBody {
+	s.Path = &v
+	return s
+}
+
 func (s *DescribePolarFsQuotaResponseBody) SetPolarFsInstanceId(v string) *DescribePolarFsQuotaResponseBody {
 	s.PolarFsInstanceId = &v
 	return s
@@ -113,6 +135,11 @@ func (s *DescribePolarFsQuotaResponseBody) SetPolarFsInstanceId(v string) *Descr
 
 func (s *DescribePolarFsQuotaResponseBody) SetPolicyItems(v []*DescribePolarFsQuotaResponseBodyPolicyItems) *DescribePolarFsQuotaResponseBody {
 	s.PolicyItems = v
+	return s
+}
+
+func (s *DescribePolarFsQuotaResponseBody) SetQuotaItems(v []*DescribePolarFsQuotaResponseBodyQuotaItems) *DescribePolarFsQuotaResponseBody {
+	s.QuotaItems = v
 	return s
 }
 
@@ -129,6 +156,15 @@ func (s *DescribePolarFsQuotaResponseBody) SetTotalRecordCount(v string) *Descri
 func (s *DescribePolarFsQuotaResponseBody) Validate() error {
 	if s.PolicyItems != nil {
 		for _, item := range s.PolicyItems {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.QuotaItems != nil {
+		for _, item := range s.QuotaItems {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -294,5 +330,85 @@ func (s *DescribePolarFsQuotaResponseBodyPolicyItems) SetSizeLimit(v int64) *Des
 }
 
 func (s *DescribePolarFsQuotaResponseBodyPolicyItems) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribePolarFsQuotaResponseBodyQuotaItems struct {
+	// example:
+	//
+	// 1073741824
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// 100
+	Inodes *int64 `json:"Inodes,omitempty" xml:"Inodes,omitempty"`
+	// example:
+	//
+	// /data
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 104857600
+	UsedCapacity *int64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	// example:
+	//
+	// 1
+	UsedInodes *int64 `json:"UsedInodes,omitempty" xml:"UsedInodes,omitempty"`
+}
+
+func (s DescribePolarFsQuotaResponseBodyQuotaItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribePolarFsQuotaResponseBodyQuotaItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) GetCapacity() *int64 {
+	return s.Capacity
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) GetInodes() *int64 {
+	return s.Inodes
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) GetPath() *string {
+	return s.Path
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) GetUsedCapacity() *int64 {
+	return s.UsedCapacity
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) GetUsedInodes() *int64 {
+	return s.UsedInodes
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) SetCapacity(v int64) *DescribePolarFsQuotaResponseBodyQuotaItems {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) SetInodes(v int64) *DescribePolarFsQuotaResponseBodyQuotaItems {
+	s.Inodes = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) SetPath(v string) *DescribePolarFsQuotaResponseBodyQuotaItems {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) SetUsedCapacity(v int64) *DescribePolarFsQuotaResponseBodyQuotaItems {
+	s.UsedCapacity = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) SetUsedInodes(v int64) *DescribePolarFsQuotaResponseBodyQuotaItems {
+	s.UsedInodes = &v
+	return s
+}
+
+func (s *DescribePolarFsQuotaResponseBodyQuotaItems) Validate() error {
 	return dara.Validate(s)
 }
