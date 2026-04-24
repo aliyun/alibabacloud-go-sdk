@@ -179,7 +179,8 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
-	HttpApiInterUrl *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	HttpApiInterUrl    *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	HttpApiInternalUrl *string `json:"httpApiInternalUrl,omitempty" xml:"httpApiInternalUrl,omitempty"`
 	// HTTP intranet address.
 	//
 	// example:
@@ -231,7 +232,8 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
-	PushGatewayInterUrl *string `json:"pushGatewayInterUrl,omitempty" xml:"pushGatewayInterUrl,omitempty"`
+	PushGatewayInterUrl    *string `json:"pushGatewayInterUrl,omitempty" xml:"pushGatewayInterUrl,omitempty"`
+	PushGatewayInternalUrl *string `json:"pushGatewayInternalUrl,omitempty" xml:"pushGatewayInternalUrl,omitempty"`
 	// Intranet address of PushGateway.
 	//
 	// example:
@@ -249,7 +251,8 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	// example:
 	//
 	// http://workspace-default-cms-xxxxxxx
-	RemoteReadInterUrl *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	RemoteReadInterUrl    *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	RemoteReadInternalUrl *string `json:"remoteReadInternalUrl,omitempty" xml:"remoteReadInternalUrl,omitempty"`
 	// Intranet read address.
 	//
 	// example:
@@ -261,7 +264,8 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	// example:
 	//
 	// https://workspace-default-cms-xxxxxxxxxx
-	RemoteWriteInterUrl *string `json:"remoteWriteInterUrl,omitempty" xml:"remoteWriteInterUrl,omitempty"`
+	RemoteWriteInterUrl    *string `json:"remoteWriteInterUrl,omitempty" xml:"remoteWriteInterUrl,omitempty"`
+	RemoteWriteInternalUrl *string `json:"remoteWriteInternalUrl,omitempty" xml:"remoteWriteInternalUrl,omitempty"`
 	// Intranet write address.
 	//
 	// example:
@@ -380,6 +384,10 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetHttpApiInterUrl
 	return s.HttpApiInterUrl
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetHttpApiInternalUrl() *string {
+	return s.HttpApiInternalUrl
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetHttpApiIntraUrl() *string {
 	return s.HttpApiIntraUrl
 }
@@ -412,6 +420,10 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetPushGatewayInte
 	return s.PushGatewayInterUrl
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetPushGatewayInternalUrl() *string {
+	return s.PushGatewayInternalUrl
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetPushGatewayIntraUrl() *string {
 	return s.PushGatewayIntraUrl
 }
@@ -424,12 +436,20 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetRemoteReadInter
 	return s.RemoteReadInterUrl
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetRemoteReadInternalUrl() *string {
+	return s.RemoteReadInternalUrl
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetRemoteReadIntraUrl() *string {
 	return s.RemoteReadIntraUrl
 }
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetRemoteWriteInterUrl() *string {
 	return s.RemoteWriteInterUrl
+}
+
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetRemoteWriteInternalUrl() *string {
+	return s.RemoteWriteInternalUrl
 }
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetRemoteWriteIntraUrl() *string {
@@ -542,6 +562,11 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetHttpApiInterUrl
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetHttpApiInternalUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
+	s.HttpApiInternalUrl = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetHttpApiIntraUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
 	s.HttpApiIntraUrl = &v
 	return s
@@ -582,6 +607,11 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetPushGatewayInte
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetPushGatewayInternalUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
+	s.PushGatewayInternalUrl = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetPushGatewayIntraUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
 	s.PushGatewayIntraUrl = &v
 	return s
@@ -597,6 +627,11 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetRemoteReadInter
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetRemoteReadInternalUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
+	s.RemoteReadInternalUrl = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetRemoteReadIntraUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
 	s.RemoteReadIntraUrl = &v
 	return s
@@ -604,6 +639,11 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetRemoteReadIntra
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetRemoteWriteInterUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
 	s.RemoteWriteInterUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetRemoteWriteInternalUrl(v string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
+	s.RemoteWriteInternalUrl = &v
 	return s
 }
 

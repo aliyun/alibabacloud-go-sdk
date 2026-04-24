@@ -133,7 +133,8 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	// example:
 	//
 	// http://xxxxxxxx
-	HttpApiInterUrl *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	HttpApiInterUrl    *string `json:"httpApiInterUrl,omitempty" xml:"httpApiInterUrl,omitempty"`
+	HttpApiInternalUrl *string `json:"httpApiInternalUrl,omitempty" xml:"httpApiInternalUrl,omitempty"`
 	// Private HTTP address.
 	//
 	// example:
@@ -183,7 +184,8 @@ type GetPrometheusViewResponseBodyPrometheusView struct {
 	// example:
 	//
 	// http://workspace-default-cms-xxx-cn-hangzhou.cn-hangzhou.log.aliyuncs.com/prometheus/workspace-default-cms-xxx-cn-hangzhou/xxx/api/v1/read
-	RemoteReadInterUrl *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	RemoteReadInterUrl    *string `json:"remoteReadInterUrl,omitempty" xml:"remoteReadInterUrl,omitempty"`
+	RemoteReadInternalUrl *string `json:"remoteReadInternalUrl,omitempty" xml:"remoteReadInternalUrl,omitempty"`
 	// Remote read intranet URL.
 	//
 	// example:
@@ -276,6 +278,10 @@ func (s *GetPrometheusViewResponseBodyPrometheusView) GetHttpApiInterUrl() *stri
 	return s.HttpApiInterUrl
 }
 
+func (s *GetPrometheusViewResponseBodyPrometheusView) GetHttpApiInternalUrl() *string {
+	return s.HttpApiInternalUrl
+}
+
 func (s *GetPrometheusViewResponseBodyPrometheusView) GetHttpApiIntraUrl() *string {
 	return s.HttpApiIntraUrl
 }
@@ -310,6 +316,10 @@ func (s *GetPrometheusViewResponseBodyPrometheusView) GetRegionId() *string {
 
 func (s *GetPrometheusViewResponseBodyPrometheusView) GetRemoteReadInterUrl() *string {
 	return s.RemoteReadInterUrl
+}
+
+func (s *GetPrometheusViewResponseBodyPrometheusView) GetRemoteReadInternalUrl() *string {
+	return s.RemoteReadInternalUrl
 }
 
 func (s *GetPrometheusViewResponseBodyPrometheusView) GetRemoteReadIntraUrl() *string {
@@ -393,6 +403,11 @@ func (s *GetPrometheusViewResponseBodyPrometheusView) SetHttpApiInterUrl(v strin
 	return s
 }
 
+func (s *GetPrometheusViewResponseBodyPrometheusView) SetHttpApiInternalUrl(v string) *GetPrometheusViewResponseBodyPrometheusView {
+	s.HttpApiInternalUrl = &v
+	return s
+}
+
 func (s *GetPrometheusViewResponseBodyPrometheusView) SetHttpApiIntraUrl(v string) *GetPrometheusViewResponseBodyPrometheusView {
 	s.HttpApiIntraUrl = &v
 	return s
@@ -435,6 +450,11 @@ func (s *GetPrometheusViewResponseBodyPrometheusView) SetRegionId(v string) *Get
 
 func (s *GetPrometheusViewResponseBodyPrometheusView) SetRemoteReadInterUrl(v string) *GetPrometheusViewResponseBodyPrometheusView {
 	s.RemoteReadInterUrl = &v
+	return s
+}
+
+func (s *GetPrometheusViewResponseBodyPrometheusView) SetRemoteReadInternalUrl(v string) *GetPrometheusViewResponseBodyPrometheusView {
+	s.RemoteReadInternalUrl = &v
 	return s
 }
 

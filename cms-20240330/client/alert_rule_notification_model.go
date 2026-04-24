@@ -23,6 +23,8 @@ type iAlertRuleNotification interface {
 	GetGroups() []*string
 	SetNotifyTime(v *AlertRuleTimeSpan) *AlertRuleNotification
 	GetNotifyTime() *AlertRuleTimeSpan
+	SetQwencloudContacts(v map[string]map[string]interface{}) *AlertRuleNotification
+	GetQwencloudContacts() map[string]map[string]interface{}
 	SetSilenceTime(v int64) *AlertRuleNotification
 	GetSilenceTime() *int64
 	SetSlackWebhooks(v []*string) *AlertRuleNotification
@@ -44,7 +46,8 @@ type AlertRuleNotification struct {
 	// List of contact group IDs.
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
 	// Notification time window; notifications are sent only during this period.
-	NotifyTime *AlertRuleTimeSpan `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
+	NotifyTime        *AlertRuleTimeSpan                `json:"notifyTime,omitempty" xml:"notifyTime,omitempty"`
+	QwencloudContacts map[string]map[string]interface{} `json:"qwencloudContacts,omitempty" xml:"qwencloudContacts,omitempty"`
 	// Notification silence duration, in seconds.
 	//
 	// example:
@@ -93,6 +96,10 @@ func (s *AlertRuleNotification) GetNotifyTime() *AlertRuleTimeSpan {
 	return s.NotifyTime
 }
 
+func (s *AlertRuleNotification) GetQwencloudContacts() map[string]map[string]interface{} {
+	return s.QwencloudContacts
+}
+
 func (s *AlertRuleNotification) GetSilenceTime() *int64 {
 	return s.SilenceTime
 }
@@ -137,6 +144,11 @@ func (s *AlertRuleNotification) SetGroups(v []*string) *AlertRuleNotification {
 
 func (s *AlertRuleNotification) SetNotifyTime(v *AlertRuleTimeSpan) *AlertRuleNotification {
 	s.NotifyTime = v
+	return s
+}
+
+func (s *AlertRuleNotification) SetQwencloudContacts(v map[string]map[string]interface{}) *AlertRuleNotification {
+	s.QwencloudContacts = v
 	return s
 }
 

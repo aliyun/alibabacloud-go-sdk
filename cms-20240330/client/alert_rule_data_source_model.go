@@ -19,6 +19,8 @@ type iAlertRuleDataSource interface {
 	GetNamespace() *string
 	SetRegionId(v string) *AlertRuleDataSource
 	GetRegionId() *string
+	SetTenantId(v string) *AlertRuleDataSource
+	GetTenantId() *string
 	SetType(v string) *AlertRuleDataSource
 	GetType() *string
 }
@@ -62,6 +64,7 @@ type AlertRuleDataSource struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// Data source type.
 	//
 	// Valid values:
@@ -112,6 +115,10 @@ func (s *AlertRuleDataSource) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *AlertRuleDataSource) GetTenantId() *string {
+	return s.TenantId
+}
+
 func (s *AlertRuleDataSource) GetType() *string {
 	return s.Type
 }
@@ -138,6 +145,11 @@ func (s *AlertRuleDataSource) SetNamespace(v string) *AlertRuleDataSource {
 
 func (s *AlertRuleDataSource) SetRegionId(v string) *AlertRuleDataSource {
 	s.RegionId = &v
+	return s
+}
+
+func (s *AlertRuleDataSource) SetTenantId(v string) *AlertRuleDataSource {
+	s.TenantId = &v
 	return s
 }
 

@@ -11,19 +11,28 @@ type iListPrometheusVirtualInstancesResponseBody interface {
 	GoString() string
 	SetInstances(v []*ListPrometheusVirtualInstancesResponseBodyInstances) *ListPrometheusVirtualInstancesResponseBody
 	GetInstances() []*ListPrometheusVirtualInstancesResponseBodyInstances
+	SetMaxResults(v string) *ListPrometheusVirtualInstancesResponseBody
+	GetMaxResults() *string
+	SetNextToken(v string) *ListPrometheusVirtualInstancesResponseBody
+	GetNextToken() *string
 	SetRequestId(v string) *ListPrometheusVirtualInstancesResponseBody
 	GetRequestId() *string
+	SetTotalCount(v string) *ListPrometheusVirtualInstancesResponseBody
+	GetTotalCount() *string
 }
 
 type ListPrometheusVirtualInstancesResponseBody struct {
 	// Instance information.
-	Instances []*ListPrometheusVirtualInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	Instances  []*ListPrometheusVirtualInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	MaxResults *string                                                `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	NextToken  *string                                                `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// ID of the request
 	//
 	// example:
 	//
 	// 264C3E89-XXXX-XXXX-XXXX-CE9C2196C7DC
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId  *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount *string `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListPrometheusVirtualInstancesResponseBody) String() string {
@@ -38,8 +47,20 @@ func (s *ListPrometheusVirtualInstancesResponseBody) GetInstances() []*ListProme
 	return s.Instances
 }
 
+func (s *ListPrometheusVirtualInstancesResponseBody) GetMaxResults() *string {
+	return s.MaxResults
+}
+
+func (s *ListPrometheusVirtualInstancesResponseBody) GetNextToken() *string {
+	return s.NextToken
+}
+
 func (s *ListPrometheusVirtualInstancesResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *ListPrometheusVirtualInstancesResponseBody) GetTotalCount() *string {
+	return s.TotalCount
 }
 
 func (s *ListPrometheusVirtualInstancesResponseBody) SetInstances(v []*ListPrometheusVirtualInstancesResponseBodyInstances) *ListPrometheusVirtualInstancesResponseBody {
@@ -47,8 +68,23 @@ func (s *ListPrometheusVirtualInstancesResponseBody) SetInstances(v []*ListProme
 	return s
 }
 
+func (s *ListPrometheusVirtualInstancesResponseBody) SetMaxResults(v string) *ListPrometheusVirtualInstancesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPrometheusVirtualInstancesResponseBody) SetNextToken(v string) *ListPrometheusVirtualInstancesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListPrometheusVirtualInstancesResponseBody) SetRequestId(v string) *ListPrometheusVirtualInstancesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListPrometheusVirtualInstancesResponseBody) SetTotalCount(v string) *ListPrometheusVirtualInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 

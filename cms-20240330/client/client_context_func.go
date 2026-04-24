@@ -5159,8 +5159,16 @@ func (client *Client) ListPrometheusVirtualInstancesWithContext(ctx context.Cont
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
 	if !dara.IsNil(request.Namespace) {
 		query["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
 	}
 
 	if !dara.IsNil(request.TenantId) {

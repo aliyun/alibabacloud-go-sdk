@@ -17,6 +17,8 @@ type iAlertRuleCondition interface {
 	GetCompareList() []*AlertRuleConditionCompareList
 	SetCompositeEscalation(v *AlertRuleConditionCompositeEscalation) *AlertRuleCondition
 	GetCompositeEscalation() *AlertRuleConditionCompositeEscalation
+	SetEnableSeveritySuppression(v bool) *AlertRuleCondition
+	GetEnableSeveritySuppression() *bool
 	SetEscalationType(v string) *AlertRuleCondition
 	GetEscalationType() *string
 	SetExpressEscalation(v *AlertRuleConditionExpressEscalation) *AlertRuleCondition
@@ -33,6 +35,8 @@ type iAlertRuleCondition interface {
 	GetRelation() *string
 	SetSimpleEscalation(v *AlertRuleConditionSimpleEscalation) *AlertRuleCondition
 	GetSimpleEscalation() *AlertRuleConditionSimpleEscalation
+	SetTriggers(v []*AlertRuleConditionTriggers) *AlertRuleCondition
+	GetTriggers() []*AlertRuleConditionTriggers
 	SetType(v string) *AlertRuleCondition
 	GetType() *string
 	SetValue(v float64) *AlertRuleCondition
@@ -59,7 +63,8 @@ type AlertRuleCondition struct {
 	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
 	// Valid only when escalationType=composite; composite metric alert condition.
-	CompositeEscalation *AlertRuleConditionCompositeEscalation `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty" type:"Struct"`
+	CompositeEscalation       *AlertRuleConditionCompositeEscalation `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty" type:"Struct"`
+	EnableSeveritySuppression *bool                                  `json:"enableSeveritySuppression,omitempty" xml:"enableSeveritySuppression,omitempty"`
 	// Applicable condition type: CMS_BASIC_CONDITION.
 	//
 	// Valid values:
@@ -142,6 +147,7 @@ type AlertRuleCondition struct {
 	//
 	// Only valid when escalationType=simple; specifies the alert condition for a single metric.
 	SimpleEscalation *AlertRuleConditionSimpleEscalation `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty" type:"Struct"`
+	Triggers         []*AlertRuleConditionTriggers       `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
 	// Rule condition type, valid values:
 	//
 	// SLS_CONDITION (SLS alert condition),
@@ -188,6 +194,10 @@ func (s *AlertRuleCondition) GetCompositeEscalation() *AlertRuleConditionComposi
 	return s.CompositeEscalation
 }
 
+func (s *AlertRuleCondition) GetEnableSeveritySuppression() *bool {
+	return s.EnableSeveritySuppression
+}
+
 func (s *AlertRuleCondition) GetEscalationType() *string {
 	return s.EscalationType
 }
@@ -220,6 +230,10 @@ func (s *AlertRuleCondition) GetSimpleEscalation() *AlertRuleConditionSimpleEsca
 	return s.SimpleEscalation
 }
 
+func (s *AlertRuleCondition) GetTriggers() []*AlertRuleConditionTriggers {
+	return s.Triggers
+}
+
 func (s *AlertRuleCondition) GetType() *string {
 	return s.Type
 }
@@ -245,6 +259,11 @@ func (s *AlertRuleCondition) SetCompareList(v []*AlertRuleConditionCompareList) 
 
 func (s *AlertRuleCondition) SetCompositeEscalation(v *AlertRuleConditionCompositeEscalation) *AlertRuleCondition {
 	s.CompositeEscalation = v
+	return s
+}
+
+func (s *AlertRuleCondition) SetEnableSeveritySuppression(v bool) *AlertRuleCondition {
+	s.EnableSeveritySuppression = &v
 	return s
 }
 
@@ -285,6 +304,11 @@ func (s *AlertRuleCondition) SetRelation(v string) *AlertRuleCondition {
 
 func (s *AlertRuleCondition) SetSimpleEscalation(v *AlertRuleConditionSimpleEscalation) *AlertRuleCondition {
 	s.SimpleEscalation = v
+	return s
+}
+
+func (s *AlertRuleCondition) SetTriggers(v []*AlertRuleConditionTriggers) *AlertRuleCondition {
+	s.Triggers = v
 	return s
 }
 
@@ -330,6 +354,15 @@ func (s *AlertRuleCondition) Validate() error {
 	if s.SimpleEscalation != nil {
 		if err := s.SimpleEscalation.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.Triggers != nil {
+		for _, item := range s.Triggers {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	return nil
@@ -1091,5 +1124,164 @@ func (s *AlertRuleConditionSimpleEscalationEscalations) SetTimes(v int32) *Alert
 }
 
 func (s *AlertRuleConditionSimpleEscalationEscalations) Validate() error {
+	return dara.Validate(s)
+}
+
+type AlertRuleConditionTriggers struct {
+	DurationSecs *int32                                `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
+	Expression   *AlertRuleConditionTriggersExpression `json:"expression,omitempty" xml:"expression,omitempty" type:"Struct"`
+	Severity     *string                               `json:"severity,omitempty" xml:"severity,omitempty"`
+}
+
+func (s AlertRuleConditionTriggers) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AlertRuleConditionTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *AlertRuleConditionTriggers) GetDurationSecs() *int32 {
+	return s.DurationSecs
+}
+
+func (s *AlertRuleConditionTriggers) GetExpression() *AlertRuleConditionTriggersExpression {
+	return s.Expression
+}
+
+func (s *AlertRuleConditionTriggers) GetSeverity() *string {
+	return s.Severity
+}
+
+func (s *AlertRuleConditionTriggers) SetDurationSecs(v int32) *AlertRuleConditionTriggers {
+	s.DurationSecs = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggers) SetExpression(v *AlertRuleConditionTriggersExpression) *AlertRuleConditionTriggers {
+	s.Expression = v
+	return s
+}
+
+func (s *AlertRuleConditionTriggers) SetSeverity(v string) *AlertRuleConditionTriggers {
+	s.Severity = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggers) Validate() error {
+	if s.Expression != nil {
+		if err := s.Expression.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type AlertRuleConditionTriggersExpression struct {
+	Conditions     []*AlertRuleConditionTriggersExpressionConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
+	ExpressionType *string                                           `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
+	LogicOperator  *string                                           `json:"logicOperator,omitempty" xml:"logicOperator,omitempty"`
+}
+
+func (s AlertRuleConditionTriggersExpression) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AlertRuleConditionTriggersExpression) GoString() string {
+	return s.String()
+}
+
+func (s *AlertRuleConditionTriggersExpression) GetConditions() []*AlertRuleConditionTriggersExpressionConditions {
+	return s.Conditions
+}
+
+func (s *AlertRuleConditionTriggersExpression) GetExpressionType() *string {
+	return s.ExpressionType
+}
+
+func (s *AlertRuleConditionTriggersExpression) GetLogicOperator() *string {
+	return s.LogicOperator
+}
+
+func (s *AlertRuleConditionTriggersExpression) SetConditions(v []*AlertRuleConditionTriggersExpressionConditions) *AlertRuleConditionTriggersExpression {
+	s.Conditions = v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpression) SetExpressionType(v string) *AlertRuleConditionTriggersExpression {
+	s.ExpressionType = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpression) SetLogicOperator(v string) *AlertRuleConditionTriggersExpression {
+	s.LogicOperator = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpression) Validate() error {
+	if s.Conditions != nil {
+		for _, item := range s.Conditions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AlertRuleConditionTriggersExpressionConditions struct {
+	ExpressionType *string  `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
+	Operator       *string  `json:"operator,omitempty" xml:"operator,omitempty"`
+	QueryName      *string  `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	Threshold      *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+}
+
+func (s AlertRuleConditionTriggersExpressionConditions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AlertRuleConditionTriggersExpressionConditions) GoString() string {
+	return s.String()
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) GetExpressionType() *string {
+	return s.ExpressionType
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) GetQueryName() *string {
+	return s.QueryName
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) GetThreshold() *float64 {
+	return s.Threshold
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) SetExpressionType(v string) *AlertRuleConditionTriggersExpressionConditions {
+	s.ExpressionType = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) SetOperator(v string) *AlertRuleConditionTriggersExpressionConditions {
+	s.Operator = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) SetQueryName(v string) *AlertRuleConditionTriggersExpressionConditions {
+	s.QueryName = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) SetThreshold(v float64) *AlertRuleConditionTriggersExpressionConditions {
+	s.Threshold = &v
+	return s
+}
+
+func (s *AlertRuleConditionTriggersExpressionConditions) Validate() error {
 	return dara.Validate(s)
 }

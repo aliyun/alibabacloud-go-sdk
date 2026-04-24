@@ -739,7 +739,9 @@ type AlertRuleQueryQueries struct {
 	// example:
 	//
 	// sum by (rpc,acs_arms_service_id,pid,rpcType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{callKind=~\\"http|rpc|custom_entry|server|consumer\\",pid=\\"gaddp9ap8q@cb005ffdf44b8ac\\",source=\\"apm\\"}[1m]))
-	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	Expr   *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	PromQl *string `json:"promQl,omitempty" xml:"promQl,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY.
 	//
 	// SLS query time offset start time (relative).
@@ -800,6 +802,14 @@ func (s *AlertRuleQueryQueries) GetExpr() *string {
 	return s.Expr
 }
 
+func (s *AlertRuleQueryQueries) GetName() *string {
+	return s.Name
+}
+
+func (s *AlertRuleQueryQueries) GetPromQl() *string {
+	return s.PromQl
+}
+
 func (s *AlertRuleQueryQueries) GetStart() *int64 {
 	return s.Start
 }
@@ -839,6 +849,16 @@ func (s *AlertRuleQueryQueries) SetEnd(v int64) *AlertRuleQueryQueries {
 
 func (s *AlertRuleQueryQueries) SetExpr(v string) *AlertRuleQueryQueries {
 	s.Expr = &v
+	return s
+}
+
+func (s *AlertRuleQueryQueries) SetName(v string) *AlertRuleQueryQueries {
+	s.Name = &v
+	return s
+}
+
+func (s *AlertRuleQueryQueries) SetPromQl(v string) *AlertRuleQueryQueries {
+	s.PromQl = &v
 	return s
 }
 
