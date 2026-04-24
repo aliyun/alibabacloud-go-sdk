@@ -13,6 +13,8 @@ type iModifyScheduledTaskRequest interface {
 	GetDescription() *string
 	SetFrequency(v string) *ModifyScheduledTaskRequest
 	GetFrequency() *string
+	SetInspectionItems(v string) *ModifyScheduledTaskRequest
+	GetInspectionItems() *string
 	SetInstanceIds(v string) *ModifyScheduledTaskRequest
 	GetInstanceIds() *string
 	SetName(v string) *ModifyScheduledTaskRequest
@@ -53,7 +55,8 @@ type ModifyScheduledTaskRequest struct {
 	// example:
 	//
 	// Monday
-	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
 	// The new list of related instances. Separate multiple instances with commas (,).
 	//
 	// example:
@@ -101,6 +104,10 @@ func (s *ModifyScheduledTaskRequest) GetFrequency() *string {
 	return s.Frequency
 }
 
+func (s *ModifyScheduledTaskRequest) GetInspectionItems() *string {
+	return s.InspectionItems
+}
+
 func (s *ModifyScheduledTaskRequest) GetInstanceIds() *string {
 	return s.InstanceIds
 }
@@ -132,6 +139,11 @@ func (s *ModifyScheduledTaskRequest) SetDescription(v string) *ModifyScheduledTa
 
 func (s *ModifyScheduledTaskRequest) SetFrequency(v string) *ModifyScheduledTaskRequest {
 	s.Frequency = &v
+	return s
+}
+
+func (s *ModifyScheduledTaskRequest) SetInspectionItems(v string) *ModifyScheduledTaskRequest {
+	s.InspectionItems = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateScheduledTaskRequest interface {
 	GetDescription() *string
 	SetFrequency(v string) *CreateScheduledTaskRequest
 	GetFrequency() *string
+	SetInspectionItems(v string) *CreateScheduledTaskRequest
+	GetInspectionItems() *string
 	SetInstanceIds(v string) *CreateScheduledTaskRequest
 	GetInstanceIds() *string
 	SetName(v string) *CreateScheduledTaskRequest
@@ -55,7 +57,8 @@ type CreateScheduledTaskRequest struct {
 	// example:
 	//
 	// Monday
-	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
 	// The IDs of the related instances. Separate multiple IDs with commas (,).
 	//
 	// example:
@@ -100,6 +103,10 @@ func (s *CreateScheduledTaskRequest) GetFrequency() *string {
 	return s.Frequency
 }
 
+func (s *CreateScheduledTaskRequest) GetInspectionItems() *string {
+	return s.InspectionItems
+}
+
 func (s *CreateScheduledTaskRequest) GetInstanceIds() *string {
 	return s.InstanceIds
 }
@@ -139,6 +146,11 @@ func (s *CreateScheduledTaskRequest) SetDescription(v string) *CreateScheduledTa
 
 func (s *CreateScheduledTaskRequest) SetFrequency(v string) *CreateScheduledTaskRequest {
 	s.Frequency = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetInspectionItems(v string) *CreateScheduledTaskRequest {
+	s.InspectionItems = &v
 	return s
 }
 

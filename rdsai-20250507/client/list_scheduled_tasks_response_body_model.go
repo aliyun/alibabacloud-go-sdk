@@ -178,7 +178,8 @@ type ListScheduledTasksResponseBodySchedules struct {
 	// example:
 	//
 	// Monday
-	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	Frequency       *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
 	// The number of instances covered by the task.
 	//
 	// example:
@@ -226,6 +227,10 @@ func (s *ListScheduledTasksResponseBodySchedules) GetFrequency() *string {
 	return s.Frequency
 }
 
+func (s *ListScheduledTasksResponseBodySchedules) GetInspectionItems() *string {
+	return s.InspectionItems
+}
+
 func (s *ListScheduledTasksResponseBodySchedules) GetInstanceCount() *int64 {
 	return s.InstanceCount
 }
@@ -270,6 +275,11 @@ func (s *ListScheduledTasksResponseBodySchedules) SetDescription(v string) *List
 
 func (s *ListScheduledTasksResponseBodySchedules) SetFrequency(v string) *ListScheduledTasksResponseBodySchedules {
 	s.Frequency = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodySchedules) SetInspectionItems(v string) *ListScheduledTasksResponseBodySchedules {
+	s.InspectionItems = &v
 	return s
 }
 

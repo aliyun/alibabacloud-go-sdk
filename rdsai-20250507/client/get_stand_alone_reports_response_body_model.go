@@ -158,10 +158,11 @@ type GetStandAloneReportsResponseBodyReports struct {
 	// example:
 	//
 	// 2026-01-23T08:20:31Z
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The start time of the inspection. The time is in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
@@ -198,6 +199,10 @@ func (s *GetStandAloneReportsResponseBodyReports) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetStandAloneReportsResponseBodyReports) GetInspectionItems() *string {
+	return s.InspectionItems
+}
+
 func (s *GetStandAloneReportsResponseBodyReports) GetRegionId() *string {
 	return s.RegionId
 }
@@ -229,6 +234,11 @@ func (s *GetStandAloneReportsResponseBodyReports) SetCreatedTime(v string) *GetS
 
 func (s *GetStandAloneReportsResponseBodyReports) SetEndTime(v string) *GetStandAloneReportsResponseBodyReports {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetStandAloneReportsResponseBodyReports) SetInspectionItems(v string) *GetStandAloneReportsResponseBodyReports {
+	s.InspectionItems = &v
 	return s
 }
 

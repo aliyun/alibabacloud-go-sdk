@@ -158,10 +158,11 @@ type GetScheduledReportsResponseBodyReports struct {
 	// example:
 	//
 	// 2025-01-01T23:59:59Z
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
@@ -198,6 +199,10 @@ func (s *GetScheduledReportsResponseBodyReports) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetScheduledReportsResponseBodyReports) GetInspectionItems() *string {
+	return s.InspectionItems
+}
+
 func (s *GetScheduledReportsResponseBodyReports) GetRegionId() *string {
 	return s.RegionId
 }
@@ -229,6 +234,11 @@ func (s *GetScheduledReportsResponseBodyReports) SetCreatedTime(v string) *GetSc
 
 func (s *GetScheduledReportsResponseBodyReports) SetEndTime(v string) *GetScheduledReportsResponseBodyReports {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetScheduledReportsResponseBodyReports) SetInspectionItems(v string) *GetScheduledReportsResponseBodyReports {
+	s.InspectionItems = &v
 	return s
 }
 
