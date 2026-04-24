@@ -17,6 +17,8 @@ type iFaceLivenessRequest interface {
 	GetFacePictureUrl() *string
 	SetFaceQuality(v string) *FaceLivenessRequest
 	GetFaceQuality() *string
+	SetFaceQualityCheck(v string) *FaceLivenessRequest
+	GetFaceQualityCheck() *string
 	SetMerchantBizId(v string) *FaceLivenessRequest
 	GetMerchantBizId() *string
 	SetMerchantUserId(v string) *FaceLivenessRequest
@@ -60,6 +62,10 @@ type FaceLivenessRequest struct {
 	//
 	// T
 	FaceQuality *string `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
+	// example:
+	//
+	// Y
+	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
 	// A custom unique business identifier. You can use this identifier to track and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure the identifier is unique.
 	//
 	// > Alibaba Cloud servers do not check the uniqueness of this value. For better tracking, ensure this value is unique.
@@ -116,6 +122,10 @@ func (s *FaceLivenessRequest) GetFaceQuality() *string {
 	return s.FaceQuality
 }
 
+func (s *FaceLivenessRequest) GetFaceQualityCheck() *string {
+	return s.FaceQualityCheck
+}
+
 func (s *FaceLivenessRequest) GetMerchantBizId() *string {
 	return s.MerchantBizId
 }
@@ -149,6 +159,11 @@ func (s *FaceLivenessRequest) SetFacePictureUrl(v string) *FaceLivenessRequest {
 
 func (s *FaceLivenessRequest) SetFaceQuality(v string) *FaceLivenessRequest {
 	s.FaceQuality = &v
+	return s
+}
+
+func (s *FaceLivenessRequest) SetFaceQualityCheck(v string) *FaceLivenessRequest {
+	s.FaceQualityCheck = &v
 	return s
 }
 

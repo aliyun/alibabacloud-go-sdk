@@ -105,7 +105,8 @@ type FaceDuplicationCheckIntlResponseBodyResult struct {
 	// {\\"faceGroupCode\\":\\"sg7****uzt\\",\\"faceId\\":\\"f5a921*******9e792ec84c8f0ca592a\\"}
 	//
 	// ]
-	DuplicateFace *string `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
+	DuplicateFace *string                                                `json:"DuplicateFace,omitempty" xml:"DuplicateFace,omitempty"`
+	ExtFaceInfo   *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
 	// The estimated age of the face, which may not be returned if the prediction fails.
 	//
 	// example:
@@ -198,6 +199,10 @@ func (s *FaceDuplicationCheckIntlResponseBodyResult) GetDuplicateFace() *string 
 	return s.DuplicateFace
 }
 
+func (s *FaceDuplicationCheckIntlResponseBodyResult) GetExtFaceInfo() *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	return s.ExtFaceInfo
+}
+
 func (s *FaceDuplicationCheckIntlResponseBodyResult) GetFaceAge() *string {
 	return s.FaceAge
 }
@@ -240,6 +245,11 @@ func (s *FaceDuplicationCheckIntlResponseBodyResult) GetTransactionId() *string 
 
 func (s *FaceDuplicationCheckIntlResponseBodyResult) SetDuplicateFace(v string) *FaceDuplicationCheckIntlResponseBodyResult {
 	s.DuplicateFace = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResult) SetExtFaceInfo(v *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) *FaceDuplicationCheckIntlResponseBodyResult {
+	s.ExtFaceInfo = v
 	return s
 }
 
@@ -294,5 +304,90 @@ func (s *FaceDuplicationCheckIntlResponseBodyResult) SetTransactionId(v string) 
 }
 
 func (s *FaceDuplicationCheckIntlResponseBodyResult) Validate() error {
+	if s.ExtFaceInfo != nil {
+		if err := s.ExtFaceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo struct {
+	// example:
+	//
+	// 39.04
+	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// example:
+	//
+	// 0.02
+	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// example:
+	//
+	// 20
+	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// example:
+	//
+	// 50.26
+	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// example:
+	//
+	// 86.47
+	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+}
+
+func (s FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetFaceQualityScore() *float64 {
+	return s.FaceQualityScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetIlluminationScore() *float64 {
+	return s.IlluminationScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetKaOcclusionScore() *float64 {
+	return s.KaOcclusionScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetOcclusionScore() *float64 {
+	return s.OcclusionScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) GetSharpnessScore() *float64 {
+	return s.SharpnessScore
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.FaceQualityScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetIlluminationScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.IlluminationScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetKaOcclusionScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.KaOcclusionScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetOcclusionScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.OcclusionScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo {
+	s.SharpnessScore = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo) Validate() error {
 	return dara.Validate(s)
 }

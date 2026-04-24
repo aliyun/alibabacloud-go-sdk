@@ -11,6 +11,8 @@ type iFaceCompareRequest interface {
 	GoString() string
 	SetFacePictureQualityCheck(v string) *FaceCompareRequest
 	GetFacePictureQualityCheck() *string
+	SetFaceQualityCheck(v string) *FaceCompareRequest
+	GetFaceQualityCheck() *string
 	SetMerchantBizId(v string) *FaceCompareRequest
 	GetMerchantBizId() *string
 	SetSourceFacePicture(v string) *FaceCompareRequest
@@ -30,6 +32,10 @@ type FaceCompareRequest struct {
 	//
 	// N
 	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
+	// example:
+	//
+	// Y
+	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
 	// A custom unique business ID used for troubleshooting. It can be a combination of up to 32 letters and digits. Make sure that the ID is unique.
 	//
 	// example:
@@ -84,6 +90,10 @@ func (s *FaceCompareRequest) GetFacePictureQualityCheck() *string {
 	return s.FacePictureQualityCheck
 }
 
+func (s *FaceCompareRequest) GetFaceQualityCheck() *string {
+	return s.FaceQualityCheck
+}
+
 func (s *FaceCompareRequest) GetMerchantBizId() *string {
 	return s.MerchantBizId
 }
@@ -106,6 +116,11 @@ func (s *FaceCompareRequest) GetTargetFacePictureUrl() *string {
 
 func (s *FaceCompareRequest) SetFacePictureQualityCheck(v string) *FaceCompareRequest {
 	s.FacePictureQualityCheck = &v
+	return s
+}
+
+func (s *FaceCompareRequest) SetFaceQualityCheck(v string) *FaceCompareRequest {
+	s.FaceQualityCheck = &v
 	return s
 }
 

@@ -91,6 +91,7 @@ func (s *FaceCompareV2ResponseBody) Validate() error {
 }
 
 type FaceCompareV2ResponseBodyResult struct {
+	ExtFaceInfo *FaceCompareV2ResponseBodyResultExtFaceInfo `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// 98
@@ -113,6 +114,10 @@ func (s FaceCompareV2ResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *FaceCompareV2ResponseBodyResult) GetExtFaceInfo() *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	return s.ExtFaceInfo
+}
+
 func (s *FaceCompareV2ResponseBodyResult) GetFaceComparisonScore() *float64 {
 	return s.FaceComparisonScore
 }
@@ -123,6 +128,11 @@ func (s *FaceCompareV2ResponseBodyResult) GetPassed() *string {
 
 func (s *FaceCompareV2ResponseBodyResult) GetTransactionId() *string {
 	return s.TransactionId
+}
+
+func (s *FaceCompareV2ResponseBodyResult) SetExtFaceInfo(v *FaceCompareV2ResponseBodyResultExtFaceInfo) *FaceCompareV2ResponseBodyResult {
+	s.ExtFaceInfo = v
+	return s
 }
 
 func (s *FaceCompareV2ResponseBodyResult) SetFaceComparisonScore(v float64) *FaceCompareV2ResponseBodyResult {
@@ -141,5 +151,90 @@ func (s *FaceCompareV2ResponseBodyResult) SetTransactionId(v string) *FaceCompar
 }
 
 func (s *FaceCompareV2ResponseBodyResult) Validate() error {
+	if s.ExtFaceInfo != nil {
+		if err := s.ExtFaceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type FaceCompareV2ResponseBodyResultExtFaceInfo struct {
+	// example:
+	//
+	// 39.04
+	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// example:
+	//
+	// 0.02
+	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// example:
+	//
+	// 20
+	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
+	// example:
+	//
+	// 50.26
+	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// example:
+	//
+	// 86.47
+	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
+}
+
+func (s FaceCompareV2ResponseBodyResultExtFaceInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s FaceCompareV2ResponseBodyResultExtFaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetFaceQualityScore() *float64 {
+	return s.FaceQualityScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetIlluminationScore() *float64 {
+	return s.IlluminationScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetKaOcclusionScore() *float64 {
+	return s.KaOcclusionScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetOcclusionScore() *float64 {
+	return s.OcclusionScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) GetSharpnessScore() *float64 {
+	return s.SharpnessScore
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.FaceQualityScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetIlluminationScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.IlluminationScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetKaOcclusionScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.KaOcclusionScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetOcclusionScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.OcclusionScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceCompareV2ResponseBodyResultExtFaceInfo {
+	s.SharpnessScore = &v
+	return s
+}
+
+func (s *FaceCompareV2ResponseBodyResultExtFaceInfo) Validate() error {
 	return dara.Validate(s)
 }

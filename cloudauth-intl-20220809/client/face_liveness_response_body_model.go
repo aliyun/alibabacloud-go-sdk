@@ -204,12 +204,28 @@ type FaceLivenessResponseBodyResultExtFaceInfo struct {
 	//
 	// 87.19
 	FaceQualityScore *float64 `json:"FaceQualityScore,omitempty" xml:"FaceQualityScore,omitempty"`
+	// example:
+	//
+	// 0.02
+	IlluminationScore *float64 `json:"IlluminationScore,omitempty" xml:"IlluminationScore,omitempty"`
+	// example:
+	//
+	// 20
+	KaOcclusionScore *float64 `json:"KaOcclusionScore,omitempty" xml:"KaOcclusionScore,omitempty"`
 	// Optional. Indicates whether the face is occluded. Y means the face is occluded. N means the face is not occluded.
 	//
 	// example:
 	//
 	// Y
 	OcclusionResult *string `json:"OcclusionResult,omitempty" xml:"OcclusionResult,omitempty"`
+	// example:
+	//
+	// 50.26
+	OcclusionScore *float64 `json:"OcclusionScore,omitempty" xml:"OcclusionScore,omitempty"`
+	// example:
+	//
+	// 86.47
+	SharpnessScore *float64 `json:"SharpnessScore,omitempty" xml:"SharpnessScore,omitempty"`
 }
 
 func (s FaceLivenessResponseBodyResultExtFaceInfo) String() string {
@@ -236,8 +252,24 @@ func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetFaceQualityScore() *float
 	return s.FaceQualityScore
 }
 
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetIlluminationScore() *float64 {
+	return s.IlluminationScore
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetKaOcclusionScore() *float64 {
+	return s.KaOcclusionScore
+}
+
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetOcclusionResult() *string {
 	return s.OcclusionResult
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetOcclusionScore() *float64 {
+	return s.OcclusionScore
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) GetSharpnessScore() *float64 {
+	return s.SharpnessScore
 }
 
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceAge(v int32) *FaceLivenessResponseBodyResultExtFaceInfo {
@@ -260,8 +292,28 @@ func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetFaceQualityScore(v float6
 	return s
 }
 
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetIlluminationScore(v float64) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.IlluminationScore = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetKaOcclusionScore(v float64) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.KaOcclusionScore = &v
+	return s
+}
+
 func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetOcclusionResult(v string) *FaceLivenessResponseBodyResultExtFaceInfo {
 	s.OcclusionResult = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetOcclusionScore(v float64) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.OcclusionScore = &v
+	return s
+}
+
+func (s *FaceLivenessResponseBodyResultExtFaceInfo) SetSharpnessScore(v float64) *FaceLivenessResponseBodyResultExtFaceInfo {
+	s.SharpnessScore = &v
 	return s
 }
 

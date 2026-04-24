@@ -13,6 +13,8 @@ type iFaceDuplicationCheckIntlRequest interface {
 	GetAutoRegistration() *string
 	SetFaceGroupCodes(v string) *FaceDuplicationCheckIntlRequest
 	GetFaceGroupCodes() *string
+	SetFaceQualityCheck(v string) *FaceDuplicationCheckIntlRequest
+	GetFaceQualityCheck() *string
 	SetFaceRegisterGroupCode(v string) *FaceDuplicationCheckIntlRequest
 	GetFaceRegisterGroupCode() *string
 	SetFaceVerifyThreshold(v string) *FaceDuplicationCheckIntlRequest
@@ -60,6 +62,10 @@ type FaceDuplicationCheckIntlRequest struct {
 	//
 	// 1232344，23444
 	FaceGroupCodes *string `json:"FaceGroupCodes,omitempty" xml:"FaceGroupCodes,omitempty"`
+	// example:
+	//
+	// Y
+	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
 	// Face registration library.
 	//
 	// example:
@@ -188,6 +194,10 @@ func (s *FaceDuplicationCheckIntlRequest) GetFaceGroupCodes() *string {
 	return s.FaceGroupCodes
 }
 
+func (s *FaceDuplicationCheckIntlRequest) GetFaceQualityCheck() *string {
+	return s.FaceQualityCheck
+}
+
 func (s *FaceDuplicationCheckIntlRequest) GetFaceRegisterGroupCode() *string {
 	return s.FaceRegisterGroupCode
 }
@@ -251,6 +261,11 @@ func (s *FaceDuplicationCheckIntlRequest) SetAutoRegistration(v string) *FaceDup
 
 func (s *FaceDuplicationCheckIntlRequest) SetFaceGroupCodes(v string) *FaceDuplicationCheckIntlRequest {
 	s.FaceGroupCodes = &v
+	return s
+}
+
+func (s *FaceDuplicationCheckIntlRequest) SetFaceQualityCheck(v string) *FaceDuplicationCheckIntlRequest {
+	s.FaceQualityCheck = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iFaceCompareV2Request interface {
 	GoString() string
 	SetFacePictureQualityCheck(v string) *FaceCompareV2Request
 	GetFacePictureQualityCheck() *string
+	SetFaceQualityCheck(v string) *FaceCompareV2Request
+	GetFaceQualityCheck() *string
 	SetMerchantBizId(v string) *FaceCompareV2Request
 	GetMerchantBizId() *string
 	SetSourceFacePicture(v string) *FaceCompareV2Request
@@ -32,6 +34,10 @@ type FaceCompareV2Request struct {
 	//
 	// N
 	FacePictureQualityCheck *string `json:"FacePictureQualityCheck,omitempty" xml:"FacePictureQualityCheck,omitempty"`
+	// example:
+	//
+	// Y
+	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
@@ -74,6 +80,10 @@ func (s *FaceCompareV2Request) GetFacePictureQualityCheck() *string {
 	return s.FacePictureQualityCheck
 }
 
+func (s *FaceCompareV2Request) GetFaceQualityCheck() *string {
+	return s.FaceQualityCheck
+}
+
 func (s *FaceCompareV2Request) GetMerchantBizId() *string {
 	return s.MerchantBizId
 }
@@ -104,6 +114,11 @@ func (s *FaceCompareV2Request) GetTargetFacePictureUrl() *string {
 
 func (s *FaceCompareV2Request) SetFacePictureQualityCheck(v string) *FaceCompareV2Request {
 	s.FacePictureQualityCheck = &v
+	return s
+}
+
+func (s *FaceCompareV2Request) SetFaceQualityCheck(v string) *FaceCompareV2Request {
+	s.FaceQualityCheck = &v
 	return s
 }
 

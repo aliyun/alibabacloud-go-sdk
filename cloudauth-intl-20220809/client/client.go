@@ -2807,6 +2807,10 @@ func (client *Client) FaceCompareWithOptions(request *FaceCompareRequest, runtim
 		query["FacePictureQualityCheck"] = request.FacePictureQualityCheck
 	}
 
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
+	}
+
 	if !dara.IsNil(request.MerchantBizId) {
 		query["MerchantBizId"] = request.MerchantBizId
 	}
@@ -2889,6 +2893,10 @@ func (client *Client) FaceCompareV2WithOptions(request *FaceCompareV2Request, ru
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.FacePictureQualityCheck) {
 		query["FacePictureQualityCheck"] = request.FacePictureQualityCheck
+	}
+
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
 	}
 
 	if !dara.IsNil(request.MerchantBizId) {
@@ -3233,6 +3241,10 @@ func (client *Client) FaceDuplicationCheckIntlWithOptions(request *FaceDuplicati
 		body["FaceGroupCodes"] = request.FaceGroupCodes
 	}
 
+	if !dara.IsNil(request.FaceQualityCheck) {
+		body["FaceQualityCheck"] = request.FaceQualityCheck
+	}
+
 	if !dara.IsNil(request.FaceRegisterGroupCode) {
 		body["FaceRegisterGroupCode"] = request.FaceRegisterGroupCode
 	}
@@ -3432,6 +3444,10 @@ func (client *Client) FaceLivenessWithOptions(request *FaceLivenessRequest, runt
 
 	if !dara.IsNil(request.FaceQuality) {
 		query["FaceQuality"] = request.FaceQuality
+	}
+
+	if !dara.IsNil(request.FaceQualityCheck) {
+		query["FaceQualityCheck"] = request.FaceQualityCheck
 	}
 
 	if !dara.IsNil(request.MerchantBizId) {
