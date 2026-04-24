@@ -149,6 +149,8 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecution) Vali
 
 type DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet struct {
 	CreationTime    *string                                                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	ErrorCode       *string                                                                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorInfo       *string                                                                                         `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	ExecutionId     *string                                                                                         `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	ImageId         *string                                                                                         `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	ImagePipelineId *string                                                                                         `json:"ImagePipelineId,omitempty" xml:"ImagePipelineId,omitempty"`
@@ -169,6 +171,14 @@ func (s DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePi
 
 func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) GetCreationTime() *string {
 	return s.CreationTime
+}
+
+func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) GetErrorInfo() *string {
+	return s.ErrorInfo
 }
 
 func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) GetExecutionId() *string {
@@ -205,6 +215,16 @@ func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImageP
 
 func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) SetCreationTime(v string) *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) SetErrorCode(v string) *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet) SetErrorInfo(v string) *DescribeImagePipelineExecutionsResponseBodyImagePipelineExecutionImagePipelineExecutionSet {
+	s.ErrorInfo = &v
 	return s
 }
 
