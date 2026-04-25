@@ -9,6 +9,8 @@ type iStopInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetForce(v bool) *StopInstanceRequest
+	GetForce() *bool
 	SetInstanceName(v string) *StopInstanceRequest
 	GetInstanceName() *string
 	SetRegionId(v string) *StopInstanceRequest
@@ -16,6 +18,7 @@ type iStopInstanceRequest interface {
 }
 
 type StopInstanceRequest struct {
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.
@@ -40,12 +43,21 @@ func (s StopInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StopInstanceRequest) GetForce() *bool {
+	return s.Force
+}
+
 func (s *StopInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
 func (s *StopInstanceRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *StopInstanceRequest) SetForce(v bool) *StopInstanceRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *StopInstanceRequest) SetInstanceName(v string) *StopInstanceRequest {

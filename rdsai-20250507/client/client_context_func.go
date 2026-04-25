@@ -3407,6 +3407,10 @@ func (client *Client) StopInstanceWithContext(ctx context.Context, request *Stop
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Force) {
+		query["Force"] = request.Force
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}

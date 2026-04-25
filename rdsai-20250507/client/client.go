@@ -4690,6 +4690,10 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Force) {
+		query["Force"] = request.Force
+	}
+
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
 	}
