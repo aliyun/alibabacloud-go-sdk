@@ -183,10 +183,7 @@ type ModifyBrowserInstanceGroupRequestBrowserConfig struct {
 	//
 	// --incognito
 	BrowserParam *string `json:"BrowserParam,omitempty" xml:"BrowserParam,omitempty"`
-	// example:
-	//
-	// true
-	CookiesSync *string `json:"CookiesSync,omitempty" xml:"CookiesSync,omitempty"`
+	CookiesSync  *bool   `json:"CookiesSync,omitempty" xml:"CookiesSync,omitempty"`
 	// The home page.
 	//
 	// example:
@@ -217,7 +214,7 @@ func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetBrowserParam() *stri
 	return s.BrowserParam
 }
 
-func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetCookiesSync() *string {
+func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) GetCookiesSync() *bool {
 	return s.CookiesSync
 }
 
@@ -244,7 +241,7 @@ func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetBrowserParam(v strin
 	return s
 }
 
-func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetCookiesSync(v string) *ModifyBrowserInstanceGroupRequestBrowserConfig {
+func (s *ModifyBrowserInstanceGroupRequestBrowserConfig) SetCookiesSync(v bool) *ModifyBrowserInstanceGroupRequestBrowserConfig {
 	s.CookiesSync = &v
 	return s
 }
