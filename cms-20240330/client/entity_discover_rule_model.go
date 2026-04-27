@@ -17,8 +17,8 @@ type iEntityDiscoverRule interface {
   GetFieldRules() []*EntityDiscoverRuleFieldRules 
   SetInstanceIds(v []*string) *EntityDiscoverRule
   GetInstanceIds() []*string 
-  SetIpMatchRule(v []*EntityDiscoverRuleIpMatchRule) *EntityDiscoverRule
-  GetIpMatchRule() []*EntityDiscoverRuleIpMatchRule 
+  SetIpMatchRule(v *EntityDiscoverRuleIpMatchRule) *EntityDiscoverRule
+  GetIpMatchRule() *EntityDiscoverRuleIpMatchRule 
   SetLabels(v []*EntityDiscoverRuleLabels) *EntityDiscoverRule
   GetLabels() []*EntityDiscoverRuleLabels 
   SetRegionIds(v []*string) *EntityDiscoverRule
@@ -34,7 +34,7 @@ type EntityDiscoverRule struct {
   EntityTypes []*string `json:"entityTypes,omitempty" xml:"entityTypes,omitempty" type:"Repeated"`
   FieldRules []*EntityDiscoverRuleFieldRules `json:"fieldRules,omitempty" xml:"fieldRules,omitempty" type:"Repeated"`
   InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
-  IpMatchRule []*EntityDiscoverRuleIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Repeated"`
+  IpMatchRule *EntityDiscoverRuleIpMatchRule `json:"ipMatchRule,omitempty" xml:"ipMatchRule,omitempty" type:"Struct"`
   Labels []*EntityDiscoverRuleLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Repeated"`
   RegionIds []*string `json:"regionIds,omitempty" xml:"regionIds,omitempty" type:"Repeated"`
   // example:
@@ -68,7 +68,7 @@ func (s *EntityDiscoverRule) GetInstanceIds() []*string  {
   return s.InstanceIds
 }
 
-func (s *EntityDiscoverRule) GetIpMatchRule() []*EntityDiscoverRuleIpMatchRule  {
+func (s *EntityDiscoverRule) GetIpMatchRule() *EntityDiscoverRuleIpMatchRule  {
   return s.IpMatchRule
 }
 
@@ -108,7 +108,7 @@ func (s *EntityDiscoverRule) SetInstanceIds(v []*string) *EntityDiscoverRule {
   return s
 }
 
-func (s *EntityDiscoverRule) SetIpMatchRule(v []*EntityDiscoverRuleIpMatchRule) *EntityDiscoverRule {
+func (s *EntityDiscoverRule) SetIpMatchRule(v *EntityDiscoverRuleIpMatchRule) *EntityDiscoverRule {
   s.IpMatchRule = v
   return s
 }
@@ -153,12 +153,8 @@ func (s *EntityDiscoverRule) Validate() error {
     }
   }
   if s.IpMatchRule != nil {
-    for _, item := range s.IpMatchRule {
-      if item != nil {
-        if err := item.Validate(); err != nil {
-          return err
-        }
-      }
+    if err := s.IpMatchRule.Validate(); err != nil {
+      return err
     }
   }
   if s.Labels != nil {
@@ -285,13 +281,7 @@ func (s *EntityDiscoverRuleFieldRules) Validate() error {
 }
 
 type EntityDiscoverRuleIpMatchRule struct {
-  // example:
-  // 
-  // 192.168.0.1/10
   IpCIDR *string `json:"ipCIDR,omitempty" xml:"ipCIDR,omitempty"`
-  // example:
-  // 
-  // hostIp
   IpFieldKey *string `json:"ipFieldKey,omitempty" xml:"ipFieldKey,omitempty"`
 }
 

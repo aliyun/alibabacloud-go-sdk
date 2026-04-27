@@ -7734,8 +7734,8 @@ func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreNa
 		body["rerank"] = request.Rerank
 	}
 
-	if !dara.IsNil(request.RetrieveLevel) {
-		body["retrieveLevel"] = request.RetrieveLevel
+	if !dara.IsNil(request.RetrievalOption) {
+		body["retrievalOption"] = request.RetrievalOption
 	}
 
 	if !dara.IsNil(request.RunId) {

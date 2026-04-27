@@ -5701,8 +5701,8 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, workspace *
 		body["rerank"] = request.Rerank
 	}
 
-	if !dara.IsNil(request.RetrieveLevel) {
-		body["retrieveLevel"] = request.RetrieveLevel
+	if !dara.IsNil(request.RetrievalOption) {
+		body["retrievalOption"] = request.RetrievalOption
 	}
 
 	if !dara.IsNil(request.RunId) {

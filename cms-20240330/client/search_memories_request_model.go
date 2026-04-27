@@ -19,8 +19,8 @@ type iSearchMemoriesRequest interface {
 	GetQuery() *string
 	SetRerank(v bool) *SearchMemoriesRequest
 	GetRerank() *bool
-	SetRetrieveLevel(v string) *SearchMemoriesRequest
-	GetRetrieveLevel() *string
+	SetRetrievalOption(v string) *SearchMemoriesRequest
+	GetRetrievalOption() *string
 	SetRunId(v string) *SearchMemoriesRequest
 	GetRunId() *string
 	SetSearchType(v string) *SearchMemoriesRequest
@@ -53,8 +53,8 @@ type SearchMemoriesRequest struct {
 	Rerank *bool `json:"rerank,omitempty" xml:"rerank,omitempty"`
 	// example:
 	//
-	// L1
-	RetrieveLevel *string `json:"retrieveLevel,omitempty" xml:"retrieveLevel,omitempty"`
+	// reranker,llm_rank
+	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
 	// example:
 	//
 	// test_session_001
@@ -105,8 +105,8 @@ func (s *SearchMemoriesRequest) GetRerank() *bool {
 	return s.Rerank
 }
 
-func (s *SearchMemoriesRequest) GetRetrieveLevel() *string {
-	return s.RetrieveLevel
+func (s *SearchMemoriesRequest) GetRetrievalOption() *string {
+	return s.RetrievalOption
 }
 
 func (s *SearchMemoriesRequest) GetRunId() *string {
@@ -154,8 +154,8 @@ func (s *SearchMemoriesRequest) SetRerank(v bool) *SearchMemoriesRequest {
 	return s
 }
 
-func (s *SearchMemoriesRequest) SetRetrieveLevel(v string) *SearchMemoriesRequest {
-	s.RetrieveLevel = &v
+func (s *SearchMemoriesRequest) SetRetrievalOption(v string) *SearchMemoriesRequest {
+	s.RetrievalOption = &v
 	return s
 }
 
