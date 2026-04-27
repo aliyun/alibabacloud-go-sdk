@@ -483,7 +483,8 @@ func (s *DescribeUsersResponseBodyUsers) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersExtras struct {
-	AssignedResourceCount map[string]interface{} `json:"AssignedResourceCount,omitempty" xml:"AssignedResourceCount,omitempty"`
+	AssignedResourceCount map[string]interface{}                                    `json:"AssignedResourceCount,omitempty" xml:"AssignedResourceCount,omitempty"`
+	ResourcePolicyList    []*DescribeUsersResponseBodyUsersExtrasResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUsersResponseBodyUsersExtras) String() string {
@@ -498,12 +499,65 @@ func (s *DescribeUsersResponseBodyUsersExtras) GetAssignedResourceCount() map[st
 	return s.AssignedResourceCount
 }
 
+func (s *DescribeUsersResponseBodyUsersExtras) GetResourcePolicyList() []*DescribeUsersResponseBodyUsersExtrasResourcePolicyList {
+	return s.ResourcePolicyList
+}
+
 func (s *DescribeUsersResponseBodyUsersExtras) SetAssignedResourceCount(v map[string]interface{}) *DescribeUsersResponseBodyUsersExtras {
 	s.AssignedResourceCount = v
 	return s
 }
 
+func (s *DescribeUsersResponseBodyUsersExtras) SetResourcePolicyList(v []*DescribeUsersResponseBodyUsersExtrasResourcePolicyList) *DescribeUsersResponseBodyUsersExtras {
+	s.ResourcePolicyList = v
+	return s
+}
+
 func (s *DescribeUsersResponseBodyUsersExtras) Validate() error {
+	if s.ResourcePolicyList != nil {
+		for _, item := range s.ResourcePolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeUsersResponseBodyUsersExtrasResourcePolicyList struct {
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DescribeUsersResponseBodyUsersExtrasResourcePolicyList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeUsersResponseBodyUsersExtrasResourcePolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) GetPolicyName() *string {
+	return s.PolicyName
+}
+
+func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) SetPolicyId(v string) *DescribeUsersResponseBodyUsersExtrasResourcePolicyList {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) SetPolicyName(v string) *DescribeUsersResponseBodyUsersExtrasResourcePolicyList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) Validate() error {
 	return dara.Validate(s)
 }
 

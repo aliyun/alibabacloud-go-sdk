@@ -11,6 +11,8 @@ type iDescribeOrgsRequest interface {
 	GoString() string
 	SetBusinessChannel(v string) *DescribeOrgsRequest
 	GetBusinessChannel() *string
+	SetIncludeOrgIds(v []*string) *DescribeOrgsRequest
+	GetIncludeOrgIds() []*string
 	SetMaxResults(v int64) *DescribeOrgsRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeOrgsRequest
@@ -27,7 +29,8 @@ type DescribeOrgsRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	BusinessChannel *string   `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	IncludeOrgIds   []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
 	// The maximum number of entries to return. Valid values: 1 to 100.\\
 	//
 	// Default value: 100.
@@ -69,6 +72,10 @@ func (s *DescribeOrgsRequest) GetBusinessChannel() *string {
 	return s.BusinessChannel
 }
 
+func (s *DescribeOrgsRequest) GetIncludeOrgIds() []*string {
+	return s.IncludeOrgIds
+}
+
 func (s *DescribeOrgsRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -91,6 +98,11 @@ func (s *DescribeOrgsRequest) GetShowExtras() map[string]interface{} {
 
 func (s *DescribeOrgsRequest) SetBusinessChannel(v string) *DescribeOrgsRequest {
 	s.BusinessChannel = &v
+	return s
+}
+
+func (s *DescribeOrgsRequest) SetIncludeOrgIds(v []*string) *DescribeOrgsRequest {
+	s.IncludeOrgIds = v
 	return s
 }
 

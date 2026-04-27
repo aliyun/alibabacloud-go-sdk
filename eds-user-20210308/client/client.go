@@ -1267,6 +1267,10 @@ func (client *Client) DescribeOrgsWithOptions(tmpReq *DescribeOrgsRequest, runti
 		query["BusinessChannel"] = request.BusinessChannel
 	}
 
+	if !dara.IsNil(request.IncludeOrgIds) {
+		query["IncludeOrgIds"] = request.IncludeOrgIds
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -1415,6 +1419,76 @@ func (client *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeResourceGroupsResponse{}
 	_body, _err := client.DescribeResourceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query basic user information
+//
+// @param request - DescribeUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserResponse
+func (client *Client) DescribeUserWithOptions(request *DescribeUserRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.RequireExtraAttributes) {
+		query["RequireExtraAttributes"] = request.RequireExtraAttributes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUser"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query basic user information
+//
+// @param request - DescribeUserRequest
+//
+// @return DescribeUserResponse
+func (client *Client) DescribeUser(request *DescribeUserRequest) (_result *DescribeUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeUserResponse{}
+	_body, _err := client.DescribeUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1661,6 +1735,10 @@ func (client *Client) FilterUsersWithOptions(tmpReq *FilterUsersRequest, runtime
 
 	if !dara.IsNil(request.PropertyKeyValueFilterParam) {
 		query["PropertyKeyValueFilterParam"] = request.PropertyKeyValueFilterParam
+	}
+
+	if !dara.IsNil(request.ShowExtras) {
+		query["ShowExtras"] = request.ShowExtras
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -3029,8 +3107,6 @@ func (client *Client) SetUserPropertyValue(request *SetUserPropertyValueRequest)
 // Summary:
 //
 // Synchronizes all education information.
-//
-// @param request - SyncAllEduInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

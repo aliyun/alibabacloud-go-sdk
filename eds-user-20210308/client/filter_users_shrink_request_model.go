@@ -43,6 +43,8 @@ type iFilterUsersShrinkRequest interface {
 	GetPropertyFilterParam() []*FilterUsersShrinkRequestPropertyFilterParam
 	SetPropertyKeyValueFilterParam(v []*FilterUsersShrinkRequestPropertyKeyValueFilterParam) *FilterUsersShrinkRequest
 	GetPropertyKeyValueFilterParam() []*FilterUsersShrinkRequestPropertyKeyValueFilterParam
+	SetShowExtras(v map[string]*string) *FilterUsersShrinkRequest
+	GetShowExtras() map[string]*string
 	SetStatus(v int32) *FilterUsersShrinkRequest
 	GetStatus() *int32
 }
@@ -152,6 +154,7 @@ type FilterUsersShrinkRequest struct {
 	PropertyFilterParam []*FilterUsersShrinkRequestPropertyFilterParam `json:"PropertyFilterParam,omitempty" xml:"PropertyFilterParam,omitempty" type:"Repeated"`
 	// The list of property names and property values.
 	PropertyKeyValueFilterParam []*FilterUsersShrinkRequestPropertyKeyValueFilterParam `json:"PropertyKeyValueFilterParam,omitempty" xml:"PropertyKeyValueFilterParam,omitempty" type:"Repeated"`
+	ShowExtras                  map[string]*string                                     `json:"ShowExtras,omitempty" xml:"ShowExtras,omitempty"`
 	// The status.
 	//
 	// example:
@@ -234,6 +237,10 @@ func (s *FilterUsersShrinkRequest) GetPropertyFilterParam() []*FilterUsersShrink
 
 func (s *FilterUsersShrinkRequest) GetPropertyKeyValueFilterParam() []*FilterUsersShrinkRequestPropertyKeyValueFilterParam {
 	return s.PropertyKeyValueFilterParam
+}
+
+func (s *FilterUsersShrinkRequest) GetShowExtras() map[string]*string {
+	return s.ShowExtras
 }
 
 func (s *FilterUsersShrinkRequest) GetStatus() *int32 {
@@ -322,6 +329,11 @@ func (s *FilterUsersShrinkRequest) SetPropertyFilterParam(v []*FilterUsersShrink
 
 func (s *FilterUsersShrinkRequest) SetPropertyKeyValueFilterParam(v []*FilterUsersShrinkRequestPropertyKeyValueFilterParam) *FilterUsersShrinkRequest {
 	s.PropertyKeyValueFilterParam = v
+	return s
+}
+
+func (s *FilterUsersShrinkRequest) SetShowExtras(v map[string]*string) *FilterUsersShrinkRequest {
+	s.ShowExtras = v
 	return s
 }
 

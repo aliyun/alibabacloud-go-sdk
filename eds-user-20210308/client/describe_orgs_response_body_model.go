@@ -101,7 +101,8 @@ type DescribeOrgsResponseBodyOrgs struct {
 	// example:
 	//
 	// org-****
-	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	ParentOrgId        *string                                           `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+	ResourcePolicyList []*DescribeOrgsResponseBodyOrgsResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOrgsResponseBodyOrgs) String() string {
@@ -128,6 +129,10 @@ func (s *DescribeOrgsResponseBodyOrgs) GetParentOrgId() *string {
 	return s.ParentOrgId
 }
 
+func (s *DescribeOrgsResponseBodyOrgs) GetResourcePolicyList() []*DescribeOrgsResponseBodyOrgsResourcePolicyList {
+	return s.ResourcePolicyList
+}
+
 func (s *DescribeOrgsResponseBodyOrgs) SetOrgId(v string) *DescribeOrgsResponseBodyOrgs {
 	s.OrgId = &v
 	return s
@@ -148,6 +153,55 @@ func (s *DescribeOrgsResponseBodyOrgs) SetParentOrgId(v string) *DescribeOrgsRes
 	return s
 }
 
+func (s *DescribeOrgsResponseBodyOrgs) SetResourcePolicyList(v []*DescribeOrgsResponseBodyOrgsResourcePolicyList) *DescribeOrgsResponseBodyOrgs {
+	s.ResourcePolicyList = v
+	return s
+}
+
 func (s *DescribeOrgsResponseBodyOrgs) Validate() error {
+	if s.ResourcePolicyList != nil {
+		for _, item := range s.ResourcePolicyList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeOrgsResponseBodyOrgsResourcePolicyList struct {
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s DescribeOrgsResponseBodyOrgsResourcePolicyList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeOrgsResponseBodyOrgsResourcePolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrgsResponseBodyOrgsResourcePolicyList) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *DescribeOrgsResponseBodyOrgsResourcePolicyList) GetPolicyName() *string {
+	return s.PolicyName
+}
+
+func (s *DescribeOrgsResponseBodyOrgsResourcePolicyList) SetPolicyId(v string) *DescribeOrgsResponseBodyOrgsResourcePolicyList {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeOrgsResponseBodyOrgsResourcePolicyList) SetPolicyName(v string) *DescribeOrgsResponseBodyOrgsResourcePolicyList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeOrgsResponseBodyOrgsResourcePolicyList) Validate() error {
 	return dara.Validate(s)
 }

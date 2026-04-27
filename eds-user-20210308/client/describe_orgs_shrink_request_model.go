@@ -11,6 +11,8 @@ type iDescribeOrgsShrinkRequest interface {
 	GoString() string
 	SetBusinessChannel(v string) *DescribeOrgsShrinkRequest
 	GetBusinessChannel() *string
+	SetIncludeOrgIds(v []*string) *DescribeOrgsShrinkRequest
+	GetIncludeOrgIds() []*string
 	SetMaxResults(v int64) *DescribeOrgsShrinkRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeOrgsShrinkRequest
@@ -27,7 +29,8 @@ type DescribeOrgsShrinkRequest struct {
 	// example:
 	//
 	// ENTERPRISE
-	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	BusinessChannel *string   `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	IncludeOrgIds   []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
 	// The maximum number of entries to return. Valid values: 1 to 100.\\
 	//
 	// Default value: 100.
@@ -69,6 +72,10 @@ func (s *DescribeOrgsShrinkRequest) GetBusinessChannel() *string {
 	return s.BusinessChannel
 }
 
+func (s *DescribeOrgsShrinkRequest) GetIncludeOrgIds() []*string {
+	return s.IncludeOrgIds
+}
+
 func (s *DescribeOrgsShrinkRequest) GetMaxResults() *int64 {
 	return s.MaxResults
 }
@@ -91,6 +98,11 @@ func (s *DescribeOrgsShrinkRequest) GetShowExtrasShrink() *string {
 
 func (s *DescribeOrgsShrinkRequest) SetBusinessChannel(v string) *DescribeOrgsShrinkRequest {
 	s.BusinessChannel = &v
+	return s
+}
+
+func (s *DescribeOrgsShrinkRequest) SetIncludeOrgIds(v []*string) *DescribeOrgsShrinkRequest {
+	s.IncludeOrgIds = v
 	return s
 }
 

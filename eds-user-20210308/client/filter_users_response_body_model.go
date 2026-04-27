@@ -215,7 +215,8 @@ type FilterUsersResponseBodyUsers struct {
 	// example:
 	//
 	// 1
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark             *string                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourcePolicyList []*FilterUsersResponseBodyUsersResourcePolicyList `json:"ResourcePolicyList,omitempty" xml:"ResourcePolicyList,omitempty" type:"Repeated"`
 	// The remarks on the convenience account.
 	//
 	// Valid values:
@@ -308,6 +309,10 @@ func (s *FilterUsersResponseBodyUsers) GetRealNickName() *string {
 
 func (s *FilterUsersResponseBodyUsers) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *FilterUsersResponseBodyUsers) GetResourcePolicyList() []*FilterUsersResponseBodyUsersResourcePolicyList {
+	return s.ResourcePolicyList
 }
 
 func (s *FilterUsersResponseBodyUsers) GetStatus() *int64 {
@@ -407,6 +412,11 @@ func (s *FilterUsersResponseBodyUsers) SetRemark(v string) *FilterUsersResponseB
 	return s
 }
 
+func (s *FilterUsersResponseBodyUsers) SetResourcePolicyList(v []*FilterUsersResponseBodyUsersResourcePolicyList) *FilterUsersResponseBodyUsers {
+	s.ResourcePolicyList = v
+	return s
+}
+
 func (s *FilterUsersResponseBodyUsers) SetStatus(v int64) *FilterUsersResponseBodyUsers {
 	s.Status = &v
 	return s
@@ -439,6 +449,15 @@ func (s *FilterUsersResponseBodyUsers) Validate() error {
 	}
 	if s.OrgList != nil {
 		for _, item := range s.OrgList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResourcePolicyList != nil {
+		for _, item := range s.ResourcePolicyList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -592,6 +611,41 @@ func (s *FilterUsersResponseBodyUsersOrgList) SetOrgNamePath(v string) *FilterUs
 }
 
 func (s *FilterUsersResponseBodyUsersOrgList) Validate() error {
+	return dara.Validate(s)
+}
+
+type FilterUsersResponseBodyUsersResourcePolicyList struct {
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+}
+
+func (s FilterUsersResponseBodyUsersResourcePolicyList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s FilterUsersResponseBodyUsersResourcePolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *FilterUsersResponseBodyUsersResourcePolicyList) GetPolicyId() *string {
+	return s.PolicyId
+}
+
+func (s *FilterUsersResponseBodyUsersResourcePolicyList) GetPolicyName() *string {
+	return s.PolicyName
+}
+
+func (s *FilterUsersResponseBodyUsersResourcePolicyList) SetPolicyId(v string) *FilterUsersResponseBodyUsersResourcePolicyList {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsersResourcePolicyList) SetPolicyName(v string) *FilterUsersResponseBodyUsersResourcePolicyList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsersResourcePolicyList) Validate() error {
 	return dara.Validate(s)
 }
 
