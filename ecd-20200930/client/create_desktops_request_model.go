@@ -57,6 +57,8 @@ type iCreateDesktopsRequest interface {
 	GetPolicyGroupId() *string
 	SetPromotionId(v string) *CreateDesktopsRequest
 	GetPromotionId() *string
+	SetPurchaseOptions(v *CreateDesktopsRequestPurchaseOptions) *CreateDesktopsRequest
+	GetPurchaseOptions() *CreateDesktopsRequestPurchaseOptions
 	SetQosRuleId(v string) *CreateDesktopsRequest
 	GetQosRuleId() *string
 	SetRegionId(v string) *CreateDesktopsRequest
@@ -286,8 +288,9 @@ type CreateDesktopsRequest struct {
 	// example:
 	//
 	// 23141
-	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	QosRuleId   *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	PromotionId     *string                               `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PurchaseOptions *CreateDesktopsRequestPurchaseOptions `json:"PurchaseOptions,omitempty" xml:"PurchaseOptions,omitempty" type:"Struct"`
+	QosRuleId       *string                               `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -484,6 +487,10 @@ func (s *CreateDesktopsRequest) GetPromotionId() *string {
 	return s.PromotionId
 }
 
+func (s *CreateDesktopsRequest) GetPurchaseOptions() *CreateDesktopsRequestPurchaseOptions {
+	return s.PurchaseOptions
+}
+
 func (s *CreateDesktopsRequest) GetQosRuleId() *string {
 	return s.QosRuleId
 }
@@ -664,6 +671,11 @@ func (s *CreateDesktopsRequest) SetPromotionId(v string) *CreateDesktopsRequest 
 	return s
 }
 
+func (s *CreateDesktopsRequest) SetPurchaseOptions(v *CreateDesktopsRequestPurchaseOptions) *CreateDesktopsRequest {
+	s.PurchaseOptions = v
+	return s
+}
+
 func (s *CreateDesktopsRequest) SetQosRuleId(v string) *CreateDesktopsRequest {
 	s.QosRuleId = &v
 	return s
@@ -765,6 +777,11 @@ func (s *CreateDesktopsRequest) Validate() error {
 	}
 	if s.MonthDesktopSetting != nil {
 		if err := s.MonthDesktopSetting.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PurchaseOptions != nil {
+		if err := s.PurchaseOptions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -1332,6 +1349,31 @@ func (s *CreateDesktopsRequestMonthDesktopSetting) SetUseDuration(v int32) *Crea
 }
 
 func (s *CreateDesktopsRequestMonthDesktopSetting) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDesktopsRequestPurchaseOptions struct {
+	MonthlyCredits *int32 `json:"MonthlyCredits,omitempty" xml:"MonthlyCredits,omitempty"`
+}
+
+func (s CreateDesktopsRequestPurchaseOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDesktopsRequestPurchaseOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) GetMonthlyCredits() *int32 {
+	return s.MonthlyCredits
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) SetMonthlyCredits(v int32) *CreateDesktopsRequestPurchaseOptions {
+	s.MonthlyCredits = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) Validate() error {
 	return dara.Validate(s)
 }
 

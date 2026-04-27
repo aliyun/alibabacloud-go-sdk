@@ -66,7 +66,8 @@ type DescribeQosRulesResponseBodyQosRules struct {
 	// example:
 	//
 	// 0
-	DesktopCount *string `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	DesktopCount      *string `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	DesktopGroupCount *int32  `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
 	// example:
 	//
 	// 10
@@ -101,6 +102,10 @@ func (s *DescribeQosRulesResponseBodyQosRules) GetDesktopCount() *string {
 	return s.DesktopCount
 }
 
+func (s *DescribeQosRulesResponseBodyQosRules) GetDesktopGroupCount() *int32 {
+	return s.DesktopGroupCount
+}
+
 func (s *DescribeQosRulesResponseBodyQosRules) GetDownload() *string {
 	return s.Download
 }
@@ -123,6 +128,11 @@ func (s *DescribeQosRulesResponseBodyQosRules) GetUpload() *string {
 
 func (s *DescribeQosRulesResponseBodyQosRules) SetDesktopCount(v string) *DescribeQosRulesResponseBodyQosRules {
 	s.DesktopCount = &v
+	return s
+}
+
+func (s *DescribeQosRulesResponseBodyQosRules) SetDesktopGroupCount(v int32) *DescribeQosRulesResponseBodyQosRules {
+	s.DesktopGroupCount = &v
 	return s
 }
 

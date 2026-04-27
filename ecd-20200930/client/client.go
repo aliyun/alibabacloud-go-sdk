@@ -4676,6 +4676,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 		request.DesktopAttachmentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DesktopAttachment, dara.String("DesktopAttachment"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.PurchaseOptions) {
+		request.PurchaseOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PurchaseOptions, dara.String("PurchaseOptions"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		query["Amount"] = request.Amount
@@ -4771,6 +4775,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 	if !dara.IsNil(request.PromotionId) {
 		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.PurchaseOptionsShrink) {
+		query["PurchaseOptions"] = request.PurchaseOptionsShrink
 	}
 
 	if !dara.IsNil(request.QosRuleId) {
@@ -6021,6 +6029,10 @@ func (client *Client) CreateQosRuleWithOptions(request *CreateQosRuleRequest, ru
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthAndroidId) {
 		query["AuthAndroidId"] = request.AuthAndroidId
+	}
+
+	if !dara.IsNil(request.AuthDesktopGroupId) {
+		query["AuthDesktopGroupId"] = request.AuthDesktopGroupId
 	}
 
 	if !dara.IsNil(request.AuthDesktopId) {
@@ -10434,6 +10446,10 @@ func (client *Client) DescribeDesktopGroupsWithOptions(request *DescribeDesktopG
 
 	if !dara.IsNil(request.ProtocolType) {
 		query["ProtocolType"] = request.ProtocolType
+	}
+
+	if !dara.IsNil(request.QosRuleId) {
+		query["QosRuleId"] = request.QosRuleId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -22526,6 +22542,10 @@ func (client *Client) ModifyQosEntriesWithOptions(request *ModifyQosEntriesReque
 		query["AuthAndroidId"] = request.AuthAndroidId
 	}
 
+	if !dara.IsNil(request.AuthDesktopGroupId) {
+		query["AuthDesktopGroupId"] = request.AuthDesktopGroupId
+	}
+
 	if !dara.IsNil(request.AuthDesktopId) {
 		query["AuthDesktopId"] = request.AuthDesktopId
 	}
@@ -22536,6 +22556,10 @@ func (client *Client) ModifyQosEntriesWithOptions(request *ModifyQosEntriesReque
 
 	if !dara.IsNil(request.RevokeAndroidId) {
 		query["RevokeAndroidId"] = request.RevokeAndroidId
+	}
+
+	if !dara.IsNil(request.RevokeDesktopGroupId) {
+		query["RevokeDesktopGroupId"] = request.RevokeDesktopGroupId
 	}
 
 	if !dara.IsNil(request.RevokeDesktopId) {

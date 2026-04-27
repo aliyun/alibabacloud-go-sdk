@@ -3753,6 +3753,10 @@ func (client *Client) CreateDesktopsWithContext(ctx context.Context, tmpReq *Cre
 		request.DesktopAttachmentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DesktopAttachment, dara.String("DesktopAttachment"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.PurchaseOptions) {
+		request.PurchaseOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PurchaseOptions, dara.String("PurchaseOptions"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Amount) {
 		query["Amount"] = request.Amount
@@ -3848,6 +3852,10 @@ func (client *Client) CreateDesktopsWithContext(ctx context.Context, tmpReq *Cre
 
 	if !dara.IsNil(request.PromotionId) {
 		query["PromotionId"] = request.PromotionId
+	}
+
+	if !dara.IsNil(request.PurchaseOptionsShrink) {
+		query["PurchaseOptions"] = request.PurchaseOptionsShrink
 	}
 
 	if !dara.IsNil(request.QosRuleId) {
@@ -4854,6 +4862,10 @@ func (client *Client) CreateQosRuleWithContext(ctx context.Context, request *Cre
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthAndroidId) {
 		query["AuthAndroidId"] = request.AuthAndroidId
+	}
+
+	if !dara.IsNil(request.AuthDesktopGroupId) {
+		query["AuthDesktopGroupId"] = request.AuthDesktopGroupId
 	}
 
 	if !dara.IsNil(request.AuthDesktopId) {
@@ -8233,6 +8245,10 @@ func (client *Client) DescribeDesktopGroupsWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.ProtocolType) {
 		query["ProtocolType"] = request.ProtocolType
+	}
+
+	if !dara.IsNil(request.QosRuleId) {
+		query["QosRuleId"] = request.QosRuleId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -17803,6 +17819,10 @@ func (client *Client) ModifyQosEntriesWithContext(ctx context.Context, request *
 		query["AuthAndroidId"] = request.AuthAndroidId
 	}
 
+	if !dara.IsNil(request.AuthDesktopGroupId) {
+		query["AuthDesktopGroupId"] = request.AuthDesktopGroupId
+	}
+
 	if !dara.IsNil(request.AuthDesktopId) {
 		query["AuthDesktopId"] = request.AuthDesktopId
 	}
@@ -17813,6 +17833,10 @@ func (client *Client) ModifyQosEntriesWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.RevokeAndroidId) {
 		query["RevokeAndroidId"] = request.RevokeAndroidId
+	}
+
+	if !dara.IsNil(request.RevokeDesktopGroupId) {
+		query["RevokeDesktopGroupId"] = request.RevokeDesktopGroupId
 	}
 
 	if !dara.IsNil(request.RevokeDesktopId) {

@@ -11,27 +11,33 @@ type iModifyQosEntriesRequest interface {
 	GoString() string
 	SetAuthAndroidId(v []*string) *ModifyQosEntriesRequest
 	GetAuthAndroidId() []*string
+	SetAuthDesktopGroupId(v []*string) *ModifyQosEntriesRequest
+	GetAuthDesktopGroupId() []*string
 	SetAuthDesktopId(v []*string) *ModifyQosEntriesRequest
 	GetAuthDesktopId() []*string
 	SetQosRuleId(v string) *ModifyQosEntriesRequest
 	GetQosRuleId() *string
 	SetRevokeAndroidId(v []*string) *ModifyQosEntriesRequest
 	GetRevokeAndroidId() []*string
+	SetRevokeDesktopGroupId(v []*string) *ModifyQosEntriesRequest
+	GetRevokeDesktopGroupId() []*string
 	SetRevokeDesktopId(v []*string) *ModifyQosEntriesRequest
 	GetRevokeDesktopId() []*string
 }
 
 type ModifyQosEntriesRequest struct {
-	AuthAndroidId []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
-	AuthDesktopId []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
+	AuthAndroidId      []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
+	AuthDesktopGroupId []*string `json:"AuthDesktopGroupId,omitempty" xml:"AuthDesktopGroupId,omitempty" type:"Repeated"`
+	AuthDesktopId      []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qos-5605u0gelk200****
-	QosRuleId       *string   `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	RevokeAndroidId []*string `json:"RevokeAndroidId,omitempty" xml:"RevokeAndroidId,omitempty" type:"Repeated"`
-	RevokeDesktopId []*string `json:"RevokeDesktopId,omitempty" xml:"RevokeDesktopId,omitempty" type:"Repeated"`
+	QosRuleId            *string   `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	RevokeAndroidId      []*string `json:"RevokeAndroidId,omitempty" xml:"RevokeAndroidId,omitempty" type:"Repeated"`
+	RevokeDesktopGroupId []*string `json:"RevokeDesktopGroupId,omitempty" xml:"RevokeDesktopGroupId,omitempty" type:"Repeated"`
+	RevokeDesktopId      []*string `json:"RevokeDesktopId,omitempty" xml:"RevokeDesktopId,omitempty" type:"Repeated"`
 }
 
 func (s ModifyQosEntriesRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ModifyQosEntriesRequest) GetAuthAndroidId() []*string {
 	return s.AuthAndroidId
 }
 
+func (s *ModifyQosEntriesRequest) GetAuthDesktopGroupId() []*string {
+	return s.AuthDesktopGroupId
+}
+
 func (s *ModifyQosEntriesRequest) GetAuthDesktopId() []*string {
 	return s.AuthDesktopId
 }
@@ -58,12 +68,21 @@ func (s *ModifyQosEntriesRequest) GetRevokeAndroidId() []*string {
 	return s.RevokeAndroidId
 }
 
+func (s *ModifyQosEntriesRequest) GetRevokeDesktopGroupId() []*string {
+	return s.RevokeDesktopGroupId
+}
+
 func (s *ModifyQosEntriesRequest) GetRevokeDesktopId() []*string {
 	return s.RevokeDesktopId
 }
 
 func (s *ModifyQosEntriesRequest) SetAuthAndroidId(v []*string) *ModifyQosEntriesRequest {
 	s.AuthAndroidId = v
+	return s
+}
+
+func (s *ModifyQosEntriesRequest) SetAuthDesktopGroupId(v []*string) *ModifyQosEntriesRequest {
+	s.AuthDesktopGroupId = v
 	return s
 }
 
@@ -79,6 +98,11 @@ func (s *ModifyQosEntriesRequest) SetQosRuleId(v string) *ModifyQosEntriesReques
 
 func (s *ModifyQosEntriesRequest) SetRevokeAndroidId(v []*string) *ModifyQosEntriesRequest {
 	s.RevokeAndroidId = v
+	return s
+}
+
+func (s *ModifyQosEntriesRequest) SetRevokeDesktopGroupId(v []*string) *ModifyQosEntriesRequest {
+	s.RevokeDesktopGroupId = v
 	return s
 }
 

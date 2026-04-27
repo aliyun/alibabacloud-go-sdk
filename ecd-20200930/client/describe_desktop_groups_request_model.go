@@ -43,6 +43,8 @@ type iDescribeDesktopGroupsRequest interface {
 	GetPolicyGroupId() *string
 	SetProtocolType(v string) *DescribeDesktopGroupsRequest
 	GetProtocolType() *string
+	SetQosRuleId(v string) *DescribeDesktopGroupsRequest
+	GetQosRuleId() *string
 	SetRegionId(v string) *DescribeDesktopGroupsRequest
 	GetRegionId() *string
 	SetStatus(v int32) *DescribeDesktopGroupsRequest
@@ -186,6 +188,7 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	QosRuleId    *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
@@ -288,6 +291,10 @@ func (s *DescribeDesktopGroupsRequest) GetProtocolType() *string {
 	return s.ProtocolType
 }
 
+func (s *DescribeDesktopGroupsRequest) GetQosRuleId() *string {
+	return s.QosRuleId
+}
+
 func (s *DescribeDesktopGroupsRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -382,6 +389,11 @@ func (s *DescribeDesktopGroupsRequest) SetPolicyGroupId(v string) *DescribeDeskt
 
 func (s *DescribeDesktopGroupsRequest) SetProtocolType(v string) *DescribeDesktopGroupsRequest {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsRequest) SetQosRuleId(v string) *DescribeDesktopGroupsRequest {
+	s.QosRuleId = &v
 	return s
 }
 

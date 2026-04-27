@@ -57,6 +57,8 @@ type iCreateDesktopsShrinkRequest interface {
 	GetPolicyGroupId() *string
 	SetPromotionId(v string) *CreateDesktopsShrinkRequest
 	GetPromotionId() *string
+	SetPurchaseOptionsShrink(v string) *CreateDesktopsShrinkRequest
+	GetPurchaseOptionsShrink() *string
 	SetQosRuleId(v string) *CreateDesktopsShrinkRequest
 	GetQosRuleId() *string
 	SetRegionId(v string) *CreateDesktopsShrinkRequest
@@ -286,8 +288,9 @@ type CreateDesktopsShrinkRequest struct {
 	// example:
 	//
 	// 23141
-	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	QosRuleId   *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	PromotionId           *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PurchaseOptionsShrink *string `json:"PurchaseOptions,omitempty" xml:"PurchaseOptions,omitempty"`
+	QosRuleId             *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
@@ -484,6 +487,10 @@ func (s *CreateDesktopsShrinkRequest) GetPromotionId() *string {
 	return s.PromotionId
 }
 
+func (s *CreateDesktopsShrinkRequest) GetPurchaseOptionsShrink() *string {
+	return s.PurchaseOptionsShrink
+}
+
 func (s *CreateDesktopsShrinkRequest) GetQosRuleId() *string {
 	return s.QosRuleId
 }
@@ -661,6 +668,11 @@ func (s *CreateDesktopsShrinkRequest) SetPolicyGroupId(v string) *CreateDesktops
 
 func (s *CreateDesktopsShrinkRequest) SetPromotionId(v string) *CreateDesktopsShrinkRequest {
 	s.PromotionId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetPurchaseOptionsShrink(v string) *CreateDesktopsShrinkRequest {
+	s.PurchaseOptionsShrink = &v
 	return s
 }
 

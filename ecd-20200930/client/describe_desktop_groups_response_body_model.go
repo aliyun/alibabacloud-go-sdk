@@ -387,6 +387,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	QosRuleId    *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The threshold for the ratio of connected sessions, which triggers automatic scaling of cloud computers within the multi-session many-to-many share. To calculate the ratio of connected sessions, use the following formula:
 	//
 	// `Ratio of connected sessions = Number of connected sessions/(Total number of cloud computers × Maximum number of sessions allowed for each cloud computer) × 100%`
@@ -677,6 +678,10 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetProtocolType() *stri
 	return s.ProtocolType
 }
 
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetQosRuleId() *string {
+	return s.QosRuleId
+}
+
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) GetRatioThreshold() *float32 {
 	return s.RatioThreshold
 }
@@ -955,6 +960,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetPolicyGroupNameList(
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetProtocolType(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetQosRuleId(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.QosRuleId = &v
 	return s
 }
 

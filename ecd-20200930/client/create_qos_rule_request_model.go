@@ -11,6 +11,8 @@ type iCreateQosRuleRequest interface {
 	GoString() string
 	SetAuthAndroidId(v []*string) *CreateQosRuleRequest
 	GetAuthAndroidId() []*string
+	SetAuthDesktopGroupId(v []*string) *CreateQosRuleRequest
+	GetAuthDesktopGroupId() []*string
 	SetAuthDesktopId(v []*string) *CreateQosRuleRequest
 	GetAuthDesktopId() []*string
 	SetDownload(v int32) *CreateQosRuleRequest
@@ -24,8 +26,9 @@ type iCreateQosRuleRequest interface {
 }
 
 type CreateQosRuleRequest struct {
-	AuthAndroidId []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
-	AuthDesktopId []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
+	AuthAndroidId      []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
+	AuthDesktopGroupId []*string `json:"AuthDesktopGroupId,omitempty" xml:"AuthDesktopGroupId,omitempty" type:"Repeated"`
+	AuthDesktopId      []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -60,6 +63,10 @@ func (s *CreateQosRuleRequest) GetAuthAndroidId() []*string {
 	return s.AuthAndroidId
 }
 
+func (s *CreateQosRuleRequest) GetAuthDesktopGroupId() []*string {
+	return s.AuthDesktopGroupId
+}
+
 func (s *CreateQosRuleRequest) GetAuthDesktopId() []*string {
 	return s.AuthDesktopId
 }
@@ -82,6 +89,11 @@ func (s *CreateQosRuleRequest) GetUpload() *int32 {
 
 func (s *CreateQosRuleRequest) SetAuthAndroidId(v []*string) *CreateQosRuleRequest {
 	s.AuthAndroidId = v
+	return s
+}
+
+func (s *CreateQosRuleRequest) SetAuthDesktopGroupId(v []*string) *CreateQosRuleRequest {
+	s.AuthDesktopGroupId = v
 	return s
 }
 
