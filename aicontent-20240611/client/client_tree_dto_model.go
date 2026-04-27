@@ -13,6 +13,8 @@ type iClientTreeDTO interface {
 	GetAddress() *string
 	SetAllowedModels(v string) *ClientTreeDTO
 	GetAllowedModels() *string
+	SetBalance(v *ClientBalanceDTO) *ClientTreeDTO
+	GetBalance() *ClientBalanceDTO
 	SetChildren(v []*ClientTreeDTO) *ClientTreeDTO
 	GetChildren() []*ClientTreeDTO
 	SetClientUuid(v string) *ClientTreeDTO
@@ -50,6 +52,10 @@ type ClientTreeDTO struct {
 	//
 	// 1,2,3
 	AllowedModels *string `json:"allowedModels,omitempty" xml:"allowedModels,omitempty"`
+	// example:
+	//
+	// null
+	Balance *ClientBalanceDTO `json:"balance,omitempty" xml:"balance,omitempty"`
 	// example:
 	//
 	// []
@@ -120,6 +126,10 @@ func (s *ClientTreeDTO) GetAllowedModels() *string {
 	return s.AllowedModels
 }
 
+func (s *ClientTreeDTO) GetBalance() *ClientBalanceDTO {
+	return s.Balance
+}
+
 func (s *ClientTreeDTO) GetChildren() []*ClientTreeDTO {
 	return s.Children
 }
@@ -179,6 +189,11 @@ func (s *ClientTreeDTO) SetAddress(v string) *ClientTreeDTO {
 
 func (s *ClientTreeDTO) SetAllowedModels(v string) *ClientTreeDTO {
 	s.AllowedModels = &v
+	return s
+}
+
+func (s *ClientTreeDTO) SetBalance(v *ClientBalanceDTO) *ClientTreeDTO {
+	s.Balance = v
 	return s
 }
 
@@ -248,6 +263,11 @@ func (s *ClientTreeDTO) SetRemark(v string) *ClientTreeDTO {
 }
 
 func (s *ClientTreeDTO) Validate() error {
+	if s.Balance != nil {
+		if err := s.Balance.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Children != nil {
 		for _, item := range s.Children {
 			if item != nil {
