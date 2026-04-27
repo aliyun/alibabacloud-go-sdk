@@ -13583,7 +13583,7 @@ func (client *Client) GetSupabaseProject(request *GetSupabaseProjectRequest) (_r
 
 // Summary:
 //
-// Queries a list of API keys for a Supabase project.
+// Queries the API keys and JWT secrets of a Supabase instance.
 //
 // Description:
 //
@@ -13635,7 +13635,7 @@ func (client *Client) GetSupabaseProjectApiKeysWithOptions(request *GetSupabaseP
 
 // Summary:
 //
-// Queries a list of API keys for a Supabase project.
+// Queries the API keys and JWT secrets of a Supabase instance.
 //
 // Description:
 //
@@ -18545,7 +18545,7 @@ func (client *Client) ModifyStreamingJob(request *ModifyStreamingJobRequest) (_r
 
 // Summary:
 //
-// 修改Supabase自动启停策略
+// Modify the auto pause/resume policy of Supabase.
 //
 // @param request - ModifySupabaseAutoScalePolicyRequest
 //
@@ -18597,7 +18597,7 @@ func (client *Client) ModifySupabaseAutoScalePolicyWithOptions(request *ModifySu
 
 // Summary:
 //
-// 修改Supabase自动启停策略
+// Modify the auto pause/resume policy of Supabase.
 //
 // @param request - ModifySupabaseAutoScalePolicyRequest
 //
@@ -18606,6 +18606,84 @@ func (client *Client) ModifySupabaseAutoScalePolicy(request *ModifySupabaseAutoS
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifySupabaseAutoScalePolicyResponse{}
 	_body, _err := client.ModifySupabaseAutoScalePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify the resources of a Supabase instance. You can upgrade or decrease the quota of compute resources and scale out storage resources (disk size).
+//
+// @param request - ModifySupabaseProjectResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySupabaseProjectResourceResponse
+func (client *Client) ModifySupabaseProjectResourceWithOptions(request *ModifySupabaseProjectResourceRequest, runtime *dara.RuntimeOptions) (_result *ModifySupabaseProjectResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModifyType) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.ProjectSpec) {
+		query["ProjectSpec"] = request.ProjectSpec
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StorageSize) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySupabaseProjectResource"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySupabaseProjectResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modify the resources of a Supabase instance. You can upgrade or decrease the quota of compute resources and scale out storage resources (disk size).
+//
+// @param request - ModifySupabaseProjectResourceRequest
+//
+// @return ModifySupabaseProjectResourceResponse
+func (client *Client) ModifySupabaseProjectResource(request *ModifySupabaseProjectResourceRequest) (_result *ModifySupabaseProjectResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySupabaseProjectResourceResponse{}
+	_body, _err := client.ModifySupabaseProjectResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
