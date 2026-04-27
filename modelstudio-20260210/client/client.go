@@ -145,6 +145,10 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceSite) {
+		query["serviceSite"] = request.ServiceSite
+	}
+
 	if !dara.IsNil(request.WorkspaceName) {
 		query["workspaceName"] = request.WorkspaceName
 	}
@@ -399,6 +403,10 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["workspaceId"] = request.WorkspaceId
 	}
 
 	if !dara.IsNil(request.WorkspaceName) {

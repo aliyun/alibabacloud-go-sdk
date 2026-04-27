@@ -13,6 +13,8 @@ type iListWorkspacesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListWorkspacesRequest
 	GetNextToken() *string
+	SetWorkspaceId(v string) *ListWorkspacesRequest
+	GetWorkspaceId() *string
 	SetWorkspaceName(v string) *ListWorkspacesRequest
 	GetWorkspaceName() *string
 }
@@ -26,6 +28,10 @@ type ListWorkspacesRequest struct {
 	//
 	// uwCwQ5FFCDo=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// ws-32klhjk2312334jkh
+	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 	// example:
 	//
 	// ws_test
@@ -48,6 +54,10 @@ func (s *ListWorkspacesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListWorkspacesRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *ListWorkspacesRequest) GetWorkspaceName() *string {
 	return s.WorkspaceName
 }
@@ -59,6 +69,11 @@ func (s *ListWorkspacesRequest) SetMaxResults(v int32) *ListWorkspacesRequest {
 
 func (s *ListWorkspacesRequest) SetNextToken(v string) *ListWorkspacesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkspacesRequest) SetWorkspaceId(v string) *ListWorkspacesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
