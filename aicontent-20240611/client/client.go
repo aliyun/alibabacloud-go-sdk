@@ -4001,6 +4001,96 @@ func (client *Client) ModelRouterQueryApiKeyList(request *ModelRouterQueryApiKey
 
 // Summary:
 //
+// 计费管理/批量查询计费明细
+//
+// @param request - ModelRouterQueryBillingCostBreakdownRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryBillingCostBreakdownResponse
+func (client *Client) ModelRouterQueryBillingCostBreakdownWithOptions(request *ModelRouterQueryBillingCostBreakdownRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryBillingCostBreakdownResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryBillingCostBreakdown"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/cost/breakdown"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryBillingCostBreakdownResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 计费管理/批量查询计费明细
+//
+// @param request - ModelRouterQueryBillingCostBreakdownRequest
+//
+// @return ModelRouterQueryBillingCostBreakdownResponse
+func (client *Client) ModelRouterQueryBillingCostBreakdown(request *ModelRouterQueryBillingCostBreakdownRequest) (_result *ModelRouterQueryBillingCostBreakdownResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryBillingCostBreakdownResponse{}
+	_body, _err := client.ModelRouterQueryBillingCostBreakdownWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 计费管理/查询计费规则列表
 //
 // @param request - ModelRouterQueryBillingRuleListRequest
@@ -5526,6 +5616,96 @@ func (client *Client) ModelRouterQueryObservationMetrics(request *ModelRouterQue
 	headers := make(map[string]*string)
 	_result = &ModelRouterQueryObservationMetricsResponse{}
 	_body, _err := client.ModelRouterQueryObservationMetricsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用量管理/批量查询用量明细
+//
+// @param request - ModelRouterQueryUsageBreakdownRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryUsageBreakdownResponse
+func (client *Client) ModelRouterQueryUsageBreakdownWithOptions(request *ModelRouterQueryUsageBreakdownRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryUsageBreakdownResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryUsageBreakdown"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/usage/breakdown"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryUsageBreakdownResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用量管理/批量查询用量明细
+//
+// @param request - ModelRouterQueryUsageBreakdownRequest
+//
+// @return ModelRouterQueryUsageBreakdownResponse
+func (client *Client) ModelRouterQueryUsageBreakdown(request *ModelRouterQueryUsageBreakdownRequest) (_result *ModelRouterQueryUsageBreakdownResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterQueryUsageBreakdownResponse{}
+	_body, _err := client.ModelRouterQueryUsageBreakdownWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
