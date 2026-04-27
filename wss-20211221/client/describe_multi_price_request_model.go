@@ -98,6 +98,7 @@ type DescribeMultiPriceRequestOrderItems struct {
 	// 1
 	Amount      *int32                                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	Components  []*DescribeMultiPriceRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	Data        *string                                          `json:"Data,omitempty" xml:"Data,omitempty"`
 	InstanceIds []*string                                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -135,6 +136,10 @@ func (s *DescribeMultiPriceRequestOrderItems) GetComponents() []*DescribeMultiPr
 	return s.Components
 }
 
+func (s *DescribeMultiPriceRequestOrderItems) GetData() *string {
+	return s.Data
+}
+
 func (s *DescribeMultiPriceRequestOrderItems) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -170,6 +175,11 @@ func (s *DescribeMultiPriceRequestOrderItems) SetAmount(v int32) *DescribeMultiP
 
 func (s *DescribeMultiPriceRequestOrderItems) SetComponents(v []*DescribeMultiPriceRequestOrderItemsComponents) *DescribeMultiPriceRequestOrderItems {
 	s.Components = v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetData(v string) *DescribeMultiPriceRequestOrderItems {
+	s.Data = &v
 	return s
 }
 

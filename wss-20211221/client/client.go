@@ -140,8 +140,6 @@ func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_resul
 //
 // 查询物流地址
 //
-// @param request - DescribeDeliveryAddressRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeDeliveryAddressResponse
