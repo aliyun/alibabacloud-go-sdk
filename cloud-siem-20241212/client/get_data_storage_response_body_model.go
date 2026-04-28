@@ -90,6 +90,7 @@ type GetDataStorageResponseBodyData struct {
 	NormalizationLogStores []*GetDataStorageResponseBodyDataNormalizationLogStores `json:"NormalizationLogStores,omitempty" xml:"NormalizationLogStores,omitempty" type:"Repeated"`
 	NormalizationLogViews  []*GetDataStorageResponseBodyDataNormalizationLogViews  `json:"NormalizationLogViews,omitempty" xml:"NormalizationLogViews,omitempty" type:"Repeated"`
 	SasLogStores           []*GetDataStorageResponseBodyDataSasLogStores           `json:"SasLogStores,omitempty" xml:"SasLogStores,omitempty" type:"Repeated"`
+	UnusedLogStores        []*GetDataStorageResponseBodyDataUnusedLogStores        `json:"UnusedLogStores,omitempty" xml:"UnusedLogStores,omitempty" type:"Repeated"`
 }
 
 func (s GetDataStorageResponseBodyData) String() string {
@@ -138,6 +139,10 @@ func (s *GetDataStorageResponseBodyData) GetNormalizationLogViews() []*GetDataSt
 
 func (s *GetDataStorageResponseBodyData) GetSasLogStores() []*GetDataStorageResponseBodyDataSasLogStores {
 	return s.SasLogStores
+}
+
+func (s *GetDataStorageResponseBodyData) GetUnusedLogStores() []*GetDataStorageResponseBodyDataUnusedLogStores {
+	return s.UnusedLogStores
 }
 
 func (s *GetDataStorageResponseBodyData) SetColdStorageUsedCapacity(v float64) *GetDataStorageResponseBodyData {
@@ -190,6 +195,11 @@ func (s *GetDataStorageResponseBodyData) SetSasLogStores(v []*GetDataStorageResp
 	return s
 }
 
+func (s *GetDataStorageResponseBodyData) SetUnusedLogStores(v []*GetDataStorageResponseBodyDataUnusedLogStores) *GetDataStorageResponseBodyData {
+	s.UnusedLogStores = v
+	return s
+}
+
 func (s *GetDataStorageResponseBodyData) Validate() error {
 	if s.NormalizationLogStores != nil {
 		for _, item := range s.NormalizationLogStores {
@@ -218,6 +228,15 @@ func (s *GetDataStorageResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.UnusedLogStores != nil {
+		for _, item := range s.UnusedLogStores {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -230,6 +249,10 @@ type GetDataStorageResponseBodyDataNormalizationLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// example:
+	//
+	// 10.333
+	UsedCapacity *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
 }
 
 func (s GetDataStorageResponseBodyDataNormalizationLogStores) String() string {
@@ -248,6 +271,10 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetLogStoreTtl() 
 	return s.LogStoreTtl
 }
 
+func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetUsedCapacity() *float64 {
+	return s.UsedCapacity
+}
+
 func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetLogStoreName(v string) *GetDataStorageResponseBodyDataNormalizationLogStores {
 	s.LogStoreName = &v
 	return s
@@ -255,6 +282,11 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetLogStoreName(v
 
 func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetLogStoreTtl(v int32) *GetDataStorageResponseBodyDataNormalizationLogStores {
 	s.LogStoreTtl = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetUsedCapacity(v float64) *GetDataStorageResponseBodyDataNormalizationLogStores {
+	s.UsedCapacity = &v
 	return s
 }
 
@@ -419,6 +451,10 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// example:
+	//
+	// 10.333
+	UsedCapacity *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
 }
 
 func (s GetDataStorageResponseBodyDataSasLogStores) String() string {
@@ -467,6 +503,10 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) GetLogStoreName() *string {
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) GetLogStoreTtl() *int32 {
 	return s.LogStoreTtl
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStores) GetUsedCapacity() *float64 {
+	return s.UsedCapacity
 }
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) SetLogCode(v string) *GetDataStorageResponseBodyDataSasLogStores {
@@ -519,6 +559,65 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) SetLogStoreTtl(v int32) *Ge
 	return s
 }
 
+func (s *GetDataStorageResponseBodyDataSasLogStores) SetUsedCapacity(v float64) *GetDataStorageResponseBodyDataSasLogStores {
+	s.UsedCapacity = &v
+	return s
+}
+
 func (s *GetDataStorageResponseBodyDataSasLogStores) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDataStorageResponseBodyDataUnusedLogStores struct {
+	// example:
+	//
+	// cloud-siem
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// example:
+	//
+	// 180
+	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
+	// example:
+	//
+	// 10.333
+	UsedCapacity *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+}
+
+func (s GetDataStorageResponseBodyDataUnusedLogStores) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDataStorageResponseBodyDataUnusedLogStores) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) GetLogStoreName() *string {
+	return s.LogStoreName
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) GetLogStoreTtl() *int32 {
+	return s.LogStoreTtl
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) GetUsedCapacity() *float64 {
+	return s.UsedCapacity
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) SetLogStoreName(v string) *GetDataStorageResponseBodyDataUnusedLogStores {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) SetLogStoreTtl(v int32) *GetDataStorageResponseBodyDataUnusedLogStores {
+	s.LogStoreTtl = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) SetUsedCapacity(v float64) *GetDataStorageResponseBodyDataUnusedLogStores {
+	s.UsedCapacity = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataUnusedLogStores) Validate() error {
 	return dara.Validate(s)
 }
