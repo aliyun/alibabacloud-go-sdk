@@ -166,6 +166,124 @@ func (client *Client) CreateImageAnalyzeTaskWithContext(ctx context.Context, wor
 
 // Summary:
 //
+// 存储 Memory 内容
+//
+// @param request - CreateMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemoryResponse
+func (client *Client) CreateMemoryWithContext(ctx context.Context, workspaceName *string, serviceId *string, request *CreateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agent_id"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Enhancements) {
+		body["enhancements"] = request.Enhancements
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["run_id"] = request.RunId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["user_id"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMemory"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/memories"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMemoryResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传skill
+//
+// @param request - CreateMemorySkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemorySkillResponse
+func (client *Client) CreateMemorySkillWithContext(ctx context.Context, workspaceName *string, serviceId *string, request *CreateMemorySkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMemorySkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agent_id"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["user_id"] = request.UserId
+	}
+
+	if !dara.IsNil(request.ZipBase64) {
+		body["zip_base64"] = request.ZipBase64
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMemorySkill"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/skills"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMemorySkillResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建视频切割异步任务
 //
 // @param request - CreateVideoSegmentationTaskRequest
@@ -321,6 +439,88 @@ func (client *Client) CreateVideoSummarizationTaskWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateVideoSummarizationTaskResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除一条 Memory
+//
+// @param request - DeleteMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemoryResponse
+func (client *Client) DeleteMemoryWithContext(ctx context.Context, workspaceName *string, serviceId *string, memoryId *string, request *DeleteMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemory"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/memories/" + dara.StringValue(memoryId)),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemoryResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除skill
+//
+// @param request - DeleteMemorySkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemorySkillResponse
+func (client *Client) DeleteMemorySkillWithContext(ctx context.Context, workspaceName *string, serviceId *string, skillId *string, request *DeleteMemorySkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMemorySkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMemorySkill"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/skills/" + dara.StringValue(skillId)),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMemorySkillResponse{}
 	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -666,6 +866,170 @@ func (client *Client) GetImageObjectDetectionWithContext(ctx context.Context, wo
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetImageObjectDetectionResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看memory详情
+//
+// @param request - GetMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryResponse
+func (client *Client) GetMemoryWithContext(ctx context.Context, workspaceName *string, serviceId *string, memoryId *string, request *GetMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemory"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/memories/" + dara.StringValue(memoryId)),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查 Memory 服务健康状态
+//
+// @param request - GetMemoryHealthRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryHealthResponse
+func (client *Client) GetMemoryHealthWithContext(ctx context.Context, workspaceName *string, serviceId *string, request *GetMemoryHealthRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryHealthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryHealth"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/health"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryHealthResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看skill详情
+//
+// @param request - GetMemorySkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemorySkillResponse
+func (client *Client) GetMemorySkillWithContext(ctx context.Context, workspaceName *string, serviceId *string, skillId *string, request *GetMemorySkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemorySkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemorySkill"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/skills/" + dara.StringValue(skillId)),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemorySkillResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询memory异步任务的处理状态
+//
+// @param request - GetMemoryTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemoryTaskResponse
+func (client *Client) GetMemoryTaskWithContext(ctx context.Context, workspaceName *string, serviceId *string, taskId *string, request *GetMemoryTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMemoryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMemoryTask"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/tasks/" + dara.StringValue(taskId)),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMemoryTaskResponse{}
 	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1255,6 +1619,183 @@ func (client *Client) GetWebSearchWithContext(ctx context.Context, workspaceName
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetWebSearchResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据查询条件搜索 Memory
+//
+// @param request - SearchMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchMemoryResponse
+func (client *Client) SearchMemoryWithContext(ctx context.Context, workspaceName *string, serviceId *string, request *SearchMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SearchMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agent_id"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Enhancements) {
+		body["enhancements"] = request.Enhancements
+	}
+
+	if !dara.IsNil(request.Query) {
+		body["query"] = request.Query
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["run_id"] = request.RunId
+	}
+
+	if !dara.IsNil(request.Size) {
+		body["size"] = request.Size
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["user_id"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchMemory"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/search"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchMemoryResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Memory
+//
+// @param request - UpdateMemoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemoryResponse
+func (client *Client) UpdateMemoryWithContext(ctx context.Context, workspaceName *string, serviceId *string, memoryId *string, request *UpdateMemoryRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Memory) {
+		body["memory"] = request.Memory
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemory"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/memories/" + dara.StringValue(memoryId)),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemoryResponse{}
+	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新 Skill
+//
+// @param request - UpdateMemorySkillRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMemorySkillResponse
+func (client *Client) UpdateMemorySkillWithContext(ctx context.Context, workspaceName *string, serviceId *string, skillId *string, request *UpdateMemorySkillRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMemorySkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		body["agent_id"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.Files) {
+		body["files"] = request.Files
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["user_id"] = request.UserId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMemorySkill"),
+		Version:     dara.String("2024-05-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v3/openapi/workspaces/" + dara.StringValue(workspaceName) + "/memory/" + dara.StringValue(serviceId) + "/skills/" + dara.StringValue(skillId)),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMemorySkillResponse{}
 	_body, _err := client.ExecuteWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
