@@ -15,6 +15,8 @@ type iCreateClusterRequest interface {
 	GetClusterName() *string
 	SetClusterSpec(v string) *CreateClusterRequest
 	GetClusterSpec() *string
+	SetClusterType(v int32) *CreateClusterRequest
+	GetClusterType() *int32
 	SetDuration(v int32) *CreateClusterRequest
 	GetDuration() *int32
 	SetEngineType(v string) *CreateClusterRequest
@@ -40,18 +42,18 @@ type CreateClusterRequest struct {
 	//
 	// qianxi-test-0812
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// scx.dev.x1
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// example:
 	//
+	// 1
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// xxljob
@@ -59,13 +61,10 @@ type CreateClusterRequest struct {
 	// example:
 	//
 	// Year
-	PricingCycle *string                    `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Tag          []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// This parameter is required.
-	VSwitches []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	PricingCycle *string                          `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Tag          []*CreateClusterRequestTag       `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitches    []*CreateClusterRequestVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// VPC id
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -91,6 +90,10 @@ func (s *CreateClusterRequest) GetClusterName() *string {
 
 func (s *CreateClusterRequest) GetClusterSpec() *string {
 	return s.ClusterSpec
+}
+
+func (s *CreateClusterRequest) GetClusterType() *int32 {
+	return s.ClusterType
 }
 
 func (s *CreateClusterRequest) GetDuration() *int32 {
@@ -129,6 +132,11 @@ func (s *CreateClusterRequest) SetClusterName(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetClusterSpec(v string) *CreateClusterRequest {
 	s.ClusterSpec = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetClusterType(v int32) *CreateClusterRequest {
+	s.ClusterType = &v
 	return s
 }
 
@@ -220,14 +228,10 @@ func (s *CreateClusterRequestTag) Validate() error {
 }
 
 type CreateClusterRequestVSwitches struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// vsw-2ze745n3r2sfqtahhubpl
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn-hangzhou-j

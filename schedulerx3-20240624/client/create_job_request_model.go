@@ -63,6 +63,8 @@ type iCreateJobRequest interface {
 	GetTimezone() *string
 	SetWeight(v int32) *CreateJobRequest
 	GetWeight() *int32
+	SetXAttrs(v string) *CreateJobRequest
+	GetXAttrs() *string
 }
 
 type CreateJobRequest struct {
@@ -175,6 +177,10 @@ type CreateJobRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// {"responseMode":"streaming"}
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -291,6 +297,10 @@ func (s *CreateJobRequest) GetTimezone() *string {
 
 func (s *CreateJobRequest) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *CreateJobRequest) GetXAttrs() *string {
+	return s.XAttrs
 }
 
 func (s *CreateJobRequest) SetAppName(v string) *CreateJobRequest {
@@ -425,6 +435,11 @@ func (s *CreateJobRequest) SetTimezone(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetWeight(v int32) *CreateJobRequest {
 	s.Weight = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetXAttrs(v string) *CreateJobRequest {
+	s.XAttrs = &v
 	return s
 }
 

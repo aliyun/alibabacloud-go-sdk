@@ -273,6 +273,10 @@ type ListJobExecutionsResponseBodyDataRecords struct {
 	//
 	// myWorkflow
 	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// example:
+	//
+	// {"sessionId":"ac21f9f6-5a88-4f97-abd1-b51989166035"}
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s ListJobExecutionsResponseBodyDataRecords) String() string {
@@ -373,6 +377,10 @@ func (s *ListJobExecutionsResponseBodyDataRecords) GetWorkflowId() *int64 {
 
 func (s *ListJobExecutionsResponseBodyDataRecords) GetWorkflowName() *string {
 	return s.WorkflowName
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) GetXAttrs() *string {
+	return s.XAttrs
 }
 
 func (s *ListJobExecutionsResponseBodyDataRecords) SetAppName(v string) *ListJobExecutionsResponseBodyDataRecords {
@@ -487,6 +495,11 @@ func (s *ListJobExecutionsResponseBodyDataRecords) SetWorkflowId(v int64) *ListJ
 
 func (s *ListJobExecutionsResponseBodyDataRecords) SetWorkflowName(v string) *ListJobExecutionsResponseBodyDataRecords {
 	s.WorkflowName = &v
+	return s
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) SetXAttrs(v string) *ListJobExecutionsResponseBodyDataRecords {
+	s.XAttrs = &v
 	return s
 }
 

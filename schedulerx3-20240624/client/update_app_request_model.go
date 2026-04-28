@@ -23,6 +23,8 @@ type iUpdateAppRequest interface {
 	GetMaxConcurrency() *int32
 	SetTitle(v string) *UpdateAppRequest
 	GetTitle() *string
+	SetWorkerId(v int32) *UpdateAppRequest
+	GetWorkerId() *int32
 }
 
 type UpdateAppRequest struct {
@@ -45,7 +47,10 @@ type UpdateAppRequest struct {
 	// example:
 	//
 	// true
-	EnableLog          *bool  `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	EnableLog *bool `json:"EnableLog,omitempty" xml:"EnableLog,omitempty"`
+	// example:
+	//
+	// 1
 	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
 	// example:
 	//
@@ -53,6 +58,10 @@ type UpdateAppRequest struct {
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// This parameter is required.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1
+	WorkerId *int32 `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
 }
 
 func (s UpdateAppRequest) String() string {
@@ -91,6 +100,10 @@ func (s *UpdateAppRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *UpdateAppRequest) GetWorkerId() *int32 {
+	return s.WorkerId
+}
+
 func (s *UpdateAppRequest) SetAccessToken(v string) *UpdateAppRequest {
 	s.AccessToken = &v
 	return s
@@ -123,6 +136,11 @@ func (s *UpdateAppRequest) SetMaxConcurrency(v int32) *UpdateAppRequest {
 
 func (s *UpdateAppRequest) SetTitle(v string) *UpdateAppRequest {
 	s.Title = &v
+	return s
+}
+
+func (s *UpdateAppRequest) SetWorkerId(v int32) *UpdateAppRequest {
+	s.WorkerId = &v
 	return s
 }
 

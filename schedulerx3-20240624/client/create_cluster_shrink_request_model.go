@@ -15,6 +15,8 @@ type iCreateClusterShrinkRequest interface {
 	GetClusterName() *string
 	SetClusterSpec(v string) *CreateClusterShrinkRequest
 	GetClusterSpec() *string
+	SetClusterType(v int32) *CreateClusterShrinkRequest
+	GetClusterType() *int32
 	SetDuration(v int32) *CreateClusterShrinkRequest
 	GetDuration() *int32
 	SetEngineType(v string) *CreateClusterShrinkRequest
@@ -40,18 +42,18 @@ type CreateClusterShrinkRequest struct {
 	//
 	// qianxi-test-0812
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// scx.dev.x1
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// example:
 	//
+	// 1
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// xxljob
@@ -59,13 +61,10 @@ type CreateClusterShrinkRequest struct {
 	// example:
 	//
 	// Year
-	PricingCycle *string                          `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Tag          []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// This parameter is required.
-	VSwitchesShrink *string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
+	PricingCycle    *string                          `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	Tag             []*CreateClusterShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VSwitchesShrink *string                          `json:"VSwitches,omitempty" xml:"VSwitches,omitempty"`
 	// VPC id
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -91,6 +90,10 @@ func (s *CreateClusterShrinkRequest) GetClusterName() *string {
 
 func (s *CreateClusterShrinkRequest) GetClusterSpec() *string {
 	return s.ClusterSpec
+}
+
+func (s *CreateClusterShrinkRequest) GetClusterType() *int32 {
+	return s.ClusterType
 }
 
 func (s *CreateClusterShrinkRequest) GetDuration() *int32 {
@@ -129,6 +132,11 @@ func (s *CreateClusterShrinkRequest) SetClusterName(v string) *CreateClusterShri
 
 func (s *CreateClusterShrinkRequest) SetClusterSpec(v string) *CreateClusterShrinkRequest {
 	s.ClusterSpec = &v
+	return s
+}
+
+func (s *CreateClusterShrinkRequest) SetClusterType(v int32) *CreateClusterShrinkRequest {
+	s.ClusterType = &v
 	return s
 }
 

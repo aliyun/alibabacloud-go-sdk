@@ -59,6 +59,8 @@ type iUpdateJobRequest interface {
 	GetTimezone() *string
 	SetWeight(v int32) *UpdateJobRequest
 	GetWeight() *int32
+	SetXAttrs(v string) *UpdateJobRequest
+	GetXAttrs() *string
 }
 
 type UpdateJobRequest struct {
@@ -162,6 +164,10 @@ type UpdateJobRequest struct {
 	//
 	// 1
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// example:
+	//
+	// {"reponseMode":"streaming"}
+	XAttrs *string `json:"XAttrs,omitempty" xml:"XAttrs,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -270,6 +276,10 @@ func (s *UpdateJobRequest) GetTimezone() *string {
 
 func (s *UpdateJobRequest) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *UpdateJobRequest) GetXAttrs() *string {
+	return s.XAttrs
 }
 
 func (s *UpdateJobRequest) SetAppName(v string) *UpdateJobRequest {
@@ -394,6 +404,11 @@ func (s *UpdateJobRequest) SetTimezone(v string) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetWeight(v int32) *UpdateJobRequest {
 	s.Weight = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetXAttrs(v string) *UpdateJobRequest {
+	s.XAttrs = &v
 	return s
 }
 

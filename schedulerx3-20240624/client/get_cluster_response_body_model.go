@@ -123,6 +123,10 @@ type GetClusterResponseBodyData struct {
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	// example:
 	//
+	// 1
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
 	// 2024-10-29 15:56:36
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// example:
@@ -264,6 +268,10 @@ func (s *GetClusterResponseBodyData) GetClusterSpec() *string {
 	return s.ClusterSpec
 }
 
+func (s *GetClusterResponseBodyData) GetClusterType() *int32 {
+	return s.ClusterType
+}
+
 func (s *GetClusterResponseBodyData) GetCreateTime() *string {
 	return s.CreateTime
 }
@@ -365,6 +373,11 @@ func (s *GetClusterResponseBodyData) SetClusterName(v string) *GetClusterRespons
 
 func (s *GetClusterResponseBodyData) SetClusterSpec(v string) *GetClusterResponseBodyData {
 	s.ClusterSpec = &v
+	return s
+}
+
+func (s *GetClusterResponseBodyData) SetClusterType(v int32) *GetClusterResponseBodyData {
+	s.ClusterType = &v
 	return s
 }
 

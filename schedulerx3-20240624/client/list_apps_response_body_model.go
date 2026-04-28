@@ -212,7 +212,10 @@ type ListAppsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 10
-	JobNum             *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
+	JobNum *int32 `json:"JobNum,omitempty" xml:"JobNum,omitempty"`
+	// example:
+	//
+	// 1
 	LabelRouteStrategy *int32 `json:"LabelRouteStrategy,omitempty" xml:"LabelRouteStrategy,omitempty"`
 	// example:
 	//
@@ -235,8 +238,14 @@ type ListAppsResponseBodyDataRecords struct {
 	Updater *string `json:"Updater,omitempty" xml:"Updater,omitempty"`
 	// example:
 	//
-	// k8s_service
+	// 1
+	WorkerId *int32 `json:"WorkerId,omitempty" xml:"WorkerId,omitempty"`
+	// Deprecated
 	WorkerRegistry *string `json:"WorkerRegistry,omitempty" xml:"WorkerRegistry,omitempty"`
+	// example:
+	//
+	// openclaw
+	WorkerType *string `json:"WorkerType,omitempty" xml:"WorkerType,omitempty"`
 	// example:
 	//
 	// 3
@@ -307,8 +316,16 @@ func (s *ListAppsResponseBodyDataRecords) GetUpdater() *string {
 	return s.Updater
 }
 
+func (s *ListAppsResponseBodyDataRecords) GetWorkerId() *int32 {
+	return s.WorkerId
+}
+
 func (s *ListAppsResponseBodyDataRecords) GetWorkerRegistry() *string {
 	return s.WorkerRegistry
+}
+
+func (s *ListAppsResponseBodyDataRecords) GetWorkerType() *string {
+	return s.WorkerType
 }
 
 func (s *ListAppsResponseBodyDataRecords) GetWorkflowNum() *int32 {
@@ -385,8 +402,18 @@ func (s *ListAppsResponseBodyDataRecords) SetUpdater(v string) *ListAppsResponse
 	return s
 }
 
+func (s *ListAppsResponseBodyDataRecords) SetWorkerId(v int32) *ListAppsResponseBodyDataRecords {
+	s.WorkerId = &v
+	return s
+}
+
 func (s *ListAppsResponseBodyDataRecords) SetWorkerRegistry(v string) *ListAppsResponseBodyDataRecords {
 	s.WorkerRegistry = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyDataRecords) SetWorkerType(v string) *ListAppsResponseBodyDataRecords {
+	s.WorkerType = &v
 	return s
 }
 

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建应用
+// Creates an application.
 //
 // @param request - CreateAppRequest
 //
@@ -141,7 +141,7 @@ func (client *Client) CreateCalendarWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建集群
+// Creates a cluster.
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -177,6 +177,10 @@ func (client *Client) CreateClusterWithContext(ctx context.Context, tmpReq *Crea
 
 	if !dara.IsNil(request.ClusterSpec) {
 		body["ClusterSpec"] = request.ClusterSpec
+	}
+
+	if !dara.IsNil(request.ClusterType) {
+		body["ClusterType"] = request.ClusterType
 	}
 
 	if !dara.IsNil(request.Duration) {
@@ -289,6 +293,82 @@ func (client *Client) CreateDatasourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 添加执行器组
+//
+// @param request - CreateExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExecutorGroupResponse
+func (client *Client) CreateExecutorGroupWithContext(ctx context.Context, request *CreateExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		body["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		body["WorkerType"] = request.WorkerType
+	}
+
+	if !dara.IsNil(request.Workers) {
+		body["Workers"] = request.Workers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExecutorGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加执行器
 //
 // @param request - CreateExecutorsRequest
@@ -345,7 +425,7 @@ func (client *Client) CreateExecutorsWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建任务
+// Creates a job.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -482,6 +562,10 @@ func (client *Client) CreateJobWithContext(ctx context.Context, tmpReq *CreateJo
 		body["Weight"] = request.Weight
 	}
 
+	if !dara.IsNil(request.XAttrs) {
+		body["XAttrs"] = request.XAttrs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -591,7 +675,7 @@ func (client *Client) CreateWorkflowWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 删除应用分组
+// Deletes an application group.
 //
 // @param request - DeleteAppRequest
 //
@@ -691,7 +775,7 @@ func (client *Client) DeleteCalendarWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// 释放删除集群
+// Deletes a cluster.
 //
 // @param request - DeleteClusterRequest
 //
@@ -783,7 +867,55 @@ func (client *Client) DeleteDatasourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 批量删除任务
+// 添加执行器组
+//
+// @param request - DeleteExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExecutorGroupResponse
+func (client *Client) DeleteExecutorGroupWithContext(ctx context.Context, request *DeleteExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteExecutorGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes multiple jobs at a time.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -959,7 +1091,7 @@ func (client *Client) DeleteWorkflowsWithContext(ctx context.Context, tmpReq *De
 
 // Summary:
 //
-// 批量导出任务信息
+// Exports the information about jobs at a time.
 //
 // @param tmpReq - ExportJobsRequest
 //
@@ -1179,7 +1311,7 @@ func (client *Client) GetCalendarWithContext(ctx context.Context, request *GetCa
 
 // Summary:
 //
-// 获取集群详细信息
+// Queries the details of a cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1219,7 +1351,7 @@ func (client *Client) GetClusterWithContext(ctx context.Context, request *GetClu
 
 // Summary:
 //
-// 获取指定机器信息
+// Queries a specified machine.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1363,7 +1495,7 @@ func (client *Client) GetJobExecutionWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取任务执行的详情
+// Obtains the execution details of a job.
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -1443,7 +1575,7 @@ func (client *Client) GetJobExecutionThreadDumpWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 查询日志
+// Queries logs.
 //
 // @param request - GetLogRequest
 //
@@ -1513,6 +1645,90 @@ func (client *Client) GetLogEventWithContext(ctx context.Context, request *GetLo
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLogEventResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分页日志
+//
+// @param request - GetPageLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPageLogResponse
+func (client *Client) GetPageLogWithContext(ctx context.Context, request *GetPageLogRequest, runtime *dara.RuntimeOptions) (_result *GetPageLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		query["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		query["Reverse"] = request.Reverse
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkerAddr) {
+		query["WorkerAddr"] = request.WorkerAddr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPageLog"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPageLogResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1735,7 +1951,7 @@ func (client *Client) GetWorkflowExecutionDAGWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 导入日历
+// Imports a calendar.
 //
 // @param request - ImportCalendarRequest
 //
@@ -1791,7 +2007,7 @@ func (client *Client) ImportCalendarWithContext(ctx context.Context, request *Im
 
 // Summary:
 //
-// 批量导入任务
+// Imports jobs at a time.
 //
 // @param request - ImportJobsRequest
 //
@@ -1903,7 +2119,7 @@ func (client *Client) ImportWorkflowsWithContext(ctx context.Context, request *I
 
 // Summary:
 //
-// 获取报警事件
+// Obtains a list of alert events.
 //
 // @param request - ListAlarmEventRequest
 //
@@ -1943,7 +2159,7 @@ func (client *Client) ListAlarmEventWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取应用名字列表
+// Obtains a list of application names.
 //
 // @param request - ListAppNamesRequest
 //
@@ -1983,7 +2199,7 @@ func (client *Client) ListAppNamesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取应用列表
+// Queries a list of applications.
 //
 // @param request - ListAppsRequest
 //
@@ -2023,7 +2239,7 @@ func (client *Client) ListAppsWithContext(ctx context.Context, request *ListApps
 
 // Summary:
 //
-// 获取日历名字列表
+// Obtains a list of calendar names.
 //
 // @param request - ListCalendarNamesRequest
 //
@@ -2127,7 +2343,7 @@ func (client *Client) ListCalendarsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询实例列表
+// Queries a list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -2235,7 +2451,75 @@ func (client *Client) ListDatasourcesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询Executor列表
+// 获取执行器组列表
+//
+// @param request - ListExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutorGroupResponse
+func (client *Client) ListExecutorGroupWithContext(ctx context.Context, request *ListExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *ListExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		query["WorkerType"] = request.WorkerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExecutorGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -2275,7 +2559,7 @@ func (client *Client) ListExecutorsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取任务实例列表
+// Obtains a list of job instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -2419,7 +2703,7 @@ func (client *Client) ListJobScriptHistoryWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取任务列表
+// Queries a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -2559,7 +2843,7 @@ func (client *Client) ListK8sResourceWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 获取executor的label列表
+// Obtains a list of tags of an executor.
 //
 // @param request - ListLablesRequest
 //
@@ -2599,7 +2883,7 @@ func (client *Client) ListLablesWithContext(ctx context.Context, request *ListLa
 
 // Summary:
 //
-// 查询调度事件
+// Queries scheduling events.
 //
 // @param request - ListScheduleEventRequest
 //
@@ -2639,7 +2923,7 @@ func (client *Client) ListScheduleEventWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取指定时间类型和表达式未来5次调度时间
+// Obtains the scheduling time points of the next five jobs. The scheduling time points are specified by time types or expressions.
 //
 // @param request - ListScheduleTimesRequest
 //
@@ -3023,7 +3307,7 @@ func (client *Client) OperateConnectDatasourceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 指定执行器
+// Designates executors.
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
 //
@@ -3093,7 +3377,7 @@ func (client *Client) OperateDesignateExecutorsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 批量禁用任务
+// Disables multiple jobs at a time.
 //
 // @param tmpReq - OperateDisableJobsRequest
 //
@@ -3209,7 +3493,7 @@ func (client *Client) OperateDisableWorkflowsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 批量启用任务
+// Enables multiple jobs at a time.
 //
 // @param tmpReq - OperateEnableJobsRequest
 //
@@ -3325,7 +3609,7 @@ func (client *Client) OperateEnableWorkflowsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 运行一次任务
+// Runs a job once.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -3649,7 +3933,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecutionWithContext(ctx context
 
 // Summary:
 //
-// 重刷任务历史数据
+// Reprocesses the historical data of a job.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -3713,7 +3997,7 @@ func (client *Client) OperateRerunJobWithContext(ctx context.Context, request *O
 
 // Summary:
 //
-// 重跑失败的任务实例
+// Reruns failed job instances.
 //
 // @param tmpReq - OperateRetryJobExecutionRequest
 //
@@ -3887,7 +4171,7 @@ func (client *Client) OperateSkipJobExecutionWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 停止运行中的任务实例
+// Stops running instances.
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -4223,7 +4507,7 @@ func (client *Client) SyncJobsWithContext(ctx context.Context, tmpReq *SyncJobsR
 
 // Summary:
 //
-// 更新应用分组
+// Updates an application group.
 //
 // @param request - UpdateAppRequest
 //
@@ -4264,6 +4548,10 @@ func (client *Client) UpdateAppWithContext(ctx context.Context, request *UpdateA
 
 	if !dara.IsNil(request.Title) {
 		body["Title"] = request.Title
+	}
+
+	if !dara.IsNil(request.WorkerId) {
+		body["WorkerId"] = request.WorkerId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4355,7 +4643,7 @@ func (client *Client) UpdateCalendarWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新集群
+// Updates a cluster.
 //
 // @param request - UpdateClusterRequest
 //
@@ -4471,6 +4759,82 @@ func (client *Client) UpdateDatasourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 更新执行器组
+//
+// @param request - UpdateExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExecutorGroupResponse
+func (client *Client) UpdateExecutorGroupWithContext(ctx context.Context, request *UpdateExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		body["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		body["WorkerType"] = request.WorkerType
+	}
+
+	if !dara.IsNil(request.Workers) {
+		body["Workers"] = request.Workers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateExecutorGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新执行器
 //
 // @param request - UpdateExecutorsRequest
@@ -4527,7 +4891,7 @@ func (client *Client) UpdateExecutorsWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 更新任务信息
+// Updates the job information.
 //
 // @param tmpReq - UpdateJobRequest
 //
@@ -4650,6 +5014,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, tmpReq *UpdateJo
 
 	if !dara.IsNil(request.Weight) {
 		body["Weight"] = request.Weight
+	}
+
+	if !dara.IsNil(request.XAttrs) {
+		body["XAttrs"] = request.XAttrs
 	}
 
 	req := &openapiutil.OpenApiRequest{

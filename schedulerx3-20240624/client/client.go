@@ -58,7 +58,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建应用
+// Creates an application.
 //
 // @param request - CreateAppRequest
 //
@@ -130,7 +130,7 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *d
 
 // Summary:
 //
-// 创建应用
+// Creates an application.
 //
 // @param request - CreateAppRequest
 //
@@ -226,7 +226,7 @@ func (client *Client) CreateCalendar(request *CreateCalendarRequest) (_result *C
 
 // Summary:
 //
-// 创建集群
+// Creates a cluster.
 //
 // @param tmpReq - CreateClusterRequest
 //
@@ -262,6 +262,10 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 
 	if !dara.IsNil(request.ClusterSpec) {
 		body["ClusterSpec"] = request.ClusterSpec
+	}
+
+	if !dara.IsNil(request.ClusterType) {
+		body["ClusterType"] = request.ClusterType
 	}
 
 	if !dara.IsNil(request.Duration) {
@@ -310,7 +314,7 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 
 // Summary:
 //
-// 创建集群
+// Creates a cluster.
 //
 // @param request - CreateClusterRequest
 //
@@ -410,6 +414,100 @@ func (client *Client) CreateDatasource(request *CreateDatasourceRequest) (_resul
 
 // Summary:
 //
+// 添加执行器组
+//
+// @param request - CreateExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExecutorGroupResponse
+func (client *Client) CreateExecutorGroupWithOptions(request *CreateExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		body["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		body["WorkerType"] = request.WorkerType
+	}
+
+	if !dara.IsNil(request.Workers) {
+		body["Workers"] = request.Workers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExecutorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加执行器组
+//
+// @param request - CreateExecutorGroupRequest
+//
+// @return CreateExecutorGroupResponse
+func (client *Client) CreateExecutorGroup(request *CreateExecutorGroupRequest) (_result *CreateExecutorGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateExecutorGroupResponse{}
+	_body, _err := client.CreateExecutorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加执行器
 //
 // @param request - CreateExecutorsRequest
@@ -484,7 +582,7 @@ func (client *Client) CreateExecutors(request *CreateExecutorsRequest) (_result 
 
 // Summary:
 //
-// 创建任务
+// Creates a job.
 //
 // @param tmpReq - CreateJobRequest
 //
@@ -621,6 +719,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *da
 		body["Weight"] = request.Weight
 	}
 
+	if !dara.IsNil(request.XAttrs) {
+		body["XAttrs"] = request.XAttrs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -646,7 +748,7 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *da
 
 // Summary:
 //
-// 创建任务
+// Creates a job.
 //
 // @param request - CreateJobRequest
 //
@@ -766,7 +868,7 @@ func (client *Client) CreateWorkflow(request *CreateWorkflowRequest) (_result *C
 
 // Summary:
 //
-// 删除应用分组
+// Deletes an application group.
 //
 // @param request - DeleteAppRequest
 //
@@ -814,7 +916,7 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *d
 
 // Summary:
 //
-// 删除应用分组
+// Deletes an application group.
 //
 // @param request - DeleteAppRequest
 //
@@ -902,7 +1004,7 @@ func (client *Client) DeleteCalendar(request *DeleteCalendarRequest) (_result *D
 
 // Summary:
 //
-// 释放删除集群
+// Deletes a cluster.
 //
 // @param request - DeleteClusterRequest
 //
@@ -946,7 +1048,7 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 
 // Summary:
 //
-// 释放删除集群
+// Deletes a cluster.
 //
 // @param request - DeleteClusterRequest
 //
@@ -1030,7 +1132,73 @@ func (client *Client) DeleteDatasource(request *DeleteDatasourceRequest) (_resul
 
 // Summary:
 //
-// 批量删除任务
+// 添加执行器组
+//
+// @param request - DeleteExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExecutorGroupResponse
+func (client *Client) DeleteExecutorGroupWithOptions(request *DeleteExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteExecutorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加执行器组
+//
+// @param request - DeleteExecutorGroupRequest
+//
+// @return DeleteExecutorGroupResponse
+func (client *Client) DeleteExecutorGroup(request *DeleteExecutorGroupRequest) (_result *DeleteExecutorGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteExecutorGroupResponse{}
+	_body, _err := client.DeleteExecutorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes multiple jobs at a time.
 //
 // @param tmpReq - DeleteJobsRequest
 //
@@ -1088,7 +1256,7 @@ func (client *Client) DeleteJobsWithOptions(tmpReq *DeleteJobsRequest, runtime *
 
 // Summary:
 //
-// 批量删除任务
+// Deletes multiple jobs at a time.
 //
 // @param request - DeleteJobsRequest
 //
@@ -1260,7 +1428,7 @@ func (client *Client) DeleteWorkflows(request *DeleteWorkflowsRequest) (_result 
 
 // Summary:
 //
-// 批量导出任务信息
+// Exports the information about jobs at a time.
 //
 // @param tmpReq - ExportJobsRequest
 //
@@ -1322,7 +1490,7 @@ func (client *Client) ExportJobsWithOptions(tmpReq *ExportJobsRequest, runtime *
 
 // Summary:
 //
-// 批量导出任务信息
+// Exports the information about jobs at a time.
 //
 // @param request - ExportJobsRequest
 //
@@ -1552,7 +1720,7 @@ func (client *Client) GetCalendar(request *GetCalendarRequest) (_result *GetCale
 
 // Summary:
 //
-// 获取集群详细信息
+// Queries the details of a cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1592,7 +1760,7 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 
 // Summary:
 //
-// 获取集群详细信息
+// Queries the details of a cluster.
 //
 // @param request - GetClusterRequest
 //
@@ -1610,7 +1778,7 @@ func (client *Client) GetCluster(request *GetClusterRequest) (_result *GetCluste
 
 // Summary:
 //
-// 获取指定机器信息
+// Queries a specified machine.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1650,7 +1818,7 @@ func (client *Client) GetDesigateInfoWithOptions(request *GetDesigateInfoRequest
 
 // Summary:
 //
-// 获取指定机器信息
+// Queries a specified machine.
 //
 // @param request - GetDesigateInfoRequest
 //
@@ -1808,7 +1976,7 @@ func (client *Client) GetJobExecution(request *GetJobExecutionRequest) (_result 
 
 // Summary:
 //
-// 获取任务执行的详情
+// Obtains the execution details of a job.
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -1848,7 +2016,7 @@ func (client *Client) GetJobExecutionProgressWithOptions(request *GetJobExecutio
 
 // Summary:
 //
-// 获取任务执行的详情
+// Obtains the execution details of a job.
 //
 // @param request - GetJobExecutionProgressRequest
 //
@@ -1924,7 +2092,7 @@ func (client *Client) GetJobExecutionThreadDump(request *GetJobExecutionThreadDu
 
 // Summary:
 //
-// 查询日志
+// Queries logs.
 //
 // @param request - GetLogRequest
 //
@@ -1964,7 +2132,7 @@ func (client *Client) GetLogWithOptions(request *GetLogRequest, runtime *dara.Ru
 
 // Summary:
 //
-// 查询日志
+// Queries logs.
 //
 // @param request - GetLogRequest
 //
@@ -2031,6 +2199,108 @@ func (client *Client) GetLogEvent(request *GetLogEventRequest) (_result *GetLogE
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetLogEventResponse{}
 	_body, _err := client.GetLogEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分页日志
+//
+// @param request - GetPageLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPageLogResponse
+func (client *Client) GetPageLogWithOptions(request *GetPageLogRequest, runtime *dara.RuntimeOptions) (_result *GetPageLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppName) {
+		query["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.JobExecutionId) {
+		query["JobExecutionId"] = request.JobExecutionId
+	}
+
+	if !dara.IsNil(request.JobName) {
+		query["JobName"] = request.JobName
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Reverse) {
+		query["Reverse"] = request.Reverse
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WorkerAddr) {
+		query["WorkerAddr"] = request.WorkerAddr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPageLog"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPageLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分页日志
+//
+// @param request - GetPageLogRequest
+//
+// @return GetPageLogResponse
+func (client *Client) GetPageLog(request *GetPageLogRequest) (_result *GetPageLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPageLogResponse{}
+	_body, _err := client.GetPageLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2324,7 +2594,7 @@ func (client *Client) GetWorkflowExecutionDAG(request *GetWorkflowExecutionDAGRe
 
 // Summary:
 //
-// 导入日历
+// Imports a calendar.
 //
 // @param request - ImportCalendarRequest
 //
@@ -2380,7 +2650,7 @@ func (client *Client) ImportCalendarWithOptions(request *ImportCalendarRequest, 
 
 // Summary:
 //
-// 导入日历
+// Imports a calendar.
 //
 // @param request - ImportCalendarRequest
 //
@@ -2398,7 +2668,7 @@ func (client *Client) ImportCalendar(request *ImportCalendarRequest) (_result *I
 
 // Summary:
 //
-// 批量导入任务
+// Imports jobs at a time.
 //
 // @param request - ImportJobsRequest
 //
@@ -2454,7 +2724,7 @@ func (client *Client) ImportJobsWithOptions(request *ImportJobsRequest, runtime 
 
 // Summary:
 //
-// 批量导入任务
+// Imports jobs at a time.
 //
 // @param request - ImportJobsRequest
 //
@@ -2546,7 +2816,7 @@ func (client *Client) ImportWorkflows(request *ImportWorkflowsRequest) (_result 
 
 // Summary:
 //
-// 获取报警事件
+// Obtains a list of alert events.
 //
 // @param request - ListAlarmEventRequest
 //
@@ -2586,7 +2856,7 @@ func (client *Client) ListAlarmEventWithOptions(request *ListAlarmEventRequest, 
 
 // Summary:
 //
-// 获取报警事件
+// Obtains a list of alert events.
 //
 // @param request - ListAlarmEventRequest
 //
@@ -2604,7 +2874,7 @@ func (client *Client) ListAlarmEvent(request *ListAlarmEventRequest) (_result *L
 
 // Summary:
 //
-// 获取应用名字列表
+// Obtains a list of application names.
 //
 // @param request - ListAppNamesRequest
 //
@@ -2644,7 +2914,7 @@ func (client *Client) ListAppNamesWithOptions(request *ListAppNamesRequest, runt
 
 // Summary:
 //
-// 获取应用名字列表
+// Obtains a list of application names.
 //
 // @param request - ListAppNamesRequest
 //
@@ -2662,7 +2932,7 @@ func (client *Client) ListAppNames(request *ListAppNamesRequest) (_result *ListA
 
 // Summary:
 //
-// 获取应用列表
+// Queries a list of applications.
 //
 // @param request - ListAppsRequest
 //
@@ -2702,7 +2972,7 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, runtime *dar
 
 // Summary:
 //
-// 获取应用列表
+// Queries a list of applications.
 //
 // @param request - ListAppsRequest
 //
@@ -2720,7 +2990,7 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 
 // Summary:
 //
-// 获取日历名字列表
+// Obtains a list of calendar names.
 //
 // @param request - ListCalendarNamesRequest
 //
@@ -2760,7 +3030,7 @@ func (client *Client) ListCalendarNamesWithOptions(request *ListCalendarNamesReq
 
 // Summary:
 //
-// 获取日历名字列表
+// Obtains a list of calendar names.
 //
 // @param request - ListCalendarNamesRequest
 //
@@ -2860,7 +3130,7 @@ func (client *Client) ListCalendars(request *ListCalendarsRequest) (_result *Lis
 
 // Summary:
 //
-// 查询实例列表
+// Queries a list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -2900,7 +3170,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// 查询实例列表
+// Queries a list of instances.
 //
 // @param request - ListClustersRequest
 //
@@ -3004,7 +3274,93 @@ func (client *Client) ListDatasources(request *ListDatasourcesRequest) (_result 
 
 // Summary:
 //
-// 查询Executor列表
+// 获取执行器组列表
+//
+// @param request - ListExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutorGroupResponse
+func (client *Client) ListExecutorGroupWithOptions(request *ListExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *ListExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		query["WorkerType"] = request.WorkerType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListExecutorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取执行器组列表
+//
+// @param request - ListExecutorGroupRequest
+//
+// @return ListExecutorGroupResponse
+func (client *Client) ListExecutorGroup(request *ListExecutorGroupRequest) (_result *ListExecutorGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListExecutorGroupResponse{}
+	_body, _err := client.ListExecutorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -3044,7 +3400,7 @@ func (client *Client) ListExecutorsWithOptions(request *ListExecutorsRequest, ru
 
 // Summary:
 //
-// 查询Executor列表
+// Queries a list of executors.
 //
 // @param request - ListExecutorsRequest
 //
@@ -3062,7 +3418,7 @@ func (client *Client) ListExecutors(request *ListExecutorsRequest) (_result *Lis
 
 // Summary:
 //
-// 获取任务实例列表
+// Obtains a list of job instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -3146,7 +3502,7 @@ func (client *Client) ListJobExecutionsWithOptions(request *ListJobExecutionsReq
 
 // Summary:
 //
-// 获取任务实例列表
+// Obtains a list of job instances.
 //
 // @param request - ListJobExecutionsRequest
 //
@@ -3242,7 +3598,7 @@ func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest)
 
 // Summary:
 //
-// 获取任务列表
+// Queries a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -3322,7 +3678,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *dar
 
 // Summary:
 //
-// 获取任务列表
+// Queries a list of jobs.
 //
 // @param request - ListJobsRequest
 //
@@ -3418,7 +3774,7 @@ func (client *Client) ListK8sResource(request *ListK8sResourceRequest) (_result 
 
 // Summary:
 //
-// 获取executor的label列表
+// Obtains a list of tags of an executor.
 //
 // @param request - ListLablesRequest
 //
@@ -3458,7 +3814,7 @@ func (client *Client) ListLablesWithOptions(request *ListLablesRequest, runtime 
 
 // Summary:
 //
-// 获取executor的label列表
+// Obtains a list of tags of an executor.
 //
 // @param request - ListLablesRequest
 //
@@ -3476,9 +3832,7 @@ func (client *Client) ListLables(request *ListLablesRequest) (_result *ListLable
 
 // Summary:
 //
-// 获取可用区列表
-//
-// @param request - ListRegionZoneRequest
+// Obtains a list of zones.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3507,7 +3861,7 @@ func (client *Client) ListRegionZoneWithOptions(runtime *dara.RuntimeOptions) (_
 
 // Summary:
 //
-// 获取可用区列表
+// Obtains a list of zones.
 //
 // @return ListRegionZoneResponse
 func (client *Client) ListRegionZone() (_result *ListRegionZoneResponse, _err error) {
@@ -3523,9 +3877,7 @@ func (client *Client) ListRegionZone() (_result *ListRegionZoneResponse, _err er
 
 // Summary:
 //
-// 获取所有region列表
-//
-// @param request - ListRegionsRequest
+// Obtains a list of all regions.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3554,7 +3906,7 @@ func (client *Client) ListRegionsWithOptions(runtime *dara.RuntimeOptions) (_res
 
 // Summary:
 //
-// 获取所有region列表
+// Obtains a list of all regions.
 //
 // @return ListRegionsResponse
 func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
@@ -3570,7 +3922,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// 查询调度事件
+// Queries scheduling events.
 //
 // @param request - ListScheduleEventRequest
 //
@@ -3610,7 +3962,7 @@ func (client *Client) ListScheduleEventWithOptions(request *ListScheduleEventReq
 
 // Summary:
 //
-// 查询调度事件
+// Queries scheduling events.
 //
 // @param request - ListScheduleEventRequest
 //
@@ -3628,7 +3980,7 @@ func (client *Client) ListScheduleEvent(request *ListScheduleEventRequest) (_res
 
 // Summary:
 //
-// 获取指定时间类型和表达式未来5次调度时间
+// Obtains the scheduling time points of the next five jobs. The scheduling time points are specified by time types or expressions.
 //
 // @param request - ListScheduleTimesRequest
 //
@@ -3668,7 +4020,7 @@ func (client *Client) ListScheduleTimesWithOptions(request *ListScheduleTimesReq
 
 // Summary:
 //
-// 获取指定时间类型和表达式未来5次调度时间
+// Obtains the scheduling time points of the next five jobs. The scheduling time points are specified by time types or expressions.
 //
 // @param request - ListScheduleTimesRequest
 //
@@ -4120,7 +4472,7 @@ func (client *Client) OperateConnectDatasource(request *OperateConnectDatasource
 
 // Summary:
 //
-// 指定执行器
+// Designates executors.
 //
 // @param tmpReq - OperateDesignateExecutorsRequest
 //
@@ -4190,7 +4542,7 @@ func (client *Client) OperateDesignateExecutorsWithOptions(tmpReq *OperateDesign
 
 // Summary:
 //
-// 指定执行器
+// Designates executors.
 //
 // @param request - OperateDesignateExecutorsRequest
 //
@@ -4208,7 +4560,7 @@ func (client *Client) OperateDesignateExecutors(request *OperateDesignateExecuto
 
 // Summary:
 //
-// 批量禁用任务
+// Disables multiple jobs at a time.
 //
 // @param tmpReq - OperateDisableJobsRequest
 //
@@ -4266,7 +4618,7 @@ func (client *Client) OperateDisableJobsWithOptions(tmpReq *OperateDisableJobsRe
 
 // Summary:
 //
-// 批量禁用任务
+// Disables multiple jobs at a time.
 //
 // @param request - OperateDisableJobsRequest
 //
@@ -4360,7 +4712,7 @@ func (client *Client) OperateDisableWorkflows(request *OperateDisableWorkflowsRe
 
 // Summary:
 //
-// 批量启用任务
+// Enables multiple jobs at a time.
 //
 // @param tmpReq - OperateEnableJobsRequest
 //
@@ -4418,7 +4770,7 @@ func (client *Client) OperateEnableJobsWithOptions(tmpReq *OperateEnableJobsRequ
 
 // Summary:
 //
-// 批量启用任务
+// Enables multiple jobs at a time.
 //
 // @param request - OperateEnableJobsRequest
 //
@@ -4512,7 +4864,7 @@ func (client *Client) OperateEnableWorkflows(request *OperateEnableWorkflowsRequ
 
 // Summary:
 //
-// 运行一次任务
+// Runs a job once.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -4576,7 +4928,7 @@ func (client *Client) OperateExecuteJobWithOptions(request *OperateExecuteJobReq
 
 // Summary:
 //
-// 运行一次任务
+// Runs a job once.
 //
 // @param request - OperateExecuteJobRequest
 //
@@ -4944,7 +5296,7 @@ func (client *Client) OperateMarkSuccessWorkflowExecution(request *OperateMarkSu
 
 // Summary:
 //
-// 重刷任务历史数据
+// Reprocesses the historical data of a job.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -5008,7 +5360,7 @@ func (client *Client) OperateRerunJobWithOptions(request *OperateRerunJobRequest
 
 // Summary:
 //
-// 重刷任务历史数据
+// Reprocesses the historical data of a job.
 //
 // @param request - OperateRerunJobRequest
 //
@@ -5026,7 +5378,7 @@ func (client *Client) OperateRerunJob(request *OperateRerunJobRequest) (_result 
 
 // Summary:
 //
-// 重跑失败的任务实例
+// Reruns failed job instances.
 //
 // @param tmpReq - OperateRetryJobExecutionRequest
 //
@@ -5092,7 +5444,7 @@ func (client *Client) OperateRetryJobExecutionWithOptions(tmpReq *OperateRetryJo
 
 // Summary:
 //
-// 重跑失败的任务实例
+// Reruns failed job instances.
 //
 // @param request - OperateRetryJobExecutionRequest
 //
@@ -5254,7 +5606,7 @@ func (client *Client) OperateSkipJobExecution(request *OperateSkipJobExecutionRe
 
 // Summary:
 //
-// 停止运行中的任务实例
+// Stops running instances.
 //
 // @param tmpReq - OperateStopJobExecutionRequest
 //
@@ -5316,7 +5668,7 @@ func (client *Client) OperateStopJobExecutionWithOptions(tmpReq *OperateStopJobE
 
 // Summary:
 //
-// 停止运行中的任务实例
+// Stops running instances.
 //
 // @param request - OperateStopJobExecutionRequest
 //
@@ -5698,7 +6050,7 @@ func (client *Client) SyncJobs(request *SyncJobsRequest) (_result *SyncJobsRespo
 
 // Summary:
 //
-// 更新应用分组
+// Updates an application group.
 //
 // @param request - UpdateAppRequest
 //
@@ -5741,6 +6093,10 @@ func (client *Client) UpdateAppWithOptions(request *UpdateAppRequest, runtime *d
 		body["Title"] = request.Title
 	}
 
+	if !dara.IsNil(request.WorkerId) {
+		body["WorkerId"] = request.WorkerId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -5766,7 +6122,7 @@ func (client *Client) UpdateAppWithOptions(request *UpdateAppRequest, runtime *d
 
 // Summary:
 //
-// 更新应用分组
+// Updates an application group.
 //
 // @param request - UpdateAppRequest
 //
@@ -5866,7 +6222,7 @@ func (client *Client) UpdateCalendar(request *UpdateCalendarRequest) (_result *U
 
 // Summary:
 //
-// 更新集群
+// Updates a cluster.
 //
 // @param request - UpdateClusterRequest
 //
@@ -5918,7 +6274,7 @@ func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, ru
 
 // Summary:
 //
-// 更新集群
+// Updates a cluster.
 //
 // @param request - UpdateClusterRequest
 //
@@ -6018,6 +6374,100 @@ func (client *Client) UpdateDatasource(request *UpdateDatasourceRequest) (_resul
 
 // Summary:
 //
+// 更新执行器组
+//
+// @param request - UpdateExecutorGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExecutorGroupResponse
+func (client *Client) UpdateExecutorGroupWithOptions(request *UpdateExecutorGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateExecutorGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		body["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.AuthType) {
+		body["AuthType"] = request.AuthType
+	}
+
+	if !dara.IsNil(request.ClusterId) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Network) {
+		body["Network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.WorkerType) {
+		body["WorkerType"] = request.WorkerType
+	}
+
+	if !dara.IsNil(request.Workers) {
+		body["Workers"] = request.Workers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateExecutorGroup"),
+		Version:     dara.String("2024-06-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateExecutorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新执行器组
+//
+// @param request - UpdateExecutorGroupRequest
+//
+// @return UpdateExecutorGroupResponse
+func (client *Client) UpdateExecutorGroup(request *UpdateExecutorGroupRequest) (_result *UpdateExecutorGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateExecutorGroupResponse{}
+	_body, _err := client.UpdateExecutorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新执行器
 //
 // @param request - UpdateExecutorsRequest
@@ -6092,7 +6542,7 @@ func (client *Client) UpdateExecutors(request *UpdateExecutorsRequest) (_result 
 
 // Summary:
 //
-// 更新任务信息
+// Updates the job information.
 //
 // @param tmpReq - UpdateJobRequest
 //
@@ -6217,6 +6667,10 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *da
 		body["Weight"] = request.Weight
 	}
 
+	if !dara.IsNil(request.XAttrs) {
+		body["XAttrs"] = request.XAttrs
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -6242,7 +6696,7 @@ func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *da
 
 // Summary:
 //
-// 更新任务信息
+// Updates the job information.
 //
 // @param request - UpdateJobRequest
 //

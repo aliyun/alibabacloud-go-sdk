@@ -13,6 +13,8 @@ type iListClustersRequest interface {
 	GetClusterId() *string
 	SetClusterName(v string) *ListClustersRequest
 	GetClusterName() *string
+	SetClusterType(v int32) *ListClustersRequest
+	GetClusterType() *int32
 	SetPageNum(v int32) *ListClustersRequest
 	GetPageNum() *int32
 	SetPageSize(v int32) *ListClustersRequest
@@ -30,6 +32,10 @@ type ListClustersRequest struct {
 	//
 	// cluster-test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 1
+	ClusterType *int32 `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// example:
 	//
 	// 5
@@ -57,6 +63,10 @@ func (s *ListClustersRequest) GetClusterName() *string {
 	return s.ClusterName
 }
 
+func (s *ListClustersRequest) GetClusterType() *int32 {
+	return s.ClusterType
+}
+
 func (s *ListClustersRequest) GetPageNum() *int32 {
 	return s.PageNum
 }
@@ -76,6 +86,11 @@ func (s *ListClustersRequest) SetClusterId(v string) *ListClustersRequest {
 
 func (s *ListClustersRequest) SetClusterName(v string) *ListClustersRequest {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *ListClustersRequest) SetClusterType(v int32) *ListClustersRequest {
+	s.ClusterType = &v
 	return s
 }
 
