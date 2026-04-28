@@ -9,6 +9,47 @@ import (
 
 // Summary:
 //
+// 激活AI中心
+//
+// @param request - ActivateAICenterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateAICenterResponse
+func (client *Client) ActivateAICenterWithContext(ctx context.Context, workspaceId *string, request *ActivateAICenterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ActivateAICenterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActivateAICenter"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/activateaicenter"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActivateAICenterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a RAM user or RAM role to a workspace as a member.
 //
 // @param request - AddMembersRequest
@@ -1430,6 +1471,47 @@ func (client *Client) GenerateTaskCodesWithContext(ctx context.Context, bizId *s
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateTaskCodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AI中心状态
+//
+// @param request - GetAICenterStateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICenterStateResponse
+func (client *Client) GetAICenterStateWithContext(ctx context.Context, workspaceId *string, request *GetAICenterStateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAICenterStateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAICenterState"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/aicenter"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAICenterStateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4388,6 +4470,83 @@ func (client *Client) UpdateRayClusterWithContext(ctx context.Context, workspace
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRayClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新workspace属性
+//
+// @param request - UpdateWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceResponse
+func (client *Client) UpdateWorkspaceWithContext(ctx context.Context, request *UpdateWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cu) {
+		body["cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.Gpu) {
+		body["gpu"] = request.Gpu
+	}
+
+	if !dara.IsNil(request.GpuSpec) {
+		body["gpuSpec"] = request.GpuSpec
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Subscription) {
+		body["subscription"] = request.Subscription
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["workspaceId"] = request.WorkspaceId
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		body["workspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkspace"),
+		Version:     dara.String("2023-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/workspaces/update"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkspaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
