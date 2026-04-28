@@ -13,6 +13,8 @@ type iExtraPodSpec interface {
   GetInitContainers() []*ContainerSpec 
   SetLifecycle(v *Lifecycle) *ExtraPodSpec
   GetLifecycle() *Lifecycle 
+  SetMainContainerSecurityContext(v *SecurityContext) *ExtraPodSpec
+  GetMainContainerSecurityContext() *SecurityContext 
   SetPodAnnotations(v map[string]*string) *ExtraPodSpec
   GetPodAnnotations() map[string]*string 
   SetPodLabels(v map[string]*string) *ExtraPodSpec
@@ -28,6 +30,7 @@ type ExtraPodSpec struct {
   InitContainers []*ContainerSpec `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
   // The lifecycle object.
   Lifecycle *Lifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+  MainContainerSecurityContext *SecurityContext `json:"MainContainerSecurityContext,omitempty" xml:"MainContainerSecurityContext,omitempty"`
   // Deprecated
   // 
   // The pod annotations.
@@ -58,6 +61,10 @@ func (s *ExtraPodSpec) GetLifecycle() *Lifecycle  {
   return s.Lifecycle
 }
 
+func (s *ExtraPodSpec) GetMainContainerSecurityContext() *SecurityContext  {
+  return s.MainContainerSecurityContext
+}
+
 func (s *ExtraPodSpec) GetPodAnnotations() map[string]*string  {
   return s.PodAnnotations
 }
@@ -81,6 +88,11 @@ func (s *ExtraPodSpec) SetInitContainers(v []*ContainerSpec) *ExtraPodSpec {
 
 func (s *ExtraPodSpec) SetLifecycle(v *Lifecycle) *ExtraPodSpec {
   s.Lifecycle = v
+  return s
+}
+
+func (s *ExtraPodSpec) SetMainContainerSecurityContext(v *SecurityContext) *ExtraPodSpec {
+  s.MainContainerSecurityContext = v
   return s
 }
 
@@ -116,6 +128,11 @@ func (s *ExtraPodSpec) Validate() error {
   }
   if s.Lifecycle != nil {
     if err := s.Lifecycle.Validate(); err != nil {
+      return err
+    }
+  }
+  if s.MainContainerSecurityContext != nil {
+    if err := s.MainContainerSecurityContext.Validate(); err != nil {
       return err
     }
   }
