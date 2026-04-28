@@ -63,7 +63,7 @@ func (client *Client) AttachApplication2ConnectorWithContext(ctx context.Context
 
 // Summary:
 //
-// 挂载业务策略至指定审批流程
+// # Mount a business policy to a specified approval flow
 //
 // @param request - AttachPolicy2ApprovalProcessRequest
 //
@@ -115,7 +115,7 @@ func (client *Client) AttachPolicy2ApprovalProcessWithContext(ctx context.Contex
 
 // Summary:
 //
-// 创建审批流程
+// Create an approval flow under the current Alibaba Cloud account.
 //
 // @param tmpReq - CreateApprovalProcessRequest
 //
@@ -331,7 +331,7 @@ func (client *Client) CreateDynamicRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建加速策略
+// Create an enterprise acceleration policy.
 //
 // @param request - CreateEnterpriseAcceleratePolicyRequest
 //
@@ -407,7 +407,7 @@ func (client *Client) CreateEnterpriseAcceleratePolicyWithContext(ctx context.Co
 
 // Summary:
 //
-// 创建加速对象
+// Create an enterprise acceleration address.
 //
 // @param request - CreateEnterpriseAccelerateTargetRequest
 //
@@ -506,7 +506,7 @@ func (client *Client) CreateIdpDepartmentWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建内网访问诊断任务
+// # Create an internal network access diagnostic task
 //
 // @param tmpReq - CreatePADiagnosisTaskRequest
 //
@@ -1382,7 +1382,7 @@ func (client *Client) CreateWmInfoMappingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 批量删除审批流程
+// Batch delete approval flows under the current Alibaba Cloud account.
 //
 // @param request - DeleteApprovalProcessesRequest
 //
@@ -1517,7 +1517,7 @@ func (client *Client) DeleteDynamicRouteWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除加速策略
+// Delete an enterprise acceleration policy.
 //
 // @param request - DeleteEnterpriseAcceleratePolicyRequest
 //
@@ -1561,7 +1561,7 @@ func (client *Client) DeleteEnterpriseAcceleratePolicyWithContext(ctx context.Co
 
 // Summary:
 //
-// 删除加速对象
+// Delete an enterprise acceleration address.
 //
 // @param request - DeleteEnterpriseAccelerateTargetRequest
 //
@@ -1660,7 +1660,7 @@ func (client *Client) DeleteIdpDepartmentWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # DeleteOtpConfig
+// Delete the employee OTP configuration.
 //
 // @param request - DeleteOtpConfigRequest
 //
@@ -2030,7 +2030,7 @@ func (client *Client) DetachApplication2ConnectorWithContext(ctx context.Context
 
 // Summary:
 //
-// 解绑业务策略与审批流程
+// # Detach business policies from approval flows
 //
 // @param request - DetachPolicy2ApprovalProcessRequest
 //
@@ -2082,7 +2082,7 @@ func (client *Client) DetachPolicy2ApprovalProcessWithContext(ctx context.Contex
 
 // Summary:
 //
-// 禁用加速策略
+// Disable enterprise acceleration policy.
 //
 // @param request - DisableEnterpriseAcceleratePolicyRequest
 //
@@ -2126,7 +2126,7 @@ func (client *Client) DisableEnterpriseAcceleratePolicyWithContext(ctx context.C
 
 // Summary:
 //
-// 启用加速策略
+// Enable enterprise acceleration policy.
 //
 // @param request - EnableEnterpriseAcceleratePolicyRequest
 //
@@ -2273,7 +2273,7 @@ func (client *Client) ExportUserDevicesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询审批
+// Queries the details of an approval instance within your Alibaba Cloud account.
 //
 // @param request - GetApprovalRequest
 //
@@ -2313,7 +2313,7 @@ func (client *Client) GetApprovalWithContext(ctx context.Context, request *GetAp
 
 // Summary:
 //
-// 查询审批流程
+// Queries the details of an approval flow under the current Alibaba Cloud account.
 //
 // @param request - GetApprovalProcessRequest
 //
@@ -2353,7 +2353,7 @@ func (client *Client) GetApprovalProcessWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询审批动态模板
+// Queries the details of an approval template within your Alibaba Cloud account.
 //
 // @param request - GetApprovalSchemaRequest
 //
@@ -2513,7 +2513,7 @@ func (client *Client) GetIdpConfigWithContext(ctx context.Context, request *GetI
 
 // Summary:
 //
-// 查询内网访问诊断任务详情
+// # Query the details of an internal network access diagnostic task
 //
 // @param request - GetPADiagnosisTaskRequest
 //
@@ -2833,7 +2833,7 @@ func (client *Client) GetWmExtractTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 批量导入加速对象异步任务
+// Batch import accelerated address List.
 //
 // @param request - ImportEnterpriseAccelerateTargetsRequest
 //
@@ -2881,7 +2881,7 @@ func (client *Client) ImportEnterpriseAccelerateTargetsWithContext(ctx context.C
 
 // Summary:
 //
-// 批量查询内网访问策略的应用
+// Batch queries the applications of internal network access policies under the current Alibaba Cloud account.
 //
 // @param request - ListApplicationsForPrivateAccessPolicyRequest
 //
@@ -2961,7 +2961,7 @@ func (client *Client) ListApplicationsForPrivateAccessTagWithContext(ctx context
 
 // Summary:
 //
-// 列表查询审批流程
+// Queries the approval flow list under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalProcessesRequest
 //
@@ -3001,7 +3001,7 @@ func (client *Client) ListApprovalProcessesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询审批渲染模板关联的流程
+// # Query flows associated with an approval rendering template
 //
 // @param request - ListApprovalProcessesForApprovalSchemasRequest
 //
@@ -3041,7 +3041,7 @@ func (client *Client) ListApprovalProcessesForApprovalSchemasWithContext(ctx con
 
 // Summary:
 //
-// 列表查询审批动态模板
+// Queries the list of approval templates under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalSchemasRequest
 //
@@ -3081,7 +3081,7 @@ func (client *Client) ListApprovalSchemasWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询审批流程关联的渲染模板
+// # Query rendering templates associated with an approval flow
 //
 // @param request - ListApprovalSchemasForApprovalProcessesRequest
 //
@@ -3121,7 +3121,7 @@ func (client *Client) ListApprovalSchemasForApprovalProcessesWithContext(ctx con
 
 // Summary:
 //
-// 批量查询审批
+// Queries the approval instance list under the current Alibaba Cloud account.
 //
 // @param request - ListApprovalsRequest
 //
@@ -3241,7 +3241,7 @@ func (client *Client) ListConnectorsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// # Batch Query Dynamic Policy Disposal Processes
+// Batch query Dynamic policy handling flows.
 //
 // @param request - ListDynamicDisposalProcessesRequest
 //
@@ -3321,7 +3321,7 @@ func (client *Client) ListDynamicRoutesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询加速策略日志列表
+// Queries enterprise acceleration Audit logs.
 //
 // @param request - ListEnterpriseAccelerateLogsRequest
 //
@@ -3361,7 +3361,7 @@ func (client *Client) ListEnterpriseAccelerateLogsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询加速策略列表
+// # Query acceleration policy list
 //
 // @param request - ListEnterpriseAcceleratePoliciesRequest
 //
@@ -3401,7 +3401,7 @@ func (client *Client) ListEnterpriseAcceleratePoliciesWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询加速对象列表
+// Query the enterprise acceleration address list.
 //
 // @param request - ListEnterpriseAccelerateTargetsRequest
 //
@@ -3471,6 +3471,86 @@ func (client *Client) ListExcessiveDeviceRegistrationApplicationsWithContext(ctx
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListExcessiveDeviceRegistrationApplicationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询转发策略
+//
+// @param request - ListForwardStrategiesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListForwardStrategiesResponse
+func (client *Client) ListForwardStrategiesWithContext(ctx context.Context, request *ListForwardStrategiesRequest, runtime *dara.RuntimeOptions) (_result *ListForwardStrategiesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListForwardStrategies"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListForwardStrategiesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询转发策略绑定项目
+//
+// @param request - ListForwardStrategyBindingItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListForwardStrategyBindingItemsResponse
+func (client *Client) ListForwardStrategyBindingItemsWithContext(ctx context.Context, request *ListForwardStrategyBindingItemsRequest, runtime *dara.RuntimeOptions) (_result *ListForwardStrategyBindingItemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListForwardStrategyBindingItems"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListForwardStrategyBindingItemsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3561,7 +3641,7 @@ func (client *Client) ListIdpDepartmentsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 入网用户列表
+// Network User List.
 //
 // @param request - ListNacUserCertRequest
 //
@@ -4233,7 +4313,7 @@ func (client *Client) ListTagsForPrivateAccessPolicyWithContext(ctx context.Cont
 
 // Summary:
 //
-// 列表查询卸载申请列表
+// Batch queries the uninstall request list under the current Alibaba Cloud account.
 //
 // @param request - ListUninstallApplicationsRequest
 //
@@ -4273,7 +4353,7 @@ func (client *Client) ListUninstallApplicationsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 列表查询用户应用权限
+// Queries the application permissions of a logon user under the current Alibaba Cloud account.
 //
 // @param request - ListUserApplicationsRequest
 //
@@ -4473,7 +4553,7 @@ func (client *Client) ListUserGroupsForRegistrationPolicyWithContext(ctx context
 
 // Summary:
 //
-// # List query of user zero trust policies
+// Query the zero trust policies of a User in a List.
 //
 // @param request - ListUserPrivateAccessPoliciesRequest
 //
@@ -4593,7 +4673,7 @@ func (client *Client) LookupWmInfoMappingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 修改加速策略
+// Modify enterprise acceleration policy.
 //
 // @param request - ModifyEnterpriseAcceleratePolicyRequest
 //
@@ -4675,11 +4755,59 @@ func (client *Client) ModifyEnterpriseAcceleratePolicyWithContext(ctx context.Co
 	return _result, _err
 }
 
+// Summary:
+//
+// 吊销用户设备会话
+//
+// @param request - RevokeUserDeviceSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeUserDeviceSessionResponse
+func (client *Client) RevokeUserDeviceSessionWithContext(ctx context.Context, request *RevokeUserDeviceSessionRequest, runtime *dara.RuntimeOptions) (_result *RevokeUserDeviceSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DevTag) {
+		body["DevTag"] = request.DevTag
+	}
+
+	if !dara.IsNil(request.SaseUserId) {
+		body["SaseUserId"] = request.SaseUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevokeUserDeviceSession"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevokeUserDeviceSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Deprecated: OpenAPI RevokeUserSession is deprecated
 //
 // Summary:
 //
-// 吊销用户登录会话
+// Revoke a User logon session.
 //
 // @param request - RevokeUserSessionRequest
 //
@@ -4727,7 +4855,7 @@ func (client *Client) RevokeUserSessionWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新审批流程
+// Update an approval flow under the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdateApprovalProcessRequest
 //
@@ -4818,7 +4946,7 @@ func (client *Client) UpdateApprovalProcessWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 修改审批状态
+// Update the approval instance status under the current Alibaba Cloud account.
 //
 // @param request - UpdateApprovalStatusRequest
 //
@@ -4866,7 +4994,7 @@ func (client *Client) UpdateApprovalStatusWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 更新自启动与防卸载策略配置
+// Update the Startup and anti-uninstall policy under the current Alibaba Cloud account.
 //
 // @param tmpReq - UpdateBootAndAntiUninstallPolicyRequest
 //
@@ -5293,7 +5421,7 @@ func (client *Client) UpdateIdpDepartmentWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新NAC User 状态
+// Batch modifies the Status of network access certificates for Users under the current Alibaba Cloud account.
 //
 // @param request - UpdateNacUserCertStatusRequest
 //
@@ -5685,7 +5813,7 @@ func (client *Client) UpdateRegistrationPolicyWithContext(ctx context.Context, t
 
 // Summary:
 //
-// 批量修改卸载申请状态
+// Batch updates the uninstall request status under the current Alibaba Cloud account.
 //
 // @param request - UpdateUninstallApplicationsStatusRequest
 //
