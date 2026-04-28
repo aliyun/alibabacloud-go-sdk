@@ -1017,6 +1017,10 @@ func (client *Client) DeleteVhostWithContext(ctx context.Context, tmpReq *Delete
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取region列表
+//
 // @param request - DescribeRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1469,6 +1473,10 @@ func (client *Client) GetBindingErrorByTaskIdWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取购买页地址
+//
 // @param request - GetCommonBuyUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2618,6 +2626,10 @@ func (client *Client) InstancePreivewWithContext(ctx context.Context, request *I
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsoleSessionId) {
 		query["ConsoleSessionId"] = request.ConsoleSessionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.Tags) {

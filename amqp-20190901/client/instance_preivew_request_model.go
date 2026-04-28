@@ -11,12 +11,15 @@ type iInstancePreivewRequest interface {
 	GoString() string
 	SetConsoleSessionId(v string) *InstancePreivewRequest
 	GetConsoleSessionId() *string
+	SetResourceGroupId(v string) *InstancePreivewRequest
+	GetResourceGroupId() *string
 	SetTags(v string) *InstancePreivewRequest
 	GetTags() *string
 }
 
 type InstancePreivewRequest struct {
 	ConsoleSessionId *string `json:"ConsoleSessionId,omitempty" xml:"ConsoleSessionId,omitempty"`
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -32,12 +35,21 @@ func (s *InstancePreivewRequest) GetConsoleSessionId() *string {
 	return s.ConsoleSessionId
 }
 
+func (s *InstancePreivewRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *InstancePreivewRequest) GetTags() *string {
 	return s.Tags
 }
 
 func (s *InstancePreivewRequest) SetConsoleSessionId(v string) *InstancePreivewRequest {
 	s.ConsoleSessionId = &v
+	return s
+}
+
+func (s *InstancePreivewRequest) SetResourceGroupId(v string) *InstancePreivewRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

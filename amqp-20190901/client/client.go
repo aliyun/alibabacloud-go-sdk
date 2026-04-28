@@ -1372,6 +1372,10 @@ func (client *Client) DeleteVhost(request *DeleteVhostRequest) (_result *DeleteV
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取region列表
+//
 // @param request - DescribeRegionsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1412,6 +1416,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取region列表
+//
 // @param request - DescribeRegionsRequest
 //
 // @return DescribeRegionsResponse
@@ -1946,6 +1954,10 @@ func (client *Client) GetBindingErrorByTaskId(request *GetBindingErrorByTaskIdRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取购买页地址
+//
 // @param request - GetCommonBuyUrlRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1994,6 +2006,10 @@ func (client *Client) GetCommonBuyUrlWithOptions(request *GetCommonBuyUrlRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取购买页地址
+//
 // @param request - GetCommonBuyUrlRequest
 //
 // @return GetCommonBuyUrlResponse
@@ -3415,6 +3431,10 @@ func (client *Client) InstancePreivewWithOptions(request *InstancePreivewRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ConsoleSessionId) {
 		query["ConsoleSessionId"] = request.ConsoleSessionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.Tags) {
