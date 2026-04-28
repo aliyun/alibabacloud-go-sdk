@@ -441,6 +441,84 @@ func (client *Client) CreateAlertStrategy(request *CreateAlertStrategyRequest) (
 
 // Summary:
 //
+// 创建实例巡检
+//
+// @param request - CreateInstanceInspectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceInspectionResponse
+func (client *Client) CreateInstanceInspectionWithOptions(request *CreateInstanceInspectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateInstanceInspectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Instance) {
+		body["instance"] = request.Instance
+	}
+
+	if !dara.IsNil(request.Items) {
+		body["items"] = request.Items
+	}
+
+	if !dara.IsNil(request.Region) {
+		body["region"] = request.Region
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInstanceInspection"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/inspection/createInstanceInspection"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInstanceInspectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例巡检
+//
+// @param request - CreateInstanceInspectionRequest
+//
+// @return CreateInstanceInspectionResponse
+func (client *Client) CreateInstanceInspection(request *CreateInstanceInspectionRequest) (_result *CreateInstanceInspectionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceInspectionResponse{}
+	_body, _err := client.CreateInstanceInspectionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建宕机诊断任务
 //
 // @param request - CreateVmcoreDiagnosisTaskRequest
@@ -2097,6 +2175,72 @@ func (client *Client) GetHotspotTracking(request *GetHotspotTrackingRequest) (_r
 	headers := make(map[string]*string)
 	_result = &GetHotspotTrackingResponse{}
 	_body, _err := client.GetHotspotTrackingWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取巡检报告
+//
+// @param request - GetInspectionReportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInspectionReportResponse
+func (client *Client) GetInspectionReportWithOptions(request *GetInspectionReportRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetInspectionReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ReportId) {
+		query["reportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInspectionReport"),
+		Version:     dara.String("2023-12-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/inspection/getInspectionReport"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInspectionReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取巡检报告
+//
+// @param request - GetInspectionReportRequest
+//
+// @return GetInspectionReportResponse
+func (client *Client) GetInspectionReport(request *GetInspectionReportRequest) (_result *GetInspectionReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInspectionReportResponse{}
+	_body, _err := client.GetInspectionReportWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
