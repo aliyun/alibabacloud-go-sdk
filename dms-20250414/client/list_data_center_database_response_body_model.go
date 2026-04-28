@@ -134,7 +134,8 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	// example:
 	//
 	// 2740966
-	DmsInstanceId *int64 `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	DmsInstanceId *int64  `json:"DmsInstanceId,omitempty" xml:"DmsInstanceId,omitempty"`
+	DownloadLink  *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
@@ -146,15 +147,18 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	// example:
 	//
 	// f-ean8u5881qk4*********xh5y
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
 	// example:
 	//
 	// N
 	IsInternal *string `json:"IsInternal,omitempty" xml:"IsInternal,omitempty"`
+	OssBucket  *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	// example:
 	//
 	// 999
-	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Size             *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	UseUserOssBucket *bool  `json:"UseUserOssBucket,omitempty" xml:"UseUserOssBucket,omitempty"`
 }
 
 func (s ListDataCenterDatabaseResponseBodyData) String() string {
@@ -193,6 +197,10 @@ func (s *ListDataCenterDatabaseResponseBodyData) GetDmsInstanceId() *int64 {
 	return s.DmsInstanceId
 }
 
+func (s *ListDataCenterDatabaseResponseBodyData) GetDownloadLink() *string {
+	return s.DownloadLink
+}
+
 func (s *ListDataCenterDatabaseResponseBodyData) GetGmtCreated() *string {
 	return s.GmtCreated
 }
@@ -205,12 +213,24 @@ func (s *ListDataCenterDatabaseResponseBodyData) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ListDataCenterDatabaseResponseBodyData) GetIntranetDownloadLink() *string {
+	return s.IntranetDownloadLink
+}
+
 func (s *ListDataCenterDatabaseResponseBodyData) GetIsInternal() *string {
 	return s.IsInternal
 }
 
+func (s *ListDataCenterDatabaseResponseBodyData) GetOssBucket() *string {
+	return s.OssBucket
+}
+
 func (s *ListDataCenterDatabaseResponseBodyData) GetSize() *int64 {
 	return s.Size
+}
+
+func (s *ListDataCenterDatabaseResponseBodyData) GetUseUserOssBucket() *bool {
+	return s.UseUserOssBucket
 }
 
 func (s *ListDataCenterDatabaseResponseBodyData) SetDatabaseDesc(v string) *ListDataCenterDatabaseResponseBodyData {
@@ -248,6 +268,11 @@ func (s *ListDataCenterDatabaseResponseBodyData) SetDmsInstanceId(v int64) *List
 	return s
 }
 
+func (s *ListDataCenterDatabaseResponseBodyData) SetDownloadLink(v string) *ListDataCenterDatabaseResponseBodyData {
+	s.DownloadLink = &v
+	return s
+}
+
 func (s *ListDataCenterDatabaseResponseBodyData) SetGmtCreated(v string) *ListDataCenterDatabaseResponseBodyData {
 	s.GmtCreated = &v
 	return s
@@ -263,13 +288,28 @@ func (s *ListDataCenterDatabaseResponseBodyData) SetInstanceName(v string) *List
 	return s
 }
 
+func (s *ListDataCenterDatabaseResponseBodyData) SetIntranetDownloadLink(v string) *ListDataCenterDatabaseResponseBodyData {
+	s.IntranetDownloadLink = &v
+	return s
+}
+
 func (s *ListDataCenterDatabaseResponseBodyData) SetIsInternal(v string) *ListDataCenterDatabaseResponseBodyData {
 	s.IsInternal = &v
 	return s
 }
 
+func (s *ListDataCenterDatabaseResponseBodyData) SetOssBucket(v string) *ListDataCenterDatabaseResponseBodyData {
+	s.OssBucket = &v
+	return s
+}
+
 func (s *ListDataCenterDatabaseResponseBodyData) SetSize(v int64) *ListDataCenterDatabaseResponseBodyData {
 	s.Size = &v
+	return s
+}
+
+func (s *ListDataCenterDatabaseResponseBodyData) SetUseUserOssBucket(v bool) *ListDataCenterDatabaseResponseBodyData {
+	s.UseUserOssBucket = &v
 	return s
 }
 
