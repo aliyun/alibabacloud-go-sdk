@@ -2,59 +2,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
+	"context"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
-
-type Client struct {
-	openapi.Client
-	DisableSDKError *bool
-	EnableValidate  *bool
-}
-
-func NewClient(config *openapiutil.Config) (*Client, error) {
-	client := new(Client)
-	err := client.Init(config)
-	return client, err
-}
-
-func (client *Client) Init(config *openapiutil.Config) (_err error) {
-	_err = client.Client.Init(config)
-	if _err != nil {
-		return _err
-	}
-	client.EndpointRule = dara.String("")
-	_err = client.CheckConfig(config)
-	if _err != nil {
-		return _err
-	}
-	client.Endpoint, _err = client.GetEndpoint(dara.String("advisor"), client.RegionId, client.EndpointRule, client.Network, client.Suffix, client.EndpointMap, client.Endpoint)
-	if _err != nil {
-		return _err
-	}
-
-	return nil
-}
-
-func (client *Client) GetEndpoint(productId *string, regionId *string, endpointRule *string, network *string, suffix *string, endpointMap map[string]*string, endpoint *string) (_result *string, _err error) {
-	if !dara.IsNil(endpoint) {
-		_result = endpoint
-		return _result, _err
-	}
-
-	if !dara.IsNil(endpointMap) && !dara.IsNil(endpointMap[dara.StringValue(regionId)]) {
-		_result = endpointMap[dara.StringValue(regionId)]
-		return _result, _err
-	}
-
-	_body, _err := openapiutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
 
 // Summary:
 //
@@ -65,7 +16,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAdvicesResponse
-func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvicesResponse, _err error) {
+func (client *Client) DescribeAdvicesWithContext(ctx context.Context, request *DescribeAdvicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -116,29 +67,11 @@ func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAdvicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据多个维度获取用户最新的巡检结果，全量返回-openApi
-//
-// @param request - DescribeAdvicesRequest
-//
-// @return DescribeAdvicesResponse
-func (client *Client) DescribeAdvices(request *DescribeAdvicesRequest) (_result *DescribeAdvicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAdvicesResponse{}
-	_body, _err := client.DescribeAdvicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -151,7 +84,7 @@ func (client *Client) DescribeAdvices(request *DescribeAdvicesRequest) (_result 
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAdvicesFlatPageResponse
-func (client *Client) DescribeAdvicesFlatPageWithOptions(request *DescribeAdvicesFlatPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvicesFlatPageResponse, _err error) {
+func (client *Client) DescribeAdvicesFlatPageWithContext(ctx context.Context, request *DescribeAdvicesFlatPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvicesFlatPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -202,29 +135,11 @@ func (client *Client) DescribeAdvicesFlatPageWithOptions(request *DescribeAdvice
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAdvicesFlatPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DescribeAdvicesFlat分页
-//
-// @param request - DescribeAdvicesFlatPageRequest
-//
-// @return DescribeAdvicesFlatPageResponse
-func (client *Client) DescribeAdvicesFlatPage(request *DescribeAdvicesFlatPageRequest) (_result *DescribeAdvicesFlatPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAdvicesFlatPageResponse{}
-	_body, _err := client.DescribeAdvicesFlatPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -237,7 +152,7 @@ func (client *Client) DescribeAdvicesFlatPage(request *DescribeAdvicesFlatPageRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAdvicesPageResponse
-func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvicesPageResponse, _err error) {
+func (client *Client) DescribeAdvicesPageWithContext(ctx context.Context, request *DescribeAdvicesPageRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvicesPageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -292,29 +207,11 @@ func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPag
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAdvicesPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # DescribeAdvices分页
-//
-// @param request - DescribeAdvicesPageRequest
-//
-// @return DescribeAdvicesPageResponse
-func (client *Client) DescribeAdvicesPage(request *DescribeAdvicesPageRequest) (_result *DescribeAdvicesPageResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAdvicesPageResponse{}
-	_body, _err := client.DescribeAdvicesPageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -327,7 +224,7 @@ func (client *Client) DescribeAdvicesPage(request *DescribeAdvicesPageRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAdvisorChecksResponse
-func (client *Client) DescribeAdvisorChecksWithOptions(request *DescribeAdvisorChecksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvisorChecksResponse, _err error) {
+func (client *Client) DescribeAdvisorChecksWithContext(ctx context.Context, request *DescribeAdvisorChecksRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvisorChecksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -358,29 +255,11 @@ func (client *Client) DescribeAdvisorChecksWithOptions(request *DescribeAdvisorC
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAdvisorChecksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 巡检
-//
-// @param request - DescribeAdvisorChecksRequest
-//
-// @return DescribeAdvisorChecksResponse
-func (client *Client) DescribeAdvisorChecks(request *DescribeAdvisorChecksRequest) (_result *DescribeAdvisorChecksResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAdvisorChecksResponse{}
-	_body, _err := client.DescribeAdvisorChecksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -393,7 +272,7 @@ func (client *Client) DescribeAdvisorChecks(request *DescribeAdvisorChecksReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAdvisorChecksFoPagesResponse
-func (client *Client) DescribeAdvisorChecksFoPagesWithOptions(tmpReq *DescribeAdvisorChecksFoPagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvisorChecksFoPagesResponse, _err error) {
+func (client *Client) DescribeAdvisorChecksFoPagesWithContext(ctx context.Context, tmpReq *DescribeAdvisorChecksFoPagesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvisorChecksFoPagesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -470,29 +349,11 @@ func (client *Client) DescribeAdvisorChecksFoPagesWithOptions(tmpReq *DescribeAd
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAdvisorChecksFoPagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 巡检项设置-分页
-//
-// @param request - DescribeAdvisorChecksFoPagesRequest
-//
-// @return DescribeAdvisorChecksFoPagesResponse
-func (client *Client) DescribeAdvisorChecksFoPages(request *DescribeAdvisorChecksFoPagesRequest) (_result *DescribeAdvisorChecksFoPagesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAdvisorChecksFoPagesResponse{}
-	_body, _err := client.DescribeAdvisorChecksFoPagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -505,7 +366,7 @@ func (client *Client) DescribeAdvisorChecksFoPages(request *DescribeAdvisorCheck
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAdvisorResourcesResponse
-func (client *Client) DescribeAdvisorResourcesWithOptions(request *DescribeAdvisorResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvisorResourcesResponse, _err error) {
+func (client *Client) DescribeAdvisorResourcesWithContext(ctx context.Context, request *DescribeAdvisorResourcesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAdvisorResourcesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -552,29 +413,11 @@ func (client *Client) DescribeAdvisorResourcesWithOptions(request *DescribeAdvis
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAdvisorResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询资源
-//
-// @param request - DescribeAdvisorResourcesRequest
-//
-// @return DescribeAdvisorResourcesResponse
-func (client *Client) DescribeAdvisorResources(request *DescribeAdvisorResourcesRequest) (_result *DescribeAdvisorResourcesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeAdvisorResourcesResponse{}
-	_body, _err := client.DescribeAdvisorResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -587,7 +430,7 @@ func (client *Client) DescribeAdvisorResources(request *DescribeAdvisorResources
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCostCheckAdvicesResponse
-func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCheckAdvicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostCheckAdvicesResponse, _err error) {
+func (client *Client) DescribeCostCheckAdvicesWithContext(ctx context.Context, tmpReq *DescribeCostCheckAdvicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostCheckAdvicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -700,29 +543,11 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCostCheckAdvicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询成本优化结果详情
-//
-// @param request - DescribeCostCheckAdvicesRequest
-//
-// @return DescribeCostCheckAdvicesResponse
-func (client *Client) DescribeCostCheckAdvices(request *DescribeCostCheckAdvicesRequest) (_result *DescribeCostCheckAdvicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCostCheckAdvicesResponse{}
-	_body, _err := client.DescribeCostCheckAdvicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -735,7 +560,7 @@ func (client *Client) DescribeCostCheckAdvices(request *DescribeCostCheckAdvices
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCostCheckResultsResponse
-func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCheckResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostCheckResultsResponse, _err error) {
+func (client *Client) DescribeCostCheckResultsWithContext(ctx context.Context, tmpReq *DescribeCostCheckResultsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostCheckResultsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -852,29 +677,11 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCostCheckResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 查询巡检项聚合成本优化结果概览
-//
-// @param request - DescribeCostCheckResultsRequest
-//
-// @return DescribeCostCheckResultsResponse
-func (client *Client) DescribeCostCheckResults(request *DescribeCostCheckResultsRequest) (_result *DescribeCostCheckResultsResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCostCheckResultsResponse{}
-	_body, _err := client.DescribeCostCheckResultsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -887,7 +694,7 @@ func (client *Client) DescribeCostCheckResults(request *DescribeCostCheckResults
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCostOptimizationOverviewResponse
-func (client *Client) DescribeCostOptimizationOverviewWithOptions(tmpReq *DescribeCostOptimizationOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostOptimizationOverviewResponse, _err error) {
+func (client *Client) DescribeCostOptimizationOverviewWithContext(ctx context.Context, tmpReq *DescribeCostOptimizationOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostOptimizationOverviewResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -932,29 +739,11 @@ func (client *Client) DescribeCostOptimizationOverviewWithOptions(tmpReq *Descri
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeCostOptimizationOverviewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 成本优化-概览
-//
-// @param request - DescribeCostOptimizationOverviewRequest
-//
-// @return DescribeCostOptimizationOverviewResponse
-func (client *Client) DescribeCostOptimizationOverview(request *DescribeCostOptimizationOverviewRequest) (_result *DescribeCostOptimizationOverviewResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &DescribeCostOptimizationOverviewResponse{}
-	_body, _err := client.DescribeCostOptimizationOverviewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -967,7 +756,7 @@ func (client *Client) DescribeCostOptimizationOverview(request *DescribeCostOpti
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetHistoryAdvicesResponse
-func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesRequest, runtime *dara.RuntimeOptions) (_result *GetHistoryAdvicesResponse, _err error) {
+func (client *Client) GetHistoryAdvicesWithContext(ctx context.Context, request *GetHistoryAdvicesRequest, runtime *dara.RuntimeOptions) (_result *GetHistoryAdvicesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1022,29 +811,11 @@ func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetHistoryAdvicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 历史
-//
-// @param request - GetHistoryAdvicesRequest
-//
-// @return GetHistoryAdvicesResponse
-func (client *Client) GetHistoryAdvices(request *GetHistoryAdvicesRequest) (_result *GetHistoryAdvicesResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetHistoryAdvicesResponse{}
-	_body, _err := client.GetHistoryAdvicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1057,7 +828,7 @@ func (client *Client) GetHistoryAdvices(request *GetHistoryAdvicesRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetInspectProgressResponse
-func (client *Client) GetInspectProgressWithOptions(request *GetInspectProgressRequest, runtime *dara.RuntimeOptions) (_result *GetInspectProgressResponse, _err error) {
+func (client *Client) GetInspectProgressWithContext(ctx context.Context, request *GetInspectProgressRequest, runtime *dara.RuntimeOptions) (_result *GetInspectProgressResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1092,29 +863,11 @@ func (client *Client) GetInspectProgressWithOptions(request *GetInspectProgressR
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInspectProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取任务执行进度(普通用户、RD单账号)
-//
-// @param request - GetInspectProgressRequest
-//
-// @return GetInspectProgressResponse
-func (client *Client) GetInspectProgress(request *GetInspectProgressRequest) (_result *GetInspectProgressResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetInspectProgressResponse{}
-	_body, _err := client.GetInspectProgressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1127,7 +880,7 @@ func (client *Client) GetInspectProgress(request *GetInspectProgressRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetProductListResponse
-func (client *Client) GetProductListWithOptions(request *GetProductListRequest, runtime *dara.RuntimeOptions) (_result *GetProductListResponse, _err error) {
+func (client *Client) GetProductListWithContext(ctx context.Context, request *GetProductListRequest, runtime *dara.RuntimeOptions) (_result *GetProductListResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1158,29 +911,11 @@ func (client *Client) GetProductListWithOptions(request *GetProductListRequest, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetProductListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取云产品的列表
-//
-// @param request - GetProductListRequest
-//
-// @return GetProductListResponse
-func (client *Client) GetProductList(request *GetProductListRequest) (_result *GetProductListResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetProductListResponse{}
-	_body, _err := client.GetProductListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1193,7 +928,7 @@ func (client *Client) GetProductList(request *GetProductListRequest) (_result *G
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTaskStatusByIdResponse
-func (client *Client) GetTaskStatusByIdWithOptions(request *GetTaskStatusByIdRequest, runtime *dara.RuntimeOptions) (_result *GetTaskStatusByIdResponse, _err error) {
+func (client *Client) GetTaskStatusByIdWithContext(ctx context.Context, request *GetTaskStatusByIdRequest, runtime *dara.RuntimeOptions) (_result *GetTaskStatusByIdResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1216,29 +951,11 @@ func (client *Client) GetTaskStatusByIdWithOptions(request *GetTaskStatusByIdReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTaskStatusByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 根据id获取任务状态
-//
-// @param request - GetTaskStatusByIdRequest
-//
-// @return GetTaskStatusByIdResponse
-func (client *Client) GetTaskStatusById(request *GetTaskStatusByIdRequest) (_result *GetTaskStatusByIdResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &GetTaskStatusByIdResponse{}
-	_body, _err := client.GetTaskStatusByIdWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1251,7 +968,7 @@ func (client *Client) GetTaskStatusById(request *GetTaskStatusByIdRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefreshAdvisorCheckResponse
-func (client *Client) RefreshAdvisorCheckWithOptions(tmpReq *RefreshAdvisorCheckRequest, runtime *dara.RuntimeOptions) (_result *RefreshAdvisorCheckResponse, _err error) {
+func (client *Client) RefreshAdvisorCheckWithContext(ctx context.Context, tmpReq *RefreshAdvisorCheckRequest, runtime *dara.RuntimeOptions) (_result *RefreshAdvisorCheckResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1314,29 +1031,11 @@ func (client *Client) RefreshAdvisorCheckWithOptions(tmpReq *RefreshAdvisorCheck
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshAdvisorCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 触发立即巡检
-//
-// @param request - RefreshAdvisorCheckRequest
-//
-// @return RefreshAdvisorCheckResponse
-func (client *Client) RefreshAdvisorCheck(request *RefreshAdvisorCheckRequest) (_result *RefreshAdvisorCheckResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefreshAdvisorCheckResponse{}
-	_body, _err := client.RefreshAdvisorCheckWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1349,7 +1048,7 @@ func (client *Client) RefreshAdvisorCheck(request *RefreshAdvisorCheckRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefreshAdvisorCostCheckResponse
-func (client *Client) RefreshAdvisorCostCheckWithOptions(tmpReq *RefreshAdvisorCostCheckRequest, runtime *dara.RuntimeOptions) (_result *RefreshAdvisorCostCheckResponse, _err error) {
+func (client *Client) RefreshAdvisorCostCheckWithContext(ctx context.Context, tmpReq *RefreshAdvisorCostCheckRequest, runtime *dara.RuntimeOptions) (_result *RefreshAdvisorCostCheckResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1410,29 +1109,11 @@ func (client *Client) RefreshAdvisorCostCheckWithOptions(tmpReq *RefreshAdvisorC
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshAdvisorCostCheckResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 发起成本优化巡检
-//
-// @param request - RefreshAdvisorCostCheckRequest
-//
-// @return RefreshAdvisorCostCheckResponse
-func (client *Client) RefreshAdvisorCostCheck(request *RefreshAdvisorCostCheckRequest) (_result *RefreshAdvisorCostCheckResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefreshAdvisorCostCheckResponse{}
-	_body, _err := client.RefreshAdvisorCostCheckWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1445,7 +1126,7 @@ func (client *Client) RefreshAdvisorCostCheck(request *RefreshAdvisorCostCheckRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RefreshAdvisorResourceResponse
-func (client *Client) RefreshAdvisorResourceWithOptions(request *RefreshAdvisorResourceRequest, runtime *dara.RuntimeOptions) (_result *RefreshAdvisorResourceResponse, _err error) {
+func (client *Client) RefreshAdvisorResourceWithContext(ctx context.Context, request *RefreshAdvisorResourceRequest, runtime *dara.RuntimeOptions) (_result *RefreshAdvisorResourceResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = request.Validate()
 		if _err != nil {
@@ -1476,29 +1157,11 @@ func (client *Client) RefreshAdvisorResourceWithOptions(request *RefreshAdvisorR
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshAdvisorResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// # RefreshAdvisorResource
-//
-// @param request - RefreshAdvisorResourceRequest
-//
-// @return RefreshAdvisorResourceResponse
-func (client *Client) RefreshAdvisorResource(request *RefreshAdvisorResourceRequest) (_result *RefreshAdvisorResourceResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &RefreshAdvisorResourceResponse{}
-	_body, _err := client.RefreshAdvisorResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
 
@@ -1511,7 +1174,7 @@ func (client *Client) RefreshAdvisorResource(request *RefreshAdvisorResourceRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ReportBizAlertInfoResponse
-func (client *Client) ReportBizAlertInfoWithOptions(tmpReq *ReportBizAlertInfoRequest, runtime *dara.RuntimeOptions) (_result *ReportBizAlertInfoResponse, _err error) {
+func (client *Client) ReportBizAlertInfoWithContext(ctx context.Context, tmpReq *ReportBizAlertInfoRequest, runtime *dara.RuntimeOptions) (_result *ReportBizAlertInfoResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
 		_err = tmpReq.Validate()
 		if _err != nil {
@@ -1572,28 +1235,10 @@ func (client *Client) ReportBizAlertInfoWithOptions(tmpReq *ReportBizAlertInfoRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ReportBizAlertInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 上报用户业务报警信息
-//
-// @param request - ReportBizAlertInfoRequest
-//
-// @return ReportBizAlertInfoResponse
-func (client *Client) ReportBizAlertInfo(request *ReportBizAlertInfoRequest) (_result *ReportBizAlertInfoResponse, _err error) {
-	runtime := &dara.RuntimeOptions{}
-	_result = &ReportBizAlertInfoResponse{}
-	_body, _err := client.ReportBizAlertInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
