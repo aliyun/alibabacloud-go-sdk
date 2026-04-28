@@ -1557,6 +1557,112 @@ func (client *Client) CheckKMSAuthorized(request *CheckKMSAuthorizedRequest) (_r
 
 // Summary:
 //
+// 用于检查PolarFS实例中配额设置的一致性状态。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API允许用户验证指定PolarFS实例内的配额配置是否一致，包括但不限于目录路径上的存储容量和inode限制。如果存在不一致的情况，将返回具体的不一致路径列表及可能的错误信息。
+//
+// ### 注意事项
+//
+// - 确保`PolarFsInstanceId`参数正确无误地指向了目标PolarFS实例。
+//
+// - 当系统检测到配额不一致时，除了返回`IsConsistent=false`外，还会提供`InconsistentPaths`数组来指示具体哪些路径存在问题。
+//
+// - 如果请求成功但没有发现任何不一致，则`InconsistentPaths`为空数组，并且`IsConsistent=true`。
+//
+// - 错误处理：若请求过程中遇到权限不足、资源不存在等问题，请参考提供的错误码定义部分以获取更详细的错误信息。
+//
+// @param request - CheckPolarFsQuotaConsistencyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckPolarFsQuotaConsistencyResponse
+func (client *Client) CheckPolarFsQuotaConsistencyWithOptions(request *CheckPolarFsQuotaConsistencyRequest, runtime *dara.RuntimeOptions) (_result *CheckPolarFsQuotaConsistencyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableRepair) {
+		query["EnableRepair"] = request.EnableRepair
+	}
+
+	if !dara.IsNil(request.EnableStrictCalculate) {
+		query["EnableStrictCalculate"] = request.EnableStrictCalculate
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckPolarFsQuotaConsistency"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckPolarFsQuotaConsistencyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于检查PolarFS实例中配额设置的一致性状态。
+//
+// Description:
+//
+// ## 请求说明
+//
+// 该API允许用户验证指定PolarFS实例内的配额配置是否一致，包括但不限于目录路径上的存储容量和inode限制。如果存在不一致的情况，将返回具体的不一致路径列表及可能的错误信息。
+//
+// ### 注意事项
+//
+// - 确保`PolarFsInstanceId`参数正确无误地指向了目标PolarFS实例。
+//
+// - 当系统检测到配额不一致时，除了返回`IsConsistent=false`外，还会提供`InconsistentPaths`数组来指示具体哪些路径存在问题。
+//
+// - 如果请求成功但没有发现任何不一致，则`InconsistentPaths`为空数组，并且`IsConsistent=true`。
+//
+// - 错误处理：若请求过程中遇到权限不足、资源不存在等问题，请参考提供的错误码定义部分以获取更详细的错误信息。
+//
+// @param request - CheckPolarFsQuotaConsistencyRequest
+//
+// @return CheckPolarFsQuotaConsistencyResponse
+func (client *Client) CheckPolarFsQuotaConsistency(request *CheckPolarFsQuotaConsistencyRequest) (_result *CheckPolarFsQuotaConsistencyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckPolarFsQuotaConsistencyResponse{}
+	_body, _err := client.CheckPolarFsQuotaConsistencyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks whether a service-linked role (SLR) is created.
 //
 // @param request - CheckServiceLinkedRoleRequest
@@ -3073,6 +3179,92 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
+// 创建预算策略
+//
+// @param request - CreateBudgetPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBudgetPolicyResponse
+func (client *Client) CreateBudgetPolicyWithOptions(request *CreateBudgetPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateBudgetPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertThresholdPct) {
+		query["AlertThresholdPct"] = request.AlertThresholdPct
+	}
+
+	if !dara.IsNil(request.BudgetDimensionRefId) {
+		query["BudgetDimensionRefId"] = request.BudgetDimensionRefId
+	}
+
+	if !dara.IsNil(request.BudgetPoints) {
+		query["BudgetPoints"] = request.BudgetPoints
+	}
+
+	if !dara.IsNil(request.BudgetType) {
+		query["BudgetType"] = request.BudgetType
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResetDayOfMonth) {
+		query["ResetDayOfMonth"] = request.ResetDayOfMonth
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBudgetPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBudgetPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建预算策略
+//
+// @param request - CreateBudgetPolicyRequest
+//
+// @return CreateBudgetPolicyResponse
+func (client *Client) CreateBudgetPolicy(request *CreateBudgetPolicyRequest) (_result *CreateBudgetPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBudgetPolicyResponse{}
+	_body, _err := client.CreateBudgetPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a cluster that is used to store cold data.
 //
 // @param request - CreateColdStorageInstanceRequest
@@ -3154,6 +3346,252 @@ func (client *Client) CreateColdStorageInstance(request *CreateColdStorageInstan
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateColdStorageInstanceResponse{}
 	_body, _err := client.CreateColdStorageInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者
+//
+// @param request - CreateConsumerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerResponse
+func (client *Client) CreateConsumerWithOptions(request *CreateConsumerRequest, runtime *dara.RuntimeOptions) (_result *CreateConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupName) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.KeyType) {
+		query["KeyType"] = request.KeyType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NickName) {
+		query["NickName"] = request.NickName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConsumer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者
+//
+// @param request - CreateConsumerRequest
+//
+// @return CreateConsumerResponse
+func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *CreateConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateConsumerResponse{}
+	_body, _err := client.CreateConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者组
+//
+// @param request - CreateConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerGroupResponse
+func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupName) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !dara.IsNil(request.NickName) {
+		query["NickName"] = request.NickName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateConsumerGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建消费者组
+//
+// @param request - CreateConsumerGroupRequest
+//
+// @return CreateConsumerGroupResponse
+func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.CreateConsumerGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建限流策略
+//
+// @param request - CreateCostRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCostRuleResponse
+func (client *Client) CreateCostRuleWithOptions(request *CreateCostRuleRequest, runtime *dara.RuntimeOptions) (_result *CreateCostRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CacheCostPointsPerMillion) {
+		query["CacheCostPointsPerMillion"] = request.CacheCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.InputCostPointsPerMillion) {
+		query["InputCostPointsPerMillion"] = request.InputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelServiceId) {
+		query["ModelServiceId"] = request.ModelServiceId
+	}
+
+	if !dara.IsNil(request.OutputCostPointsPerMillion) {
+		query["OutputCostPointsPerMillion"] = request.OutputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCostRule"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCostRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建限流策略
+//
+// @param request - CreateCostRuleRequest
+//
+// @return CreateCostRuleResponse
+func (client *Client) CreateCostRule(request *CreateCostRuleRequest) (_result *CreateCostRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCostRuleResponse{}
+	_body, _err := client.CreateCostRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4583,6 +5021,108 @@ func (client *Client) CreateExtensions(request *CreateExtensionsRequest) (_resul
 
 // Summary:
 //
+// 创建网关地址
+//
+// @param request - CreateGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayResponse
+func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, runtime *dara.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.DBClusterClass) {
+		query["DBClusterClass"] = request.DBClusterClass
+	}
+
+	if !dara.IsNil(request.DBType) {
+		query["DBType"] = request.DBType
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGateway"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关地址
+//
+// @param request - CreateGatewayRequest
+//
+// @return CreateGatewayResponse
+func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *CreateGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateGatewayResponse{}
+	_body, _err := client.CreateGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a global data network (GDN).
 //
 // @param request - CreateGlobalDataNetworkRequest
@@ -4872,6 +5412,206 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateGlobalSecurityIPGroupResponse{}
 	_body, _err := client.CreateGlobalSecurityIPGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建路由规则
+//
+// @param request - CreateModelApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelApiResponse
+func (client *Client) CreateModelApiWithOptions(request *CreateModelApiRequest, runtime *dara.RuntimeOptions) (_result *CreateModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ForceModel) {
+		query["ForceModel"] = request.ForceModel
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelCategory) {
+		query["ModelCategory"] = request.ModelCategory
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PathPrefix) {
+		query["PathPrefix"] = request.PathPrefix
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RecordInput) {
+		query["RecordInput"] = request.RecordInput
+	}
+
+	if !dara.IsNil(request.RecordOutput) {
+		query["RecordOutput"] = request.RecordOutput
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteRules) {
+		query["RouteRules"] = request.RouteRules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelApi"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建路由规则
+//
+// @param request - CreateModelApiRequest
+//
+// @return CreateModelApiResponse
+func (client *Client) CreateModelApi(request *CreateModelApiRequest) (_result *CreateModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateModelApiResponse{}
+	_body, _err := client.CreateModelApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - CreateModelServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelServiceResponse
+func (client *Client) CreateModelServiceWithOptions(request *CreateModelServiceRequest, runtime *dara.RuntimeOptions) (_result *CreateModelServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		query["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.BaseUrl) {
+		query["BaseUrl"] = request.BaseUrl
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.InputCostPointsPerMillion) {
+		query["InputCostPointsPerMillion"] = request.InputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.ModelCategory) {
+		query["ModelCategory"] = request.ModelCategory
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OutputCostPointsPerMillion) {
+		query["OutputCostPointsPerMillion"] = request.OutputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RequestCostPoints) {
+		query["RequestCostPoints"] = request.RequestCostPoints
+	}
+
+	if !dara.IsNil(request.Vendor) {
+		query["Vendor"] = request.Vendor
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelService"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型服务
+//
+// @param request - CreateModelServiceRequest
+//
+// @return CreateModelServiceResponse
+func (client *Client) CreateModelService(request *CreateModelServiceRequest) (_result *CreateModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateModelServiceResponse{}
+	_body, _err := client.CreateModelServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5178,6 +5918,182 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateParameterGroupResponse{}
 	_body, _err := client.CreateParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于在指定PolarFS实例中创建新的目录。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **Path**：需要创建的目录绝对路径。
+//
+// - **Recursive**：是否递归创建父目录，默认为 `false`。
+//
+// - 该接口支持在指定的PolarFS实例中创建单个或多个层级的目录结构。
+//
+// - 如果设置 `Recursive` 为 `true`，则会自动创建所有不存在的父目录。
+//
+// - 创建目录时，请确保具有足够的权限。
+//
+// @param request - CreatePolarFsObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarFsObjectResponse
+func (client *Client) CreatePolarFsObjectWithOptions(request *CreatePolarFsObjectRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarFsObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarFsObject"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarFsObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于在指定PolarFS实例中创建新的目录。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **Path**：需要创建的目录绝对路径。
+//
+// - **Recursive**：是否递归创建父目录，默认为 `false`。
+//
+// - 该接口支持在指定的PolarFS实例中创建单个或多个层级的目录结构。
+//
+// - 如果设置 `Recursive` 为 `true`，则会自动创建所有不存在的父目录。
+//
+// - 创建目录时，请确保具有足够的权限。
+//
+// @param request - CreatePolarFsObjectRequest
+//
+// @return CreatePolarFsObjectResponse
+func (client *Client) CreatePolarFsObject(request *CreatePolarFsObjectRequest) (_result *CreatePolarFsObjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarFsObjectResponse{}
+	_body, _err := client.CreatePolarFsObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建限流策略
+//
+// @param request - CreateRateLimitPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRateLimitPolicyResponse
+func (client *Client) CreateRateLimitPolicyWithOptions(request *CreateRateLimitPolicyRequest, runtime *dara.RuntimeOptions) (_result *CreateRateLimitPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RateLimitRpm) {
+		query["RateLimitRpm"] = request.RateLimitRpm
+	}
+
+	if !dara.IsNil(request.RateLimitTpm) {
+		query["RateLimitTpm"] = request.RateLimitTpm
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ScopeRefId) {
+		query["ScopeRefId"] = request.ScopeRefId
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRateLimitPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRateLimitPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建限流策略
+//
+// @param request - CreateRateLimitPolicyRequest
+//
+// @return CreateRateLimitPolicyResponse
+func (client *Client) CreateRateLimitPolicy(request *CreateRateLimitPolicyRequest) (_result *CreateRateLimitPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRateLimitPolicyResponse{}
+	_body, _err := client.CreateRateLimitPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6130,6 +7046,286 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteBackupResponse{}
 	_body, _err := client.DeleteBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除预算策略
+//
+// @param request - DeleteBudgetPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBudgetPolicyResponse
+func (client *Client) DeleteBudgetPolicyWithOptions(request *DeleteBudgetPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteBudgetPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetPolicyId) {
+		query["BudgetPolicyId"] = request.BudgetPolicyId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteBudgetPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteBudgetPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除预算策略
+//
+// @param request - DeleteBudgetPolicyRequest
+//
+// @return DeleteBudgetPolicyResponse
+func (client *Client) DeleteBudgetPolicy(request *DeleteBudgetPolicyRequest) (_result *DeleteBudgetPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteBudgetPolicyResponse{}
+	_body, _err := client.DeleteBudgetPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者
+//
+// @param request - DeleteConsumerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerResponse
+func (client *Client) DeleteConsumerWithOptions(request *DeleteConsumerRequest, runtime *dara.RuntimeOptions) (_result *DeleteConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerId) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConsumer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者
+//
+// @param request - DeleteConsumerRequest
+//
+// @return DeleteConsumerResponse
+func (client *Client) DeleteConsumer(request *DeleteConsumerRequest) (_result *DeleteConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteConsumerResponse{}
+	_body, _err := client.DeleteConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者组
+//
+// @param request - DeleteConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerGroupResponse
+func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupName) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteConsumerGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除消费者组
+//
+// @param request - DeleteConsumerGroupRequest
+//
+// @return DeleteConsumerGroupResponse
+func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (_result *DeleteConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteConsumerGroupResponse{}
+	_body, _err := client.DeleteConsumerGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除限流策略
+//
+// @param request - DeleteCostRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCostRuleResponse
+func (client *Client) DeleteCostRuleWithOptions(request *DeleteCostRuleRequest, runtime *dara.RuntimeOptions) (_result *DeleteCostRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CostRuleId) {
+		query["CostRuleId"] = request.CostRuleId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCostRule"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCostRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除限流策略
+//
+// @param request - DeleteCostRuleRequest
+//
+// @return DeleteCostRuleResponse
+func (client *Client) DeleteCostRule(request *DeleteCostRuleRequest) (_result *DeleteCostRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCostRuleResponse{}
+	_body, _err := client.DeleteCostRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7109,6 +8305,72 @@ func (client *Client) DeleteFirewallRules(request *DeleteFirewallRulesRequest) (
 
 // Summary:
 //
+// 删除网关实例
+//
+// @param request - DeleteGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayResponse
+func (client *Client) DeleteGatewayWithOptions(request *DeleteGatewayRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGateway"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关实例
+//
+// @param request - DeleteGatewayRequest
+//
+// @return DeleteGatewayResponse
+func (client *Client) DeleteGateway(request *DeleteGatewayRequest) (_result *DeleteGatewayResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteGatewayResponse{}
+	_body, _err := client.DeleteGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a global data network (GDN).
 //
 // @param request - DeleteGlobalDataNetworkRequest
@@ -7420,6 +8682,146 @@ func (client *Client) DeleteMaskingRules(request *DeleteMaskingRulesRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteMaskingRulesResponse{}
 	_body, _err := client.DeleteMaskingRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除路由规则
+//
+// @param request - DeleteModelApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelApiResponse
+func (client *Client) DeleteModelApiWithOptions(request *DeleteModelApiRequest, runtime *dara.RuntimeOptions) (_result *DeleteModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelApiId) {
+		query["ModelApiId"] = request.ModelApiId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelApi"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除路由规则
+//
+// @param request - DeleteModelApiRequest
+//
+// @return DeleteModelApiResponse
+func (client *Client) DeleteModelApi(request *DeleteModelApiRequest) (_result *DeleteModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteModelApiResponse{}
+	_body, _err := client.DeleteModelApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型服务
+//
+// @param request - DeleteModelServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelServiceResponse
+func (client *Client) DeleteModelServiceWithOptions(request *DeleteModelServiceRequest, runtime *dara.RuntimeOptions) (_result *DeleteModelServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelService"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型服务
+//
+// @param request - DeleteModelServiceRequest
+//
+// @return DeleteModelServiceResponse
+func (client *Client) DeleteModelService(request *DeleteModelServiceRequest) (_result *DeleteModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteModelServiceResponse{}
+	_body, _err := client.DeleteModelServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7852,6 +9254,76 @@ func (client *Client) DeletePolarFsQuota(request *DeletePolarFsQuotaRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeletePolarFsQuotaResponse{}
 	_body, _err := client.DeletePolarFsQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除限流策略
+//
+// @param request - DeleteRateLimitPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRateLimitPolicyResponse
+func (client *Client) DeleteRateLimitPolicyWithOptions(request *DeleteRateLimitPolicyRequest, runtime *dara.RuntimeOptions) (_result *DeleteRateLimitPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRateLimitPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRateLimitPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除限流策略
+//
+// @param request - DeleteRateLimitPolicyRequest
+//
+// @return DeleteRateLimitPolicyResponse
+func (client *Client) DeleteRateLimitPolicy(request *DeleteRateLimitPolicyRequest) (_result *DeleteRateLimitPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteRateLimitPolicyResponse{}
+	_body, _err := client.DeleteRateLimitPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10459,6 +11931,96 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 
 // Summary:
 //
+// 查询预算策略
+//
+// @param request - DescribeBudgetPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBudgetPoliciesResponse
+func (client *Client) DescribeBudgetPoliciesWithOptions(request *DescribeBudgetPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DescribeBudgetPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetDimensionRefId) {
+		query["BudgetDimensionRefId"] = request.BudgetDimensionRefId
+	}
+
+	if !dara.IsNil(request.BudgetDimensionType) {
+		query["BudgetDimensionType"] = request.BudgetDimensionType
+	}
+
+	if !dara.IsNil(request.BudgetPolicyId) {
+		query["BudgetPolicyId"] = request.BudgetPolicyId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBudgetPolicies"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBudgetPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询预算策略
+//
+// @param request - DescribeBudgetPoliciesRequest
+//
+// @return DescribeBudgetPoliciesResponse
+func (client *Client) DescribeBudgetPolicies(request *DescribeBudgetPoliciesRequest) (_result *DescribeBudgetPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBudgetPoliciesResponse{}
+	_body, _err := client.DescribeBudgetPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries character sets that are supported by a PolarDB for MySQL cluster.
 //
 // @param request - DescribeCharacterSetNameRequest
@@ -10744,6 +12306,248 @@ func (client *Client) DescribeColdStorageInstance(request *DescribeColdStorageIn
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeColdStorageInstanceResponse{}
 	_body, _err := client.DescribeColdStorageInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组列表
+//
+// @param request - DescribeConsumerGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConsumerGroupsResponse
+func (client *Client) DescribeConsumerGroupsWithOptions(request *DescribeConsumerGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeConsumerGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupId) {
+		query["ConsumerGroupId"] = request.ConsumerGroupId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeConsumerGroups"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeConsumerGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组列表
+//
+// @param request - DescribeConsumerGroupsRequest
+//
+// @return DescribeConsumerGroupsResponse
+func (client *Client) DescribeConsumerGroups(request *DescribeConsumerGroupsRequest) (_result *DescribeConsumerGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeConsumerGroupsResponse{}
+	_body, _err := client.DescribeConsumerGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者列表
+//
+// @param request - DescribeConsumersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConsumersResponse
+func (client *Client) DescribeConsumersWithOptions(request *DescribeConsumersRequest, runtime *dara.RuntimeOptions) (_result *DescribeConsumersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupId) {
+		query["ConsumerGroupId"] = request.ConsumerGroupId
+	}
+
+	if !dara.IsNil(request.ConsumerId) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeConsumers"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeConsumersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者列表
+//
+// @param request - DescribeConsumersRequest
+//
+// @return DescribeConsumersResponse
+func (client *Client) DescribeConsumers(request *DescribeConsumersRequest) (_result *DescribeConsumersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeConsumersResponse{}
+	_body, _err := client.DescribeConsumersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询限流策略
+//
+// @param request - DescribeCostRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCostRulesResponse
+func (client *Client) DescribeCostRulesWithOptions(request *DescribeCostRulesRequest, runtime *dara.RuntimeOptions) (_result *DescribeCostRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelServiceId) {
+		query["ModelServiceId"] = request.ModelServiceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCostRules"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCostRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询限流策略
+//
+// @param request - DescribeCostRulesRequest
+//
+// @return DescribeCostRulesResponse
+func (client *Client) DescribeCostRules(request *DescribeCostRulesRequest) (_result *DescribeCostRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCostRulesResponse{}
+	_body, _err := client.DescribeCostRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14631,6 +16435,150 @@ func (client *Client) DescribeFirewallRules(request *DescribeFirewallRulesReques
 
 // Summary:
 //
+// 查询网关实例详情
+//
+// @param request - DescribeGatewayAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGatewayAttributeResponse
+func (client *Client) DescribeGatewayAttributeWithOptions(request *DescribeGatewayAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeGatewayAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGatewayAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGatewayAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关实例详情
+//
+// @param request - DescribeGatewayAttributeRequest
+//
+// @return DescribeGatewayAttributeResponse
+func (client *Client) DescribeGatewayAttribute(request *DescribeGatewayAttributeRequest) (_result *DescribeGatewayAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGatewayAttributeResponse{}
+	_body, _err := client.DescribeGatewayAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关实例列表
+//
+// @param request - DescribeGatewayListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGatewayListResponse
+func (client *Client) DescribeGatewayListWithOptions(request *DescribeGatewayListRequest, runtime *dara.RuntimeOptions) (_result *DescribeGatewayListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.GwDescription) {
+		query["GwDescription"] = request.GwDescription
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGatewayList"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGatewayListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关实例列表
+//
+// @param request - DescribeGatewayListRequest
+//
+// @return DescribeGatewayListResponse
+func (client *Client) DescribeGatewayList(request *DescribeGatewayListRequest) (_result *DescribeGatewayListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGatewayListResponse{}
+	_body, _err := client.DescribeGatewayListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the PolarFS global data network (GDN) details in all regions.
 //
 // @param request - DescribeGlobalDataNetworkListRequest
@@ -16025,6 +17973,198 @@ func (client *Client) DescribeMetaList(request *DescribeMetaListRequest) (_resul
 
 // Summary:
 //
+// 查询路由规则列表
+//
+// @param request - DescribeModelApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelApisResponse
+func (client *Client) DescribeModelApisWithOptions(request *DescribeModelApisRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelApiIds) {
+		query["ModelApiIds"] = request.ModelApiIds
+	}
+
+	if !dara.IsNil(request.ModelCategory) {
+		query["ModelCategory"] = request.ModelCategory
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PathPrefix) {
+		query["PathPrefix"] = request.PathPrefix
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelApis"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelApisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询路由规则列表
+//
+// @param request - DescribeModelApisRequest
+//
+// @return DescribeModelApisResponse
+func (client *Client) DescribeModelApis(request *DescribeModelApisRequest) (_result *DescribeModelApisResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeModelApisResponse{}
+	_body, _err := client.DescribeModelApisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型服务列表
+//
+// @param request - DescribeModelServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeModelServicesResponse
+func (client *Client) DescribeModelServicesWithOptions(request *DescribeModelServicesRequest, runtime *dara.RuntimeOptions) (_result *DescribeModelServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelCategory) {
+		query["ModelCategory"] = request.ModelCategory
+	}
+
+	if !dara.IsNil(request.ModelServiceIds) {
+		query["ModelServiceIds"] = request.ModelServiceIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeModelServices"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeModelServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型服务列表
+//
+// @param request - DescribeModelServicesRequest
+//
+// @return DescribeModelServicesResponse
+func (client *Client) DescribeModelServices(request *DescribeModelServicesRequest) (_result *DescribeModelServicesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeModelServicesResponse{}
+	_body, _err := client.DescribeModelServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询参数修改历史
 //
 // @param request - DescribeModifyParameterLogRequest
@@ -16959,6 +19099,96 @@ func (client *Client) DescribePolarFsAttribute(request *DescribePolarFsAttribute
 
 // Summary:
 //
+// 列出指定路径下的文件和子目录信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **Path*	- 参数必须提供一个绝对路径。
+//
+// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
+//
+// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
+//
+// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
+//
+// @param request - DescribePolarFsObjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarFsObjectsResponse
+func (client *Client) DescribePolarFsObjectsWithOptions(request *DescribePolarFsObjectsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarFsObjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarFsObjects"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarFsObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出指定路径下的文件和子目录信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - **Path*	- 参数必须提供一个绝对路径。
+//
+// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
+//
+// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
+//
+// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
+//
+// @param request - DescribePolarFsObjectsRequest
+//
+// @return DescribePolarFsObjectsResponse
+func (client *Client) DescribePolarFsObjects(request *DescribePolarFsObjectsRequest) (_result *DescribePolarFsObjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarFsObjectsResponse{}
+	_body, _err := client.DescribePolarFsObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询配额规则
 //
 // @param request - DescribePolarFsQuotaRequest
@@ -17086,6 +19316,92 @@ func (client *Client) DescribePolarSQLCollectorPolicy(request *DescribePolarSQLC
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePolarSQLCollectorPolicyResponse{}
 	_body, _err := client.DescribePolarSQLCollectorPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询限流策略
+//
+// @param request - DescribeRateLimitPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRateLimitPolicyResponse
+func (client *Client) DescribeRateLimitPolicyWithOptions(request *DescribeRateLimitPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeRateLimitPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ScopeRefId) {
+		query["ScopeRefId"] = request.ScopeRefId
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["ScopeType"] = request.ScopeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRateLimitPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRateLimitPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询限流策略
+//
+// @param request - DescribeRateLimitPolicyRequest
+//
+// @return DescribeRateLimitPolicyResponse
+func (client *Client) DescribeRateLimitPolicy(request *DescribeRateLimitPolicyRequest) (_result *DescribeRateLimitPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeRateLimitPolicyResponse{}
+	_body, _err := client.DescribeRateLimitPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21633,6 +23949,338 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 
 // Summary:
 //
+// 修改预算策略
+//
+// @param request - ModifyBudgetPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBudgetPolicyResponse
+func (client *Client) ModifyBudgetPolicyWithOptions(request *ModifyBudgetPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyBudgetPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertThresholdPct) {
+		query["AlertThresholdPct"] = request.AlertThresholdPct
+	}
+
+	if !dara.IsNil(request.BudgetPoints) {
+		query["BudgetPoints"] = request.BudgetPoints
+	}
+
+	if !dara.IsNil(request.BudgetPolicyId) {
+		query["BudgetPolicyId"] = request.BudgetPolicyId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResetDayOfMonth) {
+		query["ResetDayOfMonth"] = request.ResetDayOfMonth
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyBudgetPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyBudgetPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改预算策略
+//
+// @param request - ModifyBudgetPolicyRequest
+//
+// @return ModifyBudgetPolicyResponse
+func (client *Client) ModifyBudgetPolicy(request *ModifyBudgetPolicyRequest) (_result *ModifyBudgetPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyBudgetPolicyResponse{}
+	_body, _err := client.ModifyBudgetPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改消费者
+//
+// @param request - ModifyConsumerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyConsumerResponse
+func (client *Client) ModifyConsumerWithOptions(request *ModifyConsumerRequest, runtime *dara.RuntimeOptions) (_result *ModifyConsumerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupName) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !dara.IsNil(request.ConsumerId) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyConsumer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyConsumerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改消费者
+//
+// @param request - ModifyConsumerRequest
+//
+// @return ModifyConsumerResponse
+func (client *Client) ModifyConsumer(request *ModifyConsumerRequest) (_result *ModifyConsumerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyConsumerResponse{}
+	_body, _err := client.ModifyConsumerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改消费者组
+//
+// @param request - ModifyConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyConsumerGroupResponse
+func (client *Client) ModifyConsumerGroupWithOptions(request *ModifyConsumerGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyConsumerGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerGroupName) {
+		query["ConsumerGroupName"] = request.ConsumerGroupName
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.IsDefault) {
+		query["IsDefault"] = request.IsDefault
+	}
+
+	if !dara.IsNil(request.NickName) {
+		query["NickName"] = request.NickName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyConsumerGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyConsumerGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改消费者组
+//
+// @param request - ModifyConsumerGroupRequest
+//
+// @return ModifyConsumerGroupResponse
+func (client *Client) ModifyConsumerGroup(request *ModifyConsumerGroupRequest) (_result *ModifyConsumerGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyConsumerGroupResponse{}
+	_body, _err := client.ModifyConsumerGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改限流策略
+//
+// @param request - ModifyCostRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCostRuleResponse
+func (client *Client) ModifyCostRuleWithOptions(request *ModifyCostRuleRequest, runtime *dara.RuntimeOptions) (_result *ModifyCostRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CacheCostPointsPerMillion) {
+		query["CacheCostPointsPerMillion"] = request.CacheCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.CostRuleId) {
+		query["CostRuleId"] = request.CostRuleId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.InputCostPointsPerMillion) {
+		query["InputCostPointsPerMillion"] = request.InputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ModelServiceId) {
+		query["ModelServiceId"] = request.ModelServiceId
+	}
+
+	if !dara.IsNil(request.OutputCostPointsPerMillion) {
+		query["OutputCostPointsPerMillion"] = request.OutputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyCostRule"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyCostRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改限流策略
+//
+// @param request - ModifyCostRuleRequest
+//
+// @return ModifyCostRuleResponse
+func (client *Client) ModifyCostRule(request *ModifyCostRuleRequest) (_result *ModifyCostRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyCostRuleResponse{}
+	_body, _err := client.ModifyCostRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改周期任务策略
 //
 // @param request - ModifyCronJobPolicyServerlessRequest
@@ -25925,6 +28573,202 @@ func (client *Client) ModifyMaskingRules(request *ModifyMaskingRulesRequest) (_r
 
 // Summary:
 //
+// 修改模型API
+//
+// @param request - ModifyModelApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyModelApiResponse
+func (client *Client) ModifyModelApiWithOptions(request *ModifyModelApiRequest, runtime *dara.RuntimeOptions) (_result *ModifyModelApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.ModelApiId) {
+		query["ModelApiId"] = request.ModelApiId
+	}
+
+	if !dara.IsNil(request.ModelCategory) {
+		query["ModelCategory"] = request.ModelCategory
+	}
+
+	if !dara.IsNil(request.PathPrefix) {
+		query["PathPrefix"] = request.PathPrefix
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RecordInput) {
+		query["RecordInput"] = request.RecordInput
+	}
+
+	if !dara.IsNil(request.RecordOutput) {
+		query["RecordOutput"] = request.RecordOutput
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RouteRules) {
+		query["RouteRules"] = request.RouteRules
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyModelApi"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyModelApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模型API
+//
+// @param request - ModifyModelApiRequest
+//
+// @return ModifyModelApiResponse
+func (client *Client) ModifyModelApi(request *ModifyModelApiRequest) (_result *ModifyModelApiResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyModelApiResponse{}
+	_body, _err := client.ModifyModelApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模型服务
+//
+// @param request - ModifyModelServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyModelServiceResponse
+func (client *Client) ModifyModelServiceWithOptions(request *ModifyModelServiceRequest, runtime *dara.RuntimeOptions) (_result *ModifyModelServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKey) {
+		query["ApiKey"] = request.ApiKey
+	}
+
+	if !dara.IsNil(request.BaseUrl) {
+		query["BaseUrl"] = request.BaseUrl
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.InputCostPointsPerMillion) {
+		query["InputCostPointsPerMillion"] = request.InputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.ModelCategory) {
+		query["ModelCategory"] = request.ModelCategory
+	}
+
+	if !dara.IsNil(request.ModelServiceId) {
+		query["ModelServiceId"] = request.ModelServiceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OutputCostPointsPerMillion) {
+		query["OutputCostPointsPerMillion"] = request.OutputCostPointsPerMillion
+	}
+
+	if !dara.IsNil(request.Protocol) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RequestCostPoints) {
+		query["RequestCostPoints"] = request.RequestCostPoints
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyModelService"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyModelServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改模型服务
+//
+// @param request - ModifyModelServiceRequest
+//
+// @return ModifyModelServiceResponse
+func (client *Client) ModifyModelService(request *ModifyModelServiceRequest) (_result *ModifyModelServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyModelServiceResponse{}
+	_body, _err := client.ModifyModelServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the switching time of a pending event.
 //
 // @param request - ModifyPendingMaintenanceActionRequest
@@ -26010,6 +28854,84 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyPendingMaintenanceActionResponse{}
 	_body, _err := client.ModifyPendingMaintenanceActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改限流策略
+//
+// @param request - ModifyRateLimitPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyRateLimitPolicyResponse
+func (client *Client) ModifyRateLimitPolicyWithOptions(request *ModifyRateLimitPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyRateLimitPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.RateLimitRpm) {
+		query["RateLimitRpm"] = request.RateLimitRpm
+	}
+
+	if !dara.IsNil(request.RateLimitTpm) {
+		query["RateLimitTpm"] = request.RateLimitTpm
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyRateLimitPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyRateLimitPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改限流策略
+//
+// @param request - ModifyRateLimitPolicyRequest
+//
+// @return ModifyRateLimitPolicyResponse
+func (client *Client) ModifyRateLimitPolicy(request *ModifyRateLimitPolicyRequest) (_result *ModifyRateLimitPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyRateLimitPolicyResponse{}
+	_body, _err := client.ModifyRateLimitPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26256,6 +29178,72 @@ func (client *Client) ModifyScheduleTask(request *ModifyScheduleTaskRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyScheduleTaskResponse{}
 	_body, _err := client.ModifyScheduleTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重命名或移动文件
+//
+// @param request - MovePolarFsObjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MovePolarFsObjectsResponse
+func (client *Client) MovePolarFsObjectsWithOptions(request *MovePolarFsObjectsRequest, runtime *dara.RuntimeOptions) (_result *MovePolarFsObjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ObjectsToMove) {
+		query["ObjectsToMove"] = request.ObjectsToMove
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MovePolarFsObjects"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MovePolarFsObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重命名或移动文件
+//
+// @param request - MovePolarFsObjectsRequest
+//
+// @return MovePolarFsObjectsResponse
+func (client *Client) MovePolarFsObjects(request *MovePolarFsObjectsRequest) (_result *MovePolarFsObjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &MovePolarFsObjectsResponse{}
+	_body, _err := client.MovePolarFsObjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26862,6 +29850,76 @@ func (client *Client) ResetAccountZonal(request *ResetAccountZonalRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ResetAccountZonalResponse{}
 	_body, _err := client.ResetAccountZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置API密钥
+//
+// @param request - ResetConsumerApiKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetConsumerApiKeyResponse
+func (client *Client) ResetConsumerApiKeyWithOptions(request *ResetConsumerApiKeyRequest, runtime *dara.RuntimeOptions) (_result *ResetConsumerApiKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConsumerId) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetConsumerApiKey"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetConsumerApiKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重置API密钥
+//
+// @param request - ResetConsumerApiKeyRequest
+//
+// @return ResetConsumerApiKeyResponse
+func (client *Client) ResetConsumerApiKey(request *ResetConsumerApiKeyRequest) (_result *ResetConsumerApiKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetConsumerApiKeyResponse{}
+	_body, _err := client.ResetConsumerApiKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
