@@ -2092,6 +2092,158 @@ func (client *Client) CloudGetAgentStatus(request *CloudGetAgentStatusRequest) (
 
 // Summary:
 //
+// 获取座席外呼通话记录详情
+//
+// @param request - CloudGetObCdrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetObCdrResponse
+func (client *Client) CloudGetObCdrWithOptions(request *CloudGetObCdrRequest, runtime *dara.RuntimeOptions) (_result *CloudGetObCdrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetObCdr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetObCdrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取座席外呼通话记录详情
+//
+// @param request - CloudGetObCdrRequest
+//
+// @return CloudGetObCdrResponse
+func (client *Client) CloudGetObCdr(request *CloudGetObCdrRequest) (_result *CloudGetObCdrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetObCdrResponse{}
+	_body, _err := client.CloudGetObCdrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取通话录音地址
+//
+// @param request - CloudGetRecordUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetRecordUrlResponse
+func (client *Client) CloudGetRecordUrlWithOptions(request *CloudGetRecordUrlRequest, runtime *dara.RuntimeOptions) (_result *CloudGetRecordUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallType) {
+		query["CallType"] = request.CallType
+	}
+
+	if !dara.IsNil(request.Download) {
+		query["Download"] = request.Download
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.RecordFile) {
+		query["RecordFile"] = request.RecordFile
+	}
+
+	if !dara.IsNil(request.RecordFormat) {
+		query["RecordFormat"] = request.RecordFormat
+	}
+
+	if !dara.IsNil(request.RecordSide) {
+		query["RecordSide"] = request.RecordSide
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		query["RecordType"] = request.RecordType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetRecordUrl"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetRecordUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取通话录音地址
+//
+// @param request - CloudGetRecordUrlRequest
+//
+// @return CloudGetRecordUrlResponse
+func (client *Client) CloudGetRecordUrl(request *CloudGetRecordUrlRequest) (_result *CloudGetRecordUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetRecordUrlResponse{}
+	_body, _err := client.CloudGetRecordUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 任务号码导入
 //
 // @param tmpReq - CloudImportTaskTelRequest
@@ -2527,6 +2679,202 @@ func (client *Client) CloudListOnlineAgent(request *CloudListOnlineAgentRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudListOnlineAgentResponse{}
 	_body, _err := client.CloudListOnlineAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取预览外呼主叫号码报表
+//
+// @param request - CloudOutboundObClidReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudOutboundObClidReportResponse
+func (client *Client) CloudOutboundObClidReportWithOptions(request *CloudOutboundObClidReportRequest, runtime *dara.RuntimeOptions) (_result *CloudOutboundObClidReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AreaCodes) {
+		query["AreaCodes"] = request.AreaCodes
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		query["EndHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		query["StartHour"] = request.StartHour
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatisticMethod) {
+		query["StatisticMethod"] = request.StatisticMethod
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudOutboundObClidReport"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudOutboundObClidReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取预览外呼主叫号码报表
+//
+// @param request - CloudOutboundObClidReportRequest
+//
+// @return CloudOutboundObClidReportResponse
+func (client *Client) CloudOutboundObClidReport(request *CloudOutboundObClidReportRequest) (_result *CloudOutboundObClidReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudOutboundObClidReportResponse{}
+	_body, _err := client.CloudOutboundObClidReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取预览外呼报表
+//
+// @param request - CloudOutboundPreviewObReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudOutboundPreviewObReportResponse
+func (client *Client) CloudOutboundPreviewObReportWithOptions(request *CloudOutboundPreviewObReportRequest, runtime *dara.RuntimeOptions) (_result *CloudOutboundPreviewObReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		query["EndHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		query["StartHour"] = request.StartHour
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatisticMethod) {
+		query["StatisticMethod"] = request.StatisticMethod
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudOutboundPreviewObReport"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudOutboundPreviewObReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取预览外呼报表
+//
+// @param request - CloudOutboundPreviewObReportRequest
+//
+// @return CloudOutboundPreviewObReportResponse
+func (client *Client) CloudOutboundPreviewObReport(request *CloudOutboundPreviewObReportRequest) (_result *CloudOutboundPreviewObReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudOutboundPreviewObReportResponse{}
+	_body, _err := client.CloudOutboundPreviewObReportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3005,6 +3353,598 @@ func (client *Client) CloudQueryAgentSkill(request *CloudQueryAgentSkillRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudQueryAgentSkillResponse{}
 	_body, _err := client.CloudQueryAgentSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 来电通话记录
+//
+// @param request - CloudQueryIbCdrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudQueryIbCdrResponse
+func (client *Client) CloudQueryIbCdrWithOptions(request *CloudQueryIbCdrRequest, runtime *dara.RuntimeOptions) (_result *CloudQueryIbCdrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CalleeNumber) {
+		query["CalleeNumber"] = request.CalleeNumber
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Hotline) {
+		query["Hotline"] = request.Hotline
+	}
+
+	if !dara.IsNil(request.JoinQueueCode) {
+		query["JoinQueueCode"] = request.JoinQueueCode
+	}
+
+	if !dara.IsNil(request.LeaveQueueCode) {
+		query["LeaveQueueCode"] = request.LeaveQueueCode
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	if !dara.IsNil(request.UserFieldValue) {
+		query["UserFieldValue"] = request.UserFieldValue
+	}
+
+	if !dara.IsNil(request.UserFieldkey) {
+		query["UserFieldkey"] = request.UserFieldkey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudQueryIbCdr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudQueryIbCdrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 来电通话记录
+//
+// @param request - CloudQueryIbCdrRequest
+//
+// @return CloudQueryIbCdrResponse
+func (client *Client) CloudQueryIbCdr(request *CloudQueryIbCdrRequest) (_result *CloudQueryIbCdrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudQueryIbCdrResponse{}
+	_body, _err := client.CloudQueryIbCdrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取座席外呼通话记录
+//
+// @param request - CloudQueryObCdrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudQueryObCdrResponse
+func (client *Client) CloudQueryObCdrWithOptions(request *CloudQueryObCdrRequest, runtime *dara.RuntimeOptions) (_result *CloudQueryObCdrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.AgentNumber) {
+		query["AgentNumber"] = request.AgentNumber
+	}
+
+	if !dara.IsNil(request.CallType) {
+		query["CallType"] = request.CallType
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.Clid) {
+		query["Clid"] = request.Clid
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.DownGrade) {
+		query["DownGrade"] = request.DownGrade
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.IsRealAnswer) {
+		query["IsRealAnswer"] = request.IsRealAnswer
+	}
+
+	if !dara.IsNil(request.LeftDisplayNumber) {
+		query["LeftDisplayNumber"] = request.LeftDisplayNumber
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	if !dara.IsNil(request.RequestUniqueId) {
+		query["RequestUniqueId"] = request.RequestUniqueId
+	}
+
+	if !dara.IsNil(request.ReturnCount) {
+		query["ReturnCount"] = request.ReturnCount
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	if !dara.IsNil(request.UserFieldValue) {
+		query["UserFieldValue"] = request.UserFieldValue
+	}
+
+	if !dara.IsNil(request.UserFieldkey) {
+		query["UserFieldkey"] = request.UserFieldkey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudQueryObCdr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudQueryObCdrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取座席外呼通话记录
+//
+// @param request - CloudQueryObCdrRequest
+//
+// @return CloudQueryObCdrResponse
+func (client *Client) CloudQueryObCdr(request *CloudQueryObCdrRequest) (_result *CloudQueryObCdrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudQueryObCdrResponse{}
+	_body, _err := client.CloudQueryObCdrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预测式外呼通话记录
+//
+// @param request - CloudQueryPredictiveCallCdrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudQueryPredictiveCallCdrResponse
+func (client *Client) CloudQueryPredictiveCallCdrWithOptions(request *CloudQueryPredictiveCallCdrRequest, runtime *dara.RuntimeOptions) (_result *CloudQueryPredictiveCallCdrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.Clid) {
+		query["Clid"] = request.Clid
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.DisplayNumber) {
+		query["DisplayNumber"] = request.DisplayNumber
+	}
+
+	if !dara.IsNil(request.DownGrade) {
+		query["DownGrade"] = request.DownGrade
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.IsRealAnswer) {
+		query["IsRealAnswer"] = request.IsRealAnswer
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	if !dara.IsNil(request.RequestUniqueId) {
+		query["RequestUniqueId"] = request.RequestUniqueId
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskFileId) {
+		query["TaskFileId"] = request.TaskFileId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	if !dara.IsNil(request.UserFieldValue) {
+		query["UserFieldValue"] = request.UserFieldValue
+	}
+
+	if !dara.IsNil(request.UserFieldkey) {
+		query["UserFieldkey"] = request.UserFieldkey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudQueryPredictiveCallCdr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudQueryPredictiveCallCdrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预测式外呼通话记录
+//
+// @param request - CloudQueryPredictiveCallCdrRequest
+//
+// @return CloudQueryPredictiveCallCdrResponse
+func (client *Client) CloudQueryPredictiveCallCdr(request *CloudQueryPredictiveCallCdrRequest) (_result *CloudQueryPredictiveCallCdrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudQueryPredictiveCallCdrResponse{}
+	_body, _err := client.CloudQueryPredictiveCallCdrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// webcall通话记录
+//
+// @param request - CloudQueryWebcallCdrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudQueryWebcallCdrResponse
+func (client *Client) CloudQueryWebcallCdrWithOptions(request *CloudQueryWebcallCdrRequest, runtime *dara.RuntimeOptions) (_result *CloudQueryWebcallCdrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CalleeClid) {
+		query["CalleeClid"] = request.CalleeClid
+	}
+
+	if !dara.IsNil(request.CalleeDisplayNumber) {
+		query["CalleeDisplayNumber"] = request.CalleeDisplayNumber
+	}
+
+	if !dara.IsNil(request.CalleeNumber) {
+		query["CalleeNumber"] = request.CalleeNumber
+	}
+
+	if !dara.IsNil(request.City) {
+		query["City"] = request.City
+	}
+
+	if !dara.IsNil(request.Clid) {
+		query["Clid"] = request.Clid
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.CustomerNumber) {
+		query["CustomerNumber"] = request.CustomerNumber
+	}
+
+	if !dara.IsNil(request.DisplayNumber) {
+		query["DisplayNumber"] = request.DisplayNumber
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.IsRealAnswer) {
+		query["IsRealAnswer"] = request.IsRealAnswer
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Province) {
+		query["Province"] = request.Province
+	}
+
+	if !dara.IsNil(request.RequestUniqueId) {
+		query["RequestUniqueId"] = request.RequestUniqueId
+	}
+
+	if !dara.IsNil(request.ReturnCount) {
+		query["ReturnCount"] = request.ReturnCount
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	if !dara.IsNil(request.UserFieldValue) {
+		query["UserFieldValue"] = request.UserFieldValue
+	}
+
+	if !dara.IsNil(request.UserFieldkey) {
+		query["UserFieldkey"] = request.UserFieldkey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudQueryWebcallCdr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudQueryWebcallCdrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// webcall通话记录
+//
+// @param request - CloudQueryWebcallCdrRequest
+//
+// @return CloudQueryWebcallCdrResponse
+func (client *Client) CloudQueryWebcallCdr(request *CloudQueryWebcallCdrRequest) (_result *CloudQueryWebcallCdrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudQueryWebcallCdrResponse{}
+	_body, _err := client.CloudQueryWebcallCdrWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
