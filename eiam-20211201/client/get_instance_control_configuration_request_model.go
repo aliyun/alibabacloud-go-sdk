@@ -9,11 +9,14 @@ type iGetInstanceControlConfigurationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetElementName(v string) *GetInstanceControlConfigurationRequest
+	GetElementName() *string
 	SetInstanceId(v string) *GetInstanceControlConfigurationRequest
 	GetInstanceId() *string
 }
 
 type GetInstanceControlConfigurationRequest struct {
+	ElementName *string `json:"ElementName,omitempty" xml:"ElementName,omitempty"`
 	// IDaaS EIAM实例的ID。
 	//
 	// This parameter is required.
@@ -32,8 +35,17 @@ func (s GetInstanceControlConfigurationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceControlConfigurationRequest) GetElementName() *string {
+	return s.ElementName
+}
+
 func (s *GetInstanceControlConfigurationRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *GetInstanceControlConfigurationRequest) SetElementName(v string) *GetInstanceControlConfigurationRequest {
+	s.ElementName = &v
+	return s
 }
 
 func (s *GetInstanceControlConfigurationRequest) SetInstanceId(v string) *GetInstanceControlConfigurationRequest {

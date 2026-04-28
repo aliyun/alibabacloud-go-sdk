@@ -9074,6 +9074,10 @@ func (client *Client) GetInstanceControlConfigurationWithContext(ctx context.Con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ElementName) {
+		query["ElementName"] = request.ElementName
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}

@@ -1,3 +1,7 @@
+2026-04-28 Version: v2.15.7
+- Update API GetInstanceControlConfiguration: add request parameters ElementName.
+
+
 2026-04-16 Version: v2.15.6
 - Update API GetApplication: add response parameters Body.Application.SmartConfigCapabilities.
 
