@@ -11,10 +11,14 @@ type iUpdateDetectionRuleRequest interface {
 	GoString() string
 	SetAlertAttCk(v string) *UpdateDetectionRuleRequest
 	GetAlertAttCk() *string
+	SetAlertAttCkMapping(v string) *UpdateDetectionRuleRequest
+	GetAlertAttCkMapping() *string
 	SetAlertDescription(v string) *UpdateDetectionRuleRequest
 	GetAlertDescription() *string
 	SetAlertLevel(v string) *UpdateDetectionRuleRequest
 	GetAlertLevel() *string
+	SetAlertLevelMapping(v string) *UpdateDetectionRuleRequest
+	GetAlertLevelMapping() *string
 	SetAlertName(v string) *UpdateDetectionRuleRequest
 	GetAlertName() *string
 	SetAlertSchemaId(v string) *UpdateDetectionRuleRequest
@@ -29,6 +33,8 @@ type iUpdateDetectionRuleRequest interface {
 	GetAlertThresholdPeriod() *string
 	SetAlertType(v string) *UpdateDetectionRuleRequest
 	GetAlertType() *string
+	SetAlertTypeMapping(v string) *UpdateDetectionRuleRequest
+	GetAlertTypeMapping() *string
 	SetDetectionExpressionContent(v string) *UpdateDetectionRuleRequest
 	GetDetectionExpressionContent() *string
 	SetDetectionExpressionType(v string) *UpdateDetectionRuleRequest
@@ -79,13 +85,15 @@ type UpdateDetectionRuleRequest struct {
 	// example:
 	//
 	// Discovery
-	AlertAttCk       *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
-	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	AlertAttCk        *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertAttCkMapping *string `json:"AlertAttCkMapping,omitempty" xml:"AlertAttCkMapping,omitempty"`
+	AlertDescription  *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// example:
 	//
 	// 1
-	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertName  *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertLevel        *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevelMapping *string `json:"AlertLevelMapping,omitempty" xml:"AlertLevelMapping,omitempty"`
+	AlertName         *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// example:
 	//
 	// ALERT_ACTIVITY
@@ -109,7 +117,8 @@ type UpdateDetectionRuleRequest struct {
 	// example:
 	//
 	// siem_rule_type_alert_storm
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType        *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
 	// example:
 	//
 	// *|set session mode=scan;SELECT 	- FROM log
@@ -250,12 +259,20 @@ func (s *UpdateDetectionRuleRequest) GetAlertAttCk() *string {
 	return s.AlertAttCk
 }
 
+func (s *UpdateDetectionRuleRequest) GetAlertAttCkMapping() *string {
+	return s.AlertAttCkMapping
+}
+
 func (s *UpdateDetectionRuleRequest) GetAlertDescription() *string {
 	return s.AlertDescription
 }
 
 func (s *UpdateDetectionRuleRequest) GetAlertLevel() *string {
 	return s.AlertLevel
+}
+
+func (s *UpdateDetectionRuleRequest) GetAlertLevelMapping() *string {
+	return s.AlertLevelMapping
 }
 
 func (s *UpdateDetectionRuleRequest) GetAlertName() *string {
@@ -284,6 +301,10 @@ func (s *UpdateDetectionRuleRequest) GetAlertThresholdPeriod() *string {
 
 func (s *UpdateDetectionRuleRequest) GetAlertType() *string {
 	return s.AlertType
+}
+
+func (s *UpdateDetectionRuleRequest) GetAlertTypeMapping() *string {
+	return s.AlertTypeMapping
 }
 
 func (s *UpdateDetectionRuleRequest) GetDetectionExpressionContent() *string {
@@ -379,6 +400,11 @@ func (s *UpdateDetectionRuleRequest) SetAlertAttCk(v string) *UpdateDetectionRul
 	return s
 }
 
+func (s *UpdateDetectionRuleRequest) SetAlertAttCkMapping(v string) *UpdateDetectionRuleRequest {
+	s.AlertAttCkMapping = &v
+	return s
+}
+
 func (s *UpdateDetectionRuleRequest) SetAlertDescription(v string) *UpdateDetectionRuleRequest {
 	s.AlertDescription = &v
 	return s
@@ -386,6 +412,11 @@ func (s *UpdateDetectionRuleRequest) SetAlertDescription(v string) *UpdateDetect
 
 func (s *UpdateDetectionRuleRequest) SetAlertLevel(v string) *UpdateDetectionRuleRequest {
 	s.AlertLevel = &v
+	return s
+}
+
+func (s *UpdateDetectionRuleRequest) SetAlertLevelMapping(v string) *UpdateDetectionRuleRequest {
+	s.AlertLevelMapping = &v
 	return s
 }
 
@@ -421,6 +452,11 @@ func (s *UpdateDetectionRuleRequest) SetAlertThresholdPeriod(v string) *UpdateDe
 
 func (s *UpdateDetectionRuleRequest) SetAlertType(v string) *UpdateDetectionRuleRequest {
 	s.AlertType = &v
+	return s
+}
+
+func (s *UpdateDetectionRuleRequest) SetAlertTypeMapping(v string) *UpdateDetectionRuleRequest {
+	s.AlertTypeMapping = &v
 	return s
 }
 

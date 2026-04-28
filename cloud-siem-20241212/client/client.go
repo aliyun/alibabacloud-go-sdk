@@ -579,12 +579,20 @@ func (client *Client) CreateDetectionRuleWithOptions(request *CreateDetectionRul
 		body["AlertAttCk"] = request.AlertAttCk
 	}
 
+	if !dara.IsNil(request.AlertAttCkMapping) {
+		body["AlertAttCkMapping"] = request.AlertAttCkMapping
+	}
+
 	if !dara.IsNil(request.AlertDescription) {
 		body["AlertDescription"] = request.AlertDescription
 	}
 
 	if !dara.IsNil(request.AlertLevel) {
 		body["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.AlertLevelMapping) {
+		body["AlertLevelMapping"] = request.AlertLevelMapping
 	}
 
 	if !dara.IsNil(request.AlertName) {
@@ -613,6 +621,10 @@ func (client *Client) CreateDetectionRuleWithOptions(request *CreateDetectionRul
 
 	if !dara.IsNil(request.AlertType) {
 		body["AlertType"] = request.AlertType
+	}
+
+	if !dara.IsNil(request.AlertTypeMapping) {
+		body["AlertTypeMapping"] = request.AlertTypeMapping
 	}
 
 	if !dara.IsNil(request.DetectionExpressionContent) {
@@ -3760,6 +3772,10 @@ func (client *Client) ListDataSetRecordsWithOptions(request *ListDataSetRecordsR
 		body["DataSetId"] = request.DataSetId
 	}
 
+	if !dara.IsNil(request.Filter) {
+		body["Filter"] = request.Filter
+	}
+
 	if !dara.IsNil(request.Lang) {
 		body["Lang"] = request.Lang
 	}
@@ -3770,6 +3786,14 @@ func (client *Client) ListDataSetRecordsWithOptions(request *ListDataSetRecordsR
 
 	if !dara.IsNil(request.NextToken) {
 		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Order) {
+		body["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OrderField) {
+		body["OrderField"] = request.OrderField
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -7080,12 +7104,20 @@ func (client *Client) UpdateDetectionRuleWithOptions(request *UpdateDetectionRul
 		body["AlertAttCk"] = request.AlertAttCk
 	}
 
+	if !dara.IsNil(request.AlertAttCkMapping) {
+		body["AlertAttCkMapping"] = request.AlertAttCkMapping
+	}
+
 	if !dara.IsNil(request.AlertDescription) {
 		body["AlertDescription"] = request.AlertDescription
 	}
 
 	if !dara.IsNil(request.AlertLevel) {
 		body["AlertLevel"] = request.AlertLevel
+	}
+
+	if !dara.IsNil(request.AlertLevelMapping) {
+		body["AlertLevelMapping"] = request.AlertLevelMapping
 	}
 
 	if !dara.IsNil(request.AlertName) {
@@ -7114,6 +7146,10 @@ func (client *Client) UpdateDetectionRuleWithOptions(request *UpdateDetectionRul
 
 	if !dara.IsNil(request.AlertType) {
 		body["AlertType"] = request.AlertType
+	}
+
+	if !dara.IsNil(request.AlertTypeMapping) {
+		body["AlertTypeMapping"] = request.AlertTypeMapping
 	}
 
 	if !dara.IsNil(request.DetectionExpressionContent) {

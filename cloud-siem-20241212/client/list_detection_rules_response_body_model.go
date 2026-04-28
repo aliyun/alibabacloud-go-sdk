@@ -141,13 +141,15 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	// example:
 	//
 	// Discovery
-	AlertAttCk       *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
-	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	AlertAttCk        *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
+	AlertAttCkMapping *string `json:"AlertAttCkMapping,omitempty" xml:"AlertAttCkMapping,omitempty"`
+	AlertDescription  *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// example:
 	//
 	// 1
-	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertName  *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertLevel        *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertLevelMapping *string `json:"AlertLevelMapping,omitempty" xml:"AlertLevelMapping,omitempty"`
+	AlertName         *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// example:
 	//
 	// ALERT_ACTIVITY
@@ -171,7 +173,8 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	// example:
 	//
 	// WebShell
-	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType        *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
 	// example:
 	//
 	// 2023-03-21 13:47:01
@@ -306,12 +309,20 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertAttCk() *string {
 	return s.AlertAttCk
 }
 
+func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertAttCkMapping() *string {
+	return s.AlertAttCkMapping
+}
+
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertDescription() *string {
 	return s.AlertDescription
 }
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertLevel() *string {
 	return s.AlertLevel
+}
+
+func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertLevelMapping() *string {
+	return s.AlertLevelMapping
 }
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertName() *string {
@@ -340,6 +351,10 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertThresholdPeriod()
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertType() *string {
 	return s.AlertType
+}
+
+func (s *ListDetectionRulesResponseBodyDetectionRules) GetAlertTypeMapping() *string {
+	return s.AlertTypeMapping
 }
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) GetCreateTime() *int64 {
@@ -439,6 +454,11 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertAttCk(v string) *
 	return s
 }
 
+func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertAttCkMapping(v string) *ListDetectionRulesResponseBodyDetectionRules {
+	s.AlertAttCkMapping = &v
+	return s
+}
+
 func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertDescription(v string) *ListDetectionRulesResponseBodyDetectionRules {
 	s.AlertDescription = &v
 	return s
@@ -446,6 +466,11 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertDescription(v str
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertLevel(v string) *ListDetectionRulesResponseBodyDetectionRules {
 	s.AlertLevel = &v
+	return s
+}
+
+func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertLevelMapping(v string) *ListDetectionRulesResponseBodyDetectionRules {
+	s.AlertLevelMapping = &v
 	return s
 }
 
@@ -481,6 +506,11 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertThresholdPeriod(v
 
 func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertType(v string) *ListDetectionRulesResponseBodyDetectionRules {
 	s.AlertType = &v
+	return s
+}
+
+func (s *ListDetectionRulesResponseBodyDetectionRules) SetAlertTypeMapping(v string) *ListDetectionRulesResponseBodyDetectionRules {
+	s.AlertTypeMapping = &v
 	return s
 }
 

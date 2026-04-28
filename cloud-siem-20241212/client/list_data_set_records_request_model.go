@@ -11,12 +11,18 @@ type iListDataSetRecordsRequest interface {
 	GoString() string
 	SetDataSetId(v string) *ListDataSetRecordsRequest
 	GetDataSetId() *string
+	SetFilter(v string) *ListDataSetRecordsRequest
+	GetFilter() *string
 	SetLang(v string) *ListDataSetRecordsRequest
 	GetLang() *string
 	SetMaxResults(v int32) *ListDataSetRecordsRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListDataSetRecordsRequest
 	GetNextToken() *string
+	SetOrder(v string) *ListDataSetRecordsRequest
+	GetOrder() *string
+	SetOrderField(v string) *ListDataSetRecordsRequest
+	GetOrderField() *string
 	SetPageNumber(v int32) *ListDataSetRecordsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *ListDataSetRecordsRequest
@@ -36,6 +42,10 @@ type ListDataSetRecordsRequest struct {
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
 	// example:
 	//
+	// {"field1":"value1","field2":"value2"}
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// example:
@@ -46,6 +56,14 @@ type ListDataSetRecordsRequest struct {
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// updatetime
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -80,6 +98,10 @@ func (s *ListDataSetRecordsRequest) GetDataSetId() *string {
 	return s.DataSetId
 }
 
+func (s *ListDataSetRecordsRequest) GetFilter() *string {
+	return s.Filter
+}
+
 func (s *ListDataSetRecordsRequest) GetLang() *string {
 	return s.Lang
 }
@@ -90,6 +112,14 @@ func (s *ListDataSetRecordsRequest) GetMaxResults() *int32 {
 
 func (s *ListDataSetRecordsRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListDataSetRecordsRequest) GetOrder() *string {
+	return s.Order
+}
+
+func (s *ListDataSetRecordsRequest) GetOrderField() *string {
+	return s.OrderField
 }
 
 func (s *ListDataSetRecordsRequest) GetPageNumber() *int32 {
@@ -113,6 +143,11 @@ func (s *ListDataSetRecordsRequest) SetDataSetId(v string) *ListDataSetRecordsRe
 	return s
 }
 
+func (s *ListDataSetRecordsRequest) SetFilter(v string) *ListDataSetRecordsRequest {
+	s.Filter = &v
+	return s
+}
+
 func (s *ListDataSetRecordsRequest) SetLang(v string) *ListDataSetRecordsRequest {
 	s.Lang = &v
 	return s
@@ -125,6 +160,16 @@ func (s *ListDataSetRecordsRequest) SetMaxResults(v int32) *ListDataSetRecordsRe
 
 func (s *ListDataSetRecordsRequest) SetNextToken(v string) *ListDataSetRecordsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListDataSetRecordsRequest) SetOrder(v string) *ListDataSetRecordsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDataSetRecordsRequest) SetOrderField(v string) *ListDataSetRecordsRequest {
+	s.OrderField = &v
 	return s
 }
 
