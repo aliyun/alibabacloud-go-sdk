@@ -25,12 +25,16 @@ type iDescribeEnsEipAddressesRequest interface {
 	GetEnsRegionIds() []*string
 	SetIcmpReplyEnabled(v bool) *DescribeEnsEipAddressesRequest
 	GetIcmpReplyEnabled() *bool
+	SetLockReason(v string) *DescribeEnsEipAddressesRequest
+	GetLockReason() *string
 	SetPageNumber(v int32) *DescribeEnsEipAddressesRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeEnsEipAddressesRequest
 	GetPageSize() *int32
 	SetStandby(v string) *DescribeEnsEipAddressesRequest
 	GetStandby() *string
+	SetStatus(v string) *DescribeEnsEipAddressesRequest
+	GetStatus() *string
 }
 
 type DescribeEnsEipAddressesRequest struct {
@@ -77,6 +81,10 @@ type DescribeEnsEipAddressesRequest struct {
 	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds     []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	IcmpReplyEnabled *bool     `json:"IcmpReplyEnabled,omitempty" xml:"IcmpReplyEnabled,omitempty"`
+	// example:
+	//
+	// financial
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -99,6 +107,7 @@ type DescribeEnsEipAddressesRequest struct {
 	//
 	// true
 	Standby *string `json:"Standby,omitempty" xml:"Standby,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesRequest) String() string {
@@ -141,6 +150,10 @@ func (s *DescribeEnsEipAddressesRequest) GetIcmpReplyEnabled() *bool {
 	return s.IcmpReplyEnabled
 }
 
+func (s *DescribeEnsEipAddressesRequest) GetLockReason() *string {
+	return s.LockReason
+}
+
 func (s *DescribeEnsEipAddressesRequest) GetPageNumber() *int32 {
 	return s.PageNumber
 }
@@ -151,6 +164,10 @@ func (s *DescribeEnsEipAddressesRequest) GetPageSize() *int32 {
 
 func (s *DescribeEnsEipAddressesRequest) GetStandby() *string {
 	return s.Standby
+}
+
+func (s *DescribeEnsEipAddressesRequest) GetStatus() *string {
+	return s.Status
 }
 
 func (s *DescribeEnsEipAddressesRequest) SetAllocationId(v string) *DescribeEnsEipAddressesRequest {
@@ -193,6 +210,11 @@ func (s *DescribeEnsEipAddressesRequest) SetIcmpReplyEnabled(v bool) *DescribeEn
 	return s
 }
 
+func (s *DescribeEnsEipAddressesRequest) SetLockReason(v string) *DescribeEnsEipAddressesRequest {
+	s.LockReason = &v
+	return s
+}
+
 func (s *DescribeEnsEipAddressesRequest) SetPageNumber(v int32) *DescribeEnsEipAddressesRequest {
 	s.PageNumber = &v
 	return s
@@ -205,6 +227,11 @@ func (s *DescribeEnsEipAddressesRequest) SetPageSize(v int32) *DescribeEnsEipAdd
 
 func (s *DescribeEnsEipAddressesRequest) SetStandby(v string) *DescribeEnsEipAddressesRequest {
 	s.Standby = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesRequest) SetStatus(v string) *DescribeEnsEipAddressesRequest {
+	s.Status = &v
 	return s
 }
 

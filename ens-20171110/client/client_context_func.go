@@ -7152,6 +7152,10 @@ func (client *Client) DescribeEnsEipAddressesWithContext(ctx context.Context, re
 		query["IcmpReplyEnabled"] = request.IcmpReplyEnabled
 	}
 
+	if !dara.IsNil(request.LockReason) {
+		query["LockReason"] = request.LockReason
+	}
+
 	if !dara.IsNil(request.PageNumber) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -7162,6 +7166,10 @@ func (client *Client) DescribeEnsEipAddressesWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.Standby) {
 		query["Standby"] = request.Standby
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
 	}
 
 	req := &openapiutil.OpenApiRequest{

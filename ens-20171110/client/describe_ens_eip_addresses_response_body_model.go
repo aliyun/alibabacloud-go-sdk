@@ -169,6 +169,14 @@ type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
 	//
 	// 50
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// example:
+	//
+	// 100
+	BandwidthPackageBandwidth *int32 `json:"BandwidthPackageBandwidth,omitempty" xml:"BandwidthPackageBandwidth,omitempty"`
+	// example:
+	//
+	// cbwp-5***
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// EIP的计费模式。
 	//
 	// - **PrePaid**：包年包月。
@@ -255,7 +263,8 @@ type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
 	// example:
 	//
 	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name           *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	OperationLocks *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Struct"`
 	// 该EIP是否是备用。
 	//
 	// example:
@@ -298,6 +307,14 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetAllocatio
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetBandwidth() *int32 {
 	return s.Bandwidth
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetBandwidthPackageBandwidth() *int32 {
+	return s.BandwidthPackageBandwidth
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetBandwidthPackageId() *string {
+	return s.BandwidthPackageId
 }
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetChargeType() *string {
@@ -344,6 +361,10 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetName() *s
 	return s.Name
 }
 
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetOperationLocks() *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks {
+	return s.OperationLocks
+}
+
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) GetStandby() *bool {
 	return s.Standby
 }
@@ -368,6 +389,16 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetAllocatio
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetBandwidth(v int32) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetBandwidthPackageBandwidth(v int32) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.BandwidthPackageBandwidth = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetBandwidthPackageId(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.BandwidthPackageId = &v
 	return s
 }
 
@@ -426,6 +457,11 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetName(v st
 	return s
 }
 
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetOperationLocks(v *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.OperationLocks = v
+	return s
+}
+
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetStandby(v bool) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Standby = &v
 	return s
@@ -442,12 +478,79 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetTags(v *D
 }
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) Validate() error {
+	if s.OperationLocks != nil {
+		if err := s.OperationLocks.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		if err := s.Tags.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks struct {
+	Lock []*DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock `json:"Lock,omitempty" xml:"Lock,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) GetLock() []*DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock {
+	return s.Lock
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) SetLock(v []*DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks {
+	s.Lock = v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocks) Validate() error {
+	if s.Lock != nil {
+		for _, item := range s.Lock {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock struct {
+	// example:
+	//
+	// financial
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock) GetLockReason() *string {
+	return s.LockReason
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock) SetLockReason(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock {
+	s.LockReason = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLock) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags struct {
