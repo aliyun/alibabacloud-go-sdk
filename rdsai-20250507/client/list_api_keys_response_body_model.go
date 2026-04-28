@@ -108,7 +108,8 @@ type ListApiKeysResponseBodyData struct {
 	// example:
 	//
 	// sk-rds-xxx
-	SystemApiKey *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
+	SystemApiKey     *string `json:"SystemApiKey,omitempty" xml:"SystemApiKey,omitempty"`
+	ThresholdPercent *int32  `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 	// example:
 	//
 	// 138
@@ -147,6 +148,10 @@ func (s *ListApiKeysResponseBodyData) GetSystemApiKey() *string {
 	return s.SystemApiKey
 }
 
+func (s *ListApiKeysResponseBodyData) GetThresholdPercent() *int32 {
+	return s.ThresholdPercent
+}
+
 func (s *ListApiKeysResponseBodyData) GetTotal() *int32 {
 	return s.Total
 }
@@ -178,6 +183,11 @@ func (s *ListApiKeysResponseBodyData) SetPageSize(v int32) *ListApiKeysResponseB
 
 func (s *ListApiKeysResponseBodyData) SetSystemApiKey(v string) *ListApiKeysResponseBodyData {
 	s.SystemApiKey = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyData) SetThresholdPercent(v int32) *ListApiKeysResponseBodyData {
+	s.ThresholdPercent = &v
 	return s
 }
 
@@ -218,7 +228,8 @@ type ListApiKeysResponseBodyDataCustomKeyList struct {
 	// example:
 	//
 	// fixed
-	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	LimitType        *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
+	ThresholdPercent *int32  `json:"ThresholdPercent,omitempty" xml:"ThresholdPercent,omitempty"`
 	// example:
 	//
 	// 10000
@@ -253,6 +264,10 @@ func (s *ListApiKeysResponseBodyDataCustomKeyList) GetLimitType() *string {
 	return s.LimitType
 }
 
+func (s *ListApiKeysResponseBodyDataCustomKeyList) GetThresholdPercent() *int32 {
+	return s.ThresholdPercent
+}
+
 func (s *ListApiKeysResponseBodyDataCustomKeyList) GetTokenQuota() *int64 {
 	return s.TokenQuota
 }
@@ -279,6 +294,11 @@ func (s *ListApiKeysResponseBodyDataCustomKeyList) SetLimitRate(v float32) *List
 
 func (s *ListApiKeysResponseBodyDataCustomKeyList) SetLimitType(v string) *ListApiKeysResponseBodyDataCustomKeyList {
 	s.LimitType = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyDataCustomKeyList) SetThresholdPercent(v int32) *ListApiKeysResponseBodyDataCustomKeyList {
+	s.ThresholdPercent = &v
 	return s
 }
 

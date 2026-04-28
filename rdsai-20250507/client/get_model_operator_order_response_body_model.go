@@ -20,7 +20,10 @@ type iGetModelOperatorOrderResponseBody interface {
 }
 
 type GetModelOperatorOrderResponseBody struct {
+	// The query result.
 	Data *GetModelOperatorOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
@@ -31,6 +34,8 @@ type GetModelOperatorOrderResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result.
+	//
 	// example:
 	//
 	// true
@@ -91,11 +96,14 @@ func (s *GetModelOperatorOrderResponseBody) Validate() error {
 }
 
 type GetModelOperatorOrderResponseBodyData struct {
+	// Indicates whether a valid order exists.
+	//
 	// example:
 	//
 	// true
-	HasValidOrder *bool                                                `json:"HasValidOrder,omitempty" xml:"HasValidOrder,omitempty"`
-	InstanceList  []*GetModelOperatorOrderResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	HasValidOrder *bool `json:"HasValidOrder,omitempty" xml:"HasValidOrder,omitempty"`
+	// The instance list.
+	InstanceList []*GetModelOperatorOrderResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 }
 
 func (s GetModelOperatorOrderResponseBodyData) String() string {
@@ -138,22 +146,32 @@ func (s *GetModelOperatorOrderResponseBodyData) Validate() error {
 }
 
 type GetModelOperatorOrderResponseBodyDataInstanceList struct {
+	// The instance end time (format: Timestamp).
+	//
 	// example:
 	//
 	// 1775145600000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// instance type
+	//
 	// example:
 	//
 	// xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance start time (format: Timestamp).
+	//
 	// example:
 	//
 	// 1772439028000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// active/creating
