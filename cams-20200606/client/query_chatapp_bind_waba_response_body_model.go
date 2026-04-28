@@ -180,6 +180,10 @@ type QueryChatappBindWabaResponseBodyData struct {
 	//
 	// 20393988393993***
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// N
+	IsOnBizApp *string `json:"IsOnBizApp,omitempty" xml:"IsOnBizApp,omitempty"`
 	// The Marketing Messaging Lite status.
 	//
 	// example:
@@ -238,6 +242,10 @@ func (s *QueryChatappBindWabaResponseBodyData) GetId() *string {
 	return s.Id
 }
 
+func (s *QueryChatappBindWabaResponseBodyData) GetIsOnBizApp() *string {
+	return s.IsOnBizApp
+}
+
 func (s *QueryChatappBindWabaResponseBodyData) GetMarketingMessageLiteStatus() *string {
 	return s.MarketingMessageLiteStatus
 }
@@ -281,6 +289,11 @@ func (s *QueryChatappBindWabaResponseBodyData) SetCurrency(v string) *QueryChata
 
 func (s *QueryChatappBindWabaResponseBodyData) SetId(v string) *QueryChatappBindWabaResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *QueryChatappBindWabaResponseBodyData) SetIsOnBizApp(v string) *QueryChatappBindWabaResponseBodyData {
+	s.IsOnBizApp = &v
 	return s
 }
 

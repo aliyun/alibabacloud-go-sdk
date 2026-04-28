@@ -13048,6 +13048,84 @@ func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_r
 
 // Summary:
 //
+// 同步business app历史记录等
+//
+// @param request - SyncBusinessAppHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncBusinessAppHistoryResponse
+func (client *Client) SyncBusinessAppHistoryWithOptions(request *SyncBusinessAppHistoryRequest, runtime *dara.RuntimeOptions) (_result *SyncBusinessAppHistoryResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustSpaceId) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PhoneNumber) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SyncBusinessAppHistory"),
+		Version:     dara.String("2020-06-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SyncBusinessAppHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步business app历史记录等
+//
+// @param request - SyncBusinessAppHistoryRequest
+//
+// @return SyncBusinessAppHistoryResponse
+func (client *Client) SyncBusinessAppHistory(request *SyncBusinessAppHistoryRequest) (_result *SyncBusinessAppHistoryResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SyncBusinessAppHistoryResponse{}
+	_body, _err := client.SyncBusinessAppHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 同步flow
 //
 // @param request - SyncFlowRequest
