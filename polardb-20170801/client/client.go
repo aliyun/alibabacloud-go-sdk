@@ -353,6 +353,82 @@ func (client *Client) AddFirewallRules(request *AddFirewallRulesRequest) (_resul
 
 // Summary:
 //
+// 添加PolarClaw MCP Server
+//
+// @param tmpReq - AddPolarClawMCPServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPolarClawMCPServerResponse
+func (client *Client) AddPolarClawMCPServerWithOptions(tmpReq *AddPolarClawMCPServerRequest, runtime *dara.RuntimeOptions) (_result *AddPolarClawMCPServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddPolarClawMCPServerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ServerConfig) {
+		request.ServerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerConfig, dara.String("ServerConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ServerConfigShrink) {
+		query["ServerConfig"] = request.ServerConfigShrink
+	}
+
+	if !dara.IsNil(request.ServerName) {
+		query["ServerName"] = request.ServerName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddPolarClawMCPServer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddPolarClawMCPServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加PolarClaw MCP Server
+//
+// @param request - AddPolarClawMCPServerRequest
+//
+// @return AddPolarClawMCPServerResponse
+func (client *Client) AddPolarClawMCPServer(request *AddPolarClawMCPServerRequest) (_result *AddPolarClawMCPServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddPolarClawMCPServerResponse{}
+	_body, _err := client.AddPolarClawMCPServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增polarfs bucket路径
 //
 // @param request - AddPolarFsPathMappingRequest
@@ -724,6 +800,80 @@ func (client *Client) AttachApplicationPolarFS(request *AttachApplicationPolarFS
 	runtime := &dara.RuntimeOptions{}
 	_result = &AttachApplicationPolarFSResponse{}
 	_body, _err := client.AttachApplicationPolarFSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定PolarClaw Agent
+//
+// @param request - BindPolarClawAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindPolarClawAgentResponse
+func (client *Client) BindPolarClawAgentWithOptions(request *BindPolarClawAgentRequest, runtime *dara.RuntimeOptions) (_result *BindPolarClawAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.ChannelAccountId) {
+		query["ChannelAccountId"] = request.ChannelAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindPolarClawAgent"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindPolarClawAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 绑定PolarClaw Agent
+//
+// @param request - BindPolarClawAgentRequest
+//
+// @return BindPolarClawAgentResponse
+func (client *Client) BindPolarClawAgent(request *BindPolarClawAgentRequest) (_result *BindPolarClawAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindPolarClawAgentResponse{}
+	_body, _err := client.BindPolarClawAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5927,6 +6077,312 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 
 // Summary:
 //
+// 创建PolarClaw Agent
+//
+// @param request - CreatePolarClawAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarClawAgentResponse
+func (client *Client) CreatePolarClawAgentWithOptions(request *CreatePolarClawAgentRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarClawAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Avatar) {
+		query["Avatar"] = request.Avatar
+	}
+
+	if !dara.IsNil(request.Emoji) {
+		query["Emoji"] = request.Emoji
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["Workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarClawAgent"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarClawAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarClaw Agent
+//
+// @param request - CreatePolarClawAgentRequest
+//
+// @return CreatePolarClawAgentResponse
+func (client *Client) CreatePolarClawAgent(request *CreatePolarClawAgentRequest) (_result *CreatePolarClawAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarClawAgentResponse{}
+	_body, _err := client.CreatePolarClawAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarClaw Channel
+//
+// @param tmpReq - CreatePolarClawChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarClawChannelResponse
+func (client *Client) CreatePolarClawChannelWithOptions(tmpReq *CreatePolarClawChannelRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarClawChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePolarClawChannelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChannelConfig) {
+		request.ChannelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelConfig, dara.String("ChannelConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelConfigShrink) {
+		query["ChannelConfig"] = request.ChannelConfigShrink
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.NpmPackage) {
+		query["NpmPackage"] = request.NpmPackage
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarClawChannel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarClawChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarClaw Channel
+//
+// @param request - CreatePolarClawChannelRequest
+//
+// @return CreatePolarClawChannelResponse
+func (client *Client) CreatePolarClawChannel(request *CreatePolarClawChannelRequest) (_result *CreatePolarClawChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarClawChannelResponse{}
+	_body, _err := client.CreatePolarClawChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarClaw定时任务
+//
+// @param tmpReq - CreatePolarClawCronJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarClawCronJobResponse
+func (client *Client) CreatePolarClawCronJobWithOptions(tmpReq *CreatePolarClawCronJobRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarClawCronJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePolarClawCronJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Delivery) {
+		request.DeliveryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Delivery, dara.String("Delivery"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.FailureAlert) {
+		request.FailureAlertShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FailureAlert, dara.String("FailureAlert"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Payload) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, dara.String("Payload"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Schedule) {
+		request.ScheduleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Schedule, dara.String("Schedule"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.DeleteAfterRun) {
+		query["DeleteAfterRun"] = request.DeleteAfterRun
+	}
+
+	if !dara.IsNil(request.DeliveryShrink) {
+		query["Delivery"] = request.DeliveryShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.FailureAlertShrink) {
+		query["FailureAlert"] = request.FailureAlertShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PayloadShrink) {
+		query["Payload"] = request.PayloadShrink
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.RunImmediately) {
+		query["RunImmediately"] = request.RunImmediately
+	}
+
+	if !dara.IsNil(request.ScheduleShrink) {
+		query["Schedule"] = request.ScheduleShrink
+	}
+
+	if !dara.IsNil(request.SessionKey) {
+		query["SessionKey"] = request.SessionKey
+	}
+
+	if !dara.IsNil(request.SessionTarget) {
+		query["SessionTarget"] = request.SessionTarget
+	}
+
+	if !dara.IsNil(request.WakeMode) {
+		query["WakeMode"] = request.WakeMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarClawCronJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarClawCronJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建PolarClaw定时任务
+//
+// @param request - CreatePolarClawCronJobRequest
+//
+// @return CreatePolarClawCronJobResponse
+func (client *Client) CreatePolarClawCronJob(request *CreatePolarClawCronJobRequest) (_result *CreatePolarClawCronJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarClawCronJobResponse{}
+	_body, _err := client.CreatePolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 用于在指定PolarFS实例中创建新的目录。
 //
 // Description:
@@ -9018,6 +9474,224 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
 	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw Agent
+//
+// @param request - DeletePolarClawAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarClawAgentResponse
+func (client *Client) DeletePolarClawAgentWithOptions(request *DeletePolarClawAgentRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarClawAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.DeleteFiles) {
+		query["DeleteFiles"] = request.DeleteFiles
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarClawAgent"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarClawAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw Agent
+//
+// @param request - DeletePolarClawAgentRequest
+//
+// @return DeletePolarClawAgentResponse
+func (client *Client) DeletePolarClawAgent(request *DeletePolarClawAgentRequest) (_result *DeletePolarClawAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarClawAgentResponse{}
+	_body, _err := client.DeletePolarClawAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw Channel
+//
+// @param request - DeletePolarClawChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarClawChannelResponse
+func (client *Client) DeletePolarClawChannelWithOptions(request *DeletePolarClawChannelRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarClawChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.UninstallPlugin) {
+		query["UninstallPlugin"] = request.UninstallPlugin
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarClawChannel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarClawChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw Channel
+//
+// @param request - DeletePolarClawChannelRequest
+//
+// @return DeletePolarClawChannelResponse
+func (client *Client) DeletePolarClawChannel(request *DeletePolarClawChannelRequest) (_result *DeletePolarClawChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarClawChannelResponse{}
+	_body, _err := client.DeletePolarClawChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw定时任务
+//
+// @param request - DeletePolarClawCronJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarClawCronJobResponse
+func (client *Client) DeletePolarClawCronJobWithOptions(request *DeletePolarClawCronJobRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarClawCronJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarClawCronJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarClawCronJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw定时任务
+//
+// @param request - DeletePolarClawCronJobRequest
+//
+// @return DeletePolarClawCronJobResponse
+func (client *Client) DeletePolarClawCronJob(request *DeletePolarClawCronJobRequest) (_result *DeletePolarClawCronJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarClawCronJobResponse{}
+	_body, _err := client.DeletePolarClawCronJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19029,6 +19703,366 @@ func (client *Client) DescribePolarAgentUserSessions(request *DescribePolarAgent
 
 // Summary:
 //
+// 查询PolarClaw Agent列表
+//
+// @param tmpReq - DescribePolarClawAgentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawAgentsResponse
+func (client *Client) DescribePolarClawAgentsWithOptions(tmpReq *DescribePolarClawAgentsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawAgentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribePolarClawAgentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentList) {
+		request.AgentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentList, dara.String("AgentList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentListShrink) {
+		query["AgentList"] = request.AgentListShrink
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawAgents"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw Agent列表
+//
+// @param request - DescribePolarClawAgentsRequest
+//
+// @return DescribePolarClawAgentsResponse
+func (client *Client) DescribePolarClawAgents(request *DescribePolarClawAgentsRequest) (_result *DescribePolarClawAgentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawAgentsResponse{}
+	_body, _err := client.DescribePolarClawAgentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw Channels
+//
+// @param tmpReq - DescribePolarClawChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawChannelsResponse
+func (client *Client) DescribePolarClawChannelsWithOptions(tmpReq *DescribePolarClawChannelsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawChannelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribePolarClawChannelsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChannelList) {
+		request.ChannelListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelList, dara.String("ChannelList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelListShrink) {
+		query["ChannelList"] = request.ChannelListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawChannels"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawChannelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw Channels
+//
+// @param request - DescribePolarClawChannelsRequest
+//
+// @return DescribePolarClawChannelsResponse
+func (client *Client) DescribePolarClawChannels(request *DescribePolarClawChannelsRequest) (_result *DescribePolarClawChannelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawChannelsResponse{}
+	_body, _err := client.DescribePolarClawChannelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw定时任务列表
+//
+// @param tmpReq - DescribePolarClawCronJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawCronJobsResponse
+func (client *Client) DescribePolarClawCronJobsWithOptions(tmpReq *DescribePolarClawCronJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawCronJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribePolarClawCronJobsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.JobIdList) {
+		request.JobIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobIdList, dara.String("JobIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.IncludeDisabled) {
+		query["IncludeDisabled"] = request.IncludeDisabled
+	}
+
+	if !dara.IsNil(request.IncludeRuns) {
+		query["IncludeRuns"] = request.IncludeRuns
+	}
+
+	if !dara.IsNil(request.JobIdListShrink) {
+		query["JobIdList"] = request.JobIdListShrink
+	}
+
+	if !dara.IsNil(request.RunLimit) {
+		query["RunLimit"] = request.RunLimit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawCronJobs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawCronJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw定时任务列表
+//
+// @param request - DescribePolarClawCronJobsRequest
+//
+// @return DescribePolarClawCronJobsResponse
+func (client *Client) DescribePolarClawCronJobs(request *DescribePolarClawCronJobsRequest) (_result *DescribePolarClawCronJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawCronJobsResponse{}
+	_body, _err := client.DescribePolarClawCronJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw MCP Servers
+//
+// @param request - DescribePolarClawMCPServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawMCPServersResponse
+func (client *Client) DescribePolarClawMCPServersWithOptions(request *DescribePolarClawMCPServersRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawMCPServersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ServerList) {
+		query["ServerList"] = request.ServerList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawMCPServers"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawMCPServersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw MCP Servers
+//
+// @param request - DescribePolarClawMCPServersRequest
+//
+// @return DescribePolarClawMCPServersResponse
+func (client *Client) DescribePolarClawMCPServers(request *DescribePolarClawMCPServersRequest) (_result *DescribePolarClawMCPServersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawMCPServersResponse{}
+	_body, _err := client.DescribePolarClawMCPServersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw Plugins
+//
+// @param request - DescribePolarClawPluginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawPluginsResponse
+func (client *Client) DescribePolarClawPluginsWithOptions(request *DescribePolarClawPluginsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawPluginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PluginList) {
+		query["PluginList"] = request.PluginList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawPlugins"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw Plugins
+//
+// @param request - DescribePolarClawPluginsRequest
+//
+// @return DescribePolarClawPluginsResponse
+func (client *Client) DescribePolarClawPlugins(request *DescribePolarClawPluginsRequest) (_result *DescribePolarClawPluginsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawPluginsResponse{}
+	_body, _err := client.DescribePolarClawPluginsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取PolarFS实例详情
 //
 // @param request - DescribePolarFsAttributeRequest
@@ -21070,6 +22104,216 @@ func (client *Client) DisableDBClusterServerless(request *DisableDBClusterServer
 
 // Summary:
 //
+// 禁用PolarClaw Channel
+//
+// @param request - DisablePolarClawChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisablePolarClawChannelResponse
+func (client *Client) DisablePolarClawChannelWithOptions(request *DisablePolarClawChannelRequest, runtime *dara.RuntimeOptions) (_result *DisablePolarClawChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisablePolarClawChannel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisablePolarClawChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用PolarClaw Channel
+//
+// @param request - DisablePolarClawChannelRequest
+//
+// @return DisablePolarClawChannelResponse
+func (client *Client) DisablePolarClawChannel(request *DisablePolarClawChannelRequest) (_result *DisablePolarClawChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisablePolarClawChannelResponse{}
+	_body, _err := client.DisablePolarClawChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用PolarClaw定时任务
+//
+// @param request - DisablePolarClawCronJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisablePolarClawCronJobResponse
+func (client *Client) DisablePolarClawCronJobWithOptions(request *DisablePolarClawCronJobRequest, runtime *dara.RuntimeOptions) (_result *DisablePolarClawCronJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisablePolarClawCronJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisablePolarClawCronJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用PolarClaw定时任务
+//
+// @param request - DisablePolarClawCronJobRequest
+//
+// @return DisablePolarClawCronJobResponse
+func (client *Client) DisablePolarClawCronJob(request *DisablePolarClawCronJobRequest) (_result *DisablePolarClawCronJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisablePolarClawCronJobResponse{}
+	_body, _err := client.DisablePolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用PolarClaw Plugin
+//
+// @param request - DisablePolarClawPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisablePolarClawPluginResponse
+func (client *Client) DisablePolarClawPluginWithOptions(request *DisablePolarClawPluginRequest, runtime *dara.RuntimeOptions) (_result *DisablePolarClawPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisablePolarClawPlugin"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisablePolarClawPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用PolarClaw Plugin
+//
+// @param request - DisablePolarClawPluginRequest
+//
+// @return DisablePolarClawPluginResponse
+func (client *Client) DisablePolarClawPlugin(request *DisablePolarClawPluginRequest) (_result *DisablePolarClawPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisablePolarClawPluginResponse{}
+	_body, _err := client.DisablePolarClawPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 开启DynamoDB兼容性能力
 //
 // @param request - EnableDBClusterDynamoDBRequest
@@ -21389,6 +22633,216 @@ func (client *Client) EnableFirewallRules(request *EnableFirewallRulesRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &EnableFirewallRulesResponse{}
 	_body, _err := client.EnableFirewallRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用PolarClaw Channel
+//
+// @param request - EnablePolarClawChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnablePolarClawChannelResponse
+func (client *Client) EnablePolarClawChannelWithOptions(request *EnablePolarClawChannelRequest, runtime *dara.RuntimeOptions) (_result *EnablePolarClawChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnablePolarClawChannel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnablePolarClawChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用PolarClaw Channel
+//
+// @param request - EnablePolarClawChannelRequest
+//
+// @return EnablePolarClawChannelResponse
+func (client *Client) EnablePolarClawChannel(request *EnablePolarClawChannelRequest) (_result *EnablePolarClawChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnablePolarClawChannelResponse{}
+	_body, _err := client.EnablePolarClawChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用PolarClaw定时任务
+//
+// @param request - EnablePolarClawCronJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnablePolarClawCronJobResponse
+func (client *Client) EnablePolarClawCronJobWithOptions(request *EnablePolarClawCronJobRequest, runtime *dara.RuntimeOptions) (_result *EnablePolarClawCronJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnablePolarClawCronJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnablePolarClawCronJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用PolarClaw定时任务
+//
+// @param request - EnablePolarClawCronJobRequest
+//
+// @return EnablePolarClawCronJobResponse
+func (client *Client) EnablePolarClawCronJob(request *EnablePolarClawCronJobRequest) (_result *EnablePolarClawCronJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnablePolarClawCronJobResponse{}
+	_body, _err := client.EnablePolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用PolarClaw Plugin
+//
+// @param request - EnablePolarClawPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnablePolarClawPluginResponse
+func (client *Client) EnablePolarClawPluginWithOptions(request *EnablePolarClawPluginRequest, runtime *dara.RuntimeOptions) (_result *EnablePolarClawPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnablePolarClawPlugin"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnablePolarClawPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启用PolarClaw Plugin
+//
+// @param request - EnablePolarClawPluginRequest
+//
+// @return EnablePolarClawPluginResponse
+func (client *Client) EnablePolarClawPlugin(request *EnablePolarClawPluginRequest) (_result *EnablePolarClawPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnablePolarClawPluginResponse{}
+	_body, _err := client.EnablePolarClawPluginWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22043,6 +23497,72 @@ func (client *Client) GetPolarAgent(request *GetPolarAgentRequest) (_result *Get
 
 // Summary:
 //
+// 获取PolarClaw配置
+//
+// @param request - GetPolarClawConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolarClawConfigResponse
+func (client *Client) GetPolarClawConfigWithOptions(request *GetPolarClawConfigRequest, runtime *dara.RuntimeOptions) (_result *GetPolarClawConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ConfigPath) {
+		query["ConfigPath"] = request.ConfigPath
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPolarClawConfig"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPolarClawConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取PolarClaw配置
+//
+// @param request - GetPolarClawConfigRequest
+//
+// @return GetPolarClawConfigResponse
+func (client *Client) GetPolarClawConfig(request *GetPolarClawConfigRequest) (_result *GetPolarClawConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPolarClawConfigResponse{}
+	_body, _err := client.GetPolarClawConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Grants a standard account the permissions to access one or more databases in a specified PolarDB cluster.
 //
 // Description:
@@ -22251,6 +23771,80 @@ func (client *Client) GrantAccountPrivilegeZonal(request *GrantAccountPrivilegeZ
 
 // Summary:
 //
+// 安装PolarClaw Plugin
+//
+// @param request - InstallPolarClawPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallPolarClawPluginResponse
+func (client *Client) InstallPolarClawPluginWithOptions(request *InstallPolarClawPluginRequest, runtime *dara.RuntimeOptions) (_result *InstallPolarClawPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.NpmPackage) {
+		query["NpmPackage"] = request.NpmPackage
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InstallPolarClawPlugin"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InstallPolarClawPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 安装PolarClaw Plugin
+//
+// @param request - InstallPolarClawPluginRequest
+//
+// @return InstallPolarClawPluginResponse
+func (client *Client) InstallPolarClawPlugin(request *InstallPolarClawPluginRequest) (_result *InstallPolarClawPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InstallPolarClawPluginResponse{}
+	_body, _err := client.InstallPolarClawPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询订单
 //
 // @param request - ListOrdersRequest
@@ -22340,6 +23934,78 @@ func (client *Client) ListOrders(request *ListOrdersRequest) (_result *ListOrder
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListOrdersResponse{}
 	_body, _err := client.ListOrdersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw绑定关系列表
+//
+// @param tmpReq - ListPolarClawBindingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolarClawBindingsResponse
+func (client *Client) ListPolarClawBindingsWithOptions(tmpReq *ListPolarClawBindingsRequest, runtime *dara.RuntimeOptions) (_result *ListPolarClawBindingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListPolarClawBindingsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentList) {
+		request.AgentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentList, dara.String("AgentList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentListShrink) {
+		query["AgentList"] = request.AgentListShrink
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPolarClawBindings"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPolarClawBindingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询PolarClaw绑定关系列表
+//
+// @param request - ListPolarClawBindingsRequest
+//
+// @return ListPolarClawBindingsResponse
+func (client *Client) ListPolarClawBindings(request *ListPolarClawBindingsRequest) (_result *ListPolarClawBindingsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPolarClawBindingsResponse{}
+	_body, _err := client.ListPolarClawBindingsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29351,6 +31017,82 @@ func (client *Client) OpenAITask(request *OpenAITaskRequest) (_result *OpenAITas
 
 // Summary:
 //
+// 更新PolarClaw配置
+//
+// @param tmpReq - PatchPolarClawConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PatchPolarClawConfigResponse
+func (client *Client) PatchPolarClawConfigWithOptions(tmpReq *PatchPolarClawConfigRequest, runtime *dara.RuntimeOptions) (_result *PatchPolarClawConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PatchPolarClawConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ConfigPatch) {
+		request.ConfigPatchShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConfigPatch, dara.String("ConfigPatch"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ConfigPatchShrink) {
+		query["ConfigPatch"] = request.ConfigPatchShrink
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PatchPolarClawConfig"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PatchPolarClawConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新PolarClaw配置
+//
+// @param request - PatchPolarClawConfigRequest
+//
+// @return PatchPolarClawConfigResponse
+func (client *Client) PatchPolarClawConfig(request *PatchPolarClawConfigRequest) (_result *PatchPolarClawConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PatchPolarClawConfigResponse{}
+	_body, _err := client.PatchPolarClawConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Reactivates the backup feature.
 //
 // @param request - ReactivateDBClusterBackupRequest
@@ -29491,6 +31233,82 @@ func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStor
 
 // Summary:
 //
+// 删除应用环境变量
+//
+// @param tmpReq - RemoveApplicationEnvironmentVariablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveApplicationEnvironmentVariablesResponse
+func (client *Client) RemoveApplicationEnvironmentVariablesWithOptions(tmpReq *RemoveApplicationEnvironmentVariablesRequest, runtime *dara.RuntimeOptions) (_result *RemoveApplicationEnvironmentVariablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveApplicationEnvironmentVariablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.VariableNames) {
+		request.VariableNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VariableNames, dara.String("VariableNames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.VariableNamesShrink) {
+		query["VariableNames"] = request.VariableNamesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveApplicationEnvironmentVariables"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveApplicationEnvironmentVariablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用环境变量
+//
+// @param request - RemoveApplicationEnvironmentVariablesRequest
+//
+// @return RemoveApplicationEnvironmentVariablesResponse
+func (client *Client) RemoveApplicationEnvironmentVariables(request *RemoveApplicationEnvironmentVariablesRequest) (_result *RemoveApplicationEnvironmentVariablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveApplicationEnvironmentVariablesResponse{}
+	_body, _err := client.RemoveApplicationEnvironmentVariablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Removes a secondary cluster from a GDN.
 //
 // Description:
@@ -29584,6 +31402,72 @@ func (client *Client) RemoveDBClusterFromGDN(request *RemoveDBClusterFromGDNRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemoveDBClusterFromGDNResponse{}
 	_body, _err := client.RemoveDBClusterFromGDNWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw MCP Server
+//
+// @param request - RemovePolarClawMCPServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemovePolarClawMCPServerResponse
+func (client *Client) RemovePolarClawMCPServerWithOptions(request *RemovePolarClawMCPServerRequest, runtime *dara.RuntimeOptions) (_result *RemovePolarClawMCPServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ServerName) {
+		query["ServerName"] = request.ServerName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemovePolarClawMCPServer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemovePolarClawMCPServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除PolarClaw MCP Server
+//
+// @param request - RemovePolarClawMCPServerRequest
+//
+// @return RemovePolarClawMCPServerResponse
+func (client *Client) RemovePolarClawMCPServer(request *RemovePolarClawMCPServerRequest) (_result *RemovePolarClawMCPServerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemovePolarClawMCPServerResponse{}
+	_body, _err := client.RemovePolarClawMCPServerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30551,6 +32435,80 @@ func (client *Client) RevokeAccountPrivilegeZonal(request *RevokeAccountPrivileg
 
 // Summary:
 //
+// 手动执行PolarClaw定时任务
+//
+// @param request - RunPolarClawCronJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunPolarClawCronJobResponse
+func (client *Client) RunPolarClawCronJobWithOptions(request *RunPolarClawCronJobRequest, runtime *dara.RuntimeOptions) (_result *RunPolarClawCronJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Mode) {
+		query["Mode"] = request.Mode
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunPolarClawCronJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunPolarClawCronJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 手动执行PolarClaw定时任务
+//
+// @param request - RunPolarClawCronJobRequest
+//
+// @return RunPolarClawCronJobResponse
+func (client *Client) RunPolarClawCronJob(request *RunPolarClawCronJobRequest) (_result *RunPolarClawCronJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RunPolarClawCronJobResponse{}
+	_body, _err := client.RunPolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 检索记忆
 //
 // @param request - SearchMemoriesRequest
@@ -31131,6 +33089,150 @@ func (client *Client) TransformDBClusterPayType(request *TransformDBClusterPayTy
 
 // Summary:
 //
+// 解绑PolarClaw Agent通道
+//
+// @param request - UnbindPolarClawAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindPolarClawAgentResponse
+func (client *Client) UnbindPolarClawAgentWithOptions(request *UnbindPolarClawAgentRequest, runtime *dara.RuntimeOptions) (_result *UnbindPolarClawAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.ChannelAccountId) {
+		query["ChannelAccountId"] = request.ChannelAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindPolarClawAgent"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindPolarClawAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑PolarClaw Agent通道
+//
+// @param request - UnbindPolarClawAgentRequest
+//
+// @return UnbindPolarClawAgentResponse
+func (client *Client) UnbindPolarClawAgent(request *UnbindPolarClawAgentRequest) (_result *UnbindPolarClawAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnbindPolarClawAgentResponse{}
+	_body, _err := client.UnbindPolarClawAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 卸载PolarClaw Plugin
+//
+// @param request - UninstallPolarClawPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallPolarClawPluginResponse
+func (client *Client) UninstallPolarClawPluginWithOptions(request *UninstallPolarClawPluginRequest, runtime *dara.RuntimeOptions) (_result *UninstallPolarClawPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallPolarClawPlugin"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallPolarClawPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 卸载PolarClaw Plugin
+//
+// @param request - UninstallPolarClawPluginRequest
+//
+// @return UninstallPolarClawPluginResponse
+func (client *Client) UninstallPolarClawPlugin(request *UninstallPolarClawPluginRequest) (_result *UninstallPolarClawPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UninstallPolarClawPluginResponse{}
+	_body, _err := client.UninstallPolarClawPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Unbinds tags from PolarDB clusters.
 //
 // @param request - UntagResourcesRequest
@@ -31216,6 +33318,82 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用环境变量
+//
+// @param tmpReq - UpdateApplicationEnvironmentVariablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationEnvironmentVariablesResponse
+func (client *Client) UpdateApplicationEnvironmentVariablesWithOptions(tmpReq *UpdateApplicationEnvironmentVariablesRequest, runtime *dara.RuntimeOptions) (_result *UpdateApplicationEnvironmentVariablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateApplicationEnvironmentVariablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Variables) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, dara.String("Variables"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.VariablesShrink) {
+		query["Variables"] = request.VariablesShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateApplicationEnvironmentVariables"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateApplicationEnvironmentVariablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用环境变量
+//
+// @param request - UpdateApplicationEnvironmentVariablesRequest
+//
+// @return UpdateApplicationEnvironmentVariablesResponse
+func (client *Client) UpdateApplicationEnvironmentVariables(request *UpdateApplicationEnvironmentVariablesRequest) (_result *UpdateApplicationEnvironmentVariablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateApplicationEnvironmentVariablesResponse{}
+	_body, _err := client.UpdateApplicationEnvironmentVariablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31322,6 +33500,238 @@ func (client *Client) UpdateExtensions(request *UpdateExtensionsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateExtensionsResponse{}
 	_body, _err := client.UpdateExtensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新PolarClaw Agent
+//
+// @param tmpReq - UpdatePolarClawAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolarClawAgentResponse
+func (client *Client) UpdatePolarClawAgentWithOptions(tmpReq *UpdatePolarClawAgentRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolarClawAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdatePolarClawAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Files) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, dara.String("Files"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Avatar) {
+		query["Avatar"] = request.Avatar
+	}
+
+	if !dara.IsNil(request.FilesShrink) {
+		query["Files"] = request.FilesShrink
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		query["Workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePolarClawAgent"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePolarClawAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新PolarClaw Agent
+//
+// @param request - UpdatePolarClawAgentRequest
+//
+// @return UpdatePolarClawAgentResponse
+func (client *Client) UpdatePolarClawAgent(request *UpdatePolarClawAgentRequest) (_result *UpdatePolarClawAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePolarClawAgentResponse{}
+	_body, _err := client.UpdatePolarClawAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新PolarClaw定时任务
+//
+// @param tmpReq - UpdatePolarClawCronJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolarClawCronJobResponse
+func (client *Client) UpdatePolarClawCronJobWithOptions(tmpReq *UpdatePolarClawCronJobRequest, runtime *dara.RuntimeOptions) (_result *UpdatePolarClawCronJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdatePolarClawCronJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Delivery) {
+		request.DeliveryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Delivery, dara.String("Delivery"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.FailureAlert) {
+		request.FailureAlertShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FailureAlert, dara.String("FailureAlert"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Payload) {
+		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, dara.String("Payload"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Schedule) {
+		request.ScheduleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Schedule, dara.String("Schedule"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.DeleteAfterRun) {
+		query["DeleteAfterRun"] = request.DeleteAfterRun
+	}
+
+	if !dara.IsNil(request.DeliveryShrink) {
+		query["Delivery"] = request.DeliveryShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.FailureAlertShrink) {
+		query["FailureAlert"] = request.FailureAlertShrink
+	}
+
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PayloadShrink) {
+		query["Payload"] = request.PayloadShrink
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	if !dara.IsNil(request.ScheduleShrink) {
+		query["Schedule"] = request.ScheduleShrink
+	}
+
+	if !dara.IsNil(request.SessionKey) {
+		query["SessionKey"] = request.SessionKey
+	}
+
+	if !dara.IsNil(request.SessionTarget) {
+		query["SessionTarget"] = request.SessionTarget
+	}
+
+	if !dara.IsNil(request.WakeMode) {
+		query["WakeMode"] = request.WakeMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePolarClawCronJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePolarClawCronJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新PolarClaw定时任务
+//
+// @param request - UpdatePolarClawCronJobRequest
+//
+// @return UpdatePolarClawCronJobResponse
+func (client *Client) UpdatePolarClawCronJob(request *UpdatePolarClawCronJobRequest) (_result *UpdatePolarClawCronJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdatePolarClawCronJobResponse{}
+	_body, _err := client.UpdatePolarClawCronJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31558,6 +33968,168 @@ func (client *Client) UpgradeDBClusterVersionZonal(request *UpgradeDBClusterVers
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradeDBClusterVersionZonalResponse{}
 	_body, _err := client.UpgradeDBClusterVersionZonalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级PolarClaw Channel
+//
+// @param tmpReq - UpgradePolarClawChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradePolarClawChannelResponse
+func (client *Client) UpgradePolarClawChannelWithOptions(tmpReq *UpgradePolarClawChannelRequest, runtime *dara.RuntimeOptions) (_result *UpgradePolarClawChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpgradePolarClawChannelShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ChannelConfig) {
+		request.ChannelConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ChannelConfig, dara.String("ChannelConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ChannelConfigShrink) {
+		query["ChannelConfig"] = request.ChannelConfigShrink
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.NpmPackage) {
+		query["NpmPackage"] = request.NpmPackage
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradePolarClawChannel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradePolarClawChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级PolarClaw Channel
+//
+// @param request - UpgradePolarClawChannelRequest
+//
+// @return UpgradePolarClawChannelResponse
+func (client *Client) UpgradePolarClawChannel(request *UpgradePolarClawChannelRequest) (_result *UpgradePolarClawChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpgradePolarClawChannelResponse{}
+	_body, _err := client.UpgradePolarClawChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级PolarClaw Plugin
+//
+// @param request - UpgradePolarClawPluginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradePolarClawPluginResponse
+func (client *Client) UpgradePolarClawPluginWithOptions(request *UpgradePolarClawPluginRequest, runtime *dara.RuntimeOptions) (_result *UpgradePolarClawPluginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.NpmPackage) {
+		query["NpmPackage"] = request.NpmPackage
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !dara.IsNil(request.Restart) {
+		query["Restart"] = request.Restart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradePolarClawPlugin"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradePolarClawPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级PolarClaw Plugin
+//
+// @param request - UpgradePolarClawPluginRequest
+//
+// @return UpgradePolarClawPluginResponse
+func (client *Client) UpgradePolarClawPlugin(request *UpgradePolarClawPluginRequest) (_result *UpgradePolarClawPluginResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpgradePolarClawPluginResponse{}
+	_body, _err := client.UpgradePolarClawPluginWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
