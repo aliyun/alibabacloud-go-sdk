@@ -303,6 +303,10 @@ type GetRecallManagementServiceVersionConfigResponseBodyRecallConfig struct {
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// example:
 	//
+	// 4
+	RecallManagementServiceVersionConfigId *string `json:"RecallManagementServiceVersionConfigId,omitempty" xml:"RecallManagementServiceVersionConfigId,omitempty"`
+	// example:
+	//
 	// 3
 	RecallManagementTableId *string `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
 	// example:
@@ -362,6 +366,10 @@ func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetOpe
 
 func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetPriority() *int64 {
 	return s.Priority
+}
+
+func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetRecallManagementServiceVersionConfigId() *string {
+	return s.RecallManagementServiceVersionConfigId
 }
 
 func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) GetRecallManagementTableId() *string {
@@ -426,6 +434,11 @@ func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) SetOpe
 
 func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) SetPriority(v int64) *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig {
 	s.Priority = &v
+	return s
+}
+
+func (s *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig) SetRecallManagementServiceVersionConfigId(v string) *GetRecallManagementServiceVersionConfigResponseBodyRecallConfig {
+	s.RecallManagementServiceVersionConfigId = &v
 	return s
 }
 

@@ -15,8 +15,6 @@ type iGetRecallManagementServiceVersionResponseBody interface {
 	GetGmtCreateTime() *string
 	SetGmtModifiedTime(v string) *GetRecallManagementServiceVersionResponseBody
 	GetGmtModifiedTime() *string
-	SetIsDefault(v string) *GetRecallManagementServiceVersionResponseBody
-	GetIsDefault() *string
 	SetIsEffective(v bool) *GetRecallManagementServiceVersionResponseBody
 	GetIsEffective() *bool
 	SetName(v string) *GetRecallManagementServiceVersionResponseBody
@@ -37,11 +35,7 @@ type GetRecallManagementServiceVersionResponseBody struct {
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// example:
-	//
-	// false
-	IsDefault   *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	IsEffective *bool   `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
+	IsEffective     *bool   `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
 	// example:
 	//
 	// V1
@@ -78,10 +72,6 @@ func (s *GetRecallManagementServiceVersionResponseBody) GetGmtModifiedTime() *st
 	return s.GmtModifiedTime
 }
 
-func (s *GetRecallManagementServiceVersionResponseBody) GetIsDefault() *string {
-	return s.IsDefault
-}
-
 func (s *GetRecallManagementServiceVersionResponseBody) GetIsEffective() *bool {
 	return s.IsEffective
 }
@@ -110,11 +100,6 @@ func (s *GetRecallManagementServiceVersionResponseBody) SetGmtCreateTime(v strin
 
 func (s *GetRecallManagementServiceVersionResponseBody) SetGmtModifiedTime(v string) *GetRecallManagementServiceVersionResponseBody {
 	s.GmtModifiedTime = &v
-	return s
-}
-
-func (s *GetRecallManagementServiceVersionResponseBody) SetIsDefault(v string) *GetRecallManagementServiceVersionResponseBody {
-	s.IsDefault = &v
 	return s
 }
 
@@ -738,11 +723,11 @@ type GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsT
 	// example:
 	//
 	// 20
-	FieldQuantityLimit *string `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
+	FieldQuantityLimit *int32 `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
 	// example:
 	//
 	// false
-	IsRandSort *string `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
+	IsRandSort *bool `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
 	// example:
 	//
 	// create_time
@@ -761,11 +746,11 @@ func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperat
 	return s.Field
 }
 
-func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) GetFieldQuantityLimit() *string {
+func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) GetFieldQuantityLimit() *int32 {
 	return s.FieldQuantityLimit
 }
 
-func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) GetIsRandSort() *string {
+func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) GetIsRandSort() *bool {
 	return s.IsRandSort
 }
 
@@ -778,12 +763,12 @@ func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperat
 	return s
 }
 
-func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) SetFieldQuantityLimit(v string) *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig {
+func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) SetFieldQuantityLimit(v int32) *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig {
 	s.FieldQuantityLimit = &v
 	return s
 }
 
-func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) SetIsRandSort(v string) *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig {
+func (s *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig) SetIsRandSort(v bool) *GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsTriggerConfig {
 	s.IsRandSort = &v
 	return s
 }

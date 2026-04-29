@@ -16,8 +16,14 @@ type iUpdateRecallManagementServiceRequest interface {
 }
 
 type UpdateRecallManagementServiceRequest struct {
+	// example:
+	//
+	// reso-2s416t146ffjc3yefx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec-cn-test123
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s UpdateRecallManagementServiceRequest) String() string {

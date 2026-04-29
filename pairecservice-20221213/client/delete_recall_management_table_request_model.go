@@ -15,6 +15,10 @@ type iDeleteRecallManagementTableRequest interface {
 
 type DeleteRecallManagementTableRequest struct {
 	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

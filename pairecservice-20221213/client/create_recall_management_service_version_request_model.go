@@ -639,11 +639,11 @@ type CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTri
 	// example:
 	//
 	// 20
-	FieldQuantityLimit *string `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
+	FieldQuantityLimit *int32 `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
 	// example:
 	//
 	// false
-	IsRandSort *string `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
+	IsRandSort *bool `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
 	// example:
 	//
 	// create_time
@@ -662,11 +662,11 @@ func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperator
 	return s.Field
 }
 
-func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) GetFieldQuantityLimit() *string {
+func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) GetFieldQuantityLimit() *int32 {
 	return s.FieldQuantityLimit
 }
 
-func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) GetIsRandSort() *string {
+func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) GetIsRandSort() *bool {
 	return s.IsRandSort
 }
 
@@ -679,12 +679,12 @@ func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperator
 	return s
 }
 
-func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) SetFieldQuantityLimit(v string) *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig {
+func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) SetFieldQuantityLimit(v int32) *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig {
 	s.FieldQuantityLimit = &v
 	return s
 }
 
-func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) SetIsRandSort(v string) *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig {
+func (s *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig) SetIsRandSort(v bool) *CreateRecallManagementServiceVersionRequestConfigsRecallConfigsOperatorsTriggerConfig {
 	s.IsRandSort = &v
 	return s
 }

@@ -19,8 +19,14 @@ type iListRecallManagementTableVersionsResponseBody interface {
 
 type ListRecallManagementTableVersionsResponseBody struct {
 	RecallManagementTableVersions []*ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions `json:"RecallManagementTableVersions,omitempty" xml:"RecallManagementTableVersions,omitempty" type:"Repeated"`
-	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount                    *int64                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListRecallManagementTableVersionsResponseBody) String() string {
@@ -72,14 +78,38 @@ func (s *ListRecallManagementTableVersionsResponseBody) Validate() error {
 }
 
 type ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions struct {
-	DataVersion                    *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	EffectiveTime                  *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	PublishEndTime                 *string `json:"PublishEndTime,omitempty" xml:"PublishEndTime,omitempty"`
-	PublishStartTime               *string `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
+	// example:
+	//
+	// ds=20250701
+	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132
+	PublishEndTime *string `json:"PublishEndTime,omitempty" xml:"PublishEndTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T22:24:33.132
+	PublishStartTime *string `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
+	// example:
+	//
+	// 202507010000
 	RecallManagementTableVersionId *string `json:"RecallManagementTableVersionId,omitempty" xml:"RecallManagementTableVersionId,omitempty"`
-	SourceTableDataSize            *int64  `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
-	SourceTableRowCount            *int64  `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
-	Status                         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1000
+	SourceTableDataSize *int64 `json:"SourceTableDataSize,omitempty" xml:"SourceTableDataSize,omitempty"`
+	// example:
+	//
+	// 100
+	SourceTableRowCount *int64 `json:"SourceTableRowCount,omitempty" xml:"SourceTableRowCount,omitempty"`
+	// example:
+	//
+	// Online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListRecallManagementTableVersionsResponseBodyRecallManagementTableVersions) String() string {

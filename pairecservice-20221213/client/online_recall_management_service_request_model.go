@@ -14,6 +14,9 @@ type iOnlineRecallManagementServiceRequest interface {
 }
 
 type OnlineRecallManagementServiceRequest struct {
+	// example:
+	//
+	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

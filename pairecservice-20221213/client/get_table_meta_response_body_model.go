@@ -31,6 +31,10 @@ type iGetTableMetaResponseBody interface {
 	GetRequestId() *string
 	SetResourceId(v string) *GetTableMetaResponseBody
 	GetResourceId() *string
+	SetResourceType(v string) *GetTableMetaResponseBody
+	GetResourceType() *string
+	SetResourceUri(v string) *GetTableMetaResponseBody
+	GetResourceUri() *string
 	SetTableMetaId(v string) *GetTableMetaResponseBody
 	GetTableMetaId() *string
 	SetTableName(v string) *GetTableMetaResponseBody
@@ -76,7 +80,15 @@ type GetTableMetaResponseBody struct {
 	// example:
 	//
 	// reso-wkgo***
-	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// Maxcompute
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// test
+	ResourceUri *string `json:"ResourceUri,omitempty" xml:"ResourceUri,omitempty"`
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
 	// example:
 	//
@@ -142,6 +154,14 @@ func (s *GetTableMetaResponseBody) GetRequestId() *string {
 
 func (s *GetTableMetaResponseBody) GetResourceId() *string {
 	return s.ResourceId
+}
+
+func (s *GetTableMetaResponseBody) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *GetTableMetaResponseBody) GetResourceUri() *string {
+	return s.ResourceUri
 }
 
 func (s *GetTableMetaResponseBody) GetTableMetaId() *string {
@@ -212,6 +232,16 @@ func (s *GetTableMetaResponseBody) SetRequestId(v string) *GetTableMetaResponseB
 
 func (s *GetTableMetaResponseBody) SetResourceId(v string) *GetTableMetaResponseBody {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetResourceType(v string) *GetTableMetaResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetResourceUri(v string) *GetTableMetaResponseBody {
+	s.ResourceUri = &v
 	return s
 }
 

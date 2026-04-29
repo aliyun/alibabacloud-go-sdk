@@ -14,6 +14,9 @@ type iDeleteRecallManagementServiceVersionRequest interface {
 }
 
 type DeleteRecallManagementServiceVersionRequest struct {
+	// example:
+	//
+	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

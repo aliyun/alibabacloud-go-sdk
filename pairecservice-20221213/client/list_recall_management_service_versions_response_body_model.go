@@ -86,10 +86,7 @@ type ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersi
 	//
 	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// example:
-	//
-	// false
-	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsEffective     *bool   `json:"IsEffective,omitempty" xml:"IsEffective,omitempty"`
 	// example:
 	//
 	// version-1
@@ -116,8 +113,8 @@ func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceV
 	return s.GmtModifiedTime
 }
 
-func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions) GetIsDefault() *string {
-	return s.IsDefault
+func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions) GetIsEffective() *bool {
+	return s.IsEffective
 }
 
 func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions) GetName() *string {
@@ -138,8 +135,8 @@ func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceV
 	return s
 }
 
-func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions) SetIsDefault(v string) *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions {
-	s.IsDefault = &v
+func (s *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions) SetIsEffective(v bool) *ListRecallManagementServiceVersionsResponseBodyRecallManagementServiceVersions {
+	s.IsEffective = &v
 	return s
 }
 

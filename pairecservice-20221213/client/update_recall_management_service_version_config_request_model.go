@@ -9,8 +9,6 @@ type iUpdateRecallManagementServiceVersionConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetRegionId(v string) *UpdateRecallManagementServiceVersionConfigRequest
-	GetRegionId() *string
 	SetConfigType(v string) *UpdateRecallManagementServiceVersionConfigRequest
 	GetConfigType() *string
 	SetInstanceId(v string) *UpdateRecallManagementServiceVersionConfigRequest
@@ -22,8 +20,13 @@ type iUpdateRecallManagementServiceVersionConfigRequest interface {
 }
 
 type UpdateRecallManagementServiceVersionConfigRequest struct {
-	RegionId     *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ConfigType   *string                                                        `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// Recall
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// pairec-cn-test123
 	InstanceId   *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MergeConfig  *UpdateRecallManagementServiceVersionConfigRequestMergeConfig  `json:"MergeConfig,omitempty" xml:"MergeConfig,omitempty" type:"Struct"`
 	RecallConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfig `json:"RecallConfig,omitempty" xml:"RecallConfig,omitempty" type:"Struct"`
@@ -35,10 +38,6 @@ func (s UpdateRecallManagementServiceVersionConfigRequest) String() string {
 
 func (s UpdateRecallManagementServiceVersionConfigRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateRecallManagementServiceVersionConfigRequest) GetRegionId() *string {
-	return s.RegionId
 }
 
 func (s *UpdateRecallManagementServiceVersionConfigRequest) GetConfigType() *string {
@@ -55,11 +54,6 @@ func (s *UpdateRecallManagementServiceVersionConfigRequest) GetMergeConfig() *Up
 
 func (s *UpdateRecallManagementServiceVersionConfigRequest) GetRecallConfig() *UpdateRecallManagementServiceVersionConfigRequestRecallConfig {
 	return s.RecallConfig
-}
-
-func (s *UpdateRecallManagementServiceVersionConfigRequest) SetRegionId(v string) *UpdateRecallManagementServiceVersionConfigRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *UpdateRecallManagementServiceVersionConfigRequest) SetConfigType(v string) *UpdateRecallManagementServiceVersionConfigRequest {
@@ -97,13 +91,28 @@ func (s *UpdateRecallManagementServiceVersionConfigRequest) Validate() error {
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestMergeConfig struct {
-	ExtendedConfig                         *string   `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	FilterExpression                       *string   `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
-	FilterRecallManagementTableIds         []*string `json:"FilterRecallManagementTableIds,omitempty" xml:"FilterRecallManagementTableIds,omitempty" type:"Repeated"`
-	ItemRecallManagementTableId            *string   `json:"ItemRecallManagementTableId,omitempty" xml:"ItemRecallManagementTableId,omitempty"`
-	ItemTableFields                        []*string `json:"ItemTableFields,omitempty" xml:"ItemTableFields,omitempty" type:"Repeated"`
-	MergeType                              *string   `json:"MergeType,omitempty" xml:"MergeType,omitempty"`
-	RecallManagementServiceVersionConfigId *string   `json:"RecallManagementServiceVersionConfigId,omitempty" xml:"RecallManagementServiceVersionConfigId,omitempty"`
+	// example:
+	//
+	// {"":""}
+	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	// example:
+	//
+	// age>20
+	FilterExpression               *string   `json:"FilterExpression,omitempty" xml:"FilterExpression,omitempty"`
+	FilterRecallManagementTableIds []*string `json:"FilterRecallManagementTableIds,omitempty" xml:"FilterRecallManagementTableIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	ItemRecallManagementTableId *string   `json:"ItemRecallManagementTableId,omitempty" xml:"ItemRecallManagementTableId,omitempty"`
+	ItemTableFields             []*string `json:"ItemTableFields,omitempty" xml:"ItemTableFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Weight
+	MergeType *string `json:"MergeType,omitempty" xml:"MergeType,omitempty"`
+	// example:
+	//
+	// 4
+	RecallManagementServiceVersionConfigId *string `json:"RecallManagementServiceVersionConfigId,omitempty" xml:"RecallManagementServiceVersionConfigId,omitempty"`
 }
 
 func (s UpdateRecallManagementServiceVersionConfigRequestMergeConfig) String() string {
@@ -182,7 +191,13 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestMergeConfig) Validate(
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfig struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// this is etrec recall
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {"":""}
 	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
 	// example:
 	//
@@ -191,17 +206,44 @@ type UpdateRecallManagementServiceVersionConfigRequestRecallConfig struct {
 	// example:
 	//
 	// age>20
-	ItemConditionExpression           *string                                                                   `json:"ItemConditionExpression,omitempty" xml:"ItemConditionExpression,omitempty"`
-	ItemVectorField                   *string                                                                   `json:"ItemVectorField,omitempty" xml:"ItemVectorField,omitempty"`
-	ItemVectorRecallManagementTableId *string                                                                   `json:"ItemVectorRecallManagementTableId,omitempty" xml:"ItemVectorRecallManagementTableId,omitempty"`
-	Name                              *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operators                         []*UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
-	Priority                          *int64                                                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RecallManagementTableId           *string                                                                   `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
-	RecallType                        *string                                                                   `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
-	SortFields                        *string                                                                   `json:"SortFields,omitempty" xml:"SortFields,omitempty"`
-	UserVectorField                   *string                                                                   `json:"UserVectorField,omitempty" xml:"UserVectorField,omitempty"`
-	UserVectorRecallManagementTableId *string                                                                   `json:"UserVectorRecallManagementTableId,omitempty" xml:"UserVectorRecallManagementTableId,omitempty"`
+	ItemConditionExpression *string `json:"ItemConditionExpression,omitempty" xml:"ItemConditionExpression,omitempty"`
+	// example:
+	//
+	// item_embedding
+	ItemVectorField *string `json:"ItemVectorField,omitempty" xml:"ItemVectorField,omitempty"`
+	// example:
+	//
+	// 2
+	ItemVectorRecallManagementTableId *string `json:"ItemVectorRecallManagementTableId,omitempty" xml:"ItemVectorRecallManagementTableId,omitempty"`
+	// example:
+	//
+	// etrec
+	Name      *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operators []*UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 1
+	RecallManagementTableId *string `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
+	// example:
+	//
+	// X2I
+	RecallType *string `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
+	// example:
+	//
+	// name
+	SortFields *string `json:"SortFields,omitempty" xml:"SortFields,omitempty"`
+	// example:
+	//
+	// user_embedding
+	UserVectorField *string `json:"UserVectorField,omitempty" xml:"UserVectorField,omitempty"`
+	// example:
+	//
+	// 3
+	UserVectorRecallManagementTableId *string `json:"UserVectorRecallManagementTableId,omitempty" xml:"UserVectorRecallManagementTableId,omitempty"`
 }
 
 func (s UpdateRecallManagementServiceVersionConfigRequestRecallConfig) String() string {
@@ -355,7 +397,10 @@ type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators stru
 	FeatureConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig `json:"FeatureConfig,omitempty" xml:"FeatureConfig,omitempty" type:"Struct"`
 	FilterConfig  *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilterConfig  `json:"FilterConfig,omitempty" xml:"FilterConfig,omitempty" type:"Struct"`
 	JoinConfig    *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig    `json:"JoinConfig,omitempty" xml:"JoinConfig,omitempty" type:"Struct"`
-	OperatorsType *string                                                                              `json:"OperatorsType,omitempty" xml:"OperatorsType,omitempty"`
+	// example:
+	//
+	// Filter
+	OperatorType  *string                                                                              `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
 	TriggerConfig *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty" type:"Struct"`
 }
 
@@ -379,8 +424,8 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators)
 	return s.JoinConfig
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators) GetOperatorsType() *string {
-	return s.OperatorsType
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators) GetOperatorType() *string {
+	return s.OperatorType
 }
 
 func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators) GetTriggerConfig() *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig {
@@ -402,8 +447,8 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators)
 	return s
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators) SetOperatorsType(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators {
-	s.OperatorsType = &v
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators) SetOperatorType(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators {
+	s.OperatorType = &v
 	return s
 }
 
@@ -437,9 +482,18 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperators)
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig struct {
+	// example:
+	//
+	// category=3
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// city
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFeatureConfig) String() string {
@@ -482,6 +536,9 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsF
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsFilterConfig struct {
+	// example:
+	//
+	// age>20
 	Experession *string `json:"Experession,omitempty" xml:"Experession,omitempty"`
 }
 
@@ -507,8 +564,14 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsF
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig struct {
-	Field                   *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	OutputFields            *string `json:"OutputFields,omitempty" xml:"OutputFields,omitempty"`
+	// example:
+	//
+	// item_id
+	Field        *string   `json:"Field,omitempty" xml:"Field,omitempty"`
+	OutputFields []*string `json:"OutputFields,omitempty" xml:"OutputFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
 	RecallManagementTableId *string `json:"RecallManagementTableId,omitempty" xml:"RecallManagementTableId,omitempty"`
 }
 
@@ -524,7 +587,7 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJ
 	return s.Field
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig) GetOutputFields() *string {
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig) GetOutputFields() []*string {
 	return s.OutputFields
 }
 
@@ -537,8 +600,8 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJ
 	return s
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig) SetOutputFields(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig {
-	s.OutputFields = &v
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig) SetOutputFields(v []*string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJoinConfig {
+	s.OutputFields = v
 	return s
 }
 
@@ -552,10 +615,22 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsJ
 }
 
 type UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig struct {
-	Field              *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	FieldQuantityLimit *string `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
-	IsRandSort         *string `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
-	SortField          *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// example:
+	//
+	// user_id
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// 20
+	FieldQuantityLimit *int32 `json:"FieldQuantityLimit,omitempty" xml:"FieldQuantityLimit,omitempty"`
+	// example:
+	//
+	// false
+	IsRandSort *bool `json:"IsRandSort,omitempty" xml:"IsRandSort,omitempty"`
+	// example:
+	//
+	// create_time
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 }
 
 func (s UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) String() string {
@@ -570,11 +645,11 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsT
 	return s.Field
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) GetFieldQuantityLimit() *string {
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) GetFieldQuantityLimit() *int32 {
 	return s.FieldQuantityLimit
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) GetIsRandSort() *string {
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) GetIsRandSort() *bool {
 	return s.IsRandSort
 }
 
@@ -587,12 +662,12 @@ func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsT
 	return s
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) SetFieldQuantityLimit(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig {
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) SetFieldQuantityLimit(v int32) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig {
 	s.FieldQuantityLimit = &v
 	return s
 }
 
-func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) SetIsRandSort(v string) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig {
+func (s *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig) SetIsRandSort(v bool) *UpdateRecallManagementServiceVersionConfigRequestRecallConfigOperatorsTriggerConfig {
 	s.IsRandSort = &v
 	return s
 }

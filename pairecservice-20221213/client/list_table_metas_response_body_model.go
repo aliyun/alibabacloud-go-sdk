@@ -114,6 +114,14 @@ type ListTableMetasResponseBodyTableMetas struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// example:
 	//
+	// Maxcompute
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// test
+	ResourceUri *string `json:"ResourceUri,omitempty" xml:"ResourceUri,omitempty"`
+	// example:
+	//
 	// 3
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
 	// example:
@@ -176,6 +184,14 @@ func (s *ListTableMetasResponseBodyTableMetas) GetName() *string {
 
 func (s *ListTableMetasResponseBodyTableMetas) GetResourceId() *string {
 	return s.ResourceId
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) GetResourceType() *string {
+	return s.ResourceType
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) GetResourceUri() *string {
+	return s.ResourceUri
 }
 
 func (s *ListTableMetasResponseBodyTableMetas) GetTableMetaId() *string {
@@ -241,6 +257,16 @@ func (s *ListTableMetasResponseBodyTableMetas) SetName(v string) *ListTableMetas
 
 func (s *ListTableMetasResponseBodyTableMetas) SetResourceId(v string) *ListTableMetasResponseBodyTableMetas {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetResourceType(v string) *ListTableMetasResponseBodyTableMetas {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetResourceUri(v string) *ListTableMetasResponseBodyTableMetas {
+	s.ResourceUri = &v
 	return s
 }
 

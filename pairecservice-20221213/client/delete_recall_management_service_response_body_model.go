@@ -14,6 +14,9 @@ type iDeleteRecallManagementServiceResponseBody interface {
 }
 
 type DeleteRecallManagementServiceResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

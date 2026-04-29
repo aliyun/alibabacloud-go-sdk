@@ -14,6 +14,9 @@ type iGetRecallManagementServiceRequest interface {
 }
 
 type GetRecallManagementServiceRequest struct {
+	// example:
+	//
+	// pairec-cn-test123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

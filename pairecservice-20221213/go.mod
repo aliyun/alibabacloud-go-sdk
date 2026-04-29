@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/pairecservice-20221213/v6
+module github.com/alibabacloud-go/pairecservice-20221213/v7
 
 go 1.14
 

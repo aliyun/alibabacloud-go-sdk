@@ -16,7 +16,13 @@ type iChangeRecallManagementServiceVersionRequest interface {
 }
 
 type ChangeRecallManagementServiceVersionRequest struct {
-	InstanceId                       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec-cn-test123
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
 	RecallManagementServiceVersionId *string `json:"RecallManagementServiceVersionId,omitempty" xml:"RecallManagementServiceVersionId,omitempty"`
 }
 

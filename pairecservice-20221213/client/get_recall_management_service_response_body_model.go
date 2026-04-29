@@ -30,15 +30,42 @@ type iGetRecallManagementServiceResponseBody interface {
 }
 
 type GetRecallManagementServiceResponseBody struct {
-	CurrentRecallManagementServiceVersionId   *string `json:"CurrentRecallManagementServiceVersionId,omitempty" xml:"CurrentRecallManagementServiceVersionId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentRecallManagementServiceVersionId *string `json:"CurrentRecallManagementServiceVersionId,omitempty" xml:"CurrentRecallManagementServiceVersionId,omitempty"`
+	// example:
+	//
+	// version-1
 	CurrentRecallManagementServiceVersionName *string `json:"CurrentRecallManagementServiceVersionName,omitempty" xml:"CurrentRecallManagementServiceVersionName,omitempty"`
-	Description                               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime                             *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime                           *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name                                      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RecallManagementServiceId                 *string `json:"RecallManagementServiceId,omitempty" xml:"RecallManagementServiceId,omitempty"`
-	RequestId                                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// this is a test recall
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// hot_group_recall
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	RecallManagementServiceId *string `json:"RecallManagementServiceId,omitempty" xml:"RecallManagementServiceId,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetRecallManagementServiceResponseBody) String() string {

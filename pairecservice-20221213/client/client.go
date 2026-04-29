@@ -5416,6 +5416,88 @@ func (client *Client) DeployTrafficControlTaskCode(TrafficControlTaskId *string,
 
 // Summary:
 //
+// 召回管理表导出
+//
+// @param request - ExportRecallManagementTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportRecallManagementTableResponse
+func (client *Client) ExportRecallManagementTableWithOptions(RecallManagementTableId *string, request *ExportRecallManagementTableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ExportRecallManagementTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxcomputeProjectName) {
+		body["MaxcomputeProjectName"] = request.MaxcomputeProjectName
+	}
+
+	if !dara.IsNil(request.MaxcomputeSchema) {
+		body["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
+	if !dara.IsNil(request.MaxcomputeTableName) {
+		body["MaxcomputeTableName"] = request.MaxcomputeTableName
+	}
+
+	if !dara.IsNil(request.Partitions) {
+		body["Partitions"] = request.Partitions
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportRecallManagementTable"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId)) + "/action/export"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportRecallManagementTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 召回管理表导出
+//
+// @param request - ExportRecallManagementTableRequest
+//
+// @return ExportRecallManagementTableResponse
+func (client *Client) ExportRecallManagementTable(RecallManagementTableId *string, request *ExportRecallManagementTableRequest) (_result *ExportRecallManagementTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExportRecallManagementTableResponse{}
+	_body, _err := client.ExportRecallManagementTableWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 生成算法定制脚本
 //
 // @param request - GenerateAlgorithmCustomizationScriptRequest
@@ -11186,6 +11268,80 @@ func (client *Client) QueryDataDiagnosisStatistics(DataDiagnosisId *string, requ
 
 // Summary:
 //
+// 查询召回管理表数据
+//
+// @param request - QueryRecallManagementTableRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRecallManagementTableRecordsResponse
+func (client *Client) QueryRecallManagementTableRecordsWithOptions(RecallManagementTableId *string, request *QueryRecallManagementTableRecordsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryRecallManagementTableRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PrimaryKeys) {
+		query["PrimaryKeys"] = request.PrimaryKeys
+	}
+
+	if !dara.IsNil(request.RecallManagementTableVersionId) {
+		query["RecallManagementTableVersionId"] = request.RecallManagementTableVersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryRecallManagementTableRecords"),
+		Version:     dara.String("2022-12-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/recallmanagementtables/" + dara.PercentEncode(dara.StringValue(RecallManagementTableId)) + "/queryrecords"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryRecallManagementTableRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询召回管理表数据
+//
+// @param request - QueryRecallManagementTableRecordsRequest
+//
+// @return QueryRecallManagementTableRecordsResponse
+func (client *Client) QueryRecallManagementTableRecords(RecallManagementTableId *string, request *QueryRecallManagementTableRecordsRequest) (_result *QueryRecallManagementTableRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryRecallManagementTableRecordsResponse{}
+	_body, _err := client.QueryRecallManagementTableRecordsWithOptions(RecallManagementTableId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看样本一致性任务差异的详情
 //
 // @param request - QuerySampleConsistencyJobDifferenceRequest
@@ -13742,11 +13898,6 @@ func (client *Client) UpdateRecallManagementServiceVersionConfigWithOptions(Reca
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.RegionId) {
-		query["RegionId"] = request.RegionId
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ConfigType) {
 		body["ConfigType"] = request.ConfigType
@@ -13766,7 +13917,6 @@ func (client *Client) UpdateRecallManagementServiceVersionConfigWithOptions(Reca
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -13833,6 +13983,10 @@ func (client *Client) UpdateRecallManagementTableWithOptions(RecallManagementTab
 
 	if !dara.IsNil(request.EnableRowCountFluctuationThreshold) {
 		body["EnableRowCountFluctuationThreshold"] = request.EnableRowCountFluctuationThreshold
+	}
+
+	if !dara.IsNil(request.Fields) {
+		body["Fields"] = request.Fields
 	}
 
 	if !dara.IsNil(request.IndexVersionId) {
