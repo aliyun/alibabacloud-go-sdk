@@ -5972,6 +5972,10 @@ func (client *Client) CreateNatGatewayWithContext(ctx context.Context, tmpReq *C
 		query["AutoPay"] = request.AutoPay
 	}
 
+	if !dara.IsNil(request.AvailabilityMode) {
+		query["AvailabilityMode"] = request.AvailabilityMode
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -17386,6 +17390,10 @@ func (client *Client) DescribeNatGatewaysWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AvailabilityMode) {
+		query["AvailabilityMode"] = request.AvailabilityMode
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}

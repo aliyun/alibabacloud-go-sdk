@@ -13,6 +13,8 @@ type iCreateNatGatewayRequest interface {
 	GetAccessMode() *CreateNatGatewayRequestAccessMode
 	SetAutoPay(v bool) *CreateNatGatewayRequest
 	GetAutoPay() *bool
+	SetAvailabilityMode(v string) *CreateNatGatewayRequest
+	GetAvailabilityMode() *string
 	SetClientToken(v string) *CreateNatGatewayRequest
 	GetClientToken() *string
 	SetDescription(v string) *CreateNatGatewayRequest
@@ -75,7 +77,8 @@ type CreateNatGatewayRequest struct {
 	// example:
 	//
 	// Invalid parameter.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay          *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AvailabilityMode *string `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
@@ -264,6 +267,10 @@ func (s *CreateNatGatewayRequest) GetAutoPay() *bool {
 	return s.AutoPay
 }
 
+func (s *CreateNatGatewayRequest) GetAvailabilityMode() *string {
+	return s.AvailabilityMode
+}
+
 func (s *CreateNatGatewayRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -367,6 +374,11 @@ func (s *CreateNatGatewayRequest) SetAccessMode(v *CreateNatGatewayRequestAccess
 
 func (s *CreateNatGatewayRequest) SetAutoPay(v bool) *CreateNatGatewayRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetAvailabilityMode(v string) *CreateNatGatewayRequest {
+	s.AvailabilityMode = &v
 	return s
 }
 

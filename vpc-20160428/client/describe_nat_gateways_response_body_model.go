@@ -148,6 +148,7 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) Validate() error {
 type DescribeNatGatewaysResponseBodyNatGatewaysNatGateway struct {
 	AccessMode         *DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
 	AutoPay            *bool                                                           `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AvailabilityMode   *string                                                         `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
 	BusinessStatus     *string                                                         `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
 	CreationTime       *string                                                         `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	DeletionProtection *bool                                                           `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
@@ -197,6 +198,10 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetAccessMode() *
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetAutoPay() *bool {
 	return s.AutoPay
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetAvailabilityMode() *string {
+	return s.AvailabilityMode
 }
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) GetBusinessStatus() *string {
@@ -326,6 +331,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetAccessMode(v *
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetAutoPay(v bool) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway) SetAvailabilityMode(v string) *DescribeNatGatewaysResponseBodyNatGatewaysNatGateway {
+	s.AvailabilityMode = &v
 	return s
 }
 

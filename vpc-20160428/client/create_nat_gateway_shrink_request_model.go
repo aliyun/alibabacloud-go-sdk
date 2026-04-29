@@ -13,6 +13,8 @@ type iCreateNatGatewayShrinkRequest interface {
 	GetAccessModeShrink() *string
 	SetAutoPay(v bool) *CreateNatGatewayShrinkRequest
 	GetAutoPay() *bool
+	SetAvailabilityMode(v string) *CreateNatGatewayShrinkRequest
+	GetAvailabilityMode() *string
 	SetClientToken(v string) *CreateNatGatewayShrinkRequest
 	GetClientToken() *string
 	SetDescription(v string) *CreateNatGatewayShrinkRequest
@@ -75,7 +77,8 @@ type CreateNatGatewayShrinkRequest struct {
 	// example:
 	//
 	// Invalid parameter.
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay          *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AvailabilityMode *string `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
@@ -264,6 +267,10 @@ func (s *CreateNatGatewayShrinkRequest) GetAutoPay() *bool {
 	return s.AutoPay
 }
 
+func (s *CreateNatGatewayShrinkRequest) GetAvailabilityMode() *string {
+	return s.AvailabilityMode
+}
+
 func (s *CreateNatGatewayShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
@@ -367,6 +374,11 @@ func (s *CreateNatGatewayShrinkRequest) SetAccessModeShrink(v string) *CreateNat
 
 func (s *CreateNatGatewayShrinkRequest) SetAutoPay(v bool) *CreateNatGatewayShrinkRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateNatGatewayShrinkRequest) SetAvailabilityMode(v string) *CreateNatGatewayShrinkRequest {
+	s.AvailabilityMode = &v
 	return s
 }
 

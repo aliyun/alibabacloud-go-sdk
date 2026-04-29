@@ -11,6 +11,8 @@ type iGetNatGatewayAttributeResponseBody interface {
 	GoString() string
 	SetAccessMode(v *GetNatGatewayAttributeResponseBodyAccessMode) *GetNatGatewayAttributeResponseBody
 	GetAccessMode() *GetNatGatewayAttributeResponseBodyAccessMode
+	SetAvailabilityMode(v string) *GetNatGatewayAttributeResponseBody
+	GetAvailabilityMode() *string
 	SetBillingConfig(v *GetNatGatewayAttributeResponseBodyBillingConfig) *GetNatGatewayAttributeResponseBody
 	GetBillingConfig() *GetNatGatewayAttributeResponseBodyBillingConfig
 	SetBusinessStatus(v string) *GetNatGatewayAttributeResponseBody
@@ -65,7 +67,8 @@ type iGetNatGatewayAttributeResponseBody interface {
 
 type GetNatGatewayAttributeResponseBody struct {
 	// Access mode for reverse access to VPC NAT gateway.
-	AccessMode *GetNatGatewayAttributeResponseBodyAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
+	AccessMode       *GetNatGatewayAttributeResponseBodyAccessMode `json:"AccessMode,omitempty" xml:"AccessMode,omitempty" type:"Struct"`
+	AvailabilityMode *string                                       `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
 	// The billing information.
 	BillingConfig *GetNatGatewayAttributeResponseBodyBillingConfig `json:"BillingConfig,omitempty" xml:"BillingConfig,omitempty" type:"Struct"`
 	// The service status of the NAT gateway. Valid values:
@@ -232,6 +235,10 @@ func (s *GetNatGatewayAttributeResponseBody) GetAccessMode() *GetNatGatewayAttri
 	return s.AccessMode
 }
 
+func (s *GetNatGatewayAttributeResponseBody) GetAvailabilityMode() *string {
+	return s.AvailabilityMode
+}
+
 func (s *GetNatGatewayAttributeResponseBody) GetBillingConfig() *GetNatGatewayAttributeResponseBodyBillingConfig {
 	return s.BillingConfig
 }
@@ -334,6 +341,11 @@ func (s *GetNatGatewayAttributeResponseBody) GetVpcId() *string {
 
 func (s *GetNatGatewayAttributeResponseBody) SetAccessMode(v *GetNatGatewayAttributeResponseBodyAccessMode) *GetNatGatewayAttributeResponseBody {
 	s.AccessMode = v
+	return s
+}
+
+func (s *GetNatGatewayAttributeResponseBody) SetAvailabilityMode(v string) *GetNatGatewayAttributeResponseBody {
+	s.AvailabilityMode = &v
 	return s
 }
 

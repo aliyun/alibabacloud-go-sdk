@@ -9,6 +9,8 @@ type iDescribeNatGatewaysRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAvailabilityMode(v string) *DescribeNatGatewaysRequest
+	GetAvailabilityMode() *string
 	SetDryRun(v bool) *DescribeNatGatewaysRequest
 	GetDryRun() *bool
 	SetInstanceChargeType(v string) *DescribeNatGatewaysRequest
@@ -50,6 +52,7 @@ type iDescribeNatGatewaysRequest interface {
 }
 
 type DescribeNatGatewaysRequest struct {
+	AvailabilityMode *string `json:"AvailabilityMode,omitempty" xml:"AvailabilityMode,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
 	// - **true**: performs a dry run. The system prechecks whether your AccessKey pair is valid, whether the RAM user is authorized, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
@@ -176,6 +179,10 @@ func (s DescribeNatGatewaysRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNatGatewaysRequest) GetAvailabilityMode() *string {
+	return s.AvailabilityMode
+}
+
 func (s *DescribeNatGatewaysRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -250,6 +257,11 @@ func (s *DescribeNatGatewaysRequest) GetVpcId() *string {
 
 func (s *DescribeNatGatewaysRequest) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *DescribeNatGatewaysRequest) SetAvailabilityMode(v string) *DescribeNatGatewaysRequest {
+	s.AvailabilityMode = &v
+	return s
 }
 
 func (s *DescribeNatGatewaysRequest) SetDryRun(v bool) *DescribeNatGatewaysRequest {
