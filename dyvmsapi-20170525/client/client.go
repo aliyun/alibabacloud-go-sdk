@@ -642,7 +642,7 @@ func (client *Client) ChangeMediaType(request *ChangeMediaTypeRequest) (_result 
 
 // Summary:
 //
-// 座席上线
+// Publish the agent online through this interface.
 //
 // @param request - CloudAgentLoginRequest
 //
@@ -706,7 +706,7 @@ func (client *Client) CloudAgentLoginWithOptions(request *CloudAgentLoginRequest
 
 // Summary:
 //
-// 座席上线
+// Publish the agent online through this interface.
 //
 // @param request - CloudAgentLoginRequest
 //
@@ -724,7 +724,7 @@ func (client *Client) CloudAgentLogin(request *CloudAgentLoginRequest) (_result 
 
 // Summary:
 //
-// 座席下线
+// Unpublish an agent.
 //
 // @param request - CloudAgentLogoutRequest
 //
@@ -784,7 +784,7 @@ func (client *Client) CloudAgentLogoutWithOptions(request *CloudAgentLogoutReque
 
 // Summary:
 //
-// 座席下线
+// Unpublish an agent.
 //
 // @param request - CloudAgentLogoutRequest
 //
@@ -802,7 +802,105 @@ func (client *Client) CloudAgentLogout(request *CloudAgentLogoutRequest) (_resul
 
 // Summary:
 //
-// 座席设置随路数据
+// 座席实时统计
+//
+// @param request - CloudAgentMonitorStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudAgentMonitorStatisticsResponse
+func (client *Client) CloudAgentMonitorStatisticsWithOptions(request *CloudAgentMonitorStatisticsRequest, runtime *dara.RuntimeOptions) (_result *CloudAgentMonitorStatisticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.EndHour) {
+		query["EndHour"] = request.EndHour
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Fields) {
+		query["Fields"] = request.Fields
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.IsNeedQueueName) {
+		query["IsNeedQueueName"] = request.IsNeedQueueName
+	}
+
+	if !dara.IsNil(request.IsUseGno) {
+		query["IsUseGno"] = request.IsUseGno
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.StartHour) {
+		query["StartHour"] = request.StartHour
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudAgentMonitorStatistics"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudAgentMonitorStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 座席实时统计
+//
+// @param request - CloudAgentMonitorStatisticsRequest
+//
+// @return CloudAgentMonitorStatisticsResponse
+func (client *Client) CloudAgentMonitorStatistics(request *CloudAgentMonitorStatisticsRequest) (_result *CloudAgentMonitorStatisticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudAgentMonitorStatisticsResponse{}
+	_body, _err := client.CloudAgentMonitorStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Use this interface to set agent associated data.
 //
 // @param request - CloudAgentSetUserDataRequest
 //
@@ -858,7 +956,7 @@ func (client *Client) CloudAgentSetUserDataWithOptions(request *CloudAgentSetUse
 
 // Summary:
 //
-// 座席设置随路数据
+// Use this interface to set agent associated data.
 //
 // @param request - CloudAgentSetUserDataRequest
 //
@@ -876,7 +974,7 @@ func (client *Client) CloudAgentSetUserData(request *CloudAgentSetUserDataReques
 
 // Summary:
 //
-// 座席挂机
+// The agent hangs up.
 //
 // @param request - CloudAgentUnlinkRequest
 //
@@ -936,7 +1034,7 @@ func (client *Client) CloudAgentUnlinkWithOptions(request *CloudAgentUnlinkReque
 
 // Summary:
 //
-// 座席挂机
+// The agent hangs up.
 //
 // @param request - CloudAgentUnlinkRequest
 //
@@ -945,6 +1043,194 @@ func (client *Client) CloudAgentUnlink(request *CloudAgentUnlinkRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudAgentUnlinkResponse{}
 	_body, _err := client.CloudAgentUnlinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取座席工作量报表数据
+//
+// @param request - CloudAgentWorkloadReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudAgentWorkloadReportResponse
+func (client *Client) CloudAgentWorkloadReportWithOptions(request *CloudAgentWorkloadReportRequest, runtime *dara.RuntimeOptions) (_result *CloudAgentWorkloadReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gnos) {
+		query["Gnos"] = request.Gnos
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StatisticMethod) {
+		query["StatisticMethod"] = request.StatisticMethod
+	}
+
+	if !dara.IsNil(request.TimeRangeType) {
+		query["TimeRangeType"] = request.TimeRangeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudAgentWorkloadReport"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudAgentWorkloadReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取座席工作量报表数据
+//
+// @param request - CloudAgentWorkloadReportRequest
+//
+// @return CloudAgentWorkloadReportResponse
+func (client *Client) CloudAgentWorkloadReport(request *CloudAgentWorkloadReportRequest) (_result *CloudAgentWorkloadReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudAgentWorkloadReportResponse{}
+	_body, _err := client.CloudAgentWorkloadReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Assigns an agent to an outbound group.
+//
+// @param request - CloudAssignAgentGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudAssignAgentGroupResponse
+func (client *Client) CloudAssignAgentGroupWithOptions(request *CloudAssignAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *CloudAssignAgentGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cnos) {
+		query["Cnos"] = request.Cnos
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudAssignAgentGroup"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudAssignAgentGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Assigns an agent to an outbound group.
+//
+// @param request - CloudAssignAgentGroupRequest
+//
+// @return CloudAssignAgentGroupResponse
+func (client *Client) CloudAssignAgentGroup(request *CloudAssignAgentGroupRequest) (_result *CloudAssignAgentGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudAssignAgentGroupResponse{}
+	_body, _err := client.CloudAssignAgentGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1108,7 +1394,7 @@ func (client *Client) CloudBatchCreateAgent(request *CloudBatchCreateAgentReques
 
 // Summary:
 //
-// 座席实时状态批量获取
+// Obtains the real-time status of agents in batches based on their job numbers.
 //
 // @param request - CloudBatchGetAgentStatusRequest
 //
@@ -1168,7 +1454,7 @@ func (client *Client) CloudBatchGetAgentStatusWithOptions(request *CloudBatchGet
 
 // Summary:
 //
-// 座席实时状态批量获取
+// Obtains the real-time status of agents in batches based on their job numbers.
 //
 // @param request - CloudBatchGetAgentStatusRequest
 //
@@ -1502,6 +1788,682 @@ func (client *Client) CloudCreateAgent(request *CloudCreateAgentRequest) (_resul
 
 // Summary:
 //
+// Call this operation to add an outbound group.
+//
+// @param request - CloudCreateAgentGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateAgentGroupResponse
+func (client *Client) CloudCreateAgentGroupWithOptions(request *CloudCreateAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateAgentGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateAgentGroup"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateAgentGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Call this operation to add an outbound group.
+//
+// @param request - CloudCreateAgentGroupRequest
+//
+// @return CloudCreateAgentGroupResponse
+func (client *Client) CloudCreateAgentGroup(request *CloudCreateAgentGroupRequest) (_result *CloudCreateAgentGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateAgentGroupResponse{}
+	_body, _err := client.CloudCreateAgentGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Upload a recording file and create an ASR transform job.
+//
+// @param request - CloudCreateAsrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateAsrResponse
+func (client *Client) CloudCreateAsrWithOptions(request *CloudCreateAsrRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateAsrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CallType) {
+		query["CallType"] = request.CallType
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	if !dara.IsNil(request.RecordFile) {
+		query["RecordFile"] = request.RecordFile
+	}
+
+	if !dara.IsNil(request.RecordSide) {
+		query["RecordSide"] = request.RecordSide
+	}
+
+	if !dara.IsNil(request.RecordType) {
+		query["RecordType"] = request.RecordType
+	}
+
+	if !dara.IsNil(request.SupportMp3) {
+		query["SupportMp3"] = request.SupportMp3
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateAsr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateAsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Upload a recording file and create an ASR transform job.
+//
+// @param request - CloudCreateAsrRequest
+//
+// @return CloudCreateAsrResponse
+func (client *Client) CloudCreateAsr(request *CloudCreateAsrRequest) (_result *CloudCreateAsrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateAsrResponse{}
+	_body, _err := client.CloudCreateAsrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增时间条件设置
+//
+// @param request - CloudCreateEnterpriseTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateEnterpriseTimeResponse
+func (client *Client) CloudCreateEnterpriseTimeWithOptions(request *CloudCreateEnterpriseTimeRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateEnterpriseTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DayOfWeek) {
+		query["DayOfWeek"] = request.DayOfWeek
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.FromDay) {
+		query["FromDay"] = request.FromDay
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeType) {
+		query["TimeType"] = request.TimeType
+	}
+
+	if !dara.IsNil(request.ToDay) {
+		query["ToDay"] = request.ToDay
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateEnterpriseTime"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateEnterpriseTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增时间条件设置
+//
+// @param request - CloudCreateEnterpriseTimeRequest
+//
+// @return CloudCreateEnterpriseTimeResponse
+func (client *Client) CloudCreateEnterpriseTime(request *CloudCreateEnterpriseTimeRequest) (_result *CloudCreateEnterpriseTimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateEnterpriseTimeResponse{}
+	_body, _err := client.CloudCreateEnterpriseTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增分机
+//
+// @param request - CloudCreateExtenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateExtenResponse
+func (client *Client) CloudCreateExtenWithOptions(request *CloudCreateExtenRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateExtenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Allow) {
+		query["Allow"] = request.Allow
+	}
+
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.CallPower) {
+		query["CallPower"] = request.CallPower
+	}
+
+	if !dara.IsNil(request.Denoise) {
+		query["Denoise"] = request.Denoise
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Exten) {
+		query["Exten"] = request.Exten
+	}
+
+	if !dara.IsNil(request.IadName) {
+		query["IadName"] = request.IadName
+	}
+
+	if !dara.IsNil(request.IbRecord) {
+		query["IbRecord"] = request.IbRecord
+	}
+
+	if !dara.IsNil(request.IsDirect) {
+		query["IsDirect"] = request.IsDirect
+	}
+
+	if !dara.IsNil(request.IsOb) {
+		query["IsOb"] = request.IsOb
+	}
+
+	if !dara.IsNil(request.JitterBuffer) {
+		query["JitterBuffer"] = request.JitterBuffer
+	}
+
+	if !dara.IsNil(request.ObRecord) {
+		query["ObRecord"] = request.ObRecord
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.Property) {
+		query["Property"] = request.Property
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateExten"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateExtenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增分机
+//
+// @param request - CloudCreateExtenRequest
+//
+// @return CloudCreateExtenResponse
+func (client *Client) CloudCreateExten(request *CloudCreateExtenRequest) (_result *CloudCreateExtenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateExtenResponse{}
+	_body, _err := client.CloudCreateExtenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增队列
+//
+// @param tmpReq - CloudCreateQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateQueueResponse
+func (client *Client) CloudCreateQueueWithOptions(tmpReq *CloudCreateQueueRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CloudCreateQueueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Queue) {
+		request.QueueShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Queue, dara.String("Queue"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.QueueSkills) {
+		request.QueueSkillsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueueSkills, dara.String("QueueSkills"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.QueueShrink) {
+		query["Queue"] = request.QueueShrink
+	}
+
+	if !dara.IsNil(request.QueueSkillsShrink) {
+		query["QueueSkills"] = request.QueueSkillsShrink
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateQueue"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增队列
+//
+// @param request - CloudCreateQueueRequest
+//
+// @return CloudCreateQueueResponse
+func (client *Client) CloudCreateQueue(request *CloudCreateQueueRequest) (_result *CloudCreateQueueResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateQueueResponse{}
+	_body, _err := client.CloudCreateQueueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Add skills to a queue.
+//
+// @param request - CloudCreateQueueSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateQueueSkillResponse
+func (client *Client) CloudCreateQueueSkillWithOptions(request *CloudCreateQueueSkillRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateQueueSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.SkillLevel) {
+		query["SkillLevel"] = request.SkillLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateQueueSkill"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateQueueSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Add skills to a queue.
+//
+// @param request - CloudCreateQueueSkillRequest
+//
+// @return CloudCreateQueueSkillResponse
+func (client *Client) CloudCreateQueueSkill(request *CloudCreateQueueSkillRequest) (_result *CloudCreateQueueSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateQueueSkillResponse{}
+	_body, _err := client.CloudCreateQueueSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a skill by calling this interface.
+//
+// @param request - CloudCreateSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudCreateSkillResponse
+func (client *Client) CloudCreateSkillWithOptions(request *CloudCreateSkillRequest, runtime *dara.RuntimeOptions) (_result *CloudCreateSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudCreateSkill"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudCreateSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a skill by calling this interface.
+//
+// @param request - CloudCreateSkillRequest
+//
+// @return CloudCreateSkillResponse
+func (client *Client) CloudCreateSkill(request *CloudCreateSkillRequest) (_result *CloudCreateSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudCreateSkillResponse{}
+	_body, _err := client.CloudCreateSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增任务
 //
 // @param request - CloudCreateTaskRequest
@@ -1776,7 +2738,7 @@ func (client *Client) CloudCreateTask(request *CloudCreateTaskRequest) (_result 
 
 // Summary:
 //
-// 座席删除
+// Delete an agent based on the agent number.
 //
 // @param request - CloudDeleteAgentRequest
 //
@@ -1836,7 +2798,7 @@ func (client *Client) CloudDeleteAgentWithOptions(request *CloudDeleteAgentReque
 
 // Summary:
 //
-// 座席删除
+// Delete an agent based on the agent number.
 //
 // @param request - CloudDeleteAgentRequest
 //
@@ -1854,7 +2816,85 @@ func (client *Client) CloudDeleteAgent(request *CloudDeleteAgentRequest) (_resul
 
 // Summary:
 //
-// 删除座席电话
+// Delete an outbound call group.
+//
+// @param request - CloudDeleteAgentGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteAgentGroupResponse
+func (client *Client) CloudDeleteAgentGroupWithOptions(request *CloudDeleteAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteAgentGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteAgentGroup"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteAgentGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete an outbound call group.
+//
+// @param request - CloudDeleteAgentGroupRequest
+//
+// @return CloudDeleteAgentGroupResponse
+func (client *Client) CloudDeleteAgentGroup(request *CloudDeleteAgentGroupRequest) (_result *CloudDeleteAgentGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteAgentGroupResponse{}
+	_body, _err := client.CloudDeleteAgentGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete the phone under the agent.
 //
 // @param request - CloudDeleteAgentTelRequest
 //
@@ -1918,7 +2958,7 @@ func (client *Client) CloudDeleteAgentTelWithOptions(request *CloudDeleteAgentTe
 
 // Summary:
 //
-// 删除座席电话
+// Delete the phone under the agent.
 //
 // @param request - CloudDeleteAgentTelRequest
 //
@@ -1927,6 +2967,580 @@ func (client *Client) CloudDeleteAgentTel(request *CloudDeleteAgentTelRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudDeleteAgentTelResponse{}
 	_body, _err := client.CloudDeleteAgentTelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete a time condition setting.
+//
+// @param request - CloudDeleteEnterpriseTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteEnterpriseTimeResponse
+func (client *Client) CloudDeleteEnterpriseTimeWithOptions(request *CloudDeleteEnterpriseTimeRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteEnterpriseTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteEnterpriseTime"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteEnterpriseTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete a time condition setting.
+//
+// @param request - CloudDeleteEnterpriseTimeRequest
+//
+// @return CloudDeleteEnterpriseTimeResponse
+func (client *Client) CloudDeleteEnterpriseTime(request *CloudDeleteEnterpriseTimeRequest) (_result *CloudDeleteEnterpriseTimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteEnterpriseTimeResponse{}
+	_body, _err := client.CloudDeleteEnterpriseTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an extension based on the extension number.
+//
+// @param request - CloudDeleteExtenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteExtenResponse
+func (client *Client) CloudDeleteExtenWithOptions(request *CloudDeleteExtenRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteExtenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Exten) {
+		query["Exten"] = request.Exten
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteExten"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteExtenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an extension based on the extension number.
+//
+// @param request - CloudDeleteExtenRequest
+//
+// @return CloudDeleteExtenResponse
+func (client *Client) CloudDeleteExten(request *CloudDeleteExtenRequest) (_result *CloudDeleteExtenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteExtenResponse{}
+	_body, _err := client.CloudDeleteExtenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete a queue.
+//
+// @param request - CloudDeleteQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteQueueResponse
+func (client *Client) CloudDeleteQueueWithOptions(request *CloudDeleteQueueRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteQueue"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Delete a queue.
+//
+// @param request - CloudDeleteQueueRequest
+//
+// @return CloudDeleteQueueResponse
+func (client *Client) CloudDeleteQueue(request *CloudDeleteQueueRequest) (_result *CloudDeleteQueueResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteQueueResponse{}
+	_body, _err := client.CloudDeleteQueueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queue delete skills.
+//
+// @param request - CloudDeleteQueueSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteQueueSkillResponse
+func (client *Client) CloudDeleteQueueSkillWithOptions(request *CloudDeleteQueueSkillRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteQueueSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteQueueSkill"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteQueueSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queue delete skills.
+//
+// @param request - CloudDeleteQueueSkillRequest
+//
+// @return CloudDeleteQueueSkillResponse
+func (client *Client) CloudDeleteQueueSkill(request *CloudDeleteQueueSkillRequest) (_result *CloudDeleteQueueSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteQueueSkillResponse{}
+	_body, _err := client.CloudDeleteQueueSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a skill.
+//
+// @param request - CloudDeleteSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteSkillResponse
+func (client *Client) CloudDeleteSkillWithOptions(request *CloudDeleteSkillRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteSkill"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a skill.
+//
+// @param request - CloudDeleteSkillRequest
+//
+// @return CloudDeleteSkillResponse
+func (client *Client) CloudDeleteSkill(request *CloudDeleteSkillRequest) (_result *CloudDeleteSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteSkillResponse{}
+	_body, _err := client.CloudDeleteSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Supports deleting predictive outbound call and automatic outbound call jobs. Only jobs in the initial or completed status can be deleted. When a job is deleted, the associated numbers are also deleted.
+//
+// @param request - CloudDeleteTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteTaskResponse
+func (client *Client) CloudDeleteTaskWithOptions(request *CloudDeleteTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Supports deleting predictive outbound call and automatic outbound call jobs. Only jobs in the initial or completed status can be deleted. When a job is deleted, the associated numbers are also deleted.
+//
+// @param request - CloudDeleteTaskRequest
+//
+// @return CloudDeleteTaskResponse
+func (client *Client) CloudDeleteTask(request *CloudDeleteTaskRequest) (_result *CloudDeleteTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteTaskResponse{}
+	_body, _err := client.CloudDeleteTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the number of a call job through this interface.
+//
+// @param request - CloudDeleteTaskTelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudDeleteTaskTelResponse
+func (client *Client) CloudDeleteTaskTelWithOptions(request *CloudDeleteTaskTelRequest, runtime *dara.RuntimeOptions) (_result *CloudDeleteTaskTelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.Tels) {
+		query["Tels"] = request.Tels
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudDeleteTaskTel"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudDeleteTaskTelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the number of a call job through this interface.
+//
+// @param request - CloudDeleteTaskTelRequest
+//
+// @return CloudDeleteTaskTelResponse
+func (client *Client) CloudDeleteTaskTel(request *CloudDeleteTaskTelRequest) (_result *CloudDeleteTaskTelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudDeleteTaskTelResponse{}
+	_body, _err := client.CloudDeleteTaskTelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2014,7 +3628,7 @@ func (client *Client) CloudGetAgent(request *CloudGetAgentRequest) (_result *Clo
 
 // Summary:
 //
-// 座席实时状态获取
+// Obtains the real-time status info of agents.
 //
 // @param request - CloudGetAgentStatusRequest
 //
@@ -2074,7 +3688,7 @@ func (client *Client) CloudGetAgentStatusWithOptions(request *CloudGetAgentStatu
 
 // Summary:
 //
-// 座席实时状态获取
+// Obtains the real-time status info of agents.
 //
 // @param request - CloudGetAgentStatusRequest
 //
@@ -2083,6 +3697,224 @@ func (client *Client) CloudGetAgentStatus(request *CloudGetAgentStatusRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudGetAgentStatusResponse{}
 	_body, _err := client.CloudGetAgentStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query phone number attribution.
+//
+// @param request - CloudGetAreaCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetAreaCodeResponse
+func (client *Client) CloudGetAreaCodeWithOptions(request *CloudGetAreaCodeRequest, runtime *dara.RuntimeOptions) (_result *CloudGetAreaCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Tel) {
+		query["Tel"] = request.Tel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetAreaCode"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetAreaCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query phone number attribution.
+//
+// @param request - CloudGetAreaCodeRequest
+//
+// @return CloudGetAreaCodeResponse
+func (client *Client) CloudGetAreaCode(request *CloudGetAreaCodeRequest) (_result *CloudGetAreaCodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetAreaCodeResponse{}
+	_body, _err := client.CloudGetAreaCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ASR数据获取
+//
+// @param request - CloudGetAsrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetAsrResponse
+func (client *Client) CloudGetAsrWithOptions(request *CloudGetAsrRequest, runtime *dara.RuntimeOptions) (_result *CloudGetAsrResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.CallType) {
+		query["CallType"] = request.CallType
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.MainUniqueId) {
+		query["MainUniqueId"] = request.MainUniqueId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetAsr"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetAsrResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ASR数据获取
+//
+// @param request - CloudGetAsrRequest
+//
+// @return CloudGetAsrResponse
+func (client *Client) CloudGetAsr(request *CloudGetAsrRequest) (_result *CloudGetAsrResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetAsrResponse{}
+	_body, _err := client.CloudGetAsrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the info about a specified extension.
+//
+// @param request - CloudGetExtenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetExtenResponse
+func (client *Client) CloudGetExtenWithOptions(request *CloudGetExtenRequest, runtime *dara.RuntimeOptions) (_result *CloudGetExtenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Exten) {
+		query["Exten"] = request.Exten
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetExten"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetExtenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the info about a specified extension.
+//
+// @param request - CloudGetExtenRequest
+//
+// @return CloudGetExtenResponse
+func (client *Client) CloudGetExten(request *CloudGetExtenRequest) (_result *CloudGetExtenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetExtenResponse{}
+	_body, _err := client.CloudGetExtenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2149,6 +3981,84 @@ func (client *Client) CloudGetObCdr(request *CloudGetObCdrRequest) (_result *Clo
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudGetObCdrResponse{}
 	_body, _err := client.CloudGetObCdrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取队列信息
+//
+// @param request - CloudGetQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetQueueResponse
+func (client *Client) CloudGetQueueWithOptions(request *CloudGetQueueRequest, runtime *dara.RuntimeOptions) (_result *CloudGetQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetQueue"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取队列信息
+//
+// @param request - CloudGetQueueRequest
+//
+// @return CloudGetQueueResponse
+func (client *Client) CloudGetQueue(request *CloudGetQueueRequest) (_result *CloudGetQueueResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetQueueResponse{}
+	_body, _err := client.CloudGetQueueWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2235,6 +4145,84 @@ func (client *Client) CloudGetRecordUrl(request *CloudGetRecordUrlRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudGetRecordUrlResponse{}
 	_body, _err := client.CloudGetRecordUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务信息
+//
+// @param request - CloudGetTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudGetTaskResponse
+func (client *Client) CloudGetTaskWithOptions(request *CloudGetTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudGetTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudGetTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudGetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务信息
+//
+// @param request - CloudGetTaskRequest
+//
+// @return CloudGetTaskResponse
+func (client *Client) CloudGetTask(request *CloudGetTaskRequest) (_result *CloudGetTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudGetTaskResponse{}
+	_body, _err := client.CloudGetTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2360,7 +4348,7 @@ func (client *Client) CloudImportTaskTel(request *CloudImportTaskTelRequest) (_r
 
 // Summary:
 //
-// # IVR等待打断
+// If the current call is at an await edge zone in voice navigation, this interface can interrupt the wait and execute to the next hop.
 //
 // @param request - CloudInterruptIvrRequest
 //
@@ -2420,7 +4408,7 @@ func (client *Client) CloudInterruptIvrWithOptions(request *CloudInterruptIvrReq
 
 // Summary:
 //
-// # IVR等待打断
+// If the current call is at an await edge zone in voice navigation, this interface can interrupt the wait and execute to the next hop.
 //
 // @param request - CloudInterruptIvrRequest
 //
@@ -2438,7 +4426,97 @@ func (client *Client) CloudInterruptIvr(request *CloudInterruptIvrRequest) (_res
 
 // Summary:
 //
-// 获取座席电话
+// You can call this operation to query outbound groups.
+//
+// @param request - CloudListAgentGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListAgentGroupResponse
+func (client *Client) CloudListAgentGroupWithOptions(request *CloudListAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *CloudListAgentGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListAgentGroup"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListAgentGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to query outbound groups.
+//
+// @param request - CloudListAgentGroupRequest
+//
+// @return CloudListAgentGroupResponse
+func (client *Client) CloudListAgentGroup(request *CloudListAgentGroupRequest) (_result *CloudListAgentGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListAgentGroupResponse{}
+	_body, _err := client.CloudListAgentGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtain agent phone info by agent number.
 //
 // @param request - CloudListAgentTelRequest
 //
@@ -2502,7 +4580,7 @@ func (client *Client) CloudListAgentTelWithOptions(request *CloudListAgentTelReq
 
 // Summary:
 //
-// 获取座席电话
+// Obtain agent phone info by agent number.
 //
 // @param request - CloudListAgentTelRequest
 //
@@ -2520,7 +4598,391 @@ func (client *Client) CloudListAgentTel(request *CloudListAgentTelRequest) (_res
 
 // Summary:
 //
-// 获取在线空闲座席
+// You can call this operation to query the list of agents in an outbound group.
+//
+// @param request - CloudListAssignedAgentGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListAssignedAgentGroupResponse
+func (client *Client) CloudListAssignedAgentGroupWithOptions(request *CloudListAssignedAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *CloudListAssignedAgentGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cname) {
+		query["Cname"] = request.Cname
+	}
+
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListAssignedAgentGroup"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListAssignedAgentGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to query the list of agents in an outbound group.
+//
+// @param request - CloudListAssignedAgentGroupRequest
+//
+// @return CloudListAssignedAgentGroupResponse
+func (client *Client) CloudListAssignedAgentGroup(request *CloudListAssignedAgentGroupRequest) (_result *CloudListAssignedAgentGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListAssignedAgentGroupResponse{}
+	_body, _err := client.CloudListAssignedAgentGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 推送日志查询
+//
+// @param request - CloudListCurlLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListCurlLogResponse
+func (client *Client) CloudListCurlLogWithOptions(request *CloudListCurlLogRequest, runtime *dara.RuntimeOptions) (_result *CloudListCurlLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Result) {
+		query["Result"] = request.Result
+	}
+
+	if !dara.IsNil(request.Retry) {
+		query["Retry"] = request.Retry
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.Url) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListCurlLog"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListCurlLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 推送日志查询
+//
+// @param request - CloudListCurlLogRequest
+//
+// @return CloudListCurlLogResponse
+func (client *Client) CloudListCurlLog(request *CloudListCurlLogRequest) (_result *CloudListCurlLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListCurlLogResponse{}
+	_body, _err := client.CloudListCurlLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取时间条件设置列表
+//
+// @param request - CloudListEnterpriseTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListEnterpriseTimeResponse
+func (client *Client) CloudListEnterpriseTimeWithOptions(request *CloudListEnterpriseTimeRequest, runtime *dara.RuntimeOptions) (_result *CloudListEnterpriseTimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListEnterpriseTime"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListEnterpriseTimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取时间条件设置列表
+//
+// @param request - CloudListEnterpriseTimeRequest
+//
+// @return CloudListEnterpriseTimeResponse
+func (client *Client) CloudListEnterpriseTime(request *CloudListEnterpriseTimeRequest) (_result *CloudListEnterpriseTimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListEnterpriseTimeResponse{}
+	_body, _err := client.CloudListEnterpriseTimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分机列表
+//
+// @param request - CloudListExtenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListExtenResponse
+func (client *Client) CloudListExtenWithOptions(request *CloudListExtenRequest, runtime *dara.RuntimeOptions) (_result *CloudListExtenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AreaCode) {
+		query["AreaCode"] = request.AreaCode
+	}
+
+	if !dara.IsNil(request.CallPower) {
+		query["CallPower"] = request.CallPower
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Exten) {
+		query["Exten"] = request.Exten
+	}
+
+	if !dara.IsNil(request.IbRecord) {
+		query["IbRecord"] = request.IbRecord
+	}
+
+	if !dara.IsNil(request.IsBind) {
+		query["IsBind"] = request.IsBind
+	}
+
+	if !dara.IsNil(request.IsOb) {
+		query["IsOb"] = request.IsOb
+	}
+
+	if !dara.IsNil(request.JitterBuffer) {
+		query["JitterBuffer"] = request.JitterBuffer
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.ObRecord) {
+		query["ObRecord"] = request.ObRecord
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListExten"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListExtenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分机列表
+//
+// @param request - CloudListExtenRequest
+//
+// @return CloudListExtenResponse
+func (client *Client) CloudListExten(request *CloudListExtenRequest) (_result *CloudListExtenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListExtenResponse{}
+	_body, _err := client.CloudListExtenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of online agents.
 //
 // @param request - CloudListFreeAgentRequest
 //
@@ -2576,7 +5038,7 @@ func (client *Client) CloudListFreeAgentWithOptions(request *CloudListFreeAgentR
 
 // Summary:
 //
-// 获取在线空闲座席
+// Queries the list of online agents.
 //
 // @param request - CloudListFreeAgentRequest
 //
@@ -2679,6 +5141,456 @@ func (client *Client) CloudListOnlineAgent(request *CloudListOnlineAgentRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudListOnlineAgentResponse{}
 	_body, _err := client.CloudListOnlineAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取队列列表
+//
+// @param request - CloudListQueueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListQueueResponse
+func (client *Client) CloudListQueueWithOptions(request *CloudListQueueRequest, runtime *dara.RuntimeOptions) (_result *CloudListQueueResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListQueue"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取队列列表
+//
+// @param request - CloudListQueueRequest
+//
+// @return CloudListQueueResponse
+func (client *Client) CloudListQueue(request *CloudListQueueRequest) (_result *CloudListQueueResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListQueueResponse{}
+	_body, _err := client.CloudListQueueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains queue skill info.
+//
+// @param request - CloudListQueueSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListQueueSkillResponse
+func (client *Client) CloudListQueueSkillWithOptions(request *CloudListQueueSkillRequest, runtime *dara.RuntimeOptions) (_result *CloudListQueueSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Qno) {
+		query["Qno"] = request.Qno
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListQueueSkill"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListQueueSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains queue skill info.
+//
+// @param request - CloudListQueueSkillRequest
+//
+// @return CloudListQueueSkillResponse
+func (client *Client) CloudListQueueSkill(request *CloudListQueueSkillRequest) (_result *CloudListQueueSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListQueueSkillResponse{}
+	_body, _err := client.CloudListQueueSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the skill info list.
+//
+// @param request - CloudListSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListSkillResponse
+func (client *Client) CloudListSkillWithOptions(request *CloudListSkillRequest, runtime *dara.RuntimeOptions) (_result *CloudListSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.Order) {
+		query["Order"] = request.Order
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListSkill"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the skill info list.
+//
+// @param request - CloudListSkillRequest
+//
+// @return CloudListSkillResponse
+func (client *Client) CloudListSkill(request *CloudListSkillRequest) (_result *CloudListSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListSkillResponse{}
+	_body, _err := client.CloudListSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the call job batch list info.
+//
+// @param request - CloudListTaskFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudListTaskFileResponse
+func (client *Client) CloudListTaskFileWithOptions(request *CloudListTaskFileRequest, runtime *dara.RuntimeOptions) (_result *CloudListTaskFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudListTaskFile"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudListTaskFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Query the call job batch list info.
+//
+// @param request - CloudListTaskFileRequest
+//
+// @return CloudListTaskFileResponse
+func (client *Client) CloudListTaskFile(request *CloudListTaskFileRequest) (_result *CloudListTaskFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudListTaskFileResponse{}
+	_body, _err := client.CloudListTaskFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务监控
+//
+// @param request - CloudMonitorTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudMonitorTaskResponse
+func (client *Client) CloudMonitorTaskWithOptions(request *CloudMonitorTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudMonitorTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudMonitorTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudMonitorTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务监控
+//
+// @param request - CloudMonitorTaskRequest
+//
+// @return CloudMonitorTaskResponse
+func (client *Client) CloudMonitorTask(request *CloudMonitorTaskRequest) (_result *CloudMonitorTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudMonitorTaskResponse{}
+	_body, _err := client.CloudMonitorTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2875,6 +5787,88 @@ func (client *Client) CloudOutboundPreviewObReport(request *CloudOutboundPreview
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudOutboundPreviewObReportResponse{}
 	_body, _err := client.CloudOutboundPreviewObReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Suspends a call job through this interface.
+//
+// @param request - CloudPauseTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudPauseTaskResponse
+func (client *Client) CloudPauseTaskWithOptions(request *CloudPauseTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudPauseTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PauseDuration) {
+		query["PauseDuration"] = request.PauseDuration
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudPauseTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudPauseTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Suspends a call job through this interface.
+//
+// @param request - CloudPauseTaskRequest
+//
+// @return CloudPauseTaskResponse
+func (client *Client) CloudPauseTask(request *CloudPauseTaskRequest) (_result *CloudPauseTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudPauseTaskResponse{}
+	_body, _err := client.CloudPauseTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3128,7 +6122,7 @@ func (client *Client) CloudQueryAgent(request *CloudQueryAgentRequest) (_result 
 
 // Summary:
 //
-// 座席列表获取
+// Get all agent numbers and parameter messages.
 //
 // @param request - CloudQueryAgentCnoAndNameRequest
 //
@@ -3188,7 +6182,7 @@ func (client *Client) CloudQueryAgentCnoAndNameWithOptions(request *CloudQueryAg
 
 // Summary:
 //
-// 座席列表获取
+// Get all agent numbers and parameter messages.
 //
 // @param request - CloudQueryAgentCnoAndNameRequest
 //
@@ -3206,7 +6200,7 @@ func (client *Client) CloudQueryAgentCnoAndName(request *CloudQueryAgentCnoAndNa
 
 // Summary:
 //
-// 获取座席外呼组
+// Queries the info about the outbound group to which the agent belongs.
 //
 // @param request - CloudQueryAgentGroupRequest
 //
@@ -3266,7 +6260,7 @@ func (client *Client) CloudQueryAgentGroupWithOptions(request *CloudQueryAgentGr
 
 // Summary:
 //
-// 获取座席外呼组
+// Queries the info about the outbound group to which the agent belongs.
 //
 // @param request - CloudQueryAgentGroupRequest
 //
@@ -3284,7 +6278,7 @@ func (client *Client) CloudQueryAgentGroup(request *CloudQueryAgentGroupRequest)
 
 // Summary:
 //
-// 获取座席技能
+// Query agent skills by agent number.
 //
 // @param request - CloudQueryAgentSkillRequest
 //
@@ -3344,7 +6338,7 @@ func (client *Client) CloudQueryAgentSkillWithOptions(request *CloudQueryAgentSk
 
 // Summary:
 //
-// 获取座席技能
+// Query agent skills by agent number.
 //
 // @param request - CloudQueryAgentSkillRequest
 //
@@ -3804,6 +6798,186 @@ func (client *Client) CloudQueryPredictiveCallCdr(request *CloudQueryPredictiveC
 
 // Summary:
 //
+// Obtain the rasr info based on the uniqueId.
+//
+// @param request - CloudQueryRasrEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudQueryRasrEventResponse
+func (client *Client) CloudQueryRasrEventWithOptions(request *CloudQueryRasrEventRequest, runtime *dara.RuntimeOptions) (_result *CloudQueryRasrEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.UniqueId) {
+		query["UniqueId"] = request.UniqueId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudQueryRasrEvent"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudQueryRasrEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtain the rasr info based on the uniqueId.
+//
+// @param request - CloudQueryRasrEventRequest
+//
+// @return CloudQueryRasrEventResponse
+func (client *Client) CloudQueryRasrEvent(request *CloudQueryRasrEventRequest) (_result *CloudQueryRasrEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudQueryRasrEventResponse{}
+	_body, _err := client.CloudQueryRasrEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务列表
+//
+// @param request - CloudQueryTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudQueryTaskResponse
+func (client *Client) CloudQueryTaskWithOptions(request *CloudQueryTaskRequest, runtime *dara.RuntimeOptions) (_result *CloudQueryTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoStart) {
+		query["AutoStart"] = request.AutoStart
+	}
+
+	if !dara.IsNil(request.AutoStop) {
+		query["AutoStop"] = request.AutoStop
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.Start) {
+		query["Start"] = request.Start
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TimeType) {
+		query["TimeType"] = request.TimeType
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudQueryTask"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudQueryTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务列表
+//
+// @param request - CloudQueryTaskRequest
+//
+// @return CloudQueryTaskResponse
+func (client *Client) CloudQueryTask(request *CloudQueryTaskRequest) (_result *CloudQueryTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudQueryTaskResponse{}
+	_body, _err := client.CloudQueryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // webcall通话记录
 //
 // @param request - CloudQueryWebcallCdrRequest
@@ -4023,6 +7197,88 @@ func (client *Client) CloudStartTask(request *CloudStartTaskRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &CloudStartTaskResponse{}
 	_body, _err := client.CloudStartTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Purges the attachment between an outbound call group and agents.
+//
+// @param request - CloudUnassignAgentGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloudUnassignAgentGroupResponse
+func (client *Client) CloudUnassignAgentGroupWithOptions(request *CloudUnassignAgentGroupRequest, runtime *dara.RuntimeOptions) (_result *CloudUnassignAgentGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Cno) {
+		query["Cno"] = request.Cno
+	}
+
+	if !dara.IsNil(request.EnterpriseId) {
+		query["EnterpriseId"] = request.EnterpriseId
+	}
+
+	if !dara.IsNil(request.Gno) {
+		query["Gno"] = request.Gno
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloudUnassignAgentGroup"),
+		Version:     dara.String("2017-05-25"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloudUnassignAgentGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Purges the attachment between an outbound call group and agents.
+//
+// @param request - CloudUnassignAgentGroupRequest
+//
+// @return CloudUnassignAgentGroupResponse
+func (client *Client) CloudUnassignAgentGroup(request *CloudUnassignAgentGroupRequest) (_result *CloudUnassignAgentGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CloudUnassignAgentGroupResponse{}
+	_body, _err := client.CloudUnassignAgentGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
