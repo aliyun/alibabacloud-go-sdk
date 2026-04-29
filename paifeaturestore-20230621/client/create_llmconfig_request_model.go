@@ -17,10 +17,14 @@ type iCreateLLMConfigRequest interface {
 	GetBatchSize() *int32
 	SetEmbeddingDimension(v int32) *CreateLLMConfigRequest
 	GetEmbeddingDimension() *int32
+	SetEnableFusion(v bool) *CreateLLMConfigRequest
+	GetEnableFusion() *bool
 	SetMaxTokens(v int32) *CreateLLMConfigRequest
 	GetMaxTokens() *int32
 	SetModel(v string) *CreateLLMConfigRequest
 	GetModel() *string
+	SetModelType(v string) *CreateLLMConfigRequest
+	GetModelType() *string
 	SetName(v string) *CreateLLMConfigRequest
 	GetName() *string
 	SetRps(v int32) *CreateLLMConfigRequest
@@ -48,6 +52,7 @@ type CreateLLMConfigRequest struct {
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
+	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
 	// example:
 	//
 	// 8192
@@ -57,7 +62,8 @@ type CreateLLMConfigRequest struct {
 	// example:
 	//
 	// text-embedding-v1
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -100,12 +106,20 @@ func (s *CreateLLMConfigRequest) GetEmbeddingDimension() *int32 {
 	return s.EmbeddingDimension
 }
 
+func (s *CreateLLMConfigRequest) GetEnableFusion() *bool {
+	return s.EnableFusion
+}
+
 func (s *CreateLLMConfigRequest) GetMaxTokens() *int32 {
 	return s.MaxTokens
 }
 
 func (s *CreateLLMConfigRequest) GetModel() *string {
 	return s.Model
+}
+
+func (s *CreateLLMConfigRequest) GetModelType() *string {
+	return s.ModelType
 }
 
 func (s *CreateLLMConfigRequest) GetName() *string {
@@ -140,6 +154,11 @@ func (s *CreateLLMConfigRequest) SetEmbeddingDimension(v int32) *CreateLLMConfig
 	return s
 }
 
+func (s *CreateLLMConfigRequest) SetEnableFusion(v bool) *CreateLLMConfigRequest {
+	s.EnableFusion = &v
+	return s
+}
+
 func (s *CreateLLMConfigRequest) SetMaxTokens(v int32) *CreateLLMConfigRequest {
 	s.MaxTokens = &v
 	return s
@@ -147,6 +166,11 @@ func (s *CreateLLMConfigRequest) SetMaxTokens(v int32) *CreateLLMConfigRequest {
 
 func (s *CreateLLMConfigRequest) SetModel(v string) *CreateLLMConfigRequest {
 	s.Model = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetModelType(v string) *CreateLLMConfigRequest {
+	s.ModelType = &v
 	return s
 }
 

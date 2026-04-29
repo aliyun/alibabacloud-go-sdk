@@ -130,6 +130,7 @@ type ListLLMConfigsResponseBodyLLMConfigs struct {
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
+	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
@@ -149,7 +150,8 @@ type ListLLMConfigsResponseBodyLLMConfigs struct {
 	// example:
 	//
 	// text-embedding-v1
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// example:
 	//
 	// llm_config_name1
@@ -192,6 +194,10 @@ func (s *ListLLMConfigsResponseBodyLLMConfigs) GetEmbeddingDimension() *int32 {
 	return s.EmbeddingDimension
 }
 
+func (s *ListLLMConfigsResponseBodyLLMConfigs) GetEnableFusion() *bool {
+	return s.EnableFusion
+}
+
 func (s *ListLLMConfigsResponseBodyLLMConfigs) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -210,6 +216,10 @@ func (s *ListLLMConfigsResponseBodyLLMConfigs) GetMaxTokens() *int32 {
 
 func (s *ListLLMConfigsResponseBodyLLMConfigs) GetModel() *string {
 	return s.Model
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) GetModelType() *string {
+	return s.ModelType
 }
 
 func (s *ListLLMConfigsResponseBodyLLMConfigs) GetName() *string {
@@ -248,6 +258,11 @@ func (s *ListLLMConfigsResponseBodyLLMConfigs) SetEmbeddingDimension(v int32) *L
 	return s
 }
 
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetEnableFusion(v bool) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.EnableFusion = &v
+	return s
+}
+
 func (s *ListLLMConfigsResponseBodyLLMConfigs) SetGmtCreateTime(v string) *ListLLMConfigsResponseBodyLLMConfigs {
 	s.GmtCreateTime = &v
 	return s
@@ -270,6 +285,11 @@ func (s *ListLLMConfigsResponseBodyLLMConfigs) SetMaxTokens(v int32) *ListLLMCon
 
 func (s *ListLLMConfigsResponseBodyLLMConfigs) SetModel(v string) *ListLLMConfigsResponseBodyLLMConfigs {
 	s.Model = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetModelType(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.ModelType = &v
 	return s
 }
 

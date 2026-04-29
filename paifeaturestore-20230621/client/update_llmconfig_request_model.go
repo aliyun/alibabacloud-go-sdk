@@ -17,10 +17,14 @@ type iUpdateLLMConfigRequest interface {
 	GetBatchSize() *int32
 	SetEmbeddingDimension(v int32) *UpdateLLMConfigRequest
 	GetEmbeddingDimension() *int32
+	SetEnableFusion(v bool) *UpdateLLMConfigRequest
+	GetEnableFusion() *bool
 	SetMaxTokens(v int32) *UpdateLLMConfigRequest
 	GetMaxTokens() *int32
 	SetModel(v string) *UpdateLLMConfigRequest
 	GetModel() *string
+	SetModelType(v string) *UpdateLLMConfigRequest
+	GetModelType() *string
 	SetName(v string) *UpdateLLMConfigRequest
 	GetName() *string
 	SetRps(v int32) *UpdateLLMConfigRequest
@@ -48,6 +52,7 @@ type UpdateLLMConfigRequest struct {
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
+	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -59,7 +64,8 @@ type UpdateLLMConfigRequest struct {
 	// example:
 	//
 	// text-embedding-v1
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -98,12 +104,20 @@ func (s *UpdateLLMConfigRequest) GetEmbeddingDimension() *int32 {
 	return s.EmbeddingDimension
 }
 
+func (s *UpdateLLMConfigRequest) GetEnableFusion() *bool {
+	return s.EnableFusion
+}
+
 func (s *UpdateLLMConfigRequest) GetMaxTokens() *int32 {
 	return s.MaxTokens
 }
 
 func (s *UpdateLLMConfigRequest) GetModel() *string {
 	return s.Model
+}
+
+func (s *UpdateLLMConfigRequest) GetModelType() *string {
+	return s.ModelType
 }
 
 func (s *UpdateLLMConfigRequest) GetName() *string {
@@ -134,6 +148,11 @@ func (s *UpdateLLMConfigRequest) SetEmbeddingDimension(v int32) *UpdateLLMConfig
 	return s
 }
 
+func (s *UpdateLLMConfigRequest) SetEnableFusion(v bool) *UpdateLLMConfigRequest {
+	s.EnableFusion = &v
+	return s
+}
+
 func (s *UpdateLLMConfigRequest) SetMaxTokens(v int32) *UpdateLLMConfigRequest {
 	s.MaxTokens = &v
 	return s
@@ -141,6 +160,11 @@ func (s *UpdateLLMConfigRequest) SetMaxTokens(v int32) *UpdateLLMConfigRequest {
 
 func (s *UpdateLLMConfigRequest) SetModel(v string) *UpdateLLMConfigRequest {
 	s.Model = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetModelType(v string) *UpdateLLMConfigRequest {
+	s.ModelType = &v
 	return s
 }
 

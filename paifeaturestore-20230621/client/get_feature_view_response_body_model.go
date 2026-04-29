@@ -552,6 +552,7 @@ func (s *GetFeatureViewResponseBodyFieldsTransform) Validate() error {
 }
 
 type GetFeatureViewResponseBodyFieldsTransformInput struct {
+	Modality *string `json:"Modality,omitempty" xml:"Modality,omitempty"`
 	// example:
 	//
 	// f1
@@ -570,12 +571,21 @@ func (s GetFeatureViewResponseBodyFieldsTransformInput) GoString() string {
 	return s.String()
 }
 
+func (s *GetFeatureViewResponseBodyFieldsTransformInput) GetModality() *string {
+	return s.Modality
+}
+
 func (s *GetFeatureViewResponseBodyFieldsTransformInput) GetName() *string {
 	return s.Name
 }
 
 func (s *GetFeatureViewResponseBodyFieldsTransformInput) GetType() *string {
 	return s.Type
+}
+
+func (s *GetFeatureViewResponseBodyFieldsTransformInput) SetModality(v string) *GetFeatureViewResponseBodyFieldsTransformInput {
+	s.Modality = &v
+	return s
 }
 
 func (s *GetFeatureViewResponseBodyFieldsTransformInput) SetName(v string) *GetFeatureViewResponseBodyFieldsTransformInput {

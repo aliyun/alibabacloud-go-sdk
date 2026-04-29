@@ -17,6 +17,8 @@ type iGetLLMConfigResponseBody interface {
 	GetBatchSize() *int32
 	SetEmbeddingDimension(v int32) *GetLLMConfigResponseBody
 	GetEmbeddingDimension() *int32
+	SetEnableFusion(v bool) *GetLLMConfigResponseBody
+	GetEnableFusion() *bool
 	SetGmtCreateTime(v string) *GetLLMConfigResponseBody
 	GetGmtCreateTime() *string
 	SetGmtModifiedTime(v string) *GetLLMConfigResponseBody
@@ -27,6 +29,8 @@ type iGetLLMConfigResponseBody interface {
 	GetMaxTokens() *int32
 	SetModel(v string) *GetLLMConfigResponseBody
 	GetModel() *string
+	SetModelType(v string) *GetLLMConfigResponseBody
+	GetModelType() *string
 	SetName(v string) *GetLLMConfigResponseBody
 	GetName() *string
 	SetRequestId(v string) *GetLLMConfigResponseBody
@@ -54,6 +58,7 @@ type GetLLMConfigResponseBody struct {
 	//
 	// 1024
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
+	EnableFusion       *bool  `json:"EnableFusion,omitempty" xml:"EnableFusion,omitempty"`
 	// example:
 	//
 	// 2023-07-04T11:26:09.036+08:00
@@ -73,7 +78,8 @@ type GetLLMConfigResponseBody struct {
 	// example:
 	//
 	// text-embedding-v1
-	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// example:
 	//
 	// llm_config_name1
@@ -118,6 +124,10 @@ func (s *GetLLMConfigResponseBody) GetEmbeddingDimension() *int32 {
 	return s.EmbeddingDimension
 }
 
+func (s *GetLLMConfigResponseBody) GetEnableFusion() *bool {
+	return s.EnableFusion
+}
+
 func (s *GetLLMConfigResponseBody) GetGmtCreateTime() *string {
 	return s.GmtCreateTime
 }
@@ -136,6 +146,10 @@ func (s *GetLLMConfigResponseBody) GetMaxTokens() *int32 {
 
 func (s *GetLLMConfigResponseBody) GetModel() *string {
 	return s.Model
+}
+
+func (s *GetLLMConfigResponseBody) GetModelType() *string {
+	return s.ModelType
 }
 
 func (s *GetLLMConfigResponseBody) GetName() *string {
@@ -174,6 +188,11 @@ func (s *GetLLMConfigResponseBody) SetEmbeddingDimension(v int32) *GetLLMConfigR
 	return s
 }
 
+func (s *GetLLMConfigResponseBody) SetEnableFusion(v bool) *GetLLMConfigResponseBody {
+	s.EnableFusion = &v
+	return s
+}
+
 func (s *GetLLMConfigResponseBody) SetGmtCreateTime(v string) *GetLLMConfigResponseBody {
 	s.GmtCreateTime = &v
 	return s
@@ -196,6 +215,11 @@ func (s *GetLLMConfigResponseBody) SetMaxTokens(v int32) *GetLLMConfigResponseBo
 
 func (s *GetLLMConfigResponseBody) SetModel(v string) *GetLLMConfigResponseBody {
 	s.Model = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetModelType(v string) *GetLLMConfigResponseBody {
+	s.ModelType = &v
 	return s
 }
 

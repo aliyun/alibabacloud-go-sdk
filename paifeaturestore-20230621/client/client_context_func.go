@@ -97,7 +97,7 @@ func (client *Client) CheckModelFeatureFGFeatureWithContext(ctx context.Context,
 
 // Summary:
 //
-// 创建数据源。
+// Register a datasource under a FeatureStore Instance. A datasource provides offline storage (**MaxCompute**) or online storage (**Hologres**, **TableStore**, or **FeatureDB**) for projects in the Instance.
 //
 // @param request - CreateDatasourceRequest
 //
@@ -394,12 +394,20 @@ func (client *Client) CreateLLMConfigWithContext(ctx context.Context, InstanceId
 		body["EmbeddingDimension"] = request.EmbeddingDimension
 	}
 
+	if !dara.IsNil(request.EnableFusion) {
+		body["EnableFusion"] = request.EnableFusion
+	}
+
 	if !dara.IsNil(request.MaxTokens) {
 		body["MaxTokens"] = request.MaxTokens
 	}
 
 	if !dara.IsNil(request.Model) {
 		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		body["ModelType"] = request.ModelType
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -566,7 +574,7 @@ func (client *Client) CreateModelFeatureWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// 创建FeatureStore项目
+// Create a FeatureStore project under a PAI workspace. A project groups FeatureEntities, FeatureViews, and ModelFeatures sharing one **MaxCompute*	- offline datasource and one online datasource (**Hologres**, **TableStore**, or **FeatureDB**).
 //
 // @param request - CreateProjectRequest
 //
@@ -680,7 +688,7 @@ func (client *Client) CreateServiceIdentityRoleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 删除指定数据源。
+// Delete a datasource from a FeatureStore Instance.
 //
 // @param headers - map
 //
@@ -974,7 +982,7 @@ func (client *Client) ExportModelFeatureTrainingSetTableWithContext(ctx context.
 
 // Summary:
 //
-// 获取数据源详细信息。
+// Get the details of a datasource, including its type, connection info, and Config.
 //
 // @param headers - map
 //
@@ -1582,7 +1590,7 @@ func (client *Client) ListDatasourceTablesWithContext(ctx context.Context, Insta
 
 // Summary:
 //
-// 获取数据源列表。
+// List datasources under a FeatureStore Instance, filtered by workspace, type, or name.
 //
 // @param request - ListDatasourcesRequest
 //
@@ -2710,7 +2718,7 @@ func (client *Client) StopTaskWithContext(ctx context.Context, InstanceId *strin
 
 // Summary:
 //
-// 更新数据源信息。
+// Update a datasource\\"s info. The datasource type and workspace cannot be changed.
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -2765,6 +2773,53 @@ func (client *Client) UpdateDatasourceWithContext(ctx context.Context, InstanceI
 
 // Summary:
 //
+// 更新特征视图。
+//
+// @param request - UpdateFeatureViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFeatureViewResponse
+func (client *Client) UpdateFeatureViewWithContext(ctx context.Context, InstanceId *string, FeatureViewId *string, request *UpdateFeatureViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFeatureViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Fields) {
+		body["Fields"] = request.Fields
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFeatureView"),
+		Version:     dara.String("2023-06-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(InstanceId)) + "/featureviews/" + dara.PercentEncode(dara.StringValue(FeatureViewId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFeatureViewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新大模型调用信息配置
 //
 // @param request - UpdateLLMConfigRequest
@@ -2798,12 +2853,20 @@ func (client *Client) UpdateLLMConfigWithContext(ctx context.Context, InstanceId
 		body["EmbeddingDimension"] = request.EmbeddingDimension
 	}
 
+	if !dara.IsNil(request.EnableFusion) {
+		body["EnableFusion"] = request.EnableFusion
+	}
+
 	if !dara.IsNil(request.MaxTokens) {
 		body["MaxTokens"] = request.MaxTokens
 	}
 
 	if !dara.IsNil(request.Model) {
 		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		body["ModelType"] = request.ModelType
 	}
 
 	if !dara.IsNil(request.Name) {

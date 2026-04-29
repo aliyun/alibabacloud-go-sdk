@@ -182,7 +182,7 @@ func (client *Client) CheckModelFeatureFGFeature(InstanceId *string, ModelFeatur
 
 // Summary:
 //
-// 创建数据源。
+// Register a datasource under a FeatureStore Instance. A datasource provides offline storage (**MaxCompute**) or online storage (**Hologres**, **TableStore**, or **FeatureDB**) for projects in the Instance.
 //
 // @param request - CreateDatasourceRequest
 //
@@ -245,7 +245,7 @@ func (client *Client) CreateDatasourceWithOptions(InstanceId *string, request *C
 
 // Summary:
 //
-// 创建数据源。
+// Register a datasource under a FeatureStore Instance. A datasource provides offline storage (**MaxCompute**) or online storage (**Hologres**, **TableStore**, or **FeatureDB**) for projects in the Instance.
 //
 // @param request - CreateDatasourceRequest
 //
@@ -555,12 +555,20 @@ func (client *Client) CreateLLMConfigWithOptions(InstanceId *string, request *Cr
 		body["EmbeddingDimension"] = request.EmbeddingDimension
 	}
 
+	if !dara.IsNil(request.EnableFusion) {
+		body["EnableFusion"] = request.EnableFusion
+	}
+
 	if !dara.IsNil(request.MaxTokens) {
 		body["MaxTokens"] = request.MaxTokens
 	}
 
 	if !dara.IsNil(request.Model) {
 		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		body["ModelType"] = request.ModelType
 	}
 
 	if !dara.IsNil(request.Name) {
@@ -784,7 +792,7 @@ func (client *Client) CreateModelFeature(InstanceId *string, request *CreateMode
 
 // Summary:
 //
-// 创建FeatureStore项目
+// Create a FeatureStore project under a PAI workspace. A project groups FeatureEntities, FeatureViews, and ModelFeatures sharing one **MaxCompute*	- offline datasource and one online datasource (**Hologres**, **TableStore**, or **FeatureDB**).
 //
 // @param request - CreateProjectRequest
 //
@@ -851,7 +859,7 @@ func (client *Client) CreateProjectWithOptions(InstanceId *string, request *Crea
 
 // Summary:
 //
-// 创建FeatureStore项目
+// Create a FeatureStore project under a PAI workspace. A project groups FeatureEntities, FeatureViews, and ModelFeatures sharing one **MaxCompute*	- offline datasource and one online datasource (**Hologres**, **TableStore**, or **FeatureDB**).
 //
 // @param request - CreateProjectRequest
 //
@@ -936,7 +944,7 @@ func (client *Client) CreateServiceIdentityRole(request *CreateServiceIdentityRo
 
 // Summary:
 //
-// 删除指定数据源。
+// Delete a datasource from a FeatureStore Instance.
 //
 // @param headers - map
 //
@@ -969,7 +977,7 @@ func (client *Client) DeleteDatasourceWithOptions(InstanceId *string, Datasource
 
 // Summary:
 //
-// 删除指定数据源。
+// Delete a datasource from a FeatureStore Instance.
 //
 // @return DeleteDatasourceResponse
 func (client *Client) DeleteDatasource(InstanceId *string, DatasourceId *string) (_result *DeleteDatasourceResponse, _err error) {
@@ -1368,7 +1376,7 @@ func (client *Client) ExportModelFeatureTrainingSetTable(InstanceId *string, Mod
 
 // Summary:
 //
-// 获取数据源详细信息。
+// Get the details of a datasource, including its type, connection info, and Config.
 //
 // @param headers - map
 //
@@ -1401,7 +1409,7 @@ func (client *Client) GetDatasourceWithOptions(InstanceId *string, DatasourceId 
 
 // Summary:
 //
-// 获取数据源详细信息。
+// Get the details of a datasource, including its type, connection info, and Config.
 //
 // @return GetDatasourceResponse
 func (client *Client) GetDatasource(InstanceId *string, DatasourceId *string) (_result *GetDatasourceResponse, _err error) {
@@ -2252,7 +2260,7 @@ func (client *Client) ListDatasourceTables(InstanceId *string, DatasourceId *str
 
 // Summary:
 //
-// 获取数据源列表。
+// List datasources under a FeatureStore Instance, filtered by workspace, type, or name.
 //
 // @param request - ListDatasourcesRequest
 //
@@ -2323,7 +2331,7 @@ func (client *Client) ListDatasourcesWithOptions(InstanceId *string, request *Li
 
 // Summary:
 //
-// 获取数据源列表。
+// List datasources under a FeatureStore Instance, filtered by workspace, type, or name.
 //
 // @param request - ListDatasourcesRequest
 //
@@ -3714,7 +3722,7 @@ func (client *Client) StopTask(InstanceId *string, TaskId *string) (_result *Sto
 
 // Summary:
 //
-// 更新数据源信息。
+// Update a datasource\\"s info. The datasource type and workspace cannot be changed.
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -3769,7 +3777,7 @@ func (client *Client) UpdateDatasourceWithOptions(InstanceId *string, Datasource
 
 // Summary:
 //
-// 更新数据源信息。
+// Update a datasource\\"s info. The datasource type and workspace cannot be changed.
 //
 // @param request - UpdateDatasourceRequest
 //
@@ -3779,6 +3787,72 @@ func (client *Client) UpdateDatasource(InstanceId *string, DatasourceId *string,
 	headers := make(map[string]*string)
 	_result = &UpdateDatasourceResponse{}
 	_body, _err := client.UpdateDatasourceWithOptions(InstanceId, DatasourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新特征视图。
+//
+// @param request - UpdateFeatureViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFeatureViewResponse
+func (client *Client) UpdateFeatureViewWithOptions(InstanceId *string, FeatureViewId *string, request *UpdateFeatureViewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateFeatureViewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Fields) {
+		body["Fields"] = request.Fields
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateFeatureView"),
+		Version:     dara.String("2023-06-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/instances/" + dara.PercentEncode(dara.StringValue(InstanceId)) + "/featureviews/" + dara.PercentEncode(dara.StringValue(FeatureViewId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateFeatureViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新特征视图。
+//
+// @param request - UpdateFeatureViewRequest
+//
+// @return UpdateFeatureViewResponse
+func (client *Client) UpdateFeatureView(InstanceId *string, FeatureViewId *string, request *UpdateFeatureViewRequest) (_result *UpdateFeatureViewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFeatureViewResponse{}
+	_body, _err := client.UpdateFeatureViewWithOptions(InstanceId, FeatureViewId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3821,12 +3895,20 @@ func (client *Client) UpdateLLMConfigWithOptions(InstanceId *string, LLMConfigId
 		body["EmbeddingDimension"] = request.EmbeddingDimension
 	}
 
+	if !dara.IsNil(request.EnableFusion) {
+		body["EnableFusion"] = request.EnableFusion
+	}
+
 	if !dara.IsNil(request.MaxTokens) {
 		body["MaxTokens"] = request.MaxTokens
 	}
 
 	if !dara.IsNil(request.Model) {
 		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.ModelType) {
+		body["ModelType"] = request.ModelType
 	}
 
 	if !dara.IsNil(request.Name) {

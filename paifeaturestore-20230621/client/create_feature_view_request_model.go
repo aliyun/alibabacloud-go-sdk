@@ -362,6 +362,7 @@ func (s *CreateFeatureViewRequestFieldsTransform) Validate() error {
 }
 
 type CreateFeatureViewRequestFieldsTransformInput struct {
+	Modality *string `json:"Modality,omitempty" xml:"Modality,omitempty"`
 	// example:
 	//
 	// f1
@@ -380,12 +381,21 @@ func (s CreateFeatureViewRequestFieldsTransformInput) GoString() string {
 	return s.String()
 }
 
+func (s *CreateFeatureViewRequestFieldsTransformInput) GetModality() *string {
+	return s.Modality
+}
+
 func (s *CreateFeatureViewRequestFieldsTransformInput) GetName() *string {
 	return s.Name
 }
 
 func (s *CreateFeatureViewRequestFieldsTransformInput) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateFeatureViewRequestFieldsTransformInput) SetModality(v string) *CreateFeatureViewRequestFieldsTransformInput {
+	s.Modality = &v
+	return s
 }
 
 func (s *CreateFeatureViewRequestFieldsTransformInput) SetName(v string) *CreateFeatureViewRequestFieldsTransformInput {
