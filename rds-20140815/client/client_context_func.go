@@ -11901,6 +11901,86 @@ func (client *Client) DescribeDBInstanceSecurityGroupRuleWithContext(ctx context
 
 // Summary:
 //
+// 查询实例切换日志
+//
+// @param request - DescribeDBInstanceSwitchLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceSwitchLogResponse
+func (client *Client) DescribeDBInstanceSwitchLogWithContext(ctx context.Context, request *DescribeDBInstanceSwitchLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstanceSwitchLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBInstanceSwitchLog"),
+		Version:     dara.String("2014-08-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBInstanceSwitchLogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status of the Transparent Data Encryption (TDE) feature for an instance.
 //
 // Description:
@@ -27419,7 +27499,7 @@ func (client *Client) ModifyRCDeploymentSetAttributeWithContext(ctx context.Cont
 
 // Summary:
 //
-// 修改块存储属性
+// Modifies the attributes of a block storage device, such as the names and descriptions of the devices, whether to release the devices together with the associated Elastic Compute Service (ECS) instances, whether its automatically-generated snapshots are deleted with the device, and whether automatic snapshot or I/O performance burst is enabled.
 //
 // @param request - ModifyRCDiskAttributeRequest
 //
