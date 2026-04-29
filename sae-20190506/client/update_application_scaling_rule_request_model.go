@@ -23,6 +23,8 @@ type iUpdateApplicationScalingRuleRequest interface {
 	GetScalingRuleName() *string
 	SetScalingRuleTimer(v string) *UpdateApplicationScalingRuleRequest
 	GetScalingRuleTimer() *string
+	SetScalingRuleType(v string) *UpdateApplicationScalingRuleRequest
+	GetScalingRuleType() *string
 }
 
 type UpdateApplicationScalingRuleRequest struct {
@@ -173,6 +175,7 @@ type UpdateApplicationScalingRuleRequest struct {
 	//
 	// {"beginDate":null,"endDate":null,"period":"	- 	- *","schedules":[{"atTime":"08:00","targetReplicas":10},{"atTime":"20:00","targetReplicas":3}]}
 	ScalingRuleTimer *string `json:"ScalingRuleTimer,omitempty" xml:"ScalingRuleTimer,omitempty"`
+	ScalingRuleType  *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleRequest) String() string {
@@ -211,6 +214,10 @@ func (s *UpdateApplicationScalingRuleRequest) GetScalingRuleTimer() *string {
 	return s.ScalingRuleTimer
 }
 
+func (s *UpdateApplicationScalingRuleRequest) GetScalingRuleType() *string {
+	return s.ScalingRuleType
+}
+
 func (s *UpdateApplicationScalingRuleRequest) SetAppId(v string) *UpdateApplicationScalingRuleRequest {
 	s.AppId = &v
 	return s
@@ -243,6 +250,11 @@ func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleName(v string) *Upda
 
 func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleTimer(v string) *UpdateApplicationScalingRuleRequest {
 	s.ScalingRuleTimer = &v
+	return s
+}
+
+func (s *UpdateApplicationScalingRuleRequest) SetScalingRuleType(v string) *UpdateApplicationScalingRuleRequest {
+	s.ScalingRuleType = &v
 	return s
 }
 

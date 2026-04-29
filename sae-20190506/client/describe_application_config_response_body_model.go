@@ -2705,6 +2705,8 @@ type DescribeApplicationConfigResponseBodyDataSidecarContainersConfig struct {
 	//
 	// test
 	Name            *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	PostStart       *string                                                                            `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop         *string                                                                            `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	Readiness       *string                                                                            `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	SecretMountDesc []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfigSecretMountDesc `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty" type:"Repeated"`
 }
@@ -2759,6 +2761,14 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetMe
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetName() *string {
 	return s.Name
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetPostStart() *string {
+	return s.PostStart
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetPreStop() *string {
+	return s.PreStop
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) GetReadiness() *string {
@@ -2821,6 +2831,16 @@ func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetMe
 
 func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetName(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetPostStart(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
+	s.PostStart = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig) SetPreStop(v string) *DescribeApplicationConfigResponseBodyDataSidecarContainersConfig {
+	s.PreStop = &v
 	return s
 }
 

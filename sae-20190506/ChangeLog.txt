@@ -1,3 +1,9 @@
+2026-04-29 Version: v4.12.2
+- Update API DescribeApplicationConfig: add response parameters Body.Data.SidecarContainersConfig.$.PostStart.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.SidecarContainersConfig.$.PreStop.
+- Update API UpdateApplicationScalingRule: add request parameters ScalingRuleType.
+
+
 2026-03-27 Version: v4.12.1
 - Generated golang 2019-05-06 for sae.
 

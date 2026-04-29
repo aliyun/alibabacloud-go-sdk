@@ -8635,6 +8635,10 @@ func (client *Client) UpdateApplicationScalingRuleWithContext(ctx context.Contex
 		query["ScalingRuleTimer"] = request.ScalingRuleTimer
 	}
 
+	if !dara.IsNil(request.ScalingRuleType) {
+		query["ScalingRuleType"] = request.ScalingRuleType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),

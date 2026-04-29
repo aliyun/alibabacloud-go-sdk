@@ -31,6 +31,10 @@ type iSidecarContainerConfig interface {
 	GetMemory() *int32
 	SetName(v string) *SidecarContainerConfig
 	GetName() *string
+	SetPostStart(v string) *SidecarContainerConfig
+	GetPostStart() *string
+	SetPreStop(v string) *SidecarContainerConfig
+	GetPreStop() *string
 	SetReadiness(v string) *SidecarContainerConfig
 	GetReadiness() *string
 	SetSecretMountDesc(v string) *SidecarContainerConfig
@@ -99,6 +103,8 @@ type SidecarContainerConfig struct {
 	//
 	// name
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PostStart       *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
+	PreStop         *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
 	Readiness       *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 }
@@ -153,6 +159,14 @@ func (s *SidecarContainerConfig) GetMemory() *int32 {
 
 func (s *SidecarContainerConfig) GetName() *string {
 	return s.Name
+}
+
+func (s *SidecarContainerConfig) GetPostStart() *string {
+	return s.PostStart
+}
+
+func (s *SidecarContainerConfig) GetPreStop() *string {
+	return s.PreStop
 }
 
 func (s *SidecarContainerConfig) GetReadiness() *string {
@@ -215,6 +229,16 @@ func (s *SidecarContainerConfig) SetMemory(v int32) *SidecarContainerConfig {
 
 func (s *SidecarContainerConfig) SetName(v string) *SidecarContainerConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetPostStart(v string) *SidecarContainerConfig {
+	s.PostStart = &v
+	return s
+}
+
+func (s *SidecarContainerConfig) SetPreStop(v string) *SidecarContainerConfig {
+	s.PreStop = &v
 	return s
 }
 
