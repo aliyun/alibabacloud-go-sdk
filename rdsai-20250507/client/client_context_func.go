@@ -3624,6 +3624,60 @@ func (client *Client) UpdateCustomAgentWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// 更新 API key 的告警百分比阈值
+//
+// @param tmpReq - UpdateMOQuotaAlertThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMOQuotaAlertThresholdResponse
+func (client *Client) UpdateMOQuotaAlertThresholdWithContext(ctx context.Context, tmpReq *UpdateMOQuotaAlertThresholdRequest, runtime *dara.RuntimeOptions) (_result *UpdateMOQuotaAlertThresholdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateMOQuotaAlertThresholdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Apikey) {
+		request.ApikeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Apikey, dara.String("Apikey"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApikeyShrink) {
+		query["Apikey"] = request.ApikeyShrink
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMOQuotaAlertThreshold"),
+		Version:     dara.String("2025-05-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMOQuotaAlertThresholdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the information about a specified skill.
 //
 // @param tmpReq - UpdateSkillRequest

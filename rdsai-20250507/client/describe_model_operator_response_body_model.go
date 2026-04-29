@@ -119,8 +119,9 @@ type DescribeModelOperatorResponseBodyData struct {
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
-	InstanceId   *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	KeyUsageList []*DescribeModelOperatorResponseBodyDataKeyUsageList `json:"KeyUsageList,omitempty" xml:"KeyUsageList,omitempty" type:"Repeated"`
+	InstanceId         *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	KeyUsageList       []*DescribeModelOperatorResponseBodyDataKeyUsageList `json:"KeyUsageList,omitempty" xml:"KeyUsageList,omitempty" type:"Repeated"`
+	PrefixCacheEnabled *bool                                                `json:"PrefixCacheEnabled,omitempty" xml:"PrefixCacheEnabled,omitempty"`
 	// example:
 	//
 	// 1772439028000
@@ -183,6 +184,10 @@ func (s *DescribeModelOperatorResponseBodyData) GetKeyUsageList() []*DescribeMod
 	return s.KeyUsageList
 }
 
+func (s *DescribeModelOperatorResponseBodyData) GetPrefixCacheEnabled() *bool {
+	return s.PrefixCacheEnabled
+}
+
 func (s *DescribeModelOperatorResponseBodyData) GetStartTime() *int64 {
 	return s.StartTime
 }
@@ -241,6 +246,11 @@ func (s *DescribeModelOperatorResponseBodyData) SetInstanceId(v string) *Describ
 
 func (s *DescribeModelOperatorResponseBodyData) SetKeyUsageList(v []*DescribeModelOperatorResponseBodyDataKeyUsageList) *DescribeModelOperatorResponseBodyData {
 	s.KeyUsageList = v
+	return s
+}
+
+func (s *DescribeModelOperatorResponseBodyData) SetPrefixCacheEnabled(v bool) *DescribeModelOperatorResponseBodyData {
+	s.PrefixCacheEnabled = &v
 	return s
 }
 
