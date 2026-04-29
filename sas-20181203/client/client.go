@@ -1785,6 +1785,76 @@ func (client *Client) AddUninstallClientsByUuids(request *AddUninstallClientsByU
 
 // Summary:
 //
+// 新增未知威胁分析进程
+//
+// @param request - AddUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUnknownThreatDetectProcessResponse
+func (client *Client) AddUnknownThreatDetectProcessWithOptions(request *AddUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *AddUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventIdList) {
+		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.ProcessList) {
+		query["ProcessList"] = request.ProcessList
+	}
+
+	if !dara.IsNil(request.UuidList) {
+		query["UuidList"] = request.UuidList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增未知威胁分析进程
+//
+// @param request - AddUnknownThreatDetectProcessRequest
+//
+// @return AddUnknownThreatDetectProcessResponse
+func (client *Client) AddUnknownThreatDetectProcess(request *AddUnknownThreatDetectProcessRequest) (_result *AddUnknownThreatDetectProcessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddUnknownThreatDetectProcessResponse{}
+	_body, _err := client.AddUnknownThreatDetectProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a honeypot.
 //
 // @param request - AddVpcHoneyPotRequest
@@ -2870,8 +2940,6 @@ func (client *Client) CheckSecurityEventId(request *CheckSecurityEventIdRequest)
 // Summary:
 //
 // Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
-//
-// @param request - CheckStsTokenAuthRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7497,6 +7565,84 @@ func (client *Client) CreateUniRestorePlan(request *CreateUniRestorePlanRequest)
 
 // Summary:
 //
+// 创建未知威胁发现的策略
+//
+// @param request - CreateUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUnknownThreatDetectStrategyResponse
+func (client *Client) CreateUnknownThreatDetectStrategyWithOptions(request *CreateUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetSelectionType) {
+		query["AssetSelectionType"] = request.AssetSelectionType
+	}
+
+	if !dara.IsNil(request.DurationDaysAfterInit) {
+		query["DurationDaysAfterInit"] = request.DurationDaysAfterInit
+	}
+
+	if !dara.IsNil(request.DurationDaysAfterStop) {
+		query["DurationDaysAfterStop"] = request.DurationDaysAfterStop
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建未知威胁发现的策略
+//
+// @param request - CreateUnknownThreatDetectStrategyRequest
+//
+// @return CreateUnknownThreatDetectStrategyResponse
+func (client *Client) CreateUnknownThreatDetectStrategy(request *CreateUnknownThreatDetectStrategyRequest) (_result *CreateUnknownThreatDetectStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CreateUnknownThreatDetectStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates the risk level settings for baseline check items.
 //
 // @param request - CreateUserSettingRequest
@@ -11190,6 +11336,130 @@ func (client *Client) DeleteUniBackupPolicy(request *DeleteUniBackupPolicyReques
 
 // Summary:
 //
+// 删除未知威胁发现进程
+//
+// @param request - DeleteUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUnknownThreatDetectProcessResponse
+func (client *Client) DeleteUnknownThreatDetectProcessWithOptions(request *DeleteUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *DeleteUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProcessIdList) {
+		query["ProcessIdList"] = request.ProcessIdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除未知威胁发现进程
+//
+// @param request - DeleteUnknownThreatDetectProcessRequest
+//
+// @return DeleteUnknownThreatDetectProcessResponse
+func (client *Client) DeleteUnknownThreatDetectProcess(request *DeleteUnknownThreatDetectProcessRequest) (_result *DeleteUnknownThreatDetectProcessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUnknownThreatDetectProcessResponse{}
+	_body, _err := client.DeleteUnknownThreatDetectProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除未知威胁发现策略
+//
+// @param request - DeleteUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUnknownThreatDetectStrategyResponse
+func (client *Client) DeleteUnknownThreatDetectStrategyWithOptions(request *DeleteUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除未知威胁发现策略
+//
+// @param request - DeleteUnknownThreatDetectStrategyRequest
+//
+// @return DeleteUnknownThreatDetectStrategyResponse
+func (client *Client) DeleteUnknownThreatDetectStrategy(request *DeleteUnknownThreatDetectStrategyRequest) (_result *DeleteUnknownThreatDetectStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.DeleteUnknownThreatDetectStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a honeypot.
 //
 // @param request - DeleteVpcHoneyPotRequest
@@ -11389,8 +11659,6 @@ func (client *Client) DeleteVulWhitelist(request *DeleteVulWhitelistRequest) (_r
 // Summary:
 //
 // Queries the overview of user AI assets.
-//
-// @param request - DescribeAIAssetSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -12100,8 +12368,6 @@ func (client *Client) DescribeAlarmEventStackInfo(request *DescribeAlarmEventSta
 //
 // Queries the information about all assets. The information includes asset group IDs and asset names.
 //
-// @param request - DescribeAllEntityRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAllEntityResponse
@@ -12427,8 +12693,6 @@ func (client *Client) DescribeAntiBruteForceRules(request *DescribeAntiBruteForc
 //
 // Queries the scan cycle for application vulnerabilities.
 //
-// @param request - DescribeAppVulScanCycleRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAppVulScanCycleResponse
@@ -12627,8 +12891,6 @@ func (client *Client) DescribeAssetDetailByUuids(request *DescribeAssetDetailByU
 //
 // The ID of the request, which is used to locate and troubleshoot issues.
 //
-// @param request - DescribeAssetSummaryRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeAssetSummaryResponse
@@ -12814,6 +13076,8 @@ func (client *Client) DescribeAssetsSecurityEventSummary(request *DescribeAssets
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeAttackAnalysisData is deprecated, please use Sas::2018-12-03::ListAttackEventInfo instead.
+//
 // Summary:
 //
 // Queries the statistics of attack analysis.
@@ -12886,6 +13150,8 @@ func (client *Client) DescribeAttackAnalysisDataWithOptions(request *DescribeAtt
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeAttackAnalysisData is deprecated, please use Sas::2018-12-03::ListAttackEventInfo instead.
+//
 // Summary:
 //
 // Queries the statistics of attack analysis.
@@ -12893,6 +13159,7 @@ func (client *Client) DescribeAttackAnalysisDataWithOptions(request *DescribeAtt
 // @param request - DescribeAttackAnalysisDataRequest
 //
 // @return DescribeAttackAnalysisDataResponse
+// Deprecated
 func (client *Client) DescribeAttackAnalysisData(request *DescribeAttackAnalysisDataRequest) (_result *DescribeAttackAnalysisDataResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeAttackAnalysisDataResponse{}
@@ -12985,8 +13252,6 @@ func (client *Client) DescribeAttestors(request *DescribeAttestorsRequest) (_res
 // Summary:
 //
 // Queries the number of days during which a detected vulnerability is retained before the vulnerability is automatically deleted.
-//
-// @param request - DescribeAutoDelConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -13469,8 +13734,6 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 //
 // If you have created restoration tasks, you can call this operation to query the number of restoration tasks that are in the **restored*	- or **being restored*	- state.
 //
-// @param request - DescribeBackupRestoreCountRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeBackupRestoreCountResponse
@@ -13754,8 +14017,6 @@ func (client *Client) DescribeBruteForceSummary(request *DescribeBruteForceSumma
 //
 // # Check if the asset can be sold by VPC
 //
-// @param request - DescribeCanAccessVpcSaleRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCanAccessVpcSaleResponse
@@ -13966,8 +14227,6 @@ func (client *Client) DescribeCanFixVulList(request *DescribeCanFixVulListReques
 // Summary:
 //
 // Checks the permissions on the trial use of Security Center.
-//
-// @param request - DescribeCanTrySasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -14297,8 +14556,6 @@ func (client *Client) DescribeCheckFixDetails(request *DescribeCheckFixDetailsRe
 // Summary:
 //
 // Queries the result of the ISO 27001 compliance check.
-//
-// @param request - DescribeCheckResultRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -15137,8 +15394,6 @@ func (client *Client) DescribeCloudCenterInstances(request *DescribeCloudCenterI
 //
 // Queries the statistics of cloud services whose instances are protected by Security Center.
 //
-// @param request - DescribeCloudProductFieldStatisticsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCloudProductFieldStatisticsResponse
@@ -15276,7 +15531,7 @@ func (client *Client) DescribeCloudVendorAccountAKList(request *DescribeCloudVen
 
 // Summary:
 //
-// # Get the cloud product access template for vendors
+// Multicloud configuration management queries the CTDR cloud vendor product access template configuration.
 //
 // @param request - DescribeCloudVendorProductTemplateConfigRequest
 //
@@ -15324,7 +15579,7 @@ func (client *Client) DescribeCloudVendorProductTemplateConfigWithOptions(reques
 
 // Summary:
 //
-// # Get the cloud product access template for vendors
+// Multicloud configuration management queries the CTDR cloud vendor product access template configuration.
 //
 // @param request - DescribeCloudVendorProductTemplateConfigRequest
 //
@@ -16382,8 +16637,6 @@ func (client *Client) DescribeContainerCriteria(request *DescribeContainerCriter
 //
 // Queries the statistical information about containers.
 //
-// @param request - DescribeContainerFieldStatisticsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeContainerFieldStatisticsResponse
@@ -16993,8 +17246,6 @@ func (client *Client) DescribeContainerTags(request *DescribeContainerTagsReques
 //
 // Queries the number of images that are not scanned.
 //
-// @param request - DescribeCountNotScannedImageRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeCountNotScannedImageResponse
@@ -17039,8 +17290,6 @@ func (client *Client) DescribeCountNotScannedImage() (_result *DescribeCountNotS
 // Summary:
 //
 // Queries the number of images that are scanned.
-//
-// @param request - DescribeCountScannedImageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -17868,8 +18117,6 @@ func (client *Client) DescribeDefaultKeyInfo(request *DescribeDefaultKeyInfoRequ
 // Summary:
 //
 // Queries the default installation version of the proxy that is used in hybrid-cloud scenarios.
-//
-// @param request - DescribeDefaultProxyInstallVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -18738,8 +18985,6 @@ func (client *Client) DescribeDynamicDictUploadInfo(request *DescribeDynamicDict
 //
 // Queries whether Security Center is authorized to scan for urgent vulnerabilities.
 //
-// @param request - DescribeEmgUserAgreementRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeEmgUserAgreementResponse
@@ -19475,8 +19720,6 @@ func (client *Client) DescribeExposedInstanceList(request *DescribeExposedInstan
 //
 // Queries the exposure statistics of the assets on the Internet.
 //
-// @param request - DescribeExposedStatisticsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeExposedStatisticsResponse
@@ -19689,8 +19932,6 @@ func (client *Client) DescribeFieldStatistics(request *DescribeFieldStatisticsRe
 // Summary:
 //
 // Queries the number of vulnerabilities that are fixed by the pay-as-you-go vulnerability fixing feature.
-//
-// @param request - DescribeFixUsedCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -22027,8 +22268,6 @@ func (client *Client) DescribeImageEventOperationPage(request *DescribeImageEven
 //
 // Queries the configurations of the scheduled fix of image risks.
 //
-// @param request - DescribeImageFixCycleConfigRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageFixCycleConfigResponse
@@ -23062,8 +23301,6 @@ func (client *Client) DescribeImageRepoList(request *DescribeImageRepoListReques
 //
 // Queries the number of images on which security alerts are generated. Security alerts are generated for risks such as vulnerabilities, baselines risks, and malicious samples.
 //
-// @param request - DescribeImageRiskLevelStatisticRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeImageRiskLevelStatisticResponse
@@ -23108,8 +23345,6 @@ func (client *Client) DescribeImageRiskLevelStatistic() (_result *DescribeImageR
 // Summary:
 //
 // Queries the details of the quota for container image scan.
-//
-// @param request - DescribeImageScanAuthCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -23447,8 +23682,6 @@ func (client *Client) DescribeImageSensitiveFileList(request *DescribeImageSensi
 // Security Center can scan for security risks and collect statistics only for **Container Registry Enterprise Edition instances**.
 //
 // >  Security Center cannot scan for security risks or collect statistics for **default*	- Container Registry instances.
-//
-// @param request - DescribeImageStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -23831,8 +24064,6 @@ func (client *Client) DescribeInstallCaptcha(request *DescribeInstallCaptchaRequ
 //
 // Queries the installation verification code that is used to run the installation command of the Security Center agent.
 //
-// @param request - DescribeInstallCodeRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeInstallCodeResponse
@@ -23885,8 +24116,6 @@ func (client *Client) DescribeInstallCode() (_result *DescribeInstallCodeRespons
 // ### QPS limit
 //
 // You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
-//
-// @param request - DescribeInstallCodesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -24221,8 +24450,6 @@ func (client *Client) DescribeInstanceVulStatistics(request *DescribeInstanceVul
 //
 // Queries the progress of the last virus scan task.
 //
-// @param request - DescribeLatestScanTaskRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLatestScanTaskResponse
@@ -24478,8 +24705,6 @@ func (client *Client) DescribeLoginBaseConfigs(request *DescribeLoginBaseConfigs
 //
 // Queries the alerting status for unapproved logon IP addresses, unapproved logon time ranges, or unapproved logon accounts.
 //
-// @param request - DescribeLoginSwitchConfigsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeLoginSwitchConfigsResponse
@@ -24723,8 +24948,6 @@ func (client *Client) DescribeMatchedMaliciousNames(request *DescribeMatchedMali
 //
 // Queries the configurations of the asset fingerprint module.
 //
-// @param request - DescribeModuleConfigRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeModuleConfigResponse
@@ -24769,8 +24992,6 @@ func (client *Client) DescribeModuleConfig() (_result *DescribeModuleConfigRespo
 // Summary:
 //
 // Queries the list of accounts that are added to the multi-account management feature as members.
-//
-// @param request - DescribeMonitorAccountsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -25447,7 +25668,7 @@ func (client *Client) DescribePropertyCount(request *DescribePropertyCountReques
 
 // Summary:
 //
-// # Query Asset Fingerprint Scheduled Task Details
+// Queries the detailed info of the Schedule Job List in host Assets.
 //
 // @param request - DescribePropertyCronDetailRequest
 //
@@ -25523,7 +25744,7 @@ func (client *Client) DescribePropertyCronDetailWithOptions(request *DescribePro
 
 // Summary:
 //
-// # Query Asset Fingerprint Scheduled Task Details
+// Queries the detailed info of the Schedule Job List in host Assets.
 //
 // @param request - DescribePropertyCronDetailRequest
 //
@@ -29933,8 +30154,6 @@ func (client *Client) DescribeSummaryInfo(request *DescribeSummaryInfoRequest) (
 //
 // Queries the time when a system vulnerability was last detected.
 //
-// @param request - DescribeSupervisonInfoRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeSupervisonInfoResponse
@@ -29979,8 +30198,6 @@ func (client *Client) DescribeSupervisonInfo() (_result *DescribeSupervisonInfoR
 // Summary:
 //
 // Queries the regions in which the anti-ransomware feature is supported.
-//
-// @param request - DescribeSupportRegionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -30606,8 +30823,6 @@ func (client *Client) DescribeSuspiciousOverallConfig(request *DescribeSuspiciou
 // Summary:
 //
 // # Query Alarm Security Event Statistics
-//
-// @param request - DescribeSuspiciousSecurityEventyStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -31464,8 +31679,6 @@ func (client *Client) DescribeUniBackupPolicyDetail(request *DescribeUniBackupPo
 //
 // Queries the statistics on backups based on anti-ransomware policies.
 //
-// @param request - DescribeUniBackupStatisticsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUniBackupStatisticsResponse
@@ -31585,8 +31798,6 @@ func (client *Client) DescribeUniRecoverableList(request *DescribeUniRecoverable
 //
 // Queries the region that is supported by anti-ransomware for databases.
 //
-// @param request - DescribeUniSupportRegionRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeUniSupportRegionResponse
@@ -31631,8 +31842,6 @@ func (client *Client) DescribeUniSupportRegion() (_result *DescribeUniSupportReg
 // Summary:
 //
 // Queries the information about the servers to which an anti-ransomware policy is applied.
-//
-// @param request - DescribeUserBackupMachinesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -31928,8 +32137,6 @@ func (client *Client) DescribeUuidsByVulNames(request *DescribeUuidsByVulNamesRe
 // Summary:
 //
 // Queries the service providers whose assets can be added to Security Center.
-//
-// @param request - DescribeVendorListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -32259,8 +32466,6 @@ func (client *Client) DescribeVpcHoneyPotList(request *DescribeVpcHoneyPotListRe
 // Summary:
 //
 // Queries the information about virtual private clouds (VPCs).
-//
-// @param request - DescribeVpcListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -32657,8 +32862,6 @@ func (client *Client) DescribeVulExportInfo(request *DescribeVulExportInfoReques
 //
 // Queries the statistics of vulnerability fixes.
 //
-// @param request - DescribeVulFixStatisticsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeVulFixStatisticsResponse
@@ -32927,8 +33130,6 @@ func (client *Client) DescribeVulListPage(request *DescribeVulListPageRequest) (
 // Summary:
 //
 // Queries the statistics of vulnerabilities in Security Center.
-//
-// @param request - DescribeVulMetaCountStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -33575,8 +33776,6 @@ func (client *Client) DescribeWebLockConfigList(request *DescribeWebLockConfigLi
 //
 // Queries the types of files that are excluded from web tamper proofing.
 //
-// @param request - DescribeWebLockExclusiveFileTypeRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeWebLockExclusiveFileTypeResponse
@@ -33774,8 +33973,6 @@ func (client *Client) DescribeWebLockFileEvents(request *DescribeWebLockFileEven
 //
 // Queries the summary information about the types of files for which web tamper proofing is enabled.
 //
-// @param request - DescribeWebLockFileTypeSummaryRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeWebLockFileTypeSummaryResponse
@@ -33820,8 +34017,6 @@ func (client *Client) DescribeWebLockFileTypeSummary() (_result *DescribeWebLock
 // Summary:
 //
 // Queries the types of files that can be protected by web tamper proofing.
-//
-// @param request - DescribeWebLockInclusiveFileTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -34077,8 +34272,6 @@ func (client *Client) DescribeWebLockStatus(request *DescribeWebLockStatusReques
 // Summary:
 //
 // Queries the number of times that the files protected by web tamper proofing are changed.
-//
-// @param request - DescribeWebLockTotalFileChangeCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -35244,8 +35437,6 @@ func (client *Client) EnableCustomInstanceBlockRecord(request *EnableCustomInsta
 // Description:
 //
 // You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
-//
-// @param request - EnableServiceAccessResourceDirectoryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -37433,7 +37624,7 @@ func (client *Client) GetAttackEventDetail(request *GetAttackEventDetailRequest)
 
 // Summary:
 //
-// Query Attack Path Event Details.
+// Query attack path management event details.
 //
 // @param request - GetAttackPathEventDetailRequest
 //
@@ -37485,7 +37676,7 @@ func (client *Client) GetAttackPathEventDetailWithOptions(request *GetAttackPath
 
 // Summary:
 //
-// Query Attack Path Event Details.
+// Query attack path management event details.
 //
 // @param request - GetAttackPathEventDetailRequest
 //
@@ -37504,8 +37695,6 @@ func (client *Client) GetAttackPathEventDetail(request *GetAttackPathEventDetail
 // Summary:
 //
 // Query Attack Path Event Statistics.
-//
-// @param request - GetAttackPathEventStatisticsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -37680,8 +37869,6 @@ func (client *Client) GetAttackPathWhitelist(request *GetAttackPathWhitelistRequ
 //
 // Queries a list of attack types on the Attack Analysis page.
 //
-// @param request - GetAttackTypeListRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAttackTypeListResponse
@@ -37726,8 +37913,6 @@ func (client *Client) GetAttackTypeList() (_result *GetAttackTypeListResponse, _
 // Summary:
 //
 // Queries the statistics of asset protection quota.
-//
-// @param request - GetAuthSummaryRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -37774,8 +37959,6 @@ func (client *Client) GetAuthSummary() (_result *GetAuthSummaryResponse, _err er
 //
 // Queries the statistics about the numbers of assets protected by each edition of Security Center.
 //
-// @param request - GetAuthVersionStatisticRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetAuthVersionStatisticResponse
@@ -37821,8 +38004,6 @@ func (client *Client) GetAuthVersionStatistic() (_result *GetAuthVersionStatisti
 //
 // Checks whether the managed anti-ransomware feature can automatically configure an anti-ransomware policy for servers.
 //
-// @param request - GetBackupAutoConfigStatusRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBackupAutoConfigStatusResponse
@@ -37867,8 +38048,6 @@ func (client *Client) GetBackupAutoConfigStatus() (_result *GetBackupAutoConfigS
 // Summary:
 //
 // Queries the anti-ransomware capacity that is used.
-//
-// @param request - GetBackupStorageCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -38042,8 +38221,6 @@ func (client *Client) GetCanTrySas(request *GetCanTrySasRequest) (_result *GetCa
 // Summary:
 //
 // Queries the information about an automatic configuration check on cloud services.
-//
-// @param request - GetCheckConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -39260,8 +39437,6 @@ func (client *Client) GetClusterScannerYaml(request *GetClusterScannerYamlReques
 //
 // Queries the number of policies in each cluster.
 //
-// @param request - GetClusterStrategyCountRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetClusterStrategyCountResponse
@@ -39567,8 +39742,6 @@ func (client *Client) GetContainerDefenseRuleDetail(request *GetContainerDefense
 //
 // Queries the publish details of the Security Center agent.
 //
-// @param request - GetCurrentVersionPublishRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetCurrentVersionPublishResponse
@@ -39687,8 +39860,6 @@ func (client *Client) GetDataTrend(request *GetDataTrendRequest) (_result *GetDa
 // Summary:
 //
 // Queries the numbers of handled alerts of the precision defense type and the web tamper proofing type.
-//
-// @param request - GetDefenceCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -39858,8 +40029,6 @@ func (client *Client) GetDockerhubImageRiskStatistic(request *GetDockerhubImageR
 // Summary:
 //
 // Obtains the usage information of the malicious file detection SDK.
-//
-// @param request - GetFileDetectApiInvokeInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -40061,8 +40230,6 @@ func (client *Client) GetFileDetectResult(request *GetFileDetectResultRequest) (
 // Summary:
 //
 // Queries information about the core file monitoring feature, including the number of effective rules and the installation status of the Security Center agent on servers.
-//
-// @param request - GetFileProtectDashboardRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -40294,8 +40461,6 @@ func (client *Client) GetFileProtectRule(request *GetFileProtectRuleRequest) (_r
 // Summary:
 //
 // Queries the queries per second (QPS) limit on the files uploaded from the client.
-//
-// @param request - GetFileUploadLimitRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -41172,7 +41337,7 @@ func (client *Client) GetInstallCodeForUuid(request *GetInstallCodeForUuidReques
 
 // Summary:
 //
-// # Count the number of security events for a single instance
+// Queries the alerting statistics information of a server.
 //
 // @param request - GetInstanceAlarmStatisticsRequest
 //
@@ -41220,7 +41385,7 @@ func (client *Client) GetInstanceAlarmStatisticsWithOptions(request *GetInstance
 
 // Summary:
 //
-// # Count the number of security events for a single instance
+// Queries the alerting statistics information of a server.
 //
 // @param request - GetInstanceAlarmStatisticsRequest
 //
@@ -41239,8 +41404,6 @@ func (client *Client) GetInstanceAlarmStatistics(request *GetInstanceAlarmStatis
 // Summary:
 //
 // # Get Instance Authorization Value Range
-//
-// @param request - GetInstanceAuthRangeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -42073,8 +42236,6 @@ func (client *Client) GetOnceTaskResultInfo(request *GetOnceTaskResultInfoReques
 //
 // Queries the baselines that are supported by at-risk image blocking.
 //
-// @param request - GetOpaClusterBaseLineListRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOpaClusterBaseLineListResponse
@@ -42466,8 +42627,6 @@ func (client *Client) GetOpaStrategyDetailNew(request *GetOpaStrategyDetailNewRe
 //
 // Queries the usage statistics about the templates provided in the feature of proactive defense for containers for rules of the at-risk image blocking type.
 //
-// @param request - GetOpaStrategyTemplateSummaryRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetOpaStrategyTemplateSummaryResponse
@@ -42711,8 +42870,6 @@ func (client *Client) GetPropertyScheduleConfig(request *GetPropertyScheduleConf
 //
 // # Get Publish Time Configuration
 //
-// @param request - GetPublishCronRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetPublishCronResponse
@@ -42761,8 +42918,6 @@ func (client *Client) GetPublishCron() (_result *GetPublishCronResponse, _err er
 // Description:
 //
 // You can call this operation only by using the management account of a resource directory or a delegated administrator account of Security Center.
-//
-// @param request - GetRdTreeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -42813,8 +42968,6 @@ func (client *Client) GetRdTree() (_result *GetRdTreeResponse, _err error) {
 //
 // Queries the time range of image scans.
 //
-// @param request - GetRegistryScanDayNumRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetRegistryScanDayNumResponse
@@ -42859,8 +43012,6 @@ func (client *Client) GetRegistryScanDayNum() (_result *GetRegistryScanDayNumRes
 // Summary:
 //
 // Queries the numbers of system defense rules and custom defense rules.
-//
-// @param request - GetRulesCountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -43687,8 +43838,6 @@ func (client *Client) GetSwitchRegionDetail(request *GetSwitchRegionDetailReques
 //
 // Checks whether you can submit a free quick scan task, which includes vulnerability detection in the free category and free check items of Cloud Security Posture Management (CSPM).
 //
-// @param request - GetTenantCheckAvailableRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTenantCheckAvailableResponse
@@ -43732,9 +43881,62 @@ func (client *Client) GetTenantCheckAvailable() (_result *GetTenantCheckAvailabl
 
 // Summary:
 //
-// Queries the language settings of log analysis.
+// 获取未知威胁发现的统计信息
 //
-// @param request - GetUserLangRequest
+// @param request - GetUnknownThreatDetectStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUnknownThreatDetectStatisticResponse
+func (client *Client) GetUnknownThreatDetectStatisticWithOptions(request *GetUnknownThreatDetectStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetUnknownThreatDetectStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUnknownThreatDetectStatistic"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUnknownThreatDetectStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取未知威胁发现的统计信息
+//
+// @param request - GetUnknownThreatDetectStatisticRequest
+//
+// @return GetUnknownThreatDetectStatisticResponse
+func (client *Client) GetUnknownThreatDetectStatistic(request *GetUnknownThreatDetectStatisticRequest) (_result *GetUnknownThreatDetectStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUnknownThreatDetectStatisticResponse{}
+	_body, _err := client.GetUnknownThreatDetectStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the language settings of log analysis.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -43912,8 +44114,6 @@ func (client *Client) GetVirusScanConfig(request *GetVirusScanConfigRequest) (_r
 // Summary:
 //
 // Queries the information about the latest virus scan task.
-//
-// @param request - GetVirusScanLatestTaskStatisticRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -44238,6 +44438,92 @@ func (client *Client) HandleMaliciousFiles(request *HandleMaliciousFilesRequest)
 
 // Summary:
 //
+// 文件检测告警处理操作
+//
+// @param request - HandleObjectScanEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HandleObjectScanEventResponse
+func (client *Client) HandleObjectScanEventWithOptions(request *HandleObjectScanEventRequest, runtime *dara.RuntimeOptions) (_result *HandleObjectScanEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchType) {
+		query["BatchType"] = request.BatchType
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventIdList) {
+		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RuleConditionList) {
+		query["RuleConditionList"] = request.RuleConditionList
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HandleObjectScanEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HandleObjectScanEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文件检测告警处理操作
+//
+// @param request - HandleObjectScanEventRequest
+//
+// @return HandleObjectScanEventResponse
+func (client *Client) HandleObjectScanEvent(request *HandleObjectScanEventRequest) (_result *HandleObjectScanEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &HandleObjectScanEventResponse{}
+	_body, _err := client.HandleObjectScanEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Handles alert events.
 //
 // @param request - HandleSecurityEventsRequest
@@ -44491,6 +44777,72 @@ func (client *Client) HandleSimilarSecurityEvents(request *HandleSimilarSecurity
 	runtime := &dara.RuntimeOptions{}
 	_result = &HandleSimilarSecurityEventsResponse{}
 	_body, _err := client.HandleSimilarSecurityEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 处理未知威胁分析告警
+//
+// @param request - HandleUnknownThreatDetectEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HandleUnknownThreatDetectEventResponse
+func (client *Client) HandleUnknownThreatDetectEventWithOptions(request *HandleUnknownThreatDetectEventRequest, runtime *dara.RuntimeOptions) (_result *HandleUnknownThreatDetectEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventIdList) {
+		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HandleUnknownThreatDetectEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HandleUnknownThreatDetectEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 处理未知威胁分析告警
+//
+// @param request - HandleUnknownThreatDetectEventRequest
+//
+// @return HandleUnknownThreatDetectEventResponse
+func (client *Client) HandleUnknownThreatDetectEvent(request *HandleUnknownThreatDetectEventRequest) (_result *HandleUnknownThreatDetectEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &HandleUnknownThreatDetectEventResponse{}
+	_body, _err := client.HandleUnknownThreatDetectEventWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45249,8 +45601,6 @@ func (client *Client) JoinWebLockProcessWhiteList(request *JoinWebLockProcessWhi
 //
 // You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
 //
-// @param request - ListAccountsInResourceDirectoryRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAccountsInResourceDirectoryResponse
@@ -45642,8 +45992,6 @@ func (client *Client) ListAgentlessMaliciousFiles(request *ListAgentlessMaliciou
 //
 // Queries the regions that are supported by the agentless detection feature.
 //
-// @param request - ListAgentlessRegionRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListAgentlessRegionResponse
@@ -45982,8 +46330,6 @@ func (client *Client) ListAgentlessTask(request *ListAgentlessTaskRequest) (_res
 // Summary:
 //
 // Queries the configurations for cleaning offline hosts whose provider cannot be identified.
-//
-// @param request - ListAssetCleanConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -47404,7 +47750,7 @@ func (client *Client) ListCheckItems(request *ListCheckItemsRequest) (_result *L
 
 // Summary:
 //
-// # List User Policies
+// In the custom check items feature of Cloud Security Posture Management, query the attribution standard, attribution regulation, or attribution section in the check item categorization settings.
 //
 // @param request - ListCheckPoliciesRequest
 //
@@ -47444,7 +47790,7 @@ func (client *Client) ListCheckPoliciesWithOptions(request *ListCheckPoliciesReq
 
 // Summary:
 //
-// # List User Policies
+// In the custom check items feature of Cloud Security Posture Management, query the attribution standard, attribution regulation, or attribution section in the check item categorization settings.
 //
 // @param request - ListCheckPoliciesRequest
 //
@@ -47943,8 +48289,6 @@ func (client *Client) ListClientAlertMode(request *ListClientAlertModeRequest) (
 // Summary:
 //
 // Queries the supported types of custom defense rules.
-//
-// @param request - ListClientUserDefineRuleTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -48848,8 +49192,6 @@ func (client *Client) ListContainerDefenseRule(request *ListContainerDefenseRule
 // Summary:
 //
 // Queries a list of clusters that are included in a rule for non-image program defense.
-//
-// @param request - ListContainerDefenseRuleClustersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -51036,8 +51378,6 @@ func (client *Client) ListKspmInstances(request *ListKspmInstancesRequest) (_res
 //
 // Queries the regions supported by the log delivery feature that uses the pay-as-you-go billing method.
 //
-// @param request - ListLogShipperRegionsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLogShipperRegionsResponse
@@ -52205,8 +52545,6 @@ func (client *Client) ListPodRisk(request *ListPodRiskRequest) (_result *ListPod
 //
 // Queries the information about the self-managed Kubernetes clusters that are added to Security Center.
 //
-// @param request - ListPrivateK8sRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListPrivateK8sResponse
@@ -52453,8 +52791,6 @@ func (client *Client) ListPublishBatch(request *ListPublishBatchRequest) (_resul
 // Description:
 //
 // You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
-//
-// @param request - ListRdDefaultSyncListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -52715,8 +53051,6 @@ func (client *Client) ListSupportAttackPathAsset(request *ListSupportAttackPathA
 //
 // Queries supported file suffixes.
 //
-// @param request - ListSupportObjectSuffixRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSupportObjectSuffixResponse
@@ -52819,8 +53153,6 @@ func (client *Client) ListSystemAggregationRules(request *ListSystemAggregationR
 // Summary:
 //
 // Queries the types of system rules.
-//
-// @param request - ListSystemClientRuleTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -53312,6 +53644,366 @@ func (client *Client) ListUninstallAegisMachines(request *ListUninstallAegisMach
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListUninstallAegisMachinesResponse{}
 	_body, _err := client.ListUninstallAegisMachinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现事件
+//
+// @param request - ListUnknownThreatDetectEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectEventResponse
+func (client *Client) ListUnknownThreatDetectEventWithOptions(request *ListUnknownThreatDetectEventRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.HashKey) {
+		query["HashKey"] = request.HashKey
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ParentProcessPath) {
+		query["ParentProcessPath"] = request.ParentProcessPath
+	}
+
+	if !dara.IsNil(request.ProcessPath) {
+		query["ProcessPath"] = request.ProcessPath
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现事件
+//
+// @param request - ListUnknownThreatDetectEventRequest
+//
+// @return ListUnknownThreatDetectEventResponse
+func (client *Client) ListUnknownThreatDetectEvent(request *ListUnknownThreatDetectEventRequest) (_result *ListUnknownThreatDetectEventResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUnknownThreatDetectEventResponse{}
+	_body, _err := client.ListUnknownThreatDetectEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现的机器列表
+//
+// @param request - ListUnknownThreatDetectMachineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectMachineResponse
+func (client *Client) ListUnknownThreatDetectMachineWithOptions(request *ListUnknownThreatDetectMachineRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectMachineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	if !dara.IsNil(request.StudyTimeEnd) {
+		query["StudyTimeEnd"] = request.StudyTimeEnd
+	}
+
+	if !dara.IsNil(request.StudyTimeStart) {
+		query["StudyTimeStart"] = request.StudyTimeStart
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectMachine"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现的机器列表
+//
+// @param request - ListUnknownThreatDetectMachineRequest
+//
+// @return ListUnknownThreatDetectMachineResponse
+func (client *Client) ListUnknownThreatDetectMachine(request *ListUnknownThreatDetectMachineRequest) (_result *ListUnknownThreatDetectMachineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUnknownThreatDetectMachineResponse{}
+	_body, _err := client.ListUnknownThreatDetectMachineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现进程列表
+//
+// @param request - ListUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectProcessResponse
+func (client *Client) ListUnknownThreatDetectProcessWithOptions(request *ListUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AnalyzeResult) {
+		query["AnalyzeResult"] = request.AnalyzeResult
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.FirstTimeEnd) {
+		query["FirstTimeEnd"] = request.FirstTimeEnd
+	}
+
+	if !dara.IsNil(request.FirstTimeStart) {
+		query["FirstTimeStart"] = request.FirstTimeStart
+	}
+
+	if !dara.IsNil(request.Md5) {
+		query["Md5"] = request.Md5
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.ProcessPath) {
+		query["ProcessPath"] = request.ProcessPath
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Sha256) {
+		query["Sha256"] = request.Sha256
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现进程列表
+//
+// @param request - ListUnknownThreatDetectProcessRequest
+//
+// @return ListUnknownThreatDetectProcessResponse
+func (client *Client) ListUnknownThreatDetectProcess(request *ListUnknownThreatDetectProcessRequest) (_result *ListUnknownThreatDetectProcessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUnknownThreatDetectProcessResponse{}
+	_body, _err := client.ListUnknownThreatDetectProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现策略列表
+//
+// @param request - ListUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectStrategyResponse
+func (client *Client) ListUnknownThreatDetectStrategyWithOptions(request *ListUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现策略列表
+//
+// @param request - ListUnknownThreatDetectStrategyRequest
+//
+// @return ListUnknownThreatDetectStrategyResponse
+func (client *Client) ListUnknownThreatDetectStrategy(request *ListUnknownThreatDetectStrategyRequest) (_result *ListUnknownThreatDetectStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.ListUnknownThreatDetectStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58234,7 +58926,7 @@ func (client *Client) ModifySecurityEventMarkMissIndividually(request *ModifySec
 
 // Summary:
 //
-// # Manage Serverless Asset Authorization
+// Serverless Asset authorization Management.
 //
 // @param request - ModifyServerlessAuthToMachineRequest
 //
@@ -58334,7 +59026,7 @@ func (client *Client) ModifyServerlessAuthToMachineWithOptions(request *ModifySe
 
 // Summary:
 //
-// # Manage Serverless Asset Authorization
+// Serverless Asset authorization Management.
 //
 // @param request - ModifyServerlessAuthToMachineRequest
 //
@@ -60869,6 +61561,76 @@ func (client *Client) OperateSwitchStatus(request *OperateSwitchStatusRequest) (
 
 // Summary:
 //
+// 修改未知威胁发现的机器状态
+//
+// @param request - OperateUnknownThreatDetectMachineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateUnknownThreatDetectMachineResponse
+func (client *Client) OperateUnknownThreatDetectMachineWithOptions(request *OperateUnknownThreatDetectMachineRequest, runtime *dara.RuntimeOptions) (_result *OperateUnknownThreatDetectMachineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OperateType) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UuidList) {
+		query["UuidList"] = request.UuidList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateUnknownThreatDetectMachine"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateUnknownThreatDetectMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改未知威胁发现的机器状态
+//
+// @param request - OperateUnknownThreatDetectMachineRequest
+//
+// @return OperateUnknownThreatDetectMachineResponse
+func (client *Client) OperateUnknownThreatDetectMachine(request *OperateUnknownThreatDetectMachineRequest) (_result *OperateUnknownThreatDetectMachineResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &OperateUnknownThreatDetectMachineResponse{}
+	_body, _err := client.OperateUnknownThreatDetectMachineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Handles alert events that are generated by the antivirus feature. You can perform in-depth detection and removal, add alert events to the whitelist, ignore alert events, or manually handle alert events.
 //
 // @param request - OperateVirusEventsRequest
@@ -62109,8 +62871,6 @@ func (client *Client) QueryGroupedSecurityEventMarkMissList(request *QueryGroupe
 //
 // Queries the list of beginner tasks. Security Center provides rewards for users who complete tasks. The rewards include the quota for a value-added feature and log storage capacity.
 //
-// @param request - QueryGuidTaskListRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryGuidTaskListResponse
@@ -62551,8 +63311,6 @@ func (client *Client) RefreshContainerAssets(request *RefreshContainerAssetsRequ
 // Summary:
 //
 // Refreshes the list of Object Storage Service (OSS) buckets.
-//
-// @param request - RefreshOssBucketScanInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -64346,8 +65104,6 @@ func (client *Client) StartBaselineSecurityCheck(request *StartBaselineSecurityC
 //
 // Starts a database scan task.
 //
-// @param request - StartDiscoverDatabaseTaskRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartDiscoverDatabaseTaskResponse
@@ -64458,8 +65214,6 @@ func (client *Client) StartHoneypot(request *StartHoneypotRequest) (_result *Sta
 // Summary:
 //
 // Starts an IDC scan task.
-//
-// @param request - StartIdcProbeScanRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -64852,8 +65606,6 @@ func (client *Client) SubmitOperationTask(request *SubmitOperationTaskRequest) (
 //
 // Submits a free quick scan task, which includes vulnerability detection in the free category and free check items of Cloud Security Posture Management (CSPM).
 //
-// @param request - SubmitTenantCheckRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return SubmitTenantCheckResponse
@@ -64898,8 +65650,6 @@ func (client *Client) SubmitTenantCheck() (_result *SubmitTenantCheckResponse, _
 // Summary:
 //
 // Triggers ISO 27001 compliance checks of Security Center.
-//
-// @param request - TriggerCheckRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -68091,6 +68841,150 @@ func (client *Client) UpdateTargetListByBatch(request *UpdateTargetListByBatchRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateTargetListByBatchResponse{}
 	_body, _err := client.UpdateTargetListByBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新未知威胁发现的进程详情
+//
+// @param request - UpdateUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUnknownThreatDetectProcessResponse
+func (client *Client) UpdateUnknownThreatDetectProcessWithOptions(request *UpdateUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *UpdateUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProcessId) {
+		query["ProcessId"] = request.ProcessId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新未知威胁发现的进程详情
+//
+// @param request - UpdateUnknownThreatDetectProcessRequest
+//
+// @return UpdateUnknownThreatDetectProcessResponse
+func (client *Client) UpdateUnknownThreatDetectProcess(request *UpdateUnknownThreatDetectProcessRequest) (_result *UpdateUnknownThreatDetectProcessResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateUnknownThreatDetectProcessResponse{}
+	_body, _err := client.UpdateUnknownThreatDetectProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新未知威胁发现策略
+//
+// @param request - UpdateUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUnknownThreatDetectStrategyResponse
+func (client *Client) UpdateUnknownThreatDetectStrategyWithOptions(request *UpdateUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DurationDaysAfterInit) {
+		query["DurationDaysAfterInit"] = request.DurationDaysAfterInit
+	}
+
+	if !dara.IsNil(request.DurationDaysAfterStop) {
+		query["DurationDaysAfterStop"] = request.DurationDaysAfterStop
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新未知威胁发现策略
+//
+// @param request - UpdateUnknownThreatDetectStrategyRequest
+//
+// @return UpdateUnknownThreatDetectStrategyResponse
+func (client *Client) UpdateUnknownThreatDetectStrategy(request *UpdateUnknownThreatDetectStrategyRequest) (_result *UpdateUnknownThreatDetectStrategyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.UpdateUnknownThreatDetectStrategyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

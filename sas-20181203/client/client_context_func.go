@@ -1327,6 +1327,58 @@ func (client *Client) AddUninstallClientsByUuidsWithContext(ctx context.Context,
 
 // Summary:
 //
+// 新增未知威胁分析进程
+//
+// @param request - AddUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUnknownThreatDetectProcessResponse
+func (client *Client) AddUnknownThreatDetectProcessWithContext(ctx context.Context, request *AddUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *AddUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventIdList) {
+		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.ProcessList) {
+		query["ProcessList"] = request.ProcessList
+	}
+
+	if !dara.IsNil(request.UuidList) {
+		query["UuidList"] = request.UuidList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a honeypot.
 //
 // @param request - AddVpcHoneyPotRequest
@@ -5691,6 +5743,66 @@ func (client *Client) CreateUniRestorePlanWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 创建未知威胁发现的策略
+//
+// @param request - CreateUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUnknownThreatDetectStrategyResponse
+func (client *Client) CreateUnknownThreatDetectStrategyWithContext(ctx context.Context, request *CreateUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *CreateUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetSelectionType) {
+		query["AssetSelectionType"] = request.AssetSelectionType
+	}
+
+	if !dara.IsNil(request.DurationDaysAfterInit) {
+		query["DurationDaysAfterInit"] = request.DurationDaysAfterInit
+	}
+
+	if !dara.IsNil(request.DurationDaysAfterStop) {
+		query["DurationDaysAfterStop"] = request.DurationDaysAfterStop
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates the risk level settings for baseline check items.
 //
 // @param request - CreateUserSettingRequest
@@ -8357,6 +8469,94 @@ func (client *Client) DeleteUniBackupPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 删除未知威胁发现进程
+//
+// @param request - DeleteUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUnknownThreatDetectProcessResponse
+func (client *Client) DeleteUnknownThreatDetectProcessWithContext(ctx context.Context, request *DeleteUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *DeleteUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProcessIdList) {
+		query["ProcessIdList"] = request.ProcessIdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除未知威胁发现策略
+//
+// @param request - DeleteUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUnknownThreatDetectStrategyResponse
+func (client *Client) DeleteUnknownThreatDetectStrategyWithContext(ctx context.Context, request *DeleteUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *DeleteUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IdList) {
+		query["IdList"] = request.IdList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a honeypot.
 //
 // @param request - DeleteVpcHoneyPotRequest
@@ -9437,6 +9637,8 @@ func (client *Client) DescribeAssetsSecurityEventSummaryWithContext(ctx context.
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeAttackAnalysisData is deprecated, please use Sas::2018-12-03::ListAttackEventInfo instead.
+//
 // Summary:
 //
 // Queries the statistics of attack analysis.
@@ -11127,7 +11329,7 @@ func (client *Client) DescribeCloudVendorAccountAKListWithContext(ctx context.Co
 
 // Summary:
 //
-// # Get the cloud product access template for vendors
+// Multicloud configuration management queries the CTDR cloud vendor product access template configuration.
 //
 // @param request - DescribeCloudVendorProductTemplateConfigRequest
 //
@@ -18261,7 +18463,7 @@ func (client *Client) DescribePropertyCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Query Asset Fingerprint Scheduled Task Details
+// Queries the detailed info of the Schedule Job List in host Assets.
 //
 // @param request - DescribePropertyCronDetailRequest
 //
@@ -26829,7 +27031,7 @@ func (client *Client) GetAttackEventDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Query Attack Path Event Details.
+// Query attack path management event details.
 //
 // @param request - GetAttackPathEventDetailRequest
 //
@@ -29121,7 +29323,7 @@ func (client *Client) GetInstallCodeForUuidWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # Count the number of security events for a single instance
+// Queries the alerting statistics information of a server.
 //
 // @param request - GetInstanceAlarmStatisticsRequest
 //
@@ -30703,6 +30905,43 @@ func (client *Client) GetSwitchRegionDetailWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 获取未知威胁发现的统计信息
+//
+// @param request - GetUnknownThreatDetectStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUnknownThreatDetectStatisticResponse
+func (client *Client) GetUnknownThreatDetectStatisticWithContext(ctx context.Context, request *GetUnknownThreatDetectStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetUnknownThreatDetectStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUnknownThreatDetectStatistic"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUnknownThreatDetectStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get Valid Resource Package Instances
 //
 // @param request - GetValidDeductInstancesRequest
@@ -31007,6 +31246,74 @@ func (client *Client) HandleMaliciousFilesWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 文件检测告警处理操作
+//
+// @param request - HandleObjectScanEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HandleObjectScanEventResponse
+func (client *Client) HandleObjectScanEventWithContext(ctx context.Context, request *HandleObjectScanEventRequest, runtime *dara.RuntimeOptions) (_result *HandleObjectScanEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchType) {
+		query["BatchType"] = request.BatchType
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventIdList) {
+		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.RuleConditionList) {
+		query["RuleConditionList"] = request.RuleConditionList
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HandleObjectScanEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HandleObjectScanEventResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Handles alert events.
 //
 // @param request - HandleSecurityEventsRequest
@@ -31201,6 +31508,54 @@ func (client *Client) HandleSimilarSecurityEventsWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &HandleSimilarSecurityEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 处理未知威胁分析告警
+//
+// @param request - HandleUnknownThreatDetectEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HandleUnknownThreatDetectEventResponse
+func (client *Client) HandleUnknownThreatDetectEventWithContext(ctx context.Context, request *HandleUnknownThreatDetectEventRequest, runtime *dara.RuntimeOptions) (_result *HandleUnknownThreatDetectEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventIdList) {
+		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HandleUnknownThreatDetectEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HandleUnknownThreatDetectEventResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -33347,7 +33702,7 @@ func (client *Client) ListCheckItemsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// # List User Policies
+// In the custom check items feature of Cloud Security Posture Management, query the attribution standard, attribution regulation, or attribution section in the check item categorization settings.
 //
 // @param request - ListCheckPoliciesRequest
 //
@@ -37577,6 +37932,294 @@ func (client *Client) ListUninstallAegisMachinesWithContext(ctx context.Context,
 
 // Summary:
 //
+// 查询未知威胁发现事件
+//
+// @param request - ListUnknownThreatDetectEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectEventResponse
+func (client *Client) ListUnknownThreatDetectEventWithContext(ctx context.Context, request *ListUnknownThreatDetectEventRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.HashKey) {
+		query["HashKey"] = request.HashKey
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ParentProcessPath) {
+		query["ParentProcessPath"] = request.ParentProcessPath
+	}
+
+	if !dara.IsNil(request.ProcessPath) {
+		query["ProcessPath"] = request.ProcessPath
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectEvent"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectEventResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现的机器列表
+//
+// @param request - ListUnknownThreatDetectMachineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectMachineResponse
+func (client *Client) ListUnknownThreatDetectMachineWithContext(ctx context.Context, request *ListUnknownThreatDetectMachineRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectMachineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	if !dara.IsNil(request.StudyTimeEnd) {
+		query["StudyTimeEnd"] = request.StudyTimeEnd
+	}
+
+	if !dara.IsNil(request.StudyTimeStart) {
+		query["StudyTimeStart"] = request.StudyTimeStart
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectMachine"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectMachineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现进程列表
+//
+// @param request - ListUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectProcessResponse
+func (client *Client) ListUnknownThreatDetectProcessWithContext(ctx context.Context, request *ListUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AnalyzeResult) {
+		query["AnalyzeResult"] = request.AnalyzeResult
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.FirstTimeEnd) {
+		query["FirstTimeEnd"] = request.FirstTimeEnd
+	}
+
+	if !dara.IsNil(request.FirstTimeStart) {
+		query["FirstTimeStart"] = request.FirstTimeStart
+	}
+
+	if !dara.IsNil(request.Md5) {
+		query["Md5"] = request.Md5
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.ProcessPath) {
+		query["ProcessPath"] = request.ProcessPath
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Sha256) {
+		query["Sha256"] = request.Sha256
+	}
+
+	if !dara.IsNil(request.Uuid) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询未知威胁发现策略列表
+//
+// @param request - ListUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUnknownThreatDetectStrategyResponse
+func (client *Client) ListUnknownThreatDetectStrategyWithContext(ctx context.Context, request *ListUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *ListUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUnknownThreatDetectStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Get VPC Data
 //
 // @param request - ListUserVpcRequest
@@ -41325,7 +41968,7 @@ func (client *Client) ModifySecurityEventMarkMissIndividuallyWithContext(ctx con
 
 // Summary:
 //
-// # Manage Serverless Asset Authorization
+// Serverless Asset authorization Management.
 //
 // @param request - ModifyServerlessAuthToMachineRequest
 //
@@ -43323,6 +43966,58 @@ func (client *Client) OperateSwitchStatusWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &OperateSwitchStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改未知威胁发现的机器状态
+//
+// @param request - OperateUnknownThreatDetectMachineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateUnknownThreatDetectMachineResponse
+func (client *Client) OperateUnknownThreatDetectMachineWithContext(ctx context.Context, request *OperateUnknownThreatDetectMachineRequest, runtime *dara.RuntimeOptions) (_result *OperateUnknownThreatDetectMachineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OperateType) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.UuidList) {
+		query["UuidList"] = request.UuidList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OperateUnknownThreatDetectMachine"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OperateUnknownThreatDetectMachineResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -48575,6 +49270,114 @@ func (client *Client) UpdateTargetListByBatchWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateTargetListByBatchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新未知威胁发现的进程详情
+//
+// @param request - UpdateUnknownThreatDetectProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUnknownThreatDetectProcessResponse
+func (client *Client) UpdateUnknownThreatDetectProcessWithContext(ctx context.Context, request *UpdateUnknownThreatDetectProcessRequest, runtime *dara.RuntimeOptions) (_result *UpdateUnknownThreatDetectProcessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProcessId) {
+		query["ProcessId"] = request.ProcessId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUnknownThreatDetectProcess"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUnknownThreatDetectProcessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新未知威胁发现策略
+//
+// @param request - UpdateUnknownThreatDetectStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUnknownThreatDetectStrategyResponse
+func (client *Client) UpdateUnknownThreatDetectStrategyWithContext(ctx context.Context, request *UpdateUnknownThreatDetectStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateUnknownThreatDetectStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DurationDaysAfterInit) {
+		query["DurationDaysAfterInit"] = request.DurationDaysAfterInit
+	}
+
+	if !dara.IsNil(request.DurationDaysAfterStop) {
+		query["DurationDaysAfterStop"] = request.DurationDaysAfterStop
+	}
+
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.StudyMode) {
+		query["StudyMode"] = request.StudyMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUnknownThreatDetectStrategy"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUnknownThreatDetectStrategyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
