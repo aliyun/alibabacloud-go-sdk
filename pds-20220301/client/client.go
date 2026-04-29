@@ -187,6 +187,84 @@ func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *Add
 
 // Summary:
 //
+// 文件打包下载
+//
+// @param request - ArchiveFilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ArchiveFilesResponse
+func (client *Client) ArchiveFilesWithOptions(request *ArchiveFilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ArchiveFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DriveId) {
+		body["drive_id"] = request.DriveId
+	}
+
+	if !dara.IsNil(request.FileIds) {
+		body["file_ids"] = request.FileIds
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ShareId) {
+		body["share_id"] = request.ShareId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ArchiveFiles"),
+		Version:     dara.String("2022-03-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/file/archive_files"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ArchiveFilesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文件打包下载
+//
+// @param request - ArchiveFilesRequest
+//
+// @return ArchiveFilesResponse
+func (client *Client) ArchiveFiles(request *ArchiveFilesRequest) (_result *ArchiveFilesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ArchiveFilesResponse{}
+	_body, _err := client.ArchiveFilesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Assigns a group administrator role to a user.
 //
 // Description:
