@@ -5417,6 +5417,62 @@ func (client *Client) GetBizUnitInfoWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
+// 查询数据目录资产详情。
+//
+// @param tmpReq - GetCatalogAssetDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogAssetDetailsResponse
+func (client *Client) GetCatalogAssetDetailsWithContext(ctx context.Context, tmpReq *GetCatalogAssetDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetCatalogAssetDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetCatalogAssetDetailsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GetCatalogAssetDetailsQuery) {
+		request.GetCatalogAssetDetailsQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GetCatalogAssetDetailsQuery, dara.String("GetCatalogAssetDetailsQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GetCatalogAssetDetailsQueryShrink) {
+		body["GetCatalogAssetDetailsQuery"] = request.GetCatalogAssetDetailsQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCatalogAssetDetails"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCatalogAssetDetailsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询数据源连通性检查任务。
 //
 // @param request - GetCheckConnectivityJobsRequest
@@ -10211,6 +10267,62 @@ func (client *Client) ListBizUnitsWithContext(ctx context.Context, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBizUnitsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据目录资产列表。
+//
+// @param tmpReq - ListCatalogAssetsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCatalogAssetsResponse
+func (client *Client) ListCatalogAssetsWithContext(ctx context.Context, tmpReq *ListCatalogAssetsRequest, runtime *dara.RuntimeOptions) (_result *ListCatalogAssetsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListCatalogAssetsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListCatalogAssetsQuery) {
+		request.ListCatalogAssetsQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListCatalogAssetsQuery, dara.String("ListCatalogAssetsQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListCatalogAssetsQueryShrink) {
+		body["ListCatalogAssetsQuery"] = request.ListCatalogAssetsQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCatalogAssets"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCatalogAssetsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
