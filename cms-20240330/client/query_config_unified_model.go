@@ -19,6 +19,8 @@ type iQueryConfigUnified interface {
 	GetEntityFilters() []*UmodelEntityFilter
 	SetEntityType(v string) *QueryConfigUnified
 	GetEntityType() *string
+	SetExpr(v string) *QueryConfigUnified
+	GetExpr() *string
 	SetFilterList(v []*ApmFilterConfig) *QueryConfigUnified
 	GetFilterList() []*ApmFilterConfig
 	SetLabelFilters(v []*UmodelLabelFilter) *QueryConfigUnified
@@ -48,6 +50,7 @@ type QueryConfigUnified struct {
 	EntityFilters []*UmodelEntityFilter `json:"entityFilters,omitempty" xml:"entityFilters,omitempty" type:"Repeated"`
 	// 实体类型
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
+	Expr       *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// APM 过滤条件列表
 	FilterList []*ApmFilterConfig `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
 	// 标签过滤条件
@@ -94,6 +97,10 @@ func (s *QueryConfigUnified) GetEntityFilters() []*UmodelEntityFilter {
 
 func (s *QueryConfigUnified) GetEntityType() *string {
 	return s.EntityType
+}
+
+func (s *QueryConfigUnified) GetExpr() *string {
+	return s.Expr
 }
 
 func (s *QueryConfigUnified) GetFilterList() []*ApmFilterConfig {
@@ -150,6 +157,11 @@ func (s *QueryConfigUnified) SetEntityFilters(v []*UmodelEntityFilter) *QueryCon
 
 func (s *QueryConfigUnified) SetEntityType(v string) *QueryConfigUnified {
 	s.EntityType = &v
+	return s
+}
+
+func (s *QueryConfigUnified) SetExpr(v string) *QueryConfigUnified {
+	s.Expr = &v
 	return s
 }
 
