@@ -19,6 +19,8 @@ type iColumnKnowledgeInfo interface {
 	GetColumnType() *string
 	SetDescription(v string) *ColumnKnowledgeInfo
 	GetDescription() *string
+	SetLevel(v int32) *ColumnKnowledgeInfo
+	GetLevel() *int32
 	SetPosition(v int32) *ColumnKnowledgeInfo
 	GetPosition() *int32
 }
@@ -34,6 +36,7 @@ type ColumnKnowledgeInfo struct {
 	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
 	// Field description in the CREATE TABLE statement.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Level       *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The field order in the CREATE TABLE statement.
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
 }
@@ -66,6 +69,10 @@ func (s *ColumnKnowledgeInfo) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ColumnKnowledgeInfo) GetLevel() *int32 {
+	return s.Level
+}
+
 func (s *ColumnKnowledgeInfo) GetPosition() *int32 {
 	return s.Position
 }
@@ -92,6 +99,11 @@ func (s *ColumnKnowledgeInfo) SetColumnType(v string) *ColumnKnowledgeInfo {
 
 func (s *ColumnKnowledgeInfo) SetDescription(v string) *ColumnKnowledgeInfo {
 	s.Description = &v
+	return s
+}
+
+func (s *ColumnKnowledgeInfo) SetLevel(v int32) *ColumnKnowledgeInfo {
+	s.Level = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iTableKnowledgeInfo interface {
 	GetColumnList() []*ColumnKnowledgeInfo
 	SetDescription(v string) *TableKnowledgeInfo
 	GetDescription() *string
+	SetLevel(v int32) *TableKnowledgeInfo
+	GetLevel() *int32
 	SetSummary(v string) *TableKnowledgeInfo
 	GetSummary() *string
 	SetTableName(v string) *TableKnowledgeInfo
@@ -32,6 +34,7 @@ type TableKnowledgeInfo struct {
 	ColumnList []*ColumnKnowledgeInfo `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
 	// Table description in the CREAT TABLE statement.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Level       *int32  `json:"Level,omitempty" xml:"Level,omitempty"`
 	// Table business description, which can be edited via EditMetaKnowledgeAsset.
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// The table name.
@@ -62,6 +65,10 @@ func (s *TableKnowledgeInfo) GetDescription() *string {
 	return s.Description
 }
 
+func (s *TableKnowledgeInfo) GetLevel() *int32 {
+	return s.Level
+}
+
 func (s *TableKnowledgeInfo) GetSummary() *string {
 	return s.Summary
 }
@@ -87,6 +94,11 @@ func (s *TableKnowledgeInfo) SetColumnList(v []*ColumnKnowledgeInfo) *TableKnowl
 
 func (s *TableKnowledgeInfo) SetDescription(v string) *TableKnowledgeInfo {
 	s.Description = &v
+	return s
+}
+
+func (s *TableKnowledgeInfo) SetLevel(v int32) *TableKnowledgeInfo {
+	s.Level = &v
 	return s
 }
 

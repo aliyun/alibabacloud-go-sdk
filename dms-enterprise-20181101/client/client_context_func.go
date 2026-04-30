@@ -9741,6 +9741,58 @@ func (client *Client) GetStructSyncOrderDetailWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查询表的字段知识列表，包含字段元信息、业务描述、安全信息等
+//
+// Description:
+//
+// 查询表的字段知识列表，返回每个字段的元信息（类型、可空、自增等）、业务描述、术语、数据标准、安全等级与索引信息
+//
+// @param request - GetTableColumnListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableColumnListResponse
+func (client *Client) GetTableColumnListWithContext(ctx context.Context, request *GetTableColumnListRequest, runtime *dara.RuntimeOptions) (_result *GetTableColumnListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableColumnList"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableColumnListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the topology of a data table.
 //
 // @param request - GetTableDBTopologyRequest
@@ -9875,6 +9927,58 @@ func (client *Client) GetTableDesignProjectInfoWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTableDesignProjectInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表的业务知识/使用说明（业务描述、摘要、关联资产）
+//
+// Description:
+//
+// 查询表的业务知识/使用说明，返回 AI 增强业务描述、表业务摘要、关联资产列表，用于辅助语义找表与表用法说明
+//
+// @param request - GetTableInstructionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableInstructionsResponse
+func (client *Client) GetTableInstructionsWithContext(ctx context.Context, request *GetTableInstructionsRequest, runtime *dara.RuntimeOptions) (_result *GetTableInstructionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableInstructions"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableInstructionsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17269,6 +17373,74 @@ func (client *Client) SearchTableWithContext(ctx context.Context, request *Searc
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchTableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询某张表相关的资产知识列表（含表/字段/SQL/片段等）
+//
+// Description:
+//
+// 分页查询某张表相关的资产知识列表，支持按知识类型、关键词等条件筛选，返回 KnowledgeBaseVO 分页结果
+//
+// @param request - SearchTableAssetKnowledgeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchTableAssetKnowledgeResponse
+func (client *Client) SearchTableAssetKnowledgeWithContext(ctx context.Context, request *SearchTableAssetKnowledgeRequest, runtime *dara.RuntimeOptions) (_result *SearchTableAssetKnowledgeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.Offset) {
+		query["Offset"] = request.Offset
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.ShowType) {
+		query["ShowType"] = request.ShowType
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["Size"] = request.Size
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchTableAssetKnowledge"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchTableAssetKnowledgeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
