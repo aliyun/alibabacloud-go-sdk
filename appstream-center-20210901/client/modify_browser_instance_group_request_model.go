@@ -492,6 +492,10 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// 15
 	DisconnectKeepSessionTime *int32 `json:"DisconnectKeepSessionTime,omitempty" xml:"DisconnectKeepSessionTime,omitempty"`
+	// example:
+	//
+	// off
+	FileManager *string `json:"FileManager,omitempty" xml:"FileManager,omitempty"`
 	// The file transfer policy on the web client.
 	//
 	// example:
@@ -548,6 +552,10 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) GetDisconnectKeepSessionTime()
 	return s.DisconnectKeepSessionTime
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicy) GetFileManager() *string {
+	return s.FileManager
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicy) GetHtml5FileTransfer() *string {
 	return s.Html5FileTransfer
 }
@@ -588,6 +596,11 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) SetDisconnectKeepSession(v str
 
 func (s *ModifyBrowserInstanceGroupRequestPolicy) SetDisconnectKeepSessionTime(v int32) *ModifyBrowserInstanceGroupRequestPolicy {
 	s.DisconnectKeepSessionTime = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicy) SetFileManager(v string) *ModifyBrowserInstanceGroupRequestPolicy {
+	s.FileManager = &v
 	return s
 }
 
@@ -728,8 +741,24 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
 	// example:
 	//
+	// 1
+	RichTextClipboardReadLimit *int32 `json:"RichTextClipboardReadLimit,omitempty" xml:"RichTextClipboardReadLimit,omitempty"`
+	// example:
+	//
+	// KB
+	RichTextClipboardReadSizeUnit *string `json:"RichTextClipboardReadSizeUnit,omitempty" xml:"RichTextClipboardReadSizeUnit,omitempty"`
+	// example:
+	//
 	// B
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
+	// example:
+	//
+	// 1
+	RichTextClipboardWriteLimit *int32 `json:"RichTextClipboardWriteLimit,omitempty" xml:"RichTextClipboardWriteLimit,omitempty"`
+	// example:
+	//
+	// KB
+	RichTextClipboardWriteSizeUnit *string `json:"RichTextClipboardWriteSizeUnit,omitempty" xml:"RichTextClipboardWriteSizeUnit,omitempty"`
 	// The text clipboard policy.
 	//
 	// Valid values:
@@ -746,6 +775,22 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// off
 	TextClipboard *string `json:"TextClipboard,omitempty" xml:"TextClipboard,omitempty"`
+	// example:
+	//
+	// 1
+	TextClipboardReadLimit *int32 `json:"TextClipboardReadLimit,omitempty" xml:"TextClipboardReadLimit,omitempty"`
+	// example:
+	//
+	// KB
+	TextClipboardReadSizeUnit *string `json:"TextClipboardReadSizeUnit,omitempty" xml:"TextClipboardReadSizeUnit,omitempty"`
+	// example:
+	//
+	// 1
+	TextClipboardWriteLimit *int32 `json:"TextClipboardWriteLimit,omitempty" xml:"TextClipboardWriteLimit,omitempty"`
+	// example:
+	//
+	// KB
+	TextClipboardWriteSizeUnit *string `json:"TextClipboardWriteSizeUnit,omitempty" xml:"TextClipboardWriteSizeUnit,omitempty"`
 }
 
 func (s ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) String() string {
@@ -788,12 +833,44 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClip
 	return s.RichTextClipboardLimit
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardReadLimit() *int32 {
+	return s.RichTextClipboardReadLimit
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardReadSizeUnit() *string {
+	return s.RichTextClipboardReadSizeUnit
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardSizeUnit() *string {
 	return s.RichTextClipboardSizeUnit
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardWriteLimit() *int32 {
+	return s.RichTextClipboardWriteLimit
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetRichTextClipboardWriteSizeUnit() *string {
+	return s.RichTextClipboardWriteSizeUnit
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetTextClipboard() *string {
 	return s.TextClipboard
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetTextClipboardReadLimit() *int32 {
+	return s.TextClipboardReadLimit
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetTextClipboardReadSizeUnit() *string {
+	return s.TextClipboardReadSizeUnit
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetTextClipboardWriteLimit() *int32 {
+	return s.TextClipboardWriteLimit
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) GetTextClipboardWriteSizeUnit() *string {
+	return s.TextClipboardWriteSizeUnit
 }
 
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetClipboard(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
@@ -836,13 +913,53 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClip
 	return s
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardReadLimit(v int32) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.RichTextClipboardReadLimit = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardReadSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.RichTextClipboardReadSizeUnit = &v
+	return s
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
 	s.RichTextClipboardSizeUnit = &v
 	return s
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardWriteLimit(v int32) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.RichTextClipboardWriteLimit = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetRichTextClipboardWriteSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.RichTextClipboardWriteSizeUnit = &v
+	return s
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetTextClipboard(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
 	s.TextClipboard = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetTextClipboardReadLimit(v int32) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.TextClipboardReadLimit = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetTextClipboardReadSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.TextClipboardReadSizeUnit = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetTextClipboardWriteLimit(v int32) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.TextClipboardWriteLimit = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) SetTextClipboardWriteSizeUnit(v string) *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy {
+	s.TextClipboardWriteSizeUnit = &v
 	return s
 }
 
