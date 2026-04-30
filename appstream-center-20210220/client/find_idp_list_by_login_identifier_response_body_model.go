@@ -251,7 +251,8 @@ type FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo struct {
 	// example:
 	//
 	// cn-shanghai+dir-448204****
-	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteId    *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	PreferVpcAccess *bool   `json:"PreferVpcAccess,omitempty" xml:"PreferVpcAccess,omitempty"`
 	// example:
 	//
 	// 26842
@@ -259,8 +260,9 @@ type FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SsoServiceUrl *string `json:"SsoServiceUrl,omitempty" xml:"SsoServiceUrl,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SsoServiceUrl    *string `json:"SsoServiceUrl,omitempty" xml:"SsoServiceUrl,omitempty"`
+	VpcAccessAddress *string `json:"VpcAccessAddress,omitempty" xml:"VpcAccessAddress,omitempty"`
 }
 
 func (s FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) String() string {
@@ -279,6 +281,10 @@ func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) GetOfficeSiteId
 	return s.OfficeSiteId
 }
 
+func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) GetPreferVpcAccess() *bool {
+	return s.PreferVpcAccess
+}
+
 func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) GetProviderId() *string {
 	return s.ProviderId
 }
@@ -291,6 +297,10 @@ func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) GetSsoServiceUr
 	return s.SsoServiceUrl
 }
 
+func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) GetVpcAccessAddress() *string {
+	return s.VpcAccessAddress
+}
+
 func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) SetAccessType(v string) *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo {
 	s.AccessType = &v
 	return s
@@ -298,6 +308,11 @@ func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) SetAccessType(v
 
 func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) SetOfficeSiteId(v string) *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo {
 	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) SetPreferVpcAccess(v bool) *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo {
+	s.PreferVpcAccess = &v
 	return s
 }
 
@@ -316,6 +331,11 @@ func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) SetSsoServiceUr
 	return s
 }
 
+func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) SetVpcAccessAddress(v string) *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo {
+	s.VpcAccessAddress = &v
+	return s
+}
+
 func (s *FindIdpListByLoginIdentifierResponseBodyOfficeSiteInfo) Validate() error {
 	return dara.Validate(s)
 }
@@ -324,11 +344,13 @@ type FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo struct {
 	// example:
 	//
 	// INTERNET
-	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	AccessType      *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	PreferVpcAccess *bool   `json:"PreferVpcAccess,omitempty" xml:"PreferVpcAccess,omitempty"`
 	// example:
 	//
 	// Or09****
-	TenantAlias *string `json:"TenantAlias,omitempty" xml:"TenantAlias,omitempty"`
+	TenantAlias      *string `json:"TenantAlias,omitempty" xml:"TenantAlias,omitempty"`
+	VpcAccessAddress *string `json:"VpcAccessAddress,omitempty" xml:"VpcAccessAddress,omitempty"`
 }
 
 func (s FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) String() string {
@@ -343,8 +365,16 @@ func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetAccessType(
 	return s.AccessType
 }
 
+func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetPreferVpcAccess() *bool {
+	return s.PreferVpcAccess
+}
+
 func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetTenantAlias() *string {
 	return s.TenantAlias
+}
+
+func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) GetVpcAccessAddress() *string {
+	return s.VpcAccessAddress
 }
 
 func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetAccessType(v string) *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo {
@@ -352,8 +382,18 @@ func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetAccessType(
 	return s
 }
 
+func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetPreferVpcAccess(v bool) *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo {
+	s.PreferVpcAccess = &v
+	return s
+}
+
 func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetTenantAlias(v string) *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo {
 	s.TenantAlias = &v
+	return s
+}
+
+func (s *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo) SetVpcAccessAddress(v string) *FindIdpListByLoginIdentifierResponseBodyTenantAliasInfo {
+	s.VpcAccessAddress = &v
 	return s
 }
 
