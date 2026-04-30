@@ -93,9 +93,6 @@ func (s *QueryAliasesResponseBodyAliasInfos) Validate() error {
 }
 
 type QueryAliasesResponseBodyAliasInfosAliasInfo struct {
-	// example:
-	//
-	// test_alias1
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 }
 

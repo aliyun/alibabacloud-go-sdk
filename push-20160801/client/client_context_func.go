@@ -828,6 +828,10 @@ func (client *Client) PushWithContext(ctx context.Context, tmpReq *PushRequest, 
 		query["AndroidTargetUserType"] = request.AndroidTargetUserType
 	}
 
+	if !dara.IsNil(request.AndroidVivoLiveMessage) {
+		query["AndroidVivoLiveMessage"] = request.AndroidVivoLiveMessage
+	}
+
 	if !dara.IsNil(request.AndroidVivoPushMode) {
 		query["AndroidVivoPushMode"] = request.AndroidVivoPushMode
 	}

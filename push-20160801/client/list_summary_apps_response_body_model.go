@@ -93,13 +93,7 @@ func (s *ListSummaryAppsResponseBodySummaryAppInfos) Validate() error {
 }
 
 type ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo struct {
-	// example:
-	//
-	// 23****07
-	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// example:
-	//
-	// abc
+	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 

@@ -22,6 +22,9 @@ type iPushTask interface {
 }
 
 type PushTask struct {
+	// example:
+	//
+	// PUSH_IMMEDIATELY
 	Action       *string               `json:"Action,omitempty" xml:"Action,omitempty"`
 	Message      *PushTaskMessage      `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
 	Notification *PushTaskNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
@@ -107,7 +110,13 @@ func (s *PushTask) Validate() error {
 }
 
 type PushTaskMessage struct {
-	Body  *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// {"key": "value"}
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -222,21 +231,60 @@ func (s *PushTaskNotification) Validate() error {
 }
 
 type PushTaskNotificationAndroid struct {
-	BadgeActivity         *string                             `json:"BadgeActivity,omitempty" xml:"BadgeActivity,omitempty"`
-	BadgeAddNum           *int32                              `json:"BadgeAddNum,omitempty" xml:"BadgeAddNum,omitempty"`
-	BadgeSetNum           *int32                              `json:"BadgeSetNum,omitempty" xml:"BadgeSetNum,omitempty"`
-	ChannelId             *string                             `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ExtParameters         *string                             `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
-	GroupId               *string                             `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ImageUrl              *string                             `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InboxContent          []*string                           `json:"InboxContent,omitempty" xml:"InboxContent,omitempty" type:"Repeated"`
-	Music                 *string                             `json:"Music,omitempty" xml:"Music,omitempty"`
-	NotifyId              *int32                              `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
-	Options               *PushTaskNotificationAndroidOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
-	PictureUrl            *string                             `json:"PictureUrl,omitempty" xml:"PictureUrl,omitempty"`
-	RenderStyle           *string                             `json:"RenderStyle,omitempty" xml:"RenderStyle,omitempty"`
-	TestMessage           *bool                               `json:"TestMessage,omitempty" xml:"TestMessage,omitempty"`
-	VendorChannelActivity *string                             `json:"VendorChannelActivity,omitempty" xml:"VendorChannelActivity,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
+	BadgeActivity *string `json:"BadgeActivity,omitempty" xml:"BadgeActivity,omitempty"`
+	// example:
+	//
+	// 1
+	BadgeAddNum *int32 `json:"BadgeAddNum,omitempty" xml:"BadgeAddNum,omitempty"`
+	// example:
+	//
+	// 4
+	BadgeSetNum *int32 `json:"BadgeSetNum,omitempty" xml:"BadgeSetNum,omitempty"`
+	// example:
+	//
+	// 8.0up
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// {"key1":"value1"}
+	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
+	// example:
+	//
+	// group-1
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	ImageUrl     *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InboxContent []*string `json:"InboxContent,omitempty" xml:"InboxContent,omitempty" type:"Repeated"`
+	// example:
+	//
+	// alicloud_notification_sound
+	Music *string `json:"Music,omitempty" xml:"Music,omitempty"`
+	// example:
+	//
+	// 233856727
+	NotifyId *int32                              `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
+	Options  *PushTaskNotificationAndroidOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	PictureUrl *string `json:"PictureUrl,omitempty" xml:"PictureUrl,omitempty"`
+	// example:
+	//
+	// 0
+	RenderStyle *string `json:"RenderStyle,omitempty" xml:"RenderStyle,omitempty"`
+	// example:
+	//
+	// false
+	TestMessage *bool `json:"TestMessage,omitempty" xml:"TestMessage,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
+	VendorChannelActivity *string `json:"VendorChannelActivity,omitempty" xml:"VendorChannelActivity,omitempty"`
 }
 
 func (s PushTaskNotificationAndroid) String() string {
@@ -512,13 +560,34 @@ func (s *PushTaskNotificationAndroidOptions) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsAccs struct {
-	CustomStyle  *int32  `json:"CustomStyle,omitempty" xml:"CustomStyle,omitempty"`
-	NotifyType   *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// example:
+	//
+	// 1
+	CustomStyle *int32 `json:"CustomStyle,omitempty" xml:"CustomStyle,omitempty"`
+	// example:
+	//
+	// NONE
+	NotifyType *string `json:"NotifyType,omitempty" xml:"NotifyType,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
 	OpenActivity *string `json:"OpenActivity,omitempty" xml:"OpenActivity,omitempty"`
-	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
-	OpenUrl      *string `json:"OpenUrl,omitempty" xml:"OpenUrl,omitempty"`
-	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ThreadId     *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// example:
+	//
+	// APPLICATION
+	OpenType *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
+	// example:
+	//
+	// www.example.com
+	OpenUrl *string `json:"OpenUrl,omitempty" xml:"OpenUrl,omitempty"`
+	// example:
+	//
+	// 0
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// order_ORD20231201001
+	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
 }
 
 func (s PushTaskNotificationAndroidOptionsAccs) String() string {
@@ -597,6 +666,9 @@ func (s *PushTaskNotificationAndroidOptionsAccs) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsHonor struct {
+	// example:
+	//
+	// 0
 	Importance *int32 `json:"Importance,omitempty" xml:"Importance,omitempty"`
 }
 
@@ -622,12 +694,24 @@ func (s *PushTaskNotificationAndroidOptionsHonor) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsHuawei struct {
-	BusinessType            *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	Category                *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// example:
+	//
+	// VOIP
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 0
 	Importance              *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
 	LiveNotificationPayload *string `json:"LiveNotificationPayload,omitempty" xml:"LiveNotificationPayload,omitempty"`
-	ReceiptId               *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
-	Urgency                 *string `json:"Urgency,omitempty" xml:"Urgency,omitempty"`
+	// example:
+	//
+	// RCP4C123456
+	ReceiptId *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Urgency *string `json:"Urgency,omitempty" xml:"Urgency,omitempty"`
 }
 
 func (s PushTaskNotificationAndroidOptionsHuawei) String() string {
@@ -722,9 +806,15 @@ func (s *PushTaskNotificationAndroidOptionsMeizu) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsOppo struct {
-	Category                 *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DeleteIntentData         *string `json:"DeleteIntentData,omitempty" xml:"DeleteIntentData,omitempty"`
-	IntelligentIntent        *string `json:"IntelligentIntent,omitempty" xml:"IntelligentIntent,omitempty"`
+	// example:
+	//
+	// NEWS
+	Category          *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DeleteIntentData  *string `json:"DeleteIntentData,omitempty" xml:"DeleteIntentData,omitempty"`
+	IntelligentIntent *string `json:"IntelligentIntent,omitempty" xml:"IntelligentIntent,omitempty"`
+	// example:
+	//
+	// 1
 	NotifyLevel              *int64  `json:"NotifyLevel,omitempty" xml:"NotifyLevel,omitempty"`
 	PrivateContentParameters *string `json:"PrivateContentParameters,omitempty" xml:"PrivateContentParameters,omitempty"`
 	PrivateMsgTemplateId     *string `json:"PrivateMsgTemplateId,omitempty" xml:"PrivateMsgTemplateId,omitempty"`
@@ -807,9 +897,19 @@ func (s *PushTaskNotificationAndroidOptionsOppo) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsVivo struct {
-	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Importance *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	ReceiptId  *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
+	// example:
+	//
+	// MARKETING
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 0
+	Importance  *int32  `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	LiveMessage *string `json:"LiveMessage,omitempty" xml:"LiveMessage,omitempty"`
+	// example:
+	//
+	// 1232221
+	ReceiptId *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
 }
 
 func (s PushTaskNotificationAndroidOptionsVivo) String() string {
@@ -828,6 +928,10 @@ func (s *PushTaskNotificationAndroidOptionsVivo) GetImportance() *int32 {
 	return s.Importance
 }
 
+func (s *PushTaskNotificationAndroidOptionsVivo) GetLiveMessage() *string {
+	return s.LiveMessage
+}
+
 func (s *PushTaskNotificationAndroidOptionsVivo) GetReceiptId() *string {
 	return s.ReceiptId
 }
@@ -842,6 +946,11 @@ func (s *PushTaskNotificationAndroidOptionsVivo) SetImportance(v int32) *PushTas
 	return s
 }
 
+func (s *PushTaskNotificationAndroidOptionsVivo) SetLiveMessage(v string) *PushTaskNotificationAndroidOptionsVivo {
+	s.LiveMessage = &v
+	return s
+}
+
 func (s *PushTaskNotificationAndroidOptionsVivo) SetReceiptId(v string) *PushTaskNotificationAndroidOptionsVivo {
 	s.ReceiptId = &v
 	return s
@@ -852,6 +961,9 @@ func (s *PushTaskNotificationAndroidOptionsVivo) Validate() error {
 }
 
 type PushTaskNotificationAndroidOptionsXiaomi struct {
+	// example:
+	//
+	// michannel
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 }
 
@@ -877,24 +989,66 @@ func (s *PushTaskNotificationAndroidOptionsXiaomi) Validate() error {
 }
 
 type PushTaskNotificationHmos struct {
-	Action             *string   `json:"Action,omitempty" xml:"Action,omitempty"`
-	BadgeAddNum        *int32    `json:"BadgeAddNum,omitempty" xml:"BadgeAddNum,omitempty"`
-	BadgeSetNum        *int32    `json:"BadgeSetNum,omitempty" xml:"BadgeSetNum,omitempty"`
-	Category           *string   `json:"Category,omitempty" xml:"Category,omitempty"`
-	ExtParameters      *string   `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
-	ExtensionExtraData *string   `json:"ExtensionExtraData,omitempty" xml:"ExtensionExtraData,omitempty"`
-	ExtensionPush      *bool     `json:"ExtensionPush,omitempty" xml:"ExtensionPush,omitempty"`
-	ImageUrl           *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InboxContent       []*string `json:"InboxContent,omitempty" xml:"InboxContent,omitempty" type:"Repeated"`
-	LiveViewPayload    *string   `json:"LiveViewPayload,omitempty" xml:"LiveViewPayload,omitempty"`
-	NotifyId           *int32    `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
-	ReceiptId          *string   `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
-	RenderStyle        *string   `json:"RenderStyle,omitempty" xml:"RenderStyle,omitempty"`
-	SlotType           *string   `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
-	Sound              *string   `json:"Sound,omitempty" xml:"Sound,omitempty"`
-	SoundDuration      *int32    `json:"SoundDuration,omitempty" xml:"SoundDuration,omitempty"`
-	TestMessage        *bool     `json:"TestMessage,omitempty" xml:"TestMessage,omitempty"`
-	Uri                *string   `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// com.example.action
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// 1
+	BadgeAddNum *int32 `json:"BadgeAddNum,omitempty" xml:"BadgeAddNum,omitempty"`
+	// example:
+	//
+	// 1
+	BadgeSetNum *int32 `json:"BadgeSetNum,omitempty" xml:"BadgeSetNum,omitempty"`
+	// example:
+	//
+	// IM
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// {"key": "value"}
+	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
+	// example:
+	//
+	// text
+	ExtensionExtraData *string `json:"ExtensionExtraData,omitempty" xml:"ExtensionExtraData,omitempty"`
+	// example:
+	//
+	// false
+	ExtensionPush *bool `json:"ExtensionPush,omitempty" xml:"ExtensionPush,omitempty"`
+	// example:
+	//
+	// https://example.com/xxx.png
+	ImageUrl        *string   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InboxContent    []*string `json:"InboxContent,omitempty" xml:"InboxContent,omitempty" type:"Repeated"`
+	LiveViewPayload *string   `json:"LiveViewPayload,omitempty" xml:"LiveViewPayload,omitempty"`
+	// example:
+	//
+	// 123456
+	NotifyId *int32 `json:"NotifyId,omitempty" xml:"NotifyId,omitempty"`
+	// example:
+	//
+	// RCPB***DFD5
+	ReceiptId *string `json:"ReceiptId,omitempty" xml:"ReceiptId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	RenderStyle *string `json:"RenderStyle,omitempty" xml:"RenderStyle,omitempty"`
+	// example:
+	//
+	// SOCIAL_COMMUNICATION
+	SlotType      *string `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
+	Sound         *string `json:"Sound,omitempty" xml:"Sound,omitempty"`
+	SoundDuration *int32  `json:"SoundDuration,omitempty" xml:"SoundDuration,omitempty"`
+	// example:
+	//
+	// true
+	TestMessage *bool `json:"TestMessage,omitempty" xml:"TestMessage,omitempty"`
+	// example:
+	//
+	// https://www.example.com:8080/push/example
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s PushTaskNotificationHmos) String() string {
@@ -1072,20 +1226,56 @@ func (s *PushTaskNotificationHmos) Validate() error {
 }
 
 type PushTaskNotificationIos struct {
-	ApnsEnv            *string                              `json:"ApnsEnv,omitempty" xml:"ApnsEnv,omitempty"`
-	Badge              *int32                               `json:"Badge,omitempty" xml:"Badge,omitempty"`
-	BadgeAutoIncrement *bool                                `json:"BadgeAutoIncrement,omitempty" xml:"BadgeAutoIncrement,omitempty"`
-	Category           *string                              `json:"Category,omitempty" xml:"Category,omitempty"`
-	CollapseId         *string                              `json:"CollapseId,omitempty" xml:"CollapseId,omitempty"`
-	ExtParameters      *string                              `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
-	InterruptionLevel  *string                              `json:"InterruptionLevel,omitempty" xml:"InterruptionLevel,omitempty"`
-	LiveActivity       *PushTaskNotificationIosLiveActivity `json:"LiveActivity,omitempty" xml:"LiveActivity,omitempty" type:"Struct"`
-	Music              *string                              `json:"Music,omitempty" xml:"Music,omitempty"`
-	Mutable            *bool                                `json:"Mutable,omitempty" xml:"Mutable,omitempty"`
-	RelevanceScore     *float64                             `json:"RelevanceScore,omitempty" xml:"RelevanceScore,omitempty"`
-	Silent             *bool                                `json:"Silent,omitempty" xml:"Silent,omitempty"`
-	Subtitle           *string                              `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
-	ThreadId           *string                              `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// example:
+	//
+	// DEV
+	ApnsEnv *string `json:"ApnsEnv,omitempty" xml:"ApnsEnv,omitempty"`
+	// example:
+	//
+	// 1
+	Badge *int32 `json:"Badge,omitempty" xml:"Badge,omitempty"`
+	// example:
+	//
+	// false
+	BadgeAutoIncrement *bool `json:"BadgeAutoIncrement,omitempty" xml:"BadgeAutoIncrement,omitempty"`
+	// example:
+	//
+	// MESSAGE_REPLY
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// order_status_update_12345
+	CollapseId *string `json:"CollapseId,omitempty" xml:"CollapseId,omitempty"`
+	// example:
+	//
+	// {"attachment": "https://xxxx.xxx/notification_pic.png"}
+	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
+	// example:
+	//
+	// active
+	InterruptionLevel *string                              `json:"InterruptionLevel,omitempty" xml:"InterruptionLevel,omitempty"`
+	LiveActivity      *PushTaskNotificationIosLiveActivity `json:"LiveActivity,omitempty" xml:"LiveActivity,omitempty" type:"Struct"`
+	// example:
+	//
+	// default
+	Music *string `json:"Music,omitempty" xml:"Music,omitempty"`
+	// example:
+	//
+	// true
+	Mutable *bool `json:"Mutable,omitempty" xml:"Mutable,omitempty"`
+	// example:
+	//
+	// 0.5
+	RelevanceScore *float64 `json:"RelevanceScore,omitempty" xml:"RelevanceScore,omitempty"`
+	// example:
+	//
+	// false
+	Silent   *bool   `json:"Silent,omitempty" xml:"Silent,omitempty"`
+	Subtitle *string `json:"Subtitle,omitempty" xml:"Subtitle,omitempty"`
+	// example:
+	//
+	// news_category_tech
+	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
 }
 
 func (s PushTaskNotificationIos) String() string {
@@ -1232,13 +1422,28 @@ func (s *PushTaskNotificationIos) Validate() error {
 }
 
 type PushTaskNotificationIosLiveActivity struct {
-	Attributes     *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// OrderActivityAttributes
 	AttributesType *string `json:"AttributesType,omitempty" xml:"AttributesType,omitempty"`
 	ContentState   *string `json:"ContentState,omitempty" xml:"ContentState,omitempty"`
-	DismissalDate  *int64  `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
-	Event          *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	StaleDate      *int64  `json:"StaleDate,omitempty" xml:"StaleDate,omitempty"`
+	// example:
+	//
+	// 1701439800
+	DismissalDate *int64 `json:"DismissalDate,omitempty" xml:"DismissalDate,omitempty"`
+	// example:
+	//
+	// start
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// FOOD_DELIVERY_ORD20231201001
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1701425400
+	StaleDate *int64 `json:"StaleDate,omitempty" xml:"StaleDate,omitempty"`
 }
 
 func (s PushTaskNotificationIosLiveActivity) String() string {
@@ -1317,13 +1522,31 @@ func (s *PushTaskNotificationIosLiveActivity) Validate() error {
 }
 
 type PushTaskOptions struct {
-	ExpireTime  *string             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	JobKey      *string             `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	MessageId   *int64              `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	PushTime    *string             `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	Sms         *PushTaskOptionsSms `json:"Sms,omitempty" xml:"Sms,omitempty" type:"Struct"`
-	Trim        *bool               `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	UseChannels *string             `json:"UseChannels,omitempty" xml:"UseChannels,omitempty"`
+	// example:
+	//
+	// 2025-06-21T12:00:00Z
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// jobkey1727749697913
+	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	// example:
+	//
+	// 1174754033128****
+	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 2025-06-19T12:00:00Z
+	PushTime *string             `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	Sms      *PushTaskOptionsSms `json:"Sms,omitempty" xml:"Sms,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
+	// example:
+	//
+	// accs,apns
+	UseChannels *string `json:"UseChannels,omitempty" xml:"UseChannels,omitempty"`
 }
 
 func (s PushTaskOptions) String() string {
@@ -1407,10 +1630,22 @@ func (s *PushTaskOptions) Validate() error {
 }
 
 type PushTaskOptionsSms struct {
-	DelaySecs    *int64  `json:"DelaySecs,omitempty" xml:"DelaySecs,omitempty"`
-	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	SendPolicy   *string `json:"SendPolicy,omitempty" xml:"SendPolicy,omitempty"`
-	SignName     *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// example:
+	//
+	// 150
+	DelaySecs *int64 `json:"DelaySecs,omitempty" xml:"DelaySecs,omitempty"`
+	// example:
+	//
+	// key1=value1&key2=value2
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// example:
+	//
+	// PUSH_NOT_RECEIVED
+	SendPolicy *string `json:"SendPolicy,omitempty" xml:"SendPolicy,omitempty"`
+	SignName   *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// example:
+	//
+	// SMS_123456789
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -1472,9 +1707,18 @@ func (s *PushTaskOptionsSms) Validate() error {
 }
 
 type PushTaskTarget struct {
+	// example:
+	//
+	// IOS
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// DEVICE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s PushTaskTarget) String() string {

@@ -153,46 +153,16 @@ func (s *QueryPushRecordsResponseBodyPushInfos) Validate() error {
 }
 
 type QueryPushRecordsResponseBodyPushInfosPushInfo struct {
-	// example:
-	//
-	// 333526247
-	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// example:
-	//
-	// abcd
-	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// example:
-	//
-	// ANDROID
+	AppKey     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body       *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// example:
-	//
-	// 510431
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// example:
-	//
-	// 2021-09-15T02:05:24Z
-	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	// example:
-	//
-	// NOTICE
-	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	// example:
-	//
-	// DEVICE
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// example:
-	//
-	// SENT
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// DEVICE
-	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// example:
-	//
-	// sssss
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	MessageId  *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	PushTime   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushType   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryPushRecordsResponseBodyPushInfosPushInfo) String() string {

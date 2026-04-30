@@ -93,50 +93,17 @@ func (s *QueryPushStatByMsgResponseBodyPushStats) Validate() error {
 }
 
 type QueryPushStatByMsgResponseBodyPushStatsPushStat struct {
-	// example:
-	//
-	// 120
-	AcceptCount *int64 `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
-	// example:
-	//
-	// 10
-	DeletedCount *int64 `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
-	// example:
-	//
-	// 510427
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// example:
-	//
-	// 30
-	OpenedCount *int64 `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
-	// example:
-	//
-	// 60
-	ReceivedCount *int64 `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
-	// example:
-	//
-	// 100
-	SentCount *int64 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	// example:
-	//
-	// 0
-	SmsFailedCount *int64 `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
-	// example:
-	//
-	// 0
-	SmsReceiveFailedCount *int64 `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
-	// example:
-	//
-	// 0
-	SmsReceiveSuccessCount *int64 `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
-	// example:
-	//
-	// 0
-	SmsSentCount *int64 `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
-	// example:
-	//
-	// 0
-	SmsSkipCount *int64 `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
+	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
+	DeletedCount           *int64  `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
+	MessageId              *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	OpenedCount            *int64  `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
+	ReceivedCount          *int64  `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
+	SentCount              *int64  `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
+	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
+	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
+	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
+	SmsSentCount           *int64  `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
+	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
 }
 
 func (s QueryPushStatByMsgResponseBodyPushStatsPushStat) String() string {

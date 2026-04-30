@@ -103,6 +103,8 @@ type iPushRequest interface {
 	GetAndroidRenderStyle() *int32
 	SetAndroidTargetUserType(v int32) *PushRequest
 	GetAndroidTargetUserType() *int32
+	SetAndroidVivoLiveMessage(v string) *PushRequest
+	GetAndroidVivoLiveMessage() *string
 	SetAndroidVivoPushMode(v int32) *PushRequest
 	GetAndroidVivoPushMode() *int32
 	SetAndroidVivoReceiptId(v string) *PushRequest
@@ -373,8 +375,9 @@ type PushRequest struct {
 	// example:
 	//
 	// 1
-	AndroidRenderStyle    *int32 `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidTargetUserType *int32 `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
+	AndroidRenderStyle     *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidTargetUserType  *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
+	AndroidVivoLiveMessage *string `json:"AndroidVivoLiveMessage,omitempty" xml:"AndroidVivoLiveMessage,omitempty"`
 	// example:
 	//
 	// 0
@@ -761,6 +764,10 @@ func (s *PushRequest) GetAndroidRenderStyle() *int32 {
 
 func (s *PushRequest) GetAndroidTargetUserType() *int32 {
 	return s.AndroidTargetUserType
+}
+
+func (s *PushRequest) GetAndroidVivoLiveMessage() *string {
+	return s.AndroidVivoLiveMessage
 }
 
 func (s *PushRequest) GetAndroidVivoPushMode() *int32 {
@@ -1271,6 +1278,11 @@ func (s *PushRequest) SetAndroidRenderStyle(v int32) *PushRequest {
 
 func (s *PushRequest) SetAndroidTargetUserType(v int32) *PushRequest {
 	s.AndroidTargetUserType = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidVivoLiveMessage(v string) *PushRequest {
+	s.AndroidVivoLiveMessage = &v
 	return s
 }
 

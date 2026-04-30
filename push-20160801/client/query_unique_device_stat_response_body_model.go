@@ -93,14 +93,8 @@ func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStats) Validate() error {
 }
 
 type QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {
-	// example:
-	//
-	// 100
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// example:
-	//
-	// 2016-07-25T00:00:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) String() string {

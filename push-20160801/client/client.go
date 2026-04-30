@@ -729,8 +729,6 @@ func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_resul
 //
 // 【废弃】查询用户已创建的app列表
 //
-// @param request - ListSummaryAppsRequest
-//
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListSummaryAppsResponse
@@ -1199,6 +1197,10 @@ func (client *Client) PushWithOptions(tmpReq *PushRequest, runtime *dara.Runtime
 
 	if !dara.IsNil(request.AndroidTargetUserType) {
 		query["AndroidTargetUserType"] = request.AndroidTargetUserType
+	}
+
+	if !dara.IsNil(request.AndroidVivoLiveMessage) {
+		query["AndroidVivoLiveMessage"] = request.AndroidVivoLiveMessage
 	}
 
 	if !dara.IsNil(request.AndroidVivoPushMode) {

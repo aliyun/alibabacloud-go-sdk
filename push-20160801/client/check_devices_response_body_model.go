@@ -93,14 +93,8 @@ func (s *CheckDevicesResponseBodyDeviceCheckInfos) Validate() error {
 }
 
 type CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo struct {
-	// example:
-	//
-	// true
-	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
-	// example:
-	//
-	// ae296f3b04a58a05b30c95f****
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Available *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
+	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) String() string {

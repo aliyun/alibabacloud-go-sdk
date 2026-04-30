@@ -216,8 +216,9 @@ type MassPushRequestPushTask struct {
 	// example:
 	//
 	// 1
-	AndroidRenderStyle    *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidTargetUserType *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
+	AndroidRenderStyle     *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidTargetUserType  *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
+	AndroidVivoLiveMessage *string `json:"AndroidVivoLiveMessage,omitempty" xml:"AndroidVivoLiveMessage,omitempty"`
 	// example:
 	//
 	// 1
@@ -583,6 +584,10 @@ func (s *MassPushRequestPushTask) GetAndroidRenderStyle() *string {
 
 func (s *MassPushRequestPushTask) GetAndroidTargetUserType() *int32 {
 	return s.AndroidTargetUserType
+}
+
+func (s *MassPushRequestPushTask) GetAndroidVivoLiveMessage() *string {
+	return s.AndroidVivoLiveMessage
 }
 
 func (s *MassPushRequestPushTask) GetAndroidVivoPushMode() *int32 {
@@ -1065,6 +1070,11 @@ func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushReque
 
 func (s *MassPushRequestPushTask) SetAndroidTargetUserType(v int32) *MassPushRequestPushTask {
 	s.AndroidTargetUserType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidVivoLiveMessage(v string) *MassPushRequestPushTask {
+	s.AndroidVivoLiveMessage = &v
 	return s
 }
 

@@ -93,9 +93,6 @@ func (s *ListTagsResponseBodyTagInfos) Validate() error {
 }
 
 type ListTagsResponseBodyTagInfosTagInfo struct {
-	// example:
-	//
-	// test_tag2
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

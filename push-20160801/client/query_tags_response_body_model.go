@@ -93,9 +93,6 @@ func (s *QueryTagsResponseBodyTagInfos) Validate() error {
 }
 
 type QueryTagsResponseBodyTagInfosTagInfo struct {
-	// example:
-	//
-	// test_tag2
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
