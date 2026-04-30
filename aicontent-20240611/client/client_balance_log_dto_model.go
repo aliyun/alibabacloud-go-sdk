@@ -55,10 +55,7 @@ type ClientBalanceLogDTO struct {
 	// example:
 	//
 	// 1
-	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// example:
-	//
-	// 充值
+	Id     *int64  `json:"id,omitempty" xml:"id,omitempty"`
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
 }
 

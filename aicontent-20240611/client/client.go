@@ -3169,6 +3169,80 @@ func (client *Client) ModelRouterChatCompletions(request *ModelRouterChatComplet
 
 // Summary:
 //
+// 客户管理/启用部门余额限流
+//
+// @param request - ModelRouterConfigureClientBalanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterConfigureClientBalanceResponse
+func (client *Client) ModelRouterConfigureClientBalanceWithOptions(id *string, request *ModelRouterConfigureClientBalanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterConfigureClientBalanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.EnableBalance) {
+		body["enableBalance"] = request.EnableBalance
+	}
+
+	if !dara.IsNil(request.InitialBalance) {
+		body["initialBalance"] = request.InitialBalance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterConfigureClientBalance"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterConfigureClientBalanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/启用部门余额限流
+//
+// @param request - ModelRouterConfigureClientBalanceRequest
+//
+// @return ModelRouterConfigureClientBalanceResponse
+func (client *Client) ModelRouterConfigureClientBalance(id *string, request *ModelRouterConfigureClientBalanceRequest) (_result *ModelRouterConfigureClientBalanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterConfigureClientBalanceResponse{}
+	_body, _err := client.ModelRouterConfigureClientBalanceWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // API密钥管理/复制API密钥
 //
 // @param headers - map
@@ -3276,6 +3350,80 @@ func (client *Client) ModelRouterCreateApiKey(request *ModelRouterCreateApiKeyRe
 	headers := make(map[string]*string)
 	_result = &ModelRouterCreateApiKeyResponse{}
 	_body, _err := client.ModelRouterCreateApiKeyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/创建余额交易
+//
+// @param request - ModelRouterCreateBalanceTransactionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateBalanceTransactionResponse
+func (client *Client) ModelRouterCreateBalanceTransactionWithOptions(id *string, request *ModelRouterCreateBalanceTransactionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateBalanceTransactionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.Remark) {
+		body["remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateBalanceTransaction"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/transactions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateBalanceTransactionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/创建余额交易
+//
+// @param request - ModelRouterCreateBalanceTransactionRequest
+//
+// @return ModelRouterCreateBalanceTransactionResponse
+func (client *Client) ModelRouterCreateBalanceTransaction(id *string, request *ModelRouterCreateBalanceTransactionRequest) (_result *ModelRouterCreateBalanceTransactionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterCreateBalanceTransactionResponse{}
+	_body, _err := client.ModelRouterCreateBalanceTransactionWithOptions(id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3836,6 +3984,148 @@ func (client *Client) ModelRouterDeleteModel(id *string) (_result *ModelRouterDe
 	headers := make(map[string]*string)
 	_result = &ModelRouterDeleteModelResponse{}
 	_body, _err := client.ModelRouterDeleteModelWithOptions(id, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门余额
+//
+// @param request - ModelRouterGetClientBalanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetClientBalanceResponse
+func (client *Client) ModelRouterGetClientBalanceWithOptions(id *string, request *ModelRouterGetClientBalanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetClientBalanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetClientBalance"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetClientBalanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门余额
+//
+// @param request - ModelRouterGetClientBalanceRequest
+//
+// @return ModelRouterGetClientBalanceResponse
+func (client *Client) ModelRouterGetClientBalance(id *string, request *ModelRouterGetClientBalanceRequest) (_result *ModelRouterGetClientBalanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetClientBalanceResponse{}
+	_body, _err := client.ModelRouterGetClientBalanceWithOptions(id, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门余额变更日志
+//
+// @param request - ModelRouterGetClientBalanceLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetClientBalanceLogsResponse
+func (client *Client) ModelRouterGetClientBalanceLogsWithOptions(id *string, request *ModelRouterGetClientBalanceLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetClientBalanceLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeType) {
+		query["changeType"] = request.ChangeType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetClientBalanceLogs"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetClientBalanceLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门余额变更日志
+//
+// @param request - ModelRouterGetClientBalanceLogsRequest
+//
+// @return ModelRouterGetClientBalanceLogsResponse
+func (client *Client) ModelRouterGetClientBalanceLogs(id *string, request *ModelRouterGetClientBalanceLogsRequest) (_result *ModelRouterGetClientBalanceLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModelRouterGetClientBalanceLogsResponse{}
+	_body, _err := client.ModelRouterGetClientBalanceLogsWithOptions(id, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -2384,6 +2384,61 @@ func (client *Client) ModelRouterChatCompletionsWithContext(ctx context.Context,
 
 // Summary:
 //
+// 客户管理/启用部门余额限流
+//
+// @param request - ModelRouterConfigureClientBalanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterConfigureClientBalanceResponse
+func (client *Client) ModelRouterConfigureClientBalanceWithContext(ctx context.Context, id *string, request *ModelRouterConfigureClientBalanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterConfigureClientBalanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BalanceType) {
+		body["balanceType"] = request.BalanceType
+	}
+
+	if !dara.IsNil(request.EnableBalance) {
+		body["enableBalance"] = request.EnableBalance
+	}
+
+	if !dara.IsNil(request.InitialBalance) {
+		body["initialBalance"] = request.InitialBalance
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterConfigureClientBalance"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterConfigureClientBalanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // API密钥管理/复制API密钥
 //
 // @param headers - map
@@ -2454,6 +2509,61 @@ func (client *Client) ModelRouterCreateApiKeyWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModelRouterCreateApiKeyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/创建余额交易
+//
+// @param request - ModelRouterCreateBalanceTransactionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterCreateBalanceTransactionResponse
+func (client *Client) ModelRouterCreateBalanceTransactionWithContext(ctx context.Context, id *string, request *ModelRouterCreateBalanceTransactionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterCreateBalanceTransactionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		body["amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.Remark) {
+		body["remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.Type) {
+		body["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterCreateBalanceTransaction"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/transactions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterCreateBalanceTransactionResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2870,6 +2980,110 @@ func (client *Client) ModelRouterDeleteModelWithContext(ctx context.Context, id 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModelRouterDeleteModelResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门余额
+//
+// @param request - ModelRouterGetClientBalanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetClientBalanceResponse
+func (client *Client) ModelRouterGetClientBalanceWithContext(ctx context.Context, id *string, request *ModelRouterGetClientBalanceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetClientBalanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetClientBalance"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetClientBalanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 客户管理/获取部门余额变更日志
+//
+// @param request - ModelRouterGetClientBalanceLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterGetClientBalanceLogsResponse
+func (client *Client) ModelRouterGetClientBalanceLogsWithContext(ctx context.Context, id *string, request *ModelRouterGetClientBalanceLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterGetClientBalanceLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ChangeType) {
+		query["changeType"] = request.ChangeType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterGetClientBalanceLogs"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/clients/" + dara.PercentEncode(dara.StringValue(id)) + "/balance/logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterGetClientBalanceLogsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
