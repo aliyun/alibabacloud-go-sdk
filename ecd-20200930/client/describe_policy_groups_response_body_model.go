@@ -318,6 +318,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// on
 	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
+	EndUserCount                *string `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
 	// Indicates whether the User Stream Collaboration switch is turned on.
 	//
 	// Valid values:
@@ -529,7 +530,9 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// The network redirection rule.
 	//
 	// >  This parameter is in invitational preview for specific users and not available to the public.
-	NetRedirectRule []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	NetRedirectRule   []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	NetworkPrinter    *string                                                                `json:"NetworkPrinter,omitempty" xml:"NetworkPrinter,omitempty"`
+	OrganizationCount *string                                                                `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
 	// The ID of the cloud computer policy.
 	//
 	// example:
@@ -1218,6 +1221,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetEndUserApplyAd
 	return s.EndUserApplyAdminCoordinate
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetEndUserCount() *string {
+	return s.EndUserCount
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetEndUserGroupCoordinate() *string {
 	return s.EndUserGroupCoordinate
 }
@@ -1360,6 +1367,14 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetNetRedirect() 
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetNetRedirectRule() []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule {
 	return s.NetRedirectRule
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetNetworkPrinter() *string {
+	return s.NetworkPrinter
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetOrganizationCount() *string {
+	return s.OrganizationCount
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPolicyGroupId() *string {
@@ -1816,6 +1831,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserApplyAd
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserCount(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.EndUserCount = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetEndUserGroupCoordinate(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.EndUserGroupCoordinate = &v
 	return s
@@ -1993,6 +2013,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetNetRedirect(v 
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetNetRedirectRule(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.NetRedirectRule = v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetNetworkPrinter(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.NetworkPrinter = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetOrganizationCount(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.OrganizationCount = &v
 	return s
 }
 

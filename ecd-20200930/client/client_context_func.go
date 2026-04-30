@@ -1866,6 +1866,10 @@ func (client *Client) CreateADConnectorOfficeSiteWithContext(ctx context.Context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessAttribute) {
+		query["AccessAttribute"] = request.AccessAttribute
+	}
+
 	if !dara.IsNil(request.AdHostname) {
 		query["AdHostname"] = request.AdHostname
 	}
@@ -5128,6 +5132,10 @@ func (client *Client) CreateSimpleOfficeSiteWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccessAttribute) {
+		query["AccessAttribute"] = request.AccessAttribute
+	}
+
 	if !dara.IsNil(request.AccountType) {
 		query["AccountType"] = request.AccountType
 	}

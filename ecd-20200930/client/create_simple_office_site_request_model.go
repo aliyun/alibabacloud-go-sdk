@@ -9,6 +9,8 @@ type iCreateSimpleOfficeSiteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessAttribute(v string) *CreateSimpleOfficeSiteRequest
+	GetAccessAttribute() *string
 	SetAccountType(v string) *CreateSimpleOfficeSiteRequest
 	GetAccountType() *string
 	SetAuthorityHost(v string) *CreateSimpleOfficeSiteRequest
@@ -54,8 +56,9 @@ type iCreateSimpleOfficeSiteRequest interface {
 }
 
 type CreateSimpleOfficeSiteRequest struct {
-	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AuthorityHost *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
+	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
+	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AuthorityHost   *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
 	// The maximum public bandwidth. Value range: 10 to 200. Unit: Mbit/s. This parameter is available if you set `EnableInternetAccess` to `true`.
 	//
 	// example:
@@ -215,6 +218,10 @@ func (s CreateSimpleOfficeSiteRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSimpleOfficeSiteRequest) GetAccessAttribute() *string {
+	return s.AccessAttribute
+}
+
 func (s *CreateSimpleOfficeSiteRequest) GetAccountType() *string {
 	return s.AccountType
 }
@@ -297,6 +304,11 @@ func (s *CreateSimpleOfficeSiteRequest) GetVerifyCode() *string {
 
 func (s *CreateSimpleOfficeSiteRequest) GetVpcType() *string {
 	return s.VpcType
+}
+
+func (s *CreateSimpleOfficeSiteRequest) SetAccessAttribute(v string) *CreateSimpleOfficeSiteRequest {
+	s.AccessAttribute = &v
+	return s
 }
 
 func (s *CreateSimpleOfficeSiteRequest) SetAccountType(v string) *CreateSimpleOfficeSiteRequest {

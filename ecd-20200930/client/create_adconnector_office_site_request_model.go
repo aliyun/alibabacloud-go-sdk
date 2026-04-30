@@ -9,6 +9,8 @@ type iCreateADConnectorOfficeSiteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAccessAttribute(v string) *CreateADConnectorOfficeSiteRequest
+	GetAccessAttribute() *string
 	SetAdHostname(v string) *CreateADConnectorOfficeSiteRequest
 	GetAdHostname() *string
 	SetBackupDCHostname(v string) *CreateADConnectorOfficeSiteRequest
@@ -58,6 +60,7 @@ type iCreateADConnectorOfficeSiteRequest interface {
 }
 
 type CreateADConnectorOfficeSiteRequest struct {
+	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
 	// The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
 	//
 	// example:
@@ -282,6 +285,10 @@ func (s CreateADConnectorOfficeSiteRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateADConnectorOfficeSiteRequest) GetAccessAttribute() *string {
+	return s.AccessAttribute
+}
+
 func (s *CreateADConnectorOfficeSiteRequest) GetAdHostname() *string {
 	return s.AdHostname
 }
@@ -372,6 +379,11 @@ func (s *CreateADConnectorOfficeSiteRequest) GetVSwitchId() []*string {
 
 func (s *CreateADConnectorOfficeSiteRequest) GetVerifyCode() *string {
 	return s.VerifyCode
+}
+
+func (s *CreateADConnectorOfficeSiteRequest) SetAccessAttribute(v string) *CreateADConnectorOfficeSiteRequest {
+	s.AccessAttribute = &v
+	return s
 }
 
 func (s *CreateADConnectorOfficeSiteRequest) SetAdHostname(v string) *CreateADConnectorOfficeSiteRequest {

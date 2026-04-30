@@ -107,8 +107,9 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// ga-bp1astu3yrplkzoo2****
-	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
+	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows.
 	//
 	// example:
@@ -524,6 +525,10 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAcceleratorId() *string 
 	return s.AcceleratorId
 }
 
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAccessAttribute() *string {
+	return s.AccessAttribute
+}
+
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetAccountType() *string {
 	return s.AccountType
 }
@@ -787,6 +792,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetADConnectors(v []*Descri
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAcceleratorId(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.AcceleratorId = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetAccessAttribute(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.AccessAttribute = &v
 	return s
 }
 

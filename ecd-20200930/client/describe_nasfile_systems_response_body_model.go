@@ -195,6 +195,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The office networks.
 	OfficeSites []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
+	ProductType *string                                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// Indicates whether the User Profile Management (UPM) feature is supported.
 	//
 	// example:
@@ -218,7 +219,8 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	// example:
 	//
 	// Upm
-	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Scene     *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SizeQuota *int64  `json:"SizeQuota,omitempty" xml:"SizeQuota,omitempty"`
 	// The storage type of the NAS file system. Valid values:
 	//
 	// 	- Capacity
@@ -319,6 +321,10 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetOfficeSites() []*Desc
 	return s.OfficeSites
 }
 
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetProductType() *string {
+	return s.ProductType
+}
+
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetProfileCompatible() *bool {
 	return s.ProfileCompatible
 }
@@ -329,6 +335,10 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetRegionId() *string {
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetScene() *string {
 	return s.Scene
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetSizeQuota() *int64 {
+	return s.SizeQuota
 }
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) GetStorageType() *string {
@@ -428,6 +438,11 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetOfficeSites(v []*Desc
 	return s
 }
 
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetProductType(v string) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.ProductType = &v
+	return s
+}
+
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetProfileCompatible(v bool) *DescribeNASFileSystemsResponseBodyFileSystems {
 	s.ProfileCompatible = &v
 	return s
@@ -440,6 +455,11 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetRegionId(v string) *D
 
 func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetScene(v string) *DescribeNASFileSystemsResponseBodyFileSystems {
 	s.Scene = &v
+	return s
+}
+
+func (s *DescribeNASFileSystemsResponseBodyFileSystems) SetSizeQuota(v int64) *DescribeNASFileSystemsResponseBodyFileSystems {
+	s.SizeQuota = &v
 	return s
 }
 
