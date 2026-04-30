@@ -22,8 +22,6 @@ type iRunAgentTaskRequest interface {
 }
 
 type RunAgentTaskRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// cn-shanghai
