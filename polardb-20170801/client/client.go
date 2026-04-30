@@ -2227,6 +2227,192 @@ func (client *Client) ContinueDBClusterMigration(request *ContinueDBClusterMigra
 
 // Summary:
 //
+// 创建AI集群
+//
+// @param request - CreateAIDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAIDBClusterResponse
+func (client *Client) CreateAIDBClusterWithOptions(request *CreateAIDBClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateAIDBClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AckAdmin) {
+		query["AckAdmin"] = request.AckAdmin
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.AutoUseCoupon) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !dara.IsNil(request.DBClusterDescription) {
+		query["DBClusterDescription"] = request.DBClusterDescription
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBNodeClass) {
+		query["DBNodeClass"] = request.DBNodeClass
+	}
+
+	if !dara.IsNil(request.Extension) {
+		query["Extension"] = request.Extension
+	}
+
+	if !dara.IsNil(request.InferenceEngine) {
+		query["InferenceEngine"] = request.InferenceEngine
+	}
+
+	if !dara.IsNil(request.KubeClusterId) {
+		query["KubeClusterId"] = request.KubeClusterId
+	}
+
+	if !dara.IsNil(request.KubeConfig) {
+		query["KubeConfig"] = request.KubeConfig
+	}
+
+	if !dara.IsNil(request.KubeManagement) {
+		query["KubeManagement"] = request.KubeManagement
+	}
+
+	if !dara.IsNil(request.KubeType) {
+		query["KubeType"] = request.KubeType
+	}
+
+	if !dara.IsNil(request.KubernetesConfig) {
+		query["KubernetesConfig"] = request.KubernetesConfig
+	}
+
+	if !dara.IsNil(request.ManagementMode) {
+		query["ManagementMode"] = request.ManagementMode
+	}
+
+	if !dara.IsNil(request.ModeName) {
+		query["ModeName"] = request.ModeName
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.Password) {
+		query["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.PayType) {
+		query["PayType"] = request.PayType
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PromotionCode) {
+		query["PromotionCode"] = request.PromotionCode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !dara.IsNil(request.StorageSpace) {
+		query["StorageSpace"] = request.StorageSpace
+	}
+
+	if !dara.IsNil(request.StorageType) {
+		query["StorageType"] = request.StorageType
+	}
+
+	if !dara.IsNil(request.TimeSlices) {
+		query["TimeSlices"] = request.TimeSlices
+	}
+
+	if !dara.IsNil(request.UsedTime) {
+		query["UsedTime"] = request.UsedTime
+	}
+
+	if !dara.IsNil(request.VPCId) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAIDBCluster"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAIDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI集群
+//
+// @param request - CreateAIDBClusterRequest
+//
+// @return CreateAIDBClusterResponse
+func (client *Client) CreateAIDBCluster(request *CreateAIDBClusterRequest) (_result *CreateAIDBClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateAIDBClusterResponse{}
+	_body, _err := client.CreateAIDBClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据集
 //
 // @param request - CreateAIDBClusterDatasetRequest
