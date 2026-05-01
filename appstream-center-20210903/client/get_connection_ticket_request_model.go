@@ -49,6 +49,8 @@ type iGetConnectionTicketRequest interface {
 	GetParam() *string
 	SetProductType(v string) *GetConnectionTicketRequest
 	GetProductType() *string
+	SetRequireUuidValidation(v bool) *GetConnectionTicketRequest
+	GetRequireUuidValidation() *bool
 	SetResourceId(v string) *GetConnectionTicketRequest
 	GetResourceId() *string
 	SetSessionId(v string) *GetConnectionTicketRequest
@@ -129,7 +131,11 @@ type GetConnectionTicketRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// true
+	RequireUuidValidation *bool   `json:"RequireUuidValidation,omitempty" xml:"RequireUuidValidation,omitempty"`
+	ResourceId            *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// example:
 	//
 	// 09e2b2e6-3181-4c84-9539-6fc9f1c3199e
@@ -234,6 +240,10 @@ func (s *GetConnectionTicketRequest) GetParam() *string {
 
 func (s *GetConnectionTicketRequest) GetProductType() *string {
 	return s.ProductType
+}
+
+func (s *GetConnectionTicketRequest) GetRequireUuidValidation() *bool {
+	return s.RequireUuidValidation
 }
 
 func (s *GetConnectionTicketRequest) GetResourceId() *string {
@@ -353,6 +363,11 @@ func (s *GetConnectionTicketRequest) SetParam(v string) *GetConnectionTicketRequ
 
 func (s *GetConnectionTicketRequest) SetProductType(v string) *GetConnectionTicketRequest {
 	s.ProductType = &v
+	return s
+}
+
+func (s *GetConnectionTicketRequest) SetRequireUuidValidation(v bool) *GetConnectionTicketRequest {
+	s.RequireUuidValidation = &v
 	return s
 }
 

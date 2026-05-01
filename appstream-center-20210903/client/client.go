@@ -153,6 +153,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		body["ProductType"] = request.ProductType
 	}
 
+	if !dara.IsNil(request.RequireUuidValidation) {
+		body["RequireUuidValidation"] = request.RequireUuidValidation
+	}
+
 	if !dara.IsNil(request.ResourceId) {
 		body["ResourceId"] = request.ResourceId
 	}

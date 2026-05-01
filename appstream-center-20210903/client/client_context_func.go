@@ -104,6 +104,10 @@ func (client *Client) GetConnectionTicketWithContext(ctx context.Context, reques
 		body["ProductType"] = request.ProductType
 	}
 
+	if !dara.IsNil(request.RequireUuidValidation) {
+		body["RequireUuidValidation"] = request.RequireUuidValidation
+	}
+
 	if !dara.IsNil(request.ResourceId) {
 		body["ResourceId"] = request.ResourceId
 	}
