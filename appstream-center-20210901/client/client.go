@@ -239,6 +239,230 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 
 // Summary:
 //
+// 配置资源组模型模板
+//
+// @param request - ConfigResourceGroupModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigResourceGroupModelTemplateResponse
+func (client *Client) ConfigResourceGroupModelTemplateWithOptions(request *ConfigResourceGroupModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *ConfigResourceGroupModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelTemplateId) {
+		body["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigResourceGroupModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigResourceGroupModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置资源组模型模板
+//
+// @param request - ConfigResourceGroupModelTemplateRequest
+//
+// @return ConfigResourceGroupModelTemplateResponse
+func (client *Client) ConfigResourceGroupModelTemplate(request *ConfigResourceGroupModelTemplateRequest) (_result *ConfigResourceGroupModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigResourceGroupModelTemplateResponse{}
+	_body, _err := client.ConfigResourceGroupModelTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置Runtime通道
+//
+// @param request - ConfigRuntimeChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigRuntimeChannelResponse
+func (client *Client) ConfigRuntimeChannelWithOptions(request *ConfigRuntimeChannelRequest, runtime *dara.RuntimeOptions) (_result *ConfigRuntimeChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentProvider) {
+		body["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.Code) {
+		body["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RuntimeIds) {
+		body["RuntimeIds"] = request.RuntimeIds
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		body["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigRuntimeChannel"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigRuntimeChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置Runtime通道
+//
+// @param request - ConfigRuntimeChannelRequest
+//
+// @return ConfigRuntimeChannelResponse
+func (client *Client) ConfigRuntimeChannel(request *ConfigRuntimeChannelRequest) (_result *ConfigRuntimeChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigRuntimeChannelResponse{}
+	_body, _err := client.ConfigRuntimeChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过RuntimeIds配置模型模板
+//
+// @param request - ConfigRuntimeModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigRuntimeModelTemplateResponse
+func (client *Client) ConfigRuntimeModelTemplateWithOptions(request *ConfigRuntimeModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *ConfigRuntimeModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelTemplateId) {
+		body["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.RuntimeIds) {
+		body["RuntimeIds"] = request.RuntimeIds
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		body["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ConfigRuntimeModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ConfigRuntimeModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过RuntimeIds配置模型模板
+//
+// @param request - ConfigRuntimeModelTemplateRequest
+//
+// @return ConfigRuntimeModelTemplateResponse
+func (client *Client) ConfigRuntimeModelTemplate(request *ConfigRuntimeModelTemplateRequest) (_result *ConfigRuntimeModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ConfigRuntimeModelTemplateResponse{}
+	_body, _err := client.ConfigRuntimeModelTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a delivery group.
 //
 // Description:
@@ -618,6 +842,84 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateImageFromAppInstanceGroupResponse{}
 	_body, _err := client.CreateImageFromAppInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型模板
+//
+// @param request - CreateModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelTemplateResponse
+func (client *Client) CreateModelTemplateWithOptions(request *CreateModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型模板
+//
+// @param request - CreateModelTemplateRequest
+//
+// @return CreateModelTemplateResponse
+func (client *Client) CreateModelTemplate(request *CreateModelTemplateRequest) (_result *CreateModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateModelTemplateResponse{}
+	_body, _err := client.CreateModelTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1678,6 +1980,162 @@ func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceReques
 
 // Summary:
 //
+// 查询Runtime通道配置
+//
+// @param request - GetRuntimeChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRuntimeChannelResponse
+func (client *Client) GetRuntimeChannelWithOptions(request *GetRuntimeChannelRequest, runtime *dara.RuntimeOptions) (_result *GetRuntimeChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.IncludeRiskInfo) {
+		query["IncludeRiskInfo"] = request.IncludeRiskInfo
+	}
+
+	if !dara.IsNil(request.RuntimeId) {
+		query["RuntimeId"] = request.RuntimeId
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		query["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRuntimeChannel"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRuntimeChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Runtime通道配置
+//
+// @param request - GetRuntimeChannelRequest
+//
+// @return GetRuntimeChannelResponse
+func (client *Client) GetRuntimeChannel(request *GetRuntimeChannelRequest) (_result *GetRuntimeChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRuntimeChannelResponse{}
+	_body, _err := client.GetRuntimeChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云电脑模型配置详情
+//
+// @param request - GetRuntimeModelConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRuntimeModelConfigResponse
+func (client *Client) GetRuntimeModelConfigWithOptions(request *GetRuntimeModelConfigRequest, runtime *dara.RuntimeOptions) (_result *GetRuntimeModelConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.IncludeRiskInfo) {
+		query["IncludeRiskInfo"] = request.IncludeRiskInfo
+	}
+
+	if !dara.IsNil(request.RuntimeId) {
+		query["RuntimeId"] = request.RuntimeId
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		query["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRuntimeModelConfig"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRuntimeModelConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云电脑模型配置详情
+//
+// @param request - GetRuntimeModelConfigRequest
+//
+// @return GetRuntimeModelConfigResponse
+func (client *Client) GetRuntimeModelConfig(request *GetRuntimeModelConfigRequest) (_result *GetRuntimeModelConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetRuntimeModelConfigResponse{}
+	_body, _err := client.GetRuntimeModelConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of multiple delivery groups that meet the query conditions.
 //
 // @param request - ListAppInstanceGroupRequest
@@ -2054,6 +2512,140 @@ func (client *Client) ListBindInfo(request *ListBindInfoRequest) (_result *ListB
 
 // Summary:
 //
+// 查询桌面Agent运行时列表
+//
+// @param request - ListDesktopAgentRuntimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDesktopAgentRuntimeResponse
+func (client *Client) ListDesktopAgentRuntimeWithOptions(request *ListDesktopAgentRuntimeRequest, runtime *dara.RuntimeOptions) (_result *ListDesktopAgentRuntimeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentInstanceStatuses) {
+		query["AgentInstanceStatuses"] = request.AgentInstanceStatuses
+	}
+
+	if !dara.IsNil(request.AgentInstanceVersions) {
+		query["AgentInstanceVersions"] = request.AgentInstanceVersions
+	}
+
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.AuthUsers) {
+		query["AuthUsers"] = request.AuthUsers
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ChannelConfigure) {
+		query["ChannelConfigure"] = request.ChannelConfigure
+	}
+
+	if !dara.IsNil(request.DeploymentSource) {
+		query["DeploymentSource"] = request.DeploymentSource
+	}
+
+	if !dara.IsNil(request.DesktopIds) {
+		query["DesktopIds"] = request.DesktopIds
+	}
+
+	if !dara.IsNil(request.DesktopNames) {
+		query["DesktopNames"] = request.DesktopNames
+	}
+
+	if !dara.IsNil(request.DesktopStatuses) {
+		query["DesktopStatuses"] = request.DesktopStatuses
+	}
+
+	if !dara.IsNil(request.HasAuthUser) {
+		query["HasAuthUser"] = request.HasAuthUser
+	}
+
+	if !dara.IsNil(request.HasRisk) {
+		query["HasRisk"] = request.HasRisk
+	}
+
+	if !dara.IsNil(request.IncludeRiskInfo) {
+		query["IncludeRiskInfo"] = request.IncludeRiskInfo
+	}
+
+	if !dara.IsNil(request.ModelConfigure) {
+		query["ModelConfigure"] = request.ModelConfigure
+	}
+
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDesktopAgentRuntime"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDesktopAgentRuntimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面Agent运行时列表
+//
+// @param request - ListDesktopAgentRuntimeRequest
+//
+// @return ListDesktopAgentRuntimeResponse
+func (client *Client) ListDesktopAgentRuntime(request *ListDesktopAgentRuntimeRequest) (_result *ListDesktopAgentRuntimeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDesktopAgentRuntimeResponse{}
+	_body, _err := client.ListDesktopAgentRuntimeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the image information about an ECS instance.
 //
 // @param request - ListImageRequest
@@ -2189,6 +2781,80 @@ func (client *Client) ListImage(request *ListImageRequest) (_result *ListImageRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListImageResponse{}
 	_body, _err := client.ListImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型分组绑定的资源组列表
+//
+// @param request - ListModelTemplateResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelTemplateResourceGroupResponse
+func (client *Client) ListModelTemplateResourceGroupWithOptions(request *ListModelTemplateResourceGroupRequest, runtime *dara.RuntimeOptions) (_result *ListModelTemplateResourceGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupIds) {
+		query["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelTemplateResourceGroup"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelTemplateResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型分组绑定的资源组列表
+//
+// @param request - ListModelTemplateResourceGroupRequest
+//
+// @return ListModelTemplateResourceGroupResponse
+func (client *Client) ListModelTemplateResourceGroup(request *ListModelTemplateResourceGroupRequest) (_result *ListModelTemplateResourceGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListModelTemplateResourceGroupResponse{}
+	_body, _err := client.ListModelTemplateResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3643,6 +4309,220 @@ func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceG
 	runtime := &dara.RuntimeOptions{}
 	_result = &PageListAppInstanceGroupUserResponse{}
 	_body, _err := client.PageListAppInstanceGroupUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除资源组模型模板配置
+//
+// @param request - RemoveResourceGroupModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveResourceGroupModelTemplateResponse
+func (client *Client) RemoveResourceGroupModelTemplateWithOptions(request *RemoveResourceGroupModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *RemoveResourceGroupModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelTemplateId) {
+		body["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.ResourceGroupIds) {
+		body["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveResourceGroupModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveResourceGroupModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除资源组模型模板配置
+//
+// @param request - RemoveResourceGroupModelTemplateRequest
+//
+// @return RemoveResourceGroupModelTemplateResponse
+func (client *Client) RemoveResourceGroupModelTemplate(request *RemoveResourceGroupModelTemplateRequest) (_result *RemoveResourceGroupModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveResourceGroupModelTemplateResponse{}
+	_body, _err := client.RemoveResourceGroupModelTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除Runtime通道
+//
+// @param request - RemoveRuntimeChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveRuntimeChannelResponse
+func (client *Client) RemoveRuntimeChannelWithOptions(request *RemoveRuntimeChannelRequest, runtime *dara.RuntimeOptions) (_result *RemoveRuntimeChannelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		body["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		body["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.Code) {
+		body["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.RuntimeIds) {
+		body["RuntimeIds"] = request.RuntimeIds
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		body["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveRuntimeChannel"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveRuntimeChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除Runtime通道
+//
+// @param request - RemoveRuntimeChannelRequest
+//
+// @return RemoveRuntimeChannelResponse
+func (client *Client) RemoveRuntimeChannel(request *RemoveRuntimeChannelRequest) (_result *RemoveRuntimeChannelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveRuntimeChannelResponse{}
+	_body, _err := client.RemoveRuntimeChannelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过RuntimeIds移除模型模板配置
+//
+// @param request - RemoveRuntimeModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveRuntimeModelTemplateResponse
+func (client *Client) RemoveRuntimeModelTemplateWithOptions(request *RemoveRuntimeModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *RemoveRuntimeModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ModelTemplateId) {
+		body["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.RuntimeIds) {
+		body["RuntimeIds"] = request.RuntimeIds
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		body["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveRuntimeModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveRuntimeModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过RuntimeIds移除模型模板配置
+//
+// @param request - RemoveRuntimeModelTemplateRequest
+//
+// @return RemoveRuntimeModelTemplateResponse
+func (client *Client) RemoveRuntimeModelTemplate(request *RemoveRuntimeModelTemplateRequest) (_result *RemoveRuntimeModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveRuntimeModelTemplateResponse{}
+	_body, _err := client.RemoveRuntimeModelTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
