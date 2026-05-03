@@ -73,6 +73,7 @@ type DescribeUserResponseBodyUser struct {
 	//
 	// 2025-01-01 12:00:00
 	GmtCreate *int64    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	NickName  *string   `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	OrgIds    []*string `json:"OrgIds,omitempty" xml:"OrgIds,omitempty" type:"Repeated"`
 	OrgPaths  []*string `json:"OrgPaths,omitempty" xml:"OrgPaths,omitempty" type:"Repeated"`
 	// example:
@@ -120,6 +121,10 @@ func (s *DescribeUserResponseBodyUser) GetExtras() map[string]*string {
 
 func (s *DescribeUserResponseBodyUser) GetGmtCreate() *int64 {
 	return s.GmtCreate
+}
+
+func (s *DescribeUserResponseBodyUser) GetNickName() *string {
+	return s.NickName
 }
 
 func (s *DescribeUserResponseBodyUser) GetOrgIds() []*string {
@@ -172,6 +177,11 @@ func (s *DescribeUserResponseBodyUser) SetExtras(v map[string]*string) *Describe
 
 func (s *DescribeUserResponseBodyUser) SetGmtCreate(v int64) *DescribeUserResponseBodyUser {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeUserResponseBodyUser) SetNickName(v string) *DescribeUserResponseBodyUser {
+	s.NickName = &v
 	return s
 }
 
