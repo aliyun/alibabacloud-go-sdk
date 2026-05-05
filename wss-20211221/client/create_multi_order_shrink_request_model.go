@@ -98,9 +98,10 @@ type CreateMultiOrderShrinkRequestOrderItems struct {
 	// example:
 	//
 	// false
-	AutoRenew  *bool                                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BuyChange  *bool                                                `json:"BuyChange,omitempty" xml:"BuyChange,omitempty"`
-	Components []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	AutoRenew   *bool                                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BuyChange   *bool                                                `json:"BuyChange,omitempty" xml:"BuyChange,omitempty"`
+	Components  []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	InstanceIds []*string                                            `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -150,6 +151,10 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) GetComponents() []*CreateMulti
 	return s.Components
 }
 
+func (s *CreateMultiOrderShrinkRequestOrderItems) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *CreateMultiOrderShrinkRequestOrderItems) GetPeriod() *int32 {
 	return s.Period
 }
@@ -192,6 +197,11 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) SetBuyChange(v bool) *CreateMu
 
 func (s *CreateMultiOrderShrinkRequestOrderItems) SetComponents(v []*CreateMultiOrderShrinkRequestOrderItemsComponents) *CreateMultiOrderShrinkRequestOrderItems {
 	s.Components = v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetInstanceIds(v []*string) *CreateMultiOrderShrinkRequestOrderItems {
+	s.InstanceIds = v
 	return s
 }
 

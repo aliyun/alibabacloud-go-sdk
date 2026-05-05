@@ -138,6 +138,232 @@ func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_resul
 
 // Summary:
 //
+// 查询积分包Agent列表
+//
+// @param request - DescribeCreditPackageAgentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCreditPackageAgentsResponse
+func (client *Client) DescribeCreditPackageAgentsWithOptions(request *DescribeCreditPackageAgentsRequest, runtime *dara.RuntimeOptions) (_result *DescribeCreditPackageAgentsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentIds) {
+		query["AgentIds"] = request.AgentIds
+	}
+
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCreditPackageAgents"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCreditPackageAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询积分包Agent列表
+//
+// @param request - DescribeCreditPackageAgentsRequest
+//
+// @return DescribeCreditPackageAgentsResponse
+func (client *Client) DescribeCreditPackageAgents(request *DescribeCreditPackageAgentsRequest) (_result *DescribeCreditPackageAgentsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCreditPackageAgentsResponse{}
+	_body, _err := client.DescribeCreditPackageAgentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询积分包用量信息
+//
+// @param request - DescribeCreditUsageInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCreditUsageInfoResponse
+func (client *Client) DescribeCreditUsageInfoWithOptions(request *DescribeCreditUsageInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeCreditUsageInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.UsageType) {
+		query["UsageType"] = request.UsageType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeCreditUsageInfo"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeCreditUsageInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询积分包用量信息
+//
+// @param request - DescribeCreditUsageInfoRequest
+//
+// @return DescribeCreditUsageInfoResponse
+func (client *Client) DescribeCreditUsageInfo(request *DescribeCreditUsageInfoRequest) (_result *DescribeCreditUsageInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeCreditUsageInfoResponse{}
+	_body, _err := client.DescribeCreditUsageInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询计量消耗信息
+//
+// @param request - DescribeDeductionStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDeductionStatisticResponse
+func (client *Client) DescribeDeductionStatisticWithOptions(request *DescribeDeductionStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeDeductionStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.Periods) {
+		query["Periods"] = request.Periods
+	}
+
+	if !dara.IsNil(request.ResourceTypes) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDeductionStatistic"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDeductionStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询计量消耗信息
+//
+// @param request - DescribeDeductionStatisticRequest
+//
+// @return DescribeDeductionStatisticResponse
+func (client *Client) DescribeDeductionStatistic(request *DescribeDeductionStatisticRequest) (_result *DescribeDeductionStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDeductionStatisticResponse{}
+	_body, _err := client.DescribeDeductionStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询物流地址
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -416,6 +642,80 @@ func (client *Client) ModifyInstanceProperties(request *ModifyInstanceProperties
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyInstancePropertiesResponse{}
 	_body, _err := client.ModifyInstancePropertiesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量设置Agent积分配额
+//
+// @param request - SetAgentCreditQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAgentCreditQuotaResponse
+func (client *Client) SetAgentCreditQuotaWithOptions(request *SetAgentCreditQuotaRequest, runtime *dara.RuntimeOptions) (_result *SetAgentCreditQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentIds) {
+		query["AgentIds"] = request.AgentIds
+	}
+
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.CreditQuota) {
+		query["CreditQuota"] = request.CreditQuota
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAgentCreditQuota"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAgentCreditQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量设置Agent积分配额
+//
+// @param request - SetAgentCreditQuotaRequest
+//
+// @return SetAgentCreditQuotaResponse
+func (client *Client) SetAgentCreditQuota(request *SetAgentCreditQuotaRequest) (_result *SetAgentCreditQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetAgentCreditQuotaResponse{}
+	_body, _err := client.SetAgentCreditQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
