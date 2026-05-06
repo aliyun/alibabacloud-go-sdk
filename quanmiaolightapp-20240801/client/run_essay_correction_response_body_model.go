@@ -216,11 +216,23 @@ func (s *RunEssayCorrectionResponseBodyPayload) Validate() error {
 }
 
 type RunEssayCorrectionResponseBodyPayloadOutput struct {
+	DimensionResults []*RunEssayCorrectionResponseBodyPayloadOutputDimensionResults `json:"dimensionResults,omitempty" xml:"dimensionResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 整体表现良好，建议在论述深度上进一步加强。
+	OverallComment *string `json:"overallComment,omitempty" xml:"overallComment,omitempty"`
+	// example:
+	//
+	// 首先分析文章结构，发现开头、正文、结尾完整...
+	ReasoningContent *string `json:"reasoningContent,omitempty" xml:"reasoningContent,omitempty"`
 	// example:
 	//
 	// 50
-	Score *int32  `json:"score,omitempty" xml:"score,omitempty"`
-	Text  *string `json:"text,omitempty" xml:"text,omitempty"`
+	Score *int32 `json:"score,omitempty" xml:"score,omitempty"`
+	// example:
+	//
+	// 本文整体结构清晰，语言流畅...
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
 }
 
 func (s RunEssayCorrectionResponseBodyPayloadOutput) String() string {
@@ -231,12 +243,39 @@ func (s RunEssayCorrectionResponseBodyPayloadOutput) GoString() string {
 	return s.String()
 }
 
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) GetDimensionResults() []*RunEssayCorrectionResponseBodyPayloadOutputDimensionResults {
+	return s.DimensionResults
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) GetOverallComment() *string {
+	return s.OverallComment
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) GetReasoningContent() *string {
+	return s.ReasoningContent
+}
+
 func (s *RunEssayCorrectionResponseBodyPayloadOutput) GetScore() *int32 {
 	return s.Score
 }
 
 func (s *RunEssayCorrectionResponseBodyPayloadOutput) GetText() *string {
 	return s.Text
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetDimensionResults(v []*RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) *RunEssayCorrectionResponseBodyPayloadOutput {
+	s.DimensionResults = v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetOverallComment(v string) *RunEssayCorrectionResponseBodyPayloadOutput {
+	s.OverallComment = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetReasoningContent(v string) *RunEssayCorrectionResponseBodyPayloadOutput {
+	s.ReasoningContent = &v
+	return s
 }
 
 func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetScore(v int32) *RunEssayCorrectionResponseBodyPayloadOutput {
@@ -250,6 +289,82 @@ func (s *RunEssayCorrectionResponseBodyPayloadOutput) SetText(v string) *RunEssa
 }
 
 func (s *RunEssayCorrectionResponseBodyPayloadOutput) Validate() error {
+	if s.DimensionResults != nil {
+		for _, item := range s.DimensionResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type RunEssayCorrectionResponseBodyPayloadOutputDimensionResults struct {
+	// example:
+	//
+	// 文章内容较为完整，涵盖了题目的核心要求，但部分论述略显简略。
+	Analysis *string `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// example:
+	//
+	// 30
+	MaxScore *float64 `json:"maxScore,omitempty" xml:"maxScore,omitempty"`
+	// example:
+	//
+	// 内容完整度
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 25.5
+	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+}
+
+func (s RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) GoString() string {
+	return s.String()
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) GetAnalysis() *string {
+	return s.Analysis
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) GetMaxScore() *float64 {
+	return s.MaxScore
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) GetName() *string {
+	return s.Name
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) SetAnalysis(v string) *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults {
+	s.Analysis = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) SetMaxScore(v float64) *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults {
+	s.MaxScore = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) SetName(v string) *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults {
+	s.Name = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) SetScore(v float64) *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults {
+	s.Score = &v
+	return s
+}
+
+func (s *RunEssayCorrectionResponseBodyPayloadOutputDimensionResults) Validate() error {
 	return dara.Validate(s)
 }
 

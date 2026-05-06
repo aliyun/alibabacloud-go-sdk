@@ -1211,16 +1211,16 @@ func (client *Client) RunEnterpriseVocAnalysis(workspaceId *string, request *Run
 //
 // 作业批改
 //
-// @param request - RunEssayCorrectionRequest
+// @param tmpReq - RunEssayCorrectionRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunEssayCorrectionResponse
-func (client *Client) RunEssayCorrectionWithSSE(workspaceId *string, request *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunEssayCorrectionResponse, _yieldErr chan error) {
+func (client *Client) RunEssayCorrectionWithSSE(workspaceId *string, tmpReq *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *RunEssayCorrectionResponse, _yieldErr chan error) {
 	defer close(_yield)
-	client.runEssayCorrectionWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, request, headers, runtime)
+	client.runEssayCorrectionWithSSE_opYieldFunc(_yield, _yieldErr, workspaceId, tmpReq, headers, runtime)
 	return
 }
 
@@ -1228,23 +1228,33 @@ func (client *Client) RunEssayCorrectionWithSSE(workspaceId *string, request *Ru
 //
 // 作业批改
 //
-// @param request - RunEssayCorrectionRequest
+// @param tmpReq - RunEssayCorrectionRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return RunEssayCorrectionResponse
-func (client *Client) RunEssayCorrectionWithOptions(workspaceId *string, request *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunEssayCorrectionResponse, _err error) {
+func (client *Client) RunEssayCorrectionWithOptions(workspaceId *string, tmpReq *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunEssayCorrectionResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &RunEssayCorrectionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Dimensions) {
+		request.DimensionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dimensions, dara.String("dimensions"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Answer) {
 		body["answer"] = request.Answer
+	}
+
+	if !dara.IsNil(request.DimensionsShrink) {
+		body["dimensions"] = request.DimensionsShrink
 	}
 
 	if !dara.IsNil(request.Grade) {
@@ -3114,11 +3124,19 @@ func (client *Client) SubmitEssayCorrectionTaskWithOptions(workspaceId *string, 
 	}
 	request := &SubmitEssayCorrectionTaskShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Dimensions) {
+		request.DimensionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dimensions, dara.String("dimensions"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.Tasks) {
 		request.TasksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tasks, dara.String("tasks"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.DimensionsShrink) {
+		body["dimensions"] = request.DimensionsShrink
+	}
+
 	if !dara.IsNil(request.Grade) {
 		body["grade"] = request.Grade
 	}
@@ -4069,17 +4087,27 @@ func (client *Client) runEnterpriseVocAnalysisWithSSE_opYieldFunc(_yield chan *R
 	}
 }
 
-func (client *Client) runEssayCorrectionWithSSE_opYieldFunc(_yield chan *RunEssayCorrectionResponse, _yieldErr chan error, workspaceId *string, request *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+func (client *Client) runEssayCorrectionWithSSE_opYieldFunc(_yield chan *RunEssayCorrectionResponse, _yieldErr chan error, workspaceId *string, tmpReq *RunEssayCorrectionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err := request.Validate()
+		_err := tmpReq.Validate()
 		if _err != nil {
 			_yieldErr <- _err
 			return
 		}
 	}
+	request := &RunEssayCorrectionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Dimensions) {
+		request.DimensionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Dimensions, dara.String("dimensions"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Answer) {
 		body["answer"] = request.Answer
+	}
+
+	if !dara.IsNil(request.DimensionsShrink) {
+		body["dimensions"] = request.DimensionsShrink
 	}
 
 	if !dara.IsNil(request.Grade) {

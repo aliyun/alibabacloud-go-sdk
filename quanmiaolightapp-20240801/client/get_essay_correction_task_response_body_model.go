@@ -198,8 +198,24 @@ type GetEssayCorrectionTaskResponseBodyDataResults struct {
 	// example:
 	//
 	// 1
-	CustomId *string `json:"customId,omitempty" xml:"customId,omitempty"`
-	Result   *string `json:"result,omitempty" xml:"result,omitempty"`
+	CustomId         *string                                                          `json:"customId,omitempty" xml:"customId,omitempty"`
+	DimensionResults []*GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults `json:"dimensionResults,omitempty" xml:"dimensionResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// RateLimit
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 触发模型限流
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 整体表现良好，建议在论述深度上进一步加强。
+	OverallComment *string `json:"overallComment,omitempty" xml:"overallComment,omitempty"`
+	// example:
+	//
+	// 本文整体结构清晰，语言流畅...
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// example:
 	//
 	// 58
@@ -219,6 +235,22 @@ func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetCustomId() *string {
 	return s.CustomId
 }
 
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetDimensionResults() []*GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults {
+	return s.DimensionResults
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetErrorCode() *string {
+	return s.ErrorCode
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetErrorMessage() *string {
+	return s.ErrorMessage
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetOverallComment() *string {
+	return s.OverallComment
+}
+
 func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetResult() *string {
 	return s.Result
 }
@@ -233,6 +265,26 @@ func (s *GetEssayCorrectionTaskResponseBodyDataResults) GetUsage() *ModelUsage {
 
 func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetCustomId(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
 	s.CustomId = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetDimensionResults(v []*GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.DimensionResults = v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetErrorCode(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetErrorMessage(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetOverallComment(v string) *GetEssayCorrectionTaskResponseBodyDataResults {
+	s.OverallComment = &v
 	return s
 }
 
@@ -252,10 +304,86 @@ func (s *GetEssayCorrectionTaskResponseBodyDataResults) SetUsage(v *ModelUsage) 
 }
 
 func (s *GetEssayCorrectionTaskResponseBodyDataResults) Validate() error {
+	if s.DimensionResults != nil {
+		for _, item := range s.DimensionResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Usage != nil {
 		if err := s.Usage.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults struct {
+	// example:
+	//
+	// 文章内容较为完整，涵盖了题目的核心要求，但部分论述略显简略。
+	Analysis *string `json:"analysis,omitempty" xml:"analysis,omitempty"`
+	// example:
+	//
+	// 30
+	MaxScore *float64 `json:"maxScore,omitempty" xml:"maxScore,omitempty"`
+	// example:
+	//
+	// 内容完整度
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 25.5
+	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+}
+
+func (s GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) GoString() string {
+	return s.String()
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) GetAnalysis() *string {
+	return s.Analysis
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) GetMaxScore() *float64 {
+	return s.MaxScore
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) GetName() *string {
+	return s.Name
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) SetAnalysis(v string) *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults {
+	s.Analysis = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) SetMaxScore(v float64) *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults {
+	s.MaxScore = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) SetName(v string) *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults {
+	s.Name = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) SetScore(v float64) *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults {
+	s.Score = &v
+	return s
+}
+
+func (s *GetEssayCorrectionTaskResponseBodyDataResultsDimensionResults) Validate() error {
+	return dara.Validate(s)
 }

@@ -9,6 +9,8 @@ type iSubmitEssayCorrectionTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDimensionsShrink(v string) *SubmitEssayCorrectionTaskShrinkRequest
+	GetDimensionsShrink() *string
 	SetGrade(v string) *SubmitEssayCorrectionTaskShrinkRequest
 	GetGrade() *string
 	SetModelId(v string) *SubmitEssayCorrectionTaskShrinkRequest
@@ -28,6 +30,10 @@ type iSubmitEssayCorrectionTaskShrinkRequest interface {
 type SubmitEssayCorrectionTaskShrinkRequest struct {
 	// example:
 	//
+	// [{"name": "内容完整度", "rubric": "文章内容是否完整，是否涵盖了题目的核心要求", "maxScore": 30}]
+	DimensionsShrink *string `json:"dimensions,omitempty" xml:"dimensions,omitempty"`
+	// example:
+	//
 	// 高中二年级
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
 	// example:
@@ -45,7 +51,10 @@ type SubmitEssayCorrectionTaskShrinkRequest struct {
 	// example:
 	//
 	// 语文
-	Subject     *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// [{"grade": "高中二年级", "subject": "语文", "totalScore": 60, "question": "请以我的梦想为主题写一篇作文", "answer": "我的梦想是成为一名科学家...", "customId": "task-001"}]
 	TasksShrink *string `json:"tasks,omitempty" xml:"tasks,omitempty"`
 	// example:
 	//
@@ -59,6 +68,10 @@ func (s SubmitEssayCorrectionTaskShrinkRequest) String() string {
 
 func (s SubmitEssayCorrectionTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) GetDimensionsShrink() *string {
+	return s.DimensionsShrink
 }
 
 func (s *SubmitEssayCorrectionTaskShrinkRequest) GetGrade() *string {
@@ -87,6 +100,11 @@ func (s *SubmitEssayCorrectionTaskShrinkRequest) GetTasksShrink() *string {
 
 func (s *SubmitEssayCorrectionTaskShrinkRequest) GetTotalScore() *int32 {
 	return s.TotalScore
+}
+
+func (s *SubmitEssayCorrectionTaskShrinkRequest) SetDimensionsShrink(v string) *SubmitEssayCorrectionTaskShrinkRequest {
+	s.DimensionsShrink = &v
+	return s
 }
 
 func (s *SubmitEssayCorrectionTaskShrinkRequest) SetGrade(v string) *SubmitEssayCorrectionTaskShrinkRequest {

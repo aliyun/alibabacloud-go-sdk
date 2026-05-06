@@ -9,6 +9,8 @@ type iSubmitEssayCorrectionTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDimensions(v []*SubmitEssayCorrectionTaskRequestDimensions) *SubmitEssayCorrectionTaskRequest
+	GetDimensions() []*SubmitEssayCorrectionTaskRequestDimensions
 	SetGrade(v string) *SubmitEssayCorrectionTaskRequest
 	GetGrade() *string
 	SetModelId(v string) *SubmitEssayCorrectionTaskRequest
@@ -28,6 +30,10 @@ type iSubmitEssayCorrectionTaskRequest interface {
 type SubmitEssayCorrectionTaskRequest struct {
 	// example:
 	//
+	// [{"name": "内容完整度", "rubric": "文章内容是否完整，是否涵盖了题目的核心要求", "maxScore": 30}]
+	Dimensions []*SubmitEssayCorrectionTaskRequestDimensions `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
+	// example:
+	//
 	// 高中二年级
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
 	// example:
@@ -45,8 +51,11 @@ type SubmitEssayCorrectionTaskRequest struct {
 	// example:
 	//
 	// 语文
-	Subject *string                                  `json:"subject,omitempty" xml:"subject,omitempty"`
-	Tasks   []*SubmitEssayCorrectionTaskRequestTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// example:
+	//
+	// [{"grade": "高中二年级", "subject": "语文", "totalScore": 60, "question": "请以我的梦想为主题写一篇作文", "answer": "我的梦想是成为一名科学家...", "customId": "task-001"}]
+	Tasks []*SubmitEssayCorrectionTaskRequestTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -59,6 +68,10 @@ func (s SubmitEssayCorrectionTaskRequest) String() string {
 
 func (s SubmitEssayCorrectionTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) GetDimensions() []*SubmitEssayCorrectionTaskRequestDimensions {
+	return s.Dimensions
 }
 
 func (s *SubmitEssayCorrectionTaskRequest) GetGrade() *string {
@@ -87,6 +100,11 @@ func (s *SubmitEssayCorrectionTaskRequest) GetTasks() []*SubmitEssayCorrectionTa
 
 func (s *SubmitEssayCorrectionTaskRequest) GetTotalScore() *int32 {
 	return s.TotalScore
+}
+
+func (s *SubmitEssayCorrectionTaskRequest) SetDimensions(v []*SubmitEssayCorrectionTaskRequestDimensions) *SubmitEssayCorrectionTaskRequest {
+	s.Dimensions = v
+	return s
 }
 
 func (s *SubmitEssayCorrectionTaskRequest) SetGrade(v string) *SubmitEssayCorrectionTaskRequest {
@@ -125,6 +143,15 @@ func (s *SubmitEssayCorrectionTaskRequest) SetTotalScore(v int32) *SubmitEssayCo
 }
 
 func (s *SubmitEssayCorrectionTaskRequest) Validate() error {
+	if s.Dimensions != nil {
+		for _, item := range s.Dimensions {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Tasks != nil {
 		for _, item := range s.Tasks {
 			if item != nil {
@@ -137,11 +164,68 @@ func (s *SubmitEssayCorrectionTaskRequest) Validate() error {
 	return nil
 }
 
+type SubmitEssayCorrectionTaskRequestDimensions struct {
+	// example:
+	//
+	// 30
+	MaxScore *int32 `json:"maxScore,omitempty" xml:"maxScore,omitempty"`
+	// example:
+	//
+	// 内容完整度
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 文章内容是否完整，是否涵盖了题目的核心要求
+	Rubric *string `json:"rubric,omitempty" xml:"rubric,omitempty"`
+}
+
+func (s SubmitEssayCorrectionTaskRequestDimensions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitEssayCorrectionTaskRequestDimensions) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) GetMaxScore() *int32 {
+	return s.MaxScore
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) GetName() *string {
+	return s.Name
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) GetRubric() *string {
+	return s.Rubric
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) SetMaxScore(v int32) *SubmitEssayCorrectionTaskRequestDimensions {
+	s.MaxScore = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) SetName(v string) *SubmitEssayCorrectionTaskRequestDimensions {
+	s.Name = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) SetRubric(v string) *SubmitEssayCorrectionTaskRequestDimensions {
+	s.Rubric = &v
+	return s
+}
+
+func (s *SubmitEssayCorrectionTaskRequestDimensions) Validate() error {
+	return dara.Validate(s)
+}
+
 type SubmitEssayCorrectionTaskRequestTasks struct {
 	// example:
 	//
 	// xxx
-	Answer   *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// example:
+	//
+	// task-001
 	CustomId *string `json:"customId,omitempty" xml:"customId,omitempty"`
 	// example:
 	//
