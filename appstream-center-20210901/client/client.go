@@ -239,6 +239,76 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 
 // Summary:
 //
+// 批量创建LLM模板
+//
+// @param request - BatchCreateLlmTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateLlmTemplatesResponse
+func (client *Client) BatchCreateLlmTemplatesWithOptions(request *BatchCreateLlmTemplatesRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateLlmTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.LlmTemplateItems) {
+		body["LlmTemplateItems"] = request.LlmTemplateItems
+	}
+
+	if !dara.IsNil(request.ModelTemplateId) {
+		body["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.ProviderTemplateId) {
+		body["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCreateLlmTemplates"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCreateLlmTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量创建LLM模板
+//
+// @param request - BatchCreateLlmTemplatesRequest
+//
+// @return BatchCreateLlmTemplatesResponse
+func (client *Client) BatchCreateLlmTemplates(request *BatchCreateLlmTemplatesRequest) (_result *BatchCreateLlmTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchCreateLlmTemplatesResponse{}
+	_body, _err := client.BatchCreateLlmTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 配置资源组模型模板
 //
 // @param request - ConfigResourceGroupModelTemplateRequest
@@ -851,6 +921,104 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 
 // Summary:
 //
+// 创建模型提供商模板
+//
+// @param request - CreateModelProviderTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelProviderTemplateResponse
+func (client *Client) CreateModelProviderTemplateWithOptions(request *CreateModelProviderTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateModelProviderTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableWuyingProxy) {
+		query["EnableWuyingProxy"] = request.EnableWuyingProxy
+	}
+
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProviderName) {
+		query["ProviderName"] = request.ProviderName
+	}
+
+	if !dara.IsNil(request.ProviderType) {
+		query["ProviderType"] = request.ProviderType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateModelProviderTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateModelProviderTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模型提供商模板
+//
+// @param request - CreateModelProviderTemplateRequest
+//
+// @return CreateModelProviderTemplateResponse
+func (client *Client) CreateModelProviderTemplate(request *CreateModelProviderTemplateRequest) (_result *CreateModelProviderTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateModelProviderTemplateResponse{}
+	_body, _err := client.CreateModelProviderTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建模型模板
 //
 // @param request - CreateModelTemplateRequest
@@ -1360,6 +1528,192 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 
 // Summary:
 //
+// 删除LLM模板
+//
+// @param request - DeleteLlmTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLlmTemplateResponse
+func (client *Client) DeleteLlmTemplateWithOptions(request *DeleteLlmTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteLlmTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LlmTemplateId) {
+		query["LlmTemplateId"] = request.LlmTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLlmTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLlmTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除LLM模板
+//
+// @param request - DeleteLlmTemplateRequest
+//
+// @return DeleteLlmTemplateResponse
+func (client *Client) DeleteLlmTemplate(request *DeleteLlmTemplateRequest) (_result *DeleteLlmTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLlmTemplateResponse{}
+	_body, _err := client.DeleteLlmTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型提供商模板
+//
+// @param request - DeleteModelProviderTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelProviderTemplateResponse
+func (client *Client) DeleteModelProviderTemplateWithOptions(request *DeleteModelProviderTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteModelProviderTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProviderTemplateId) {
+		query["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelProviderTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelProviderTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型提供商模板
+//
+// @param request - DeleteModelProviderTemplateRequest
+//
+// @return DeleteModelProviderTemplateResponse
+func (client *Client) DeleteModelProviderTemplate(request *DeleteModelProviderTemplateRequest) (_result *DeleteModelProviderTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteModelProviderTemplateResponse{}
+	_body, _err := client.DeleteModelProviderTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型模板
+//
+// @param request - DeleteModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelTemplateResponse
+func (client *Client) DeleteModelTemplateWithOptions(request *DeleteModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除模型模板
+//
+// @param request - DeleteModelTemplateRequest
+//
+// @return DeleteModelTemplateResponse
+func (client *Client) DeleteModelTemplate(request *DeleteModelTemplateRequest) (_result *DeleteModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteModelTemplateResponse{}
+	_body, _err := client.DeleteModelTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除工作站
 //
 // Description:
@@ -1745,6 +2099,68 @@ func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetDebugAppInstanceResponse{}
 	_body, _err := client.GetDebugAppInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型提供商模板详情
+//
+// @param request - GetModelProviderTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelProviderTemplateResponse
+func (client *Client) GetModelProviderTemplateWithOptions(request *GetModelProviderTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetModelProviderTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ProviderTemplateId) {
+		query["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetModelProviderTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetModelProviderTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型提供商模板详情
+//
+// @param request - GetModelProviderTemplateRequest
+//
+// @return GetModelProviderTemplateResponse
+func (client *Client) GetModelProviderTemplate(request *GetModelProviderTemplateRequest) (_result *GetModelProviderTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetModelProviderTemplateResponse{}
+	_body, _err := client.GetModelProviderTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2790,6 +3206,190 @@ func (client *Client) ListImage(request *ListImageRequest) (_result *ListImageRe
 
 // Summary:
 //
+// 查询LLM模板列表
+//
+// @param tmpReq - ListLlmTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLlmTemplatesResponse
+func (client *Client) ListLlmTemplatesWithOptions(tmpReq *ListLlmTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListLlmTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListLlmTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.LlmTemplateIds) {
+		request.LlmTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LlmTemplateIds, dara.String("LlmTemplateIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.LlmCode) {
+		query["LlmCode"] = request.LlmCode
+	}
+
+	if !dara.IsNil(request.LlmTemplateIdsShrink) {
+		query["LlmTemplateIds"] = request.LlmTemplateIdsShrink
+	}
+
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProviderTemplateId) {
+		query["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLlmTemplates"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLlmTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询LLM模板列表
+//
+// @param request - ListLlmTemplatesRequest
+//
+// @return ListLlmTemplatesResponse
+func (client *Client) ListLlmTemplates(request *ListLlmTemplatesRequest) (_result *ListLlmTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListLlmTemplatesResponse{}
+	_body, _err := client.ListLlmTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型提供商模板列表
+//
+// @param tmpReq - ListModelProviderTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelProviderTemplatesResponse
+func (client *Client) ListModelProviderTemplatesWithOptions(tmpReq *ListModelProviderTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListModelProviderTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListModelProviderTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ProviderTemplateIds) {
+		request.ProviderTemplateIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProviderTemplateIds, dara.String("ProviderTemplateIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProviderName) {
+		query["ProviderName"] = request.ProviderName
+	}
+
+	if !dara.IsNil(request.ProviderTemplateIdsShrink) {
+		query["ProviderTemplateIds"] = request.ProviderTemplateIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelProviderTemplates"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelProviderTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型提供商模板列表
+//
+// @param request - ListModelProviderTemplatesRequest
+//
+// @return ListModelProviderTemplatesResponse
+func (client *Client) ListModelProviderTemplates(request *ListModelProviderTemplatesRequest) (_result *ListModelProviderTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListModelProviderTemplatesResponse{}
+	_body, _err := client.ListModelProviderTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询模型分组绑定的资源组列表
 //
 // @param request - ListModelTemplateResourceGroupRequest
@@ -2855,6 +3455,98 @@ func (client *Client) ListModelTemplateResourceGroup(request *ListModelTemplateR
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListModelTemplateResourceGroupResponse{}
 	_body, _err := client.ListModelTemplateResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型模板列表
+//
+// @param tmpReq - ListModelTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelTemplatesResponse
+func (client *Client) ListModelTemplatesWithOptions(tmpReq *ListModelTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListModelTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListModelTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ModelTemplateIdList) {
+		request.ModelTemplateIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelTemplateIdList, dara.String("ModelTemplateIdList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.HasModel) {
+		query["HasModel"] = request.HasModel
+	}
+
+	if !dara.IsNil(request.ModelTemplateIdListShrink) {
+		query["ModelTemplateIdList"] = request.ModelTemplateIdListShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelTemplates"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模型模板列表
+//
+// @param request - ListModelTemplatesRequest
+//
+// @return ListModelTemplatesResponse
+func (client *Client) ListModelTemplates(request *ListModelTemplatesRequest) (_result *ListModelTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListModelTemplatesResponse{}
+	_body, _err := client.ListModelTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5310,6 +6002,166 @@ func (client *Client) UpdateAppInstanceGroupImage(request *UpdateAppInstanceGrou
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAppInstanceGroupImageResponse{}
 	_body, _err := client.UpdateAppInstanceGroupImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模型提供商模板
+//
+// @param tmpReq - UpdateModelProviderTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelProviderTemplateResponse
+func (client *Client) UpdateModelProviderTemplateWithOptions(tmpReq *UpdateModelProviderTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateModelProviderTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateModelProviderTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Config) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, dara.String("Config"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigShrink) {
+		query["Config"] = request.ConfigShrink
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableWuyingProxy) {
+		body["EnableWuyingProxy"] = request.EnableWuyingProxy
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProviderTemplateId) {
+		body["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelProviderTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelProviderTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模型提供商模板
+//
+// @param request - UpdateModelProviderTemplateRequest
+//
+// @return UpdateModelProviderTemplateResponse
+func (client *Client) UpdateModelProviderTemplate(request *UpdateModelProviderTemplateRequest) (_result *UpdateModelProviderTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateModelProviderTemplateResponse{}
+	_body, _err := client.UpdateModelProviderTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模型模板
+//
+// @param request - UpdateModelTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelTemplateResponse
+func (client *Client) UpdateModelTemplateWithOptions(request *UpdateModelTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateModelTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ModelTemplateId) {
+		query["ModelTemplateId"] = request.ModelTemplateId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新模型模板
+//
+// @param request - UpdateModelTemplateRequest
+//
+// @return UpdateModelTemplateResponse
+func (client *Client) UpdateModelTemplate(request *UpdateModelTemplateRequest) (_result *UpdateModelTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateModelTemplateResponse{}
+	_body, _err := client.UpdateModelTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
