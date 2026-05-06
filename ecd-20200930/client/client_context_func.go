@@ -10806,6 +10806,58 @@ func (client *Client) DescribeOfficeSitesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// @param request - DescribeOnlineUserCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOnlineUserCountResponse
+func (client *Client) DescribeOnlineUserCountWithContext(ctx context.Context, request *DescribeOnlineUserCountRequest, runtime *dara.RuntimeOptions) (_result *DescribeOnlineUserCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeOnlineUserCount"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeOnlineUserCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the details of a cloud computer policy.
@@ -18527,6 +18579,84 @@ func (client *Client) QueryHistoryActiveUserCountWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryHistoryActiveUserCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询桌面平均指标列表
+//
+// @param tmpReq - QueryHistoryAvgMetricListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHistoryAvgMetricListResponse
+func (client *Client) QueryHistoryAvgMetricListWithContext(ctx context.Context, tmpReq *QueryHistoryAvgMetricListRequest, runtime *dara.RuntimeOptions) (_result *QueryHistoryAvgMetricListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryHistoryAvgMetricListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Range) {
+		request.RangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Range, dara.String("Range"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataDate) {
+		query["DataDate"] = request.DataDate
+	}
+
+	if !dara.IsNil(request.DesktopId) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !dara.IsNil(request.MetricName) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RangeShrink) {
+		query["Range"] = request.RangeShrink
+	}
+
+	if !dara.IsNil(request.ResourceRegionId) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !dara.IsNil(request.SortType) {
+		query["SortType"] = request.SortType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryHistoryAvgMetricList"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryHistoryAvgMetricListResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
