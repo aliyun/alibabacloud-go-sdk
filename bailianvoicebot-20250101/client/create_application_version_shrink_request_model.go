@@ -15,6 +15,8 @@ type iCreateApplicationVersionShrinkRequest interface {
 	GetBusinessUnitId() *string
 	SetInteractionConfigShrink(v string) *CreateApplicationVersionShrinkRequest
 	GetInteractionConfigShrink() *string
+	SetRagConfigShrink(v string) *CreateApplicationVersionShrinkRequest
+	GetRagConfigShrink() *string
 	SetScriptProfileShrink(v string) *CreateApplicationVersionShrinkRequest
 	GetScriptProfileShrink() *string
 	SetSourceVersionId(v string) *CreateApplicationVersionShrinkRequest
@@ -39,6 +41,7 @@ type CreateApplicationVersionShrinkRequest struct {
 	// llm-c11iig67g863rih8
 	BusinessUnitId          *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
 	InteractionConfigShrink *string `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty"`
+	RagConfigShrink         *string `json:"RagConfig,omitempty" xml:"RagConfig,omitempty"`
 	ScriptProfileShrink     *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
 	// example:
 	//
@@ -66,6 +69,10 @@ func (s *CreateApplicationVersionShrinkRequest) GetBusinessUnitId() *string {
 
 func (s *CreateApplicationVersionShrinkRequest) GetInteractionConfigShrink() *string {
 	return s.InteractionConfigShrink
+}
+
+func (s *CreateApplicationVersionShrinkRequest) GetRagConfigShrink() *string {
+	return s.RagConfigShrink
 }
 
 func (s *CreateApplicationVersionShrinkRequest) GetScriptProfileShrink() *string {
@@ -96,6 +103,11 @@ func (s *CreateApplicationVersionShrinkRequest) SetBusinessUnitId(v string) *Cre
 
 func (s *CreateApplicationVersionShrinkRequest) SetInteractionConfigShrink(v string) *CreateApplicationVersionShrinkRequest {
 	s.InteractionConfigShrink = &v
+	return s
+}
+
+func (s *CreateApplicationVersionShrinkRequest) SetRagConfigShrink(v string) *CreateApplicationVersionShrinkRequest {
+	s.RagConfigShrink = &v
 	return s
 }
 

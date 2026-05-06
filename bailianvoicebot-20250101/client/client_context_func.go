@@ -165,6 +165,10 @@ func (client *Client) CreateApplicationVersionWithContext(ctx context.Context, t
 		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RagConfig) {
+		request.RagConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagConfig, dara.String("RagConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ScriptProfile) {
 		request.ScriptProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScriptProfile, dara.String("ScriptProfile"), dara.String("json"))
 	}
@@ -188,6 +192,10 @@ func (client *Client) CreateApplicationVersionWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.InteractionConfigShrink) {
 		query["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.RagConfigShrink) {
+		query["RagConfig"] = request.RagConfigShrink
 	}
 
 	if !dara.IsNil(request.ScriptProfileShrink) {
@@ -339,6 +347,126 @@ func (client *Client) CreateVariableWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// 创建实例
+//
+// @param tmpReq - CreateVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVocabularyResponse
+func (client *Client) CreateVocabularyWithContext(ctx context.Context, tmpReq *CreateVocabularyRequest, runtime *dara.RuntimeOptions) (_result *CreateVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateVocabularyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Words) {
+		request.WordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Words, dara.String("Words"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.WordsShrink) {
+		body["Words"] = request.WordsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVocabularyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例
+//
+// @param tmpReq - CreateVoiceAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVoiceAccessProfileResponse
+func (client *Client) CreateVoiceAccessProfileWithContext(ctx context.Context, tmpReq *CreateVoiceAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *CreateVoiceAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateVoiceAccessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Profile) {
+		request.ProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Profile, dara.String("Profile"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.NlsEngine) {
+		body["NlsEngine"] = request.NlsEngine
+	}
+
+	if !dara.IsNil(request.ProfileShrink) {
+		body["Profile"] = request.ProfileShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateVoiceAccessProfile"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateVoiceAccessProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除应用
 //
 // @param request - DeleteApplicationRequest
@@ -473,6 +601,200 @@ func (client *Client) DeleteVariableWithContext(ctx context.Context, request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteVariableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除场景
+//
+// @param request - DeleteVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVocabularyResponse
+func (client *Client) DeleteVocabularyWithContext(ctx context.Context, request *DeleteVocabularyRequest, runtime *dara.RuntimeOptions) (_result *DeleteVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.VocabularyId) {
+		body["VocabularyId"] = request.VocabularyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVocabularyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除三方语音配置
+//
+// @param request - DeleteVoiceAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVoiceAccessProfileResponse
+func (client *Client) DeleteVoiceAccessProfileWithContext(ctx context.Context, request *DeleteVoiceAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *DeleteVoiceAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessProfileId) {
+		body["AccessProfileId"] = request.AccessProfileId
+	}
+
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteVoiceAccessProfile"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteVoiceAccessProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 禁用消息订阅
+//
+// @param request - DisableSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableSubscriptionResponse
+func (client *Client) DisableSubscriptionWithContext(ctx context.Context, request *DisableSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *DisableSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableSubscription"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出热词
+//
+// @param tmpReq - ExportVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportVocabularyResponse
+func (client *Client) ExportVocabularyWithContext(ctx context.Context, tmpReq *ExportVocabularyRequest, runtime *dara.RuntimeOptions) (_result *ExportVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExportVocabularyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.VocabularyIds) {
+		request.VocabularyIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VocabularyIds, dara.String("VocabularyIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.VocabularyIdsShrink) {
+		body["VocabularyIds"] = request.VocabularyIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportVocabularyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -631,6 +953,146 @@ func (client *Client) GetDataChannelCredentialWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 获取MQ配置
+//
+// @param request - GetSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionResponse
+func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *GetSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *GetSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSubscription"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - GetVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVocabularyResponse
+func (client *Client) GetVocabularyWithContext(ctx context.Context, request *GetVocabularyRequest, runtime *dara.RuntimeOptions) (_result *GetVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.VocabularyId) {
+		body["VocabularyId"] = request.VocabularyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVocabularyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入热词
+//
+// @param request - ImportVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportVocabularyResponse
+func (client *Client) ImportVocabularyWithContext(ctx context.Context, request *ImportVocabularyRequest, runtime *dara.RuntimeOptions) (_result *ImportVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.FileKey) {
+		body["FileKey"] = request.FileKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportVocabularyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询应用
 //
 // @param request - ListApplicationsRequest
@@ -677,6 +1139,58 @@ func (client *Client) ListApplicationsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取背景音列表
+//
+// @param request - ListBackgroundMusicsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBackgroundMusicsResponse
+func (client *Client) ListBackgroundMusicsWithContext(ctx context.Context, request *ListBackgroundMusicsRequest, runtime *dara.RuntimeOptions) (_result *ListBackgroundMusicsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBackgroundMusics"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBackgroundMusicsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -743,6 +1257,98 @@ func (client *Client) ListCloneVoiceWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// 获取克隆音色可用模型列表
+//
+// @param request - ListCloneVoiceModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloneVoiceModelsResponse
+func (client *Client) ListCloneVoiceModelsWithContext(ctx context.Context, request *ListCloneVoiceModelsRequest, runtime *dara.RuntimeOptions) (_result *ListCloneVoiceModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloneVoiceModels"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloneVoiceModelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取对话模型列表
+//
+// @param request - ListNluModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNluModelsResponse
+func (client *Client) ListNluModelsWithContext(ctx context.Context, request *ListNluModelsRequest, runtime *dara.RuntimeOptions) (_result *ListNluModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNluModels"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNluModelsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取变量列表
 //
 // @param request - ListVariableRequest
@@ -789,6 +1395,162 @@ func (client *Client) ListVariableWithContext(ctx context.Context, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVariableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实例详情
+//
+// @param request - ListVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVocabularyResponse
+func (client *Client) ListVocabularyWithContext(ctx context.Context, request *ListVocabularyRequest, runtime *dara.RuntimeOptions) (_result *ListVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVocabularyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取三方语音配置列表
+//
+// @param request - ListVoiceAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVoiceAccessProfileResponse
+func (client *Client) ListVoiceAccessProfileWithContext(ctx context.Context, request *ListVoiceAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *ListVoiceAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVoiceAccessProfile"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVoiceAccessProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取引擎列表
+//
+// @param request - ListVoiceEnginesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVoiceEnginesResponse
+func (client *Client) ListVoiceEnginesWithContext(ctx context.Context, request *ListVoiceEnginesRequest, runtime *dara.RuntimeOptions) (_result *ListVoiceEnginesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVoiceEngines"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVoiceEnginesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -849,6 +1611,80 @@ func (client *Client) ListVoicesWithContext(ctx context.Context, request *ListVo
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVoicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 试听
+//
+// @param tmpReq - PreviewVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewVoiceResponse
+func (client *Client) PreviewVoiceWithContext(ctx context.Context, tmpReq *PreviewVoiceRequest, runtime *dara.RuntimeOptions) (_result *PreviewVoiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PreviewVoiceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NlsAccessType) {
+		body["NlsAccessType"] = request.NlsAccessType
+	}
+
+	if !dara.IsNil(request.NlsEngine) {
+		body["NlsEngine"] = request.NlsEngine
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	if !dara.IsNil(request.Text) {
+		body["Text"] = request.Text
+	}
+
+	if !dara.IsNil(request.Voice) {
+		body["Voice"] = request.Voice
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewVoice"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewVoiceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -991,6 +1827,10 @@ func (client *Client) UpdateApplicationVersionWithContext(ctx context.Context, t
 		request.InteractionConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InteractionConfig, dara.String("InteractionConfig"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.RagConfig) {
+		request.RagConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RagConfig, dara.String("RagConfig"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.ScriptProfile) {
 		request.ScriptProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ScriptProfile, dara.String("ScriptProfile"), dara.String("json"))
 	}
@@ -1014,6 +1854,10 @@ func (client *Client) UpdateApplicationVersionWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.InteractionConfigShrink) {
 		query["InteractionConfig"] = request.InteractionConfigShrink
+	}
+
+	if !dara.IsNil(request.RagConfigShrink) {
+		query["RagConfig"] = request.RagConfigShrink
 	}
 
 	if !dara.IsNil(request.ScriptProfileShrink) {
@@ -1109,6 +1953,88 @@ func (client *Client) UpdateCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// 创建或更新MQ配置
+//
+// @param tmpReq - UpdateSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubscriptionResponse
+func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, tmpReq *UpdateSubscriptionRequest, runtime *dara.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateSubscriptionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventSubscriptions) {
+		request.EventSubscriptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventSubscriptions, dara.String("EventSubscriptions"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Endpoint) {
+		body["Endpoint"] = request.Endpoint
+	}
+
+	if !dara.IsNil(request.EventSubscriptionsShrink) {
+		body["EventSubscriptions"] = request.EventSubscriptionsShrink
+	}
+
+	if !dara.IsNil(request.MqInstanceId) {
+		body["MqInstanceId"] = request.MqInstanceId
+	}
+
+	if !dara.IsNil(request.MqType) {
+		body["MqType"] = request.MqType
+	}
+
+	if !dara.IsNil(request.Password) {
+		body["Password"] = request.Password
+	}
+
+	if !dara.IsNil(request.ProducerId) {
+		body["ProducerId"] = request.ProducerId
+	}
+
+	if !dara.IsNil(request.Topic) {
+		body["Topic"] = request.Topic
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSubscription"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新变量
 //
 // @param request - UpdateVariableRequest
@@ -1155,6 +2081,134 @@ func (client *Client) UpdateVariableWithContext(ctx context.Context, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateVariableResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例
+//
+// @param tmpReq - UpdateVocabularyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVocabularyResponse
+func (client *Client) UpdateVocabularyWithContext(ctx context.Context, tmpReq *UpdateVocabularyRequest, runtime *dara.RuntimeOptions) (_result *UpdateVocabularyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateVocabularyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Words) {
+		request.WordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Words, dara.String("Words"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.VocabularyId) {
+		body["VocabularyId"] = request.VocabularyId
+	}
+
+	if !dara.IsNil(request.WordsShrink) {
+		body["Words"] = request.WordsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVocabulary"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVocabularyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新三方语音配置
+//
+// @param tmpReq - UpdateVoiceAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVoiceAccessProfileResponse
+func (client *Client) UpdateVoiceAccessProfileWithContext(ctx context.Context, tmpReq *UpdateVoiceAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *UpdateVoiceAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateVoiceAccessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Profile) {
+		request.ProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Profile, dara.String("Profile"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessProfileId) {
+		body["AccessProfileId"] = request.AccessProfileId
+	}
+
+	if !dara.IsNil(request.BusinessUnitId) {
+		body["BusinessUnitId"] = request.BusinessUnitId
+	}
+
+	if !dara.IsNil(request.NlsEngine) {
+		body["NlsEngine"] = request.NlsEngine
+	}
+
+	if !dara.IsNil(request.ProfileShrink) {
+		body["Profile"] = request.ProfileShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateVoiceAccessProfile"),
+		Version:     dara.String("2025-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateVoiceAccessProfileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

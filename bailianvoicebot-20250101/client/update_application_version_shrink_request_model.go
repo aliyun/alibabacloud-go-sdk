@@ -15,6 +15,8 @@ type iUpdateApplicationVersionShrinkRequest interface {
 	GetBusinessUnitId() *string
 	SetInteractionConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
 	GetInteractionConfigShrink() *string
+	SetRagConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
+	GetRagConfigShrink() *string
 	SetScriptProfileShrink(v string) *UpdateApplicationVersionShrinkRequest
 	GetScriptProfileShrink() *string
 	SetSynthesizerConfigShrink(v string) *UpdateApplicationVersionShrinkRequest
@@ -39,6 +41,7 @@ type UpdateApplicationVersionShrinkRequest struct {
 	// llm-c11iig67g863rih8
 	BusinessUnitId          *string `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
 	InteractionConfigShrink *string `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty"`
+	RagConfigShrink         *string `json:"RagConfig,omitempty" xml:"RagConfig,omitempty"`
 	// This parameter is required.
 	ScriptProfileShrink *string `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty"`
 	// if can be null:
@@ -75,6 +78,10 @@ func (s *UpdateApplicationVersionShrinkRequest) GetInteractionConfigShrink() *st
 	return s.InteractionConfigShrink
 }
 
+func (s *UpdateApplicationVersionShrinkRequest) GetRagConfigShrink() *string {
+	return s.RagConfigShrink
+}
+
 func (s *UpdateApplicationVersionShrinkRequest) GetScriptProfileShrink() *string {
 	return s.ScriptProfileShrink
 }
@@ -103,6 +110,11 @@ func (s *UpdateApplicationVersionShrinkRequest) SetBusinessUnitId(v string) *Upd
 
 func (s *UpdateApplicationVersionShrinkRequest) SetInteractionConfigShrink(v string) *UpdateApplicationVersionShrinkRequest {
 	s.InteractionConfigShrink = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionShrinkRequest) SetRagConfigShrink(v string) *UpdateApplicationVersionShrinkRequest {
+	s.RagConfigShrink = &v
 	return s
 }
 

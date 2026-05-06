@@ -15,6 +15,8 @@ type iUpdateApplicationVersionRequest interface {
 	GetBusinessUnitId() *string
 	SetInteractionConfig(v *UpdateApplicationVersionRequestInteractionConfig) *UpdateApplicationVersionRequest
 	GetInteractionConfig() *UpdateApplicationVersionRequestInteractionConfig
+	SetRagConfig(v *UpdateApplicationVersionRequestRagConfig) *UpdateApplicationVersionRequest
+	GetRagConfig() *UpdateApplicationVersionRequestRagConfig
 	SetScriptProfile(v *UpdateApplicationVersionRequestScriptProfile) *UpdateApplicationVersionRequest
 	GetScriptProfile() *UpdateApplicationVersionRequestScriptProfile
 	SetSynthesizerConfig(v *UpdateApplicationVersionRequestSynthesizerConfig) *UpdateApplicationVersionRequest
@@ -39,6 +41,7 @@ type UpdateApplicationVersionRequest struct {
 	// llm-c11iig67g863rih8
 	BusinessUnitId    *string                                           `json:"BusinessUnitId,omitempty" xml:"BusinessUnitId,omitempty"`
 	InteractionConfig *UpdateApplicationVersionRequestInteractionConfig `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty" type:"Struct"`
+	RagConfig         *UpdateApplicationVersionRequestRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	ScriptProfile *UpdateApplicationVersionRequestScriptProfile `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
 	// if can be null:
@@ -75,6 +78,10 @@ func (s *UpdateApplicationVersionRequest) GetInteractionConfig() *UpdateApplicat
 	return s.InteractionConfig
 }
 
+func (s *UpdateApplicationVersionRequest) GetRagConfig() *UpdateApplicationVersionRequestRagConfig {
+	return s.RagConfig
+}
+
 func (s *UpdateApplicationVersionRequest) GetScriptProfile() *UpdateApplicationVersionRequestScriptProfile {
 	return s.ScriptProfile
 }
@@ -106,6 +113,11 @@ func (s *UpdateApplicationVersionRequest) SetInteractionConfig(v *UpdateApplicat
 	return s
 }
 
+func (s *UpdateApplicationVersionRequest) SetRagConfig(v *UpdateApplicationVersionRequestRagConfig) *UpdateApplicationVersionRequest {
+	s.RagConfig = v
+	return s
+}
+
 func (s *UpdateApplicationVersionRequest) SetScriptProfile(v *UpdateApplicationVersionRequestScriptProfile) *UpdateApplicationVersionRequest {
 	s.ScriptProfile = v
 	return s
@@ -129,6 +141,11 @@ func (s *UpdateApplicationVersionRequest) SetVersionId(v string) *UpdateApplicat
 func (s *UpdateApplicationVersionRequest) Validate() error {
 	if s.InteractionConfig != nil {
 		if err := s.InteractionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -205,6 +222,71 @@ func (s *UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig)
 }
 
 func (s *UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateApplicationVersionRequestRagConfig struct {
+	Enabled          *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitempty" xml:"KnowledgeBaseIds,omitempty" type:"Repeated"`
+	MaxContentLength *int32    `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
+	RagEngine        *string   `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
+	TopN             *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+}
+
+func (s UpdateApplicationVersionRequestRagConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateApplicationVersionRequestRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) GetKnowledgeBaseIds() []*string {
+	return s.KnowledgeBaseIds
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) GetMaxContentLength() *int32 {
+	return s.MaxContentLength
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) GetRagEngine() *string {
+	return s.RagEngine
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) GetTopN() *int32 {
+	return s.TopN
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) SetEnabled(v bool) *UpdateApplicationVersionRequestRagConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) SetKnowledgeBaseIds(v []*string) *UpdateApplicationVersionRequestRagConfig {
+	s.KnowledgeBaseIds = v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) SetMaxContentLength(v int32) *UpdateApplicationVersionRequestRagConfig {
+	s.MaxContentLength = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) SetRagEngine(v string) *UpdateApplicationVersionRequestRagConfig {
+	s.RagEngine = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) SetTopN(v int32) *UpdateApplicationVersionRequestRagConfig {
+	s.TopN = &v
+	return s
+}
+
+func (s *UpdateApplicationVersionRequestRagConfig) Validate() error {
 	return dara.Validate(s)
 }
 

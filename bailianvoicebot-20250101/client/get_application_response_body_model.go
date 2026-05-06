@@ -248,6 +248,7 @@ func (s *GetApplicationResponseBodyData) Validate() error {
 
 type GetApplicationResponseBodyDataDraftVersion struct {
 	InteractionConfig *GetApplicationResponseBodyDataDraftVersionInteractionConfig `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty" type:"Struct"`
+	RagConfig         *GetApplicationResponseBodyDataDraftVersionRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
 	ScriptProfile     *GetApplicationResponseBodyDataDraftVersionScriptProfile     `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
 	SynthesizerConfig *GetApplicationResponseBodyDataDraftVersionSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
 	TranscriberConfig *GetApplicationResponseBodyDataDraftVersionTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
@@ -269,6 +270,10 @@ func (s *GetApplicationResponseBodyDataDraftVersion) GetInteractionConfig() *Get
 	return s.InteractionConfig
 }
 
+func (s *GetApplicationResponseBodyDataDraftVersion) GetRagConfig() *GetApplicationResponseBodyDataDraftVersionRagConfig {
+	return s.RagConfig
+}
+
 func (s *GetApplicationResponseBodyDataDraftVersion) GetScriptProfile() *GetApplicationResponseBodyDataDraftVersionScriptProfile {
 	return s.ScriptProfile
 }
@@ -287,6 +292,11 @@ func (s *GetApplicationResponseBodyDataDraftVersion) GetVersionId() *string {
 
 func (s *GetApplicationResponseBodyDataDraftVersion) SetInteractionConfig(v *GetApplicationResponseBodyDataDraftVersionInteractionConfig) *GetApplicationResponseBodyDataDraftVersion {
 	s.InteractionConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersion) SetRagConfig(v *GetApplicationResponseBodyDataDraftVersionRagConfig) *GetApplicationResponseBodyDataDraftVersion {
+	s.RagConfig = v
 	return s
 }
 
@@ -313,6 +323,11 @@ func (s *GetApplicationResponseBodyDataDraftVersion) SetVersionId(v string) *Get
 func (s *GetApplicationResponseBodyDataDraftVersion) Validate() error {
 	if s.InteractionConfig != nil {
 		if err := s.InteractionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -389,6 +404,71 @@ func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetec
 }
 
 func (s *GetApplicationResponseBodyDataDraftVersionInteractionConfigSilenceDetectionConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataDraftVersionRagConfig struct {
+	Enabled          *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitempty" xml:"KnowledgeBaseIds,omitempty" type:"Repeated"`
+	MaxContentLength *int32    `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
+	RagEngine        *string   `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
+	TopN             *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionRagConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataDraftVersionRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) GetKnowledgeBaseIds() []*string {
+	return s.KnowledgeBaseIds
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) GetMaxContentLength() *int32 {
+	return s.MaxContentLength
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) GetRagEngine() *string {
+	return s.RagEngine
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) GetTopN() *int32 {
+	return s.TopN
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) SetEnabled(v bool) *GetApplicationResponseBodyDataDraftVersionRagConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) SetKnowledgeBaseIds(v []*string) *GetApplicationResponseBodyDataDraftVersionRagConfig {
+	s.KnowledgeBaseIds = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) SetMaxContentLength(v int32) *GetApplicationResponseBodyDataDraftVersionRagConfig {
+	s.MaxContentLength = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) SetRagEngine(v string) *GetApplicationResponseBodyDataDraftVersionRagConfig {
+	s.RagEngine = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) SetTopN(v int32) *GetApplicationResponseBodyDataDraftVersionRagConfig {
+	s.TopN = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataDraftVersionRagConfig) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -658,6 +738,7 @@ func (s *GetApplicationResponseBodyDataDraftVersionTranscriberConfig) Validate()
 
 type GetApplicationResponseBodyDataPublishedVersion struct {
 	InteractionConfig *GetApplicationResponseBodyDataPublishedVersionInteractionConfig `json:"InteractionConfig,omitempty" xml:"InteractionConfig,omitempty" type:"Struct"`
+	RagConfig         *GetApplicationResponseBodyDataPublishedVersionRagConfig         `json:"RagConfig,omitempty" xml:"RagConfig,omitempty" type:"Struct"`
 	ScriptProfile     *GetApplicationResponseBodyDataPublishedVersionScriptProfile     `json:"ScriptProfile,omitempty" xml:"ScriptProfile,omitempty" type:"Struct"`
 	SynthesizerConfig *GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig `json:"SynthesizerConfig,omitempty" xml:"SynthesizerConfig,omitempty" type:"Struct"`
 	TranscriberConfig *GetApplicationResponseBodyDataPublishedVersionTranscriberConfig `json:"TranscriberConfig,omitempty" xml:"TranscriberConfig,omitempty" type:"Struct"`
@@ -679,6 +760,10 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) GetInteractionConfig() 
 	return s.InteractionConfig
 }
 
+func (s *GetApplicationResponseBodyDataPublishedVersion) GetRagConfig() *GetApplicationResponseBodyDataPublishedVersionRagConfig {
+	return s.RagConfig
+}
+
 func (s *GetApplicationResponseBodyDataPublishedVersion) GetScriptProfile() *GetApplicationResponseBodyDataPublishedVersionScriptProfile {
 	return s.ScriptProfile
 }
@@ -697,6 +782,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) GetVersionId() *string 
 
 func (s *GetApplicationResponseBodyDataPublishedVersion) SetInteractionConfig(v *GetApplicationResponseBodyDataPublishedVersionInteractionConfig) *GetApplicationResponseBodyDataPublishedVersion {
 	s.InteractionConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersion) SetRagConfig(v *GetApplicationResponseBodyDataPublishedVersionRagConfig) *GetApplicationResponseBodyDataPublishedVersion {
+	s.RagConfig = v
 	return s
 }
 
@@ -723,6 +813,11 @@ func (s *GetApplicationResponseBodyDataPublishedVersion) SetVersionId(v string) 
 func (s *GetApplicationResponseBodyDataPublishedVersion) Validate() error {
 	if s.InteractionConfig != nil {
 		if err := s.InteractionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.RagConfig != nil {
+		if err := s.RagConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -799,6 +894,71 @@ func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceD
 }
 
 func (s *GetApplicationResponseBodyDataPublishedVersionInteractionConfigSilenceDetectionConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetApplicationResponseBodyDataPublishedVersionRagConfig struct {
+	Enabled          *bool     `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	KnowledgeBaseIds []*string `json:"KnowledgeBaseIds,omitempty" xml:"KnowledgeBaseIds,omitempty" type:"Repeated"`
+	MaxContentLength *int32    `json:"MaxContentLength,omitempty" xml:"MaxContentLength,omitempty"`
+	RagEngine        *string   `json:"RagEngine,omitempty" xml:"RagEngine,omitempty"`
+	TopN             *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionRagConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetApplicationResponseBodyDataPublishedVersionRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) GetKnowledgeBaseIds() []*string {
+	return s.KnowledgeBaseIds
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) GetMaxContentLength() *int32 {
+	return s.MaxContentLength
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) GetRagEngine() *string {
+	return s.RagEngine
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) GetTopN() *int32 {
+	return s.TopN
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) SetEnabled(v bool) *GetApplicationResponseBodyDataPublishedVersionRagConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) SetKnowledgeBaseIds(v []*string) *GetApplicationResponseBodyDataPublishedVersionRagConfig {
+	s.KnowledgeBaseIds = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) SetMaxContentLength(v int32) *GetApplicationResponseBodyDataPublishedVersionRagConfig {
+	s.MaxContentLength = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) SetRagEngine(v string) *GetApplicationResponseBodyDataPublishedVersionRagConfig {
+	s.RagEngine = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) SetTopN(v int32) *GetApplicationResponseBodyDataPublishedVersionRagConfig {
+	s.TopN = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPublishedVersionRagConfig) Validate() error {
 	return dara.Validate(s)
 }
 
