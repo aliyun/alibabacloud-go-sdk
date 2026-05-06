@@ -19,6 +19,8 @@ type iGetTransportLayerApplicationResponseBody interface {
 	GetIpAccessRule() *string
 	SetIpv6(v string) *GetTransportLayerApplicationResponseBody
 	GetIpv6() *string
+	SetKeepAliveProtection(v string) *GetTransportLayerApplicationResponseBody
+	GetKeepAliveProtection() *string
 	SetRecordName(v string) *GetTransportLayerApplicationResponseBody
 	GetRecordName() *string
 	SetRequestId(v string) *GetTransportLayerApplicationResponseBody
@@ -69,7 +71,8 @@ type GetTransportLayerApplicationResponseBody struct {
 	// example:
 	//
 	// on
-	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
 	// Query Transport Layer Acceleration Application
 	//
 	// example:
@@ -142,6 +145,10 @@ func (s *GetTransportLayerApplicationResponseBody) GetIpv6() *string {
 	return s.Ipv6
 }
 
+func (s *GetTransportLayerApplicationResponseBody) GetKeepAliveProtection() *string {
+	return s.KeepAliveProtection
+}
+
 func (s *GetTransportLayerApplicationResponseBody) GetRecordName() *string {
 	return s.RecordName
 }
@@ -196,6 +203,11 @@ func (s *GetTransportLayerApplicationResponseBody) SetIpAccessRule(v string) *Ge
 
 func (s *GetTransportLayerApplicationResponseBody) SetIpv6(v string) *GetTransportLayerApplicationResponseBody {
 	s.Ipv6 = &v
+	return s
+}
+
+func (s *GetTransportLayerApplicationResponseBody) SetKeepAliveProtection(v string) *GetTransportLayerApplicationResponseBody {
+	s.KeepAliveProtection = &v
 	return s
 }
 

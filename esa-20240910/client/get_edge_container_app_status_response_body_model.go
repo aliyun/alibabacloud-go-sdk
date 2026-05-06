@@ -159,9 +159,8 @@ type GetEdgeContainerAppStatusResponseBodyAppStatus struct {
 	// example:
 	//
 	// ver-123123123123****
-	PublishingVersion *string `json:"PublishingVersion,omitempty" xml:"PublishingVersion,omitempty"`
-	// The regions to which the version is released.
-	Regions *GetEdgeContainerAppStatusResponseBodyAppStatusRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	PublishingVersion *string                                                `json:"PublishingVersion,omitempty" xml:"PublishingVersion,omitempty"`
+	Regions           *GetEdgeContainerAppStatusResponseBodyAppStatusRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The time when the last rollback was performed.
 	//
 	// example:

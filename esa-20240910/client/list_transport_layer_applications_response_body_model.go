@@ -154,7 +154,8 @@ type ListTransportLayerApplicationsResponseBodyApplications struct {
 	// example:
 	//
 	// on
-	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
 	// Domain name of the Layer 4 application.
 	//
 	// example:
@@ -218,6 +219,10 @@ func (s *ListTransportLayerApplicationsResponseBodyApplications) GetIpv6() *stri
 	return s.Ipv6
 }
 
+func (s *ListTransportLayerApplicationsResponseBodyApplications) GetKeepAliveProtection() *string {
+	return s.KeepAliveProtection
+}
+
 func (s *ListTransportLayerApplicationsResponseBodyApplications) GetRecordName() *string {
 	return s.RecordName
 }
@@ -268,6 +273,11 @@ func (s *ListTransportLayerApplicationsResponseBodyApplications) SetIpAccessRule
 
 func (s *ListTransportLayerApplicationsResponseBodyApplications) SetIpv6(v string) *ListTransportLayerApplicationsResponseBodyApplications {
 	s.Ipv6 = &v
+	return s
+}
+
+func (s *ListTransportLayerApplicationsResponseBodyApplications) SetKeepAliveProtection(v string) *ListTransportLayerApplicationsResponseBodyApplications {
+	s.KeepAliveProtection = &v
 	return s
 }
 

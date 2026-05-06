@@ -866,10 +866,6 @@ func (client *Client) BlockObjectWithContext(ctx context.Context, tmpReq *BlockO
 		query["Content"] = request.ContentShrink
 	}
 
-	if !dara.IsNil(request.Extension) {
-		query["Extension"] = request.Extension
-	}
-
 	if !dara.IsNil(request.Maxage) {
 		query["Maxage"] = request.Maxage
 	}
@@ -2991,18 +2987,24 @@ func (client *Client) CreateOriginRuleWithContext(ctx context.Context, request *
 //
 // Creates a custom error page, which is displayed when a request is blocked by Web Application Firewall (WAF). You can configure the HTML content, page type, and description, and submit the Base64-encoded page content.
 //
-// @param request - CreatePageRequest
+// @param tmpReq - CreatePageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreatePageResponse
-func (client *Client) CreatePageWithContext(ctx context.Context, request *CreatePageRequest, runtime *dara.RuntimeOptions) (_result *CreatePageResponse, _err error) {
+func (client *Client) CreatePageWithContext(ctx context.Context, tmpReq *CreatePageRequest, runtime *dara.RuntimeOptions) (_result *CreatePageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &CreatePageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SiteIds) {
+		request.SiteIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteIds, dara.String("SiteIds"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
 		body["Content"] = request.Content
@@ -3018,6 +3020,10 @@ func (client *Client) CreatePageWithContext(ctx context.Context, request *Create
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SiteIdsShrink) {
+		body["SiteIds"] = request.SiteIdsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3520,6 +3526,10 @@ func (client *Client) CreateRoutineRouteWithContext(ctx context.Context, request
 		query["SiteId"] = request.SiteId
 	}
 
+	if !dara.IsNil(request.Timeout) {
+		query["Timeout"] = request.Timeout
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4016,6 +4026,10 @@ func (client *Client) CreateTransportLayerApplicationWithContext(ctx context.Con
 
 	if !dara.IsNil(request.Ipv6) {
 		query["Ipv6"] = request.Ipv6
+	}
+
+	if !dara.IsNil(request.KeepAliveProtection) {
+		query["KeepAliveProtection"] = request.KeepAliveProtection
 	}
 
 	if !dara.IsNil(request.RecordName) {
@@ -5837,6 +5851,54 @@ func (client *Client) DeleteImageTransformWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 删除一个keyless server配置
+//
+// @param request - DeleteKeylessServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKeylessServerResponse
+func (client *Client) DeleteKeylessServerWithContext(ctx context.Context, request *DeleteKeylessServerRequest, runtime *dara.RuntimeOptions) (_result *DeleteKeylessServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKeylessServer"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKeylessServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a key-value pair from a namespace.
 //
 // @param request - DeleteKvRequest
@@ -6774,10 +6836,6 @@ func (client *Client) DeleteSiteWithContext(ctx context.Context, request *Delete
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !dara.IsNil(request.SecurityToken) {
 		query["SecurityToken"] = request.SecurityToken
 	}
@@ -8081,6 +8139,58 @@ func (client *Client) DescribeRatePlanInstanceStatusWithContext(ctx context.Cont
 
 // Summary:
 //
+// Queries the prices, types, and status of plans.
+//
+// @param request - DescribeRatePlanPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRatePlanPriceResponse
+func (client *Client) DescribeRatePlanPriceWithContext(ctx context.Context, request *DescribeRatePlanPriceRequest, runtime *dara.RuntimeOptions) (_result *DescribeRatePlanPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		query["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PlanName) {
+		query["PlanName"] = request.PlanName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeRatePlanPrice"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeRatePlanPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the URLs from which you can download the raw access logs of a website.
 //
 // Description:
@@ -8613,6 +8723,54 @@ func (client *Client) GetApiSchemaUsageWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 查询站点智能限频阈值
+//
+// @param request - GetAutomaticFrequencyControlConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAutomaticFrequencyControlConfigResponse
+func (client *Client) GetAutomaticFrequencyControlConfigWithContext(ctx context.Context, request *GetAutomaticFrequencyControlConfigRequest, runtime *dara.RuntimeOptions) (_result *GetAutomaticFrequencyControlConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAutomaticFrequencyControlConfig"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAutomaticFrequencyControlConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query a single cache configuration
 //
 // @param request - GetCacheRuleRequest
@@ -8811,6 +8969,54 @@ func (client *Client) GetClientCaCertificateWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetClientCaCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户端CA证书绑定的域名列表
+//
+// @param request - GetClientCaCertificateHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientCaCertificateHostnamesResponse
+func (client *Client) GetClientCaCertificateHostnamesWithContext(ctx context.Context, request *GetClientCaCertificateHostnamesRequest, runtime *dara.RuntimeOptions) (_result *GetClientCaCertificateHostnamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetClientCaCertificateHostnames"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetClientCaCertificateHostnamesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9981,6 +10187,54 @@ func (client *Client) GetImageTransformWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 获取一个keyless server配置
+//
+// @param request - GetKeylessServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKeylessServerResponse
+func (client *Client) GetKeylessServerWithContext(ctx context.Context, request *GetKeylessServerRequest, runtime *dara.RuntimeOptions) (_result *GetKeylessServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKeylessServer"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKeylessServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the value of a key in a key-value pair.
 //
 // @param request - GetKvRequest
@@ -10561,6 +10815,50 @@ func (client *Client) GetPageWithContext(ctx context.Context, request *GetPageRe
 
 // Summary:
 //
+// 查询数据质量采集配置
+//
+// @param request - GetPerformanceDataCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPerformanceDataCollectionResponse
+func (client *Client) GetPerformanceDataCollectionWithContext(ctx context.Context, request *GetPerformanceDataCollectionRequest, runtime *dara.RuntimeOptions) (_result *GetPerformanceDataCollectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPerformanceDataCollection"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPerformanceDataCollectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the quotas and quota usage for different cache purge options.
 //
 // @param request - GetPurgeQuotaRequest
@@ -10575,7 +10873,15 @@ func (client *Client) GetPurgeQuotaWithContext(ctx context.Context, request *Get
 			return _result, _err
 		}
 	}
-	query := openapiutil.Query(dara.ToMap(request))
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10584,7 +10890,7 @@ func (client *Client) GetPurgeQuotaWithContext(ctx context.Context, request *Get
 		Version:     dara.String("2024-09-10"),
 		Protocol:    dara.String("HTTPS"),
 		Pathname:    dara.String("/"),
-		Method:      dara.String("GET"),
+		Method:      dara.String("POST"),
 		AuthType:    dara.String("AK"),
 		Style:       dara.String("RPC"),
 		ReqBodyType: dara.String("formData"),
@@ -12475,6 +12781,74 @@ func (client *Client) ListCustomResponseCodeRulesWithContext(ctx context.Context
 
 // Summary:
 //
+// 查询DDoS安全实例列表
+//
+// @param request - ListDDoSInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDDoSInstancesResponse
+func (client *Client) ListDDoSInstancesWithContext(ctx context.Context, request *ListDDoSInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListDDoSInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SiteInstanceId) {
+		query["SiteInstanceId"] = request.SiteInstanceId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDDoSInstances"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDDoSInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Batch query whether the IP address is included in the ESA resolution result.
 //
 // Description:
@@ -13141,6 +13515,58 @@ func (client *Client) ListInstanceQuotasWithUsageWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstanceQuotasWithUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取站点下keyless server列表
+//
+// @param request - ListKeylessServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKeylessServersResponse
+func (client *Client) ListKeylessServersWithContext(ctx context.Context, request *ListKeylessServersRequest, runtime *dara.RuntimeOptions) (_result *ListKeylessServersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKeylessServers"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKeylessServersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14284,10 +14710,6 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 		query["NextToken"] = request.NextToken
 	}
 
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -15282,10 +15704,6 @@ func (client *Client) OpenErServiceWithContext(ctx context.Context, request *Ope
 		}
 	}
 	query := map[string]interface{}{}
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !dara.IsNil(request.SecurityToken) {
 		query["SecurityToken"] = request.SecurityToken
 	}
@@ -15667,7 +16085,7 @@ func (client *Client) PurchaseRatePlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Cache Refresh
+// Purges resources cached on points of presence (POPs). You can purge the cache by file URL, directory, cache tag, hostname, or URL with specified parameters ignored, or purge all the cache.
 //
 // @param tmpReq - PurgeCachesRequest
 //
@@ -15969,6 +16387,50 @@ func (client *Client) RebuildEdgeContainerAppStagingEnvWithContext(ctx context.C
 
 // Summary:
 //
+// 预约释放安全实例
+//
+// @param request - ReleaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceResponse
+func (client *Client) ReleaseInstanceWithContext(ctx context.Context, request *ReleaseInstanceRequest, runtime *dara.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReleaseInstance"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReleaseInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets the progress of a scheduled prefetch task and starts the prefetch from the beginning.
 //
 // @param request - ResetScheduledPreloadJobRequest
@@ -16115,6 +16577,66 @@ func (client *Client) RollbackEdgeContainerAppVersionWithContext(ctx context.Con
 
 // Summary:
 //
+// 设置站点智能限频阈值
+//
+// @param request - SetAutomaticFrequencyControlConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAutomaticFrequencyControlConfigResponse
+func (client *Client) SetAutomaticFrequencyControlConfigWithContext(ctx context.Context, request *SetAutomaticFrequencyControlConfigRequest, runtime *dara.RuntimeOptions) (_result *SetAutomaticFrequencyControlConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionType) {
+		query["ActionType"] = request.ActionType
+	}
+
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.Level) {
+		query["Level"] = request.Level
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.SiteVersion) {
+		query["SiteVersion"] = request.SiteVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetAutomaticFrequencyControlConfig"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetAutomaticFrequencyControlConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures whether to enable certificates and update certificate information for a website.
 //
 // @param request - SetCertificateRequest
@@ -16132,10 +16654,6 @@ func (client *Client) SetCertificateWithContext(ctx context.Context, request *Se
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.KeyServerId) {
 		query["KeyServerId"] = request.KeyServerId
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !dara.IsNil(request.SecurityToken) {
@@ -16191,6 +16709,66 @@ func (client *Client) SetCertificateWithContext(ctx context.Context, request *Se
 		BodyType:    dara.String("json"),
 	}
 	_result = &SetCertificateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 为客户端CA证书绑定域名
+//
+// @param tmpReq - SetClientCaCertificateHostnamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetClientCaCertificateHostnamesResponse
+func (client *Client) SetClientCaCertificateHostnamesWithContext(ctx context.Context, tmpReq *SetClientCaCertificateHostnamesRequest, runtime *dara.RuntimeOptions) (_result *SetClientCaCertificateHostnamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SetClientCaCertificateHostnamesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Hostnames) {
+		request.HostnamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Hostnames, dara.String("Hostnames"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.HostnamesShrink) {
+		body["Hostnames"] = request.HostnamesShrink
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetClientCaCertificateHostnames"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetClientCaCertificateHostnamesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16513,6 +17091,84 @@ func (client *Client) SetHttpDDoSAttackRuleStatusWithContext(ctx context.Context
 
 // Summary:
 //
+// 创建/更新一个keyless server
+//
+// @param request - SetKeylessServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetKeylessServerResponse
+func (client *Client) SetKeylessServerWithContext(ctx context.Context, request *SetKeylessServerRequest, runtime *dara.RuntimeOptions) (_result *SetKeylessServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CaCertificate) {
+		body["CaCertificate"] = request.CaCertificate
+	}
+
+	if !dara.IsNil(request.ClientCertificate) {
+		body["ClientCertificate"] = request.ClientCertificate
+	}
+
+	if !dara.IsNil(request.ClientPrivateKey) {
+		body["ClientPrivateKey"] = request.ClientPrivateKey
+	}
+
+	if !dara.IsNil(request.Host) {
+		body["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Port) {
+		body["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.Verify) {
+		body["Verify"] = request.Verify
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetKeylessServer"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetKeylessServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 为域名回源客户端证书绑定域名
 //
 // @param tmpReq - SetOriginClientCertificateHostnamesRequest
@@ -16740,10 +17396,6 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.All) {
 		query["All"] = request.All
-	}
-
-	if !dara.IsNil(request.OwnerId) {
-		query["OwnerId"] = request.OwnerId
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -18865,18 +19517,24 @@ func (client *Client) UpdateOriginRuleWithContext(ctx context.Context, request *
 //
 // Modifies the configurations of a custom error page, such as the name, description, content type, and content of the page.
 //
-// @param request - UpdatePageRequest
+// @param tmpReq - UpdatePageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePageResponse
-func (client *Client) UpdatePageWithContext(ctx context.Context, request *UpdatePageRequest, runtime *dara.RuntimeOptions) (_result *UpdatePageResponse, _err error) {
+func (client *Client) UpdatePageWithContext(ctx context.Context, tmpReq *UpdatePageRequest, runtime *dara.RuntimeOptions) (_result *UpdatePageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &UpdatePageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SiteIds) {
+		request.SiteIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SiteIds, dara.String("SiteIds"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Content) {
 		body["Content"] = request.Content
@@ -18896,6 +19554,10 @@ func (client *Client) UpdatePageWithContext(ctx context.Context, request *Update
 
 	if !dara.IsNil(request.Name) {
 		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.SiteIdsShrink) {
+		body["SiteIds"] = request.SiteIdsShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -18923,7 +19585,55 @@ func (client *Client) UpdatePageWithContext(ctx context.Context, request *Update
 
 // Summary:
 //
-// 套餐变配
+// 修改网页数据质量采集配置
+//
+// @param request - UpdatePerformanceDataCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePerformanceDataCollectionResponse
+func (client *Client) UpdatePerformanceDataCollectionWithContext(ctx context.Context, request *UpdatePerformanceDataCollectionRequest, runtime *dara.RuntimeOptions) (_result *UpdatePerformanceDataCollectionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		query["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.SiteId) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePerformanceDataCollection"),
+		Version:     dara.String("2024-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePerformanceDataCollectionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Plan Adjustment
 //
 // @param request - UpdateRatePlanSpecRequest
 //
@@ -19350,6 +20060,10 @@ func (client *Client) UpdateRoutineRouteWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.SiteId) {
 		query["SiteId"] = request.SiteId
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		query["Timeout"] = request.Timeout
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -19992,6 +20706,10 @@ func (client *Client) UpdateTransportLayerApplicationWithContext(ctx context.Con
 
 	if !dara.IsNil(request.Ipv6) {
 		query["Ipv6"] = request.Ipv6
+	}
+
+	if !dara.IsNil(request.KeepAliveProtection) {
+		query["KeepAliveProtection"] = request.KeepAliveProtection
 	}
 
 	if !dara.IsNil(request.RulesShrink) {

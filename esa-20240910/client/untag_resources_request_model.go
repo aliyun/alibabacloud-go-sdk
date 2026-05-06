@@ -11,8 +11,6 @@ type iUntagResourcesRequest interface {
 	GoString() string
 	SetAll(v bool) *UntagResourcesRequest
 	GetAll() *bool
-	SetOwnerId(v int64) *UntagResourcesRequest
-	GetOwnerId() *int64
 	SetRegionId(v string) *UntagResourcesRequest
 	GetRegionId() *string
 	SetResourceId(v []*string) *UntagResourcesRequest
@@ -37,8 +35,7 @@ type UntagResourcesRequest struct {
 	// example:
 	//
 	// false
-	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The ID of the region where the resources reside. Set the value to **cn-hangzhou**.
 	//
 	// This parameter is required.
@@ -76,10 +73,6 @@ func (s *UntagResourcesRequest) GetAll() *bool {
 	return s.All
 }
 
-func (s *UntagResourcesRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *UntagResourcesRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -102,11 +95,6 @@ func (s *UntagResourcesRequest) GetTagKey() []*string {
 
 func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetOwnerId(v int64) *UntagResourcesRequest {
-	s.OwnerId = &v
 	return s
 }
 

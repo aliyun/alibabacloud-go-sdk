@@ -48,24 +48,82 @@ type iWafRuleConfig interface {
 }
 
 type WafRuleConfig struct {
-	Action          *string                         `json:"Action,omitempty" xml:"Action,omitempty"`
-	Actions         *WafRuleConfigActions           `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Struct"`
-	AppPackage      *WafRuleConfigAppPackage        `json:"AppPackage,omitempty" xml:"AppPackage,omitempty" type:"Struct"`
-	AppSdk          *WafRuleConfigAppSdk            `json:"AppSdk,omitempty" xml:"AppSdk,omitempty" type:"Struct"`
-	Expression      *string                         `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Id              *int64                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	ManagedGroupId  *int64                          `json:"ManagedGroupId,omitempty" xml:"ManagedGroupId,omitempty"`
-	ManagedList     *string                         `json:"ManagedList,omitempty" xml:"ManagedList,omitempty"`
+	// The operation to perform after the WAF rule is matched.
+	//
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The extended action configurations.
+	Actions *WafRuleConfigActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Struct"`
+	// The configuration of secondary package detection.
+	AppPackage *WafRuleConfigAppPackage `json:"AppPackage,omitempty" xml:"AppPackage,omitempty" type:"Struct"`
+	// The SDK configuration for apps.
+	AppSdk *WafRuleConfigAppSdk `json:"AppSdk,omitempty" xml:"AppSdk,omitempty" type:"Struct"`
+	// The match expression.
+	//
+	// example:
+	//
+	// ip.src eq 1.1.1.1
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The ID of the WAF rule.
+	//
+	// example:
+	//
+	// 20000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the managed rule group, which is deprecated.
+	//
+	// example:
+	//
+	// 30000001
+	ManagedGroupId *int64 `json:"ManagedGroupId,omitempty" xml:"ManagedGroupId,omitempty"`
+	// The managed list.
+	//
+	// example:
+	//
+	// intelligence_crawler
+	ManagedList *string `json:"ManagedList,omitempty" xml:"ManagedList,omitempty"`
+	// The managed rulesets.
 	ManagedRulesets []*WafRuleConfigManagedRulesets `json:"ManagedRulesets,omitempty" xml:"ManagedRulesets,omitempty" type:"Repeated"`
-	Name            *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	Notes           *string                         `json:"Notes,omitempty" xml:"Notes,omitempty"`
-	RateLimit       *WafRuleConfigRateLimit         `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
-	SecurityLevel   *WafRuleConfigSecurityLevel     `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
-	Sigchl          []*string                       `json:"Sigchl,omitempty" xml:"Sigchl,omitempty" type:"Repeated"`
-	Status          *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Timer           *WafTimer                       `json:"Timer,omitempty" xml:"Timer,omitempty"`
-	Type            *string                         `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value           *string                         `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the WAF rule.
+	//
+	// example:
+	//
+	// example
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The remarks.
+	//
+	// example:
+	//
+	// example notes
+	Notes *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
+	// The configuration of the rate limiting rule.
+	RateLimit *WafRuleConfigRateLimit `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
+	// The security level.
+	SecurityLevel *WafRuleConfigSecurityLevel `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
+	// The token verification configurations.
+	Sigchl []*string `json:"Sigchl,omitempty" xml:"Sigchl,omitempty" type:"Repeated"`
+	// The status of the WAF rule.
+	//
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The timer.
+	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
+	// The name of the WAF rule.
+	//
+	// example:
+	//
+	// http_custom
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Defines whether the IP can access.
+	//
+	// example:
+	//
+	// 10.0.0.1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s WafRuleConfig) String() string {
@@ -282,7 +340,9 @@ func (s *WafRuleConfig) Validate() error {
 }
 
 type WafRuleConfigActions struct {
-	Bypass   *WafRuleConfigActionsBypass   `json:"Bypass,omitempty" xml:"Bypass,omitempty" type:"Struct"`
+	// The skip configuration specified by the whitelist rule.
+	Bypass *WafRuleConfigActionsBypass `json:"Bypass,omitempty" xml:"Bypass,omitempty" type:"Struct"`
+	// The custom error page.
 	Response *WafRuleConfigActionsResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 }
 
@@ -327,11 +387,20 @@ func (s *WafRuleConfigActions) Validate() error {
 }
 
 type WafRuleConfigActionsBypass struct {
-	CustomRules  []*int64  `json:"CustomRules,omitempty" xml:"CustomRules,omitempty" type:"Repeated"`
-	RegularRules []*int64  `json:"RegularRules,omitempty" xml:"RegularRules,omitempty" type:"Repeated"`
+	// The IDs of custom rules.
+	CustomRules []*int64 `json:"CustomRules,omitempty" xml:"CustomRules,omitempty" type:"Repeated"`
+	// The IDs of managed rules.
+	RegularRules []*int64 `json:"RegularRules,omitempty" xml:"RegularRules,omitempty" type:"Repeated"`
+	// The types of managed rules.
 	RegularTypes []*string `json:"RegularTypes,omitempty" xml:"RegularTypes,omitempty" type:"Repeated"`
-	Skip         *string   `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	Tags         []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The skip scope applied when requests match conditions defined in the whitelist rule.
+	//
+	// example:
+	//
+	// part
+	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The skipped rule categories when requests match conditions defined in the whitelist rule.
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s WafRuleConfigActionsBypass) String() string {
@@ -392,8 +461,18 @@ func (s *WafRuleConfigActionsBypass) Validate() error {
 }
 
 type WafRuleConfigActionsResponse struct {
+	// The custom response code.
+	//
+	// example:
+	//
+	// 403
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	//
+	// example:
+	//
+	// 50000001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
 func (s WafRuleConfigActionsResponse) String() string {
@@ -427,6 +506,7 @@ func (s *WafRuleConfigActionsResponse) Validate() error {
 }
 
 type WafRuleConfigAppPackage struct {
+	// The package signatures.
 	PackageSigns []*WafRuleConfigAppPackagePackageSigns `json:"PackageSigns,omitempty" xml:"PackageSigns,omitempty" type:"Repeated"`
 }
 
@@ -461,7 +541,17 @@ func (s *WafRuleConfigAppPackage) Validate() error {
 }
 
 type WafRuleConfigAppPackagePackageSigns struct {
+	// The valid package name.
+	//
+	// example:
+	//
+	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The valid package signature.
+	//
+	// example:
+	//
+	// sign
 	Sign *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
 }
 
@@ -496,9 +586,16 @@ func (s *WafRuleConfigAppPackagePackageSigns) Validate() error {
 }
 
 type WafRuleConfigAppSdk struct {
-	CustomSign       *WafRuleConfigAppSdkCustomSign `json:"CustomSign,omitempty" xml:"CustomSign,omitempty" type:"Struct"`
-	CustomSignStatus *string                        `json:"CustomSignStatus,omitempty" xml:"CustomSignStatus,omitempty"`
-	FeatureAbnormal  []*string                      `json:"FeatureAbnormal,omitempty" xml:"FeatureAbnormal,omitempty" type:"Repeated"`
+	// The custom signature field.
+	CustomSign *WafRuleConfigAppSdkCustomSign `json:"CustomSign,omitempty" xml:"CustomSign,omitempty" type:"Struct"`
+	// Indicates whether to configure the custom signature field.
+	//
+	// example:
+	//
+	// on
+	CustomSignStatus *string `json:"CustomSignStatus,omitempty" xml:"CustomSignStatus,omitempty"`
+	// The app anomalies.
+	FeatureAbnormal []*string `json:"FeatureAbnormal,omitempty" xml:"FeatureAbnormal,omitempty" type:"Repeated"`
 }
 
 func (s WafRuleConfigAppSdk) String() string {
@@ -546,7 +643,17 @@ func (s *WafRuleConfigAppSdk) Validate() error {
 }
 
 type WafRuleConfigAppSdkCustomSign struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The field name.
+	//
+	// example:
+	//
+	// sign
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The field value.
+	//
+	// example:
+	//
+	// examplesignvalue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -581,12 +688,38 @@ func (s *WafRuleConfigAppSdkCustomSign) Validate() error {
 }
 
 type WafRuleConfigManagedRulesets struct {
-	Action          *string                                     `json:"Action,omitempty" xml:"Action,omitempty"`
-	AttackType      *int32                                      `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	ManagedRules    []*WafRuleConfigManagedRulesetsManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
-	NumberEnabled   *int32                                      `json:"NumberEnabled,omitempty" xml:"NumberEnabled,omitempty"`
-	NumberTotal     *int32                                      `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
-	ProtectionLevel *int32                                      `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	// The action.
+	//
+	// example:
+	//
+	// deny
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The attack type.
+	//
+	// example:
+	//
+	// 11
+	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
+	// The managed rules.
+	ManagedRules []*WafRuleConfigManagedRulesetsManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
+	// The number of enabled rules.
+	//
+	// example:
+	//
+	// 50
+	NumberEnabled *int32 `json:"NumberEnabled,omitempty" xml:"NumberEnabled,omitempty"`
+	// The total number of rules.
+	//
+	// example:
+	//
+	// 100
+	NumberTotal *int32 `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
+	// The protection level.
+	//
+	// example:
+	//
+	// 4
+	ProtectionLevel *int32 `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 }
 
 func (s WafRuleConfigManagedRulesets) String() string {
@@ -665,8 +798,23 @@ func (s *WafRuleConfigManagedRulesets) Validate() error {
 }
 
 type WafRuleConfigManagedRulesetsManagedRules struct {
+	// The action performed on requests that match the managed rule.
+	//
+	// example:
+	//
+	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Id     *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the managed rule.
+	//
+	// example:
+	//
+	// 100001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The status of the managed rule.
+	//
+	// example:
+	//
+	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -710,11 +858,28 @@ func (s *WafRuleConfigManagedRulesetsManagedRules) Validate() error {
 }
 
 type WafRuleConfigRateLimit struct {
-	Characteristics *WafRatelimitCharacteristics     `json:"Characteristics,omitempty" xml:"Characteristics,omitempty"`
-	Interval        *int32                           `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OnHit           *bool                            `json:"OnHit,omitempty" xml:"OnHit,omitempty"`
-	TTL             *int32                           `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Threshold       *WafRuleConfigRateLimitThreshold `json:"Threshold,omitempty" xml:"Threshold,omitempty" type:"Struct"`
+	// The statistical objects to which the rule applies.
+	Characteristics *WafRatelimitCharacteristics `json:"Characteristics,omitempty" xml:"Characteristics,omitempty"`
+	// The statistical interval.
+	//
+	// example:
+	//
+	// 10
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// Indicates whether to apply the rule to requests that hit the cache.
+	//
+	// example:
+	//
+	// true
+	OnHit *bool `json:"OnHit,omitempty" xml:"OnHit,omitempty"`
+	// The timeout period for creating the stack.
+	//
+	// example:
+	//
+	// 10
+	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// The thresholds.
+	Threshold *WafRuleConfigRateLimitThreshold `json:"Threshold,omitempty" xml:"Threshold,omitempty" type:"Struct"`
 }
 
 func (s WafRuleConfigRateLimit) String() string {
@@ -785,11 +950,32 @@ func (s *WafRuleConfigRateLimit) Validate() error {
 }
 
 type WafRuleConfigRateLimitThreshold struct {
-	DistinctManagedRules *int32                                         `json:"DistinctManagedRules,omitempty" xml:"DistinctManagedRules,omitempty"`
-	ManagedRulesBlocked  *int32                                         `json:"ManagedRulesBlocked,omitempty" xml:"ManagedRulesBlocked,omitempty"`
-	Request              *int32                                         `json:"Request,omitempty" xml:"Request,omitempty"`
-	ResponseStatus       *WafRuleConfigRateLimitThresholdResponseStatus `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty" type:"Struct"`
-	Traffic              *string                                        `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
+	// The maximum number of managed rules that are triggered.
+	//
+	// example:
+	//
+	// 10
+	DistinctManagedRules *int32 `json:"DistinctManagedRules,omitempty" xml:"DistinctManagedRules,omitempty"`
+	// The maximum number of times that the managed rule is triggered.
+	//
+	// example:
+	//
+	// 10
+	ManagedRulesBlocked *int32 `json:"ManagedRulesBlocked,omitempty" xml:"ManagedRulesBlocked,omitempty"`
+	// The request threshold.
+	//
+	// example:
+	//
+	// 10
+	Request *int32 `json:"Request,omitempty" xml:"Request,omitempty"`
+	// The configuration of the status code threshold.
+	ResponseStatus *WafRuleConfigRateLimitThresholdResponseStatus `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty" type:"Struct"`
+	// The traffic threshold, which is deprecated.
+	//
+	// example:
+	//
+	// 10Gb
+	Traffic *string `json:"Traffic,omitempty" xml:"Traffic,omitempty"`
 }
 
 func (s WafRuleConfigRateLimitThreshold) String() string {
@@ -855,8 +1041,23 @@ func (s *WafRuleConfigRateLimitThreshold) Validate() error {
 }
 
 type WafRuleConfigRateLimitThresholdResponseStatus struct {
-	Code  *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 404
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The maximum number of times that the status code is returned.
+	//
+	// example:
+	//
+	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The percentage of the occurrences of the status code to total status codes.
+	//
+	// example:
+	//
+	// 10
 	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
 }
 
@@ -900,6 +1101,23 @@ func (s *WafRuleConfigRateLimitThresholdResponseStatus) Validate() error {
 }
 
 type WafRuleConfigSecurityLevel struct {
+	// Valid value:
+	//
+	// 	- off
+	//
+	// 	- essentially_off
+	//
+	// 	- low
+	//
+	// 	- medium
+	//
+	// 	- high
+	//
+	// 	- under_attack
+	//
+	// example:
+	//
+	// low
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

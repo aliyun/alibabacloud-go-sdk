@@ -11,8 +11,6 @@ type iBlockObjectRequest interface {
 	GoString() string
 	SetContent(v []*string) *BlockObjectRequest
 	GetContent() []*string
-	SetExtension(v string) *BlockObjectRequest
-	GetExtension() *string
 	SetMaxage(v int32) *BlockObjectRequest
 	GetMaxage() *int32
 	SetSiteId(v int64) *BlockObjectRequest
@@ -26,12 +24,6 @@ type BlockObjectRequest struct {
 	//
 	// This parameter is required.
 	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
-	// The blocking period that you can extend. Set the value to 2year.
-	//
-	// example:
-	//
-	// 2year
-	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
 	//
 	// example:
@@ -72,10 +64,6 @@ func (s *BlockObjectRequest) GetContent() []*string {
 	return s.Content
 }
 
-func (s *BlockObjectRequest) GetExtension() *string {
-	return s.Extension
-}
-
 func (s *BlockObjectRequest) GetMaxage() *int32 {
 	return s.Maxage
 }
@@ -90,11 +78,6 @@ func (s *BlockObjectRequest) GetType() *string {
 
 func (s *BlockObjectRequest) SetContent(v []*string) *BlockObjectRequest {
 	s.Content = v
-	return s
-}
-
-func (s *BlockObjectRequest) SetExtension(v string) *BlockObjectRequest {
-	s.Extension = &v
 	return s
 }
 

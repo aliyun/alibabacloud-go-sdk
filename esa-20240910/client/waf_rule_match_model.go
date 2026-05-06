@@ -28,11 +28,23 @@ type iWafRuleMatch interface {
 type WafRuleMatch struct {
 	ConvertToLower *bool           `json:"ConvertToLower,omitempty" xml:"ConvertToLower,omitempty"`
 	Criteria       []*WafRuleMatch `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic          *string         `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchOperator  *string         `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
-	MatchType      *string         `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	MatchValue     interface{}     `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
-	Negate         *bool           `json:"Negate,omitempty" xml:"Negate,omitempty"`
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// example:
+	//
+	// eq
+	MatchOperator *string `json:"MatchOperator,omitempty" xml:"MatchOperator,omitempty"`
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	MatchValue interface{} `json:"MatchValue,omitempty" xml:"MatchValue,omitempty"`
+	Negate     *bool       `json:"Negate,omitempty" xml:"Negate,omitempty"`
 }
 
 func (s WafRuleMatch) String() string {

@@ -78,6 +78,10 @@ func (s *ListPagesRequest) Validate() error {
 }
 
 type ListPagesRequestQueryArgs struct {
+	// example:
+	//
+	// application/json
+	ContentType         *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	NameDescriptionLike *string `json:"NameDescriptionLike,omitempty" xml:"NameDescriptionLike,omitempty"`
 }
 
@@ -89,8 +93,17 @@ func (s ListPagesRequestQueryArgs) GoString() string {
 	return s.String()
 }
 
+func (s *ListPagesRequestQueryArgs) GetContentType() *string {
+	return s.ContentType
+}
+
 func (s *ListPagesRequestQueryArgs) GetNameDescriptionLike() *string {
 	return s.NameDescriptionLike
+}
+
+func (s *ListPagesRequestQueryArgs) SetContentType(v string) *ListPagesRequestQueryArgs {
+	s.ContentType = &v
+	return s
 }
 
 func (s *ListPagesRequestQueryArgs) SetNameDescriptionLike(v string) *ListPagesRequestQueryArgs {

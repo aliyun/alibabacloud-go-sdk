@@ -18,9 +18,20 @@ type iWafRatelimitCharacteristics interface {
 }
 
 type WafRatelimitCharacteristics struct {
-	Criteria  []*WafRatelimitCharacteristicsCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic     *string                                `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchType *string                                `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The details of logical databases.
+	Criteria []*WafRatelimitCharacteristicsCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// The logical judgment.
+	//
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 }
 
 func (s WafRatelimitCharacteristics) String() string {
@@ -72,9 +83,20 @@ func (s *WafRatelimitCharacteristics) Validate() error {
 }
 
 type WafRatelimitCharacteristicsCriteria struct {
-	Criteria  []*WafRatelimitCharacteristicsCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic     *string                                        `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchType *string                                        `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The details of logical databases.
+	Criteria []*WafRatelimitCharacteristicsCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// The logical judgment.
+	//
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 }
 
 func (s WafRatelimitCharacteristicsCriteria) String() string {
@@ -126,9 +148,20 @@ func (s *WafRatelimitCharacteristicsCriteria) Validate() error {
 }
 
 type WafRatelimitCharacteristicsCriteriaCriteria struct {
-	Criteria  []*WafRatelimitCharacteristicsCriteriaCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
-	Logic     *string                                                `json:"Logic,omitempty" xml:"Logic,omitempty"`
-	MatchType *string                                                `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The details of logical databases.
+	Criteria []*WafRatelimitCharacteristicsCriteriaCriteriaCriteria `json:"Criteria,omitempty" xml:"Criteria,omitempty" type:"Repeated"`
+	// The logical judgment.
+	//
+	// example:
+	//
+	// and
+	Logic *string `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
+	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 }
 
 func (s WafRatelimitCharacteristicsCriteriaCriteria) String() string {
@@ -180,6 +213,11 @@ func (s *WafRatelimitCharacteristicsCriteriaCriteria) Validate() error {
 }
 
 type WafRatelimitCharacteristicsCriteriaCriteriaCriteria struct {
+	// The matching type.
+	//
+	// example:
+	//
+	// ip.src
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 }
 

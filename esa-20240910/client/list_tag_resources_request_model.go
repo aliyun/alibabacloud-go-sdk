@@ -13,8 +13,6 @@ type iListTagResourcesRequest interface {
 	GetMaxItem() *int32
 	SetNextToken(v string) *ListTagResourcesRequest
 	GetNextToken() *string
-	SetOwnerId(v int64) *ListTagResourcesRequest
-	GetOwnerId() *int64
 	SetRegionId(v string) *ListTagResourcesRequest
 	GetRegionId() *string
 	SetResourceId(v []*string) *ListTagResourcesRequest
@@ -42,7 +40,6 @@ type ListTagResourcesRequest struct {
 	//
 	// AAAAAZjtYxxxxxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the resources reside.
 	//
 	// This parameter is required.
@@ -82,10 +79,6 @@ func (s *ListTagResourcesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
-func (s *ListTagResourcesRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *ListTagResourcesRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -113,11 +106,6 @@ func (s *ListTagResourcesRequest) SetMaxItem(v int32) *ListTagResourcesRequest {
 
 func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
 	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetOwnerId(v int64) *ListTagResourcesRequest {
-	s.OwnerId = &v
 	return s
 }
 

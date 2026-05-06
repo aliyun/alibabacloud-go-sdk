@@ -70,7 +70,8 @@ type GetWafQuotaResponseBodyQuota struct {
 	// Quota information related to custom response pages.
 	Page *GetWafQuotaResponseBodyQuotaPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 	// Quota information related to scene protection.
-	ScenePolicy *GetWafQuotaResponseBodyQuotaScenePolicy `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
+	ScenePolicy       *GetWafQuotaResponseBodyQuotaScenePolicy       `json:"ScenePolicy,omitempty" xml:"ScenePolicy,omitempty" type:"Struct"`
+	SliderCaptchaPage *GetWafQuotaResponseBodyQuotaSliderCaptchaPage `json:"SliderCaptchaPage,omitempty" xml:"SliderCaptchaPage,omitempty" type:"Struct"`
 }
 
 func (s GetWafQuotaResponseBodyQuota) String() string {
@@ -101,6 +102,10 @@ func (s *GetWafQuotaResponseBodyQuota) GetScenePolicy() *GetWafQuotaResponseBody
 	return s.ScenePolicy
 }
 
+func (s *GetWafQuotaResponseBodyQuota) GetSliderCaptchaPage() *GetWafQuotaResponseBodyQuotaSliderCaptchaPage {
+	return s.SliderCaptchaPage
+}
+
 func (s *GetWafQuotaResponseBodyQuota) SetCaptcha(v *GetWafQuotaResponseBodyQuotaCaptcha) *GetWafQuotaResponseBodyQuota {
 	s.Captcha = v
 	return s
@@ -123,6 +128,11 @@ func (s *GetWafQuotaResponseBodyQuota) SetPage(v *GetWafQuotaResponseBodyQuotaPa
 
 func (s *GetWafQuotaResponseBodyQuota) SetScenePolicy(v *GetWafQuotaResponseBodyQuotaScenePolicy) *GetWafQuotaResponseBodyQuota {
 	s.ScenePolicy = v
+	return s
+}
+
+func (s *GetWafQuotaResponseBodyQuota) SetSliderCaptchaPage(v *GetWafQuotaResponseBodyQuotaSliderCaptchaPage) *GetWafQuotaResponseBodyQuota {
+	s.SliderCaptchaPage = v
 	return s
 }
 
@@ -149,6 +159,11 @@ func (s *GetWafQuotaResponseBodyQuota) Validate() error {
 	}
 	if s.ScenePolicy != nil {
 		if err := s.ScenePolicy.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SliderCaptchaPage != nil {
+		if err := s.SliderCaptchaPage.Validate(); err != nil {
 			return err
 		}
 	}
@@ -409,6 +424,46 @@ func (s *GetWafQuotaResponseBodyQuotaScenePolicy) SetNumberTotal(v *WafQuotaInte
 }
 
 func (s *GetWafQuotaResponseBodyQuotaScenePolicy) Validate() error {
+	if s.NumberTotal != nil {
+		if err := s.NumberTotal.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetWafQuotaResponseBodyQuotaSliderCaptchaPage struct {
+	Enable      *bool            `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	NumberTotal *WafQuotaInteger `json:"NumberTotal,omitempty" xml:"NumberTotal,omitempty"`
+}
+
+func (s GetWafQuotaResponseBodyQuotaSliderCaptchaPage) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetWafQuotaResponseBodyQuotaSliderCaptchaPage) GoString() string {
+	return s.String()
+}
+
+func (s *GetWafQuotaResponseBodyQuotaSliderCaptchaPage) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *GetWafQuotaResponseBodyQuotaSliderCaptchaPage) GetNumberTotal() *WafQuotaInteger {
+	return s.NumberTotal
+}
+
+func (s *GetWafQuotaResponseBodyQuotaSliderCaptchaPage) SetEnable(v bool) *GetWafQuotaResponseBodyQuotaSliderCaptchaPage {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetWafQuotaResponseBodyQuotaSliderCaptchaPage) SetNumberTotal(v *WafQuotaInteger) *GetWafQuotaResponseBodyQuotaSliderCaptchaPage {
+	s.NumberTotal = v
+	return s
+}
+
+func (s *GetWafQuotaResponseBodyQuotaSliderCaptchaPage) Validate() error {
 	if s.NumberTotal != nil {
 		if err := s.NumberTotal.Validate(); err != nil {
 			return err

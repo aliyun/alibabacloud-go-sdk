@@ -19,6 +19,8 @@ type iUpdatePageRequest interface {
 	GetId() *int64
 	SetName(v string) *UpdatePageRequest
 	GetName() *string
+	SetSiteIds(v []*int64) *UpdatePageRequest
+	GetSiteIds() []*int64
 }
 
 type UpdatePageRequest struct {
@@ -65,7 +67,8 @@ type UpdatePageRequest struct {
 	// example:
 	//
 	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name    *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	SiteIds []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePageRequest) String() string {
@@ -96,6 +99,10 @@ func (s *UpdatePageRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdatePageRequest) GetSiteIds() []*int64 {
+	return s.SiteIds
+}
+
 func (s *UpdatePageRequest) SetContent(v string) *UpdatePageRequest {
 	s.Content = &v
 	return s
@@ -118,6 +125,11 @@ func (s *UpdatePageRequest) SetId(v int64) *UpdatePageRequest {
 
 func (s *UpdatePageRequest) SetName(v string) *UpdatePageRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdatePageRequest) SetSiteIds(v []*int64) *UpdatePageRequest {
+	s.SiteIds = v
 	return s
 }
 

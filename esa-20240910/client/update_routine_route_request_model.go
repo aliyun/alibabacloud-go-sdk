@@ -27,6 +27,8 @@ type iUpdateRoutineRouteRequest interface {
 	GetSequence() *int32
 	SetSiteId(v int64) *UpdateRoutineRouteRequest
 	GetSiteId() *int64
+	SetTimeout(v string) *UpdateRoutineRouteRequest
+	GetTimeout() *string
 }
 
 type UpdateRoutineRouteRequest struct {
@@ -100,6 +102,10 @@ type UpdateRoutineRouteRequest struct {
 	//
 	// 123456******
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpdateRoutineRouteRequest) String() string {
@@ -146,6 +152,10 @@ func (s *UpdateRoutineRouteRequest) GetSiteId() *int64 {
 	return s.SiteId
 }
 
+func (s *UpdateRoutineRouteRequest) GetTimeout() *string {
+	return s.Timeout
+}
+
 func (s *UpdateRoutineRouteRequest) SetBypass(v string) *UpdateRoutineRouteRequest {
 	s.Bypass = &v
 	return s
@@ -188,6 +198,11 @@ func (s *UpdateRoutineRouteRequest) SetSequence(v int32) *UpdateRoutineRouteRequ
 
 func (s *UpdateRoutineRouteRequest) SetSiteId(v int64) *UpdateRoutineRouteRequest {
 	s.SiteId = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetTimeout(v string) *UpdateRoutineRouteRequest {
+	s.Timeout = &v
 	return s
 }
 

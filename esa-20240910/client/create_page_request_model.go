@@ -17,6 +17,8 @@ type iCreatePageRequest interface {
 	GetDescription() *string
 	SetName(v string) *CreatePageRequest
 	GetName() *string
+	SetSiteIds(v []*int64) *CreatePageRequest
+	GetSiteIds() []*int64
 }
 
 type CreatePageRequest struct {
@@ -51,7 +53,8 @@ type CreatePageRequest struct {
 	// example:
 	//
 	// example
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name    *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	SiteIds []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
 }
 
 func (s CreatePageRequest) String() string {
@@ -78,6 +81,10 @@ func (s *CreatePageRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreatePageRequest) GetSiteIds() []*int64 {
+	return s.SiteIds
+}
+
 func (s *CreatePageRequest) SetContent(v string) *CreatePageRequest {
 	s.Content = &v
 	return s
@@ -95,6 +102,11 @@ func (s *CreatePageRequest) SetDescription(v string) *CreatePageRequest {
 
 func (s *CreatePageRequest) SetName(v string) *CreatePageRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreatePageRequest) SetSiteIds(v []*int64) *CreatePageRequest {
+	s.SiteIds = v
 	return s
 }
 

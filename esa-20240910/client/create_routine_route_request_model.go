@@ -25,6 +25,8 @@ type iCreateRoutineRouteRequest interface {
 	GetSequence() *int32
 	SetSiteId(v int64) *CreateRoutineRouteRequest
 	GetSiteId() *int64
+	SetTimeout(v string) *CreateRoutineRouteRequest
+	GetTimeout() *string
 }
 
 type CreateRoutineRouteRequest struct {
@@ -92,6 +94,10 @@ type CreateRoutineRouteRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateRoutineRouteRequest) String() string {
@@ -134,6 +140,10 @@ func (s *CreateRoutineRouteRequest) GetSiteId() *int64 {
 	return s.SiteId
 }
 
+func (s *CreateRoutineRouteRequest) GetTimeout() *string {
+	return s.Timeout
+}
+
 func (s *CreateRoutineRouteRequest) SetBypass(v string) *CreateRoutineRouteRequest {
 	s.Bypass = &v
 	return s
@@ -171,6 +181,11 @@ func (s *CreateRoutineRouteRequest) SetSequence(v int32) *CreateRoutineRouteRequ
 
 func (s *CreateRoutineRouteRequest) SetSiteId(v int64) *CreateRoutineRouteRequest {
 	s.SiteId = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetTimeout(v string) *CreateRoutineRouteRequest {
+	s.Timeout = &v
 	return s
 }
 

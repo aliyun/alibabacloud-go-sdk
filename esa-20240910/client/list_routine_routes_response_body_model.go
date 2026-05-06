@@ -232,6 +232,10 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	//
 	// 1
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s ListRoutineRoutesResponseBodyConfigs) String() string {
@@ -292,6 +296,10 @@ func (s *ListRoutineRoutesResponseBodyConfigs) GetSiteName() *string {
 
 func (s *ListRoutineRoutesResponseBodyConfigs) GetSiteVersion() *int32 {
 	return s.SiteVersion
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) GetTimeout() *string {
+	return s.Timeout
 }
 
 func (s *ListRoutineRoutesResponseBodyConfigs) SetBypass(v string) *ListRoutineRoutesResponseBodyConfigs {
@@ -356,6 +364,11 @@ func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteName(v string) *ListRoutin
 
 func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteVersion(v int32) *ListRoutineRoutesResponseBodyConfigs {
 	s.SiteVersion = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetTimeout(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.Timeout = &v
 	return s
 }
 

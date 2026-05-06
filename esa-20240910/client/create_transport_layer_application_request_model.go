@@ -15,6 +15,8 @@ type iCreateTransportLayerApplicationRequest interface {
 	GetIpAccessRule() *string
 	SetIpv6(v string) *CreateTransportLayerApplicationRequest
 	GetIpv6() *string
+	SetKeepAliveProtection(v string) *CreateTransportLayerApplicationRequest
+	GetKeepAliveProtection() *string
 	SetRecordName(v string) *CreateTransportLayerApplicationRequest
 	GetRecordName() *string
 	SetRules(v []*CreateTransportLayerApplicationRequestRules) *CreateTransportLayerApplicationRequest
@@ -51,7 +53,8 @@ type CreateTransportLayerApplicationRequest struct {
 	// example:
 	//
 	// off
-	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
 	// Domain name of the transport layer application.
 	//
 	// This parameter is required.
@@ -95,6 +98,10 @@ func (s *CreateTransportLayerApplicationRequest) GetIpv6() *string {
 	return s.Ipv6
 }
 
+func (s *CreateTransportLayerApplicationRequest) GetKeepAliveProtection() *string {
+	return s.KeepAliveProtection
+}
+
 func (s *CreateTransportLayerApplicationRequest) GetRecordName() *string {
 	return s.RecordName
 }
@@ -123,6 +130,11 @@ func (s *CreateTransportLayerApplicationRequest) SetIpAccessRule(v string) *Crea
 
 func (s *CreateTransportLayerApplicationRequest) SetIpv6(v string) *CreateTransportLayerApplicationRequest {
 	s.Ipv6 = &v
+	return s
+}
+
+func (s *CreateTransportLayerApplicationRequest) SetKeepAliveProtection(v string) *CreateTransportLayerApplicationRequest {
+	s.KeepAliveProtection = &v
 	return s
 }
 

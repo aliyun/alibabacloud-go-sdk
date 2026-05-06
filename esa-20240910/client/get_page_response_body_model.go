@@ -23,6 +23,8 @@ type iGetPageResponseBody interface {
 	GetName() *string
 	SetRequestId(v string) *GetPageResponseBody
 	GetRequestId() *string
+	SetSiteIds(v []*int64) *GetPageResponseBody
+	GetSiteIds() []*int64
 	SetUpdateTime(v string) *GetPageResponseBody
 	GetUpdateTime() *string
 }
@@ -75,7 +77,8 @@ type GetPageResponseBody struct {
 	// example:
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteIds   []*int64 `json:"SiteIds,omitempty" xml:"SiteIds,omitempty" type:"Repeated"`
 	// The time when the custom error page was last modified.
 	//
 	// example:
@@ -120,6 +123,10 @@ func (s *GetPageResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetPageResponseBody) GetSiteIds() []*int64 {
+	return s.SiteIds
+}
+
 func (s *GetPageResponseBody) GetUpdateTime() *string {
 	return s.UpdateTime
 }
@@ -156,6 +163,11 @@ func (s *GetPageResponseBody) SetName(v string) *GetPageResponseBody {
 
 func (s *GetPageResponseBody) SetRequestId(v string) *GetPageResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetPageResponseBody) SetSiteIds(v []*int64) *GetPageResponseBody {
+	s.SiteIds = v
 	return s
 }
 

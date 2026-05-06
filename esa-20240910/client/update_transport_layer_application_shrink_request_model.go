@@ -17,6 +17,8 @@ type iUpdateTransportLayerApplicationShrinkRequest interface {
 	GetIpAccessRule() *string
 	SetIpv6(v string) *UpdateTransportLayerApplicationShrinkRequest
 	GetIpv6() *string
+	SetKeepAliveProtection(v string) *UpdateTransportLayerApplicationShrinkRequest
+	GetKeepAliveProtection() *string
 	SetRulesShrink(v string) *UpdateTransportLayerApplicationShrinkRequest
 	GetRulesShrink() *string
 	SetSiteId(v int64) *UpdateTransportLayerApplicationShrinkRequest
@@ -59,7 +61,8 @@ type UpdateTransportLayerApplicationShrinkRequest struct {
 	// example:
 	//
 	// on
-	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
 	// Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
@@ -97,6 +100,10 @@ func (s *UpdateTransportLayerApplicationShrinkRequest) GetIpv6() *string {
 	return s.Ipv6
 }
 
+func (s *UpdateTransportLayerApplicationShrinkRequest) GetKeepAliveProtection() *string {
+	return s.KeepAliveProtection
+}
+
 func (s *UpdateTransportLayerApplicationShrinkRequest) GetRulesShrink() *string {
 	return s.RulesShrink
 }
@@ -126,6 +133,11 @@ func (s *UpdateTransportLayerApplicationShrinkRequest) SetIpAccessRule(v string)
 
 func (s *UpdateTransportLayerApplicationShrinkRequest) SetIpv6(v string) *UpdateTransportLayerApplicationShrinkRequest {
 	s.Ipv6 = &v
+	return s
+}
+
+func (s *UpdateTransportLayerApplicationShrinkRequest) SetKeepAliveProtection(v string) *UpdateTransportLayerApplicationShrinkRequest {
+	s.KeepAliveProtection = &v
 	return s
 }
 

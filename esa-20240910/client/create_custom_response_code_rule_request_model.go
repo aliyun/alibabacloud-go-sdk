@@ -30,11 +30,15 @@ type iCreateCustomResponseCodeRuleRequest interface {
 type CreateCustomResponseCodeRuleRequest struct {
 	// Response page.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 0
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	// Response code.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//

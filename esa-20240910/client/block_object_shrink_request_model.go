@@ -11,8 +11,6 @@ type iBlockObjectShrinkRequest interface {
 	GoString() string
 	SetContentShrink(v string) *BlockObjectShrinkRequest
 	GetContentShrink() *string
-	SetExtension(v string) *BlockObjectShrinkRequest
-	GetExtension() *string
 	SetMaxage(v int32) *BlockObjectShrinkRequest
 	GetMaxage() *int32
 	SetSiteId(v int64) *BlockObjectShrinkRequest
@@ -26,12 +24,6 @@ type BlockObjectShrinkRequest struct {
 	//
 	// This parameter is required.
 	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The blocking period that you can extend. Set the value to 2year.
-	//
-	// example:
-	//
-	// 2year
-	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// The period of time during which the URL is blocked. Unit: seconds. Specify this parameter if Type is set to block.
 	//
 	// example:
@@ -72,10 +64,6 @@ func (s *BlockObjectShrinkRequest) GetContentShrink() *string {
 	return s.ContentShrink
 }
 
-func (s *BlockObjectShrinkRequest) GetExtension() *string {
-	return s.Extension
-}
-
 func (s *BlockObjectShrinkRequest) GetMaxage() *int32 {
 	return s.Maxage
 }
@@ -90,11 +78,6 @@ func (s *BlockObjectShrinkRequest) GetType() *string {
 
 func (s *BlockObjectShrinkRequest) SetContentShrink(v string) *BlockObjectShrinkRequest {
 	s.ContentShrink = &v
-	return s
-}
-
-func (s *BlockObjectShrinkRequest) SetExtension(v string) *BlockObjectShrinkRequest {
-	s.Extension = &v
 	return s
 }
 

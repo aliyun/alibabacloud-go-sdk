@@ -19,8 +19,6 @@ type iSetCertificateRequest interface {
 	GetKeyServerId() *string
 	SetName(v string) *SetCertificateRequest
 	GetName() *string
-	SetOwnerId(v int64) *SetCertificateRequest
-	GetOwnerId() *int64
 	SetPrivateKey(v string) *SetCertificateRequest
 	GetPrivateKey() *string
 	SetRegion(v string) *SetCertificateRequest
@@ -58,8 +56,7 @@ type SetCertificateRequest struct {
 	// example:
 	//
 	// yourCertName
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The private key of the certificate.
 	//
 	// example:
@@ -123,10 +120,6 @@ func (s *SetCertificateRequest) GetName() *string {
 	return s.Name
 }
 
-func (s *SetCertificateRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *SetCertificateRequest) GetPrivateKey() *string {
 	return s.PrivateKey
 }
@@ -169,11 +162,6 @@ func (s *SetCertificateRequest) SetKeyServerId(v string) *SetCertificateRequest 
 
 func (s *SetCertificateRequest) SetName(v string) *SetCertificateRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *SetCertificateRequest) SetOwnerId(v int64) *SetCertificateRequest {
-	s.OwnerId = &v
 	return s
 }
 

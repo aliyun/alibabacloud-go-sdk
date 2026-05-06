@@ -9,8 +9,6 @@ type iDeleteSiteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetOwnerId(v int64) *DeleteSiteRequest
-	GetOwnerId() *int64
 	SetSecurityToken(v string) *DeleteSiteRequest
 	GetSecurityToken() *string
 	SetSiteId(v int64) *DeleteSiteRequest
@@ -18,7 +16,6 @@ type iDeleteSiteRequest interface {
 }
 
 type DeleteSiteRequest struct {
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -36,21 +33,12 @@ func (s DeleteSiteRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSiteRequest) GetOwnerId() *int64 {
-	return s.OwnerId
-}
-
 func (s *DeleteSiteRequest) GetSecurityToken() *string {
 	return s.SecurityToken
 }
 
 func (s *DeleteSiteRequest) GetSiteId() *int64 {
 	return s.SiteId
-}
-
-func (s *DeleteSiteRequest) SetOwnerId(v int64) *DeleteSiteRequest {
-	s.OwnerId = &v
-	return s
 }
 
 func (s *DeleteSiteRequest) SetSecurityToken(v string) *DeleteSiteRequest {

@@ -17,6 +17,8 @@ type iUpdateTransportLayerApplicationRequest interface {
 	GetIpAccessRule() *string
 	SetIpv6(v string) *UpdateTransportLayerApplicationRequest
 	GetIpv6() *string
+	SetKeepAliveProtection(v string) *UpdateTransportLayerApplicationRequest
+	GetKeepAliveProtection() *string
 	SetRules(v []*UpdateTransportLayerApplicationRequestRules) *UpdateTransportLayerApplicationRequest
 	GetRules() []*UpdateTransportLayerApplicationRequestRules
 	SetSiteId(v int64) *UpdateTransportLayerApplicationRequest
@@ -59,7 +61,8 @@ type UpdateTransportLayerApplicationRequest struct {
 	// example:
 	//
 	// on
-	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
 	// Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
 	Rules []*UpdateTransportLayerApplicationRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
@@ -97,6 +100,10 @@ func (s *UpdateTransportLayerApplicationRequest) GetIpv6() *string {
 	return s.Ipv6
 }
 
+func (s *UpdateTransportLayerApplicationRequest) GetKeepAliveProtection() *string {
+	return s.KeepAliveProtection
+}
+
 func (s *UpdateTransportLayerApplicationRequest) GetRules() []*UpdateTransportLayerApplicationRequestRules {
 	return s.Rules
 }
@@ -126,6 +133,11 @@ func (s *UpdateTransportLayerApplicationRequest) SetIpAccessRule(v string) *Upda
 
 func (s *UpdateTransportLayerApplicationRequest) SetIpv6(v string) *UpdateTransportLayerApplicationRequest {
 	s.Ipv6 = &v
+	return s
+}
+
+func (s *UpdateTransportLayerApplicationRequest) SetKeepAliveProtection(v string) *UpdateTransportLayerApplicationRequest {
+	s.KeepAliveProtection = &v
 	return s
 }
 

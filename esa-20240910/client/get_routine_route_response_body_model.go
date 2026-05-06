@@ -33,6 +33,8 @@ type iGetRoutineRouteResponseBody interface {
 	GetSequence() *int32
 	SetSiteVersion(v int32) *GetRoutineRouteResponseBody
 	GetSiteVersion() *int32
+	SetTimeout(v string) *GetRoutineRouteResponseBody
+	GetTimeout() *string
 }
 
 type GetRoutineRouteResponseBody struct {
@@ -128,6 +130,10 @@ type GetRoutineRouteResponseBody struct {
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+	// example:
+	//
+	// 5
+	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s GetRoutineRouteResponseBody) String() string {
@@ -184,6 +190,10 @@ func (s *GetRoutineRouteResponseBody) GetSequence() *int32 {
 
 func (s *GetRoutineRouteResponseBody) GetSiteVersion() *int32 {
 	return s.SiteVersion
+}
+
+func (s *GetRoutineRouteResponseBody) GetTimeout() *string {
+	return s.Timeout
 }
 
 func (s *GetRoutineRouteResponseBody) SetBypass(v string) *GetRoutineRouteResponseBody {
@@ -243,6 +253,11 @@ func (s *GetRoutineRouteResponseBody) SetSequence(v int32) *GetRoutineRouteRespo
 
 func (s *GetRoutineRouteResponseBody) SetSiteVersion(v int32) *GetRoutineRouteResponseBody {
 	s.SiteVersion = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetTimeout(v string) *GetRoutineRouteResponseBody {
+	s.Timeout = &v
 	return s
 }
 

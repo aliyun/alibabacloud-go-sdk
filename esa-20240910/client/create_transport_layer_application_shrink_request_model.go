@@ -15,6 +15,8 @@ type iCreateTransportLayerApplicationShrinkRequest interface {
 	GetIpAccessRule() *string
 	SetIpv6(v string) *CreateTransportLayerApplicationShrinkRequest
 	GetIpv6() *string
+	SetKeepAliveProtection(v string) *CreateTransportLayerApplicationShrinkRequest
+	GetKeepAliveProtection() *string
 	SetRecordName(v string) *CreateTransportLayerApplicationShrinkRequest
 	GetRecordName() *string
 	SetRulesShrink(v string) *CreateTransportLayerApplicationShrinkRequest
@@ -51,7 +53,8 @@ type CreateTransportLayerApplicationShrinkRequest struct {
 	// example:
 	//
 	// off
-	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	Ipv6                *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
+	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
 	// Domain name of the transport layer application.
 	//
 	// This parameter is required.
@@ -95,6 +98,10 @@ func (s *CreateTransportLayerApplicationShrinkRequest) GetIpv6() *string {
 	return s.Ipv6
 }
 
+func (s *CreateTransportLayerApplicationShrinkRequest) GetKeepAliveProtection() *string {
+	return s.KeepAliveProtection
+}
+
 func (s *CreateTransportLayerApplicationShrinkRequest) GetRecordName() *string {
 	return s.RecordName
 }
@@ -123,6 +130,11 @@ func (s *CreateTransportLayerApplicationShrinkRequest) SetIpAccessRule(v string)
 
 func (s *CreateTransportLayerApplicationShrinkRequest) SetIpv6(v string) *CreateTransportLayerApplicationShrinkRequest {
 	s.Ipv6 = &v
+	return s
+}
+
+func (s *CreateTransportLayerApplicationShrinkRequest) SetKeepAliveProtection(v string) *CreateTransportLayerApplicationShrinkRequest {
+	s.KeepAliveProtection = &v
 	return s
 }
 
