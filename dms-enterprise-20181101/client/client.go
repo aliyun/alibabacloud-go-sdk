@@ -13263,6 +13263,80 @@ func (client *Client) GetTableInstructions(request *GetTableInstructionsRequest)
 
 // Summary:
 //
+// 查询表的资产知识详情，包含表元信息、业务描述、字段列表等
+//
+// Description:
+//
+// 查询表的资产知识详情，返回表的基本元信息、AI 增强的业务描述、汇总信息以及字段知识列表
+//
+// @param request - GetTableKnowledgeDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableKnowledgeDetailsResponse
+func (client *Client) GetTableKnowledgeDetailsWithOptions(request *GetTableKnowledgeDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetTableKnowledgeDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DbId) {
+		query["DbId"] = request.DbId
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTableKnowledgeDetails"),
+		Version:     dara.String("2018-11-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTableKnowledgeDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表的资产知识详情，包含表元信息、业务描述、字段列表等
+//
+// Description:
+//
+// 查询表的资产知识详情，返回表的基本元信息、AI 增强的业务描述、汇总信息以及字段知识列表
+//
+// @param request - GetTableKnowledgeDetailsRequest
+//
+// @return GetTableKnowledgeDetailsResponse
+func (client *Client) GetTableKnowledgeDetails(request *GetTableKnowledgeDetailsRequest) (_result *GetTableKnowledgeDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTableKnowledgeDetailsResponse{}
+	_body, _err := client.GetTableKnowledgeDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Gets metadata knowledge for a specified GUID.
 //
 // Description:
