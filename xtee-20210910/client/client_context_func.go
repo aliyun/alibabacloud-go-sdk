@@ -281,6 +281,62 @@ func (client *Client) BindVariableWithContext(ctx context.Context, request *Bind
 
 // Summary:
 //
+// 创建任务组
+//
+// @param request - CancelSubTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSubTaskResponse
+func (client *Client) CancelSubTaskWithContext(ctx context.Context, request *CancelSubTaskRequest, runtime *dara.RuntimeOptions) (_result *CancelSubTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SubTaskId) {
+		query["SubTaskId"] = request.SubTaskId
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelSubTask"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelSubTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Policy Replication Lineage Check
 //
 // @param request - CheckCopyRuleVariableRequest
@@ -487,6 +543,110 @@ func (client *Client) CheckFieldLimitWithContext(ctx context.Context, request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CheckFieldLimitResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 样本名称唯一性校验
+//
+// @param request - CheckSampleNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckSampleNameResponse
+func (client *Client) CheckSampleNameWithContext(ctx context.Context, request *CheckSampleNameRequest, runtime *dara.RuntimeOptions) (_result *CheckSampleNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleName) {
+		query["SampleName"] = request.SampleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckSampleName"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckSampleNameResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务组名称唯一性校验
+//
+// @param request - CheckTaskGroupNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckTaskGroupNameResponse
+func (client *Client) CheckTaskGroupNameWithContext(ctx context.Context, request *CheckTaskGroupNameRequest, runtime *dara.RuntimeOptions) (_result *CheckTaskGroupNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.TaskGroupName) {
+		query["TaskGroupName"] = request.TaskGroupName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckTaskGroupName"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckTaskGroupNameResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1441,6 +1601,78 @@ func (client *Client) CreatePocEvWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
+// 创建样本记录
+//
+// @param request - CreatePocSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePocSampleResponse
+func (client *Client) CreatePocSampleWithContext(ctx context.Context, request *CreatePocSampleRequest, runtime *dara.RuntimeOptions) (_result *CreatePocSampleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Remark) {
+		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.SampleName) {
+		query["SampleName"] = request.SampleName
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePocSample"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePocSampleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Add New Custom Query Variable
 //
 // @param request - CreateQueryVariableRequest
@@ -2125,6 +2357,82 @@ func (client *Client) CreateSimulationTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// 取消子任务
+//
+// @param request - CreateTaskGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskGroupResponse
+func (client *Client) CreateTaskGroupWithContext(ctx context.Context, request *CreateTaskGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateTaskGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleIds) {
+		query["SampleIds"] = request.SampleIds
+	}
+
+	if !dara.IsNil(request.Scenes) {
+		query["Scenes"] = request.Scenes
+	}
+
+	if !dara.IsNil(request.ServiceCodes) {
+		query["ServiceCodes"] = request.ServiceCodes
+	}
+
+	if !dara.IsNil(request.ServiceNames) {
+		query["ServiceNames"] = request.ServiceNames
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	if !dara.IsNil(request.TaskGroupName) {
+		query["TaskGroupName"] = request.TaskGroupName
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTaskGroup"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTaskGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Policy Replication
 //
 // @param request - DeepCopyRuleRequest
@@ -2537,7 +2845,7 @@ func (client *Client) DeleteExpressionVariableWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 删除字段
+// # Delete Field
 //
 // @param request - DeleteFieldRequest
 //
@@ -2809,6 +3117,58 @@ func (client *Client) DeleteRuleWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
+// 删除样本
+//
+// @param request - DeleteSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSampleResponse
+func (client *Client) DeleteSampleWithContext(ctx context.Context, request *DeleteSampleRequest, runtime *dara.RuntimeOptions) (_result *DeleteSampleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleId) {
+		query["SampleId"] = request.SampleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSample"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSampleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Batch Delete Samples
 //
 // @param request - DeleteSampleBatchRequest
@@ -3021,7 +3381,7 @@ func (client *Client) DeleteSelfBindVariableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 高级查询获取左变量接口
+// # Advanced Query to Get Left Variables Interface
 //
 // @param request - DescribeAdvanceSearchLeftVariableListRequest
 //
@@ -3157,7 +3517,7 @@ func (client *Client) DescribeAdvanceSearchPageListWithContext(ctx context.Conte
 
 // Summary:
 //
-// 数据源列表
+// # Data Source List
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -4125,7 +4485,7 @@ func (client *Client) DescribeAuthEventNameListWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 策略列表
+// # Policy List
 //
 // @param request - DescribeAuthRulePageListRequest
 //
@@ -4185,7 +4545,7 @@ func (client *Client) DescribeAuthRulePageListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 场景列表
+// # List of Scenarios
 //
 // @param request - DescribeAuthSceneListRequest
 //
@@ -4457,7 +4817,7 @@ func (client *Client) DescribeBasicSearchPageListWithContext(ctx context.Context
 
 // Summary:
 //
-// 基础统计
+// # Basic Statistics
 //
 // @param request - DescribeBasicStartRequest
 //
@@ -9025,7 +9385,7 @@ func (client *Client) DescribeQueryVariableDetailWithContext(ctx context.Context
 
 // Summary:
 //
-// 查询变量列表查询
+// # Query Variable List Query
 //
 // @param request - DescribeQueryVariablePageListRequest
 //
@@ -13569,6 +13929,62 @@ func (client *Client) DescribeVersionPageListWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 下载样本文件
+//
+// @param request - DownloadSampleFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadSampleFileResponse
+func (client *Client) DownloadSampleFileWithContext(ctx context.Context, request *DownloadSampleFileRequest, runtime *dara.RuntimeOptions) (_result *DownloadSampleFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleId) {
+		query["SampleId"] = request.SampleId
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadSampleFile"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadSampleFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Sample List Data Download
 //
 // @param request - DownloadSmapleBatchRequest
@@ -13611,6 +14027,58 @@ func (client *Client) DownloadSmapleBatchWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DownloadSmapleBatchResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 下载子任务结果
+//
+// @param request - DownloadSubTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadSubTaskResultResponse
+func (client *Client) DownloadSubTaskResultWithContext(ctx context.Context, request *DownloadSubTaskResultRequest, runtime *dara.RuntimeOptions) (_result *DownloadSubTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SubTaskId) {
+		query["SubTaskId"] = request.SubTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadSubTaskResult"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadSubTaskResultResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13735,6 +14203,110 @@ func (client *Client) FileUploadWithContext(ctx context.Context, request *FileUp
 		BodyType:    dara.String("json"),
 	}
 	_result = &FileUploadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建样本记录
+//
+// @param request - GetSampleDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSampleDetailResponse
+func (client *Client) GetSampleDetailWithContext(ctx context.Context, request *GetSampleDetailRequest, runtime *dara.RuntimeOptions) (_result *GetSampleDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleId) {
+		query["SampleId"] = request.SampleId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSampleDetail"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSampleDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看子任务结果
+//
+// @param request - GetSubTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubTaskResultResponse
+func (client *Client) GetSubTaskResultWithContext(ctx context.Context, request *GetSubTaskResultRequest, runtime *dara.RuntimeOptions) (_result *GetSubTaskResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SubTaskId) {
+		query["SubTaskId"] = request.SubTaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSubTaskResult"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSubTaskResultResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13929,6 +14501,150 @@ func (client *Client) ImportTemplateEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 样本列表查询
+//
+// @param request - ListSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSampleResponse
+func (client *Client) ListSampleWithContext(ctx context.Context, request *ListSampleRequest, runtime *dara.RuntimeOptions) (_result *ListSampleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleName) {
+		query["SampleName"] = request.SampleName
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UploadTimeEnd) {
+		query["UploadTimeEnd"] = request.UploadTimeEnd
+	}
+
+	if !dara.IsNil(request.UploadTimeStart) {
+		query["UploadTimeStart"] = request.UploadTimeStart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSample"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSampleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 任务组列表查询
+//
+// @param request - ListTaskGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskGroupResponse
+func (client *Client) ListTaskGroupWithContext(ctx context.Context, request *ListTaskGroupRequest, runtime *dara.RuntimeOptions) (_result *ListTaskGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SampleName) {
+		query["SampleName"] = request.SampleName
+	}
+
+	if !dara.IsNil(request.TaskGroupName) {
+		query["TaskGroupName"] = request.TaskGroupName
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTaskGroup"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTaskGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Query Variable Definition
 //
 // @param request - ListVariableDefineRequest
@@ -14015,6 +14731,58 @@ func (client *Client) ListVariableDefineWithContext(ctx context.Context, request
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListVariableDefineResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 合并下载
+//
+// @param request - MergeDownloadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MergeDownloadResponse
+func (client *Client) MergeDownloadWithContext(ctx context.Context, request *MergeDownloadRequest, runtime *dara.RuntimeOptions) (_result *MergeDownloadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.SubTaskIds) {
+		query["SubTaskIds"] = request.SubTaskIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("MergeDownload"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &MergeDownloadResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15569,6 +16337,74 @@ func (client *Client) SaveByPassOrShuntEventWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 样本列表查询
+//
+// @param request - SearchSampleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchSampleResponse
+func (client *Client) SearchSampleWithContext(ctx context.Context, request *SearchSampleRequest, runtime *dara.RuntimeOptions) (_result *SearchSampleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.UploadTimeEnd) {
+		query["UploadTimeEnd"] = request.UploadTimeEnd
+	}
+
+	if !dara.IsNil(request.UploadTimeStart) {
+		query["UploadTimeStart"] = request.UploadTimeStart
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SearchSample"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SearchSampleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Start/Stop Bypass Event
 //
 // @param request - StartOrStopByPassShuntEventRequest
@@ -16791,6 +17627,70 @@ func (client *Client) UploadFileCheckWithContext(ctx context.Context, request *U
 		BodyType:    dara.String("json"),
 	}
 	_result = &UploadFileCheckResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传并校验样本文件
+//
+// @param request - UploadSampleFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadSampleFileResponse
+func (client *Client) UploadSampleFileWithContext(ctx context.Context, request *UploadSampleFileRequest, runtime *dara.RuntimeOptions) (_result *UploadSampleFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileName) {
+		query["FileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		query["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.Lang) {
+		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.RegId) {
+		query["RegId"] = request.RegId
+	}
+
+	if !dara.IsNil(request.Tab) {
+		query["Tab"] = request.Tab
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadSampleFile"),
+		Version:     dara.String("2021-09-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadSampleFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

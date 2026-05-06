@@ -53,8 +53,22 @@ type DescribeListPocRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegId      *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
-	TaskName   *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	RegId *string `json:"RegId,omitempty" xml:"RegId,omitempty"`
+	// Task name.
+	//
+	// example:
+	//
+	// Task_001
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The status of the import task. Valid values:
+	//
+	// 	- DOING
+	//
+	// 	- FINISH
+	//
+	// example:
+	//
+	// FINISH
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// Type
 	//
