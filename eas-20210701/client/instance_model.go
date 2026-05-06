@@ -9,6 +9,8 @@ type iInstance interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCreateTime(v string) *Instance
+	GetCreateTime() *string
 	SetCurrentAmount(v float32) *Instance
 	GetCurrentAmount() *float32
 	SetDetached(v bool) *Instance
@@ -72,6 +74,7 @@ type iInstance interface {
 }
 
 type Instance struct {
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The current hourly price of the spot instance.
 	//
 	// example:
@@ -254,6 +257,10 @@ func (s Instance) GoString() string {
 	return s.String()
 }
 
+func (s *Instance) GetCreateTime() *string {
+	return s.CreateTime
+}
+
 func (s *Instance) GetCurrentAmount() *float32 {
 	return s.CurrentAmount
 }
@@ -372,6 +379,11 @@ func (s *Instance) GetTotalProcesses() *int32 {
 
 func (s *Instance) GetZone() *string {
 	return s.Zone
+}
+
+func (s *Instance) SetCreateTime(v string) *Instance {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *Instance) SetCurrentAmount(v float32) *Instance {
