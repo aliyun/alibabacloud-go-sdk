@@ -8956,6 +8956,10 @@ func (client *Client) RunBookBrainmapWithContext(ctx context.Context, request *R
 		body["Prompt"] = request.Prompt
 	}
 
+	if !dara.IsNil(request.ResponseFormat) {
+		body["ResponseFormat"] = request.ResponseFormat
+	}
+
 	if !dara.IsNil(request.SessionId) {
 		body["SessionId"] = request.SessionId
 	}
@@ -9023,6 +9027,10 @@ func (client *Client) RunBookIntroductionWithContext(ctx context.Context, reques
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
 	if !dara.IsNil(request.DocId) {
 		body["DocId"] = request.DocId
 	}
@@ -9608,6 +9616,10 @@ func (client *Client) RunDocBrainmapWithContext(ctx context.Context, request *Ru
 
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ResponseFormat) {
+		body["ResponseFormat"] = request.ResponseFormat
 	}
 
 	if !dara.IsNil(request.SessionId) {
@@ -14258,6 +14270,10 @@ func (client *Client) runBookBrainmapWithSSECtx_opYieldFunc(_yield chan *RunBook
 		body["Prompt"] = request.Prompt
 	}
 
+	if !dara.IsNil(request.ResponseFormat) {
+		body["ResponseFormat"] = request.ResponseFormat
+	}
+
 	if !dara.IsNil(request.SessionId) {
 		body["SessionId"] = request.SessionId
 	}
@@ -14314,6 +14330,10 @@ func (client *Client) runBookIntroductionWithSSECtx_opYieldFunc(_yield chan *Run
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CleanCache) {
+		body["CleanCache"] = request.CleanCache
+	}
+
 	if !dara.IsNil(request.DocId) {
 		body["DocId"] = request.DocId
 	}
@@ -14822,6 +14842,10 @@ func (client *Client) runDocBrainmapWithSSECtx_opYieldFunc(_yield chan *RunDocBr
 
 	if !dara.IsNil(request.Prompt) {
 		body["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.ResponseFormat) {
+		body["ResponseFormat"] = request.ResponseFormat
 	}
 
 	if !dara.IsNil(request.SessionId) {

@@ -9,6 +9,8 @@ type iRunBookIntroductionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCleanCache(v bool) *RunBookIntroductionRequest
+	GetCleanCache() *bool
 	SetDocId(v string) *RunBookIntroductionRequest
 	GetDocId() *string
 	SetKeyPointPrompt(v string) *RunBookIntroductionRequest
@@ -22,19 +24,29 @@ type iRunBookIntroductionRequest interface {
 }
 
 type RunBookIntroductionRequest struct {
+	// example:
+	//
+	// true
+	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3YQRatoe8phnpIsIE6z7DTPknhG8Fj
-	DocId          *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 用英文输出
 	KeyPointPrompt *string `json:"KeyPointPrompt,omitempty" xml:"KeyPointPrompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0f56f98a-f2d8-47ec-98e9-1cbdcffa9539
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 用英文输出
 	SummaryPrompt *string `json:"SummaryPrompt,omitempty" xml:"SummaryPrompt,omitempty"`
 	// This parameter is required.
 	//
@@ -50,6 +62,10 @@ func (s RunBookIntroductionRequest) String() string {
 
 func (s RunBookIntroductionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunBookIntroductionRequest) GetCleanCache() *bool {
+	return s.CleanCache
 }
 
 func (s *RunBookIntroductionRequest) GetDocId() *string {
@@ -70,6 +86,11 @@ func (s *RunBookIntroductionRequest) GetSummaryPrompt() *string {
 
 func (s *RunBookIntroductionRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *RunBookIntroductionRequest) SetCleanCache(v bool) *RunBookIntroductionRequest {
+	s.CleanCache = &v
+	return s
 }
 
 func (s *RunBookIntroductionRequest) SetDocId(v string) *RunBookIntroductionRequest {

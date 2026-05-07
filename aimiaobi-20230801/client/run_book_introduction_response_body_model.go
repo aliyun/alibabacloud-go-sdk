@@ -289,6 +289,7 @@ func (s *RunBookIntroductionResponseBodyPayloadOutput) Validate() error {
 }
 
 type RunBookIntroductionResponseBodyPayloadOutputIntroductions struct {
+	Blocks []*RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks `json:"Blocks,omitempty" xml:"Blocks,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 本段摘要内容
@@ -307,12 +308,21 @@ func (s RunBookIntroductionResponseBodyPayloadOutputIntroductions) GoString() st
 	return s.String()
 }
 
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) GetBlocks() []*RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	return s.Blocks
+}
+
 func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) GetSummary() *string {
 	return s.Summary
 }
 
 func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) GetTitle() *string {
 	return s.Title
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) SetBlocks(v []*RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) *RunBookIntroductionResponseBodyPayloadOutputIntroductions {
+	s.Blocks = v
+	return s
 }
 
 func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) SetSummary(v string) *RunBookIntroductionResponseBodyPayloadOutputIntroductions {
@@ -326,6 +336,121 @@ func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) SetTitle(v s
 }
 
 func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductions) Validate() error {
+	if s.Blocks != nil {
+		for _, item := range s.Blocks {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks struct {
+	// example:
+	//
+	// 0
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 1200
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 600
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 10
+	PageId *int32 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// example:
+	//
+	// 600
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 10
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 10
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) String() string {
+	return dara.Prettify(s)
+}
+
+func (s RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetBeginTime() *int64 {
+	return s.BeginTime
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetHeight() *int32 {
+	return s.Height
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetPageId() *int32 {
+	return s.PageId
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetWidth() *int32 {
+	return s.Width
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetX() *int32 {
+	return s.X
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) GetY() *int32 {
+	return s.Y
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetBeginTime(v int64) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetEndTime(v int64) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetHeight(v int32) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.Height = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetPageId(v int32) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.PageId = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetWidth(v int32) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.Width = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetX(v int32) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.X = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) SetY(v int32) *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks {
+	s.Y = &v
+	return s
+}
+
+func (s *RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks) Validate() error {
 	return dara.Validate(s)
 }
 

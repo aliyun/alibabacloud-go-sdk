@@ -19,6 +19,8 @@ type iRunDocBrainmapRequest interface {
 	GetNodeNumber() *int32
 	SetPrompt(v string) *RunDocBrainmapRequest
 	GetPrompt() *string
+	SetResponseFormat(v int32) *RunDocBrainmapRequest
+	GetResponseFormat() *int32
 	SetSessionId(v string) *RunDocBrainmapRequest
 	GetSessionId() *string
 	SetWordNumber(v int32) *RunDocBrainmapRequest
@@ -30,29 +32,49 @@ type iRunDocBrainmapRequest interface {
 }
 
 type RunDocBrainmapRequest struct {
+	// example:
+	//
+	// true
 	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345
-	DocId      *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
-	ModelName  *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	NodeNumber *int32  `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
-	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// quanmiao-max、quanmiao-plus
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// 3
+	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// example:
+	//
+	// 请按英文输出
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0
+	ResponseFormat *int32 `json:"ResponseFormat,omitempty" xml:"ResponseFormat,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	WordNumber *int32  `json:"WordNumber,omitempty" xml:"WordNumber,omitempty"`
-	// This parameter is required.
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
 	//
+	// 20
+	WordNumber *int32 `json:"WordNumber,omitempty" xml:"WordNumber,omitempty"`
 	// example:
 	//
 	// llm-xxx
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 要生成脑图的内容
 	ReferenceContent *string `json:"referenceContent,omitempty" xml:"referenceContent,omitempty"`
 }
 
@@ -82,6 +104,10 @@ func (s *RunDocBrainmapRequest) GetNodeNumber() *int32 {
 
 func (s *RunDocBrainmapRequest) GetPrompt() *string {
 	return s.Prompt
+}
+
+func (s *RunDocBrainmapRequest) GetResponseFormat() *int32 {
+	return s.ResponseFormat
 }
 
 func (s *RunDocBrainmapRequest) GetSessionId() *string {
@@ -122,6 +148,11 @@ func (s *RunDocBrainmapRequest) SetNodeNumber(v int32) *RunDocBrainmapRequest {
 
 func (s *RunDocBrainmapRequest) SetPrompt(v string) *RunDocBrainmapRequest {
 	s.Prompt = &v
+	return s
+}
+
+func (s *RunDocBrainmapRequest) SetResponseFormat(v int32) *RunDocBrainmapRequest {
+	s.ResponseFormat = &v
 	return s
 }
 

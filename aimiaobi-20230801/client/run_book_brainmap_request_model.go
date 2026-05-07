@@ -17,6 +17,8 @@ type iRunBookBrainmapRequest interface {
 	GetNodeNumber() *int32
 	SetPrompt(v string) *RunBookBrainmapRequest
 	GetPrompt() *string
+	SetResponseFormat(v int32) *RunBookBrainmapRequest
+	GetResponseFormat() *int32
 	SetSessionId(v string) *RunBookBrainmapRequest
 	GetSessionId() *string
 	SetWordNumber(v int32) *RunBookBrainmapRequest
@@ -39,8 +41,15 @@ type RunBookBrainmapRequest struct {
 	// example:
 	//
 	// 3
-	NodeNumber *int32  `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
-	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// example:
+	//
+	// 按英文输出
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 0
+	ResponseFormat *int32 `json:"ResponseFormat,omitempty" xml:"ResponseFormat,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -83,6 +92,10 @@ func (s *RunBookBrainmapRequest) GetPrompt() *string {
 	return s.Prompt
 }
 
+func (s *RunBookBrainmapRequest) GetResponseFormat() *int32 {
+	return s.ResponseFormat
+}
+
 func (s *RunBookBrainmapRequest) GetSessionId() *string {
 	return s.SessionId
 }
@@ -112,6 +125,11 @@ func (s *RunBookBrainmapRequest) SetNodeNumber(v int32) *RunBookBrainmapRequest 
 
 func (s *RunBookBrainmapRequest) SetPrompt(v string) *RunBookBrainmapRequest {
 	s.Prompt = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetResponseFormat(v int32) *RunBookBrainmapRequest {
+	s.ResponseFormat = &v
 	return s
 }
 
