@@ -17,10 +17,14 @@ type iCreateUploadVideoRequest interface {
 	GetCoverURL() *string
 	SetDescription(v string) *CreateUploadVideoRequest
 	GetDescription() *string
+	SetEnableFirstFrameCover(v bool) *CreateUploadVideoRequest
+	GetEnableFirstFrameCover() *bool
 	SetFileName(v string) *CreateUploadVideoRequest
 	GetFileName() *string
 	SetFileSize(v int64) *CreateUploadVideoRequest
 	GetFileSize() *int64
+	SetGenerateThumbnail(v bool) *CreateUploadVideoRequest
+	GetGenerateThumbnail() *bool
 	SetReferenceId(v string) *CreateUploadVideoRequest
 	GetReferenceId() *string
 	SetStorageLocation(v string) *CreateUploadVideoRequest
@@ -71,7 +75,8 @@ type CreateUploadVideoRequest struct {
 	// example:
 	//
 	// UploadTest
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableFirstFrameCover *bool   `json:"EnableFirstFrameCover,omitempty" xml:"EnableFirstFrameCover,omitempty"`
 	// The name of the source file.
 	//
 	// 	- The name must contain a file name extension, which is not case-sensitive.
@@ -89,7 +94,8 @@ type CreateUploadVideoRequest struct {
 	// example:
 	//
 	// 123
-	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileSize          *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	GenerateThumbnail *bool  `json:"GenerateThumbnail,omitempty" xml:"GenerateThumbnail,omitempty"`
 	// example:
 	//
 	// 123-123
@@ -192,12 +198,20 @@ func (s *CreateUploadVideoRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateUploadVideoRequest) GetEnableFirstFrameCover() *bool {
+	return s.EnableFirstFrameCover
+}
+
 func (s *CreateUploadVideoRequest) GetFileName() *string {
 	return s.FileName
 }
 
 func (s *CreateUploadVideoRequest) GetFileSize() *int64 {
 	return s.FileSize
+}
+
+func (s *CreateUploadVideoRequest) GetGenerateThumbnail() *bool {
+	return s.GenerateThumbnail
 }
 
 func (s *CreateUploadVideoRequest) GetReferenceId() *string {
@@ -248,6 +262,11 @@ func (s *CreateUploadVideoRequest) SetDescription(v string) *CreateUploadVideoRe
 	return s
 }
 
+func (s *CreateUploadVideoRequest) SetEnableFirstFrameCover(v bool) *CreateUploadVideoRequest {
+	s.EnableFirstFrameCover = &v
+	return s
+}
+
 func (s *CreateUploadVideoRequest) SetFileName(v string) *CreateUploadVideoRequest {
 	s.FileName = &v
 	return s
@@ -255,6 +274,11 @@ func (s *CreateUploadVideoRequest) SetFileName(v string) *CreateUploadVideoReque
 
 func (s *CreateUploadVideoRequest) SetFileSize(v int64) *CreateUploadVideoRequest {
 	s.FileSize = &v
+	return s
+}
+
+func (s *CreateUploadVideoRequest) SetGenerateThumbnail(v bool) *CreateUploadVideoRequest {
+	s.GenerateThumbnail = &v
 	return s
 }
 

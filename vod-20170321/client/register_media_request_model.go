@@ -9,6 +9,10 @@ type iRegisterMediaRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnableFirstFrameCover(v bool) *RegisterMediaRequest
+	GetEnableFirstFrameCover() *bool
+	SetGenerateThumbnail(v bool) *RegisterMediaRequest
+	GetGenerateThumbnail() *bool
 	SetRegisterMetadatas(v string) *RegisterMediaRequest
 	GetRegisterMetadatas() *string
 	SetTemplateGroupId(v string) *RegisterMediaRequest
@@ -20,6 +24,8 @@ type iRegisterMediaRequest interface {
 }
 
 type RegisterMediaRequest struct {
+	EnableFirstFrameCover *bool `json:"EnableFirstFrameCover,omitempty" xml:"EnableFirstFrameCover,omitempty"`
+	GenerateThumbnail     *bool `json:"GenerateThumbnail,omitempty" xml:"GenerateThumbnail,omitempty"`
 	// The metadata of the media files. The value must be a JSON string. You can specify the metadata for up to 10 media files at a time. For more information about the metadata of media files, see the **RegisterMetadata*	- section of this topic.
 	//
 	// This parameter is required.
@@ -72,6 +78,14 @@ func (s RegisterMediaRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RegisterMediaRequest) GetEnableFirstFrameCover() *bool {
+	return s.EnableFirstFrameCover
+}
+
+func (s *RegisterMediaRequest) GetGenerateThumbnail() *bool {
+	return s.GenerateThumbnail
+}
+
 func (s *RegisterMediaRequest) GetRegisterMetadatas() *string {
 	return s.RegisterMetadatas
 }
@@ -86,6 +100,16 @@ func (s *RegisterMediaRequest) GetUserData() *string {
 
 func (s *RegisterMediaRequest) GetWorkflowId() *string {
 	return s.WorkflowId
+}
+
+func (s *RegisterMediaRequest) SetEnableFirstFrameCover(v bool) *RegisterMediaRequest {
+	s.EnableFirstFrameCover = &v
+	return s
+}
+
+func (s *RegisterMediaRequest) SetGenerateThumbnail(v bool) *RegisterMediaRequest {
+	s.GenerateThumbnail = &v
+	return s
 }
 
 func (s *RegisterMediaRequest) SetRegisterMetadatas(v string) *RegisterMediaRequest {

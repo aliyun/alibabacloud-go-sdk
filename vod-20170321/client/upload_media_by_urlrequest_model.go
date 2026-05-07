@@ -11,6 +11,10 @@ type iUploadMediaByURLRequest interface {
 	GoString() string
 	SetAppId(v string) *UploadMediaByURLRequest
 	GetAppId() *string
+	SetEnableFirstFrameCover(v bool) *UploadMediaByURLRequest
+	GetEnableFirstFrameCover() *bool
+	SetGenerateThumbnail(v bool) *UploadMediaByURLRequest
+	GetGenerateThumbnail() *bool
 	SetSessionId(v string) *UploadMediaByURLRequest
 	GetSessionId() *string
 	SetStorageLocation(v string) *UploadMediaByURLRequest
@@ -33,7 +37,9 @@ type UploadMediaByURLRequest struct {
 	// example:
 	//
 	// app-****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId                 *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EnableFirstFrameCover *bool   `json:"EnableFirstFrameCover,omitempty" xml:"EnableFirstFrameCover,omitempty"`
+	GenerateThumbnail     *bool   `json:"GenerateThumbnail,omitempty" xml:"GenerateThumbnail,omitempty"`
 	// The custom identifier for deduplication. If you specify this parameter and send a request, an error is returned if a request with the same identifier was sent in the last 10 minutes. A custom identifier can be up to 50 characters in length and can contain letters, digits, hyphens (-), and underscores (_). If you do not specify this parameter or leave this parameter empty, duplicate requests are not filtered.
 	//
 	// example:
@@ -128,6 +134,14 @@ func (s *UploadMediaByURLRequest) GetAppId() *string {
 	return s.AppId
 }
 
+func (s *UploadMediaByURLRequest) GetEnableFirstFrameCover() *bool {
+	return s.EnableFirstFrameCover
+}
+
+func (s *UploadMediaByURLRequest) GetGenerateThumbnail() *bool {
+	return s.GenerateThumbnail
+}
+
 func (s *UploadMediaByURLRequest) GetSessionId() *string {
 	return s.SessionId
 }
@@ -158,6 +172,16 @@ func (s *UploadMediaByURLRequest) GetWorkflowId() *string {
 
 func (s *UploadMediaByURLRequest) SetAppId(v string) *UploadMediaByURLRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequest) SetEnableFirstFrameCover(v bool) *UploadMediaByURLRequest {
+	s.EnableFirstFrameCover = &v
+	return s
+}
+
+func (s *UploadMediaByURLRequest) SetGenerateThumbnail(v bool) *UploadMediaByURLRequest {
+	s.GenerateThumbnail = &v
 	return s
 }
 

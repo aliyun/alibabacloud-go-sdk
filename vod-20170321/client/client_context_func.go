@@ -1362,12 +1362,20 @@ func (client *Client) CreateUploadVideoWithContext(ctx context.Context, request 
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.EnableFirstFrameCover) {
+		query["EnableFirstFrameCover"] = request.EnableFirstFrameCover
+	}
+
 	if !dara.IsNil(request.FileName) {
 		query["FileName"] = request.FileName
 	}
 
 	if !dara.IsNil(request.FileSize) {
 		query["FileSize"] = request.FileSize
+	}
+
+	if !dara.IsNil(request.GenerateThumbnail) {
+		query["GenerateThumbnail"] = request.GenerateThumbnail
 	}
 
 	if !dara.IsNil(request.ReferenceId) {
@@ -9232,6 +9240,14 @@ func (client *Client) RegisterMediaWithContext(ctx context.Context, request *Reg
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EnableFirstFrameCover) {
+		query["EnableFirstFrameCover"] = request.EnableFirstFrameCover
+	}
+
+	if !dara.IsNil(request.GenerateThumbnail) {
+		query["GenerateThumbnail"] = request.GenerateThumbnail
+	}
+
 	if !dara.IsNil(request.RegisterMetadatas) {
 		query["RegisterMetadatas"] = request.RegisterMetadatas
 	}
@@ -11740,6 +11756,14 @@ func (client *Client) UploadMediaByURLWithContext(ctx context.Context, request *
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppId) {
 		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.EnableFirstFrameCover) {
+		query["EnableFirstFrameCover"] = request.EnableFirstFrameCover
+	}
+
+	if !dara.IsNil(request.GenerateThumbnail) {
+		query["GenerateThumbnail"] = request.GenerateThumbnail
 	}
 
 	if !dara.IsNil(request.SessionId) {
