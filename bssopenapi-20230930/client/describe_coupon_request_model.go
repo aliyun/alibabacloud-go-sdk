@@ -29,6 +29,8 @@ type iDescribeCouponRequest interface {
 	GetExpireEndDate() *int64
 	SetExpireStartDate(v int64) *DescribeCouponRequest
 	GetExpireStartDate() *int64
+	SetIncludeShare(v bool) *DescribeCouponRequest
+	GetIncludeShare() *bool
 	SetMaxResults(v int32) *DescribeCouponRequest
 	GetMaxResults() *int32
 	SetNbid(v string) *DescribeCouponRequest
@@ -37,6 +39,8 @@ type iDescribeCouponRequest interface {
 	GetNextToken() *string
 	SetPageSize(v int32) *DescribeCouponRequest
 	GetPageSize() *int32
+	SetProductCode(v string) *DescribeCouponRequest
+	GetProductCode() *string
 	SetStatus(v string) *DescribeCouponRequest
 	GetStatus() *string
 }
@@ -78,6 +82,7 @@ type DescribeCouponRequest struct {
 	//
 	// 1684750028000
 	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
+	IncludeShare    *bool  `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
 	MaxResults      *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// example:
 	//
@@ -89,7 +94,8 @@ type DescribeCouponRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// example:
 	//
 	// AVAILABLE
@@ -144,6 +150,10 @@ func (s *DescribeCouponRequest) GetExpireStartDate() *int64 {
 	return s.ExpireStartDate
 }
 
+func (s *DescribeCouponRequest) GetIncludeShare() *bool {
+	return s.IncludeShare
+}
+
 func (s *DescribeCouponRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -158,6 +168,10 @@ func (s *DescribeCouponRequest) GetNextToken() *string {
 
 func (s *DescribeCouponRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeCouponRequest) GetProductCode() *string {
+	return s.ProductCode
 }
 
 func (s *DescribeCouponRequest) GetStatus() *string {
@@ -214,6 +228,11 @@ func (s *DescribeCouponRequest) SetExpireStartDate(v int64) *DescribeCouponReque
 	return s
 }
 
+func (s *DescribeCouponRequest) SetIncludeShare(v bool) *DescribeCouponRequest {
+	s.IncludeShare = &v
+	return s
+}
+
 func (s *DescribeCouponRequest) SetMaxResults(v int32) *DescribeCouponRequest {
 	s.MaxResults = &v
 	return s
@@ -231,6 +250,11 @@ func (s *DescribeCouponRequest) SetNextToken(v string) *DescribeCouponRequest {
 
 func (s *DescribeCouponRequest) SetPageSize(v int32) *DescribeCouponRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetProductCode(v string) *DescribeCouponRequest {
+	s.ProductCode = &v
 	return s
 }
 

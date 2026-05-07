@@ -577,7 +577,7 @@ func (client *Client) CreateInvoiceWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Create a bill report subscription.
+// Creates a billing report subscription.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -897,7 +897,7 @@ func (client *Client) DeleteReportDefinitionWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询优惠券列表
+// Queries the list of coupons.
 //
 // @param tmpReq - DescribeCouponRequest
 //
@@ -962,6 +962,10 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 		query["ExpireStartDate"] = request.ExpireStartDate
 	}
 
+	if !dara.IsNil(request.IncludeShare) {
+		query["IncludeShare"] = request.IncludeShare
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -976,6 +980,10 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -1007,7 +1015,7 @@ func (client *Client) DescribeCouponWithContext(ctx context.Context, tmpReq *Des
 
 // Summary:
 //
-// 查询优惠券可用商品列表
+// Query the list of products for which a coupon is applicable.
 //
 // @param tmpReq - DescribeCouponItemListRequest
 //

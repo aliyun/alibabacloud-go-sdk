@@ -848,7 +848,7 @@ func (client *Client) CreateInvoice(request *CreateInvoiceRequest) (_result *Cre
 
 // Summary:
 //
-// Create a bill report subscription.
+// Creates a billing report subscription.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -942,7 +942,7 @@ func (client *Client) CreateReportDefinitionWithOptions(request *CreateReportDef
 
 // Summary:
 //
-// Create a bill report subscription.
+// Creates a billing report subscription.
 //
 // @param request - CreateReportDefinitionRequest
 //
@@ -1258,7 +1258,7 @@ func (client *Client) DeleteReportDefinition(request *DeleteReportDefinitionRequ
 
 // Summary:
 //
-// 查询优惠券列表
+// Queries the list of coupons.
 //
 // @param tmpReq - DescribeCouponRequest
 //
@@ -1323,6 +1323,10 @@ func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, r
 		query["ExpireStartDate"] = request.ExpireStartDate
 	}
 
+	if !dara.IsNil(request.IncludeShare) {
+		query["IncludeShare"] = request.IncludeShare
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -1337,6 +1341,10 @@ func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, r
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -1368,7 +1376,7 @@ func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, r
 
 // Summary:
 //
-// 查询优惠券列表
+// Queries the list of coupons.
 //
 // @param request - DescribeCouponRequest
 //
@@ -1386,7 +1394,7 @@ func (client *Client) DescribeCoupon(request *DescribeCouponRequest) (_result *D
 
 // Summary:
 //
-// 查询优惠券可用商品列表
+// Query the list of products for which a coupon is applicable.
 //
 // @param tmpReq - DescribeCouponItemListRequest
 //
@@ -1456,7 +1464,7 @@ func (client *Client) DescribeCouponItemListWithOptions(tmpReq *DescribeCouponIt
 
 // Summary:
 //
-// 查询优惠券可用商品列表
+// Query the list of products for which a coupon is applicable.
 //
 // @param request - DescribeCouponItemListRequest
 //
@@ -2813,8 +2821,6 @@ func (client *Client) ListInvoiceCandidate(request *ListInvoiceCandidateRequest)
 // Summary:
 //
 // 发票抬头查询服务
-//
-// @param request - ListInvoiceTitleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //

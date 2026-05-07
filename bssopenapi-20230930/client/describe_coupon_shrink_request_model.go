@@ -29,6 +29,8 @@ type iDescribeCouponShrinkRequest interface {
 	GetExpireEndDate() *int64
 	SetExpireStartDate(v int64) *DescribeCouponShrinkRequest
 	GetExpireStartDate() *int64
+	SetIncludeShare(v bool) *DescribeCouponShrinkRequest
+	GetIncludeShare() *bool
 	SetMaxResults(v int32) *DescribeCouponShrinkRequest
 	GetMaxResults() *int32
 	SetNbid(v string) *DescribeCouponShrinkRequest
@@ -37,6 +39,8 @@ type iDescribeCouponShrinkRequest interface {
 	GetNextToken() *string
 	SetPageSize(v int32) *DescribeCouponShrinkRequest
 	GetPageSize() *int32
+	SetProductCode(v string) *DescribeCouponShrinkRequest
+	GetProductCode() *string
 	SetStatus(v string) *DescribeCouponShrinkRequest
 	GetStatus() *string
 }
@@ -78,6 +82,7 @@ type DescribeCouponShrinkRequest struct {
 	//
 	// 1684750028000
 	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
+	IncludeShare    *bool  `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
 	MaxResults      *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// example:
 	//
@@ -89,7 +94,8 @@ type DescribeCouponShrinkRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// example:
 	//
 	// AVAILABLE
@@ -144,6 +150,10 @@ func (s *DescribeCouponShrinkRequest) GetExpireStartDate() *int64 {
 	return s.ExpireStartDate
 }
 
+func (s *DescribeCouponShrinkRequest) GetIncludeShare() *bool {
+	return s.IncludeShare
+}
+
 func (s *DescribeCouponShrinkRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
@@ -158,6 +168,10 @@ func (s *DescribeCouponShrinkRequest) GetNextToken() *string {
 
 func (s *DescribeCouponShrinkRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeCouponShrinkRequest) GetProductCode() *string {
+	return s.ProductCode
 }
 
 func (s *DescribeCouponShrinkRequest) GetStatus() *string {
@@ -214,6 +228,11 @@ func (s *DescribeCouponShrinkRequest) SetExpireStartDate(v int64) *DescribeCoupo
 	return s
 }
 
+func (s *DescribeCouponShrinkRequest) SetIncludeShare(v bool) *DescribeCouponShrinkRequest {
+	s.IncludeShare = &v
+	return s
+}
+
 func (s *DescribeCouponShrinkRequest) SetMaxResults(v int32) *DescribeCouponShrinkRequest {
 	s.MaxResults = &v
 	return s
@@ -231,6 +250,11 @@ func (s *DescribeCouponShrinkRequest) SetNextToken(v string) *DescribeCouponShri
 
 func (s *DescribeCouponShrinkRequest) SetPageSize(v int32) *DescribeCouponShrinkRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetProductCode(v string) *DescribeCouponShrinkRequest {
+	s.ProductCode = &v
 	return s
 }
 
